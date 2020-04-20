@@ -4,7 +4,14 @@ module.exports = {
     es6: true,
   },
   // https://eslint.org/docs/rules
-  extends: 'eslint:recommended',
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  // https://github.com/yannickcr/eslint-plugin-react#configuration
+  plugins: ['react'],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -12,13 +19,4 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  overrides: [
-    {
-      files: ['**/*.js', '**/*.jsx'],
-      rules: {
-        'no-undef': 'off',
-        'no-unused-vars': 'off',
-      },
-    },
-  ],
 };
