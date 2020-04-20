@@ -19,6 +19,7 @@
     "react-helmet": "^6.0.0"
   },
   "devDependencies": {
+    "husky": "^4.2.5",
     "prettier": "2.0.4"
   },
   "keywords": [
@@ -33,6 +34,11 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint src/"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
   },
   "repository": {
     "type": "git",
