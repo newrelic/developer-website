@@ -1,6 +1,7 @@
 header.Header {
   background-color: #d7e6e8;
   margin-bottom: 1em;
+  padding-top: 0.8em;
 
   a {
     color: #000;
@@ -9,13 +10,13 @@ header.Header {
 
   h1.Header-title {
     font-size: 1.8em;
-    padding: 0.8em;
-    padding-bottom: 0.4em;
+    padding: 0.2em 0.8em 0.4em;
     margin: 0;
   }
 
   nav.Header-nav {
     width: 100%;
+    padding: 0 0.8em;
 
     ul {
       margin: 0;
@@ -26,7 +27,7 @@ header.Header {
   }
 
   a.Header-nav-link {
-    padding: 0.8em 0.6em;
+    padding: 0.6em;
 
     &:hover {
       cursor: pointer;
@@ -36,5 +37,10 @@ header.Header {
 
   nav.Header-nav--main > ul {
     justify-content: flex-end;
+  }
+
+  nav.Header-nav--nr {
+    display: flex;
+    justify-content: space-between;
   }
 }

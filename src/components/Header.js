@@ -6,7 +6,49 @@ import './Header.scss';
 
 const Header = ({ links }) => (
   <header className="Header">
-    <nav className="Header-nav Header-nav--nr"></nav>
+    <nav className="Header-nav Header-nav--nr">
+      <ul>
+        <li>
+          <a href="//newrelic.com" target="_blank" className="Header-nav-link">
+            New Relic
+          </a>
+        </li>
+        <li>
+          <Link to="/" className="Header-nav-link">
+            Developers
+          </Link>
+        </li>
+        <li>
+          <a
+            href="//opensource.newrelic.com"
+            target="_blank"
+            className="Header-nav-link"
+          >
+            Open Source
+          </a>
+        </li>
+        <li>
+          <a
+            href="//docs.newrelic.com"
+            target="_blank"
+            className="Header-nav-link"
+          >
+            Docs
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a
+            href="//githib.com/newrelic"
+            target="_blank"
+            className="Header-nav-link"
+          >
+            GitHub
+          </a>
+        </li>
+      </ul>
+    </nav>
 
     <h1 className="Header-title">
       <Link to="/">{'</>'} New Relic Developers</Link>
