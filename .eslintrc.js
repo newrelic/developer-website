@@ -3,8 +3,11 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  // https://eslint.org/docs/rules
-  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  // https://github.com/newrelic/eslint-plugin-newrelic
+  extends: [
+    'plugin:@newrelic/eslint-plugin-newrelic/react',
+    'plugin:@newrelic/eslint-plugin-newrelic/prettier',
+  ],
   // https://github.com/yannickcr/eslint-plugin-react#configuration
   plugins: ['react'],
   settings: {

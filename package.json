@@ -19,6 +19,8 @@
     "react-helmet": "^6.0.0"
   },
   "devDependencies": {
+    "@newrelic/eslint-plugin-newrelic": "^0.3.0",
+    "eslint": "^6.8.0",
     "husky": "^4.2.5",
     "prettier": "2.0.4"
   },
@@ -33,7 +35,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "lint:fix": "npm run lint -- --fix"
   },
   "husky": {
     "hooks": {
