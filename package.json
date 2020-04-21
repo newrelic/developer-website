@@ -11,6 +11,7 @@
     "gatsby-plugin-sass": "^2.2.3",
     "gatsby-plugin-sharp": "^2.5.6",
     "gatsby-source-filesystem": "^2.2.4",
+    "gatsby-transformer-remark": "^2.7.3",
     "gatsby-transformer-sharp": "^2.4.6",
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
