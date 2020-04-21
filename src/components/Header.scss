@@ -1,3 +1,40 @@
 header.Header {
   background-color: #d7e6e8;
+  margin-bottom: 1em;
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  h1.Header-title {
+    font-size: 1.8em;
+    padding: 0.8em;
+    padding-bottom: 0.4em;
+    margin: 0;
+  }
+
+  nav.Header-nav {
+    width: 100%;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+    }
+  }
+
+  a.Header-nav-link {
+    padding: 0.8em 0.6em;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  nav.Header-nav--main > ul {
+    justify-content: flex-end;
+  }
 }

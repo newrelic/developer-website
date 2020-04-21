@@ -6,13 +6,23 @@ import './Header.scss';
 
 const Header = ({ links }) => (
   <header className="Header">
-    <nav className="Header-navigation--nr"></nav>
+    <nav className="Header-nav Header-nav--nr"></nav>
 
     <h1 className="Header-title">
-      <Link to="/">{'</>'} New Relic Developer</Link>
+      <Link to="/">{'</>'} New Relic Developers</Link>
     </h1>
 
-    <nav className="Header-navigation--main"></nav>
+    <nav className="Header-nav Header-nav--main">
+      <ul>
+        {links.map((link, i) => (
+          <li key={i}>
+            <Link to={link.url} className="Header-nav-link">
+              {link.displayName}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   </header>
 );
 
