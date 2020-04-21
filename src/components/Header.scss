@@ -47,8 +47,14 @@ header.Header {
     justify-content: flex-end;
   }
 
-  nav.Header-nav--nr {
+  nav.Header-nav--sitesAndTools {
     display: flex;
     justify-content: space-between;
+
+    img {
+      height: 1.2em;
+      vertical-align: middle;
+      padding-bottom: 0.1em;
+    }
   }
 }
