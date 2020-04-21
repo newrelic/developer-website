@@ -71,7 +71,7 @@ const Header = ({ pages }) => {
             <ul>
               <li>
                 <a
-                  href="//githib.com/newrelic"
+                  href="//github.com/newrelic"
                   target="_blank"
                   className="Header-nav-link"
                   rel="noopener noreferrer"
