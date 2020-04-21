@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Container from './Container';
 import './Header.scss';
 
-const Header = ({ links }) => {
+const Header = ({ pages }) => {
   // NOTE: we may want to abstract this
   const data = useStaticQuery(graphql`
     query {
@@ -88,10 +88,10 @@ const Header = ({ links }) => {
 
           <nav className="Header-nav Header-nav--main">
             <ul>
-              {links.map((link, i) => (
+              {pages.map((page, i) => (
                 <li key={i}>
-                  <Link to={link.url} className="Header-nav-link">
-                    {link.displayName}
+                  <Link to={page.path} className="Header-nav-link">
+                    {page.displayName}
                   </Link>
                 </li>
               ))}
@@ -104,22 +104,22 @@ const Header = ({ links }) => {
 };
 
 Header.propTypes = {
-  links: PropTypes.arrayOf(
+  pages: PropTypes.arrayOf(
     PropTypes.shape({
       displayName: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
       active: PropTypes.bool,
     })
   ),
 };
 
 Header.defaultProps = {
-  links: [
-    { displayName: 'Collect Data', url: '' },
-    { displayName: 'Explore Data', url: '' },
-    { displayName: 'Build Apps', url: '' },
-    { displayName: 'Automate New Relic', url: '' },
-    { displayName: 'Reference Docs', url: '' },
+  pages: [
+    { displayName: 'Collect Data', path: '' },
+    { displayName: 'Explore Data', path: '' },
+    { displayName: 'Build Apps', path: '' },
+    { displayName: 'Automate New Relic', path: '' },
+    { displayName: 'Reference Docs', path: '' },
   ],
 };
 
