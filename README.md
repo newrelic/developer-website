@@ -8,7 +8,7 @@
 
     ```shell
     cd developer-website/
-    npm run develop
+    npm start
     ```
 
     Your site is now running at `http://localhost:8000`!
