@@ -86,6 +86,7 @@ Header.propTypes = {
     PropTypes.shape({
       displayName: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
+      active: PropTypes.bool,
     })
   ),
 };
