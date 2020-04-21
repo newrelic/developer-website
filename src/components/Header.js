@@ -1,5 +1,4 @@
 import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
 import React from 'react';
 
 const Header = () => (
@@ -9,9 +8,5 @@ const Header = () => (
     </h1>
   </header>
 );
-
-Header.propTypes = {};
-
-Header.defaultProps = {};
 
 export default Header;
