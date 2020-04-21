@@ -1,8 +1,4 @@
 module.exports = {
-  env: {
-    browser: true,
-    es6: true,
-  },
   // https://github.com/newrelic/eslint-plugin-newrelic
   extends: [
     'plugin:@newrelic/eslint-plugin-newrelic/react',
@@ -21,5 +17,9 @@ module.exports = {
     },
     ecmaVersion: 2018,
     sourceType: 'module',
+  },
+  env: {
+    browser: true,
+    es6: true,
   },
 };
