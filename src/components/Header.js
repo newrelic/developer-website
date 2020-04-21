@@ -16,6 +16,7 @@ const Header = ({ links }) => (
                 href="//newrelic.com"
                 target="_blank"
                 className="Header-nav-link"
+                rel="noopener noreferrer"
               >
                 New Relic
               </a>
@@ -30,6 +31,7 @@ const Header = ({ links }) => (
                 href="//opensource.newrelic.com"
                 target="_blank"
                 className="Header-nav-link"
+                rel="noopener noreferrer"
               >
                 Open Source
               </a>
@@ -39,6 +41,7 @@ const Header = ({ links }) => (
                 href="//docs.newrelic.com"
                 target="_blank"
                 className="Header-nav-link"
+                rel="noopener noreferrer"
               >
                 Docs
               </a>
@@ -50,6 +53,7 @@ const Header = ({ links }) => (
                 href="//githib.com/newrelic"
                 target="_blank"
                 className="Header-nav-link"
+                rel="noopener noreferrer"
               >
                 GitHub
               </a>
