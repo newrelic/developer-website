@@ -10,19 +10,27 @@ header.Header {
 
   h1.Header-title {
     font-size: 1.8em;
-    padding: 0.2em 0.8em 0.4em;
+    padding-top: 0.2em;
+    padding-bottom: 0.4em;
     margin: 0;
   }
 
   nav.Header-nav {
     width: 100%;
-    padding: 0 0.8em;
 
     ul {
       margin: 0;
       padding: 0;
       list-style: none;
       display: flex;
+
+      li:first-child > a {
+        padding-left: 0;
+      }
+
+      li:last-child > a {
+        padding-right: 0;
+      }
     }
   }
 
