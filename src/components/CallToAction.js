@@ -1,7 +1,8 @@
 import React from 'react';
 import './CallToAction.scss';
+import PropTypes from 'prop-types';
 
-const component = ({ text, children }) => {
+const CallToAction = ({ text, children }) => {
   return (
     <div className="callToAction">
       <h3>{text}</h3>
@@ -9,5 +10,8 @@ const component = ({ text, children }) => {
     </div>
   );
 };
-
-export default component;
+CallToAction.propTypes = {
+  text: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
+export default CallToAction;
