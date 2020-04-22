@@ -11,6 +11,7 @@ const HamburgerMenu = ({ onClick }) => {
     <button
       aria-expanded={open}
       aria-label="Mobile Menu"
+      type="button"
       className={cx('HamburgerMenu', { HamburgerMenu__open: open })}
       onClick={() => {
         updateOpen(!open);
