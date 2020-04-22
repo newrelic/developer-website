@@ -1,12 +1,17 @@
 import { Link, useStaticQuery, graphql } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import Container from './Container';
 import ExternalLink from './ExternalLink';
+import HamburgerMenu from './HamburgerMenu';
+
 import './Header.scss';
 
 const Header = ({ pages }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   // NOTE: we may want to abstract this
   const data = useStaticQuery(graphql`
     query {
@@ -28,11 +33,21 @@ const Header = ({ pages }) => {
   `);
 
   return (
-    <header className="Header--main">
+    <header
+      className={cx('Header--main', { 'Header--main__menuOpen': menuOpen })}
+    >
       <Container>
+        <div className="Header--main__mobile">
+          <h1 className="Header-title__mobile">
+            <Link to="/">{'</>'} New Relic Developers</Link>
+          </h1>
+          <HamburgerMenu onClick={() => setMenuOpen(!menuOpen)} />
+        </div>
+
         <nav role="navigation" aria-label="New Relic" className="nav--nr">
+          <h3 className="u-hideOnDesktop">Sites</h3>
           <ul>
-            <li>
+            <li className="u-hideOnMobile">
               <ExternalLink href="//newrelic.com">
                 <img src={data.nrLogo.childImageSharp.fixed.src} />
               </ExternalLink>
@@ -53,11 +68,12 @@ const Header = ({ pages }) => {
           </ul>
         </nav>
 
-        <h1>
+        <h1 className="Header-title">
           <Link to="/">{'</>'} New Relic Developers</Link>
         </h1>
 
         <nav role="navigation" aria-label="Main" className="nav--main">
+          <h3 className="u-hideOnDesktop">Developers</h3>
           <ul>
             {pages.map((page, i) => (
               <li key={i}>
@@ -68,10 +84,12 @@ const Header = ({ pages }) => {
         </nav>
 
         <nav className="nav--tools">
+          <h3 className="u-hideOnDesktop">Tools</h3>
           <ul>
             <li>
               <ExternalLink href="//github.com/newrelic">
                 <img src={data.ghLogo.childImageSharp.fixed.src} />
+                <span className="u-hideOnDesktop">Contribute on GitHub</span>
               </ExternalLink>
             </li>
           </ul>

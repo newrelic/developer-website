@@ -65,4 +65,63 @@ header.Header--main {
       justify-content: flex-end;
     }
   }
+
+  .Header--main__mobile,
+  .u-hideOnDesktop {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  header.Header--main {
+    h1.Header-title,
+    .u-hideOnMobile {
+      display: none;
+    }
+
+    .u-hideOnDesktop {
+      display: block;
+    }
+
+    .Header--main__mobile {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1rem;
+    }
+
+    h3 {
+      margin: 0;
+      padding: 1rem 0.6rem 0;
+    }
+
+    nav {
+      background-color: var(--color-white);
+      display: none;
+
+      ul {
+        display: block;
+      }
+
+      ul li:first-child > a,
+      ul li:last-child > a {
+        padding: 0.6rem;
+      }
+    }
+
+    nav.nav--tools {
+      position: static;
+
+      a {
+        display: flex;
+      }
+
+      img {
+        margin-right: 0.5rem;
+      }
+    }
+
+    &.Header--main__menuOpen nav {
+      display: block;
+    }
+  }
 }
