@@ -2,6 +2,10 @@ header.Header--main {
   background-color: #d7e6e8;
   margin-bottom: 1rem;
 
+  .u-container {
+    position: relative;
+  }
+
   a {
     color: #000;
     text-decoration: none;
@@ -14,6 +18,12 @@ header.Header--main {
     a {
       padding-left: 0;
     }
+  }
+
+  nav.nav--tools {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
   nav > ul {
@@ -45,11 +55,6 @@ header.Header--main {
     height: 1.2rem;
     vertical-align: middle;
     padding-bottom: 0.1rem;
-  }
-
-  .Header-topBar {
-    display: flex;
-    justify-content: space-between;
   }
 
   nav.nav--main {
