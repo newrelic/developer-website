@@ -3,6 +3,17 @@
   width: 100%;
   margin-bottom: 1rem;
 }
+.mobile {
+  display: none;
+}
+@media (max-width: 500px) {
+  .mobile {
+    display: block;
+  }
+  .desktop {
+    display: none;
+  }
+}
 .indexPage-grid {
   margin: 5% auto;
   max-width: 1300px;
