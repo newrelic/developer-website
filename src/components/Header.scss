@@ -1,4 +1,4 @@
-header.Header {
+header.Header--main {
   background-color: #d7e6e8;
   margin-bottom: 1em;
   padding-top: 0.8em;
@@ -8,53 +8,53 @@ header.Header {
     text-decoration: none;
   }
 
-  h1.Header-title {
+  h1 {
     font-size: 1.8em;
     padding-top: 0.2em;
     padding-bottom: 0.4em;
     margin: 0;
   }
 
-  nav.Header-nav {
+  nav > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+
+    li:first-child > a {
+      padding-left: 0;
+    }
+
+    li:last-child > a {
+      padding-right: 0;
+    }
+  }
+
+  a {
+    padding: 0.6em;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  nav img {
+    height: 1.2em;
+    vertical-align: middle;
+    padding-bottom: 0.1em;
+  }
+
+  .Header-topBar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  nav.nav--main {
     width: 100%;
 
     ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-
-      li:first-child > a {
-        padding-left: 0;
-      }
-
-      li:last-child > a {
-        padding-right: 0;
-      }
-    }
-
-    a {
-      padding: 0.6em;
-
-      &:hover {
-        cursor: pointer;
-        text-decoration: underline;
-      }
-    }
-  }
-
-  nav.Header-nav--main > ul {
-    justify-content: flex-end;
-  }
-
-  nav.Header-nav--sitesAndTools {
-    display: flex;
-    justify-content: space-between;
-
-    img {
-      height: 1.2em;
-      vertical-align: middle;
-      padding-bottom: 0.1em;
+      justify-content: flex-end;
     }
   }
 }

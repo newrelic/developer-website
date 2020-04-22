@@ -28,46 +28,51 @@ const Header = ({ pages }) => {
   `);
 
   return (
-    <header className="Header">
+    <header className="Header--main">
       <Container>
         <>
-          <nav className="Header-nav Header-nav--sitesAndTools">
-            <ul>
-              <li>
-                <ExternalLink href="//newrelic.com">
-                  <img src={data.nrLogo.childImageSharp.fixed.src} />
-                </ExternalLink>
-              </li>
-              <li>
-                <Link to="/" className="Header-nav-link">
-                  Developers
-                </Link>
-              </li>
-              <li>
-                <ExternalLink href="//opensource.newrelic.com">
-                  Open Source
-                </ExternalLink>
-              </li>
-              <li>
-                <ExternalLink href="//docs.newrelic.com">
-                  Documentation
-                </ExternalLink>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <ExternalLink href="//github.com/newrelic">
-                  <img src={data.ghLogo.childImageSharp.fixed.src} />
-                </ExternalLink>
-              </li>
-            </ul>
-          </nav>
+          <div className="Header-topBar">
+            <nav role="navigation" aria-label="New Relic" className="nav--nr">
+              <ul>
+                <li>
+                  <ExternalLink href="//newrelic.com">
+                    <img src={data.nrLogo.childImageSharp.fixed.src} />
+                  </ExternalLink>
+                </li>
+                <li>
+                  <Link to="/" className="Header-nav-link">
+                    Developers
+                  </Link>
+                </li>
+                <li>
+                  <ExternalLink href="//opensource.newrelic.com">
+                    Open Source
+                  </ExternalLink>
+                </li>
+                <li>
+                  <ExternalLink href="//docs.newrelic.com">
+                    Documentation
+                  </ExternalLink>
+                </li>
+              </ul>
+            </nav>
 
-          <h1 className="Header-title">
+            <nav className="nav--user">
+              <ul>
+                <li>
+                  <ExternalLink href="//github.com/newrelic">
+                    <img src={data.ghLogo.childImageSharp.fixed.src} />
+                  </ExternalLink>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <h1>
             <Link to="/">{'</>'} New Relic Developers</Link>
           </h1>
 
-          <nav className="Header-nav Header-nav--main">
+          <nav role="navigation" aria-label="Main" className="nav--main">
             <ul>
               {pages.map((page, i) => (
                 <li key={i}>
