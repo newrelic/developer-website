@@ -1,7 +1,6 @@
 header.Header--main {
   background-color: #d7e6e8;
-  margin-bottom: 1em;
-  padding-top: 0.8em;
+  margin-bottom: 1rem;
 
   a {
     color: #000;
@@ -9,10 +8,12 @@ header.Header--main {
   }
 
   h1 {
-    font-size: 1.8em;
-    padding-top: 0.2em;
-    padding-bottom: 0.4em;
+    font-size: 1.8rem;
     margin: 0;
+
+    a {
+      padding-left: 0;
+    }
   }
 
   nav > ul {
@@ -31,7 +32,8 @@ header.Header--main {
   }
 
   a {
-    padding: 0.6em;
+    padding: 0.6rem;
+    display: inline-block;
 
     &:hover {
       cursor: pointer;
@@ -40,9 +42,9 @@ header.Header--main {
   }
 
   nav img {
-    height: 1.2em;
+    height: 1.2rem;
     vertical-align: middle;
-    padding-bottom: 0.1em;
+    padding-bottom: 0.1rem;
   }
 
   .Header-topBar {
@@ -52,6 +54,7 @@ header.Header--main {
 
   nav.nav--main {
     width: 100%;
+    height: auto;
 
     ul {
       justify-content: flex-end;
