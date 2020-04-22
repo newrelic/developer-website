@@ -10,7 +10,7 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Jumbotron />
-    <h3>Learn about observability with one of our guides</h3>
+    <h2>Learn about observability with one of our guides</h2>
     <GuideGrid />
     <Link to="/page-2/">Go to page 2</Link>
   </Layout>

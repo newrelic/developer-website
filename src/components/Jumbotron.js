@@ -4,7 +4,7 @@ import './Jumbotron.scss';
 const Jumbotron = () => {
   return (
     <div className="jumbotron">
-      <h3>Interact with your observability data on your own terms</h3>
+      <h2>Interact with your observability data on your own terms</h2>
       <div className="jumbotron-ctaCircle">
         <p>Create your free account</p>
         <form>
