@@ -30,56 +30,54 @@ const Header = ({ pages }) => {
   return (
     <header className="Header--main">
       <Container>
-        <>
-          <div className="Header-topBar">
-            <nav role="navigation" aria-label="New Relic" className="nav--nr">
-              <ul>
-                <li>
-                  <ExternalLink href="//newrelic.com">
-                    <img src={data.nrLogo.childImageSharp.fixed.src} />
-                  </ExternalLink>
-                </li>
-                <li>
-                  <Link to="/">Developers</Link>
-                </li>
-                <li>
-                  <ExternalLink href="//opensource.newrelic.com">
-                    Open Source
-                  </ExternalLink>
-                </li>
-                <li>
-                  <ExternalLink href="//docs.newrelic.com">
-                    Documentation
-                  </ExternalLink>
-                </li>
-              </ul>
-            </nav>
-
-            <nav className="nav--user">
-              <ul>
-                <li>
-                  <ExternalLink href="//github.com/newrelic">
-                    <img src={data.ghLogo.childImageSharp.fixed.src} />
-                  </ExternalLink>
-                </li>
-              </ul>
-            </nav>
-          </div>
-
-          <h1>
-            <Link to="/">{'</>'} New Relic Developers</Link>
-          </h1>
-
-          <nav role="navigation" aria-label="Main" className="nav--main">
+        <div className="Header-topBar">
+          <nav role="navigation" aria-label="New Relic" className="nav--nr">
             <ul>
-              {pages.map((page, i) => (
-                <li key={i}>
-                  <Link to={page.path}>{page.displayName}</Link>
-                </li>
-              ))}
+              <li>
+                <ExternalLink href="//newrelic.com">
+                  <img src={data.nrLogo.childImageSharp.fixed.src} />
+                </ExternalLink>
+              </li>
+              <li>
+                <Link to="/">Developers</Link>
+              </li>
+              <li>
+                <ExternalLink href="//opensource.newrelic.com">
+                  Open Source
+                </ExternalLink>
+              </li>
+              <li>
+                <ExternalLink href="//docs.newrelic.com">
+                  Documentation
+                </ExternalLink>
+              </li>
             </ul>
           </nav>
-        </>
+
+          <nav className="nav--user">
+            <ul>
+              <li>
+                <ExternalLink href="//github.com/newrelic">
+                  <img src={data.ghLogo.childImageSharp.fixed.src} />
+                </ExternalLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <h1>
+          <Link to="/">{'</>'} New Relic Developers</Link>
+        </h1>
+
+        <nav role="navigation" aria-label="Main" className="nav--main">
+          <ul>
+            {pages.map((page, i) => (
+              <li key={i}>
+                <Link to={page.path}>{page.displayName}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </Container>
     </header>
   );
