@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Container from './Container';
+import ExternalLink from './ExternalLink';
 import './Header.scss';
 
 const Header = ({ pages }) => {
@@ -33,14 +34,9 @@ const Header = ({ pages }) => {
           <nav className="Header-nav Header-nav--sitesAndTools">
             <ul>
               <li>
-                <a
-                  href="//newrelic.com"
-                  target="_blank"
-                  className="Header-nav-link"
-                  rel="noopener noreferrer"
-                >
+                <ExternalLink href="//newrelic.com">
                   <img src={data.nrLogo.childImageSharp.fixed.src} />
-                </a>
+                </ExternalLink>
               </li>
               <li>
                 <Link to="/" className="Header-nav-link">
@@ -48,36 +44,21 @@ const Header = ({ pages }) => {
                 </Link>
               </li>
               <li>
-                <a
-                  href="//opensource.newrelic.com"
-                  target="_blank"
-                  className="Header-nav-link"
-                  rel="noopener noreferrer"
-                >
+                <ExternalLink href="//opensource.newrelic.com">
                   Open Source
-                </a>
+                </ExternalLink>
               </li>
               <li>
-                <a
-                  href="//docs.newrelic.com"
-                  target="_blank"
-                  className="Header-nav-link"
-                  rel="noopener noreferrer"
-                >
+                <ExternalLink href="//docs.newrelic.com">
                   Documentation
-                </a>
+                </ExternalLink>
               </li>
             </ul>
             <ul>
               <li>
-                <a
-                  href="//github.com/newrelic"
-                  target="_blank"
-                  className="Header-nav-link"
-                  rel="noopener noreferrer"
-                >
+                <ExternalLink href="//github.com/newrelic">
                   <img src={data.ghLogo.childImageSharp.fixed.src} />
-                </a>
+                </ExternalLink>
               </li>
             </ul>
           </nav>

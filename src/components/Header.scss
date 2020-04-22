@@ -32,14 +32,14 @@ header.Header {
         padding-right: 0;
       }
     }
-  }
 
-  a.Header-nav-link {
-    padding: 0.6em;
+    a {
+      padding: 0.6em;
 
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
     }
   }
 
