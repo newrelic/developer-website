@@ -1,19 +1,20 @@
 import React from 'react';
+import CallToAction from './CallToAction';
 import './Jumbotron.scss';
 
 const Jumbotron = () => {
   return (
     <div className="jumbotron">
-      <h2>Interact with your observability data on your own terms</h2>
-      <div className="jumbotron-ctaCircle">
-        <p>Create your free account</p>
+      <h2 className="indexPage-h2">
+        Build custom applications on top of your observability data
+      </h2>
+      <CallToAction text="Create your free account">
         <form>
           <input placeholder="me@observability.com" />
           <button type="submit">Sign up</button>
         </form>
-      </div>
-      <div className="jumbotron-ctaCircle">
-        <p>Get your API key</p>
+      </CallToAction>
+      <CallToAction text="Get your API key">
         <select id="api-keys" name="api-keys">
           <option value="" disabled selected hidden>
             Select or create a key...
@@ -21,11 +22,10 @@ const Jumbotron = () => {
           <option value="key">key</option>
           <option value="otherkey">otherkey</option>
         </select>
-      </div>
-      <div className="jumbotron-ctaCircle">
-        <p>Install the newrelic CLI</p>
+      </CallToAction>
+      <CallToAction text="Install the newrelic CLI">
         <button type="button">Download for macOS</button>
-      </div>
+      </CallToAction>
     </div>
   );
 };

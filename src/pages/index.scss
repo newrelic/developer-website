@@ -1,16 +1,24 @@
-.guideGrid {
+.indexPage-h2 {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.indexPage-grid {
   margin: 5% auto;
   max-width: 1300px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-row-gap: 2rem;
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 }
 
-.guideGrid-guide {
+.indexPage-grid-guide {
   justify-self: center;
   height: 250px;
   width: 375px;
-  background: rgb(136, 197, 197);
+  background: rgb(178, 224, 224);
   display: flex;
   justify-content: center;
   align-items: center;
