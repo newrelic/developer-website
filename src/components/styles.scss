@@ -1,0 +1,67 @@
+/*-- Imports --*/
+// NOTE: fonts go here
+
+/*-- CSS Variables --*/
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+}
+
+/*-- Reset --*/
+// https://github.com/necolas/normalize.css
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+
+main {
+  display: block;
+}
+
+a {
+  cursor: pointer;
+}
+
+img {
+  border-style: none;
+}
+
+p {
+  margin: 0;
+  margin-top: 8px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
