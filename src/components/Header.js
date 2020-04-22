@@ -40,9 +40,7 @@ const Header = ({ pages }) => {
                   </ExternalLink>
                 </li>
                 <li>
-                  <Link to="/" className="Header-nav-link">
-                    Developers
-                  </Link>
+                  <Link to="/">Developers</Link>
                 </li>
                 <li>
                   <ExternalLink href="//opensource.newrelic.com">
@@ -76,9 +74,7 @@ const Header = ({ pages }) => {
             <ul>
               {pages.map((page, i) => (
                 <li key={i}>
-                  <Link to={page.path} className="Header-nav-link">
-                    {page.displayName}
-                  </Link>
+                  <Link to={page.path}>{page.displayName}</Link>
                 </li>
               ))}
             </ul>
