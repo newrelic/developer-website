@@ -10,7 +10,6 @@ const HamburgerMenu = ({ open }) => (
     aria-label="Mobile Menu"
     type="button"
     className={cx('HamburgerMenu', { HamburgerMenu__open: open })}
-    onClick={onclick}
   >
     <div />
     <div />
