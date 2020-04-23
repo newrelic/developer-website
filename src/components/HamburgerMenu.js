@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 import './HamburgerMenu.scss';
 
-const HamburgerMenu = ({ onClick, open }) => (
+const HamburgerMenu = ({ open }) => (
   <button
     aria-expanded={open}
     aria-label="Mobile Menu"
@@ -19,11 +19,10 @@ const HamburgerMenu = ({ onClick, open }) => (
 );
 
 HamburgerMenu.propTypes = {
-  onClick: PropTypes.func.isRequired,
   open: PropTypes.bool,
 };
 
-Header.defaultProps = {
+HamburgerMenu.defaultProps = {
   open: false,
 };
 
