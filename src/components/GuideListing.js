@@ -19,7 +19,14 @@ const GuideListing = ({ heading, description, guides }) => (
 GuideListing.propTypes = {
   heading: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  guides: PropTypes.object.isRequired,
+  guides: PropTypes.arrayOf(
+    PropTypes.shape({
+      minutes: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default GuideListing;
