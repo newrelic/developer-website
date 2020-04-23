@@ -42,7 +42,7 @@ const Header = ({ pages }) => {
             <Link to="/">{'</>'} New Relic Developers</Link>
           </h1>
           <HamburgerMenu
-            onClick={() => setMenuOpen(!menuOpen)}
+            toggle={() => setMenuOpen(!menuOpen)}
             open={menuOpen}
           />
         </div>
