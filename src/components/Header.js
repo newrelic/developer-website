@@ -111,7 +111,7 @@ Header.propTypes = {
 Header.defaultProps = {
   pages: [
     { displayName: 'Collect Data', path: '' },
-    { displayName: 'Explore Data', path: '' },
+    { displayName: 'Explore Data', path: 'explore-data' },
     { displayName: 'Build Apps', path: '' },
     { displayName: 'Automate New Relic', path: '' },
     { displayName: 'Reference Docs', path: '' },

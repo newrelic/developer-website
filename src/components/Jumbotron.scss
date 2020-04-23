@@ -1,0 +1,14 @@
+.jumbotron {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: rgb(202, 202, 245);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 5%;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+}
