@@ -37,17 +37,11 @@ const Header = ({ pages }) => {
       className={cx('Header--main', { 'Header--main__menuOpen': menuOpen })}
     >
       <Container>
-        <div className="Header--main__mobile">
-          <h1 className="Header-title__mobile">
-            <Link to="/">{'</>'} New Relic Developers</Link>
-          </h1>
-          <HamburgerMenu
-            toggle={() => setMenuOpen(!menuOpen)}
-            open={menuOpen}
-          />
-        </div>
-
-        <nav role="navigation" aria-label="New Relic" className="nav--nr">
+        <nav
+          role="navigation"
+          aria-label="New Relic"
+          className="Header-nav--nr"
+        >
           <h3 className="u-hideOnDesktop">Sites</h3>
           <ul>
             <li className="u-hideOnMobile">
@@ -75,7 +69,9 @@ const Header = ({ pages }) => {
           <Link to="/">{'</>'} New Relic Developers</Link>
         </h1>
 
-        <nav role="navigation" aria-label="Main" className="nav--main">
+        <HamburgerMenu toggle={() => setMenuOpen(!menuOpen)} open={menuOpen} />
+
+        <nav role="navigation" aria-label="Main" className="Header-nav--main">
           <h3 className="u-hideOnDesktop">Developers</h3>
           <ul>
             {pages.map((page, i) => (
@@ -86,7 +82,7 @@ const Header = ({ pages }) => {
           </ul>
         </nav>
 
-        <nav className="nav--tools">
+        <nav className="Header-nav--tools">
           <h3 className="u-hideOnDesktop">Tools</h3>
           <ul>
             <li>
