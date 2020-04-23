@@ -1,0 +1,53 @@
+.callToAction {
+  font-size: 0.75rem;
+  height: 300px;
+  width: 300px;
+  margin: 0 0 5%;
+  border-radius: 50%;
+  border: solid 2px rgb(141, 141, 252);
+  background: rgb(173, 173, 248);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin-bottom: 0.5rem;
+  }
+  input {
+    height: 25px;
+    margin: 0;
+    border: none;
+  }
+  button {
+    height: 25px;
+    margin: 0;
+    border: none;
+  }
+  form {
+    margin: 0;
+  }
+  @media (max-width: 500px) {
+    background: none;
+    border-radius: 0;
+    border: none;
+    p {
+      margin-bottom: 0.5rem;
+    }
+    input {
+      width: 70%;
+      margin-right: 0.5rem;
+    }
+    select {
+      width: 100%;
+    }
+    button {
+      width: 100%;
+    }
+    form {
+      width: 100%;
+      button {
+        width: 25%;
+      }
+    }
+  }
+}
