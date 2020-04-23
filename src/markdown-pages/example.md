@@ -1,8 +1,8 @@
 ---
-path: "/docs/1"
-date: "2020-04-20"
-title: "My cool docs"
-template: "example-template"
+path: '/docs/1'
+duration: '30 min'
+title: 'Build an app'
+template: 'GuideTemplate'
 ---
 
 ### This doc is great
