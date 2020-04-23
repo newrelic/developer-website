@@ -20,13 +20,37 @@ header.Header--main {
     }
   }
 
+  h3 {
+    margin: 0;
+    padding: 1rem 0.6rem 0;
+  }
+
   nav.nav--tools {
     position: absolute;
     top: 0;
     right: 0;
+
+    @media (max-width: 760px) {
+      position: static;
+
+      a {
+        display: flex;
+      }
+
+      img {
+        margin-right: 0.5rem;
+      }
+    }
   }
 
-  nav > ul {
+  nav {
+    @media (max-width: 760px) {
+      background-color: var(--color-white);
+      display: none;
+    }
+  }
+
+  nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -38,6 +62,15 @@ header.Header--main {
 
     li:last-child > a {
       padding-right: 0;
+    }
+
+    @media (max-width: 760px) {
+      display: block;
+
+      li:first-child > a,
+      li:last-child > a {
+        padding: 0.6rem;
+      }
     }
   }
 
@@ -66,62 +99,40 @@ header.Header--main {
     }
   }
 
-  .Header--main__mobile,
-  .u-hideOnDesktop {
+  .Header--main__mobile {
     display: none;
-  }
-}
 
-@media screen and (max-width: 760px) {
-  header.Header--main {
-    h1.Header-title,
-    .u-hideOnMobile {
-      display: none;
-    }
-
-    .u-hideOnDesktop {
-      display: block;
-    }
-
-    .Header--main__mobile {
+    @media (max-width: 760px) {
       display: flex;
       justify-content: space-between;
       padding: 0 1rem;
     }
+  }
 
-    h3 {
-      margin: 0;
-      padding: 1rem 0.6rem 0;
+  .u-hideOnDesktop {
+    display: none;
+
+    @media (max-width: 760px) {
+      display: block;
     }
+  }
 
-    nav {
-      background-color: var(--color-white);
+  .u-hideOnMobile {
+    @media (max-width: 760px) {
       display: none;
-
-      ul {
-        display: block;
-      }
-
-      ul li:first-child > a,
-      ul li:last-child > a {
-        padding: 0.6rem;
-      }
     }
+  }
 
-    nav.nav--tools {
-      position: static;
-
-      a {
-        display: flex;
-      }
-
-      img {
-        margin-right: 0.5rem;
-      }
+  h1.Header-title {
+    @media (max-width: 760px) {
+      display: none;
     }
+  }
 
-    &.Header--main__menuOpen nav {
+  &.Header--main__menuOpen nav {
+    @media (max-width: 760px) {
       display: block;
     }
   }
 }
+
