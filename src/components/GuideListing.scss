@@ -1,0 +1,22 @@
+.GuideListing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.GuideListing-heading,
+.GuideListing-description {
+  max-width: 800px;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.GuideListing-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
+  grid-gap: 1rem;
+  grid-auto-rows: minmax(248px, auto);
+  margin-top: 1rem;
+  width: 100%;
+}
