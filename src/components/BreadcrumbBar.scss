@@ -2,4 +2,16 @@
   background: rgb(202, 201, 201);
   height: 50px;
   width: 100%;
+  .u-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.breadcrumbBar-crumbs {
+  margin-left: 1rem;
+}
+
+.breadcrumbBar-duration {
+  margin-right: 1rem;
 }
