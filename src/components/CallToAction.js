@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const CallToAction = ({ text, children }) => {
   return (
     <div className="callToAction">
-      <h3>{text}</h3>
+      {text && <h3>{text}</h3>}
       {children}
     </div>
   );
