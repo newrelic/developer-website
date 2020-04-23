@@ -41,7 +41,10 @@ const Header = ({ pages }) => {
           <h1 className="Header-title__mobile">
             <Link to="/">{'</>'} New Relic Developers</Link>
           </h1>
-          <HamburgerMenu onClick={() => setMenuOpen(!menuOpen)} />
+          <HamburgerMenu
+            onClick={() => setMenuOpen(!menuOpen)}
+            open={menuOpen}
+          />
         </div>
 
         <nav role="navigation" aria-label="New Relic" className="nav--nr">
