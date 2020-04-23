@@ -1,21 +1,24 @@
+import './GuideTile.scss';
+
 import PropTypes from 'prop-types';
 import React from 'react';
-
-// TODO clock icon
-// TODO semantic element for root element here?
-// TODO use path
+import { navigate } from 'gatsby';
 
 const GuideTile = ({ minutes, title, description, path }) => (
-  <div>
-    {Number.isInteger(minutes) && <div>{`${minutes} minutes`}</div>}
-    <h2>{title}</h2>
-    <p>{description}</p>
-    <button type="button">Start the Guide</button>
+  <div className="GuideTile">
+    <div className="GuideTile-timeEstimate">{`${minutes} minutes`}</div>
+    <div className="GuideTile-main">
+      <h2>{title}</h2>
+      <p className="GuideTile-description">{description}</p>
+      <button type="button" onClick={() => navigate(path)}>
+        Start the Guide
+      </button>
+    </div>
   </div>
 );
 
 GuideTile.propTypes = {
-  minutes: PropTypes.number,
+  minutes: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,

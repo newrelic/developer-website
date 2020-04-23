@@ -1,10 +1,9 @@
-import GuidePage from '../components/GuidePage';
+import GuideListing from '../components/GuideListing';
 import Layout from '../components/Layout';
 import { Link } from 'gatsby';
 import React from 'react';
 import SEO from '../components/Seo';
 
-// TODO: Pull this data from a different file
 const heading = 'Explore Data in New Relic';
 
 const description = `Once New Relic has your data, the next step is to query that data to get
@@ -31,7 +30,7 @@ const guides = [
 const ExploreDataPage = () => (
   <Layout>
     <SEO title={heading} />
-    <GuidePage heading={heading} description={description} guides={guides} />
+    <GuideListing heading={heading} description={description} guides={guides} />
     <Link to="/">Go back to the homepage</Link>
   </Layout>
 );
