@@ -6,8 +6,6 @@ import cx from 'classnames';
 import { link } from '../types';
 import './Sidebar.scss';
 
-// TODO: aria
-
 // recursively create navigation
 const renderNav = (page, index) => (
   <li key={index}>
@@ -21,7 +19,7 @@ const renderNav = (page, index) => (
 const Sidebar = ({ pages }) => (
   <aside className="Sidebar">
     <h3>Pages</h3>
-    <nav>
+    <nav role="navigation" aria-label="Sidebar">
       <ul>{pages.map(renderNav)}</ul>
     </nav>
   </aside>
