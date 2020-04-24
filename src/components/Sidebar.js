@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import cx from 'classnames';
 
 import { link } from '../types';
-// TODO: styles
+import './Sidebar.scss';
 
 // TODO: aria
 
 // recursively create navigation
 const renderNav = (page, index) => (
   <li key={index}>
-    <Link to={page.url}>{page.displayName}</Link>
+    <Link to={page.url} className={cx({ 'is-active': page.active })}>
+      {page.displayName}
+    </Link>
     {page.children && <ul>{page.children.map(renderNav)}</ul>}
   </li>
 );
