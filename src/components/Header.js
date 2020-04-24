@@ -1,13 +1,13 @@
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import './Header.scss';
+
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
 
 import Container from './Container';
 import ExternalLink from './ExternalLink';
 import HamburgerMenu from './HamburgerMenu';
-
-import './Header.scss';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 const Header = ({ pages }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,7 +46,10 @@ const Header = ({ pages }) => {
           <ul>
             <li className="u-hideOnMobile">
               <ExternalLink href="//newrelic.com">
-                <img src={data.nrLogo.childImageSharp.fixed.src} />
+                <img
+                  src={data.nrLogo.childImageSharp.fixed.src}
+                  alt="New Relic homepage"
+                />
               </ExternalLink>
             </li>
             <li>
@@ -87,7 +90,10 @@ const Header = ({ pages }) => {
           <ul>
             <li>
               <ExternalLink href="//github.com/newrelic">
-                <img src={data.ghLogo.childImageSharp.fixed.src} />
+                <img
+                  src={data.ghLogo.childImageSharp.fixed.src}
+                  alt="Contribute on GitHub"
+                />
                 <span className="u-hideOnDesktop">Contribute on GitHub</span>
               </ExternalLink>
             </li>
