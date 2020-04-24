@@ -9,7 +9,7 @@ const HamburgerMenu = ({ toggle, open }) => (
     aria-expanded={open}
     aria-label="Mobile Menu"
     type="button"
-    className={cx('HamburgerMenu', { HamburgerMenu__open: open })}
+    className={cx('HamburgerMenu', { 'is-open': open })}
     onClick={() => toggle()}
   >
     <div />

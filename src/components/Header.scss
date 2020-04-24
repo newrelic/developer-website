@@ -119,7 +119,7 @@ header.Header--main {
     }
   }
 
-  &.Header--main__menuOpen nav {
+  &.is-open nav {
     @media (max-width: 760px) {
       background-color: var(--color-white);
       display: block;
