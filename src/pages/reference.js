@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Container from '../components/Container';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 
@@ -57,12 +58,12 @@ const pages = [
 
 const Reference = () => (
   <Layout>
-    <div className="ReferenceTemplate">
+    <Container className="ReferenceTemplate">
       <Sidebar pages={pages} />
       <main className="ReferenceTemplate-content">
         The main page content goes here
       </main>
-    </div>
+    </Container>
   </Layout>
 );
 
