@@ -3,9 +3,10 @@ module.exports = {
   extends: [
     'plugin:@newrelic/eslint-plugin-newrelic/react',
     'plugin:@newrelic/eslint-plugin-newrelic/prettier',
+    'plugin:jsx-a11y/recommended',
   ],
   // https://github.com/yannickcr/eslint-plugin-react#configuration
-  plugins: ['react'],
+  plugins: ['react', 'jsx-a11y'],
   settings: {
     react: {
       version: 'detect',
