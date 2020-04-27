@@ -38,7 +38,7 @@ const Sidebar = ({ pages, isOpen, toggle }) => (
 
 Sidebar.propTypes = {
   toggle: PropTypes.func.isRequired,
-  pages: PropTypes.arrayOf(link),
+  pages: PropTypes.arrayOf(link).isRequired,
   isOpen: PropTypes.bool,
 };
 
