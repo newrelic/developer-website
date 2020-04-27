@@ -33,9 +33,7 @@ const Header = ({ pages }) => {
   `);
 
   return (
-    <header
-      className={cx('Header--main', { 'Header--main__menuOpen': isOpen })}
-    >
+    <header className={cx('Header--main', { 'is-open': isOpen })}>
       <Container>
         <nav
           role="navigation"
