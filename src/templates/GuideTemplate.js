@@ -11,10 +11,17 @@ export default function GuideTemplate({
 }) {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
+
   return (
     <Layout>
       <BreadcrumbBar
-        crumbs={['Build Apps', 'Build an App']}
+        crumbs={[
+          {
+            name: frontmatter.category,
+            path: `/${frontmatter.category.toLowerCase().split(' ').join('-')}`,
+          },
+          { name: frontmatter.title, path: frontmatter.path },
+        ]}
         duration={frontmatter.duration}
       />
       <Container>
@@ -39,6 +46,7 @@ export const pageQuery = graphql`
         duration
         path
         title
+        category
       }
     }
   }

@@ -1,13 +1,16 @@
 ---
-path: '/docs/1'
+path: '/guides/graphql-api'
 duration: '30 min'
-title: 'Guide to build an app'
+title: 'GraphQL API'
 template: 'GuideTemplate'
+category: 'Explore Data'
 ---
 
 ##Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-Vivamus sem dui, posuere et mattis eu, `laoreet eu sapien. Donec congue, leo vel cursus scelerisque, odio lacus gravida felis, ac finibus dui purus eget mi. Vivamus efficitur massa non nunc pharetra, ac aliquet purus condimentum. In egestas a velit non finibus. Duis tincidunt velit et fermentum porta. Duis pulvinar nunc at diam maximus mollis ut`porta nisi`. Nulla venenatis tortor dolor.
+Vivamus sem dui, posuere et mattis eu,
+`laoreet eu sapien. Donec congue, leo vel cursus scelerisque, odio lacus gravida felis, ac finibus dui purus eget mi. Vivamus efficitur massa non nunc pharetra, ac aliquet purus condimentum. In egestas a velit non finibus. Duis tincidunt velit et fermentum porta. Duis pulvinar nunc at diam maximus mollis ut`
+porta nisi`. Nulla venenatis tortor dolor.
 In tempus placerat neque quis efficitur. Sed augue massa,
 posuere in molestie non, efficitur iaculis nibh. In nulla nibh, congue ut dui at, tincidunt fermentum libero. Quisque nec justo vitae neque porttitor suscipit. Sed euismod odio vitae risus imperdiet, sed hendrerit nunc maximus. Cras pretium hendrerit ante vitae pulvinar.
 

@@ -13,10 +13,15 @@ const BreadcrumbBar = ({ crumbs, duration }) => {
             index > 0 ? (
               <span>
                 {' '}
-                > <Link key={index}>{crumb}</Link>
+                >{' '}
+                <Link key={index} to={crumb.path}>
+                  {crumb.name}
+                </Link>
               </span>
             ) : (
-              <Link key={index}>{crumb}</Link>
+              <Link key={index} to={crumb.path}>
+                {crumb.name}
+              </Link>
             )
           )}
         </div>
@@ -27,7 +32,12 @@ const BreadcrumbBar = ({ crumbs, duration }) => {
 };
 
 BreadcrumbBar.propTypes = {
-  crumbs: PropTypes.array,
+  crumbs: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      path: PropTypes.string,
+    })
+  ),
   duration: PropTypes.string,
 };
 
