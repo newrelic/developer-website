@@ -1,16 +1,16 @@
-import './Header.scss';
-
-import { Link, graphql, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Link, graphql, useStaticQuery } from 'gatsby';
+import cx from 'classnames';
 
+import { link } from '../types';
 import Container from './Container';
 import ExternalLink from './ExternalLink';
 import HamburgerMenu from './HamburgerMenu';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import './Header.scss';
 
 const Header = ({ pages }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   // NOTE: we may want to abstract this
   const data = useStaticQuery(graphql`
@@ -33,7 +33,7 @@ const Header = ({ pages }) => {
   `);
 
   return (
-    <header className={cx('Header--main', { 'is-open': menuOpen })}>
+    <header className={cx('Header--main', { 'is-open': isOpen })}>
       <Container>
         <nav
           role="navigation"
@@ -70,14 +70,14 @@ const Header = ({ pages }) => {
           <Link to="/">{'</>'} New Relic Developers</Link>
         </h1>
 
-        <HamburgerMenu toggle={() => setMenuOpen(!menuOpen)} open={menuOpen} />
+        <HamburgerMenu toggle={() => setIsOpen(!isOpen)} isOpen={isOpen} />
 
         <nav role="navigation" aria-label="Main" className="Header-nav--main">
           <h3 className="u-hideOnDesktop">Developers</h3>
           <ul>
             {pages.map((page, i) => (
               <li key={i}>
-                <Link to={page.path}>{page.displayName}</Link>
+                <Link to={page.url}>{page.displayName}</Link>
               </li>
             ))}
           </ul>
@@ -103,22 +103,16 @@ const Header = ({ pages }) => {
 };
 
 Header.propTypes = {
-  pages: PropTypes.arrayOf(
-    PropTypes.shape({
-      displayName: PropTypes.string.isRequired,
-      path: PropTypes.string.isRequired,
-      active: PropTypes.bool,
-    })
-  ),
+  pages: PropTypes.arrayOf(link),
 };
 
 Header.defaultProps = {
   pages: [
-    { displayName: 'Collect Data', path: '' },
-    { displayName: 'Explore Data', path: 'explore-data' },
-    { displayName: 'Build Apps', path: '' },
-    { displayName: 'Automate New Relic', path: '' },
-    { displayName: 'Reference Docs', path: '' },
+    { displayName: 'Collect Data', url: '' },
+    { displayName: 'Explore Data', url: 'explore-data' },
+    { displayName: 'Build Apps', url: '' },
+    { displayName: 'Automate New Relic', url: '' },
+    { displayName: 'Reference Docs', url: '' },
   ],
 };
 
