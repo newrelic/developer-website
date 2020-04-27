@@ -16,9 +16,20 @@ const renderNav = (page, index) => (
   </li>
 );
 
-const Sidebar = ({ pages }) => (
-  <aside className="Sidebar">
-    <h3>Pages</h3>
+const Sidebar = ({ pages, isOpen, toggle }) => (
+  <aside className={cx('Sidebar', { 'is-open': isOpen })}>
+    <div className="Sidebar-top">
+      <h3>Pages</h3>
+      <button
+        aria-expanded={isOpen}
+        className="Sidebar-toggle"
+        aria-label="Main Menu Toggle"
+        type="button"
+        onClick={() => toggle()}
+      >
+        {isOpen ? 'close' : 'open'}
+      </button>
+    </div>
     <nav role="navigation" aria-label="Sidebar">
       <ul>{pages.map(renderNav)}</ul>
     </nav>
@@ -26,7 +37,13 @@ const Sidebar = ({ pages }) => (
 );
 
 Sidebar.propTypes = {
+  toggle: PropTypes.func.isRequired,
   pages: PropTypes.arrayOf(link),
+  isOpen: PropTypes.bool,
+};
+
+Sidebar.defaultProps = {
+  isOpen: false,
 };
 
 export default Sidebar;

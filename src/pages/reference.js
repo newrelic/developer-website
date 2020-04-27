@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Container from '../components/Container';
 import Layout from '../components/Layout';
@@ -56,15 +56,23 @@ const pages = [
   },
 ];
 
-const Reference = () => (
-  <Layout>
-    <Container className="ReferenceTemplate">
-      <Sidebar pages={pages} />
-      <main className="ReferenceTemplate-content">
-        The main page content goes here
-      </main>
-    </Container>
-  </Layout>
-);
+const Reference = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <Layout>
+      <Container className="ReferenceTemplate">
+        <Sidebar
+          pages={pages}
+          isOpen={isOpen}
+          toggle={() => setIsOpen(!isOpen)}
+        />
+        <main className="ReferenceTemplate-content">
+          The main page content goes here
+        </main>
+      </Container>
+    </Layout>
+  );
+};
 
 export default Reference;
