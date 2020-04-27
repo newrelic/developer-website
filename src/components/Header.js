@@ -10,7 +10,7 @@ import HamburgerMenu from './HamburgerMenu';
 import './Header.scss';
 
 const Header = ({ pages }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   // NOTE: we may want to abstract this
   const data = useStaticQuery(graphql`
@@ -34,7 +34,7 @@ const Header = ({ pages }) => {
 
   return (
     <header
-      className={cx('Header--main', { 'Header--main__menuOpen': menuOpen })}
+      className={cx('Header--main', { 'Header--main__menuOpen': isOpen })}
     >
       <Container>
         <nav
@@ -72,7 +72,7 @@ const Header = ({ pages }) => {
           <Link to="/">{'</>'} New Relic Developers</Link>
         </h1>
 
-        <HamburgerMenu toggle={() => setMenuOpen(!menuOpen)} open={menuOpen} />
+        <HamburgerMenu toggle={() => setIsOpen(!isOpen)} isOpen={isOpen} />
 
         <nav role="navigation" aria-label="Main" className="Header-nav--main">
           <h3 className="u-hideOnDesktop">Developers</h3>
