@@ -6,7 +6,7 @@ import './HamburgerMenu.scss';
 
 const HamburgerMenu = ({ toggle, isOpen }) => (
   <button
-    aria-expanded={open}
+    aria-expanded={isOpen}
     aria-label="Mobile Menu"
     type="button"
     className={cx('HamburgerMenu', { HamburgerMenu__open: isOpen })}
