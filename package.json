@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
+    "classnames": "^2.2.6",
     "gatsby": "^2.20.25",
     "gatsby-image": "^2.3.4",
     "gatsby-plugin-manifest": "^2.3.5",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@newrelic/eslint-plugin-newrelic": "^0.3.0",
     "eslint": "^6.8.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "husky": "^4.2.5",
     "prettier": "2.0.4"
   },
