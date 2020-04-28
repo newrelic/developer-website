@@ -11,7 +11,7 @@ export default function GuideTemplate({
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
 
-  //TODO use graphql to fetch these
+  // TODO use graphql to fetch these
   const crumbs = [
     { name: 'Explore Data', path: '/explore-data' },
     { name: 'GraphQL API', path: '/guides/graphql-api' },
@@ -42,7 +42,6 @@ export const pageQuery = graphql`
         duration
         path
         title
-        category
       }
     }
   }

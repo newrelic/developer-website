@@ -8,23 +8,13 @@ const BreadcrumbBar = ({ crumbs, duration }) => {
   return (
     <div className="breadcrumbBar">
       <Container>
-        <div className="breadcrumbBar-crumbs">
-          {crumbs.map((crumb, index) =>
-            index > 0 ? (
-              <span>
-                {' '}
-                >{' '}
-                <Link key={index} to={crumb.path}>
-                  {crumb.name}
-                </Link>
-              </span>
-            ) : (
-              <Link key={index} to={crumb.path}>
-                {crumb.name}
-              </Link>
-            )
-          )}
-        </div>
+        <ul className="breadcrumbBar-crumbs">
+          {crumbs.map((crumb, index) => (
+            <li key={index}>
+              <Link to={crumb.path}>{crumb.name}</Link>
+            </li>
+          ))}
+        </ul>
         <h3 className="breadcrumbBar-duration">{duration}</h3>
       </Container>
     </div>
