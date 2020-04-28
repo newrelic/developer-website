@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
 import BreadcrumbBar from '../components/BreadcrumbBar';
 import Container from '../components/Container';
-import './GuideTemplate.scss';
 
 export default function GuideTemplate({
   data, // this prop will be injected by the GraphQL query below.
@@ -12,18 +11,15 @@ export default function GuideTemplate({
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
 
+  //TODO use graphql to fetch these
+  const crumbs = [
+    { name: 'Explore Data', path: '/explore-data' },
+    { name: 'GraphQL API', path: '/guides/graphql-api' },
+  ];
+
   return (
     <Layout>
-      <BreadcrumbBar
-        crumbs={[
-          {
-            name: frontmatter.category,
-            path: `/${frontmatter.category.toLowerCase().split(' ').join('-')}`,
-          },
-          { name: frontmatter.title, path: frontmatter.path },
-        ]}
-        duration={frontmatter.duration}
-      />
+      <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
       <Container>
         <div className="guideTemplate-container">
           <div>
