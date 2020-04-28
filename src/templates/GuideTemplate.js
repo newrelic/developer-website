@@ -13,8 +13,8 @@ export default function GuideTemplate({
 
   // TODO use graphql to fetch these
   const crumbs = [
-    { name: 'Explore Data', path: '/explore-data' },
-    { name: 'GraphQL API', path: '/guides/graphql-api' },
+    { displayName: 'Explore Data', url: '/explore-data' },
+    { displayName: 'GraphQL API', url: '/guides/graphql-api' },
   ];
 
   return (

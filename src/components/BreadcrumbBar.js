@@ -12,7 +12,7 @@ const BreadcrumbBar = ({ crumbs, duration }) => {
         <ul className="breadcrumbBar-crumbs">
           {crumbs.map((crumb, index) => (
             <li key={index}>
-              <Link to={crumb.path}>{crumb.name}</Link>
+              <Link to={crumb.url}>{crumb.displayName}</Link>
             </li>
           ))}
         </ul>
