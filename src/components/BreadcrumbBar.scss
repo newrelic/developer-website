@@ -1,0 +1,28 @@
+.breadcrumbBar {
+  background: rgb(202, 201, 201);
+  height: 50px;
+  width: 100%;
+
+  .u-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.breadcrumbBar-crumbs {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    color: var(--color-black);
+    text-decoration: none;
+  }
+
+  li:not(:last-child):after {
+    content: '>';
+    margin: 0 0.5rem;
+  }
+}
