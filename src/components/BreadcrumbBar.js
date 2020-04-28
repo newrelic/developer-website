@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import './BreadcrumbBar.scss';
 import Container from './Container';
 import PropTypes from 'prop-types';
+import { link } from '../types';
 
 const BreadcrumbBar = ({ crumbs, duration }) => {
   return (
@@ -22,12 +23,7 @@ const BreadcrumbBar = ({ crumbs, duration }) => {
 };
 
 BreadcrumbBar.propTypes = {
-  crumbs: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      path: PropTypes.string,
-    })
-  ),
+  crumbs: PropTypes.arrayOf(link),
   duration: PropTypes.string,
 };
 
