@@ -10,7 +10,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           node {
             frontmatter {
               path
-              template
+              templateKey
             }
           }
         }
@@ -27,7 +27,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.path,
-      component: path.resolve(`src/templates/${node.frontmatter.template}.js`),
+      component: path.resolve(
+        `src/templates/${node.frontmatter.templateKey}.js`
+      ),
       context: {}, // additional data can be passed via context
     });
   });

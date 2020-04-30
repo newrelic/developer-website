@@ -2,7 +2,7 @@
 path: '/guides/graphql-api'
 duration: '30 min'
 title: 'GraphQL API'
-template: 'GuideTemplate'
+templateKey: 'GuideTemplate'
 ---
 
 ##Lorem ipsum dolor sit amet, consectetur adipiscing elit.

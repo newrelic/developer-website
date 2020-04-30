@@ -1,0 +1,34 @@
+backend:
+  name: github
+  branch: liz/cms-poc
+  repo: newrelic/developer-website
+  site_domain: cms.netlify.com
+  base_url: https://api.netlify.com
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
+
+publish_mode: editorial_workflow
+media_folder: src/images
+public_folder: /img
+
+collections:
+  - name: 'guide'
+    label: 'Guide'
+    folder: 'src/markdown-pages'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'GuideTemplate',
+        }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Duration', name: 'duration', widget: 'string' }
+      - { label: 'Path', name: 'path', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
