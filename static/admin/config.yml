@@ -2,8 +2,8 @@ backend:
   name: github
   branch: liz/cms-poc
   repo: newrelic/developer-website
-  site_domain: cms.netlify.com
   base_url: https://api.netlify.com
+  site_domain: https://pr-22.dlyi50rq9kt6c.amplifyapp.com/
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'
