@@ -1,6 +1,6 @@
 ---
 templateKey: GuideTemplate
-parent: foo
+parent: foo/baz
 title: bar
 duration: "0"
 path: /tests/foobar
