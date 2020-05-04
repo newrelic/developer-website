@@ -6,3 +6,4 @@ path: /guides/test2
 ---
 ### wowowow
 this is `amazing`
+<script>alert("hey")</script>
