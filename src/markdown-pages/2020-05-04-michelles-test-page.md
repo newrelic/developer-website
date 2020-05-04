@@ -2,7 +2,7 @@
 templateKey: GuideTemplate
 title: Michelle's test page
 duration: 30 minutes
-path: /collections/guide
+path: /guides/michelles_test
 ---
 Add a little `code snippet`.
 
