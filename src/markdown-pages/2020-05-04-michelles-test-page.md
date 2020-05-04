@@ -2,7 +2,7 @@
 templateKey: GuideTemplate
 title: Michelle's test page
 duration: 30 minutes
-path: /src/markdown-pages
+path: /markdown-pages
 ---
 Add a little `code snippet`.
 
