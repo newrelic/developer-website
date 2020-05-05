@@ -17,18 +17,15 @@ I created this table in markdown.
 
 Here's what it looks like if you make an HTML table:
 
-
 <table>
 
 <thead>
 
 <tr>
 
-<th style="width:200px"></th>
+<th style="width:200px">First heading</th>
 
 <th>Test table</th>
-<th>Another heading</th>
-
 </tr>
 
 </thead>
@@ -47,8 +44,6 @@ Here's what it looks like if you make an HTML table:
 
 </table>
 
-
-
 ## Code section
 
 Add a code block:
@@ -57,3 +52,18 @@ Add a code block:
 some json: It's really cool that you can view the colde in a mode of a language
 How do you create different "tabs" for different languages?
 ```
+
+here's a clamshell:
+<dl class="clamshell-list">
+
+<dt id="clamshell-1">Clamshell 1</dt>
+<dd>
+    <p>This is the first example clamshell.</p>
+</dd>
+
+<dt id="clamshell-2">Clamshell 2</dt>
+<dd>
+    <p>This is the second example clamshell.</p>
+</dd>
+
+</dl>
