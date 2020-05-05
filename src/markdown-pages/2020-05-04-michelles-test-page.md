@@ -69,6 +69,6 @@ here's a clamshell:
 
 </dl>
 
-here's some regular text. 
+here's some regular text. create a link to [developer site](developer.newrelic.com).
 
 ![](/img/NewRelic-logo.png "new relic logo.")
