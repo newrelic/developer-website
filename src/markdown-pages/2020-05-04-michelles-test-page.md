@@ -54,6 +54,7 @@ How do you create different "tabs" for different languages?
 ```
 
 here's a clamshell:
+
 <dl class="clamshell-list">
 
 <dt id="clamshell-1">Clamshell 1</dt>
@@ -67,3 +68,7 @@ here's a clamshell:
 </dd>
 
 </dl>
+
+here's some regular text. 
+
+![](/img/NewRelic-logo.png "new relic logo.")
