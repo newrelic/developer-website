@@ -5,6 +5,7 @@ header.Header--main {
     var(--color-neutrals-100) 30px,
     var(--color-white) 30px
   );
+  border-bottom: 1px solid var(--color-neutrals-100);
 
   .u-container {
     display: grid;
@@ -50,7 +51,7 @@ header.Header--main {
     grid-area: nr;
   }
 
-  .Header-nav--nr a:not(.Header-nav-logo) {
+  .Header-nav--nr a:not(.logo) {
     color: var(--color-neutrals-600);
     font-size: 0.7em;
     padding: 4px 9px;
@@ -63,14 +64,17 @@ header.Header--main {
     }
   }
 
-  .Header-nav--nr .Header-nav-logo {
+  .logo {
+    padding: 0;
+    background-size: contain;
+  }
+
+  .Header-nav--nr .Header-nav-logo--nr {
     width: 79px;
     height: 15px;
-    padding: 0;
     margin: 0.5em;
     margin-right: 1.5em;
     background-image: url('../images/NewRelic-logo.png');
-    background-size: contain;
   }
 
   .Header-nav--tools {
@@ -82,14 +86,12 @@ header.Header--main {
   }
 
   // TODO: fix this on mobile
-  .Header-nav--tools .Header-nav-github {
+  .Header-nav--tools .Header-nav-logo--github {
     width: 1.1em;
     height: 1.1em;
-    padding: 0;
     margin: 0.4em;
     opacity: 0.6;
     background-image: url('../images/GitHub-logo.png');
-    background-size: contain;
 
     &:hover {
       opacity: 1;

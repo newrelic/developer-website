@@ -23,7 +23,10 @@ const Header = ({ pages }) => {
           <h3 className="u-hideOnDesktop">Sites</h3>
           <ul>
             <li className="u-hideOnMobile">
-              <ExternalLink className="Header-nav-logo" href="//newrelic.com" />
+              <ExternalLink
+                className="logo Header-nav-logo--nr"
+                href="//newrelic.com"
+              />
             </li>
             <li>
               <Link to="/" className="is-active">
@@ -65,7 +68,7 @@ const Header = ({ pages }) => {
           <ul>
             <li>
               <ExternalLink
-                className="Header-nav-github"
+                className="logo Header-nav-logo--github"
                 href="//github.com/newrelic"
               >
                 <span className="u-hideOnDesktop">Contribute on GitHub</span>
