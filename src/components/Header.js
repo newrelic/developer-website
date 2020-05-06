@@ -90,8 +90,8 @@ Header.defaultProps = {
     { displayName: 'Collect Data', url: '' },
     { displayName: 'Explore Data', url: 'explore-data' },
     { displayName: 'Build Apps', url: '' },
-    { displayName: 'Automate New Relic', url: '' },
-    { displayName: 'Reference Docs', url: '' },
+    { displayName: 'Automate Workflow', url: '' },
+    { displayName: 'Developer Docs', url: '' },
   ],
 };
 
