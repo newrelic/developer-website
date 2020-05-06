@@ -25,6 +25,13 @@ const guides = [
       'Get data out to New Relic using the gold standard in API technology.',
     path: 'guides/rest-api',
   },
+  {
+    minutes: 5,
+    title: 'FILLER',
+    description:
+      'Get data out to New Relic using the gold standard in API technology.',
+    path: 'guides/rest-api',
+  },
 ];
 
 const ExploreDataPage = () => (

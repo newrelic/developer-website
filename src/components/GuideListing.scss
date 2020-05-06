@@ -2,21 +2,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2.5rem;
+  margin: 2.5rem 3rem;
 }
 
-.GuideListing-heading,
+.GuideListing-heading {
+  font-family: var(--secondary-font-family);
+  font-weight: 400;
+}
+
 .GuideListing-description {
   max-width: 800px;
   text-align: center;
   margin-bottom: 1.5rem;
+  color: var(--color-neutrals-500);
 }
 
 .GuideListing-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   grid-gap: 1rem;
   grid-auto-rows: minmax(248px, auto);
-  margin-top: 1rem;
+  align-items: center;
+  margin: 7rem;
   width: 100%;
+
+  &:before {
+    position: absolute;
+    left: 0;
+    content: '';
+    height: 440px;
+    background-color: var(--color-neutrals-100);
+    width: 100%;
+    transform: skewY(-2deg) translateY(-58px);
+    z-index: -1;
+  }
 }
