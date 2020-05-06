@@ -47,7 +47,7 @@ const Header = ({ pages }) => {
         </nav>
 
         <h1 className="Header-title">
-          <Link to="/">{'</>'} New Relic Developers</Link>
+          <Link to="/" className="logo Header-title-logo" />
         </h1>
 
         <HamburgerMenu toggle={() => setIsOpen(!isOpen)} isOpen={isOpen} />

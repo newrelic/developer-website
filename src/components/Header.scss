@@ -9,7 +9,7 @@ header.Header--main {
 
   .u-container {
     display: grid;
-    grid-template-areas: 'nr tools' 'title title' 'main main';
+    grid-template-areas: 'nr tools' 'title main';
 
     @media (max-width: 760px) {
       grid-template-columns: 1fr 3rem;
@@ -17,23 +17,16 @@ header.Header--main {
     }
   }
 
+  // TODO: fix this on mobile
   .Header-title {
     grid-area: title;
-    font-size: 1.8rem;
     margin: 0;
+    margin-top: 0.5rem;
 
-    a {
-      padding-left: 0;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-
-    @media (max-width: 760px) {
-      a {
-        padding-left: 1rem;
-      }
+    .Header-title-logo {
+      width: 247px;
+      height: 64px;
+      background-image: url('../images/developers-logo.svg');
     }
   }
 
@@ -53,7 +46,7 @@ header.Header--main {
 
   .Header-nav--nr a:not(.logo) {
     color: var(--color-neutrals-600);
-    font-size: 0.7em;
+    font-size: 0.7rem;
     padding: 4px 9px;
     line-height: 22px;
 
@@ -67,13 +60,14 @@ header.Header--main {
   .logo {
     padding: 0;
     background-size: contain;
+    background-repeat: no-repeat;
   }
 
   .Header-nav--nr .Header-nav-logo--nr {
     width: 79px;
     height: 15px;
-    margin: 0.5em;
-    margin-right: 1.5em;
+    margin: 0.5rem;
+    margin-right: 1.5rem;
     background-image: url('../images/NewRelic-logo.png');
   }
 
@@ -87,9 +81,9 @@ header.Header--main {
 
   // TODO: fix this on mobile
   .Header-nav--tools .Header-nav-logo--github {
-    width: 1.1em;
-    height: 1.1em;
-    margin: 0.4em;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin: 0.4rem;
     opacity: 0.6;
     background-image: url('../images/GitHub-logo.png');
 
