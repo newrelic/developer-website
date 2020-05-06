@@ -1,5 +1,10 @@
 header.Header--main {
-  background-color: #d7e6e8;
+  // TODO: fix this for mobile
+  background-image: linear-gradient(
+    var(--color-neutrals-100),
+    var(--color-neutrals-100) 30px,
+    var(--color-white) 30px
+  );
 
   .u-container {
     display: grid;
@@ -45,11 +50,49 @@ header.Header--main {
     grid-area: nr;
   }
 
+  .Header-nav--nr a:not(.Header-nav-logo) {
+    color: var(--color-neutrals-600);
+    font-size: 0.7em;
+    padding: 4px 9px;
+    line-height: 22px;
+
+    &:hover,
+    &.is-active {
+      background-color: var(--color-neutrals-200);
+      color: var(--color-neutrals-700);
+    }
+  }
+
+  .Header-nav--nr .Header-nav-logo {
+    width: 79px;
+    height: 15px;
+    padding: 0;
+    margin: 0.5em;
+    margin-right: 1.5em;
+    background-image: url('../images/NewRelic-logo.png');
+    background-size: contain;
+  }
+
   .Header-nav--tools {
     grid-area: tools;
 
     ul {
       justify-content: flex-end;
+    }
+  }
+
+  // TODO: fix this on mobile
+  .Header-nav--tools .Header-nav-github {
+    width: 1.1em;
+    height: 1.1em;
+    padding: 0;
+    margin: 0.4em;
+    opacity: 0.6;
+    background-image: url('../images/GitHub-logo.png');
+    background-size: contain;
+
+    &:hover {
+      opacity: 1;
     }
   }
 
@@ -67,11 +110,6 @@ header.Header--main {
     padding: 0.6rem;
     display: inline-block;
     display: flex;
-
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
   }
 
   h3 {
