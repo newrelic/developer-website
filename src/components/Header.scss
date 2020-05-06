@@ -9,7 +9,7 @@ header.Header--main {
 
   .u-container {
     display: grid;
-    grid-template-areas: 'nr tools' 'title main';
+    grid-template-areas: 'nr nr tools' 'title main main';
 
     @media (max-width: 760px) {
       grid-template-columns: 1fr 3rem;
@@ -26,6 +26,7 @@ header.Header--main {
     .Header-title-logo {
       width: 247px;
       height: 64px;
+      margin-right: 1rem;
       background-image: url('../images/developers-logo.svg');
     }
   }
@@ -94,16 +95,27 @@ header.Header--main {
 
   .Header-nav--main {
     grid-area: main;
+    align-self: center;
 
     ul {
       justify-content: flex-end;
     }
   }
 
-  a {
-    color: #000;
-    text-decoration: none;
+  .Header-nav--main a {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
     padding: 0.6rem;
+    color: var(--color-neutrals-900);
+
+    &:hover {
+      color: var(--color-brand-900);
+    }
+  }
+
+  a {
+    text-decoration: none;
     display: inline-block;
     display: flex;
   }
