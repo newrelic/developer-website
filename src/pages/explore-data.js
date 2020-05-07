@@ -4,32 +4,30 @@ import { Link } from 'gatsby';
 import React from 'react';
 import SEO from '../components/Seo';
 
-const heading = 'Explore Data in New Relic';
+const heading = 'Get Data into New Relic';
 
-const description = `Once New Relic has your data, the next step is to query that data to get
-what you need, when you need it. New Relic One provides modern APIs to
-give you full control over how data is queried.`;
+const description =
+  'Instrument your applications and infrastructure to start collecting monitoring data';
 
 const guides = [
   {
-    minutes: 15,
-    title: 'GraphQL API',
-    description:
-      'Learn how to fetch precisely the data your application needs. No more, no less.',
-    path: 'guides/graphql-api',
+    minutes: 5,
+    title: 'Full Stack Monitoring',
+    description: 'Get data into New Relic using your existing instrumentation.',
+    path: '',
   },
   {
-    minutes: 5,
-    title: 'REST API',
+    minutes: 10,
+    title: 'Customized Agents',
     description:
-      'Get data out to New Relic using the gold standard in API technology.',
-    path: 'guides/rest-api',
+      'Extend the New Relic agents you already have with custom events and attributes.',
+    path: '',
   },
   {
-    minutes: 5,
-    title: 'FILLER',
+    minutes: 30,
+    title: 'Open Telemetry',
     description:
-      'Get data out to New Relic using the gold standard in API technology.',
+      'Learn to use the open standard for data collection with New Relic.',
     path: 'guides/rest-api',
   },
 ];
