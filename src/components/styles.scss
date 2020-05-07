@@ -1,11 +1,33 @@
 /*-- Imports --*/
-// NOTE: fonts go here
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://use.typekit.net/pnb6qnj.css');
+@import url('https://fonts.googleapis.com/css2?family=Ovo&display=swap');
 
 /*-- CSS Variables --*/
 :root {
   --color-black: #000;
   --color-white: #fff;
+  --color-neutrals-050: #fafbfb;
+  --color-neutrals-100: #f4f5f5;
+  --color-neutrals-200: #edeeee;
+  --color-neutrals-300: #e3e4e4;
+  --color-neutrals-400: #d5d7d7;
+  --color-neutrals-500: #b9bdbd;
+  --color-neutrals-600: #8e9494;
+  --color-neutrals-700: #464e4e;
+  --color-neutrals-800: #2a3434;
+  --color-neutrals-900: #000d0d;
+
+  --color-brand-050: #f7ffff;
+  --color-brand-100: #edffff;
+  --color-brand-400: #70ccd2;
+  --color-brand-800: #007e8a;
+  --color-brand-900: #005054;
+
   --color-tile-background: rgb(215, 210, 233);
+  --primary-font-family: 'open sans', sans-serif;
+  --secondary-font-family: 'effra', sans-serif;
+  --tertiary-font-family: 'Ovo', serif;
 }
 
 /*-- Reset --*/
@@ -18,6 +40,7 @@ html {
 body {
   margin: 0;
   font-size: 16px;
+  font-family: var(--primary-font-family);
   color: var(--color-black);
   background-color: var(--color-white);
 }
@@ -37,6 +60,7 @@ img {
 p {
   margin: 0;
   margin-top: 8px;
+  color: var(--color-neutrals-700);
 }
 
 h1,
@@ -47,6 +71,7 @@ h5,
 h6 {
   margin-bottom: 8px;
   font-weight: 600;
+  color: var(--color-neutrals-800);
 }
 
 button,
@@ -65,4 +90,14 @@ button,
 [type='reset'],
 [type='submit'] {
   -webkit-appearance: button;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  color: #fff;
+  background-color: var(--color-brand-800);
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  font-family: var(--primary-font-family);
 }
