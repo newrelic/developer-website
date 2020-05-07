@@ -1,6 +1,5 @@
 import GuideListing from '../components/GuideListing';
 import Layout from '../components/Layout';
-import { Link } from 'gatsby';
 import React from 'react';
 import SEO from '../components/Seo';
 
