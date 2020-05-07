@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 
-const ExternalLink = ({ href, className, children }) => (
+const ExternalLink = ({ href, children }) => (
   <a
     href={href}
     target="_blank"
-    className={cx('ExternalLink', className)}
+    className="ExternalLink"
     rel="noopener noreferrer"
   >
     {children}
@@ -15,8 +14,7 @@ const ExternalLink = ({ href, className, children }) => (
 
 ExternalLink.propTypes = {
   href: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
 export default ExternalLink;
