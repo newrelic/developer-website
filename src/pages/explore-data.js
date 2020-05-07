@@ -36,7 +36,6 @@ const ExploreDataPage = () => (
   <Layout>
     <SEO title={heading} />
     <GuideListing heading={heading} description={description} guides={guides} />
-    <Link to="/">Go back to the homepage</Link>
   </Layout>
 );
 
