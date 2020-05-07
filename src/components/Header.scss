@@ -1,5 +1,4 @@
 header.Header--main {
-  // TODO: fix this for mobile
   background-image: linear-gradient(
     var(--color-neutrals-100),
     var(--color-neutrals-100) 30px,
@@ -7,17 +6,24 @@ header.Header--main {
   );
   border-bottom: 1px solid var(--color-neutrals-100);
 
+  @media (max-width: 760px) {
+    background-image: linear-gradient(
+      var(--color-white),
+      var(--color-white) 4.5rem,
+      var(--color-neutrals-100) 4.5rem
+    );
+  }
+
   .u-container {
     display: grid;
     grid-template-areas: 'nr nr tools' 'title main main';
 
     @media (max-width: 760px) {
-      grid-template-columns: 1fr 3rem;
+      grid-template-columns: 1fr 4rem;
       grid-template-areas: 'title menu' 'nr nr' 'main main' 'tools tools';
     }
   }
 
-  // TODO: fix this on mobile
   .Header-title {
     grid-area: title;
     margin: 0;
@@ -51,10 +57,21 @@ header.Header--main {
     padding: 4px 9px;
     line-height: 22px;
 
+    @media (max-width: 760px) {
+      background: none;
+      color: var(--color-neutrals-900);
+      font-size: 0.9rem;
+    }
+
     &:hover,
     &.is-active {
       background-color: var(--color-neutrals-200);
       color: var(--color-neutrals-700);
+
+      @media (max-width: 760px) {
+        background: none;
+        color: var(--color-neutrals-900);
+      }
     }
   }
 
@@ -80,7 +97,6 @@ header.Header--main {
     }
   }
 
-  // TODO: fix this on mobile
   .Header-nav--tools .Header-nav-logo--github {
     width: 1.1rem;
     height: 1.1rem;
@@ -90,6 +106,14 @@ header.Header--main {
 
     &:hover {
       opacity: 1;
+    }
+
+    @media (max-width: 760px) {
+      width: 100%;
+      padding-left: 1.5rem;
+      opacity: 1;
+      color: var(--color-neutrals-900);
+      margin-bottom: 1rem;
     }
   }
 
@@ -109,6 +133,12 @@ header.Header--main {
     padding: 0.6rem;
     color: var(--color-neutrals-900);
 
+    @media (max-width: 760px) {
+      font-weight: 400;
+      padding: 4px 9px;
+      line-height: 22px;
+    }
+
     &:hover {
       color: var(--color-brand-900);
     }
@@ -122,7 +152,7 @@ header.Header--main {
 
   h3 {
     margin: 0;
-    padding: 1rem 0.6rem 0;
+    padding: 1rem 0.6rem 0.4rem;
   }
 
   ul {
@@ -142,9 +172,8 @@ header.Header--main {
     @media (max-width: 760px) {
       display: block;
 
-      li:first-child > a,
-      li:last-child > a {
-        padding: 0.6rem;
+      li:first-child > a {
+        padding-left: 0.6rem;
       }
     }
   }
@@ -167,7 +196,6 @@ header.Header--main {
 
   &.is-open nav {
     @media (max-width: 760px) {
-      background-color: var(--color-white);
       display: block;
     }
   }
