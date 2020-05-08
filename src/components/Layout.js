@@ -6,11 +6,11 @@ import Header from './Header';
 import './styles.scss';
 
 const Layout = ({ children }) => (
-  <>
+  <div className="Layout">
     <Header />
     <main>{children}</main>
     <Footer />
-  </>
+  </div>
 );
 
 Layout.propTypes = {
