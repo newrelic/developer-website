@@ -27,6 +27,7 @@
 
   .Footer-logo {
     width: 195px;
+    min-width: 195px;
     height: 45px;
     display: inline-block;
     background-image: url('../images/developers-logo-footer.svg');
@@ -51,11 +52,16 @@
     margin: 0;
     padding: 0;
 
+    li {
+      text-align: center;
+    }
+
     a {
       color: var(--footer-text-color);
       text-decoration: none;
       font-size: 0.9rem;
       padding: 0.5rem 0 0.5rem 1rem;
+      display: inline-block;
     }
 
     a:hover {
