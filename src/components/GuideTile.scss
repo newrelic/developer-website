@@ -3,14 +3,33 @@
   grid-template-areas:
     '. . time'
     'main main main';
+  background-color: white;
+  box-shadow: 0px 2.76726px 2.21381px rgba(0, 85, 90, 0.0168687),
+    0px 6.6501px 5.32008px rgba(0, 85, 90, 0.0242336),
+    0px 12.5216px 10.0172px rgba(0, 85, 90, 0.03),
+    0px 22.3363px 17.869px rgba(0, 85, 90, 0.0357664),
+    0px 41.7776px 33.4221px rgba(0, 85, 90, 0.0431313),
+    0px 100px 80px rgba(0, 85, 90, 0.06);
 
-  background-color: var(--color-tile-background);
   padding: 1rem;
 }
 
+.GuideTile button:hover {
+  transform: translateY(-1px);
+}
+
 .GuideTile-timeEstimate {
+  font-size: 0.75rem;
   grid-area: time;
+  display: flex;
+  align-items: center;
   text-align: right;
+  color: var(--color-neutrals-500);
+  padding: 0.3rem 0 0.2rem 1.2rem;
+  background-image: url('../images/clock.svg');
+  background-size: 1rem;
+  background-repeat: no-repeat;
+  background-position: left center;
 }
 
 .GuideTile-main {
@@ -24,6 +43,8 @@
 }
 
 .GuideTile-description {
+  font-size: 0.9rem;
   margin-bottom: 1.5rem;
   max-width: calc(100% - 4rem);
+  color: var(--color-neutrals-500);
 }
