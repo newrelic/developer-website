@@ -9,9 +9,13 @@ import './Sidebar.scss';
 // recursively create navigation
 const renderNav = (page, index) => (
   <li key={index}>
-    <Link to={page.url} className={cx({ 'is-active': page.active })}>
-      {page.displayName}
-    </Link>
+    {page.url ? (
+      <Link to={page.url} className={cx({ 'is-active': page.active })}>
+        {page.displayName}
+      </Link>
+    ) : (
+      <div>{page.displayName}</div>
+    )}
     {page.children && <ul>{page.children.map(renderNav)}</ul>}
   </li>
 );

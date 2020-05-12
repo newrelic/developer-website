@@ -1,63 +1,32 @@
 import React, { useState } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
+import navFromEdges from '../utils/nav-from-edges';
 
 // TODO: move this js file to same directory and update import
 import '../templates/Reference.scss';
 
-// TODO: pull this in from Gatsby
-const pages = [
-  { displayName: 'Overview', url: '' },
-  {
-    displayName: 'CLI',
-    url: '',
-    children: [
-      { displayName: 'newrelic', url: '' },
-      { displayName: 'nr1', url: '' },
-    ],
-  },
-  { displayName: 'GraphQL', url: '' },
-  {
-    displayName: 'Applications',
-    url: '',
-    children: [
-      { displayName: 'Component Library', url: '', active: true },
-      { displayName: 'File structure', url: '' },
-    ],
-  },
-  {
-    displayName: 'Data Collectors',
-    url: '',
-    children: [
-      { displayName: 'Custom Attributes', url: '' },
-      { displayName: 'Custom Events', url: '' },
-      { displayName: 'Open Telemetry', url: '' },
-      { displayName: 'Telemetry SDK', url: '' },
-    ],
-  },
-  {
-    displayName: 'Automation',
-    url: '',
-    children: [
-      { displayName: 'Cloud Formation Provider', url: '' },
-      { displayName: 'Terraform Provider', url: '' },
-      {
-        displayName: 'Agent Deploy',
-        url: '',
-        children: [
-          { displayName: 'Ansible', url: '' },
-          { displayName: 'Chef', url: '' },
-          { displayName: 'Puppet', url: '' },
-        ],
-      },
-    ],
-  },
-];
-
 const Reference = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(limit: 1000) {
+        edges {
+          node {
+            frontmatter {
+              path
+              title
+            }
+          }
+        }
+      }
+    }
+  `);
+  const pages = navFromEdges(data.allMarkdownRemark.edges);
 
   return (
     <Layout>
