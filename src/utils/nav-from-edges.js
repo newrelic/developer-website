@@ -44,13 +44,10 @@ const makeDisplayName = (str) =>
  * Generates an array of links for the UI. Each link can have an
  * array of links below that. This function can call itself.
  *
- * TODO: do we need result?
- *
  * @param {Object[]} links - An array of links that are >= this level.
- * @param {Object[]} [result] - The links to be returned.
  * @param {number} [level=0] The nested level.
  */
-const genTree = (links, result = [], level = 0) => {
+const genTree = (links, level = 0) => {
   const linksAtLevel = links.filter((link) => level === link.dirs.length - 1);
 
   // if we have nothing below this, just return a flat list of links
@@ -80,7 +77,7 @@ const genTree = (links, result = [], level = 0) => {
         ...(index
           ? linkWithoutDirs(index)
           : { displayName: makeDisplayName(dir) }),
-        children: genTree(childLinks, result, level + 1),
+        children: genTree(childLinks, level + 1),
       },
     ];
   }, []);
