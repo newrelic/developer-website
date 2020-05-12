@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // it is not very performant.
 export const link = PropTypes.shape({
   displayName: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
   active: PropTypes.bool,
   children: PropTypes.array,
 });
