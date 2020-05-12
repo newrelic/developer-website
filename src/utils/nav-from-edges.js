@@ -41,6 +41,11 @@ const makeDisplayName = (str) =>
     .join(' ');
 
 /**
+ * Function that compares two link objects and sorts by their displayNames.
+ */
+const sortByDisplayName = (a, b) => (a.displayName > b.displayName ? 1 : -1);
+
+/**
  * Generates an array of links for the UI. Each link can have an
  * array of links below that. This function can call itself.
  *
@@ -55,10 +60,10 @@ const genTree = (links, level = 0) => {
     return linksAtLevel.map(linkWithoutDirs);
   }
 
-  // get all the directories at this level
+  // get all the directories at this level (sorted alphabetically for now)
   const linksBelowLevel = links.filter((link) => level < link.dirs.length - 1);
   const dirsAtLevel = linksBelowLevel.map((link) => link.dirs[level]);
-  const uniqueDirsAtLevel = [...new Set(dirsAtLevel)];
+  const uniqueDirsAtLevel = [...new Set(dirsAtLevel)].sort();
 
   return uniqueDirsAtLevel.reduce((acc, dir) => {
     const linksUnderDir = links.filter((link) => link.dirs[level] === dir);
@@ -68,8 +73,10 @@ const genTree = (links, level = 0) => {
       (link) => link.dirs[level + 1] === 'index'
     );
 
-    // get the children for this node
-    const childLinks = linksUnderDir.filter((link) => link !== index);
+    // get the children for this node and sort them
+    const childLinks = linksUnderDir
+      .filter((link) => link !== index)
+      .sort(sortByDisplayName);
 
     return [
       ...acc,
