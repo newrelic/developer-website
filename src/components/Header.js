@@ -85,14 +85,4 @@ Header.propTypes = {
   pages: PropTypes.arrayOf(link),
 };
 
-Header.defaultProps = {
-  pages: [
-    { displayName: 'Collect Data', url: '' },
-    { displayName: 'Explore Data', url: 'explore-data' },
-    { displayName: 'Build Apps', url: '' },
-    { displayName: 'Automate Workflow', url: '' },
-    { displayName: 'Developer Docs', url: '' },
-  ],
-};
-
 export default Header;

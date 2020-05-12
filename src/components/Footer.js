@@ -33,14 +33,4 @@ Footer.propTypes = {
   pages: PropTypes.arrayOf(link),
 };
 
-Footer.defaultProps = {
-  pages: [
-    { displayName: 'Collect Data', url: '' },
-    { displayName: 'Explore Data', url: 'explore-data' },
-    { displayName: 'Build Apps', url: '' },
-    { displayName: 'Automate Workflows', url: '' },
-    { displayName: 'Developer Docs', url: '' },
-  ],
-};
-
 export default Footer;
