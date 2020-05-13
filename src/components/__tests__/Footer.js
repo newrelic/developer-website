@@ -9,7 +9,7 @@ describe('Footer', () => {
       { displayName: 'One', url: '/one' },
       { displayName: 'Two', url: '/two' },
     ];
-    const tree = renderer.create(<Footer pages={[]} />).toJSON();
+    const tree = renderer.create(<Footer pages={pages} />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
