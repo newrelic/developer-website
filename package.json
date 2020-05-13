@@ -22,10 +22,15 @@
   },
   "devDependencies": {
     "@newrelic/eslint-plugin-newrelic": "^0.3.0",
+    "babel-jest": "^26.0.1",
+    "babel-preset-gatsby": "^0.4.2",
     "eslint": "^6.8.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "husky": "^4.2.5",
-    "prettier": "2.0.4"
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.0.1",
+    "prettier": "2.0.4",
+    "react-test-renderer": "^16.13.1"
   },
   "keywords": [
     "gatsby"
@@ -39,7 +44,9 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint src/",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "husky": {
     "hooks": {

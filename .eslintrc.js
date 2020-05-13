@@ -23,4 +23,5 @@ module.exports = {
     browser: true,
     es6: true,
   },
+  ignorePatterns: ['**/__tests__/**/*'],
 };
