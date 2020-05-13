@@ -21,18 +21,7 @@
   color: var(--color-neutrals-500);
 }
 
-.GuideListing-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(260px, 1fr));
-  grid-gap: 1rem;
-  grid-auto-rows: minmax(calc(248px - 2rem), auto);
-  align-items: stretch;
-  width: 100%;
-
-  @media (max-width: 840px) {
-    grid-template-columns: 1fr;
-  }
-
+.GuideListing-wrap {
   &:before {
     position: absolute;
     left: 0;
@@ -43,5 +32,18 @@
     width: 100%;
     transform: skewY(-2deg) translateY(-58px);
     z-index: -1;
+  }
+}
+
+.GuideListing-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  grid-gap: 1rem;
+  grid-auto-rows: minmax(calc(248px - 2rem), auto);
+  align-items: stretch;
+  width: 100%;
+
+  @media (max-width: 840px) {
+    grid-template-columns: 1fr;
   }
 }

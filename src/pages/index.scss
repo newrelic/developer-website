@@ -1,7 +1,11 @@
-.indexPage-h2 {
+.indexPage-h1 {
   text-align: center;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-top: 3.5rem;
+  margin-bottom: 1.75rem;
+  font-family: var(--secondary-font-family);
+  font-weight: 400;
+  font-size: 2.5rem;
 }
 .mobile {
   display: none;
@@ -14,22 +18,54 @@
     display: none;
   }
 }
-.indexPage-grid {
-  margin: 5% auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap: 2rem;
-  @media (max-width: 500px) {
-    grid-template-columns: 1fr;
+
+.indexPage-line {
+  border-bottom: 4px solid var(--color-brand-800);
+  width: 50px;
+  margin: auto;
+}
+
+.indexPage-intro {
+  box-sizing: border-box;
+  padding: 0 5.75rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto 7rem;
+
+  .indexPage-intro-video {
+    height: 270px;
+    width: 480px;
+    background: var(--color-brand-400);
+  }
+  .indexPage-intro-text {
+    width: 480px;
+    margin-top: -0.5rem;
+    p {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      line-height: 1.875rem;
+      font-size: 1.125rem;
+      color: var(--color-neutrals-600);
+    }
+  }
+  button {
+    margin-top: 1rem;
+    margin-right: 1rem;
   }
 }
 
-.indexPage-grid-guide {
-  justify-self: center;
-  height: 250px;
-  width: 375px;
-  background: rgb(178, 224, 224);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.indexPage-guideListing {
+  p.GuideListing-description {
+    display: none;
+  }
+  h1.GuideListing-heading {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+}
+
+.indexPage-guideTile {
+  box-shadow: none;
+  border: 1px solid var(--color-neutrals-300);
+  border-radius: 0.25rem;
 }

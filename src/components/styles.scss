@@ -24,6 +24,13 @@
   --color-brand-800: #007e8a;
   --color-brand-900: #005054;
 
+  --boxshadow: 0px 2.76726px 2.21381px rgba(0, 85, 90, 0.0168687),
+    0px 6.6501px 5.32008px rgba(0, 85, 90, 0.0242336),
+    0px 12.5216px 10.0172px rgba(0, 85, 90, 0.03),
+    0px 22.3363px 17.869px rgba(0, 85, 90, 0.0357664),
+    0px 41.7776px 33.4221px rgba(0, 85, 90, 0.0431313),
+    0px 100px 80px rgba(0, 85, 90, 0.06);
+
   --color-tile-background: rgb(215, 210, 233);
   --primary-font-family: 'open sans', sans-serif;
   --secondary-font-family: 'effra', sans-serif;
@@ -90,6 +97,14 @@ textarea {
   margin: 0;
 }
 
+input,
+select {
+  border: 1px solid var(--color-neutrals-400);
+  border-radius: 4px;
+  height: 2rem;
+  box-sizing: border-box;
+}
+
 button,
 [type='button'],
 [type='reset'],
@@ -97,15 +112,20 @@ button,
   -webkit-appearance: button;
   display: inline-flex;
   align-items: center;
-  border: none;
+  justify-content: center;
   color: #fff;
   background-color: var(--color-brand-800);
   padding: 10px 16px;
   font-size: 14px;
   font-weight: 600;
   border-radius: 3px;
+  border: 1px solid var(--color-brand-800);
   font-family: var(--primary-font-family);
   cursor: pointer;
+  &.secondary {
+    background-color: var(--color-white);
+    color: var(--color-brand-800);
+  }
 }
 
 /*-- Layout Styles --*/

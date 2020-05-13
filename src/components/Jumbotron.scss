@@ -1,14 +1,36 @@
-.jumbotron {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  background: rgb(202, 202, 245);
+.Jumbotron {
   width: 100%;
-  box-sizing: border-box;
-  padding: 0 5%;
+  margin-bottom: 7.25rem;
+
+  &:before {
+    position: absolute;
+    left: 0;
+    top: 40rem;
+    content: '';
+    height: 56%;
+    background-color: var(--color-neutrals-100);
+    width: 100%;
+    transform: skewY(-2deg) translateY(-58px);
+    z-index: -1;
+  }
+
   @media (max-width: 500px) {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
+  }
+}
+
+.Jumbotron-callToAction-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  grid-gap: 1rem;
+  grid-auto-rows: minmax(calc(248px - 2rem), auto);
+  align-items: stretch;
+  width: 100%;
+  margin-top: 2rem;
+
+  @media (max-width: 840px) {
+    grid-template-columns: 1fr;
   }
 }

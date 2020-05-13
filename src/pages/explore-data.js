@@ -34,7 +34,12 @@ const guides = [
 const ExploreDataPage = () => (
   <Layout>
     <SEO title={heading} />
-    <GuideListing heading={heading} description={description} guides={guides} />
+    <GuideListing
+      heading={heading}
+      description={description}
+      guides={guides}
+      className="GuideListing-wrap"
+    />
   </Layout>
 );
 
