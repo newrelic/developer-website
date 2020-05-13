@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<footer
+  className="Footer"
+>
+  <div
+    className="u-container"
+  >
+    <div
+      className="Footer-left"
+    >
+      <a
+        className="logo Footer-logo"
+        href="/"
+      />
+      <div
+        className="Footer-copyright"
+      >
+        Copyright © 2020 New Relic Inc.
+      </div>
+    </div>
+    <nav
+      aria-label="Footer"
+      className="Footer-nav"
+      role="navigation"
+    >
+      <ul />
+    </nav>
+  </div>
+</footer>
+`;
