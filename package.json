@@ -46,7 +46,7 @@
     "lint": "eslint src/",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest",
-    "test:watch": "npm rest -- --watch"
+    "test:watch": "npm test -- --watch"
   },
   "husky": {
     "hooks": {
