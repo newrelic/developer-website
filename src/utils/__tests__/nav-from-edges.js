@@ -10,16 +10,25 @@ const createEdge = (frontmatter) => ({
 describe('[util] navFromEdges', () => {
   it('creates an array of nested links', () => {
     const edges = [
-      createEdge({ title: 'One', path: '/one/index' }),
-      createEdge({ title: 'OneTwo', path: '/one/two' }),
-      createEdge({ title: 'ThreeFourFive', path: '/three/four/five' }),
+      createEdge({
+        title: 'One',
+        path: '/one',
+      }),
+      createEdge({
+        title: 'OneTwo',
+        path: '/one/two',
+      }),
+      createEdge({
+        title: 'ThreeFourFive',
+        path: '/three/four/five',
+      }),
     ];
 
     const actual = navFromEdges(edges);
     const expected = [
       {
         displayName: 'One',
-        url: '/one/index',
+        url: '/one',
         children: [
           {
             displayName: 'OneTwo',
