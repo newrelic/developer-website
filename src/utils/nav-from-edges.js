@@ -68,9 +68,9 @@ const genTree = (links, level = 0) => {
   return uniqueDirsAtLevel.reduce((acc, dir) => {
     const linksUnderDir = links.filter((link) => link.dirs[level] === dir);
 
-    // find the index page, or make a non-link item for this
-    const index = linksUnderDir.find(
-      (link) => link.dirs[level + 1] === 'index'
+    // find the index page
+    const index = linksAtLevel.find(
+      (link) => link.dirs.length === level + 1 && link.dirs[level] === dir
     );
 
     // get the children for this node and sort them
@@ -81,9 +81,11 @@ const genTree = (links, level = 0) => {
     return [
       ...acc,
       {
+        // add the index page, if it exists, or a placeholder title
         ...(index
           ? linkWithoutDirs(index)
           : { displayName: makeDisplayName(dir) }),
+        // add the child links by calling this function again
         children: genTree(childLinks, level + 1),
       },
     ];
