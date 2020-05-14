@@ -12,6 +12,10 @@
     width: 100%;
     transform: skewY(-2deg) translateY(-58px);
     z-index: -1;
+
+    @media (max-width: 500px) {
+      background-color: var(--color-white);
+    }
   }
 
   @media (max-width: 500px) {

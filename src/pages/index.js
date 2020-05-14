@@ -33,10 +33,10 @@ const guides = [
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1 className="indexPage-h1">
-      New Relic is a platform for your observability data
-    </h1>
     <Container>
+      <h1 className="indexPage-h1">
+        New Relic is a platform for your observability data
+      </h1>
       <div className="indexPage-intro">
         <div className="indexPage-intro-text">
           <p>
@@ -62,7 +62,7 @@ const IndexPage = () => (
             <strong>Automate</strong> the entire process with robust DevOps
             tools.
           </p>
-          <div className="indexPage-buttonContainer">
+          <div className="indexPage-intro-buttonContainer">
             <button type="button">Create a free account</button>
             <button type="button" className="secondary">
               Solve a business problem

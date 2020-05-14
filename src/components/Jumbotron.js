@@ -10,7 +10,7 @@ const Jumbotron = () => (
       <CallToAction step="1" text="Create your free account">
         <form>
           <input placeholder="me@observability.com" />
-          <button className="CallToAction-button-signUp" type="submit">
+          <button className="CallToAction-button--signUp" type="submit">
             Sign up
           </button>
         </form>
@@ -27,10 +27,10 @@ const Jumbotron = () => (
         <Link to="/">Create a new API key</Link>
       </CallToAction>
       <CallToAction step="3" text="Install the newrelic CLI">
-        <button className="CallToAction-button-download" type="button">
+        <button className="CallToAction-button--download" type="button">
           Download for macOS
         </button>
-        <Link to="/">Download for other plaforms</Link>
+        <Link to="/">Download for other platforms</Link>
       </CallToAction>
     </div>
   </div>

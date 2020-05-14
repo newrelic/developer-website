@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: var(--color-white);
   box-shadow: var(--boxshadow);
   padding: 2.75rem 1.45rem;
 
@@ -39,10 +39,10 @@
     font-size: 0.74rem;
     font-weight: normal;
     padding: 0.5rem 0.75rem;
-    &.CallToAction-button-signUp {
+    &.CallToAction-button--signUp {
       width: 23%;
     }
-    &.CallToAction-button-download {
+    &.CallToAction-button--download {
       width: 60%;
     }
   }
@@ -58,6 +58,7 @@
     background: none;
     border-radius: 0;
     border: none;
+    box-shadow: none;
     p {
       margin-bottom: 0.5rem;
     }
