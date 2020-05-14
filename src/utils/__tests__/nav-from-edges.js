@@ -54,4 +54,45 @@ describe('[util] navFromEdges', () => {
 
     expect(actual).toEqual(expected);
   });
+
+  it('creates a complex array of nested links', () => {
+    const edges = [
+      createEdge({ title: 'A', path: '/a' }),
+      createEdge({ title: 'B1', path: '/a/b1' }),
+      createEdge({ title: 'B2', path: '/a/b2' }),
+      createEdge({ title: 'C1', path: '/a/b1/c1' }),
+      createEdge({ title: 'C2', path: '/a/b1/c2' }),
+    ];
+
+    const actual = navFromEdges(edges);
+    const expected = [
+      {
+        displayName: 'A',
+        url: '/a',
+        children: [
+          {
+            displayName: 'B1',
+            url: '/a/b1',
+            children: [
+              {
+                displayName: 'C1',
+                url: '/a/b1/c1',
+              },
+              {
+                displayName: 'C2',
+                url: '/a/b1/c2',
+              },
+            ],
+          },
+          {
+            displayName: 'B2',
+            url: '/a/b2',
+          },
+        ],
+      },
+    ];
+    console.log(JSON.stringify(actual, null, 2));
+
+    expect(actual).toEqual(expected);
+  });
 });
