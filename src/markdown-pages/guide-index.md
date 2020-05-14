@@ -1,5 +1,5 @@
 ---
-path: '/guides/index'
+path: '/guides'
 duration: '0 min'
 title: 'Guides'
 template: 'GuideTemplate'
