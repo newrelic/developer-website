@@ -60,18 +60,19 @@
   }
 }
 
-.indexPage-guideListing {
-  p.GuideListing-description {
-    display: none;
-  }
-  h1.GuideListing-heading {
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-  }
+.indexPage-guideListing-heading {
+  margin-top: 0rem;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
 }
 
 .indexPage-guideTile {
   box-shadow: none;
   border: 1px solid var(--color-neutrals-300);
   border-radius: 0.25rem;
+}
+
+.indexPage-section-backgroundBanner {
+  height: 125%;
+  top: 1rem;
 }

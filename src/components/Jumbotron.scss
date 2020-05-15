@@ -2,22 +2,6 @@
   width: 100%;
   margin-bottom: 7.25rem;
 
-  &:before {
-    position: absolute;
-    left: 0;
-    top: 40rem;
-    content: '';
-    height: 56%;
-    background-color: var(--color-neutrals-100);
-    width: 100%;
-    transform: skewY(-2deg) translateY(-58px);
-    z-index: -1;
-
-    @media (max-width: 500px) {
-      background-color: var(--color-white);
-    }
-  }
-
   @media (max-width: 500px) {
     flex-direction: column;
     flex-wrap: nowrap;
