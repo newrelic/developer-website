@@ -1,8 +1,8 @@
 import './GuideTile.scss';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { navigate } from 'gatsby';
 import cx from 'classnames';
+import { navigate } from 'gatsby';
 
 const GuideTile = ({ minutes, title, description, path, className }) => (
   <div className={cx('GuideTile', className)}>

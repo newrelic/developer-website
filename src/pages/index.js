@@ -4,7 +4,9 @@ import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import Jumbotron from '../components/Jumbotron';
 import Container from '../components/Container';
-import GuideListing from '../components/GuideListing';
+import Section from '../components/Section';
+import GuideListing from '../components/GuideListing/GuideListing';
+import GuideTile from '../components/GuideTile';
 import './index.scss';
 
 const guides = [
@@ -71,16 +73,22 @@ const IndexPage = () => (
         </div>
         <div className="indexPage-intro-video" />
       </div>
-      <Jumbotron />
-      <div className="indexPage-line" />
     </Container>
-    <GuideListing
-      heading="Solve a problem with one of our guides"
-      guides={guides}
-      className="indexPage-guideListing"
-      tileClassName="indexPage-guideTile"
-      listClassName="indexPage-guideListing-list"
-    />
+    <Section backgroundBanner className="indexPage-section-backgroundBanner">
+      <Jumbotron />
+    </Section>
+    <div className="indexPage-line" />
+
+    <GuideListing className="indexPage-guideListing">
+      <GuideListing.Heading className="indexPage-guideListing-heading">
+        Solve a problem with one of our guides
+      </GuideListing.Heading>
+      <GuideListing.List>
+        {guides.map((guide, index) => (
+          <GuideTile className="indexPage-guideTile" key={index} {...guide} />
+        ))}
+      </GuideListing.List>
+    </GuideListing>
   </Layout>
 );
 
