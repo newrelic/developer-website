@@ -1,35 +1,64 @@
-.callToAction {
+.CallToAction {
   font-size: 0.75rem;
-  height: 300px;
-  width: 300px;
   margin: 0 0 5%;
-  border-radius: 50%;
-  border: solid 2px rgb(141, 141, 252);
-  background: rgb(173, 173, 248);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--color-white);
+  box-shadow: var(--boxshadow);
+  padding: 2.75rem 1.45rem;
+
+  h3 {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-brand-800);
+    margin-top: 1.45rem;
+  }
+
   p {
     margin-bottom: 0.5rem;
   }
+
+  select {
+    width: 100%;
+  }
+
   input {
-    height: 25px;
     margin: 0;
-    border: none;
+    width: 74%;
   }
+
   button {
-    height: 25px;
-    margin: 0;
-    border: none;
+    height: 2rem;
+    font-size: 0.74rem;
+    font-weight: normal;
+    padding: 0.5rem 0.75rem;
+    &.CallToAction-button--signUp {
+      width: 23%;
+    }
+    &.CallToAction-button--download {
+      width: 60%;
+    }
   }
+
   form {
     margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   @media (max-width: 500px) {
     background: none;
     border-radius: 0;
     border: none;
+    box-shadow: none;
     p {
       margin-bottom: 0.5rem;
     }
@@ -50,4 +79,15 @@
       }
     }
   }
+}
+.CallToAction-step {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: var(--color-neutrals-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 2.25rem;
 }
