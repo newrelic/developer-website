@@ -1,0 +1,21 @@
+[
+  {
+    "displayName": "Guides",
+    "url": "/guides"
+  },
+  {
+    "displayName": "Foo",
+    "children": [
+      {
+        "displayName": "Baz",
+        "url": "/foo/baz",
+        "children": []
+      },
+      {
+        "displayName": "Bar",
+        "url": "/foo/bar",
+        "children": []
+      }
+    ]
+  }
+]
