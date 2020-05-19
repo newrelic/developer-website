@@ -13,7 +13,6 @@ const GuideTemplate = ({ data }) => {
   const { frontmatter, html } = markdownRemark;
 
   const crumbs = createBreadcrumbs(frontmatter.path, pages);
-  console.log('crumbs', crumbs);
 
   return (
     <Layout>
