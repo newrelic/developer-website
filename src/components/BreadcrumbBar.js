@@ -19,7 +19,7 @@ const BreadcrumbBar = ({ crumbs, duration }) => (
           </li>
         ))}
       </ul>
-      {duration && <h3 className="breadcrumbBar-duration">{duration}</h3>}
+      {duration && <div className="breadcrumbBar-duration">{duration}</div>}
     </Container>
   </div>
 );
