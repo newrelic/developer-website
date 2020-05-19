@@ -5,15 +5,15 @@ import Layout from '../components/Layout';
 import BreadcrumbBar from '../components/BreadcrumbBar';
 import Container from '../components/Container';
 
+import createBreadcrumbs from '../utils/create-breadcrumbs';
+import pages from '../data/sidenav.json';
+
 const GuideTemplate = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
 
-  // TODO use graphql to fetch these
-  const crumbs = [
-    { displayName: 'Explore Data', url: '/explore-data' },
-    { displayName: 'GraphQL API', url: '/guides/graphql-api' },
-  ];
+  const crumbs = createBreadcrumbs(frontmatter.path, pages);
+  console.log('crumbs', crumbs);
 
   return (
     <Layout>
