@@ -40,10 +40,11 @@ const createBreadcrumbs = (url, links, result = []) => {
     // if the crumbs are different, we found a valid match below this link
     if (crumbs !== result) {
       // get the details for this link without the children
-      const { url, displayName } = link;
+      let parentLink = { displayName: link.displayName };
+      if (link.url) parentLink.url = link.url;
 
       // return the current crumbs, this link, and the crumbs found below
-      return [...acc, { url, displayName }, ...crumbs];
+      return [...acc, parentLink, ...crumbs];
     } else {
       // otherwise, this is an invalid branch, just return the result so far
       return acc;
