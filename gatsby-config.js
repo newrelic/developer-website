@@ -16,6 +16,10 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-mdx`,
+    {
+      resolve: 'gatsby-plugin-mdx-frontmatter',
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
