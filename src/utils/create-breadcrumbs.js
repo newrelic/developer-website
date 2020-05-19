@@ -40,7 +40,7 @@ const createBreadcrumbs = (url, links, result = []) => {
     // if the crumbs are different, we found a valid match below this link
     if (crumbs !== result) {
       // get the details for this link without the children
-      let parentLink = { displayName: link.displayName };
+      const parentLink = { displayName: link.displayName };
       if (link.url) parentLink.url = link.url;
 
       // return the current crumbs, this link, and the crumbs found below
