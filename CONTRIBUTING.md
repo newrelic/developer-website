@@ -1,0 +1,73 @@
+# Guidelines for contributing 
+
+The Developer Experience Team at New Relic welcomes contributions to this repository. 
+There are several ways you can contribute. 
+
+If you wish to make documentation edits, create product guides, or add new 
+documentation, please follow our documentation contribution guidelines below. 
+
+If you'd like to to make code contributions please follow the Code contribution 
+guidelines below. 
+
+# Getting started 
+
+0. Create a [Github](https://github.com/) account if you don't already have one. 
+1. `Fork` this repository.
+2. Make your changes. 
+3. Test your changes! Please review the project's [Read Me](README.md) for instructions on how to build and run tests locally.
+3. Submit a `Pull Request` to this project with your changes.
+4. If/when your `PR` is accepted, the automation in this project will build the site  and deploy a new version of the code to `developer.newrelic.com`. 
+5. And you are done!
+ 
+ # Deploy previews with Amplify
+
+ PRs that are opened from a branch in this repo (not forks) will generate preview links on Amplify automatically. Amplify preview links can be found within the PR under the `Checks` Tab.
+
+
+# Documentation contribution guidelines
+Documentation pages are detailed technical specifications of the New Relic One platform and 
+it's components. 
+
+When making documentation contributions please follow these guidelines. 
+
+## Editing existing pages
+
+1. To edit an existing page you can view the page's source code by clicking on the `Edit` icon in the upper right corner of the site. 
+2. Follow the instructions above to `Fork` the repo and make your edits. 
+3. Follow the instructions above to submit a `PR` for your change. 
+
+## Creating new pages 
+1. If you'd like to create an entirely new page of documentation please file a [Documentation issue]()
+2. The DevEx Team will review the request to add a new documentation page.
+3. If a new page is approved you may be asked to help write the page content. 
+4. if you are willing to assist in the process of creating a new page, then follow the instructions above
+to `Fork` the repo and make your edits. 
+5. Follow the instructions above to submit a `PR` for your change.
+
+## Deleting pages 
+1. If you feel a page needs to be deleted please file a [Documentation issue]().
+2. The DevEx Team will review the request to delete an existing documentation page. 
+3. If the deletion is approved, The DevEx Team will delete the page. 
+
+# New Relic educational guides 
+New Relic educational guides are detailed product `how-tos` that are use case driven.  
+The purpose of these guides are to explain how to setup and configure a range of different New Relic products based on specific use cases you may have in your organization. 
+
+When making educational guide contributions please follow these guidelines.
+
+## Editing existing guides
+1. To edit an existing page you can view the page's source code by clicking on the `Edit` icon in the upper right corner of the site. 
+2. Follow the instructions above to `Fork` the repo and make your edits. 
+3. Follow the instructions above to submit a `PR` for your change. 
+
+## Creating new guides 
+1. If you'd like to create an entirely new guide please file a [Documentation issue]()
+2. We will review the request to add a new guide.
+3. If a new guide is approved you may be asked to help write the guide content. 
+4. if you are willing to assist in the process of creating a new guide, then follow the instructions above to `Fork` the repo and make your edits. 
+5. Follow the instructions above to submit a `PR` for your change.
+
+## Deleting guides
+1. If you feel a guide needs to be deleted please file a [Documentation issue]()
+2. The DevEx Team will review the request to delete an existing guide. 
+3. If the deletion is approved,The DevEx Team will delete the guide. 
