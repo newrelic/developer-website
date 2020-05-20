@@ -14,4 +14,4 @@ Your site is now running at `http://localhost:8000`!
 
 ## 📝 Unit Tests
 
-To run the unit tests, run `npm test` in the terminal. If you would like to have the tests automatically re-run, use `npm run test:watch`.
+To run the unit tests, run `npm test` in the terminal. If you want to have the tests automatically re-run, use `npm run test:watch`.
