@@ -21,7 +21,7 @@ export default function GuideTemplate({
   ];
 
   return (
-    <MDXProvider components={[CodeSnippet]}>
+    <MDXProvider components={{ CodeSnippet }}>
       <Layout>
         <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
         <Container>
