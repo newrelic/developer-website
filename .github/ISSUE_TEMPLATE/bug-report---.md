@@ -1,6 +1,6 @@
 ---
 name: "Bug report \U0001F41E"
-about: 'Report a bug or defect! '
+about: 'Report a bug or defect!'
 title: This is a bug please fix!
 labels: bug
 assignees: ''
