@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../components/Layout';
 import BreadcrumbBar from '../components/BreadcrumbBar';
 import Container from '../components/Container';
@@ -9,8 +10,8 @@ import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
 
 const GuideTemplate = ({ data }) => {
-  const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
+  const { mdx } = data;
+  const { frontmatter, body } = mdx;
 
   const crumbs = createBreadcrumbs(frontmatter.path, pages);
 
@@ -21,10 +22,9 @@ const GuideTemplate = ({ data }) => {
         <div className="guideTemplate-container">
           <div>
             <h1>{frontmatter.title}</h1>
-            <div
-              className="guideTemplate-content"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
+            <div className="guideTemplate-content">
+              <MDXRenderer>{body}</MDXRenderer>
+            </div>
           </div>
         </div>
       </Container>
@@ -38,8 +38,8 @@ GuideTemplate.propTypes = {
 
 export const pageQuery = graphql`
   query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
+    mdx(frontmatter: { path: { eq: $path } }) {
+      body
       frontmatter {
         duration
         path
