@@ -8,6 +8,7 @@ const Video = ({ youtubeId }) => (
     <iframe
       src={`//www.youtube.com/embed/${youtubeId}?modestbranding=1`}
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      title={`Video - ${youtubeId}`}
       frameBorder="0"
       allowFullScreen
     />
