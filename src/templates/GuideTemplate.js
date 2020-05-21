@@ -7,14 +7,12 @@ import { MDXProvider } from '@mdx-js/react';
 import Layout from '../components/Layout';
 import BreadcrumbBar from '../components/BreadcrumbBar';
 import Container from '../components/Container';
-import CodeSnippet from '../components/CodeSnippet';
 import Video from '../components/Video';
 
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
 
 const components = {
-  code: (props) => <CodeSnippet {...props} />,
   Video,
 };
 
