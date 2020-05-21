@@ -1,5 +1,5 @@
 ---
-name: "Bug report \ "
+name: "Bug report \U0001F41B" 
 about: 'Report a bug or defect!'
 title: This is a bug please fix!
 labels: bug
@@ -15,7 +15,7 @@ assignees: ''
 ### Description
 A clear and concise description of what the bug is.
 
-### Step To Reproduce
+### Step to reproduce
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'

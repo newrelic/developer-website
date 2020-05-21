@@ -11,7 +11,7 @@ guidelines below.
 
 # Getting started 
 
-## Quick Edits 
+## Quick edits 
 
 If you see a minor problem in our documentation that you want to quickly fix, 
 you can use the Github `Edit This File` button to submit a change. 
@@ -30,7 +30,7 @@ To be able to [Clone](https://help.github.com/en/github/creating-cloning-and-arc
 
 As a non New Relic Employee you can [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the repository and contribute as needed. 
 
-## Submitting a PR from a Forked Repo
+## Submitting a PR from a forked repo
 
 0. Create a [Github](https://github.com/) account if you don't already have one. 
 1. `Fork` this this repository.  
@@ -40,7 +40,7 @@ As a non New Relic Employee you can [Fork](https://help.github.com/en/github/get
 4. If/when your `PR` is accepted, the automation in this project will build the site  and deploy a new version of the code to `developer.newrelic.com`. 
 5. And you are done!
 
-## Submitting a PR from a Cloned Repo
+## Submitting a PR from a cloned repo
 
 0. Create a [Github](https://github.com/) account if you don't already have one. 
 1. `Clone` this this repository.
@@ -110,6 +110,6 @@ When making educational guide contributions please follow these guidelines.
 2. The Developer Experience Team will review the request to delete an existing guide. 
 3. If the deletion is approved, The Developer Experience Team will delete the guide. 
 
-## Updating Navigation
+## Updating navigation
 
 @TODO Need to add how to update navigation when adding new content.

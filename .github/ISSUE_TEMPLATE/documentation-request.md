@@ -26,7 +26,7 @@ New Relic has additional documentation found at:
 What problem(s) did you run into that caused you to request additional documentation? 
 What questions do you think we should answer? What, if any, existing documentation relates to this new documentation?
 
-### What type of Documentation change are you suggesting?
+### What type of documentation change are you suggesting?
 
 Is this a New Relic educational guide or technical specifications of the New Relic One platform?
 
