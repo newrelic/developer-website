@@ -12,11 +12,10 @@ assignees: ''
 ** Check for existing issues**
  Before opening a new issue, please search existing issues: https://github.com/newrelic/developer-website/issues -->
 
-### Describe the bug
+### Description
 A clear and concise description of what the bug is.
 
-### To Reproduce
-Steps to reproduce the behavior:
+### Step To Reproduce
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
