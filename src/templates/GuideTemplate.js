@@ -2,12 +2,18 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXProvider } from '@mdx-js/react';
 import Layout from '../components/Layout';
 import BreadcrumbBar from '../components/BreadcrumbBar';
 import Container from '../components/Container';
+import CodeSnippet from '../components/CodeSnippet';
 
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
+
+const components = {
+  code: (props) => <CodeSnippet {...props} />,
+};
 
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
@@ -23,7 +29,9 @@ const GuideTemplate = ({ data }) => {
           <div>
             <h1>{frontmatter.title}</h1>
             <div className="guideTemplate-content">
-              <MDXRenderer>{body}</MDXRenderer>
+              <MDXProvider components={components}>
+                <MDXRenderer>{body}</MDXRenderer>
+              </MDXProvider>
             </div>
           </div>
         </div>
