@@ -6,7 +6,7 @@ import styles from './Video.module.scss';
 const Video = ({ youtubeId }) => (
   <div className={styles.Video}>
     <iframe
-      src={`//www.youtube.com/embed/${youtubeId}`}
+      src={`//www.youtube.com/embed/${youtubeId}?modestbranding=1`}
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       frameBorder="0"
       allowFullScreen
