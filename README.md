@@ -35,7 +35,7 @@ We welcome contributions to the New Relic Developer Site. Please review our
 
 Please review and agree to our [Code of Conduct](CODE_OF_CONDUCT.md) prior to submitting any code.
 
-## 🐛 Issues / enhancement requests
+## 🐛 Issues / Enhancement Requests
 
 Please submit any issues or enhancement requests using one of our 
 [Issue Templates](https://github.com/newrelic/developer-website/issues/new/choose). 
