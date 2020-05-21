@@ -1,10 +1,11 @@
 import './GuideTile.scss';
 import PropTypes from 'prop-types';
 import React from 'react';
+import cx from 'classnames';
 import { navigate } from 'gatsby';
 
-const GuideTile = ({ minutes, title, description, path }) => (
-  <div className="GuideTile">
+const GuideTile = ({ minutes, title, description, path, className }) => (
+  <div className={cx('GuideTile', className)}>
     <div className="GuideTile-timeEstimate">{minutes} minutes</div>
     <div className="GuideTile-main">
       <h2>{title}</h2>
@@ -21,6 +22,7 @@ GuideTile.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default GuideTile;

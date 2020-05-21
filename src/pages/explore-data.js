@@ -1,7 +1,10 @@
-import GuideListing from '../components/GuideListing';
+import GuideListing from '../components/GuideListing/GuideListing';
+import GuideTile from '../components/GuideTile';
 import Layout from '../components/Layout';
 import React from 'react';
 import SEO from '../components/Seo';
+import Section from '../components/Section';
+import './explore-data.scss';
 
 const heading = 'Get Data into New Relic';
 
@@ -34,7 +37,20 @@ const guides = [
 const ExploreDataPage = () => (
   <Layout>
     <SEO title={heading} />
-    <GuideListing heading={heading} description={description} guides={guides} />
+    <Section
+      backgroundBanner
+      className="exploreDataPage-section-backgroundBanner"
+    >
+      <GuideListing>
+        <GuideListing.Heading>{heading}</GuideListing.Heading>
+        <GuideListing.Description>{description}</GuideListing.Description>
+        <GuideListing.List>
+          {guides.map((guide, index) => (
+            <GuideTile key={index} {...guide} />
+          ))}
+        </GuideListing.List>
+      </GuideListing>
+    </Section>
   </Layout>
 );
 

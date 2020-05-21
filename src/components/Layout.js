@@ -6,11 +6,11 @@ import Header from './Header';
 import './styles.scss';
 
 const pages = [
-  { displayName: 'Collect Data', url: 'collect-data' },
-  { displayName: 'Explore Data', url: 'explore-data' },
-  { displayName: 'Build Apps', url: 'build-apps' },
-  { displayName: 'Automate Workflows', url: 'automate-workflows' },
-  { displayName: 'Developer Docs', url: 'docs' },
+  { displayName: 'Collect Data', url: '/collect-data' },
+  { displayName: 'Explore Data', url: '/explore-data' },
+  { displayName: 'Build Apps', url: '/build-apps' },
+  { displayName: 'Automate Workflows', url: '/automate-workflows' },
+  { displayName: 'Developer Docs', url: '/docs' },
 ];
 
 const Layout = ({ children }) => (

@@ -5,17 +5,14 @@ import Layout from '../components/Layout';
 import BreadcrumbBar from '../components/BreadcrumbBar';
 import Container from '../components/Container';
 
-export default function GuideTemplate({
-  data, // this prop will be injected by the GraphQL query below.
-}) {
-  const { markdownRemark } = data; // data.markdownRemark holds your post data
+import createBreadcrumbs from '../utils/create-breadcrumbs';
+import pages from '../data/sidenav.json';
+
+const GuideTemplate = ({ data }) => {
+  const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
 
-  // TODO use graphql to fetch these
-  const crumbs = [
-    { displayName: 'Explore Data', url: '/explore-data' },
-    { displayName: 'GraphQL API', url: '/guides/graphql-api' },
-  ];
+  const crumbs = createBreadcrumbs(frontmatter.path, pages);
 
   return (
     <Layout>
@@ -33,7 +30,12 @@ export default function GuideTemplate({
       </Container>
     </Layout>
   );
-}
+};
+
+GuideTemplate.propTypes = {
+  data: PropTypes.object,
+};
+
 export const pageQuery = graphql`
   query($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
@@ -46,6 +48,5 @@ export const pageQuery = graphql`
     }
   }
 `;
-GuideTemplate.propTypes = {
-  data: PropTypes.object,
-};
+
+export default GuideTemplate;
