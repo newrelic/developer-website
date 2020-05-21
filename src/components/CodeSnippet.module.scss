@@ -1,0 +1,42 @@
+.CodeSnippet {
+  height: 170px;
+  width: 50%;
+  font-family: Menlo;
+  line-height: 1rem;
+  font-size: 0.75rem;
+  overflow-y: scroll;
+  pre {
+    margin: 0;
+    height: 100%;
+  }
+}
+
+.lineNumber {
+  text-align: right;
+  padding-right: 1em;
+  user-select: none;
+  opacity: 0.5;
+}
+
+.CodeSnippetCopyBar {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 50%;
+  background: var(--color-neutrals-200);
+  height: 35px;
+  background-image: url('../images/copy.svg');
+  background-size: 1rem;
+  background-repeat: no-repeat;
+  background-position: 84% 50%;
+  button {
+    padding-right: 1rem;
+    font-size: 0.75rem;
+    font-family: var(--primary-font-family);
+    color: var(--color-brand-800);
+    background: none;
+    border: none;
+    outline: none;
+  }
+}
