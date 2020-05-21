@@ -1,7 +1,7 @@
 ---
-name: Documentation Request
-about: Report a documentation issue!
-title: This is a documentation request!
+name: "Documentation Request \U0001F4DA"
+about: Report a documentation addition!
+title: This is a request for new documentation!
 labels: documentation
 assignees: ''
 
@@ -9,7 +9,8 @@ assignees: ''
 
 <!-- To make it easier for us to help you, please include as much useful information as possible.
 
-New Relic has a community support channel, try asking your question on:
+If you haven't found specific information to solve your problem in our documentation, 
+try our New Relic community support channel for assistance.
 
   - Explorers Hub: https://discuss.newrelic.com/
 
@@ -20,18 +21,20 @@ New Relic has additional documentation found at:
  Before opening a new issue, please search existing issues: https://github.com/newrelic/developer-website/issues 
 -->
 
-**Summary**
+### Summary
 
-What problem(s) did you run into that caused you to request additional documentation? What questions do you think we should answer? What, if any, existing documentation relates to this proposal?
+What problem(s) did you run into that caused you to request additional documentation? 
+What questions do you think we should answer? What, if any, existing documentation relates to this new documentation?
 
-**What type of Documentation change are you suggesting?**
+### What type of Documentation change are you suggesting?
 
 Is this a New Relic educational guide or technical specifications of the New Relic One platform?
 
-**Motivation**
+### Motivation
 
 Why should we document this and who will benefit from it?
 
-**Writing the documentation**
+### Writing the documentation
 
-If you are interested in helping us write this documentation please let us know. We encourage community contributions!
+If you are interested in helping us create this documentation please let us know. 
+We encourage community contributions and can more quickly move your idea to publication if you suggest changes, or create an outline or rough draft. We'll collaborate with you to hone whatever content you provide.

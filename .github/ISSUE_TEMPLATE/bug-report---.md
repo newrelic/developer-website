@@ -1,5 +1,5 @@
 ---
-name: "Bug report \U0001F41E"
+name: "Bug report \ "
 about: 'Report a bug or defect!'
 title: This is a bug please fix!
 labels: bug
@@ -12,25 +12,24 @@ assignees: ''
 ** Check for existing issues**
  Before opening a new issue, please search existing issues: https://github.com/newrelic/developer-website/issues -->
 
-**Describe the bug**
+### Description
 A clear and concise description of what the bug is.
 
-**To Reproduce**
-Steps to reproduce the behavior:
+### Step To Reproduce
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
 
-**Expected behavior**
+### Expected behavior
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
+### Screenshots
 If applicable, add screenshots to help explain your problem.
 
-**Additional context**
+### Additional context
 Add any other context about the problem here.
 
-**Environment**
+### Environment
 
 Run `gatsby info --clipboard` in your project directory and paste the output here.
