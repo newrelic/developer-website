@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import cx from 'classnames';
 
 import { link } from '../types';
+import AuthContext from './AuthContext';
 import Container from './Container';
 import ExternalLink from './ExternalLink';
 import HamburgerMenu from './HamburgerMenu';
 import './Header.scss';
 
 const Header = ({ pages }) => {
+  const authContext = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className={cx('Header--main', { 'is-open': isOpen })}>
       <Container>
+        <div>
+          {authContext.isAuthenticated ? "you're cool" : 'who are you?!'}{' '}
+        </div>
         <nav
           role="navigation"
           aria-label="New Relic"
