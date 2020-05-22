@@ -11,9 +11,11 @@ import Video from '../components/Video';
 
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
+import CodeSnippet from '../components/CodeSnippet';
 
 const components = {
   Video,
+  code: (props) => <CodeSnippet {...props} />,
 };
 
 const GuideTemplate = ({ data }) => {
