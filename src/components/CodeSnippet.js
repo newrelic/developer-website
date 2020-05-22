@@ -18,7 +18,7 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
 
   return (
     <div>
-      <div className={styles.CodeSnippet}>
+      <div className={styles.container}>
         <Highlight
           {...defaultProps}
           theme={github}
@@ -42,7 +42,7 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
         </Highlight>
       </div>
       {copy !== 'false' && (
-        <div className={styles.CodeSnippetCopyBar}>
+        <div className={styles.copyBar}>
           <button type="button" onClick={() => copyCode(children)}>
             Copy output
           </button>
@@ -54,7 +54,7 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
 
 CodeSnippet.propTypes = {
   children: PropTypes.node.isRequired,
-  copy: PropTypes.string, // TODO: limit options
+  copy: PropTypes.string,
   className: PropTypes.string,
   lineNumbers: PropTypes.string,
 };
