@@ -1,5 +1,5 @@
 ---
-name: "Documentation Request \U0001F4DA"
+name: "Documentation request \U0001F4DA"
 about: Report a documentation addition!
 title: This is a request for new documentation!
 labels: documentation
