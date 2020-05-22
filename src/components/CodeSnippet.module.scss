@@ -29,7 +29,7 @@
   background-image: url('../images/copy.svg');
   background-size: 1rem;
   background-repeat: no-repeat;
-  background-position: 84% 50%;
+  background-position: 83% 50%;
   button {
     padding-right: 1rem;
     font-size: 0.75rem;
@@ -39,4 +39,8 @@
     border: none;
     outline: none;
   }
+}
+
+.copied {
+  background-position: 88% 50%;
 }

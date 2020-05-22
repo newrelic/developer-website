@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import github from 'prism-react-renderer/themes/github';
 import styles from './CodeSnippet.module.scss';
+import cx from 'classnames';
 
-const copyCode = (code) => {
+const copyCode = (code, setCopied) => {
   const textArea = document.createElement('textarea');
   textArea.value = code;
   document.body.appendChild(textArea);
   textArea.select();
   document.execCommand('copy');
   document.body.removeChild(textArea);
+  setCopied(true);
 };
 
 const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
   const language = className.replace('language-', '');
+  const [copied, setCopied] = useState(false);
 
   return (
     <div>
@@ -42,9 +45,9 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
         </Highlight>
       </div>
       {copy !== 'false' && (
-        <div className={styles.copyBar}>
-          <button type="button" onClick={() => copyCode(children)}>
-            Copy output
+        <div className={cx({ [styles.copied]: copied }, styles.copyBar)}>
+          <button type="button" onClick={() => copyCode(children, setCopied)}>
+            {copied ? 'Copied!' : 'Copy output'}
           </button>
         </div>
       )}
