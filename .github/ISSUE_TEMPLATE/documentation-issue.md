@@ -1,5 +1,5 @@
 ---
-name: "Documentation Issue \U0001F589"
+name: "Documentation issue \U0001F4DC"
 about: Report a documentation issue!
 title: This is a documentation problem!
 labels: documentation

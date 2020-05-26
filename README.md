@@ -1,6 +1,6 @@
 # developer.newrelic.com
 
-## 🚀 Local Development
+## 🚀 Local development
 
 Navigate into your new site’s directory and start it up.
 
@@ -12,7 +12,7 @@ npm start
 
 Your site is now running at `http://localhost:8000`!
 
-## 📝 Unit Tests
+## 📝 Unit tests
 
 To run the unit tests, run `npm test` in the terminal. If you would like to 
 have the tests automatically re-run, use `npm run test:watch`.
@@ -31,11 +31,11 @@ We welcome contributions to the New Relic Developer Site. Please review our
 [Contributors Guide](CONTRIBUTING.md) prior to submitting any code. 
 
 
-## 🚦Code of Conduct 
+## 🚦Code of conduct 
 
 Please review and agree to our [Code of Conduct](CODE_OF_CONDUCT.md) prior to submitting any code.
 
-## 🐛 Issues / Enhancement Requests
+## 🐛 Issues / enhancement requests
 
 Please submit any issues or enhancement requests using one of our 
 [Issue Templates](https://github.com/newrelic/developer-website/issues/new/choose). 
