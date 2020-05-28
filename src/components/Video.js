@@ -3,17 +3,15 @@ import PropTypes from 'prop-types';
 
 import styles from './Video.module.scss';
 
-const Video = ({ wistiaId, youtubeId, title }) => {
-  const embedYoutube = youtubeId
-    ? `//www.youtube.com/embed/${youtubeId}?modestbranding=1`
-    : null;
-  const embedWistia = wistiaId
-    ? `//fast.wistia.net/embed/iframe/${wistiaId}`
-    : null;
+const Video = ({ id, type, title }) => {
+  const src = {
+    youtube: `//www.youtube.com/embed/${id}?modestbranding=1`,
+    wistia: `//fast.wistia.net/embed/iframe/${id}`,
+  };
   return (
     <div className={styles.Video}>
       <iframe
-        src={embedYoutube || embedWistia}
+        src={src[type]}
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         title={title}
         frameBorder="0"
@@ -24,9 +22,8 @@ const Video = ({ wistiaId, youtubeId, title }) => {
 };
 
 Video.propTypes = {
-  // NOTE: we should expand this allow for other video sources in the future
-  youtubeId: PropTypes.string,
-  wistiaId: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   title: PropTypes.string,
 };
 
