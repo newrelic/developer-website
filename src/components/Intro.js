@@ -7,7 +7,7 @@ const Intro = ({ children }) => (
 );
 
 Intro.propTypes = {
-  children: Proptypes.node,
+  children: Proptypes.node.isRequired,
 };
 
 export default Intro;
