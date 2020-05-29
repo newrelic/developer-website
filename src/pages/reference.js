@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
+import SEO from '../components/Seo';
 
 import pages from '../data/sidenav.json';
 
@@ -13,6 +14,7 @@ const Reference = () => {
 
   return (
     <Layout>
+      <SEO title="Reference" />
       <Container className="ReferenceTemplate">
         <Sidebar
           pages={pages}
