@@ -9,6 +9,7 @@ import BreadcrumbBar from '../components/BreadcrumbBar';
 import Container from '../components/Container';
 import Video from '../components/Video';
 import Step from '../components/Step';
+import Steps from '../components/Steps';
 import Intro from '../components/Intro';
 
 import createBreadcrumbs from '../utils/create-breadcrumbs';
@@ -18,6 +19,7 @@ import CodeSnippet from '../components/CodeSnippet';
 const components = {
   Video,
   Step,
+  Steps,
   Intro,
   code: (props) => <CodeSnippet {...props} />,
 };

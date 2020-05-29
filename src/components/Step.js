@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './Step.module.scss';
 import Proptypes from 'prop-types';
 
-const Step = ({ children, stepNumber, title }) => (
+const Step = ({ children, number, total, title }) => (
   <div className={styles.wrapper}>
-    {stepNumber && <p className={styles.stepNumber}>{`Step ${stepNumber}`}</p>}
+    <p className={styles.stepNumber}>{`Step ${number} of ${total}`}</p>
     {title && <p className={styles.title}>{title}</p>}
     <div className={styles.container}>{children}</div>
   </div>
@@ -12,7 +12,8 @@ const Step = ({ children, stepNumber, title }) => (
 
 Step.propTypes = {
   children: Proptypes.node.isRequired,
-  stepNumber: Proptypes.string,
+  number: Proptypes.number.isRequired,
+  total: Proptypes.number.isRequired,
   title: Proptypes.string,
 };
 
