@@ -63,6 +63,8 @@ module.exports = {
       options: {
         host: 'https://developer.newrelic.com',
         sitemap: 'https://developer.newrelic.com/sitemap.xml',
+        // NOTE: policy.disallow can take an array of pages or
+        // directories for web crawlers to  ignore.
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
