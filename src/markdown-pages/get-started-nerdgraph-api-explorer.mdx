@@ -7,7 +7,7 @@ template: 'GuideTemplate'
 
 ## What is the NerdGraph API Explorer
 
-NerdGraph is New Relic's [GraphQL](https://graphql.org/) API. With NerdGraph, you can get all the information you need in a single request. No matter how much data you pull into New Relic, our GraphQL API can help you navigate that complexity and gain more insight.
+NerdGraph is New Relic's [GraphQL](https://graphql.org/) API. With NerdGraph, you can get all the information you need in a single request. No matter how much data you pull into New Relic, our GraphQL API can help you navigate that complexity and gain more insight. 
 
 NerdGraph is different from REST APIs in that you don't need to chain together several calls to obtain the required data. Instead, you use the Graph query language to retrieve JSON objects from our graph, which is spread across our many microservices.
 
@@ -15,7 +15,7 @@ The beauty of the NerdGraph API Explorer is that you don't even need to know the
 
 This guide shows you how to use NerdGraph to compose queries, and how to turn them into cURL or New Relic CLI snippets.
 
-## Get Started with NerdGraph API Explorer
+## Before you begin
 
 Go to [api.newrelic.com/graphiql](https://api.newrelic.com/graphiql) and log in using your New Relic user ID and password: the NerdGraph API Explorer load up. Before you begin, make sure you have a valid New Relic API key. You can create one directly from the NerdGraph API Explorer.
 
@@ -23,9 +23,9 @@ Go to [api.newrelic.com/graphiql](https://api.newrelic.com/graphiql) and log in 
 
 The Query Builder is in the left sidebar and lets you search, browse, and select graph fields. The center is the GraphQL query editor, which comes with syntax highlighting and autocompletion. Clicking the play button runs the query; the results appear as JSON on the right sidebar.
 
-## Your first NerdGraph query
+## Build a query to etrieve your name
 
-Time for your first NerdGraph query! Erase everything in the query editor and select the following fields in the query explorer in this order: `actor`, `user`, `name`. This GraphQL snippet appears in the editor:
+Time for your first NerdGraph query! You are going to search for your name in the New Relic database. Erase everything in the query editor and select the following fields in the query explorer in this order: `actor`, `user`, `name`. This GraphQL snippet appears in the editor:
 
 ```jsx
 {
