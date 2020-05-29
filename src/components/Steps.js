@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Steps = ({ children }) => {
   // get the number of steps
@@ -19,6 +20,10 @@ const Steps = ({ children }) => {
       }))}
     </>
   );
+};
+
+Steps.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Steps;
