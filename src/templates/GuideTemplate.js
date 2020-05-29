@@ -34,16 +34,10 @@ const GuideTemplate = ({ data }) => {
     <Layout>
       <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
       <Container>
-        <div>
-          <div>
-            <h1>{frontmatter.title}</h1>
-            <div>
-              <MDXProvider components={components}>
-                <MDXRenderer>{body}</MDXRenderer>
-              </MDXProvider>
-            </div>
-          </div>
-        </div>
+        <h1>{frontmatter.title}</h1>
+        <MDXProvider components={components}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </MDXProvider>
       </Container>
     </Layout>
   );
