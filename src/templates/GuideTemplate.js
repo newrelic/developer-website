@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import BreadcrumbBar from '../components/BreadcrumbBar';
 import Container from '../components/Container';
 import Video from '../components/Video';
+import SEO from '../components/Seo';
 
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
@@ -21,16 +22,18 @@ const components = {
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
   const { frontmatter, body } = mdx;
+  const { title, description } = frontmatter;
 
   const crumbs = createBreadcrumbs(frontmatter.path, pages);
 
   return (
     <Layout>
+      <SEO title={title} description={description} />
       <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
       <Container>
         <div className="guideTemplate-container">
           <div>
-            <h1>{frontmatter.title}</h1>
+            <h1>{title}</h1>
             <div className="guideTemplate-content">
               <MDXProvider components={components}>
                 <MDXRenderer>{body}</MDXRenderer>
@@ -55,6 +58,7 @@ export const pageQuery = graphql`
         duration
         path
         title
+        description
       }
     }
   }
