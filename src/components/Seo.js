@@ -18,7 +18,7 @@ function SEO({ description, lang, meta, title }) {
     `
   );
 
-  const metaTitle = site?.siteMetadata?.title || '';
+  const metaTitle = site.siteMetadata.title || '';
   const metaDescription = description || site.siteMetadata.description;
 
   const globalMetadata = [
