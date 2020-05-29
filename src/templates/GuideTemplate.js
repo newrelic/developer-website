@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import BreadcrumbBar from '../components/BreadcrumbBar';
 import Container from '../components/Container';
 import Video from '../components/Video';
+import SEO from '../components/Seo';
 
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
@@ -26,6 +27,7 @@ const GuideTemplate = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title={frontmatter.title} />
       <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
       <Container>
         <div className="guideTemplate-container">
