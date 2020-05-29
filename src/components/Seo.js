@@ -18,9 +18,10 @@ function SEO({ description, lang, meta, title }) {
     `
   );
 
+  const metaTitle = site?.siteMetadata?.title || '';
   const metaDescription = description || site.siteMetadata.description;
 
-  const siteWideMeta = [
+  const globalMetadata = [
     { name: 'description', content: metaDescription },
     { 'http-equiv': 'Content-Type', content: 'text/html', charset: 'utf-8' },
   ];
@@ -35,27 +36,32 @@ function SEO({ description, lang, meta, title }) {
     { name: 'twitter:description', content: metaDescription },
   ];
 
+  // only add metadata if we have content
+  const validMetadata = [...globalMetadata, ...social, ...meta].filter(
+    (m) => m.content !== ''
+  );
+
   return (
     <Helmet
       htmlAttributes={{ lang }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[...siteWideMeta, ...social, ...meta]}
+      title={title || metaTitle}
+      titleTemplate={title ? `%s | ${metaTitle}` : metaTitle}
+      meta={validMetadata}
     />
   );
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: 'en',
   meta: [],
-  description: ``,
+  description: '',
 };
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default SEO;
