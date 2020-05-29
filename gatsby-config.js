@@ -50,5 +50,12 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: 'GTM-W77XWWH',
+        includeInDevelopment: true,
+      },
+    },
   ],
 };
