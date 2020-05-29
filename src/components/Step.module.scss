@@ -7,19 +7,26 @@
     font-size: 0.75rem;
     color: var(--color-neutrals-600);
   }
-  .title {
-    color: var(--color-neutrals-900);
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
 }
 .container {
   display: flex;
 }
-.container > p {
+.stepDetails {
   margin-right: 1rem;
   width: 50%;
   line-height: 1.5rem;
+  h1:first-child,
+  h2:first-child,
+  h3:first-child,
+  h4:first-child,
+  h5:first-child,
+  h6:first-child {
+    color: var(--color-neutrals-900);
+    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
 }
 .container > pre {
   width: 50%;
