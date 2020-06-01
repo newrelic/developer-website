@@ -1,4 +1,4 @@
-.CallToAction {
+.container {
   font-size: 0.75rem;
   margin: 0 0 5%;
   display: flex;
@@ -74,7 +74,8 @@
     }
   }
 }
-.CallToAction-step {
+
+.step {
   height: 50px;
   width: 50px;
   border-radius: 50%;
