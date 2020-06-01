@@ -3,20 +3,19 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Container from './Container';
 import { link } from '../types';
-
-import './Footer.scss';
+import styles from './Footer.module.scss';
 
 const Footer = ({ pages }) => (
-  <footer className="Footer">
+  <footer className={styles.footer}>
     <Container>
-      <div className="Footer-left">
-        <Link to="/" className="logo Footer-logo" />
-        <div className="Footer-copyright">
+      <div className={styles.leftColumn}>
+        <Link to="/" className={`${styles.logo} logo`} />
+        <div className={styles.copyright}>
           Copyright &copy; 2020 New Relic Inc.
         </div>
       </div>
 
-      <nav role="navigation" aria-label="Footer" className="Footer-nav">
+      <nav role="navigation" aria-label="Footer" className={styles.nav}>
         <ul>
           {pages.map((page, i) => (
             <li key={i}>
