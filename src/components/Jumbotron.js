@@ -2,17 +2,17 @@ import React from 'react';
 import { Link } from 'gatsby';
 import Container from './Container';
 import CallToAction from './CallToAction';
-import './Jumbotron.scss';
+import styles from './Jumbotron.module.scss';
 
 const Jumbotron = () => (
   <Container>
-    <div className="Jumbotron">
+    <div className={styles.jumbotron}>
       <h1 className="indexPage-h1">Create a free account to get started</h1>
-      <div className="Jumbotron-callToAction-container">
+      <div className={styles.callToActionContainer}>
         <CallToAction step="1" text="Create your free account">
           <form>
             <input placeholder="me@observability.com" />
-            <button className="CallToAction-button--signUp" type="submit">
+            <button className={styles.signUpButton} type="submit">
               Sign up
             </button>
           </form>
@@ -29,7 +29,7 @@ const Jumbotron = () => (
           <Link to="/">Create a new API key</Link>
         </CallToAction>
         <CallToAction step="3" text="Install the newrelic CLI">
-          <button className="CallToAction-button--download" type="button">
+          <button className={styles.downloadButton} type="button">
             Download for macOS
           </button>
           <Link to="/">Download for other platforms</Link>
