@@ -1,4 +1,4 @@
-.ReferenceTemplate {
+.container {
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-areas: 'sidebar main';
@@ -7,12 +7,13 @@
     grid-template-columns: none;
     grid-template-areas: 'sidebar' 'main';
   }
-
-  .Sidebar {
-    grid-area: sidebar;
-  }
-
-  .ReferenceTemplate-content {
-    grid-area: main;
-  }
 }
+
+.content {
+  grid-area: main;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+

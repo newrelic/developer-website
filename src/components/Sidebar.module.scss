@@ -1,4 +1,4 @@
-.Sidebar {
+.sidebar {
   padding: 1rem;
 
   ul {
@@ -17,7 +17,7 @@
       text-decoration: underline;
     }
 
-    &.is-active {
+    &.isActive {
       font-weight: bold;
     }
   }
@@ -38,11 +38,6 @@
     }
   }
 
-  .Sidebar-top {
-    display: flex;
-    justify-content: space-between;
-  }
-
   nav {
     margin-top: 1rem;
 
@@ -51,11 +46,16 @@
     }
   }
 
-  &.is-open {
+  &.isOpen {
     nav {
       @media (max-width: 760px) {
         display: block;
       }
     }
   }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
 }

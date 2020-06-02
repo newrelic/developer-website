@@ -1,11 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import styles from './GuideListing.module.scss';
 
 const Description = ({ children, className }) => {
-  return (
-    <p className={cx('GuideListing-description', className)}>{children}</p>
-  );
+  return <p className={cx(styles.description, className)}>{children}</p>;
 };
 
 Description.propTypes = {

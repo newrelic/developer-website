@@ -4,13 +4,13 @@ import { Link } from 'gatsby';
 import cx from 'classnames';
 
 import { link } from '../types';
-import './Sidebar.scss';
+import styles from './Sidebar.module.scss';
 
 // recursively create navigation
 const renderNav = (page, index) => (
   <li key={index}>
     {page.url ? (
-      <Link to={page.url} className={cx({ 'is-active': page.active })}>
+      <Link to={page.url} className={cx({ [styles.isActive]: page.active })}>
         {page.displayName}
       </Link>
     ) : (
@@ -20,13 +20,12 @@ const renderNav = (page, index) => (
   </li>
 );
 
-const Sidebar = ({ pages, isOpen, toggle }) => (
-  <aside className={cx('Sidebar', { 'is-open': isOpen })}>
-    <div className="Sidebar-top">
+const Sidebar = ({ className, pages, isOpen, toggle }) => (
+  <aside className={cx(styles.Sidebar, className, { [styles.isOpen]: isOpen })}>
+    <div className={styles.top}>
       <h3>Pages</h3>
       <button
         aria-expanded={isOpen}
-        className="Sidebar-toggle"
         aria-label="Main Menu Toggle"
         type="button"
         onClick={() => toggle()}
@@ -41,6 +40,7 @@ const Sidebar = ({ pages, isOpen, toggle }) => (
 );
 
 Sidebar.propTypes = {
+  className: PropTypes.string,
   toggle: PropTypes.func.isRequired,
   pages: PropTypes.arrayOf(link).isRequired,
   isOpen: PropTypes.bool,

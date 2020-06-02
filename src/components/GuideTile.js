@@ -1,15 +1,15 @@
-import './GuideTile.scss';
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import { navigate } from 'gatsby';
+import styles from './GuideTile.module.scss';
 
 const GuideTile = ({ minutes, title, description, path, className }) => (
-  <div className={cx('GuideTile', className)}>
-    <div className="GuideTile-timeEstimate">{minutes} minutes</div>
-    <div className="GuideTile-main">
+  <div className={cx(styles.tile, className)}>
+    <div className={styles.timeEstimate}>{minutes} minutes</div>
+    <div className={styles.main}>
       <h2>{title}</h2>
-      <p className="GuideTile-description">{description}</p>
+      <p className={styles.description}>{description}</p>
       <button type="button" onClick={() => navigate(path)}>
         Start the Guide
       </button>

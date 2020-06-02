@@ -5,9 +5,7 @@ import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
 
 import pages from '../data/sidenav.json';
-
-// TODO: move this js file to same directory and update import
-import '../templates/Reference.scss';
+import styles from './reference.module.scss';
 
 const Reference = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,15 +13,14 @@ const Reference = () => {
   return (
     <Layout>
       <SEO title="Reference" />
-      <Container className="ReferenceTemplate">
+      <Container className={styles.container}>
         <Sidebar
+          className={styles.sidebar}
           pages={pages}
           isOpen={isOpen}
           toggle={() => setIsOpen(!isOpen)}
         />
-        <main className="ReferenceTemplate-content">
-          The main page content goes here
-        </main>
+        <main className={styles.content}>The main page content goes here</main>
       </Container>
     </Layout>
   );
