@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  p {
+    width: 50%;
+    color: var(--color-neutrals-600);
+    font-size: 1.125rem;
+    line-height: 2rem;
+    margin-right: 1rem;
+  }
+  div {
+    width: 50%;
+    margin-left: 1rem;
+  }
+}

@@ -8,6 +8,9 @@ import Layout from '../components/Layout';
 import BreadcrumbBar from '../components/BreadcrumbBar';
 import Container from '../components/Container';
 import Video from '../components/Video';
+import Step from '../components/Step';
+import Steps from '../components/Steps';
+import Intro from '../components/Intro';
 import SEO from '../components/Seo';
 
 import createBreadcrumbs from '../utils/create-breadcrumbs';
@@ -16,6 +19,9 @@ import CodeSnippet from '../components/CodeSnippet';
 
 const components = {
   Video,
+  Step,
+  Steps,
+  Intro,
   code: (props) => <CodeSnippet {...props} />,
 };
 
@@ -31,16 +37,10 @@ const GuideTemplate = ({ data }) => {
       <SEO title={title} description={description} />
       <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
       <Container>
-        <div className="guideTemplate-container">
-          <div>
-            <h1>{title}</h1>
-            <div className="guideTemplate-content">
-              <MDXProvider components={components}>
-                <MDXRenderer>{body}</MDXRenderer>
-              </MDXProvider>
-            </div>
-          </div>
-        </div>
+        <h1>{title}</h1>
+        <MDXProvider components={components}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </MDXProvider>
       </Container>
     </Layout>
   );

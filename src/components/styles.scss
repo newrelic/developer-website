@@ -58,6 +58,8 @@ main {
 
 a {
   cursor: pointer;
+  text-decoration: none;
+  color: var(--color-brand-800);
 }
 
 img {
@@ -126,6 +128,18 @@ button,
     background-color: var(--color-white);
     color: var(--color-brand-800);
   }
+}
+
+ul {
+  padding-left: 30px;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--color-neutrals-700);
+  font-size: 1rem;
+}
+
+li {
+  margin-bottom: 1rem;
 }
 
 /*-- Layout Styles --*/
