@@ -20,8 +20,8 @@ const renderNav = (page, index) => (
   </li>
 );
 
-const Sidebar = ({ pages, isOpen, toggle }) => (
-  <aside className={cx(styles.Sidebar, { [styles.isOpen]: isOpen })}>
+const Sidebar = ({ className, pages, isOpen, toggle }) => (
+  <aside className={cx(styles.Sidebar, className, { [styles.isOpen]: isOpen })}>
     <div className={styles.top}>
       <h3>Pages</h3>
       <button
@@ -40,6 +40,7 @@ const Sidebar = ({ pages, isOpen, toggle }) => (
 );
 
 Sidebar.propTypes = {
+  className: PropTypes.string,
   toggle: PropTypes.func.isRequired,
   pages: PropTypes.arrayOf(link).isRequired,
   isOpen: PropTypes.bool,
