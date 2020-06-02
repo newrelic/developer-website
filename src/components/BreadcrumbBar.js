@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import './BreadcrumbBar.scss';
+import styles from './BreadcrumbBar.module.scss';
 import Container from './Container';
 import PropTypes from 'prop-types';
 import { link } from '../types';
 
 const BreadcrumbBar = ({ crumbs, duration }) => (
-  <div className="breadcrumbBar">
+  <div className={styles.container}>
     <Container>
-      <ul className="breadcrumbBar-crumbs">
+      <ul className={styles.crumbs}>
         {crumbs.map((crumb, index) => (
           <li key={index}>
             {crumb.url ? (
@@ -19,7 +19,7 @@ const BreadcrumbBar = ({ crumbs, duration }) => (
           </li>
         ))}
       </ul>
-      {duration && <div className="breadcrumbBar-duration">{duration}</div>}
+      {duration && <div className={styles.duration}>{duration}</div>}
     </Container>
   </div>
 );

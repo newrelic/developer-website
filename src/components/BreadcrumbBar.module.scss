@@ -1,16 +1,16 @@
-.breadcrumbBar {
+.container {
   padding: 1rem 0;
   font-size: 0.9rem;
   width: 100%;
 
-  .u-container {
+  :global(.u-container) {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 }
 
-.breadcrumbBar-crumbs {
+.crumbs {
   display: flex;
   list-style: none;
   margin: 0;
@@ -39,7 +39,7 @@
   }
 }
 
-.breadcrumbBar-duration {
+.duration {
   color: var(--color-neutrals-600);
 
   &:before {
