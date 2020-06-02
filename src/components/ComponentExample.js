@@ -17,7 +17,7 @@ const ComponentExample = ({ className, example }) => (
       theme={github}
     >
       <LivePreview className={styles.preview} />
-      <LiveEditor />
+      <LiveEditor style={{ fontSize: '0.75rem' }} />
       <LiveError className={styles.error} />
     </LiveProvider>
   </div>
