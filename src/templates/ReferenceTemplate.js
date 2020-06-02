@@ -14,7 +14,7 @@ const ReferenceTemplate = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
-  const { title, description } = frontmatter;
+  const { title, description, component } = frontmatter;
 
   return (
     <Layout>
@@ -26,7 +26,9 @@ const ReferenceTemplate = ({ data }) => {
           isOpen={isOpen}
           toggle={() => setIsOpen(!isOpen)}
         />
-        <main className={styles.content}>The main page content goes here</main>
+        <main className={styles.content}>
+          <h1>{component}</h1>
+        </main>
       </Container>
     </Layout>
   );
