@@ -35,7 +35,9 @@ const ReferenceTemplate = ({ data }) => {
           <h1>{component}</h1>
 
           {componentData && componentData.__docs__ && (
-            <ReactMarkdown source={componentData.__docs__.text} />
+            <div className={styles.description}>
+              <ReactMarkdown source={componentData.__docs__.text} />
+            </div>
           )}
         </main>
       </Container>
