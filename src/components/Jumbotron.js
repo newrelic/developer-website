@@ -7,7 +7,7 @@ import styles from './Jumbotron.module.scss';
 const Jumbotron = () => (
   <Container>
     <div className={styles.jumbotron}>
-      <h1 className="indexPage-h1">Create a free account to get started</h1>
+      <h1 className={styles.h1}>Create a free account to get started</h1>
       <div className={styles.callToActionContainer}>
         <CallToAction step="1" text="Create your free account">
           <form>
