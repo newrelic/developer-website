@@ -127,18 +127,3 @@ button,
     color: var(--color-brand-800);
   }
 }
-
-/*-- Layout Styles --*/
-.Layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-  > main {
-    flex: 1 0 auto;
-  }
-
-  > footer {
-    flex-shrink: 0;
-  }
-}
