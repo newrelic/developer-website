@@ -4,6 +4,7 @@ module.exports = {
     description:
       'Do more on our platform and make New Relic your own with APIs, SDKs, code snippets, tutorials, and more developer tools.',
     author: 'New Relic',
+    siteUrl: 'https://developer.newrelic.com',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -68,5 +69,6 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
+    'gatsby-plugin-sitemap',
   ],
 };
