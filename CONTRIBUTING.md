@@ -56,10 +56,14 @@ As a non New Relic Employee you can [Fork](https://help.github.com/en/github/get
 
  PRs that are opened from a branch in this repo (not forks) will generate preview links on Amplify automatically. Amplify preview links can be found within the PR under the `Checks` Tab.
 
+# Style guide adherence 
 
-# Documentation contribution guidelines
+In order to drive consistency in our documentation New Relic has provided a detailed [Style Guide](STYLE_GUIDE.md)
+for you to follow when making contributions. Please refer to this guide prior to contributing. 
 
-Documentation pages are detailed technical specifications of the New Relic One platform and it's components. 
+# Technical reference contribution guidelines
+
+Technical reference pages are detailed technical specifications of the New Relic One platform and it's components. 
 
 When making documentation contributions please follow these guidelines. 
 
@@ -85,8 +89,7 @@ When making documentation contributions please follow these guidelines.
 
 # New Relic educational guides 
 
-New Relic educational guides are detailed product `how-tos` that are use case driven.  
-The purpose of these guides are to explain how to setup and configure a range of different New Relic products based on specific use cases you may have in your organization. 
+New Relic educational guides are detailed product `how-tos` that are use case driven. The purpose of these guides are to explain how to setup and configure a range of different New Relic products based on specific use cases you may have in your organization. 
 
 When making educational guide contributions please follow these guidelines.
 
