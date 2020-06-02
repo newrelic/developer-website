@@ -31,15 +31,19 @@ const ReferenceTemplate = ({ data }) => {
           isOpen={isOpen}
           toggle={() => setIsOpen(!isOpen)}
         />
-        <main className={styles.content}>
-          <h1>{component}</h1>
+        {loaded ? (
+          <main className={styles.content}>
+            <h1>{component}</h1>
 
-          {componentData && componentData.__docs__ && (
-            <div className={styles.description}>
-              <ReactMarkdown source={componentData.__docs__.text} />
-            </div>
-          )}
-        </main>
+            {componentData && componentData.__docs__ && (
+              <div className={styles.description}>
+                <ReactMarkdown source={componentData.__docs__.text} />
+              </div>
+            )}
+          </main>
+        ) : (
+          <p>Loading...</p>
+        )}
       </Container>
     </Layout>
   );
