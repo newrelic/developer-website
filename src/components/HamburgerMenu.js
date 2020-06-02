@@ -4,12 +4,12 @@ import cx from 'classnames';
 
 import './HamburgerMenu.scss';
 
-const HamburgerMenu = ({ toggle, isOpen }) => (
+const HamburgerMenu = ({ className, toggle, isOpen }) => (
   <button
     aria-expanded={isOpen}
     aria-label="Mobile Menu"
     type="button"
-    className={cx('HamburgerMenu', { 'is-open': isOpen })}
+    className={cx('HamburgerMenu', className, { 'is-open': isOpen })}
     onClick={() => toggle()}
   >
     <div />
@@ -19,6 +19,7 @@ const HamburgerMenu = ({ toggle, isOpen }) => (
 );
 
 HamburgerMenu.propTypes = {
+  className: PropTypes.string,
   toggle: PropTypes.func.isRequired,
   isOpen: PropTypes.bool,
 };
