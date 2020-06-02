@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import InlineCodeSnippet from '../components/InlineCodeSnippet';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
@@ -28,6 +29,10 @@ const ReferenceTemplate = ({ data }) => {
         />
         <main className={styles.content}>
           <h1>{component}</h1>
+          <section>
+            <h2>Usage</h2>
+            <InlineCodeSnippet language="js">{`import { ${component} } from 'nr1'`}</InlineCodeSnippet>
+          </section>
         </main>
       </Container>
     </Layout>
