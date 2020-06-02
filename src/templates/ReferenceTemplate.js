@@ -19,6 +19,7 @@ const ReferenceTemplate = ({ data }) => {
   const { frontmatter } = mdx;
   const { title, description, component } = frontmatter;
 
+  if (typeof window === 'undefined') global.window = {};
   const componentData = window?.__NR1_SDK__?.default?.[component];
 
   return (
