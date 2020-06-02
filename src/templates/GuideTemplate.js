@@ -11,6 +11,7 @@ import Video from '../components/Video';
 import Step from '../components/Step';
 import Steps from '../components/Steps';
 import Intro from '../components/Intro';
+import SEO from '../components/Seo';
 
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
@@ -27,14 +28,16 @@ const components = {
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
   const { frontmatter, body } = mdx;
+  const { title, description } = frontmatter;
 
   const crumbs = createBreadcrumbs(frontmatter.path, pages);
 
   return (
     <Layout>
+      <SEO title={title} description={description} />
       <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
       <Container>
-        <h1>{frontmatter.title}</h1>
+        <h1>{title}</h1>
         <MDXProvider components={components}>
           <MDXRenderer>{body}</MDXRenderer>
         </MDXProvider>
@@ -55,6 +58,7 @@ export const pageQuery = graphql`
         duration
         path
         title
+        description
       }
     }
   }

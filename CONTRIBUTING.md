@@ -28,7 +28,7 @@ you can use the Github `Edit This File` button to submit a change.
 
 To be able to [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repository and contribute you will need to be given write access to the repository. This is reserved for New Relic Employees only. Please contact the Developer Experience Team if you need write access.
 
-As a non New Relic Employee you can [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the repository and contribute as needed. 
+As a non New Relic employee you can [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the repository and contribute as needed. 
 
 ## Submitting a PR from a forked repo
 
