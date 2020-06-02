@@ -31,10 +31,10 @@ const GuideTemplate = ({ data }) => {
       <SEO title={title} description={description} />
       <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
       <Container>
-        <div className="guideTemplate-container">
+        <div>
           <div>
             <h1>{title}</h1>
-            <div className="guideTemplate-content">
+            <div>
               <MDXProvider components={components}>
                 <MDXRenderer>{body}</MDXRenderer>
               </MDXProvider>
