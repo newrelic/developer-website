@@ -1,0 +1,23 @@
+.container {
+  :global(.nr1-Docs-prettify) > * {
+    margin-right: 0.5rem;
+
+    &:not(:first-child) {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.error {
+  color: white;
+  background: var(--color-red-400);
+  padding: 0.5rem 1rem;
+}
+
+.preview {
+  margin-bottom: 1rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
