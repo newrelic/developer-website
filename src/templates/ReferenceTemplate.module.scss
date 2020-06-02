@@ -17,3 +17,17 @@
 .sidebar {
   grid-area: sidebar;
 }
+
+.description {
+  border-top: 1px solid var(--color-neutrals-200);
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+
+  ul {
+    padding-top: 0.5rem;
+  }
+
+  li {
+    margin: 0;
+  }
+}
