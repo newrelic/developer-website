@@ -24,7 +24,7 @@
     }
   }
 
-  :global(.HamburgerMenu) {
+  .hamburgerMenu {
     display: none;
     grid-area: menu;
     align-items: end;

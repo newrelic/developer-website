@@ -1,4 +1,4 @@
-button.HamburgerMenu {
+button.hamburgerMenu {
   background: none;
   border: 0;
   cursor: pointer;
@@ -13,7 +13,7 @@ button.HamburgerMenu {
     transition: 0.18s;
   }
 
-  &.is-open {
+  &.isOpen {
     :nth-child(1) {
       transform: rotate(-45deg) translate(-6.5px, 6.5px);
     }

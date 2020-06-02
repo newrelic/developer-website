@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-
-import './HamburgerMenu.scss';
+import styles from './HamburgerMenu.module.scss';
 
 const HamburgerMenu = ({ className, toggle, isOpen }) => (
   <button
     aria-expanded={isOpen}
     aria-label="Mobile Menu"
     type="button"
-    className={cx('HamburgerMenu', className, { 'is-open': isOpen })}
+    className={cx(styles.hamburgerMenu, className, { [styles.isOpen]: isOpen })}
     onClick={() => toggle()}
   >
     <div />

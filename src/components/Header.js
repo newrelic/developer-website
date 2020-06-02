@@ -46,7 +46,11 @@ const Header = ({ pages }) => {
           <Link to="/" className={cx(styles.logo, styles.titleLogo)} />
         </h1>
 
-        <HamburgerMenu toggle={() => setIsOpen(!isOpen)} isOpen={isOpen} />
+        <HamburgerMenu
+          className={styles.hamburgerMenu}
+          toggle={() => setIsOpen(!isOpen)}
+          isOpen={isOpen}
+        />
 
         <nav role="navigation" aria-label="Main" className={styles.navMain}>
           <h3 className={styles.hideOnDesktop}>Developers</h3>
