@@ -38,7 +38,11 @@ const ReferenceTemplate = ({ data }) => {
             <h2>Examples</h2>
             <section>
               {examples.map((example, i) => (
-                <ComponentExample key={i} example={example} />
+                <ComponentExample
+                  key={i}
+                  className={styles.componentExample}
+                  example={example}
+                />
               ))}
             </section>
           </section>

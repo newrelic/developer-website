@@ -17,3 +17,7 @@
 .sidebar {
   grid-area: sidebar;
 }
+
+.componentExample:not(:last-child) {
+  margin-bottom: 2rem;
+}
