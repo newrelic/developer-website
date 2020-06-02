@@ -174,7 +174,7 @@
 
     @media (max-width: 760px) {
       width: 100%;
-      padding-left: 1.5rem;
+      padding-left: 1.5rem !important;
       opacity: 1;
       color: var(--color-neutrals-900);
       margin-bottom: 1rem;
