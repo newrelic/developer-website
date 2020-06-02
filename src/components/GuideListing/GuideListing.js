@@ -1,14 +1,13 @@
-import './GuideListing.scss';
-
 import Container from '../Container';
 import Heading from './Heading';
 import Description from './Description';
 import List from './List';
 import PropTypes from 'prop-types';
 import React from 'react';
+import styles from './GuideListing.module.scss';
 
 const GuideListing = ({ children }) => (
-  <div className="GuideListing">
+  <div className={styles.guideListing}>
     <Container>{children}</Container>
   </div>
 );
