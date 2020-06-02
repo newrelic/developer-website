@@ -61,6 +61,7 @@ body {
   font-family: var(--primary-font-family);
   color: var(--color-black);
   background-color: var(--color-white);
+  line-height: 1.2;
 }
 
 main {
@@ -89,6 +90,7 @@ h3,
 h4,
 h5,
 h6 {
+  margin-top: revert;
   margin-bottom: 8px;
   font-weight: 600;
   color: var(--color-neutrals-800);
@@ -152,4 +154,3 @@ ul {
 li {
   margin-bottom: 1rem;
 }
-
