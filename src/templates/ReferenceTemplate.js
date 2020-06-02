@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Container from '../components/Container';
+import ComponentExample from '../components/ComponentExample';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
+import useSdk from '../hooks/useSdk';
 
 import pages from '../data/sidenav.json';
 
@@ -14,7 +16,11 @@ const ReferenceTemplate = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
-  const { title, description, component } = frontmatter;
+  const { title, description } = frontmatter;
+  useSdk();
+
+  const component = window.__NR1_SDK__?.default[frontmatter.component];
+  const examples = component?.__docs__.tags.examples || [];
 
   return (
     <Layout>
@@ -27,7 +33,15 @@ const ReferenceTemplate = ({ data }) => {
           toggle={() => setIsOpen(!isOpen)}
         />
         <main className={styles.content}>
-          <h1>{component}</h1>
+          <h1>{frontmatter.component}</h1>
+          <section>
+            <h2>Examples</h2>
+            <section>
+              {examples.map((example, i) => (
+                <ComponentExample key={i} example={example} />
+              ))}
+            </section>
+          </section>
         </main>
       </Container>
     </Layout>
