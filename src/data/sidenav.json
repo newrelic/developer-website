@@ -1,20 +1,25 @@
 [
   {
     "displayName": "Guides",
-    "url": "/guides"
-  },
-  {
-    "displayName": "Foo",
+    "url": "/guides",
     "children": [
       {
-        "displayName": "Baz",
-        "url": "/foo/baz",
-        "children": []
-      },
+        "displayName": "Example",
+        "url": "/guides/example"
+      }
+    ]
+  },
+  {
+    "displayName": "UI Components",
+    "children": [
       {
-        "displayName": "Bar",
-        "url": "/foo/bar",
-        "children": []
+        "displayName": "Form Components",
+        "children": [
+          {
+            "displayName": "Button",
+            "url": "/components/button"
+          }
+        ]
       }
     ]
   }
