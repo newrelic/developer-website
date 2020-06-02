@@ -7,7 +7,7 @@ import styles from './Footer.module.scss';
 
 const Footer = ({ pages }) => (
   <footer className={styles.footer}>
-    <Container>
+    <Container className={styles.container}>
       <div className={styles.leftColumn}>
         <Link to="/" className={`${styles.logo} logo`} />
         <div className={styles.copyright}>

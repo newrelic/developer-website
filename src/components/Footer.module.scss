@@ -5,15 +5,15 @@
   color: var(--footer-text-color);
   padding: 1.5rem 0;
   margin-top: 10rem;
+}
 
-  :global(.u-container) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    @media (max-width: 760px) {
-      justify-content: center;
-    }
+  @media (max-width: 760px) {
+    justify-content: center;
   }
 }
 

@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import { link } from '../types';
 
 const BreadcrumbBar = ({ crumbs, duration }) => (
-  <div className={styles.container}>
-    <Container>
+  <div className={styles.breadcrumbBar}>
+    <Container className={styles.container}>
       <ul className={styles.crumbs}>
         {crumbs.map((crumb, index) => (
           <li key={index}>

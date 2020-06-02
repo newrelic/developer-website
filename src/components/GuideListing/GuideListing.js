@@ -8,7 +8,7 @@ import styles from './GuideListing.module.scss';
 
 const GuideListing = ({ children }) => (
   <div className={styles.guideListing}>
-    <Container>{children}</Container>
+    <Container className={styles.container}>{children}</Container>
   </div>
 );
 

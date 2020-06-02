@@ -14,16 +14,6 @@
     );
   }
 
-  :global(.u-container) {
-    display: grid;
-    grid-template-areas: 'nr nr tools' 'title main main';
-
-    @media (max-width: 760px) {
-      grid-template-columns: 1fr 4rem;
-      grid-template-areas: 'title menu' 'nr nr' 'main main' 'tools tools';
-    }
-  }
-
   .hamburgerMenu {
     display: none;
     grid-area: menu;
@@ -88,6 +78,16 @@
     @media (max-width: 760px) {
       display: block;
     }
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-areas: 'nr nr tools' 'title main main';
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr 4rem;
+    grid-template-areas: 'title menu' 'nr nr' 'main main' 'tools tools';
   }
 }
 

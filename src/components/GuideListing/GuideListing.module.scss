@@ -1,12 +1,12 @@
 .guideListing {
   position: relative;
   margin-top: 2rem;
+}
 
-  :global(.u-container) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .heading {

@@ -14,7 +14,7 @@ const Header = ({ pages }) => {
 
   return (
     <header className={cx(styles.main, { [styles.isOpen]: isOpen })}>
-      <Container>
+      <Container className={styles.container}>
         <nav role="navigation" aria-label="New Relic" className={styles.navNr}>
           <h3 className={styles.hideOnDesktop}>Sites</h3>
           <ul>
