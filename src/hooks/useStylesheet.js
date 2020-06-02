@@ -10,7 +10,7 @@ const useStylesheet = (src) => {
     link.crossOrigin = 'anonymous';
     link.onload = () => setLoaded(true);
     link.href = src;
-    document.head.appendChild(link);
+    document.head.prepend(link);
 
     return () => document.head.removeChild(link);
   }, [src]);
