@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import InlineCodeSnippet from '../components/InlineCodeSnippet';
+import ReactMarkdown from 'react-markdown';
 import Container from '../components/Container';
+import ComponentExample from '../components/ComponentExample';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
@@ -11,11 +14,21 @@ import pages from '../data/sidenav.json';
 
 import styles from './ReferenceTemplate.module.scss';
 
+const previewStyles = {
+  Spinner: {
+    height: '16px',
+  },
+};
+
 const ReferenceTemplate = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
   const { title, description, component } = frontmatter;
+
+  if (typeof window === 'undefined') global.window = {};
+  const componentData = window?.__NR1_SDK__?.default?.[component];
+  const examples = componentData?.__docs__.tags.examples || [];
 
   return (
     <Layout>
@@ -29,10 +42,33 @@ const ReferenceTemplate = ({ data }) => {
         />
         <main className={styles.content}>
           <h1>{component}</h1>
-          <section>
-            <h2>Usage</h2>
-            <InlineCodeSnippet language="js">{`import { ${component} } from 'nr1'`}</InlineCodeSnippet>
-          </section>
+          {componentData && componentData.__docs__ && (
+            <>
+              <section className={cx(styles.section, styles.description)}>
+                <ReactMarkdown source={componentData.__docs__.text} />
+              </section>
+              <section>
+                <h2>Usage</h2>
+                <InlineCodeSnippet language="js">{`import { ${component} } from 'nr1'`}</InlineCodeSnippet>
+              </section>
+              {examples.length > 0 && (
+                <section className={styles.section}>
+                  <h2>Examples</h2>
+                  <div>
+                    {examples.map((example, i) => (
+                      <ComponentExample
+                        key={i}
+                        useToastManager={component === 'Toast'}
+                        className={styles.componentExample}
+                        example={example}
+                        previewStyle={previewStyles[component]}
+                      />
+                    ))}
+                  </div>
+                </section>
+              )}
+            </>
+          )}
         </main>
       </Container>
     </Layout>
