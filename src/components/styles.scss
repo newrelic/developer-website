@@ -51,17 +51,21 @@
 /*-- Reset --*/
 // https://github.com/necolas/normalize.css
 html {
-  line-height: 1.15;
+  line-height: 1.15 !important; // Prevent the SDK from overridding this value
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  font-size: 16px;
-  font-family: var(--primary-font-family);
-  color: var(--color-black);
+  font-size: 16px !important; // Prevent the SDK from overridding this value
+  font-family: var(
+    --primary-font-family
+  ) !important; // Prevent the SDK from overridding this value
+  color: var(
+    --color-black
+  ) !important; // Prevent the SDK from overridding this value
   background-color: var(--color-white);
-  line-height: 1.2;
+  line-height: 1.2 !important; // Prevent the SDK from overridding this value
 }
 
 main {

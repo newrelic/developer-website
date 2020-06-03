@@ -7,18 +7,6 @@
 // This is needed to ensure the NR1 SDK can load properly
 const React = require('react');
 
-const sdkStyleOverrides = `
-html {
-  line-height: 1.15;
-}
-
-body {
-  font-size: 16px;
-  line-height: 1.2;
-  color: var(--color-black);
-}
-`;
-
 exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
   replaceHeadComponents([
     ...getHeadComponents(),
@@ -47,8 +35,5 @@ exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
       crossOrigin="anonymous"
       src="//nr1.nr-assets.net/lib/d3/3.5.17/d3.js"
     />,
-    <style key="sdk-overrides" id="sdk-overrides">
-      {sdkStyleOverrides}
-    </style>,
   ]);
 };
