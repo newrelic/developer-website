@@ -13,6 +13,23 @@
     "displayName": "UI Components",
     "children": [
       {
+        "displayName": "Text Components",
+        "children": [
+          {
+            "displayName": "BlockText",
+            "url": "/components/block-text"
+          },
+          {
+            "displayName": "HeadingText",
+            "url": "/components/heading-text"
+          },
+          {
+            "displayName": "Link",
+            "url": "/components/link"
+          }
+        ]
+      },
+      {
         "displayName": "Form Components",
         "children": [
           {
