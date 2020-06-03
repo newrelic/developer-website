@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
+import styles from './PropList.module.scss';
 import { SPECIAL_NUMBERS } from '../utils/propConstants';
 
 const toStaticName = (propName) =>
@@ -169,14 +170,17 @@ const PropList = ({ component }) => {
         );
 
         return (
-          <div key={name}>
-            <hr />
-            <h3>{name}</h3>
-            <div>{type.displayType}</div>
-            <ReactMarkdown source={desc} />
-            {defaultValue !== undefined && (
-              <div>default: {String(defaultValue)}</div>
-            )}
+          <div key={name} className={styles.container}>
+            <div>
+              <h3>{name}</h3>
+              <div>{type.displayType}</div>
+              {defaultValue !== undefined && (
+                <div>default: {String(defaultValue)}</div>
+              )}
+            </div>
+            <div>
+              <ReactMarkdown source={desc} />
+            </div>
           </div>
         );
       })}
