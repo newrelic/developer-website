@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import formatCode from '../utils/formatCode';
 import github from 'prism-react-renderer/themes/github';
@@ -10,12 +10,21 @@ import { CSS_BUNDLE } from '../utils/sdk';
 const TRAILING_SEMI = /;\s*$/;
 
 const EXAMPLE_CSS = `
+.nr1-Component-Example {
+  line-height: 1.36;
+  font-weight: 400;
+  background-color: #fff;
+  color: #000e0e;
+  font-size: 12px;
+  font-family: Open Sans,Segoe UI,Tahoma,sans-serif;
+}
+
 .nr1-Docs-prettify > * {
   margin-right: 0.5rem;
+}
 
-  &:not(:first-child) {
-    margin-left: 0.5rem;
-  }
+.nr1-Docs-prettify > *:not(:first-child) {
+  margin-left: 0.5rem;
 }
 
 .nr1-RedBox {
@@ -34,6 +43,7 @@ const EXAMPLE_CSS = `
 `;
 
 const ComponentExample = ({ className, example }) => {
+  const [stylesLoaded, setStylesLoaded] = useState(false);
   let formattedCode;
 
   try {
@@ -58,10 +68,18 @@ const ComponentExample = ({ className, example }) => {
         disabled={!example.options.live}
       >
         {example.options.live && (
-          <root.div>
-            <link rel="stylesheet" href={CSS_BUNDLE} />
+          <root.div className={styles.preview}>
+            <link
+              rel="stylesheet"
+              href={CSS_BUNDLE}
+              onLoad={() => setStylesLoaded(true)}
+            />
             <style type="text/css">{EXAMPLE_CSS}</style>
-            <LivePreview className={styles.preview} />
+            {stylesLoaded ? (
+              <LivePreview className="nr1-Component-Example" />
+            ) : (
+              'Loading...'
+            )}
           </root.div>
         )}
         <LiveEditor style={{ fontSize: '0.75rem' }} />
