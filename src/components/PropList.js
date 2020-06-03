@@ -90,11 +90,12 @@ const processType = (component, componentName, propName, __reflect__) => {
     case 'oneOfType':
       displayType = args[0].map(mapArgsToTypes).join('|');
       break;
-    case 'arrayOf':
+    case 'arrayOf': {
       const arrayTypes = args.map(mapArgsToTypes).toString();
       displayType =
         arrayTypes.indexOf('|') >= 0 ? `(${arrayTypes})[]` : `${arrayTypes}[]`;
       break;
+    }
     case 'func':
       displayType = 'function';
       break;
@@ -139,7 +140,7 @@ const getDefaultValue = (
   // Find default enum if exists
   if (isOneOf && defaultValue !== undefined) {
     const defaultValueStaticName = Object.entries(component[staticName]).find(
-      ([_, value]) => value === defaultValue
+      (name) => name[1] === defaultValue
     )[0];
 
     defaultValue = `${componentName}.${staticName}.${defaultValueStaticName}`;
@@ -206,7 +207,7 @@ const PropList = ({ component }) => {
 
 // TODO: can this be better defined?
 PropList.propTypes = {
-  component: PropTypes.any,
+  component: PropTypes.func,
 };
 
 export default PropList;
