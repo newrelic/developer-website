@@ -46,18 +46,20 @@ const ReferenceTemplate = ({ data }) => {
                 <section className={cx(styles.section, styles.description)}>
                   <ReactMarkdown source={componentData.__docs__.text} />
                 </section>
-                <section className={styles.section}>
-                  <h2>Examples</h2>
-                  <div>
-                    {examples.map((example, i) => (
-                      <ComponentExample
-                        key={i}
-                        className={styles.componentExample}
-                        example={example}
-                      />
-                    ))}
-                  </div>
-                </section>
+                {examples.length > 0 && (
+                  <section className={styles.section}>
+                    <h2>Examples</h2>
+                    <div>
+                      {examples.map((example, i) => (
+                        <ComponentExample
+                          key={i}
+                          className={styles.componentExample}
+                          example={example}
+                        />
+                      ))}
+                    </div>
+                  </section>
+                )}
               </>
             )}
           </main>
