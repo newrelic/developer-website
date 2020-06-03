@@ -1,18 +1,49 @@
-# Table of Contents 
-<!-- toc -->
-
-@TODO Finish the TOC using markdown-toc
-
-<!-- tocstop -->
-<!-- - [Welcome](#Welcome!)
-- [Github & Gatsby](#GitHub&Gatsby)
-- [What can I contribute?](#What-can-I-contribute)
-- [Heading](#heading-1)
-  * [Sub-heading](#sub-heading-1)
-    + [Sub-sub-heading](#sub-sub-heading-1)
-- [Heading](#heading-2)
-  * [Sub-heading](#sub-heading-2)
-    + [Sub-sub-heading](#sub-sub-heading-2) -->
+# Table of Contents
+- [Welcome!](#welcome)
+- [GitHub & Gatsby](#github--gatsby)
+- [What can I contribute?](#what-can-i-contribute)
+  * [Technical references](#technical-references)
+  * [Education guides](#education-guides)
+  * [Content Pages](#content-pages)
+- [Writing Process](#writing-process)
+  * [Consider the New Relic "voice"](#consider-the-new-relic-voice)
+  * [Think of your audience](#think-of-your-audience)
+    + [For Educational guides](#for-educational-guides)
+    + [For Technical references](#for-technical-references)
+  * [Prepare to write](#prepare-to-write)
+  * [Write drafts and get feedback](#write-drafts-and-get-feedback)
+- [Word Choice](#word-choice)
+  * [Use you as the pronoun](#use-you-as-the-pronoun)
+  * [Avoid Gender specific pronouns](#avoid-gender-specific-pronouns)
+  * [Avoid "easy" and "simple"](#avoid-easy-and-simple)
+  * [Avoid emojis, slang, and metaphors](#avoid-emojis-slang-and-metaphors)
+  * [Define jargon](#define-jargon)
+- [Writing Style](#writing-style)
+  * [Write concisely](#write-concisely)
+  * [Use clear hyperlinks](#use-clear-hyperlinks)
+  * [Use relative hyperlinks for local links](#use-relative-hyperlinks-for-local-links)
+  * [Mark localhost URLs as code strings](#mark-localhost-urls-as-code-strings)
+  * [Indicate when something is optional](#indicate-when-something-is-optional)
+  * [Abbreviate terms](#abbreviate-terms)
+  * [Use SEO optimized titles and descriptions](#use-seo-optimized-titles-and-descriptions)
+  * [Using Gatsby templates](#using-gatsby-templates)
+    + [Types of templates](#types-of-templates)
+  * [Using Frontmatter](#using-frontmatter)
+    + [Frontmatter slugs](#frontmatter-slugs)
+    + [Frontmatter example](#frontmatter-example)
+- [Grammar and formatting](#grammar-and-formatting)
+  * [Format titles](#format-titles)
+  * [Format headers](#format-headers)
+  * [Format code blocks, inline code, videos, and images](#format-code-blocks-inline-code-videos-and-images)
+    + [Inline code and code blocks](#inline-code-and-code-blocks)
+    + [Adding images](#adding-images)
+    + [Adding videos](#adding-videos)
+  * [Capitalize proper nouns](#capitalize-proper-nouns)
+  * [Use active voice](#use-active-voice)
+  * [Make lists clear with the Oxford Comma](#make-lists-clear-with-the-oxford-comma)
+  * [Prefer US English](#prefer-us-english)
+  * [Recommended code editors](#recommended-code-editors)
+- [References](#references)
 
 # Welcome!
 
@@ -324,4 +355,4 @@ Markdown very easy.
 
 # References
 
-This style guide was based on the [Gatsby Style Guide](https://www.gatsbyjs.org/contributing/gatsby-style-guide/#writing-process). 
+This style guide was based on the [Gatsby Style Guide](https://www.gatsbyjs.org/contributing/gatsby-style-guide/#writing-process).
