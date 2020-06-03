@@ -75,6 +75,19 @@
             "url": "/components/toast"
           }
         ]
+      },
+      {
+        "displayName": "Overlaid Components",
+        "children": [
+          {
+            "displayName": "Modal",
+            "url": "/components/modal"
+          },
+          {
+            "displayName": "Tooltip",
+            "url": "/components/tooltip"
+          }
+        ]
       }
     ]
   }
