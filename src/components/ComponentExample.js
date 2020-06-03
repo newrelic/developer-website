@@ -56,7 +56,12 @@ const EXAMPLE_CSS = `
 }
 `;
 
-const ComponentExample = ({ className, example, useToastManager }) => {
+const ComponentExample = ({
+  className,
+  example,
+  useToastManager,
+  previewStyle,
+}) => {
   const [stylesLoaded, setStylesLoaded] = useState(false);
   const ToastManager = window.__NR1_SDK__.ToastManager;
   let formattedCode;
@@ -96,7 +101,10 @@ const ComponentExample = ({ className, example, useToastManager }) => {
               </div>
             )}
             {stylesLoaded ? (
-              <LivePreview className="nr1-ComponentExample" />
+              <LivePreview
+                className="nr1-ComponentExample"
+                style={previewStyle}
+              />
             ) : (
               'Loading...'
             )}
@@ -116,6 +124,8 @@ ComponentExample.propTypes = {
     sourceCode: PropTypes.string.isRequired,
     options: PropTypes.object.isRequired,
   }).isRequired,
+  useToastManager: PropTypes.bool,
+  previewStyle: PropTypes.object,
 };
 
 export default ComponentExample;

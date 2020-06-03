@@ -71,6 +71,10 @@
             "url": "/components/icon"
           },
           {
+            "displayName": "Spinner",
+            "url": "/components/spinner"
+          },
+          {
             "displayName": "Toast",
             "url": "/components/toast"
           }

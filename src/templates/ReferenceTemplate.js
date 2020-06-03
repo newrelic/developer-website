@@ -13,6 +13,12 @@ import pages from '../data/sidenav.json';
 
 import styles from './ReferenceTemplate.module.scss';
 
+const previewStyles = {
+  Spinner: {
+    height: '16px',
+  },
+};
+
 const ReferenceTemplate = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
@@ -51,6 +57,7 @@ const ReferenceTemplate = ({ data }) => {
                         useToastManager={component === 'Toast'}
                         className={styles.componentExample}
                         example={example}
+                        previewStyle={previewStyles[component]}
                       />
                     ))}
                   </div>
