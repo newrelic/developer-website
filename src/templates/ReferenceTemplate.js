@@ -8,14 +8,12 @@ import ComponentExample from '../components/ComponentExample';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
-import useSdk from '../hooks/useSdk';
 
 import pages from '../data/sidenav.json';
 
 import styles from './ReferenceTemplate.module.scss';
 
 const ReferenceTemplate = ({ data }) => {
-  const loaded = useSdk();
   const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
@@ -24,8 +22,6 @@ const ReferenceTemplate = ({ data }) => {
   if (typeof window === 'undefined') global.window = {};
   const componentData = window?.__NR1_SDK__?.default?.[component];
   const examples = componentData?.__docs__.tags.examples || [];
-
-  useSdk();
 
   return (
     <Layout>
@@ -37,35 +33,31 @@ const ReferenceTemplate = ({ data }) => {
           isOpen={isOpen}
           toggle={() => setIsOpen(!isOpen)}
         />
-        {loaded ? (
-          <main className={styles.content}>
-            <h1>{component}</h1>
+        <main className={styles.content}>
+          <h1>{component}</h1>
 
-            {componentData && componentData.__docs__ && (
-              <>
-                <section className={cx(styles.section, styles.description)}>
-                  <ReactMarkdown source={componentData.__docs__.text} />
+          {componentData && componentData.__docs__ && (
+            <>
+              <section className={cx(styles.section, styles.description)}>
+                <ReactMarkdown source={componentData.__docs__.text} />
+              </section>
+              {examples.length > 0 && (
+                <section className={styles.section}>
+                  <h2>Examples</h2>
+                  <div>
+                    {examples.map((example, i) => (
+                      <ComponentExample
+                        key={i}
+                        className={styles.componentExample}
+                        example={example}
+                      />
+                    ))}
+                  </div>
                 </section>
-                {examples.length > 0 && (
-                  <section className={styles.section}>
-                    <h2>Examples</h2>
-                    <div>
-                      {examples.map((example, i) => (
-                        <ComponentExample
-                          key={i}
-                          className={styles.componentExample}
-                          example={example}
-                        />
-                      ))}
-                    </div>
-                  </section>
-                )}
-              </>
-            )}
-          </main>
-        ) : (
-          <p>Loading...</p>
-        )}
+              )}
+            </>
+          )}
+        </main>
       </Container>
     </Layout>
   );
