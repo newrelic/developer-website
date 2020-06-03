@@ -114,6 +114,14 @@
       {
         "displayName": "AccountStorageMutation",
         "url": "/components/account-storage-mutation"
+      },
+      {
+        "displayName": "NerdGraphQuery",
+        "url": "/components/nerd-graph-query"
+      },
+      {
+        "displayName": "NrqlQuery",
+        "url": "/components/nrql-query"
       }
     ]
   }
