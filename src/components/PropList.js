@@ -9,8 +9,9 @@ const toStaticName = (propName) =>
     .replace('.', '_')
     .toUpperCase();
 
-// TODO: do we need this?
-const processPropType = (component, propName, propDocs, propMeta) => {
+const processPropType = (component, propName, prop) => {
+  const propDocs = prop.__docs__;
+  const propMeta = prop.__reflect__;
   const type = processType(component, propName, propMeta);
 
   const staticName = toStaticName(propName);
@@ -63,12 +64,7 @@ const processType = (component, propName, propMeta) => {
     return displayType;
   };
   const mapArgsToShapes = ([name, prop]) => ({
-    ...processPropType(
-      component,
-      `${propName}.${name}`,
-      prop.__docs__,
-      prop.__reflect__
-    ),
+    ...processPropType(component, `${propName}.${name}`, prop),
     name,
   });
 
