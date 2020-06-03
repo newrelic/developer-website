@@ -98,5 +98,23 @@
         ]
       }
     ]
+  },
+  {
+    "displayName": "Charts",
+    "children": [
+      {
+        "displayName": "AreaChart",
+        "url": "/components/area-chart"
+      }
+    ]
+  },
+  {
+    "displayName": "Query and storage",
+    "children": [
+      {
+        "displayName": "AccountStorageMutation",
+        "url": "/components/account-storage-mutation"
+      }
+    ]
   }
 ]
