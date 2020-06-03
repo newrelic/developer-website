@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useStylesheet = (src, { insertBefore } = {}) => {
+const useStylesheet = (src) => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -10,15 +10,10 @@ const useStylesheet = (src, { insertBefore } = {}) => {
     link.crossOrigin = 'anonymous';
     link.onload = () => setLoaded(true);
     link.href = src;
-
-    if (insertBefore) {
-      document.head.insertBefore(link, document.getElementById(insertBefore));
-    } else {
-      document.body.appendChild(link);
-    }
+    document.head.prepend(link);
 
     return () => document.head.removeChild(link);
-  }, [src, insertBefore]);
+  }, [src]);
 
   return loaded;
 };
