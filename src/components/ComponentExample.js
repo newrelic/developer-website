@@ -41,11 +41,11 @@ const EXAMPLE_CSS = `
   margin-left: 0.5rem;
 }
 
-.nr1-RedBox {
-  color: red;
-  background: rgba(255, 0, 0, 0.15);
-  box-shadow: inset 0 0 0 1px rgba(255, 0, 0, 0.5);
-
+.nr1-Box,
+.nr1-RedBox,
+.nr1-Box--a,
+.nr1-Box--b,
+.nr1-Box--c {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,6 +53,41 @@ const EXAMPLE_CSS = `
   padding: 0.5rem;
   width: 100%;
   height: 100%;
+}
+
+.nr1-RedBox {
+  color: red;
+  background: rgba(255, 0, 0, 0.15);
+  box-shadow: inset 0 0 0 1px rgba(255, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+[class^=nr1-Example--stack--direction],
+[class^=nr1-Example--stack--horizontal],
+[class^=nr1-Example--stack--gap],
+[class^=nr1-Example--stack--vertical] {
+  margin-bottom: 1.25rem;
+}
+
+.nr1-Example--stack--title {
+  display: block;
+  font-size: 1.5em;
+  margin-bottom: 1.25rem;
+}
+
+.nr1-Box--a {
+  min-height: 70px;
+  min-width: 70px;
+}
+
+.nr1-Box--b {
+  min-height: 90px;
+  min-width: 40px;
+}
+
+.nr1-Box--c {
+  min-height: 40px;
+  min-width: 90px;
 }
 `;
 

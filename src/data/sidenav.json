@@ -47,6 +47,10 @@
           {
             "displayName": "Grid",
             "url": "/components/grid"
+          },
+          {
+            "displayName": "Stack",
+            "url": "/components/stack"
           }
         ]
       },
