@@ -8,10 +8,9 @@ import ComponentExample from '../components/ComponentExample';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
-
 import pages from '../data/sidenav.json';
-
 import styles from './ReferenceTemplate.module.scss';
+import useComponentDoc from '../hooks/useComponentDoc';
 
 const previewStyles = {
   Spinner: {
@@ -24,10 +23,9 @@ const ReferenceTemplate = ({ data }) => {
   const { mdx } = data;
   const { frontmatter } = mdx;
   const { title, description, component } = frontmatter;
-
-  if (typeof window === 'undefined') global.window = {};
-  const componentData = window?.__NR1_SDK__?.default?.[component];
-  const examples = componentData?.__docs__.tags.examples || [];
+  const { examples, description: componentDescription } = useComponentDoc(
+    component
+  );
 
   return (
     <Layout>
@@ -42,28 +40,24 @@ const ReferenceTemplate = ({ data }) => {
         <main className={styles.content}>
           <h1>{component}</h1>
 
-          {componentData && componentData.__docs__ && (
-            <>
-              <section className={cx(styles.section, styles.description)}>
-                <ReactMarkdown source={componentData.__docs__.text} />
-              </section>
-              {examples.length > 0 && (
-                <section className={styles.section}>
-                  <h2>Examples</h2>
-                  <div>
-                    {examples.map((example, i) => (
-                      <ComponentExample
-                        key={i}
-                        useToastManager={component === 'Toast'}
-                        className={styles.componentExample}
-                        example={example}
-                        previewStyle={previewStyles[component]}
-                      />
-                    ))}
-                  </div>
-                </section>
-              )}
-            </>
+          <section className={cx(styles.section, styles.description)}>
+            <ReactMarkdown source={componentDescription} />
+          </section>
+          {examples.length > 0 && (
+            <section className={styles.section}>
+              <h2>Examples</h2>
+              <div>
+                {examples.map((example, i) => (
+                  <ComponentExample
+                    key={i}
+                    useToastManager={component === 'Toast'}
+                    className={styles.componentExample}
+                    example={example}
+                    previewStyle={previewStyles[component]}
+                  />
+                ))}
+              </div>
+            </section>
           )}
         </main>
       </Container>
