@@ -116,6 +116,10 @@
         "url": "/components/account-storage-mutation"
       },
       {
+        "displayName": "AccountsQuery",
+        "url": "/components/accounts-query"
+      },
+      {
         "displayName": "NerdGraphQuery",
         "url": "/components/nerd-graph-query"
       },
