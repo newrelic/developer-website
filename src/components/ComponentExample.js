@@ -30,8 +30,9 @@ const ComponentExample = ({ className, example }) => {
         }}
         code={formattedCode}
         theme={github}
+        disabled={!example.options.live}
       >
-        <LivePreview className={styles.preview} />
+        {example.options.live && <LivePreview className={styles.preview} />}
         <LiveEditor style={{ fontSize: '0.75rem' }} />
         <LiveError className={styles.error} />
       </LiveProvider>
@@ -44,6 +45,7 @@ ComponentExample.propTypes = {
   example: PropTypes.shape({
     label: PropTypes.string.isRequired,
     sourceCode: PropTypes.string.isRequired,
+    options: PropTypes.object.isRequired,
   }).isRequired,
 };
 
