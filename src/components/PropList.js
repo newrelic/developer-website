@@ -42,7 +42,7 @@ const processPropType = (component, propName, prop) => {
   };
 };
 
-// TODO: refactor
+// TODO: refactor: remove switch? remove let usage? breakdown into smaller functions?
 const processType = (component, propName, propMeta) => {
   const propTypeName = propMeta[1].name;
   const isOneOf = propTypeName === 'oneOf';
@@ -105,7 +105,7 @@ const processType = (component, propName, propMeta) => {
   };
 };
 
-// TODO: refactor
+// TODO: refactor: remove let? earlier / opportunistic returns?
 const getDefaultValue = (component, propName, isOneOf, staticName) => {
   const isArray = Array.isArray(defaultValue);
   const defaultType = typeof defaultValue;
