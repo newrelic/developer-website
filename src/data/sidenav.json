@@ -30,6 +30,15 @@
         ]
       },
       {
+        "displayName": "Layout Components",
+        "children": [
+          {
+            "displayName": "CardBody",
+            "url": "/components/card-body"
+          }
+        ]
+      },
+      {
         "displayName": "Form Components",
         "children": [
           {
