@@ -11,19 +11,12 @@ const toStaticName = (propName) =>
     .toUpperCase();
 
 // TODO: do we need this?
-const processPropType = (
-  component,
-  componentName,
-  propName,
-  __docs__,
-  __reflect__
-) => {
-  const type = processType(component, componentName, propName, __reflect__);
+const processPropType = (component, propName, __docs__, __reflect__) => {
+  const type = processType(component, propName, __reflect__);
 
   const staticName = toStaticName(propName);
   const defaultValue = getDefaultValue(
     component,
-    componentName,
     propName,
     type.isOneOf,
     staticName
@@ -32,7 +25,7 @@ const processPropType = (
   const enums =
     type.isOneOf || type.isArrayOfOneOf
       ? Object.keys(component[staticName] || {}).map(
-          (name) => `${componentName}.${staticName}.${name}`
+          (name) => `${component.name}.${staticName}.${name}`
         )
       : [];
 
@@ -50,7 +43,7 @@ const processPropType = (
 };
 
 // TODO: refactor
-const processType = (component, componentName, propName, __reflect__) => {
+const processType = (component, propName, __reflect__) => {
   const isOneOf = __reflect__[1].name === 'oneOf';
   const isArrayOf = __reflect__[1].name === 'arrayOf';
   const isArrayOfOneOf =
@@ -62,7 +55,6 @@ const processType = (component, componentName, propName, __reflect__) => {
   const mapArgsToTypes = (arg) => {
     const { displayType, shapes: s } = processType(
       component,
-      componentName,
       propName,
       arg.__reflect__
     );
@@ -73,7 +65,6 @@ const processType = (component, componentName, propName, __reflect__) => {
   const mapArgsToShapes = ([name, prop]) => ({
     ...processPropType(
       component,
-      componentName,
       `${propName}.${name}`,
       prop.__docs__,
       prop.__reflect__
@@ -119,13 +110,7 @@ const processType = (component, componentName, propName, __reflect__) => {
 };
 
 // TODO: refactor
-const getDefaultValue = (
-  component,
-  componentName,
-  propName,
-  isOneOf,
-  staticName
-) => {
+const getDefaultValue = (component, propName, isOneOf, staticName) => {
   let defaultValue = component?.defaultProps?.[propName];
 
   // If default value is an object then is a default value for a shape propType
@@ -143,7 +128,7 @@ const getDefaultValue = (
       (name) => name[1] === defaultValue
     )[0];
 
-    defaultValue = `${componentName}.${staticName}.${defaultValueStaticName}`;
+    defaultValue = `${component.name}.${staticName}.${defaultValueStaticName}`;
   }
 
   if (typeof defaultValue === 'number') {
@@ -178,12 +163,11 @@ const PropList = ({ component }) => {
         const propDocs = propData.__docs__;
         const propMeta = propData.__reflect__;
 
-        const type = processType(component, component.name, name, propMeta);
+        const type = processType(component, name, propMeta);
         const desc = propDocs.text;
 
         const defaultValue = getDefaultValue(
           component,
-          component.name,
           name,
           type.isOneOf,
           toStaticName(name)
