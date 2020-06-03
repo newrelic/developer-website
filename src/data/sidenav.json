@@ -43,6 +43,10 @@
           {
             "displayName": "CardHeader",
             "url": "/components/card-header"
+          },
+          {
+            "displayName": "Grid",
+            "url": "/components/grid"
           }
         ]
       },
