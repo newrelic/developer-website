@@ -1,4 +1,27 @@
 .container {
   display: flex;
-  border-bottom: solid black 1px;
+  border-bottom: solid var(--color-neutrals-200) 1px;
+  h3 {
+    font-size: 1.25rem;
+  }
+  padding-bottom: 2rem;
+  margin-top: 1rem;
+}
+.info {
+  width: 30%;
+  .type {
+    color: var(--color-neutrals-600);
+  }
+  .default {
+    p:first-of-type {
+      font-size: 0.75rem;
+    }
+    margin-top: 2rem;
+    color: var(--color-neutrals-700);
+  }
+}
+
+.details {
+  font-size: 1.25rem;
+  width: 70%;
 }

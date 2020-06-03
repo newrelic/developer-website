@@ -171,14 +171,17 @@ const PropList = ({ component }) => {
 
         return (
           <div key={name} className={styles.container}>
-            <div>
+            <div className={styles.info}>
               <h3>{name}</h3>
-              <div>{type.displayType}</div>
+              <div className={styles.type}>{type.displayType}</div>
               {defaultValue !== undefined && (
-                <div>default: {String(defaultValue)}</div>
+                <div className={styles.default}>
+                  <p>DEFAULT</p>
+                  <p>{String(defaultValue)}</p>
+                </div>
               )}
             </div>
-            <div>
+            <div className={styles.details}>
               <ReactMarkdown source={desc} />
             </div>
           </div>
