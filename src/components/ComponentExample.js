@@ -1,12 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import formatCode from '../utils/formatCode';
 import github from 'prism-react-renderer/themes/github';
 import { LiveEditor, LiveError, LiveProvider, LivePreview } from 'react-live';
 import styles from './ComponentExample.module.scss';
+import root from 'react-shadow';
+import { CSS_BUNDLE } from '../utils/sdk';
 
 const TRAILING_SEMI = /;\s*$/;
+
+const EXAMPLE_CSS = `
+.nr1-Docs-prettify > * {
+  margin-right: 0.5rem;
+
+  &:not(:first-child) {
+    margin-left: 0.5rem;
+  }
+}
+
+.nr1-RedBox {
+  color: red;
+  background: rgba(255, 0, 0, 0.15);
+  box-shadow: inset 0 0 0 1px rgba(255, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+`;
 
 const ComponentExample = ({ className, example }) => {
   let formattedCode;
@@ -18,7 +43,7 @@ const ComponentExample = ({ className, example }) => {
   }
 
   return (
-    <div className={cx(styles.container, className)}>
+    <div className={className}>
       <h3 className={styles.title}>{example.label}</h3>
       <LiveProvider
         scope={{
@@ -32,7 +57,13 @@ const ComponentExample = ({ className, example }) => {
         theme={github}
         disabled={!example.options.live}
       >
-        {example.options.live && <LivePreview className={styles.preview} />}
+        {example.options.live && (
+          <root.div>
+            <link rel="stylesheet" href={CSS_BUNDLE} />
+            <style type="text/css">{EXAMPLE_CSS}</style>
+            <LivePreview className={styles.preview} />
+          </root.div>
+        )}
         <LiveEditor style={{ fontSize: '0.75rem' }} />
         <LiveError className={styles.error} />
       </LiveProvider>
