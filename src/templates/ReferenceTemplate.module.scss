@@ -36,6 +36,6 @@
   }
 }
 
-.examples {
-  margin-top: 2rem;
+.section:not(:last-child) {
+  margin-bottom: 2rem;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
@@ -42,10 +43,10 @@ const ReferenceTemplate = ({ data }) => {
 
             {componentData && componentData.__docs__ && (
               <>
-                <div className={styles.description}>
+                <section className={cx(styles.section, styles.description)}>
                   <ReactMarkdown source={componentData.__docs__.text} />
-                </div>
-                <section className={styles.examples}>
+                </section>
+                <section className={styles.section}>
                   <h2>Examples</h2>
                   <div>
                     {examples.map((example, i) => (
