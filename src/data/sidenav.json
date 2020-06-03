@@ -62,6 +62,15 @@
             "url": "/components/button"
           }
         ]
+      },
+      {
+        "displayName": "Feedback Components",
+        "children": [
+          {
+            "displayName": "Icon",
+            "url": "/components/icon"
+          }
+        ]
       }
     ]
   }
