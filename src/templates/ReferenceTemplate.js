@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import InlineCodeSnippet from '../components/InlineCodeSnippet';
 import ReactMarkdown from 'react-markdown';
 import Container from '../components/Container';
 import ComponentExample from '../components/ComponentExample';
@@ -41,11 +42,14 @@ const ReferenceTemplate = ({ data }) => {
         />
         <main className={styles.content}>
           <h1>{component}</h1>
-
           {componentData && componentData.__docs__ && (
             <>
               <section className={cx(styles.section, styles.description)}>
                 <ReactMarkdown source={componentData.__docs__.text} />
+              </section>
+              <section>
+                <h2>Usage</h2>
+                <InlineCodeSnippet language="js">{`import { ${component} } from 'nr1'`}</InlineCodeSnippet>
               </section>
               {examples.length > 0 && (
                 <section className={styles.section}>
