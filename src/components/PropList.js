@@ -107,14 +107,13 @@ const processType = (component, propName, propMeta) => {
 
 // TODO: refactor
 const getDefaultValue = (component, propName, isOneOf, staticName) => {
+  const isArray = Array.isArray(defaultValue);
+  const defaultType = typeof defaultValue;
+
   let defaultValue = component?.defaultProps?.[propName];
 
   // If default value is an object then is a default value for a shape propType
-  if (
-    defaultValue !== null &&
-    !Array.isArray(defaultValue) &&
-    typeof defaultValue === 'object'
-  ) {
+  if (defaultValue !== null && !isArray && defaultType === 'object') {
     defaultValue = undefined;
   }
 
@@ -127,7 +126,7 @@ const getDefaultValue = (component, propName, isOneOf, staticName) => {
     defaultValue = `${component.name}.${staticName}.${defaultValueStaticName}`;
   }
 
-  if (typeof defaultValue === 'number') {
+  if (defaultType === 'number') {
     const specialNumber = SPECIAL_NUMBERS.find(
       (number) => Number[number] === defaultValue
     );
@@ -135,11 +134,11 @@ const getDefaultValue = (component, propName, isOneOf, staticName) => {
   }
 
   // Serialize array default values
-  if (Array.isArray(defaultValue)) {
+  if (isArray) {
     defaultValue = JSON.stringify(defaultValue);
   }
 
-  if (typeof defaultValue === 'boolean') {
+  if (defaultType === 'boolean') {
     defaultValue = defaultValue.toString();
   }
 
