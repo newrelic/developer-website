@@ -6,8 +6,14 @@
 
 // This is needed to ensure the NR1 SDK can load properly
 const React = require('react');
+const { JS_BUNDLE } = require('./src/utils/sdk');
 
-exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
+exports.onPreRenderHTML = ({
+  getHeadComponents,
+  replaceHeadComponents,
+  getPostBodyComponents,
+  replacePostBodyComponents,
+}) => {
   replaceHeadComponents([
     ...getHeadComponents(),
     <script
@@ -35,5 +41,10 @@ exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
       crossOrigin="anonymous"
       src="//nr1.nr-assets.net/lib/d3/3.5.17/d3.js"
     />,
+  ]);
+
+  replacePostBodyComponents([
+    ...getPostBodyComponents(),
+    <script key="nr1-sdk" crossOrigin="anonymous" src={JS_BUNDLE} />,
   ]);
 };
