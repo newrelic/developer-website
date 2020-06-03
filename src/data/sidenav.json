@@ -42,6 +42,10 @@
         "displayName": "Form Components",
         "children": [
           {
+            "displayName": "AccountPicker",
+            "url": "/components/account-picker"
+          },
+          {
             "displayName": "Button",
             "url": "/components/button"
           }
