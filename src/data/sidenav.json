@@ -33,8 +33,16 @@
         "displayName": "Layout Components",
         "children": [
           {
+            "displayName": "Card",
+            "url": "/components/card"
+          },
+          {
             "displayName": "CardBody",
             "url": "/components/card-body"
+          },
+          {
+            "displayName": "CardHeader",
+            "url": "/components/card-header"
           }
         ]
       },
