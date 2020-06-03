@@ -26,7 +26,12 @@ The Query Builder is in the left sidebar and lets you search, browse, and select
 
 ## Build a query to retrieve your name
 
-Time for your first NerdGraph query! You are going to search for your name in the New Relic database. Erase everything in the query editor and select the following fields in the query explorer in this order: `actor`, `user`, `name`. This GraphQL snippet appears in the editor:
+Time for your first NerdGraph query! You are going to search for your name in the New Relic database:
+
+1. Erase everything in the query editor.
+2. Select the following fields in the query explorer in this order: `actor`, `user`, `name`.
+
+This GraphQL snippet appears in the editor:
 
 ```jsx
 {
@@ -77,7 +82,11 @@ Once again, running the GraphQL query results in just the data you need, without
 
 In GraphQL, [mutations](https://graphql.org/learn/queries/#mutations) are a way to execute queries with side effects; that is, queries that can alter the data by creating, updating, or deleting objects (the usual set of CRUD operations you might be used to from REST APIs).
 
-Ready for your first mutation? Erase what's in the editor, scroll down the Query Builder, expand `mutation`, and select the fields in the following screenshot:
+Ready for your first mutation?
+
+1. Erase what's in the editor.
+2. Scroll down the Query Builder and expand `mutation`.
+3. Select the fields in the following screenshot:
 
 ![Mutation example](../images/graphql-guide/mutation-example.png)
 
@@ -87,7 +96,10 @@ In this case, you're trying to add a custom tag to an entity. Notice that the ed
 
 ## Try your NerdGraph query in the terminal
 
-Let's say that you've built a NerdGraph query you're happy with and you want to test it elsewhere. To capture code-ready queries and mutations, select the **Tools** menu. From there you can copy the query as a cURL call or as a [New Relic CLI](...) command.
+Let's say that you've built a NerdGraph query you're happy with and you want to test it elsewhere. To capture code-ready queries and mutations:
+
+1. Select the **Tools** menu. 
+2. Copy the query as a cURL call or as a [New Relic CLI](...) command.
 
 ![Tools menu](../images/graphql-guide/tools-menu.png)
 
