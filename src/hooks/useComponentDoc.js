@@ -13,16 +13,34 @@ const useComponentDoc = (componentName) => {
   if (typeof window === 'undefined') global.window = {};
 
   return useMemo(() => {
-    const component = window?.__NR1_SDK__?.default?.[componentName];
+    const sdk = window.__NR1_SDK__?.default ?? {};
+    const component = sdk[componentName];
+
+    if (!component) {
+      return null;
+    }
+
+    const componentDocs = component?.__docs__;
 
     return {
-      description: component?.__docs__.text,
-      examples: component?.__docs__.tags.examples ?? [],
-      methods: Object.getOwnPropertyNames(component).filter(
-        (member) =>
-          !IGNORED_METHODS.includes(member) &&
-          typeof component[member] === 'function'
-      ),
+      description: componentDocs?.text,
+      examples: componentDocs?.tags.examples ?? [],
+      methods: Object.getOwnPropertyNames(component)
+        .filter(
+          (member) =>
+            !IGNORED_METHODS.includes(member) &&
+            typeof component[member] === 'function'
+        )
+        .map((member) => {
+          const methodDocs = component[member].__docs__;
+
+          return {
+            name: `${componentName}.${member}`,
+            description: methodDocs?.text,
+            returnValue: methodDocs?.tags.return,
+            params: methodDocs?.tags.param,
+          };
+        }),
     };
   }, [componentName, window?.__NR1_SDK__]);
 };

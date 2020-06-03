@@ -23,9 +23,11 @@ const ReferenceTemplate = ({ data }) => {
   const { mdx } = data;
   const { frontmatter } = mdx;
   const { title, description, component } = frontmatter;
-  const { examples, description: componentDescription } = useComponentDoc(
-    component
-  );
+  const {
+    examples,
+    description: componentDescription,
+    methods,
+  } = useComponentDoc(component);
 
   return (
     <Layout>
@@ -57,6 +59,14 @@ const ReferenceTemplate = ({ data }) => {
                   />
                 ))}
               </div>
+            </section>
+          )}
+          {methods.length > 0 && (
+            <section className={styles.section}>
+              <h2>Methods</h2>
+              {methods.map((method, i) => (
+                <h3 key={i}>{method.name}</h3>
+              ))}
             </section>
           )}
         </main>
