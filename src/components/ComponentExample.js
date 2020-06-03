@@ -99,6 +99,7 @@ const ComponentExample = ({
 }) => {
   const [stylesLoaded, setStylesLoaded] = useState(false);
   const ToastManager = window.__NR1_SDK__.ToastManager;
+  const { live } = example.options;
   let formattedCode;
 
   try {
@@ -120,9 +121,9 @@ const ComponentExample = ({
         }}
         code={formattedCode}
         theme={github}
-        disabled={!example.options.live}
+        disabled={!live}
       >
-        {example.options.live && (
+        {live && (
           <root.div className={styles.preview}>
             <link
               rel="stylesheet"
@@ -146,7 +147,7 @@ const ComponentExample = ({
           </root.div>
         )}
         <LiveEditor style={{ fontSize: '0.75rem' }} />
-        <LiveError className={styles.error} />
+        {live && <LiveError className={styles.error} />}
       </LiveProvider>
     </div>
   );
