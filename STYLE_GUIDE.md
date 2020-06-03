@@ -175,7 +175,7 @@ necessary to provide relevant and interesting information and resources.
 When referencing another page within the New Relic Developer Site hyperlinks should use relative paths 
 (not include the full domain). This guarantees that all links function when running locally or in preview.
 
-```
+```md
 <!-- Good -->
 [README](/README.md)
 
@@ -188,7 +188,7 @@ Unless you’re running `gatsby develop` or `gatsby build` locally,
 localhost links will not work. Therefore it’s recommended to list these URL 
 references as code blocks so there aren’t invalid links throughout the docs.
 `
-```
+```md
 <!-- Good -->
 open your site with `http://localhost:8000/`
 
@@ -250,7 +250,7 @@ The value that is assigned to the key slug is used in order to navigate to your 
 
 Be aware that all Frontmatter slugs are `required`.
 
-```
+```md
 ---
 path: '/build-apps/add-time-picker-guide'
 duration: '20 min' 
@@ -293,6 +293,126 @@ Please refer to the [images section](https://github.com/adam-p/markdown-here/wik
 
 ```
  @TODO where do we host images and videos? 
+```
+
+### Code Formatting: Type Tab
+
+Each code snippet can include a tab indicating the language type the snippet contains.
+ For example, the following YAML snippet will display a “YAML” tab.
+
+```md
+```yaml
+- id: Joe Doe
+  bio: Thinks documentation is the coolest.
+```
+
+```yaml
+- id: Joe Doe
+  bio: Thinks documentation is the coolest.
+```
+
+Please use the following language keywords where appropriate:
+
+  - javascript or js
+  - jsx
+  - graphql
+  - html
+  - css
+  - shell
+  - yaml
+  - markdown
+  - diff
+  - flow
+
+If a language keyword is omitted, the type will show as TEXT (as shown above)
+
+### Code formatting: Titles
+
+Where appropriate, add code titles to your code blocks. Switching between multiple files in the course of the document can confuse some readers. It’s best to explicitly tell them where the code example should go just add `:title=your-path-name` to the code block.
+
+```md
+```javascript:title=src/util/alert.js
+const s = "Test Alert!"
+alert(s)
+```
+
+```javascript:title=src/util/alert.js
+const s = "Test Alert!"
+alert(s)
+```
+
+### Code formatting: Line Highlighting 
+
+You can also include line highlighting in your code snippets, using the following 
+keywords as comments inline in the snippet: 
+
+`highlight-line`: highlights the current line
+
+```md
+```javascript:title=gatsby-config.js
+module.exports = {
+  siteMetadata: {
+    title: `New Relic Developers`, // highlight-line
+    siteUrl: `https://www.developers.newrelic.com`,
+  },
+}
+```
+
+```javascript:title=gatsby-config.js
+module.exports = {
+  siteMetadata: {
+    title: `New Relic Developers`, // highlight-line
+    siteUrl: `https://www.developers.newrelic.com`,
+  },
+}
+```
+
+
+`highlight-next-line`: highlights the next line
+
+```md
+```javascript:title=gatsby-config.js
+module.exports = {
+  siteMetadata: {
+    title: `New Relic Developers`, // highlight-next-line
+    siteUrl: `https://www.developers.newrelic.com`,
+  },
+}
+```
+
+```javascript:title=gatsby-config.js
+module.exports = {
+  siteMetadata: {
+    title: `New Relic Developers`, // highlight-next-line
+    siteUrl: `https://www.developers.newrelic.com`,
+  },
+}
+```
+
+
+`highlight-start` & `highlight-end`: highlights a range
+
+```md
+```javascript:title=gatsby-config.js
+// highlight-start
+module.exports = {
+  siteMetadata: {
+    title: `New Relic Developers`, 
+    siteUrl: `https://www.developers.newrelic.com`,
+  },
+  // highlight-end
+}
+```
+
+```javascript:title=gatsby-config.js
+// highlight-start
+module.exports = {
+  siteMetadata: {
+    title: `New Relic Developers`, 
+    siteUrl: `https://www.developers.newrelic.com`,
+  },
+}
+ // highlight-end
 ```
 
 ## Capitalize proper nouns
