@@ -48,6 +48,7 @@ const ReferenceTemplate = ({ data }) => {
                     {examples.map((example, i) => (
                       <ComponentExample
                         key={i}
+                        useToastManager={component === 'Toast'}
                         className={styles.componentExample}
                         example={example}
                       />

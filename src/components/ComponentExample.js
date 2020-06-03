@@ -10,13 +10,27 @@ import { CSS_BUNDLE } from '../utils/sdk';
 const TRAILING_SEMI = /;\s*$/;
 
 const EXAMPLE_CSS = `
-.nr1-Component-Example {
+.nr1-ComponentExample {
   line-height: 1.36;
   font-weight: 400;
   background-color: #fff;
   color: #000e0e;
   font-size: 12px;
   font-family: Open Sans,Segoe UI,Tahoma,sans-serif;
+}
+
+.nr1-ComponentExample-ToastManager > div {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+  padding-right: 16px;
+  pointer-events: none;
+  z-index: 200;
+  min-height: 9999px;
 }
 
 .nr1-Docs-prettify > * {
@@ -42,8 +56,9 @@ const EXAMPLE_CSS = `
 }
 `;
 
-const ComponentExample = ({ className, example }) => {
+const ComponentExample = ({ className, example, useToastManager }) => {
   const [stylesLoaded, setStylesLoaded] = useState(false);
+  const ToastManager = window.__NR1_SDK__.ToastManager;
   let formattedCode;
 
   try {
@@ -75,8 +90,13 @@ const ComponentExample = ({ className, example }) => {
               onLoad={() => setStylesLoaded(true)}
             />
             <style type="text/css">{EXAMPLE_CSS}</style>
+            {useToastManager && (
+              <div className="nr1-ComponentExample-ToastManager">
+                <ToastManager />
+              </div>
+            )}
             {stylesLoaded ? (
-              <LivePreview className="nr1-Component-Example" />
+              <LivePreview className="nr1-ComponentExample" />
             ) : (
               'Loading...'
             )}

@@ -69,6 +69,10 @@
           {
             "displayName": "Icon",
             "url": "/components/icon"
+          },
+          {
+            "displayName": "Toast",
+            "url": "/components/toast"
           }
         ]
       }
