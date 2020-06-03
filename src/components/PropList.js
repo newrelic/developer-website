@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import { SPECIAL_NUMBERS } from '../utils/propConstants';
 
-// TODO: do we need this?
 const toStaticName = (propName) =>
   propName
     .replace(/(.+?)(?=[A-Z])/g, '$1_')
@@ -11,8 +10,8 @@ const toStaticName = (propName) =>
     .toUpperCase();
 
 // TODO: do we need this?
-const processPropType = (component, propName, __docs__, __reflect__) => {
-  const type = processType(component, propName, __reflect__);
+const processPropType = (component, propName, propDocs, propMeta) => {
+  const type = processType(component, propName, propMeta);
 
   const staticName = toStaticName(propName);
   const defaultValue = getDefaultValue(
@@ -31,23 +30,24 @@ const processPropType = (component, propName, __docs__, __reflect__) => {
 
   return {
     ...type,
-    description: __docs__?.text,
-    example: __docs__?.tags?.examples?.[0],
-    isRequired: __reflect__.some((item) => item.name === 'isRequired'),
-    params: __docs__?.tags?.param,
-    deprecated: __docs__?.tags?.deprecated?.[0],
-    returns: __docs__?.tags?.returns,
+    description: propDocs?.text,
+    example: propDocs?.tags?.examples?.[0],
+    isRequired: propMeta.some((item) => item.name === 'isRequired'),
+    params: propDocs?.tags?.param,
+    deprecated: propDocs?.tags?.deprecated?.[0],
+    returns: propDocs?.tags?.returns,
     defaultValue,
     enums,
   };
 };
 
 // TODO: refactor
-const processType = (component, propName, __reflect__) => {
-  const isOneOf = __reflect__[1].name === 'oneOf';
-  const isArrayOf = __reflect__[1].name === 'arrayOf';
+const processType = (component, propName, propMeta) => {
+  const propTypeName = propMeta[1].name;
+  const isOneOf = propTypeName === 'oneOf';
+  const isArrayOf = propTypeName === 'arrayOf';
   const isArrayOfOneOf =
-    isArrayOf && __reflect__[2].args[0].__reflect__[1].name === 'oneOf';
+    isArrayOf && propMeta[2].args[0].__reflect__[1].name === 'oneOf';
 
   let displayType;
   let shapes = [];
@@ -72,9 +72,9 @@ const processType = (component, propName, __reflect__) => {
     name,
   });
 
-  const args = (__reflect__.find((m) => m.args) || {}).args;
+  const args = (propMeta.find((m) => m.args) || {}).args;
 
-  switch (__reflect__[1].name) {
+  switch (propTypeName) {
     case 'oneOf':
       displayType = 'enum';
       break;
@@ -94,7 +94,7 @@ const processType = (component, propName, __reflect__) => {
       displayType = 'boolean';
       break;
     default:
-      displayType = __reflect__[1].name;
+      displayType = propTypeName;
   }
 
   if (displayType === 'shape') {
