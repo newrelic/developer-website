@@ -45,9 +45,9 @@ const ReferenceTemplate = ({ data }) => {
                 <div className={styles.description}>
                   <ReactMarkdown source={componentData.__docs__.text} />
                 </div>
-                <section>
+                <section className={styles.examples}>
                   <h2>Examples</h2>
-                  <section>
+                  <div>
                     {examples.map((example, i) => (
                       <ComponentExample
                         key={i}
@@ -55,7 +55,7 @@ const ReferenceTemplate = ({ data }) => {
                         example={example}
                       />
                     ))}
-                  </section>
+                  </div>
                 </section>
               </>
             )}
