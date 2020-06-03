@@ -6,6 +6,7 @@ import Container from '../components/Container';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
+import PropList from '../components/PropList';
 import useSdk from '../hooks/useSdk';
 
 import pages from '../data/sidenav.json';
@@ -41,6 +42,15 @@ const ReferenceTemplate = ({ data }) => {
                 <ReactMarkdown source={componentData.__docs__.text} />
               </div>
             )}
+
+            {/* Usage */}
+
+            {/* Example */}
+
+            <section>
+              <h2>Props</h2>
+              <PropList component={componentData} />
+            </section>
           </main>
         ) : (
           <p>Loading...</p>
