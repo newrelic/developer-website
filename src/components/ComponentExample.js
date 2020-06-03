@@ -7,6 +7,18 @@ import styles from './ComponentExample.module.scss';
 import root from 'react-shadow';
 import { CSS_BUNDLE } from '../utils/sdk';
 
+const platformStateContextMock = {
+  timeRange: {
+    begin_time: null,
+    duration: 1800000,
+    end_time: null,
+  },
+};
+
+const nerdletStateContextMock = {
+  entityGuid: 'MTIzNDU2fEZPT3xCQVJ8OTg3NjU0MzIx',
+};
+
 const TRAILING_SEMI = /;\s*$/;
 
 const EXAMPLE_CSS = `
@@ -99,6 +111,10 @@ const ComponentExample = ({
 }) => {
   const [stylesLoaded, setStylesLoaded] = useState(false);
   const ToastManager = window.__NR1_SDK__.ToastManager;
+  const {
+    PlatformStateContext,
+    NerdletStateContext,
+  } = window.__NR1_SDK__.default;
   const { live } = example.options;
   let formattedCode;
 
@@ -109,47 +125,51 @@ const ComponentExample = ({
   }
 
   return (
-    <div className={className}>
-      <h3 className={styles.title}>{example.label}</h3>
-      <LiveProvider
-        scope={{
-          ...window.__NR1_SDK__.default,
-          navigation: {
-            // eslint-disable-next-line no-empty-function
-            getOpenLauncherLocation() {},
-          },
-        }}
-        code={formattedCode}
-        theme={github}
-        disabled={!live}
-      >
-        {live && (
-          <root.div className={styles.preview}>
-            <link
-              rel="stylesheet"
-              href={CSS_BUNDLE}
-              onLoad={() => setStylesLoaded(true)}
-            />
-            <style type="text/css">{EXAMPLE_CSS}</style>
-            {useToastManager && (
-              <div className="nr1-ComponentExample-ToastManager">
-                <ToastManager />
-              </div>
+    <PlatformStateContext.Provider value={platformStateContextMock}>
+      <NerdletStateContext.Provider value={nerdletStateContextMock}>
+        <div className={className}>
+          <h3 className={styles.title}>{example.label}</h3>
+          <LiveProvider
+            scope={{
+              ...window.__NR1_SDK__.default,
+              navigation: {
+                // eslint-disable-next-line no-empty-function
+                getOpenLauncherLocation() {},
+              },
+            }}
+            code={formattedCode}
+            theme={github}
+            disabled={!live}
+          >
+            {live && (
+              <root.div className={styles.preview}>
+                <link
+                  rel="stylesheet"
+                  href={CSS_BUNDLE}
+                  onLoad={() => setStylesLoaded(true)}
+                />
+                <style type="text/css">{EXAMPLE_CSS}</style>
+                {useToastManager && (
+                  <div className="nr1-ComponentExample-ToastManager">
+                    <ToastManager />
+                  </div>
+                )}
+                {stylesLoaded ? (
+                  <LivePreview
+                    className="nr1-ComponentExample"
+                    style={previewStyle}
+                  />
+                ) : (
+                  'Loading...'
+                )}
+              </root.div>
             )}
-            {stylesLoaded ? (
-              <LivePreview
-                className="nr1-ComponentExample"
-                style={previewStyle}
-              />
-            ) : (
-              'Loading...'
-            )}
-          </root.div>
-        )}
-        <LiveEditor style={{ fontSize: '0.75rem' }} />
-        {live && <LiveError className={styles.error} />}
-      </LiveProvider>
-    </div>
+            <LiveEditor style={{ fontSize: '0.75rem' }} />
+            {live && <LiveError className={styles.error} />}
+          </LiveProvider>
+        </div>
+      </NerdletStateContext.Provider>
+    </PlatformStateContext.Provider>
   );
 };
 

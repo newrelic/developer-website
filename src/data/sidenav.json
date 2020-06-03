@@ -124,5 +124,18 @@
         "url": "/components/nrql-query"
       }
     ]
+  },
+  {
+    "displayName": "Platform APIs",
+    "children": [
+      {
+        "displayName": "NerdletStateContext",
+        "url": "/components/nerdlet-state-context"
+      },
+      {
+        "displayName": "PlatformStateContext",
+        "url": "/components/platform-state-context"
+      }
+    ]
   }
 ]
