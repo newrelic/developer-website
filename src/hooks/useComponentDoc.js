@@ -25,6 +25,7 @@ const useComponentDoc = (componentName) => {
     return {
       description: componentDocs?.text,
       examples: componentDocs?.tags.examples ?? [],
+      usage: `import { ${componentName} } from 'nr1'`,
       methods: Object.getOwnPropertyNames(component)
         .filter(
           (member) =>

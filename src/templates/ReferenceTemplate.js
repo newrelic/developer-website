@@ -29,6 +29,7 @@ const ReferenceTemplate = ({ data }) => {
     examples,
     description: componentDescription,
     methods,
+    usage,
   } = useComponentDoc(component);
 
   return (
@@ -48,7 +49,7 @@ const ReferenceTemplate = ({ data }) => {
           </section>
           <section className={styles.section}>
             <h2>Usage</h2>
-            <InlineCodeSnippet language="js">{`import { ${component} } from 'nr1'`}</InlineCodeSnippet>
+            <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
           </section>
           {examples.length > 0 && (
             <section className={styles.section}>
