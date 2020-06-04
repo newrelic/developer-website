@@ -33,7 +33,7 @@ const ReferenceTemplate = ({ data }) => {
     description: componentDescription,
     methods = [],
     usage = '',
-    propTypes,
+    propTypes = [],
   } = componentDoc ?? {};
 
   return (
