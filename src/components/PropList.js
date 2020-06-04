@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import styles from './PropList.module.scss';
 
 const PropList = ({ propTypes }) => {
-  if (propTypes.length < 1) {
+  if (propTypes.length === 0) {
     return <p>There are no props for this component.</p>;
   }
 
