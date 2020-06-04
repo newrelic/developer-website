@@ -67,8 +67,11 @@ const ReferenceTemplate = ({ data }) => {
               <h2>Methods</h2>
               {methods.map((method, i) => (
                 <Fragment key={i}>
-                  <h3>{method.name}</h3>
-                  <ReactMarkdown source={method.description} />
+                  <h3 className={styles.methodName}>{method.name}</h3>
+                  <ReactMarkdown
+                    className={styles.methodDescription}
+                    source={method.description}
+                  />
                   <FunctionDefinition
                     params={method.params}
                     returnValue={method.returnValue}
