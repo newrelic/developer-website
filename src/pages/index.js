@@ -7,7 +7,7 @@ import Container from '../components/Container';
 import Section from '../components/Section';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
-import './index.scss';
+import styles from './index.module.scss';
 
 const guides = [
   {
@@ -36,11 +36,11 @@ const IndexPage = () => (
   <Layout>
     <SEO />
     <Container>
-      <h1 className="indexPage-h1">
+      <h1 className={styles.h1}>
         New Relic is a platform for your observability data
       </h1>
-      <div className="indexPage-intro">
-        <div className="indexPage-intro-text">
+      <div className={styles.intro}>
+        <div className={styles.introText}>
           <p>
             <strong>Instrument</strong> your applications and{' '}
             <strong>collect</strong> data about their performance.
@@ -64,28 +64,28 @@ const IndexPage = () => (
             <strong>Automate</strong> the entire process with robust DevOps
             tools.
           </p>
-          <div className="indexPage-intro-buttonContainer">
+          <div className={styles.introButtonContainer}>
             <button type="button">Create a free account</button>
             <button type="button" className="secondary">
               Solve a business problem
             </button>
           </div>
         </div>
-        <div className="indexPage-intro-video" />
+        <div className={styles.introVideo} />
       </div>
     </Container>
-    <Section backgroundBanner className="indexPage-section-backgroundBanner">
+    <Section backgroundBanner className={styles.backgroundBanner}>
       <Jumbotron />
     </Section>
-    <div className="indexPage-line" />
+    <div className={styles.line} />
 
-    <GuideListing className="indexPage-guideListing">
-      <GuideListing.Heading className="indexPage-guideListing-heading">
+    <GuideListing className={styles.guideListing}>
+      <GuideListing.Heading className={styles.guideListingHeading}>
         Solve a problem with one of our guides
       </GuideListing.Heading>
       <GuideListing.List>
         {guides.map((guide, index) => (
-          <GuideTile className="indexPage-guideTile" key={index} {...guide} />
+          <GuideTile className={styles.guideTile} key={index} {...guide} />
         ))}
       </GuideListing.List>
     </GuideListing>

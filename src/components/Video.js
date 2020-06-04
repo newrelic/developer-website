@@ -9,7 +9,7 @@ const Video = ({ id, type, title }) => {
     wistia: `//fast.wistia.net/embed/iframe/${id}`,
   };
   return (
-    <div className={styles.Video}>
+    <div className={styles.video}>
       <iframe
         src={src[type]}
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

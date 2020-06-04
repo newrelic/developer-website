@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 import React from 'react';
 import SEO from '../components/Seo';
 import Section from '../components/Section';
-import './explore-data.scss';
+import styles from './explore-data.module.scss';
 
 const heading = 'Get Data into New Relic';
 
@@ -37,10 +37,7 @@ const guides = [
 const ExploreDataPage = () => (
   <Layout>
     <SEO title={heading} />
-    <Section
-      backgroundBanner
-      className="exploreDataPage-section-backgroundBanner"
-    >
+    <Section backgroundBanner className={styles.backgroundBanner}>
       <GuideListing>
         <GuideListing.Heading>{heading}</GuideListing.Heading>
         <GuideListing.Description>{description}</GuideListing.Description>

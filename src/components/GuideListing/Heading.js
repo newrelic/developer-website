@@ -1,9 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import styles from './GuideListing.module.scss';
 
 const Heading = ({ children, className }) => {
-  return <h1 className={cx('GuideListing-heading', className)}>{children}</h1>;
+  return <h1 className={cx(styles.heading, className)}>{children}</h1>;
 };
 
 Heading.propTypes = {

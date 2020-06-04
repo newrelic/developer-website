@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import styles from './HamburgerMenu.module.scss';
 
-import './HamburgerMenu.scss';
-
-const HamburgerMenu = ({ toggle, isOpen }) => (
+const HamburgerMenu = ({ className, toggle, isOpen }) => (
   <button
     aria-expanded={isOpen}
     aria-label="Mobile Menu"
     type="button"
-    className={cx('HamburgerMenu', { 'is-open': isOpen })}
+    className={cx(styles.hamburgerMenu, className, { [styles.isOpen]: isOpen })}
     onClick={() => toggle()}
   >
     <div />
@@ -19,6 +18,7 @@ const HamburgerMenu = ({ toggle, isOpen }) => (
 );
 
 HamburgerMenu.propTypes = {
+  className: PropTypes.string,
   toggle: PropTypes.func.isRequired,
   isOpen: PropTypes.bool,
 };
