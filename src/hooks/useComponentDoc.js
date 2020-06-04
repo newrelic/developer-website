@@ -93,10 +93,6 @@ const processType = (component, propName, propMeta) => {
 
     return displayType;
   };
-  const mapArgsToShapes = ([name, prop]) => ({
-    ...processPropType(component, `${propName}.${name}`, prop),
-    name,
-  });
 
   const args = (propMeta.find((m) => m.args) || {}).args;
 
@@ -124,7 +120,12 @@ const processType = (component, propName, propMeta) => {
   }
 
   if (displayType === 'shape') {
-    shapes.push(Object.entries(args[0]).map(mapArgsToShapes));
+    shapes.push(
+      Object.entries(args[0]).map(([name, prop]) => ({
+        ...processPropType(component, `${propName}.${name}`, prop),
+        name,
+      }))
+    );
   }
 
   return {
