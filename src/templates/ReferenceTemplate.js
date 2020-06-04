@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import Container from '../components/Container';
 import ComponentExample from '../components/ComponentExample';
+import FunctionDefinition from '../components/FunctionDefinition';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
@@ -65,7 +66,14 @@ const ReferenceTemplate = ({ data }) => {
             <section className={styles.section}>
               <h2>Methods</h2>
               {methods.map((method, i) => (
-                <h3 key={i}>{method.name}</h3>
+                <Fragment key={i}>
+                  <h3>{method.name}</h3>
+                  <ReactMarkdown source={method.description} />
+                  <FunctionDefinition
+                    params={method.params}
+                    returnValue={method.returnValue}
+                  />
+                </Fragment>
               ))}
             </section>
           )}

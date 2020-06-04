@@ -1,0 +1,35 @@
+.container {
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.line:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.param {
+  margin-left: 1rem;
+}
+
+.paramName {
+  color: var(--color-neutrals-700);
+}
+
+.paramDescription {
+  color: var(--color-neutrals-500);
+
+  > p {
+    color: inherit;
+    display: inline;
+  }
+}
+
+.keyword {
+  color: var(--color-neutrals-600);
+}
+
+.type {
+  color: var(--color-green-6);
+  background: var(--color-green-1);
+}
