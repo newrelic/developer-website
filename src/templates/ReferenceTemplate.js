@@ -1,26 +1,40 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
+import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import InlineCodeSnippet from '../components/InlineCodeSnippet';
 import ReactMarkdown from 'react-markdown';
 import Container from '../components/Container';
+import ComponentExample from '../components/ComponentExample';
+import FunctionDefinition from '../components/FunctionDefinition';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
 import PropList from '../components/PropList';
-import useSdk from '../hooks/useSdk';
-
 import pages from '../data/sidenav.json';
-
 import styles from './ReferenceTemplate.module.scss';
+import useComponentDoc from '../hooks/useComponentDoc';
+
+const previewStyles = {
+  Spinner: {
+    height: '16px',
+  },
+};
 
 const ReferenceTemplate = ({ data }) => {
-  const loaded = useSdk();
   const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
   const { title, description, component } = frontmatter;
+  const componentDoc = useComponentDoc(component);
 
-  if (typeof window === 'undefined') global.window = {};
+  const {
+    examples = [],
+    description: componentDescription,
+    methods = [],
+    usage = '',
+  } = componentDoc ?? {};
+
   const componentData = window?.__NR1_SDK__?.default?.[component];
 
   return (
@@ -33,28 +47,59 @@ const ReferenceTemplate = ({ data }) => {
           isOpen={isOpen}
           toggle={() => setIsOpen(!isOpen)}
         />
-        {loaded ? (
-          <main className={styles.content}>
-            <h1>{component}</h1>
+        <main className={styles.content}>
+          <h1>{component}</h1>
 
-            {componentData && componentData.__docs__ && (
-              <div className={styles.description}>
-                <ReactMarkdown source={componentData.__docs__.text} />
+          <section className={cx(styles.section, styles.description)}>
+            <ReactMarkdown source={componentDescription} />
+          </section>
+
+          <section className={styles.section}>
+            <h2>Usage</h2>
+            <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
+          </section>
+
+          {examples.length > 0 && (
+            <section className={styles.section}>
+              <h2>Examples</h2>
+              <div>
+                {examples.map((example, i) => (
+                  <ComponentExample
+                    key={i}
+                    useToastManager={component === 'Toast'}
+                    className={styles.componentExample}
+                    example={example}
+                    previewStyle={previewStyles[component]}
+                  />
+                ))}
               </div>
-            )}
-
-            {/* Usage */}
-
-            {/* Example */}
-
-            <section>
-              <h2>Props</h2>
-              <PropList component={componentData} />
             </section>
-          </main>
-        ) : (
-          <p>Loading...</p>
-        )}
+          )}
+
+          <section>
+            <h2>Props</h2>
+            <PropList component={componentData} />
+          </section>
+
+          {methods.length > 0 && (
+            <section className={styles.section}>
+              <h2>Methods</h2>
+              {methods.map((method, i) => (
+                <Fragment key={i}>
+                  <h3 className={styles.methodName}>{method.name}</h3>
+                  <ReactMarkdown
+                    className={styles.methodDescription}
+                    source={method.description}
+                  />
+                  <FunctionDefinition
+                    params={method.params}
+                    returnValue={method.returnValue}
+                  />
+                </Fragment>
+              ))}
+            </section>
+          )}
+        </main>
       </Container>
     </Layout>
   );
