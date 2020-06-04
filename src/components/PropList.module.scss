@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  border-bottom: solid var(--color-neutrals-200) 1px;
+  padding-bottom: 2rem;
+  margin-top: 1rem;
+
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+.info {
+  width: 30%;
+
+  .type {
+    color: var(--color-neutrals-600);
+  }
+
+  .default {
+    margin-top: 2rem;
+    color: var(--color-neutrals-700);
+
+    p:first-of-type {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+.details {
+  font-size: 1.25rem;
+  width: 70%;
+}
+
+.required {
+  font-size: 0.75rem;
+  color: var(--color-red-400);
+  text-transform: uppercase;
+  margin-left: 0.5rem;
+}

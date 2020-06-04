@@ -10,6 +10,7 @@ import FunctionDefinition from '../components/FunctionDefinition';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
+import PropList from '../components/PropList';
 import pages from '../data/sidenav.json';
 import styles from './ReferenceTemplate.module.scss';
 import useComponentDoc from '../hooks/useComponentDoc';
@@ -32,6 +33,7 @@ const ReferenceTemplate = ({ data }) => {
     description: componentDescription,
     methods = [],
     usage = '',
+    propTypes = [],
   } = componentDoc ?? {};
 
   return (
@@ -46,13 +48,16 @@ const ReferenceTemplate = ({ data }) => {
         />
         <main className={styles.content}>
           <h1>{component}</h1>
+
           <section className={cx(styles.section, styles.description)}>
             <ReactMarkdown source={componentDescription} />
           </section>
+
           <section className={styles.section}>
             <h2>Usage</h2>
             <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
           </section>
+
           {examples.length > 0 && (
             <section className={styles.section}>
               <h2>Examples</h2>
@@ -69,6 +74,12 @@ const ReferenceTemplate = ({ data }) => {
               </div>
             </section>
           )}
+
+          <section className={styles.section}>
+            <h2>Props</h2>
+            <PropList propTypes={propTypes} />
+          </section>
+
           {methods.length > 0 && (
             <section className={styles.section}>
               <h2>Methods</h2>
