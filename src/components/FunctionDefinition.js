@@ -5,7 +5,7 @@ import styles from './FunctionDefinition.module.scss';
 
 const ParamDescription = ({ children, ...props }) => (
   <span {...props} className={styles.paramDescription}>
-    // {children}
+    {'//'} {children}
   </span>
 );
 
