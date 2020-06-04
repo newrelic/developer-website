@@ -10,25 +10,32 @@ const PropList = ({ propTypes }) => {
 
   return (
     <div>
-      {propTypes.map(({ name, description, type, defaultValue }) => {
-        return (
-          <div key={name} className={styles.container}>
-            <div className={styles.info}>
-              <h3>{name}</h3>
-              <div className={styles.type}>{type}</div>
-              {defaultValue !== undefined && (
-                <div className={styles.default}>
-                  <p>DEFAULT</p>
-                  <p>{String(defaultValue)}</p>
-                </div>
-              )}
+      {propTypes.map(
+        ({ name, description, isRequired, type, defaultValue }) => {
+          return (
+            <div key={name} className={styles.container}>
+              <div className={styles.info}>
+                <h3>
+                  {name}{' '}
+                  {isRequired && (
+                    <span className={styles.required}>required</span>
+                  )}
+                </h3>
+                <div className={styles.type}>{type}</div>
+                {defaultValue !== undefined && (
+                  <div className={styles.default}>
+                    <p>DEFAULT</p>
+                    <p>{String(defaultValue)}</p>
+                  </div>
+                )}
+              </div>
+              <div className={styles.details}>
+                <ReactMarkdown source={description} />
+              </div>
             </div>
-            <div className={styles.details}>
-              <ReactMarkdown source={description} />
-            </div>
-          </div>
-        );
-      })}
+          );
+        }
+      )}
     </div>
   );
 };
@@ -38,6 +45,7 @@ PropList.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string,
+      isRequired: PropTypes.bool,
       type: PropTypes.string,
       defaultValue: PropTypes.string,
     })
