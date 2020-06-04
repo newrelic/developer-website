@@ -195,7 +195,6 @@ const useComponentDoc = (componentName) => {
       examples: componentDocs?.tags.examples ?? [],
       usage: `import { ${componentName} } from 'nr1'`,
       propTypes: extractPropTypes(component),
-      defaultProps: component.defaultProps,
       methods: Object.getOwnPropertyNames(component)
         .filter(
           (member) =>
