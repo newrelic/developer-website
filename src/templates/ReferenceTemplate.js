@@ -33,6 +33,8 @@ const ReferenceTemplate = ({ data }) => {
     description: componentDescription,
     methods = [],
     usage = '',
+    propTypes,
+    defaultProps,
   } = componentDoc ?? {};
 
   const componentData = window?.__NR1_SDK__?.default?.[component];
@@ -76,9 +78,13 @@ const ReferenceTemplate = ({ data }) => {
             </section>
           )}
 
-          <section>
+          <section className={styles.section}>
             <h2>Props</h2>
-            <PropList component={componentData} />
+            <PropList
+              component={componentData}
+              propTypes={propTypes}
+              defaultProps={defaultProps}
+            />
           </section>
 
           {methods.length > 0 && (
