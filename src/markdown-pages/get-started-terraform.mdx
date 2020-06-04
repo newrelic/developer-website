@@ -12,7 +12,7 @@ In this guide you'll learn how to set up New Relic for the first time with [Terr
 
 ## Before you begin
 
-To follow this guide, you should have some basic knowledge of both New Relic and Terraform.
+To use this guide, you should have some basic knowledge of both New Relic and Terraform.
 
 * If you haven't deployed a New Relic agent yet, [install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application. 
 * [Install Terraform CLI](https://www.terraform.io/intro/getting-started/install.html).
@@ -34,7 +34,7 @@ $ NEWRELIC_API_KEY=abc123 terraform apply
 
 ## Start with a provider configuration
 
-To connect Terraform with New Relic, you must first set New Relic as a provider. This is necessary so that Terraform can create and manage New Relic resources in your account.
+To connect Terraform with New Relic, you need to set New Relic as a provider in your Terraform configuration file. This is necessary so that Terraform can create and manage New Relic resources in your account.
 
 To set New Relic as a provider, create a Terraform configuration file (`main.tf`) with the following code:
 
@@ -62,13 +62,13 @@ Once you've successfully initialized the working directory, test Terraform's [ex
 $ terraform plan
 ```
 
-`plan` is a [dry run](https://en.wikipedia.org/wiki/Dry_run_(testing)), so nothing is actually provisioned. Always run `plan` to test your configuration before applying it.
+`plan` performs a [dry run](https://en.wikipedia.org/wiki/Dry_run_(testing)) of your Terraform configuration, so nothing is actually provisioned. Always run `plan` to test your configuration before applying it.
 
 ## Add an alert condition to the alert policy
 
 The alert policy you defined in `main.tf` does not contain any alert condition. You are going to add an alert condition linked to your application.
 
-First, to store your application's information, you must add a [data source](https://www.terraform.io/docs/configuration-0-11/data-sources.html):
+First, to store your application's information, you need to add a [data source](https://www.terraform.io/docs/configuration-0-11/data-sources.html):
 
 ```hcl
 provider "newrelic" {}
@@ -83,7 +83,7 @@ resource "newrelic_alert_policy" "alert_policy_name" {
 }
 ```
 
-Now you can add the alert condition:
+Now you can add the alert condition. For example, you can create a `critical` alert condition that is triggered when the [Apdex score](https://docs.newrelic.com/docs/apm/new-relic-apm/apdex/apdex-measure-user-satisfaction) of your application falls below `0.75` for five minutes:
 
 ```hcl
 provider "newrelic" {}
@@ -117,13 +117,11 @@ resource "newrelic_alert_condition" "alert_condition_name" {
 }
 ```
 
-The `critical` alert condition you've just defined is triggered when the [Apdex score](https://docs.newrelic.com/docs/apm/new-relic-apm/apdex/apdex-measure-user-satisfaction) of your application falls below `0.75` for five minutes. Feel free to modify the settings.
-
 ## Add a notification channel
 
 Alert policies use [notification channels](https://docs.newrelic.com/docs/alerts/new-relic-alerts/managing-notification-channels/notification-channels-control-where-send-alerts) to inform you about incidents and active alerts. 
 
-To set up a notification channel to your alert policy, add the following snippet to your configuration file:
+To add a notification channel to your alert policy, add the following snippet to your configuration file:
 
 ```hcl
 # Notification channel
@@ -150,7 +148,7 @@ When the alert condition is triggered, the notification channel sends an email t
 
 ## Apply your Terraform configuration
 
-The last step is provisioning the resources you've configured in `main.tf`. This enables them in your New Relic account for your application.
+The last step is provisioning the resources you've configured in `main.tf`, so that the alert policy is enabled in your New Relic account for your application.
 
 To [apply](https://www.terraform.io/docs/commands/apply.html) the Terraform configuration and provision the resources in your New Relic account, run the `apply` command:
 
@@ -252,7 +250,7 @@ resource "newrelic_alert_channel" "slack" {
   ...
 ```
 
-This avoids changes to resources caused by configuration items.
+This avoids changes to resources caused by obfuscated items.
 
 ## Related info
 
