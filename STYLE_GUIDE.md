@@ -1,16 +1,20 @@
 # Table of Contents
+
 - [Welcome!](#welcome)
 - [GitHub & Gatsby](#github--gatsby)
 - [What can I contribute?](#what-can-i-contribute)
   * [Technical references](#technical-references)
-  * [Education guides](#education-guides)
-  * [Content Pages](#content-pages)
-- [Writing Process](#writing-process)
+  * [Guides](#guides)
+  * [Overview pages](#overview-pages)
+- [The writing process](#the-writing-process)
   * [Consider the New Relic "voice"](#consider-the-new-relic-voice)
+  * [Writing style](#writing-style)
   * [Think of your audience](#think-of-your-audience)
-    + [For Educational guides](#for-educational-guides)
-    + [For Technical references](#for-technical-references)
+    + [Audience for guides](#audience-for-guides)
+    + [Audience for technical references](#audience-for-technical-references)
   * [Prepare to write](#prepare-to-write)
+    + [Relics](#relics)
+    + [Non-Relics](#non-relics)
   * [Write drafts and get feedback](#write-drafts-and-get-feedback)
 - [Word Choice](#word-choice)
   * [Use you as the pronoun](#use-you-as-the-pronoun)
@@ -38,6 +42,7 @@
     + [Inline code and code blocks](#inline-code-and-code-blocks)
     + [Adding images](#adding-images)
     + [Adding videos](#adding-videos)
+    + [Code Formatting: Type Tab](#code-formatting-type-tab)
   * [Capitalize proper nouns](#capitalize-proper-nouns)
   * [Use active voice](#use-active-voice)
   * [Make lists clear with the Oxford Comma](#make-lists-clear-with-the-oxford-comma)
@@ -49,16 +54,16 @@
 
 The New Relic Developer Site is an open source documentation repository where we encourage contributions from everyone, not just employees of New Relic.
 
-If you’d like to contribute by writing an education guide, technical reference page, or content page please review this **Style Guide** and our [Contributors Guide](CONTRIBUTING.md)
-before getting started.
+If you’d like to contribute by creating a guide, a technical reference, or general content review this **Style Guide** and our [Contributors Guide](CONTRIBUTING.md) before getting started.
 
 # GitHub & Gatsby
 
 The New Relic Developer Experience Team uses [Github](https://github.com/) and [Gatsby.JS](https://www.gatsbyjs.org/) to:
 
-  - accurately maintain our technical reference docs and educational guides
+  - accurately maintain our technical reference docs and guides
   - iterate and publish quickly
-  - support the Open Source community
+  - encourage collaboration
+  - support the open source community
   - maintain version control
   - gather feedback quickly
 
@@ -68,48 +73,63 @@ The New Relic Developer Experience Team uses [Github](https://github.com/) and [
 
 Technical reference pages are detailed technical specifications of the New Relic One platform and it's components. 
 
-## Education guides 
+## Guides 
 
-New Relic educational guides are detailed product `how-tos` that are use case driven.  The purpose of these guides are to explain how to setup and configure a range of different New Relic products based on specific use cases you may have in your organization.
+The New Relic guides are detailed product how-tos that are case driven. The guides provide steps for developing custom solutions for New Relic. This can mean custom ways of collecting and querying data, enhancing open source applications, or building new applications to meet specific needs. It can also mean automating processes to reduce toil.
 
-## Content Pages 
+## Overview pages 
 
-Content pages are overview pages of information, FAQs, product videos, etc of New Relic specific content.
+Overview pages are pages of information, FAQs, product videos, etc of New Relic specific content.
 
-# Writing Process
+# The writing process
 
-## Consider the New Relic "voice"
-
-```
-@TODO need some input from the docs team on the voice we've been using.
-
-```
 ## Think of your audience 
 
 Before you begin writing, answer these questions. 
 
-### For Educational guides
+### Audience for guides
 
-- Who will read my writing?
-- Is what I'm writing doable in less than 30 minutes?
-- What do I hope my readers will know and/or be able to do after reading it? 
-- What type of resources exist already that I can leverage?
-- What type of new resources will I need to create to complete this?
+- **Who is this guide for?**
+   - Are you writing content for a very experienced developer or New Relic practitioner? Or could someone new to either New Relic or development follow your steps and complete the task? We generally aim to support as many people as possible. Don't attempt to teach someone how to program in a guide, but prerequisites and clear context can help less experienced people accomplish the task. 
+- **Is what I'm writing doable in less than 30 minutes?**
+  - If not, consider dividing the guide up into multiple guides. That way, people can segment their time. 
+- **What do I hope my readers will know and/or be able to do after reading it?** 
+   - Include this information in your guide. It will help people know why they should invest their time, and it will help you write a focused guide. 
+- **What type of resources exist already that I can leverage?**
+   - Are there related technologies that someone might need to understand, or related New Relic info on the [developer](developer.newrelic.com), [docs](docs.newrelic.com), [open source](opensource.newrelic.com) or other New Relic sites?  
+- **What type of new resources will I need to create to complete this?**
+    - Do you have all the software you need to write your guide?
+    - Do you have access to all the New Relic products to write your guide?
+    - Is there anyone you need assistance from?
+    - Do you need to create a video, image or other assets to support your content? 
 
-### For Technical references
+### Audience for technical references
 
-- Who will read my writing?
-- What do I hope my readers will know and/or be able to do after reading it? 
-- Am I repeating something that already exists somewhere else in other New Relic Documentation?
-
+- **Who is this reference for?**
+  - We generally aim to support as many people as possible. You can't teach programming from the ground up, but you can provide clear descriptions  and complete info.
+- **What do I hope my readers will know and/or be able to do after reading it?**
+  - Include this information in your reference. It will help people know if it's the info they need.
+- **Are there related technologies that someone might need to understand that are already documented?**
+  - New Relic has a rich set of documentation on our products search the following sites.
+  - [docs.newrelic.com](https://docs.newrelic.com/)
+  - [developer.newrelic.com](https://developer.newrelic.com/)
+  - [discuss.newrelic.com](https://discuss.newrelic.com/)
+  - [opensource.newrelic.com](https://opensource.newrelic.com/)
+ 
 
 ## Prepare to write
 
 Once you answer those questions, create an outline of the topic and think about 
 any coding examples you’ll use (if applicable). This helps to organize your thoughts and make the writing process easier.
 
-If you need videos or code samples or clarification from other teams please start to consider 
+### Relics 
+
+If you need videos or code samples or clarification from other teams within New Relic start to consider 
 who can assist you and reach out to them.
+
+### Non-Relics
+
+If you need videos or code samples or clarification from other teams within New Relic file a [Github issue](https://github.com/newrelic/developer-website/issues/new/choose) so The Developer Experience team can assist you. 
 
 ## Write drafts and get feedback
 
@@ -120,13 +140,11 @@ it's much easier to adjust earlier in the writing process.
 
 ## Use you as the pronoun 
 
-Please use the second person (“you”) to provide a conversational tone in your documentation. 
-This way, the text and instructions seem to speak directly to the person reading it. 
-Avoid using the first person (“I”, “we”, “let’s”, and “us”).
+Use the second person `you` to provide a conversational tone in your documentation. always address the user directly, as `you`. This approach is inclusive and immediate and the text and instructions seem to speak directly to the person reading it. Avoid using the first person (“I”, “we”, “let’s”, and “us”).
 
 ## Avoid Gender specific pronouns
 
-Please use `they / them` in place of `he / him` or `she / her`. 
+Use `they / them` in place of `he / him` or `she / her`. 
 
 ## Avoid "easy" and "simple"
 
@@ -144,20 +162,28 @@ Content should avoid the use of jargon.
 ```
 Jargon: (n.) special words or expressions that are used by a particular profession or group and are difficult for others to understand.
 ```
-All jargon should be expressed in plain English. In other words, pretend like your readers have basic coding experience and have little knowledge of New Relic products and services. 
+All jargon should be expressed in plain English. In other words, pretend like your readers have novice coding experience and have little knowledge of New Relic products and services. 
 
 # Writing Style 
 
+## be explicit and opinionated 
+
+Don't leave readers guessing, or having to decide between multiple choices. Often they need to solve a problem. As the subject matter expert, you're in a position to help. Provide the best way to do a thing, and why. If there are four different ways, choose the most efficient way. You can explain the choice if necessary. You can also describe other options, but we recommend that you hold that until the end.
+
+## Make it ease to scan 
+
+Users should be able to scan a page, learn what it covers, and find the info they're looking for in seconds. Improve scannability by adding headings and bulleted lists, and by including step numbers on procedures. 
+
 ## Write concisely
 
-Concise writing communicates the bare minimum without redundancy. Strive to make your writing as short as possible.
+Concise writing communicates the bare minimum without redundancy. Strive to make your writing as short as possible. Keep the content readable and manageable by focusing on just the information needed for each area.
 
 ## Use clear hyperlinks
 
 Hyperlinks should contain the clearest words to indicate where the link will lead you. 
 The use of the title attribute on hyperlinks should be avoided for accessibility reasons.
 
-```
+```md
 <!-- Good -->
 [New Relic Open Source](https://www.opensource.newrelic.com/)
 
@@ -166,7 +192,9 @@ The use of the title attribute on hyperlinks should be avoided for accessibility
 
 ```
 
-In Educational Guides that are meant for beginners, use less hyperlinks to 
+## Don't over link content references
+
+In guides that are meant for beginners, use less hyperlinks to 
 minimize distractions. In technical references, you may include as many hyperlinks as 
 necessary to provide relevant and interesting information and resources.
 
@@ -184,6 +212,7 @@ When referencing another page within the New Relic Developer Site hyperlinks sho
 ```
 
 ## Mark localhost URLs as code strings
+
 Unless you’re running `gatsby develop` or `gatsby build` locally, 
 localhost links will not work. Therefore it’s recommended to list these URL 
 references as code blocks so there aren’t invalid links throughout the docs.
@@ -210,23 +239,13 @@ For example, “In computer science, an abstract syntax tree (AST) is …”
 
 ## Use SEO optimized titles and descriptions
 
-When defining your titles and descriptions for your pages focus on Search Engine Optimization (SEO) best practices. use terms such as:
-
-```
-@TODO Need to obtain a list from NR marketing....
-```
+When defining your titles and descriptions for your pages focus on Search Engine Optimization (SEO) best practices.
 
 However if you need to make a choice between SEO and clarity, always go with a clear title and description over trying to "squeeze" in SEO terms that aren't relevant to the content of the page. 
 
 ## Using Gatsby templates
 
 When creating pages you can use a predefined Gatsby template for your .md or .mdx files. Based on the type of page you want to create be sure to select the correct template and apply that to the Frontmatter slug key value pair for `template`. 
-
-### Types of templates
-
-**GuideTemplate**: Used to create education guides. 
-
-**OtherTemplates**: will be provided in the future!
 
 ## Using Frontmatter 
 
@@ -238,7 +257,7 @@ This block will be parsed by gatsby-transformer-remark as Frontmatter.
 The GraphQL API will provide the key value pairs as data in your React components.
 The value that is assigned to the key slug is used in order to navigate to your post.
 
-### Frontmatter slugs
+### GuideTemplate Frontmatter slugs
 
 - `path`: the relative path to the file
 - `duration`: the estimated time to complete the exercise 
@@ -246,7 +265,7 @@ The value that is assigned to the key slug is used in order to navigate to your 
 - `template`: the Gatsby template used
 - `description`: the description of the page
 
-### Frontmatter example 
+### GuideTemplate Frontmatter example 
 
 Be aware that all Frontmatter slugs are `required`.
 
@@ -273,27 +292,24 @@ Because titles show up throughout the docs in navigation elements (like breadcru
 
 Avoid using `H1` header; that is reserved for the title of each page.
 
-All headers should be sentence case. When using `H2`, `H3` and `H4` please ensure that you follow a logical hierarchy and properly use sub headers through out your pages. 
+All headers should be sentence case. When using `H2`, `H3` and `H4` ensure that you follow a logical hierarchy and properly use sub headers through out your pages. 
 
 
 ## Format code blocks, inline code, videos, and images
 
-Please use the [Markdown cheat sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code) as reference when creating and editing Markdown files.
+Use the [Markdown cheat sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code) as reference when creating and editing Markdown files.
 
 ### Inline code and code blocks
 
-Please refer to the [formatting inline code and code blocks section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code) in the Markdown cheat sheet to learn how to format code in Markdown.   
+Refer to the [formatting inline code and code blocks section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code) in the Markdown cheat sheet to learn how to format code in Markdown.   
 
 ### Adding images
 
-Please refer to the [images section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images) in the Markdown cheat sheet to learn how to use images in your Markdown. If the images aren’t already hosted somewhere, you’ll need host them in...tbd
+Refer to the [images section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images) in the Markdown cheat sheet to learn how to use images in your Markdown. 
 
  ### Adding videos
- Please refer to the [videos section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#youtube-videos) in the Markdown cheat sheet to learn how use videos in your Markdown.  If the videos aren’t already hosted somewhere, you’ll need host them in...tbd
 
-```
- @TODO where do we host images and videos? 
-```
+ Refer to the [videos section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#youtube-videos) in the Markdown cheat sheet to learn how use videos in your Markdown.  
 
 ### Code Formatting: Type Tab
 
@@ -311,7 +327,7 @@ Each code snippet can include a tab indicating the language type the snippet con
   bio: Thinks documentation is the coolest.
 ```
 
-Please use the following language keywords where appropriate:
+Use the following language keywords where appropriate:
 
   - javascript or js
   - jsx
@@ -325,95 +341,6 @@ Please use the following language keywords where appropriate:
   - flow
 
 If a language keyword is omitted, the type will show as TEXT (as shown above)
-
-### Code formatting: Titles
-
-Where appropriate, add code titles to your code blocks. Switching between multiple files in the course of the document can confuse some readers. It’s best to explicitly tell them where the code example should go just add `:title=your-path-name` to the code block.
-
-```md
-```javascript:title=src/util/alert.js
-const s = "Test Alert!"
-alert(s)
-```
-
-```javascript:title=src/util/alert.js
-const s = "Test Alert!"
-alert(s)
-```
-
-### Code formatting: Line Highlighting 
-
-You can also include line highlighting in your code snippets, using the following 
-keywords as comments inline in the snippet: 
-
-`highlight-line`: highlights the current line
-
-```md
-```javascript:title=gatsby-config.js
-module.exports = {
-  siteMetadata: {
-    title: `New Relic Developers`, // highlight-line
-    siteUrl: `https://www.developers.newrelic.com`,
-  },
-}
-```
-
-```javascript:title=gatsby-config.js
-module.exports = {
-  siteMetadata: {
-    title: `New Relic Developers`, // highlight-line
-    siteUrl: `https://www.developers.newrelic.com`,
-  },
-}
-```
-
-
-`highlight-next-line`: highlights the next line
-
-```md
-```javascript:title=gatsby-config.js
-module.exports = {
-  siteMetadata: {
-    title: `New Relic Developers`, // highlight-next-line
-    siteUrl: `https://www.developers.newrelic.com`,
-  },
-}
-```
-
-```javascript:title=gatsby-config.js
-module.exports = {
-  siteMetadata: {
-    title: `New Relic Developers`, // highlight-next-line
-    siteUrl: `https://www.developers.newrelic.com`,
-  },
-}
-```
-
-
-`highlight-start` & `highlight-end`: highlights a range
-
-```md
-```javascript:title=gatsby-config.js
-// highlight-start
-module.exports = {
-  siteMetadata: {
-    title: `New Relic Developers`, 
-    siteUrl: `https://www.developers.newrelic.com`,
-  },
-  // highlight-end
-}
-```
-
-```javascript:title=gatsby-config.js
-// highlight-start
-module.exports = {
-  siteMetadata: {
-    title: `New Relic Developers`, 
-    siteUrl: `https://www.developers.newrelic.com`,
-  },
-}
- // highlight-end
-```
 
 ## Capitalize proper nouns
 
@@ -430,10 +357,6 @@ Proper nouns should use correct capitalization when possible. Below is a list of
 - JavaScript (capital letters in “J” and “S” and no abbreviations)
 - Markdown
 - Node.js
-
-```
-@TODO there are probably more to add to this list?
-```
 
 ## Use active voice
 
