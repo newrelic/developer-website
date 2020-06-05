@@ -386,16 +386,6 @@ color over colour
 
 behavior over behaviour
 
-## Recommended code editors 
-
-Choosing a code editor is a personal choice. Below are some recommended editors that make working with 
-Markdown very easy.
-
-- [Visual Studio](https://code.visualstudio.com/)
-- [Atom](https://atom.io/)
-- [Sublime](https://www.sublimetext.com/)
-
-
 # References
 
 This style guide was based on the [Gatsby Style Guide](https://www.gatsbyjs.org/contributing/gatsby-style-guide/#writing-process).
