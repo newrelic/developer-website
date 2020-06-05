@@ -38,6 +38,7 @@ Clone the time picker from our how-to [GitHub](https://github.com/newrelic/nr1-h
 </Step>
 
 <Step>
+
 In your preferred text editor, open `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js`.
 
 Replace `<ADD YOUR ACCOUNT ID>` with your account id:
@@ -45,10 +46,13 @@ Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 ```js
 this.accountId = <ADD YOUR ACCOUNT ID>;
 ```
-</Step>
 
 | NOTE: Your account ID is viewable in the profile selection menu of the developer center (where you downloaded the New Relic One CLI). |
 | :------------- |
+
+</Step>
+
+<Step>
 
 In your terminal, change to the `add-time-picker` directory:
 
@@ -61,8 +65,15 @@ Execute these commands to update the UUID and serve the sample application.
 nr1 nerdpack:uuid -gf
 nr1 nerdpack:serve
 ```
+</Step>
+
+<Step>
 
 Once the sample application is successfully served, go to the local New Relic One homepage: https://one.newrelic.com/?nerdpacks=local
+
+</Step>
+
+<Step>
 
 Click ***Add Time Picker***:
 
@@ -70,6 +81,10 @@ Click ***Add Time Picker***:
 | :------------- |
 
 ![How-to launcher image](../images/homepage-launcher.png)
+
+</Step>
+
+</Steps>
 
 After launching the **Add Time Picker** application, you see a dashboard that gives an overview of the transactions in your New Relic account:
 
@@ -79,7 +94,7 @@ By default, the application shows your data within the last 60 minutes. If you t
 
 </Step>
 
-<Step>
+<Steps>
 
 ## Import a new component
 
@@ -96,9 +111,15 @@ Here's what the `PlatformStateContext` component does:
 
 Complete these steps:
 
-1. In a text editor, open `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js`.
+<Step>
 
-2. Add the `PlatformStateContext` component to the end of the import statement so it looks like this:
+In a text editor, open `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js`.
+
+</Step>
+
+<Step>
+
+Add the `PlatformStateContext` component to the end of the import statement so it looks like this:
 
 ```js
 import {
@@ -111,8 +132,11 @@ import {
   PlatformStateContext
 } from 'nr1';
 ```
+</Step>
 
-3. Just below the current `return` insert this code for the `PlatformStateContext` component:
+<Step>
+    
+Just below the current `return` insert this code for the `PlatformStateContext` component:
 
 ```js
 <PlatformStateContext.Consumer>
@@ -124,7 +148,9 @@ return (
 </PlatformStateContext.Consumer>
 ```
 
-4. Move the current application code so it is under the `return` of the `PlatformState` function call. The `return` statement should now look like this:
+</Step>
+
+Move the current application code so it is under the `return` of the `PlatformState` function call. The `return` statement should now look like this:
 
 ```js
 return (
@@ -176,20 +202,27 @@ return (
 );
 ```
 
-5. Add a `console.log` statement to make sure you are seeing appropriate data. Insert the following code inside the `PlatformState` return statement just before the opening tag for the `<Grid>` component:
+</Step>
+
+<Step>
+    
+Add a `console.log` statement to make sure you are seeing appropriate data. Insert the following code inside the `PlatformState` return statement just before the opening tag for the `<Grid>` component:
 
 ```js
 /* Taking a peek at the PlatformState */
 console.log(PlatformState);
 ```
 
+</Step>
+
+</Steps>
+
 After you complete these steps, your browser console displays something like this:
 
 ![Browser console image](../images/console.png)
 
-</Step>
 
-<Step>
+<Steps>
 
 ## Add the time to the queries
 
@@ -202,7 +235,9 @@ This step requires you to import the `timeRangeToNrql` utility method from the N
 
 This helper method takes your `PlatformState.timeRange` duration data, formats it from milliseconds, and returns a formatted `SINCE` statement to add to your `NRQL`. 
 
-1. Import the `timeRangeToNrql` method by inserting this line of code below the other `import` sections:
+<Step>
+
+Import the `timeRangeToNrql` method by inserting this line of code below the other `import` sections:
 
 ```js
 import { timeRangeToNrql } from '@newrelic/nr1-community';
@@ -210,19 +245,30 @@ import { timeRangeToNrql } from '@newrelic/nr1-community';
 | NOTE: You don't need to include the `AccountDropdown` from the community import example. |
 | :------------- |
 
-2. Pass the `PlatformState` to the `timeRangeToNrql` helper, and save its output as a `since` statement for later use.
+</Step>
+
+<Step>
+
+Pass the `PlatformState` to the `timeRangeToNrql` helper, and save its output as a `since` statement for later use.
 
 ```js
 const since = timeRangeToNrql(PlatformState);
 ```
+</Step>
 
-3. After creating the `since` variable, go through the code in the `PlatformStateContext` return statement and concatenate the `since` variable to each of the existing chart component queries. Here's a `TableChart` example:
+<Step>
+
+After creating the `since` variable, go through the code in the `PlatformStateContext` return statement and concatenate the `since` variable to each of the existing chart component queries. Here's a `TableChart` example:
 
 ```js
 <TableChart fullWidth accountId={this.accountId} query={trxOverview+since} />
 ```
 
-4. After you update all of the chart components, confirm that the final `index.js` file looks similar to this:
+</Step>
+
+<Step>
+    
+After you update all of the chart components, confirm that the final `index.js` file looks similar to this:
 
 | NOTE: This completed sample code is in your `nerdlet final.js`. |
 | :------------- |
