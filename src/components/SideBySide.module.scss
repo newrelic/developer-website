@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+
+  div {
+    flex: 1;
+  }
+
+  div:nth-child(2) {
+    margin-left: 1rem;
+  }
+}
