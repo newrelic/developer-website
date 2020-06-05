@@ -31,8 +31,8 @@ const FunctionDefinition = ({ params, returnValue }) => {
           />
         </div>
       ))}
-      {params.length > 0 && <span className={styles.keyword}>) </span>}
-      <span className={styles.keyword}>=> </span>
+      {params.length > 0 && <span className={styles.keyword}>)</span>}
+      <span className={styles.keyword}> => </span>
       <span className={styles.type}>{returnValue.type}</span>
     </div>
   );
