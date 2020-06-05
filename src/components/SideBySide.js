@@ -21,7 +21,7 @@ SideBySide.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.string.isRequired,
   className: PropTypes.string,
-  dir: PropTypes.string,
+  dir: PropTypes.oneOf(['right', 'left']),
 };
 
 SideBySide.defaultProps = {
