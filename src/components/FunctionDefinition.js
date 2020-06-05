@@ -45,10 +45,10 @@ FunctionDefinition.propTypes = {
       type: PropTypes.string,
       description: PropTypes.string,
     })
-  ),
+  ).isRequired,
   returnValue: PropTypes.shape({
     type: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default FunctionDefinition;
