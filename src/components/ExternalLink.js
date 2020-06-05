@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 
 const ExternalLink = ({ href, className, children }) => (
   <a
     href={href}
     target="_blank"
-    className={cx('ExternalLink', className)}
+    className={className}
     rel="noopener noreferrer"
   >
     {children}

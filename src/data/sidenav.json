@@ -1,20 +1,148 @@
 [
   {
     "displayName": "Guides",
-    "url": "/guides"
-  },
-  {
-    "displayName": "Foo",
+    "url": "/guides",
     "children": [
       {
-        "displayName": "Baz",
-        "url": "/foo/baz",
-        "children": []
+        "displayName": "Example",
+        "url": "/guides/example"
+      }
+    ]
+  },
+  {
+    "displayName": "UI Components",
+    "children": [
+      {
+        "displayName": "Text Components",
+        "children": [
+          {
+            "displayName": "BlockText",
+            "url": "/components/block-text"
+          },
+          {
+            "displayName": "HeadingText",
+            "url": "/components/heading-text"
+          },
+          {
+            "displayName": "Link",
+            "url": "/components/link"
+          }
+        ]
       },
       {
-        "displayName": "Bar",
-        "url": "/foo/bar",
-        "children": []
+        "displayName": "Layout Components",
+        "children": [
+          {
+            "displayName": "AutoSizer",
+            "url": "/components/auto-sizer"
+          },
+          {
+            "displayName": "Card",
+            "url": "/components/card"
+          },
+          {
+            "displayName": "CardBody",
+            "url": "/components/card-body"
+          },
+          {
+            "displayName": "CardHeader",
+            "url": "/components/card-header"
+          },
+          {
+            "displayName": "Grid",
+            "url": "/components/grid"
+          },
+          {
+            "displayName": "Stack",
+            "url": "/components/stack"
+          }
+        ]
+      },
+      {
+        "displayName": "Form Components",
+        "children": [
+          {
+            "displayName": "AccountPicker",
+            "url": "/components/account-picker"
+          },
+          {
+            "displayName": "Button",
+            "url": "/components/button"
+          }
+        ]
+      },
+      {
+        "displayName": "Feedback Components",
+        "children": [
+          {
+            "displayName": "Icon",
+            "url": "/components/icon"
+          },
+          {
+            "displayName": "Spinner",
+            "url": "/components/spinner"
+          },
+          {
+            "displayName": "Toast",
+            "url": "/components/toast"
+          }
+        ]
+      },
+      {
+        "displayName": "Overlaid Components",
+        "children": [
+          {
+            "displayName": "Modal",
+            "url": "/components/modal"
+          },
+          {
+            "displayName": "Tooltip",
+            "url": "/components/tooltip"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "displayName": "Charts",
+    "children": [
+      {
+        "displayName": "AreaChart",
+        "url": "/components/area-chart"
+      }
+    ]
+  },
+  {
+    "displayName": "Query and storage",
+    "children": [
+      {
+        "displayName": "AccountStorageMutation",
+        "url": "/components/account-storage-mutation"
+      },
+      {
+        "displayName": "AccountsQuery",
+        "url": "/components/accounts-query"
+      },
+      {
+        "displayName": "NerdGraphQuery",
+        "url": "/components/nerd-graph-query"
+      },
+      {
+        "displayName": "NrqlQuery",
+        "url": "/components/nrql-query"
+      }
+    ]
+  },
+  {
+    "displayName": "Platform APIs",
+    "children": [
+      {
+        "displayName": "NerdletStateContext",
+        "url": "/components/nerdlet-state-context"
+      },
+      {
+        "displayName": "PlatformStateContext",
+        "url": "/components/platform-state-context"
       }
     ]
   }

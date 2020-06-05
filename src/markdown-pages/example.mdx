@@ -1,29 +1,85 @@
 ---
-path: '/guides/graphql-api'
+path: '/guides/example'
 duration: '30 min'
-title: 'GraphQL API'
+title: 'Example Guide'
 template: 'GuideTemplate'
 description: 'Example guide page'
 ---
 
-## Lorem ipsum
+<Intro>
 
-![image](../images/NewRelic-logo.png)
-
-Integer aliquam convallis scelerisque. Donec auctor dictum viverra. Praesent commodo porttitor tortor. Fusce eget sem arcu. Praesent convallis augue est. `Vestibulum` in mi sollicitudin, rhoncus est eu, rutrum augue. Ut in elit ac odio ultrices pharetra eget id magna. Donec tellus dui, volutpat ut malesuada eget, pharetra eget metus. Proin tortor lacus, vestibulum dignissim urna ac, rutrum vulputate orci. Sed justo tellus, convallis eu tincidunt at, euismod eu enim. Sed interdum viverra volutpat. Suspendisse eget accumsan nunc. Aliquam tempor in magna ut lobortis.
-
-```jsx
-import React from 'react';
-
-const FooBar = () => (
-  <div>Hello, World!</div>
-);
-
-export default FooBar;
-```
-
-Integer aliquam convallis scelerisque. Donec auctor dictum viverra. Praesent commodo porttitor tortor. Fusce eget sem arcu. Praesent convallis augue est. `Vestibulum` in mi sollicitudin, rhoncus est eu, rutrum augue. Ut in elit ac odio ultrices pharetra eget id magna. Donec tellus dui, volutpat ut malesuada eget, pharetra eget metus. Proin tortor lacus, vestibulum dignissim urna ac, rutrum vulputate orci. Sed justo tellus, convallis eu tincidunt at, euismod eu enim. Sed interdum viverra volutpat. Suspendisse eget accumsan nunc. Aliquam tempor in magna ut lobortis.
-
-<Video id="ZagZfNQYJEU" type="youtube" />
+This guide steps you through adding access to the New Relic time picker to a sample transaction overview application. You also add the selected time to the queries used in the application’s chart components. Start by setting up the sample application and running it locally. Then add the time picker, and some time picker features.
 
 <Video id="zxunt1u1as" type="wistia"/>
+</Intro>
+
+## Before you begin
+This guide requires that you have the following:
+
+- A github account
+- New Relic developer account
+- API Key
+- New Relic One CLI downloaded
+
+<br/>
+
+<Steps>
+
+<Step>
+
+## Clone the example application
+This repo contains an example application and code that supports a handful of how to guides for cool and useful features you migth want in your applications. If you've tried other how to guides, you might have already cloned this repo, in which case, you should probably go ahead and update from master.
+
+```shell lineNumbers=false
+git clone https://github.com/newrelic/nr1-how-to.git
+```
+
+</Step>
+
+<Step>
+
+## Set up and run the application locally
+Use the New Relic One CLI to update the application UUID and run the application locally. In the terminal,  change to the time picker directory.
+
+```shell lineNumbers=false
+cd /nr1-howto/add-time-picker
+```
+</Step>
+
+<Step>
+
+## Make sure you're getting data from the right New Relic account
+In your preferred text editor, open the `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js` and then edit the following line to use your account ID (find your account ID in the Profile section of the Developer Center, where you downloaded the New Relic One CLI):
+
+```jsx
+this.accountId = <REPLACE ME WITH YOUR ACCOUNT ID>;
+```
+
+</Step>
+
+<Step>
+
+Update the UUID and serve the application by running the following:
+
+```shell lineNumbers=false
+nr1 nerdpack:uuid -gf
+nr1 nerdpack:serve
+```
+
+</Step>
+
+</Steps>
+
+### Next steps
+
+You'll get a URL to access New Relic One and see your application running locally: https://one.newrelic.com/?nerdpacks=local
+
+One the New Relic home page, there's a new launcher to the Add time picker application.
+
+Click the launcher, and the dashboard opens with your New Relic account transactions. 
+
+
+### Related info
+
+- [New Relic documentation](https://docs.newrelic.com)
+- [Community page for how to add a time picker](https://discuss.newrelic.com/t/how-to-add-the-time-picker-to-nrql-queries/94268)

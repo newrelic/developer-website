@@ -1,14 +1,14 @@
 import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import './Section.scss';
+import styles from './Section.module.scss';
 
 const Section = ({ backgroundBanner, children, className }) => {
   return (
-    <div className="Section">
+    <div className={styles.section}>
       <div
         className={cx(
-          { 'Section-backgroundBanner': backgroundBanner },
+          { [styles.backgroundBanner]: backgroundBanner },
           className
         )}
       />
