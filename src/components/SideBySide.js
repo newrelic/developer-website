@@ -10,7 +10,7 @@ const SideBySide = ({ className, children, type, dir }) => {
   const rest = childObjects.filter((child) => child !== side);
 
   return (
-    <div className={cx(className, styles.container)}>
+    <div className={cx(className, styles.container, styles[dir])}>
       <div>{rest}</div>
       {side && <div>{side}</div>}
     </div>

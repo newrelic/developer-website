@@ -5,7 +5,19 @@
     flex: 1;
   }
 
-  div:nth-child(2) {
-    margin-left: 1rem;
+  &.right {
+    flex-direction: row;
+
+    div:nth-child(2) {
+      margin-left: 1rem;
+    }
+  }
+
+  &.left {
+    flex-direction: row-reverse;
+
+    div:nth-child(2) {
+      margin-right: 1rem;
+    }
   }
 }
