@@ -94,6 +94,13 @@ const ReferenceTemplate = ({ data }) => {
                     params={method.params}
                     returnValue={method.returnValue}
                   />
+                  {method.examples.map((example, i) => (
+                    <ComponentExample
+                      key={i}
+                      className={styles.componentExample}
+                      example={example}
+                    />
+                  ))}
                 </Fragment>
               ))}
             </section>
