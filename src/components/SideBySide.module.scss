@@ -1,14 +1,14 @@
 .container {
   display: flex;
 
-  div {
+  > div {
     flex: 1;
   }
 
   &.right {
     flex-direction: row;
 
-    div:nth-child(2) {
+    > div:nth-child(2) {
       margin-left: 1rem;
     }
   }
@@ -16,7 +16,7 @@
   &.left {
     flex-direction: row-reverse;
 
-    div:nth-child(2) {
+    > div:nth-child(2) {
       margin-right: 1rem;
     }
   }
