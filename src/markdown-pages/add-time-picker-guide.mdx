@@ -23,11 +23,12 @@ This guide requires that you have the following:
 - API Key (The same key you set up in [Quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==)
 - The New Relic One [CLI](https://cli.nr-ext.net/installer.pkg) 
 
-<Steps>
 
 ## Prepare the time picker sample code
 
 To get started, complete these steps to update the application UUID and run the sample application locally:
+
+<Steps>
 
 <Step>
 
@@ -90,8 +91,6 @@ After launching the **Add Time Picker** application, you see a dashboard that gi
 
 By default, the application shows your data within the last 60 minutes. If you toggle the time picker, it doesn't update the charts because the transaction overview application isn't connected to the New Relic One platform. It has no access to the data from the time picker. In the following sections, you'll add the time picker to the example application and add the time to the queries.
 
-<Steps>
-
 ## Import a new component
 
 The first step in adding the time picker is to import the `PlatformStateContext` component. 
@@ -106,6 +105,8 @@ Here's what the `PlatformStateContext` component does:
 * Returns all of the code within our current return statement
 
 Complete these steps:
+
+<Steps>
 
 <Step>
 
@@ -219,9 +220,6 @@ After you complete these steps, your browser console displays something like thi
 
 ![Browser console image](../images/console.png)
 
-
-<Steps>
-
 ## Add the time to the queries
 
 In your console, you should see some data from the New Relic platform state. Now you are ready to add `timeRange` data to update the charts in the transaction overview application.
@@ -232,6 +230,8 @@ This step requires you to import the `timeRangeToNrql` utility method from the N
 | :------------- |
 
 This helper method takes your `PlatformState.timeRange` duration data, formats it from milliseconds, and returns a formatted `SINCE` statement to add to your `NRQL`. 
+
+<Steps>
 
 <Step>
 
@@ -356,15 +356,9 @@ export default class Nr1HowtoAddTimePicker extends React.Component {
 </Step>
 </Steps>
 
-
-
-
 ## Summary
 
 If you completed all the steps in this example, you successfully implemented the time picker into your application by importing the `PlatformStateContext` component and accessing its `timePicker` data object. To continue your learning, take a look at our [self-paced workshop on Github](https://github.com/newrelic/nr1-workshop).
-
- 
-
 
 ### Related info
 
