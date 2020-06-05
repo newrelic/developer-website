@@ -33,8 +33,8 @@ const FunctionDefinition = ({ params, returnValue }) => {
           />
         </div>
       ))}
-      {params.length > 0 && <span className={styles.keyword}>) </span>}
-      <span className={styles.keyword}>=> </span>
+      {params.length > 0 && <span className={styles.keyword}>)</span>}
+      <span className={styles.keyword}> => </span>
       <span className={styles.type}>{returnValue.type}</span>
     </div>
   );
@@ -47,10 +47,10 @@ FunctionDefinition.propTypes = {
       type: PropTypes.string,
       description: PropTypes.string,
     })
-  ),
+  ).isRequired,
   returnValue: PropTypes.shape({
     type: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default FunctionDefinition;
