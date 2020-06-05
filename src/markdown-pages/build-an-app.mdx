@@ -6,7 +6,7 @@ template: 'GuideTemplate'
 description: 'Build a New Relic app showing pageview data on a world map.'
 ---
 
-<intro>
+<Intro>
 ## Build a New Relic app in 15 minutes or less
 
 New Relic has powerful and flexible tools for building custom apps and populating them with data. This guide will show you how to build a custom app and populate it with data in 15 minutes or less using New Relic's Query Language (NRQL). (It's pronounced 'nurkle'.) If you have a little more time and want to install a 3rd party React library, I'll show you how to put that data on a map of the world.
@@ -14,10 +14,10 @@ New Relic has powerful and flexible tools for building custom apps and populatin
 Please review the **Before you begin** section to make sure you have everything you need and don't get stuck halfway through.
 
 <!-- To add an embedded video, use the following video component (no need to import) and supply a YouTube video id:
-<Video youtubeId="<add video id>" /> or <Video id=“<add video id>” type=“wistia”/> (((I assume this is the video that I would use? https://newrelic.com/resources/webinars/introtocustomappsnr1-191113?video=past-webinar))) -->
-</intro>
+<Video youtubeId="<add video id>" /> or <Video id=“<add video id>” type=“wistia”/> (((I assume this is the video that I would use? https://newrelic.com/resources/webinars/Introtocustomappsnr1-191113?video=past-webinar))) -->
+</Intro>
 
-<intro>
+<Intro>
 ## Before you begin
 
 In order to get the most out of this guide, you'll need to have:
@@ -39,11 +39,12 @@ There's some New Relic terminology you may not be familiar with.
     - The three default files are `index.js`, `nr1.json`, and `styles.scss`, but you can customize and add your own.
     - Go here for more information on the [Nerdpack file structure](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure).
 
-<br />
+</Intro>
 
-<steps>
+<Steps>
 
-<step>
+<Step>
+
 ## Check that you've got the data for this exercise 
 
 You'll use a tool called Chart Builder to write a NRQL query to see your page view data.
@@ -58,9 +59,9 @@ FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' FAC
 If you have pageview data, this query will show a week of average page views broken down by country and limited to a thousand items. The table will be full width and use the "chart" class defined in the CSS.
 
 If you don't have any results at this point, you're app won't be very exciting.
-</step>
+</Step>
 
-<step>
+<Step>
 
 ## Start building a custom app
 
@@ -69,16 +70,16 @@ Before you can start building a custom application, you'll need to get your NR A
 Go to [one.newrelic.com](https://one.newrelic.com) and click **Build your own application**.
 
 Once you complete the **Quick start** steps, you'll be ready to build your app.
-</step>
+</Step>
 
-<step>
+<Step>
 
 ## Build a New Relic app
 
 Go to `https://one.newrelic.com/?nerdpacks=local` to see the local Nerdpack that you've served up. If you're not seeing your application, review the **Quick start** steps.
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Hard code your account ID
 
@@ -86,9 +87,9 @@ For the purposes of this exercise and your convenience, you'll hard code your ac
 ```jsx
 const accountId = [Replace with your account ID];
 ```
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Import the table chart component
 
@@ -98,9 +99,9 @@ In the Nerdpack `index.js` file under `import React`, import a table chart from 
 ```jsx
 import { TableChart } from `nr1`;
 ```
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Add a table with a single row
 
@@ -125,9 +126,9 @@ export default class MyFirstNerdpackNerdletNerdlet extends React.Component {
     }
 }
 ```
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Customize the look of your table (optional)
 
@@ -153,9 +154,9 @@ In the `styles.scss` file, add this CSS:
 ```
 
 Feel free to customize this CSS to your taste.
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Get your data into that table
 
@@ -170,15 +171,17 @@ Put this code into the `row` div.
 Go to New Relic One and click your app to see your data in the table. (You may need to serve your app to New Relic again.)
 
 You've completed your first app! Continue on to make it interactive.
-</step>
+</Step>
 
-<step>
+<Step>
+
 ## Make your app interactive with a text field
 
 Once you've confirmed that data is getting to New Relic from your app, you can start customizing it and making it interactive. Next, you'll add a text field to filter your data. After that, you'll use a 3rd-party library called Leaflet to show that data on a world map.
-</step>
+</Step>
 
-<step>
+<Step>
+
 ### Import the TextField component
 
 Like the TableChart, you'll need to import a TextField component from New Relic One.
@@ -186,9 +189,9 @@ Like the TableChart, you'll need to import a TextField component from New Relic 
 ```jsx
 import { TextField } from 'nr1';
 ```
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Add a row for your text field
 
@@ -202,9 +205,9 @@ You'll probably want your text field filter above the table. Put this above the 
 ```
 
 The text field will have a default value of "US".
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Build the text field object
 
@@ -232,13 +235,13 @@ Now add country code to your table chart query.
 ```
 
 Reload your app to try out the text field.
-</step>
+</Step>
 
 ## Get your data on a map
 
 Before you continue with this section, you'll need to use npm to install Leaflet.
 
-<step>
+<Step>
 
 ### Install Leaflet (optional if you've already got it installed)
 
@@ -260,9 +263,9 @@ Add some CSS for your map.
   height: 70vh;
 }
 ```
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Add a webpack config file for Leaflet
 
@@ -288,9 +291,9 @@ module.exports = {
   }
 };
 ```
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Import modules from Leaflet
 
@@ -298,9 +301,9 @@ In `index.js`, import modules from Leaflet.
 ```jsx
 import { Map, CircleMarker, TileLayer } from 'react-leaflet';
 ```
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Import additional modules from New Relic One
 
@@ -311,9 +314,9 @@ import { NerdGraphQuery, Spinner, Button, BlockText } from 'nr1';
 ```
 
 NerdGraphQuery lets you multiple NRQL queries at once and is what will populate the map with data. Spinner will add a loading spinner. Button will give you button components. BlockText will give you block text components.
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Get data for the map
 
@@ -336,9 +339,9 @@ mapData() {
     return query;
 };
 ```
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Customize the map marker colors
 
@@ -359,9 +362,9 @@ Above the mapData function, add this code to customize the map marker colors.
 Change the HTML color code values to your taste.
 
 `#11A600` is green, `#FFD966` is sort of yellow, and `#BF0016` is red.
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Set your map's default center point
 
@@ -369,9 +372,9 @@ Set a default center point for your map using latitude and longitude.
 ```jsx
 const defaultMapCenter = [10.5731, -7.5898];
 ```
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Add a row for your map
 
@@ -396,9 +399,9 @@ Between the text field row and the table chart row, insert a new row for the map
     </NerdGraphQuery>
 </div>
 ```
-</step>
+</Step>
 
-<step>
+<Step>
 
 ### Replace "Hello" with the Leaflet code
 
@@ -430,11 +433,12 @@ Replace `return "Hello";` with:
     })}
 </Map>
 ```
-</step>
+</Step>
 
 This code creates a world map centered on the latitude and longitude you chose using OpenStreetMap data and your marker colors.
 
 Reload your app to see the pageview data on the map!
+</Steps>
 
 
 ## Related info
