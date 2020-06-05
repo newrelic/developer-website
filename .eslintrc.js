@@ -24,4 +24,15 @@ module.exports = {
     es6: true,
   },
   ignorePatterns: ['**/__tests__/**/*'],
+  rules: {
+    'no-unused-vars': [
+      'error',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        ignoreRestSiblings: false,
+      },
+    ],
+  },
 };
