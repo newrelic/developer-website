@@ -13,7 +13,6 @@
 }
 .stepDetails {
   margin-right: 1rem;
-  width: 50%;
   line-height: 1.5rem;
   h1:first-child,
   h2:first-child,
@@ -27,6 +26,9 @@
     margin-bottom: 1rem;
     font-size: 1rem;
   }
+}
+.stepDetailsWithCode {
+  width: 50%;
 }
 .container > pre {
   width: 50%;
