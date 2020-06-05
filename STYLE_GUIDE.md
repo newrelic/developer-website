@@ -170,7 +170,7 @@ All jargon should be expressed in plain English. In other words, pretend like yo
 
 Don't leave readers guessing, or having to decide between multiple choices. Often they need to solve a problem. As the subject matter expert, you're in a position to help. Provide the best way to do a thing, and why. If there are four different ways, choose the most efficient way. You can explain the choice if necessary. You can also describe other options, but we recommend that you hold that until the end.
 
-## Make it ease to scan 
+## Make it easy to scan 
 
 Users should be able to scan a page, learn what it covers, and find the info they're looking for in seconds. Improve scannability by adding headings and bulleted lists, and by including step numbers on procedures. 
 
