@@ -1,7 +1,9 @@
 import React from 'react';
-import styles from './Step.module.scss';
 import Proptypes from 'prop-types';
 import cx from 'classnames';
+import SideBySide from './SideBySide';
+
+import styles from './Step.module.scss';
 
 const Step = ({ children, number, total }) => {
   children = React.Children.toArray(children);
@@ -13,15 +15,8 @@ const Step = ({ children, number, total }) => {
   return (
     <div className={styles.wrapper}>
       <p className={styles.stepNumber}>{`Step ${number} of ${total}`}</p>
-      <div className={styles.container}>
-        <div
-          className={cx(styles.stepDetails, {
-            [styles.stepDetailsWithCode]: codeSnippet,
-          })}
-        >
-          {childrenWithoutCodeSnippet}
-        </div>
-        {codeSnippet}
+      <div className={styles.stepDetails}>
+        <SideBySide type="pre">{children}</SideBySide>
       </div>
     </div>
   );
