@@ -28,13 +28,8 @@ const ApiDocTemplate = ({ data }) => {
   const { title, description, component } = frontmatter;
   const componentDoc = useComponentDoc(component);
 
-  const {
-    examples = [],
-    description: componentDescription,
-    methods = [],
-    usage = '',
-    propTypes = [],
-  } = componentDoc ?? {};
+  const { description: componentDescription, methods = [], usage = '' } =
+    componentDoc ?? {};
 
   return (
     <Layout>
@@ -58,31 +53,9 @@ const ApiDocTemplate = ({ data }) => {
             <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
           </section>
 
-          {examples.length > 0 && (
-            <section className={styles.section}>
-              <h2>Examples</h2>
-              <div>
-                {examples.map((example, i) => (
-                  <ComponentExample
-                    key={i}
-                    useToastManager={component === 'Toast'}
-                    className={styles.componentExample}
-                    example={example}
-                    previewStyle={previewStyles[component]}
-                  />
-                ))}
-              </div>
-            </section>
-          )}
-
-          <section className={styles.section}>
-            <h2>Props</h2>
-            <PropList propTypes={propTypes} />
-          </section>
-
           {methods.length > 0 && (
             <section className={styles.section}>
-              <h2>Methods</h2>
+              <h2>API methods</h2>
               {methods.map((method, i) => (
                 <Fragment key={i}>
                   <h3 className={styles.methodName}>{method.name}</h3>
