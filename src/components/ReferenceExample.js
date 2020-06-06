@@ -4,7 +4,7 @@ import formatCode from '../utils/formatCode';
 import github from 'prism-react-renderer/themes/github';
 import { LiveEditor, LiveError, LiveProvider } from 'react-live';
 import styles from './ReferenceExample.module.scss';
-import ComponentPreview from './ComponentPreview';
+import ReferencePreview from './ReferencePreview';
 
 const platformStateContextMock = {
   timeRange: {
@@ -57,7 +57,7 @@ const ReferenceExample = ({
             disabled={!live}
           >
             {live && (
-              <ComponentPreview
+              <ReferencePreview
                 className={styles.preview}
                 style={previewStyle}
                 useToastManager={useToastManager}

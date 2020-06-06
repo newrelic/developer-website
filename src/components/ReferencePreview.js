@@ -86,7 +86,7 @@ const EXAMPLE_CSS = `
 }
 `;
 
-const ComponentPreview = ({ className, style, useToastManager }) => {
+const ReferencePreview = ({ className, style, useToastManager }) => {
   const [stylesLoaded, setStylesLoaded] = useState(false);
   const { ToastManager } = window.__NR1_SDK__;
 
@@ -112,10 +112,10 @@ const ComponentPreview = ({ className, style, useToastManager }) => {
   );
 };
 
-ComponentPreview.propTypes = {
+ReferencePreview.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   useToastManager: PropTypes.bool,
 };
 
-export default ComponentPreview;
+export default ReferencePreview;
