@@ -1,4 +1,4 @@
-import { getNormalizedTypeName } from '../propTypeInfo';
+import { getNormalizedTypeName, getDefaultValue } from '../propTypeInfo';
 
 const createPropType = (name, args, { isRequired = false } = {}) => {
   const propType = [{ name: 'PropTypes' }, { name }];
@@ -106,5 +106,130 @@ describe('getNormalizedTypeName', () => {
     ]);
 
     expect(getNormalizedTypeName(propType)).toEqual('(string|number)[]');
+  });
+});
+
+describe('getDefaultValue', () => {
+  test('returns value for primitive types', () => {
+    const component = {
+      propTypes: {
+        message: createPropType('string'),
+      },
+      defaultProps: {
+        message: 'Hello',
+      },
+    };
+
+    expect(getDefaultValue(component, 'message')).toEqual('Hello');
+  });
+
+  test('returns undefined for undefined default values', () => {
+    const component = {
+      propTypes: {},
+      defaultProps: {},
+    };
+
+    expect(getDefaultValue(component, 'name')).toBeUndefined();
+  });
+
+  test('returns null for default values set to null', () => {
+    const component = {
+      propTypes: {
+        name: createPropType('string'),
+      },
+      defaultProps: {
+        name: null,
+      },
+    };
+
+    expect(getDefaultValue(component, 'name')).toBeNull();
+  });
+
+  test('returns stringified boolean value when it is a boolean', () => {
+    const component = {
+      propTypes: {
+        disabled: createPropType('bool'),
+      },
+      defaultProps: {
+        disabled: false,
+      },
+    };
+
+    expect(getDefaultValue(component, 'disabled')).toEqual('false');
+  });
+
+  test('returns a number if the default value is a number', () => {
+    const component = {
+      propTypes: {
+        count: createPropType('number'),
+      },
+      defaultProps: {
+        count: 5,
+      },
+    };
+
+    expect(getDefaultValue(component, 'count')).toEqual(5);
+  });
+
+  test('returns special number names if the default is a special number', () => {
+    const component = {
+      propTypes: {
+        bytes: createPropType('number'),
+      },
+      defaultProps: {
+        bytes: Number.MAX_SAFE_INTEGER,
+      },
+    };
+
+    expect(getDefaultValue(component, 'bytes')).toEqual(
+      'Number.MAX_SAFE_INTEGER'
+    );
+  });
+
+  test('returns undefined if the default value is an arbitrary object', () => {
+    const component = {
+      propTypes: {
+        bytes: createPropType('object'),
+      },
+      defaultProps: {
+        location: { state: '1234' },
+      },
+    };
+
+    expect(getDefaultValue(component, 'location')).toBeUndefined();
+  });
+
+  test('returns stringfied representation of array if the default value is an array', () => {
+    const component = {
+      propTypes: {
+        bytes: createPropType('array'),
+      },
+      defaultProps: {
+        sizes: [1, 2, 3],
+      },
+    };
+
+    expect(getDefaultValue(component, 'sizes')).toEqual('[1,2,3]');
+  });
+
+  test('returns static constant if the default value is a union prop', () => {
+    const GAP = {
+      SMALL: 1,
+      MEDIUM: 2,
+      LARGE: 3,
+    };
+
+    const component = {
+      name: 'Grid',
+      propTypes: {
+        gap: createPropType('oneOf', [[GAP.SMALL, GAP.MEDIUM, GAP.LARGE]]),
+      },
+      defaultProps: {
+        gap: GAP.SMALL,
+      },
+      GAP,
+    };
+
+    expect(getDefaultValue(component, 'gap')).toEqual('Grid.GAP.SMALL');
   });
 });
