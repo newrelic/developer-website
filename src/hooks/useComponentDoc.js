@@ -1,6 +1,10 @@
 import { useMemo } from 'react';
 import { SPECIAL_NUMBERS } from '../utils/propConstants';
-import { getNormalizedTypeName, getRawTypeName } from '../utils/propTypeInfo';
+import {
+  getDefaultValue,
+  getNormalizedTypeName,
+  getRawTypeName,
+} from '../utils/propTypeInfo';
 
 const IGNORED_METHODS = [
   'prototype',
@@ -18,13 +22,6 @@ const extractPropTypes = (component) => {
 
     const type = processType(component, name, propMeta);
 
-    const defaultValue = getDefaultValue(
-      component,
-      name,
-      type.isOneOf,
-      toStaticName(name)
-    );
-
     return {
       name,
       description: propDocs.text,
@@ -33,7 +30,7 @@ const extractPropTypes = (component) => {
         raw: getRawTypeName(propType),
         name: getNormalizedTypeName(propType),
       },
-      defaultValue,
+      defaultValue: getDefaultValue(component, name),
     };
   });
 };
@@ -50,7 +47,7 @@ const processPropType = (component, propName, prop) => {
   const type = processType(component, propName, propMeta);
 
   const staticName = toStaticName(propName);
-  const defaultValue = getDefaultValue(
+  const defaultValue = getDefaultValue_REPLACE_ME(
     component,
     propName,
     type.isOneOf,
@@ -142,7 +139,12 @@ const processType = (component, propName, propMeta) => {
 };
 
 // TODO: refactor: remove let? earlier / opportunistic returns?
-const getDefaultValue = (component, propName, isOneOf, staticName) => {
+const getDefaultValue_REPLACE_ME = (
+  component,
+  propName,
+  isOneOf,
+  staticName
+) => {
   let defaultValue = component?.defaultProps?.[propName];
 
   const isArray = Array.isArray(defaultValue);
