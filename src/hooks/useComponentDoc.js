@@ -12,9 +12,9 @@ const IGNORED_METHODS = [
 ];
 
 const extractPropTypes = (component) => {
-  return Object.entries(component.propTypes || {}).map(([name, propData]) => {
-    const propDocs = propData.__docs__;
-    const propMeta = propData.__reflect__;
+  return Object.entries(component.propTypes || {}).map(([name, propType]) => {
+    const propDocs = propType.__docs__;
+    const propMeta = propType.__reflect__;
 
     const type = processType(component, name, propMeta);
 
@@ -31,7 +31,7 @@ const extractPropTypes = (component) => {
       isRequired: propMeta.some((item) => item.name === 'isRequired'),
       type: {
         ...type,
-        name: getNormalizedPropType(propData),
+        name: getNormalizedPropType(propType),
       },
       defaultValue,
     };
