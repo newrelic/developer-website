@@ -19,7 +19,7 @@ const isUnion = (propType) => getRawTypeName(propType) === 'oneOfType';
 const findSpecialNumber = (number) =>
   SPECIAL_NUMBERS.find((property) => Number[property] === number);
 
-const toStaticName = (name) =>
+const toStaticPropertyName = (name) =>
   name
     .replace(/(.+?)(?=[A-Z])/g, '$1_')
     .replace('.', '_')
@@ -75,7 +75,7 @@ export const getDefaultValue = (component, propTypeName) => {
   }
 
   if (isEnum(component.propTypes[propTypeName])) {
-    const staticProperty = toStaticName(propTypeName);
+    const staticProperty = toStaticPropertyName(propTypeName);
     const property = Object.entries(component[staticProperty]).find(
       ([_, value]) => value === defaultValue
     )[0];
