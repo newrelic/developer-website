@@ -27,6 +27,7 @@ const extractPropTypes = (component) => {
       description: propDocs.text,
       isRequired: propMeta.some((item) => item.name === 'isRequired'),
       type: {
+        meta: type,
         raw: getRawTypeName(propType),
         name: getNormalizedTypeName(propType),
       },
