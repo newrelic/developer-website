@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PropTypeInfo from './PropTypeInfo';
 import ReactMarkdown from 'react-markdown';
 import styles from './PropList.module.scss';
 
@@ -29,7 +30,13 @@ const PropList = ({ propTypes }) => {
                   </div>
                 )}
               </div>
-              <ReactMarkdown className={styles.details} source={description} />
+              <div className={styles.propInfo}>
+                <ReactMarkdown
+                  className={styles.details}
+                  source={description}
+                />
+                <PropTypeInfo type={type} />
+              </div>
             </div>
           );
         }
@@ -45,6 +52,7 @@ PropList.propTypes = {
       description: PropTypes.string,
       isRequired: PropTypes.bool,
       type: PropTypes.shape({
+        ...PropTypeInfo.propTypes.type,
         name: PropTypes.string.isRequired,
       }),
       defaultValue: PropTypes.string,

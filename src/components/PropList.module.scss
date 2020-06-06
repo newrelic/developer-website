@@ -11,6 +11,10 @@
 
 .info {
   width: 30%;
+
+  h3 {
+    margin-top: 0;
+  }
 }
 
 .default {
@@ -26,9 +30,16 @@
   color: var(--color-neutrals-600);
 }
 
+.propInfo {
+  width: 70%;
+}
+
 .details {
   font-size: 1.25rem;
-  width: 70%;
+
+  > *:first-child {
+    margin-top: 0;
+  }
 }
 
 .required {
