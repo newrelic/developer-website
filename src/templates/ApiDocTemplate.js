@@ -10,26 +10,17 @@ import FunctionDefinition from '../components/FunctionDefinition';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
-import PropList from '../components/PropList';
 import pages from '../data/sidenav.json';
 import styles from './ApiDocTemplate.module.scss';
-import useComponentDoc from '../hooks/useComponentDoc';
-
-const previewStyles = {
-  Spinner: {
-    height: '16px',
-  },
-};
+import useApiDoc from '../hooks/useApiDoc';
 
 const ApiDocTemplate = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
-  const { title, description, component } = frontmatter;
-  const componentDoc = useComponentDoc(component);
-
-  const { description: componentDescription, methods = [], usage = '' } =
-    componentDoc ?? {};
+  const { title, description, api } = frontmatter;
+  const { description: apiDescription, methods = [], usage = '' } =
+    useApiDoc(api) ?? {};
 
   return (
     <Layout>
@@ -42,10 +33,10 @@ const ApiDocTemplate = ({ data }) => {
           toggle={() => setIsOpen(!isOpen)}
         />
         <main className={styles.content}>
-          <h1>{component}</h1>
+          <h1>{api}</h1>
 
           <section className={cx(styles.section, styles.description)}>
-            <ReactMarkdown source={componentDescription} />
+            <ReactMarkdown source={apiDescription} />
           </section>
 
           <section className={styles.section}>
@@ -96,7 +87,7 @@ export const pageQuery = graphql`
         path
         title
         description
-        component
+        api
       }
     }
   }
