@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ComponentExample from './ComponentExample';
+import ReferenceExample from './ReferenceExample';
 import FunctionDefinition from './FunctionDefinition';
 import Markdown from 'react-markdown';
 import styles from './MethodReference.module.scss';
@@ -14,7 +14,7 @@ const MethodReference = ({ className, method }) => (
       returnValue={method.returnValue}
     />
     {method.examples.map((example, i) => (
-      <ComponentExample key={i} className={styles.example} example={example} />
+      <ReferenceExample key={i} className={styles.example} example={example} />
     ))}
   </div>
 );
@@ -26,7 +26,7 @@ MethodReference.propTypes = {
     description: PropTypes.string,
     params: FunctionDefinition.propTypes.params,
     returnValue: FunctionDefinition.propTypes.returnValue,
-    examples: PropTypes.arrayOf(ComponentExample.propTypes.example),
+    examples: PropTypes.arrayOf(ReferenceExample.propTypes.example),
   }),
 };
 

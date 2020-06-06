@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import InlineCodeSnippet from '../components/InlineCodeSnippet';
 import ReactMarkdown from 'react-markdown';
 import Container from '../components/Container';
-import ComponentExample from '../components/ComponentExample';
+import ReferenceExample from '../components/ReferenceExample';
 import Layout from '../components/Layout';
 import MethodReference from '../components/MethodReference';
 import Sidebar from '../components/Sidebar';
@@ -64,7 +64,7 @@ const ComponentReferenceTemplate = ({ data }) => {
               <h2>Examples</h2>
               <div>
                 {examples.map((example, i) => (
-                  <ComponentExample
+                  <ReferenceExample
                     key={i}
                     useToastManager={component === 'Toast'}
                     className={styles.componentExample}
