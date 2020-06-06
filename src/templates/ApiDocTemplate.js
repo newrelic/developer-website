@@ -12,7 +12,7 @@ import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
 import PropList from '../components/PropList';
 import pages from '../data/sidenav.json';
-import styles from './ReferenceTemplate.module.scss';
+import styles from './ApiDocTemplate.module.scss';
 import useComponentDoc from '../hooks/useComponentDoc';
 
 const previewStyles = {
@@ -21,7 +21,7 @@ const previewStyles = {
   },
 };
 
-const ReferenceTemplate = ({ data }) => {
+const ApiDocTemplate = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
@@ -111,7 +111,7 @@ const ReferenceTemplate = ({ data }) => {
   );
 };
 
-ReferenceTemplate.propTypes = {
+ApiDocTemplate.propTypes = {
   data: PropTypes.object,
 };
 
@@ -129,4 +129,4 @@ export const pageQuery = graphql`
   }
 `;
 
-export default ReferenceTemplate;
+export default ApiDocTemplate;
