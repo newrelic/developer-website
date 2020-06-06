@@ -62,6 +62,15 @@ export const getDefaultValue = (component, propTypeName) => {
     return defaultValue;
   }
 
+  if (isEnum(component.propTypes[propTypeName])) {
+    const staticProperty = toStaticPropertyName(propTypeName);
+    const property = Object.entries(component[staticProperty]).find(
+      ([_, value]) => value === defaultValue
+    )[0];
+
+    return `${component.name}.${staticProperty}.${property}`;
+  }
+
   if (typeof defaultValue === 'boolean') {
     return defaultValue.toString();
   }
@@ -72,15 +81,6 @@ export const getDefaultValue = (component, propTypeName) => {
 
   if (typeof defaultValue === 'object') {
     return undefined;
-  }
-
-  if (isEnum(component.propTypes[propTypeName])) {
-    const staticProperty = toStaticPropertyName(propTypeName);
-    const property = Object.entries(component[staticProperty]).find(
-      ([_, value]) => value === defaultValue
-    )[0];
-
-    return `${component.name}.${staticProperty}.${property}`;
   }
 
   if (typeof defaultValue === 'number') {
