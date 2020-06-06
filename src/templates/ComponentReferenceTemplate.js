@@ -27,15 +27,13 @@ const ComponentReferenceTemplate = ({ data }) => {
   const { mdx } = data;
   const { frontmatter } = mdx;
   const { title, description, component } = frontmatter;
-  const componentDoc = useComponentDoc(component);
-
   const {
     examples = [],
     description: componentDescription,
     methods = [],
     usage = '',
     propTypes = [],
-  } = componentDoc ?? {};
+  } = useComponentDoc(component) ?? {};
 
   return (
     <Layout>
