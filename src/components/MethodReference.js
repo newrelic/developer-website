@@ -14,11 +14,7 @@ const MethodReference = ({ className, method }) => (
       returnValue={method.returnValue}
     />
     {method.examples.map((example, i) => (
-      <ComponentExample
-        key={i}
-        className={styles.componentExample}
-        example={example}
-      />
+      <ComponentExample key={i} className={styles.example} example={example} />
     ))}
   </div>
 );
