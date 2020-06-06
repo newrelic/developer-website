@@ -10,7 +10,7 @@ import MethodReference from '../components/MethodReference';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
 import pages from '../data/sidenav.json';
-import styles from './ApiDocTemplate.module.scss';
+import templateStyles from './ReferenceTemplate.module.scss';
 import useApiDoc from '../hooks/useApiDoc';
 
 const ApiDocTemplate = ({ data }) => {
@@ -24,27 +24,29 @@ const ApiDocTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO title={title} description={description} />
-      <Container className={styles.container}>
+      <Container className={templateStyles.container}>
         <Sidebar
-          className={styles.sidebar}
+          className={templateStyles.sidebar}
           pages={pages}
           isOpen={isOpen}
           toggle={() => setIsOpen(!isOpen)}
         />
-        <main className={styles.content}>
+        <main className={templateStyles.content}>
           <h1>{api}</h1>
 
-          <section className={cx(styles.section, styles.description)}>
+          <section
+            className={cx(templateStyles.section, templateStyles.description)}
+          >
             <ReactMarkdown source={apiDescription} />
           </section>
 
-          <section className={styles.section}>
+          <section className={templateStyles.section}>
             <h2>Usage</h2>
             <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
           </section>
 
           {methods.length > 0 && (
-            <section className={styles.section}>
+            <section className={templateStyles.section}>
               <h2>API methods</h2>
               {methods.map((method, i) => (
                 <MethodReference key={i} method={method} />

@@ -13,6 +13,7 @@ import SEO from '../components/Seo';
 import PropList from '../components/PropList';
 import pages from '../data/sidenav.json';
 import styles from './ComponentDocTemplate.module.scss';
+import templateStyles from './ReferenceTemplate.module.scss';
 import useComponentDoc from '../hooks/useComponentDoc';
 
 const previewStyles = {
@@ -39,27 +40,29 @@ const ComponentDocTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO title={title} description={description} />
-      <Container className={styles.container}>
+      <Container className={templateStyles.container}>
         <Sidebar
-          className={styles.sidebar}
+          className={templateStyles.sidebar}
           pages={pages}
           isOpen={isOpen}
           toggle={() => setIsOpen(!isOpen)}
         />
-        <main className={styles.content}>
+        <main className={templateStyles.content}>
           <h1>{component}</h1>
 
-          <section className={cx(styles.section, styles.description)}>
+          <section
+            className={cx(templateStyles.section, templateStyles.description)}
+          >
             <ReactMarkdown source={componentDescription} />
           </section>
 
-          <section className={styles.section}>
+          <section className={templateStyles.section}>
             <h2>Usage</h2>
             <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
           </section>
 
           {examples.length > 0 && (
-            <section className={styles.section}>
+            <section className={templateStyles.section}>
               <h2>Examples</h2>
               <div>
                 {examples.map((example, i) => (
@@ -75,13 +78,13 @@ const ComponentDocTemplate = ({ data }) => {
             </section>
           )}
 
-          <section className={styles.section}>
+          <section className={templateStyles.section}>
             <h2>Props</h2>
             <PropList propTypes={propTypes} />
           </section>
 
           {methods.length > 0 && (
-            <section className={styles.section}>
+            <section className={templateStyles.section}>
               <h2>Methods</h2>
               {methods.map((method, i) => (
                 <MethodReference key={i} method={method} />
