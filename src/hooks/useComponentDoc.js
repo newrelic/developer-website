@@ -48,12 +48,6 @@ const processPropType = (component, propName, prop) => {
   const type = processType(component, propName, propMeta);
 
   const staticName = toStaticName(propName);
-  const defaultValue = getDefaultValue_REPLACE_ME(
-    component,
-    propName,
-    type.isOneOf,
-    staticName
-  );
 
   const enums =
     type.isOneOf || type.isArrayOfOneOf
@@ -70,7 +64,7 @@ const processPropType = (component, propName, prop) => {
     params: propDocs?.tags?.param,
     deprecated: propDocs?.tags?.deprecated?.[0],
     returns: propDocs?.tags?.returns,
-    defaultValue,
+    defaultValue: getDefaultValue(component, propName),
     enums,
   };
 };
@@ -137,51 +131,6 @@ const processType = (component, propName, propMeta) => {
     isArrayOfOneOf,
     shapes,
   };
-};
-
-// TODO: refactor: remove let? earlier / opportunistic returns?
-const getDefaultValue_REPLACE_ME = (
-  component,
-  propName,
-  isOneOf,
-  staticName
-) => {
-  let defaultValue = component?.defaultProps?.[propName];
-
-  const isArray = Array.isArray(defaultValue);
-  const defaultType = typeof defaultValue;
-
-  // If default value is an object then is a default value for a shape propType
-  if (defaultValue !== null && !isArray && defaultType === 'object') {
-    defaultValue = undefined;
-  }
-
-  // Find default enum if exists
-  if (isOneOf && defaultValue !== undefined) {
-    const defaultValueStaticName = Object.entries(component[staticName]).find(
-      (name) => name[1] === defaultValue
-    )[0];
-
-    defaultValue = `${component.name}.${staticName}.${defaultValueStaticName}`;
-  }
-
-  if (defaultType === 'number') {
-    const specialNumber = SPECIAL_NUMBERS.find(
-      (number) => Number[number] === defaultValue
-    );
-    defaultValue = specialNumber ? `Number.${specialNumber}` : defaultValue;
-  }
-
-  // Serialize array default values
-  if (isArray) {
-    defaultValue = JSON.stringify(defaultValue);
-  }
-
-  if (defaultType === 'boolean') {
-    defaultValue = defaultValue.toString();
-  }
-
-  return defaultValue;
 };
 
 const useComponentDoc = (componentName) => {
