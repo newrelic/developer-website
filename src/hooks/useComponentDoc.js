@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { SPECIAL_NUMBERS } from '../utils/propConstants';
-import { getNormalizedTypeName } from '../utils/propTypeInfo';
+import { getNormalizedTypeName, getRawTypeName } from '../utils/propTypeInfo';
 
 const IGNORED_METHODS = [
   'prototype',
@@ -30,7 +30,7 @@ const extractPropTypes = (component) => {
       description: propDocs.text,
       isRequired: propMeta.some((item) => item.name === 'isRequired'),
       type: {
-        meta: type,
+        raw: getRawTypeName(propType),
         name: getNormalizedTypeName(propType),
       },
       defaultValue,

@@ -5,8 +5,10 @@ const getArgs = (propType) =>
 
 const isUnion = (typeName) => typeName.includes(UNION_DELIMITER);
 
+export const getRawTypeName = (propType) => propType.__reflect__[1].name;
+
 export const getNormalizedTypeName = (propType) => {
-  const [_, { name }] = propType.__reflect__;
+  const name = getRawTypeName(propType);
 
   switch (name) {
     case 'bool':
@@ -32,4 +34,3 @@ export const getNormalizedTypeName = (propType) => {
       return name;
   }
 };
-
