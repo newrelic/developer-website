@@ -5,21 +5,37 @@ import PropTypes from 'prop-types';
 import InlineCodeSnippet from '../components/InlineCodeSnippet';
 import ReactMarkdown from 'react-markdown';
 import Container from '../components/Container';
+import ComponentExample from '../components/ComponentExample';
 import Layout from '../components/Layout';
 import MethodReference from '../components/MethodReference';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
+import PropList from '../components/PropList';
 import pages from '../data/sidenav.json';
+import styles from './ComponentReferenceTemplate.module.scss';
 import templateStyles from './ReferenceTemplate.module.scss';
-import useApiDoc from '../hooks/useApiDoc';
+import useComponentDoc from '../hooks/useComponentDoc';
 
-const ApiDocTemplate = ({ data }) => {
+const previewStyles = {
+  Spinner: {
+    height: '16px',
+  },
+};
+
+const ComponentReferenceTemplate = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
-  const { title, description, api } = frontmatter;
-  const { description: apiDescription, methods = [], usage = '' } =
-    useApiDoc(api) ?? {};
+  const { title, description, component } = frontmatter;
+  const componentDoc = useComponentDoc(component);
+
+  const {
+    examples = [],
+    description: componentDescription,
+    methods = [],
+    usage = '',
+    propTypes = [],
+  } = componentDoc ?? {};
 
   return (
     <Layout>
@@ -32,12 +48,12 @@ const ApiDocTemplate = ({ data }) => {
           toggle={() => setIsOpen(!isOpen)}
         />
         <main className={templateStyles.content}>
-          <h1>{api}</h1>
+          <h1>{component}</h1>
 
           <section
             className={cx(templateStyles.section, templateStyles.description)}
           >
-            <ReactMarkdown source={apiDescription} />
+            <ReactMarkdown source={componentDescription} />
           </section>
 
           <section className={templateStyles.section}>
@@ -45,9 +61,31 @@ const ApiDocTemplate = ({ data }) => {
             <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
           </section>
 
+          {examples.length > 0 && (
+            <section className={templateStyles.section}>
+              <h2>Examples</h2>
+              <div>
+                {examples.map((example, i) => (
+                  <ComponentExample
+                    key={i}
+                    useToastManager={component === 'Toast'}
+                    className={styles.componentExample}
+                    example={example}
+                    previewStyle={previewStyles[component]}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section className={templateStyles.section}>
+            <h2>Props</h2>
+            <PropList propTypes={propTypes} />
+          </section>
+
           {methods.length > 0 && (
             <section className={templateStyles.section}>
-              <h2>API methods</h2>
+              <h2>Methods</h2>
               {methods.map((method, i) => (
                 <MethodReference key={i} method={method} />
               ))}
@@ -59,7 +97,7 @@ const ApiDocTemplate = ({ data }) => {
   );
 };
 
-ApiDocTemplate.propTypes = {
+ComponentReferenceTemplate.propTypes = {
   data: PropTypes.object,
 };
 
@@ -71,10 +109,10 @@ export const pageQuery = graphql`
         path
         title
         description
-        api
+        component
       }
     }
   }
 `;
 
-export default ApiDocTemplate;
+export default ComponentReferenceTemplate;
