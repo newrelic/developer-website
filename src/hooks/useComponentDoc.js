@@ -28,7 +28,10 @@ const extractPropTypes = (component) => {
       name,
       description: propDocs.text,
       isRequired: propMeta.some((item) => item.name === 'isRequired'),
-      type: type.displayType,
+      type: {
+        ...type,
+        name: type.displayType,
+      },
       defaultValue,
     };
   });

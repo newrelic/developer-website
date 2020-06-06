@@ -21,7 +21,7 @@ const PropList = ({ propTypes }) => {
                     <span className={styles.required}>required</span>
                   )}
                 </h3>
-                <div className={styles.type}>{type}</div>
+                <div className={styles.type}>{type.name}</div>
                 {defaultValue !== undefined && (
                   <div className={styles.default}>
                     <p>DEFAULT</p>
@@ -44,7 +44,9 @@ PropList.propTypes = {
       name: PropTypes.string.isRequired,
       description: PropTypes.string,
       isRequired: PropTypes.bool,
-      type: PropTypes.string,
+      type: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }),
       defaultValue: PropTypes.string,
     })
   ),
