@@ -3,7 +3,7 @@ const UNION_DELIMITER = '|';
 const getArgs = (propType) =>
   propType.__reflect__.find(({ args }) => args)?.args;
 
-const isUnion = (typeName) => typeName.includes(UNION_DELIMITER);
+const isUnion = (propType) => getRawTypeName(propType) === 'oneOfType';
 
 export const getRawTypeName = (propType) => propType.__reflect__[1].name;
 
@@ -25,10 +25,10 @@ export const getNormalizedTypeName = (propType) => {
         .join(UNION_DELIMITER);
     }
     case 'arrayOf': {
-      const args = getArgs(propType);
-      const arrayType = getNormalizedTypeName(args[0]);
+      const [arrayOfPropType] = getArgs(propType);
+      const typeName = getNormalizedTypeName(arrayOfPropType);
 
-      return isUnion(arrayType) ? `(${arrayType})[]` : `${arrayType}[]`;
+      return isUnion(arrayOfPropType) ? `(${typeName})[]` : `${typeName}[]`;
     }
     default:
       return name;
