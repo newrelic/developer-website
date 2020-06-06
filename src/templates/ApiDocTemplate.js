@@ -1,13 +1,12 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import InlineCodeSnippet from '../components/InlineCodeSnippet';
 import ReactMarkdown from 'react-markdown';
 import Container from '../components/Container';
-import ComponentExample from '../components/ComponentExample';
-import FunctionDefinition from '../components/FunctionDefinition';
 import Layout from '../components/Layout';
+import MethodReference from '../components/MethodReference';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
 import pages from '../data/sidenav.json';
@@ -48,24 +47,7 @@ const ApiDocTemplate = ({ data }) => {
             <section className={styles.section}>
               <h2>API methods</h2>
               {methods.map((method, i) => (
-                <Fragment key={i}>
-                  <h3 className={styles.methodName}>{method.name}</h3>
-                  <ReactMarkdown
-                    className={styles.methodDescription}
-                    source={method.description}
-                  />
-                  <FunctionDefinition
-                    params={method.params}
-                    returnValue={method.returnValue}
-                  />
-                  {method.examples.map((example, i) => (
-                    <ComponentExample
-                      key={i}
-                      className={styles.componentExample}
-                      example={example}
-                    />
-                  ))}
-                </Fragment>
+                <MethodReference key={i} method={method} />
               ))}
             </section>
           )}
