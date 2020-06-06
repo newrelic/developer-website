@@ -16,7 +16,7 @@ const PropList = ({ propTypes }) => {
             <div key={name} className={styles.container}>
               <div className={styles.info}>
                 <h3>
-                  {name}{' '}
+                  {name}
                   {isRequired && (
                     <span className={styles.required}>required</span>
                   )}
