@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { SPECIAL_NUMBERS } from '../utils/propConstants';
 import {
   getDefaultValue,
   getNormalizedTypeName,
