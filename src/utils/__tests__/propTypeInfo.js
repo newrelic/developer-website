@@ -189,7 +189,7 @@ describe('getDefaultValue', () => {
   test('returns undefined if the default value is an arbitrary object', () => {
     const component = {
       propTypes: {
-        bytes: createPropType('object'),
+        location: createPropType('object'),
       },
       defaultProps: {
         location: { state: '1234' },
@@ -202,7 +202,7 @@ describe('getDefaultValue', () => {
   test('returns stringfied representation of array if the default value is an array', () => {
     const component = {
       propTypes: {
-        bytes: createPropType('array'),
+        sizes: createPropType('array'),
       },
       defaultProps: {
         sizes: [1, 2, 3],
