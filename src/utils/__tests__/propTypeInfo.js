@@ -1,4 +1,4 @@
-import { getNormalizedPropType } from '../propTypeInfo';
+import { getNormalizedTypeName } from '../propTypeInfo';
 
 const createPropType = (name, args, { isRequired = false } = {}) => {
   const propType = [{ name: 'PropTypes' }, { name }];
@@ -14,7 +14,7 @@ const createPropType = (name, args, { isRequired = false } = {}) => {
   return { __reflect__: propType };
 };
 
-describe('getNormalizedPropType', () => {
+describe('getNormalizedTypeName', () => {
   [
     'any',
     'array',
@@ -30,32 +30,32 @@ describe('getNormalizedPropType', () => {
     test(`returns "${type}" for ${type} types`, () => {
       const propType = createPropType(type);
 
-      expect(getNormalizedPropType(propType)).toEqual(type);
+      expect(getNormalizedTypeName(propType)).toEqual(type);
     });
   });
 
   test('returns "boolean" for bool types', () => {
     const propType = createPropType('bool');
 
-    expect(getNormalizedPropType(propType)).toEqual('boolean');
+    expect(getNormalizedTypeName(propType)).toEqual('boolean');
   });
 
   test('returns "function" for func types', () => {
     const propType = createPropType('func');
 
-    expect(getNormalizedPropType(propType)).toEqual('function');
+    expect(getNormalizedTypeName(propType)).toEqual('function');
   });
 
   test('returns "enum" for enum types', () => {
     const propType = createPropType('oneOf');
 
-    expect(getNormalizedPropType(propType)).toEqual('enum');
+    expect(getNormalizedTypeName(propType)).toEqual('enum');
   });
 
   test('returns type of first argment for union types with a single argument', () => {
     const propType = createPropType('oneOfType', [[createPropType('string')]]);
 
-    expect(getNormalizedPropType(propType)).toEqual('string');
+    expect(getNormalizedTypeName(propType)).toEqual('string');
   });
 
   test('pipe delimits union types with multiple types', () => {
@@ -67,7 +67,7 @@ describe('getNormalizedPropType', () => {
       ],
     ]);
 
-    expect(getNormalizedPropType(propType)).toEqual('string|object|number');
+    expect(getNormalizedTypeName(propType)).toEqual('string|object|number');
   });
 
   test('handles union types that are required', () => {
@@ -83,19 +83,19 @@ describe('getNormalizedPropType', () => {
       { isRequired: true }
     );
 
-    expect(getNormalizedPropType(propType)).toEqual('string|object|number');
+    expect(getNormalizedTypeName(propType)).toEqual('string|object|number');
   });
 
   test('returns array representation for arrayOf types', () => {
     const propType = createPropType('arrayOf', [createPropType('string')]);
 
-    expect(getNormalizedPropType(propType)).toEqual('string[]');
+    expect(getNormalizedTypeName(propType)).toEqual('string[]');
   });
 
   test('handles arrayOf enum types', () => {
     const propType = createPropType('arrayOf', [createPropType('oneOf')]);
 
-    expect(getNormalizedPropType(propType)).toEqual('enum[]');
+    expect(getNormalizedTypeName(propType)).toEqual('enum[]');
   });
 
   test('handles array of union types', () => {
@@ -105,6 +105,6 @@ describe('getNormalizedPropType', () => {
       ]),
     ]);
 
-    expect(getNormalizedPropType(propType)).toEqual('(string|number)[]');
+    expect(getNormalizedTypeName(propType)).toEqual('(string|number)[]');
   });
 });

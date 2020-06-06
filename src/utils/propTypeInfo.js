@@ -5,7 +5,7 @@ const getArgs = (propType) =>
 
 const isUnion = (typeName) => typeName.includes(UNION_DELIMITER);
 
-export const getNormalizedPropType = (propType) => {
+export const getNormalizedTypeName = (propType) => {
   const [_, { name }] = propType.__reflect__;
 
   switch (name) {
@@ -19,12 +19,12 @@ export const getNormalizedPropType = (propType) => {
       const [propTypes] = getArgs(propType);
 
       return propTypes
-        .map((propType) => getNormalizedPropType(propType))
+        .map((propType) => getNormalizedTypeName(propType))
         .join(UNION_DELIMITER);
     }
     case 'arrayOf': {
       const args = getArgs(propType);
-      const arrayType = getNormalizedPropType(args[0]);
+      const arrayType = getNormalizedTypeName(args[0]);
 
       return isUnion(arrayType) ? `(${arrayType})[]` : `${arrayType}[]`;
     }
