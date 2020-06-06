@@ -29,9 +29,7 @@ const PropList = ({ propTypes }) => {
                   </div>
                 )}
               </div>
-              <div className={styles.details}>
-                <ReactMarkdown source={description} />
-              </div>
+              <ReactMarkdown className={styles.details} source={description} />
             </div>
           );
         }
