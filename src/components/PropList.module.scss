@@ -11,19 +11,19 @@
 
 .info {
   width: 30%;
+}
 
-  .type {
-    color: var(--color-neutrals-600);
+.default {
+  margin-top: 2rem;
+  color: var(--color-neutrals-700);
+
+  p:first-of-type {
+    font-size: 0.75rem;
   }
+}
 
-  .default {
-    margin-top: 2rem;
-    color: var(--color-neutrals-700);
-
-    p:first-of-type {
-      font-size: 0.75rem;
-    }
-  }
+.type {
+  color: var(--color-neutrals-600);
 }
 
 .details {
