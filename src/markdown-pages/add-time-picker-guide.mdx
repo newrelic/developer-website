@@ -18,7 +18,7 @@ Here's a short video of the steps that follow:
 
 This guide requires that you have the following:
 
-- A github account
+- A GitHub account
 - New Relic developer account
 - API Key (the same key you set up in [Quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==))
 - The New Relic One [CLI](https://cli.nr-ext.net/installer.pkg) 
@@ -97,7 +97,9 @@ After launching the **Add Time Picker** application, you see a dashboard that gi
 
 ![Transaction overview application](../images/add-timepicker.png)
 
-By default, the application shows your data within the last 60 minutes. If you toggle the time picker, it doesn't update the charts because the transaction overview application isn't connected to the New Relic One platform. It has no access to the data from the time picker. In the following sections, you'll add the time picker to the example application and add the time to the queries.
+By default, the application shows your data within the last 60 minutes. If you toggle the time picker, it doesn't update the charts because the transaction overview application isn't connected to the New Relic One platform. It has no access to the data from the time picker. 
+
+In the following sections, you'll add the time picker to the example application and add the time to the queries.
 
 ## Import a new component
 
@@ -291,8 +293,6 @@ import {
   PieChart
 } from 'nr1';
 import { timeRangeToNrql } from '@newrelic/nr1-community';
-
-// https://docs.newrelic.com/docs/new-relic-programmable-platform-introduction
 
 export default class Nr1HowtoAddTimePicker extends React.Component {
     constructor(props){
