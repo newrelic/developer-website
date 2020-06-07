@@ -1,8 +1,10 @@
 import React from 'react';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 import PropTypeInfo from './PropTypeInfo';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'react-markdown';
 import styles from './PropList.module.scss';
+import { format } from 'date-fns';
 
 const PropList = ({ propTypes }) => {
   if (propTypes.length === 0) {
@@ -12,14 +14,24 @@ const PropList = ({ propTypes }) => {
   return (
     <div>
       {propTypes.map(
-        ({ name, description, isRequired, type, defaultValue }) => {
+        ({
+          name,
+          description,
+          deprecation,
+          isRequired,
+          type,
+          defaultValue,
+        }) => {
           return (
             <div key={name} className={styles.container}>
               <div className={styles.info}>
                 <h3>
                   {name}
                   {isRequired && (
-                    <span className={styles.required}>required</span>
+                    <span className={styles.flagged}>required</span>
+                  )}
+                  {deprecation && (
+                    <span className={styles.flagged}>deprecated</span>
                   )}
                 </h3>
                 <div className={styles.type}>{type.name}</div>
@@ -31,8 +43,19 @@ const PropList = ({ propTypes }) => {
                 )}
               </div>
               <div className={styles.propInfo}>
-                <ReactMarkdown
-                  className={styles.details}
+                {deprecation && (
+                  <div className={styles.deprecation}>
+                    <div className={styles.deprecationDate}>
+                      Due {format(new Date(deprecation.date), 'MMMM do, yyyy')}
+                    </div>
+                    <Markdown
+                      className={styles.markdownContainer}
+                      source={deprecation.description}
+                    />
+                  </div>
+                )}
+                <Markdown
+                  className={cx(styles.details, styles.markdownContainer)}
                   source={description}
                 />
                 <PropTypeInfo type={type} />
@@ -50,6 +73,10 @@ PropList.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string,
+      deprecation: PropTypes.shape({
+        date: PropTypes.number,
+        description: PropTypes.string,
+      }),
       isRequired: PropTypes.bool,
       type: PropTypes.shape({
         ...PropTypeInfo.propTypes.type,

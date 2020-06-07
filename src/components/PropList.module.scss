@@ -30,19 +30,31 @@
   color: var(--color-neutrals-600);
 }
 
+.deprecation {
+  padding: 0.25rem;
+  background: var(--color-red-100);
+  margin-bottom: 1rem;
+}
+
+.deprecationDate {
+  color: var(--color-red-400);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
 .propInfo {
   width: 70%;
 }
 
-.details {
-  font-size: 1.25rem;
-
-  > *:first-child {
-    margin-top: 0;
-  }
+.markdownContainer > *:first-child {
+  margin-top: 0;
 }
 
-.required {
+.details {
+  font-size: 1.25rem;
+}
+
+.flagged {
   font-size: 0.75rem;
   color: var(--color-red-400);
   text-transform: uppercase;
