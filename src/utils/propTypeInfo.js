@@ -98,8 +98,8 @@ export const getTypeMeta = (name, propType, { component }) => {
   switch (getRawTypeName(propType)) {
     case 'func':
       return {
-        returnValue: propTypeDocs.tags?.returnValue ?? { type: 'undefined' },
-        params: propTypeDocs.tags?.param ?? [],
+        returnValue: propTypeDocs?.tags?.returnValue ?? { type: 'undefined' },
+        params: propTypeDocs?.tags?.param ?? [],
       };
     case 'shape': {
       const [shape] = getArgs(propType);
