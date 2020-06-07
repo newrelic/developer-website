@@ -4,14 +4,23 @@ import {
   getTypeMeta,
 } from '../propTypeInfo';
 
-const createDocs = (type, { description, returnValue, params } = {}) => {
+const createDocs = (
+  type,
+  { description, deprecation, returnValue, params } = {}
+) => {
   const docs = {
     text: description,
   };
 
+  if (deprecation) {
+    docs.tags = {
+      deprecated: [deprecation],
+    };
+  }
+
   switch (type) {
     case 'func':
-      docs.tags = {};
+      docs.tags = docs.tags || {};
 
       if (returnValue) {
         docs.tags.returns = returnValue;
@@ -457,6 +466,140 @@ describe('getTypeMeta', () => {
             },
           ],
         },
+      ],
+    });
+  });
+
+  test('handles arrayOf union types', () => {
+    const SPACE = {
+      SMALL: 'sm',
+      MEDIUM: 'md',
+      LARGE: 'lg',
+    };
+    const propType = createPropType('arrayOf', [
+      createPropType('oneOf', [Object.values(SPACE)]),
+    ]);
+
+    const component = {
+      name: 'Button',
+      propTypes: {
+        space: propType,
+      },
+      SPACE,
+    };
+
+    expect(getTypeMeta('space', propType, { component })).toEqual({
+      itemTypes: {
+        meta: {
+          constants: [
+            'Button.SPACE.SMALL',
+            'Button.SPACE.MEDIUM',
+            'Button.SPACE.LARGE',
+          ],
+        },
+        raw: 'oneOf',
+        name: 'enum',
+      },
+    });
+  });
+
+  test('handles advanced case', () => {
+    const CRAZY = {
+      ONE: 1,
+      TWO: 2,
+    };
+
+    const propType = createPropType('oneOfType', [
+      [
+        createPropType('string'),
+        createPropType('arrayOf', [
+          createPropType('shape', [
+            {
+              name: createPropType('string', undefined, { isRequired: true }),
+              onHide: createPropType('func'),
+              onHidden: createPropType('func', undefined, {
+                docs: {
+                  deprecation: {
+                    date: 1591519180477,
+                    description: 'Use onHide',
+                  },
+                },
+              }),
+            },
+          ]),
+        ]),
+        createPropType('oneOf', [Object.values(CRAZY)]),
+      ],
+    ]);
+
+    const component = {
+      name: 'Wacky',
+      propTypes: {
+        crazy: propType,
+      },
+      CRAZY,
+    };
+
+    expect(getTypeMeta('crazy', propType, { component })).toEqual({
+      types: [
+        null,
+        {
+          itemTypes: {
+            meta: {
+              types: [
+                {
+                  name: 'name',
+                  defaultValue: undefined,
+                  description: undefined,
+                  deprecation: null,
+                  isRequired: true,
+                  type: {
+                    meta: null,
+                    raw: 'string',
+                    name: 'string',
+                  },
+                },
+                {
+                  name: 'onHide',
+                  defaultValue: undefined,
+                  description: undefined,
+                  deprecation: null,
+                  isRequired: false,
+                  type: {
+                    meta: {
+                      returnValue: { type: 'undefined' },
+                      params: [],
+                    },
+                    raw: 'func',
+                    name: 'function',
+                  },
+                },
+                {
+                  name: 'onHidden',
+                  defaultValue: undefined,
+                  description: undefined,
+                  deprecation: null,
+                  isRequired: false,
+                  deprecation: {
+                    date: 1591519180477,
+                    description: 'Use onHide',
+                  },
+                  type: {
+                    meta: {
+                      returnValue: { type: 'undefined' },
+                      params: [],
+                    },
+                    raw: 'func',
+                    name: 'function',
+                  },
+                },
+              ],
+            },
+            raw: 'shape',
+            name: 'shape',
+          },
+        },
+        { constants: ['Wacky.CRAZY.ONE', 'Wacky.CRAZY.TWO'] },
       ],
     });
   });
