@@ -110,6 +110,15 @@ export const getTypeMeta = (name, propType, { component }) => {
         ),
       };
     }
+    case 'oneOf': {
+      const staticProperty = toStaticPropertyName(name);
+
+      return {
+        constants: Object.keys(component[staticProperty] ?? {}).map(
+          (name) => `${component.name}.${staticProperty}.${name}`
+        ),
+      };
+    }
     default:
       return null;
   }

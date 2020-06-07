@@ -360,4 +360,30 @@ describe('getTypeMeta', () => {
       ],
     });
   });
+
+  test('returns constants for enum types', () => {
+    const SIZE = {
+      SMALL: 'sm',
+      MEDIUM: 'md',
+      LARGE: 'lg',
+    };
+
+    const propType = createPropType('oneOf', [Object.values(SIZE)]);
+
+    const component = {
+      name: 'Button',
+      propTypes: {
+        size: propType,
+      },
+      SIZE,
+    };
+
+    expect(getTypeMeta('size', propType, { component })).toEqual({
+      constants: [
+        'Button.SIZE.SMALL',
+        'Button.SIZE.MEDIUM',
+        'Button.SIZE.LARGE',
+      ],
+    });
+  });
 });
