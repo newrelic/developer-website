@@ -24,6 +24,10 @@ const PropTypeInfo = ({ type }) => {
           <div>{'>'}</div>
         </div>
       );
+    case 'oneOfType':
+      return type.meta.types.map((type, idx) => (
+        <PropTypeInfo key={idx} type={type} />
+      ));
     default:
       return null;
   }
