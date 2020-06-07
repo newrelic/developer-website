@@ -470,7 +470,7 @@ describe('getTypeMeta', () => {
     });
   });
 
-  test('handles arrayOf union types', () => {
+  test('handles arrayOf enum types', () => {
     const SPACE = {
       SMALL: 'sm',
       MEDIUM: 'md',
