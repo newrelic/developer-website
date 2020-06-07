@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FunctionDefinition from './FunctionDefinition';
 
 const PropTypeInfo = ({ type }) => {
-  switch (type.name) {
-    case 'function':
-      return <div>func</div>;
+  switch (type.raw) {
+    case 'func':
+      return (
+        <FunctionDefinition
+          returnValue={type.meta.returnValue}
+          params={type.meta.params}
+        />
+      );
     default:
       return null;
   }
@@ -12,7 +18,8 @@ const PropTypeInfo = ({ type }) => {
 
 PropTypeInfo.propTypes = {
   type: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    raw: PropTypes.string.isRequired,
+    meta: PropTypes.object,
   }),
 };
 
