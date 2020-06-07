@@ -134,9 +134,11 @@ export const getTypeMeta = (name, propType, { component }) => {
       const [types] = getArgs(propType);
 
       return {
-        types: types.map((propType) =>
-          getTypeMeta(name, propType, { component })
-        ),
+        types: types.map((propType) => ({
+          name: getNormalizedTypeName(propType),
+          raw: getRawTypeName(propType),
+          meta: getTypeMeta(name, propType, { component }),
+        })),
       };
     }
     default:

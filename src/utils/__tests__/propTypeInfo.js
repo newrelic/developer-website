@@ -437,34 +437,42 @@ describe('getTypeMeta', () => {
 
     expect(getTypeMeta('to', propType, { component })).toEqual({
       types: [
-        null,
         {
-          types: [
-            {
-              name: 'pathname',
-              defaultValue: undefined,
-              description: 'The name of the path to link to',
-              deprecation: null,
-              isRequired: false,
-              type: {
-                meta: null,
-                raw: 'string',
-                name: 'string',
+          name: 'string',
+          raw: 'string',
+          meta: null,
+        },
+        {
+          name: 'shape',
+          raw: 'shape',
+          meta: {
+            types: [
+              {
+                name: 'pathname',
+                defaultValue: undefined,
+                description: 'The name of the path to link to',
+                deprecation: null,
+                isRequired: false,
+                type: {
+                  meta: null,
+                  raw: 'string',
+                  name: 'string',
+                },
               },
-            },
-            {
-              name: 'search',
-              defaultValue: undefined,
-              description: undefined,
-              deprecation: null,
-              isRequired: false,
-              type: {
-                meta: null,
-                raw: 'string',
-                name: 'string',
+              {
+                name: 'search',
+                defaultValue: undefined,
+                description: undefined,
+                deprecation: null,
+                isRequired: false,
+                type: {
+                  meta: null,
+                  raw: 'string',
+                  name: 'string',
+                },
               },
-            },
-          ],
+            ],
+          },
         },
       ],
     });
@@ -542,64 +550,76 @@ describe('getTypeMeta', () => {
 
     expect(getTypeMeta('crazy', propType, { component })).toEqual({
       types: [
-        null,
         {
-          itemTypes: {
-            meta: {
-              types: [
-                {
-                  name: 'name',
-                  defaultValue: undefined,
-                  description: undefined,
-                  deprecation: null,
-                  isRequired: true,
-                  type: {
-                    meta: null,
-                    raw: 'string',
-                    name: 'string',
-                  },
-                },
-                {
-                  name: 'onHide',
-                  defaultValue: undefined,
-                  description: undefined,
-                  deprecation: null,
-                  isRequired: false,
-                  type: {
-                    meta: {
-                      returnValue: { type: 'undefined' },
-                      params: [],
+          meta: null,
+          raw: 'string',
+          name: 'string',
+        },
+        {
+          raw: 'arrayOf',
+          name: 'shape[]',
+          meta: {
+            itemTypes: {
+              meta: {
+                types: [
+                  {
+                    name: 'name',
+                    defaultValue: undefined,
+                    description: undefined,
+                    deprecation: null,
+                    isRequired: true,
+                    type: {
+                      meta: null,
+                      raw: 'string',
+                      name: 'string',
                     },
-                    raw: 'func',
-                    name: 'function',
                   },
-                },
-                {
-                  name: 'onHidden',
-                  defaultValue: undefined,
-                  description: undefined,
-                  deprecation: null,
-                  isRequired: false,
-                  deprecation: {
-                    date: 1591519180477,
-                    description: 'Use onHide',
-                  },
-                  type: {
-                    meta: {
-                      returnValue: { type: 'undefined' },
-                      params: [],
+                  {
+                    name: 'onHide',
+                    defaultValue: undefined,
+                    description: undefined,
+                    deprecation: null,
+                    isRequired: false,
+                    type: {
+                      meta: {
+                        returnValue: { type: 'undefined' },
+                        params: [],
+                      },
+                      raw: 'func',
+                      name: 'function',
                     },
-                    raw: 'func',
-                    name: 'function',
                   },
-                },
-              ],
+                  {
+                    name: 'onHidden',
+                    defaultValue: undefined,
+                    description: undefined,
+                    deprecation: null,
+                    isRequired: false,
+                    deprecation: {
+                      date: 1591519180477,
+                      description: 'Use onHide',
+                    },
+                    type: {
+                      meta: {
+                        returnValue: { type: 'undefined' },
+                        params: [],
+                      },
+                      raw: 'func',
+                      name: 'function',
+                    },
+                  },
+                ],
+              },
+              raw: 'shape',
+              name: 'shape',
             },
-            raw: 'shape',
-            name: 'shape',
           },
         },
-        { constants: ['Wacky.CRAZY.ONE', 'Wacky.CRAZY.TWO'] },
+        {
+          name: 'enum',
+          raw: 'oneOf',
+          meta: { constants: ['Wacky.CRAZY.ONE', 'Wacky.CRAZY.TWO'] },
+        },
       ],
     });
   });
