@@ -119,6 +119,17 @@ export const getTypeMeta = (name, propType, { component }) => {
         ),
       };
     }
+    case 'arrayOf': {
+      const [arrayOfPropType] = getArgs(propType);
+
+      return {
+        itemTypes: {
+          meta: getTypeMeta(name, arrayOfPropType, { component }),
+          raw: getRawTypeName(arrayOfPropType),
+          name: getNormalizedTypeName(arrayOfPropType),
+        },
+      };
+    }
     default:
       return null;
   }

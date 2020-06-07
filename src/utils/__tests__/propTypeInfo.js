@@ -386,4 +386,22 @@ describe('getTypeMeta', () => {
       ],
     });
   });
+
+  test('returns nested type info for arrayOf types', () => {
+    const propType = createPropType('arrayOf', [createPropType('string')]);
+
+    const component = {
+      propTypes: {
+        names: propType,
+      },
+    };
+
+    expect(getTypeMeta('names', propType, { component })).toEqual({
+      itemTypes: {
+        meta: null,
+        raw: 'string',
+        name: 'string',
+      },
+    });
+  });
 });
