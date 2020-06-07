@@ -92,6 +92,20 @@ export const getDefaultValue = (component, propTypeName) => {
   return defaultValue;
 };
 
+export const getTypeMeta = (name, propType, { component }) => {
+  const propTypeDocs = propType.__docs__;
+
+  switch (getRawTypeName(propType)) {
+    case 'func':
+      return {
+        returnValue: propTypeDocs.tags?.returnValue ?? { type: 'undefined' },
+        params: propTypeDocs.tags?.param,
+      };
+    default:
+      return null;
+  }
+};
+
 export const getPropTypeDefinition = (component, name, propType) => {
   const propDocs = propType.__docs__;
   const propMeta = propType.__reflect__;

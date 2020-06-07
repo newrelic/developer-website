@@ -1,6 +1,32 @@
-import { getNormalizedTypeName, getDefaultValue } from '../propTypeInfo';
+import {
+  getNormalizedTypeName,
+  getDefaultValue,
+  getTypeMeta,
+} from '../propTypeInfo';
 
-const createPropType = (name, args, { isRequired = false } = {}) => {
+const createDocs = (type, { description, returnValue, params } = {}) => {
+  const docs = {
+    text: description,
+  };
+
+  switch (type) {
+    case 'func':
+      docs.tags = {};
+
+      if (returnValue) {
+        docs.tags.returns = returnValue;
+      }
+
+      if (params) {
+        docs.tags.param = params;
+      }
+      break;
+  }
+
+  return docs;
+};
+
+const createPropType = (name, args, { isRequired = false, docs } = {}) => {
   const propType = [{ name: 'PropTypes' }, { name }];
 
   if (args) {
@@ -11,7 +37,7 @@ const createPropType = (name, args, { isRequired = false } = {}) => {
     propType.push({ name: 'isRequired' });
   }
 
-  return { __reflect__: propType };
+  return { __reflect__: propType, __docs__: createDocs(name, docs) };
 };
 
 describe('getNormalizedTypeName', () => {
@@ -231,5 +257,50 @@ describe('getDefaultValue', () => {
     };
 
     expect(getDefaultValue(component, 'gap')).toEqual('Grid.GAP.SMALL');
+  });
+});
+
+describe('getTypeMeta', () => {
+  [
+    'any',
+    'array',
+    'element',
+    'elementType',
+    'number',
+    'node',
+    'object',
+    'string',
+    'symbol',
+  ].forEach((type) => {
+    test(`returns null for ${type} types`, () => {
+      const propType = createPropType(type);
+      const component = {
+        propTypes: {
+          [type]: propType,
+        },
+      };
+
+      expect(getTypeMeta(type, propType, { component })).toBeNull();
+    });
+  });
+
+  test('returns function information for func types', () => {
+    const propType = createPropType('func', undefined, {
+      docs: {
+        description: 'A click handler',
+        params: [{ description: '', name: 'event', type: 'Event' }],
+      },
+    });
+
+    const component = {
+      propTypes: {
+        onClick: propType,
+      },
+    };
+
+    expect(getTypeMeta('onClick', propType, { component })).toEqual({
+      returnValue: { type: 'undefined' },
+      params: [{ description: '', name: 'event', type: 'Event' }],
+    });
   });
 });
