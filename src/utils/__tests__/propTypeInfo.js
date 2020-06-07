@@ -303,4 +303,61 @@ describe('getTypeMeta', () => {
       params: [{ description: '', name: 'event', type: 'Event' }],
     });
   });
+
+  test('returns nested prop type info for shape types', () => {
+    const propType = createPropType('shape', [
+      {
+        pathname: createPropType('string', undefined, { isRequired: true }),
+        search: createPropType('string'),
+        hash: createPropType('string'),
+      },
+    ]);
+
+    const component = {
+      propTypes: {
+        to: propType,
+      },
+    };
+
+    expect(getTypeMeta('to', propType, { component })).toEqual({
+      types: [
+        {
+          name: 'pathname',
+          defaultValue: undefined,
+          description: undefined,
+          deprecation: null,
+          isRequired: true,
+          type: {
+            meta: null,
+            raw: 'string',
+            name: 'string',
+          },
+        },
+        {
+          name: 'search',
+          defaultValue: undefined,
+          description: undefined,
+          deprecation: null,
+          isRequired: false,
+          type: {
+            meta: null,
+            raw: 'string',
+            name: 'string',
+          },
+        },
+        {
+          name: 'hash',
+          defaultValue: undefined,
+          description: undefined,
+          deprecation: null,
+          isRequired: false,
+          type: {
+            meta: null,
+            raw: 'string',
+            name: 'string',
+          },
+        },
+      ],
+    });
+  });
 });

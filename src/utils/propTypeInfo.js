@@ -101,6 +101,15 @@ export const getTypeMeta = (name, propType, { component }) => {
         returnValue: propTypeDocs.tags?.returnValue ?? { type: 'undefined' },
         params: propTypeDocs.tags?.param,
       };
+    case 'shape': {
+      const [shape] = getArgs(propType);
+
+      return {
+        types: Object.entries(shape).map(([name, propType]) =>
+          getPropTypeDefinition(component, name, propType)
+        ),
+      };
+    }
     default:
       return null;
   }
@@ -113,10 +122,11 @@ export const getPropTypeDefinition = (component, name, propType) => {
   return {
     name,
     defaultValue: getDefaultValue(component, name),
-    description: propDocs.text,
-    deprecation: propDocs.tags.deprecated?.[0] ?? null,
-    isRequired: propMeta.some((item) => item.name === 'isRequired'),
+    description: propDocs?.text,
+    deprecation: propDocs?.tags?.deprecated?.[0] ?? null,
+    isRequired: propMeta?.some((item) => item.name === 'isRequired') ?? false,
     type: {
+      meta: getTypeMeta(name, propType, { component }),
       raw: getRawTypeName(propType),
       name: getNormalizedTypeName(propType),
     },
