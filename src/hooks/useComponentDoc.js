@@ -14,26 +14,27 @@ const IGNORED_METHODS = [
   'defaultProps',
 ];
 
+const getPropTypeDefinition = (name, propType) => {
+  const propDocs = propType.__docs__;
+  const propMeta = propType.__reflect__;
+
+  return {
+    name,
+    description: propDocs.text,
+    deprecation: propDocs.tags.deprecated?.[0] ?? null,
+    isRequired: propMeta.some((item) => item.name === 'isRequired'),
+    type: {
+      raw: getRawTypeName(propType),
+      name: getNormalizedTypeName(propType),
+    },
+  };
+};
+
 const extractPropTypes = (component) => {
-  return Object.entries(component.propTypes || {}).map(([name, propType]) => {
-    const propDocs = propType.__docs__;
-    const propMeta = propType.__reflect__;
-
-    const type = processType(component, name, propMeta);
-
-    return {
-      name,
-      description: propDocs.text,
-      deprecation: propDocs.tags.deprecated?.[0] ?? null,
-      isRequired: propMeta.some((item) => item.name === 'isRequired'),
-      type: {
-        meta: type,
-        raw: getRawTypeName(propType),
-        name: getNormalizedTypeName(propType),
-      },
-      defaultValue: getDefaultValue(component, name),
-    };
-  });
+  return Object.entries(component.propTypes || {}).map(([name, propType]) => ({
+    ...getPropTypeDefinition(name, propType),
+    defaultValue: getDefaultValue(component, name),
+  }));
 };
 
 const toStaticName = (propName) =>
