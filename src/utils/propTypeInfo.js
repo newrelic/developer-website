@@ -91,3 +91,20 @@ export const getDefaultValue = (component, propTypeName) => {
 
   return defaultValue;
 };
+
+export const getPropTypeDefinition = (component, name, propType) => {
+  const propDocs = propType.__docs__;
+  const propMeta = propType.__reflect__;
+
+  return {
+    name,
+    defaultValue: getDefaultValue(component, name),
+    description: propDocs.text,
+    deprecation: propDocs.tags.deprecated?.[0] ?? null,
+    isRequired: propMeta.some((item) => item.name === 'isRequired'),
+    type: {
+      raw: getRawTypeName(propType),
+      name: getNormalizedTypeName(propType),
+    },
+  };
+};

@@ -1,9 +1,5 @@
 import { useMemo } from 'react';
-import {
-  getDefaultValue,
-  getNormalizedTypeName,
-  getRawTypeName,
-} from '../utils/propTypeInfo';
+import { getPropTypeDefinition, getDefaultValue } from '../utils/propTypeInfo';
 
 const IGNORED_METHODS = [
   'prototype',
@@ -14,27 +10,10 @@ const IGNORED_METHODS = [
   'defaultProps',
 ];
 
-const getPropTypeDefinition = (name, propType) => {
-  const propDocs = propType.__docs__;
-  const propMeta = propType.__reflect__;
-
-  return {
-    name,
-    description: propDocs.text,
-    deprecation: propDocs.tags.deprecated?.[0] ?? null,
-    isRequired: propMeta.some((item) => item.name === 'isRequired'),
-    type: {
-      raw: getRawTypeName(propType),
-      name: getNormalizedTypeName(propType),
-    },
-  };
-};
-
 const extractPropTypes = (component) => {
-  return Object.entries(component.propTypes || {}).map(([name, propType]) => ({
-    ...getPropTypeDefinition(name, propType),
-    defaultValue: getDefaultValue(component, name),
-  }));
+  return Object.entries(component.propTypes || {}).map(([name, propType]) =>
+    getPropTypeDefinition(component, name, propType)
+  );
 };
 
 const toStaticName = (propName) =>
