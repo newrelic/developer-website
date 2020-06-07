@@ -24,6 +24,7 @@ const extractPropTypes = (component) => {
     return {
       name,
       description: propDocs.text,
+      deprecation: propDocs.tags.deprecated?.[0] ?? null,
       isRequired: propMeta.some((item) => item.name === 'isRequired'),
       type: {
         meta: type,
