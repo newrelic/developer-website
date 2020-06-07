@@ -130,6 +130,15 @@ export const getTypeMeta = (name, propType, { component }) => {
         },
       };
     }
+    case 'oneOfType': {
+      const [types] = getArgs(propType);
+
+      return {
+        types: types.map((propType) =>
+          getTypeMeta(name, propType, { component })
+        ),
+      };
+    }
     default:
       return null;
   }

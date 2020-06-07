@@ -404,4 +404,60 @@ describe('getTypeMeta', () => {
       },
     });
   });
+
+  test('returns nested type info for union types', () => {
+    const propType = createPropType('oneOfType', [
+      [
+        createPropType('string'),
+        createPropType('shape', [
+          {
+            pathname: createPropType('string', undefined, {
+              docs: { description: 'The name of the path to link to' },
+            }),
+            search: createPropType('string'),
+          },
+        ]),
+      ],
+    ]);
+
+    const component = {
+      propTypes: {
+        to: propType,
+      },
+    };
+
+    expect(getTypeMeta('to', propType, { component })).toEqual({
+      types: [
+        null,
+        {
+          types: [
+            {
+              name: 'pathname',
+              defaultValue: undefined,
+              description: 'The name of the path to link to',
+              deprecation: null,
+              isRequired: false,
+              type: {
+                meta: null,
+                raw: 'string',
+                name: 'string',
+              },
+            },
+            {
+              name: 'search',
+              defaultValue: undefined,
+              description: undefined,
+              deprecation: null,
+              isRequired: false,
+              type: {
+                meta: null,
+                raw: 'string',
+                name: 'string',
+              },
+            },
+          ],
+        },
+      ],
+    });
+  });
 });
