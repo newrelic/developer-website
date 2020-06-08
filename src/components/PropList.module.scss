@@ -52,6 +52,10 @@
 
 .details {
   font-size: 1.25rem;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 }
 
 .flagged {
