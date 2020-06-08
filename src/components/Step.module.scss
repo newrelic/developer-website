@@ -3,17 +3,14 @@
   box-sizing: border-box;
   padding-top: 1.5rem;
   margin-top: 2rem;
+
   .stepNumber {
     font-size: 0.75rem;
     color: var(--color-neutrals-600);
   }
 }
-.container {
-  display: flex;
-}
+
 .stepDetails {
-  margin-right: 1rem;
-  line-height: 1.5rem;
   h1:first-child,
   h2:first-child,
   h3:first-child,
@@ -26,11 +23,4 @@
     margin-bottom: 1rem;
     font-size: 1rem;
   }
-}
-.stepDetailsWithCode {
-  width: 50%;
-}
-.container > pre {
-  width: 50%;
-  margin-left: 1rem;
 }
