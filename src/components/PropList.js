@@ -15,6 +15,19 @@ const PropTypeInfo = ({ type }) => {
           params={type.meta.params}
         />
       );
+    case 'arrayOf': {
+      const { itemTypes } = type.meta;
+
+      return itemTypes.raw === 'oneOf' ? (
+        <div className={styles.listLike}>
+          <div>{'<Array of'}</div>
+          <div className={styles.arg}>
+            <PropTypeInfo type={itemTypes} />
+          </div>
+          <div>{'>'}</div>
+        </div>
+      ) : null;
+    }
     case 'oneOf':
       return (
         <div className={styles.listLike}>
