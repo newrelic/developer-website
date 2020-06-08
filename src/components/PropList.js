@@ -26,7 +26,9 @@ const PropTypeInfo = ({ type }) => {
           </div>
           <div>{'>'}</div>
         </div>
-      ) : null;
+      ) : (
+        <PropTypeInfo type={itemTypes} />
+      );
     }
     case 'oneOf':
       return (
