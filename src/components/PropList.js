@@ -32,7 +32,7 @@ const PropTypeInfo = ({ type }) => {
         <PropTypeInfo key={idx} type={type} />
       ));
     case 'shape':
-      return <div>Shape</div>;
+      return <PropList propTypes={type.meta.types} />;
     default:
       return null;
   }
