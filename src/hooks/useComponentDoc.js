@@ -177,6 +177,32 @@ const getDefaultValue = (component, propName, isOneOf, staticName) => {
   return defaultValue;
 };
 
+const getTypeDefs = (component) => {
+  const methodTags = component.propTypes.children.__docs__.tags;
+  const propTypeTags = component.query.__docs__.tags;
+  let currentTypeDefs = [];
+
+  function newTypedefs(tags) {
+    const moretypedefs = Object.values(tags)
+      .reduce((acc, val) => acc.concat(val), [])
+      .flatMap((tag) => [tag.type, tag.promiseType])
+      .filter((tag) => tag) // filter undefined members
+      .filter((tag) => !IGNORED_METHODS.includes(tag))
+      .map((typeDef) => typeDef.replace(/\[\]$/, '')) // TimePickerRange[] => TimePickerRange
+      .concat(currentTypeDefs);
+    return moretypedefs;
+  }
+  currentTypeDefs = newTypedefs(methodTags);
+  currentTypeDefs = newTypedefs(propTypeTags);
+
+  const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
+  const typeDefs = currentTypeDefs
+    .map((name) => allTypeDefs[name])
+    .filter((typeDef) => typeDef !== undefined);
+
+  return typeDefs;
+};
+
 const useComponentDoc = (componentName) => {
   if (typeof window === 'undefined') global.window = {};
 
@@ -212,6 +238,7 @@ const useComponentDoc = (componentName) => {
             examples: methodDocs?.tags.examples ?? [],
           };
         }),
+      typeDefs: getTypeDefs(component),
     };
   }, [componentName, window?.__NR1_SDK__]);
 };
