@@ -10,11 +10,29 @@ const SPECIAL_NUMBERS = [
   'EPSILON',
 ];
 
+const IGNORED_PROPERTIES = [
+  'prototype',
+  'length',
+  'name',
+  'propTypes',
+  'getDerivedStateFromProps',
+  'defaultProps',
+];
+
 const getArgs = (propType) =>
   propType.__reflect__.find(({ args }) => args)?.args;
 
 const isEnum = (propType) => getRawTypeName(propType) === 'oneOf';
 const isUnion = (propType) => getRawTypeName(propType) === 'oneOfType';
+
+const matchesEnum = (property, enums) => {
+  const values = Object.values(property);
+
+  return (
+    values.length === enums.length &&
+    enums.every((value) => values.includes(value))
+  );
+};
 
 const findSpecialNumber = (number) =>
   SPECIAL_NUMBERS.find((property) => Number[property] === number);
@@ -92,7 +110,7 @@ export const getDefaultValue = (component, propTypeName) => {
   return defaultValue;
 };
 
-export const getTypeMeta = (name, propType, { component, prefix }) => {
+export const getTypeMeta = (name, propType, { component }) => {
   const propTypeDocs = propType.__docs__;
 
   switch (getRawTypeName(propType)) {
@@ -106,16 +124,19 @@ export const getTypeMeta = (name, propType, { component, prefix }) => {
 
       return {
         types: Object.entries(shape).map(([shapePropName, propType]) =>
-          getPropTypeDefinition(component, shapePropName, propType, {
-            prefix: name,
-          })
+          getPropTypeDefinition(component, shapePropName, propType)
         ),
       };
     }
     case 'oneOf': {
-      const staticProperty = toStaticPropertyName(
-        prefix ? `${prefix}.${name}` : name
-      );
+      const [enums] = getArgs(propType);
+      const staticProperty = Object.getOwnPropertyNames(component)
+        .filter(
+          (member) =>
+            !IGNORED_PROPERTIES.includes(member) &&
+            typeof component[member] === 'object'
+        )
+        .find((member) => matchesEnum(component[member], enums));
 
       return {
         constants: Object.keys(component[staticProperty] ?? {}).map(
@@ -150,12 +171,7 @@ export const getTypeMeta = (name, propType, { component, prefix }) => {
   }
 };
 
-export const getPropTypeDefinition = (
-  component,
-  name,
-  propType,
-  { prefix } = {}
-) => {
+export const getPropTypeDefinition = (component, name, propType) => {
   const propDocs = propType.__docs__;
   const propMeta = propType.__reflect__;
 
@@ -167,7 +183,7 @@ export const getPropTypeDefinition = (
     isRequired: propMeta?.some((item) => item.name === 'isRequired') ?? false,
     examples: propDocs?.tags?.examples ?? [],
     type: {
-      meta: getTypeMeta(name, propType, { component, prefix }),
+      meta: getTypeMeta(name, propType, { component }),
       raw: getRawTypeName(propType),
       name: getNormalizedTypeName(propType),
     },

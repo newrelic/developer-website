@@ -516,6 +516,32 @@ describe('getTypeMeta', () => {
     });
   });
 
+  test('handles enums nested in shape prop types', () => {
+    const OUTER_SPACE = {
+      SMALL: 'sm',
+      MEDIUM: 'md',
+      LARGE: 'lg',
+    };
+    const enumPropType = createPropType('oneOf', [Object.values(OUTER_SPACE)]);
+    const propType = createPropType('shape', [{ space: enumPropType }]);
+
+    const component = {
+      name: 'Button',
+      propTypes: {
+        outer: propType,
+      },
+      OUTER_SPACE,
+    };
+
+    expect(getTypeMeta('space', enumPropType, { component })).toEqual({
+      constants: [
+        'Button.OUTER_SPACE.SMALL',
+        'Button.OUTER_SPACE.MEDIUM',
+        'Button.OUTER_SPACE.LARGE',
+      ],
+    });
+  });
+
   test('handles advanced case', () => {
     const CRAZY = {
       ONE: 1,
