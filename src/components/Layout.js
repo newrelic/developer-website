@@ -7,11 +7,11 @@ import styles from './Layout.module.scss';
 import './styles.scss';
 
 const pages = [
-  { displayName: 'Collect Data', url: '/collect-data' },
-  { displayName: 'Explore Data', url: '/explore-data' },
-  { displayName: 'Build Apps', url: '/build-apps' },
-  { displayName: 'Automate Workflows', url: '/automate-workflows' },
-  { displayName: 'Developer Docs', url: '/docs' },
+  { displayName: 'Collect data', url: '/collect-data' },
+  { displayName: 'Explore data', url: '/explore-data' },
+  { displayName: 'Build apps', url: '/build-apps' },
+  { displayName: 'Automate workflows', url: '/automate-workflows' },
+  { displayName: 'Developer docs', url: '/docs' },
 ];
 
 const Layout = ({ children }) => (
