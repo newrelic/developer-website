@@ -3,6 +3,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import FunctionDefinition from './FunctionDefinition';
 import Markdown from 'react-markdown';
+import ReferenceExample from './ReferenceExample';
 import styles from './PropList.module.scss';
 import { format } from 'date-fns';
 
@@ -72,6 +73,7 @@ const PropList = ({ propTypes }) => {
           name,
           description,
           deprecation,
+          examples,
           isRequired,
           type,
           defaultValue,
@@ -113,6 +115,9 @@ const PropList = ({ propTypes }) => {
                   source={description}
                 />
                 <PropTypeInfo type={type} />
+                {examples.map((example, idx) => (
+                  <ReferenceExample key={idx} example={example} />
+                ))}
               </div>
             </div>
           );

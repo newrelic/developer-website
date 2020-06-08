@@ -156,6 +156,7 @@ export const getPropTypeDefinition = (component, name, propType) => {
     description: propDocs?.text,
     deprecation: propDocs?.tags?.deprecated?.[0] ?? null,
     isRequired: propMeta?.some((item) => item.name === 'isRequired') ?? false,
+    examples: propDocs?.tags?.examples ?? [],
     type: {
       meta: getTypeMeta(name, propType, { component }),
       raw: getRawTypeName(propType),
