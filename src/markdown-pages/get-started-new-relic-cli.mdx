@@ -1,0 +1,224 @@
+---
+path: '/guides/get-started-new-relic-cli'
+duration: '20 min'
+title: 'Get started with New Relic CLI'
+template: 'GuideTemplate'
+description: 'This guide walks you through the essentials of New Relic CLI, from install and configuration to basic usage.'
+---
+
+<Intro>
+
+New Relic CLI is New Relic's command line tool. You can use it to generate, publish, and deploy nerdpacks, add screenshots and metadata to the [New Relic One Catalog](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/discover-manage-applications-new-relic-one-catalog), and more. This guide walks you through the essentials of New Relic CLI, from install and configuration to basic usage.
+
+<Video id="6uw3tu0d23" type="wistia"/>
+</Intro>
+
+## Before you begin
+
+This guide requires that you have the following:
+
+- New Relic [Personal API Key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key)
+- New Relic CLI, which can be downloaded via [Homebrew](https://brew.sh/) (macOS), [Scoop](https://scoop.sh/) (Windows), and [Snapcraft](https://snapcraft.io/) (Linux). You can also download [pre-built binaries](https://github.com/newrelic/newrelic-cli/releases) for all platforms.
+- Docker (if you plan on using New Relic CLI with Docker)
+
+<Steps>
+<Step>
+
+## Add your API key to your environment
+
+Once you've created the [personal API Key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key), export it as an environment variable using `export` (Linux and macOS). 
+
+On Windows, run the following in a PowerShell session:
+
+`$env:NEW_RELIC_API_KEY = 'YOUR_PERSONAL_API_KEY'`
+
+```sh
+export NEW_RELIC_API_KEY=YOUR_PERSONAL_API_KEY
+```
+</Step>
+<Step>
+
+New Relic's API keys are region-specific; New Relic CLI defaults to the "US" region. To use New Relic CLI in [EU region accounts](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers#access), set the region environment variable using `export` (Linux and macOS).
+
+On Windows, run the following in a PowerShell session:
+
+`$env:NEW_RELIC_REGION = 'EU'`
+
+```sh
+export NEW_RELIC_REGION="EU"
+```
+</Step>
+<Step>
+
+## Install New Relic CLI using a package manager
+
+### Linux
+
+With [Snapcraft](https://snapcraft.io/) installed, run:
+
+`sudo snap install newrelic-cli`
+
+### macOS
+
+With the [Homebrew](https://brew.sh/) installed, run:
+
+`brew install newrelic-cli`
+
+### Windows
+
+With the [Scoop](https://scoop.sh/) installed, run:
+
+`scoop bucket add newrelic-cli https://github.com/newrelic/newrelic-cli.git`<br />
+`scoop install newrelic-cli`
+</Step><Step>
+
+## Create your New Relic CLI profile
+
+With New Relic CLI installed and your personal API key as environment variable, create your New Relic CLI profile.
+
+To create your CLI profile, run the [`profiles add`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_profile_add.md) command. Use `-r` to set the region based on the `$NEW_RELIC_REGION` variable (`us` or `eu`).
+
+```sh
+# Create the tutorial account for the US region
+newrelic profiles add -n tutorial --apiKey $NEW_RELIC_API_KEY -r $NEW_RELIC_REGION
+# Set the profile as defaults
+newrelic profiles default -n tutorial
+```
+</Step><Step>
+
+## Tip: Enable shell completion
+
+Before starting to use New Relic CLI, we recommend that you enable shell completion, so that your most frequent functions and calls can be retrieved by typing their first letters and hitting the <key>Tab</key> key. 
+
+The example on the right shows how to enable shell completion for the zsh shell (macOS). Bash and PowerShell are also supported. 
+
+You can store the functions yourself and periodically update them as we do here, or you can do as suggested by running the [`newrelic help completion`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_completion.md) command.
+
+```sh
+newrelic completion --shell zsh > /usr/local/share/zsh/site-functions/_newrelic
+```
+</Step><Step>
+
+## Get your application details
+
+In this example, you are going to set up an application called `WebPortal`.
+
+Start by exporting your Account ID as the environment variable `$ACCOUNT_ID`.
+
+```sh
+export ACCOUNT_ID=<var>YOUR_ACCOUNT_ID</var>
+```
+</Step><Step>
+
+### Search for the application
+
+Search for your APM application using the [`apm application get`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_apm_application_get.md) command.
+
+`newrelic apm application search --accountId $ACCOUNT_ID --name WebPortal`
+
+This yields the following output about the application we're going to target.
+
+```json
+[
+  {
+    "accountId": 2508259,
+    "applicationId": 204261368,
+    "domain": "APM",
+    "entityType": "APM_APPLICATION_ENTITY",
+    "guid": "MjUwODI1OXxBUE18QVBQTElDQVRJT058MjA0MjYxMzY4",
+    "name": "WebPortal",
+    "permalink": "https://one.newrelic.com/redirect/entity/MjUwODI1OXxBUE18QVBQTElDQVRJT058MjA0MjYxMzY4",
+    "reporting": true,
+    "type": "APPLICATION"
+  }
+]
+```
+</Step><Step>
+
+## Add a tag to the application
+
+You can now see the GUID, which uniquely identifies the `WebPortal` application.  
+
+Create and add the `devkit:testing` tag to `WebPortal` using the [`entities tags create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_create.md) command.
+
+```sh
+newrelic entity tags create --guid MjUwODI1OXxBUE18QVBQTElDQVRJT058MjA0MjYxMzY4 --tag devkit:testing
+```
+</Step><Step>
+
+Tags are key-value pairs separated by colons; tag sets are comma separated. 
+
+To add multiple tags at the same time to the `WebPortal` application, you would run this snippet.
+
+```sh
+newrelic entity tags create --guid MjUwODI1OXxBUE18QVBQTElDQVRJT058MjA0MjYxMzY4 --tag env:test,compliant:true
+```
+</Step><Step>
+
+Now that you've created and added some tags to the application, try retrieving `WebPortal`'s tags.
+
+To retrieve the application's tags, use the [`entity tags get](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_get.md) command.
+
+`newrelic entity tags get --guid MjUwODI1OXxBUE18QVBQTElDQVRJT058MjA0MjYxMzY4`
+
+All tags associated to the `WebPortal` application are retrieved as JSON.
+
+```json
+[
+  {
+    "Key": "compliant",
+    "Values": [
+      "true"
+    ]
+  },
+  {
+    "Key": "env",
+    "Values": [
+      "test"
+    ]
+  },
+  {
+    "Key": "devkit",
+    "Values": [
+      "testing"
+    ]
+  }
+  // ...
+]
+```
+</Step><Step>
+
+## Create a deployment marker
+
+To create a deployment, run the [`apm deployment create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_apm_deployment_create.md) command passing the same Application ID from your earlier search.
+
+`newrelic apm deployment create --applicationId 204261368 --revision $(git rev-parse HEAD)`
+
+The JSON response includes the revision and timestamp of the deployment. This workflow could be built into a CI/CD system to help indicate changes in
+application behavior after deployments.
+
+```json
+{
+  "id": 37075986,
+  "links": {
+    "application": 204261368
+  },
+  "revision": "40af0d07d86363d289e772f4326d23d1717fb765",
+  "timestamp": "2020-03-04T15:11:44-08:00",
+  "user": "Developer Toolkit Test Account"
+}
+```
+</Step></Steps>
+
+## Next steps
+
+Have a look at [all the available commands](https://github.com/newrelic/newrelic-cli/tree/master/docs/cli) and try creating new entities in your account using the CLI.
+
+If you'd like to engage with other community members, visit our [New Relic Explorers Hub](https://discuss.newrelic.com/c/build-on-new-relic/developer-toolkit) page. We welcome feature requests or bug reports on [GitHub](https://github.com/newrelic/newrelic-cli).
+
+## Related info
+
+- [New Relic documentation](https://docs.newrelic.com)
+- [Community page for how to add a time picker](https://discuss.newrelic.com/t/how-to-add-the-time-picker-to-nrql-queries/94268)
+- [New Relic CLI commands reference](https://github.com/newrelic/newrelic-cli/tree/master/docs/cli)
+- [New Relic CLI repository on GitHub](https://github.com/newrelic/newrelic-cli)
