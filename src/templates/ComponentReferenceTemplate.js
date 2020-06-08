@@ -52,8 +52,8 @@ const ComponentReferenceTemplate = ({ data }) => {
             className={cx(
               templateStyles.section,
               templateStyles.description,
-              "intro-text"
-              )}
+              'intro-text'
+            )}
           >
             <ReactMarkdown source={componentDescription} />
           </section>
