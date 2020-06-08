@@ -27,7 +27,10 @@ const FunctionDefinition = ({ params, returnValue }) => {
       </span>
       {params.map((param, i) => (
         <div key={i} className={styles.param}>
-          {param.name}: <span className={styles.type}>{param.type}</span>
+          <span className={styles.paramName}>
+            {param.type.startsWith('...') ? `...${param.name}` : param.name}:{' '}
+          </span>
+          <span className={styles.type}>{param.type}</span>
           {i !== params.length - 1 && ', '}
           <Markdown
             source={param.description}
