@@ -10,7 +10,7 @@ const ParamDescription = ({ children, ...props }) => {
 
   return (
     <span {...props} className={styles.paramDescription}>
-      {'//'} {children}
+      {' //'} {children}
     </span>
   );
 };
@@ -27,7 +27,7 @@ const FunctionDefinition = ({ params, returnValue }) => {
       </span>
       {params.map((param, i) => (
         <div key={i} className={styles.param}>
-          {param.name}: <span className={styles.type}>{param.type} </span>
+          {param.name}: <span className={styles.type}>{param.type}</span>
           {i !== params.length - 1 && ', '}
           <Markdown
             source={param.description}
