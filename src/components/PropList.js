@@ -1,10 +1,49 @@
 import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import PropTypeInfo from './PropTypeInfo';
+import FunctionDefinition from './FunctionDefinition';
 import Markdown from 'react-markdown';
 import styles from './PropList.module.scss';
 import { format } from 'date-fns';
+
+const PropTypeInfo = ({ type }) => {
+  switch (type.raw) {
+    case 'func':
+      return (
+        <FunctionDefinition
+          returnValue={type.meta.returnValue}
+          params={type.meta.params}
+        />
+      );
+    case 'oneOf':
+      return (
+        <div className={styles.listLike}>
+          <div>{'<One of'}</div>
+          <div className={styles.arg}>
+            {type.meta.constants.map((constant) => (
+              <div key={constant}>{constant},</div>
+            ))}
+          </div>
+          <div>{'>'}</div>
+        </div>
+      );
+    case 'oneOfType':
+      return type.meta.types.map((type, idx) => (
+        <PropTypeInfo key={idx} type={type} />
+      ));
+    case 'shape':
+      return <div>Shape</div>;
+    default:
+      return null;
+  }
+};
+
+PropTypeInfo.propTypes = {
+  type: PropTypes.shape({
+    raw: PropTypes.string.isRequired,
+    meta: PropTypes.object,
+  }),
+};
 
 const PropList = ({ propTypes }) => {
   if (propTypes.length === 0) {
