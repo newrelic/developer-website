@@ -10,6 +10,15 @@ const IGNORED_METHODS = [
   'defaultProps',
 ];
 
+const DENY_TYPE_DEFS_LIST = [
+  'Object',
+  'ReactNode',
+  'Event',
+  'number',
+  'string',
+  'boolean',
+];
+
 const extractPropTypes = (component) => {
   return Object.entries(component.propTypes || {}).map(([name, propData]) => {
     const propDocs = propData.__docs__;
@@ -178,22 +187,30 @@ const getDefaultValue = (component, propName, isOneOf, staticName) => {
 };
 
 const getTypeDefs = (component) => {
-  const methodTags = component.propTypes.children.__docs__.tags;
-  const propTypeTags = component.query.__docs__.tags;
-  let currentTypeDefs = [];
+  const uniqueComponentProperties = Object.getOwnPropertyNames(component)
+    .filter((key) => !IGNORED_METHODS.includes(key))
+    .map((key) => component[key]);
+  const tagsFromComponentProperties = uniqueComponentProperties
+    .map((property) => property?.__docs__?.tags)
+    .filter(Boolean);
+  const tagsFromPropTypes = Object.getOwnPropertyNames(component.propTypes).map(
+    (key) => component.propTypes[key]?.__docs__?.tags
+  );
 
   function newTypedefs(tags) {
     const moretypedefs = Object.values(tags)
       .reduce((acc, val) => acc.concat(val), [])
       .flatMap((tag) => [tag.type, tag.promiseType])
-      .filter((tag) => tag) // filter undefined members
-      .filter((tag) => !IGNORED_METHODS.includes(tag))
-      .map((typeDef) => typeDef.replace(/\[\]$/, '')) // TimePickerRange[] => TimePickerRange
-      .concat(currentTypeDefs);
+      .filter(Boolean) // filter undefined members
+      .filter((tag) => !DENY_TYPE_DEFS_LIST.includes(tag))
+      .map((typeDef) => typeDef.replace(/\[\]$/, '')); // TimePickerRange[] => TimePickerRange
     return moretypedefs;
   }
-  currentTypeDefs = newTypedefs(methodTags);
-  currentTypeDefs = newTypedefs(propTypeTags);
+
+  const currentTypeDefs = [
+    ...tagsFromPropTypes.flatMap((tags) => newTypedefs(tags)),
+    ...tagsFromComponentProperties.flatMap((tags) => newTypedefs(tags)),
+  ];
 
   const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
   const typeDefs = currentTypeDefs
