@@ -48,7 +48,12 @@ const PropTypeInfo = ({ type }) => {
         <PropTypeInfo key={idx} type={type} />
       ));
     case 'shape':
-      return <PropList propTypes={type.meta.types} />;
+      return (
+        <div className={styles.shape}>
+          <h4>shape</h4>
+          <PropList propTypes={type.meta.types} />
+        </div>
+      );
     default:
       return null;
   }
