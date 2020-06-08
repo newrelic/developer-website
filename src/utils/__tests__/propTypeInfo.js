@@ -336,6 +336,7 @@ describe('getTypeMeta', () => {
           description: undefined,
           deprecation: null,
           isRequired: true,
+          examples: [],
           type: {
             meta: null,
             raw: 'string',
@@ -348,6 +349,7 @@ describe('getTypeMeta', () => {
           description: undefined,
           deprecation: null,
           isRequired: false,
+          examples: [],
           type: {
             meta: null,
             raw: 'string',
@@ -360,6 +362,7 @@ describe('getTypeMeta', () => {
           description: undefined,
           deprecation: null,
           isRequired: false,
+          examples: [],
           type: {
             meta: null,
             raw: 'string',
@@ -453,6 +456,7 @@ describe('getTypeMeta', () => {
                 description: 'The name of the path to link to',
                 deprecation: null,
                 isRequired: false,
+                examples: [],
                 type: {
                   meta: null,
                   raw: 'string',
@@ -465,6 +469,7 @@ describe('getTypeMeta', () => {
                 description: undefined,
                 deprecation: null,
                 isRequired: false,
+                examples: [],
                 type: {
                   meta: null,
                   raw: 'string',
@@ -568,6 +573,7 @@ describe('getTypeMeta', () => {
                     description: undefined,
                     deprecation: null,
                     isRequired: true,
+                    examples: [],
                     type: {
                       meta: null,
                       raw: 'string',
@@ -580,6 +586,7 @@ describe('getTypeMeta', () => {
                     description: undefined,
                     deprecation: null,
                     isRequired: false,
+                    examples: [],
                     type: {
                       meta: {
                         returnValue: { type: 'undefined' },
@@ -595,6 +602,7 @@ describe('getTypeMeta', () => {
                     description: undefined,
                     deprecation: null,
                     isRequired: false,
+                    examples: [],
                     deprecation: {
                       date: 1591519180477,
                       description: 'Use onHide',
