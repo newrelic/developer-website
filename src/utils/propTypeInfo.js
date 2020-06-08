@@ -92,7 +92,7 @@ export const getDefaultValue = (component, propTypeName) => {
   return defaultValue;
 };
 
-export const getTypeMeta = (name, propType, { component }) => {
+export const getTypeMeta = (name, propType, { component, prefix }) => {
   const propTypeDocs = propType.__docs__;
 
   switch (getRawTypeName(propType)) {
@@ -105,13 +105,17 @@ export const getTypeMeta = (name, propType, { component }) => {
       const [shape] = getArgs(propType);
 
       return {
-        types: Object.entries(shape).map(([name, propType]) =>
-          getPropTypeDefinition(component, name, propType)
+        types: Object.entries(shape).map(([shapePropName, propType]) =>
+          getPropTypeDefinition(component, shapePropName, propType, {
+            prefix: name,
+          })
         ),
       };
     }
     case 'oneOf': {
-      const staticProperty = toStaticPropertyName(name);
+      const staticProperty = toStaticPropertyName(
+        prefix ? `${prefix}.${name}` : name
+      );
 
       return {
         constants: Object.keys(component[staticProperty] ?? {}).map(
@@ -146,7 +150,12 @@ export const getTypeMeta = (name, propType, { component }) => {
   }
 };
 
-export const getPropTypeDefinition = (component, name, propType) => {
+export const getPropTypeDefinition = (
+  component,
+  name,
+  propType,
+  { prefix } = {}
+) => {
   const propDocs = propType.__docs__;
   const propMeta = propType.__reflect__;
 
@@ -158,7 +167,7 @@ export const getPropTypeDefinition = (component, name, propType) => {
     isRequired: propMeta?.some((item) => item.name === 'isRequired') ?? false,
     examples: propDocs?.tags?.examples ?? [],
     type: {
-      meta: getTypeMeta(name, propType, { component }),
+      meta: getTypeMeta(name, propType, { component, prefix }),
       raw: getRawTypeName(propType),
       name: getNormalizedTypeName(propType),
     },
