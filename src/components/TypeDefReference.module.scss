@@ -1,0 +1,40 @@
+.container {
+  color: var(--color-neutrals-500);
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-top: 2rem;
+  div:nth-child(2) {
+    margin-bottom: 1rem;
+  }
+}
+
+.name {
+  font-size: 1rem;
+  font-family: var(--primary-font-family);
+  color: var(--color-neutrals-800);
+  margin-bottom: 0.5rem;
+}
+
+.block {
+  margin-left: 0.5rem;
+}
+
+.type {
+  color: var(--color-green-500);
+  background: var(--color-green-050);
+}
+
+.description {
+  > p {
+    display: inline;
+  }
+}
+
+.propertyContainer {
+  margin: 0 0 1rem 1.5rem;
+}
+
+.propertyName {
+  margin-right: 0.5rem;
+}
