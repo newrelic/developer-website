@@ -348,6 +348,14 @@
       {
         "displayName": "PlatformStateContext",
         "url": "/components/platform-state-context"
+      },
+      {
+        "displayName": "logger",
+        "url": "/apis/logger"
+      },
+      {
+        "displayName": "nerdlet",
+        "url": "/apis/nerdlet"
       }
     ]
   }

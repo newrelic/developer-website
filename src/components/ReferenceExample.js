@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import formatCode from '../utils/formatCode';
 import github from 'prism-react-renderer/themes/github';
 import { LiveEditor, LiveError, LiveProvider } from 'react-live';
-import styles from './ComponentExample.module.scss';
-import ComponentPreview from './ComponentPreview';
+import styles from './ReferenceExample.module.scss';
+import ReferencePreview from './ReferencePreview';
 
 const platformStateContextMock = {
   timeRange: {
@@ -20,7 +20,7 @@ const nerdletStateContextMock = {
 
 const TRAILING_SEMI = /;\s*$/;
 
-const ComponentExample = ({
+const ReferenceExample = ({
   className,
   example,
   useToastManager,
@@ -57,7 +57,7 @@ const ComponentExample = ({
             disabled={!live}
           >
             {live && (
-              <ComponentPreview
+              <ReferencePreview
                 className={styles.preview}
                 style={previewStyle}
                 useToastManager={useToastManager}
@@ -72,7 +72,7 @@ const ComponentExample = ({
   );
 };
 
-ComponentExample.propTypes = {
+ReferenceExample.propTypes = {
   className: PropTypes.string,
   example: PropTypes.shape({
     label: PropTypes.string.isRequired,
@@ -83,4 +83,4 @@ ComponentExample.propTypes = {
   previewStyle: PropTypes.object,
 };
 
-export default ComponentExample;
+export default ReferenceExample;

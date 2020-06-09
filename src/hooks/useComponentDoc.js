@@ -209,6 +209,7 @@ const useComponentDoc = (componentName) => {
             description: methodDocs?.text,
             returnValue: methodDocs?.tags.return?.[0] ?? { type: 'undefined' },
             params: methodDocs?.tags.param ?? [],
+            examples: methodDocs?.tags.examples ?? [],
           };
         }),
     };
