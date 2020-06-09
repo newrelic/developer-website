@@ -7,7 +7,9 @@ description: 'Learn to explore NerdGraph, our GraphQL API, and build the queries
 ---
 
 <Intro>
-This guide shows you how to use NerdGraph to compose queries, and how to turn them into cURL or New Relic CLI snippets.
+
+This guide shows you how to use NerdGraph, our GraphQL API, to compose queries, and how to turn them into cURL or New Relic CLI snippets.
+
 </Intro>
 
 ## What is the NerdGraph API Explorer 
@@ -38,7 +40,7 @@ Time for your first NerdGraph query! You are going to search for your name in th
 
 This GraphQL snippet appears in the editor.
 
-```jsx
+```jsx lineNumbers=false
 {
   actor {
     user {
@@ -63,7 +65,7 @@ The result has almost the same shape as the request; all the fields in the Query
 ## Add more fields to your query
 Now you can try adding more fields to your query. The simplest way is clicking the fields in the Query Builder: The NerdGraph API Explorer knows where the attributes should go in the query. In the example below, you add the account `id` and `email` fields.
 
-```jsx
+```jsx lineNumbers=false
 {
   actor {
     user {
@@ -110,7 +112,7 @@ Let's say that you've built a NerdGraph query you're happy with and you want to 
 
 Here's what the first query you created in this guide would look like as cURL:
 
-```sh
+```sh lineNumbers=false
 curl https://api.newrelic.com/graphql \
   -H 'Content-Type: application/json' \
   -H 'API-Key: API_KEY_REDACTED' \
@@ -119,7 +121,7 @@ curl https://api.newrelic.com/graphql \
 
 And here's its New Relic CLI equivalent:
 
-```sh
+```sh lineNumbers=false
 NEW_RELIC_REGION=US NEW_RELIC_API_KEY=API_KEY_REDACTED newrelic nerdgraph query '{
   actor {
     user {

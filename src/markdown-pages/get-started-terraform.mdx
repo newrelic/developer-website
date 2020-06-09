@@ -30,7 +30,7 @@ To use this guide, you should have some basic knowledge of both New Relic and Te
 ## Add your API key as an environment variable
 
 New Relic's Terraform Provider detects the `NEWRELIC_API_KEY` environment variable when running Terraform commands. You can set `NEWRELIC_API_KEY` environment variable in your `.bash_profile` or `.bashrc` file.
-```bash
+```bash lineNumbers=false
 # Add this to your .bash_profile
 export NEWRELIC_API_KEY=abc123
 # Or set it inline when running `terraform plan` or `terraform apply`:
@@ -45,7 +45,7 @@ To connect Terraform with New Relic, you need to set New Relic as a provider in 
 
 To set New Relic as a provider, create a Terraform configuration file (`main.tf`). This code sets `newrelic` as the Terraform provider and provisions an empty [alert policy](/docs/alerts/new-relic-alerts/configuring-alert-policies/create-edit-or-find-alert-policy) as the resource.
 
-```hcl
+```hcl lineNumbers=false
 provider "newrelic" {}
 
 resource "newrelic_alert_policy" "alert_policy_name" {
@@ -62,7 +62,7 @@ After adding New Relic as a provider, [initialize](https://www.terraform.io/docs
 
 Once you've successfully initialized the working directory, test Terraform's [execution plan](https://www.terraform.io/docs/commands/plan.html) to confirm that you've the right setup using `terraform plan`.
 
-```bash
+```bash lineNumbers=false
 # Initialize the working directory
 $ terraform init
 
@@ -80,7 +80,7 @@ The alert policy you defined in `main.tf` does not contain any alert condition. 
 
 To store your application's information, you need to add a [data source](https://www.terraform.io/docs/configuration-0-11/data-sources.html).
 
-```hcl
+```hcl lineNumbers=false
 provider "newrelic" {}
 
 # Data Source
@@ -99,7 +99,7 @@ resource "newrelic_alert_policy" "alert_policy_name" {
 
 Now you can add the alert condition. For example, you can create a `critical` alert condition that is triggered when the [Apdex score](https://docs.newrelic.com/docs/apm/new-relic-apm/apdex/apdex-measure-user-satisfaction) of your application falls below `0.75` for five minutes.
 
-```hcl
+```hcl lineNumbers=false
 provider "newrelic" {}
 
 data "newrelic_application" "app_name" {
@@ -139,7 +139,7 @@ Alert policies use [notification channels](https://docs.newrelic.com/docs/alerts
 
 When the alert condition is triggered, the notification channel sends an email to the specified `recipients`. You can send notifications using different tools and channels, such as Slack, by changing the `type` of your [alert channel](https://www.terraform.io/docs/providers/newrelic/r/alert_channel.html).
 
-```hcl
+```hcl lineNumbers=false
 # Notification channel
 resource "newrelic_alert_channel" "alert_notification_email" {
   name = "paul@example.com"
@@ -190,7 +190,7 @@ Here is a configuration example with overridden default values. Initialize the w
 
 > The `apm` module doesn't create a notification channel, so you would still have to define one.
 
-```hcl
+```hcl lineNumbers=false
 data "newrelic_alert_channel" "pager" {
     name = "Page Developer Toolkit Team"
 }
@@ -226,7 +226,7 @@ module "dummy-app-monitor" {
 
 When API results are deemed to be secret and are obfuscated, Terraform may be unable to detect the state of a resource, marking it as changed. Consider this example:
 
-```hcl
+```hcl lineNumbers=false
 resource "newrelic_alert_channel" "slack" {
   name = "slack"
   type = "slack"
@@ -252,7 +252,7 @@ Running `terraform plan` yields the following:
 
 To prevent Terraform from wrongly marking a resource as changed, add an [`ignore_changes`](https://www.terraform.io/docs/configuration/resources.html#ignore_changes) directive:
 
-```hcl
+```hcl lineNumbers=false
 resource "newrelic_alert_channel" "slack" {
   ...
   lifecycle {
