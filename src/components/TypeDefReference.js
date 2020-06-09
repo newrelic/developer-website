@@ -9,7 +9,7 @@ const RenderDescription = ({ children }) => (
   </span>
 );
 
-const RenderProperty = (property) => {
+const RenderProperty = ({ property }) => {
   const { type, identifier, description } = property;
 
   return (
@@ -26,25 +26,42 @@ const RenderProperty = (property) => {
   );
 };
 
-const TypeDefReference = (typeDef) => {
-  const { tags } = typeDef.typeDef;
-  const { typedef, property: properties } = tags;
-  const { identifier = {} } = typedef.find((tag) => tag.identifier);
+const TypeDefReference = ({ typeDef }) => {
+  const { properties, identifier } = typeDef;
 
   return (
     <div className={styles.container} key={identifier.name}>
       <div className={styles.name}>{identifier.name}</div>
-      <div className={styles.block}>
-        <div>{`{`}</div>
-        {properties.map((property) => RenderProperty(property))}
-        <div>{`}`}</div>
-      </div>
+      <div className={styles.bracket}>{`{`}</div>
+      {properties.map((property, i) => (
+        <RenderProperty key={i} property={property} />
+      ))}
+      <div className={styles.bracket}>{`}`}</div>
     </div>
   );
 };
 
+RenderProperty.propTypes = {
+  property: PropTypes.shape({
+    type: PropTypes.string,
+    identifier: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+    description: PropTypes.string,
+  }),
+};
+
 RenderDescription.propTypes = {
   children: PropTypes.node.isRequired,
+};
+
+TypeDefReference.propTypes = {
+  typeDef: PropTypes.shape({
+    properties: PropTypes.array,
+    identifier: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  }),
 };
 
 export default TypeDefReference;

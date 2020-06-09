@@ -187,37 +187,40 @@ const getDefaultValue = (component, propName, isOneOf, staticName) => {
 };
 
 const getTypeDefs = (component) => {
-  const uniqueComponentProperties = Object.getOwnPropertyNames(component)
+  const tagsFromComponentProperties = Object.getOwnPropertyNames(component)
     .filter((key) => !IGNORED_METHODS.includes(key))
-    .map((key) => component[key]);
-  const tagsFromComponentProperties = uniqueComponentProperties
-    .map((property) => property?.__docs__?.tags)
+    .map((key) => component[key]?.__docs__?.tags)
     .filter(Boolean);
   const tagsFromPropTypes = Object.getOwnPropertyNames(component.propTypes).map(
     (key) => component.propTypes[key]?.__docs__?.tags
   );
 
-  function newTypedefs(tags) {
-    const moretypedefs = Object.values(tags)
+  function pullTypedefs(tags) {
+    const newtypedefs = Object.values(tags)
       .reduce((acc, val) => acc.concat(val), [])
       .flatMap((tag) => [tag.type, tag.promiseType])
       .filter(Boolean) // filter undefined members
       .filter((tag) => !DENY_TYPE_DEFS_LIST.includes(tag))
-      .map((typeDef) => typeDef.replace(/\[\]$/, '')); // TimePickerRange[] => TimePickerRange
-    return moretypedefs;
+      .map((tag) => tag.replace(/\[\]$/, '')); // TimePickerRange[] => TimePickerRange
+    return newtypedefs;
   }
 
-  const currentTypeDefs = [
-    ...tagsFromComponentProperties.flatMap((tags) => newTypedefs(tags)),
-    ...tagsFromPropTypes.flatMap((tags) => newTypedefs(tags)),
-  ];
+  const currentTypeDefs = tagsFromComponentProperties
+    .concat(tagsFromPropTypes)
+    .flatMap(pullTypedefs);
 
   const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
   const typeDefs = currentTypeDefs
     .map((name) => allTypeDefs[name])
     .filter((typeDef) => typeDef !== undefined);
 
-  return typeDefs;
+  const structuredTypeDefs = typeDefs.map((typeDef) => ({
+    properties: typeDef.tags.property,
+    identifier:
+      typeDef.tags.typedef.find((tag) => tag.identifier).identifier || {},
+  }));
+
+  return structuredTypeDefs;
 };
 
 const useComponentDoc = (componentName) => {
