@@ -7,7 +7,7 @@
 
 ### Usage 
 
-The Video component expects two parameters: 
+The Video component requires two props: 
 - `id`: the video ID
 - `type`: the host of the video (currently only set up for  `wistia` or `youtube`)
 
