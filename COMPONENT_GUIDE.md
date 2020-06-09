@@ -9,7 +9,9 @@
 
 The Video component requires two props: 
 - `id`: the video ID
-- `type`: the host of the video (currently only set up for  `wistia` or `youtube`)
+- `type`: the host of the video. Accepted values are:
+    - `wistia`
+    - `youtube`
 
 ```md
 <Video id="zxunt1u1as" type="wistia"/>
@@ -20,7 +22,19 @@ The Video component requires two props:
 The `<Intro />` component provides formatting for the title and introduction of the markdown document. 
 
 ### Usage
-It takes the title provided in the Frontmatter and accepts plain text for the description. It also accepts a `<Video />` component as a child, which it will place on the right side of the description. 
+It takes the title provided in the Frontmatter and accepts plain text for the description. An example of Frontmatter that will have a title of __Example Guide__: 
+
+```
+---
+path: '/example'
+duration: '30 min'
+title: 'Example Guide'
+template: 'GuideTemplate'
+description: 'Example guide page'
+---
+```
+
+ It also accepts a `<Video />` component as a child, which it will place on the left side of the description. 
 
 ```md 
 <Intro>
@@ -30,12 +44,12 @@ This is a description for the markdown guide.
 </Intro>
 ```
 
-If there is a more than plain text and a `<Video />` (such as a code snippet or another component) the content will be posted on the right side below the description.
+If there is a more than plain text and a `<Video />` (such as a code snippet or another component) the content will be posted on the left side below the description.
 
 
 ## Steps
 
-The `<Steps />` is a container for the individual `<Step />` components and will autonumber from top to bottom. 
+The `<Steps />` is a required container for the individual `<Step />` components and will autonumber from top to bottom. 
 
 ### Usage 
 
@@ -127,7 +141,7 @@ Code Snippets are automatically formatted by three backticks.
 
 There are three props that can be supplied to a code snippet. 
 
-- `language`: The first prop must be a code language. [Here] () is a list of accepted languages for syntax highlighting. 
+- `language`: The first prop must be a code language. [Here](https://prismjs.com/#supported-languages) is a list of accepted languages for syntax highlighting. 
 
     ```md
     ```jsx
