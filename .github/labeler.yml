@@ -1,0 +1,11 @@
+# Add "enhancement" label to any PR that contains files in the src
+# directory (excluding the markdown pages directory.
+enhancement:
+  - any: ['src/**/*', '!src/markdown-pages/**/*']
+
+# Add "documentation" label to any PR that contains files in the
+# markdown-pages directory.
+documentation:
+  - any: ['src/markdown-pages/**/*']
+
+
