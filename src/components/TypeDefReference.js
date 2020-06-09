@@ -32,11 +32,13 @@ const TypeDefReference = ({ typeDef }) => {
   return (
     <div className={styles.container} key={identifier.name}>
       <div className={styles.name}>{identifier.name}</div>
-      <div className={styles.bracket}>{`{`}</div>
-      {properties.map((property, i) => (
-        <RenderProperty key={i} property={property} />
-      ))}
-      <div className={styles.bracket}>{`}`}</div>
+      <div className={styles.block}>
+        <div className={styles.topBracket}>{`{`}</div>
+        {properties.map((property, i) => (
+          <RenderProperty key={i} property={property} />
+        ))}
+        <div>{`}`}</div>
+      </div>
     </div>
   );
 };

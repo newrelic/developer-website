@@ -1,12 +1,9 @@
 .container {
   color: var(--color-neutrals-500);
-  font-family: 'Menlo', 'Consolas', monospace;
+  font-family: var(--code-font);
   font-size: 0.875rem;
   line-height: 1.5;
   margin-top: 2rem;
-  div:nth-child(2) {
-    margin-bottom: 1rem;
-  }
 }
 
 .name {
@@ -18,6 +15,10 @@
 
 .block {
   margin-left: 0.5rem;
+}
+
+.topBracket {
+  margin-bottom: 1rem;
 }
 
 .type {
@@ -36,5 +37,6 @@
 }
 
 .propertyName {
+  color: var(--color-neutrals-700);
   margin-right: 0.5rem;
 }
