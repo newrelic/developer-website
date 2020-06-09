@@ -1,22 +1,17 @@
 import React from 'react';
-import styles from './Step.module.scss';
 import Proptypes from 'prop-types';
+import SideBySide from './SideBySide';
 
-const Step = ({ children, number, total }) => {
-  const codeSnippet = children.find((child) => child?.props?.mdxType === 'pre');
-  const childrenWithoutCodeSnippet = children.filter(
-    (child) => child !== codeSnippet
-  );
-  return (
-    <div className={styles.wrapper}>
-      <p className={styles.stepNumber}>{`Step ${number} of ${total}`}</p>
-      <div className={styles.container}>
-        <div className={styles.stepDetails}>{childrenWithoutCodeSnippet}</div>
-        {codeSnippet}
-      </div>
+import styles from './Step.module.scss';
+
+const Step = ({ children, number, total }) => (
+  <div className={styles.wrapper}>
+    <p className={styles.stepNumber}>{`Step ${number} of ${total}`}</p>
+    <div className={styles.stepDetails}>
+      <SideBySide type="pre">{children}</SideBySide>
     </div>
-  );
-};
+  </div>
+);
 
 Step.propTypes = {
   children: Proptypes.node.isRequired,

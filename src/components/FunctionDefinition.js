@@ -21,7 +21,9 @@ const FunctionDefinition = ({ params, returnValue }) => {
       </span>
       {params.map((param, i) => (
         <div key={i} className={styles.param}>
-          <span className={styles.paramName}>{param.name}: </span>
+          <span className={styles.paramName}>
+            {param.type.startsWith('...') ? `...${param.name}` : param.name}:{' '}
+          </span>
           <span className={styles.type}>{param.type} </span>
           <Markdown
             source={param.description}
@@ -31,8 +33,8 @@ const FunctionDefinition = ({ params, returnValue }) => {
           />
         </div>
       ))}
-      {params.length > 0 && <span className={styles.keyword}>) </span>}
-      <span className={styles.keyword}>=> </span>
+      {params.length > 0 && <span className={styles.keyword}>)</span>}
+      <span className={styles.keyword}> => </span>
       <span className={styles.type}>{returnValue.type}</span>
     </div>
   );
@@ -45,10 +47,10 @@ FunctionDefinition.propTypes = {
       type: PropTypes.string,
       description: PropTypes.string,
     })
-  ),
+  ).isRequired,
   returnValue: PropTypes.shape({
     type: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default FunctionDefinition;

@@ -5,7 +5,7 @@ import { LivePreview } from 'react-live';
 import { CSS_BUNDLE } from '../utils/sdk';
 
 const EXAMPLE_CSS = `
-.nr1-ComponentExample {
+.nr1-ReferenceExample {
   line-height: 1.36;
   font-weight: 400;
   background-color: #fff;
@@ -14,7 +14,7 @@ const EXAMPLE_CSS = `
   font-family: Open Sans,Segoe UI,Tahoma,sans-serif;
 }
 
-.nr1-ComponentExample-ToastManager > div {
+.nr1-ReferenceExample-ToastManager > div {
   position: fixed;
   top: 0;
   right: 0;
@@ -86,7 +86,7 @@ const EXAMPLE_CSS = `
 }
 `;
 
-const ComponentPreview = ({ className, style, useToastManager }) => {
+const ReferencePreview = ({ className, style, useToastManager }) => {
   const [stylesLoaded, setStylesLoaded] = useState(false);
   const { ToastManager } = window.__NR1_SDK__;
 
@@ -99,12 +99,12 @@ const ComponentPreview = ({ className, style, useToastManager }) => {
       />
       <style type="text/css">{EXAMPLE_CSS}</style>
       {useToastManager && (
-        <div className="nr1-ComponentExample-ToastManager">
+        <div className="nr1-ReferenceExample-ToastManager">
           <ToastManager />
         </div>
       )}
       {stylesLoaded ? (
-        <LivePreview className="nr1-ComponentExample" style={style} />
+        <LivePreview className="nr1-ReferenceExample" style={style} />
       ) : (
         'Loading...'
       )}
@@ -112,10 +112,10 @@ const ComponentPreview = ({ className, style, useToastManager }) => {
   );
 };
 
-ComponentPreview.propTypes = {
+ReferencePreview.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   useToastManager: PropTypes.bool,
 };
 
-export default ComponentPreview;
+export default ReferencePreview;
