@@ -9,6 +9,10 @@ const IGNORED_METHODS = [
   'defaultProps',
 ];
 
+const IGNORED_METHODS_BY_LIB = {
+  logger: ['deprecate'],
+};
+
 const useApiDoc = (name) => {
   if (typeof window === 'undefined') global.window = {};
 
@@ -30,6 +34,11 @@ const useApiDoc = (name) => {
           (member) =>
             !IGNORED_METHODS.includes(member) &&
             typeof api[member] === 'function'
+        )
+        .filter(
+          (member) =>
+            !IGNORED_METHODS_BY_LIB[name] ||
+            !IGNORED_METHODS_BY_LIB[name].includes(member)
         )
         .map((member) => {
           const methodDocs = api[member].__docs__;
