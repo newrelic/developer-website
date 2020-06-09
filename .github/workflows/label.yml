@@ -4,7 +4,7 @@ on: [pull_request]
 jobs:
   label:
     runs-on: ubuntu-latest
-    stes:
+    steps:
       - uses: actions/labeler@v2
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
