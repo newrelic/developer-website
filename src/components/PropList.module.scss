@@ -12,28 +12,76 @@
 .info {
   width: 30%;
 
-  .type {
-    color: var(--color-neutrals-600);
+  h3 {
+    margin-top: 0;
   }
+}
 
-  .default {
-    margin-top: 2rem;
-    color: var(--color-neutrals-700);
+.default {
+  margin-top: 2rem;
+  color: var(--color-neutrals-700);
 
-    p:first-of-type {
-      font-size: 0.75rem;
-    }
+  p:first-of-type {
+    font-size: 0.75rem;
   }
+}
+
+.type {
+  color: var(--color-neutrals-600);
+}
+
+.deprecation {
+  padding: 0.25rem;
+  background: var(--color-red-100);
+  margin-bottom: 1rem;
+}
+
+.deprecationDate {
+  color: var(--color-red-400);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.propInfo {
+  width: 70%;
+}
+
+.markdownContainer > *:first-child {
+  margin-top: 0;
 }
 
 .details {
   font-size: 1.25rem;
-  width: 70%;
+
+  &:not(:last-child):not(:empty) {
+    margin-bottom: 1rem;
+  }
 }
 
-.required {
+.flagged {
   font-size: 0.75rem;
   color: var(--color-red-400);
   text-transform: uppercase;
   margin-left: 0.5rem;
+}
+
+.arg {
+  padding-left: 1rem;
+}
+
+.listLike {
+  font-family: var(--code-font);
+  font-size: 0.875rem;
+  color: var(--color-neutrals-600);
+}
+
+.shape {
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  h4 {
+    margin-top: 0;
+    color: var(--color-neutrals-600);
+  }
 }
