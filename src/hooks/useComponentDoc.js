@@ -208,8 +208,8 @@ const getTypeDefs = (component) => {
   }
 
   const currentTypeDefs = [
-    ...tagsFromPropTypes.flatMap((tags) => newTypedefs(tags)),
     ...tagsFromComponentProperties.flatMap((tags) => newTypedefs(tags)),
+    ...tagsFromPropTypes.flatMap((tags) => newTypedefs(tags)),
   ];
 
   const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
