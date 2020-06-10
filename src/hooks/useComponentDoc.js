@@ -23,9 +23,11 @@ const getTypeDefs = (component) => {
     .map((key) => component[key]?.__docs__?.tags)
     .filter(Boolean);
 
-  const tagsFromPropTypes = Object.getOwnPropertyNames(component.propTypes).map(
-    (key) => component.propTypes[key]?.__docs__?.tags
-  );
+  const tagsFromPropTypes = component.propTypes
+    ? Object.getOwnPropertyNames(component.propTypes).map(
+        (key) => component.propTypes[key]?.__docs__?.tags
+      )
+    : [];
 
   const componentTypeDefNames = tagsFromComponentProperties
     .concat(tagsFromPropTypes)

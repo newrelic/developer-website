@@ -354,6 +354,10 @@
         "url": "/apis/logger"
       },
       {
+        "displayName": "navigation",
+        "url": "/apis/navigation"
+      },
+      {
         "displayName": "nerdlet",
         "url": "/apis/nerdlet"
       }

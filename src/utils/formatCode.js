@@ -10,6 +10,7 @@ const formatCode = (code, formatOptions = {}) =>
     singleQuote: true,
     ...formatOptions,
     plugins: [parserBabel],
+    parser: 'babel',
   });
 
 export default formatCode;
