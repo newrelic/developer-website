@@ -8,6 +8,7 @@ import Container from '../components/Container';
 import Layout from '../components/Layout';
 import MethodReference from '../components/MethodReference';
 import TypeDefReference from '../components/TypeDefReference';
+import ConstantReference from '../components/ConstantReference';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
 import pages from '../data/sidenav.json';
@@ -24,8 +25,10 @@ const ApiReferenceTemplate = ({ data }) => {
     methods = [],
     usage = '',
     typeDefs = [],
+    constants = []
   } = useApiDoc(api) ?? {};
 
+  console.log(constants)
   return (
     <Layout>
       <SEO title={title} description={description} />
@@ -67,6 +70,18 @@ const ApiReferenceTemplate = ({ data }) => {
               ))}
             </section>
           )}
+
+          {constants.length > 0 && (
+            <section className={templateStyles.section}>
+              <h2>Constants</h2>
+              {constants.map((constant, i) => {
+                return <ConstantReference key={i} constant={constant} />
+              })
+
+              }
+            </section>
+          )}
+
         </main>
       </Container>
     </Layout>

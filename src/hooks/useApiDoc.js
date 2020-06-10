@@ -61,7 +61,7 @@ const useApiDoc = (name) => {
             value: api[member]
           }
         })
-    }
+    };
 
     return {
       description: apiDocs?.text,
