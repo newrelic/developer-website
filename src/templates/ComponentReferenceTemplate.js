@@ -15,6 +15,7 @@ import pages from '../data/sidenav.json';
 import styles from './ComponentReferenceTemplate.module.scss';
 import templateStyles from './ReferenceTemplate.module.scss';
 import useComponentDoc from '../hooks/useComponentDoc';
+import IconGallery from '../components/IconGallery';
 
 const previewStyles = {
   Spinner: {
@@ -33,6 +34,7 @@ const ComponentReferenceTemplate = ({ data }) => {
     methods = [],
     usage = '',
     propTypes = [],
+    icons = [],
   } = useComponentDoc(component) ?? {};
 
   return (
@@ -77,6 +79,12 @@ const ComponentReferenceTemplate = ({ data }) => {
                   />
                 ))}
               </div>
+            </section>
+          )}
+
+          {icons.length > 0 && (
+            <section className={templateStyles.section}>
+              <IconGallery icons={icons} />
             </section>
           )}
 

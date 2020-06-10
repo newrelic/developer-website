@@ -34,6 +34,7 @@ const useComponentDoc = (componentName) => {
       examples: componentDocs?.tags.examples ?? [],
       usage: `import { ${componentName} } from 'nr1'`,
       propTypes: extractPropTypes(component),
+      icons: componentName === 'Icon' ? Object.keys(component.TYPE) : false,
       methods: Object.getOwnPropertyNames(component)
         .filter(
           (member) =>
