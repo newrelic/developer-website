@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { pullTypeDefNames } from '../utils/typeDefs';
+import navigationApi from '../data/navigationApi';
 
 const IGNORED_METHODS = [
   'prototype',
@@ -18,8 +19,18 @@ const useApiDoc = (name) => {
   if (typeof window === 'undefined') global.window = {};
 
   return useMemo(() => {
+    if (window.__NR1_SDK__ == null) {
+      return null;
+    }
+
     const sdk = window.__NR1_SDK__?.default ?? {};
     const api = sdk[name];
+
+    // The SDK does not include the navigation docs so we need to return the
+    // hardcoded values
+    if (name === 'navigation') {
+      return navigationApi;
+    }
 
     if (!api) {
       return null;
@@ -76,7 +87,7 @@ const useApiDoc = (name) => {
           };
         }),
     };
-  }, [name, window?.__NR1_SDK__]);
+  }, [name, window.__NR1_SDK__]);
 };
 
 export default useApiDoc;
