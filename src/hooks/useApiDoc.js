@@ -49,10 +49,25 @@ const useApiDoc = (name) => {
       return structuredTypeDefs;
     };
 
+    const getConstants = (api) => {
+      return Object.getOwnPropertyNames(api)
+        .filter((member) =>
+          !IGNORED_METHODS.includes(member) &&
+          typeof api[member] !== 'function'
+        )
+        .map((member) => {
+          return {
+            name: `${name}.${member}`,
+            value: api[member]
+          }
+        })
+    }
+
     return {
       description: apiDocs?.text,
       usage: `import { ${name} } from 'nr1'`,
       typeDefs: getTypeDefs(api),
+      constants: getConstants(api),
       methods: Object.getOwnPropertyNames(api)
         .filter(
           (member) =>
