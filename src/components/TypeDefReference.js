@@ -10,11 +10,11 @@ const RenderDescription = ({ children }) => (
 );
 
 const RenderProperty = ({ property }) => {
-  const { type, identifier, description } = property;
+  const { type, name, description } = property;
 
   return (
-    <div key={identifier.name} className={styles.propertyContainer}>
-      <span className={styles.propertyName}>{identifier.name}</span>
+    <div key={name} className={styles.propertyContainer}>
+      <span className={styles.propertyName}>{name}</span>
       <span className={styles.type}>{type}</span>,
       <Markdown
         source={description}
@@ -27,11 +27,11 @@ const RenderProperty = ({ property }) => {
 };
 
 const TypeDefReference = ({ typeDef }) => {
-  const { properties, identifier } = typeDef;
+  const { properties, name } = typeDef;
 
   return (
-    <div className={styles.container} key={identifier.name}>
-      <div className={styles.name}>{identifier.name}</div>
+    <div className={styles.container} key={name}>
+      <div className={styles.name}>{name}</div>
       <div className={styles.block}>
         <div className={styles.topBracket}>{`{`}</div>
         {properties.map((property, i) => (
@@ -46,9 +46,7 @@ const TypeDefReference = ({ typeDef }) => {
 RenderProperty.propTypes = {
   property: PropTypes.shape({
     type: PropTypes.string,
-    identifier: PropTypes.shape({
-      name: PropTypes.string,
-    }),
+    name: PropTypes.string,
     description: PropTypes.string,
   }),
 };
@@ -60,9 +58,7 @@ RenderDescription.propTypes = {
 TypeDefReference.propTypes = {
   typeDef: PropTypes.shape({
     properties: PropTypes.array,
-    identifier: PropTypes.shape({
-      name: PropTypes.string,
-    }),
+    name: PropTypes.string,
   }),
 };
 
