@@ -25,10 +25,9 @@ const ApiReferenceTemplate = ({ data }) => {
     methods = [],
     usage = '',
     typeDefs = [],
-    constants = []
+    constants = [],
   } = useApiDoc(api) ?? {};
 
-  console.log(constants)
   return (
     <Layout>
       <SEO title={title} description={description} />
@@ -74,14 +73,11 @@ const ApiReferenceTemplate = ({ data }) => {
           {constants.length > 0 && (
             <section className={templateStyles.section}>
               <h2>Constants</h2>
-              {constants.map((constant, i) => {
-                return <ConstantReference key={i} constant={constant} />
-              })
-
-              }
+              {constants.map((constant, i) => (
+                <ConstantReference key={i} constant={constant} />
+              ))}
             </section>
           )}
-
         </main>
       </Container>
     </Layout>

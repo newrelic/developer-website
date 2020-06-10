@@ -62,16 +62,29 @@ const useApiDoc = (name) => {
 
     const getConstants = (api) => {
       return Object.getOwnPropertyNames(api)
-        .filter((member) =>
-          !IGNORED_METHODS.includes(member) &&
-          typeof api[member] !== 'function'
+        .filter(
+          (member) =>
+            !IGNORED_METHODS.includes(member) &&
+            typeof api[member] !== 'function'
         )
         .map((member) => {
+          const type =
+            api[member] instanceof Array ? 'array' : typeof api[member];
+          const constantValues =
+            type === 'object'
+              ? Object.getOwnPropertyNames(api[member]).map(
+                  (key) => `${key}:${JSON.stringify(api[member][key])}`
+                )
+              : api[member].map((el) => JSON.stringify(el));
           return {
-            name: `${name}.${member}`,
-            value: api[member]
-          }
-        })
+            name: member,
+            type,
+            values:
+              constantValues instanceof Array
+                ? constantValues
+                : [constantValues],
+          };
+        });
     };
 
     return {
