@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { getPropTypeDefinition } from '../utils/propTypeInfo';
+import { pullTypeDefNames } from '../utils/typeDefs';
 
 const IGNORED_METHODS = [
   'prototype',
@@ -8,15 +9,6 @@ const IGNORED_METHODS = [
   'propTypes',
   'getDerivedStateFromProps',
   'defaultProps',
-];
-
-const DENY_TYPE_DEFS_LIST = [
-  'Object',
-  'ReactNode',
-  'Event',
-  'number',
-  'string',
-  'boolean',
 ];
 
 const extractPropTypes = (component) => {
@@ -30,33 +22,25 @@ const getTypeDefs = (component) => {
     .filter((key) => !IGNORED_METHODS.includes(key))
     .map((key) => component[key]?.__docs__?.tags)
     .filter(Boolean);
+
   const tagsFromPropTypes = Object.getOwnPropertyNames(component.propTypes).map(
     (key) => component.propTypes[key]?.__docs__?.tags
   );
 
-  function pullTypedefs(tags) {
-    const newtypedefs = Object.values(tags)
-      .reduce((acc, val) => acc.concat(val), [])
-      .flatMap((tag) => [tag.type, tag.promiseType])
-      .filter(Boolean) // filter undefined members
-      .filter((tag) => !DENY_TYPE_DEFS_LIST.includes(tag))
-      .map((tag) => tag.replace(/\[\]$/, '')); // TimePickerRange[] => TimePickerRange
-    return newtypedefs;
-  }
-
-  const currentTypeDefs = tagsFromComponentProperties
+  const componentTypeDefNames = tagsFromComponentProperties
     .concat(tagsFromPropTypes)
-    .flatMap(pullTypedefs);
+    .flatMap(pullTypeDefNames);
 
   const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
-  const typeDefs = currentTypeDefs
+
+  const typeDefs = componentTypeDefNames
     .map((name) => allTypeDefs[name])
     .filter((typeDef) => typeDef !== undefined);
 
   const structuredTypeDefs = typeDefs.map((typeDef) => ({
     properties: typeDef.tags.property,
-    identifier:
-      typeDef.tags.typedef.find((tag) => tag.identifier).identifier || {},
+    identifier: typeDef.tags.typedef.find((tag) => tag.identifier).identifier
+      .name,
   }));
 
   return structuredTypeDefs;
