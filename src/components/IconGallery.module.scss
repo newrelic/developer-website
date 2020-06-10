@@ -1,0 +1,20 @@
+// TODO: get the grid to resize properly with window width
+.iconGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
+  grid-template-rows: 1fr;
+  grid-gap: 0.5rem;
+
+  > div {
+    border: 1px solid red;
+
+    // NOTE: this keeps icons as squares
+    // may not be necessary
+    &::before {
+      content: '';
+      padding-bottom: 100%;
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+}

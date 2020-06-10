@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './IconGallery.module.scss';
 
 const IconGallery = ({ icons }) => {
   return (
     <>
       <h2>Icon Gallery</h2>
-      <ul>
+      <div className={styles.iconGrid}>
         {icons.map((icon, index) => (
-          <li key={index}>{icon}</li>
+          <div key={index}>{icon.slice(-5)}</div>
         ))}
-      </ul>
+      </div>
     </>
   );
 };
