@@ -1,13 +1,17 @@
 import React from 'react';
+import SideBySide from './SideBySide';
+import PropTypes from 'prop-types';
+
 import styles from './Intro.module.scss';
-import Proptypes from 'prop-types';
 
 const Intro = ({ children }) => (
-  <div className={styles.container}>{children}</div>
+  <SideBySide type="Video" className={styles.container}>
+    {children}
+  </SideBySide>
 );
 
 Intro.propTypes = {
-  children: Proptypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Intro;

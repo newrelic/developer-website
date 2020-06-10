@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import Markdown from 'react-markdown';
 import styles from './FunctionDefinition.module.scss';
 
-const ParamDescription = ({ children, ...props }) => (
-  <span {...props} className={styles.paramDescription}>
-    {'//'} {children}
-  </span>
-);
+const ParamDescription = ({ children, ...props }) => {
+  if (Children.toArray(children).length === 0) {
+    return null;
+  }
+
+  return (
+    <span {...props} className={styles.paramDescription}>
+      {' //'} {children}
+    </span>
+  );
+};
 
 ParamDescription.propTypes = {
   children: PropTypes.node,
@@ -21,8 +27,11 @@ const FunctionDefinition = ({ params, returnValue }) => {
       </span>
       {params.map((param, i) => (
         <div key={i} className={styles.param}>
-          <span className={styles.paramName}>{param.name}: </span>
-          <span className={styles.type}>{param.type} </span>
+          <span className={styles.paramName}>
+            {param.type.startsWith('...') ? `...${param.name}` : param.name}:{' '}
+          </span>
+          <span className={styles.type}>{param.type}</span>
+          {i !== params.length - 1 && ', '}
           <Markdown
             source={param.description}
             renderers={{
