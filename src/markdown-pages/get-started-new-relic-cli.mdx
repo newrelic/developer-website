@@ -83,7 +83,7 @@ newrelic apm application search --accountId YOUR_ACCOUNT_ID --name NAME_OF_YOUR_
 
 If the account ID is valid, and the application name exists in your account, `apm application search` yields data similar to this example.
 
-To continue this guide, the important bit is the value of `guid`, which uniquely identifies your application; copy it or write it down.
+When you've successfully searched for your application, look for the `guid` value. It's a unique identifier for your application. You should copy it or write it down.
 
 ```json lineNumbers=false
 [
@@ -104,7 +104,7 @@ To continue this guide, the important bit is the value of `guid`, which uniquely
 
 ## Add a simple tag to your application
 
-Now that you've the GUID, you can point the New Relic CLI directly to your application. Adding a tag is the simplest way to try out the CLI capabilities (don't worry, tags can be deleted by using [`entity tags delete`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_delete.md)).
+Now that you have the GUID, you can point the New Relic CLI directly at your application. Adding a tag is the simplest way to try out the CLI capabilities (don't worry, tags can be deleted by using [`entity tags delete`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_delete.md)).
 
 Let's suppose that you want to add an environment tag to your application. Go ahead and add the `dev:testing` tag⁠ (or any other key-value pair) to your application using the [`entities tags create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_create.md) command.
 
@@ -126,7 +126,7 @@ newrelic entity tags create --guid YOUR_APP_GUID --tag tag1:test,tag2:test
 
 </Step><Step>
 
-You've created and added some tags to your application, but how do you know they're there? You need to retrieve your application's tags for that.
+You've created and added some tags to your application, but how do you know they're there? You need to retrieve your application's tags.
 
 To retrieve your application's tags, use the [`entity tags get`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_get.md) command.
 
@@ -163,7 +163,7 @@ All tags associated with your application are retrieved as a JSON array.
 
 Deployments of applications often go wrong. [Deployment markers](https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/record-monitor-deployments) are labels that, when attached to your application data, help you track deployments and troubleshoot what happened.
 
-To create a deployment marker, run the [`apm deployment create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_apm_deployment_create.md) command passing the same Application ID from your earlier search.
+To create a deployment marker, run the [`apm deployment create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_apm_deployment_create.md) command using the same Application ID from your earlier search.
 
 ```bash lineNumbers=false
 newrelic apm deployment create --applicationId YOUR_APP_ID --revision $(git describe --tags --always)
