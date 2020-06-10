@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { pullTypeDefNames } from '../utils/typeDefs';
 
 const IGNORED_METHODS = [
   'prototype',
@@ -26,9 +27,32 @@ const useApiDoc = (name) => {
 
     const apiDocs = api?.__docs__;
 
+    const getTypeDefs = (api) => {
+      const apiTypeDefNames = Object.getOwnPropertyNames(api)
+        .filter((key) => !IGNORED_METHODS.includes(key))
+        .map((key) => api[key]?.__docs__?.tags)
+        .filter(Boolean)
+        .flatMap(pullTypeDefNames);
+
+      const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
+
+      const typeDefs = apiTypeDefNames
+        .map((name) => allTypeDefs[name])
+        .filter((typeDef) => typeDef !== undefined);
+
+      const structuredTypeDefs = typeDefs.map((typeDef) => ({
+        properties: typeDef.tags.property,
+        name: typeDef.tags.typedef.find((tag) => tag.identifier).identifier
+          .name,
+      }));
+
+      return structuredTypeDefs;
+    };
+
     return {
       description: apiDocs?.text,
       usage: `import { ${name} } from 'nr1'`,
+      typeDefs: getTypeDefs(api),
       methods: Object.getOwnPropertyNames(api)
         .filter(
           (member) =>
