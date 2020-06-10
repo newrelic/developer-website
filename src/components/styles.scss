@@ -68,6 +68,7 @@
   --primary-font-family: 'open sans', sans-serif;
   --secondary-font-family: 'effra', sans-serif;
   --tertiary-font-family: 'Ovo', serif;
+  --code-font: 'Menlo', 'Consolas', monospace;
 }
 
 /*-- Reset --*/
@@ -81,7 +82,7 @@ body {
   margin: 0;
   font-size: 16px;
   font-family: var(--primary-font-family);
-  color: var(--color-black);
+  color: var(--color-neutrals-700);
   background-color: var(--color-white);
   line-height: 1.2;
 }
@@ -103,7 +104,6 @@ img {
 p {
   margin: 0;
   margin-top: 8px;
-  color: var(--color-neutrals-700);
 }
 
 h1,
@@ -163,12 +163,17 @@ button,
 
 ul {
   padding-left: 30px;
-  font-size: 14px;
-  line-height: 22px;
-  color: var(--color-neutrals-700);
-  font-size: 1rem;
+  line-height: 1.6;
 }
 
 li {
   margin-bottom: 1rem;
+}
+
+:global {
+  .intro-text {
+    color: var(--color-neutrals-600);
+    font-size: 1.125rem;
+    line-height: 2rem;
+  }
 }

@@ -47,7 +47,6 @@
   * [Use active voice](#use-active-voice)
   * [Make lists clear with the Oxford Comma](#make-lists-clear-with-the-oxford-comma)
   * [Prefer US English](#prefer-us-english)
-  * [Recommended code editors](#recommended-code-editors)
 - [References](#references)
 
 # Welcome!
