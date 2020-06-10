@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import navigationApi from '../data/navigationApi';
 
 const IGNORED_METHODS = [
   'prototype',
@@ -19,6 +20,12 @@ const useApiDoc = (name) => {
   return useMemo(() => {
     const sdk = window.__NR1_SDK__?.default ?? {};
     const api = sdk[name];
+
+    // The SDK does not include the navigation docs so we need to return the
+    // hardcoded values
+    if (name === 'navigation') {
+      return navigationApi;
+    }
 
     if (!api) {
       return null;
