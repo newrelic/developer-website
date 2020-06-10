@@ -1,6 +1,124 @@
 const navigationApi = {
   description: '',
   usage: "import { navigation } from 'nr1'",
+  typeDefs: [
+    {
+      identifier: {
+        name: 'Nerdlet',
+      },
+      properties: [
+        {
+          identifier: {
+            name: 'id',
+          },
+          type: 'string',
+          description:
+            'Id of the nerdlet. You can specify the full nerdlet id: <nerdpack-id>.<nerdlet-id> (i.e. "8ba28fe4-5362-4f7f-8f9a-4b8c6c39d8a6.my-nerdlet") or simply <nerdlet-id> (i.e. "my-nerdlet"). In the latter case, the nerdlet will be treated as if it belongs to the current nerdpack, meaning that the nerdpack id is automatically added by the platform.',
+        },
+        {
+          identifier: {
+            name: 'urlState',
+          },
+          type: 'Object',
+          description: 'State of the nerdlet which is persisted in the url.',
+        },
+      ],
+    },
+    {
+      identifier: {
+        name: 'UrlStateOptions',
+      },
+      properties: [
+        {
+          identifier: {
+            name: 'replaceHistory',
+          },
+          type: 'boolean',
+          description:
+            'If `true`, the current entry in the browser history will be replaced with the new one.',
+        },
+      ],
+    },
+    {
+      identifier: {
+        name: 'Overlay',
+      },
+      properties: [
+        {
+          identifier: {
+            name: 'id',
+          },
+          type: 'string',
+          description:
+            'Id of the overlay to be opened, for example `nr1-core.search`.',
+        },
+        {
+          identifier: {
+            name: 'urlState',
+          },
+          type: 'Object',
+          description: 'State of the overlay which is persisted in the url.',
+        },
+      ],
+    },
+    {
+      identifier: {
+        name: 'Launcher',
+      },
+      properties: [
+        {
+          identifier: {
+            name: 'id',
+          },
+          type: 'string',
+          description: 'Id of the launcher, for example `nr1-core.explorer`.',
+        },
+        {
+          identifier: {
+            name: 'nerdlet',
+          },
+          type: 'Nerdlet',
+          description:
+            'Nerdlet to be opened in the launcher. If not provided, the root nerdlet of the launcher will be opened.',
+        },
+        {
+          identifier: {
+            name: 'stackedNerdlets',
+          },
+          type: 'Nerdlet[]',
+          description: 'Nerdlet to be opened as stacked nerdlets.',
+        },
+      ],
+    },
+    {
+      identifier: {
+        name: 'Location',
+      },
+      properties: [
+        {
+          identifier: {
+            name: 'pathname',
+          },
+          type: 'string',
+          description: 'String representing the path to link to.',
+        },
+        {
+          identifier: {
+            name: 'search',
+          },
+          type: 'string',
+          description: 'String representing query parameters.',
+        },
+        {
+          identifier: {
+            name: 'hash',
+          },
+          type: 'string',
+          description: 'String to put in the URL as hash, e.g. #entities.',
+        },
+      ],
+    },
+  ],
   methods: [
     {
       name: 'navigation.getOpenEntityLocation',
