@@ -18,6 +18,10 @@ const useApiDoc = (name) => {
   if (typeof window === 'undefined') global.window = {};
 
   return useMemo(() => {
+    if (window.__NR1_SDK__ == null) {
+      return null;
+    }
+
     const sdk = window.__NR1_SDK__?.default ?? {};
     const api = sdk[name];
 
@@ -59,7 +63,7 @@ const useApiDoc = (name) => {
           };
         }),
     };
-  }, [name, window?.__NR1_SDK__]);
+  }, [name, window.__NR1_SDK__]);
 };
 
 export default useApiDoc;
