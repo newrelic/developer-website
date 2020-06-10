@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import root from 'react-shadow';
 import { LivePreview } from 'react-live';
 import { CSS_BUNDLE } from '../utils/sdk';
+import useSdkPortalTarget from '../hooks/useSdkPortalTarget';
 
 const EXAMPLE_CSS = `
 .nr1-ReferenceExample {
@@ -86,69 +87,12 @@ const EXAMPLE_CSS = `
 }
 `;
 
-const hostId = 'nr1SdkShadowDomHost';
-
-/**
- * Add a singleton shadow DOM element to body with SDK styles added.
- */
-const getShadowDomHost = () => {
-  function createShadowDomHost() {
-    // Create host div
-    const bodyElement = document.querySelector('body');
-    const host = document.createElement('div');
-    host.id = hostId;
-    bodyElement.appendChild(host);
-
-    // Make it a shadow dom host
-    host.attachShadow({ mode: 'open' });
-
-    // Add sdk styles to the shadow dom
-    const sdkStyles = document.createElement('link');
-    sdkStyles.rel = 'stylesheet';
-    sdkStyles.href = CSS_BUNDLE;
-    host.appendChild(sdkStyles);
-
-    return host;
-  }
-
-  return document.querySelector(`#${hostId}`) || createShadowDomHost();
-};
-
 const ReferencePreview = ({ className, style, useToastManager }) => {
   const [stylesLoaded, setStylesLoaded] = useState(false);
 
   const { ToastManager } = window.__NR1_SDK__;
 
-  useEffect(() => {
-    const hostDiv = getShadowDomHost();
-
-    const observer = new MutationObserver(function (mutations) {
-      const additions = mutations
-        .filter(
-          ({ type, addedNodes }) =>
-            type === 'childList' && addedNodes && addedNodes.length > 0
-        )
-        .flatMap(({ addedNodes }) => {
-          return [...addedNodes.values()].filter(({ className }) =>
-            // This catches the Modal and Tooltip. Would need to reach
-            // another layer of children to detect the Dropdown.
-            className.includes('-wnd-')
-          );
-        });
-
-      // Move nodes to shadow dom host
-      additions.forEach((node) => {
-        hostDiv.appendChild(node);
-      });
-    });
-
-    const body = document.querySelector('body');
-    observer.observe(body, { childList: true });
-
-    return function cleanup() {
-      observer.disconnect();
-    };
-  }, []);
+  useSdkPortalTarget();
 
   return (
     <root.div className={className}>
