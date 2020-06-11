@@ -19,7 +19,7 @@ const copyCode = (code, setCopied) => {
 const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
   const language = className.replace('language-', '');
   const [copied, setCopied] = useState(false);
-  const formattedCode = useFormattedCode(children);
+  const formattedCode = useFormattedCode(children ?? '');
 
   return (
     <div>
@@ -27,14 +27,14 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
         <Highlight
           {...defaultProps}
           theme={github}
-          code={formattedCode}
+          code={formattedCode.trim()}
           language={language}
         >
           {({ style, tokens, getLineProps, getTokenProps }) => (
-            <pre style={{ ...style, padding: '20px' }}>
+            <pre className={styles.codeContainer} style={style}>
               {tokens.map((line, i) => (
                 <div key={i} {...getLineProps({ line, key: i })}>
-                  {lineNumbers !== 'false' && i < tokens.length - 1 && (
+                  {lineNumbers !== 'false' && (
                     <span className={styles.lineNumber}>{i + 1}</span>
                   )}
                   {line.map((token, key) => (
