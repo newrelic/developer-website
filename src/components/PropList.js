@@ -86,15 +86,9 @@ const PropList = ({ propTypes }) => {
           return (
             <div key={name} className={styles.container}>
               <div className={styles.info}>
-                <code>
-                  {name}
-                </code>
-                {isRequired && (
-                  <span className={styles.flagged}>required</span>
-                )}
-                {deprecation && (
-                  <span className={styles.flagged}>deprecated</span>
-                )}
+                <code>{name}</code>
+                {isRequired && <span className={styles.flagged}>required</span>}
+                {deprecation && <span className={styles.flagged}>deprecated</span>}
                 <div className={styles.type}>{type.name}</div>
                 {defaultValue !== undefined && (
                   <div className={styles.default}>
