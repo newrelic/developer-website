@@ -1,25 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import github from 'prism-react-renderer/themes/github';
-import styles from './CodeSnippet.module.scss';
-import useFormattedCode from '../hooks/useFormattedCode';
 import FeatherIcon from './FeatherIcon';
-
-const copyCode = (code, setCopied) => {
-  const textArea = document.createElement('textarea');
-  textArea.value = code;
-  document.body.appendChild(textArea);
-  textArea.select();
-  document.execCommand('copy');
-  document.body.removeChild(textArea);
-  setCopied(true);
-};
+import styles from './CodeSnippet.module.scss';
+import useClipboard from '../hooks/useClipboard';
+import useFormattedCode from '../hooks/useFormattedCode';
 
 const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
   const language = className.replace('language-', '');
-  const [copied, setCopied] = useState(false);
   const formattedCode = useFormattedCode(children ?? '');
+  const [copied, copyCode] = useClipboard();
 
   return (
     <div>
@@ -50,7 +41,7 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
       </div>
       {copy !== 'false' && (
         <div className={styles.copyBar}>
-          <button type="button" onClick={() => copyCode(children, setCopied)}>
+          <button type="button" onClick={() => copyCode(children)}>
             <FeatherIcon name="copy" size="1rem" className={styles.copyIcon} />
             {copied ? 'Copied!' : 'Copy output'}
           </button>
