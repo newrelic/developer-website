@@ -41,7 +41,7 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
       </div>
       {copy !== 'false' && (
         <div className={styles.copyBar}>
-          <button type="button" onClick={() => copyCode(children)}>
+          <button type="button" onClick={() => copyCode(formattedCode.trim())}>
             <FeatherIcon name="copy" size="1rem" className={styles.copyIcon} />
             {copied ? 'Copied!' : 'Copy output'}
           </button>
