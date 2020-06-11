@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './FeatherIcon.module.scss';
 
-const FeatherIcon = ({ className, name }) => {
+const FeatherIcon = ({ className, name, size = '1em' }) => {
   const paths = ICONS[name];
 
   return paths ? (
@@ -11,6 +11,7 @@ const FeatherIcon = ({ className, name }) => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       className={cx(styles.icon, className)}
+      style={{ width: size, height: size }}
     >
       {paths}
     </svg>
@@ -28,7 +29,8 @@ const ICONS = {
 
 FeatherIcon.propTypes = {
   className: PropTypes.string,
-  name: PropTypes.oneOf(Object.keys(ICONS)),
+  name: PropTypes.oneOf(Object.keys(ICONS)).isRequired,
+  size: PropTypes.string,
 };
 
 export default FeatherIcon;
