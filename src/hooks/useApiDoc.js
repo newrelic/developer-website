@@ -71,12 +71,11 @@ const useApiDoc = (name) => {
           return {
             name: `${name}.${member}`,
             type: api[member] instanceof Array ? 'array' : typeof api[member],
-            values:
-              api[member] instanceof Array
-                ? Object.getOwnPropertyNames(api[member]).map(
-                    (key) => `${key}:${JSON.stringify(api[member][key])}`
-                  )
-                : api[member].map((el) => JSON.stringify(el)),
+            values: !(api[member] instanceof Array)
+              ? Object.getOwnPropertyNames(api[member]).map(
+                  (key) => `${key}:${JSON.stringify(api[member][key])}`
+                )
+              : api[member].map((el) => JSON.stringify(el)),
           };
         });
     };
