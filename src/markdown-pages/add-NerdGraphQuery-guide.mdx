@@ -94,7 +94,7 @@ Click ***Use NerdGraph***.
 | NOTE: If you don't see any launchers, click ***Your applications***. |
 | :------------- |
 
-![Use Nerdgraph launcher](https://github.com/newrelic/nr1-how-to/blob/master/use-nerdgraph/screenshots/use-nerdgraph-launcher.png)
+![Use Nerdgraph launcher](../images/use-nerdgraph-launcher.png)
 
   </Step>
 
@@ -103,11 +103,11 @@ Click ***Use NerdGraph***.
 
 After launching the ***Use NerdGraph*** application, you see a dashboard that gives an overview of the transactions in your New Relic account.
 
-![Screenshot showing the sample transaction application](https://github.com/newrelic/nr1-how-to/blob/master/use-nerdgraph/screenshots/no-name.png)
+![Screenshot showing the sample transaction application](../images/no-name.png)
 
 ## Add the `NerdGraphQuery` component
 
-Now you will add the `NerdGraphQuery` component to build a dropdown menu to change the account the application is viewing.
+Now you can add the `NerdGraphQuery` component to build a dropdown menu to change the account the application is viewing.
 
 The first step is to import the `NerdGraphQuery` component into the application's `index.js` file.
 
@@ -118,7 +118,7 @@ The first step is to import the `NerdGraphQuery` component into the application'
  
   <Step>
 
-Add the `NerdGraphQuery` component into the first `StackItem` inside of the `return` in the `index.js` file.
+Add the `NerdGraphQuery` component into the first `StackItem` inside of the `return` in the `index.js` file:
 
 ```js
 <NerdGraphQuery query={query} variables={variables}>
@@ -159,7 +159,7 @@ const query = `
 
 In the browser console, note that you can see the data from your query returned in an object following the same structure of the object provided in the initial query:
 
-![BROWSER CONSOLE IMAGE](https://github.com/newrelic/nr1-how-to/blob/master/use-nerdgraph/screenshots/console-screenshot.png)
+![BROWSER CONSOLE IMAGE](../images/console-screenshot.png)
 
   </Step>
 
@@ -174,15 +174,15 @@ return <HeadingText>{data.actor.account.name} Apps:</HeadingText>;
 
 </Steps>
 
-If you go back to the browser and view your application, you will see a new headline showing the name of your account returned from NerdGraph.
+When you go back to the browser and view your application, you see a new headline showing the name of your account returned from NerdGraph.
 
-![App Image](https://github.com/newrelic/nr1-how-to/blob/master/use-nerdgraph/screenshots/with-name.png)
+![App Image](../images/with-name.png)
 
 ## How to use `NerdGraphQuery.query`
 
 So far, you have implemented the NerdGraphQuery component with the application's `render` method and displayed the return data within the transaction overview application.
 
-Now, you need to make it possible to query NerdGraph outside of the `render` method and save the returned data for later usage throughout the New Relic One application. To do this, you will use the `NerdGraphQuery.query` method within the `componentDidMount` react lifecycle method.
+Now, you need to make it possible to query NerdGraph outside of the `render` method and save the returned data for later usage throughout the New Relic One application. To do this, use the `NerdGraphQuery.query` method within the `componentDidMount` react lifecycle method.
 
 <Steps>
 
@@ -190,8 +190,8 @@ Now, you need to make it possible to query NerdGraph outside of the `render` met
 
 Add the following code into the `index.js` just under the `constructor.` When you add this, here's what happens after the HTML in the `render` method is successfully rendered and the `componentDidMount` lifecycle method has been called:
 
-* The `NerdGraphQuery.query` method called with the query object to get your account data will be stored in a variable called `accounts`. 
-* Once the response has come back from NerdGraph, the results are logged to the browser console for your viewing, processed, and stored into the application state.
+* The `NerdGraphQuery.query` method calls with the query object to get your account data will be stored in a variable called `accounts`. 
+* Once the response comes back from NerdGraph, the results are logged to the browser console for your viewing, processed, and stored into the application state.
 
 ```js
 componentDidMount(){
@@ -238,7 +238,7 @@ Look at the application in your browser, and note the following:
 * The dropdown menu displays the data returned from the `NerdGraphQuery.query` and allows you to select an account. 
 * After you select a new account, the application shows data from the new selection.
 
-![App Complete](https://github.com/newrelic/nr1-how-to/blob/master/use-nerdgraph/screenshots/complete.png)
+![App Complete](../images/complete.png)
 
   </Step>
 
