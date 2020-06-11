@@ -48,6 +48,22 @@ const Header = () => {
           toggle={() => setIsOpen(!isOpen)}
           isOpen={isOpen}
         />
+
+        <nav className={styles.navTools}>
+          <h3 className={styles.hideOnDesktop}>Tools</h3>
+          <ul>
+            <li>
+              <ExternalLink
+                className={cx(styles.logo, styles.logoGithub)}
+                href="//github.com/newrelic"
+              >
+                <span className={styles.hideOnDesktop}>
+                  Contribute on GitHub
+                </span>
+              </ExternalLink>
+            </li>
+          </ul>
+        </nav>
       </Container>
     </header>
   );
