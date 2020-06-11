@@ -1,22 +1,22 @@
 .container {
-    color: var(--color-neutrals-500);
-    font-family: var(--code-font);
-    font-size: 0.875rem;
-    line-height: 1.5;
-    margin-top: 2rem;
-  }
+  color: var(--color-neutrals-500);
+  font-family: var(--code-font);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-top: 2rem;
+}
 
-  .name {
-    font-size: 1rem;
-    font-family: var(--primary-font-family);
-    color: var(--color-neutrals-800);
-    margin-bottom: 0.5rem;
-  }
+.name {
+  font-size: 1rem;
+  font-family: var(--primary-font-family);
+  color: var(--color-neutrals-800);
+  margin-bottom: 0.5rem;
+}
 
-  .block {
-    margin-left: 0.5rem;
-  }
-  
-  .constantContainer {
-    margin: 0 0 1rem 1.5rem;
-  }
+.block {
+  margin-left: 0.5rem;
+}
+
+.constantContainer {
+  margin: 0 0 1rem 1.5rem;
+}
