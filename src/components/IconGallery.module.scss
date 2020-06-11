@@ -1,3 +1,14 @@
+.iconFilter {
+  padding: 1rem;
+
+  input {
+    width: 60%;
+    margin: auto;
+    display: block;
+    padding: 0.5rem;
+  }
+}
+
 .iconGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
