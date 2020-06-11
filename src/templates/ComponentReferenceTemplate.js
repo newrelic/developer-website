@@ -34,7 +34,6 @@ const ComponentReferenceTemplate = ({ data }) => {
     methods = [],
     usage = '',
     propTypes = [],
-    icons = [],
   } = useComponentDoc(component) ?? {};
 
   return (
@@ -82,9 +81,9 @@ const ComponentReferenceTemplate = ({ data }) => {
             </section>
           )}
 
-          {icons.length > 0 && (
+          {component === 'Icon' && (
             <section className={templateStyles.section}>
-              <IconGallery icons={icons} />
+              <IconGallery />
             </section>
           )}
 
