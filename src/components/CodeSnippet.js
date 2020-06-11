@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import github from 'prism-react-renderer/themes/github';
 import styles from './CodeSnippet.module.scss';
-import cx from 'classnames';
 import useFormattedCode from '../hooks/useFormattedCode';
+import FeatherIcon from './FeatherIcon';
 
 const copyCode = (code, setCopied) => {
   const textArea = document.createElement('textarea');
@@ -47,8 +47,9 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
         </Highlight>
       </div>
       {copy !== 'false' && (
-        <div className={cx({ [styles.copied]: copied }, styles.copyBar)}>
+        <div className={styles.copyBar}>
           <button type="button" onClick={() => copyCode(children, setCopied)}>
+            <FeatherIcon name="copy" size="1rem" className={styles.copyIcon} />
             {copied ? 'Copied!' : 'Copy output'}
           </button>
         </div>

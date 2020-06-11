@@ -30,16 +30,9 @@
   justify-content: flex-end;
   align-items: center;
   background: var(--color-neutrals-200);
-  height: 35px;
-  background-image: url('../images/copy.svg');
-  background-size: 1rem;
-  background-repeat: no-repeat;
-  background-position: 83% 50%;
 
   button {
-    padding-right: 1rem;
     font-size: 0.75rem;
-    font-family: var(--primary-font-family);
     color: var(--color-brand-800);
     background: none;
     border: none;
@@ -47,6 +40,6 @@
   }
 }
 
-.copied {
-  background-position: 88% 50%;
+.copyIcon {
+  margin-right: 0.5rem;
 }
