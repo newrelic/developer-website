@@ -4,6 +4,7 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import github from 'prism-react-renderer/themes/github';
 import styles from './CodeSnippet.module.scss';
 import cx from 'classnames';
+import useFormattedCode from '../hooks/useFormattedCode';
 
 const copyCode = (code, setCopied) => {
   const textArea = document.createElement('textarea');
@@ -18,6 +19,7 @@ const copyCode = (code, setCopied) => {
 const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
   const language = className.replace('language-', '');
   const [copied, setCopied] = useState(false);
+  const formattedCode = useFormattedCode(children);
 
   return (
     <div>
@@ -25,7 +27,7 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
         <Highlight
           {...defaultProps}
           theme={github}
-          code={children}
+          code={formattedCode}
           language={language}
         >
           {({ style, tokens, getLineProps, getTokenProps }) => (
