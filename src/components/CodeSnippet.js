@@ -32,16 +32,18 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
         >
           {({ style, tokens, getLineProps, getTokenProps }) => (
             <pre className={styles.codeContainer} style={style}>
-              {tokens.map((line, i) => (
-                <div key={i} {...getLineProps({ line, key: i })}>
-                  {lineNumbers !== 'false' && (
-                    <span className={styles.lineNumber}>{i + 1}</span>
-                  )}
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token, key })} />
-                  ))}
-                </div>
-              ))}
+              <code>
+                {tokens.map((line, i) => (
+                  <div key={i} {...getLineProps({ line, key: i })}>
+                    {lineNumbers !== 'false' && (
+                      <span className={styles.lineNumber}>{i + 1}</span>
+                    )}
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token, key })} />
+                    ))}
+                  </div>
+                ))}
+              </code>
             </pre>
           )}
         </Highlight>
