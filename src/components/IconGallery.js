@@ -17,7 +17,6 @@ const IconGallery = () => {
     ? types.filter((type) => type.toLowerCase().includes(search.toLowerCase()))
     : types;
 
-  console.log('render IconGallery');
   return (
     <>
       <h2>Icon Gallery</h2>
