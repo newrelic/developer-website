@@ -4,8 +4,7 @@ import cx from 'classnames';
 import styles from './SideBySide.module.scss';
 import splitUsing from '../utils/splitUsing';
 import splitWhen from '../utils/splitWhen';
-
-const isMdxType = (child, type) => child?.props?.mdxType === type;
+import { isMdxType } from '../utils/mdx';
 
 const SideBySide = ({ className, children, type }) => {
   const childObjects = Children.toArray(children);
