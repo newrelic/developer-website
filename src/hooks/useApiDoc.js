@@ -60,10 +60,32 @@ const useApiDoc = (name) => {
       return structuredTypeDefs;
     };
 
+    const getConstants = (api) => {
+      return Object.getOwnPropertyNames(api)
+        .filter(
+          (member) =>
+            !IGNORED_METHODS.includes(member) &&
+            typeof api[member] !== 'function'
+        )
+        .map((member) => {
+          return {
+            name: `${name}.${member}`,
+            type: api[member] instanceof Array ? 'array' : typeof api[member],
+            values:
+              api[member] instanceof Array
+                ? api[member].map((el) => JSON.stringify(el))
+                : Object.getOwnPropertyNames(api[member]).map(
+                    (key) => `${key}: ${JSON.stringify(api[member][key])}`
+                  ),
+          };
+        });
+    };
+
     return {
       description: apiDocs?.text,
       usage: `import { ${name} } from 'nr1'`,
       typeDefs: getTypeDefs(api),
+      constants: getConstants(api),
       methods: Object.getOwnPropertyNames(api)
         .filter(
           (member) =>
