@@ -10,7 +10,7 @@ const splitUsing = (list, predicate) => {
     { groups: [], items: [] }
   );
 
-  if (items.length > 1) {
+  if (items.length > 0) {
     return [...groups, items];
   }
 
