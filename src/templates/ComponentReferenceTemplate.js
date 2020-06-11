@@ -16,6 +16,7 @@ import styles from './ComponentReferenceTemplate.module.scss';
 import templateStyles from './ReferenceTemplate.module.scss';
 import useComponentDoc from '../hooks/useComponentDoc';
 import IconGallery from '../components/IconGallery';
+import TypeDefReference from '../components/TypeDefReference';
 
 const previewStyles = {
   Spinner: {
@@ -33,6 +34,7 @@ const ComponentReferenceTemplate = ({ data }) => {
     description: componentDescription,
     methods = [],
     usage = '',
+    typeDefs = [],
     propTypes = [],
   } = useComponentDoc(component) ?? {};
 
@@ -97,6 +99,15 @@ const ComponentReferenceTemplate = ({ data }) => {
               <h2>Methods</h2>
               {methods.map((method, i) => (
                 <MethodReference key={i} method={method} />
+              ))}
+            </section>
+          )}
+
+          {typeDefs.length > 0 && (
+            <section className={templateStyles.section}>
+              <h2>Type definitions</h2>
+              {typeDefs.map((typeDef, i) => (
+                <TypeDefReference key={i} typeDef={typeDef} />
               ))}
             </section>
           )}

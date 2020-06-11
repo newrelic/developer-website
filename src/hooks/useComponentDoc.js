@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { getPropTypeDefinition } from '../utils/propTypeInfo';
+import { pullTypeDefNames } from '../utils/typeDefs';
 
 const IGNORED_METHODS = [
   'prototype',
@@ -14,6 +15,37 @@ const extractPropTypes = (component) => {
   return Object.entries(component.propTypes || {}).map(([name, propType]) =>
     getPropTypeDefinition(component, name, propType)
   );
+};
+
+const getTypeDefs = (component) => {
+  const tagsFromComponentProperties = Object.getOwnPropertyNames(component)
+    .filter((key) => !IGNORED_METHODS.includes(key))
+    .map((key) => component[key]?.__docs__?.tags)
+    .filter(Boolean);
+
+  const tagsFromPropTypes = component.propTypes
+    ? Object.getOwnPropertyNames(component.propTypes).map(
+        (key) => component.propTypes[key]?.__docs__?.tags
+      )
+    : [];
+
+  const componentTypeDefNames = tagsFromComponentProperties
+    .concat(tagsFromPropTypes)
+    .flatMap(pullTypeDefNames);
+
+  const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
+
+  const typeDefs = componentTypeDefNames
+    .map((name) => allTypeDefs[name])
+    .filter((typeDef) => typeDef !== undefined);
+
+  const structuredTypeDefs = typeDefs.map((typeDef) => ({
+    properties: typeDef.tags.property,
+    identifier: typeDef.tags.typedef.find((tag) => tag.identifier).identifier
+      .name,
+  }));
+
+  return structuredTypeDefs;
 };
 
 const useComponentDoc = (componentName) => {
@@ -51,6 +83,7 @@ const useComponentDoc = (componentName) => {
             examples: methodDocs?.tags.examples ?? [],
           };
         }),
+      typeDefs: getTypeDefs(component),
     };
   }, [componentName, window?.__NR1_SDK__]);
 };
