@@ -56,8 +56,7 @@ const getTypeDefs = (component) => {
 
   const structuredTypeDefs = typeDefs.map((typeDef) => ({
     properties: typeDef.tags.property,
-    identifier: typeDef.tags.typedef.find((tag) => tag.identifier).identifier
-      .name,
+    name: typeDef.tags.typedef.find((tag) => tag.identifier).identifier.name,
   }));
 
   return structuredTypeDefs;
