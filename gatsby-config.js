@@ -76,6 +76,8 @@ module.exports = {
       resolve: 'gatsby-source-nr1-sdk',
       options: {
         release: 'release-1093',
+        components: ['Button', 'BlockText'],
+        apis: ['logger', 'nerdlet'],
       },
     },
   ],
