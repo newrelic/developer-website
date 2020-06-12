@@ -14,24 +14,22 @@
   grid-template-rows: 1fr;
   grid-gap: 0.5rem;
 
-  > div {
+  > button {
     border: 1px solid var(--color-neutrals-100);
+    background: var(--color-white);
     border-radius: 2px;
     text-align: center;
     padding: 0.2rem;
+    position: relative;
 
     &:hover {
       cursor: pointer;
       border: 1px solid var(--color-neutrals-300);
       transition: all 0.4s;
+      span {
+        visibility: visible;
+      }
     }
-  }
-}
-
-.iconContainer {
-  position: relative;
-  &:hover span {
-    visibility: visible;
   }
 }
 
@@ -50,6 +48,6 @@
   padding: 5px;
   position: absolute;
   font-size: 0.85rem;
-  top: 2rem;
+  top: 90%;
   z-index: 1;
 }
