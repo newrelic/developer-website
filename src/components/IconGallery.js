@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import styles from './IconGallery.module.scss';
-import useClipboard from '../hooks/useClipboard';
+import IconReference from './IconReference';
 
 const IconGallery = () => {
   if (typeof window === 'undefined') global.window = {};
 
   // Get the Icon component when available
-  const { Icon } = window.__NR1_SDK__.default;
+  const { Icon } = window.__NR1_SDK__?.default ?? {};
   if (!Icon) return null;
-
-  // Copy icon name
-  const [copied, copyIcon] = useClipboard();
 
   // Basic search / filtering
   const [search, setSearch] = useState('');
@@ -37,17 +34,7 @@ const IconGallery = () => {
       {filteredTypes.length ? (
         <div className={styles.iconGrid}>
           {filteredTypes.map((type) => (
-            <button
-              className={styles.button}
-              type="button"
-              key={type}
-              onClick={() => copyIcon(type)}
-            >
-              <Icon className={styles.icon} type={Icon.TYPE[type]} />
-              <span className={styles.iconName}>
-                {copied ? 'Copied!' : type}
-              </span>
-            </button>
+            <IconReference key={type} type={type} Icon={Icon} />
           ))}
         </div>
       ) : (
