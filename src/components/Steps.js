@@ -1,24 +1,14 @@
-import React from 'react';
+import { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
+import { isMdxType } from '../utils/mdx';
 
 const Steps = ({ children }) => {
-  // get the number of steps
-  const totalSteps = children.filter(
-    (child) => child?.props?.mdxType === 'Step'
+  const totalSteps = Children.toArray(children).filter((child) =>
+    isMdxType(child, 'Step')
   ).length;
 
-  // return the children with additional props
-  return (
-    <>
-      {children.map((child, index) => ({
-        ...child,
-        props: {
-          ...child.props,
-          number: index + 1,
-          total: totalSteps,
-        },
-      }))}
-    </>
+  return Children.map(children, (child, index) =>
+    cloneElement(child, { number: index + 1, total: totalSteps })
   );
 };
 

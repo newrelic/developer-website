@@ -7,6 +7,7 @@
 
 .info {
   width: 30%;
+  word-break: break-all;
 
   code {
     font-weight: bold;
@@ -72,6 +73,8 @@
   font-family: var(--code-font);
   font-size: 0.875rem;
   color: var(--color-neutrals-600);
+  max-height: 320px;
+  overflow-y: auto;
 }
 
 .shape {
