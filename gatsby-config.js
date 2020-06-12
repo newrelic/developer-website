@@ -1,3 +1,5 @@
+// const { RELEASE } = require('./src/utils/sdk');
+
 module.exports = {
   siteMetadata: {
     title: 'New Relic Developers',
@@ -70,5 +72,11 @@ module.exports = {
       },
     },
     'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-source-nr1-sdk',
+      options: {
+        release: 'release-1093',
+      },
+    },
   ],
 };
