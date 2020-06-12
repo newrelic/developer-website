@@ -34,7 +34,7 @@ const IconGallery = () => {
       {filteredTypes.length ? (
         <div className={styles.iconGrid}>
           {filteredTypes.map((type) => (
-            <IconReference key={type} type={type} Icon={Icon} />
+            <IconReference key={type} type={type} />
           ))}
         </div>
       ) : (
