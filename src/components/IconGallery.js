@@ -34,7 +34,7 @@ const IconGallery = () => {
       {filteredTypes.length ? (
         <div className={styles.iconGrid}>
           {filteredTypes.map((type, index) => (
-            <div key={index}>
+            <div className={styles.iconContainer} key={index}>
               <Icon className={styles.icon} type={Icon.TYPE[type]} />
               <span className={styles.iconName}>{type}</span>
             </div>

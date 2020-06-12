@@ -28,12 +28,28 @@
   }
 }
 
+.iconContainer {
+  position: relative;
+  &:hover span {
+    visibility: visible;
+  }
+}
+
 .icon {
   display: inline-block;
   width: 70%;
 }
 
-// TODO: tooltip?
 .iconName {
-  display: none;
+  visibility: hidden;
+  background-color: var(--color-neutrals-900);
+  opacity: 0.8;
+  color: var(--color-white);
+  text-align: center;
+  border-radius: 3px;
+  padding: 5px;
+  position: absolute;
+  font-size: 0.85rem;
+  top: 2rem;
+  z-index: 1;
 }
