@@ -1,32 +1,14 @@
 .container {
-  display: flex;
-
-  > div {
-    flex: 1;
-  }
-
-  &.right {
-    flex-direction: row;
-
-    > div:nth-child(2) {
-      margin-left: 1rem;
-    }
-  }
-
-  &.left {
-    flex-direction: row-reverse;
-
-    > div:nth-child(2) {
-      margin-right: 1rem;
-    }
-  }
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 1rem;
 
   @media (max-width: 760px) {
-    display: block;
-
-    &.left > div:nth-child(2),
-    &.right > div:nth-child(2) {
-      margin: 0;
-    }
+    grid-template-columns: 100%;
+    grid-gap: 0;
   }
+}
+
+.spanColumns {
+  grid-column: span 2;
 }

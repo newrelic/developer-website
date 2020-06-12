@@ -1,5 +1,8 @@
 import { useMemo } from 'react';
-import { SPECIAL_NUMBERS } from '../utils/propConstants';
+import { getPropTypeDefinition } from '../utils/propTypeInfo';
+import { pullTypeDefNames } from '../utils/typeDefs';
+
+const IGNORED_LIVE_EXAMPLES = ['Dropdown', 'Modal', 'Tooltip'];
 
 const IGNORED_METHODS = [
   'prototype',
@@ -10,171 +13,53 @@ const IGNORED_METHODS = [
   'defaultProps',
 ];
 
-const extractPropTypes = (component) => {
-  return Object.entries(component.propTypes || {}).map(([name, propData]) => {
-    const propDocs = propData.__docs__;
-    const propMeta = propData.__reflect__;
+const getExamples = (component) => {
+  const examples = component?.__docs__?.tags.examples ?? [];
+  const hideLive = IGNORED_LIVE_EXAMPLES.includes(component.name);
 
-    const type = processType(component, name, propMeta);
+  if (!hideLive) {
+    return examples;
+  }
 
-    const defaultValue = getDefaultValue(
-      component,
-      name,
-      type.isOneOf,
-      toStaticName(name)
-    );
-
-    return {
-      name,
-      description: propDocs.text,
-      isRequired: propMeta.some((item) => item.name === 'isRequired'),
-      type: type.displayType,
-      defaultValue,
-    };
+  return examples.map((example) => {
+    return { ...example, options: { ...example.options, live: false } };
   });
 };
 
-const toStaticName = (propName) =>
-  propName
-    .replace(/(.+?)(?=[A-Z])/g, '$1_')
-    .replace('.', '_')
-    .toUpperCase();
-
-const processPropType = (component, propName, prop) => {
-  const propDocs = prop.__docs__;
-  const propMeta = prop.__reflect__;
-  const type = processType(component, propName, propMeta);
-
-  const staticName = toStaticName(propName);
-  const defaultValue = getDefaultValue(
-    component,
-    propName,
-    type.isOneOf,
-    staticName
+const getPropTypes = (component) => {
+  return Object.entries(component.propTypes || {}).map(([name, propType]) =>
+    getPropTypeDefinition(component, name, propType)
   );
-
-  const enums =
-    type.isOneOf || type.isArrayOfOneOf
-      ? Object.keys(component[staticName] || {}).map(
-          (name) => `${component.name}.${staticName}.${name}`
-        )
-      : [];
-
-  return {
-    ...type,
-    description: propDocs?.text,
-    example: propDocs?.tags?.examples?.[0],
-    isRequired: propMeta.some((item) => item.name === 'isRequired'),
-    params: propDocs?.tags?.param,
-    deprecated: propDocs?.tags?.deprecated?.[0],
-    returns: propDocs?.tags?.returns,
-    defaultValue,
-    enums,
-  };
 };
 
-// TODO: refactor: remove switch? remove let usage? breakdown into smaller functions?
-const processType = (component, propName, propMeta) => {
-  const propTypeName = propMeta[1].name;
-  const isOneOf = propTypeName === 'oneOf';
-  const isArrayOf = propTypeName === 'arrayOf';
-  const isArrayOfOneOf =
-    isArrayOf && propMeta[2].args[0].__reflect__[1].name === 'oneOf';
+const getTypeDefs = (component) => {
+  const tagsFromComponentProperties = Object.getOwnPropertyNames(component)
+    .filter((key) => !IGNORED_METHODS.includes(key))
+    .map((key) => component[key]?.__docs__?.tags)
+    .filter(Boolean);
 
-  let displayType;
-  let shapes = [];
+  const tagsFromPropTypes = component.propTypes
+    ? Object.getOwnPropertyNames(component.propTypes).map(
+        (key) => component.propTypes[key]?.__docs__?.tags
+      )
+    : [];
 
-  const mapArgsToTypes = (arg) => {
-    const { displayType, shapes: s } = processType(
-      component,
-      propName,
-      arg.__reflect__
-    );
-    shapes = shapes.concat(s);
+  const componentTypeDefNames = tagsFromComponentProperties
+    .concat(tagsFromPropTypes)
+    .flatMap(pullTypeDefNames);
 
-    return displayType;
-  };
+  const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
 
-  const args = (propMeta.find((m) => m.args) || {}).args;
+  const typeDefs = componentTypeDefNames
+    .map((name) => allTypeDefs[name])
+    .filter((typeDef) => typeDef !== undefined);
 
-  switch (propTypeName) {
-    case 'oneOf':
-      displayType = 'enum';
-      break;
-    case 'oneOfType':
-      displayType = args[0].map(mapArgsToTypes).join('|');
-      break;
-    case 'arrayOf': {
-      const arrayTypes = args.map(mapArgsToTypes).toString();
-      displayType =
-        arrayTypes.indexOf('|') >= 0 ? `(${arrayTypes})[]` : `${arrayTypes}[]`;
-      break;
-    }
-    case 'func':
-      displayType = 'function';
-      break;
-    case 'bool':
-      displayType = 'boolean';
-      break;
-    default:
-      displayType = propTypeName;
-  }
+  const structuredTypeDefs = typeDefs.map((typeDef) => ({
+    properties: typeDef.tags.property,
+    name: typeDef.tags.typedef.find((tag) => tag.identifier).identifier.name,
+  }));
 
-  if (displayType === 'shape') {
-    shapes.push(
-      Object.entries(args[0]).map(([name, prop]) => ({
-        ...processPropType(component, `${propName}.${name}`, prop),
-        name,
-      }))
-    );
-  }
-
-  return {
-    displayType,
-    isOneOf,
-    isArrayOfOneOf,
-    shapes,
-  };
-};
-
-// TODO: refactor: remove let? earlier / opportunistic returns?
-const getDefaultValue = (component, propName, isOneOf, staticName) => {
-  let defaultValue = component?.defaultProps?.[propName];
-
-  const isArray = Array.isArray(defaultValue);
-  const defaultType = typeof defaultValue;
-
-  // If default value is an object then is a default value for a shape propType
-  if (defaultValue !== null && !isArray && defaultType === 'object') {
-    defaultValue = undefined;
-  }
-
-  // Find default enum if exists
-  if (isOneOf && defaultValue !== undefined) {
-    const defaultValueStaticName = Object.entries(component[staticName]).find(
-      (name) => name[1] === defaultValue
-    )[0];
-
-    defaultValue = `${component.name}.${staticName}.${defaultValueStaticName}`;
-  }
-
-  if (defaultType === 'number') {
-    const specialNumber = SPECIAL_NUMBERS.find(
-      (number) => Number[number] === defaultValue
-    );
-    defaultValue = specialNumber ? `Number.${specialNumber}` : defaultValue;
-  }
-
-  // Serialize array default values
-  if (isArray) {
-    defaultValue = JSON.stringify(defaultValue);
-  }
-
-  if (defaultType === 'boolean') {
-    defaultValue = defaultValue.toString();
-  }
-
-  return defaultValue;
+  return structuredTypeDefs;
 };
 
 const useComponentDoc = (componentName) => {
@@ -188,13 +73,11 @@ const useComponentDoc = (componentName) => {
       return null;
     }
 
-    const componentDocs = component?.__docs__;
-
     return {
-      description: componentDocs?.text,
-      examples: componentDocs?.tags.examples ?? [],
+      description: component?.__docs__?.text,
+      examples: getExamples(component),
       usage: `import { ${componentName} } from 'nr1'`,
-      propTypes: extractPropTypes(component),
+      propTypes: getPropTypes(component),
       methods: Object.getOwnPropertyNames(component)
         .filter(
           (member) =>
@@ -212,6 +95,7 @@ const useComponentDoc = (componentName) => {
             examples: methodDocs?.tags.examples ?? [],
           };
         }),
+      typeDefs: getTypeDefs(component),
     };
   }, [componentName, window?.__NR1_SDK__]);
 };

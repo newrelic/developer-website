@@ -7,6 +7,8 @@ import ReactMarkdown from 'react-markdown';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import MethodReference from '../components/MethodReference';
+import TypeDefReference from '../components/TypeDefReference';
+import ConstantReference from '../components/ConstantReference';
 import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
 import pages from '../data/sidenav.json';
@@ -18,8 +20,13 @@ const ApiReferenceTemplate = ({ data }) => {
   const { mdx } = data;
   const { frontmatter } = mdx;
   const { title, description, api } = frontmatter;
-  const { description: apiDescription, methods = [], usage = '' } =
-    useApiDoc(api) ?? {};
+  const {
+    description: apiDescription,
+    methods = [],
+    usage = '',
+    typeDefs = [],
+    constants = [],
+  } = useApiDoc(api) ?? {};
 
   return (
     <Layout>
@@ -50,6 +57,24 @@ const ApiReferenceTemplate = ({ data }) => {
               <h2>API methods</h2>
               {methods.map((method, i) => (
                 <MethodReference key={i} method={method} />
+              ))}
+            </section>
+          )}
+
+          {typeDefs.length > 0 && (
+            <section className={templateStyles.section}>
+              <h2>Type definitions</h2>
+              {typeDefs.map((typeDef, i) => (
+                <TypeDefReference key={i} typeDef={typeDef} />
+              ))}
+            </section>
+          )}
+
+          {constants.length > 0 && (
+            <section className={templateStyles.section}>
+              <h2>Constants</h2>
+              {constants.map((constant, i) => (
+                <ConstantReference key={i} constant={constant} />
               ))}
             </section>
           )}
