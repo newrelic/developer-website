@@ -10,10 +10,16 @@ const Intro = ({ children, type }) => (
   </SideBySide>
 );
 
+// Only video or code is supported at the moment
+const SUPPORTED_TYPES = PropTypes.oneOf(['Video', 'pre']);
+
 Intro.propTypes = {
   children: PropTypes.node.isRequired,
-  // Only video or code is supported at the moment
-  type: PropTypes.oneOf('Video', 'pre'),
+  // either a single supported type, or an array of supported types
+  type: PropTypes.oneOfType([
+    SUPPORTED_TYPES,
+    PropTypes.arrayOf(SUPPORTED_TYPES),
+  ]),
 };
 
 Intro.defaultProps = {
