@@ -1,23 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import github from 'prism-react-renderer/themes/github';
+import FeatherIcon from './FeatherIcon';
 import styles from './CodeSnippet.module.scss';
-import cx from 'classnames';
-
-const copyCode = (code, setCopied) => {
-  const textArea = document.createElement('textarea');
-  textArea.value = code;
-  document.body.appendChild(textArea);
-  textArea.select();
-  document.execCommand('copy');
-  document.body.removeChild(textArea);
-  setCopied(true);
-};
+import useClipboard from '../hooks/useClipboard';
+import useFormattedCode from '../hooks/useFormattedCode';
 
 const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
   const language = className.replace('language-', '');
-  const [copied, setCopied] = useState(false);
+  const formattedCode = useFormattedCode(children ?? '');
+  const [copied, copyCode] = useClipboard();
 
   return (
     <div>
@@ -25,28 +18,31 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
         <Highlight
           {...defaultProps}
           theme={github}
-          code={children}
+          code={formattedCode.trim()}
           language={language}
         >
           {({ style, tokens, getLineProps, getTokenProps }) => (
-            <pre style={{ ...style, padding: '20px' }}>
-              {tokens.map((line, i) => (
-                <div key={i} {...getLineProps({ line, key: i })}>
-                  {lineNumbers !== 'false' && i < tokens.length - 1 && (
-                    <span className={styles.lineNumber}>{i + 1}</span>
-                  )}
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token, key })} />
-                  ))}
-                </div>
-              ))}
+            <pre className={styles.codeContainer} style={style}>
+              <code>
+                {tokens.map((line, i) => (
+                  <div key={i} {...getLineProps({ line, key: i })}>
+                    {lineNumbers !== 'false' && (
+                      <span className={styles.lineNumber}>{i + 1}</span>
+                    )}
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token, key })} />
+                    ))}
+                  </div>
+                ))}
+              </code>
             </pre>
           )}
         </Highlight>
       </div>
       {copy !== 'false' && (
-        <div className={cx({ [styles.copied]: copied }, styles.copyBar)}>
-          <button type="button" onClick={() => copyCode(children, setCopied)}>
+        <div className={styles.copyBar}>
+          <button type="button" onClick={() => copyCode(formattedCode.trim())}>
+            <FeatherIcon name="copy" size="1rem" className={styles.copyIcon} />
             {copied ? 'Copied!' : 'Copy output'}
           </button>
         </div>
