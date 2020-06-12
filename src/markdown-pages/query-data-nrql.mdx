@@ -1,0 +1,76 @@
+---
+path: '/query-data/nrql'
+duration: '10 min'
+title: 'Query Data With NRQL'
+template: 'GuideTemplate'
+description: 'Query default event data as well as custom events and attributes with our powerful, SQL-like query language. Start querying now.'
+---
+
+<Intro>
+
+With NRQL, you can query any of the default event data being reported by New Relic, plus any custom events and attributes you’ve added.
+
+</Intro>
+
+<Steps>
+
+<Step>
+
+NRQL syntax is comparable to ANSI SQL.
+
+[Learn mroe about NRQL syntax]()
+
+```sql copy=false
+SELECT function(attribute) [AS 'label'][, ...] 
+  FROM event
+  [WHERE attribute [comparison] [AND|OR ...]][AS 'label'][, ...]
+  [FACET attribute | function(attribute)]
+  [LIMIT number]
+  [SINCE time]
+  [UNTIL time]
+  [WITH TIMEZONE timezone]
+  [COMPARE WITH time]
+  [TIMESERIES time]
+```
+
+</Step>
+
+<Step>
+
+NRQL queries can be as simple as fetching rows of data in a raw tabular form to inspect individual events.
+
+[Learn what events New Relic agents provide out of the box]()
+
+```sql
+-- Fetch a list of New Relic Browser PageView events
+SELECT * FROM PageView
+```
+
+</Step>
+
+<Step>
+
+NRQL queries can also do extremely powerful calculations before the data is presented to you, such as crafting funnels based on the way people actually use your website.
+
+[Learn more about NRQL funnels]()
+
+```sql
+-- See how many users visit, signup, browse and purchase from your site as a funnel
+SELECT funnel(session, 
+  WHERE pageUrl='http://www.demotron.com/' AS 'Visited Homepage',
+  WHERE pageUrl='http://www.demotron.com/signup' AS 'Signed Up', 
+  WHERE pageUrl='http://www.demotron.com/browse' AS 'Browsed Items', 
+  WHERE pageUrl='http://www.demotron.com/checkout' AS 'Made Purchase') 
+  FROM PageView 
+  SINCE 12 hours ago
+```
+
+</Step>
+
+<Step>
+
+Using NRQL, you can customize your New Relic experience by crafting diverse dashboards in New Relic Insights that show your data from multiple angles. These dashboards can be shared with technical and non-technical stakeholders alike.
+
+</Step>
+
+</Steps>
