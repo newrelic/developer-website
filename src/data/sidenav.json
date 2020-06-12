@@ -10,6 +10,16 @@
     ]
   },
   {
+    "displayName": "Collect data",
+    "url": "/collect-data",
+    "children": [
+      {
+        "displayName": "Custom events",
+        "url": "/custom-events"
+      }
+    ]
+  },
+  {
     "displayName": "UI Components",
     "children": [
       {
