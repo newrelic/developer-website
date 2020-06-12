@@ -27,5 +27,5 @@ module.exports = async (release) => {
     getBundle(`${BASE_URL}-${release}.js`),
   ]);
 
-  return vm.runInThisContext([...bundles, '__NR1_SDK__'].join('\n'));
+  return vm.runInThisContext([...bundles, '__NR1_SDK__.default'].join('\n'));
 };
