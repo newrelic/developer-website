@@ -3,7 +3,8 @@ import useClipboard from '../hooks/useClipboard';
 import styles from './IconReference.module.scss';
 import PropTypes from 'prop-types';
 
-const IconReference = ({ type, Icon }) => {
+const IconReference = ({ type }) => {
+  const { Icon } = window.__NR1_SDK__.default;
   const [copied, copyIcon] = useClipboard();
   return (
     <button
@@ -20,9 +21,6 @@ const IconReference = ({ type, Icon }) => {
 
 IconReference.propTypes = {
   type: PropTypes.string,
-  Icon: PropTypes.shape({
-    TYPE: PropTypes.object,
-  }),
 };
 
 export default IconReference;
