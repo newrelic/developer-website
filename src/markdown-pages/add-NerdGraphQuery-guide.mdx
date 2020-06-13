@@ -94,7 +94,7 @@ Click ***Use NerdGraph***.
 | NOTE: If you don't see any launchers, click ***Your applications***. |
 | :------------- |
 
-![Use Nerdgraph launcher](../images/nerdgraphquery/use-nerdgraph-launcher.png)
+![Use Nerdgraph launcher](../images/nerdgraphquery-guide/use-nerdgraph-launcher.png)
 
   </Step>
 
@@ -103,7 +103,7 @@ Click ***Use NerdGraph***.
 
 After launching the ***Use NerdGraph*** application, you see a dashboard that gives an overview of the transactions in your New Relic account.
 
-![Screenshot showing the sample transaction application](../images/nerdgraphquery/no-name.png)
+![Screenshot showing the sample transaction application](../images/nerdgraphquery-guide/no-name.png)
 
 ## Add the `NerdGraphQuery` component
 
@@ -173,7 +173,7 @@ return <HeadingText>{data.actor.account.name} Apps:</HeadingText>;
 
 When you go back to the browser and view your application, you see a new headline showing the name of your account returned from NerdGraph.
 
-![App Image](../images/nerdgraphquery/with-name.png)
+![App Image](../images/nerdgraphquery-guide/with-name.png)
 
 ## How to use `NerdGraphQuery.query`
 
@@ -199,7 +199,7 @@ componentDidMount(){
     const accountId = this.state;
     const gql = `{ actor { accounts { id name } } }`;
 
-    const accounts = NerdGraphQuery.query({query: gql}) 
+    const accounts = NerdGraphQuery.query({query: gql}) //The NerdGraphQuery.query method called with the query object to get your account data is stored in the accounts variable. 
     accounts.then(results => {
         console.log('Nerdgraph Response:', results);
         const accounts = results.data.actor.accounts.map(account => {
@@ -241,7 +241,7 @@ After you complete these steps, look at the application in your browser, and not
 * The dropdown menu displays the data returned from the `NerdGraphQuery.query` and allows you to select an account. 
 * After you select a new account, the application shows data from the new selection.
 
-![App Complete](../images/nerdgraphquery/complete.png)
+![App Complete](../images/nerdgraphquery-guide/complete.png)
 
 The final `index.js` file should have code similar to the code below. This completed sample code is in your nerdlet `final.js`.
 
