@@ -1,0 +1,36 @@
+.button {
+  border: 1px solid var(--color-neutrals-100);
+  background: var(--color-white);
+  border-radius: 2px;
+  text-align: center;
+  padding: 0.2rem;
+  position: relative;
+  transition: all 0.4s;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid var(--color-neutrals-300);
+    .iconName {
+      visibility: visible;
+    }
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 70%;
+}
+
+.iconName {
+  visibility: hidden;
+  background-color: var(--color-neutrals-900);
+  opacity: 0.8;
+  color: var(--color-white);
+  text-align: center;
+  border-radius: 3px;
+  padding: 0.25rem;
+  position: absolute;
+  font-size: 0.85rem;
+  top: 90%;
+  z-index: 1;
+}

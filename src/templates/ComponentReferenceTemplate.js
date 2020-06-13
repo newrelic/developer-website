@@ -15,6 +15,7 @@ import pages from '../data/sidenav.json';
 import styles from './ComponentReferenceTemplate.module.scss';
 import templateStyles from './ReferenceTemplate.module.scss';
 import useComponentDoc from '../hooks/useComponentDoc';
+import IconGallery from '../components/IconGallery';
 import TypeDefReference from '../components/TypeDefReference';
 
 const previewStyles = {
@@ -79,6 +80,12 @@ const ComponentReferenceTemplate = ({ data }) => {
                   />
                 ))}
               </div>
+            </section>
+          )}
+
+          {component === 'Icon' && (
+            <section className={templateStyles.section}>
+              <IconGallery />
             </section>
           )}
 
