@@ -170,6 +170,10 @@ li {
   margin-bottom: 1rem;
 }
 
+code {
+  font-family: var(--code-font);
+}
+
 :global {
   .intro-text {
     color: var(--color-neutrals-600);

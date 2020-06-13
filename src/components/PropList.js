@@ -50,7 +50,7 @@ const PropTypeInfo = ({ type }) => {
     case 'shape':
       return (
         <div className={styles.shape}>
-          <h4>shape</h4>
+          <h3>shape</h3>
           <PropList propTypes={type.meta.types} />
         </div>
       );
@@ -86,15 +86,11 @@ const PropList = ({ propTypes }) => {
           return (
             <div key={name} className={styles.container}>
               <div className={styles.info}>
-                <h3>
-                  {name}
-                  {isRequired && (
-                    <span className={styles.flagged}>required</span>
-                  )}
-                  {deprecation && (
-                    <span className={styles.flagged}>deprecated</span>
-                  )}
-                </h3>
+                <code>{name}</code>
+                {isRequired && <span className={styles.flagged}>required</span>}
+                {deprecation && (
+                  <span className={styles.flagged}>deprecated</span>
+                )}
                 <div className={styles.type}>{type.name}</div>
                 {defaultValue !== undefined && (
                   <div className={styles.default}>

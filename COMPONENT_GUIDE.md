@@ -1,17 +1,17 @@
 # Globally available components
 
-
 ## Video
 
-`<Video />` component provides formatting for videos in markdown. 
+`<Video />` component provides formatting for videos in markdown.
 
-### Usage 
+### Usage
 
-The Video component requires two props: 
+The Video component requires two props:
+
 - `id`: the video ID
 - `type`: the host of the video. Accepted values are:
-    - `wistia`
-    - `youtube`
+  - `wistia`
+  - `youtube`
 
 ```md
 <Video id="zxunt1u1as" type="wistia"/>
@@ -19,10 +19,11 @@ The Video component requires two props:
 
 ## Intro
 
-The `<Intro />` component provides formatting for the title and introduction of the markdown document. 
+The `<Intro />` component provides formatting for the title and introduction of the markdown document.
 
 ### Usage
-It takes the title provided in the Frontmatter and accepts plain text for the description. An example of Frontmatter that will have a title of __Example Guide__: 
+
+It takes the title provided in the Frontmatter and accepts plain text for the description. An example of Frontmatter that will have a title of **Example Guide**:
 
 ```
 ---
@@ -34,9 +35,9 @@ description: 'Example guide page'
 ---
 ```
 
- It also accepts a `<Video />` component as a child, which it will place on the left side of the description. 
+It also accepts a `<Video />` component as a child, which it will place on the left side of the description.
 
-```md 
+```md
 <Intro>
 This is a description for the markdown guide.
 
@@ -46,35 +47,37 @@ This is a description for the markdown guide.
 
 If there is a more than plain text and a `<Video />` (such as a code snippet or another component) the content will be posted on the left side below the description.
 
-
 ## Steps
 
-The `<Steps />` is a required container for the individual `<Step />` components and will autonumber from top to bottom. 
+The `<Steps />` is a required container for the individual `<Step />` components and will autonumber from top to bottom.
 
-### Usage 
+### Usage
 
 The Steps component accepts `<Step/>` components as its children and will increment by the number of child components.
 
-```md 
+```md
 <Steps>
 
 <Step>
 
 ## Step 1
+
 Step 1 description.
 </Step>
 
 <Step>
 
 ## Step 2
+
 Step 2 description
 </Step>
 
 </Steps>
 ```
 
-If there is markdown content not wrapped by a `<Step />` component, it will still auto-increment for that content, so be sure to wrap all content with the Step component. For example: 
-```md 
+If there is markdown content not wrapped by a `<Step />` component, it will still auto-increment for that content, so be sure to wrap all content with the Step component. For example:
+
+```md
 <Steps>
 
 <Step>
@@ -90,67 +93,98 @@ This will read as Step 3 of 3.
 </Steps>
 ```
 
-## Step 
+## Step
 
 ### Usage
 
-The individual `<Step />` expects an optional h2 as the title of the step. 
+The `<Step />` component renders a single step in the series of steps. This is
+meant to use in conjunction with `<Steps />`, so this component **MUST** be
+wrapped by `<Steps />` to work properly. The following example will contain 2
+steps:
+
+```md
+<Steps>
+  <Step>Some information about step 1</Step>
+  <Step>Some information about step 2</Step>
+</Steps>
+```
+
+The previous example will interpret the text inside of the `<Step />` as plain
+text. If you would like the `<Step />` component to interpret the text as
+markdown content, include a line break after the opening tag:
 
 ```md
 <Step>
 
-## Step Title
+# This is a title for the step.
+
+This is some information about this step.
 </Step>
 ```
 
-A second h2 tag will render as a normal H2 tag and not as the step title. 
+You can intersperse code blocks inside of the step. Code snippets will always
+render in a right column next to the description.
 
-```md
+````md
 <Step>
 
-## Step Title 
-## Normal h2 title
-</Step>
+# A code example
+
+Run the following command in your terminal:
+
+```shell
+npm start
 ```
-There must be a line break before the h2 tag or the component will not render it correctly. For example, this will __not__ render correctly: 
-```md
+
+</Step>
+````
+
+You can include multiple code blocks in a single step. Code blocks will always
+be rendered to the right of the text that precedes it.
+
+````md
 <Step>
-## Step Title
-</Step>
+
+# Another code example
+
+Run the following in your terminal:
+
+```shell
+npm start
 ```
 
-Step will also take plain text as a description and a code snippet in standard three back tick form. 
-```md
-<Step>
+When that is running, edit index.js and replace the component with the following
+code:
 
-## Step Title
-Step description
-
-    ```shell
-    finishstep
-    ```
-</Step>
+```js
+return <div>Hello, {props.name}</div>;
 ```
-The code snippet will always render to the right.
+
+</Step>
+````
 
 ## Code Snippet
 
-Code Snippets are automatically formatted by three backticks. 
+Code Snippets are automatically formatted by three backticks.
 
 ### Usage
 
-There are three props that can be supplied to a code snippet. 
+There are three props that can be supplied to a code snippet.
 
-- `language`: The first prop must be a code language. [Here](https://prismjs.com/#supported-languages) is a list of accepted languages for syntax highlighting. 
+- `language`: The first prop must be a code language. [Here](https://prismjs.com/#supported-languages) is a list of accepted languages for syntax highlighting.
 
-    ```md
-    ```jsx
-    ```
-- `lineNumbers`: `true` or `false`. Will show line numbers of the left side of the code, defaults to `true`. 
-    ```md
-    ```jsx lineNumbers=false
-    ```
+  ````md
+  ```jsx
+  ```
+  ````
+
+- `lineNumbers`: `true` or `false`. Will show line numbers of the left side of the code, defaults to `true`.
+  ````md
+  ```jsx lineNumbers=false
+  ```
+  ````
 - `copy`: `true` or `false`. Will display or not display the copy button, defaults to `true`
-    ```md
-    ```jsx copy=false
-    ```
+  ````md
+  ```jsx copy=false
+  ```
+  ````
