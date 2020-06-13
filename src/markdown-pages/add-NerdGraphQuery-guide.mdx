@@ -10,14 +10,14 @@ This guide steps you through the process of adding the NerdGraph component to a 
 
 NerdGraph is New Relic's GraphQl implementation. GraphQL has some key differences when compared to REST. For example, it's the client, not the server, that determines what data will be returned. Also, you can more easily collect data from multiple sources. In the case of New Relic, you can get all of the following in one GraphQL query:
 
-* account information
-* data about infrastructure
-* issue an NRQL request
+* Account information
+* Data about infrastructure
+* Issue an NRQL request
 
 | NOTE: To prototype GraphQL queries in New Relic, try our [NerdGraph API explorer](https://api.newrelic.com/graphiql)|
 | :------------- |
 
-Here's a short video of the steps that follow:
+Here's a 14 minute video of the steps that follow:
 
 <Video id="zxunt1u1as" type="wistia"/>
 
@@ -94,7 +94,7 @@ Click ***Use NerdGraph***.
 | NOTE: If you don't see any launchers, click ***Your applications***. |
 | :------------- |
 
-![Use Nerdgraph launcher](../images/use-nerdgraph-launcher.png)
+![Use Nerdgraph launcher](../images/nerdgraphquery/use-nerdgraph-launcher.png)
 
   </Step>
 
@@ -103,13 +103,11 @@ Click ***Use NerdGraph***.
 
 After launching the ***Use NerdGraph*** application, you see a dashboard that gives an overview of the transactions in your New Relic account.
 
-![Screenshot showing the sample transaction application](../images/no-name.png)
+![Screenshot showing the sample transaction application](../images/nerdgraphquery/no-name.png)
 
 ## Add the `NerdGraphQuery` component
 
-Now you can add the `NerdGraphQuery` component to build a dropdown menu to change the account the application is viewing.
-
-The first step is to import the `NerdGraphQuery` component into the application's `index.js` file.
+Now you can create a dropdown menu for changing the account the application is viewing. The first step is to import the `NerdGraphQuery` component into the application's `index.js` file.
 
 | NOTE: If you need more details about our example below, see the APIs and components page on [https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/NerdGraphQuery](https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/NerdGraphQuery) |
 | :------------- |
@@ -139,7 +137,9 @@ Add the `NerdGraphQuery` component into the first `StackItem` inside of the `ret
 
   <Step>
 
-The `NerdGraphQuery` component takes query object that states the source you’d like to access and the data you want to have returned. Add the following code to your `index.js` file in the `render` method:
+The `NerdGraphQuery` component takes query object that states the source you want to access and the data you want returned. 
+
+Add the following code to your `index.js` file in the `render` method:
 
 ```js
 const query = `
@@ -153,13 +153,10 @@ const query = `
 `;
 ```
 
-  </Step>
+| NOTE: In the browser console, you can see the data from your query returned in an object that follows the same structure of the object in the initial query. |
+| :------------- |
 
-  <Step>
 
-In the browser console, note that you can see the data from your query returned in an object following the same structure of the object provided in the initial query:
-
-![BROWSER CONSOLE IMAGE](../images/console-screenshot.png)
 
   </Step>
 
@@ -168,7 +165,7 @@ In the browser console, note that you can see the data from your query returned 
 To take the data returned by the NerdGraph query and display it in the application, replace the `return null` in the current `NerdGraphQuery` component with this `return` statement:
 
 ```js
-return <HeadingText>{data.actor.account.name} Apps:</HeadingText>;
+return <HeadingText>{data.actor.account.name} Apps:</HeadingText>; 
 ```
   </Step>
 
@@ -176,29 +173,33 @@ return <HeadingText>{data.actor.account.name} Apps:</HeadingText>;
 
 When you go back to the browser and view your application, you see a new headline showing the name of your account returned from NerdGraph.
 
-![App Image](../images/with-name.png)
+![App Image](../images/nerdgraphquery/with-name.png)
 
 ## How to use `NerdGraphQuery.query`
 
-So far, you have implemented the NerdGraphQuery component with the application's `render` method and displayed the return data within the transaction overview application.
+At this point, you implemented the NerdGraphQuery component with the application's `render` method and displayed the return data within the transaction overview application.
 
-Now, you need to make it possible to query NerdGraph outside of the `render` method and save the returned data for later usage throughout the New Relic One application. To do this, use the `NerdGraphQuery.query` method within the `componentDidMount` react lifecycle method.
+Here's what you need to do next:
+
+* Make it possible to query NerdGraph outside of the `render` method.
+* Save the returned data for later usage throughout the New Relic One application. 
+
+To do this, use the `NerdGraphQuery.query` method within the `componentDidMount` react lifecycle method.
 
 <Steps>
 
   <Step>
 
-Add the following code into the `index.js` just under the `constructor.` When you add this, here's what happens after the HTML in the `render` method is successfully rendered and the `componentDidMount` lifecycle method has been called:
+The following code takes the response from NerdGraph and makes sure the results are processed, stored into the application state, and logged to the browser console for viewing. 
 
-* The `NerdGraphQuery.query` method calls with the query object to get your account data will be stored in a variable called `accounts`. 
-* Once the response comes back from NerdGraph, the results are logged to the browser console for your viewing, processed, and stored into the application state.
+Add the following code into the `index.js` just under the `constructor`: 
 
 ```js
 componentDidMount(){
     const accountId = this.state;
     const gql = `{ actor { accounts { id name } } }`;
 
-    const accounts = NerdGraphQuery.query({query: gql})
+    const accounts = NerdGraphQuery.query({query: gql}) 
     accounts.then(results => {
         console.log('Nerdgraph Response:', results);
         const accounts = results.data.actor.accounts.map(account => {
@@ -214,7 +215,9 @@ componentDidMount(){
 
   <Step>
 
-After the data is stored into state, we want to use it to display and account selection for users to change accounts and update the application quickly. Add the following code into the second `StackItem` in the `index.js` `return` statement.
+After the data is stored into state, display a selection so users can change accounts and update the application. 
+
+To do this, add the following code to `index.js` for the second `StackItem` in the `return` statement:
 
 ```js
 {accounts &&
@@ -231,18 +234,14 @@ After the data is stored into state, we want to use it to display and account se
 ```
   </Step>
 
-  <Step>
+</Steps>
 
-Look at the application in your browser, and note the following:
+After you complete these steps, look at the application in your browser, and note the following:
 
 * The dropdown menu displays the data returned from the `NerdGraphQuery.query` and allows you to select an account. 
 * After you select a new account, the application shows data from the new selection.
 
-![App Complete](../images/complete.png)
-
-  </Step>
-
-</Steps>
+![App Complete](../images/nerdgraphquery/complete.png)
 
 The final `index.js` file should have code similar to the code below. This completed sample code is in your nerdlet `final.js`.
 
