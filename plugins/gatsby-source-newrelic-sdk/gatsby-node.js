@@ -18,11 +18,11 @@ exports.sourceNodes = async (
 
       createNode({
         ...data,
-        id: createNodeId(`SDKComponent-${name}`),
+        id: createNodeId(`NewRelicSdkComponent-${name}`),
         parent: null,
         children: [],
         internal: {
-          type: 'SDKComponent',
+          type: 'NewRelicSdkComponent',
           contentDigest: createContentDigest(data),
         },
       });
@@ -39,11 +39,11 @@ exports.sourceNodes = async (
 
       createNode({
         ...data,
-        id: createNodeId(`SDKApi-${name}`),
+        id: createNodeId(`NewRelicSdkApi-${name}`),
         parent: null,
         children: [],
         internal: {
-          type: 'SDKApi',
+          type: 'NewRelicSdkApi',
           contentDigest: createContentDigest(data),
         },
       });

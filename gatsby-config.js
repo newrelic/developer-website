@@ -73,7 +73,7 @@ module.exports = {
     },
     'gatsby-plugin-sitemap',
     {
-      resolve: 'gatsby-source-nr1-sdk',
+      resolve: 'gatsby-source-newrelic-sdk',
       options: {
         release: 'release-1093',
         components: ['Button', 'BlockText'],
