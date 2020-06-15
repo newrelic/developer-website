@@ -1,6 +1,4 @@
 .sidebar {
-  padding: 1rem;
-
   ul {
     margin: 0;
     padding-left: 1rem;
@@ -58,4 +56,14 @@
 .top {
   display: flex;
   justify-content: space-between;
+}
+
+.logo {
+  padding: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 247px;
+  height: 64px;
+  margin-right: 1rem;
+  background-image: url('../images/developers-logo.svg');
 }

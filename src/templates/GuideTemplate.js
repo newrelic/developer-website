@@ -6,7 +6,6 @@ import { MDXProvider } from '@mdx-js/react';
 
 import Layout from '../components/Layout';
 import BreadcrumbBar from '../components/BreadcrumbBar';
-import Container from '../components/Container';
 import Video from '../components/Video';
 import Step from '../components/Step';
 import Steps from '../components/Steps';
@@ -36,12 +35,10 @@ const GuideTemplate = ({ data }) => {
     <Layout>
       <SEO title={title} description={description} />
       <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
-      <Container>
-        <h1>{title}</h1>
-        <MDXProvider components={components}>
-          <MDXRenderer>{body}</MDXRenderer>
-        </MDXProvider>
-      </Container>
+      <h1>{title}</h1>
+      <MDXProvider components={components}>
+        <MDXRenderer>{body}</MDXRenderer>
+      </MDXProvider>
     </Layout>
   );
 };
