@@ -8,14 +8,15 @@ import styles from './Layout.module.scss';
 import pages from '../data/sidenav.json';
 import './styles.scss';
 
-
 const Layout = ({ children }) => (
-  <div className={styles.layout}>
+  <>
     <Header />
-    <Sidebar pages={pages} />
-    <main>{children}</main>
+    <div className={styles.layout}>
+      <Sidebar pages={pages} />
+      <main>{children}</main>
+    </div>
     <Footer pages={pages} />
-  </div>
+  </>
 );
 
 Layout.propTypes = {

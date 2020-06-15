@@ -1,19 +1,7 @@
 .layout {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 3fr;
-
-  > header {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
-  > footer {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 3;
-    grid-row-end: 4;
-  }
+  grid-template-columns: auto 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
 }
