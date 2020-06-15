@@ -170,6 +170,11 @@ li {
   margin-bottom: 1rem;
 }
 
+ul li ul {
+  margin-top: 1rem;
+  line-height: 1;
+}
+
 code {
   font-family: var(--code-font);
 }
