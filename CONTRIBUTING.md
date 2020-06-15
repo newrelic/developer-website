@@ -8,6 +8,7 @@
   * [Submitting a PR from a cloned repo](#submitting-a-pr-from-a-cloned-repo)
 - [Deploy previews with Amplify](#deploy-previews-with-amplify)
 - [Style guide adherence](#style-guide-adherence)
+- [Reusable components](#reusable-components)
 - [Technical reference contribution guidelines](#technical-reference-contribution-guidelines)
   * [Editing existing pages](#editing-existing-pages)
   * [Creating new pages](#creating-new-pages)
@@ -83,6 +84,11 @@ As a non New Relic employee you can [Fork](https://help.github.com/en/github/get
 In order to drive consistency in our documentation New Relic has provided a detailed [Style Guide](STYLE_GUIDE.md)
 for you to follow when making contributions. Refer to this guide prior to contributing.
 When making documentation contributions follow these guidelines. 
+
+# Reusable components 
+
+In order to drive simplicity and ease of use New Relic has provided a set of reusable components you can leverage 
+when creating documentation. Refer to our [Component Guide](COMPONENT_GUIDE.md) for more information.
 
 # Technical reference contribution guidelines
 

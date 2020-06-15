@@ -1,31 +1,44 @@
-import React from 'react';
+import React, { Children, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-
 import styles from './SideBySide.module.scss';
+import splitUsing from '../utils/splitUsing';
+import splitWhen from '../utils/splitWhen';
+import { isMdxType } from '../utils/mdx';
 
-const SideBySide = ({ className, children, type, dir }) => {
-  const childObjects = React.Children.toArray(children);
-  const side = childObjects.find((child) => child?.props?.mdxType === type);
-  const rest = childObjects.filter((child) => child !== side);
+const SideBySide = ({ className, children, type }) => {
+  const types = Array.isArray(type) ? type : [type];
+  const childObjects = Children.toArray(children);
+  const rendersRightColumn = childObjects.some((child) =>
+    types.some((type) => isMdxType(child, type))
+  );
+  const sections = splitUsing(childObjects, (child) =>
+    types.some((type) => isMdxType(child, type))
+  ).map((section) =>
+    splitWhen(section, (child) => types.some((type) => isMdxType(child, type)))
+  );
 
   return (
-    <div className={cx(className, styles.container, styles[dir])}>
-      <div>{rest}</div>
-      {side && <div>{side}</div>}
+    <div className={cx(className, styles.container)}>
+      {sections.map(([left, right], idx) => (
+        <Fragment key={idx}>
+          <div className={cx({ [styles.spanColumns]: !rendersRightColumn })}>
+            {left}
+          </div>
+          {rendersRightColumn && <div>{right}</div>}
+        </Fragment>
+      ))}
     </div>
   );
 };
 
 SideBySide.propTypes = {
   children: PropTypes.node.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]).isRequired,
   className: PropTypes.string,
-  dir: PropTypes.oneOf(['right', 'left']),
-};
-
-SideBySide.defaultProps = {
-  dir: 'right',
 };
 
 export default SideBySide;

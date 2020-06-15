@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import cx from 'classnames';
-
-import { link } from '../types';
 import Container from './Container';
 import ExternalLink from './ExternalLink';
 import HamburgerMenu from './HamburgerMenu';
 import styles from './Header.module.scss';
 
-const Header = ({ pages }) => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -42,26 +39,15 @@ const Header = ({ pages }) => {
           </ul>
         </nav>
 
-        <h1 className={styles.title}>
+        {/* <h1 className={styles.title}>
           <Link to="/" className={cx(styles.logo, styles.titleLogo)} />
-        </h1>
+        </h1> */}
 
         <HamburgerMenu
           className={styles.hamburgerMenu}
           toggle={() => setIsOpen(!isOpen)}
           isOpen={isOpen}
         />
-
-        <nav role="navigation" aria-label="Main" className={styles.navMain}>
-          <h3 className={styles.hideOnDesktop}>Developers</h3>
-          <ul>
-            {pages.map((page, i) => (
-              <li key={i}>
-                <Link to={page.url}>{page.displayName}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
 
         <nav className={styles.navTools}>
           <h3 className={styles.hideOnDesktop}>Tools</h3>
@@ -81,10 +67,6 @@ const Header = ({ pages }) => {
       </Container>
     </header>
   );
-};
-
-Header.propTypes = {
-  pages: PropTypes.arrayOf(link),
 };
 
 export default Header;

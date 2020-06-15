@@ -7,8 +7,6 @@
   * [Guides](#guides)
   * [Overview pages](#overview-pages)
 - [The writing process](#the-writing-process)
-  * [Consider the New Relic "voice"](#consider-the-new-relic-voice)
-  * [Writing style](#writing-style)
   * [Think of your audience](#think-of-your-audience)
     + [Audience for guides](#audience-for-guides)
     + [Audience for technical references](#audience-for-technical-references)
@@ -23,18 +21,21 @@
   * [Avoid emojis, slang, and metaphors](#avoid-emojis-slang-and-metaphors)
   * [Define jargon](#define-jargon)
 - [Writing Style](#writing-style)
+  * [Be explicit and opinionated](#be-explicit-and-opinionated)
+  * [Make it easy to scan](#make-it-easy-to-scan)
   * [Write concisely](#write-concisely)
   * [Use clear hyperlinks](#use-clear-hyperlinks)
+  * [Don't over link content references](#dont-over-link-content-references)
   * [Use relative hyperlinks for local links](#use-relative-hyperlinks-for-local-links)
   * [Mark localhost URLs as code strings](#mark-localhost-urls-as-code-strings)
   * [Indicate when something is optional](#indicate-when-something-is-optional)
   * [Abbreviate terms](#abbreviate-terms)
   * [Use SEO optimized titles and descriptions](#use-seo-optimized-titles-and-descriptions)
   * [Using Gatsby templates](#using-gatsby-templates)
-    + [Types of templates](#types-of-templates)
   * [Using Frontmatter](#using-frontmatter)
-    + [Frontmatter slugs](#frontmatter-slugs)
-    + [Frontmatter example](#frontmatter-example)
+    + [GuideTemplate Frontmatter slugs](#guidetemplate-frontmatter-slugs)
+    + [GuideTemplate Frontmatter example](#guidetemplate-frontmatter-example)
+    + [Reusable components](#reusable-components)
 - [Grammar and formatting](#grammar-and-formatting)
   * [Format titles](#format-titles)
   * [Format headers](#format-headers)
@@ -277,6 +278,11 @@ template: 'GuideTemplate'
 description: 'Example guide page'
 ---
 ```
+
+### Reusable components 
+
+In order to drive simplicity and ease of use New Relic has provided a set of reusable components you can leverage 
+when creating documentation. Refer to our [Component Guide](COMPONENT_GUIDE.md) for more information.
 
 # Grammar and formatting
 
