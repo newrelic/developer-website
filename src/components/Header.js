@@ -39,10 +39,6 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* <h1 className={styles.title}>
-          <Link to="/" className={cx(styles.logo, styles.titleLogo)} />
-        </h1> */}
-
         <HamburgerMenu
           className={styles.hamburgerMenu}
           toggle={() => setIsOpen(!isOpen)}

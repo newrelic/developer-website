@@ -22,6 +22,9 @@ const renderNav = (page, index) => (
 
 const Sidebar = ({ className, pages, isOpen, toggle }) => (
   <aside className={cx(styles.sidebar, className, { [styles.isOpen]: isOpen })}>
+    <h1 className={styles.title}>
+      <Link to="/" className={cx(styles.logo, styles.titleLogo)} />
+    </h1>
     <div className={styles.top}>
       <h3>Pages</h3>
       <button
