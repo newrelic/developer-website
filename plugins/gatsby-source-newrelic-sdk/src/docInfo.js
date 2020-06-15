@@ -1,4 +1,6 @@
-module.exports.getComponentDoc = (name, sdk) => {
+const { getExamples } = require('./exampleInfo');
+
+exports.getComponentDoc = (name, sdk) => {
   const component = sdk[name];
 
   if (!component) {
@@ -9,10 +11,11 @@ module.exports.getComponentDoc = (name, sdk) => {
     name,
     usage: `import { ${name} } from 'nr1'`,
     description: component.__docs__.text,
+    examples: getExamples(component),
   };
 };
 
-module.exports.getApiDoc = (name, sdk) => {
+exports.getApiDoc = (name, sdk) => {
   const api = sdk[name];
 
   if (!api) {
@@ -23,5 +26,6 @@ module.exports.getApiDoc = (name, sdk) => {
     name,
     usage: `import { ${name} } from 'nr1'`,
     description: api.__docs__.text,
+    examples: getExamples(api),
   };
 };
