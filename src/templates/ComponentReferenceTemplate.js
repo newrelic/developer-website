@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -8,10 +8,10 @@ import Container from '../components/Container';
 import ReferenceExample from '../components/ReferenceExample';
 import Layout from '../components/Layout';
 import MethodReference from '../components/MethodReference';
-import Sidebar from '../components/Sidebar';
+// import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
 import PropList from '../components/PropList';
-import pages from '../data/sidenav.json';
+// import pages from '../data/sidenav.json';
 import styles from './ComponentReferenceTemplate.module.scss';
 import templateStyles from './ReferenceTemplate.module.scss';
 import useComponentDoc from '../hooks/useComponentDoc';
@@ -25,7 +25,7 @@ const previewStyles = {
 };
 
 const ComponentReferenceTemplate = ({ data }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
   const { title, description, component } = frontmatter;
@@ -42,12 +42,12 @@ const ComponentReferenceTemplate = ({ data }) => {
     <Layout>
       <SEO title={title} description={description} />
       <Container className={templateStyles.container}>
-        <Sidebar
+        {/* <Sidebar
           className={templateStyles.sidebar}
           pages={pages}
           isOpen={isOpen}
           toggle={() => setIsOpen(!isOpen)}
-        />
+        /> */}
         <main className={templateStyles.content}>
           <h1>{component}</h1>
 

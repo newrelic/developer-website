@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -9,14 +9,14 @@ import Layout from '../components/Layout';
 import MethodReference from '../components/MethodReference';
 import TypeDefReference from '../components/TypeDefReference';
 import ConstantReference from '../components/ConstantReference';
-import Sidebar from '../components/Sidebar';
+// import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
-import pages from '../data/sidenav.json';
+
 import templateStyles from './ReferenceTemplate.module.scss';
 import useApiDoc from '../hooks/useApiDoc';
 
 const ApiReferenceTemplate = ({ data }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
   const { title, description, api } = frontmatter;
@@ -32,12 +32,12 @@ const ApiReferenceTemplate = ({ data }) => {
     <Layout>
       <SEO title={title} description={description} />
       <Container className={templateStyles.container}>
-        <Sidebar
+        {/* <Sidebar
           className={templateStyles.sidebar}
           pages={pages}
           isOpen={isOpen}
           toggle={() => setIsOpen(!isOpen)}
-        />
+        /> */}
         <main className={templateStyles.content}>
           <h1>{api}</h1>
 
