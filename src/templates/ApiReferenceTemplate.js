@@ -9,7 +9,6 @@ import Layout from '../components/Layout';
 import MethodReference from '../components/MethodReference';
 import TypeDefReference from '../components/TypeDefReference';
 import ConstantReference from '../components/ConstantReference';
-// import Sidebar from '../components/Sidebar';
 import SEO from '../components/Seo';
 
 import templateStyles from './ReferenceTemplate.module.scss';
