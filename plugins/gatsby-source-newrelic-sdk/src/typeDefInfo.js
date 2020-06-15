@@ -25,7 +25,13 @@ exports.getTypeDefs = (properties, sdk) => {
     .map((name) => sdk.__typeDefs__[name])
     .filter((typeDef) => typeDef !== undefined)
     .map((typeDef) => ({
-      properties: typeDef.tags.property,
+      properties: typeDef.tags.property.map(
+        ({ type, description, identifier }) => ({
+          type,
+          description,
+          name: identifier.name,
+        })
+      ),
       name: typeDef.tags.typedef.find((tag) => tag.identifier).identifier.name,
     }));
 };
