@@ -9,19 +9,15 @@ const IGNORED_TYPE_DEFS = [
 
 const flatten = (arr) => [].concat(...arr);
 
-const getTypeDefNames = (tags) => {
-  return flatten(Object.values(tags))
-    .flatMap((tag) => [tag.type, tag.promiseType])
-    .filter(Boolean)
-    .filter((tag) => !IGNORED_TYPE_DEFS.includes(tag))
-    .map((tag) => tag.replace(/\[\]$/, '')); // TimePickerRange[] => TimePickerRange
-};
-
 exports.getTypeDefs = (properties, sdk) => {
   return properties
     .map((property) => property && property.__docs__ && property.__docs__.tags)
     .filter(Boolean)
-    .flatMap(getTypeDefNames)
+    .flatMap((tags) => flatten(Object.values(tags)))
+    .flatMap((tag) => [tag.type, tag.promiseType])
+    .filter(Boolean)
+    .filter((name) => !IGNORED_TYPE_DEFS.includes(name))
+    .map((name) => name.replace(/\[\]$/, '')) // TimePickerRange[] => TimePickerRange
     .map((name) => sdk.__typeDefs__[name])
     .filter((typeDef) => typeDef !== undefined)
     .map((typeDef) => ({
