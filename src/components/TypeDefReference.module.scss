@@ -1,24 +1,23 @@
 .container {
   color: var(--color-neutrals-500);
   font-family: var(--code-font);
-  font-size: 0.875rem;
   line-height: 1.5;
-  margin-top: 2rem;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}
+
+.syntax {
+  color: var(--color-neutrals-500);
 }
 
 .name {
+  display: block;
   font-size: 1rem;
-  font-family: var(--primary-font-family);
+  font-weight: normal;
   color: var(--color-neutrals-800);
   margin-bottom: 0.5rem;
-}
-
-.block {
-  margin-left: 0.5rem;
-}
-
-.topBracket {
-  margin-bottom: 1rem;
 }
 
 .type {
@@ -27,13 +26,20 @@
 }
 
 .description {
+  color: var(--color-neutrals-500);
+
   > p {
     display: inline;
   }
 }
 
+.typeDef {
+  display: block;
+  font-size: 0.875rem;
+}
+
 .propertyContainer {
-  margin: 0 0 1rem 1.5rem;
+  margin-left: 1rem;
 }
 
 .propertyName {
