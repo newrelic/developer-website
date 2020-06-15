@@ -1,5 +1,6 @@
 const { getExamples } = require('./exampleInfo');
 const { getTypeDefs } = require('./typeDefInfo');
+const { getPropTypes } = require('./propTypeInfo');
 
 exports.getComponentDoc = (name, sdk) => {
   const component = sdk[name];
@@ -21,6 +22,7 @@ exports.getComponentDoc = (name, sdk) => {
     usage: `import { ${name} } from 'nr1'`,
     description: component.__docs__.text,
     examples: getExamples(component),
+    propTypes: getPropTypes(component),
     typeDefs: getTypeDefs(properties.concat(propTypes), sdk),
   };
 };
