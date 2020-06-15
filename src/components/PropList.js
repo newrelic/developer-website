@@ -111,10 +111,12 @@ const PropList = ({ propTypes }) => {
                     />
                   </div>
                 )}
-                <Markdown
-                  className={cx(styles.details, styles.markdownContainer)}
-                  source={description}
-                />
+                {description && (
+                  <Markdown
+                    className={cx(styles.details, styles.markdownContainer)}
+                    source={description}
+                  />
+                )}
                 <PropTypeInfo type={type} />
                 {examples.map((example, idx) => (
                   <ReferenceExample key={idx} example={example} />

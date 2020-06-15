@@ -1,5 +1,6 @@
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import Markdown from 'react-markdown';
 import styles from './FunctionDefinition.module.scss';
 
@@ -19,9 +20,9 @@ ParamDescription.propTypes = {
   children: PropTypes.node,
 };
 
-const FunctionDefinition = ({ params, returnValue }) => {
+const FunctionDefinition = ({ className, params, returnValue }) => {
   return (
-    <div className={styles.container}>
+    <div className={cx(styles.container, className)}>
       <span className={styles.keyword}>
         {params.length > 0 ? 'function (' : 'function ()'}
       </span>
@@ -48,6 +49,7 @@ const FunctionDefinition = ({ params, returnValue }) => {
 };
 
 FunctionDefinition.propTypes = {
+  className: PropTypes.string,
   params: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

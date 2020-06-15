@@ -50,13 +50,15 @@ const ComponentReferenceTemplate = ({ data }) => {
         <ReactMarkdown source={componentDescription} />
       </section>
 
+      <section className={templateStyles.section}>
+        <h2 className={templateStyles.sectionTitle}>Usage</h2>
+        <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
+      </section>
+
       {examples.length > 0 && (
         <section className={templateStyles.section}>
           <div>
             <h2 className={templateStyles.sectionTitle}>Examples</h2>
-            <div className={templateStyles.section}>
-              <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
-            </div>
             {examples.map((example, i) => (
               <ReferenceExample
                 key={i}
@@ -85,7 +87,11 @@ const ComponentReferenceTemplate = ({ data }) => {
         <section className={templateStyles.section}>
           <h2 className={templateStyles.sectionTitle}>Methods</h2>
           {methods.map((method, i) => (
-            <MethodReference key={i} method={method} />
+            <MethodReference
+              key={i}
+              method={method}
+              className={styles.section}
+            />
           ))}
         </section>
       )}

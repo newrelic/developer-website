@@ -31,29 +31,39 @@ const ApiReferenceTemplate = ({ data }) => {
       <SEO title={title} description={description} />
       <PageTitle>{api}</PageTitle>
 
-      <section
-        className={cx(templateStyles.section, templateStyles.description)}
-      >
-        <ReactMarkdown source={apiDescription} />
-      </section>
+      {apiDescription && (
+        <section
+          className={cx(
+            templateStyles.section,
+            templateStyles.description,
+            'intro-text'
+          )}
+        >
+          <ReactMarkdown source={apiDescription} />
+        </section>
+      )}
 
       <section className={templateStyles.section}>
-        <h2>Usage</h2>
+        <h2 className={templateStyles.sectionTitle}>Usage</h2>
         <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
       </section>
 
       {methods.length > 0 && (
         <section className={templateStyles.section}>
-          <h2>API methods</h2>
+          <h2 className={templateStyles.sectionTitle}>API methods</h2>
           {methods.map((method, i) => (
-            <MethodReference key={i} method={method} />
+            <MethodReference
+              key={i}
+              method={method}
+              className={templateStyles.section}
+            />
           ))}
         </section>
       )}
 
       {typeDefs.length > 0 && (
         <section className={templateStyles.section}>
-          <h2>Type definitions</h2>
+          <h2 className={templateStyles.sectionTitle}>Type definitions</h2>
           {typeDefs.map((typeDef, i) => (
             <TypeDefReference key={i} typeDef={typeDef} />
           ))}
@@ -62,7 +72,7 @@ const ApiReferenceTemplate = ({ data }) => {
 
       {constants.length > 0 && (
         <section className={templateStyles.section}>
-          <h2>Constants</h2>
+          <h2 className={templateStyles.sectionTitle}>Constants</h2>
           {constants.map((constant, i) => (
             <ConstantReference key={i} constant={constant} />
           ))}

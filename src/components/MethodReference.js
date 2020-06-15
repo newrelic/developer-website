@@ -10,6 +10,7 @@ const MethodReference = ({ className, method }) => (
     <h3 className={styles.name}>{method.name}</h3>
     <Markdown className={styles.description} source={method.description} />
     <FunctionDefinition
+      className={styles.functionDefinition}
       params={method.params}
       returnValue={method.returnValue}
     />
