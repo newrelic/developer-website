@@ -50,15 +50,13 @@ const ComponentReferenceTemplate = ({ data }) => {
         <ReactMarkdown source={componentDescription} />
       </section>
 
-      <section className={templateStyles.section}>
-        <h2>Usage</h2>
-        <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
-      </section>
-
       {examples.length > 0 && (
         <section className={templateStyles.section}>
-          <h2>Examples</h2>
           <div>
+            <h2 className={templateStyles.sectionTitle}>Examples</h2>
+            <div className={templateStyles.section}>
+              <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
+            </div>
             {examples.map((example, i) => (
               <ReferenceExample
                 key={i}
@@ -79,13 +77,13 @@ const ComponentReferenceTemplate = ({ data }) => {
       )}
 
       <section className={templateStyles.section}>
-        <h2>Props</h2>
+        <h2 className={templateStyles.sectionTitle}>Props</h2>
         <PropList propTypes={propTypes} />
       </section>
 
       {methods.length > 0 && (
         <section className={templateStyles.section}>
-          <h2>Methods</h2>
+          <h2 className={templateStyles.sectionTitle}>Methods</h2>
           {methods.map((method, i) => (
             <MethodReference key={i} method={method} />
           ))}
@@ -94,7 +92,7 @@ const ComponentReferenceTemplate = ({ data }) => {
 
       {typeDefs.length > 0 && (
         <section className={templateStyles.section}>
-          <h2>Type definitions</h2>
+          <h2 className={templateStyles.sectionTitle}>Type definitions</h2>
           {typeDefs.map((typeDef, i) => (
             <TypeDefReference key={i} typeDef={typeDef} />
           ))}

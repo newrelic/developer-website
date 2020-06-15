@@ -1,8 +1,11 @@
 .container {
   display: flex;
-  border-bottom: solid var(--color-neutrals-200) 1px;
-  padding-bottom: 2rem;
-  margin-top: 1rem;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: solid var(--color-neutrals-200) 1px;
+  }
 }
 
 .info {
