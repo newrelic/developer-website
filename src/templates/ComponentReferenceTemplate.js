@@ -6,6 +6,7 @@ import InlineCodeSnippet from '../components/InlineCodeSnippet';
 import ReactMarkdown from 'react-markdown';
 import ReferenceExample from '../components/ReferenceExample';
 import Layout from '../components/Layout';
+import PageTitle from '../components/PageTitle';
 import MethodReference from '../components/MethodReference';
 import SEO from '../components/Seo';
 import PropList from '../components/PropList';
@@ -38,7 +39,7 @@ const ComponentReferenceTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO title={title} description={description} />
-      <h1>{component}</h1>
+      <PageTitle>{component}</PageTitle>
       <section
         className={cx(
           templateStyles.section,

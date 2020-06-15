@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import InlineCodeSnippet from '../components/InlineCodeSnippet';
 import ReactMarkdown from 'react-markdown';
 import Layout from '../components/Layout';
+import PageTitle from '../components/PageTitle';
 import MethodReference from '../components/MethodReference';
 import TypeDefReference from '../components/TypeDefReference';
 import ConstantReference from '../components/ConstantReference';
@@ -28,7 +29,7 @@ const ApiReferenceTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO title={title} description={description} />
-      <h1>{api}</h1>
+      <PageTitle>{api}</PageTitle>
 
       <section
         className={cx(templateStyles.section, templateStyles.description)}
