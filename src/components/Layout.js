@@ -11,7 +11,7 @@ import './styles.scss';
 
 const Layout = ({ children }) => (
   <div className={styles.layout}>
-    <Header pages={pages} />
+    <Header />
     <Sidebar pages={pages} />
     <main>{children}</main>
     <Footer pages={pages} />
