@@ -20,20 +20,20 @@ const PropTypeInfo = ({ type }) => {
       const { itemTypes } = type.meta;
 
       return itemTypes.raw === 'oneOf' ? (
-        <div className={styles.listLike}>
+        <code className={styles.listLike}>
           <div>{'<Array of'}</div>
           <div className={styles.arg}>
             <PropTypeInfo type={itemTypes} />
           </div>
           <div>{'>'}</div>
-        </div>
+        </code>
       ) : (
         <PropTypeInfo type={itemTypes} />
       );
     }
     case 'oneOf':
       return (
-        <div className={styles.listLike}>
+        <code className={styles.listLike}>
           <div>{'<One of'}</div>
           <div className={styles.arg}>
             {type.meta.constants.map((constant) => (
@@ -41,7 +41,7 @@ const PropTypeInfo = ({ type }) => {
             ))}
           </div>
           <div>{'>'}</div>
-        </div>
+        </code>
       );
     case 'oneOfType':
       return type.meta.types.map((type, idx) => (
@@ -86,20 +86,24 @@ const PropList = ({ propTypes }) => {
           return (
             <div key={name} className={styles.container}>
               <div className={styles.info}>
-                <code>{name}</code>
-                {isRequired && <span className={styles.flagged}>required</span>}
-                {deprecation && (
-                  <span className={styles.flagged}>deprecated</span>
-                )}
-                <div className={styles.type}>{type.name}</div>
+                <div>
+                  <code className={styles.propName}>{name}</code>
+                  {isRequired && (
+                    <span className={styles.flagged}>required</span>
+                  )}
+                  {deprecation && (
+                    <span className={styles.flagged}>deprecated</span>
+                  )}
+                </div>
+                <code className={styles.type}>{type.name}</code>
                 {defaultValue !== undefined && (
                   <div className={styles.default}>
-                    <p>DEFAULT</p>
-                    <p>{String(defaultValue)}</p>
+                    <div className={styles.label}>DEFAULT</div>
+                    <code>{String(defaultValue)}</code>
                   </div>
                 )}
               </div>
-              <div className={styles.propInfo}>
+              <div>
                 {deprecation && (
                   <div className={styles.deprecation}>
                     <div className={styles.deprecationDate}>

@@ -1,5 +1,7 @@
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  grid-gap: 1rem;
 
   &:not(:last-child) {
     margin-bottom: 2rem;
@@ -8,13 +10,12 @@
   }
 }
 
-.info {
-  width: 30%;
-  word-break: break-all;
+.propName {
+  font-weight: bold;
+}
 
-  code {
-    font-weight: bold;
-  }
+.info {
+  word-break: break-all;
 
   h3 {
     margin-top: 0;
@@ -25,8 +26,9 @@
   margin-top: 2rem;
   color: var(--color-neutrals-700);
 
-  p:first-of-type {
+  .label {
     font-size: 0.75rem;
+    font-weight: bold;
   }
 }
 
@@ -44,10 +46,6 @@
   color: var(--color-red-400);
   font-weight: 600;
   margin-bottom: 1rem;
-}
-
-.propInfo {
-  width: 70%;
 }
 
 .markdownContainer > *:first-child {
@@ -73,7 +71,6 @@
 }
 
 .listLike {
-  font-family: var(--code-font);
   font-size: 0.875rem;
   color: var(--color-neutrals-600);
   max-height: 320px;
