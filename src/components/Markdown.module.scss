@@ -1,0 +1,9 @@
+.container {
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  code {
+    background: var(--color-neutrals-100);
+  }
+}
