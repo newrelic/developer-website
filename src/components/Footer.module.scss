@@ -30,7 +30,7 @@
 
 .copyright {
   margin-left: 1rem;
-  padding: 0.75rem 0.5rem;
+  padding-left: 1rem;
   border-left: 1px dotted var(--color-neutrals-700);
 
   @media (max-width: 760px) {
@@ -45,28 +45,16 @@
 
   a {
     color: var(--color-teal-300);
-    margin-left: 1rem;
-    padding: 0.2rem;
     padding-right: 0;
     display: flex;
     align-items: center;
 
-    &:before {
-      content: '';
-      display: inline-block;
-      height: 1rem;
-      width: 1rem;
-      background-repeat: no-repeat;
-      background-position: center center;
-      margin-right: 0.5rem;
+    &:not(:first-child) {
+      margin-left: 1rem;
     }
   }
 }
 
-.edit:before {
-  background-image: url('../images/edit.svg');
-}
-
-.issue:before {
-  background-image: url('../images/github.svg');
+.linkIcon {
+  margin-right: 0.5rem;
 }
