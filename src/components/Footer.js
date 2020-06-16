@@ -6,7 +6,7 @@ import styles from './Footer.module.scss';
 
 const Footer = () => (
   <footer className={styles.footer}>
-    <div className={cx('container', styles.container)}>
+    <div className={cx('site-container', styles.container)}>
       <div className={styles.left}>
         <Link to="/" className={`${styles.logo} logo`} />
         <div className={styles.copyright}>
