@@ -16,7 +16,24 @@ import useComponentDoc from '../hooks/useComponentDoc';
 import IconGallery from '../components/IconGallery';
 import TypeDefReference from '../components/TypeDefReference';
 
+const chartStyles = {
+  height: '200px',
+};
+
 const previewStyles = {
+  AreaChart: chartStyles,
+  BarChart: chartStyles,
+  BillboardChart: chartStyles,
+  FunnelChart: chartStyles,
+  HeatmapChart: chartStyles,
+  HistogramChart: chartStyles,
+  JsonChart: chartStyles,
+  LineChart: chartStyles,
+  PieChart: chartStyles,
+  ScatterChart: chartStyles,
+  SparklineChart: chartStyles,
+  StackedBarChart: chartStyles,
+  TableChart: chartStyles,
   Spinner: {
     height: '16px',
   },
