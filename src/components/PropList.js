@@ -1,8 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import CodeDef from './CodeDef';
 import FunctionDefinition from './FunctionDefinition';
-import Markdown from 'react-markdown';
+import Markdown from './Markdown';
 import ReferenceExample from './ReferenceExample';
 import styles from './PropList.module.scss';
 import { format } from 'date-fns';
@@ -20,28 +21,34 @@ const PropTypeInfo = ({ type }) => {
       const { itemTypes } = type.meta;
 
       return itemTypes.raw === 'oneOf' ? (
-        <code className={styles.listLike}>
-          <div>{'<Array of'}</div>
-          <div className={styles.arg}>
+        <CodeDef className={styles.codeDef}>
+          <CodeDef.Bracket>{'<'}</CodeDef.Bracket>
+          <CodeDef.Keyword>Array of</CodeDef.Keyword>
+          <CodeDef.Block>
             <PropTypeInfo type={itemTypes} />
-          </div>
-          <div>{'>'}</div>
-        </code>
+          </CodeDef.Block>
+          <CodeDef.Bracket>{'>'}</CodeDef.Bracket>
+        </CodeDef>
       ) : (
         <PropTypeInfo type={itemTypes} />
       );
     }
     case 'oneOf':
       return (
-        <code className={styles.listLike}>
-          <div>{'<One of'}</div>
-          <div className={styles.arg}>
+        <CodeDef className={styles.codeDef}>
+          <CodeDef.Bracket>{'<'}</CodeDef.Bracket>
+          <CodeDef.Keyword>One of</CodeDef.Keyword>
+          <CodeDef.Block>
             {type.meta.constants.map((constant) => (
-              <div key={constant}>{constant},</div>
+              <div key={constant}>
+                <CodeDef.Identifier key={constant}>
+                  {constant},
+                </CodeDef.Identifier>
+              </div>
             ))}
-          </div>
-          <div>{'>'}</div>
-        </code>
+          </CodeDef.Block>
+          <CodeDef.Bracket>{'>'}</CodeDef.Bracket>
+        </CodeDef>
       );
     case 'oneOfType':
       return type.meta.types.map((type, idx) => (
@@ -95,7 +102,7 @@ const PropList = ({ propTypes }) => {
                     <span className={styles.flagged}>deprecated</span>
                   )}
                 </div>
-                <code className={styles.type}>{type.name}</code>
+                <CodeDef.Type>{type.name}</CodeDef.Type>
                 {defaultValue !== undefined && (
                   <div className={styles.default}>
                     <div className={styles.label}>DEFAULT</div>
@@ -110,20 +117,26 @@ const PropList = ({ propTypes }) => {
                       Due {format(new Date(deprecation.date), 'MMMM do, yyyy')}
                     </div>
                     <Markdown
-                      className={styles.markdownContainer}
+                      className={styles.deprecationMarkdownContainer}
                       source={deprecation.description}
                     />
                   </div>
                 )}
                 {description && (
                   <Markdown
-                    className={cx(styles.details, styles.markdownContainer)}
+                    className={cx(styles.details)}
                     source={description}
                   />
                 )}
-                <PropTypeInfo type={type} />
+                <div className={styles.propInfoContainer}>
+                  <PropTypeInfo type={type} />
+                </div>
                 {examples.map((example, idx) => (
-                  <ReferenceExample key={idx} example={example} />
+                  <ReferenceExample
+                    key={idx}
+                    className={styles.example}
+                    example={example}
+                  />
                 ))}
               </div>
             </div>

@@ -16,28 +16,20 @@
 
 .info {
   word-break: break-all;
-
-  h3 {
-    margin-top: 0;
-  }
 }
 
 .default {
   margin-top: 2rem;
-  color: var(--color-neutrals-700);
 
   .label {
+    color: var(--color-neutrals-600);
     font-size: 0.75rem;
     font-weight: bold;
   }
 }
 
-.type {
-  color: var(--color-neutrals-600);
-}
-
 .deprecation {
-  padding: 0.25rem;
+  padding: 0.5rem;
   background: var(--color-red-100);
   margin-bottom: 1rem;
 }
@@ -48,14 +40,18 @@
   margin-bottom: 1rem;
 }
 
-.markdownContainer > *:first-child {
-  margin-top: 0;
+.deprecationMarkdownContainer {
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  code {
+    background: var(--color-red-200);
+  }
 }
 
-.details {
-  &:not(:last-child):not(:empty) {
-    margin-bottom: 1rem;
-  }
+.details:not(:last-child):not(:empty) {
+  margin-bottom: 1rem;
 }
 
 .flagged {
@@ -66,13 +62,8 @@
   font-weight: bold;
 }
 
-.arg {
-  padding-left: 1rem;
-}
-
-.listLike {
+.codeDef {
   font-size: 0.875rem;
-  color: var(--color-neutrals-600);
   max-height: 320px;
   overflow-y: auto;
 }
@@ -91,4 +82,12 @@
     border-bottom: none;
     padding-bottom: 0;
   }
+}
+
+.propInfoContainer:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.example:not(:last-child) {
+  margin-bottom: 2rem;
 }
