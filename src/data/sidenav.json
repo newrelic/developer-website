@@ -1,6 +1,7 @@
 [
   {
     "displayName": "Collect Data",
+    "url": "/collect-data",
     "children": [
       {
         "displayName": "Log with the Log API",
@@ -22,6 +23,7 @@
   },
   {
     "displayName": "Explore Data",
+    "url": "/explore-data",
     "children": [
       {
         "displayName": "Write NRQL Queries",
@@ -35,6 +37,7 @@
   },
   {
     "displayName": "Build Apps",
+    "url": "/build-apps",
     "children": [
       {
         "displayName": "Map Pageviews by Region",
@@ -64,6 +67,7 @@
   },
   {
     "displayName": "Automate Workflows",
+    "url": "/automate-workflows",
     "children": [
       {
         "displayName": "Monitor, Alert, and Analyze",

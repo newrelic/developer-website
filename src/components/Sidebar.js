@@ -12,7 +12,7 @@ const renderNav = (pages, depthLevel = 0) => {
   return pages.map((page, index) => {
     const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
     const [isDisplay, setIsDisplay] = useState(
-      crumbs.includes(page.displayName)
+      crumbs.length === depthLevel || crumbs.includes(page.displayName)
     );
     const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
 
