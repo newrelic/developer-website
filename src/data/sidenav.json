@@ -95,7 +95,180 @@
         "displayName": "Component library",
         "children": [
           {
-            "displayName": "UI Components",
+            "displayName": "Controls",
+            "children": [
+              {
+                "displayName": "AccountPicker",
+                "url": "/components/account-picker"
+              },
+              {
+                "displayName": "Button",
+                "url": "/components/button"
+              },
+              {
+                "displayName": "Checkbox",
+                "url": "/components/checkbox"
+              },
+              {
+                "displayName": "Dropdown",
+                "url": "/components/dropdown"
+              },
+              {
+                "displayName": "DropdownItem",
+                "url": "/components/dropdown-item"
+              },
+              {
+                "displayName": "Radio",
+                "url": "/components/radio"
+              },
+              {
+                "displayName": "RadioGroup",
+                "url": "/components/radio-group"
+              },
+              {
+                "displayName": "Select",
+                "url": "/components/select"
+              },
+              {
+                "displayName": "SelectItem",
+                "url": "/components/select-item"
+              },
+              {
+                "displayName": "TextField",
+                "url": "/components/text-field"
+              }
+            ]
+          },
+          {
+            "displayName": "Tables",
+            "children": [
+              {
+                "displayName": "Table",
+                "url": "/components/table"
+              },
+              {
+                "displayName": "TableHeader",
+                "url": "/components/table-header"
+              },
+              {
+                "displayName": "TableHeaderCell",
+                "url": "/components/table-header-cell"
+              },
+              {
+                "displayName": "TableRow",
+                "url": "/components/table-row"
+              },
+              {
+                "displayName": "TableRowCell",
+                "url": "/components/table-row-cell"
+              },
+              {
+                "displayName": "EntityTitleTableRowCell",
+                "url": "/components/entity-title-table-row-cell"
+              },
+              {
+                "displayName": "MetricTableRowCell",
+                "url": "/components/metric-table-row-cell"
+              },
+              {
+                "displayName": "SparklineTableRowCell",
+                "url": "/components/sparkline-table-row-cell"
+              },
+              {
+                "displayName": "UserTableRowCell",
+                "url": "/components/user-table-row-cell"
+              }
+            ]
+          },
+          {
+            "displayName": "Feedback",
+            "children": [
+              {
+                "displayName": "Icon",
+                "url": "/components/icon"
+              },
+              {
+                "displayName": "Spinner",
+                "url": "/components/spinner"
+              },
+              {
+                "displayName": "Toast",
+                "url": "/components/toast"
+              }
+            ]
+          },
+          {
+            "displayName": "Overlays",
+            "children": [
+              {
+                "displayName": "Modal",
+                "url": "/components/modal"
+              },
+              {
+                "displayName": "Tooltip",
+                "url": "/components/tooltip"
+              }
+            ]
+          },
+          {
+            "displayName": "Structure",
+            "children": [
+              {
+                "displayName": "AutoSizer",
+                "url": "/components/auto-sizer"
+              },
+              {
+                "displayName": "Card",
+                "url": "/components/card"
+              },
+              {
+                "displayName": "CardBody",
+                "url": "/components/card-body"
+              },
+              {
+                "displayName": "CardHeader",
+                "url": "/components/card-header"
+              },
+              {
+                "displayName": "Grid",
+                "url": "/components/grid"
+              },
+              {
+                "displayName": "GridItem",
+                "url": "/components/grid-item"
+              },
+              {
+                "displayName": "List",
+                "url": "/components/list"
+              },
+              {
+                "displayName": "ListItem",
+                "url": "/components/list-item"
+              },
+              {
+                "displayName": "Spacing",
+                "url": "/components/spacing"
+              },
+              {
+                "displayName": "Stack",
+                "url": "/components/stack"
+              },
+              {
+                "displayName": "StackItem",
+                "url": "/components/stack-item"
+              },
+              {
+                "displayName": "Tabs",
+                "url": "/components/tabs"
+              },
+              {
+                "displayName": "TabsItem",
+                "url": "/components/tabs-item"
+              }
+            ]
+          },
+          {
+            "displayName": "Text",
             "children": [
               {
                 "displayName": "Text Components",
@@ -113,184 +286,11 @@
                     "url": "/components/link"
                   }
                 ]
-              },
-              {
-                "displayName": "Layout Components",
-                "children": [
-                  {
-                    "displayName": "AutoSizer",
-                    "url": "/components/auto-sizer"
-                  },
-                  {
-                    "displayName": "Card",
-                    "url": "/components/card"
-                  },
-                  {
-                    "displayName": "CardBody",
-                    "url": "/components/card-body"
-                  },
-                  {
-                    "displayName": "CardHeader",
-                    "url": "/components/card-header"
-                  },
-                  {
-                    "displayName": "Grid",
-                    "url": "/components/grid"
-                  },
-                  {
-                    "displayName": "GridItem",
-                    "url": "/components/grid-item"
-                  },
-                  {
-                    "displayName": "List",
-                    "url": "/components/list"
-                  },
-                  {
-                    "displayName": "ListItem",
-                    "url": "/components/list-item"
-                  },
-                  {
-                    "displayName": "Spacing",
-                    "url": "/components/spacing"
-                  },
-                  {
-                    "displayName": "Stack",
-                    "url": "/components/stack"
-                  },
-                  {
-                    "displayName": "StackItem",
-                    "url": "/components/stack-item"
-                  },
-                  {
-                    "displayName": "Tabs",
-                    "url": "/components/tabs"
-                  },
-                  {
-                    "displayName": "TabsItem",
-                    "url": "/components/tabs-item"
-                  }
-                ]
-              },
-              {
-                "displayName": "Form Components",
-                "children": [
-                  {
-                    "displayName": "AccountPicker",
-                    "url": "/components/account-picker"
-                  },
-                  {
-                    "displayName": "Button",
-                    "url": "/components/button"
-                  },
-                  {
-                    "displayName": "Checkbox",
-                    "url": "/components/checkbox"
-                  },
-                  {
-                    "displayName": "Dropdown",
-                    "url": "/components/dropdown"
-                  },
-                  {
-                    "displayName": "DropdownItem",
-                    "url": "/components/dropdown-item"
-                  },
-                  {
-                    "displayName": "Radio",
-                    "url": "/components/radio"
-                  },
-                  {
-                    "displayName": "RadioGroup",
-                    "url": "/components/radio-group"
-                  },
-                  {
-                    "displayName": "Select",
-                    "url": "/components/select"
-                  },
-                  {
-                    "displayName": "SelectItem",
-                    "url": "/components/select-item"
-                  },
-                  {
-                    "displayName": "TextField",
-                    "url": "/components/text-field"
-                  }
-                ]
-              },
-              {
-                "displayName": "Table",
-                "children": [
-                  {
-                    "displayName": "Table",
-                    "url": "/components/table"
-                  },
-                  {
-                    "displayName": "TableHeader",
-                    "url": "/components/table-header"
-                  },
-                  {
-                    "displayName": "TableHeaderCell",
-                    "url": "/components/table-header-cell"
-                  },
-                  {
-                    "displayName": "TableRow",
-                    "url": "/components/table-row"
-                  },
-                  {
-                    "displayName": "TableRowCell",
-                    "url": "/components/table-row-cell"
-                  },
-                  {
-                    "displayName": "EntityTitleTableRowCell",
-                    "url": "/components/entity-title-table-row-cell"
-                  },
-                  {
-                    "displayName": "MetricTableRowCell",
-                    "url": "/components/metric-table-row-cell"
-                  },
-                  {
-                    "displayName": "SparklineTableRowCell",
-                    "url": "/components/sparkline-table-row-cell"
-                  },
-                  {
-                    "displayName": "UserTableRowCell",
-                    "url": "/components/user-table-row-cell"
-                  }
-                ]
-              },
-              {
-                "displayName": "Feedback Components",
-                "children": [
-                  {
-                    "displayName": "Icon",
-                    "url": "/components/icon"
-                  },
-                  {
-                    "displayName": "Spinner",
-                    "url": "/components/spinner"
-                  },
-                  {
-                    "displayName": "Toast",
-                    "url": "/components/toast"
-                  }
-                ]
-              },
-              {
-                "displayName": "Overlaid Components",
-                "children": [
-                  {
-                    "displayName": "Modal",
-                    "url": "/components/modal"
-                  },
-                  {
-                    "displayName": "Tooltip",
-                    "url": "/components/tooltip"
-                  }
-                ]
               }
             ]
           },
           {
-            "displayName": "Charts",
+            "displayName": "Data Visualization",
             "children": [
               {
                 "displayName": "AreaChart",
