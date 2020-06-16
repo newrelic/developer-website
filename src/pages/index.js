@@ -64,7 +64,12 @@ const IndexPage = () => (
           </button>
         </ExternalLink>
       </div>
-      <Video id="ZagZfNQYJEU" type="youtube" title="Develop with New Relic" />
+      <Video
+        className={styles.introVideo}
+        id="ZagZfNQYJEU"
+        type="youtube"
+        title="Develop with New Relic"
+      />
     </section>
 
     <Section backgroundBanner className={styles.backgroundBanner}>

@@ -17,11 +17,6 @@
   justify-content: space-between;
   margin: 2rem auto 7rem;
 
-  > div {
-    flex: 1;
-    margin-top: 0;
-  }
-
   @media (max-width: 760px) {
     flex-direction: column;
   }
@@ -38,7 +33,13 @@
   }
 }
 
+.introVideo {
+  flex: 1;
+  margin-top: 0;
+}
+
 .introText {
+  flex: 1;
   margin-right: 1rem;
   margin-bottom: 1rem;
 }
