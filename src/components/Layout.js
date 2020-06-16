@@ -15,7 +15,7 @@ const Layout = ({ children }) => (
       <Sidebar pages={pages} />
       <main className={styles.content}>{children}</main>
     </div>
-    <Footer pages={pages} />
+    <Footer />
   </div>
 );
 

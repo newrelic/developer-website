@@ -1,12 +1,17 @@
 .footer {
-  --footer-text-color: #7da5a8;
-
   background-color: var(--color-neutrals-800);
-  color: var(--footer-text-color);
+  color: var(--color-teal-300);
   padding: 1.5rem 0;
+  font-size: 0.75rem;
 }
 
-.leftColumn {
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
   display: flex;
   align-items: center;
 
@@ -20,7 +25,6 @@
 }
 
 .copyright {
-  font-size: 0.75rem;
   margin-left: 1rem;
   padding: 0.75rem 0.5rem;
   border-left: 1px dotted var(--color-neutrals-700);
@@ -32,31 +36,33 @@
   }
 }
 
-.nav {
-  @media (max-width: 760px) {
-    display: none;
-  }
+.right {
+  display: flex;
 
-  ul {
+  a {
+    color: var(--color-teal-300);
+    margin-left: 1rem;
+    padding: 0.2rem;
+    padding-right: 0;
     display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    align-items: center;
 
-    li {
-      text-align: center;
-    }
-
-    a {
-      color: var(--footer-text-color);
-      text-decoration: none;
-      font-size: 0.9rem;
-      padding: 0.5rem 0 0.5rem 1rem;
+    &:before {
+      content: '';
       display: inline-block;
-    }
-
-    a:hover {
-      color: var(--color-white);
+      height: 1rem;
+      width: 1rem;
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin-right: 0.5rem;
     }
   }
+}
+
+.edit:before {
+  background-image: url('../images/edit.svg');
+}
+
+.issue:before {
+  background-image: url('../images/github.svg');
 }
