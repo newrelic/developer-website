@@ -1,13 +1,19 @@
 .footer {
-  --footer-text-color: #7da5a8;
-
+  --footer-text-color: #70ccd3;
   background-color: var(--color-neutrals-800);
   color: var(--footer-text-color);
   padding: 1.5rem 0;
   margin-top: 10rem;
+  font-size: 0.75rem;
 }
 
-.leftColumn {
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
   display: flex;
   align-items: center;
 
@@ -25,7 +31,6 @@
 }
 
 .copyright {
-  font-size: 0.75rem;
   margin-left: 1rem;
   padding: 0.75rem 0.5rem;
   border-left: 1px dotted var(--color-neutrals-700);
@@ -35,4 +40,35 @@
     margin-left: 0;
     padding: 0.5rem;
   }
+}
+
+.right {
+  display: flex;
+
+  a {
+    color: var(--footer-text-color);
+    margin-left: 1rem;
+    padding: 0.2rem;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 1rem;
+      width: 1rem;
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.edit:before {
+  background-image: url('../images/edit.svg');
+}
+
+.issue:before {
+  background-image: url('../images/github.svg');
 }
