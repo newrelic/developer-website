@@ -4,22 +4,21 @@ import PropTypes from 'prop-types';
 import styles from './Callouts.module.scss';
 
 const Important = ({ title, children }) => {
-    return (
-        <div className={styles.important}>
-            <h4>{title}</h4>
-            {children}
-        </div>
-    )
-}
+  return (
+    <div className={styles.important}>
+      <h4>{title}</h4>
+      {children}
+    </div>
+  );
+};
 
 Important.propTypes = {
-    title: PropTypes.string,
-    className: PropTypes.string,
-    children: PropTypes.node.isRequired,
+  title: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
 Important.defaultProps = {
-    title: `Note`,
+  title: `Note`,
 };
 
-export default Important
+export default Important;
