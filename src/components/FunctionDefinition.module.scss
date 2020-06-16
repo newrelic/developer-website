@@ -1,32 +1,3 @@
 .container {
-  font-family: var(--code-font);
   font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-.line:not(:last-child) {
-  margin-bottom: 0.5rem;
-}
-
-.param {
-  color: var(--color-neutrals-700);
-  margin-left: 1rem;
-}
-
-.paramDescription {
-  color: var(--color-neutrals-500);
-
-  > p {
-    color: inherit;
-    display: inline;
-  }
-}
-
-.keyword {
-  color: var(--color-neutrals-600);
-}
-
-.type {
-  color: var(--color-green-500);
-  background: var(--color-green-050);
 }

@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { getPropTypeDefinition } from '../utils/propTypeInfo';
-import { pullTypeDefNames } from '../utils/typeDefs';
+import { getTypeDefs } from '../utils/typeDefs';
 
-const IGNORED_LIVE_EXAMPLES = ['Dropdown', 'Modal', 'Tooltip'];
+const IGNORED_LIVE_EXAMPLES = ['Dropdown', 'Modal', 'Tooltip', 'Select'];
 
 const IGNORED_METHODS = [
   'prototype',
@@ -32,36 +32,6 @@ const getPropTypes = (component) => {
   );
 };
 
-const getTypeDefs = (component) => {
-  const tagsFromComponentProperties = Object.getOwnPropertyNames(component)
-    .filter((key) => !IGNORED_METHODS.includes(key))
-    .map((key) => component[key]?.__docs__?.tags)
-    .filter(Boolean);
-
-  const tagsFromPropTypes = component.propTypes
-    ? Object.getOwnPropertyNames(component.propTypes).map(
-        (key) => component.propTypes[key]?.__docs__?.tags
-      )
-    : [];
-
-  const componentTypeDefNames = tagsFromComponentProperties
-    .concat(tagsFromPropTypes)
-    .flatMap(pullTypeDefNames);
-
-  const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
-
-  const typeDefs = componentTypeDefNames
-    .map((name) => allTypeDefs[name])
-    .filter((typeDef) => typeDef !== undefined);
-
-  const structuredTypeDefs = typeDefs.map((typeDef) => ({
-    properties: typeDef.tags.property,
-    name: typeDef.tags.typedef.find((tag) => tag.identifier).identifier.name,
-  }));
-
-  return structuredTypeDefs;
-};
-
 const useComponentDoc = (componentName) => {
   if (typeof window === 'undefined') global.window = {};
 
@@ -72,6 +42,17 @@ const useComponentDoc = (componentName) => {
     if (!component) {
       return null;
     }
+
+    const tagsFromComponentProperties = Object.getOwnPropertyNames(component)
+      .filter((key) => !IGNORED_METHODS.includes(key))
+      .map((key) => component[key]?.__docs__?.tags)
+      .filter(Boolean);
+
+    const tagsFromPropTypes = component.propTypes
+      ? Object.getOwnPropertyNames(component.propTypes).map(
+          (key) => component.propTypes[key]?.__docs__?.tags
+        )
+      : [];
 
     return {
       description: component?.__docs__?.text,
@@ -95,7 +76,9 @@ const useComponentDoc = (componentName) => {
             examples: methodDocs?.tags.examples ?? [],
           };
         }),
-      typeDefs: getTypeDefs(component),
+      typeDefs: getTypeDefs(
+        tagsFromComponentProperties.concat(tagsFromPropTypes)
+      ),
     };
   }, [componentName, window?.__NR1_SDK__]);
 };
