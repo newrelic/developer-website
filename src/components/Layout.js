@@ -9,14 +9,14 @@ import pages from '../data/sidenav.json';
 import './styles.scss';
 
 const Layout = ({ children }) => (
-  <>
+  <div className={styles.layout}>
     <Header />
-    <div className={styles.layout}>
+    <div className={styles.main}>
       <Sidebar pages={pages} />
-      <main>{children}</main>
+      <main className={styles.content}>{children}</main>
     </div>
     <Footer pages={pages} />
-  </>
+  </div>
 );
 
 Layout.propTypes = {

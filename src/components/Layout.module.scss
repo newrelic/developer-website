@@ -1,8 +1,16 @@
 .layout {
   min-height: 100vh;
   display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.main {
+  display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  grid-gap: 1rem;
-  max-width: 1200px;
+  max-width: 1460px;
   margin: 0 auto;
+}
+
+.content {
+  padding: 2rem;
 }
