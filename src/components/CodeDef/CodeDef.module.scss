@@ -1,0 +1,30 @@
+.container {
+  display: block;
+  line-height: 2rem;
+}
+
+.keyword,
+.identifier {
+  color: var(--color-neutrals-700);
+}
+
+.type {
+  color: var(--color-green-500);
+  background: var(--color-green-050);
+}
+
+.comment {
+  color: var(--color-neutrals-500);
+
+  > p {
+    display: inline;
+  }
+}
+
+.bracket {
+  color: var(--color-neutrals-500);
+}
+
+.block {
+  margin-left: 1rem;
+}
