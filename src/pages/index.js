@@ -37,9 +37,7 @@ const guides = [
 const IndexPage = () => (
   <Layout>
     <SEO />
-    <PageTitle className={styles.pageTitle}>
-      Observability for every developer
-    </PageTitle>
+    <PageTitle>Observability for every developer</PageTitle>
 
     <section className={styles.intro}>
       <div className={styles.introText}>
