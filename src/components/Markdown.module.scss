@@ -1,0 +1,15 @@
+.container {
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  code {
+    padding: 0.125rem;
+    background: var(--color-neutrals-200);
+    border-radius: 2px;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

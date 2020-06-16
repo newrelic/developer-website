@@ -88,7 +88,7 @@ body {
   font-family: var(--primary-font-family);
   color: var(--color-neutrals-700);
   background-color: var(--color-white);
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 main {
@@ -106,8 +106,8 @@ img {
 }
 
 p {
-  margin: 0;
-  margin-top: 8px;
+  margin-top: 0;
+  margin-bottom: 1em;
 }
 
 h1,
@@ -116,7 +116,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: revert;
+  margin-top: 0;
   margin-bottom: 8px;
   font-weight: 600;
   color: var(--color-neutrals-800);
@@ -166,12 +166,8 @@ button,
 }
 
 ul {
-  padding-left: 30px;
-  line-height: 1.6;
-}
-
-li {
-  margin-bottom: 1rem;
+  margin: 0;
+  padding-left: 2rem;
 }
 
 code {
@@ -183,5 +179,10 @@ code {
     color: var(--color-neutrals-600);
     font-size: 1.125rem;
     line-height: 2rem;
+  }
+
+  .site-container {
+    max-width: 1200px;
+    margin: auto;
   }
 }

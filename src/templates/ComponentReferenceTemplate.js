@@ -4,9 +4,10 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import InlineCodeSnippet from '../components/InlineCodeSnippet';
-import ReactMarkdown from 'react-markdown';
 import ReferenceExample from '../components/ReferenceExample';
 import Layout from '../components/Layout';
+import PageTitle from '../components/PageTitle';
+import Markdown from '../components/Markdown';
 import MethodReference from '../components/MethodReference';
 import SEO from '../components/Seo';
 import PropList from '../components/PropList';
@@ -20,14 +21,30 @@ import { BreadcrumbContext } from '../components/BreadcrumbContext';
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
 
+const chartStyles = {
+  height: '200px',
+};
+
 const previewStyles = {
+  AreaChart: chartStyles,
+  BarChart: chartStyles,
+  BillboardChart: chartStyles,
+  FunnelChart: chartStyles,
+  HeatmapChart: chartStyles,
+  HistogramChart: chartStyles,
+  JsonChart: chartStyles,
+  LineChart: chartStyles,
+  PieChart: chartStyles,
+  ScatterChart: chartStyles,
+  SparklineChart: chartStyles,
+  StackedBarChart: chartStyles,
+  TableChart: chartStyles,
   Spinner: {
     height: '16px',
   },
 };
 
 const ComponentReferenceTemplate = ({ data }) => {
-  // const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
   const { title, description, component } = frontmatter;
@@ -46,26 +63,20 @@ const ComponentReferenceTemplate = ({ data }) => {
     <BreadcrumbContext.Provider value={crumbs}>
       <Layout>
         <SEO title={title} description={description} />
-        <h1>{component}</h1>
-        <section
-          className={cx(
-            templateStyles.section,
-            templateStyles.description,
-            'intro-text'
-          )}
-        >
-          <ReactMarkdown source={componentDescription} />
+        <PageTitle>{component}</PageTitle>
+        <section className={cx(templateStyles.section, 'intro-text')}>
+          <Markdown source={componentDescription} />
         </section>
 
         <section className={templateStyles.section}>
-          <h2>Usage</h2>
+          <h2 className={templateStyles.sectionTitle}>Usage</h2>
           <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
         </section>
 
         {examples.length > 0 && (
           <section className={templateStyles.section}>
-            <h2>Examples</h2>
             <div>
+              <h2 className={templateStyles.sectionTitle}>Examples</h2>
               {examples.map((example, i) => (
                 <ReferenceExample
                   key={i}
@@ -86,22 +97,26 @@ const ComponentReferenceTemplate = ({ data }) => {
         )}
 
         <section className={templateStyles.section}>
-          <h2>Props</h2>
+          <h2 className={templateStyles.sectionTitle}>Props</h2>
           <PropList propTypes={propTypes} />
         </section>
 
         {methods.length > 0 && (
           <section className={templateStyles.section}>
-            <h2>Methods</h2>
+            <h2 className={templateStyles.sectionTitle}>Methods</h2>
             {methods.map((method, i) => (
-              <MethodReference key={i} method={method} />
+              <MethodReference
+                key={i}
+                method={method}
+                className={styles.section}
+              />
             ))}
           </section>
         )}
 
         {typeDefs.length > 0 && (
           <section className={templateStyles.section}>
-            <h2>Type definitions</h2>
+            <h2 className={templateStyles.sectionTitle}>Type definitions</h2>
             {typeDefs.map((typeDef, i) => (
               <TypeDefReference key={i} typeDef={typeDef} />
             ))}

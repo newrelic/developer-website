@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReferenceExample from './ReferenceExample';
 import FunctionDefinition from './FunctionDefinition';
-import Markdown from 'react-markdown';
+import Markdown from './Markdown';
 import styles from './MethodReference.module.scss';
 
 const MethodReference = ({ className, method }) => (
@@ -10,6 +10,7 @@ const MethodReference = ({ className, method }) => (
     <h3 className={styles.name}>{method.name}</h3>
     <Markdown className={styles.description} source={method.description} />
     <FunctionDefinition
+      className={styles.functionDefinition}
       params={method.params}
       returnValue={method.returnValue}
     />
