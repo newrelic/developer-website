@@ -1,15 +1,18 @@
 .button {
-  border: 1px solid var(--color-neutrals-100);
+  border: 1px solid transparent;
   background: var(--color-white);
-  border-radius: 2px;
+  border-radius: 4px;
   text-align: center;
-  padding: 0.2rem;
+  padding: 1rem;
   position: relative;
-  transition: all 0.4s;
+  transition: all 0.3s;
 
   &:hover {
     cursor: pointer;
-    border: 1px solid var(--color-neutrals-300);
+    border: 1px solid var(--color-neutrals-200);
+    box-shadow: 0 2px 6px 0 rgba(22, 38, 59, 0.14);
+    z-index: 1;
+
     .iconName {
       visibility: visible;
     }
@@ -18,19 +21,18 @@
 
 .icon {
   display: inline-block;
-  width: 70%;
+  width: 100%;
 }
 
 .iconName {
   visibility: hidden;
   background-color: var(--color-neutrals-900);
-  opacity: 0.8;
   color: var(--color-white);
   text-align: center;
   border-radius: 3px;
   padding: 0.25rem;
   position: absolute;
   font-size: 0.85rem;
-  top: 90%;
+  top: calc(100% + 0.5rem);
   z-index: 1;
 }
