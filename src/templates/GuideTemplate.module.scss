@@ -1,8 +1,27 @@
 .mdxContainer {
-  margin-top: 2rem;
-  ul {
-    padding-left: 30px;
-    line-height: 1.6;
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  code {
+    padding: 0.125rem;
+    background: var(--color-neutrals-200);
+    border-radius: 2px;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+  h1,
+  h2 {
+    &:not(:first-child) {
+      margin-top: 2rem;
+    }
+  }
+
+  h3,
+  h4 {
+    margin-top: 1rem;
   }
 
   li {
@@ -15,20 +34,18 @@
   }
 }
 
-.duration {
-  color: var(--color-neutrals-600);
-  text-align: right;
+.header {
+  display: flex;
+  margin-bottom: 2rem;
+  align-items: center;
+  justify-content: space-between;
 
-  &:before {
-    content: '';
-    display: inline-block;
-    width: 1.1rem;
-    height: 1.1rem;
-    margin-right: 0.5rem;
-    vertical-align: bottom;
-    background-image: url('../images/clock.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
+  .duration {
+    display: flex;
+    align-items: center;
+    color: var(--color-neutrals-600);
+    .clock {
+      margin-right: 0.25rem;
+    }
   }
 }

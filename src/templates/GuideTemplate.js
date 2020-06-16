@@ -5,6 +5,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
 import Layout from '../components/Layout';
+import FeatherIcon from '../components/FeatherIcon';
 import PageTitle from '../components/PageTitle';
 import Video from '../components/Video';
 import Step from '../components/Step';
@@ -30,8 +31,13 @@ const GuideTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO title={title} description={description} />
-      <div className={styles.duration}>{duration}</div>
-      <PageTitle>{title}</PageTitle>
+      <div className={styles.header}>
+        <PageTitle>{title}</PageTitle>
+        <div className={styles.duration}>
+          <FeatherIcon name="clock" className={styles.clock} />
+          {duration}
+        </div>
+      </div>
       <div className={styles.mdxContainer}>
         <MDXProvider components={components}>
           <MDXRenderer>{body}</MDXRenderer>
