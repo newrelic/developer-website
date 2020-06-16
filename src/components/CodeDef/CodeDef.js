@@ -7,7 +7,9 @@ import Bracket from './Bracket';
 import Comment from './Comment';
 import Identifier from './Identifier';
 import Keyword from './Keyword';
+import NumberValue from './Number';
 import Operator from './Operator';
+import StringValue from './String';
 import Type from './Type';
 
 const CodeDef = ({ className, children }) => (
@@ -24,7 +26,9 @@ CodeDef.Bracket = Bracket;
 CodeDef.Comment = Comment;
 CodeDef.Keyword = Keyword;
 CodeDef.Identifier = Identifier;
+CodeDef.Number = NumberValue;
 CodeDef.Operator = Operator;
+CodeDef.String = StringValue;
 CodeDef.Type = Type;
 
 export default CodeDef;
