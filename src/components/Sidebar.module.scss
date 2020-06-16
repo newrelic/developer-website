@@ -1,6 +1,7 @@
 .sidebar {
   padding: 2rem;
   border-right: 1px solid var(--color-neutrals-100);
+  font-size: 0.875rem;
 
   ul {
     margin: 0;
@@ -12,14 +13,6 @@
     text-decoration: none;
     color: var(--color-black);
     display: inline-block;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    &.isActive {
-      font-weight: bold;
-    }
   }
 
   h3 {
@@ -62,4 +55,53 @@
 
 .logo {
   width: 200px;
+}
+
+.nestedNav {
+  display: none;
+}
+
+.isDisplay {
+  display: block;
+}
+
+.listNav {
+  ul {
+    padding-left: 1rem;
+  }
+}
+
+.navDepth0 {
+  color: var(--color-black);
+  font-weight: bold;
+  div {
+    margin: 1rem 0;
+  }
+  li {
+    margin: 1rem 0;
+  }
+}
+
+.navDepth1 {
+  font-weight: normal;
+  ul {
+    padding-left: 0.2rem;
+  }
+}
+
+.navDepth2 {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-neutrals-600);
+  font-size: 14px;
+}
+
+.navDepth3 {
+  font-weight: normal;
+  text-transform: initial;
+  color: var(--color-black);
+}
+
+.isCurrentPage {
+  font-weight: bold;
 }

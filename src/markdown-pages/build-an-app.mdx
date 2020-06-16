@@ -160,7 +160,7 @@ Now that you've got a table, you can drop a TableChart populated with data from 
 Put this code into the `row` div.
 
 ```jsx
-<TableChart accountId={accountId} query={`FROM PageView SELECT count(+), average(duration) WHERE appName = 'WebPortal' SINCE 1 week ago LIMIT 1000`} fullWidth className="chart" />
+<TableChart accountId={accountId} query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' SINCE 1 week ago LIMIT 1000`} fullWidth className="chart" />
 ```
 
 Go to New Relic One and click your app to see your data in the table. (You may need to serve your app to New Relic again.)
@@ -209,10 +209,10 @@ Above the render() function, add a constructor to build the text field object.
 
 ```jsx
 constructor(props) {
-    super(props);
-    this.state = {
-        countryCode: null
-    }
+  super(props);
+  this.state = {
+    countryCode: null
+  }
 }
 ```
 
@@ -225,7 +225,7 @@ const { countryCode } = this.state;
 Now add country code to your table chart query.
 
 ```jsx
-<TableChart accountId={accountId} query={`FROM PageView SELECT count(+), average(duration) WHERE appName = 'WebPortal' **${countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''} FACET countryCode, regionCode** SINCE 1 week ago LIMIT 1000`} fullWidth className="chart" />
+<TableChart accountId={accountId} query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' ${countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''} FACET countryCode, regionCode SINCE 1 week ago LIMIT 1000`} fullWidth className="chart" />
 ```
 
 Reload your app to try out the text field.
@@ -318,19 +318,18 @@ Using latitude and longitude with country codes, you can put New Relic data on a
 
 ```jsx
 mapData() {
-    const { countryCode } = this.state;
-    const query = `{
-      actor {
-        account(id: 1606862) {
-          mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appName = 'WebPortal' ${countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''} LIMIT 1000 ") {
-            results
-            nrql
-          }
+  const { countryCode } = this.state;
+  const query = `{
+    actor {
+      account(id: 1606862) {
+        mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appName = 'WebPortal' ${countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''} LIMIT 1000 ") {
+          results
+          nrql
         }
       }
-    }`;
-    // console.debug(query);
-    return query;
+    }
+  }`;
+  return query;
 };
 ```
 </Step>
@@ -342,15 +341,15 @@ mapData() {
 Above the mapData function, add this code to customize the map marker colors.
 
 ```jsx
-    getMarkerColor(measure, apdexTarget = 1.7) {
-        if (measure <= apdexTarget) {
-          return '#11A600';
-        } else if (measure >= apdexTarget && measure <= apdexTarget * 4) {
-          return '#FFD966';
-        } else {
-          return '#BF0016';
-        }
-    };
+getMarkerColor(measure, apdexTarget = 1.7) {
+  if (measure <= apdexTarget) {
+    return '#11A600';
+  } else if (measure >= apdexTarget && measure <= apdexTarget * 4) {
+    return '#FFD966';
+  } else {
+    return '#BF0016';
+  }
+};
 ```
 
 Change the HTML color code values to your taste.
@@ -376,7 +375,7 @@ Between the text field row and the table chart row, insert a new row for the map
 ```jsx
 <div className="row">
     <NerdGraphQuery query={this.mapData()}>
-        {({ loading, error, data}) ==> {
+        {({ loading, error, data}) => {
             if (loading) {
                 return <Spinner fillContainer />
                 }

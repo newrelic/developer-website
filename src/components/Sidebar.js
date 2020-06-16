@@ -1,51 +1,68 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import cx from 'classnames';
+import { BreadcrumbContext } from './BreadcrumbContext';
 
 import Logo from './Logo';
 import { link } from '../types';
 import styles from './Sidebar.module.scss';
 
 // recursively create navigation
-const renderNav = (page, index) => (
-  <li key={index}>
-    {page.url ? (
-      <Link to={page.url} className={cx({ [styles.isActive]: page.active })}>
-        {page.displayName}
-      </Link>
-    ) : (
-      <div>{page.displayName}</div>
-    )}
-    {page.children && <ul>{page.children.map(renderNav)}</ul>}
-  </li>
-);
+const renderNav = (pages, depthLevel = 0) => {
+  return pages.map((page, index) => {
+    const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
+    const [isDisplay, setIsDisplay] = useState(
+      crumbs.length === depthLevel || crumbs.includes(page.displayName)
+    );
+    const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
 
-const Sidebar = ({ className, pages, isOpen, toggle }) => (
+    const display = page.url ? (
+      <Link to={page.url}>{page.displayName}</Link>
+    ) : (
+      <div
+        role="button"
+        onClick={() => setIsDisplay(!isDisplay)}
+        onKeyPress={() => setIsDisplay(!isDisplay)}
+        tabIndex={0}
+      >
+        {page.displayName}
+      </div>
+    );
+    let subNav;
+
+    if (page.children) {
+      subNav = renderNav(page.children, depthLevel + 1);
+    }
+    return (
+      <li
+        className={cx(styles[`navDepth${depthLevel}`], {
+          [styles.isCurrentPage]: isCurrentPage,
+        })}
+        key={index}
+      >
+        {display}
+        <ul className={cx(styles.nestedNav, { [styles.isDisplay]: isDisplay })}>
+          {subNav}
+        </ul>
+      </li>
+    );
+  });
+};
+
+const Sidebar = ({ className, pages, isOpen }) => (
   <aside className={cx(styles.sidebar, className, { [styles.isOpen]: isOpen })}>
     <Link to="/">
       <Logo className={styles.logo} />
     </Link>
-    <div className={styles.top}>
-      <h3>Pages</h3>
-      <button
-        aria-expanded={isOpen}
-        aria-label="Main Menu Toggle"
-        type="button"
-        onClick={() => toggle()}
-      >
-        {isOpen ? 'close' : 'open'}
-      </button>
-    </div>
     <nav role="navigation" aria-label="Sidebar">
-      <ul>{pages.map(renderNav)}</ul>
+      <ul className={styles.listNav}>{renderNav(pages)}</ul>
     </nav>
   </aside>
 );
 
 Sidebar.propTypes = {
   className: PropTypes.string,
-  toggle: PropTypes.func.isRequired,
   pages: PropTypes.arrayOf(link).isRequired,
   isOpen: PropTypes.bool,
 };
