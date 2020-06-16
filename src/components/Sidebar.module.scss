@@ -1,4 +1,6 @@
 .sidebar {
+  font-size: 0.875rem;
+
   ul {
     margin: 0;
     padding-left: 1rem;
@@ -9,15 +11,6 @@
     text-decoration: none;
     color: var(--color-black);
     display: inline-block;
-    padding: 0.2rem 0;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    &.isActive {
-      font-weight: bold;
-    }
   }
 
   h3 {
@@ -66,4 +59,53 @@
   height: 64px;
   margin-right: 1rem;
   background-image: url('../images/developers-logo.svg');
+}
+
+.nestedNav {
+  display: none;
+}
+
+.isDisplay {
+  display: block;
+}
+
+.listNav {
+  ul {
+    padding-left: 1rem;
+  }
+}
+
+.navDepth0 {
+  color: var(--color-black);
+  font-weight: bold;
+  div {
+    margin: 1rem 0;
+  }
+  li {
+    margin: 1rem 0;
+  }
+}
+
+.navDepth1 {
+  font-weight: normal;
+  ul {
+    padding-left: 0.2rem;
+  }
+}
+
+.navDepth2 {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-neutrals-600);
+  font-size: 14px;
+}
+
+.navDepth3 {
+  font-weight: normal;
+  text-transform: initial;
+  color: var(--color-black);
+}
+
+.isCurrentPage {
+  font-weight: bold;
 }
