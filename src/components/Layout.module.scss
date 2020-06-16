@@ -7,8 +7,6 @@
 .main {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  max-width: 1460px;
-  margin: 0 auto;
   width: 100%;
 }
 

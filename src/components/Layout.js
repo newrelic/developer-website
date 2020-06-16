@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import Footer from './Footer';
 import Header from './Header';
@@ -11,7 +12,7 @@ import './styles.scss';
 const Layout = ({ children }) => (
   <div className={styles.layout}>
     <Header />
-    <div className={styles.main}>
+    <div className={cx(styles.main, 'site-container')}>
       <Sidebar pages={pages} />
       <main className={styles.content}>{children}</main>
     </div>
