@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import cx from 'classnames';
+import ExternalLink from './ExternalLink';
 import styles from './Footer.module.scss';
 
 const Footer = ({ showEdit }) => (
@@ -20,9 +21,12 @@ const Footer = ({ showEdit }) => (
             Edit this page
           </Link>
         )}
-        <Link to="/" className={styles.issue}>
+        <ExternalLink
+          href="https://github.com/newrelic/developer-website/issues/new/choose"
+          className={styles.issue}
+        >
           Create an issue
-        </Link>
+        </ExternalLink>
       </div>
     </div>
   </footer>
