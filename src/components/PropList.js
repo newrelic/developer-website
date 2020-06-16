@@ -114,7 +114,7 @@ const PropList = ({ propTypes }) => {
                             {word}
                             {idx !== parts.length - 1 && (
                               <>
-                                .<wbr />
+                                <wbr />.
                               </>
                             )}
                           </Fragment>
