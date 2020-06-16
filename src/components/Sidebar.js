@@ -8,38 +8,52 @@ import { link } from '../types';
 import styles from './Sidebar.module.scss';
 
 // recursively create navigation
-const renderNav = (page, index) => {
-  const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
-  const [isDisplay, setIsDisplay] = useState(crumbs.includes(page.displayName));
+const renderNav = (pages, depthLevel = 0) => {
+  return pages.map((page, index) => {
+    const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
+    const [isDisplay, setIsDisplay] = useState(
+      crumbs.includes(page.displayName)
+    );
+    const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
 
-  return (
-    <li key={index}>
-      {page.url ? (
-        <Link to={page.url}>{page.displayName}</Link>
-      ) : (
-        <div
-          role="button"
-          onClick={() => setIsDisplay(!isDisplay)}
-          onKeyPress={() => setIsDisplay(!isDisplay)}
-          tabIndex={0}
-        >
-          {page.displayName}
-        </div>
-      )}
-      {page.children && (
+    const display = page.url ? (
+      <Link to={page.url}>{page.displayName}</Link>
+    ) : (
+      <div
+        role="button"
+        onClick={() => setIsDisplay(!isDisplay)}
+        onKeyPress={() => setIsDisplay(!isDisplay)}
+        tabIndex={0}
+      >
+        {page.displayName}
+      </div>
+    );
+    let subNav;
+
+    if (page.children) {
+      subNav = renderNav(page.children, depthLevel + 1);
+    }
+    return (
+      <li
+        className={cx(styles[`navDepth${depthLevel}`], {
+          [styles.isCurrentPage]: isCurrentPage,
+        })}
+        key={index}
+      >
+        {display}
         <ul className={cx(styles.nestedNav, { [styles.isDisplay]: isDisplay })}>
-          {page.children.map(renderNav)}
+          {subNav}
         </ul>
-      )}
-    </li>
-  );
+      </li>
+    );
+  });
 };
 
 const Sidebar = ({ className, pages, isOpen }) => (
   <aside className={cx(styles.sidebar, className, { [styles.isOpen]: isOpen })}>
     <Link to="/" className={styles.logo} />
     <nav role="navigation" aria-label="Sidebar">
-      <ul className={styles.listNav}>{pages.map(renderNav)}</ul>
+      <ul className={styles.listNav}>{renderNav(pages)}</ul>
     </nav>
   </aside>
 );

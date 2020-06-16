@@ -73,36 +73,39 @@
 }
 
 .listNav {
+  ul {
+    padding-left: 1rem;
+  }
+}
+
+.navDepth0 {
+  color: var(--color-black);
+  font-weight: bold;
   div {
     margin-bottom: 1rem;
   }
-  li {
-    color: var(--color-black);
-    font-weight: bold;
-    ul {
-      li {
-        font-weight: normal;
-        ul {
-          padding-left: 0.5rem;
-          li {
-            font-weight: bold;
-            text-transform: uppercase;
-            color: var(--color-neutrals-600);
-            font-size: 14px;
-            ul {
-              padding-left: 0rem;
-              li {
-                font-weight: normal;
-                text-transform: initial;
-                color: var(--color-black);
-                ul {
-                  padding-left: 1rem;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+}
+
+.navDepth1 {
+  font-weight: normal;
+  ul {
+    padding-left: 0.2rem;
   }
+}
+
+.navDepth2 {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-neutrals-600);
+  font-size: 14px;
+}
+
+.navDepth3 {
+  font-weight: normal;
+  text-transform: initial;
+  color: var(--color-black);
+}
+
+.isCurrentPage {
+  font-weight: bold;
 }
