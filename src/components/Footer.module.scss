@@ -3,6 +3,10 @@
   color: var(--color-teal-300);
   padding: 1.5rem 0;
   font-size: 0.75rem;
+
+  :global(.site-container) {
+    padding: 0 2rem;
+  }
 }
 
 .container {

@@ -13,6 +13,10 @@
     );
   }
 
+  :global(.site-container) {
+    padding: 0 2rem;
+  }
+
   .hamburgerMenu {
     display: none;
     grid-area: menu;
