@@ -1,6 +1,6 @@
 .container {
   display: block;
-  line-height: 2rem;
+  line-height: 2;
 }
 
 .identifier {
@@ -23,7 +23,7 @@
 .keyword,
 .bracket,
 .operator {
-  color: var(--color-neutrals-500);
+  color: var(--color-neutrals-600);
 }
 
 .block {
