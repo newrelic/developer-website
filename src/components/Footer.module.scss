@@ -1,7 +1,6 @@
 .footer {
-  --footer-text-color: #70ccd3;
   background-color: var(--color-neutrals-800);
-  color: var(--footer-text-color);
+  color: var(--color-teal-300);
   padding: 1.5rem 0;
   margin-top: 10rem;
   font-size: 0.75rem;
@@ -46,7 +45,7 @@
   display: flex;
 
   a {
-    color: var(--footer-text-color);
+    color: var(--color-teal-300);
     margin-left: 1rem;
     padding: 0.2rem;
     padding-right: 0;
