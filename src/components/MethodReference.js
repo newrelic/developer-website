@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReferenceExample from './ReferenceExample';
 import FunctionDefinition from './FunctionDefinition';
-import Markdown from 'react-markdown';
+import Markdown from './Markdown';
 import styles from './MethodReference.module.scss';
 
 const MethodReference = ({ className, method }) => (
