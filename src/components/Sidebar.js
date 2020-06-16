@@ -17,23 +17,6 @@ const renderNav = (pages, depthLevel = 0) => {
     );
     const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
 
-    const display = page.url ? (
-      <Link to={page.url}>{page.displayName}</Link>
-    ) : (
-      <div
-        role="button"
-        onClick={() => setIsDisplay(!isDisplay)}
-        onKeyPress={() => setIsDisplay(!isDisplay)}
-        tabIndex={0}
-      >
-        {page.displayName}
-      </div>
-    );
-    let subNav;
-
-    if (page.children) {
-      subNav = renderNav(page.children, depthLevel + 1);
-    }
     return (
       <li
         className={cx(styles[`navDepth${depthLevel}`], {
@@ -41,10 +24,28 @@ const renderNav = (pages, depthLevel = 0) => {
         })}
         key={index}
       >
-        {display}
-        <ul className={cx(styles.nestedNav, { [styles.isDisplay]: isDisplay })}>
-          {subNav}
-        </ul>
+        {page.url ? (
+          <Link className={styles.navItem} to={page.url}>
+            {page.displayName}
+          </Link>
+        ) : (
+          <div
+            className={styles.navItem}
+            role="button"
+            onClick={() => setIsDisplay(!isDisplay)}
+            onKeyPress={() => setIsDisplay(!isDisplay)}
+            tabIndex={0}
+          >
+            {page.displayName}
+          </div>
+        )}
+        {page.children && (
+          <ul
+            className={cx(styles.nestedNav, { [styles.isDisplay]: isDisplay })}
+          >
+            {renderNav(page.children, depthLevel + 1)}
+          </ul>
+        )}
       </li>
     );
   });

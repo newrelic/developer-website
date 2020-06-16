@@ -71,15 +71,13 @@
   }
 }
 
+.navItem {
+  margin-bottom: 1rem;
+}
+
 .navDepth0 {
   color: var(--color-black);
   font-weight: bold;
-  div {
-    margin: 1rem 0;
-  }
-  li {
-    margin: 1rem 0;
-  }
 }
 
 .navDepth1 {
