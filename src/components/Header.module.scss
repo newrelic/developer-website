@@ -1,16 +1,8 @@
 .main {
-  background-image: linear-gradient(
-    var(--color-neutrals-100),
-    var(--color-neutrals-100) 30px,
-    var(--color-white) 30px
-  );
+  background: var(--color-neutrals-100);
 
   @media (max-width: 760px) {
-    background-image: linear-gradient(
-      var(--color-white),
-      var(--color-white) 4.5rem,
-      var(--color-neutrals-100) 4.5rem
-    );
+    background: var(--color-white);
   }
 
   :global(.site-container) {
