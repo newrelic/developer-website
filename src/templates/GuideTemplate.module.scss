@@ -39,13 +39,14 @@
   margin-bottom: 2rem;
   align-items: center;
   justify-content: space-between;
+}
 
-  .duration {
-    display: flex;
-    align-items: center;
-    color: var(--color-neutrals-600);
-    .clock {
-      margin-right: 0.25rem;
-    }
-  }
+.duration {
+  display: flex;
+  align-items: center;
+  color: var(--color-neutrals-600);
+}
+
+.clock {
+  margin-right: 0.25rem;
 }
