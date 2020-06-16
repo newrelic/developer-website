@@ -36,32 +36,3 @@
     padding: 0.5rem;
   }
 }
-
-.nav {
-  @media (max-width: 760px) {
-    display: none;
-  }
-
-  ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      text-align: center;
-    }
-
-    a {
-      color: var(--footer-text-color);
-      text-decoration: none;
-      font-size: 0.9rem;
-      padding: 0.5rem 0 0.5rem 1rem;
-      display: inline-block;
-    }
-
-    a:hover {
-      color: var(--color-white);
-    }
-  }
-}
