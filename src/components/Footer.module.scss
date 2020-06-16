@@ -7,16 +7,6 @@
   margin-top: 10rem;
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @media (max-width: 760px) {
-    justify-content: center;
-  }
-}
-
 .leftColumn {
   display: flex;
   align-items: center;

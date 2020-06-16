@@ -6,12 +6,12 @@ import { MDXProvider } from '@mdx-js/react';
 
 import Layout from '../components/Layout';
 import BreadcrumbBar from '../components/BreadcrumbBar';
-import Container from '../components/Container';
 import Video from '../components/Video';
 import Step from '../components/Step';
 import Steps from '../components/Steps';
 import Intro from '../components/Intro';
 import SEO from '../components/Seo';
+import styles from './GuideTemplate.module.scss';
 
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
@@ -36,12 +36,12 @@ const GuideTemplate = ({ data }) => {
     <Layout>
       <SEO title={title} description={description} />
       <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
-      <Container>
-        <h1>{title}</h1>
+      <h1>{title}</h1>
+      <div className={styles.mdxContainer}>
         <MDXProvider components={components}>
           <MDXRenderer>{body}</MDXRenderer>
         </MDXProvider>
-      </Container>
+      </div>
     </Layout>
   );
 };
