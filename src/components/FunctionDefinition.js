@@ -1,50 +1,42 @@
-import React, { Children } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import Markdown from 'react-markdown';
+import CodeDef from './CodeDef';
 import styles from './FunctionDefinition.module.scss';
-
-const ParamDescription = ({ children, ...props }) => {
-  if (Children.toArray(children).length === 0) {
-    return null;
-  }
-
-  return (
-    <span {...props} className={styles.paramDescription}>
-      {' //'} {children}
-    </span>
-  );
-};
-
-ParamDescription.propTypes = {
-  children: PropTypes.node,
-};
 
 const FunctionDefinition = ({ className, params, returnValue }) => {
   return (
-    <div className={cx(styles.container, className)}>
-      <span className={styles.keyword}>
-        {params.length > 0 ? 'function (' : 'function ()'}
-      </span>
-      {params.map((param, i) => (
-        <div key={i} className={styles.param}>
-          <span className={styles.paramName}>
-            {param.type.startsWith('...') ? `...${param.name}` : param.name}:{' '}
-          </span>
-          <span className={styles.type}>{param.type}</span>
-          {i !== params.length - 1 && ', '}
-          <Markdown
-            source={param.description}
-            renderers={{
-              root: ParamDescription,
-            }}
-          />
-        </div>
-      ))}
-      {params.length > 0 && <span className={styles.keyword}>)</span>}
-      <span className={styles.keyword}> => </span>
-      <span className={styles.type}>{returnValue.type}</span>
-    </div>
+    <CodeDef className={cx(styles.container, className)}>
+      {params.length > 0 ? (
+        <>
+          <CodeDef.Keyword>function</CodeDef.Keyword>{' '}
+          <CodeDef.Bracket>(</CodeDef.Bracket>
+        </>
+      ) : (
+        <>
+          <CodeDef.Keyword>function</CodeDef.Keyword>{' '}
+          <CodeDef.Bracket>()</CodeDef.Bracket>
+        </>
+      )}
+      {params.length > 0 && (
+        <CodeDef.Block>
+          {params.map((param, i) => (
+            <div key={i}>
+              <CodeDef.Identifier>
+                {param.type.startsWith('...') ? `...${param.name}` : param.name}
+                :{' '}
+              </CodeDef.Identifier>
+              <CodeDef.Type>{param.type}</CodeDef.Type>
+              {i !== params.length - 1 ? ', ' : ' '}
+              <CodeDef.Comment text={param.description} />
+            </div>
+          ))}
+        </CodeDef.Block>
+      )}
+      {params.length > 0 && <CodeDef.Bracket>)</CodeDef.Bracket>}
+      <CodeDef.Operator> => </CodeDef.Operator>
+      <CodeDef.Type>{returnValue.type}</CodeDef.Type>
+    </CodeDef>
   );
 };
 
