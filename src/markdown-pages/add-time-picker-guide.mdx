@@ -31,19 +31,19 @@ To get started, complete these steps to update the application UUID and run the 
 
 <Steps>
 
-    <Step>
+  <Step>
 
 Clone the example applications from our [how-to GitHub repo](https://github.com/newrelic/nr1-how-to)
 
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 In your preferred text editor, open `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js`.
 
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
@@ -53,18 +53,18 @@ Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 this.accountId = <ADD YOUR ACCOUNT ID>;
 ```
 
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 In your terminal, change to the `add-time-picker` directory:
 
 ```
 cd /nr1-howto/add-time-picker
 ```
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 Execute these commands to update the UUID and serve the sample application:
 
@@ -72,15 +72,15 @@ Execute these commands to update the UUID and serve the sample application:
 nr1 nerdpack:uuid -gf
 nr1 nerdpack:serve
 ```
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 Once the sample application is successfully served, go to the local New Relic One homepage: https://one.newrelic.com/?nerdpacks=local
 
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 Click ***Add Time Picker***:
 
@@ -88,9 +88,9 @@ Click ***Add Time Picker***:
 
 ![New Relic One launcher image](../images/time-picker-guide/homepage-launcher.png)
 
-    </Step>
+  </Step>
 
-</Steps>
+  </Steps>
 
 After launching the **Add Time Picker** application, you see a dashboard that gives an overview of the transactions in your New Relic account:
 
@@ -116,13 +116,13 @@ Complete these steps:
 
 <Steps>
 
-    <Step>
+<Step>
 
 In a text editor, open `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js`.
 
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 Add the `PlatformStateContext` component to the end of the import statement so it looks like this:
 
@@ -137,9 +137,9 @@ import {
   PlatformStateContext
 } from 'nr1';
 ```
-    </Step>
+</Step>
 
-    <Step>
+  <Step>
 
 Just below the current `return` insert this code for the `PlatformStateContext` component:
 
@@ -153,9 +153,9 @@ return (
 </PlatformStateContext.Consumer>
 ```
 
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 Move the current application code so it is under the `return` of the `PlatformState` function call. The `return` statement should now look like this:
 
@@ -209,9 +209,9 @@ return (
 );
 ```
 
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 Add a `console.log` statement to make sure you are seeing appropriate data. Insert the following code inside the `PlatformState` return statement just before the opening tag for the `<Grid>` component:
 
@@ -220,7 +220,7 @@ Add a `console.log` statement to make sure you are seeing appropriate data. Inse
 console.log(PlatformState);
 ```
 
-    </Step>
+  </Step>
 
 </Steps>
 
@@ -241,7 +241,7 @@ This helper method takes your `PlatformState.timeRange` duration data, formats i
 
 <Steps>
 
-    <Step>
+  <Step>
 
 Import the `timeRangeToNrql` method by inserting this line of code below the other `import` sections:
 
@@ -251,18 +251,18 @@ Import the `timeRangeToNrql` method by inserting this line of code below the oth
 import { timeRangeToNrql } from '@newrelic/nr1-community';
 ```
 
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 Pass the `PlatformState` to the `timeRangeToNrql` helper, and save its output as a `since` statement for later use.
 
 ```js
 const since = timeRangeToNrql(PlatformState);
 ```
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 After creating the `since` variable, go through the code in the `PlatformStateContext` return statement and concatenate the `since` variable to each of the existing chart component queries. Here's a `TableChart` example:
 
@@ -270,9 +270,9 @@ After creating the `since` variable, go through the code in the `PlatformStateCo
 <TableChart fullWidth accountId={this.accountId} query={trxOverview+since} />
 ```
 
-    </Step>
+  </Step>
 
-    <Step>
+  <Step>
 
 After you update all of the chart components, confirm that the final `index.js` file looks similar to this:
 
@@ -360,7 +360,7 @@ export default class Nr1HowtoAddTimePicker extends React.Component {
 }
 ```
 
-    </Step>
+  </Step>
 
 </Steps>
 
