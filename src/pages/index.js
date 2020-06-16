@@ -7,6 +7,7 @@ import Section from '../components/Section';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
 import Video from '../components/Video';
+import ExternalLink from '../components/ExternalLink';
 import styles from './index.module.scss';
 
 const guides = [
@@ -51,10 +52,14 @@ const IndexPage = () => (
           Best of all? This site is built in open source. Submit ideas,
           feedback, and comments directly to our engineers.
         </p>
-        <button type="button">Create a free account</button>
-        <button type="button" className="secondary">
-          Solve a business problem
-        </button>
+        <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
+          <button type="button">Create a free account</button>
+        </ExternalLink>
+        <ExternalLink href="https://newrelic.com/request-demo">
+          <button type="button" className="secondary">
+            Request a demo
+          </button>
+        </ExternalLink>
       </div>
       <Video id="ZagZfNQYJEU" type="youtube" title="Develop with new Relic" />
     </section>
