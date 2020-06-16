@@ -1,4 +1,6 @@
 .sidebar {
+  font-size: 0.875rem;
+
   ul {
     margin: 0;
     padding-left: 1rem;
@@ -9,11 +11,6 @@
     text-decoration: none;
     color: var(--color-black);
     display: inline-block;
-    padding: 0.2rem 0;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 
   h3 {
@@ -82,10 +79,10 @@
   color: var(--color-black);
   font-weight: bold;
   div {
-    margin-bottom: 1rem;
+    margin: 1rem 0;
   }
   li {
-    margin-bottom: 1rem;
+    margin: 1rem 0;
   }
 }
 
