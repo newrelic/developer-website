@@ -1,48 +1,13 @@
-.container {
-  color: var(--color-neutrals-500);
-  font-family: var(--code-font);
-  line-height: 1.5;
-
-  &:not(:last-child) {
-    margin-bottom: 2rem;
-  }
-}
-
-.syntax {
-  color: var(--color-neutrals-500);
+.container:not(:last-child) {
+  margin-bottom: 2rem;
 }
 
 .name {
-  display: block;
   font-size: 1rem;
   font-weight: normal;
-  color: var(--color-neutrals-800);
   margin-bottom: 0.5rem;
 }
 
-.type {
-  color: var(--color-green-500);
-  background: var(--color-green-050);
-}
-
-.description {
-  color: var(--color-neutrals-500);
-
-  > p {
-    display: inline;
-  }
-}
-
 .typeDef {
-  display: block;
   font-size: 0.875rem;
-}
-
-.propertyContainer {
-  margin-left: 1rem;
-}
-
-.propertyName {
-  color: var(--color-neutrals-700);
-  margin-right: 0.5rem;
 }
