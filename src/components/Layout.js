@@ -8,24 +8,19 @@ import styles from './Layout.module.scss';
 import pages from '../data/sidenav.json';
 import './styles.scss';
 
-const Layout = ({ children, showEdit }) => (
+const Layout = ({ children }) => (
   <>
     <Header />
     <div className={styles.layout}>
       <Sidebar pages={pages} />
       <main>{children}</main>
     </div>
-    <Footer showEdit={showEdit} />
+    <Footer />
   </>
 );
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  showEdit: PropTypes.bool,
-};
-
-Layout.defaultProps = {
-  showEdit: true,
 };
 
 export default Layout;

@@ -26,7 +26,7 @@ const ApiReferenceTemplate = ({ data }) => {
   } = useApiDoc(api) ?? {};
 
   return (
-    <Layout showEdit={false}>
+    <Layout>
       <SEO title={title} description={description} />
       <h1>{api}</h1>
 

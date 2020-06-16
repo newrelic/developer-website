@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import cx from 'classnames';
 import ExternalLink from './ExternalLink';
 import styles from './Footer.module.scss';
 
-const Footer = ({ showEdit }) => (
+const Footer = () => (
   <footer className={styles.footer}>
     <div className={cx('container', styles.container)}>
       <div className={styles.left}>
@@ -16,11 +15,9 @@ const Footer = ({ showEdit }) => (
       </div>
 
       <div className={styles.right}>
-        {showEdit && (
-          <Link to="/" className={styles.edit}>
-            Edit this page
-          </Link>
-        )}
+        <Link to="/" className={styles.edit}>
+          Edit this page
+        </Link>
         <ExternalLink
           href="https://github.com/newrelic/developer-website/issues/new/choose"
           className={styles.issue}
@@ -31,13 +28,5 @@ const Footer = ({ showEdit }) => (
     </div>
   </footer>
 );
-
-Footer.propTypes = {
-  showEdit: PropTypes.bool,
-};
-
-Footer.defaultProps = {
-  showEdit: true,
-};
 
 export default Footer;
