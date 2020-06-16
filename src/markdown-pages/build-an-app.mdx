@@ -7,30 +7,28 @@ description: 'Build a New Relic app showing pageview data on a world map.'
 ---
 
 <Intro>
+
 ## Build a New Relic app in 15 minutes or less
 
 New Relic has powerful and flexible tools for building custom apps and populating them with data. This guide will show you how to build a custom app and populate it with data in 15 minutes or less using New Relic's Query Language (NRQL). (It's pronounced 'nurkle'.) If you have a little more time and want to install a 3rd party React library, I'll show you how to put that data on a map of the world.
 
 Please review the **Before you begin** section to make sure you have everything you need and don't get stuck halfway through.
-
-<!-- To add an embedded video, use the following video component (no need to import) and supply a YouTube video id:
-<Video youtubeId="<add video id>" /> or <Video id=“<add video id>” type=“wistia”/> (((I assume this is the video that I would use? https://newrelic.com/resources/webinars/Introtocustomappsnr1-191113?video=past-webinar))) -->
 </Intro>
 
-<Intro>
 ## Before you begin
 
-In order to get the most out of this guide, you'll need to have:
-- A New Relic developer account. (This includes an API key and the command-line tool. If you don't have this yet, go here to [get instructions on setting up your NR development environment](URL TBD).)
+### In order to get the most out of this guide, you'll need to have:
+- A New Relic developer account. (This includes an API key and the command-line tool. If you don't have this yet, go here to [get instructions on setting up your NR development environment](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==).)
 - New Relic Browser pageview data to populate the app. If you don't have pageview data, this probably isn't worth doing.
+<br/>
 
-The following are necessary to complete the second half of the guide to draw your data on a world map.
+### The following are necessary to complete the second half of the guide to draw your data on a world map.
 - npm (If you're new to React and npm, you can go here to [install Node.js and npm](https://nodejs.org/en/download/).)
 - Leaflet (A 3rd-party JavaScript React library used to build interactive maps. Installed with npm. You can read more about Leaflet [here](https://www.npmjs.com/package/leaflet).)
 
 ## New Relic Terminology
 
-There's some New Relic terminology you may not be familiar with.
+### There's some New Relic terminology you may not be familiar with.
 
 * Application: The finished product where data is rendered in New Relic One. This might look like a series of interactive charts or a map of the world.
 * Nerdpack: The standard collection of JavaScript, JSON, CSS, and other files that control the functionality and look of your application.
@@ -38,8 +36,6 @@ There's some New Relic terminology you may not be familiar with.
 * Nerdlets: New Relic React components you'll use to build your application.
     - The three default files are `index.js`, `nr1.json`, and `styles.scss`, but you can customize and add your own.
     - Go here for more information on the [Nerdpack file structure](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure).
-
-</Intro>
 
 <Steps>
 
@@ -83,7 +79,7 @@ Go to `https://one.newrelic.com/?nerdpacks=local` to see the local Nerdpack that
 
 ### Hard code your account ID
 
-For the purposes of this exercise and your convenience, you'll hard code your account ID. (Read about finding your account ID here: https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id )
+For the purposes of this exercise and your convenience, you'll hard code your account ID. ([Read about finding your account ID here](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id))
 ```jsx
 const accountId = [Replace with your account ID];
 ```
@@ -134,7 +130,8 @@ export default class MyFirstNerdpackNerdletNerdlet extends React.Component {
 
 You can use standard CSS to customize the look of your components. 
 
-In the `styles.scss` file, add this CSS:
+In the `styles.scss` file, add this CSS.
+Feel free to customize this CSS to your taste.
 
 ```css
 .container {
@@ -152,8 +149,6 @@ In the `styles.scss` file, add this CSS:
   }
 }
 ```
-
-Feel free to customize this CSS to your taste.
 </Step>
 
 <Step>
@@ -196,6 +191,7 @@ import { TextField } from 'nr1';
 ### Add a row for your text field
 
 You'll probably want your text field filter above the table. Put this above the TableChart div.
+The text field will have a default value of "US".
 ```jsx
 <div className="row">
     <TextField placeholder="US" onChange={(event) => {
@@ -203,8 +199,6 @@ You'll probably want your text field filter above the table. Put this above the 
     }} />
 </div>
 ```
-
-The text field will have a default value of "US".
 </Step>
 
 <Step>
