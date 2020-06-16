@@ -125,7 +125,7 @@ const PropList = ({ propTypes }) => {
               </div>
               <div>
                 {deprecation && (
-                  <div className={styles.deprecation}>
+                  <div className={cx(styles.deprecation, styles.section)}>
                     <div className={styles.deprecationDate}>
                       Due {format(new Date(deprecation.date), 'MMMM do, yyyy')}
                     </div>
@@ -137,17 +137,17 @@ const PropList = ({ propTypes }) => {
                 )}
                 {description && (
                   <Markdown
-                    className={cx(styles.details)}
+                    className={cx(styles.section)}
                     source={description}
                   />
                 )}
-                <div className={styles.propInfoContainer}>
+                <div className={styles.section}>
                   <PropTypeInfo type={type} />
                 </div>
                 {examples.map((example, idx) => (
                   <ReferenceExample
                     key={idx}
-                    className={styles.example}
+                    className={styles.section}
                     example={example}
                   />
                 ))}

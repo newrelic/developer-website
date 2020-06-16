@@ -31,7 +31,6 @@
 .deprecation {
   padding: 0.5rem;
   background: var(--color-red-100);
-  margin-bottom: 1rem;
 }
 
 .deprecationDate {
@@ -48,10 +47,6 @@
   code {
     background: var(--color-red-200);
   }
-}
-
-.details:not(:last-child):not(:empty) {
-  margin-bottom: 1rem;
 }
 
 .flagged {
@@ -84,10 +79,6 @@
   }
 }
 
-.propInfoContainer:not(:last-child) {
-  margin-bottom: 1rem;
-}
-
-.example:not(:last-child) {
+.section:not(:last-child) {
   margin-bottom: 2rem;
 }
