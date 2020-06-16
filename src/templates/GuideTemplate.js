@@ -5,6 +5,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
 import Layout from '../components/Layout';
+import PageTitle from '../components/PageTitle';
 import Video from '../components/Video';
 import Step from '../components/Step';
 import Steps from '../components/Steps';
@@ -30,7 +31,7 @@ const GuideTemplate = ({ data }) => {
     <Layout>
       <SEO title={title} description={description} />
       <div className={styles.duration}>{duration}</div>
-      <h1>{title}</h1>
+      <PageTitle>{title}</PageTitle>
       <div className={styles.mdxContainer}>
         <MDXProvider components={components}>
           <MDXRenderer>{body}</MDXRenderer>

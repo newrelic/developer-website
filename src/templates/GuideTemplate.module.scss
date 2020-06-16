@@ -1,4 +1,14 @@
 .mdxContainer {
+  margin-top: 2rem;
+  ul {
+    padding-left: 30px;
+    line-height: 1.6;
+  }
+
+  li {
+    margin-bottom: 1rem;
+  }
+
   ul li ul {
     margin-top: 1rem;
     line-height: 1;
