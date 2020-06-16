@@ -66,7 +66,13 @@ const ReferenceExample = ({
                 useToastManager={useToastManager}
               />
             )}
-            <LiveEditor style={{ fontSize: '0.75rem' }} />
+            <LiveEditor
+              style={{
+                fontSize: '0.75rem',
+                maxHeight: '30rem',
+                overflow: 'auto',
+              }}
+            />
             {live && <LiveError className={styles.error} />}
           </LiveProvider>
         </div>
