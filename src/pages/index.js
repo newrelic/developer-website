@@ -35,9 +35,7 @@ const guides = [
 const IndexPage = () => (
   <Layout>
     <SEO />
-    <h1 className={styles.h1}>
-      New Relic is a platform for your observability data
-    </h1>
+    <h1 className={styles.h1}>Observability for every developer</h1>
 
     <section className={styles.intro}>
       <div className={styles.introText}>
