@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { getPropTypeDefinition } from '../utils/propTypeInfo';
 import { getTypeDefs } from '../utils/typeDefs';
 
-const IGNORED_LIVE_EXAMPLES = ['Dropdown', 'Modal', 'Tooltip'];
+const IGNORED_LIVE_EXAMPLES = ['Dropdown', 'Modal', 'Tooltip', 'Select'];
 
 const IGNORED_METHODS = [
   'prototype',
