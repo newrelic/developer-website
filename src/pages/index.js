@@ -6,6 +6,7 @@ import Jumbotron from '../components/Jumbotron';
 import Section from '../components/Section';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
+import PageTitle from '../components/PageTitle';
 import Video from '../components/Video';
 import ExternalLink from '../components/ExternalLink';
 import styles from './index.module.scss';
@@ -36,7 +37,9 @@ const guides = [
 const IndexPage = () => (
   <Layout>
     <SEO />
-    <h1 className={styles.h1}>Observability for every developer</h1>
+    <PageTitle className={styles.pageTitle}>
+      Observability for every developer
+    </PageTitle>
 
     <section className={styles.intro}>
       <div className={styles.introText}>
