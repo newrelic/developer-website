@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import cx from 'classnames';
 
+import Logo from './Logo';
 import { link } from '../types';
 import styles from './Sidebar.module.scss';
 
@@ -22,7 +23,9 @@ const renderNav = (page, index) => (
 
 const Sidebar = ({ className, pages, isOpen, toggle }) => (
   <aside className={cx(styles.sidebar, className, { [styles.isOpen]: isOpen })}>
-    <Link to="/" className={styles.logo} />
+    <Link to="/">
+      <Logo className={styles.logo} />
+    </Link>
     <div className={styles.top}>
       <h3>Pages</h3>
       <button
