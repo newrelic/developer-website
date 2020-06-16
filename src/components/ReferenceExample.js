@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import formatCode from '../utils/formatCode';
 import github from 'prism-react-renderer/themes/github';
@@ -45,13 +45,16 @@ const ReferenceExample = ({
         <div className={className}>
           <h3 className={styles.title}>{example.label}</h3>
           <LiveProvider
-            scope={{
-              ...window.__NR1_SDK__.default,
-              navigation: {
-                // eslint-disable-next-line no-empty-function
-                getOpenLauncherLocation() {},
-              },
-            }}
+            scope={useMemo(
+              () => ({
+                ...window.__NR1_SDK__.default,
+                navigation: {
+                  // eslint-disable-next-line no-empty-function
+                  getOpenLauncherLocation() {},
+                },
+              }),
+              []
+            )}
             code={formattedCode}
             theme={github}
             disabled={!live}

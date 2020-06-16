@@ -1,4 +1,6 @@
 import { useMemo } from 'react';
+import { pullTypeDefNames } from '../utils/typeDefs';
+import navigationApi from '../data/navigationApi';
 
 const IGNORED_METHODS = [
   'prototype',
@@ -17,8 +19,18 @@ const useApiDoc = (name) => {
   if (typeof window === 'undefined') global.window = {};
 
   return useMemo(() => {
+    if (window.__NR1_SDK__ == null) {
+      return null;
+    }
+
     const sdk = window.__NR1_SDK__?.default ?? {};
     const api = sdk[name];
+
+    // The SDK does not include the navigation docs so we need to return the
+    // hardcoded values
+    if (name === 'navigation') {
+      return navigationApi;
+    }
 
     if (!api) {
       return null;
@@ -26,9 +38,54 @@ const useApiDoc = (name) => {
 
     const apiDocs = api?.__docs__;
 
+    const getTypeDefs = (api) => {
+      const apiTypeDefNames = Object.getOwnPropertyNames(api)
+        .filter((key) => !IGNORED_METHODS.includes(key))
+        .map((key) => api[key]?.__docs__?.tags)
+        .filter(Boolean)
+        .flatMap(pullTypeDefNames);
+
+      const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
+
+      const typeDefs = apiTypeDefNames
+        .map((name) => allTypeDefs[name])
+        .filter((typeDef) => typeDef !== undefined);
+
+      const structuredTypeDefs = typeDefs.map((typeDef) => ({
+        properties: typeDef.tags.property,
+        name: typeDef.tags.typedef.find((tag) => tag.identifier).identifier
+          .name,
+      }));
+
+      return structuredTypeDefs;
+    };
+
+    const getConstants = (api) => {
+      return Object.getOwnPropertyNames(api)
+        .filter(
+          (member) =>
+            !IGNORED_METHODS.includes(member) &&
+            typeof api[member] !== 'function'
+        )
+        .map((member) => {
+          return {
+            name: `${name}.${member}`,
+            type: api[member] instanceof Array ? 'array' : typeof api[member],
+            values:
+              api[member] instanceof Array
+                ? api[member].map((el) => JSON.stringify(el))
+                : Object.getOwnPropertyNames(api[member]).map(
+                    (key) => `${key}: ${JSON.stringify(api[member][key])}`
+                  ),
+          };
+        });
+    };
+
     return {
       description: apiDocs?.text,
       usage: `import { ${name} } from 'nr1'`,
+      typeDefs: getTypeDefs(api),
+      constants: getConstants(api),
       methods: Object.getOwnPropertyNames(api)
         .filter(
           (member) =>
@@ -52,7 +109,7 @@ const useApiDoc = (name) => {
           };
         }),
     };
-  }, [name, window?.__NR1_SDK__]);
+  }, [name, window.__NR1_SDK__]);
 };
 
 export default useApiDoc;

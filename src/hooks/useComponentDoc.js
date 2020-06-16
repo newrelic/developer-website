@@ -1,5 +1,8 @@
 import { useMemo } from 'react';
 import { getPropTypeDefinition } from '../utils/propTypeInfo';
+import { pullTypeDefNames } from '../utils/typeDefs';
+
+const IGNORED_LIVE_EXAMPLES = ['Dropdown', 'Modal', 'Tooltip'];
 
 const IGNORED_METHODS = [
   'prototype',
@@ -10,10 +13,53 @@ const IGNORED_METHODS = [
   'defaultProps',
 ];
 
-const extractPropTypes = (component) => {
+const getExamples = (component) => {
+  const examples = component?.__docs__?.tags.examples ?? [];
+  const hideLive = IGNORED_LIVE_EXAMPLES.includes(component.name);
+
+  if (!hideLive) {
+    return examples;
+  }
+
+  return examples.map((example) => {
+    return { ...example, options: { ...example.options, live: false } };
+  });
+};
+
+const getPropTypes = (component) => {
   return Object.entries(component.propTypes || {}).map(([name, propType]) =>
     getPropTypeDefinition(component, name, propType)
   );
+};
+
+const getTypeDefs = (component) => {
+  const tagsFromComponentProperties = Object.getOwnPropertyNames(component)
+    .filter((key) => !IGNORED_METHODS.includes(key))
+    .map((key) => component[key]?.__docs__?.tags)
+    .filter(Boolean);
+
+  const tagsFromPropTypes = component.propTypes
+    ? Object.getOwnPropertyNames(component.propTypes).map(
+        (key) => component.propTypes[key]?.__docs__?.tags
+      )
+    : [];
+
+  const componentTypeDefNames = tagsFromComponentProperties
+    .concat(tagsFromPropTypes)
+    .flatMap(pullTypeDefNames);
+
+  const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
+
+  const typeDefs = componentTypeDefNames
+    .map((name) => allTypeDefs[name])
+    .filter((typeDef) => typeDef !== undefined);
+
+  const structuredTypeDefs = typeDefs.map((typeDef) => ({
+    properties: typeDef.tags.property,
+    name: typeDef.tags.typedef.find((tag) => tag.identifier).identifier.name,
+  }));
+
+  return structuredTypeDefs;
 };
 
 const useComponentDoc = (componentName) => {
@@ -27,13 +73,11 @@ const useComponentDoc = (componentName) => {
       return null;
     }
 
-    const componentDocs = component?.__docs__;
-
     return {
-      description: componentDocs?.text,
-      examples: componentDocs?.tags.examples ?? [],
+      description: component?.__docs__?.text,
+      examples: getExamples(component),
       usage: `import { ${componentName} } from 'nr1'`,
-      propTypes: extractPropTypes(component),
+      propTypes: getPropTypes(component),
       methods: Object.getOwnPropertyNames(component)
         .filter(
           (member) =>
@@ -51,6 +95,7 @@ const useComponentDoc = (componentName) => {
             examples: methodDocs?.tags.examples ?? [],
           };
         }),
+      typeDefs: getTypeDefs(component),
     };
   }, [componentName, window?.__NR1_SDK__]);
 };

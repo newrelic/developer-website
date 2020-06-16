@@ -3,7 +3,6 @@ import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import Jumbotron from '../components/Jumbotron';
-import Container from '../components/Container';
 import Section from '../components/Section';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
@@ -35,45 +34,42 @@ const guides = [
 const IndexPage = () => (
   <Layout>
     <SEO />
-    <Container>
-      <h1 className={styles.h1}>
-        New Relic is a platform for your observability data
-      </h1>
-      <div className={styles.intro}>
-        <div className={styles.introText}>
-          <p>
-            <strong>Instrument</strong> your applications and{' '}
-            <strong>collect</strong> data about their performance.
-          </p>
+    <h1 className={styles.h1}>
+      New Relic is a platform for your observability data
+    </h1>
+    <div className={styles.intro}>
+      <div className={styles.introText}>
+        <p>
+          <strong>Instrument</strong> your applications and{' '}
+          <strong>collect</strong> data about their performance.
+        </p>
 
-          <p>
-            <strong>Query</strong> and <strong>explore</strong> the data on
-            demand with APIs.
-          </p>
+        <p>
+          <strong>Query</strong> and <strong>explore</strong> the data on demand
+          with APIs.
+        </p>
 
-          <p>
-            <strong>Create</strong>, <strong>remix</strong>, and{' '}
-            <strong>deploy</strong> new apps on top of this data.
-          </p>
+        <p>
+          <strong>Create</strong>, <strong>remix</strong>, and{' '}
+          <strong>deploy</strong> new apps on top of this data.
+        </p>
 
-          <p>
-            <strong>Share</strong> those apps with your company and the world.
-          </p>
+        <p>
+          <strong>Share</strong> those apps with your company and the world.
+        </p>
 
-          <p>
-            <strong>Automate</strong> the entire process with robust DevOps
-            tools.
-          </p>
-          <div className={styles.introButtonContainer}>
-            <button type="button">Create a free account</button>
-            <button type="button" className="secondary">
-              Solve a business problem
-            </button>
-          </div>
+        <p>
+          <strong>Automate</strong> the entire process with robust DevOps tools.
+        </p>
+        <div className={styles.introButtonContainer}>
+          <button type="button">Create a free account</button>
+          <button type="button" className="secondary">
+            Solve a business problem
+          </button>
         </div>
-        <div className={styles.introVideo} />
       </div>
-    </Container>
+      <div className={styles.introVideo} />
+    </div>
     <Section backgroundBanner className={styles.backgroundBanner}>
       <Jumbotron />
     </Section>

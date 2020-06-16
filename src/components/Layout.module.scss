@@ -1,13 +1,8 @@
 .layout {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-  > main {
-    flex: 1 0 auto;
-  }
-
-  > footer {
-    flex-shrink: 0;
-  }
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
