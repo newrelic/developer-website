@@ -12,6 +12,7 @@ import Step from '../components/Step';
 import Steps from '../components/Steps';
 import Intro from '../components/Intro';
 import SEO from '../components/Seo';
+import { BreadcrumbContext } from '../components/BreadcrumbContext';
 import styles from './GuideTemplate.module.scss';
 import CodeSnippet from '../components/CodeSnippet';
 
