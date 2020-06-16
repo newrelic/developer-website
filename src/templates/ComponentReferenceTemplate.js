@@ -36,7 +36,7 @@ const ComponentReferenceTemplate = ({ data }) => {
   } = useComponentDoc(component) ?? {};
 
   return (
-    <Layout>
+    <Layout showEdit={false}>
       <SEO title={title} description={description} />
       <h1>{component}</h1>
       <section
