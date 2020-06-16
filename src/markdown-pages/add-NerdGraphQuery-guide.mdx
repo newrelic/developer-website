@@ -6,6 +6,7 @@ template: 'GuideTemplate'
 description: 'The NerdGraphQuery component allows you to query data from your account and add it to a dropdown menu in an application'
 ---
 
+<Intro>
 This guide steps you through the process of adding the NerdGraph component to a sample transaction overview application. This allows you to query data from your account and add it to a dropdown menu. 
 
 NerdGraph is New Relic's GraphQl implementation. GraphQL has some key differences when compared to REST. For example, it's the client, not the server, that determines what data will be returned. Also, you can more easily collect data from multiple sources. In the case of New Relic, you can get all of the following in one GraphQL query:
@@ -14,12 +15,14 @@ NerdGraph is New Relic's GraphQl implementation. GraphQL has some key difference
 * Data about infrastructure
 * Issue an NRQL request
 
-| NOTE: To prototype GraphQL queries in New Relic, try our [NerdGraph API explorer](https://api.newrelic.com/graphiql)|
-| :------------- |
+> ***NOTE:*** To prototype GraphQL queries in New Relic, try our [NerdGraph API explorer](https://api.newrelic.com/graphiql).
 
-Here's a 14 minute video of the steps that follow:
 
-<Video id="zxunt1u1as" type="wistia"/>
+We have a 14 minute video that compliments the steps below.
+
+<Video id="zxunt1u1as" type="wistia" caption="Time picker"/>
+
+</Intro>
 
 ## Before you begin
 
@@ -53,12 +56,11 @@ In your preferred text editor, open `/use-nerdgraphd/nerdlets/use-nerdgraph-nerd
 
 Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
+> ***NOTE:*** Your account ID is viewable in the profile selection menu of the developer center (where you downloaded the New Relic One CLI). 
+
 ```js
 this.accountId = <ADD YOUR ACCOUNT ID>;
 ```
-
-| NOTE: Your account ID is viewable in the profile selection menu of the developer center (where you downloaded the New Relic One CLI). |
-| :------------- |
 
 </Step>
 
@@ -91,8 +93,7 @@ Once the sample application is successfully served, go to the local New Relic On
 
 Click ***Use NerdGraph***.
 
-| NOTE: If you don't see any launchers, click ***Your applications***. |
-| :------------- |
+> ***NOTE:***  If you don't see any launchers, click ***Your applications***. 
 
 ![Use Nerdgraph launcher](../images/nerdgraphquery-guide/use-nerdgraph-launcher.png)
 
@@ -109,8 +110,8 @@ After launching the ***Use NerdGraph*** application, you see a dashboard that gi
 
 Now you can create a dropdown menu for changing the account the application is viewing. The first step is to import the `NerdGraphQuery` component into the application's `index.js` file.
 
-| NOTE: If you need more details about our example below, see the APIs and components page on [https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/NerdGraphQuery](https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/NerdGraphQuery) |
-| :------------- |
+> ***NOTE:*** If you need more details about our example below, see the APIs and components page on [https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/NerdGraphQuery](https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/NerdGraphQuery)
+
 
 <Steps>
  
@@ -141,6 +142,8 @@ The `NerdGraphQuery` component takes query object that states the source you wan
 
 Add the following code to your `index.js` file in the `render` method:
 
+> ***NOTE:***  In the browser console, you can see the data from your query returned in an object that follows the same structure of the object in the initial query.
+
 ```js
 const query = `
     query($id: Int!) {
@@ -152,11 +155,6 @@ const query = `
     }
 `;
 ```
-
-| NOTE: In the browser console, you can see the data from your query returned in an object that follows the same structure of the object in the initial query. |
-| :------------- |
-
-
 
   </Step>
 
