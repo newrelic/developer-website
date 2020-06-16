@@ -3,9 +3,9 @@ import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import InlineCodeSnippet from '../components/InlineCodeSnippet';
-import ReactMarkdown from 'react-markdown';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
+import Markdown from '../components/Markdown';
 import MethodReference from '../components/MethodReference';
 import TypeDefReference from '../components/TypeDefReference';
 import ConstantReference from '../components/ConstantReference';
@@ -39,7 +39,7 @@ const ApiReferenceTemplate = ({ data }) => {
             'intro-text'
           )}
         >
-          <ReactMarkdown source={apiDescription} />
+          <Markdown source={apiDescription} />
         </section>
       )}
 

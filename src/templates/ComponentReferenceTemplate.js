@@ -3,10 +3,10 @@ import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import InlineCodeSnippet from '../components/InlineCodeSnippet';
-import ReactMarkdown from 'react-markdown';
 import ReferenceExample from '../components/ReferenceExample';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
+import Markdown from '../components/Markdown';
 import MethodReference from '../components/MethodReference';
 import SEO from '../components/Seo';
 import PropList from '../components/PropList';
@@ -23,7 +23,6 @@ const previewStyles = {
 };
 
 const ComponentReferenceTemplate = ({ data }) => {
-  // const [isOpen, setIsOpen] = useState(false);
   const { mdx } = data;
   const { frontmatter } = mdx;
   const { title, description, component } = frontmatter;
@@ -40,14 +39,8 @@ const ComponentReferenceTemplate = ({ data }) => {
     <Layout>
       <SEO title={title} description={description} />
       <PageTitle>{component}</PageTitle>
-      <section
-        className={cx(
-          templateStyles.section,
-          templateStyles.description,
-          'intro-text'
-        )}
-      >
-        <ReactMarkdown source={componentDescription} />
+      <section className={cx(templateStyles.section, 'intro-text')}>
+        <Markdown source={componentDescription} />
       </section>
 
       <section className={templateStyles.section}>
