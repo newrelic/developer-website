@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import CodeDef from './CodeDef';
@@ -106,7 +106,20 @@ const PropList = ({ propTypes }) => {
                 {defaultValue !== undefined && (
                   <div className={styles.default}>
                     <div className={styles.label}>DEFAULT</div>
-                    <code>{String(defaultValue)}</code>
+                    <code>
+                      {String(defaultValue)
+                        .split('.')
+                        .map((word, idx, parts) => (
+                          <Fragment key={idx}>
+                            {word}
+                            {idx !== parts.length - 1 && (
+                              <>
+                                .<wbr />
+                              </>
+                            )}
+                          </Fragment>
+                        ))}
+                    </code>
                   </div>
                 )}
               </div>
