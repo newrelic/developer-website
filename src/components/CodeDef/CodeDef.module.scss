@@ -3,7 +3,6 @@
   line-height: 2rem;
 }
 
-.keyword,
 .identifier {
   color: var(--color-neutrals-700);
 }
@@ -21,7 +20,9 @@
   }
 }
 
-.bracket {
+.keyword,
+.bracket,
+.operator {
   color: var(--color-neutrals-500);
 }
 
