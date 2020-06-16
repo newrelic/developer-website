@@ -6,6 +6,9 @@ import Jumbotron from '../components/Jumbotron';
 import Section from '../components/Section';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
+import PageTitle from '../components/PageTitle';
+import Video from '../components/Video';
+import ExternalLink from '../components/ExternalLink';
 import styles from './index.module.scss';
 
 const guides = [
@@ -34,42 +37,41 @@ const guides = [
 const IndexPage = () => (
   <Layout>
     <SEO />
-    <h1 className={styles.h1}>
-      New Relic is a platform for your observability data
-    </h1>
-    <div className={styles.intro}>
+    <PageTitle className={styles.pageTitle}>
+      Observability for every developer
+    </PageTitle>
+
+    <section className={styles.intro}>
       <div className={styles.introText}>
         <p>
-          <strong>Instrument</strong> your applications and{' '}
-          <strong>collect</strong> data about their performance.
+          As developers, engineers, and problem solvers, pinpointing issues fast
+          and improving performance effectively are your top priorities. Explore
+          the developer site to learn how to collect data from any source,
+          visualize and instrument your data, and customize it in any way you
+          want. From how-to guides to video tutorials, community projects, and
+          more - we’ve got you covered.
         </p>
-
         <p>
-          <strong>Query</strong> and <strong>explore</strong> the data on demand
-          with APIs.
+          Best of all? This site is built in open source. Submit ideas,
+          feedback, and comments directly to our engineers.
         </p>
-
-        <p>
-          <strong>Create</strong>, <strong>remix</strong>, and{' '}
-          <strong>deploy</strong> new apps on top of this data.
-        </p>
-
-        <p>
-          <strong>Share</strong> those apps with your company and the world.
-        </p>
-
-        <p>
-          <strong>Automate</strong> the entire process with robust DevOps tools.
-        </p>
-        <div className={styles.introButtonContainer}>
+        <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
           <button type="button">Create a free account</button>
+        </ExternalLink>
+        <ExternalLink href="https://newrelic.com/request-demo">
           <button type="button" className="secondary">
-            Solve a business problem
+            Request a demo
           </button>
-        </div>
+        </ExternalLink>
       </div>
-      <div className={styles.introVideo} />
-    </div>
+      <Video
+        className={styles.introVideo}
+        id="ZagZfNQYJEU"
+        type="youtube"
+        title="Develop with New Relic"
+      />
+    </section>
+
     <Section backgroundBanner className={styles.backgroundBanner}>
       <Jumbotron />
     </Section>
