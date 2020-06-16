@@ -14,10 +14,6 @@
     &:hover {
       text-decoration: underline;
     }
-
-    &.isActive {
-      font-weight: bold;
-    }
   }
 
   h3 {
@@ -66,4 +62,47 @@
   height: 64px;
   margin-right: 1rem;
   background-image: url('../images/developers-logo.svg');
+}
+
+.nestedNav {
+  display: none;
+}
+
+.isDisplay {
+  display: block;
+}
+
+.listNav {
+  div {
+    margin-bottom: 1rem;
+  }
+  li {
+    color: var(--color-black);
+    font-weight: bold;
+    ul {
+      li {
+        font-weight: normal;
+        ul {
+          padding-left: 0.5rem;
+          li {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: var(--color-neutrals-600);
+            font-size: 14px;
+            ul {
+              padding-left: 0rem;
+              li {
+                font-weight: normal;
+                text-transform: initial;
+                color: var(--color-black);
+                ul {
+                  padding-left: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

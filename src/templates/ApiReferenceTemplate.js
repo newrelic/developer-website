@@ -13,6 +13,10 @@ import SEO from '../components/Seo';
 import templateStyles from './ReferenceTemplate.module.scss';
 import useApiDoc from '../hooks/useApiDoc';
 
+import { BreadcrumbContext } from '../components/BreadcrumbContext';
+import createBreadcrumbs from '../utils/create-breadcrumbs';
+import pages from '../data/sidenav.json';
+
 const ApiReferenceTemplate = ({ data }) => {
   const { mdx } = data;
   const { frontmatter } = mdx;
@@ -25,49 +29,53 @@ const ApiReferenceTemplate = ({ data }) => {
     constants = [],
   } = useApiDoc(api) ?? {};
 
+  const crumbs = createBreadcrumbs(frontmatter.path, pages);
+
   return (
-    <Layout>
-      <SEO title={title} description={description} />
-      <h1>{api}</h1>
+    <BreadcrumbContext.Provider value={crumbs}>
+      <Layout>
+        <SEO title={title} description={description} />
+        <h1>{api}</h1>
 
-      <section
-        className={cx(templateStyles.section, templateStyles.description)}
-      >
-        <ReactMarkdown source={apiDescription} />
-      </section>
-
-      <section className={templateStyles.section}>
-        <h2>Usage</h2>
-        <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
-      </section>
-
-      {methods.length > 0 && (
-        <section className={templateStyles.section}>
-          <h2>API methods</h2>
-          {methods.map((method, i) => (
-            <MethodReference key={i} method={method} />
-          ))}
+        <section
+          className={cx(templateStyles.section, templateStyles.description)}
+        >
+          <ReactMarkdown source={apiDescription} />
         </section>
-      )}
 
-      {typeDefs.length > 0 && (
         <section className={templateStyles.section}>
-          <h2>Type definitions</h2>
-          {typeDefs.map((typeDef, i) => (
-            <TypeDefReference key={i} typeDef={typeDef} />
-          ))}
+          <h2>Usage</h2>
+          <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
         </section>
-      )}
 
-      {constants.length > 0 && (
-        <section className={templateStyles.section}>
-          <h2>Constants</h2>
-          {constants.map((constant, i) => (
-            <ConstantReference key={i} constant={constant} />
-          ))}
-        </section>
-      )}
-    </Layout>
+        {methods.length > 0 && (
+          <section className={templateStyles.section}>
+            <h2>API methods</h2>
+            {methods.map((method, i) => (
+              <MethodReference key={i} method={method} />
+            ))}
+          </section>
+        )}
+
+        {typeDefs.length > 0 && (
+          <section className={templateStyles.section}>
+            <h2>Type definitions</h2>
+            {typeDefs.map((typeDef, i) => (
+              <TypeDefReference key={i} typeDef={typeDef} />
+            ))}
+          </section>
+        )}
+
+        {constants.length > 0 && (
+          <section className={templateStyles.section}>
+            <h2>Constants</h2>
+            {constants.map((constant, i) => (
+              <ConstantReference key={i} constant={constant} />
+            ))}
+          </section>
+        )}
+      </Layout>
+    </BreadcrumbContext.Provider>
   );
 };
 

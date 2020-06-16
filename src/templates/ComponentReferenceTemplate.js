@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+
 import InlineCodeSnippet from '../components/InlineCodeSnippet';
 import ReactMarkdown from 'react-markdown';
 import ReferenceExample from '../components/ReferenceExample';
@@ -14,6 +15,10 @@ import templateStyles from './ReferenceTemplate.module.scss';
 import useComponentDoc from '../hooks/useComponentDoc';
 import IconGallery from '../components/IconGallery';
 import TypeDefReference from '../components/TypeDefReference';
+
+import { BreadcrumbContext } from '../components/BreadcrumbContext';
+import createBreadcrumbs from '../utils/create-breadcrumbs';
+import pages from '../data/sidenav.json';
 
 const previewStyles = {
   Spinner: {
@@ -35,71 +40,75 @@ const ComponentReferenceTemplate = ({ data }) => {
     propTypes = [],
   } = useComponentDoc(component) ?? {};
 
+  const crumbs = createBreadcrumbs(frontmatter.path, pages);
+
   return (
-    <Layout>
-      <SEO title={title} description={description} />
-      <h1>{component}</h1>
-      <section
-        className={cx(
-          templateStyles.section,
-          templateStyles.description,
-          'intro-text'
+    <BreadcrumbContext.Provider value={crumbs}>
+      <Layout>
+        <SEO title={title} description={description} />
+        <h1>{component}</h1>
+        <section
+          className={cx(
+            templateStyles.section,
+            templateStyles.description,
+            'intro-text'
+          )}
+        >
+          <ReactMarkdown source={componentDescription} />
+        </section>
+
+        <section className={templateStyles.section}>
+          <h2>Usage</h2>
+          <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
+        </section>
+
+        {examples.length > 0 && (
+          <section className={templateStyles.section}>
+            <h2>Examples</h2>
+            <div>
+              {examples.map((example, i) => (
+                <ReferenceExample
+                  key={i}
+                  useToastManager={component === 'Toast'}
+                  className={styles.componentExample}
+                  example={example}
+                  previewStyle={previewStyles[component]}
+                />
+              ))}
+            </div>
+          </section>
         )}
-      >
-        <ReactMarkdown source={componentDescription} />
-      </section>
 
-      <section className={templateStyles.section}>
-        <h2>Usage</h2>
-        <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
-      </section>
+        {component === 'Icon' && (
+          <section className={templateStyles.section}>
+            <IconGallery />
+          </section>
+        )}
 
-      {examples.length > 0 && (
         <section className={templateStyles.section}>
-          <h2>Examples</h2>
-          <div>
-            {examples.map((example, i) => (
-              <ReferenceExample
-                key={i}
-                useToastManager={component === 'Toast'}
-                className={styles.componentExample}
-                example={example}
-                previewStyle={previewStyles[component]}
-              />
+          <h2>Props</h2>
+          <PropList propTypes={propTypes} />
+        </section>
+
+        {methods.length > 0 && (
+          <section className={templateStyles.section}>
+            <h2>Methods</h2>
+            {methods.map((method, i) => (
+              <MethodReference key={i} method={method} />
             ))}
-          </div>
-        </section>
-      )}
+          </section>
+        )}
 
-      {component === 'Icon' && (
-        <section className={templateStyles.section}>
-          <IconGallery />
-        </section>
-      )}
-
-      <section className={templateStyles.section}>
-        <h2>Props</h2>
-        <PropList propTypes={propTypes} />
-      </section>
-
-      {methods.length > 0 && (
-        <section className={templateStyles.section}>
-          <h2>Methods</h2>
-          {methods.map((method, i) => (
-            <MethodReference key={i} method={method} />
-          ))}
-        </section>
-      )}
-
-      {typeDefs.length > 0 && (
-        <section className={templateStyles.section}>
-          <h2>Type definitions</h2>
-          {typeDefs.map((typeDef, i) => (
-            <TypeDefReference key={i} typeDef={typeDef} />
-          ))}
-        </section>
-      )}
-    </Layout>
+        {typeDefs.length > 0 && (
+          <section className={templateStyles.section}>
+            <h2>Type definitions</h2>
+            {typeDefs.map((typeDef, i) => (
+              <TypeDefReference key={i} typeDef={typeDef} />
+            ))}
+          </section>
+        )}
+      </Layout>
+    </BreadcrumbContext.Provider>
   );
 };
 

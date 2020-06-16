@@ -11,6 +11,7 @@ import Step from '../components/Step';
 import Steps from '../components/Steps';
 import Intro from '../components/Intro';
 import SEO from '../components/Seo';
+import { BreadcrumbContext } from '../components/BreadcrumbContext';
 
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
@@ -32,14 +33,16 @@ const GuideTemplate = ({ data }) => {
   const crumbs = createBreadcrumbs(frontmatter.path, pages);
 
   return (
-    <Layout>
-      <SEO title={title} description={description} />
-      <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
-      <h1>{title}</h1>
-      <MDXProvider components={components}>
-        <MDXRenderer>{body}</MDXRenderer>
-      </MDXProvider>
-    </Layout>
+    <BreadcrumbContext.Provider value={crumbs}>
+      <Layout>
+        <SEO title={title} description={description} />
+        <BreadcrumbBar crumbs={crumbs} duration={frontmatter.duration} />
+        <h1>{title}</h1>
+        <MDXProvider components={components}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </MDXProvider>
+      </Layout>
+    </BreadcrumbContext.Provider>
   );
 };
 
