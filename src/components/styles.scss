@@ -46,6 +46,17 @@
   --color-green-800: #0d290a;
   --color-green-900: #021200;
 
+  --color-yellow-050: #fffde7;
+  --color-yellow-100: #fff9c4;
+  --color-yellow-200: #fff59d;
+  --color-yellow-300: #fff176;
+  --color-yellow-400: #ffee58;
+  --color-yellow-500: #ffeb3b;
+  --color-yellow-600: #fdd835;
+  --color-yellow-700: #fbc02d;
+  --color-yellow-800: #f9a825;
+  --color-yellow-900: #f57f17;
+
   --color-teal-050: #f1fbfc;
   --color-teal-100: #d2f3f6;
   --color-teal-200: #85e0e7;
@@ -176,6 +187,13 @@ li {
 
 code {
   font-family: var(--code-font);
+}
+
+blockquote {
+  border-left: 4px solid var(--color-teal-400);
+  padding: 15px 5px 20px 20px;
+  margin: 25px 50px 25px 20px;
+  background: var(--color-teal-100);
 }
 
 :global {
