@@ -7,17 +7,8 @@ import styles from './FunctionDefinition.module.scss';
 const FunctionDefinition = ({ className, params, returnValue }) => {
   return (
     <CodeDef className={cx(styles.container, className)}>
-      {params.length > 0 ? (
-        <>
-          <CodeDef.Keyword>function</CodeDef.Keyword>{' '}
-          <CodeDef.Bracket>(</CodeDef.Bracket>
-        </>
-      ) : (
-        <>
-          <CodeDef.Keyword>function</CodeDef.Keyword>{' '}
-          <CodeDef.Bracket>()</CodeDef.Bracket>
-        </>
-      )}
+      <CodeDef.Keyword>function</CodeDef.Keyword>{' '}
+      <CodeDef.Bracket>{params.length > 0 ? '(' : '()'}</CodeDef.Bracket>
       {params.length > 0 && (
         <CodeDef.Block>
           {params.map((param, i) => (
