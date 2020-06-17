@@ -9,19 +9,19 @@ import styles from './Layout.module.scss';
 import './styles.scss';
 
 const Layout = ({ children }) => {
-  const [isMobileNavuOpen, setIsMobileNavOpen] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (
     <>
       <GlobalHeader />
       <MobileHeader
         className={styles.hideOnDesktop}
-        isOpen={isMobileNavuOpen}
-        toggle={() => setIsMobileNavOpen(!isMobileNavuOpen)}
+        isOpen={isMobileNavOpen}
+        toggle={() => setIsMobileNavOpen(!isMobileNavOpen)}
       />
       <div className={styles.layout}>
         <Sidebar className={styles.hideOnMobile} />
-        <main className={isMobileNavuOpen && styles.hideOnMobile}>
+        <main className={isMobileNavOpen && styles.hideOnMobile}>
           {children}
         </main>
       </div>
