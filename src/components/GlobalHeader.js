@@ -30,7 +30,10 @@ const GlobalHeader = ({ hasHeaderBg, className }) => {
               </a>
             </li>
             <li className={styles.leftSideLinkItem}>
-              <a href="#" className={styles.leftSideLink}>
+              <a
+                href="https://opensource.newrelic.com/"
+                className={styles.leftSideLink}
+              >
                 Open Source
               </a>
             </li>
