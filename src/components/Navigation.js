@@ -7,24 +7,6 @@ import pages from '../data/sidenav.json';
 
 import styles from './Navigation.module.scss';
 
-const Navigation = ({ className }) => {
-  return (
-    <nav
-      className={cx(styles.container, className)}
-      role="navigation"
-      aria-label="Navigation"
-    >
-      <ul className={styles.listNav}>{renderNav(pages)}</ul>
-    </nav>
-  );
-};
-
-Navigation.propTypes = {
-  className: PropTypes.string,
-};
-
-export default Navigation;
-
 // recursively create navigation
 const renderNav = (pages, depthLevel = 0) => {
   return pages.map((page, index) => {
@@ -66,3 +48,21 @@ const renderNav = (pages, depthLevel = 0) => {
     );
   });
 };
+
+const Navigation = ({ className }) => {
+  return (
+    <nav
+      className={cx(styles.container, className)}
+      role="navigation"
+      aria-label="Navigation"
+    >
+      <ul className={styles.listNav}>{renderNav(pages)}</ul>
+    </nav>
+  );
+};
+
+Navigation.propTypes = {
+  className: PropTypes.string,
+};
+
+export default Navigation;
