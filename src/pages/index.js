@@ -99,6 +99,7 @@ const IndexPage = () => (
         ))}
       </GuideListing.List>
     </GuideListing>
+    <hr className={styles.line} />
 
     <GuideListing className={styles.guideListing}>
       <GuideListing.Heading className={styles.guideListingHeading}>
