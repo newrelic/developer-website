@@ -11,7 +11,7 @@ const Sidebar = ({ className }) => (
     <Link to="/">
       <Logo className={styles.logo} />
     </Link>
-    <Navigation />
+    <Navigation className={styles.nav} />
   </aside>
 );
 
