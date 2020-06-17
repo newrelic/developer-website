@@ -28,20 +28,20 @@ const renderNav = (pages, depthLevel = 0) => {
       )}
       {pages.map((page) => {
         const [isExpanded, setIsExpanded] = useState(
-          crumbs.length === depthLevel || crumbs.includes(page.displayName)
+          crumbs.length === 0 || crumbs.includes(page.displayName)
         );
         const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
-        const isNestedAndExpanded = depthLevel > 0 && isExpanded;
-        const isNestedAndCollapsed = depthLevel > 0 && !isExpanded;
 
         return (
-          <li
-            key={page.displayName}
-            data-depth={depthLevel}
-            className={cx({ [styles.isCurrentPage]: isCurrentPage })}
-          >
+          <li key={page.displayName} data-depth={depthLevel}>
             {page.url ? (
-              <Link className={styles.navLink} to={page.url}>
+              <Link
+                className={cx(
+                  { [styles.isCurrentPage]: isCurrentPage },
+                  styles.navLink
+                )}
+                to={page.url}
+              >
                 {page.displayName}
                 {isCurrentPage && (
                   <FeatherIcon
@@ -58,17 +58,13 @@ const renderNav = (pages, depthLevel = 0) => {
                 onKeyPress={() => setIsExpanded(!isExpanded)}
                 tabIndex={0}
               >
-                {isNestedAndCollapsed && (
+                {depthLevel > 0 && (
                   <FeatherIcon
-                    className={styles.nestedChevron}
+                    className={cx(
+                      { [styles.isExpanded]: isExpanded },
+                      styles.nestedChevron
+                    )}
                     name="chevron-right"
-                  />
-                )}
-
-                {isNestedAndExpanded && (
-                  <FeatherIcon
-                    className={styles.nestedChevron}
-                    name="chevron-down"
                   />
                 )}
                 {page.displayName}
