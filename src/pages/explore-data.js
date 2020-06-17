@@ -4,8 +4,6 @@ import PageTitle from '../components/PageTitle';
 import Layout from '../components/Layout';
 import React from 'react';
 import SEO from '../components/Seo';
-import Section from '../components/Section';
-import styles from './explore-data.module.scss';
 
 const title = 'Get data into New Relic';
 
