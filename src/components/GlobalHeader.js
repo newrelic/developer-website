@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Link } from 'gatsby';
 import NewRelicLogo from './NewRelicLogo';
+import GithHubIcon from './GithHubIcon';
 import ExternalLink from './ExternalLink';
 
 import styles from './GlobalHeader.module.scss';
@@ -45,12 +46,12 @@ const GlobalHeader = ({ className }) => {
         </div>
 
         <ul className={styles.rightSideButtons}>
-          <li className={`${styles.rightSideButton} ${styles.githubButton}`}>
+          <li className={styles.rightSideButton}>
             <ExternalLink
               href="https://github.com/newrelic/developer-website"
               className={styles.githubButtonLink}
             >
-              GitHub
+              <GithHubIcon />
             </ExternalLink>
           </li>
         </ul>
