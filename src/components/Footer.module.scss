@@ -2,8 +2,12 @@
   background-color: var(--color-neutrals-800);
   color: var(--color-teal-300);
   padding: 1.5rem 0;
-  margin-top: 10rem;
   font-size: 0.75rem;
+  z-index: 1;
+
+  :global(.site-container) {
+    padding: 0 2rem;
+  }
 }
 
 .container {
@@ -22,16 +26,12 @@
 }
 
 .logo {
-  width: 195px;
-  min-width: 195px;
-  height: 45px;
-  display: inline-block;
-  background-image: url('../images/developers-logo-footer.svg');
+  width: 200px;
 }
 
 .copyright {
   margin-left: 1rem;
-  padding: 0.75rem 0.5rem;
+  padding-left: 1rem;
   border-left: 1px dotted var(--color-neutrals-700);
 
   @media (max-width: 760px) {
@@ -46,28 +46,16 @@
 
   a {
     color: var(--color-teal-300);
-    margin-left: 1rem;
-    padding: 0.2rem;
     padding-right: 0;
     display: flex;
     align-items: center;
 
-    &:before {
-      content: '';
-      display: inline-block;
-      height: 1rem;
-      width: 1rem;
-      background-repeat: no-repeat;
-      background-position: center center;
-      margin-right: 0.5rem;
+    &:not(:first-child) {
+      margin-left: 1rem;
     }
   }
 }
 
-.edit:before {
-  background-image: url('../images/edit.svg');
-}
-
-.issue:before {
-  background-image: url('../images/github.svg');
+.linkIcon {
+  margin-right: 0.5rem;
 }

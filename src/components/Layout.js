@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import Footer from './Footer';
 import GlobalHeader from './GlobalHeader';
@@ -12,21 +13,25 @@ const Layout = ({ children }) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (
-    <>
+    <div className={styles.layout}>
       <GlobalHeader />
       <MobileHeader
         className={styles.hideOnDesktop}
         isOpen={isMobileNavOpen}
         toggle={() => setIsMobileNavOpen(!isMobileNavOpen)}
       />
-      <div className={styles.layout}>
+      <div className={cx(styles.main, 'site-container')}>
         <Sidebar className={styles.hideOnMobile} />
-        <main className={isMobileNavOpen && styles.hideOnMobile}>
+        <main
+          className={cx(styles.content, {
+            [styles.hideOnMobile]: isMobileNavOpen,
+          })}
+        >
           {children}
         </main>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -1,25 +1,21 @@
 .globalHeaderContainer {
   background-color: var(--color-neutrals-100);
+
+  :global(.site-container) {
+    padding: 0 2rem;
+  }
 }
 
 .globalHeaderContent {
   height: var(--height-global-header);
   display: flex;
   justify-content: space-between;
-  max-width: 1180px;
-  margin: 0 auto;
 }
 
-.logo {
-  display: inline-block;
-  width: 79px;
-  height: 15px;
-  margin-right: 18px;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  background-image: url('../images/new-relic-logo.svg');
-  border: none;
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
 }
 
 .leftSideLinksContainer {
@@ -73,41 +69,18 @@
 }
 
 .rightSideButton {
-  width: 14px;
-  height: 14px;
-  text-indent: 300%;
-  white-space: nowrap;
-  overflow: hidden;
-  padding: 0;
   opacity: 0.45;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: opacity 0.1s var(--ease-out-quad);
+  transition: opacity 0.2s ease-out;
 
   &:hover {
     cursor: pointer;
     opacity: 0.75;
   }
-
-  &:last-child {
-    padding-right: 0;
-    background-position: right;
-  }
-}
-
-.githubButton {
-  display: block;
-  width: 15px;
-  height: 15px;
-  text-indent: 0;
 }
 
 .githubButtonLink {
-  display: block;
-  background-image: url('../images/icon-github.svg');
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 // ==============================================================

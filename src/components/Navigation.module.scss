@@ -1,73 +1,64 @@
 .container {
   font-size: 0.875rem;
+}
 
-  ul {
-    margin: 0;
-    padding-left: 1rem;
-    list-style: none;
-  }
-
-  a {
-    color: var(--color-black);
-  }
-
-  // remove?
-  button {
-    background: none;
-    border: 0;
-    cursor: pointer;
-    width: 3rem;
-    display: none;
-  }
-
-  nav {
-    margin-top: 1rem;
-  }
+.listNav,
+.nestedNav {
+  list-style: none;
 }
 
 .nestedNav {
+  padding-left: 1rem;
   display: none;
-}
 
-.isDisplay {
-  display: block;
+  &.isExpanded {
+    display: block;
+  }
 }
 
 .listNav {
-  ul {
-    padding-left: 1rem;
+  padding-left: 0;
+}
+
+.navLink {
+  color: var(--color-neutrals-900);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+
+  [data-depth='0'] > & {
+    font-weight: bold;
   }
 }
 
-.navDepth0 {
-  color: var(--color-black);
-  font-weight: bold;
-  div {
-    margin: 1rem 0;
-  }
-  li {
-    margin: 1rem 0;
+button.navLink {
+  color: var(--color-neutrals-900);
+  background: inherit;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+
+  &:focus {
+    outline: none;
   }
 }
 
-.navDepth1 {
-  font-weight: normal;
-  ul {
-    padding-left: 0.2rem;
-  }
+.currentPageIndicator {
+  stroke-width: 4;
 }
 
-.navDepth2 {
-  font-weight: bold;
-  text-transform: uppercase;
+.groupName {
   color: var(--color-neutrals-600);
-  font-size: 14px;
-}
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-transform: uppercase;
 
-.navDepth3 {
-  font-weight: normal;
-  text-transform: initial;
-  color: var(--color-black);
+  &:not(:first-child) {
+    margin-top: 2rem;
+  }
 }
 
 .isCurrentPage {
