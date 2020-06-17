@@ -1,5 +1,6 @@
 .globalHeaderContainer {
   background-color: var(--color-neutrals-100);
+  overflow: hidden;
 
   :global(.site-container) {
     padding: 0 2rem;
@@ -30,6 +31,7 @@
   padding: 0;
   display: flex;
   list-style-type: none;
+  white-space: nowrap;
 
   &:hover .active .left-side-link {
     background-color: transparent;
@@ -81,4 +83,10 @@
 .githubButtonLink {
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 440px) {
+  .githubButtonLink {
+    display: none;
+  }
 }
