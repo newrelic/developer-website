@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 
+import FeatherIcon from './FeatherIcon';
 import Logo from './Logo';
 import { link } from '../types';
 import styles from './Sidebar.module.scss';
@@ -27,6 +28,12 @@ const renderNav = (pages, depthLevel = 0) => {
         {page.url ? (
           <Link className={styles.navItem} to={page.url}>
             {page.displayName}
+            {isCurrentPage && (
+              <FeatherIcon
+                className={styles.currentPageIndicator}
+                name="chevron-right"
+              />
+            )}
           </Link>
         ) : (
           <div
