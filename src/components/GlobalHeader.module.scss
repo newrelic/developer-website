@@ -1,17 +1,9 @@
-.global-header-container {
-  position: relative;
-  z-index: 10000;
+.globalHeaderContainer {
   background-color: var(--color-neutrals-100);
 }
 
-.has-header-bg {
-  background-color: transparent;
-  border-bottom: 1px dotted rgba(0, 0, 0, 0.05);
-  margin-bottom: -1px;
-}
-
-.global-header-content {
-  height: 30px;
+.globalHeaderContent {
+  height: var(--height-global-header);
   display: flex;
   justify-content: space-between;
   max-width: 1180px;
@@ -30,13 +22,13 @@
   border: none;
 }
 
-.left-side-links-container {
+.leftSideLinksContainer {
   display: flex;
   align-items: center;
   height: 100%;
 }
 
-.left-side-links {
+.leftSideLinks {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -49,7 +41,7 @@
   }
 }
 
-.left-side-link {
+.leftSideLink {
   display: flex;
   line-height: 22px;
   box-sizing: border-box;
@@ -66,13 +58,13 @@
   }
 
   .active &,
-  .left-side-links:hover .active &:hover {
+  .leftSideLinks:hover .active &:hover {
     background-color: var(--color-neutrals-200);
     color: var(--color-neutrals-700);
   }
 }
 
-.right-side-buttons {
+.rightSideButtons {
   margin: 0;
   padding: 0;
   display: flex;
@@ -80,7 +72,7 @@
   align-items: center;
 }
 
-.right-side-button {
+.rightSideButton {
   width: 14px;
   height: 14px;
   text-indent: 300%;
@@ -103,14 +95,14 @@
   }
 }
 
-.github-button {
+.githubButton {
   display: block;
   width: 15px;
   height: 15px;
   text-indent: 0;
 }
 
-.github-button-link {
+.githubButtonLink {
   display: block;
   background-image: url('../images/icon-github.svg');
   text-indent: 100%;
@@ -123,13 +115,7 @@
 // ==============================================================
 
 @media screen and (max-width: 1240px) {
-  .global-header-container {
+  .globalHeaderContainer {
     padding: 0 1.75rem;
   }
 }
-
-// @media screen and (max-width: 480px) {
-//   .global-header-container {
-//     display: none;
-//   }
-// }
