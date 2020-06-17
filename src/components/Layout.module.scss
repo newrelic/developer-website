@@ -12,15 +12,23 @@
   .layout {
     display: block;
   }
-
-  .sidebar {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 1240px) {
   .layout {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+}
+
+.hideOnDesktop {
+  @media (min-width: 760px) {
+    display: none;
+  }
+}
+
+.hideOnMobile {
+  @media (max-width: 760px) {
+    display: none;
   }
 }

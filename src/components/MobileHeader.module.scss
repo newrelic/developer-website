@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 1rem;
+  border-bottom: 1px solid var(--color-neutrals-100);
+}
+
+.logo {
+  width: 160px;
+  height: 34px;
+  background-size: 160px 34px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-image: url('../images/developers-logo.svg');
+}

@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 
 import Footer from './Footer';
 import GlobalHeader from './GlobalHeader';
+import MobileHeader from './MobileHeader';
 import Sidebar from './Sidebar';
 import styles from './Layout.module.scss';
-import pages from '../data/sidenav.json';
 import './styles.scss';
 
 const Layout = ({ children }) => (
   <>
     <GlobalHeader />
+    <MobileHeader className={styles.hideOnDesktop} />
     <div className={styles.layout}>
-      <Sidebar className={styles.sidebar} pages={pages} />
+      <Sidebar className={styles.hideOnMobile} />
       <main>{children}</main>
     </div>
     <Footer />

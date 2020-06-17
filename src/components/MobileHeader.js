@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import cx from 'classnames';
 import Navigation from './Navigation';
-import styles from './Sidebar.module.scss';
+import styles from './MobileHeader.module.scss';
 
-const Sidebar = ({ className }) => (
-  <aside className={cx(styles.sidebar, className)}>
+const MobileHeader = ({ className }) => (
+  <aside className={cx(styles.container, className)}>
     <Link to="/" className={styles.logo} />
-    <Navigation />
+    {/* <Navigation /> */}
   </aside>
 );
 
-Sidebar.propTypes = {
+MobileHeader.propTypes = {
   className: PropTypes.string,
 };
 
-export default Sidebar;
+export default MobileHeader;
