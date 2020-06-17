@@ -50,15 +50,15 @@ const renderNav = (pages, depthLevel = 0) => {
                 )}
               </Link>
             ) : (
-              <div
-                role="button"
+              <button
+                type="button"
                 className={styles.navLink}
                 onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
                 onKeyPress={() => setIsExpanded((isExpanded) => !isExpanded)}
                 tabIndex={0}
               >
                 {page.displayName}
-              </div>
+              </button>
             )}
             {page.children && (
               <ul

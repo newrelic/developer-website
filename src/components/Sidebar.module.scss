@@ -3,18 +3,6 @@
   border-right: 1px solid var(--color-neutrals-100);
   font-size: 0.875rem;
 
-  button {
-    background: none;
-    border: 0;
-    cursor: pointer;
-    width: 3rem;
-    display: none;
-
-    @media (max-width: 760px) {
-      display: block;
-    }
-  }
-
   &.isOpen {
     nav {
       @media (max-width: 760px) {
@@ -42,11 +30,13 @@
 }
 
 .nestedNav {
-  display: none;
   padding-left: 1rem;
+  height: 0;
+  visibility: hidden;
 
   &.isExpanded {
-    display: block;
+    height: auto;
+    visibility: visible;
   }
 }
 
@@ -64,6 +54,19 @@
 
   [data-depth='0'] > & {
     font-weight: bold;
+  }
+}
+
+button.navLink {
+  color: var(--color-neutrals-900);
+  background: inherit;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+
+  &:focus {
+    outline: none;
   }
 }
 
