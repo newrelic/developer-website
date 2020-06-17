@@ -11,6 +11,12 @@
   height: 100%;
   overflow-y: auto;
   padding: 1rem;
+
+  code {
+    display: block;
+    padding: 0;
+    background: none;
+  }
 }
 
 .lineNumber {
