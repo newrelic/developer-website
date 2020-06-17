@@ -6,7 +6,7 @@
 
 .main {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: 300px minmax(0, 1fr);
   width: 100%;
 }
 
