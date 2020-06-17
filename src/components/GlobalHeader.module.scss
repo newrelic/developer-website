@@ -12,16 +12,10 @@
   justify-content: space-between;
 }
 
-.logo {
-  display: inline-block;
-  width: 79px;
-  height: 15px;
-  margin-right: 18px;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  background-image: url('../images/new-relic-logo.svg');
-  border: none;
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
 }
 
 .leftSideLinksContainer {

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Link } from 'gatsby';
+import NewRelicLogo from './NewRelicLogo';
 import ExternalLink from './ExternalLink';
 
 import styles from './GlobalHeader.module.scss';
@@ -11,8 +12,11 @@ const GlobalHeader = ({ className }) => {
     <div className={cx(styles.globalHeaderContainer, className)}>
       <div className={cx(styles.globalHeaderContent, 'site-container')}>
         <div className={styles.leftSideLinksContainer}>
-          <ExternalLink href="https://newrelic.com/" className={styles.logo}>
-            New Relic
+          <ExternalLink
+            href="https://newrelic.com/"
+            className={styles.logoContainer}
+          >
+            <NewRelicLogo />
           </ExternalLink>
 
           <ul className={styles.leftSideLinks}>
