@@ -1,6 +1,7 @@
 .container {
   position: relative;
   border-bottom: 1px solid var(--color-neutrals-100);
+  padding: 0 2rem;
 }
 
 .menuBar {
@@ -8,7 +9,6 @@
   align-items: center;
   justify-content: space-between;
   height: var(--height-mobile-nav-bar);
-  padding: 0 1rem;
 }
 
 .logo {

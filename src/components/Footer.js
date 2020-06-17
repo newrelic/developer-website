@@ -5,9 +5,10 @@ import ExternalLink from './ExternalLink';
 import styles from './Footer.module.scss';
 import FeatherIcon from './FeatherIcon';
 import Logo from './Logo';
+import PropTypes from 'prop-types';
 
-const Footer = () => (
-  <footer className={styles.footer}>
+const Footer = ({ className }) => (
+  <footer className={cx(styles.footer, className)}>
     <div className={cx('site-container', styles.container)}>
       <div className={styles.left}>
         <Link to="/">
@@ -35,5 +36,9 @@ const Footer = () => (
     </div>
   </footer>
 );
+
+Footer.propTypes = {
+  className: PropTypes.string,
+};
 
 export default Footer;

@@ -30,7 +30,11 @@ const Layout = ({ children }) => {
           {children}
         </main>
       </div>
-      <Footer />
+      <Footer
+        className={cx({
+          [styles.hideOnMobile]: isMobileNavOpen,
+        })}
+      />
     </div>
   );
 };
