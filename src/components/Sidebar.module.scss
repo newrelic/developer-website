@@ -31,12 +31,10 @@
 
 .nestedNav {
   padding-left: 1rem;
-  height: 0;
-  visibility: hidden;
+  display: none;
 
   &.isExpanded {
-    height: auto;
-    visibility: visible;
+    display: block;
   }
 }
 

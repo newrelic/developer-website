@@ -29,7 +29,7 @@ const renderNav = (pages, depthLevel = 0) => {
       )}
       {pages.map((page) => {
         const [isExpanded, setIsExpanded] = useState(
-          crumbs.includes(page.displayName)
+          crumbs.length === depthLevel || crumbs.includes(page.displayName)
         );
         const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
 
