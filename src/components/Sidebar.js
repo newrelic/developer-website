@@ -13,7 +13,7 @@ import styles from './Sidebar.module.scss';
 const renderNav = (pages, depthLevel = 0) => {
   return pages.map((page, index) => {
     const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
-    const [isDisplay, setIsDisplay] = useState(
+    const [isExpanded, setIsExpanded] = useState(
       crumbs.length === depthLevel || crumbs.includes(page.displayName)
     );
     const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
@@ -39,8 +39,8 @@ const renderNav = (pages, depthLevel = 0) => {
           <div
             className={styles.navItem}
             role="button"
-            onClick={() => setIsDisplay(!isDisplay)}
-            onKeyPress={() => setIsDisplay(!isDisplay)}
+            onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
+            onKeyPress={() => setIsExpanded((isExpanded) => !isExpanded)}
             tabIndex={0}
           >
             {page.displayName}
@@ -48,7 +48,9 @@ const renderNav = (pages, depthLevel = 0) => {
         )}
         {page.children && (
           <ul
-            className={cx(styles.nestedNav, { [styles.isDisplay]: isDisplay })}
+            className={cx(styles.nestedNav, {
+              [styles.isExpanded]: isExpanded,
+            })}
           >
             {renderNav(page.children, depthLevel + 1)}
           </ul>
@@ -63,7 +65,7 @@ const Sidebar = ({ className, pages, isOpen }) => (
     <Link to="/">
       <Logo className={styles.logo} />
     </Link>
-    <nav role="navigation" aria-label="Sidebar">
+    <nav className={styles.nav} role="navigation" aria-label="Sidebar">
       <ul className={styles.listNav}>{renderNav(pages)}</ul>
     </nav>
   </aside>
