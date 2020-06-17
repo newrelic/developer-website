@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { Fragment, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import cx from 'classnames';
@@ -11,53 +11,69 @@ import styles from './Sidebar.module.scss';
 
 // recursively create navigation
 const renderNav = (pages, depthLevel = 0) => {
-  return pages.map((page, index) => {
-    const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
-    const [isExpanded, setIsExpanded] = useState(
-      crumbs.length === depthLevel || crumbs.includes(page.displayName)
-    );
-    const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
+  const crumbs = useContext(BreadcrumbContext).map((x) => x.displayName);
 
-    return (
-      <li
-        className={cx(styles[`navDepth${depthLevel}`], {
-          [styles.isCurrentPage]: isCurrentPage,
-        })}
-        key={index}
-      >
-        {page.url ? (
-          <Link className={styles.navItem} to={page.url}>
-            {page.displayName}
-            {isCurrentPage && (
-              <FeatherIcon
-                className={styles.currentPageIndicator}
-                name="chevron-right"
-              />
+  const groupedPages = pages.reduce((groups, page) => {
+    const { group = '' } = page;
+
+    return {
+      ...groups,
+      [group]: [...(groups[group] || []), page],
+    };
+  }, {});
+
+  return Object.entries(groupedPages).map(([group, pages]) => (
+    <Fragment key={group}>
+      {group && (
+        <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
+      )}
+      {pages.map((page) => {
+        const [isExpanded, setIsExpanded] = useState(
+          crumbs.includes(page.displayName)
+        );
+        const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
+
+        return (
+          <li
+            key={page.displayName}
+            data-depth={depthLevel}
+            className={cx({ [styles.isCurrentPage]: isCurrentPage })}
+          >
+            {page.url ? (
+              <Link className={styles.navLink} to={page.url}>
+                {page.displayName}
+                {isCurrentPage && (
+                  <FeatherIcon
+                    className={styles.currentPageIndicator}
+                    name="chevron-right"
+                  />
+                )}
+              </Link>
+            ) : (
+              <div
+                role="button"
+                className={styles.navLink}
+                onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
+                onKeyPress={() => setIsExpanded((isExpanded) => !isExpanded)}
+                tabIndex={0}
+              >
+                {page.displayName}
+              </div>
             )}
-          </Link>
-        ) : (
-          <div
-            className={styles.navItem}
-            role="button"
-            onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
-            onKeyPress={() => setIsExpanded((isExpanded) => !isExpanded)}
-            tabIndex={0}
-          >
-            {page.displayName}
-          </div>
-        )}
-        {page.children && (
-          <ul
-            className={cx(styles.nestedNav, {
-              [styles.isExpanded]: isExpanded,
-            })}
-          >
-            {renderNav(page.children, depthLevel + 1)}
-          </ul>
-        )}
-      </li>
-    );
-  });
+            {page.children && (
+              <ul
+                className={cx(styles.nestedNav, {
+                  [styles.isExpanded]: isExpanded,
+                })}
+              >
+                {renderNav(page.children, depthLevel + 1)}
+              </ul>
+            )}
+          </li>
+        );
+      })}
+    </Fragment>
+  ));
 };
 
 const Sidebar = ({ className, pages, isOpen }) => (

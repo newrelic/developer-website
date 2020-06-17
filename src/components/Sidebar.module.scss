@@ -54,39 +54,32 @@
   padding-left: 0;
 }
 
-.navItem {
-  color: var(--color-black);
+.navLink {
+  color: var(--color-neutrals-900);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
+
+  [data-depth='0'] > & {
+    font-weight: bold;
+  }
 }
 
 .currentPageIndicator {
   stroke-width: 4;
 }
 
-.navDepth0 {
-  color: var(--color-black);
-  font-weight: bold;
-}
-
-.navDepth1 {
-  font-weight: normal;
-}
-
-.navDepth2 {
-  font-weight: bold;
-  text-transform: uppercase;
+.groupName {
   color: var(--color-neutrals-600);
-  font-size: 14px;
-}
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-transform: uppercase;
 
-.navDepth3 {
-  font-weight: normal;
-  text-transform: initial;
-  color: var(--color-black);
+  &:not(:first-child) {
+    margin-top: 2rem;
+  }
 }
 
 .isCurrentPage {
