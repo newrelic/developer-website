@@ -23,26 +23,10 @@
     cursor: pointer;
     width: 3rem;
     display: none;
-
-    @media (max-width: 760px) {
-      display: block;
-    }
   }
 
   nav {
     margin-top: 1rem;
-
-    @media (max-width: 760px) {
-      display: none;
-    }
-  }
-
-  &.isOpen {
-    nav {
-      @media (max-width: 760px) {
-        display: block;
-      }
-    }
   }
 }
 

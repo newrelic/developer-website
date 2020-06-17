@@ -12,7 +12,7 @@ const Layout = ({ children }) => (
   <>
     <GlobalHeader />
     <div className={styles.layout}>
-      <Sidebar pages={pages} />
+      <Sidebar className={styles.sidebar} pages={pages} />
       <main>{children}</main>
     </div>
     <Footer />

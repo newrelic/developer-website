@@ -49,8 +49,8 @@ const renderNav = (pages, depthLevel = 0) => {
   });
 };
 
-const Sidebar = ({ className, pages, isOpen }) => (
-  <aside className={cx(styles.sidebar, className, { [styles.isOpen]: isOpen })}>
+const Sidebar = ({ className, pages }) => (
+  <aside className={cx(styles.sidebar, className)}>
     <Link to="/" className={styles.logo} />
     <nav role="navigation" aria-label="Sidebar">
       <ul className={styles.listNav}>{renderNav(pages)}</ul>
@@ -61,11 +61,6 @@ const Sidebar = ({ className, pages, isOpen }) => (
 Sidebar.propTypes = {
   className: PropTypes.string,
   pages: PropTypes.arrayOf(link).isRequired,
-  isOpen: PropTypes.bool,
-};
-
-Sidebar.defaultProps = {
-  isOpen: false,
 };
 
 export default Sidebar;
