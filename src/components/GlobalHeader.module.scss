@@ -82,13 +82,3 @@
   display: flex;
   align-items: center;
 }
-
-// ==============================================================
-// Responsive styles
-// ==============================================================
-
-@media screen and (max-width: 1240px) {
-  .globalHeaderContainer {
-    padding: 0 1.75rem;
-  }
-}
