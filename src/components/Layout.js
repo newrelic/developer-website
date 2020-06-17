@@ -1,24 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import Footer from './Footer';
-import Header from './Header';
+import GlobalHeader from './GlobalHeader';
+import MobileHeader from './MobileHeader';
 import Sidebar from './Sidebar';
 import styles from './Layout.module.scss';
-import pages from '../data/sidenav.json';
 import './styles.scss';
 
-const Layout = ({ children }) => (
-  <div className={styles.layout}>
-    <Header />
-    <div className={cx(styles.main, 'site-container')}>
-      <Sidebar pages={pages} />
-      <main className={styles.content}>{children}</main>
+const Layout = ({ children }) => {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+
+  return (
+    <div className={styles.layout}>
+      <GlobalHeader />
+      <MobileHeader
+        className={styles.hideOnDesktop}
+        isOpen={isMobileNavOpen}
+        toggle={() => setIsMobileNavOpen(!isMobileNavOpen)}
+      />
+      <div className={cx(styles.main, 'site-container')}>
+        <Sidebar className={styles.hideOnMobile} />
+        <main
+          className={cx(styles.content, {
+            [styles.hideOnMobile]: isMobileNavOpen,
+          })}
+        >
+          {children}
+        </main>
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-);
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
