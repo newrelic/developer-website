@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
+import ExternalLink from './ExternalLink';
 
 import styles from './GlobalHeader.module.scss';
 
@@ -8,51 +10,47 @@ const GlobalHeader = ({ className }) => {
     <div className={`${styles.globalHeaderContainer} ${className}`}>
       <div className={styles.globalHeaderContent}>
         <div className={styles.leftSideLinksContainer}>
-          <a
+          <ExternalLink
             href="https://newrelic.com/"
             className={styles.logo}
             rel="noopener noreferrer"
           >
             New Relic
-          </a>
+          </ExternalLink>
 
           <ul className={styles.leftSideLinks}>
             <li className={`${styles.leftSideLinkItem} ${styles.active}`}>
-              <a
-                href="https://developer.newrelic.com/"
-                className={styles.leftSideLink}
-              >
+              <Link to="/" className={styles.leftSideLink}>
                 Developers
-              </a>
+              </Link>
             </li>
             <li className={styles.leftSideLinkItem}>
-              <a
+              <ExternalLink
                 href="https://opensource.newrelic.com/"
                 className={styles.leftSideLink}
               >
                 Open Source
-              </a>
+              </ExternalLink>
             </li>
             <li className={styles.leftSideLinkItem}>
-              <a
+              <ExternalLink
                 href="https://docs.newrelic.com/"
                 className={styles.leftSideLink}
               >
                 Documentation
-              </a>
+              </ExternalLink>
             </li>
           </ul>
         </div>
 
         <ul className={styles.rightSideButtons}>
           <li className={`${styles.rightSideButton} ${styles.githubButton}`}>
-            <a
+            <ExternalLink
               href="https://github.com/newrelic/developer-website"
               className={styles.githubButtonLink}
-              target="__blank"
             >
               GitHub
-            </a>
+            </ExternalLink>
           </li>
         </ul>
       </div>
