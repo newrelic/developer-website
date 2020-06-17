@@ -31,6 +31,8 @@ const renderNav = (pages, depthLevel = 0) => {
           crumbs.length === depthLevel || crumbs.includes(page.displayName)
         );
         const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
+        const isNestedAndExpanded = depthLevel > 0 && isExpanded;
+        const isNestedAndCollapsed = depthLevel > 0 && !isExpanded;
 
         return (
           <li
@@ -56,6 +58,19 @@ const renderNav = (pages, depthLevel = 0) => {
                 onKeyPress={() => setIsExpanded(!isExpanded)}
                 tabIndex={0}
               >
+                {isNestedAndCollapsed && (
+                  <FeatherIcon
+                    className={styles.nestedChevron}
+                    name="chevron-right"
+                  />
+                )}
+
+                {isNestedAndExpanded && (
+                  <FeatherIcon
+                    className={styles.nestedChevron}
+                    name="chevron-down"
+                  />
+                )}
                 {page.displayName}
               </button>
             )}
