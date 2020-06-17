@@ -18,6 +18,7 @@ const FeatherIcon = ({ className, name, size = '1em' }) => {
   ) : null;
 };
 
+// Icons from https://feathericons.com/
 const ICONS = {
   edit: (
     <>
