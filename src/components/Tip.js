@@ -18,7 +18,7 @@ Tip.propTypes = {
 };
 
 Tip.defaultProps = {
-  title: `Tip`,
+  title: 'Tip',
 };
 
 export default Tip;

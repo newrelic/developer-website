@@ -18,7 +18,7 @@ Caution.propTypes = {
 };
 
 Caution.defaultProps = {
-  title: `Warning`,
+  title: 'Warning',
 };
 
 export default Caution;

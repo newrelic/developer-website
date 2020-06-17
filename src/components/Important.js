@@ -18,7 +18,7 @@ Important.propTypes = {
 };
 
 Important.defaultProps = {
-  title: `Note`,
+  title: 'Note',
 };
 
 export default Important;
