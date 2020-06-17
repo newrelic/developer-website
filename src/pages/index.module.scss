@@ -7,7 +7,7 @@
 .intro {
   display: flex;
   justify-content: space-between;
-  margin: 2rem auto 7rem;
+  margin: 2rem auto;
 
   @media (max-width: 760px) {
     flex-direction: column;
