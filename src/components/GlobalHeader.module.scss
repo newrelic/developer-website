@@ -1,5 +1,9 @@
 .globalHeaderContainer {
   background-color: var(--color-neutrals-100);
+
+  :global(.site-container) {
+    padding: 0 2rem;
+  }
 }
 
 .globalHeaderContent {
