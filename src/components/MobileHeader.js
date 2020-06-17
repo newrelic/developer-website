@@ -8,7 +8,7 @@ import styles from './MobileHeader.module.scss';
 
 const MobileHeader = ({ className, isOpen, toggle }) => {
   return (
-    <aside className={cx(styles.container, className)}>
+    <header className={cx(styles.container, className)}>
       <div className={styles.menuBar}>
         <Link to="/" className={styles.logo} />
 
@@ -20,7 +20,7 @@ const MobileHeader = ({ className, isOpen, toggle }) => {
       </div>
 
       {isOpen && <Navigation className={styles.navigation} />}
-    </aside>
+    </header>
   );
 };
 
