@@ -1,8 +1,10 @@
 button.hamburgerMenu {
+  display: block;
   background: none;
   border: 0;
   cursor: pointer;
   width: 4rem;
+  outline: none;
 
   div {
     width: 100%;
