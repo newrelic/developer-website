@@ -22,7 +22,7 @@
 }
 
 .hideOnDesktop {
-  @media (min-width: 760px) {
+  @media (min-width: 760px + 1) {
     display: none;
   }
 }
