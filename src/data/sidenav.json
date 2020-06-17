@@ -37,7 +37,6 @@
   },
   {
     "displayName": "Build Apps",
-    "url": "/build-apps",
     "children": [
       {
         "displayName": "Map Pageviews by Region",
