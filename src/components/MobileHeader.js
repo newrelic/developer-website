@@ -11,15 +11,17 @@ const MobileHeader = ({ className }) => {
 
   return (
     <aside className={cx(styles.container, className)}>
-      <Link to="/" className={styles.logo} />
+      <div className={styles.menuBar}>
+        <Link to="/" className={styles.logo} />
 
-      <HamburgerMenu
-        className={styles.hamburgerMenu}
-        toggle={() => setIsOpen(!isOpen)}
-        isOpen={isOpen}
-      />
+        <HamburgerMenu
+          className={styles.hamburgerMenu}
+          toggle={() => setIsOpen(!isOpen)}
+          isOpen={isOpen}
+        />
+      </div>
 
-      {/* <Navigation /> */}
+      {isOpen && <Navigation className={styles.navigation} />}
     </aside>
   );
 };

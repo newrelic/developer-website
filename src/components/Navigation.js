@@ -4,13 +4,16 @@ import { Link } from 'gatsby';
 import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 import pages from '../data/sidenav.json';
-import { link } from '../types';
 
 import styles from './Navigation.module.scss';
 
-const Navigation = () => {
+const Navigation = ({ className }) => {
   return (
-    <nav className={styles.container} role="navigation" aria-label="Navigation">
+    <nav
+      className={cx(styles.container, className)}
+      role="navigation"
+      aria-label="Navigation"
+    >
       <ul className={styles.listNav}>{renderNav(pages)}</ul>
     </nav>
   );
@@ -18,7 +21,6 @@ const Navigation = () => {
 
 Navigation.propTypes = {
   className: PropTypes.string,
-  pages: PropTypes.arrayOf(link).isRequired,
 };
 
 export default Navigation;
