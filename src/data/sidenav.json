@@ -1,6 +1,6 @@
 [
   {
-    "displayName": "Collect Data",
+    "displayName": "Collect data",
     "url": "/collect-data",
     "children": [
       {
@@ -22,7 +22,7 @@
     ]
   },
   {
-    "displayName": "Explore Data",
+    "displayName": "Explore data",
     "url": "/explore-data",
     "children": [
       {
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "displayName": "Build Apps",
+    "displayName": "Build apps",
     "url": "/build-apps",
     "children": [
       {
@@ -66,7 +66,7 @@
     ]
   },
   {
-    "displayName": "Automate Workflows",
+    "displayName": "Automate workflows",
     "url": "/automate-workflows",
     "children": [
       {
@@ -80,7 +80,7 @@
     ]
   },
   {
-    "displayName": "Developer Docs",
+    "displayName": "Developer docs",
     "children": [
       {
         "displayName": "CLI"
