@@ -1,36 +1,9 @@
-.container {
-  display: grid;
-  grid-template-columns: auto 3fr;
-  grid-column-gap: 2rem;
-  grid-template-areas: 'sidebar main';
-
-  @media (max-width: 760px) {
-    grid-template-columns: none;
-    grid-template-areas: 'sidebar' 'main';
-  }
-}
-
-.content {
-  grid-area: main;
-}
-
-.sidebar {
-  grid-area: sidebar;
-}
-
-.description {
-  margin-top: 0.5rem;
-  padding-top: 0.5rem;
-
-  ul {
-    padding-top: 0.5rem;
-  }
-
-  li {
-    margin: 0;
-  }
-}
-
 .section:not(:last-child) {
   margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  font-weight: bold;
 }

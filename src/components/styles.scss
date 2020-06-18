@@ -57,38 +57,33 @@
   --color-teal-800: #003539;
   --color-teal-900: #002123;
 
-  --boxshadow: 0px 2.76726px 2.21381px rgba(0, 85, 90, 0.0168687),
-    0px 6.6501px 5.32008px rgba(0, 85, 90, 0.0242336),
-    0px 12.5216px 10.0172px rgba(0, 85, 90, 0.03),
-    0px 22.3363px 17.869px rgba(0, 85, 90, 0.0357664),
-    0px 41.7776px 33.4221px rgba(0, 85, 90, 0.0431313),
-    0px 100px 80px rgba(0, 85, 90, 0.06);
+  --boxshadow: 0 0.24905px 0.55345px rgba(0, 0, 0, 0.00562291),
+    0 0.59851px 1.33002px rgba(0, 0, 0, 0.00807786),
+    0 1.12694px 2.50431px rgba(0, 0, 0, 0.01),
+    0 2.01027px 4.46726px rgba(0, 0, 0, 0.0119221),
+    0 3.75998px 8.35552px rgba(0, 0, 0, 0.0143771),
+    0 9px 20px rgba(0, 0, 0, 0.02);
 
   --color-tile-background: rgb(215, 210, 233);
   --primary-font-family: 'open sans', sans-serif;
   --secondary-font-family: 'effra', sans-serif;
   --tertiary-font-family: 'Ovo', serif;
   --code-font: 'Menlo', 'Consolas', monospace;
+
+  --height-global-header: 30px;
+  --height-mobile-nav-bar: 60px;
 }
 
-/*-- Reset --*/
-// https://github.com/necolas/normalize.css
-html {
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
+* {
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   font-size: 16px;
   font-family: var(--primary-font-family);
   color: var(--color-neutrals-700);
   background-color: var(--color-white);
-  line-height: 1.2;
-}
-
-main {
-  display: block;
+  line-height: 1.5;
 }
 
 a {
@@ -97,13 +92,9 @@ a {
   color: var(--color-brand-800);
 }
 
-img {
-  border-style: none;
-}
-
 p {
-  margin: 0;
-  margin-top: 8px;
+  margin-top: 0;
+  margin-bottom: 1em;
 }
 
 h1,
@@ -112,22 +103,11 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: revert;
+  margin-top: 0;
   margin-bottom: 8px;
   font-weight: 600;
   color: var(--color-neutrals-800);
   font-family: var(--primary-font-family);
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  font-size: 100%;
-  line-height: 1.15;
-  margin: 0;
 }
 
 input,
@@ -142,7 +122,6 @@ button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
-  -webkit-appearance: button;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -162,16 +141,16 @@ button,
 }
 
 ul {
-  padding-left: 30px;
-  line-height: 1.6;
-}
-
-li {
-  margin-bottom: 1rem;
+  margin: 0;
+  padding-left: 2rem;
 }
 
 code {
   font-family: var(--code-font);
+}
+
+pre {
+  margin: 0;
 }
 
 :global {
@@ -179,5 +158,10 @@ code {
     color: var(--color-neutrals-600);
     font-size: 1.125rem;
     line-height: 2rem;
+  }
+
+  .site-container {
+    max-width: 1460px;
+    margin: 0 auto;
   }
 }

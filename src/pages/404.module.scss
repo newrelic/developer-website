@@ -1,0 +1,24 @@
+.layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.header {
+  font-family: var(--secondary-font-family);
+  font-size: 9rem;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.content {
+  font-size: 1.125rem;
+  padding: 8rem 0;
+}

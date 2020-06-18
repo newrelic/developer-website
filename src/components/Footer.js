@@ -1,19 +1,44 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Container from './Container';
+import cx from 'classnames';
+import ExternalLink from './ExternalLink';
 import styles from './Footer.module.scss';
+import FeatherIcon from './FeatherIcon';
+import Logo from './Logo';
+import PropTypes from 'prop-types';
 
-const Footer = () => (
-  <footer className={styles.footer}>
-    <Container className={styles.container}>
-      <div className={styles.leftColumn}>
-        <Link to="/" className={`${styles.logo} logo`} />
+const Footer = ({ className }) => (
+  <footer className={cx(styles.footer, className)}>
+    <div className={cx('site-container', styles.container)}>
+      <div className={styles.left}>
+        <Link to="/">
+          <Logo
+            className={styles.logo}
+            textColor="#7DA5A8"
+            bracketColor="#7DA5A8"
+          />
+        </Link>
         <div className={styles.copyright}>
           Copyright &copy; 2020 New Relic Inc.
         </div>
       </div>
-    </Container>
+
+      <div className={styles.right}>
+        <Link to="/">
+          <FeatherIcon className={styles.linkIcon} name="edit" size="1rem" />
+          Edit this page
+        </Link>
+        <ExternalLink href="https://github.com/newrelic/developer-website/issues/new/choose">
+          <FeatherIcon className={styles.linkIcon} name="github" size="1rem" />
+          Create an issue
+        </ExternalLink>
+      </div>
+    </div>
   </footer>
 );
+
+Footer.propTypes = {
+  className: PropTypes.string,
+};
 
 export default Footer;

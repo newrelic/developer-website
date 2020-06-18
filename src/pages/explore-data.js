@@ -1,15 +1,14 @@
+import { BreadcrumbContext } from '../components/BreadcrumbContext';
+import createBreadcrumbs from '../utils/create-breadcrumbs';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
+import PageTitle from '../components/PageTitle';
 import Layout from '../components/Layout';
 import React from 'react';
 import SEO from '../components/Seo';
-import Section from '../components/Section';
-import styles from './explore-data.module.scss';
+import pages from '../data/sidenav.json';
 
-const heading = 'Get Data into New Relic';
-
-const description =
-  'Instrument your applications and infrastructure to start collecting monitoring data';
+const title = 'Get data into New Relic';
 
 const guides = [
   {
@@ -34,21 +33,28 @@ const guides = [
   },
 ];
 
-const ExploreDataPage = () => (
-  <Layout>
-    <SEO title={heading} />
-    <Section backgroundBanner className={styles.backgroundBanner}>
-      <GuideListing>
-        <GuideListing.Heading>{heading}</GuideListing.Heading>
-        <GuideListing.Description>{description}</GuideListing.Description>
-        <GuideListing.List>
-          {guides.map((guide, index) => (
-            <GuideTile key={index} {...guide} />
-          ))}
-        </GuideListing.List>
-      </GuideListing>
-    </Section>
-  </Layout>
-);
+const ExploreDataPage = () => {
+  const crumbs = createBreadcrumbs('/explore-data', pages);
+  return (
+    <BreadcrumbContext.Provider value={crumbs}>
+      <Layout>
+        <SEO title={title} />
+        <PageTitle>{title}</PageTitle>
+        <p className="intro-text">
+          Instrument your applications and infrastructure to start collecting
+          monitoring data
+        </p>
+
+        <GuideListing>
+          <GuideListing.List>
+            {guides.map((guide, index) => (
+              <GuideTile key={index} {...guide} />
+            ))}
+          </GuideListing.List>
+        </GuideListing>
+      </Layout>
+    </BreadcrumbContext.Provider>
+  );
+};
 
 export default ExploreDataPage;

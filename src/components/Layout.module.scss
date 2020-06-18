@@ -1,13 +1,31 @@
 .layout {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
 
-  > main {
-    flex: 1 0 auto;
+.main {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  width: 100%;
+
+  @media screen and (max-width: 760px) {
+    grid-template-columns: 1fr;
   }
+}
 
-  > footer {
-    flex-shrink: 0;
+.content {
+  padding: 2rem;
+}
+
+.hideOnDesktop {
+  @media (min-width: 760px + 1) {
+    display: none;
+  }
+}
+
+.hideOnMobile {
+  @media (max-width: 760px) {
+    display: none;
   }
 }
