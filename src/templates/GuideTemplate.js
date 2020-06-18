@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
+import { pageContext } from '../types';
 import Layout from '../components/Layout';
 import FeatherIcon from '../components/FeatherIcon';
 import PageTitle from '../components/PageTitle';
@@ -13,6 +14,7 @@ import Steps from '../components/Steps';
 import Intro from '../components/Intro';
 import SEO from '../components/Seo';
 import { BreadcrumbContext } from '../components/BreadcrumbContext';
+import { PageContext } from '../components/PageContext';
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
 import styles from './GuideTemplate.module.scss';
@@ -26,37 +28,40 @@ const components = {
   code: (props) => <CodeSnippet {...props} />,
 };
 
-const GuideTemplate = ({ data }) => {
+const GuideTemplate = ({ data, pageContext }) => {
   const { mdx } = data;
   const { frontmatter, body } = mdx;
   const { title, description, duration } = frontmatter;
   const crumbs = createBreadcrumbs(frontmatter.path, pages);
 
   return (
-    <BreadcrumbContext.Provider value={crumbs}>
-      <Layout>
-        <SEO title={title} description={description} />
-        <div className={styles.header}>
-          <PageTitle>{title}</PageTitle>
-          {duration && (
-            <div className={styles.duration}>
-              <FeatherIcon name="clock" className={styles.clock} />
-              {duration}
-            </div>
-          )}
-        </div>
-        <div className={styles.mdxContainer}>
-          <MDXProvider components={components}>
-            <MDXRenderer>{body}</MDXRenderer>
-          </MDXProvider>
-        </div>
-      </Layout>
-    </BreadcrumbContext.Provider>
+    <PageContext.Provider value={pageContext}>
+      <BreadcrumbContext.Provider value={crumbs}>
+        <Layout>
+          <SEO title={title} description={description} />
+          <div className={styles.header}>
+            <PageTitle>{title}</PageTitle>
+            {duration && (
+              <div className={styles.duration}>
+                <FeatherIcon name="clock" className={styles.clock} />
+                {duration}
+              </div>
+            )}
+          </div>
+          <div className={styles.mdxContainer}>
+            <MDXProvider components={components}>
+              <MDXRenderer>{body}</MDXRenderer>
+            </MDXProvider>
+          </div>
+        </Layout>
+      </BreadcrumbContext.Provider>
+    </PageContext.Provider>
   );
 };
 
 GuideTemplate.propTypes = {
   data: PropTypes.object,
+  pageContext,
 };
 
 export const pageQuery = graphql`

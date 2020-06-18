@@ -7,6 +7,8 @@ import GuideTile from '../components/GuideTile';
 import PageTitle from '../components/PageTitle';
 import Video from '../components/Video';
 import ExternalLink from '../components/ExternalLink';
+import { PageContext } from '../components/PageContext';
+import { pageContext } from '../types';
 import styles from './index.module.scss';
 
 const getStartedGuides = [
@@ -53,65 +55,71 @@ const guides = [
   },
 ];
 
-const IndexPage = () => (
-  <Layout>
-    <SEO />
-    <PageTitle>Observability for every developer</PageTitle>
+const IndexPage = ({ pageContext }) => (
+  <PageContext.Provider value={pageContext}>
+    <Layout>
+      <SEO />
+      <PageTitle>Observability for every developer</PageTitle>
 
-    <section className={styles.intro}>
-      <div className={styles.introText}>
-        <p>
-          As developers, engineers, and problem solvers, pinpointing issues fast
-          and improving performance effectively are your top priorities. Explore
-          the developer site to learn how to collect data from any source,
-          visualize and instrument your data, and customize it in any way you
-          want. From how-to guides to video tutorials, community projects, and
-          more - we’ve got you covered.
-        </p>
-        <p>
-          Best of all? This site is built in open source. Submit ideas,
-          feedback, and comments directly to our engineers.
-        </p>
-        <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
-          <button type="button">Create a free account</button>
-        </ExternalLink>
-        <ExternalLink href="https://newrelic.com/request-demo">
-          <button type="button" className="secondary">
-            Request a demo
-          </button>
-        </ExternalLink>
-      </div>
-      <Video
-        className={styles.introVideo}
-        id="ZagZfNQYJEU"
-        type="youtube"
-        title="Develop with New Relic"
-      />
-    </section>
+      <section className={styles.intro}>
+        <div className={styles.introText}>
+          <p>
+            As developers, engineers, and problem solvers, pinpointing issues
+            fast and improving performance effectively are your top priorities.
+            Explore the developer site to learn how to collect data from any
+            source, visualize and instrument your data, and customize it in any
+            way you want. From how-to guides to video tutorials, community
+            projects, and more - we’ve got you covered.
+          </p>
+          <p>
+            Best of all? This site is built in open source. Submit ideas,
+            feedback, and comments directly to our engineers.
+          </p>
+          <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
+            <button type="button">Create a free account</button>
+          </ExternalLink>
+          <ExternalLink href="https://newrelic.com/request-demo">
+            <button type="button" className="secondary">
+              Request a demo
+            </button>
+          </ExternalLink>
+        </div>
+        <Video
+          className={styles.introVideo}
+          id="ZagZfNQYJEU"
+          type="youtube"
+          title="Develop with New Relic"
+        />
+      </section>
 
-    <GuideListing className={styles.guideListing}>
-      <GuideListing.Heading className={styles.guideListingHeading}>
-        Get started
-      </GuideListing.Heading>
-      <GuideListing.List>
-        {getStartedGuides.map((guide, index) => (
-          <GuideTile className={styles.guideTile} key={index} {...guide} />
-        ))}
-      </GuideListing.List>
-    </GuideListing>
-    <hr className={styles.line} />
+      <GuideListing className={styles.guideListing}>
+        <GuideListing.Heading className={styles.guideListingHeading}>
+          Get started
+        </GuideListing.Heading>
+        <GuideListing.List>
+          {getStartedGuides.map((guide, index) => (
+            <GuideTile className={styles.guideTile} key={index} {...guide} />
+          ))}
+        </GuideListing.List>
+      </GuideListing>
+      <hr className={styles.line} />
 
-    <GuideListing className={styles.guideListing}>
-      <GuideListing.Heading className={styles.guideListingHeading}>
-        Build Solutions
-      </GuideListing.Heading>
-      <GuideListing.List>
-        {guides.map((guide, index) => (
-          <GuideTile className={styles.guideTile} key={index} {...guide} />
-        ))}
-      </GuideListing.List>
-    </GuideListing>
-  </Layout>
+      <GuideListing className={styles.guideListing}>
+        <GuideListing.Heading className={styles.guideListingHeading}>
+          Build Solutions
+        </GuideListing.Heading>
+        <GuideListing.List>
+          {guides.map((guide, index) => (
+            <GuideTile className={styles.guideTile} key={index} {...guide} />
+          ))}
+        </GuideListing.List>
+      </GuideListing>
+    </Layout>
+  </PageContext.Provider>
 );
+
+IndexPage.propTypes = {
+  pageContext,
+};
 
 export default IndexPage;
