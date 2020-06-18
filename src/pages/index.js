@@ -77,7 +77,7 @@ const IndexPage = () => (
 
     <GuideListing className={styles.guideListing}>
       <GuideListing.Heading className={styles.guideListingHeading}>
-        Solve a problem with one of our guides
+        Build Solutions
       </GuideListing.Heading>
       <GuideListing.List>
         {guides.map((guide, index) => (
