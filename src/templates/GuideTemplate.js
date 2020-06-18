@@ -38,10 +38,12 @@ const GuideTemplate = ({ data }) => {
         <SEO title={title} description={description} />
         <div className={styles.header}>
           <PageTitle>{title}</PageTitle>
-          <div className={styles.duration}>
-            <FeatherIcon name="clock" className={styles.clock} />
-            {duration}
-          </div>
+          {duration && (
+            <div className={styles.duration}>
+              <FeatherIcon name="clock" className={styles.clock} />
+              {duration}
+            </div>
+          )}
         </div>
         <div className={styles.mdxContainer}>
           <MDXProvider components={components}>
