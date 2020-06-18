@@ -74,19 +74,11 @@
   --height-mobile-nav-bar: 60px;
 }
 
-/*-- Reset --*/
-// https://github.com/necolas/normalize.css
-html {
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-}
-
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   font-size: 16px;
   font-family: var(--primary-font-family);
   color: var(--color-neutrals-700);
@@ -94,18 +86,10 @@ body {
   line-height: 1.5;
 }
 
-main {
-  display: block;
-}
-
 a {
   cursor: pointer;
   text-decoration: none;
   color: var(--color-brand-800);
-}
-
-img {
-  border-style: none;
 }
 
 p {
@@ -126,17 +110,6 @@ h6 {
   font-family: var(--primary-font-family);
 }
 
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  font-size: 100%;
-  line-height: 1.15;
-  margin: 0;
-}
-
 input,
 select {
   border: 1px solid var(--color-neutrals-400);
@@ -149,7 +122,6 @@ button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
-  -webkit-appearance: button;
   display: inline-flex;
   align-items: center;
   justify-content: center;
