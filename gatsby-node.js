@@ -1,5 +1,8 @@
 const path = require(`path`);
 
+const getFileRelativePath = (absolutePath) =>
+  absolutePath.replace(`${process.cwd()}/`, '');
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
@@ -30,11 +33,24 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       path: node.frontmatter.path,
       component: path.resolve(`src/templates/${node.frontmatter.template}.js`),
       context: {
-        fileRelativePath: node.fileAbsolutePath.replace(
-          `${process.cwd()}/`,
-          ''
-        ),
+        fileRelativePath: getFileRelativePath(node.fileAbsolutePath),
       },
     });
   });
+};
+
+exports.onCreateNode = ({ node, actions }) => {
+  // if we don't have a relative path, attempt to get one
+  if (node.context && !node.context.fileRelativePath) {
+    const { createPage } = actions;
+    const { path, component } = node;
+
+    createPage({
+      path,
+      component,
+      context: {
+        fileRelativePath: getFileRelativePath(component),
+      },
+    });
+  }
 };
