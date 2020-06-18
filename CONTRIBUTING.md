@@ -23,8 +23,8 @@
     - [Deleting guides](#deleting-guides)
   - [Updating navigation](#updating-navigation)
     - [Example navigation change](#example-navigation-change)
-    - [EXISTING](#existing)
-    - [UPDATED](#updated)
+      - [EXISTING](#existing)
+      - [UPDATED](#updated)
 
 ## Guidelines for contributing
 
@@ -177,19 +177,21 @@ When a new guide is added or an existing guide path frontmatter slug is changed 
 
 1. Make your guide change and submit a PR.
 2. Within that PR also make the navigation change.
-3. In order to change navigation you will need to update the [sidenav.json](../src/data/sidenav.json)
-4. This file contains the structure of the navigation is JSON.
-5. Be sure to close all `[ ]` and `{ }` and use trailing `,` correctly.
-6. Submit your `PR` and add the Navigation `Label` to the PR
+3. In order to change navigation you will need to update the [sidenav.json](../src/data/sidenav.json) file.
+4. Given the side navigation file is JSON, be sure to close all `[ ]` and `{ }` and use trailing `,` correctly.
+5. Navigation `displayName` should always be Sentence case.
+6. Submit your `PR` and add the Navigation `Label`.
 
 ### Example navigation change
 
-### EXISTING
+In the example below a new navigation element has been added called `New Nav Item`.
+
+#### EXISTING
 
 ```json
 [
   {
-    "displayName": "Collect Data",
+    "displayName": "Collect data",
     "url": "/collect-data",
     "children": [
       {
@@ -210,11 +212,10 @@ When a new guide is added or an existing guide path frontmatter slug is changed 
       }
     ]
   },
-
 ]
 ```
 
-### UPDATED
+#### UPDATED
 
 ```json
 [
@@ -239,7 +240,7 @@ When a new guide is added or an existing guide path frontmatter slug is changed 
         "url": "/"
       },
        {
-        "displayName": "New Nav Item",
+        "displayName": "New nav item",
         "url": "/new-route"
       }
     ]
