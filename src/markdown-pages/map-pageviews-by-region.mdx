@@ -125,7 +125,7 @@ To add a table with a single row, in the `index.js` file, replace this line:
 return <h1>Hello, pageview-app-nerdlet Nerdlet!</h1>;
 ```
 
-with this:
+with this `export` code:
 ```jsx
 export default class PageViewApp extends React.Component {
     render() {
@@ -184,10 +184,13 @@ Go to New Relic One and click your app to see your data in the table. (You might
 Congratulations! You made your app! Continue on to make it interactive and show your data on a map.
 </Step>
 
+</Steps>
+
 ## Make your app interactive with a text field
 
 Once you confirm that data is getting to New Relic from your app, you can start customizing it and making it interactive. To do this, you add a text field to filter your data. Later, you use a third-party library called `Leaflet` to show that data on a world map.
 
+<Steps>
 
 <Step>
 
@@ -246,9 +249,13 @@ Reload your app to try out the text field.
 
 </Step>
 
+</Steps>
+
 ## Get your data on a map
 
 To create the map, you use npm to install `Leaflet`.
+
+<Steps>
 
 <Step>
 
@@ -453,6 +460,6 @@ Reload your app to see the pageview data on the map!
 
 ## Related info
 
-- Link to next logical guide
-- Links to related content like reference docs
-- Links to related opensource.newrelic.com, docs.newrelic.com, blog, git docs, or other related content.  
+- Learn more about [querying data](https://docs.newrelic.com/docs/query-data/nrql-new-relic-query-language/getting-started/introduction-nrql) 
+- Check out other guides for [building apps](/build-apps)
+- Join the discussion in our [community portal](https://discuss.newrelic.com/c/build-on-new-relic)  
