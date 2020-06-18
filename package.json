@@ -23,6 +23,7 @@
     "gatsby-transformer-remark": "^2.7.3",
     "gatsby-transformer-sharp": "^2.4.6",
     "node-sass": "^4.13.1",
+    "normalize.css": "^8.0.1",
     "prism-react-renderer": "^1.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
