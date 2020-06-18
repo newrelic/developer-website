@@ -98,6 +98,12 @@ main {
   display: block;
 }
 
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
 a {
   cursor: pointer;
   text-decoration: none;
