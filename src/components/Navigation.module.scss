@@ -27,6 +27,11 @@
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
+  transition: 0.1s;
+
+  &:hover {
+    color: var(--color-neutrals-600);
+  }
 
   [data-depth='0'] > & {
     font-weight: bold;
