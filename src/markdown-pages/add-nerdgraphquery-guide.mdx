@@ -14,7 +14,7 @@ NerdGraph is New Relic's GraphQl implementation. GraphQL has some key difference
 * The client, not the server, determines what data is returned. 
 * You can easily collect data from multiple sources. For example, in a single New Relic query, you can get account information, infrastructure data, and issue a NRQL request.
 
-> ***NOTE:*** To prototype GraphQL queries in New Relic, try our [NerdGraph API explorer](https://api.newrelic.com/graphiql).
+> ***NOTE:*** Before completing this exercise, you can experiment with GraphQL queries in our [NerdGraph API explorer](https://api.newrelic.com/graphiql).
 
 
 Our 14 minute video covers the steps below.
@@ -57,9 +57,9 @@ Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
 > ***NOTE:*** Your account ID is viewable in the profile selection menu of the developer center (where you downloaded the New Relic One CLI). 
 
-```js
-this.accountId = <ADD YOUR ACCOUNT ID>;
-```
+  ```js
+  this.accountId = <ADD YOUR ACCOUNT ID>;
+  ```
 
 </Step>
 
@@ -67,19 +67,20 @@ this.accountId = <ADD YOUR ACCOUNT ID>;
 
 In the terminal, change to the `/nr1-howto/use-nerdgraph` directory.
 
-```bash
-cd /nr1-howto/use-nerdgraph
-```
+  ```bash
+  cd /nr1-howto/use-nerdgraph
+  ```
   </Step>
 
   <Step>
 
 Execute these commands to update the UUID and serve the sample application:
 
-```bash
-nr1 nerdpack:uuid -gf
-nr1 nerdpack:serve
-```
+  ```bash
+  nr1 nerdpack:uuid -gf
+  nr1 nerdpack:serve
+  ```
+
   </Step>
 
   <Step>
@@ -118,20 +119,20 @@ Now you can create a dropdown menu for changing the account the application is v
 
 Add the `NerdGraphQuery` component into the first `StackItem` inside of the `return` in the `index.js` file:
 
-```js
-<NerdGraphQuery query={query} variables={variables}>
-    {({loading, error, data}) => {
-        console.log({loading, error, data})
-        if (loading) {
-            return <Spinner />;
-        }
-        if (error) {
-            return 'Error!';
-        }
-        return null;
-    }}
-</NerdGraphQuery>
-```
+  ```js
+  <NerdGraphQuery query={query} variables={variables}>
+      {({loading, error, data}) => {
+          console.log({loading, error, data})
+          if (loading) {
+              return <Spinner />;
+          }
+          if (error) {
+              return 'Error!';
+          }
+          return null;
+      }}
+  </NerdGraphQuery>
+  ```
 
   </Step>
 
@@ -143,17 +144,17 @@ Add the following code to your `index.js` file in the `render` method:
 
 > ***NOTE:***  In the browser console, you can see the data from your query returned in an object that follows the same structure of the object in the initial query.
 
-```js
-const query = `
-    query($id: Int!) {
-        actor {
-            account(id: $id) {
-                name
-            }
-        }
-    }
-`;
-```
+  ```js
+  const query = `
+      query($id: Int!) {
+          actor {
+              account(id: $id) {
+                  name
+              }
+          }
+      }
+  `;
+  ```
 
   </Step>
 
@@ -161,9 +162,10 @@ const query = `
 
 To take the data returned by the NerdGraph query and display it in the application, replace the `return null` in the current `NerdGraphQuery` component with this `return` statement:
 
-```js
-return <HeadingText>{data.actor.account.name} Apps:</HeadingText>; 
-```
+  ```js
+  return <HeadingText>{data.actor.account.name} Apps:</HeadingText>; 
+  ```
+
   </Step>
 
 </Steps>
@@ -191,22 +193,22 @@ The following code takes the response from NerdGraph and makes sure the results 
 
 Add the following code into the `index.js` just under the `constructor`: 
 
-```js
-componentDidMount(){
-    const accountId = this.state;
-    const gql = `{ actor { accounts { id name } } }`;
+  ```js
+  componentDidMount() {
+      const accountId = this.state;
+      const gql = `{ actor { accounts { id name } } }`;
 
-    const accounts = NerdGraphQuery.query({query: gql}) //The NerdGraphQuery.query method called with the query object to get your account data is stored in the accounts variable. 
-    accounts.then(results => {
-        console.log('Nerdgraph Response:', results);
-        const accounts = results.data.actor.accounts.map(account => {
-            return account;
-        });
-        const account = accounts.length > 0 && accounts[0];
-        this.setState({ selectedAccount: account, accounts });
-    }).catch((error) => { console.log('Nerdgraph Error:', error); })
-}
-```
+      const accounts = NerdGraphQuery.query({query: gql}) //The NerdGraphQuery.query method called with the query object to get your account data is stored in the accounts variable. 
+      accounts.then(results => {
+          console.log('Nerdgraph Response:', results);
+          const accounts = results.data.actor.accounts.map(account => {
+              return account;
+          });
+          const account = accounts.length > 0 && accounts[0];
+          this.setState({ selectedAccount: account, accounts });
+      }).catch((error) => { console.log('Nerdgraph Error:', error); })
+  }
+  ```
 
   </Step>
 
@@ -216,19 +218,19 @@ After the data is stored into state, display a selection so users can change acc
 
 To do this, add the following code to `index.js` for the second `StackItem` in the `return` statement:
 
-```js
-{accounts &&
-    <StackItem>
-        <Select value={selectedAccount} onChange={(evt, value) => this.selectAccount(value)}>
-        {accounts.map(a => {
-            return <SelectItem key={a.id} value={a}>
-            {a.name}
-            </SelectItem>
-        })}
-        </Select>
-    </StackItem>
-}
-```
+  ```js
+  {accounts &&
+      <StackItem>
+          <Select value={selectedAccount} onChange={(evt, value) => this.selectAccount(value)}>
+          {accounts.map(a => {
+              return <SelectItem key={a.id} value={a}>
+              {a.name}
+              </SelectItem>
+          })}
+          </Select>
+      </StackItem>
+  }
+  ```
   </Step>
 
 </Steps>
@@ -242,155 +244,155 @@ After you complete these steps, look at the application in your browser, and not
 
 The final `index.js` file should have code similar to the code below. This completed sample code is in your nerdlet `final.js`.
 
-```js
-import React from 'react';
-import { PlatformStateContext, NerdGraphQuery, Spinner, HeadingText, Grid, GridItem, Stack, StackItem, Select, SelectItem, AreaChart, TableChart, PieChart } from 'nr1'
-import { timeRangeToNrql } from '@newrelic/nr1-community';
+  ```js
+  import React from 'react';
+  import { PlatformStateContext, NerdGraphQuery, Spinner, HeadingText, Grid, GridItem, Stack, StackItem, Select, SelectItem, AreaChart, TableChart, PieChart } from 'nr1'
+  import { timeRangeToNrql } from '@newrelic/nr1-community';
 
-// https://docs.newrelic.com/docs/new-relic-programmable-platform-introduction
+  // https://docs.newrelic.com/docs/new-relic-programmable-platform-introduction
 
-export default class UseNerdgraphNerdletNerdlet extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            accountId: <YOUR ACCOUNT ID>,
-            accounts: null,
-            selectedAccount: null,
-        }
-    }
+  export default class UseNerdgraphNerdletNerdlet extends React.Component {
+      constructor(props){
+          super(props)
+          this.state = {
+              accountId: <YOUR ACCOUNT ID>,
+              accounts: null,
+              selectedAccount: null,
+          }
+      }
 
-    componentDidMount(){
-        const accountId = this.state;
-        const gql = `{ actor { accounts { id name } } }`;
+      componentDidMount() {
+          const accountId = this.state;
+          const gql = `{ actor { accounts { id name } } }`;
 
-        const accounts =  NerdGraphQuery.query({query: gql})
-        accounts.then(results => {
-            console.log('Nerdgraph Response:', results);
-            const accounts = results.data.actor.accounts.map(account => {
-                return account;
-            });
-            const account = accounts.length > 0 && accounts[0];
-            this.setState({ selectedAccount: account, accounts });
-        }).catch((error) => { console.log('Nerdgraph Error:', error); })
-    }
+          const accounts =  NerdGraphQuery.query({ query: gql })
+          accounts.then(results => {
+              console.log('Nerdgraph Response:', results);
+              const accounts = results.data.actor.accounts.map(account => {
+                  return account;
+              });
+              const account = accounts.length > 0 && accounts[0];
+              this.setState({ selectedAccount: account, accounts });
+          }).catch((error) => { console.log('Nerdgraph Error:', error); })
+      }
 
-    selectAccount(option) {
-        this.setState({ accountId: option.id,selectedAccount: option });
-    }
+      selectAccount(option) {
+          this.setState({ accountId: option.id, selectedAccount: option });
+      }
 
 
-    render() {
-        const { accountId, accounts, selectedAccount  } = this.state;
-        console.log({accountId, accounts, selectedAccount});
+      render() {
+          const { accountId, accounts, selectedAccount  } = this.state;
+          console.log({ accountId, accounts, selectedAccount });
 
-        const query = `
-            query($id: Int!) {
-                actor {
-                    account(id: $id) {
-                        name
-                    }
-                }
-            }
-        `;
+          const query = `
+              query($id: Int!) {
+                  actor {
+                      account(id: $id) {
+                          name
+                      }
+                  }
+              }
+          `;
 
-        const variables = {
-        id: accountId,
-        };
+          const variables = {
+            id: accountId,
+          };
 
-        const avgResTime = `SELECT average(duration) FROM Transaction FACET appName TIMESERIES AUTO `;
-        const trxOverview = `FROM Transaction SELECT count(*) as 'Transactions', apdex(duration) as 'apdex', percentile(duration, 99, 95) FACET appName `;
-        const errCount = `FROM TransactionError SELECT count(*) as 'Transaction Errors' FACET error.message `;
-        const responseCodes = `SELECT count(*) as 'Response Code' FROM Transaction FACET httpResponseCode `;
+          const avgResTime = `SELECT average(duration) FROM Transaction FACET appName TIMESERIES AUTO `;
+          const trxOverview = `FROM Transaction SELECT count(*) as 'Transactions', apdex(duration) as 'apdex', percentile(duration, 99, 95) FACET appName `;
+          const errCount = `FROM TransactionError SELECT count(*) as 'Transaction Errors' FACET error.message `;
+          const responseCodes = `SELECT count(*) as 'Response Code' FROM Transaction FACET httpResponseCode `;
 
-        return (
-            <Stack
-                fullWidth
-                horizontalType={Stack.HORIZONTAL_TYPE.FILL}
-                gapType={Stack.GAP_TYPE.EXTRA_LOOSE}
-                spacingType={[Stack.SPACING_TYPE.MEDIUM]}
-                directionType={Stack.DIRECTION_TYPE.VERTICAL}>
-                <StackItem>
-                    <NerdGraphQuery query={query} variables={variables}>
-                        {({loading, error, data}) => {
-                            if (loading) {
-                                return <Spinner />;
-                            }
+          return (
+              <Stack
+                  fullWidth
+                  horizontalType={Stack.HORIZONTAL_TYPE.FILL}
+                  gapType={Stack.GAP_TYPE.EXTRA_LOOSE}
+                  spacingType={[Stack.SPACING_TYPE.MEDIUM]}
+                  directionType={Stack.DIRECTION_TYPE.VERTICAL}>
+                  <StackItem>
+                      <NerdGraphQuery query={query} variables={variables}>
+                          {({loading, error, data}) => {
+                              if (loading) {
+                                  return <Spinner />;
+                              }
 
-                            if (error) {
-                                return 'Error!';
-                            }
+                              if (error) {
+                                  return 'Error!';
+                              }
 
-                            return <HeadingText>{data.actor.account.name} Apps:</HeadingText>;
-                        }}
-                    </NerdGraphQuery>
-                </StackItem>
-                {accounts &&
-                    <StackItem>
-                        <Select value={selectedAccount} onChange={(evt, value) => this.selectAccount(value)}>
-                        {accounts.map(a => {
-                            return <SelectItem key={a.id} value={a}>
-                            {a.name}
-                            </SelectItem>
-                        })}
-                        </Select>
-                    </StackItem>
-                }
-                <StackItem>
-                <hr />
-                    <PlatformStateContext.Consumer>
-                    {(PlatformState) => {
-                        /* Taking a peek at the PlatformState */
-                        const since = timeRangeToNrql(PlatformState);
-                        return (
-                        <>
-                            <Grid
-                            className="primary-grid"
-                            spacingType={[Grid.SPACING_TYPE.NONE, Grid.SPACING_TYPE.NONE]}
-                            >
-                                <GridItem className="primary-content-container" columnSpan={6}>
-                                    <main className="primary-content full-height">
-                                    <HeadingText spacingType={[HeadingText.SPACING_TYPE.MEDIUM]} type={HeadingText.TYPE.HEADING_4}>
-                                        Transaction Overview
-                                    </HeadingText>
-                                    <TableChart fullWidth accountId={accountId} query={trxOverview+since} />
-                                    </main>
-                                </GridItem>
-                                <GridItem className="primary-content-container" columnSpan={6}>
-                                    <main className="primary-content full-height">
-                                    <HeadingText spacingType={[HeadingText.SPACING_TYPE.MEDIUM]} type={HeadingText.TYPE.HEADING_4}>
-                                        Average Response Time
-                                    </HeadingText>
-                                    <AreaChart fullWidth accountId={accountId} query={avgResTime+since} />
-                                    </main>
-                                </GridItem>
-                                <GridItem className="primary-content-container" columnSpan={6}>
-                                    <main className="primary-content full-height">
-                                    <HeadingText spacingType={[HeadingText.SPACING_TYPE.MEDIUM]} type={HeadingText.TYPE.HEADING_4}>
-                                        Response Code
-                                    </HeadingText>
-                                    <PieChart fullWidth accountId={accountId} query={responseCodes+since} />
-                                    </main>
-                                </GridItem>
-                                <GridItem className="primary-content-container" columnSpan={6}>
-                                    <main className="primary-content full-height">
-                                    <HeadingText spacingType={[HeadingText.SPACING_TYPE.MEDIUM]} type={HeadingText.TYPE.HEADING_4}>
-                                        Transaction Errors
-                                    </HeadingText>
-                                    <PieChart fullWidth accountId={accountId} query={errCount+since} />
-                                    </main>
-                                </GridItem>
-                            </Grid>
-                        </>
-                        );
-                    }}
-                    </PlatformStateContext.Consumer>
-                </StackItem>
-            </Stack>
-        )
-    }
-}
+                              return <HeadingText>{data.actor.account.name} Apps:</HeadingText>;
+                          }}
+                      </NerdGraphQuery>
+                  </StackItem>
+                  {accounts &&
+                      <StackItem>
+                          <Select value={selectedAccount} onChange={(evt, value) => this.selectAccount(value)}>
+                          {accounts.map(a => {
+                              return <SelectItem key={a.id} value={a}>
+                              {a.name}
+                              </SelectItem>
+                          })}
+                          </Select>
+                      </StackItem>
+                  }
+                  <StackItem>
+                  <hr />
+                      <PlatformStateContext.Consumer>
+                      {(PlatformState) => {
+                          /* Taking a peek at the PlatformState */
+                          const since = timeRangeToNrql(PlatformState);
+                          return (
+                          <>
+                              <Grid
+                              className="primary-grid"
+                              spacingType={[Grid.SPACING_TYPE.NONE, Grid.SPACING_TYPE.NONE]}
+                              >
+                                  <GridItem className="primary-content-container" columnSpan={6}>
+                                      <main className="primary-content full-height">
+                                      <HeadingText spacingType={[HeadingText.SPACING_TYPE.MEDIUM]} type={HeadingText.TYPE.HEADING_4}>
+                                          Transaction Overview
+                                      </HeadingText>
+                                      <TableChart fullWidth accountId={accountId} query={trxOverview+since} />
+                                      </main>
+                                  </GridItem>
+                                  <GridItem className="primary-content-container" columnSpan={6}>
+                                      <main className="primary-content full-height">
+                                      <HeadingText spacingType={[HeadingText.SPACING_TYPE.MEDIUM]} type={HeadingText.TYPE.HEADING_4}>
+                                          Average Response Time
+                                      </HeadingText>
+                                      <AreaChart fullWidth accountId={accountId} query={avgResTime+since} />
+                                      </main>
+                                  </GridItem>
+                                  <GridItem className="primary-content-container" columnSpan={6}>
+                                      <main className="primary-content full-height">
+                                      <HeadingText spacingType={[HeadingText.SPACING_TYPE.MEDIUM]} type={HeadingText.TYPE.HEADING_4}>
+                                          Response Code
+                                      </HeadingText>
+                                      <PieChart fullWidth accountId={accountId} query={responseCodes+since} />
+                                      </main>
+                                  </GridItem>
+                                  <GridItem className="primary-content-container" columnSpan={6}>
+                                      <main className="primary-content full-height">
+                                      <HeadingText spacingType={[HeadingText.SPACING_TYPE.MEDIUM]} type={HeadingText.TYPE.HEADING_4}>
+                                          Transaction Errors
+                                      </HeadingText>
+                                      <PieChart fullWidth accountId={accountId} query={errCount+since} />
+                                      </main>
+                                  </GridItem>
+                              </Grid>
+                          </>
+                          );
+                      }}
+                      </PlatformStateContext.Consumer>
+                  </StackItem>
+              </Stack>
+          )
+      }
+  }
 
-```
+  ```
 
 ## Summary
 
