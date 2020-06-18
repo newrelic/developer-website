@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
+import { pageContext } from '../types';
 import Layout from '../components/Layout';
 import FeatherIcon from '../components/FeatherIcon';
 import PageTitle from '../components/PageTitle';
@@ -57,7 +58,7 @@ const GuideTemplate = ({ data, pageContext }) => {
 
 GuideTemplate.propTypes = {
   data: PropTypes.object,
-  pageContext: PropTypes.shape({ fileRelativePath: PropTypes.string }),
+  pageContext,
 };
 
 export const pageQuery = graphql`

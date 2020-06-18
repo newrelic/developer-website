@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
@@ -7,6 +8,7 @@ import GuideTile from '../components/GuideTile';
 import PageTitle from '../components/PageTitle';
 import Video from '../components/Video';
 import ExternalLink from '../components/ExternalLink';
+import { pageContext } from '../types';
 import styles from './index.module.scss';
 
 const getStartedGuides = [
@@ -53,8 +55,8 @@ const guides = [
   },
 ];
 
-const IndexPage = () => (
-  <Layout fileRelativePath="src/pages/index.js">
+const IndexPage = ({ pageContext }) => (
+  <Layout fileRelativePath={pageContext.fileRelativePath}>
     <SEO />
     <PageTitle>Observability for every developer</PageTitle>
 
@@ -113,5 +115,9 @@ const IndexPage = () => (
     </GuideListing>
   </Layout>
 );
+
+IndexPage.propTypes = {
+  pageContext,
+};
 
 export default IndexPage;

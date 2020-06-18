@@ -6,6 +6,7 @@ import PageTitle from '../components/PageTitle';
 import Layout from '../components/Layout';
 import React from 'react';
 import SEO from '../components/Seo';
+import { pageContext } from '../types';
 import pages from '../data/sidenav.json';
 
 const title = 'Get data into New Relic';
@@ -33,18 +34,17 @@ const guides = [
   },
 ];
 
-const ExploreDataPage = () => {
+const ExploreDataPage = ({ pageContext }) => {
   const crumbs = createBreadcrumbs('/explore-data', pages);
   return (
     <BreadcrumbContext.Provider value={crumbs}>
-      <Layout>
+      <Layout fileRelativePath={pageContext.fileRelativePath}>
         <SEO title={title} />
         <PageTitle>{title}</PageTitle>
         <p className="intro-text">
           Instrument your applications and infrastructure to start collecting
           monitoring data
         </p>
-
         <GuideListing>
           <GuideListing.List>
             {guides.map((guide, index) => (
@@ -55,6 +55,10 @@ const ExploreDataPage = () => {
       </Layout>
     </BreadcrumbContext.Provider>
   );
+};
+
+ExploreDataPage.propTypes = {
+  pageContext,
 };
 
 export default ExploreDataPage;
