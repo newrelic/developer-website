@@ -21,7 +21,7 @@
       },
       {
         "displayName": "Create custom New Relic events",
-        "url": "/custom-events"
+        "url": "collect-data/custom-events"
       }
     ]
   },
