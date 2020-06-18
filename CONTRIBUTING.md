@@ -220,7 +220,7 @@ In the example below a new navigation element has been added called `New Nav Ite
 ```json
 [
   {
-    "displayName": "Collect Data",
+    "displayName": "Collect data",
     "url": "/collect-data",
     "children": [
       {
@@ -244,6 +244,6 @@ In the example below a new navigation element has been added called `New Nav Ite
         "url": "/new-route"
       }
     ]
-  },
+  }
 ]
 ```
