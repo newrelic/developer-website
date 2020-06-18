@@ -177,6 +177,10 @@ code {
   font-family: var(--code-font);
 }
 
+pre {
+  margin: 0;
+}
+
 :global {
   .intro-text {
     color: var(--color-neutrals-600);
