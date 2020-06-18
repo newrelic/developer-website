@@ -29,7 +29,7 @@
   text-decoration: none;
   transition: 0.1s;
 
-  &:hover {
+  &:not(.isCurrentPage):hover {
     color: var(--color-neutrals-600);
   }
 
@@ -77,4 +77,5 @@ button.navLink {
 
 .isCurrentPage {
   font-weight: bold;
+  cursor: default;
 }
