@@ -1,3 +1,4 @@
+import { PageContext } from '../components/PageContext';
 import { BreadcrumbContext } from '../components/BreadcrumbContext';
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import GuideListing from '../components/GuideListing/GuideListing';
@@ -6,6 +7,7 @@ import PageTitle from '../components/PageTitle';
 import Layout from '../components/Layout';
 import React from 'react';
 import SEO from '../components/Seo';
+import { pageContext } from '../types';
 import pages from '../data/sidenav.json';
 
 const title = 'Get data into New Relic';
@@ -33,28 +35,33 @@ const guides = [
   },
 ];
 
-const ExploreDataPage = () => {
+const ExploreDataPage = ({ pageContext }) => {
   const crumbs = createBreadcrumbs('/explore-data', pages);
   return (
-    <BreadcrumbContext.Provider value={crumbs}>
-      <Layout>
-        <SEO title={title} />
-        <PageTitle>{title}</PageTitle>
-        <p className="intro-text">
-          Instrument your applications and infrastructure to start collecting
-          monitoring data
-        </p>
-
-        <GuideListing>
-          <GuideListing.List>
-            {guides.map((guide, index) => (
-              <GuideTile key={index} {...guide} />
-            ))}
-          </GuideListing.List>
-        </GuideListing>
-      </Layout>
-    </BreadcrumbContext.Provider>
+    <PageContext.Provider value={pageContext}>
+      <BreadcrumbContext.Provider value={crumbs}>
+        <Layout>
+          <SEO title={title} />
+          <PageTitle>{title}</PageTitle>
+          <p className="intro-text">
+            Instrument your applications and infrastructure to start collecting
+            monitoring data
+          </p>
+          <GuideListing>
+            <GuideListing.List>
+              {guides.map((guide, index) => (
+                <GuideTile key={index} {...guide} />
+              ))}
+            </GuideListing.List>
+          </GuideListing>
+        </Layout>
+      </BreadcrumbContext.Provider>
+    </PageContext.Provider>
   );
+};
+
+ExploreDataPage.propTypes = {
+  pageContext,
 };
 
 export default ExploreDataPage;
