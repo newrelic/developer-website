@@ -1,0 +1,27 @@
+.container {
+  position: relative;
+  border-bottom: 1px solid var(--color-neutrals-100);
+  padding: 0 2rem;
+}
+
+.menuBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--height-mobile-nav-bar);
+}
+
+.logo {
+  width: 160px;
+}
+
+.navigation {
+  font-size: 1rem;
+  padding: 1.5rem 3rem;
+  position: absolute;
+  width: 100vw;
+  height: calc(
+    100vh - (var(--height-mobile-nav-bar) + var(--height-global-header))
+  );
+  background-color: var(--color-white);
+}

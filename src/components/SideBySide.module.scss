@@ -3,8 +3,12 @@
   grid-template-columns: 50% 50%;
   grid-gap: 1rem;
 
-  @media (max-width: 760px) {
-    grid-template-columns: 100%;
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 1240px) {
+    grid-template-columns: minmax(0, 1fr);
     grid-gap: 0;
   }
 }

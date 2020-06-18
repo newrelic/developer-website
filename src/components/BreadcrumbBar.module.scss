@@ -38,20 +38,3 @@
     background-position: center center;
   }
 }
-
-.duration {
-  color: var(--color-neutrals-600);
-
-  &:before {
-    content: '';
-    display: inline-block;
-    width: 1.1rem;
-    height: 1.1rem;
-    margin-right: 0.5rem;
-    vertical-align: bottom;
-    background-image: url('../images/clock.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-}

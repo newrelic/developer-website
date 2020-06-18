@@ -165,7 +165,7 @@ return <div>Hello, {props.name}</div>;
 
 ## Code Snippet
 
-Code Snippets are automatically formatted by three backticks.
+Code Snippets are automatically formatted by three backticks. This is our preferred method to delineate code snippets, but it's worth noting that markdown will also consider any text that is indented 4 spaces (or 1 tab) to be a code block.
 
 ### Usage
 

@@ -1,15 +1,20 @@
 .name {
+  font-family: var(--code-font);
+  display: inline-block;
   padding: 0.125rem 0.25rem;
-  display: inline;
   color: var(--color-teal-500);
   background: var(--color-teal-050);
+  margin-bottom: 1rem;
 }
 
 .description {
-  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 .example:not(:last-child) {
   margin-bottom: 2rem;
+}
+
+.functionDefinition {
+  margin-bottom: 1rem;
 }
