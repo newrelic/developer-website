@@ -330,9 +330,11 @@ The final `index.js` file should have code similar to the code below. This compl
                       <StackItem>
                           <Select value={selectedAccount} onChange={(evt, value) => this.selectAccount(value)}>
                           {accounts.map(a => {
-                              return <SelectItem key={a.id} value={a}>
-                              {a.name}
-                              </SelectItem>
+                              return (
+                                <SelectItem key={a.id} value={a}>
+                                  {a.name}
+                                </SelectItem>
+                              )
                           })}
                           </Select>
                       </StackItem>
