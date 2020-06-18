@@ -1,0 +1,8 @@
+.container {
+  background: var(--color-neutrals-100);
+  transform: skew(0, -2deg);
+}
+
+.content {
+  transform: skew(0, 2deg);
+}
