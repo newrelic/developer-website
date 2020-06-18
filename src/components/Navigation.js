@@ -11,6 +11,7 @@ import styles from './Navigation.module.scss';
 // recursively create navigation
 const renderNav = (pages, depthLevel = 0) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
+  const isHomePage = crumbs.length === 0 && depthLevel === 0;
 
   const groupedPages = pages.reduce((groups, page) => {
     const { group = '' } = page;
@@ -28,7 +29,7 @@ const renderNav = (pages, depthLevel = 0) => {
       )}
       {pages.map((page) => {
         const [isExpanded, setIsExpanded] = useState(
-          crumbs.length === 0 || crumbs.includes(page.displayName)
+          isHomePage || crumbs.includes(page.displayName)
         );
         const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
 
