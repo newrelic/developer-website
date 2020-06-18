@@ -70,7 +70,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-sitemap',
-    'gatsby-redirect-from',
     'gatsby-plugin-meta-redirect',
   ],
 };
