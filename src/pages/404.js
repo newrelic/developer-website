@@ -4,11 +4,12 @@ import SEO from '../components/Seo';
 import SkewedContainer from '../components/SkewedContainer';
 import GlobalHeader from '../components/GlobalHeader';
 import Footer from '../components/Footer';
+import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import styles from './404.module.scss';
 
 const NotFoundPage = ({ pageContext }) => (
-  <>
+  <PageContext.Provider value={pageContext}>
     <SEO title="404: Not found" />
     <div className={styles.layout}>
       <GlobalHeader />
@@ -21,9 +22,9 @@ const NotFoundPage = ({ pageContext }) => (
           </p>
         </SkewedContainer>
       </div>
-      <Footer fileRelativePath={pageContext.fileRelativePath} />
+      <Footer />
     </div>
-  </>
+  </PageContext.Provider>
 );
 
 NotFoundPage.propTypes = {

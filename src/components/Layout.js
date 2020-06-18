@@ -10,7 +10,7 @@ import styles from './Layout.module.scss';
 import 'normalize.css';
 import './styles.scss';
 
-const Layout = ({ children, fileRelativePath }) => {
+const Layout = ({ children }) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (
@@ -35,7 +35,6 @@ const Layout = ({ children, fileRelativePath }) => {
         className={cx({
           [styles.hideOnMobile]: isMobileNavOpen,
         })}
-        fileRelativePath={fileRelativePath}
       />
     </div>
   );
@@ -43,7 +42,6 @@ const Layout = ({ children, fileRelativePath }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  fileRelativePath: PropTypes.string,
 };
 
 export default Layout;

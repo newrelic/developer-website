@@ -14,6 +14,7 @@ import Steps from '../components/Steps';
 import Intro from '../components/Intro';
 import SEO from '../components/Seo';
 import { BreadcrumbContext } from '../components/BreadcrumbContext';
+import { PageContext } from '../components/PageContext';
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
 import styles from './GuideTemplate.module.scss';
@@ -34,25 +35,27 @@ const GuideTemplate = ({ data, pageContext }) => {
   const crumbs = createBreadcrumbs(frontmatter.path, pages);
 
   return (
-    <BreadcrumbContext.Provider value={crumbs}>
-      <Layout fileRelativePath={pageContext.fileRelativePath}>
-        <SEO title={title} description={description} />
-        <div className={styles.header}>
-          <PageTitle>{title}</PageTitle>
-          {duration && (
-            <div className={styles.duration}>
-              <FeatherIcon name="clock" className={styles.clock} />
-              {duration}
-            </div>
-          )}
-        </div>
-        <div className={styles.mdxContainer}>
-          <MDXProvider components={components}>
-            <MDXRenderer>{body}</MDXRenderer>
-          </MDXProvider>
-        </div>
-      </Layout>
-    </BreadcrumbContext.Provider>
+    <PageContext.Provider value={pageContext}>
+      <BreadcrumbContext.Provider value={crumbs}>
+        <Layout>
+          <SEO title={title} description={description} />
+          <div className={styles.header}>
+            <PageTitle>{title}</PageTitle>
+            {duration && (
+              <div className={styles.duration}>
+                <FeatherIcon name="clock" className={styles.clock} />
+                {duration}
+              </div>
+            )}
+          </div>
+          <div className={styles.mdxContainer}>
+            <MDXProvider components={components}>
+              <MDXRenderer>{body}</MDXRenderer>
+            </MDXProvider>
+          </div>
+        </Layout>
+      </BreadcrumbContext.Provider>
+    </PageContext.Provider>
   );
 };
 
