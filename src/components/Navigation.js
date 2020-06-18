@@ -10,6 +10,8 @@ import styles from './Navigation.module.scss';
 
 // recursively create navigation
 const renderNav = (pages, depthLevel = 0) => {
+  // TODO: Refactor this function into a component
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
 
