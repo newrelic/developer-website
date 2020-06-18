@@ -26,8 +26,6 @@ Over this query, we have created an additional set of queries, which can be divi
 
 NRQL query: To be able to query your New Relic data via [NRQL](https://docs.newrelic.com/docs/query-data/nrql-new-relic-query-language/getting-started/introduction-nrql) (New Relic Query Language), we provide a `NrqlQuery` component. This component can return data in different formats, so that you can use it for charting and not only for querying.
 
-<br/>
-
 ### Query Components
 
 All query components accept as a children prop a function where the different statuses will be passed. This callback will receive an object with the following properties:
@@ -37,15 +35,11 @@ All query components accept as a children prop a function where the different st
 - `error`: Contains an `Error` instance when the query fails. Set to `undefined` when data is loading or the fetch was successful.
 - `fetchMore`: Callback function that can be called when the query is being loaded in chunks. The function will only be present when it’s feasible to do so, more data is available, and no `fetchMore` has already been triggered. Data is loaded in batches of 200 by default. Other components provided by the platform (like the `Dropdown` or the `List`) are capable of accepting `fetchMore`, meaning you can combine them easily.
 
-<br/>
-
 ### Mutation Components
 
  Mutation components also accept, like the query ones, a children as a function. The mutation can be pre-configured at the component level, and a function will be passed back that you can use in your component.
 
  This is the standard React Apollo approach for performing mutations, but you might find it easier to use our static `mutation` method added to the component. More on this topic below.
-
- <br/>
 
 ### Static Methods
 
@@ -89,8 +83,6 @@ async function getAccountList() {
 ```
 
 Similarly, a mutation can happen either way; either declaratively or imperatively.
-
-<br/>
 
 ## NrqlQuery
 
