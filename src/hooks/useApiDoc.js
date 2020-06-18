@@ -86,7 +86,7 @@ const useApiDoc = (name) => {
           };
         }),
     };
-  }, [name, window.__NR1_SDK__]);
+  }, [name]);
 };
 
 export default useApiDoc;
