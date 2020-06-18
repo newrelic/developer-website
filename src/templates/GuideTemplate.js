@@ -26,7 +26,7 @@ const components = {
   code: (props) => <CodeSnippet {...props} />,
 };
 
-const GuideTemplate = ({ data }) => {
+const GuideTemplate = ({ data, pageContext }) => {
   const { mdx } = data;
   const { frontmatter, body } = mdx;
   const { title, description, duration } = frontmatter;
@@ -34,7 +34,7 @@ const GuideTemplate = ({ data }) => {
 
   return (
     <BreadcrumbContext.Provider value={crumbs}>
-      <Layout>
+      <Layout fileRelativePath={pageContext.fileRelativePath}>
         <SEO title={title} description={description} />
         <div className={styles.header}>
           <PageTitle>{title}</PageTitle>
@@ -57,6 +57,7 @@ const GuideTemplate = ({ data }) => {
 
 GuideTemplate.propTypes = {
   data: PropTypes.object,
+  pageContext: PropTypes.shape({ fileRelativePath: PropTypes.string }),
 };
 
 export const pageQuery = graphql`

@@ -8,6 +8,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       allMdx(limit: 1000) {
         edges {
           node {
+            fileAbsolutePath
             frontmatter {
               path
               template
@@ -28,7 +29,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     createPage({
       path: node.frontmatter.path,
       component: path.resolve(`src/templates/${node.frontmatter.template}.js`),
-      context: {}, // additional data can be passed via context
+      context: {
+        fileRelativePath: node.fileAbsolutePath.replace(
+          `${process.cwd()}/`,
+          ''
+        ),
+      },
     });
   });
 };

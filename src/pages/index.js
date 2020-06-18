@@ -54,7 +54,7 @@ const guides = [
 ];
 
 const IndexPage = () => (
-  <Layout>
+  <Layout fileRelativePath="src/pages/index.js">
     <SEO />
     <PageTitle>Observability for every developer</PageTitle>
 
