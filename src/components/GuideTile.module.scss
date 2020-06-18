@@ -5,7 +5,7 @@
     'main main main';
   background-color: white;
   box-shadow: var(--boxshadow);
-  padding: 1.5rem;
+  padding: 0.5rem;
 
   button:hover {
     transform: translateY(-1px);
@@ -40,5 +40,6 @@
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
   max-width: calc(100% - 4rem);
-  color: var(--color-neutrals-500);
+  color: var(--color-neutrals-600);
+  flex: 1;
 }
