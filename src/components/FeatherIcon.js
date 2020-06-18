@@ -33,7 +33,6 @@ const ICONS = {
     </>
   ),
   'chevron-right': <polyline points="9 18 15 12 9 6" />,
-  'chevron-down': <polyline points="6 9 12 15 18 9" />,
   clock: (
     <>
       <circle cx="12" cy="12" r="10" />
