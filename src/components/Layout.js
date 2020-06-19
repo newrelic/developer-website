@@ -7,6 +7,7 @@ import GlobalHeader from './GlobalHeader';
 import MobileHeader from './MobileHeader';
 import Sidebar from './Sidebar';
 import styles from './Layout.module.scss';
+import 'normalize.css';
 import './styles.scss';
 
 const Layout = ({ children }) => {

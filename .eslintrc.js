@@ -4,6 +4,7 @@ module.exports = {
     'plugin:@newrelic/eslint-plugin-newrelic/react',
     'plugin:@newrelic/eslint-plugin-newrelic/prettier',
     'plugin:jsx-a11y/recommended',
+    'plugin:react-hooks/recommended',
   ],
   // https://github.com/yannickcr/eslint-plugin-react#configuration
   plugins: ['react', 'jsx-a11y'],

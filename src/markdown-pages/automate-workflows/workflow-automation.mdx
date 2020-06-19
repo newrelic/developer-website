@@ -1,0 +1,84 @@
+---
+path: '/automate-workflows/workflow-automation'
+title: 'Orchestrate observability workflows'
+description: 'Tools to automate your observability ecosystem'
+template: 'GuideTemplate'
+---
+
+## Define and automate observability
+
+As the maintainer of an increasingly complex software stack, you need to
+pinpoint problems without filtering through all the noise. You need to automate
+observability the way you automate infrastructure management, by embedding your
+New Relic configuration in code. The [Terraform
+Provider](https://www.terraform.io/docs/providers/newrelic/index.html) enables
+observability as code -- the ability to monitor, alert, and analyze your
+ecosystem in one place, in real time. Built on the New Relic Client, the
+Terraform Provider provides a full implementation of APIs that enable you to
+create alert policies and conditions, Synthetic monitors and Synthetics alert
+conditions, notification policies and more.
+
+The [Terraform Provider getting started
+guide](https://www.terraform.io/docs/providers/newrelic/guides/getting_started.html)
+steps you through some fundamental configuration. The [New Relic APM Terraform
+module](https://registry.terraform.io/modules/newrelic/apm/newrelic/0.0.4)
+provides a monitoring strategy for application resources reporting into New
+Relic.
+
+<Video type='youtube' id='UwJ-7BLylJo' />
+
+## Build event-based workflows
+
+When you’re constantly releasing features, you need to easily track changes in
+your environment and monitor your systems. The [New Relic
+CLI](https://github.com/newrelic/newrelic-cli) enables the integration of New
+Relic into your existing workflows, from fetching data from your laptop while
+troubleshooting an issue, to adding New Relic into your CI/CD pipeline. The CLI
+is a supported library that consolidates New Relic tools, enabling you to
+perform these tasks (and more):
+
+* Search for entities across all your New Relic accounts
+* Manage tags across all of your entities
+* Record APM application deployments within New Relic
+
+See the [New Relic CLI getting started
+guide](https://github.com/newrelic/newrelic-cli/blob/master/docs/GETTING_STARTED.md)
+for steps to get set up, tag an application, tag all applications, or create a
+deployment marker.
+
+<Video type='youtube' id='g00AeKlECZA'/>
+
+## Harness multiple APIs with a single client
+
+The [New Relic Client](https://github.com/newrelic/newrelic-client-go) provides
+the building blocks for many tools in the toolkit, enabling quick access to a
+handful of New Relic APIs. The Client means you don’t have to toil over things
+like serialization and authentication. Use it to record your application
+deployments without having to learn how the API works. Or to automate changing
+tags within New Relic when service ownership changes. And you can
+programmatically manage your assets via APIs and auto-instrumentation within
+your own custom applications.
+
+The client provides full support for these New Relic API endpoints:
+
+* [NerdGraph API](https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph), New Relic’s GraphQL API
+* [REST v2 API](https://docs.newrelic.com/docs/apis/rest-api-v2/getting-started/introduction-new-relic-rest-api-v2)
+* [Infrastructure API](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/infrastructure-alert-conditions/rest-api-calls-new-relic-infrastructure-alerts)
+* [Synthetics API](https://docs.newrelic.com/docs/apis/synthetics-rest-api/monitor-examples/manage-synthetics-monitors-rest-api)
+
+## Provision New Relic resources with AWS CloudFormation
+
+If you’re a developer using AWS CloudFormation, the [New Relic CloudFormation
+integration](https://github.com/newrelic/cloudformation-partner-integration)
+enables you to provision a subset of New Relic resources. You can build on the
+New Relic Client, and configure basic NRQL alerts.
+
+For more information, see our [AWS CloudFormation
+integration](https://docs.newrelic.com/docs/integrations/amazon-integrations/aws-integrations-list/aws-cloudformation-integration)
+documentation.
+
+## For more help
+
+* [Developer Toolkit on GitHub](https://newrelic.github.io/developer-toolkit/)
+* [Discuss on the Explorer’s Hub](https://discuss.newrelic.com/c/build-on-new-relic/developer-toolkit)
+* [Toolkit roadmap](https://newrelic.github.io/developer-toolkit/roadmap/)

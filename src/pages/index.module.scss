@@ -1,13 +1,13 @@
 .line {
   border-bottom: 4px solid var(--color-brand-800);
   width: 50px;
-  margin: auto;
+  margin: 3rem auto 0;
 }
 
 .intro {
   display: flex;
   justify-content: space-between;
-  margin: 2rem auto 7rem;
+  margin: 2rem auto;
 
   @media (max-width: 760px) {
     flex-direction: column;
@@ -43,7 +43,6 @@
 }
 
 .guideTile {
-  box-shadow: none;
   border: 1px solid var(--color-neutrals-300);
   border-radius: 0.25rem;
 }

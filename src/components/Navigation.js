@@ -10,7 +10,10 @@ import styles from './Navigation.module.scss';
 
 // recursively create navigation
 const renderNav = (pages, depthLevel = 0) => {
+  // TODO: Refactor this function into a component
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
+  const isHomePage = crumbs.length === 0 && depthLevel === 0;
 
   const groupedPages = pages.reduce((groups, page) => {
     const { group = '' } = page;
@@ -28,18 +31,20 @@ const renderNav = (pages, depthLevel = 0) => {
       )}
       {pages.map((page) => {
         const [isExpanded, setIsExpanded] = useState(
-          crumbs.length === depthLevel || crumbs.includes(page.displayName)
+          isHomePage || crumbs.includes(page.displayName)
         );
         const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
 
         return (
-          <li
-            key={page.displayName}
-            data-depth={depthLevel}
-            className={cx({ [styles.isCurrentPage]: isCurrentPage })}
-          >
+          <li key={page.displayName} data-depth={depthLevel}>
             {page.url ? (
-              <Link className={styles.navLink} to={page.url}>
+              <Link
+                className={cx(
+                  { [styles.isCurrentPage]: isCurrentPage },
+                  styles.navLink
+                )}
+                to={page.url}
+              >
                 {page.displayName}
                 {isCurrentPage && (
                   <FeatherIcon
@@ -56,6 +61,15 @@ const renderNav = (pages, depthLevel = 0) => {
                 onKeyPress={() => setIsExpanded(!isExpanded)}
                 tabIndex={0}
               >
+                {depthLevel > 0 && (
+                  <FeatherIcon
+                    className={cx(
+                      { [styles.isExpanded]: isExpanded },
+                      styles.nestedChevron
+                    )}
+                    name="chevron-right"
+                  />
+                )}
                 {page.displayName}
               </button>
             )}

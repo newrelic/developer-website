@@ -1,0 +1,24 @@
+.important,
+.caution,
+.tip {
+  padding: 1.25rem 0.3rem 1.25rem 1.25rem;
+  margin: 1.55rem 3rem 1.55rem 1.25rem;
+  h4 {
+    margin-top: 0.1rem !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase;
+    color: var(--color-neutrals-800) !important;
+  }
+}
+.caution {
+  border-left: 4px solid var(--color-red-400);
+  background: var(--color-red-100);
+}
+.important {
+  border-left: 4px solid var(--color-yellow-400);
+  background: var(--color-yellow-100);
+}
+.tip {
+  border-left: 4px solid var(--color-green-400);
+  background: var(--color-green-100);
+}

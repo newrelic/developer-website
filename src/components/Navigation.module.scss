@@ -27,6 +27,11 @@
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
+  transition: 0.1s;
+
+  &:not(.isCurrentPage):hover {
+    color: var(--color-neutrals-600);
+  }
 
   [data-depth='0'] > & {
     font-weight: bold;
@@ -48,6 +53,15 @@ button.navLink {
 
 .currentPageIndicator {
   stroke-width: 4;
+}
+
+.nestedChevron {
+  margin-right: 0.5rem;
+  stroke-width: 4;
+  transition: 0.2s;
+  &.isExpanded {
+    transform: rotate(90deg);
+  }
 }
 
 .groupName {
