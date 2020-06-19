@@ -91,20 +91,14 @@ const IndexPage = ({ pageContext }) => (
 
       <Section backgroundBanner>
         <GuideListing className={styles.guideListing}>
-          <GuideListing.Heading
-            className={cx(
-              styles.guideListingHeading,
-              styles.gettingStartedHeading
-            )}
-          >
-            <div>
-              Get started{' '}
-              <span className={styles.getStartedTextFull}>in minutes</span>
-            </div>
+          <header className={styles.guideListingHeader}>
+            <GuideListing.Heading className={cx(styles.guideListingHeading)}>
+              Get started in minutes
+            </GuideListing.Heading>
             <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
               <button type="button">Create a free account</button>
             </ExternalLink>
-          </GuideListing.Heading>
+          </header>
           <GuideListing.List>
             {getStartedGuides.map((guide, index) => (
               <GuideTile key={index} {...guide} />
