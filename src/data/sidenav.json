@@ -18,13 +18,7 @@
       {
         "displayName": "Create a Flex integration",
         "url": "/"
-      }
-    ]
-  },
-  {
-    "displayName": "Explore data",
-    "url": "/explore-data",
-    "children": [
+      },
       {
         "displayName": "Write NRQL queries",
         "url": "/"
