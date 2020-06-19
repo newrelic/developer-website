@@ -29,6 +29,10 @@
   text-decoration: none;
   transition: 0.1s;
 
+  &.hasIcon {
+    justify-content: flex-start;
+  }
+
   &:not(.isCurrentPage):hover {
     color: var(--color-neutrals-600);
   }
@@ -36,6 +40,10 @@
   [data-depth='0'] > & {
     font-weight: bold;
   }
+}
+
+.headerIcon {
+  margin-right: 0.5rem;
 }
 
 button.navLink {
