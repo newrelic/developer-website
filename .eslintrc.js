@@ -7,7 +7,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   // https://github.com/yannickcr/eslint-plugin-react#configuration
-  plugins: ['react', 'jsx-a11y'],
+  plugins: ['react', 'jsx-a11y', 'markdown'],
   settings: {
     react: {
       version: 'detect',
