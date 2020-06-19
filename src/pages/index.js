@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
@@ -90,7 +91,12 @@ const IndexPage = ({ pageContext }) => (
 
       <Section backgroundBanner>
         <GuideListing className={styles.guideListing}>
-          <GuideListing.Heading className={styles.guideListingHeading}>
+          <GuideListing.Heading
+            className={cx(
+              styles.guideListingHeading,
+              styles.gettingStartedHeading
+            )}
+          >
             Get started in minutes
             <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
               <button type="button">Create a free account</button>
