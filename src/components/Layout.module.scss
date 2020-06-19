@@ -8,19 +8,19 @@
 }
 
 .main {
-  display: flex;
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
   width: 100%;
+
+  @media screen and (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .contentContainer {
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  padding-left: calc(2rem + var(--sidebar-width));
-
-  @media screen and (max-width: 760px) {
-    padding-left: 2rem;
-  }
 }
 
 .sidebar {
