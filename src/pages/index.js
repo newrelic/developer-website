@@ -112,7 +112,7 @@ const IndexPage = ({ pageContext }) => (
 
       <GuideListing className={styles.guideListing}>
         <GuideListing.Heading className={styles.guideListingHeading}>
-          Build solutions
+          Extend the platform
         </GuideListing.Heading>
         <GuideListing.List>
           {guides.map((guide, index) => (
