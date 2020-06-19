@@ -73,6 +73,11 @@
 .rightSideButton {
   opacity: 0.45;
   transition: opacity 0.2s ease-out;
+  margin-left: 1rem;
+
+  path {
+    stroke: var(--color-neutrals-700);
+  }
 
   &:hover {
     cursor: pointer;
