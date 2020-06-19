@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import { Link } from 'gatsby';
 import SEO from '../components/Seo';
 import SkewedContainer from '../components/SkewedContainer';
@@ -22,7 +23,9 @@ const NotFoundPage = ({ pageContext }) => (
           </p>
         </SkewedContainer>
       </div>
-      <Footer />
+      <div className={styles.footerContainer}>
+        <Footer className={cx(styles.footer, 'site-container')} />
+      </div>
     </div>
   </PageContext.Provider>
 );
