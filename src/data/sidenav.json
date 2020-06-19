@@ -1,7 +1,6 @@
 [
   {
     "displayName": "Collect data",
-    "url": "/collect-data",
     "children": [
       {
         "displayName": "Log with the Log API",
