@@ -98,7 +98,7 @@ const IndexPage = ({ pageContext }) => (
         </GuideListing.Heading>
         <GuideListing.List>
           {getStartedGuides.map((guide, index) => (
-            <GuideTile className={styles.guideTile} key={index} {...guide} />
+            <GuideTile key={index} {...guide} />
           ))}
         </GuideListing.List>
       </GuideListing>
@@ -110,7 +110,7 @@ const IndexPage = ({ pageContext }) => (
         </GuideListing.Heading>
         <GuideListing.List>
           {guides.map((guide, index) => (
-            <GuideTile className={styles.guideTile} key={index} {...guide} />
+            <GuideTile key={index} {...guide} />
           ))}
         </GuideListing.List>
       </GuideListing>
