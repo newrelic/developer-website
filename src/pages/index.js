@@ -98,7 +98,7 @@ const IndexPage = ({ pageContext }) => (
               Get started
             </GuideListing.Heading>
             <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
-              <button type="button">Create a free account</button>
+              <button type="button">Create an account</button>
             </ExternalLink>
           </header>
           <GuideListing.List>
