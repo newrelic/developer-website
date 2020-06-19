@@ -55,14 +55,15 @@ const renderNav = (pages, depthLevel = 0) => {
                 className={cx(
                   {
                     [styles.isCurrentPage]: isCurrentPage,
-                    [styles.hasIcon]: depthLevel === 0,
                   },
                   styles.navLink
                 )}
                 to={page.url}
               >
-                {headerIcon}
-                {page.displayName}
+                <span>
+                  {headerIcon}
+                  {page.displayName}
+                </span>
                 {isCurrentPage && (
                   <FeatherIcon
                     className={styles.currentPageIndicator}
