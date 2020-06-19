@@ -45,3 +45,9 @@
 .gettingStartedHeading {
   margin-bottom: 4rem;
 }
+
+@media screen and (max-width: 980px) {
+  .getStartedTextFull {
+    display: none;
+  }
+}

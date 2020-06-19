@@ -97,7 +97,10 @@ const IndexPage = ({ pageContext }) => (
               styles.gettingStartedHeading
             )}
           >
-            Get started in minutes
+            <div>
+              Get started{' '}
+              <span className={styles.getStartedTextFull}>in minutes</span>
+            </div>
             <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
               <button type="button">Create a free account</button>
             </ExternalLink>
