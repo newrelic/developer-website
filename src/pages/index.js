@@ -8,6 +8,7 @@ import GuideTile from '../components/GuideTile';
 import PageTitle from '../components/PageTitle';
 import Section from '../components/Section';
 import Video from '../components/Video';
+import FeatherIcon from '../components/FeatherIcon';
 import ExternalLink from '../components/ExternalLink';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
@@ -119,6 +120,21 @@ const IndexPage = ({ pageContext }) => (
           ))}
         </GuideListing.List>
       </GuideListing>
+
+      <p className={styles.inspiration}>
+        Looking for inspiration? Check out the{' '}
+        <ExternalLink
+          className={styles.externalLink}
+          href="https://opensource.newrelic.com"
+        >
+          open source projects
+          <FeatherIcon
+            className={styles.externalLinkIcon}
+            name="external-link"
+          />
+        </ExternalLink>{' '}
+        built by the New Relic community.
+      </p>
     </Layout>
   </PageContext.Provider>
 );
