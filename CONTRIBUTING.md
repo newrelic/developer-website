@@ -3,6 +3,7 @@
 - [Table of Contents](#table-of-contents)
   - [Guidelines for contributing](#guidelines-for-contributing)
   - [Getting started](#getting-started)
+    - [Using multiple versions of Node](#using-multiple-versions-of-node)
     - [Quick edits](#quick-edits)
     - [Cloning vs Forking](#cloning-vs-forking)
     - [Submitting a PR from a forked repo](#submitting-a-pr-from-a-forked-repo)
@@ -38,6 +39,14 @@ If you'd like to to make code contributions follow the code contribution
 guidelines below.
 
 ## Getting started
+
+### Using multiple versions of Node
+
+If you intend to run multiple versions of Node please be aware that the New Relic
+Developer Site is currently on Node v12. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
+
+Review [this article](https://itnext.io/nvm-the-easiest-way-to-switch-node-js-environments-on-your-machine-in-a-flash-17babb7d5f1b) 
+which clearly explains the setup and configuration of NVM.
 
 ### Quick edits
 
