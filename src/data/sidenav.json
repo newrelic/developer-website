@@ -43,10 +43,6 @@
         "url": "/build-apps/map-pageviews-by-region"
       },
       {
-        "displayName": "Optimize cloud usage",
-        "url": "/build-apps/optimize-cloud-usage"
-      },
-      {
         "displayName": "Add a time picker",
         "url": "/build-apps/add-time-picker-guide"
       },
