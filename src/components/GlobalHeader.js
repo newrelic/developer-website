@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Link } from 'gatsby';
 import { PageContext } from './PageContext';
+import { githubBaseUrl } from '../data/constants';
 import NewRelicLogo from './NewRelicLogo';
 import GithHubIcon from './GithHubIcon';
 import ExternalLink from './ExternalLink';
 import FeatherIcon from './FeatherIcon';
 
 import styles from './GlobalHeader.module.scss';
-
-// TODO: make this a constant somehwere?
-const githubBaseUrl = 'https://github.com/newrelic/developer-website';
 
 const GlobalHeader = ({ className }) => {
   const { fileRelativePath } = useContext(PageContext);
