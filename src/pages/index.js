@@ -39,24 +39,23 @@ const getStartedGuides = [
 
 const guides = [
   {
-    minutes: 5,
-    title: 'Create a Flex Integration',
-    description: 'Get data into New Relic using your existing instrumentation.',
-    path: '',
+    minutes: 20,
+    title: 'Automate common tasks',
+    description:
+      'Learn the essentials of the New Relic CLI, from install and configuration to basic usage',
+    path: '/guides/get-started-new-relic-cli',
   },
   {
-    minutes: 10,
-    title: 'Customized Agents',
-    description:
-      'Extend the New Relic agents you already have with custom events and attributes.',
-    path: '',
+    minutes: '15-30',
+    title: 'Map page views by region',
+    description: 'Build a New Relic app showing page view data on a world map',
+    path: '/build-apps/map-pageviews-by-region',
   },
   {
-    minutes: 30,
-    title: 'Open Telemetry',
-    description:
-      'Learn to use the open standard for data collection with New Relic.',
-    path: 'guides/rest-api',
+    minutes: 25,
+    title: 'Provision with Terraform',
+    description: 'Provision an alert policy with notifications using Terraform',
+    path: '/',
   },
 ];
 
