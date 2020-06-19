@@ -17,18 +17,21 @@ const getStartedGuides = [
     title: 'Collect data',
     description: `Define, visualize, and get alerts on the data you want using custom events`,
     path: '/collect-data/custom-events',
+    icon: 'barChart',
   },
   {
     minutes: 7,
     title: 'Automate data',
     description: `Add tags to applications you instrument for easier filtering and organization`,
     path: '/automate-workflows/add-tags-to-apps',
+    icon: 'box',
   },
   {
     minutes: 12,
     title: 'Build custom apps',
     description: `Build a Hello World! app and publish it to your local New Relic One Catalog`,
     path: '/build-apps/build-hello-world-app',
+    icon: 'cpu',
   },
 ];
 

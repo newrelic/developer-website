@@ -6,7 +6,7 @@ import { navigate } from 'gatsby';
 import styles from './GuideTile.module.scss';
 
 const GuideTile = ({ icon, minutes, title, description, path, className }) => (
-  <div className={cx(styles.tile, className)}>
+  <div className={cx(styles.tile, className, { [styles.tileWithIcon]: icon })}>
     {icon && (
       <div className={styles.iconContainer}>
         <FeatherIcon name={icon} size="2.5rem" />
