@@ -1,18 +1,16 @@
 ---
-path: '/build-apps/add-time-picker-guide'
-duration: '20 min'
-title: 'Add a time picker'
+path: '/build-apps/build-hello-world-app'
+duration: '15 min'
+title: 'Create your first Nerdlet program'
 template: 'GuideTemplate'
-description: 'Add a time picker to a sample application'
+description: 'Build a Hello World! app and publish it to your local New Relic One Catalog'
 ---
 <Intro>
-This guide steps you through the process of adding access to the New Relic time picker in the sample transaction overview application. 
 
-The sample application provides an overview of the telemetry data showing your account's transactions by application, average response time, HTTP response codes, and transaction errors. When you enable the time picker, users can specify the time range of data to view.
+Here's how you can quickly build a "Hello World!" app and publish it to your local New Relic One Catalog.
 
-Our 12 minute video covers the steps below.
+<Video id="ZagZfNQYJEU" type="youtube"/>
 
-<Video id="inyshp3m7r" type="wistia"/>
 
 </Intro>
 
@@ -33,50 +31,60 @@ To get started, complete these steps to update the application UUID and run the 
 
   <Step>
 
-Clone the example applications from our [how-to GitHub repo](https://github.com/newrelic/nr1-how-to)
+In your terminal, issue the following command:
+
+  ```
+  $ nr1 create
+  ```
+  
+  </Step>
+
+  <Step>
+
+Press the down arrow and select `nerdpack` as the component:
+
+  ```
+  What kind of component do you want to create? > nerdpack
+  ```
 
   </Step>
 
   <Step>
 
-In your preferred text editor, open `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js`.
+Type a name for your project, such as `my_nerdpack`:
+
+  ```
+  Name your component. ... my_nerdpack
+  ```
 
   </Step>
 
   <Step>
 
-Replace `<ADD YOUR ACCOUNT ID>` with your account id:
+Change to your new directory:
 
-> ***NOTE:*** Your account ID is viewable in the profile selection menu of the developer center (where you downloaded the New Relic One CLI). 
+  ```
+  $ cd /my_nerdpack
+  ```
+  </Step>
 
-```js
-this.accountId = <ADD YOUR ACCOUNT ID>;
-```
+  <Step>
+
+Open up a code editor with this command:
+
+  ```
+  $ code .
+  ```
+
+  > NOTE: Your code editor displays two artifacts: launchers (homepage tile) and nerdlets (contains your code).
 
   </Step>
 
   <Step>
 
-In your terminal, change to the `add-time-picker` directory:
+Expand `nerdlets` in your code editor, and open `index.js`:
 
-```
-cd /nr1-howto/add-time-picker
-```
-  </Step>
-
-  <Step>
-
-Execute these commands to update the UUID and serve the sample application:
-
-```
-nr1 nerdpack:uuid -gf
-nr1 nerdpack:serve
-```
-  </Step>
-
-  <Step>
-
-Once the sample application is successfully served, go to the local New Relic One homepage: https://one.newrelic.com/?nerdpacks=local
+  ```
 
   </Step>
 
