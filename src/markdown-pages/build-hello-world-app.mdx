@@ -9,6 +9,8 @@ description: 'Build a Hello World! app and publish it to your local New Relic On
 
 Here's how you can quickly build a "Hello World!" app and publish it to your local New Relic One Catalog.
 
+In these steps, we'll show you how to create a local version of the New Relic One site where you can prototype your ideas. Then, when you are ready, you can publish your code to the New Relic One Catalog.
+
 <Video id="ZagZfNQYJEU" type="youtube"/>
 
 
@@ -16,55 +18,23 @@ Here's how you can quickly build a "Hello World!" app and publish it to your loc
 
 ## Before you begin
 
-These steps require that you have the following:
+To get started, complete a few easy steps at [Build New Relic One applications](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==). It has an installation wizard to help get a personal API key, download the New Relic CLI (command line interface), and configure your environment.
 
-- A GitHub account
-- New Relic developer account
-- API Key (the same key you set up in [Quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==))
-- The New Relic One [CLI](https://cli.nr-ext.net/installer.pkg) 
+After you complete the wizard, continue with the steps below.
 
-## Prepare the time picker sample code
 
-To get started, complete these steps to update the application UUID and run the sample application locally:
+## Create a local verion of Hello World! app
+
+The command line wizard allows you to view a local version of your code.
 
 <Steps>
 
   <Step>
 
-In your terminal, issue the following command:
+If you haven't already done so, change to the new directory named after your nerdpack project. For example, it might look like this:
 
   ```
-  $ nr1 create
-  ```
-  
-  </Step>
-
-  <Step>
-
-Press the down arrow and select `nerdpack` as the component:
-
-  ```
-  What kind of component do you want to create? > nerdpack
-  ```
-
-  </Step>
-
-  <Step>
-
-Type a name for your project, such as `my_nerdpack`:
-
-  ```
-  Name your component. ... my_nerdpack
-  ```
-
-  </Step>
-
-  <Step>
-
-Change to your new directory:
-
-  ```
-  $ cd /my_nerdpack
+  $ cd /my-awesome-nerdpack
   ```
   </Step>
 
@@ -76,7 +46,7 @@ Open up a code editor with this command:
   $ code .
   ```
 
-  > NOTE: Your code editor displays two artifacts: launchers (homepage tile) and nerdlets (contains your code).
+<Important>Your code editor displays two artifacts: launchers (contains the homepage tile) and nerdlets (contains your application code).</Important>
 
   </Step>
 
@@ -84,19 +54,56 @@ Open up a code editor with this command:
 
 Expand `nerdlets` in your code editor, and open `index.js`:
 
+  ```js
+  import React from 'react';
+  
+  // https://docs.newrelic.com/docs/new-relic-programmable-platform-introduction
+
+  export default class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
+      render() {
+          return <h1>Hello, my-awesome-nerdpack-nerdlet Nerdlet!</h1>;
+      }
+  }
   ```
 
   </Step>
 
   <Step>
 
-Click ***Add Time Picker***:
+Change the default `return` message to just `Hello World!` (or anything else):
 
-> ***NOTE:***  If you don't see any launchers, click ***Your applications***. 
+  ```js
+  import React from 'react';
+  
+  // https://docs.newrelic.com/docs/new-relic-programmable-platform-introduction
 
-![New Relic One launcher image](../images/time-picker-guide/homepage-launcher.png)
+  export default class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
+      render() {
+          return <h1><var>Hello, World!</var></h1>;
+      }
+  }
+  ```
+
+<Important>If you want a custom icon for the tile, you can drag an image icon into the `launcher` artifact.</Important>
 
   </Step>
+
+  <Step>
+
+  To see your new changes locally, start the node server with this command in your CLI:
+
+    ```
+    npm start
+    ```
+  </Step>
+
+  <Step>
+
+  
+
+
+
+
 
   </Steps>
 
