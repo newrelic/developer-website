@@ -42,6 +42,14 @@ const GlobalHeader = ({ className }) => {
                 Documentation
               </ExternalLink>
             </li>
+            <li className={styles.leftSideLinkItem}>
+              <ExternalLink
+                href="https://discuss.newrelic.com/"
+                className={styles.leftSideLink}
+              >
+                Community
+              </ExternalLink>
+            </li>
           </ul>
         </div>
 
