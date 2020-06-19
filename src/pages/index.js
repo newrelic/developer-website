@@ -78,11 +78,6 @@ const IndexPage = ({ pageContext }) => (
           <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
             <button type="button">Create a free account</button>
           </ExternalLink>
-          <ExternalLink href="https://newrelic.com/request-demo">
-            <button type="button" className="secondary">
-              Request a demo
-            </button>
-          </ExternalLink>
         </div>
         <Video
           className={styles.introVideo}
