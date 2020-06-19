@@ -42,7 +42,7 @@ const guides = [
     minutes: 20,
     title: 'Automate common tasks',
     description:
-      'Learn the essentials of the New Relic CLI, from install and configuration to basic usage',
+      'Use the New Relic CLI to tag applications and create deployment markers',
     path: '/guides/get-started-new-relic-cli',
   },
   {
@@ -56,6 +56,25 @@ const guides = [
     title: 'Provision with Terraform',
     description: 'Provision an alert policy with notifications using Terraform',
     path: '/',
+  },
+  {
+    minutes: 15,
+    title: ' Set up dev tools',
+    description: 'Get an API key, download the CLI, and start building apps',
+    path: '/build-apps/set-up-dev-env',
+  },
+  {
+    minutes: 30,
+    title: 'Add a table to your app',
+    description: 'Use New Relic One components to add a table to your app',
+    path: '/build-apps/howto-use-nrone-table-components',
+  },
+  {
+    minutes: 20,
+    title: 'Add a time picker',
+    description:
+      'Add the time picker to a sample app to specify a time range in data',
+    path: '/build-apps/add-time-picker-guide',
   },
 ];
 
