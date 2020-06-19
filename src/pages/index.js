@@ -58,7 +58,7 @@ const guides = [
     path: '/',
   },
   {
-    minutes: 20,
+    minutes: 15,
     title: ' Set up your dev environment',
     description: 'Get an API key, download the CLI, and start building apps',
     path: '/build-apps/set-up-dev-env',
