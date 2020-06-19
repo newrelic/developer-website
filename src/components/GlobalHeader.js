@@ -5,7 +5,6 @@ import { Link } from 'gatsby';
 import { PageContext } from './PageContext';
 import { githubBaseUrl } from '../data/constants';
 import NewRelicLogo from './NewRelicLogo';
-import GithHubIcon from './GithHubIcon';
 import ExternalLink from './ExternalLink';
 import FeatherIcon from './FeatherIcon';
 
