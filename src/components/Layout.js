@@ -23,7 +23,6 @@ const Layout = ({ children }) => {
       />
       <div className={cx(styles.main, 'site-container')}>
         <Sidebar className={cx(styles.sidebar, styles.hideOnMobile)} />
-        <div />
         <div
           className={cx(styles.contentContainer, {
             [styles.hideOnMobile]: isMobileNavOpen,
