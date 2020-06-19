@@ -1,6 +1,8 @@
 .globalHeaderContainer {
   background-color: var(--color-neutrals-100);
   overflow: hidden;
+  position: sticky;
+  top: 0;
 
   :global(.site-container) {
     padding: 0 2rem;
