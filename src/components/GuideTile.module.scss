@@ -30,10 +30,6 @@
   text-align: right;
   color: var(--color-neutrals-500);
   padding: 0.3rem 0 0.2rem 1.2rem;
-  background-image: url('../images/clock.svg');
-  background-size: 1rem;
-  background-repeat: no-repeat;
-  background-position: left center;
   justify-self: end;
 }
 
@@ -62,4 +58,8 @@
 
 .button {
   justify-self: center;
+}
+
+.timeIcon {
+  margin-right: 0.25rem;
 }

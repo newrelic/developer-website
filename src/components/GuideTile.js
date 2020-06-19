@@ -13,7 +13,10 @@ const GuideTile = ({ icon, minutes, title, description, path, className }) => (
       </div>
     )}
 
-    <div className={styles.timeEstimate}>{minutes} minutes</div>
+    <div className={styles.timeEstimate}>
+      <FeatherIcon className={styles.timeIcon} name="clock" />
+      {minutes} minutes
+    </div>
     <h2 className={styles.title}>{title}</h2>
     <p className={styles.description}>{description}</p>
     <button
