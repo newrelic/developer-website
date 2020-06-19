@@ -22,7 +22,8 @@ const Layout = ({ children }) => {
         toggle={() => setIsMobileNavOpen(!isMobileNavOpen)}
       />
       <div className={cx(styles.main, 'site-container')}>
-        <Sidebar className={cx(styles.hideOnMobile)} />
+        <Sidebar className={cx(styles.sidebar, styles.hideOnMobile)} />
+        <div />
         <div
           className={cx(styles.contentContainer, {
             [styles.hideOnMobile]: isMobileNavOpen,

@@ -20,6 +20,15 @@
   padding: 2rem;
 }
 
+.sidebar {
+  position: fixed;
+  top: 30px;
+  bottom: 0;
+  width: 300px;
+  height: calc(100vh - 30px);
+  overflow: auto;
+}
+
 .content {
   flex: 1;
 }
