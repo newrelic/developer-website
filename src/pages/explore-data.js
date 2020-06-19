@@ -14,12 +14,6 @@ const title = 'Get data into New Relic';
 
 const guides = [
   {
-    minutes: 5,
-    title: 'Full Stack Monitoring',
-    description: 'Get data into New Relic using your existing instrumentation.',
-    path: '',
-  },
-  {
     minutes: 10,
     title: 'Customized Agents',
     description:
