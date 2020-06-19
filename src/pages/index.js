@@ -18,7 +18,7 @@ const getStartedGuides = [
     title: 'Collect data',
     description: `Define, visualize, and get alerts on the data you want using custom events`,
     path: '/collect-data/custom-events',
-    icon: 'barChart',
+    icon: 'bar-chart',
   },
   {
     minutes: 7,
@@ -39,20 +39,20 @@ const getStartedGuides = [
 const guides = [
   {
     minutes: 5,
-    title: 'Create a Flex Integration',
+    title: 'Explore example New Relic One apps ',
     description: 'Get data into New Relic using your existing instrumentation.',
     path: '',
   },
   {
     minutes: 10,
-    title: 'Customized Agents',
+    title: 'Eliminate errors by creating and testing GraphQL queries',
     description:
       'Extend the New Relic agents you already have with custom events and attributes.',
     path: '',
   },
   {
     minutes: 30,
-    title: 'Open Telemetry',
+    title: 'Set up your environment for better visibility across teams',
     description:
       'Learn to use the open standard for data collection with New Relic.',
     path: 'guides/rest-api',
@@ -106,7 +106,7 @@ const IndexPage = ({ pageContext }) => (
 
       <GuideListing className={styles.guideListing}>
         <GuideListing.Heading className={styles.guideListingHeading}>
-          Build Solutions
+          Extend the platform
         </GuideListing.Heading>
         <GuideListing.List>
           {guides.map((guide, index) => (
