@@ -26,14 +26,14 @@ const getStartedGuides = [
     title: 'Automate data',
     description: `Add tags to applications you instrument for easier filtering and organization`,
     path: '/automate-workflows/add-tags-to-apps',
-    icon: 'box',
+    icon: 'cpu',
   },
   {
     minutes: 12,
     title: 'Build custom apps',
     description: `Build a Hello World! app and publish it to your local New Relic One Catalog`,
     path: '/build-apps/build-hello-world-app',
-    icon: 'cpu',
+    icon: 'box',
   },
 ];
 
@@ -109,7 +109,7 @@ const IndexPage = ({ pageContext }) => (
 
       <GuideListing className={styles.guideListing}>
         <GuideListing.Heading className={styles.guideListingHeading}>
-          Build Solutions
+          Build solutions
         </GuideListing.Heading>
         <GuideListing.List>
           {guides.map((guide, index) => (
