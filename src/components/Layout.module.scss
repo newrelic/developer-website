@@ -1,4 +1,6 @@
 .layout {
+  --global-header-height: 30px;
+
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
@@ -22,10 +24,10 @@
 
 .sidebar {
   position: fixed;
-  top: 30px;
+  top: var(--global-header-height);
   bottom: 0;
   width: 300px;
-  height: calc(100vh - 30px);
+  height: calc(100vh - var(--global-header-height));
   overflow: auto;
 }
 
