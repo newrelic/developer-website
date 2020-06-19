@@ -4,27 +4,27 @@
     "children": [
       {
         "displayName": "Log with the Log API",
-        "url": "/"
+        "url": "/noop"
       },
       {
         "displayName": "OpenTelemetry exporter",
-        "url": "/"
+        "url": "/noop"
       },
       {
         "displayName": "Extend New Relic agents",
-        "url": "/"
+        "url": "/noop"
       },
       {
         "displayName": "Create a Flex integration",
-        "url": "/"
+        "url": "/noop"
       },
       {
         "displayName": "Write NRQL queries",
-        "url": "/"
+        "url": "/noop"
       },
       {
         "displayName": "Build a NerdGraph query",
-        "url": "/"
+        "url": "/noop"
       }
     ]
   },
