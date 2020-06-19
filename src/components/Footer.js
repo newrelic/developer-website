@@ -3,12 +3,11 @@ import { Link } from 'gatsby';
 import cx from 'classnames';
 import ExternalLink from './ExternalLink';
 import { PageContext } from './PageContext';
+import { githubBaseUrl } from '../data/constants';
 import styles from './Footer.module.scss';
 import FeatherIcon from './FeatherIcon';
 import Logo from './Logo';
 import PropTypes from 'prop-types';
-
-const githubBaseUrl = 'https://github.com/newrelic/developer-website';
 
 const Footer = ({ className }) => {
   const { fileRelativePath } = useContext(PageContext);

@@ -5,6 +5,7 @@ import SEO from '../components/Seo';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
 import PageTitle from '../components/PageTitle';
+import Section from '../components/Section';
 import Video from '../components/Video';
 import ExternalLink from '../components/ExternalLink';
 import { PageContext } from '../components/PageContext';
@@ -14,21 +15,24 @@ import styles from './index.module.scss';
 const getStartedGuides = [
   {
     minutes: 5,
-    title: 'Collect data from any source',
-    description: `Learn how to ingest data from various sources. Whether you want to ingest data “out of the box,” or bring custom data into New Relic that isn't collected by default.`,
-    path: '',
+    title: 'Collect data',
+    description: `Define, visualize, and get alerts on the data you want using custom events`,
+    path: '/collect-data/custom-events',
+    icon: 'barChart',
   },
   {
-    minutes: 5,
-    title: 'Instrument your data',
-    description: `Use custom instrumentation to automatically produce complete information, without needing to modify your application code. Manage your environment through Observability as Code.`,
-    path: '',
+    minutes: 7,
+    title: 'Automate data',
+    description: `Add tags to applications you instrument for easier filtering and organization`,
+    path: '/automate-workflows/add-tags-to-apps',
+    icon: 'box',
   },
   {
-    minutes: 5,
-    title: 'Customize your data',
-    description: `Build and customize on the programmable platform by learning how to customize existing apps, enhance open source projects, or build your own application to solve your specific problem.`,
-    path: '',
+    minutes: 12,
+    title: 'Build custom apps',
+    description: `Build a Hello World! app and publish it to your local New Relic One Catalog`,
+    path: '/build-apps/build-hello-world-app',
+    icon: 'cpu',
   },
 ];
 
@@ -75,9 +79,6 @@ const IndexPage = ({ pageContext }) => (
             Best of all? This site is built in open source. Submit ideas,
             feedback, and comments directly to our engineers.
           </p>
-          <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
-            <button type="button">Create a free account</button>
-          </ExternalLink>
         </div>
         <Video
           className={styles.introVideo}
@@ -87,17 +88,21 @@ const IndexPage = ({ pageContext }) => (
         />
       </section>
 
-      <GuideListing className={styles.guideListing}>
-        <GuideListing.Heading className={styles.guideListingHeading}>
-          Get started
-        </GuideListing.Heading>
-        <GuideListing.List>
-          {getStartedGuides.map((guide, index) => (
-            <GuideTile key={index} {...guide} />
-          ))}
-        </GuideListing.List>
-      </GuideListing>
-      <hr className={styles.line} />
+      <Section backgroundBanner>
+        <GuideListing className={styles.guideListing}>
+          <GuideListing.Heading className={styles.guideListingHeading}>
+            Get started in minutes
+            <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
+              <button type="button">Create a free account</button>
+            </ExternalLink>
+          </GuideListing.Heading>
+          <GuideListing.List>
+            {getStartedGuides.map((guide, index) => (
+              <GuideTile key={index} {...guide} />
+            ))}
+          </GuideListing.List>
+        </GuideListing>
+      </Section>
 
       <GuideListing className={styles.guideListing}>
         <GuideListing.Heading className={styles.guideListingHeading}>
