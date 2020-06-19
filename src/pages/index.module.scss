@@ -9,7 +9,7 @@
   justify-content: space-between;
   margin: 2rem auto;
 
-  @media (max-width: 760px) {
+  @media (max-width: 1080px) {
     flex-direction: column;
   }
 
@@ -36,13 +36,14 @@
   margin-bottom: 1rem;
 }
 
-.guideListingHeading {
-  margin-top: 0rem;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
+.guideListing {
+  margin-top: 6rem;
 }
 
-.backgroundBanner {
-  height: 125%;
-  top: 1rem;
+.guideListingHeading {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
 }

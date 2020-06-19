@@ -5,6 +5,7 @@ import SEO from '../components/Seo';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
 import PageTitle from '../components/PageTitle';
+import Section from '../components/Section';
 import Video from '../components/Video';
 import ExternalLink from '../components/ExternalLink';
 import { PageContext } from '../components/PageContext';
@@ -75,9 +76,6 @@ const IndexPage = ({ pageContext }) => (
             Best of all? This site is built in open source. Submit ideas,
             feedback, and comments directly to our engineers.
           </p>
-          <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
-            <button type="button">Create a free account</button>
-          </ExternalLink>
         </div>
         <Video
           className={styles.introVideo}
@@ -87,17 +85,21 @@ const IndexPage = ({ pageContext }) => (
         />
       </section>
 
-      <GuideListing className={styles.guideListing}>
-        <GuideListing.Heading className={styles.guideListingHeading}>
-          Get started
-        </GuideListing.Heading>
-        <GuideListing.List>
-          {getStartedGuides.map((guide, index) => (
-            <GuideTile key={index} {...guide} />
-          ))}
-        </GuideListing.List>
-      </GuideListing>
-      <hr className={styles.line} />
+      <Section backgroundBanner>
+        <GuideListing className={styles.guideListing}>
+          <GuideListing.Heading className={styles.guideListingHeading}>
+            Get started in minutes
+            <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
+              <button type="button">Create a free account</button>
+            </ExternalLink>
+          </GuideListing.Heading>
+          <GuideListing.List>
+            {getStartedGuides.map((guide, index) => (
+              <GuideTile key={index} {...guide} />
+            ))}
+          </GuideListing.List>
+        </GuideListing>
+      </Section>
 
       <GuideListing className={styles.guideListing}>
         <GuideListing.Heading className={styles.guideListingHeading}>
