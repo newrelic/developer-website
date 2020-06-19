@@ -241,7 +241,7 @@ In the example below a new navigation element has been added called `New Nav Ite
         "url": "/"
       },
       {
-        "displayName": "Extend New Relic Agents",
+        "displayName": "Extend New Relic agents",
         "url": "/"
       },
       {
