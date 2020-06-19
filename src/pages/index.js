@@ -35,7 +35,7 @@ const getStartedGuides = [
 const guides = [
   {
     minutes: 5,
-    title: 'Full Stack Monitoring',
+    title: 'Create a Flex Integration',
     description: 'Get data into New Relic using your existing instrumentation.',
     path: '',
   },
