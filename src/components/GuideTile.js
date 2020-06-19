@@ -14,13 +14,15 @@ const GuideTile = ({ icon, minutes, title, description, path, className }) => (
     )}
 
     <div className={styles.timeEstimate}>{minutes} minutes</div>
-    <div className={styles.main}>
-      <h2>{title}</h2>
-      <p className={styles.description}>{description}</p>
-      <button type="button" onClick={() => navigate(path)}>
-        Start the Guide
-      </button>
-    </div>
+    <h2 className={styles.title}>{title}</h2>
+    <p className={styles.description}>{description}</p>
+    <button
+      type="button"
+      className={styles.button}
+      onClick={() => navigate(path)}
+    >
+      Start the Guide
+    </button>
   </div>
 );
 
