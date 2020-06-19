@@ -19,7 +19,7 @@ const getStartedGuides = [
     title: 'Collect data',
     description: `Define, visualize, and get alerts on the data you want using custom events`,
     path: '/collect-data/custom-events',
-    icon: 'barChart',
+    icon: 'bar-chart',
   },
   {
     minutes: 7,
