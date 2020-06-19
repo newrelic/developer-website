@@ -220,7 +220,7 @@ In the example below a new navigation element has been added called `New Nav Ite
         "url": "/"
       }
     ]
-  },
+  }
 ]
 ```
 
