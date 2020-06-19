@@ -216,7 +216,7 @@ In the example below a new navigation element has been added called `New Nav Ite
         "url": "/"
       },
       {
-        "displayName": "Create Flex Integration",
+        "displayName": "Create Flex integration",
         "url": "/"
       }
     ]
