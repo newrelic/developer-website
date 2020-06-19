@@ -189,7 +189,7 @@ When a new guide is added or an existing guide path frontmatter slug is changed 
 3. In order to change navigation you will need to update the [sidenav.json](../src/data/sidenav.json) file.
 4. Given the side navigation file is JSON, be sure to close all `[ ]` and `{ }` and use trailing `,` correctly.
 5. Navigation `displayName` should always be Sentence case.
-6. Submit your `PR` and add the Navigation `Label`.
+6. Submit your PR and add the `navigation` label.
 
 ### Example navigation change
 
