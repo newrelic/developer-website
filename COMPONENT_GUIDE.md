@@ -188,3 +188,21 @@ There are three props that can be supplied to a code snippet.
   ```jsx copy=false
   ```
   ````
+
+## Callouts
+
+Callouts direct your attention to information of special importance or to information that doesn't fit smoothly into the main text.
+
+* Caution: Screams at you that this could cause a crash or cost you data loss beyond the task at hand.
+* Important: Urges awareness that this could impair the task at hand or cost you time if you ignore the text.
+* Tip: Whispers to you that this is nice to know, like a shortcut, best practice, or reminder. 
+
+### Usage
+
+* Caution: `<Caution>Text</Caution>`
+* Important: `<Important>Text</Important>`
+* Tip: `<Tip>Text</Important>`
+
+All callouts have default titles that can be overridden like this:
+
+`<Caution title="A custom title">Text</Caution>`

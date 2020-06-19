@@ -11,6 +11,9 @@ import PageTitle from '../components/PageTitle';
 import Video from '../components/Video';
 import Step from '../components/Step';
 import Steps from '../components/Steps';
+import Caution from '../components/Caution';
+import Important from '../components/Important';
+import Tip from '../components/Tip';
 import Intro from '../components/Intro';
 import SEO from '../components/Seo';
 import { BreadcrumbContext } from '../components/BreadcrumbContext';
@@ -24,6 +27,9 @@ const components = {
   Video,
   Step,
   Steps,
+  Caution,
+  Important,
+  Tip,
   Intro,
   code: (props) => <CodeSnippet {...props} />,
 };
