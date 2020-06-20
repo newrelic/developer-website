@@ -55,7 +55,6 @@
   },
   {
     "displayName": "Automate workflows",
-    "url": "/automate-workflows",
     "children": [
       {
         "displayName": "Monitor, alert, and analyze",
