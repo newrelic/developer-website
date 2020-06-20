@@ -1,7 +1,7 @@
 # Table of Contents
 
 - [Table of Contents](#table-of-contents)
-  - [Welcome!](#welcome)
+  - [Welcome](#welcome)
   - [GitHub & Gatsby](#github--gatsby)
   - [What can I contribute?](#what-can-i-contribute)
     - [Technical references](#technical-references)
@@ -52,7 +52,7 @@
   - [Prefer US English](#prefer-us-english)
   - [References](#references)
 
-## Welcome!
+## Welcome
 
 The New Relic Developer Site is an open source documentation repository where we encourage contributions from everyone, not just employees of New Relic.
 
