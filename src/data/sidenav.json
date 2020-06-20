@@ -1,86 +1,73 @@
 [
   {
     "displayName": "Collect data",
-    "url": "/collect-data",
     "children": [
       {
         "displayName": "Log with the Log API",
-        "url": "/"
+        "url": "/noop"
       },
       {
-        "displayName": "OpenTelemetry Exporter",
-        "url": "/"
+        "displayName": "OpenTelemetry exporter",
+        "url": "/noop"
       },
       {
-        "displayName": "Extend New Relic Agents",
-        "url": "/"
+        "displayName": "Extend New Relic agents",
+        "url": "/noop"
       },
       {
-        "displayName": "Create Flex Integration",
-        "url": "/"
-      }
-    ]
-  },
-  {
-    "displayName": "Explore data",
-    "url": "/explore-data",
-    "children": [
-      {
-        "displayName": "Write NRQL Queries",
-        "url": "/"
+        "displayName": "Create a Flex integration",
+        "url": "/noop"
       },
       {
-        "displayName": "Build a NerdGraph Query",
-        "url": "/"
+        "displayName": "Write NRQL queries",
+        "url": "/noop"
+      },
+      {
+        "displayName": "Build a NerdGraph query",
+        "url": "/noop"
       }
     ]
   },
   {
     "displayName": "Build apps",
-    "url": "/build-apps",
     "children": [
       {
-        "displayName": "Map Pageviews by Region",
+        "displayName": "Map pageviews by region",
         "url": "/build-apps/map-pageviews-by-region"
       },
       {
-        "displayName": "Optimize Cloud Usage",
-        "url": "/build-apps/optimize-cloud-usage"
-      },
-      {
-        "displayName": "Add a Time Picker",
+        "displayName": "Add a time picker",
         "url": "/build-apps/add-time-picker-guide"
       },
       {
-        "displayName": "Use NerdGraph in an App",
+        "displayName": "Use NerdGraph in an app",
         "url": "/build-apps/use-nerdgraph-in-app"
       },
       {
-        "displayName": "Build a Table",
+        "displayName": "Build a table",
         "url": "/build-apps/build-a-table"
       },
       {
-        "displayName": "Persistent Storage for Apps",
+        "displayName": "Persistent storage for apps",
         "url": "/build-apps/persistent-storage-for-apps"
       }
     ]
   },
   {
     "displayName": "Automate workflows",
-    "url": "/automate-workflows",
     "children": [
       {
-        "displayName": "Monitor, Alert, and Analyze",
+        "displayName": "Monitor, alert, and analyze",
         "url": "/automate-workflows/"
       },
       {
-        "displayName": "OpenTelemetry Exporter",
+        "displayName": "OpenTelemetry exporter",
         "url": "/automate-workflows/"
       }
     ]
   },
   {
-    "displayName": "Developer docs",
+    "displayName": "Explore docs",
     "children": [
       {
         "displayName": "CLI"

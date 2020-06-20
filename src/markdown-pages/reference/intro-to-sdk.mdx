@@ -7,10 +7,10 @@ description: 'Intro to New Relic One API components'
 
 <Intro>
 
-To help you build a New Relic One application we provide you with the New Relic One SDK
-This page will give you an introduction to the types of API calls and components in the SDK. 
-The SDK provides everything you need to build your Nerdlets, create visualizations, and fetch 
-data (New Relic or third-party). These components are located in the Node module package named `nr1`, 
+To help you build a New Relic One application we provide you with the New Relic One SDK.
+This page will give you an introduction to the types of API calls and components in the SDK.
+The SDK provides everything you need to build your Nerdlets, create visualizations, and fetch
+data (New Relic or third-party). These components are located in the Node module package named `nr1`,
 which you get when you install [the NR1 CLI](TODOneedURL).
 
 </Intro>
@@ -28,60 +28,60 @@ The `nr1` components can be divided into several categories:
 
 The **UI components** category of the SDK contains React UI components, including:
 
--   Text components: These components provide basic font and heading elements. 
-These include [`HeadingText`](../components/heading-text) 
+-   Text components: These components provide basic font and heading elements.
+These include [`HeadingText`](../components/heading-text)
 and [`BlockText`](../components/block-text).
 
 -   Layout components: These components give you control over the layout, and help you build complex layout designs without having to deal with the CSS. Layout components include:
 
-    -   [`Grid`](../components/grid) 
-    and [`GridItem`:](../components/grid-item) 
+    -   [`Grid`](../components/grid)
+    and [`GridItem`:](../components/grid-item)
     for organizing more complex, larger scale page content in rows and columns.
 
-    -   [`Stack`](../components/stack) 
-    and [`StackItem`](../components/stack-item): 
+    -   [`Stack`](../components/stack)
+    and [`StackItem`](../components/stack-item):
     for organizing simpler, smaller scale page content (in column or row).
 
-    -   [`Tabs`](../components/tabs) 
-    and [`TabsItem`](../components/tabs-item): 
+    -   [`Tabs`](../components/tabs)
+    and [`TabsItem`](../components/tabs-item):
     group various related pieces of content into separate hideable sections.
 
-    -   [`List`](../components/list) 
-    and [`ListItem`](../components/list-item): 
+    -   [`List`](../components/list)
+    and [`ListItem`](../components/list-item):
     for providing a basic skeleton of virtualized lists.
 
-    -   [`Card`](../components/card), 
+    -   [`Card`](../components/card),
     [`CardHeader`](../components/card-header) and [`CardBody`](../components/card-body)
     : used to group similar concepts and tasks together.
 
--   Form components: These components provide the basic building blocks to interact with the UI. 
-These include [`Button`](../components/button), 
-[`TextField`](../components/text-field), 
-[`Dropdown`](../components/dropdown) 
+-   Form components: These components provide the basic building blocks to interact with the UI.
+These include [`Button`](../components/button),
+[`TextField`](../components/text-field),
+[`Dropdown`](../components/dropdown)
 and [`DropdownItem`](../components/dropdown-item),
  [`Checkbox`](../components/checkbox),
-  [`RadioGroup`](../components/radio-group), 
-  [`Radio`](../components/radio), 
+  [`RadioGroup`](../components/radio-group),
+  [`Radio`](../components/radio),
   and [`Checkbox`](../components/checkbox).
 
--   Feedback components: These components are used to provide feedback to users about actions they've taken. 
-These include: [`Spinner`](../components/spinner) 
+-   Feedback components: These components are used to provide feedback to users about actions they've taken.
+These include: [`Spinner`](../components/spinner)
 and [`Toast`](../components/toast).
 
--   Overlaid components: These components are used to display contextual information and 
-options in the form of an additional child view that appears above other content on screen 
-when an action or event is triggered. They can either require user interaction (like modals), 
-or be augmenting (like a tooltip). These include: [`Modal`](../components/modal) 
+-   Overlaid components: These components are used to display contextual information and
+options in the form of an additional child view that appears above other content on screen
+when an action or event is triggered. They can either require user interaction (like modals),
+or be augmenting (like a tooltip). These include: [`Modal`](../components/modal)
 and [`Tooltip`](../components/tooltip).
 
-Note: components suffixed with `Item` can only operate as direct children of that 
-name without the suffix. For example: [`GridItem`](../components/grid-item) 
+Note: components suffixed with `Item` can only operate as direct children of that
+name without the suffix. For example: [`GridItem`](../components/grid-item)
 should only be found as a child of [`Grid`](../components/grid).
 
 ## Chart components
 
 The **Charts** category of New Relic One SDK
-contains components representing different types of charts. The [`ChartGroup`](../components/chart-group) 
+contains components representing different types of charts. The [`ChartGroup`](../components/chart-group)
 component helps a group of related charts share data and be aligned.
 
 Some chart components can perform NRQL queries on their own; some accept a customized set of data.
@@ -90,30 +90,30 @@ Some chart components can perform NRQL queries on their own; some accept a custo
 
 The **Query components** category of the New Relic One SDK contains components for fetching and storing New Relic data.
 
-The main way to fetch New Relic data is with NerdGraph, our GraphQL endpoint. 
-This can be queried using [`NerdGraphQuery`](../components/nerd-graph-query). 
-To simplify use of NerdGraph queries, we provide some components with pre-defined queries. For more on using NerdGraph, see 
+The main way to fetch New Relic data is with NerdGraph, our GraphQL endpoint.
+This can be queried using [`NerdGraphQuery`](../components/nerd-graph-query).
+To simplify use of NerdGraph queries, we provide some components with pre-defined queries. For more on using NerdGraph, see
 [Queries and mutations](TODOneedURL).
 
-We also provide some storage for storing small data sets, such as configuration settings data, or user-specific data. 
+We also provide some storage for storing small data sets, such as configuration settings data, or user-specific data.
 For more on this, see [NerdStorage](TODOneedURL).
 
 ## Platform APIs
 
 The Platform API components of the New Relic One SDK
-enable your application to interact with different parts of the New Relic One platform, 
+enable your application to interact with different parts of the New Relic One platform,
 by reading and writing state from and to the URL, setting the configuration, etc. They can be divided into these categories:
 
--   [`PlatformStateContext`](../components/platform-state-context): provides read access to the platform URL state variables. 
+-   [`PlatformStateContext`](../components/platform-state-context): provides read access to the platform URL state variables.
 Example: `timeRange` in the time picker.
 
--   [`navigation`](../api/navigation): an object that allows programmatic manipulation of the navigation 
+-   [`navigation`](../api/navigation): an object that allows programmatic manipulation of the navigation
 in New Relic One. Example: opening a new Nerdlet.
 
--   [`NerdletStateContext`](..components/nerdlet-state-context): provides read access to the Nerdlet URL state variables. 
+-   [`NerdletStateContext`](..components/nerdlet-state-context): provides read access to the Nerdlet URL state variables.
 Example: an `entityGuid` in the [entity explorer](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/ui-data/new-relic-one-entity-explorer-view-performance-across-apps-services-hosts).
 
--   [`nerdlet`](../api/navigation): an object that provides write access to the Nerdlet URL state.)
+-   [`nerdlet`](../api/navigation): an object that provides write access to the Nerdlet URL state.
 
 ## Related info
 

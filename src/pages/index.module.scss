@@ -1,15 +1,9 @@
-.line {
-  border-bottom: 4px solid var(--color-brand-800);
-  width: 50px;
-  margin: auto;
-}
-
 .intro {
   display: flex;
   justify-content: space-between;
-  margin: 2rem auto 7rem;
+  margin: 2rem auto;
 
-  @media (max-width: 760px) {
+  @media (max-width: 1080px) {
     flex-direction: column;
   }
 
@@ -36,19 +30,42 @@
   margin-bottom: 1rem;
 }
 
+.guideListing {
+  margin-top: 6rem;
+}
+
+.guideListingHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
 .guideListingHeading {
-  margin-top: 0rem;
-  margin-bottom: 2rem;
+  margin: 0;
+  margin-right: 1rem;
   font-size: 2.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.guideTile {
-  box-shadow: none;
-  border: 1px solid var(--color-neutrals-300);
-  border-radius: 0.25rem;
+@media screen and (max-width: 980px) {
+  .getStartedTextFull {
+    display: none;
+  }
 }
 
-.backgroundBanner {
-  height: 125%;
-  top: 1rem;
+.inspiration {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.externalLink {
+  display: inline-flex;
+  align-items: center;
+}
+
+.externalLinkIcon {
+  margin-left: 0.25rem;
 }
