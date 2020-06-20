@@ -19,7 +19,7 @@ const renderNav = (pages, depthLevel = 0) => {
     'Explore data': 'bar-chart',
     'Build apps': 'box',
     'Automate workflows': 'cpu',
-    'Developer docs': 'book-open',
+    'Explore docs': 'book-open',
   };
 
   const groupedPages = pages.reduce((groups, page) => {

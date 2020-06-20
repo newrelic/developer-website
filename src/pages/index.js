@@ -8,6 +8,7 @@ import GuideTile from '../components/GuideTile';
 import PageTitle from '../components/PageTitle';
 import Section from '../components/Section';
 import Video from '../components/Video';
+import FeatherIcon from '../components/FeatherIcon';
 import ExternalLink from '../components/ExternalLink';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
@@ -16,24 +17,25 @@ import styles from './index.module.scss';
 const getStartedGuides = [
   {
     minutes: 5,
-    title: 'Collect data',
-    description: `Define, visualize, and get alerts on the data you want using custom events`,
+    title: 'Create custom events',
+    description:
+      'Define, visualize, and get alerts on the data you want using custom events',
     path: '/collect-data/custom-events',
     icon: 'bar-chart',
   },
   {
     minutes: 7,
-    title: 'Automate data',
+    title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
     path: '/automate-workflows/add-tags-to-apps',
-    icon: 'box',
+    icon: 'cpu',
   },
   {
     minutes: 12,
-    title: 'Build custom apps',
-    description: `Build a Hello World! app and publish it to your local New Relic One Catalog`,
+    title: 'Build a Hello, World! app',
+    description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
     path: '/build-apps/build-hello-world-app',
-    icon: 'cpu',
+    icon: 'box',
   },
 ];
 
@@ -87,16 +89,19 @@ const IndexPage = ({ pageContext }) => (
       <section className={styles.intro}>
         <div className={styles.introText}>
           <p>
-            As developers, engineers, and problem solvers, pinpointing issues
-            fast and improving performance effectively are your top priorities.
-            Explore the developer site to learn how to collect data from any
-            source, visualize and instrument your data, and customize it in any
-            way you want. From how-to guides to video tutorials, community
+            Welcome to the New Relic developer site! Here, you’ll find the tools
+            and resources you need to build on and customize the platform.
+          </p>
+          <p>
+            You need custom data that improves performance. We have tools for
+            that! Learn how to collect data from any source and visualize it the
+            way you need. Build out solutions in your own custom apps, and then
+            automate them. From how-to guides to video tutorials, community
             projects, and more - we’ve got you covered.
           </p>
           <p>
-            Best of all? This site is built in open source. Submit ideas,
-            feedback, and comments directly to our engineers.
+            Best of all? This open source site is built for you — your
+            suggestions, feedback, and comments are just a Pull Request away.
           </p>
         </div>
         <Video
@@ -111,10 +116,10 @@ const IndexPage = ({ pageContext }) => (
         <GuideListing className={styles.guideListing}>
           <header className={styles.guideListingHeader}>
             <GuideListing.Heading className={cx(styles.guideListingHeading)}>
-              Get started in minutes
+              Get started
             </GuideListing.Heading>
             <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
-              <button type="button">Create a free account</button>
+              <button type="button">Create an account</button>
             </ExternalLink>
           </header>
           <GuideListing.List>
@@ -127,7 +132,7 @@ const IndexPage = ({ pageContext }) => (
 
       <GuideListing className={styles.guideListing}>
         <GuideListing.Heading className={styles.guideListingHeading}>
-          Build Solutions
+          Extend the platform
         </GuideListing.Heading>
         <GuideListing.List>
           {guides.map((guide, index) => (
@@ -135,6 +140,21 @@ const IndexPage = ({ pageContext }) => (
           ))}
         </GuideListing.List>
       </GuideListing>
+
+      <p className={styles.inspiration}>
+        Looking for inspiration? Check out the{' '}
+        <ExternalLink
+          className={styles.externalLink}
+          href="https://opensource.newrelic.com"
+        >
+          open source projects
+          <FeatherIcon
+            className={styles.externalLinkIcon}
+            name="external-link"
+          />
+        </ExternalLink>{' '}
+        built by the New Relic community.
+      </p>
     </Layout>
   </PageContext.Provider>
 );
