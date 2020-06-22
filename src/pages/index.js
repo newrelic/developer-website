@@ -18,7 +18,7 @@ import styles from './index.module.scss';
 
 const getStartedGuides = [
   {
-    minutes: 5,
+    duration: '5 min',
     title: 'Create custom events',
     description:
       'Define, visualize, and get alerts on the data you want using custom events',
@@ -26,14 +26,14 @@ const getStartedGuides = [
     icon: 'collectData',
   },
   {
-    minutes: 7,
+    duration: '7 min',
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
     path: '/automate-workflows/add-tags-to-apps',
     icon: 'automation',
   },
   {
-    minutes: 12,
+    duration: '12 min',
     title: 'Build a Hello, World! app',
     description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
     path: '/build-apps/build-hello-world-app',
@@ -146,7 +146,7 @@ const IndexPage = ({ data, pageContext }) => {
             {nodes.map(({ frontmatter }, index) => (
               <GuideTile
                 key={index}
-                minutes={frontmatter.duration}
+                duration={frontmatter.duration}
                 title={frontmatter.callout?.title || frontmatter.title}
                 description={
                   frontmatter.callout?.description || frontmatter.description
