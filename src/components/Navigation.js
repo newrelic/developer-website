@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 import FeatherIcon from './FeatherIcon';
+import NewRelicIcon from './NewRelicIcon';
 import pages from '../data/sidenav.json';
 
 import styles from './Navigation.module.scss';
@@ -15,11 +16,10 @@ const renderNav = (pages, depthLevel = 0) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
   const iconLibrary = {
-    'Collect data': 'upload-cloud',
-    'Explore data': 'bar-chart',
-    'Build apps': 'box',
-    'Automate workflows': 'cpu',
-    'Explore docs': 'book-open',
+    'Collect data': 'collectData',
+    'Build apps': 'buildApps',
+    'Automate workflows': 'automation',
+    'Explore docs': 'developerDocs',
   };
 
   const groupedPages = pages.reduce((groups, page) => {
@@ -42,7 +42,7 @@ const renderNav = (pages, depthLevel = 0) => {
         );
         const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
         const headerIcon = depthLevel === 0 && (
-          <FeatherIcon
+          <NewRelicIcon
             className={styles.headerIcon}
             name={iconLibrary[page.displayName]}
           />

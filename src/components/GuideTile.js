@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import FeatherIcon from './FeatherIcon';
+import NewRelicIcon from '../components/NewRelicIcon';
 import cx from 'classnames';
 import { navigate } from 'gatsby';
 import styles from './GuideTile.module.scss';
@@ -9,7 +10,7 @@ const GuideTile = ({ icon, minutes, title, description, path, className }) => (
   <div className={cx(styles.tile, className, { [styles.tileWithIcon]: icon })}>
     {icon && (
       <div className={styles.iconContainer}>
-        <FeatherIcon name={icon} size="2.5rem" />
+        <NewRelicIcon name={icon} size="2.5rem" />
       </div>
     )}
 
