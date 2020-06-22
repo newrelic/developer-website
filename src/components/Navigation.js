@@ -17,7 +17,23 @@ const iconLibrary = {
   'Explore docs': 'book-open',
 };
 
-const NavigationItems = ({ pages, filteredPageNames, depthLevel = 0 }) => {
+const getHighlightedText = (text, highlight) => {
+  const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+  return (
+    <span>
+      {parts.map((part) =>
+        part.toLowerCase() === highlight.toLowerCase() ? <b>{part}</b> : part
+      )}
+    </span>
+  );
+};
+
+const NavigationItems = ({
+  pages,
+  filteredPageNames,
+  searchTerm,
+  depthLevel = 0,
+}) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
 
@@ -32,9 +48,12 @@ const NavigationItems = ({ pages, filteredPageNames, depthLevel = 0 }) => {
 
   return Object.entries(groupedPages).map(([group, pages]) => (
     <Fragment key={group}>
-      {group && (
-        <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
-      )}
+      {(group && !filteredPageNames) ||
+        (group &&
+          filteredPageNames &&
+          pages.some((el) => filteredPageNames.includes(el.displayName)) && (
+            <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
+          ))}
       {pages.map((page) => {
         const [isExpanded, setIsExpanded] = useState(
           isHomePage || crumbs.includes(page.displayName)
@@ -47,6 +66,9 @@ const NavigationItems = ({ pages, filteredPageNames, depthLevel = 0 }) => {
             name={iconLibrary[page.displayName]}
           />
         );
+        const display = filteredPageNames
+          ? getHighlightedText(page.displayName, searchTerm)
+          : page.displayName;
 
         return (
           <li
@@ -77,7 +99,7 @@ const NavigationItems = ({ pages, filteredPageNames, depthLevel = 0 }) => {
               >
                 <span>
                   {headerIcon}
-                  {page.displayName}
+                  {display}
                 </span>
                 {isCurrentPage && (
                   <FeatherIcon
@@ -104,7 +126,7 @@ const NavigationItems = ({ pages, filteredPageNames, depthLevel = 0 }) => {
                   />
                 )}
                 {headerIcon}
-                {page.displayName}
+                {display}
               </button>
             )}
             {page.children && (
@@ -117,6 +139,7 @@ const NavigationItems = ({ pages, filteredPageNames, depthLevel = 0 }) => {
                   pages={page.children}
                   filteredPageNames={filteredPageNames}
                   depthLevel={depthLevel + 1}
+                  searchTerm={searchTerm}
                 />
               </ul>
             )}
@@ -126,23 +149,6 @@ const NavigationItems = ({ pages, filteredPageNames, depthLevel = 0 }) => {
     </Fragment>
   ));
 };
-
-// const filterPages = (pages, _searchTerm, parent = {}) => {
-//   const filteredPage = parent;
-//   return pages.map((page) => {
-//     if (page.children) {
-//       return filterPages(page.children, _searchTerm, page);
-//     } else if (matchSearchString(page.displayName, _searchTerm)) {
-//       filteredPage.children = filteredPage.children.filter((el) =>
-//         matchSearchString(el.displayName, _searchTerm)
-//       );
-//       return filteredPage;
-//     } else if (matchSearchString(parent.displayName, _searchTerm)) {
-//       delete filteredPage.children;
-//       return filteredPage;
-//     }
-//   });
-// };
 
 const filterPageNames = (pages, searchTerm, parent = []) => {
   return [
@@ -174,7 +180,11 @@ const Navigation = ({ className, searchTerm }) => {
       aria-label="Navigation"
     >
       <ul className={styles.listNav}>
-        <NavigationItems pages={pages} filteredPageNames={filteredPageNames} />
+        <NavigationItems
+          searchTerm={searchTerm}
+          pages={pages}
+          filteredPageNames={filteredPageNames}
+        />
       </ul>
     </nav>
   );
