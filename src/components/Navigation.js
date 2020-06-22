@@ -9,16 +9,17 @@ import matchSearchString from '../utils/matchSearchString';
 
 import styles from './Navigation.module.scss';
 
-const NavigationItems = ({ pages, searches, depthLevel = 0 }) => {
+const iconLibrary = {
+  'Collect data': 'upload-cloud',
+  'Explore data': 'bar-chart',
+  'Build apps': 'box',
+  'Automate workflows': 'cpu',
+  'Explore docs': 'book-open',
+};
+
+const NavigationItems = ({ pages, filteredPageNames, depthLevel = 0 }) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
-  const iconLibrary = {
-    'Collect data': 'upload-cloud',
-    'Explore data': 'bar-chart',
-    'Build apps': 'box',
-    'Automate workflows': 'cpu',
-    'Explore docs': 'book-open',
-  };
 
   const groupedPages = pages.reduce((groups, page) => {
     const { group = '' } = page;
@@ -54,14 +55,16 @@ const NavigationItems = ({ pages, searches, depthLevel = 0 }) => {
             className={cx(
               { [styles.isCurrentPage]: isCurrentPage },
               {
-                [styles.isNotSearch]:
-                  searches && !searches.includes(page.displayName),
+                [styles.notMatchesFilter]:
+                  filteredPageNames &&
+                  !filteredPageNames.includes(page.displayName),
               },
               {
-                [styles.isSearch]:
-                  searches && searches.includes(page.displayName),
+                [styles.matchesFilter]:
+                  filteredPageNames &&
+                  filteredPageNames.includes(page.displayName),
               },
-              { [styles.isBeingSearched]: searches }
+              { [styles.filterOn]: filteredPageNames }
             )}
           >
             {page.url ? (
@@ -112,7 +115,7 @@ const NavigationItems = ({ pages, searches, depthLevel = 0 }) => {
               >
                 <NavigationItems
                   pages={page.children}
-                  searches={searches}
+                  filteredPageNames={filteredPageNames}
                   depthLevel={depthLevel + 1}
                 />
               </ul>
@@ -141,12 +144,12 @@ const NavigationItems = ({ pages, searches, depthLevel = 0 }) => {
 //   });
 // };
 
-const searchPages = (pages, searchTerm, parent = []) => {
+const filterPageNames = (pages, searchTerm, parent = []) => {
   return [
     ...new Set(
       pages.flatMap((page) => {
         if (page.children) {
-          return searchPages(page.children, searchTerm, [
+          return filterPageNames(page.children, searchTerm, [
             ...parent,
             page.displayName,
           ]);
@@ -161,10 +164,9 @@ const searchPages = (pages, searchTerm, parent = []) => {
 };
 
 const Navigation = ({ className, searchTerm }) => {
-  const searches =
-    searchTerm !== '' ? searchPages(pages, searchTerm) : undefined;
+  const filteredPageNames =
+    searchTerm !== '' ? filterPageNames(pages, searchTerm) : undefined;
 
-  // const filters = filterPages(pages, searchTerm);
   return (
     <nav
       className={cx(styles.container, className)}
@@ -172,7 +174,7 @@ const Navigation = ({ className, searchTerm }) => {
       aria-label="Navigation"
     >
       <ul className={styles.listNav}>
-        <NavigationItems pages={pages} searches={searches} />
+        <NavigationItems pages={pages} filteredPageNames={filteredPageNames} />
       </ul>
     </nav>
   );

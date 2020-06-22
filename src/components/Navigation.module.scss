@@ -87,15 +87,15 @@ button.navLink {
   font-weight: bold;
 }
 
-.isNotSearch {
+.notMatchesFilter {
   display: none;
 }
 
-.isSearch {
+.matchesFilter {
   display: block;
 }
 
-.isBeingSearched {
+.filterOn {
   ul {
     display: block;
   }
