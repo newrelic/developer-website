@@ -199,10 +199,31 @@ Callouts direct your attention to information of special importance or to inform
 
 ### Usage
 
-* Caution: `<Caution>Text</Caution>`
-* Important: `<Important>Text</Important>`
-* Tip: `<Tip>Text</Important>`
+```jsx
+<Caution> 
+
+Text with `markdown`.
+
+</Caution>
+
+<Important>
+
+Text with `markdown`.
+
+</Important>
+
+<Tip>
+
+Text with `markdown`.
+
+</Tip>
+```
 
 All callouts have default titles that can be overridden like this:
 
-`<Caution title="A custom title">Text</Caution>`
+```jsx
+<Caution title="A custom title">
+
+Text
+
+</Caution>```

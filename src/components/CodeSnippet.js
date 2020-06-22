@@ -6,6 +6,11 @@ import FeatherIcon from './FeatherIcon';
 import styles from './CodeSnippet.module.scss';
 import useClipboard from '../hooks/useClipboard';
 import useFormattedCode from '../hooks/useFormattedCode';
+import Prism from 'prism-react-renderer/prism';
+
+(typeof global !== 'undefined' ? global : window).Prism = Prism;
+
+require('prismjs/components/prism-ruby');
 
 const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
   const language = className.replace('language-', '');

@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 import FeatherIcon from './FeatherIcon';
+import NewRelicIcon from './NewRelicIcon';
 import pages from '../data/sidenav.json';
 import matchSearchString from '../utils/matchSearchString';
 
@@ -36,6 +37,12 @@ const NavigationItems = ({
 }) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
+  const iconLibrary = {
+    'Collect data': 'collectData',
+    'Build apps': 'buildApps',
+    'Automate workflows': 'automation',
+    'Explore docs': 'developerDocs',
+  };
 
   const groupedPages = pages.reduce((groups, page) => {
     const { group = '' } = page;
@@ -64,7 +71,7 @@ const NavigationItems = ({
 
           const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
           const headerIcon = depthLevel === 0 && (
-            <FeatherIcon
+            <NewRelicIcon
               className={styles.headerIcon}
               name={iconLibrary[page.displayName]}
             />
@@ -174,8 +181,9 @@ const filterPageNames = (pages, searchTerm, parent = []) => {
 };
 
 const Navigation = ({ className, searchTerm }) => {
+  const searchTermSanitized = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const filteredPageNames =
-    searchTerm !== '' ? filterPageNames(pages, searchTerm) : undefined;
+    searchTerm !== '' ? filterPageNames(pages, searchTermSanitized) : undefined;
 
   return (
     <nav
@@ -185,7 +193,7 @@ const Navigation = ({ className, searchTerm }) => {
     >
       <ul className={styles.listNav}>
         <NavigationItems
-          searchTerm={searchTerm}
+          searchTerm={searchTermSanitized}
           pages={pages}
           filteredPageNames={filteredPageNames}
         />
