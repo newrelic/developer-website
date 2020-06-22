@@ -80,7 +80,7 @@ const useComponentDoc = (componentName) => {
         tagsFromComponentProperties.concat(tagsFromPropTypes)
       ),
     };
-  }, [componentName, window?.__NR1_SDK__]);
+  }, [componentName]);
 };
 
 export default useComponentDoc;

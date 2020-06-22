@@ -2,14 +2,33 @@ import React from 'react';
 
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
-import Jumbotron from '../components/Jumbotron';
-import Section from '../components/Section';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
 import PageTitle from '../components/PageTitle';
 import Video from '../components/Video';
 import ExternalLink from '../components/ExternalLink';
 import styles from './index.module.scss';
+
+const getStartedGuides = [
+  {
+    minutes: 5,
+    title: 'Collect data from any source',
+    description: `Learn how to ingest data from various sources. Whether you want to ingest data “out of the box,” or bring custom data into New Relic that isn't collected by default.`,
+    path: '',
+  },
+  {
+    minutes: 5,
+    title: 'Instrument your data',
+    description: `Use custom instrumentation to automatically produce complete information, without needing to modify your application code. Manage your environment through Observability as Code.`,
+    path: '',
+  },
+  {
+    minutes: 5,
+    title: 'Customize your data',
+    description: `Build and customize on the programmable platform by learning how to customize existing apps, enhance open source projects, or build your own application to solve your specific problem.`,
+    path: '',
+  },
+];
 
 const guides = [
   {
@@ -70,10 +89,17 @@ const IndexPage = () => (
       />
     </section>
 
-    <Section backgroundBanner className={styles.backgroundBanner}>
-      <Jumbotron />
-    </Section>
-    <div className={styles.line} />
+    <GuideListing className={styles.guideListing}>
+      <GuideListing.Heading className={styles.guideListingHeading}>
+        Get started
+      </GuideListing.Heading>
+      <GuideListing.List>
+        {getStartedGuides.map((guide, index) => (
+          <GuideTile className={styles.guideTile} key={index} {...guide} />
+        ))}
+      </GuideListing.List>
+    </GuideListing>
+    <hr className={styles.line} />
 
     <GuideListing className={styles.guideListing}>
       <GuideListing.Heading className={styles.guideListingHeading}>

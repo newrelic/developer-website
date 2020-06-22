@@ -8,15 +8,15 @@
         "url": "/"
       },
       {
-        "displayName": "OpenTelemetry Exporter",
+        "displayName": "OpenTelemetry exporter",
         "url": "/"
       },
       {
-        "displayName": "Extend New Relic Agents",
+        "displayName": "Extend New Relic agents",
         "url": "/"
       },
       {
-        "displayName": "Create Flex Integration",
+        "displayName": "Create a Flex integration",
         "url": "/"
       }
     ]
@@ -26,41 +26,40 @@
     "url": "/explore-data",
     "children": [
       {
-        "displayName": "Write NRQL Queries",
+        "displayName": "Write NRQL queries",
         "url": "/"
       },
       {
-        "displayName": "Build a NerdGraph Query",
+        "displayName": "Build a NerdGraph query",
         "url": "/"
       }
     ]
   },
   {
     "displayName": "Build apps",
-    "url": "/build-apps",
     "children": [
       {
-        "displayName": "Map Pageviews by Region",
+        "displayName": "Map pageviews by region",
         "url": "/build-apps/map-pageviews-by-region"
       },
       {
-        "displayName": "Optimize Cloud Usage",
+        "displayName": "Optimize cloud usage",
         "url": "/build-apps/optimize-cloud-usage"
       },
       {
-        "displayName": "Add a Time Picker",
+        "displayName": "Add a time picker",
         "url": "/build-apps/add-time-picker-guide"
       },
       {
-        "displayName": "Use NerdGraph in an App",
+        "displayName": "Use NerdGraph in an app",
         "url": "/build-apps/use-nerdgraph-in-app"
       },
       {
-        "displayName": "Build a Table",
+        "displayName": "Build a table",
         "url": "/build-apps/build-a-table"
       },
       {
-        "displayName": "Persistent Storage for Apps",
+        "displayName": "Persistent storage for apps",
         "url": "/build-apps/persistent-storage-for-apps"
       }
     ]
@@ -70,11 +69,11 @@
     "url": "/automate-workflows",
     "children": [
       {
-        "displayName": "Monitor, Alert, and Analyze",
+        "displayName": "Monitor, alert, and analyze",
         "url": "/automate-workflows/"
       },
       {
-        "displayName": "OpenTelemetry Exporter",
+        "displayName": "OpenTelemetry exporter",
         "url": "/automate-workflows/"
       }
     ]
