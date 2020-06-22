@@ -14,6 +14,13 @@ const renderNav = (pages, depthLevel = 0) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
+  const iconLibrary = {
+    'Collect data': 'upload-cloud',
+    'Explore data': 'bar-chart',
+    'Build apps': 'box',
+    'Automate workflows': 'cpu',
+    'Explore docs': 'book-open',
+  };
 
   const groupedPages = pages.reduce((groups, page) => {
     const { group = '' } = page;
@@ -34,18 +41,29 @@ const renderNav = (pages, depthLevel = 0) => {
           isHomePage || crumbs.includes(page.displayName)
         );
         const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
+        const headerIcon = depthLevel === 0 && (
+          <FeatherIcon
+            className={styles.headerIcon}
+            name={iconLibrary[page.displayName]}
+          />
+        );
 
         return (
           <li key={page.displayName} data-depth={depthLevel}>
             {page.url ? (
               <Link
                 className={cx(
-                  { [styles.isCurrentPage]: isCurrentPage },
+                  {
+                    [styles.isCurrentPage]: isCurrentPage,
+                  },
                   styles.navLink
                 )}
                 to={page.url}
               >
-                {page.displayName}
+                <span>
+                  {headerIcon}
+                  {page.displayName}
+                </span>
                 {isCurrentPage && (
                   <FeatherIcon
                     className={styles.currentPageIndicator}
@@ -70,6 +88,7 @@ const renderNav = (pages, depthLevel = 0) => {
                     name="chevron-right"
                   />
                 )}
+                {headerIcon}
                 {page.displayName}
               </button>
             )}
