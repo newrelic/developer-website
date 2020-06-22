@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import github from 'prism-react-renderer/themes/github';
+import MiddleEllipsis from 'react-middle-ellipsis';
 import FeatherIcon from './FeatherIcon';
 import styles from './CodeSnippet.module.scss';
 import useClipboard from '../hooks/useClipboard';
@@ -39,9 +40,15 @@ const CodeSnippet = ({ children, copy, className, lineNumbers, fileName }) => {
           )}
         </Highlight>
       </div>
-      {(copy !== 'false' || !!fileName) && (
+      {(copy !== 'false' || fileName) && (
         <div className={styles.bottomBar}>
-          <div className={styles.fileName}>{fileName}</div>
+          <div className={styles.fileName}>
+            {fileName && (
+              <MiddleEllipsis>
+                <span title={fileName}>{fileName}</span>
+              </MiddleEllipsis>
+            )}
+          </div>
           {copy !== 'false' && (
             <button
               className={styles.copyButton}
