@@ -3,13 +3,11 @@ path: '/build-apps/build-hello-world-app'
 duration: '15 min'
 title: 'Create your first Nerdlet program'
 template: 'GuideTemplate'
-description: 'Build a Hello World! app and publish it to your local New Relic One Catalog'
+description: 'Build a Hello World! app and publish it to New Relic One'
 ---
 <Intro>
 
-Here's how you can quickly build a "Hello, World!" app and publish it to your local New Relic One Catalog.
-
-In these steps, we'll show you how to create a local version of the New Relic One site where you can prototype your ideas. Then, when you are ready, you can publish your code to New Relic One.
+Here's how you can quickly build a "Hello, World!" application in New Relic One. In these steps, we'll show you how to create a local version of the New Relic One site where you can prototype your application. Then, when you are ready, you can publish your code to New Relic One.
 
 <Video id="ZagZfNQYJEU" type="youtube"/>
 
@@ -25,7 +23,7 @@ After you complete the wizard, continue with the steps below.
 
 ## Create a local verion of the "Hello, World!" application
 
-The command line inteface allows you to run a local version of New Relic One. You can develop your application locally before you publish it in New Relic.
+The command line inteface allows you to run a local version of New Relic One. You can develop your application locally before you publish it in New Relic One.
 
 Here's how to create a local verson of "Hello, World!":
 
@@ -33,7 +31,7 @@ Here's how to create a local verson of "Hello, World!":
 
   <Step>
 
-  If you haven't already done so in your terminal, change to the new directory named after your nerdpack project. For example, it might look like this:
+  If you haven't already done so in your terminal, change to the new directory named after your nerdpack project. For example, the command might look like this:
 
   ```
   $ cd /my-awesome-nerdpack
@@ -88,7 +86,7 @@ Here's how to create a local verson of "Hello, World!":
     
   <Step>
 
-  Change the value for `displayName` to anything you want, and save the file:  
+  Change the value for `displayName` to anything you want as the launcher label, and save the file:  
 
   ```json
   {
@@ -104,7 +102,7 @@ Here's how to create a local verson of "Hello, World!":
 
   <Step>
 
-  To see your new changes locally, start the node server with this command in your terminal:
+  To see your new changes locally, start the Node server with this command in your terminal:
 
   ```
   npm start
@@ -133,7 +131,7 @@ Here's how to create a local verson of "Hello, World!":
 
 ## Publish you application to New Relic
 
-Your colleagues can't see your local application, so when you want to share it, publish it to the New Relic One catalog. 
+Your colleagues can't see your local application, so when you are ready to share it, publish it to the New Relic One catalog. The catalog is where you can find any pre-existing custom applications, as well as any applications you create in your own organization. 
 
 <Steps>
 
@@ -166,7 +164,9 @@ Your colleagues can't see your local application, so when you want to share it, 
 
 </Steps>
 
-  When your new application opens, you see that it doesn't have any details. The next section shows you how to add those.
+  When your new application opens, you see that it needs descriptive information. The next section shows you how to add descriptive metadata.
+
+  ![An empty application description in the catalog](../images/create-hello-world/catalog-description-empty.png)
 
 ## Add details to describe your project
 
@@ -178,8 +178,6 @@ Now that your new application is in the New Relic One catalog, you can add detai
 
   Go to your project in the terminal and execute the following:  
 
-  ![Catalog stub](../images/create-hello-world/new-catalog-stub.png)
-
   ```
   nr1 create
   ```
@@ -189,6 +187,8 @@ Now that your new application is in the New Relic One catalog, you can add detai
   <Step>
 
   Select ***catalog***, which creates a stub in your project under the `catalog` directory.
+
+  ![Catalog stub](../images/create-hello-world/new-catalog-stub.png)
 
   </Step>
 
