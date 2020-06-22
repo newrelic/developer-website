@@ -1,5 +1,5 @@
 const matchSearchString = (str, searchTerm) => {
-  return str.toLowerCase().includes(searchTerm.toLowerCase());
+  return new RegExp(searchTerm, 'i').test(str);
 };
 
 export default matchSearchString;
