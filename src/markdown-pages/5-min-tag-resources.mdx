@@ -16,7 +16,7 @@ In this 5-minute guide, you are going to use the New Relic CLI to add multiple t
 
 ## Before you begin
 
-For this guide you need your New Relic [personal API Key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key): Create it from the **Account settings** of your New Relic account.
+For this guide you need your New Relic [personal API Key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key): Create it at the **Account settings** screen of your New Relic account.
 
 <Steps>
 <Step>
@@ -50,7 +50,7 @@ You can download the New Relic CLI via [Homebrew](https://brew.sh/) (macOS), [Sc
 
 New Relic CLI profiles contain credentials and settings that you can apply to any CLI command.
 
-To create your first CLI profile, run the [`profiles add`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_profile_add.md) command. Note that you need to set the [region](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers) of your New Relic account: use `-r` to set either `us` or `eu` (this is required).
+To create your first CLI profile, run the [`profiles add`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_profile_add.md) command. Don't forget to set the [region](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers) of your New Relic account: use `-r` to set either `us` or `eu` (this is required).
 
 ```bash lineNumbers=false
 # Create the tutorial account for the US region
@@ -74,7 +74,7 @@ newrelic entity search --name "test"
 
 </Step><Step>
 
-If there are matching entities in your account, the query yields data in JSON format similar to this workload example.
+If there are matching entities in your account, the query yields data in JSON format, similar to this workload example.
 
 Select an entity from the results and look for its `guid` value; the `guid` is the unique identifier of the entity. Write it down.
 
@@ -95,7 +95,7 @@ Select an entity from the results and look for its `guid` value; the `guid` is t
 
 With your entity `guid`, you can add tags right away. You can do so by invoking the [`entities tags create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_create.md) command. 
 
-What if you want to add multiple tags? You can use tag sets for that: While tags are key-value pairs separated by colons, tag sets are comma separated lists of tags. For example:
+What if you want to add multiple tags? You can use tag sets for that: While tags are key-value pairs separated by colons, tag sets are comma-separated lists of tags. For example:
 
 `tag1:value1,tag2:value2`
 
@@ -111,7 +111,7 @@ newrelic entity tags create --guid GUID --tag tag1:test,tag2:test
 
 ## Check that the tags are there
 
-To make sure that the tags have been added to your entities, retrieve them using the [`entity tags get`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_get.md) command. All tags associated with your application are retrieved as a JSON array.
+To make sure that the tags have been added to your entities, retrieve them using the [`entity tags get`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_get.md) command. All tags associated with your entity are retrieved as a JSON array.
 
 `newrelic entity tags get --guid GUID`
 
@@ -149,7 +149,7 @@ Tags can be deleted at any time by invoking the [`entity tags delete`](https://g
 
 ## Next steps
 
-Have a look at [all the available commands](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic.md). For example, you could create a [New Relic workflow](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/new-relic-one-workloads-isolate-resolve-incidents-faster) using [`workload create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_workload_create.md).
+Have a look at [all the New Relic CLI commands](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic.md). For example, you could create a [New Relic workflow](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/new-relic-one-workloads-isolate-resolve-incidents-faster) using [`workload create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_workload_create.md).
 
 If you'd like to engage with other community members, visit our [New Relic Explorers Hub](https://discuss.newrelic.com/c/build-on-new-relic/developer-toolkit) page. We welcome feature requests or bug reports on [GitHub](https://github.com/newrelic/newrelic-cli).
 
