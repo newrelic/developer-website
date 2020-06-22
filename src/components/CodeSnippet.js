@@ -7,7 +7,7 @@ import styles from './CodeSnippet.module.scss';
 import useClipboard from '../hooks/useClipboard';
 import useFormattedCode from '../hooks/useFormattedCode';
 
-const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
+const CodeSnippet = ({ children, copy, className, lineNumbers, fileName }) => {
   const language = className.replace('language-', '');
   const formattedCode = useFormattedCode(children ?? '');
   const [copied, copyCode] = useClipboard();
@@ -39,12 +39,23 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
           )}
         </Highlight>
       </div>
-      {copy !== 'false' && (
-        <div className={styles.copyBar}>
-          <button type="button" onClick={() => copyCode(formattedCode.trim())}>
-            <FeatherIcon name="copy" size="1rem" className={styles.copyIcon} />
-            {copied ? 'Copied!' : 'Copy output'}
-          </button>
+      {(copy !== 'false' || !!fileName) && (
+        <div className={styles.bottomBar}>
+          <div className={styles.fileName}>{fileName}</div>
+          {copy !== 'false' && (
+            <button
+              className={styles.copyButton}
+              type="button"
+              onClick={() => copyCode(formattedCode.trim())}
+            >
+              <FeatherIcon
+                name="copy"
+                size="1rem"
+                className={styles.copyIcon}
+              />
+              {copied ? 'Copied!' : 'Copy output'}
+            </button>
+          )}
         </div>
       )}
     </div>
@@ -53,15 +64,16 @@ const CodeSnippet = ({ children, copy, className, lineNumbers }) => {
 
 CodeSnippet.propTypes = {
   children: PropTypes.node.isRequired,
-  copy: PropTypes.string,
   className: PropTypes.string,
+  copy: PropTypes.string,
+  fileName: PropTypes.string,
   lineNumbers: PropTypes.string,
 };
 
 CodeSnippet.defaultProps = {
+  className: 'language-javascript',
   copy: 'true',
   lineNumbers: 'true',
-  className: 'language-javascript',
 };
 
 export default CodeSnippet;
