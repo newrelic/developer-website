@@ -46,108 +46,114 @@ const NavigationItems = ({
     };
   }, {});
 
-  return Object.entries(groupedPages).map(([group, pages]) => (
-    <Fragment key={group}>
-      {(group && !filteredPageNames) ||
-        (group &&
-          filteredPageNames &&
-          pages.some((el) => filteredPageNames.includes(el.displayName)) && (
-            <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
-          ))}
-      {pages.map((page) => {
-        const [isExpanded, setIsExpanded] = useState(
-          isHomePage || crumbs.includes(page.displayName)
-        );
+  console.log(Boolean(filteredPageNames));
 
-        const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
-        const headerIcon = depthLevel === 0 && (
-          <FeatherIcon
-            className={styles.headerIcon}
-            name={iconLibrary[page.displayName]}
-          />
-        );
-        const display = filteredPageNames
-          ? getHighlightedText(page.displayName, searchTerm)
-          : page.displayName;
+  return Object.entries(groupedPages).map(([group, pages]) => {
+    const showGroup =
+      (group && !Boolean(filteredPageNames)) ||
+      (group &&
+        filteredPageNames &&
+        pages.some((el) => filteredPageNames.includes(el.displayName)));
+    return (
+      <Fragment key={group}>
+        {showGroup && (
+          <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
+        )}
+        {pages.map((page) => {
+          const [isExpanded, setIsExpanded] = useState(
+            isHomePage || crumbs.includes(page.displayName)
+          );
 
-        return (
-          <li
-            key={page.displayName}
-            data-depth={depthLevel}
-            className={cx(
-              { [styles.isCurrentPage]: isCurrentPage },
-              {
-                [styles.notMatchesFilter]:
-                  filteredPageNames &&
-                  !filteredPageNames.includes(page.displayName),
-              },
-              {
-                [styles.matchesFilter]:
-                  filteredPageNames &&
-                  filteredPageNames.includes(page.displayName),
-              },
-              { [styles.filterOn]: filteredPageNames }
-            )}
-          >
-            {page.url ? (
-              <Link
-                className={cx(
-                  { [styles.isCurrentPage]: isCurrentPage },
-                  styles.navLink
-                )}
-                to={page.url}
-              >
-                <span>
+          const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
+          const headerIcon = depthLevel === 0 && (
+            <FeatherIcon
+              className={styles.headerIcon}
+              name={iconLibrary[page.displayName]}
+            />
+          );
+          const display = filteredPageNames
+            ? getHighlightedText(page.displayName, searchTerm)
+            : page.displayName;
+
+          return (
+            <li
+              key={page.displayName}
+              data-depth={depthLevel}
+              className={cx(
+                { [styles.isCurrentPage]: isCurrentPage },
+                {
+                  [styles.notMatchesFilter]:
+                    filteredPageNames &&
+                    !filteredPageNames.includes(page.displayName),
+                },
+                {
+                  [styles.matchesFilter]:
+                    filteredPageNames &&
+                    filteredPageNames.includes(page.displayName),
+                },
+                { [styles.filterOn]: filteredPageNames }
+              )}
+            >
+              {page.url ? (
+                <Link
+                  className={cx(
+                    { [styles.isCurrentPage]: isCurrentPage },
+                    styles.navLink
+                  )}
+                  to={page.url}
+                >
+                  <span>
+                    {headerIcon}
+                    {display}
+                  </span>
+                  {isCurrentPage && (
+                    <FeatherIcon
+                      className={styles.currentPageIndicator}
+                      name="chevron-right"
+                    />
+                  )}
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  className={styles.navLink}
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  onKeyPress={() => setIsExpanded(!isExpanded)}
+                  tabIndex={0}
+                >
+                  {depthLevel > 0 && (
+                    <FeatherIcon
+                      className={cx(
+                        { [styles.isExpanded]: isExpanded },
+                        styles.nestedChevron
+                      )}
+                      name="chevron-right"
+                    />
+                  )}
                   {headerIcon}
                   {display}
-                </span>
-                {isCurrentPage && (
-                  <FeatherIcon
-                    className={styles.currentPageIndicator}
-                    name="chevron-right"
+                </button>
+              )}
+              {page.children && (
+                <ul
+                  className={cx(styles.nestedNav, {
+                    [styles.isExpanded]: isExpanded,
+                  })}
+                >
+                  <NavigationItems
+                    pages={page.children}
+                    filteredPageNames={filteredPageNames}
+                    depthLevel={depthLevel + 1}
+                    searchTerm={searchTerm}
                   />
-                )}
-              </Link>
-            ) : (
-              <button
-                type="button"
-                className={styles.navLink}
-                onClick={() => setIsExpanded(!isExpanded)}
-                onKeyPress={() => setIsExpanded(!isExpanded)}
-                tabIndex={0}
-              >
-                {depthLevel > 0 && (
-                  <FeatherIcon
-                    className={cx(
-                      { [styles.isExpanded]: isExpanded },
-                      styles.nestedChevron
-                    )}
-                    name="chevron-right"
-                  />
-                )}
-                {headerIcon}
-                {display}
-              </button>
-            )}
-            {page.children && (
-              <ul
-                className={cx(styles.nestedNav, {
-                  [styles.isExpanded]: isExpanded,
-                })}
-              >
-                <NavigationItems
-                  pages={page.children}
-                  filteredPageNames={filteredPageNames}
-                  depthLevel={depthLevel + 1}
-                  searchTerm={searchTerm}
-                />
-              </ul>
-            )}
-          </li>
-        );
-      })}
-    </Fragment>
-  ));
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </Fragment>
+    );
+  });
 };
 
 const filterPageNames = (pages, searchTerm, parent = []) => {
