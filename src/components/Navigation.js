@@ -5,11 +5,12 @@ import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 import FeatherIcon from './FeatherIcon';
 import pages from '../data/sidenav.json';
+import matchSearchString from '../utils/matchSearchString';
 
 import styles from './Navigation.module.scss';
 
 // recursively create navigation
-const renderNav = (pages, depthLevel = 0) => {
+const renderNav = (pages, searches, depthLevel = 0) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
 
   const groupedPages = pages.reduce((groups, page) => {
@@ -28,15 +29,29 @@ const renderNav = (pages, depthLevel = 0) => {
       )}
       {pages.map((page) => {
         const [isExpanded, setIsExpanded] = useState(
-          crumbs.length === depthLevel || crumbs.includes(page.displayName)
+          searches !== undefined ||
+            crumbs.includes(page.displayName) ||
+            crumbs.length === depthLevel
         );
+
         const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
 
         return (
           <li
             key={page.displayName}
             data-depth={depthLevel}
-            className={cx({ [styles.isCurrentPage]: isCurrentPage })}
+            className={cx(
+              { [styles.isCurrentPage]: isCurrentPage },
+              {
+                [styles.isNotSearch]:
+                  searches && !searches.includes(page.displayName),
+              },
+              {
+                [styles.isSearch]:
+                  searches && searches.includes(page.displayName),
+              },
+              { [styles.isBeingSearched]: searches }
+            )}
           >
             {page.url ? (
               <Link className={styles.navLink} to={page.url}>
@@ -65,7 +80,7 @@ const renderNav = (pages, depthLevel = 0) => {
                   [styles.isExpanded]: isExpanded,
                 })}
               >
-                {renderNav(page.children, depthLevel + 1)}
+                {renderNav(page.children, searches, depthLevel + 1)}
               </ul>
             )}
           </li>
@@ -75,20 +90,42 @@ const renderNav = (pages, depthLevel = 0) => {
   ));
 };
 
-const Navigation = ({ className }) => {
+const searchPages = (pages, searchTerm, parent = []) => {
+  return [
+    ...new Set(
+      pages.flatMap((page) => {
+        if (page.children) {
+          return searchPages(page.children, searchTerm, [
+            ...parent,
+            page.displayName,
+          ]);
+        } else if (matchSearchString(page.displayName, searchTerm)) {
+          return [...parent, page.displayName];
+        } else if (parent.some((el) => matchSearchString(el, searchTerm))) {
+          return [...parent];
+        }
+      })
+    ),
+  ];
+};
+
+const Navigation = ({ className, searchTerm }) => {
+  const searches =
+    searchTerm !== '' ? searchPages(pages, searchTerm) : undefined;
   return (
     <nav
       className={cx(styles.container, className)}
       role="navigation"
       aria-label="Navigation"
     >
-      <ul className={styles.listNav}>{renderNav(pages)}</ul>
+      <ul className={styles.listNav}>{renderNav(pages, searches)}</ul>
     </nav>
   );
 };
 
 Navigation.propTypes = {
   className: PropTypes.string,
+  searchTerm: PropTypes.string,
 };
 
 export default Navigation;

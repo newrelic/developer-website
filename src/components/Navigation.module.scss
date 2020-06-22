@@ -64,3 +64,17 @@ button.navLink {
 .isCurrentPage {
   font-weight: bold;
 }
+
+.isNotSearch {
+  display: none;
+}
+
+.isSearch {
+  display: block;
+}
+
+.isBeingSearched {
+  ul {
+    display: block;
+  }
+}
