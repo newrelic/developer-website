@@ -28,6 +28,10 @@
   opacity: 0.5;
 }
 
+.highlight {
+  background: var(--color-neutrals-300);
+}
+
 .copyBar {
   box-sizing: border-box;
   display: flex;
