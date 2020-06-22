@@ -9,13 +9,7 @@ import matchSearchString from '../utils/matchSearchString';
 
 import styles from './Navigation.module.scss';
 
-// TODO: Add this implementation
-const filterPages = (pages, _searchTerm) => pages;
-
-// recursively create navigation
-const renderNav = (pages, depthLevel = 0) => {
-  // TODO: Refactor this function into a component
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+const NavigationItems = ({ pages, searches, depthLevel = 0 }) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
   const iconLibrary = {
@@ -116,7 +110,13 @@ const renderNav = (pages, depthLevel = 0) => {
                   [styles.isExpanded]: isExpanded,
                 })}
               >
-                {renderNav(page.children, searches, depthLevel + 1)}
+                {
+                  <NavigationItems
+                    pages={page.children}
+                    searches={searches}
+                    depthLevel={depthLevel + 1}
+                  />
+                }
               </ul>
             )}
           </li>
@@ -125,6 +125,23 @@ const renderNav = (pages, depthLevel = 0) => {
     </Fragment>
   ));
 };
+
+// const filterPages = (pages, _searchTerm, parent = {}) => {
+//   const filteredPage = parent;
+//   return pages.map((page) => {
+//     if (page.children) {
+//       return filterPages(page.children, _searchTerm, page);
+//     } else if (matchSearchString(page.displayName, _searchTerm)) {
+//       filteredPage.children = filteredPage.children.filter((el) =>
+//         matchSearchString(el.displayName, _searchTerm)
+//       );
+//       return filteredPage;
+//     } else if (matchSearchString(parent.displayName, _searchTerm)) {
+//       delete filteredPage.children;
+//       return filteredPage;
+//     }
+//   });
+// };
 
 const searchPages = (pages, searchTerm, parent = []) => {
   return [
@@ -148,13 +165,17 @@ const searchPages = (pages, searchTerm, parent = []) => {
 const Navigation = ({ className, searchTerm }) => {
   const searches =
     searchTerm !== '' ? searchPages(pages, searchTerm) : undefined;
+
+  // const filters = filterPages(pages, searchTerm);
   return (
     <nav
       className={cx(styles.container, className)}
       role="navigation"
       aria-label="Navigation"
     >
-      <ul className={styles.listNav}>{renderNav(pages, searches)}</ul>
+      <ul className={styles.listNav}>
+        <NavigationItems pages={pages} searches={searches} />
+      </ul>
     </nav>
   );
 };
