@@ -9,7 +9,7 @@ description: 'Build a Hello World! app and publish it to your local New Relic On
 
 Here's how you can quickly build a "Hello, World!" app and publish it to your local New Relic One Catalog.
 
-In these steps, we'll show you how to create a local version of the New Relic One site where you can prototype your ideas. Then, when you are ready, you can publish your code to the New Relic One Catalog.
+In these steps, we'll show you how to create a local version of the New Relic One site where you can prototype your ideas. Then, when you are ready, you can publish your code to New Relic One.
 
 <Video id="ZagZfNQYJEU" type="youtube"/>
 
@@ -133,21 +133,112 @@ After you click the new launcher, your "Hello, World!" appears:
 
 ## Publish you application to New Relic
 
-After you create a local application, you want to share it with others in your organization. Here's what you do to publish your application:
+After you create a local application, you want to share it with others in your organization. 
 
 
 <Steps>
 
   <Step>
-    Execute the following in your terminal:
+
+Execute the following in your terminal to make your new application visible in the New Relic One catalog:
 
   ```
   nr1 nerdpack:publish
   ```
   </Step>
 
+  <Step>
+  
+Close the development tab for your local New Relic One, and open [New Relic One](https://one.newrelic.com).
+  
+  </Step>
+
+  <Step>
+
+Click ***New Relic One Catalog***.
+
+  </Step>
+
+  <Step>
+
+Under ***Your company applications*** click on your new application.
+
+  </Step>
+
 </Steps>
 
+When your new application opens up, you see that it doesn't have any details. The next section shows you how to add those.
+
+## Add details to describe your project
+
+Now that your new application is in the New Relic One catalog, you can add details that help users understand what your application does and how to use it.
+
+<Steps>
+
+  <Step>
+
+Inside your project, execute the following, and when you are prompted, select ***catalog***:
+
+<Important>This creates a stub in your project under the `catalog` directory.</Important>
+
+![Catalog stub](../images/create-hello-world/new-catalog-stub.png)
+
+  ```
+  nr1 create
+  ```
+
+  </Step>
+
+In the `catalog` directory, add screenshots or various types of metadata to describe your project. For details about what you can add, see [Add catalog metadata and screenshots]9https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/discover-manage-applications-new-relic-one-catalog#clamshell-2).
+
+  </Step>
+
+  <Step>
+
+After you add the screenshots and descriptions you want, execute the following to save your metadata to the catalog:
+
+  ```
+  nr1 catalog:submit
+  ```
+
+  </Step>
+
+  <Step>
+
+Return to the catalog and refresh the page to see your new screenshots and metadata.
+
+  </Step>
+
+</Step>
+
+
+## Subscribe accounts to your application
+
+To get other users to use your application, you need to subscribe an account to the application. Any user with the NerdPack Manager role can subscribe an account to an application.
+
+<Steps>
+  
+  <Step>
+
+If you're not already displaying the description page for your application, just click the launcher for it in the catalog.
+
+  </Step>
+
+  <Step>
+
+Select ***Add this app*** on your applications Description page.
+
+  </Step>
+
+  <Step>
+
+Select the accounts you want to subscribe to the application, and then select ***Update access*** to save your selections.
+
+  </Step>
+
+</Steps>
+
+Return to the New Relic One homepage and see the launcher for your new application.
 
 ## Summary
 
@@ -155,4 +246,4 @@ After you completed the steps in this example, you successfully created your fir
 
 ## Related information
 
-- [New Relic documentation](https://docs.newrelic.com)
+- [New Relic documentation](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-build-your-own-custom-new-relic-one-application)
