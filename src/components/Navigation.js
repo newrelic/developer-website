@@ -110,13 +110,11 @@ const NavigationItems = ({ pages, searches, depthLevel = 0 }) => {
                   [styles.isExpanded]: isExpanded,
                 })}
               >
-                {
-                  <NavigationItems
-                    pages={page.children}
-                    searches={searches}
-                    depthLevel={depthLevel + 1}
-                  />
-                }
+                <NavigationItems
+                  pages={page.children}
+                  searches={searches}
+                  depthLevel={depthLevel + 1}
+                />
               </ul>
             )}
           </li>
