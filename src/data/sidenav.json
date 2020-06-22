@@ -19,6 +19,10 @@
         "url": "/noop"
       },
       {
+        "displayName": "Add a custom New Relic event",
+        "url": "/noop"
+      },
+      {
         "displayName": "Write NRQL queries",
         "url": "/noop"
       },
