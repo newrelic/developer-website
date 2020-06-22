@@ -199,7 +199,6 @@ Callouts direct your attention to information of special importance or to inform
 
 ### Usage
 
-* Caution: 
 ```jsx
 <Caution> 
 
