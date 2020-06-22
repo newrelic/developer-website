@@ -46,11 +46,9 @@ const NavigationItems = ({
     };
   }, {});
 
-  console.log(Boolean(filteredPageNames));
-
   return Object.entries(groupedPages).map(([group, pages]) => {
     const showGroup =
-      (group && !Boolean(filteredPageNames)) ||
+      (group && !filteredPageNames) ||
       (group &&
         filteredPageNames &&
         pages.some((el) => filteredPageNames.includes(el.displayName)));
