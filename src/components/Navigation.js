@@ -10,14 +10,6 @@ import matchSearchString from '../utils/matchSearchString';
 
 import styles from './Navigation.module.scss';
 
-const iconLibrary = {
-  'Collect data': 'upload-cloud',
-  'Explore data': 'bar-chart',
-  'Build apps': 'box',
-  'Automate workflows': 'cpu',
-  'Explore docs': 'book-open',
-};
-
 const getHighlightedText = (text, highlight) => {
   const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
   return (
