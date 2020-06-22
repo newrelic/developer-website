@@ -2,17 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import github from 'prism-react-renderer/themes/github';
+import MiddleEllipsis from 'react-middle-ellipsis';
 import FeatherIcon from './FeatherIcon';
 import styles from './CodeSnippet.module.scss';
 import useClipboard from '../hooks/useClipboard';
 import useFormattedCode from '../hooks/useFormattedCode';
+import Prism from 'prism-react-renderer/prism';
 import cx from 'classnames';
+
+(typeof global !== 'undefined' ? global : window).Prism = Prism;
+
+require('prismjs/components/prism-ruby');
 
 const CodeSnippet = ({
   children,
   copy,
   className,
   lineNumbers,
+  fileName,
   lineHighlight,
 }) => {
   const language = className.replace('language-', '');
@@ -57,12 +64,29 @@ const CodeSnippet = ({
           )}
         </Highlight>
       </div>
-      {copy !== 'false' && (
-        <div className={styles.copyBar}>
-          <button type="button" onClick={() => copyCode(formattedCode.trim())}>
-            <FeatherIcon name="copy" size="1rem" className={styles.copyIcon} />
-            {copied ? 'Copied!' : 'Copy output'}
-          </button>
+      {(copy !== 'false' || fileName) && (
+        <div className={styles.bottomBar}>
+          <div className={styles.fileName}>
+            {fileName && (
+              <MiddleEllipsis>
+                <span title={fileName}>{fileName}</span>
+              </MiddleEllipsis>
+            )}
+          </div>
+          {copy !== 'false' && (
+            <button
+              className={styles.copyButton}
+              type="button"
+              onClick={() => copyCode(formattedCode.trim())}
+            >
+              <FeatherIcon
+                name="copy"
+                size="1rem"
+                className={styles.copyIcon}
+              />
+              {copied ? 'Copied!' : 'Copy output'}
+            </button>
+          )}
         </div>
       )}
     </div>
@@ -92,16 +116,17 @@ const captureLinesToHighlight = (lineArr) => {
 
 CodeSnippet.propTypes = {
   children: PropTypes.node.isRequired,
-  copy: PropTypes.string,
   className: PropTypes.string,
+  copy: PropTypes.string,
+  fileName: PropTypes.string,
   lineNumbers: PropTypes.string,
   lineHighlight: PropTypes.string,
 };
 
 CodeSnippet.defaultProps = {
+  className: 'language-javascript',
   copy: 'true',
   lineNumbers: 'true',
-  className: 'language-javascript',
 };
 
 export default CodeSnippet;

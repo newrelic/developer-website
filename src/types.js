@@ -8,3 +8,7 @@ export const link = PropTypes.shape({
   active: PropTypes.bool,
   children: PropTypes.array,
 });
+
+export const pageContext = PropTypes.shape({
+  fileRelativePath: PropTypes.string,
+});

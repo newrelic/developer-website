@@ -8,7 +8,7 @@ description: 'Learn to explore NerdGraph, our GraphQL API, and build the queries
 
 ## What is the NerdGraph API Explorer
 
-NerdGraph is New Relic's [GraphQL](https://graphql.org/) API. With NerdGraph, you can get all the information you need in a single request. No matter how much data you pull into New Relic, our GraphQL API can help you navigate that complexity and gain more insight. 
+NerdGraph is New Relic's [GraphQL](https://graphql.org/) API. With NerdGraph, you can get all the information you need in a single request. No matter how much data you pull into New Relic, our GraphQL API can help you navigate that complexity and gain more insight.
 
 NerdGraph is different from REST APIs in that you don't need to chain together several calls to obtain the required data. Instead, you use the Graph query language to retrieve JSON objects from our graph, which is spread across our many microservices.
 
@@ -20,7 +20,7 @@ This guide shows you how to use NerdGraph to compose queries, and how to turn th
 
 Go to [api.newrelic.com/graphiql](https://api.newrelic.com/graphiql) and log in using your New Relic user ID and password: the NerdGraph API Explorer load up. Before you begin, make sure you have a valid New Relic API key. You can create one directly from the NerdGraph API Explorer.
 
-![Create a NerdGraph API key](../images/graphql-guide/create-account.png)
+![Create a NerdGraph API key](../../images/graphql-guide/create-account.png)
 
 The Query Builder is in the left sidebar and lets you search, browse, and select graph fields. The center is the GraphQL query editor, which comes with syntax highlighting and autocompletion. Clicking the play button runs the query; the results appear as JSON on the right sidebar.
 
@@ -60,7 +60,7 @@ With this query, you're telling NerdGraph to retrieve your name. You're asking f
 
 The result has almost the same shape as the request; all the fields in the Query Builder make up what's called the GraphQL schema, which describes all the available data types and their attributes. To learn more about each field, click the **Docs** button, or hover over a field in the editor.
 
-![NerdGraph documentation and tooltips](../images/graphql-guide/graphql-documentation.png)
+![NerdGraph documentation and tooltips](../../images/graphql-guide/graphql-documentation.png)
 
 Now you can try adding more fields to your query. The simplest way is clicking the fields in the Query Builder: The NerdGraph API Explorer knows where the attributes should go in the query. In the example below, you add the account `id` and `email` fields.
 
@@ -88,20 +88,20 @@ Ready for your first mutation?
 2. Scroll down the Query Builder and expand `mutation`.
 3. Select the fields in the following screenshot:
 
-![Mutation example](../images/graphql-guide/mutation-example.png)
+![Mutation example](../../images/graphql-guide/mutation-example.png)
 
 In this case, you're trying to add a custom tag to an entity. Notice that the editor complains if you don't select `errors`: mutations must have a way of telling you how the operation performed in the backend (failed requests result in null responses).
 
-> Unlike REST, GraphQL APIs like NerdGraph can return partial responses. For example, if you try adding tags to multiple entities, some mutations can fail and others succeed; all is logged in the GraphQL response you get. 
+> Unlike REST, GraphQL APIs like NerdGraph can return partial responses. For example, if you try adding tags to multiple entities, some mutations can fail and others succeed; all is logged in the GraphQL response you get.
 
 ## Try your NerdGraph query in the terminal
 
 Let's say that you've built a NerdGraph query you're happy with and you want to test it elsewhere. To capture code-ready queries and mutations:
 
-1. Select the **Tools** menu. 
+1. Select the **Tools** menu.
 2. Copy the query as a cURL call or as a [New Relic CLI](...) command.
 
-![Tools menu](../images/graphql-guide/tools-menu.png)
+![Tools menu](../../images/graphql-guide/tools-menu.png)
 
 Here's what the first query you created in this guide would look like as cURL:
 

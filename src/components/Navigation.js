@@ -4,14 +4,23 @@ import { Link } from 'gatsby';
 import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 import FeatherIcon from './FeatherIcon';
+import NewRelicIcon from './NewRelicIcon';
 import pages from '../data/sidenav.json';
 
 import styles from './Navigation.module.scss';
 
 // recursively create navigation
 const renderNav = (pages, depthLevel = 0) => {
+  // TODO: Refactor this function into a component
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
+  const iconLibrary = {
+    'Collect data': 'collectData',
+    'Build apps': 'buildApps',
+    'Automate workflows': 'automation',
+    'Explore docs': 'developerDocs',
+  };
 
   const groupedPages = pages.reduce((groups, page) => {
     const { group = '' } = page;
@@ -32,18 +41,29 @@ const renderNav = (pages, depthLevel = 0) => {
           isHomePage || crumbs.includes(page.displayName)
         );
         const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
+        const headerIcon = depthLevel === 0 && (
+          <NewRelicIcon
+            className={styles.headerIcon}
+            name={iconLibrary[page.displayName]}
+          />
+        );
 
         return (
           <li key={page.displayName} data-depth={depthLevel}>
             {page.url ? (
               <Link
                 className={cx(
-                  { [styles.isCurrentPage]: isCurrentPage },
+                  {
+                    [styles.isCurrentPage]: isCurrentPage,
+                  },
                   styles.navLink
                 )}
                 to={page.url}
               >
-                {page.displayName}
+                <span>
+                  {headerIcon}
+                  {page.displayName}
+                </span>
                 {isCurrentPage && (
                   <FeatherIcon
                     className={styles.currentPageIndicator}
@@ -68,6 +88,7 @@ const renderNav = (pages, depthLevel = 0) => {
                     name="chevron-right"
                   />
                 )}
+                {headerIcon}
                 {page.displayName}
               </button>
             )}

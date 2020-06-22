@@ -4,11 +4,13 @@
 
 .backgroundBanner {
   position: absolute;
-  background-color: var(--color-neutrals-100);
-  width: 100%;
-  transform: skewY(-2deg) translateY(-58px);
+  top: -2rem;
+  bottom: -2rem;
+  left: -2rem;
+  right: -2rem;
   z-index: -1;
 
+  background-color: var(--color-neutrals-100);
   @media (max-width: 500px) {
     background-color: var(--color-white);
   }
