@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import FeatherIcon from './FeatherIcon';
-import NewRelicIcon from '../components/NewRelicIcon';
+import NewRelicIcon from './NewRelicIcon';
 import cx from 'classnames';
 import { navigate } from 'gatsby';
 import styles from './GuideTile.module.scss';
