@@ -1,3 +1,7 @@
 .logo {
   width: var(--logo-size, 79px);
 }
+
+.text {
+  fill: var(--logo-text-color, var(--primary-text-color));
+}
