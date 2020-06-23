@@ -47,17 +47,21 @@ This is a step with no title or code snippet, only description. Lorem ipsum dolo
 
 <Step>
 
-## Set up and run the application locally
-Use the New Relic One CLI to update the application UUID and run the application locally. In the terminal,  change to the time picker directory.
+## This step includes a code snippet
+And also has line number highlighting
 
-```shell lineNumbers=false
-cd /nr1-howto/add-time-picker
-```
+```jsx lineHighlight=1,3-5
+import React from 'react'
 
-Once that is done, run the following:
+const HelloWorld = () => {
+  return (
+    <div>
+    "Hello there!
+    </div>
+  )
+}
 
-```shell lineNumbers=false
-npm start
+export default HelloWorld
 ```
 </Step>
 
