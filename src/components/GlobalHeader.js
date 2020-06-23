@@ -27,8 +27,8 @@ const GlobalHeader = ({ className }) => {
           </ExternalLink>
 
           <ul className={styles.leftSideLinks}>
-            <li className={`${styles.leftSideLinkItem} ${styles.active}`}>
-              <Link to="/" className={styles.leftSideLink}>
+            <li>
+              <Link to="/" className={cx(styles.leftSideLink, styles.active)}>
                 Developers
               </Link>
             </li>
@@ -40,7 +40,7 @@ const GlobalHeader = ({ className }) => {
                 Open Source
               </ExternalLink>
             </li>
-            <li className={styles.leftSideLinkItem}>
+            <li>
               <ExternalLink
                 href="https://docs.newrelic.com/"
                 className={styles.leftSideLink}
@@ -48,7 +48,7 @@ const GlobalHeader = ({ className }) => {
                 Documentation
               </ExternalLink>
             </li>
-            <li className={styles.leftSideLinkItem}>
+            <li>
               <ExternalLink
                 href="https://discuss.newrelic.com/"
                 className={styles.leftSideLink}
