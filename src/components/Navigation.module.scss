@@ -25,7 +25,7 @@
 }
 
 .navLink {
-  color: var(--color-neutrals-900);
+  color: var(--primary-text-color);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -34,7 +34,7 @@
   transition: 0.1s;
 
   &:not(.isCurrentPage):hover {
-    color: var(--color-neutrals-600);
+    color: var(--secondary-text-color);
   }
 
   [data-depth='0'] > & {
@@ -47,7 +47,7 @@
 }
 
 button.navLink {
-  color: var(--color-neutrals-900);
+  color: var(--primary-text-color);
   background: inherit;
   border: none;
   padding: 0;
@@ -67,13 +67,14 @@ button.navLink {
   margin-right: 0.5rem;
   stroke-width: 4;
   transition: 0.2s;
+
   &.isExpanded {
     transform: rotate(90deg);
   }
 }
 
 .groupName {
-  color: var(--color-neutrals-600);
+  color: var(--secondary-text-color);
   font-weight: bold;
   font-size: 0.75rem;
   text-transform: uppercase;
