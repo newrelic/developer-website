@@ -12,6 +12,8 @@
   --secondary-hover-text-color: var(--color-neutrals-700);
   --secondary-surface-background-color: var(--color-white);
 
+  --tertiary-background-color: var(--color-neutrals-200);
+
   --accent-text-color: var(--color-neutrals-500);
   --link-color: var(--color-brand-800);
   --border-color: var(--color-neutrals-400);
@@ -42,7 +44,9 @@
   --secondary-button-text-color: var(--color-brand-800);
   --secondary-hover-background-color: var(--color-neutrals-300);
   --secondary-hover-text-color: var(--color-neutrals-800);
-  --secondary-surface-background-color: var(--secondary-background-color);
+  --secondary-surface-background-color: var(--color-neutrals-300);
+
+  --tertiary-background-color: var(--color-neutrals-100);
 
   --accent-text-color: var(--color-neutrals-600);
   --link-color: var(--color-brand-400);
