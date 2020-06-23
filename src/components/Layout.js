@@ -7,6 +7,7 @@ import GlobalHeader from './GlobalHeader';
 import MobileHeader from './MobileHeader';
 import Sidebar from './Sidebar';
 import styles from './Layout.module.scss';
+import 'normalize.css';
 import './styles.scss';
 
 const Layout = ({ children }) => {
@@ -21,20 +22,17 @@ const Layout = ({ children }) => {
         toggle={() => setIsMobileNavOpen(!isMobileNavOpen)}
       />
       <div className={cx(styles.main, 'site-container')}>
-        <Sidebar className={styles.hideOnMobile} />
-        <main
-          className={cx(styles.content, {
+        <Sidebar className={cx(styles.sidebar, styles.hideOnMobile)} />
+        <div />
+        <div
+          className={cx(styles.contentContainer, {
             [styles.hideOnMobile]: isMobileNavOpen,
           })}
         >
-          {children}
-        </main>
+          <main className={styles.content}>{children}</main>
+          <Footer className={styles.footer} />
+        </div>
       </div>
-      <Footer
-        className={cx({
-          [styles.hideOnMobile]: isMobileNavOpen,
-        })}
-      />
     </div>
   );
 };

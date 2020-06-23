@@ -7,17 +7,17 @@ description: 'An overview of the Nerdpack File Structure'
 
 <Intro>
 
-A [New Relic One application](https://developer.newrelic.com/use-cases/build-new-relic-one-applications 
-"Link opens in a new window.") is represented by a **Nerdpack** folder, which can include one or more **Nerdlet** files, 
+A [New Relic One application](https://developer.newrelic.com/use-cases/build-new-relic-one-applications
+"Link opens in a new window.") is represented by a **Nerdpack** folder, which can include one or more **Nerdlet** files,
 and (optionally) one or more **launcher** files. This document explains:
 
--   The file structure for a [Nerdpack](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#file-structure), 
-a [Nerdlet](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#nerdlet-files) 
+- The file structure for a [Nerdpack](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#file-structure),
+a [Nerdlet](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#nerdlet-files)
 and a [launcher](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#launcher-file)
--   How to [link a launcher file to a Nerdlet](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#launcher-json)
--   How to [link your application with a monitored entity](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#nerdlet-json)
+- How to [link a launcher file to a Nerdlet](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#launcher-json)
+- How to [link your application with a monitored entity](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#nerdlet-json)
 
-For basic component definitions, see our [developer site](https://developer.newrelic.com/use-cases/build-new-relic-one-applications#Introtocomponentsandtools 
+For basic component definitions, see our [developer site](https://developer.newrelic.com/use-cases/build-new-relic-one-applications#Introtocomponentsandtools
 "Link opens in a new window.").
 
 </Intro>
@@ -26,8 +26,8 @@ For basic component definitions, see our [developer site](https://developer.newr
 
 There are two ways to generate a Nerdpack template:
 
--   Generate Nerdpack. Use the [CLI](https://developer.newrelic.com/build-tools/new-relic-one-applications/cli "Link opens in a new window.") command `nr1 create` and select `Nerdpack` to create a Nerdpack template that includes a Nerdlet and a launcher.
--   Generate Nerdlet or launcher individually. You can use the [CLI](https://developer.newrelic.com/build-tools/new-relic-one-applications/cli "Link opens in a new window.") command `nr1 create` and choose to select either a Nerdlet or launcher. This may be useful when adding Nerdlets to an existing Nerdpack.
+- Generate Nerdpack. Use the [CLI](https://developer.newrelic.com/build-tools/new-relic-one-applications/cli "Link opens in a new window.") command `nr1 create` and select `Nerdpack` to create a Nerdpack template that includes a Nerdlet and a launcher.
+- Generate Nerdlet or launcher individually. You can use the [CLI](https://developer.newrelic.com/build-tools/new-relic-one-applications/cli "Link opens in a new window.") command `nr1 create` and choose to select either a Nerdlet or launcher. This may be useful when adding Nerdlets to an existing Nerdpack.
 
 For a lesson on generating and connecting Nerdpack components, see [the workshop](https://github.com/newrelic/nr1-workshop/blob/master/lab0/INSTRUCTIONS.md "Link opens in a new window.") .
 
@@ -38,73 +38,69 @@ When you generate a Nerdpack template using the CLI `nr1 create` command, it has
 ![New Relic One application - Nerdpack file structure](https://docs.newrelic.com/sites/default/files/thumbnails/image/nerdpack-file-structure.png "nerdpack-file-structure.png")
 
 
-## Nerdlet file structure 
+## Nerdlet file structure
 
 A Nerdpack can contain one or more Nerdlets. A Nerdlet folder starts out with three default files:
 
-[**Show All**  ](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#all-links)
-
-### index.js
+### `index.js`
 
 Here is what the default file looks like when a Nerdlet is generated with the CLI `nr1 create`:
- 
+
  ```jsx
 import React from 'react';
 
 export default class MyAwesomeNerdpack extends React.Component {
-    render() {
-        return 
-	<h1>Hello, my-awesome-nerdpack Nerdlet!</h1>
-     }
+  render() {
+    return <h1>Hello, my-awesome-nerdpack Nerdlet!</h1>
+  }
 }
  ```
 
-### nr1.json
+### `nr1.json`
 
 Here is the default file generated by the CLI `nr1 create` command:
 
 ```json
 {
-    "schemaType": "NERDLET",
-    "id": "my-awesome-nerdpack-nerdlet",
-    "description": "Describe me",
-    "displayName": "MyAwesomeNerdpack"
+  "schemaType": "NERDLET",
+  "id": "my-awesome-nerdpack-nerdlet",
+  "description": "Describe me",
+  "displayName": "MyAwesomeNerdpack"
 }
 ```
 
-Besides using the [launcher](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#launcher-file) 
+Besides using the [launcher](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#launcher-file)
 as the access point for your application, you can also associate the application with
-a monitored entity to get it to appear in the New Relic One [entity explorer](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/ui-data/new-relic-one-entity-explorer-view-performance-across-apps-services-hosts). 
-To do this, add two additional fields to the config file of the first-launched Nerdlet: `entities` and `actionCategory`. 
-In the following example, the Nerdlet has been associated with all New Relic Browser-monitored 
+a monitored entity to get it to appear in the New Relic One [entity explorer](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/ui-data/new-relic-one-entity-explorer-view-performance-across-apps-services-hosts).
+To do this, add two additional fields to the config file of the first-launched Nerdlet: `entities` and `actionCategory`.
+In the following example, the Nerdlet has been associated with all New Relic Browser-monitored
 applications and will appear under the **Monitor** UI category :
 
 ```json
 {
-    "schemaType": "NERDLET",
-    "id": "my-nerdlet",
-    "description": "Describe me",
-    "displayName": "Custom Data",
-    "entities": [{"domain": "BROWSER", "type": "APPLICATION"}],
-    "actionCategory": "monitor"
+  "schemaType": "NERDLET",
+  "id": "my-nerdlet",
+  "description": "Describe me",
+  "displayName": "Custom Data",
+  "entities": [{"domain": "BROWSER", "type": "APPLICATION"}],
+  "actionCategory": "monitor"
 }
 ```
-To see this application in the UI, you would go to the New Relic One 
+To see this application in the UI, you would go to the New Relic One
 [entity explorer](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/ui-data/new-relic-one-entity-explorer-view-performance-across-apps-services-hosts),
  select Browser applications, and select a monitored application.
 
-### styles.scss
+### `styles.scss`
 
 The file is provided for CSS styles (Sass SCSS syntax).
 
 ```css
-
-  /* this is an empty file you can use customize to style your nerdlet. */
+/* this is an empty file you can use customize to style your nerdlet. */
 ```
 
-### icon.png
-![icon.png](../images/nerdpack-file-structure/icon.png)
-The launcher icon that appears on the [one.newrelic.com](http://one.newrelic.com/) 
+### `icon.png`
+![icon.png](../../images/nerdpack-file-structure/icon.png)
+The launcher icon that appears on the [one.newrelic.com](http://one.newrelic.com/)
 home page when an application is deployed.
 
 ### Related info

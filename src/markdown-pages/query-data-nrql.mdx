@@ -1,7 +1,7 @@
 ---
 path: '/query-data/nrql'
 duration: '10 min'
-title: 'Query Data With NRQL'
+title: 'Query data with NRQL'
 template: 'GuideTemplate'
 description: 'Query default event data as well as custom events and attributes with our powerful, SQL-like query language. Start querying now.'
 ---
@@ -21,7 +21,7 @@ NRQL syntax is comparable to ANSI SQL.
 [Learn mroe about NRQL syntax](https://docs.newrelic.com/docs/insights/nrql-new-relic-query-language/using-nrql/introduction-nrql)
 
 ```sql copy=false
-SELECT function(attribute) [AS 'label'][, ...] 
+SELECT function(attribute) [AS 'label'][, ...]
   FROM event
   [WHERE attribute [comparison] [AND|OR ...]][AS 'label'][, ...]
   [FACET attribute | function(attribute)]
@@ -56,12 +56,12 @@ NRQL queries can also do extremely powerful calculations before the data is pres
 
 ```sql
 -- See how many users visit, signup, browse and purchase from your site as a funnel
-SELECT funnel(session, 
+SELECT funnel(session,
   WHERE pageUrl='http://www.demotron.com/' AS 'Visited Homepage',
-  WHERE pageUrl='http://www.demotron.com/signup' AS 'Signed Up', 
-  WHERE pageUrl='http://www.demotron.com/browse' AS 'Browsed Items', 
-  WHERE pageUrl='http://www.demotron.com/checkout' AS 'Made Purchase') 
-  FROM PageView 
+  WHERE pageUrl='http://www.demotron.com/signup' AS 'Signed Up',
+  WHERE pageUrl='http://www.demotron.com/browse' AS 'Browsed Items',
+  WHERE pageUrl='http://www.demotron.com/checkout' AS 'Made Purchase')
+  FROM PageView
   SINCE 12 hours ago
 ```
 
@@ -69,7 +69,7 @@ SELECT funnel(session,
 
 <Step>
 
-Using NRQL, you can customize your New Relic experience by crafting diverse dashboards in New Relic Insights that show your data from multiple angles. These dashboards can be shared with technical and non-technical stakeholders alike.
+Using NRQL, you can customize your New Relic experience by crafting diverse dashboards in New Relic One that show your data from multiple angles. These dashboards can be shared with technical and non-technical stakeholders alike.
 
 ![Dashboard created with NRQL](../images/nr1-dashboard.png)
 
@@ -83,7 +83,7 @@ Using NRQL, you can customize your New Relic experience by crafting diverse dash
 
 ## Learn more and start building
 
-### Documenation
+### Documentation
 
 For an overview of NRQL syntax, see [Introduction to NRQL](https://docs.newrelic.com/docs/insights/nrql-new-relic-query-language/using-nrql/introduction-nrql). For a detailed description of all available functions, see [NRQL syntax, components, and functions](https://docs.newrelic.com/docs/insights/nrql-new-relic-query-language/nrql-resources/nrql-syntax-components-functions).
 
@@ -93,7 +93,7 @@ To learn how to query and narrow a large data store by a specific parameter, wat
 
 ### Community Forum
 
-Connect with other developers in the [New Relic Explorers Hub](http://discuss.newrelic.com/tags/developer). 
+Connect with other developers in the [New Relic Explorers Hub](http://discuss.newrelic.com/tags/developer).
 
 ### GitHub
 
