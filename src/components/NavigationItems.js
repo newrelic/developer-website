@@ -53,6 +53,7 @@ const NavigationItems = ({
           <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
         )}
         {pages.map((page) => {
+          // eslint-disable-next-line react-hooks/rules-of-hooks
           const [isExpanded, setIsExpanded] = useState(
             isHomePage || crumbs.includes(page.displayName)
           );
