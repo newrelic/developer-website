@@ -199,10 +199,10 @@ At this point, you implemented the `NerdGraphQuery` component with the applicati
 
 Here's what you need to do next:
 
-* Make it possible to query NerdGraph outside of the `render` method.
+* Query NerdGraph inside of the `componentDidMount` lifecycle method.
 * Save the returned data for later usage throughout the New Relic One application. 
 
-You can do this by adding the `NerdGraphQuery.query` method within the `componentDidMount` react lifecycle method.
+Complete the following:
 
 <Steps>
 
@@ -417,7 +417,10 @@ The final `index.js` file should have code similar to the code below. This compl
 
 ## Summary
 
-Now that you completed all the steps in this example, you successfully queried data from your account using the `NerdGraphQuery` component. The `NerdGraphQuery.query` method allowed you to separate data queries from visualization. For more experience querying your data with GraphQL, experiment with New Relic's [NerdGraph API explorer](https://api.newrelic.com/graphiql).
+Now that you completed all the steps in this example, you successfully queried data from your account using the `NerdGraphQuery` component in two methods:
+
+1. Using the `NerdGraphQuery` component inside the application's render method and then passing the returned data into the children's components.
+2. Using the `NerdGraphQuery.query` method to query data before the application renders.
 
 ## Related information
 
