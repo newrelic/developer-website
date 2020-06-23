@@ -33,7 +33,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--color-neutrals-200);
+  background: var(--tertiary-background-color);
   padding: 0 1rem;
 }
 
@@ -47,7 +47,7 @@
 
 .copyButton {
   font-size: 0.75rem;
-  color: var(--color-brand-800);
+  color: var(--link-color);
   background: none;
   border: none;
   outline: none;
