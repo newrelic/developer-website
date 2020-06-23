@@ -26,7 +26,7 @@ const CodeSnippet = ({
   const formattedCode = useFormattedCode(children ?? '');
   const [copied, copyCode] = useClipboard();
   const linesToHighlight =
-    lineHighlight && captureLinesToHighlight(lineHighlight.split(','));
+    lineHighlight && captureLinesToHighlight(lineHighlight);
 
   return (
     <div>
@@ -93,25 +93,19 @@ const CodeSnippet = ({
   );
 };
 
-const captureLinesToHighlight = (lineArr) => {
-  const lineNumbers = lineArr
-    .filter((line) => !line.includes('-'))
-    .map((number) => Number(number));
+const captureLinesToHighlight = (str) => {
+  const range = (a, b) => [...Array(b + 1).keys()].slice(a);
 
-  const lineNumberSet = new Set(lineNumbers);
+  const groups = str.split(',');
 
-  const ranges = lineArr.filter((line) => line.includes('-'));
+  const singles = groups.filter((g) => !g.includes('-')).map(Number);
 
-  ranges.forEach((range) => {
-    const rangeStart = Number(range[0]);
-    const rangeEnd = Number(range[2]);
-    const rangeArr = Array.from(
-      Array(rangeEnd - rangeStart + 1),
-      (_, i) => i + rangeStart
-    );
-    rangeArr.forEach((number) => lineNumberSet.add(number));
-  });
-  return Array.from(lineNumberSet);
+  const rangeSingles = groups
+    .filter((g) => g.includes('-'))
+    .map((range) => range.split('-').map(Number))
+    .reduce((acc, [a, b]) => [...acc, ...range(a, b)], []);
+
+  return [...new Set([...singles, ...rangeSingles])];
 };
 
 CodeSnippet.propTypes = {
