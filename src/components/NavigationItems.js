@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 import styles from './NavigationItems.module.scss';
+import { link } from '../types';
 
 const getHighlightedText = (text, highlight) => {
   const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
@@ -161,11 +162,7 @@ NavigationItems.propTypes = {
 };
 
 NavItem.propTypes = {
-  page: PropTypes.shape({
-    displayName: PropTypes.string,
-    url: PropTypes.string,
-    children: PropTypes.array,
-  }),
+  page: link,
   filteredPageNames: PropTypes.array,
   searchTerm: PropTypes.string,
   depthLevel: PropTypes.number,
