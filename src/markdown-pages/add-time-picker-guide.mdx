@@ -47,7 +47,11 @@ In your preferred text editor, open `/add-time-picker/nerdlets/nr1-howto-add-tim
 
 Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
-<Important>Your account ID is viewable in the profile selection menu of the developer center (where you downloaded the New Relic One CLI).</Important>
+<Important>
+  
+  Your account ID is viewable in the profile selection menu of the developer center (where you downloaded the New Relic One CLI).
+  
+</Important>
 
   ```js
   this.accountId = <ADD YOUR ACCOUNT ID>;
@@ -56,8 +60,8 @@ Replace `<ADD YOUR ACCOUNT ID>` with your account id:
   </Step>
 
   <Step>
-
-In your terminal, change to the `add-time-picker` directory:
+    
+  In your terminal, change to the `add-time-picker` directory:
 
   ```
   cd /nr1-howto/add-time-picker
@@ -84,15 +88,19 @@ Once the sample application is successfully served, go to the local New Relic On
 
   <Step>
 
-Click ***Add Time Picker***:
+Click **Add Time Picker**:
 
-<Important>If you don't see any launchers, click ***Your applications***.</Important>
+  <Important> 
+  
+If you don't see any launchers, click **Your applications**.
+
+  </Important>
 
 ![New Relic One launcher image](../images/time-picker-guide/homepage-launcher.png)
 
   </Step>
 
-  </Steps>
+</Steps>
 
 After launching the **Add Time Picker** application, you see a dashboard that gives an overview of the transactions in your New Relic account:
 
@@ -106,7 +114,11 @@ In the following sections, you'll add the time picker to the example application
 
 The first step in adding the time picker is to import the `PlatformStateContext` component. 
 
-<Important>If you need more details about our example below, see the APIs and components page on [https://developer.newrelic.com](https://developer.newrelic.com/client-side-sdk/index.html#apis/PlatformStateContext)</Important> 
+<Important>
+  
+  If you need more details about our example below, see the APIs and components page on [https://developer.newrelic.com](https://developer.newrelic.com/client-side-sdk/index.html#apis/PlatformStateContext)
+  
+</Important> 
 
 Here's what the `PlatformStateContext` component does:
 
@@ -237,7 +249,11 @@ In your console, you should see some data from the New Relic platform state. Now
 
 This step requires you to import the `timeRangeToNrql` utility method from the New Relic One community library.  
 
-<Important>You can get more details on the New Relic One community library from our [GitHub repo](https://github.com/newrelic/nr1-community).</Important> 
+<Important>
+  
+You can get more details on the New Relic One community library from our [GitHub repo](https://github.com/newrelic/nr1-community).
+
+</Important> 
 
 This helper method takes your `PlatformState.timeRange` duration data, formats it from milliseconds, and returns a formatted `SINCE` statement to add to your `NRQL`. 
 
@@ -247,7 +263,11 @@ This helper method takes your `PlatformState.timeRange` duration data, formats i
 
 Import the `timeRangeToNrql` method by inserting this line of code below the other `import` sections:
 
-<Important>You don't need to include the `AccountDropdown` from the community import example.</Important> 
+<Important>
+  
+You don't need to include the `AccountDropdown` from the community import example.
+
+</Important> 
 
   ```js
   import { timeRangeToNrql } from '@newrelic/nr1-community';
@@ -279,7 +299,11 @@ After creating the `since` variable, go through the code in the `PlatformStateCo
 
 After you update all of the chart components, confirm that the final `index.js` file looks similar to this:
 
-<Important>This completed sample code is in your `nerdlet final.js`.</Important>
+<Important>
+  
+This completed sample code is in your `nerdlet final.js`.
+
+</Important>
 
 
   ```js
