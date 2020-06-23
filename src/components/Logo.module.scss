@@ -1,3 +1,18 @@
 .logo {
   fill: none;
 }
+
+.text {
+  fill: var(--logo-text-color, var(--primary-text-color));
+}
+
+.brackets {
+  stroke: var(--logo-bracket-color, var(--color-brand-800));
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  :global(.dark-mode) & {
+    stroke: var(--logo-bracket-color, var(--color-brand-400));
+  }
+}
