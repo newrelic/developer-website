@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import FeatherIcon from './FeatherIcon';
 import NewRelicIcon from './NewRelicIcon';
 import { Link } from 'gatsby';
@@ -149,6 +150,21 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
       )}
     </li>
   );
+};
+
+NavigationItems.propTypes = {
+  pages: PropTypes.array,
+  filteredPageNames: PropTypes.array,
+  searchTerm: PropTypes.string,
+  depthLevel: PropTypes.number,
+};
+
+NavItem.propTypes = {
+  page: PropTypes.shape({
+    displayName: PropTypes.string,
+    url: PropTypes.string,
+    children: PropTypes.array,
+  }),
 };
 
 export default NavigationItems;
