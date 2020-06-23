@@ -1,13 +1,11 @@
 .section {
-  position: relative;
-}
+  --surface-background-color: var(--secondary-surface-background-color);
 
-.backgroundBanner {
-  position: absolute;
-  top: -2rem;
-  bottom: -2rem;
-  left: -2rem;
-  right: -2rem;
-  z-index: -1;
+  position: relative;
   background-color: var(--secondary-background-color);
+
+  &.backgroundBanner {
+    margin: -2rem;
+    padding: 2rem;
+  }
 }
