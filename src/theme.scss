@@ -2,6 +2,7 @@
   --primary-background: var(--color-white);
   --primary-text-color: var(--color-neutrals-700);
   --primary-button-background-color: var(--color-brand-800);
+  --primary-surface-background-color: var(--color-white);
 
   --secondary-background-color: var(--color-neutrals-100);
   --secondary-text-color: var(--color-neutrals-600);
@@ -9,6 +10,7 @@
   --secondary-button-text-color: var(--color-brand-800);
   --secondary-hover-background-color: var(--color-neutrals-200);
   --secondary-hover-text-color: var(--color-neutrals-700);
+  --secondary-surface-background-color: var(--color-white);
 
   --accent-text-color: var(--color-neutrals-500);
   --link-color: var(--color-brand-800);
@@ -32,6 +34,7 @@
   --primary-text-color: var(--color-white);
   --primary-button-background-color: var(--color-brand-800);
   --primary-button-text-color: var(--color-brand-800);
+  --primary-surface-background-color: var(--primary-background-color);
 
   --secondary-background-color: var(--color-neutrals-100);
   --secondary-text-color: var(--color-neutrals-600);
@@ -39,6 +42,7 @@
   --secondary-button-text-color: var(--color-brand-800);
   --secondary-hover-background-color: var(--color-neutrals-300);
   --secondary-hover-text-color: var(--color-neutrals-800);
+  --secondary-surface-background-color: var(--secondary-background-color);
 
   --accent-text-color: var(--color-neutrals-500);
   --link-color: var(--color-brand-400);
