@@ -1,13 +1,15 @@
 ---
 path: '/build-apps/build-hello-world-app'
 duration: '15 min'
-title: 'Create your first Nerdlet program'
+title: 'Create a "Hello, World!" Nerdlet'
 template: 'GuideTemplate'
-description: 'Build a Hello World! app and publish it to New Relic One'
+description: 'Build a "Hello, World!" app and publish it to New Relic One'
 ---
 <Intro>
 
-Here's how you can quickly build a "Hello, World!" application in New Relic One. In these steps, we'll show you how to create a local version of the New Relic One site where you can prototype your application. Then, when you are ready, you can publish your code to New Relic One.
+Here's how you can quickly build a "Hello, World!" application in New Relic One. In these steps, we'll show you how to create a local version of the New Relic One site where you can prototype your application. Then, when you are ready to share the application with others, you can publish it to New Relic One.
+
+We have a 5-minute video that covers the steps below.
 
 <Video id="ZagZfNQYJEU" type="youtube"/>
 
@@ -23,7 +25,7 @@ After you complete the wizard, continue with the steps below.
 
 ## Create a local verion of the "Hello, World!" application
 
-The command line inteface allows you to run a local version of New Relic One. You can develop your application locally before you publish it in New Relic One.
+The command line interface allows you to run a local version of New Relic One. You can develop your application locally before you publish it in New Relic One.
 
 Here's how to create a local verson of "Hello, World!":
 
@@ -31,7 +33,7 @@ Here's how to create a local verson of "Hello, World!":
 
   <Step>
 
-  If you haven't already done so in your terminal, change to the new directory named after your nerdpack project. For example, the command might look like this:
+  In your terminal, if you haven't already done so, change to the new directory named after your nerdpack project. For example, the command might look like this:
 
   ```
   $ cd /my-awesome-nerdpack
@@ -40,7 +42,7 @@ Here's how to create a local verson of "Hello, World!":
 
   <Step>
 
-  Open a code editor.
+  Open a code editor and point it to your new directory.
 
   <Important>Your code editor displays two artifacts: `launchers` (containing the homepage tile) and `nerdlets` (containing your application code).</Important>
 
@@ -54,7 +56,7 @@ Here's how to create a local verson of "Hello, World!":
 
   <Step>
 
-  Change the default `return` message to `Hello World!` (or anything else):
+  Change the default `return` message to `"Hello World!"` (or anything else interesting):
 
   ```js
   import React from 'react';
@@ -63,7 +65,7 @@ Here's how to create a local verson of "Hello, World!":
 
   export default class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
       render() {
-          return <h1>Hello, World!</h1>;
+          return <h1>"Hello, World!"</h1>;
       }
   }
   ```
@@ -72,16 +74,16 @@ Here's how to create a local verson of "Hello, World!":
 
   <Step>
 
-  As an optional step, you can add a custom tile icon using any image file named `icon.png`. Replace the default `icon.png` file under `launcher` by dragging in your new image file.
+  As an optional step, you can add a custom launcher icon using any image file named `icon.png`. You can replace the default `icon.png` file under `launcher` by dragging in your new image file:
 
   ![Launcher artifact with icon.png](../images/create-hello-world/custom-tile.png)
 
   </Step>
 
   <Step>
-  
+
   To change the name of the launcher to something meaningful, in your code editor under `launchers`, open `nr1.json`.
-    
+
   </Step>  
     
   <Step>
@@ -111,7 +113,7 @@ Here's how to create a local verson of "Hello, World!":
 
   <Step>
 
-  Open a browser and go to `https://one.newrelic.com/?nerdpacks='local' (this url is also shown in the terminal).
+  Open a browser and go to [https://one.newrelic.com/?nerdpacks='local'](https://one.newrelic.com/?nerdpacks='local') (this url is also shown in the terminal).
 
   </Step>
 
@@ -143,22 +145,22 @@ Your colleagues can't see your local application, so when you are ready to share
   nr1 nerdpack:publish
   ```
   </Step>
-
-  <Step>
   
-  Close the development tab for your local New Relic One, and open [New Relic One](https://one.newrelic.com).
+  <Step>
+
+  Close your local New Relic One development tab, and open [New Relic One](https://one.newrelic.com).
   
   </Step>
 
   <Step>
 
-  Click ***New Relic One Catalog***.
+  Click the ***New Relic One Catalog*** launcher.
 
   </Step>
 
   <Step>
 
-  Under ***Your company applications*** click on your new application.
+  Under ***Your company applications***, click the launcher for your new application.
 
   </Step>
 
@@ -186,7 +188,7 @@ Now that your new application is in the New Relic One catalog, you can add detai
 
   <Step>
 
-  Select ***catalog***, which creates a stub in your project under the `catalog` directory.
+  Select ***catalog***, which creates a stub in your project under the `catalog` directory:
 
   ![Catalog stub](../images/create-hello-world/new-catalog-stub.png)
 
@@ -219,13 +221,13 @@ Now that your new application is in the New Relic One catalog, you can add detai
 
 ## Subscribe accounts to your application
 
-To make sure other users see your application, you need to subscribe an account to the application. Any user with the NerdPack Manager role can subscribe an account to an application.
+To make sure other users see your application on the New Relic One homepage, you need to subscribe accounts to the application. Any user with the NerdPack Manager role can subscribe accounts to an application.
 
 <Steps>
   
   <Step>
 
-  If you're not already displaying the description page for your application, click the launcher for the application in the catalog.
+  If you're not already displaying your application's description page in the browser, click the launcher for the application in the catalog.
 
   </Step>
 
@@ -243,12 +245,18 @@ To make sure other users see your application, you need to subscribe an account 
 
 </Steps>
 
-Return to the New Relic One homepage and see the launcher for your new application.
+When you return to the New Relic One homepage, you'll see the launcher for your new application.
 
 ## Summary
 
-After you completed the steps in this example, you successfully created your first "Hello, World!" application in New Relic One.
+Now that you completed the steps in this example, you know more about how the basic steps for creating a custom application: 
+
+* Create a local application.
+* When you want to begin the process of sharing the application with your colleagues, publish it to the New Relic One catalog.
+* Add details to the project in the catalog so users understand how to use it.
+* Subscribe accounts to your application so other users can see it directly on the homepage.
 
 ## Related information
 
 - [New Relic documentation](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-build-your-own-custom-new-relic-one-application)
+- [New Relic's Explorer Hub](https://discuss.newrelic.com/)
