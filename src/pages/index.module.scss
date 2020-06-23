@@ -19,8 +19,10 @@
   margin-bottom: 1rem;
 }
 
-.guideListing {
-  margin-top: 6rem;
+.section {
+  &:not(:last-child) {
+    margin-bottom: 4rem;
+  }
 }
 
 .guideListingHeader {

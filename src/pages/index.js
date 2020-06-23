@@ -86,7 +86,7 @@ const IndexPage = ({ pageContext }) => (
       <SEO />
       <PageTitle>Observability for every developer</PageTitle>
 
-      <section className={styles.intro}>
+      <section className={cx(styles.section, styles.intro)}>
         <div className={cx(styles.introText, 'intro-text')}>
           <p>
             Welcome to the New Relic developer site! Here, you’ll find the tools
@@ -112,8 +112,8 @@ const IndexPage = ({ pageContext }) => (
         />
       </section>
 
-      <Section backgroundBanner>
-        <GuideListing className={styles.guideListing}>
+      <Section className={styles.section} backgroundBanner>
+        <GuideListing>
           <header className={styles.guideListingHeader}>
             <GuideListing.Heading className={cx(styles.guideListingHeading)}>
               Get started
