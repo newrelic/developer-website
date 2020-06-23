@@ -47,6 +47,7 @@
   },
   {
     "displayName": "Build apps",
+    "url": "/build-apps",
     "children": [
       {
         "displayName": "Create a 'Hello, World!' app",
