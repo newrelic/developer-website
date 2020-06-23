@@ -1,5 +1,5 @@
 .globalHeaderContainer {
-  background-color: var(--color-neutrals-100);
+  background-color: var(--secondary-background-color);
   overflow: hidden;
   position: sticky;
   top: 0;
@@ -53,19 +53,15 @@
   display: block;
   height: 100%;
   padding: 4px 9px;
-  color: var(--color-neutrals-600);
+  color: var(--secondary-text-color);
   font-size: 11px;
   border: none;
+  transition: 0.2s;
 
+  &.active,
   &:hover {
-    background-color: var(--color-neutrals-200);
-    color: var(--color-neutrals-700);
-  }
-
-  .active &,
-  .leftSideLinks:hover .active &:hover {
-    background-color: var(--color-neutrals-200);
-    color: var(--color-neutrals-700);
+    background-color: var(--secondary-hover-background-color);
+    color: var(--secondary-hover-text-color);
   }
 }
 
@@ -78,17 +74,17 @@
 }
 
 .rightSideButton {
-  opacity: 0.45;
-  transition: opacity 0.2s ease-out;
+  transition: all 0.2s ease-out;
   margin-left: 1rem;
+  color: var(--secondary-text-color);
 
-  path {
-    stroke: var(--color-neutrals-700);
+  a {
+    color: currentColor;
   }
 
   &:hover {
+    color: var(--secondary-hover-text-color);
     cursor: pointer;
-    opacity: 0.75;
   }
 }
 
