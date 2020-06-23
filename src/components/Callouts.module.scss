@@ -3,11 +3,12 @@
 .tip {
   padding: 1.25rem 0.3rem 1.25rem 1.25rem;
   margin: 1.55rem 3rem 1.55rem 1.25rem;
+  color: var(--color-neutrals-900);
+
   h4 {
-    margin-top: 0.1rem !important;
-    font-size: 0.8rem !important;
+    font-size: 0.75rem !important;
     text-transform: uppercase;
-    color: var(--color-neutrals-800) !important;
+    color: var(--color-neutrals-800);
   }
 }
 .caution {
