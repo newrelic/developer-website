@@ -87,7 +87,7 @@ const IndexPage = ({ pageContext }) => (
       <PageTitle>Observability for every developer</PageTitle>
 
       <section className={styles.intro}>
-        <div className={styles.introText}>
+        <div className={cx(styles.introText, 'intro-text')}>
           <p>
             Welcome to the New Relic developer site! Here, you’ll find the tools
             and resources you need to build on and customize the platform.
