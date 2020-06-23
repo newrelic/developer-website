@@ -7,11 +7,13 @@ import { githubBaseUrl } from '../data/constants';
 import NewRelicLogo from './NewRelicLogo';
 import ExternalLink from './ExternalLink';
 import FeatherIcon from './FeatherIcon';
+import useDarkMode from 'use-dark-mode';
 
 import styles from './GlobalHeader.module.scss';
 
 const GlobalHeader = ({ className }) => {
   const { fileRelativePath } = useContext(PageContext);
+  const darkMode = useDarkMode(false);
 
   return (
     <div className={cx(styles.globalHeaderContainer, className)}>
@@ -58,6 +60,13 @@ const GlobalHeader = ({ className }) => {
         </div>
 
         <ul className={styles.rightSideButtons}>
+          <li className={styles.rightSideButton}>
+            <FeatherIcon
+              name={darkMode.value ? 'sun' : 'moon'}
+              size="1rem"
+              onClick={darkMode.toggle}
+            />
+          </li>
           {fileRelativePath && (
             <li className={styles.rightSideButton}>
               <ExternalLink
