@@ -4,9 +4,12 @@ title: 'New Relic One CLI'
 template: 'GuideTemplate'
 description: 'An overview of the CLI to help you build, deploy, and manage New Relic apps.'
 ---
+
 <Intro>
 To build a [New Relic One app](/use-cases/build-new-relic-one-applications), you must install the New Relic One CLI. The CLI helps you build, publish, and manage your New Relic app.
+
 </Intro>
+
 
 To build a [New Relic One app](/use-cases/build-new-relic-one-applications), we provide you with a variety of tools, including the New Relic One CLI (command line interface). This page will explain how to use [CLI commands](/build-tools/new-relic-one-applications/cli#Commands) to:
 
@@ -20,34 +23,32 @@ To build a [New Relic One app](/use-cases/build-new-relic-one-applications), we
 
 -   Add screenshots and metadata to the New Relic One Catalog
 
--   CLI topics
--   [Install](/build-tools/new-relic-one-applications/cli#Install)
--   [Commands](/build-tools/new-relic-one-applications/cli#Commands)
--   [Publish and deploy](/build-tools/new-relic-one-applications/cli#Publishanddeploy)
 
+## Installing the New Relic One CLI
 
-## Build New Relic One launcher
+### Install using 'Build your own application' launcher
 
-From within New Relic, go to the [**Build New Relic One application** launcher](https://one.newrelic.com/launcher/developer-center.launcher) and follow the instructions. This launcher will automatically generate an API key for the account you select, and give you the pre-populated commands to create a profile, generate your first "Hello World" app, and serve it locally. 
+From *within* New Relic, go to the [**Build your own application** launcher](https://one.newrelic.com/launcher/developer-center.launcher) and follow the instructions. This launcher will automatically generate an API key for the account you select, and give you the pre-populated commands to create a profile, generate your first "Hello World" app, and serve it locally. 
 
 ![Build New Relic One application](../../images/developercenter.png)
 
-<Steps>
 
-## Manual setup
+
+### Download from Developer site
 
 Alternately, you can follow the steps below. However, you will need to to create your New Relic [personal API Key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key), which you can create from the **Account settings** of your New Relic account. Keep this key handy because you will need it when you create the profile used by the CLI.
 
-<Step>
-Download the CLI from [this link](/launcher/developer-center.launcher) and install it. 
-</Step>
 
+<Steps>
 <Step>
-Check to make sure the CLI is installed properly by issuing simply checking the version.
+Download the CLI from [this link](/launcher/developer-center.launcher) and install it. Check to make sure the CLI is installed properly by issuing simply checking the version.
 
 `nr1 --version`
-
 </Step>
+
+
+
+<Step>
 The CLI allows you to have multiple profiles. Each profile has a distinct API key and region. This is helpful if you have multiple accounts, or different API keys for different applications. To create a profile, execute the following command, substituting in the name you desire, your persona API key, as well as the region. The default is the 'us'. 
 
 `nr1 profiles:add --name <profile name> --api-key <personal api key> --region us`
@@ -60,14 +61,17 @@ Now you are ready to create a simple "Hello World" app. Because we are all data 
 `nr1 create --type nerdpack --name my-awesome-nerdpack`
 
 </Step>
+
+<Step>
 Once the app is created, all you need to do is change into the directory and start the local server. 
 
 `cd my-awesome-nerdpack && nr1 nerdpack:serve`
+</Step>
 
 </Steps>
 
 
-### Commands
+## New Relic One CLI Commands
 
 This table gives descriptions and context for some of the most important CLI commands. For details on user permissions, see [Authentication and permissions](/build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions).
 
