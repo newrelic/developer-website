@@ -6,7 +6,7 @@ import styles from './Section.module.scss';
 const Section = ({ backgroundBanner, children, className }) => {
   return (
     <div
-      className={cx(styles.section, {
+      className={cx(styles.section, className, {
         [styles.backgroundBanner]: backgroundBanner,
       })}
     >
