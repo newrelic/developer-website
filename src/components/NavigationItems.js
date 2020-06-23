@@ -155,14 +155,14 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
 };
 
 NavigationItems.propTypes = {
-  pages: PropTypes.array,
+  pages: PropTypes.array.isRequired,
   filteredPageNames: PropTypes.array,
   searchTerm: PropTypes.string,
   depthLevel: PropTypes.number,
 };
 
 NavItem.propTypes = {
-  page: link.isRequired,
+  page: link,
   filteredPageNames: PropTypes.array,
   searchTerm: PropTypes.string,
   depthLevel: PropTypes.number,
