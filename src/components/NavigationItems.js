@@ -44,12 +44,13 @@ const NavigationItems = ({
         {showGroup && (
           <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
         )}
-        {pages.map((page) => (
+        {pages.map((page, index) => (
           <NavItem
             page={page}
             depthLevel={depthLevel}
             searchTerm={searchTerm}
             filteredPageNames={filteredPageNames}
+            key={index}
           />
         ))}
       </Fragment>
@@ -165,6 +166,9 @@ NavItem.propTypes = {
     url: PropTypes.string,
     children: PropTypes.array,
   }),
+  filteredPageNames: PropTypes.array,
+  searchTerm: PropTypes.string,
+  depthLevel: PropTypes.number,
 };
 
 export default NavigationItems;
