@@ -85,7 +85,7 @@ module.exports = {
             beacon: 'staging-bam.nr-data.net',
             errorBeacon: 'staging-bam.nr-data.net',
           },
-          development: {
+          staging: {
             instrumentationType: 'proAndSPA',
             accountId: '10175106',
             trustKey: '1',
