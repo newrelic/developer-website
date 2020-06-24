@@ -3,38 +3,59 @@
     "displayName": "Collect data",
     "children": [
       {
-        "displayName": "Log with the Log API",
-        "url": "/noop"
+        "displayName": "Collect data from any source",
+        "url": "/collect-data/collect-data-from-any-source"
       },
       {
-        "displayName": "OpenTelemetry exporter",
-        "url": "/noop"
+        "displayName": "Create custom attributes",
+        "url": "/collect-data/custom-attributes"
       },
       {
-        "displayName": "Extend New Relic agents",
-        "url": "/noop"
+        "displayName": "Create custom New Relic events",
+        "url": "/collect-data/custom-events"
       },
       {
-        "displayName": "Create a Flex integration",
-        "url": "/noop"
+        "displayName": "Query data with NRQL",
+        "url": "/collect-data/query-data-nrql"
       },
       {
-        "displayName": "Add a custom New Relic event",
-        "url": "/noop"
+        "displayName": "Explore NerdGraph using the API Explorer",
+        "url": "/collect-data/get-started-nerdgraph-api-explorer"
+      }
+    ]
+  },
+  {
+    "displayName": "Automate workflows",
+    "children": [
+      {
+        "displayName": "Orchestrate observability workflows",
+        "url": "/automate-workflows/workflow-automation"
       },
       {
-        "displayName": "Write NRQL queries",
-        "url": "/noop"
+        "displayName": "Tag a set of resources efficiently",
+        "url": "/automate-workflows/5-mins-tag-resources"
       },
       {
-        "displayName": "Build a NerdGraph query",
-        "url": "/noop"
+        "displayName": "Get started with the New Relic CLI",
+        "url": "/automate-workflows/get-started-new-relic-cli"
+      },
+      {
+        "displayName": "Set up New Relic using Terraform",
+        "url": "/automate-workflows/get-started-terraform"
       }
     ]
   },
   {
     "displayName": "Build apps",
     "children": [
+      {
+        "displayName": "Create a 'Hello, World!' app",
+        "url": "/build-apps/map-pageviews-by-region"
+      },
+      {
+        "displayName": "Publish and deploy your app",
+        "url": "/build-apps/publish-deploy"
+      },
       {
         "displayName": "Map pageviews by region",
         "url": "/build-apps/map-pageviews-by-region"
@@ -44,29 +65,12 @@
         "url": "/build-apps/add-time-picker-guide"
       },
       {
-        "displayName": "Use NerdGraph in an app",
-        "url": "/build-apps/use-nerdgraph-in-app"
+        "displayName": "Add the NerdGraphQuery component to an app",
+        "url": "/build-apps/add-nerdgraphquery-guide"
       },
       {
-        "displayName": "Build a table",
-        "url": "/build-apps/build-a-table"
-      },
-      {
-        "displayName": "Persistent storage for apps",
-        "url": "/build-apps/persistent-storage-for-apps"
-      }
-    ]
-  },
-  {
-    "displayName": "Automate workflows",
-    "children": [
-      {
-        "displayName": "Monitor, alert, and analyze",
-        "url": "/automate-workflows/"
-      },
-      {
-        "displayName": "OpenTelemetry exporter",
-        "url": "/automate-workflows/"
+        "displayName": "Add tables to your New Relic One application",
+        "url": "/build-apps/howto-use-nrone-table-components"
       }
     ]
   },
@@ -74,13 +78,24 @@
     "displayName": "Explore docs",
     "children": [
       {
-        "displayName": "CLI"
+        "displayName": "New Relic One CLI",
+        "url": "/reference/nr1-cli"
       },
       {
-        "displayName": "GraphQL"
+        "displayName": "Nerdpack file structure",
+        "url": "/reference/nerdpack-file-structure"
       },
       {
-        "displayName": "Nerdpacks"
+        "displayName": "Intro to New Relic One API components",
+        "url": "/reference/intro-to-sdk"
+      },
+      {
+        "displayName": "Intro to Nerdstorage",
+        "url": "/reference/nerdstorage"
+      },
+      {
+        "displayName": "Query and store data",
+        "url": "/reference/query-and-store-data"
       },
       {
         "displayName": "Component library",
@@ -468,5 +483,9 @@
         ]
       }
     ]
+  },
+  {
+    "displayName": "Developer champions",
+    "url": "/developer-champions"
   }
 ]
