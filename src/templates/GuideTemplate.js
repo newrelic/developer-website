@@ -1,38 +1,18 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { MDXProvider } from '@mdx-js/react';
+import MDXContainer from '../components/MDXContainer';
 
 import { pageContext } from '../types';
 import Layout from '../components/Layout';
 import FeatherIcon from '../components/FeatherIcon';
 import PageTitle from '../components/PageTitle';
-import Video from '../components/Video';
-import Step from '../components/Step';
-import Steps from '../components/Steps';
-import Caution from '../components/Caution';
-import Important from '../components/Important';
-import Tip from '../components/Tip';
-import Intro from '../components/Intro';
 import SEO from '../components/Seo';
 import { BreadcrumbContext } from '../components/BreadcrumbContext';
 import { PageContext } from '../components/PageContext';
 import createBreadcrumbs from '../utils/create-breadcrumbs';
 import pages from '../data/sidenav.json';
 import styles from './GuideTemplate.module.scss';
-import CodeSnippet from '../components/CodeSnippet';
-
-const components = {
-  Video,
-  Step,
-  Steps,
-  Caution,
-  Important,
-  Tip,
-  Intro,
-  code: (props) => <CodeSnippet {...props} />,
-};
 
 const GuideTemplate = ({ data, pageContext }) => {
   const { mdx } = data;
@@ -54,11 +34,7 @@ const GuideTemplate = ({ data, pageContext }) => {
               </div>
             )}
           </div>
-          <div className={styles.mdxContainer}>
-            <MDXProvider components={components}>
-              <MDXRenderer>{body}</MDXRenderer>
-            </MDXProvider>
-          </div>
+          <MDXContainer>{body}</MDXContainer>
         </Layout>
       </BreadcrumbContext.Provider>
     </PageContext.Provider>
