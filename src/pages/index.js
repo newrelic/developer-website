@@ -85,9 +85,7 @@ const IndexPage = ({ data, pageContext }) => {
               apps fast. Answer your unique questions, improve your software,
               and deliver new value to your business.
             </p>
-            <p>
-              We're glad you are here. Let's start building.
-            </p>
+            <p>We're glad you are here. Let's start building.</p>
           </div>
           <Video
             className={styles.introVideo}
