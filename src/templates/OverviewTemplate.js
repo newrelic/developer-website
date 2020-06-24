@@ -7,6 +7,9 @@ import { MDXProvider } from '@mdx-js/react';
 import { pageContext } from '../types';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
+import GuideListing from '../components/GuideListing/GuideListing';
+import GuideTile from '../components/GuideTile';
+
 import Video from '../components/Video';
 import Step from '../components/Step';
 import Steps from '../components/Steps';
@@ -24,8 +27,6 @@ import CodeSnippet from '../components/CodeSnippet';
 
 /**
  * TODO
- * Confirm the open ended markdown space satisfies the design
- * Add filtered guide listing
  * Share markdown components collection
  * Move contexts to wrapRootElement (and remove pageContext)
  * Remove extra div from around PageTitle
@@ -43,7 +44,7 @@ const components = {
 };
 
 const OverviewTemplate = ({ data, pageContext }) => {
-  const { mdx } = data;
+  const { mdx, guides } = data;
   const { frontmatter, body } = mdx;
   const { title, description } = frontmatter;
   const crumbs = createBreadcrumbs(frontmatter.path, pages);
@@ -61,6 +62,18 @@ const OverviewTemplate = ({ data, pageContext }) => {
               <MDXRenderer>{body}</MDXRenderer>
             </MDXProvider>
           </div>
+          {guides?.nodes.length && (
+            <GuideListing className={styles.guideListing}>
+              <GuideListing.Heading className={styles.guideListingHeading}>
+                Guides to build New Relic apps ({guides?.nodes.length})
+              </GuideListing.Heading>
+              <GuideListing.List>
+                {guides?.nodes.map((guide, index) => (
+                  <GuideTile key={index} {...guide?.frontmatter} />
+                ))}
+              </GuideListing.List>
+            </GuideListing>
+          )}
         </Layout>
       </BreadcrumbContext.Provider>
     </PageContext.Provider>
@@ -73,14 +86,30 @@ OverviewTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
+  query($path: String!, $guidesFilter: String!) {
     mdx(frontmatter: { path: { eq: $path } }) {
       body
       frontmatter {
-        duration
         path
         title
         description
+      }
+    }
+    guides: allMdx(
+      filter: {
+        frontmatter: {
+          template: { eq: "GuideTemplate" }
+          path: { glob: $guidesFilter }
+        }
+      }
+    ) {
+      nodes {
+        frontmatter {
+          path
+          title
+          description
+          duration
+        }
       }
     }
   }
