@@ -86,7 +86,7 @@ const IndexPage = ({ data, pageContext }) => {
               and deliver new value to your business.
             </p>
             <p>
-              We're glad you're here. Let's start building.
+              We're glad you are here. Let's start building.
             </p>
           </div>
           <Video
