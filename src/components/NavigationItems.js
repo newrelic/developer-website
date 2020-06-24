@@ -165,7 +165,7 @@ NavItem.propTypes = {
   page: link,
   filteredPageNames: PropTypes.array,
   searchTerm: PropTypes.string,
-  depthLevel: PropTypes.number,
+  depthLevel: PropTypes.number.isRequired,
 };
 
 export default NavigationItems;
