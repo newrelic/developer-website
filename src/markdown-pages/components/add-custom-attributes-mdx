@@ -1,20 +1,17 @@
-collect-data/custom-attributes.mdx
-path: '/guides/example'
+---
+
+path: '/collect-data/custom-attributes.mdx'
 duration: ''
-title: 'How to add custom attributes to your New Relic data'
+title: 'Add custom attributes to your New Relic data'
 template: 'GuideTemplate'
-description: 'Add metadata for more detailed analysis
-There are countless filters and pivots you may want to apply to your data. By adding custom attributes to your data, you can see beyond your code and analyze your business in-depth.'
+description: 'Add metadata for more detailed analysis'
 ---
 
 <Intro>
 
-This guide steps you through how to add your own custom attributes, which you can use for querying and charting. 
-<br>
-There are countless filters and pivots you may want to apply to your data. By adding custom attributes to your data, you can see beyond your code and analyze your business in-depth.
-<br>
-<br>
-You can add a 'userid' custom attribute to your APM-reported data (Transaction and TransactionError events) with the Java APM agent's API.
+There are countless filters and pivots you might want to apply to your data. By adding custom attributes to your data, you can see beyond your code and analyze your business in-depth.
+
+You can add a `userid` custom attribute to your APM-reported data (`Transaction` and `TransactionError events`) with the Java APM agent's API.
 
 <br>
 
@@ -39,4 +36,4 @@ Once you have added a custom attribute like 'userid', you can use it to filter a
 
 ### Related Info
 
-For more information, see our <a href="https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/add-custom-attributes-new-relic-apm-data">documentation.</a>
+For more information, see [New Relic APM: Report custom attributes](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/add-custom-attributes-new-relic-apm-data)
