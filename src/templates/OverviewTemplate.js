@@ -22,9 +22,6 @@ const OverviewTemplate = ({ data }) => {
       <MDXContainer>{body}</MDXContainer>
       {guides?.nodes.length && (
         <GuideListing>
-          <GuideListing.Heading>
-            Guides to build New Relic apps ({guides?.nodes.length})
-          </GuideListing.Heading>
           <GuideListing.List>
             {guides?.nodes.map(({ frontmatter }, index) => (
               <GuideTile
