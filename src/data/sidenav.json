@@ -50,7 +50,7 @@
     "children": [
       {
         "displayName": "Create a 'Hello, World!' app",
-        "url": "/build-apps/map-pageviews-by-region"
+        "url": "/build-apps/build-hello-world-app"
       },
       {
         "displayName": "Publish and deploy your app",
