@@ -97,6 +97,12 @@ const ICONS = {
       <polyline points="16 16 12 12 8 16" />
     </>
   ),
+  award: (
+    <>
+      <circle cx="12" cy="8" r="7" />
+      <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+    </>
+  ),
 };
 
 FeatherIcon.propTypes = {
