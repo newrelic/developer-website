@@ -82,8 +82,8 @@ const IndexPage = ({ data, pageContext }) => {
             </p>
             <p>
               With our platform as your foundation, create custom observability
-              apps fast. Answer your unique questions, improve your software, and
-              deliver new value to your business.
+              apps fast. Answer your unique questions, improve your software,
+              and deliver new value to your business.
             </p>
             <p>
               We're glad you're here. Let's start building.
