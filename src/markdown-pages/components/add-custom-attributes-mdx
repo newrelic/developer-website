@@ -17,7 +17,7 @@ You can add a `userid` custom attribute to your APM-reported data (`Transaction`
 
 ```NewRelic.addCustomParameter("userid", userId);
 ```
-<a href="https://developer.newrelic.com/technology/agent-apis">Learn more about Agent APIs</a>
+
 <br>
 Once added, you can run a NRQL query that uses the 'userid' custom attribute.
 <br>
