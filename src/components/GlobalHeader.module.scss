@@ -1,6 +1,9 @@
 .globalHeaderContainer {
   background-color: var(--color-neutrals-100);
   overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 80;
 
   :global(.site-container) {
     padding: 0 2rem;
@@ -17,6 +20,10 @@
   display: flex;
   align-items: center;
   margin-right: 1rem;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 }
 
 .leftSideLinksContainer {
@@ -73,6 +80,11 @@
 .rightSideButton {
   opacity: 0.45;
   transition: opacity 0.2s ease-out;
+  margin-left: 1rem;
+
+  path {
+    stroke: var(--color-neutrals-700);
+  }
 
   &:hover {
     cursor: pointer;
@@ -83,10 +95,4 @@
 .githubButtonLink {
   display: flex;
   align-items: center;
-}
-
-@media screen and (max-width: 440px) {
-  .githubButtonLink {
-    display: none;
-  }
 }

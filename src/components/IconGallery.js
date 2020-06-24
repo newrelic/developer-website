@@ -5,12 +5,13 @@ import IconReference from './IconReference';
 const IconGallery = () => {
   if (typeof window === 'undefined') global.window = {};
 
+  const [search, setSearch] = useState('');
+
   // Get the Icon component when available
   const { Icon } = window.__NR1_SDK__?.default ?? {};
   if (!Icon) return null;
 
   // Basic search / filtering
-  const [search, setSearch] = useState('');
   const types = Object.keys(Icon.TYPE);
   const filterByString = (input) => (str) =>
     str.toLowerCase().includes(input.toLowerCase());

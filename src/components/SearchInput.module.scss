@@ -1,0 +1,19 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  right: 0.5rem;
+  stroke: var(--color-neutrals-700);
+}
+
+.input {
+  width: 100%;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  padding-right: calc(1rem + 1em);
+}

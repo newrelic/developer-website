@@ -169,7 +169,7 @@ Code Snippets are automatically formatted by three backticks. This is our prefer
 
 ### Usage
 
-There are three props that can be supplied to a code snippet.
+There are four props that can be supplied to a code snippet.
 
 - `language`: The first prop must be a code language. [Here](https://prismjs.com/#supported-languages) is a list of accepted languages for syntax highlighting.
 
@@ -179,12 +179,61 @@ There are three props that can be supplied to a code snippet.
   ````
 
 - `lineNumbers`: `true` or `false`. Will show line numbers of the left side of the code, defaults to `true`.
+
   ````md
   ```jsx lineNumbers=false
   ```
   ````
+
+- `lineHighlight`: Will highlight lines of code in the snippet. You can supply individual line numbers separted by commas, or ranges by using a hyphen. Be sure not to use any spaces.
+
+  ````md
+  ```jsx lineHighlight=1,3,6-8,10
+  ```
+  ````
+
 - `copy`: `true` or `false`. Will display or not display the copy button, defaults to `true`
   ````md
   ```jsx copy=false
   ```
   ````
+
+## Callouts
+
+Callouts direct your attention to information of special importance or to information that doesn't fit smoothly into the main text.
+
+- Caution: Screams at you that this could cause a crash or cost you data loss beyond the task at hand.
+- Important: Urges awareness that this could impair the task at hand or cost you time if you ignore the text.
+- Tip: Whispers to you that this is nice to know, like a shortcut, best practice, or reminder.
+
+### Usage
+
+```md
+<Caution>
+
+Text with `markdown`.
+
+</Caution>
+
+<Important>
+
+Text with `markdown`.
+
+</Important>
+
+<Tip>
+
+Text with `markdown`.
+
+</Tip>
+```
+
+All callouts have default titles that can be overridden like this:
+
+```md
+<Caution title="A custom title">
+
+Text
+
+</Caution>
+```
