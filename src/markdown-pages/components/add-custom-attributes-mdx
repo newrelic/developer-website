@@ -1,6 +1,6 @@
 ---
 
-path: '/collect-data/custom-attributes.mdx'
+path: '/collect-data/custom-attributes'
 duration: ''
 title: 'Add custom attributes to your New Relic data'
 template: 'GuideTemplate'
