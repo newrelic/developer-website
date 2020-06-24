@@ -20,7 +20,7 @@ const OverviewTemplate = ({ data }) => {
       <SEO title={title} description={description} />
       <PageTitle>{title}</PageTitle>
       <MDXContainer>{body}</MDXContainer>
-      {guides?.nodes.length && (
+      {!!guides?.nodes.length && (
         <GuideListing>
           <GuideListing.List>
             {guides?.nodes.map(({ frontmatter }, index) => (
