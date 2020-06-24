@@ -36,10 +36,17 @@ const useComponentDoc = (componentName) => {
   if (typeof window === 'undefined') global.window = {};
 
   return useMemo(() => {
+    if (window.__NR1_SDK__ == null) {
+      const err = new Error('NR1_SDK not found');
+      window.NREUM && window.NREUM.noticeError(err);
+      return null;
+    }
     const sdk = window.__NR1_SDK__?.default ?? {};
     const component = sdk[componentName];
 
     if (!component) {
+      const err = new Error('NR1_SDK component not found');
+      window.NREUM && window.NREUM.noticeError(err, { componentName });
       return null;
     }
 
