@@ -26,9 +26,14 @@ const filterPageNames = (pages, searchTerm, parent = []) => {
 };
 
 const Navigation = ({ className, searchTerm }) => {
-  const searchTermSanitized = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const filteredPageNames =
-    searchTerm !== '' ? filterPageNames(pages, searchTermSanitized) : undefined;
+  const searchTermSanitized = searchTerm?.replace(
+    /[.*+?^${}()|[\]\\]/g,
+    '\\$&'
+  );
+
+  const filteredPageNames = searchTerm
+    ? filterPageNames(pages, searchTermSanitized)
+    : undefined;
 
   return (
     <nav
