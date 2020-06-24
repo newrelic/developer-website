@@ -139,7 +139,7 @@ const IndexPage = ({ data, pageContext }) => {
         </GuideListing>
 
         <p className={styles.inspiration}>
-          Looking for inspiration? Check out the{' '}
+          Looking for more inspiration? Check out the{' '}
           <ExternalLink
             className={styles.externalLink}
             href="https://opensource.newrelic.com"
