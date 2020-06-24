@@ -105,7 +105,7 @@ const IndexPage = ({ data, pageContext }) => {
           <GuideListing className={styles.guideListing}>
             <header className={styles.guideListingHeader}>
               <GuideListing.Heading className={cx(styles.guideListingHeading)}>
-                Get started
+                Get coding
               </GuideListing.Heading>
               <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
                 <button type="button">Create an account</button>
