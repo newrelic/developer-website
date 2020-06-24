@@ -26,8 +26,16 @@ const OverviewTemplate = ({ data }) => {
             Guides to build New Relic apps ({guides?.nodes.length})
           </GuideListing.Heading>
           <GuideListing.List>
-            {guides?.nodes.map((guide, index) => (
-              <GuideTile key={index} {...guide?.frontmatter} />
+            {guides?.nodes.map(({ frontmatter }, index) => (
+              <GuideTile
+                key={index}
+                duration={frontmatter.duration}
+                title={frontmatter.callout?.title || frontmatter.title}
+                description={
+                  frontmatter.callout?.description || frontmatter.description
+                }
+                path={frontmatter.path}
+              />
             ))}
           </GuideListing.List>
         </GuideListing>
@@ -64,6 +72,10 @@ export const pageQuery = graphql`
           title
           description
           duration
+          callout {
+            title
+            description
+          }
         }
       }
     }
