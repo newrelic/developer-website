@@ -121,7 +121,7 @@ const IndexPage = ({ data, pageContext }) => {
 
         <GuideListing className={styles.guideListing}>
           <GuideListing.Heading className={styles.guideListingHeading}>
-            Extend the platform
+            Get inspired
           </GuideListing.Heading>
           <GuideListing.List>
             {nodes.map(({ frontmatter }, index) => (
