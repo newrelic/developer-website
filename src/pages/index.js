@@ -105,7 +105,7 @@ const IndexPage = ({ data, pageContext }) => {
           <GuideListing className={styles.guideListing}>
             <header className={styles.guideListingHeader}>
               <GuideListing.Heading className={cx(styles.guideListingHeading)}>
-                Get started
+                Get coding
               </GuideListing.Heading>
               <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
                 <button type="button">Create an account</button>
@@ -121,7 +121,7 @@ const IndexPage = ({ data, pageContext }) => {
 
         <GuideListing className={styles.guideListing}>
           <GuideListing.Heading className={styles.guideListingHeading}>
-            Extend the platform
+            Get inspired
           </GuideListing.Heading>
           <GuideListing.List>
             {nodes.map(({ frontmatter }, index) => (
@@ -139,7 +139,7 @@ const IndexPage = ({ data, pageContext }) => {
         </GuideListing>
 
         <p className={styles.inspiration}>
-          Looking for inspiration? Check out the{' '}
+          Looking for more inspiration? Check out the{' '}
           <ExternalLink
             className={styles.externalLink}
             href="https://opensource.newrelic.com"
