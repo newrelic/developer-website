@@ -71,7 +71,7 @@
       {
         "displayName": "Add tables to your New Relic One application",
         "url": "/build-apps/howto-use-nrone-table-components"
-      },
+      }
     ]
   },
   {
@@ -481,7 +481,9 @@
             "group": "Platform APIs"
           }
         ]
-    }
+      }
+    ]
+  },
   {
     "displayName": "Developer champions",
     "url": "/developer-champions"
