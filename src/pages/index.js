@@ -8,7 +8,6 @@ import SEO from '../components/Seo';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
 import PageTitle from '../components/PageTitle';
-import Section from '../components/Section';
 import Video from '../components/Video';
 import FeatherIcon from '../components/FeatherIcon';
 import ExternalLink from '../components/ExternalLink';
@@ -95,7 +94,7 @@ const IndexPage = ({ data, pageContext }) => {
           />
         </section>
 
-        <Section backgroundBanner>
+        <section className={cx(styles.section, styles.stripedSection)}>
           <GuideListing className={styles.guideListing}>
             <header className={styles.guideListingHeader}>
               <GuideListing.Heading className={cx(styles.guideListingHeading)}>
@@ -111,9 +110,9 @@ const IndexPage = ({ data, pageContext }) => {
               ))}
             </GuideListing.List>
           </GuideListing>
-        </Section>
+        </section>
 
-        <GuideListing className={styles.guideListing}>
+        <GuideListing className={styles.section}>
           <GuideListing.Heading className={styles.guideListingHeading}>
             Get inspired
           </GuideListing.Heading>
@@ -146,6 +145,24 @@ const IndexPage = ({ data, pageContext }) => {
           </ExternalLink>{' '}
           built by the New Relic community.
         </p>
+
+        <section className={cx(styles.section, styles.stripedSection)}>
+          <h1>New Relic developer champions</h1>
+          <p>
+            New Relic Champions are solving big problems using New Relic as
+            their linchpin and are recognized as experts and leaders in the New
+            Relic technical community.
+          </p>
+          <ExternalLink href="https://forms.gle/Zkdub5e1x4MNqSKW9">
+            <button type="button">
+              Nominate a Developer Champion
+              <FeatherIcon
+                className={styles.externalLinkIcon}
+                name="external-link"
+              />
+            </button>
+          </ExternalLink>
+        </section>
       </Layout>
     </PageContext.Provider>
   );
