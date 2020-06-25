@@ -18,22 +18,41 @@ We also have a 12 minute video that covers the steps below.
 
 ## Before you begin
 
-These steps require that you have the following:
+Here's what you need to get started:
 
-- A GitHub account
-- New Relic developer account
-- API Key (the same key you set up in [Quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==))
-- The New Relic One [CLI](https://cli.nr-ext.net/installer.pkg) 
+* GitHub account
+* [New Relic](https://newrelic.com/signup/) account
+* New Relic One CLI (command line interface)
+* New Relic API key
+* New Relic account ID
+
+The New Relic One CLI is a tool that sets up your environment with your API key and account ID. You'll use the CLI to perform various tasks for serving up and publishing your new applications.
+
+We have a CLI wizard that simplifies the installation and helps you select your API key and account ID.
+
+  <Important>
+  
+ If you already installed the New Relic One CLI but can't remember your account ID, you can re-run the wizard and find it under **Get your API key**. 
+
+  </Important> 
+
+For the purposes of this exercise, you only need to complete the following in the wizard:
+
+1. Log into the [installation wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) using your New Relic credentials.
+2. In step **1. Get your API key**, select the record with your account name.
+3. You'll need your account ID later, so save the number preceding your account name.
+4. Complete steps 2–4 of the wizard (you can skip steps 5 and 6 because they are covered below).
+5. Close the browser tab for the wizard.  
 
 ## Prepare the time picker sample code
 
-To get started, complete these steps to update the application UUID and run the sample application locally:
+After you install the CLI, complete these steps to update the application UUID and run the sample application locally:
 
 <Steps>
 
   <Step>
 
-Clone the example applications from our [how-to GitHub repo](https://github.com/newrelic/nr1-how-to).
+If you haven't already done so, clone the example applications from our [how-to GitHub repo](https://github.com/newrelic/nr1-how-to).
 
   </Step>
 
@@ -49,7 +68,7 @@ Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
 <Important>
   
-  Your account ID is viewable in the profile selection menu of the developer center (where you downloaded the New Relic One CLI).
+  This is the value from the CLI wizard step **1. Get your API key**.
   
 </Important>
 
