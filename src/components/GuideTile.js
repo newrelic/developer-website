@@ -6,7 +6,15 @@ import cx from 'classnames';
 import { navigate } from 'gatsby';
 import styles from './GuideTile.module.scss';
 
-const GuideTile = ({ icon, duration, title, description, path, className }) => (
+const GuideTile = ({
+  icon,
+  duration,
+  title,
+  description,
+  path,
+  className,
+  button = true,
+}) => (
   <div className={cx(styles.tile, className, { [styles.tileWithIcon]: icon })}>
     {icon && (
       <div className={styles.iconContainer}>
@@ -20,13 +28,15 @@ const GuideTile = ({ icon, duration, title, description, path, className }) => (
     </div>
     <h2 className={styles.title}>{title}</h2>
     <p className={styles.description}>{description}</p>
-    <button
-      type="button"
-      className={styles.button}
-      onClick={() => navigate(path)}
-    >
-      Start the guide
-    </button>
+    {button && (
+      <button
+        type="button"
+        className={styles.button}
+        onClick={() => navigate(path)}
+      >
+        Start the guide
+      </button>
+    )}
   </div>
 );
 
@@ -37,6 +47,7 @@ GuideTile.propTypes = {
   path: PropTypes.string.isRequired,
   className: PropTypes.string,
   icon: PropTypes.string,
+  button: PropTypes.bool,
 };
 
 export default GuideTile;
