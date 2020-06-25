@@ -1,0 +1,37 @@
+---
+
+path: '/collect-data/custom-attributes'
+duration: ''
+title: 'Add custom attributes to your New Relic data'
+template: 'GuideTemplate'
+description: 'Add metadata for more detailed analysis'
+---
+
+<Intro>
+
+There are countless filters and pivots you might want to apply to your data. By adding custom attributes to your data, you can see beyond your code and analyze your business in-depth.
+
+You can add a `userid` custom attribute to your APM-reported data (`Transaction` and `TransactionError events`) with the Java APM agent's API.
+
+
+```NewRelic.addCustomParameter("userid", userId);
+```
+
+
+Once added, you can run a NRQL query that uses the 'userid' custom attribute.
+
+```-- Get a count of errors experienced by a single filtered userid faceted by date and error message
+SELECT count(*) FROM TransactionError WHERE userid = '616e6472-6577-7340-7961-686f6f2e636f' FACET dateOf(timestamp), `error.message` SINCE 1 week ago
+```
+<a href="https://developer.newrelic.com/technology/nrql">Learn more about NRQL/a>
+
+Once you have added a custom attribute like 'userid', you can use it to filter and facet your NRQL queries. 
+
+<img src="https://developer.newrelic.com/content/dam/component-assets/developer/d09-screencap/UC2-sec1-query.png">
+
+</Intro>
+
+
+### Related Info
+
+For more information, see [New Relic APM: Report custom attributes](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/add-custom-attributes-new-relic-apm-data)
