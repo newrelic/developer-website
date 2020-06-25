@@ -36,7 +36,7 @@ const Navigation = ({ className, searchTerm, mobile }) => {
     : undefined;
 
   if (filteredPageNames?.length === 0) {
-    return <div className={styles.emptyResults}>No results found.</div>;
+    return <div className={styles.emptyResults}>No results found</div>;
   }
 
   return (
