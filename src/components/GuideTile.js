@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import FeatherIcon from './FeatherIcon';
-import NewRelicIcon from '../components/NewRelicIcon';
+import NewRelicIcon from './NewRelicIcon';
 import cx from 'classnames';
 import { navigate } from 'gatsby';
 import styles from './GuideTile.module.scss';
 
-const GuideTile = ({ icon, minutes, title, description, path, className }) => (
+const GuideTile = ({ icon, duration, title, description, path, className }) => (
   <div className={cx(styles.tile, className, { [styles.tileWithIcon]: icon })}>
     {icon && (
       <div className={styles.iconContainer}>
@@ -16,7 +16,7 @@ const GuideTile = ({ icon, minutes, title, description, path, className }) => (
 
     <div className={styles.timeEstimate}>
       <FeatherIcon className={styles.timeIcon} name="clock" />
-      {minutes} minutes
+      {duration}
     </div>
     <h2 className={styles.title}>{title}</h2>
     <p className={styles.description}>{description}</p>
@@ -31,7 +31,7 @@ const GuideTile = ({ icon, minutes, title, description, path, className }) => (
 );
 
 GuideTile.propTypes = {
-  minutes: PropTypes.number.isRequired,
+  duration: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,

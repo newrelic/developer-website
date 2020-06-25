@@ -4,4 +4,6 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-// You can delete this file if you're not using it
+import wrapPageElement from './gatsby/wrap-page-element';
+
+export { wrapPageElement };

@@ -28,15 +28,23 @@ const Footer = ({ className }) => {
       </div>
 
       <div className={styles.right}>
+        <Link to="/terms" className={styles.link}>
+          <FeatherIcon className={styles.linkIcon} name="pen" size="1rem" />
+          Terms of service
+        </Link>
         {fileRelativePath && (
           <ExternalLink
+            className={styles.link}
             href={`${githubBaseUrl}/blob/master/${fileRelativePath}`}
           >
             <FeatherIcon className={styles.linkIcon} name="edit" size="1rem" />
             Edit this page
           </ExternalLink>
         )}
-        <ExternalLink href={`${githubBaseUrl}/issues/new/choose`}>
+        <ExternalLink
+          href={`${githubBaseUrl}/issues/new/choose`}
+          className={styles.link}
+        >
           <FeatherIcon className={styles.linkIcon} name="github" size="1rem" />
           Create an issue
         </ExternalLink>
