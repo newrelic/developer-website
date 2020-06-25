@@ -77,21 +77,15 @@ const IndexPage = ({ data, pageContext }) => {
         <section className={styles.intro}>
           <div className={styles.introText}>
             <p>
-              Welcome to the New Relic developer site! Here, you’ll find the
-              tools and resources you need to build on and customize the
-              platform.
+              Whether you're new to New Relic or already a data nerd, you can
+              start building right now. For free.
             </p>
             <p>
-              You need custom data that improves performance. We have tools for
-              that! Learn how to collect data from any source and visualize it
-              the way you need. Build out solutions in your own custom apps, and
-              then automate them. From how-to guides to video tutorials,
-              community projects, and more - we’ve got you covered.
+              With our platform as your foundation, create custom observability
+              apps fast. Answer your unique questions, improve your software,
+              and deliver new value to your business.
             </p>
-            <p>
-              Best of all? This open source site is built for you — your
-              suggestions, feedback, and comments are just a Pull Request away.
-            </p>
+            <p>We're glad you are here. Let's start building.</p>
           </div>
           <Video
             className={styles.introVideo}
