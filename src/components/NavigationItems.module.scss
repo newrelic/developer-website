@@ -58,7 +58,8 @@ button.navLink {
 
 .currentPageIndicator {
   stroke-width: 4;
-  @media (min-width: 760px + 1) {
+
+  @media (max-width: 760px) {
     display: none;
   }
 }
@@ -67,6 +68,7 @@ button.navLink {
   margin-right: 0.5rem;
   stroke-width: 4;
   transition: 0.2s;
+
   &.isExpanded {
     transform: rotate(90deg);
   }
@@ -91,9 +93,11 @@ button.navLink {
   ul {
     display: block;
   }
+
   .nestedChevron {
     transform: rotate(90deg);
   }
+
   .groupName {
     margin-top: 0.5rem;
   }
