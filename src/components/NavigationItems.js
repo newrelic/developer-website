@@ -113,10 +113,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
     <li
       key={page.displayName}
       data-depth={depthLevel}
-      className={cx(
-        { [styles.isCurrentPage]: isCurrentPage },
-        { [styles.filterOn]: filteredPageNames }
-      )}
+      className={cx({ [styles.filterOn]: filteredPageNames })}
     >
       {page.url ? (
         <Link
