@@ -8,6 +8,17 @@ import { BreadcrumbContext } from './BreadcrumbContext';
 import styles from './NavigationItems.module.scss';
 import { link } from '../types';
 
+const iconLibrary = {
+  'Collect data': 'collectData',
+  'Build apps': 'buildApps',
+  'Automate workflows': 'automation',
+  'Explore docs': 'developerDocs',
+};
+
+const featherIconLibrary = {
+  'Developer champions': 'award',
+};
+
 const getHighlightedText = (text, highlight) => {
   const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
   return (
@@ -59,6 +70,28 @@ const NavigationItems = ({
   });
 };
 
+const NavIcon = ({ page }) => {
+  if (featherIconLibrary[page.displayName]) {
+    return (
+      <FeatherIcon
+        className={styles.headerIcon}
+        name={featherIconLibrary[page.displayName]}
+      />
+    );
+  }
+
+  if (iconLibrary[page.displayName]) {
+    return (
+      <NewRelicIcon
+        className={styles.headerIcon}
+        name={iconLibrary[page.displayName]}
+      />
+    );
+  }
+
+  return null;
+};
+
 const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
@@ -67,19 +100,8 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
     isHomePage || crumbs.includes(page.displayName)
   );
 
-  const iconLibrary = {
-    'Collect data': 'collectData',
-    'Build apps': 'buildApps',
-    'Automate workflows': 'automation',
-    'Explore docs': 'developerDocs',
-  };
   const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
-  const headerIcon = depthLevel === 0 && (
-    <NewRelicIcon
-      className={styles.headerIcon}
-      name={iconLibrary[page.displayName]}
-    />
-  );
+  const headerIcon = depthLevel === 0 && <NavIcon page={page} />;
   const display = filteredPageNames
     ? getHighlightedText(page.displayName, searchTerm)
     : page.displayName;
@@ -104,7 +126,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
           )}
           to={page.url}
         >
-          <span>
+          <span className={styles.navLinkText}>
             {headerIcon}
             {display}
           </span>
@@ -152,6 +174,12 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
       )}
     </li>
   );
+};
+
+NavIcon.propTypes = {
+  page: PropTypes.shape({
+    displayName: PropTypes.string.isRequired,
+  }),
 };
 
 NavigationItems.propTypes = {
