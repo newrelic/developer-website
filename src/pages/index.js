@@ -153,7 +153,7 @@ const IndexPage = ({ data, pageContext }) => {
         </p>
 
         <section className={cx(styles.section, styles.stripedSection)}>
-          <h1>New Relic Developer Champions</h1>
+          <h1>New Relic developer champions</h1>
           <p>
             New Relic Champions are solving big problems using New Relic as
             their linchpin and are recognized as experts and leaders in the New
