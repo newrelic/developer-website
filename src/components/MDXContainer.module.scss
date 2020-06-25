@@ -1,0 +1,43 @@
+.container {
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  code {
+    padding: 0.125rem;
+    background: var(--color-neutrals-200);
+    border-radius: 2px;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+  h1,
+  h2 {
+    font-weight: bold;
+
+    &:not(:first-child) {
+      margin-top: 2rem;
+    }
+  }
+
+  h3,
+  h4 {
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+
+  li {
+    margin-bottom: 1rem;
+  }
+
+  ul li ul {
+    margin-top: 1rem;
+    line-height: 1;
+  }
+
+  hr {
+    border: 0;
+    border-bottom: 1px solid var(--color-neutrals-100);
+  }
+}
