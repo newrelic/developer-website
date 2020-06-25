@@ -1,12 +1,11 @@
-const React = require('react');
-const BreadcrumbContext = require('../src/components/BreadcrumbContext')
-  .BreadcrumbContext;
-const PageContext = require('../src/components/PageContext').PageContext;
+import React from 'react';
+import { BreadcrumbContext } from '../src/components/BreadcrumbContext';
+import { PageContext } from '../src/components/PageContext';
 
-const createBreadcrumbs = require('../src/utils/create-breadcrumbs').default;
-const pages = require('../src/data/sidenav.json');
+import createBreadcrumbs from '../src/utils/create-breadcrumbs';
+import pages from '../src/data/sidenav.json';
 
-export default ({ element, props }) => {
+const wrapPageElement = ({ element, props }) => {
   const crumbs = createBreadcrumbs(props.path, pages);
 
   return (
@@ -17,3 +16,5 @@ export default ({ element, props }) => {
     </PageContext.Provider>
   );
 };
+
+export default wrapPageElement;

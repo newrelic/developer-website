@@ -4,6 +4,6 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-const wrapPageElement = require('./gatsby/wrap-page-element').default;
+import wrapPageElement from './gatsby/wrap-page-element';
 
-exports.wrapPageElement = wrapPageElement;
+export { wrapPageElement };
