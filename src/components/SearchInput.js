@@ -14,19 +14,22 @@ const SearchInput = ({ className, onClear, value, ...props }) => {
   };
   return (
     <div className={cx(styles.container, className)}>
-      <input value={value} {...props} className={styles.input} type="text" />
-      <span
+      <input
+        value={value}
+        {...props}
+        className={styles.input}
+        type="text"
+        onKeyDown={handleKeyDown}
+      />
+      <div
         role="button"
         tabIndex={0}
-        onKeyDown={handleKeyDown}
         onClick={handleClick}
         className={styles.clearButton}
+        onKeyDown={(e) => e.preventDefault()}
       >
-        <FeatherIcon
-          name={value !== '' ? 'x' : 'search'}
-          className={styles.icon}
-        />
-      </span>
+        <FeatherIcon name={value ? 'x' : 'search'} className={styles.icon} />
+      </div>
     </div>
   );
 };

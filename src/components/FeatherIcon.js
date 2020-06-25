@@ -18,7 +18,7 @@ const FeatherIcon = ({ className, name, size = '1em' }) => {
   ) : null;
 };
 
-// Icons from
+// Icons from https://feathericons.com/
 const ICONS = {
   'book-open': (
     <>
