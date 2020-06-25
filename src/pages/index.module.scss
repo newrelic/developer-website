@@ -39,6 +39,10 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4rem;
+
+  @media (max-width: 789px) {
+    flex-direction: column;
+  }
 }
 
 .guideListingHeading {
@@ -48,6 +52,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @media (max-width: 789px) {
+    margin-right: 0rem;
+  }
 }
 
 @media screen and (max-width: 980px) {
