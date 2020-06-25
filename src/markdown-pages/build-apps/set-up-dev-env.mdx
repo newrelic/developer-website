@@ -1,0 +1,91 @@
+---
+path: '/build-apps/set-up-dev-env'
+duration: '15-30 min'
+title: 'Set up your development environment'
+template: 'GuideTemplate'
+description: 'Prepare to build apps and contribute to this site'
+---
+
+<Intro>
+
+In progress.
+
+
+</Intro>
+
+## Before you begin
+This guide requires that you have the following:
+
+- A github account
+- New Relic developer account
+- API Key
+- New Relic One CLI downloaded
+
+<br/>
+
+<Steps>
+
+<Step>
+
+## This is a step with a title and description
+to be written
+</Step>
+
+<Step>
+
+This is a step with no title or code snippet, only description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel orci dignissim, egestas turpis non, ultricies erat. Nullam id magna molestie, volutpat ipsum vitae, bibendum ligula.
+</Step>
+
+<Step>
+
+## Set up and run the application locally
+Use the New Relic One CLI to update the application UUID and run the application locally. In the terminal,  change to the time picker directory.
+
+```shell lineNumbers=false
+cd /nr1-howto/add-time-picker
+```
+
+Once that is done, run the following:
+
+```shell lineNumbers=false
+npm start
+```
+</Step>
+
+<Step>
+
+## Make sure you're getting data from the right New Relic account
+In your preferred text editor, open the `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js` and then edit the following line to use your account ID (find your account ID in the Profile section of the Developer Center, where you downloaded the New Relic One CLI):
+
+```jsx
+this.accountId = <REPLACE ME WITH YOUR ACCOUNT ID>;
+```
+
+</Step>
+
+<Step>
+
+Update the UUID and serve the application by running the following:
+
+```shell lineNumbers=false
+nr1 nerdpack:uuid -gf
+nr1 nerdpack:serve
+```
+
+</Step>
+
+</Steps>
+
+### Next steps
+
+You'll get a URL to access New Relic One and see your application running locally: https://one.newrelic.com/?nerdpacks=local
+
+One the New Relic home page, there's a new launcher to the Add time picker application.
+
+Click the launcher, and the dashboard opens with your New Relic account transactions.
+
+
+### Related info
+
+- [New Relic documentation](https://docs.newrelic.com)
+- [Community page for how to add a time picker](https://discuss.newrelic.com/t/how-to-add-the-time-picker-to-nrql-queries/94268)
