@@ -7,13 +7,16 @@ import splitWhen from '../utils/splitWhen';
 import { isMdxType } from '../utils/mdx';
 
 const SideBySide = ({ className, children, type }) => {
+  const types = Array.isArray(type) ? type : [type];
   const childObjects = Children.toArray(children);
   const rendersRightColumn = childObjects.some((child) =>
-    isMdxType(child, type)
+    types.some((type) => isMdxType(child, type))
   );
   const sections = splitUsing(childObjects, (child) =>
-    isMdxType(child, type)
-  ).map((section) => splitWhen(section, (child) => isMdxType(child, type)));
+    types.some((type) => isMdxType(child, type))
+  ).map((section) =>
+    splitWhen(section, (child) => types.some((type) => isMdxType(child, type)))
+  );
 
   return (
     <div className={cx(className, styles.container)}>
@@ -31,7 +34,10 @@ const SideBySide = ({ className, children, type }) => {
 
 SideBySide.propTypes = {
   children: PropTypes.node.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]).isRequired,
   className: PropTypes.string,
 };
 

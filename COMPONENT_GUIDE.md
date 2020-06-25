@@ -165,7 +165,7 @@ return <div>Hello, {props.name}</div>;
 
 ## Code Snippet
 
-Code Snippets are automatically formatted by three backticks.
+Code Snippets are automatically formatted by three backticks. This is our preferred method to delineate code snippets, but it's worth noting that markdown will also consider any text that is indented 4 spaces (or 1 tab) to be a code block.
 
 ### Usage
 
@@ -188,3 +188,42 @@ There are three props that can be supplied to a code snippet.
   ```jsx copy=false
   ```
   ````
+
+## Callouts
+
+Callouts direct your attention to information of special importance or to information that doesn't fit smoothly into the main text.
+
+* Caution: Screams at you that this could cause a crash or cost you data loss beyond the task at hand.
+* Important: Urges awareness that this could impair the task at hand or cost you time if you ignore the text.
+* Tip: Whispers to you that this is nice to know, like a shortcut, best practice, or reminder. 
+
+### Usage
+
+```jsx
+<Caution> 
+
+Text with `markdown`.
+
+</Caution>
+
+<Important>
+
+Text with `markdown`.
+
+</Important>
+
+<Tip>
+
+Text with `markdown`.
+
+</Tip>
+```
+
+All callouts have default titles that can be overridden like this:
+
+```jsx
+<Caution title="A custom title">
+
+Text
+
+</Caution>```

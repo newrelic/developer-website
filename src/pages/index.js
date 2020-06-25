@@ -1,95 +1,166 @@
 import React from 'react';
+import cx from 'classnames';
 
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
-import Jumbotron from '../components/Jumbotron';
-import Container from '../components/Container';
-import Section from '../components/Section';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
+import PageTitle from '../components/PageTitle';
+import Section from '../components/Section';
+import Video from '../components/Video';
+import FeatherIcon from '../components/FeatherIcon';
+import ExternalLink from '../components/ExternalLink';
+import { PageContext } from '../components/PageContext';
+import { pageContext } from '../types';
 import styles from './index.module.scss';
 
-const guides = [
+const getStartedGuides = [
   {
     minutes: 5,
-    title: 'Full Stack Monitoring',
-    description: 'Get data into New Relic using your existing instrumentation.',
-    path: '',
+    title: 'Create custom events',
+    description:
+      'Define, visualize, and get alerts on the data you want using custom events',
+    path: '/collect-data/custom-events',
+    icon: 'collectData',
   },
   {
-    minutes: 10,
-    title: 'Customized Agents',
-    description:
-      'Extend the New Relic agents you already have with custom events and attributes.',
-    path: '',
+    minutes: 7,
+    title: 'Add tags to apps',
+    description: `Add tags to applications you instrument for easier filtering and organization`,
+    path: '/automate-workflows/add-tags-to-apps',
+    icon: 'automation',
   },
   {
-    minutes: 30,
-    title: 'Open Telemetry',
-    description:
-      'Learn to use the open standard for data collection with New Relic.',
-    path: 'guides/rest-api',
+    minutes: 12,
+    title: 'Build a Hello, World! app',
+    description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
+    path: '/build-apps/build-hello-world-app',
+    icon: 'buildApps',
   },
 ];
 
-const IndexPage = () => (
-  <Layout>
-    <SEO />
-    <Container>
-      <h1 className={styles.h1}>
-        New Relic is a platform for your observability data
-      </h1>
-      <div className={styles.intro}>
+const guides = [
+  {
+    minutes: 20,
+    title: 'Automate common tasks',
+    description:
+      'Use the New Relic CLI to tag applications and create deployment markers',
+    path: '/guides/get-started-new-relic-cli',
+  },
+  {
+    minutes: '15-30',
+    title: 'Map page views by region',
+    description: 'Build a New Relic app showing page view data on a world map',
+    path: '/build-apps/map-pageviews-by-region',
+  },
+  {
+    minutes: 25,
+    title: 'Provision with Terraform',
+    description: 'Provision an alert policy with notifications using Terraform',
+    path: '/',
+  },
+  {
+    minutes: 15,
+    title: ' Set up dev tools',
+    description: 'Get an API key, download the CLI, and start building apps',
+    path: '/build-apps/set-up-dev-env',
+  },
+  {
+    minutes: 30,
+    title: 'Add a table to your app',
+    description: 'Use New Relic One components to add a table to your app',
+    path: '/build-apps/howto-use-nrone-table-components',
+  },
+  {
+    minutes: 20,
+    title: 'Add a time picker',
+    description:
+      'Add the time picker to a sample app to specify a time range in data',
+    path: '/build-apps/add-time-picker-guide',
+  },
+];
+
+const IndexPage = ({ pageContext }) => (
+  <PageContext.Provider value={pageContext}>
+    <Layout>
+      <SEO />
+      <PageTitle>Observability for every developer</PageTitle>
+
+      <section className={styles.intro}>
         <div className={styles.introText}>
           <p>
-            <strong>Instrument</strong> your applications and{' '}
-            <strong>collect</strong> data about their performance.
+            Welcome to the New Relic developer site! Here, you’ll find the tools
+            and resources you need to build on and customize the platform.
           </p>
-
           <p>
-            <strong>Query</strong> and <strong>explore</strong> the data on
-            demand with APIs.
+            You need custom data that improves performance. We have tools for
+            that! Learn how to collect data from any source and visualize it the
+            way you need. Build out solutions in your own custom apps, and then
+            automate them. From how-to guides to video tutorials, community
+            projects, and more - we’ve got you covered.
           </p>
-
           <p>
-            <strong>Create</strong>, <strong>remix</strong>, and{' '}
-            <strong>deploy</strong> new apps on top of this data.
+            Best of all? This open source site is built for you — your
+            suggestions, feedback, and comments are just a Pull Request away.
           </p>
-
-          <p>
-            <strong>Share</strong> those apps with your company and the world.
-          </p>
-
-          <p>
-            <strong>Automate</strong> the entire process with robust DevOps
-            tools.
-          </p>
-          <div className={styles.introButtonContainer}>
-            <button type="button">Create a free account</button>
-            <button type="button" className="secondary">
-              Solve a business problem
-            </button>
-          </div>
         </div>
-        <div className={styles.introVideo} />
-      </div>
-    </Container>
-    <Section backgroundBanner className={styles.backgroundBanner}>
-      <Jumbotron />
-    </Section>
-    <div className={styles.line} />
+        <Video
+          className={styles.introVideo}
+          id="ZagZfNQYJEU"
+          type="youtube"
+          title="Develop with New Relic"
+        />
+      </section>
 
-    <GuideListing className={styles.guideListing}>
-      <GuideListing.Heading className={styles.guideListingHeading}>
-        Solve a problem with one of our guides
-      </GuideListing.Heading>
-      <GuideListing.List>
-        {guides.map((guide, index) => (
-          <GuideTile className={styles.guideTile} key={index} {...guide} />
-        ))}
-      </GuideListing.List>
-    </GuideListing>
-  </Layout>
+      <Section backgroundBanner>
+        <GuideListing className={styles.guideListing}>
+          <header className={styles.guideListingHeader}>
+            <GuideListing.Heading className={cx(styles.guideListingHeading)}>
+              Get started
+            </GuideListing.Heading>
+            <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
+              <button type="button">Create an account</button>
+            </ExternalLink>
+          </header>
+          <GuideListing.List>
+            {getStartedGuides.map((guide, index) => (
+              <GuideTile key={index} {...guide} />
+            ))}
+          </GuideListing.List>
+        </GuideListing>
+      </Section>
+
+      <GuideListing className={styles.guideListing}>
+        <GuideListing.Heading className={styles.guideListingHeading}>
+          Extend the platform
+        </GuideListing.Heading>
+        <GuideListing.List>
+          {guides.map((guide, index) => (
+            <GuideTile key={index} {...guide} />
+          ))}
+        </GuideListing.List>
+      </GuideListing>
+
+      <p className={styles.inspiration}>
+        Looking for inspiration? Check out the{' '}
+        <ExternalLink
+          className={styles.externalLink}
+          href="https://opensource.newrelic.com"
+        >
+          open source projects
+          <FeatherIcon
+            className={styles.externalLinkIcon}
+            name="external-link"
+          />
+        </ExternalLink>{' '}
+        built by the New Relic community.
+      </p>
+    </Layout>
+  </PageContext.Provider>
 );
+
+IndexPage.propTypes = {
+  pageContext,
+};
 
 export default IndexPage;

@@ -1,365 +1,471 @@
 [
   {
-    "displayName": "Guides",
-    "url": "/guides",
+    "displayName": "Collect data",
     "children": [
       {
-        "displayName": "Example",
-        "url": "/guides/example"
+        "displayName": "Log with the Log API",
+        "url": "/noop"
+      },
+      {
+        "displayName": "OpenTelemetry exporter",
+        "url": "/noop"
+      },
+      {
+        "displayName": "Extend New Relic agents",
+        "url": "/noop"
+      },
+      {
+        "displayName": "Create a Flex integration",
+        "url": "/noop"
+      },
+      {
+        "displayName": "Add a custom New Relic event",
+        "url": "/noop"
+      },
+      {
+        "displayName": "Write NRQL queries",
+        "url": "/noop"
+      },
+      {
+        "displayName": "Build a NerdGraph query",
+        "url": "/noop"
       }
     ]
   },
   {
-    "displayName": "UI Components",
+    "displayName": "Build apps",
     "children": [
       {
-        "displayName": "Text Components",
-        "children": [
-          {
-            "displayName": "BlockText",
-            "url": "/components/block-text"
-          },
-          {
-            "displayName": "HeadingText",
-            "url": "/components/heading-text"
-          },
-          {
-            "displayName": "Link",
-            "url": "/components/link"
-          }
-        ]
+        "displayName": "Map pageviews by region",
+        "url": "/build-apps/map-pageviews-by-region"
       },
       {
-        "displayName": "Layout Components",
-        "children": [
-          {
-            "displayName": "AutoSizer",
-            "url": "/components/auto-sizer"
-          },
-          {
-            "displayName": "Card",
-            "url": "/components/card"
-          },
-          {
-            "displayName": "CardBody",
-            "url": "/components/card-body"
-          },
-          {
-            "displayName": "CardHeader",
-            "url": "/components/card-header"
-          },
-          {
-            "displayName": "Grid",
-            "url": "/components/grid"
-          },
-          {
-            "displayName": "GridItem",
-            "url": "/components/grid-item"
-          },
-          {
-            "displayName": "List",
-            "url": "/components/list"
-          },
-          {
-            "displayName": "ListItem",
-            "url": "/components/list-item"
-          },
-          {
-            "displayName": "Spacing",
-            "url": "/components/spacing"
-          },
-          {
-            "displayName": "Stack",
-            "url": "/components/stack"
-          },
-          {
-            "displayName": "StackItem",
-            "url": "/components/stack-item"
-          },
-          {
-            "displayName": "Tabs",
-            "url": "/components/tabs"
-          },
-          {
-            "displayName": "TabsItem",
-            "url": "/components/tabs-item"
-          }
-        ]
+        "displayName": "Add a time picker",
+        "url": "/build-apps/add-time-picker-guide"
       },
       {
-        "displayName": "Form Components",
+        "displayName": "Use NerdGraph in an app",
+        "url": "/build-apps/use-nerdgraph-in-app"
+      },
+      {
+        "displayName": "Build a table",
+        "url": "/build-apps/build-a-table"
+      },
+      {
+        "displayName": "Persistent storage for apps",
+        "url": "/build-apps/persistent-storage-for-apps"
+      }
+    ]
+  },
+  {
+    "displayName": "Automate workflows",
+    "children": [
+      {
+        "displayName": "Monitor, alert, and analyze",
+        "url": "/automate-workflows/"
+      },
+      {
+        "displayName": "OpenTelemetry exporter",
+        "url": "/automate-workflows/"
+      }
+    ]
+  },
+  {
+    "displayName": "Explore docs",
+    "children": [
+      {
+        "displayName": "CLI"
+      },
+      {
+        "displayName": "GraphQL"
+      },
+      {
+        "displayName": "Nerdpacks"
+      },
+      {
+        "displayName": "Component library",
         "children": [
           {
             "displayName": "AccountPicker",
-            "url": "/components/account-picker"
+            "url": "/components/account-picker",
+            "group": "Controls"
           },
           {
             "displayName": "Button",
-            "url": "/components/button"
+            "url": "/components/button",
+            "group": "Controls"
           },
           {
             "displayName": "Checkbox",
-            "url": "/components/checkbox"
+            "url": "/components/checkbox",
+            "group": "Controls"
           },
           {
             "displayName": "Dropdown",
-            "url": "/components/dropdown"
+            "url": "/components/dropdown",
+            "group": "Controls"
           },
           {
             "displayName": "DropdownItem",
-            "url": "/components/dropdown-item"
+            "url": "/components/dropdown-item",
+            "group": "Controls"
           },
           {
             "displayName": "Radio",
-            "url": "/components/radio"
+            "url": "/components/radio",
+            "group": "Controls"
           },
           {
             "displayName": "RadioGroup",
-            "url": "/components/radio-group"
+            "url": "/components/radio-group",
+            "group": "Controls"
           },
           {
             "displayName": "Select",
-            "url": "/components/select"
+            "url": "/components/select",
+            "group": "Controls"
           },
           {
             "displayName": "SelectItem",
-            "url": "/components/select-item"
+            "url": "/components/select-item",
+            "group": "Controls"
           },
           {
             "displayName": "TextField",
-            "url": "/components/text-field"
-          }
-        ]
-      },
-      {
-        "displayName": "Table",
-        "children": [
+            "url": "/components/text-field",
+            "group": "Controls"
+          },
           {
             "displayName": "Table",
-            "url": "/components/table"
+            "url": "/components/table",
+            "group": "Tables"
           },
           {
             "displayName": "TableHeader",
-            "url": "/components/table-header"
+            "url": "/components/table-header",
+            "group": "Tables"
           },
           {
             "displayName": "TableHeaderCell",
-            "url": "/components/table-header-cell"
+            "url": "/components/table-header-cell",
+            "group": "Tables"
           },
           {
             "displayName": "TableRow",
-            "url": "/components/table-row"
+            "url": "/components/table-row",
+            "group": "Tables"
           },
           {
             "displayName": "TableRowCell",
-            "url": "/components/table-row-cell"
+            "url": "/components/table-row-cell",
+            "group": "Tables"
           },
           {
             "displayName": "EntityTitleTableRowCell",
-            "url": "/components/entity-title-table-row-cell"
+            "url": "/components/entity-title-table-row-cell",
+            "group": "Tables"
           },
           {
             "displayName": "MetricTableRowCell",
-            "url": "/components/metric-table-row-cell"
+            "url": "/components/metric-table-row-cell",
+            "group": "Tables"
           },
           {
             "displayName": "SparklineTableRowCell",
-            "url": "/components/sparkline-table-row-cell"
+            "url": "/components/sparkline-table-row-cell",
+            "group": "Tables"
           },
           {
             "displayName": "UserTableRowCell",
-            "url": "/components/user-table-row-cell"
-          }
-        ]
-      },
-      {
-        "displayName": "Feedback Components",
-        "children": [
+            "url": "/components/user-table-row-cell",
+            "group": "Tables"
+          },
           {
             "displayName": "Icon",
-            "url": "/components/icon"
+            "url": "/components/icon",
+            "group": "Feedback"
           },
           {
             "displayName": "Spinner",
-            "url": "/components/spinner"
+            "url": "/components/spinner",
+            "group": "Feedback"
           },
           {
             "displayName": "Toast",
-            "url": "/components/toast"
-          }
-        ]
-      },
-      {
-        "displayName": "Overlaid Components",
-        "children": [
+            "url": "/components/toast",
+            "group": "Feedback"
+          },
           {
             "displayName": "Modal",
-            "url": "/components/modal"
+            "url": "/components/modal",
+            "group": "Overlays"
           },
           {
             "displayName": "Tooltip",
-            "url": "/components/tooltip"
+            "url": "/components/tooltip",
+            "group": "Overlays"
+          },
+          {
+            "displayName": "AutoSizer",
+            "url": "/components/auto-sizer",
+            "group": "Structure"
+          },
+          {
+            "displayName": "Card",
+            "url": "/components/card",
+            "group": "Structure"
+          },
+          {
+            "displayName": "CardBody",
+            "url": "/components/card-body",
+            "group": "Structure"
+          },
+          {
+            "displayName": "CardHeader",
+            "url": "/components/card-header",
+            "group": "Structure"
+          },
+          {
+            "displayName": "Grid",
+            "url": "/components/grid",
+            "group": "Structure"
+          },
+          {
+            "displayName": "GridItem",
+            "url": "/components/grid-item",
+            "group": "Structure"
+          },
+          {
+            "displayName": "List",
+            "url": "/components/list",
+            "group": "Structure"
+          },
+          {
+            "displayName": "ListItem",
+            "url": "/components/list-item",
+            "group": "Structure"
+          },
+          {
+            "displayName": "Spacing",
+            "url": "/components/spacing",
+            "group": "Structure"
+          },
+          {
+            "displayName": "Stack",
+            "url": "/components/stack",
+            "group": "Structure"
+          },
+          {
+            "displayName": "StackItem",
+            "url": "/components/stack-item",
+            "group": "Structure"
+          },
+          {
+            "displayName": "Tabs",
+            "url": "/components/tabs",
+            "group": "Structure"
+          },
+          {
+            "displayName": "TabsItem",
+            "url": "/components/tabs-item",
+            "group": "Structure"
+          },
+          {
+            "displayName": "BlockText",
+            "url": "/components/block-text",
+            "group": "Text"
+          },
+          {
+            "displayName": "HeadingText",
+            "url": "/components/heading-text",
+            "group": "Text"
+          },
+          {
+            "displayName": "Link",
+            "url": "/components/link",
+            "group": "Text"
+          },
+          {
+            "displayName": "AreaChart",
+            "url": "/components/area-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "BarChart",
+            "url": "/components/bar-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "BillboardChart",
+            "url": "/components/billboard-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "ChartGroup",
+            "url": "/components/chart-group",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "FunnelChart",
+            "url": "/components/funnel-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "HeatmapChart",
+            "url": "/components/heatmap-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "HistogramChart",
+            "url": "/components/histogram-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "JsonChart",
+            "url": "/components/json-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "LineChart",
+            "url": "/components/line-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "PieChart",
+            "url": "/components/pie-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "ScatterChart",
+            "url": "/components/scatter-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "SparklineChart",
+            "url": "/components/sparkline-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "StackedBarChart",
+            "url": "/components/stacked-bar-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "TableChart",
+            "url": "/components/table-chart",
+            "group": "Data visualization"
+          },
+          {
+            "displayName": "AccountStorageMutation",
+            "url": "/components/account-storage-mutation",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "AccountStorageQuery",
+            "url": "/components/account-storage-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "AccountsQuery",
+            "url": "/components/accounts-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "EntitiesByDomainTypeQuery",
+            "url": "/components/entities-by-domain-type-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "EntitiesByGuidsQuery",
+            "url": "/components/entities-by-guids-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "EntitiesByNameQuery",
+            "url": "/components/entities-by-name-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "EntityByGuidQuery",
+            "url": "/components/entity-by-guid-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "EntityCountQuery",
+            "url": "/components/entity-count-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "EntitySearchQuery",
+            "url": "/components/entity-search-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "EntityStorageMutation",
+            "url": "/components/entity-storage-mutation",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "EntityStorageQuery",
+            "url": "/components/entity-storage-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "NerdGraphMutation",
+            "url": "/components/nerd-graph-mutation",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "NerdGraphQuery",
+            "url": "/components/nerd-graph-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "NrqlQuery",
+            "url": "/components/nrql-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "UserQuery",
+            "url": "/components/user-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "UserStorageMutation",
+            "url": "/components/user-storage-mutation",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "UserStorageQuery",
+            "url": "/components/user-storage-query",
+            "group": "Query and storage"
+          },
+          {
+            "displayName": "NerdletStateContext",
+            "url": "/components/nerdlet-state-context",
+            "group": "Platform APIs"
+          },
+          {
+            "displayName": "PlatformStateContext",
+            "url": "/components/platform-state-context",
+            "group": "Platform APIs"
+          },
+          {
+            "displayName": "logger",
+            "url": "/apis/logger",
+            "group": "Platform APIs"
+          },
+          {
+            "displayName": "navigation",
+            "url": "/apis/navigation",
+            "group": "Platform APIs"
+          },
+          {
+            "displayName": "nerdlet",
+            "url": "/apis/nerdlet",
+            "group": "Platform APIs"
           }
         ]
-      }
-    ]
-  },
-  {
-    "displayName": "Charts",
-    "children": [
-      {
-        "displayName": "AreaChart",
-        "url": "/components/area-chart"
-      },
-      {
-        "displayName": "BarChart",
-        "url": "/components/bar-chart"
-      },
-      {
-        "displayName": "BillboardChart",
-        "url": "/components/billboard-chart"
-      },
-      {
-        "displayName": "ChartGroup",
-        "url": "/components/chart-group"
-      },
-      {
-        "displayName": "FunnelChart",
-        "url": "/components/funnel-chart"
-      },
-      {
-        "displayName": "HeatmapChart",
-        "url": "/components/heatmap-chart"
-      },
-      {
-        "displayName": "HistogramChart",
-        "url": "/components/histogram-chart"
-      },
-      {
-        "displayName": "JsonChart",
-        "url": "/components/json-chart"
-      },
-      {
-        "displayName": "LineChart",
-        "url": "/components/line-chart"
-      },
-      {
-        "displayName": "PieChart",
-        "url": "/components/pie-chart"
-      },
-      {
-        "displayName": "ScatterChart",
-        "url": "/components/scatter-chart"
-      },
-      {
-        "displayName": "SparklineChart",
-        "url": "/components/sparkline-chart"
-      },
-      {
-        "displayName": "StackedBarChart",
-        "url": "/components/stacked-bar-chart"
-      },
-      {
-        "displayName": "TableChart",
-        "url": "/components/table-chart"
-      }
-    ]
-  },
-  {
-    "displayName": "Query and storage",
-    "children": [
-      {
-        "displayName": "AccountStorageMutation",
-        "url": "/components/account-storage-mutation"
-      },
-      {
-        "displayName": "AccountStorageQuery",
-        "url": "/components/account-storage-query"
-      },
-      {
-        "displayName": "AccountsQuery",
-        "url": "/components/accounts-query"
-      },
-      {
-        "displayName": "EntitiesByDomainTypeQuery",
-        "url": "/components/entities-by-domain-type-query"
-      },
-      {
-        "displayName": "EntitiesByGuidsQuery",
-        "url": "/components/entities-by-guids-query"
-      },
-      {
-        "displayName": "EntitiesByNameQuery",
-        "url": "/components/entities-by-name-query"
-      },
-      {
-        "displayName": "EntityByGuidQuery",
-        "url": "/components/entity-by-guid-query"
-      },
-      {
-        "displayName": "EntityCountQuery",
-        "url": "/components/entity-count-query"
-      },
-      {
-        "displayName": "EntitySearchQuery",
-        "url": "/components/entity-search-query"
-      },
-      {
-        "displayName": "EntityStorageMutation",
-        "url": "/components/entity-storage-mutation"
-      },
-      {
-        "displayName": "EntityStorageQuery",
-        "url": "/components/entity-storage-query"
-      },
-      {
-        "displayName": "NerdGraphMutation",
-        "url": "/components/nerd-graph-mutation"
-      },
-      {
-        "displayName": "NerdGraphQuery",
-        "url": "/components/nerd-graph-query"
-      },
-      {
-        "displayName": "NrqlQuery",
-        "url": "/components/nrql-query"
-      },
-      {
-        "displayName": "UserQuery",
-        "url": "/components/user-query"
-      },
-      {
-        "displayName": "UserStorageMutation",
-        "url": "/components/user-storage-mutation"
-      },
-      {
-        "displayName": "UserStorageQuery",
-        "url": "/components/user-storage-query"
-      }
-    ]
-  },
-  {
-    "displayName": "Platform APIs",
-    "children": [
-      {
-        "displayName": "NerdletStateContext",
-        "url": "/components/nerdlet-state-context"
-      },
-      {
-        "displayName": "PlatformStateContext",
-        "url": "/components/platform-state-context"
-      },
-      {
-        "displayName": "logger",
-        "url": "/apis/logger"
-      },
-      {
-        "displayName": "navigation",
-        "url": "/apis/navigation"
-      },
-      {
-        "displayName": "nerdlet",
-        "url": "/apis/nerdlet"
       }
     ]
   }

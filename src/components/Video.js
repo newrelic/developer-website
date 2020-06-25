@@ -1,30 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import styles from './Video.module.scss';
 
-const Video = ({ id, type, title }) => {
-  const src = {
-    youtube: `//www.youtube.com/embed/${id}?modestbranding=1`,
-    wistia: `//fast.wistia.net/embed/iframe/${id}`,
-  };
-  return (
-    <div className={styles.video}>
-      <iframe
-        src={src[type]}
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        title={title}
-        frameBorder="0"
-        allowFullScreen
-      />
-    </div>
-  );
+const videoPlatforms = {
+  youtube: (id) => `//www.youtube.com/embed/${id}?modestbranding=1`,
+  wistia: (id) => `//fast.wistia.net/embed/iframe/${id}`,
 };
+
+const Video = ({ id, type, title, className }) => (
+  <div className={cx(className, styles.video)}>
+    <iframe
+      src={videoPlatforms[type](id)}
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      title={title}
+      frameBorder="0"
+      allowFullScreen
+    />
+  </div>
+);
 
 Video.propTypes = {
   id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(Object.keys(videoPlatforms)).isRequired,
   title: PropTypes.string,
+  className: PropTypes.string,
 };
 
 Video.defaultProps = {

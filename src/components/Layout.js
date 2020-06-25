@@ -1,26 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import Footer from './Footer';
-import Header from './Header';
+import GlobalHeader from './GlobalHeader';
+import MobileHeader from './MobileHeader';
+import Sidebar from './Sidebar';
 import styles from './Layout.module.scss';
+import 'normalize.css';
 import './styles.scss';
 
-const pages = [
-  { displayName: 'Collect data', url: '/collect-data' },
-  { displayName: 'Explore data', url: '/explore-data' },
-  { displayName: 'Build apps', url: '/build-apps' },
-  { displayName: 'Automate workflows', url: '/automate-workflows' },
-  { displayName: 'Developer docs', url: '/docs' },
-];
+const Layout = ({ children }) => {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
-const Layout = ({ children }) => (
-  <div className={styles.layout}>
-    <Header pages={pages} />
-    <main>{children}</main>
-    <Footer pages={pages} />
-  </div>
-);
+  return (
+    <div className={styles.layout}>
+      <GlobalHeader />
+      <MobileHeader
+        className={styles.hideOnDesktop}
+        isOpen={isMobileNavOpen}
+        toggle={() => setIsMobileNavOpen(!isMobileNavOpen)}
+      />
+      <div className={cx(styles.main, 'site-container')}>
+        <Sidebar className={cx(styles.sidebar, styles.hideOnMobile)} />
+        <div />
+        <div
+          className={cx(styles.contentContainer, {
+            [styles.hideOnMobile]: isMobileNavOpen,
+          })}
+        >
+          <main className={styles.content}>{children}</main>
+          <Footer className={styles.footer} />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

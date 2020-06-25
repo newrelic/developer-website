@@ -1,19 +1,52 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
-import Container from './Container';
+import cx from 'classnames';
+import ExternalLink from './ExternalLink';
+import { PageContext } from './PageContext';
+import { githubBaseUrl } from '../data/constants';
 import styles from './Footer.module.scss';
+import FeatherIcon from './FeatherIcon';
+import Logo from './Logo';
+import PropTypes from 'prop-types';
 
-const Footer = () => (
-  <footer className={styles.footer}>
-    <Container className={styles.container}>
-      <div className={styles.leftColumn}>
-        <Link to="/" className={`${styles.logo} logo`} />
+const Footer = ({ className }) => {
+  const { fileRelativePath } = useContext(PageContext);
+
+  return (
+    <footer className={cx(styles.footer, className)}>
+      <div className={styles.left}>
+        <Link to="/">
+          <Logo
+            className={styles.logo}
+            textColor="currentColor"
+            bracketColor="currentColor"
+          />
+        </Link>
         <div className={styles.copyright}>
           Copyright &copy; 2020 New Relic Inc.
         </div>
       </div>
-    </Container>
-  </footer>
-);
+
+      <div className={styles.right}>
+        {fileRelativePath && (
+          <ExternalLink
+            href={`${githubBaseUrl}/blob/master/${fileRelativePath}`}
+          >
+            <FeatherIcon className={styles.linkIcon} name="edit" size="1rem" />
+            Edit this page
+          </ExternalLink>
+        )}
+        <ExternalLink href={`${githubBaseUrl}/issues/new/choose`}>
+          <FeatherIcon className={styles.linkIcon} name="github" size="1rem" />
+          Create an issue
+        </ExternalLink>
+      </div>
+    </footer>
+  );
+};
+
+Footer.propTypes = {
+  className: PropTypes.string,
+};
 
 export default Footer;
