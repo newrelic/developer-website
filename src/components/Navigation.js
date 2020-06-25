@@ -25,7 +25,7 @@ const filterPageNames = (pages, searchTerm, parent = []) => {
   ].filter((el) => el !== undefined);
 };
 
-const Navigation = ({ className, searchTerm, mobile }) => {
+const Navigation = ({ className, searchTerm }) => {
   const searchTermSanitized = searchTerm?.replace(
     /[.*+?^${}()|[\]\\]/g,
     '\\$&'
@@ -50,7 +50,6 @@ const Navigation = ({ className, searchTerm, mobile }) => {
           searchTerm={searchTermSanitized}
           pages={pages}
           filteredPageNames={filteredPageNames}
-          mobile={mobile}
         />
       </ul>
     </nav>

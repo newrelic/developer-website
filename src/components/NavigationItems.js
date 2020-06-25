@@ -24,7 +24,6 @@ const NavigationItems = ({
   filteredPageNames,
   searchTerm,
   depthLevel = 0,
-  mobile,
 }) => {
   const groupedPages = pages.reduce((groups, page) => {
     const { group = '' } = page;
@@ -53,7 +52,6 @@ const NavigationItems = ({
             searchTerm={searchTerm}
             filteredPageNames={filteredPageNames}
             key={index}
-            mobile={mobile}
           />
         ))}
       </Fragment>
@@ -61,13 +59,7 @@ const NavigationItems = ({
   });
 };
 
-const NavItem = ({
-  page,
-  depthLevel,
-  searchTerm,
-  filteredPageNames,
-  mobile,
-}) => {
+const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
 
@@ -116,7 +108,7 @@ const NavItem = ({
             {headerIcon}
             {display}
           </span>
-          {!mobile && isCurrentPage && (
+          {isCurrentPage && (
             <FeatherIcon
               className={styles.currentPageIndicator}
               name="chevron-right"
@@ -131,7 +123,7 @@ const NavItem = ({
           onKeyPress={() => setIsExpanded(!isExpanded)}
           tabIndex={0}
         >
-          {!mobile && depthLevel > 0 && (
+          {depthLevel > 0 && (
             <FeatherIcon
               className={cx(
                 { [styles.isExpanded]: isExpanded },
@@ -155,7 +147,6 @@ const NavItem = ({
             filteredPageNames={filteredPageNames}
             depthLevel={depthLevel + 1}
             searchTerm={searchTerm}
-            mobile={mobile}
           />
         </ul>
       )}
@@ -168,7 +159,6 @@ NavigationItems.propTypes = {
   filteredPageNames: PropTypes.array,
   searchTerm: PropTypes.string,
   depthLevel: PropTypes.number,
-  mobile: PropTypes.bool,
 };
 
 NavItem.propTypes = {
@@ -176,7 +166,6 @@ NavItem.propTypes = {
   filteredPageNames: PropTypes.array,
   searchTerm: PropTypes.string,
   depthLevel: PropTypes.number.isRequired,
-  mobile: PropTypes.bool,
 };
 
 export default NavigationItems;

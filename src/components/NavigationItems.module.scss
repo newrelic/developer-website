@@ -53,6 +53,9 @@ button.navLink {
 
 .currentPageIndicator {
   stroke-width: 4;
+  @media (min-width: 760px + 1) {
+    display: none;
+  }
 }
 
 .nestedChevron {

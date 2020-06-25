@@ -33,11 +33,7 @@ const MobileHeader = ({ className, isOpen, toggle }) => {
             onChange={(e) => setSearchTerm(e.target.value)}
             value={searchTerm}
           />
-          <Navigation
-            mobile
-            searchTerm={searchTerm}
-            className={styles.navigation}
-          />
+          <Navigation searchTerm={searchTerm} className={styles.navigation} />
         </>
       )}
     </header>
