@@ -59,7 +59,6 @@ const Navigation = ({ className, searchTerm }) => {
 Navigation.propTypes = {
   className: PropTypes.string,
   searchTerm: PropTypes.string,
-  mobile: PropTypes.bool,
 };
 
 export default Navigation;
