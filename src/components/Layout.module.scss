@@ -21,6 +21,7 @@
 .contentContainer {
   display: flex;
   flex-direction: column;
+  margin: 2rem;
 }
 
 .sidebar {
@@ -34,7 +35,6 @@
 
 .content {
   flex: 1;
-  margin: 2rem;
 }
 
 .footer {
