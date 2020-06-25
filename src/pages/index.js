@@ -8,7 +8,6 @@ import SEO from '../components/Seo';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
 import PageTitle from '../components/PageTitle';
-import Section from '../components/Section';
 import Video from '../components/Video';
 import FeatherIcon from '../components/FeatherIcon';
 import ExternalLink from '../components/ExternalLink';
@@ -77,21 +76,15 @@ const IndexPage = ({ data, pageContext }) => {
         <section className={styles.intro}>
           <div className={styles.introText}>
             <p>
-              Welcome to the New Relic developer site! Here, you’ll find the
-              tools and resources you need to build on and customize the
-              platform.
+              Whether you're new to New Relic or already a data nerd, you can
+              start building right now. For free.
             </p>
             <p>
-              You need custom data that improves performance. We have tools for
-              that! Learn how to collect data from any source and visualize it
-              the way you need. Build out solutions in your own custom apps, and
-              then automate them. From how-to guides to video tutorials,
-              community projects, and more - we’ve got you covered.
+              With our platform as your foundation, create custom observability
+              apps fast. Answer your unique questions, improve your software,
+              and deliver new value to your business.
             </p>
-            <p>
-              Best of all? This open source site is built for you — your
-              suggestions, feedback, and comments are just a Pull Request away.
-            </p>
+            <p>We're glad you are here. Let's start building.</p>
           </div>
           <Video
             className={styles.introVideo}
@@ -101,7 +94,7 @@ const IndexPage = ({ data, pageContext }) => {
           />
         </section>
 
-        <Section backgroundBanner>
+        <section className={cx(styles.section, styles.stripedSection)}>
           <GuideListing className={styles.guideListing}>
             <header className={styles.guideListingHeader}>
               <GuideListing.Heading className={cx(styles.guideListingHeading)}>
@@ -117,9 +110,9 @@ const IndexPage = ({ data, pageContext }) => {
               ))}
             </GuideListing.List>
           </GuideListing>
-        </Section>
+        </section>
 
-        <GuideListing className={styles.guideListing}>
+        <GuideListing className={styles.section}>
           <GuideListing.Heading className={styles.guideListingHeading}>
             Get inspired
           </GuideListing.Heading>
@@ -152,6 +145,24 @@ const IndexPage = ({ data, pageContext }) => {
           </ExternalLink>{' '}
           built by the New Relic community.
         </p>
+
+        <section className={cx(styles.section, styles.stripedSection)}>
+          <h1>New Relic developer champions</h1>
+          <p>
+            New Relic Champions are solving big problems using New Relic as
+            their linchpin and are recognized as experts and leaders in the New
+            Relic technical community.
+          </p>
+          <ExternalLink href="https://forms.gle/Zkdub5e1x4MNqSKW9">
+            <button type="button">
+              Nominate a Developer Champion
+              <FeatherIcon
+                className={styles.externalLinkIcon}
+                name="external-link"
+              />
+            </button>
+          </ExternalLink>
+        </section>
       </Layout>
     </PageContext.Provider>
   );

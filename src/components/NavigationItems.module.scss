@@ -51,6 +51,11 @@ button.navLink {
   }
 }
 
+.navLinkText {
+  display: flex;
+  align-items: center;
+}
+
 .currentPageIndicator {
   stroke-width: 4;
   @media (min-width: 760px + 1) {

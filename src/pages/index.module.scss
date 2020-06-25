@@ -31,7 +31,7 @@
 }
 
 .guideListing {
-  margin-top: 6rem;
+  margin-top: 0;
 }
 
 .guideListingHeader {
@@ -68,4 +68,13 @@
 
 .externalLinkIcon {
   margin-left: 0.25rem;
+}
+
+.section {
+  margin-top: 4rem;
+}
+
+.stripedSection {
+  padding: 2rem;
+  background: var(--color-neutrals-100);
 }
