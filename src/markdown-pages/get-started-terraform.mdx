@@ -20,21 +20,31 @@ To use this guide, you should have some basic knowledge of both New Relic and Te
 
 * If you haven't deployed a New Relic agent yet, [install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application. 
 * [Install Terraform CLI](https://www.terraform.io/intro/getting-started/install.html).
+* Locate your [New Relic Personal API key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key).
 * Locate your [New Relic Admin API key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#admin).
-* Set your Admin API key with the `NEWRELIC_API_KEY` environment variable. 
+* Locate the [account ID](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id) you'd like to create the alert configuration in.
+* Locate your New Relic [region](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers#verifying-account).  Your region is `US` if your account settings page is located at `rpm.newrelic.com`, and `EU` if your account is located at `rpm.eu.newrelic.com`.
+* Set your Personal API key with the `NEW_RELIC_API_KEY` environment variable.  Most Personal API keys begin with the prefix `NRAK-`.
+* Set your Admin API key with the `NEW_RELIC_ADMIN_API_KEY` environment variable. Most Admin API keys begin with the prefix `NRAA-`.
+
+* Set your New Relic account ID with the `NEW_RELIC_ACCOUNT_ID` environment variable.
+* Set your New Relic region with the `NEW_RELIC_REGION` environment variable.
 
 </Intro>
 <Steps>
 <Step>
 
-## Add your API key as an environment variable
+## Bootstrap your provider configuration with environment variables
 
-New Relic's Terraform Provider detects the `NEWRELIC_API_KEY` environment variable when running Terraform commands. You can set `NEWRELIC_API_KEY` environment variable in your `.bash_profile` or `.bashrc` file.
+New Relic's Terraform Provider detects the environment variables above when running Terraform commands. You can set the environment variables in your `.bash_profile` or `.bashrc` file.
 ```bash lineNumbers=false
 # Add this to your .bash_profile
-export NEWRELIC_API_KEY=abc123
+export NEW_RELIC_API_KEY=NRAK-...
+export NEW_RELIC_ADMIN_API_KEY=NRAA-...
+export NEW_RELIC_ACCOUNT_ID=12345
+export NEW_RELIC_REGION=US
 # Or set it inline when running `terraform plan` or `terraform apply`:
-$ NEWRELIC_API_KEY=abc123 terraform apply
+$ NEW_RELIC_API_KEY=NRAK-... terraform apply
 ```
 </Step>
 <Step>
@@ -84,8 +94,10 @@ To store your application's information, you need to add a [data source](https:/
 provider "newrelic" {}
 
 # Data Source
-data "newrelic_application" "app_name" {
-  name = "my-app" # This must be an exact match of your app name in New Relic (case sensitive)
+data "newrelic_entity" "app_name" {
+  name    = "my-app" # This must be an exact match of your app name in New Relic (case sensitive)
+  domain  = "APM"
+  type    = "APPLICATION"
 }
 
 resource "newrelic_alert_policy" "alert_policy_name" {
@@ -102,8 +114,10 @@ Now you can add the alert condition. For example, you can create a `critical` al
 ```hcl lineNumbers=false
 provider "newrelic" {}
 
-data "newrelic_application" "app_name" {
-  name = "my-app"
+data "newrelic_entity" "app_name" {
+  name    = "my-app"
+  domain  = "APM"
+  type    = "APPLICATION"
 }
 
 resource "newrelic_alert_policy" "alert_policy_name" {
@@ -116,7 +130,7 @@ resource "newrelic_alert_condition" "alert_condition_name" {
 
   name            = "My Alert Condition Name"
   type            = "apm_app_metric"
-  entities        = [data.newrelic_application.app_name.id]
+  entities        = [data.newrelic_entity.app_name.application_id]
   metric          = "apdex"
   runbook_url     = "https://www.example.com"
   condition_scope = "application"
