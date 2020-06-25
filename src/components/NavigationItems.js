@@ -24,6 +24,7 @@ const NavigationItems = ({
   filteredPageNames,
   searchTerm,
   depthLevel = 0,
+  mobile,
 }) => {
   const groupedPages = pages.reduce((groups, page) => {
     const { group = '' } = page;
@@ -52,6 +53,7 @@ const NavigationItems = ({
             searchTerm={searchTerm}
             filteredPageNames={filteredPageNames}
             key={index}
+            mobile={mobile}
           />
         ))}
       </Fragment>
@@ -59,7 +61,13 @@ const NavigationItems = ({
   });
 };
 
-const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
+const NavItem = ({
+  page,
+  depthLevel,
+  searchTerm,
+  filteredPageNames,
+  mobile,
+}) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
 
@@ -108,7 +116,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
             {headerIcon}
             {display}
           </span>
-          {isCurrentPage && (
+          {!mobile && isCurrentPage && (
             <FeatherIcon
               className={styles.currentPageIndicator}
               name="chevron-right"
@@ -123,7 +131,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
           onKeyPress={() => setIsExpanded(!isExpanded)}
           tabIndex={0}
         >
-          {depthLevel > 0 && (
+          {!mobile && depthLevel > 0 && (
             <FeatherIcon
               className={cx(
                 { [styles.isExpanded]: isExpanded },
@@ -147,6 +155,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
             filteredPageNames={filteredPageNames}
             depthLevel={depthLevel + 1}
             searchTerm={searchTerm}
+            mobile={mobile}
           />
         </ul>
       )}
@@ -159,6 +168,7 @@ NavigationItems.propTypes = {
   filteredPageNames: PropTypes.array,
   searchTerm: PropTypes.string,
   depthLevel: PropTypes.number,
+  mobile: PropTypes.bool,
 };
 
 NavItem.propTypes = {
@@ -166,6 +176,7 @@ NavItem.propTypes = {
   filteredPageNames: PropTypes.array,
   searchTerm: PropTypes.string,
   depthLevel: PropTypes.number.isRequired,
+  mobile: PropTypes.bool,
 };
 
 export default NavigationItems;

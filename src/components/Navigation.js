@@ -22,10 +22,10 @@ const filterPageNames = (pages, searchTerm, parent = []) => {
         }
       })
     ),
-  ];
+  ].filter((el) => el !== undefined);
 };
 
-const Navigation = ({ className, searchTerm }) => {
+const Navigation = ({ className, searchTerm, mobile }) => {
   const searchTermSanitized = searchTerm?.replace(
     /[.*+?^${}()|[\]\\]/g,
     '\\$&'
@@ -34,6 +34,10 @@ const Navigation = ({ className, searchTerm }) => {
   const filteredPageNames = searchTerm
     ? filterPageNames(pages, searchTermSanitized)
     : undefined;
+
+  if (filteredPageNames?.length === 0) {
+    return <div className={styles.emptyResults}>No results found.</div>;
+  }
 
   return (
     <nav
@@ -46,6 +50,7 @@ const Navigation = ({ className, searchTerm }) => {
           searchTerm={searchTermSanitized}
           pages={pages}
           filteredPageNames={filteredPageNames}
+          mobile={mobile}
         />
       </ul>
     </nav>
@@ -55,6 +60,7 @@ const Navigation = ({ className, searchTerm }) => {
 Navigation.propTypes = {
   className: PropTypes.string,
   searchTerm: PropTypes.string,
+  mobile: PropTypes.bool,
 };
 
 export default Navigation;
