@@ -71,5 +71,32 @@ module.exports = {
     },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-meta-redirect',
+    {
+      resolve: 'gatsby-plugin-newrelic',
+      options: {
+        configs: {
+          production: {
+            instrumentationType: 'proAndSPA',
+            accountId: '10175106',
+            trustKey: '1',
+            agentID: '22273498',
+            licenseKey: '23448da482',
+            applicationID: '22273498',
+            beacon: 'staging-bam.nr-data.net',
+            errorBeacon: 'staging-bam.nr-data.net',
+          },
+          staging: {
+            instrumentationType: 'proAndSPA',
+            accountId: '10175106',
+            trustKey: '1',
+            agentID: '22273531',
+            licenseKey: '23448da482',
+            applicationID: '22273531',
+            beacon: 'staging-bam.nr-data.net',
+            errorBeacon: 'staging-bam.nr-data.net',
+          },
+        },
+      },
+    },
   ],
 };

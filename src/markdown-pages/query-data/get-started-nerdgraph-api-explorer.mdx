@@ -8,12 +8,6 @@ description: 'Learn to explore NerdGraph, our GraphQL API, and build the queries
 
 <Intro>
 
-This guide shows you how to use NerdGraph, our GraphQL API, to compose queries, and how to turn them into cURL or New Relic CLI snippets.
-
-</Intro>
-
-## What is the NerdGraph API Explorer 
-
 NerdGraph is New Relic's [GraphQL](https://graphql.org/) API. With NerdGraph, you can get all the information you need in a single request. No matter how much data you pull into New Relic, our GraphQL API can help you navigate that complexity and gain more insight.
 
 NerdGraph is different from REST APIs in that you don't need to chain together several calls to obtain the required data. Instead, you use the Graph query language to retrieve JSON objects from our graph, which is spread across our many microservices.
@@ -95,9 +89,6 @@ Ready for your first mutation?
 In this case, you're trying to add a custom tag to an entity. Notice that the editor complains if you don't select `errors`: mutations must have a way of telling you how the operation performed in the backend (failed requests result in null responses).
 
 > Unlike REST, GraphQL APIs like NerdGraph can return partial responses. For example, if you try adding tags to multiple entities, some mutations can fail and others succeed; all is logged in the GraphQL response you get.
-
-</Step>
-<Step>
 
 ## Try your NerdGraph query in the terminal
 

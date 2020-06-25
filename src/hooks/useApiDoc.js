@@ -20,6 +20,8 @@ const useApiDoc = (name) => {
 
   return useMemo(() => {
     if (window.__NR1_SDK__ == null) {
+      const err = new Error('NR1_SDK not found');
+      window.NREUM && window.NREUM.noticeError(err);
       return null;
     }
 
@@ -33,6 +35,8 @@ const useApiDoc = (name) => {
     }
 
     if (!api) {
+      const err = new Error('NR1_SDK API not found');
+      window.NREUM && window.NREUM.noticeError(err, { apiName: name });
       return null;
     }
 

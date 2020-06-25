@@ -274,10 +274,15 @@ The value that is assigned to the key slug is used in order to navigate to your 
 - `title`: the title of the page
 - `template`: the Gatsby template used
 - `description`: the description of the page
+- `promoteToHomepage` (optional): adds the guide as a tile to the homepage, making it
+  easier for users to discover
+- `callout` (optional): config for the callout tile. Accepts 2 options:
+  - `title`: provide a title for the callout. Typically used to shorten the
+    title. The callout will fallback to the guide title if this is not provided.
+  - `description`: provide a description for the callout. The callout will
+    fallback to the guide description if this is not provided.
 
 ### GuideTemplate Frontmatter example
-
-Be aware that all Frontmatter slugs are `required`.
 
 ```md
 ---
@@ -285,7 +290,11 @@ path: '/build-apps/add-time-picker-guide'
 duration: '20 min'
 title: 'Add the time picker to a sample application'
 template: 'GuideTemplate'
-description: 'Example guide page'
+description: 'Learn how to add a time picker to a sample application'
+promoteToHomepage: true
+callout:
+  title: Add a time picker
+  description: Add the time picker to a sample app to specify a time range in data
 ---
 ```
 
