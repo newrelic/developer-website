@@ -105,6 +105,14 @@ const ICONS = {
       <polyline points="16 16 12 12 8 16" />
     </>
   ),
+
+  x: (
+    <>
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </>
+  ),
+
   award: (
     <>
       <circle cx="12" cy="8" r="7" />

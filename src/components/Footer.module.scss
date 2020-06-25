@@ -26,6 +26,10 @@
 
 .logo {
   width: 200px;
+
+  &:hover {
+    color: var(--color-neutrals-700);
+  }
 }
 
 .copyright {
@@ -56,4 +60,10 @@
 
 .linkIcon {
   margin-right: 0.5rem;
+}
+
+.link {
+  &:hover {
+    color: var(--color-neutrals-700);
+  }
 }

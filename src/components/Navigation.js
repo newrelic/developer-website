@@ -22,7 +22,7 @@ const filterPageNames = (pages, searchTerm, parent = []) => {
         }
       })
     ),
-  ];
+  ].filter((el) => el !== undefined);
 };
 
 const Navigation = ({ className, searchTerm }) => {
@@ -34,6 +34,10 @@ const Navigation = ({ className, searchTerm }) => {
   const filteredPageNames = searchTerm
     ? filterPageNames(pages, searchTermSanitized)
     : undefined;
+
+  if (filteredPageNames?.length === 0) {
+    return <div className={styles.emptyResults}>No results found</div>;
+  }
 
   return (
     <nav
