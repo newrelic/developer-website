@@ -1,6 +1,8 @@
 .sidebar {
   padding: 2rem;
   border-right: 1px solid var(--color-neutrals-100);
+  position: absolute;
+  top: 0;
 
   @media screen and (max-width: 760px) {
     height: 60px;
