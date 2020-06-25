@@ -4,10 +4,13 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
-// This is needed to ensure the NR1 SDK can load properly
 const React = require('react');
 const { JS_BUNDLE } = require('./src/utils/sdk');
+const wrapPageElement = require('./gatsby/wrap-page-element').default;
 
+exports.wrapPageElement = wrapPageElement;
+
+// This is needed to ensure the NR1 SDK can load properly
 exports.onPreRenderHTML = ({
   getHeadComponents,
   replaceHeadComponents,
