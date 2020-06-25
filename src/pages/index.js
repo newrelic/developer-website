@@ -181,4 +181,8 @@ export const pageQuery = graphql`
   }
 `;
 
+IndexPage.propTypes = {
+  pageContext,
+};
+
 export default IndexPage;
