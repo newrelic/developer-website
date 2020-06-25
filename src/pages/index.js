@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { graphql } from 'gatsby';
@@ -66,6 +66,9 @@ const IndexPage = ({ data, pageContext }) => {
   const {
     allMdx: { nodes },
   } = data;
+  const promotedGuides = nodes.filter((node, i) => i < 6);
+  const [guides, setGuides] = useState(promotedGuides);
+  const guidesMinusPromoted = nodes.length - 6;
 
   return (
     <PageContext.Provider value={pageContext}>
@@ -117,7 +120,7 @@ const IndexPage = ({ data, pageContext }) => {
             Get inspired
           </GuideListing.Heading>
           <GuideListing.List>
-            {nodes.map(({ frontmatter }, index) => (
+            {guides.map(({ frontmatter }, index) => (
               <GuideTile
                 key={index}
                 duration={frontmatter.duration}
@@ -126,10 +129,22 @@ const IndexPage = ({ data, pageContext }) => {
                   frontmatter.callout?.description || frontmatter.description
                 }
                 path={frontmatter.path}
+                button={false}
               />
             ))}
           </GuideListing.List>
         </GuideListing>
+        {guides.length === 6 && (
+          <div className={styles.buttonContainer}>
+            <button
+              className={styles.expandGuides}
+              type="button"
+              onClick={() => setGuides(nodes)}
+            >
+              {`Show ${guidesMinusPromoted} more guides`}
+            </button>
+          </div>
+        )}
 
         <p className={styles.inspiration}>
           Looking for more inspiration? Check out the{' '}
@@ -175,13 +190,22 @@ IndexPage.propTypes = {
 
 export const pageQuery = graphql`
   query {
-    allMdx(filter: { frontmatter: { promoteToHomepage: { eq: true } } }) {
+    allMdx(
+      filter: {
+        frontmatter: {
+          template: { eq: "GuideTemplate" }
+          ignoreGuide: { ne: true }
+        }
+      }
+      sort: { fields: [frontmatter___promoteToHomepage, frontmatter___title] }
+    ) {
       nodes {
         frontmatter {
           title
           description
           duration
           path
+          ignoreGuide
           callout {
             title
             description
