@@ -6,9 +6,6 @@
 }
 
 .icon {
-  position: absolute;
-  right: 0.5rem;
-  bottom: 0.5rem;
   stroke: var(--color-neutrals-700);
 }
 
@@ -17,4 +14,17 @@
   font-size: 0.875rem;
   padding: 0.5rem;
   padding-right: calc(1rem + 1em);
+}
+
+.button[type='button'] {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0.25rem;
+}
+
+.buttonContainer {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.25rem;
 }

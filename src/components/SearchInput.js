@@ -21,14 +21,15 @@ const SearchInput = ({ className, onClear, value, ...props }) => {
         type="text"
         onKeyDown={handleKeyDown}
       />
-      <div
-        role="button"
-        tabIndex={0}
-        onClick={handleClick}
-        className={styles.clearButton}
-        onKeyDown={(e) => e.preventDefault()}
-      >
-        <FeatherIcon name={value ? 'x' : 'search'} className={styles.icon} />
+      <div className={styles.buttonContainer}>
+        <button
+          onClick={handleClick}
+          className={styles.button}
+          onKeyDown={(e) => e.preventDefault()}
+          type="button"
+        >
+          <FeatherIcon name={value ? 'x' : 'search'} className={styles.icon} />
+        </button>
       </div>
     </div>
   );
