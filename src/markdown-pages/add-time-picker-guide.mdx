@@ -18,35 +18,23 @@ We also have a 12 minute video that covers the steps below.
 
 ## Before you begin
 
-Here's what you need to get started:
+To develop projects, you need our New Relic One CLI (command line interface). 
 
-* GitHub account
-* [New Relic](https://newrelic.com/signup/) account
-* New Relic One CLI (command line interface)
-* New Relic API key
-* New Relic account ID
+If you haven't already installed it, do the following:
 
-The New Relic One CLI is a tool that sets up your environment with your API key and account ID. You'll use the CLI to perform various tasks for serving up and publishing your new applications.
+* Go to our [installation wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) and complete steps 1–4.
+* Make a copy of your account ID in Step 1 because you’ll need it later (it's the number before the account name).
 
-We have a CLI wizard that simplifies the installation and helps you select your API key and account ID.
+<Important>
 
-  <Important>
-  
- If you already installed the New Relic One CLI but can't remember your account ID, you can re-run the wizard and find it under **Get your API key**. 
+  If you already installed the New Relic One CLI, but you can't remember your account ID, you can re-run the wizard just to get your account ID.
 
-  </Important> 
+</Important>
 
-For the purposes of this exercise, you only need to complete the following in the wizard:
-
-1. Log into the [installation wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) using your New Relic credentials.
-2. In step **1. Get your API key**, select the record with your account name.
-3. You'll need your account ID later, so save the number preceding your account name.
-4. Complete steps 2–4 of the wizard (you can skip steps 5 and 6 because they are covered below).
-5. Close the browser tab for the wizard.  
 
 ## Prepare the time picker sample code
 
-After you install the CLI, complete these steps to update the application UUID and run the sample application locally:
+To get started, complete these steps to update the [application UUID (unique ID)](https://developer.newrelic.com/build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions) and run the sample application locally:
 
 <Steps>
 
@@ -54,11 +42,25 @@ After you install the CLI, complete these steps to update the application UUID a
 
 If you haven't already done so, clone the example applications from our [how-to GitHub repo](https://github.com/newrelic/nr1-how-to).
 
+  ```bash
+  git clone https://github.com/newrelic/nr1-how-to.git
+  ```
+
   </Step>
 
   <Step>
 
-In your preferred text editor, open `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js`.
+  Change to the directory `nr1-howto-add-time-picker-nerdlet`:
+
+  ```bash
+  cd nr1-how-to/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet
+  ```
+
+  </Step>
+
+  <Step>
+
+In your preferred text editor, open `index.js`.
 
   </Step>
 
@@ -68,11 +70,11 @@ Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
 <Important>
   
-  This is the value from the CLI wizard step **1. Get your API key**.
+  Your account ID is available in the CLI wizard (see **Before you begin**).
   
 </Important>
 
-  ```js
+  ```jsx
   this.accountId = <ADD YOUR ACCOUNT ID>;
   ```
 
@@ -80,7 +82,7 @@ Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
   <Step>
     
-  In your terminal, change to the `add-time-picker` directory:
+  Change to the `add-time-picker` directory:
 
   ```
   cd /nr1-howto/add-time-picker
@@ -101,21 +103,15 @@ Execute these commands to update the UUID and serve the sample application:
 
   <Step>
 
-Once the sample application is successfully served, go to the local New Relic One homepage: https://one.newrelic.com/?nerdpacks=local
+Once the sample application is successfully served, go to the local New Relic One homepage: https://one.newrelic.com/?nerdpacks=local and click **Add Time Picker**:
 
-  </Step>
-
-  <Step>
-
-Click **Add Time Picker**:
+![New Relic One launcher image](../images/time-picker-guide/homepage-launcher.png)
 
   <Important> 
   
 If you don't see any launchers, click **Your applications**.
 
   </Important>
-
-![New Relic One launcher image](../images/time-picker-guide/homepage-launcher.png)
 
   </Step>
 
@@ -159,7 +155,7 @@ In a text editor, open `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerd
 
 Add the `PlatformStateContext` component to the end of the import statement so it looks like this:
 
-  ```js
+  ```jsx
   import {
     Grid,
     GridItem,
@@ -177,7 +173,7 @@ Add the `PlatformStateContext` component to the end of the import statement so i
 
 Just below the current `return` insert this code for the `PlatformStateContext` component:
 
-  ```js
+  ```jsx
   <PlatformStateContext.Consumer>
       {(platformState) => {
   return (
@@ -193,7 +189,7 @@ Just below the current `return` insert this code for the `PlatformStateContext` 
 
 Move the current application code so it is under the `return` of the `PlatformState` function call. The `return` statement should now look like this:
 
-  ```js
+  ```jsx
   return (
       <PlatformStateContext.Consumer>
           {(PlatformState) => {
@@ -249,7 +245,7 @@ Move the current application code so it is under the `return` of the `PlatformSt
 
 Add a `console.log` statement to make sure you are seeing appropriate data. Insert the following code inside the `PlatformState` return statement just before the opening tag for the `<Grid>` component:
 
-  ```js
+  ```jsx
   /* Taking a peek at the PlatformState */
   console.log(PlatformState);
   ```
@@ -288,7 +284,7 @@ You don't need to include the `AccountDropdown` from the community import exampl
 
 </Important> 
 
-  ```js
+  ```jsx
   import { timeRangeToNrql } from '@newrelic/nr1-community';
   ```
 
@@ -298,7 +294,7 @@ You don't need to include the `AccountDropdown` from the community import exampl
 
 Pass the `PlatformState` to the `timeRangeToNrql` helper, and save its output as a `since` statement for later use:
 
-  ```js
+  ```jsx
   const since = timeRangeToNrql(PlatformState);
   ```
 
@@ -308,7 +304,7 @@ Pass the `PlatformState` to the `timeRangeToNrql` helper, and save its output as
 
 After creating the `since` variable, go through the code in the `PlatformStateContext` return statement and concatenate the `since` variable in each of the existing chart component queries. Here's a `TableChart` example:
 
-  ```js
+  ```jsx
   <TableChart fullWidth accountId={this.accountId} query={trxOverview+since} />
   ```
 
@@ -325,7 +321,7 @@ This completed sample code is in your `nerdlet final.js`.
 </Important>
 
 
-  ```js
+  ```jsx
   import React from 'react';
   import {
     PlatformStateContext,
