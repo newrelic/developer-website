@@ -186,22 +186,22 @@ To get this process working, you need to update the code in `_removeFromNerdStor
 
 ```
 _removeFromNerdStorage(index, data){
-        const { storage } = this.state;
-        storage.pop(data);
+    const { storage } = this.state;
+    storage.pop(data);
 
-        this.setState({storage}, () => {
-            UserStorageMutation.mutate({
-                actionType: UserStorageMutation.ACTION_TYPE.WRITE_DOCUMENT,
-                collection: this.collectionId,
-                documentId: this.documentId,
-                document: { storage },
-            })
-            .then((res) => {
-                Toast.showToast({ title: "NerdStorage Update.", type: Toast.TYPE.NORMAL });
-            })
-            .catch((err) => console.log(err));
-        });
-    }
+    this.setState({storage}, () => {
+        UserStorageMutation.mutate({
+            actionType: UserStorageMutation.ACTION_TYPE.WRITE_DOCUMENT,
+            collection: this.collectionId,
+            documentId: this.documentId,
+            document: { storage },
+        })
+        .then((res) => {
+            Toast.showToast({ title: "NerdStorage Update.", type: Toast.TYPE.NORMAL });
+        })
+        .catch((err) => console.log(err));
+    });
+}
 ```
 
 Once this is done, clicking the trash button will remove the item it's associated with, and the app will update to show the change. 
