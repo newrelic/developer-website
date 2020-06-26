@@ -31,7 +31,7 @@
 }
 
 .guideListing {
-  margin-top: 6rem;
+  margin-top: 0;
 }
 
 .guideListingHeader {
@@ -39,6 +39,10 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4rem;
+
+  @media (max-width: 789px) {
+    flex-direction: column;
+  }
 }
 
 .guideListingHeading {
@@ -48,6 +52,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @media (max-width: 789px) {
+    margin-right: 0rem;
+  }
 }
 
 @media screen and (max-width: 980px) {
@@ -68,4 +76,14 @@
 
 .externalLinkIcon {
   margin-left: 0.25rem;
+}
+
+.section {
+  margin-top: 4rem;
+}
+
+.stripedSection {
+  padding: 2rem;
+  background: var(--color-neutrals-100);
+  border-radius: 4px;
 }

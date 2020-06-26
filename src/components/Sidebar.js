@@ -18,6 +18,7 @@ const Sidebar = ({ className }) => {
       <SearchInput
         className={styles.searchInput}
         placeholder="Search developer docs"
+        onClear={() => setSearchTerm('')}
         onChange={(e) => setSearchTerm(e.target.value)}
         value={searchTerm}
       />

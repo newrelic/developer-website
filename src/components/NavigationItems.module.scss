@@ -51,14 +51,24 @@ button.navLink {
   }
 }
 
+.navLinkText {
+  display: flex;
+  align-items: center;
+}
+
 .currentPageIndicator {
   stroke-width: 4;
+
+  @media (max-width: 760px) {
+    display: none;
+  }
 }
 
 .nestedChevron {
   margin-right: 0.5rem;
   stroke-width: 4;
   transition: 0.2s;
+
   &.isExpanded {
     transform: rotate(90deg);
   }
@@ -83,9 +93,11 @@ button.navLink {
   ul {
     display: block;
   }
+
   .nestedChevron {
     transform: rotate(90deg);
   }
+
   .groupName {
     margin-top: 0.5rem;
   }

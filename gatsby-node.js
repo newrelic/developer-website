@@ -48,6 +48,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: path.resolve(`src/templates/${frontmatter.template}.js`),
       context: {
         fileRelativePath: getFileRelativePath(node.fileAbsolutePath),
+        guidesFilter:
+          frontmatter.template === 'OverviewTemplate'
+            ? `${frontmatter.path}/*`
+            : undefined,
       },
     });
   });
