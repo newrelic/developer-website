@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
-    "@mdx-js/mdx": "^1.6.4",
+    "@mdx-js/mdx": "^1.6.5",
     "@mdx-js/react": "^1.6.4",
     "classnames": "^2.2.6",
     "date-fns": "^2.14.0",
