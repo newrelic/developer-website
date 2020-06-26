@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import { Link } from 'gatsby';
 import SEO from '../components/Seo';
 import SkewedContainer from '../components/SkewedContainer';
@@ -18,11 +19,13 @@ const NotFoundPage = ({ pageContext }) => (
           <h1 className={styles.header}>404</h1>
           <p>
             This page does not exist. Check the URL and try again, or{' '}
-            <Link to="/">go home</Link>.
+            <Link to="/">go back to the home page</Link>.
           </p>
         </SkewedContainer>
       </div>
-      <Footer />
+      <div className={styles.footerContainer}>
+        <Footer className={cx(styles.footer, 'site-container')} />
+      </div>
     </div>
   </PageContext.Provider>
 );

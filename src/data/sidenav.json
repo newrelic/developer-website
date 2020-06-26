@@ -4,63 +4,24 @@
     "url": "/collect-data",
     "children": [
       {
-        "displayName": "Log with the Log API",
-        "url": "/"
+        "displayName": "Collect data from any source",
+        "url": "/collect-data/collect-data-from-any-source"
       },
       {
-        "displayName": "OpenTelemetry exporter",
-        "url": "/"
+        "displayName": "Create custom attributes",
+        "url": "/collect-data/custom-attributes"
       },
       {
-        "displayName": "Extend New Relic agents",
-        "url": "/"
+        "displayName": "Create custom New Relic events",
+        "url": "/collect-data/custom-events"
       },
       {
-        "displayName": "Create a Flex integration",
-        "url": "/"
-      }
-    ]
-  },
-  {
-    "displayName": "Explore data",
-    "url": "/explore-data",
-    "children": [
-      {
-        "displayName": "Write NRQL queries",
-        "url": "/"
+        "displayName": "Query data with NRQL",
+        "url": "/collect-data/query-data-nrql"
       },
       {
-        "displayName": "Build a NerdGraph query",
-        "url": "/"
-      }
-    ]
-  },
-  {
-    "displayName": "Build apps",
-    "children": [
-      {
-        "displayName": "Map pageviews by region",
-        "url": "/build-apps/map-pageviews-by-region"
-      },
-      {
-        "displayName": "Optimize cloud usage",
-        "url": "/build-apps/optimize-cloud-usage"
-      },
-      {
-        "displayName": "Add a time picker",
-        "url": "/build-apps/add-time-picker-guide"
-      },
-      {
-        "displayName": "Use NerdGraph in an app",
-        "url": "/build-apps/use-nerdgraph-in-app"
-      },
-      {
-        "displayName": "Build a table",
-        "url": "/build-apps/build-a-table"
-      },
-      {
-        "displayName": "Persistent storage for apps",
-        "url": "/build-apps/persistent-storage-for-apps"
+        "displayName": "Explore NerdGraph using the API Explorer",
+        "url": "/collect-data/get-started-nerdgraph-api-explorer"
       }
     ]
   },
@@ -69,26 +30,76 @@
     "url": "/automate-workflows",
     "children": [
       {
-        "displayName": "Monitor, alert, and analyze",
-        "url": "/automate-workflows/"
+        "displayName": "Orchestrate observability workflows",
+        "url": "/automate-workflows/workflow-automation"
       },
       {
-        "displayName": "OpenTelemetry exporter",
-        "url": "/automate-workflows/"
+        "displayName": "Tag a set of resources efficiently",
+        "url": "/automate-workflows/5-mins-tag-resources"
+      },
+      {
+        "displayName": "Get started with the New Relic CLI",
+        "url": "/automate-workflows/get-started-new-relic-cli"
+      },
+      {
+        "displayName": "Set up New Relic using Terraform",
+        "url": "/automate-workflows/get-started-terraform"
       }
     ]
   },
   {
-    "displayName": "Developer docs",
+    "displayName": "Build apps",
+    "url": "/build-apps",
     "children": [
       {
-        "displayName": "CLI"
+        "displayName": "Create a 'Hello, World!' app",
+        "url": "/build-apps/build-hello-world-app"
       },
       {
-        "displayName": "GraphQL"
+        "displayName": "Publish and deploy your app",
+        "url": "/build-apps/publish-deploy"
       },
       {
-        "displayName": "Nerdpacks"
+        "displayName": "Map pageviews by region",
+        "url": "/build-apps/map-pageviews-by-region"
+      },
+      {
+        "displayName": "Add a time picker",
+        "url": "/build-apps/add-time-picker-guide"
+      },
+      {
+        "displayName": "Add the NerdGraphQuery component to an app",
+        "url": "/build-apps/add-nerdgraphquery-guide"
+      },
+      {
+        "displayName": "Add tables to your New Relic One application",
+        "url": "/build-apps/howto-use-nrone-table-components"
+      }
+    ]
+  },
+  {
+    "displayName": "Explore docs",
+    "url": "/explore-docs",
+    "children": [
+      {
+        "displayName": "New Relic One CLI",
+        "url": "/reference/nr1-cli"
+      },
+      {
+        "displayName": "Nerdpack file structure",
+        "url": "/reference/nerdpack-file-structure"
+      },
+      {
+        "displayName": "Intro to New Relic One API components",
+        "url": "/reference/intro-to-sdk"
+      },
+      {
+        "displayName": "Intro to Nerdstorage",
+        "url": "/reference/nerdstorage"
+      },
+      {
+        "displayName": "Query and store data",
+        "url": "/reference/query-and-store-data"
       },
       {
         "displayName": "Component library",
@@ -476,5 +487,9 @@
         ]
       }
     ]
+  },
+  {
+    "displayName": "Developer champions",
+    "url": "/developer-champion"
   }
 ]

@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
@@ -6,6 +9,7 @@ import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile';
 import PageTitle from '../components/PageTitle';
 import Video from '../components/Video';
+import FeatherIcon from '../components/FeatherIcon';
 import ExternalLink from '../components/ExternalLink';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
@@ -13,110 +17,180 @@ import styles from './index.module.scss';
 
 const getStartedGuides = [
   {
-    minutes: 5,
-    title: 'Collect data from any source',
-    description: `Learn how to ingest data from various sources. Whether you want to ingest data “out of the box,” or bring custom data into New Relic that isn't collected by default.`,
-    path: '',
+    duration: '5 min',
+    title: 'Create custom events',
+    description:
+      'Define, visualize, and get alerts on the data you want using custom events',
+    path: '/collect-data/custom-events',
+    icon: 'collectData',
   },
   {
-    minutes: 5,
-    title: 'Instrument your data',
-    description: `Use custom instrumentation to automatically produce complete information, without needing to modify your application code. Manage your environment through Observability as Code.`,
-    path: '',
+    duration: '7 min',
+    title: 'Add tags to apps',
+    description: `Add tags to applications you instrument for easier filtering and organization`,
+    path: '/automate-workflows/add-tags-to-apps',
+    icon: 'automation',
   },
   {
-    minutes: 5,
-    title: 'Customize your data',
-    description: `Build and customize on the programmable platform by learning how to customize existing apps, enhance open source projects, or build your own application to solve your specific problem.`,
-    path: '',
+    duration: '12 min',
+    title: 'Build a Hello, World! app',
+    description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
+    path: '/build-apps/build-hello-world-app',
+    icon: 'buildApps',
   },
 ];
 
-const guides = [
-  {
-    minutes: 5,
-    title: 'Create a Flex Integration',
-    description: 'Get data into New Relic using your existing instrumentation.',
-    path: '',
-  },
-  {
-    minutes: 10,
-    title: 'Customized Agents',
-    description:
-      'Extend the New Relic agents you already have with custom events and attributes.',
-    path: '',
-  },
-  {
-    minutes: 30,
-    title: 'Open Telemetry',
-    description:
-      'Learn to use the open standard for data collection with New Relic.',
-    path: 'guides/rest-api',
-  },
-];
+// TODO: Remove the following after the guides have been created
+// const guides = [
+//   {
+//     minutes: 25,
+//     title: 'Provision with Terraform',
+//     description: 'Provision an alert policy with notifications using Terraform',
+//     path: '/',
+//   },
+//   {
+//     minutes: 15,
+//     title: ' Set up dev tools',
+//     description: 'Get an API key, download the CLI, and start building apps',
+//     path: '/build-apps/set-up-dev-env',
+//   },
+//   {
+//     minutes: 30,
+//     title: 'Add a table to your app',
+//     description: 'Use New Relic One components to add a table to your app',
+//     path: '/build-apps/howto-use-nrone-table-components',
+//   },
+// ];
 
-const IndexPage = ({ pageContext }) => (
-  <PageContext.Provider value={pageContext}>
-    <Layout>
-      <SEO />
-      <PageTitle>Observability for every developer</PageTitle>
+const IndexPage = ({ data, pageContext }) => {
+  const {
+    allMdx: { nodes },
+  } = data;
 
-      <section className={styles.intro}>
-        <div className={styles.introText}>
+  return (
+    <PageContext.Provider value={pageContext}>
+      <Layout>
+        <SEO />
+        <PageTitle>Observability for every developer</PageTitle>
+
+        <section className={styles.intro}>
+          <div className={styles.introText}>
+            <p>
+              Whether you're new to New Relic or already a data nerd, you can
+              start building right now. For free.
+            </p>
+            <p>
+              With our platform as your foundation, create custom observability
+              apps fast. Answer your unique questions, improve your software,
+              and deliver new value to your business.
+            </p>
+            <p>We're glad you are here. Let's start building.</p>
+          </div>
+          <Video
+            className={styles.introVideo}
+            id="ZagZfNQYJEU"
+            type="youtube"
+            title="Develop with New Relic"
+          />
+        </section>
+
+        <section className={cx(styles.section, styles.stripedSection)}>
+          <GuideListing className={styles.guideListing}>
+            <header className={styles.guideListingHeader}>
+              <GuideListing.Heading className={cx(styles.guideListingHeading)}>
+                Get coding
+              </GuideListing.Heading>
+              <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
+                <button type="button">Create an account</button>
+              </ExternalLink>
+            </header>
+            <GuideListing.List>
+              {getStartedGuides.map((guide, index) => (
+                <GuideTile key={index} {...guide} />
+              ))}
+            </GuideListing.List>
+          </GuideListing>
+        </section>
+
+        <GuideListing className={styles.section}>
+          <GuideListing.Heading className={styles.guideListingHeading}>
+            Get inspired
+          </GuideListing.Heading>
+          <GuideListing.List>
+            {nodes.map(({ frontmatter }, index) => (
+              <GuideTile
+                key={index}
+                duration={frontmatter.duration}
+                title={frontmatter.callout?.title || frontmatter.title}
+                description={
+                  frontmatter.callout?.description || frontmatter.description
+                }
+                path={frontmatter.path}
+              />
+            ))}
+          </GuideListing.List>
+        </GuideListing>
+
+        <p className={styles.inspiration}>
+          Looking for more inspiration? Check out the{' '}
+          <ExternalLink
+            className={styles.externalLink}
+            href="https://opensource.newrelic.com"
+          >
+            open source projects
+            <FeatherIcon
+              className={styles.externalLinkIcon}
+              name="external-link"
+            />
+          </ExternalLink>{' '}
+          built by the New Relic community.
+        </p>
+
+        <section className={cx(styles.section, styles.stripedSection)}>
+          <h1>New Relic developer champions</h1>
           <p>
-            As developers, engineers, and problem solvers, pinpointing issues
-            fast and improving performance effectively are your top priorities.
-            Explore the developer site to learn how to collect data from any
-            source, visualize and instrument your data, and customize it in any
-            way you want. From how-to guides to video tutorials, community
-            projects, and more - we’ve got you covered.
+            New Relic Champions are solving big problems using New Relic as
+            their linchpin and are recognized as experts and leaders in the New
+            Relic technical community.
           </p>
-          <p>
-            Best of all? This site is built in open source. Submit ideas,
-            feedback, and comments directly to our engineers.
-          </p>
-          <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
-            <button type="button">Create a free account</button>
-          </ExternalLink>
-          <ExternalLink href="https://newrelic.com/request-demo">
-            <button type="button" className="secondary">
-              Request a demo
+          <ExternalLink href="https://forms.gle/Zkdub5e1x4MNqSKW9">
+            <button type="button">
+              Nominate a Developer Champion
+              <FeatherIcon
+                className={styles.externalLinkIcon}
+                name="external-link"
+              />
             </button>
           </ExternalLink>
-        </div>
-        <Video
-          className={styles.introVideo}
-          id="ZagZfNQYJEU"
-          type="youtube"
-          title="Develop with New Relic"
-        />
-      </section>
+        </section>
+      </Layout>
+    </PageContext.Provider>
+  );
+};
 
-      <GuideListing className={styles.guideListing}>
-        <GuideListing.Heading className={styles.guideListingHeading}>
-          Get started
-        </GuideListing.Heading>
-        <GuideListing.List>
-          {getStartedGuides.map((guide, index) => (
-            <GuideTile className={styles.guideTile} key={index} {...guide} />
-          ))}
-        </GuideListing.List>
-      </GuideListing>
-      <hr className={styles.line} />
+IndexPage.propTypes = {
+  data: PropTypes.object,
+  pageContext,
+};
 
-      <GuideListing className={styles.guideListing}>
-        <GuideListing.Heading className={styles.guideListingHeading}>
-          Build Solutions
-        </GuideListing.Heading>
-        <GuideListing.List>
-          {guides.map((guide, index) => (
-            <GuideTile className={styles.guideTile} key={index} {...guide} />
-          ))}
-        </GuideListing.List>
-      </GuideListing>
-    </Layout>
-  </PageContext.Provider>
-);
+export const pageQuery = graphql`
+  query {
+    allMdx(filter: { frontmatter: { promoteToHomepage: { eq: true } } }) {
+      nodes {
+        frontmatter {
+          title
+          description
+          duration
+          path
+          callout {
+            title
+            description
+          }
+        }
+      }
+    }
+  }
+`;
 
 IndexPage.propTypes = {
   pageContext,

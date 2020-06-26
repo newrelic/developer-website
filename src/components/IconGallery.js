@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './IconGallery.module.scss';
 import IconReference from './IconReference';
+import SearchInput from './SearchInput';
 
 const IconGallery = () => {
   if (typeof window === 'undefined') global.window = {};
@@ -22,13 +23,12 @@ const IconGallery = () => {
       <h2>Icon Gallery</h2>
 
       <form className={styles.iconFilter}>
-        <input
+        <SearchInput
           className={styles.search}
-          type="text"
-          name="filter"
           placeholder="Filter icons by name"
-          value={search}
+          onClear={() => setSearch('')}
           onChange={(e) => setSearch(e.target.value)}
+          value={search}
         />
       </form>
 
