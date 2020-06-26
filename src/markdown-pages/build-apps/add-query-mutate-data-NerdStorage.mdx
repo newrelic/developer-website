@@ -236,14 +236,14 @@ As the new **Delete Document** button will be calling the `_deleteDocument` help
 
 ```
 _deleteDocument(){
-        this.setState({storage: []});
-        UserStorageMutation.mutate({
-            actionType: UserStorageMutation.ACTION_TYPE.DELETE_DOCUMENT,
-            collection: this.collectionId,
-            documentId: this.documentId,
-        });
-        Toast.showToast({ title: "NerdStorage Update.", type: Toast.TYPE.CRITICAL });
-    }
+    this.setState({storage: []});
+    UserStorageMutation.mutate({
+        actionType: UserStorageMutation.ACTION_TYPE.DELETE_DOCUMENT,
+        collection: this.collectionId,
+        documentId: this.documentId,
+    });
+    Toast.showToast({ title: "NerdStorage Update.", type: Toast.TYPE.CRITICAL });
+}
 ```
 </Step>
 
