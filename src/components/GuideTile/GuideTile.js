@@ -30,7 +30,7 @@ const GuideTile = ({
       <FeatherIcon className={styles.timeIcon} name="clock" />
       {duration}
     </div>
-    <h2 className={styles.title}>{title}</h2>
+    <h3 className={styles.title}>{title}</h3>
     <p className={styles.description}>{description}</p>
     {children}
   </Component>
