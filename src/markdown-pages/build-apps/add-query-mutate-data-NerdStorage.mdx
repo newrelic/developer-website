@@ -60,12 +60,15 @@ Once the app is successfully served, your terminal will return the URL to view y
 
 Load the URL. Under **Your applications** you will see the **Use Nerdstorage** app listed. Click to launch the app.
 
+![Your applications view updated](../../images/build-an-app/NerdStorage-applications-view.png)
 
 ## Add data to NerdStorage
 
 Once the app is up and running on New Relic One, you can prepare the app and start adding data. 
 
 On the **How To Use NerdStorage** app screen, there's a **Saved to NerdStorage** pane with a field for adding data. However, if you type something you'll get an error message. This is because you need to be set up to store data at the `User` level. You can do this with the help of the [UserStorageMutation component](https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/UserStorageMutation). 
+
+![add data view 1](../../images/build-an-app/add-data-NerdStorage.png)
 
 <Steps>
 
@@ -128,6 +131,8 @@ _addToNerdStorage(){
 Return to your running **How To Use NerdStorage** app screen on New Relic One and reload the page. 
 
 Add some text in the text entry field and click the check button. This will update NerdStorage and trigger a `Toast` notification inside the app. You should then see the text you typed displayed as a table row below the text entry field. 
+
+![add data view 2](../../images/build-an-app/add-data-NerdStorage-2.png)
 
 
 </Step>
@@ -201,6 +206,8 @@ _removeFromNerdStorage(index, data){
 
 Once this is done, clicking the trash button will remove the item it's associated with, and the app will update to show the change. 
 
+![mutate data](../../images/build-an-app/mutate-data-NerdStorage.png)
+
 ## Delete collection from NerdStorage
 
 While the trash button is a good method for removing specific entries one at a time, you may also want the ability to delete a whole NerdStorage document at once. You can do this by adding the **Delete Document** button to your app. 
@@ -243,6 +250,8 @@ _deleteDocument(){
 </Steps>
 
 Back inside the application, you should now see both the individual trash buttons and the newly added **Delete Document** button. 
+
+![delete collection button view](../../images/build-an-app/delete-collection-NerdStorage.png)
 
 
 ## Next steps
