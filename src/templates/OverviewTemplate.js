@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
-import GuideTile from '../components/GuideTile';
+import GuideTile from '../components/GuideTile/GuideTile';
 
 import SEO from '../components/Seo';
 

@@ -6,7 +6,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import GuideListing from '../components/GuideListing/GuideListing';
-import GuideTile from '../components/GuideTile';
+import GuideTile from '../components/GuideTile/GuideTile';
 import PageTitle from '../components/PageTitle';
 import Video from '../components/Video';
 import FeatherIcon from '../components/FeatherIcon';
