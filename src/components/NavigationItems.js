@@ -13,10 +13,7 @@ const iconLibrary = {
   'Build apps': 'buildApps',
   'Automate workflows': 'automation',
   'Explore docs': 'developerDocs',
-};
-
-const featherIconLibrary = {
-  'Developer champions': 'award',
+  'Developer champions': 'developerChampions',
 };
 
 const getHighlightedText = (text, highlight) => {
@@ -71,15 +68,6 @@ const NavigationItems = ({
 };
 
 const NavIcon = ({ page }) => {
-  if (featherIconLibrary[page.displayName]) {
-    return (
-      <FeatherIcon
-        className={styles.headerIcon}
-        name={featherIconLibrary[page.displayName]}
-      />
-    );
-  }
-
   if (iconLibrary[page.displayName]) {
     return (
       <NewRelicIcon
