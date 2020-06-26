@@ -20,7 +20,7 @@ We also have a 5-minute video that covers the steps below.
 
 To get started, make sure you have accounts in GitHub and [New Relic](https://newrelic.com/signup/).
 
-Use your New Relic account credentials to log into our [installation wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==). It sets you up with the following:
+Use your New Relic account credentials to log into our [CLI wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==). It sets you up with the following:
 
 * New Relic API key
 * Download options for the New Relic CLI (command line interface)
@@ -30,24 +30,15 @@ After you install the CLI and configure your environment, continue with the step
 
 ## Create a local version of the "Hello, World!" application
 
-The CLI allows you to run a local version of New Relic One. You can develop your application locally before you publish it in New Relic One.
+The CLI allows you to run a local version of New Relic One. You can develop your application locally before you publish it in New Relic One. 
 
-Here's how to create a local version of "Hello, World!":
+If you followed all the steps in the CLI wizard, you now have files under a new directory named after your nerdpack project. Here's how you edit those files to create a "Hello, World!" project:
 
 <Steps>
 
   <Step>
 
-  In your terminal, if you haven't already done so, change to the new directory named after your nerdpack project. For example, the command could look like this:
-
-  ```
-  $ cd /my-awesome-nerdpack
-  ```
-  </Step>
-
-  <Step>
-
-  Open a code editor and point it to your new directory.
+  Open a code editor and point it to the new directory named after your nerdpack project (for example, `my-awesome-nerdpack`).
 
   <Important>Your code editor displays two artifacts: `launchers` (containing the homepage tile) and `nerdlets` (containing your application code).</Important>
 
@@ -159,19 +150,19 @@ Your colleagues can't see your local application, so when you are ready to share
 
   <Step>
 
-  Click the ***New Relic One Catalog*** launcher.
+  Click the **New Relic One Catalog** launcher.
 
   </Step>
 
   <Step>
 
-  Under ***Your company applications***, click the launcher for your new application.
+  Under **Your company applications**, click the launcher for your new application.
 
   </Step>
 
 </Steps>
 
-  When your new application opens, it doesn't display any descriptive information. The next section shows you how to add descriptive metadata.
+  When your new application opens, notice that it doesn't display any helpful descriptive information. The next section shows you how to add descriptive metadata.
 
   ![An empty application description in the catalog](../images/create-hello-world/catalog-description-empty.png)
 
@@ -193,7 +184,7 @@ Now that your new application is in the New Relic One catalog, you can add detai
 
   <Step>
 
-  Select ***catalog***, which creates a stub in your project under the `catalog` directory:
+  Select **catalog**, which creates a stub in your project under the `catalog` directory. Here's how the results might look in your code editor:
 
   ![Catalog stub](../images/create-hello-world/new-catalog-stub.png)
 
@@ -232,19 +223,19 @@ To make sure other users see your application on the New Relic One homepage, you
   
   <Step>
 
-  If you're not already displaying your application's description page in the browser, click the launcher for the application in the catalog.
+  If you're not already displaying your application's description page in the browser, click the launcher for the application in the catalog under **Your company applications**.
 
   </Step>
 
   <Step>
 
-  Select ***Add this app***.
+  On your application's description page, click **Add this app**.
 
   </Step>
 
   <Step>
 
-  Select the accounts you want to subscribe to the application, and then select ***Update access*** to save your selections.
+  Select the accounts you want to subscribe to the application, and then click **Update access** to save your selections.
 
   </Step>
 
