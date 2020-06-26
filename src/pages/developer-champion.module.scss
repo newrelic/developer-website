@@ -13,3 +13,20 @@
 .img {
   width: 100%;
 }
+
+.championProgram {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+.point {
+  text-align: center;
+}
+
+.pointIcon {
+  --feather-icon-stroke-width: 1;
+
+  margin-bottom: 2rem;
+  color: var(--color-brand-400);
+}

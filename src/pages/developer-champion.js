@@ -43,6 +43,7 @@ import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import PageTitle from '../components/PageTitle';
 import ExternalLink from '../components/ExternalLink';
+import FeatherIcon from '../components/FeatherIcon';
 import colleaguesOffice from '../images/developer-champion/colleagues-office.jpeg';
 import devChampionHeader from '../images/developer-champion/developer-champion-header.jpg';
 import uptimeEverythingHeader from '../images/developer-champion/uptime-everything-header-image.jpg';
@@ -89,6 +90,32 @@ const DeveloperChampionPage = () => {
           to the developer community. Also committing to making their work
           public by:
         </p>
+      </section>
+      <section className={cx(styles.section, styles.championProgram)}>
+        <div className={styles.point}>
+          <FeatherIcon className={styles.pointIcon} name="github" size="4rem" />
+          <h4>Open-source contributions</h4>
+          <p>
+            Serving as an open-source author or maintainer for an accepted
+            public project related to New Relic One
+          </p>
+        </div>
+        <div className={styles.point}>
+          <FeatherIcon className={styles.pointIcon} name="trello" size="4rem" />
+          <h4>Content creation</h4>
+          <p>
+            Authoring two pieces of content in the New Relic Explorers Hub / Dev
+            Website
+          </p>
+        </div>
+        <div className={styles.point}>
+          <FeatherIcon className={styles.pointIcon} name="users" size="4rem" />
+          <h4>Community engagement</h4>
+          <p>
+            Delivering and/or organizing two events based around an
+            observability platform theme in which New Relic plays a crucial role
+          </p>
+        </div>
       </section>
       <section className={cx(styles.section, styles.twoColumn)}>
         <img
