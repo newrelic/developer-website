@@ -27,9 +27,10 @@ const OverviewTemplate = ({ data }) => {
               <GuideTile
                 key={index}
                 duration={frontmatter.duration}
-                title={frontmatter.callout?.title || frontmatter.title}
+                title={frontmatter.tileShorthand?.title || frontmatter.title}
                 description={
-                  frontmatter.callout?.description || frontmatter.description
+                  frontmatter.tileShorthand?.description ||
+                  frontmatter.description
                 }
                 path={frontmatter.path}
               />
@@ -69,7 +70,7 @@ export const pageQuery = graphql`
           title
           description
           duration
-          callout {
+          tileShorthand {
             title
             description
           }
