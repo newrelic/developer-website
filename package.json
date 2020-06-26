@@ -55,7 +55,7 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
+  "license": "Apache-2",
   "scripts": {
     "build": "gatsby build",
     "build:production": "GATSBY_NEWRELIC_ENV=production gatsby build",

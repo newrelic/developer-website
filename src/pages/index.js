@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { graphql } from 'gatsby';
+import { graphql, navigate, Link } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import GuideListing from '../components/GuideListing/GuideListing';
-import GuideTile from '../components/GuideTile';
+import GuideTile from '../components/GuideTile/GuideTile';
 import PageTitle from '../components/PageTitle';
 import Video from '../components/Video';
 import FeatherIcon from '../components/FeatherIcon';
@@ -66,6 +66,9 @@ const IndexPage = ({ data, pageContext }) => {
   const {
     allMdx: { nodes },
   } = data;
+  const numberOfPromotedGuides = 6;
+  const [guides, setGuides] = useState(() => nodes.slice(0, 6));
+  const guidesMinusPromoted = nodes.length - numberOfPromotedGuides;
 
   return (
     <PageContext.Provider value={pageContext}>
@@ -106,7 +109,12 @@ const IndexPage = ({ data, pageContext }) => {
             </header>
             <GuideListing.List>
               {getStartedGuides.map((guide, index) => (
-                <GuideTile key={index} {...guide} />
+                <GuideTile key={index} {...guide}>
+                  <GuideTile.Button
+                    text="Start the guide"
+                    onClick={() => navigate(guide.path)}
+                  />
+                </GuideTile>
               ))}
             </GuideListing.List>
           </GuideListing>
@@ -116,20 +124,35 @@ const IndexPage = ({ data, pageContext }) => {
           <GuideListing.Heading className={styles.guideListingHeading}>
             Get inspired
           </GuideListing.Heading>
-          <GuideListing.List>
-            {nodes.map(({ frontmatter }, index) => (
+          <GuideListing.List className={styles.allGuidesListing}>
+            {guides.map(({ frontmatter }, index) => (
               <GuideTile
+                as={Link}
+                to={frontmatter.path}
+                className={styles.allGuidesGuide}
                 key={index}
                 duration={frontmatter.duration}
-                title={frontmatter.callout?.title || frontmatter.title}
+                title={frontmatter.tileShorthand?.title || frontmatter.title}
                 description={
-                  frontmatter.callout?.description || frontmatter.description
+                  frontmatter.tileShorthand?.description ||
+                  frontmatter.description
                 }
                 path={frontmatter.path}
               />
             ))}
           </GuideListing.List>
         </GuideListing>
+        {guides.length === numberOfPromotedGuides && (
+          <div className={styles.buttonContainer}>
+            <button
+              className={styles.expandGuides}
+              type="button"
+              onClick={() => setGuides(nodes)}
+            >
+              {`Show ${guidesMinusPromoted} more guides`}
+            </button>
+          </div>
+        )}
 
         <p className={styles.inspiration}>
           Looking for more inspiration? Check out the{' '}
@@ -175,14 +198,22 @@ IndexPage.propTypes = {
 
 export const pageQuery = graphql`
   query {
-    allMdx(filter: { frontmatter: { promoteToHomepage: { eq: true } } }) {
+    allMdx(
+      filter: {
+        frontmatter: {
+          template: { eq: "GuideTemplate" }
+          tileShorthand: { title: { ne: null } }
+        }
+      }
+      sort: { fields: [frontmatter___promote, frontmatter___title] }
+    ) {
       nodes {
         frontmatter {
           title
           description
           duration
           path
-          callout {
+          tileShorthand {
             title
             description
           }

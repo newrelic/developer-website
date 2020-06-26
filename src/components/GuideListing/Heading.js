@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './GuideListing.module.scss';
 
 const Heading = ({ children, className }) => {
-  return <h1 className={cx(styles.heading, className)}>{children}</h1>;
+  return <h2 className={cx(styles.heading, className)}>{children}</h2>;
 };
 
 Heading.propTypes = {
