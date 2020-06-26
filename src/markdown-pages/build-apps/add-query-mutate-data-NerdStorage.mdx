@@ -80,18 +80,18 @@ The `UserStorage` NerdStorage components require a `collection` and `documentId`
 
 ```
 constructor(props) {
-        super(props)
-        this.collectionId = 'mycollection';
-        this.documentId = 'learning-nerdstorage';
-        this.state = {
-            isOpen: true,
-            storage: [],
-            text: '',
-        };
-        this._addToNerdStorage = this._addToNerdStorage.bind(this);
-        this._removeFromNerdStorage = this._removeFromNerdStorage.bind(this);
-        this._deleteDocument = this._deleteDocument.bind(this);
-    }
+    super(props)
+    this.collectionId = 'mycollection';
+    this.documentId = 'learning-nerdstorage';
+    this.state = {
+        isOpen: true,
+        storage: [],
+        text: '',
+    };
+    this._addToNerdStorage = this._addToNerdStorage.bind(this);
+    this._removeFromNerdStorage = this._removeFromNerdStorage.bind(this);
+    this._deleteDocument = this._deleteDocument.bind(this);
+}
 ```
 </Step>
 
