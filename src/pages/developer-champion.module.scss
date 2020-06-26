@@ -1,0 +1,15 @@
+.section {
+  &:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: repeat(2, calc(50% - 1rem));
+  grid-gap: 2rem;
+}
+
+.img {
+  width: 100%;
+}
