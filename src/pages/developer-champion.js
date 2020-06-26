@@ -116,6 +116,18 @@ const DeveloperChampionPage = () => {
             observability platform theme in which New Relic plays a crucial role
           </p>
         </div>
+        <ExternalLink
+          className={styles.nominateButton}
+          href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+        >
+          <button type="button">
+            Nominate a Developer Champion{' '}
+            <FeatherIcon
+              name="external-link"
+              className={styles.externalLinkIcon}
+            />
+          </button>
+        </ExternalLink>
       </section>
       <section className={cx(styles.section, styles.twoColumn)}>
         <img
