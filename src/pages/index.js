@@ -119,9 +119,10 @@ const IndexPage = ({ data, pageContext }) => {
           <GuideListing.Heading className={styles.guideListingHeading}>
             Get inspired
           </GuideListing.Heading>
-          <GuideListing.List>
+          <GuideListing.List className={styles.allGuidesListing}>
             {guides.map(({ frontmatter }, index) => (
               <GuideTile
+                className={styles.allGuidesGuide}
                 key={index}
                 duration={frontmatter.duration}
                 title={frontmatter.callout?.title || frontmatter.title}

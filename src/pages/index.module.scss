@@ -90,3 +90,17 @@
   color: var(--color-neutrals-800);
   margin-top: 2rem;
 }
+
+.allGuidesListing {
+  grid-auto-rows: minmax(200px, 1rem);
+}
+
+.allGuidesGuide {
+  p,
+  h2 {
+    text-align: left;
+  }
+  p {
+    padding: 0;
+  }
+}
