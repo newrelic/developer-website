@@ -8,9 +8,11 @@ redirects:
 ---
 
 <Intro>
+
 To build a [New Relic One app](/use-cases/build-new-relic-one-applications), you must install the New Relic One CLI. The CLI helps you build, publish, and manage your New Relic app.
 
 </Intro>
+
 
 
 To build a [New Relic One app](/use-cases/build-new-relic-one-applications), we provide you with a variety of tools, including the New Relic One CLI (command line interface). This page will explain how to use [CLI commands](/build-tools/new-relic-one-applications/cli#Commands) to:
@@ -28,57 +30,10 @@ To build a [New Relic One app](/use-cases/build-new-relic-one-applications), we
 
 ## Installing the New Relic One CLI
 
-### Install using 'Build your own application' launcher
-
 From *within* New Relic, go to the [**Build your own application** launcher](https://one.newrelic.com/launcher/developer-center.launcher) and follow the instructions. This launcher will automatically generate an API key for the account you select, and give you the pre-populated commands to create a profile, generate your first "Hello World" app, and serve it locally. 
 
 ![Build New Relic One application](../../images/developercenter.png)
 
-
-
-### Download from Developer site
-
-Alternately, you can follow the steps below. However, you will need to to create your New Relic [personal API Key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key), which you can create from the **Account settings** of your New Relic account. Keep this key handy because you will need it when you create the profile used by the CLI.
-
-
-<Steps>
-<Step>
-Download the CLI from and install it using one of the following methods depending on your platform:
-
-- [mac installer](https://cli.nr-ext.net/installer.pkg) 
-- [windows installer](https://cli.nr-ext.net/installer.exe)
-- linux `curl -s https://cli.nr-ext.net/installer.sh | bash`
-
-</Step>
-<Step>
-Check to make sure the CLI is installed properly by issuing simply checking the version.
-
-`nr1 --version`
-</Step>
-
-
-
-<Step>
-The CLI allows you to have multiple profiles. Each profile has a distinct API key and region. This is helpful if you have multiple accounts, or different API keys for different applications. To create a profile, execute the following command, substituting in the name you desire, your persona API key, as well as the region. The default is the 'us'. 
-
-`nr1 profiles:add --name <profile name> --api-key <personal api key> --region us`
-
-</Step>
-
-<Step>
-Now you are ready to create a simple "Hello World" app. Because we are all data nerds, we sometimes refer to apps as 'nerdpacks.'
-
-`nr1 create --type nerdpack --name my-awesome-nerdpack`
-
-</Step>
-
-<Step>
-Once the app is created, all you need to do is change into the directory and start the local server. 
-
-`cd my-awesome-nerdpack && nr1 nerdpack:serve`
-</Step>
-
-</Steps>
 
 
 ## New Relic One CLI Commands
