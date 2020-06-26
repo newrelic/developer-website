@@ -107,22 +107,22 @@ Then update the helper with the code below:
 
 ```
 _addToNerdStorage(){
-        const { text, storage } = this.state;
-        storage.push(text);
-        this.setState({storage}, () => {
-            UserStorageMutation.mutate({
-                actionType: UserStorageMutation.ACTION_TYPE.WRITE_DOCUMENT,
-                collection: this.collectionId,
-                documentId: this.documentId,
-                document: { storage },
-            })
-            .then((res) => {
-                this.setState({text: ''});
-                Toast.showToast({ title: "NerdStorage Update.", type: Toast.TYPE.NORMAL });
-            })
-            .catch((err) => console.log(err));
-        });
-    }
+    const { text, storage } = this.state;
+    storage.push(text);
+    this.setState({storage}, () => {
+        UserStorageMutation.mutate({
+            actionType: UserStorageMutation.ACTION_TYPE.WRITE_DOCUMENT,
+            collection: this.collectionId,
+            documentId: this.documentId,
+            document: { storage },
+        })
+        .then((res) => {
+            this.setState({text: ''});
+            Toast.showToast({ title: "NerdStorage Update.", type: Toast.TYPE.NORMAL });
+        })
+        .catch((err) => console.log(err));
+    });
+}
 ```
 </Step>
 
