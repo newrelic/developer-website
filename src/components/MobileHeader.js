@@ -30,6 +30,7 @@ const MobileHeader = ({ className, isOpen, toggle }) => {
           <SearchInput
             className={styles.searchInput}
             placeholder="Search developer docs"
+            onClear={() => setSearchTerm('')}
             onChange={(e) => setSearchTerm(e.target.value)}
             value={searchTerm}
           />

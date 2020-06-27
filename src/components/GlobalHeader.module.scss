@@ -75,6 +75,9 @@
   display: flex;
   list-style-type: none;
   align-items: center;
+  @media (max-width: 600px) {
+    display: none;
+  }
 }
 
 .rightSideButton {
