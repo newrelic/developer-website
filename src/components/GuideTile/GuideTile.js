@@ -27,7 +27,11 @@ const GuideTile = ({
       </div>
     )}
     <div className={styles.timeEstimate}>
-      <FeatherIcon className={styles.timeIcon} name="clock" />
+      {duration ? (
+        <FeatherIcon className={styles.timeIcon} name="clock" />
+      ) : (
+        <span>&nbsp;</span>
+      )}
       {duration}
     </div>
     <h3 className={styles.title}>{title}</h3>
