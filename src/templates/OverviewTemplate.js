@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
-import GuideTile from '../components/GuideTile';
+import GuideTile from '../components/GuideTile/GuideTile';
 
 import SEO from '../components/Seo';
 
@@ -27,9 +27,10 @@ const OverviewTemplate = ({ data }) => {
               <GuideTile
                 key={index}
                 duration={frontmatter.duration}
-                title={frontmatter.callout?.title || frontmatter.title}
+                title={frontmatter.tileShorthand?.title || frontmatter.title}
                 description={
-                  frontmatter.callout?.description || frontmatter.description
+                  frontmatter.tileShorthand?.description ||
+                  frontmatter.description
                 }
                 path={frontmatter.path}
               />
@@ -69,7 +70,7 @@ export const pageQuery = graphql`
           title
           description
           duration
-          callout {
+          tileShorthand {
             title
             description
           }
