@@ -72,6 +72,8 @@
 }
 
 .stripedSection {
+  --surface-background-color: var(--secondary-surface-background-color);
+
   padding: 2rem;
   background: var(--secondary-background-color);
   border-radius: 4px;
