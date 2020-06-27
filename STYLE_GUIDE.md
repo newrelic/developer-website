@@ -62,18 +62,18 @@ If you’d like to contribute by creating a guide, a technical reference, or gen
 
 The New Relic Developer Experience Team uses [Github](https://github.com/) and [Gatsby.JS](https://www.gatsbyjs.org/) to:
 
-  - accurately maintain our technical reference docs and guides
-  - iterate and publish quickly
-  - encourage collaboration
-  - support the open source community
-  - maintain version control
-  - gather feedback quickly
+- accurately maintain our technical reference docs and guides
+- iterate and publish quickly
+- encourage collaboration
+- support the open source community
+- maintain version control
+- gather feedback quickly
 
 ## What can I contribute?
 
 ### Technical references
 
-Technical reference pages are detailed technical specifications of the New Relic One platform and it's components. 
+Technical reference pages are detailed technical specifications of the New Relic One platform and it's components.
 
 ### Guides
 
@@ -92,23 +92,23 @@ Before you begin writing, answer these questions.
 ### Audience for guides
 
 - **Who is this guide for?**
-   - Are you writing content for a very experienced developer or New Relic practitioner? Or could someone new to either New Relic or development follow your steps and complete the task? We generally aim to support as many people as possible. Don't attempt to teach someone how to program in a guide, but prerequisites and clear context can help less experienced people accomplish the task.
+  - Are you writing content for a very experienced developer or New Relic practitioner? Or could someone new to either New Relic or development follow your steps and complete the task? We generally aim to support as many people as possible. Don't attempt to teach someone how to program in a guide, but prerequisites and clear context can help less experienced people accomplish the task.
 - **Is what I'm writing doable in less than 30 minutes?**
   - If not, consider dividing the guide up into multiple guides. That way, people can segment their time.
 - **What do I hope my readers will know and/or be able to do after reading it?**
-   - Include this information in your guide. It will help people know why they should invest their time, and it will help you write a focused guide. 
+  - Include this information in your guide. It will help people know why they should invest their time, and it will help you write a focused guide.
 - **What type of resources exist already that I can leverage?**
-   - Are there related technologies that someone might need to understand, or related New Relic info on the [developer](developer.newrelic.com), [docs](docs.newrelic.com), [open source](opensource.newrelic.com) or other New Relic sites?  
+  - Are there related technologies that someone might need to understand, or related New Relic info on the [developer](developer.newrelic.com), [docs](docs.newrelic.com), [open source](opensource.newrelic.com) or other New Relic sites?
 - **What type of new resources will I need to create to complete this?**
-    - Do you have all the software you need to write your guide?
-    - Do you have access to all the New Relic products to write your guide?
-    - Is there anyone you need assistance from?
-    - Do you need to create a video, image or other assets to support your content?
+  - Do you have all the software you need to write your guide?
+  - Do you have access to all the New Relic products to write your guide?
+  - Is there anyone you need assistance from?
+  - Do you need to create a video, image or other assets to support your content?
 
 ### Audience for technical references
 
 - **Who is this reference for?**
-  - We generally aim to support as many people as possible. You can't teach programming from the ground up, but you can provide clear descriptions  and complete info.
+  - We generally aim to support as many people as possible. You can't teach programming from the ground up, but you can provide clear descriptions and complete info.
 - **What do I hope my readers will know and/or be able to do after reading it?**
   - Include this information in your reference. It will help people know if it's the info they need.
 - **Are there related technologies that someone might need to understand that are already documented?**
@@ -120,7 +120,7 @@ Before you begin writing, answer these questions.
 
 ## Prepare to write
 
-Once you answer those questions, create an outline of the topic and think about 
+Once you answer those questions, create an outline of the topic and think about
 any coding examples you’ll use (if applicable). This helps to organize your thoughts and make the writing process easier.
 
 ### Relics
@@ -164,7 +164,7 @@ Content should avoid the use of jargon.
 Jargon: (n.) special words or expressions that are used by a particular profession or group and are difficult for others to understand.
 ```
 
-All jargon should be expressed in plain English. In other words, pretend like your readers have novice coding experience and have little knowledge of New Relic products and services. 
+All jargon should be expressed in plain English. In other words, pretend like your readers have novice coding experience and have little knowledge of New Relic products and services.
 
 ## Writing Style
 
@@ -187,11 +187,12 @@ The use of the title attribute on hyperlinks should be avoided for accessibility
 
 ```md
 <!-- Good -->
+
 [New Relic Open Source](https://www.opensource.newrelic.com/)
 
 <!-- Bad -->
-[here](https://www.opensource.newrelic.com/ "New Relic Open Source")
 
+[here](https://www.opensource.newrelic.com/ 'New Relic Open Source')
 ```
 
 ### Don't over link content references
@@ -207,23 +208,28 @@ When referencing another page within the New Relic Developer Site hyperlinks sho
 
 ```md
 <!-- Good -->
+
 [README](/README.md)
 
 <!-- Bad -->
+
 [README](https://www.developers.newrelic.com/README.md)
 ```
 
 ### Mark localhost URLs as code strings
 
-Unless you’re running `gatsby develop` or `gatsby build` locally, 
-localhost links will not work. Therefore it’s recommended to list these URL 
+Unless you’re running `gatsby develop` or `gatsby build` locally,
+localhost links will not work. Therefore it’s recommended to list these URL
 references as code blocks so there aren’t invalid links throughout the docs.
 `
+
 ```md
 <!-- Good -->
+
 open your site with `http://localhost:8000/`
 
 <!-- Bad -->
+
 open your site with [http://localhost:8000/](http://localhost:8000/)
 ```
 
@@ -231,12 +237,12 @@ open your site with [http://localhost:8000/](http://localhost:8000/)
 
 When a paragraph or sentence offers an optional path, the beginning of the first sentence should indicate that it’s optional. For example, “if you’d like to learn more about xyz, see our reference guide” is clearer than “Go to the reference guide if you’d like to learn more about xyz.”
 
-This method allows people who would not like to learn more about xyz to stop reading the sentence as early as possible.  This method also allows people who would like to learn more about xyz to recognize the opportunity to learn quicker instead of accidentally skipping over the paragraph.
+This method allows people who would not like to learn more about xyz to stop reading the sentence as early as possible. This method also allows people who would like to learn more about xyz to recognize the opportunity to learn quicker instead of accidentally skipping over the paragraph.
 
 ### Abbreviate terms
 
-If you want to abbreviate a term, write it out fully first, then 
-put the abbreviation in parentheses. you then can use the abbreviation going for the rest of the article. 
+If you want to abbreviate a term, write it out fully first, then
+put the abbreviation in parentheses. you then can use the abbreviation going for the rest of the article.
 For example, “In computer science, an abstract syntax tree (AST) is …”
 
 ### Use SEO optimized titles and descriptions
@@ -274,10 +280,14 @@ The value that is assigned to the key slug is used in order to navigate to your 
 - `title`: the title of the page
 - `template`: the Gatsby template used
 - `description`: the description of the page
+- `promote` (optional): adds the guide to the top of the guides list, making it
+  easier for users to discover
+- `tileShorthand` (optional): config for guides when they appear as tiles. Accepts 2 options:
+  - `title`: provide a shortened title for the tile. The title will fallback to the guide title if this is not provided.
+  - `description`: provide a shortended description for the tile. The description will
+    fallback to the guide description if this is not provided.
 
 ### GuideTemplate Frontmatter example
-
-Be aware that all Frontmatter slugs are `required`.
 
 ```md
 ---
@@ -285,13 +295,17 @@ path: '/build-apps/add-time-picker-guide'
 duration: '20 min'
 title: 'Add the time picker to a sample application'
 template: 'GuideTemplate'
-description: 'Example guide page'
+description: 'Learn how to add a time picker to a sample application'
+promote: true
+tileShorthand:
+  title: Add a time picker
+  description: Add the time picker to a sample app to specify a time range in data
 ---
 ```
 
 ## Reusable components
 
-In order to drive simplicity and ease of use New Relic has provided a set of reusable components you can leverage 
+In order to drive simplicity and ease of use New Relic has provided a set of reusable components you can leverage
 when creating documentation. Refer to our [Component Guide](COMPONENT_GUIDE.md) for more information.
 
 ## Grammar and formatting
@@ -307,7 +321,7 @@ Because titles show up throughout the docs in navigation elements (like breadcru
 
 Avoid using `H1` header; that is reserved for the title of each page.
 
-All headers should be sentence case. When using `H2`, `H3` and `H4` ensure that you follow a logical hierarchy and properly use sub headers through out your pages. 
+All headers should be sentence case. When using `H2`, `H3` and `H4` ensure that you follow a logical hierarchy and properly use sub headers through out your pages.
 
 ### Format code blocks, inline code, videos, and images
 
@@ -319,22 +333,23 @@ Refer to the [formatting inline code and code blocks section](https://github.com
 
 ### Adding images
 
-Refer to the [images section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images) in the Markdown cheat sheet to learn how to use images in your Markdown. 
+Refer to the [images section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images) in the Markdown cheat sheet to learn how to use images in your Markdown.
 
 ### Adding videos
 
- Refer to the [videos section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#youtube-videos) in the Markdown cheat sheet to learn how use videos in your Markdown.  
+Refer to the [videos section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#youtube-videos) in the Markdown cheat sheet to learn how use videos in your Markdown.
 
 ### Code Formatting: Type Tab
 
 Each code snippet can include a tab indicating the language type the snippet contains.
- For example, the following YAML snippet will display a “YAML” tab.
+For example, the following YAML snippet will display a “YAML” tab.
 
-```md
+````md
 ```yaml
 - id: Joe Doe
   bio: Thinks documentation is the coolest.
 ```
+````
 
 ```yaml
 - id: Joe Doe
@@ -377,9 +392,9 @@ Proper nouns should use correct capitalization when possible. Below is a list of
 Use active voice instead of passive voice as it’s a more concise and straightforward way to
 communicate a subject
 
-**passive**: *The for loop in JavaScript is used by programmers to…*
+**passive**: _The for loop in JavaScript is used by programmers to…_
 
-**active**: *Programmers use the for loop in JavaScript to…*
+**active**: _Programmers use the for loop in JavaScript to…_
 
 ## Make lists clear with the Oxford Comma
 
@@ -388,7 +403,7 @@ list of three or more items, before ‘and’ or ‘or’ e.g.
 
 For Example:
 
-*The Jamstack is: JavaScript, APIs, and Markdown.*
+_The Jamstack is: JavaScript, APIs, and Markdown._
 
 ## Prefer US English
 

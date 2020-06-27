@@ -6,6 +6,10 @@
   font-size: 0.75rem;
   z-index: 1;
 
+  @media (max-width: 1080px) {
+    flex-direction: column;
+  }
+
   a {
     color: currentColor;
   }
@@ -22,6 +26,10 @@
 
 .logo {
   width: 200px;
+
+  &:hover {
+    color: var(--color-neutrals-700);
+  }
 }
 
 .copyright {
@@ -52,4 +60,10 @@
 
 .linkIcon {
   margin-right: 0.5rem;
+}
+
+.link {
+  &:hover {
+    color: var(--color-neutrals-700);
+  }
 }

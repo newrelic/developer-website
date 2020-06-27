@@ -15,7 +15,7 @@
   code {
     display: block;
     padding: 0;
-    background: none;
+    background: none !important;
   }
 }
 
@@ -26,6 +26,10 @@
   padding-right: 1rem;
   user-select: none;
   opacity: 0.5;
+}
+
+.highlight {
+  background: var(--color-neutrals-300);
 }
 
 .bottomBar {
