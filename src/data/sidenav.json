@@ -1,6 +1,7 @@
 [
   {
     "displayName": "Collect data",
+    "url": "/collect-data",
     "children": [
       {
         "displayName": "Collect data from any source",
@@ -26,6 +27,7 @@
   },
   {
     "displayName": "Automate workflows",
+    "url": "/automate-workflows",
     "children": [
       {
         "displayName": "Orchestrate observability workflows",
@@ -47,6 +49,7 @@
   },
   {
     "displayName": "Build apps",
+    "url": "/build-apps",
     "children": [
       {
         "displayName": "Create a 'Hello, World!' app",
@@ -76,6 +79,7 @@
   },
   {
     "displayName": "Explore docs",
+    "url": "/explore-docs",
     "children": [
       {
         "displayName": "New Relic One CLI",
@@ -486,6 +490,6 @@
   },
   {
     "displayName": "Developer champions",
-    "url": "/developer-champions"
+    "url": "/developer-champion"
   }
 ]
