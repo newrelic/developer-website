@@ -6,17 +6,6 @@
   @media (max-width: 1080px) {
     flex-direction: column;
   }
-
-  button {
-    margin-top: 1rem;
-    margin-right: 1rem;
-  }
-
-  p {
-    font-size: 1.125rem;
-    line-height: 1.875rem;
-    color: var(--color-neutrals-600);
-  }
 }
 
 .introVideo {
@@ -84,7 +73,7 @@
 
 .stripedSection {
   padding: 2rem;
-  background: var(--color-neutrals-100);
+  background: var(--secondary-background-color);
   border-radius: 4px;
 }
 

@@ -76,7 +76,7 @@ const IndexPage = ({ data, pageContext }) => {
         <SEO />
         <PageTitle>Observability for every developer</PageTitle>
 
-        <section className={styles.intro}>
+        <section className={cx(styles.intro, 'intro-text')}>
           <div className={styles.introText}>
             <p>
               Whether you're new to New Relic or already a data nerd, you can
