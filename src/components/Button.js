@@ -21,6 +21,7 @@ const Button = ({
 );
 
 Button.VARIANT = {
+  PLAIN: 'plain',
   PRIMARY: 'primary',
   NORMAL: 'normal',
 };
