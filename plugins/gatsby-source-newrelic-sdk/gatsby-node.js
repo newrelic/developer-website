@@ -46,11 +46,13 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 
   const typeDefs = `
     type NewRelicSdkComponent implements Node {
+      constants: [NewRelicSdkConstant!]!
       propTypes: [NewRelicSdkPropTypeDefinition!]!
-      typeDefs: [NewRelicSdkTypeDefinition]
+      typeDefs: [NewRelicSdkTypeDefinition!]!
     }
 
     type NewRelicSdkApi implements Node {
+      constants: [NewRelicSdkConstant!]!
       typeDefs: [NewRelicSdkTypeDefinition]
     }
 
@@ -106,6 +108,11 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       name: String!
       description: String
       type: String!
+    }
+
+    type NewRelicSdkConstant {
+      name: String!
+      value: JSON!
     }
   `;
 

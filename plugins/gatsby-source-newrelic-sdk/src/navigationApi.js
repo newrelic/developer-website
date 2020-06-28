@@ -2,6 +2,8 @@ module.exports = {
   name: 'navigation',
   description: '',
   usage: "import { navigation } from 'nr1'",
+  constants: [],
+  examples: [],
   typeDefs: [
     {
       name: 'Nerdlet',

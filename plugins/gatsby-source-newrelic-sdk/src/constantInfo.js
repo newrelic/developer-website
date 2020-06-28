@@ -14,12 +14,7 @@ exports.getConstants = (name, sdk) => {
 
       return {
         name: `${name}.${member}`,
-        type: Array.isArray(value) ? 'array' : typeof value,
-        values: Array.isArray(value)
-          ? value.map((el) => JSON.stringify(el))
-          : Object.getOwnPropertyNames(value).map(
-              (key) => `${key}: ${JSON.stringify(value[key])}`
-            ),
+        value: JSON.stringify(value),
       };
     });
 };
