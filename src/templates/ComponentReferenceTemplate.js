@@ -42,11 +42,10 @@ const previewStyles = {
 
 const ComponentReferenceTemplate = ({ data }) => {
   const {
-    newRelicSdkComponent: { name, description, usage, examples },
+    newRelicSdkComponent: { name, description, usage, examples, typeDefs },
   } = data;
 
-  const { methods = [], typeDefs = [], propTypes = [] } =
-    useComponentDoc(name) ?? {};
+  const { methods = [], propTypes = [] } = useComponentDoc(name) ?? {};
 
   return (
     <Layout>
@@ -128,6 +127,14 @@ export const pageQuery = graphql`
         label
         sourceCode
         preview
+      }
+      typeDefs {
+        name
+        properties {
+          name
+          description
+          type
+        }
       }
     }
   }
