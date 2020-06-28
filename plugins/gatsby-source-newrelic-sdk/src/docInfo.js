@@ -8,7 +8,7 @@ exports.getComponentDoc = (name, sdk) => {
   const component = sdk[name];
 
   if (!component) {
-    return null;
+    throw new Error(`Component \`${name}\` does not exist in the SDK`);
   }
 
   const properties = Object.getOwnPropertyNames(component).map(
@@ -35,7 +35,7 @@ exports.getApiDoc = (name, sdk) => {
   const api = sdk[name];
 
   if (!api) {
-    return null;
+    throw new Error(`API \`${name}\` does not exist in the SDK`);
   }
 
   const properties = Object.getOwnPropertyNames(api).map((key) => api[key]);
