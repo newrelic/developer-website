@@ -1,6 +1,8 @@
 const navigationApi = {
   description: '',
   usage: "import { navigation } from 'nr1'",
+  constants: [],
+  examples: [],
   typeDefs: [
     {
       name: 'Nerdlet',
