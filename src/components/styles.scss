@@ -129,28 +129,6 @@ select {
   box-sizing: border-box;
 }
 
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  background-color: var(--color-brand-800);
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 3px;
-  border: 1px solid var(--color-brand-800);
-  font-family: var(--primary-font-family);
-  cursor: pointer;
-  &.secondary {
-    background-color: var(--color-white);
-    color: var(--color-brand-800);
-  }
-}
-
 ul {
   margin: 0;
   padding-left: 2rem;
