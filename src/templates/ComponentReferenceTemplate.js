@@ -42,7 +42,7 @@ const previewStyles = {
 
 const ComponentReferenceTemplate = ({ data }) => {
   const {
-    newRelicSdkComponent: { name: component },
+    newRelicSdkComponent: { name },
   } = data;
 
   const {
@@ -52,12 +52,12 @@ const ComponentReferenceTemplate = ({ data }) => {
     usage = '',
     typeDefs = [],
     propTypes = [],
-  } = useComponentDoc(component) ?? {};
+  } = useComponentDoc(name) ?? {};
 
   return (
     <Layout>
-      <SEO title={component} />
-      <PageTitle>{component}</PageTitle>
+      <SEO title={name} />
+      <PageTitle>{name}</PageTitle>
       <section className={cx(templateStyles.section, 'intro-text')}>
         <Markdown source={componentDescription} />
       </section>
@@ -74,17 +74,17 @@ const ComponentReferenceTemplate = ({ data }) => {
             {examples.map((example, i) => (
               <ReferenceExample
                 key={i}
-                useToastManager={component === 'Toast'}
+                useToastManager={name === 'Toast'}
                 className={styles.componentExample}
                 example={example}
-                previewStyle={previewStyles[component]}
+                previewStyle={previewStyles[name]}
               />
             ))}
           </div>
         </section>
       )}
 
-      {component === 'Icon' && (
+      {name === 'Icon' && (
         <section className={templateStyles.section}>
           <IconGallery />
         </section>
