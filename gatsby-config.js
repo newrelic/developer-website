@@ -29,7 +29,7 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/favicon.png',
       },
     },
     {
@@ -78,6 +78,34 @@ module.exports = {
         release: 'release-1093',
         components: ['Button', 'BlockText'],
         apis: ['logger', 'nerdlet'],
+      },
+    },
+    'gatsby-plugin-meta-redirect',
+    {
+      resolve: 'gatsby-plugin-newrelic',
+      options: {
+        configs: {
+          production: {
+            instrumentationType: 'proAndSPA',
+            accountId: '10175106',
+            trustKey: '1',
+            agentID: '22273498',
+            licenseKey: '23448da482',
+            applicationID: '22273498',
+            beacon: 'staging-bam.nr-data.net',
+            errorBeacon: 'staging-bam.nr-data.net',
+          },
+          staging: {
+            instrumentationType: 'proAndSPA',
+            accountId: '10175106',
+            trustKey: '1',
+            agentID: '22273531',
+            licenseKey: '23448da482',
+            applicationID: '22273531',
+            beacon: 'staging-bam.nr-data.net',
+            errorBeacon: 'staging-bam.nr-data.net',
+          },
+        },
       },
     },
   ],

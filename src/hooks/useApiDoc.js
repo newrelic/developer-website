@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { pullTypeDefNames } from '../utils/typeDefs';
+import { getTypeDefs } from '../utils/typeDefs';
 import navigationApi from '../data/navigationApi';
 
 const IGNORED_METHODS = [
@@ -20,6 +20,8 @@ const useApiDoc = (name) => {
 
   return useMemo(() => {
     if (window.__NR1_SDK__ == null) {
+      const err = new Error('NR1_SDK not found');
+      window.NREUM && window.NREUM.noticeError(err);
       return null;
     }
 
@@ -33,32 +35,12 @@ const useApiDoc = (name) => {
     }
 
     if (!api) {
+      const err = new Error('NR1_SDK API not found');
+      window.NREUM && window.NREUM.noticeError(err, { apiName: name });
       return null;
     }
 
     const apiDocs = api?.__docs__;
-
-    const getTypeDefs = (api) => {
-      const apiTypeDefNames = Object.getOwnPropertyNames(api)
-        .filter((key) => !IGNORED_METHODS.includes(key))
-        .map((key) => api[key]?.__docs__?.tags)
-        .filter(Boolean)
-        .flatMap(pullTypeDefNames);
-
-      const allTypeDefs = window.__NR1_SDK__.default.__typeDefs__;
-
-      const typeDefs = apiTypeDefNames
-        .map((name) => allTypeDefs[name])
-        .filter((typeDef) => typeDef !== undefined);
-
-      const structuredTypeDefs = typeDefs.map((typeDef) => ({
-        properties: typeDef.tags.property,
-        name: typeDef.tags.typedef.find((tag) => tag.identifier).identifier
-          .name,
-      }));
-
-      return structuredTypeDefs;
-    };
 
     const getConstants = (api) => {
       return Object.getOwnPropertyNames(api)
@@ -70,21 +52,20 @@ const useApiDoc = (name) => {
         .map((member) => {
           return {
             name: `${name}.${member}`,
-            type: api[member] instanceof Array ? 'array' : typeof api[member],
-            values:
-              api[member] instanceof Array
-                ? api[member].map((el) => JSON.stringify(el))
-                : Object.getOwnPropertyNames(api[member]).map(
-                    (key) => `${key}: ${JSON.stringify(api[member][key])}`
-                  ),
+            value: api[member],
           };
         });
     };
 
+    const properties = Object.getOwnPropertyNames(api)
+      .filter((key) => !IGNORED_METHODS.includes(key))
+      .map((key) => api[key]?.__docs__?.tags)
+      .filter(Boolean);
+
     return {
       description: apiDocs?.text,
       usage: `import { ${name} } from 'nr1'`,
-      typeDefs: getTypeDefs(api),
+      typeDefs: getTypeDefs(properties),
       constants: getConstants(api),
       methods: Object.getOwnPropertyNames(api)
         .filter(
@@ -109,7 +90,7 @@ const useApiDoc = (name) => {
           };
         }),
     };
-  }, [name, window.__NR1_SDK__]);
+  }, [name]);
 };
 
 export default useApiDoc;

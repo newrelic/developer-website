@@ -12,32 +12,34 @@ npm start
 
 Your site is now running at `http://localhost:8000`!
 
+### Dependencies
+
+Node v12 is used in this project as specified in [.nvmrc](https://github.com/newrelic/developer-website/blob/master/.nvmrc).
+
 ## 📝 Unit tests
 
-To run the unit tests, run `npm test` in the terminal. If you would like to 
+To run the unit tests, run `npm test` in the terminal. If you would like to
 have the tests automatically re-run, use `npm run test:watch`.
 
 ## 🌎 Community
 
-New Relic hosts and moderates an online forum where customers can interact with 
-New Relic employees as well as other customers to get help and share best practices. 
-If you are looking for configuration help or more information about New Relic's 
+New Relic hosts and moderates an online forum where customers can interact with
+New Relic employees as well as other customers to get help and share best practices.
+If you are looking for configuration help or more information about New Relic's
 products please visit the [New Relic Explorers Hub](https://discuss.newrelic.com/)
 
-
-## 🚧 Contributing 
+## 🚧 Contributing
 
 We welcome contributions to the New Relic Developer Site. Please review our
-[Contributors Guide](CONTRIBUTING.md) prior to submitting any code. 
+[Contributors Guide](CONTRIBUTING.md) prior to submitting any code.
 
-
-## 🚦Code of conduct 
+## 🚦Code of conduct
 
 Please review and agree to our [Code of Conduct](CODE_OF_CONDUCT.md) prior to submitting any code.
 
 ## 🐛 Issues / enhancement requests
 
-Please submit any issues or enhancement requests using one of our 
-[Issue Templates](https://github.com/newrelic/developer-website/issues/new/choose). 
-Please search for and review the existing open issues before submitting a new 
+Please submit any issues or enhancement requests using one of our
+[Issue Templates](https://github.com/newrelic/developer-website/issues/new/choose).
+Please search for and review the existing open issues before submitting a new
 issue to prevent the submission of duplicate issues.

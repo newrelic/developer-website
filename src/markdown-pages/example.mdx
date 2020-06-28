@@ -31,24 +31,37 @@ This guide requires that you have the following:
 But it doesn't include a code snippet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel orci dignissim, egestas turpis non, ultricies erat. Nullam id magna molestie, volutpat ipsum vitae, bibendum ligula.
 </Step>
 
-<Step>
+<Step> 
 
 This is a step with no title or code snippet, only description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel orci dignissim, egestas turpis non, ultricies erat. Nullam id magna molestie, volutpat ipsum vitae, bibendum ligula.
+
+<Caution>This is a caution.</Caution>
+
+<Important>This is a note.</Important>
+
+<Tip>This is a tip.</Tip>
+
+> This is an information box.
+
 </Step>
 
 <Step>
 
-## Set up and run the application locally
-Use the New Relic One CLI to update the application UUID and run the application locally. In the terminal,  change to the time picker directory.
+## This step includes a code snippet
+And also has line number highlighting
 
-```shell lineNumbers=false
-cd /nr1-howto/add-time-picker
-```
+```jsx lineHighlight=1,3-5
+import React from 'react'
 
-Once that is done, run the following:
+const HelloWorld = () => {
+  return (
+    <div>
+    "Hello there!
+    </div>
+  )
+}
 
-```shell lineNumbers=false
-npm start
+export default HelloWorld
 ```
 </Step>
 
@@ -57,7 +70,7 @@ npm start
 ## Make sure you're getting data from the right New Relic account
 In your preferred text editor, open the `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js` and then edit the following line to use your account ID (find your account ID in the Profile section of the Developer Center, where you downloaded the New Relic One CLI):
 
-```jsx
+```jsx fileName=/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js
 this.accountId = <REPLACE ME WITH YOUR ACCOUNT ID>;
 ```
 

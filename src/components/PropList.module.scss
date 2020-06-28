@@ -1,40 +1,36 @@
 .container {
-  display: flex;
-  border-bottom: solid var(--color-neutrals-200) 1px;
-  padding-bottom: 2rem;
-  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 30% minmax(0, 1fr);
+  grid-gap: 1rem;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: solid var(--color-neutrals-200) 1px;
+  }
+}
+
+.propName {
+  font-weight: bold;
 }
 
 .info {
-  width: 30%;
-  word-break: break-all;
-
-  code {
-    font-weight: bold;
-  }
-
-  h3 {
-    margin-top: 0;
-  }
+  overflow-wrap: break-all;
 }
 
 .default {
   margin-top: 2rem;
-  color: var(--color-neutrals-700);
 
-  p:first-of-type {
+  .label {
+    color: var(--color-neutrals-600);
     font-size: 0.75rem;
+    font-weight: bold;
   }
 }
 
-.type {
-  color: var(--color-neutrals-600);
-}
-
 .deprecation {
-  padding: 0.25rem;
+  padding: 0.5rem;
   background: var(--color-red-100);
-  margin-bottom: 1rem;
 }
 
 .deprecationDate {
@@ -43,17 +39,13 @@
   margin-bottom: 1rem;
 }
 
-.propInfo {
-  width: 70%;
-}
+.deprecationMarkdownContainer {
+  p:last-child {
+    margin-bottom: 0;
+  }
 
-.markdownContainer > *:first-child {
-  margin-top: 0;
-}
-
-.details {
-  &:not(:last-child):not(:empty) {
-    margin-bottom: 1rem;
+  code {
+    background: var(--color-red-200);
   }
 }
 
@@ -65,21 +57,15 @@
   font-weight: bold;
 }
 
-.arg {
-  padding-left: 1rem;
-}
-
-.listLike {
-  font-family: var(--code-font);
+.codeDef {
   font-size: 0.875rem;
-  color: var(--color-neutrals-600);
   max-height: 320px;
   overflow-y: auto;
 }
 
 .shape {
   &:not(:last-child) {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 
   h4 {
@@ -91,4 +77,8 @@
     border-bottom: none;
     padding-bottom: 0;
   }
+}
+
+.section:not(:last-child) {
+  margin-bottom: 2rem;
 }

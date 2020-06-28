@@ -1,0 +1,101 @@
+.globalHeaderContainer {
+  background-color: var(--color-neutrals-100);
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 80;
+
+  :global(.site-container) {
+    padding: 0 2rem;
+  }
+}
+
+.globalHeaderContent {
+  height: var(--height-global-header);
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.leftSideLinksContainer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.leftSideLinks {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+  white-space: nowrap;
+
+  &:hover .active .left-side-link {
+    background-color: transparent;
+    color: var(--color-neutrals-600);
+  }
+}
+
+.leftSideLink {
+  display: flex;
+  line-height: 22px;
+  box-sizing: border-box;
+  display: block;
+  height: 100%;
+  padding: 4px 9px;
+  color: var(--color-neutrals-600);
+  font-size: 11px;
+  border: none;
+
+  &:hover {
+    background-color: var(--color-neutrals-200);
+    color: var(--color-neutrals-700);
+  }
+
+  .active &,
+  .leftSideLinks:hover .active &:hover {
+    background-color: var(--color-neutrals-200);
+    color: var(--color-neutrals-700);
+  }
+}
+
+.rightSideButtons {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.rightSideButton {
+  opacity: 0.45;
+  transition: opacity 0.2s ease-out;
+  margin-left: 1rem;
+
+  path {
+    stroke: var(--color-neutrals-700);
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.75;
+  }
+}
+
+.githubButtonLink {
+  display: flex;
+  align-items: center;
+}

@@ -8,7 +8,6 @@ const EXAMPLE_CSS = `
 .nr1-ReferenceExample {
   line-height: 1.36;
   font-weight: 400;
-  background-color: #fff;
   color: #000e0e;
   font-size: 12px;
   font-family: Open Sans,Segoe UI,Tahoma,sans-serif;
