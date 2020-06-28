@@ -1,11 +1,4 @@
-const IGNORED_PROPERTIES = [
-  'prototype',
-  'length',
-  'name',
-  'propTypes',
-  'getDerivedStateFromProps',
-  'defaultProps',
-];
+const MATCH_SCREAMING_SNAKE_CASE = /^[A-Z_]+$/;
 
 exports.getConstants = (name, sdk) => {
   const obj = sdk[name];
@@ -13,7 +6,7 @@ exports.getConstants = (name, sdk) => {
   return Object.getOwnPropertyNames(obj)
     .filter(
       (member) =>
-        !IGNORED_PROPERTIES.includes(member) &&
+        MATCH_SCREAMING_SNAKE_CASE.test(member) &&
         typeof obj[member] !== 'function'
     )
     .map((member) => {
