@@ -7,10 +7,6 @@
   border: 1px solid var(--color-neutrals-300);
   border-radius: 0.25rem;
   position: relative;
-
-  button:hover {
-    transform: translateY(-1px);
-  }
 }
 
 .tileWithIcon h2 {
@@ -57,6 +53,10 @@
 
 .button {
   justify-self: center;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .timeIcon {
