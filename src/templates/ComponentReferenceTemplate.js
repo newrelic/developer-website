@@ -42,24 +42,18 @@ const previewStyles = {
 
 const ComponentReferenceTemplate = ({ data }) => {
   const {
-    newRelicSdkComponent: { name },
+    newRelicSdkComponent: { name, description, examples },
   } = data;
 
-  const {
-    examples = [],
-    description: componentDescription,
-    methods = [],
-    usage = '',
-    typeDefs = [],
-    propTypes = [],
-  } = useComponentDoc(name) ?? {};
+  const { methods = [], usage = '', typeDefs = [], propTypes = [] } =
+    useComponentDoc(name) ?? {};
 
   return (
     <Layout>
       <SEO title={name} />
       <PageTitle>{name}</PageTitle>
       <section className={cx(templateStyles.section, 'intro-text')}>
-        <Markdown source={componentDescription} />
+        <Markdown source={description} />
       </section>
 
       <section className={templateStyles.section}>
@@ -76,7 +70,7 @@ const ComponentReferenceTemplate = ({ data }) => {
                 key={i}
                 useToastManager={name === 'Toast'}
                 className={styles.componentExample}
-                example={example}
+                example={{ ...example, options: { live: example.preview } }}
                 previewStyle={previewStyles[name]}
               />
             ))}
@@ -128,6 +122,12 @@ export const pageQuery = graphql`
   query($path: String!) {
     newRelicSdkComponent(fields: { slug: { eq: $path } }) {
       name
+      description
+      examples {
+        label
+        sourceCode
+        preview
+      }
     }
   }
 `;
