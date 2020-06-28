@@ -1,0 +1,25 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 3px;
+  font-family: var(--primary-font-family);
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.primary {
+  color: #fff;
+  border-color: var(--color-brand-800);
+  background-color: var(--color-brand-800);
+}
+
+.normal {
+  color: var(--color-neutrals-800);
+  border-color: var(--color-neutrals-100);
+  background-color: var(--color-neutrals-100);
+}
