@@ -1,6 +1,7 @@
 const loadSdk = require('./src/loadSdk');
 const { getComponentDoc, getApiDoc } = require('./src/docInfo');
 const { DOCUMENTED_APIS, DOCUMENTED_COMPONENTS } = require('./src/constants');
+const navigationApi = require('./src/navigationApi');
 
 const hasOwnProperty = (obj, name) =>
   Object.prototype.hasOwnProperty.call(obj, name);
@@ -146,7 +147,7 @@ exports.sourceNodes = async (
   });
 
   DOCUMENTED_APIS.forEach((name) => {
-    const data = getApiDoc(name, sdk);
+    const data = name === 'navigation' ? navigationApi : getApiDoc(name, sdk);
 
     if (data) {
       createNode({
