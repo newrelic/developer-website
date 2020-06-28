@@ -8,12 +8,10 @@ const Button = ({
   children,
   className,
   variant,
-  role,
   ...props
 }) => (
   <Component
     {...props}
-    role={Component === 'button' ? 'button' : role}
     className={cx(className, styles.button, styles[variant])}
   >
     {children}
@@ -30,7 +28,6 @@ Button.propTypes = {
   as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
-  role: PropTypes.string,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   variant: PropTypes.oneOf(Object.values(Button.VARIANT)).isRequired,
 };
