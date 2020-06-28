@@ -1,5 +1,6 @@
 const loadSdk = require('./src/loadSdk');
 const { getComponentDoc, getApiDoc } = require('./src/docInfo');
+const { DOCUMENTED_APIS, DOCUMENTED_COMPONENTS } = require('./src/constants');
 
 const hasOwnProperty = (obj, name) =>
   Object.prototype.hasOwnProperty.call(obj, name);
@@ -106,12 +107,12 @@ exports.createResolvers = ({ createResolvers }) => {
 
 exports.sourceNodes = async (
   { actions, createNodeId, createContentDigest },
-  { release, components = [], apis = [] }
+  { release }
 ) => {
   const { createNode } = actions;
   const sdk = await loadSdk(release);
 
-  components.forEach((name) => {
+  DOCUMENTED_COMPONENTS.forEach((name) => {
     const data = getComponentDoc(name, sdk);
 
     if (data) {
@@ -128,7 +129,7 @@ exports.sourceNodes = async (
     }
   });
 
-  apis.forEach((name) => {
+  DOCUMENTED_APIS.forEach((name) => {
     const data = getApiDoc(name, sdk);
 
     if (data) {

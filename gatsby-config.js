@@ -76,8 +76,6 @@ module.exports = {
       resolve: 'gatsby-source-newrelic-sdk',
       options: {
         release: 'release-1093',
-        components: ['Button', 'BlockText'],
-        apis: ['logger', 'nerdlet'],
       },
     },
     'gatsby-plugin-meta-redirect',
