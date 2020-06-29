@@ -16,7 +16,6 @@ import { pageContext } from '../types';
 import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 
-
 const getStartedGuides = [
   {
     duration: '5 min',
@@ -174,13 +173,15 @@ const IndexPage = ({ data, pageContext }) => {
         <section className={cx(styles.section, styles.stripedSection)}>
           <h1>
             <img
-            className={styles.img}
-            src={devChampionBadge}
-            alt="developer champion badge"
-            width="5%"
-            /> New Relic developer champions</h1>
-        
-          <p>           
+              className={styles.img}
+              src={devChampionBadge}
+              alt="developer champion badge"
+              width="5%"
+            />{' '}
+            New Relic developer champions
+          </h1>
+
+          <p>
             New Relic Champions are solving big problems using New Relic as
             their linchpin and are recognized as experts and leaders in the New
             Relic technical community.
