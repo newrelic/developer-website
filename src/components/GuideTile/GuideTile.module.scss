@@ -13,11 +13,6 @@
   margin-top: 1rem;
 }
 
-.title,
-.description {
-  text-align: center;
-}
-
 .timeEstimate {
   font-size: 0.75rem;
   display: flex;
@@ -48,7 +43,6 @@
   margin-bottom: 1.5rem;
   color: var(--color-neutrals-600);
   flex: 1;
-  padding: 0 0.5rem;
 
   &:last-child {
     margin-bottom: 0;
@@ -65,4 +59,24 @@
 
 .timeIcon {
   margin-right: 0.25rem;
+}
+
+.tileLeftAligned {
+  .title,
+  .description {
+    text-align: left;
+  }
+  .description {
+    padding: 0;
+  }
+}
+
+.tileCenterAligned {
+  .title,
+  .description {
+    text-align: center;
+  }
+  .description {
+    padding: 0 0.5rem;
+  }
 }
