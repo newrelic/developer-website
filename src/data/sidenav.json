@@ -52,6 +52,10 @@
     "url": "/build-apps",
     "children": [
       {
+        "displayName": "Set up your development environment",
+        "url": "/build-apps/set-up-dev-env"
+      },
+      {
         "displayName": "Create a 'Hello, World!' app",
         "url": "/build-apps/build-hello-world-app"
       },
@@ -74,6 +78,10 @@
       {
         "displayName": "Add tables to your New Relic One application",
         "url": "/build-apps/howto-use-nrone-table-components"
+      },
+      {
+        "displayName": "Add, query, and mutate data using NerdStorage",
+        "url": "/build-apps/add-query-mutate-data-nerdstorage"
       }
     ]
   },
@@ -82,23 +90,27 @@
     "children": [
       {
         "displayName": "New Relic One CLI",
-        "url": "/reference/nr1-cli"
+        "url": "/explore-docs/nr1-cli"
+      },
+      {
+        "displayName": "New Relic CLI",
+        "url": "/explore-docs/newrelic-cli"
       },
       {
         "displayName": "Nerdpack file structure",
-        "url": "/reference/nerdpack-file-structure"
+        "url": "/explore-docs/nerdpack-file-structure"
       },
       {
         "displayName": "Intro to New Relic One API components",
-        "url": "/reference/intro-to-sdk"
+        "url": "/explore-docs/intro-to-sdk"
       },
       {
         "displayName": "Intro to Nerdstorage",
-        "url": "/reference/nerdstorage"
+        "url": "/explore-docs/nerdstorage"
       },
       {
         "displayName": "Query and store data",
-        "url": "/reference/query-and-store-data"
+        "url": "/explore-docs/query-and-store-data"
       },
       {
         "displayName": "Component library",

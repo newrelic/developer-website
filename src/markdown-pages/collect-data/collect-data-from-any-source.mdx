@@ -163,47 +163,6 @@ end
 
 <Step>
 
-## Integrations SDK
-
-Build out your own agent to get deep visibility into highly customized, unique, or legacy systems.
-
-Using the [Infrastructure Integrations SDK](https://developer.newrelic.com/technology/infrastructure-sdk), you can get data from specific entities into New Relic without having to worry about timings of harvest cycles. The following example shows a custom Apache Integration built atop the Infrastructure Integrations SDK.
-
-![Infrastructure integrations screenshot](../../images/collect-data-from-any-source/UC2-sec3-ohai.png)
-
-```shell lineNumbers=true
-# Code snippet from the Apache integration's main method in Go.
-func main() {
-  log.Debug("Starting Apache integration")
-  defer log.Debug("Apache integration exited")
-
-  integration, err := sdk.NewIntegration(integrationName, integrationVersion, &args)
-  fatalIfErr(err)
-
-  if args.All || args.Inventory {
-    log.Debug("Fetching data for '%s' integration", integrationName+"-inventory")
-    fatalIfErr(setInventory(integration.Inventory))
-  }
-
-  if args.All || args.Metrics {
-    log.Debug("Fetching data for '%s' integration", integrationName+"-metrics")
-    ms := integration.NewMetricSet("ApacheSample")
-    provider := &Status{
-      CABundleDir:  args.CABundleDir,
-      CABundleFile: args.CABundleFile,
-      HTTPTimeout:  defaultHTTPTimeout,
-    }
-    fatalIfErr(getMetricsData(provider, ms))
-  }
-
-  fatalIfErr(integration.Publish())
-}
-```
-
-</Step>
-
-<Step>
-
 ## Log API
 
 If our existing [logging integrations](https://docs.newrelic.com/docs/new-relic-logs-documentation) don’t meet your needs, you can use our Log API to send any arbitrary log data to New Relic. (Eventually, the Telemetry SDKs will support the Log API.)
