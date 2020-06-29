@@ -15,11 +15,16 @@ const GuideTile = ({
   description,
   className,
   children,
+  alignment,
   ...props
 }) => (
   <Component
     {...props}
-    className={cx(styles.tile, className, { [styles.tileWithIcon]: icon })}
+    className={cx(styles.tile, className, {
+      [styles.tileWithIcon]: icon,
+      [styles.tileLeftAligned]: alignment === GuideTile.ALIGNMENT.LEFT,
+      [styles.tileCenterAligned]: alignment === GuideTile.ALIGNMENT.CENTER,
+    })}
   >
     {icon && (
       <div className={styles.iconContainer}>
@@ -42,6 +47,11 @@ const GuideTile = ({
 
 GuideTile.Button = Button;
 
+GuideTile.ALIGNMENT = {
+  LEFT: 'left',
+  CENTER: 'center',
+};
+
 GuideTile.propTypes = {
   duration: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -50,6 +60,11 @@ GuideTile.propTypes = {
   icon: PropTypes.string,
   children: PropTypes.node,
   as: PropTypes.elementType,
+  alignment: PropTypes.oneOf(Object.values(GuideTile.ALIGNMENT)),
+};
+
+GuideTile.defaultProps = {
+  alignment: GuideTile.ALIGNMENT.CENTER,
 };
 
 export default GuideTile;
