@@ -91,27 +91,27 @@
     "children": [
       {
         "displayName": "New Relic One CLI",
-        "url": "/reference/nr1-cli"
+        "url": "/explore-docs/nr1-cli"
       },
       {
         "displayName": "New Relic CLI",
-        "url": "/reference/newrelic-cli"
+        "url": "/explore-docs/newrelic-cli"
       },
       {
         "displayName": "Nerdpack file structure",
-        "url": "/reference/nerdpack-file-structure"
+        "url": "/explore-docs/nerdpack-file-structure"
       },
       {
         "displayName": "Intro to New Relic One API components",
-        "url": "/reference/intro-to-sdk"
+        "url": "/explore-docs/intro-to-sdk"
       },
       {
         "displayName": "Intro to Nerdstorage",
-        "url": "/reference/nerdstorage"
+        "url": "/explore-docs/nerdstorage"
       },
       {
         "displayName": "Query and store data",
-        "url": "/reference/query-and-store-data"
+        "url": "/explore-docs/query-and-store-data"
       },
       {
         "displayName": "Component library",
