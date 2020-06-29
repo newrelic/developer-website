@@ -31,6 +31,7 @@
 }
 
 .guideListing {
+  --guide-list-row-height: auto;
   margin-top: 0;
 }
 
@@ -99,7 +100,6 @@
 
 .allGuidesListing {
   margin-top: 1rem;
-  grid-auto-rows: minmax(180px, 180px);
 }
 
 .allGuidesGuide {

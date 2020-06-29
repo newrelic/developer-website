@@ -49,6 +49,10 @@
   color: var(--color-neutrals-600);
   flex: 1;
   padding: 0 0.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .button {
