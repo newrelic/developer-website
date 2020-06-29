@@ -95,6 +95,9 @@
 
 .expandGuides {
   margin-top: 2rem;
+  &:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .allGuidesListing {
