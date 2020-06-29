@@ -43,6 +43,10 @@
   margin-bottom: 1.5rem;
   color: var(--color-neutrals-600);
   flex: 1;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .button {
