@@ -30,7 +30,7 @@ const getStartedGuides = [
     duration: '7 min',
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
-    path: '/automate-workflows/add-tags-to-apps',
+    path: '/automate-workflows/5-mins-tag-resources',
     icon: 'automation',
   },
   {
