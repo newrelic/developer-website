@@ -94,6 +94,10 @@
         "url": "/reference/nr1-cli"
       },
       {
+        "displayName": "New Relic CLI",
+        "url": "/reference/newrelic-cli"
+      },
+      {
         "displayName": "Nerdpack file structure",
         "url": "/reference/nerdpack-file-structure"
       },
