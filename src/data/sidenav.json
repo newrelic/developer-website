@@ -79,7 +79,6 @@
   },
   {
     "displayName": "Explore docs",
-    "url": "/explore-docs",
     "children": [
       {
         "displayName": "New Relic One CLI",
