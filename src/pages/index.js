@@ -134,7 +134,6 @@ const IndexPage = ({ data, pageContext }) => {
               <GuideTile
                 as={Link}
                 to={frontmatter.path}
-                className={styles.allGuidesGuide}
                 key={index}
                 duration={frontmatter.duration}
                 title={frontmatter.tileShorthand?.title || frontmatter.title}
@@ -143,6 +142,7 @@ const IndexPage = ({ data, pageContext }) => {
                   frontmatter.description
                 }
                 path={frontmatter.path}
+                alignment={GuideTile.ALIGNMENT.LEFT}
               />
             ))}
           </GuideListing.List>

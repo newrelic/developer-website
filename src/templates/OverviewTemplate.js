@@ -35,6 +35,7 @@ const OverviewTemplate = ({ data }) => {
                   frontmatter.description
                 }
                 path={frontmatter.path}
+                alignment={GuideTile.ALIGNMENT.LEFT}
               />
             ))}
           </GuideListing.List>
