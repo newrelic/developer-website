@@ -10,19 +10,16 @@
   border: 1px solid var(--border-color);
   border-radius: 0.25rem;
   position: relative;
+  transition: all 0.15s ease-out;
 
-  button:hover {
-    transform: translateY(-1px);
+  &:hover {
+    transform: translateY(-2px);
+    border: 1px solid var(--color-neutrals-400);
   }
 }
 
 .tileWithIcon h2 {
   margin-top: 1rem;
-}
-
-.title,
-.description {
-  text-align: center;
 }
 
 .timeEstimate {
@@ -55,13 +52,40 @@
   margin-bottom: 1.5rem;
   color: var(--secondary-text-color);
   flex: 1;
-  padding: 0 0.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .button {
   justify-self: center;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .timeIcon {
   margin-right: 0.25rem;
+}
+
+.tileLeftAligned {
+  .title,
+  .description {
+    text-align: left;
+  }
+  .description {
+    padding: 0;
+  }
+}
+
+.tileCenterAligned {
+  .title,
+  .description {
+    text-align: center;
+  }
+  .description {
+    padding: 0 0.5rem;
+  }
 }

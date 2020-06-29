@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from './Button';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import lightTheme from 'prism-react-renderer/themes/github';
 import darkTheme from 'prism-react-renderer/themes/nightOwl';
@@ -77,10 +78,11 @@ const CodeSnippet = ({
             )}
           </div>
           {copy !== 'false' && (
-            <button
+            <Button
               className={styles.copyButton}
               type="button"
               onClick={() => copyCode(formattedCode.trim())}
+              variant={Button.VARIANT.PLAIN}
             >
               <FeatherIcon
                 name="copy"
@@ -88,7 +90,7 @@ const CodeSnippet = ({
                 className={styles.copyIcon}
               />
               {copied ? 'Copied!' : 'Copy output'}
-            </button>
+            </Button>
           )}
         </div>
       )}

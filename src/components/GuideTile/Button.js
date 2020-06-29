@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
+import Button from '../Button';
 import styles from './GuideTile.module.scss';
+import { Link } from 'gatsby';
 
-const Button = ({ onClick, text }) => (
-  <button type="button" className={styles.button} onClick={onClick}>
-    {text}
-  </button>
+const GuideTileButton = ({ className, ...props }) => (
+  <Button
+    as={Link}
+    variant={Button.VARIANT.PRIMARY}
+    className={cx(styles.button, className)}
+    {...props}
+  />
 );
 
-Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
+GuideTileButton.propTypes = {
+  className: PropTypes.string,
 };
 
-export default Button;
+export default GuideTileButton;

@@ -20,6 +20,8 @@
 }
 
 .guideListing {
+  --guide-list-row-height: auto;
+
   margin-top: 0;
 }
 
@@ -85,23 +87,20 @@
 }
 
 .expandGuides {
-  border: var(--color-neutrals-100);
-  background: var(--color-neutrals-100);
-  color: var(--color-neutrals-800);
   margin-top: 2rem;
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .allGuidesListing {
   margin-top: 1rem;
-  grid-auto-rows: minmax(180px, 180px);
 }
 
-.allGuidesGuide {
-  p,
-  h2 {
-    text-align: left;
-  }
-  p {
-    padding: 0;
+.featuredGuide {
+  &:hover {
+    transform: unset;
+    border-color: var(--color-neutrals-300);
   }
 }

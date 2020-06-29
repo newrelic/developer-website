@@ -24,7 +24,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(260px, 1fr));
   grid-gap: 1rem;
-  grid-auto-rows: minmax(calc(248px - 2rem), auto);
+  grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
   align-items: stretch;
   width: 100%;
 
