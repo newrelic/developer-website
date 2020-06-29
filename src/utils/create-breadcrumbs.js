@@ -1,3 +1,5 @@
+const URL_WITH_TRAILING_SLASH = /(.+)\/$/;
+
 /**
  * Create a flat array of breadcrumbs for a given relative url given the
  * site structure (sidenav). Returns an empty array if no match found. NOTE:
@@ -20,7 +22,11 @@ const createBreadcrumbs = (url, links, result = []) => {
   }
 
   // check to see if any of the links at this level match the path
-  const match = links.find((link) => link.url === url);
+  const match = links.find(
+    (link) =>
+      link.url === url ||
+      link.url === url.replace(URL_WITH_TRAILING_SLASH, '$1')
+  );
 
   // if we have a link, return the displayName at the end of the result
   if (match) {
