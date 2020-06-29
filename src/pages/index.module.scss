@@ -32,6 +32,7 @@
 
 .guideListing {
   --guide-list-row-height: auto;
+
   margin-top: 0;
 }
 
@@ -100,4 +101,11 @@
 
 .allGuidesListing {
   margin-top: 1rem;
+}
+
+.featuredGuide {
+  &:hover {
+    transform: unset;
+    border-color: var(--color-neutrals-300);
+  }
 }
