@@ -52,6 +52,10 @@
     "url": "/build-apps",
     "children": [
       {
+        "displayName": "Set up your development environment",
+        "url": "/build-apps/set-up-dev-env"
+      },
+      {
         "displayName": "Create a 'Hello, World!' app",
         "url": "/build-apps/build-hello-world-app"
       },
@@ -74,6 +78,10 @@
       {
         "displayName": "Add tables to your New Relic One application",
         "url": "/build-apps/howto-use-nrone-table-components"
+      },
+      {
+        "displayName": "Add, query, and mutate data using NerdStorage",
+        "url": "/build-apps/add-query-mutate-data-nerdstorage"
       }
     ]
   },

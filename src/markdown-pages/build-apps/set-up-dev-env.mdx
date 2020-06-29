@@ -8,84 +8,95 @@ description: 'Prepare to build apps and contribute to this site'
 
 <Intro>
 
-In progress.
+If you've decided to build a custom app or modify one of our open source apps, you need a few essential tools: 
+
+- The New Relic One command line interface (CLI)
+- An API key, which you get when you download the CLI
+
+Depending on what you want to do with your app, you might have some additional setup and configuration. This guide covers:
+
+- Downloading the New Relic One CLI to build or modify apps
+- Contribute content to this website
 
 
 </Intro>
 
 ## Before you begin
-This guide requires that you have the following:
+You must have:
 
-- A github account
-- New Relic developer account
-- API Key
-- New Relic One CLI downloaded
+- A [github account](https://github.com/)
+While not strictly necessary for building apps, a GitHub account enables you to [download and customize our open source apps](https://opensource.newrelic.com/explore-projects), and contribute an [open source project](https://opensource.newrelic.com/contributing/). 
+- A [New Relic developer account](https://newrelic.com/signup/?partner=Developer+Edition) - a free trial account for developing New Relic applications. 
 
 <br/>
+
+## Prepare to build or modify apps
 
 <Steps>
 
 <Step>
 
-## This is a step with a title and description
-to be written
-</Step>
+## Download the CLI and API key
 
-<Step>
+On the [Build New Relic One applications page](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), complete the **Quick start** steps.
 
-This is a step with no title or code snippet, only description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel orci dignissim, egestas turpis non, ultricies erat. Nullam id magna molestie, volutpat ipsum vitae, bibendum ligula.
-</Step>
+These six steps get you an API key for use with developing apps, and the New Relic One CLI, for building and deploying apps. At the end of the **Quick Start**, you have a project consisting of the following:
 
-<Step>
-
-## Set up and run the application locally
-Use the New Relic One CLI to update the application UUID and run the application locally. In the terminal,  change to the time picker directory.
-
-```shell lineNumbers=false
-cd /nr1-howto/add-time-picker
-```
-
-Once that is done, run the following:
-
-```shell lineNumbers=false
-npm start
-```
-</Step>
-
-<Step>
-
-## Make sure you're getting data from the right New Relic account
-In your preferred text editor, open the `/add-time-picker/nerdlets/nr1-howto-add-time-picker-nerdlet/index.js` and then edit the following line to use your account ID (find your account ID in the Profile section of the Developer Center, where you downloaded the New Relic One CLI):
-
-```jsx
-this.accountId = <REPLACE ME WITH YOUR ACCOUNT ID>;
-```
+- A **Nerdpack** - The package containing all the files required by your application. It contains two types of files that you customize to build your app: Nerdlets, and the launcher.
+- One or more **Nerdlet** files - A specific UI view or window. A Nerdlet is a React JavaScript package that includes an `index.js` file, a `stylesheet`, and a JSON-format `config` file. It can contain any JS functionality (charts, interactive fields, tooltips, etc.). 
+- A `launcher` file: This is the basis for the launcher, which is used to open your application from New Relic One after you publish your app. 
 
 </Step>
 
 <Step>
 
-Update the UUID and serve the application by running the following:
+## Start building
 
-```shell lineNumbers=false
-nr1 nerdpack:uuid -gf
-nr1 nerdpack:serve
-```
+If you're ready to code, `cd` to your Nerdpack and get started.
+
+If you want to learn more about building applications, try these step-by-step guides:
+
+- [Build a "Hello, World!" application](/build-apps/build-hello-world-app) shows how to create a little application, publish it to New Relic One, and share it with others by subscribing accounts to it.
+- [Map pageviews by region](/build-apps/map-pageviews-by-region) takes you through the steps to create one of our popular open source apps. You learn to add a custom query to an app and view it in a table, then add that data to a map. 
+
 
 </Step>
 
 </Steps>
 
-### Next steps
+## Contributing to developer.newrelic.com
 
-You'll get a URL to access New Relic One and see your application running locally: https://one.newrelic.com/?nerdpacks=local
+This site is open source, and we welcome your input. Create a pull request if you see a mistake you know how to fix. Let us know if there's information you want by submitting an issue. Or write up a whole new guide if you have one you'd like to share. Read on to learn how.
 
-One the New Relic home page, there's a new launcher to the Add time picker application.
+<Steps>
 
-Click the launcher, and the dashboard opens with your New Relic account transactions.
+<Step>
+
+## Edit a page with a pull request
+
+1. At the top right corner of the page you want to edit, select the edit button (it looks like a pencil).
+2. In GitHub, on the markdown version of the page, select the **Edit this file** button, type your changes.
+3. At the bottom of the page, add a title and description for your pull request, and select **Commit changes**, and then select **Create pull request**.
+
+
+</Step>
+
+<Step>
+
+## Make a feature or documentation request
+
+- On any page, select the **GitHub** button at the top of the page, and then select the kind of change you want, and fill out the GitHub form. 
+
+</Step>
+
+<Step>
+
+## Contribute a new guide
+
+- Check out our [contributors guidelines](https://github.com/newrelic/developer-website/blob/master/CONTRIBUTING.md#creating-new-pages], which will walk you through the process.
 
 
 ### Related info
 
-- [New Relic documentation](https://docs.newrelic.com)
-- [Community page for how to add a time picker](https://discuss.newrelic.com/t/how-to-add-the-time-picker-to-nrql-queries/94268)
+- The [Build apps](/build-apps) overview page links to other helpful guides for building and enhancing apps
+- The [New Relic community site](https://discuss.newrelic.com/c/build-on-new-relic) for ideas and answers from New Relic employees and community members
