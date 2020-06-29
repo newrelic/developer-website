@@ -73,8 +73,8 @@ const DeveloperChampionPage = () => {
           <FeatherIcon className={styles.pointIcon} name="users" size="4rem" />
           <h4>Community engagement</h4>
           <p>
-            Delivering and/or organizing two events focused on an
-            observability platform theme in which New Relic plays a crucial role
+            Delivering and/or organizing two events focused on an observability
+            platform theme in which New Relic plays a crucial role
           </p>
         </div>
         <ExternalLink
@@ -100,9 +100,9 @@ const DeveloperChampionPage = () => {
           <h2>Why should you join and how will we support?</h2>
           <p>
             As a benefit of being a Developer Champion, New Relic provides
-            unique access to our Developer Advocacy team and the resources
-            of our product organization, as well as specialized recognition
-            and rewards.
+            unique access to our Developer Advocacy team and the resources of
+            our product organization, as well as specialized recognition and
+            rewards.
           </p>
         </div>
       </section>
