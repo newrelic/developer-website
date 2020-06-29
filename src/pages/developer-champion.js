@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
+import Button from '../components/Button';
 import PageTitle from '../components/PageTitle';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
@@ -77,18 +78,18 @@ const DeveloperChampionPage = () => {
             platform theme in which New Relic plays a crucial role
           </p>
         </div>
-        <ExternalLink
+        <Button
+          as={ExternalLink}
           className={styles.nominateButton}
           href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+          variant={Button.VARIANT.PRIMARY}
         >
-          <button type="button">
-            Nominate a Developer Champion{' '}
-            <FeatherIcon
-              name="external-link"
-              className={styles.externalLinkIcon}
-            />
-          </button>
-        </ExternalLink>
+          Nominate a Developer Champion{' '}
+          <FeatherIcon
+            name="external-link"
+            className={styles.externalLinkIcon}
+          />
+        </Button>
       </section>
       <section className={cx(styles.section, styles.twoColumn)}>
         <img
