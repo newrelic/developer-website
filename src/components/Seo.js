@@ -24,7 +24,16 @@ function SEO({ description, lang, meta, title }) {
   const globalMetadata = [
     { name: 'description', content: metaDescription },
     { 'http-equiv': 'Content-Type', content: 'text/html', charset: 'utf-8' },
-    { name: 'type', class: 'swiftype', 'data-type': 'enum', content: 'developer' },
+    {
+      name: 'type',
+      class: 'swiftype',
+      'data-type': 'enum',
+      content: 'developer',
+    },
+    {
+      name: 'google-site-verification',
+      content: 'eT8TSNhvMuDmAtqbtq5jygZKVkhDmz565fYQ3DVop4g',
+    },
   ];
 
   const social = [
