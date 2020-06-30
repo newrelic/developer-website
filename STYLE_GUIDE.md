@@ -286,6 +286,9 @@ The value that is assigned to the key slug is used in order to navigate to your 
   - `title`: provide a shortened title for the tile. The title will fallback to the guide title if this is not provided.
   - `description`: provide a shortended description for the tile. The description will
     fallback to the guide description if this is not provided.
+- `redirects`:
+  - url you wish to redirect from
+  - another url you wish to redirect from
 
 ### GuideTemplate Frontmatter example
 
@@ -300,6 +303,9 @@ promote: true
 tileShorthand:
   title: Add a time picker
   description: Add the time picker to a sample app to specify a time range in data
+redirects:
+  - /build-tools/new-relic-one-applications/intro-to-sdk
+  - /client-side-sdk/index.html
 ---
 ```
 
