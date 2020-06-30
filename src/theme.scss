@@ -17,6 +17,7 @@
   --link-color: var(--color-brand-800);
   --border-color: var(--color-neutrals-400);
   --divider-color: var(--color-neutrals-100);
+  --heading-text-color: var(--color-neutrals-900);
   --boxshadow: 0 0.24905px 0.55345px rgba(0, 0, 0, 0.00562291),
     0 0.59851px 1.33002px rgba(0, 0, 0, 0.00807786),
     0 1.12694px 2.50431px rgba(0, 0, 0, 0.01),
@@ -27,7 +28,7 @@
 
 .dark-mode {
   --primary-background-color: #1c2a2f;
-  --primary-text-color: var(--color-dark-900);
+  --primary-text-color: var(--color-dark-700);
   --primary-button-background-color: var(--color-brand-800);
   --primary-button-text-color: var(--color-brand-800);
   --primary-surface-background-color: var(--primary-background-color);
@@ -46,6 +47,7 @@
   --link-color: var(--color-brand-400);
   --border-color: var(--color-dark-300);
   --divider-color: var(--color-dark-200);
+  --heading-text-color: var(--color-dark-900);
   --boxshadow: 0 1.66035px 2.10311px rgba(3, 15, 16, 0.0393604),
     0 3.99006px 5.05408px rgba(3, 15, 16, 0.056545),
     0 7.51293px 9.51638px rgba(3, 15, 16, 0.07),
