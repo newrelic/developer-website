@@ -41,9 +41,10 @@ const NEWRELIC_ICONS = {
   ),
   buildApps: (
     <>
-      <polygon points="11.5,7.5 .5,4.5 12,1.5 23.5,4.5" />
-      <polyline points="23.5,4.463 23.5,18.5 11.5,22.5 .5,18.5 .5,4.463" />
-      <line x1="11.5" x2="11.5" y1="7.5" y2="22.5" />
+      <rect x="14" y="1" width="9" height="9"/>
+      <rect x="14" y="14" width="9" height="9"/>
+      <rect x="1" y="14" width="9" height="9"/>
+      <rect x="1" y="1" width="9" height="9"/>
     </>
   ),
   collectData: (
