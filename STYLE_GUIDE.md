@@ -284,7 +284,7 @@ The value that is assigned to the key slug is used in order to navigate to your 
   easier for users to discover
 - `tileShorthand` (optional): config for guides when they appear as tiles. Accepts 2 options:
   - `title`: provide a shortened title for the tile. The title will fallback to the guide title if this is not provided.
-  - `description`: provide a shortended description for the tile. The description will
+  - `description`: provide a shortened description for the tile. The description will
     fallback to the guide description if this is not provided.
 - `redirects`:
   - url you wish to redirect from
