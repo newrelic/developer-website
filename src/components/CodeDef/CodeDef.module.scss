@@ -7,7 +7,7 @@
   color: var(--color-neutrals-700);
 
   :global(.dark-mode) & {
-    color: var(--color-dark-600);
+    color: var(--color-dark-700);
   }
 }
 
@@ -31,7 +31,7 @@
   }
 
   :global(.dark-mode) & {
-    color: var(--color-dark-400);
+    color: var(--color-dark-600);
   }
 }
 
@@ -41,7 +41,7 @@
   color: var(--color-neutrals-600);
 
   :global(.dark-mode) & {
-    color: var(--color-dark-500);
+    color: var(--color-dark-600);
   }
 }
 
