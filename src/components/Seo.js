@@ -24,6 +24,7 @@ function SEO({ description, lang, meta, title }) {
   const globalMetadata = [
     { name: 'description', content: metaDescription },
     { 'http-equiv': 'Content-Type', content: 'text/html', charset: 'utf-8' },
+    { name: 'type', class: 'swiftype', 'data-type': 'enum', content: 'developer' },
   ];
 
   const social = [
