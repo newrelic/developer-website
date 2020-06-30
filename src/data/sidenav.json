@@ -30,16 +30,16 @@
     "url": "/automate-workflows",
     "children": [
       {
-        "displayName": "Tag a set of resources efficiently",
-        "url": "/automate-workflows/5-mins-tag-resources"
-      },
-      {
         "displayName": "Get started with the New Relic CLI",
         "url": "/automate-workflows/get-started-new-relic-cli"
       },
       {
         "displayName": "Set up New Relic using Terraform",
         "url": "/automate-workflows/get-started-terraform"
+      },
+      {
+        "displayName": "Tag a set of resources efficiently",
+        "url": "/automate-workflows/5-mins-tag-resources"
       }
     ]
   },
