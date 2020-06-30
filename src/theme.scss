@@ -5,8 +5,6 @@
 
   --secondary-background-color: var(--color-neutrals-100);
   --secondary-text-color: var(--color-neutrals-600);
-  --secondary-button-background-color: var(--color-white);
-  --secondary-button-text-color: var(--color-brand-800);
   --secondary-hover-background-color: var(--color-neutrals-200);
   --secondary-hover-text-color: var(--color-neutrals-700);
   --secondary-surface-background-color: var(--color-white);
@@ -29,14 +27,10 @@
 .dark-mode {
   --primary-background-color: #1c2a2f;
   --primary-text-color: var(--color-dark-700);
-  --primary-button-background-color: var(--color-brand-800);
-  --primary-button-text-color: var(--color-brand-800);
   --primary-surface-background-color: var(--primary-background-color);
 
   --secondary-background-color: var(--color-dark-100);
   --secondary-text-color: var(--color-dark-600);
-  --secondary-button-background-color: var(--color-white);
-  --secondary-button-text-color: var(--color-brand-800);
   --secondary-hover-background-color: var(--color-dark-300);
   --secondary-hover-text-color: var(--color-dark-800);
   --secondary-surface-background-color: var(--color-dark-300);
