@@ -29,9 +29,14 @@
 }
 
 .deprecation {
-  padding: 0.5rem;
+  padding: 1rem;
   background: var(--color-red-100);
   color: var(--color-neutrals-900);
+
+  :global(.dark-mode) & {
+    color: var(--color-white);
+    background: var(--color-red-900);
+  }
 }
 
 .deprecationDate {
@@ -47,6 +52,10 @@
 
   code {
     background: var(--color-red-200);
+
+    :global(.dark-mode) & {
+      background: var(--color-red-700);
+    }
   }
 }
 
