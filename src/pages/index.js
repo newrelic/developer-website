@@ -93,8 +93,8 @@ const IndexPage = ({ data, pageContext }) => {
           </div>
           <Video
             className={styles.introVideo}
-            id="ZagZfNQYJEU"
-            type="youtube"
+            id="lzrwubc09a"
+            type="wistia"
             title="Develop with New Relic"
           />
         </section>
