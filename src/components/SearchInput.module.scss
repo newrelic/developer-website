@@ -6,6 +6,7 @@
 }
 
 .icon {
+  display: block;
   stroke: var(--color-neutrals-700);
 }
 
@@ -16,15 +17,22 @@
   padding-right: calc(1rem + 1em);
 }
 
-.button[type='button'] {
+.button {
+  display: block;
   background-color: transparent;
   border: none;
   margin: 0;
-  padding: 0.25rem;
+  padding: 0;
+  outline: none;
+}
+
+.clearButton {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .buttonContainer {
   position: absolute;
   right: 0.5rem;
-  bottom: 0.25rem;
 }
