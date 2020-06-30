@@ -41,10 +41,10 @@ const NEWRELIC_ICONS = {
   ),
   buildApps: (
     <>
-      <rect x="14" y="1" width="9" height="9"/>
-      <rect x="14" y="14" width="9" height="9"/>
-      <rect x="1" y="14" width="9" height="9"/>
-      <rect x="1" y="1" width="9" height="9"/>
+      <rect x="14" y="1" width="9" height="9" />
+      <rect x="14" y="14" width="9" height="9" />
+      <rect x="1" y="14" width="9" height="9" />
+      <rect x="1" y="1" width="9" height="9" />
     </>
   ),
   collectData: (
