@@ -30,11 +30,7 @@ const SearchInput = ({ className, onClear, value, ...props }) => {
           onKeyDown={(e) => e.preventDefault()}
           type="button"
         >
-          <FeatherIcon
-            name={value ? 'x' : 'search'}
-            className={styles.icon}
-            onClick={handleClick}
-          />
+          <FeatherIcon name={value ? 'x' : 'search'} className={styles.icon} />
         </button>
       </div>
     </div>

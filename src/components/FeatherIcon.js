@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './FeatherIcon.module.scss';
 
-const FeatherIcon = ({ className, name, size = '1em', ...props }) => {
+const FeatherIcon = ({ className, name, size = '1em' }) => {
   const paths = ICONS[name];
 
   return paths ? (
     <svg
-      {...props}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       className={cx(styles.icon, className)}
