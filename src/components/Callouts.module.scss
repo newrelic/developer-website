@@ -3,23 +3,35 @@
 .tip {
   padding: 1.25rem 0.3rem 1.25rem 1.25rem;
   margin: 1.55rem 3rem 1.55rem 1.25rem;
-  color: var(--color-neutrals-900);
+  color: var(--primary-text-color);
 
   h4 {
     font-size: 0.75rem !important;
     text-transform: uppercase;
-    color: var(--color-neutrals-800);
+    color: var(--heading-text-color);
   }
 }
 .caution {
   border-left: 4px solid var(--color-red-400);
   background: var(--color-red-100);
+
+  :global(.dark-mode) & {
+    background: var(--color-red-900);
+  }
 }
 .important {
   border-left: 4px solid var(--color-yellow-400);
   background: var(--color-yellow-100);
+
+  :global(.dark-mode) & {
+    background: var(--color-yellow-900);
+  }
 }
 .tip {
   border-left: 4px solid var(--color-green-400);
   background: var(--color-green-100);
+
+  :global(.dark-mode) & {
+    background: var(--color-green-900);
+  }
 }
