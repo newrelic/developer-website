@@ -1,5 +1,7 @@
 # developer.newrelic.com
 
+[![Known Vulnerabilities](https://snyk.io/test/github/newrelic/developer-website/badge.svg)](https://snyk.io/test/github/newrelic/developer-website)
+
 ## 🚀 Local development
 
 Navigate into your new site’s directory and start it up.
