@@ -30,10 +30,6 @@
     "url": "/automate-workflows",
     "children": [
       {
-        "displayName": "Orchestrate observability workflows",
-        "url": "/automate-workflows/workflow-automation"
-      },
-      {
         "displayName": "Tag a set of resources efficiently",
         "url": "/automate-workflows/5-mins-tag-resources"
       },
