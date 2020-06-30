@@ -88,7 +88,7 @@
 
 .expandGuides {
   margin-top: 2rem;
-  
+
   &:hover {
     transform: translateY(-1px);
   }
@@ -101,6 +101,10 @@
 .featuredGuide {
   &:hover {
     transform: unset;
-    border-color: var(--color-neutrals-300);
+    border-color: var(--color-neutrals-500);
+
+    :global(.dark-mode) & {
+      border-color: var(--color-dark-300);
+    }
   }
 }
