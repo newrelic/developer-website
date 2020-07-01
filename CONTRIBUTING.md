@@ -8,6 +8,7 @@
     - [Cloning vs Forking](#cloning-vs-forking)
     - [Submitting a PR from a forked repo](#submitting-a-pr-from-a-forked-repo)
     - [Submitting a PR from a cloned repo](#submitting-a-pr-from-a-cloned-repo)
+    - [Draft PRs](#draft-prs)
     - [Deploy previews with Amplify](#deploy-previews-with-amplify)
   - [Style guide adherence](#style-guide-adherence)
   - [Reusable components](#reusable-components)
@@ -45,7 +46,7 @@ guidelines below.
 If you intend to run multiple versions of Node please be aware that the New Relic
 Developer Site is currently on Node v12. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
 
-Review [this article](https://itnext.io/nvm-the-easiest-way-to-switch-node-js-environments-on-your-machine-in-a-flash-17babb7d5f1b) 
+Review [this article](https://itnext.io/nvm-the-easiest-way-to-switch-node-js-environments-on-your-machine-in-a-flash-17babb7d5f1b)
 which clearly explains the setup and configuration of NVM.
 
 ### Quick edits
@@ -65,32 +66,34 @@ you can use the Github `Edit This File` button to submit a change.
 
 To be able to [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repository and contribute you will need to be given write access to the repository. This is reserved for New Relic Employees only. Contact the Developer Experience Team if you need write access.
 
-As a non New Relic employee you can [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the repository and contribute as needed. 
+As a non New Relic employee you can [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the repository and contribute as needed.
 
 ### Submitting a PR from a forked repo
 
 0. Create a [Github](https://github.com/) account if you don't already have one.
-1. `Fork` this this repository.  
+1. `Fork` this this repository.
 2. Make your changes.
 3. Test your changes! Review the project's [READ ME](README.md) for instructions on how to build and run tests locally.
 4. Submit a `Pull Request` to this project with your changes.
-5. If/when your `PR` is accepted, the automation in this project will build the site  and deploy a new version of the code to `developer.newrelic.com`. 
+5. If/when your `PR` is accepted, the automation in this project will build the site and deploy a new version of the code to `developer.newrelic.com`.
 6. And you are done!
 
 ### Submitting a PR from a cloned repo
 
 0. Create a [Github](https://github.com/) account if you don't already have one.
 1. `Clone` this this repository.
-2. Create a new branch locally.  
-3. Make your changes. 
+2. Create a new branch locally.
+3. Make your changes.
 4. Test your changes! Review the project's [READ ME](README.md) for instructions on how to build and run tests locally.
 5. Submit a `Pull Request` to this project with your changes.
-6. If/when your `PR` is accepted, the automation in this project will build the site  and deploy a new version of the code to `developer.newrelic.com`. 
+6. If/when your `PR` is accepted, the automation in this project will build the site and deploy a new version of the code to `developer.newrelic.com`.
 7. And you are done!
+
+### Draft PRs
 
 ### Deploy previews with Amplify
 
- PRs that are opened from a branch in this repo (not forks) will generate preview links on Amplify automatically. Amplify preview links can be found within the PR under the `Checks` Tab.
+PRs that are opened from a branch in this repo (not forks) will generate preview links on Amplify automatically. Amplify preview links can be found within the PR under the `Checks` Tab.
 
 ## Style guide adherence
 
@@ -117,15 +120,15 @@ Technical reference pages are detailed technical specifications of the New Relic
 
 1. If you'd like to create an entirely new page of documentation file a [Documentation Request](https://github.com/newrelic/developer-website/issues/new/choose)
 2. The Developer Experience Team will review the request to add a new documentation page.
-3. If a new page is approved you may be asked to help write the page content. 
-4. If you are willing to assist in the process of creating a new page, then follow the instructions above to `Fork` or `Clone` the repo and make your edits. 
+3. If a new page is approved you may be asked to help write the page content.
+4. If you are willing to assist in the process of creating a new page, then follow the instructions above to `Fork` or `Clone` the repo and make your edits.
 5. Follow the instructions above to submit a `PR` for your change.
 
 ## Deleting pages
 
 1. If you feel a page needs to be deleted file a [Documentation Request](https://github.com/newrelic/developer-website/issues/new/choose).
-2. The Developer Experience Team will review the request to delete an existing documentation page. 
-3. If the deletion is approved, The Developer Experience Team will delete the page. 
+2. The Developer Experience Team will review the request to delete an existing documentation page.
+3. If the deletion is approved, The Developer Experience Team will delete the page.
 
 ## New Relic guides
 
@@ -248,7 +251,7 @@ In the example below a new navigation element has been added called `New Nav Ite
         "displayName": "Create Flex Integration",
         "url": "/"
       },
-       {
+      {
         "displayName": "New nav item",
         "url": "/new-route"
       }
