@@ -180,7 +180,7 @@ const IndexPage = ({ data, pageContext }) => {
         </p>
 
         <section
-        className={cx(
+          className={cx(
             styles.section,
             styles.stripedSection,
             styles.developerChampions
@@ -190,8 +190,8 @@ const IndexPage = ({ data, pageContext }) => {
             <h1>New Relic developer champions</h1>
             <p>
               New Relic Champions are solving big problems using New Relic as
-              their linchpin and are recognized as experts and leaders in the New
-              Relic technical community.
+              their linchpin and are recognized as experts and leaders in the
+              New Relic technical community.
             </p>
             <Button
               as={ExternalLink}
