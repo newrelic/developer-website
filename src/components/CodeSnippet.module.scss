@@ -30,6 +30,10 @@
 
 .highlight {
   background: var(--color-neutrals-300);
+
+  :global(.dark-mode) & {
+    background: var(--color-dark-100);
+  }
 }
 
 .bottomBar {
