@@ -11,6 +11,9 @@ import PropTypes from 'prop-types';
 
 const Footer = ({ className }) => {
   const { fileRelativePath } = useContext(PageContext);
+  const isComponentDoc = fileRelativePath.includes(
+    'src/markdown-pages/components'
+  );
 
   return (
     <footer className={cx(styles.footer, className)}>
@@ -32,7 +35,7 @@ const Footer = ({ className }) => {
           <FeatherIcon className={styles.linkIcon} name="pen" size="1rem" />
           Terms of service
         </Link>
-        {fileRelativePath && (
+        {fileRelativePath && !isComponentDoc && (
           <ExternalLink
             className={styles.link}
             href={`${githubBaseUrl}/blob/master/${fileRelativePath}`}
