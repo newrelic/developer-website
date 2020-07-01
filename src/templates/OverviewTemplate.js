@@ -7,6 +7,7 @@ import PageTitle from '../components/PageTitle';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
+import styles from './OverviewTemplate.module.scss';
 
 import SEO from '../components/Seo';
 
@@ -21,7 +22,7 @@ const OverviewTemplate = ({ data }) => {
       <PageTitle>{title}</PageTitle>
       <MDXContainer>{body}</MDXContainer>
       {!!guides?.nodes.length && (
-        <GuideListing>
+        <GuideListing className={styles.guideListing}>
           <GuideListing.List>
             {guides?.nodes.map(({ frontmatter }, index) => (
               <GuideTile
