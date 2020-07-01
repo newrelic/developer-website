@@ -12,6 +12,7 @@
   --accent-text-color: var(--color-neutrals-500);
   --link-color: var(--color-brand-800);
   --border-color: var(--color-neutrals-400);
+  --border-hover-color: var(--color-neutrals-500);
   --divider-color: var(--color-neutrals-100);
   --heading-text-color: var(--color-neutrals-900);
   --boxshadow: 0 0.24905px 0.55345px rgba(0, 0, 0, 0.00562291),
@@ -35,7 +36,8 @@
 
   --accent-text-color: var(--color-dark-600);
   --link-color: var(--color-brand-400);
-  --border-color: var(--color-dark-300);
+  --border-color: var(--color-dark-400);
+  --border-hover-color: var(--color-dark-500);
   --divider-color: var(--color-dark-200);
   --heading-text-color: var(--color-dark-900);
   --boxshadow: 0 1.66035px 2.10311px rgba(3, 15, 16, 0.0393604),
