@@ -200,11 +200,18 @@ const IndexPage = ({ data, pageContext }) => {
             variant={Button.VARIANT.PRIMARY}
             href="https://forms.gle/Zkdub5e1x4MNqSKW9"
           >
-            Nominate a Developer Champion
+            Nominate a developer champion
             <FeatherIcon
               className={styles.externalLinkIcon}
               name="external-link"
             />
+          </Button>
+          <Button
+            as={Link}
+            variant={Button.VARIANT.PLAIN}
+            to="/developer-champion"
+          >
+            Learn more about developer champions
           </Button>
         </section>
       </Layout>
