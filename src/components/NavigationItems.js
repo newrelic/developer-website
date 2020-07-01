@@ -14,6 +14,7 @@ const iconLibrary = {
   'Automate workflows': 'automation',
   'Explore docs': 'developerDocs',
   'Developer champions': 'developerChampions',
+  'Try our APIs': 'tryOurAPIs',
 };
 
 const getHighlightedText = (text, highlight) => {
