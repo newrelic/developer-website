@@ -20,7 +20,7 @@ const InlineCodeSnippet = ({ children, language }) => {
       {({ style, className, tokens, getLineProps, getTokenProps }) => (
         <pre
           className={cx(styles.container, className)}
-          style={{ ...style, background: 'none' }}
+          style={{ ...style, backgroundColor: 'none' }}
         >
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line, key: i })}>
