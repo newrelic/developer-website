@@ -179,33 +179,37 @@ const IndexPage = ({ data, pageContext }) => {
           built by the New Relic community.
         </p>
 
-        <section className={cx(styles.section, styles.stripedSection)}>
-          <h1>
-            <img
-              className={styles.img}
-              src={devChampionBadge}
-              alt="developer champion badge"
-              width="5%"
-            />{' '}
-            New Relic developer champions
-          </h1>
-
-          <p>
-            New Relic Champions are solving big problems using New Relic as
-            their linchpin and are recognized as experts and leaders in the New
-            Relic technical community.
-          </p>
-          <Button
-            as={ExternalLink}
-            variant={Button.VARIANT.PRIMARY}
-            href="https://forms.gle/Zkdub5e1x4MNqSKW9"
-          >
-            Nominate a Developer Champion
-            <FeatherIcon
-              className={styles.externalLinkIcon}
-              name="external-link"
-            />
-          </Button>
+        <section
+          className={cx(
+            styles.section,
+            styles.stripedSection,
+            styles.developerChampions
+          )}
+        >
+          <div>
+            <h1>New Relic developer champions</h1>
+            <p>
+              New Relic Champions are solving big problems using New Relic as
+              their linchpin and are recognized as experts and leaders in the
+              New Relic technical community.
+            </p>
+            <Button
+              as={ExternalLink}
+              variant={Button.VARIANT.PRIMARY}
+              href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+            >
+              Nominate a Developer Champion
+              <FeatherIcon
+                className={styles.externalLinkIcon}
+                name="external-link"
+              />
+            </Button>
+          </div>
+          <img
+            className={styles.img}
+            src={devChampionBadge}
+            alt="developer champion badge"
+          />
         </section>
       </Layout>
     </PageContext.Provider>
