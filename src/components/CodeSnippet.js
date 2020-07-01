@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import github from 'prism-react-renderer/themes/github';
+import lightTheme from 'prism-react-renderer/themes/github';
+import darkTheme from 'prism-react-renderer/themes/nightOwl';
 import MiddleEllipsis from 'react-middle-ellipsis';
 import FeatherIcon from './FeatherIcon';
 import styles from './CodeSnippet.module.scss';
 import useClipboard from '../hooks/useClipboard';
 import useFormattedCode from '../hooks/useFormattedCode';
 import Prism from 'prism-react-renderer/prism';
+import useDarkMode from 'use-dark-mode';
 import cx from 'classnames';
 
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
@@ -26,6 +28,7 @@ const CodeSnippet = ({
   const language = className.replace('language-', '');
   const formattedCode = useFormattedCode(children ?? '');
   const [copied, copyCode] = useClipboard();
+  const darkMode = useDarkMode();
   const linesToHighlight =
     lineHighlight && captureLinesToHighlight(lineHighlight);
 
@@ -34,7 +37,7 @@ const CodeSnippet = ({
       <div className={styles.container}>
         <Highlight
           {...defaultProps}
-          theme={github}
+          theme={darkMode.value ? darkTheme : lightTheme}
           code={formattedCode.trim()}
           language={language}
         >

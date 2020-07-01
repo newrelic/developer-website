@@ -10,14 +10,22 @@
 
 .icon {
   display: block;
-  stroke: var(--color-neutrals-700);
+  stroke: var(--primary-text-color);
 }
 
 .input {
+  color: var(--primary-text-color);
   width: 100%;
   font-size: 0.875rem;
   padding: 0.5rem;
   padding-right: calc(1rem + 1em);
+  background: var(--primary-background-color);
+
+  &:focus {
+    outline: none;
+    border: 1px solid rgba(0, 126, 138, 0.6);
+    box-shadow: 0 0 0 4px rgba(0, 126, 138, 0.1);
+  }
 }
 
 .button {

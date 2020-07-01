@@ -21,6 +21,7 @@
     "gatsby-plugin-sass": "^2.3.4",
     "gatsby-plugin-sharp": "^2.6.14",
     "gatsby-plugin-sitemap": "^2.4.5",
+    "gatsby-plugin-use-dark-mode": "^1.1.2",
     "gatsby-remark-images": "^3.3.10",
     "gatsby-source-filesystem": "^2.3.11",
     "gatsby-transformer-remark": "^2.8.15",
@@ -36,7 +37,8 @@
     "react-live": "^2.2.2",
     "react-markdown": "^4.3.1",
     "react-middle-ellipsis": "^1.1.0",
-    "react-shadow": "^18.1.2"
+    "react-shadow": "^18.1.2",
+    "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
     "@newrelic/eslint-plugin-newrelic": "^0.3.0",
