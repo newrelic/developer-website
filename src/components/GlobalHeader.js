@@ -65,13 +65,13 @@ const GlobalHeader = ({ className }) => {
               <ExternalLink
                 href={`${githubBaseUrl}/blob/master/${fileRelativePath}`}
               >
-                <FeatherIcon name="edit" size="1rem" />
+                <FeatherIcon name="edit" size="1rem" className={styles.icon} />
               </ExternalLink>
             </li>
           )}
           <li className={styles.rightSideButton}>
             <ExternalLink href={`${githubBaseUrl}/issues/new/choose`}>
-              <FeatherIcon name="github" size="1rem" />
+              <FeatherIcon name="github" size="1rem" className={styles.icon} />
             </ExternalLink>
           </li>
           <li className={styles.rightSideButton}>
@@ -79,6 +79,7 @@ const GlobalHeader = ({ className }) => {
               name={darkMode.value ? 'sun' : 'moon'}
               size="1rem"
               onClick={darkMode.toggle}
+              className={styles.icon}
             />
           </li>
         </ul>
