@@ -60,13 +60,6 @@ const GlobalHeader = ({ className }) => {
         </div>
 
         <ul className={styles.rightSideButtons}>
-          <li className={styles.rightSideButton}>
-            <FeatherIcon
-              name={darkMode.value ? 'sun' : 'moon'}
-              size="1rem"
-              onClick={darkMode.toggle}
-            />
-          </li>
           {fileRelativePath && (
             <li className={styles.rightSideButton}>
               <ExternalLink
@@ -80,6 +73,13 @@ const GlobalHeader = ({ className }) => {
             <ExternalLink href={`${githubBaseUrl}/issues/new/choose`}>
               <FeatherIcon name="github" size="1rem" />
             </ExternalLink>
+          </li>
+          <li className={styles.rightSideButton}>
+            <FeatherIcon
+              name={darkMode.value ? 'sun' : 'moon'}
+              size="1rem"
+              onClick={darkMode.toggle}
+            />
           </li>
         </ul>
       </div>
