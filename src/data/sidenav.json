@@ -82,6 +82,19 @@
     ]
   },
   {
+    "displayName": "Try our APIs",
+    "children": [
+      {
+        "displayName": "New Relic API Explorer",
+        "url": "https://rpm.newrelic.com/api/explore"
+      },
+      {
+        "displayName": "NerdGraph API Explorer",
+        "url": "https://api.newrelic.com/graphiql"
+      }
+    ]
+  },
+  {
     "displayName": "Explore docs",
     "children": [
       {
