@@ -9,13 +9,27 @@ import { isMdxType } from '../utils/mdx';
 const SideBySide = ({ className, children, type }) => {
   const types = Array.isArray(type) ? type : [type];
   const childObjects = Children.toArray(children);
+
+  const isGatsbyMdxType = (child, type) => {
+    if (type === 'img' && isMdxType(child, 'span')) {
+      if (Array.isArray(child.props.children)) {
+        return (
+          child.props.children.filter((child) => isMdxType(child, 'img'))
+            .length > 0
+        );
+      }
+    }
+    return isMdxType(child, type);
+  };
   const rendersRightColumn = childObjects.some((child) =>
-    types.some((type) => isMdxType(child, type))
+    types.some((type) => isGatsbyMdxType(child, type))
   );
   const sections = splitUsing(childObjects, (child) =>
-    types.some((type) => isMdxType(child, type))
+    types.some((type) => isGatsbyMdxType(child, type))
   ).map((section) =>
-    splitWhen(section, (child) => types.some((type) => isMdxType(child, type)))
+    splitWhen(section, (child) =>
+      types.some((type) => isGatsbyMdxType(child, type))
+    )
   );
 
   return (
