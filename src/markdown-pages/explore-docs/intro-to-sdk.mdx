@@ -8,12 +8,13 @@ tileShorthand:
   description: 'Reference for all New Relic One components'
 redirects:
   - /build-tools/new-relic-one-applications/intro-to-sdk
+  - /client-side-sdk/index
 ---
 
 <Intro>
 
 To help you build a New Relic One application we provide you with the New Relic One SDK.
-Here we give you an introduction to the types of API calls and components in the SDK. The SDK provides everything you need to build your Nerdlets, create visualizations, and fetch data (New Relic or third-party). 
+Here we give you an introduction to the types of API calls and components in the SDK. The SDK provides everything you need to build your Nerdlets, create visualizations, and fetch data (New Relic or third-party).
 
 </Intro>
 
@@ -34,23 +35,23 @@ The **UI components** category of the SDK contains React UI components, includin
 
 - **Layout components**: These components give you control over the layout, and help you build complex layout designs without having to deal with the CSS. Layout components include:
 
-    -   [`Grid`](../components/grid)
+  - [`Grid`](../components/grid)
     and [`GridItem`:](../components/grid-item)
     for organizing more complex, larger scale page content in rows and columns
 
-    -   [`Stack`](../components/stack)
+  - [`Stack`](../components/stack)
     and [`StackItem`](../components/stack-item):
     for organizing simpler, smaller scale page content (in column or row)
 
-    -   [`Tabs`](../components/tabs)
+  - [`Tabs`](../components/tabs)
     and [`TabsItem`](../components/tabs-item):
     group various related pieces of content into separate hideable sections
 
-    -   [`List`](../components/list)
+  - [`List`](../components/list)
     and [`ListItem`](../components/list-item):
     for providing a basic skeleton of virtualized lists
 
-    -   [`Card`](../components/card),
+  - [`Card`](../components/card),
     [`CardHeader`](../components/card-header) and [`CardBody`](../components/card-body)
     : used to group similar concepts and tasks together
 
@@ -61,8 +62,8 @@ The **UI components** category of the SDK contains React UI components, includin
 - **Overlaid components**: These components are used to display contextual information and options in the form of an additional child view that appears above other content on screen when an action or event is triggered. They can either require user interaction (like modals), or be augmenting (like a tooltip). These include: [`Modal`](../components/modal) and [`Tooltip`](../components/tooltip).
 
 > Components suffixed with `Item` can only operate as direct children of that
-name without the suffix. For example: [`GridItem`](../components/grid-item)
-should only be found as a child of [`Grid`](../components/grid).
+> name without the suffix. For example: [`GridItem`](../components/grid-item)
+> should only be found as a child of [`Grid`](../components/grid).
 
 ### Chart components
 
@@ -83,13 +84,13 @@ We also provide storage for storing small data sets, such as configuration setti
 
 The Platform API components of the New Relic One SDK enable your application to interact with different parts of the New Relic One platform, by reading and writing state from and to the URL, setting the configuration, etc. They can be divided into these categories:
 
--   [`PlatformStateContext`](../components/platform-state-context): provides read access to the platform URL state variables.
-Example: `timeRange` in the time picker.
--   [`navigation`](../api/navigation): an object that allows programmatic manipulation of the navigation
-in New Relic One. Example: opening a new Nerdlet.
--   [`NerdletStateContext`](..components/nerdlet-state-context): provides read access to the Nerdlet URL state variables.
-Example: an `entityGuid` in the [entity explorer](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/ui-data/new-relic-one-entity-explorer-view-performance-across-apps-services-hosts).
--   [`nerdlet`](../api/navigation): an object that provides write access to the Nerdlet URL state.
+- [`PlatformStateContext`](../components/platform-state-context): provides read access to the platform URL state variables.
+  Example: `timeRange` in the time picker.
+- [`navigation`](../api/navigation): an object that allows programmatic manipulation of the navigation
+  in New Relic One. Example: opening a new Nerdlet.
+- [`NerdletStateContext`](..components/nerdlet-state-context): provides read access to the Nerdlet URL state variables.
+  Example: an `entityGuid` in the [entity explorer](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/ui-data/new-relic-one-entity-explorer-view-performance-across-apps-services-hosts).
+- [`nerdlet`](../api/navigation): an object that provides write access to the Nerdlet URL state.
 
 ## Related info
 

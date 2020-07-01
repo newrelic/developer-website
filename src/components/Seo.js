@@ -30,6 +30,10 @@ function SEO({ description, lang, meta, title }) {
       'data-type': 'enum',
       content: 'developer',
     },
+    {
+      name: 'google-site-verification',
+      content: 'eT8TSNhvMuDmAtqbtq5jygZKVkhDmz565fYQ3DVop4g',
+    },
   ];
 
   const social = [
