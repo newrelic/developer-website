@@ -21,6 +21,7 @@
   :global(.dark-mode) & {
     color: var(--primary-background-color);
     background-color: var(--color-brand-400);
+    border-color: var(--color-brand-400);
   }
 }
 
