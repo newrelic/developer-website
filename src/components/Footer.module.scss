@@ -28,7 +28,7 @@
   width: 200px;
 
   &:hover {
-    color: var(--color-neutrals-700);
+    color: var(--secondary-text-hover-color);
   }
 }
 
@@ -64,6 +64,6 @@
 
 .link {
   &:hover {
-    color: var(--color-neutrals-700);
+    color: var(--secondary-text-hover-color);
   }
 }

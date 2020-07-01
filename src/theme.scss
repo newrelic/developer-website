@@ -1,10 +1,12 @@
 .light-mode {
   --primary-background-color: var(--color-white);
   --primary-text-color: var(--color-neutrals-700);
+  --primary-text-hover-color: var(--color-neutrals-600);
   --primary-surface-background-color: var(--color-white);
 
   --secondary-background-color: var(--color-neutrals-100);
   --secondary-text-color: var(--color-neutrals-600);
+  --secondary-text-hover-color: var(--color-neutrals-700);
   --secondary-surface-background-color: var(--color-white);
 
   --tertiary-background-color: var(--color-neutrals-200);
@@ -26,10 +28,12 @@
 .dark-mode {
   --primary-background-color: #1c2a2f;
   --primary-text-color: var(--color-dark-700);
+  --primary-text-hover-color: var(--color-dark-900);
   --primary-surface-background-color: var(--primary-background-color);
 
   --secondary-background-color: var(--color-dark-050);
   --secondary-text-color: var(--color-dark-600);
+  --secondary-text-hover-color: var(--color-dark-700);
   --secondary-surface-background-color: var(--color-dark-100);
 
   --tertiary-background-color: var(--color-dark-100);
