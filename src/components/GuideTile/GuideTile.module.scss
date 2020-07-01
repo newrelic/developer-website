@@ -14,11 +14,7 @@
 
   &:hover {
     transform: translateY(-2px);
-    border-color: var(--color-neutrals-500);
-
-    :global(.dark-mode) & {
-      border-color: var(--color-dark-500);
-    }
+    border-color: var(--border-hover-color);
   }
 }
 
