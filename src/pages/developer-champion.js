@@ -121,14 +121,14 @@ const DeveloperChampionPage = () => {
               </ul>
             </li>
             <li>
-              Public recognition on the New Relic Developer website and badging in
-              the New Relic Explorers Hub as a Champion
+              Public recognition on the New Relic Developer website and badging
+              in the New Relic Explorers Hub as a Champion
             </li>
             <li>Exclusive Champion-only swag</li>
             <li>Early access program for some of our products (under NDA)</li>
             <li>
-              Priority access to off-site FutureHack events (including when Lew is
-              participating)
+              Priority access to off-site FutureHack events (including when Lew
+              is participating)
             </li>
             <li>
               Increased Explorer’s Hub support SLA Access to private Developer
