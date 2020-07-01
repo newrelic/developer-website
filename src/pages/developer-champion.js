@@ -6,10 +6,8 @@ import Button from '../components/Button';
 import PageTitle from '../components/PageTitle';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
-import colleaguesOffice from '../images/developer-champion/colleagues-office.jpeg';
 import devChampionHeader from '../images/developer-champion/developer-champion-header.jpg';
 import uptimeEverythingHeader from '../images/developer-champion/uptime-everything-header-image.jpg';
-import teamMeeting from '../images/developer-champion/team-meeting.jpg';
 import styles from './developer-champion.module.scss';
 
 const DeveloperChampionPage = () => {
@@ -135,14 +133,6 @@ const DeveloperChampionPage = () => {
             Champion Explorer’s Hub group
           </li>
         </ul>
-      </section>
-      <section className={cx(styles.section, styles.twoColumn)}>
-        <img
-          src={colleaguesOffice}
-          className={styles.img}
-          alt="colleagues office"
-        />
-        <img src={teamMeeting} className={styles.img} alt="team meeting" />
       </section>
     </Layout>
   );
