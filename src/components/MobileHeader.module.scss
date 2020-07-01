@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  border-bottom: 1px solid var(--color-neutrals-100);
+  border-bottom: 1px solid var(--divider-color);
   padding: 0 2rem;
 
   width: 100vw;
@@ -25,5 +25,4 @@
   height: calc(
     100vh - (var(--height-mobile-nav-bar) + var(--height-global-header))
   );
-  background-color: var(--color-white);
 }
