@@ -91,6 +91,13 @@ As a non New Relic employee you can [Fork](https://help.github.com/en/github/get
 
 ### Draft PRs
 
+If you wish to submit a [Draft PR](https://github.blog/2019-02-14-introducing-draft-pull-requests/)
+you can do so by selecting Create a draft pull request on the PR submission screen on Github.
+You can find this by clicking on the Create pull request button at the bottom of the
+`Pull Request` you wish to submit.
+
+`Draft PRs` are ideal for in progress work or work you need others to contribute to.
+
 ### Deploy previews with Amplify
 
 PRs that are opened from a branch in this repo (not forks) will generate preview links on Amplify automatically. Amplify preview links can be found within the PR under the `Checks` Tab.
