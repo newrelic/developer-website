@@ -11,13 +11,15 @@ const SideBySide = ({ className, children, type }) => {
   const childObjects = Children.toArray(children);
 
   const isGatsbyMdxType = (child, type) => {
-    if (type === 'img' && isMdxType(child, 'span')) {
-      if (Array.isArray(child.props.children)) {
-        return (
-          child.props.children.filter((child) => isMdxType(child, 'img'))
-            .length > 0
-        );
-      }
+    if (
+      type === 'img' &&
+      isMdxType(child, 'span') &&
+      Array.isArray(child.props.children)
+    ) {
+      return (
+        child.props.children.filter((child) => isMdxType(child, 'img')).length >
+        0
+      );
     }
     return isMdxType(child, type);
   };
