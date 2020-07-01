@@ -11,6 +11,7 @@
   display: grid;
   grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
   width: 100%;
+  position: relative;
 
   @media screen and (max-width: 760px) {
     grid-template-columns: minmax(0, 1fr);
@@ -24,11 +25,10 @@
 }
 
 .sidebar {
-  position: fixed;
-  top: var(--global-header-height);
-  bottom: 0;
+  position: absolute;
+  top: 0;
   width: var(--sidebar-width);
-  height: calc(100vh - var(--global-header-height));
+  max-height: 100%;
   overflow: auto;
 }
 
