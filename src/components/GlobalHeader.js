@@ -14,6 +14,9 @@ import styles from './GlobalHeader.module.scss';
 const GlobalHeader = ({ className }) => {
   const { fileRelativePath } = useContext(PageContext);
   const darkMode = useDarkMode(false);
+  const isComponentDoc = fileRelativePath.includes(
+    'src/markdown-pages/components'
+  );
 
   return (
     <div className={cx(styles.globalHeaderContainer, className)}>
@@ -60,7 +63,7 @@ const GlobalHeader = ({ className }) => {
         </div>
 
         <ul className={styles.rightSideButtons}>
-          {fileRelativePath && (
+          {fileRelativePath && !isComponentDoc && (
             <li className={styles.rightSideButton}>
               <ExternalLink
                 href={`${githubBaseUrl}/blob/master/${fileRelativePath}`}

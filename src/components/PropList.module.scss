@@ -8,6 +8,10 @@
     padding-bottom: 2rem;
     border-bottom: solid var(--divider-color) 1px;
   }
+
+  @media (max-width: 1080px) {
+    grid-template-columns: 100%;
+  }
 }
 
 .propName {
