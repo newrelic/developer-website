@@ -179,7 +179,12 @@ const IndexPage = ({ data, pageContext }) => {
           built by the New Relic community.
         </p>
 
-        <section className={cx(styles.section, styles.stripedSection, styles.developerChampions)}>
+        <section className={cx(
+          styles.section,
+          styles.stripedSection,
+          styles.developerChampions
+          )}
+          >
           <div>
             <h1>New Relic developer champions</h1>
             <p>
