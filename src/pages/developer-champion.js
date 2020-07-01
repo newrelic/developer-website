@@ -6,7 +6,7 @@ import Button from '../components/Button';
 import PageTitle from '../components/PageTitle';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
-import devChampionHeader from '../images/developer-champion/developer-champion-header.jpg';
+import devChampionHeader from '../images/developer-champion/developer-champions.jpg';
 import uptimeEverythingHeader from '../images/developer-champion/uptime-everything-header-image.jpg';
 import styles from './developer-champion.module.scss';
 
@@ -29,9 +29,17 @@ const DeveloperChampionPage = () => {
             are recognized as experts and leaders in the New Relic technical
             community.{' '}
           </p>
-          <ExternalLink href="https://forms.gle/Zkdub5e1x4MNqSKW9">
-            Nominate a Developer Champion
-          </ExternalLink>
+          <Button
+            as={ExternalLink}
+            variant={Button.VARIANT.PRIMARY}
+            href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+          >
+            Nominate a developer champion
+            <FeatherIcon
+              className={styles.externalLinkIcon}
+              name="external-link"
+            />
+          </Button>
         </div>
         <img
           className={styles.img}
@@ -90,11 +98,6 @@ const DeveloperChampionPage = () => {
         </Button>
       </section>
       <section className={cx(styles.section, styles.twoColumn)}>
-        <img
-          className={styles.img}
-          src={uptimeEverythingHeader}
-          alt="uptime everything header"
-        />
         <div>
           <h2>Why should you join and how will we support?</h2>
           <p>
@@ -103,36 +106,39 @@ const DeveloperChampionPage = () => {
             our product organization, as well as specialized recognition and
             rewards.
           </p>
+          <h2>Developer Champions benefits:</h2>
+          <ul>
+            <li>
+              Formal, specialized access to the New Relic Product organization
+              <ul>
+                <li>
+                  Champions have direct access to the New Relic’s Developer
+                  Ecosystem team
+                </li>
+                <li>Custom badge to wear with pride at events</li>
+              </ul>
+            </li>
+            <li>
+              Public recognition on the New Relic Developer website and badging
+              in the New Relic Explorers Hub as a Champion
+            </li>
+            <li>Exclusive Champion-only swag</li>
+            <li>Early access program for some of our products (under NDA)</li>
+            <li>
+              Priority access to off-site FutureHack events (including when Lew
+              is participating)
+            </li>
+            <li>
+              Increased Explorer’s Hub support SLA Access to private Developer
+              Champion Explorer’s Hub group
+            </li>
+          </ul>
         </div>
-      </section>
-      <section className={styles.section}>
-        <h2>Developer Champions benefits:</h2>
-        <ul>
-          <li>
-            Formal, specialized access to the New Relic Product organization
-            <ul>
-              <li>
-                Champions have direct access to the New Relic’s Developer
-                Ecosystem team
-              </li>
-              <li>Custom badge to wear with pride at events</li>
-            </ul>
-          </li>
-          <li>
-            Public recognition on the New Relic Developer website and badging in
-            the New Relic Explorers Hub as a Champion
-          </li>
-          <li>Exclusive Champion-only swag</li>
-          <li>Early access program for some of our products (under NDA)</li>
-          <li>
-            Priority access to off-site FutureHack events (including when Lew is
-            participating)
-          </li>
-          <li>
-            Increased Explorer’s Hub support SLA Access to private Developer
-            Champion Explorer’s Hub group
-          </li>
-        </ul>
+        <img
+          className={styles.img}
+          src={uptimeEverythingHeader}
+          alt="uptime everything header"
+        />
       </section>
     </Layout>
   );
