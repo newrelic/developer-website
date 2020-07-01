@@ -99,12 +99,10 @@
 }
 
 .featuredGuide {
+  border-color: var(--surface-background-color) !important;
+
   &:hover {
     transform: unset;
-    border-color: var(--color-neutrals-500);
-
-    :global(.dark-mode) & {
-      border-color: var(--color-dark-300);
-    }
+    border-color: inherit;
   }
 }
