@@ -31,6 +31,8 @@
 }
 
 .guideListing {
+  --guide-list-row-height: auto;
+
   margin-top: 0;
 }
 
@@ -39,15 +41,23 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4rem;
+
+  @media (max-width: 789px) {
+    flex-direction: column;
+  }
 }
 
 .guideListingHeading {
   margin: 0;
   margin-right: 1rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @media (max-width: 789px) {
+    margin-right: 0rem;
+  }
 }
 
 @media screen and (max-width: 980px) {
@@ -77,4 +87,29 @@
 .stripedSection {
   padding: 2rem;
   background: var(--color-neutrals-100);
+  border-radius: 4px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.expandGuides {
+  margin-top: 2rem;
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.allGuidesListing {
+  margin-top: 1rem;
+}
+
+.featuredGuide {
+  &:hover {
+    transform: unset;
+    border-color: var(--color-neutrals-300);
+  }
 }

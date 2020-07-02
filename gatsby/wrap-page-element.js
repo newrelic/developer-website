@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { BreadcrumbContext } from '../src/components/BreadcrumbContext';
 import { PageContext } from '../src/components/PageContext';

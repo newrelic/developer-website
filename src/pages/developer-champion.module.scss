@@ -1,0 +1,41 @@
+.section {
+  &:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: repeat(2, calc(50% - 1rem));
+  grid-gap: 2rem;
+}
+
+.img {
+  width: 100%;
+}
+
+.championProgram {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+.point {
+  text-align: center;
+}
+
+.pointIcon {
+  --feather-icon-stroke-width: 1;
+
+  margin-bottom: 2rem;
+  color: var(--color-brand-400);
+}
+
+.nominateButton {
+  grid-column: 2;
+  justify-self: center;
+}
+
+.externalLinkIcon {
+  margin-left: 0.5rem;
+}
