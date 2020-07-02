@@ -34,7 +34,7 @@
   margin: 0 0 0px;
   font-size: 13px;
   line-height: 21px;
-  color: var(--color-neutrals-500);
+  color: var(--accent-text-color);
 }
 
 .buttonsContainer {
@@ -101,9 +101,5 @@
   .container {
     background-color: rgba(15, 25, 28, 0.92);
     box-shadow: 0 -1px 0 rgba(55, 72, 78, 0.4);
-  }
-
-  .description {
-    color: var(--color-neutrals-600);
   }
 }
