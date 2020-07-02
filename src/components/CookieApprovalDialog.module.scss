@@ -20,7 +20,7 @@
   width: 1180px;
   margin: 0 auto;
   box-sizing: border-box;
-  padding: 18px 0;
+  padding: 1.125rem 0;
 }
 
 .heading {
@@ -37,21 +37,18 @@
   color: var(--color-neutrals-500);
 }
 
-.cta-container {
-  margin-left: 16px;
+.ctaContainer {
+  margin-left: 1rem;
   flex-shrink: 0;
 }
 
-.approval-button {
+.approvalButton {
   margin-right: 10px;
-  padding: 10px 30px;
+  padding: 0.625rem 1.75rem;
 }
 
-.button-close {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  opacity: 0.75;
+.ignoreButton {
+  padding: 0.625rem 1rem;
 }
 
 // ==============================================================
@@ -60,11 +57,11 @@
 @media screen and (max-width: 1200px) {
   .content {
     width: 100%;
-    padding: 18px 28px;
+    padding: 1.125rem 1.75rem;
   }
 
   .heading {
-    margin-bottom: 6px;
+    margin-bottom: 0.375rem;
   }
 
   .description {
@@ -79,21 +76,21 @@
   }
 
   .description {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 
   .cta-container {
     margin: 0;
   }
 
-  .approval-button {
-    padding-top: 8px;
-    padding-bottom: 8px;
+  .approvalButton {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
-  .ignore-button {
-    padding-top: 8px;
-    padding-bottom: 8px;
+  .ignoreButton {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     color: var(--color-neutrals-700);
   }
 }
