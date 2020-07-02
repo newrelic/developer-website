@@ -10,7 +10,7 @@ tileShorthand:
 ---
 <Intro>
 
-[Terraform](https://www.terraform.io/) is a popular infrastructure as code software tool by HashiCorp. You can use it to provision all kind of infrastructure and services, including New Relic entities.
+[Terraform](https://www.terraform.io/) is a popular infrastructure as code software tool by HashiCorp. You can use it to provision all kinds of infrastructure and services, including New Relic entities.
 
 In this guide you'll learn how to set up New Relic for the first time with [Terraform](https://www.terraform.io/). More specifically, you are going to provision an alert policy with notifications in your New Relic account using Terraform.
 
@@ -23,7 +23,7 @@ In this guide you'll learn how to set up New Relic for the first time with [Terr
 
 To use this guide, you should have some basic knowledge of both New Relic and Terraform.
 
-* If you haven't deployed a New Relic agent yet, [install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application. 
+* If you haven't deployed a New Relic agent yet, [install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application.
 * [Install Terraform CLI](https://www.terraform.io/intro/getting-started/install.html).
 
 <Steps>
@@ -31,7 +31,7 @@ To use this guide, you should have some basic knowledge of both New Relic and Te
 
 ## Bootstrap your provider configuration
 
-New Relic's Terraform Provider detects the environment variables above when running Terraform commands. 
+New Relic's Terraform Provider detects the environment variables above when running Terraform commands.
 
 You can set the environment variables in your `.bash_profile` or `.bashrc` file.
 
@@ -89,7 +89,7 @@ $ terraform plan
 </Step>
 <Step>
 
-## Add a data source 
+## Add a data source
 
 The alert policy you defined in `main.tf` does not contain any alert condition. You are going to add an alert condition linked to your application.
 
@@ -154,7 +154,7 @@ resource "newrelic_alert_condition" "alert_condition_name" {
 
 ## Add a notification channel
 
-Alert policies use [notification channels](https://docs.newrelic.com/docs/alerts/new-relic-alerts/managing-notification-channels/notification-channels-control-where-send-alerts) to inform you about incidents and active alerts. To add a notification channel to your alert policy, add the following snippet to your configuration file. 
+Alert policies use [notification channels](https://docs.newrelic.com/docs/alerts/new-relic-alerts/managing-notification-channels/notification-channels-control-where-send-alerts) to inform you about incidents and active alerts. To add a notification channel to your alert policy, add the following snippet to your configuration file.
 
 When the alert condition is triggered, the notification channel sends an email to the specified `recipients`. You can send notifications using different tools and channels, such as Slack, by changing the `type` of your [alert channel](https://www.terraform.io/docs/providers/newrelic/r/alert_channel.html).
 
@@ -207,7 +207,7 @@ To use our `apm` module with Terraform:
 
 Here is a configuration example with overridden default values. Initialize the working directory using `terraform init`to download and enable the module.
 
-<Tip> 
+<Tip>
 
 The `apm` module doesn't create a notification channel, so you would still have to define one.
 
