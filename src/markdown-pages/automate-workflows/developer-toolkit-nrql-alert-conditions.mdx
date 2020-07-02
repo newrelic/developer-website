@@ -1,0 +1,31 @@
+---
+path: '/automate-workflows/developer-toolkit-nrql-alert-conditions'
+duration: '10 min'
+title: 'Codify your alert configurations with the Developer Toolkit'
+template: 'GuideTemplate'
+description: 'Codify your alert configurations using tools from the Developer Toolkit'
+tileShorthand:
+  title: 'Codify your alert configurations'
+  description: "Manage your New Relic resources through automation using the Developer Toolkit's suite of tools"
+redirects: []
+---
+
+<Intro>
+
+The [New Relic Developer Toolkit](https://newrelic.github.io/developer-toolkit/) is an open source suite of tools expressly built to ease the configuration, management, and usage of New Relic through automation. Choose the tool that best fits your needs to provision all kinds of infrastructure and services, including New Relic alerts.
+
+In this guide, we'll demonstrate how you can provisions NRQL alert conditions in a variety of ways using, allowing you the ability pick the best tool for the job.
+
+Select the best tool for your scenario.
+- [New Relic Terraform Provider](#newrelic-terraform-provider) <br/>
+    <small>Use the provider to create, manage, and update New Relic resources using HashiCorp's configuration language (HCL).</small>
+- [New Relic Kubernetes Operator](#newrelic-kubernetes-operator) <br/>
+    <small>Our Kubernetes operator provides a seamless way to configure New Relic resources (i.e. alerts) alongside your Kubernetes deployment via custom Kubernetes objects.</small>
+- [New Relic Client](#newrelic-client) <br/>
+    <small>The New Relic Client, written in Go, provides the building blocks for many tools in the toolkit. As a library, it can also be leveraged within your own custom applications.</small>
+
+</Intro>
+
+## Before you begin
+
+For this guide you need your New Relic ... [personal API Key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys) and ...

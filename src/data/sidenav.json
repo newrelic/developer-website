@@ -40,6 +40,10 @@
       {
         "displayName": "Tag a set of resources efficiently",
         "url": "/automate-workflows/5-mins-tag-resources"
+      },
+      {
+        "displayName": "Codify your alerts configuration with the Developer Toolkit",
+        "url": "/automate-workflows/developer-toolkit-nrql-alert-conditions"
       }
     ]
   },
