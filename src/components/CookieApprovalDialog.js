@@ -37,9 +37,9 @@ const CookieApprovalDialog = ({ className }) => {
               </span>
             </h4>
             <p className={styles.description}>
-              We rely on cookies to play videos, remember your preferences, and
-              analyze our website traffic. You consent to our cookies if you
-              click “OK”.
+              We rely on tracking instrumentation to deliver an optimal
+              experience across our sites. If you consent to our cookies, please
+              click “Yes".
             </p>
           </div>
           <div className={styles.ctaContainer}>
@@ -48,14 +48,14 @@ const CookieApprovalDialog = ({ className }) => {
               variant={Button.VARIANT.PRIMARY}
               onClick={() => writeCookie(true)}
             >
-              OK
+              Yes
             </Button>
             <Button
-              className={`${styles.ignoreButton}`}
+              className={styles.ignoreButton}
               variant={Button.VARIANT.NORMAL}
               onClick={() => writeCookie(false)}
             >
-              Reject
+              No
             </Button>
           </div>
         </div>
