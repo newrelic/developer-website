@@ -21,12 +21,10 @@ We also have a 12 minute video that covers the steps below.
 
 ## Before you begin
 
-To develop projects, you need our New Relic One CLI (command line interface). 
+To develop projects, you need our New Relic One CLI (command line interface). If you haven't already installed it, do the following:
 
-If you haven't already installed it, do the following:
-
-* Go to our [installation wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) and complete steps 1–4.
-* Make a copy of your account ID in Step 1 because you’ll need it later (it's the number before the account name).
+* Install [Node.js](https://nodejs.org/en/download/).
+* Complete steps 1–4 of our [CLI wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), and be sure to make a copy of your account ID from step 1 because you’ll need it later.
 
 <Important>
 
@@ -34,6 +32,7 @@ If you haven't already installed it, do the following:
 
 </Important>
 
+For additional details, see [Set up your development environment](https://developer.newrelic.com/build-apps/set-up-dev-env).
 
 ## Prepare the time picker sample code
 
@@ -107,8 +106,6 @@ Execute these commands to update the UUID and serve the sample application:
   <Step>
 
 Once the sample application is successfully served, go to the local New Relic One homepage: https://one.newrelic.com/?nerdpacks=local and click **Add Time Picker**:
-
-![New Relic One launcher image](../images/time-picker-guide/homepage-launcher.png)
 
   <Important>
 
@@ -285,7 +282,7 @@ Import the `timeRangeToNrql` method by inserting this line of code below the oth
 
 <Important>
 
-  You don't need to include the `AccountDropdown` from the community import example.
+You don't need to include the `AccountDropdown` from the community import example.
 
 </Important> 
 
