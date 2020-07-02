@@ -6,6 +6,7 @@ import Footer from './Footer';
 import GlobalHeader from './GlobalHeader';
 import MobileHeader from './MobileHeader';
 import Sidebar from './Sidebar';
+import CookieApprovalDialog from './CookieApprovalDialog';
 import styles from './Layout.module.scss';
 import 'normalize.css';
 import './styles.scss';
@@ -34,6 +35,7 @@ const Layout = ({ children }) => {
           <Footer className={styles.footer} />
         </div>
       </div>
+      <CookieApprovalDialog />
     </div>
   );
 };
