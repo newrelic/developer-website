@@ -54,10 +54,15 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-tagmanager',
+      resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
-        id: 'GTM-W77XWWH',
-        includeInDevelopment: true,
+        googleTagManager: {
+          trackingId: 'GTM-W77XWWH', // leave empty if you want to disable the tracker
+          cookieName: 'newrelic-gdpr-consent', // default
+          dataLayerName: 'dataLayer', // default
+        },
+        // defines the environments where the tracking should be available  - default is ["production"]
+        environments: ['production', 'development'],
       },
     },
     {
