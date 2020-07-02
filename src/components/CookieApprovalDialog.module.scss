@@ -37,17 +37,17 @@
   color: var(--color-neutrals-500);
 }
 
-.ctaContainer {
+.buttonsContainer {
   margin-left: 1rem;
   flex-shrink: 0;
 }
 
-.approvalButton {
+.approveButton {
   margin-right: 10px;
   padding: 0.625rem 1.75rem;
 }
 
-.ignoreButton {
+.rejectButton {
   padding: 0.625rem 1rem;
 }
 
@@ -83,15 +83,14 @@
     margin: 0;
   }
 
-  .approvalButton {
+  .approveButton {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
 
-  .ignoreButton {
+  .rejectButton {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    color: var(--color-neutrals-700);
   }
 }
 

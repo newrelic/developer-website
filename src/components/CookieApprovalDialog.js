@@ -42,16 +42,16 @@ const CookieApprovalDialog = ({ className }) => {
               click “Yes".
             </p>
           </div>
-          <div className={styles.ctaContainer}>
+          <div className={styles.buttonsContainer}>
             <Button
-              className={styles.approvalButton}
+              className={styles.approveButton}
               variant={Button.VARIANT.PRIMARY}
               onClick={() => writeCookie(true)}
             >
               Yes
             </Button>
             <Button
-              className={styles.ignoreButton}
+              className={styles.rejectButton}
               variant={Button.VARIANT.NORMAL}
               onClick={() => writeCookie(false)}
             >
