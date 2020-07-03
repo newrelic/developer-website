@@ -1,6 +1,6 @@
 # developer.newrelic.com
 
-[![Known Vulnerabilities](https://snyk.io/test/github/newrelic/developer-website/badge.svg)](https://snyk.io/test/github/newrelic/developer-website)
+[View known vulnerabilities](https://snyk.io/test/github/newrelic/developer-website)
 
 ## 🚀 Local development
 
