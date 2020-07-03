@@ -1,6 +1,5 @@
 .guideListing {
   position: relative;
-  margin-top: 2rem;
 }
 
 .container {
@@ -18,14 +17,14 @@
   max-width: 800px;
   text-align: center;
   margin-bottom: 7.5rem;
-  color: var(--color-neutrals-500);
+  color: var(--accent-text-color);
 }
 
 .list {
   display: grid;
   grid-template-columns: repeat(3, minmax(260px, 1fr));
   grid-gap: 1rem;
-  grid-auto-rows: minmax(calc(248px - 2rem), auto);
+  grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
   align-items: stretch;
   width: 100%;
 

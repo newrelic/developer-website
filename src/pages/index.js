@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
+import Button from '../components/Button';
 import GuideListing from '../components/GuideListing/GuideListing';
-import GuideTile from '../components/GuideTile';
+import GuideTile from '../components/GuideTile/GuideTile';
 import PageTitle from '../components/PageTitle';
 import Video from '../components/Video';
 import FeatherIcon from '../components/FeatherIcon';
@@ -14,6 +15,7 @@ import ExternalLink from '../components/ExternalLink';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import styles from './index.module.scss';
+import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 
 const getStartedGuides = [
   {
@@ -28,7 +30,7 @@ const getStartedGuides = [
     duration: '7 min',
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
-    path: '/automate-workflows/add-tags-to-apps',
+    path: '/automate-workflows/5-mins-tag-resources',
     icon: 'automation',
   },
   {
@@ -66,6 +68,9 @@ const IndexPage = ({ data, pageContext }) => {
   const {
     allMdx: { nodes },
   } = data;
+  const numberOfPromotedGuides = 6;
+  const [guides, setGuides] = useState(() => nodes.slice(0, 6));
+  const guidesMinusPromoted = nodes.length - numberOfPromotedGuides;
 
   return (
     <PageContext.Provider value={pageContext}>
@@ -73,7 +78,7 @@ const IndexPage = ({ data, pageContext }) => {
         <SEO />
         <PageTitle>Observability for every developer</PageTitle>
 
-        <section className={styles.intro}>
+        <section className={cx(styles.intro, 'intro-text')}>
           <div className={styles.introText}>
             <p>
               Whether you're new to New Relic or already a data nerd, you can
@@ -88,8 +93,8 @@ const IndexPage = ({ data, pageContext }) => {
           </div>
           <Video
             className={styles.introVideo}
-            id="ZagZfNQYJEU"
-            type="youtube"
+            id="lzrwubc09a"
+            type="wistia"
             title="Develop with New Relic"
           />
         </section>
@@ -100,13 +105,25 @@ const IndexPage = ({ data, pageContext }) => {
               <GuideListing.Heading className={cx(styles.guideListingHeading)}>
                 Get coding
               </GuideListing.Heading>
-              <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
-                <button type="button">Create an account</button>
-              </ExternalLink>
+              <Button
+                as={ExternalLink}
+                variant={Button.VARIANT.PRIMARY}
+                href="https://newrelic.com/signup?partner=Developer+Edition"
+              >
+                Create an account
+              </Button>
             </header>
             <GuideListing.List>
               {getStartedGuides.map((guide, index) => (
-                <GuideTile key={index} {...guide} />
+                <GuideTile
+                  key={index}
+                  className={styles.featuredGuide}
+                  {...guide}
+                >
+                  <GuideTile.Button to={guide.path}>
+                    Start the guide
+                  </GuideTile.Button>
+                </GuideTile>
               ))}
             </GuideListing.List>
           </GuideListing>
@@ -116,20 +133,36 @@ const IndexPage = ({ data, pageContext }) => {
           <GuideListing.Heading className={styles.guideListingHeading}>
             Get inspired
           </GuideListing.Heading>
-          <GuideListing.List>
-            {nodes.map(({ frontmatter }, index) => (
+          <GuideListing.List className={styles.allGuidesListing}>
+            {guides.map(({ frontmatter }, index) => (
               <GuideTile
+                as={Link}
+                to={frontmatter.path}
                 key={index}
                 duration={frontmatter.duration}
-                title={frontmatter.callout?.title || frontmatter.title}
+                title={frontmatter.tileShorthand?.title || frontmatter.title}
                 description={
-                  frontmatter.callout?.description || frontmatter.description
+                  frontmatter.tileShorthand?.description ||
+                  frontmatter.description
                 }
                 path={frontmatter.path}
+                alignment={GuideTile.ALIGNMENT.LEFT}
               />
             ))}
           </GuideListing.List>
         </GuideListing>
+        {guides.length === numberOfPromotedGuides && (
+          <div className={styles.buttonContainer}>
+            <Button
+              className={styles.expandGuides}
+              type="button"
+              onClick={() => setGuides(nodes)}
+              variant={Button.VARIANT.NORMAL}
+            >
+              {`Show ${guidesMinusPromoted} more guides`}
+            </Button>
+          </div>
+        )}
 
         <p className={styles.inspiration}>
           Looking for more inspiration? Check out the{' '}
@@ -146,22 +179,44 @@ const IndexPage = ({ data, pageContext }) => {
           built by the New Relic community.
         </p>
 
-        <section className={cx(styles.section, styles.stripedSection)}>
-          <h1>New Relic developer champions</h1>
-          <p>
-            New Relic Champions are solving big problems using New Relic as
-            their linchpin and are recognized as experts and leaders in the New
-            Relic technical community.
-          </p>
-          <ExternalLink href="https://forms.gle/Zkdub5e1x4MNqSKW9">
-            <button type="button">
-              Nominate a Developer Champion
+        <section
+          className={cx(
+            styles.section,
+            styles.stripedSection,
+            styles.developerChampions
+          )}
+        >
+          <div>
+            <h1>New Relic developer champions</h1>
+            <p>
+              New Relic Champions are solving big problems using New Relic as
+              their linchpin and are recognized as experts and leaders in the
+              New Relic technical community.
+            </p>
+            <Button
+              as={ExternalLink}
+              variant={Button.VARIANT.PRIMARY}
+              href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+            >
+              Nominate a developer champion
               <FeatherIcon
                 className={styles.externalLinkIcon}
                 name="external-link"
               />
-            </button>
-          </ExternalLink>
+            </Button>
+            <Button
+              as={Link}
+              variant={Button.VARIANT.PLAIN}
+              to="/developer-champion"
+            >
+              Learn more about developer champions
+            </Button>
+          </div>
+          <img
+            className={styles.img}
+            src={devChampionBadge}
+            alt="developer champion badge"
+          />
         </section>
       </Layout>
     </PageContext.Provider>
@@ -175,14 +230,22 @@ IndexPage.propTypes = {
 
 export const pageQuery = graphql`
   query {
-    allMdx(filter: { frontmatter: { promoteToHomepage: { eq: true } } }) {
+    allMdx(
+      filter: {
+        frontmatter: {
+          template: { eq: "GuideTemplate" }
+          tileShorthand: { title: { ne: null } }
+        }
+      }
+      sort: { fields: [frontmatter___promote, frontmatter___title] }
+    ) {
       nodes {
         frontmatter {
           title
           description
           duration
           path
-          callout {
+          tileShorthand {
             title
             description
           }

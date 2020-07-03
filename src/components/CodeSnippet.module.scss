@@ -15,7 +15,7 @@
   code {
     display: block;
     padding: 0;
-    background: none;
+    background: none !important;
   }
 }
 
@@ -30,6 +30,10 @@
 
 .highlight {
   background: var(--color-neutrals-300);
+
+  :global(.dark-mode) & {
+    background: var(--color-dark-100);
+  }
 }
 
 .bottomBar {
@@ -37,7 +41,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--color-neutrals-200);
+  background: var(--tertiary-background-color);
   padding: 0 1rem;
 }
 
@@ -51,9 +55,6 @@
 
 .copyButton {
   font-size: 0.75rem;
-  color: var(--color-brand-800);
-  background: none;
-  border: none;
   outline: none;
 }
 

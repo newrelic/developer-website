@@ -1,0 +1,53 @@
+.light-mode {
+  --primary-background-color: var(--color-white);
+  --primary-text-color: var(--color-neutrals-700);
+  --primary-text-hover-color: var(--color-neutrals-600);
+  --primary-surface-background-color: var(--color-white);
+
+  --secondary-background-color: var(--color-neutrals-100);
+  --secondary-text-color: var(--color-neutrals-600);
+  --secondary-text-hover-color: var(--color-neutrals-700);
+  --secondary-surface-background-color: var(--color-white);
+
+  --tertiary-background-color: var(--color-neutrals-200);
+
+  --accent-text-color: var(--color-neutrals-500);
+  --link-color: var(--color-brand-800);
+  --border-color: var(--color-neutrals-400);
+  --border-hover-color: var(--color-neutrals-500);
+  --divider-color: var(--color-neutrals-100);
+  --heading-text-color: var(--color-neutrals-900);
+  --boxshadow: 0 0.24905px 0.55345px rgba(0, 0, 0, 0.00562291),
+    0 0.59851px 1.33002px rgba(0, 0, 0, 0.00807786),
+    0 1.12694px 2.50431px rgba(0, 0, 0, 0.01),
+    0 2.01027px 4.46726px rgba(0, 0, 0, 0.0119221),
+    0 3.75998px 8.35552px rgba(0, 0, 0, 0.0143771),
+    0 9px 20px rgba(0, 0, 0, 0.02);
+}
+
+.dark-mode {
+  --primary-background-color: #1c2a2f;
+  --primary-text-color: var(--color-dark-700);
+  --primary-text-hover-color: var(--color-dark-900);
+  --primary-surface-background-color: var(--primary-background-color);
+
+  --secondary-background-color: var(--color-dark-050);
+  --secondary-text-color: var(--color-dark-600);
+  --secondary-text-hover-color: var(--color-dark-700);
+  --secondary-surface-background-color: var(--color-dark-100);
+
+  --tertiary-background-color: var(--color-dark-100);
+
+  --accent-text-color: var(--color-dark-600);
+  --link-color: var(--color-brand-400);
+  --border-color: var(--color-dark-400);
+  --border-hover-color: var(--color-dark-500);
+  --divider-color: var(--color-dark-200);
+  --heading-text-color: var(--color-dark-900);
+  --boxshadow: 0 1.66035px 2.10311px rgba(3, 15, 16, 0.0393604),
+    0 3.99006px 5.05408px rgba(3, 15, 16, 0.056545),
+    0 7.51293px 9.51638px rgba(3, 15, 16, 0.07),
+    0 13.4018px 16.9756px rgba(3, 15, 16, 0.083455),
+    0 25.0666px 31.751px rgba(3, 15, 16, 0.10064),
+    0 60px 76px rgba(3, 15, 16, 0.14);
+}

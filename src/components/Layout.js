@@ -9,6 +9,7 @@ import Sidebar from './Sidebar';
 import styles from './Layout.module.scss';
 import 'normalize.css';
 import './styles.scss';
+import '../theme.scss';
 
 const Layout = ({ children }) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);

@@ -4,6 +4,9 @@ duration: '5 min'
 title: 'Create custom New Relic events'
 template: 'GuideTemplate'
 description: 'Create custom New Relic events'
+tileShorthand:
+  title: 'Create custom events'
+  description: 'Define, visualize, and get alerts on the data you want using custom events'
 redirects:
   - /build-tools/tools-for-ingesting-data/custom-events
 ---
@@ -57,7 +60,7 @@ end
 _Here, a NRQL query retrieves information about the custom event, and the result can be added to a dashboard._
 <br/>
 
-![nrql query example](../images/UC2-sec2-query.png)
+![nrql query example](../../images/UC2-sec2-query.png)
 
 ```
 SELECT count(*) FROM CLIRun FACET errors SINCE 1 week ago

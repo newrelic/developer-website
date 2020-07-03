@@ -13,14 +13,14 @@
   width: 100%;
 
   @media screen and (max-width: 760px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .contentContainer {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  margin: 2rem;
 }
 
 .sidebar {
@@ -37,7 +37,7 @@
 }
 
 .footer {
-  border-top: 1px solid var(--color-neutrals-100);
+  border-top: 1px solid var(--divider-color);
   padding-top: 2rem;
   margin-top: 4rem;
 }

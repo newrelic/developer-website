@@ -6,17 +6,6 @@
   @media (max-width: 1080px) {
     flex-direction: column;
   }
-
-  button {
-    margin-top: 1rem;
-    margin-right: 1rem;
-  }
-
-  p {
-    font-size: 1.125rem;
-    line-height: 1.875rem;
-    color: var(--color-neutrals-600);
-  }
 }
 
 .introVideo {
@@ -31,6 +20,8 @@
 }
 
 .guideListing {
+  --guide-list-row-height: auto;
+
   margin-top: 0;
 }
 
@@ -48,7 +39,7 @@
 .guideListingHeading {
   margin: 0;
   margin-right: 1rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -83,7 +74,43 @@
 }
 
 .stripedSection {
+  --surface-background-color: var(--secondary-surface-background-color);
+
   padding: 2rem;
-  background: var(--color-neutrals-100);
+  background: var(--secondary-background-color);
   border-radius: 4px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.expandGuides {
+  margin-top: 2rem;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.allGuidesListing {
+  margin-top: 1rem;
+}
+
+.featuredGuide {
+  border-color: var(--surface-background-color) !important;
+
+  &:hover {
+    transform: unset;
+    border-color: inherit;
+  }
+}
+
+.developerChampions {
+  display: flex;
+
+  img {
+    height: 9rem;
+  }
 }

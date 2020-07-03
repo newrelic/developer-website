@@ -7,11 +7,16 @@ import { githubBaseUrl } from '../data/constants';
 import NewRelicLogo from './NewRelicLogo';
 import ExternalLink from './ExternalLink';
 import FeatherIcon from './FeatherIcon';
+import useDarkMode from 'use-dark-mode';
 
 import styles from './GlobalHeader.module.scss';
 
 const GlobalHeader = ({ className }) => {
   const { fileRelativePath } = useContext(PageContext);
+  const darkMode = useDarkMode(false);
+  const isComponentDoc = fileRelativePath.includes(
+    'src/markdown-pages/components'
+  );
 
   return (
     <div className={cx(styles.globalHeaderContainer, className)}>
@@ -25,8 +30,8 @@ const GlobalHeader = ({ className }) => {
           </ExternalLink>
 
           <ul className={styles.leftSideLinks}>
-            <li className={`${styles.leftSideLinkItem} ${styles.active}`}>
-              <Link to="/" className={styles.leftSideLink}>
+            <li>
+              <Link to="/" className={cx(styles.leftSideLink, styles.active)}>
                 Developers
               </Link>
             </li>
@@ -38,7 +43,7 @@ const GlobalHeader = ({ className }) => {
                 Open Source
               </ExternalLink>
             </li>
-            <li className={styles.leftSideLinkItem}>
+            <li>
               <ExternalLink
                 href="https://docs.newrelic.com/"
                 className={styles.leftSideLink}
@@ -46,7 +51,7 @@ const GlobalHeader = ({ className }) => {
                 Documentation
               </ExternalLink>
             </li>
-            <li className={styles.leftSideLinkItem}>
+            <li>
               <ExternalLink
                 href="https://discuss.newrelic.com/"
                 className={styles.leftSideLink}
@@ -58,19 +63,27 @@ const GlobalHeader = ({ className }) => {
         </div>
 
         <ul className={styles.rightSideButtons}>
-          {fileRelativePath && (
+          {fileRelativePath && !isComponentDoc && (
             <li className={styles.rightSideButton}>
               <ExternalLink
                 href={`${githubBaseUrl}/blob/master/${fileRelativePath}`}
               >
-                <FeatherIcon name="edit" size="1rem" />
+                <FeatherIcon name="edit" size="1rem" className={styles.icon} />
               </ExternalLink>
             </li>
           )}
           <li className={styles.rightSideButton}>
             <ExternalLink href={`${githubBaseUrl}/issues/new/choose`}>
-              <FeatherIcon name="github" size="1rem" />
+              <FeatherIcon name="github" size="1rem" className={styles.icon} />
             </ExternalLink>
+          </li>
+          <li className={styles.rightSideButton}>
+            <FeatherIcon
+              name={darkMode.value ? 'sun' : 'moon'}
+              size="1rem"
+              onClick={darkMode.toggle}
+              className={styles.icon}
+            />
           </li>
         </ul>
       </div>

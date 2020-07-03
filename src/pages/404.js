@@ -18,8 +18,8 @@ const NotFoundPage = ({ pageContext }) => (
         <SkewedContainer className={styles.content}>
           <h1 className={styles.header}>404</h1>
           <p>
-            This page does not exist. Check the URL and try again, or{' '}
-            <Link to="/">go back to the home page</Link>.
+            The URL you entered may be broken, or the page has been removed.{' '}
+            <Link to="/">Go back to the home page</Link>.
           </p>
         </SkewedContainer>
       </div>

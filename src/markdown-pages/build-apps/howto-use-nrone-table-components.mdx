@@ -4,15 +4,19 @@ duration: '30 min'
 title: 'Add tables to your New Relic One application'
 template: 'GuideTemplate'
 description: 'Add a table to your New Relic One app.'
+promote: true
+tileShorthand:
+  title: 'Add a table to your app'
+  description: 'Add a table to your New Relic One app'
 ---
 
 <Intro>
 
-Tables are a popular way of displaying data in New Relic applications. For example, with the <a href="https://docs.newrelic.com/docs/chart-builder/use-chart-builder/get-started/introduction-chart-builder">chart builder</a> you can create tables from <a href="https://docs-dev.newrelic.com/docs/query-data/nrql-new-relic-query-language/getting-started/introduction-nrql">NRQL queries</a>. 
+Tables are a popular way of displaying data in New Relic applications. For example, with the [chart builder](https://docs.newrelic.com/docs/chart-builder/use-chart-builder/get-started/introduction-chart-builder) you can create tables from [NRQL queries](https://docs.newrelic.com/docs/query-data/nrql-new-relic-query-language/getting-started/introduction-nrql).
 
 Whether you need to have more control over tables or you're importing third-party data, you can build your own tables into your New Relic One application. 
 
-In this guide, you are going to build a sample table using various components of the <var>NR1</var> library.
+In this guide, you are going to build a sample table using various components of the _NR1_ library.
 
 <Video id="28nnlbhrvg" type="wistia"/>
 
@@ -74,11 +78,11 @@ nr1 nerdpack:serve    # Serve the demo app locally
 
 Open [one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local) in your browser. You should see a **Create a table** button in your launcher: That's the demo application you are going to work on. Go ahead and select it.
 
-![app-launcher](../images/nrone-table-guide/demo-app-button.png)
+![app-launcher](../../images/nrone-table-guide/demo-app-button.png)
 
 Have a good look at the demo app: There is a `TableChart` on the left side named **Transaction Overview**, with an `AreaChart` next to it. You are going to use `Table` components to add a new table in the second row.
 
-![app-launcher](../images/nrone-table-guide/app-overview.png)
+![app-launcher](../../images/nrone-table-guide/app-overview.png)
 
 </Step>
 <Step>
@@ -154,7 +158,7 @@ Since you don't know how many rows you'll need, your best bet is to call a funct
 
 Take a look at the application running in New Relic One: you should see something similar to the screenshot below.
 
-![added-table](../images/nrone-table-guide/newtable.png)
+![added-table](../../images/nrone-table-guide/newtable.png)
 
 </Step>
 <Step>
@@ -201,7 +205,7 @@ Notice that [`EntityTitleTableRowCell`](https://developer.newrelic.com/client-si
 
 Time to give your table a second look: The cell components you've added take care of properly formatting the data.
 
-![new-components](../images/nrone-table-guide/table-new-cells.png)
+![new-components](../../images/nrone-table-guide/table-new-cells.png)
 
 </Step>
 <Step>
@@ -252,7 +256,7 @@ The `TableRow` actions property defines a set of actions that appear when the us
 
 Go back to your application and try hovering over any of the rows: Notice how the two available actions appear. When you click them, a function triggers with the selected row data as an argument, and an alert displays in your browser.
 
-![interactive-table](../images/nrone-table-guide/interactive-table.png)
+![interactive-table](../../images/nrone-table-guide/interactive-table.png)
 
 </Step>
 </Steps>

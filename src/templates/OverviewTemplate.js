@@ -1,12 +1,13 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
-import GuideTile from '../components/GuideTile';
+import GuideTile from '../components/GuideTile/GuideTile';
+import styles from './OverviewTemplate.module.scss';
 
 import SEO from '../components/Seo';
 
@@ -21,17 +22,21 @@ const OverviewTemplate = ({ data }) => {
       <PageTitle>{title}</PageTitle>
       <MDXContainer>{body}</MDXContainer>
       {!!guides?.nodes.length && (
-        <GuideListing>
+        <GuideListing className={styles.guideListing}>
           <GuideListing.List>
             {guides?.nodes.map(({ frontmatter }, index) => (
               <GuideTile
+                as={Link}
+                to={frontmatter.path}
                 key={index}
                 duration={frontmatter.duration}
-                title={frontmatter.callout?.title || frontmatter.title}
+                title={frontmatter.tileShorthand?.title || frontmatter.title}
                 description={
-                  frontmatter.callout?.description || frontmatter.description
+                  frontmatter.tileShorthand?.description ||
+                  frontmatter.description
                 }
                 path={frontmatter.path}
+                alignment={GuideTile.ALIGNMENT.LEFT}
               />
             ))}
           </GuideListing.List>
@@ -69,7 +74,7 @@ export const pageQuery = graphql`
           title
           description
           duration
-          callout {
+          tileShorthand {
             title
             description
           }
