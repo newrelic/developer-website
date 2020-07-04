@@ -24,6 +24,7 @@ const components = {
   Tip,
   Intro,
   code: (props) => <CodeSnippet {...props} />,
+  pre: (props) => props.children,
 };
 
 const MDXContainer = ({ className, children }) => {
