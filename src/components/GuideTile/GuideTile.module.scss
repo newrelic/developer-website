@@ -1,15 +1,20 @@
 .tile {
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-  background-color: white;
+  background: var(
+    --surface-background-color,
+    var(--primary-surface-background-color)
+  );
   box-shadow: var(--boxshadow);
   padding: 1rem;
-  border: 1px solid var(--color-neutrals-300);
+  border: 1px solid var(--border-color);
   border-radius: 0.25rem;
   position: relative;
+  transition: all 0.15s ease-out;
 
-  button:hover {
-    transform: translateY(-1px);
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-hover-color);
   }
 }
 
@@ -17,17 +22,12 @@
   margin-top: 1rem;
 }
 
-.title,
-.description {
-  text-align: center;
-}
-
 .timeEstimate {
   font-size: 0.75rem;
   display: flex;
   align-items: center;
   text-align: right;
-  color: var(--color-neutrals-500);
+  color: var(--accent-text-color);
   padding: 0.3rem 0 0.2rem 1.2rem;
   justify-self: end;
 }
@@ -39,26 +39,57 @@
   margin-left: -2.75rem;
   width: 5.5rem;
   height: 5.5rem;
-  border: 4px solid var(--color-white);
+  border: 4px solid var(--surface-background-color);
   background-color: var(--color-neutrals-200);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  :global(.dark-mode) & {
+    background-color: var(--color-dark-050);
+  }
 }
 
 .description {
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
-  color: var(--color-neutrals-600);
+  color: var(--secondary-text-color);
   flex: 1;
-  padding: 0 0.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .button {
   justify-self: center;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .timeIcon {
   margin-right: 0.25rem;
+}
+
+.tileLeftAligned {
+  .title,
+  .description {
+    text-align: left;
+  }
+  .description {
+    padding: 0;
+  }
+}
+
+.tileCenterAligned {
+  .title,
+  .description {
+    text-align: center;
+  }
+  .description {
+    padding: 0 0.5rem;
+  }
 }

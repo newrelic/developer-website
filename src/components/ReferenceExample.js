@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import formatCode from '../utils/formatCode';
-import github from 'prism-react-renderer/themes/github';
+import lightTheme from 'prism-react-renderer/themes/github';
+import darkTheme from 'prism-react-renderer/themes/nightOwl';
 import { LiveEditor, LiveError, LiveProvider } from 'react-live';
 import styles from './ReferenceExample.module.scss';
 import ReferencePreview from './ReferencePreview';
+import useDarkMode from 'use-dark-mode';
 
 const platformStateContextMock = {
   timeRange: {
@@ -32,6 +34,7 @@ const ReferenceExample = ({
   } = window.__NR1_SDK__.default;
   const { live } = example.options;
   let formattedCode;
+  const darkMode = useDarkMode();
 
   try {
     formattedCode = formatCode(example.sourceCode).replace(TRAILING_SEMI, '');
@@ -56,7 +59,7 @@ const ReferenceExample = ({
               []
             )}
             code={formattedCode}
-            theme={github}
+            theme={darkMode.value ? darkTheme : lightTheme}
             disabled={!live}
           >
             {live && (

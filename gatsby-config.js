@@ -49,6 +49,7 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1200,
+              linkImagesToOriginal: false,
             },
           },
         ],
@@ -71,6 +72,7 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
+    'gatsby-plugin-use-dark-mode',
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-source-newrelic-sdk',

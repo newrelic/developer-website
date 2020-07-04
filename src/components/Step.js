@@ -8,7 +8,7 @@ const Step = ({ children, number, total }) => (
   <div className={styles.wrapper}>
     <p className={styles.stepNumber}>{`Step ${number} of ${total}`}</p>
     <div className={styles.stepDetails}>
-      <SideBySide type="pre">{children}</SideBySide>
+      <SideBySide type={['pre', 'img']}>{children}</SideBySide>
     </div>
   </div>
 );

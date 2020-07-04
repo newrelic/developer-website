@@ -14,6 +14,7 @@ const iconLibrary = {
   'Automate workflows': 'automation',
   'Explore docs': 'developerDocs',
   'Developer champions': 'developerChampions',
+  'Try our APIs': 'tryOurAPIs',
 };
 
 const getHighlightedText = (text, highlight) => {
@@ -26,6 +27,8 @@ const getHighlightedText = (text, highlight) => {
     </span>
   );
 };
+
+const isExternal = (url) => url.slice(0, 4) === 'http';
 
 const NavigationItems = ({
   pages,
@@ -121,6 +124,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
               name="chevron-right"
             />
           )}
+          {isExternal(page.url) && <FeatherIcon name="external-link" />}
         </Link>
       ) : (
         <button

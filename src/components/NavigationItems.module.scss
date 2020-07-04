@@ -16,7 +16,7 @@
 }
 
 .navLink {
-  color: var(--color-neutrals-900);
+  color: var(--primary-text-color);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@
   transition: 0.1s;
 
   &:not(.isCurrentPage):hover {
-    color: var(--color-neutrals-600);
+    color: var(--primary-text-hover-color);
   }
 
   [data-depth='0'] > & {
@@ -39,7 +39,7 @@
 }
 
 button.navLink {
-  color: var(--color-neutrals-900);
+  color: var(--primary-text-color);
   background: inherit;
   border: none;
   padding: 0;
@@ -75,7 +75,7 @@ button.navLink {
 }
 
 .groupName {
-  color: var(--color-neutrals-600);
+  color: var(--secondary-text-color);
   font-weight: bold;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -86,7 +86,7 @@ button.navLink {
 }
 
 .isCurrentPage {
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 .filterOn {
