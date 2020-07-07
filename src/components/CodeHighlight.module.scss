@@ -1,0 +1,122 @@
+.container {
+  color: var(--color-nord-6);
+  font-family: var(--code-font);
+  font-size: 0.75rem;
+  display: block;
+  overflow: auto;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  tab-size: 2;
+  hyphens: none;
+  text-shadow: none;
+  padding: 1rem;
+
+  &::selection,
+  &::mozselection {
+    text-shadow: none;
+    background: none;
+  }
+
+  > code {
+    display: table;
+    width: 100%;
+    padding: 0 !important;
+    background: none !important;
+  }
+
+  :global(.light-mode) & {
+    color: var(--color-nord-0);
+    background: var(--color-nord-6);
+  }
+}
+
+.lineNumber {
+  display: inline-block;
+  width: var(--character-width, 3ch);
+  color: var(--color-nord-3);
+  margin-right: 1rem;
+  text-align: right;
+}
+
+:global {
+  .token-line {
+    display: table-row;
+  }
+
+  .namespace {
+    opacity: 0.7;
+  }
+
+  .token {
+    &.comment,
+    &.prolog,
+    &.doctype,
+    &.cdata {
+      color: var(--color-nord-3);
+    }
+
+    &.tag,
+    &.class-name {
+      color: var(--color-nord-7);
+    }
+
+    &.function {
+      color: var(--color-nord-8);
+    }
+
+    &.punctuation,
+    &.operator,
+    &.keyword,
+    &.property,
+    &.entity,
+    &.atrule,
+    &.attr-value,
+    &.url {
+      color: var(--color-nord-9);
+    }
+
+    &.regex,
+    &.important,
+    &.variable {
+      color: var(--color-nord-12);
+    }
+
+    &.selector,
+    &.attr-name,
+    &.string,
+    &.char,
+    &.builtin,
+    &.inserted {
+      color: var(--color-nord-14);
+    }
+
+    &.property,
+    &.boolean,
+    &.constant,
+    &.symbol,
+    &.deleted,
+    &.number {
+      color: var(--color-nord-15);
+    }
+
+    &.important,
+    &.bold {
+      font-weight: bold;
+    }
+    &.italic {
+      font-style: italic;
+    }
+    &.entity {
+      cursor: help;
+    }
+  }
+
+  .line-highlight {
+    background: var(--color-nord-2);
+
+    :global(.light-mode) & {
+      background: var(--color-nord-5);
+    }
+  }
+}
