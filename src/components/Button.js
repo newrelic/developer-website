@@ -8,11 +8,12 @@ const Button = ({
   children,
   className,
   variant,
+  size,
   ...props
 }) => (
   <Component
     {...props}
-    className={cx(className, styles.button, styles[variant])}
+    className={cx(className, styles.button, styles[variant], styles[size])}
   >
     {children}
   </Component>
@@ -24,10 +25,15 @@ Button.VARIANT = {
   NORMAL: 'normal',
 };
 
+Button.SIZE = {
+  SMALL: 'small',
+};
+
 Button.propTypes = {
   as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
+  size: PropTypes.oneOf([Object.values(Button.SIZE)]),
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   variant: PropTypes.oneOf(Object.values(Button.VARIANT)).isRequired,
 };
