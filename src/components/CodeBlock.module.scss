@@ -53,6 +53,14 @@
   }
 }
 
+.lineNumber {
+  display: inline-block;
+  width: var(--character-width, 3ch);
+  color: var(--color-nord-3);
+  margin-right: 1rem;
+  text-align: right;
+}
+
 .fileName {
   font-family: var(--code-font);
   white-space: nowrap;

@@ -8,34 +8,51 @@ import Prism from 'prismjs';
 import styles from './CodeBlock.module.scss';
 import useClipboard from '../hooks/useClipboard';
 
-const CodeHighlight = ({ children, language }) => {
+const CodeHighlight = ({ children, language, lineNumbers }) => {
   return (
     <Highlight Prism={Prism} code={children.trim()} language={language}>
-      {({ tokens, getLineProps, getTokenProps }) => (
-        <pre className={styles.codeContainer} data-language={language}>
-          <code>
-            {tokens.map((line, i) => (
-              // eslint-disable-next-line react/jsx-key
-              <div {...getLineProps({ line, key: i })}>
-                {line.map((token, key) => (
-                  // eslint-disable-next-line react/jsx-key
-                  <span {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            ))}
-          </code>
-        </pre>
-      )}
+      {({ tokens, getLineProps, getTokenProps }) => {
+        const characterWidth = String(tokens.length).length;
+
+        return (
+          <pre className={styles.codeContainer} data-language={language}>
+            <code>
+              {tokens.map((line, i) => (
+                // eslint-disable-next-line react/jsx-key
+                <div {...getLineProps({ line, key: i })}>
+                  {lineNumbers && (
+                    <span
+                      className={styles.lineNumber}
+                      style={{
+                        '--character-width': `${characterWidth}ch`,
+                      }}
+                    >
+                      {i + 1}
+                    </span>
+                  )}
+                  {line.map((token, key) => (
+                    // eslint-disable-next-line react/jsx-key
+                    <span {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              ))}
+            </code>
+          </pre>
+        );
+      }}
     </Highlight>
   );
 };
 
-const CodeBlock = ({ children, copy, fileName, language }) => {
+const CodeBlock = ({ children, copy, fileName, language, lineNumbers }) => {
   const [copied, copyCode] = useClipboard();
 
   return (
     <div className={styles.container}>
-      <CodeHighlight language={language}>{children}</CodeHighlight>
+      <CodeHighlight language={language} lineNumbers={lineNumbers}>
+        {children}
+      </CodeHighlight>
+
       {(copy || fileName) && (
         <div className={styles.statusBar}>
           <div className={styles.fileName}>
@@ -64,6 +81,7 @@ const CodeBlock = ({ children, copy, fileName, language }) => {
 CodeHighlight.propTypes = {
   children: PropTypes.string.isRequired,
   language: PropTypes.string,
+  lineNumbers: PropTypes.bool,
 };
 
 CodeBlock.propTypes = {
@@ -71,10 +89,12 @@ CodeBlock.propTypes = {
   copy: PropTypes.bool,
   children: PropTypes.string.isRequired,
   language: PropTypes.string,
+  lineNumbers: PropTypes.bool,
 };
 
 CodeBlock.defaultProps = {
   copy: true,
+  lineNumbers: false,
 };
 
 export default CodeBlock;
