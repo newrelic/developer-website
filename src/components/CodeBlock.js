@@ -8,7 +8,7 @@ const CodeBlock = ({ children, language }) => {
   return (
     <Highlight Prism={Prism} code={children.trim()} language={language}>
       {({ tokens, getLineProps, getTokenProps }) => (
-        <pre className={styles.container}>
+        <pre className={`${styles.container} language-${language}`}>
           <code>
             {tokens.map((line, i) => (
               // eslint-disable-next-line react/jsx-key
@@ -29,11 +29,8 @@ const CodeBlock = ({ children, language }) => {
 CodeBlock.propTypes = {
   children: PropTypes.string.isRequired,
   language: PropTypes.string,
-  lineNumbers: PropTypes.bool,
 };
 
-CodeBlock.defaultProps = {
-  lineNumbers: false,
-};
+CodeBlock.defaultProps = {};
 
 export default CodeBlock;
