@@ -14,6 +14,7 @@ const CodeBlock = ({
   children,
   copy,
   live,
+  highlightedLines,
   fileName,
   language,
   lineNumbers,
@@ -31,7 +32,11 @@ const CodeBlock = ({
             lineNumbers={lineNumbers}
           />
         ) : (
-          <CodeHighlight language={language} lineNumbers={lineNumbers}>
+          <CodeHighlight
+            highlightedLines={highlightedLines}
+            language={language}
+            lineNumbers={lineNumbers}
+          >
             {formattedCode}
           </CodeHighlight>
         )}
@@ -67,6 +72,7 @@ CodeBlock.propTypes = {
   fileName: PropTypes.string,
   copy: PropTypes.bool,
   children: PropTypes.string.isRequired,
+  highlightedLines: PropTypes.string,
   language: PropTypes.string,
   lineNumbers: PropTypes.bool,
   live: PropTypes.bool,
