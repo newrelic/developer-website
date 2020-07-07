@@ -12,12 +12,6 @@
   text-shadow: none;
   padding: 1rem;
 
-  &::selection,
-  &::mozselection {
-    text-shadow: none;
-    background: none;
-  }
-
   > code {
     display: table;
     width: 100%;
@@ -31,19 +25,25 @@
   }
 }
 
+.lineNumbers {
+  :global(.token-line) {
+    display: grid;
+    grid-template-columns: var(--line-number-width) 1fr;
+    grid-gap: 1rem;
+  }
+}
+
 .lineNumber {
-  display: inline-block;
-  width: var(--character-width, 3ch);
+  user-select: none;
   color: var(--color-nord-3);
-  margin-right: 1rem;
   text-align: right;
 }
 
-:global {
-  .token-line {
-    display: table-row;
-  }
+.wrap {
+  white-space: pre-wrap;
+}
 
+:global {
   .namespace {
     opacity: 0.7;
   }
