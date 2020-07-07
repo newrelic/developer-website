@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import Editor from 'react-simple-code-editor';
 import CodeHighlight from './CodeHighlight';
 import { LiveContext } from 'react-live';
@@ -33,7 +34,7 @@ const CodeEditor = ({ value, language, lineNumbers }) => {
           {code}
         </CodeHighlight>
       )}
-      textareaClassName={styles.editorTextarea}
+      textareaClassName={cx({ [styles.lineNumbers]: lineNumbers })}
       style={{
         fontFamily: 'var(--code-font)',
         fontSize: '0.75rem',
