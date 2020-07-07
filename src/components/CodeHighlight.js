@@ -33,19 +33,19 @@ const CodeHighlight = ({
             data-language={language}
           >
             <code>
-              {tokens.map((line, i) => (
+              {tokens.map((line, idx) => (
                 // eslint-disable-next-line react/jsx-key
                 <div
                   {...getLineProps({
                     line,
-                    key: i,
+                    key: idx,
                     className: cx({
-                      'line-highlight': highlightedLines.has(i + 1),
+                      'line-highlight': highlightedLines.has(idx + 1),
                     }),
                   })}
                 >
                   {lineNumbers && (
-                    <div className={styles.lineNumber}>{i + 1}</div>
+                    <div className={styles.lineNumber}>{idx + 1}</div>
                   )}
                   <div>
                     {line.map((token, key) => (
