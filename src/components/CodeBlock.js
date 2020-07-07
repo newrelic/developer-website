@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
 import styles from './CodeBlock.module.scss';
 
-const CodeBlock = ({ children, language }) => {
+const CodeHighlight = ({ children, language }) => {
   return (
     <Highlight Prism={Prism} code={children.trim()} language={language}>
       {({ tokens, getLineProps, getTokenProps }) => (
-        <pre className={`${styles.container} language-${language}`}>
+        <pre
+          className={cx(styles.container, {
+            [`language-${language}`]: Boolean(language),
+          })}
+        >
           <code>
             {tokens.map((line, i) => (
               // eslint-disable-next-line react/jsx-key
@@ -26,11 +31,18 @@ const CodeBlock = ({ children, language }) => {
   );
 };
 
-CodeBlock.propTypes = {
+const CodeBlock = ({ children, language }) => (
+  <CodeHighlight language={language}>{children}</CodeHighlight>
+);
+
+CodeHighlight.propTypes = {
   children: PropTypes.string.isRequired,
   language: PropTypes.string,
 };
 
-CodeBlock.defaultProps = {};
+CodeBlock.propTypes = {
+  children: PropTypes.string.isRequired,
+  language: PropTypes.string,
+};
 
 export default CodeBlock;
