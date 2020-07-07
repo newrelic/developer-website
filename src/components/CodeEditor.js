@@ -46,7 +46,6 @@ const CodeEditor = ({ value, language, lineNumbers }) => {
 CodeEditor.propTypes = {
   language: PropTypes.string.isRequired,
   lineNumbers: PropTypes.bool,
-  onChange: PropTypes.func,
   value: PropTypes.string.isRequired,
 };
 
