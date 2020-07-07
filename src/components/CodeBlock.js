@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import CodeEditor from './CodeEditor';
@@ -21,15 +21,21 @@ const CodeBlock = ({
 }) => {
   const formattedCode = useFormattedCode(children.trim());
   const [copied, copyCode] = useClipboard();
+  const [code, setCode] = useState(formattedCode);
+
+  useEffect(() => {
+    setCode(formattedCode);
+  }, [formattedCode]);
 
   return (
-    <LiveProvider code={formattedCode}>
+    <LiveProvider code={code}>
       <div className={styles.container}>
         {live ? (
           <CodeEditor
-            value={formattedCode}
+            value={code}
             language={language}
             lineNumbers={lineNumbers}
+            onChange={setCode}
           />
         ) : (
           <CodeHighlight
@@ -37,7 +43,7 @@ const CodeBlock = ({
             language={language}
             lineNumbers={lineNumbers}
           >
-            {formattedCode}
+            {code}
           </CodeHighlight>
         )}
 
@@ -54,7 +60,7 @@ const CodeBlock = ({
               type="button"
               className={styles.copyButton}
               variant={Button.VARIANT.PLAIN}
-              onClick={() => copyCode(formattedCode)}
+              onClick={() => copyCode(code)}
               size={Button.SIZE.SMALL}
             >
               <FeatherIcon name="copy" className={styles.copyButtonIcon} />
