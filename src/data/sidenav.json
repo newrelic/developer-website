@@ -110,10 +110,6 @@
         "url": "/explore-docs/nerdpack-file-structure"
       },
       {
-        "displayName": "Intro to New Relic One API components",
-        "url": "/explore-docs/intro-to-sdk"
-      },
-      {
         "displayName": "Intro to Nerdstorage",
         "url": "/explore-docs/nerdstorage"
       },
@@ -123,6 +119,7 @@
       },
       {
         "displayName": "Component library",
+        "url": "/explore-docs/intro-to-sdk",
         "children": [
           {
             "displayName": "AccountPicker",

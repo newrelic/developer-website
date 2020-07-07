@@ -116,6 +116,15 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
         >
           <span className={styles.navLinkText}>
             {headerIcon}
+            {page.displayName === 'Component library' && (
+              <FeatherIcon
+                className={cx(
+                  { [styles.isExpanded]: isExpanded },
+                  styles.nestedChevron
+                )}
+                name="chevron-right"
+              />
+            )}
             {display}
           </span>
           {isCurrentPage && (
