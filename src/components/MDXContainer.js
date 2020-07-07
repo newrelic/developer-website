@@ -29,7 +29,7 @@ const components = {
       copy={copy !== 'false'}
       highlightedLines={lineHighlight}
       language={className?.replace('language-', '')}
-      lineNumbers={lineNumbers !== 'false'}
+      lineNumbers={lineNumbers === 'true'}
       live={live === 'true'}
       {...props}
     />

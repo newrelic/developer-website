@@ -193,10 +193,10 @@ There are four props that can be supplied to a code snippet.
   ```
   ````
 
-- `lineNumbers`: `true` or `false`. Will show line numbers of the left side of the code, defaults to `true`.
+- `lineNumbers`: `true` or `false`. Will show line numbers of the left side of the code, defaults to `false`.
 
   ````md
-  ```jsx lineNumbers=false
+  ```jsx lineNumbers=true
   ```
   ````
 
