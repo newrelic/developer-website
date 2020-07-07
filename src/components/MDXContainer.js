@@ -11,7 +11,7 @@ import Caution from './Caution';
 import Important from './Important';
 import Tip from './Tip';
 import Intro from './Intro';
-import CodeSnippet from './CodeSnippet';
+import CodeBlock from './CodeBlock';
 
 import styles from './MDXContainer.module.scss';
 
@@ -23,7 +23,17 @@ const components = {
   Important,
   Tip,
   Intro,
-  code: (props) => <CodeSnippet {...props} />,
+  // eslint-disable-next-line react/prop-types
+  code: ({ className, copy, lineNumbers, live, lineHighlight, ...props }) => (
+    <CodeBlock
+      copy={copy !== 'false'}
+      highlightedLines={lineHighlight}
+      language={className?.replace('language-', '')}
+      lineNumbers={lineNumbers !== 'false'}
+      live={live === 'true'}
+      {...props}
+    />
+  ),
   pre: (props) => props.children,
 };
 
