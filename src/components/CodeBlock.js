@@ -7,6 +7,7 @@ import MiddleEllipsis from 'react-middle-ellipsis';
 import Prism from 'prismjs';
 import styles from './CodeBlock.module.scss';
 import useClipboard from '../hooks/useClipboard';
+import useFormattedCode from '../hooks/useFormattedCode';
 
 const CodeHighlight = ({ children, language, lineNumbers }) => {
   return (
@@ -45,12 +46,13 @@ const CodeHighlight = ({ children, language, lineNumbers }) => {
 };
 
 const CodeBlock = ({ children, copy, fileName, language, lineNumbers }) => {
+  const formattedCode = useFormattedCode(children.trim());
   const [copied, copyCode] = useClipboard();
 
   return (
     <div className={styles.container}>
       <CodeHighlight language={language} lineNumbers={lineNumbers}>
-        {children}
+        {formattedCode}
       </CodeHighlight>
 
       {(copy || fileName) && (
@@ -66,7 +68,7 @@ const CodeBlock = ({ children, copy, fileName, language, lineNumbers }) => {
             type="button"
             className={styles.copyButton}
             variant={Button.VARIANT.PLAIN}
-            onClick={() => copyCode(children.trim())}
+            onClick={() => copyCode(formattedCode)}
             size={Button.SIZE.SMALL}
           >
             <FeatherIcon name="copy" className={styles.copyButtonIcon} />
