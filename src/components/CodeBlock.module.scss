@@ -34,3 +34,13 @@
 .copyButtonIcon {
   margin-right: 0.5rem;
 }
+
+.liveError {
+  color: white;
+  background: var(--color-red-400);
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  overflow: auto;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+}
