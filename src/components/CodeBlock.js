@@ -5,20 +5,28 @@ import CodeEditor from './CodeEditor';
 import CodeHighlight from './CodeHighlight';
 import FeatherIcon from './FeatherIcon';
 import MiddleEllipsis from 'react-middle-ellipsis';
-import { LiveError, LiveProvider } from 'react-live';
+import { LiveError, LivePreview, LiveProvider } from 'react-live';
 import styles from './CodeBlock.module.scss';
 import useClipboard from '../hooks/useClipboard';
 import useFormattedCode from '../hooks/useFormattedCode';
 
+const defaultComponents = {
+  Preview: LivePreview,
+};
+
 const CodeBlock = ({
   children,
+  components: componentOverrides = {},
   copy,
   live,
   highlightedLines,
   fileName,
   language,
   lineNumbers,
+  preview,
+  scope,
 }) => {
+  const components = { ...defaultComponents, ...componentOverrides };
   const formattedCode = useFormattedCode(children.trim());
   const [copied, copyCode] = useClipboard();
   const [code, setCode] = useState(formattedCode);
@@ -28,7 +36,8 @@ const CodeBlock = ({
   }, [formattedCode]);
 
   return (
-    <LiveProvider code={code}>
+    <LiveProvider code={code} scope={scope}>
+      {preview && <components.Preview />}
       <div className={styles.container}>
         {live ? (
           <CodeEditor
@@ -69,25 +78,31 @@ const CodeBlock = ({
           </div>
         )}
       </div>
-      {live && <LiveError className={styles.liveError} />}
+      {(live || preview) && <LiveError className={styles.liveError} />}
     </LiveProvider>
   );
 };
 
 CodeBlock.propTypes = {
   fileName: PropTypes.string,
+  components: PropTypes.shape({
+    Preview: PropTypes.elementType,
+  }),
   copy: PropTypes.bool,
   children: PropTypes.string.isRequired,
   highlightedLines: PropTypes.string,
   language: PropTypes.string,
   lineNumbers: PropTypes.bool,
   live: PropTypes.bool,
+  preview: PropTypes.bool,
+  scope: PropTypes.object,
 };
 
 CodeBlock.defaultProps = {
   copy: true,
   lineNumbers: false,
   live: false,
+  preview: false,
 };
 
 export default CodeBlock;

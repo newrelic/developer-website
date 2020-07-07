@@ -15,6 +15,7 @@ import CodeBlock from './CodeBlock';
 
 import styles from './MDXContainer.module.scss';
 
+/* eslint-disable react/prop-types */
 const components = {
   Video,
   Step,
@@ -23,19 +24,29 @@ const components = {
   Important,
   Tip,
   Intro,
-  // eslint-disable-next-line react/prop-types
-  code: ({ className, copy, lineNumbers, live, lineHighlight, ...props }) => (
+  code: ({
+    className,
+    copy,
+    lineNumbers,
+    live,
+    lineHighlight,
+    preview,
+    ...props
+  }) => (
     <CodeBlock
       copy={copy !== 'false'}
       highlightedLines={lineHighlight}
       language={className?.replace('language-', '')}
       lineNumbers={lineNumbers === 'true'}
       live={live === 'true'}
+      preview={preview === 'true'}
+      scope={window.__NR1_SDK__.default}
       {...props}
     />
   ),
   pre: (props) => props.children,
 };
+/* eslint-enable react/prop-types */
 
 const MDXContainer = ({ className, children }) => {
   return (

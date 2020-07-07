@@ -7,6 +7,7 @@ import { LiveEditor, LiveError, LiveProvider } from 'react-live';
 import styles from './ReferenceExample.module.scss';
 import ReferencePreview from './ReferencePreview';
 import useDarkMode from 'use-dark-mode';
+import CodeBlock from './CodeBlock';
 
 const platformStateContextMock = {
   timeRange: {
@@ -22,6 +23,8 @@ const nerdletStateContextMock = {
 
 const TRAILING_SEMI = /;\s*$/;
 
+const USE_CODE_BLOCK = true;
+
 const ReferenceExample = ({
   className,
   example,
@@ -35,6 +38,16 @@ const ReferenceExample = ({
   const { live } = example.options;
   let formattedCode;
   const darkMode = useDarkMode();
+  const scope = useMemo(
+    () => ({
+      ...window.__NR1_SDK__.default,
+      navigation: {
+        // eslint-disable-next-line no-empty-function
+        getOpenLauncherLocation() {},
+      },
+    }),
+    []
+  );
 
   try {
     formattedCode = formatCode(example.sourceCode).replace(TRAILING_SEMI, '');
@@ -42,42 +55,57 @@ const ReferenceExample = ({
     formattedCode = example.sourceCode;
   }
 
+  const Preview = useMemo(
+    () => () => (
+      <ReferencePreview
+        className={styles.preview}
+        style={previewStyle}
+        useToastManager={useToastManager}
+      />
+    ),
+    [useToastManager, previewStyle]
+  );
+
   return (
     <PlatformStateContext.Provider value={platformStateContextMock}>
       <NerdletStateContext.Provider value={nerdletStateContextMock}>
         <div className={className}>
           <h3 className={styles.title}>{example.label}</h3>
-          <LiveProvider
-            scope={useMemo(
-              () => ({
-                ...window.__NR1_SDK__.default,
-                navigation: {
-                  // eslint-disable-next-line no-empty-function
-                  getOpenLauncherLocation() {},
-                },
-              }),
-              []
-            )}
-            code={formattedCode}
-            theme={darkMode.value ? darkTheme : lightTheme}
-            disabled={!live}
-          >
-            {live && (
-              <ReferencePreview
-                className={styles.preview}
-                style={previewStyle}
-                useToastManager={useToastManager}
+          {USE_CODE_BLOCK ? (
+            <CodeBlock
+              lineNumbers
+              language="jsx"
+              live={live}
+              preview={live}
+              scope={scope}
+              components={{ Preview }}
+            >
+              {example.sourceCode}
+            </CodeBlock>
+          ) : (
+            <LiveProvider
+              scope={scope}
+              code={formattedCode}
+              theme={darkMode.value ? darkTheme : lightTheme}
+              disabled={!live}
+            >
+              {live && (
+                <ReferencePreview
+                  className={styles.preview}
+                  style={previewStyle}
+                  useToastManager={useToastManager}
+                />
+              )}
+              <LiveEditor
+                style={{
+                  fontSize: '0.75rem',
+                  maxHeight: '30rem',
+                  overflow: 'auto',
+                }}
               />
-            )}
-            <LiveEditor
-              style={{
-                fontSize: '0.75rem',
-                maxHeight: '30rem',
-                overflow: 'auto',
-              }}
-            />
-            {live && <LiveError className={styles.error} />}
-          </LiveProvider>
+              {live && <LiveError className={styles.error} />}
+            </LiveProvider>
+          )}
         </div>
       </NerdletStateContext.Provider>
     </PlatformStateContext.Provider>
