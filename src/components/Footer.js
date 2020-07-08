@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import cx from 'classnames';
 import ExternalLink from './ExternalLink';
 import { PageContext } from './PageContext';
@@ -14,6 +14,15 @@ const Footer = ({ className }) => {
   const isComponentDoc = fileRelativePath.includes(
     'src/markdown-pages/components'
   );
+
+  const data = useStaticQuery(graphql`
+    query {
+      currentBuildDate {
+        currentDate
+      }
+    }
+  `);
+  console.log(data, 'footer');
 
   return (
     <footer className={cx(styles.footer, className)}>
