@@ -40,7 +40,7 @@ const CodeHighlight = ({
                     line,
                     key: idx,
                     className: cx({
-                      'line-highlight': highlightedLines.has(idx + 1),
+                      [styles.highlightLine]: highlightedLines.has(idx + 1),
                     }),
                   })}
                 >
