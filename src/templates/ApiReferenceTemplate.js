@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import InlineCodeSnippet from '../components/InlineCodeSnippet';
+import CodeBlock from '../components/CodeBlock';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import Markdown from '../components/Markdown';
@@ -45,7 +45,7 @@ const ApiReferenceTemplate = ({ data }) => {
 
       <section className={templateStyles.section}>
         <h2 className={templateStyles.sectionTitle}>Usage</h2>
-        <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
+        <CodeBlock language="js">{usage}</CodeBlock>
       </section>
 
       {methods.length > 0 && (
