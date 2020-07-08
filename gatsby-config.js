@@ -7,6 +7,13 @@ module.exports = {
     siteUrl: 'https://developer.newrelic.com',
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-3047412-33',
+        head: true,
+      },
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
@@ -51,13 +58,6 @@ module.exports = {
             },
           },
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        id: 'GTM-W77XWWH',
-        includeInDevelopment: true,
       },
     },
     {
