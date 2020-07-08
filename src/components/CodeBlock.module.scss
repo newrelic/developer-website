@@ -2,6 +2,10 @@
   background: var(--color-nord-0);
   border-radius: 4px;
 
+  :global(.light-mode) & {
+    background: var(--color-nord-6);
+  }
+
   &.withPreview {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
