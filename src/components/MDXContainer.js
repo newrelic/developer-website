@@ -39,7 +39,6 @@ const components = {
       language={className?.replace('language-', '')}
       lineNumbers={lineNumbers === 'true'}
       live={live === 'true'}
-      scope={window.__NR1_SDK__.default}
       {...props}
     />
   ),
