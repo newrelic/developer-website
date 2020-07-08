@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReferenceExample.module.scss';
 import ReferencePreview from './ReferencePreview';
@@ -16,13 +16,6 @@ const nerdletStateContextMock = {
   entityGuid: 'MTIzNDU2fEZPT3xCQVJ8OTg3NjU0MzIx',
 };
 
-const SCOPE = {
-  ...window.__NR1_SDK__.default,
-  navigation: {
-    getOpenLauncherLocation: () => {},
-  },
-};
-
 const ReferenceExample = ({
   className,
   example,
@@ -34,6 +27,16 @@ const ReferenceExample = ({
     NerdletStateContext,
   } = window.__NR1_SDK__.default;
   const { live } = example.options;
+
+  const scope = useMemo(
+    () => ({
+      ...window.__NR1_SDK__.default,
+      navigation: {
+        getOpenLauncherLocation: () => {},
+      },
+    }),
+    []
+  );
 
   const Preview = useCallback(
     ({ className }) => (
@@ -56,7 +59,7 @@ const ReferenceExample = ({
             language="jsx"
             live={live}
             preview={live}
-            scope={SCOPE}
+            scope={scope}
             components={{ Preview }}
           >
             {example.sourceCode}
