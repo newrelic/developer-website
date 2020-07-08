@@ -26,9 +26,10 @@ const CodeBlock = ({
   lineNumbers,
   preview,
   scope,
+  formatOptions,
 }) => {
   const components = { ...defaultComponents, ...componentOverrides };
-  const formattedCode = useFormattedCode(children.trim());
+  const formattedCode = useFormattedCode(children.trim(), formatOptions);
   const [copied, copyCode] = useClipboard();
   const [code, setCode] = useState(formattedCode);
 
@@ -91,6 +92,7 @@ CodeBlock.propTypes = {
   }),
   copy: PropTypes.bool,
   children: PropTypes.string.isRequired,
+  formatOptions: PropTypes.object,
   highlightedLines: PropTypes.string,
   language: PropTypes.string,
   lineNumbers: PropTypes.bool,
