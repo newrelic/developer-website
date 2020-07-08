@@ -4,7 +4,9 @@ import shallowEqual from '../utils/shallowEqual';
 const useShallowMemo = (callback, deps) => {
   const depsRef = useRef([]);
   const previous = depsRef.current;
-  const equal = deps.every((dep, idx) => shallowEqual(dep, previous[idx]));
+  const equal =
+    deps.length === previous.length &&
+    deps.every((dep, idx) => shallowEqual(dep, previous[idx]));
 
   if (!equal) {
     depsRef.current = deps;
