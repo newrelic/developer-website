@@ -33,7 +33,7 @@ Button.propTypes = {
   as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
-  size: PropTypes.oneOf([Object.values(Button.SIZE)]),
+  size: PropTypes.oneOf(Object.values(Button.SIZE)),
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   variant: PropTypes.oneOf(Object.values(Button.VARIANT)).isRequired,
 };
