@@ -18,7 +18,7 @@ const defaultComponents = {
 const CodeBlock = ({
   children,
   components: componentOverrides = {},
-  copy,
+  copyable,
   live,
   highlightedLines,
   fileName,
@@ -30,7 +30,7 @@ const CodeBlock = ({
 }) => {
   const components = { ...defaultComponents, ...componentOverrides };
   const formattedCode = useFormattedCode(children.trim(), formatOptions);
-  const [copied, copyCode] = useClipboard();
+  const [copied, copy] = useClipboard();
   const [code, setCode] = useState(formattedCode);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const CodeBlock = ({
           )}
         </div>
 
-        {(copy || fileName) && (
+        {(copyable || fileName) && (
           <div className={styles.statusBar}>
             <div className={styles.fileName}>
               {fileName && (
@@ -73,7 +73,7 @@ const CodeBlock = ({
               type="button"
               className={styles.copyButton}
               variant={Button.VARIANT.PLAIN}
-              onClick={() => copyCode(code)}
+              onClick={() => copy(code)}
               size={Button.SIZE.SMALL}
             >
               <FeatherIcon name="copy" className={styles.copyButtonIcon} />
@@ -92,7 +92,7 @@ CodeBlock.propTypes = {
   components: PropTypes.shape({
     Preview: PropTypes.elementType,
   }),
-  copy: PropTypes.bool,
+  copyable: PropTypes.bool,
   children: PropTypes.string.isRequired,
   formatOptions: PropTypes.object,
   highlightedLines: PropTypes.string,
@@ -104,7 +104,7 @@ CodeBlock.propTypes = {
 };
 
 CodeBlock.defaultProps = {
-  copy: true,
+  copyable: true,
   lineNumbers: false,
   live: false,
   preview: false,

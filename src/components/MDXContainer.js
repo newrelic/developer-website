@@ -34,7 +34,7 @@ const components = {
     ...props
   }) => (
     <CodeBlock
-      copy={copy !== 'false'}
+      copyable={copy !== 'false'}
       highlightedLines={lineHighlight}
       language={className?.replace('language-', '')}
       lineNumbers={lineNumbers === 'true'}
