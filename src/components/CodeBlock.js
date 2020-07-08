@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import Button from './Button';
 import CodeEditor from './CodeEditor';
 import CodeHighlight from './CodeHighlight';
@@ -37,8 +38,8 @@ const CodeBlock = ({
 
   return (
     <LiveProvider code={code} scope={scope}>
-      {preview && <components.Preview />}
-      <div className={styles.container}>
+      {preview && <components.Preview className={styles.preview} />}
+      <div className={cx(styles.container, { [styles.withPreview]: preview })}>
         {live ? (
           <CodeEditor
             value={code}

@@ -1,6 +1,11 @@
 .container {
   background: var(--color-nord-0);
   border-radius: 4px;
+
+  &.withPreview {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 }
 
 .statusBar {
@@ -43,4 +48,13 @@
   overflow: auto;
   margin-top: 0.5rem;
   border-radius: 2px;
+}
+
+.preview {
+  padding: 2rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-neutrals-100);
+  box-shadow: var(--boxshadow);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
