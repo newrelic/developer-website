@@ -11,7 +11,7 @@ const IconReference = ({ type }) => {
       className={styles.button}
       type="button"
       key={type}
-      onClick={() => copyIcon(type)}
+      onClick={() => copyIcon(`Icon.TYPE.${type}`)}
     >
       <Icon className={styles.icon} type={Icon.TYPE[type]} />
       <span className={styles.iconName}>{copied ? 'Copied!' : type}</span>
