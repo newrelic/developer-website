@@ -30,7 +30,7 @@ const components = {
     lineNumbers,
     live,
     lineHighlight,
-    preview,
+    preview: _preview,
     ...props
   }) => (
     <CodeBlock
@@ -39,7 +39,6 @@ const components = {
       language={className?.replace('language-', '')}
       lineNumbers={lineNumbers === 'true'}
       live={live === 'true'}
-      preview={preview === 'true'}
       scope={window.__NR1_SDK__.default}
       {...props}
     />
