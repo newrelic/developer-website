@@ -41,22 +41,24 @@ const CodeBlock = ({
     <LiveProvider code={code} scope={scope}>
       {preview && <components.Preview className={styles.preview} />}
       <div className={cx(styles.container, { [styles.withPreview]: preview })}>
-        {live ? (
-          <CodeEditor
-            value={code}
-            language={language}
-            lineNumbers={lineNumbers}
-            onChange={setCode}
-          />
-        ) : (
-          <CodeHighlight
-            highlightedLines={highlightedLines}
-            language={language}
-            lineNumbers={lineNumbers}
-          >
-            {code}
-          </CodeHighlight>
-        )}
+        <div className={styles.scrollContainer}>
+          {live ? (
+            <CodeEditor
+              value={code}
+              language={language}
+              lineNumbers={lineNumbers}
+              onChange={setCode}
+            />
+          ) : (
+            <CodeHighlight
+              highlightedLines={highlightedLines}
+              language={language}
+              lineNumbers={lineNumbers}
+            >
+              {code}
+            </CodeHighlight>
+          )}
+        </div>
 
         {(copy || fileName) && (
           <div className={styles.statusBar}>

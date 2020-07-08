@@ -12,6 +12,11 @@
   }
 }
 
+.scrollContainer {
+  max-height: 26em;
+  overflow: auto;
+}
+
 .statusBar {
   color: var(--color-nord-6);
   display: flex;
