@@ -11,11 +11,10 @@ import Caution from './Caution';
 import Important from './Important';
 import Tip from './Tip';
 import Intro from './Intro';
-import CodeBlock from './CodeBlock';
+import MDXCodeBlock from './MDXCodeBlock';
 
 import styles from './MDXContainer.module.scss';
 
-/* eslint-disable react/prop-types */
 const components = {
   Video,
   Step,
@@ -24,27 +23,9 @@ const components = {
   Important,
   Tip,
   Intro,
-  code: ({
-    className,
-    copy,
-    lineNumbers,
-    live,
-    lineHighlight,
-    preview: _preview,
-    ...props
-  }) => (
-    <CodeBlock
-      copyable={copy !== 'false'}
-      highlightedLines={lineHighlight}
-      language={className?.replace('language-', '')}
-      lineNumbers={lineNumbers === 'true'}
-      live={live === 'true'}
-      {...props}
-    />
-  ),
+  code: MDXCodeBlock,
   pre: (props) => props.children,
 };
-/* eslint-enable react/prop-types */
 
 const MDXContainer = ({ className, children }) => {
   return (
