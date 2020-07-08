@@ -30,6 +30,10 @@ New Relic employees as well as other customers to get help and share best practi
 If you are looking for configuration help or more information about New Relic's
 products please visit the [New Relic Explorers Hub](https://discuss.newrelic.com/)
 
+Like all official New Relic open source projects, there's a related
+[Community topic](https://discuss.newrelic.com/t/developer-newrelic-com/108069)
+in the New Relic Explorers Hub.
+
 ## 🚧 Contributing
 
 We welcome contributions to the New Relic Developer Site. Please review our
