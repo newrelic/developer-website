@@ -56,9 +56,9 @@ const ReferenceExample = ({
   }
 
   const Preview = useMemo(
-    () => () => (
+    () => ({ className }) => (
       <ReferencePreview
-        className={styles.preview}
+        className={className}
         style={previewStyle}
         useToastManager={useToastManager}
       />
