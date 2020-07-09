@@ -28,7 +28,7 @@ const GuideTemplate = ({ data }) => {
       </div>
       <MDXContainer>{body}</MDXContainer>
       <div className={styles.lastUpdated}>
-        {`Last updated on ${parent.modifiedTime}`}
+        {`Page last modified on ${parent.modifiedTime}`}
       </div>
     </Layout>
   );
