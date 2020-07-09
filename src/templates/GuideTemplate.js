@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXContainer from '../components/MDXContainer';
 
