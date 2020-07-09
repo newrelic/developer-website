@@ -59,6 +59,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 exports.onCreateNode = ({ node, actions }) => {
   // if we don't have a relative path, attempt to get one
+
   if (node.context && !node.context.fileRelativePath) {
     const { createPage } = actions;
     const { path, component } = node;

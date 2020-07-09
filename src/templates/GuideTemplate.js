@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXContainer from '../components/MDXContainer';
 
@@ -11,7 +11,7 @@ import styles from './GuideTemplate.module.scss';
 
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
-  const { frontmatter, body } = mdx;
+  const { frontmatter, body, parent } = mdx;
   const { title, description, duration } = frontmatter;
 
   return (
@@ -27,6 +27,9 @@ const GuideTemplate = ({ data }) => {
         )}
       </div>
       <MDXContainer>{body}</MDXContainer>
+      <div className={styles.lastUpdated}>
+        {`Last updated on ${parent.modifiedTime}`}
+      </div>
     </Layout>
   );
 };
@@ -44,6 +47,11 @@ export const pageQuery = graphql`
         path
         title
         description
+      }
+      parent {
+        ... on File {
+          modifiedTime(formatString: "MMMM DD, YYYY")
+        }
       }
     }
   }

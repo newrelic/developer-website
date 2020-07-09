@@ -73,7 +73,6 @@ module.exports = {
     'gatsby-plugin-use-dark-mode',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-meta-redirect',
-    'gatsby-plugin-build-date',
     {
       resolve: 'gatsby-plugin-newrelic',
       options: {
