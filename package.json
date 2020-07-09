@@ -57,6 +57,7 @@
     "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
+    "jest-emotion": "^10.0.32",
     "prettier": "2.0.4",
     "react-test-renderer": "^16.13.1"
   },
