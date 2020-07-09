@@ -5,8 +5,6 @@ on:
     branches:
       # todo: change this branch name
       - master
-    repository_dispatch:
-      types: [semantic-release]
 
 jobs:
   generate:
