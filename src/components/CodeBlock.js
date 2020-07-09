@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import cx from 'classnames';
 import Button from './Button';
 import CodeEditor from './CodeEditor';
@@ -71,10 +72,12 @@ const CodeBlock = ({
             </div>
             <Button
               type="button"
-              className={styles.copyButton}
               variant={Button.VARIANT.PLAIN}
               onClick={() => copy(code)}
               size={Button.SIZE.SMALL}
+              css={css`
+                white-space: nowrap;
+              `}
             >
               <FeatherIcon name="copy" className={styles.copyButtonIcon} />
               {copied ? 'Copied' : 'Copy output'}
