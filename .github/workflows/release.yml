@@ -1,4 +1,4 @@
-name: Changelog
+name: Release
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  generate:
+  generate-changelog:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
