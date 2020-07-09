@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 
 const VARIANTS = {
   PLAIN: 'plain',
@@ -53,46 +53,28 @@ const styles = {
   },
 };
 
-const Button = ({
-  as: Component = 'button',
-  children,
-  className,
-  variant,
-  size,
-  ...props
-}) => (
-  <Component
-    {...props}
-    className={className}
-    css={css`
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      border-radius: 3px;
-      font-family: var(--primary-font-family);
-      line-height: 1;
-      cursor: pointer;
-      border-width: 1px;
-      border-style: solid;
+const Button = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 3px;
+  font-family: var(--primary-font-family);
+  line-height: 1;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
 
-      ${styles.variant[variant]}
-      ${styles.size[size]}
-    `}
-  >
-    {children}
-  </Component>
-);
+  ${({ variant }) => styles.variant[variant]}
+  ${({ size }) => styles.size[size]}
+`;
 
 Button.VARIANT = VARIANTS;
 Button.SIZE = SIZES;
 
 Button.propTypes = {
-  as: PropTypes.elementType,
-  children: PropTypes.node,
-  className: PropTypes.string,
   size: PropTypes.oneOf(Object.values(Button.SIZE)),
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   variant: PropTypes.oneOf(Object.values(Button.VARIANT)).isRequired,
