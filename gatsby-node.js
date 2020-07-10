@@ -1,4 +1,5 @@
 const path = require(`path`);
+const { execSync } = require('child_process');
 
 const getFileRelativePath = (absolutePath) =>
   absolutePath.replace(`${process.cwd()}/`, '');
@@ -59,6 +60,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 exports.onCreateNode = ({ node, actions }) => {
   // if we don't have a relative path, attempt to get one
+  if (node.internal.type === 'Mdx' && node.fileAbsolutePath) {
+    const gitAuthorTime = execSync(
+      `git log -1 --pretty=format:%aI ${node.fileAbsolutePath}`
+    ).toString();
+    actions.createNodeField({
+      node,
+      name: 'gitAuthorTime',
+      value: gitAuthorTime,
+    });
+  }
+
   if (node.context && !node.context.fileRelativePath) {
     const { createPage } = actions;
     const { path, component } = node;
