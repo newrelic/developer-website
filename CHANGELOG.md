@@ -1,3 +1,19 @@
+# [1.1.0](https://github.com/newrelic/developer-website/compare/v1.0.0...v1.1.0) (2020-07-10)
+
+
+### Bug Fixes
+
+* remove unused method ([6b6594e](https://github.com/newrelic/developer-website/commit/6b6594e8e3d0056b252043780315b43d29a44350))
+* removed unnecessary space ([6fa13dd](https://github.com/newrelic/developer-website/commit/6fa13dd826273ceab69f4888854282858b47aefc))
+* updated language ([bdbd9a9](https://github.com/newrelic/developer-website/commit/bdbd9a99895f2e5fbe2463726492e85395cb195a))
+
+
+### Features
+
+* last updated on each page ([8495fa7](https://github.com/newrelic/developer-website/commit/8495fa7d3f840ec99eb4b538784ad8de41afc50f))
+* uses gatsby plugin for last updated ([62f5bd4](https://github.com/newrelic/developer-website/commit/62f5bd4df71260cc0476828827874e1ff017f5cb))
+* uses git history to determine date last modified ([45e54a0](https://github.com/newrelic/developer-website/commit/45e54a085dd8f90cf8e1c3b910b4c07946d0c9cd))
+
 # 1.0.0 (2020-07-09)
 
 
