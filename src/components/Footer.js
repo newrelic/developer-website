@@ -38,7 +38,7 @@ const Footer = ({ className }) => {
         {fileRelativePath && !isComponentDoc && (
           <ExternalLink
             className={styles.link}
-            href={`${githubBaseUrl}/blob/master/${fileRelativePath}`}
+            href={`${githubBaseUrl}/blob/main/${fileRelativePath}`}
           >
             <FeatherIcon className={styles.linkIcon} name="edit" size="1rem" />
             Edit this page
