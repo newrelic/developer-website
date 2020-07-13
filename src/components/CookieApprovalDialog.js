@@ -6,7 +6,7 @@ import styles from './CookieApprovalDialog.module.scss';
 
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
-const CookieApprovalDialog = ({ className }) => {
+const CookieApprovalDialog = ({ className, setCookieConsent }) => {
   const [isCookieSet, setIsCookieSet] = useState(true);
 
   useEffect(() => {
@@ -23,6 +23,7 @@ const CookieApprovalDialog = ({ className }) => {
 
     Cookies.set(gdprConsentCookieName, String(!!answer), options);
     setIsCookieSet(true);
+    answer && setCookieConsent(true);
   }
 
   return (
@@ -75,6 +76,7 @@ const CookieApprovalDialog = ({ className }) => {
 
 CookieApprovalDialog.propTypes = {
   className: PropTypes.string,
+  setCookieConsent: PropTypes.func,
 };
 
 export default CookieApprovalDialog;
