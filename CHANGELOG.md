@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/newrelic/developer-website/compare/v1.1.0...v1.2.0) (2020-07-13)
+
+
+### Features
+
+* renaming all the things that might break in the switch ([1975478](https://github.com/newrelic/developer-website/commit/197547813a705c7707e1d37e57687e3de37ba014))
+
 # [1.1.0](https://github.com/newrelic/developer-website/compare/v1.0.0...v1.1.0) (2020-07-10)
 
 
