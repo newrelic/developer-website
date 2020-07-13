@@ -62,3 +62,12 @@
 .clock {
   margin-right: 0.25rem;
 }
+
+.lastUpdated {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-top: 4rem;
+}

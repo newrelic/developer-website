@@ -7,7 +7,7 @@ frontend:
     build:
       commands:
         - |
-          if [ "${AWS_BRANCH}" = "master" ]; then 
+          if [ "${AWS_BRANCH}" = "main" ]; then 
             npm run build:production; 
           else 
             npm run build:staging; 

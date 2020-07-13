@@ -66,7 +66,7 @@ const GlobalHeader = ({ className }) => {
           {fileRelativePath && !isComponentDoc && (
             <li className={styles.rightSideButton}>
               <ExternalLink
-                href={`${githubBaseUrl}/blob/master/${fileRelativePath}`}
+                href={`${githubBaseUrl}/blob/main/${fileRelativePath}`}
               >
                 <FeatherIcon name="edit" size="1rem" className={styles.icon} />
               </ExternalLink>

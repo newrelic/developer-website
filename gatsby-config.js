@@ -63,6 +63,7 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
+    'gatsby-plugin-emotion',
     'gatsby-plugin-use-dark-mode',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-meta-redirect',
