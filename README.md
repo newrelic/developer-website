@@ -2,6 +2,8 @@
 
 # developer.newrelic.com
 
+[View known vulnerabilities](https://snyk.io/test/github/newrelic/developer-website)
+
 ## 🚀 Local development
 
 Navigate into your new site’s directory and start it up.
