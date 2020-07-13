@@ -10,9 +10,9 @@ tileShorthand:
 ---
 <Intro>
 
-[Kubernetes](https://kubernetes.io/) is an open-source system for automating deployment, scaling, and management of containerized applications. You can use it to provision all kind of infrastructure and services, including New Relic entities.
+[Kubernetes](https://kubernetes.io/) is an open-source system for automating deployment, scaling, and management of containerized applications. You can use it to provision all kinds of infrastructure and services, including New Relic entities.
 
-In this guide you'll learn how to set up New Relic for the first time with the official [New Relic Kubernetes operator](https://github.com/newrelic/newrelic-kubernetes-operator). More specifically, you are going to provision an alert policy with NRQL conditions in your New Relic account using Kubernetes.
+In this guide you'll learn how to set up New Relic for the first time with the official [New Relic Kubernetes operator](https://github.com/newrelic/newrelic-kubernetes-operator). More specifically, you'll provision an alert policy with NRQL conditions in your New Relic account using Kubernetes.
 
 </Intro>
 
@@ -115,17 +115,17 @@ You'll see output that reads similar to the following:
 alertspolicy.nr.k8s.newrelic.com/my-policy created
 ```
 
-Confirm that your alert policy was created by viewing your policies at `alerts.newrelic.com/accounts/{your account ID}/policies`. You can search for your new policy by its name. In this case , you’d search for "Alert Policy Created With k8s." 
+Confirm that your alert policy was created by viewing your policies at `alerts.newrelic.com/accounts/{your account ID}/policies`. You can search for your new policy by its name. In this case, search for "Alert Policy Created With k8s." 
 
-You should see your new alert policy. Now it’s time  to add a NRQL alert condition to the policy using the same configuration file.
+You should see your new alert policy. Next it’s time to add a NRQL alert condition to the policy using the same configuration file.
 </Step>
 <Step>
 
 ## Add NRQL alert conditions to your alert policy
-Now that you’ve created an alert policy in the previous section, you’ll want to add some alert conditions to the policy so you can trigger alerts when certain metrics are out of line.
+In the previous section you created an alert policy; now, you’ll add some alert conditions to the policy so you can trigger alerts when certain metrics are out of line.
 In your `new_relic_alert_policy.yaml` file, add a NRQL alert condition to the policy that will alert you when an application's average overall response time is above five seconds for a three minute period.
 
-<em><small><strong>Note</strong>: To receive notifications when an alert is triggered, you'll want to add <a href="https://docs.newrelic.com/docs/alerts/new-relic-alerts/managing-notification-channels/notification-channels-control-where-send-alerts">notification channels</a> to your alert policy.</small></em>
+<em><small><strong>Note</strong>: To receive notifications when an alert is triggered, add <a href="https://docs.newrelic.com/docs/alerts/new-relic-alerts/managing-notification-channels/notification-channels-control-where-send-alerts">notification channels</a> to your alert policy, with this code.</small></em>
 
 ```yaml lineNumbers=false
 # The policy from the previous steps
@@ -164,15 +164,15 @@ With the alert condition added to the configuration, you can apply the update, w
 kubectl apply -f ./new_relic_alert_policy.yaml
 ```
 
-To confirm the successful creation of the NRQL alert condition, refresh your alert policy. If you see a new alert condition added to the alert policy, it was a success.
+To confirm that the NRQL alert condition was created successfully, refresh your alert policy. If you see a new alert condition added to the alert policy, it was a success.
 
-To finish things off, you'll want to create and add an alert channel to your alert policy. For example, maybe you want to send an email out to your team when your alert condition is triggered.
+To finish things off, you'll create and add an alert channel to your alert policy. For example, maybe you want to send an email out to your team when your alert condition is triggered.
 </Step>
 <Step>
 
 ## What’s next?
 Nice work — now you can manage your New Relic alert policies and NRQL alert conditions with code that integrates seamlessly within your Kubernetes workflow. This provides the ability to configure and manage your alerts with a domain-specific pattern, providing consistency and maintainability. You also gain the benefits of code reviews for any potential changes moving forward.
-As you and your team move forward, you may need to adjust some of the configuration values to better fit your needs.
+As you and your team move forward, you might need to adjust some of the configuration values to better fit your needs.
 The New Relic Kubernetes Operator is just one of several tools in the New Relic Developer Toolkit aimed at facilitating observability as code. 
 
 </Step></Steps>
