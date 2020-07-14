@@ -11,7 +11,7 @@ import Caution from './Caution';
 import Important from './Important';
 import Tip from './Tip';
 import Intro from './Intro';
-import CodeSnippet from './CodeSnippet';
+import MDXCodeBlock from './MDXCodeBlock';
 
 import styles from './MDXContainer.module.scss';
 
@@ -23,7 +23,8 @@ const components = {
   Important,
   Tip,
   Intro,
-  code: (props) => <CodeSnippet {...props} />,
+  code: MDXCodeBlock,
+  pre: (props) => props.children,
 };
 
 const MDXContainer = ({ className, children }) => {
