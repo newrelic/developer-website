@@ -38,6 +38,10 @@
         "url": "/automate-workflows/get-started-terraform"
       },
       {
+        "displayName": "Set up New Relic using the Kubernetes operator",
+        "url": "/automate-workflows/get-started-kubernetes"
+      },
+      {
         "displayName": "Tag a set of resources efficiently",
         "url": "/automate-workflows/5-mins-tag-resources"
       }
