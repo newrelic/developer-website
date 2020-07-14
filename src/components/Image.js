@@ -9,10 +9,12 @@ Image.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   width: PropTypes.number,
+  height: PropTypes.number,
 };
 
 Image.defaultProps = {
-  width: 1200,
+  height: 400,
+  width: 'auto',
 };
 
 export default Image;
