@@ -7,6 +7,7 @@ import PageTitle from '../components/PageTitle';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
+import styles from './OverviewTemplate.module.scss';
 
 import SEO from '../components/Seo';
 
@@ -21,25 +22,30 @@ const OverviewTemplate = ({ data }) => {
       <PageTitle>{title}</PageTitle>
       <MDXContainer>{body}</MDXContainer>
       {!!guides?.nodes.length && (
-        <GuideListing>
-          <GuideListing.List>
-            {guides?.nodes.map(({ frontmatter }, index) => (
-              <GuideTile
-                as={Link}
-                to={frontmatter.path}
-                key={index}
-                duration={frontmatter.duration}
-                title={frontmatter.tileShorthand?.title || frontmatter.title}
-                description={
-                  frontmatter.tileShorthand?.description ||
-                  frontmatter.description
-                }
-                path={frontmatter.path}
-                alignment={GuideTile.ALIGNMENT.LEFT}
-              />
-            ))}
-          </GuideListing.List>
-        </GuideListing>
+        <>
+          <h2
+            className={styles.subtitle}
+          >{`Guides to ${title.toLowerCase()}`}</h2>
+          <GuideListing className={styles.guideListing}>
+            <GuideListing.List>
+              {guides?.nodes.map(({ frontmatter }, index) => (
+                <GuideTile
+                  as={Link}
+                  to={frontmatter.path}
+                  key={index}
+                  duration={frontmatter.duration}
+                  title={frontmatter.tileShorthand?.title || frontmatter.title}
+                  description={
+                    frontmatter.tileShorthand?.description ||
+                    frontmatter.description
+                  }
+                  path={frontmatter.path}
+                  alignment={GuideTile.ALIGNMENT.LEFT}
+                />
+              ))}
+            </GuideListing.List>
+          </GuideListing>
+        </>
       )}
     </Layout>
   );

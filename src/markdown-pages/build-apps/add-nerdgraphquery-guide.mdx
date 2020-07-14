@@ -29,18 +29,18 @@ We also have a 14-minute video that covers the steps below.
 
 ## Before you begin
 
-To develop projects, you need our New Relic One CLI (command line interface).
+To develop projects, you need our New Relic One CLI (command line interface). If you haven't already installed it, do the following:
 
-If you haven't already installed it, do the following:
-
-* Go to our [installation wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) and complete steps 1–4.
-* Make a copy of your account ID in Step 1 because you’ll need it later (it's the number before the account name).
+* Install [Node.js](https://nodejs.org/en/download/).
+* Complete steps 1–4 of our [CLI wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), and be sure to make a copy of your account ID from step 1 because you’ll need it later.
 
 <Important>
 
   If you already installed the New Relic One CLI, but you can't remember your account ID, you can re-run the wizard just to get your account ID.
 
 </Important>
+
+For additional details, see [Set up your development environment](set-up-dev-env).
 
 ## Prepare the sample code
 
@@ -114,20 +114,19 @@ Execute these commands to update the UUID and serve the sample application:
 
 Once the sample application is successfully served, go to the local New Relic One homepage (https://one.newrelic.com/?nerdpacks=local) and click **Use NerdGraph**.
 
-![Use Nerdgraph launcher](../../images/nerdgraphquery-guide/use-nerdgraph-launcher.png)
-
   <Important>
 
 If you don't see any launchers, click **Your applications**.
 
   </Important>
 
+![Use Nerdgraph launcher](../../images/nerdgraphquery-guide/use-nerdgraph-launcher.png)
+
   </Step>
 
 </Steps>
 
-
-After launching the **Use NerdGraph** application, you see a dashboard that gives an overview of the transactions in your New Relic account.
+After launching the **Use NerdGraph** application, you see a dashboard that gives an overview of the transactions in your New Relic account:
 
 ![Screenshot showing the sample transaction application](../../images/nerdgraphquery-guide/no-name.png)
 
@@ -202,7 +201,7 @@ To take the data returned by the NerdGraph query and display it in the applicati
 
 </Steps>
 
-When you go back to the browser and view your application, you see a new headline showing the name of your account returned from NerdGraph.
+When you go back to the browser and view your application, you see a new headline showing the name of your account returned from NerdGraph:
 
 ![App Image](../../images/nerdgraphquery-guide/with-name.png)
 
@@ -274,7 +273,7 @@ After you complete these steps, look at the application in your browser, and not
 
 ![App Complete](../../images/nerdgraphquery-guide/complete.png)
 
-The final `index.js` file should have code similar to the code below. This completed sample code is in your nerdlet `final.js`.
+The final `index.js` file should have code similar to the code below. This completed sample is in your nerdlet `final.js`.
 
   ```jsx
   import React from 'react';

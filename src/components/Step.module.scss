@@ -1,12 +1,13 @@
 .wrapper {
-  border-top: solid 1px var(--color-neutrals-100);
+  border-top: solid 1px var(--divider-color);
   box-sizing: border-box;
   padding-top: 1.5rem;
   margin-top: 2rem;
 
   .stepNumber {
     font-size: 0.75rem;
-    color: var(--color-neutrals-600);
+    color: var(--accent-text-color);
+    margin-bottom: 0;
   }
 }
 
@@ -17,7 +18,6 @@
   h4:first-child,
   h5:first-child,
   h6:first-child {
-    color: var(--color-neutrals-900);
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 1rem;

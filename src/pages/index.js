@@ -78,7 +78,7 @@ const IndexPage = ({ data, pageContext }) => {
         <SEO />
         <PageTitle>Observability for every developer</PageTitle>
 
-        <section className={styles.intro}>
+        <section className={cx(styles.intro, 'intro-text')}>
           <div className={styles.introText}>
             <p>
               Whether you're new to New Relic or already a data nerd, you can
@@ -179,33 +179,44 @@ const IndexPage = ({ data, pageContext }) => {
           built by the New Relic community.
         </p>
 
-        <section className={cx(styles.section, styles.stripedSection)}>
-          <h1>
-            <img
-              className={styles.img}
-              src={devChampionBadge}
-              alt="developer champion badge"
-              width="5%"
-            />{' '}
-            New Relic developer champions
-          </h1>
-
-          <p>
-            New Relic Champions are solving big problems using New Relic as
-            their linchpin and are recognized as experts and leaders in the New
-            Relic technical community.
-          </p>
-          <Button
-            as={ExternalLink}
-            variant={Button.VARIANT.PRIMARY}
-            href="https://forms.gle/Zkdub5e1x4MNqSKW9"
-          >
-            Nominate a Developer Champion
-            <FeatherIcon
-              className={styles.externalLinkIcon}
-              name="external-link"
-            />
-          </Button>
+        <section
+          className={cx(
+            styles.section,
+            styles.stripedSection,
+            styles.developerChampions
+          )}
+        >
+          <div>
+            <h1>New Relic developer champions</h1>
+            <p>
+              New Relic Champions are solving big problems using New Relic as
+              their linchpin and are recognized as experts and leaders in the
+              New Relic technical community.
+            </p>
+            <Button
+              as={ExternalLink}
+              variant={Button.VARIANT.PRIMARY}
+              href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+            >
+              Nominate a developer champion
+              <FeatherIcon
+                className={styles.externalLinkIcon}
+                name="external-link"
+              />
+            </Button>
+            <Button
+              as={Link}
+              variant={Button.VARIANT.PLAIN}
+              to="/developer-champion"
+            >
+              Learn more about developer champions
+            </Button>
+          </div>
+          <img
+            className={styles.img}
+            src={devChampionBadge}
+            alt="developer champion badge"
+          />
         </section>
       </Layout>
     </PageContext.Provider>

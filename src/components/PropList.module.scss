@@ -6,7 +6,7 @@
   &:not(:last-child) {
     margin-bottom: 2rem;
     padding-bottom: 2rem;
-    border-bottom: solid var(--color-neutrals-200) 1px;
+    border-bottom: solid var(--divider-color) 1px;
   }
 
   @media (max-width: 1080px) {
@@ -26,15 +26,21 @@
   margin-top: 2rem;
 
   .label {
-    color: var(--color-neutrals-600);
+    color: var(--accent-text-color);
     font-size: 0.75rem;
     font-weight: bold;
   }
 }
 
 .deprecation {
-  padding: 0.5rem;
+  padding: 1rem;
   background: var(--color-red-100);
+  color: var(--color-neutrals-900);
+
+  :global(.dark-mode) & {
+    color: var(--color-white);
+    background: var(--color-red-900);
+  }
 }
 
 .deprecationDate {
@@ -50,6 +56,10 @@
 
   code {
     background: var(--color-red-200);
+
+    :global(.dark-mode) & {
+      background: var(--color-red-700);
+    }
   }
 }
 
@@ -72,9 +82,8 @@
     margin-bottom: 4rem;
   }
 
-  h4 {
-    margin-top: 0;
-    color: var(--color-neutrals-600);
+  h3 {
+    color: var(--accent-text-color);
   }
 
   .container {

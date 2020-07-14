@@ -2,6 +2,8 @@
 
 # developer.newrelic.com
 
+[View known vulnerabilities](https://snyk.io/test/github/newrelic/developer-website)
+
 ## 🚀 Local development
 
 Navigate into your new site’s directory and start it up.
@@ -29,6 +31,10 @@ New Relic hosts and moderates an online forum where customers can interact with
 New Relic employees as well as other customers to get help and share best practices.
 If you are looking for configuration help or more information about New Relic's
 products please visit the [New Relic Explorers Hub](https://discuss.newrelic.com/)
+
+Like all official New Relic open source projects, there's a related
+[Community topic](https://discuss.newrelic.com/t/developer-newrelic-com/108069)
+in the New Relic Explorers Hub.
 
 ## 🚧 Contributing
 

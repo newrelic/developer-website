@@ -8,6 +8,10 @@
   :global(.site-container) {
     padding: 0 2rem;
   }
+
+  :global(.dark-mode) & {
+    background-color: var(--color-dark-100);
+  }
 }
 
 .globalHeaderContent {
@@ -53,19 +57,20 @@
   display: block;
   height: 100%;
   padding: 4px 9px;
-  color: var(--color-neutrals-600);
-  font-size: 11px;
+  color: var(--secondary-text-color);
+  font-size: 0.6875rem;
   border: none;
+  transition: 0.2s;
 
+  &.active,
   &:hover {
     background-color: var(--color-neutrals-200);
     color: var(--color-neutrals-700);
-  }
 
-  .active &,
-  .leftSideLinks:hover .active &:hover {
-    background-color: var(--color-neutrals-200);
-    color: var(--color-neutrals-700);
+    :global(.dark-mode) & {
+      background-color: var(--color-dark-200);
+      color: var(--color-dark-700);
+    }
   }
 }
 
@@ -81,21 +86,25 @@
 }
 
 .rightSideButton {
-  opacity: 0.45;
-  transition: opacity 0.2s ease-out;
+  transition: all 0.2s ease-out;
   margin-left: 1rem;
+  color: var(--secondary-text-color);
 
-  path {
-    stroke: var(--color-neutrals-700);
+  a {
+    color: currentColor;
   }
 
   &:hover {
+    color: var(--secondary-hover-text-color);
     cursor: pointer;
-    opacity: 0.75;
   }
 }
 
 .githubButtonLink {
   display: flex;
   align-items: center;
+}
+
+.icon {
+  display: block;
 }

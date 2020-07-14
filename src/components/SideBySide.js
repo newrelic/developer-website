@@ -10,12 +10,26 @@ const SideBySide = ({ className, children, type }) => {
   const types = Array.isArray(type) ? type : [type];
   const childObjects = Children.toArray(children);
   const rendersRightColumn = childObjects.some((child) =>
-    types.some((type) => isMdxType(child, type))
+    types.some(
+      (type) =>
+        isMdxType(child, type) ||
+        isMdxType(child, type, { nestedWithin: 'span' })
+    )
   );
   const sections = splitUsing(childObjects, (child) =>
-    types.some((type) => isMdxType(child, type))
+    types.some(
+      (type) =>
+        isMdxType(child, type) ||
+        isMdxType(child, type, { nestedWithin: 'span' })
+    )
   ).map((section) =>
-    splitWhen(section, (child) => types.some((type) => isMdxType(child, type)))
+    splitWhen(section, (child) =>
+      types.some(
+        (type) =>
+          isMdxType(child, type) ||
+          isMdxType(child, type, { nestedWithin: 'span' })
+      )
+    )
   );
 
   return (

@@ -6,7 +6,12 @@
 }
 
 .preview {
-  margin-bottom: 1rem;
+  padding: 2rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-neutrals-100);
+  box-shadow: var(--boxshadow);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .title {

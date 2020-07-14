@@ -6,17 +6,6 @@
   @media (max-width: 1080px) {
     flex-direction: column;
   }
-
-  button {
-    margin-top: 1rem;
-    margin-right: 1rem;
-  }
-
-  p {
-    font-size: 1.125rem;
-    line-height: 1.875rem;
-    color: var(--color-neutrals-600);
-  }
 }
 
 .introVideo {
@@ -85,8 +74,10 @@
 }
 
 .stripedSection {
+  --surface-background-color: var(--secondary-surface-background-color);
+
   padding: 2rem;
-  background: var(--color-neutrals-100);
+  background: var(--secondary-background-color);
   border-radius: 4px;
 }
 
@@ -97,7 +88,7 @@
 
 .expandGuides {
   margin-top: 2rem;
-  
+
   &:hover {
     transform: translateY(-1px);
   }
@@ -108,8 +99,18 @@
 }
 
 .featuredGuide {
+  border-color: var(--surface-background-color) !important;
+
   &:hover {
     transform: unset;
-    border-color: var(--color-neutrals-300);
+    border-color: inherit;
+  }
+}
+
+.developerChampions {
+  display: flex;
+
+  img {
+    height: 9rem;
   }
 }

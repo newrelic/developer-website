@@ -14,6 +14,7 @@ const iconLibrary = {
   'Automate workflows': 'automation',
   'Explore docs': 'developerDocs',
   'Developer champions': 'developerChampions',
+  'Try our APIs': 'tryOurAPIs',
 };
 
 const getHighlightedText = (text, highlight) => {
@@ -26,6 +27,8 @@ const getHighlightedText = (text, highlight) => {
     </span>
   );
 };
+
+const isExternal = (url) => url.slice(0, 4) === 'http';
 
 const NavigationItems = ({
   pages,
@@ -83,12 +86,12 @@ const NavIcon = ({ page }) => {
 const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
-
   const [isExpanded, setIsExpanded] = useState(
     isHomePage || crumbs.includes(page.displayName)
   );
 
   const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
+  const isToggleable = ['Component library'].includes(page.displayName);
   const headerIcon = depthLevel === 0 && <NavIcon page={page} />;
   const display = filteredPageNames
     ? getHighlightedText(page.displayName, searchTerm)
@@ -105,6 +108,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
     >
       {page.url ? (
         <Link
+          onClick={isToggleable && (() => setIsExpanded(!isExpanded))}
           className={cx(
             { [styles.isCurrentPage]: isCurrentPage },
             styles.navLink
@@ -113,6 +117,15 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
         >
           <span className={styles.navLinkText}>
             {headerIcon}
+            {page.displayName === 'Component library' && (
+              <FeatherIcon
+                className={cx(
+                  { [styles.isExpanded]: isExpanded },
+                  styles.nestedChevron
+                )}
+                name="chevron-right"
+              />
+            )}
             {display}
           </span>
           {isCurrentPage && (
@@ -121,6 +134,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
               name="chevron-right"
             />
           )}
+          {isExternal(page.url) && <FeatherIcon name="external-link" />}
         </Link>
       ) : (
         <button
@@ -143,12 +157,8 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
           {display}
         </button>
       )}
-      {page.children && (
-        <ul
-          className={cx(styles.nestedNav, {
-            [styles.isExpanded]: isExpanded,
-          })}
-        >
+      {page.children && isExpanded && (
+        <ul className={styles.nestedNav}>
           <NavigationItems
             pages={page.children}
             filteredPageNames={filteredPageNames}

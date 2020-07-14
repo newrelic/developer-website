@@ -11,7 +11,7 @@ import styles from './GuideTemplate.module.scss';
 
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
-  const { frontmatter, body } = mdx;
+  const { frontmatter, body, fields } = mdx;
   const { title, description, duration } = frontmatter;
 
   return (
@@ -27,6 +27,9 @@ const GuideTemplate = ({ data }) => {
         )}
       </div>
       <MDXContainer>{body}</MDXContainer>
+      <div className={styles.lastUpdated}>
+        {`Page last modified on ${fields.gitAuthorTime}`}
+      </div>
     </Layout>
   );
 };
@@ -44,6 +47,9 @@ export const pageQuery = graphql`
         path
         title
         description
+      }
+      fields {
+        gitAuthorTime(formatString: "MMMM DD, YYYY")
       }
     }
   }

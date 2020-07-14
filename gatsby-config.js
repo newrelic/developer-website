@@ -47,16 +47,10 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1200,
+              linkImagesToOriginal: false,
             },
           },
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        id: 'GTM-W77XWWH',
-        includeInDevelopment: true,
       },
     },
     {
@@ -69,6 +63,8 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
+    'gatsby-plugin-emotion',
+    'gatsby-plugin-use-dark-mode',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-meta-redirect',
     {
