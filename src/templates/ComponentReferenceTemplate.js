@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 import CodeBlock from '../components/CodeBlock';
 import ReferenceExample from '../components/ReferenceExample';
-import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import Markdown from '../components/Markdown';
 import MethodReference from '../components/MethodReference';
@@ -54,7 +53,7 @@ const ComponentReferenceTemplate = ({ data }) => {
   } = useComponentDoc(component) ?? {};
 
   return (
-    <Layout>
+    <>
       <SEO title={title} description={description} />
       <PageTitle>{component}</PageTitle>
       <section className={cx(templateStyles.section, 'intro-text')}>
@@ -115,7 +114,7 @@ const ComponentReferenceTemplate = ({ data }) => {
           ))}
         </section>
       )}
-    </Layout>
+    </>
   );
 };
 

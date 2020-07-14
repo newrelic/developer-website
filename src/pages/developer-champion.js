@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import Button from '../components/Button';
 import PageTitle from '../components/PageTitle';
@@ -12,7 +11,7 @@ import styles from './developer-champion.module.scss';
 
 const DeveloperChampionPage = () => {
   return (
-    <Layout>
+    <>
       <SEO />
       <PageTitle>New Relic Developer Champions</PageTitle>
       <section className={cx(styles.section, styles.twoColumn)}>
@@ -140,7 +139,7 @@ const DeveloperChampionPage = () => {
           alt="uptime everything header"
         />
       </section>
-    </Layout>
+    </>
   );
 };
 

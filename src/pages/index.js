@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { graphql, Link } from 'gatsby';
 
-import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import Button from '../components/Button';
 import GuideListing from '../components/GuideListing/GuideListing';
@@ -74,7 +73,7 @@ const IndexPage = ({ data, pageContext }) => {
 
   return (
     <PageContext.Provider value={pageContext}>
-      <Layout>
+      <>
         <SEO />
         <PageTitle>Observability for every developer</PageTitle>
 
@@ -218,7 +217,7 @@ const IndexPage = ({ data, pageContext }) => {
             alt="developer champion badge"
           />
         </section>
-      </Layout>
+      </>
     </PageContext.Provider>
   );
 };
