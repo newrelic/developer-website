@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   useEffect(() => {
-    const consentValue = Cookies.get(gdprConsentCookieName);
+    const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
     consentValue && setCookieConsent(true);
   }, []);
 
