@@ -1,3 +1,24 @@
+# [1.5.0](https://github.com/newrelic/developer-website/compare/v1.4.0...v1.5.0) (2020-07-14)
+
+
+### Bug Fixes
+
+* fixed code snippet ([6c153c4](https://github.com/newrelic/developer-website/commit/6c153c4e9a0b8d2ea0b2b4d2d631ab46470868ed))
+* missed a closing tag ([53057ec](https://github.com/newrelic/developer-website/commit/53057ecb63a3a1b20e8912dfd38d8df3616ff7d0))
+* rearranged order ([a81ae5e](https://github.com/newrelic/developer-website/commit/a81ae5ed7ba9ca955442ea3ba49e8567205770da))
+* removed the mdx container import ([cfa2601](https://github.com/newrelic/developer-website/commit/cfa2601877e3a8d42de12eb473fb20187ff936a1))
+
+
+### Features
+
+* add height auto ([4f03954](https://github.com/newrelic/developer-website/commit/4f03954234ad4b305c67dc7bd946013235edd8a3))
+* add props and alt prop to make linter happy ([b2d0272](https://github.com/newrelic/developer-website/commit/b2d02720a50c3d95dd5502820d96c1023044a8d6))
+* adds alt prop to be required ([1f17610](https://github.com/newrelic/developer-website/commit/1f176105a038561a9ed11f91394a3f6436cbb1ad))
+* converted image in one guide to image component ([6f06093](https://github.com/newrelic/developer-website/commit/6f06093a8a89c3bf69e4029f7c163b35638e9e3a))
+* MDX image component ([4761c9a](https://github.com/newrelic/developer-website/commit/4761c9afce5491c241098769cb1fee73cf206754))
+* plugin solution for image height ([f94be6a](https://github.com/newrelic/developer-website/commit/f94be6a684efaa33ab46dab1e3a337e5bfed8274))
+* refactor to just props ([9798fca](https://github.com/newrelic/developer-website/commit/9798fca5905a5c015c9680688af44075537bafaf))
+
 # [1.4.0](https://github.com/newrelic/developer-website/compare/v1.3.0...v1.4.0) (2020-07-14)
 
 
