@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/newrelic/developer-website/compare/v1.3.0...v1.4.0) (2020-07-14)
+
+
+### Features
+
+* Add cookies dialog ([a5c1d95](https://github.com/newrelic/developer-website/commit/a5c1d9514b515e82d19bd6dfd0142c10e5f14cb5))
+* Add cookies dialog ([dc81263](https://github.com/newrelic/developer-website/commit/dc81263292d5882aa2282e55122a28d98fadfc40))
+
 # [1.3.0](https://github.com/newrelic/developer-website/compare/v1.2.1...v1.3.0) (2020-07-13)
 
 
