@@ -1,10 +1,4 @@
-import React, {
-  Fragment,
-  useState,
-  useContext,
-  useEffect,
-  useRef,
-} from 'react';
+import React, { Fragment, useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import FeatherIcon from './FeatherIcon';
 import NewRelicIcon from './NewRelicIcon';
@@ -90,14 +84,6 @@ const NavIcon = ({ page }) => {
 };
 
 const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
-  const usePrevious = (value) => {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  };
-  const prevPage = usePrevious(page) ?? {};
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
   const [toggleIsExpanded, setToggleIsExpanded] = useState(false);
@@ -107,15 +93,13 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
   const isExpanded = overviewIsExpanded || toggleIsExpanded;
 
   useEffect(() => {
-    if (
-      prevPage.displayName !== 'Component library' &&
-      page.displayName !== 'Component library'
-    ) {
+    if (page.displayName !== 'Component library') {
       setOverviewIsExpanded(isHomePage || crumbs.includes(page.displayName));
     }
-  }, [isHomePage, prevPage.displayName, page.displayName, crumbs]);
+  }, [isHomePage, page.displayName, crumbs]);
 
   const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
+  const isBreadCrumb = crumbs.includes(page.displayName);
   const isToggleable = [
     'Component library',
     'Explore docs',
@@ -141,7 +125,10 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
             isToggleable && (() => setOverviewIsExpanded(!overviewIsExpanded))
           }
           className={cx(
-            { [styles.isCurrentPage]: isCurrentPage },
+            {
+              [styles.isCurrentPage]: isCurrentPage,
+              [styles.isBreadCrumb]: isBreadCrumb,
+            },
             styles.navLink
           )}
           to={page.url}
@@ -170,7 +157,10 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
       ) : (
         <button
           type="button"
-          className={styles.navLink}
+          className={cx(
+            { [styles.isBreadCrumb]: isBreadCrumb },
+            styles.navLink
+          )}
           onClick={() => setToggleIsExpanded(!toggleIsExpanded)}
           onKeyPress={() => setToggleIsExpanded(!toggleIsExpanded)}
           tabIndex={0}

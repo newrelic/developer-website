@@ -80,7 +80,8 @@ button.navLink {
   }
 }
 
-.isCurrentPage {
+.isCurrentPage,
+.isBreadCrumb {
   font-weight: bold !important;
 }
 
