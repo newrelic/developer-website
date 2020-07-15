@@ -1,4 +1,10 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, {
+  Fragment,
+  useState,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react';
 import PropTypes from 'prop-types';
 import FeatherIcon from './FeatherIcon';
 import NewRelicIcon from './NewRelicIcon';
@@ -84,14 +90,37 @@ const NavIcon = ({ page }) => {
 };
 
 const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
+  const usePrevious = (value) => {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  };
+  const prevPage = usePrevious(page) ?? {};
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
-  const [isExpanded, setIsExpanded] = useState(
+  const [toggleIsExpanded, setToggleIsExpanded] = useState(false);
+  const [overviewIsExpanded, setOverviewIsExpanded] = useState(
     isHomePage || crumbs.includes(page.displayName)
   );
+  const isExpanded = overviewIsExpanded || toggleIsExpanded;
+
+  useEffect(() => {
+    if (
+      prevPage.displayName !== 'Component library' &&
+      page.displayName !== 'Component library'
+    ) {
+      setOverviewIsExpanded(isHomePage || crumbs.includes(page.displayName));
+    }
+  }, [isHomePage, prevPage.displayName, page.displayName, crumbs]);
 
   const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
-  const isToggleable = ['Component library'].includes(page.displayName);
+  const isToggleable = [
+    'Component library',
+    'Explore docs',
+    'Try our APIs',
+  ].includes(page.displayName);
   const headerIcon = depthLevel === 0 && <NavIcon page={page} />;
   const display = filteredPageNames
     ? getHighlightedText(page.displayName, searchTerm)
@@ -108,7 +137,9 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
     >
       {page.url ? (
         <Link
-          onClick={isToggleable && (() => setIsExpanded(!isExpanded))}
+          onClick={
+            isToggleable && (() => setOverviewIsExpanded(!overviewIsExpanded))
+          }
           className={cx(
             { [styles.isCurrentPage]: isCurrentPage },
             styles.navLink
@@ -120,7 +151,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
             {page.displayName === 'Component library' && (
               <FeatherIcon
                 className={cx(
-                  { [styles.isExpanded]: isExpanded },
+                  { [styles.isExpanded]: overviewIsExpanded },
                   styles.nestedChevron
                 )}
                 name="chevron-right"
@@ -140,8 +171,8 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
         <button
           type="button"
           className={styles.navLink}
-          onClick={() => setIsExpanded(!isExpanded)}
-          onKeyPress={() => setIsExpanded(!isExpanded)}
+          onClick={() => setToggleIsExpanded(!toggleIsExpanded)}
+          onKeyPress={() => setToggleIsExpanded(!toggleIsExpanded)}
           tabIndex={0}
         >
           {depthLevel > 0 && (
