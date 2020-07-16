@@ -95,6 +95,10 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
   const isExpanded = overviewIsExpanded || toggleIsExpanded;
 
   useEffect(() => {
+    if (filteredPageNames?.includes(page.displayName)) {
+      setToggleIsExpanded(true);
+      setOverviewIsExpanded(true);
+    }
     if (page.displayName !== 'Component library') {
       setOverviewIsExpanded(isHomePage || crumbs.includes(page.displayName));
     }
@@ -105,7 +109,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
       setToggleIsExpanded(false);
       setOverviewIsExpanded(false);
     }
-  }, [isHomePage, page.displayName, prevCrumbs, crumbs]);
+  }, [isHomePage, page.displayName, prevCrumbs, crumbs, filteredPageNames]);
 
   const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
   const isBreadCrumb = crumbs.includes(page.displayName);
