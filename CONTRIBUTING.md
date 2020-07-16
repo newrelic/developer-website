@@ -64,7 +64,7 @@ you can use the Github `Edit This File` button to submit a change.
 
 ### Cloning vs Forking
 
-To be able to [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repository and contribute you will need to be given write access to the repository. This is reserved for New Relic Employees only. Contact the Developer Experience Team if you need write access.
+To be able to [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repository and contribute you will need to be given write access to the repository. This is reserved for New Relic Employees only. Contact the Developer Experience team (developer-website-content Slack channel) if you need write access.
 
 As a non New Relic employee you can [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the repository and contribute as needed.
 
@@ -81,7 +81,7 @@ As a non New Relic employee you can [Fork](https://help.github.com/en/github/get
 ### Submitting a PR from a cloned repo
 
 0. Create a [Github](https://github.com/) account if you don't already have one.
-1. `Clone` this this repository.
+1. `Clone` this repository.
 2. Create a new branch locally.
 3. Make your changes.
 4. Test your changes! Review the project's [READ ME](README.md) for instructions on how to build and run tests locally.
