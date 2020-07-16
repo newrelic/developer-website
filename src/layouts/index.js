@@ -3,7 +3,6 @@ import MainLayout from './MainLayout';
 import PropTypes from 'prop-types';
 
 const Layout = ({ children, pageContext }) => {
-  console.log(pageContext);
   if (pageContext.fileRelativePath.match(/404/)) {
     return children;
   }
