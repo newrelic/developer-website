@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react';
+import usePrevious from '../hooks/usePrevious';
 import PropTypes from 'prop-types';
 import FeatherIcon from './FeatherIcon';
 import NewRelicIcon from './NewRelicIcon';
@@ -85,6 +86,7 @@ const NavIcon = ({ page }) => {
 
 const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
+  const prevCrumbs = usePrevious(crumbs) ?? [];
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
   const [toggleIsExpanded, setToggleIsExpanded] = useState(false);
   const [overviewIsExpanded, setOverviewIsExpanded] = useState(
@@ -96,7 +98,14 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
     if (page.displayName !== 'Component library') {
       setOverviewIsExpanded(isHomePage || crumbs.includes(page.displayName));
     }
-  }, [isHomePage, page.displayName, crumbs]);
+    if (
+      prevCrumbs[prevCrumbs.length - 1] !== crumbs[crumbs.length - 1] &&
+      !crumbs.includes(page.displayName)
+    ) {
+      setToggleIsExpanded(false);
+      setOverviewIsExpanded(false);
+    }
+  }, [isHomePage, page.displayName, prevCrumbs, crumbs]);
 
   const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
   const isBreadCrumb = crumbs.includes(page.displayName);
