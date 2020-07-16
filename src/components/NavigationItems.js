@@ -88,28 +88,19 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
   const prevCrumbs = usePrevious(crumbs) ?? [];
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
-  const [toggleIsExpanded, setToggleIsExpanded] = useState(false);
-  const [overviewIsExpanded, setOverviewIsExpanded] = useState(
+  const matchesSearch = filteredPageNames?.includes(page.displayName);
+  const hasChangedPage =
+    prevCrumbs[prevCrumbs.length - 1] !== crumbs[crumbs.length - 1];
+  const [toggleIsExpanded, setToggleIsExpanded] = useState(
     isHomePage || crumbs.includes(page.displayName)
   );
-  const isExpanded = overviewIsExpanded || toggleIsExpanded;
+  const isExpanded = toggleIsExpanded || matchesSearch;
 
   useEffect(() => {
-    if (filteredPageNames?.includes(page.displayName)) {
-      setToggleIsExpanded(true);
-      setOverviewIsExpanded(true);
+    if (hasChangedPage) {
+      setToggleIsExpanded(isHomePage || crumbs.includes(page.displayName));
     }
-    if (page.displayName !== 'Component library') {
-      setOverviewIsExpanded(isHomePage || crumbs.includes(page.displayName));
-    }
-    if (
-      prevCrumbs[prevCrumbs.length - 1] !== crumbs[crumbs.length - 1] &&
-      !crumbs.includes(page.displayName)
-    ) {
-      setToggleIsExpanded(false);
-      setOverviewIsExpanded(false);
-    }
-  }, [isHomePage, page.displayName, prevCrumbs, crumbs, filteredPageNames]);
+  }, [hasChangedPage, crumbs, page.displayName, isHomePage]);
 
   const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
   const isBreadCrumb = crumbs.includes(page.displayName);
@@ -135,7 +126,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
       {page.url ? (
         <Link
           onClick={
-            isToggleable && (() => setOverviewIsExpanded(!overviewIsExpanded))
+            isToggleable && (() => setToggleIsExpanded(!toggleIsExpanded))
           }
           className={cx(
             {
@@ -148,10 +139,10 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
         >
           <span className={styles.navLinkText}>
             {headerIcon}
-            {page.displayName === 'Component library' && (
+            {depthLevel > 0 && page.children && (
               <FeatherIcon
                 className={cx(
-                  { [styles.isExpanded]: overviewIsExpanded },
+                  { [styles.isExpanded]: isExpanded },
                   styles.nestedChevron
                 )}
                 name="chevron-right"
