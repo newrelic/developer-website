@@ -3,7 +3,6 @@ import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import CodeBlock from '../components/CodeBlock';
-import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import Markdown from '../components/Markdown';
 import MethodReference from '../components/MethodReference';
@@ -27,7 +26,7 @@ const ApiReferenceTemplate = ({ data }) => {
   } = useApiDoc(api) ?? {};
 
   return (
-    <Layout>
+    <>
       <SEO title={title} description={description} />
       <PageTitle>{api}</PageTitle>
 
@@ -78,7 +77,7 @@ const ApiReferenceTemplate = ({ data }) => {
           ))}
         </section>
       )}
-    </Layout>
+    </>
   );
 };
 

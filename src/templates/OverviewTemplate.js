@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
@@ -17,7 +16,7 @@ const OverviewTemplate = ({ data }) => {
   const { title, description } = frontmatter;
 
   return (
-    <Layout>
+    <>
       <SEO title={title} description={description} />
       <PageTitle>{title}</PageTitle>
       <MDXContainer>{body}</MDXContainer>
@@ -47,7 +46,7 @@ const OverviewTemplate = ({ data }) => {
           </GuideListing>
         </>
       )}
-    </Layout>
+    </>
   );
 };
 

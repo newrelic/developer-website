@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXContainer from '../components/MDXContainer';
 
-import Layout from '../components/Layout';
 import FeatherIcon from '../components/FeatherIcon';
 import PageTitle from '../components/PageTitle';
 import SEO from '../components/Seo';
@@ -15,7 +14,7 @@ const GuideTemplate = ({ data }) => {
   const { title, description, duration } = frontmatter;
 
   return (
-    <Layout>
+    <>
       <SEO title={title} description={description} />
       <div className={styles.header}>
         <PageTitle>{title}</PageTitle>
@@ -30,7 +29,7 @@ const GuideTemplate = ({ data }) => {
       <div className={styles.lastUpdated}>
         {`Page last modified on ${fields.gitAuthorTime}`}
       </div>
-    </Layout>
+    </>
   );
 };
 

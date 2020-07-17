@@ -4,20 +4,20 @@ import cx from 'classnames';
 
 import { Helmet } from 'react-helmet';
 import Cookies from 'js-cookie';
-import Footer from './Footer';
-import GlobalHeader from './GlobalHeader';
-import MobileHeader from './MobileHeader';
-import Sidebar from './Sidebar';
-import CookieApprovalDialog from './CookieApprovalDialog';
-import styles from './Layout.module.scss';
+import Footer from '../components/Footer';
+import GlobalHeader from '../components/GlobalHeader';
+import MobileHeader from '../components/MobileHeader';
+import Sidebar from '../components/Sidebar';
+import CookieApprovalDialog from '../components/CookieApprovalDialog';
+import styles from './MainLayout.module.scss';
 import 'normalize.css';
-import './styles.scss';
+import '../components/styles.scss';
 import '../theme.scss';
 
 const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
-const Layout = ({ children }) => {
+const MainLayout = ({ children }) => {
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
@@ -65,8 +65,8 @@ const Layout = ({ children }) => {
   );
 };
 
-Layout.propTypes = {
+MainLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Layout;
+export default MainLayout;
