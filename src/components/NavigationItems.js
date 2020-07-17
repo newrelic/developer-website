@@ -125,6 +125,8 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
     >
       {page.url ? (
         <Link
+          activeStyle={{ fontWeight: 'bold' }}
+          partiallyActive
           onClick={
             isToggleable && (() => setToggleIsExpanded(!toggleIsExpanded))
           }
