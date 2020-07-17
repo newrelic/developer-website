@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/newrelic/developer-website/compare/v1.5.0...v1.5.1) (2020-07-17)
+
+
+### Bug Fixes
+
+* search works again ([ac7a0aa](https://github.com/newrelic/developer-website/commit/ac7a0aaa771d8dd7853df5c1dedd61bd22919efa))
+
 # [1.5.0](https://github.com/newrelic/developer-website/compare/v1.4.0...v1.5.0) (2020-07-14)
 
 
