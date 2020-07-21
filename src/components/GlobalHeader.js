@@ -60,12 +60,9 @@ const GlobalHeader = ({ className }) => {
               </ExternalLink>
             </li>
             <li>
-              <ExternalLink
-                href="https://developer.newrelic.com/podcasts"
-                className={styles.leftSideLink}
-              >
+              <Link href="/podcasts" className={styles.leftSideLink}>
                 Podcasts
-              </ExternalLink>
+              </Link>
             </li>
           </ul>
         </div>
