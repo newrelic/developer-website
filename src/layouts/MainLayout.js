@@ -12,7 +12,6 @@ import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import styles from './MainLayout.module.scss';
 import 'normalize.css';
 import '../components/styles.scss';
-import '../theme.scss';
 
 const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
