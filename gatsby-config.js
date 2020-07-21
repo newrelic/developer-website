@@ -9,14 +9,45 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
+      resolve: '@newrelic/gatsby-theme-newrelic',
+      options: {
+        robots: {
+          host: 'https://developer.newrelic.com',
+          sitemap: 'https://developer.newrelic.com/sitemap.xml',
+        },
+        newrelic: {
+          configs: {
+            production: {
+              instrumentationType: 'proAndSPA',
+              accountId: '10175106',
+              trustKey: '1',
+              agentID: '22273498',
+              licenseKey: '23448da482',
+              applicationID: '22273498',
+              beacon: 'staging-bam.nr-data.net',
+              errorBeacon: 'staging-bam.nr-data.net',
+            },
+            staging: {
+              instrumentationType: 'proAndSPA',
+              accountId: '10175106',
+              trustKey: '1',
+              agentID: '22273531',
+              licenseKey: '23448da482',
+              applicationID: '22273531',
+              beacon: 'staging-bam.nr-data.net',
+              errorBeacon: 'staging-bam.nr-data.net',
+            },
+          },
+        },
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
         path: `${__dirname}/src/images`,
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -61,46 +92,6 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        host: 'https://developer.newrelic.com',
-        sitemap: 'https://developer.newrelic.com/sitemap.xml',
-        // NOTE: policy.disallow can take an array of pages or
-        // directories for web crawlers to  ignore.
-        policy: [{ userAgent: '*', allow: '/' }],
-      },
-    },
-    'gatsby-plugin-emotion',
-    'gatsby-plugin-use-dark-mode',
-    'gatsby-plugin-sitemap',
     'gatsby-plugin-meta-redirect',
-    {
-      resolve: 'gatsby-plugin-newrelic',
-      options: {
-        configs: {
-          production: {
-            instrumentationType: 'proAndSPA',
-            accountId: '10175106',
-            trustKey: '1',
-            agentID: '22273498',
-            licenseKey: '23448da482',
-            applicationID: '22273498',
-            beacon: 'staging-bam.nr-data.net',
-            errorBeacon: 'staging-bam.nr-data.net',
-          },
-          staging: {
-            instrumentationType: 'proAndSPA',
-            accountId: '10175106',
-            trustKey: '1',
-            agentID: '22273531',
-            licenseKey: '23448da482',
-            applicationID: '22273531',
-            beacon: 'staging-bam.nr-data.net',
-            errorBeacon: 'staging-bam.nr-data.net',
-          },
-        },
-      },
-    },
   ],
 };
