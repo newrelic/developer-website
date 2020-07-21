@@ -7,7 +7,6 @@ module.exports = {
     siteUrl: 'https://developer.newrelic.com',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
@@ -39,13 +38,6 @@ module.exports = {
             },
           },
         },
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: `${__dirname}/src/images`,
       },
     },
     'gatsby-plugin-sass',
