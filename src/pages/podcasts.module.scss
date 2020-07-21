@@ -14,16 +14,6 @@
   width: 100%;
 }
 
-.podcasts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2rem;
-}
-
-.point {
-  text-align: center;
-}
-
 .player {
   overflow: hidden;
 }
@@ -32,12 +22,4 @@
   width: 100%;
   height: 421px;
   border: none;
-}
-
-
-.pointIcon {
-  --feather-icon-stroke-width: 1;
-
-  margin-bottom: 2rem;
-  color: var(--color-brand-400);
 }
