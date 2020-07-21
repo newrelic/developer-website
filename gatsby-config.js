@@ -7,6 +7,7 @@ module.exports = {
     siteUrl: 'https://developer.newrelic.com',
   },
   plugins: [
+    'gatsby-plugin-sharp',
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
