@@ -59,6 +59,14 @@ const GlobalHeader = ({ className }) => {
                 Community
               </ExternalLink>
             </li>
+            <li>
+              <ExternalLink
+                href="https://localhost:8000/podcasts"
+                className={styles.leftSideLink}
+              >
+                Podcasts
+              </ExternalLink>
+            </li>
           </ul>
         </div>
 
