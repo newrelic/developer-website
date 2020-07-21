@@ -61,7 +61,7 @@ const GlobalHeader = ({ className }) => {
             </li>
             <li>
               <ExternalLink
-                href="https://localhost:8000/podcasts"
+                href="https://developer.newrelic.com/podcasts"
                 className={styles.leftSideLink}
               >
                 Podcasts
