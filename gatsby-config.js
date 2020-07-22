@@ -4,6 +4,7 @@ module.exports = {
     description:
       'Do more on our platform and make New Relic your own with APIs, SDKs, code snippets, tutorials, and more developer tools.',
     author: 'New Relic',
+    repository: 'https://github.com/newrelic/developer-website',
     siteUrl: 'https://developer.newrelic.com',
   },
   plugins: [
@@ -11,6 +12,10 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
+        layout: {
+          contentPadding: '2rem',
+          maxWidth: '1600px',
+        },
         newrelic: {
           configs: {
             production: {
