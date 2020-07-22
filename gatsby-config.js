@@ -11,10 +11,6 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
-        robots: {
-          host: 'https://developer.newrelic.com',
-          sitemap: 'https://developer.newrelic.com/sitemap.xml',
-        },
         newrelic: {
           configs: {
             production: {
