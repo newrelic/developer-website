@@ -2,15 +2,15 @@
 path: '/explore-docs/nr1-nerdpack'
 title: 'New Relic One CLI Nerdpack commands'
 template: 'GuideTemplate'
-description: ''An overview of the CLI commands you can use to set up your New Relic One Nerdpacks.'
+description: 'An overview of the CLI commands you can use to set up your New Relic One Nerdpacks.'
 tileShorthand:
-  title: 'New Relic One CLI Nerdpack'
-  description: 'Set up your Nerdpacks with New Relic One CLI.'
+  title: 'Nerdpack CLI commands'
+  description: 'Set up your Nerdpacks with the New Relic One CLI.'
 redirects:
 ---
 <Intro>
 
-To set up your Nerdpack(s), use the commands below. You can click any command to see their options, among other details.
+To set up your Nerdpacks, use the commands below. You can click any command to see its usage and options, among other details.
 
 </Intro>
 
@@ -30,11 +30,11 @@ To set up your Nerdpack(s), use the commands below. You can click any command to
 
 ## `nr1 nerdpack:clone` 
 ### Clone an existing Nerdpack
-Duplicates an existing Nerdpack onto your local computer. You can select an open source Nerdpack to clone from [our GitHub repository](https://opensource.newrelic.com/explore-projects/). After choosing a git repository, this command performs the following actions so that you can start using it:
+Duplicates an existing Nerdpack onto your local computer. You can clone an open source Nerdpack from [our GitHub repository](https://opensource.newrelic.com/explore-projects/). After choosing a git repository, this command performs the following actions so that you can start using the Nerdpack:
 1. Clones the repository.
 2. Sets the repository as remote upstream.
 3. Installs all of its dependencies (using npm).
-4. Generates a new UUID using your profile, and commit it.
+4. Generates a new UUID using your profile, and commits it.
 
 ### Usage
 `$ nr1 nerdpack:clone OPTION` 
@@ -54,7 +54,9 @@ Duplicates an existing Nerdpack onto your local computer. You can select an open
 
 ## `nr1 nerdpack:serve`
 ### Serve your Nerdpack locally
-Launches a local server with your Nerdpack on your [New Relic One platform](https://one.newrelic.com/?nerdpacks=local), where it's ready for testing and development. For details on working with apps locally, see our details on how to [serve, publish and deploy documentation](/build-apps/publish-deploy/).
+Launches a server with your Nerdpack locally on your [New Relic One platform](https://one.newrelic.com/?nerdpacks=local), where it can be tested live. 
+
+For more on working with apps locally, see our guide on how to [serve, publish, and deploy documentation](/build-apps/publish-deploy/).
 
 ### Usage
 `$ nr1 nerdpack:serve` 
@@ -71,8 +73,9 @@ Launches a local server with your Nerdpack on your [New Relic One platform](http
 
 ## `nr1 nerdpack:uuid`
 ### Show or generate your Nerdpack's UUID
- By default, prints the UUID (Universal Unique ID) of the specified Nerdpack. This ID dictates the data a Nerdpack has access to and who can subscribe to it. To deploy a Nerdpack you didn't make, you'll have to assign it a new UUID. Use the `-g` or `--generate` option to generate a new UUID.
- For more details, see the [Access to data page](https://developer.newrelic.com/build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions#Appaccesstodata) and [our workshop](https://github.com/newrelic/nr1-workshop/blob/master/lab-cli/INSTRUCTIONS.md) on GitHub.
+Prints the UUID (Universal Unique ID) of your Nerdpack, by default. The UUID determines what data the Nerdpack can access and who can subscribe to the Nerdpack. To deploy a Nerdpack you didn't make, you'll have to assign it a new UUID by using the `-g` or `--generate` option.
+
+For more details, see the [Access to data page](https://developer.newrelic.com/build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions#Appaccesstodata) or [our workshop](https://github.com/newrelic/nr1-workshop/blob/master/lab-cli/INSTRUCTIONS.md) on GitHub.
 
 ### Usage
 `$ nr1 nerdpack:uuid` 
@@ -91,12 +94,14 @@ Launches a local server with your Nerdpack on your [New Relic One platform](http
 
 ## `nr1 nerdpack:publish`
 ### Publish your Nerdpack
-Publishes your Nerdpack to New Relic. After publishing, you can use `nr1 nerdpack:deploy` to deploy it to a channel and make it available to users. For more on publishing and deploying, see [Deploy to New Relic One](/build-tools/new-relic-one-applications/publish-deploy).
+Publishes your Nerdpack to New Relic. After publishing, you can use `nr1 nerdpack:deploy` to deploy it to a channel and make it available to users. 
+
 Please note:
 * If no additional parameters are passed in, this command will automatically deploy the Nerdpack onto the DEV channel. 
 * If you want to specify your own list of deploy channels, add the `--channel` option. For example, `$ nr1 nerdpack:publish --channel BETA --channel STABLE`.
 * If you want to disable this behavior, add `--skip-deploy` to the command. Then, you can use `nr1 nerdpack:deploy` to perform a deploy manually.
 
+For more on publishing and deploying, see [Deploy to New Relic One](/build-tools/new-relic-one-applications/publish-deploy).
 
 ### Usage
 `$ nr1 nerdpack:publish` 
@@ -121,10 +126,11 @@ Please note:
 ## `nr1 nerdpack:deploy`
 ### Deploy your Nerdpack to a channel
 Deploys a Nerdpack version to a specific channel (DEV, BETA, or STABLE). A channel can only have one Nerdpack version deployed to it at one time. If a channel has an existing Nerdpack associated with it, deploying a new Nerdpack version to that channel will undeploy the previous one. 
+
 For more on publishing and deploying, see [Deploy to New Relic One](/build-tools/new-relic-one-applications/publish-deploy).
 
 ### Usage
-`$ nr1 COMMAND OPTION` 
+`$ nr1 nerdpack:deploy OPTION` 
 
 ### Options
 | | |
@@ -134,4 +140,3 @@ For more on publishing and deploying, see [Deploy to New Relic One](/build-tools
 |  `--from-version=VERSION` | Specifies which version to deploy. By default, the command will use the one in package.json. |
 |  `--profile=PROFILE`  | The authentication profile you want to use. |
 |  `--verbose`        | Adds extra information to the output. |
-
