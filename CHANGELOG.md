@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/newrelic/developer-website/compare/v1.5.3...v1.6.0) (2020-07-22)
+
+
+### Features
+
+* replace buttons with button from theme ([95ac375](https://github.com/newrelic/developer-website/commit/95ac375c4a6fd1d3343c364e4fe5de2e1afee471))
+* use GlobalHeader from theme on 404 page ([1c1a581](https://github.com/newrelic/developer-website/commit/1c1a58149440af369dd6c2db96483f38663a3a38))
+* use GlobalHeader in MainLayout from the theme ([5b084cc](https://github.com/newrelic/developer-website/commit/5b084ccc1ada85e72b33c99544966fbf8ce0bcf5))
+
 ## [1.5.3](https://github.com/newrelic/developer-website/compare/v1.5.2...v1.5.3) (2020-07-22)
 
 
