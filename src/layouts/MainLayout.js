@@ -5,19 +5,30 @@ import cx from 'classnames';
 import { Helmet } from 'react-helmet';
 import { GlobalHeader } from '@newrelic/gatsby-theme-newrelic';
 import { PageContext } from '../components/PageContext';
+import { graphql, useStaticQuery } from 'gatsby';
 import Cookies from 'js-cookie';
 import Footer from '../components/Footer';
 import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import styles from './MainLayout.module.scss';
-import { githubBaseUrl } from '../data/constants';
 import '../components/styles.scss';
 
 const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const MainLayout = ({ children }) => {
+  const {
+    site: { siteMetadata },
+  } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          repository
+        }
+      }
+    }
+  `);
   const { fileRelativePath } = useContext(PageContext);
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -26,7 +37,7 @@ const MainLayout = ({ children }) => {
   );
   const editUrl = isComponentDoc
     ? null
-    : `${githubBaseUrl}/blob/main/${fileRelativePath}`;
+    : `${siteMetadata.repository}/blob/main/${fileRelativePath}`;
 
   useEffect(() => {
     const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
