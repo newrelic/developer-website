@@ -1,3 +1,11 @@
+## [1.5.3](https://github.com/newrelic/developer-website/compare/v1.5.2...v1.5.3) (2020-07-22)
+
+
+### Bug Fixes
+
+* upgrade eslint-plugin-react-hooks from 4.0.4 to 4.0.5 ([9233b13](https://github.com/newrelic/developer-website/commit/9233b13c1185694671476b414d5fa124097913b1))
+* upgrade gatsby-plugin-mdx from 1.2.18 to 1.2.19 ([1887974](https://github.com/newrelic/developer-website/commit/1887974c148af95191631aa38689975b9a89763d))
+
 ## [1.5.2](https://github.com/newrelic/developer-website/compare/v1.5.1...v1.5.2) (2020-07-21)
 
 
