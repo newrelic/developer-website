@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import cx from 'classnames';
-import Button from './Button';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import CodeEditor from './CodeEditor';
 import CodeHighlight from './CodeHighlight';
 import FeatherIcon from './FeatherIcon';
