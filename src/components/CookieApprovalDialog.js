@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Cookies from 'js-cookie';
-import Button from './Button';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import cx from 'classnames';
 import styles from './CookieApprovalDialog.module.scss';
 import ExternalLink from './ExternalLink';

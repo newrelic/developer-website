@@ -1,13 +1,13 @@
 {
   "name": "developer-website",
   "private": true,
-  "version": "1.5.3",
+  "version": "1.6.0",
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "@mdx-js/mdx": "^1.6.6",
     "@mdx-js/react": "^1.6.6",
-    "@newrelic/gatsby-theme-newrelic": "^1.1.9",
+    "@newrelic/gatsby-theme-newrelic": "^1.1.10",
     "classnames": "^2.2.6",
     "date-fns": "^2.14.0",
     "eslint-plugin-react-hooks": "^4.0.5",
@@ -18,7 +18,6 @@
     "gatsby-plugin-manifest": "^2.4.12",
     "gatsby-plugin-mdx": "^1.2.19",
     "gatsby-plugin-meta-redirect": "^1.1.1",
-    "gatsby-plugin-newrelic": "newrelic/gatsby-plugin-newrelic.git#5cd42e832f0588764dc332ce7ebd05794de5106a",
     "gatsby-plugin-offline": "^3.2.11",
     "gatsby-plugin-react-helmet": "^3.3.4",
     "gatsby-plugin-robots-txt": "^1.5.1",

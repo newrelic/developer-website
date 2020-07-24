@@ -82,6 +82,10 @@
       {
         "displayName": "Add, query, and mutate data using NerdStorage",
         "url": "/build-apps/add-query-mutate-data-nerdstorage"
+      },
+      {
+        "displayName": "See all open source apps",
+        "url": "https://opensource.newrelic.com/nerdpacks/"
       }
     ]
   },

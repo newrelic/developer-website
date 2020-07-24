@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import SEO from '../components/Seo';
-import Button from '../components/Button';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import PageTitle from '../components/PageTitle';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';

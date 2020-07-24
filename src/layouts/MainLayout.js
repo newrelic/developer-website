@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import { Helmet } from 'react-helmet';
+import { GlobalHeader } from '@newrelic/gatsby-theme-newrelic';
+import { PageContext } from '../components/PageContext';
+import { graphql, useStaticQuery } from 'gatsby';
 import Cookies from 'js-cookie';
 import Footer from '../components/Footer';
-import GlobalHeader from '../components/GlobalHeader';
 import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
@@ -16,8 +18,26 @@ const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const MainLayout = ({ children }) => {
+  const {
+    site: { siteMetadata },
+  } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          repository
+        }
+      }
+    }
+  `);
+  const { fileRelativePath } = useContext(PageContext);
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const isComponentDoc = fileRelativePath.includes(
+    'src/markdown-pages/components'
+  );
+  const editUrl = isComponentDoc
+    ? null
+    : `${siteMetadata.repository}/blob/main/${fileRelativePath}`;
 
   useEffect(() => {
     const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
@@ -33,14 +53,14 @@ const MainLayout = ({ children }) => {
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
           })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-          
+
           ga('create', '${gaTrackingId}', 'auto');
           ga('set', 'anonymizeIp', true);
           ga('send', 'pageview');`}
           </script>
         ) : null}
       </Helmet>
-      <GlobalHeader />
+      <GlobalHeader editUrl={editUrl} />
       <MobileHeader
         className={styles.hideOnDesktop}
         isOpen={isMobileNavOpen}
