@@ -10,7 +10,7 @@ redirects:
 ---
 <Intro>
 
-To set up your Nerdpacks, use the commands below. You can click any command to see its usage and options, among other details.
+To set up your Nerdpacks, use the commands below. You can click any command to see its usage options and additional details about the command.
 
 </Intro>
 
@@ -18,11 +18,11 @@ To set up your Nerdpacks, use the commands below. You can click any command to s
 
 | Command | Description |
 |---|---|
-| [`nr1 nerdpack:clone`](#clone) | Clones a Nerdpack from a git repository. |
-| [`nr1 nerdpack:serve`](#serve) | Serves your Nerdpack for testing and development purposes. |
-| [`nr1 nerdpack:uuid`](#uuid) | Shows or regenerates the UUID of a Nerdpack.  |
+| [`nr1 nerdpack:clone`](#clone)     | Clones a Nerdpack from a git repository. |
+| [`nr1 nerdpack:serve`](#serve)     | Serves your Nerdpack for testing and development purposes. |
+| [`nr1 nerdpack:uuid`](#uuid)       | Shows or regenerates the UUID of a Nerdpack.  |
 | [`nr1 nerdpack:publish`](#publish) | Publishes your Nerdpack to New Relic. |
-| [`nr1 nerdpack:deploy`](#deploy) | Deploys a specific Nerdpack version to a specific channel. |
+| [`nr1 nerdpack:deploy`](#deploy)   | Deploys a specific Nerdpack version to a specific channel. |
 
 # Command details
 
@@ -30,7 +30,7 @@ To set up your Nerdpacks, use the commands below. You can click any command to s
 
 ## `nr1 nerdpack:clone` 
 ### Clone an existing Nerdpack
-Duplicates an existing Nerdpack onto your local computer. You can clone an open source Nerdpack from [our GitHub repository](https://opensource.newrelic.com/explore-projects/). After choosing a git repository, this command performs the following actions so that you can start using the Nerdpack:
+Duplicates an existing Nerdpack onto your local computer. You can clone an open source Nerdpack from [our Open Source GitHub repositories](https://opensource.newrelic.com/explore-projects/). After choosing a git repository, this command performs the following actions so that you can start using the Nerdpack:
 1. Clones the repository.
 2. Sets the repository as remote upstream.
 3. Installs all of its dependencies (using npm).
@@ -54,9 +54,9 @@ Duplicates an existing Nerdpack onto your local computer. You can clone an open 
 
 ## `nr1 nerdpack:serve`
 ### Serve your Nerdpack locally
-Launches a server with your Nerdpack locally on your [New Relic One platform](https://one.newrelic.com/?nerdpacks=local), where it can be tested live. 
+Launches a server with your Nerdpack locally on the [New Relic One platform](https://one.newrelic.com/?nerdpacks=local), where it can be tested live. 
 
-For more on working with apps locally, see our guide on how to [serve, publish, and deploy documentation](/build-apps/publish-deploy/).
+To learn more about working with apps locally, see our guide on how to [serve, publish, and deploy documentation](/build-apps/publish-deploy/).
 
 ### Usage
 `$ nr1 nerdpack:serve` 
@@ -84,8 +84,8 @@ For more details, see the [Access to data page](https://developer.newrelic.com/b
 | | |
 |---|---|
 |  `--profile=PROFILE`| The authentication profile you want to use. |
-|  `-f, --force`       | If present, it will override the existing UUID without asking. |
-|  `-g, --generate`     | Generates a new UUID if not available. |
+|  `-f, --force`      | If present, it will override the existing UUID without asking. |
+|  `-g, --generate`   | Generates a new UUID if not available. |
 |  `--verbose`        | Adds extra information to the output. |
 
 <br/>
@@ -94,12 +94,12 @@ For more details, see the [Access to data page](https://developer.newrelic.com/b
 
 ## `nr1 nerdpack:publish`
 ### Publish your Nerdpack
-Publishes your Nerdpack to New Relic. After publishing, you can use `nr1 nerdpack:deploy` to deploy it to a channel and make it available to users. 
+Publishes your Nerdpack to New Relic. 
 
 Please note:
 * If no additional parameters are passed in, this command will automatically deploy the Nerdpack onto the DEV channel. 
 * If you want to specify your own list of deploy channels, add the `--channel` option. For example, `$ nr1 nerdpack:publish --channel BETA --channel STABLE`.
-* If you want to disable this behavior, add `--skip-deploy` to the command. Then, you can use `nr1 nerdpack:deploy` to perform a deploy manually.
+* If you want to disable this behavior, add `-D` or `--skip-deploy` to the command. Then, you can use `nr1 nerdpack:deploy` to perform a deploy manually.
 
 For more on publishing and deploying, see [Deploy to New Relic One](/build-tools/new-relic-one-applications/publish-deploy).
 
@@ -109,15 +109,15 @@ For more on publishing and deploying, see [Deploy to New Relic One](/build-tools
 ### Options
 | | |
 |---|---|
-| `-B, --skip-build`                          | Skips the previous build process. |
-| `-D, --skip-deploy`                        | Skips the following deploy process. |
-| `-c, --channel=DEV/BETA/STABLE`            | Specifies the channel to deploys to. [default: STABLE] |
-|  `-f, --force`                              |  Forces the publish, overriding any existing version in the registry. |
+| `-B, --skip-build`                           | Skips the previous build process. |
+| `-D, --skip-deploy`                          | Skips the following deploy process. |
+| `-c, --channel=DEV/BETA/STABLE`              | Specifies the channel to deploys to. [default: STABLE] |
+|  `-f, --force`                               |  Forces the publish, overriding any existing version in the registry. |
 |  `--dry-run`                                 | Undergoes publishing process without actually publishing anything. |
 |  `--extra-metadata-path=extra-metadata-path` | Specifies a json file .path with extra metadata. [default: extra-metadata.json] |
-|  `--prerelease=STRING`                   | The value you enter will be appended to the current version of generated files. |
-|  `--profile=PROFILE`                      | The authentication profile you want to use. |
-|  `--verbose`        | Adds extra information to the output. |
+|  `--prerelease=STRING`                       | The value you enter will be appended to the current version of generated files. |
+|  `--profile=PROFILE`                         | The authentication profile you want to use. |
+|  `--verbose`                                 | Adds extra information to the output. |
 
 <br/>
 
@@ -137,6 +137,6 @@ For more on publishing and deploying, see [Deploy to New Relic One](/build-tools
 |---|---|
 |  `-c, --channel=DEV/BETA/STABLE` | Specifies the channel to deploy to. **(required)** |
 |  `-i, --nerdpack-id=NERDPACK_ID` | Specifies the Nerdpack to deploy. By default, the command will use the one in package.json. |
-|  `--from-version=VERSION` | Specifies which version to deploy. By default, the command will use the one in package.json. |
-|  `--profile=PROFILE`  | The authentication profile you want to use. |
-|  `--verbose`        | Adds extra information to the output. |
+|  `--from-version=VERSION`        | Specifies which version to deploy. By default, the command will use the one in package.json. |
+|  `--profile=PROFILE`             | The authentication profile you want to use. |
+|  `--verbose`                     | Adds extra information to the output. |
