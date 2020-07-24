@@ -10,7 +10,7 @@ redirects:
 ---
 <Intro>
 
-To manage your Nerdpack subscriptions, use the commands below. You can click any command to see its usage and options, among other details.
+To manage your Nerdpack subscriptions, use the commands below. You can click any command to see its usage options and additional details about the command.
 
 </Intro>
 
@@ -18,8 +18,8 @@ To manage your Nerdpack subscriptions, use the commands below. You can click any
 
 | Command | Description |
 |---|---|
-| [`nr1 subscription:set`](#nr1-subscription-set) | Subscribes your account to a Nerdpack and channel. |
-| [`nr1 subscription:list`](#nr1-subscription-list) | Lists all the Nerdpacks your account is subscribed to. |
+| [`nr1 subscription:set`](#nr1-subscription-set)     | Subscribes your account to a Nerdpack and channel. |
+| [`nr1 subscription:list`](#nr1-subscription-list)   | Lists all the Nerdpacks your account is subscribed to. |
 | [`nr1 subscription:unset`](#nr1-subscription-unset) | Unsubscribes your account from a Nerdpack. |
 
 # Command details
@@ -39,9 +39,9 @@ An account can only be subscribed to one Nerdpack and channel at a time.
 |  |  |
 |---|---|
 |  `-i, --nerdpack-id=NERDPACK_ID` | Specifies the Nerdpack to subscribe to. By default, the command will use the one in package.json. |
-| `-c, --channel=DEV/BETA/STABLE`            | Specifies the channel to subscribe to. [default: STABLE] |
-| `--profile=PROFILE` | The authentication profile you want to use. |
-| `--verbose` | Adds extra information to the output. |
+| `-c, --channel=DEV/BETA/STABLE`  | Specifies the channel to subscribe to. [default: STABLE] |
+| `--profile=PROFILE`              | The authentication profile you want to use. |
+| `--verbose`                      | Adds extra information to the output. |
 
 ### Aliases
 * `$ nr1 nerdpack:subscribe`
@@ -61,7 +61,7 @@ Lists all the Nerdpacks your account is subscribed to. Your account is linked to
 |  |  |
 |---|---|
 | `--profile=PROFILE` | The authentication profile you want to use. |
-| `--verbose` | Adds extra information to the output. |
+| `--verbose`         | Adds extra information to the output. |
 
 <br/>
 
@@ -79,8 +79,8 @@ from package.json is used by default.
 |  |  |
 |---|---|
 |  `-i, --nerdpack-id=NERDPACK_ID` | Specifies the Nerdpack to subscribe to. By default, the command will use the one in package.json. |
-| `--profile=PROFILE` | The authentication profile you want to use. |
-| `--verbose` | Adds extra information to the output. |
+| `--profile=PROFILE`              | The authentication profile you want to use. |
+| `--verbose`                      | Adds extra information to the output. |
 
 ### Aliases
 * `$ nr1 nerdpack:unsubscribe`
