@@ -3,7 +3,10 @@ import MainLayout from './MainLayout';
 import PropTypes from 'prop-types';
 
 const Layout = ({ children, pageContext }) => {
-  if (pageContext.fileRelativePath.match(/404/)) {
+  if (
+    pageContext.fileRelativePath.match(/404/) ||
+    pageContext.fileRelativePath.match(/sdk-playground/)
+  ) {
     return children;
   }
   return <MainLayout>{children}</MainLayout>;

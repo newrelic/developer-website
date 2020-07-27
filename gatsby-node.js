@@ -84,3 +84,12 @@ exports.onCreateNode = ({ node, actions }) => {
     });
   }
 };
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage } = actions;
+
+  if (page.path.match(/sdk-playground/)) {
+    page.context.layout = 'minimal';
+    createPage(page);
+  }
+};
