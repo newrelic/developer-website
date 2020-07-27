@@ -19,11 +19,12 @@ Here are a few commands to get you started with the New Relic One CLI. You can c
 
 | Command | Description |
 |---|---|
-| [`nr1 help`](#nr1-help) | Shows all `nr1` commands or details about each command. |
-| [`nr1 update`](#nr1-update) | Updates to the latest version of the CLI. |
-| [`nr1 create`](#nr1-create) | Creates a new component from a template list (Nerdpack, Nerdlet, launcher, or catalog). |
-| [`nr1 profiles`](#nr1-profiles) | Manages the profiles you use to run CLI commands. |
+| [`nr1 help`](#nr1-help)                 | Shows all `nr1` commands or details about each command. |
+| [`nr1 update`](#nr1-update)             | Updates to the latest version of the CLI. |
+| [`nr1 create`](#nr1-create)             | Creates a new component from a template list (Nerdpack, Nerdlet, launcher, or catalog). |
+| [`nr1 profiles`](#nr1-profiles)         | Manages the profiles you use to run CLI commands. |
 | [`nr1 autocomplete`](#nr1-autocomplete) | Displays autocomplete installation instructions. |
+| [`nr1 nrql`](#nr1-nrql)                 | Fetches data from New Relic using [NRQL](https://newrelic.com/docs/query-data/nrql-new-relic-query-language/getting-started/introduction-nrql) (New Relic query language). |                                                                                                                                                                                                                                                                                                 |
 
 See our other New Relic One CLI docs for commands specific to [Nerdpack set-up](/explore-docs/nr1-nerdpack), [Nerdpack subscriptions](explore-docs/nr1-subscription), [CLI configuration](/explore-docs/nr1-config), [plugins](/explore-docs/nr1-plugins), or [catalogs](/explore-docs/nr1-catalog).
 
@@ -143,3 +144,27 @@ By default, the command displays the autocomplete instructions for zsh. If you w
 *  `$ nr1 autocomplete zsh`
 *  `$ nr1 autocomplete bash`
 *  `$ nr1 autocomplete --refresh-cache`
+
+<br>
+
+*** 
+
+## `nr1 nrql`
+### Query using NRQL
+Fetches data from New Relic databases using a NRQL (New Relic query language) query.
+
+To learn more about NRQL and how to use it, see our [NRQL docs](https://newrelic.com/docs/query-data/nrql-new-relic-query-language/getting-started/introduction-nrql)
+
+
+
+### Usage
+`$ nr1 nrql OPTION ...`
+
+### Options
+| | |
+|---|---|
+| `-a, --account=ACCOUNT` | The user account ID. **required** |
+|  `-q, --query=QUERY`    | The NRQL query to run. **required** |
+|  `-u, --ugly`           | Displays the content without tabs or spaces. |
+|  `--profile=PROFILE`    | The authentication profile you want to use. |
+|  `--verbose`            | Adds extra information to the output. |
