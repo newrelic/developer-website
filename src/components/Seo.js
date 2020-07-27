@@ -24,12 +24,7 @@ function SEO({ description, lang, meta, title }) {
   const globalMetadata = [
     { name: 'description', content: metaDescription },
     { 'http-equiv': 'Content-Type', content: 'text/html', charset: 'utf-8' },
-    {
-      name: 'type',
-      class: 'swiftype',
-      'data-type': 'enum',
-      content: 'developer',
-    },
+
     {
       name: 'google-site-verification',
       content: 'eT8TSNhvMuDmAtqbtq5jygZKVkhDmz565fYQ3DVop4g',
@@ -46,10 +41,41 @@ function SEO({ description, lang, meta, title }) {
     { name: 'twitter:description', content: metaDescription },
   ];
 
+  // if we decide we need this elsewhere, abstract into gatsby-theme-newrelic
+  const swiftype = [
+    {
+      name: 'type',
+      class: 'swiftype',
+      'data-type': 'enum',
+      content: 'developer',
+    },
+    {
+      name: 'title',
+      class: 'swiftype',
+      'data-type': 'string',
+      content: title,
+    },
+    {
+      name: 'document_type',
+      class: 'swiftype',
+      'data-type': 'enum',
+      content: 'page',
+    },
+    {
+      name: 'info',
+      class: 'swiftype',
+      'data-type': 'string',
+      content: description,
+    },
+  ];
+
   // only add metadata if we have content
-  const validMetadata = [...globalMetadata, ...social, ...meta].filter(
-    (m) => m.content !== ''
-  );
+  const validMetadata = [
+    ...globalMetadata,
+    ...social,
+    ...meta,
+    ...swiftype,
+  ].filter((m) => m.content !== '');
 
   return (
     <Helmet
