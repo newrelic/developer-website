@@ -13,7 +13,7 @@ class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
 
 const SdkPlayground = () => {
   return (
-    <LiveProvider code={defaultCode}>
+    <LiveProvider code={defaultCode} scope={window.__NR1_SDK__.default}>
       <LiveEditor />
       <LivePreview />
       <LiveError />
