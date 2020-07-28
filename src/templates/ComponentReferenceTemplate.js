@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import CodeBlock from '../components/CodeBlock';
+import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 import ReferenceExample from '../components/ReferenceExample';
 import PageTitle from '../components/PageTitle';
 import Markdown from '../components/Markdown';
