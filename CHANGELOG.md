@@ -1,3 +1,12 @@
+## [1.6.1](https://github.com/newrelic/developer-website/compare/v1.6.0...v1.6.1) (2020-07-28)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-mdx from 1.2.19 to 1.2.21 ([984b994](https://github.com/newrelic/developer-website/commit/984b9946b03594aba829d6437257bf7eeaadf159))
+* upgrade multiple dependencies with Snyk ([f64ef2c](https://github.com/newrelic/developer-website/commit/f64ef2cb1a8f08f253f60340a43287c6b9d24cea))
+* upgrade multiple dependencies with Snyk ([e782497](https://github.com/newrelic/developer-website/commit/e782497909002168cb2ce9e661ad6154095ac88c))
+
 # [1.6.0](https://github.com/newrelic/developer-website/compare/v1.5.3...v1.6.0) (2020-07-22)
 
 
