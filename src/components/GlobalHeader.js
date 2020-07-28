@@ -59,11 +59,6 @@ const GlobalHeader = ({ className }) => {
                 Community
               </ExternalLink>
             </li>
-            <li>
-              <Link href="/podcasts" className={styles.leftSideLink}>
-                Podcasts
-              </Link>
-            </li>
           </ul>
         </div>
 
