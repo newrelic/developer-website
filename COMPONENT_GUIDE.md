@@ -163,9 +163,24 @@ return <div>Hello, {props.name}</div>;
 </Step>
 ````
 
-## Code Snippet
+You can also use images in steps. To get an image to appear on the right side as with code blocks, you must use an HTML `img` tag, traditional markdown will not align the image to the right.
 
-Code Snippets are automatically formatted by three backticks. This is our preferred method to delineate code snippets, but it's worth noting that markdown will also consider any text that is indented 4 spaces (or 1 tab) to be a code block.
+```md
+<Step>
+
+# Image example
+
+A step description
+<img src="../images/folder/great-img.png" alt="and here's an image to follow">
+
+</Step>
+```
+
+> Note: keep in mind that a new line is necesary after an `img` tag to ensure proper rendering of subsequent text/markdown.
+
+## Code blocks
+
+Code blocks are automatically formatted by three backticks. This is our preferred method to delineate code snippets, but it's worth noting that markdown will also consider any text that is indented 4 spaces (or 1 tab) to be a code block.
 
 ### Usage
 
@@ -178,10 +193,10 @@ There are four props that can be supplied to a code snippet.
   ```
   ````
 
-- `lineNumbers`: `true` or `false`. Will show line numbers of the left side of the code, defaults to `true`.
+- `lineNumbers`: `true` or `false`. Will show line numbers of the left side of the code, defaults to `false`.
 
   ````md
-  ```jsx lineNumbers=false
+  ```jsx lineNumbers=true
   ```
   ````
 

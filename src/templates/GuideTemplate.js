@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import MDXContainer from '../components/MDXContainer';
 
-import Layout from '../components/Layout';
 import FeatherIcon from '../components/FeatherIcon';
 import PageTitle from '../components/PageTitle';
 import SEO from '../components/Seo';
@@ -11,11 +10,11 @@ import styles from './GuideTemplate.module.scss';
 
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
-  const { frontmatter, body } = mdx;
+  const { frontmatter, body, fields } = mdx;
   const { title, description, duration } = frontmatter;
 
   return (
-    <Layout>
+    <>
       <SEO title={title} description={description} />
       <div className={styles.header}>
         <PageTitle>{title}</PageTitle>
@@ -27,7 +26,10 @@ const GuideTemplate = ({ data }) => {
         )}
       </div>
       <MDXContainer>{body}</MDXContainer>
-    </Layout>
+      <div className={styles.lastUpdated}>
+        {`Page last modified on ${fields.gitAuthorTime}`}
+      </div>
+    </>
   );
 };
 
@@ -44,6 +46,9 @@ export const pageQuery = graphql`
         path
         title
         description
+      }
+      fields {
+        gitAuthorTime(formatString: "MMMM DD, YYYY")
       }
     }
   }

@@ -4,19 +4,44 @@ module.exports = {
     description:
       'Do more on our platform and make New Relic your own with APIs, SDKs, code snippets, tutorials, and more developer tools.',
     author: 'New Relic',
+    repository: 'https://github.com/newrelic/developer-website',
     siteUrl: 'https://developer.newrelic.com',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
-        name: 'images',
-        path: `${__dirname}/src/images`,
+        layout: {
+          contentPadding: '2rem',
+          maxWidth: '1600px',
+        },
+        newrelic: {
+          configs: {
+            production: {
+              instrumentationType: 'proAndSPA',
+              accountId: '10175106',
+              trustKey: '1',
+              agentID: '22273498',
+              licenseKey: '23448da482',
+              applicationID: '22273498',
+              beacon: 'staging-bam.nr-data.net',
+              errorBeacon: 'staging-bam.nr-data.net',
+            },
+            staging: {
+              instrumentationType: 'proAndSPA',
+              accountId: '10175106',
+              trustKey: '1',
+              agentID: '22273531',
+              licenseKey: '23448da482',
+              applicationID: '22273531',
+              beacon: 'staging-bam.nr-data.net',
+              errorBeacon: 'staging-bam.nr-data.net',
+            },
+          },
+        },
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -28,6 +53,12 @@ module.exports = {
         theme_color: '#663399',
         display: 'minimal-ui',
         icon: 'src/images/favicon.png',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve('./src/layouts'),
       },
     },
     {
@@ -46,57 +77,15 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
+              maxHeight: 400,
               maxWidth: 1200,
+              fit: 'inside',
+              linkImagesToOriginal: false,
             },
           },
         ],
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        id: 'GTM-W77XWWH',
-        includeInDevelopment: true,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        host: 'https://developer.newrelic.com',
-        sitemap: 'https://developer.newrelic.com/sitemap.xml',
-        // NOTE: policy.disallow can take an array of pages or
-        // directories for web crawlers to  ignore.
-        policy: [{ userAgent: '*', allow: '/' }],
-      },
-    },
-    'gatsby-plugin-sitemap',
     'gatsby-plugin-meta-redirect',
-    {
-      resolve: 'gatsby-plugin-newrelic',
-      options: {
-        configs: {
-          production: {
-            instrumentationType: 'proAndSPA',
-            accountId: '10175106',
-            trustKey: '1',
-            agentID: '22273498',
-            licenseKey: '23448da482',
-            applicationID: '22273498',
-            beacon: 'staging-bam.nr-data.net',
-            errorBeacon: 'staging-bam.nr-data.net',
-          },
-          staging: {
-            instrumentationType: 'proAndSPA',
-            accountId: '10175106',
-            trustKey: '1',
-            agentID: '22273531',
-            licenseKey: '23448da482',
-            applicationID: '22273531',
-            beacon: 'staging-bam.nr-data.net',
-            errorBeacon: 'staging-bam.nr-data.net',
-          },
-        },
-      },
-    },
   ],
 };

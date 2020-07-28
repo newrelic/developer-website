@@ -11,7 +11,7 @@ This guide steps you through the process of adding the NerdGraphQuery component 
 
 NerdGraph is New Relic's GraphQL implementation. GraphQL has some key differences when compared to REST:
 
-* The client, not the server, determines what data is returned. 
+* The client, not the server, determines what data is returned.
 * You can easily collect data from multiple sources. For example, in a single New Relic query, you can get account information, infrastructure data, and issue a NRQL request.
 
 <Important>
@@ -29,18 +29,18 @@ We also have a 14-minute video that covers the steps below.
 
 ## Before you begin
 
-To develop projects, you need our New Relic One CLI (command line interface). 
+To develop projects, you need our New Relic One CLI (command line interface). If you haven't already installed it, do the following:
 
-If you haven't already installed it, do the following:
-
-* Go to our [installation wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) and complete steps 1–4.
-* Make a copy of your account ID in Step 1 because you’ll need it later (it's the number before the account name).
+* Install [Node.js](https://nodejs.org/en/download/).
+* Complete steps 1–4 of our [CLI wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), and be sure to make a copy of your account ID from step 1 because you’ll need it later.
 
 <Important>
 
   If you already installed the New Relic One CLI, but you can't remember your account ID, you can re-run the wizard just to get your account ID.
 
 </Important>
+
+For additional details, see [Set up your development environment](set-up-dev-env).
 
 ## Prepare the sample code
 
@@ -68,7 +68,7 @@ If you haven't already done so, clone the example applications from our [how-to 
 
   </Step>
 
-  <Step> 
+  <Step>
 
 In your preferred text editor, open `index.js`.
 
@@ -114,22 +114,21 @@ Execute these commands to update the UUID and serve the sample application:
 
 Once the sample application is successfully served, go to the local New Relic One homepage (https://one.newrelic.com/?nerdpacks=local) and click **Use NerdGraph**.
 
-![Use Nerdgraph launcher](../images/nerdgraphquery-guide/use-nerdgraph-launcher.png)
-
   <Important>
 
 If you don't see any launchers, click **Your applications**.
 
-  </Important> 
+  </Important>
+
+![Use Nerdgraph launcher](../../images/nerdgraphquery-guide/use-nerdgraph-launcher.png)
 
   </Step>
 
 </Steps>
 
+After launching the **Use NerdGraph** application, you see a dashboard that gives an overview of the transactions in your New Relic account:
 
-After launching the **Use NerdGraph** application, you see a dashboard that gives an overview of the transactions in your New Relic account.
-
-![Screenshot showing the sample transaction application](../images/nerdgraphquery-guide/no-name.png)
+![Screenshot showing the sample transaction application](../../images/nerdgraphquery-guide/no-name.png)
 
 ## Add the `NerdGraphQuery` component
 
@@ -142,7 +141,7 @@ If you need more details about our example below, see the APIs and components pa
 </Important>
 
 <Steps>
- 
+
   <Step>
 
 Add the `NerdGraphQuery` component into the first `StackItem` inside of the `return` in the `index.js` file:
@@ -166,12 +165,12 @@ Add the `NerdGraphQuery` component into the first `StackItem` inside of the `ret
 
   <Step>
 
-The `NerdGraphQuery` component takes a query object that states the source you want to access and the data you want returned. 
+The `NerdGraphQuery` component takes a query object that states the source you want to access and the data you want returned.
 
 Add the following code to your `index.js` file in the `render` method:
 
 <Important>
-  
+
 In the browser console, you can see the data from your query returned in an object that follows the same structure of the object in the initial query.
 
 </Important>
@@ -195,16 +194,16 @@ In the browser console, you can see the data from your query returned in an obje
 To take the data returned by the NerdGraph query and display it in the application, replace the `return null` in the current `NerdGraphQuery` component with this `return` statement:
 
   ```jsx
-  return <HeadingText>{data.actor.account.name} Apps:</HeadingText>; 
+  return <HeadingText>{data.actor.account.name} Apps:</HeadingText>;
   ```
 
   </Step>
 
 </Steps>
 
-When you go back to the browser and view your application, you see a new headline showing the name of your account returned from NerdGraph.
+When you go back to the browser and view your application, you see a new headline showing the name of your account returned from NerdGraph:
 
-![App Image](../images/nerdgraphquery-guide/with-name.png)
+![App Image](../../images/nerdgraphquery-guide/with-name.png)
 
 ## How to use `NerdGraphQuery.query`
 
@@ -213,7 +212,7 @@ At this point, you implemented the `NerdGraphQuery` component with the applicati
 Here's what you need to do next:
 
 * Query NerdGraph inside of the `componentDidMount` lifecycle method.
-* Save the returned data for later usage throughout the New Relic One application. 
+* Save the returned data for later usage throughout the New Relic One application.
 
 Complete the following:
 
@@ -221,16 +220,16 @@ Complete the following:
 
   <Step>
 
-The following code takes the response from NerdGraph and makes sure the results are processed, stored into the application state, and logged to the browser console for viewing. 
+The following code takes the response from NerdGraph and makes sure the results are processed, stored into the application state, and logged to the browser console for viewing.
 
-Add the following code into the `index.js` just under the `constructor`: 
+Add the following code into the `index.js` just under the `constructor`:
 
   ```jsx
   componentDidMount() {
       const accountId = this.state;
       const gql = `{ actor { accounts { id name } } }`;
 
-      const accounts = NerdGraphQuery.query({query: gql}) //The NerdGraphQuery.query method called with the query object to get your account data is stored in the accounts variable. 
+      const accounts = NerdGraphQuery.query({query: gql}) //The NerdGraphQuery.query method called with the query object to get your account data is stored in the accounts variable.
       accounts.then(results => {
           console.log('Nerdgraph Response:', results);
           const accounts = results.data.actor.accounts.map(account => {
@@ -246,7 +245,7 @@ Add the following code into the `index.js` just under the `constructor`:
 
   <Step>
 
-After the data is stored into state, display a selection so users can change accounts and update the application. 
+After the data is stored into state, display a selection so users can change accounts and update the application.
 
 To do this, add the following code to `index.js` for the second `StackItem` in the `return` statement:
 
@@ -269,12 +268,12 @@ To do this, add the following code to `index.js` for the second `StackItem` in t
 
 After you complete these steps, look at the application in your browser, and note the following:
 
-* The dropdown menu displays the data returned from the `NerdGraphQuery.query` and allows you to select an account. 
+* The dropdown menu displays the data returned from the `NerdGraphQuery.query` and allows you to select an account.
 * After you select a new account, the application shows data from the new selection.
 
-![App Complete](../images/nerdgraphquery-guide/complete.png)
+![App Complete](../../images/nerdgraphquery-guide/complete.png)
 
-The final `index.js` file should have code similar to the code below. This completed sample code is in your nerdlet `final.js`.
+The final `index.js` file should have code similar to the code below. This completed sample is in your nerdlet `final.js`.
 
   ```jsx
   import React from 'react';

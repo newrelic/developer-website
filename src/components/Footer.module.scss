@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--color-neutrals-600);
+  color: var(--secondary-text-color);
   font-size: 0.75rem;
   z-index: 1;
 
@@ -28,14 +28,14 @@
   width: 200px;
 
   &:hover {
-    color: var(--color-neutrals-700);
+    color: var(--secondary-text-hover-color);
   }
 }
 
 .copyright {
   margin-left: 0.5rem;
   padding-left: 0.5rem;
-  border-left: 1px dotted var(--color-neutrals-400);
+  border-left: 1px dotted var(--border-color);
 
   @media (max-width: 760px) {
     border-left: none;
@@ -64,6 +64,6 @@
 
 .link {
   &:hover {
-    color: var(--color-neutrals-700);
+    color: var(--secondary-text-hover-color);
   }
 }

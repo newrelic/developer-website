@@ -1,178 +1,24 @@
-/*-- Imports --*/
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-@import url('https://use.typekit.net/pnb6qnj.css');
-@import url('https://fonts.googleapis.com/css2?family=Ovo&display=swap');
-
-/*-- CSS Variables --*/
 :root {
-  --color-black: #000;
-  --color-white: #fff;
-  --color-neutrals-050: #fafbfb;
-  --color-neutrals-100: #f4f5f5;
-  --color-neutrals-200: #edeeee;
-  --color-neutrals-300: #e3e4e4;
-  --color-neutrals-400: #d5d7d7;
-  --color-neutrals-500: #b9bdbd;
-  --color-neutrals-600: #8e9494;
-  --color-neutrals-700: #464e4e;
-  --color-neutrals-800: #2a3434;
-  --color-neutrals-900: #000d0d;
-
-  --color-brand-050: #f7ffff;
-  --color-brand-100: #edffff;
-  --color-brand-400: #70ccd2;
-  --color-brand-800: #007e8a;
-  --color-brand-900: #005054;
-
-  --color-red-050: #fcf3f3;
-  --color-red-100: #fce9e9;
-  --color-red-200: #f7c8c6;
-  --color-red-300: #ec847e;
-  --color-red-400: #e56059;
-  --color-red-500: #d8211a;
-  --color-red-600: #8e0000;
-  --color-red-700: #600;
-  --color-red-800: #390000;
-  --color-red-900: #1b0000;
-
-  --color-green-050: #f1fdf2;
-  --color-green-100: #d1f7d9;
-  --color-green-200: #7fe898;
-  --color-green-300: #22e749;
-  --color-green-400: #00d100;
-  --color-green-500: #00a500;
-  --color-green-600: #008200;
-  --color-green-700: #004d00;
-  --color-green-800: #0d290a;
-  --color-green-900: #021200;
-
-  --color-yellow-050: #fffde7;
-  --color-yellow-100: #fff9c4;
-  --color-yellow-200: #fff59d;
-  --color-yellow-300: #fff176;
-  --color-yellow-400: #ffee58;
-  --color-yellow-500: #ffeb3b;
-  --color-yellow-600: #fdd835;
-  --color-yellow-700: #fbc02d;
-  --color-yellow-800: #f9a825;
-  --color-yellow-900: #f57f17;
-
-  --color-teal-050: #f1fbfc;
-  --color-teal-100: #d2f3f6;
-  --color-teal-200: #85e0e7;
-  --color-teal-300: #70ccd3;
-  --color-teal-400: #00b3c3;
-  --color-teal-500: #008c99;
-  --color-teal-600: #006c75;
-  --color-teal-700: #00484e;
-  --color-teal-800: #003539;
-  --color-teal-900: #002123;
-
-  --boxshadow: 0 0.24905px 0.55345px rgba(0, 0, 0, 0.00562291),
-    0 0.59851px 1.33002px rgba(0, 0, 0, 0.00807786),
-    0 1.12694px 2.50431px rgba(0, 0, 0, 0.01),
-    0 2.01027px 4.46726px rgba(0, 0, 0, 0.0119221),
-    0 3.75998px 8.35552px rgba(0, 0, 0, 0.0143771),
-    0 9px 20px rgba(0, 0, 0, 0.02);
-
-  --color-tile-background: rgb(215, 210, 233);
-  --primary-font-family: 'open sans', sans-serif;
-  --secondary-font-family: 'effra', sans-serif;
-  --tertiary-font-family: 'Ovo', serif;
-  --code-font: 'Menlo', 'Consolas', monospace;
-
   --height-global-header: 30px;
   --height-mobile-nav-bar: 60px;
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-size: 16px;
-  font-family: var(--primary-font-family);
-  color: var(--color-neutrals-700);
-  background-color: var(--color-white);
-  line-height: 1.5;
-}
-
-a {
-  cursor: pointer;
-  text-decoration: none;
-  color: var(--color-brand-800);
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 1em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: var(--color-neutrals-800);
-  font-family: var(--primary-font-family);
-}
-
-input,
-select {
-  border: 1px solid var(--color-neutrals-400);
+input[type='text'] {
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   height: 2rem;
   box-sizing: border-box;
-}
+  transition: all 0.1s var(--ease-out-quad);
 
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  background-color: var(--color-brand-800);
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 3px;
-  border: 1px solid var(--color-brand-800);
-  font-family: var(--primary-font-family);
-  cursor: pointer;
-  &.secondary {
-    background-color: var(--color-white);
-    color: var(--color-brand-800);
+  &:hover {
+    border-color: var(--border-hover-color);
   }
-}
-
-ul {
-  margin: 0;
-  padding-left: 2rem;
-}
-
-code {
-  font-family: var(--code-font);
-}
-
-blockquote {
-  border-left: 4px solid var(--color-neutrals-400);
-  padding: 15px 5px 20px 20px;
-  margin: 25px 50px 25px 20px;
-}
-
-pre {
-  margin: 0;
 }
 
 :global {
   .intro-text {
-    color: var(--color-neutrals-600);
+    color: var(--secondary-text-color);
     font-size: 1.125rem;
     line-height: 2rem;
   }

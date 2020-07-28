@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { graphql, navigate, Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
-import Layout from '../components/Layout';
 import SEO from '../components/Seo';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import PageTitle from '../components/PageTitle';
@@ -14,6 +14,7 @@ import ExternalLink from '../components/ExternalLink';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import styles from './index.module.scss';
+import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 
 const getStartedGuides = [
   {
@@ -28,7 +29,7 @@ const getStartedGuides = [
     duration: '7 min',
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
-    path: '/automate-workflows/add-tags-to-apps',
+    path: '/automate-workflows/5-mins-tag-resources',
     icon: 'automation',
   },
   {
@@ -72,11 +73,11 @@ const IndexPage = ({ data, pageContext }) => {
 
   return (
     <PageContext.Provider value={pageContext}>
-      <Layout>
+      <>
         <SEO />
         <PageTitle>Observability for every developer</PageTitle>
 
-        <section className={styles.intro}>
+        <section className={cx(styles.intro, 'intro-text')}>
           <div className={styles.introText}>
             <p>
               Whether you're new to New Relic or already a data nerd, you can
@@ -91,8 +92,8 @@ const IndexPage = ({ data, pageContext }) => {
           </div>
           <Video
             className={styles.introVideo}
-            id="ZagZfNQYJEU"
-            type="youtube"
+            id="lzrwubc09a"
+            type="wistia"
             title="Develop with New Relic"
           />
         </section>
@@ -103,17 +104,24 @@ const IndexPage = ({ data, pageContext }) => {
               <GuideListing.Heading className={cx(styles.guideListingHeading)}>
                 Get coding
               </GuideListing.Heading>
-              <ExternalLink href="https://newrelic.com/signup?partner=Developer+Edition">
-                <button type="button">Create an account</button>
-              </ExternalLink>
+              <Button
+                as={ExternalLink}
+                variant={Button.VARIANT.PRIMARY}
+                href="https://newrelic.com/signup?partner=Developer+Edition"
+              >
+                Create an account
+              </Button>
             </header>
             <GuideListing.List>
               {getStartedGuides.map((guide, index) => (
-                <GuideTile key={index} {...guide}>
-                  <GuideTile.Button
-                    text="Start the guide"
-                    onClick={() => navigate(guide.path)}
-                  />
+                <GuideTile
+                  key={index}
+                  className={styles.featuredGuide}
+                  {...guide}
+                >
+                  <GuideTile.Button to={guide.path}>
+                    Start the guide
+                  </GuideTile.Button>
                 </GuideTile>
               ))}
             </GuideListing.List>
@@ -129,7 +137,6 @@ const IndexPage = ({ data, pageContext }) => {
               <GuideTile
                 as={Link}
                 to={frontmatter.path}
-                className={styles.allGuidesGuide}
                 key={index}
                 duration={frontmatter.duration}
                 title={frontmatter.tileShorthand?.title || frontmatter.title}
@@ -138,19 +145,21 @@ const IndexPage = ({ data, pageContext }) => {
                   frontmatter.description
                 }
                 path={frontmatter.path}
+                alignment={GuideTile.ALIGNMENT.LEFT}
               />
             ))}
           </GuideListing.List>
         </GuideListing>
         {guides.length === numberOfPromotedGuides && (
           <div className={styles.buttonContainer}>
-            <button
+            <Button
               className={styles.expandGuides}
               type="button"
               onClick={() => setGuides(nodes)}
+              variant={Button.VARIANT.NORMAL}
             >
               {`Show ${guidesMinusPromoted} more guides`}
-            </button>
+            </Button>
           </div>
         )}
 
@@ -169,24 +178,46 @@ const IndexPage = ({ data, pageContext }) => {
           built by the New Relic community.
         </p>
 
-        <section className={cx(styles.section, styles.stripedSection)}>
-          <h1>New Relic developer champions</h1>
-          <p>
-            New Relic Champions are solving big problems using New Relic as
-            their linchpin and are recognized as experts and leaders in the New
-            Relic technical community.
-          </p>
-          <ExternalLink href="https://forms.gle/Zkdub5e1x4MNqSKW9">
-            <button type="button">
-              Nominate a Developer Champion
+        <section
+          className={cx(
+            styles.section,
+            styles.stripedSection,
+            styles.developerChampions
+          )}
+        >
+          <div>
+            <h1>New Relic developer champions</h1>
+            <p>
+              New Relic Champions are solving big problems using New Relic as
+              their linchpin and are recognized as experts and leaders in the
+              New Relic technical community.
+            </p>
+            <Button
+              as={ExternalLink}
+              variant={Button.VARIANT.PRIMARY}
+              href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+            >
+              Nominate a developer champion
               <FeatherIcon
                 className={styles.externalLinkIcon}
                 name="external-link"
               />
-            </button>
-          </ExternalLink>
+            </Button>
+            <Button
+              as={Link}
+              variant={Button.VARIANT.PLAIN}
+              to="/developer-champion"
+            >
+              Learn more about developer champions
+            </Button>
+          </div>
+          <img
+            className={styles.img}
+            src={devChampionBadge}
+            alt="developer champion badge"
+          />
         </section>
-      </Layout>
+      </>
     </PageContext.Provider>
   );
 };

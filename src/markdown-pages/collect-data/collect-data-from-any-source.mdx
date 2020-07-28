@@ -28,7 +28,7 @@ But you may want to bring data into New Relic that isn't collected by default. M
 
 If you use our APM, Browser, or Mobile agents to report data, you can use their associated APIs to report custom data. For example, if you monitor your application with the New Relic APM Python agent, you can use the [Python agent API](https://docs.newrelic.com/docs/agents/python-agent/api-guides/guide-using-python-agent-api) to set up custom instrumentation.
 
-See the [agent APIs](https://developer.newrelic.com/technology/rest-apis).
+See the [agent APIs](https://docs.newrelic.com/docs/agents).
 </Step>
 
 <Step>
@@ -57,42 +57,42 @@ New Relic's [Trace API](https://docs.newrelic.com/docs/apm/distributed-tracing/t
 - New Relic format (if you don’t have Zipkin-format data, you’d use this)
 
 ```shell lineNumbers=true
-    curl -i -H "Content-Type: application/json" \
-     -H "Api-Key: [API KEY HERE]" \
-     -H 'Data-Format: newrelic' \
-     -H 'Data-Format-Version: 1' \
-     -X POST \
-     -d '[
-           {
-             "common": {
-               "attributes": {
-                 "service.name": "Test Service A",
-                 "host": "host123.test.com"
-               }
-             },
-             "spans": [
-               {
-                 "trace.id": "123456",
-                 "id": "ABC",
-                 "attributes": {
-                   "duration.ms": 12.53,
-                   "name": "/home"
-                 }
-               },
-               {
-                 "trace.id": "123456",
-                 "id": "DEF",
-                 "attributes": {
-                   "service.name": "Test Service A",
-                   "host": "host456.test.com",
-                   "duration.ms": 2.97,
-                   "name": "/auth",
-                   "parent.id": "ABC"
-                 }
-               }
-             ]
-           }
-         ]' 'https://trace-api.newrelic.com/trace/v1'
+curl -i -X POST https://trace-api.newrelic.com/trace/v1 \
+  -H "Content-Type: application/json" \
+  -H "Api-Key: $INSIGHTS_INSERT_API_KEY" \
+  -H 'Data-Format: newrelic' \
+  -H 'Data-Format-Version: 1' \
+  -d '[
+        {
+          "common": {
+            "attributes": {
+              "service.name": "Test Service A",
+              "host": "host123.test.com"
+            }
+          },
+          "spans": [
+            {
+              "trace.id": "123456",
+              "id": "ABC",
+              "attributes": {
+                "duration.ms": 12.53,
+                "name": "/home"
+              }
+            },
+            {
+              "trace.id": "123456",
+              "id": "DEF",
+              "attributes": {
+                "service.name": "Test Service A",
+                "host": "host456.test.com",
+                "duration.ms": 2.97,
+                "name": "/auth",
+                "parent.id": "ABC"
+              }
+            }
+          ]
+        }
+      ]'
 ```
 
 </Step>
@@ -104,14 +104,24 @@ New Relic's [Trace API](https://docs.newrelic.com/docs/apm/distributed-tracing/t
 You can use our [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api) to send metric data to New Relic from any source. 
 
 ```shell lineNumbers=true
-curl -vvv -k -H "Content-Type: application/json" -H "Api-Key: ADD_KEY_HERE" -X POST https://metric-api.newrelic.com/metric/v1 --data ‘[{ "metrics":[{
-         	"name":"memory.heap",
-             "type":"gauge",
-             "value":2.3,
-             "timestamp":1531414060739,
-             "attributes":{"host.name":"dev.server.com"}
-           }]
-   	}]’
+curl -i -X POST https://metric-api.newrelic.com/metric/v1 \
+  -H "Content-Type: application/json" \
+  -H "Api-Key: $INSIGHTS_INSERT_API_KEY" \
+  -d '[
+        {
+          "metrics": [
+            {
+              "name": "memory.heap",
+              "type": "gauge",
+              "value": 2.3,
+              "timestamp": 1531414060739,
+              "attributes": {
+                "host.name": "dev.server.com"
+              }
+            }
+          ]
+        }
+      ]'
 ```
 
 </Step>
@@ -123,81 +133,16 @@ curl -vvv -k -H "Content-Type: application/json" -H "Api-Key: ADD_KEY_HERE" -X P
 For sending arbitrary events to New Relic, you can use our Event API. We save these events as a new [event type](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/glossary#event), which can then be queried in New Relic via NRQL. (Eventually, the Telemetry SDKs will support the Event API.)
 
 ```shell lineNumbers=true
-# Hook into the runtime 'at_exit' event
-at_exit do
-  # Name the custom event
-  payload = { 'eventType' => 'CLIRun' }
-
-  # Check to see if the process is exiting due to an error
-  if $!.nil? || $!.is_a?(SystemExit) && $!.success?
-    payload[:status] = 0
-  else
-    # Gather any known errors
-    errors = ""
-    (Thread.current[:errors] ||= []).each do |err|
-      errors += "#{err}\n"
-    end
-    payload[:errors] = errors
-  end
-
-  # Send the errors to New Relic as a custom event
-  insights_url = URI.parse("https://insights-collector.newrelic.com/v1/accounts/YOUR_ACCOUNT_ID/events")
-  headers = { "x-insert-key" => "YOUR_API_KEY", "content-type" => "application/json" }
-
-  http = Net::HTTP.new(insights_url.host, insights_url.port)
-  http.use_ssl = true
-  request = Net::HTTP::Post.new(insights_url.request_uri, headers)
-  request.body = payload.to_json
-
-  puts "Sending run summary to Insights: #{payload.to_json}"
-  begin
-    response = http.request(request)
-    puts "Response from Insights: #{response.body}"
-  rescue Exception => e
-    puts "There was an error posting to Insights. Error: #{e.inspect}"
-  end
-end
-```
-
-</Step>
-
-<Step>
-
-## Integrations SDK
-
-Build out your own agent to get deep visibility into highly customized, unique, or legacy systems.
-
-Using the [Infrastructure Integrations SDK](https://developer.newrelic.com/technology/infrastructure-sdk), you can get data from specific entities into New Relic without having to worry about timings of harvest cycles. The following example shows a custom Apache Integration built atop the Infrastructure Integrations SDK.
-
-![Infrastructure integrations screenshot](../images/collect-data-from-any-source/UC2-sec3-ohai.png)
-
-```shell lineNumbers=true
-# Code snippet from the Apache integration's main method in Go.
-func main() {
-  log.Debug("Starting Apache integration")
-  defer log.Debug("Apache integration exited")
-
-  integration, err := sdk.NewIntegration(integrationName, integrationVersion, &args)
-  fatalIfErr(err)
-
-  if args.All || args.Inventory {
-    log.Debug("Fetching data for '%s' integration", integrationName+"-inventory")
-    fatalIfErr(setInventory(integration.Inventory))
-  }
-
-  if args.All || args.Metrics {
-    log.Debug("Fetching data for '%s' integration", integrationName+"-metrics")
-    ms := integration.NewMetricSet("ApacheSample")
-    provider := &Status{
-      CABundleDir:  args.CABundleDir,
-      CABundleFile: args.CABundleFile,
-      HTTPTimeout:  defaultHTTPTimeout,
-    }
-    fatalIfErr(getMetricsData(provider, ms))
-  }
-
-  fatalIfErr(integration.Publish())
-}
+curl -i -X POST https://insights-collector.newrelic.com/v1/accounts/$ACCOUNT_ID/events \
+  -H "Content-Type: application/json" \
+  -H "x-insert-key: $INSIGHTS_INSERT_API_KEY" \
+  -d '[
+        {
+          "eventType": "LoginEvent",
+          "service": "login-service",
+          "customerId": "xyz"
+        }
+      ]'
 ```
 
 </Step>
@@ -209,19 +154,19 @@ func main() {
 If our existing [logging integrations](https://docs.newrelic.com/docs/new-relic-logs-documentation) don’t meet your needs, you can use our Log API to send any arbitrary log data to New Relic. (Eventually, the Telemetry SDKs will support the Log API.)
 
 ```shell lineNumbers=true
-# Example of a JSON POST request.
-   POST /log/v1 HTTP/1.1
-   Host: log-api.newrelic.com
-   Content-Type: application/json
-   X-Insert-Key: <YOUR_INSIGHTS_INSERT_KEY>
-   Accept: */*
-   Content-Length: 133
-   {
-     "timestamp": 1550086450124,
-     "message": "User 'xyz' logged in",
-     "service": "login-service",
-     "hostname": "login.example.com"
-   }
+curl -i -X POST https://log-api.newrelic.com/log/v1 \
+  -H "Content-Type: application/json" \
+  -H "Api-Key: $INSIGHTS_INSERT_API_KEY" \
+  -d '[
+        "logs": [
+          {
+            "timestamp": 1593538496000,
+            "message": "User xyz logged in",
+            "service": "login-service",
+            "hostname": "login.example.com"
+          }
+        ]
+      ]'
 ```
 
 </Step>

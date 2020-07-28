@@ -6,17 +6,6 @@
   @media (max-width: 1080px) {
     flex-direction: column;
   }
-
-  button {
-    margin-top: 1rem;
-    margin-right: 1rem;
-  }
-
-  p {
-    font-size: 1.125rem;
-    line-height: 1.875rem;
-    color: var(--color-neutrals-600);
-  }
 }
 
 .introVideo {
@@ -31,6 +20,8 @@
 }
 
 .guideListing {
+  --guide-list-row-height: auto;
+
   margin-top: 0;
 }
 
@@ -83,8 +74,10 @@
 }
 
 .stripedSection {
+  --surface-background-color: var(--secondary-surface-background-color);
+
   padding: 2rem;
-  background: var(--color-neutrals-100);
+  background: var(--secondary-background-color);
   border-radius: 4px;
 }
 
@@ -94,23 +87,30 @@
 }
 
 .expandGuides {
-  border: var(--color-neutrals-100);
-  background: var(--color-neutrals-100);
-  color: var(--color-neutrals-800);
   margin-top: 2rem;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .allGuidesListing {
   margin-top: 1rem;
-  grid-auto-rows: minmax(180px, 180px);
 }
 
-.allGuidesGuide {
-  p,
-  h2 {
-    text-align: left;
+.featuredGuide {
+  border-color: var(--surface-background-color) !important;
+
+  &:hover {
+    transform: unset;
+    border-color: inherit;
   }
-  p {
-    padding: 0;
+}
+
+.developerChampions {
+  display: flex;
+
+  img {
+    height: 9rem;
   }
 }

@@ -1,17 +1,9 @@
 .section {
-  position: relative;
-}
+  &.backgroundBanner {
+    --surface-background-color: var(--secondary-surface-background-color);
 
-.backgroundBanner {
-  position: absolute;
-  top: -2rem;
-  bottom: -2rem;
-  left: -2rem;
-  right: -2rem;
-  z-index: -1;
-
-  background-color: var(--color-neutrals-100);
-  @media (max-width: 500px) {
-    background-color: var(--color-white);
+    background-color: var(--secondary-background-color);
+    margin: 0 -2rem;
+    padding: 2rem;
   }
 }

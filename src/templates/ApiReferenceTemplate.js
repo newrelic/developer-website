@@ -2,8 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import InlineCodeSnippet from '../components/InlineCodeSnippet';
-import Layout from '../components/Layout';
+import CodeBlock from '../components/CodeBlock';
 import PageTitle from '../components/PageTitle';
 import Markdown from '../components/Markdown';
 import MethodReference from '../components/MethodReference';
@@ -27,7 +26,7 @@ const ApiReferenceTemplate = ({ data }) => {
   } = useApiDoc(api) ?? {};
 
   return (
-    <Layout>
+    <>
       <SEO title={title} description={description} />
       <PageTitle>{api}</PageTitle>
 
@@ -45,7 +44,7 @@ const ApiReferenceTemplate = ({ data }) => {
 
       <section className={templateStyles.section}>
         <h2 className={templateStyles.sectionTitle}>Usage</h2>
-        <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
+        <CodeBlock language="js">{usage}</CodeBlock>
       </section>
 
       {methods.length > 0 && (
@@ -78,7 +77,7 @@ const ApiReferenceTemplate = ({ data }) => {
           ))}
         </section>
       )}
-    </Layout>
+    </>
   );
 };
 

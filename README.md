@@ -1,8 +1,12 @@
+[![Community Project header](https://github.com/newrelic/open-source-office/raw/master/examples/categories/images/Community_Project.png)](https://github.com/newrelic/open-source-office/blob/master/examples/categories/index.md#category-community-project)
+
 # developer.newrelic.com
+
+[View known vulnerabilities](https://snyk.io/test/github/newrelic/developer-website)
 
 ## 🚀 Local development
 
-Navigate into your new site’s directory and start it up.
+You can serve this site locally to quickly see your changes and additions before you PR them. To get started, navigate into your new site’s directory and start it up, as follows.
 
 ```shell
 cd developer-website/
@@ -25,8 +29,12 @@ have the tests automatically re-run, use `npm run test:watch`.
 
 New Relic hosts and moderates an online forum where customers can interact with
 New Relic employees as well as other customers to get help and share best practices.
-If you are looking for configuration help or more information about New Relic's
-products please visit the [New Relic Explorers Hub](https://discuss.newrelic.com/)
+If you're looking for configuration help or more information about New Relic's
+products, please visit the [New Relic Explorers Hub](https://discuss.newrelic.com/).
+
+Like all official New Relic open source projects, there's a related
+[Community topic](https://discuss.newrelic.com/t/developer-newrelic-com/108069)
+in the New Relic Explorers Hub.
 
 ## 🚧 Contributing
 

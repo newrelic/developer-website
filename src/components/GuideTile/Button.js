@@ -1,16 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './GuideTile.module.scss';
+import { css } from '@emotion/core';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Link } from 'gatsby';
 
-const Button = ({ onClick, text }) => (
-  <button type="button" className={styles.button} onClick={onClick}>
-    {text}
-  </button>
+const GuideTileButton = ({ className, ...props }) => (
+  <Button
+    as={Link}
+    variant={Button.VARIANT.PRIMARY}
+    className={className}
+    css={css`
+      justify-self: center;
+
+      &:hover {
+        transform: translateY(-1px);
+      }
+    `}
+    {...props}
+  />
 );
 
-Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
+GuideTileButton.propTypes = {
+  className: PropTypes.string,
 };
 
-export default Button;
+export default GuideTileButton;

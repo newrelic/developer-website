@@ -3,9 +3,8 @@ import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import InlineCodeSnippet from '../components/InlineCodeSnippet';
+import CodeBlock from '../components/CodeBlock';
 import ReferenceExample from '../components/ReferenceExample';
-import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import Markdown from '../components/Markdown';
 import MethodReference from '../components/MethodReference';
@@ -54,7 +53,7 @@ const ComponentReferenceTemplate = ({ data }) => {
   } = useComponentDoc(component) ?? {};
 
   return (
-    <Layout>
+    <>
       <SEO title={title} description={description} />
       <PageTitle>{component}</PageTitle>
       <section className={cx(templateStyles.section, 'intro-text')}>
@@ -63,7 +62,7 @@ const ComponentReferenceTemplate = ({ data }) => {
 
       <section className={templateStyles.section}>
         <h2 className={templateStyles.sectionTitle}>Usage</h2>
-        <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
+        <CodeBlock language="js">{usage}</CodeBlock>
       </section>
 
       {examples.length > 0 && (
@@ -115,7 +114,7 @@ const ComponentReferenceTemplate = ({ data }) => {
           ))}
         </section>
       )}
-    </Layout>
+    </>
   );
 };
 
