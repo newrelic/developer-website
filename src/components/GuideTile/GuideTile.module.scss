@@ -1,26 +1,20 @@
 .tile {
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  background: var(
-    --surface-background-color,
-    var(--primary-surface-background-color)
-  );
-  box-shadow: var(--boxshadow);
-  padding: 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 0.25rem;
-  position: relative;
-  transition: all 0.15s ease-out;
+  // display: grid;
+  // grid-template-rows: auto auto 1fr auto;
+  // box-shadow: var(--boxshadow);
+  // border-radius: 0.25rem;
+  // position: relative;
+  // transition: all 0.15s ease-out;
 
-  &:hover {
-    transform: translateY(-2px);
-    border-color: var(--border-hover-color);
-  }
+  // &:hover {
+  //   transform: translateY(-2px);
+  //   border-color: var(--border-hover-color);
+  // }
 }
 
-.tileWithIcon h2 {
-  margin-top: 1rem;
-}
+// .tileWithIcon h2 {
+//   margin-top: 1rem;
+// }
 
 .timeEstimate {
   font-size: 0.75rem;
@@ -66,22 +60,22 @@
   margin-right: 0.25rem;
 }
 
-.tileLeftAligned {
-  .title,
-  .description {
-    text-align: left;
-  }
-  .description {
-    padding: 0;
-  }
-}
+// .tileLeftAligned {
+//   .title,
+//   .description {
+//     text-align: left;
+//   }
+//   .description {
+//     padding: 0;
+//   }
+// }
 
-.tileCenterAligned {
-  .title,
-  .description {
-    text-align: center;
-  }
-  .description {
-    padding: 0 0.5rem;
-  }
-}
+// .tileCenterAligned {
+//   .title,
+//   .description {
+//     text-align: center;
+//   }
+//   .description {
+//     padding: 0 0.5rem;
+//   }
+// }

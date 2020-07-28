@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { css } from '@emotion/core';
+import { Surface } from '@newrelic/gatsby-theme-newrelic';
 import FeatherIcon from '../FeatherIcon';
 import NewRelicIcon from '../NewRelicIcon';
 import Button from './Button';
 
-import cx from 'classnames';
 import styles from './GuideTile.module.scss';
 
 const GuideTile = ({
@@ -18,13 +19,57 @@ const GuideTile = ({
   alignment,
   ...props
 }) => (
-  <Component
+  <Surface
     {...props}
-    className={cx(styles.tile, className, {
-      [styles.tileWithIcon]: icon,
-      [styles.tileLeftAligned]: alignment === GuideTile.ALIGNMENT.LEFT,
-      [styles.tileCenterAligned]: alignment === GuideTile.ALIGNMENT.CENTER,
-    })}
+    as={Component}
+    className={className}
+    base={Surface.BASE.PRIMARY}
+    css={css`
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      border-radius: 0.25rem;
+      position: relative;
+      padding: 1rem;
+      transition: all 0.15s ease-out;
+
+      &:hover {
+        transform: translateY(-2px);
+        border-color: var(--border-hover-color);
+      }
+
+      ${
+        icon &&
+        `
+        h2 {
+          margin-top: 1rem;
+        }
+      `
+      }
+
+      ${
+        alignment === GuideTile.ALIGNMENT.LEFT &&
+        `
+        .title, .desicription {
+          text-align: left;
+        }
+        .description {
+          padding: 0;
+        }
+      `
+      }
+
+      ${
+        alignment === GuideTile.ALIGNMENT.LEFT &&
+        `
+        .title, .desicription {
+          text-align: center;
+        }
+        .description {
+          padding: 0 0.5rem;
+        }
+      `
+      }
+    `}
   >
     {icon && (
       <div className={styles.iconContainer}>
@@ -42,7 +87,7 @@ const GuideTile = ({
     <h3 className={styles.title}>{title}</h3>
     <p className={styles.description}>{description}</p>
     {children}
-  </Component>
+  </Surface>
 );
 
 GuideTile.Button = Button;
