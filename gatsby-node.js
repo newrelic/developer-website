@@ -84,3 +84,11 @@ exports.onCreateNode = ({ node, actions }) => {
     });
   }
 };
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    externals: {
+      Tessen: 'Tessen',
+    },
+  });
+};
