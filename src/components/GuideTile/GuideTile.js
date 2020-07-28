@@ -22,7 +22,8 @@ const GuideTile = ({
     {...props}
     as={Component}
     className={className}
-    base={Surface.BASE.PRIMARY}
+    base={featured ? Surface.BASE.SECONDARY : Surface.BASE.PRIMARY}
+    interactive={!featured}
     css={css`
       display: grid;
       grid-template-rows: auto auto 1fr auto;
@@ -30,33 +31,6 @@ const GuideTile = ({
       position: relative;
       padding: 1rem;
       transition: all 0.15s ease-out;
-
-      &:hover {
-        transform: translateY(-2px);
-        border-color: var(--border-hover-color);
-      }
-
-      ${icon &&
-      `
-        h2 {
-          margin-top: 1rem;
-        }
-      `}
-
-      ${featured &&
-      `
-          border-color: var(--color-white);
-
-          .dark-mode & {
-            border-color: var(--color-dark-100);
-            background-color: var(--color-dark-100);
-          }
-
-          &:hover {
-            transform: unset;
-            border-color: inherit;
-          }
-        `}
     `}
   >
     {icon && (
@@ -111,6 +85,7 @@ const GuideTile = ({
       css={css`
         ${alignment === GuideTile.ALIGNMENT.LEFT && `text-align: left;`}
         ${alignment === GuideTile.ALIGNMENT.CENTER && `text-align: center;`}
+        ${icon && `margin-top: 0.5rem;`}
       `}
     >
       {title}
