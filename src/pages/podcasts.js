@@ -23,13 +23,13 @@ const PodcastsPage = () => {
             rather a lot that isn't as well.
           </p>
           <p>
-            For the time being we have one podcast with one episode, so we're
-            including it here for your listening enjoyment.
+            For the time being we have one podcast, so we're including it here
+            for your listening enjoyment.
           </p>
           <p>
             While it may seem silly to start an entire page for podcasts when we
-            only have the one episode (we should really have called it 'podcast'
-            page), we had to start somewhere.
+            only have the one (we should really have called it 'podcast' page),
+            we had to start somewhere.
           </p>
           <p>
             <blockquote>
