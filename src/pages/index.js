@@ -114,11 +114,7 @@ const IndexPage = ({ data, pageContext }) => {
             </header>
             <GuideListing.List>
               {getStartedGuides.map((guide, index) => (
-                <GuideTile
-                  key={index}
-                  className={styles.featuredGuide}
-                  {...guide}
-                >
+                <GuideTile key={index} featured {...guide}>
                   <GuideTile.Button to={guide.path}>
                     Start the guide
                   </GuideTile.Button>
