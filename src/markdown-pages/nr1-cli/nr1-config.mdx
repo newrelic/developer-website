@@ -13,6 +13,8 @@ redirects:
 
 To configure your New Relic One CLI preferences, use the commands below. You can click any command to see its usage options and additional details about the command.
 
+Run `nr1 config:list` to see all your existing configurations and their keys.
+
 </Intro>
 
 <br/> 
@@ -30,7 +32,7 @@ To configure your New Relic One CLI preferences, use the commands below. You can
 
 ## `nr1 config:set`
 ### Set a configuration
-Sets a specific configuration value.
+Sets a specific configuration value given a configuration key. By default, the command will prompt you for a new value after providing a key, but you can also use the `--k, --key=KEY` option to skip this step.  
 
 ### Usage
 `$ nr1 config:set OPTION` 
@@ -43,6 +45,10 @@ Sets a specific configuration value.
 | `--profile=PROFILE` | The authentication profile you want to use. |
 |` -t, --this-profile-only` | If present, this configuration will only apply while running with the specified profile.|
 | `--verbose` | Adds extra information to the output. |
+
+### Examples
+* `$ nr1 config:set --key=proxyEnabled`   
+* `$ nr1 config:set --key=proxyEnabled --value=ENABLED`   
 
 <br>
 
@@ -68,7 +74,7 @@ Shows the value for a specific configuration.
 
 ## `nr1 config:list`
 ### See all your configurations
-Shows a list of all your configuration choices.
+Shows a list of all your configuration choices, including the configuration key, value, and origin.
 
 ### Usage
 `$ nr1 config:list`
@@ -104,3 +110,7 @@ Removes the value of a specific configuration.
 ### Aliases
 * `nr1 config:remove`
 * `nr1 config:rm`
+
+### Examples:
+* `$ nr1 config:delete --key=proxyHttp`   
+
