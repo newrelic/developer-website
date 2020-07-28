@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/newrelic/developer-website/compare/v1.6.1...v1.7.0) (2020-07-28)
+
+
+### Features
+
+* swiftype metatags for developer site ([02095fa](https://github.com/newrelic/developer-website/commit/02095fa47bc198e4ea6e3ff0c3199f9e92b707c8))
+
 ## [1.6.1](https://github.com/newrelic/developer-website/compare/v1.6.0...v1.6.1) (2020-07-28)
 
 
