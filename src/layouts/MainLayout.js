@@ -13,7 +13,6 @@ import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import RelatedContent from '../components/RelatedContent';
-import styles from './MainLayout.module.scss';
 import '../components/styles.scss';
 
 const gaTrackingId = 'UA-3047412-33';
