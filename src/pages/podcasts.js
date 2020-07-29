@@ -56,7 +56,7 @@ const PodcastsPage = () => {
         <div id="buzzsprout-player">
           <iframe
             title="buzzsprout"
-            src="https://www.buzzsprout.com/1225223/4619918-code-red-observability-meltdown?client_source=small_player&amp;iframe=true&amp;referrer=https%253A%252F%252Fwww.buzzsprout.com%252F1225223%252F4619918-code-red-observability-meltdown.js%253Fcontainer_id%253Dbuzzsprout-player%2526player%253Dsmall%22%20width=%22100%25%22%20height=%22200%22%20frameborder=%220%22%20scrolling=%22no%22"
+            src="https://www.buzzsprout.com/1225223?client_source=large_player&iframe=true&referrer=https://www.buzzsprout.com/1225223.js?container_id=buzzsprout-large-player-1225223&player=large"
           />
         </div>
       </section>
