@@ -49,6 +49,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: path.resolve(`src/templates/${frontmatter.template}.js`),
       context: {
         fileRelativePath: getFileRelativePath(node.fileAbsolutePath),
+        pageType:
+          frontmatter.template[0].toLowerCase() +
+          frontmatter.template.replace('Template', '').slice(1),
         guidesFilter:
           frontmatter.template === 'OverviewTemplate'
             ? `${frontmatter.path}/*`
