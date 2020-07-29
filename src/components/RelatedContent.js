@@ -79,6 +79,11 @@ const RelatedContent = ({ className, page }) => {
 
 RelatedContent.propTypes = {
   className: PropTypes.string,
+  page: PropTypes.shape({
+    fields: PropTypes.shape({
+      gitAuthorTime: PropTypes.string,
+    }),
+  }),
 };
 
 export const query = graphql`
