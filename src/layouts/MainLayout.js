@@ -128,15 +128,14 @@ const MainLayout = ({ children }) => {
         >
           {children}
         </article>
-        <div>
-          <RelatedContent
-            css={css`
-              position: sticky;
-              top: calc(var(--global-header-height) + ${layout.contentPadding});
-              grid-area: related-content;
-            `}
-          />
-        </div>
+        <RelatedContent
+          css={css`
+            align-self: start;
+            position: sticky;
+            top: calc(var(--global-header-height) + ${layout.contentPadding});
+            grid-area: related-content;
+          `}
+        />
         <Footer
           css={css`
             grid-area: footer;
