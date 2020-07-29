@@ -17,8 +17,10 @@ import usePageContext from '../hooks/usePageContext';
 const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
+const RELATED_CONTENT_PAGE_TYPES = ['guide'];
+
 const GRID_LAYOUTS = {
-  guide: css`
+  relatedContent: css`
     grid-template-areas:
       'sidebar content related-content'
       'sidebar footer footer';
@@ -107,7 +109,9 @@ const MainLayout = ({ children }) => {
           max-width: ${layout.maxWidth};
           margin: 0 auto;
 
-          ${GRID_LAYOUTS[pageType] || GRID_LAYOUTS.default};
+          ${RELATED_CONTENT_PAGE_TYPES.includes(pageType)
+            ? GRID_LAYOUTS.relatedContent
+            : GRID_LAYOUTS.default};
 
           @media screen and (max-width: 760px) {
             grid-template-columns: minmax(0, 1fr);
@@ -142,7 +146,7 @@ const MainLayout = ({ children }) => {
         >
           {children}
         </article>
-        {pageType === 'guide' && (
+        {RELATED_CONTENT_PAGE_TYPES.includes(pageType) && (
           <RelatedContent
             css={css`
               align-self: start;
