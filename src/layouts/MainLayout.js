@@ -10,29 +10,11 @@ import Footer from '../components/Footer';
 import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
-import RelatedContent from '../components/RelatedContent';
 import '../components/styles.scss';
 import usePageContext from '../hooks/usePageContext';
 
 const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
-
-const RELATED_CONTENT_PAGE_TYPES = ['guide'];
-
-const GRID_LAYOUTS = {
-  relatedContent: css`
-    grid-template-areas:
-      'sidebar content related-content'
-      'sidebar footer footer';
-    grid-template-columns: var(--sidebar-width) minmax(0, 1fr) 340px;
-  `,
-  default: css`
-    grid-template-areas:
-      'sidebar content'
-      'sidebar footer';
-    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
-  `,
-};
 
 const MainLayout = ({ children }) => {
   const {
@@ -51,7 +33,7 @@ const MainLayout = ({ children }) => {
     }
   `);
 
-  const { fileRelativePath, pageType } = usePageContext();
+  const { fileRelativePath } = usePageContext();
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const isComponentDoc = fileRelativePath.includes(
@@ -104,14 +86,14 @@ const MainLayout = ({ children }) => {
       <div
         css={css`
           display: grid;
+          grid-template-areas:
+            'sidebar content'
+            'sidebar footer';
+          grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
           grid-column-gap: ${layout.contentPadding};
           width: 100%;
           max-width: ${layout.maxWidth};
           margin: 0 auto;
-
-          ${RELATED_CONTENT_PAGE_TYPES.includes(pageType)
-            ? GRID_LAYOUTS.relatedContent
-            : GRID_LAYOUTS.default};
 
           @media screen and (max-width: 760px) {
             grid-template-columns: minmax(0, 1fr);
@@ -142,20 +124,11 @@ const MainLayout = ({ children }) => {
           css={css`
             grid-area: content;
             padding: ${layout.contentPadding} 0;
+            padding-right: ${layout.contentPadding};
           `}
         >
           {children}
         </article>
-        {RELATED_CONTENT_PAGE_TYPES.includes(pageType) && (
-          <RelatedContent
-            css={css`
-              align-self: start;
-              position: sticky;
-              top: calc(var(--global-header-height) + ${layout.contentPadding});
-              grid-area: related-content;
-            `}
-          />
-        )}
         <Footer
           css={css`
             grid-area: footer;

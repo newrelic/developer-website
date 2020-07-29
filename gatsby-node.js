@@ -4,8 +4,6 @@ const { execSync } = require('child_process');
 const getFileRelativePath = (absolutePath) =>
   absolutePath.replace(`${process.cwd()}/`, '');
 
-const camelize = (str) => str[0].toLowerCase() + str.slice(1);
-
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage, createRedirect } = actions;
 
@@ -51,7 +49,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: path.resolve(`src/templates/${frontmatter.template}.js`),
       context: {
         fileRelativePath: getFileRelativePath(node.fileAbsolutePath),
-        pageType: camelize(frontmatter.template).replace('Template', ''),
         guidesFilter:
           frontmatter.template === 'OverviewTemplate'
             ? `${frontmatter.path}/*`

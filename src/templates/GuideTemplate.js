@@ -1,9 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import MDXContainer from '../components/MDXContainer';
 
 import FeatherIcon from '../components/FeatherIcon';
+import RelatedContent from '../components/RelatedContent';
 import PageTitle from '../components/PageTitle';
 import SEO from '../components/Seo';
 import styles from './GuideTemplate.module.scss';
@@ -16,7 +18,12 @@ const GuideTemplate = ({ data }) => {
   return (
     <>
       <SEO title={title} description={description} />
-      <div className={styles.header}>
+      <div
+        css={css`
+          border-bottom: 1px solid var(--divider-color);
+        `}
+        className={styles.header}
+      >
         <PageTitle>{title}</PageTitle>
         {duration && (
           <div className={styles.duration}>
@@ -25,9 +32,22 @@ const GuideTemplate = ({ data }) => {
           </div>
         )}
       </div>
-      <MDXContainer>{body}</MDXContainer>
-      <div className={styles.lastUpdated}>
-        {`Page last modified on ${fields.gitAuthorTime}`}
+      <div
+        css={css`
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          grid-gap: 2rem;
+        `}
+      >
+        <MDXContainer>{body}</MDXContainer>
+        <RelatedContent
+          page={mdx}
+          css={css`
+            position: sticky;
+            top: calc(var(--global-header-height) + 2rem);
+            align-self: start;
+          `}
+        />
       </div>
     </>
   );
@@ -50,6 +70,8 @@ export const pageQuery = graphql`
       fields {
         gitAuthorTime(formatString: "MMMM DD, YYYY")
       }
+
+      ...RelatedContent_page
     }
   }
 `;
