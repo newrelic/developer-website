@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { css } from '@emotion/core';
 
 import { Helmet } from 'react-helmet';
 import { GlobalHeader } from '@newrelic/gatsby-theme-newrelic';
@@ -11,6 +12,7 @@ import Footer from '../components/Footer';
 import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
+import RelatedContent from '../components/RelatedContent';
 import styles from './MainLayout.module.scss';
 import '../components/styles.scss';
 
@@ -19,10 +21,14 @@ const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const MainLayout = ({ children }) => {
   const {
-    site: { siteMetadata },
+    site: { layout, siteMetadata },
   } = useStaticQuery(graphql`
     query {
       site {
+        layout {
+          contentPadding
+          maxWidth
+        }
         siteMetadata {
           repository
         }
@@ -66,17 +72,58 @@ const MainLayout = ({ children }) => {
         isOpen={isMobileNavOpen}
         toggle={() => setIsMobileNavOpen(!isMobileNavOpen)}
       />
-      <div className={cx(styles.main, 'site-container')}>
-        <Sidebar className={cx(styles.sidebar, styles.hideOnMobile)} />
-        <div />
+      <div
+        css={css`
+          display: grid;
+          grid-template-areas:
+            'sidebar content related-content'
+            'sidebar footer footer';
+          grid-template-columns: var(--sidebar-width) minmax(0, 1fr) 340px;
+          width: 100%;
+          max-width: ${layout.maxWidth};
+          margin: 0 auto;
+
+          @media screen and (max-width: 760px) {
+            grid-template-columns: minmax(0, 1fr);
+          }
+        `}
+      >
+        <Sidebar
+          css={css`
+            grid-area: sidebar;
+          `}
+          className={cx(styles.sidebar, styles.hideOnMobile)}
+        />
         <div
-          className={cx(styles.contentContainer, {
-            [styles.hideOnMobile]: isMobileNavOpen,
-          })}
+          css={css`
+            grid-area: sidebar;
+          `}
+        />
+        <article
+          css={css`
+            grid-area: content;
+            padding: ${layout.contentPadding};
+          `}
         >
-          <main className={styles.content}>{children}</main>
-          <Footer className={styles.footer} />
+          {children}
+        </article>
+        <div>
+          <RelatedContent
+            css={css`
+              position: sticky;
+              top: calc(var(--global-header-height) + ${layout.contentPadding});
+              grid-area: related-content;
+            `}
+          />
         </div>
+        <Footer
+          css={css`
+            grid-area: footer;
+            border-top: 1px solid var(--divider-color);
+            padding: ${layout.contentPadding} 0;
+            margin-left: ${layout.contentPadding};
+          `}
+        />
       </div>
       <CookieApprovalDialog setCookieConsent={setCookieConsent} />
     </div>

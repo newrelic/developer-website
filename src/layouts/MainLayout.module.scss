@@ -7,22 +7,6 @@
   grid-template-rows: auto 1fr;
 }
 
-.main {
-  display: grid;
-  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
-  width: 100%;
-
-  @media screen and (max-width: 760px) {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.contentContainer {
-  display: flex;
-  flex-direction: column;
-  margin: 2rem;
-}
-
 .sidebar {
   position: fixed;
   top: var(--global-header-height);
@@ -30,16 +14,6 @@
   width: var(--sidebar-width);
   height: calc(100vh - var(--global-header-height));
   overflow: auto;
-}
-
-.content {
-  flex: 1;
-  margin-bottom: 2rem;
-}
-
-.footer {
-  border-top: 1px solid var(--divider-color);
-  padding-top: 2rem;
 }
 
 .hideOnDesktop {
