@@ -12,7 +12,7 @@ import styles from './GuideTemplate.module.scss';
 
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
-  const { frontmatter, body, fields } = mdx;
+  const { frontmatter, body } = mdx;
   const { title, description, duration } = frontmatter;
 
   return (
@@ -66,9 +66,6 @@ export const pageQuery = graphql`
         path
         title
         description
-      }
-      fields {
-        gitAuthorTime(formatString: "MMMM DD, YYYY")
       }
 
       ...RelatedContent_page
