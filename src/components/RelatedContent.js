@@ -12,26 +12,17 @@ const RelatedContent = ({ className }) => {
         siteMetadata {
           repository
         }
-        layout {
-          contentPadding
-        }
       }
     }
   `);
   const { fileRelativePath } = useContext(PageContext);
 
   const {
-    layout,
     siteMetadata: { repository },
   } = site;
 
   return (
-    <aside
-      className={className}
-      css={css`
-        padding: 0 ${layout.contentPadding};
-      `}
-    >
+    <aside className={className}>
       <h4>Contribute</h4>
       <Button
         as={ExternalLink}

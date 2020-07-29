@@ -90,6 +90,7 @@ const MainLayout = ({ children }) => {
             'sidebar content related-content'
             'sidebar footer footer';
           grid-template-columns: var(--sidebar-width) minmax(0, 1fr) 340px;
+          grid-column-gap: ${layout.contentPadding};
           width: 100%;
           max-width: ${layout.maxWidth};
           margin: 0 auto;
@@ -122,7 +123,7 @@ const MainLayout = ({ children }) => {
         <article
           css={css`
             grid-area: content;
-            padding: ${layout.contentPadding};
+            padding: ${layout.contentPadding} 0;
           `}
         >
           {children}
@@ -140,7 +141,6 @@ const MainLayout = ({ children }) => {
             grid-area: footer;
             border-top: 1px solid var(--divider-color);
             padding: ${layout.contentPadding} 0;
-            margin-left: ${layout.contentPadding};
           `}
         />
       </div>
