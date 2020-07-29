@@ -51,7 +51,16 @@ const MainLayout = ({ children }) => {
   }, []);
 
   return (
-    <div className={styles.layout}>
+    <div
+      css={css`
+        --global-header-height: 30px;
+        --sidebar-width: 300px;
+
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      `}
+    >
       <Helmet>
         {cookieConsent ? (
           <script>
@@ -68,7 +77,11 @@ const MainLayout = ({ children }) => {
       </Helmet>
       <GlobalHeader editUrl={editUrl} />
       <MobileHeader
-        className={styles.hideOnDesktop}
+        css={css`
+          @media (min-width: 761px) {
+            display: none;
+          }
+        `}
         isOpen={isMobileNavOpen}
         toggle={() => setIsMobileNavOpen(!isMobileNavOpen)}
       />
@@ -91,8 +104,17 @@ const MainLayout = ({ children }) => {
         <Sidebar
           css={css`
             grid-area: sidebar;
+            position: fixed;
+            top: var(--global-header-height);
+            bottom: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--global-header-height));
+            overflow: auto;
+
+            @media (max-width: 760px) {
+              display: none;
+            }
           `}
-          className={cx(styles.sidebar, styles.hideOnMobile)}
         />
         <div
           css={css`
