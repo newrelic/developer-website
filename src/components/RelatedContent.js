@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Button, ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
@@ -65,6 +66,10 @@ const RelatedContent = ({ className }) => {
       </Button>
     </aside>
   );
+};
+
+RelatedContent.propTypes = {
+  className: PropTypes.string,
 };
 
 export default RelatedContent;
