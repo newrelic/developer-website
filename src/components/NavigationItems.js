@@ -15,6 +15,7 @@ const iconLibrary = {
   'Automate workflows': 'automation',
   'Explore docs': 'developerDocs',
   'Developer champions': 'developerChampions',
+  Podcasts: 'podcasts',
   'Try our APIs': 'tryOurAPIs',
 };
 
