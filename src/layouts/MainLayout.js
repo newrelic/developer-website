@@ -1,10 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import { Helmet } from 'react-helmet';
 import { GlobalHeader } from '@newrelic/gatsby-theme-newrelic';
-import { PageContext } from '../components/PageContext';
 import { graphql, useStaticQuery } from 'gatsby';
 import Cookies from 'js-cookie';
 import Footer from '../components/Footer';
@@ -13,6 +12,7 @@ import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import RelatedContent from '../components/RelatedContent';
 import '../components/styles.scss';
+import usePageContext from '../hooks/usePageContext';
 
 const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
@@ -33,7 +33,8 @@ const MainLayout = ({ children }) => {
       }
     }
   `);
-  const { fileRelativePath } = useContext(PageContext);
+
+  const { fileRelativePath } = usePageContext();
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const isComponentDoc = fileRelativePath.includes(
