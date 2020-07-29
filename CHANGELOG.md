@@ -1,3 +1,25 @@
+## [1.7.2](https://github.com/newrelic/developer-website/compare/v1.7.1...v1.7.2) (2020-07-29)
+
+
+### Bug Fixes
+
+* upgrade eslint-plugin-react-hooks from 4.0.5 to 4.0.6 ([3852b81](https://github.com/newrelic/developer-website/commit/3852b810015c511dc24a891c1ced4da1df93612f))
+
+## [1.7.1](https://github.com/newrelic/developer-website/compare/v1.7.0...v1.7.1) (2020-07-29)
+
+
+### Bug Fixes
+
+* code block background colors ([e3c8b3d](https://github.com/newrelic/developer-website/commit/e3c8b3d71aa8e04b171d7fa5e752f13406c5cc2a))
+* updated styles for tiles on homepage ([4501d76](https://github.com/newrelic/developer-website/commit/4501d76aa2369cde9c25530040e963a774e5d459))
+
+# [1.7.0](https://github.com/newrelic/developer-website/compare/v1.6.1...v1.7.0) (2020-07-28)
+
+
+### Features
+
+* swiftype metatags for developer site ([02095fa](https://github.com/newrelic/developer-website/commit/02095fa47bc198e4ea6e3ff0c3199f9e92b707c8))
+
 ## [1.6.1](https://github.com/newrelic/developer-website/compare/v1.6.0...v1.6.1) (2020-07-28)
 
 
