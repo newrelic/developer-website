@@ -108,9 +108,9 @@ const IndexPage = ({ data, pageContext }) => {
               <Button
                 as={ExternalLink}
                 variant={Button.VARIANT.PRIMARY}
-                href="https://newrelic.com/signup?partner=Developer+Edition"
+                href="https://newrelic.com/signup/?utm_source=developer-site"
               >
-                Create an account
+                Create a free account
               </Button>
             </header>
             <GuideListing.List>
