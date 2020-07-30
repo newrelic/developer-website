@@ -217,11 +217,7 @@ const IndexPage = ({ data, pageContext }) => {
                 things. Join us for conversations on open source, observability,
                 software design and industry news.
               </p>
-              <Button
-                as={Link}
-                variant={Button.VARIANT.PRIMARY}
-                href="/podcasts"
-              >
+              <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
                 Listen
                 <FeatherIcon className={styles.Icon} name="link" />
               </Button>
