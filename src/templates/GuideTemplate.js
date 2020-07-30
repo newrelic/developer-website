@@ -56,6 +56,11 @@ const GuideTemplate = ({ data }) => {
           display: grid;
           grid-template-columns: minmax(0, 1fr) auto;
           grid-gap: 2rem;
+
+          @media (max-width: 1240px) {
+            grid-template-columns: minmax(0, 1fr);
+            grid-gap: 0;
+          }
         `}
       >
         <MDXContainer>{body}</MDXContainer>
@@ -65,6 +70,10 @@ const GuideTemplate = ({ data }) => {
             position: sticky;
             top: calc(var(--global-header-height) + 2rem);
             align-self: start;
+
+            @media (max-width: 1240px) {
+              display: none;
+            }
           `}
         />
       </div>
