@@ -13,13 +13,14 @@ redirects:
 <Intro>
 
 There are countless filters and pivots you might want to apply to your data. By adding custom attributes to your data, you can see beyond your code and analyze your business in-depth.
+
 </Intro>
 
 <Steps>
 
 <Step>
 
-You can add a `userid` custom attribute to your APM-reported data (`Transaction` and `TransactionError events`) with the Java APM agent's API.
+You can add a `userid` custom attribute to your APM-reported data (`Transaction` and `TransactionError events`) with the opensource Java APM agent's API.
 
 ```
 NewRelic.addCustomParameter("userid", userId);
@@ -27,11 +28,9 @@ NewRelic.addCustomParameter("userid", userId);
 
 </Step>
 
-
-
 <Step>
 
-Once added, you can run a NRQL query that uses the 'userid' custom attribute. 
+Once added, you can run a NRQL query that uses the 'userid' custom attribute.
 
 Once you have added a custom attribute like 'userid', you can use it to filter and facet your NRQL queries.
 
@@ -42,13 +41,9 @@ Once you have added a custom attribute like 'userid', you can use it to filter a
 SELECT count(*) FROM TransactionError WHERE userid = '616e6472-6577-7340-7961-686f6f2e636f' FACET dateOf(timestamp), `error.message` SINCE 1 week ago
 ```
 
-
-
 </Step>
 
 </Steps>
-
-
 
 ### Related Info
 

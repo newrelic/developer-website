@@ -3,44 +3,44 @@ path: '/automate-workflows/get-started-terraform'
 duration: '20 min'
 title: 'Set up New Relic using Terraform'
 template: 'GuideTemplate'
-description: "Learn how to provision New Relic resources using [Terraform](https://www.terraform.io/)."
+description: 'Learn how to provision New Relic resources using [Terraform](https://www.terraform.io/).'
 tileShorthand:
   title: 'Set up New Relic using Terraform'
   description: 'Learn how to provision New Relic resources using Terraform'
 ---
+
 <Intro>
 
 [Terraform](https://www.terraform.io/) is a popular infrastructure as code software tool by HashiCorp. You can use it to provision all kind of infrastructure and services, including New Relic entities.
 
 In this guide you'll learn how to set up New Relic for the first time with [Terraform](https://www.terraform.io/). More specifically, you are going to provision an alert policy with notifications in your New Relic account using Terraform.
 
-<Video id="vifxeilp2h" type="wistia"/>
+<Video id="vifxeilp2h" type="wistia" />
 
 </Intro>
-
 
 ## Before you begin
 
 To use this guide, you should have some basic knowledge of both New Relic and Terraform.
 
-* If you haven't deployed a New Relic agent yet, [install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application. 
-* [Install Terraform CLI](https://www.terraform.io/intro/getting-started/install.html).
+- If you haven't deployed a New Relic opensource agent yet, [install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application.
+- [Install Terraform CLI](https://www.terraform.io/intro/getting-started/install.html).
 
 <Steps>
 <Step>
 
 ## Bootstrap your provider configuration
 
-New Relic's Terraform Provider detects the environment variables above when running Terraform commands. 
+New Relic's Terraform Provider detects the environment variables above when running Terraform commands.
 
 You can set the environment variables in your `.bash_profile` or `.bashrc` file.
 
 Set the following environment variables:
 
-* Set your [New Relic Personal API key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key) with the `NEW_RELIC_API_KEY` environment variable.  Most Personal API keys begin with the prefix `NRAK-`.
-* Set your [New Relic Admin API key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#admin) with the `NEW_RELIC_ADMIN_API_KEY` environment variable. Most Admin API keys begin with the prefix `NRAA-`.
-* Set your [New Relic Account ID](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id) with the `NEW_RELIC_ACCOUNT_ID` environment variable.
-* Set your New Relic [region](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers#verifying-account) with the `NEW_RELIC_REGION` environment variable.  Your region is `US` if your account settings page is located at `rpm.newrelic.com`, and `EU` if your account is located at `rpm.eu.newrelic.com`.
+- Set your [New Relic Personal API key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key) with the `NEW_RELIC_API_KEY` environment variable. Most Personal API keys begin with the prefix `NRAK-`.
+- Set your [New Relic Admin API key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#admin) with the `NEW_RELIC_ADMIN_API_KEY` environment variable. Most Admin API keys begin with the prefix `NRAA-`.
+- Set your [New Relic Account ID](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id) with the `NEW_RELIC_ACCOUNT_ID` environment variable.
+- Set your New Relic [region](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers#verifying-account) with the `NEW_RELIC_REGION` environment variable. Your region is `US` if your account settings page is located at `rpm.newrelic.com`, and `EU` if your account is located at `rpm.eu.newrelic.com`.
 
 ```bash lineNumbers=false
 # Add this to your .bash_profile
@@ -51,6 +51,7 @@ export NEW_RELIC_REGION=US
 # Or set it inline when running `terraform plan` or `terraform apply`:
 $ NEW_RELIC_API_KEY=NRAK-... terraform apply
 ```
+
 </Step>
 <Step>
 
@@ -85,11 +86,12 @@ $ terraform init
 $ terraform plan
 ```
 
-`plan` performs a [dry run](https://en.wikipedia.org/wiki/Dry_run_(testing)) of your Terraform configuration, so nothing is actually provisioned. Always run `plan` to test your configuration before applying it.
+`plan` performs a [dry run](<https://en.wikipedia.org/wiki/Dry_run_(testing)>) of your Terraform configuration, so nothing is actually provisioned. Always run `plan` to test your configuration before applying it.
+
 </Step>
 <Step>
 
-## Add a data source 
+## Add a data source
 
 The alert policy you defined in `main.tf` does not contain any alert condition. You are going to add an alert condition linked to your application.
 
@@ -109,6 +111,7 @@ resource "newrelic_alert_policy" "alert_policy_name" {
   name = "My Alert Policy Name"
 }
 ```
+
 </Step>
 <Step>
 
@@ -149,12 +152,13 @@ resource "newrelic_alert_condition" "alert_condition_name" {
   }
 }
 ```
+
 </Step>
 <Step>
 
 ## Add a notification channel
 
-Alert policies use [notification channels](https://docs.newrelic.com/docs/alerts/new-relic-alerts/managing-notification-channels/notification-channels-control-where-send-alerts) to inform you about incidents and active alerts. To add a notification channel to your alert policy, add the following snippet to your configuration file. 
+Alert policies use [notification channels](https://docs.newrelic.com/docs/alerts/new-relic-alerts/managing-notification-channels/notification-channels-control-where-send-alerts) to inform you about incidents and active alerts. To add a notification channel to your alert policy, add the following snippet to your configuration file.
 
 When the alert condition is triggered, the notification channel sends an email to the specified `recipients`. You can send notifications using different tools and channels, such as Slack, by changing the `type` of your [alert channel](https://www.terraform.io/docs/providers/newrelic/r/alert_channel.html).
 
@@ -191,6 +195,7 @@ To [apply](https://www.terraform.io/docs/commands/apply.html) the Terraform conf
 Answer `yes` when prompted to apply the changes. Once the `apply` process is complete, you should see the new alert policy you've provisioned using Terraform, and its alert conditions, in your New Relic account.
 
 You can run `terraform apply` every time you need to make changes to your configuration. To eliminate the resources you've provisioned, run [`terraform destroy`](https://www.terraform.io/docs/commands/destroy.html).
+
 </Step>
 
 <Step>
@@ -207,7 +212,7 @@ To use our `apm` module with Terraform:
 
 Here is a configuration example with overridden default values. Initialize the working directory using `terraform init`to download and enable the module.
 
-<Tip> 
+<Tip>
 
 The `apm` module doesn't create a notification channel, so you would still have to define one.
 
@@ -260,6 +265,7 @@ resource "newrelic_alert_channel" "slack" {
   }
 }
 ```
+
 <br />
 
 Running `terraform plan` yields the following:
@@ -273,6 +279,7 @@ Running `terraform plan` yields the following:
           name:                  "slack" => "slack"
           type:                  "slack" => "slack"
 ```
+
 <br />
 
 To prevent Terraform from wrongly marking a resource as changed, add an [`ignore_changes`](https://www.terraform.io/docs/configuration/resources.html#ignore_changes) directive:
@@ -286,6 +293,7 @@ resource "newrelic_alert_channel" "slack" {
 }
   ...
 ```
+
 <br />
 
 This avoids changes to resources caused by obfuscated items.
