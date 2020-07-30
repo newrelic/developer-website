@@ -6,11 +6,6 @@
   p:last-child {
     margin-bottom: 0;
   }
-
-  @media (max-width: 1240px) {
-    grid-template-columns: minmax(0, 1fr);
-    grid-gap: 0;
-  }
 }
 
 .spanColumns {
