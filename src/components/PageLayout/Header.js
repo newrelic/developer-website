@@ -10,6 +10,7 @@ const Header = ({ title, children }) => (
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--divider-color);
+      padding-bottom: 1rem;
 
       @media screen and (max-width: 1080px) {
         flex-direction: column;
@@ -23,6 +24,14 @@ const Header = ({ title, children }) => (
         font-size: 2.5rem;
         font-weight: normal;
         margin-bottom: 0;
+        line-height: 1;
+
+        ${children &&
+        css`
+          @media screen and (max-width: 1080px) {
+            margin-bottom: 0.5rem;
+          }
+        `}
       `}
     >
       {title}
