@@ -70,11 +70,12 @@ const IndexPage = ({ data, pageContext }) => {
                 start building right now. For free.
               </p>
               <p>
-                With our platform as your foundation, create custom
-                observability apps fast. Answer your unique questions, improve
-                your software, and deliver new value to your business.
+                Create an account and start using New Relic One as your
+                foundation to instrument everything. Ready to dive even deeper?
+                Create custom observability apps to better visualize your data
+                to answer your engineering problems.
               </p>
-              <p>We're glad you are here. Let's start building.</p>
+              <p>Let's start building.</p>
             </div>
             <Video
               className={styles.introVideo}
@@ -95,9 +96,9 @@ const IndexPage = ({ data, pageContext }) => {
                 <Button
                   as={ExternalLink}
                   variant={Button.VARIANT.PRIMARY}
-                  href="https://newrelic.com/signup?partner=Developer+Edition"
+                  href="https://newrelic.com/signup?utm_source=developer-site"
                 >
-                  Create an account
+                  Create a free account
                 </Button>
               </header>
               <GuideListing.List>
