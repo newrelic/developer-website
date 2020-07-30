@@ -102,7 +102,6 @@ const MainLayout = ({ children }) => {
       >
         <Sidebar
           css={css`
-            grid-area: sidebar;
             position: fixed;
             top: var(--global-header-height);
             bottom: 0;
