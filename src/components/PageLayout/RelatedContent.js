@@ -32,6 +32,9 @@ const RelatedContent = ({ page }) => {
         position: sticky;
         top: calc(var(--global-header-height) + 2rem);
         align-self: start;
+        padding: 1rem;
+        border: 1px solid var(--divider-color);
+        border-radius: 0.25rem;
       `}
     >
       <h4>Contribute</h4>
