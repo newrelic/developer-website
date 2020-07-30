@@ -85,7 +85,7 @@ const MainLayout = ({ children }) => {
       />
       <div
         css={css`
-          display: grid;
+          display: ${isMobileNavOpen ? 'none' : 'grid'};
           grid-template-areas:
             'sidebar content'
             'sidebar footer';
