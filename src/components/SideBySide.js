@@ -1,8 +1,6 @@
 import React, { Children, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import { css } from '@emotion/core';
-import styles from './SideBySide.module.scss';
 import splitUsing from '../utils/splitUsing';
 import splitWhen from '../utils/splitWhen';
 import { isMdxType } from '../utils/mdx';
@@ -44,16 +42,31 @@ const SideBySide = ({ className, children, type }) => {
   return (
     <div
       css={css`
+        display: grid;
+        grid-template-columns: repeat(2, calc(50% - 0.5rem));
+        grid-gap: 1rem;
+
+        p:last-child {
+          margin-bottom: 0;
+        }
+
         @media (max-width: ${BREAKPOINTS[pageLayout]}) {
           grid-template-columns: minmax(0, 1fr);
           grid-gap: 0;
         }
       `}
-      className={cx(className, styles.container)}
+      className={className}
     >
       {sections.map(([left, right], idx) => (
         <Fragment key={idx}>
-          <div className={cx({ [styles.spanColumns]: !rendersRightColumn })}>
+          <div
+            css={
+              !rendersRightColumn &&
+              css`
+                grid-column: span 2;
+              `
+            }
+          >
             {left}
           </div>
           {rendersRightColumn && <div>{right}</div>}
