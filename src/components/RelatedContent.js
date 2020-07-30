@@ -6,9 +6,6 @@ import { Button, ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
 import { PageContext } from './PageContext';
 
 const RelatedContent = ({ className, page }) => {
-  const {
-    fields: { gitAuthorTime },
-  } = page;
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -19,6 +16,10 @@ const RelatedContent = ({ className, page }) => {
     }
   `);
   const { fileRelativePath } = useContext(PageContext);
+
+  const {
+    fields: { gitAuthorTime },
+  } = page;
 
   const {
     siteMetadata: { repository },

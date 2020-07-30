@@ -19,54 +19,67 @@ const GuideTemplate = ({ data }) => {
       <SEO title={title} description={description} />
       <div
         css={css`
-          border-bottom: 1px solid var(--divider-color);
-          display: flex;
-          margin-bottom: 2rem;
-          align-items: center;
-          justify-content: space-between;
-
-          @media screen and (max-width: 1080px) {
-            flex-direction: column;
-            align-items: flex-start;
-          }
-        `}
-      >
-        <PageTitle>{title}</PageTitle>
-        {duration && (
-          <div
-            css={css`
-              display: flex;
-              align-items: center;
-              color: var(--secondary-text-color);
-              white-space: nowrap;
-            `}
-          >
-            <FeatherIcon
-              name="clock"
-              css={css`
-                margin-right: 0.25rem;
-              `}
-            />
-            {duration}
-          </div>
-        )}
-      </div>
-      <div
-        css={css`
           display: grid;
+          grid-template-areas:
+            'page-title page-title'
+            'content related-content';
           grid-template-columns: minmax(0, 1fr) auto;
           grid-gap: 2rem;
 
           @media (max-width: 1240px) {
+            grid-template-areas:
+              'page-title'
+              'content';
             grid-template-columns: minmax(0, 1fr);
             grid-gap: 0;
           }
         `}
       >
-        <MDXContainer>{body}</MDXContainer>
+        <div
+          css={css`
+            grid-area: page-title;
+            border-bottom: 1px solid var(--divider-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @media screen and (max-width: 1080px) {
+              flex-direction: column;
+              align-items: flex-start;
+            }
+          `}
+        >
+          <PageTitle>{title}</PageTitle>
+          {duration && (
+            <div
+              css={css`
+                display: flex;
+                align-items: center;
+                color: var(--secondary-text-color);
+                white-space: nowrap;
+              `}
+            >
+              <FeatherIcon
+                name="clock"
+                css={css`
+                  margin-right: 0.25rem;
+                `}
+              />
+              {duration}
+            </div>
+          )}
+        </div>
+        <MDXContainer
+          css={css`
+            grid-area: content;
+          `}
+        >
+          {body}
+        </MDXContainer>
         <RelatedContent
           page={mdx}
           css={css`
+            grid-area: related-content;
             position: sticky;
             top: calc(var(--global-header-height) + 2rem);
             align-self: start;
