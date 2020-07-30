@@ -52,7 +52,6 @@ const SideBySide = ({ className, children, type }) => {
 
         @media (max-width: ${BREAKPOINTS[pageLayout]}) {
           grid-template-columns: minmax(0, 1fr);
-          grid-gap: 0;
         }
       `}
       className={className}
