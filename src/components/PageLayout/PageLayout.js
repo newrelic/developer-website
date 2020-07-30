@@ -24,7 +24,8 @@ const LAYOUTS = {
     @media (max-width: 1240px) {
       grid-template-areas:
         'page-header'
-        'content';
+        'content'
+        'related-content';
       grid-template-columns: minmax(0, 1fr);
     }
   `,

@@ -32,10 +32,6 @@ const RelatedContent = ({ page }) => {
         position: sticky;
         top: calc(var(--global-header-height) + 2rem);
         align-self: start;
-
-        @media (max-width: 1240px) {
-          display: none;
-        }
       `}
     >
       <h4>Contribute</h4>
