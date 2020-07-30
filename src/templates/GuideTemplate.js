@@ -8,7 +8,6 @@ import FeatherIcon from '../components/FeatherIcon';
 import RelatedContent from '../components/RelatedContent';
 import PageTitle from '../components/PageTitle';
 import SEO from '../components/Seo';
-import styles from './GuideTemplate.module.scss';
 
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
@@ -21,13 +20,33 @@ const GuideTemplate = ({ data }) => {
       <div
         css={css`
           border-bottom: 1px solid var(--divider-color);
+          display: flex;
+          margin-bottom: 2rem;
+          align-items: center;
+          justify-content: space-between;
+
+          @media screen and (max-width: 1080px) {
+            flex-direction: column;
+            align-items: flex-start;
+          }
         `}
-        className={styles.header}
       >
         <PageTitle>{title}</PageTitle>
         {duration && (
-          <div className={styles.duration}>
-            <FeatherIcon name="clock" className={styles.clock} />
+          <div
+            css={css`
+              display: flex;
+              align-items: center;
+              color: var(--secondary-text-color);
+              white-space: nowrap;
+            `}
+          >
+            <FeatherIcon
+              name="clock"
+              css={css`
+                margin-right: 0.25rem;
+              `}
+            />
             {duration}
           </div>
         )}
