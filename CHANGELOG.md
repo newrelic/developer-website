@@ -1,3 +1,108 @@
+## [1.7.2](https://github.com/newrelic/developer-website/compare/v1.7.1...v1.7.2) (2020-07-29)
+
+
+### Bug Fixes
+
+* upgrade eslint-plugin-react-hooks from 4.0.5 to 4.0.6 ([3852b81](https://github.com/newrelic/developer-website/commit/3852b810015c511dc24a891c1ced4da1df93612f))
+
+## [1.7.1](https://github.com/newrelic/developer-website/compare/v1.7.0...v1.7.1) (2020-07-29)
+
+
+### Bug Fixes
+
+* code block background colors ([e3c8b3d](https://github.com/newrelic/developer-website/commit/e3c8b3d71aa8e04b171d7fa5e752f13406c5cc2a))
+* updated styles for tiles on homepage ([4501d76](https://github.com/newrelic/developer-website/commit/4501d76aa2369cde9c25530040e963a774e5d459))
+
+# [1.7.0](https://github.com/newrelic/developer-website/compare/v1.6.1...v1.7.0) (2020-07-28)
+
+
+### Features
+
+* swiftype metatags for developer site ([02095fa](https://github.com/newrelic/developer-website/commit/02095fa47bc198e4ea6e3ff0c3199f9e92b707c8))
+
+## [1.6.1](https://github.com/newrelic/developer-website/compare/v1.6.0...v1.6.1) (2020-07-28)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-mdx from 1.2.19 to 1.2.21 ([984b994](https://github.com/newrelic/developer-website/commit/984b9946b03594aba829d6437257bf7eeaadf159))
+* upgrade multiple dependencies with Snyk ([f64ef2c](https://github.com/newrelic/developer-website/commit/f64ef2cb1a8f08f253f60340a43287c6b9d24cea))
+* upgrade multiple dependencies with Snyk ([e782497](https://github.com/newrelic/developer-website/commit/e782497909002168cb2ce9e661ad6154095ac88c))
+
+# [1.6.0](https://github.com/newrelic/developer-website/compare/v1.5.3...v1.6.0) (2020-07-22)
+
+
+### Features
+
+* replace buttons with button from theme ([95ac375](https://github.com/newrelic/developer-website/commit/95ac375c4a6fd1d3343c364e4fe5de2e1afee471))
+* use GlobalHeader from theme on 404 page ([1c1a581](https://github.com/newrelic/developer-website/commit/1c1a58149440af369dd6c2db96483f38663a3a38))
+* use GlobalHeader in MainLayout from the theme ([5b084cc](https://github.com/newrelic/developer-website/commit/5b084ccc1ada85e72b33c99544966fbf8ce0bcf5))
+
+## [1.5.3](https://github.com/newrelic/developer-website/compare/v1.5.2...v1.5.3) (2020-07-22)
+
+
+### Bug Fixes
+
+* upgrade eslint-plugin-react-hooks from 4.0.4 to 4.0.5 ([9233b13](https://github.com/newrelic/developer-website/commit/9233b13c1185694671476b414d5fa124097913b1))
+* upgrade gatsby-plugin-mdx from 1.2.18 to 1.2.19 ([1887974](https://github.com/newrelic/developer-website/commit/1887974c148af95191631aa38689975b9a89763d))
+
+## [1.5.2](https://github.com/newrelic/developer-website/compare/v1.5.1...v1.5.2) (2020-07-21)
+
+
+### Bug Fixes
+
+* adding in sharp plugin ([86f6ef3](https://github.com/newrelic/developer-website/commit/86f6ef3e9217376974fbd59b96cf4fadc2118cd7))
+
+## [1.5.1](https://github.com/newrelic/developer-website/compare/v1.5.0...v1.5.1) (2020-07-17)
+
+
+### Bug Fixes
+
+* search works again ([ac7a0aa](https://github.com/newrelic/developer-website/commit/ac7a0aaa771d8dd7853df5c1dedd61bd22919efa))
+
+# [1.5.0](https://github.com/newrelic/developer-website/compare/v1.4.0...v1.5.0) (2020-07-14)
+
+
+### Bug Fixes
+
+* fixed code snippet ([6c153c4](https://github.com/newrelic/developer-website/commit/6c153c4e9a0b8d2ea0b2b4d2d631ab46470868ed))
+* missed a closing tag ([53057ec](https://github.com/newrelic/developer-website/commit/53057ecb63a3a1b20e8912dfd38d8df3616ff7d0))
+* rearranged order ([a81ae5e](https://github.com/newrelic/developer-website/commit/a81ae5ed7ba9ca955442ea3ba49e8567205770da))
+* removed the mdx container import ([cfa2601](https://github.com/newrelic/developer-website/commit/cfa2601877e3a8d42de12eb473fb20187ff936a1))
+
+
+### Features
+
+* add height auto ([4f03954](https://github.com/newrelic/developer-website/commit/4f03954234ad4b305c67dc7bd946013235edd8a3))
+* add props and alt prop to make linter happy ([b2d0272](https://github.com/newrelic/developer-website/commit/b2d02720a50c3d95dd5502820d96c1023044a8d6))
+* adds alt prop to be required ([1f17610](https://github.com/newrelic/developer-website/commit/1f176105a038561a9ed11f91394a3f6436cbb1ad))
+* converted image in one guide to image component ([6f06093](https://github.com/newrelic/developer-website/commit/6f06093a8a89c3bf69e4029f7c163b35638e9e3a))
+* MDX image component ([4761c9a](https://github.com/newrelic/developer-website/commit/4761c9afce5491c241098769cb1fee73cf206754))
+* plugin solution for image height ([f94be6a](https://github.com/newrelic/developer-website/commit/f94be6a684efaa33ab46dab1e3a337e5bfed8274))
+* refactor to just props ([9798fca](https://github.com/newrelic/developer-website/commit/9798fca5905a5c015c9680688af44075537bafaf))
+
+# [1.4.0](https://github.com/newrelic/developer-website/compare/v1.3.0...v1.4.0) (2020-07-14)
+
+
+### Features
+
+* Add cookies dialog ([a5c1d95](https://github.com/newrelic/developer-website/commit/a5c1d9514b515e82d19bd6dfd0142c10e5f14cb5))
+* Add cookies dialog ([dc81263](https://github.com/newrelic/developer-website/commit/dc81263292d5882aa2282e55122a28d98fadfc40))
+
+# [1.3.0](https://github.com/newrelic/developer-website/compare/v1.2.1...v1.3.0) (2020-07-13)
+
+
+### Features
+
+* Add Snyk status badge to readme ([8efac65](https://github.com/newrelic/developer-website/commit/8efac65491410274e9f387a25258ed43d5bb19a6))
+
+## [1.2.1](https://github.com/newrelic/developer-website/compare/v1.2.0...v1.2.1) (2020-07-13)
+
+
+### Bug Fixes
+
+* upgrade multiple dependencies with Snyk ([7e2d425](https://github.com/newrelic/developer-website/commit/7e2d425e8719fa14ed3063e3504e079d30c4e3eb))
+
 # [1.2.0](https://github.com/newrelic/developer-website/compare/v1.1.0...v1.2.0) (2020-07-13)
 
 

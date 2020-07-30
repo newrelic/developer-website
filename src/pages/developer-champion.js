@@ -1,8 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import Layout from '../components/Layout';
 import SEO from '../components/Seo';
-import Button from '../components/Button';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import PageTitle from '../components/PageTitle';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
@@ -12,7 +11,7 @@ import styles from './developer-champion.module.scss';
 
 const DeveloperChampionPage = () => {
   return (
-    <Layout>
+    <>
       <SEO />
       <PageTitle>New Relic Developer Champions</PageTitle>
       <section className={cx(styles.section, styles.twoColumn)}>
@@ -140,7 +139,7 @@ const DeveloperChampionPage = () => {
           alt="uptime everything header"
         />
       </section>
-    </Layout>
+    </>
   );
 };
 

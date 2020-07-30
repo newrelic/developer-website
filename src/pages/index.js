@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { graphql, Link } from 'gatsby';
 
-import Layout from '../components/Layout';
 import SEO from '../components/Seo';
-import Button from '../components/Button';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import PageTitle from '../components/PageTitle';
@@ -16,6 +15,7 @@ import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
+import podcastBadge from '../images/podcasts/podcasts-badge.png';
 
 const getStartedGuides = [
   {
@@ -74,7 +74,7 @@ const IndexPage = ({ data, pageContext }) => {
 
   return (
     <PageContext.Provider value={pageContext}>
-      <Layout>
+      <>
         <SEO />
         <PageTitle>Observability for every developer</PageTitle>
 
@@ -115,11 +115,7 @@ const IndexPage = ({ data, pageContext }) => {
             </header>
             <GuideListing.List>
               {getStartedGuides.map((guide, index) => (
-                <GuideTile
-                  key={index}
-                  className={styles.featuredGuide}
-                  {...guide}
-                >
+                <GuideTile key={index} featured {...guide}>
                   <GuideTile.Button to={guide.path}>
                     Start the guide
                   </GuideTile.Button>
@@ -218,7 +214,29 @@ const IndexPage = ({ data, pageContext }) => {
             alt="developer champion badge"
           />
         </section>
-      </Layout>
+
+        <section
+          className={cx(
+            styles.section,
+            styles.stripedSection,
+            styles.developerChampions
+          )}
+        >
+          <div>
+            <h1>New Relic Podcasts</h1>
+            <p>
+              We like to talk, especially to developers about developer things.
+              Join us for conversations on open source, observability, software
+              design and industry news.
+            </p>
+            <Button as={Link} variant={Button.VARIANT.PRIMARY} href="/podcasts">
+              Listen
+              <FeatherIcon className={styles.Icon} name="link" />
+            </Button>
+          </div>
+          <img className={styles.img} src={podcastBadge} alt="podcast badge" />
+        </section>
+      </>
     </PageContext.Provider>
   );
 };

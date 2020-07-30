@@ -4,11 +4,6 @@
 
 .nestedNav {
   padding-left: 1rem;
-  display: none;
-
-  &.isExpanded {
-    display: block;
-  }
 
   [data-depth] > & {
     padding-left: calc(0.5rem + 1em);
@@ -85,17 +80,13 @@ button.navLink {
   }
 }
 
-.isCurrentPage {
+.isBreadCrumb {
   font-weight: bold !important;
 }
 
 .filterOn {
   ul {
     display: block;
-  }
-
-  .nestedChevron {
-    transform: rotate(90deg);
   }
 
   .groupName {
