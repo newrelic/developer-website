@@ -6,6 +6,7 @@ import Content from './Content';
 import Header from './Header';
 import MarkdownContent from './MarkdownContent';
 import RelatedContent from './RelatedContent';
+import Context from './Context';
 
 const TYPES = {
   SINGLE_COLUMN: 'SINGLE_COLUMN',
@@ -57,7 +58,7 @@ const PageLayout = ({ children, type }) => {
         ${LAYOUTS[type]};
       `}
     >
-      {children}
+      <Context.Provider value={type}>{children}</Context.Provider>
     </div>
   );
 };
@@ -70,6 +71,7 @@ PageLayout.propTypes = {
 PageLayout.TYPE = TYPES;
 
 PageLayout.Content = Content;
+PageLayout.Context = Context;
 PageLayout.Header = Header;
 PageLayout.MarkdownContent = MarkdownContent;
 PageLayout.RelatedContent = RelatedContent;
