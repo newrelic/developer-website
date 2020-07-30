@@ -2,11 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import MDXContainer from '../components/MDXContainer';
 
+import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
-import RelatedContent from '../components/RelatedContent';
-import PageTitle from '../components/PageTitle';
 import SEO from '../components/Seo';
 
 const GuideTemplate = ({ data }) => {
@@ -17,39 +15,8 @@ const GuideTemplate = ({ data }) => {
   return (
     <>
       <SEO title={title} description={description} />
-      <div
-        css={css`
-          display: grid;
-          grid-template-areas:
-            'page-title page-title'
-            'content related-content';
-          grid-template-columns: minmax(0, 1fr) auto;
-          grid-gap: 2rem;
-
-          @media (max-width: 1240px) {
-            grid-template-areas:
-              'page-title'
-              'content';
-            grid-template-columns: minmax(0, 1fr);
-            grid-gap: 0;
-          }
-        `}
-      >
-        <div
-          css={css`
-            grid-area: page-title;
-            border-bottom: 1px solid var(--divider-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            @media screen and (max-width: 1080px) {
-              flex-direction: column;
-              align-items: flex-start;
-            }
-          `}
-        >
-          <PageTitle>{title}</PageTitle>
+      <PageLayout type={PageLayout.TYPE.RELATED_CONTENT}>
+        <PageLayout.Header title={title}>
           {duration && (
             <div
               css={css`
@@ -68,28 +35,10 @@ const GuideTemplate = ({ data }) => {
               {duration}
             </div>
           )}
-        </div>
-        <MDXContainer
-          css={css`
-            grid-area: content;
-          `}
-        >
-          {body}
-        </MDXContainer>
-        <RelatedContent
-          page={mdx}
-          css={css`
-            grid-area: related-content;
-            position: sticky;
-            top: calc(var(--global-header-height) + 2rem);
-            align-self: start;
-
-            @media (max-width: 1240px) {
-              display: none;
-            }
-          `}
-        />
-      </div>
+        </PageLayout.Header>
+        <PageLayout.MarkdownContent>{body}</PageLayout.MarkdownContent>
+        <PageLayout.RelatedContent page={mdx} />
+      </PageLayout>
     </>
   );
 };
