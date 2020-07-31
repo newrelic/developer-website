@@ -27,6 +27,7 @@ const RelatedContent = ({ page }) => {
 
   return (
     <aside
+      data-swiftype-index={false}
       css={css`
         grid-area: related-content;
         position: sticky;
