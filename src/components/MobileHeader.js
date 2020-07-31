@@ -12,7 +12,10 @@ const MobileHeader = ({ className, isOpen, toggle }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <header className={cx(styles.container, className)}>
+    <header
+      data-swiftype-index={false}
+      className={cx(styles.container, className)}
+    >
       <div className={styles.menuBar}>
         <Link to="/">
           <Logo className={styles.logo} />
