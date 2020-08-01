@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Button, ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
 import Section from './Section';
 import Title from './Title';
-import usePageContext from '../../hooks/usePageContext';
 
-const Contribute = () => {
+const Contribute = ({ pageContext }) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -17,7 +17,7 @@ const Contribute = () => {
     }
   `);
 
-  const { fileRelativePath } = usePageContext();
+  const { fileRelativePath } = pageContext;
 
   const {
     siteMetadata: { repository },
@@ -59,6 +59,12 @@ const Contribute = () => {
       </Button>
     </Section>
   );
+};
+
+Contribute.propTypes = {
+  pageContext: PropTypes.shape({
+    fileRelativePath: PropTypes.string,
+  }),
 };
 
 export default Contribute;
