@@ -13,6 +13,16 @@ const SITE_TAGS = {
   docs: 'https://docs.newrelic.com',
 };
 
+const findTag = (resource) =>
+  resource.url.startsWith('/')
+    ? 'developer'
+    : Object.keys(SITE_TAGS).find((tag) =>
+        resource.url.startsWith(SITE_TAGS[tag])
+      );
+
+const normalizeDeveloperUrl = (url) =>
+  url.replace('https://developer.newrelic.com', '');
+
 const Resources = ({ page }) => {
   const {
     frontmatter: { resources },
@@ -30,22 +40,11 @@ const Resources = ({ page }) => {
           `}
         >
           {resources.map((resource) => {
-            const tag = resource.url.startsWith('/')
-              ? 'developer'
-              : Object.keys(SITE_TAGS).find((tag) =>
-                  resource.url.startsWith(SITE_TAGS[tag])
-                );
-
+            const tag = findTag(resource);
             const isDeveloperSite = tag === 'developer';
-
             const LinkElement = isDeveloperSite ? Link : ExternalLink;
             const props = isDeveloperSite
-              ? {
-                  to: resource.url.replace(
-                    'https://developer.newrelic.com',
-                    ''
-                  ),
-                }
+              ? { to: normalizeDeveloperUrl(resource.url) }
               : { href: resource.url };
 
             return (
@@ -69,6 +68,7 @@ const Resources = ({ page }) => {
                   >
                     {resource.title}
                   </span>
+
                   {!isDeveloperSite && (
                     <Icon
                       name={Icon.TYPE.EXTERNAL_LINK}
@@ -79,6 +79,7 @@ const Resources = ({ page }) => {
                     />
                   )}
                 </LinkElement>
+
                 <Tag>{tag}</Tag>
               </li>
             );
