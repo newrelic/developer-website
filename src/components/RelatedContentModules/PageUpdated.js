@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Section from './Section';
@@ -23,6 +24,14 @@ const PageUpdated = ({ page }) => {
       {`Page last modified on ${gitAuthorTime}`}
     </Section>
   );
+};
+
+PageUpdated.propTypes = {
+  page: PropTypes.shape({
+    fields: PropTypes.shape({
+      gitAuthorTime: PropTypes.string,
+    }),
+  }),
 };
 
 export const query = graphql`
