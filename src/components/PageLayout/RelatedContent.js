@@ -100,15 +100,22 @@ const RelatedContent = ({ page }) => {
               `}
             >
               {resources.map((resource) => {
-                const tag = Object.keys(SITE_TAGS).find((tag) =>
-                  resource.url.startsWith(SITE_TAGS[tag])
-                );
+                const tag = resource.url.startsWith('/')
+                  ? 'developer'
+                  : Object.keys(SITE_TAGS).find((tag) =>
+                      resource.url.startsWith(SITE_TAGS[tag])
+                    );
+
                 const isDeveloperSite = tag === 'developer';
 
-                const url = new URL(resource.url);
                 const LinkElement = isDeveloperSite ? Link : ExternalLink;
                 const props = isDeveloperSite
-                  ? { to: url.pathname }
+                  ? {
+                      to: resource.url.replace(
+                        'https://developer.newrelic.com',
+                        ''
+                      ),
+                    }
                   : { href: resource.url };
 
                 return (
