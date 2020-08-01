@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import { Button, ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
 import usePageContext from '../../hooks/usePageContext';
 import styled from '@emotion/styled';
 import Tag from '../Tag';
+
+const SITE_TAGS = {
+  developer: 'https://developer.newrelic.com',
+  'open source': 'https://opensource.newrelic.com',
+  docs: 'https://docs.newrelic.com',
+};
 
 const Section = styled.section`
   &:not(:last-child) {
@@ -93,25 +99,38 @@ const RelatedContent = ({ page }) => {
                 padding: 0;
               `}
             >
-              {resources.map((resource) => (
-                <li
-                  key={resource.url}
-                  css={css`
-                    margin-bottom: 1rem;
-                  `}
-                >
-                  <ExternalLink
+              {resources.map((resource) => {
+                const tag = Object.keys(SITE_TAGS).find((tag) =>
+                  resource.url.startsWith(SITE_TAGS[tag])
+                );
+
+                const url = new URL(resource.url);
+                const LinkElement = tag === 'developer' ? Link : ExternalLink;
+                const props =
+                  tag === 'developer'
+                    ? { to: url.pathname }
+                    : { href: resource.url };
+
+                return (
+                  <li
+                    key={resource.url}
                     css={css`
-                      display: block;
-                      margin-bottom: 0.25rem;
+                      margin-bottom: 1rem;
                     `}
-                    href={resource.url}
                   >
-                    {resource.title}
-                  </ExternalLink>
-                  <Tag>developer</Tag>
-                </li>
-              ))}
+                    <LinkElement
+                      {...props}
+                      css={css`
+                        display: block;
+                        margin-bottom: 0.25rem;
+                      `}
+                    >
+                      {resource.title}
+                    </LinkElement>
+                    <Tag>{tag}</Tag>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </Section>
