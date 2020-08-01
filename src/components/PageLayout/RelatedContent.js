@@ -6,7 +6,7 @@ import { ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
 import styled from '@emotion/styled';
 import Tag from '../Tag';
 
-import { Contribute } from '../RelatedContentModules';
+import { Contribute, PageUpdated } from '../RelatedContentModules';
 
 const SITE_TAGS = {
   developer: 'https://developer.newrelic.com',
@@ -23,7 +23,6 @@ const Section = styled.section`
 const RelatedContent = ({ page }) => {
   const {
     frontmatter: { resources },
-    fields: { gitAuthorTime },
   } = page;
 
   return (
@@ -111,19 +110,7 @@ const RelatedContent = ({ page }) => {
         </Section>
       )}
 
-      <Section
-        css={css`
-          font-size: 0.875rem;
-          font-style: italic;
-          color: var(--color-neutrals-500);
-
-          .dark-mode & {
-            color: var(--color-dark-500);
-          }
-        `}
-      >
-        {`Page last modified on ${gitAuthorTime}`}
-      </Section>
+      <PageUpdated page={page} />
     </aside>
   );
 };
@@ -152,9 +139,8 @@ export const query = graphql`
         url
       }
     }
-    fields {
-      gitAuthorTime(formatString: "MMMM DD, YYYY")
-    }
+
+    ...PageUpdated_page
   }
 `;
 
