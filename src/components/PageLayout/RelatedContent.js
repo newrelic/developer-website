@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { graphql, useStaticQuery, Link } from 'gatsby';
-import { Button, ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
-import usePageContext from '../../hooks/usePageContext';
+import { graphql, Link } from 'gatsby';
+import { ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
 import styled from '@emotion/styled';
 import Tag from '../Tag';
+
+import { Contribute } from '../RelatedContentModules';
 
 const SITE_TAGS = {
   developer: 'https://developer.newrelic.com',
@@ -20,25 +21,10 @@ const Section = styled.section`
 `;
 
 const RelatedContent = ({ page }) => {
-  const { site } = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          repository
-        }
-      }
-    }
-  `);
-  const { fileRelativePath } = usePageContext();
-
   const {
     frontmatter: { resources },
     fields: { gitAuthorTime },
   } = page;
-
-  const {
-    siteMetadata: { repository },
-  } = site;
 
   return (
     <aside
@@ -53,40 +39,7 @@ const RelatedContent = ({ page }) => {
         border-radius: 0.25rem;
       `}
     >
-      <Section>
-        <h4>Contribute</h4>
-        <Button
-          as={ExternalLink}
-          href={`${repository}/issues/new/choose`}
-          css={css`
-            margin-right: 0.5rem;
-          `}
-          variant={Button.VARIANT.PRIMARY}
-          size={Button.SIZE.SMALL}
-        >
-          <Icon
-            name={Icon.TYPE.GITHUB}
-            css={css`
-              margin-right: 0.5rem;
-            `}
-          />
-          File an issue
-        </Button>
-        <Button
-          as={ExternalLink}
-          href={`${repository}/tree/main/${fileRelativePath}`}
-          variant={Button.VARIANT.NORMAL}
-          size={Button.SIZE.SMALL}
-        >
-          <Icon
-            name={Icon.TYPE.EDIT}
-            css={css`
-              margin-right: 0.5rem;
-            `}
-          />
-          Edit this page
-        </Button>
-      </Section>
+      <Contribute />
 
       {resources?.length > 0 && (
         <Section>
