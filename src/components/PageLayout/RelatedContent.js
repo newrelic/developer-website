@@ -27,19 +27,7 @@ const RelatedContent = ({ page }) => {
 };
 
 RelatedContent.propTypes = {
-  page: PropTypes.shape({
-    frontmatter: PropTypes.shape({
-      resources: PropTypes.arrayOf(
-        PropTypes.shape({
-          title: PropTypes.string,
-          url: PropTypes.string,
-        })
-      ),
-    }),
-    fields: PropTypes.shape({
-      gitAuthorTime: PropTypes.string,
-    }),
-  }),
+  page: PropTypes.object.isRequired,
 };
 
 export const query = graphql`
