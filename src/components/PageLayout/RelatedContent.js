@@ -103,13 +103,13 @@ const RelatedContent = ({ page }) => {
                 const tag = Object.keys(SITE_TAGS).find((tag) =>
                   resource.url.startsWith(SITE_TAGS[tag])
                 );
+                const isDeveloperSite = tag === 'developer';
 
                 const url = new URL(resource.url);
-                const LinkElement = tag === 'developer' ? Link : ExternalLink;
-                const props =
-                  tag === 'developer'
-                    ? { to: url.pathname }
-                    : { href: resource.url };
+                const LinkElement = isDeveloperSite ? Link : ExternalLink;
+                const props = isDeveloperSite
+                  ? { to: url.pathname }
+                  : { href: resource.url };
 
                 return (
                   <li
@@ -125,7 +125,22 @@ const RelatedContent = ({ page }) => {
                         margin-bottom: 0.25rem;
                       `}
                     >
-                      {resource.title}
+                      <span
+                        css={css`
+                          vertical-align: middle;
+                        `}
+                      >
+                        {resource.title}
+                      </span>
+                      {!isDeveloperSite && (
+                        <Icon
+                          name={Icon.TYPE.EXTERNAL_LINK}
+                          css={css`
+                            margin-left: 0.25rem;
+                            vertical-align: middle;
+                          `}
+                        />
+                      )}
                     </LinkElement>
                     <Tag>{tag}</Tag>
                   </li>
