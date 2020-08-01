@@ -99,8 +99,8 @@ Resources.propTypes = {
           url: PropTypes.string,
         })
       ),
-    }),
-  }),
+    }).isRequired,
+  }).isRequired,
 };
 
 export const query = graphql`
