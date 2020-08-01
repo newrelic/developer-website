@@ -4,6 +4,14 @@ import { css } from '@emotion/core';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Button, ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
 import usePageContext from '../../hooks/usePageContext';
+import styled from '@emotion/styled';
+import Tag from '../Tag';
+
+const Section = styled.section`
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+`;
 
 const RelatedContent = ({ page }) => {
   const { site } = useStaticQuery(graphql`
@@ -18,6 +26,7 @@ const RelatedContent = ({ page }) => {
   const { fileRelativePath } = usePageContext();
 
   const {
+    frontmatter: { resources },
     fields: { gitAuthorTime },
   } = page;
 
@@ -38,44 +47,80 @@ const RelatedContent = ({ page }) => {
         border-radius: 0.25rem;
       `}
     >
-      <h4>Contribute</h4>
-      <Button
-        as={ExternalLink}
-        href={`${repository}/issues/new/choose`}
-        css={css`
-          margin-right: 0.5rem;
-        `}
-        variant={Button.VARIANT.PRIMARY}
-        size={Button.SIZE.SMALL}
-      >
-        <Icon
-          name={Icon.TYPE.GITHUB}
+      <Section>
+        <h4>Contribute</h4>
+        <Button
+          as={ExternalLink}
+          href={`${repository}/issues/new/choose`}
           css={css`
             margin-right: 0.5rem;
           `}
-        />
-        File an issue
-      </Button>
-      <Button
-        as={ExternalLink}
-        href={`${repository}/tree/main/${fileRelativePath}`}
-        variant={Button.VARIANT.NORMAL}
-        size={Button.SIZE.SMALL}
-      >
-        <Icon
-          name={Icon.TYPE.EDIT}
-          css={css`
-            margin-right: 0.5rem;
-          `}
-        />
-        Edit this page
-      </Button>
+          variant={Button.VARIANT.PRIMARY}
+          size={Button.SIZE.SMALL}
+        >
+          <Icon
+            name={Icon.TYPE.GITHUB}
+            css={css`
+              margin-right: 0.5rem;
+            `}
+          />
+          File an issue
+        </Button>
+        <Button
+          as={ExternalLink}
+          href={`${repository}/tree/main/${fileRelativePath}`}
+          variant={Button.VARIANT.NORMAL}
+          size={Button.SIZE.SMALL}
+        >
+          <Icon
+            name={Icon.TYPE.EDIT}
+            css={css`
+              margin-right: 0.5rem;
+            `}
+          />
+          Edit this page
+        </Button>
+      </Section>
 
-      <div
+      {resources?.length > 0 && (
+        <Section>
+          <h4>Resources</h4>
+          <nav>
+            <ul
+              css={css`
+                list-style: none;
+                margin: 0;
+                padding: 0;
+              `}
+            >
+              {resources.map((resource) => (
+                <li
+                  key={resource.url}
+                  css={css`
+                    margin-bottom: 1rem;
+                  `}
+                >
+                  <ExternalLink
+                    css={css`
+                      display: block;
+                      margin-bottom: 0.25rem;
+                    `}
+                    href={resource.url}
+                  >
+                    {resource.title}
+                  </ExternalLink>
+                  <Tag>developer</Tag>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </Section>
+      )}
+
+      <Section
         css={css`
           font-size: 0.875rem;
           font-style: italic;
-          margin-top: 1rem;
           color: var(--color-neutrals-500);
 
           .dark-mode & {
@@ -84,13 +129,21 @@ const RelatedContent = ({ page }) => {
         `}
       >
         {`Page last modified on ${gitAuthorTime}`}
-      </div>
+      </Section>
     </aside>
   );
 };
 
 RelatedContent.propTypes = {
   page: PropTypes.shape({
+    frontmatter: PropTypes.shape({
+      resources: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+          url: PropTypes.string,
+        })
+      ),
+    }),
     fields: PropTypes.shape({
       gitAuthorTime: PropTypes.string,
     }),
@@ -99,6 +152,12 @@ RelatedContent.propTypes = {
 
 export const query = graphql`
   fragment RelatedContent_page on Mdx {
+    frontmatter {
+      resources {
+        title
+        url
+      }
+    }
     fields {
       gitAuthorTime(formatString: "MMMM DD, YYYY")
     }
