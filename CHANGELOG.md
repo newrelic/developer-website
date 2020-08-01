@@ -1,3 +1,15 @@
+## [1.8.1](https://github.com/newrelic/developer-website/compare/v1.8.0...v1.8.1) (2020-08-01)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic version ([f8c7f27](https://github.com/newrelic/developer-website/commit/f8c7f2763a3b165305ce04498bd7825d90dbf967))
+* dont index footer ([543d8ac](https://github.com/newrelic/developer-website/commit/543d8ac00bd8603e0c731f045e8c3b0bbf31d0d8))
+* dont index related content ([44de025](https://github.com/newrelic/developer-website/commit/44de025795543636bc7e26d5f6f1e72284e59ae4))
+* dont index the main nav ([48a9816](https://github.com/newrelic/developer-website/commit/48a981672f49b207f21c3b073587f7c477cc2612))
+* dont index the mobile header ([582b424](https://github.com/newrelic/developer-website/commit/582b424c7aa2df71a876c521603420dfab0b33f2))
+* index the main content area as the body ([f389490](https://github.com/newrelic/developer-website/commit/f389490e4ff54af728e8094d23346c98e821e4e0))
+
 # [1.8.0](https://github.com/newrelic/developer-website/compare/v1.7.2...v1.8.0) (2020-07-30)
 
 
