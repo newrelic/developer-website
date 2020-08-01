@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const Section = styled.section`
   &:not(:last-child) {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 `;
 
