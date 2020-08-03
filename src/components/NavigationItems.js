@@ -109,6 +109,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
     'Component library',
     'Explore docs',
     'Try our APIs',
+    'New Relic One CLI',
   ].includes(page.displayName);
   const headerIcon = depthLevel === 0 && <NavIcon page={page} />;
   const display = filteredPageNames
