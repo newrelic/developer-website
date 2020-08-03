@@ -11,7 +11,10 @@ const Sidebar = ({ className }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <aside className={cx(styles.sidebar, className)}>
+    <aside
+      data-swiftype-index={false}
+      className={cx(styles.sidebar, className)}
+    >
       <Link to="/">
         <Logo className={styles.logo} />
       </Link>

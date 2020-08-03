@@ -107,7 +107,33 @@
     "children": [
       {
         "displayName": "New Relic One CLI",
-        "url": "/explore-docs/nr1-cli"
+        "url": "/explore-docs/nr1-cli",
+        "children": [
+          {
+            "displayName": "Common commands",
+            "url": "/explore-docs/nr1-common"
+          },
+          {
+            "displayName": "Config commands",
+            "url": "/explore-docs/nr1-config"
+          },
+          {
+            "displayName": "Nerdpack commands",
+            "url": "/explore-docs/nr1-nerdpack"
+          },
+          {
+            "displayName": "Subscription commands",
+            "url": "/explore-docs/nr1-subscription"
+          },
+          {
+            "displayName": "Plugin commands",
+            "url": "/explore-docs/nr1-plugins"
+          },
+          {
+            "displayName": "Catalog commands",
+            "url": "/explore-docs/nr1-catalog"
+          }
+        ]
       },
       {
         "displayName": "New Relic CLI",
@@ -485,5 +511,9 @@
   {
     "displayName": "Developer champions",
     "url": "/developer-champion"
+  },
+  {
+    "displayName": "Podcasts",
+    "url": "/podcasts"
   }
 ]
