@@ -1,3 +1,34 @@
+# [1.9.0](https://github.com/newrelic/developer-website/compare/v1.8.1...v1.9.0) (2020-08-03)
+
+
+### Bug Fixes
+
+* empty frontmatter ([e25f5f6](https://github.com/newrelic/developer-website/commit/e25f5f66219f1759c5d01fc59b9f80c164ee9bce))
+* removed unused frontmatter ([cc89858](https://github.com/newrelic/developer-website/commit/cc89858ff9e15cdc8050b2f47783a6b91fa49791))
+
+
+### Features
+
+* allow relative urls for resources ([beba6cb](https://github.com/newrelic/developer-website/commit/beba6cbe217379be1eaf6107fbee20fdb79f6ad9))
+* dynamically update tag and link depending on context ([c9f1ee7](https://github.com/newrelic/developer-website/commit/c9f1ee710074feaac75f524d0bbb3e57fc02fd75))
+* pass pageContext to each module in related content ([d7e7033](https://github.com/newrelic/developer-website/commit/d7e7033914c80fef237f1228fdc264949c667e24))
+* removed external link adding to gatsby ([15e26a6](https://github.com/newrelic/developer-website/commit/15e26a67e0da7791f05f48cb6f099f933a96b98e))
+* render external icon for related links that navigate outside of the site ([6eb5fd3](https://github.com/newrelic/developer-website/commit/6eb5fd3dc003f4b38f4e66c640a7315d81c2d63f))
+* shadow feather icon set to append external link icon ([b8a823a](https://github.com/newrelic/developer-website/commit/b8a823a6a7487a3df8526b009e05e166a6ee0c74))
+* update RelatedContent to handle resources specified in frontmatter ([bcc0096](https://github.com/newrelic/developer-website/commit/bcc00961b1cec4b05703dd37eb6e9679fdbb8686))
+
+## [1.8.1](https://github.com/newrelic/developer-website/compare/v1.8.0...v1.8.1) (2020-08-01)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic version ([f8c7f27](https://github.com/newrelic/developer-website/commit/f8c7f2763a3b165305ce04498bd7825d90dbf967))
+* dont index footer ([543d8ac](https://github.com/newrelic/developer-website/commit/543d8ac00bd8603e0c731f045e8c3b0bbf31d0d8))
+* dont index related content ([44de025](https://github.com/newrelic/developer-website/commit/44de025795543636bc7e26d5f6f1e72284e59ae4))
+* dont index the main nav ([48a9816](https://github.com/newrelic/developer-website/commit/48a981672f49b207f21c3b073587f7c477cc2612))
+* dont index the mobile header ([582b424](https://github.com/newrelic/developer-website/commit/582b424c7aa2df71a876c521603420dfab0b33f2))
+* index the main content area as the body ([f389490](https://github.com/newrelic/developer-website/commit/f389490e4ff54af728e8094d23346c98e821e4e0))
+
 # [1.8.0](https://github.com/newrelic/developer-website/compare/v1.7.2...v1.8.0) (2020-07-30)
 
 

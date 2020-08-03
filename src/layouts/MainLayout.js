@@ -120,6 +120,8 @@ const MainLayout = ({ children }) => {
           `}
         />
         <article
+          data-swiftype-name="body"
+          data-swiftype-type="text"
           css={css`
             grid-area: content;
             padding-top: ${layout.contentPadding};
