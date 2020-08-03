@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import {
   Contribute,
+  PageFeedback,
   PageUpdated,
   Resources,
 } from '../components/RelatedContentModules';
@@ -44,7 +45,7 @@ const GuideTemplate = ({ data }) => {
         <PageLayout.MarkdownContent>{body}</PageLayout.MarkdownContent>
         <PageLayout.RelatedContent
           page={mdx}
-          modules={[Contribute, Resources, PageUpdated]}
+          modules={[Contribute, Resources, PageFeedback, PageUpdated]}
         />
       </PageLayout>
     </>
