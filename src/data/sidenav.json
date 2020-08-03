@@ -110,27 +110,27 @@
         "url": "/explore-docs/nr1-cli",
         "children": [
           {
-            "displayName": "New Relic One CLI common commands",
+            "displayName": "Common commands",
             "url": "/explore-docs/nr1-common"
           },
           {
-            "displayName": "New Relic One CLI config commands",
+            "displayName": "Config commands",
             "url": "/explore-docs/nr1-config"
           },
           {
-            "displayName": "New Relic One CLI Nerdpack commands",
+            "displayName": "Nerdpack commands",
             "url": "/explore-docs/nr1-nerdpack"
           },
           {
-            "displayName": "New Relic One CLI subscription commands",
+            "displayName": "Subscription commands",
             "url": "/explore-docs/nr1-subscription"
           },
           {
-            "displayName": "New Relic One CLI plugin commands",
+            "displayName": "Plugin commands",
             "url": "/explore-docs/nr1-plugins"
           },
           {
-            "displayName": "New Relic One CLI catalog commands",
+            "displayName": "Catalog commands",
             "url": "/explore-docs/nr1-catalog"
           }
         ]
