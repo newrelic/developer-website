@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 import { Feedback } from '@newrelic/gatsby-theme-newrelic';
 import Section from './Section';
 import Title from './Title';
+import sendFeedback from '../../utils/tessenFeedback';
 
 const PageFeedback = ({ page }) => {
   const {
     frontmatter: { path, title },
   } = page;
 
-  return title || path ? (
+  return path ? (
     <Section>
       <Title>Feedback</Title>
       <Feedback
         onSubmit={({ sentiment, comment }) => {
-          console.log({ sentiment, comment, title, path });
+          sendFeedback({ sentiment, comment, path, title });
         }}
       />
     </Section>
