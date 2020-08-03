@@ -1,3 +1,54 @@
+## [1.8.1](https://github.com/newrelic/developer-website/compare/v1.8.0...v1.8.1) (2020-08-01)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic version ([f8c7f27](https://github.com/newrelic/developer-website/commit/f8c7f2763a3b165305ce04498bd7825d90dbf967))
+* dont index footer ([543d8ac](https://github.com/newrelic/developer-website/commit/543d8ac00bd8603e0c731f045e8c3b0bbf31d0d8))
+* dont index related content ([44de025](https://github.com/newrelic/developer-website/commit/44de025795543636bc7e26d5f6f1e72284e59ae4))
+* dont index the main nav ([48a9816](https://github.com/newrelic/developer-website/commit/48a981672f49b207f21c3b073587f7c477cc2612))
+* dont index the mobile header ([582b424](https://github.com/newrelic/developer-website/commit/582b424c7aa2df71a876c521603420dfab0b33f2))
+* index the main content area as the body ([f389490](https://github.com/newrelic/developer-website/commit/f389490e4ff54af728e8094d23346c98e821e4e0))
+
+# [1.8.0](https://github.com/newrelic/developer-website/compare/v1.7.2...v1.8.0) (2020-07-30)
+
+
+### Bug Fixes
+
+* add prop type for page prop ([ef316b3](https://github.com/newrelic/developer-website/commit/ef316b35a5af8be878df9f68ba4a70fd1716a207))
+* fix mobile nav styles when mobile nav is open ([a6f668a](https://github.com/newrelic/developer-website/commit/a6f668a00770385855eb0e3de007ef90ff16034c))
+* keep grid gap when on single column ([571e1bf](https://github.com/newrelic/developer-website/commit/571e1bfd05bce85e01fa99559a7df32d5030b70b))
+* migrate the rest of the layout styles to emotion ([cee2d25](https://github.com/newrelic/developer-website/commit/cee2d250ebd5df9c20afe5c58759e041e88b58f6))
+* spacing on footer ([38e304f](https://github.com/newrelic/developer-website/commit/38e304f5278f4732443ebc6960845e678c229796))
+* use align-self: start instead of wrapping div ([71309ea](https://github.com/newrelic/developer-website/commit/71309ea97a437ab5e1910620634b2c083f16aaa7))
+* use to instead of href for podcasts link ([06fe20d](https://github.com/newrelic/developer-website/commit/06fe20d2e7cdd3128f52a274883ad7b1261011c0))
+* use Video component from theme in mdx ([1a8eb4d](https://github.com/newrelic/developer-website/commit/1a8eb4df9c039b5516336901a6d61e24d3f418f2))
+* widen the main layout by 100px ([9d049e6](https://github.com/newrelic/developer-website/commit/9d049e66853d68daefbfc3a2a5cf65c30d837ac7))
+
+
+### Features
+
+* add a usePageContext hook ([a78d3d8](https://github.com/newrelic/developer-website/commit/a78d3d8daaa5e490b6ad00323d5227ab773609e4))
+* add border around right rail component ([fdcfd2b](https://github.com/newrelic/developer-website/commit/fdcfd2be86cee4b65194c1248c0aec6de06f6352))
+* add dynamic layout value ([7e3e092](https://github.com/newrelic/developer-website/commit/7e3e0922dc829b30986d347c5fc694eac2936bc6))
+* add page layout context ([fc8ec18](https://github.com/newrelic/developer-website/commit/fc8ec18bd88b40627f639f5184adc6c921204540))
+* Add the related content sidebar to the main page ([749427a](https://github.com/newrelic/developer-website/commit/749427a510c5379517d8dcc0c61bbd289074388d))
+* create a PageLayout component ([2e6f488](https://github.com/newrelic/developer-website/commit/2e6f4886a852ab6b71e0c8a336a94e2a83b82420))
+* create a related content component ([1d183b9](https://github.com/newrelic/developer-website/commit/1d183b92c63b0465cb1814759df70fbe97d6b45b))
+* hide the related content on a mobile layout ([f0d65d1](https://github.com/newrelic/developer-website/commit/f0d65d10396fb4f013c9035189331064f21c8948))
+* move related content to bottom of content when on smaller screens ([c76eca1](https://github.com/newrelic/developer-website/commit/c76eca104281766b109469e03cde06476e2b0bf3))
+* move the content area into a grid ([48da4d9](https://github.com/newrelic/developer-website/commit/48da4d9c0d26f5968fcd46586cf4655c0b16d2ff))
+* move the related content area to the guide template ([1f7b2d5](https://github.com/newrelic/developer-website/commit/1f7b2d5071846c5a131bbd1d9cbff2d1e14775e7))
+* remove PageTitle component ([44659b7](https://github.com/newrelic/developer-website/commit/44659b7bcb5b0608ead4bf233511bc5f00567699))
+* use dynamic breakpoint for side by side component based on layout ([c0277d9](https://github.com/newrelic/developer-website/commit/c0277d9ba1cb4e9af52aa70d1ba606be92050e4d))
+* use PageLayout for ApiReferenceTemplate ([11d156e](https://github.com/newrelic/developer-website/commit/11d156e950e42763b896e5ba22d05ef0b27183d0))
+* use PageLayout for ComponentReferenceTemplate ([027a893](https://github.com/newrelic/developer-website/commit/027a8935a348ced032ddfded39d082af7c8d6521))
+* use PageLayout for developer champion page ([37b7d0b](https://github.com/newrelic/developer-website/commit/37b7d0ba1972c033fdd22613e7bd1531733842c7))
+* use PageLayout for index page ([b9a5fc8](https://github.com/newrelic/developer-website/commit/b9a5fc8a7d13191c8cbf531ca020fbda2abc33d1))
+* use PageLayout for OverviewTemplate ([9e0c007](https://github.com/newrelic/developer-website/commit/9e0c007600f7dabed563fb9b8afb6924f6da5213))
+* use PageLayout for podcasts page ([3f706f1](https://github.com/newrelic/developer-website/commit/3f706f1f30e56fa55f919df4f0c166cc5af6ba92))
+* use PageLayout in GuideTemplate ([0643661](https://github.com/newrelic/developer-website/commit/0643661e4c8cd5fe2fca53b863bf77a8c76d9ec3))
+
 ## [1.7.2](https://github.com/newrelic/developer-website/compare/v1.7.1...v1.7.2) (2020-07-29)
 
 
