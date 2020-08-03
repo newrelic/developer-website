@@ -8,6 +8,12 @@ tileShorthand:
   description: 'Use custom attributes for deeper analysis'
 redirects:
   - /build-tools/tools-for-ingesting-data/custom-attributes
+resources:
+  - title: 'New Relic APM: Report custom attributes'
+    url: https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/add-custom-attributes-new-relic-apm-data
+
+  - title: Learn more about NRQL
+    url: /technology/nrql
 ---
 
 <Intro>
@@ -16,7 +22,7 @@ There are countless filters and pivots you might want to apply to your data. By 
 
 </Intro>
 
-A common pattern when using custom attributes is to capture user information, e.g. name, id, email, etc. This allows you to 'link' your operational data with your business data. For example, if you have the user information, you tie together your service desk and CRM data with the operational data in New Relic. 
+A common pattern when using custom attributes is to capture user information, e.g. name, id, email, etc. This allows you to 'link' your operational data with your business data. For example, if you have the user information, you tie together your service desk and CRM data with the operational data in New Relic.
 
 <Steps>
 
@@ -46,9 +52,3 @@ SELECT count(*) FROM TransactionError WHERE userid = '1401961100' FACET dateOf(t
 </Step>
 
 </Steps>
-
-### Related Info
-
-For more information, see [New Relic APM: Report custom attributes](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/add-custom-attributes-new-relic-apm-data)
-
-For more about the New Relic Query Language, see [Learn more about NRQL](https://developer.newrelic.com/technology/nrql)

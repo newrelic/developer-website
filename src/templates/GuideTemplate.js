@@ -3,6 +3,11 @@ import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
+import {
+  Contribute,
+  PageUpdated,
+  Resources,
+} from '../components/RelatedContentModules';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import SEO from '../components/Seo';
@@ -37,7 +42,10 @@ const GuideTemplate = ({ data }) => {
           )}
         </PageLayout.Header>
         <PageLayout.MarkdownContent>{body}</PageLayout.MarkdownContent>
-        <PageLayout.RelatedContent page={mdx} />
+        <PageLayout.RelatedContent
+          page={mdx}
+          modules={[Contribute, Resources, PageUpdated]}
+        />
       </PageLayout>
     </>
   );
@@ -58,7 +66,8 @@ export const pageQuery = graphql`
         description
       }
 
-      ...RelatedContent_page
+      ...Resources_page
+      ...PageUpdated_page
     }
   }
 `;
