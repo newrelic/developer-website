@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
-import { ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
+import { ExternalLink, Icon, Tag } from '@newrelic/gatsby-theme-newrelic';
 import Section from './Section';
-import Tag from '../Tag';
 import Title from './Title';
 
 const SITE_TAGS = {
