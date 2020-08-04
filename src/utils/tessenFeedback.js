@@ -1,10 +1,32 @@
 import tessen from 'tessen';
 
 const TESSEN_EVENT_NAME = 'pageSentiment';
-const TESSEN_PAGE_COMPONENT = 'DevSitePage';
 
-const TESSEN_EVENT_PROPERTIES = {
-  eventType: 'click',
+const TESSEN_TRACK_PROPERTIES = {
+  location: 'Public',
+  nr_product: 'DEVEX',
+  nr_subproduct: 'developer',
+};
+
+const USER_IDENTITY = {
+  customer_user_full_name: 'Developer Site User',
+};
+
+// Load tessen (production) and identify
+const initTessen = () => {
+  tessen.load(['Segement', 'NewRelic'], {
+    Segment: {
+      identifiable: false,
+      writeKey: 'FoEoyHDGF4dDczR4Vt12vuysG1Rl4n8z',
+    },
+  });
+
+  // TODO: remove this
+  tessen.debugLevel(2);
+
+  // Associate this information with an anonymous user
+  // NOTE: if we add authentication, we can pass user ID here
+  tessen.identify(USER_IDENTITY);
 };
 
 /**
@@ -19,8 +41,10 @@ const TESSEN_EVENT_PROPERTIES = {
 const sendFeedback = ({ path, sentiment, comment = '', title = '' }) => {
   if (!sentiment && !comment) return false;
 
-  tessen.trackUserAction(TESSEN_EVENT_NAME, TESSEN_PAGE_COMPONENT, {
-    ...TESSEN_EVENT_PROPERTIES,
+  initTessen();
+
+  tessen.track(TESSEN_EVENT_NAME, {
+    ...TESSEN_TRACK_PROPERTIES,
     sentiment,
     comment,
     pagePath: path,
