@@ -6,6 +6,7 @@ const TESSEN_TRACK_PROPERTIES = {
   location: 'Public',
   nr_product: 'DEVEX',
   nr_subproduct: 'developer',
+  category: 'Page',
 };
 
 const USER_IDENTITY = {
@@ -20,9 +21,6 @@ const initTessen = () => {
       writeKey: 'FoEoyHDGF4dDczR4Vt12vuysG1Rl4n8z',
     },
   });
-
-  // TODO: remove this
-  tessen.debugLevel(2);
 
   // Associate this information with an anonymous user
   // NOTE: if we add authentication, we can pass user ID here
