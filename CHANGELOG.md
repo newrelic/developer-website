@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/newrelic/developer-website/compare/v1.9.1...v1.9.2) (2020-08-04)
+
+
+### Bug Fixes
+
+* upgrade multiple dependencies with Snyk ([acdeb4d](https://github.com/newrelic/developer-website/commit/acdeb4debe571cd4b7e5c74d9776a658796d1975))
+
 ## [1.9.1](https://github.com/newrelic/developer-website/compare/v1.9.0...v1.9.1) (2020-08-03)
 
 
