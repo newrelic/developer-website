@@ -1,3 +1,10 @@
+## [1.9.3](https://github.com/newrelic/developer-website/compare/v1.9.2...v1.9.3) (2020-08-05)
+
+
+### Bug Fixes
+
+* **NR1 CLI:** Fix broken link on subscription commands ([bbd5f7f](https://github.com/newrelic/developer-website/commit/bbd5f7f9572e32bd4cb134c9f92a29852568f52f))
+
 ## [1.9.2](https://github.com/newrelic/developer-website/compare/v1.9.1...v1.9.2) (2020-08-04)
 
 
