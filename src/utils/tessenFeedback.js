@@ -15,7 +15,7 @@ const USER_IDENTITY = {
 
 // Load tessen (production) and identify
 const initTessen = () => {
-  tessen.load(['Segement', 'NewRelic'], {
+  tessen.load(['Segment', 'NewRelic'], {
     Segment: {
       identifiable: false,
       writeKey: 'FoEoyHDGF4dDczR4Vt12vuysG1Rl4n8z',
