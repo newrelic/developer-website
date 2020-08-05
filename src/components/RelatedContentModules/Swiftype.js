@@ -5,6 +5,7 @@ import { graphql, Link } from 'gatsby';
 import Section from './Section';
 import Title from './Title';
 import { ExternalLink, Icon, Tag } from '@newrelic/gatsby-theme-newrelic';
+import { useLocation } from '@reach/router';
 
 const ENGINE_KEY = 'Ad9HfGjDw4GRkcmJjUut';
 const PER_PAGE = 5;
@@ -31,6 +32,8 @@ const Swiftype = ({ page }) => {
     frontmatter: { title },
   } = page;
 
+  const { pathname } = useLocation();
+
   useEffect(() => {
     const params = JSON.stringify({
       engine_key: ENGINE_KEY,
@@ -38,7 +41,7 @@ const Swiftype = ({ page }) => {
       per_page: PER_PAGE,
       filters: {
         page: {
-          url: [`!https://developer.newrelic.com${window.location.pathname}/`],
+          url: [`!https://developer.newrelic.com${pathname}/`],
         },
       },
     });
@@ -52,7 +55,7 @@ const Swiftype = ({ page }) => {
     })
       .then((res) => res.json())
       .then(({ records }) => setRelatedPages(records.page));
-  }, [title]);
+  }, [title, pathname]);
 
   return (
     <Section>
