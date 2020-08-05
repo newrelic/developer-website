@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title, tags }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -67,6 +67,12 @@ function SEO({ description, lang, meta, title }) {
       'data-type': 'string',
       content: description,
     },
+    ...(tags ?? []).map((tag) => ({
+      name: 'tags',
+      class: 'swiftype',
+      'data-type': 'string',
+      content: tag,
+    })),
   ];
 
   // only add metadata if we have content
@@ -100,6 +106,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default SEO;
