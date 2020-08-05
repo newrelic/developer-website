@@ -7,6 +7,7 @@ import {
   Contribute,
   PageUpdated,
   Resources,
+  Swiftype,
 } from '../components/RelatedContentModules';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
@@ -44,7 +45,7 @@ const GuideTemplate = ({ data }) => {
         <PageLayout.MarkdownContent>{body}</PageLayout.MarkdownContent>
         <PageLayout.RelatedContent
           page={mdx}
-          modules={[Contribute, Resources, PageUpdated]}
+          modules={[Contribute, Resources, Swiftype, PageUpdated]}
         />
       </PageLayout>
     </>
@@ -68,6 +69,7 @@ export const pageQuery = graphql`
 
       ...Resources_page
       ...PageUpdated_page
+      ...Swiftype_page
     }
   }
 `;
