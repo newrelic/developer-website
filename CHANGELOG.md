@@ -1,3 +1,40 @@
+# [1.10.0](https://github.com/newrelic/developer-website/compare/v1.9.3...v1.10.0) (2020-08-06)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.6 to 1.6.7 ([93dd1ea](https://github.com/newrelic/developer-website/commit/93dd1ea8b4952b598f117ba5036952adbe5ebf0c))
+* upgrade eslint-plugin-react-hooks from 4.0.6 to 4.0.7 ([a38450d](https://github.com/newrelic/developer-website/commit/a38450dd25ecfa295f8b5146e9fde19d3c7e102e))
+* upgrade gatsby-plugin-mdx from 1.2.22 to 1.2.25 ([2911b72](https://github.com/newrelic/developer-website/commit/2911b72b3c3abf6abd225458fefe4a5d9dd71185))
+* upgrade react-shadow from 18.1.2 to 18.2.4 ([bd8e741](https://github.com/newrelic/developer-website/commit/bd8e74139f10cab64309da1988dee92d7f6906c0))
+* upgrade SDK shown in docs ([4513c91](https://github.com/newrelic/developer-website/commit/4513c9190a4e6122f71c114a5f5ad7732a2fe4e3))
+
+
+### Features
+
+* setup way to add tags to the current document ([da938cf](https://github.com/newrelic/developer-website/commit/da938cfa9e051485550577af541ac117e151022f))
+
+## [1.9.3](https://github.com/newrelic/developer-website/compare/v1.9.2...v1.9.3) (2020-08-05)
+
+
+### Bug Fixes
+
+* **NR1 CLI:** Fix broken link on subscription commands ([bbd5f7f](https://github.com/newrelic/developer-website/commit/bbd5f7f9572e32bd4cb134c9f92a29852568f52f))
+
+## [1.9.2](https://github.com/newrelic/developer-website/compare/v1.9.1...v1.9.2) (2020-08-04)
+
+
+### Bug Fixes
+
+* upgrade multiple dependencies with Snyk ([acdeb4d](https://github.com/newrelic/developer-website/commit/acdeb4debe571cd4b7e5c74d9776a658796d1975))
+
+## [1.9.1](https://github.com/newrelic/developer-website/compare/v1.9.0...v1.9.1) (2020-08-03)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-mdx from 1.2.21 to 1.2.22 ([c5a7e0b](https://github.com/newrelic/developer-website/commit/c5a7e0b575f77b62061599efbc65c2fbe65d33c4))
+
 # [1.9.0](https://github.com/newrelic/developer-website/compare/v1.8.1...v1.9.0) (2020-08-03)
 
 
