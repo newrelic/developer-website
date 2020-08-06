@@ -148,6 +148,7 @@ export const query = graphql`
     frontmatter {
       title
       description
+      tags
     }
   }
 `;
