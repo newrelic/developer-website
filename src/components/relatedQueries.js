@@ -12,6 +12,13 @@ export const descriptionOnly = {
   }),
 };
 
+export const titleAndDescription = {
+  name: 'Title and Description',
+  params: ({ page }) => ({
+    q: `${page.frontmatter.title} ${page.frontmatter.description}`,
+  }),
+};
+
 export const tags__OR = {
   name: 'Tags as search term (ORs)',
   params: ({ page }) => ({
