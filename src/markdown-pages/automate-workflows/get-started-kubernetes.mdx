@@ -23,7 +23,7 @@ This walkthrough assumes you’ve already deployed a Kubernetes cluster. You cou
 To use this guide, you should have some basic knowledge of both New Relic and Kubernetes. To complete the full exercise, you’ll need to:
 
 * Deploy a New Relic agent if you haven't done so yet. [Install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application. 
-* [Install `kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/) and point it at the correct cluster, as this will determine the cluster where you’ll install the New Relic operator.
+* [Install `kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/) and point it at the correct cluster; this determines the cluster where you’ll install the New Relic operator.
 * [Install `kustomize`](https://kubernetes-sigs.github.io/kustomize/installation/).
 
 <Steps>
@@ -88,7 +88,7 @@ If your output is similar to the example shown, you’re ready for the next step
 To kick things off, start small. First, create an alert policy with the minimum required configuration, then add a NRQL alert condition to the policy, which will add the condition to the policy in New Relic.
 A minimal alert policy configuration is represented in the code below. For the sake of this walkthrough, name this file `new_relic_alert_policy.yaml`.
 
-<small><em><strong>Note</strong>: For help locating your personal API key, check out New Relic's <a href="https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#">personal API key documentation</a>.</em></small>
+<small><em><strong>Note</strong>: For help locating your personal API key, check out our <a href="https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#">personal API key documentation</a>.</em></small>
 
 ```yaml lineNumbers=false
 apiVersion: nr.k8s.newrelic.com/v1
@@ -174,7 +174,7 @@ To finish things off, you'll create and add an alert channel to your alert polic
 ## What’s next?
 Nice work — now you can manage your New Relic alert policies and NRQL alert conditions with code that integrates seamlessly within your Kubernetes workflow. This provides the ability to configure and manage your alerts with a domain-specific pattern, providing consistency and maintainability. You also gain the benefits of code reviews for any potential changes moving forward.
 As you and your team move forward, you might need to adjust some of the configuration values to better fit your needs.
-The New Relic Kubernetes Operator is just one of several tools in the New Relic Developer Toolkit aimed at facilitating observability as code. 
+The New Relic Kubernetes Operator is just one of several tools in our Developer Toolkit aimed at facilitating observability as code. 
 
 ## Related info
 
