@@ -149,18 +149,26 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
       >
         {page.url ? (
           <Link
-            activeStyle={{ fontWeight: 'bold' }}
             partiallyActive
             onClick={
               isToggleable ? () => setToggleIsExpanded(!toggleIsExpanded) : null
             }
-            className={cx(
-              {
-                [styles.isCurrentPage]: isCurrentPage,
-                [styles.isBreadCrumb]: isBreadCrumb,
-              },
-              styles.navLink
-            )}
+            css={css`
+              color: var(--primary-text-color);
+            `}
+            getProps={({ isCurrent, isPartiallyCurrent }) => {
+              if (isCurrent) {
+                return { className: cx(styles.navLink, styles.isCurrentPage) };
+              }
+
+              if (isPartiallyCurrent) {
+                return {
+                  className: cx(styles.navLink, styles.isBreadCrumb),
+                };
+              }
+
+              return { className: styles.navLink };
+            }}
             to={page.url}
           >
             <span className={styles.navLinkText}>

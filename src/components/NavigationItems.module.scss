@@ -67,15 +67,15 @@ button.navLink {
   }
 }
 
+.isCurrentPage {
+  font-weight: bold;
+}
+
 .isBreadCrumb {
   font-weight: bold !important;
 }
 
 .filterOn {
-  ul {
-    display: block;
-  }
-
   .groupName {
     margin-top: 0.5rem;
   }
