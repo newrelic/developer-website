@@ -30,7 +30,7 @@ const Sidebar = ({ className }) => {
           top: 0;
           z-index: 10;
           padding: 1rem 0;
-          margin-bottom: 1rem;
+          margin-bottom: 0.5rem;
         `}
       >
         <Link
