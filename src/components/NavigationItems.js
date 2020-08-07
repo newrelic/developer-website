@@ -130,7 +130,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
           activeStyle={{ fontWeight: 'bold' }}
           partiallyActive
           onClick={
-            isToggleable && (() => setToggleIsExpanded(!toggleIsExpanded))
+            isToggleable ? () => setToggleIsExpanded(!toggleIsExpanded) : null
           }
           className={cx(
             {
