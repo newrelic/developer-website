@@ -135,15 +135,23 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
         data-depth={depthLevel}
         className={cx({ [styles.filterOn]: filteredPageNames })}
         css={css`
-          padding-left: ${depthLevel > 0
-            ? `calc((0.5rem * ${depthLevel}) + ${depthLevel}em)`
-            : '0'};
+          --depth: ${depthLevel};
+          --depth-space: ${depthLevel}em;
+
+          margin: 0 -0.5rem;
+          padding: 0 0.5rem;
+          border-radius: 0.25rem;
 
           ${depthLevel === 0 &&
           css`
             &:not(:first-child) {
-              margin-top: 2rem;
+              margin-top: 1rem;
             }
+          `}
+
+          ${isCurrentPage &&
+          css`
+            background: var(--color-dark-100);
           `}
         `}
       >
@@ -153,22 +161,10 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
             onClick={
               isToggleable ? () => setToggleIsExpanded(!toggleIsExpanded) : null
             }
-            css={css`
-              color: var(--primary-text-color);
-            `}
-            getProps={({ isCurrent, isPartiallyCurrent }) => {
-              if (isCurrent) {
-                return { className: cx(styles.navLink, styles.isCurrentPage) };
-              }
-
-              if (isPartiallyCurrent) {
-                return {
-                  className: cx(styles.navLink, styles.isPartiallyCurrent),
-                };
-              }
-
-              return { className: styles.navLink };
-            }}
+            className={cx(styles.navLink, {
+              [styles.isCurrentPage]: isCurrentPage,
+              [styles.isPartiallyCurrent]: isBreadCrumb && !isCurrentPage,
+            })}
             to={page.url}
           >
             <span className={styles.navLinkText}>
@@ -184,21 +180,14 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
               )}
               {display}
             </span>
-            {isCurrentPage && (
-              <FeatherIcon
-                className={styles.currentPageIndicator}
-                name="chevron-right"
-              />
-            )}
             {isExternal(page.url) && <FeatherIcon name="external-link" />}
           </Link>
         ) : (
           <button
             type="button"
-            className={cx(
-              { [styles.isPartiallyCurrent]: isBreadCrumb },
-              styles.navLink
-            )}
+            className={cx(styles.navLink, {
+              [styles.isPartiallyCurrent]: isBreadCrumb,
+            })}
             onClick={() => setToggleIsExpanded(!toggleIsExpanded)}
             onKeyPress={() => setToggleIsExpanded(!toggleIsExpanded)}
             tabIndex={0}
