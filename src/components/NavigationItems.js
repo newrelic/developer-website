@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react';
+import { css } from '@emotion/core';
 import usePrevious from '../hooks/usePrevious';
 import PropTypes from 'prop-types';
 import FeatherIcon from './FeatherIcon';
@@ -131,6 +132,14 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
       key={page.displayName}
       data-depth={depthLevel}
       className={cx({ [styles.filterOn]: filteredPageNames })}
+      css={
+        depthLevel === 0 &&
+        css`
+          &:not(:last-child) {
+            margin-bottom: 2rem;
+          }
+        `
+      }
     >
       {page.url ? (
         <Link

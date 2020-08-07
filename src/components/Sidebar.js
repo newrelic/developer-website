@@ -14,7 +14,7 @@ const Sidebar = ({ className }) => {
       data-swiftype-index={false}
       className={className}
       css={css`
-        padding: 2rem;
+        padding: 0 2rem 2rem;
         border-right: 1px solid var(--divider-color);
 
         @media screen and (max-width: 760px) {
@@ -23,32 +23,43 @@ const Sidebar = ({ className }) => {
         }
       `}
     >
-      <Link to="/">
-        <Logo
+      <div
+        css={css`
+          background: var(--primary-background-color);
+          position: sticky;
+          top: 0;
+          z-index: 10;
+          padding: 1rem 0;
+          margin-bottom: 1rem;
+        `}
+      >
+        <Link
           css={css`
-            width: 200px;
-
-            @media screen and (max-width: 760px) {
-              width: 160px;
-            }
+            display: block;
+            display: flex;
+            margin-bottom: 1rem;
           `}
+          to="/"
+        >
+          <Logo
+            css={css`
+              display: block;
+              width: 150px;
+
+              @media screen and (max-width: 760px) {
+                width: 160px;
+              }
+            `}
+          />
+        </Link>
+        <SearchInput
+          placeholder="Search developer docs"
+          onClear={() => setSearchTerm('')}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          value={searchTerm}
         />
-      </Link>
-      <SearchInput
-        css={css`
-          margin: 1rem 0;
-        `}
-        placeholder="Search developer docs"
-        onClear={() => setSearchTerm('')}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        value={searchTerm}
-      />
-      <Navigation
-        css={css`
-          margin-top: 1rem;
-        `}
-        searchTerm={searchTerm}
-      />
+      </div>
+      <Navigation searchTerm={searchTerm} />
     </aside>
   );
 };
