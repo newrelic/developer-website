@@ -122,8 +122,9 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
     ? getHighlightedText(page.displayName, searchTerm)
     : page.displayName;
 
-  if (filteredPageNames && !filteredPageNames.includes(page.displayName))
+  if (filteredPageNames && !filteredPageNames.includes(page.displayName)) {
     return null;
+  }
 
   return (
     <li
