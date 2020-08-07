@@ -10,14 +10,19 @@ const SITE_TAGS = {
   developer: 'https://developer.newrelic.com',
   'open source': 'https://opensource.newrelic.com',
   docs: 'https://docs.newrelic.com',
+  github: 'https://github.com',
+  terraform: 'https://terraform.io',
+  kubernetes: 'https://kubernetes.io',
+  youtube: 'https://youtube.com',
+  discuss: 'https://discuss.newrelic.com'
 };
 
 const findTag = (resource) =>
   resource.url.startsWith('/')
     ? 'developer'
     : Object.keys(SITE_TAGS).find((tag) =>
-        resource.url.startsWith(SITE_TAGS[tag])
-      );
+      resource.url.startsWith(SITE_TAGS[tag])
+    );
 
 const normalizeDeveloperUrl = (url) =>
   url.replace('https://developer.newrelic.com', '');
