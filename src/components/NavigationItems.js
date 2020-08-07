@@ -138,20 +138,13 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
           --depth: ${depthLevel};
           --depth-space: ${depthLevel}em;
 
-          margin: 0 -0.5rem;
-          padding: 0 0.5rem;
-          border-radius: 0.25rem;
+          padding-left: ${depthLevel === 0 ? '0' : 'calc(0.5rem + 1em)'};
 
           ${depthLevel === 0 &&
           css`
             &:not(:first-child) {
               margin-top: 1rem;
             }
-          `}
-
-          ${isCurrentPage &&
-          css`
-            background: var(--color-dark-100);
           `}
         `}
       >
@@ -205,15 +198,16 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
             {display}
           </button>
         )}
+
+        {page.children && isExpanded && (
+          <NavigationItems
+            pages={page.children}
+            filteredPageNames={filteredPageNames}
+            depthLevel={depthLevel + 1}
+            searchTerm={searchTerm}
+          />
+        )}
       </div>
-      {page.children && isExpanded && (
-        <NavigationItems
-          pages={page.children}
-          filteredPageNames={filteredPageNames}
-          depthLevel={depthLevel + 1}
-          searchTerm={searchTerm}
-        />
-      )}
     </>
   );
 };
