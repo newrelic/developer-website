@@ -163,7 +163,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
 
               if (isPartiallyCurrent) {
                 return {
-                  className: cx(styles.navLink, styles.isBreadCrumb),
+                  className: cx(styles.navLink, styles.isPartiallyCurrent),
                 };
               }
 
@@ -196,7 +196,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
           <button
             type="button"
             className={cx(
-              { [styles.isBreadCrumb]: isBreadCrumb },
+              { [styles.isPartiallyCurrent]: isBreadCrumb },
               styles.navLink
             )}
             onClick={() => setToggleIsExpanded(!toggleIsExpanded)}
