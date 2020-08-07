@@ -32,3 +32,23 @@ export const tags__AND = {
     q: (page.frontmatter.tags ?? []).join(' AND '),
   }),
 };
+
+export const titleWithWeightsBody = {
+  name: 'Title with weight on body',
+  params: ({ page }) => ({
+    q: page.frontmatter.title,
+    search_fields: {
+      page: ['body^10'],
+    },
+  }),
+};
+
+export const titleWithWeightsTitle = {
+  name: 'Title with weight on title',
+  params: ({ page }) => ({
+    q: page.frontmatter.title,
+    search_fields: {
+      page: ['title^10'],
+    },
+  }),
+};
