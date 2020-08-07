@@ -11,7 +11,7 @@
   border-radius: 0.25rem;
   padding-left: calc(0.5rem + 1em);
 
-  &:not(.isCurrentPage):hover {
+  &:hover {
     color: var(--primary-text-hover-color);
   }
 
@@ -74,9 +74,9 @@ button.navLink {
 
 .isCurrentPage {
   background: var(--color-neutrals-100);
-  color: var(--primary-text-hover-color);
 
   :global(.dark-mode) & {
+    color: var(--primary-text-hover-color);
     background: var(--color-dark-100);
   }
 }
