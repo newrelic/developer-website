@@ -73,7 +73,7 @@ const MainLayout = ({ children }) => {
           </script>
         ) : null}
       </Helmet>
-      <GlobalHeader editUrl={editUrl} />
+      <GlobalHeader editUrl={editUrl} search />
       <MobileHeader
         css={css`
           @media (min-width: 761px) {
