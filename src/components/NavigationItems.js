@@ -8,6 +8,7 @@ import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 import styles from './NavigationItems.module.scss';
 import { link } from '../types';
+import { useLocation } from '@reach/router';
 
 const iconLibrary = {
   'Collect data': 'collectData',
@@ -86,12 +87,11 @@ const NavIcon = ({ page }) => {
 };
 
 const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
+  const location = useLocation();
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
-  const prevCrumbs = usePrevious(crumbs) ?? [];
   const isHomePage = crumbs.length === 0 && depthLevel === 0;
   const matchesSearch = filteredPageNames?.includes(page.displayName);
-  const hasChangedPage =
-    prevCrumbs[prevCrumbs.length - 1] !== crumbs[crumbs.length - 1];
+  const hasChangedPage = location.pathname !== usePrevious(location.pathname);
   const [toggleIsExpanded, setToggleIsExpanded] = useState(
     isHomePage || crumbs.includes(page.displayName)
   );
