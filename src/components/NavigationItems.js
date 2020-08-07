@@ -89,19 +89,21 @@ const NavIcon = ({ page }) => {
 const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
   const location = useLocation();
   const crumbs = useContext(BreadcrumbContext).flatMap((x) => x.displayName);
-  const isHomePage = crumbs.length === 0 && depthLevel === 0;
+  const isHomepage = location.pathname === '/';
   const matchesSearch = filteredPageNames?.includes(page.displayName);
   const hasChangedPage = location.pathname !== usePrevious(location.pathname);
   const [toggleIsExpanded, setToggleIsExpanded] = useState(
-    isHomePage || crumbs.includes(page.displayName)
+    (isHomepage && depthLevel === 0) || crumbs.includes(page.displayName)
   );
   const isExpanded = toggleIsExpanded || matchesSearch;
 
   useEffect(() => {
     if (hasChangedPage) {
-      setToggleIsExpanded(isHomePage || crumbs.includes(page.displayName));
+      setToggleIsExpanded(
+        (isHomepage && depthLevel === 0) || crumbs.includes(page.displayName)
+      );
     }
-  }, [hasChangedPage, crumbs, page.displayName, isHomePage]);
+  }, [hasChangedPage, crumbs, page.displayName, depthLevel, isHomepage]);
 
   const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
   const isBreadCrumb = crumbs.includes(page.displayName);
