@@ -1,3 +1,5 @@
+const quote = (str) => `"${str}"`;
+
 export const titleOnly = {
   name: 'Title only',
   params: ({ page }) => ({
@@ -22,14 +24,37 @@ export const titleAndDescription = {
 export const tags__OR = {
   name: 'Tags as search term (ORs)',
   params: ({ page }) => ({
-    q: (page.frontmatter.tags ?? []).join(' OR '),
+    q: (page.frontmatter.tags ?? []).map(quote).join(' OR '),
   }),
 };
 
 export const tags__AND = {
   name: 'Tags as search term (ANDs)',
   params: ({ page }) => ({
-    q: (page.frontmatter.tags ?? []).join(' AND '),
+    q: (page.frontmatter.tags ?? []).map(quote).join(' AND '),
+  }),
+};
+
+export const tagsWeighted = {
+  name: 'Tags weighted',
+  params: ({ page }) => ({
+    q: (page.frontmatter.tags ?? []).map(quote).join(' OR '),
+    search_fields: {
+      page: ['tags^10', 'body^5', 'title^3', 'description'],
+    },
+  }),
+};
+
+export const tagsWithTitle = {
+  name: 'Title w/ tags',
+  params: ({ page }) => ({
+    q: [
+      page.frontmatter.title,
+      ...(page.frontmatter.tags ?? []).map(quote),
+    ].join(' OR '),
+    search_fields: {
+      page: ['tags^10', 'title^5', 'description', 'body'],
+    },
   }),
 };
 
