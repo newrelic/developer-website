@@ -51,7 +51,10 @@ const Swiftype = ({ page }) => {
           filters: {
             page: {
               url: [
-                `!https://developer.newrelic.com${pathname}/`,
+                `!https://developer.newrelic.com${pathname.replace(
+                  /\/$/,
+                  ''
+                )}/`,
                 ...(params.filters?.page?.url ?? []),
               ],
             },
