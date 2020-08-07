@@ -1,3 +1,11 @@
+## [1.10.1](https://github.com/newrelic/developer-website/compare/v1.10.0...v1.10.1) (2020-08-07)
+
+
+### Bug Fixes
+
+* remove global height from text inputs ([7a99cdd](https://github.com/newrelic/developer-website/commit/7a99cdd0c21132590f332cd7665e3c59d743dea1))
+* upgrade to latest gatsby theme ([84f6616](https://github.com/newrelic/developer-website/commit/84f6616be323bcfe89183052eb6c9bb20a4cde7c))
+
 # [1.10.0](https://github.com/newrelic/developer-website/compare/v1.9.3...v1.10.0) (2020-08-06)
 
 
