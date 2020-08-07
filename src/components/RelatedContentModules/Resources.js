@@ -14,7 +14,7 @@ const SITE_TAGS = {
   terraform: 'https://terraform.io',
   kubernetes: 'https://kubernetes.io',
   youtube: 'https://youtube.com',
-  discuss: 'https://discuss.newrelic.com'
+  discuss: 'https://discuss.newrelic.com',
 };
 
 const findTag = (resource) =>
