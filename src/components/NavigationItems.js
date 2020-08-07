@@ -20,6 +20,8 @@ const iconLibrary = {
   'Try our APIs': 'tryOurAPIs',
 };
 
+const normalizeUrl = (url) => url?.replace(/\/$/, '');
+
 const getHighlightedText = (text, highlight) => {
   const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
   return (
@@ -105,7 +107,9 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
     }
   }, [hasChangedPage, crumbs, page.displayName, depthLevel, isHomepage]);
 
-  const isCurrentPage = crumbs[crumbs.length - 1] === page.displayName;
+  const isCurrentPage =
+    normalizeUrl(location.pathname) === normalizeUrl(page.url);
+
   const isBreadCrumb = crumbs.includes(page.displayName);
   const isToggleable = [
     'Component library',
