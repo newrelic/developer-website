@@ -8,6 +8,11 @@ promote: true
 tileShorthand:
   title: 'Automate common tasks'
   description: 'Use the New Relic CLI to tag apps and create deployment markers'
+resources:
+  - title: 'New Relic CLI commands reference'
+    url: https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic.md
+  - title: 'New Relic CLI Github repository'
+    url: https://github.com/newrelic/newrelic-cli
 tags:
   - api key
   - New Relic CLI
@@ -25,10 +30,10 @@ Access the New Relic platform from the comfort of your terminal: you can use the
 
 ## Before you begin
 
-For this guide you just need: 
+For this guide you just need:
 
 1. Your New Relic [personal API Key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key), which you can create from the **Account settings** of your New Relic account
-2. An [instrumented application](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) in your New Relic account 
+2. An [instrumented application](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) in your New Relic account
 
 <Steps>
 <Step>
@@ -58,7 +63,7 @@ With [Scoop](https://scoop.sh/) installed, run:
 
 </Step><Step>
 
-## Create your New Relic CLI profile 
+## Create your New Relic CLI profile
 
 Now that you've installed the New Relic CLI, it's time to create your first profile. Profiles contain credentials and settings that you can apply to any CLI command, which is useful when switching between accounts.
 
@@ -81,7 +86,7 @@ Before searching for your application using the New Relic CLI, write down or cop
 
 </Step><Step>
 
-The New Relic CLI can retrieve your application details as a JSON object. 
+The New Relic CLI can retrieve your application details as a JSON object.
 
 To search for your APM application use the [`apm application search`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_apm_application_search.md) command. If you get an error, check that the account ID and application name you provided are correct.
 
@@ -110,6 +115,7 @@ When you've successfully searched for your application, look for the `guid` valu
   }
 ]
 ```
+
 </Step><Step>
 
 ## Add a simple tag to your application
@@ -121,6 +127,7 @@ Let's suppose that you want to add an environment tag to your application. Go ah
 ```sh lineNumbers=false
 newrelic entity tags create --guid YOUR_APP_GUID --tag devkit:testing
 ```
+
 </Step><Step>
 
 What if you want to add multiple tags? Tag sets come to the rescue! While tags are key-value pairs separated by colons, tag sets are comma separated lists of tags. For example:
@@ -132,6 +139,7 @@ To add multiple tags at once to your application, modify and run the following s
 ```sh lineNumbers=false
 newrelic entity tags create --guid YOUR_APP_GUID --tag tag1:test,tag2:test
 ```
+
 > Adding tags is an asynchronous operation: this means it could take a while for the tags to get created.
 
 </Step><Step>
@@ -148,25 +156,20 @@ All tags associated with your application are retrieved as a JSON array.
 [
   {
     "Key": "tag1",
-    "Values": [
-      "true"
-    ]
+    "Values": ["true"]
   },
   {
     "Key": "tag2",
-    "Values": [
-      "test"
-    ]
+    "Values": ["test"]
   },
   {
     "Key": "tag3",
-    "Values": [
-      "testing"
-    ]
+    "Values": ["testing"]
   }
   // ...
 ]
 ```
+
 </Step><Step>
 
 ## Bonus step: Create a deployment marker
@@ -196,6 +199,7 @@ Here is an example.
   "user": "Developer Toolkit Test Account"
 }
 ```
+
 </Step></Steps>
 
 ## Next steps
@@ -203,9 +207,3 @@ Here is an example.
 Have a look at [all the available commands](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic.md). For example, you could create a [New Relic workflow](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/new-relic-one-workloads-isolate-resolve-incidents-faster) using [`workload create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_workload_create.md)
 
 If you'd like to engage with other community members, visit our [New Relic Explorers Hub](https://discuss.newrelic.com/c/build-on-new-relic/developer-toolkit) page. We welcome feature requests or bug reports on [GitHub](https://github.com/newrelic/newrelic-cli).
-
-## Related info
-
-- [New Relic CLI commands reference](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic.md)
-- [New Relic CLI repository on GitHub](https://github.com/newrelic/newrelic-cli)
-- [New Relic documentation](https://docs.newrelic.com)
