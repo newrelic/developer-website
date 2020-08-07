@@ -135,9 +135,6 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
         data-depth={depthLevel}
         className={cx({ [styles.filterOn]: filteredPageNames })}
         css={css`
-          --depth: ${depthLevel};
-          --depth-space: ${depthLevel}em;
-
           padding-left: ${depthLevel === 0 ? '0' : 'calc(0.5rem + 1em)'};
 
           ${depthLevel === 0 &&
