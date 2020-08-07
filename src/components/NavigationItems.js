@@ -155,22 +155,25 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
           >
             <span className={styles.navLinkText}>
               {headerIcon}
-              {depthLevel > 0 && page.children && (
-                <FeatherIcon
-                  className={cx(
-                    { [styles.isExpanded]: isExpanded },
-                    styles.nestedChevron
-                  )}
-                  name="chevron-right"
-                />
-              )}
               {display}
             </span>
+            {depthLevel > 0 && page.children && (
+              <FeatherIcon
+                className={cx(
+                  { [styles.isExpanded]: isExpanded },
+                  styles.nestedChevron
+                )}
+                name="chevron-right"
+              />
+            )}
             {isExternal(page.url) && <FeatherIcon name="external-link" />}
           </Link>
         ) : (
-          <button
-            type="button"
+          <div
+            role="button"
+            css={css`
+              cursor: pointer;
+            `}
             className={cx(styles.navLink, {
               [styles.isPartiallyCurrent]: isBreadCrumb,
             })}
@@ -178,6 +181,10 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
             onKeyPress={() => setToggleIsExpanded(!toggleIsExpanded)}
             tabIndex={0}
           >
+            <span className={styles.navLinkText}>
+              {headerIcon}
+              {display}
+            </span>
             {depthLevel > 0 && (
               <FeatherIcon
                 className={cx(
@@ -187,9 +194,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
                 name="chevron-right"
               />
             )}
-            {headerIcon}
-            {display}
-          </button>
+          </div>
         )}
 
         {page.children && isExpanded && (
