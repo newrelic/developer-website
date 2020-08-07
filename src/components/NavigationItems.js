@@ -51,43 +51,30 @@ const NavigationItems = ({
     };
   }, {});
 
-  return (
-    <ul
-      css={css`
-        list-style: none;
-        padding-left: ${depthLevel === 0 ? '0' : '1rem'};
+  return Object.entries(groupedPages).map(([group, pages]) => {
+    const showGroup =
+      (group && !filteredPageNames) ||
+      (group &&
+        filteredPageNames &&
+        pages.some((el) => filteredPageNames.includes(el.displayName)));
 
-        [data-depth] > & {
-          padding-left: calc(0.5rem + 1em);
-        }
-      `}
-    >
-      {Object.entries(groupedPages).map(([group, pages]) => {
-        const showGroup =
-          (group && !filteredPageNames) ||
-          (group &&
-            filteredPageNames &&
-            pages.some((el) => filteredPageNames.includes(el.displayName)));
-
-        return (
-          <Fragment key={group}>
-            {showGroup && (
-              <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
-            )}
-            {pages.map((page, index) => (
-              <NavItem
-                page={page}
-                depthLevel={depthLevel}
-                searchTerm={searchTerm}
-                filteredPageNames={filteredPageNames}
-                key={index}
-              />
-            ))}
-          </Fragment>
-        );
-      })}
-    </ul>
-  );
+    return (
+      <Fragment key={group}>
+        {showGroup && (
+          <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
+        )}
+        {pages.map((page, index) => (
+          <NavItem
+            page={page}
+            depthLevel={depthLevel}
+            searchTerm={searchTerm}
+            filteredPageNames={filteredPageNames}
+            key={index}
+          />
+        ))}
+      </Fragment>
+    );
+  });
 };
 
 const NavIcon = ({ page }) => {
@@ -142,38 +129,73 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
   }
 
   return (
-    <li
-      key={page.displayName}
-      data-depth={depthLevel}
-      className={cx({ [styles.filterOn]: filteredPageNames })}
-      css={
-        depthLevel === 0 &&
-        css`
-          &:not(:last-child) {
-            margin-bottom: 2rem;
-          }
-        `
-      }
-    >
-      {page.url ? (
-        <Link
-          activeStyle={{ fontWeight: 'bold' }}
-          partiallyActive
-          onClick={
-            isToggleable ? () => setToggleIsExpanded(!toggleIsExpanded) : null
-          }
-          className={cx(
-            {
-              [styles.isCurrentPage]: isCurrentPage,
-              [styles.isBreadCrumb]: isBreadCrumb,
-            },
-            styles.navLink
-          )}
-          to={page.url}
-        >
-          <span className={styles.navLinkText}>
-            {headerIcon}
-            {depthLevel > 0 && page.children && (
+    <>
+      <div
+        key={page.displayName}
+        data-depth={depthLevel}
+        className={cx({ [styles.filterOn]: filteredPageNames })}
+        css={css`
+          padding-left: ${depthLevel > 0
+            ? `calc((0.5rem * ${depthLevel}) + ${depthLevel}em)`
+            : '0'};
+
+          ${depthLevel === 0 &&
+          css`
+            &:not(:first-child) {
+              margin-top: 2rem;
+            }
+          `}
+        `}
+      >
+        {page.url ? (
+          <Link
+            activeStyle={{ fontWeight: 'bold' }}
+            partiallyActive
+            onClick={
+              isToggleable ? () => setToggleIsExpanded(!toggleIsExpanded) : null
+            }
+            className={cx(
+              {
+                [styles.isCurrentPage]: isCurrentPage,
+                [styles.isBreadCrumb]: isBreadCrumb,
+              },
+              styles.navLink
+            )}
+            to={page.url}
+          >
+            <span className={styles.navLinkText}>
+              {headerIcon}
+              {depthLevel > 0 && page.children && (
+                <FeatherIcon
+                  className={cx(
+                    { [styles.isExpanded]: isExpanded },
+                    styles.nestedChevron
+                  )}
+                  name="chevron-right"
+                />
+              )}
+              {display}
+            </span>
+            {isCurrentPage && (
+              <FeatherIcon
+                className={styles.currentPageIndicator}
+                name="chevron-right"
+              />
+            )}
+            {isExternal(page.url) && <FeatherIcon name="external-link" />}
+          </Link>
+        ) : (
+          <button
+            type="button"
+            className={cx(
+              { [styles.isBreadCrumb]: isBreadCrumb },
+              styles.navLink
+            )}
+            onClick={() => setToggleIsExpanded(!toggleIsExpanded)}
+            onKeyPress={() => setToggleIsExpanded(!toggleIsExpanded)}
+            tabIndex={0}
+          >
+            {depthLevel > 0 && (
               <FeatherIcon
                 className={cx(
                   { [styles.isExpanded]: isExpanded },
@@ -182,40 +204,11 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
                 name="chevron-right"
               />
             )}
+            {headerIcon}
             {display}
-          </span>
-          {isCurrentPage && (
-            <FeatherIcon
-              className={styles.currentPageIndicator}
-              name="chevron-right"
-            />
-          )}
-          {isExternal(page.url) && <FeatherIcon name="external-link" />}
-        </Link>
-      ) : (
-        <button
-          type="button"
-          className={cx(
-            { [styles.isBreadCrumb]: isBreadCrumb },
-            styles.navLink
-          )}
-          onClick={() => setToggleIsExpanded(!toggleIsExpanded)}
-          onKeyPress={() => setToggleIsExpanded(!toggleIsExpanded)}
-          tabIndex={0}
-        >
-          {depthLevel > 0 && (
-            <FeatherIcon
-              className={cx(
-                { [styles.isExpanded]: isExpanded },
-                styles.nestedChevron
-              )}
-              name="chevron-right"
-            />
-          )}
-          {headerIcon}
-          {display}
-        </button>
-      )}
+          </button>
+        )}
+      </div>
       {page.children && isExpanded && (
         <NavigationItems
           pages={page.children}
@@ -224,7 +217,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
           searchTerm={searchTerm}
         />
       )}
-    </li>
+    </>
   );
 };
 
