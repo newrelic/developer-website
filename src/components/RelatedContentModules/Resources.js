@@ -21,8 +21,8 @@ const findTag = (resource) =>
   resource.url.startsWith('/')
     ? 'developer'
     : Object.keys(SITE_TAGS).find((tag) =>
-      resource.url.startsWith(SITE_TAGS[tag])
-    );
+        resource.url.startsWith(SITE_TAGS[tag])
+      );
 
 const normalizeDeveloperUrl = (url) =>
   url.replace('https://developer.newrelic.com', '');
