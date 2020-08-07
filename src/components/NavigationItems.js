@@ -159,6 +159,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
             </span>
             {depthLevel > 0 && page.children && (
               <FeatherIcon
+                size="1rem"
                 className={cx(
                   { [styles.isExpanded]: isExpanded },
                   styles.nestedChevron
@@ -187,6 +188,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
             </span>
             {depthLevel > 0 && (
               <FeatherIcon
+                size="1rem"
                 className={cx(
                   { [styles.isExpanded]: isExpanded },
                   styles.nestedChevron
