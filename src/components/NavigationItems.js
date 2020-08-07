@@ -63,15 +63,18 @@ const NavigationItems = ({
         {showGroup && (
           <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
         )}
-        {pages.map((page, index) => (
-          <NavItem
-            page={page}
-            depthLevel={depthLevel}
-            searchTerm={searchTerm}
-            filteredPageNames={filteredPageNames}
-            key={index}
-          />
-        ))}
+        {pages.map((page, index) =>
+          filteredPageNames?.includes(page.displayName) ||
+          !filteredPageNames ? (
+            <NavItem
+              page={page}
+              depthLevel={depthLevel}
+              searchTerm={searchTerm}
+              filteredPageNames={filteredPageNames}
+              key={index}
+            />
+          ) : null
+        )}
       </Fragment>
     );
   });
@@ -120,10 +123,6 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
   const display = filteredPageNames
     ? getHighlightedText(page.displayName, searchTerm)
     : page.displayName;
-
-  if (filteredPageNames && !filteredPageNames.includes(page.displayName)) {
-    return null;
-  }
 
   return (
     <>
