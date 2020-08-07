@@ -51,29 +51,43 @@ const NavigationItems = ({
     };
   }, {});
 
-  return Object.entries(groupedPages).map(([group, pages]) => {
-    const showGroup =
-      (group && !filteredPageNames) ||
-      (group &&
-        filteredPageNames &&
-        pages.some((el) => filteredPageNames.includes(el.displayName)));
-    return (
-      <Fragment key={group}>
-        {showGroup && (
-          <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
-        )}
-        {pages.map((page, index) => (
-          <NavItem
-            page={page}
-            depthLevel={depthLevel}
-            searchTerm={searchTerm}
-            filteredPageNames={filteredPageNames}
-            key={index}
-          />
-        ))}
-      </Fragment>
-    );
-  });
+  return (
+    <ul
+      css={css`
+        list-style: none;
+        padding-left: ${depthLevel === 0 ? '0' : '1rem'};
+
+        [data-depth] > & {
+          padding-left: calc(0.5rem + 1em);
+        }
+      `}
+    >
+      {Object.entries(groupedPages).map(([group, pages]) => {
+        const showGroup =
+          (group && !filteredPageNames) ||
+          (group &&
+            filteredPageNames &&
+            pages.some((el) => filteredPageNames.includes(el.displayName)));
+
+        return (
+          <Fragment key={group}>
+            {showGroup && (
+              <li className={cx(styles.navLink, styles.groupName)}>{group}</li>
+            )}
+            {pages.map((page, index) => (
+              <NavItem
+                page={page}
+                depthLevel={depthLevel}
+                searchTerm={searchTerm}
+                filteredPageNames={filteredPageNames}
+                key={index}
+              />
+            ))}
+          </Fragment>
+        );
+      })}
+    </ul>
+  );
 };
 
 const NavIcon = ({ page }) => {
@@ -203,14 +217,12 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
         </button>
       )}
       {page.children && isExpanded && (
-        <ul className={styles.nestedNav}>
-          <NavigationItems
-            pages={page.children}
-            filteredPageNames={filteredPageNames}
-            depthLevel={depthLevel + 1}
-            searchTerm={searchTerm}
-          />
-        </ul>
+        <NavigationItems
+          pages={page.children}
+          filteredPageNames={filteredPageNames}
+          depthLevel={depthLevel + 1}
+          searchTerm={searchTerm}
+        />
       )}
     </li>
   );
