@@ -8,6 +8,7 @@ import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 import styles from './NavigationItems.module.scss';
 import { link } from '../types';
+import CollectDataIcon from './CollectDataIcon';
 
 const iconLibrary = {
   'Collect data': 'collectData',
@@ -73,6 +74,10 @@ const NavigationItems = ({
 };
 
 const NavIcon = ({ page }) => {
+  if (page.displayName === 'Collect data') {
+    return <CollectDataIcon className={styles.headerIcon} size="2rem" />;
+  }
+
   if (iconLibrary[page.displayName]) {
     return (
       <NewRelicIcon
