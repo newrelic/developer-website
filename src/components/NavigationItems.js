@@ -142,7 +142,9 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
         {page.url ? (
           <Link
             onClick={
-              isToggleable ? () => setToggleIsExpanded(!toggleIsExpanded) : null
+              isToggleable && isCurrentPage
+                ? () => setToggleIsExpanded(!toggleIsExpanded)
+                : null
             }
             className={cx(styles.navLink, {
               [styles.isCurrentPage]: isCurrentPage,
