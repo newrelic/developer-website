@@ -53,8 +53,7 @@ const MobileHeader = ({ className, isOpen, toggle }) => {
             searchTerm={searchTerm}
             css={css`
               font-size: 1rem;
-              padding: 1.5rem 3rem;
-              position: absolute;
+              padding: 1.5rem 0rem;
               height: calc(
                 100vh -
                   (var(--height-mobile-nav-bar) + var(--height-global-header))
