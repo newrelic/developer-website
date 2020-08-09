@@ -9,7 +9,7 @@ import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 import styles from './NavigationItems.module.scss';
 import { link } from '../types';
-import { useLocation } from '@reach/router';
+import { useLocation, useMatch } from '@reach/router';
 
 const iconLibrary = {
   'Collect data': 'collectData',
@@ -20,8 +20,6 @@ const iconLibrary = {
   Podcasts: 'podcasts',
   'Try our APIs': 'tryOurAPIs',
 };
-
-const normalizeUrl = (url) => url?.replace(/\/$/, '');
 
 const getHighlightedText = (text, highlight) => {
   const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
@@ -108,8 +106,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
     }
   }, [hasChangedPage, isBreadCrumb]);
 
-  const isCurrentPage =
-    normalizeUrl(location.pathname) === normalizeUrl(page.url);
+  const isCurrentPage = Boolean(useMatch(page.url || '/'));
 
   const isToggleable = [
     'Component library',
