@@ -141,13 +141,11 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
       >
         {page.url ? (
           <Link
-            partiallyActive
             onClick={
               isToggleable ? () => setToggleIsExpanded(!toggleIsExpanded) : null
             }
             className={cx(styles.navLink, {
               [styles.isCurrentPage]: isCurrentPage,
-              [styles.isPartiallyCurrent]: isBreadCrumb && !isCurrentPage,
             })}
             to={page.url}
           >
@@ -173,9 +171,7 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
             css={css`
               cursor: pointer;
             `}
-            className={cx(styles.navLink, {
-              [styles.isPartiallyCurrent]: isBreadCrumb,
-            })}
+            className={styles.navLink}
             onClick={() => setToggleIsExpanded(!toggleIsExpanded)}
             onKeyPress={() => setToggleIsExpanded(!toggleIsExpanded)}
             tabIndex={0}
