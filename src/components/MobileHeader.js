@@ -4,8 +4,7 @@ import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import Logo from './Logo';
 import Navigation from './Navigation';
-import { HamburgerMenu } from '@newrelic/gatsby-theme-newrelic';
-import SearchInput from './SearchInput';
+import { HamburgerMenu, SearchInput } from '@newrelic/gatsby-theme-newrelic';
 
 const MobileHeader = ({ className, isOpen, toggle }) => {
   const [searchTerm, setSearchTerm] = useState('');
