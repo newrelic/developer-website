@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import Logo from './Logo';
 import Navigation from './Navigation';
-import HamburgerMenu from './HamburgerMenu';
+import { HamburgerMenu } from '@newrelic/gatsby-theme-newrelic';
 import SearchInput from './SearchInput';
 
 const MobileHeader = ({ className, isOpen, toggle }) => {
@@ -33,12 +33,12 @@ const MobileHeader = ({ className, isOpen, toggle }) => {
           <Logo
             css={css`
               display: block;
-              width: 160px;
+              width: 150px;
             `}
           />
         </Link>
 
-        <HamburgerMenu toggle={toggle} isOpen={isOpen} />
+        <HamburgerMenu onToggle={toggle} isOpen={isOpen} />
       </div>
 
       {isOpen && (
