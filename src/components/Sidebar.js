@@ -29,8 +29,8 @@ const Sidebar = ({ className }) => {
           position: sticky;
           top: 0;
           z-index: 10;
-          padding: 1rem 0;
-          margin-bottom: 0.5rem;
+          padding: 1rem 0.5rem;
+          margin: 0 -0.5rem 0.5rem;
         `}
       >
         <Link
