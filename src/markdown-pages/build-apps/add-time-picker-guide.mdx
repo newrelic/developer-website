@@ -24,11 +24,11 @@ We also have a 12 minute video that covers the steps below.
 To develop projects, you need our New Relic One CLI (command line interface). If you haven't already installed it, do the following:
 
 * Install [Node.js](https://nodejs.org/en/download/).
-* Complete steps 1–4 of our [CLI wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==). In step 1, be sure to make a copy of the number preceding your account name. This is your accound ID, and you’ll need it later.
+* Complete steps 1–4 of the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==). In step 1, be sure to make a copy of the number preceding your account name. This is your accound ID, and you’ll need it later.
 
 <Important>
 
-  If you have already installed the New Relic One CLI, but you can't remember your account ID, start the Quick start (click the **Build your own app** launcher) and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
+  If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
 
 </Important>
 
@@ -72,7 +72,7 @@ Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
 <Important>
 
-  Your account ID is available in the CLI wizard (see **Before you begin**).
+  Your account ID is available in the CLI quick start (see **Before you begin**).
   
 </Important>
 
@@ -105,15 +105,7 @@ Execute these commands to update the UUID and serve the sample application:
 
   <Step>
 
-Once the sample application is successfully served, go to the local New Relic One homepage: https://one.newrelic.com/?nerdpacks=local and click **Add Time Picker**:
-
-  <Important>
-
-If you don't see any launchers, click **Your applications**.
-
-  </Important>
-
-![New Relic One launcher image](../../images/time-picker-guide/homepage-launcher.png)
+Once the sample application is successfully served, go to the local version of New Relic One (https://one.newrelic.com/?nerdpacks=local) click **Apps**, and click **Add Time Picker**.
 
   </Step>
 
@@ -139,7 +131,6 @@ The first step in adding the time picker is to import the `PlatformStateContext`
 
 Here's what the `PlatformStateContext` component does:
 
-* Wraps all of the code within the return statement of the render method
 * Makes a function call passing in the New Relic platform state
 * Returns all of the code within our current return statement
 

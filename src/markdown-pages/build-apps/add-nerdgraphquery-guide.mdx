@@ -32,11 +32,11 @@ We also have a 14-minute video that covers the steps below.
 To develop projects, you need our New Relic One CLI (command line interface). If you haven't already installed it, do the following:
 
 * Install [Node.js](https://nodejs.org/en/download/).
-* Complete steps 1–4 of our [CLI wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), and be sure to make a copy of your account ID from step 1 because you’ll need it later.
+* Complete steps 1–4 of our [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), and be sure to make a copy of your account ID from step 1 because you’ll need it later.
 
 <Important>
 
-  If you already installed the New Relic One CLI, but you can't remember your account ID, you can re-run the wizard just to get your account ID.
+  If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
 
 </Important>
 
@@ -78,12 +78,6 @@ In your preferred text editor, open `index.js`.
 
 Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
-<Important>
-
-Your account ID is available in the CLI wizard (see **Before you begin**).
-
-</Important>
-
   ```jsx
   this.accountId = <ADD YOUR ACCOUNT ID>;
   ```
@@ -113,12 +107,6 @@ Execute these commands to update the UUID and serve the sample application:
   <Step>
 
 Once the sample application is successfully served, go to the local New Relic One homepage (https://one.newrelic.com/?nerdpacks=local) and click **Use NerdGraph**.
-
-  <Important>
-
-If you don't see any launchers, click **Your applications**.
-
-  </Important>
 
 ![Use Nerdgraph launcher](../../images/nerdgraphquery-guide/use-nerdgraph-launcher.png)
 
