@@ -1,3 +1,19 @@
+## [1.10.2](https://github.com/newrelic/developer-website/compare/v1.10.1...v1.10.2) (2020-08-10)
+
+
+### Bug Fixes
+
+* allow mobile views on developer champion page to have single column layout before applying 2 and 3 columns grid layouts ([2f5cc23](https://github.com/newrelic/developer-website/commit/2f5cc23d183d34c386174763a0731d4b7abcd103))
+* ensure two column layout only applies to wide viewports on podcast page. limit size of podcast logo to avoid very large logo size on wider viewports ([6c28f6d](https://github.com/newrelic/developer-website/commit/6c28f6db7d9da494908c7a7279d3a49408d44810))
+
+## [1.10.1](https://github.com/newrelic/developer-website/compare/v1.10.0...v1.10.1) (2020-08-07)
+
+
+### Bug Fixes
+
+* remove global height from text inputs ([7a99cdd](https://github.com/newrelic/developer-website/commit/7a99cdd0c21132590f332cd7665e3c59d743dea1))
+* upgrade to latest gatsby theme ([84f6616](https://github.com/newrelic/developer-website/commit/84f6616be323bcfe89183052eb6c9bb20a4cde7c))
+
 # [1.10.0](https://github.com/newrelic/developer-website/compare/v1.9.3...v1.10.0) (2020-08-06)
 
 

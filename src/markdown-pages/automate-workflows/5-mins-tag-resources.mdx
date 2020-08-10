@@ -7,6 +7,13 @@ description: 'Add tags to applications you instrument for easier filtering and o
 tileShorthand:
   title: 'Quickly tag resources'
   description: 'Add tags to apps for easy filtering'
+resources:
+  - title: 'Understand the Entity Explorer'
+    url: https://youtube.com/watch?v=IGZQup8ZEmE
+  - title: 'Use tags to organize and group what you monitor'
+    url: https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/tagging-use-tags-organize-group-what-you-monitor
+  - title: 'New Relic CLI Repo'
+    url: https://github.com/newrelic/newrelic-cli
 ---
 
 <Intro>
@@ -28,28 +35,28 @@ For this guide you need your New Relic [personal API Key](https://docs.newrelic.
 
 You can download the New Relic CLI via [Homebrew](https://brew.sh/) (macOS), [Scoop](https://scoop.sh/) (Windows), and [Snapcraft](https://snapcraft.io/) (Linux). You can also download [pre-built binaries](https://github.com/newrelic/newrelic-cli/releases) for all platforms, including .deb and .rpm packages, and our Windows x64 .msi installer.
 
-* #### Linux
+- #### Linux
 
-    With [Snapcraft](https://snapcraft.io/) installed, run:
+  With [Snapcraft](https://snapcraft.io/) installed, run:
 
-    `sudo snap install newrelic-cli`
+  `sudo snap install newrelic-cli`
 
-* #### macOS
+- #### macOS
 
-    With [Homebrew](https://brew.sh/) installed, run:
+  With [Homebrew](https://brew.sh/) installed, run:
 
-    `brew install newrelic-cli`
+  `brew install newrelic-cli`
 
-* #### Windows
+- #### Windows
 
-    With [Scoop](https://scoop.sh/) installed, run:
+  With [Scoop](https://scoop.sh/) installed, run:
 
-    `scoop bucket add newrelic-cli https://github.com/newrelic/newrelic-cli.git`<br />
-    `scoop install newrelic-cli`
+  `scoop bucket add newrelic-cli https://github.com/newrelic/newrelic-cli.git`<br />
+  `scoop install newrelic-cli`
 
 </Step><Step>
 
-## Create your New Relic CLI profile 
+## Create your New Relic CLI profile
 
 New Relic CLI profiles contain credentials and settings that you can apply to any CLI command.
 
@@ -72,7 +79,7 @@ In the terminal, run [`entity search`](https://github.com/newrelic/newrelic-cli/
 
 ```bash lineNumbers=false
 # Change the `name` to match any of your existing entities
-newrelic entity search --name "test" 
+newrelic entity search --name "test"
 ```
 
 </Step><Step>
@@ -92,17 +99,21 @@ Select an entity from the results and look for its `guid` value; the `guid` is t
     "type": "WORKLOAD"
   },
 ```
+
 </Step><Step>
 
 ## Add tags and tag lists to your entity
 
-With your entity `guid`, you can add tags right away. You can do so by invoking the [`entities tags create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_create.md) command. 
+With your entity `guid`, you can add tags right away. You can do so by invoking the [`entities tags create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_create.md) command.
 
 What if you want to add multiple tags? You can use tag sets for that: While tags are key-value pairs separated by colons, tag sets are comma-separated lists of tags. For example:
 
 `tag1:value1,tag2:value2`
 
-<Important>Adding tags is an asynchronous operation: it could take a little while for the tags to get created.</Important>
+<Important>
+  Adding tags is an asynchronous operation: it could take a little while for the
+  tags to get created.
+</Important>
 
 ```bash lineNumbers=false
 # Adding a single tag
@@ -110,6 +121,7 @@ newrelic entity tags create --guid GUID --tag key:value
 # Adding multiple tags
 newrelic entity tags create --guid GUID --tag tag1:test,tag2:test
 ```
+
 </Step><Step>
 
 ## Check that the tags are there
@@ -124,30 +136,24 @@ Tags can be deleted at any time by invoking the [`entity tags delete`](https://g
 
 </Tip>
 
-
 ```json lineNumbers=false
 [
   {
     "Key": "tag1",
-    "Values": [
-      "true"
-    ]
+    "Values": ["true"]
   },
   {
     "Key": "tag2",
-    "Values": [
-      "test"
-    ]
+    "Values": ["test"]
   },
   {
     "Key": "tag3",
-    "Values": [
-      "testing"
-    ]
+    "Values": ["testing"]
   }
   // ...
 ]
 ```
+
 </Step></Steps>
 
 ## Next steps
@@ -155,11 +161,3 @@ Tags can be deleted at any time by invoking the [`entity tags delete`](https://g
 Have a look at [all the New Relic CLI commands](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic.md). For example, you could create a [New Relic workflow](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/new-relic-one-workloads-isolate-resolve-incidents-faster) using [`workload create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_workload_create.md).
 
 If you'd like to engage with other community members, visit our [New Relic Explorers Hub](https://discuss.newrelic.com/c/build-on-new-relic/developer-toolkit) page. We welcome feature requests or bug reports on [GitHub](https://github.com/newrelic/newrelic-cli).
-
-## Related info
-
-- [Understanding Entity Explorer (Video)](https://www.youtube.com/watch?v=IGZQup8ZEmE)
-- [Tagging: Use tags to organize and group what you monitor](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/tagging-use-tags-organize-group-what-you-monitor)
-- [New Relic CLI commands reference](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic.md)
-- [New Relic CLI repository on GitHub](https://github.com/newrelic/newrelic-cli)
-
