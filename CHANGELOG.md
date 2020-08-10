@@ -1,3 +1,14 @@
+## [1.10.3](https://github.com/newrelic/developer-website/compare/v1.10.2...v1.10.3) (2020-08-10)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([46bb49b](https://github.com/newrelic/developer-website/commit/46bb49bfb5315da80a2b996d3aefa73e9b0569f5))
+* upgrade @mdx-js/mdx from 1.6.7 to 1.6.10 ([b4a8df0](https://github.com/newrelic/developer-website/commit/b4a8df0fb901292d3e0c7037a5b2d4f7308fff0b))
+* upgrade @mdx-js/react from 1.6.6 to 1.6.10 ([5738b4d](https://github.com/newrelic/developer-website/commit/5738b4d35c303239a032c8a386f28d843e73e115))
+* upgrade eslint-plugin-react-hooks from 4.0.7 to 4.0.8 ([2d0c7e5](https://github.com/newrelic/developer-website/commit/2d0c7e5da3a3c9da8525396957836160472d18b8))
+* upgrade gatsby-plugin-mdx from 1.2.25 to 1.2.26 ([e06f36e](https://github.com/newrelic/developer-website/commit/e06f36ec9322321599e7ece0f65630431e945d2d))
+
 ## [1.10.2](https://github.com/newrelic/developer-website/compare/v1.10.1...v1.10.2) (2020-08-10)
 
 
