@@ -39,8 +39,6 @@ const Swiftype = ({ page }) => {
 
     const params = queries[currentQuery].params({ page });
 
-    console.log(page.fields);
-
     fetch('https://search-api.swiftype.com/api/v1/public/engines/search.json', {
       method: 'POST',
       headers: {
@@ -156,7 +154,7 @@ export const query = graphql`
       tags
     }
     fields {
-      lda_tags
+      ldaTags
     }
   }
 `;

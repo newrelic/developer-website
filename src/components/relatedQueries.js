@@ -78,9 +78,16 @@ export const titleWithWeightsTitle = {
   }),
 };
 
-export const ldaTags = {
-  name: 'LDA tags',
+export const ldaTags__OR = {
+  name: 'LDA tags as search terms (OR)',
   params: ({ page }) => ({
-    q: (page.fields.lda_tags ?? []).map(quote).join(' OR '),
+    q: (page.fields.ldaTags ?? []).map(quote).join(' OR '),
+  }),
+};
+
+export const ldaTags__AND = {
+  name: 'LDA tags as search terms (AND)',
+  params: ({ page }) => ({
+    q: (page.fields.ldaTags ?? []).map(quote).join(' AND '),
   }),
 };
