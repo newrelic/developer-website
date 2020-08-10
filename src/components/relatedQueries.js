@@ -77,3 +77,10 @@ export const titleWithWeightsTitle = {
     },
   }),
 };
+
+export const ldaTags = {
+  name: 'LDA tags',
+  params: ({ page }) => ({
+    q: (page.fields.lda_tags ?? []).map(quote).join(' OR '),
+  }),
+};
