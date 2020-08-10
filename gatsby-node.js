@@ -1,5 +1,6 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
+const lda = require('lda');
 
 const getFileRelativePath = (absolutePath) =>
   absolutePath.replace(`${process.cwd()}/`, '');
@@ -61,6 +62,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 exports.onCreateNode = ({ node, actions }) => {
   // if we don't have a relative path, attempt to get one
   if (node.internal.type === 'Mdx' && node.fileAbsolutePath) {
+    const text = node.rawBody.replace(/(<([^>]+)>)/gi, '');
+    const documents = text.match(/[^.!?]+[.!?]+/g);
+    const result = lda(documents, 1, 5, ['en', 'nr']);
+
     const gitAuthorTime = execSync(
       `git log -1 --pretty=format:%aI ${node.fileAbsolutePath}`
     ).toString();
@@ -68,6 +73,12 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       name: 'gitAuthorTime',
       value: gitAuthorTime,
+    });
+
+    actions.createNodeField({
+      node,
+      name: 'ldaTags',
+      value: result[0] ? result[0].map((el) => el.term) : [],
     });
   }
 

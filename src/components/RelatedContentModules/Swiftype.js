@@ -153,6 +153,9 @@ export const query = graphql`
       description
       tags
     }
+    fields {
+      ldaTags
+    }
   }
 `;
 
