@@ -17,10 +17,10 @@ const SITE_TAGS = {
   developer: 'https://developer.newrelic.com',
   'open source': 'https://opensource.newrelic.com',
   docs: 'https://docs.newrelic.com',
-  community: 'https://discuss.newrelic.com',
+  discuss: 'https://discuss.newrelic.com',
   learn: 'https://learn.newrelic.com',
   blog: 'https://blog.newrelic.com',
-  main: 'https://newrelic.com',
+  'newrelic.com': 'https://newrelic.com',
 };
 
 const findTag = (page) =>
