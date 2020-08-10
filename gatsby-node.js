@@ -64,7 +64,7 @@ exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type === 'Mdx' && node.fileAbsolutePath) {
     const text = node.rawBody.replace(/(<([^>]+)>)/gi, '');
     const documents = text.match(/[^.!?]+[.!?]+/g);
-    const result = lda(documents, 1, 5, ['en', 'nr']);
+    const result = lda(documents, 1, 5, ['en']);
 
     const gitAuthorTime = execSync(
       `git log -1 --pretty=format:%aI ${node.fileAbsolutePath}`
