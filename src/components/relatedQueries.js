@@ -40,7 +40,7 @@ export const tagsWeighted = {
   params: ({ page }) => ({
     q: (page.frontmatter.tags ?? []).map(quote).join(' OR '),
     search_fields: {
-      page: ['tags^10', 'body^5', 'title^3', 'description'],
+      page: ['tags^10', 'body^5', 'title^3', 'info'],
     },
   }),
 };
@@ -53,7 +53,7 @@ export const tagsWithTitle = {
       ...(page.frontmatter.tags ?? []).map(quote),
     ].join(' OR '),
     search_fields: {
-      page: ['tags^10', 'title^5', 'description', 'body'],
+      page: ['tags^10', 'title^5', 'info', 'body'],
     },
   }),
 };
