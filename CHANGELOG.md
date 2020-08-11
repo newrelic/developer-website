@@ -1,3 +1,10 @@
+## [1.10.6](https://github.com/newrelic/developer-website/compare/v1.10.5...v1.10.6) (2020-08-11)
+
+
+### Bug Fixes
+
+* reduce font size on resources links ([826f456](https://github.com/newrelic/developer-website/commit/826f45678cfe8764a5db5cd0c112e6e0014d4783))
+
 ## [1.10.5](https://github.com/newrelic/developer-website/compare/v1.10.4...v1.10.5) (2020-08-11)
 
 
