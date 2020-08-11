@@ -5,7 +5,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "@mdx-js/mdx": "^1.6.10",
+    "@mdx-js/mdx": "^1.6.13",
     "@mdx-js/react": "^1.6.10",
     "@newrelic/gatsby-theme-newrelic": "^1.6.0",
     "classnames": "^2.2.6",
