@@ -1,3 +1,12 @@
+## [1.10.4](https://github.com/newrelic/developer-website/compare/v1.10.3...v1.10.4) (2020-08-11)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/react from 1.6.10 to 1.6.13 ([a54fbf1](https://github.com/newrelic/developer-website/commit/a54fbf1894bc4cbed1176b5b81762eaf2c64fa4d))
+* upgrade gatsby-plugin-mdx from 1.2.26 to 1.2.27 ([86cfc33](https://github.com/newrelic/developer-website/commit/86cfc338702c5c74ddf3098f1cad46e40441ddb3))
+* upgrade multiple dependencies with Snyk ([db40549](https://github.com/newrelic/developer-website/commit/db405491a92cd4a17276700ed923e320d98f2b08))
+
 ## [1.10.3](https://github.com/newrelic/developer-website/compare/v1.10.2...v1.10.3) (2020-08-10)
 
 
