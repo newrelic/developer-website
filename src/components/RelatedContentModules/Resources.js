@@ -56,6 +56,7 @@ const Resources = ({ page }) => {
                 key={resource.url}
                 css={css`
                   margin-bottom: 1rem;
+                  font-size: 0.875rem;
                 `}
               >
                 <LinkElement
