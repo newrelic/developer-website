@@ -14,7 +14,7 @@ module.exports = {
       options: {
         layout: {
           contentPadding: '2rem',
-          maxWidth: '1600px',
+          maxWidth: '1700px',
         },
         newrelic: {
           configs: {

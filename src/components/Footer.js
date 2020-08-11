@@ -16,7 +16,10 @@ const Footer = ({ className }) => {
   );
 
   return (
-    <footer className={cx(styles.footer, className)}>
+    <footer
+      data-swiftype-index={false}
+      className={cx(styles.footer, className)}
+    >
       <div className={styles.left}>
         <Link to="/">
           <Logo

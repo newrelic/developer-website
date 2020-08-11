@@ -93,3 +93,11 @@ exports.onCreatePage = ({ page, actions }) => {
     createPage(page);
   }
 };
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    externals: {
+      tessen: 'Tessen',
+    },
+  });
+};

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 
 import SEO from '../components/Seo';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
-import PageTitle from '../components/PageTitle';
+import PageLayout from '../components/PageLayout';
 import Video from '../components/Video';
 import FeatherIcon from '../components/FeatherIcon';
 import ExternalLink from '../components/ExternalLink';
@@ -15,6 +16,7 @@ import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
+import podcastBadge from '../images/podcasts/podcasts-badge.png';
 
 const getStartedGuides = [
   {
@@ -41,28 +43,6 @@ const getStartedGuides = [
   },
 ];
 
-// TODO: Remove the following after the guides have been created
-// const guides = [
-//   {
-//     minutes: 25,
-//     title: 'Provision with Terraform',
-//     description: 'Provision an alert policy with notifications using Terraform',
-//     path: '/',
-//   },
-//   {
-//     minutes: 15,
-//     title: ' Set up dev tools',
-//     description: 'Get an API key, download the CLI, and start building apps',
-//     path: '/build-apps/set-up-dev-env',
-//   },
-//   {
-//     minutes: 30,
-//     title: 'Add a table to your app',
-//     description: 'Use New Relic One components to add a table to your app',
-//     path: '/build-apps/howto-use-nrone-table-components',
-//   },
-// ];
-
 const IndexPage = ({ data, pageContext }) => {
   const {
     allMdx: { nodes },
@@ -73,151 +53,183 @@ const IndexPage = ({ data, pageContext }) => {
 
   return (
     <PageContext.Provider value={pageContext}>
-      <>
-        <SEO />
-        <PageTitle>Observability for every developer</PageTitle>
+      <SEO />
+      <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
+        <PageLayout.Header title="Observability for every developer" />
 
-        <section className={cx(styles.intro, 'intro-text')}>
-          <div className={styles.introText}>
-            <p>
-              Whether you're new to New Relic or already a data nerd, you can
-              start building right now. For free.
-            </p>
-            <p>
-              With our platform as your foundation, create custom observability
-              apps fast. Answer your unique questions, improve your software,
-              and deliver new value to your business.
-            </p>
-            <p>We're glad you are here. Let's start building.</p>
-          </div>
-          <Video
-            className={styles.introVideo}
-            id="lzrwubc09a"
-            type="wistia"
-            title="Develop with New Relic"
-          />
-        </section>
+        <PageLayout.Content>
+          <section
+            css={css`
+              margin-top: 0;
+            `}
+            className={cx(styles.intro, 'intro-text')}
+          >
+            <div className={styles.introText}>
+              <p>
+                Whether you're new to New Relic or already a data nerd, you can
+                start building right now. For free.
+              </p>
+              <p>
+                Create an account and start using New Relic One as your
+                foundation to instrument everything. Ready to dive even deeper?
+                Create custom observability apps to better visualize your data
+                to answer your engineering problems.
+              </p>
+              <p>Let's start building.</p>
+            </div>
+            <Video
+              className={styles.introVideo}
+              id="lzrwubc09a"
+              type="wistia"
+              title="Develop with New Relic"
+            />
+          </section>
 
-        <section className={cx(styles.section, styles.stripedSection)}>
-          <GuideListing className={styles.guideListing}>
-            <header className={styles.guideListingHeader}>
-              <GuideListing.Heading className={cx(styles.guideListingHeading)}>
-                Get coding
-              </GuideListing.Heading>
-              <Button
-                as={ExternalLink}
-                variant={Button.VARIANT.PRIMARY}
-                href="https://newrelic.com/signup?partner=Developer+Edition"
-              >
-                Create an account
-              </Button>
-            </header>
-            <GuideListing.List>
-              {getStartedGuides.map((guide, index) => (
-                <GuideTile
-                  key={index}
-                  className={styles.featuredGuide}
-                  {...guide}
+          <section className={cx(styles.section, styles.stripedSection)}>
+            <GuideListing className={styles.guideListing}>
+              <header className={styles.guideListingHeader}>
+                <GuideListing.Heading
+                  className={cx(styles.guideListingHeading)}
                 >
-                  <GuideTile.Button to={guide.path}>
-                    Start the guide
-                  </GuideTile.Button>
-                </GuideTile>
+                  Get coding
+                </GuideListing.Heading>
+                <Button
+                  as={ExternalLink}
+                  variant={Button.VARIANT.PRIMARY}
+                  href="https://newrelic.com/signup?utm_source=developer-site"
+                >
+                  Create a free account
+                </Button>
+              </header>
+              <GuideListing.List>
+                {getStartedGuides.map((guide, index) => (
+                  <GuideTile key={index} featured {...guide}>
+                    <GuideTile.Button to={guide.path}>
+                      Start the guide
+                    </GuideTile.Button>
+                  </GuideTile>
+                ))}
+              </GuideListing.List>
+            </GuideListing>
+          </section>
+
+          <GuideListing className={styles.section}>
+            <GuideListing.Heading className={styles.guideListingHeading}>
+              Get inspired
+            </GuideListing.Heading>
+            <GuideListing.List className={styles.allGuidesListing}>
+              {guides.map(({ frontmatter }, index) => (
+                <GuideTile
+                  as={Link}
+                  to={frontmatter.path}
+                  key={index}
+                  duration={frontmatter.duration}
+                  title={frontmatter.tileShorthand?.title || frontmatter.title}
+                  description={
+                    frontmatter.tileShorthand?.description ||
+                    frontmatter.description
+                  }
+                  path={frontmatter.path}
+                  alignment={GuideTile.ALIGNMENT.LEFT}
+                />
               ))}
             </GuideListing.List>
           </GuideListing>
-        </section>
-
-        <GuideListing className={styles.section}>
-          <GuideListing.Heading className={styles.guideListingHeading}>
-            Get inspired
-          </GuideListing.Heading>
-          <GuideListing.List className={styles.allGuidesListing}>
-            {guides.map(({ frontmatter }, index) => (
-              <GuideTile
-                as={Link}
-                to={frontmatter.path}
-                key={index}
-                duration={frontmatter.duration}
-                title={frontmatter.tileShorthand?.title || frontmatter.title}
-                description={
-                  frontmatter.tileShorthand?.description ||
-                  frontmatter.description
-                }
-                path={frontmatter.path}
-                alignment={GuideTile.ALIGNMENT.LEFT}
-              />
-            ))}
-          </GuideListing.List>
-        </GuideListing>
-        {guides.length === numberOfPromotedGuides && (
-          <div className={styles.buttonContainer}>
-            <Button
-              className={styles.expandGuides}
-              type="button"
-              onClick={() => setGuides(nodes)}
-              variant={Button.VARIANT.NORMAL}
-            >
-              {`Show ${guidesMinusPromoted} more guides`}
-            </Button>
-          </div>
-        )}
-
-        <p className={styles.inspiration}>
-          Looking for more inspiration? Check out the{' '}
-          <ExternalLink
-            className={styles.externalLink}
-            href="https://opensource.newrelic.com"
-          >
-            open source projects
-            <FeatherIcon
-              className={styles.externalLinkIcon}
-              name="external-link"
-            />
-          </ExternalLink>{' '}
-          built by the New Relic community.
-        </p>
-
-        <section
-          className={cx(
-            styles.section,
-            styles.stripedSection,
-            styles.developerChampions
+          {guides.length === numberOfPromotedGuides && (
+            <div className={styles.buttonContainer}>
+              <Button
+                className={styles.expandGuides}
+                type="button"
+                onClick={() => setGuides(nodes)}
+                variant={Button.VARIANT.NORMAL}
+              >
+                {`Show ${guidesMinusPromoted} more guides`}
+              </Button>
+            </div>
           )}
-        >
-          <div>
-            <h1>New Relic developer champions</h1>
-            <p>
-              New Relic Champions are solving big problems using New Relic as
-              their linchpin and are recognized as experts and leaders in the
-              New Relic technical community.
-            </p>
-            <Button
-              as={ExternalLink}
-              variant={Button.VARIANT.PRIMARY}
-              href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+
+          <p className={styles.inspiration}>
+            Looking for more inspiration? Check out the{' '}
+            <ExternalLink
+              className={styles.externalLink}
+              href="https://opensource.newrelic.com"
             >
-              Nominate a developer champion
+              open source projects
               <FeatherIcon
                 className={styles.externalLinkIcon}
                 name="external-link"
               />
-            </Button>
-            <Button
-              as={Link}
-              variant={Button.VARIANT.PLAIN}
-              to="/developer-champion"
-            >
-              Learn more about developer champions
-            </Button>
-          </div>
-          <img
-            className={styles.img}
-            src={devChampionBadge}
-            alt="developer champion badge"
-          />
-        </section>
-      </>
+            </ExternalLink>{' '}
+            built by the New Relic community.
+          </p>
+
+          <section
+            className={cx(
+              styles.section,
+              styles.stripedSection,
+              styles.developerChampions
+            )}
+          >
+            <div>
+              <h1>New Relic developer champions</h1>
+              <p>
+                New Relic Champions are solving big problems using New Relic as
+                their linchpin and are recognized as experts and leaders in the
+                New Relic technical community.
+              </p>
+              <Button
+                as={ExternalLink}
+                variant={Button.VARIANT.PRIMARY}
+                href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+              >
+                Nominate a developer champion
+                <FeatherIcon
+                  className={styles.externalLinkIcon}
+                  name="external-link"
+                />
+              </Button>
+              <Button
+                as={Link}
+                variant={Button.VARIANT.PLAIN}
+                to="/developer-champion"
+              >
+                Learn more about developer champions
+              </Button>
+            </div>
+            <img
+              className={styles.img}
+              src={devChampionBadge}
+              alt="developer champion badge"
+            />
+          </section>
+
+          <section
+            className={cx(
+              styles.section,
+              styles.stripedSection,
+              styles.developerChampions
+            )}
+          >
+            <div>
+              <h1>New Relic Podcasts</h1>
+              <p>
+                We like to talk, especially to developers about developer
+                things. Join us for conversations on open source, observability,
+                software design and industry news.
+              </p>
+              <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
+                Listen
+                <FeatherIcon className={styles.Icon} name="link" />
+              </Button>
+            </div>
+            <img
+              className={styles.img}
+              src={podcastBadge}
+              alt="podcast badge"
+            />
+          </section>
+        </PageLayout.Content>
+      </PageLayout>
     </PageContext.Provider>
   );
 };
