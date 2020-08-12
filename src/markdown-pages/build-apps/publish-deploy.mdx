@@ -10,16 +10,20 @@ tileShorthand:
 redirects:
   - /build-tools/new-relic-one-applications/publish-deploy
   - /build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions
+resources:
+  - title: 'Discover and manage applications'
+    url: https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/discover-manage-applications-new-relic-one-catalog
+  - title: 'Create a "Hello, World!" application'
+    url: /build-apps/build-hello-world-app
 ---
 
 <Intro>
 
-When you build a New Relic One app, chances are you'll want to share it with others in your organization. You might even want to share it through our open source channel. But first, you probably want to try it out locally to make sure it's working properly. The following sections describe how to serve your app locally, add it to New Relic One, and then share it with coworkers. 
+When you build a New Relic One app, chances are you'll want to share it with others in your organization. You might even want to share it through our open source channel. But first, you probably want to try it out locally to make sure it's working properly. The following sections describe how to serve your app locally, add it to New Relic One, and then share it with coworkers.
 
--   Serve it locally: During development, you can serve it locally to test it out.
-    
--   Publish it: When your application is ready for the world, you can publish and deploy it, and subscribe accounts to it.
+- Serve it locally: During development, you can serve it locally to test it out.
 
+- Publish it: When your application is ready for the world, you can publish and deploy it, and subscribe accounts to it.
 
 </Intro>
 
@@ -28,8 +32,8 @@ When you build a New Relic One app, chances are you'll want to share it with oth
 This guide requires the following:
 
 - A New Relic One app or Nerdpack
-- New Relic One CLI 
-- The Nerdpack manager role for publishing, deploying, and subscribing apps. 
+- New Relic One CLI
+- The Nerdpack manager role for publishing, deploying, and subscribing apps.
 
 ### About permissions
 
@@ -42,7 +46,7 @@ New Relic One requires that only one version (following semantic versioning) of 
 - The Nerdpack manager role
 - A unique version as specified in the version attribute found in the app's `package.json`.
 
-<br/>
+<br />
 
 <Steps>
 
@@ -50,16 +54,13 @@ New Relic One requires that only one version (following semantic versioning) of 
 
 ## Serve your app locally
 
-While developing your application, you can locally serve the Nerdpack, which will display it in New Relic One. 
+While developing your application, you can locally serve the Nerdpack, which will display it in New Relic One.
 
+1.  In the parent root folder of your Nerdpack, run `nr1 nerdpack:serve`.
 
-1.  In the parent root folder of your Nerdpack, run `nr1 nerdpack:serve`.  
-    
-2.  Go to [one.newrelic.com/?nerdpacks=local](http://one.newrelic.com/?nerdpack=local). The  `?nerdpacks=local`  URL suffix will load any locally served Nerdpacks that are available.
-    
+2.  Go to [one.newrelic.com/?nerdpacks=local](http://one.newrelic.com/?nerdpack=local). The `?nerdpacks=local` URL suffix will load any locally served Nerdpacks that are available.
 
 When you make a change to a locally served Nerdpack, New Relic One will automatically reload it.
-
 
 </Step>
 
@@ -71,7 +72,6 @@ Publishing places your Nerdpack in New Relic One. To publish or deploy, you must
 
 - To publish your Nerdpack, run `nr1 nerdpack:publish`.
 
-
 </Step>
 
 <Step>
@@ -80,8 +80,7 @@ Publishing places your Nerdpack in New Relic One. To publish or deploy, you must
 
 Deploying is applying a Nerdpack version to a specific channel (for example, BETA, or STABLE). A channel can only have one Nerdpack version deployed to it at one time. If a channel has an existing Nerdpack associated with it, deploying a new Nerdpack version to that channel will undeploy the previous one. Channels are meant to be an easier way to control application version access than having to be concerned with many specific version numbers.
 
-1. To deploy an application, run `nr1 nerdpack:deploy`. 
-
+1. To deploy an application, run `nr1 nerdpack:deploy`.
 
 </Step>
 
@@ -93,10 +92,4 @@ You provide access to the Nerdpacks you create (or manage) by subscribing accoun
 
 </Step>
 
-</Steps> 
-
-
-### Related info
-
-- [Discover and manage applications with New Relic One](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/discover-manage-applications-new-relic-one-catalog)
-- [Create a "Hello, World!" application](/build-apps/build-hello-world-app)
+</Steps>

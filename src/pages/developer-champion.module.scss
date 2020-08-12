@@ -8,6 +8,10 @@
   display: grid;
   grid-template-columns: repeat(2, calc(50% - 1rem));
   grid-gap: 2rem;
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr
+  }
 }
 
 .img {
@@ -18,10 +22,21 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2rem;
+
+  @media (max-width: 760px) {
+    display: block;
+    text-align: center;
+  }
 }
 
 .point {
   text-align: center;
+  max-width: 400px;
+  margin: auto;
+
+  @media (max-width: 760px) {
+   margin-bottom: 40px;
+  }
 }
 
 .pointIcon {

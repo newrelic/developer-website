@@ -12,6 +12,7 @@ import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import '../components/styles.scss';
 import usePageContext from '../hooks/usePageContext';
+import { useLocation } from '@reach/router';
 
 const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
@@ -33,6 +34,7 @@ const MainLayout = ({ children }) => {
     }
   `);
 
+  const location = useLocation();
   const { fileRelativePath } = usePageContext();
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -47,6 +49,10 @@ const MainLayout = ({ children }) => {
     const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
     consentValue && setCookieConsent(true);
   }, []);
+
+  useEffect(() => {
+    setIsMobileNavOpen(false);
+  }, [location.pathname]);
 
   return (
     <div
@@ -73,7 +79,7 @@ const MainLayout = ({ children }) => {
           </script>
         ) : null}
       </Helmet>
-      <GlobalHeader editUrl={editUrl} />
+      <GlobalHeader editUrl={editUrl} search />
       <MobileHeader
         css={css`
           @media (min-width: 761px) {

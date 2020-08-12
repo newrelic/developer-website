@@ -8,17 +8,22 @@ promote: true
 tileShorthand:
   title: 'Add a table to your app'
   description: 'Add a table to your New Relic One app'
+resources:
+  - title: 'How to use NR1 table components'
+    url: https://discuss.newrelic.com/t/how-to-use-nr1-table-components/98934
+  - title: 'New Relic SDK documentation'
+    url: https://developer.newrelic.com/client-side-sdk/index.html
 ---
 
 <Intro>
 
 Tables are a popular way of displaying data in New Relic applications. For example, with the [query builder](https://docs.newrelic.com/docs/chart-builder/use-chart-builder/get-started/introduction-chart-builder) you can create tables from [NRQL queries](https://docs.newrelic.com/docs/query-data/nrql-new-relic-query-language/getting-started/introduction-nrql).
 
-Whether you need to have more control over tables or you're importing third-party data, you can build your own tables into your New Relic One application. 
+Whether you need to have more control over tables or you're importing third-party data, you can build your own tables into your New Relic One application.
 
 In this guide, you are going to build a sample table using various New Relic One components.
 
-<Video id="28nnlbhrvg" type="wistia"/>
+<Video id="28nnlbhrvg" type="wistia" />
 
 </Intro>
 
@@ -28,7 +33,7 @@ If you haven't already installed the New Relic One CLI, step through the [quick 
 <br/>
 In addition, to complete the steps in this guide, you need a GitHub account, and to have Node.js installed on your machine. See [Setting up your development environment](/build-apps/set-up-dev-env) for more info. 
 
-<br/>
+<br />
 
 ## Clone and set up the example application
 <Steps>
@@ -53,7 +58,7 @@ export default class Nr1HowtoAddTimePicker extends React.Component {
         super(props)
         this.accountId = YOUR_ACCOUNT_ID;
     }
-    ... 
+    ...
 }
 ```
 
@@ -94,16 +99,25 @@ Navigate to the `nerdlets/create-a-table-nerdlet` subdirectory and open the `ind
 
 Add the following components to the import statement at the top of the file so that it looks like the example:
 
-* `Table`
-* `TableHeader`
-* `TableHeaderCell`
-* `TableRow`
-* `TableRowCell`
-
+- `Table`
+- `TableHeader`
+- `TableHeaderCell`
+- `TableRow`
+- `TableRowCell`
 
 ```jsx lineNumbers=false
 import {
-    Table, TableHeader, TableHeaderCell, TableRow, TableRowCell, PlatformStateContext, Grid, GridItem, HeadingText, AreaChart, TableChart,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+  TableRowCell,
+  PlatformStateContext,
+  Grid,
+  GridItem,
+  HeadingText,
+  AreaChart,
+  TableChart,
 } from 'nr1';
 ```
 
@@ -117,8 +131,7 @@ Add the initial `<Table>` component. The `items` property collects the data by c
 
 ```jsx  lineNumbers=false
 <GridItem className="primary-content-container" columnSpan={12}>
-    <Table items={this._getItems()}>
-    </Table>
+  <Table items={this._getItems()}></Table>
 </GridItem>
 ```
 
@@ -133,25 +146,25 @@ Inside of the `Table` component, add the `TableHeader` and then a `TableHeaderCe
 
 Since you don't know how many rows you'll need, your best bet is to call a function to build as many `TableRows` as items returned by `_getItems()`.
 
-
 ```jsx lineNumbers=false
 <TableHeader>
-    <TableHeaderCell>Application</TableHeaderCell>
-    <TableHeaderCell>Size</TableHeaderCell>
-    <TableHeaderCell>Company</TableHeaderCell>
-    <TableHeaderCell>Team</TableHeaderCell>
-    <TableHeaderCell>Commit</TableHeaderCell>
-</TableHeader>
-{({ item }) => (
+  <TableHeaderCell>Application</TableHeaderCell>
+  <TableHeaderCell>Size</TableHeaderCell>
+  <TableHeaderCell>Company</TableHeaderCell>
+  <TableHeaderCell>Team</TableHeaderCell>
+  <TableHeaderCell>Commit</TableHeaderCell>
+</TableHeader>;
+{
+  ({ item }) => (
     <TableRow>
-        <TableRowCell>{item.name}</TableRowCell>
-        <TableRowCell>{item.value}</TableRowCell>
-        <TableRowCell>{item.company}</TableRowCell>
-        <TableRowCell>{item.team}</TableRowCell>
-        <TableRowCell>{item.commit}</TableRowCell>
+      <TableRowCell>{item.name}</TableRowCell>
+      <TableRowCell>{item.value}</TableRowCell>
+      <TableRowCell>{item.company}</TableRowCell>
+      <TableRowCell>{item.team}</TableRowCell>
+      <TableRowCell>{item.commit}</TableRowCell>
     </TableRow>
-)}
-
+  );
+}
 ```
 
 </Step>
@@ -170,7 +183,7 @@ The New Relic One library includes cell components that can automatically format
 
 The table you've just created contains columns that can benefit from those components: **Application** (an entity name) and **Size** (a metric).
 
-Before you can use `EntityTitleTableRowCell` and  `MetricTableRowCell`, you have to add them to the import statement first.
+Before you can use `EntityTitleTableRowCell` and `MetricTableRowCell`, you have to add them to the import statement first.
 
 ```jsx lineNumbers=false copy=false
 import {
@@ -184,21 +197,25 @@ import {
 </Step>
 <Step>
 
-Update your table rows by replacing the first and second `TableRowCell`s with entity and metric cells. 
+Update your table rows by replacing the first and second `TableRowCell`s with entity and metric cells.
 
 Notice that [`EntityTitleTableRowCell`](https://developer.newrelic.com/client-side-sdk/index.html#components/EntityTitleTableRowCell) and [`MetricTableRowCell`](https://developer.newrelic.com/client-side-sdk/index.html#components/MetricTableRowCell) are self-closing tags.
 
 ```jsx lineNumbers=false
-{({ item }) => (
+{
+  ({ item }) => (
     <TableRow>
-        <EntityTitleTableRowCell value={item}/>
-        <MetricTableRowCell type={MetricTableRowCell.TYPE.APDEX} value={item.value} />
-        <TableRowCell>{item.company}</TableRowCell>
-        <TableRowCell>{item.team}</TableRowCell>
-        <TableRowCell>{item.commit}</TableRowCell>
+      <EntityTitleTableRowCell value={item} />
+      <MetricTableRowCell
+        type={MetricTableRowCell.TYPE.APDEX}
+        value={item.value}
+      />
+      <TableRowCell>{item.company}</TableRowCell>
+      <TableRowCell>{item.team}</TableRowCell>
+      <TableRowCell>{item.commit}</TableRowCell>
     </TableRow>
-)}
-
+  );
+}
 ```
 
 </Step>
@@ -215,11 +232,11 @@ Add some action to your table!
 
 Tables are great, but interactive tables can be better: As a last update, you are going to allow users to act on each data row.
 
-Add the `_getActions()` method to your `index.js` file, right before `_getItems()`. 
+Add the `_getActions()` method to your `index.js` file, right before `_getItems()`.
 
 As you may have guessed from the code, `_getActions()` spawns an alert box when you click **Team** or **Commit** cells.
 
-```jsx lineNumbers=false 
+```jsx lineNumbers=false
 _getActions() {
     return [
         {
@@ -244,7 +261,7 @@ _getActions() {
 </Step>
 <Step>
 
-Find the  `TableRow`  component in your `return` statement and point the `actions`  property to `_getActions()`.
+Find the `TableRow` component in your `return` statement and point the `actions` property to `_getActions()`.
 
 The `TableRow` actions property defines a set of actions that appear when the user hovers over a table row. Actions have a mandatory text and an `onClick` callback, but can also display an icon or be disabled if needed.
 
@@ -267,9 +284,3 @@ Go back to your application and try hovering over any of the rows: Notice how th
 You've built a table into a New Relic One application, using components to format data automatically and provide contextual actions. Well done!
 
 Keep exploring the `Table` components, their properties, and how to use them, in our [SDK documentation](https://developer.newrelic.com/client-side-sdk/index.html#components/Table).
-
-### Related info
-
-- [Community page for how to use New Relic One table components ](https://discuss.newrelic.com/t/how-to-use-nr1-table-components/98934)
-- [New Relic SDK documentation](https://developer.newrelic.com/client-side-sdk/index.html)
-

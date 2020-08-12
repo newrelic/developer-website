@@ -1,3 +1,67 @@
+## [1.10.6](https://github.com/newrelic/developer-website/compare/v1.10.5...v1.10.6) (2020-08-11)
+
+
+### Bug Fixes
+
+* reduce font size on resources links ([826f456](https://github.com/newrelic/developer-website/commit/826f45678cfe8764a5db5cd0c112e6e0014d4783))
+
+## [1.10.5](https://github.com/newrelic/developer-website/compare/v1.10.4...v1.10.5) (2020-08-11)
+
+
+### Bug Fixes
+
+* add background for current page ([c76c91a](https://github.com/newrelic/developer-website/commit/c76c91a992cc02e4362368455cbd63c936116ba6))
+* always render hover color + only change text on dark mode ([32ac1ae](https://github.com/newrelic/developer-website/commit/32ac1aed60bf57bf17d4b637c58924437d5b8b83))
+* better alignment of background with its parent ([34c5fd4](https://github.com/newrelic/developer-website/commit/34c5fd45f03b10bed8621a05aa80f7eda547f32a))
+* better mobile menu ([5c46e39](https://github.com/newrelic/developer-website/commit/5c46e393b52fad6ede4f016242749570723e5a2d))
+* close mobile nav after navigating to a new page ([641f057](https://github.com/newrelic/developer-website/commit/641f057f2a346eb8cadd147bd62d2040f0df0bbf))
+* dont open links on home page ([de74639](https://github.com/newrelic/developer-website/commit/de74639a6aa16cda716b5e18d94e212854d9aff4))
+* ensure header covers up selected nav item ([71d309f](https://github.com/newrelic/developer-website/commit/71d309fb03bec126bf0384d9bf7111de96ef9c05))
+* match font weight on selected top-level nav item ([e7fc9ad](https://github.com/newrelic/developer-website/commit/e7fc9ad2df3cf6062b9771a2782d33d0fdcc4ad1))
+* move chevrons to right of the link ([91c2854](https://github.com/newrelic/developer-website/commit/91c28547ef19d3bc4278b32bfcc3ecd09470ee0e))
+* only toggle current page if active ([d00e2df](https://github.com/newrelic/developer-website/commit/d00e2dff300b4750d9e9acdf9649bec8c4b0a9dc))
+* show chevrons for top level nav items ([c8a69b6](https://github.com/newrelic/developer-website/commit/c8a69b687b2b5afba9fd859ab9181d8676b7563a))
+* some tightening of the sidebar ([3f61d5c](https://github.com/newrelic/developer-website/commit/3f61d5c428a552179a2d5025c957a412edbc6398))
+* thinner chevrons ([e626b1e](https://github.com/newrelic/developer-website/commit/e626b1e23e63bc2c03979da1f4e5a9926420d0af))
+* use HamburgerMenu from the theme ([48b65ff](https://github.com/newrelic/developer-website/commit/48b65ff199edc241d2c53b49e770695f9ff2b2ef))
+* use SearchInput from gatsby theme in nav ([04f402d](https://github.com/newrelic/developer-website/commit/04f402d4adfc248f932212e611e6722669c2fb17))
+
+## [1.10.4](https://github.com/newrelic/developer-website/compare/v1.10.3...v1.10.4) (2020-08-11)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/react from 1.6.10 to 1.6.13 ([a54fbf1](https://github.com/newrelic/developer-website/commit/a54fbf1894bc4cbed1176b5b81762eaf2c64fa4d))
+* upgrade gatsby-plugin-mdx from 1.2.26 to 1.2.27 ([86cfc33](https://github.com/newrelic/developer-website/commit/86cfc338702c5c74ddf3098f1cad46e40441ddb3))
+* upgrade multiple dependencies with Snyk ([db40549](https://github.com/newrelic/developer-website/commit/db405491a92cd4a17276700ed923e320d98f2b08))
+
+## [1.10.3](https://github.com/newrelic/developer-website/compare/v1.10.2...v1.10.3) (2020-08-10)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([46bb49b](https://github.com/newrelic/developer-website/commit/46bb49bfb5315da80a2b996d3aefa73e9b0569f5))
+* upgrade @mdx-js/mdx from 1.6.7 to 1.6.10 ([b4a8df0](https://github.com/newrelic/developer-website/commit/b4a8df0fb901292d3e0c7037a5b2d4f7308fff0b))
+* upgrade @mdx-js/react from 1.6.6 to 1.6.10 ([5738b4d](https://github.com/newrelic/developer-website/commit/5738b4d35c303239a032c8a386f28d843e73e115))
+* upgrade eslint-plugin-react-hooks from 4.0.7 to 4.0.8 ([2d0c7e5](https://github.com/newrelic/developer-website/commit/2d0c7e5da3a3c9da8525396957836160472d18b8))
+* upgrade gatsby-plugin-mdx from 1.2.25 to 1.2.26 ([e06f36e](https://github.com/newrelic/developer-website/commit/e06f36ec9322321599e7ece0f65630431e945d2d))
+
+## [1.10.2](https://github.com/newrelic/developer-website/compare/v1.10.1...v1.10.2) (2020-08-10)
+
+
+### Bug Fixes
+
+* allow mobile views on developer champion page to have single column layout before applying 2 and 3 columns grid layouts ([2f5cc23](https://github.com/newrelic/developer-website/commit/2f5cc23d183d34c386174763a0731d4b7abcd103))
+* ensure two column layout only applies to wide viewports on podcast page. limit size of podcast logo to avoid very large logo size on wider viewports ([6c28f6d](https://github.com/newrelic/developer-website/commit/6c28f6db7d9da494908c7a7279d3a49408d44810))
+
+## [1.10.1](https://github.com/newrelic/developer-website/compare/v1.10.0...v1.10.1) (2020-08-07)
+
+
+### Bug Fixes
+
+* remove global height from text inputs ([7a99cdd](https://github.com/newrelic/developer-website/commit/7a99cdd0c21132590f332cd7665e3c59d743dea1))
+* upgrade to latest gatsby theme ([84f6616](https://github.com/newrelic/developer-website/commit/84f6616be323bcfe89183052eb6c9bb20a4cde7c))
+
 # [1.10.0](https://github.com/newrelic/developer-website/compare/v1.9.3...v1.10.0) (2020-08-06)
 
 

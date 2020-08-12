@@ -13,7 +13,7 @@ const PodcastsPage = () => {
         <PageLayout.Header title="New Relic Podcasts" />
         <PageLayout.Content>
           <section className={cx(styles.section, styles.twoColumn)}>
-            <div>
+            <div className={styles.bodyText}>
               <p>
                 Sometimes we talk on the internet about some things. You
                 probably listen to some things on the internet sometimes. We're

@@ -10,6 +10,11 @@ const SITE_TAGS = {
   developer: 'https://developer.newrelic.com',
   'open source': 'https://opensource.newrelic.com',
   docs: 'https://docs.newrelic.com',
+  github: 'https://github.com',
+  terraform: 'https://terraform.io',
+  kubernetes: 'https://kubernetes.io',
+  youtube: 'https://youtube.com',
+  discuss: 'https://discuss.newrelic.com',
 };
 
 const findTag = (resource) =>
@@ -51,6 +56,7 @@ const Resources = ({ page }) => {
                 key={resource.url}
                 css={css`
                   margin-bottom: 1rem;
+                  font-size: 0.875rem;
                 `}
               >
                 <LinkElement
