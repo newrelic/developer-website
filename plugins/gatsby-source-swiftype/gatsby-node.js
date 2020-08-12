@@ -6,7 +6,7 @@ exports.onPreBootstrap = ({ reporter }, pluginOptions) => {
 
   if (!fs.existsSync(dataFile)) {
     reporter.info('Creating related-pages.json file');
-    fs.writeFileSync(dataFile, '');
+    fs.writeFileSync(dataFile, '{}');
   }
 };
 
