@@ -42,6 +42,12 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-source-swiftype',
+      options: {
+        path: `${__dirname}/src/data`,
+      },
+    },
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-plugin-manifest',
