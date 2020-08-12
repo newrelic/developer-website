@@ -46,6 +46,8 @@ module.exports = {
       resolve: 'gatsby-source-swiftype',
       options: {
         path: `${__dirname}/src/data`,
+        filterPage: ({ page }) =>
+          page.component === `${__dirname}/src/templates/GuideTemplate.js`,
       },
     },
     'gatsby-plugin-sass',

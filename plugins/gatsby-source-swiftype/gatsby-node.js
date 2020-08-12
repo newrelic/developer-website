@@ -9,3 +9,11 @@ exports.onPreBootstrap = ({ reporter }, pluginOptions) => {
     fs.writeFileSync(dataFile, '');
   }
 };
+
+exports.onCreatePage = async ({ page }, pluginOptions) => {
+  const includePage = pluginOptions.filterPage || (() => false);
+
+  if (includePage({ page })) {
+    console.log(`Fetching ${page.path}`);
+  }
+};
