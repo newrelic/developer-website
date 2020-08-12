@@ -1,3 +1,31 @@
+## [1.10.6](https://github.com/newrelic/developer-website/compare/v1.10.5...v1.10.6) (2020-08-11)
+
+
+### Bug Fixes
+
+* reduce font size on resources links ([826f456](https://github.com/newrelic/developer-website/commit/826f45678cfe8764a5db5cd0c112e6e0014d4783))
+
+## [1.10.5](https://github.com/newrelic/developer-website/compare/v1.10.4...v1.10.5) (2020-08-11)
+
+
+### Bug Fixes
+
+* add background for current page ([c76c91a](https://github.com/newrelic/developer-website/commit/c76c91a992cc02e4362368455cbd63c936116ba6))
+* always render hover color + only change text on dark mode ([32ac1ae](https://github.com/newrelic/developer-website/commit/32ac1aed60bf57bf17d4b637c58924437d5b8b83))
+* better alignment of background with its parent ([34c5fd4](https://github.com/newrelic/developer-website/commit/34c5fd45f03b10bed8621a05aa80f7eda547f32a))
+* better mobile menu ([5c46e39](https://github.com/newrelic/developer-website/commit/5c46e393b52fad6ede4f016242749570723e5a2d))
+* close mobile nav after navigating to a new page ([641f057](https://github.com/newrelic/developer-website/commit/641f057f2a346eb8cadd147bd62d2040f0df0bbf))
+* dont open links on home page ([de74639](https://github.com/newrelic/developer-website/commit/de74639a6aa16cda716b5e18d94e212854d9aff4))
+* ensure header covers up selected nav item ([71d309f](https://github.com/newrelic/developer-website/commit/71d309fb03bec126bf0384d9bf7111de96ef9c05))
+* match font weight on selected top-level nav item ([e7fc9ad](https://github.com/newrelic/developer-website/commit/e7fc9ad2df3cf6062b9771a2782d33d0fdcc4ad1))
+* move chevrons to right of the link ([91c2854](https://github.com/newrelic/developer-website/commit/91c28547ef19d3bc4278b32bfcc3ecd09470ee0e))
+* only toggle current page if active ([d00e2df](https://github.com/newrelic/developer-website/commit/d00e2dff300b4750d9e9acdf9649bec8c4b0a9dc))
+* show chevrons for top level nav items ([c8a69b6](https://github.com/newrelic/developer-website/commit/c8a69b687b2b5afba9fd859ab9181d8676b7563a))
+* some tightening of the sidebar ([3f61d5c](https://github.com/newrelic/developer-website/commit/3f61d5c428a552179a2d5025c957a412edbc6398))
+* thinner chevrons ([e626b1e](https://github.com/newrelic/developer-website/commit/e626b1e23e63bc2c03979da1f4e5a9926420d0af))
+* use HamburgerMenu from the theme ([48b65ff](https://github.com/newrelic/developer-website/commit/48b65ff199edc241d2c53b49e770695f9ff2b2ef))
+* use SearchInput from gatsby theme in nav ([04f402d](https://github.com/newrelic/developer-website/commit/04f402d4adfc248f932212e611e6722669c2fb17))
+
 ## [1.10.4](https://github.com/newrelic/developer-website/compare/v1.10.3...v1.10.4) (2020-08-11)
 
 
