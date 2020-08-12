@@ -184,33 +184,30 @@ To take the data returned by the NerdGraph query and display it in the applicati
   ```jsx
   return <HeadingText>{data.actor.account.name} Apps:</HeadingText>;
   ```
-
-  </Step>
-
-</Steps>
-
+  
 When you go back to the browser and view your application, you see a new headline showing the name of your account returned from NerdGraph:
 
 ![App Image](../../images/nerdgraphquery-guide/with-name.png)
 
+    </Step>
+</Steps>
+
 ## How to use `NerdGraphQuery.query`
 
-At this point, you implemented the `NerdGraphQuery` component with the application's `render` method and displayed the return data within the transaction overview application.
+At this point, you have implemented the `NerdGraphQuery` component with the application's `render` method and displayed the return data within the transaction overview application.
 
 Here's what you need to do next:
 
 * Query NerdGraph inside of the `componentDidMount` lifecycle method.
-* Save the returned data for later usage throughout the New Relic One application.
-
-Complete the following:
+* Save the returned data for later use in the application.
 
 <Steps>
 
   <Step>
 
-The following code takes the response from NerdGraph and makes sure the results are processed, stored into the application state, and logged to the browser console for viewing.
+This code takes the response from NerdGraph and makes sure the results are processed, stored into the application state, and logged to the browser console for viewing.
 
-Add the following code into the `index.js` just under the `constructor`:
+Add this code into the `index.js` file just under the `constructor`:
 
   ```jsx
   componentDidMount() {
@@ -235,7 +232,7 @@ Add the following code into the `index.js` just under the `constructor`:
 
 After the data is stored into state, display a selection so users can change accounts and update the application.
 
-To do this, add the following code to `index.js` for the second `StackItem` in the `return` statement:
+To do this, add this code to `index.js` for the second `StackItem` in the `return` statement:
 
   ```jsx
   {accounts &&
@@ -254,9 +251,11 @@ To do this, add the following code to `index.js` for the second `StackItem` in t
 
 </Steps>
 
+### Review the results of the NerdGraph query
+
 After you complete these steps, look at the application in your browser, and note the following:
 
-* The dropdown menu displays the data returned from the `NerdGraphQuery.query` and allows you to select an account.
+* The dropdown menu now displays the data returned from the `NerdGraphQuery.query` and allows you to select an account.
 * After you select a new account, the application shows data from the new selection.
 
 ![App Complete](../../images/nerdgraphquery-guide/complete.png)
@@ -417,10 +416,10 @@ The final `index.js` file should have code similar to the code below. This compl
 
 ## Summary
 
-Now that you completed all the steps in this example, you successfully queried data from your account using the `NerdGraphQuery` component in two methods:
+Now that you've completed all the steps in this example, you've successfully queried data from your account using the `NerdGraphQuery` component in two methods:
 
-1. Using the `NerdGraphQuery` component inside the application's render method and then passing the returned data into the children's components.
-2. Using the `NerdGraphQuery.query` method to query data before the application renders.
+- Using the `NerdGraphQuery` component inside the application's render method and then passing the returned data into the children's components.
+- Using the `NerdGraphQuery.query` method to query data before the application renders.
 
 ## Related information
 
