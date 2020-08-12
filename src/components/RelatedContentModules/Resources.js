@@ -34,7 +34,7 @@ const Resources = ({ page }) => {
 
   return resources?.length > 0 ? (
     <Section>
-      <Title>Resources</Title>
+      <Title>Related resources</Title>
       <nav>
         <ul
           css={css`
@@ -85,7 +85,13 @@ const Resources = ({ page }) => {
                   )}
                 </LinkElement>
 
-                <Tag>{tag}</Tag>
+                <Tag
+                  css={css`
+                    text-transform: uppercase;
+                  `}
+                >
+                  {tag}
+                </Tag>
               </li>
             );
           })}
