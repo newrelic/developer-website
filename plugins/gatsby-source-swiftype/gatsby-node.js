@@ -1,6 +1,8 @@
 const fs = require('fs');
-const search = require('./src/search');
 const createRelatedResourceNode = require('./src/createRelatedResourceNode');
+const getRelatedResources = require('./src/getRelatedResources');
+
+const writeableData = {};
 
 exports.onPreBootstrap = (_, pluginOptions) => {
   const { file } = pluginOptions;
@@ -15,17 +17,9 @@ exports.onCreateNode = async (
   pluginOptions
 ) => {
   const { createNode } = actions;
-  const {
-    enabled,
-    filterNode = () => false,
-    getParams = () => ({}),
-    getPath,
-    pageLimit,
-    engineKey,
-    file,
-  } = pluginOptions;
+  const { filterNode = () => false, getPath } = pluginOptions;
 
-  if (!enabled || node.internal.type !== 'Mdx' || !filterNode({ node })) {
+  if (node.internal.type !== 'Mdx' || !filterNode({ node })) {
     return;
   }
 
@@ -35,30 +29,20 @@ exports.onCreateNode = async (
     },
   ] = getNodesByType('Site');
 
-  const data = JSON.parse(fs.readFileSync(file));
-  const params = getParams({ node });
   const pathname = getPath({ node });
-  const url = siteUrl + pathname;
+  const resources = await getRelatedResources({ node, siteUrl }, pluginOptions);
 
-  const resources = await search(url, params, {
-    engineKey,
-    pageLimit,
-  });
+  writeableData[pathname] = resources;
 
   resources.forEach((resource) => {
     createRelatedResourceNode({
-      parentPathname: pathname,
+      parent: node.id,
       resource,
       createContentDigest,
       createNode,
       createNodeId,
     });
   });
-
-  fs.writeFileSync(
-    file,
-    JSON.stringify({ ...data, [pathname]: resources }, null, 2, { flag: 'w' })
-  );
 };
 
 exports.createSchemaCustomization = ({ actions }) => {
@@ -88,4 +72,12 @@ exports.createResolvers = ({ createResolvers }, pluginOptions) => {
       },
     },
   });
+};
+
+exports.onPostBootstrap = (_, pluginOptions) => {
+  const { enabled, file } = pluginOptions;
+
+  if (enabled) {
+    fs.writeFileSync(file, JSON.stringify(writeableData, null, 2));
+  }
 };

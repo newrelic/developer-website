@@ -3,19 +3,18 @@ module.exports = ({
   createNodeId,
   createContentDigest,
   resource,
-  parentPathname,
-}) => {
+  parent,
+}) =>
   createNode({
-    ...resource,
     id: createNodeId(`RelatedResource-${resource.url}`),
-    parent: null,
+    title: resource.title,
+    url: resource.url,
+    parent,
     children: [],
     plugin: 'gatsby-source-swiftype',
-    parentPathname,
     internal: {
       type: 'RelatedResource',
       content: JSON.stringify(resource),
       contentDigest: createContentDigest(resource),
     },
   });
-};
