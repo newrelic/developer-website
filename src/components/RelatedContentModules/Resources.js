@@ -15,6 +15,7 @@ const SITE_TAGS = {
   kubernetes: 'https://kubernetes.io',
   youtube: 'https://youtube.com',
   discuss: 'https://discuss.newrelic.com',
+  blog: 'https://blog.newrelic.com',
   'newrelic.com': 'https://newrelic.com',
 };
 
