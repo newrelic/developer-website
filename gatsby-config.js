@@ -53,7 +53,16 @@ module.exports = {
         pageLimit: 5,
         getPath: ({ node }) => node.frontmatter.path,
         getParams: ({ node }) => {
-          const { tags, title } = node.frontmatter;
+          const {
+            tags,
+            title,
+            redirects = [],
+            resources = [],
+          } = node.frontmatter;
+
+          const filteredUrls = resources
+            .map((resource) => resource.url)
+            .concat(redirects);
 
           return {
             q: tags ? tags.map(quote).join(' OR ') : title,
@@ -62,6 +71,11 @@ module.exports = {
             },
             filters: {
               page: {
+                url: filteredUrls.map((url) =>
+                  url.startsWith('/')
+                    ? `!https://developer.newrelic.com${url}`
+                    : `!${url}`
+                ),
                 document_type: [
                   '!views_page_menu',
                   '!term_page_api_menu',
