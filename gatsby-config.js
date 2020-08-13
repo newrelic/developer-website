@@ -46,6 +46,12 @@ module.exports = {
       resolve: 'gatsby-source-swiftype',
       options: {
         file: `${__dirname}/src/data/related-pages.json`,
+        engineKey: 'Ad9HfGjDw4GRkcmJjUut',
+        pageLimit: 5,
+        getPath: ({ node }) => node.frontmatter.path,
+        filterNode: ({ node }) =>
+          node.internal.type === 'Mdx' &&
+          node.frontmatter.template === 'GuideTemplate',
       },
     },
     'gatsby-plugin-sass',
