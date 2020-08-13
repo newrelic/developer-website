@@ -21,7 +21,7 @@ exports.onPreBootstrap = ({ reporter }, pluginOptions) => {
 exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
   const {
     filterNode = () => false,
-    getPath,
+    getParams,
     pageLimit,
     engineKey,
   } = pluginOptions;
@@ -32,15 +32,23 @@ exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
 
   const [{ siteMetadata }] = getNodesByType('Site');
   const { siteUrl } = siteMetadata;
-  const pathname = getPath({ node });
+  const { path: pathname, filters = {}, ...params } = getParams({ node });
+  const { page: pageFilters = {} } = filters;
   const url = new URL(pathname, siteUrl);
 
-  const params = {
+  const allParams = {
+    ...params,
     engine_key: engineKey,
     per_page: pageLimit,
     filters: {
+      ...filters,
       page: {
-        url: [`!${appendTrailingSlash(url)}`, `!${stripTrailingSlash(url)}`],
+        ...pageFilters,
+        url: [
+          `!${appendTrailingSlash(url)}`,
+          `!${stripTrailingSlash(url)}`,
+          ...(pageFilters.url || []),
+        ],
       },
     },
   };
