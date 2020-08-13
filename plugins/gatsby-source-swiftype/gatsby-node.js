@@ -65,9 +65,19 @@ exports.createResolvers = ({ createResolvers }) => {
   createResolvers({
     Mdx: {
       relatedResources: {
+        args: {
+          limit: {
+            type: 'Int',
+            defaultValue: 5,
+          },
+        },
         type: ['RelatedResource!'],
-        resolve(source, _args, context) {
-          return context.nodeModel.getNodesByIds({ ids: source.children });
+        resolve(source, args, context) {
+          const { limit } = args;
+
+          return context.nodeModel
+            .getNodesByIds({ ids: source.children })
+            .slice(0, Math.max(limit, 0));
         },
       },
     },
