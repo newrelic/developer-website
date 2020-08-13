@@ -30,12 +30,10 @@ const normalizeDeveloperUrl = (url) =>
   url.replace('https://developer.newrelic.com', '');
 
 const Resources = ({ page }) => {
-  const {
-    relatedResources,
-    frontmatter: { resources },
-  } = page;
+  const { relatedResources, frontmatter } = page;
+  const resources = (frontmatter.resources || []).concat(relatedResources);
 
-  return (
+  return resources.length > 0 ? (
     <Section>
       <Title>Related resources</Title>
       <nav>
@@ -46,7 +44,7 @@ const Resources = ({ page }) => {
             padding: 0;
           `}
         >
-          {(resources || []).concat(relatedResources).map((resource) => {
+          {resources.map((resource) => {
             const tag = findTag(resource);
             const isDeveloperSite = tag === 'developer';
             const LinkElement = isDeveloperSite ? Link : ExternalLink;
@@ -101,7 +99,7 @@ const Resources = ({ page }) => {
         </ul>
       </nav>
     </Section>
-  );
+  ) : null;
 };
 
 Resources.propTypes = {
