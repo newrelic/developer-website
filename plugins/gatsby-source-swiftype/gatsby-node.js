@@ -8,7 +8,7 @@ exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
   const {
     enabled,
     filterNode = () => false,
-    getParams,
+    getParams = () => ({}),
     getPath,
     pageLimit,
     engineKey,
