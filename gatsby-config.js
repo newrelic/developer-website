@@ -50,11 +50,11 @@ module.exports = {
         file: `${__dirname}/src/data/related-pages.json`,
         engineKey: 'Ad9HfGjDw4GRkcmJjUut',
         pageLimit: 5,
+        getPath: ({ node }) => node.frontmatter.path,
         getParams: ({ node }) => {
           const { tags, title } = node.frontmatter;
 
           return {
-            path: node.frontmatter.path,
             q: tags ? tags.map(quote).join(' OR ') : title,
             search_fields: {
               page: ['tags^10', 'body^5', 'title^1.5', '*'],

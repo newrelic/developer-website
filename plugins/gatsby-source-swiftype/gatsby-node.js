@@ -7,6 +7,7 @@ exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
   const {
     filterNode = () => false,
     getParams,
+    getPath,
     pageLimit,
     engineKey,
   } = pluginOptions;
@@ -15,18 +16,24 @@ exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
     return;
   }
 
-  const [{ siteMetadata }] = getNodesByType('Site');
-  const { siteUrl } = siteMetadata;
-  const { path: pathname, filters = {}, ...params } = getParams({ node });
-  const { page: pageFilters = {} } = filters;
+  const [
+    {
+      siteMetadata: { siteUrl },
+    },
+  ] = getNodesByType('Site');
+
+  const params = getParams({ node });
+  const pathname = getPath({ node });
   const url = new URL(pathname, siteUrl);
+
+  const { page: pageFilters = {} } = params.filters || {};
 
   const allParams = {
     ...params,
     engine_key: engineKey,
     per_page: pageLimit,
     filters: {
-      ...filters,
+      ...params.filters,
       page: {
         ...pageFilters,
         url: [
