@@ -11,13 +11,16 @@ module.exports = async ({ node, siteUrl }, pluginOptions) => {
     getPath,
   } = pluginOptions;
 
-  const data = JSON.parse(fs.readFileSync(file));
-  const params = getParams({ node });
   const pathname = getPath({ node });
 
   if (enabled) {
-    return search(siteUrl + pathname, params, { engineKey, pageLimit });
+    return search(siteUrl + pathname, getParams({ node }), {
+      engineKey,
+      pageLimit,
+    });
   }
+
+  const data = JSON.parse(fs.readFileSync(file));
 
   return data[pathname] || [];
 };
