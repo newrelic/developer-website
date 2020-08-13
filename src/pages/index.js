@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 
 import SEO from '../components/Seo';
