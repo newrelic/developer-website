@@ -15,6 +15,8 @@ const SITE_TAGS = {
   kubernetes: 'https://kubernetes.io',
   youtube: 'https://youtube.com',
   discuss: 'https://discuss.newrelic.com',
+  blog: 'https://blog.newrelic.com',
+  'newrelic.com': 'https://newrelic.com',
 };
 
 const findTag = (resource) =>
@@ -29,10 +31,11 @@ const normalizeDeveloperUrl = (url) =>
 
 const Resources = ({ page }) => {
   const {
+    relatedResources,
     frontmatter: { resources },
   } = page;
 
-  return resources?.length > 0 ? (
+  return (
     <Section>
       <Title>Related resources</Title>
       <nav>
@@ -43,7 +46,7 @@ const Resources = ({ page }) => {
             padding: 0;
           `}
         >
-          {resources.map((resource) => {
+          {(resources || []).concat(relatedResources).map((resource) => {
             const tag = findTag(resource);
             const isDeveloperSite = tag === 'developer';
             const LinkElement = isDeveloperSite ? Link : ExternalLink;
@@ -98,7 +101,7 @@ const Resources = ({ page }) => {
         </ul>
       </nav>
     </Section>
-  ) : null;
+  );
 };
 
 Resources.propTypes = {
@@ -111,6 +114,10 @@ Resources.propTypes = {
         })
       ),
     }).isRequired,
+    relatedResources: PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string,
+    }),
   }).isRequired,
 };
 
@@ -121,6 +128,10 @@ export const query = graphql`
         title
         url
       }
+    }
+    relatedResources(limit: $relatedResourceLimit) {
+      title
+      url
     }
   }
 `;
