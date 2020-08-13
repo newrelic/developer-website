@@ -1,14 +1,7 @@
 const fs = require('fs');
+const { appendTrailingSlash, stripTrailingSlash } = require('./src/utils/url');
 
 const data = {};
-
-const appendTrailingSlash = (url) =>
-  url.pathname.endsWith('/') ? url : new URL(`${url.pathname}/`, url.origin);
-
-const stripTrailingSlash = (url) =>
-  url.pathname.endsWith('/')
-    ? new URL(url.replace(/\/$/, ''), url.origin)
-    : url;
 
 exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
   const {
