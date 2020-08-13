@@ -25,7 +25,7 @@ const KubeConPage = () => {
               <p>
                 Learn more about the New Relic One platform, the only
                 observability platform that provides open, connected and
-                programmable observability for cloud-native environments. Join
+                programmable observability for cloud-native environments.
                 Join us to dive into the New Relic One platform and our
                 Kubernetes cluster explorer.
               </p>
