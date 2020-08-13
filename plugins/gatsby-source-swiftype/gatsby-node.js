@@ -1,12 +1,12 @@
 const fs = require('fs');
-const path = require('path');
 
 exports.onPreBootstrap = ({ reporter }, pluginOptions) => {
-  const dataFile = path.join(pluginOptions.path, 'related-pages.json');
+  const { file } = pluginOptions;
 
-  if (!fs.existsSync(dataFile)) {
-    reporter.info('Creating related-pages.json file');
-    fs.writeFileSync(dataFile, '{}');
+  if (!fs.existsSync(file)) {
+    reporter.info('gatsby-source-swiftype: Creating data file');
+
+    fs.writeFileSync(file, '{}');
   }
 };
 
