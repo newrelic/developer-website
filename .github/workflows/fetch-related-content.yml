@@ -1,6 +1,7 @@
 name: Fetch related pages from Swiftype
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *' # start of every day
 
