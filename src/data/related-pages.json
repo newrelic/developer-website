@@ -84,6 +84,8 @@
   ],
   "/terms": [
     {
+      "url": "https://developer.newrelic.com/terms",
+      "title": "The title!",
       "q": "Terms and conditions",
       "search_fields": {
         "page": [
@@ -112,6 +114,7 @@
   ],
   "/explore-docs/query-and-store-data": [
     {
+      "url": "https://developer.newrelic.com/explore-docs/query-and-store-data",
       "q": "Query and store data",
       "search_fields": {
         "page": [
@@ -142,6 +145,8 @@
   ],
   "/automate-workflows/get-started-terraform": [
     {
+      "url": "https://developer.newrelic.com/automate-workflows/get-started-terraform",
+      "title": "The title!",
       "q": "\"notification channel\" OR \"Synthetics monitors\"",
       "search_fields": {
         "page": [
@@ -234,34 +239,38 @@
     "engine_key": "Ad9HfGjDw4GRkcmJjUut",
     "per_page": 5
   },
-  "/build-apps/set-up-dev-env": {
-    "q": "Set up your development environment",
-    "search_fields": {
-      "page": [
-        "tags^10",
-        "body^5",
-        "title^1.5",
-        "*"
-      ]
-    },
-    "filters": {
-      "page": {
-        "url": [
-          "!https://developer.newrelic.com/build-apps/set-up-dev-env/",
-          "!https://developer.newrelic.com/build-apps/set-up-dev-env",
-          "!https://developer.newrelic.com/build-apps/",
-          "!https://developer.newrelic.com/build-apps"
-        ],
-        "document_type": [
-          "!views_page_menu",
-          "!term_page_api_menu",
-          "!term_page_landing_page"
+  "/build-apps/set-up-dev-env": [
+    {
+      "url": "https://developer.newrelic.com/build-apps/set-up-dev-env",
+      "title": "The title!",
+      "q": "Set up your development environment",
+      "search_fields": {
+        "page": [
+          "tags^10",
+          "body^5",
+          "title^1.5",
+          "*"
         ]
-      }
-    },
-    "engine_key": "Ad9HfGjDw4GRkcmJjUut",
-    "per_page": 5
-  },
+      },
+      "filters": {
+        "page": {
+          "url": [
+            "!https://developer.newrelic.com/build-apps/set-up-dev-env/",
+            "!https://developer.newrelic.com/build-apps/set-up-dev-env",
+            "!https://developer.newrelic.com/build-apps/",
+            "!https://developer.newrelic.com/build-apps"
+          ],
+          "document_type": [
+            "!views_page_menu",
+            "!term_page_api_menu",
+            "!term_page_landing_page"
+          ]
+        }
+      },
+      "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+      "per_page": 5
+    }
+  ],
   "/automate-workflows/5-mins-tag-resources": [
     {
       "q": "Quickly tag a set of resources",
@@ -313,6 +322,44 @@
             "!https://developer.newrelic.com/build-apps/build-hello-world-app",
             "!https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-build-your-own-custom-new-relic-one-application/",
             "!https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-build-your-own-custom-new-relic-one-application"
+          ],
+          "document_type": [
+            "!views_page_menu",
+            "!term_page_api_menu",
+            "!term_page_landing_page"
+          ]
+        }
+      },
+      "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+      "per_page": 5
+    }
+  ],
+  "/build-apps/publish-deploy": [
+    {
+      "url": "https://developer.newrelic.com/build-apps/publish-deploy",
+      "title": "The title!",
+      "q": "Serve, publish, and deploy your New Relic One app",
+      "search_fields": {
+        "page": [
+          "tags^10",
+          "body^5",
+          "title^1.5",
+          "*"
+        ]
+      },
+      "filters": {
+        "page": {
+          "url": [
+            "!https://developer.newrelic.com/build-apps/publish-deploy/",
+            "!https://developer.newrelic.com/build-apps/publish-deploy",
+            "!https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/discover-manage-applications-new-relic-one-catalog/",
+            "!https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/discover-manage-applications-new-relic-one-catalog",
+            "!https://developer.newrelic.com/build-apps/build-hello-world-app/",
+            "!https://developer.newrelic.com/build-apps/build-hello-world-app",
+            "!https://developer.newrelic.com/build-tools/new-relic-one-applications/publish-deploy/",
+            "!https://developer.newrelic.com/build-tools/new-relic-one-applications/publish-deploy",
+            "!https://developer.newrelic.com/build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions/",
+            "!https://developer.newrelic.com/build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions"
           ],
           "document_type": [
             "!views_page_menu",
