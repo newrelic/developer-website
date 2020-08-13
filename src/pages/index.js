@@ -77,7 +77,7 @@ const IndexPage = ({ data, pageContext }) => {
               className={styles.introVideo}
               id="8yJOYDTYml4"
               type="youtube"
-              title="5 Steps for Kubernetes ObservabilityDevelop with New Relic"
+              title="5 Steps for Kubernetes Observability"
             />
           </section>
 
