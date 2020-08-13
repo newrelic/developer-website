@@ -85,9 +85,7 @@ module.exports = {
             },
           };
         },
-        filterNode: ({ node }) =>
-          node.internal.type === 'Mdx' &&
-          node.frontmatter.template === 'GuideTemplate',
+        filterNode: ({ node }) => node.frontmatter.template === 'GuideTemplate',
       },
     },
     'gatsby-plugin-sass',
