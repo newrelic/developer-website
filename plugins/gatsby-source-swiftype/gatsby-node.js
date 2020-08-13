@@ -59,15 +59,15 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs);
 };
 
-exports.createResolvers = ({ createResolvers }, pluginOptions) => {
-  const { file } = pluginOptions;
-
+exports.createResolvers = ({ createResolvers }) => {
   createResolvers({
     Mdx: {
       relatedResources: {
         type: ['RelatedResource!'],
-        resolve(source, args, context, info) {
-          return [];
+        resolve(source, _args, context) {
+          return context.nodeModel
+            .getAllNodes({ type: 'RelatedResource' })
+            .filter((node) => node.parent === source.id);
         },
       },
     },
