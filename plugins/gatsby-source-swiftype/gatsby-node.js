@@ -25,9 +25,11 @@ exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
 
   const params = getParams({ node });
   const pathname = getPath({ node });
-  const url = new URL(pathname, siteUrl);
 
-  const result = await search(url, params, { engineKey, pageLimit });
+  const result = await search(siteUrl + pathname, params, {
+    engineKey,
+    pageLimit,
+  });
 
   data[pathname] = result;
 };

@@ -1,7 +1,21 @@
-exports.appendTrailingSlash = (url) =>
-  url.pathname.endsWith('/') ? url : new URL(`${url.pathname}/`, url.origin);
+const hasQueryParams = (urlString) => {
+  const url = new URL(urlString);
 
-exports.stripTrailingSlash = (url) =>
-  url.pathname.endsWith('/')
-    ? new URL(url.replace(/\/$/, ''), url.origin)
-    : url;
+  return Boolean(url.search);
+};
+
+exports.appendTrailingSlash = (url) => {
+  if (hasQueryParams(url)) {
+    return url;
+  }
+
+  return url.endsWith('/') ? url : `${url}/`;
+};
+
+exports.stripTrailingSlash = (url) => {
+  if (hasQueryParams(url)) {
+    return url;
+  }
+
+  return url.endsWith('/') ? url.replace(/\/$/, '') : url;
+};

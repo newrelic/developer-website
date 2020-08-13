@@ -1,12 +1,17 @@
 const fetch = require('node-fetch');
 const { appendTrailingSlash, stripTrailingSlash } = require('./utils/url');
 
-const normalizeUrl = (urlString) => {
-  const prefix = urlString.startsWith('!') ? '!' : '';
-  const url = new URL(urlString.replace(/^!/, ''));
+const normalizeUrl = (url) => {
+  const prefix = url.startsWith('!') ? '!' : '';
+  const plainUrl = url.replace(/^!/, '');
 
-  return [prefix + appendTrailingSlash(url), prefix + stripTrailingSlash(url)];
+  return [
+    prefix + appendTrailingSlash(plainUrl),
+    prefix + stripTrailingSlash(plainUrl),
+  ];
 };
+
+const uniq = (arr) => [...new Set(arr)];
 
 module.exports = async (url, params = {}, { engineKey, pageLimit }) => {
   const { page: pageFilters = {} } = params.filters || {};
@@ -26,11 +31,10 @@ module.exports = async (url, params = {}, { engineKey, pageLimit }) => {
           ...params.filters,
           page: {
             ...pageFilters,
-            url: [
-              `!${appendTrailingSlash(url)}`,
-              `!${stripTrailingSlash(url)}`,
+            url: uniq([
+              ...normalizeUrl(`!${url}`),
               ...(pageFilters.url || []).flatMap(normalizeUrl),
-            ],
+            ]),
           },
         },
       }),
