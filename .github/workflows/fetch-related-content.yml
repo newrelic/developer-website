@@ -1,0 +1,54 @@
+name: Fetch related pages from Swiftype
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # start of every day
+
+env:
+  BOT_NAME: nr-opensource-bot
+  BOT_EMAIL: opensource+bot@newrelic.com
+
+jobs:
+  fetch-swiftype-results:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Cache node_modules
+        id: cache-node
+        uses: actions/cache@v2
+        env:
+          cache-name: node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ env.cache-name }}-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Gatsby Build
+        run: npm run build:related-content
+
+      - name: Commit changes
+        id: commit-changes
+        run: |
+          git config --local user.email "${{ env.BOT_EMAIL }}"
+          git config --local user.name "${{ env.BOT_NAME }}"
+          git add ./src/data/related-pages.json
+          git commit -m 'chore(related-content): updated related content data'
+          echo "::set-output name=commit::true"
+
+      - name: Push Commit
+        if: steps.commit-changes.outputs.commit == 'true'
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.OPENSOURCE_BOT_TOKEN }}
+          branch: main
