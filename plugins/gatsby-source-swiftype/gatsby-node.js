@@ -6,6 +6,7 @@ const data = {};
 
 exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
   const {
+    enabled,
     filterNode = () => false,
     getParams,
     getPath,
@@ -13,7 +14,7 @@ exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
     engineKey,
   } = pluginOptions;
 
-  if (!filterNode({ node })) {
+  if (!enabled || !filterNode({ node })) {
     return;
   }
 
@@ -61,7 +62,9 @@ exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
 };
 
 exports.onPostBootstrap = (_, pluginOptions) => {
-  const { file } = pluginOptions;
+  const { file, enabled } = pluginOptions;
 
-  fs.writeFileSync(file, JSON.stringify(data, null, 2), { flag: 'w' });
+  if (enabled) {
+    fs.writeFileSync(file, JSON.stringify(data, null, 2), { flag: 'w' });
+  }
 };
