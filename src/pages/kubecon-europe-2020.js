@@ -7,6 +7,7 @@ import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import kubeconHeader from '../images/kubecon-europe-2020/kubecon-europe-2020.jpg';
 import styles from './kubecon-europe-2020.module.scss';
+import Important from '../components/Important';
 
 const KubeConPage = () => {
   return (
@@ -48,6 +49,10 @@ const KubeConPage = () => {
           </section>
           <section className={styles.section}>
             <h2>Attend one of our lightning talks</h2>
+            <Important>
+              Go to the virtual expo tab, and find New Relic in Silver Hall B to
+              attend a lightning talk.
+            </Important>
           </section>
           <section className={cx(styles.section, styles.assetTable)}>
             <div className={styles.point}>
@@ -89,18 +94,6 @@ const KubeConPage = () => {
               <h4>Kubernetes observability with context</h4>
               <p>Thu Aug 20 @ 16:50 CEST</p>
               <p>Stijn Polfliet</p>
-            </div>
-
-            <div className={styles.highlightDiv}>
-              <FeatherIcon
-                className={styles.pointIcon}
-                name="search"
-                size="2rem"
-              />
-              <h4 className={styles.highlightText}>
-                Go to the virtual expo tab, and find New Relic in Silver Hall B
-                to attend a lightning talk.
-              </h4>
             </div>
           </section>
           <section className={styles.section}>
