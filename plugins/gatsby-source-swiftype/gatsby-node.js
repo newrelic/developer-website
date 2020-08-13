@@ -1,5 +1,7 @@
 const fs = require('fs');
 
+const data = {};
+
 const appendTrailingSlash = (url) =>
   url.pathname.endsWith('/') ? url : new URL(`${url.pathname}/`, url.origin);
 
@@ -7,16 +9,6 @@ const stripTrailingSlash = (url) =>
   url.pathname.endsWith('/')
     ? new URL(url.replace(/\/$/, ''), url.origin)
     : url;
-
-exports.onPreBootstrap = ({ reporter }, pluginOptions) => {
-  const { file } = pluginOptions;
-
-  if (!fs.existsSync(file)) {
-    reporter.info('gatsby-source-swiftype: Creating data file');
-
-    fs.writeFileSync(file, '{}');
-  }
-};
 
 exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
   const {
@@ -52,4 +44,12 @@ exports.onCreateNode = async ({ node, getNodesByType }, pluginOptions) => {
       },
     },
   };
+
+  data[pathname] = allParams;
+};
+
+exports.onPostBootstrap = (_, pluginOptions) => {
+  const { file } = pluginOptions;
+
+  fs.writeFileSync(file, JSON.stringify(data, null, 2), { flag: 'w' });
 };

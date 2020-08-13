@@ -1,3 +1,5 @@
+const quote = (str) => `"${str}"`;
+
 module.exports = {
   siteMetadata: {
     title: 'New Relic Developers',
@@ -48,9 +50,17 @@ module.exports = {
         file: `${__dirname}/src/data/related-pages.json`,
         engineKey: 'Ad9HfGjDw4GRkcmJjUut',
         pageLimit: 5,
-        getParams: ({ node }) => ({
-          path: node.frontmatter.path,
-        }),
+        getParams: ({ node }) => {
+          const { tags, title } = node.frontmatter;
+
+          return {
+            path: node.frontmatter.path,
+            q: tags ? tags.map(quote).join(' OR ') : title,
+            search_fields: {
+              page: ['tags^10', 'body^5', 'title^1.5', '*'],
+            },
+          };
+        },
         filterNode: ({ node }) =>
           node.internal.type === 'Mdx' &&
           node.frontmatter.template === 'GuideTemplate',
