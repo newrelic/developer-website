@@ -1,0 +1,23 @@
+{
+  "/explore-docs/intro-to-sdk": {
+    "q": "Intro to New Relic One API components",
+    "search_fields": {
+      "page": [
+        "tags^10",
+        "body^5",
+        "title^1.5",
+        "*"
+      ]
+    },
+    "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+    "per_page": 5,
+    "filters": {
+      "page": {
+        "url": [
+          "!https://developer.newrelic.com/explore-docs/intro-to-sdk/",
+          "!https://developer.newrelic.com/explore-docs/intro-to-sdk"
+        ]
+      }
+    }
+  }
+}
