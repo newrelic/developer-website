@@ -59,6 +59,15 @@ module.exports = {
             search_fields: {
               page: ['tags^10', 'body^5', 'title^1.5', '*'],
             },
+            filters: {
+              page: {
+                document_type: [
+                  '!views_page_menu',
+                  '!term_page_api_menu',
+                  '!term_page_landing_page',
+                ],
+              },
+            },
           };
         },
         filterNode: ({ node }) =>
