@@ -16,7 +16,7 @@ exports.onCreateNode = async (
   { actions, node, getNodesByType, createNodeId, createContentDigest },
   pluginOptions
 ) => {
-  const { createNode } = actions;
+  const { createNode, createParentChildLink } = actions;
   const { filterNode = () => false, getPath } = pluginOptions;
 
   if (node.internal.type !== 'Mdx' || !filterNode({ node })) {
@@ -35,13 +35,15 @@ exports.onCreateNode = async (
   writeableData[pathname] = resources;
 
   resources.forEach((resource) => {
-    createRelatedResourceNode({
+    const child = createRelatedResourceNode({
       parent: node.id,
       resource,
       createContentDigest,
       createNode,
       createNodeId,
     });
+
+    createParentChildLink({ parent: node, child: child });
   });
 };
 
@@ -67,7 +69,7 @@ exports.createResolvers = ({ createResolvers }) => {
         resolve(source, _args, context) {
           return context.nodeModel
             .getAllNodes({ type: 'RelatedResource' })
-            .filter((node) => node.parent === source.id);
+            .filter((node) => source.children.includes(node.id));
         },
       },
     },

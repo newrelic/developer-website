@@ -4,8 +4,8 @@ module.exports = ({
   createContentDigest,
   resource,
   parent,
-}) =>
-  createNode({
+}) => {
+  const node = {
     id: createNodeId(`RelatedResource-${resource.url}`),
     title: resource.title,
     url: resource.url,
@@ -17,4 +17,9 @@ module.exports = ({
       content: JSON.stringify(resource),
       contentDigest: createContentDigest(resource),
     },
-  });
+  };
+
+  createNode(node);
+
+  return node;
+};
