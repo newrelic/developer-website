@@ -72,7 +72,7 @@ exports.createResolvers = ({ createResolvers }) => {
           },
         },
         type: ['RelatedResource!'],
-        resolve(source, args, context) {
+        resolve: (source, args, context) => {
           const { limit } = args;
 
           return context.nodeModel
