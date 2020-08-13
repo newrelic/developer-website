@@ -71,6 +71,7 @@ module.exports = {
             },
             filters: {
               page: {
+                type: ['!blog', '!forum'],
                 url: filteredUrls.map((url) =>
                   url.startsWith('/')
                     ? `!https://developer.newrelic.com${url}`
