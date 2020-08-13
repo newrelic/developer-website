@@ -5,7 +5,7 @@ module.exports = async ({ node, siteUrl }, pluginOptions) => {
   const {
     refetch,
     engineKey,
-    pageLimit,
+    limit,
     file,
     getParams = () => ({}),
     getPath,
@@ -16,7 +16,7 @@ module.exports = async ({ node, siteUrl }, pluginOptions) => {
   if (refetch) {
     return search(siteUrl + pathname, getParams({ node }), {
       engineKey,
-      pageLimit,
+      limit,
     });
   }
 

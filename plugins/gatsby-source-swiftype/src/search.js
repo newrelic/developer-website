@@ -13,7 +13,7 @@ const normalizeUrl = (url) => {
 
 const uniq = (arr) => [...new Set(arr)];
 
-module.exports = async (url, params = {}, { engineKey, pageLimit }) => {
+module.exports = async (url, params = {}, { engineKey, limit }) => {
   const { page: pageFilters = {} } = params.filters || {};
 
   const res = await fetch(
@@ -26,7 +26,7 @@ module.exports = async (url, params = {}, { engineKey, pageLimit }) => {
       body: JSON.stringify({
         ...params,
         engine_key: engineKey,
-        per_page: pageLimit,
+        per_page: limit,
         filters: {
           ...params.filters,
           page: {

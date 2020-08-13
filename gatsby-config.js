@@ -50,7 +50,7 @@ module.exports = {
         file: `${__dirname}/src/data/related-pages.json`,
         refetch: Boolean(process.env.BUILD_RELATED_CONTENT),
         engineKey: 'Ad9HfGjDw4GRkcmJjUut',
-        pageLimit: 5,
+        limit: 5,
         getPath: ({ node }) => node.frontmatter.path,
         getParams: ({ node }) => {
           const {
