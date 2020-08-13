@@ -75,9 +75,9 @@ exports.createResolvers = ({ createResolvers }) => {
 };
 
 exports.onPostBootstrap = (_, pluginOptions) => {
-  const { enabled, file } = pluginOptions;
+  const { refetch, file } = pluginOptions;
 
-  if (enabled) {
+  if (refetch) {
     fs.writeFileSync(file, JSON.stringify(writeableData, null, 2));
   }
 };

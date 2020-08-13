@@ -3,7 +3,7 @@ const search = require('./search');
 
 module.exports = async ({ node, siteUrl }, pluginOptions) => {
   const {
-    enabled,
+    refetch,
     engineKey,
     pageLimit,
     file,
@@ -13,7 +13,7 @@ module.exports = async ({ node, siteUrl }, pluginOptions) => {
 
   const pathname = getPath({ node });
 
-  if (enabled) {
+  if (refetch) {
     return search(siteUrl + pathname, getParams({ node }), {
       engineKey,
       pageLimit,

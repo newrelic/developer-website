@@ -48,7 +48,7 @@ module.exports = {
       resolve: 'gatsby-source-swiftype',
       options: {
         file: `${__dirname}/src/data/related-pages.json`,
-        enabled: Boolean(process.env.BUILD_RELATED_CONTENT),
+        refetch: Boolean(process.env.BUILD_RELATED_CONTENT),
         engineKey: 'Ad9HfGjDw4GRkcmJjUut',
         pageLimit: 5,
         getPath: ({ node }) => node.frontmatter.path,
