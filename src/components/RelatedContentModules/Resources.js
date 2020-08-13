@@ -89,6 +89,8 @@ const Resources = ({ page }) => {
                 <Tag
                   css={css`
                     text-transform: uppercase;
+                    font-size: 0.5625rem;
+                    letter-spacing: 0.5px;
                   `}
                 >
                   {tag}
