@@ -40,7 +40,7 @@ To develop projects, you need our New Relic One CLI (command line interface). If
 
 <Important>
 
-  If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
+If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
 
 </Important>
 
@@ -195,16 +195,11 @@ To take the data returned by the NerdGraph query and display it in the applicati
 ```jsx
 return <HeadingText>{data.actor.account.name} Apps:</HeadingText>;
 ```
-
-  </Step>
-
-</Steps>
-
 When you go back to the browser and view your application, you see a new headline showing the name of your account returned from NerdGraph:
 
 ![App Image](../../images/nerdgraphquery-guide/with-name.png)
 
-    </Step>
+  </Step>
 </Steps>
 
 ## How to use `NerdGraphQuery.query`
