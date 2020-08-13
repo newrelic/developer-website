@@ -67,9 +67,7 @@ exports.createResolvers = ({ createResolvers }) => {
       relatedResources: {
         type: ['RelatedResource!'],
         resolve(source, _args, context) {
-          return context.nodeModel
-            .getAllNodes({ type: 'RelatedResource' })
-            .filter((node) => source.children.includes(node.id));
+          return context.nodeModel.getNodesByIds({ ids: source.children });
         },
       },
     },
