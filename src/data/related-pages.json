@@ -19,5 +19,310 @@
         ]
       }
     }
-  }
+  },
+  "/explore-docs/nr1-subscription": [
+    {
+      "q": "New Relic One CLI subscription commands",
+      "search_fields": {
+        "page": [
+          "tags^10",
+          "body^5",
+          "title^1.5",
+          "*"
+        ]
+      },
+      "filters": {
+        "page": {
+          "url": [
+            "!https://developer.newrelic.com/explore-docs/nr1-subscription/",
+            "!https://developer.newrelic.com/explore-docs/nr1-subscription"
+          ],
+          "document_type": [
+            "!views_page_menu",
+            "!term_page_api_menu",
+            "!term_page_landing_page"
+          ]
+        }
+      },
+      "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+      "per_page": 5
+    }
+  ],
+  "/automate-workflows/get-started-kubernetes": [
+    {
+      "q": "Set up New Relic using the Kubernetes operator",
+      "search_fields": {
+        "page": [
+          "tags^10",
+          "body^5",
+          "title^1.5",
+          "*"
+        ]
+      },
+      "filters": {
+        "page": {
+          "url": [
+            "!https://developer.newrelic.com/automate-workflows/get-started-kubernetes/",
+            "!https://developer.newrelic.com/automate-workflows/get-started-kubernetes",
+            "!https://github.com/newrelic/newrelic-kubernetes-operator/",
+            "!https://github.com/newrelic/newrelic-kubernetes-operator",
+            "!https://docs.newrelic.com/",
+            "!https://docs.newrelic.com",
+            "!https://kubernetes.io/docs/home/",
+            "!https://kubernetes.io/docs/home"
+          ],
+          "document_type": [
+            "!views_page_menu",
+            "!term_page_api_menu",
+            "!term_page_landing_page"
+          ]
+        }
+      },
+      "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+      "per_page": 5
+    }
+  ],
+  "/terms": [
+    {
+      "q": "Terms and conditions",
+      "search_fields": {
+        "page": [
+          "tags^10",
+          "body^5",
+          "title^1.5",
+          "*"
+        ]
+      },
+      "filters": {
+        "page": {
+          "url": [
+            "!https://developer.newrelic.com/terms/",
+            "!https://developer.newrelic.com/terms"
+          ],
+          "document_type": [
+            "!views_page_menu",
+            "!term_page_api_menu",
+            "!term_page_landing_page"
+          ]
+        }
+      },
+      "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+      "per_page": 5
+    }
+  ],
+  "/explore-docs/query-and-store-data": [
+    {
+      "q": "Query and store data",
+      "search_fields": {
+        "page": [
+          "tags^10",
+          "body^5",
+          "title^1.5",
+          "*"
+        ]
+      },
+      "filters": {
+        "page": {
+          "url": [
+            "!https://developer.newrelic.com/explore-docs/query-and-store-data/",
+            "!https://developer.newrelic.com/explore-docs/query-and-store-data",
+            "!https://developer.newrelic.com/build-tools/new-relic-one-applications/query-and-store-data/",
+            "!https://developer.newrelic.com/build-tools/new-relic-one-applications/query-and-store-data"
+          ],
+          "document_type": [
+            "!views_page_menu",
+            "!term_page_api_menu",
+            "!term_page_landing_page"
+          ]
+        }
+      },
+      "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+      "per_page": 5
+    }
+  ],
+  "/automate-workflows/get-started-terraform": [
+    {
+      "q": "\"notification channel\" OR \"Synthetics monitors\"",
+      "search_fields": {
+        "page": [
+          "tags^10",
+          "body^5",
+          "title^1.5",
+          "*"
+        ]
+      },
+      "filters": {
+        "page": {
+          "url": [
+            "!https://developer.newrelic.com/automate-workflows/get-started-terraform/",
+            "!https://developer.newrelic.com/automate-workflows/get-started-terraform",
+            "!https://github.com/newrelic/terraform-provider-newrelic/",
+            "!https://github.com/newrelic/terraform-provider-newrelic",
+            "!https://docs.newrelic.com/",
+            "!https://docs.newrelic.com",
+            "!https://terraform.io/docs/index.html/",
+            "!https://terraform.io/docs/index.html"
+          ],
+          "document_type": [
+            "!views_page_menu",
+            "!term_page_api_menu",
+            "!term_page_landing_page"
+          ]
+        }
+      },
+      "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+      "per_page": 5
+    }
+  ],
+  "/automate-workflows/get-started-new-relic-cli": [
+    {
+      "q": "\"api key\" OR \"New Relic CLI\" OR \"Tags\" OR \"Entity\" OR \"Deployment markers\"",
+      "search_fields": {
+        "page": [
+          "tags^10",
+          "body^5",
+          "title^1.5",
+          "*"
+        ]
+      },
+      "filters": {
+        "page": {
+          "url": [
+            "!https://developer.newrelic.com/automate-workflows/get-started-new-relic-cli/",
+            "!https://developer.newrelic.com/automate-workflows/get-started-new-relic-cli",
+            "!https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic.md/",
+            "!https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic.md",
+            "!https://github.com/newrelic/newrelic-cli/",
+            "!https://github.com/newrelic/newrelic-cli"
+          ],
+          "document_type": [
+            "!views_page_menu",
+            "!term_page_api_menu",
+            "!term_page_landing_page"
+          ]
+        }
+      },
+      "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+      "per_page": 5
+    }
+  ],
+  "/collect-data/query-data-nrql": {
+    "q": "Query data with NRQL",
+    "search_fields": {
+      "page": [
+        "tags^10",
+        "body^5",
+        "title^1.5",
+        "*"
+      ]
+    },
+    "filters": {
+      "page": {
+        "url": [
+          "!https://developer.newrelic.com/collect-data/query-data-nrql/",
+          "!https://developer.newrelic.com/collect-data/query-data-nrql",
+          "!https://developer.newrelic.com/technology/nrql/",
+          "!https://developer.newrelic.com/technology/nrql"
+        ],
+        "document_type": [
+          "!views_page_menu",
+          "!term_page_api_menu",
+          "!term_page_landing_page"
+        ]
+      }
+    },
+    "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+    "per_page": 5
+  },
+  "/build-apps/set-up-dev-env": {
+    "q": "Set up your development environment",
+    "search_fields": {
+      "page": [
+        "tags^10",
+        "body^5",
+        "title^1.5",
+        "*"
+      ]
+    },
+    "filters": {
+      "page": {
+        "url": [
+          "!https://developer.newrelic.com/build-apps/set-up-dev-env/",
+          "!https://developer.newrelic.com/build-apps/set-up-dev-env",
+          "!https://developer.newrelic.com/build-apps/",
+          "!https://developer.newrelic.com/build-apps"
+        ],
+        "document_type": [
+          "!views_page_menu",
+          "!term_page_api_menu",
+          "!term_page_landing_page"
+        ]
+      }
+    },
+    "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+    "per_page": 5
+  },
+  "/automate-workflows/5-mins-tag-resources": [
+    {
+      "q": "Quickly tag a set of resources",
+      "search_fields": {
+        "page": [
+          "tags^10",
+          "body^5",
+          "title^1.5",
+          "*"
+        ]
+      },
+      "filters": {
+        "page": {
+          "url": [
+            "!https://developer.newrelic.com/automate-workflows/5-mins-tag-resources/",
+            "!https://developer.newrelic.com/automate-workflows/5-mins-tag-resources",
+            "!https://youtube.com/watch?v=IGZQup8ZEmE",
+            "!https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/tagging-use-tags-organize-group-what-you-monitor/",
+            "!https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/tagging-use-tags-organize-group-what-you-monitor",
+            "!https://github.com/newrelic/newrelic-cli/",
+            "!https://github.com/newrelic/newrelic-cli"
+          ],
+          "document_type": [
+            "!views_page_menu",
+            "!term_page_api_menu",
+            "!term_page_landing_page"
+          ]
+        }
+      },
+      "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+      "per_page": 5
+    }
+  ],
+  "/build-apps/build-hello-world-app": [
+    {
+      "q": "\"nr1 cli\" OR \"Nerdpack file structure\" OR \"NR One Catalog\" OR \"Subscribe applications\"",
+      "search_fields": {
+        "page": [
+          "tags^10",
+          "body^5",
+          "title^1.5",
+          "*"
+        ]
+      },
+      "filters": {
+        "page": {
+          "url": [
+            "!https://developer.newrelic.com/build-apps/build-hello-world-app/",
+            "!https://developer.newrelic.com/build-apps/build-hello-world-app",
+            "!https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-build-your-own-custom-new-relic-one-application/",
+            "!https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-build-your-own-custom-new-relic-one-application"
+          ],
+          "document_type": [
+            "!views_page_menu",
+            "!term_page_api_menu",
+            "!term_page_landing_page"
+          ]
+        }
+      },
+      "engine_key": "Ad9HfGjDw4GRkcmJjUut",
+      "per_page": 5
+    }
+  ]
 }
