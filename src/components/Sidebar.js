@@ -53,7 +53,7 @@ const Sidebar = ({ className }) => {
           />
         </Link>
         <SearchInput
-          placeholder="Search developer docs"
+          placeholder="Filter developer docs"
           onClear={() => setSearchTerm('')}
           onChange={(e) => setSearchTerm(e.target.value)}
           value={searchTerm}
