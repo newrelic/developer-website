@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/newrelic/developer-website/compare/v1.12.1...v1.12.2) (2020-08-14)
+
+
+### Bug Fixes
+
+* only show date modified if Gatsby sees it as valid ([fe14bb7](https://github.com/newrelic/developer-website/commit/fe14bb7e83af53151fcc810c7691cdf4c8a1a2db))
+
 ## [1.12.1](https://github.com/newrelic/developer-website/compare/v1.12.0...v1.12.1) (2020-08-14)
 
 
