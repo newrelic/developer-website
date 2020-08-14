@@ -25,11 +25,7 @@ const Contribute = ({ pageContext }) => {
   return (
     <Section
       css={css`
-        background-color: var(--color-neutrals-100);
-
-        .dark-mode & {
-          background-color: var(--color-dark-300);
-        }
+        background-color: var(--divider-color);
 
         @media screen and (max-width: 1240px) {
           text-align: center;
