@@ -47,7 +47,7 @@ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/relea
 Next, install the Kubernetes operator.
 
 ```bash lineNumbers=false
-kustomize build https://github.com/newrelic/newrelic-kubernetes-operator/configs/default | kubectl apply -f -
+kustomize build https://github.com/newrelic/newrelic-kubernetes-operator/config/default | kubectl apply -f -
 ```
 
 To confirm the installation was successful, run a few `kubectl` commands to check the status of the Kubernetes operator.
@@ -201,6 +201,22 @@ To finish things off, you'll create and add an alert channel to your alert polic
 
 </Step>
 </Steps>
+
+## Try it out now
+
+We have a Kubernetes test cluster ready for you in 2 minutes.  By following this on-line tutorial, you will learn how to:
+- Deploy the New Relic agent in a Kubernetes environment
+- Use the New Relic Kubernetes operator
+
+**Some tips to use the on-line tutorial window:**
+- Accept the cookies, so you can see the menu bar.
+- Click anywhere in the tutorial window to start. It will take about 2 minutes for your environment to be ready.
+- Press CTRL-l or type `clear` to clear the terminal window
+- Click on the finish flag icon in the bottom menu to hide or show the instructions
+
+Good luck!
+
+<iframe width="1000" height="1000" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="https://play.instruqt.com/embed/newrelic/nr-k8s-operator" style="border: 0;"></iframe>
 
 ## What’s next?
 
