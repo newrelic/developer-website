@@ -4,7 +4,6 @@ import { css } from '@emotion/core';
 import { Button, ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
 import Section from './Section';
-import Title from './Title';
 
 const Contribute = ({ pageContext }) => {
   const { site } = useStaticQuery(graphql`
