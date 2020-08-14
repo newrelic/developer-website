@@ -1,3 +1,11 @@
+## [1.12.1](https://github.com/newrelic/developer-website/compare/v1.12.0...v1.12.1) (2020-08-14)
+
+
+### Bug Fixes
+
+* upgrade date-fns from 2.14.0 to 2.15.0 ([5fc93ca](https://github.com/newrelic/developer-website/commit/5fc93cab60f25eb5507737802daa23fb130a98ab))
+* upgrade gatsby-plugin-mdx from 1.2.27 to 1.2.28 ([384a267](https://github.com/newrelic/developer-website/commit/384a267de14b892d089a41d7aa24b087458761da))
+
 # [1.12.0](https://github.com/newrelic/developer-website/compare/v1.11.0...v1.12.0) (2020-08-14)
 
 
