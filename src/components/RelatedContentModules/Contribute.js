@@ -4,7 +4,6 @@ import { css } from '@emotion/core';
 import { Button, ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
 import Section from './Section';
-import Title from './Title';
 
 const Contribute = ({ pageContext }) => {
   const { site } = useStaticQuery(graphql`
@@ -24,8 +23,15 @@ const Contribute = ({ pageContext }) => {
   } = site;
 
   return (
-    <Section>
-      <Title>Contribute</Title>
+    <Section
+      css={css`
+        background-color: var(--divider-color);
+
+        @media screen and (max-width: 1240px) {
+          text-align: center;
+        }
+      `}
+    >
       <Button
         as={ExternalLink}
         href={`${repository}/issues/new/choose`}
@@ -46,7 +52,7 @@ const Contribute = ({ pageContext }) => {
       <Button
         as={ExternalLink}
         href={`${repository}/tree/main/${fileRelativePath}`}
-        variant={Button.VARIANT.NORMAL}
+        variant={Button.VARIANT.PLAIN}
         size={Button.SIZE.SMALL}
       >
         <Icon
@@ -57,6 +63,25 @@ const Contribute = ({ pageContext }) => {
         />
         Edit this page
       </Button>
+      <p
+        css={css`
+          margin-top: 0.5rem;
+          margin-bottom: 0;
+          font-size: 0.75rem;
+          display: block;
+          text-align: center;
+
+          @media screen and (max-width: 1240px) {
+            margin-top: 1rem;
+          }
+        `}
+      >
+        Read our{' '}
+        <ExternalLink href="https://github.com/newrelic/developer-website/blob/main/CONTRIBUTING.md">
+          guide
+        </ExternalLink>{' '}
+        on how to contribute
+      </p>
     </Section>
   );
 };

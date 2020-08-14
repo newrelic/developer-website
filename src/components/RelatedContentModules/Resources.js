@@ -56,8 +56,11 @@ const Resources = ({ page }) => {
               <li
                 key={resource.url}
                 css={css`
-                  margin-bottom: 1rem;
                   font-size: 0.875rem;
+
+                  &:not(:last-child) {
+                    margin-bottom: 1rem;
+                  }
                 `}
               >
                 <LinkElement
