@@ -45,7 +45,7 @@ Time for your first NerdGraph query. Search for your name in the New Relic datab
 
 This GraphQL snippet appears in the editor.
 
-```jsx lineNumbers=false
+```graphql
 {
   actor {
     user {
@@ -74,7 +74,7 @@ Now you can try adding more fields to your query. The simplest way is clicking t
 
 Once again, running the GraphQL query results in just the data you need, without over or under-fetching data. Notice that the `id` field has an argument: passing arguments is a powerful way of customizing your NerdGraph queries. Every field and object can contain arguments, so instead of running multiple queries, you just compose the one that you need.
 
-```jsx lineNumbers=false
+```graphql
 {
   actor {
     user {
@@ -119,7 +119,7 @@ Let's say that you've built a NerdGraph query you're happy with and you want to 
 
 ![Tools menu](../../images/graphql-guide/tools-menu.png)
 
-```bash lineNumbers=false
+```bash
 # cURL version
 curl https://api.newrelic.com/graphql \
   -H 'Content-Type: application/json' \
