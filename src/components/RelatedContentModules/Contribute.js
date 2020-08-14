@@ -30,6 +30,10 @@ const Contribute = ({ pageContext }) => {
         .dark-mode & {
           background-color: var(--color-dark-300);
         }
+
+        @media screen and (max-width: 1240px) {
+          text-align: center;
+        }
       `}
     >
       <Button
@@ -70,6 +74,10 @@ const Contribute = ({ pageContext }) => {
           font-size: 0.75rem;
           display: block;
           text-align: center;
+
+          @media screen and (max-width: 1240px) {
+            margin-top: 1rem;
+          }
         `}
       >
         Read our{' '}
