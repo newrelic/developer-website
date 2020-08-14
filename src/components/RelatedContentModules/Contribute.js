@@ -26,7 +26,7 @@ const Contribute = ({ pageContext }) => {
   return (
     <Section
       css={css`
-        background-color: #EDEEEE`}>
+        background-color: #edeeee`}>
       <Title>Contribute</Title>
       <Button
         as={ExternalLink}
@@ -59,7 +59,10 @@ const Contribute = ({ pageContext }) => {
         />
         Edit this page
       </Button>
-      <p css={css`margin-top: 0.5rem; font-size: 0.8rem; display: block;
+      <p css={css`
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      display: block;
       `}>Read our <a href="https://github.com/newrelic/developer-website/blob/main/CONTRIBUTING.md">guide</a> on how to contribute</p>
     </Section>
   );
