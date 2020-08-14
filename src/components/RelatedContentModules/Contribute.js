@@ -26,10 +26,13 @@ const Contribute = ({ pageContext }) => {
   return (
     <Section
       css={css`
-        background-color: #edeeee;
+        background-color: var(--color-neutrals-100);
+
+        .dark-mode & {
+          background-color: var(--color-dark-300);
+        }
       `}
     >
-      <Title>Contribute</Title>
       <Button
         as={ExternalLink}
         href={`${repository}/issues/new/choose`}
@@ -65,14 +68,15 @@ const Contribute = ({ pageContext }) => {
         css={css`
           margin-top: 0.5rem;
           margin-bottom: 0;
-          font-size: 0.8rem;
+          font-size: 0.75rem;
           display: block;
+          text-align: center;
         `}
       >
-        Read our
+        Read our{' '}
         <a href="https://github.com/newrelic/developer-website/blob/main/CONTRIBUTING.md">
           guide
-        </a>
+        </a>{' '}
         on how to contribute
       </p>
     </Section>
