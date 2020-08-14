@@ -1,3 +1,10 @@
+## [1.12.3](https://github.com/newrelic/developer-website/compare/v1.12.2...v1.12.3) (2020-08-14)
+
+
+### Bug Fixes
+
+* style adjustments on kubecon page ([6dbbee5](https://github.com/newrelic/developer-website/commit/6dbbee5de9d4fe65e66a551d386248b47235d3c3))
+
 ## [1.12.2](https://github.com/newrelic/developer-website/compare/v1.12.1...v1.12.2) (2020-08-14)
 
 
