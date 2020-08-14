@@ -513,6 +513,10 @@
     "url": "/developer-champion"
   },
   {
+    "displayName": "Kubecon & CloudNativeCon",
+    "url": "/kubecon-europe-2020"
+  },
+  {
     "displayName": "Podcasts",
     "url": "/podcasts"
   }

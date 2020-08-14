@@ -17,6 +17,7 @@ const iconLibrary = {
   'Automate workflows': 'automation',
   'Explore docs': 'developerDocs',
   'Developer champions': 'developerChampions',
+  'Kubecon & CloudNativeCon': 'event',
   Podcasts: 'podcasts',
   'Try our APIs': 'tryOurAPIs',
 };
