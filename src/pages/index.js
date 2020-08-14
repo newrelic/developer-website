@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 
 import SEO from '../components/Seo';
@@ -55,33 +54,30 @@ const IndexPage = ({ data, pageContext }) => {
     <PageContext.Provider value={pageContext}>
       <SEO />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Observability for every developer" />
+        <PageLayout.Header title="Contain the complexity - Observability made simple" />
 
         <PageLayout.Content>
-          <section
-            css={css`
-              margin-top: 0;
-            `}
-            className={cx(styles.intro, 'intro-text')}
-          >
+          <section className={cx(styles.intro, 'intro-text')}>
             <div className={styles.introText}>
               <p>
-                Whether you're new to New Relic or already a data nerd, you can
-                start building right now. For free.
+                New Relic’s Kubernetes cluster explorer empowers Kubernetes
+                nerds to move beyond infrastructure metrics and investigate
+                deeper into applications, traces, logs, and events—with a single
+                click—while staying grounded in a centralized UI. Join us at
+                KubeCon and CloudNativeCon Europe August 17-20 to learn more.
               </p>
+
               <p>
-                Create an account and start using New Relic One as your
-                foundation to instrument everything. Ready to dive even deeper?
-                Create custom observability apps to better visualize your data
-                to answer your engineering problems.
+                Check out the complete schedule of New Relic talks to make the
+                most of your KubeCon experience.{' '}
+                <Link to="/kubecon-europe-2020">Learn more.</Link>
               </p>
-              <p>Let's start building.</p>
             </div>
             <Video
               className={styles.introVideo}
-              id="lzrwubc09a"
-              type="wistia"
-              title="Develop with New Relic"
+              id="8yJOYDTYml4"
+              type="youtube"
+              title="5 Steps for Kubernetes Observability"
             />
           </section>
 
