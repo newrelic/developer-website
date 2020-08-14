@@ -1,3 +1,15 @@
+# [1.12.0](https://github.com/newrelic/developer-website/compare/v1.11.0...v1.12.0) (2020-08-14)
+
+
+### Bug Fixes
+
+* better responsive styles for the contribute section ([d828a89](https://github.com/newrelic/developer-website/commit/d828a89d3559b1fa5eb1cb5c00638123105e8111))
+
+
+### Features
+
+* add dark-mode aware background color ([9a13b86](https://github.com/newrelic/developer-website/commit/9a13b860b1cc133bdfe669dae88e43832faa47f3))
+
 # [1.11.0](https://github.com/newrelic/developer-website/compare/v1.10.6...v1.11.0) (2020-08-14)
 
 
