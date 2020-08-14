@@ -509,13 +509,19 @@
     ]
   },
   {
+    "displayName": "Attend events",
+    "children": [
+      {
+        "displayName": "Kubecon & CloudNativeCon",
+        "url": "/kubecon-europe-2020"
+      }
+    ]
+  },
+  {
     "displayName": "Developer champions",
     "url": "/developer-champion"
   },
-  {
-    "displayName": "Kubecon & CloudNativeCon",
-    "url": "/kubecon-europe-2020"
-  },
+
   {
     "displayName": "Podcasts",
     "url": "/podcasts"
