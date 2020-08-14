@@ -64,6 +64,7 @@ const Contribute = ({ pageContext }) => {
       <p
         css={css`
           margin-top: 0.5rem;
+          margin-bottom: 0;
           font-size: 0.8rem;
           display: block;
         `}
