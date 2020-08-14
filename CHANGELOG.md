@@ -1,3 +1,32 @@
+# [1.11.0](https://github.com/newrelic/developer-website/compare/v1.10.6...v1.11.0) (2020-08-14)
+
+
+### Bug Fixes
+
+* filter out certain document types to match the in product experience ([7a4c0e5](https://github.com/newrelic/developer-website/commit/7a4c0e53ce09a4bce69fba1ca466d3f6018be54c))
+* fix race condition causing incorrect data to be written to file ([753cd77](https://github.com/newrelic/developer-website/commit/753cd77b4dcefa05fa0f315dccd532287f382c0e))
+* hide related resources on pages that have not yet been indexed ([7bf2811](https://github.com/newrelic/developer-website/commit/7bf281156d7dbdf217d0f788d6b85f0602f1a5da))
+* smaller font size on tags underneath related resources ([57d482b](https://github.com/newrelic/developer-website/commit/57d482ba55afc9da32051ce9f14927e3d45fcc11))
+
+
+### Features
+
+* add ability to filter which pages are fetched ([da64b13](https://github.com/newrelic/developer-website/commit/da64b13713e266d0cbd7c0b0ea72809aa9f569d9))
+* add ability to manually trigger refetching of related content ([7fd7a22](https://github.com/newrelic/developer-website/commit/7fd7a2252f0eab5aaf484ae3251a4cb181fffc7d))
+* add actual related resource data ([3efef9d](https://github.com/newrelic/developer-website/commit/3efef9d9b238d1b365a28aba1191643f3787e5b9))
+* add config to enable swiftype builds using env variable ([6d77c70](https://github.com/newrelic/developer-website/commit/6d77c70eb264dabd9c6863c18aa8cffa8b84391c))
+* add general params that will be used to fetch from swiftype ([27c1481](https://github.com/newrelic/developer-website/commit/27c1481915a6ea2339c0fc717c3bbb29020b81d2))
+* add github action that will run everyday to sync swiftype results ([080e5ba](https://github.com/newrelic/developer-website/commit/080e5ba0254f8f003d7db3b1f173f51389cbd0dc))
+* add graphql schema item and dummy resolver for related resources ([d36afbc](https://github.com/newrelic/developer-website/commit/d36afbc5a445bd7cbe83eae9b4e5a8b09d322063))
+* add limit argument to relatedResources ([cc22434](https://github.com/newrelic/developer-website/commit/cc224341cb13bd65a28e301686544cd4b0483b3b))
+* add local plugin that creates the json file that will be written to ([0568e5c](https://github.com/newrelic/developer-website/commit/0568e5c3a85a0e0a4206918cfdd28f42985eb3a4))
+* add related resources from swiftype to the right rail ([fdd265e](https://github.com/newrelic/developer-website/commit/fdd265ecfff817dba951cdbfffc422779bd5dc0e))
+* add tags to search query and write data to file in plugin ([9e3b486](https://github.com/newrelic/developer-website/commit/9e3b486a7082bfa6c6e0103da38451d79f8ac012))
+* fetch results from swiftype for the node and save the data ([8232332](https://github.com/newrelic/developer-website/commit/82323323fbd57a413da9a419d317525b9852871f))
+* filter out redirects and already defined urls for a page ([674e1c7](https://github.com/newrelic/developer-website/commit/674e1c745a2ceb907e76b71a0e21c37f5600f82d))
+* implement resolver for related resources ([f4c8fd1](https://github.com/newrelic/developer-website/commit/f4c8fd180fb067567201e1d0102d42142e058d6d))
+* properly resolve related resources for a node by linking the parent to the child ([0ad50b9](https://github.com/newrelic/developer-website/commit/0ad50b9465ddeada08b9d2a28acbd1b3f2378b7c))
+
 ## [1.10.6](https://github.com/newrelic/developer-website/compare/v1.10.5...v1.10.6) (2020-08-11)
 
 
