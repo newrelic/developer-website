@@ -16,8 +16,8 @@ const iconLibrary = {
   'Build apps': 'buildApps',
   'Automate workflows': 'automation',
   'Explore docs': 'developerDocs',
+  'Attend events': 'event',
   'Developer champions': 'developerChampions',
-  'Kubecon & CloudNativeCon': 'event',
   Podcasts: 'podcasts',
   'Try our APIs': 'tryOurAPIs',
 };
