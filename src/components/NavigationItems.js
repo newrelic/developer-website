@@ -80,7 +80,7 @@ const NavigationItems = ({
 };
 
 const NavIcon = ({ page }) => {
-  if (iconLibrary[page.displayName == 'Attend events']) {
+  if (iconLibrary[page.displayName === 'Attend events']) {
     return (
       <FeatherIcon
         className={styles.headerIcon}
