@@ -1,3 +1,16 @@
+# [1.13.0](https://github.com/newrelic/developer-website/compare/v1.12.5...v1.13.0) (2020-08-17)
+
+
+### Bug Fixes
+
+* swap plain buttons ([d126a49](https://github.com/newrelic/developer-website/commit/d126a497bf7d7f1c30c69b116b19cd473342f303))
+* update brand colors to latest palette ([4605cd2](https://github.com/newrelic/developer-website/commit/4605cd2609e46d2a91c40077ef9cbf0ee9c0360c))
+
+
+### Features
+
+* added ability to add supplemental documentation ([b726217](https://github.com/newrelic/developer-website/commit/b726217fab0edccd17bdd74ee8920ed07d020023))
+
 ## [1.12.5](https://github.com/newrelic/developer-website/compare/v1.12.4...v1.12.5) (2020-08-17)
 
 
