@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReferenceExample.module.scss';
 import ReferencePreview from './ReferencePreview';
-import CodeBlock from './CodeBlock';
+import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 
 const platformStateContextMock = {
   timeRange: {

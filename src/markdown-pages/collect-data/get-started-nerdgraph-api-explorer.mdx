@@ -7,6 +7,12 @@ description: 'Learn to explore NerdGraph, our GraphQL API, and build the queries
 tileShorthand:
   title: 'Build queries with NerdGraph'
   description: 'Try NerdGraph and build the queries you need'
+resources:
+  - title: Introduction to New Relic NerdGraph
+    url: https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph
+
+  - title: NerdGraph tutorials
+    url: https://docs.newrelic.com/docs/apis/nerdgraph/tutorials
 ---
 
 <Intro>
@@ -32,14 +38,14 @@ Make sure you have a valid New Relic API key. You can create one directly from t
 
 ## Build a query to retrieve your name
 
-Time for your first NerdGraph query. You are going to search for your name in the New Relic database:
+Time for your first NerdGraph query. Search for your name in the New Relic database:
 
 1. Erase everything in the query editor.
 2. Select the following fields in the query explorer in this order: `actor`, `user`, `name`.
 
 This GraphQL snippet appears in the editor.
 
-```jsx lineNumbers=false
+```graphql
 {
   actor {
     user {
@@ -68,7 +74,7 @@ Now you can try adding more fields to your query. The simplest way is clicking t
 
 Once again, running the GraphQL query results in just the data you need, without over or under-fetching data. Notice that the `id` field has an argument: passing arguments is a powerful way of customizing your NerdGraph queries. Every field and object can contain arguments, so instead of running multiple queries, you just compose the one that you need.
 
-```jsx lineNumbers=false
+```graphql
 {
   actor {
     user {
@@ -109,11 +115,11 @@ Unlike REST, GraphQL APIs like NerdGraph can return partial responses. For examp
 Let's say that you've built a NerdGraph query you're happy with and you want to test it elsewhere. To capture code-ready queries and mutations:
 
 1. Select the **Tools** menu.
-2. Copy the query as a cURL call or as a [New Relic CLI](...) command.
+2. Copy the query as a curl call or as a [New Relic CLI](...) command.
 
 ![Tools menu](../../images/graphql-guide/tools-menu.png)
 
-```bash lineNumbers=false
+```bash
 # cURL version
 curl https://api.newrelic.com/graphql \
   -H 'Content-Type: application/json' \
@@ -142,8 +148,3 @@ Now you know the basics of composing and testing NerdGraph queries, but how do y
 Try creating more complex queries by clicking fields and expanding objects in the Query Builder (be careful with mutations though, since they could write data to your account).
 
 For more information on NerdGraph and explore other projects from the developer community, check out the [threads on the Explorer’s Hub](https://discuss.newrelic.com/search?q=nerdgraph).
-
-## Related info
-
-- [Introduction to New Relic NerdGraph](https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph)
-- [NerdGraph tutorials](https://docs.newrelic.com/docs/apis/nerdgraph/tutorials)

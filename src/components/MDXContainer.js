@@ -4,14 +4,14 @@ import cx from 'classnames';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
-import Video from './Video';
 import Step from './Step';
 import Steps from './Steps';
 import Caution from './Caution';
 import Important from './Important';
 import Tip from './Tip';
 import Intro from './Intro';
-import MDXCodeBlock from './MDXCodeBlock';
+import Iframe from './Iframe';
+import { MDXCodeBlock, Video } from '@newrelic/gatsby-theme-newrelic';
 
 import styles from './MDXContainer.module.scss';
 
@@ -23,6 +23,7 @@ const components = {
   Important,
   Tip,
   Intro,
+  iframe: Iframe,
   code: MDXCodeBlock,
   pre: (props) => props.children,
 };

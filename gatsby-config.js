@@ -1,3 +1,5 @@
+const quote = (str) => `"${str}"`;
+
 module.exports = {
   siteMetadata: {
     title: 'New Relic Developers',
@@ -14,7 +16,7 @@ module.exports = {
       options: {
         layout: {
           contentPadding: '2rem',
-          maxWidth: '1600px',
+          maxWidth: '1700px',
         },
         newrelic: {
           configs: {
@@ -40,6 +42,51 @@ module.exports = {
             },
           },
         },
+      },
+    },
+    {
+      resolve: 'gatsby-source-swiftype',
+      options: {
+        file: `${__dirname}/src/data/related-pages.json`,
+        refetch: Boolean(process.env.BUILD_RELATED_CONTENT),
+        engineKey: 'Ad9HfGjDw4GRkcmJjUut',
+        limit: 5,
+        getPath: ({ node }) => node.frontmatter.path,
+        getParams: ({ node }) => {
+          const {
+            tags,
+            title,
+            redirects = [],
+            resources = [],
+          } = node.frontmatter;
+
+          const filteredUrls = resources
+            .map((resource) => resource.url)
+            .concat(redirects);
+
+          return {
+            q: tags ? tags.map(quote).join(' OR ') : title,
+            search_fields: {
+              page: ['tags^10', 'body^5', 'title^1.5', '*'],
+            },
+            filters: {
+              page: {
+                type: ['!blog', '!forum'],
+                url: filteredUrls.map((url) =>
+                  url.startsWith('/')
+                    ? `!https://developer.newrelic.com${url}`
+                    : `!${url}`
+                ),
+                document_type: [
+                  '!views_page_menu',
+                  '!term_page_api_menu',
+                  '!term_page_landing_page',
+                ],
+              },
+            },
+          };
+        },
+        filterNode: ({ node }) => node.frontmatter.template === 'GuideTemplate',
       },
     },
     'gatsby-plugin-sass',
@@ -81,6 +128,13 @@ module.exports = {
               maxWidth: 1200,
               fit: 'inside',
               linkImagesToOriginal: false,
+            },
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              enableCustomId: true,
+              icon: false,
             },
           },
         ],
