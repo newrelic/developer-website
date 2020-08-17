@@ -36,7 +36,6 @@ const Sidebar = ({ className }) => {
         <Link
           css={css`
             display: block;
-            display: flex;
             margin-bottom: 1rem;
           `}
           to="/"
