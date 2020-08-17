@@ -82,7 +82,7 @@ const NavigationItems = ({
 
 const NavIcon = ({ page }) => {
   if (page.displayName === 'Collect data') {
-    return <CollectDataIcon className={styles.headerIcon} size="2rem" />;
+    return <CollectDataIcon className={styles.headerIcon} />;
   }
 
   if (iconLibrary[page.displayName]) {
