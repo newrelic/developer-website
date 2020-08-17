@@ -5,7 +5,7 @@ const additionalDocs = {
         name: 'nerdlet.setUrlState',
         description: `
 Updates the current nerdlet's URL state that can be read from
-\`NerdletStateContext.Consumer\`.
+[\`NerdletStateContext.Consumer\`](/components/nerdlet-state-context).
 
 If you wish to update nerdlet's state without persisting its value in the
 url, use React's built-in \`setState()\`.
