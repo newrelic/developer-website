@@ -17,11 +17,11 @@ resources:
 
 <Intro>
 
-Tables are a popular way of displaying data in New Relic applications. For example, with the [chart builder](https://docs.newrelic.com/docs/chart-builder/use-chart-builder/get-started/introduction-chart-builder) you can create tables from [NRQL queries](https://docs.newrelic.com/docs/query-data/nrql-new-relic-query-language/getting-started/introduction-nrql).
+Tables are a popular way of displaying data in New Relic applications. For example, with the [query builder](https://docs.newrelic.com/docs/chart-builder/use-chart-builder/get-started/introduction-chart-builder) you can create tables from [NRQL queries](https://docs.newrelic.com/docs/query-data/nrql-new-relic-query-language/getting-started/introduction-nrql).
 
 Whether you need to have more control over tables or you're importing third-party data, you can build your own tables into your New Relic One application.
 
-In this guide, you are going to build a sample table using various components of the _NR1_ library.
+In this guide, you are going to build a sample table using various New Relic One components.
 
 <Video id="28nnlbhrvg" type="wistia" />
 
@@ -29,21 +29,19 @@ In this guide, you are going to build a sample table using various components of
 
 ## Before you begin
 
-Follow the [instructions in New Relic One](https://one.newrelic.com/launcher/developer-center.launcher) to create an API key and download and configure your NR1 CLI profile.
+If you haven't already installed the New Relic One CLI, step through the [quick start in New Relic One](https://one.newrelic.com/launcher/developer-center.launcher). This process also gets you an API key.
+<br/>
+In addition, to complete the steps in this guide, you need a GitHub account, and to have Node.js installed on your machine. See [Setting up your development environment](/build-apps/set-up-dev-env) for more info. 
 
 <br />
-This guide requires that you have Git and node.js installed on your machine.
 
-<br />
-
+## Clone and set up the example application
 <Steps>
 <Step>
 
-## Clone the example application
+Clone the [nr1-how-to](https://github.com/newrelic/nr1-how-to) example application from GitHub to your local machine. Then, navigate to the app directory.
 
-In this guide you are going to experiment with tables. To do that, you need a New Relic One application you can modify and test on your computer.
-
-There's a demo application for you in the [nr1-how-to](https://github.com/newrelic/nr1-how-to) repository. Start by cloning the repository from GitHub to your local machine. Then, navigate to the app directory.
+The example app lets you experiment with tables.   
 
 ```sh lineNumbers=false copy=false
 git clone https://github.com/newrelic/nr1-how-to.git`
@@ -67,9 +65,9 @@ export default class Nr1HowtoAddTimePicker extends React.Component {
 </Step>
 <Step>
 
-## Run the demo application
+Run the demo application
 
-Change the directory back to `nr1-how-to/create-a-table`. Before you can load the demo application, you need to [update its unique id](https://developer.newrelic.com/build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions) by invoking the NR1 CLI.
+Change the directory back to `nr1-how-to/create-a-table`. Before you can load the demo application, you need to [update its unique id](https://developer.newrelic.com/build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions) by invoking the New Relic One CLI.
 
 Once you've assigned a new UUID to the app, install the dependencies and serve the demo app locally, so that you can test any change live in your browser.
 
@@ -82,20 +80,22 @@ nr1 nerdpack:serve    # Serve the demo app locally
 </Step>
 <Step>
 
-Open [one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local) in your browser. You should see a **Create a table** button in your launcher: That's the demo application you are going to work on. Go ahead and select it.
+Open [one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local) in your browser. Click **Apps*, and then in the **Other apps** section, you should see a **Create a table** launcher. That's the demo application you're going to work on. Go ahead and select it.
 
 ![app-launcher](../../images/nrone-table-guide/demo-app-button.png)
 
-Have a good look at the demo app: There is a `TableChart` on the left side named **Transaction Overview**, with an `AreaChart` next to it. You are going to use `Table` components to add a new table in the second row.
+Have a good look at the demo app. There's a `TableChart` on the left side named **Transaction Overview**, with an `AreaChart` next to it. You'll use `Table` components to add a new table in the second row.
 
 ![app-launcher](../../images/nrone-table-guide/app-overview.png)
 
 </Step>
+</Steps>
+
+## Work with table components
+
+<Steps>
 <Step>
-
-## Import the Table components
-
-Navigate to the `nerdlets/create-a-table-nerdlet` subdirectory and open the `index.js` file.
+Navigate to the `nerdlets/create-a-table-nerdlet` subdirectory and open the `index.js` file. 
 
 Add the following components to the import statement at the top of the file so that it looks like the example:
 
@@ -124,9 +124,8 @@ import {
 </Step>
 <Step>
 
-## Add a basic Table component
-
-Locate the empty `GridItem` in `index.js`: This is where you start building the table.
+Add a basic Table component
+Locate the empty `GridItem` in `index.js`: This is where you start building the table. 
 
 Add the initial `<Table>` component. The `items` property collects the data by calling `_getItems()`, which contains sample values.
 
@@ -139,7 +138,7 @@ Add the initial `<Table>` component. The `items` property collects the data by c
 </Step>
 <Step>
 
-## Add the header and rows
+Add the header and rows
 
 As the [`Table`](https://developer.newrelic.com/client-side-sdk/index.html#components/Table) component renders a fixed number of header cells and rows, your next step is adding header components, as well as a function that returns the required table rows.
 
@@ -178,9 +177,9 @@ Take a look at the application running in New Relic One: you should see somethin
 </Step>
 <Step>
 
-## Replace standard table cells with smart cells
+Replace standard table cells with smart cells
 
-The NR1 library includes cell components that can automatically format certain data types, like users, metrics, and entity names.
+The New Relic One library includes cell components that can automatically format certain data types, like users, metrics, and entity names.
 
 The table you've just created contains columns that can benefit from those components: **Application** (an entity name) and **Size** (a metric).
 
@@ -229,7 +228,7 @@ Time to give your table a second look: The cell components you've added take car
 </Step>
 <Step>
 
-## Add some action to your table!
+Add some action to your table!
 
 Tables are great, but interactive tables can be better: As a last update, you are going to allow users to act on each data row.
 
@@ -285,5 +284,3 @@ Go back to your application and try hovering over any of the rows: Notice how th
 You've built a table into a New Relic One application, using components to format data automatically and provide contextual actions. Well done!
 
 Keep exploring the `Table` components, their properties, and how to use them, in our [SDK documentation](https://developer.newrelic.com/client-side-sdk/index.html#components/Table).
-
-### Related info

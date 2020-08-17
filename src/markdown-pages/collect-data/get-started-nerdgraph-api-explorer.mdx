@@ -38,14 +38,14 @@ Make sure you have a valid New Relic API key. You can create one directly from t
 
 ## Build a query to retrieve your name
 
-Time for your first NerdGraph query. You are going to search for your name in the New Relic database:
+Time for your first NerdGraph query. Search for your name in the New Relic database:
 
 1. Erase everything in the query editor.
 2. Select the following fields in the query explorer in this order: `actor`, `user`, `name`.
 
 This GraphQL snippet appears in the editor.
 
-```jsx lineNumbers=false
+```graphql
 {
   actor {
     user {
@@ -74,7 +74,7 @@ Now you can try adding more fields to your query. The simplest way is clicking t
 
 Once again, running the GraphQL query results in just the data you need, without over or under-fetching data. Notice that the `id` field has an argument: passing arguments is a powerful way of customizing your NerdGraph queries. Every field and object can contain arguments, so instead of running multiple queries, you just compose the one that you need.
 
-```jsx lineNumbers=false
+```graphql
 {
   actor {
     user {
@@ -115,11 +115,11 @@ Unlike REST, GraphQL APIs like NerdGraph can return partial responses. For examp
 Let's say that you've built a NerdGraph query you're happy with and you want to test it elsewhere. To capture code-ready queries and mutations:
 
 1. Select the **Tools** menu.
-2. Copy the query as a cURL call or as a [New Relic CLI](...) command.
+2. Copy the query as a curl call or as a [New Relic CLI](...) command.
 
 ![Tools menu](../../images/graphql-guide/tools-menu.png)
 
-```bash lineNumbers=false
+```bash
 # cURL version
 curl https://api.newrelic.com/graphql \
   -H 'Content-Type: application/json' \

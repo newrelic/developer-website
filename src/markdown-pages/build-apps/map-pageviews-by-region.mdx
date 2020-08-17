@@ -57,12 +57,11 @@ The following are some terms used in this guide:
 
 ## Query your browser data
 
-Use Chart Builder to write a NRQL query to see your page view data, as follows.
+Use Query builder to write a NRQL query to see your page view data, as follows.
 
-1. On New Relic One, select **Query your data** (in the top right corner), and then select **Advanced (NRQL)**. You'll use NRQL to test your query before dropping the data into your table.
+1. On New Relic One, select **Query your data** (in the top right corner). That puts you in **NRQL** mode. You'll use NRQL to test your query before dropping the data into your table.
 
-2. Copy and paste this query into the query field, and then select **Run**.
-
+2. Copy and paste this query into a clear query field, and then select **Run**. 
 ```sql
 FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' FACET countryCode, regionCode SINCE 1 week ago LIMIT 1000
 ```
@@ -97,10 +96,10 @@ cd pageviews-app && nr1 nerdpack:serve
 
 ## Review your app files and view your app locally
 
-1. Navigate to your `pageviews-app` to see how it's structured.
-   It contains a launcher folder, where you can customize the description and icon that will be displayed on the app's launcher in New Relic One. It also contains `nerdlets`, which each contain three default files: `index.js`, `nr1.json`, and `styles.scss`. You'll edit some of these files as part of this guide. For more information, see [Nerdpack file structure](/explore-docs/nerdpack-file-structure.mdx).
+1. Navigate to your `pageviews-app` to see how it's structured. 
+It contains a launcher folder, where you can customize the description and icon that will be displayed on the app's launcher in New Relic One. It also contains `nerdlets`, which each contain three default files: `index.js`, `nr1.json`, and `styles.scss`. You'll edit some of these files as part of this guide. For more information, see [Nerdpack file structure](/explore-docs/nerdpack-file-structure).
 
-2. Now in your browser, open `https://one.newrelic.com/?nerdpacks=local` to see the `pageview-apps` Nerdpack that you served up.
+2. Now in your browser, open `https://one.newrelic.com/?nerdpacks=local`, and then click **Apps** to see the `pageview-apps` Nerdpack that you served up. 
 
 When you select the launcher, you see a `Hello` message.
 

@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
 
 const Section = styled.section`
-  &:not(:last-child) {
-    margin-bottom: 2rem;
+  padding: 1rem;
+
+  &:first-child {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
   }
 `;
 

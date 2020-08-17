@@ -39,10 +39,10 @@ Clone the example applications from the [GitHub repo](https://github.com/newreli
 
 Use the New Relic One CLI to update the application UUID and run the application locally.
 
-1. In the terminal, switch to the `/nr1-howto/use-nerdstorage` directory:
+1. In the terminal, switch to the `/nr1-how-to/use-nerdstorage` directory:
 
 ```
-cd /nr1-howto/use-nerdstorage
+cd /nr1-how-to/use-nerdstorage
 ```
 
 2. Update the UUID and serve the application:
@@ -58,7 +58,7 @@ nr1 nerdpack:serve
 
 Once the app is successfully served, your terminal will return the URL to view your running application on [New Relic One](https://one.newrelic.com/?nerdpacks=local).
 
-Load the URL. Under **Your applications** you'll see the **Use Nerdstorage** app listed. Click to launch the app.
+Load the URL. Click **Apps** and under **Other apps** you'll see the **Use Nerdstorage** app listed. Click to launch the app.
 
 ![Your applications view updated](../../images/build-an-app/NerdStorage-applications-view.png)
 
@@ -219,7 +219,7 @@ _removeFromNerdStorage(index, data){
 }
 ```
 
-Once this is done, clicking the trash button will remove the item it's associated with, and the app will update to show the change.
+Once you do this, clicking the trash button removes the item it's associated with, and the app updates to show the change. 
 
 ![mutate data](../../images/build-an-app/mutate-data-NerdStorage.png)
 
@@ -252,7 +252,7 @@ iconType={Button.ICON_TYPE.INTERFACE__OPERATIONS__TRASH}
 
 <Step>
 
-As the new **Delete Document** button will be calling the `_deleteDocument` helper method, you'll need to update that using the code below:
+Because the new **Delete Document** button will be calling the `_deleteDocument` helper method, you'll need to update that using this code:
 
 ```
 _deleteDocument(){

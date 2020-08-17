@@ -15,7 +15,7 @@ resources:
 ---
 
 <Intro>
-This guide steps you through the process of adding access to the New Relic time picker in the sample transaction overview application.
+This guide steps you through the process of adding access to our time picker in the sample transaction overview application. 
 
 The sample application provides an overview of the telemetry data showing your account's transactions by application, average response time, HTTP response codes, and transaction errors. When you enable the time picker, users can specify the time range of data to view.
 
@@ -29,12 +29,12 @@ We also have a 12 minute video that covers the steps below.
 
 To develop projects, you need our New Relic One CLI (command line interface). If you haven't already installed it, do the following:
 
-- Install [Node.js](https://nodejs.org/en/download/).
-- Complete steps 1–4 of our [CLI wizard](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), and be sure to make a copy of your account ID from step 1 because you’ll need it later.
+* Install [Node.js](https://nodejs.org/en/download/).
+* Complete steps 1–4 of the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==). In step 1, be sure to make a copy of the number preceding your account name. This is your accound ID, and you’ll need it later.
 
 <Important>
 
-If you already installed the New Relic One CLI, but you can't remember your account ID, you can re-run the wizard just to get your account ID.
+  If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
 
 </Important>
 
@@ -78,8 +78,8 @@ Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
 <Important>
 
-Your account ID is available in the CLI wizard (see **Before you begin**).
-
+  Your account ID is available in the CLI quick start (see **Before you begin**).
+  
 </Important>
 
 ```jsx
@@ -92,9 +92,9 @@ this.accountId = <ADD YOUR ACCOUNT ID>;
 
 Change to the `add-time-picker` directory:
 
-```
-cd /nr1-howto/add-time-picker
-```
+  ```
+  cd /nr1-how-to/add-time-picker
+  ```
 
   </Step>
 
@@ -111,15 +111,7 @@ nr1 nerdpack:serve
 
   <Step>
 
-Once the sample application is successfully served, go to the local New Relic One homepage: https://one.newrelic.com/?nerdpacks=local and click **Add Time Picker**:
-
-  <Important>
-
-If you don't see any launchers, click **Your applications**.
-
-  </Important>
-
-![New Relic One launcher image](../../images/time-picker-guide/homepage-launcher.png)
+Once the sample application is successfully served, go to the local version of New Relic One (https://one.newrelic.com/?nerdpacks=local) click **Apps**, and click **Add Time Picker**.
 
   </Step>
 
@@ -296,7 +288,7 @@ After you complete these steps, your browser console displays something like thi
 
 ## Add the time to the queries
 
-In your console, you should see some data from the New Relic platform state. Now you are ready to add `timeRange` data to update the charts in the transaction overview application.
+In your console, you should see some data from the New Relic platform state. Now you're ready to add `timeRange` data to update the charts in the transaction overview application.
 
 This step requires you to import the `timeRangeToNrql` utility method from the New Relic One community library.
 
