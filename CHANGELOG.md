@@ -1,3 +1,11 @@
+## [1.13.1](https://github.com/newrelic/developer-website/compare/v1.13.0...v1.13.1) (2020-08-17)
+
+
+### Bug Fixes
+
+* bigger nav icons ([fed7b96](https://github.com/newrelic/developer-website/commit/fed7b96cd46aa39781cadad32024893decab728e))
+* replace the collect data icon to match the tdp icon ([97a242f](https://github.com/newrelic/developer-website/commit/97a242f6f4366c1b1946bf36d8fd118a0f34b9e8))
+
 # [1.13.0](https://github.com/newrelic/developer-website/compare/v1.12.5...v1.13.0) (2020-08-17)
 
 
