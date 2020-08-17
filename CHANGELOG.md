@@ -1,3 +1,11 @@
+## [1.12.5](https://github.com/newrelic/developer-website/compare/v1.12.4...v1.12.5) (2020-08-17)
+
+
+### Bug Fixes
+
+* logo svg rendering with extra space in safari ([868a043](https://github.com/newrelic/developer-website/commit/868a043161fb1fb91f52a2926d8b99276fa2fc65))
+* upgrade gatsby-plugin-mdx from 1.2.28 to 1.2.29 ([e619706](https://github.com/newrelic/developer-website/commit/e61970689c9de8f8f02541b832518cfea8c88e51))
+
 ## [1.12.4](https://github.com/newrelic/developer-website/compare/v1.12.3...v1.12.4) (2020-08-16)
 
 
