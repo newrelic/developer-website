@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 
 import SEO from '../components/Seo';
@@ -177,6 +178,9 @@ const IndexPage = ({ data, pageContext }) => {
                 as={ExternalLink}
                 variant={Button.VARIANT.PRIMARY}
                 href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+                css={css`
+                  margin-right: 0.5rem;
+                `}
               >
                 Nominate a developer champion
                 <FeatherIcon
@@ -186,7 +190,7 @@ const IndexPage = ({ data, pageContext }) => {
               </Button>
               <Button
                 as={Link}
-                variant={Button.VARIANT.PLAIN}
+                variant={Button.VARIANT.LINK}
                 to="/developer-champion"
               >
                 Learn more about developer champions

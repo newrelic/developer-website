@@ -52,7 +52,7 @@ const Contribute = ({ pageContext }) => {
       <Button
         as={ExternalLink}
         href={`${repository}/tree/main/${fileRelativePath}`}
-        variant={Button.VARIANT.PLAIN}
+        variant={Button.VARIANT.NORMAL}
         size={Button.SIZE.SMALL}
       >
         <Icon

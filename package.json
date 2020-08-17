@@ -7,7 +7,7 @@
     "@emotion/styled": "^10.0.27",
     "@mdx-js/mdx": "^1.6.10",
     "@mdx-js/react": "^1.6.14",
-    "@newrelic/gatsby-theme-newrelic": "^1.6.0",
+    "@newrelic/gatsby-theme-newrelic": "^1.7.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.15.0",
     "eslint-plugin-react-hooks": "^4.0.8",
