@@ -85,6 +85,7 @@ const MainLayout = ({ children }) => {
             'sidebar content'
             'sidebar footer';
           grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+          grid-template-rows: 1fr auto;
           grid-gap: ${layout.contentPadding};
           width: 100%;
           max-width: ${layout.maxWidth};
