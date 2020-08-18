@@ -259,7 +259,7 @@ The related resources component is controlled by specific Frontmatter slugs that
 are defined on a page.
 
 By setting the Frontmatter for `resources` and `tags` you can control what is populated
-in this component. Please review the [Style Guide](STYLE_GUIDE) for further details
+in this component. Please review the [Style Guide](STYLE_GUIDE.md) for further details
 on these slugs.
 
 ### Maximum references
@@ -277,8 +277,8 @@ always have 5 results, assuming Swiftype can return 5 results for that query.
 The order of priority for populating content in this component is driven by:
 
 1. Any resources defined in the page Frontmatter.
-2. Any tags defined in the the page Frontmatter will return send a search query term and return results from Swifttype.
-3. Any Swifttype results that match the page title.
+2. Any tags defined in the the page Frontmatter will send a search query term and return results from Swiftype.
+   2b. Any Swifttype results that match the page title.
 
 ### Resource site tags
 
