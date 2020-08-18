@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/newrelic/developer-website/compare/v1.13.1...v1.13.2) (2020-08-18)
+
+
+### Bug Fixes
+
+* bump @newrelic/gatsby-theme-newrelic version ([03fccb8](https://github.com/newrelic/developer-website/commit/03fccb8ef13fbde1feb447652f3b5f06139867f9))
+
 ## [1.13.1](https://github.com/newrelic/developer-website/compare/v1.13.0...v1.13.1) (2020-08-17)
 
 
