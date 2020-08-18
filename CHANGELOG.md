@@ -1,3 +1,10 @@
+## [1.13.3](https://github.com/newrelic/developer-website/compare/v1.13.2...v1.13.3) (2020-08-18)
+
+
+### Bug Fixes
+
+* ensure footer remains the same size on monitors with larger resolution ([746015b](https://github.com/newrelic/developer-website/commit/746015be31d3d39e4af2993c9ebc4e6e856b9c20))
+
 ## [1.13.2](https://github.com/newrelic/developer-website/compare/v1.13.1...v1.13.2) (2020-08-18)
 
 
