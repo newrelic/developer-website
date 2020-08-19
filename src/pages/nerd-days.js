@@ -31,7 +31,7 @@ const NerdDaysPage = () => {
       'data-clearbit-publishable-key',
       'pk_4d10daa544de6f993a9a9ce002ccd1c6'
     );
-    script.onerror = function (e) {
+    script.onerror = function () {
       // eslint-disable-next-line no-console
       console.log('Clearbit Form JS unable to load');
       pollForDefinition(window, 'MktoForms2', function () {
