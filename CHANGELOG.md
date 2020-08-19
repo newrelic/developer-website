@@ -1,3 +1,13 @@
+## [1.13.5](https://github.com/newrelic/developer-website/compare/v1.13.4...v1.13.5) (2020-08-19)
+
+
+### Bug Fixes
+
+* Fixed unused var error ([234600a](https://github.com/newrelic/developer-website/commit/234600a579d455c7e829d298068d9d1ebe3161f9))
+* merge main into nerd-days branch ([e2c0edf](https://github.com/newrelic/developer-website/commit/e2c0edf4b588d4ba20ae171bac14bcadf2ece5e5))
+* update nerd days page to use PageLayout ([e6636f4](https://github.com/newrelic/developer-website/commit/e6636f485dd10ce2534363cb03c4767055c3c319))
+* update package-lock.json ([439de7d](https://github.com/newrelic/developer-website/commit/439de7d7e1fcc97837914e18ede7214ec9384d27))
+
 ## [1.13.4](https://github.com/newrelic/developer-website/compare/v1.13.3...v1.13.4) (2020-08-19)
 
 
