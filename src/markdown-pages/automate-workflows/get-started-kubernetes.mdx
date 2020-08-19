@@ -14,6 +14,10 @@ resources:
     url: https://docs.newrelic.com
   - title: 'Kubernetes documentation'
     url: https://kubernetes.io/docs/home/
+tags:
+  - kubernetes 
+  - kubernetes operator
+  - nrql alert conditions
 ---
 
 <Intro>
@@ -29,9 +33,9 @@ In this guide you'll learn how to set up New Relic for the first time with the o
 This walkthrough assumes you’ve already deployed a Kubernetes cluster. You could even create a local cluster on your machine with [`kind`](https://kind.sigs.k8s.io/).
 To use this guide, you should have some basic knowledge of both New Relic and Kubernetes. To complete the full exercise, you’ll need to:
 
-* Deploy a New Relic agent if you haven't done so yet. [Install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application. 
-* [Install `kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/) and point it at the correct cluster; this determines the cluster where you’ll install the New Relic operator.
-* [Install `kustomize`](https://kubernetes-sigs.github.io/kustomize/installation/).
+- Deploy a New Relic agent if you haven't done so yet. [Install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application.
+- [Install `kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/) and point it at the correct cluster; this determines the cluster where you’ll install the New Relic operator.
+- [Install `kustomize`](https://kubernetes-sigs.github.io/kustomize/installation/).
 
 <Steps>
 <Step>
@@ -47,7 +51,7 @@ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/relea
 Next, install the Kubernetes operator.
 
 ```bash lineNumbers=false
-kustomize build https://github.com/newrelic/newrelic-kubernetes-operator/configs/default | kubectl apply -f -
+kustomize build https://github.com/newrelic/newrelic-kubernetes-operator/config/default | kubectl apply -f -
 ```
 
 To confirm the installation was successful, run a few `kubectl` commands to check the status of the Kubernetes operator.
@@ -201,6 +205,40 @@ To finish things off, you'll create and add an alert channel to your alert polic
 
 </Step>
 </Steps>
+
+## Try it out now
+
+We have a Kubernetes test cluster ready for you in 2 minutes. By following this on-line tutorial, you will learn how to:
+
+- Deploy the New Relic agent in a Kubernetes environment
+- Use the New Relic Kubernetes operator
+
+**Some tips to use the on-line tutorial window:**
+
+- Accept the cookies, so you can see the menu bar.
+- Click anywhere in the tutorial window to start. It will take about 2 minutes for your environment to be ready.
+- Press CTRL-l or type `clear` to clear the terminal window
+- Click on the finish flag icon in the bottom menu to hide or show the instructions
+
+Good luck!
+
+<Important>
+
+Some browsers automatically disable the use of iframes. If the module isn't loading
+please check your browser settings.
+
+</Important>
+
+<iframe
+  title="Instruct K8 Operator Module"
+  width="1000"
+  height="1000"
+  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+  src="https://play.instruqt.com/embed/newrelic/nr-k8s-operator"
+  style="border: 0;"
+>
+  <p>Your browser does not support iframes.</p>
+</iframe>
 
 ## What’s next?
 

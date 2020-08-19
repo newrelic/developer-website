@@ -9,6 +9,7 @@ import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 import styles from './NavigationItems.module.scss';
 import { link } from '../types';
+import CollectDataIcon from './CollectDataIcon';
 import { useLocation, useMatch } from '@reach/router';
 
 const iconLibrary = {
@@ -16,6 +17,7 @@ const iconLibrary = {
   'Build apps': 'buildApps',
   'Automate workflows': 'automation',
   'Explore docs': 'developerDocs',
+  'Attend events': 'event',
   'Developer champions': 'developerChampions',
   Podcasts: 'podcasts',
   'Try our APIs': 'tryOurAPIs',
@@ -79,11 +81,18 @@ const NavigationItems = ({
 };
 
 const NavIcon = ({ page }) => {
+  if (page.displayName === 'Collect data') {
+    return (
+      <CollectDataIcon className={styles.headerIcon} size="var(--icon-size)" />
+    );
+  }
+
   if (iconLibrary[page.displayName]) {
     return (
       <NewRelicIcon
         className={styles.headerIcon}
         name={iconLibrary[page.displayName]}
+        size="var(--icon-size)"
       />
     );
   }
@@ -126,7 +135,11 @@ const NavItem = ({ page, depthLevel, searchTerm, filteredPageNames }) => {
         data-depth={depthLevel}
         className={cx({ [styles.filterOn]: filteredPageNames })}
         css={css`
-          padding-left: ${depthLevel === 0 ? '0' : 'calc(0.5rem + 1em)'};
+          --icon-size: 1.5rem;
+
+          padding-left: ${depthLevel === 0
+            ? '0'
+            : 'calc(0.5rem + var(--icon-size))'};
 
           ${depthLevel === 0 &&
           css`
