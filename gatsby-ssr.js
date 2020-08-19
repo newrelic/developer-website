@@ -47,6 +47,10 @@ const onPreRenderHTML = ({
   replacePostBodyComponents([
     ...getPostBodyComponents(),
     <script key="nr1-sdk" crossOrigin="anonymous" src={JS_BUNDLE} />,
+    <script
+      key="marketo-form"
+      src="//app-abj.marketo.com/js/forms2/js/forms2.min.js"
+    />,
   ]);
 };
 
