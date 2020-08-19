@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import Button from '../Button';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import { Link } from 'gatsby';
 
 const GuideTileButton = ({ className, ...props }) => (

@@ -1,6 +1,8 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
 
+const MAX_RESULTS = 5;
+
 const getFileRelativePath = (absolutePath) =>
   absolutePath.replace(`${process.cwd()}/`, '');
 
@@ -17,6 +19,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               path
               template
               redirects
+              resources {
+                url
+              }
             }
           }
         }
@@ -53,6 +58,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           frontmatter.template === 'OverviewTemplate'
             ? `${frontmatter.path}/*`
             : undefined,
+        relatedResourceLimit: Math.max(
+          MAX_RESULTS - (frontmatter.resources || []).length,
+          0
+        ),
       },
     });
   });
@@ -83,4 +92,12 @@ exports.onCreateNode = ({ node, actions }) => {
       },
     });
   }
+};
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    externals: {
+      tessen: 'Tessen',
+    },
+  });
 };

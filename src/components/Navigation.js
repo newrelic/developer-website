@@ -45,13 +45,11 @@ const Navigation = ({ className, searchTerm }) => {
       role="navigation"
       aria-label="Navigation"
     >
-      <ul className={styles.listNav}>
-        <NavigationItems
-          searchTerm={searchTermSanitized}
-          pages={pages}
-          filteredPageNames={filteredPageNames}
-        />
-      </ul>
+      <NavigationItems
+        searchTerm={searchTermSanitized}
+        pages={pages}
+        filteredPageNames={filteredPageNames}
+      />
     </nav>
   );
 };

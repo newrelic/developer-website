@@ -5,8 +5,11 @@
 
   code {
     padding: 0.125rem;
-    background: var(--tertiary-background-color);
     border-radius: 2px;
+  }
+
+  :not(pre) > code {
+    background: var(--tertiary-background-color);
   }
 
   p:last-child {

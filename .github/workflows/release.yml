@@ -4,7 +4,7 @@ on:
   push:
     branches:
       # todo: change this branch name
-      - master
+      - main
 
 env:
   BOT_NAME: nr-opensource-bot
@@ -105,7 +105,7 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.OPENSOURCE_BOT_TOKEN }}
-          branch: master
+          branch: main
 
   generate-changelog:
     runs-on: ubuntu-latest

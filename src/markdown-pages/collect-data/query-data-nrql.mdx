@@ -8,7 +8,11 @@ tileShorthand:
   title: 'Query data with NRQL'
   description: 'Query default event data, custom events, and attributes'
 redirects:
- - /technology/nrql
+  - /technology/nrql
+tags:
+ - NRQL
+ - NRQL syntax
+ - calculate data NRQL 
 ---
 
 <Intro>
@@ -44,10 +48,10 @@ SELECT function(attribute) [AS 'label'][, ...]
 
 NRQL queries can be as simple as fetching rows of data in a raw tabular form to inspect individual events.
 
-[Learn what events New Relic agents provide out of the box](https://docs.newrelic.com/docs/insights/insights-data-sources/default-data/insights-default-data-other-new-relic-products)
+[Learn what events open source agents provide out of the box](https://docs.newrelic.com/docs/insights/insights-data-sources/default-data/insights-default-data-other-new-relic-products)
 
 ```sql
--- Fetch a list of New Relic Browser PageView events
+-- Fetch a list of Browser PageView events
 SELECT * FROM PageView
 ```
 
@@ -74,7 +78,7 @@ SELECT funnel(session,
 
 <Step>
 
-Using NRQL, you can customize your New Relic experience by crafting diverse dashboards in New Relic One that show your data from multiple angles. These dashboards can be shared with technical and non-technical stakeholders alike.
+Using NRQL, you can customize your New Relic experience by crafting diverse dashboards that show your data from multiple angles. You can share these dashboards with technical and non-technical stakeholders alike.
 
 ![Dashboard created with NRQL](../../images/nr1-dashboard.png)
 
@@ -96,9 +100,9 @@ For an overview of NRQL syntax, see [Introduction to NRQL](https://docs.newrelic
 
 To learn how to query and narrow a large data store by a specific parameter, watch the tutorial on [Filtering queries with NRQL](https://learn.newrelic.com/writing-nrql-queries).
 
-### Community Forum
+### Community forum
 
-Connect with other developers in the [New Relic Explorers Hub](http://discuss.newrelic.com/tags/developer).
+Connect with other developers in the [our Explorers Hub](http://discuss.newrelic.com/tags/developer).
 
 ### GitHub
 
