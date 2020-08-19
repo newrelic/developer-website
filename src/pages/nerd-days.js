@@ -29,7 +29,7 @@ const NerdDaysPage = () => {
     script.async = true;
     script.setAttribute(
       'data-clearbit-publishable-key',
-      '<pk_4d10daa544de6f993a9a9ce002ccd1c6>'
+      'pk_4d10daa544de6f993a9a9ce002ccd1c6'
     );
     script.onerror = function (e) {
       // eslint-disable-next-line no-console
@@ -54,8 +54,9 @@ const NerdDaysPage = () => {
         <div>
           <img className={styles.img} src={nerdDays} alt="nerd days header" />
           <p>
-            Nerd Days is a FREE 2-day event focused on building more perfect
-            software. Our goal is to spend less time looking at slides that tell
+            Nerd Days is a FREE engineering conference that kicks off October 13{' '}
+            <em>(Dates vary by region)</em>. Focused on building more perfect
+            software, our goal is to spend less time looking at slides that tell
             you what software can do and more time on getting your hands on the
             software to solve problems efficiently.
           </p>
@@ -68,14 +69,18 @@ const NerdDaysPage = () => {
           <h2 className={styles.h2}>CALL FOR PROPOSALS</h2>
           <p>
             Got an interesting topic you want to share with your fellow
-            engineers? <Link to="/">Submit your proposals</Link> by September 1,
-            2021 at 11:59 PM PT. For more details, check out the one-pager.
-            proposals will contacted by September 30, 2021 at the latest.
+            engineers?{' '}
+            <Link to="https://docs.google.com/forms/d/e/1FAIpQLSe8LOilCrD_TCUPyHFHG_QzVW2UdUR0UKZ8H8WNylz0flB7OQ/viewform">
+              Submit your proposals
+            </Link>{' '}
+            by September 1, 2021 at 11:59 PM PT. For more details, check out the
+            one-pager. proposals will contacted by September 30, 2021 at the
+            latest.
           </p>
         </div>
         <div className={styles.formholder}>
           <div className={styles.form}>
-            <p className={styles.formhead}>REGISTER FOR THIS WEBINAR</p>
+            <p className={styles.formhead}>REGISTER FOR THIS NERD DAYS</p>
             <form id="mktoForm_3525" />
           </div>
         </div>

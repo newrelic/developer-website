@@ -101,12 +101,5 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-clearbit',
-    //   options: {
-    //     publishableKey: '<pk_4d10daa544de6f993a9a9ce002ccd1c6>',
-    //     enableOnDevMode: true, // if 'false', clearbit will be fired on NODE_ENV=production only
-    //   },
-    // },
   ],
 };
