@@ -79,7 +79,7 @@ const NerdDaysPage = () => {
                 <Link to="https://docs.google.com/forms/d/e/1FAIpQLSe8LOilCrD_TCUPyHFHG_QzVW2UdUR0UKZ8H8WNylz0flB7OQ/viewform">
                   Submit your proposals
                 </Link>{' '}
-                by September 1, 2021 at 11:59 PM PT. For more details, check out
+                by September 1, 2020 at 11:59 PM PT. For more details, check out
                 the one-pager. proposals will contacted by September 30, 2020 at
                 the latest.
               </p>
