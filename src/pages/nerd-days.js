@@ -59,7 +59,7 @@ const NerdDaysPage = () => {
                 alt="nerd days header"
               />
               <p>
-                Nerd Days is a FREE engineering conference that kicks off
+                Nerd Days is a <b>FREE</b> engineering conference that kicks off
                 October 13 <em>(Dates vary by region)</em>. Focused on building
                 more perfect software, our goal is to spend less time looking at
                 slides that tell you what software can do and more time on
@@ -80,13 +80,13 @@ const NerdDaysPage = () => {
                   Submit your proposals
                 </Link>{' '}
                 by September 1, 2021 at 11:59 PM PT. For more details, check out
-                the one-pager. proposals will contacted by September 30, 2021 at
+                the one-pager. proposals will contacted by September 30, 2020 at
                 the latest.
               </p>
             </div>
             <div className={styles.formholder}>
               <div className={styles.form}>
-                <p className={styles.formhead}>REGISTER FOR THIS NERD DAYS</p>
+                <p className={styles.formhead}>REGISTER FOR NERD DAYS</p>
                 <form id="mktoForm_3525" />
               </div>
             </div>
