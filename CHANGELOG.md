@@ -1,3 +1,11 @@
+## [1.13.7](https://github.com/newrelic/developer-website/compare/v1.13.6...v1.13.7) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.10 to 1.6.13 ([2ca8bd0](https://github.com/newrelic/developer-website/commit/2ca8bd0e82062c2b1b27116682018f1024cf95e7))
+* upgrade multiple dependencies with Snyk ([d194e87](https://github.com/newrelic/developer-website/commit/d194e87ae94a69bef0e5adb885a65c5fb95a65ab))
+
 ## [1.13.6](https://github.com/newrelic/developer-website/compare/v1.13.5...v1.13.6) (2020-08-20)
 
 
