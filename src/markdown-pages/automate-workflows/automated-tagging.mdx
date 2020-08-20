@@ -1,0 +1,313 @@
+---
+path: '/automate-workflows/automated-tagging'
+duration: '30 min'
+title: 'Automate tagging of your entire stack'
+template: 'GuideTemplate'
+description: 'A quick demo application that automates the provisioning, deployment, instrumentation, and tagging of a simple app.'
+tileShorthand:
+  title: 'Automatically tag a simple "Hello World" Demo across the entire stack'
+  description: 'See how easy it is to leverage automation in your DevOps environment!'
+resources:
+  - title: 'Quickly tag a set of resources'
+    url: /automate-workflows/5-mins-tag-resources
+  - title: 'Tagging: Use tags to organize and group what you monitor'
+    url: https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/tagging-use-tags-organize-group-what-you-monitor
+---
+
+At New Relic, we are always looking for challenging problems to solve. One of the things we've been working on lately is figuring out ways for our developers to experience different aspects of New Relic so they can more quickly build on the platform, find a solution to a specific use case, or just learn something new (which is always fun!). 
+
+One of the frameworks that we are working on enables our various teams to define and spin up complete environments, from infrastructure to applications, to instrumentation. Like many internal frameworks, this has undergone several iterations, and in fact, we are in the midst right now of major refactor. Because of our commitment to open source, we wanted to start working openly early in the process and invite you to collaborate with us. Drop any thoughts & comments in the [Build on New Relic](https://discuss.newrelic.com/c/build-on-new-relic) and let us know what you think! 
+
+OK, let's jump in!
+
+## Overview
+
+One of the things that we've learned is that keeping your stack organized can be challenging, especially as resources come and go. One strategy to help with this is to apply tags in a consistent manner across your estate. In this guide, you will provision a host on your cloud provider, deploy a simple node.js app on that host, instrument both with New Relic agents, and then apply a consistent tagging strategy across all the resources--all 'automagically'. (Not really, it's mostly Ansible under the covers.) 
+
+**Remember** Make sure to do the **Teardown** step at the end to decommision the entities that we provision in this guide. 
+
+
+## Before you begin
+To run this example there are several pre-requisite steps, most of which involve setting up the right configurations, and at least for now, building a [docker](https://docs.docker.com/get-docker/) image. 
+
+We use several of our open source projects to make this all work. Let's take a look at them now.
+* [Demo Deployer](https://github.com/newrelic/demo-deployer) - This is the engine that drives all the automation. For convenience, you'll clone this repo and build a docker image. In future iterations, we'll publish the image in docker hub or someplace similar. 
+* [Demo Nodetron] (https://github.com/newrelic/demo-nodetron) - This is the simple app that will be provisioned on a host. It will give you a simple web page and an API that you can hit with a tool like [Postman](https://www.postman.com/downloads/) depending on how much traffic you want to generate. 
+* [Demo New Relic Instrumentation](https://github.com/newrelic/demo-newrelic-instrumentation) - This is the project that we use to layer in the instrumentation for the infrastructure and the application. 
+
+We kept each project distinct to encapsulate its behavior. The idea being that we can simply add more behaviors and then weave them in to assemble more complex scenarios. Cool, right?
+
+<Steps>
+
+<Step>
+
+### Build the Deployer
+Let's get the deployer built. Essentially, this is cloning the repo and building the docker image. If you don't have docker installed, you can download it [here](https://docs.docker.com/get-docker/). 
+
+* Clone the deployer repo
+
+```bash
+git clone git@github.com:newrelic/demo-deployer.git $HOME/deployer
+```
+
+* Build the docker image
+
+```bash
+docker build -t deployer .
+```
+</Step>
+
+<Step>
+
+### Create Config files
+In this example, we will actually provision a host on either AWS or Asure, depending on which one you choose. The deployer that you just built, uses a configuration file that has references your creds so it can invoke the necessary APIs. The instructions to create your configuraiton file are [here](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). In the end, you will have something that looks similar to the file on the right. 
+
+```json
+{
+  "credentials": {
+
+    "aws": {
+      "apiKey": "my_aws_api_key",
+      "secretKey": "my_aws_secret_key",
+      "secretKeyPath": "/path/to/my/secretkey.pem",
+      "region": "my_aws_region"
+    },
+
+    "azure": {
+      "client_id": "my_client_id",
+      "tenant": "my_tenant_id",
+      "subscription_id": "my_subscription_id",
+      "secret": "my_secret",
+      "region": "my_region",
+      "sshPublicKeyPath": "/path/to/my/id_rsa.pub"
+    },
+
+    "newrelic": {
+      "licenseKey": "my_new_relic_license_key",
+      "insightsInsertApiKey": "my_new_relic_insights_api_key",
+      "accountId": "my_new_relic_account_id"
+    },
+
+    "git": {
+      "username": "my_git_access_token"
+    }
+  }
+}
+```
+
+</Step>
+
+<Step>
+
+## Let's run this thing!
+Now that everything is setup, you can run the deployer in the docker image. Because this is actually provisioning infrastructure, deploying apps, etc. it will take a few minutes. Go ahead and invoke the command and then we'll walk through what's happening.
+
+```bash
+docker run -it\
+    -v $HOME/configs/:/mnt/deployer/configs/\
+    --entrypoint ruby deployer main.rb -c configs/[user].docker.local.json -d documentation/tutorial/user_stories/Hello/hello.json
+```
+
+## hello.json
+The deployer is configuration driven, and [hello.json](https://github.com/newrelic/demo-deployer/blob/main/documentation/tutorial/user_stories/Hello/hello.json) is the default configuration for this example. Looking at this file, you will notice several interesting sections. 
+* services
+* global_tags
+* resources
+* instrumentation
+These section describe, to the deployer, the actions to take when it executes. For example, "global_tags" will, as the name implies, apply these tags to ALL the resources in your stack. This is how we apply the consistent tagging strategy discussed above. 
+
+```json
+{
+  "services": [
+    {
+      "id": "app1",
+      "display_name": "Hello-App1",
+      "source_repository": "-b main git@github.com:newrelic/demo-nodetron.git",
+      "deploy_script_path": "deploy/linux/roles",
+      "port": 5001,
+      "destinations": ["host1"],
+      "files":[{
+        "destination_filepath": "engine/data/index.json",
+        "content": [
+          "<h1>Welcome!</h1>",
+          "Congrats! You have successfully setup our <b>Hello World</b> demo environment. So, what's been deployed?",
+          "<ul><li>A simple host on your cloud provider, e.g. AWS, Azure.</li>",
+          "<li>A simple node application that is serving up this page.</li>",
+          "<li>New Relic instrumentation, specifically, the infrastructure agent and the node agent.</li></ul>",
+          " ",
+          "Next, start generating some traffic on the app. This can be done by clicking the <b>Inventory</b> button, which will simply return a collection of items. You can then click each item to see its details.",
+          "You can also use postman, or a similar tool to generate a burst of requests. The APIs for the app are quite simple:",
+          "<ul><li>Inventory <a href=\"[service:app1]/api/inventory\" target=\"_blank\">[service:app1]/api/inventory</a></li>",
+          "<li>Item details <a href=\"[service:app1]/api/inventory/1\" target=\"_blank\">[service:app1]/api/inventory/[item number]</a></li></ul>",
+          " ",
+          "Now, head on over to New Relic and explore what's been created.",
+          "<ul><li>Search for your app and host using [global search](https://one.newrelic.com/redirect/search). Try searching on one of the global tags in your configuration!</li>",
+          "<li>Check out [Entity Explorer](https://one.newrelic.com/redirect/explorer)</li>",
+          "<li>Build some awesome graphs in Chart Builder with this NRQL:</li></ul>",
+          "** SELECT count(*) FROM Transaction FACET request.headers.userAgent WHERE appName = 'Hello-App1' LIMIT MAX",
+          "** SELECT average(duration) FROM Transaction FACET name WHERE appName = 'Hello-App1'",
+          "** SELECT count(*) FROM Transaction TIMESERIES FACET httpResponseCode WHERE appName = 'Hello-App1'",
+          "** SELECT average(memoryUsedPercent) as '% Used', average(memoryFreePercent) as '% Free' FROM SystemSample TIMESERIES WHERE apmApplicationNames = '|Hello-App1|'",
+          " ",
+          "That's it! We hope you enjoyed this quick <b>Hello World</b> example. Please give us feedback and ideas in our [Explorer's Hub community](https://discuss.newrelic.com/c/build-on-new-relic).",
+          " ",
+          "<h2>Remember:</h2>Make sure to tear down the infrastructure and app you just provisioned!"
+        ]
+      }]
+    }
+  ],
+
+  "global_tags": {
+    "dxOwningTeam": "DEMO",
+    "dxEnvironment": "development",
+    "dxDepartment": "product",
+    "dxProduct": "Hello"
+  },
+
+  "resources": [
+    {
+      "id": "host1",
+      "display_name": "Hello-Host1",
+      "provider": "aws",
+      "type": "ec2",
+      "size": "t3.micro"
+    }
+  ],
+
+  "instrumentations": {
+    "resources": [
+      {
+        "id": "nr_infra",
+        "resource_ids": ["host1"],
+        "provider": "newrelic",
+        "source_repository": "-b main git@github.com:newrelic/demo-newrelic-instrumentation.git",
+        "deploy_script_path": "deploy/linux/roles",
+        "version": "1.12.1"
+      }
+    ],
+    "services": [
+      {
+        "id": "nr_node_agent",
+        "service_ids": ["app1"],
+        "provider": "newrelic",
+        "source_repository": "-b main git@github.com:newrelic/demo-newrelic-instrumentation.git",
+        "deploy_script_path": "deploy/node/linux/roles",
+        "version": "6.11.0"
+      }
+    ]
+  }
+}
+```
+
+</Step>
+
+<Step>
+
+## Your newly deployed stack!
+When completed successfully, you should see output similar to what's below. Of course, your URLs will be different, but go ahead and open up a browser on the 'app1' url.
+
+```bash
+[INFO] Executing Deployment
+[✔] Parsing and validating Deployment configuration success
+[✔] Provisioner success
+[✔] Installing On-Host instrumentation success
+[✔] Installing Services and instrumentations success
+[INFO] Deployment successful!
+
+Deployed Resources:
+
+  host1 (aws/ec2):
+    ip: 52.90.86.109
+    services: ["app1"]
+    instrumentation:
+       nr_infra: newrelic v1.12.1
+
+
+Installed Services:
+
+  app1:
+    url: http://52.90.86.109:5001
+    instrumentation:
+       nr_node_agent: newrelic v6.11.0
+
+Completed at 2020-08-20 15:11:14 +0000
+```
+
+</Step>
+
+<Step>
+
+## Generate Traffic
+The simple node application that was deployed contains a very simple web page that looks similar to the screen shot below. Follow the instructions on this page to generate traffic that will be sent to New Relic.
+![Hello World Web Site](../../images/automate-helloworld/helloworld-automationdemo.png)
+
+</Step>
+
+<Step>
+
+## Check out these tags!
+Let's head on over to New Relic. We'll use the [search redirect](https://one.newrelic.com/redirect/search/Hello) to quickly find the resources we deployed. (Folks in our European data center should use this [link](https://one.eu.newrelic.com/redirect/search/Hello).)
+
+![Search Redirect](../../images/automate-helloworld/global-search.png)
+
+</Step>
+
+<Step>
+Once you are in New Relic, you can select either the host or the app that was deployed. By clicking on the 'i' icon next to the name, you'll open the metadata and tags modal. Notice that all the tags in the "global_tags" section are applied to both entities. 
+
+![Search Redirect](../../images/automate-helloworld/host-tags.png)
+
+![Search Redirect](../../images/automate-helloworld/app-tags.png)
+
+</Step>
+
+<Step> 
+## Extra Credit: Create your own configuration file
+
+Create your own configuration and change the global tags! One cool thing you can do is simply pass in a configuration file URL to the deployer. Here's one that uses a gist on GitHub:
+
+```bash
+docker run -it\
+    -v $HOME/configs/:/mnt/deployer/configs/\
+    --entrypoint ruby deployer main.rb -c configs/[user].docker.local.json -d https://gist.githubusercontent.com/markweitzel/d281fde8ca572ced6346dc25470790a5/raw/a227a802aa7a63819e688a383b575e7fd28223ee/MarksHelloDemoConfig.json
+```
+
+
+</Step>
+
+<Step>
+
+## Teardown
+Because we've provisioned resources in your cloud account, you'll want to ensure to decommision them. This can also be done with the deployer. Add the 'teardown' flag, -t to the end of your command. 
+
+```bash
+docker run -it\
+    -v $HOME/configs/:/mnt/deployer/configs/\
+    --entrypoint ruby deployer main.rb -c configs/[user].docker.local.json -d documentation/tutorial/user_stories/Hello/hello.json -t
+```
+
+</Step>
+
+
+
+</Steps>
+
+
+<br />
+
+---
+We hope you enjoyed this guide. As you can tell, this is very much a work in progress, but we are excited about getting it in your hands and would love your feedback! Hit us up in the [Build on New Relic](https://discuss.newrelic.com/c/build-on-new-relic) and let us know what you think! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
