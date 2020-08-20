@@ -1,3 +1,11 @@
+## [1.13.6](https://github.com/newrelic/developer-website/compare/v1.13.5...v1.13.6) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/react from 1.6.14 to 1.6.16 ([29c936e](https://github.com/newrelic/developer-website/commit/29c936eaa4e27243b4626769b02997158d68dcd0))
+* upgrade gatsby-image from 2.4.13 to 2.4.14 ([4529dd3](https://github.com/newrelic/developer-website/commit/4529dd3d7890ff1f0bef0adea2ecb80bd55b0fec))
+
 ## [1.13.5](https://github.com/newrelic/developer-website/compare/v1.13.4...v1.13.5) (2020-08-19)
 
 
