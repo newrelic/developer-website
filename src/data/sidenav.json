@@ -42,6 +42,10 @@
         "url": "/automate-workflows/get-started-kubernetes"
       },
       {
+        "displayName": "Set up New Relic using Helm charts",
+        "url": "/automate-workflows/kubernetes-helm-deployment"
+      },
+      {
         "displayName": "Tag a set of resources efficiently",
         "url": "/automate-workflows/5-mins-tag-resources"
       }
@@ -509,9 +513,19 @@
     ]
   },
   {
+    "displayName": "Attend events",
+    "children": [
+      {
+        "displayName": "Kubecon & CloudNativeCon",
+        "url": "/kubecon-europe-2020"
+      }
+    ]
+  },
+  {
     "displayName": "Developer champions",
     "url": "/developer-champion"
   },
+
   {
     "displayName": "Podcasts",
     "url": "/podcasts"

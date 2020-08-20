@@ -9,6 +9,10 @@ tileShorthand:
   description: 'Reference for query components using NerdGraph'
 redirects:
   - /build-tools/new-relic-one-applications/query-and-store-data
+tags:
+  - nerdgraph query components
+  - mutation components
+  - static methods
 ---
 
 <Intro>
@@ -92,6 +96,6 @@ Similarly, a mutation can happen either way; either declaratively or imperativel
 
 - `NERD_GRAPH`: Returns the format in which it arrives from NerdGraph.
 - `RAW`: The format exposed by default in Insights and dashboards when being plotted as JSON. This format is useful if you have a pre-existing script in this format that you're willing to migrate to or incorporate with.
-- `CHART`: The format used by the charting engine that we also expose. You can find a more detailed explanation of how to manipulate this format in the [guide to chart components](/components), and some examples.
+- `CHART`: The format used by the charting engine that we also expose. You can find a more detailed explanation of how to manipulate this format in the [guide to chart components](/intro-to-sdk), and some examples.
 
 If you are willing to push data, we currently do not expose `NrqlMutation`. To do that, see the [Event API]() for how to add custom events.

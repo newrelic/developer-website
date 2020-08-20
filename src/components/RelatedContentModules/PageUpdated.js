@@ -9,6 +9,9 @@ const PageUpdated = ({ page }) => {
     fields: { gitAuthorTime },
   } = page;
 
+  // If there is no date available, do not render the component
+  if (gitAuthorTime === 'Invalid date') return null;
+
   return (
     <Section
       css={css`
