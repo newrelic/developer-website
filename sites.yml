@@ -1,0 +1,31 @@
+- title: New Relic Developer Site
+
+  # this is the URL that is linked from the showcase
+  main_url: https://developer.newrelic.com/
+
+  # this URL is used to generate a screenshot
+  url: https://github.com/newrelic/developer-website/screenshots
+
+  # optional: for open-source sites, this URL points to the repo that powers the site
+  source_url: https://github.com/newrelic/developer-website
+
+  # optional: short paragraph describing the content and/or purpose of the site that will appear in the modal detail view and permalink views for your site
+  description:  The world’s best engineering teams rely on New Relic to visualize,
+  analyze and troubleshoot their software. New Relic One is the most powerful
+  cloud-based observability platform built to help companies create more perfect software.
+
+
+  # You can list as many categories as you want here. Check list of Categories below in this doc!
+  # If you'd like to create a new category, simply list it here.
+  categories:
+    - Data
+    - Programming
+    - Open Source
+    - Technology
+
+  # Add the name (developer or company) and URL (e.g. Twitter, GitHub, portfolio) to be used for attribution
+  built_by: New Relic
+  built_by_url: https://www.newrelic.com
+
+  # leave as false, the Gatsby site review board will choose featured sites quarterly
+  featured: false
