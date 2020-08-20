@@ -9,8 +9,7 @@ import '../components/marketo.scss';
 
 const NerdDaysPage = () => {
   useEffect(() => {
-    // eslint-disable-next-line no-undef
-    MktoForms2.loadForm('//app-abj.marketo.com', '412-MZS-894', 3525);
+    window.MktoForms2.loadForm('//app-abj.marketo.com', '412-MZS-894', 3525);
 
     const pollForDefinition = function (scope, varname, callback) {
       if (typeof scope[varname] !== 'undefined') {
@@ -34,8 +33,7 @@ const NerdDaysPage = () => {
       // eslint-disable-next-line no-console
       console.log('Clearbit Form JS unable to load');
       pollForDefinition(window, 'MktoForms2', function () {
-        // eslint-disable-next-line no-undef
-        MktoForms2.whenReady(function (form) {
+        window.MktoForms2.whenReady(function (form) {
           form.setValues({
             clearbitFormStatus: 'Clearbit Form JS unable to load',
           });
@@ -79,8 +77,8 @@ const NerdDaysPage = () => {
                 <Link to="https://docs.google.com/forms/d/e/1FAIpQLSe8LOilCrD_TCUPyHFHG_QzVW2UdUR0UKZ8H8WNylz0flB7OQ/viewform">
                   Submit your proposals
                 </Link>{' '}
-                by September 1, 2020 at 11:59 PM PT. Accepted proposals will contacted by September 30, 2020 at
-                the latest.
+                by September 1, 2020 at 11:59 PM PT. Accepted proposals will
+                contacted by September 30, 2020 at the latest.
               </p>
             </div>
             <div className={styles.formholder}>
