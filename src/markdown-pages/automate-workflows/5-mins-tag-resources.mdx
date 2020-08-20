@@ -14,19 +14,22 @@ resources:
     url: https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/tagging-use-tags-organize-group-what-you-monitor
   - title: 'New Relic CLI Repo'
     url: https://github.com/newrelic/newrelic-cli
+tags:
+  - tags
+  - new relic CLI
 ---
 
 <Intro>
 
 [Tags](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/tagging-use-tags-organize-group-what-you-monitor) help you group, search, filter, and focus the data about your [entities](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/what-entity-new-relic), which can be anything from applications to hosts to services. Tagging entities using the New Relic CLI is a good candidate for automation.
 
-In this 5-minute guide, you are going to use the New Relic CLI to add multiple tags to one of your entities.
+In this 5-minute guide, you use the New Relic CLI to add multiple tags to one of your entities.
 
 </Intro>
 
 ## Before you begin
 
-For this guide you need your New Relic [personal API Key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key): Create it at the **Account settings** screen of your New Relic account.
+For this guide you need your New Relic [personal API Key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key): Create it at the **Account settings** screen for your account.
 
 <Steps>
 <Step>
@@ -73,7 +76,7 @@ newrelic profiles default -n tutorial
 
 ## Search for an entity
 
-Your New Relic account may have hundreds of entities: Have a quick look by opening the [Entity explorer](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/ui-data/new-relic-one-entity-explorer-view-performance-across-apps-services-hosts).
+Your New Relic account might have hundreds of entities: Have a quick look by opening the [Entity explorer](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/ui-data/new-relic-one-entity-explorer-view-performance-across-apps-services-hosts).
 
 In the terminal, run [`entity search`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_search.md) to retrieve a list of entities from your account as JSON. In the example, you're searching for all entities with "test" in their name.
 

@@ -11,14 +11,14 @@ import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import '../components/styles.scss';
-import usePageContext from '../hooks/usePageContext';
+import { useLocation } from '@reach/router';
 
 const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const MainLayout = ({ children }) => {
   const {
-    site: { layout, siteMetadata },
+    site: { layout },
   } = useStaticQuery(graphql`
     query {
       site {
@@ -26,27 +26,22 @@ const MainLayout = ({ children }) => {
           contentPadding
           maxWidth
         }
-        siteMetadata {
-          repository
-        }
       }
     }
   `);
 
-  const { fileRelativePath } = usePageContext();
+  const location = useLocation();
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-  const isComponentDoc = fileRelativePath.includes(
-    'src/markdown-pages/components'
-  );
-  const editUrl = isComponentDoc
-    ? null
-    : `${siteMetadata.repository}/blob/main/${fileRelativePath}`;
 
   useEffect(() => {
     const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
     consentValue && setCookieConsent(true);
   }, []);
+
+  useEffect(() => {
+    setIsMobileNavOpen(false);
+  }, [location.pathname]);
 
   return (
     <div
@@ -73,7 +68,7 @@ const MainLayout = ({ children }) => {
           </script>
         ) : null}
       </Helmet>
-      <GlobalHeader editUrl={editUrl} search />
+      <GlobalHeader search />
       <MobileHeader
         css={css`
           @media (min-width: 761px) {
@@ -90,6 +85,7 @@ const MainLayout = ({ children }) => {
             'sidebar content'
             'sidebar footer';
           grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+          grid-template-rows: 1fr auto;
           grid-gap: ${layout.contentPadding};
           width: 100%;
           max-width: ${layout.maxWidth};

@@ -56,7 +56,7 @@ GuideTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
+  query($path: String!, $relatedResourceLimit: Int!) {
     mdx(frontmatter: { path: { eq: $path } }) {
       body
       frontmatter {
