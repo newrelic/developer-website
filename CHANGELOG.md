@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/newrelic/developer-website/compare/v1.13.11...v1.14.0) (2020-08-21)
+
+
+### Features
+
+* new copy and opens link in new tab ([6c9a7d8](https://github.com/newrelic/developer-website/commit/6c9a7d80dead170dad5f093cec29ae511190ef1c))
+
 ## [1.13.11](https://github.com/newrelic/developer-website/compare/v1.13.10...v1.13.11) (2020-08-21)
 
 
