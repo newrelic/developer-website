@@ -79,8 +79,8 @@ const NerdDaysPage = () => {
                   Submit your proposals
                 </Link>{' '}
                 by September 1, 2020 at 11:59 PM PT. For more details, check out
-                the one-pager. Accepted proposals will be contacted by September 30, 2020
-                at the latest.
+                the one-pager. Accepted proposals will be contacted by September
+                30, 2020 at the latest.
               </p>
               <p>
                 For an overview and tips for the call for proposals process,
