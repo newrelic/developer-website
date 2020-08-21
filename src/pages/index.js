@@ -74,6 +74,18 @@ const IndexPage = ({ data, pageContext }) => {
                 efficiently.
               </p>
               <p>
+                Got a cool project you want to share with fellow engineers?
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSe8LOilCrD_TCUPyHFHG_QzVW2UdUR0UKZ8H8WNylz0flB7OQ/viewform"
+                >
+                  {' '}
+                  Submit your proposal!
+                </a>{' '}
+                Submissions are due September 1, 2020 at 11:59 PM PT.
+              </p>
+              <p>
                 <Link to="/nerd-days">Learn more</Link>
               </p>
             </div>
