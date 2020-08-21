@@ -38,15 +38,6 @@
   }
 }
 
-.pointIcon {
-  --feather-icon-stroke-width: 1;
-
-  margin: auto;
-  margin-bottom: 10px;
-  display: block;
-  color: var(--color-brand-800);
-}
-
 .externalLinkIcon {
   margin-left: 0.5rem;
 }
@@ -57,9 +48,4 @@
 
 .highlightDiv {
   margin: auto;
-}
-
-.highlightText {
-  color: var(--color-brand-800);
-  text-align: center;
 }

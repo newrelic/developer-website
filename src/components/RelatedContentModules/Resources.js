@@ -17,6 +17,7 @@ const SITE_TAGS = {
   discuss: 'https://discuss.newrelic.com',
   blog: 'https://blog.newrelic.com',
   'newrelic.com': 'https://newrelic.com',
+  'visual studio': 'https://marketplace.visualstudio.com',
 };
 
 const findTag = (resource) =>

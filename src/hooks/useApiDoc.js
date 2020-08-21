@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { getTypeDefs } from '../utils/typeDefs';
 import navigationApi from '../data/navigationApi';
+import additionalDocs from '../data/additionalDocs';
 
 const IGNORED_METHODS = [
   'prototype',
@@ -34,6 +35,15 @@ const useApiDoc = (name) => {
       return navigationApi;
     }
 
+    // The SDK may be missing method documentation. If so, we need to add in
+    // some additional hardcoded values.
+    const clientDocs = {
+      typeDefs: [],
+      constants: [],
+      methods: [],
+      ...additionalDocs[name],
+    };
+
     if (!api) {
       const err = new Error('NR1_SDK API not found');
       window.NREUM && window.NREUM.noticeError(err, { apiName: name });
@@ -65,30 +75,35 @@ const useApiDoc = (name) => {
     return {
       description: apiDocs?.text,
       usage: `import { ${name} } from 'nr1'`,
-      typeDefs: getTypeDefs(properties),
-      constants: getConstants(api),
-      methods: Object.getOwnPropertyNames(api)
-        .filter(
-          (member) =>
-            !IGNORED_METHODS.includes(member) &&
-            typeof api[member] === 'function'
-        )
-        .filter(
-          (member) =>
-            !IGNORED_METHODS_BY_LIB[name] ||
-            !IGNORED_METHODS_BY_LIB[name].includes(member)
-        )
-        .map((member) => {
-          const methodDocs = api[member].__docs__;
+      typeDefs: [...clientDocs.typeDefs, ...getTypeDefs(properties)],
+      constants: [...clientDocs.constants, ...getConstants(api)],
+      methods: [
+        ...clientDocs.methods,
+        ...Object.getOwnPropertyNames(api)
+          .filter(
+            (member) =>
+              !IGNORED_METHODS.includes(member) &&
+              typeof api[member] === 'function'
+          )
+          .filter(
+            (member) =>
+              !IGNORED_METHODS_BY_LIB[name] ||
+              !IGNORED_METHODS_BY_LIB[name].includes(member)
+          )
+          .map((member) => {
+            const methodDocs = api[member].__docs__;
 
-          return {
-            name: `${name}.${member}`,
-            description: methodDocs?.text,
-            returnValue: methodDocs?.tags.return?.[0] ?? { type: 'undefined' },
-            params: methodDocs?.tags.param ?? [],
-            examples: methodDocs?.tags.examples ?? [],
-          };
-        }),
+            return {
+              name: `${name}.${member}`,
+              description: methodDocs?.text,
+              returnValue: methodDocs?.tags.return?.[0] ?? {
+                type: 'undefined',
+              },
+              params: methodDocs?.tags.param ?? [],
+              examples: methodDocs?.tags.examples ?? [],
+            };
+          }),
+      ],
     };
   }, [name]);
 };

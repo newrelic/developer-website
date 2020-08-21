@@ -1,3 +1,86 @@
+## [1.13.7](https://github.com/newrelic/developer-website/compare/v1.13.6...v1.13.7) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.10 to 1.6.13 ([2ca8bd0](https://github.com/newrelic/developer-website/commit/2ca8bd0e82062c2b1b27116682018f1024cf95e7))
+* upgrade multiple dependencies with Snyk ([d194e87](https://github.com/newrelic/developer-website/commit/d194e87ae94a69bef0e5adb885a65c5fb95a65ab))
+
+## [1.13.6](https://github.com/newrelic/developer-website/compare/v1.13.5...v1.13.6) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/react from 1.6.14 to 1.6.16 ([29c936e](https://github.com/newrelic/developer-website/commit/29c936eaa4e27243b4626769b02997158d68dcd0))
+* upgrade gatsby-image from 2.4.13 to 2.4.14 ([4529dd3](https://github.com/newrelic/developer-website/commit/4529dd3d7890ff1f0bef0adea2ecb80bd55b0fec))
+
+## [1.13.5](https://github.com/newrelic/developer-website/compare/v1.13.4...v1.13.5) (2020-08-19)
+
+
+### Bug Fixes
+
+* Fixed unused var error ([234600a](https://github.com/newrelic/developer-website/commit/234600a579d455c7e829d298068d9d1ebe3161f9))
+* merge main into nerd-days branch ([e2c0edf](https://github.com/newrelic/developer-website/commit/e2c0edf4b588d4ba20ae171bac14bcadf2ece5e5))
+* update nerd days page to use PageLayout ([e6636f4](https://github.com/newrelic/developer-website/commit/e6636f485dd10ce2534363cb03c4767055c3c319))
+* update package-lock.json ([439de7d](https://github.com/newrelic/developer-website/commit/439de7d7e1fcc97837914e18ede7214ec9384d27))
+
+## [1.13.4](https://github.com/newrelic/developer-website/compare/v1.13.3...v1.13.4) (2020-08-19)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-mdx from 1.2.29 to 1.2.30 ([cc7f3dd](https://github.com/newrelic/developer-website/commit/cc7f3ddc9b3872aa6b558c50dcdefc23f56181cc))
+
+## [1.13.3](https://github.com/newrelic/developer-website/compare/v1.13.2...v1.13.3) (2020-08-18)
+
+
+### Bug Fixes
+
+* ensure footer remains the same size on monitors with larger resolution ([746015b](https://github.com/newrelic/developer-website/commit/746015be31d3d39e4af2993c9ebc4e6e856b9c20))
+
+## [1.13.2](https://github.com/newrelic/developer-website/compare/v1.13.1...v1.13.2) (2020-08-18)
+
+
+### Bug Fixes
+
+* bump @newrelic/gatsby-theme-newrelic version ([03fccb8](https://github.com/newrelic/developer-website/commit/03fccb8ef13fbde1feb447652f3b5f06139867f9))
+
+## [1.13.1](https://github.com/newrelic/developer-website/compare/v1.13.0...v1.13.1) (2020-08-17)
+
+
+### Bug Fixes
+
+* bigger nav icons ([fed7b96](https://github.com/newrelic/developer-website/commit/fed7b96cd46aa39781cadad32024893decab728e))
+* replace the collect data icon to match the tdp icon ([97a242f](https://github.com/newrelic/developer-website/commit/97a242f6f4366c1b1946bf36d8fd118a0f34b9e8))
+
+# [1.13.0](https://github.com/newrelic/developer-website/compare/v1.12.5...v1.13.0) (2020-08-17)
+
+
+### Bug Fixes
+
+* swap plain buttons ([d126a49](https://github.com/newrelic/developer-website/commit/d126a497bf7d7f1c30c69b116b19cd473342f303))
+* update brand colors to latest palette ([4605cd2](https://github.com/newrelic/developer-website/commit/4605cd2609e46d2a91c40077ef9cbf0ee9c0360c))
+
+
+### Features
+
+* added ability to add supplemental documentation ([b726217](https://github.com/newrelic/developer-website/commit/b726217fab0edccd17bdd74ee8920ed07d020023))
+
+## [1.12.5](https://github.com/newrelic/developer-website/compare/v1.12.4...v1.12.5) (2020-08-17)
+
+
+### Bug Fixes
+
+* logo svg rendering with extra space in safari ([868a043](https://github.com/newrelic/developer-website/commit/868a043161fb1fb91f52a2926d8b99276fa2fc65))
+* upgrade gatsby-plugin-mdx from 1.2.28 to 1.2.29 ([e619706](https://github.com/newrelic/developer-website/commit/e61970689c9de8f8f02541b832518cfea8c88e51))
+
+## [1.12.4](https://github.com/newrelic/developer-website/compare/v1.12.3...v1.12.4) (2020-08-16)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/react from 1.6.13 to 1.6.14 ([13b982a](https://github.com/newrelic/developer-website/commit/13b982a220244a8f05c43a3907232c47f263c8a9))
+
 ## [1.12.3](https://github.com/newrelic/developer-website/compare/v1.12.2...v1.12.3) (2020-08-14)
 
 
