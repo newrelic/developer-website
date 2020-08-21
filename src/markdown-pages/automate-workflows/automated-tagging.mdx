@@ -16,7 +16,7 @@ resources:
 
 At New Relic, we are always looking for challenging problems to solve. One of the things we've been working on lately is figuring out ways for our developers to experience different aspects of New Relic so they can more quickly build on the platform, find a solution to a specific use case, or just learn something new (which is always fun!). 
 
-One of the frameworks that we are working on enables our various teams to define and spin up complete environments, from infrastructure to applications, to instrumentation. Like many internal frameworks, this has undergone several iterations, and in fact, we are in the midst right now of major refactor. Because of our commitment to open source, we wanted to start working openly early in the process and invite you to collaborate with us. Drop any thoughts & comments in the [Build on New Relic](https://discuss.newrelic.com/c/build-on-new-relic) and let us know what you think! 
+One of the frameworks that we are working on enables our various teams to define and spin up complete environments, from infrastructure to applications to instrumentation. Like many internal frameworks, this has undergone several iterations; and in fact, we are in the midst right now of major refactor. Because of our commitment to open source, we wanted to start working in the open early in the process and invite you to collaborate with us. Drop any thoughts & comments in the [Build on New Relic](https://discuss.newrelic.com/c/build-on-new-relic) support thread and let us know what you think! 
 
 OK, let's jump in!
 
@@ -32,7 +32,7 @@ To run this example there are several pre-requisite steps, most of which involve
 
 We use several of our open source projects to make this all work. Let's take a look at them now.
 * [Demo Deployer](https://github.com/newrelic/demo-deployer) - This is the engine that drives all the automation. For convenience, you'll clone this repo and build a docker image. In future iterations, we'll publish the image in docker hub or someplace similar. 
-* [Demo Nodetron] (https://github.com/newrelic/demo-nodetron) - This is the simple app that will be provisioned on a host. It will give you a simple web page and an API that you can hit with a tool like [Postman](https://www.postman.com/downloads/) depending on how much traffic you want to generate. 
+* [Demo Nodetron](https://github.com/newrelic/demo-nodetron) - This is the simple app that will be provisioned on a host. It will give you a simple web page and an API that you can hit with a tool like [Postman](https://www.postman.com/downloads/) depending on how much traffic you want to generate. 
 * [Demo New Relic Instrumentation](https://github.com/newrelic/demo-newrelic-instrumentation) - This is the project that we use to layer in the instrumentation for the infrastructure and the application. 
 
 We kept each project distinct to encapsulate its behavior. The idea being that we can simply add more behaviors and then weave them in to assemble more complex scenarios. Cool, right?
@@ -292,7 +292,7 @@ docker run -it\
 <br />
 
 ---
-We hope you enjoyed this guide. As you can tell, this is very much a work in progress, but we are excited about getting it in your hands and would love your feedback! Hit us up in the [Build on New Relic](https://discuss.newrelic.com/c/build-on-new-relic) support thread and let us know what you think! 
+We hope you enjoyed this guide. As you can tell, this is very much a work in progress; but we are excited about getting it in your hands and would love your feedback! Hit us up in the [Build on New Relic](https://discuss.newrelic.com/c/build-on-new-relic) support thread and let us know what you think! 
 
 
 
