@@ -10,8 +10,7 @@ import '../components/marketo.scss';
 
 const NerdDaysPage = () => {
   useEffect(() => {
-    // eslint-disable-next-line no-undef
-    MktoForms2.loadForm('//app-abj.marketo.com', '412-MZS-894', 3525);
+    window.MktoForms2.loadForm('//app-abj.marketo.com', '412-MZS-894', 3525);
 
     const pollForDefinition = function (scope, varname, callback) {
       if (typeof scope[varname] !== 'undefined') {
@@ -35,8 +34,7 @@ const NerdDaysPage = () => {
       // eslint-disable-next-line no-console
       console.log('Clearbit Form JS unable to load');
       pollForDefinition(window, 'MktoForms2', function () {
-        // eslint-disable-next-line no-undef
-        MktoForms2.whenReady(function (form) {
+        window.MktoForms2.whenReady(function (form) {
           form.setValues({
             clearbitFormStatus: 'Clearbit Form JS unable to load',
           });
@@ -60,7 +58,7 @@ const NerdDaysPage = () => {
                 alt="nerd days header"
               />
               <p>
-                Nerd Days is a FREE engineering conference that kicks off
+                Nerd Days is a <b>FREE</b> engineering conference that kicks off
                 October 13 <em>(Dates vary by region)</em>. Focused on building
                 more perfect software, our goal is to spend less time looking at
                 slides that tell you what software can do and more time on
