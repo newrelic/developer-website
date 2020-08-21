@@ -47,7 +47,7 @@ Let's get the deployer built. Essentially, this is cloning the repo and building
 * Clone the deployer repo
 
 ```bash
-git clone git@github.com:newrelic/demo-deployer.git $HOME/deployer
+git clone https://github.com/newrelic/demo-deployer.git $HOME/deployer
 ```
 
 * Build the docker image
@@ -60,7 +60,7 @@ docker build -t deployer .
 <Step>
 
 ### Create Config files
-In this example, we will actually provision a host on either AWS or Asure, depending on which one you choose. The deployer that you just built, uses a configuration file that has references your creds so it can invoke the necessary APIs. The instructions to create your configuraiton file are [here](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). In the end, you will have something that looks similar to the file on the right. 
+In this example, we will actually provision a host on either AWS or Asure, depending on which one you choose. The deployer that you just built, uses a configuration file that has references your creds so it can invoke the necessary APIs. The instructions to create your configuration file are [here](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). In the end, you will have something that looks similar to the file on the right. 
 
 ```json
 {
@@ -86,10 +86,6 @@ In this example, we will actually provision a host on either AWS or Asure, depen
       "licenseKey": "my_new_relic_license_key",
       "insightsInsertApiKey": "my_new_relic_insights_api_key",
       "accountId": "my_new_relic_account_id"
-    },
-
-    "git": {
-      "username": "my_git_access_token"
     }
   }
 }
@@ -122,7 +118,7 @@ These section describe, to the deployer, the actions to take when it executes. F
     {
       "id": "app1",
       "display_name": "Hello-App1",
-      "source_repository": "-b main git@github.com:newrelic/demo-nodetron.git",
+      "source_repository": "-b main https://github.com/newrelic/demo-nodetron.git",
       "deploy_script_path": "deploy/linux/roles",
       "port": 5001,
       "destinations": ["host1"],
@@ -141,8 +137,8 @@ These section describe, to the deployer, the actions to take when it executes. F
           "<li>Item details <a href=\"[service:app1]/api/inventory/1\" target=\"_blank\">[service:app1]/api/inventory/[item number]</a></li></ul>",
           " ",
           "Now, head on over to New Relic and explore what's been created.",
-          "<ul><li>Search for your app and host using [global search](https://one.newrelic.com/redirect/search). Try searching on one of the global tags in your configuration!</li>",
-          "<li>Check out [Entity Explorer](https://one.newrelic.com/redirect/explorer)</li>",
+          "<ul><li>Search for your app and host using <a href=\"https://one.newrelic.com/redirect/search/Hello\" target=\"_blank\">global search</a>.</li>",
+          "<li>Check out <a href=\"https://one.newrelic.com/redirect/explorer\" target=\"_blank\">Entity Explorer</a>.</li>",
           "<li>Build some awesome graphs in Chart Builder with this NRQL:</li></ul>",
           "** SELECT count(*) FROM Transaction FACET request.headers.userAgent WHERE appName = 'Hello-App1' LIMIT MAX",
           "** SELECT average(duration) FROM Transaction FACET name WHERE appName = 'Hello-App1'",
@@ -180,7 +176,7 @@ These section describe, to the deployer, the actions to take when it executes. F
         "id": "nr_infra",
         "resource_ids": ["host1"],
         "provider": "newrelic",
-        "source_repository": "-b main git@github.com:newrelic/demo-newrelic-instrumentation.git",
+        "source_repository": "-b main https://github.com/newrelic/demo-newrelic-instrumentation.git",
         "deploy_script_path": "deploy/linux/roles",
         "version": "1.12.1"
       }
@@ -190,13 +186,14 @@ These section describe, to the deployer, the actions to take when it executes. F
         "id": "nr_node_agent",
         "service_ids": ["app1"],
         "provider": "newrelic",
-        "source_repository": "-b main git@github.com:newrelic/demo-newrelic-instrumentation.git",
+        "source_repository": "-b main https://github.com/newrelic/demo-newrelic-instrumentation.git",
         "deploy_script_path": "deploy/node/linux/roles",
         "version": "6.11.0"
       }
     ]
   }
 }
+
 ```
 
 </Step>
@@ -246,7 +243,7 @@ The simple node application that was deployed contains a very simple web page th
 <Step>
 
 ## Check out these tags!
-Let's head on over to New Relic. We'll use the [search redirect](https://one.newrelic.com/redirect/search/Hello) to quickly find the resources we deployed. (Folks in our European data center should use this [link](https://one.eu.newrelic.com/redirect/search/Hello).)
+Let's head on over to New Relic. We'll use the [search redirect](https://one.newrelic.com/redirect/search/Hello) to quickly find the resources we deployed.
 
 ![Search Redirect](../../images/automate-helloworld/global-search.png)
 
@@ -297,17 +294,3 @@ docker run -it\
 
 ---
 We hope you enjoyed this guide. As you can tell, this is very much a work in progress, but we are excited about getting it in your hands and would love your feedback! Hit us up in the [Build on New Relic](https://discuss.newrelic.com/c/build-on-new-relic) and let us know what you think! 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
