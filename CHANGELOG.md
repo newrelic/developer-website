@@ -1,3 +1,11 @@
+## [1.13.11](https://github.com/newrelic/developer-website/compare/v1.13.10...v1.13.11) (2020-08-21)
+
+
+### Bug Fixes
+
+* image re resizes to browser ([7d122a3](https://github.com/newrelic/developer-website/commit/7d122a3f134f89681d0290b7c2ef3a35c64dfe68))
+* image resizes to browser ([1c7bfad](https://github.com/newrelic/developer-website/commit/1c7bfadd9bbb329048b0fc70d1fbd92e5dcb998f))
+
 ## [1.13.10](https://github.com/newrelic/developer-website/compare/v1.13.9...v1.13.10) (2020-08-21)
 
 
