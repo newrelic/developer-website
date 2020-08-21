@@ -9,7 +9,6 @@ import { Button } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import PageLayout from '../components/PageLayout';
-import Video from '../components/Video';
 import FeatherIcon from '../components/FeatherIcon';
 import ExternalLink from '../components/ExternalLink';
 import { PageContext } from '../components/PageContext';
@@ -17,6 +16,7 @@ import { pageContext } from '../types';
 import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
+import nerdDays from '../images/nerd-days/nerd-days.png';
 
 const getStartedGuides = [
   {
@@ -55,7 +55,7 @@ const IndexPage = ({ data, pageContext }) => {
     <PageContext.Provider value={pageContext}>
       <SEO />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Observability for every developer" />
+        <PageLayout.Header title="Mark your calendar for Nerd Days 1.0" />
 
         <PageLayout.Content>
           <section
@@ -66,22 +66,25 @@ const IndexPage = ({ data, pageContext }) => {
           >
             <div className={styles.introText}>
               <p>
-                Whether you're new to New Relic or already a data nerd, you can
-                start building right now. For free.
+                Nerd Days is a <strong>FREE</strong> engineering conference that
+                kicks off October 13 (Dates vary by region). Focused on building
+                more perfect software, our goal is to spend less time looking at
+                slides that tell you what software can do and more time on
+                getting your hands on the software to solve problems
+                efficiently.
               </p>
               <p>
-                Create an account and start using New Relic One as your
-                foundation to instrument everything. Ready to dive even deeper?
-                Create custom observability apps to better visualize your data
-                to answer your engineering problems.
+                <Link to="/nerd-days">Learn more</Link>
               </p>
-              <p>Let's start building.</p>
             </div>
-            <Video
-              className={styles.introVideo}
-              id="lzrwubc09a"
-              type="wistia"
-              title="Develop with New Relic"
+
+            <img
+              src={nerdDays}
+              alt="nerd days header"
+              css={css`
+                flex: 1;
+                margin-top: 0;
+              `}
             />
           </section>
 
