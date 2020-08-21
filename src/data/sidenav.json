@@ -48,6 +48,10 @@
       {
         "displayName": "Tag a set of resources efficiently",
         "url": "/automate-workflows/5-mins-tag-resources"
+      },
+      {
+        "displayName": "Automated end-to-end tagging of entities",
+        "url": "/automate-workflows/automated-tagging"
       }
     ]
   },
