@@ -1,3 +1,10 @@
+## [1.13.10](https://github.com/newrelic/developer-website/compare/v1.13.9...v1.13.10) (2020-08-21)
+
+
+### Bug Fixes
+
+* update homepage to promote nerd days ([945ab17](https://github.com/newrelic/developer-website/commit/945ab17561e02895d65613ed9dd5fe549382b047))
+
 ## [1.13.9](https://github.com/newrelic/developer-website/compare/v1.13.8...v1.13.9) (2020-08-21)
 
 
