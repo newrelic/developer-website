@@ -292,6 +292,10 @@ The value that is assigned to the key slug is used in order to navigate to your 
 - `resources`:
   - `title`: title of related resource. This resource will show up in the "Resources" section to the right of the main content.
   - `url`: URL of related resource. Can be absolute or relative.
+- `tags`: sets the search parameters you wish to pass to Swiftype.
+  - tag name1
+  - tag name2
+  - tag name3
 
 ### GuideTemplate Frontmatter example
 
@@ -310,11 +314,16 @@ redirects:
   - /build-tools/new-relic-one-applications/intro-to-sdk
   - /client-side-sdk/index.html
 resources:
-  - title: Introduction to New Relic NerdGraph
+  - title: 'Introduction to New Relic NerdGraph'
     url: https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph
-
   - title: Deploy an app
     url: /build-apps/publish-deploy
+tags:
+  - Agent API
+  - Telemetry SDK
+  - Trace API
+  - Metric API
+  - Event API
 ---
 ```
 

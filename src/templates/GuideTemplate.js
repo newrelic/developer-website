@@ -15,11 +15,11 @@ import SEO from '../components/Seo';
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
   const { frontmatter, body } = mdx;
-  const { title, description, duration } = frontmatter;
+  const { title, description, duration, tags } = frontmatter;
 
   return (
     <>
-      <SEO title={title} description={description} />
+      <SEO title={title} description={description} tags={tags} />
       <PageLayout type={PageLayout.TYPE.RELATED_CONTENT}>
         <PageLayout.Header title={title}>
           {duration && (
@@ -56,7 +56,7 @@ GuideTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
+  query($path: String!, $relatedResourceLimit: Int!) {
     mdx(frontmatter: { path: { eq: $path } }) {
       body
       frontmatter {
@@ -64,6 +64,7 @@ export const pageQuery = graphql`
         path
         title
         description
+        tags
       }
 
       ...Resources_page

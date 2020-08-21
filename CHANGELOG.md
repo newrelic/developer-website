@@ -1,3 +1,229 @@
+## [1.13.7](https://github.com/newrelic/developer-website/compare/v1.13.6...v1.13.7) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.10 to 1.6.13 ([2ca8bd0](https://github.com/newrelic/developer-website/commit/2ca8bd0e82062c2b1b27116682018f1024cf95e7))
+* upgrade multiple dependencies with Snyk ([d194e87](https://github.com/newrelic/developer-website/commit/d194e87ae94a69bef0e5adb885a65c5fb95a65ab))
+
+## [1.13.6](https://github.com/newrelic/developer-website/compare/v1.13.5...v1.13.6) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/react from 1.6.14 to 1.6.16 ([29c936e](https://github.com/newrelic/developer-website/commit/29c936eaa4e27243b4626769b02997158d68dcd0))
+* upgrade gatsby-image from 2.4.13 to 2.4.14 ([4529dd3](https://github.com/newrelic/developer-website/commit/4529dd3d7890ff1f0bef0adea2ecb80bd55b0fec))
+
+## [1.13.5](https://github.com/newrelic/developer-website/compare/v1.13.4...v1.13.5) (2020-08-19)
+
+
+### Bug Fixes
+
+* Fixed unused var error ([234600a](https://github.com/newrelic/developer-website/commit/234600a579d455c7e829d298068d9d1ebe3161f9))
+* merge main into nerd-days branch ([e2c0edf](https://github.com/newrelic/developer-website/commit/e2c0edf4b588d4ba20ae171bac14bcadf2ece5e5))
+* update nerd days page to use PageLayout ([e6636f4](https://github.com/newrelic/developer-website/commit/e6636f485dd10ce2534363cb03c4767055c3c319))
+* update package-lock.json ([439de7d](https://github.com/newrelic/developer-website/commit/439de7d7e1fcc97837914e18ede7214ec9384d27))
+
+## [1.13.4](https://github.com/newrelic/developer-website/compare/v1.13.3...v1.13.4) (2020-08-19)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-mdx from 1.2.29 to 1.2.30 ([cc7f3dd](https://github.com/newrelic/developer-website/commit/cc7f3ddc9b3872aa6b558c50dcdefc23f56181cc))
+
+## [1.13.3](https://github.com/newrelic/developer-website/compare/v1.13.2...v1.13.3) (2020-08-18)
+
+
+### Bug Fixes
+
+* ensure footer remains the same size on monitors with larger resolution ([746015b](https://github.com/newrelic/developer-website/commit/746015be31d3d39e4af2993c9ebc4e6e856b9c20))
+
+## [1.13.2](https://github.com/newrelic/developer-website/compare/v1.13.1...v1.13.2) (2020-08-18)
+
+
+### Bug Fixes
+
+* bump @newrelic/gatsby-theme-newrelic version ([03fccb8](https://github.com/newrelic/developer-website/commit/03fccb8ef13fbde1feb447652f3b5f06139867f9))
+
+## [1.13.1](https://github.com/newrelic/developer-website/compare/v1.13.0...v1.13.1) (2020-08-17)
+
+
+### Bug Fixes
+
+* bigger nav icons ([fed7b96](https://github.com/newrelic/developer-website/commit/fed7b96cd46aa39781cadad32024893decab728e))
+* replace the collect data icon to match the tdp icon ([97a242f](https://github.com/newrelic/developer-website/commit/97a242f6f4366c1b1946bf36d8fd118a0f34b9e8))
+
+# [1.13.0](https://github.com/newrelic/developer-website/compare/v1.12.5...v1.13.0) (2020-08-17)
+
+
+### Bug Fixes
+
+* swap plain buttons ([d126a49](https://github.com/newrelic/developer-website/commit/d126a497bf7d7f1c30c69b116b19cd473342f303))
+* update brand colors to latest palette ([4605cd2](https://github.com/newrelic/developer-website/commit/4605cd2609e46d2a91c40077ef9cbf0ee9c0360c))
+
+
+### Features
+
+* added ability to add supplemental documentation ([b726217](https://github.com/newrelic/developer-website/commit/b726217fab0edccd17bdd74ee8920ed07d020023))
+
+## [1.12.5](https://github.com/newrelic/developer-website/compare/v1.12.4...v1.12.5) (2020-08-17)
+
+
+### Bug Fixes
+
+* logo svg rendering with extra space in safari ([868a043](https://github.com/newrelic/developer-website/commit/868a043161fb1fb91f52a2926d8b99276fa2fc65))
+* upgrade gatsby-plugin-mdx from 1.2.28 to 1.2.29 ([e619706](https://github.com/newrelic/developer-website/commit/e61970689c9de8f8f02541b832518cfea8c88e51))
+
+## [1.12.4](https://github.com/newrelic/developer-website/compare/v1.12.3...v1.12.4) (2020-08-16)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/react from 1.6.13 to 1.6.14 ([13b982a](https://github.com/newrelic/developer-website/commit/13b982a220244a8f05c43a3907232c47f263c8a9))
+
+## [1.12.3](https://github.com/newrelic/developer-website/compare/v1.12.2...v1.12.3) (2020-08-14)
+
+
+### Bug Fixes
+
+* style adjustments on kubecon page ([6dbbee5](https://github.com/newrelic/developer-website/commit/6dbbee5de9d4fe65e66a551d386248b47235d3c3))
+
+## [1.12.2](https://github.com/newrelic/developer-website/compare/v1.12.1...v1.12.2) (2020-08-14)
+
+
+### Bug Fixes
+
+* only show date modified if Gatsby sees it as valid ([fe14bb7](https://github.com/newrelic/developer-website/commit/fe14bb7e83af53151fcc810c7691cdf4c8a1a2db))
+
+## [1.12.1](https://github.com/newrelic/developer-website/compare/v1.12.0...v1.12.1) (2020-08-14)
+
+
+### Bug Fixes
+
+* upgrade date-fns from 2.14.0 to 2.15.0 ([5fc93ca](https://github.com/newrelic/developer-website/commit/5fc93cab60f25eb5507737802daa23fb130a98ab))
+* upgrade gatsby-plugin-mdx from 1.2.27 to 1.2.28 ([384a267](https://github.com/newrelic/developer-website/commit/384a267de14b892d089a41d7aa24b087458761da))
+
+# [1.12.0](https://github.com/newrelic/developer-website/compare/v1.11.0...v1.12.0) (2020-08-14)
+
+
+### Bug Fixes
+
+* better responsive styles for the contribute section ([d828a89](https://github.com/newrelic/developer-website/commit/d828a89d3559b1fa5eb1cb5c00638123105e8111))
+
+
+### Features
+
+* add dark-mode aware background color ([9a13b86](https://github.com/newrelic/developer-website/commit/9a13b860b1cc133bdfe669dae88e43832faa47f3))
+
+# [1.11.0](https://github.com/newrelic/developer-website/compare/v1.10.6...v1.11.0) (2020-08-14)
+
+
+### Bug Fixes
+
+* filter out certain document types to match the in product experience ([7a4c0e5](https://github.com/newrelic/developer-website/commit/7a4c0e53ce09a4bce69fba1ca466d3f6018be54c))
+* fix race condition causing incorrect data to be written to file ([753cd77](https://github.com/newrelic/developer-website/commit/753cd77b4dcefa05fa0f315dccd532287f382c0e))
+* hide related resources on pages that have not yet been indexed ([7bf2811](https://github.com/newrelic/developer-website/commit/7bf281156d7dbdf217d0f788d6b85f0602f1a5da))
+* smaller font size on tags underneath related resources ([57d482b](https://github.com/newrelic/developer-website/commit/57d482ba55afc9da32051ce9f14927e3d45fcc11))
+
+
+### Features
+
+* add ability to filter which pages are fetched ([da64b13](https://github.com/newrelic/developer-website/commit/da64b13713e266d0cbd7c0b0ea72809aa9f569d9))
+* add ability to manually trigger refetching of related content ([7fd7a22](https://github.com/newrelic/developer-website/commit/7fd7a2252f0eab5aaf484ae3251a4cb181fffc7d))
+* add actual related resource data ([3efef9d](https://github.com/newrelic/developer-website/commit/3efef9d9b238d1b365a28aba1191643f3787e5b9))
+* add config to enable swiftype builds using env variable ([6d77c70](https://github.com/newrelic/developer-website/commit/6d77c70eb264dabd9c6863c18aa8cffa8b84391c))
+* add general params that will be used to fetch from swiftype ([27c1481](https://github.com/newrelic/developer-website/commit/27c1481915a6ea2339c0fc717c3bbb29020b81d2))
+* add github action that will run everyday to sync swiftype results ([080e5ba](https://github.com/newrelic/developer-website/commit/080e5ba0254f8f003d7db3b1f173f51389cbd0dc))
+* add graphql schema item and dummy resolver for related resources ([d36afbc](https://github.com/newrelic/developer-website/commit/d36afbc5a445bd7cbe83eae9b4e5a8b09d322063))
+* add limit argument to relatedResources ([cc22434](https://github.com/newrelic/developer-website/commit/cc224341cb13bd65a28e301686544cd4b0483b3b))
+* add local plugin that creates the json file that will be written to ([0568e5c](https://github.com/newrelic/developer-website/commit/0568e5c3a85a0e0a4206918cfdd28f42985eb3a4))
+* add related resources from swiftype to the right rail ([fdd265e](https://github.com/newrelic/developer-website/commit/fdd265ecfff817dba951cdbfffc422779bd5dc0e))
+* add tags to search query and write data to file in plugin ([9e3b486](https://github.com/newrelic/developer-website/commit/9e3b486a7082bfa6c6e0103da38451d79f8ac012))
+* fetch results from swiftype for the node and save the data ([8232332](https://github.com/newrelic/developer-website/commit/82323323fbd57a413da9a419d317525b9852871f))
+* filter out redirects and already defined urls for a page ([674e1c7](https://github.com/newrelic/developer-website/commit/674e1c745a2ceb907e76b71a0e21c37f5600f82d))
+* implement resolver for related resources ([f4c8fd1](https://github.com/newrelic/developer-website/commit/f4c8fd180fb067567201e1d0102d42142e058d6d))
+* properly resolve related resources for a node by linking the parent to the child ([0ad50b9](https://github.com/newrelic/developer-website/commit/0ad50b9465ddeada08b9d2a28acbd1b3f2378b7c))
+
+## [1.10.6](https://github.com/newrelic/developer-website/compare/v1.10.5...v1.10.6) (2020-08-11)
+
+
+### Bug Fixes
+
+* reduce font size on resources links ([826f456](https://github.com/newrelic/developer-website/commit/826f45678cfe8764a5db5cd0c112e6e0014d4783))
+
+## [1.10.5](https://github.com/newrelic/developer-website/compare/v1.10.4...v1.10.5) (2020-08-11)
+
+
+### Bug Fixes
+
+* add background for current page ([c76c91a](https://github.com/newrelic/developer-website/commit/c76c91a992cc02e4362368455cbd63c936116ba6))
+* always render hover color + only change text on dark mode ([32ac1ae](https://github.com/newrelic/developer-website/commit/32ac1aed60bf57bf17d4b637c58924437d5b8b83))
+* better alignment of background with its parent ([34c5fd4](https://github.com/newrelic/developer-website/commit/34c5fd45f03b10bed8621a05aa80f7eda547f32a))
+* better mobile menu ([5c46e39](https://github.com/newrelic/developer-website/commit/5c46e393b52fad6ede4f016242749570723e5a2d))
+* close mobile nav after navigating to a new page ([641f057](https://github.com/newrelic/developer-website/commit/641f057f2a346eb8cadd147bd62d2040f0df0bbf))
+* dont open links on home page ([de74639](https://github.com/newrelic/developer-website/commit/de74639a6aa16cda716b5e18d94e212854d9aff4))
+* ensure header covers up selected nav item ([71d309f](https://github.com/newrelic/developer-website/commit/71d309fb03bec126bf0384d9bf7111de96ef9c05))
+* match font weight on selected top-level nav item ([e7fc9ad](https://github.com/newrelic/developer-website/commit/e7fc9ad2df3cf6062b9771a2782d33d0fdcc4ad1))
+* move chevrons to right of the link ([91c2854](https://github.com/newrelic/developer-website/commit/91c28547ef19d3bc4278b32bfcc3ecd09470ee0e))
+* only toggle current page if active ([d00e2df](https://github.com/newrelic/developer-website/commit/d00e2dff300b4750d9e9acdf9649bec8c4b0a9dc))
+* show chevrons for top level nav items ([c8a69b6](https://github.com/newrelic/developer-website/commit/c8a69b687b2b5afba9fd859ab9181d8676b7563a))
+* some tightening of the sidebar ([3f61d5c](https://github.com/newrelic/developer-website/commit/3f61d5c428a552179a2d5025c957a412edbc6398))
+* thinner chevrons ([e626b1e](https://github.com/newrelic/developer-website/commit/e626b1e23e63bc2c03979da1f4e5a9926420d0af))
+* use HamburgerMenu from the theme ([48b65ff](https://github.com/newrelic/developer-website/commit/48b65ff199edc241d2c53b49e770695f9ff2b2ef))
+* use SearchInput from gatsby theme in nav ([04f402d](https://github.com/newrelic/developer-website/commit/04f402d4adfc248f932212e611e6722669c2fb17))
+
+## [1.10.4](https://github.com/newrelic/developer-website/compare/v1.10.3...v1.10.4) (2020-08-11)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/react from 1.6.10 to 1.6.13 ([a54fbf1](https://github.com/newrelic/developer-website/commit/a54fbf1894bc4cbed1176b5b81762eaf2c64fa4d))
+* upgrade gatsby-plugin-mdx from 1.2.26 to 1.2.27 ([86cfc33](https://github.com/newrelic/developer-website/commit/86cfc338702c5c74ddf3098f1cad46e40441ddb3))
+* upgrade multiple dependencies with Snyk ([db40549](https://github.com/newrelic/developer-website/commit/db405491a92cd4a17276700ed923e320d98f2b08))
+
+## [1.10.3](https://github.com/newrelic/developer-website/compare/v1.10.2...v1.10.3) (2020-08-10)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([46bb49b](https://github.com/newrelic/developer-website/commit/46bb49bfb5315da80a2b996d3aefa73e9b0569f5))
+* upgrade @mdx-js/mdx from 1.6.7 to 1.6.10 ([b4a8df0](https://github.com/newrelic/developer-website/commit/b4a8df0fb901292d3e0c7037a5b2d4f7308fff0b))
+* upgrade @mdx-js/react from 1.6.6 to 1.6.10 ([5738b4d](https://github.com/newrelic/developer-website/commit/5738b4d35c303239a032c8a386f28d843e73e115))
+* upgrade eslint-plugin-react-hooks from 4.0.7 to 4.0.8 ([2d0c7e5](https://github.com/newrelic/developer-website/commit/2d0c7e5da3a3c9da8525396957836160472d18b8))
+* upgrade gatsby-plugin-mdx from 1.2.25 to 1.2.26 ([e06f36e](https://github.com/newrelic/developer-website/commit/e06f36ec9322321599e7ece0f65630431e945d2d))
+
+## [1.10.2](https://github.com/newrelic/developer-website/compare/v1.10.1...v1.10.2) (2020-08-10)
+
+
+### Bug Fixes
+
+* allow mobile views on developer champion page to have single column layout before applying 2 and 3 columns grid layouts ([2f5cc23](https://github.com/newrelic/developer-website/commit/2f5cc23d183d34c386174763a0731d4b7abcd103))
+* ensure two column layout only applies to wide viewports on podcast page. limit size of podcast logo to avoid very large logo size on wider viewports ([6c28f6d](https://github.com/newrelic/developer-website/commit/6c28f6db7d9da494908c7a7279d3a49408d44810))
+
+## [1.10.1](https://github.com/newrelic/developer-website/compare/v1.10.0...v1.10.1) (2020-08-07)
+
+
+### Bug Fixes
+
+* remove global height from text inputs ([7a99cdd](https://github.com/newrelic/developer-website/commit/7a99cdd0c21132590f332cd7665e3c59d743dea1))
+* upgrade to latest gatsby theme ([84f6616](https://github.com/newrelic/developer-website/commit/84f6616be323bcfe89183052eb6c9bb20a4cde7c))
+
+# [1.10.0](https://github.com/newrelic/developer-website/compare/v1.9.3...v1.10.0) (2020-08-06)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.6 to 1.6.7 ([93dd1ea](https://github.com/newrelic/developer-website/commit/93dd1ea8b4952b598f117ba5036952adbe5ebf0c))
+* upgrade eslint-plugin-react-hooks from 4.0.6 to 4.0.7 ([a38450d](https://github.com/newrelic/developer-website/commit/a38450dd25ecfa295f8b5146e9fde19d3c7e102e))
+* upgrade gatsby-plugin-mdx from 1.2.22 to 1.2.25 ([2911b72](https://github.com/newrelic/developer-website/commit/2911b72b3c3abf6abd225458fefe4a5d9dd71185))
+* upgrade react-shadow from 18.1.2 to 18.2.4 ([bd8e741](https://github.com/newrelic/developer-website/commit/bd8e74139f10cab64309da1988dee92d7f6906c0))
+* upgrade SDK shown in docs ([4513c91](https://github.com/newrelic/developer-website/commit/4513c9190a4e6122f71c114a5f5ad7732a2fe4e3))
+
+
+### Features
+
+* setup way to add tags to the current document ([da938cf](https://github.com/newrelic/developer-website/commit/da938cfa9e051485550577af541ac117e151022f))
+
 ## [1.9.3](https://github.com/newrelic/developer-website/compare/v1.9.2...v1.9.3) (2020-08-05)
 
 

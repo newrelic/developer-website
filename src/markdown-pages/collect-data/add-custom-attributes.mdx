@@ -14,6 +14,9 @@ resources:
 
   - title: Learn more about NRQL
     url: /technology/nrql
+tags:
+  - Custom Attributes
+  - NRQL
 ---
 
 <Intro>
@@ -22,13 +25,15 @@ There are countless filters and pivots you might want to apply to your data. By 
 
 </Intro>
 
-A common pattern when using custom attributes is to capture user information, e.g. name, id, email, etc. This allows you to 'link' your operational data with your business data. For example, if you have the user information, you tie together your service desk and CRM data with the operational data in New Relic.
+A common pattern when using custom attributes is to capture user information, such as name, ID, email, and more. This allows you to 'link' your operational data with your business data. For example, if you have the user information, you tie together your service desk and CRM data with the operational data in New Relic.
+
+## Create a custom attribute
 
 <Steps>
 
 <Step>
 
-You can add a `userid` custom attribute to your APM-reported data (`Transaction` and `TransactionError events`) with the opensource Java APM agent's API.
+Use the open source Java APM agent's API to add a `userid` custom attribute to your APM-reported data, `Transaction` and `TransactionError events`.
 
 ```
 NewRelic.addCustomParameter("userid", userId);
@@ -38,9 +43,9 @@ NewRelic.addCustomParameter("userid", userId);
 
 <Step>
 
-Once added, you can run a NRQL query that uses the 'userid' custom attribute.
+After you add the `userid` custom attribute, run a NRQL query that uses it.
 
-Once you have added a custom attribute like 'userid', you can use it to filter and facet your NRQL queries.
+As the query shows, the `userid` attribute enables you to filter and facet your NRQL queries. 
 
 ![custom-attribute-query.png](../../images/custom-attributes/custom-attribute-query.png)
 

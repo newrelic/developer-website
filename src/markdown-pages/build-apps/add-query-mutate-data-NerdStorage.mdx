@@ -4,15 +4,23 @@ duration: '45 min'
 title: 'Add, query, and mutate data using NerdStorage'
 template: 'GuideTemplate'
 description: 'NerdStorage is a document database accessible within New Relic One. It allows you to modify, save, and retrieve documents from one session to the next.'
+resources:
+  - title: 'New Relic SDK documentation'
+    url: /explore-docs/intro-to-sdk
+tags:
+  - add data
+  - query data
+  - mutate data
+  - nerdstorage
 ---
 
 <Intro>
 
-NerdStorage is a document database accessible within New Relic One. It allows you to modify, save, and retrieve documents from one session to the next. 
+NerdStorage is a document database accessible within New Relic One. It allows you to modify, save, and retrieve documents from one session to the next.
 
-Using NerdStorage, you can create individual documents of up to 64kb in size, create different collections of documents, and store data by entity, account, or user level. 
+Using NerdStorage, you can create individual documents of up to 64kb in size, create different collections of documents, and store data by entity, account, or user level.
 
-This guide explains how to add data and documents to NerdStorage. For an introduction to what NerdStorage is and how it works, see [Intro to NerdStorage](/explore-docs/nerdstorage). 
+This guide explains how to add data and documents to NerdStorage. For an introduction to what NerdStorage is and how it works, see [Intro to NerdStorage](/explore-docs/nerdstorage).
 
 </Intro>
 
@@ -28,19 +36,20 @@ First, get the NerdStorage app running successfully inside New Relic One.
 
 <Step>
 
-Clone the example applications from the [GitHub repo](https://github.com/newrelic/nr1-how-to/tree/master/use-nerdstorage). 
+Clone the example applications from the [GitHub repo](https://github.com/newrelic/nr1-how-to/tree/master/use-nerdstorage).
 
 </Step>
 
 <Step>
 
-Use the New Relic One CLI to update the application UUID and run the application locally. 
+Use the New Relic One CLI to update the application UUID and run the application locally.
 
-1. In the terminal, switch to the `/nr1-howto/use-nerdstorage` directory:
+1. In the terminal, switch to the `/nr1-how-to/use-nerdstorage` directory:
 
 ```
-cd /nr1-howto/use-nerdstorage
+cd /nr1-how-to/use-nerdstorage
 ```
+
 2. Update the UUID and serve the application:
 
 ```
@@ -52,9 +61,9 @@ nr1 nerdpack:serve
 
 <Step>
 
-Once the app is successfully served, your terminal will return the URL to view your running application on [New Relic One](https://one.newrelic.com/?nerdpacks=local). 
+Once the app is successfully served, your terminal will return the URL to view your running application on [New Relic One](https://one.newrelic.com/?nerdpacks=local).
 
-Load the URL. Under **Your applications** you'll see the **Use Nerdstorage** app listed. Click to launch the app.
+Load the URL. Click **Apps** and under **Other apps** you'll see the **Use Nerdstorage** app listed. Click to launch the app.
 
 ![Your applications view updated](../../images/build-an-app/NerdStorage-applications-view.png)
 
@@ -62,12 +71,11 @@ Load the URL. Under **Your applications** you'll see the **Use Nerdstorage** app
 
 </Steps>
 
-
 ## Add data to NerdStorage
 
-Once the app is up and running on New Relic One, you can prepare the app and start adding data. 
+Once the app is up and running on New Relic One, you can prepare the app and start adding data.
 
-On the **How To Use NerdStorage** app screen, there's a **Saved to NerdStorage** pane with a field for adding data. However, if you type something you'll get an error message. This is because you need to be set up to store data at the `User` level. You can do this with the help of the [UserStorageMutation component](https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/UserStorageMutation). 
+On the **How To Use NerdStorage** app screen, there's a **Saved to NerdStorage** pane with a field for adding data. However, if you type something you'll get an error message. This is because you need to be set up to store data at the `User` level. You can do this with the help of the [UserStorageMutation component](https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/UserStorageMutation).
 
 ![add data view 1](../../images/build-an-app/add-data-NerdStorage.png)
 
@@ -94,6 +102,7 @@ constructor(props) {
     this._deleteDocument = this._deleteDocument.bind(this);
 }
 ```
+
 </Step>
 
 <Step>
@@ -125,16 +134,16 @@ _addToNerdStorage(){
     });
 }
 ```
+
 </Step>
 
 <Step>
 
-1. Return to your running **How To Use NerdStorage** app screen on New Relic One and reload the page. 
+1. Return to your running **How To Use NerdStorage** app screen on New Relic One and reload the page.
 
-2. Add some text in the text entry field and click the check button. This will update NerdStorage and trigger a `Toast` notification inside the app. You should then see the text you typed displayed as a table row below the text entry field. 
+2. Add some text in the text entry field and click the check button. This will update NerdStorage and trigger a `Toast` notification inside the app. You should then see the text you typed displayed as a table row below the text entry field.
 
 ![add data view 2](../../images/build-an-app/add-data-NerdStorage-2.png)
-
 
 </Step>
 
@@ -142,17 +151,18 @@ _addToNerdStorage(){
 
 ## Query data from NerdStorage
 
-Once you get data storage working as described in the section above, you also need to get the app properly reading data from NerdStorage, or the app will reload with an empty state every time you navigate away from the app page and back. To do this, add the `UserStorageQuery` component and update the `componentDidMount` method. 
+Once you get data storage working as described in the section above, you also need to get the app properly reading data from NerdStorage, or the app will reload with an empty state every time you navigate away from the app page and back. To do this, add the `UserStorageQuery` component and update the `componentDidMount` method.
 
 <Steps>
 
 <Step>
 
-Import the `UserStorageQuery` by adding it to the import statement in the application’s `./nerdlets/use-nerdstorage-nerdlet/index.js` file. 
+Import the `UserStorageQuery` by adding it to the import statement in the application’s `./nerdlets/use-nerdstorage-nerdlet/index.js` file.
 
 ```
 import {UserStorageMutation, UserStorageQuery } from 'nr1';
 ```
+
 </Step>
 
 <Step>
@@ -173,6 +183,7 @@ componentDidMount(){
     .catch(err => console.log(err));
 }
 ```
+
 </Step>
 
 <Step>
@@ -182,17 +193,16 @@ Back inside the NerdStorage app, test your changes by adding a few more rows usi
 </Step>
 
 </Steps>
- 
 
 ## Mutate data in NerdStorage
 
-Each NerdStorage entry displayed in the table inside the app has a trash button that can be used to update a specific entry. The trash button works by making a call to the `_removeFromNerdStorage` helper method. 
+Each NerdStorage entry displayed in the table inside the app has a trash button that can be used to update a specific entry. The trash button works by making a call to the `_removeFromNerdStorage` helper method.
 
 <Steps>
 
 <Step>
 
-To get this process working, update the code in `_removeFromNerdStorage`: 
+To get this process working, update the code in `_removeFromNerdStorage`:
 
 ```
 _removeFromNerdStorage(index, data){
@@ -214,7 +224,7 @@ _removeFromNerdStorage(index, data){
 }
 ```
 
-Once this is done, clicking the trash button will remove the item it's associated with, and the app will update to show the change. 
+Once you do this, clicking the trash button removes the item it's associated with, and the app updates to show the change. 
 
 ![mutate data](../../images/build-an-app/mutate-data-NerdStorage.png)
 
@@ -224,7 +234,7 @@ Once this is done, clicking the trash button will remove the item it's associate
 
 ## Delete collection from NerdStorage
 
-While the trash button is a good method for removing specific entries one at a time, you may also want the ability to delete a whole NerdStorage document at once. You can do this by adding the **Delete Document** button to your app. 
+While the trash button is a good method for removing specific entries one at a time, you may also want the ability to delete a whole NerdStorage document at once. You can do this by adding the **Delete Document** button to your app.
 
 <Steps>
 
@@ -242,11 +252,12 @@ iconType={Button.ICON_TYPE.INTERFACE__OPERATIONS__TRASH}
        Delete Document
 </Button>
 ```
+
 </Step>
 
-<Step> 
+<Step>
 
-As the new **Delete Document** button will be calling the `_deleteDocument` helper method, you'll need to update that using the code below:
+Because the new **Delete Document** button will be calling the `_deleteDocument` helper method, you'll need to update that using this code:
 
 ```
 _deleteDocument(){
@@ -259,19 +270,15 @@ _deleteDocument(){
     Toast.showToast({ title: "NerdStorage Update.", type: Toast.TYPE.CRITICAL });
 }
 ```
+
 </Step>
 
 </Steps>
 
-Back inside the application, you should now see both the individual trash buttons and the newly added **Delete Document** button. 
+Back inside the application, you should now see both the individual trash buttons and the newly added **Delete Document** button.
 
 ![delete collection button view](../../images/build-an-app/delete-collection-NerdStorage.png)
 
-
 ## Next steps
 
-Now that you’ve successfully implemented NerdStorage into a New Relic One application, you can store and mutate data connected to your `User`. For more information on the various NerdStorage components, please visit the New Relic developer website [API documentation](/components/user-storage-mutation). 
-
-## Related info
-
-- [New Relic SDK documentation](/explore-docs/intro-to-sdk)
+Now that you’ve successfully implemented NerdStorage into a New Relic One application, you can store and mutate data connected to your `User`. For more information on the various NerdStorage components, please visit the New Relic developer website [API documentation](/components/user-storage-mutation).
