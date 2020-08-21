@@ -77,15 +77,21 @@ const IndexPage = ({ data, pageContext }) => {
                 <Link to="/nerd-days">Learn more</Link>
               </p>
             </div>
-
-            <img
-              src={nerdDays}
-              alt="nerd days header"
+            <div
               css={css`
                 flex: 1;
                 margin-top: 0;
+                width: 100%;
               `}
-            />
+            >
+              <img
+                css={css`
+                  width: inherit;
+                `}
+                src={nerdDays}
+                alt="nerd days header"
+              />
+            </div>
           </section>
 
           <section className={cx(styles.section, styles.stripedSection)}>
