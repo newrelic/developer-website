@@ -4,6 +4,7 @@ import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import SEO from '../components/Seo';
 import nerdDays from '../images/nerd-days/nerd-days.png';
+// import nerdDaysGuideDL from './nerd-day-cfp-overview.pdf';
 import styles from './nerd-days.module.scss';
 import '../components/marketo.scss';
 
@@ -80,13 +81,25 @@ const NerdDaysPage = () => {
                   Submit your proposals
                 </Link>{' '}
                 by September 1, 2020 at 11:59 PM PT. For more details, check out
-                the one-pager. proposals will contacted by September 30, 2020 at
-                the latest.
+                the one-pager. Accepted proposals will be contacted by September 30, 2020
+                at the latest.
+              </p>
+              <p>
+                For an overview and tips for the call for proposals process,
+                <Link
+                  to="https://resources.newrelic.com/nerd-days-call-for-proposals"
+                  alt="cfp guide"
+                >
+                  {' '}
+                  check our our guide.
+                </Link>
               </p>
             </div>
             <div className={styles.formholder}>
               <div className={styles.form}>
-                <p className={styles.formhead}>REGISTER FOR NERD DAYS</p>
+                <p className={styles.formhead}>
+                  REGISTER FOR NERD DAYS | AMERICAS
+                </p>
                 <form id="mktoForm_3525" />
               </div>
             </div>
