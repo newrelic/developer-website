@@ -17,6 +17,7 @@ import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import nerdDays from '../images/nerd-days/nerd-days.png';
+import CountdownContainer from '../components/Countdown/CountdownContainer';
 
 const getStartedGuides = [
   {
@@ -58,6 +59,7 @@ const IndexPage = ({ data, pageContext }) => {
         <PageLayout.Header title="Mark your calendar for Nerd Days 1.0" />
 
         <PageLayout.Content>
+        {/* <CountdownContainer /> */}
           <section
             css={css`
               margin-top: 0;
@@ -65,6 +67,7 @@ const IndexPage = ({ data, pageContext }) => {
             className={cx(styles.intro, 'intro-text')}
           >
             <div className={styles.introText}>
+            <CountdownContainer />
               <p>
                 Nerd Days is a <strong>FREE</strong> engineering conference that
                 kicks off October 13 (Dates vary by region). Focused on building
