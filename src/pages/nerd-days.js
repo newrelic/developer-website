@@ -77,13 +77,26 @@ const NerdDaysPage = () => {
                 <Link to="https://docs.google.com/forms/d/e/1FAIpQLSe8LOilCrD_TCUPyHFHG_QzVW2UdUR0UKZ8H8WNylz0flB7OQ/viewform">
                   Submit your proposals
                 </Link>{' '}
-                by September 1, 2020 at 11:59 PM PT. Accepted proposals will
-                contacted by September 30, 2020 at the latest.
+                by September 1, 2020 at 11:59 PM PT. For more details, check out
+                the one-pager. Accepted proposals will be contacted by September
+                30, 2020 at the latest.
+              </p>
+              <p>
+                For an overview and tips for the call for proposals process,
+                <a
+                  href="https://resources.newrelic.com/nerd-days-call-for-proposals"
+                  alt="cfp guide"
+                >
+                  {' '}
+                  check our our guide.
+                </a>
               </p>
             </div>
             <div className={styles.formholder}>
               <div className={styles.form}>
-                <p className={styles.formhead}>REGISTER FOR NERD DAYS</p>
+                <p className={styles.formhead}>
+                  REGISTER FOR NERD DAYS | AMERICAS
+                </p>
                 <form id="mktoForm_3525" />
               </div>
             </div>
