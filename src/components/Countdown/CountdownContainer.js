@@ -40,7 +40,7 @@ const CountdownContainer = () => {
     const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
 
     return { days, hours, minutes, seconds, milliseconds };
-  };
+  }
 
   return (
     <div className={styles.container}>
@@ -49,8 +49,8 @@ const CountdownContainer = () => {
           <Countdown countdown={countdown} />
         </div>
       ) : (
-          <p>Submissions are closed</p>
-        )}
+        <p>Submissions are closed</p>
+      )}
     </div>
   );
 };
