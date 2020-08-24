@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './CountdownContainer.module.scss'
+import styles from './CountdownContainer.module.scss';
+import PropTypes from 'prop-types';
 
 const CountdownUnit = ({ unit, label }) => {
   return (
@@ -8,6 +9,11 @@ const CountdownUnit = ({ unit, label }) => {
       <p className={styles.label}>{label}</p>
     </div>
   );
+};
+
+CountdownUnit.PropTypes = {
+  unit: PropTypes.number,
+  label: PropTypes.string
 };
 
 export default CountdownUnit;
