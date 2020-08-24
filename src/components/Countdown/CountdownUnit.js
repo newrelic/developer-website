@@ -2,17 +2,17 @@ import React from 'react';
 import styles from './CountdownContainer.module.scss';
 import PropTypes from 'prop-types';
 
-const CountdownUnit = ({ unit, label }) => {
+const CountdownUnit = ({ value, label }) => {
   return (
     <div className={styles.countdownUnit}>
-      <h2 className={styles.label}>{unit}</h2>
-      <p className={styles.label}>{label}</p>
+      <h2>{value}</h2>
+      <p>{label}</p>
     </div>
   );
 };
 
 CountdownUnit.propTypes = {
-  unit: PropTypes.number,
+  value: PropTypes.number,
   label: PropTypes.string,
 };
 
