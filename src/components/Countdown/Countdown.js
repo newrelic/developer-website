@@ -17,7 +17,7 @@ const Countdown = ({ countdown }) => {
   );
 };
 
-Countdown.PropTypes = {
+Countdown.propTypes = {
   countdown: PropTypes.number
 };
 

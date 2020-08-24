@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Countdown from './Countdown';
-import styles from './CountdownContainer.module.scss'
+import styles from './CountdownContainer.module.scss';
 
 const CountdownContainer = () => {
     const [countdown, setCountdown] = React.useState({
@@ -30,7 +30,7 @@ const CountdownContainer = () => {
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         setCountdown({ days, hours, minutes, seconds });
-    }
+    };
 
     return (
         <div className={styles.container}>

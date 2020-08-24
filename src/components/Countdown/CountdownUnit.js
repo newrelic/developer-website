@@ -11,9 +11,9 @@ const CountdownUnit = ({ unit, label }) => {
   );
 };
 
-CountdownUnit.PropTypes = {
+CountdownUnit.propTypes = {
   unit: PropTypes.number,
-  label: PropTypes.string
+  label: PropTypes.string,
 };
 
 export default CountdownUnit;
