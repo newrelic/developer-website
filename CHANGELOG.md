@@ -1,3 +1,13 @@
+## [1.14.1](https://github.com/newrelic/developer-website/compare/v1.14.0...v1.14.1) (2020-08-24)
+
+
+### Bug Fixes
+
+* add link to pdf overview ([a166d33](https://github.com/newrelic/developer-website/commit/a166d335d4763e8340e225d28adfd1d9004bbf7f))
+* codee clean up before merge ([ef7a2cc](https://github.com/newrelic/developer-website/commit/ef7a2cc3aace2354dc55a93e12dd789ebba7f429))
+* correct prettier errors ([f2c7569](https://github.com/newrelic/developer-website/commit/f2c7569f5f9b6a689b43e33231ceb09d6854a2dd))
+* update CFP date and reg text ([065f688](https://github.com/newrelic/developer-website/commit/065f6886634e9b09fb432ef61ce0edda3c1688a0))
+
 # [1.14.0](https://github.com/newrelic/developer-website/compare/v1.13.11...v1.14.0) (2020-08-21)
 
 
