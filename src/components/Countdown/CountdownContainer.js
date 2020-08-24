@@ -22,7 +22,6 @@ const CountdownContainer = () => {
         clearInterval(interval);
       }
     }, 1000);
-
   }, []);
 
   const getRemainingTime = () => {
@@ -48,15 +47,13 @@ const CountdownContainer = () => {
 
   return (
     <div className={styles.container}>
-      {
-        active ? (
+      { active ? (
         <div className={styles.countdownContainer}>
           <Countdown countdown={countdown} />
         </div> 
         ) : (
         <p className={styles.closedSubmittions}>Submissions are closed</p>
-        )
-      }
+        )}
     </div>
   );
 };
