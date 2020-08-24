@@ -4,21 +4,29 @@ import styles from './CountdownContainer.module.scss';
 
 const CountdownContainer = () => {
   const [countdown, setCountdown] = React.useState(() => getRemainingTime());
-  const [active, setActive] = React.useState(() => hasRemainingTime());
+  const [active, setActive] = React.useState(() => {
+    const { milliseconds } = getRemainingTime();
+    return milliseconds > 0;
+  });
 
   useEffect(() => {
+    const hasRemainingTime = () => {
+      const { milliseconds } = getRemainingTime();
+      return milliseconds > 0;
+    };
+
     if (!hasRemainingTime()) {
       setActive(false);
       return;
     }
 
     const interval = setInterval(() => {
-      const { 
-        days, 
-        hours, 
-        minutes, 
-        seconds, 
-        milliseconds 
+      const {
+        days,
+        hours,
+        minutes,
+        seconds,
+        milliseconds,
       } = getRemainingTime();
 
       if (milliseconds < 0) {
@@ -28,12 +36,7 @@ const CountdownContainer = () => {
         setCountdown({ days, hours, minutes, seconds });
       }
     }, 1000);
-  }, [hasRemainingTime]);
-
-  function hasRemainingTime() {
-    const { milliseconds } = getRemainingTime();
-    return milliseconds > 0;
-  }
+  }, []);
 
   function getRemainingTime() {
     const countDownDate = new Date('September 1, 2020 23:59:59').getTime();
