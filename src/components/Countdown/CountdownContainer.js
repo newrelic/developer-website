@@ -11,9 +11,15 @@ const CountdownContainer = () => {
       setActive(false);
       return;
     }
-    
+
     const interval = setInterval(() => {
-      const { days, hours, minutes, seconds, milliseconds } = getRemainingTime();
+      const { 
+        days, 
+        hours, 
+        minutes, 
+        seconds, 
+        milliseconds 
+      } = getRemainingTime();
 
       if (milliseconds < 0) {
         setActive(false);
@@ -22,7 +28,7 @@ const CountdownContainer = () => {
         setCountdown({ days, hours, minutes, seconds });
       }
     }, 1000);
-  }, []);
+  }, [hasRemainingTime]);
 
   function hasRemainingTime() {
     const { milliseconds } = getRemainingTime();
@@ -35,7 +41,9 @@ const CountdownContainer = () => {
     const milliseconds = countDownDate - now;
 
     const days = Math.floor(milliseconds / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((milliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const hours = Math.floor(
+      (milliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
     const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
 
