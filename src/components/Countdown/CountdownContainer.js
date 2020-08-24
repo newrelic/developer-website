@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import Countdown from "./Countdown";
+import React, { useEffect } from 'react';
+import Countdown from './Countdown';
 import styles from './CountdownContainer.module.scss'
 
 const CountdownContainer = () => {
@@ -18,7 +18,7 @@ const CountdownContainer = () => {
     },[]);
 
     const getRemainingTime = () => {
-        let countDownDate = new Date("Sept 1, 2020 23:59:59").getTime();
+        let countDownDate = new Date('Sept 1, 2020 23:59:59').getTime();
         let now = new Date().getTime();
         let distance = countDownDate - now;
 

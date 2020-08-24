@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import styles from './CountdownContainer.module.scss'
 
 const CountdownUnit = ({ unit, label }) => {
