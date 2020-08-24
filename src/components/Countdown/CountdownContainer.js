@@ -17,10 +17,8 @@ const CountdownContainer = () => {
 
     const interval = setInterval(() => {
       getRemainingTime();
-      console.log('hey')
       if (getRemainingTime() < 0) {
         setActive(false);
-        console.log('hi')
         clearInterval(interval);
       }
     }, 1000);
@@ -56,9 +54,7 @@ const CountdownContainer = () => {
           <Countdown countdown={countdown} />
         </div> 
         ) : (
-        <p className={styles.closedSubmittions}>
-          Submissions are closed
-        </p>
+        <p className={styles.closedSubmittions}>Submissions are closed</p>
         )
       }
     </div>
