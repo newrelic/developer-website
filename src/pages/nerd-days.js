@@ -4,7 +4,6 @@ import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import SEO from '../components/Seo';
 import nerdDays from '../images/nerd-days/nerd-days.png';
-// import nerdDaysGuideDL from './nerd-day-cfp-overview.pdf';
 import styles from './nerd-days.module.scss';
 import '../components/marketo.scss';
 
@@ -84,13 +83,13 @@ const NerdDaysPage = () => {
               </p>
               <p>
                 For an overview and tips for the call for proposals process,
-                <Link
-                  to="https://resources.newrelic.com/nerd-days-call-for-proposals"
+                <a
+                  href="https://resources.newrelic.com/nerd-days-call-for-proposals"
                   alt="cfp guide"
                 >
                   {' '}
                   check our our guide.
-                </Link>
+                </a>
               </p>
             </div>
             <div className={styles.formholder}>
