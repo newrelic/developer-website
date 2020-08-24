@@ -314,7 +314,7 @@ redirects:
   - /build-tools/new-relic-one-applications/intro-to-sdk
   - /client-side-sdk/index.html
 resources:
-  - title: Introduction to New Relic NerdGraph
+  - title: 'Introduction to New Relic NerdGraph'
     url: https://docs.newrelic.com/docs/apis/nerdgraph/get-started/introduction-new-relic-nerdgraph
   - title: Deploy an app
     url: /build-apps/publish-deploy

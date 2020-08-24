@@ -1,3 +1,65 @@
+# [1.14.0](https://github.com/newrelic/developer-website/compare/v1.13.11...v1.14.0) (2020-08-21)
+
+
+### Features
+
+* new copy and opens link in new tab ([6c9a7d8](https://github.com/newrelic/developer-website/commit/6c9a7d80dead170dad5f093cec29ae511190ef1c))
+
+## [1.13.11](https://github.com/newrelic/developer-website/compare/v1.13.10...v1.13.11) (2020-08-21)
+
+
+### Bug Fixes
+
+* image re resizes to browser ([7d122a3](https://github.com/newrelic/developer-website/commit/7d122a3f134f89681d0290b7c2ef3a35c64dfe68))
+* image resizes to browser ([1c7bfad](https://github.com/newrelic/developer-website/commit/1c7bfadd9bbb329048b0fc70d1fbd92e5dcb998f))
+
+## [1.13.10](https://github.com/newrelic/developer-website/compare/v1.13.9...v1.13.10) (2020-08-21)
+
+
+### Bug Fixes
+
+* update homepage to promote nerd days ([945ab17](https://github.com/newrelic/developer-website/commit/945ab17561e02895d65613ed9dd5fe549382b047))
+
+## [1.13.9](https://github.com/newrelic/developer-website/compare/v1.13.8...v1.13.9) (2020-08-21)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic version ([a4598f7](https://github.com/newrelic/developer-website/commit/a4598f7a15ca14abe8cb5fee49bd61a27a740e27))
+
+## [1.13.8](https://github.com/newrelic/developer-website/compare/v1.13.7...v1.13.8) (2020-08-21)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.13 to 1.6.16 ([0795538](https://github.com/newrelic/developer-website/commit/07955383901f72389dc7ce8875cfb6d2b6926d41))
+
+## [1.13.7](https://github.com/newrelic/developer-website/compare/v1.13.6...v1.13.7) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.10 to 1.6.13 ([2ca8bd0](https://github.com/newrelic/developer-website/commit/2ca8bd0e82062c2b1b27116682018f1024cf95e7))
+* upgrade multiple dependencies with Snyk ([d194e87](https://github.com/newrelic/developer-website/commit/d194e87ae94a69bef0e5adb885a65c5fb95a65ab))
+
+## [1.13.6](https://github.com/newrelic/developer-website/compare/v1.13.5...v1.13.6) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/react from 1.6.14 to 1.6.16 ([29c936e](https://github.com/newrelic/developer-website/commit/29c936eaa4e27243b4626769b02997158d68dcd0))
+* upgrade gatsby-image from 2.4.13 to 2.4.14 ([4529dd3](https://github.com/newrelic/developer-website/commit/4529dd3d7890ff1f0bef0adea2ecb80bd55b0fec))
+
+## [1.13.5](https://github.com/newrelic/developer-website/compare/v1.13.4...v1.13.5) (2020-08-19)
+
+
+### Bug Fixes
+
+* Fixed unused var error ([234600a](https://github.com/newrelic/developer-website/commit/234600a579d455c7e829d298068d9d1ebe3161f9))
+* merge main into nerd-days branch ([e2c0edf](https://github.com/newrelic/developer-website/commit/e2c0edf4b588d4ba20ae171bac14bcadf2ece5e5))
+* update nerd days page to use PageLayout ([e6636f4](https://github.com/newrelic/developer-website/commit/e6636f485dd10ce2534363cb03c4767055c3c319))
+* update package-lock.json ([439de7d](https://github.com/newrelic/developer-website/commit/439de7d7e1fcc97837914e18ede7214ec9384d27))
+
 ## [1.13.4](https://github.com/newrelic/developer-website/compare/v1.13.3...v1.13.4) (2020-08-19)
 
 
