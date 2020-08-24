@@ -41,7 +41,7 @@ const CountdownContainer = () => {
 
     setCountdown({ days, hours, minutes, seconds });
 
-    if (difference >= 0 ) {
+    if (difference >= 0) {
       setActive(true);
     }
 
@@ -51,12 +51,15 @@ const CountdownContainer = () => {
   return (
     <div className={styles.container}>
       {
-        active
-          ? <div className={styles.countdownContainer}>
-            <Countdown countdown={countdown} />
-          </div>
-          :
-          <p className={styles.closedSubmittions}>Submissions are closed</p>
+        active ? (
+        <div className={styles.countdownContainer}>
+          <Countdown countdown={countdown} />
+        </div> 
+        ) : (
+        <p className={styles.closedSubmittions}>
+          Submissions are closed
+        </p>
+        )
       }
     </div>
   );
