@@ -47,13 +47,13 @@ const CountdownContainer = () => {
 
   return (
     <div className={styles.container}>
-      { active ? (
+      {active ? (
         <div className={styles.countdownContainer}>
           <Countdown countdown={countdown} />
-        </div> 
-        ) : (
+        </div>
+      ) : (
         <p className={styles.closedSubmittions}>Submissions are closed</p>
-        )}
+      )}
     </div>
   );
 };
