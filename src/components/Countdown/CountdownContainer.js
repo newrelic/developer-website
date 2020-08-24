@@ -18,16 +18,16 @@ const CountdownContainer = () => {
     },[]);
 
     const getRemainingTime = () => {
-        let countDownDate = new Date('Sept 1, 2020 23:59:59').getTime();
-        let now = new Date().getTime();
-        let distance = countDownDate - now;
+        const countDownDate = new Date('Sept 1, 2020 23:59:59').getTime();
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
 
-        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours = Math.floor(
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
             (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
         );
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         setCountdown({ days, hours, minutes, seconds });
     }
