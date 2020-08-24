@@ -1,15 +1,11 @@
 import React from "react";
+import styles from './CountdownContainer.module.scss'
 
 const CountdownUnit = ({ unit, label }) => {
   return (
-    <div
-      style={{
-        color: "rgb(232, 234, 234)",
-        marginLeft: "10px"
-      }}
-    >
-      <h2>{unit}</h2>
-      <p>{label}</p>
+    <div className={styles.countdownUnit}>
+      <h2 className={styles.label}>{unit}</h2>
+      <p className={styles.label}>{label}</p>
     </div>
   );
 };

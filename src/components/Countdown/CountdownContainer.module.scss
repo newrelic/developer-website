@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding-left:10px;
+    padding-right:20px;
+}
+
+.countdownContainer {
+    border: 1px solid rgb(146, 189, 196);
+    height: 120px;
+    width: 100%;
+    padding-top:20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.countdownUnit {
+    padding:0;
+    margin:0;
+}

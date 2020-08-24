@@ -59,7 +59,6 @@ const IndexPage = ({ data, pageContext }) => {
         <PageLayout.Header title="Mark your calendar for Nerd Days 1.0" />
 
         <PageLayout.Content>
-        {/* <CountdownContainer /> */}
           <section
             css={css`
               margin-top: 0;
