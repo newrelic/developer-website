@@ -1,47 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
+import MarketoForm from '../components/MarketoForm';
+import useMarketoForm from '../hooks/useMarketForm';
 import SEO from '../components/Seo';
 import nerdDays from '../images/nerd-days/nerd-days.png';
 import styles from './nerd-days.module.scss';
-import '../components/marketo.scss';
 
 const NerdDaysPage = () => {
-  useEffect(() => {
-    window.MktoForms2.loadForm('//app-abj.marketo.com', '412-MZS-894', 3525);
-
-    const pollForDefinition = function (scope, varname, callback) {
-      if (typeof scope[varname] !== 'undefined') {
-        return callback();
-      }
-      const interval = setInterval(function () {
-        if (typeof scope[varname] !== 'undefined') {
-          clearInterval(interval);
-          callback();
-        }
-      }, 250);
-    };
-    const script = document.createElement('script');
-    script.src = 'https://marketo.clearbit.com/assets/v1/marketo/forms.js';
-    script.async = true;
-    script.setAttribute(
-      'data-clearbit-publishable-key',
-      'pk_4d10daa544de6f993a9a9ce002ccd1c6'
-    );
-    script.onerror = function () {
-      // eslint-disable-next-line no-console
-      console.log('Clearbit Form JS unable to load');
-      pollForDefinition(window, 'MktoForms2', function () {
-        window.MktoForms2.whenReady(function (form) {
-          form.setValues({
-            clearbitFormStatus: 'Clearbit Form JS unable to load',
-          });
-        });
-      });
-    };
-    document.body.append(script);
-  }, []);
+  useMarketoForm('412-MZS-894', 3525, 'pk_4d10daa544de6f993a9a9ce002ccd1c6');
 
   return (
     <>
@@ -88,18 +56,11 @@ const NerdDaysPage = () => {
                   alt="cfp guide"
                 >
                   {' '}
-                  check our our guide.
+                  check out our guide.
                 </a>
               </p>
             </div>
-            <div className={styles.formholder}>
-              <div className={styles.form}>
-                <p className={styles.formhead}>
-                  REGISTER FOR NERD DAYS | AMERICAS
-                </p>
-                <form id="mktoForm_3525" />
-              </div>
-            </div>
+            <MarketoForm id={3525} title="REGISTER FOR NERD DAYS | AMERICAS" />
           </section>
           <section />
         </PageLayout.Content>
