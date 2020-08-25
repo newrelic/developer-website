@@ -1,5 +1,5 @@
+import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { css } from '@emotion/core';
 import { Surface } from '@newrelic/gatsby-theme-newrelic';
 import FeatherIcon from '../FeatherIcon';
@@ -55,7 +55,7 @@ const GuideTile = ({
           }
         `}
       >
-        <NewRelicIcon name={icon} size="2.5rem" />
+        {cloneElement(icon, { size: '2.5rem' })}
       </div>
     )}
     <div
