@@ -68,4 +68,4 @@ const EventLandingPage = () => {
   );
 };
 
-export default DevEventLandingPage;
+export default EventLandingPage;
