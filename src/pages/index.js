@@ -66,7 +66,6 @@ const IndexPage = ({ data, pageContext }) => {
             className={cx(styles.intro, 'intro-text')}
           >
             <div className={styles.introText}>
-              <CountdownContainer date="September 1, 2020 23:59:59" />
               <p>
                 Nerd Days is a <strong>FREE</strong> engineering conference that
                 kicks off October 13 (Dates vary by region). Focused on building
@@ -90,6 +89,7 @@ const IndexPage = ({ data, pageContext }) => {
               <p>
                 <Link to="/nerd-days">Learn more</Link>
               </p>
+              <CountdownContainer countdownDate="September 1, 2020 23:59:59" inactiveMessage="Submissions are closed"/>
             </div>
             <div
               css={css`

@@ -3,7 +3,7 @@ import Countdown from './Countdown';
 import PropTypes from 'prop-types';
 import styles from './CountdownContainer.module.scss';
 
-const CountdownContainer = ({ date }) => {
+const CountdownContainer = ({ countdownDate, inactiveMessage }) => {
   const [countdown, setCountdown] = React.useState(() => getRemainingTime());
   const [active, setActive] = React.useState(() => {
     const { milliseconds } = getRemainingTime();
@@ -40,7 +40,7 @@ const CountdownContainer = ({ date }) => {
   }, []);
 
   function getRemainingTime() {
-    let countDownDate = new Date(date).toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+    let countDownDate = new Date(countdownDate).toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
     let now = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"})
     countDownDate = new Date(countDownDate).getTime();
     now = new Date(now).getTime();
@@ -63,14 +63,15 @@ const CountdownContainer = ({ date }) => {
           <Countdown countdown={countdown} />
         </div>
       ) : (
-        <p>Submissions are closed</p>
+        <p>{inactiveMessage}</p>
       )}
     </div>
   );
 };
 
 CountdownContainer.propTypes = {
-  date: PropTypes.string,
+  countdownDate: PropTypes.string,
+  inactiveMessage: PropTypes.string,
 };
 
 export default CountdownContainer;
