@@ -11,6 +11,7 @@ import GuideTile from '../components/GuideTile/GuideTile';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import ExternalLink from '../components/ExternalLink';
+import CollectDataIcon from '../components/CollectDataIcon';
 import NewRelicIcon from '../components/NewRelicIcon';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
@@ -26,7 +27,7 @@ const getStartedGuides = [
     description:
       'Define, visualize, and get alerts on the data you want using custom events',
     path: '/collect-data/custom-events',
-    icon: <NewRelicIcon name="collectData" />,
+    icon: <CollectDataIcon />,
   },
   {
     duration: '7 min',
