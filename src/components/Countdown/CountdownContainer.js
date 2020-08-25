@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Countdown from './Countdown';
 import styles from './CountdownContainer.module.scss';
 
-const CountdownContainer = () => {
+const CountdownContainer = ({ date }) => {
   const [countdown, setCountdown] = React.useState(() => getRemainingTime());
   const [active, setActive] = React.useState(() => {
     const { milliseconds } = getRemainingTime();
@@ -39,8 +39,10 @@ const CountdownContainer = () => {
   }, []);
 
   function getRemainingTime() {
-    const countDownDate = new Date('September 1, 2020 23:59:59').getTime();
-    const now = new Date().getTime();
+    let countDownDate = new Date(date).toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+    let now = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"})
+    countDownDate = new Date(countDownDate).getTime();
+    now = new Date(now).getTime();
     const milliseconds = countDownDate - now;
 
     const days = Math.floor(milliseconds / (1000 * 60 * 60 * 24));
