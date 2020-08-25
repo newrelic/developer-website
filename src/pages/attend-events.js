@@ -22,8 +22,8 @@ const EventLandingPage = () => {
               <p>
                 There are a lot of developer events out there, so we've curated a list of events we're hosting or sponsoring that are dedicated to developers, engineers, problem solvers, and builders like you.<br><br>
 
-                <strong>UPCOMING EVENTS</strong><br>
-                Nerd Days 1.0: Return of the Data Nerd<br>
+                <strong>UPCOMING EVENTS</strong><br />
+                Nerd Days 1.0: Return of the Data Nerd<br />
                 Nerd Days is a FREE engineering conference that kicks off October 13 (Dates vary by region). Focused on building more perfect software, our goal is to spend less time looking at slides that tell you what software can do and more time on getting your hands on the software to solve problems efficiently.
               </p>
               <Button
