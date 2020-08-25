@@ -48,6 +48,10 @@
       {
         "displayName": "Tag a set of resources efficiently",
         "url": "/automate-workflows/5-mins-tag-resources"
+      },
+      {
+        "displayName": "Automated end-to-end tagging of entities",
+        "url": "/automate-workflows/automated-tagging"
       }
     ]
   },
@@ -513,11 +517,20 @@
     ]
   },
   {
-    "displayName": "Attend events",
+    "displayName": "Developer events",
     "children": [
       {
-        "displayName": "Kubecon & CloudNativeCon",
-        "url": "/kubecon-europe-2020"
+        "displayName": "Nerd days 1.0",
+        "url": "/nerd-days"
+      },
+      {
+        "displayName": "Past events",
+        "children": [
+          {
+            "displayName": "Kubecon & CloudNativeCon",
+            "url": "/kubecon-europe-2020"
+          }
+        ]
       }
     ]
   },

@@ -1,3 +1,56 @@
+## [1.14.2](https://github.com/newrelic/developer-website/compare/v1.14.1...v1.14.2) (2020-08-25)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-mdx from 1.2.30 to 1.2.33 ([7c3da52](https://github.com/newrelic/developer-website/commit/7c3da520ae270f3da369908e7751ef0e9be09f46))
+
+## [1.14.1](https://github.com/newrelic/developer-website/compare/v1.14.0...v1.14.1) (2020-08-24)
+
+
+### Bug Fixes
+
+* add link to pdf overview ([a166d33](https://github.com/newrelic/developer-website/commit/a166d335d4763e8340e225d28adfd1d9004bbf7f))
+* codee clean up before merge ([ef7a2cc](https://github.com/newrelic/developer-website/commit/ef7a2cc3aace2354dc55a93e12dd789ebba7f429))
+* correct prettier errors ([f2c7569](https://github.com/newrelic/developer-website/commit/f2c7569f5f9b6a689b43e33231ceb09d6854a2dd))
+* update CFP date and reg text ([065f688](https://github.com/newrelic/developer-website/commit/065f6886634e9b09fb432ef61ce0edda3c1688a0))
+
+# [1.14.0](https://github.com/newrelic/developer-website/compare/v1.13.11...v1.14.0) (2020-08-21)
+
+
+### Features
+
+* new copy and opens link in new tab ([6c9a7d8](https://github.com/newrelic/developer-website/commit/6c9a7d80dead170dad5f093cec29ae511190ef1c))
+
+## [1.13.11](https://github.com/newrelic/developer-website/compare/v1.13.10...v1.13.11) (2020-08-21)
+
+
+### Bug Fixes
+
+* image re resizes to browser ([7d122a3](https://github.com/newrelic/developer-website/commit/7d122a3f134f89681d0290b7c2ef3a35c64dfe68))
+* image resizes to browser ([1c7bfad](https://github.com/newrelic/developer-website/commit/1c7bfadd9bbb329048b0fc70d1fbd92e5dcb998f))
+
+## [1.13.10](https://github.com/newrelic/developer-website/compare/v1.13.9...v1.13.10) (2020-08-21)
+
+
+### Bug Fixes
+
+* update homepage to promote nerd days ([945ab17](https://github.com/newrelic/developer-website/commit/945ab17561e02895d65613ed9dd5fe549382b047))
+
+## [1.13.9](https://github.com/newrelic/developer-website/compare/v1.13.8...v1.13.9) (2020-08-21)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic version ([a4598f7](https://github.com/newrelic/developer-website/commit/a4598f7a15ca14abe8cb5fee49bd61a27a740e27))
+
+## [1.13.8](https://github.com/newrelic/developer-website/compare/v1.13.7...v1.13.8) (2020-08-21)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.13 to 1.6.16 ([0795538](https://github.com/newrelic/developer-website/commit/07955383901f72389dc7ce8875cfb6d2b6926d41))
+
 ## [1.13.7](https://github.com/newrelic/developer-website/compare/v1.13.6...v1.13.7) (2020-08-20)
 
 

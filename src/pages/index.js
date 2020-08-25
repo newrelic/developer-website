@@ -9,14 +9,16 @@ import { Button } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import PageLayout from '../components/PageLayout';
-import Video from '../components/Video';
 import FeatherIcon from '../components/FeatherIcon';
 import ExternalLink from '../components/ExternalLink';
+import CollectDataIcon from '../components/CollectDataIcon';
+import NewRelicIcon from '../components/NewRelicIcon';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
+import nerdDays from '../images/nerd-days/nerd-days.png';
 
 const getStartedGuides = [
   {
@@ -25,21 +27,21 @@ const getStartedGuides = [
     description:
       'Define, visualize, and get alerts on the data you want using custom events',
     path: '/collect-data/custom-events',
-    icon: 'collectData',
+    icon: <CollectDataIcon />,
   },
   {
     duration: '7 min',
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
     path: '/automate-workflows/5-mins-tag-resources',
-    icon: 'automation',
+    icon: <NewRelicIcon name="automation" />,
   },
   {
     duration: '12 min',
     title: 'Build a Hello, World! app',
     description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
     path: '/build-apps/build-hello-world-app',
-    icon: 'buildApps',
+    icon: <NewRelicIcon name="buildApps" />,
   },
 ];
 
@@ -55,31 +57,55 @@ const IndexPage = ({ data, pageContext }) => {
     <PageContext.Provider value={pageContext}>
       <SEO />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Contain the complexity - Observability made simple" />
+        <PageLayout.Header title="Mark your calendar for Nerd Days 1.0" />
 
         <PageLayout.Content>
-          <section className={cx(styles.intro, 'intro-text')}>
+          <section
+            css={css`
+              margin-top: 0;
+            `}
+            className={cx(styles.intro, 'intro-text')}
+          >
             <div className={styles.introText}>
               <p>
-                New Relic’s Kubernetes cluster explorer empowers Kubernetes
-                nerds to move beyond infrastructure metrics and investigate
-                deeper into applications, traces, logs, and events—with a single
-                click—while staying grounded in a centralized UI. Join us at
-                KubeCon and CloudNativeCon Europe August 17-20 to learn more.
+                Nerd Days is a <strong>FREE</strong> engineering conference that
+                kicks off October 13 (Dates vary by region). Focused on building
+                more perfect software, our goal is to spend less time looking at
+                slides that tell you what software can do and more time on
+                getting your hands on the software to solve problems
+                efficiently.
               </p>
-
               <p>
-                Check out the complete schedule of New Relic talks to make the
-                most of your KubeCon experience.{' '}
-                <Link to="/kubecon-europe-2020">Learn more.</Link>
+                Got a cool project you want to share with fellow engineers?
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSe8LOilCrD_TCUPyHFHG_QzVW2UdUR0UKZ8H8WNylz0flB7OQ/viewform"
+                >
+                  {' '}
+                  Submit your proposal!
+                </a>{' '}
+                Submissions are due September 1, 2020 at 11:59 PM PT.
+              </p>
+              <p>
+                <Link to="/nerd-days">Learn more</Link>
               </p>
             </div>
-            <Video
-              className={styles.introVideo}
-              id="8yJOYDTYml4"
-              type="youtube"
-              title="5 Steps for Kubernetes Observability"
-            />
+            <div
+              css={css`
+                flex: 1;
+                margin-top: 0;
+                width: 100%;
+              `}
+            >
+              <img
+                css={css`
+                  width: inherit;
+                `}
+                src={nerdDays}
+                alt="nerd days header"
+              />
+            </div>
           </section>
 
           <section className={cx(styles.section, styles.stripedSection)}>
