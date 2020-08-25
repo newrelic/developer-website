@@ -524,7 +524,7 @@
         "url": "/nerd-days"
       },
       {
-        "displayName": "Past Events",
+        "displayName": "Past events",
         "children": [
           {
             "displayName": "Kubecon & CloudNativeCon",
