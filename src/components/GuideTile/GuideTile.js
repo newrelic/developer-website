@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Surface } from '@newrelic/gatsby-theme-newrelic';
 import FeatherIcon from '../FeatherIcon';
-import NewRelicIcon from '../NewRelicIcon';
 import Button from './Button';
 
 const GuideTile = ({
