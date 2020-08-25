@@ -1,3 +1,4 @@
+import React from 'react';
 import cx from 'classnames';
 import SEO from '../components/Seo';
 import { Button, Video } from '@newrelic/gatsby-theme-newrelic';
