@@ -26,10 +26,7 @@ const Contribute = ({ pageContext }) => {
     <Section
       css={css`
         background-color: var(--divider-color);
-
-        @media screen and (max-width: 1240px) {
-          text-align: center;
-        }
+        text-align: center;
       `}
     >
       <Button
@@ -47,7 +44,7 @@ const Contribute = ({ pageContext }) => {
             margin-right: 0.5rem;
           `}
         />
-        File an issue
+        Create an issue
       </Button>
       <Button
         as={ExternalLink}
