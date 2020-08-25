@@ -34,14 +34,7 @@ const getStartedGuides = [
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
     path: '/automate-workflows/5-mins-tag-resources',
-    icon: (
-      <NewRelicIcon
-        name="automation"
-        css={css`
-          stroke-width: 1;
-        `}
-      />
-    ),
+    icon: <NewRelicIcon name="automation" />,
   },
   {
     duration: '12 min',
