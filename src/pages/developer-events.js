@@ -14,7 +14,7 @@ const EventLandingPage = () => {
     <>
       <SEO />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Developer Events" />
+        <PageLayout.Header title="Developer events" />
         <PageLayout.Content>
           <section
             className={cx(styles.section, styles.twoColumn)}
@@ -67,7 +67,7 @@ const EventLandingPage = () => {
               `}
             />
           </section>
-          <h2>Upcoming Events</h2>
+          <h2>Upcoming events</h2>
           <section className={styles.section}>
             <div
               css={css`
@@ -102,7 +102,7 @@ const EventLandingPage = () => {
               </p>
             </div>
           </section>
-          <h2>Past Events</h2>
+          <h2>Past events</h2>
           <section className={styles.section}>
             <div>
               <h3>KubeCon and CloudNativeCon Europe 2020</h3>
