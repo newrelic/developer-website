@@ -1,33 +1,28 @@
 .container {
-    display: flex;
-    justify-content: center;
-    padding-right:20px;
+  display: flex;
+  justify-content: center;
+  padding-right:20px;
 }
 
 .countdownContainer {
-    border: 1px solid rgb(213, 215, 215);
-    border-radius: 4px;
-    height: 120px;
-    width: 100%;
-    padding-top:20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 20px;
-
-    :global(.dark-mode) & {
-        border: 1px solid rgb(56, 70, 75);
-      }
-
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  height: 120px;
+  width: 100%;
+  padding-top:20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .countdown {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .countdownUnit {
-    padding:0;
-    margin:0;
+  padding:0;
+  margin:0;
 }
