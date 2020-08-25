@@ -6,6 +6,7 @@ import styles from './CountdownContainer.module.scss';
 const CountdownContainer = ({ countdownDate, inactiveMessage }) => {
   const [countdown, setCountdown] = React.useState(() => getRemainingTime());
   const active = countdown.milliseconds > 0;
+  console.log(countdown)
 
   useEffect(() => {
     const hasRemainingTime = () => {
@@ -34,6 +35,8 @@ const CountdownContainer = ({ countdownDate, inactiveMessage }) => {
         setCountdown({ days, hours, minutes, seconds, milliseconds });
       }
     }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   function getRemainingTime() {
