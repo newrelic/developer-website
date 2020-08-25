@@ -5,10 +5,7 @@ import styles from './CountdownContainer.module.scss';
 
 const CountdownContainer = ({ countdownDate, inactiveMessage }) => {
   const [countdown, setCountdown] = React.useState(() => getRemainingTime());
-  const [active, setActive] = React.useState(() => {
-    const { milliseconds } = getRemainingTime();
-    return milliseconds > 0;
-  });
+  const active = countdown.milliseconds > 0;
 
   useEffect(() => {
     const hasRemainingTime = () => {
@@ -17,7 +14,7 @@ const CountdownContainer = ({ countdownDate, inactiveMessage }) => {
     };
 
     if (!hasRemainingTime()) {
-      setActive(false);
+      active = false;
       return;
     }
 
@@ -31,10 +28,10 @@ const CountdownContainer = ({ countdownDate, inactiveMessage }) => {
       } = getRemainingTime();
 
       if (milliseconds < 0) {
-        setActive(false);
+        active = false;
         clearInterval(interval);
       } else {
-        setCountdown({ days, hours, minutes, seconds });
+        setCountdown({ days, hours, minutes, seconds, milliseconds });
       }
     }, 1000);
   }, []);
@@ -58,7 +55,7 @@ const CountdownContainer = ({ countdownDate, inactiveMessage }) => {
 
   return (
     <div className={styles.container}>
-      {active ? (
+      {active === true ? (
         <div className={styles.countdownContainer}>
           <Countdown countdown={countdown} />
         </div>
