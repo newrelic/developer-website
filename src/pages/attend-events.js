@@ -20,7 +20,7 @@ const EventLandingPage = () => {
                 Developer Events <br />
               </h3>
               <p>
-                There are a lot of developer events out there, so we've curated a list of events we're hosting or sponsoring that are dedicated to developers, engineers, problem solvers, and builders like you.<br><br>
+                There are a lot of developer events out there, so we've curated a list of events we're hosting or sponsoring that are dedicated to developers, engineers, problem solvers, and builders like you.<br /><br />
 
                 <strong>UPCOMING EVENTS</strong><br />
                 Nerd Days 1.0: Return of the Data Nerd<br />
