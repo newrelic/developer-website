@@ -518,6 +518,7 @@
   },
   {
     "displayName": "Developer events",
+    "url": "/developer-events",
     "children": [
       {
         "displayName": "Nerd days 1.0",
