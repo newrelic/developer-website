@@ -1,4 +1,5 @@
 import React from 'react';
+import { css } from '@emotion/core';
 import cx from 'classnames';
 import SEO from '../components/Seo';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
@@ -15,9 +16,21 @@ const EventLandingPage = () => {
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="Developer Events" />
         <PageLayout.Content>
-          <section className={cx(styles.section, styles.twoColumn)}>
+          <section
+            className={cx(styles.section, styles.twoColumn)}
+            css={css`
+              @media screen and (max-width: 1180px) {
+                grid-template-columns: 1fr;
+              }
+            `}
+          >
             <div>
-              <p className="intro-text">
+              <p
+                className="intro-text"
+                css={css`
+                  margin-bottom: 2rem;
+                `}
+              >
                 There are a lot of developer events out there, so we've curated
                 a list of events we're hosting or sponsoring that are dedicated
                 to developers, engineers, problem solvers, and builders like
@@ -47,13 +60,20 @@ const EventLandingPage = () => {
             </div>
             <img
               src={nerdDays}
-              className={styles.img}
               alt="Nerd Days 1.0: Return of the Data Nerd"
+              css={css`
+                width: 100%;
+                margin: 0 auto;
+              `}
             />
           </section>
           <h2>Upcoming Events</h2>
-          <section className={cx(styles.section, styles.assetTable)}>
-            <div className={styles.point}>
+          <section className={styles.section}>
+            <div
+              css={css`
+                margin-bottom: 2rem;
+              `}
+            >
               <h3>Nerd Days 1.0: Return of the Data Nerd</h3>
               <p>
                 <strong>US:</strong> October 13, 2020
@@ -72,9 +92,7 @@ const EventLandingPage = () => {
                 efficiently.
               </p>
             </div>
-          </section>
-          <section className={cx(styles.section, styles.assetTable)}>
-            <div className={styles.point}>
+            <div>
               <h3>KubeCon and CloudNativeCon North America 2020</h3>
               <p>November 17-20</p>
               <p>
@@ -85,8 +103,8 @@ const EventLandingPage = () => {
             </div>
           </section>
           <h2>Past Events</h2>
-          <section className={cx(styles.section, styles.assetTable)}>
-            <div className={styles.point}>
+          <section className={styles.section}>
+            <div>
               <h3>KubeCon and CloudNativeCon Europe 2020</h3>
               <p>August 17 – 20</p>
               <p>
