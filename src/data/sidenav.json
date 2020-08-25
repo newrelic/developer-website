@@ -517,11 +517,20 @@
     ]
   },
   {
-    "displayName": "Attend events",
+    "displayName": "Developer events",
     "children": [
       {
-        "displayName": "Kubecon & CloudNativeCon",
-        "url": "/kubecon-europe-2020"
+        "displayName": "Nerd days 1.0",
+        "url": "/nerd-days"
+      },
+      {
+        "displayName": "Past Events",
+        "children": [
+          {
+            "displayName": "Kubecon & CloudNativeCon",
+            "url": "/kubecon-europe-2020"
+          }
+        ]
       }
     ]
   },

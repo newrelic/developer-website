@@ -17,7 +17,7 @@ const iconLibrary = {
   'Build apps': 'buildApps',
   'Automate workflows': 'automation',
   'Explore docs': 'developerDocs',
-  'Attend events': 'event',
+  'Developer events': 'event',
   'Developer champions': 'developerChampions',
   Podcasts: 'podcasts',
   'Try our APIs': 'tryOurAPIs',
