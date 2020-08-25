@@ -18,12 +18,11 @@ tags:
   - deploy apps
   - subscribe apps
   - add metadata apps
-
 ---
 
 <Intro>
 
-When you build a New Relic One app, chances are you'll want to share it with others in your organization. You might even want to share it broadly through our open source channel. But first, you probably want to try it out locally to make sure it's working properly. 
+When you build a New Relic One app, chances are you'll want to share it with others in your organization. You might even want to share it broadly through our open source channel. But first, you probably want to try it out locally to make sure it's working properly.
 
 </Intro>
 
@@ -49,7 +48,7 @@ This guide requires the following:
 
 ## Serve your app locally
 
-You can locally serve the app you create to New Relic One to test it out. 
+You can locally serve the app you create to New Relic One to test it out.
 
 <Steps>
 
@@ -95,52 +94,41 @@ Add catalog metadata and screenshots.
 
 Run `nr1 create` and then select `catalog` to add a catalog folder to your New Relic One project. The folder contains the following empty files and folder. Add the information as described in the following table for the process to succeed.
 
-<table>
-		<thead>
-			<tr>
-				<th style="width:200px">File</th>
-				<th>Requirements</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>screenshots folder</td>
-				<td>A directory that must contain no more than 6 images and meet these criteria:
-				<ul>
-					<li>3:2 aspect ratio</li>
-					<li>PNG format</li>
-					<li>landscape orientation</li>
-					<li>1600 to 2400 pixels wide</li>
-				</ul>
-				</td>
-			</tr>
-			<tr>
-				<td>documentation.md</td>
-				<td>A markdown file that presents usage information pulled into the <strong>Documentation</strong> tab for the application in the catalog.</td>
-			</tr>
-			<tr>
-				<td>additionalInfo.md</td>
-				<td>An optional markdown file for any additional information about using your application.</td>
-			</tr>
-			<tr>
-				<td>config.json</td>
-				<td>A JSON file that contains the following fields:
-				<ul>
-					<li><code>tagline</code>: A brief headline for the application. Must not exceed 30 characters.</li>
-					<li><code>repository</code>: The URL to the GitHub repo for the application. Must not exceed 1000 characters.</li>
-					<li><code>details</code>: Describes the purpose of the application and how to use it. Information must not exceed 1000. Use carriage returns for formatting. Do not include any markdown or HTML.</li>
-					<li><code>support</code>: An object that contains:
-					<ul>
-						<li><code>issues</code>: A valid URL to the GitHub repository's issues list, generally the GitHub <strong>Issues</strong> tab for the repo.</li>
-						<li><code>email</code>: A valid email address for the team supporting the application.</li>
-						<li><code>community</code>: URL to a support thread, forum, or website for troubleshooting and usage support.</li>
-					</ul>
-					</li>
-					<li><code>whatsNew</code>: A bulleted list of changes in this version. Must not exceed 500 characters. Use carriage returns for formatting. Do not include markdown or HTML.</li>
-				</ul>
+### screenshots folder
 
-				<pre>
+A directory that must contain no more than 6 images and meet these criteria:
+
+- 3:2 aspect ratio
+- PNG format
+- landscape orientation
+- 1600 to 2400 pixels wide
+
+### `documentation.md`
+
+A markdown file that presents usage information pulled into the **Documentation** tab for the application in the catalog.
+
+### `additionalInfo.md`
+
+An optional markdown file for any additional information about using your application.
+
+<>
+
+### `config.json`
+
+A JSON file that contains the following fields:
+
+- `tagline`: A brief headline for the application. Must not exceed 30 characters.
+- `repository`: The URL to the GitHub repo for the application. Must not exceed 1000 characters.
+- `details`: Describes the purpose of the application and how to use it. Information must not exceed 1000. Use carriage returns for formatting. Do not include any markdown or HTML.
+- `support`: An object that contains:
+  - `issues`: A valid URL to the GitHub repository's issues list, generally the GitHub **Issues** tab for the repo.
+  - `email`: A valid email address for the team supporting the application.
+  - `community`: URL to a support thread, forum, or website for troubleshooting and usage support.
+- `whatsNew`: A bulleted list of changes in this version. Must not exceed 500 characters. Use carriage returns for formatting. Do not include markdown or HTML.
+
 Example:
+
+```json
 {
   "tagline": "Map your workloads &amp; entities",
   "repository": "https://github.com/newrelic/nr1-workload-geoops.git",
@@ -157,11 +145,10 @@ Example:
     }
   },
   "whatsNew": "\n-Feat: Geographic mapping of Workloads and Entities\n-Feat: Programmatic alerting rollup of underlying Entities\n-Feat: Custom KPI measurement per location\n-Feat: Empty-state edit workflow\n-Feat: JSON file upload format\n-Feat: Published (in open source docs) guide to automating configuration using the newrelic-cli"
-}</pre>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+}
+```
+
+</>
 
 </Step>
 
@@ -174,6 +161,7 @@ This validates the information you added to the catalog directory against the cr
 ```
 nr1 catalog:submit
 ```
+
 </Step>
 
 </Steps>
@@ -192,7 +180,7 @@ Publishing places your Nerdpack in New Relic One. To publish or deploy, you must
 
 </Steps>
 
-## Deploy your app 
+## Deploy your app
 
 Deploying is applying a Nerdpack version to a specific channel (for example, BETA, or STABLE). A channel can only have one Nerdpack version deployed to it at one time. If a channel has an existing Nerdpack associated with it, deploying a new Nerdpack version to that channel will undeploy the previous one. Channels are meant to be an easier way to control application version access than having to be concerned with specific version numbers.
 
@@ -210,7 +198,7 @@ Deploying is applying a Nerdpack version to a specific channel (for example, BET
 
 Whether you want to subscribe accounts to an app you've created or to apps already available in the catalog, the process is the same. Note that if you subscribe to an app in the catalog, you'll automatically get any updates that are added to the app.
 
-To learn about the appropriate permissions for subscribing, see [Permissions for managing applications](/build-apps/permission-manage-apps). 
+To learn about the appropriate permissions for subscribing, see [Permissions for managing applications](/build-apps/permission-manage-apps).
 
 <Steps>
 
@@ -221,6 +209,7 @@ Subscribe accounts to an application.
 1. Select an application you want to add to your New Relic account.
 2. Click **Add this app**. Note that this button says **Manage access** if the app has already been subscribed to an account you manage.
 3. On the **Account access** page listing the accounts you can subscribe to an application:
+
 - Select the accounts you want to subscribe the app to.
 - Choose the channel you want to subscribe the app to, **Stable** or **Dev**. This can only be **Stable** for the public apps created by New Relic.
 - Click the update button. Now you and members of the accounts you have subscribed to the app can launch it from New Relic One.
@@ -265,9 +254,3 @@ Remove duplicates.
 </Step>
 
 </Steps>
-
-
-
-
-
-
