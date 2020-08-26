@@ -86,13 +86,13 @@ const IndexPage = ({ data, pageContext }) => {
                 </a>{' '}
                 Submissions are due September 1, 2020 at 11:59 PM PT.
               </p>
-              <p>
-                <Link to="/nerd-days">Learn more</Link>
-              </p>
               <Countdown
                 countdownDate="September 1, 2020 23:59:59"
                 inactiveMessage="Submissions are closed"
               />
+              <p>
+                <Link to="/nerd-days">Learn more</Link>
+              </p>
             </div>
             <div
               css={css`
