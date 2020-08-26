@@ -8,7 +8,7 @@ const useMarketoForm = (munchkinId, id, publishableKey) =>
       if (typeof scope[varname] !== 'undefined') {
         return callback();
       }
-      const interval = setInterval(function () {
+      const interval = setInterval(() => {
         if (typeof scope[varname] !== 'undefined') {
           clearInterval(interval);
           callback();
