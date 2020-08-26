@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useMarketoForm = (munchkinId, id, pubishableKey) =>
+const useMarketoForm = (munchkinId, id, publishableKey) =>
   useEffect(() => {
     window.MktoForms2.loadForm('//app-abj.marketo.com', munchkinId, id);
 
