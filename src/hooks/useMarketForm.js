@@ -4,7 +4,7 @@ const useMarketoForm = (munchkinId, id, publishableKey) =>
   useEffect(() => {
     window.MktoForms2.loadForm('//app-abj.marketo.com', munchkinId, id);
 
-    const pollForDefinition = function (scope, varname, callback) {
+    const pollForDefinition = (scope, varname, callback) => {
       if (typeof scope[varname] !== 'undefined') {
         return callback();
       }
