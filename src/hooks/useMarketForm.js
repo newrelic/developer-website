@@ -22,7 +22,7 @@ const useMarketoForm = (munchkinId, id, publishableKey) =>
     script.onerror = () => {
       // eslint-disable-next-line no-console
       console.log('Clearbit Form JS unable to load');
-      pollForDefinition(window, 'MktoForms2', function () {
+      pollForDefinition(window, 'MktoForms2', () => {
         window.MktoForms2.whenReady((form) => {
           form.setValues({
             clearbitFormStatus: 'Clearbit Form JS unable to load',
