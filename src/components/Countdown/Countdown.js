@@ -20,10 +20,10 @@ const Countdown = ({ countdown }) => {
 Countdown.propTypes = {
   countdown: PropTypes.shape({
     days: PropTypes.number,
-    hours: PropTypes.number, 
+    hours: PropTypes.number,
     minutes: PropTypes.number,
     seconds: PropTypes.number,
-  })
+  }),
 };
 
 export default Countdown;

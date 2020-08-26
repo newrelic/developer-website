@@ -5,8 +5,7 @@ import styles from './CountdownContainer.module.scss';
 
 const CountdownContainer = ({ countdownDate, inactiveMessage }) => {
   const [countdown, setCountdown] = React.useState(() => getRemainingTime());
-  const active = countdown.milliseconds > 0;
-  console.log(countdown)
+  let active = countdown.milliseconds > 0;
 
   useEffect(() => {
     const hasRemainingTime = () => {
@@ -40,10 +39,13 @@ const CountdownContainer = ({ countdownDate, inactiveMessage }) => {
   }, []);
 
   function getRemainingTime() {
-    let countDownDate = new Date(countdownDate).toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
-    let now = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"})
+    let countDownDate = new Date(countdownDate).toLocaleString('en-US', {
+      timeZone: 'America/Los_Angeles',
+    });
     countDownDate = new Date(countDownDate).getTime();
-    now = new Date(now).getTime();
+
+    const now = new Date().getTime();
+
     const milliseconds = countDownDate - now;
 
     const days = Math.floor(milliseconds / (1000 * 60 * 60 * 24));
@@ -63,7 +65,9 @@ const CountdownContainer = ({ countdownDate, inactiveMessage }) => {
           <Countdown countdown={countdown} />
         </div>
       ) : (
-        <p>{inactiveMessage}</p>
+        <div className={styles.countdownContainer}>
+          <p className={styles.inactiveMessage}>{inactiveMessage}</p>
+        </div>
       )}
     </div>
   );

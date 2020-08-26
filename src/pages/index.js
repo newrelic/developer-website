@@ -89,7 +89,10 @@ const IndexPage = ({ data, pageContext }) => {
               <p>
                 <Link to="/nerd-days">Learn more</Link>
               </p>
-              <Countdown countdownDate="September 1, 2020 23:59:59" inactiveMessage="Submissions are closed"/>
+              <Countdown
+                countdownDate="September 1, 2020 23:59:59"
+                inactiveMessage="Submissions are closed"
+              />
             </div>
             <div
               css={css`
