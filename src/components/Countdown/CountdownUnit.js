@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 const CountdownUnit = ({ value, label }) => {
   return (
     <div className={styles.countdownUnit}>
-      <h2>{value}</h2>
+      {/* ÷s<h2>{value}</h2> */}
+      <span className={styles.colons}>{value}</span>
       <p>{label}</p>
     </div>
   );

@@ -7,18 +7,23 @@ const Countdown = ({ countdown }) => {
   return (
     <div className={styles.countdown}>
       <CountdownUnit value={countdown.days} label="Days" />
-      <h2>:</h2>
+      <span className={styles.colons}>:</span>
       <CountdownUnit value={countdown.hours} label="Hours" />
-      <h2>:</h2>
+      <span className={styles.colons}>:</span>
       <CountdownUnit value={countdown.minutes} label="Minutes" />
-      <h2>:</h2>
+      <span className={styles.colons}>:</span>
       <CountdownUnit value={countdown.seconds} label="Seconds" />
     </div>
   );
 };
 
 Countdown.propTypes = {
-  countdown: PropTypes.number,
+  countdown: PropTypes.shape({
+    days: PropTypes.number,
+    hours: PropTypes.number, 
+    minutes: PropTypes.number,
+    seconds: PropTypes.number,
+  })
 };
 
 export default Countdown;
