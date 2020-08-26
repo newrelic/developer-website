@@ -19,7 +19,7 @@ const useMarketoForm = (munchkinId, id, publishableKey) =>
     script.src = 'https://marketo.clearbit.com/assets/v1/marketo/forms.js';
     script.async = true;
     script.setAttribute('data-clearbit-publishable-key', pubishableKey);
-    script.onerror = function () {
+    script.onerror = () => {
       // eslint-disable-next-line no-console
       console.log('Clearbit Form JS unable to load');
       pollForDefinition(window, 'MktoForms2', function () {
