@@ -87,7 +87,7 @@ const IndexPage = ({ data, pageContext }) => {
                 Submissions are due September 1, 2020 at 11:59 PM PT.
               </p>
               <Countdown
-                countdownDate="September 1, 2020 23:59:59"
+                targetDate="September 1 2020 23:59:59 PDT"
                 inactiveMessage="Submissions are closed"
               />
               <p>
