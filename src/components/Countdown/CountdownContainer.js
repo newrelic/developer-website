@@ -39,7 +39,7 @@ const CountdownContainer = ({ targetDate, inactiveMessage }) => {
   }, []);
 
   function getRemainingTime() {
-    let countDownDate = new Date(targetDate).getTime();
+    const countDownDate = new Date(targetDate).getTime();
     const now = new Date().getTime();
 
     const milliseconds = countDownDate - now;
