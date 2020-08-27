@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useMarketoForm = (munchkinId, id, publishableKey) =>
+const useMarketoForm = (munchkinId, id, publishableKey) => {
   useEffect(() => {
     window.MktoForms2.loadForm('//app-abj.marketo.com', munchkinId, id);
 
@@ -18,7 +18,7 @@ const useMarketoForm = (munchkinId, id, publishableKey) =>
     const script = document.createElement('script');
     script.src = 'https://marketo.clearbit.com/assets/v1/marketo/forms.js';
     script.async = true;
-    script.setAttribute('data-clearbit-publishable-key', pubishableKey);
+    script.setAttribute('data-clearbit-publishable-key', publishableKey);
     script.onerror = () => {
       // eslint-disable-next-line no-console
       console.log('Clearbit Form JS unable to load');
@@ -31,6 +31,7 @@ const useMarketoForm = (munchkinId, id, publishableKey) =>
       });
     };
     document.body.append(script);
-  }, [munchkinId, id]);
+  }, [munchkinId, id, publishableKey]);
+};
 
 export default useMarketoForm;

@@ -3,14 +3,11 @@ import { Link } from 'gatsby';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import MarketoForm from '../components/MarketoForm';
-import useMarketoForm from '../hooks/useMarketForm';
 import SEO from '../components/Seo';
 import nerdDays from '../images/nerd-days/nerd-days.png';
 import styles from './nerd-days.module.scss';
 
 const NerdDaysPage = () => {
-  useMarketoForm('412-MZS-894', 3525, 'pk_4d10daa544de6f993a9a9ce002ccd1c6');
-
   return (
     <>
       <SEO />
@@ -60,7 +57,12 @@ const NerdDaysPage = () => {
                 </a>
               </p>
             </div>
-            <MarketoForm id={3525} title="REGISTER FOR NERD DAYS | AMERICAS" />
+            <MarketoForm
+              id={3525}
+              title="REGISTER FOR NERD DAYS | AMERICAS"
+              munchkinId="412-MZS-894"
+              publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
+            />
           </section>
           <section />
         </PageLayout.Content>
