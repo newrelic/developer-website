@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding-right: 1.25rem;
+}
+
+.countdownContainer {
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  height: 7.5rem;
+  width: 100%;
+  padding-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.inactiveMessage {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.countdown {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.countdownUnit {
+  padding:0;
+  margin:0;
+}
+
+.colons {
+  font-size: 1.8rem;
+  color: var(--heading-text-color);
+}
+
+.countdownUnit > span{
+  font-size: 1.8rem;
+  color: var(--heading-text-color);
+}
