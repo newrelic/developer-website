@@ -19,6 +19,7 @@ import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import nerdDays from '../images/nerd-days/nerd-days.png';
+import Countdown from '../components/Countdown';
 
 const getStartedGuides = [
   {
@@ -87,6 +88,10 @@ const IndexPage = ({ data, pageContext }) => {
                 </a>{' '}
                 Submissions are due September 1, 2020 at 11:59 PM PT.
               </p>
+              <Countdown
+                targetDate="September 1 2020 23:59:59 PDT"
+                inactiveMessage="Submissions are closed"
+              />
               <p>
                 <Link to="/nerd-days">Learn more</Link>
               </p>

@@ -72,6 +72,10 @@
         "url": "/build-apps/publish-deploy"
       },
       {
+        "displayName": "Permissions for managing apps",
+        "url": "/build-apps/permission-manage-apps"
+      },
+      {
         "displayName": "Map pageviews by region",
         "url": "/build-apps/map-pageviews-by-region"
       },
@@ -518,6 +522,7 @@
   },
   {
     "displayName": "Developer events",
+    "url": "/developer-events",
     "children": [
       {
         "displayName": "Nerd days 1.0",

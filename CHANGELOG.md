@@ -1,3 +1,16 @@
+# [1.15.0](https://github.com/newrelic/developer-website/compare/v1.14.2...v1.15.0) (2020-08-25)
+
+
+### Bug Fixes
+
+* change File an issue to Create an issue and adjust right-rail size ([0bda7c0](https://github.com/newrelic/developer-website/commit/0bda7c0762393ee3f3717a5b8382adc9d7655986))
+* replace collect data tile icon with new collect data icon ([a290263](https://github.com/newrelic/developer-website/commit/a290263374fd3966f1d0732c24f41ce8f2e3d1e8))
+
+
+### Features
+
+* hook up Developer Events sidenav to landing page ([861e3c7](https://github.com/newrelic/developer-website/commit/861e3c7f9216066b347c8aa4732738a86049d26e))
+
 ## [1.14.2](https://github.com/newrelic/developer-website/compare/v1.14.1...v1.14.2) (2020-08-25)
 
 
