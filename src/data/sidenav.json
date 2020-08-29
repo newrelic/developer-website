@@ -529,6 +529,10 @@
         "url": "/nerd-days"
       },
       {
+        "displayName": "All things open",
+        "url": "/all-things-open"
+      },
+      {
         "displayName": "Past events",
         "children": [
           {
