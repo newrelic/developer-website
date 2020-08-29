@@ -196,7 +196,7 @@ create a guide. It's recommended you search the following resources before contr
 
 ## Related Pages
 
-[related-pages.json](related-pages.json) is used to populates the related resources component with dynamic links.
+[related-pages.json](related-pages.json) is used to populate the related resources component with dynamic links.
 This file automatically updated every 24 hours via a script that runs in a [GitHub action](https://github.com/newrelic/developer-website/blob/main/.github/workflows/fetch-related-content.yml)
 
 That GH action fetches results for all pages from Swiftype, updates, commits, and pushes that related-pages.json file.
