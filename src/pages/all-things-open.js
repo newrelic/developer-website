@@ -5,7 +5,6 @@ import { Button, Video } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
-import Important from '../components/Important';
 import allthingsopen from '../images/all-things-open/allthingsopen.png';
 import gavinjohnson from '../images/all-things-open/gavin-johnson.jpg';
 import styles from './all-things-open.module.scss';
