@@ -6,7 +6,7 @@ import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import Important from '../components/Important';
-// import allthingsopen from '../images/all-things-open/allthingsopen.png';
+import allthingsopen from '../images/all-things-open/allthingsopen.png';
 import styles from './all-things-open.module.scss';
 
 const allThingsOpenPage = () => {
@@ -59,7 +59,7 @@ const allThingsOpenPage = () => {
             </div>
             <img
               className={styles.img}
-              // src={allthingsopen}
+              src={allthingsopen}
               alt="All Things Open 2020"
             />
           </section>
