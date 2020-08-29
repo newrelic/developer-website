@@ -71,18 +71,18 @@ const allThingsOpenPage = () => {
             <hr></hr>
           </section>
           <section className={cx(styles.section, styles.assetTable)}>
+            <div>
+              <img
+                className={styles.headshot}
+                src={gavinjohnson}
+                alt="Gavin Johnson"
+              />
+            </div>
             <div className={styles.point}>
               <h4>How New Relic Went Open Source: Code & Culture</h4>
               <p>Tues, Oct 30, 2020</p>
               <p>Principal Product Marketing Manager</p>
               <p>Gavin Johnson</p>
-            </div>
-            <div>
-              <img
-                className={styles.img}
-                src={gavinjohnson}
-                alt="Gavin Johnson"
-              />
             </div>
           </section>
           <h2>Explore resources</h2>

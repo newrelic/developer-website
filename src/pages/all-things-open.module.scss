@@ -18,6 +18,11 @@
   width: 100%;
 }
 
+.headshot {
+  height: auto;
+  width: 75%;
+}
+
 .assetTable {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -30,7 +35,7 @@
 }
 
 .point {
-  text-align: center;
+  text-align: left;
   width: 100%;
 
   @media (max-width: 760px) {
