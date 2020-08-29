@@ -9,8 +9,6 @@ import Important from '../components/Important';
 // import allthingsopen from '../images/all-things-open/allthingsopen.png';
 import styles from './all-things-open.module.scss';
 
-//@todo add image for event
-
 const allThingsOpenPage = () => {
   return (
     <>
