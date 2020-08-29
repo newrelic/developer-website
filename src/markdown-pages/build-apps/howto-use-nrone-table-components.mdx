@@ -19,8 +19,7 @@ tags:
   - TableHeaderc omponent
   - TableHeaderCell component
   - TableRow component
-  - TableRowCell component 
-  
+  - TableRowCell component
 ---
 
 <Intro>
@@ -38,18 +37,17 @@ In this guide, you are going to build a sample table using various New Relic One
 ## Before you begin
 
 If you haven't already installed the New Relic One CLI, step through the [quick start in New Relic One](https://one.newrelic.com/launcher/developer-center.launcher). This process also gets you an API key.
-<br/>
-In addition, to complete the steps in this guide, you need a GitHub account, and to have Node.js installed on your machine. See [Setting up your development environment](/build-apps/set-up-dev-env) for more info. 
 
-<br />
+In addition, to complete the steps in this guide, you need a GitHub account and Node.js installed on your machine. See [Setting up your development environment](/build-apps/set-up-dev-env) for more info.
 
 ## Clone and set up the example application
+
 <Steps>
 <Step>
 
 Clone the [nr1-how-to](https://github.com/newrelic/nr1-how-to) example application from GitHub to your local machine. Then, navigate to the app directory.
 
-The example app lets you experiment with tables.   
+The example app lets you experiment with tables.
 
 ```sh lineNumbers=false copy=false
 git clone https://github.com/newrelic/nr1-how-to.git`
@@ -88,7 +86,7 @@ nr1 nerdpack:serve    # Serve the demo app locally
 </Step>
 <Step>
 
-Open [one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local) in your browser. Click **Apps*, and then in the **Other apps** section, you should see a **Create a table** launcher. That's the demo application you're going to work on. Go ahead and select it.
+Open [one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local) in your browser. Click **Apps**, and then in the **Your apps** section, you should see a **Create a table** launcher. That's the demo application you're going to work on. Go ahead and select it.
 
 ![app-launcher](../../images/nrone-table-guide/demo-app-button.png)
 
@@ -103,7 +101,7 @@ Have a good look at the demo app. There's a `TableChart` on the left side named 
 
 <Steps>
 <Step>
-Navigate to the `nerdlets/create-a-table-nerdlet` subdirectory and open the `index.js` file. 
+Navigate to the `nerdlets/create-a-table-nerdlet` subdirectory and open the `index.js` file.
 
 Add the following components to the import statement at the top of the file so that it looks like the example:
 
@@ -133,7 +131,7 @@ import {
 <Step>
 
 Add a basic Table component
-Locate the empty `GridItem` in `index.js`: This is where you start building the table. 
+Locate the empty `GridItem` in `index.js`: This is where you start building the table.
 
 Add the initial `<Table>` component. The `items` property collects the data by calling `_getItems()`, which contains sample values.
 

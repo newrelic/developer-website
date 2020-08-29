@@ -23,6 +23,7 @@
     - [Editing existing guides](#editing-existing-guides)
     - [Creating new guides](#creating-new-guides)
     - [Deleting guides](#deleting-guides)
+  - [Related Pages](#related-pages)
   - [Updating navigation](#updating-navigation)
     - [Example navigation change](#example-navigation-change)
       - [EXISTING](#existing)
@@ -192,6 +193,15 @@ create a guide. It's recommended you search the following resources before contr
 1. If you feel a guide needs to be deleted file a [Documentation Request](https://github.com/newrelic/developer-website/issues/new/choose)
 2. The Developer Experience Team will review the request to delete an existing guide.
 3. If the deletion is approved, The Developer Experience Team will delete the guide.
+
+## Related Pages
+
+[related-pages.json](related-pages.json) is used to populate the related resources component with dynamic links.
+This file automatically updated every 24 hours via a script that runs in a [GitHub action](https://github.com/newrelic/developer-website/blob/main/.github/workflows/fetch-related-content.yml)
+
+That GH action fetches results for all pages from Swiftype, updates, commits, and pushes that related-pages.json file.
+
+**You should never attempt to update this file manually.**
 
 ## Updating navigation
 
