@@ -201,7 +201,7 @@ This file automatically updated every 24 hours via a script that runs in a [GitH
 
 That GH action fetches results for all pages from Swiftype, updates, commits, and pushes that related-pages.json file.
 
-`You should never attempt to update this file manually.`
+**You should never attempt to update this file manually.**
 
 ## Updating navigation
 
