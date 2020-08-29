@@ -1,12 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
 import SEO from '../components/Seo';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Video } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import Important from '../components/Important';
 import allthingsopen from '../images/all-things-open/allthingsopen.png';
+import gavinjohnson from '../images/all-things-open/gavin-johnson.jpg';
 import styles from './all-things-open.module.scss';
 
 const allThingsOpenPage = () => {
@@ -67,16 +68,50 @@ const allThingsOpenPage = () => {
             />
           </section>
           <section className={styles.section}>
-            <h2>Attend one of our lightning talks</h2>
-            <Important>
-              Attend one of our sessions and visit us in the virtual expo hall.
-            </Important>
+            <h2>Visit us in the virtual expo hall</h2>
+            <hr></hr>
           </section>
           <section className={cx(styles.section, styles.assetTable)}>
             <div className={styles.point}>
               <h4>How New Relic Went Open Source: Code & Culture</h4>
               <p>Tues, Oct 30, 2020</p>
+              <p>Principal Product Marketing Manager</p>
               <p>Gavin Johnson</p>
+            </div>
+            <div>
+              <img
+                className={styles.img}
+                src={gavinjohnson}
+                alt="Gavin Johnson"
+              />
+            </div>
+          </section>
+          <h2>Explore resources</h2>
+          <hr></hr>
+          <section className={cx(styles.section, styles.assetTable)}>
+            <div className={styles.point}>
+              <h4>How to use the Kubernetes cluster explorer</h4>
+              <Video
+                id="qfv8ud2pai"
+                type="wistia"
+                className={styles.videoGrid}
+              />
+            </div>
+            <div className={styles.point}>
+              <h4>What is OpenTelemetry?</h4>
+              <Video
+                id="yY6hHhiDths"
+                type="youtube"
+                className={styles.videoGrid}
+              />
+            </div>
+            <div className={styles.point}>
+              <h4>Connecting Prometheus and Grafana to New Relic</h4>
+              <Video
+                id="AvqBp2joY5Q"
+                type="youtube"
+                className={styles.videoGrid}
+              />
             </div>
           </section>
         </PageLayout.Content>
