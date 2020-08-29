@@ -39,10 +39,13 @@ const allThingsOpenPage = () => {
                 aligned our products with CNCF’s OpenTelemetry and
                 Prometheus/OpenMetrics standards as well as supporting other
                 open sources of information like Telegraf, Kamon, Micrometer,
-                and Dropwizard and popular open source tools like Grafana Engage
-                engineers where they are, in the communities they already belong
-                to, making it easier for engineers to access New Relic expertise
-                and for that expertise to be shared with the community
+                and Dropwizard and popular open source tools like Grafana.
+              </p>
+              <p>
+                New Relic engage's engineers where they are, in the communities
+                they already belong to, making it easier for engineers to access
+                New Relic expertise and for that expertise to be shared with the
+                community
               </p>
 
               <Button
