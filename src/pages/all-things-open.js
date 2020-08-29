@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import SEO from '../components/Seo';
-import { Button, Video } from '@newrelic/gatsby-theme-newrelic';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
@@ -10,7 +10,7 @@ import Important from '../components/Important';
 import styles from './all-things-open.module.scss';
 
 //@todo add image for event
-//@todo
+
 const allThingsOpenPage = () => {
   return (
     <>
@@ -62,7 +62,7 @@ const allThingsOpenPage = () => {
             <img
               className={styles.img}
               // src={allthingsopen}
-              alt="All Things Open 2020 image"
+              alt="All Things Open 2020"
             />
           </section>
           <section className={styles.section}>
