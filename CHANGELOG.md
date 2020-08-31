@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/newrelic/developer-website/compare/v1.15.1...v1.15.2) (2020-08-31)
+
+
+### Bug Fixes
+
+* upgrade react-shadow from 18.2.4 to 18.2.5 ([b1bdae6](https://github.com/newrelic/developer-website/commit/b1bdae62914ca03af2f969dc9ba91a03229d8ab3))
+
 ## [1.15.1](https://github.com/newrelic/developer-website/compare/v1.15.0...v1.15.1) (2020-08-29)
 
 
