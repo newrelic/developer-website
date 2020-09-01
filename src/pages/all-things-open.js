@@ -80,7 +80,7 @@ const allThingsOpenPage = () => {
             </div>
             <div className={styles.point}>
               <h4>How New Relic Went Open Source: Code & Culture</h4>
-              <p>Tues, Oct 30, 2020</p>
+              <p>Tues, Oct 20, 2020</p>
               <p>Principal Product Marketing Manager</p>
               <p>Gavin Johnson</p>
             </div>
