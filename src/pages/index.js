@@ -76,12 +76,24 @@ const IndexPage = ({ data, pageContext }) => {
                 getting your hands on the software to solve problems
                 efficiently.
               </p>
+              <p>
+                Got a cool project you want to share with fellow engineers?
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSe8LOilCrD_TCUPyHFHG_QzVW2UdUR0UKZ8H8WNylz0flB7OQ/viewform"
+                >
+                  {' '}
+                  Submit your proposal!
+                </a>{' '}
+                Submissions are due September 1, 2020 at 11:59 PM PT.
+              </p>
               <Countdown
-                targetDate="October 13 2020 9:00:00 PDT"
-                inactiveMessage="Countdown to Nerd Days"
+                targetDate="September 1 2020 23:59:59 PDT"
+                inactiveMessage="Submissions are closed"
               />
               <p>
-                <Link to="/nerd-days">Register</Link>
+                <Link to="/nerd-days">Learn more</Link>
               </p>
             </div>
             <div
