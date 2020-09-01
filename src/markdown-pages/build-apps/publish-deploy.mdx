@@ -176,11 +176,27 @@ nr1 catalog:submit
 
 Publishing places your Nerdpack in New Relic One. To publish or deploy, you must be a **Nerdpack manager**.
 
+New Relic One requires that only one version (following semantic versioning) of a Nerdpack can be published at a time. 
+
+<Tip>
+
+If you know what channel you want to deploy to (as described in the Deploy your app section that follows), you can run `nr1 nerdpack:publish --channel=STABLE` or `nr1 nerdpack:publish --channel=BETA`.
+
+</Tip>
+
 <Steps>
 
 <Step>
 
-- To publish your Nerdpack, run `nr1 nerdpack:publish`.
+Update the `version` attribute in the app's `package.json` file. 
+
+This follows semantic versioning, and must be updated before you can successfully publish.
+
+</Step>
+
+<Step>
+
+To publish your Nerdpack, run `nr1 nerdpack:publish`.
 
 </Step>
 
@@ -194,7 +210,7 @@ Deploying is applying a Nerdpack version to a specific channel (for example, BET
 
 <Step>
 
-- To deploy an application, run `nr1 nerdpack:deploy`.
+To deploy an application, run `nr1 nerdpack:deploy`.
 
 </Step>
 
