@@ -68,7 +68,7 @@ const allThingsOpenPage = () => {
           </section>
           <section className={styles.section}>
             <h2>Visit us in the virtual expo hall</h2>
-            <hr></hr>
+            <hr />
           </section>
           <section className={cx(styles.section, styles.assetTable)}>
             <div>
@@ -86,7 +86,7 @@ const allThingsOpenPage = () => {
             </div>
           </section>
           <h2>Explore resources</h2>
-          <hr></hr>
+          <hr />
           <section className={cx(styles.section, styles.assetTable)}>
             <div className={styles.point}>
               <h4>How to use the Kubernetes cluster explorer</h4>
