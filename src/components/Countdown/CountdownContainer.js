@@ -3,32 +3,44 @@ import Countdown from './Countdown';
 import PropTypes from 'prop-types';
 import styles from './CountdownContainer.module.scss';
 
+const getRemainingTime = (targetDate) => {
+  const countDownDate = new Date(targetDate).getTime();
+  const now = new Date().getTime();
+
+  const milliseconds = countDownDate - now;
+
+  const days = Math.floor(milliseconds / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(
+    (milliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+
+  return { days, hours, minutes, seconds, milliseconds };
+};
+
 const CountdownContainer = ({ targetDate, inactiveMessage }) => {
-  const [countdown, setCountdown] = React.useState(() => getRemainingTime());
-  let active = countdown.milliseconds > 0;
+  const [countdown, setCountdown] = React.useState(() =>
+    getRemainingTime(targetDate)
+  );
+  const active = countdown.milliseconds > 0;
 
   useEffect(() => {
     const hasRemainingTime = () => {
-      const { milliseconds } = getRemainingTime();
+      const { milliseconds } = getRemainingTime(targetDate);
       return milliseconds > 0;
     };
 
     if (!hasRemainingTime()) {
-      active = false;
       return;
     }
 
     const interval = setInterval(() => {
-      const {
-        days,
-        hours,
-        minutes,
-        seconds,
-        milliseconds,
-      } = getRemainingTime();
+      const { days, hours, minutes, seconds, milliseconds } = getRemainingTime(
+        targetDate
+      );
 
       if (milliseconds < 0) {
-        active = false;
         clearInterval(interval);
       } else {
         setCountdown({ days, hours, minutes, seconds, milliseconds });
@@ -36,27 +48,11 @@ const CountdownContainer = ({ targetDate, inactiveMessage }) => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
-
-  function getRemainingTime() {
-    const countDownDate = new Date(targetDate).getTime();
-    const now = new Date().getTime();
-
-    const milliseconds = countDownDate - now;
-
-    const days = Math.floor(milliseconds / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (milliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
-
-    return { days, hours, minutes, seconds, milliseconds };
-  }
+  }, [targetDate]);
 
   return (
     <div className={styles.container}>
-      {active === true ? (
+      {active ? (
         <div className={styles.countdownContainer}>
           <Countdown countdown={countdown} />
         </div>

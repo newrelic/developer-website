@@ -1,3 +1,11 @@
+## [1.15.3](https://github.com/newrelic/developer-website/compare/v1.15.2...v1.15.3) (2020-09-02)
+
+
+### Bug Fixes
+
+* fix lint errors preventing pushes ([9c600d7](https://github.com/newrelic/developer-website/commit/9c600d7e196a164300328c498664735637118b78))
+* lint warnings in countdown container ([ca14b49](https://github.com/newrelic/developer-website/commit/ca14b49f5a4575ed95655a7edcd810c5ac92730c))
+
 ## [1.15.2](https://github.com/newrelic/developer-website/compare/v1.15.1...v1.15.2) (2020-08-31)
 
 
