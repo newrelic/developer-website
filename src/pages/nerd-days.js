@@ -190,6 +190,60 @@ const NerdDaysPage = () => {
               </li>
             </ul>
           </section>
+
+          <section className={cx(styles.agendaSection, styles.eventSection)}>
+            <h3 className={cx(styles.sectionHeading)}>Agenda</h3>
+            <p className={cx(styles.sectionDescription)}>
+            We’ve got a packed schedule with thought-leaders of their respective industries
+            </p>
+            
+            <div className={cx(styles.agendaContainer)}>
+              <div className={cx(styles.agendaHeaderRow)}>
+                <h5 className={cx(styles.agendaHeaderRowHeading, styles.agendaHeaderRowHeading1)}>Observability</h5>
+                <h5 className={cx(styles.agendaHeaderRowHeading, styles.agendaHeaderRowHeading2)}>Cloud Migration</h5>
+                <h5 className={cx(styles.agendaHeaderRowHeading, styles.agendaHeaderRowHeading3)}>Open Source</h5>
+                <h5 className={cx(styles.agendaHeaderRowHeading, styles.agendaHeaderRowHeading4)}>DevOps Journey</h5>
+                <h5 className={cx(styles.agendaHeaderRowHeading, styles.agendaHeaderRowHeading5)}>Fundamentals</h5>
+              </div>
+              <div className={cx(styles.agendaRow)}>
+                <h4 className={cx(styles.agendaTime)}>8:00 AM</h4>
+                <h4 className={cx(styles.agendaSession, styles.agendaSession5Col)} data-speaker="Jemiah Sius">Welcome</h4>
+              </div>
+              <div className={cx(styles.agendaRow)}>
+                <h4 className={cx(styles.agendaTime)}>8:30 AM</h4>
+                <h4 className={cx(styles.agendaSession, styles.agendaSession2Col)} data-speaker="Anita Baker">Building better apps</h4>
+                <h4 className={cx(styles.agendaSession, styles.agendaSession2Col)} data-speaker="Robert Parr">Open DevOps</h4>
+                <h4 className={cx(styles.agendaSession)} data-speaker="Jeff Osborne">NR 101</h4>
+              </div>
+              <div className={cx(styles.agendaRow)}>
+                <h4 className={cx(styles.agendaTime)}>9:00 AM</h4>
+                <h4 className={cx(styles.agendaSession)} data-speaker="Dylan Hernandez">All seeing eye</h4>
+                <h4 className={cx(styles.agendaSession)} data-speaker="Celso Piña">AWS Ops</h4>
+                <h4 className={cx(styles.agendaSession)} data-speaker="Jeff Osborne">Main v master</h4>
+                <h4 className={cx(styles.agendaSession, styles.agendaSession2Col)} data-speaker="Jemiah Sius">DevOps Journey</h4>
+              </div>
+              <div className={cx(styles.agendaRow)}>
+                <h4 className={cx(styles.agendaTime)}>11:00 AM</h4>
+                <h4 className={cx(styles.agendaSession)} data-speaker="Dylan Hernandez">Is it down? Yes.</h4>
+                <h4 className={cx(styles.agendaSession, styles.agendaSession2Col)} data-speaker="Natalia Lafourcade">How much is too much?</h4>
+                <h4 className={cx(styles.agendaSession)} data-speaker="John McGibbons">Monolith Magic</h4>
+                <h4 className={cx(styles.agendaSession)} data-speaker="Anita Baker">Debuggers</h4>
+              </div>
+              <div className={cx(styles.agendaRow)}>
+                <h4 className={cx(styles.agendaTime, styles.agendaSessionSecondary)}>12:00 PM</h4>
+                <h4 className={cx(styles.agendaSession, styles.agendaSessionSecondary, styles.agendaSession5Col)} data-speaker="Music by DJ Mykael V">Lunch break</h4>
+              </div>
+              <div className={cx(styles.agendaRow)}>
+                <h4 className={cx(styles.agendaTime)}>1:30 PM</h4>
+                <h4 className={cx(styles.agendaSession, styles.agendaSession3Col)} data-speaker="Natalia Lafourcade">Observability and you</h4>
+                <h4 className={cx(styles.agendaSession, styles.agendaSession2Col)} data-speaker="Celso Piña">Covid productivity</h4>
+              </div>
+              <div className={cx(styles.agendaRow)}>
+                <h4 className={cx(styles.agendaTime)}>2:30 PM</h4>
+                <h4 className={cx(styles.agendaSession, styles.agendaSession5Col)} data-speaker="Jemiah Sius and Team">Closing + Swag</h4>
+              </div>
+            </div>
+          </section>
         </PageLayout.Content>
       </PageLayout>
     </>
