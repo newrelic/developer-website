@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import MarketoForm from '../components/MarketoForm';
