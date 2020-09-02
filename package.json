@@ -8,6 +8,7 @@
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
     "@newrelic/gatsby-theme-newrelic": "^1.8.0",
+    "@splitsoftware/splitio-react": "^1.2.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.15.0",
     "eslint-plugin-react-hooks": "^4.0.8",
