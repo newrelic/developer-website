@@ -16,8 +16,8 @@ const FeatherIcon = ({ className, name, size = '1em', ...props }) => {
     >
       <defs>
         <linearGradient gradientUnits="userSpaceOnUse" id="nerdDaysGradient">
-          <stop offset="0%" stop-color="#0FB7C9" />
-          <stop offset="150%" stop-color="#0069CE" />
+          <stop offset="0%" stopColor="#0FB7C9" />
+          <stop offset="150%" stopColor="#0069CE" />
         </linearGradient>
       </defs>
       {paths}
@@ -155,7 +155,6 @@ const ICONS = {
   ),
   eye: (
     <>
-      
       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
       <circle cx="12" cy="12" r="3" />
     </>

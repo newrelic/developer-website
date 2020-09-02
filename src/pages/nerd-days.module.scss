@@ -294,16 +294,18 @@ a.ctaButton {
   background-color: #fff;
   margin: 0;
 
-  &:after {
-    display: block;
-    content: attr(data-speaker);
-    margin-top: 1px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .05rem;
-    font-weight: normal;
-    color: #464e4eb0;
-  }
+}
+
+.agendaSessionSpeaker {
+  display: block;
+  content: attr(data-speaker);
+  margin-top: 1px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .05rem;
+  font-weight: normal;
+  color: #464e4eb0;
+  user-select: text;
 }
 
 .agendaSession5Col {

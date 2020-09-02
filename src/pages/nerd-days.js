@@ -160,32 +160,62 @@ const NerdDaysPage = () => {
             </ul>
           </section>
 
-          <section className={cx(styles.tracksSection, styles.eventSection, styles.alternateSection)}>
+          <section
+            className={cx(
+              styles.tracksSection,
+              styles.eventSection,
+              styles.alternateSection
+            )}
+          >
             <h3 className={cx(styles.sectionHeading)}>Tracks</h3>
             <p className={cx(styles.sectionDescription)}>
-              Tracks will vary by region. All sessions will be recorded and 
+              Tracks will vary by region. All sessions will be recorded and
               distributed after the event.
             </p>
 
             <ul className={cx(styles.tracksList)}>
               <li className={cx(styles.tracksListItem)}>
-                <FeatherIcon className={cx(styles.eyeIcon, styles.trackIcon)} name="eye" size="87" />
+                <FeatherIcon
+                  className={cx(styles.eyeIcon, styles.trackIcon)}
+                  name="eye"
+                  size="87"
+                />
                 <h5 className={cx(styles.tracksListItemName)}>Observability</h5>
               </li>
               <li className={cx(styles.tracksListItem)}>
-                <FeatherIcon className={cx(styles.cloudMigrationIcon, styles.trackIcon)} name="upload-cloud" size="87" />
-                <h5 className={cx(styles.tracksListItemName)}>Cloud Migration</h5>
+                <FeatherIcon
+                  className={cx(styles.cloudMigrationIcon, styles.trackIcon)}
+                  name="upload-cloud"
+                  size="87"
+                />
+                <h5 className={cx(styles.tracksListItemName)}>
+                  Cloud Migration
+                </h5>
               </li>
               <li className={cx(styles.tracksListItem)}>
-                <img className={cx(styles.trackIcon)} src={openSourceIcon} alt="open source"/>
+                <img
+                  className={cx(styles.trackIcon)}
+                  src={openSourceIcon}
+                  alt="open source"
+                />
                 <h5 className={cx(styles.tracksListItemName)}>Open Source</h5>
               </li>
               <li className={cx(styles.tracksListItem)}>
-                <img className={cx(styles.trackIcon)} src={roadIcon} alt="devops journey"/>
-                <h5 className={cx(styles.tracksListItemName)}>Devops Journey</h5>
+                <img
+                  className={cx(styles.trackIcon)}
+                  src={roadIcon}
+                  alt="devops journey"
+                />
+                <h5 className={cx(styles.tracksListItemName)}>
+                  Devops Journey
+                </h5>
               </li>
               <li className={cx(styles.tracksListItem)}>
-                <img className={cx(styles.trackIcon)} src={shapesIcon} alt="Fundamentals"/>
+                <img
+                  className={cx(styles.trackIcon)}
+                  src={shapesIcon}
+                  alt="Fundamentals"
+                />
                 <h5 className={cx(styles.tracksListItemName)}>fundamentals</h5>
               </li>
             </ul>
@@ -194,55 +224,218 @@ const NerdDaysPage = () => {
           <section className={cx(styles.agendaSection, styles.eventSection)}>
             <h3 className={cx(styles.sectionHeading)}>Agenda</h3>
             <p className={cx(styles.sectionDescription)}>
-            We’ve got a packed schedule with thought-leaders of their respective industries
+              We’ve got a packed schedule with thought-leaders of their
+              respective industries
             </p>
-            
+
             <div className={cx(styles.agendaContainer)}>
               <div className={cx(styles.agendaHeaderRow)}>
-                <h5 className={cx(styles.agendaHeaderRowHeading, styles.agendaHeaderRowHeading1)}>Observability</h5>
-                <h5 className={cx(styles.agendaHeaderRowHeading, styles.agendaHeaderRowHeading2)}>Cloud Migration</h5>
-                <h5 className={cx(styles.agendaHeaderRowHeading, styles.agendaHeaderRowHeading3)}>Open Source</h5>
-                <h5 className={cx(styles.agendaHeaderRowHeading, styles.agendaHeaderRowHeading4)}>DevOps Journey</h5>
-                <h5 className={cx(styles.agendaHeaderRowHeading, styles.agendaHeaderRowHeading5)}>Fundamentals</h5>
+                <h5
+                  className={cx(
+                    styles.agendaHeaderRowHeading,
+                    styles.agendaHeaderRowHeading1
+                  )}
+                >
+                  Observability
+                </h5>
+                <h5
+                  className={cx(
+                    styles.agendaHeaderRowHeading,
+                    styles.agendaHeaderRowHeading2
+                  )}
+                >
+                  Cloud Migration
+                </h5>
+                <h5
+                  className={cx(
+                    styles.agendaHeaderRowHeading,
+                    styles.agendaHeaderRowHeading3
+                  )}
+                >
+                  Open Source
+                </h5>
+                <h5
+                  className={cx(
+                    styles.agendaHeaderRowHeading,
+                    styles.agendaHeaderRowHeading4
+                  )}
+                >
+                  DevOps Journey
+                </h5>
+                <h5
+                  className={cx(
+                    styles.agendaHeaderRowHeading,
+                    styles.agendaHeaderRowHeading5
+                  )}
+                >
+                  Fundamentals
+                </h5>
               </div>
               <div className={cx(styles.agendaRow)}>
                 <h4 className={cx(styles.agendaTime)}>8:00 AM</h4>
-                <h4 className={cx(styles.agendaSession, styles.agendaSession5Col)} data-speaker="Jemiah Sius">Welcome</h4>
+                <h4
+                  className={cx(styles.agendaSession, styles.agendaSession5Col)}
+                >
+                  Welcome
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Jemiah Sius
+                  </span>
+                </h4>
               </div>
               <div className={cx(styles.agendaRow)}>
                 <h4 className={cx(styles.agendaTime)}>8:30 AM</h4>
-                <h4 className={cx(styles.agendaSession, styles.agendaSession2Col)} data-speaker="Anita Baker">Building better apps</h4>
-                <h4 className={cx(styles.agendaSession, styles.agendaSession2Col)} data-speaker="Robert Parr">Open DevOps</h4>
-                <h4 className={cx(styles.agendaSession)} data-speaker="Jeff Osborne">NR 101</h4>
+                <h4
+                  className={cx(styles.agendaSession, styles.agendaSession2Col)}
+                >
+                  Building better apps
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Anita Baker
+                  </span>
+                </h4>
+                <h4
+                  className={cx(styles.agendaSession, styles.agendaSession2Col)}
+                >
+                  Open DevOps
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Robert Parr
+                  </span>
+                </h4>
+                <h4
+                  className={cx(styles.agendaSession)}
+                >
+                  NR 101
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Jeff Osborne
+                  </span>
+                </h4>
               </div>
               <div className={cx(styles.agendaRow)}>
                 <h4 className={cx(styles.agendaTime)}>9:00 AM</h4>
-                <h4 className={cx(styles.agendaSession)} data-speaker="Dylan Hernandez">All seeing eye</h4>
-                <h4 className={cx(styles.agendaSession)} data-speaker="Celso Piña">AWS Ops</h4>
-                <h4 className={cx(styles.agendaSession)} data-speaker="Jeff Osborne">Main v master</h4>
-                <h4 className={cx(styles.agendaSession, styles.agendaSession2Col)} data-speaker="Jemiah Sius">DevOps Journey</h4>
+                <h4
+                  className={cx(styles.agendaSession)}
+                >
+                  All seeing eye
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Dylan Hernandez
+                  </span>
+                </h4>
+                <h4
+                  className={cx(styles.agendaSession)}
+                >
+                  AWS Ops
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Celso Piña
+                  </span>
+                </h4>
+                <h4
+                  className={cx(styles.agendaSession)}
+                >
+                  Main v master
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Jeff Osborne
+                  </span>
+                </h4>
+                <h4
+                  className={cx(styles.agendaSession, styles.agendaSession2Col)}
+                >
+                  DevOps Journey
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Jemiah Sius
+                  </span>
+                </h4>
               </div>
               <div className={cx(styles.agendaRow)}>
                 <h4 className={cx(styles.agendaTime)}>11:00 AM</h4>
-                <h4 className={cx(styles.agendaSession)} data-speaker="Dylan Hernandez">Is it down? Yes.</h4>
-                <h4 className={cx(styles.agendaSession, styles.agendaSession2Col)} data-speaker="Natalia Lafourcade">How much is too much?</h4>
-                <h4 className={cx(styles.agendaSession)} data-speaker="John McGibbons">Monolith Magic</h4>
-                <h4 className={cx(styles.agendaSession)} data-speaker="Anita Baker">Debuggers</h4>
+                <h4
+                  className={cx(styles.agendaSession)}
+                >
+                  Is it down? Yes.
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Dylan Hernandez
+                  </span>
+                </h4>
+                <h4
+                  className={cx(styles.agendaSession, styles.agendaSession2Col)}
+                >
+                  How much is too much?
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Natalia Lafourcade
+                  </span>
+                </h4>
+                <h4
+                  className={cx(styles.agendaSession)}
+                >
+                  Monolith Magic
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    John McGibbons
+                  </span>
+                </h4>
+                <h4
+                  className={cx(styles.agendaSession)}
+                >
+                  Debuggers
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Anita Baker
+                  </span>
+                </h4>
               </div>
               <div className={cx(styles.agendaRow)}>
-                <h4 className={cx(styles.agendaTime, styles.agendaSessionSecondary)}>12:00 PM</h4>
-                <h4 className={cx(styles.agendaSession, styles.agendaSessionSecondary, styles.agendaSession5Col)} data-speaker="Music by DJ Mykael V">Lunch break</h4>
+                <h4
+                  className={cx(
+                    styles.agendaTime,
+                    styles.agendaSessionSecondary
+                  )}
+                >
+                  12:00 PM
+                </h4>
+                <h4
+                  className={cx(
+                    styles.agendaSession,
+                    styles.agendaSessionSecondary,
+                    styles.agendaSession5Col
+                  )}
+                >
+                  Lunch break
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Music by DJ Mykael V
+                  </span>
+                </h4>
               </div>
               <div className={cx(styles.agendaRow)}>
                 <h4 className={cx(styles.agendaTime)}>1:30 PM</h4>
-                <h4 className={cx(styles.agendaSession, styles.agendaSession3Col)} data-speaker="Natalia Lafourcade">Observability and you</h4>
-                <h4 className={cx(styles.agendaSession, styles.agendaSession2Col)} data-speaker="Celso Piña">Covid productivity</h4>
+                <h4
+                  className={cx(styles.agendaSession, styles.agendaSession3Col)}
+                >
+                  Observability and you
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Natalia Lafourcade
+                  </span>
+                </h4>
+                <h4
+                  className={cx(styles.agendaSession, styles.agendaSession2Col)}
+                >
+                  Covid productivity
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Celso Piña
+                  </span>
+                </h4>
               </div>
               <div className={cx(styles.agendaRow)}>
                 <h4 className={cx(styles.agendaTime)}>2:30 PM</h4>
-                <h4 className={cx(styles.agendaSession, styles.agendaSession5Col)} data-speaker="Jemiah Sius and Team">Closing + Swag</h4>
+                <h4
+                  className={cx(styles.agendaSession, styles.agendaSession5Col)}
+                >
+                  Closing + Swag
+                  <span className={cx(styles.agendaSessionSpeaker)}>
+                    Jemiah Sius and Team
+                  </span>
+                </h4>
               </div>
             </div>
+          </section>
+
+          <section className={cx(styles.engageSection, styles.eventSection, styles.alternateSection)}>
+            <h3 className={cx(styles.sectionHeading)}>Engage with the developer community</h3>
           </section>
         </PageLayout.Content>
       </PageLayout>
