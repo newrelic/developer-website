@@ -14,6 +14,12 @@ const FeatherIcon = ({ className, name, size = '1em', ...props }) => {
       className={cx(styles.icon, className)}
       style={{ width: size, height: size }}
     >
+      <defs>
+        <linearGradient gradientUnits="userSpaceOnUse" id="nerdDaysGradient">
+          <stop offset="0%" stop-color="#0FB7C9" />
+          <stop offset="150%" stop-color="#0069CE" />
+        </linearGradient>
+      </defs>
       {paths}
     </svg>
   ) : null;
@@ -145,6 +151,13 @@ const ICONS = {
       <circle cx="9" cy="7" r="4" />
       <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
       <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </>
+  ),
+  eye: (
+    <>
+      
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+      <circle cx="12" cy="12" r="3" />
     </>
   ),
 };

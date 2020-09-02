@@ -3,8 +3,12 @@ import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import { Button, ExternalLink } from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/Seo';
+import FeatherIcon from '../components/FeatherIcon';
 import nrLogo from '../images/nerd-days/nr-logo.svg';
 import styles from './nerd-days.module.scss';
+import roadIcon from '../images/nerd-days/icon-road.svg';
+import shapesIcon from '../images/nerd-days/icon-shapes.svg';
+import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
 
 const NerdDaysPage = () => {
   return (
@@ -152,6 +156,37 @@ const NerdDaysPage = () => {
                     leo quam. Pellentesque ornare sem lacinia quam.
                   </p>
                 </div>
+              </li>
+            </ul>
+          </section>
+
+          <section className={cx(styles.tracksSection, styles.eventSection, styles.alternateSection)}>
+            <h3 className={cx(styles.sectionHeading)}>Tracks</h3>
+            <p className={cx(styles.sectionDescription)}>
+              Tracks will vary by region. All sessions will be recorded and 
+              distributed after the event.
+            </p>
+
+            <ul className={cx(styles.tracksList)}>
+              <li className={cx(styles.tracksListItem)}>
+                <FeatherIcon className={cx(styles.eyeIcon, styles.trackIcon)} name="eye" size="87" />
+                <h5 className={cx(styles.tracksListItemName)}>Observability</h5>
+              </li>
+              <li className={cx(styles.tracksListItem)}>
+                <FeatherIcon className={cx(styles.cloudMigrationIcon, styles.trackIcon)} name="upload-cloud" size="87" />
+                <h5 className={cx(styles.tracksListItemName)}>Cloud Migration</h5>
+              </li>
+              <li className={cx(styles.tracksListItem)}>
+                <img className={cx(styles.trackIcon)} src={openSourceIcon} alt="open source"/>
+                <h5 className={cx(styles.tracksListItemName)}>Open Source</h5>
+              </li>
+              <li className={cx(styles.tracksListItem)}>
+                <img className={cx(styles.trackIcon)} src={roadIcon} alt="devops journey"/>
+                <h5 className={cx(styles.tracksListItemName)}>Devops Journey</h5>
+              </li>
+              <li className={cx(styles.tracksListItem)}>
+                <img className={cx(styles.trackIcon)} src={shapesIcon} alt="Fundamentals"/>
+                <h5 className={cx(styles.tracksListItemName)}>fundamentals</h5>
               </li>
             </ul>
           </section>

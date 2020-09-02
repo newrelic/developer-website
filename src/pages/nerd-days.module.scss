@@ -20,7 +20,7 @@
 .heroLogoContainer {
   display: inline-block;
   max-width: 364px;
-  padding: 20px 20px 0;
+  padding: 10px 20px 0;
   text-align: center;
   background-color: #fff;
   box-shadow: 
@@ -116,7 +116,14 @@ a.ctaButton {
 }
 
 .eventSection {
-  padding: 70px 0 50px;
+  padding: 65px 0 65px;
+  position: relative;
+
+  &.alternateSection {
+    background-color: #F4F5F5;
+    margin-left:-32px;
+    margin-right: -32px;
+  }
 }
 
 .sectionHeading {
@@ -128,7 +135,7 @@ a.ctaButton {
 .sectionDescription {
   margin-bottom: 40px;
   text-align: center;
-  color: var(--color-neutral-900);
+  color: var(--nr1--base-colors--ui--gray--3);
   font-size: 16px;
 }
 
@@ -191,4 +198,37 @@ a.ctaButton {
     background-image: linear-gradient(294.8deg, #0069CE -16.42%, #0FB7C9 115.59%);
     clip-path: polygon(0 0, 100% 0%, 100% 0%, 0% 100%);
   }
+}
+
+.eyeIcon,
+.cloudMigrationIcon {
+  stroke: url(#nerdDaysGradient);
+  stroke-width: 1.12px;
+}
+
+.tracksList {
+  max-width: 900px;
+  margin: 0 auto;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tracksListItem {
+  display: flex;
+  max-width: 175px;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trackIcon {
+  margin-bottom: 14px;
+}
+
+.tracksListItemName {
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: .75px;
+  font-weight: bold;
 }
