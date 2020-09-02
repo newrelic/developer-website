@@ -300,9 +300,7 @@ const NerdDaysPage = () => {
                     Robert Parr
                   </span>
                 </h4>
-                <h4
-                  className={cx(styles.agendaSession)}
-                >
+                <h4 className={cx(styles.agendaSession)}>
                   NR 101
                   <span className={cx(styles.agendaSessionSpeaker)}>
                     Jeff Osborne
@@ -311,25 +309,19 @@ const NerdDaysPage = () => {
               </div>
               <div className={cx(styles.agendaRow)}>
                 <h4 className={cx(styles.agendaTime)}>9:00 AM</h4>
-                <h4
-                  className={cx(styles.agendaSession)}
-                >
+                <h4 className={cx(styles.agendaSession)}>
                   All seeing eye
                   <span className={cx(styles.agendaSessionSpeaker)}>
                     Dylan Hernandez
                   </span>
                 </h4>
-                <h4
-                  className={cx(styles.agendaSession)}
-                >
+                <h4 className={cx(styles.agendaSession)}>
                   AWS Ops
                   <span className={cx(styles.agendaSessionSpeaker)}>
                     Celso Piña
                   </span>
                 </h4>
-                <h4
-                  className={cx(styles.agendaSession)}
-                >
+                <h4 className={cx(styles.agendaSession)}>
                   Main v master
                   <span className={cx(styles.agendaSessionSpeaker)}>
                     Jeff Osborne
@@ -346,9 +338,7 @@ const NerdDaysPage = () => {
               </div>
               <div className={cx(styles.agendaRow)}>
                 <h4 className={cx(styles.agendaTime)}>11:00 AM</h4>
-                <h4
-                  className={cx(styles.agendaSession)}
-                >
+                <h4 className={cx(styles.agendaSession)}>
                   Is it down? Yes.
                   <span className={cx(styles.agendaSessionSpeaker)}>
                     Dylan Hernandez
@@ -362,17 +352,13 @@ const NerdDaysPage = () => {
                     Natalia Lafourcade
                   </span>
                 </h4>
-                <h4
-                  className={cx(styles.agendaSession)}
-                >
+                <h4 className={cx(styles.agendaSession)}>
                   Monolith Magic
                   <span className={cx(styles.agendaSessionSpeaker)}>
                     John McGibbons
                   </span>
                 </h4>
-                <h4
-                  className={cx(styles.agendaSession)}
-                >
+                <h4 className={cx(styles.agendaSession)}>
                   Debuggers
                   <span className={cx(styles.agendaSessionSpeaker)}>
                     Anita Baker
@@ -434,8 +420,16 @@ const NerdDaysPage = () => {
             </div>
           </section>
 
-          <section className={cx(styles.engageSection, styles.eventSection, styles.alternateSection)}>
-            <h3 className={cx(styles.sectionHeading)}>Engage with the developer community</h3>
+          <section
+            className={cx(
+              styles.engageSection,
+              styles.eventSection,
+              styles.alternateSection
+            )}
+          >
+            <h3 className={cx(styles.sectionHeading)}>
+              Engage with the developer community
+            </h3>
           </section>
         </PageLayout.Content>
       </PageLayout>
