@@ -1,4 +1,3 @@
-// const { RELEASE } = require('./src/utils/sdk');
 const quote = (str) => `"${str}"`;
 
 module.exports = {
