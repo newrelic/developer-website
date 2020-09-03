@@ -40,20 +40,26 @@ const previewStyles = {
 };
 
 const ComponentReferenceTemplate = ({ data }) => {
+  const { mdx } = data;
+  const { frontmatter } = mdx;
+  const { title, description, component } = frontmatter;
   const {
-    newRelicSdkComponent: { name, description, usage, examples, typeDefs },
-  } = data;
-
-  const { methods = [], propTypes = [] } = useComponentDoc(name) ?? {};
+    examples = [],
+    description: componentDescription,
+    methods = [],
+    usage = '',
+    typeDefs = [],
+    propTypes = [],
+  } = useComponentDoc(component) ?? {};
 
   return (
     <>
-      <SEO title={name} />
+      <SEO title={title} description={description} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title={name} />
+        <PageLayout.Header title={component} />
         <PageLayout.Content>
           <section className={cx(templateStyles.section, 'intro-text')}>
-            <Markdown source={description} />
+            <Markdown source={componentDescription} />
           </section>
 
           <section className={templateStyles.section}>
@@ -68,17 +74,17 @@ const ComponentReferenceTemplate = ({ data }) => {
                 {examples.map((example, i) => (
                   <ReferenceExample
                     key={i}
-                    useToastManager={name === 'Toast'}
+                    useToastManager={component === 'Toast'}
                     className={styles.componentExample}
-                    example={{ ...example, options: { live: example.preview } }}
-                    previewStyle={previewStyles[name]}
+                    example={example}
+                    previewStyle={previewStyles[component]}
                   />
                 ))}
               </div>
             </section>
           )}
 
-          {name === 'Icon' && (
+          {component === 'Icon' && (
             <section className={templateStyles.section}>
               <IconGallery />
             </section>
@@ -122,22 +128,13 @@ ComponentReferenceTemplate.propTypes = {
 
 export const pageQuery = graphql`
   query($path: String!) {
-    newRelicSdkComponent(fields: { slug: { eq: $path } }) {
-      name
-      description
-      usage
-      examples {
-        label
-        sourceCode
-        preview
-      }
-      typeDefs {
-        name
-        properties {
-          name
-          description
-          type
-        }
+    mdx(frontmatter: { path: { eq: $path } }) {
+      body
+      frontmatter {
+        path
+        title
+        description
+        component
       }
     }
   }

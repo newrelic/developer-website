@@ -14,9 +14,9 @@ import templateStyles from './ReferenceTemplate.module.scss';
 import useApiDoc from '../hooks/useApiDoc';
 
 const ApiReferenceTemplate = ({ data }) => {
-  const {
-    newRelicSdkApi: { name: api },
-  } = data;
+  const { mdx } = data;
+  const { frontmatter } = mdx;
+  const { title, description, api } = frontmatter;
   const {
     description: apiDescription,
     methods = [],
@@ -27,7 +27,7 @@ const ApiReferenceTemplate = ({ data }) => {
 
   return (
     <>
-      <SEO title={api} />
+      <SEO title={title} description={description} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title={api} />
         <PageLayout.Content>
@@ -90,8 +90,14 @@ ApiReferenceTemplate.propTypes = {
 
 export const pageQuery = graphql`
   query($path: String!) {
-    newRelicSdkApi(fields: { slug: { eq: $path } }) {
-      name
+    mdx(frontmatter: { path: { eq: $path } }) {
+      body
+      frontmatter {
+        path
+        title
+        description
+        api
+      }
     }
   }
 `;
