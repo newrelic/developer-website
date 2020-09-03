@@ -26,6 +26,7 @@ module.exports = {
             development: {
               features: {
                 'developer-website_global-header-gh-buttons': 'on',
+                'developer-website_right-rail-buttons': 'outline',
               },
               core: {
                 authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
