@@ -77,7 +77,7 @@ const getDefaultValue = (component, propTypeName) => {
   const defaultValue = (component.defaultProps || {})[propTypeName];
 
   if (defaultValue == null) {
-    return defaultValue;
+    return String(defaultValue);
   }
 
   if (isEnum(component.propTypes[propTypeName])) {
