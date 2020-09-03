@@ -130,11 +130,11 @@ exports.createResolvers = ({ createResolvers }) => {
 };
 
 exports.sourceNodes = async (
-  { actions, createNodeId, createContentDigest },
+  { actions, cache, createNodeId, createContentDigest },
   { release }
 ) => {
   const { createNode } = actions;
-  const sdk = await loadSdk(release);
+  const sdk = await loadSdk(release, { cache });
 
   DOCUMENTED_COMPONENTS.forEach((name) => {
     const data = getComponentDoc(name, sdk);
