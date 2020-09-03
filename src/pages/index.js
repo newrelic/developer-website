@@ -81,7 +81,13 @@ const IndexPage = ({ data, pageContext }) => {
                 inactiveMessage="Countdown to Nerd Days"
               />
               <p>
-                <Link to="/nerd-days">Register</Link>
+                <Button
+  as={Link}
+  to="/nerd-days"
+  variant={Button.VARIANT.PRIMARY}
+>
+  Register
+</Button>
               </p>
             </div>
             <div
