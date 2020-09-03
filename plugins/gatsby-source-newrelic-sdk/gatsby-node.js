@@ -69,7 +69,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 
     type NewRelicSdkPropTypeFunctionMeta {
       returnValue: NewRelicSdkFunctionReturnValue!
-      params: [NewRelicSdkFuncionParam!]!
+      params: [NewRelicSdkFunctionParam!]!
     }
 
     type NewRelicSdkPropTypeEnumMeta {
@@ -93,7 +93,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       type: String!
     }
 
-    type NewRelicSdkFuncionParam {
+    type NewRelicSdkFunctionParam {
       description: String
       name: String!
       type: String!
