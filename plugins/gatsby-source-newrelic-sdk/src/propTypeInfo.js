@@ -175,6 +175,19 @@ const getTypeMeta = (name, propType, { component }) => {
   }
 };
 
+const getDeprecation = (tags) => {
+  if (tags.deprecated == null) {
+    return null;
+  }
+
+  const [deprecation] = tags.deprecated;
+
+  return {
+    ...deprecation,
+    date: new Date(deprecation.date).toISOString(),
+  };
+};
+
 const getPropTypeDefinition = (component, name, propType) => {
   const propDocs = propType.__docs__ || {};
   const propMeta = propType.__reflect__ || {};
@@ -184,7 +197,7 @@ const getPropTypeDefinition = (component, name, propType) => {
     name,
     defaultValue: getDefaultValue(component, name),
     description: propDocs.text,
-    deprecation: (tags.deprecated || [])[0] || null,
+    deprecation: getDeprecation(tags),
     isRequired: propMeta.some((item) => item.name === 'isRequired') || false,
     examples: getExamples(name, { [name]: propType }),
     type: {

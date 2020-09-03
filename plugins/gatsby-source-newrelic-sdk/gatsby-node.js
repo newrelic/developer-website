@@ -56,9 +56,13 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       typeDefs: [NewRelicSdkTypeDefinition]
     }
 
-    type NewRelicSdkPropTypeDefinition @dontInfer {
+    type NewRelicSdkPropTypeDefinition {
       name: String!
       type: NewRelicSdkPropTypeDefinitionType!
+    }
+
+    type NewRelicSdkComponentPropTypesDeprecation {
+      date: Date! @dateformat(formatString: "MM-DD-YYYY")
     }
 
     type NewRelicSdkPropTypeDefinitionType @dontInfer {
