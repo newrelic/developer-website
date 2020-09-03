@@ -35,6 +35,7 @@ global.document = {
 global.btoa = noop;
 
 global.window = {
+  addEventListener: global.addEventListener,
   document: global.document,
   history: {},
   navigator: global.navigator,
