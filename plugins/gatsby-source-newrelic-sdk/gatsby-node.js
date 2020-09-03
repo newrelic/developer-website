@@ -67,7 +67,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       meta: NewRelicSdkPropTypeMeta
     }
 
-    type NewRelicSdkPropTypeFunctionMeta @infer {
+    type NewRelicSdkPropTypeFunctionMeta {
       returnValue: NewRelicSdkFunctionReturnValue!
       params: [NewRelicSdkFuncionParam!]!
     }
