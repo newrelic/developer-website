@@ -158,13 +158,13 @@ describe('getDefaultValue', () => {
     expect(getDefaultValue(component, 'message')).toEqual('Hello');
   });
 
-  test('returns "undefined" for undefined default values', () => {
+  test('returns null for undefined default values', () => {
     const component = {
       propTypes: {},
       defaultProps: {},
     };
 
-    expect(getDefaultValue(component, 'name')).toEqual('undefined');
+    expect(getDefaultValue(component, 'name')).toBeNull();
   });
 
   test('returns "null" for default values set to null', () => {
@@ -334,7 +334,7 @@ describe('getTypeMeta', () => {
       types: [
         {
           name: 'pathname',
-          defaultValue: 'undefined',
+          defaultValue: null,
           description: undefined,
           deprecation: null,
           isRequired: true,
@@ -347,7 +347,7 @@ describe('getTypeMeta', () => {
         },
         {
           name: 'search',
-          defaultValue: 'undefined',
+          defaultValue: null,
           description: undefined,
           deprecation: null,
           isRequired: false,
@@ -360,7 +360,7 @@ describe('getTypeMeta', () => {
         },
         {
           name: 'hash',
-          defaultValue: 'undefined',
+          defaultValue: null,
           description: undefined,
           deprecation: null,
           isRequired: false,
@@ -454,7 +454,7 @@ describe('getTypeMeta', () => {
             types: [
               {
                 name: 'pathname',
-                defaultValue: 'undefined',
+                defaultValue: null,
                 description: 'The name of the path to link to',
                 deprecation: null,
                 isRequired: false,
@@ -467,7 +467,7 @@ describe('getTypeMeta', () => {
               },
               {
                 name: 'search',
-                defaultValue: 'undefined',
+                defaultValue: null,
                 description: undefined,
                 deprecation: null,
                 isRequired: false,
@@ -597,7 +597,7 @@ describe('getTypeMeta', () => {
                 types: [
                   {
                     name: 'name',
-                    defaultValue: 'undefined',
+                    defaultValue: null,
                     description: undefined,
                     deprecation: null,
                     isRequired: true,
@@ -610,7 +610,7 @@ describe('getTypeMeta', () => {
                   },
                   {
                     name: 'onHide',
-                    defaultValue: 'undefined',
+                    defaultValue: null,
                     description: undefined,
                     deprecation: null,
                     isRequired: false,
@@ -626,7 +626,7 @@ describe('getTypeMeta', () => {
                   },
                   {
                     name: 'onHidden',
-                    defaultValue: 'undefined',
+                    defaultValue: null,
                     description: undefined,
                     deprecation: null,
                     isRequired: false,

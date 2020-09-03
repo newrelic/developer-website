@@ -78,8 +78,12 @@ const getNormalizedTypeName = (propType) => {
 const getDefaultValue = (component, propTypeName) => {
   const defaultValue = (component.defaultProps || {})[propTypeName];
 
-  if (defaultValue == null) {
-    return String(defaultValue);
+  if (defaultValue === undefined) {
+    return null;
+  }
+
+  if (defaultValue === null) {
+    return 'null';
   }
 
   if (isEnum(component.propTypes[propTypeName])) {
