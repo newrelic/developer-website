@@ -66,10 +66,14 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 
     type NewRelicSdkComponentMethods {
       examples: [NewRelicSdkExample!]!
+      arguments: [NewRelicSdkFunctionArgument!]!
+      returnValue: NewRelicSdkFunctionReturnValue!
     }
 
     type NewRelicSdkApiMethods {
       examples: [NewRelicSdkExample!]!
+      arguments: [NewRelicSdkFunctionArgument!]!
+      returnValue: NewRelicSdkFunctionReturnValue!
     }
 
     type NewRelicSdkComponentPropTypesDeprecation {
@@ -84,7 +88,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 
     type NewRelicSdkPropTypeFunctionMeta {
       returnValue: NewRelicSdkFunctionReturnValue!
-      params: [NewRelicSdkFunctionParam!]!
+      arguments: [NewRelicSdkFunctionArgument!]!
     }
 
     type NewRelicSdkPropTypeEnumMeta {
@@ -108,7 +112,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       type: String!
     }
 
-    type NewRelicSdkFunctionParam {
+    type NewRelicSdkFunctionArgument {
       description: String
       name: String!
       type: String!

@@ -99,7 +99,7 @@ Returns a location object that can be used to redirect to an entity in its corre
 Location objects can be passed into \`<Link to={location}>\` component to navigate inside the platform.
       `.trim(),
       returnValue: { type: 'Location' },
-      params: [
+      arguments: [
         {
           name: 'entityGuid',
           type: 'string',
@@ -132,7 +132,7 @@ If nerdlet is not specified, the root nerdlet of the given launcher will be open
 Location objects can be passed into \`<Link to={location}>\` component to navigate inside the platform.
       `.trim(),
       returnValue: { type: 'Location' },
-      params: [
+      arguments: [
         {
           name: 'launcher',
           type: 'Launcher',
@@ -186,7 +186,7 @@ Returns a location object that can be used to open a given nerdlet with a given 
 Location objects can be passed into \`<Link to={location}>\` component to navigate inside the platform.
       `.trim(),
       returnValue: { type: 'Location' },
-      params: [
+      arguments: [
         {
           name: 'nerdlet',
           type: 'Nerdlet',
@@ -234,7 +234,7 @@ Returns a location object that can be used to trigger opening overlay.
 Location objects can be passed into \`<Link to={location}>\` component to navigate inside the platform.
       `.trim(),
       returnValue: { type: 'Location' },
-      params: [
+      arguments: [
         {
           name: 'overlay',
           type: 'Overlay',
@@ -265,7 +265,7 @@ Returns a location object that can be used to trigger opening entity in a stacke
 Location objects can be passed into \`<Link to={location}>\` component to navigate inside the platform.
       `.trim(),
       returnValue: { type: 'Location' },
-      params: [
+      arguments: [
         {
           name: 'entityGuid',
           type: 'string',
@@ -294,7 +294,7 @@ Returns a location object that can be used to trigger opening stacked nerdlet wi
 Location objects can be passed into \`<Link to={location}>\` component to navigate inside the platform.
       `.trim(),
       returnValue: { type: 'Location' },
-      params: [
+      arguments: [
         {
           name: 'nerdlet',
           type: 'Nerdlet',
@@ -359,7 +359,7 @@ Returns a location object that can be used to replace current nerdlet.
 Location objects can be passed into \`<Link to={location}>\` component to navigate inside the platform.
       `.trim(),
       returnValue: { type: 'Location' },
-      params: [
+      arguments: [
         {
           name: 'nerdlet',
           type: 'Nerdlet',
@@ -421,7 +421,7 @@ Opens an entity in its corresponding launcher (default: Explorer launcher).
 To navigate without adding an entry to the browser history, set \`urlStateOptions.replaceHistory\` to \`true\`.
       `.trim(),
       returnValue: { type: 'undefined' },
-      params: [
+      arguments: [
         {
           name: 'entityGuid',
           type: 'string',
@@ -459,7 +459,7 @@ If nerdlet is not specified, the root nerdlet of the given launcher will be open
 If you wish to navigate without adding an entry to the browser history, set \`urlStateOptions.replaceHistory\` to \`true\`.
       `.trim(),
       returnValue: { type: 'void' },
-      params: [
+      arguments: [
         {
           name: 'launcher',
           type: 'Launcher',
@@ -520,7 +520,7 @@ If \`nerdlet.urlState\` is provided, it will be shallow-merged with the initial 
 If you wish to navigate without adding an entry to the browser history, set \`urlStateOptions.replaceHistory\` to \`true\`.
       `.trim(),
       returnValue: { type: 'void' },
-      params: [
+      arguments: [
         {
           name: 'nerdlet',
           type: 'Nerdlet',
@@ -575,7 +575,7 @@ If \`overlay.urlState\` is provided, it will be shallow-merged with the initial 
 If you wish to navigate without adding an entry to the browser history, set \`urlStateOptions.replaceHistory\` to \`true\`.
       `.trim(),
       returnValue: { type: 'void' },
-      params: [
+      arguments: [
         {
           name: 'overlay',
           type: 'Overlay',
@@ -611,7 +611,7 @@ Opens a stacked nerdlet with entity open in it. If triggered from a stacked nerd
 To navigate without adding an entry to the browser history, set \`urlStateOptions.replaceHistory\` to \`true\`.
       `.trim(),
       returnValue: { type: 'undefined' },
-      params: [
+      arguments: [
         {
           name: 'entityGuid',
           type: 'string',
@@ -648,7 +648,7 @@ If triggered from a stacked nerdlet that is not the last one on the stack, the s
 If you wish to navigate without adding an entry to the browser history, set \`urlStateOptions.replaceHistory\` to \`true\`.
       `.trim(),
       returnValue: { type: 'void' },
-      params: [
+      arguments: [
         {
           name: 'nerdlet',
           type: 'Nerdlet',
@@ -718,7 +718,7 @@ Replaces the nerdlet that is calling this API method.
 If you wish to navigate without adding an entry to the browser history, set \`urlStateOptions.replaceHistory\` to \`true\`.
       `.trim(),
       returnValue: { type: 'void' },
-      params: [
+      arguments: [
         {
           name: 'nerdlet',
           type: 'Nerdlet',

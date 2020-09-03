@@ -25,7 +25,7 @@ exports.getMethods = (name, sdk) => {
         name: `${name}.${member}`,
         description: methodDocs.text,
         returnValue: (tags.return || [])[0] || { type: 'undefined' },
-        params: tags.param || [],
+        arguments: tags.param || [],
         examples: getExamples(member, obj),
       };
     });

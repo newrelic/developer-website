@@ -121,7 +121,7 @@ const getTypeMeta = (name, propType, { component }) => {
         returnValue: (propTypeDocs.tags || {}).returnValue || {
           type: 'undefined',
         },
-        params: (propTypeDocs.tags || {}).param || [],
+        arguments: (propTypeDocs.tags || {}).param || [],
       };
     case 'shape': {
       const [shape] = getArgs(propType);
