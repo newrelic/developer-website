@@ -98,7 +98,7 @@ const getDefaultValue = (component, propTypeName) => {
   }
 
   if (typeof defaultValue === 'object') {
-    return undefined;
+    return JSON.stringify(defaultValue);
   }
 
   if (typeof defaultValue === 'number') {

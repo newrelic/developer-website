@@ -221,7 +221,7 @@ describe('getDefaultValue', () => {
     );
   });
 
-  test('returns undefined if the default value is an arbitrary object', () => {
+  test('returns stringified JSON if the default value is an arbitrary object', () => {
     const component = {
       propTypes: {
         location: createPropType('object'),
@@ -231,7 +231,9 @@ describe('getDefaultValue', () => {
       },
     };
 
-    expect(getDefaultValue(component, 'location')).toBeUndefined();
+    expect(getDefaultValue(component, 'location')).toEqual(
+      JSON.stringify({ state: '1234' })
+    );
   });
 
   test('returns stringfied representation of array if the default value is an array', () => {
