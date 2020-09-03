@@ -15,6 +15,8 @@ global.navigator = {
 };
 global.removeEventListener = noop;
 global.addEventListener = noop;
+global.requestAnimationFrame = noop;
+global.cancelAnimationFrame = noop;
 global.document = {
   cookie: '',
   getElementsByTagName() {
@@ -43,4 +45,6 @@ global.window = {
     hostname: '',
     search: '',
   },
+  requestAnimationFrame: global.requestAnimationFrame,
+  cancelAnimationFrame: global.cancelAnimationFrame,
 };
