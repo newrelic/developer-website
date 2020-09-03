@@ -282,8 +282,12 @@ const NerdDaysPage = () => {
                     Jemiah Sius
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
               </div>
@@ -297,8 +301,12 @@ const NerdDaysPage = () => {
                     Anita Baker
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>Fundamentals</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      Fundamentals
+                    </li>
                   </ul>
                 </h4>
                 <h4
@@ -309,8 +317,12 @@ const NerdDaysPage = () => {
                     Robert Parr
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
                 <h4 className={cx(styles.agendaSession)}>
@@ -319,8 +331,12 @@ const NerdDaysPage = () => {
                     Jeff Osborne
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
               </div>
@@ -332,8 +348,12 @@ const NerdDaysPage = () => {
                     Dylan Hernandez
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>Observability</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      Observability
+                    </li>
                   </ul>
                 </h4>
                 <h4 className={cx(styles.agendaSession)}>
@@ -342,8 +362,12 @@ const NerdDaysPage = () => {
                     Celso Piña
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
                 <h4 className={cx(styles.agendaSession)}>
@@ -352,8 +376,12 @@ const NerdDaysPage = () => {
                     Jeff Osborne
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
                 <h4
@@ -364,8 +392,12 @@ const NerdDaysPage = () => {
                     Jemiah Sius
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
               </div>
@@ -377,8 +409,12 @@ const NerdDaysPage = () => {
                     Dylan Hernandez
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>Fundamentals</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      Fundamentals
+                    </li>
                   </ul>
                 </h4>
                 <h4
@@ -389,8 +425,12 @@ const NerdDaysPage = () => {
                     Natalia Lafourcade
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
                 <h4 className={cx(styles.agendaSession)}>
@@ -399,8 +439,12 @@ const NerdDaysPage = () => {
                     John McGibbons
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
                 <h4 className={cx(styles.agendaSession)}>
@@ -409,8 +453,12 @@ const NerdDaysPage = () => {
                     Anita Baker
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
               </div>
@@ -435,8 +483,12 @@ const NerdDaysPage = () => {
                     Music by DJ Mykael V
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
               </div>
@@ -450,8 +502,12 @@ const NerdDaysPage = () => {
                     Natalia Lafourcade
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
                 <h4
@@ -462,8 +518,12 @@ const NerdDaysPage = () => {
                     Celso Piña
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
               </div>
@@ -477,8 +537,12 @@ const NerdDaysPage = () => {
                     Jemiah Sius and Team
                   </span>
                   <ul className={cx(styles.agendaSessionMetaList)}>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>8:00 AM</li>
-                    <li className={cx(styles.agendaSessionMetaListItem)}>DevOps Journey</li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      8:00 AM
+                    </li>
+                    <li className={cx(styles.agendaSessionMetaListItem)}>
+                      DevOps Journey
+                    </li>
                   </ul>
                 </h4>
               </div>
