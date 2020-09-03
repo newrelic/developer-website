@@ -52,10 +52,3 @@ You can add any of the publicly available applications to master accounts or sep
 **Subscribe to applications that you create**
 
 You also must have the Nerdpack manager role to subscribe the applications you create to accounts. Applications that you publish and deploy can only be subscribed to the master account that was used to publish them, or to its sub-accounts. This means you might want a New Relic admin to deploy your applications for you if they need to be available across the organization.
-
-## About versions
-
-New Relic One requires that only one version (following semantic versioning) of a Nerdpack can be published. Thus, the `nr1 nerdpack:publish` command requires the following:
-
-- The Nerdpack manager role
-- A unique version as specified in the version attribute found in the app's `package.json`.
