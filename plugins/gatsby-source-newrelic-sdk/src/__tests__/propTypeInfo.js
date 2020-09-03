@@ -632,7 +632,7 @@ describe('getTypeMeta', () => {
                     isRequired: false,
                     examples: [],
                     deprecation: {
-                      date: 1591519180477,
+                      date: new Date(1591519180477).toISOString(),
                       description: 'Use onHide',
                     },
                     type: {
