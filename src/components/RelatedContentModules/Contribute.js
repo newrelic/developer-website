@@ -46,7 +46,7 @@ const Contribute = ({ pageContext }) => {
         size={Button.SIZE.SMALL}
         onClick={() =>
           track('related_content.contribute_action_clicked', null, {
-            button: 'issues',
+            action: 'issues',
           })
         }
       >
@@ -66,7 +66,7 @@ const Contribute = ({ pageContext }) => {
         size={Button.SIZE.SMALL}
         onClick={() =>
           track('related_content.contribute_action_clicked', null, {
-            button: 'edit',
+            action: 'edit',
           })
         }
       >
