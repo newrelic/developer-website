@@ -6,6 +6,7 @@ import SEO from '../components/Seo';
 import FeatherIcon from '../components/FeatherIcon';
 import nrLogo from '../images/nerd-days/nr-logo.svg';
 import styles from './nerd-days.module.scss';
+import hopinLogo from '../images/nerd-days/hopin-logo.svg';
 import roadIcon from '../images/nerd-days/icon-road.svg';
 import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
@@ -422,7 +423,7 @@ const NerdDaysPage = () => {
 
           <section
             className={cx(
-              styles.engageSection,
+              styles.engagementSection,
               styles.eventSection,
               styles.alternateSection
             )}
@@ -430,6 +431,79 @@ const NerdDaysPage = () => {
             <h3 className={cx(styles.sectionHeading)}>
               Engage with the developer community
             </h3>
+
+            <ul className={cx(styles.engagementOptions)}>
+              <li className={cx(styles.engagementOption)}>
+                <a
+                  href="https://twitter.com/newrelic"
+                  className={cx(styles.engagementOptionLink)}
+                >
+                  <span className={cx(styles.engagementOptionLabel)}>
+                    @newrelic
+                  </span>
+                  <span className={cx(styles.engagementOptionIconContainer)}>
+                    <FeatherIcon
+                      className={cx(styles.engagementOptionIcon)}
+                      name="twitter"
+                      size="23"
+                    />
+                  </span>
+                </a>
+              </li>
+              <li
+                className={cx(
+                  styles.engagementOption,
+                  styles.engagementOptionForum
+                )}
+              >
+                <a
+                  href="https://discuss.newrelic.com/"
+                  className={cx(styles.engagementOptionLink)}
+                >
+                  <span className={cx(styles.engagementOptionLabel)}>
+                    New Relic Forum
+                  </span>
+                  <span className={cx(styles.engagementOptionIconContainer)}>
+                    <FeatherIcon
+                      className={cx(styles.engagementOptionIcon)}
+                      name="message-square"
+                      size="20"
+                    />
+                  </span>
+                </a>
+              </li>
+              <li className={cx(styles.engagementOption)}>
+                <a
+                  href="https://developer.newrelic.com/"
+                  className={cx(styles.engagementOptionLink)}
+                >
+                  <span className={cx(styles.engagementOptionLabel)}>
+                    Developers
+                  </span>
+                  <span className={cx(styles.engagementOptionIconContainer)}>
+                    <FeatherIcon
+                      className={cx(styles.engagementOptionIcon)}
+                      name="code"
+                      size="26"
+                    />
+                  </span>
+                </a>
+              </li>
+            </ul>
+
+            <a
+              href="https://hopin.to/?ref=developer.newrelic.com"
+              className={cx(styles.sponsorLogoContainer)}
+            >
+              <img
+                className={cx(styles.sponsorLogo)}
+                src={hopinLogo}
+                alt="Hoping logo"
+              />
+              <p className={cx(styles.sponsorLogoCaption)}>
+                Event powered by Hopin
+              </p>
+            </a>
           </section>
         </PageLayout.Content>
       </PageLayout>

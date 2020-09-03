@@ -338,3 +338,87 @@ a.ctaButton {
 .agendaSessionSecondary {
   background-color: #F4F5F5;
 }
+
+.engagementSection {
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.engagementOptions {
+  display: inline-flex;
+  list-style-type: none;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.engagementOption {
+  margin-right: 35px;
+  border: 3px solid #006C75;
+  border-radius: 4px;
+  box-shadow: 
+    0 15px 20px rgba(4, 89, 97, 0.1), 
+    0px 6.26664px 8.35552px rgba(4, 89, 97, 0.0718854), 
+    0px 3.35045px 4.46726px rgba(4, 89, 97, 0.0596107), 
+    0px 1.87823px 2.50431px rgba(4, 89, 97, 0.05), 
+    0px 0.997515px 1.33002px rgba(4, 89, 97, 0.0403893), 
+    0px 0.415088px 0.553451px rgba(4, 89, 97, 0.0281146);
+  transition: transform .095s ease-out;
+  
+  &:last-child {
+    margin: 0;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+.engagementOptionLink {
+  display: inline-flex;
+  align-items: stretch;
+  height: 44px;
+  font-weight: 600;
+}
+
+.engagementOptionLabel {
+  font-size: 20px;
+  display: inline-flex;
+  padding: 6px 14px;
+  align-items: center;
+}
+
+.engagementOptionIconContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 11px 0 24px;
+  background-color: #006C75;
+  border-right: 1px solid #006C75;
+  clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.engagementOptionIcon {
+  stroke: #fff;
+  stroke-width: 2px;
+
+  .engagementOptionForum & {
+    stroke-width: 2.5px;
+  }
+}
+
+.sponsorLogoContainer {
+  display: block;
+  width: 200px;
+  margin: 10px auto 0;
+  margin-top: 10px;
+}
+
+.sponsorLogoCaption {
+  color: #999;
+}
