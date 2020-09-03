@@ -6,7 +6,7 @@ const {
 
 const createDocs = (
   type,
-  {description, deprecation, returnValue, params} = {}
+  { description, deprecation, returnValue, params } = {}
 ) => {
   const docs = {
     text: description,
@@ -35,18 +35,18 @@ const createDocs = (
   return docs;
 };
 
-const createPropType = (name, args, {isRequired = false, docs} = {}) => {
-  const propType = [{name: 'PropTypes'}, {name}];
+const createPropType = (name, args, { isRequired = false, docs } = {}) => {
+  const propType = [{ name: 'PropTypes' }, { name }];
 
   if (args) {
-    propType.push({args});
+    propType.push({ args });
   }
 
   if (isRequired) {
-    propType.push({name: 'isRequired'});
+    propType.push({ name: 'isRequired' });
   }
 
-  return {__reflect__: propType, __docs__: createDocs(name, docs)};
+  return { __reflect__: propType, __docs__: createDocs(name, docs) };
 };
 
 describe('getNormalizedTypeName', () => {
@@ -115,7 +115,7 @@ describe('getNormalizedTypeName', () => {
           createPropType('number'),
         ],
       ],
-      {isRequired: true}
+      { isRequired: true }
     );
 
     expect(getNormalizedTypeName(propType)).toEqual('string|object|number');
@@ -227,7 +227,7 @@ describe('getDefaultValue', () => {
         location: createPropType('object'),
       },
       defaultProps: {
-        location: {state: '1234'},
+        location: { state: '1234' },
       },
     };
 
@@ -289,7 +289,7 @@ describe('getTypeMeta', () => {
         },
       };
 
-      expect(getTypeMeta(type, propType, {component})).toBeNull();
+      expect(getTypeMeta(type, propType, { component })).toBeNull();
     });
   });
 
@@ -297,7 +297,7 @@ describe('getTypeMeta', () => {
     const propType = createPropType('func', undefined, {
       docs: {
         description: 'A click handler',
-        params: [{description: '', name: 'event', type: 'Event'}],
+        params: [{ description: '', name: 'event', type: 'Event' }],
       },
     });
 
@@ -307,16 +307,16 @@ describe('getTypeMeta', () => {
       },
     };
 
-    expect(getTypeMeta('onClick', propType, {component})).toEqual({
-      returnValue: {type: 'undefined'},
-      params: [{description: '', name: 'event', type: 'Event'}],
+    expect(getTypeMeta('onClick', propType, { component })).toEqual({
+      returnValue: { type: 'undefined' },
+      params: [{ description: '', name: 'event', type: 'Event' }],
     });
   });
 
   test('returns nested prop type info for shape types', () => {
     const propType = createPropType('shape', [
       {
-        pathname: createPropType('string', undefined, {isRequired: true}),
+        pathname: createPropType('string', undefined, { isRequired: true }),
         search: createPropType('string'),
         hash: createPropType('string'),
       },
@@ -328,7 +328,7 @@ describe('getTypeMeta', () => {
       },
     };
 
-    expect(getTypeMeta('to', propType, {component})).toEqual({
+    expect(getTypeMeta('to', propType, { component })).toEqual({
       types: [
         {
           name: 'pathname',
@@ -390,7 +390,7 @@ describe('getTypeMeta', () => {
       SIZE,
     };
 
-    expect(getTypeMeta('size', propType, {component})).toEqual({
+    expect(getTypeMeta('size', propType, { component })).toEqual({
       constants: [
         'Button.SIZE.SMALL',
         'Button.SIZE.MEDIUM',
@@ -408,7 +408,7 @@ describe('getTypeMeta', () => {
       },
     };
 
-    expect(getTypeMeta('names', propType, {component})).toEqual({
+    expect(getTypeMeta('names', propType, { component })).toEqual({
       itemTypes: {
         meta: null,
         raw: 'string',
@@ -424,7 +424,7 @@ describe('getTypeMeta', () => {
         createPropType('shape', [
           {
             pathname: createPropType('string', undefined, {
-              docs: {description: 'The name of the path to link to'},
+              docs: { description: 'The name of the path to link to' },
             }),
             search: createPropType('string'),
           },
@@ -438,7 +438,7 @@ describe('getTypeMeta', () => {
       },
     };
 
-    expect(getTypeMeta('to', propType, {component})).toEqual({
+    expect(getTypeMeta('to', propType, { component })).toEqual({
       types: [
         {
           name: 'string',
@@ -501,7 +501,7 @@ describe('getTypeMeta', () => {
       SPACE,
     };
 
-    expect(getTypeMeta('space', propType, {component})).toEqual({
+    expect(getTypeMeta('space', propType, { component })).toEqual({
       itemTypes: {
         meta: {
           constants: [
@@ -523,7 +523,7 @@ describe('getTypeMeta', () => {
       LARGE: 'lg',
     };
     const enumPropType = createPropType('oneOf', [Object.values(OUTER_SPACE)]);
-    const propType = createPropType('shape', [{space: enumPropType}]);
+    const propType = createPropType('shape', [{ space: enumPropType }]);
 
     const component = {
       name: 'Button',
@@ -533,7 +533,7 @@ describe('getTypeMeta', () => {
       OUTER_SPACE,
     };
 
-    expect(getTypeMeta('space', enumPropType, {component})).toEqual({
+    expect(getTypeMeta('space', enumPropType, { component })).toEqual({
       constants: [
         'Button.OUTER_SPACE.SMALL',
         'Button.OUTER_SPACE.MEDIUM',
@@ -554,7 +554,7 @@ describe('getTypeMeta', () => {
         createPropType('arrayOf', [
           createPropType('shape', [
             {
-              name: createPropType('string', undefined, {isRequired: true}),
+              name: createPropType('string', undefined, { isRequired: true }),
               onHide: createPropType('func'),
               onHidden: createPropType('func', undefined, {
                 docs: {
@@ -579,7 +579,7 @@ describe('getTypeMeta', () => {
       CRAZY,
     };
 
-    expect(getTypeMeta('crazy', propType, {component})).toEqual({
+    expect(getTypeMeta('crazy', propType, { component })).toEqual({
       types: [
         {
           meta: null,
@@ -615,7 +615,7 @@ describe('getTypeMeta', () => {
                     examples: [],
                     type: {
                       meta: {
-                        returnValue: {type: 'undefined'},
+                        returnValue: { type: 'undefined' },
                         params: [],
                       },
                       raw: 'func',
@@ -635,7 +635,7 @@ describe('getTypeMeta', () => {
                     },
                     type: {
                       meta: {
-                        returnValue: {type: 'undefined'},
+                        returnValue: { type: 'undefined' },
                         params: [],
                       },
                       raw: 'func',
@@ -652,10 +652,9 @@ describe('getTypeMeta', () => {
         {
           name: 'enum',
           raw: 'oneOf',
-          meta: {constants: ['Wacky.CRAZY.ONE', 'Wacky.CRAZY.TWO']},
+          meta: { constants: ['Wacky.CRAZY.ONE', 'Wacky.CRAZY.TWO'] },
         },
       ],
     });
   });
 });
-
