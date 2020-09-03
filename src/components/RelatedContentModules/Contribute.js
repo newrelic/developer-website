@@ -41,7 +41,6 @@ const Contribute = ({ pageContext }) => {
         css={css`
           margin-right: 0.5rem;
         `}
-        disabled={treatment === 'control'}
         variant={config?.issues || Button.VARIANT.NORMAL}
         size={Button.SIZE.SMALL}
         onClick={() =>
@@ -61,7 +60,6 @@ const Contribute = ({ pageContext }) => {
       <Button
         as={ExternalLink}
         href={`${repository}/tree/main/${fileRelativePath}`}
-        disabled={treatment === 'control'}
         variant={config?.edit || Button.VARIANT.NORMAL}
         size={Button.SIZE.SMALL}
         onClick={() =>
