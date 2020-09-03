@@ -17,24 +17,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      allNewRelicSdkApi {
-        edges {
-          node {
-            fields {
-              slug
-            }
-          }
-        }
-      }
-      allNewRelicSdkComponent {
-        edges {
-          node {
-            fields {
-              slug
-            }
-          }
-        }
-      }
       allMdx(limit: 1000) {
         edges {
           node {
@@ -59,21 +41,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  const { allMdx, allNewRelicSdkApi, allNewRelicSdkComponent } = result.data;
-
-  allNewRelicSdkApi.edges.forEach(({ node }) => {
-    createPage({
-      path: node.fields.slug,
-      component: path.resolve('./src/templates/ApiReferenceTemplate.js'),
-    });
-  });
-
-  allNewRelicSdkComponent.edges.forEach(({ node }) => {
-    createPage({
-      path: node.fields.slug,
-      component: path.resolve('src/templates/ComponentReferenceTemplate.js'),
-    });
-  });
+  const { allMdx } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
     const { frontmatter } = node;
@@ -89,23 +57,21 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       });
     }
 
-    if (node.template !== 'ComponentReferenceTemplate') {
-      createPage({
-        path: frontmatter.path,
-        component: path.resolve(`src/templates/${frontmatter.template}.js`),
-        context: {
-          fileRelativePath: getFileRelativePath(node.fileAbsolutePath),
-          guidesFilter:
-            frontmatter.template === 'OverviewTemplate'
-              ? `${frontmatter.path}/*`
-              : undefined,
-          relatedResourceLimit: Math.max(
-            MAX_RESULTS - (frontmatter.resources || []).length,
-            0
-          ),
-        },
-      });
-    }
+    createPage({
+      path: frontmatter.path,
+      component: path.resolve(`src/templates/${frontmatter.template}.js`),
+      context: {
+        fileRelativePath: getFileRelativePath(node.fileAbsolutePath),
+        guidesFilter:
+          frontmatter.template === 'OverviewTemplate'
+            ? `${frontmatter.path}/*`
+            : undefined,
+        relatedResourceLimit: Math.max(
+          MAX_RESULTS - (frontmatter.resources || []).length,
+          0
+        ),
+      },
+    });
   });
 };
 
