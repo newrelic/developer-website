@@ -1,4 +1,7 @@
 const path = require(`path`);
+const { execSync } = require('child_process');
+
+const MAX_RESULTS = 5;
 
 const getFileRelativePath = (absolutePath) =>
   absolutePath.replace(`${process.cwd()}/`, '');
@@ -40,6 +43,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               path
               template
               redirects
+              resources {
+                url
+              }
             }
           }
         }
@@ -93,6 +99,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             frontmatter.template === 'OverviewTemplate'
               ? `${frontmatter.path}/*`
               : undefined,
+          relatedResourceLimit: Math.max(
+            MAX_RESULTS - (frontmatter.resources || []).length,
+            0
+          ),
         },
       });
     }
@@ -103,6 +113,17 @@ exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
   // if we don't have a relative path, attempt to get one
+  if (node.internal.type === 'Mdx' && node.fileAbsolutePath) {
+    const gitAuthorTime = execSync(
+      `git log -1 --pretty=format:%aI ${node.fileAbsolutePath}`
+    ).toString();
+    actions.createNodeField({
+      node,
+      name: 'gitAuthorTime',
+      value: gitAuthorTime,
+    });
+  }
+
   if (node.context && !node.context.fileRelativePath) {
     const { createPage } = actions;
     const { path, component } = node;
@@ -131,4 +152,12 @@ exports.onCreateNode = ({ node, actions }) => {
       value: `/apis/${kebabCase(node.name)}`,
     });
   }
+};
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    externals: {
+      tessen: 'Tessen',
+    },
+  });
 };

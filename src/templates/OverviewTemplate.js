@@ -2,8 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import Layout from '../components/Layout';
-import PageTitle from '../components/PageTitle';
+import PageLayout from '../components/PageLayout';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
@@ -17,32 +16,43 @@ const OverviewTemplate = ({ data }) => {
   const { title, description } = frontmatter;
 
   return (
-    <Layout>
+    <>
       <SEO title={title} description={description} />
-      <PageTitle>{title}</PageTitle>
-      <MDXContainer>{body}</MDXContainer>
-      {!!guides?.nodes.length && (
-        <GuideListing className={styles.guideListing}>
-          <GuideListing.List>
-            {guides?.nodes.map(({ frontmatter }, index) => (
-              <GuideTile
-                as={Link}
-                to={frontmatter.path}
-                key={index}
-                duration={frontmatter.duration}
-                title={frontmatter.tileShorthand?.title || frontmatter.title}
-                description={
-                  frontmatter.tileShorthand?.description ||
-                  frontmatter.description
-                }
-                path={frontmatter.path}
-                alignment={GuideTile.ALIGNMENT.LEFT}
-              />
-            ))}
-          </GuideListing.List>
-        </GuideListing>
-      )}
-    </Layout>
+      <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
+        <PageLayout.Header title={title} />
+        <PageLayout.Content>
+          <MDXContainer>{body}</MDXContainer>
+          {!!guides?.nodes.length && (
+            <>
+              <h2
+                className={styles.subtitle}
+              >{`Guides to ${title.toLowerCase()}`}</h2>
+              <GuideListing className={styles.guideListing}>
+                <GuideListing.List>
+                  {guides?.nodes.map(({ frontmatter }, index) => (
+                    <GuideTile
+                      as={Link}
+                      to={frontmatter.path}
+                      key={index}
+                      duration={frontmatter.duration}
+                      title={
+                        frontmatter.tileShorthand?.title || frontmatter.title
+                      }
+                      description={
+                        frontmatter.tileShorthand?.description ||
+                        frontmatter.description
+                      }
+                      path={frontmatter.path}
+                      alignment={GuideTile.ALIGNMENT.LEFT}
+                    />
+                  ))}
+                </GuideListing.List>
+              </GuideListing>
+            </>
+          )}
+        </PageLayout.Content>
+      </PageLayout>
+    </>
   );
 };
 

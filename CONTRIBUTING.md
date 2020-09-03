@@ -23,6 +23,7 @@
     - [Editing existing guides](#editing-existing-guides)
     - [Creating new guides](#creating-new-guides)
     - [Deleting guides](#deleting-guides)
+  - [Related Pages](#related-pages)
   - [Updating navigation](#updating-navigation)
     - [Example navigation change](#example-navigation-change)
       - [EXISTING](#existing)
@@ -64,7 +65,7 @@ you can use the Github `Edit This File` button to submit a change.
 
 ### Cloning vs Forking
 
-To be able to [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repository and contribute you will need to be given write access to the repository. This is reserved for New Relic Employees only. Contact the Developer Experience Team if you need write access.
+To be able to [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repository and contribute you will need to be given write access to the repository. This is reserved for New Relic Employees only. Contact the Developer Experience team (developer-website-content Slack channel) if you need write access.
 
 As a non New Relic employee you can [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the repository and contribute as needed.
 
@@ -81,7 +82,7 @@ As a non New Relic employee you can [Fork](https://help.github.com/en/github/get
 ### Submitting a PR from a cloned repo
 
 0. Create a [Github](https://github.com/) account if you don't already have one.
-1. `Clone` this this repository.
+1. `Clone` this repository.
 2. Create a new branch locally.
 3. Make your changes.
 4. Test your changes! Review the project's [READ ME](README.md) for instructions on how to build and run tests locally.
@@ -193,13 +194,22 @@ create a guide. It's recommended you search the following resources before contr
 2. The Developer Experience Team will review the request to delete an existing guide.
 3. If the deletion is approved, The Developer Experience Team will delete the guide.
 
+## Related Pages
+
+[related-pages.json](related-pages.json) is used to populate the related resources component with dynamic links.
+This file automatically updated every 24 hours via a script that runs in a [GitHub action](https://github.com/newrelic/developer-website/blob/main/.github/workflows/fetch-related-content.yml)
+
+That GH action fetches results for all pages from Swiftype, updates, commits, and pushes that related-pages.json file.
+
+**You should never attempt to update this file manually.**
+
 ## Updating navigation
 
 When a new guide is added or an existing guide path frontmatter slug is changed it is important that the site navigation is updated to reflect this change. To do so follow these steps.
 
 1. Make your guide change and submit a PR.
 2. Within that PR also make the navigation change.
-3. In order to change navigation you will need to update the [sidenav.json](../src/data/sidenav.json) file.
+3. In order to change navigation you will need to update the [sidenav.json](/src/data/sidenav.json) file.
 4. Given the side navigation file is JSON, be sure to close all `[ ]` and `{ }` and use trailing `,` correctly.
 5. Navigation `displayName` should always be sentence case.
 6. Submit your PR and add the `navigation` label.

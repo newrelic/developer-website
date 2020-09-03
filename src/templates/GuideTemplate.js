@@ -1,33 +1,53 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import MDXContainer from '../components/MDXContainer';
 
-import Layout from '../components/Layout';
+import {
+  Contribute,
+  PageUpdated,
+  Resources,
+} from '../components/RelatedContentModules';
+import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
-import PageTitle from '../components/PageTitle';
 import SEO from '../components/Seo';
-import styles from './GuideTemplate.module.scss';
 
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
   const { frontmatter, body } = mdx;
-  const { title, description, duration } = frontmatter;
+  const { title, description, duration, tags } = frontmatter;
 
   return (
-    <Layout>
-      <SEO title={title} description={description} />
-      <div className={styles.header}>
-        <PageTitle>{title}</PageTitle>
-        {duration && (
-          <div className={styles.duration}>
-            <FeatherIcon name="clock" className={styles.clock} />
-            {duration}
-          </div>
-        )}
-      </div>
-      <MDXContainer>{body}</MDXContainer>
-    </Layout>
+    <>
+      <SEO title={title} description={description} tags={tags} />
+      <PageLayout type={PageLayout.TYPE.RELATED_CONTENT}>
+        <PageLayout.Header title={title}>
+          {duration && (
+            <div
+              css={css`
+                display: flex;
+                align-items: center;
+                color: var(--secondary-text-color);
+                white-space: nowrap;
+              `}
+            >
+              <FeatherIcon
+                name="clock"
+                css={css`
+                  margin-right: 0.25rem;
+                `}
+              />
+              {duration}
+            </div>
+          )}
+        </PageLayout.Header>
+        <PageLayout.MarkdownContent>{body}</PageLayout.MarkdownContent>
+        <PageLayout.RelatedContent
+          page={mdx}
+          modules={[Contribute, Resources, PageUpdated]}
+        />
+      </PageLayout>
+    </>
   );
 };
 
@@ -36,7 +56,7 @@ GuideTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
+  query($path: String!, $relatedResourceLimit: Int!) {
     mdx(frontmatter: { path: { eq: $path } }) {
       body
       frontmatter {
@@ -44,7 +64,11 @@ export const pageQuery = graphql`
         path
         title
         description
+        tags
       }
+
+      ...Resources_page
+      ...PageUpdated_page
     }
   }
 `;

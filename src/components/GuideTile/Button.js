@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
-import Button from '../Button';
-import styles from './GuideTile.module.scss';
+import { css } from '@emotion/core';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import { Link } from 'gatsby';
 
 const GuideTileButton = ({ className, ...props }) => (
   <Button
     as={Link}
     variant={Button.VARIANT.PRIMARY}
-    className={cx(styles.button, className)}
+    className={className}
+    css={css`
+      justify-self: center;
+
+      &:hover {
+        transform: translateY(-1px);
+      }
+    `}
     {...props}
   />
 );

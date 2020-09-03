@@ -1,12 +1,8 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import formatCode from '../utils/formatCode';
-import lightTheme from 'prism-react-renderer/themes/github';
-import darkTheme from 'prism-react-renderer/themes/nightOwl';
-import { LiveEditor, LiveError, LiveProvider } from 'react-live';
 import styles from './ReferenceExample.module.scss';
 import ReferencePreview from './ReferencePreview';
-import useDarkMode from 'use-dark-mode';
+import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 
 const platformStateContextMock = {
   timeRange: {
@@ -20,8 +16,6 @@ const nerdletStateContextMock = {
   entityGuid: 'MTIzNDU2fEZPT3xCQVJ8OTg3NjU0MzIx',
 };
 
-const TRAILING_SEMI = /;\s*$/;
-
 const ReferenceExample = ({
   className,
   example,
@@ -33,51 +27,43 @@ const ReferenceExample = ({
     NerdletStateContext,
   } = window.__NR1_SDK__.default;
   const { live } = example.options;
-  let formattedCode;
-  const darkMode = useDarkMode();
 
-  try {
-    formattedCode = formatCode(example.sourceCode).replace(TRAILING_SEMI, '');
-  } catch (e) {
-    formattedCode = example.sourceCode;
-  }
+  const scope = useMemo(
+    () => ({
+      ...window.__NR1_SDK__.default,
+      navigation: {
+        getOpenLauncherLocation: () => {},
+      },
+    }),
+    []
+  );
+
+  const Preview = useCallback(
+    ({ className }) => (
+      <ReferencePreview
+        className={className}
+        style={previewStyle}
+        useToastManager={useToastManager}
+      />
+    ),
+    [useToastManager, previewStyle]
+  );
 
   return (
     <PlatformStateContext.Provider value={platformStateContextMock}>
       <NerdletStateContext.Provider value={nerdletStateContextMock}>
         <div className={className}>
           <h3 className={styles.title}>{example.label}</h3>
-          <LiveProvider
-            scope={useMemo(
-              () => ({
-                ...window.__NR1_SDK__.default,
-                navigation: {
-                  // eslint-disable-next-line no-empty-function
-                  getOpenLauncherLocation() {},
-                },
-              }),
-              []
-            )}
-            code={formattedCode}
-            theme={darkMode.value ? darkTheme : lightTheme}
-            disabled={!live}
+          <CodeBlock
+            lineNumbers
+            language="jsx"
+            live={live}
+            preview={live}
+            scope={scope}
+            components={{ Preview }}
           >
-            {live && (
-              <ReferencePreview
-                className={styles.preview}
-                style={previewStyle}
-                useToastManager={useToastManager}
-              />
-            )}
-            <LiveEditor
-              style={{
-                fontSize: '0.75rem',
-                maxHeight: '30rem',
-                overflow: 'auto',
-              }}
-            />
-            {live && <LiveError className={styles.error} />}
-          </LiveProvider>
+            {example.sourceCode}
+          </CodeBlock>
         </div>
       </NerdletStateContext.Provider>
     </PlatformStateContext.Provider>

@@ -47,7 +47,30 @@ const onPreRenderHTML = ({
   replacePostBodyComponents([
     ...getPostBodyComponents(),
     <script key="nr1-sdk" crossOrigin="anonymous" src={JS_BUNDLE} />,
+    <script
+      key="marketo-form"
+      src="//app-abj.marketo.com/js/forms2/js/forms2.min.js"
+    />,
   ]);
 };
 
-export { onPreRenderHTML, wrapPageElement };
+const onRenderBody = ({ setHeadComponents }) => {
+  if (process.env.NODE_ENV !== `production`) {
+    return null;
+  }
+  // Pre-connect to google analytics
+  return setHeadComponents([
+    <link
+      rel="preconnect"
+      key="preconnect-google-analytics"
+      href="https://www.google-analytics.com"
+    />,
+    <link
+      rel="dns-prefetch"
+      key="dns-prefetch-google-analytics"
+      href="https://www.google-analytics.com"
+    />,
+  ]);
+};
+
+export { onPreRenderHTML, onRenderBody, wrapPageElement };

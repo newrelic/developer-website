@@ -1,11 +1,9 @@
+import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { css } from '@emotion/core';
+import { Surface } from '@newrelic/gatsby-theme-newrelic';
 import FeatherIcon from '../FeatherIcon';
-import NewRelicIcon from '../NewRelicIcon';
 import Button from './Button';
-
-import cx from 'classnames';
-import styles from './GuideTile.module.scss';
 
 const GuideTile = ({
   as: Component = 'div',
@@ -16,33 +14,108 @@ const GuideTile = ({
   className,
   children,
   alignment,
+  featured,
   ...props
 }) => (
-  <Component
+  <Surface
     {...props}
-    className={cx(styles.tile, className, {
-      [styles.tileWithIcon]: icon,
-      [styles.tileLeftAligned]: alignment === GuideTile.ALIGNMENT.LEFT,
-      [styles.tileCenterAligned]: alignment === GuideTile.ALIGNMENT.CENTER,
-    })}
+    as={Component}
+    className={className}
+    base={featured ? Surface.BASE.SECONDARY : Surface.BASE.PRIMARY}
+    interactive={!featured}
+    css={css`
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      border-radius: 0.25rem;
+      position: relative;
+      padding: 1rem;
+      transition: all 0.15s ease-out;
+    `}
   >
     {icon && (
-      <div className={styles.iconContainer}>
-        <NewRelicIcon name={icon} size="2.5rem" />
+      <div
+        css={css`
+          position: absolute;
+          top: -2.75rem;
+          left: 50%;
+          margin-left: -2.75rem;
+          width: 5.5rem;
+          height: 5.5rem;
+          border: 4px solid var(--color-white);
+          background-color: var(--color-neutrals-200);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .dark-mode & {
+            background-color: var(--color-dark-050);
+            ${featured && `border-color: var(--color-dark-100);`}
+          }
+        `}
+      >
+        {cloneElement(icon, { size: '2.5rem' })}
       </div>
     )}
-    <div className={styles.timeEstimate}>
+    <div
+      css={css`
+        font-size: 0.75rem;
+        display: flex;
+        align-items: center;
+        text-align: right;
+        color: var(--accent-text-color);
+        padding: 0.3rem 0 0.2rem 1.2rem;
+        justify-self: end;
+      `}
+    >
       {duration ? (
-        <FeatherIcon className={styles.timeIcon} name="clock" />
+        <FeatherIcon
+          css={css`
+            margin-right: 0.25rem;
+          `}
+          name="clock"
+        />
       ) : (
         <span>&nbsp;</span>
       )}
       {duration}
     </div>
-    <h3 className={styles.title}>{title}</h3>
-    <p className={styles.description}>{description}</p>
+    <h3
+      css={css`
+        ${alignment === GuideTile.ALIGNMENT.LEFT && `text-align: left;`}
+        ${alignment === GuideTile.ALIGNMENT.CENTER && `text-align: center;`}
+        ${icon && `margin-top: 0.5rem;`}
+      `}
+    >
+      {title}
+    </h3>
+    <p
+      css={css`
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        color: var(--secondary-text-color);
+        flex: 1;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        ${alignment === GuideTile.ALIGNMENT.LEFT &&
+        `
+          text-align: left;
+          padding: 0;
+        `}
+        ${alignment === GuideTile.ALIGNMENT.CENTER &&
+        `
+          text-align: center;
+          padding: 0 0.5rem;
+        `}
+      `}
+    >
+      {description}
+    </p>
     {children}
-  </Component>
+  </Surface>
 );
 
 GuideTile.Button = Button;
@@ -61,10 +134,12 @@ GuideTile.propTypes = {
   children: PropTypes.node,
   as: PropTypes.elementType,
   alignment: PropTypes.oneOf(Object.values(GuideTile.ALIGNMENT)),
+  featured: PropTypes.bool,
 };
 
 GuideTile.defaultProps = {
   alignment: GuideTile.ALIGNMENT.CENTER,
+  featured: false,
 };
 
 export default GuideTile;

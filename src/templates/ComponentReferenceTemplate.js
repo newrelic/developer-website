@@ -3,10 +3,9 @@ import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import InlineCodeSnippet from '../components/InlineCodeSnippet';
+import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 import ReferenceExample from '../components/ReferenceExample';
-import Layout from '../components/Layout';
-import PageTitle from '../components/PageTitle';
+import PageLayout from '../components/PageLayout';
 import Markdown from '../components/Markdown';
 import MethodReference from '../components/MethodReference';
 import SEO from '../components/Seo';
@@ -48,68 +47,72 @@ const ComponentReferenceTemplate = ({ data }) => {
   const { methods = [], propTypes = [] } = useComponentDoc(name) ?? {};
 
   return (
-    <Layout>
+    <>
       <SEO title={name} />
-      <PageTitle>{name}</PageTitle>
-      <section className={cx(templateStyles.section, 'intro-text')}>
-        <Markdown source={description} />
-      </section>
+      <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
+        <PageLayout.Header title={name} />
+        <PageLayout.Content>
+          <section className={cx(templateStyles.section, 'intro-text')}>
+            <Markdown source={description} />
+          </section>
 
-      <section className={templateStyles.section}>
-        <h2 className={templateStyles.sectionTitle}>Usage</h2>
-        <InlineCodeSnippet language="js">{usage}</InlineCodeSnippet>
-      </section>
+          <section className={templateStyles.section}>
+            <h2 className={templateStyles.sectionTitle}>Usage</h2>
+            <CodeBlock language="js">{usage}</CodeBlock>
+          </section>
 
-      {examples.length > 0 && (
-        <section className={templateStyles.section}>
-          <div>
-            <h2 className={templateStyles.sectionTitle}>Examples</h2>
-            {examples.map((example, i) => (
-              <ReferenceExample
-                key={i}
-                useToastManager={name === 'Toast'}
-                className={styles.componentExample}
-                example={{ ...example, options: { live: example.preview } }}
-                previewStyle={previewStyles[name]}
-              />
-            ))}
-          </div>
-        </section>
-      )}
+          {examples.length > 0 && (
+            <section className={templateStyles.section}>
+              <div>
+                <h2 className={templateStyles.sectionTitle}>Examples</h2>
+                {examples.map((example, i) => (
+                  <ReferenceExample
+                    key={i}
+                    useToastManager={name === 'Toast'}
+                    className={styles.componentExample}
+                    example={{ ...example, options: { live: example.preview } }}
+                    previewStyle={previewStyles[name]}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
 
-      {name === 'Icon' && (
-        <section className={templateStyles.section}>
-          <IconGallery />
-        </section>
-      )}
+          {name === 'Icon' && (
+            <section className={templateStyles.section}>
+              <IconGallery />
+            </section>
+          )}
 
-      <section className={templateStyles.section}>
-        <h2 className={templateStyles.sectionTitle}>Props</h2>
-        <PropList propTypes={propTypes} />
-      </section>
+          <section className={templateStyles.section}>
+            <h2 className={templateStyles.sectionTitle}>Props</h2>
+            <PropList propTypes={propTypes} />
+          </section>
 
-      {methods.length > 0 && (
-        <section className={templateStyles.section}>
-          <h2 className={templateStyles.sectionTitle}>Methods</h2>
-          {methods.map((method, i) => (
-            <MethodReference
-              key={i}
-              method={method}
-              className={styles.section}
-            />
-          ))}
-        </section>
-      )}
+          {methods.length > 0 && (
+            <section className={templateStyles.section}>
+              <h2 className={templateStyles.sectionTitle}>Methods</h2>
+              {methods.map((method, i) => (
+                <MethodReference
+                  key={i}
+                  method={method}
+                  className={styles.section}
+                />
+              ))}
+            </section>
+          )}
 
-      {typeDefs.length > 0 && (
-        <section className={templateStyles.section}>
-          <h2 className={templateStyles.sectionTitle}>Type definitions</h2>
-          {typeDefs.map((typeDef, i) => (
-            <TypeDefReference key={i} typeDef={typeDef} />
-          ))}
-        </section>
-      )}
-    </Layout>
+          {typeDefs.length > 0 && (
+            <section className={templateStyles.section}>
+              <h2 className={templateStyles.sectionTitle}>Type definitions</h2>
+              {typeDefs.map((typeDef, i) => (
+                <TypeDefReference key={i} typeDef={typeDef} />
+              ))}
+            </section>
+          )}
+        </PageLayout.Content>
+      </PageLayout>
+    </>
   );
 };
 
