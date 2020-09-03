@@ -203,7 +203,7 @@ describe('getDefaultValue', () => {
       },
     };
 
-    expect(getDefaultValue(component, 'count')).toEqual(5);
+    expect(getDefaultValue(component, 'count')).toEqual('5');
   });
 
   test('returns special number names if the default is a special number', () => {

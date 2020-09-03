@@ -104,7 +104,7 @@ const getDefaultValue = (component, propTypeName) => {
   if (typeof defaultValue === 'number') {
     const specialNumber = findSpecialNumber(defaultValue);
 
-    return specialNumber ? `Number.${specialNumber}` : defaultValue;
+    return specialNumber ? `Number.${specialNumber}` : String(defaultValue);
   }
 
   return defaultValue;
