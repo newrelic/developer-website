@@ -47,18 +47,29 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   const typeDefs = `
     type NewRelicSdkComponent implements Node {
       constants: [NewRelicSdkConstant!]!
+      examples: [NewRelicSdkExample!]!
       propTypes: [NewRelicSdkPropTypeDefinition!]!
       typeDefs: [NewRelicSdkTypeDefinition!]!
     }
 
     type NewRelicSdkApi implements Node {
       constants: [NewRelicSdkConstant!]!
+      examples: [NewRelicSdkExample!]!
       typeDefs: [NewRelicSdkTypeDefinition]
     }
 
     type NewRelicSdkPropTypeDefinition {
       name: String!
       type: NewRelicSdkPropTypeDefinitionType!
+      examples: [NewRelicSdkExample!]!
+    }
+
+    type NewRelicSdkComponentMethods {
+      examples: [NewRelicSdkExample!]!
+    }
+
+    type NewRelicSdkApiMethods {
+      examples: [NewRelicSdkExample!]!
     }
 
     type NewRelicSdkComponentPropTypesDeprecation {
@@ -117,6 +128,13 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     type NewRelicSdkConstant {
       name: String!
       value: JSON!
+    }
+
+    type NewRelicSdkExample {
+      label: String!
+      sourceCode: String!
+      live: Boolean!
+      preview: Boolean!
     }
   `;
 
