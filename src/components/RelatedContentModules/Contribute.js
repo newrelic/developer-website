@@ -5,7 +5,7 @@ import { Button, ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
 import useTreatment from '../../hooks/useTreatment';
 import { useTrack } from '@splitsoftware/splitio-react';
-import { SPLITS } from '../../data/constants';
+import { SPLITS, SPLIT_TRACKING_EVENTS } from '../../data/constants';
 import Section from './Section';
 
 const Contribute = ({ pageContext }) => {
@@ -19,7 +19,7 @@ const Contribute = ({ pageContext }) => {
     }
   `);
 
-  const { treatment, config } = useTreatment(SPLITS.CONTRIBUTE_BUTTONS);
+  const { config } = useTreatment(SPLITS.CONTRIBUTE_BUTTONS);
   const track = useTrack();
 
   const { fileRelativePath } = pageContext;
@@ -44,7 +44,7 @@ const Contribute = ({ pageContext }) => {
         variant={config?.issues || Button.VARIANT.NORMAL}
         size={Button.SIZE.SMALL}
         onClick={() =>
-          track('related_content.contribute_action_clicked', null, {
+          track(SPLIT_TRACKING_EVENTS.RELATED_CONTENT_ACTION_CLICKED, null, {
             action: 'issues',
           })
         }
@@ -63,7 +63,7 @@ const Contribute = ({ pageContext }) => {
         variant={config?.edit || Button.VARIANT.NORMAL}
         size={Button.SIZE.SMALL}
         onClick={() =>
-          track('related_content.contribute_action_clicked', null, {
+          track(SPLIT_TRACKING_EVENTS.RELATED_CONTENT_ACTION_CLICKED, null, {
             action: 'edit',
           })
         }
