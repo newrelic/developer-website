@@ -1,3 +1,5 @@
+const { getExamples } = require('./exampleInfo');
+
 const UNION_DELIMITER = '|';
 
 const SPECIAL_NUMBERS = [
@@ -184,7 +186,7 @@ const getPropTypeDefinition = (component, name, propType) => {
     description: propDocs.text,
     deprecation: (tags.deprecated || [])[0] || null,
     isRequired: propMeta.some((item) => item.name === 'isRequired') || false,
-    examples: tags.examples || [],
+    examples: getExamples(name, { [name]: propType }),
     type: {
       meta: getTypeMeta(name, propType, { component }),
       raw: getRawTypeName(propType),
