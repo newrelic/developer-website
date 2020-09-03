@@ -21,6 +21,7 @@
   display: inline-block;
   max-width: 364px;
   padding: 10px 20px 0;
+  margin: 0 48px;
   text-align: center;
   background-color: #fff;
   box-shadow: 
@@ -62,7 +63,9 @@
 }
 
 .heroDescription {
-  width: 826px;
+  box-sizing: border-box;
+  max-width: 894px;
+  padding: 0 48px;
   margin: 0 auto;
   font-size: 16px;
   line-height: 25px;
@@ -73,12 +76,16 @@
 }
 
 .heroCtaContainer {
-  margin: 35px 0 30px;
+  padding: 0 48px;
+  margin: 25px 0 30px;
   display: inline-flex;
+  flex-wrap: wrap;
   list-style-type: none;
+  justify-content: center;
 }
 
 .heroCtaContainerItem {
+  margin-top: 10px;
   margin-right: 20px;
   display: flex;
   flex-direction: column;
@@ -130,6 +137,10 @@ a.ctaButton {
   font-size: 28px;
   text-align: center;
   color: var(--color-teal-900);
+
+  .alternateSection & {
+    padding: 0 32px
+  }
 }
 
 .sectionDescription {
@@ -137,17 +148,25 @@ a.ctaButton {
   text-align: center;
   color: var(--nr1--base-colors--ui--gray--3);
   font-size: 16px;
+  line-height: 25px;
+
+  .alternateSection & {
+    padding: 0 32px
+  }
 }
 
 .speakerList {
-  max-width: 1150px;
+  max-width: 1200px;
+  padding: 0;
   margin: 0 auto;
   list-style-type: none;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .speakerListItem {
+  margin: 16px;
   max-width: 256px;
   overflow: hidden;
   border-radius: 4px;
@@ -207,16 +226,18 @@ a.ctaButton {
 }
 
 .tracksList {
-  max-width: 900px;
+  max-width: 980px;
   margin: 0 auto;
   list-style-type: none;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tracksListItem {
   display: flex;
   max-width: 175px;
+  margin: 24px 32px;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
@@ -247,6 +268,9 @@ a.ctaButton {
 }
 
 .agendaHeaderRowHeading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   padding: 12px;
   grid-area: auto;
@@ -293,7 +317,10 @@ a.ctaButton {
   box-shadow: 0 0 0 1px #CBCFCF;
   background-color: #fff;
   margin: 0;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .agendaSessionSpeaker {
@@ -306,6 +333,24 @@ a.ctaButton {
   font-weight: normal;
   color: #464e4eb0;
   user-select: text;
+}
+
+.agendaSessionMetaList {
+  display: none;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 0;
+  list-style-type: none;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.agendaSessionMetaListItem {
+  margin: 0 4px;
+  padding: 1px 8px;
+  background-color: rgba(0,0,0, .075);
+  border-radius: 50px;
+  color: #555;
 }
 
 .agendaSession5Col {
@@ -347,13 +392,16 @@ a.ctaButton {
 .engagementOptions {
   display: inline-flex;
   list-style-type: none;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   margin-top: 20px;
   margin-bottom: 50px;
+  padding: 0;
 }
 
 .engagementOption {
-  margin-right: 35px;
+  margin: 10px 12px;
   border: 3px solid #006C75;
   border-radius: 4px;
   box-shadow: 
@@ -364,10 +412,6 @@ a.ctaButton {
     0px 0.997515px 1.33002px rgba(4, 89, 97, 0.0403893), 
     0px 0.415088px 0.553451px rgba(4, 89, 97, 0.0281146);
   transition: transform .095s ease-out;
-  
-  &:last-child {
-    margin: 0;
-  }
 
   &:hover {
     transform: translateY(-1px);
@@ -381,7 +425,7 @@ a.ctaButton {
 .engagementOptionLink {
   display: inline-flex;
   align-items: stretch;
-  height: 44px;
+  height: 40px;
   font-weight: 600;
 }
 
@@ -421,4 +465,155 @@ a.ctaButton {
 
 .sponsorLogoCaption {
   color: #999;
+}
+
+// ==============================================================
+// Responsive styles
+// ==============================================================
+
+@media screen and (max-width: 1100px) {
+  .heroLogoContainer {
+    max-width: 300px;
+  }
+
+  .heroLogo {
+    width: 250px;
+    margin-bottom: 0;
+  }
+
+  .heroHeading {
+    padding: 0 48px;
+    margin: 30px auto 20px;
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  .heroDescription {
+    columns: 1;
+  }
+  
+  .agendaHeaderRowHeading {
+    word-break: break-all;
+  }
+  
+  .agendaHeaderRowHeading {
+    padding: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .25px;
+  }
+
+  .agendaSession,
+  .agendaTime {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+  }
+
+  .agendaSessionSpeaker {
+    font-size: 10px;
+  }
+  
+  .agendaTime {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .agendaTime,
+  .agendaHeaderRow {
+    display: none;
+  }
+
+  .agendaRow {
+    grid-template-columns: 1fr;
+  }
+
+  .agendaSession {
+    font-size: 16px;
+    display: block;
+  }
+  
+  .agendaSession5Col {
+    grid-column: span 1;
+  }
+  
+  .agendaSession4Col {
+    grid-column: span 1;
+  }
+  
+  .agendaSession3Col {
+    grid-column: span 1;
+  }
+  
+  .agendaSession2Col {
+    grid-column: span 1;
+  }
+
+  .agendaSessionSpeaker {
+    display: inline;
+    margin-left: 6px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 13px;
+    
+    &:before {
+      content:"("
+    }
+    
+    &:after {
+      content:")"
+    }
+  }
+
+  .agendaSessionMetaList {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heroSection {
+    border-radius: 0;
+    margin: -48px -32px 0 -32px;
+  }
+  
+  .heroLogoContainer {
+    margin: 0;
+    max-width: 220px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .heroLogo {
+    width: 175px;
+    height: 30px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  
+  .heroHeading {
+    padding: 0 28px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  .heroDescription {
+    padding: 0 28px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .heroCtaContainer {
+    flex-direction: column;
+  }
+
+  .heroCtaContainerItem {
+    margin: 16px 0 0;
+  }
+
+  .sectionHeading {
+    font-size: 24px;
+  }
 }
