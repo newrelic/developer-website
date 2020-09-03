@@ -1,6 +1,10 @@
 const loadSdk = require('./src/loadSdk');
 const { getComponentDoc, getApiDoc } = require('./src/docInfo');
-const { DOCUMENTED_APIS, DOCUMENTED_COMPONENTS } = require('./src/constants');
+const {
+  BASE_URL,
+  DOCUMENTED_APIS,
+  DOCUMENTED_COMPONENTS,
+} = require('./src/constants');
 const navigationApi = require('./src/navigationApi');
 
 const hasOwnProperty = (obj, name) =>
@@ -140,13 +144,40 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       live: Boolean!
       preview: Boolean!
     }
+
+    type Query {
+      newRelicSdk: NewRelicSdk!
+    }
+
+    type NewRelicSdk {
+      version: String!
+      assets: NewRelicSdkAssets!
+    }
+
+    type NewRelicSdkAssets {
+      js: String!
+      css: String!
+    }
   `;
 
   createTypes([propTypeMeta, typeDefs]);
 };
 
-exports.createResolvers = ({ createResolvers }) => {
+exports.createResolvers = ({ createResolvers }, pluginOptions) => {
+  const { release } = pluginOptions;
+
   createResolvers({
+    Query: {
+      newRelicSdk: {
+        resolve: () => ({
+          version: release,
+          assets: {
+            js: `${BASE_URL}-${release}.js`,
+            css: `${BASE_URL}-${release}.css`,
+          },
+        }),
+      },
+    },
     NewRelicSdkFunctionReturnValue: {
       type: {
         resolve: (source) => source.promiseType || source.type,
