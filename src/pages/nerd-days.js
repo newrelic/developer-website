@@ -1,10 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
-import { Button, ExternalLink } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Button,
+  ExternalLink,
+  NewRelicLogo,
+} from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/Seo';
 import FeatherIcon from '../components/FeatherIcon';
-import nrLogo from '../images/nerd-days/nr-logo.svg';
 import styles from './nerd-days.module.scss';
 import hopinLogo from '../images/nerd-days/hopin-logo.svg';
 import roadIcon from '../images/nerd-days/icon-road.svg';
@@ -19,11 +22,7 @@ const NerdDaysPage = () => {
         <PageLayout.Content>
           <section className={cx(styles.heroSection)}>
             <div className={cx(styles.heroLogoContainer)}>
-              <img
-                src={nrLogo}
-                className={cx(styles.heroNrLogo)}
-                alt="New Relic"
-              />
+              <NewRelicLogo />
               <h1 className={cx(styles.heroLogo)}>nerd days 1.0</h1>
             </div>
             <h3 className={cx(styles.heroHeading)}>
