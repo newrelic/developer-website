@@ -5,6 +5,7 @@ exports.getExamples = (name, obj) => {
     ({ label, options, sourceCode }) => ({
       label,
       sourceCode,
+      live: IGNORED_PREVIEWS.includes(name) ? false : options.live,
       preview: IGNORED_PREVIEWS.includes(name) ? false : options.live,
     })
   );
