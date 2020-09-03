@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Button, ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
+import useTreatment from '../../hooks/useTreatment';
+import { useTrack } from '@splitsoftware/splitio-react';
+import { SPLITS } from '../../data/constants';
 import Section from './Section';
 
 const Contribute = ({ pageContext }) => {
@@ -15,6 +18,9 @@ const Contribute = ({ pageContext }) => {
       }
     }
   `);
+
+  const { treatment, config } = useTreatment(SPLITS.CONTRIBUTE_BUTTONS);
+  const track = useTrack();
 
   const { fileRelativePath } = pageContext;
 
@@ -35,8 +41,14 @@ const Contribute = ({ pageContext }) => {
         css={css`
           margin-right: 0.5rem;
         `}
-        variant={Button.VARIANT.PRIMARY}
+        disabled={treatment === 'control'}
+        variant={config?.issues || Button.VARIANT.NORMAL}
         size={Button.SIZE.SMALL}
+        onClick={() =>
+          track('related_content.contribute_action_clicked', null, {
+            button: 'issues',
+          })
+        }
       >
         <Icon
           name={Icon.TYPE.GITHUB}
@@ -49,8 +61,14 @@ const Contribute = ({ pageContext }) => {
       <Button
         as={ExternalLink}
         href={`${repository}/tree/main/${fileRelativePath}`}
-        variant={Button.VARIANT.NORMAL}
+        disabled={treatment === 'control'}
+        variant={config?.edit || Button.VARIANT.NORMAL}
         size={Button.SIZE.SMALL}
+        onClick={() =>
+          track('related_content.contribute_action_clicked', null, {
+            button: 'edit',
+          })
+        }
       >
         <Icon
           name={Icon.TYPE.EDIT}
