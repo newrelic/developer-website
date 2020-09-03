@@ -11,7 +11,7 @@ const useTreatment = (name) => {
       try {
         return JSON.parse(config);
       } catch (e) {
-        return {};
+        return config;
       }
     }, [config]),
   };
