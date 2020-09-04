@@ -211,7 +211,7 @@ const NerdDaysPage = () => {
                 <FeatherIcon
                   className={cx(styles.eyeIcon, styles.trackIcon)}
                   name="eye"
-                  size="87"
+                  size="87px"
                 />
                 <h5 className={cx(styles.tracksListItemName)}>Observability</h5>
               </li>
@@ -219,7 +219,7 @@ const NerdDaysPage = () => {
                 <FeatherIcon
                   className={cx(styles.cloudMigrationIcon, styles.trackIcon)}
                   name="upload-cloud"
-                  size="87"
+                  size="87px"
                 />
                 <h5 className={cx(styles.tracksListItemName)}>
                   Cloud Migration
