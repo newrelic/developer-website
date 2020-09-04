@@ -73,6 +73,17 @@ const NerdDaysPage = () => {
                   margin-top: 0.5rem;
                   width: 308px;
                   height: 53px;
+
+                  @media screen and (max-width: 1100px) {
+                    width: 250px;
+                  }
+
+                  @media screen and (max-width: 480px) {
+                    width: 175px;
+                    height: 30px;
+                    margin-top: 4px;
+                    margin-bottom: 4px;
+                  }
                 `}
               />
             </div>
