@@ -1,16 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import {
   Button,
-  ExternalLink,
   Icon,
   NewRelicLogo,
   Surface,
 } from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/Seo';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerd-days.module.scss';
 import roadIcon from '../images/nerd-days/icon-road.svg';
@@ -181,25 +181,23 @@ const NerdDaysPage = () => {
               a data nerd, there’s an interactive session for you. We look
               forward to building with you during Nerd Days.
             </p>
-            <ul className={cx(styles.heroCtaContainer)}>
-              <li className={cx(styles.heroCtaContainerItem)}>
-                <CtaButton>US Registration</CtaButton>
-                <span className={cx(styles.registrationButtonDate)}>
-                  Oct 13, 2020
-                </span>
-              </li>
-              <li className={cx(styles.heroCtaContainerItem)}>
-                <CtaButton>EMEA Registration</CtaButton>
-                <span className={cx(styles.registrationButtonDate)}>
-                  Oct 20, 2020
-                </span>
-              </li>
-              <li className={cx(styles.heroCtaContainerItem)}>
-                <CtaButton>APJ Registration</CtaButton>
-                <span className={cx(styles.registrationButtonDate)}>
-                  Oct 22, 2020
-                </span>
-              </li>
+            <ul
+              css={css`
+                padding: 0 48px;
+                margin: 25px 0 30px;
+                display: inline-flex;
+                flex-wrap: wrap;
+                list-style-type: none;
+                justify-content: center;
+
+                ${breakpoints.mobile} {
+                  flex-direction: column;
+                }
+              `}
+            >
+              <CtaItem date="Oct 13, 2020">US Registration</CtaItem>
+              <CtaItem date="Oct 20, 2020">EMEA Registration</CtaItem>
+              <CtaItem date="Oct 22, 2020">APJ Registration</CtaItem>
             </ul>
           </section>
 
@@ -819,25 +817,64 @@ const Section = (props) => (
   />
 );
 
-const CtaButton = (props) => (
-  <Button
-    as={ExternalLink}
-    variant={Button.VARIANT.PRIMARY}
+const CtaItem = ({ date, to, children }) => (
+  <li
     css={css`
-      background-color: #fff;
-      color: #0069ce;
+      margin-top: 0.5rem;
+      margin-right: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-      &:hover {
-        background-color: #fff;
-        color: #0069ce;
+      &:last-child {
+        margin-right: 0;
       }
 
-      &:active {
-        transform: translateY(1px);
+      ${breakpoints.mobile} {
+        margin: 1rem 0 0;
       }
     `}
-    {...props}
-  />
+  >
+    <Button
+      as={Link}
+      to={to}
+      variant={Button.VARIANT.PRIMARY}
+      css={css`
+        background-color: #fff;
+        color: #0069ce;
+
+        &:hover {
+          background-color: #fff;
+          color: #0069ce;
+        }
+
+        &:active {
+          transform: translateY(1px);
+        }
+      `}
+    >
+      {children}
+    </Button>
+    <span
+      css={css`
+        margin-top: 0.25rem;
+        font-size: 0.625rem;
+        opacity: 0.75;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      `}
+    >
+      {date}
+    </span>
+  </li>
 );
+
+CtaItem.propTypes = {
+  date: PropTypes.string.isRequired,
+  to: PropTypes.string,
+  children: PropTypes.string,
+};
 
 export default NerdDaysPage;
