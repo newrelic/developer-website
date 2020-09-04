@@ -64,15 +64,15 @@
 
 a.ctaButton {
   background-color: #fff;
-  color: #0069CE;
-  transition: .125s transform ease-out;
-  
+  color: #0069ce;
+  transition: 0.125s transform ease-out;
+
   &:hover {
     background-color: #fff;
-    color: #0069CE;
+    color: #0069ce;
     transform: translateY(-1px);
   }
-  
+
   &:active {
     transform: translateY(1px);
   }
@@ -81,10 +81,10 @@ a.ctaButton {
 .registrationButtonDate {
   margin-top: 4px;
   font-size: 10px;
-  opacity: .75;
+  opacity: 0.75;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }
 
 .eventSection {
@@ -92,8 +92,8 @@ a.ctaButton {
   position: relative;
 
   &.alternateSection {
-    background-color: #F4F5F5;
-    margin-left:-32px;
+    background-color: #f4f5f5;
+    margin-left: -32px;
     margin-right: -32px;
   }
 }
@@ -104,7 +104,7 @@ a.ctaButton {
   color: var(--color-teal-900);
 
   .alternateSection & {
-    padding: 0 32px
+    padding: 0 32px;
   }
 }
 
@@ -116,7 +116,7 @@ a.ctaButton {
   line-height: 25px;
 
   .alternateSection & {
-    padding: 0 32px
+    padding: 0 32px;
   }
 }
 
@@ -135,12 +135,11 @@ a.ctaButton {
   max-width: 256px;
   overflow: hidden;
   border-radius: 4px;
-  box-shadow: 
-    0px 103.32px 133.205px rgba(3, 62, 70, 0.09), 
-    0px 43.1645px 55.6501px rgba(3, 62, 70, 0.0646969), 
-    0px 23.0778px 29.7532px rgba(3, 62, 70, 0.0536497), 
-    0px 12.9372px 16.6794px rgba(3, 62, 70, 0.045), 
-    0px 6.87086px 8.8583px rgba(3, 62, 70, 0.0363503), 
+  box-shadow: 0px 103.32px 133.205px rgba(3, 62, 70, 0.09),
+    0px 43.1645px 55.6501px rgba(3, 62, 70, 0.0646969),
+    0px 23.0778px 29.7532px rgba(3, 62, 70, 0.0536497),
+    0px 12.9372px 16.6794px rgba(3, 62, 70, 0.045),
+    0px 6.87086px 8.8583px rgba(3, 62, 70, 0.0363503),
     0px 2.85912px 3.68614px rgba(3, 62, 70, 0.0253031);
   background-color: #fff;
 }
@@ -172,14 +171,18 @@ a.ctaButton {
   img {
     clip-path: polygon(0 0, 100% 0%, 100% 97%, 0% 93%);
   }
-  
+
   &:before {
-    content: "";
+    content: '';
     width: 100%;
     height: 10px;
     position: absolute;
     bottom: 10px;
-    background-image: linear-gradient(294.8deg, #0069CE -16.42%, #0FB7C9 115.59%);
+    background-image: linear-gradient(
+      294.8deg,
+      #0069ce -16.42%,
+      #0fb7c9 115.59%
+    );
     clip-path: polygon(0 0, 100% 0%, 100% 0%, 0% 100%);
   }
 }
@@ -215,7 +218,7 @@ a.ctaButton {
 .tracksListItemName {
   text-transform: uppercase;
   font-size: 13px;
-  letter-spacing: .75px;
+  letter-spacing: 0.75px;
   font-weight: bold;
 }
 
@@ -228,8 +231,8 @@ a.ctaButton {
 
 .agendaHeaderRow {
   display: grid;
-  grid-template-columns: .75fr repeat(5, 1fr);
-  grid-template-areas: ". header1 header2 header3 header4 header5";
+  grid-template-columns: 0.75fr repeat(5, 1fr);
+  grid-template-areas: '. header1 header2 header3 header4 header5';
 }
 
 .agendaHeaderRowHeading {
@@ -240,13 +243,13 @@ a.ctaButton {
   padding: 12px;
   grid-area: auto;
   text-align: center;
-  color: #006C75;
+  color: #006c75;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: .5px;
-  background-color: #F4F5F5;
-  box-shadow: 0 0 0 1px #CBCFCF;
+  letter-spacing: 0.5px;
+  background-color: #f4f5f5;
+  box-shadow: 0 0 0 1px #cbcfcf;
 }
 
 .agendaHeaderRowHeading1 {
@@ -271,7 +274,7 @@ a.ctaButton {
 
 .agendaRow {
   display: grid;
-  grid-template-columns: .75fr repeat(5, 1fr);
+  grid-template-columns: 0.75fr repeat(5, 1fr);
 }
 
 .agendaSession {
@@ -279,7 +282,7 @@ a.ctaButton {
   font-size: 16px;
   font-weight: 700;
   text-align: center;
-  box-shadow: 0 0 0 1px #CBCFCF;
+  box-shadow: 0 0 0 1px #cbcfcf;
   background-color: #fff;
   margin: 0;
   display: flex;
@@ -294,7 +297,7 @@ a.ctaButton {
   margin-top: 1px;
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
   font-weight: normal;
   color: #464e4eb0;
   user-select: text;
@@ -313,7 +316,7 @@ a.ctaButton {
 .agendaSessionMetaListItem {
   margin: 0 4px;
   padding: 1px 8px;
-  background-color: rgba(0,0,0, .075);
+  background-color: rgba(0, 0, 0, 0.075);
   border-radius: 50px;
   color: #555;
 }
@@ -336,17 +339,17 @@ a.ctaButton {
 
 .agendaTime {
   padding: 16px 0 16px 20px;
-  box-shadow: 0 0 0 1px #CBCFCF;
+  box-shadow: 0 0 0 1px #cbcfcf;
   font-weight: 700;
   margin: 0;
   color: #333;
-  background-color: #F4F5F5;
+  background-color: #f4f5f5;
   display: flex;
   align-items: center;
 }
 
 .agendaSessionSecondary {
-  background-color: #F4F5F5;
+  background-color: #f4f5f5;
 }
 
 .engagementSection {
@@ -367,21 +370,20 @@ a.ctaButton {
 
 .engagementOption {
   margin: 10px 12px;
-  border: 3px solid #006C75;
+  border: 3px solid #006c75;
   border-radius: 4px;
-  box-shadow: 
-    0 15px 20px rgba(4, 89, 97, 0.1), 
-    0px 6.26664px 8.35552px rgba(4, 89, 97, 0.0718854), 
-    0px 3.35045px 4.46726px rgba(4, 89, 97, 0.0596107), 
-    0px 1.87823px 2.50431px rgba(4, 89, 97, 0.05), 
-    0px 0.997515px 1.33002px rgba(4, 89, 97, 0.0403893), 
+  box-shadow: 0 15px 20px rgba(4, 89, 97, 0.1),
+    0px 6.26664px 8.35552px rgba(4, 89, 97, 0.0718854),
+    0px 3.35045px 4.46726px rgba(4, 89, 97, 0.0596107),
+    0px 1.87823px 2.50431px rgba(4, 89, 97, 0.05),
+    0px 0.997515px 1.33002px rgba(4, 89, 97, 0.0403893),
     0px 0.415088px 0.553451px rgba(4, 89, 97, 0.0281146);
-  transition: transform .095s ease-out;
+  transition: transform 0.095s ease-out;
 
   &:hover {
     transform: translateY(-1px);
   }
-  
+
   &:active {
     transform: translateY(2px);
   }
@@ -407,8 +409,8 @@ a.ctaButton {
   justify-content: center;
   height: 100%;
   padding: 0 11px 0 24px;
-  background-color: #006C75;
-  border-right: 1px solid #006C75;
+  background-color: #006c75;
+  border-right: 1px solid #006c75;
   clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
@@ -456,16 +458,16 @@ a.ctaButton {
   .heroDescription {
     columns: 1;
   }
-  
+
   .agendaHeaderRowHeading {
     word-break: break-all;
   }
-  
+
   .agendaHeaderRowHeading {
     padding: 8px;
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: .25px;
+    letter-spacing: 0.25px;
   }
 
   .agendaSession,
@@ -478,7 +480,7 @@ a.ctaButton {
   .agendaSessionSpeaker {
     font-size: 10px;
   }
-  
+
   .agendaTime {
     display: flex;
     justify-content: center;
@@ -501,19 +503,19 @@ a.ctaButton {
     font-size: 16px;
     display: block;
   }
-  
+
   .agendaSession5Col {
     grid-column: span 1;
   }
-  
+
   .agendaSession4Col {
     grid-column: span 1;
   }
-  
+
   .agendaSession3Col {
     grid-column: span 1;
   }
-  
+
   .agendaSession2Col {
     grid-column: span 1;
   }
@@ -524,13 +526,13 @@ a.ctaButton {
     text-transform: none;
     letter-spacing: 0;
     font-size: 13px;
-    
+
     &:before {
-      content:"("
+      content: '(';
     }
-    
+
     &:after {
-      content:")"
+      content: ')';
     }
   }
 
@@ -544,7 +546,7 @@ a.ctaButton {
     border-radius: 0;
     margin: -48px -32px 0 -32px;
   }
-  
+
   .heroLogoContainer {
     margin: 0;
     max-width: 220px;
@@ -557,19 +559,19 @@ a.ctaButton {
     margin-top: 4px;
     margin-bottom: 4px;
   }
-  
+
   .heroHeading {
     padding: 0 28px;
     font-size: 20px;
     line-height: 26px;
   }
-  
+
   .heroDescription {
     padding: 0 28px;
     font-size: 16px;
     line-height: 24px;
   }
-  
+
   .heroCtaContainer {
     flex-direction: column;
   }
