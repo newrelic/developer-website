@@ -9,6 +9,7 @@
   display: grid;
   grid-template-columns: 0.75fr repeat(5, 1fr);
   grid-template-areas: '. header1 header2 header3 header4 header5';
+  grid-column: span 6;
 }
 
 .agendaHeaderRowHeading {
@@ -51,6 +52,7 @@
 .agendaRow {
   display: grid;
   grid-template-columns: 0.75fr repeat(5, 1fr);
+  grid-column: span 6;
 }
 
 .agendaSession {

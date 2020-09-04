@@ -21,6 +21,7 @@ import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
 import HopinLogo from '../components/HopinLogo';
 import styled from '@emotion/styled';
+import Agenda from '../components/Agenda';
 
 const NerdDaysPage = () => {
   const {
@@ -351,7 +352,106 @@ const NerdDaysPage = () => {
               respective industries
             </SectionDescription>
 
-            <div className={cx(styles.agendaContainer)}>
+            <Agenda
+              className={cx(styles.agendaContainer)}
+              tracks={[
+                'Observability',
+                'Cloud migration',
+                'Open source',
+                'DevOps journey',
+                'Fundamentals',
+              ]}
+            >
+              <Agenda.Session
+                time="8:00 AM"
+                title="Welcome"
+                speaker="Jemiah Sius"
+                span={5}
+              />
+              <Agenda.Session
+                time="8:30 AM"
+                title="Building Better Apps"
+                speaker="Anita Baker"
+                span={2}
+              />
+              <Agenda.Session
+                time="8:30 AM"
+                title="Open DevOps"
+                speaker="Robert Parr"
+                span={2}
+              />
+              <Agenda.Session
+                time="8:30 AM"
+                title="NR 101"
+                speaker="Jeff Osborne"
+              />
+              <Agenda.Session
+                time="9:00 AM"
+                title="All seeing eye"
+                speaker="Dylan Hernandez"
+              />
+              <Agenda.Session
+                time="9:00 AM"
+                title="AWS Ops"
+                speaker="Celso Piña"
+              />
+              <Agenda.Session
+                time="9:00 AM"
+                title="Main v Master"
+                speaker="Jeff Osborne"
+              />
+              <Agenda.Session
+                time="9:00 AM"
+                title="DevOps Journey"
+                speaker="Jemiah Sius"
+                span={2}
+              />
+              <Agenda.Session
+                time="11:00 AM"
+                title="Is it down? Yes."
+                speaker="Dylan Hernandez"
+              />
+              <Agenda.Session
+                time="11:00 AM"
+                title="How much is too much?"
+                speaker="Natalia Lafourcade"
+                span={2}
+              />
+              <Agenda.Session
+                time="11:00 AM"
+                title="Monolith Magic"
+                speaker="John McGibbons"
+              />
+              <Agenda.Session
+                time="11:00 AM"
+                title="Debuggers"
+                speaker="Anita Baker"
+              />
+              <Agenda.Session
+                inactive
+                time="12:00 AM"
+                title="Lunch Break"
+                speaker="Music by DJ Mykael V"
+                span={5}
+              />
+              <Agenda.Session
+                time="1:30 PM"
+                title="Observability and You"
+                speaker="Natalia Lafourcade"
+                span={3}
+              />
+              <Agenda.Session
+                time="1:30 PM"
+                title="COVID Productivity"
+                speaker="Celso Piña"
+                span={2}
+              />
+              <Agenda.Session
+                time="2:30 PM"
+                title="Closing + Swag"
+                speaker="Jemiah Sius and Team"
+                span={5}
+              />
               <div className={cx(styles.agendaHeaderRow)}>
                 <h5
                   className={cx(
@@ -668,7 +768,7 @@ const NerdDaysPage = () => {
                   </ul>
                 </h4>
               </div>
-            </div>
+            </Agenda>
           </Section>
 
           <Section
