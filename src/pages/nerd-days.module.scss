@@ -1,121 +1,3 @@
-.agendaHeaderRowHeading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 12px;
-  grid-area: auto;
-  text-align: center;
-  color: #006c75;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  background-color: #f4f5f5;
-  box-shadow: 0 0 0 1px #cbcfcf;
-}
-
-.agendaHeaderRowHeading1 {
-  grid-area: header1;
-}
-
-.agendaHeaderRowHeading2 {
-  grid-area: header2;
-}
-
-.agendaHeaderRowHeading3 {
-  grid-area: header3;
-}
-
-.agendaHeaderRowHeading4 {
-  grid-area: header4;
-}
-
-.agendaHeaderRowHeading5 {
-  grid-area: header5;
-}
-
-.agendaRow {
-  display: grid;
-  grid-template-columns: 0.75fr repeat(5, 1fr);
-  grid-column: span 6;
-}
-
-.agendaSession {
-  padding: 14px 0;
-  font-size: 16px;
-  font-weight: 700;
-  text-align: center;
-  box-shadow: 0 0 0 1px #cbcfcf;
-  background-color: #fff;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.agendaSessionSpeaker {
-  display: block;
-  content: attr(data-speaker);
-  margin-top: 1px;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  font-weight: normal;
-  color: #464e4eb0;
-  user-select: text;
-}
-
-.agendaSessionMetaList {
-  display: none;
-  justify-content: center;
-  margin-top: 10px;
-  padding: 0;
-  list-style-type: none;
-  font-size: 12px;
-  font-weight: normal;
-}
-
-.agendaSessionMetaListItem {
-  margin: 0 4px;
-  padding: 1px 8px;
-  background-color: rgba(0, 0, 0, 0.075);
-  border-radius: 50px;
-  color: #555;
-}
-
-.agendaSession5Col {
-  grid-column: span 5;
-}
-
-.agendaSession4Col {
-  grid-column: span 4;
-}
-
-.agendaSession3Col {
-  grid-column: span 3;
-}
-
-.agendaSession2Col {
-  grid-column: span 2;
-}
-
-.agendaTime {
-  padding: 16px 0 16px 20px;
-  box-shadow: 0 0 0 1px #cbcfcf;
-  font-weight: 700;
-  margin: 0;
-  color: #333;
-  background-color: #f4f5f5;
-  display: flex;
-  align-items: center;
-}
-
-.agendaSessionSecondary {
-  background-color: #f4f5f5;
-}
-
 .engagementSection {
   padding-bottom: 30px;
   text-align: center;
@@ -200,26 +82,11 @@
     max-width: 300px;
   }
 
-  .agendaHeaderRowHeading {
-    word-break: break-all;
-  }
-
-  .agendaHeaderRowHeading {
-    padding: 8px;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.25px;
-  }
-
   .agendaSession,
   .agendaTime {
     font-size: 14px;
     font-weight: 600;
     line-height: 18px;
-  }
-
-  .agendaSessionSpeaker {
-    font-size: 10px;
   }
 
   .agendaTime {
