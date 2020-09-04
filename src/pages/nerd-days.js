@@ -13,13 +13,13 @@ import SEO from '../components/Seo';
 import { graphql, useStaticQuery } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerd-days.module.scss';
-import hopinLogo from '../images/nerd-days/hopin-logo.svg';
 import roadIcon from '../images/nerd-days/icon-road.svg';
 import NerdDaysLogo from '../components/NerdDaysLogo';
 import graphLines from '../images/nerd-days/hero-image-graph-lines.png';
 import heroBackgroundPattern from '../images/nerd-days/nerd-days-hero-bg-pattern.png';
 import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
+import HopinLogo from '../components/HopinLogo';
 
 const NerdDaysPage = () => {
   const {
@@ -755,12 +755,12 @@ const NerdDaysPage = () => {
               href="https://hopin.to/?ref=developer.newrelic.com"
               className={cx(styles.sponsorLogoContainer)}
             >
-              <img
-                className={cx(styles.sponsorLogo)}
-                src={hopinLogo}
-                alt="Hopin logo"
-              />
-              <p className={cx(styles.sponsorLogoCaption)}>
+              <HopinLogo />
+              <p
+                css={css`
+                  color: var(--secondary-text-color);
+                `}
+              >
                 Event powered by Hopin
               </p>
             </a>
