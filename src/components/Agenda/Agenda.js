@@ -41,7 +41,7 @@ const Agenda = ({ children, className, tracks }) => {
 
       {Array.from(sessionsByTime).map(([time, sessions]) => (
         <Fragment key={time}>
-          <Time>{time}</Time>
+          <Time inactive={sessions[0].props.inactive}>{time}</Time>
           {sessions}
         </Fragment>
       ))}
