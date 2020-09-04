@@ -9,7 +9,12 @@ const NerdDaysLogo = ({ className }) => {
     : 'url(#text-gradient)';
 
   return (
-    <svg fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <svg
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 308 53"
+      className={className}
+    >
       <path
         d="M18.575 40V24.314c0-1.912-.28-3.35-.838-4.315-.541-.982-1.421-1.472-2.64-1.472-1.675 0-2.884.668-3.63 2.005-.744 1.337-1.116 3.63-1.116 6.878V40H.427V11.242h7.487l1.244 3.553h.584c.846-1.353 2.014-2.368 3.503-3.045 1.506-.677 3.232-1.016 5.178-1.016 3.18 0 5.651.922 7.411 2.767 1.777 1.844 2.665 4.442 2.665 7.792V40h-9.924z"
         fill={fill}
