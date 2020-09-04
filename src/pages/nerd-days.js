@@ -12,7 +12,7 @@ import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerd-days.module.scss';
 import hopinLogo from '../images/nerd-days/hopin-logo.svg';
 import roadIcon from '../images/nerd-days/icon-road.svg';
-import nerdDaysLogo from '../images/nerd-days/nerd-days-logo.svg';
+import NerdDaysLogo from '../components/NerdDaysLogo';
 import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
 
@@ -27,7 +27,7 @@ const NerdDaysPage = () => {
               css={css`
                 display: inline-block;
                 max-width: 364px;
-                padding: 10px 20px 0;
+                padding: 0.5rem 1.25rem;
                 margin: 0 48px;
                 text-align: center;
                 background-color: #fff;
@@ -41,26 +41,19 @@ const NerdDaysPage = () => {
 
                 .dark-mode & {
                   background-color: rgba(0, 0, 0, 0.5);
+                  backdrop-filter: blur(5px);
                 }
               `}
             >
               <NewRelicLogo />
-              <h1
+              <NerdDaysLogo
                 css={css`
                   display: inline-block;
-                  width: 307px;
-                  height: 52px;
-                  margin-top: 10px;
-                  text-indent: 100%;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  background-image: url(${nerdDaysLogo});
-                  background-repeat: no-repeat;
-                  background-size: 100%;
+                  margin-top: 0.5rem;
+                  width: 308px;
+                  height: 53px;
                 `}
-              >
-                nerd days 1.0
-              </h1>
+              />
             </div>
             <h3 className={cx(styles.heroHeading)}>
               Nerd Days is a{' '}
