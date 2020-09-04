@@ -357,6 +357,7 @@ const NerdDaysPage = () => {
                 max-width: 1000px;
                 margin: 0 auto;
               `}
+              mobileBreakpoint="1000px"
               tracks={[
                 'Observability',
                 'Cloud migration',
@@ -369,134 +370,108 @@ const NerdDaysPage = () => {
                 time="8:00 AM"
                 title="Welcome"
                 speaker="Jemiah Sius"
+                track="DevOps journey"
                 span={5}
               />
               <Agenda.Session
                 time="8:30 AM"
                 title="Building Better Apps"
                 speaker="Anita Baker"
+                track="Fundamentals"
                 span={2}
               />
               <Agenda.Session
                 time="8:30 AM"
                 title="Open DevOps"
                 speaker="Robert Parr"
+                track="DevOps journey"
                 span={2}
               />
               <Agenda.Session
                 time="8:30 AM"
                 title="NR 101"
                 speaker="Jeff Osborne"
+                track="DevOps journey"
               />
               <Agenda.Session
                 time="9:00 AM"
                 title="All seeing eye"
                 speaker="Dylan Hernandez"
+                track="Observability"
               />
               <Agenda.Session
                 time="9:00 AM"
                 title="AWS Ops"
                 speaker="Celso Piña"
+                track="DevOps journey"
               />
               <Agenda.Session
                 time="9:00 AM"
                 title="Main v Master"
                 speaker="Jeff Osborne"
+                track="DevOps journey"
               />
               <Agenda.Session
                 time="9:00 AM"
                 title="DevOps Journey"
                 speaker="Jemiah Sius"
+                track="DevOps journey"
                 span={2}
               />
               <Agenda.Session
                 time="11:00 AM"
                 title="Is it down? Yes."
                 speaker="Dylan Hernandez"
+                track="Fundamentals"
               />
               <Agenda.Session
                 time="11:00 AM"
                 title="How much is too much?"
                 speaker="Natalia Lafourcade"
+                track="DevOps journey"
                 span={2}
               />
               <Agenda.Session
                 time="11:00 AM"
                 title="Monolith Magic"
                 speaker="John McGibbons"
+                track="DevOps journey"
               />
               <Agenda.Session
                 time="11:00 AM"
                 title="Debuggers"
                 speaker="Anita Baker"
+                track="DevOps journey"
               />
               <Agenda.Session
                 inactive
                 time="12:00 AM"
                 title="Lunch Break"
                 speaker="Music by DJ Mykael V"
+                track="DevOps journey"
                 span={5}
               />
               <Agenda.Session
                 time="1:30 PM"
                 title="Observability and You"
                 speaker="Natalia Lafourcade"
+                track="DevOps journey"
                 span={3}
               />
               <Agenda.Session
                 time="1:30 PM"
                 title="COVID Productivity"
                 speaker="Celso Piña"
+                track="DevOps journey"
                 span={2}
               />
               <Agenda.Session
                 time="2:30 PM"
                 title="Closing + Swag"
                 speaker="Jemiah Sius and Team"
+                track="DevOps journey"
                 span={5}
               />
-              <div className={cx(styles.agendaHeaderRow)}>
-                <h5
-                  className={cx(
-                    styles.agendaHeaderRowHeading,
-                    styles.agendaHeaderRowHeading1
-                  )}
-                >
-                  Observability
-                </h5>
-                <h5
-                  className={cx(
-                    styles.agendaHeaderRowHeading,
-                    styles.agendaHeaderRowHeading2
-                  )}
-                >
-                  Cloud Migration
-                </h5>
-                <h5
-                  className={cx(
-                    styles.agendaHeaderRowHeading,
-                    styles.agendaHeaderRowHeading3
-                  )}
-                >
-                  Open Source
-                </h5>
-                <h5
-                  className={cx(
-                    styles.agendaHeaderRowHeading,
-                    styles.agendaHeaderRowHeading4
-                  )}
-                >
-                  DevOps Journey
-                </h5>
-                <h5
-                  className={cx(
-                    styles.agendaHeaderRowHeading,
-                    styles.agendaHeaderRowHeading5
-                  )}
-                >
-                  Fundamentals
-                </h5>
-              </div>
               <div className={cx(styles.agendaRow)}>
                 <h4 className={cx(styles.agendaTime)}>8:00 AM</h4>
                 <h4

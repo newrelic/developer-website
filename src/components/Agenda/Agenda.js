@@ -1,14 +1,15 @@
-import React, { Children, Fragment } from 'react';
+import React, { cloneElement, Children, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Heading from './Heading';
 import Session from './Session';
 import Time from './Time';
+import useMedia from 'use-media';
 
-const Agenda = ({ children, className, tracks }) => {
-  const childrenArray = Children.toArray(children);
+const Agenda = ({ children, className, tracks, mobileBreakpoint }) => {
+  const isMobileScreen = useMedia({ maxWidth: mobileBreakpoint });
 
-  const sessionsByTime = childrenArray
+  const sessionsByTime = Children.toArray(children)
     .filter((child) => child.type === Session)
     .reduce((memo, child) => {
       const { time } = child.props;
@@ -25,24 +26,34 @@ const Agenda = ({ children, className, tracks }) => {
       css={css`
         display: grid;
         grid-template-columns: 0.75fr repeat(${tracks.length}, 1fr);
+
+        @media screen and (max-width: ${mobileBreakpoint}) {
+          grid-template-columns: 1fr;
+        }
       `}
     >
-      <Heading
-        css={css`
-          grid-column-start: 2;
-        `}
-      >
-        {tracks[0]}
-      </Heading>
+      {!isMobileScreen && (
+        <>
+          <Heading
+            css={css`
+              grid-column-start: 2;
+            `}
+          >
+            {tracks[0]}
+          </Heading>
 
-      {tracks.slice(1).map((track) => (
-        <Heading key={track}>{track}</Heading>
-      ))}
+          {tracks.slice(1).map((track) => (
+            <Heading key={track}>{track}</Heading>
+          ))}
+        </>
+      )}
 
       {Array.from(sessionsByTime).map(([time, sessions]) => (
         <Fragment key={time}>
-          <Time inactive={sessions[0].props.inactive}>{time}</Time>
-          {sessions}
+          {!isMobileScreen && (
+            <Time inactive={sessions[0].props.inactive}>{time}</Time>
+          )}
+          {sessions.map((session) => cloneElement(session, { isMobileScreen }))}
         </Fragment>
       ))}
     </div>
@@ -53,6 +64,7 @@ Agenda.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   tracks: PropTypes.arrayOf(PropTypes.string).isRequired,
+  mobileBreakpoint: PropTypes.string,
 };
 
 Agenda.Session = Session;

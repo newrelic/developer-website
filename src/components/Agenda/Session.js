@@ -3,11 +3,19 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Cell from './Cell';
 
-const Session = ({ inactive, time, speaker, title, span }) => (
+const Session = ({
+  inactive,
+  time,
+  speaker,
+  title,
+  track,
+  span,
+  isMobileScreen,
+}) => (
   <Cell
     inactive={inactive}
     css={css`
-      grid-column: span ${span};
+      grid-column: span ${isMobileScreen ? 1 : span};
       text-align: center;
     `}
   >
@@ -32,7 +40,41 @@ const Session = ({ inactive, time, speaker, title, span }) => (
     >
       {speaker}
     </div>
+    {isMobileScreen && (
+      <ul
+        css={css`
+          display: flex;
+          justify-content: center;
+          margin-top: 0.5rem;
+          padding: 0;
+          list-style: none;
+          font-size: 0.75rem;
+          font-weight: normal;
+        `}
+      >
+        <Badge>{time}</Badge>
+        <Badge>{track}</Badge>
+      </ul>
+    )}
   </Cell>
+);
+
+const Badge = (props) => (
+  <li
+    css={css`
+      color: var(--color-neutrals-700);
+      margin: 0 0.25rem;
+      padding: 0.125rem 0.5rem;
+      background-color: rgba(0, 0, 0, 0.075);
+      border-radius: 3.5rem;
+
+      .dark-mode & {
+        color: var(--color-dark-700);
+        background: var(--color-dark-300);
+      }
+    `}
+    {...props}
+  />
 );
 
 Session.propTypes = {
@@ -41,6 +83,8 @@ Session.propTypes = {
   speaker: PropTypes.string,
   title: PropTypes.string,
   span: PropTypes.number,
+  track: PropTypes.string,
+  isMobileScreen: PropTypes.bool,
 };
 
 Session.defaultProps = {
