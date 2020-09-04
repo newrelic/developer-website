@@ -1,24 +1,3 @@
-.sectionHeading {
-  font-size: 28px;
-  text-align: center;
-
-  .alternateSection & {
-    padding: 0 32px;
-  }
-}
-
-.sectionDescription {
-  margin-bottom: 40px;
-  text-align: center;
-  color: var(--nr1--base-colors--ui--gray--3);
-  font-size: 16px;
-  line-height: 25px;
-
-  .alternateSection & {
-    padding: 0 32px;
-  }
-}
-
 .speakerList {
   max-width: 1200px;
   padding: 0;

@@ -202,11 +202,11 @@ const NerdDaysPage = () => {
           </section>
 
           <Section className={cx(styles.speakersSection)}>
-            <h3 className={cx(styles.sectionHeading)}>Speaker line up</h3>
-            <p className={cx(styles.sectionDescription)}>
+            <SectionHeading>Speaker line up</SectionHeading>
+            <SectionDescription>
               Nulla vitae elit libero, a pharetra augue nullam id dolor id nibh
               ultricies vehicula ut id elit
-            </p>
+            </SectionDescription>
 
             <ul className={cx(styles.speakerList)}>
               {speakers.map(({ name, bio }, idx) => (
@@ -287,11 +287,11 @@ const NerdDaysPage = () => {
             css={alternateSection}
             className={cx(styles.tracksSection, styles.alternateSection)}
           >
-            <h3 className={cx(styles.sectionHeading)}>Tracks</h3>
-            <p className={cx(styles.sectionDescription)}>
+            <SectionHeading>Tracks</SectionHeading>
+            <SectionDescription>
               Tracks will vary by region. All sessions will be recorded and
               distributed after the event.
-            </p>
+            </SectionDescription>
 
             <ul
               css={css`
@@ -352,11 +352,11 @@ const NerdDaysPage = () => {
           </Section>
 
           <Section className={cx(styles.agendaSection)}>
-            <h3 className={cx(styles.sectionHeading)}>Agenda</h3>
-            <p className={cx(styles.sectionDescription)}>
+            <SectionHeading>Agenda</SectionHeading>
+            <SectionDescription>
               We’ve got a packed schedule with thought-leaders of their
               respective industries
-            </p>
+            </SectionDescription>
 
             <div className={cx(styles.agendaContainer)}>
               <div className={cx(styles.agendaHeaderRow)}>
@@ -682,9 +682,7 @@ const NerdDaysPage = () => {
             css={alternateSection}
             className={cx(styles.engagementSection, styles.alternateSection)}
           >
-            <h3 className={cx(styles.sectionHeading)}>
-              Engage with the developer community
-            </h3>
+            <SectionHeading>Engage with the developer community</SectionHeading>
 
             <ul className={cx(styles.engagementOptions)}>
               <li className={cx(styles.engagementOption)}>
@@ -816,6 +814,40 @@ const Section = (props) => (
     {...props}
   />
 );
+
+const SectionHeading = ({ children }) => (
+  <h3
+    css={css`
+      font-size: 1.75rem;
+      text-align: center;
+
+      ${breakpoints.mobile} {
+        font-size: 1.5rem;
+      }
+    `}
+  >
+    {children}
+  </h3>
+);
+
+SectionHeading.propTypes = {
+  children: PropTypes.node,
+};
+
+const SectionDescription = ({ children }) => (
+  <p
+    css={css`
+      margin-bottom: 2rem;
+      text-align: center;
+    `}
+  >
+    {children}
+  </p>
+);
+
+SectionDescription.propTypes = {
+  children: PropTypes.node,
+};
 
 const CtaItem = ({ date, to, children }) => (
   <li
