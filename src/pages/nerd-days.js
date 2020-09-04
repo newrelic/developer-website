@@ -6,6 +6,7 @@ import {
   Button,
   ExternalLink,
   NewRelicLogo,
+  Surface,
 } from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/Seo';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -120,74 +121,77 @@ const NerdDaysPage = () => {
             </p>
 
             <ul className={cx(styles.speakerList)}>
-              <li className={cx(styles.speakerListItem)}>
-                <div className={cx(styles.speakerListItemPhoto)}>
-                  <img
-                    src="https://dummyimage.com/256x194/#444/000333.jpg"
-                    alt="..."
-                  />
-                </div>
-                <div className={cx(styles.speakerListItemCopy)}>
-                  <h4 className={cx(styles.speakerListItemHeading)}>
-                    Dylan Hernandez
-                  </h4>
-                  <p className={cx(styles.speakerListItemDescription)}>
-                    Etiam porta sem malesuada magna mollis euismod. Aenean eu
-                    leo quam. Pellentesque ornare sem lacinia quam.
-                  </p>
-                </div>
-              </li>
-              <li className={cx(styles.speakerListItem)}>
-                <div className={cx(styles.speakerListItemPhoto)}>
-                  <img
-                    src="https://dummyimage.com/256x194/#444/000333.jpg"
-                    alt="..."
-                  />
-                </div>
-                <div className={cx(styles.speakerListItemCopy)}>
-                  <h4 className={cx(styles.speakerListItemHeading)}>
-                    Alisha Edwards
-                  </h4>
-                  <p className={cx(styles.speakerListItemDescription)}>
-                    Etiam porta sem malesuada magna mollis euismod. Aenean eu
-                    leo quam. Pellentesque ornare sem lacinia quam.
-                  </p>
-                </div>
-              </li>
-              <li className={cx(styles.speakerListItem)}>
-                <div className={cx(styles.speakerListItemPhoto)}>
-                  <img
-                    src="https://dummyimage.com/256x194/#444/000333.jpg"
-                    alt="..."
-                  />
-                </div>
-                <div className={cx(styles.speakerListItemCopy)}>
-                  <h4 className={cx(styles.speakerListItemHeading)}>
-                    Ralph McGibbons
-                  </h4>
-                  <p className={cx(styles.speakerListItemDescription)}>
-                    Etiam porta sem malesuada magna mollis euismod. Aenean eu
-                    leo quam. Pellentesque ornare sem lacinia quam.
-                  </p>
-                </div>
-              </li>
-              <li className={cx(styles.speakerListItem)}>
-                <div className={cx(styles.speakerListItemPhoto)}>
-                  <img
-                    src="https://dummyimage.com/256x194/#444/000333.jpg"
-                    alt="..."
-                  />
-                </div>
-                <div className={cx(styles.speakerListItemCopy)}>
-                  <h4 className={cx(styles.speakerListItemHeading)}>
-                    Anita Baker
-                  </h4>
-                  <p className={cx(styles.speakerListItemDescription)}>
-                    Etiam porta sem malesuada magna mollis euismod. Aenean eu
-                    leo quam. Pellentesque ornare sem lacinia quam.
-                  </p>
-                </div>
-              </li>
+              {speakers.map(({ name, bio }, idx) => (
+                <Surface
+                  key={idx}
+                  as="li"
+                  base={Surface.BASE.SECONDARY}
+                  css={css`
+                    margin: 1rem;
+                    max-width: 256px;
+                    overflow: hidden;
+                    box-shadow: 0px 103.32px 133.205px rgba(3, 62, 70, 0.09),
+                      0px 43.1645px 55.6501px rgba(3, 62, 70, 0.0646969),
+                      0px 23.0778px 29.7532px rgba(3, 62, 70, 0.0536497),
+                      0px 12.9372px 16.6794px rgba(3, 62, 70, 0.045),
+                      0px 6.87086px 8.8583px rgba(3, 62, 70, 0.0363503),
+                      0px 2.85912px 3.68614px rgba(3, 62, 70, 0.0253031);
+                  `}
+                >
+                  <div
+                    css={css`
+                      position: relative;
+                      margin-bottom: -0.5rem;
+
+                      &:before {
+                        content: '';
+                        width: 100%;
+                        height: 10px;
+                        position: absolute;
+                        bottom: 10px;
+                        background-image: linear-gradient(
+                          294.8deg,
+                          #0069ce -16.42%,
+                          #0fb7c9 115.59%
+                        );
+                        clip-path: polygon(0 0, 100% 0%, 100% 0%, 0% 100%);
+                      }
+                    `}
+                  >
+                    <img
+                      src="https://dummyimage.com/256x194/#444/000333.jpg"
+                      alt="..."
+                      css={css`
+                        clip-path: polygon(0 0, 100% 0%, 100% 97%, 0% 93%);
+                      `}
+                    />
+                  </div>
+                  <div
+                    css={css`
+                      padding: 0.75rem 1rem 1rem;
+                    `}
+                  >
+                    <h4
+                      css={css`
+                        font-size: 1.25rem;
+                        font-weight: 800;
+                        margin-bottom: 0.25rem;
+                      `}
+                    >
+                      {name}
+                    </h4>
+                    <p
+                      css={css`
+                        font-size: 0.875rem;
+                        line-height: 1.25rem;
+                        margin-bottom: 0;
+                      `}
+                    >
+                      {bio}
+                    </p>
+                  </div>
+                </Surface>
+              ))}
             </ul>
           </section>
 
@@ -670,6 +674,29 @@ const NerdDaysPage = () => {
     </>
   );
 };
+
+const speakers = [
+  {
+    name: 'Dylan Hernandez',
+    bio:
+      'Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam.',
+  },
+  {
+    name: 'Alisha Edwards',
+    bio:
+      'Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam.',
+  },
+  {
+    name: 'Ralph McGibbons',
+    bio:
+      'Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam.',
+  },
+  {
+    name: 'Anita Baker',
+    bio:
+      'Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam.',
+  },
+];
 
 const CtaButton = (props) => (
   <Button
