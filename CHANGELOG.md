@@ -1,3 +1,16 @@
+# [1.17.0](https://github.com/newrelic/developer-website/compare/v1.16.0...v1.17.0) (2020-09-04)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic version ([92db2ef](https://github.com/newrelic/developer-website/commit/92db2efde93fdf5cd835a67026d1c337b5c93643))
+
+
+### Features
+
+* add a useTreatment hook ([e9c8aac](https://github.com/newrelic/developer-website/commit/e9c8aac6ea9e67027c9a81c20297dc487842d10f))
+* load treatments from split for contribute buttons ([cd9007f](https://github.com/newrelic/developer-website/commit/cd9007fed977f018e5092de1f9f72222c20329ee))
+
 # [1.16.0](https://github.com/newrelic/developer-website/compare/v1.15.3...v1.16.0) (2020-09-03)
 
 
