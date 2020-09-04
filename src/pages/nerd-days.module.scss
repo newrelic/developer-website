@@ -1,37 +1,7 @@
-.speakerList {
-  max-width: 1200px;
-  padding: 0;
-  margin: 0 auto;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .eyeIcon,
 .cloudMigrationIcon {
   stroke: url(#nerdDaysGradient);
   stroke-width: 1.12px;
-}
-
-.tracksListItem {
-  display: flex;
-  max-width: 175px;
-  margin: 24px 32px;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-}
-
-.trackIcon {
-  margin-bottom: 14px;
-}
-
-.tracksListItemName {
-  text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 0.75px;
-  font-weight: bold;
 }
 
 .agendaContainer {

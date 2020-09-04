@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import cx from 'classnames';
@@ -48,7 +48,7 @@ const NerdDaysPage = () => {
         <PageLayout.Content>
           <section
             css={css`
-              margin-top: -32px;
+              margin-top: -2rem;
               text-align: center;
               background-image: url(${graphLines}),
                 url(${heroBackgroundPattern}),
@@ -209,7 +209,17 @@ const NerdDaysPage = () => {
               ultricies vehicula ut id elit
             </SectionDescription>
 
-            <ul className={cx(styles.speakerList)}>
+            <ul
+              css={css`
+                max-width: 1200px;
+                padding: 0;
+                margin: 0 auto;
+                list-style-type: none;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+              `}
+            >
               {speakers.map(({ name, bio }, idx) => (
                 <Surface
                   key={idx}
@@ -305,50 +315,44 @@ const NerdDaysPage = () => {
                 padding: 0;
               `}
             >
-              <li className={cx(styles.tracksListItem)}>
-                <FeatherIcon
-                  className={cx(styles.eyeIcon, styles.trackIcon)}
-                  name="eye"
-                  size="87px"
-                />
-                <h5 className={cx(styles.tracksListItemName)}>Observability</h5>
-              </li>
-              <li className={cx(styles.tracksListItem)}>
-                <FeatherIcon
-                  className={cx(styles.cloudMigrationIcon, styles.trackIcon)}
-                  name="upload-cloud"
-                  size="87px"
-                />
-                <h5 className={cx(styles.tracksListItemName)}>
-                  Cloud Migration
-                </h5>
-              </li>
-              <li className={cx(styles.tracksListItem)}>
-                <img
-                  className={cx(styles.trackIcon)}
-                  src={openSourceIcon}
-                  alt="open source"
-                />
-                <h5 className={cx(styles.tracksListItemName)}>Open Source</h5>
-              </li>
-              <li className={cx(styles.tracksListItem)}>
-                <img
-                  className={cx(styles.trackIcon)}
-                  src={roadIcon}
-                  alt="devops journey"
-                />
-                <h5 className={cx(styles.tracksListItemName)}>
-                  Devops Journey
-                </h5>
-              </li>
-              <li className={cx(styles.tracksListItem)}>
-                <img
-                  className={cx(styles.trackIcon)}
-                  src={shapesIcon}
-                  alt="Fundamentals"
-                />
-                <h5 className={cx(styles.tracksListItemName)}>fundamentals</h5>
-              </li>
+              <TrackItem
+                name="Observability"
+                icon={
+                  <FeatherIcon
+                    className={cx(styles.eyeIcon)}
+                    name="eye"
+                    size="87px"
+                  />
+                }
+              />
+              <TrackItem
+                name="Cloud migration"
+                icon={
+                  <FeatherIcon
+                    className={cx(styles.cloudMigrationIcon)}
+                    name="upload-cloud"
+                    size="87px"
+                  />
+                }
+              />
+              <TrackItem
+                name="Open source"
+                icon={<img src={openSourceIcon} alt="open source" />}
+              />
+              <TrackItem
+                name="Devops journey"
+                icon={<img src={roadIcon} alt="devops journey" />}
+              />
+              <TrackItem
+                name="Fundamentals"
+                icon={
+                  <img
+                    className={cx(styles.trackIcon)}
+                    src={shapesIcon}
+                    alt="Fundamentals"
+                  />
+                }
+              />
             </ul>
           </Section>
 
@@ -794,6 +798,40 @@ const speakers = [
 const breakpoints = {
   laptop: '@media screen and (max-width: 1100px)',
   mobile: '@media screen and (max-width: 480px)',
+};
+
+const TrackItem = ({ icon, name }) => (
+  <li
+    css={css`
+      display: flex;
+      max-width: 175px;
+      margin: 1.5rem 2rem;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+    `}
+  >
+    {cloneElement(icon, {
+      css: css`
+        margin-bottom: 0.75rem;
+      `,
+    })}
+    <h5
+      css={css`
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.75px;
+        font-weight: bold;
+      `}
+    >
+      {name}
+    </h5>
+  </li>
+);
+
+TrackItem.propTypes = {
+  icon: PropTypes.node,
+  name: PropTypes.string,
 };
 
 const EngagementIcon = (props) => (
