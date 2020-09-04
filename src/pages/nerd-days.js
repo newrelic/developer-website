@@ -5,6 +5,7 @@ import PageLayout from '../components/PageLayout';
 import {
   Button,
   ExternalLink,
+  Icon,
   NewRelicLogo,
   Surface,
 } from '@newrelic/gatsby-theme-newrelic';
@@ -598,9 +599,9 @@ const NerdDaysPage = () => {
                     @newrelic
                   </span>
                   <span className={cx(styles.engagementOptionIconContainer)}>
-                    <FeatherIcon
+                    <EngagementIcon
                       className={cx(styles.engagementOptionIcon)}
-                      name="twitter"
+                      name={Icon.TYPE.TWITTER}
                       size="23px"
                     />
                   </span>
@@ -620,9 +621,9 @@ const NerdDaysPage = () => {
                     New Relic Forum
                   </span>
                   <span className={cx(styles.engagementOptionIconContainer)}>
-                    <FeatherIcon
+                    <EngagementIcon
                       className={cx(styles.engagementOptionIcon)}
-                      name="message-square"
+                      name={Icon.TYPE.MESSAGE_SQUARE}
                       size="20px"
                     />
                   </span>
@@ -637,9 +638,9 @@ const NerdDaysPage = () => {
                     Developers
                   </span>
                   <span className={cx(styles.engagementOptionIconContainer)}>
-                    <FeatherIcon
+                    <EngagementIcon
                       className={cx(styles.engagementOptionIcon)}
-                      name="code"
+                      name={Icon.TYPE.CODE}
                       size="26px"
                     />
                   </span>
@@ -689,6 +690,15 @@ const speakers = [
       'Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam.',
   },
 ];
+
+const EngagementIcon = (props) => (
+  <Icon
+    css={css`
+      stroke: #fff;
+    `}
+    {...props}
+  />
+);
 
 const Section = (props) => (
   <section
