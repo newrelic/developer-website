@@ -1,4 +1,5 @@
 import React from 'react';
+import { css } from '@emotion/core';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import {
@@ -11,6 +12,7 @@ import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerd-days.module.scss';
 import hopinLogo from '../images/nerd-days/hopin-logo.svg';
 import roadIcon from '../images/nerd-days/icon-road.svg';
+import nerdDaysLogo from '../images/nerd-days/nerd-days-logo.svg';
 import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
 
@@ -21,9 +23,44 @@ const NerdDaysPage = () => {
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Content>
           <section className={cx(styles.heroSection)}>
-            <div className={cx(styles.heroLogoContainer)}>
+            <div
+              css={css`
+                display: inline-block;
+                max-width: 364px;
+                padding: 10px 20px 0;
+                margin: 0 48px;
+                text-align: center;
+                background-color: #fff;
+                box-shadow: 0px 18px 9px rgba(13, 80, 138, 0.12),
+                  0px 7.51997px 3.75998px rgba(13, 80, 138, 0.0862625),
+                  0px 4.02054px 2.01027px rgba(13, 80, 138, 0.0715329),
+                  0px 2.25388px 1.12694px rgba(13, 80, 138, 0.06),
+                  0px 1.19702px 0.598509px rgba(13, 80, 138, 0.0484671),
+                  0px 0.498106px 0.249053px rgba(13, 80, 138, 0.0337375);
+                border-radius: 0px 0px 20px 20px;
+
+                .dark-mode & {
+                  background-color: rgba(0, 0, 0, 0.5);
+                }
+              `}
+            >
               <NewRelicLogo />
-              <h1 className={cx(styles.heroLogo)}>nerd days 1.0</h1>
+              <h1
+                css={css`
+                  display: inline-block;
+                  width: 307px;
+                  height: 52px;
+                  margin-top: 10px;
+                  text-indent: 100%;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  background-image: url(${nerdDaysLogo});
+                  background-repeat: no-repeat;
+                  background-size: 100%;
+                `}
+              >
+                nerd days 1.0
+              </h1>
             </div>
             <h3 className={cx(styles.heroHeading)}>
               Nerd Days is a{' '}

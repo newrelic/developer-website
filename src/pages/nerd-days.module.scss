@@ -1,11 +1,10 @@
 .heroSection {
   margin-top: -32px;
   text-align: center;
-  background-image:
-    url(../images/nerd-days/hero-image-graph-lines.png), 
-    url(../images/nerd-days/nerd-days-hero-bg-pattern.png), 
+  background-image: url(../images/nerd-days/hero-image-graph-lines.png),
+    url(../images/nerd-days/nerd-days-hero-bg-pattern.png),
     linear-gradient(165deg, #06b4c7 10%, #0269ce 60%);
-    // linear-gradient(145deg, #01273D 20%, #2DCDE3 250%);
+  // linear-gradient(145deg, #01273D 20%, #2DCDE3 250%);
   background-size: 104%, 13%, 100%;
   background-position: -24px -10px, 0, 0;
   background-blend-mode: normal, soft-light, normal;
@@ -15,40 +14,6 @@
   // left: 300px;
   // right: 0;
   // top: 36px;
-}
-
-.heroLogoContainer {
-  display: inline-block;
-  max-width: 364px;
-  padding: 10px 20px 0;
-  margin: 0 48px;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 
-    0px 18px 9px rgba(13, 80, 138, 0.12), 
-    0px 7.51997px 3.75998px rgba(13, 80, 138, 0.0862625), 
-    0px 4.02054px 2.01027px rgba(13, 80, 138, 0.0715329), 
-    0px 2.25388px 1.12694px rgba(13, 80, 138, 0.06), 
-    0px 1.19702px 0.598509px rgba(13, 80, 138, 0.0484671), 
-    0px 0.498106px 0.249053px rgba(13, 80, 138, 0.0337375);
-  border-radius: 0px 0px 20px 20px;
-}
-
-.heroNrLogo {
-  height: 14px;
-}
-
-.heroLogo {
-  display: inline-block;
-  width: 307px;
-  height: 52px;
-  margin-top: 10px;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  background-image: url(../images/nerd-days/nerd-days-logo.svg);
-  background-repeat: no-repeat;
-  background-size: 100%;
 }
 
 .heroHeading {
