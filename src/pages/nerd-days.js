@@ -317,23 +317,11 @@ const NerdDaysPage = () => {
             >
               <TrackItem
                 name="Observability"
-                icon={
-                  <FeatherIcon
-                    className={cx(styles.eyeIcon)}
-                    name="eye"
-                    size="87px"
-                  />
-                }
+                icon={<TrackFeatherIcon name="eye" size="87px" />}
               />
               <TrackItem
                 name="Cloud migration"
-                icon={
-                  <FeatherIcon
-                    className={cx(styles.cloudMigrationIcon)}
-                    name="upload-cloud"
-                    size="87px"
-                  />
-                }
+                icon={<TrackFeatherIcon name="upload-cloud" size="87px" />}
               />
               <TrackItem
                 name="Open source"
@@ -833,6 +821,11 @@ TrackItem.propTypes = {
   icon: PropTypes.node,
   name: PropTypes.string,
 };
+
+const TrackFeatherIcon = styled(FeatherIcon)`
+  stroke: url(#nerdDaysGradient);
+  stroke-width: 1.12px;
+`;
 
 const EngagementIcon = (props) => (
   <Icon
