@@ -601,7 +601,7 @@ const NerdDaysPage = () => {
                     <FeatherIcon
                       className={cx(styles.engagementOptionIcon)}
                       name="twitter"
-                      size="23"
+                      size="23px"
                     />
                   </span>
                 </a>
@@ -623,7 +623,7 @@ const NerdDaysPage = () => {
                     <FeatherIcon
                       className={cx(styles.engagementOptionIcon)}
                       name="message-square"
-                      size="20"
+                      size="20px"
                     />
                   </span>
                 </a>
@@ -640,7 +640,7 @@ const NerdDaysPage = () => {
                     <FeatherIcon
                       className={cx(styles.engagementOptionIcon)}
                       name="code"
-                      size="26"
+                      size="26px"
                     />
                   </span>
                 </a>
