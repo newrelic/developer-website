@@ -6,6 +6,8 @@ import Session from './Session';
 import Time from './Time';
 import useMedia from 'use-media';
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 const Agenda = ({ children, className, tracks, mobileBreakpoint }) => {
   const isMobileScreen = useMedia({ maxWidth: mobileBreakpoint });
 
@@ -53,7 +55,18 @@ const Agenda = ({ children, className, tracks, mobileBreakpoint }) => {
           {!isMobileScreen && (
             <Time inactive={sessions[0].props.inactive}>{time}</Time>
           )}
-          {sessions.map((session) => cloneElement(session, { isMobileScreen }))}
+          {sessions.map((session, idx) => {
+            const trackIdx = sessions
+              .slice(0, idx)
+              .reduce((memo, session) => memo + session.props.span, 0);
+
+            return cloneElement(session, {
+              isMobileScreen,
+              track: hasOwnProperty.call(session.props, 'track')
+                ? session.props.track
+                : tracks[trackIdx],
+            });
+          })}
         </Fragment>
       ))}
     </div>

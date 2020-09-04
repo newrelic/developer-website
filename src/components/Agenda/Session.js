@@ -53,7 +53,7 @@ const Session = ({
         `}
       >
         <Badge>{time}</Badge>
-        <Badge>{track}</Badge>
+        {track && <Badge>{track}</Badge>}
       </ul>
     )}
   </Cell>
