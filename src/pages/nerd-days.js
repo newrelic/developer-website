@@ -602,7 +602,9 @@ const NerdDaysPage = () => {
                     <EngagementIcon
                       className={cx(styles.engagementOptionIcon)}
                       name={Icon.TYPE.TWITTER}
-                      size="23px"
+                      css={css`
+                        fill: white;
+                      `}
                     />
                   </span>
                 </a>
@@ -624,7 +626,9 @@ const NerdDaysPage = () => {
                     <EngagementIcon
                       className={cx(styles.engagementOptionIcon)}
                       name={Icon.TYPE.MESSAGE_SQUARE}
-                      size="20px"
+                      css={css`
+                        fill: white;
+                      `}
                     />
                   </span>
                 </a>
@@ -641,7 +645,7 @@ const NerdDaysPage = () => {
                     <EngagementIcon
                       className={cx(styles.engagementOptionIcon)}
                       name={Icon.TYPE.CODE}
-                      size="26px"
+                      size="1.5rem"
                     />
                   </span>
                 </a>
@@ -693,6 +697,7 @@ const speakers = [
 
 const EngagementIcon = (props) => (
   <Icon
+    size="1.25rem"
     css={css`
       stroke: #fff;
     `}
