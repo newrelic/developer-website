@@ -20,6 +20,7 @@ import heroBackgroundPattern from '../images/nerd-days/nerd-days-hero-bg-pattern
 import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
 import HopinLogo from '../components/HopinLogo';
+import styled from '@emotion/styled';
 
 const NerdDaysPage = () => {
   const {
@@ -805,49 +806,24 @@ const EngagementIcon = (props) => (
   />
 );
 
-const Section = (props) => (
-  <section
-    css={css`
-      padding: 4rem 0;
-      position: relative;
-    `}
-    {...props}
-  />
-);
+const Section = styled.section`
+  padding: 4rem 0;
+  position: relative;
+`;
 
-const SectionHeading = ({ children }) => (
-  <h3
-    css={css`
-      font-size: 1.75rem;
-      text-align: center;
+const SectionHeading = styled.h3`
+  font-size: 1.75rem;
+  text-align: center;
 
-      ${breakpoints.mobile} {
-        font-size: 1.5rem;
-      }
-    `}
-  >
-    {children}
-  </h3>
-);
+  ${breakpoints.mobile} {
+    font-size: 1.5rem;
+  }
+`;
 
-SectionHeading.propTypes = {
-  children: PropTypes.node,
-};
-
-const SectionDescription = ({ children }) => (
-  <p
-    css={css`
-      margin-bottom: 2rem;
-      text-align: center;
-    `}
-  >
-    {children}
-  </p>
-);
-
-SectionDescription.propTypes = {
-  children: PropTypes.node,
-};
+const SectionDescription = styled.p`
+  margin-bottom: 2rem;
+  text-align: center;
+`;
 
 const CtaItem = ({ date, to, children }) => (
   <li
