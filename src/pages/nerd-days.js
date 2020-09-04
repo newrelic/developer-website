@@ -295,7 +295,17 @@ const NerdDaysPage = () => {
               distributed after the event.
             </p>
 
-            <ul className={cx(styles.tracksList)}>
+            <ul
+              css={css`
+                max-width: 980px;
+                margin: 0 auto;
+                list-style-type: none;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 0;
+              `}
+            >
               <li className={cx(styles.tracksListItem)}>
                 <FeatherIcon
                   className={cx(styles.eyeIcon, styles.trackIcon)}
