@@ -8,6 +8,7 @@ import {
   NewRelicLogo,
 } from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/Seo';
+import { graphql, useStaticQuery } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerd-days.module.scss';
 import hopinLogo from '../images/nerd-days/hopin-logo.svg';
@@ -17,6 +18,24 @@ import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
 
 const NerdDaysPage = () => {
+  const {
+    site: { layout },
+  } = useStaticQuery(graphql`
+    query {
+      site {
+        layout {
+          contentPadding
+        }
+      }
+    }
+  `);
+
+  const alternateSection = css`
+    background-color: var(--tertiary-background-color);
+    margin-left: -${layout.contentPadding};
+    margin-right: -${layout.contentPadding};
+  `;
+
   return (
     <>
       <SEO />
@@ -73,37 +92,19 @@ const NerdDaysPage = () => {
             </p>
             <ul className={cx(styles.heroCtaContainer)}>
               <li className={cx(styles.heroCtaContainerItem)}>
-                <Button
-                  as={ExternalLink}
-                  variant={Button.VARIANT.PRIMARY}
-                  className={cx(styles.ctaButton)}
-                >
-                  US Registration
-                </Button>
+                <CtaButton>US Registration</CtaButton>
                 <span className={cx(styles.registrationButtonDate)}>
                   Oct 13, 2020
                 </span>
               </li>
               <li className={cx(styles.heroCtaContainerItem)}>
-                <Button
-                  as={ExternalLink}
-                  variant={Button.VARIANT.PRIMARY}
-                  className={cx(styles.ctaButton)}
-                >
-                  EMEA Registration
-                </Button>
+                <CtaButton>EMEA Registration</CtaButton>
                 <span className={cx(styles.registrationButtonDate)}>
                   Oct 20, 2020
                 </span>
               </li>
               <li className={cx(styles.heroCtaContainerItem)}>
-                <Button
-                  as={ExternalLink}
-                  variant={Button.VARIANT.PRIMARY}
-                  className={cx(styles.ctaButton)}
-                >
-                  APJ Registration
-                </Button>
+                <CtaButton>APJ Registration</CtaButton>
                 <span className={cx(styles.registrationButtonDate)}>
                   Oct 22, 2020
                 </span>
@@ -191,6 +192,7 @@ const NerdDaysPage = () => {
           </section>
 
           <section
+            css={alternateSection}
             className={cx(
               styles.tracksSection,
               styles.eventSection,
@@ -579,6 +581,7 @@ const NerdDaysPage = () => {
           </section>
 
           <section
+            css={alternateSection}
             className={cx(
               styles.engagementSection,
               styles.eventSection,
@@ -667,5 +670,26 @@ const NerdDaysPage = () => {
     </>
   );
 };
+
+const CtaButton = (props) => (
+  <Button
+    as={ExternalLink}
+    variant={Button.VARIANT.PRIMARY}
+    css={css`
+      background-color: #fff;
+      color: #0069ce;
+
+      &:hover {
+        background-color: #fff;
+        color: #0069ce;
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+    `}
+    {...props}
+  />
+);
 
 export default NerdDaysPage;

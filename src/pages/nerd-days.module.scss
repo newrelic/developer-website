@@ -62,22 +62,6 @@
   }
 }
 
-a.ctaButton {
-  background-color: #fff;
-  color: #0069ce;
-  transition: 0.125s transform ease-out;
-
-  &:hover {
-    background-color: #fff;
-    color: #0069ce;
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    transform: translateY(1px);
-  }
-}
-
 .registrationButtonDate {
   margin-top: 4px;
   font-size: 10px;
@@ -90,12 +74,6 @@ a.ctaButton {
 .eventSection {
   padding: 65px 0 65px;
   position: relative;
-
-  &.alternateSection {
-    background-color: #f4f5f5;
-    margin-left: -32px;
-    margin-right: -32px;
-  }
 }
 
 .sectionHeading {
