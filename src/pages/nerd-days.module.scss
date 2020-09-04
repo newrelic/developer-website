@@ -1,10 +1,3 @@
-.agendaContainer {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
 .agendaHeaderRow {
   display: grid;
   grid-template-columns: 0.75fr repeat(5, 1fr);

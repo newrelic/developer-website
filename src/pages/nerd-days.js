@@ -353,7 +353,10 @@ const NerdDaysPage = () => {
             </SectionDescription>
 
             <Agenda
-              className={cx(styles.agendaContainer)}
+              css={css`
+                max-width: 1000px;
+                margin: 0 auto;
+              `}
               tracks={[
                 'Observability',
                 'Cloud migration',
