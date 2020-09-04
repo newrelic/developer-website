@@ -113,7 +113,7 @@ const NerdDaysPage = () => {
             </ul>
           </section>
 
-          <section className={cx(styles.speakersSection, styles.eventSection)}>
+          <Section className={cx(styles.speakersSection)}>
             <h3 className={cx(styles.sectionHeading)}>Speaker line up</h3>
             <p className={cx(styles.sectionDescription)}>
               Nulla vitae elit libero, a pharetra augue nullam id dolor id nibh
@@ -193,15 +193,11 @@ const NerdDaysPage = () => {
                 </Surface>
               ))}
             </ul>
-          </section>
+          </Section>
 
-          <section
+          <Section
             css={alternateSection}
-            className={cx(
-              styles.tracksSection,
-              styles.eventSection,
-              styles.alternateSection
-            )}
+            className={cx(styles.tracksSection, styles.alternateSection)}
           >
             <h3 className={cx(styles.sectionHeading)}>Tracks</h3>
             <p className={cx(styles.sectionDescription)}>
@@ -255,9 +251,9 @@ const NerdDaysPage = () => {
                 <h5 className={cx(styles.tracksListItemName)}>fundamentals</h5>
               </li>
             </ul>
-          </section>
+          </Section>
 
-          <section className={cx(styles.agendaSection, styles.eventSection)}>
+          <Section className={cx(styles.agendaSection)}>
             <h3 className={cx(styles.sectionHeading)}>Agenda</h3>
             <p className={cx(styles.sectionDescription)}>
               We’ve got a packed schedule with thought-leaders of their
@@ -582,15 +578,11 @@ const NerdDaysPage = () => {
                 </h4>
               </div>
             </div>
-          </section>
+          </Section>
 
-          <section
+          <Section
             css={alternateSection}
-            className={cx(
-              styles.engagementSection,
-              styles.eventSection,
-              styles.alternateSection
-            )}
+            className={cx(styles.engagementSection, styles.alternateSection)}
           >
             <h3 className={cx(styles.sectionHeading)}>
               Engage with the developer community
@@ -662,13 +654,13 @@ const NerdDaysPage = () => {
               <img
                 className={cx(styles.sponsorLogo)}
                 src={hopinLogo}
-                alt="Hoping logo"
+                alt="Hopin logo"
               />
               <p className={cx(styles.sponsorLogoCaption)}>
                 Event powered by Hopin
               </p>
             </a>
-          </section>
+          </Section>
         </PageLayout.Content>
       </PageLayout>
     </>
@@ -697,6 +689,16 @@ const speakers = [
       'Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam.',
   },
 ];
+
+const Section = (props) => (
+  <section
+    css={css`
+      padding: 4rem 0;
+      position: relative;
+    `}
+    {...props}
+  />
+);
 
 const CtaButton = (props) => (
   <Button
