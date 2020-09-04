@@ -16,19 +16,6 @@
   // top: 36px;
 }
 
-.heroDescription {
-  box-sizing: border-box;
-  max-width: 894px;
-  padding: 0 48px;
-  margin: 0 auto;
-  font-size: 16px;
-  line-height: 25px;
-  columns: 2;
-  column-gap: 26px;
-  text-align: left;
-  color: var(--color-neutrals-300);
-}
-
 .heroCtaContainer {
   padding: 0 48px;
   margin: 25px 0 30px;
@@ -344,15 +331,6 @@
     max-width: 300px;
   }
 
-  .heroLogo {
-    width: 250px;
-    margin-bottom: 0;
-  }
-
-  .heroDescription {
-    columns: 1;
-  }
-
   .agendaHeaderRowHeading {
     word-break: break-all;
   }
@@ -445,19 +423,6 @@
     margin: 0;
     max-width: 220px;
     border-radius: 0 0 16px 16px;
-  }
-
-  .heroLogo {
-    width: 175px;
-    height: 30px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-  }
-
-  .heroDescription {
-    padding: 0 28px;
-    font-size: 16px;
-    line-height: 24px;
   }
 
   .heroCtaContainer {

@@ -74,11 +74,11 @@ const NerdDaysPage = () => {
                   width: 308px;
                   height: 53px;
 
-                  @media screen and (max-width: 1100px) {
+                  ${breakpoints.laptop} {
                     width: 250px;
                   }
 
-                  @media screen and (max-width: 480px) {
+                  ${breakpoints.mobile} {
                     width: 175px;
                     height: 30px;
                     margin-top: 4px;
@@ -98,14 +98,14 @@ const NerdDaysPage = () => {
                 line-height: 2.5rem;
                 text-align: center;
 
-                @media screen and (max-width: 1100px) {
+                ${breakpoints.laptop} {
                   padding: 0 3rem;
                   margin: 1.75rem auto 1.25rem;
                   font-size: 1.5rem;
                   line-height: 2.25rem;
                 }
 
-                @media screen and (max-width: 480px) {
+                ${breakpoints.mobile} {
                   padding: 0 ${layout.contentPadding};
                   font-size: 1.25rem;
                   line-height: 1.75rem;
@@ -117,7 +117,29 @@ const NerdDaysPage = () => {
               {` `}
               1-day event focused on building more perfect software
             </h3>
-            <p className={cx(styles.heroDescription)}>
+            <p
+              css={css`
+                box-sizing: border-box;
+                max-width: 894px;
+                padding: 0 3rem;
+                margin: 0 auto;
+                font-size: 1rem;
+                columns: 2;
+                column-gap: 1.5rem;
+                text-align: left;
+                color: var(--color-neutrals-300);
+
+                ${breakpoints.laptop} {
+                  columns: 1;
+                }
+
+                ${breakpoints.mobile} {
+                  padding: 0 28px;
+                  font-size: 16px;
+                  line-height: 24px;
+                }
+              `}
+            >
               Our goal is to spend less time looking at slides that tell you
               what software can do and more time on getting your hands on the
               software to solve problems efficiently. Morbi malesuada nulla nec
@@ -729,6 +751,11 @@ const speakers = [
       'Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam.',
   },
 ];
+
+const breakpoints = {
+  laptop: '@media screen and (max-width: 1100px)',
+  mobile: '@media screen and (max-width: 480px)',
+};
 
 const EngagementIcon = (props) => (
   <Icon
