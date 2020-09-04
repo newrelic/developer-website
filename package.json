@@ -49,7 +49,8 @@
     "react-middle-ellipsis": "^1.1.0",
     "react-shadow": "^18.2.5",
     "react-simple-code-editor": "^0.11.0",
-    "use-dark-mode": "^2.3.1"
+    "use-dark-mode": "^2.3.1",
+    "use-media": "^1.4.0"
   },
   "devDependencies": {
     "@newrelic/eslint-plugin-newrelic": "^0.3.0",
