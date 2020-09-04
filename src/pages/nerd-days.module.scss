@@ -16,17 +16,6 @@
   // top: 36px;
 }
 
-.heroHeading {
-  max-width: 566px;
-  margin: 35px auto 24px;
-  color: #fff;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 30px;
-  line-height: 40px;
-  text-align: center;
-}
-
 .heroDescription {
   box-sizing: border-box;
   max-width: 894px;
@@ -360,13 +349,6 @@
     margin-bottom: 0;
   }
 
-  .heroHeading {
-    padding: 0 48px;
-    margin: 30px auto 20px;
-    font-size: 24px;
-    line-height: 34px;
-  }
-
   .heroDescription {
     columns: 1;
   }
@@ -470,12 +452,6 @@
     height: 30px;
     margin-top: 4px;
     margin-bottom: 4px;
-  }
-
-  .heroHeading {
-    padding: 0 28px;
-    font-size: 20px;
-    line-height: 26px;
   }
 
   .heroDescription {

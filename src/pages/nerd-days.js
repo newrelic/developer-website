@@ -76,7 +76,31 @@ const NerdDaysPage = () => {
                 `}
               />
             </div>
-            <h3 className={cx(styles.heroHeading)}>
+            <h3
+              css={css`
+                max-width: 566px;
+                margin: 2rem auto 1.5rem;
+                color: #fff;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 30px;
+                line-height: 2.5rem;
+                text-align: center;
+
+                @media screen and (max-width: 1100px) {
+                  padding: 0 3rem;
+                  margin: 1.75rem auto 1.25rem;
+                  font-size: 1.5rem;
+                  line-height: 2.25rem;
+                }
+
+                @media screen and (max-width: 480px) {
+                  padding: 0 ${layout.contentPadding};
+                  font-size: 1.25rem;
+                  line-height: 1.75rem;
+                }
+              `}
+            >
               Nerd Days is a{' '}
               <em className={cx(styles.heroHeadingHighlight)}>free</em>
               {` `}
