@@ -16,6 +16,8 @@ import styles from './nerd-days.module.scss';
 import hopinLogo from '../images/nerd-days/hopin-logo.svg';
 import roadIcon from '../images/nerd-days/icon-road.svg';
 import NerdDaysLogo from '../components/NerdDaysLogo';
+import graphLines from '../images/nerd-days/hero-image-graph-lines.png';
+import heroBackgroundPattern from '../images/nerd-days/nerd-days-hero-bg-pattern.png';
 import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
 
@@ -43,7 +45,37 @@ const NerdDaysPage = () => {
       <SEO />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Content>
-          <section className={cx(styles.heroSection)}>
+          <section
+            css={css`
+              margin-top: -32px;
+              text-align: center;
+              background-image: url(${graphLines}),
+                url(${heroBackgroundPattern}),
+                linear-gradient(165deg, #06b4c7 10%, #0269ce 60%);
+              background-size: 104%, 13%, 100%;
+              background-position: -24px -10px, 0, 0;
+              background-blend-mode: normal, soft-light, normal;
+              border-radius: 20px;
+              background-repeat: no-repeat, repeat, no-repeat;
+
+              .dark-mode & {
+                position: relative;
+                background-image: url(${graphLines}),
+                  url(${heroBackgroundPattern}),
+                  linear-gradient(145deg, #01273d 20%, #2dcde3 250%);
+                background-blend-mode: soft-light, soft-light, normal;
+              }
+
+              ${breakpoints.laptop} {
+                background-position: -14px -10px, 0, 0;
+              }
+
+              ${breakpoints.mobile} {
+                border-radius: 0;
+                margin: -48px -32px 0 -32px;
+              }
+            `}
+          >
             <div
               css={css`
                 display: inline-block;
