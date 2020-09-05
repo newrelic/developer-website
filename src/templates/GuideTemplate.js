@@ -3,6 +3,11 @@ import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
+import {
+  Contribute,
+  PageUpdated,
+  Resources,
+} from '../components/RelatedContentModules';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import SEO from '../components/Seo';
@@ -10,11 +15,11 @@ import SEO from '../components/Seo';
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
   const { frontmatter, body } = mdx;
-  const { title, description, duration } = frontmatter;
+  const { title, description, duration, tags } = frontmatter;
 
   return (
     <>
-      <SEO title={title} description={description} />
+      <SEO title={title} description={description} tags={tags} />
       <PageLayout type={PageLayout.TYPE.RELATED_CONTENT}>
         <PageLayout.Header title={title}>
           {duration && (
@@ -37,7 +42,10 @@ const GuideTemplate = ({ data }) => {
           )}
         </PageLayout.Header>
         <PageLayout.MarkdownContent>{body}</PageLayout.MarkdownContent>
-        <PageLayout.RelatedContent page={mdx} />
+        <PageLayout.RelatedContent
+          page={mdx}
+          modules={[Contribute, Resources, PageUpdated]}
+        />
       </PageLayout>
     </>
   );
@@ -48,7 +56,7 @@ GuideTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
+  query($path: String!, $relatedResourceLimit: Int!) {
     mdx(frontmatter: { path: { eq: $path } }) {
       body
       frontmatter {
@@ -56,9 +64,11 @@ export const pageQuery = graphql`
         path
         title
         description
+        tags
       }
 
-      ...RelatedContent_page
+      ...Resources_page
+      ...PageUpdated_page
     }
   }
 `;

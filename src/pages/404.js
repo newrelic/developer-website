@@ -28,6 +28,7 @@ const NotFoundPage = ({ pageContext }) => {
       <div className={styles.layout}>
         <GlobalHeader
           editUrl={`${siteMetadata.repository}/blob/main/${pageContext.fileRelativePath}`}
+          search
         />
         <div className={styles.contentContainer}>
           <SkewedContainer className={styles.content}>
