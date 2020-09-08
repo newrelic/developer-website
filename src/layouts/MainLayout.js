@@ -58,7 +58,7 @@ const MainLayout = ({ children }) => {
 
   useLayoutEffect(() => {
     setHeaderHeight(headerRef?.current?.clientHeight || 0);
-  });
+  }, [setHeaderHeight]);
 
   return (
     <div
