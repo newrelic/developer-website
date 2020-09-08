@@ -1,7 +1,7 @@
 {
   "name": "developer-website",
   "private": true,
-  "version": "1.17.0",
+  "version": "1.17.1",
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
@@ -47,7 +47,7 @@
     "react-live": "^2.2.2",
     "react-markdown": "^4.3.1",
     "react-middle-ellipsis": "^1.1.0",
-    "react-shadow": "^18.2.5",
+    "react-shadow": "^18.3.0",
     "react-simple-code-editor": "^0.11.0",
     "use-dark-mode": "^2.3.1"
   },
