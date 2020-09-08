@@ -85,7 +85,14 @@ const MainLayout = ({ children }) => {
           </script>
         ) : null}
       </Helmet>
-      <div ref={headerRef}>
+      <div
+        ref={headerRef}
+        css={css`
+          position: sticky;
+          z-index: 99;
+          top: 0;
+        `}
+      >
         <GlobalHeader editUrl={editUrl} />
       </div>
       <MobileHeader
