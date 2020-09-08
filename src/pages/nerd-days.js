@@ -201,9 +201,24 @@ const NerdDaysPage = () => {
                 }
               `}
             >
-              <CtaItem date="Oct 13, 2020">US Registration</CtaItem>
-              <CtaItem date="Oct 21, 2020">EMEA Registration</CtaItem>
-              <CtaItem date="Oct 22, 2020">APJ Registration</CtaItem>
+              <CtaItem
+                date="Oct 13, 2020"
+                to="https://developer.newrelic.com/nerd-days/"
+              >
+                US Registration
+              </CtaItem>
+              <CtaItem
+                date="Oct 21, 2020"
+                to="https://developer.newrelic.com/apj-nerd-days/"
+              >
+                EMEA Registration
+              </CtaItem>
+              <CtaItem
+                date="Oct 22, 2020"
+                to="https://developer.newrelic.com/emea-nerd-days/"
+              >
+                APJ Registration
+              </CtaItem>
             </ul>
           </section>
 
