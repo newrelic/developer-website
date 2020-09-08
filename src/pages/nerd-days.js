@@ -174,14 +174,18 @@ const NerdDaysPage = () => {
                 }
               `}
             >
-              Our goal is to spend less time looking at slides that tell you
-              what software can do and more time on getting your hands on the
-              software to solve problems efficiently. Morbi malesuada nulla nec
-              purus convallis consequat. Vivamus id mollis quam. Morbi ac comm.
-              You’ll hear from fellow engineers who built New Relic solutions
-              and New Relic users from various industries. Whether you’re new or
-              a data nerd, there’s an interactive session for you. We look
-              forward to building with you during Nerd Days.
+              Whether you're new to New Relic or a data nerd, Nerd Days 1.0 has
+              something for you. We want to focus on YOU - the engineer, the
+              problem solver, the developer. That's why, our theme this year is
+              Return of the Data Nerd. Our goal is spend less time looking at
+              slides that tell you what you can do, and more time getting your
+              hands on the keyboard to solve problems. The global event will
+              feature Relics, customers, and partners across the globe. You'll
+              hear from experts in New Relic fundamentals, cloud migration,
+              DevOps, open source, and observability. Register for one (or
+              more!) of the events in your region. Sessions will be recorded and
+              shared shortly after the event. We look forward to building
+              software with you at Nerd Days 1.0!
             </p>
             <ul
               css={css`
@@ -198,7 +202,7 @@ const NerdDaysPage = () => {
               `}
             >
               <CtaItem date="Oct 13, 2020">US Registration</CtaItem>
-              <CtaItem date="Oct 20, 2020">EMEA Registration</CtaItem>
+              <CtaItem date="Oct 21, 2020">EMEA Registration</CtaItem>
               <CtaItem date="Oct 22, 2020">APJ Registration</CtaItem>
             </ul>
           </section>
@@ -206,8 +210,9 @@ const NerdDaysPage = () => {
           <Section className={cx(styles.speakersSection)}>
             <SectionHeading>Speaker line up</SectionHeading>
             <SectionDescription>
-              Nulla vitae elit libero, a pharetra augue nullam id dolor id nibh
-              ultricies vehicula ut id elit
+              Nerd Days is not only built by Relics, but also by fellow
+              engineers in the community. Stay tuned for updates to the agenda
+              as we add more community speakers.
             </SectionDescription>
 
             <ul
@@ -359,101 +364,112 @@ const NerdDaysPage = () => {
               `}
               mobileBreakpoint="1000px"
               tracks={[
+                'Fundamentals',
                 'Observability',
                 'Cloud migration',
-                'Open source',
                 'DevOps journey',
-                'Fundamentals',
+                'Open source',
               ]}
             >
               <Agenda.Session
-                time="8:00 AM"
-                title="Welcome"
-                speaker="Jemiah Sius"
+                time="9:00 AM"
+                title="Keynote: Observability For Good with Code for America"
+                speaker="Lew Cerne"
                 track={null}
                 span={5}
               />
               <Agenda.Session
-                time="8:30 AM"
-                title="Building Better Apps"
-                speaker="Anita Baker"
-                span={2}
+                time="10:00 AM"
+                title="Instrumenting your service using agents "
               />
               <Agenda.Session
-                time="8:30 AM"
-                title="Open DevOps"
-                speaker="Robert Parr"
-                span={2}
+                time="10:00 AM"
+                title="Increased Maturity with Full Stack Observability "
               />
               <Agenda.Session
-                time="8:30 AM"
-                title="NR 101"
-                speaker="Jeff Osborne"
+                time="10:00 AM"
+                title="Deploying an app on Kubernetes"
               />
               <Agenda.Session
-                time="9:00 AM"
-                title="All seeing eye"
-                speaker="Dylan Hernandez"
+                time="10:00 AM"
+                title="Delivering SRE as a Service"
               />
               <Agenda.Session
-                time="9:00 AM"
-                title="AWS Ops"
-                speaker="Celso Piña"
-              />
-              <Agenda.Session
-                time="9:00 AM"
-                title="Main v Master"
-                speaker="Jeff Osborne"
-              />
-              <Agenda.Session
-                time="9:00 AM"
-                title="DevOps Journey"
-                speaker="Jemiah Sius"
-                span={2}
+                time="10:00 AM"
+                title="Building applications on New Relic One"
               />
               <Agenda.Session
                 time="11:00 AM"
-                title="Is it down? Yes."
-                speaker="Dylan Hernandez"
+                title="Exploring your data using NRQL"
+              />
+              <Agenda.Session time="11:00 AM" title="New Relic AI" />
+              <Agenda.Session
+                time="11:00 AM"
+                title="Going Serverless: Chipping at the monolith "
               />
               <Agenda.Session
                 time="11:00 AM"
-                title="How much is too much?"
-                speaker="Natalia Lafourcade"
-                span={2}
+                title="Logging for Modern Organizations"
               />
               <Agenda.Session
                 time="11:00 AM"
-                title="Monolith Magic"
-                speaker="John McGibbons"
-              />
-              <Agenda.Session
-                time="11:00 AM"
-                title="Debuggers"
-                speaker="Anita Baker"
+                title="Grafana and Prometheus with TDP"
               />
               <Agenda.Session
                 inactive
                 time="12:00 PM"
                 title="Lunch Break"
-                speaker="Music by DJ Mykael V"
+                speaker="Distant Disco"
                 track={null}
                 span={5}
               />
+              <Agenda.Session time="1:00 PM" title="Custom Instrumentation" />
               <Agenda.Session
-                time="1:30 PM"
-                title="Observability and You"
-                speaker="Natalia Lafourcade"
-                span={3}
+                time="1:00 PM"
+                title="Exploring Data with NerdGraph"
+              />
+              <Agenda.Session time="1:00 PM" title="Tool Consolidation" />
+              <Agenda.Session
+                time="1:00 PM"
+                title="Flex Integration - Build Your First Linux Configuration"
               />
               <Agenda.Session
-                time="1:30 PM"
-                title="COVID Productivity"
-                speaker="Celso Piña"
-                span={2}
+                time="1:00 PM"
+                title="Open Source powers the New Relic One Catalog"
+              />
+              <Agenda.Session time="2:00 PM" title="Alerts Best Practices " />
+              <Agenda.Session
+                time="2:00 PM"
+                title="The Art & Science of Deciphering Perceived Performance: A look at how user behavior affects your data"
               />
               <Agenda.Session
-                time="2:30 PM"
+                time="2:00 PM"
+                title="Kubernetes Observability "
+              />
+              <Agenda.Session time="2:00 PM" title="Measuring code pipelines" />
+              <Agenda.Session
+                time="2:00 PM"
+                title="New Relic CLI Wizardry/ Reducing toil with Terraform"
+              />
+              <Agenda.Session
+                time="3:00 PM"
+                title="True availability using Synthetics "
+              />
+              <Agenda.Session
+                time="3:00 PM"
+                title="How Observability-Driven Development accelerates DevOps transformations"
+              />
+              <Agenda.Session
+                time="3:00 PM"
+                title="Establish cloud KPIs and performance baselines"
+              />
+              <Agenda.Session time="3:00 PM" title="Testing in Production" />
+              <Agenda.Session
+                time="3:00 PM"
+                title="NerdStorageVault: ThirdParty Secrets"
+              />
+              <Agenda.Session
+                time="4:00 PM"
                 title="Closing + Swag"
                 speaker="Jemiah Sius and Team"
                 track={null}
