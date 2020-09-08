@@ -47,6 +47,12 @@ const MainLayout = ({ children }) => {
     ? null
     : `${siteMetadata.repository}/blob/main/${fileRelativePath}`;
 
+  const resizeObserver = new ResizeObserver((entries) => {
+    entries.forEach((entry) => {
+      setHeaderHeight(entry.contentBoxSize.blockSize);
+    });
+  });
+
   useEffect(() => {
     const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
     consentValue && setCookieConsent(true);
