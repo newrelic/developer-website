@@ -476,7 +476,7 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="3:00 PM"
-                title="Establish cloud KPIs and performance baselines"
+                title="CFP Customer Session: Cloud fundamentals"
               />
               <Agenda.Session time="3:00 PM" title="Testing in Production" />
               <Agenda.Session
