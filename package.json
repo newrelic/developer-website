@@ -7,6 +7,7 @@
     "@emotion/styled": "^10.0.27",
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
+    "@monaco-editor/react": "^3.6.2",
     "@newrelic/gatsby-theme-newrelic": "^1.7.3",
     "classnames": "^2.2.6",
     "date-fns": "^2.15.0",
@@ -35,6 +36,7 @@
     "gatsby-transformer-remark": "^2.8.26",
     "gatsby-transformer-sharp": "^2.5.10",
     "js-cookie": "^2.2.1",
+    "monaco-editor": "^0.20.0",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.14.1",
     "prism-react-renderer": "^1.1.1",
@@ -48,6 +50,7 @@
     "react-middle-ellipsis": "^1.1.0",
     "react-shadow": "^18.2.5",
     "react-simple-code-editor": "^0.11.0",
+    "typescript": "^4.0.2",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {

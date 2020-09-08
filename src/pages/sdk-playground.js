@@ -1,9 +1,10 @@
-import React from 'react';
-import { LiveProvider, LiveEditor, LivePreview, LiveError } from 'react-live';
+import React, { useState, useRef } from 'react';
+import { LiveProvider, withLive, LivePreview, LiveError } from 'react-live';
 import { css } from '@emotion/core';
 import root from 'react-shadow';
 import { CSS_BUNDLE } from '../utils/sdk';
 import NR1Logo from '../components/NR1Logo';
+import Editor from '@monaco-editor/react';
 
 const defaultCode = `
 class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
@@ -338,51 +339,65 @@ button::-moz-focus-inner {
 }
 `;
 
+const MonacoLiveEditor = withLive(Editor);
+
 const SdkPlayground = () => {
+  const [code, setCode] = useState(defaultCode);
+  const editorRef = useRef();
+
+  const handleEditorDidMount = (_, editor) => {
+    editorRef.current = editor;
+    editorRef.current.onDidChangeModelContent(() => {
+      setCode(editorRef.current.getValue());
+    });
+  };
   return (
-    <LiveProvider code={defaultCode} scope={window.__NR1_SDK__.default}>
-      <div
-        css={css`
-          display: flex;
-          flex-direction: column;
-          height: 100vh;
-        `}
-      >
-        <root.div
+    <>
+      <LiveProvider code={code} scope={window.__NR1_SDK__.default}>
+        <div
           css={css`
-            flex: 1;
-            background: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
           `}
         >
-          <link rel="stylesheet" href={CSS_BUNDLE} />
-          <style type="text/css">{SDK_VARS}</style>
-          <div className="body">
-            <header className="nr1-header">
-              <a
-                className="nr1-logo-link"
-                href="https://one.newrelic.com?nerdpacks=local"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <NR1Logo />
-              </a>
-            </header>
-            <div className="nr1-app-header">
-              <h3 className="nr1-header-title">My Awesome Nerdpack</h3>
-              <hr className="nr1-divider" />
+          <root.div
+            css={css`
+              flex: 1;
+              background: white;
+            `}
+          >
+            <link rel="stylesheet" href={CSS_BUNDLE} />
+            <style type="text/css">{SDK_VARS}</style>
+            <div className="body">
+              <header className="nr1-header">
+                <a
+                  className="nr1-logo-link"
+                  href="https://one.newrelic.com?nerdpacks=local"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <NR1Logo />
+                </a>
+              </header>
+              <div className="nr1-app-header">
+                <h3 className="nr1-header-title">My Awesome Nerdpack</h3>
+                <hr className="nr1-divider" />
+              </div>
+              <LivePreview />
             </div>
-            <LivePreview />
-          </div>
-        </root.div>
-        <LiveError />
-        <LiveEditor
-          css={css`
-            background: var(--color-dark-050);
-            height: 350px;
-          `}
-        />
-      </div>
-    </LiveProvider>
+          </root.div>
+          <LiveError />
+          <MonacoLiveEditor
+            height="350px"
+            language="javascript"
+            value={defaultCode}
+            theme="dark"
+            editorDidMount={handleEditorDidMount}
+          />
+        </div>
+      </LiveProvider>
+    </>
   );
 };
 
