@@ -82,12 +82,12 @@ const IndexPage = ({ data, pageContext }) => {
               />
               <p>
                 <Button
-  as={Link}
-  to="/nerd-days"
-  variant={Button.VARIANT.PRIMARY}
->
-  Register
-</Button>
+                  as={Link}
+                  to="/nerd-days"
+                  variant={Button.VARIANT.PRIMARY}
+                >
+                  Register
+                </Button>
               </p>
             </div>
             <div
