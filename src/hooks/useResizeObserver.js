@@ -12,7 +12,7 @@ const useResizeObserver = () => {
 
   useLayoutEffect(() => {
     resizeObserver.observe(ref.current);
-  }, []);
+  }, [resizeObserver]);
 
   return [ref, height];
 };
