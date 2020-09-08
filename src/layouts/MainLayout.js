@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
@@ -36,6 +36,8 @@ const MainLayout = ({ children }) => {
 
   const location = useLocation();
   const { fileRelativePath } = usePageContext();
+  const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const isComponentDoc = fileRelativePath.includes(
@@ -54,10 +56,14 @@ const MainLayout = ({ children }) => {
     setIsMobileNavOpen(false);
   }, [location.pathname]);
 
+  useLayoutEffect(() => {
+    setHeaderHeight(headerRef?.current?.clientHeight || 0);
+  });
+
   return (
     <div
       css={css`
-        --global-header-height: 30px;
+        --global-header-height: ${headerHeight}px;
         --sidebar-width: 300px;
 
         min-height: 100vh;
@@ -79,7 +85,9 @@ const MainLayout = ({ children }) => {
           </script>
         ) : null}
       </Helmet>
-      <GlobalHeader editUrl={editUrl} />
+      <div ref={headerRef}>
+        <GlobalHeader editUrl={editUrl} />
+      </div>
       <MobileHeader
         css={css`
           @media (min-width: 761px) {
