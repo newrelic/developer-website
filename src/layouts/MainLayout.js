@@ -12,6 +12,7 @@ import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import '../components/styles.scss';
 import usePageContext from '../hooks/usePageContext';
+import useResizeObserver from '../hooks/useResizeObserver';
 import { useLocation } from '@reach/router';
 
 const gaTrackingId = 'UA-3047412-33';
@@ -36,8 +37,7 @@ const MainLayout = ({ children }) => {
 
   const location = useLocation();
   const { fileRelativePath } = usePageContext();
-  const headerRef = useRef(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
+  const [headerRef, headerHeight] = useResizeObserver();
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const isComponentDoc = fileRelativePath.includes(
@@ -47,12 +47,6 @@ const MainLayout = ({ children }) => {
     ? null
     : `${siteMetadata.repository}/blob/main/${fileRelativePath}`;
 
-  const resizeObserver = new ResizeObserver((entries) => {
-    entries.forEach((entry) => {
-      setHeaderHeight(entry.contentBoxSize.blockSize);
-    });
-  });
-
   useEffect(() => {
     const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
     consentValue && setCookieConsent(true);
@@ -61,10 +55,6 @@ const MainLayout = ({ children }) => {
   useEffect(() => {
     setIsMobileNavOpen(false);
   }, [location.pathname]);
-
-  useLayoutEffect(() => {
-    setHeaderHeight(headerRef?.current?.clientHeight || 0);
-  }, [setHeaderHeight]);
 
   return (
     <div
