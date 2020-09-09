@@ -1,3 +1,17 @@
+# [1.20.0](https://github.com/newrelic/developer-website/compare/v1.19.0...v1.20.0) (2020-09-09)
+
+
+### Bug Fixes
+
+* corrected registration links ([9754ec4](https://github.com/newrelic/developer-website/commit/9754ec4d3dd67519a3a5b912f522e5ff2ab47f0b))
+* only create pages for mardown in `markdown-pages` directory ([5b78418](https://github.com/newrelic/developer-website/commit/5b784182fe89723c1bb9634bc18a5266eafc692e))
+* update sidebar positioning based on header height ([4837e8f](https://github.com/newrelic/developer-website/commit/4837e8f7ee064af64ac11b3ac4f85bb3ae0b403e))
+
+
+### Features
+
+* resize observer hook ([564d647](https://github.com/newrelic/developer-website/commit/564d6473a8b9a345a68b569af662c5faac89e60f))
+
 # [1.19.0](https://github.com/newrelic/developer-website/compare/v1.18.0...v1.19.0) (2020-09-09)
 
 
