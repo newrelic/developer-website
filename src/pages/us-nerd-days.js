@@ -33,7 +33,11 @@ const NerdDaysPage = () => {
                 and New Relic users from various industries. Whether you’re new
                 or a data nerd, there’s an interactive session for you.
               </p>
-              <p>We look forward to building with you during Nerd Days! </p>
+              <p>
+                We look forward to building with you during Nerd Days! If you
+                have any questions about Nerd Days please emails{' '}
+                <a href="mailto:deco@newrelic.com">deco@newrelic.com</a>.
+              </p>
             </div>
             <MarketoForm
               id={3525}
