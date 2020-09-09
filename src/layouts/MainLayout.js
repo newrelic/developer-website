@@ -12,6 +12,7 @@ import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import '../components/styles.scss';
 import usePageContext from '../hooks/usePageContext';
+import useResizeObserver from '../hooks/useResizeObserver';
 import { useLocation } from '@reach/router';
 
 const gaTrackingId = 'UA-3047412-33';
@@ -36,6 +37,7 @@ const MainLayout = ({ children }) => {
 
   const location = useLocation();
   const { fileRelativePath } = usePageContext();
+  const [headerRef, headerHeight] = useResizeObserver();
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const isComponentDoc = fileRelativePath.includes(
@@ -57,7 +59,7 @@ const MainLayout = ({ children }) => {
   return (
     <div
       css={css`
-        --global-header-height: 30px;
+        --global-header-height: ${headerHeight}px;
         --sidebar-width: 300px;
 
         min-height: 100vh;
@@ -79,7 +81,16 @@ const MainLayout = ({ children }) => {
           </script>
         ) : null}
       </Helmet>
-      <GlobalHeader editUrl={editUrl} />
+      <div
+        ref={headerRef}
+        css={css`
+          position: sticky;
+          z-index: 99;
+          top: 0;
+        `}
+      >
+        <GlobalHeader editUrl={editUrl} />
+      </div>
       <MobileHeader
         css={css`
           @media (min-width: 761px) {
