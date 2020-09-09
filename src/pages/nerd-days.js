@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
-import {
-  Button,
-  Icon,
-  NewRelicLogo,
-  Surface,
-} from '@newrelic/gatsby-theme-newrelic';
+import { Button, Icon, NewRelicLogo } from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/Seo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
