@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/newrelic/developer-website/compare/v1.17.1...v1.18.0) (2020-09-09)
+
+
+### Features
+
+* Remove call for papers section for EMEA ([36459ae](https://github.com/newrelic/developer-website/commit/36459ae03e6ae5954d856d0d3ee807d24bf63cda))
+
 ## [1.17.1](https://github.com/newrelic/developer-website/compare/v1.17.0...v1.17.1) (2020-09-08)
 
 
