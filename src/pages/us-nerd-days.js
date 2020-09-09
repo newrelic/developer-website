@@ -11,7 +11,7 @@ const NerdDaysPage = () => {
     <>
       <SEO />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="New Relic Nerd Days APJ" />
+        <PageLayout.Header title="New Relic Nerd Days" />
         <PageLayout.Content>
           <section className={cx(styles.section, styles.twoColumnAlt)}>
             <div>
@@ -22,7 +22,7 @@ const NerdDaysPage = () => {
               />
               <p>
                 Nerd Days is a <b>FREE</b> engineering conference that kicks off
-                October 22 <em>(Dates vary by region)</em>. Focused on building
+                October 13 <em>(Dates vary by region)</em>. Focused on building
                 more perfect software, our goal is to spend less time looking at
                 slides that tell you what software can do and more time on
                 getting your hands on the software to solve problems
@@ -36,14 +36,12 @@ const NerdDaysPage = () => {
               <p>
                 We look forward to building with you during Nerd Days! If you
                 have any questions about Nerd Days please emails{' '}
-                <a href="mailto:apac-events@newrelic.com">
-                  APAC-events@newrelic.com
-                </a>
+                <a href="mailto:deco@newrelic.com">deco@newrelic.com</a>.
               </p>
             </div>
             <MarketoForm
-              id={1299}
-              title="REGISTER FOR NERD DAYS | APJ"
+              id={3525}
+              title="REGISTER FOR NERD DAYS | AMERICAS"
               munchkinId="412-MZS-894"
               publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
             />
