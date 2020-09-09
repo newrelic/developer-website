@@ -208,7 +208,12 @@ const NerdDaysPage = () => {
             </ul>
           </section>
 
-          <Section css={alternateSection}>
+          <Section
+            css={css`
+              ${alternateSection}
+              margin-top: 2rem;
+            `}
+          >
             <SectionHeading>Tracks</SectionHeading>
             <SectionDescription>
               Tracks will vary by region. All sessions will be recorded and
