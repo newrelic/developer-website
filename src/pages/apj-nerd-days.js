@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import MarketoForm from '../components/MarketoForm';
@@ -37,7 +36,9 @@ const NerdDaysPage = () => {
               <p>
                 We look forward to building with you during Nerd Days! If you
                 have any questions about Nerd Days please emails{' '}
-                <a href="mailto:apac-events@newrelic.com">APAC-events@newrelic.com</a>
+                <a href="mailto:apac-events@newrelic.com">
+                  APAC-events@newrelic.com
+                </a>
               </p>
             </div>
             <MarketoForm
