@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/newrelic/developer-website/compare/v1.20.0...v1.20.1) (2020-09-09)
+
+
+### Bug Fixes
+
+* add back missing styles removed from nerd days redesign ([ccf9296](https://github.com/newrelic/developer-website/commit/ccf9296822212a0597bce23a5d9b2c238ca36e68))
+
 # [1.20.0](https://github.com/newrelic/developer-website/compare/v1.19.0...v1.20.0) (2020-09-09)
 
 
