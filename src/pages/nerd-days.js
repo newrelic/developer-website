@@ -208,10 +208,7 @@ const NerdDaysPage = () => {
             </ul>
           </section>
 
-          <Section
-            css={alternateSection}
-            className={cx(styles.tracksSection, styles.alternateSection)}
-          >
+          <Section css={alternateSection}>
             <SectionHeading>Tracks</SectionHeading>
             <SectionDescription>
               Tracks will vary by region. All sessions will be recorded and
@@ -258,7 +255,7 @@ const NerdDaysPage = () => {
             </ul>
           </Section>
 
-          <Section className={cx(styles.agendaSection)}>
+          <Section>
             <SectionHeading>Agenda</SectionHeading>
             <SectionDescription>
               We’ve got a packed schedule with thought-leaders of their
@@ -387,8 +384,11 @@ const NerdDaysPage = () => {
           </Section>
 
           <Section
-            css={alternateSection}
-            className={cx(styles.engagementSection, styles.alternateSection)}
+            css={css`
+              ${alternateSection}
+              padding-bottom: 30px;
+              text-align: center;
+            `}
           >
             <SectionHeading>Engage with the developer community</SectionHeading>
 
