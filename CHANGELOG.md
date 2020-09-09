@@ -1,3 +1,27 @@
+# [1.19.0](https://github.com/newrelic/developer-website/compare/v1.18.0...v1.19.0) (2020-09-09)
+
+
+### Bug Fixes
+
+* clean up linting errors + start new section ([fa314b9](https://github.com/newrelic/developer-website/commit/fa314b9ca50a83fa5ad5c50226d2012f1944c962))
+* fix font sizes for firefox ([6805150](https://github.com/newrelic/developer-website/commit/6805150dea3c9e6b918278d02754bd5f766eee2d))
+* lint fixes ([5244bcc](https://github.com/newrelic/developer-website/commit/5244bcc1036173e4ff078718dd9ca9808af87be8))
+* linting fixes ([0f48633](https://github.com/newrelic/developer-website/commit/0f48633dea8e472c0085edd1e8903f7131cd113a))
+* more linting fixes ([f3b5bf6](https://github.com/newrelic/developer-website/commit/f3b5bf691a6fa10f587c0d2d5539a5a71611fa28))
+
+
+### Features
+
+* add final engagement section ([ee6f797](https://github.com/newrelic/developer-website/commit/ee6f797fdf8ca1ca5c60db517f42d2359064d090))
+* add in agenda section and table ([01b327d](https://github.com/newrelic/developer-website/commit/01b327ddd7806158ede76755047b58c2a84c2aa9))
+* add in markup and styles for nerd days ([491d74c](https://github.com/newrelic/developer-website/commit/491d74c8359ba44c189cdeaa9ecf7e7c35f2fa2b))
+* add markup and styles for tracks section ([172f1be](https://github.com/newrelic/developer-website/commit/172f1bebd245043c7dcecd3b9dceb3e5324ab15c))
+* add the rest of the responsive styles for the agenda ([12fdec1](https://github.com/newrelic/developer-website/commit/12fdec13fff382bd4cfe8197a8bdbe43783d3c66))
+* automatically determine the track ([10e5a1a](https://github.com/newrelic/developer-website/commit/10e5a1a4319e0b7eff3e1b417be3f31c4507b9da))
+* create an Agenda component to list sessions ([0d1cf9e](https://github.com/newrelic/developer-website/commit/0d1cf9e4a0b91cd774499c3cc99cb2703ae17b19))
+* responsive styles for nerd days page ([725b6f9](https://github.com/newrelic/developer-website/commit/725b6f9daffb0f9d429c7620acab4a0ae2b001de))
+* shadow feather icon set to append additional needed icons ([56d4038](https://github.com/newrelic/developer-website/commit/56d403810dae27adfa5e7a72f6fc7ed19f95ce82))
+
 # [1.18.0](https://github.com/newrelic/developer-website/compare/v1.17.1...v1.18.0) (2020-09-09)
 
 
