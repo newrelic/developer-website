@@ -1,3 +1,10 @@
+## [1.20.3](https://github.com/newrelic/developer-website/compare/v1.20.2...v1.20.3) (2020-09-10)
+
+
+### Bug Fixes
+
+* infinite loop on useResizeObserver that would repeatedly re-instantiate resize observer instance ([8df3506](https://github.com/newrelic/developer-website/commit/8df35064a033a850a6311695dfa6009850cdc693))
+
 ## [1.20.2](https://github.com/newrelic/developer-website/compare/v1.20.1...v1.20.2) (2020-09-10)
 
 
