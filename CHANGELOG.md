@@ -1,3 +1,10 @@
+## [1.20.2](https://github.com/newrelic/developer-website/compare/v1.20.1...v1.20.2) (2020-09-10)
+
+
+### Bug Fixes
+
+* remove bottom 0 positioning ([b0adad8](https://github.com/newrelic/developer-website/commit/b0adad83c8d3f4453a470cfc3598554e89628ed0))
+
 ## [1.20.1](https://github.com/newrelic/developer-website/compare/v1.20.0...v1.20.1) (2020-09-09)
 
 
