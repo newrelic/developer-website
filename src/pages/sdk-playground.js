@@ -351,6 +351,18 @@ const SdkPlayground = () => {
       setCode(editorRef.current.getValue());
     });
   };
+
+  // const handleEditorWillMount = (monaco) => {
+  //   monaco.languages.register({ id: 'javascript' });
+  //   monaco.languages.registerHoverProvider('javascript', {
+  //     providerHover: (model) => {
+  //       return {
+  //         range: []
+  //       }
+  //     }
+  //   })
+  // };
+
   return (
     <>
       <LiveProvider code={code} scope={window.__NR1_SDK__.default}>
@@ -394,6 +406,8 @@ const SdkPlayground = () => {
             value={defaultCode}
             theme="dark"
             editorDidMount={handleEditorDidMount}
+            //editorWillMount={handleEditorWillMount}
+            //options={{ suggest: false }}
           />
         </div>
       </LiveProvider>
