@@ -1,23 +1,23 @@
-import { useLayoutEffect, useState, useRef } from 'react';
+import { useLayoutEffect, useState } from 'react';
+
+// ResizeObserver is not available at build time
+const ResizeObserver = global.ResizeObserver || class ResizeObserver {};
 
 const useResizeObserver = () => {
-  const ref = useRef(null);
-  const [height, setHeight] = useState(0);
-
-  // ResizeObserver is not available at build time
-  const ResizeObserver = global.ResizeObserver || class ResizeObserver {};
-
-  const resizeObserver = new ResizeObserver((entries) => {
-    entries.forEach((entry) => {
-      setHeight(entry.contentBoxSize.blockSize);
-    });
-  });
+  const [ref, setRef] = useState(null);
+  const [entry, setEntry] = useState(null);
 
   useLayoutEffect(() => {
-    resizeObserver.observe(ref.current);
-  }, [resizeObserver]);
+    const resizeObserver = new ResizeObserver(([entry]) => setEntry(entry));
 
-  return [ref, height];
+    if (ref) {
+      resizeObserver.observe(ref);
+    }
+
+    return () => resizeObserver.disconnect();
+  }, [ref]);
+
+  return [setRef, entry];
 };
 
 export default useResizeObserver;
