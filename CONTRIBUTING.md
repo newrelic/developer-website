@@ -28,6 +28,12 @@
     - [Example navigation change](#example-navigation-change)
       - [EXISTING](#existing)
       - [UPDATED](#updated)
+  - [Split testing and running experiments](#split-testing-and-running-experiments)
+    - [Step 1](#step-1)
+    - [Step 2](#step-2)
+    - [Step 3](#step-3)
+    - [Step 4](#step-4)
+    - [Step 5](#step-5)
 
 ## Guidelines for contributing
 
@@ -279,3 +285,47 @@ In the example below a new navigation element has been added called `New Nav Ite
   }
 ]
 ```
+
+## Split testing and running experiments
+
+If you have access to [Split.io](https://split.io/) as a New Relic employee you can execute a split test
+on the site to measure different scenarios if you are attempting to gather data to make
+a product decision or conduct an experiment.
+
+To execute a split test you'll need to be comfortable with Split.io as well as be able
+to provide the different treatments (in code) of what you wish to test.
+
+To understand how to use Split.io it's recommended to watch this [Introduction video](https://youtu.be/sUFM7dEet8A)
+
+### Step 1
+
+Decide what you want to test, what your hypothesis is and begin to define your
+[experiment](https://youtu.be/BRXpPgedQlE).
+
+- Why are you running the experiment, what is the goal?
+- How will you measure to see if you reached the goal?
+- What is your metrics for success?
+- How long will it take to get to results you want?
+
+### Step 2
+
+Review the [Split.io documentation](https://help.split.io/hc/en-us/articles/360025334851-Step-2-Create-a-split-and-target-users) for creating a split test and targeting users.
+
+### Step 3
+
+Send [event data to Split.io](https://help.split.io/hc/en-us/articles/360025335031-Step-3-Send-event-data)
+
+### Step 4
+
+Measure results by [setting up a metric](https://help.split.io/hc/en-us/articles/360025335091-Step-4-Create-a-metric-monitor-and-measure-the-impact)
+
+A good metric:
+
+- is meaningful
+- is directional
+- has significance
+- is fit for the test you are running
+
+### Step 5
+
+Run the experiment and pick a winner!
