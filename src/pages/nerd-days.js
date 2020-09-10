@@ -261,7 +261,7 @@ const NerdDaysPage = () => {
           </Section>
 
           <Section>
-            <SectionHeading>Agenda</SectionHeading>
+            <SectionHeading>Nerd Days AMER Agenda</SectionHeading>
             <SectionDescription>
               We’ve got a packed schedule with thought-leaders of their
               respective industries
@@ -284,7 +284,7 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 time="9:00 AM"
                 title="Keynote: Observability For Good with Code for America"
-                speaker="Lew Cerne"
+                speaker="Lew Cirne"
                 track={null}
                 span={5}
               />
