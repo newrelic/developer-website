@@ -147,7 +147,7 @@ const NerdDaysPage = () => {
               {` `}
               1-day event focused on building more perfect software
             </h3>
-            <p
+            {/* <p
               css={css`
                 box-sizing: border-box;
                 max-width: 1100px;
@@ -182,7 +182,7 @@ const NerdDaysPage = () => {
               more!) of the events in your region. Sessions will be recorded and
               shared shortly after the event. We look forward to building
               software with you at Nerd Days 1.0!
-            </p>
+            </p> */}
           </section>
           <Section>
             <SectionHeading>Register for Nerd Days 1.0</SectionHeading>
@@ -204,11 +204,18 @@ const NerdDaysPage = () => {
                   can do and more time on getting your hands on the software to
                   solve problems efficiently.
                 </p>
+                <h3>Save the date &amp; join us online</h3>
                 <p>
-                  You’ll hear from fellow engineers who built New Relic
-                  solutions and New Relic users from various industries. Whether
-                  you’re new or a data nerd, there’s an interactive session for
-                  you.
+                  Choose the sessions you're interested in add Nerd Days to your
+                  calendar. You’ll hear from fellow engineers who built New
+                  Relic solutions and New Relic users from various industries.
+                  Whether you’re new or a data nerd, there’s an interactive
+                  session for you.
+                </p>
+                <p>
+                  <strong>Date:</strong> October 13, 2020
+                  <br />
+                  <strong>Time:</strong> 9AM PST - 3PM PST
                 </p>
                 <p>
                   We look forward to building with you during Nerd Days! If you
