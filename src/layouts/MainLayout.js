@@ -122,7 +122,6 @@ const MainLayout = ({ children }) => {
           css={css`
             position: fixed;
             top: var(--global-header-height);
-            bottom: 0;
             width: var(--sidebar-width);
             height: calc(100vh - var(--global-header-height));
             overflow: auto;
