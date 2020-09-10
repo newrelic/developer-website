@@ -37,7 +37,7 @@ const MainLayout = ({ children }) => {
 
   const location = useLocation();
   const { fileRelativePath } = usePageContext();
-  const [headerRef, headerHeight] = useResizeObserver();
+  const [headerRef, headerEntry] = useResizeObserver();
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const isComponentDoc = fileRelativePath.includes(
@@ -59,7 +59,7 @@ const MainLayout = ({ children }) => {
   return (
     <div
       css={css`
-        --global-header-height: ${headerHeight}px;
+        --global-header-height: ${headerEntry?.contentRect.height}px;
         --sidebar-width: 300px;
 
         min-height: 100vh;
@@ -122,7 +122,6 @@ const MainLayout = ({ children }) => {
           css={css`
             position: fixed;
             top: var(--global-header-height);
-            bottom: 0;
             width: var(--sidebar-width);
             height: calc(100vh - var(--global-header-height));
             overflow: auto;
