@@ -24,7 +24,7 @@ const MarketoForm = ({ title, id, munchkinId, publishableKey }) => {
       >
         <p
           css={css`
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: bold;
             text-align: center;
           `}
