@@ -32,6 +32,7 @@
     - [Indicate when something is optional](#indicate-when-something-is-optional)
     - [Abbreviate terms](#abbreviate-terms)
     - [Use SEO optimized titles and descriptions](#use-seo-optimized-titles-and-descriptions)
+  - [Updating table of contents](#updating-table-of-contents)
   - [Using Gatsby templates](#using-gatsby-templates)
   - [Using linters](#using-linters)
   - [Using Frontmatter](#using-frontmatter)
@@ -250,6 +251,12 @@ For example, “In computer science, an abstract syntax tree (AST) is …”
 When defining your titles and descriptions for your pages focus on Search Engine Optimization (SEO) best practices.
 
 However if you need to make a choice between SEO and clarity, always go with a clear title and description over trying to "squeeze" in SEO terms that aren't relevant to the content of the page.
+
+## Updating table of contents
+
+When updating markdown pages that contain a table of contents be sure to update the TOC accordingly as you
+add new sections in the markdown file. You can use an automated tool such as [Markdown-TOC](https://github.com/jonschlinkert/markdown-toc)
+or update the TOC manually.
 
 ## Using Gatsby templates
 

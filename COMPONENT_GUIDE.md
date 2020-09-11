@@ -1,3 +1,25 @@
+- [Globally available components](#globally-available-components)
+  - [Video](#video)
+    - [Usage](#usage)
+  - [Intro](#intro)
+    - [Usage](#usage-1)
+  - [Steps](#steps)
+    - [Usage](#usage-2)
+  - [Step](#step)
+    - [Usage](#usage-3)
+- [A code example](#a-code-example)
+- [Another code example](#another-code-example)
+  - [Code blocks](#code-blocks)
+    - [Usage](#usage-4)
+  - [Callouts](#callouts)
+    - [Usage](#usage-5)
+  - [Related Resources](#related-resources)
+    - [Maximum references](#maximum-references)
+    - [Resource population logic](#resource-population-logic)
+    - [Order of priority](#order-of-priority)
+    - [Resource site tags](#resource-site-tags)
+  - [Announcement Banner](#announcement-banner)
+
 # Globally available components
 
 ## Video
@@ -288,3 +310,8 @@ If you are adding a resource that doesn't currently have a defined site tag, you
 modify this file an add a new site tag accordingly.
 
 When naming the site tag the site domain name should be used for the site tag name.
+
+## Announcement Banner
+
+To utilize the announcement banner that is available in the Global Theme please see these
+[instructions](https://github.com/newrelic/gatsby-theme-newrelic/tree/develop/packages/gatsby-theme-newrelic#announcements).
