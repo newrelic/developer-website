@@ -202,7 +202,7 @@ const NerdDaysPage = () => {
               <CtaItem date="Nov 10, 2020" to="/emea-nerd-days">
                 EMEA Registration
               </CtaItem>
-              <CtaItem date="Oct 22, 2020" to="/apj-nerd-days">
+              <CtaItem date="TBD" to="/apj-nerd-days">
                 APJ Registration
               </CtaItem>
             </ul>
@@ -283,7 +283,7 @@ const NerdDaysPage = () => {
             >
               <Agenda.Session
                 time="9:00 AM"
-                title="Keynote: Observability For Good with Code for America"
+                title="Keynote"
                 speaker="Lew Cirne"
                 track={null}
                 span={5}
