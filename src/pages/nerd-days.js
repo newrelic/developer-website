@@ -148,42 +148,6 @@ const NerdDaysPage = () => {
               {` `}
               1-day event focused on building more perfect software
             </h3>
-            {/* <p
-              css={css`
-                box-sizing: border-box;
-                max-width: 1100px;
-                padding: 0 3rem 1.75rem;
-                margin: 0 auto;
-                font-size: 1rem;
-                columns: 2;
-                column-gap: 1.5rem;
-                text-align: left;
-                color: var(--color-neutrals-300);
-
-                ${breakpoints.laptop} {
-                  columns: 1;
-                }
-
-                ${breakpoints.mobile} {
-                  padding: 0 28px;
-                  font-size: 16px;
-                  line-height: 24px;
-                }
-              `}
-            >
-              Whether you're new to New Relic or a data nerd, Nerd Days 1.0 has
-              something for you. We want to focus on YOU - the engineer, the
-              problem solver, the developer. That's why, our theme this year is
-              Return of the Data Nerd. Our goal is spend less time looking at
-              slides that tell you what you can do, and more time getting your
-              hands on the keyboard to solve problems. The global event will
-              feature Relics, customers, and partners across the globe. You'll
-              hear from experts in New Relic fundamentals, cloud migration,
-              DevOps, open source, and observability. Register for one (or
-              more!) of the events in your region. Sessions will be recorded and
-              shared shortly after the event. We look forward to building
-              software with you at Nerd Days 1.0!
-            </p> */}
           </section>
           <Section>
             <SectionHeading>Register for Nerd Days 1.0</SectionHeading>
@@ -336,7 +300,7 @@ const NerdDaysPage = () => {
             >
               <Agenda.Session
                 time="9:00 AM"
-                title="Keynote: Observability For Good with Code for America"
+                title="Keynote"
                 speaker="Lew Cirne"
                 track={null}
                 span={5}
