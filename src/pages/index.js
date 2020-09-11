@@ -74,7 +74,7 @@ const IndexPage = ({ data, pageContext }) => {
                 more perfect software, our goal is to spend less time looking at
                 slides that tell you what software can do and more time on
                 getting your hands on the software to solve problems
-                efficiently.
+                efficiently. Test test test
               </p>
               <Countdown
                 targetDate="October 13 2020 9:00:00 PDT"
