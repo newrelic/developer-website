@@ -15,6 +15,7 @@ import heroBackgroundPattern from '../images/nerd-days/nerd-days-hero-bg-pattern
 import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
 import HopinLogo from '../components/HopinLogo';
+import MarketoForm from '../components/MarketoForm';
 import styled from '@emotion/styled';
 import Agenda from '../components/Agenda';
 
@@ -45,6 +46,7 @@ const NerdDaysPage = () => {
           <section
             css={css`
               margin-top: -2rem;
+              padding-bottom: 2rem;
               text-align: center;
               background-image: url(${graphLines}),
                 url(${heroBackgroundPattern}),
@@ -146,67 +148,82 @@ const NerdDaysPage = () => {
               {` `}
               1-day event focused on building more perfect software
             </h3>
-            <p
-              css={css`
-                box-sizing: border-box;
-                max-width: 894px;
-                padding: 0 3rem;
-                margin: 0 auto;
-                font-size: 1rem;
-                columns: 2;
-                column-gap: 1.5rem;
-                text-align: left;
-                color: var(--color-neutrals-300);
-
-                ${breakpoints.laptop} {
-                  columns: 1;
-                }
-
-                ${breakpoints.mobile} {
-                  padding: 0 28px;
-                  font-size: 16px;
-                  line-height: 24px;
-                }
-              `}
-            >
-              Whether you're new to New Relic or a data nerd, Nerd Days 1.0 has
-              something for you. We want to focus on YOU - the engineer, the
-              problem solver, the developer. That's why, our theme this year is
-              Return of the Data Nerd. Our goal is spend less time looking at
-              slides that tell you what you can do, and more time getting your
-              hands on the keyboard to solve problems. The global event will
-              feature Relics, customers, and partners across the globe. You'll
-              hear from experts in New Relic fundamentals, cloud migration,
-              DevOps, open source, and observability. Register for one (or
-              more!) of the events in your region. Sessions will be recorded and
-              shared shortly after the event. We look forward to building
-              software with you at Nerd Days 1.0!
-            </p>
-            <ul
-              css={css`
-                padding: 0 48px;
-                margin: 25px 0 30px;
-                display: inline-flex;
-                flex-wrap: wrap;
-                list-style-type: none;
-                justify-content: center;
-
-                ${breakpoints.mobile} {
-                  flex-direction: column;
-                }
-              `}
-            >
-              <CtaItem date="Oct 13, 2020" to="/us-nerd-days">
-                US Registration
-              </CtaItem>
-              <CtaItem date="Nov 10, 2020" to="/emea-nerd-days">
-                EMEA Registration
-              </CtaItem>
-              <CtaItem date="TBD" to="/apj-nerd-days">
-                APJ Registration
-              </CtaItem>
-            </ul>
           </section>
+          <Section>
+            <SectionHeading>Register for Nerd Days 1.0</SectionHeading>
+            <SectionDescription>
+              Nerd Days is a FREE engineering conference that kicks off October
+              13 (Dates vary by region)
+            </SectionDescription>
+            <div
+              className={cx(
+                styles.section,
+                styles.twoColumnAlt,
+                styles.registrationSection
+              )}
+            >
+              <div>
+                <p>
+                  Focused on building more perfect software, our goal is to
+                  spend less time looking at slides that tell you what software
+                  can do and more time on getting your hands on the software to
+                  solve problems efficiently.
+                </p>
+                <h3>Save the date &amp; join us online</h3>
+                <p>
+                  Choose the sessions you're interested in add Nerd Days to your
+                  calendar. You’ll hear from fellow engineers who built New
+                  Relic solutions and New Relic users from various industries.
+                  Whether you’re new or a data nerd, there’s an interactive
+                  session for you.
+                </p>
+                <p>
+                  <strong>Date:</strong> October 13, 2020
+                  <br />
+                  <strong>Time:</strong> 9AM PST - 3PM PST
+                </p>
+                <p>
+                  We look forward to building with you during Nerd Days! If you
+                  have any questions about Nerd Days please emails{' '}
+                  <a href="mailto:deco@newrelic.com">deco@newrelic.com</a>.
+                </p>
+                <h3
+                  css={css`
+                    margin: 25px 0 0 0;
+                  `}
+                >
+                  Additional Nerd Days Events
+                </h3>
+                <ul
+                  css={css`
+                    padding: 0;
+                    margin: 15px 0 30px;
+                    display: inline-flex;
+                    flex-wrap: wrap;
+                    list-style-type: none;
+                    justify-content: center;
+
+                    ${breakpoints.mobile} {
+                      flex-direction: column;
+                    }
+                  `}
+                >
+                  <CtaItem date="Nov 10, 2020" to="/emea-nerd-days">
+                    EMEA Registration
+                  </CtaItem>
+                  <CtaItem date="Nov 11, 2020" to="/apj-nerd-days">
+                    APJ Registration
+                  </CtaItem>
+                </ul>
+              </div>
+              <MarketoForm
+                id={4783}
+                title="REGISTER FOR NERD DAYS | AMERICAS"
+                munchkinId="412-MZS-894"
+                publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
+              />
+            </div>
+          </Section>
 
           <Section
             css={css`
@@ -577,11 +594,11 @@ const CtaItem = ({ date, to, children }) => (
       to={to}
       variant={Button.VARIANT.PRIMARY}
       css={css`
-        background-color: #fff;
+        background-color: #f4f4f5;
         color: #0069ce;
 
         &:hover {
-          background-color: #fff;
+          background-color: #edeeee;
           color: #0069ce;
         }
 
@@ -597,7 +614,7 @@ const CtaItem = ({ date, to, children }) => (
         margin-top: 0.25rem;
         font-size: 0.625rem;
         opacity: 0.75;
-        color: #fff;
+        color: #464e4e;
         text-transform: uppercase;
         letter-spacing: 0.5px;
       `}

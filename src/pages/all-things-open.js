@@ -96,7 +96,10 @@ const allThingsOpenPage = () => {
               />
             </div>
             <div className={styles.point}>
-              <h4>Ruby Served with a side of JavaScript: Migrating to Github Actions for CI</h4>
+              <h4>
+                Ruby Served with a side of JavaScript: Migrating to Github
+                Actions for CI
+              </h4>
               <p>Tues, Oct 20, 2020</p>
               <p>Senior Software Engineer</p>
               <p>Michael Lang</p>
