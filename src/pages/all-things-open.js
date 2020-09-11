@@ -7,6 +7,7 @@ import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import allthingsopen from '../images/all-things-open/allthingsopen.png';
 import gavinjohnson from '../images/all-things-open/gavin-johnson.jpg';
+import michaellang from '../images/all-things-open/michael-lang.jpg';
 import styles from './all-things-open.module.scss';
 
 const allThingsOpenPage = () => {
@@ -83,6 +84,22 @@ const allThingsOpenPage = () => {
               <p>Tues, Oct 20, 2020</p>
               <p>Principal Product Marketing Manager</p>
               <p>Gavin Johnson</p>
+            </div>
+          </section>
+          <h2>Explore resources</h2>
+          <section className={cx(styles.section, styles.assetTable)}>
+            <div>
+              <img
+                className={styles.headshot}
+                src={michaellang}
+                alt="Michael Lang"
+              />
+            </div>
+            <div className={styles.point}>
+              <h4>Ruby Served with a side of JavaScript: Migrating to Github Actions for CI</h4>
+              <p>Tues, Oct 20, 2020</p>
+              <p>Senior Software Engineer</p>
+              <p>Michael Lang</p>
             </div>
           </section>
           <h2>Explore resources</h2>
