@@ -36,7 +36,7 @@
     "gatsby-transformer-remark": "^2.8.26",
     "gatsby-transformer-sharp": "^2.5.10",
     "js-cookie": "^2.2.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "node-sass": "^4.14.1",
     "prism-react-renderer": "^1.1.1",
     "prismjs": "^1.21.0",
