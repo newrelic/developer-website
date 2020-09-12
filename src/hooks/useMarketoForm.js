@@ -7,11 +7,9 @@ const useMarketoForm = (munchkinId, id, publishableKey) => {
       munchkinId,
       id,
       (form) => {
-        //  Add an onSuccess handler
+        // eslint-disable-next-line no-unused-vars
         form.onSuccess(function (values, followUpUrl) {
-          // Take the lead to a different page on successful submit, ignoring the form's configured followUpUrl
           location.href = '/nerd-days-thank-you';
-          // Return false to prevent the submission handler continuing with its own processing
           return false;
         });
       }
