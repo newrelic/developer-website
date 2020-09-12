@@ -2,7 +2,20 @@ import { useEffect } from 'react';
 
 const useMarketoForm = (munchkinId, id, publishableKey) => {
   useEffect(() => {
-    window.MktoForms2.loadForm('//app-abj.marketo.com', munchkinId, id);
+    window.MktoForms2.loadForm(
+      '//app-abj.marketo.com',
+      munchkinId,
+      id,
+      (form) => {
+        //  Add an onSuccess handler
+        form.onSuccess(function (values, followUpUrl) {
+          // Take the lead to a different page on successful submit, ignoring the form's configured followUpUrl
+          location.href = '/nerd-days-thank-you';
+          // Return false to prevent the submission handler continuing with its own processing
+          return false;
+        });
+      }
+    );
 
     const pollForDefinition = (scope, varname, callback) => {
       if (typeof scope[varname] !== 'undefined') {
