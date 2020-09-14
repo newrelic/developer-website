@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
+import { navigate } from 'gatsby';
 
-const useMarketoForm = (munchkinId, id, publishableKey) => {
+const useMarketoForm = (munchkinId, id, publishableKey, thankYou) => {
   useEffect(() => {
     window.MktoForms2.loadForm(
       '//app-abj.marketo.com',
@@ -9,8 +10,7 @@ const useMarketoForm = (munchkinId, id, publishableKey) => {
       (form) => {
         // eslint-disable-next-line no-unused-vars
         form.onSuccess(function (values, followUpUrl) {
-          location.href = 'https://developer.newrelic.com/nerd-days-thank-you';
-          return false;
+          navigate(thankYou);
         });
       }
     );
