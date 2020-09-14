@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { navigate } from 'gatsby';
 
-const useMarketoForm = (munchkinId, id, publishableKey, thankYou) => {
+const useMarketoForm = (munchkinId, id, publishableKey, redirectLink) => {
   useEffect(() => {
     window.MktoForms2.loadForm(
       '//app-abj.marketo.com',
