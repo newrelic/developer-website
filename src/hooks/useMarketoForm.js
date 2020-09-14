@@ -10,7 +10,7 @@ const useMarketoForm = (munchkinId, id, publishableKey, redirectLink) => {
       (form) => {
         // eslint-disable-next-line no-unused-vars
         form.onSuccess(function (values, followUpUrl) {
-          navigate(thankYou);
+          navigate(redirectLink);
         });
       }
     );
