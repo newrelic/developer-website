@@ -221,6 +221,7 @@ const NerdDaysPage = () => {
                 title="REGISTER FOR NERD DAYS | AMERICAS"
                 munchkinId="412-MZS-894"
                 publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
+                redirectLink="/nerd-days-thank-you"
               />
             </div>
           </Section>
