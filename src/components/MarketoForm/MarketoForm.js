@@ -42,7 +42,7 @@ MarketoForm.propTypes = {
   id: PropTypes.number.isRequired,
   munchkinId: PropTypes.string.isRequired,
   publishableKey: PropTypes.string.isRequired,
-  thankYou: PropTypes.string.isRequired,
+  redirectLink: PropTypes.string.isRequired,
 };
 
 export default MarketoForm;
