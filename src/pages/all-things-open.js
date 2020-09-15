@@ -7,6 +7,7 @@ import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import allthingsopen from '../images/all-things-open/allthingsopen.png';
 import gavinjohnson from '../images/all-things-open/gavin-johnson.jpg';
+import michaellang from '../images/all-things-open/michael-lang.jpg';
 import styles from './all-things-open.module.scss';
 
 const allThingsOpenPage = () => {
@@ -68,7 +69,7 @@ const allThingsOpenPage = () => {
           </section>
           <section className={styles.section}>
             <h2>Visit us in the virtual expo hall</h2>
-            <hr></hr>
+            <hr />
           </section>
           <section className={cx(styles.section, styles.assetTable)}>
             <div>
@@ -86,7 +87,26 @@ const allThingsOpenPage = () => {
             </div>
           </section>
           <h2>Explore resources</h2>
-          <hr></hr>
+          <section className={cx(styles.section, styles.assetTable)}>
+            <div>
+              <img
+                className={styles.headshot}
+                src={michaellang}
+                alt="Michael Lang"
+              />
+            </div>
+            <div className={styles.point}>
+              <h4>
+                Ruby Served with a side of JavaScript: Migrating to Github
+                Actions for CI
+              </h4>
+              <p>Tues, Oct 20, 2020</p>
+              <p>Senior Software Engineer</p>
+              <p>Michael Lang</p>
+            </div>
+          </section>
+          <h2>Explore resources</h2>
+          <hr />
           <section className={cx(styles.section, styles.assetTable)}>
             <div className={styles.point}>
               <h4>How to use the Kubernetes cluster explorer</h4>

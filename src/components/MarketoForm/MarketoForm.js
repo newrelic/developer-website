@@ -4,8 +4,8 @@ import { css } from '@emotion/core';
 import './marketo.scss';
 import useMarketoForm from '../../hooks/useMarketoForm';
 
-const MarketoForm = ({ title, id, munchkinId, publishableKey }) => {
-  useMarketoForm(munchkinId, id, publishableKey);
+const MarketoForm = ({ title, id, munchkinId, publishableKey, redirectLink }) => {
+  useMarketoForm(munchkinId, id, publishableKey, redirectLink);
 
   return (
     <div
@@ -24,7 +24,7 @@ const MarketoForm = ({ title, id, munchkinId, publishableKey }) => {
       >
         <p
           css={css`
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: bold;
             text-align: center;
           `}
@@ -42,6 +42,7 @@ MarketoForm.propTypes = {
   id: PropTypes.number.isRequired,
   munchkinId: PropTypes.string.isRequired,
   publishableKey: PropTypes.string.isRequired,
+  redirectLink: PropTypes.string.isRequired,
 };
 
 export default MarketoForm;

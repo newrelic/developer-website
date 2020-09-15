@@ -1,3 +1,120 @@
+## [1.20.4](https://github.com/newrelic/developer-website/compare/v1.20.3...v1.20.4) (2020-09-11)
+
+
+### Bug Fixes
+
+* upgrade @emotion/core from 10.0.28 to 10.0.35 ([a975f08](https://github.com/newrelic/developer-website/commit/a975f085e0b760558e26a47c37c2874fe811c144))
+* upgrade eslint-plugin-react-hooks from 4.0.8 to 4.1.0 ([cef856b](https://github.com/newrelic/developer-website/commit/cef856bd61e55783d2662f1d1250b68979d60ef7))
+
+## [1.20.3](https://github.com/newrelic/developer-website/compare/v1.20.2...v1.20.3) (2020-09-10)
+
+
+### Bug Fixes
+
+* infinite loop on useResizeObserver that would repeatedly re-instantiate resize observer instance ([8df3506](https://github.com/newrelic/developer-website/commit/8df35064a033a850a6311695dfa6009850cdc693))
+
+## [1.20.2](https://github.com/newrelic/developer-website/compare/v1.20.1...v1.20.2) (2020-09-10)
+
+
+### Bug Fixes
+
+* remove bottom 0 positioning ([b0adad8](https://github.com/newrelic/developer-website/commit/b0adad83c8d3f4453a470cfc3598554e89628ed0))
+
+## [1.20.1](https://github.com/newrelic/developer-website/compare/v1.20.0...v1.20.1) (2020-09-09)
+
+
+### Bug Fixes
+
+* add back missing styles removed from nerd days redesign ([ccf9296](https://github.com/newrelic/developer-website/commit/ccf9296822212a0597bce23a5d9b2c238ca36e68))
+
+# [1.20.0](https://github.com/newrelic/developer-website/compare/v1.19.0...v1.20.0) (2020-09-09)
+
+
+### Bug Fixes
+
+* corrected registration links ([9754ec4](https://github.com/newrelic/developer-website/commit/9754ec4d3dd67519a3a5b912f522e5ff2ab47f0b))
+* only create pages for mardown in `markdown-pages` directory ([5b78418](https://github.com/newrelic/developer-website/commit/5b784182fe89723c1bb9634bc18a5266eafc692e))
+* update sidebar positioning based on header height ([4837e8f](https://github.com/newrelic/developer-website/commit/4837e8f7ee064af64ac11b3ac4f85bb3ae0b403e))
+
+
+### Features
+
+* resize observer hook ([564d647](https://github.com/newrelic/developer-website/commit/564d6473a8b9a345a68b569af662c5faac89e60f))
+
+# [1.19.0](https://github.com/newrelic/developer-website/compare/v1.18.0...v1.19.0) (2020-09-09)
+
+
+### Bug Fixes
+
+* clean up linting errors + start new section ([fa314b9](https://github.com/newrelic/developer-website/commit/fa314b9ca50a83fa5ad5c50226d2012f1944c962))
+* fix font sizes for firefox ([6805150](https://github.com/newrelic/developer-website/commit/6805150dea3c9e6b918278d02754bd5f766eee2d))
+* lint fixes ([5244bcc](https://github.com/newrelic/developer-website/commit/5244bcc1036173e4ff078718dd9ca9808af87be8))
+* linting fixes ([0f48633](https://github.com/newrelic/developer-website/commit/0f48633dea8e472c0085edd1e8903f7131cd113a))
+* more linting fixes ([f3b5bf6](https://github.com/newrelic/developer-website/commit/f3b5bf691a6fa10f587c0d2d5539a5a71611fa28))
+
+
+### Features
+
+* add final engagement section ([ee6f797](https://github.com/newrelic/developer-website/commit/ee6f797fdf8ca1ca5c60db517f42d2359064d090))
+* add in agenda section and table ([01b327d](https://github.com/newrelic/developer-website/commit/01b327ddd7806158ede76755047b58c2a84c2aa9))
+* add in markup and styles for nerd days ([491d74c](https://github.com/newrelic/developer-website/commit/491d74c8359ba44c189cdeaa9ecf7e7c35f2fa2b))
+* add markup and styles for tracks section ([172f1be](https://github.com/newrelic/developer-website/commit/172f1bebd245043c7dcecd3b9dceb3e5324ab15c))
+* add the rest of the responsive styles for the agenda ([12fdec1](https://github.com/newrelic/developer-website/commit/12fdec13fff382bd4cfe8197a8bdbe43783d3c66))
+* automatically determine the track ([10e5a1a](https://github.com/newrelic/developer-website/commit/10e5a1a4319e0b7eff3e1b417be3f31c4507b9da))
+* create an Agenda component to list sessions ([0d1cf9e](https://github.com/newrelic/developer-website/commit/0d1cf9e4a0b91cd774499c3cc99cb2703ae17b19))
+* responsive styles for nerd days page ([725b6f9](https://github.com/newrelic/developer-website/commit/725b6f9daffb0f9d429c7620acab4a0ae2b001de))
+* shadow feather icon set to append additional needed icons ([56d4038](https://github.com/newrelic/developer-website/commit/56d403810dae27adfa5e7a72f6fc7ed19f95ce82))
+
+# [1.18.0](https://github.com/newrelic/developer-website/compare/v1.17.1...v1.18.0) (2020-09-09)
+
+
+### Features
+
+* Remove call for papers section for EMEA ([36459ae](https://github.com/newrelic/developer-website/commit/36459ae03e6ae5954d856d0d3ee807d24bf63cda))
+
+## [1.17.1](https://github.com/newrelic/developer-website/compare/v1.17.0...v1.17.1) (2020-09-08)
+
+
+### Bug Fixes
+
+* upgrade react-shadow from 18.2.5 to 18.3.0 ([1f70aea](https://github.com/newrelic/developer-website/commit/1f70aea8537c1f1c6a2887e97a244a1f94d24fe1))
+
+# [1.17.0](https://github.com/newrelic/developer-website/compare/v1.16.0...v1.17.0) (2020-09-04)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic version ([92db2ef](https://github.com/newrelic/developer-website/commit/92db2efde93fdf5cd835a67026d1c337b5c93643))
+
+
+### Features
+
+* add a useTreatment hook ([e9c8aac](https://github.com/newrelic/developer-website/commit/e9c8aac6ea9e67027c9a81c20297dc487842d10f))
+* load treatments from split for contribute buttons ([cd9007f](https://github.com/newrelic/developer-website/commit/cd9007fed977f018e5092de1f9f72222c20329ee))
+
+# [1.16.0](https://github.com/newrelic/developer-website/compare/v1.15.3...v1.16.0) (2020-09-03)
+
+
+### Bug Fixes
+
+* add back editUrl prop for global header ([1456db6](https://github.com/newrelic/developer-website/commit/1456db69d113f9fca57d406edd74d9e1ebcca641))
+* bump gatsby-theme-newrelic version ([be79f72](https://github.com/newrelic/developer-website/commit/be79f729f7d39e432ef14e4742dd725f05f69480))
+* fix lint errors ([4e54a71](https://github.com/newrelic/developer-website/commit/4e54a716d7bc542ff2719d790788c0d91ca299af))
+* upgrade gatsby-theme-newrelic ([666450b](https://github.com/newrelic/developer-website/commit/666450be72c11071411839017fc91a7d6a720c7e))
+
+
+### Features
+
+* add splitio configuration ([04a6765](https://github.com/newrelic/developer-website/commit/04a6765abdbe5a31025fcecdcab8ff4875916af7))
+
+## [1.15.3](https://github.com/newrelic/developer-website/compare/v1.15.2...v1.15.3) (2020-09-02)
+
+
+### Bug Fixes
+
+* fix lint errors preventing pushes ([9c600d7](https://github.com/newrelic/developer-website/commit/9c600d7e196a164300328c498664735637118b78))
+* lint warnings in countdown container ([ca14b49](https://github.com/newrelic/developer-website/commit/ca14b49f5a4575ed95655a7edcd810c5ac92730c))
+
 ## [1.15.2](https://github.com/newrelic/developer-website/compare/v1.15.1...v1.15.2) (2020-08-31)
 
 
