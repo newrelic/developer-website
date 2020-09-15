@@ -171,6 +171,23 @@ For more on publishing and deploying, see [Deploy to New Relic One](/build-tools
 
 ***
 
+## `nr1 nerdpack:undeploy`
+### Undeploy your Nerdpack
+Undeploys a Nerdpack version from a specific channel (for example, DEV, BETA, or STABLE). 
+
+### Usage
+`$ nr1 nerdpack:undeploy OPTION` 
+
+### Options
+| | |
+|---|---|
+|  `-c, --channel=DEV/BETA/STABLE` | Specifies the channel to undeploy from. **(required)** |
+|  `-i, --nerdpack-id=NERDPACK_ID` | Specifies the Nerdpack to deploy. By default, the command will use the one in package.json. |
+|  `--profile=PROFILE`             | The authentication profile you want to use. |
+|  `--verbose`                     | Adds extra information to the output. |
+
+***
+
 ## `nr1 nerdpack:clean`
 ### Removes all built artifacts
 Cleans and removes the content and the developtment folders (dist/, tmp/).
