@@ -42,7 +42,7 @@ const useMarketoForm = (munchkinId, id, publishableKey, redirectLink) => {
       });
     };
     document.body.append(script);
-  }, [munchkinId, id, publishableKey]);
+  }, [munchkinId, id, publishableKey, redirectLink]);
 };
 
 export default useMarketoForm;

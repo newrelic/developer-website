@@ -4,7 +4,13 @@ import { css } from '@emotion/core';
 import './marketo.scss';
 import useMarketoForm from '../../hooks/useMarketoForm';
 
-const MarketoForm = ({ title, id, munchkinId, publishableKey, redirectLink }) => {
+const MarketoForm = ({
+  title,
+  id,
+  munchkinId,
+  publishableKey,
+  redirectLink,
+}) => {
   useMarketoForm(munchkinId, id, publishableKey, redirectLink);
 
   return (
