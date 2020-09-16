@@ -364,11 +364,15 @@ Refer to the [formatting inline code and code blocks section](https://github.com
 
 ### Adding images
 
-Refer to the [images section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images) in the Markdown cheat sheet to learn how to use images in your Markdown.
+When adding images to a content page refer to the [images section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images) in the Markdown cheat sheet to learn how to use images in your Markdown.
+
+Images are stored in the [images directory](src/images) and organized by navigation section name. For example, the images for the [Build an App Guide](src/markdown-pages/build-apps/build-hello-world-app.mdx) are located in the [build-an-app directory](src/images/build-an-app).
 
 ### Adding videos
 
-Refer to the [videos section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#youtube-videos) in the Markdown cheat sheet to learn how use videos in your Markdown.
+When adding videos to a content page refer to the [videos section](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#youtube-videos) in the Markdown cheat sheet to learn how use videos in your Markdown.
+
+Videos are not stored within the site source code. All videos should be stored and reference from a video hosting site.
 
 ### Code Formatting: Type Tab
 
