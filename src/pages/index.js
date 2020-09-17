@@ -18,7 +18,6 @@ import { pageContext } from '../types';
 import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
-import nerdDays from '../images/nerd-days/nerd-days.png';
 import Countdown from '../components/Countdown';
 
 const getStartedGuides = [
