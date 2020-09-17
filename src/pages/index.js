@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 
 import SEO from '../components/Seo';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Video } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import PageLayout from '../components/PageLayout';
@@ -97,12 +97,12 @@ const IndexPage = ({ data, pageContext }) => {
                 width: 100%;
               `}
             >
-              <img
+              <Video
                 css={css`
                   width: inherit;
                 `}
-                src={nerdDays}
-                alt="nerd days header"
+                id="yop0mw3otv"
+                type="wistia"
               />
             </div>
           </section>
