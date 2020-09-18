@@ -42,9 +42,11 @@ const onInitialClientRender = () => {
   }
 
   // eslint-disable-next-line no-undef
-  MktoForms2.whenRendered(function (form) {
-    destyleMktoForm(form);
-  });
+  if (window.MktoForms2) {
+    MktoForms2.whenRendered(function (form) {
+      destyleMktoForm(form);
+    });
+  }
 };
 
 const onRouteUpdate = ({ location }) => {
