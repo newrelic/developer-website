@@ -22,7 +22,7 @@ const NerdDaysPage = () => {
               />
               <p>
                 Nerd Days is a <b>FREE</b> engineering conference that kicks off
-                November 11 <em>(Dates vary by region)</em>. Focused on building
+                October 22 <em>(Dates vary by region)</em>. Focused on building
                 more perfect software, our goal is to spend less time looking at
                 slides that tell you what software can do and more time on
                 getting your hands on the software to solve problems
@@ -35,7 +35,7 @@ const NerdDaysPage = () => {
               </p>
               <h3>Save the date &amp; join us online</h3>
               <p>
-                <strong>Date:</strong> November 11, 2020
+                <strong>Date:</strong> October 22, 2020
                 <br />
                 <strong>Nerd Days Starts:</strong> 12PM AEDT/ 9AM SGT/ 6:30AM
                 IST
