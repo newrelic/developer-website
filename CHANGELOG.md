@@ -1,3 +1,10 @@
+## [1.20.5](https://github.com/newrelic/developer-website/compare/v1.20.4...v1.20.5) (2020-09-20)
+
+
+### Bug Fixes
+
+* upgrade date-fns from 2.15.0 to 2.16.0 ([cbe8919](https://github.com/newrelic/developer-website/commit/cbe8919fd131b96406fbbb4fe49dca316b28ef7e))
+
 ## [1.20.4](https://github.com/newrelic/developer-website/compare/v1.20.3...v1.20.4) (2020-09-11)
 
 
