@@ -8,7 +8,6 @@ import SEO from '../components/Seo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerd-days.module.scss';
-import roadIcon from '../images/nerd-days/icon-road.svg';
 import NerdDaysLogo from '../components/NerdDaysLogo';
 import graphLines from '../images/nerd-days/hero-image-graph-lines.png';
 import heroBackgroundPattern from '../images/nerd-days/nerd-days-hero-bg-pattern.png';
@@ -182,7 +181,7 @@ const NerdDaysPage = () => {
                 <p>
                   <strong>Date:</strong> November 10, 2020
                   <br />
-                  <strong>Time:</strong> 9AM - 3PM
+                  <strong>Time:</strong> 9AM CET - 2:45PM CET
                 </p>
                 <p>
                   We look forward to building with you during Nerd Days! If you
@@ -258,16 +257,8 @@ const NerdDaysPage = () => {
                 icon={<TrackFeatherIcon name="eye" size="87px" />}
               />
               <TrackItem
-                name="Cloud migration"
-                icon={<TrackFeatherIcon name="upload-cloud" size="87px" />}
-              />
-              <TrackItem
                 name="Open source"
                 icon={<img src={openSourceIcon} alt="open source" />}
-              />
-              <TrackItem
-                name="Devops journey"
-                icon={<img src={roadIcon} alt="devops journey" />}
               />
               <TrackItem
                 name="Fundamentals"
@@ -288,124 +279,75 @@ const NerdDaysPage = () => {
               We’ve got a packed schedule with thought-leaders of their
               respective industries
             </SectionDescription>
-
             <Agenda
               css={css`
                 max-width: 1000px;
                 margin: 0 auto;
               `}
               mobileBreakpoint="1000px"
-              tracks={[
-                'Fundamentals',
-                'Observability',
-                'Cloud migration',
-                'DevOps journey',
-                'Open source',
-              ]}
+              tracks={['Observability', 'Open source', 'Fundamentals']}
             >
               <Agenda.Session
                 time="9:00 AM"
                 title="Keynote: Observability For Good with Code for America"
                 speaker="Lew Cirne"
                 track={null}
-                span={5}
+                span={3}
+              />
+              <Agenda.Session time="10:00 AM" title="Golden Signals" />
+              <Agenda.Session
+                time="10:00 AM"
+                title="React and the power of visualization"
               />
               <Agenda.Session
                 time="10:00 AM"
                 title="Instrumenting your service using agents "
               />
               <Agenda.Session
-                time="10:00 AM"
-                title="Increased Maturity with Full Stack Observability "
+                time="11:00 AM"
+                title="Setting SLOs, SLAs and SLIs in the Real World"
               />
               <Agenda.Session
-                time="10:00 AM"
-                title="Deploying an app on Kubernetes"
-              />
-              <Agenda.Session
-                time="10:00 AM"
-                title="Delivering SRE as a Service"
-              />
-              <Agenda.Session
-                time="10:00 AM"
-                title="Building applications on New Relic One"
+                time="11:00 AM"
+                title="Digging into Kubernetes's data"
               />
               <Agenda.Session
                 time="11:00 AM"
                 title="Exploring your data using NRQL"
               />
-              <Agenda.Session time="11:00 AM" title="New Relic AI" />
-              <Agenda.Session
-                time="11:00 AM"
-                title="Going Serverless: Chipping at the monolith "
-              />
-              <Agenda.Session
-                time="11:00 AM"
-                title="Logging for Modern Organizations"
-              />
-              <Agenda.Session
-                time="11:00 AM"
-                title="Grafana and Prometheus with TDP"
-              />
               <Agenda.Session
                 inactive
                 time="12:00 PM"
                 title="Lunch Break"
-                speaker="Distant Disco"
                 track={null}
-                span={5}
+                span={3}
+              />
+              <Agenda.Session
+                time="12:30 PM"
+                title="Fireside Chat"
+                track={null}
+                span={3}
+              />
+              <Agenda.Session
+                time="1:00 PM"
+                title="From Monolith to Observable Microservices"
+              />
+              <Agenda.Session
+                time="1:00 PM"
+                title="Reducing toil with Terraform"
               />
               <Agenda.Session time="1:00 PM" title="Custom Instrumentation" />
+              <Agenda.Session time="2:00 PM" title="Stressing your services" />
+              <Agenda.Session time="2:00 PM" title="Plot your data" />
+              <Agenda.Session time="2:00 PM" title="Alerts Best Practices" />
+              <Agenda.Session time="3:00 PM" title="A journey to the cloud" />
               <Agenda.Session
-                time="1:00 PM"
-                title="Exploring Data with NerdGraph"
-              />
-              <Agenda.Session time="1:00 PM" title="Tool Consolidation" />
-              <Agenda.Session
-                time="1:00 PM"
-                title="Flex Integration - Build Your First Linux Configuration"
-              />
-              <Agenda.Session
-                time="1:00 PM"
-                title="Open Source powers the New Relic One Catalog"
-              />
-              <Agenda.Session time="2:00 PM" title="Alerts Best Practices " />
-              <Agenda.Session
-                time="2:00 PM"
-                title="The Art & Science of Deciphering Perceived Performance: A look at how user behavior affects your data"
-              />
-              <Agenda.Session
-                time="2:00 PM"
-                title="Kubernetes Observability "
-              />
-              <Agenda.Session time="2:00 PM" title="Measuring code pipelines" />
-              <Agenda.Session
-                time="2:00 PM"
-                title="New Relic CLI Wizardry/ Reducing toil with Terraform"
+                time="3:00 PM"
+                title="Open Source from the scratch"
               />
               <Agenda.Session
                 time="3:00 PM"
-                title="True availability using Synthetics "
-              />
-              <Agenda.Session
-                time="3:00 PM"
-                title="How Observability-Driven Development accelerates DevOps transformations"
-              />
-              <Agenda.Session
-                time="3:00 PM"
-                title="CFP Customer Session: Cloud fundamentals"
-              />
-              <Agenda.Session time="3:00 PM" title="Testing in Production" />
-              <Agenda.Session
-                time="3:00 PM"
-                title="NerdStorageVault: ThirdParty Secrets"
-              />
-              <Agenda.Session
-                time="4:00 PM"
-                title="Closing + Swag"
-                speaker="Jemiah Sius and Team"
-                track={null}
-                span={5}
+                title="True availability using Synthetics"
               />
             </Agenda>
           </Section>
