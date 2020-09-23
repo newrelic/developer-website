@@ -289,7 +289,7 @@ const NerdDaysPage = () => {
             >
               <Agenda.Session
                 time="9:00 AM"
-                title="Keynote: Observability For Good with Code for America"
+                title="Keynote: Observability For Good"
                 speaker="Lew Cirne"
                 track={null}
                 span={3}
