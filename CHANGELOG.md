@@ -1,3 +1,13 @@
+## [1.21.1](https://github.com/newrelic/developer-website/compare/v1.21.0...v1.21.1) (2020-09-23)
+
+
+### Bug Fixes
+
+* only reference mktoForms2 when available ([041277c](https://github.com/newrelic/developer-website/commit/041277ccaebd6de69624e4e501e97b3d0ae391a5))
+* package.json & package-lock.json to reduce vulnerabilities ([3854316](https://github.com/newrelic/developer-website/commit/3854316297b6e08f235c6315b4ff30f15d99ab62))
+* upgrade date-fns from 2.16.0 to 2.16.1 ([bdd6634](https://github.com/newrelic/developer-website/commit/bdd663454565c229f5ac4cfc4c148df8112c639c))
+* upgrade gatsby-plugin-mdx from 1.2.34 to 1.2.35 ([d24ff81](https://github.com/newrelic/developer-website/commit/d24ff81eea26463cf715bc35a8449ec9018ce04c))
+
 # [1.21.0](https://github.com/newrelic/developer-website/compare/v1.20.5...v1.21.0) (2020-09-23)
 
 
