@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/newrelic/developer-website/compare/v1.20.5...v1.21.0) (2020-09-23)
+
+
+### Features
+
+* Update EMEA calendar ([b9f3a89](https://github.com/newrelic/developer-website/commit/b9f3a89242e6dd591bdee14030b01cffdf2b4b52))
+
 ## [1.20.5](https://github.com/newrelic/developer-website/compare/v1.20.4...v1.20.5) (2020-09-20)
 
 
