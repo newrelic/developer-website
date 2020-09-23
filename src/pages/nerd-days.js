@@ -148,42 +148,6 @@ const NerdDaysPage = () => {
               {` `}
               1-day event focused on building more perfect software
             </h3>
-            {/* <p
-              css={css`
-                box-sizing: border-box;
-                max-width: 1100px;
-                padding: 0 3rem 1.75rem;
-                margin: 0 auto;
-                font-size: 1rem;
-                columns: 2;
-                column-gap: 1.5rem;
-                text-align: left;
-                color: var(--color-neutrals-300);
-
-                ${breakpoints.laptop} {
-                  columns: 1;
-                }
-
-                ${breakpoints.mobile} {
-                  padding: 0 28px;
-                  font-size: 16px;
-                  line-height: 24px;
-                }
-              `}
-            >
-              Whether you're new to New Relic or a data nerd, Nerd Days 1.0 has
-              something for you. We want to focus on YOU - the engineer, the
-              problem solver, the developer. That's why, our theme this year is
-              Return of the Data Nerd. Our goal is spend less time looking at
-              slides that tell you what you can do, and more time getting your
-              hands on the keyboard to solve problems. The global event will
-              feature Relics, customers, and partners across the globe. You'll
-              hear from experts in New Relic fundamentals, cloud migration,
-              DevOps, open source, and observability. Register for one (or
-              more!) of the events in your region. Sessions will be recorded and
-              shared shortly after the event. We look forward to building
-              software with you at Nerd Days 1.0!
-            </p> */}
           </section>
           <Section>
             <SectionHeading>Register for Nerd Days 1.0</SectionHeading>
@@ -244,10 +208,7 @@ const NerdDaysPage = () => {
                     }
                   `}
                 >
-                  {/* <CtaItem date="Oct 13, 2020" to="/us-nerd-days">
-                    US Registration
-                  </CtaItem> */}
-                  <CtaItem date="Oct 21, 2020" to="/emea-nerd-days">
+                  <CtaItem date="Nov 10, 2020" to="/emea-nerd-days">
                     EMEA Registration
                   </CtaItem>
                   <CtaItem date="Oct 22, 2020" to="/apj-nerd-days">
@@ -256,10 +217,11 @@ const NerdDaysPage = () => {
                 </ul>
               </div>
               <MarketoForm
-                id={3525}
+                id={4783}
                 title="REGISTER FOR NERD DAYS | AMERICAS"
                 munchkinId="412-MZS-894"
                 publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
+                redirectLink="/nerd-days-thank-you"
               />
             </div>
           </Section>
@@ -339,7 +301,7 @@ const NerdDaysPage = () => {
             >
               <Agenda.Session
                 time="9:00 AM"
-                title="Keynote: Observability For Good with Code for America"
+                title="Keynote"
                 speaker="Lew Cirne"
                 track={null}
                 span={5}
@@ -651,9 +613,7 @@ const CtaItem = ({ date, to, children }) => (
     <span
       css={css`
         margin-top: 0.25rem;
-        font-size: 0.625rem;
-        opacity: 0.75;
-        color: #464e4e;
+        font-size: 0.9rem;
         text-transform: uppercase;
         letter-spacing: 0.5px;
       `}

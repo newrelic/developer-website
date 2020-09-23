@@ -1,3 +1,18 @@
+## [1.20.5](https://github.com/newrelic/developer-website/compare/v1.20.4...v1.20.5) (2020-09-20)
+
+
+### Bug Fixes
+
+* upgrade date-fns from 2.15.0 to 2.16.0 ([cbe8919](https://github.com/newrelic/developer-website/commit/cbe8919fd131b96406fbbb4fe49dca316b28ef7e))
+
+## [1.20.4](https://github.com/newrelic/developer-website/compare/v1.20.3...v1.20.4) (2020-09-11)
+
+
+### Bug Fixes
+
+* upgrade @emotion/core from 10.0.28 to 10.0.35 ([a975f08](https://github.com/newrelic/developer-website/commit/a975f085e0b760558e26a47c37c2874fe811c144))
+* upgrade eslint-plugin-react-hooks from 4.0.8 to 4.1.0 ([cef856b](https://github.com/newrelic/developer-website/commit/cef856bd61e55783d2662f1d1250b68979d60ef7))
+
 ## [1.20.3](https://github.com/newrelic/developer-website/compare/v1.20.2...v1.20.3) (2020-09-10)
 
 

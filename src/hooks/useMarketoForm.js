@@ -1,8 +1,19 @@
 import { useEffect } from 'react';
+import { navigate } from 'gatsby';
 
-const useMarketoForm = (munchkinId, id, publishableKey) => {
+const useMarketoForm = (munchkinId, id, publishableKey, redirectLink) => {
   useEffect(() => {
-    window.MktoForms2.loadForm('//app-abj.marketo.com', munchkinId, id);
+    window.MktoForms2.loadForm(
+      '//app-abj.marketo.com',
+      munchkinId,
+      id,
+      (form) => {
+        // eslint-disable-next-line no-unused-vars
+        form.onSuccess(function (values, followUpUrl) {
+          navigate(redirectLink);
+        });
+      }
+    );
 
     const pollForDefinition = (scope, varname, callback) => {
       if (typeof scope[varname] !== 'undefined') {
@@ -31,7 +42,7 @@ const useMarketoForm = (munchkinId, id, publishableKey) => {
       });
     };
     document.body.append(script);
-  }, [munchkinId, id, publishableKey]);
+  }, [munchkinId, id, publishableKey, redirectLink]);
 };
 
 export default useMarketoForm;
