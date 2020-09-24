@@ -1,3 +1,10 @@
+## [1.21.2](https://github.com/newrelic/developer-website/compare/v1.21.1...v1.21.2) (2020-09-24)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-mdx from 1.2.35 to 1.2.37 ([7c7f765](https://github.com/newrelic/developer-website/commit/7c7f7659b442e2e331414485b0f9029341217487))
+
 ## [1.21.1](https://github.com/newrelic/developer-website/compare/v1.21.0...v1.21.1) (2020-09-23)
 
 
