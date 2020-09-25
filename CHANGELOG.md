@@ -1,3 +1,377 @@
+## [1.21.2](https://github.com/newrelic/developer-website/compare/v1.21.1...v1.21.2) (2020-09-24)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-mdx from 1.2.35 to 1.2.37 ([7c7f765](https://github.com/newrelic/developer-website/commit/7c7f7659b442e2e331414485b0f9029341217487))
+
+## [1.21.1](https://github.com/newrelic/developer-website/compare/v1.21.0...v1.21.1) (2020-09-23)
+
+
+### Bug Fixes
+
+* only reference mktoForms2 when available ([041277c](https://github.com/newrelic/developer-website/commit/041277ccaebd6de69624e4e501e97b3d0ae391a5))
+* package.json & package-lock.json to reduce vulnerabilities ([3854316](https://github.com/newrelic/developer-website/commit/3854316297b6e08f235c6315b4ff30f15d99ab62))
+* upgrade date-fns from 2.16.0 to 2.16.1 ([bdd6634](https://github.com/newrelic/developer-website/commit/bdd663454565c229f5ac4cfc4c148df8112c639c))
+* upgrade gatsby-plugin-mdx from 1.2.34 to 1.2.35 ([d24ff81](https://github.com/newrelic/developer-website/commit/d24ff81eea26463cf715bc35a8449ec9018ce04c))
+
+# [1.21.0](https://github.com/newrelic/developer-website/compare/v1.20.5...v1.21.0) (2020-09-23)
+
+
+### Features
+
+* Update EMEA calendar ([b9f3a89](https://github.com/newrelic/developer-website/commit/b9f3a89242e6dd591bdee14030b01cffdf2b4b52))
+
+## [1.20.5](https://github.com/newrelic/developer-website/compare/v1.20.4...v1.20.5) (2020-09-20)
+
+
+### Bug Fixes
+
+* upgrade date-fns from 2.15.0 to 2.16.0 ([cbe8919](https://github.com/newrelic/developer-website/commit/cbe8919fd131b96406fbbb4fe49dca316b28ef7e))
+
+## [1.20.4](https://github.com/newrelic/developer-website/compare/v1.20.3...v1.20.4) (2020-09-11)
+
+
+### Bug Fixes
+
+* upgrade @emotion/core from 10.0.28 to 10.0.35 ([a975f08](https://github.com/newrelic/developer-website/commit/a975f085e0b760558e26a47c37c2874fe811c144))
+* upgrade eslint-plugin-react-hooks from 4.0.8 to 4.1.0 ([cef856b](https://github.com/newrelic/developer-website/commit/cef856bd61e55783d2662f1d1250b68979d60ef7))
+
+## [1.20.3](https://github.com/newrelic/developer-website/compare/v1.20.2...v1.20.3) (2020-09-10)
+
+
+### Bug Fixes
+
+* infinite loop on useResizeObserver that would repeatedly re-instantiate resize observer instance ([8df3506](https://github.com/newrelic/developer-website/commit/8df35064a033a850a6311695dfa6009850cdc693))
+
+## [1.20.2](https://github.com/newrelic/developer-website/compare/v1.20.1...v1.20.2) (2020-09-10)
+
+
+### Bug Fixes
+
+* remove bottom 0 positioning ([b0adad8](https://github.com/newrelic/developer-website/commit/b0adad83c8d3f4453a470cfc3598554e89628ed0))
+
+## [1.20.1](https://github.com/newrelic/developer-website/compare/v1.20.0...v1.20.1) (2020-09-09)
+
+
+### Bug Fixes
+
+* add back missing styles removed from nerd days redesign ([ccf9296](https://github.com/newrelic/developer-website/commit/ccf9296822212a0597bce23a5d9b2c238ca36e68))
+
+# [1.20.0](https://github.com/newrelic/developer-website/compare/v1.19.0...v1.20.0) (2020-09-09)
+
+
+### Bug Fixes
+
+* corrected registration links ([9754ec4](https://github.com/newrelic/developer-website/commit/9754ec4d3dd67519a3a5b912f522e5ff2ab47f0b))
+* only create pages for mardown in `markdown-pages` directory ([5b78418](https://github.com/newrelic/developer-website/commit/5b784182fe89723c1bb9634bc18a5266eafc692e))
+* update sidebar positioning based on header height ([4837e8f](https://github.com/newrelic/developer-website/commit/4837e8f7ee064af64ac11b3ac4f85bb3ae0b403e))
+
+
+### Features
+
+* resize observer hook ([564d647](https://github.com/newrelic/developer-website/commit/564d6473a8b9a345a68b569af662c5faac89e60f))
+
+# [1.19.0](https://github.com/newrelic/developer-website/compare/v1.18.0...v1.19.0) (2020-09-09)
+
+
+### Bug Fixes
+
+* clean up linting errors + start new section ([fa314b9](https://github.com/newrelic/developer-website/commit/fa314b9ca50a83fa5ad5c50226d2012f1944c962))
+* fix font sizes for firefox ([6805150](https://github.com/newrelic/developer-website/commit/6805150dea3c9e6b918278d02754bd5f766eee2d))
+* lint fixes ([5244bcc](https://github.com/newrelic/developer-website/commit/5244bcc1036173e4ff078718dd9ca9808af87be8))
+* linting fixes ([0f48633](https://github.com/newrelic/developer-website/commit/0f48633dea8e472c0085edd1e8903f7131cd113a))
+* more linting fixes ([f3b5bf6](https://github.com/newrelic/developer-website/commit/f3b5bf691a6fa10f587c0d2d5539a5a71611fa28))
+
+
+### Features
+
+* add final engagement section ([ee6f797](https://github.com/newrelic/developer-website/commit/ee6f797fdf8ca1ca5c60db517f42d2359064d090))
+* add in agenda section and table ([01b327d](https://github.com/newrelic/developer-website/commit/01b327ddd7806158ede76755047b58c2a84c2aa9))
+* add in markup and styles for nerd days ([491d74c](https://github.com/newrelic/developer-website/commit/491d74c8359ba44c189cdeaa9ecf7e7c35f2fa2b))
+* add markup and styles for tracks section ([172f1be](https://github.com/newrelic/developer-website/commit/172f1bebd245043c7dcecd3b9dceb3e5324ab15c))
+* add the rest of the responsive styles for the agenda ([12fdec1](https://github.com/newrelic/developer-website/commit/12fdec13fff382bd4cfe8197a8bdbe43783d3c66))
+* automatically determine the track ([10e5a1a](https://github.com/newrelic/developer-website/commit/10e5a1a4319e0b7eff3e1b417be3f31c4507b9da))
+* create an Agenda component to list sessions ([0d1cf9e](https://github.com/newrelic/developer-website/commit/0d1cf9e4a0b91cd774499c3cc99cb2703ae17b19))
+* responsive styles for nerd days page ([725b6f9](https://github.com/newrelic/developer-website/commit/725b6f9daffb0f9d429c7620acab4a0ae2b001de))
+* shadow feather icon set to append additional needed icons ([56d4038](https://github.com/newrelic/developer-website/commit/56d403810dae27adfa5e7a72f6fc7ed19f95ce82))
+
+# [1.18.0](https://github.com/newrelic/developer-website/compare/v1.17.1...v1.18.0) (2020-09-09)
+
+
+### Features
+
+* Remove call for papers section for EMEA ([36459ae](https://github.com/newrelic/developer-website/commit/36459ae03e6ae5954d856d0d3ee807d24bf63cda))
+
+## [1.17.1](https://github.com/newrelic/developer-website/compare/v1.17.0...v1.17.1) (2020-09-08)
+
+
+### Bug Fixes
+
+* upgrade react-shadow from 18.2.5 to 18.3.0 ([1f70aea](https://github.com/newrelic/developer-website/commit/1f70aea8537c1f1c6a2887e97a244a1f94d24fe1))
+
+# [1.17.0](https://github.com/newrelic/developer-website/compare/v1.16.0...v1.17.0) (2020-09-04)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic version ([92db2ef](https://github.com/newrelic/developer-website/commit/92db2efde93fdf5cd835a67026d1c337b5c93643))
+
+
+### Features
+
+* add a useTreatment hook ([e9c8aac](https://github.com/newrelic/developer-website/commit/e9c8aac6ea9e67027c9a81c20297dc487842d10f))
+* load treatments from split for contribute buttons ([cd9007f](https://github.com/newrelic/developer-website/commit/cd9007fed977f018e5092de1f9f72222c20329ee))
+
+# [1.16.0](https://github.com/newrelic/developer-website/compare/v1.15.3...v1.16.0) (2020-09-03)
+
+
+### Bug Fixes
+
+* add back editUrl prop for global header ([1456db6](https://github.com/newrelic/developer-website/commit/1456db69d113f9fca57d406edd74d9e1ebcca641))
+* bump gatsby-theme-newrelic version ([be79f72](https://github.com/newrelic/developer-website/commit/be79f729f7d39e432ef14e4742dd725f05f69480))
+* fix lint errors ([4e54a71](https://github.com/newrelic/developer-website/commit/4e54a716d7bc542ff2719d790788c0d91ca299af))
+* upgrade gatsby-theme-newrelic ([666450b](https://github.com/newrelic/developer-website/commit/666450be72c11071411839017fc91a7d6a720c7e))
+
+
+### Features
+
+* add splitio configuration ([04a6765](https://github.com/newrelic/developer-website/commit/04a6765abdbe5a31025fcecdcab8ff4875916af7))
+
+## [1.15.3](https://github.com/newrelic/developer-website/compare/v1.15.2...v1.15.3) (2020-09-02)
+
+
+### Bug Fixes
+
+* fix lint errors preventing pushes ([9c600d7](https://github.com/newrelic/developer-website/commit/9c600d7e196a164300328c498664735637118b78))
+* lint warnings in countdown container ([ca14b49](https://github.com/newrelic/developer-website/commit/ca14b49f5a4575ed95655a7edcd810c5ac92730c))
+
+## [1.15.2](https://github.com/newrelic/developer-website/compare/v1.15.1...v1.15.2) (2020-08-31)
+
+
+### Bug Fixes
+
+* upgrade react-shadow from 18.2.4 to 18.2.5 ([b1bdae6](https://github.com/newrelic/developer-website/commit/b1bdae62914ca03af2f969dc9ba91a03229d8ab3))
+
+## [1.15.1](https://github.com/newrelic/developer-website/compare/v1.15.0...v1.15.1) (2020-08-29)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-mdx from 1.2.33 to 1.2.34 ([68b028d](https://github.com/newrelic/developer-website/commit/68b028d898f7349db3fc12517b93d6c1c2e9d883))
+
+# [1.15.0](https://github.com/newrelic/developer-website/compare/v1.14.2...v1.15.0) (2020-08-25)
+
+
+### Bug Fixes
+
+* change File an issue to Create an issue and adjust right-rail size ([0bda7c0](https://github.com/newrelic/developer-website/commit/0bda7c0762393ee3f3717a5b8382adc9d7655986))
+* replace collect data tile icon with new collect data icon ([a290263](https://github.com/newrelic/developer-website/commit/a290263374fd3966f1d0732c24f41ce8f2e3d1e8))
+
+
+### Features
+
+* hook up Developer Events sidenav to landing page ([861e3c7](https://github.com/newrelic/developer-website/commit/861e3c7f9216066b347c8aa4732738a86049d26e))
+
+## [1.14.2](https://github.com/newrelic/developer-website/compare/v1.14.1...v1.14.2) (2020-08-25)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-mdx from 1.2.30 to 1.2.33 ([7c3da52](https://github.com/newrelic/developer-website/commit/7c3da520ae270f3da369908e7751ef0e9be09f46))
+
+## [1.14.1](https://github.com/newrelic/developer-website/compare/v1.14.0...v1.14.1) (2020-08-24)
+
+
+### Bug Fixes
+
+* add link to pdf overview ([a166d33](https://github.com/newrelic/developer-website/commit/a166d335d4763e8340e225d28adfd1d9004bbf7f))
+* codee clean up before merge ([ef7a2cc](https://github.com/newrelic/developer-website/commit/ef7a2cc3aace2354dc55a93e12dd789ebba7f429))
+* correct prettier errors ([f2c7569](https://github.com/newrelic/developer-website/commit/f2c7569f5f9b6a689b43e33231ceb09d6854a2dd))
+* update CFP date and reg text ([065f688](https://github.com/newrelic/developer-website/commit/065f6886634e9b09fb432ef61ce0edda3c1688a0))
+
+# [1.14.0](https://github.com/newrelic/developer-website/compare/v1.13.11...v1.14.0) (2020-08-21)
+
+
+### Features
+
+* new copy and opens link in new tab ([6c9a7d8](https://github.com/newrelic/developer-website/commit/6c9a7d80dead170dad5f093cec29ae511190ef1c))
+
+## [1.13.11](https://github.com/newrelic/developer-website/compare/v1.13.10...v1.13.11) (2020-08-21)
+
+
+### Bug Fixes
+
+* image re resizes to browser ([7d122a3](https://github.com/newrelic/developer-website/commit/7d122a3f134f89681d0290b7c2ef3a35c64dfe68))
+* image resizes to browser ([1c7bfad](https://github.com/newrelic/developer-website/commit/1c7bfadd9bbb329048b0fc70d1fbd92e5dcb998f))
+
+## [1.13.10](https://github.com/newrelic/developer-website/compare/v1.13.9...v1.13.10) (2020-08-21)
+
+
+### Bug Fixes
+
+* update homepage to promote nerd days ([945ab17](https://github.com/newrelic/developer-website/commit/945ab17561e02895d65613ed9dd5fe549382b047))
+
+## [1.13.9](https://github.com/newrelic/developer-website/compare/v1.13.8...v1.13.9) (2020-08-21)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic version ([a4598f7](https://github.com/newrelic/developer-website/commit/a4598f7a15ca14abe8cb5fee49bd61a27a740e27))
+
+## [1.13.8](https://github.com/newrelic/developer-website/compare/v1.13.7...v1.13.8) (2020-08-21)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.13 to 1.6.16 ([0795538](https://github.com/newrelic/developer-website/commit/07955383901f72389dc7ce8875cfb6d2b6926d41))
+
+## [1.13.7](https://github.com/newrelic/developer-website/compare/v1.13.6...v1.13.7) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.10 to 1.6.13 ([2ca8bd0](https://github.com/newrelic/developer-website/commit/2ca8bd0e82062c2b1b27116682018f1024cf95e7))
+* upgrade multiple dependencies with Snyk ([d194e87](https://github.com/newrelic/developer-website/commit/d194e87ae94a69bef0e5adb885a65c5fb95a65ab))
+
+## [1.13.6](https://github.com/newrelic/developer-website/compare/v1.13.5...v1.13.6) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/react from 1.6.14 to 1.6.16 ([29c936e](https://github.com/newrelic/developer-website/commit/29c936eaa4e27243b4626769b02997158d68dcd0))
+* upgrade gatsby-image from 2.4.13 to 2.4.14 ([4529dd3](https://github.com/newrelic/developer-website/commit/4529dd3d7890ff1f0bef0adea2ecb80bd55b0fec))
+
+## [1.13.5](https://github.com/newrelic/developer-website/compare/v1.13.4...v1.13.5) (2020-08-19)
+
+
+### Bug Fixes
+
+* Fixed unused var error ([234600a](https://github.com/newrelic/developer-website/commit/234600a579d455c7e829d298068d9d1ebe3161f9))
+* merge main into nerd-days branch ([e2c0edf](https://github.com/newrelic/developer-website/commit/e2c0edf4b588d4ba20ae171bac14bcadf2ece5e5))
+* update nerd days page to use PageLayout ([e6636f4](https://github.com/newrelic/developer-website/commit/e6636f485dd10ce2534363cb03c4767055c3c319))
+* update package-lock.json ([439de7d](https://github.com/newrelic/developer-website/commit/439de7d7e1fcc97837914e18ede7214ec9384d27))
+
+## [1.13.4](https://github.com/newrelic/developer-website/compare/v1.13.3...v1.13.4) (2020-08-19)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-mdx from 1.2.29 to 1.2.30 ([cc7f3dd](https://github.com/newrelic/developer-website/commit/cc7f3ddc9b3872aa6b558c50dcdefc23f56181cc))
+
+## [1.13.3](https://github.com/newrelic/developer-website/compare/v1.13.2...v1.13.3) (2020-08-18)
+
+
+### Bug Fixes
+
+* ensure footer remains the same size on monitors with larger resolution ([746015b](https://github.com/newrelic/developer-website/commit/746015be31d3d39e4af2993c9ebc4e6e856b9c20))
+
+## [1.13.2](https://github.com/newrelic/developer-website/compare/v1.13.1...v1.13.2) (2020-08-18)
+
+
+### Bug Fixes
+
+* bump @newrelic/gatsby-theme-newrelic version ([03fccb8](https://github.com/newrelic/developer-website/commit/03fccb8ef13fbde1feb447652f3b5f06139867f9))
+
+## [1.13.1](https://github.com/newrelic/developer-website/compare/v1.13.0...v1.13.1) (2020-08-17)
+
+
+### Bug Fixes
+
+* bigger nav icons ([fed7b96](https://github.com/newrelic/developer-website/commit/fed7b96cd46aa39781cadad32024893decab728e))
+* replace the collect data icon to match the tdp icon ([97a242f](https://github.com/newrelic/developer-website/commit/97a242f6f4366c1b1946bf36d8fd118a0f34b9e8))
+
+# [1.13.0](https://github.com/newrelic/developer-website/compare/v1.12.5...v1.13.0) (2020-08-17)
+
+
+### Bug Fixes
+
+* swap plain buttons ([d126a49](https://github.com/newrelic/developer-website/commit/d126a497bf7d7f1c30c69b116b19cd473342f303))
+* update brand colors to latest palette ([4605cd2](https://github.com/newrelic/developer-website/commit/4605cd2609e46d2a91c40077ef9cbf0ee9c0360c))
+
+
+### Features
+
+* added ability to add supplemental documentation ([b726217](https://github.com/newrelic/developer-website/commit/b726217fab0edccd17bdd74ee8920ed07d020023))
+
+## [1.12.5](https://github.com/newrelic/developer-website/compare/v1.12.4...v1.12.5) (2020-08-17)
+
+
+### Bug Fixes
+
+* logo svg rendering with extra space in safari ([868a043](https://github.com/newrelic/developer-website/commit/868a043161fb1fb91f52a2926d8b99276fa2fc65))
+* upgrade gatsby-plugin-mdx from 1.2.28 to 1.2.29 ([e619706](https://github.com/newrelic/developer-website/commit/e61970689c9de8f8f02541b832518cfea8c88e51))
+
+## [1.12.4](https://github.com/newrelic/developer-website/compare/v1.12.3...v1.12.4) (2020-08-16)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/react from 1.6.13 to 1.6.14 ([13b982a](https://github.com/newrelic/developer-website/commit/13b982a220244a8f05c43a3907232c47f263c8a9))
+
+## [1.12.3](https://github.com/newrelic/developer-website/compare/v1.12.2...v1.12.3) (2020-08-14)
+
+
+### Bug Fixes
+
+* style adjustments on kubecon page ([6dbbee5](https://github.com/newrelic/developer-website/commit/6dbbee5de9d4fe65e66a551d386248b47235d3c3))
+
+## [1.12.2](https://github.com/newrelic/developer-website/compare/v1.12.1...v1.12.2) (2020-08-14)
+
+
+### Bug Fixes
+
+* only show date modified if Gatsby sees it as valid ([fe14bb7](https://github.com/newrelic/developer-website/commit/fe14bb7e83af53151fcc810c7691cdf4c8a1a2db))
+
+## [1.12.1](https://github.com/newrelic/developer-website/compare/v1.12.0...v1.12.1) (2020-08-14)
+
+
+### Bug Fixes
+
+* upgrade date-fns from 2.14.0 to 2.15.0 ([5fc93ca](https://github.com/newrelic/developer-website/commit/5fc93cab60f25eb5507737802daa23fb130a98ab))
+* upgrade gatsby-plugin-mdx from 1.2.27 to 1.2.28 ([384a267](https://github.com/newrelic/developer-website/commit/384a267de14b892d089a41d7aa24b087458761da))
+
+# [1.12.0](https://github.com/newrelic/developer-website/compare/v1.11.0...v1.12.0) (2020-08-14)
+
+
+### Bug Fixes
+
+* better responsive styles for the contribute section ([d828a89](https://github.com/newrelic/developer-website/commit/d828a89d3559b1fa5eb1cb5c00638123105e8111))
+
+
+### Features
+
+* add dark-mode aware background color ([9a13b86](https://github.com/newrelic/developer-website/commit/9a13b860b1cc133bdfe669dae88e43832faa47f3))
+
+# [1.11.0](https://github.com/newrelic/developer-website/compare/v1.10.6...v1.11.0) (2020-08-14)
+
+
+### Bug Fixes
+
+* filter out certain document types to match the in product experience ([7a4c0e5](https://github.com/newrelic/developer-website/commit/7a4c0e53ce09a4bce69fba1ca466d3f6018be54c))
+* fix race condition causing incorrect data to be written to file ([753cd77](https://github.com/newrelic/developer-website/commit/753cd77b4dcefa05fa0f315dccd532287f382c0e))
+* hide related resources on pages that have not yet been indexed ([7bf2811](https://github.com/newrelic/developer-website/commit/7bf281156d7dbdf217d0f788d6b85f0602f1a5da))
+* smaller font size on tags underneath related resources ([57d482b](https://github.com/newrelic/developer-website/commit/57d482ba55afc9da32051ce9f14927e3d45fcc11))
+
+
+### Features
+
+* add ability to filter which pages are fetched ([da64b13](https://github.com/newrelic/developer-website/commit/da64b13713e266d0cbd7c0b0ea72809aa9f569d9))
+* add ability to manually trigger refetching of related content ([7fd7a22](https://github.com/newrelic/developer-website/commit/7fd7a2252f0eab5aaf484ae3251a4cb181fffc7d))
+* add actual related resource data ([3efef9d](https://github.com/newrelic/developer-website/commit/3efef9d9b238d1b365a28aba1191643f3787e5b9))
+* add config to enable swiftype builds using env variable ([6d77c70](https://github.com/newrelic/developer-website/commit/6d77c70eb264dabd9c6863c18aa8cffa8b84391c))
+* add general params that will be used to fetch from swiftype ([27c1481](https://github.com/newrelic/developer-website/commit/27c1481915a6ea2339c0fc717c3bbb29020b81d2))
+* add github action that will run everyday to sync swiftype results ([080e5ba](https://github.com/newrelic/developer-website/commit/080e5ba0254f8f003d7db3b1f173f51389cbd0dc))
+* add graphql schema item and dummy resolver for related resources ([d36afbc](https://github.com/newrelic/developer-website/commit/d36afbc5a445bd7cbe83eae9b4e5a8b09d322063))
+* add limit argument to relatedResources ([cc22434](https://github.com/newrelic/developer-website/commit/cc224341cb13bd65a28e301686544cd4b0483b3b))
+* add local plugin that creates the json file that will be written to ([0568e5c](https://github.com/newrelic/developer-website/commit/0568e5c3a85a0e0a4206918cfdd28f42985eb3a4))
+* add related resources from swiftype to the right rail ([fdd265e](https://github.com/newrelic/developer-website/commit/fdd265ecfff817dba951cdbfffc422779bd5dc0e))
+* add tags to search query and write data to file in plugin ([9e3b486](https://github.com/newrelic/developer-website/commit/9e3b486a7082bfa6c6e0103da38451d79f8ac012))
+* fetch results from swiftype for the node and save the data ([8232332](https://github.com/newrelic/developer-website/commit/82323323fbd57a413da9a419d317525b9852871f))
+* filter out redirects and already defined urls for a page ([674e1c7](https://github.com/newrelic/developer-website/commit/674e1c745a2ceb907e76b71a0e21c37f5600f82d))
+* implement resolver for related resources ([f4c8fd1](https://github.com/newrelic/developer-website/commit/f4c8fd180fb067567201e1d0102d42142e058d6d))
+* properly resolve related resources for a node by linking the parent to the child ([0ad50b9](https://github.com/newrelic/developer-website/commit/0ad50b9465ddeada08b9d2a28acbd1b3f2378b7c))
+
 ## [1.10.6](https://github.com/newrelic/developer-website/compare/v1.10.5...v1.10.6) (2020-08-11)
 
 

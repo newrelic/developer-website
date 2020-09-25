@@ -1,3 +1,25 @@
+- [Globally available components](#globally-available-components)
+  - [Video](#video)
+    - [Usage](#usage)
+  - [Intro](#intro)
+    - [Usage](#usage-1)
+  - [Steps](#steps)
+    - [Usage](#usage-2)
+  - [Step](#step)
+    - [Usage](#usage-3)
+- [A code example](#a-code-example)
+- [Another code example](#another-code-example)
+  - [Code blocks](#code-blocks)
+    - [Usage](#usage-4)
+  - [Callouts](#callouts)
+    - [Usage](#usage-5)
+  - [Related Resources](#related-resources)
+    - [Maximum references](#maximum-references)
+    - [Resource population logic](#resource-population-logic)
+    - [Order of priority](#order-of-priority)
+    - [Resource site tags](#resource-site-tags)
+  - [Announcement Banner](#announcement-banner)
+
 # Globally available components
 
 ## Video
@@ -252,3 +274,44 @@ Text
 
 </Caution>
 ```
+
+## Related Resources
+
+The related resources component is controlled by specific Frontmatter slugs that
+are defined on a page.
+
+By setting the Frontmatter for `resources` and `tags` you can control what is populated
+in this component. Please review the [Style Guide](STYLE_GUIDE.md) for further details
+on these slugs.
+
+### Maximum references
+
+This component allows a maximum of 5 resources.
+
+### Resource population logic
+
+If no resources or tags are available in the page Frontmatter the component will fallback
+to using the page title as the search query term but you will
+always have 5 results, assuming Swiftype can return 5 results for that query.
+
+### Order of priority
+
+The order of priority for populating content in this component is driven by:
+
+1. Any resources defined in the page Frontmatter.
+2. Any tags defined in the the page Frontmatter will send a search query term and return results from Swiftype.
+   2b. Any Swifttype results that match the page title.
+
+### Resource site tags
+
+Resource site tags control the labels that appears below each resource URL. These
+can be found in the [Resources.js](./src/components/RelatedContentModules/Resources.js).
+If you are adding a resource that doesn't currently have a defined site tag, you will need to
+modify this file an add a new site tag accordingly.
+
+When naming the site tag the site domain name should be used for the site tag name.
+
+## Announcement Banner
+
+To utilize the announcement banner that is available in the Global Theme please see these
+[instructions](https://github.com/newrelic/gatsby-theme-newrelic/tree/develop/packages/gatsby-theme-newrelic#announcements).

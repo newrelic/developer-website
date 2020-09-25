@@ -42,8 +42,16 @@
         "url": "/automate-workflows/get-started-kubernetes"
       },
       {
+        "displayName": "Set up New Relic using Helm charts",
+        "url": "/automate-workflows/kubernetes-helm-deployment"
+      },
+      {
         "displayName": "Tag a set of resources efficiently",
         "url": "/automate-workflows/5-mins-tag-resources"
+      },
+      {
+        "displayName": "Automated end-to-end tagging of entities",
+        "url": "/automate-workflows/automated-tagging"
       }
     ]
   },
@@ -62,6 +70,10 @@
       {
         "displayName": "Publish and deploy your app",
         "url": "/build-apps/publish-deploy"
+      },
+      {
+        "displayName": "Permissions for managing apps",
+        "url": "/build-apps/permission-manage-apps"
       },
       {
         "displayName": "Map pageviews by region",
@@ -509,9 +521,33 @@
     ]
   },
   {
+    "displayName": "Developer events",
+    "url": "/developer-events",
+    "children": [
+      {
+        "displayName": "Nerd days 1.0",
+        "url": "/nerd-days"
+      },
+      {
+        "displayName": "All things open",
+        "url": "/all-things-open"
+      },
+      {
+        "displayName": "Past events",
+        "children": [
+          {
+            "displayName": "Kubecon & CloudNativeCon",
+            "url": "/kubecon-europe-2020"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "displayName": "Developer champions",
     "url": "/developer-champion"
   },
+
   {
     "displayName": "Podcasts",
     "url": "/podcasts"

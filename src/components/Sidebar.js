@@ -36,7 +36,6 @@ const Sidebar = ({ className }) => {
         <Link
           css={css`
             display: block;
-            display: flex;
             margin-bottom: 1rem;
           `}
           to="/"
@@ -53,7 +52,7 @@ const Sidebar = ({ className }) => {
           />
         </Link>
         <SearchInput
-          placeholder="Search developer docs"
+          placeholder="Filter developer docs"
           onClear={() => setSearchTerm('')}
           onChange={(e) => setSearchTerm(e.target.value)}
           value={searchTerm}

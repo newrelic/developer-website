@@ -12,6 +12,7 @@ import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import '../components/styles.scss';
 import usePageContext from '../hooks/usePageContext';
+import useResizeObserver from '../hooks/useResizeObserver';
 import { useLocation } from '@reach/router';
 
 const gaTrackingId = 'UA-3047412-33';
@@ -36,6 +37,7 @@ const MainLayout = ({ children }) => {
 
   const location = useLocation();
   const { fileRelativePath } = usePageContext();
+  const [headerRef, headerEntry] = useResizeObserver();
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const isComponentDoc = fileRelativePath.includes(
@@ -57,7 +59,7 @@ const MainLayout = ({ children }) => {
   return (
     <div
       css={css`
-        --global-header-height: 30px;
+        --global-header-height: ${headerEntry?.contentRect.height}px;
         --sidebar-width: 300px;
 
         min-height: 100vh;
@@ -79,7 +81,16 @@ const MainLayout = ({ children }) => {
           </script>
         ) : null}
       </Helmet>
-      <GlobalHeader editUrl={editUrl} search />
+      <div
+        ref={headerRef}
+        css={css`
+          position: sticky;
+          z-index: 99;
+          top: 0;
+        `}
+      >
+        <GlobalHeader editUrl={editUrl} />
+      </div>
       <MobileHeader
         css={css`
           @media (min-width: 761px) {
@@ -96,6 +107,7 @@ const MainLayout = ({ children }) => {
             'sidebar content'
             'sidebar footer';
           grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+          grid-template-rows: 1fr auto;
           grid-gap: ${layout.contentPadding};
           width: 100%;
           max-width: ${layout.maxWidth};
@@ -110,7 +122,6 @@ const MainLayout = ({ children }) => {
           css={css`
             position: fixed;
             top: var(--global-header-height);
-            bottom: 0;
             width: var(--sidebar-width);
             height: calc(100vh - var(--global-header-height));
             overflow: auto;

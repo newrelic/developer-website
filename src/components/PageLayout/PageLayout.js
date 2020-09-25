@@ -18,7 +18,7 @@ const LAYOUTS = {
     grid-template-areas:
       'page-header page-header'
       'content related-content';
-    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-columns: minmax(0, 1fr) 320px;
     grid-gap: 2rem;
 
     @media (max-width: 1240px) {

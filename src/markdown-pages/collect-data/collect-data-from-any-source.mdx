@@ -20,7 +20,7 @@ tags:
 
 <Intro>
 
-New Relic products report a lot of data “out of the box.” When you use New Relic products like [APM](https://docs.newrelic.com/docs/apm), [Browser](https://docs.newrelic.com/docs/browser), [Mobile](https://docs.newrelic.com/docs/mobile-monitoring), [Infrastructure](https://docs.newrelic.com/docs/infrastructure), or an [integration](https://docs.newrelic.com/docs/integrations), by default you receive performance data.
+New Relic products report a lot of data “out of the box.” When you use products like [APM](https://docs.newrelic.com/docs/apm), [Browser](https://docs.newrelic.com/docs/browser), [Mobile](https://docs.newrelic.com/docs/mobile-monitoring), [Infrastructure monitoring](https://docs.newrelic.com/docs/infrastructure), or an [integration](https://docs.newrelic.com/docs/integrations), by default you receive performance data.
 
 But you may want to bring data into New Relic that isn't collected by default. Maybe you want an API-based solution that doesn't require install of an agent. Maybe you want to bring telemetry data from another analysis service into New Relic. This page describes several ways to get data into New Relic.
 
@@ -32,7 +32,7 @@ But you may want to bring data into New Relic that isn't collected by default. M
 
 ## Agent APIs
 
-If you use our APM, Browser, or Mobile agents to report data, you can use their associated APIs to report custom data. For example, if you monitor your application with the New Relic APM Python agent, you can use the [Python agent API](https://docs.newrelic.com/docs/agents/python-agent/api-guides/guide-using-python-agent-api) to set up custom instrumentation.
+If you use our APM, Browser, or Mobile agents to report data, you can use their associated APIs to report custom data. For example, if you monitor your application with the our APM Python agent, you can use the [Python agent API](https://docs.newrelic.com/docs/agents/python-agent/api-guides/guide-using-python-agent-api) to set up custom instrumentation.
 
 See the [agent APIs](https://docs.newrelic.com/docs/agents).
 </Step>
@@ -41,7 +41,7 @@ See the [agent APIs](https://docs.newrelic.com/docs/agents).
 
 ## Telemetry SDK
 
-Our Telemetry SDKs are language wrappers for our [Trace API](https://docs.newrelic.com/docs/apm/distributed-tracing/trace-api/introduction-new-relic-trace-api) and [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api) (and eventually our Log API and Event API). These SDKs let you easily send metrics and trace data to New Relic without needing to install an agent. For New Relic customers, we offer open-source exporters and integrations that use the Telemetry SDKs to send metrics and trace data: 
+Our Telemetry SDKs are language wrappers for our [Trace API](https://docs.newrelic.com/docs/apm/distributed-tracing/trace-api/introduction-new-relic-trace-api) and [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api) (and eventually our Log API and Event API). These SDKs let you easily send metrics and trace data to New Relic without needing to install an agent. For customers, we offer open-source exporters and integrations that use the Telemetry SDKs to send metrics and trace data: 
 
 - [Istio adaptor](https://github.com/newrelic/newrelic-istio-adapter)
 - Prometheus OpenMetrics ([for Docker](https://docs.newrelic.com/docs/new-relic-prometheus-openmetrics-integration-docker) | [for Kubernetes](https://docs.newrelic.com/docs/new-relic-prometheus-openmetrics-integration-kubernetes)) 
@@ -57,7 +57,7 @@ Want to build your own solution? [See our Telemetry SDK docs.](https://docs.newr
 
 ## Trace API
 
-New Relic's [Trace API](https://docs.newrelic.com/docs/apm/distributed-tracing/trace-api/introduction-new-relic-trace-api) lets you send distributed tracing data to New Relic and consolidate tracing data from multiple sources in one place. We accept trace data in two formats: 
+Our [Trace API](https://docs.newrelic.com/docs/apm/distributed-tracing/trace-api/introduction-new-relic-trace-api) lets you send distributed tracing data to New Relic and consolidate tracing data from multiple sources in one place. We accept trace data in two formats: 
 
 - Zipkin format
 - New Relic format (if you don’t have Zipkin-format data, you’d use this)
@@ -136,7 +136,7 @@ curl -i -X POST https://metric-api.newrelic.com/metric/v1 \
 
 ## Event API
 
-For sending arbitrary events to New Relic, you can use our Event API. We save these events as a new [event type](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/glossary#event), which can then be queried in New Relic via NRQL. (Eventually, the Telemetry SDKs will support the Event API.)
+For sending arbitrary events to New Relic, you can use our Event API. We save these events as a new [event type](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/glossary#event), which can then be queried via NRQL. (Eventually, the Telemetry SDKs will support the Event API.)
 
 ```shell lineNumbers=true
 curl -i -X POST https://insights-collector.newrelic.com/v1/accounts/$ACCOUNT_ID/events \

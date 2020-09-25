@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Button, ExternalLink, Icon } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
+import useTreatment from '../../hooks/useTreatment';
+import { useTrack } from '@splitsoftware/splitio-react';
+import { SPLITS, SPLIT_TRACKING_EVENTS } from '../../data/constants';
 import Section from './Section';
-import Title from './Title';
 
 const Contribute = ({ pageContext }) => {
   const { site } = useStaticQuery(graphql`
@@ -17,6 +19,9 @@ const Contribute = ({ pageContext }) => {
     }
   `);
 
+  const { config } = useTreatment(SPLITS.CONTRIBUTE_BUTTONS);
+  const track = useTrack();
+
   const { fileRelativePath } = pageContext;
 
   const {
@@ -24,16 +29,25 @@ const Contribute = ({ pageContext }) => {
   } = site;
 
   return (
-    <Section>
-      <Title>Contribute</Title>
+    <Section
+      css={css`
+        background-color: var(--divider-color);
+        text-align: center;
+      `}
+    >
       <Button
         as={ExternalLink}
         href={`${repository}/issues/new/choose`}
         css={css`
           margin-right: 0.5rem;
         `}
-        variant={Button.VARIANT.PRIMARY}
+        variant={config?.issues || Button.VARIANT.NORMAL}
         size={Button.SIZE.SMALL}
+        onClick={() =>
+          track(SPLIT_TRACKING_EVENTS.RELATED_CONTENT_ACTION_CLICKED, null, {
+            action: 'issues',
+          })
+        }
       >
         <Icon
           name={Icon.TYPE.GITHUB}
@@ -41,13 +55,18 @@ const Contribute = ({ pageContext }) => {
             margin-right: 0.5rem;
           `}
         />
-        File an issue
+        Create an issue
       </Button>
       <Button
         as={ExternalLink}
         href={`${repository}/tree/main/${fileRelativePath}`}
-        variant={Button.VARIANT.NORMAL}
+        variant={config?.edit || Button.VARIANT.NORMAL}
         size={Button.SIZE.SMALL}
+        onClick={() =>
+          track(SPLIT_TRACKING_EVENTS.RELATED_CONTENT_ACTION_CLICKED, null, {
+            action: 'edit',
+          })
+        }
       >
         <Icon
           name={Icon.TYPE.EDIT}
@@ -57,6 +76,25 @@ const Contribute = ({ pageContext }) => {
         />
         Edit this page
       </Button>
+      <p
+        css={css`
+          margin-top: 0.5rem;
+          margin-bottom: 0;
+          font-size: 0.75rem;
+          display: block;
+          text-align: center;
+
+          @media screen and (max-width: 1240px) {
+            margin-top: 1rem;
+          }
+        `}
+      >
+        Read our{' '}
+        <ExternalLink href="https://github.com/newrelic/developer-website/blob/main/CONTRIBUTING.md">
+          guide
+        </ExternalLink>{' '}
+        on how to contribute
+      </p>
     </Section>
   );
 };
