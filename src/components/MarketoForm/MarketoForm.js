@@ -11,9 +11,9 @@ const MarketoForm = ({
   publishableKey,
   redirectLink,
 }) => {
-  const loaded = useMarketoForm(munchkinId, id, publishableKey, redirectLink);
+  const [state] = useMarketoForm(munchkinId, id, publishableKey, redirectLink);
 
-  return loaded ? (
+  return (
     <div
       css={css`
         position: relative;
@@ -26,6 +26,7 @@ const MarketoForm = ({
           border-radius: 5px;
           border: 1px solid var(--border-color);
           padding: 1.25rem;
+          display: ${state === 'formLoaded' ? 'block' : 'none'};
         `}
       >
         <p
@@ -40,7 +41,7 @@ const MarketoForm = ({
         <form id={`mktoForm_${id}`} />
       </div>
     </div>
-  ) : null;
+  );
 };
 
 MarketoForm.propTypes = {
