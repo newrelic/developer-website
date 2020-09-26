@@ -46,7 +46,7 @@ const machine = Machine({
   },
 });
 
-const useMarketoForm = (munchkinId, id, publishableKey, redirectLink) => {
+const useMarketoForm = ({ munchkinId, id, publishableKey, redirectLink }) => {
   const [state, send] = useMachine(machine, {
     actions: {
       loadForm: asEffect(() => {
