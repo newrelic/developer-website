@@ -3,8 +3,7 @@ name: Release
 on:
   push:
     branches:
-      # todo: change this branch name
-      - main
+      - develop
 
 env:
   BOT_NAME: nr-opensource-bot
@@ -111,7 +110,7 @@ jobs:
             const result = await github.repos.updateBranchProtection({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              branch: 'main',
+              branch: 'develop',
               required_status_checks: null,
               restrictions: null,
               enforce_admins: null,
@@ -124,7 +123,7 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.OPENSOURCE_BOT_TOKEN }}
-          branch: main
+          branch: develop
 
       - name: Re-enable "required_pull_request_reviews" branch protection
         id: enable-branch-protection
@@ -137,7 +136,7 @@ jobs:
             const result = await github.repos.updateBranchProtection({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              branch: 'main',
+              branch: 'develop',
               required_status_checks: null,
               restrictions: null,
               enforce_admins: true,
@@ -187,7 +186,7 @@ jobs:
             const result = await github.repos.updateBranchProtection({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              branch: 'main',
+              branch: 'develop',
               required_status_checks: null,
               restrictions: null,
               enforce_admins: null,
@@ -217,7 +216,7 @@ jobs:
             const result = await github.repos.updateBranchProtection({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              branch: 'main',
+              branch: 'develop',
               required_status_checks: null,
               restrictions: null,
               enforce_admins: true,
