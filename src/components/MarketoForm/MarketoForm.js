@@ -44,7 +44,7 @@ const MarketoForm = ({
           {title}
         </p>
         <form id={`mktoForm_${id}`} />
-        {(state === 'loading' || state === 'scriptLoaded') && <Spinner />}
+        {state.matches('loading') && <Spinner />}
       </div>
     </div>
   );

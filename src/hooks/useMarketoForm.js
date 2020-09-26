@@ -12,15 +12,19 @@ const machine = Machine({
   },
   states: {
     loading: {
-      on: { LOADED: 'scriptLoaded', LOAD_ERROR: 'error', BLOCKED: 'blocked' },
-    },
-    scriptLoaded: {
-      entry: ['loadForm'],
+      initial: 'script',
+      states: {
+        script: {
+          on: { LOADED: 'form' },
+        },
+        form: { entry: ['loadForm'], type: 'final' },
+      },
       on: {
         READY: {
           target: 'ready',
           actions: assign({ form: (_context, event) => event.form }),
         },
+        LOAD_ERROR: 'error',
         BLOCKED: 'blocked',
       },
     },
@@ -82,10 +86,7 @@ const useMarketoForm = (munchkinId, id, publishableKey, redirectLink) => {
     },
   });
 
-  return [
-    state.context.form,
-    { state: state.value, error: state.context.error },
-  ];
+  return [state.context.form, { state, error: state.context.error }];
 };
 
 export default useMarketoForm;
