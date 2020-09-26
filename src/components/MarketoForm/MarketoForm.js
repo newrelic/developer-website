@@ -35,20 +35,47 @@ const MarketoForm = ({
           padding: 1.25rem;
         `}
       >
-        <p
+        <h4
           css={css`
-            font-size: 1rem;
             font-weight: bold;
             text-align: center;
+            margin-bottom: 1rem;
           `}
         >
           {title}
-        </p>
+        </h4>
         <form id={`mktoForm_${id}`} />
+        {state.matches('blocked') && (
+          <Error>
+            Unable to load the form. Perhaps you have an ad blocker enabled?
+          </Error>
+        )}
+        {state.matches('error') && <Error>Unable to load the form.</Error>}
         {state.matches('loading') && <Spinner />}
       </div>
     </div>
   );
+};
+
+const Error = ({ children }) => (
+  <div
+    css={css`
+      padding: 1rem;
+      border-radius: 0.25rem;
+      background: var(--color-red-100);
+      font-size: 0.875rem;
+
+      .dark-mode & {
+        background: var(--color-red-900);
+      }
+    `}
+  >
+    {children}
+  </div>
+);
+
+Error.propTypes = {
+  children: PropTypes.node,
 };
 
 MarketoForm.propTypes = {
