@@ -1,4 +1,3 @@
-import { navigate } from 'gatsby';
 import { assign, Machine } from 'xstate';
 import { asEffect, useMachine } from '@xstate/react';
 import useScript from './useScript';
@@ -46,7 +45,12 @@ const machine = Machine({
   },
 });
 
-const useMarketoForm = ({ munchkinId, id, publishableKey, redirectLink }) => {
+const useMarketoForm = ({
+  id,
+  munchkinId,
+  publishableKey,
+  onSubmit = () => {},
+}) => {
   const [state, send] = useMachine(machine, {
     actions: {
       loadForm: asEffect(() => {
@@ -59,7 +63,7 @@ const useMarketoForm = ({ munchkinId, id, publishableKey, redirectLink }) => {
       }),
       defineFormActions: asEffect(({ form }) => {
         form.onSuccess(() => {
-          navigate(redirectLink);
+          onSubmit();
 
           // prevent the default behavior of redirecting via marketo to another
           // page. We want to control the navigation ourselves.

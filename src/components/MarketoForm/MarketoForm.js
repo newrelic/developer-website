@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import './marketo.scss';
+import { navigate } from 'gatsby';
 import useMarketoForm from '../../hooks/useMarketoForm';
 import Spinner from '../Spinner';
+import './marketo.scss';
 
 const MarketoForm = ({
   title,
@@ -16,7 +17,7 @@ const MarketoForm = ({
     munchkinId,
     id,
     publishableKey,
-    redirectLink,
+    onSubmit: () => navigate(redirectLink),
   });
 
   return (
