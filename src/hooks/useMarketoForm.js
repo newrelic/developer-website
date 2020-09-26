@@ -17,14 +17,14 @@ const machine = Machine({
     scriptLoaded: {
       entry: ['loadForm'],
       on: {
-        FORM_LOADED: {
-          target: 'formLoaded',
+        READY: {
+          target: 'ready',
           actions: assign({ form: (_context, event) => event.form }),
         },
         BLOCKED: 'blocked',
       },
     },
-    formLoaded: {
+    ready: {
       type: 'final',
       entry: ['defineFormActions'],
     },
@@ -50,7 +50,7 @@ const useMarketoForm = (munchkinId, id, publishableKey, redirectLink) => {
           '//app-abj.marketo.com',
           munchkinId,
           id,
-          (form) => send({ type: 'FORM_LOADED', form })
+          (form) => send({ type: 'READY', form })
         );
       }),
       defineFormActions: asEffect(({ form }) => {
@@ -82,7 +82,10 @@ const useMarketoForm = (munchkinId, id, publishableKey, redirectLink) => {
     },
   });
 
-  return [state.value, state.context];
+  return [
+    state.context.form,
+    { state: state.value, error: state.context.error },
+  ];
 };
 
 export default useMarketoForm;

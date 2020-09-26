@@ -12,7 +12,12 @@ const MarketoForm = ({
   publishableKey,
   redirectLink,
 }) => {
-  const [state] = useMarketoForm(munchkinId, id, publishableKey, redirectLink);
+  const [, { state }] = useMarketoForm(
+    munchkinId,
+    id,
+    publishableKey,
+    redirectLink
+  );
 
   return (
     <div
