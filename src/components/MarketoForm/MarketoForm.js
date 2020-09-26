@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import './marketo.scss';
 import useMarketoForm from '../../hooks/useMarketoForm';
+import Spinner from '../Spinner';
 
 const MarketoForm = ({
   title,
@@ -26,7 +27,6 @@ const MarketoForm = ({
           border-radius: 5px;
           border: 1px solid var(--border-color);
           padding: 1.25rem;
-          display: ${state === 'formLoaded' ? 'block' : 'none'};
         `}
       >
         <p
@@ -39,6 +39,7 @@ const MarketoForm = ({
           {title}
         </p>
         <form id={`mktoForm_${id}`} />
+        {(state === 'loading' || state === 'scriptLoaded') && <Spinner />}
       </div>
     </div>
   );
