@@ -3,7 +3,7 @@ const { getTypeDefs } = require('./typeDefInfo');
 const { getMethods } = require('./methodInfo');
 const { getConstants } = require('./constantInfo');
 
-exports.getApiDoc = (name, sdk) => {
+module.exports = (name, sdk) => {
   const api = sdk[name];
 
   if (!api) {
