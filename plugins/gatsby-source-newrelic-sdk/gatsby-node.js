@@ -1,5 +1,6 @@
 const loadSdk = require('./src/loadSdk');
-const { getComponentDoc, getApiDoc } = require('./src/docInfo');
+const { getApiDoc } = require('./src/docInfo');
+const getComponentDoc = require('./src/getComponentDoc');
 const {
   BASE_URL,
   DOCUMENTED_APIS,
