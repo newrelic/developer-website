@@ -1,6 +1,6 @@
 const IGNORED_PREVIEWS = ['Dropdown', 'Modal', 'Tooltip'];
 
-exports.getExamples = (name, obj) => {
+module.exports = (name, obj) => {
   const docs = obj[name].__docs__ || {};
   const tags = docs.tags || {};
 

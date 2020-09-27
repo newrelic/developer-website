@@ -1,4 +1,4 @@
-const { getExamples } = require('./exampleInfo');
+const getExamples = require('./getExamples');
 
 const IGNORED_METHODS = [
   'prototype',
