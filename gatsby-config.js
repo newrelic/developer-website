@@ -18,6 +18,22 @@ module.exports = {
           contentPadding: '2rem',
           maxWidth: '1700px',
         },
+        splitio: {
+          core: {
+            authorizationKey: process.env.SPLITIO_AUTH_KEY,
+          },
+          env: {
+            development: {
+              features: {
+                'developer-website_global-header-gh-buttons': 'on',
+                'developer-website_right-rail-buttons': 'outline',
+              },
+              core: {
+                authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
+              },
+            },
+          },
+        },
         newrelic: {
           configs: {
             production: {

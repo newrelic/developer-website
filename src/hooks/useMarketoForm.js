@@ -1,37 +1,96 @@
-import { useEffect } from 'react';
+import { assign, Machine } from 'xstate';
+import { asEffect, useMachine } from '@xstate/react';
+import useScript from './useScript';
 
-const useMarketoForm = (munchkinId, id, publishableKey) => {
-  useEffect(() => {
-    window.MktoForms2.loadForm('//app-abj.marketo.com', munchkinId, id);
+const machine = Machine({
+  id: 'marketo',
+  initial: 'loading',
+  context: {
+    form: null,
+    error: null,
+  },
+  states: {
+    loading: {
+      initial: 'script',
+      states: {
+        script: {
+          on: { LOADED: 'form' },
+        },
+        form: { entry: ['loadForm'], type: 'final' },
+      },
+      on: {
+        READY: {
+          target: 'ready',
+          actions: assign({ form: (_context, event) => event.form }),
+        },
+        LOAD_ERROR: 'error',
+        BLOCKED: 'blocked',
+      },
+    },
+    ready: {
+      type: 'final',
+      entry: ['defineFormActions'],
+    },
+    blocked: {
+      type: 'final',
+      entry: assign({
+        error:
+          'Unable to load the script. Perhaps this was due to an ad blocker.',
+      }),
+    },
+    error: {
+      type: 'final',
+      entry: assign({ error: 'Unable to load the script.' }),
+    },
+  },
+});
 
-    const pollForDefinition = (scope, varname, callback) => {
-      if (typeof scope[varname] !== 'undefined') {
-        return callback();
-      }
-      const interval = setInterval(() => {
-        if (typeof scope[varname] !== 'undefined') {
-          clearInterval(interval);
-          callback();
-        }
-      }, 250);
-    };
-    const script = document.createElement('script');
-    script.src = 'https://marketo.clearbit.com/assets/v1/marketo/forms.js';
-    script.async = true;
-    script.setAttribute('data-clearbit-publishable-key', publishableKey);
-    script.onerror = () => {
-      // eslint-disable-next-line no-console
-      console.log('Clearbit Form JS unable to load');
-      pollForDefinition(window, 'MktoForms2', () => {
-        window.MktoForms2.whenReady((form) => {
-          form.setValues({
-            clearbitFormStatus: 'Clearbit Form JS unable to load',
-          });
+const useMarketoForm = ({
+  id,
+  munchkinId,
+  publishableKey,
+  onSubmit = () => {},
+}) => {
+  const [state, send] = useMachine(machine, {
+    actions: {
+      loadForm: asEffect(() => {
+        window.MktoForms2.loadForm(
+          '//app-abj.marketo.com',
+          munchkinId,
+          id,
+          (form) => send({ type: 'READY', form })
+        );
+      }),
+      defineFormActions: asEffect(({ form }) => {
+        form.onSuccess(() => {
+          onSubmit();
+
+          // prevent the default behavior of redirecting via marketo to another
+          // page. We want to control the navigation ourselves.
+          // https://developers.marketo.com/javascript-api/forms/api-reference/
+          return false;
         });
-      });
-    };
-    document.body.append(script);
-  }, [munchkinId, id, publishableKey]);
+      }),
+    },
+  });
+
+  useScript('https://marketo.clearbit.com/assets/v1/marketo/forms.js', {
+    attributes: { 'data-clearbit-publishable-key': publishableKey },
+    onError: () => send('LOAD_ERROR'),
+    onLoad: () => {
+      if (window.MktoForms2) {
+        send('LOADED');
+      } else {
+        // Some ad blockers block the marketo script from loading. In this case,
+        // we won't have the MktoForms2 variable available on window. We need
+        // to prevent the rest of the script from running to avoid triggering
+        // errors on the page that would cause the page to go blank.
+        send('BLOCKED');
+      }
+    },
+  });
+
+  return [state.context.form, { state, error: state.context.error }];
 };
 
 export default useMarketoForm;

@@ -1,11 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import './marketo.scss';
+import { navigate } from 'gatsby';
 import useMarketoForm from '../../hooks/useMarketoForm';
+import Spinner from '../Spinner';
+import './marketo.scss';
 
-const MarketoForm = ({ title, id, munchkinId, publishableKey }) => {
-  useMarketoForm(munchkinId, id, publishableKey);
+const MarketoForm = ({
+  title,
+  id,
+  munchkinId,
+  publishableKey,
+  redirectLink,
+}) => {
+  const [, { state }] = useMarketoForm({
+    munchkinId,
+    id,
+    publishableKey,
+    onSubmit: () => navigate(redirectLink),
+  });
 
   return (
     <div
@@ -22,19 +35,47 @@ const MarketoForm = ({ title, id, munchkinId, publishableKey }) => {
           padding: 1.25rem;
         `}
       >
-        <p
+        <h4
           css={css`
-            font-size: 1.25rem;
             font-weight: bold;
             text-align: center;
+            margin-bottom: 1rem;
           `}
         >
           {title}
-        </p>
+        </h4>
         <form id={`mktoForm_${id}`} />
+        {state.matches('blocked') && (
+          <Error>
+            Unable to load the form. Perhaps you have an ad blocker enabled?
+          </Error>
+        )}
+        {state.matches('error') && <Error>Unable to load the form.</Error>}
+        {state.matches('loading') && <Spinner />}
       </div>
     </div>
   );
+};
+
+const Error = ({ children }) => (
+  <div
+    css={css`
+      padding: 1rem;
+      border-radius: 0.25rem;
+      background: var(--color-red-100);
+      font-size: 0.875rem;
+
+      .dark-mode & {
+        background: var(--color-red-900);
+      }
+    `}
+  >
+    {children}
+  </div>
+);
+
+Error.propTypes = {
+  children: PropTypes.node,
 };
 
 MarketoForm.propTypes = {
@@ -42,6 +83,7 @@ MarketoForm.propTypes = {
   id: PropTypes.number.isRequired,
   munchkinId: PropTypes.string.isRequired,
   publishableKey: PropTypes.string.isRequired,
+  redirectLink: PropTypes.string.isRequired,
 };
 
 export default MarketoForm;
