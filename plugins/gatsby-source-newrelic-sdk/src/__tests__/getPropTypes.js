@@ -2,7 +2,7 @@ const {
   getNormalizedTypeName,
   getDefaultValue,
   getTypeMeta,
-} = require('../propTypeInfo');
+} = require('../getPropTypes');
 
 const createDocs = (
   type,

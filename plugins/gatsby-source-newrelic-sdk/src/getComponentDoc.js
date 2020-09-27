@@ -1,8 +1,8 @@
 const getExamples = require('./getExamples');
 const getTypeDefs = require('./getTypeDefs');
-const { getPropTypes } = require('./propTypeInfo');
 const getMethods = require('./getMethods');
 const getConstants = require('./getConstants');
+const { getPropTypes } = require('./getPropTypes');
 
 module.exports = (name, sdk) => {
   const component = sdk[name];
