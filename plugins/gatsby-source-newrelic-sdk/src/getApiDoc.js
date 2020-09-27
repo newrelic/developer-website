@@ -1,6 +1,6 @@
 const { getExamples } = require('./exampleInfo');
 const { getTypeDefs } = require('./typeDefInfo');
-const { getMethods } = require('./methodInfo');
+const getMethods = require('./getMethods');
 const getConstants = require('./getConstants');
 
 module.exports = (name, sdk) => {

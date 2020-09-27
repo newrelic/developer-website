@@ -9,7 +9,7 @@ const IGNORED_METHODS = [
   'defaultProps',
 ];
 
-exports.getMethods = (name, sdk) => {
+module.exports = (name, sdk) => {
   const obj = sdk[name];
 
   return Object.getOwnPropertyNames(obj)
