@@ -1,5 +1,5 @@
 const { getExamples } = require('./exampleInfo');
-const { getTypeDefs } = require('./typeDefInfo');
+const getTypeDefs = require('./getTypeDefs');
 const { getPropTypes } = require('./propTypeInfo');
 const getMethods = require('./getMethods');
 const getConstants = require('./getConstants');
