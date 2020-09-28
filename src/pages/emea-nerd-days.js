@@ -181,7 +181,7 @@ const NerdDaysPage = () => {
                 <p>
                   <strong>Date:</strong> November 10, 2020
                   <br />
-                  <strong>Time:</strong> 9AM CET - 2:45PM CET
+                  <strong>Time:</strong> 9AM CET - 3PM CET
                 </p>
                 <p>
                   We look forward to building with you during Nerd Days! If you
@@ -336,8 +336,11 @@ const NerdDaysPage = () => {
                 time="1:00 PM"
                 title="Reducing toil with Terraform"
               />
-              <Agenda.Session time="1:00 PM" title="Custom Instrumentation" />
-              <Agenda.Session time="2:00 PM" title="Stressing your services" />
+              <Agenda.Session time="1:00 PM" title="Custom Data Collection" />
+              <Agenda.Session
+                time="2:00 PM"
+                title="Test in production with KPI-driven release management"
+              />
               <Agenda.Session time="2:00 PM" title="Plot your data" />
               <Agenda.Session time="2:00 PM" title="Alerts Best Practices" />
               <Agenda.Session time="3:00 PM" title="A journey to the cloud" />
