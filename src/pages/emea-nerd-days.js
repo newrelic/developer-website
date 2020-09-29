@@ -162,7 +162,7 @@ const NerdDaysPage = () => {
               )}
             >
               <div>
-                <h2>What’s is Nerd Days exactly…</h2>
+                <h2>What is Nerd Days exactly…</h2>
                 <p>
                   Nerd Days is a <b>FREE</b> engineering conference that kicks
                   off November 10, 2020 <em>(Dates vary by region)</em>. Focused
