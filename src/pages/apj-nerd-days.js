@@ -162,6 +162,7 @@ const NerdDaysPage = () => {
               )}
             >
               <div>
+                <h2>What is Nerd Days exactly…</h2>
                 <p>
                   Nerd Days is a <b>FREE</b> engineering conference that kicks
                   off October 22 <em>(Dates vary by region)</em>. Focused on
@@ -169,6 +170,15 @@ const NerdDaysPage = () => {
                   looking at slides that tell you what software can do and more
                   time on getting your hands on the software to solve problems
                   efficiently.
+                </p>
+                <p>
+                  <strong>Including:</strong>
+                  <ul>
+                    <li>Live workshops</li>
+                    <li>Live coding and demos</li>
+                    <li>Customer examples</li>
+                    <li>Panel / Q&A sessions</li>
+                  </ul>
                 </p>
                 <p>
                   You’ll hear from fellow engineers who built New Relic
@@ -214,7 +224,7 @@ const NerdDaysPage = () => {
                     }
                   `}
                 >
-                  <CtaItem date="Nov 11, 2020" to="/apj-nerd-days">
+                  <CtaItem date="Nov 11, 2020" to="/emea-nerd-days">
                     EMEA Registration
                   </CtaItem>
                 </ul>
@@ -310,13 +320,6 @@ const NerdDaysPage = () => {
                 speaker="Ganesh Rajendran"
               />
               <Agenda.Session
-                time="1:10 PM"
-                title="Customer Fireside Chat 1"
-                speaker="Bianca (Ansarada or Zip on DevOps and Measurement)"
-                track={null}
-                span={3}
-              />
-              <Agenda.Session
                 time="1:30 PM"
                 title="Tell a Data Story with Dashboards"
                 speaker="Chris Frost"
@@ -330,13 +333,6 @@ const NerdDaysPage = () => {
                 time="1:30 PM"
                 title="Deploying an app on Kubernetes"
                 speaker="Carl Luo and Jason Esli"
-              />
-              <Agenda.Session
-                time="2:10 PM"
-                title="Customer Fireside Chat 2"
-                speaker="Willis (Setel or BliBli on DCX)"
-                track={null}
-                span={3}
               />
               <Agenda.Session
                 time="2:30 PM"
@@ -354,13 +350,6 @@ const NerdDaysPage = () => {
                 speaker="Nick Kim and Max Bausher"
               />
               <Agenda.Session
-                time="3:10 PM"
-                title="Customer Fireside Chat 3"
-                speaker="Myk (Australia Post, Verizon or ANZ Bank on observability centre of Excellence)"
-                track={null}
-                span={3}
-              />
-              <Agenda.Session
                 time="3:30 PM"
                 title="Full Stack Instrumentation"
                 speaker="Dan Johnson"
@@ -374,13 +363,6 @@ const NerdDaysPage = () => {
                 time="3:30 PM"
                 title="Measuring code pipelines"
                 speaker="Nik Jain"
-              />
-              <Agenda.Session
-                time="4:10 PM"
-                title="Customer Fireside Chat 4"
-                speaker="Jill (Telstra or NBN or Dominos on Cloud Adoption, Optimization)"
-                track={null}
-                span={3}
               />
               <Agenda.Session
                 time="4:30 PM"
