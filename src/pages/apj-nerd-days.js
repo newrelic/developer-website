@@ -162,6 +162,7 @@ const NerdDaysPage = () => {
               )}
             >
               <div>
+                <h2>What’s is Nerd Days exactly…</h2>
                 <p>
                   Nerd Days is a <b>FREE</b> engineering conference that kicks
                   off October 22 <em>(Dates vary by region)</em>. Focused on
@@ -169,6 +170,15 @@ const NerdDaysPage = () => {
                   looking at slides that tell you what software can do and more
                   time on getting your hands on the software to solve problems
                   efficiently.
+                </p>
+                <p>
+                  <strong>Including:</strong>
+                  <ul>
+                    <li>Live workshops</li>
+                    <li>Live coding and demos</li>
+                    <li>Customer examples</li>
+                    <li>Panel / Q&A sessions</li>
+                  </ul>
                 </p>
                 <p>
                   You’ll hear from fellow engineers who built New Relic

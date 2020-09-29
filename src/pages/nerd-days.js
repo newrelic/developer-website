@@ -163,19 +163,33 @@ const NerdDaysPage = () => {
               )}
             >
               <div>
+                <h2>What’s is Nerd Days exactly…</h2>
                 <p>
-                  Focused on building more perfect software, our goal is to
-                  spend less time looking at slides that tell you what software
-                  can do and more time on getting your hands on the software to
-                  solve problems efficiently.
+                  A{' '}
+                  <strong>
+                    <em>FREE</em>
+                  </strong>{' '}
+                  developer focused live digital conference covering a broad
+                  range of topics at varying levels for all skill sets.
+                </p>
+                <p>
+                  <strong>Including:</strong>
+                  <ul>
+                    <li>Live workshops</li>
+                    <li>Live coding and demos</li>
+                    <li>Customer examples</li>
+                    <li>Panel / Q&A sessions</li>
+                  </ul>
+                </p>
+                <p>
+                  Presented by Relics, partners, Developer Champions, and
+                  customers
                 </p>
                 <h3>Save the date &amp; join us online</h3>
                 <p>
-                  Choose the sessions you're interested in add Nerd Days to your
-                  calendar. You’ll hear from fellow engineers who built New
-                  Relic solutions and New Relic users from various industries.
                   Whether you’re new or a data nerd, there’s an interactive
-                  session for you.
+                  session for you. Choose the sessions you're interested in and
+                  add Nerd Days to your calendar.
                 </p>
                 <p>
                   <strong>Date:</strong> October 13, 2020
