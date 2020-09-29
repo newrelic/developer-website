@@ -320,13 +320,6 @@ const NerdDaysPage = () => {
                 speaker="Ganesh Rajendran"
               />
               <Agenda.Session
-                time="1:10 PM"
-                title="Customer Fireside Chat 1"
-                speaker="Bianca (Ansarada or Zip on DevOps and Measurement)"
-                track={null}
-                span={3}
-              />
-              <Agenda.Session
                 time="1:30 PM"
                 title="Tell a Data Story with Dashboards"
                 speaker="Chris Frost"
@@ -340,13 +333,6 @@ const NerdDaysPage = () => {
                 time="1:30 PM"
                 title="Deploying an app on Kubernetes"
                 speaker="Carl Luo and Jason Esli"
-              />
-              <Agenda.Session
-                time="2:10 PM"
-                title="Customer Fireside Chat 2"
-                speaker="Willis (Setel or BliBli on DCX)"
-                track={null}
-                span={3}
               />
               <Agenda.Session
                 time="2:30 PM"
@@ -364,13 +350,6 @@ const NerdDaysPage = () => {
                 speaker="Nick Kim and Max Bausher"
               />
               <Agenda.Session
-                time="3:10 PM"
-                title="Customer Fireside Chat 3"
-                speaker="Myk (Australia Post, Verizon or ANZ Bank on observability centre of Excellence)"
-                track={null}
-                span={3}
-              />
-              <Agenda.Session
                 time="3:30 PM"
                 title="Full Stack Instrumentation"
                 speaker="Dan Johnson"
@@ -384,13 +363,6 @@ const NerdDaysPage = () => {
                 time="3:30 PM"
                 title="Measuring code pipelines"
                 speaker="Nik Jain"
-              />
-              <Agenda.Session
-                time="4:10 PM"
-                title="Customer Fireside Chat 4"
-                speaker="Jill (Telstra or NBN or Dominos on Cloud Adoption, Optimization)"
-                track={null}
-                span={3}
               />
               <Agenda.Session
                 time="4:30 PM"
