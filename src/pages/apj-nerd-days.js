@@ -224,6 +224,9 @@ const NerdDaysPage = () => {
                     }
                   `}
                 >
+                  <CtaItem date="Oct 13, 2020" to="/nerd-days">
+                    AMER Registration
+                  </CtaItem>
                   <CtaItem date="Nov 11, 2020" to="/emea-nerd-days">
                     EMEA Registration
                   </CtaItem>
