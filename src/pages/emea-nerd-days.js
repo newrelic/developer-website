@@ -181,7 +181,7 @@ const NerdDaysPage = () => {
                 <p>
                   <strong>Date:</strong> November 10, 2020
                   <br />
-                  <strong>Time:</strong> 9AM CET - 3PM CET
+                  <strong>Time:</strong> 9AM GMT - 3PM GMT
                 </p>
                 <p>
                   We look forward to building with you during Nerd Days! If you
