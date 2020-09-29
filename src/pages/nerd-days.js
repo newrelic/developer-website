@@ -432,7 +432,7 @@ const NerdDaysPage = () => {
             >
               <Agenda.Session
                 time="9:00 AM"
-                title="Keynote"
+                title="Keynote: Jemiah Sius, Lew Cirne, and Special Guest Announcements"
                 speaker="Lew Cirne"
                 track={null}
                 span={5}
@@ -477,8 +477,8 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 inactive
                 time="12:00 PM"
-                title="Lunch Break"
-                speaker="Distant Disco"
+                title="Lunch with Lew"
+                speaker="Lew Cirne and Jemiah Sius"
                 track={null}
                 span={5}
               />
