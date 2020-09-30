@@ -555,7 +555,7 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 time="3:00 PM"
                 title="AWS Modernization"
-                speaker="Aaron Soto"
+                speaker="Aaron Soto and Brian Thomason"
               />
               <Agenda.Session
                 time="3:00 PM"
