@@ -439,40 +439,51 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="10:00 AM"
-                title="Instrumenting your service using agents "
+                title="Instrumenting your service using agents"
+                speaker="Michael Caron"
               />
               <Agenda.Session
                 time="10:00 AM"
-                title="Increased Maturity with Full Stack Observability "
+                title="Increased Maturity with Full Stack Observability"
               />
               <Agenda.Session
                 time="10:00 AM"
-                title="Deploying an app on Kubernetes"
+                title="5 Steps to Kubernetes Observability"
+                speaker="Stijn Polfliet"
               />
               <Agenda.Session
                 time="10:00 AM"
                 title="Delivering SRE as a Service"
+                speaker="Thomas Martin"
               />
               <Agenda.Session
                 time="10:00 AM"
                 title="Building applications on New Relic One"
+                speaker="Joel Worrall"
               />
               <Agenda.Session
                 time="11:00 AM"
                 title="Exploring your data using NRQL"
+                speaker="Phil Weber"
               />
-              <Agenda.Session time="11:00 AM" title="New Relic AI" />
               <Agenda.Session
                 time="11:00 AM"
-                title="Going Serverless: Chipping at the monolith "
+                title="New Relic AI"
+                speaker="Sebastian Ramirez"
+              />
+              <Agenda.Session
+                time="11:00 AM"
+                title="Going Serverless: Chipping at the monolith"
+                speaker="Nica Fee"
               />
               <Agenda.Session
                 time="11:00 AM"
                 title="Logging for Modern Organizations"
+                speaker="Jeremy Cooper & Leon Chapman"
               />
               <Agenda.Session
                 time="11:00 AM"
-                title="Grafana and Prometheus with TDP"
+                title="Grafana and Prometheus with New Relic"
               />
               <Agenda.Session
                 inactive
@@ -482,55 +493,83 @@ const NerdDaysPage = () => {
                 track={null}
                 span={5}
               />
-              <Agenda.Session time="1:00 PM" title="Custom Instrumentation" />
+              <Agenda.Session
+                time="1:00 PM"
+                title="Custom Instrumentation"
+                speaker="Michael Caron"
+              />
               <Agenda.Session
                 time="1:00 PM"
                 title="Exploring Data with NerdGraph"
-              />
-              <Agenda.Session time="1:00 PM" title="Tool Consolidation" />
-              <Agenda.Session
-                time="1:00 PM"
-                title="Flex Integration - Build Your First Linux Configuration"
+                speaker="Caitlin Halla"
               />
               <Agenda.Session
                 time="1:00 PM"
-                title="Open Source powers the New Relic One Catalog"
+                title="Tool Consolidation"
+                speaker="Eric Mittelhammer"
               />
-              <Agenda.Session time="2:00 PM" title="Alerts Best Practices " />
+              <Agenda.Session
+                time="1:00 PM"
+                title="Testing in Production"
+                speaker="Talia Nassi"
+              />
+              <Agenda.Session
+                time="1:00 PM"
+                title="How Open Source powers the New Relic One Catalog"
+                speaker="Justin Eveland"
+              />
+              <Agenda.Session
+                time="2:00 PM"
+                title="Alerts Best Practices"
+                speaker="Phil Weber"
+              />
               <Agenda.Session
                 time="2:00 PM"
                 title="The Art & Science of Deciphering Perceived Performance: A look at how user behavior affects your data"
+                speaker="Lindsy Farina"
               />
               <Agenda.Session
                 time="2:00 PM"
-                title="Kubernetes Observability "
+                title="Monitoring your Cloud Usage and Spend"
               />
-              <Agenda.Session time="2:00 PM" title="Measuring code pipelines" />
               <Agenda.Session
                 time="2:00 PM"
-                title="New Relic CLI Wizardry/ Reducing toil with Terraform"
+                title="Measuring code pipelines"
+                speaker="Zach Stickles"
+              />
+              <Agenda.Session
+                time="2:00 PM"
+                title="Reducing toil with Terraform"
+                speaker="Jon Thurman"
               />
               <Agenda.Session
                 time="3:00 PM"
-                title="True availability using Synthetics "
+                title="True availability using Synthetics"
+                speaker="Michael Caron"
               />
               <Agenda.Session
                 time="3:00 PM"
                 title="How Observability-Driven Development accelerates DevOps transformations"
+                speaker="Dave Shaker"
               />
               <Agenda.Session
                 time="3:00 PM"
-                title="CFP Customer Session: Cloud fundamentals"
+                title="AWS Modernization"
+                speaker="Aaron Soto"
               />
-              <Agenda.Session time="3:00 PM" title="Testing in Production" />
+              <Agenda.Session
+                time="3:00 PM"
+                title="Best Practices using Acme Telcolite"
+              />
               <Agenda.Session
                 time="3:00 PM"
                 title="NerdStorageVault: ThirdParty Secrets"
+                speaker="John Vajda"
               />
               <Agenda.Session
                 time="4:00 PM"
                 title="Closing + Swag"
-                speaker="Jemiah Sius and Team"
+                speaker="Jemiah Sius"
                 track={null}
                 span={5}
               />
