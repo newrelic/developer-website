@@ -535,7 +535,7 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 time="2:00 PM"
                 title="Measuring code pipelines"
-                speaker="Zach Stickles"
+                speaker="Zach Leslie"
               />
               <Agenda.Session
                 time="2:00 PM"
