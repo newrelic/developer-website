@@ -97,7 +97,7 @@ As a non New Relic employee you can [Fork](https://help.github.com/en/github/get
 6. If/when your `PR` is accepted, the automation in this project will build the site and deploy a new version of the code to `developer.newrelic.com`.
 7. And you are done!
 
-### Using the Develop branch
+### Using the `develop` branch
 
 Use the `Develop` branch when creating your working branch locally. `Develop` will always contain the most
 current source code. The `Develop` branch will be merged into the `Main` branch automatically.
