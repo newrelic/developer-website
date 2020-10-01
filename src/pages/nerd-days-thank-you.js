@@ -21,14 +21,7 @@ const NerdDaysPage = () => {
               <h1>You’re registered for Nerd Days</h1>
               <p>
                 Thanks again for signing up. Here’s some helpful information to
-                know before you go. But first, don’t forget to add Nerd Days 1.0
-                to your calendar at:{' '}
-                <a href="https://try.newrelic.com/rs/412-MZS-894/31967/New+Relic+Nerd+Days.ics">
-                  Outlook/iCal
-                </a>{' '}
-                <a href="https://get.newrelic.com/ep10FS01000ZM8000T3A00J">
-                  Google Calendar
-                </a>
+                know before you go.
               </p>
 
               <h2>Create your Hopin account:</h2>
