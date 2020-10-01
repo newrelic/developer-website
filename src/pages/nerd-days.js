@@ -550,7 +550,7 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 time="3:00 PM"
                 title="How Observability-Driven Development accelerates DevOps transformations"
-                speaker="Dave Shaker"
+                speaker="Dave Shanker"
               />
               <Agenda.Session
                 time="3:00 PM"
