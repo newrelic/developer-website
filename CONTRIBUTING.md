@@ -99,10 +99,10 @@ As a non New Relic employee you can [Fork](https://help.github.com/en/github/get
 
 ### Using the `develop` branch
 
-Use the `Develop` branch when creating your working branch locally. `Develop` will always contain the most
-current source code. The `Develop` branch will be merged into the `Main` branch automatically.
+Use the `develop` branch when creating your working branch locally. `develop` will always contain the most
+current source code. The `develop` branch will be merged into the `main` branch by the maintainers when a new release is ready to ship.
 
-All `Pull Requests` should be made to the `Develop` branch.
+All pull requests should be made against the `develop` branch.
 
 ### Draft PRs
 
