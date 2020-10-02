@@ -431,143 +431,146 @@ const NerdDaysPage = () => {
               ]}
             >
               <Agenda.Session
-                time="9:00 AM"
+                time="9:00AM PST"
                 title="Keynote: Jemiah Sius, Lew Cirne, and Special Guest Announcements"
                 speaker="Lew Cirne"
                 track={null}
                 span={5}
               />
               <Agenda.Session
-                time="10:00 AM"
+                time="10:00AM PST"
                 title="Instrumenting your service using agents"
                 speaker="Michael Caron"
               />
               <Agenda.Session
-                time="10:00 AM"
-                title="Increased Maturity with Full Stack Observability"
+                time="10:00AM PST"
+                title="New Relic CLI Wizardry"
+                speaker="Jon Thurman"
               />
               <Agenda.Session
-                time="10:00 AM"
+                time="10:00AM PST"
                 title="5 Steps to Kubernetes Observability"
                 speaker="Stijn Polfliet"
               />
               <Agenda.Session
-                time="10:00 AM"
+                time="10:00AM PST"
                 title="Delivering SRE as a Service"
                 speaker="Thomas Martin"
               />
               <Agenda.Session
-                time="10:00 AM"
+                time="10:00AM PST"
                 title="Building applications on New Relic One"
                 speaker="Joel Worrall"
               />
               <Agenda.Session
-                time="11:00 AM"
+                time="11:00AM PST"
                 title="Exploring your data using NRQL"
                 speaker="Phil Weber"
               />
               <Agenda.Session
-                time="11:00 AM"
+                time="11:00AM PST"
                 title="New Relic AI"
                 speaker="Sebastian Ramirez"
               />
               <Agenda.Session
-                time="11:00 AM"
+                time="11:00AM PST"
                 title="Going Serverless: Chipping at the monolith"
                 speaker="Nica Fee"
               />
               <Agenda.Session
-                time="11:00 AM"
+                time="11:00AM PST"
                 title="Logging for Modern Organizations"
                 speaker="Jeremy Cooper & Leon Chapman"
               />
               <Agenda.Session
-                time="11:00 AM"
+                time="11:00AM PST"
                 title="Grafana and Prometheus with New Relic"
+                speaker="Liam Hurrell &	Colin MacNaughton"
               />
               <Agenda.Session
                 inactive
-                time="12:00 PM"
+                time="12:00PM PST"
                 title="Lunch with Lew"
-                speaker="Lew Cirne and Jemiah Sius"
+                speaker="Lew Cirne & Jemiah Sius"
                 track={null}
                 span={5}
               />
               <Agenda.Session
-                time="1:00 PM"
+                time="1:00PM PST"
                 title="Custom Instrumentation"
                 speaker="Michael Caron"
               />
               <Agenda.Session
-                time="1:00 PM"
+                time="1:00PM PST"
                 title="Exploring Data with NerdGraph"
                 speaker="Caitlin Halla"
               />
               <Agenda.Session
-                time="1:00 PM"
+                time="1:00PM PST"
                 title="Tool Consolidation"
                 speaker="Eric Mittelhammer"
               />
               <Agenda.Session
-                time="1:00 PM"
+                time="1:00PM PST"
                 title="Testing in Production"
                 speaker="Talia Nassi"
               />
               <Agenda.Session
-                time="1:00 PM"
+                time="1:00PM PST"
                 title="How Open Source powers the New Relic One Catalog"
                 speaker="Justin Eveland"
               />
               <Agenda.Session
-                time="2:00 PM"
+                time="2:00PM PST"
                 title="Alerts Best Practices"
                 speaker="Phil Weber"
               />
               <Agenda.Session
-                time="2:00 PM"
+                time="2:00PM PST"
                 title="The Art & Science of Deciphering Perceived Performance: A look at how user behavior affects your data"
                 speaker="Lindsy Farina"
               />
               <Agenda.Session
-                time="2:00 PM"
+                time="2:00PM PST"
                 title="Monitoring your Cloud Usage and Spend"
               />
               <Agenda.Session
-                time="2:00 PM"
+                time="2:00PM PST"
                 title="Measuring code pipelines"
                 speaker="Zach Leslie"
               />
               <Agenda.Session
-                time="2:00 PM"
+                time="2:00PM PST"
                 title="Reducing toil with Terraform"
                 speaker="Jon Thurman"
               />
               <Agenda.Session
-                time="3:00 PM"
+                time="3:00PM PST"
                 title="True availability using Synthetics"
                 speaker="Michael Caron"
               />
               <Agenda.Session
-                time="3:00 PM"
+                time="3:00PM PST"
                 title="How Observability-Driven Development accelerates DevOps transformations"
                 speaker="Dave Shanker"
               />
               <Agenda.Session
-                time="3:00 PM"
+                time="3:00PM PST"
                 title="AWS Modernization"
-                speaker="Aaron Soto and Brian Thomason"
+                speaker="Aaron Soto & Brian Thomason"
               />
               <Agenda.Session
-                time="3:00 PM"
-                title="Best Practices using Acme Telcolite"
+                time="3:00PM PST"
+                title="Writing Reliably Bad Software, AKA 'How to get paid to write memory leaks'"
+                speaker="Gabe O’Brien & Alec Swanson"
               />
               <Agenda.Session
-                time="3:00 PM"
+                time="3:00PM PST"
                 title="NerdStorageVault: ThirdParty Secrets"
                 speaker="John Vajda"
               />
               <Agenda.Session
-                time="4:00 PM"
+                time="4:00PM PST"
                 title="Closing + Swag"
                 speaker="Jemiah Sius"
                 track={null}
