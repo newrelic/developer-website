@@ -21,7 +21,7 @@ const Session = ({
   >
     <h4
       css={css`
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 700;
         margin-bottom: 0.25rem;
       `}
