@@ -772,6 +772,12 @@ const speakers = [
     company: 'New Relic',
   },
   {
+    name: "Gabe O'Brien",
+    image: GabeObrien,
+    title: 'Senior Software Engineer',
+    company: 'New Relic',
+  },
+  {
     name: 'Liam Hurrell',
     image: LiamHurrell,
     title: 'Senior Technical Training Specialist',
