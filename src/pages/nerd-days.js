@@ -37,6 +37,15 @@ import LindsyFarina from '../images/nerd-days/speakers/LindsyFarina.jpg';
 import TaliaNassi from '../images/nerd-days/speakers/TaliaNassi.jpg';
 import ThomasMartin from '../images/nerd-days/speakers/ThomasMartin.jpg';
 
+import AlecSwanson from '../images/nerd-days/speakers/AlecSwanson.jpg';
+import BrianThomason from '../images/nerd-days/speakers/BrianThomason.jpg';
+import ChrisTrombley from '../images/nerd-days/speakers/ChrisTrombley.jpg';
+import GabeObrien from '../images/nerd-days/speakers/GabeObrien.jpg';
+import LiamHurrell from '../images/nerd-days/speakers/LiamHurrell.jpg';
+import MichaelCaron from '../images/nerd-days/speakers/MichaelCaron.jpg';
+import PhilWeber from '../images/nerd-days/speakers/PhilWeber.jpg';
+import SebastianRamirez from '../images/nerd-days/speakers/SebastianRamirez.jpg';
+
 const NerdDaysPage = () => {
   const {
     site: { layout },
@@ -743,6 +752,48 @@ const speakers = [
     image: ThomasMartin,
     title: 'Director, Site Reliability',
     company: '27 Global',
+  },
+  {
+    name: 'Alec Swanson',
+    image: AlecSwanson,
+    title: 'Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Brian Thomason',
+    image: BrianThomason,
+    title: 'Senior Partner Solutions Consultant',
+    company: 'New Relic',
+  },
+  {
+    name: 'Chris Trombley',
+    image: ChrisTrombley,
+    title: 'Senior Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Liam Hurrell',
+    image: LiamHurrell,
+    title: 'Senior Technical Training Specialist',
+    company: 'New Relic',
+  },
+  {
+    name: 'Michael Caron',
+    image: MichaelCaron,
+    title: 'Senior Technical Training Specialist',
+    company: 'New Relic',
+  },
+  {
+    name: 'Phil Weber',
+    image: PhilWeber,
+    title: 'Senior Technical Training Specialist',
+    company: 'New Relic',
+  },
+  {
+    name: 'Sebastian Remirez',
+    image: SebastianRamirez,
+    title: 'Lead Software Engineer',
+    company: 'New Relic',
   },
 ];
 
