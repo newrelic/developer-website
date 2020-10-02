@@ -444,7 +444,8 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="10:00 AM"
-                title="Increased Maturity with Full Stack Observability"
+                title="New Relic CLI Wizardry"
+                speaker="Jon Thurman"
               />
               <Agenda.Session
                 time="10:00 AM"
@@ -484,12 +485,13 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 time="11:00 AM"
                 title="Grafana and Prometheus with New Relic"
+                speaker="Liam Hurrell &	Colin MacNaughton"
               />
               <Agenda.Session
                 inactive
                 time="12:00 PM"
                 title="Lunch with Lew"
-                speaker="Lew Cirne and Jemiah Sius"
+                speaker="Lew Cirne & Jemiah Sius"
                 track={null}
                 span={5}
               />
@@ -555,11 +557,12 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 time="3:00 PM"
                 title="AWS Modernization"
-                speaker="Aaron Soto and Brian Thomason"
+                speaker="Aaron Soto & Brian Thomason"
               />
               <Agenda.Session
                 time="3:00 PM"
-                title="Best Practices using Acme Telcolite"
+                title="Writing Reliably Bad Software, AKA 'How to get paid to write memory leaks'"
+                speaker="Gabe O’Brien & Alec Swanson"
               />
               <Agenda.Session
                 time="3:00 PM"
