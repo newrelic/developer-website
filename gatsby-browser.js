@@ -41,10 +41,12 @@ const onInitialClientRender = () => {
     }
   }
 
-  // eslint-disable-next-line no-undef
-  MktoForms2.whenRendered(function (form) {
-    destyleMktoForm(form);
-  });
+  if (typeof window !== 'undefined' && window.MktoForms2) {
+    // eslint-disable-next-line no-undef
+    MktoForms2.whenRendered(function (form) {
+      destyleMktoForm(form);
+    });
+  }
 };
 
 const onRouteUpdate = ({ location }) => {

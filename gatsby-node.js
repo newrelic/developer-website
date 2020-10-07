@@ -11,7 +11,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      allMdx(limit: 1000) {
+      allMdx(
+        limit: 1000
+        filter: { fileAbsolutePath: { regex: "/src/markdown-pages/" } }
+      ) {
         edges {
           node {
             fileAbsolutePath
@@ -103,8 +106,14 @@ exports.onCreatePage = ({ page, actions }) => {
   }
 };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ actions, plugins }) => {
   actions.setWebpackConfig({
+    // The `debug` library is causing issues when building the site by including
+    // invalid JS. This ensures the module resolves to the browser-capatible
+    // source instead of the node source. See the following issue for this
+    // recommendation:
+    // https://github.com/escaladesports/legacy-gatsby-plugin-prefetch-google-fonts/issues/18
+    plugins: [plugins.normalModuleReplacement(/^\.\/node\.js/, './browser.js')],
     externals: {
       tessen: 'Tessen',
     },

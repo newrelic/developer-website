@@ -11,6 +11,8 @@ import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import '../components/styles.scss';
+import usePageContext from '../hooks/usePageContext';
+import useResizeObserver from '../hooks/useResizeObserver';
 import { useLocation } from '@reach/router';
 
 const gaTrackingId = 'UA-3047412-33';
@@ -18,7 +20,7 @@ const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const MainLayout = ({ children }) => {
   const {
-    site: { layout },
+    site: { layout, siteMetadata },
   } = useStaticQuery(graphql`
     query {
       site {
@@ -26,13 +28,24 @@ const MainLayout = ({ children }) => {
           contentPadding
           maxWidth
         }
+        siteMetadata {
+          repository
+        }
       }
     }
   `);
 
   const location = useLocation();
+  const { fileRelativePath } = usePageContext();
+  const [headerRef, headerEntry] = useResizeObserver();
   const [cookieConsent, setCookieConsent] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const isComponentDoc = fileRelativePath.includes(
+    'src/markdown-pages/components'
+  );
+  const editUrl = isComponentDoc
+    ? null
+    : `${siteMetadata.repository}/blob/main/${fileRelativePath}`;
 
   useEffect(() => {
     const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
@@ -46,7 +59,7 @@ const MainLayout = ({ children }) => {
   return (
     <div
       css={css`
-        --global-header-height: 30px;
+        --global-header-height: ${headerEntry?.contentRect.height}px;
         --sidebar-width: 300px;
 
         min-height: 100vh;
@@ -68,7 +81,16 @@ const MainLayout = ({ children }) => {
           </script>
         ) : null}
       </Helmet>
-      <GlobalHeader search />
+      <div
+        ref={headerRef}
+        css={css`
+          position: sticky;
+          z-index: 99;
+          top: 0;
+        `}
+      >
+        <GlobalHeader editUrl={editUrl} />
+      </div>
       <MobileHeader
         css={css`
           @media (min-width: 761px) {
@@ -100,7 +122,6 @@ const MainLayout = ({ children }) => {
           css={css`
             position: fixed;
             top: var(--global-header-height);
-            bottom: 0;
             width: var(--sidebar-width);
             height: calc(100vh - var(--global-header-height));
             overflow: auto;
