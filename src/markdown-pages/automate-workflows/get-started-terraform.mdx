@@ -1,11 +1,11 @@
 ---
 path: '/automate-workflows/get-started-terraform'
-duration: '20 min'
-title: 'Set up New Relic using Terraform'
+duration: '30 min'
+title: 'Getting started with New Relic and Terraform'
 template: 'GuideTemplate'
 description: 'Learn how to provision New Relic resources using [Terraform](https://www.terraform.io/).'
 tileShorthand:
-  title: 'Set up New Relic using Terraform'
+  title: 'Getting started with New Relic and Terraform'
   description: 'Learn how to provision New Relic resources using Terraform'
 resources:
   - title: 'Terraform New Relic Provider'
@@ -16,14 +16,22 @@ resources:
     url: https://terraform.io/docs/index.html
 tags:
   - notification channel
-  - Synthetics monitors
+  - alerts
+  - golden signals
+  - terraform
 ---
 
 <Intro>
 
-[Terraform](https://www.terraform.io/) is a popular infrastructure as code software tool by HashiCorp. You can use it to provision all kind of infrastructure and services, including New Relic entities.
+[Terraform](https://www.terraform.io/) is a popular infrastructure-as-code software tool built by HashiCorp. You can use it to provision all kinds of infrastructure and services, including New Relic dashboards and alerts.
 
-In this guide you'll learn how to set up New Relic for the first time with [Terraform](https://www.terraform.io/). More specifically, you are going to provision an alert policy with notifications in your New Relic account using Terraform.
+In this guide you'll learn how to set up New Relic alerts with Terraform. More specifically, you'll be provisioning an alert policy, four alert conditions, and a notification channel. The four alert conditions will be based on the [four golden signals](https://landing.google.com/sre/sre-book/chapters/monitoring-distributed-systems/#xref_monitoring_golden-signals) of monitoring introduced in [Google’s Site Reliability Engineering book](https://landing.google.com/sre/books):
+
+1. **Latency:** Measures the amount of time it takes your application to service a request. In other words, how responsive is your application?
+2. **Traffic:** Measures how much demand is being placed on your system. How many requests or sessions are aimed at your application?
+3. **Errors:** Measures the rate of requests that fail. How much traffic is unable to fulfill its requests or sessions?
+4. **Saturation:** Measures how “full” your service is. How are resources being stressed to meet the demands of your application?
+
 
 <Video id="vifxeilp2h" type="wistia" />
 
@@ -37,123 +45,189 @@ To use this guide, you should have some basic knowledge of both New Relic and Te
 - [Install Terraform CLI](https://www.terraform.io/intro/getting-started/install.html).
 
 <Steps>
+
+<!-- TERRAFORM CONFIGURATION -->
+
 <Step>
 
-## Bootstrap your provider configuration
+## Bootstrap Terraform and the New Relic provider
 
-Our Terraform Provider detects the environment variables above when running Terraform commands.
+Let's start by initializing a working directory and creating a Terraform configuration file.
 
-You can set the environment variables in your `.bash_profile` or `.bashrc` file.
-
-Set the following environment variables:
-
-- Set your [New Relic Personal API key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key) with the `NEW_RELIC_API_KEY` environment variable. Most Personal API keys begin with the prefix `NRAK-`.
-- Set your [New Relic Admin API key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#admin) with the `NEW_RELIC_ADMIN_API_KEY` environment variable. Most Admin API keys begin with the prefix `NRAA-`.
-- Set your [New Relic Account ID](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id) with the `NEW_RELIC_ACCOUNT_ID` environment variable.
-- Set your New Relic [region](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers#verifying-account) with the `NEW_RELIC_REGION` environment variable. Your region is `US` if your account settings page is located at `rpm.newrelic.com`, and `EU` if your account is located at `rpm.eu.newrelic.com`.
-
-```bash lineNumbers=false
-# Add this to your .bash_profile
-export NEW_RELIC_API_KEY=NRAK-...
-export NEW_RELIC_ADMIN_API_KEY=NRAA-...
-export NEW_RELIC_ACCOUNT_ID=12345
-export NEW_RELIC_REGION=US
-# Or set it inline when running `terraform plan` or `terraform apply`:
-$ NEW_RELIC_API_KEY=NRAK-... terraform apply
+```bash
+mkdir terraform-project && cd terraform-project
+```
+```bash
+touch main.tf
 ```
 
-</Step>
-<Step>
+Next we need to instruct Terraform to install and use the New Relic provider by setting the `terraform` configuration block and adding the `required_providers` block within it. In this example, we're configuring Terraform to install and use version 2.11.x of the New Relic provider, however feel free to specify the latest provider version.
 
-## Start with a provider configuration
+<br />
 
-To connect Terraform with New Relic, you need to set New Relic as a provider in your Terraform configuration file, so that Terraform can create and manage New Relic resources in your account.
+```hcl
+terraform {
+  # Require Terraform version 0.13.x (recommended)
+  required_version = "~> 0.13.0"
 
-To set New Relic as a provider, create a Terraform configuration file (`main.tf`). This code sets `newrelic` as the Terraform provider and provisions an empty [alert policy](/docs/alerts/new-relic-alerts/configuring-alert-policies/create-edit-or-find-alert-policy) as the resource.
-
-```hcl lineNumbers=false
-provider "newrelic" {}
-
-resource "newrelic_alert_policy" "alert_policy_name" {
-  name = "My Alert Policy Name"
+  # Require version 2.11.x of the New Relic provider
+  required_providers {
+    newrelic = {
+      source  = "newrelic/newrelic"
+      version = "~> 2.11.0"
+    }
+  }
 }
 ```
 
+<Tip>
+<small>We recommend pinning your New Relic provider version by setting a <a target="_blank" href="https://www.terraform.io/docs/configuration/version-constraints.html">version constraint</a> similar to the example ("~> 2.11.0"). Using the right version constraint for your setup can provide better stability with your Terraform runs. </small>
+</Tip>
 </Step>
+
+<!-- PROVIDER CONFIGURATION -->
+
 <Step>
 
-## Initialize and test your setup
+## Configure the New Relic provider
 
-After adding New Relic as a provider, [initialize](https://www.terraform.io/docs/commands/init.html) the working directory from the command line using `terraform init`.
+With the `terraform` configuration block all set, we can configure the New Relic provider. Configuring the provider using the `provider` block is a quick way to us get started.
 
-Once you've successfully initialized the working directory, test Terraform's [execution plan](https://www.terraform.io/docs/commands/plan.html) using `terraform plan` to confirm that you've the right setup.
+You will need the following items to configure the provider.
+1. Your [New Relic Account ID](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id).
+2. Your [New Relic Personal API key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key). Most Personal API keys begin with the prefix `NRAK-`.
+3. Your [New Relic region](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers#verifying-account). Your region is `US` if your account settings page is located at `one.newrelic.com`, and `EU` if your account is located at `one.eu.newrelic.com`.
 
-```bash lineNumbers=false
-# Initialize the working directory
-$ terraform init
-
-# Test the Terraform plan
-$ terraform plan
-```
-
-`plan` performs a [dry run](<https://en.wikipedia.org/wiki/Dry_run_(testing)>) of your Terraform configuration, so nothing is actually provisioned. Always run `plan` to test your configuration before applying it.
-
-</Step>
-<Step>
-
-## Add a data source
-
-The alert policy you defined in `main.tf` does not contain any alert condition. You are going to add an alert condition linked to your application.
-
-To store your application's information, you need to add a [data source](https://www.terraform.io/docs/configuration-0-11/data-sources.html).
-
-```hcl lineNumbers=false
-provider "newrelic" {}
-
-# Data Source
-data "newrelic_entity" "app_name" {
-  name    = "my-app" # This must be an exact match of your app name in New Relic (case sensitive)
-  domain  = "APM"
-  type    = "APPLICATION"
-}
-
-resource "newrelic_alert_policy" "alert_policy_name" {
-  name = "My Alert Policy Name"
+```hcl
+provider "newrelic" {
+  account_id = 12345   # Your New Relic account ID
+  api_key = "NRAK-***" # Your New Relic Personal API Key
+  region = "US"        # US or EU (defaults to US)
 }
 ```
 
+With your New Relic provider configured, we can initialize Terraform by running the `terraform init` command. This command will result in the New Relic provider being installed and registered with Terraform.
+
+```bash
+terraform init
+```
+
+<Tip>
+<small>You can also configure the New Relic provider using <a target="_blank" href="https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/guides/provider_configuration">environment variables</a>. This can be useful for setting default values for your provider configuration.
+</small><br /><br />
+
+<small>For more information about configuring the New Relic provider, please feel free to check out our official provider <a target="_blank" href="https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/guides/provider_configuration">documentation</a>.</small>
+</Tip>
+
 </Step>
+
+<!-- ALERT POLICY -->
+
 <Step>
 
-## Add an alert condition to the alert policy
+## Create a New Relic alert policy with the golden signal alerts
 
-Now you can add the alert condition. For example, you can create a `critical` alert condition that is triggered when the [Apdex](https://docs.newrelic.com/docs/apm/new-relic-apm/apdex/apdex-measure-user-satisfaction) of your application falls below `0.75` for five minutes.
+With the New Relic provider configured, we can define an alerting strategy for your application that's already reporting to your New Relic account.
 
-```hcl lineNumbers=false
-provider "newrelic" {}
+Since we're targeting a specific application, we'll configure a [`newrelic_entity`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/data-sources/entity) data source which will fetch the application information from New Relic and allow us to reference that data elsewhere in the configuration.
 
-data "newrelic_entity" "app_name" {
-  name    = "my-app"
-  domain  = "APM"
-  type    = "APPLICATION"
+```hcl
+data "newrelic_entity" "example_app" {
+  name = "Your App Name" # Must be an exact match to your application name in New Relic
+  domain = "APM"
+  type = "APPLICATION"
 }
+```
 
-resource "newrelic_alert_policy" "alert_policy_name" {
-  name = "My Alert Policy Name"
+Next, let's configure an alert policy using the [`newrelic_alert_policy`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_policy) resource. With this alert policy configuration, we're giving the policy a dynamic name based on your application's name. This helps with specifying the scope of the policy.
+
+```hcl
+resource "newrelic_alert_policy" "golden_signal_policy" {
+  name = "Golden Signals - ${data.newrelic_application.example_app.name}"
 }
+```
 
-# Alert condition
-resource "newrelic_alert_condition" "alert_condition_name" {
-  policy_id = newrelic_alert_policy.alert_policy_name.id
+At this point, we should be able to test your configuration with a dry run using `terraform plan`. You will likely see a relatively verbose output that displays a diff pertaining to the actions Terraform is about to perform. In this case, you should a diff showing that a new alert policy will be added when we run `terraform apply`.
 
-  name            = "My Alert Condition Name"
+<br />
+
+```bash
+terraform plan
+```
+
+The output of `terraform plan` should look similar to this sample output.
+
+```bash copy=false
+# Example output
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # newrelic_alert_policy.golden_signal_policy will be created
+  + resource "newrelic_alert_policy" "golden_signal_policy" {
+      + account_id          = (known after apply)
+      + id                  = (known after apply)
+      + incident_preference = "PER_POLICY"
+      + name                = "Golden Signals - Your App Name"
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+------------------------------------------------------------------------
+```
+
+After verifying the details of the execution plan, run `terraform apply` to execute the plan and provision the alert policy resource in your New Relic account.
+
+<br />
+
+```bash
+terraform apply
+```
+
+```bash copy=false
+# Example output of `terraform apply`
+newrelic_alert_policy.golden_signal_policy: Creating...
+newrelic_alert_policy.golden_signal_policy: Creation complete after 1s [id=111222333]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
+You can confirm your new alert policy was created by logging into New Relic and navigating to the Alert Policies page for your account. You should see your newly created alert policy.
+
+As you move through the next steps of creating alert conditions, you can run `terraform apply` after configuring each resource and then refresh your alert policy webpage to confirm the new resources are added to your alert policy.
+
+</Step>
+
+<!-- ALERT CONDITIONS -->
+
+<Step>
+
+## Provision alert conditions based on the four golden signals
+
+Next, we’ll add an alert conditions for our application based on the four golden signals: latency, traffic, errors, and saturation. We'll apply these alert conditions to the alert policy you created in the previous step.
+
+#### **Latency**
+
+Slow response response times are something most folks want to avoid. We can use the [`newrelic_alert_condition`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_condition) to create an alert condition that will trigger if the overall response time of your application rises above five seconds for five minutes.
+
+Note that we're also linking this alert condition to the previously configured alert policy with the `policy_id` attribute.
+
+```hcl
+# Response time
+resource "newrelic_alert_condition" "response_time_web" {
+  policy_id       = newrelic_alert_policy.golden_signal_policy.id
+  name            = "High Response Time (Web) - ${data.newrelic_application.example_app.name}"
   type            = "apm_app_metric"
-  entities        = [data.newrelic_entity.app_name.application_id]
+  entities        = [data.newrelic_entity.example_app.application_id]
   metric          = "apdex"
   runbook_url     = "https://www.example.com"
   condition_scope = "application"
 
-  term {
+  critical {
     duration      = 5
     operator      = "below"
     priority      = "critical"
@@ -163,147 +237,135 @@ resource "newrelic_alert_condition" "alert_condition_name" {
 }
 ```
 
-</Step>
-<Step>
+##### **Traffic**
 
-## Add a notification channel
+The traffic signal represents how much demand is being placed on your system at any given moment. Use the application’s throughput as a metric for measuring the application’s traffic. Again, we can use the [`newrelic_alert_condition`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_condition) resource to configure an alert that will trigger if the overall response rate of our application falls below five requests per minute for five minutes.
 
-Alert policies use [notification channels](https://docs.newrelic.com/docs/alerts/new-relic-alerts/managing-notification-channels/notification-channels-control-where-send-alerts) to inform you about incidents and active alerts. To add a notification channel to your alert policy, add the following snippet to your configuration file.
+This type of alert is useful when you expect a constant baseline of traffic at all times throughout the day — a drop-off in traffic can indicate a problem.
 
-When the alert condition is triggered, the notification channel sends an email to the specified `recipients`. You can send notifications using different tools and channels, such as Slack, by changing the `type` of your [alert channel](https://www.terraform.io/docs/providers/newrelic/r/alert_channel.html).
+```hcl
+# Low throughput
+resource "newrelic_alert_condition" "throughput_web" {
+  policy_id       = newrelic_alert_policy.golden_signal_policy.id
+  name            = "Low Throughput (web)"
+  type            = "apm_app_metric"
+  entities        = [data.newrelic_entity.example_app.application_id]
+  metric          = "throughput_web"
+  condition_scope = "application"
 
-```hcl lineNumbers=false
-# Notification channel
-resource "newrelic_alert_channel" "alert_notification_email" {
-  name = "paul@example.com"
-  type = "email"
-
-  config {
-    recipients              = "fab@example.com"
-    include_json_attachment = "1"
+  # Define a critical alert threshold that will
+  # trigger after 5 minutes below 1 request per minute.
+  critical {
+    duration      = 5
+    operator      = "below"
+    threshold     = "1"
+    time_function = "all"
   }
 }
+```
 
-# Link the above notification channel to your policy
-resource "newrelic_alert_policy_channel" "alert_policy_email" {
-  policy_id  = newrelic_alert_policy.alert_policy_name.id
-  channel_ids = [
-    newrelic_alert_channel.alert_notification_email.id
-  ]
+##### **Errors**
+If your application's error rate spikes, you need to know about it. Again, we can use the [`newrelic_alert_condition`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_condition) to create an alert condition that will trigger if the overall error rate rises above 5% for five minutes.
+
+```hcl
+# Error percentage
+resource "newrelic_alert_condition" "error_percentage" {
+  policy_id       = newrelic_alert_policy.golden_signal_policy.id
+  name            = "High Error Percentage"
+  type            = "apm_app_metric"
+  entities        = [data.newrelic_entity.example_app.application_id]
+  metric          = "error_percentage"
+  runbook_url     = "https://www.example.com"
+  condition_scope = "application"
+
+  # Define a critical alert threshold that will trigger after 5 minutes above a 5% error rate.
+  critical {
+    duration      = 5
+    operator      = "above"
+    threshold     = "5"
+    time_function = "all"
+  }
 }
 ```
 
-</Step>
-<Step>
+##### **Saturation**
+Saturation represents how "full" your service is and can take many forms, such as CPU time, memory allocation, or queue depth. In this example, let's assume you already have a [New Relic Infrastructure](https://newrelic.com/products/infrastructure) agent installed on the hosts serving your application and you want an alert configured for when CPU utilization spikes above a certain threshold.
 
-## Apply your Terraform configuration
+For Infrastructure alerts, we can use the [`newrelic_infra_alert_condition`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/infra_alert_condition) resource. This alert will trigger if the aggregate CPU usage on these hosts rises above 90% for five minutes.
 
-The last step is provisioning the resources you've configured in `main.tf`, so that the alert policy is enabled in your New Relic account for your application.
+```hcl
+# High CPU usage
+resource "newrelic_infra_alert_condition" "high_cpu" {
+  policy_id   = newrelic_alert_policy.golden_signal_policy.id
+  name        = "High CPU usage"
+  type        = "infra_metric"
+  event       = "SystemSample"
+  select      = "cpuPercent"
+  comparison  = "above"
+  runbook_url = "https://www.example.com"
+  where       = "(`applicationId` = '${data.newrelic_entity.example_app.application_id}')"
 
-To [apply](https://www.terraform.io/docs/commands/apply.html) the Terraform configuration and provision the resources in your New Relic account, run `terraform apply`.
-
-Answer `yes` when prompted to apply the changes. Once the `apply` process is complete, you should see the new alert policy you've provisioned using Terraform, and its alert conditions, in your New Relic account.
-
-You can run `terraform apply` every time you need to make changes to your configuration. To eliminate the resources you've provisioned, run [`terraform destroy`](https://www.terraform.io/docs/commands/destroy.html).
-
-</Step>
-
-<Step>
-
-## Optional: Use the `apm` module for faster configuration
-
-In the Terraform Registry you can find [our `apm` module](https://registry.terraform.io/modules/newrelic/apm/newrelic/0.0.4), which simplifies Terraform's configuration. `apm` creates an alert policy, a [Synthetics monitor](https://docs.newrelic.com/docs/synthetics/new-relic-synthetics/using-monitors/add-edit-monitors), and several alert conditions for a given application reporting data into New Relic.
-
-To use our `apm` module with Terraform:
-
-1. Set `newrelic/apm/newrelic` as the module source.
-2. Add your `account_id` and `application_name`.
-3. Define your `application_url` (if any).
-
-Here is a configuration example with overridden default values. Initialize the working directory using `terraform init`to download and enable the module.
-
-<Tip>
-
-The `apm` module doesn't create a notification channel, so you would still have to define one.
-
-</Tip>
-
-```hcl lineNumbers=false
-data "newrelic_alert_channel" "pager" {
-    name = "Page Developer Toolkit Team"
-}
-
-module "dummy-app-monitor" {
-    source = "newrelic/apm/newrelic"
-
-    account_id = 2520528
-    application_name = "Dummy App"
-
-    # An Apdex alert condition will be created with sensible defaults without the use of these attributes.
-    apdex_warning_threshold = 0.9
-    apdex_critical_threshold = 0.8
-
-    # An error rate alert condition will be created with sensible defaults without the use of these attributes.
-    error_rate_warning_threshold = 5
-    error_rate_critical_threshold = 10
-
-    # Specifying an application URL will provision a Synthetic monitor and associated alert condition.
-    application_url = "https://www.dummyapp.com"
-    synthetics_monitor_verify_ssl = true
-
-    # Response time alert condition will not be provisioned unless a critical violation threshold is specified.
-    response_time_critical_threshold = 3
-
-    channel_ids = [data.newrelic_alert_channel.pager.id]
+  # Define a critical alert threshold that will trigger after 5 minutes above 90% CPU utilization.
+  critical {
+    duration      = 5
+    value         = 90
+    time_function = "all"
+  }
 }
 ```
+</Step>
 
-</Step></Steps>
+<!-- NOTIFICATION CHANNEL -->
 
-## Tip: Avoid resources being marked as "sensitive"
+<Step>
 
-When API results are deemed to be secret and are obfuscated, Terraform may be unable to detect the state of a resource, marking it as changed. Consider this example:
+## Get notified when an alert is triggered
 
-```hcl lineNumbers=false
-resource "newrelic_alert_channel" "slack" {
-  name = "slack"
+Now that you have some important alert conditions configured, let's add a notification channel to your alert policy ensure the proper folks get notified when an alert is triggered. We'll use the [`newrelic_alert_channel`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel) resource, which [supports several types](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#argument-reference) of notification channels.
+
+Since Slack is quite popular, let's create a Slack notification channel. When an alert is triggered, a notification will be sent to the Slack channel of your choice.
+
+<Important>
+<small>Before adding a Slack notification channel, you will need to add the <a href="https://slack.com/apps/A0F827KK2-new-relic-alerts" target="_blank">New Relic Slack App</a> to your Slack account and select a Slack channel to send the notification. </small>
+</Important>
+
+```hcl
+# Slack notification channel
+resource "newrelic_alert_channel" "slack_notification" {
+  name = "slack-example"
   type = "slack"
 
   config {
-    channel = "test"
-    url     = "https://hooks.slack.com/services/xxxx/xxxxx"
+    # Use the URL provided in your New Relic Slack integration
+    url     = "https://hooks.slack.com/services/XXXXXXX/XXXXXXX/XXXXXXXXXX"
+    channel = "your-slack-channel-for-alerts"
   }
 }
 ```
 
-<br />
+Last, but not least, in order to apply the notification channel to your alert policy, we'll use the [`newrelic_alert_policy_channel`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_policy_channel) resource.
 
-Running `terraform plan` yields the following:
+```hcl
+# Link the notification channel to your alert policy
 
-```
-    -/+ newrelic_alert_channel.slack (new resource required)
-          id:                    "2344397" => <computed> (forces new resource)
-          config.%:              "1" => "2" (forces new resource)
-          config.channel:        <sensitive> => <sensitive> (attribute changed)
-          config.url:            <sensitive> => <sensitive> (forces new resource)
-          name:                  "slack" => "slack"
-          type:                  "slack" => "slack"
-```
-
-<br />
-
-To prevent Terraform from wrongly marking a resource as changed, add an [`ignore_changes`](https://www.terraform.io/docs/configuration/resources.html#ignore_changes) directive:
-
-```hcl lineNumbers=false
-resource "newrelic_alert_channel" "slack" {
-  ...
-  lifecycle {
-    ignore_changes = ["config"]
-  }
+resource "newrelic_alert_policy_channel" "golden_signals" {
+  policy_id  = newrelic_alert_policy.golden_signal_policy.id
+  channel_ids = [newrelic_alert_channel.slack_notification.id]
 }
-  ...
 ```
+</Step>
 
-<br />
+<Step>
 
-This avoids changes to resources caused by obfuscated items.
+## Finishing up
+
+To finalize your golden signal alerts configuration, let's run `terraform apply` one last time to make sure the full configuration is applied. Now that you're officially practicing observability as code, you can take your configuration to the next level.
+
+As your team evaluates the alerting system you’ve put in place, you’ll find that you may need to tweak configuration values, such as the alert threshold and duration. You can do this with a pull request to your alerting repository. Since you’re practicing observability as code, your team can review these changes right alongside the rest of your code contributions. You may also want to consider automating this process in your CI/CD pipeline.
+
+<Tip>
+<small>Use Terraform's <a href="https://www.terraform.io/docs/cloud/guides/recommended-practices/index.html" target="_blank">recommended practices guide</a> learn more about their recommended workflow and evolving your provisioning practices.</small>
+</Tip>
+
+</Step>
+</Steps>
