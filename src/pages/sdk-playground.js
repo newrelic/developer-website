@@ -4,7 +4,8 @@ import { css } from '@emotion/core';
 import root from 'react-shadow';
 import { CSS_BUNDLE } from '../utils/sdk';
 import NR1Logo from '../components/NR1Logo';
-import Editor from '@monaco-editor/react';
+import Editor, { monaco } from '@monaco-editor/react';
+import monacoConfig from './monaco.js';
 
 const defaultCode = `
 class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
@@ -341,9 +342,24 @@ button::-moz-focus-inner {
 
 const MonacoLiveEditor = withLive(Editor);
 
+const sdk = window.__NR1_SDK__?.default ?? {};
+
+monaco
+  .init()
+  .then((monaco) => monacoConfig(monaco, sdk))
+  .catch((error) =>
+    console.error('An error occurred during initialization of Monaco: ', error)
+  );
+
 const SdkPlayground = () => {
   const [code, setCode] = useState(defaultCode);
   const editorRef = useRef();
+
+  if (typeof window === 'undefined') global.window = {};
+
+  // Get the Icon component when available
+
+  if (!sdk) return null;
 
   const handleEditorDidMount = (_, editor) => {
     editorRef.current = editor;
@@ -352,20 +368,9 @@ const SdkPlayground = () => {
     });
   };
 
-  // const handleEditorWillMount = (monaco) => {
-  //   monaco.languages.register({ id: 'javascript' });
-  //   monaco.languages.registerHoverProvider('javascript', {
-  //     providerHover: (model) => {
-  //       return {
-  //         range: []
-  //       }
-  //     }
-  //   })
-  // };
-
   return (
     <>
-      <LiveProvider code={code} scope={window.__NR1_SDK__.default}>
+      <LiveProvider code={code} scope={sdk}>
         <div
           css={css`
             display: flex;
@@ -406,8 +411,6 @@ const SdkPlayground = () => {
             value={defaultCode}
             theme="dark"
             editorDidMount={handleEditorDidMount}
-            //editorWillMount={handleEditorWillMount}
-            //options={{ suggest: false }}
           />
         </div>
       </LiveProvider>
