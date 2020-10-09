@@ -45,6 +45,7 @@ import LiamHurrell from '../images/nerd-days/speakers/LiamHurrell.jpg';
 import MichaelCaron from '../images/nerd-days/speakers/MichaelCaron.jpg';
 import PhilWeber from '../images/nerd-days/speakers/PhilWeber.jpg';
 import SebastianRamirez from '../images/nerd-days/speakers/SebastianRamirez.jpg';
+import SanderBlue from '../images/nerd-days/speakers/SanderBlue.jpg';
 
 const NerdDaysPage = () => {
   const {
@@ -768,6 +769,12 @@ const speakers = [
   {
     name: 'Chris Trombley',
     image: ChrisTrombley,
+    title: 'Senior Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Sander Blue',
+    image: SanderBlue,
     title: 'Senior Software Engineer',
     company: 'New Relic',
   },
