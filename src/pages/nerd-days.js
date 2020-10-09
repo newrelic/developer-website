@@ -36,7 +36,6 @@ import LeonChapman from '../images/nerd-days/speakers/LeonChapman.jpg';
 import LindsyFarina from '../images/nerd-days/speakers/LindsyFarina.jpg';
 import TaliaNassi from '../images/nerd-days/speakers/TaliaNassi.jpg';
 import ThomasMartin from '../images/nerd-days/speakers/ThomasMartin.jpg';
-
 import AlecSwanson from '../images/nerd-days/speakers/AlecSwanson.jpg';
 import BrianThomason from '../images/nerd-days/speakers/BrianThomason.jpg';
 import ChrisTrombley from '../images/nerd-days/speakers/ChrisTrombley.jpg';
@@ -46,6 +45,11 @@ import MichaelCaron from '../images/nerd-days/speakers/MichaelCaron.jpg';
 import PhilWeber from '../images/nerd-days/speakers/PhilWeber.jpg';
 import SebastianRamirez from '../images/nerd-days/speakers/SebastianRamirez.jpg';
 import SanderBlue from '../images/nerd-days/speakers/SanderBlue.jpg';
+
+import JewelsNocera from '../images/nerd-days/speakers/JewelsNocera.jpg';
+import NicaFee from '../images/nerd-days/speakers/NicaFee.jpg';
+import StijnPolfliet from '../images/nerd-days/speakers/StijnPolfliet.jpg';
+import BradSchmitt from '../images/nerd-days/speakers/BradSchmitt.jpg';
 
 const NerdDaysPage = () => {
   const {
@@ -460,7 +464,7 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 time="10:00AM PST"
                 title="5 Steps to Kubernetes Observability"
-                speaker="Stijn Polfliet"
+                speaker="Stijn Polfliet & Brad Schmitt"
               />
               <Agenda.Session
                 time="10:00AM PST"
@@ -543,6 +547,7 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 time="2:00PM PST"
                 title="Monitoring your Cloud Usage and Spend"
+                speaker="Jewels Nocera"
               />
               <Agenda.Session
                 time="2:00PM PST"
@@ -806,6 +811,30 @@ const speakers = [
     name: 'Sebastian Remirez',
     image: SebastianRamirez,
     title: 'Lead Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Jewels Nocera',
+    image: JewelsNocera,
+    title: 'Senior Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Nica Fee',
+    image: NicaFee,
+    title: 'Developer Advocate',
+    company: 'New Relic',
+  },
+  {
+    name: 'Stijn Polfliet',
+    image: StijnPolfliet,
+    title: 'Principal TechOps Strategy Consultant',
+    company: 'New Relic',
+  },
+  {
+    name: 'Brad Schmitt',
+    image: BradSchmitt,
+    title: 'Senior TechOps Strategy Consultant',
     company: 'New Relic',
   },
 ];
