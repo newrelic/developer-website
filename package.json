@@ -26,7 +26,7 @@
     "gatsby-plugin-newrelic": "newrelic/gatsby-plugin-newrelic.git#5cd42e832f0588764dc332ce7ebd05794de5106a",
     "gatsby-plugin-offline": "^3.2.17",
     "gatsby-plugin-react-helmet": "^3.3.10",
-    "gatsby-plugin-robots-txt": "^1.5.1",
+    "gatsby-plugin-robots-txt": "^1.5.2",
     "gatsby-plugin-sass": "^2.3.12",
     "gatsby-plugin-sharp": "^2.6.21",
     "gatsby-plugin-sitemap": "^2.4.11",
