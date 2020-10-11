@@ -499,7 +499,7 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="11:00AM PST"
-                title="Grafana and Prometheus with New Relic"
+                title="Power up your Prometheus metrics with the Telemetry Data Platform"
                 speaker="Liam Hurrell &	Colin MacNaughton"
               />
               <Agenda.Session
@@ -522,7 +522,7 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="1:00PM PST"
-                title="Tool Consolidation"
+                title="Consolidating Your Data with New Relic’s Telemetry Data Platform"
                 speaker="Eric Mittelhammer"
               />
               <Agenda.Session
