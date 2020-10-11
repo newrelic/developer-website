@@ -45,11 +45,12 @@ import MichaelCaron from '../images/nerd-days/speakers/MichaelCaron.jpg';
 import PhilWeber from '../images/nerd-days/speakers/PhilWeber.jpg';
 import SebastianRamirez from '../images/nerd-days/speakers/SebastianRamirez.jpg';
 import SanderBlue from '../images/nerd-days/speakers/SanderBlue.jpg';
-
 import JewelsNocera from '../images/nerd-days/speakers/JewelsNocera.jpg';
 import NicaFee from '../images/nerd-days/speakers/NicaFee.jpg';
 import StijnPolfliet from '../images/nerd-days/speakers/StijnPolfliet.jpg';
 import BradSchmitt from '../images/nerd-days/speakers/BradSchmitt.jpg';
+import EricMittelhammer from '../images/nerd-days/speakers/EricMittelhammer.jpg';
+import ColinMacNaughton from '../images/nerd-days/speakers/ColinMacNaughton.jpg';
 
 const NerdDaysPage = () => {
   const {
@@ -551,8 +552,8 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="2:00PM PST"
-                title="Measuring code pipelines"
-                speaker="Zach Leslie"
+                title="Scaling the Developer Toolkit Team: Writing Code that Writes Code"
+                speaker="Sander Blue"
               />
               <Agenda.Session
                 time="2:00PM PST"
@@ -835,6 +836,18 @@ const speakers = [
     name: 'Brad Schmitt',
     image: BradSchmitt,
     title: 'Senior TechOps Strategy Consultant',
+    company: 'New Relic',
+  },
+  {
+    name: 'Eric Mittelhammer',
+    image: EricMittelhammer,
+    title: 'Senior TechOps Strategy Consultant',
+    company: 'New Relic',
+  },
+  {
+    name: 'Colin MacNaughton',
+    image: ColinMacNaughton,
+    title: 'Lead Software Engineer',
     company: 'New Relic',
   },
 ];
