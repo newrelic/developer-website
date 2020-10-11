@@ -7,20 +7,23 @@ description: 'Intro to NerdStorageVault on New Relic One'
 tileShorthand:
   title: 'Intro to NerdStorageVault'
   description: 'Learn about NerdStorageVault usage'
-redirects:
-  -
 tags:
   - nerdstoragevault
   - nerdstoragevault components
   - new relic one apps
   - data access
   - encrypted storage
+resources:
+  - title: 'Build an app'
+    url: /build-apps
+  - title: 'Intro to New Relic One API components'
+    url: /explore-docs/intro-to-sdk
 ---
 
 <Intro>
 
 To help you build a [New Relic One application](/use-cases/build-new-relic-one-applications),
-we provide you with the [New Relic One SDK](/client-side-sdk/index.html).
+we provide you with the [New Relic One SDK](/explore-docs/intro-to-sdk).
 On this page, you’ll learn how to use NerdStorageVault to store data in an encrypted
 storage solution.
 
@@ -62,6 +65,8 @@ that header value is required by this service to fulfill requests.
 Currently NerdStorageVault is available in the [Nr1 Community component library](https://www.npmjs.com/package/@newrelic/nr1-community/v/1.3.0-alpha.4)
 and is not available in the Nr1 core components library. Open source components can be use to augment
 Nr1 core components for additional functionality.
+
+## NerdGraph Interactions
 
 ### Write
 
@@ -127,12 +132,12 @@ mutation {
 
 ### Limits
 
-- A maximum of 10 secrets can be store per ACTOR.
+- A maximum of 10 secrets can be stored per ACTOR.
 - A secret value is limited to 5000 characters.
 - A key value is limited to 64 characters.
 
 ### Permissions for working with NerdStorageVault
 
-In order to persist changes to NerdStorageVault, such as creating, updating,
-and deleting data, you must have a
+In order to persist changes to NerdStorageVault, such as writing, deleting,
+and fetching data, you must have a
 [user role with permission to persist changes](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-pricing-users/users-roles).
