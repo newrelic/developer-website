@@ -1,0 +1,138 @@
+---
+path: '/explore-docs/nerdstoragevault'
+title: 'Intro to NerdStorageVault'
+duration: '30 min'
+template: 'GuideTemplate'
+description: 'Intro to NerdStorageVault on New Relic One'
+tileShorthand:
+  title: 'Intro to NerdStorageVault'
+  description: 'Learn about NerdStorageVault usage'
+redirects:
+  -
+tags:
+  - nerdstoragevault
+  - nerdstoragevault components
+  - new relic one apps
+  - data access
+  - encrypted storage
+---
+
+<Intro>
+
+To help you build a [New Relic One application](/use-cases/build-new-relic-one-applications),
+we provide you with the [New Relic One SDK](/client-side-sdk/index.html).
+On this page, you’ll learn how to use NerdStorageVault to store data in an encrypted
+storage solution.
+
+</Intro>
+
+## Using NerdStorageVault in your apps
+
+NerdStorageVault is used to store and retrieve sensative secrets data such as:
+
+- personal access tokens
+- license keys
+- API keys
+- other third party secrets
+
+<Tip>
+
+NerdStorageVault is encrypted with AES-256 encryption
+
+</Tip>
+
+## Usage considerations
+
+- This storage is unique per Nerdpack, and can't be shared with any other Nerdpack.
+- NerdStorageVault can currently only be used within the context of a Nerdpack.
+- You cannot directly make a mutation to NerdStorageVault.
+- You can explore the fields and response types via the [NerdGraph API explorer](https://api.newrelic.com/graphiql).
+- The only supported scope is ACTOR, or data that relates to a particular user.
+
+<Tip>
+
+A trusted nerdpack ID header value (service-gateway-external-package-id)
+is provided by service gateway when requests come from nerdlets and
+that header value is required by this service to fulfill requests.
+
+</Tip>
+
+## Component Library
+
+Currently NerdStorageVault is available in the [Nr1 Community component library](https://www.npmjs.com/package/@newrelic/nr1-community/v/1.3.0-alpha.4)
+and is not available in the Nr1 core components library. Open source components can be use to augment
+Nr1 core components for additional functionality.
+
+### Write
+
+```json copy=false lineNumbers=false
+mutation {
+  nerdStorageVaultWriteSecret(scope: { actor: CURRENT_USER } , key: "test", value: "secret_test") {
+    status
+    errors {
+      message
+    }
+  }
+}
+
+```
+
+### Delete
+
+```json copy=false lineNumbers=false
+mutation {
+  nerdStorageVaultDeleteSecret(scope: { actor: CURRENT_USER } , key: "test_key", value: "test_value") {
+    status
+    errors {
+      message
+    }
+  }
+}
+
+```
+
+### Fetch a single secret
+
+```json copy=false lineNumbers=false
+{
+  actor {
+    nerdStorageVault {
+      secret(key: "test_key") {
+        key
+        value
+      }
+    }
+  }
+}
+
+
+```
+
+### Fetch a list of secrets
+
+```json copy=false lineNumbers=false
+{
+  actor {
+    nerdStorageVault {
+      secrets {
+        key
+        value
+      }
+    }
+  }
+}
+
+
+```
+
+### Limits
+
+- A maximum of 10 secrets can be store per ACTOR.
+- A secret value is limited to 5000 characters.
+- A key value is limited to 64 characters.
+
+### Permissions for working with NerdStorageVault
+
+In order to persist changes to NerdStorageVault, such as creating, updating,
+and deleting data, you must have a
+[user role with permission to persist changes](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-pricing-users/users-roles).
