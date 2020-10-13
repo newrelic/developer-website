@@ -1,11 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { LiveProvider, withLive, LivePreview, LiveError } from 'react-live';
+import { LiveProvider, LivePreview, LiveError } from 'react-live';
 import { css } from '@emotion/core';
 import root from 'react-shadow';
 import { CSS_BUNDLE } from '../utils/sdk';
 import NR1Logo from '../components/NR1Logo';
-import Editor, { monaco } from '@monaco-editor/react';
-import monacoConfig from './monaco.js';
+import MonacoEditor from 'react-monaco-editor';
 
 const defaultCode = `
 class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
@@ -340,11 +339,7 @@ button::-moz-focus-inner {
 }
 `;
 
-const MonacoLiveEditor = withLive(Editor);
-
 const sdk = window.__NR1_SDK__?.default ?? {};
-
-monaco.init().then((monaco) => monacoConfig(monaco, sdk));
 
 const SdkPlayground = () => {
   const [code, setCode] = useState(defaultCode);
@@ -356,11 +351,8 @@ const SdkPlayground = () => {
 
   if (!sdk) return null;
 
-  const handleEditorDidMount = (_, editor) => {
-    editorRef.current = editor;
-    editorRef.current.onDidChangeModelContent(() => {
-      setCode(editorRef.current.getValue());
-    });
+  const handleEditorDidMount = (editor, monaco) => {
+    editor.focus();
   };
 
   return (
@@ -400,12 +392,14 @@ const SdkPlayground = () => {
             </div>
           </root.div>
           <LiveError />
-          <MonacoLiveEditor
+          <MonacoEditor
             height="350px"
             language="javascript"
-            value={defaultCode}
-            theme="dark"
+            value={code}
+            theme="vs-dark"
+            options={{ selectOnLineNumbers: true }}
             editorDidMount={handleEditorDidMount}
+            onChange={setCode}
           />
         </div>
       </LiveProvider>

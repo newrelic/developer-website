@@ -1,5 +1,7 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const MONACO_DIR = path.resolve(__dirname, './node_modules/monaco-editor');
 
 const MAX_RESULTS = 5;
 
@@ -113,7 +115,10 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
     // source instead of the node source. See the following issue for this
     // recommendation:
     // https://github.com/escaladesports/legacy-gatsby-plugin-prefetch-google-fonts/issues/18
-    plugins: [plugins.normalModuleReplacement(/^\.\/node\.js/, './browser.js')],
+    plugins: [
+      plugins.normalModuleReplacement(/^\.\/node\.js/, './browser.js'),
+      new MonacoWebpackPlugin(),
+    ],
     externals: {
       tessen: 'Tessen',
     },
