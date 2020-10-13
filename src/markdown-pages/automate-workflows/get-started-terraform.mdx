@@ -56,12 +56,10 @@ Let's start by initializing a working directory and creating a Terraform configu
 
 ```bash
 mkdir terraform-project && cd terraform-project
-```
-```bash
 touch main.tf
 ```
 
-Next we need to instruct Terraform to install and use the New Relic provider by setting the `terraform` configuration block and adding the `required_providers` block within it. In this example, we're configuring Terraform to install and use version 2.11.x of the New Relic provider, however feel free to specify the latest provider version.
+Next we need to instruct Terraform to install and use the New Relic provider by setting the `terraform` configuration block and adding the `required_providers` block within **main.tf**. In this example, we're configuring Terraform to install and use version 2.11.x of the New Relic provider, however feel free to specify the latest provider version.
 
 <br />
 
@@ -143,13 +141,12 @@ Next, let's configure an alert policy using the [`newrelic_alert_policy`](https:
 
 ```hcl
 resource "newrelic_alert_policy" "golden_signal_policy" {
-  name = "Golden Signals - ${data.newrelic_application.example_app.name}"
+  name = "Golden Signals - ${data.newrelic_entity.example_app.name}"
 }
 ```
 
 At this point, we should be able to test your configuration with a dry run using `terraform plan`. You will likely see a relatively verbose output that displays a diff pertaining to the actions Terraform is about to perform. In this case, you should a diff showing that a new alert policy will be added when we run `terraform apply`.
 
-<br />
 
 ```bash
 terraform plan
@@ -157,7 +154,7 @@ terraform plan
 
 The output of `terraform plan` should look similar to this sample output.
 
-```bash copy=false
+```txt copy=false
 # Example output
 ------------------------------------------------------------------------
 
@@ -188,7 +185,7 @@ After verifying the details of the execution plan, run `terraform apply` to exec
 terraform apply
 ```
 
-```bash copy=false
+```txt copy=false
 # Example output of `terraform apply`
 newrelic_alert_policy.golden_signal_policy: Creating...
 newrelic_alert_policy.golden_signal_policy: Creation complete after 1s [id=111222333]
@@ -220,14 +217,14 @@ Note that we're also linking this alert condition to the previously configured a
 # Response time
 resource "newrelic_alert_condition" "response_time_web" {
   policy_id       = newrelic_alert_policy.golden_signal_policy.id
-  name            = "High Response Time (Web) - ${data.newrelic_application.example_app.name}"
+  name            = "High Response Time (Web) - ${data.newrelic_entity.example_app.name}"
   type            = "apm_app_metric"
   entities        = [data.newrelic_entity.example_app.application_id]
   metric          = "apdex"
   runbook_url     = "https://www.example.com"
   condition_scope = "application"
 
-  critical {
+  term {
     duration      = 5
     operator      = "below"
     priority      = "critical"
@@ -247,7 +244,7 @@ This type of alert is useful when you expect a constant baseline of traffic at a
 # Low throughput
 resource "newrelic_alert_condition" "throughput_web" {
   policy_id       = newrelic_alert_policy.golden_signal_policy.id
-  name            = "Low Throughput (web)"
+  name            = "Low Throughput (Web)"
   type            = "apm_app_metric"
   entities        = [data.newrelic_entity.example_app.application_id]
   metric          = "throughput_web"
@@ -255,7 +252,7 @@ resource "newrelic_alert_condition" "throughput_web" {
 
   # Define a critical alert threshold that will
   # trigger after 5 minutes below 1 request per minute.
-  critical {
+  term {
     duration      = 5
     operator      = "below"
     threshold     = "1"
@@ -279,7 +276,7 @@ resource "newrelic_alert_condition" "error_percentage" {
   condition_scope = "application"
 
   # Define a critical alert threshold that will trigger after 5 minutes above a 5% error rate.
-  critical {
+  term {
     duration      = 5
     operator      = "above"
     threshold     = "5"
@@ -349,7 +346,7 @@ Last, but not least, in order to apply the notification channel to your alert po
 # Link the notification channel to your alert policy
 
 resource "newrelic_alert_policy_channel" "golden_signals" {
-  policy_id  = newrelic_alert_policy.golden_signal_policy.id
+  policy_id   = newrelic_alert_policy.golden_signal_policy.id
   channel_ids = [newrelic_alert_channel.slack_notification.id]
 }
 ```
