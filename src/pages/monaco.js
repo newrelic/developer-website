@@ -1,7 +1,6 @@
-const lodash = require('lodash');
-
 const monacoConfig = (monaco, sdk) => {
   monaco.languages.registerCompletionItemProvider('javascript', {
+    triggerCharacters: ['<', ' ', '/'],
     provideCompletionItems: (model, position) => {
       const word = model.getWordUntilPosition(position);
       const range = {
