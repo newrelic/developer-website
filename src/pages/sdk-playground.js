@@ -344,12 +344,7 @@ const MonacoLiveEditor = withLive(Editor);
 
 const sdk = window.__NR1_SDK__?.default ?? {};
 
-monaco
-  .init()
-  .then((monaco) => monacoConfig(monaco, sdk))
-  .catch((error) =>
-    console.error('An error occurred during initialization of Monaco: ', error)
-  );
+monaco.init().then((monaco) => monacoConfig(monaco, sdk));
 
 const SdkPlayground = () => {
   const [code, setCode] = useState(defaultCode);
