@@ -160,6 +160,10 @@
         "url": "/explore-docs/nerdstorage"
       },
       {
+        "displayName": "Intro to NerdstorageVault",
+        "url": "/explore-docs/nerdstoragevault"
+      },
+      {
         "displayName": "Query and store data",
         "url": "/explore-docs/query-and-store-data"
       },
