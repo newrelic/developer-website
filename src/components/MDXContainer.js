@@ -11,6 +11,8 @@ import Important from './Important';
 import Tip from './Tip';
 import Intro from './Intro';
 import Iframe from './Iframe';
+import Tutorial from './Tutorial';
+import TutorialStep from './TutorialStep';
 import { MDXCodeBlock, Video } from '@newrelic/gatsby-theme-newrelic';
 
 import styles from './MDXContainer.module.scss';
@@ -19,6 +21,8 @@ const components = {
   Video,
   Step,
   Steps,
+  Tutorial,
+  TutorialStep,
   Caution,
   Important,
   Tip,
