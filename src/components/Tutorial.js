@@ -58,6 +58,16 @@ const gatherSteps = (parentElement, initialProjectState) => {
       }
 
       const props = parseCodeBlockProps(codeBlock);
+
+      if (!currentProjectState.has(props.fileName)) {
+        throw new Error(`The following block does not have a file name that matches the project. Please ensure the code block has a \`fileName\` specified:
+
+\`\`\`${props.language}
+${props.code}
+\`\`\`
+`);
+      }
+
       const { code: prevCode } = currentProjectState.get(props.fileName);
       const projectState = clone(currentProjectState).set(props.fileName, {
         code: props.code,
