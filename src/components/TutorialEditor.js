@@ -5,44 +5,6 @@ import path from 'path';
 import { css } from '@emotion/core';
 import { darken } from 'polished';
 
-const last = (arr) => arr[arr.length - 1];
-
-const diffHighlightedLines = (diff) => {
-  const { highlightedLines } = diff.reduce(
-    ({ highlightedLines, currentLineNumber }, change) => {
-      const { count, added, removed, value } = change;
-
-      if (!added) {
-        return {
-          highlightedLines,
-          currentLineNumber: removed
-            ? currentLineNumber
-            : currentLineNumber + count,
-        };
-      }
-
-      const lines = value.split('\n').slice(0, count);
-
-      // Don't highlight the last line if the last line is blank. Subtract at
-      // least 1 because we want to include the current line in the range.
-      const subtractAmount = last(lines) === '' ? 2 : 1;
-      const rangeEnd = currentLineNumber + count - subtractAmount;
-      const range =
-        currentLineNumber === rangeEnd
-          ? currentLineNumber
-          : `${currentLineNumber}-${rangeEnd}`;
-
-      return {
-        highlightedLines: [...highlightedLines, range],
-        currentLineNumber: currentLineNumber + count,
-      };
-    },
-    { highlightedLines: [], currentLineNumber: 1 }
-  );
-
-  return highlightedLines.join(',');
-};
-
 const TutorialEditor = ({ codeBlock, project }) => {
   const [selectedFile, setSelectedFile] = useState(codeBlock.fileName);
 
@@ -108,6 +70,43 @@ const TutorialEditor = ({ codeBlock, project }) => {
 TutorialEditor.propTypes = {
   codeBlock: PropTypes.object.isRequired,
   project: PropTypes.instanceOf(Map).isRequired,
+};
+
+const diffHighlightedLines = (diff) => {
+  const { highlightedLines } = diff.reduce(
+    ({ highlightedLines, currentLineNumber }, change) => {
+      const { count, added, removed, value } = change;
+
+      if (!added) {
+        return {
+          highlightedLines,
+          currentLineNumber: removed
+            ? currentLineNumber
+            : currentLineNumber + count,
+        };
+      }
+
+      const lines = value.split('\n').slice(0, count);
+
+      // Don't highlight blank lines at the start or end of a change
+      const firstNonBlankLine = lines.findIndex(Boolean);
+      const lastNonBlankLine = lines.reverse().findIndex(Boolean);
+
+      // Subtract 1 because we want to include the current line number in the range
+      const rangeStart = currentLineNumber + firstNonBlankLine;
+      const rangeEnd = currentLineNumber + count - 1 - lastNonBlankLine;
+      const range =
+        rangeStart === rangeEnd ? rangeStart : `${rangeStart}-${rangeEnd}`;
+
+      return {
+        highlightedLines: [...highlightedLines, range],
+        currentLineNumber: currentLineNumber + count,
+      };
+    },
+    { highlightedLines: [], currentLineNumber: 1 }
+  );
+
+  return highlightedLines.join(',');
 };
 
 export default TutorialEditor;
