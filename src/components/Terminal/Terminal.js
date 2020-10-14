@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Button, useClipboard } from '@newrelic/gatsby-theme-newrelic';
-
-const MULTILINE_COMMAND = /\\\s*$/;
+import SyntaxHighlighter from './SyntaxHighlighter';
 
 const Terminal = ({ children }) => {
   const [copied, copy] = useClipboard();
@@ -66,17 +65,7 @@ const Terminal = ({ children }) => {
           border-bottom-right-radius: var(--border-radius);
         `}
       >
-        {children
-          .trim()
-          .split('\n')
-          .map((line, idx, lines) => (
-            <Line
-              key={idx}
-              multiline={MULTILINE_COMMAND.test(lines[idx - 1] || '')}
-            >
-              {line}
-            </Line>
-          ))}
+        <SyntaxHighlighter code={children.trim()} />
       </div>
     </div>
   );
@@ -96,32 +85,6 @@ const FrameButton = ({ color }) => (
 FrameButton.propTypes = {
   color: PropTypes.string,
 };
-
-const Line = ({ children, multiline }) => (
-  <div
-    css={css`
-      display: flex;
-    `}
-  >
-    <span
-      css={css`
-        color: var(--color-nord-10);
-        user-select: none;
-        margin-right: 1ch;
-      `}
-    >
-      {multiline ? '>' : '$'}
-    </span>
-    <div
-      css={css`
-        color: #fafafa;
-        white-space: pre;
-      `}
-    >
-      {children}
-    </div>
-  </div>
-);
 
 Terminal.propTypes = {
   children: PropTypes.string,
