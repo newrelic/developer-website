@@ -7,7 +7,28 @@ import { darken } from 'polished';
 
 const TutorialEditor = ({ initialSelectedFile, files }) => {
   const [selectedFile, setSelectedFile] = useState(initialSelectedFile);
-  const { language, code } = files.get(selectedFile);
+  const { diff } = files.get(selectedFile);
+
+  const [highlightedLines] = diff.reduce(
+    ([highlightedLines, lineNumber], change) => {
+      const { count, added, removed } = change;
+      // Include current line when counting the end of the range
+      const rangeEnd = lineNumber + count - 1;
+
+      return [
+        added
+          ? [
+              ...highlightedLines,
+              lineNumber === rangeEnd
+                ? lineNumber
+                : `${lineNumber}-${lineNumber + count - 1}`,
+            ]
+          : highlightedLines,
+        removed ? lineNumber : lineNumber + count,
+      ];
+    },
+    [[], 1]
+  );
 
   return (
     <div>
@@ -47,6 +68,9 @@ const TutorialEditor = ({ initialSelectedFile, files }) => {
           lineNumbers
           language={language}
           fileName={fileName}
+          highlightedLines={
+            fileName === selectedFile ? highlightedLines.join(',') : null
+          }
           css={css`
             display: ${fileName === selectedFile ? 'block' : 'none'};
 

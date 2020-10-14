@@ -2,6 +2,7 @@ import { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import parseCodeBlockProps from '../utils/parseCodeBlockProps';
 import { isCodeBlock, isShellCommand } from '../utils/codeBlock';
+import { diffLines } from 'diff';
 
 const Tutorial = ({ children }) => {
   children = Children.toArray(children);
@@ -34,12 +35,17 @@ const Tutorial = ({ children }) => {
       );
 
       const { fileName, code, language } = parseCodeBlockProps(codeBlock);
+      const { code: prevCode } = previousStep.get(fileName);
 
       return [
         ...steps,
         cloneElement(stepElement, {
           initialSelectedFile: fileName,
-          step: previousStep.set(fileName, { code, language }),
+          step: previousStep.set(fileName, {
+            code,
+            language,
+            diff: diffLines(prevCode, code),
+          }),
           index: idx,
           totalSteps: arr.length,
           children: Children.toArray(stepElement.props.children).filter(
