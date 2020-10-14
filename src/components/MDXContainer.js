@@ -13,6 +13,7 @@ import Intro from './Intro';
 import Iframe from './Iframe';
 import Tutorial from './Tutorial';
 import TutorialStep from './TutorialStep';
+import Project from './Project';
 import { MDXCodeBlock, Video } from '@newrelic/gatsby-theme-newrelic';
 
 import styles from './MDXContainer.module.scss';
@@ -22,6 +23,7 @@ const components = {
   Step,
   Steps,
   Tutorial,
+  Project,
   TutorialStep,
   Caution,
   Important,

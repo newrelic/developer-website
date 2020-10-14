@@ -75,6 +75,23 @@ If you don't have any results at this point, ensure your query doesn't have any 
 
 <Tutorial>
 
+<Project>
+
+```jsx fileName=pageview-app-nerdlet/index.js
+import React from 'react';
+
+export default class PageViewApp extends React.Component {
+  render() {
+    return <h1>Hello, pageview-app-nerdlet Nerdlet!</h1>;
+  }
+}
+```
+
+```css fileName=pageview-app-nerdlet/styles.scss
+```
+
+</Project>
+
 <TutorialStep title="Create and serve a new Nerdpack">
 
 To get started, create a new Nerdpack, and serve it up to New Relic from your local development environment:
@@ -109,7 +126,15 @@ When you select the launcher, you see a `Hello` message.
 For the purposes of this exercise and for your convenience, hard code your account ID. In the `pageview-app-nerdlet` directory, in the `index.js` file, add this code between the `import` and `export` lines. ([Read about finding your account ID here](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id)).
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-const accountId = [Replace with your account ID];
+import React from 'react';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  render() {
+    return <h1>Hello, pageview-app-nerdlet Nerdlet!</h1>;
+  }
+}
 ```
 
 </TutorialStep>
@@ -119,7 +144,16 @@ const accountId = [Replace with your account ID];
 To show your data in a table chart, import the [`TableChart` component](/client-side-sdk/index.html#charts/TableChart) from New Relic One. To do so, in `index.js`, add this code under `import React`.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
+import React from 'react';
 import { TableChart } from 'nr1';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  render() {
+    return <h1>Hello, pageview-app-nerdlet Nerdlet!</h1>;
+  }
+}
 ```
 
 </TutorialStep>
@@ -129,6 +163,11 @@ import { TableChart } from 'nr1';
 To add a table with a single row, in the `index.js` file, replace this line with this `export` code:
 
 ```jsx fileName=pageview-app-nerdlet/index.js
+import React from 'react';
+import { TableChart } from 'nr1';
+
+const accountId = 0; // Replace with your account ID
+
 export default class PageViewApp extends React.Component {
   render() {
     return (
@@ -149,7 +188,7 @@ You can use standard CSS to customize the look of your components.
 In the `styles.scss` file, add this CSS.
 Feel free to customize this CSS to your taste.
 
-```css fileName=styles.scss
+```css fileName=pageview-app-nerdlet/styles.scss
 .container {
   width: 100%;
   height: 99vh;
@@ -175,12 +214,27 @@ Now that you've got a table, you can drop a `TableChart` populated with data fro
 Put this code into the `row` div.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-<TableChart
-  accountId={accountId}
-  query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' SINCE 1 week ago LIMIT 1000`}
-  fullWidth
-  className="chart"
-/>
+import React from 'react';
+import { TableChart } from 'nr1';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  render() {
+    return (
+      <div className="container">
+        <div className="row">
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 Go to New Relic One and click your app to see your data in the table. (You might need to serve your app to New Relic again.)
