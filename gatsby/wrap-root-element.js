@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
-import { client } from './client';
+import { client } from '../src/apollo/client';
 import PropTypes from 'prop-types';
 
 export const wrapRootElement = ({ element }) => (

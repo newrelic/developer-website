@@ -70,4 +70,4 @@ const onRouteUpdate = ({ location }) => {
   return null;
 };
 export { onRouteUpdate, wrapPageElement, onInitialClientRender };
-export { wrapRootElement } from './src/apollo/wrap-root-element';
+export { wrapRootElement } from './gatsby/wrap-root-element';
