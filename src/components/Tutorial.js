@@ -71,15 +71,35 @@ const parseFileInfoFromConfig = (configElement) => {
 
 const parseFileInfoFromChildren = (children) => {
   return children
-    .flatMap((child) => Children.toArray(child.props.children))
-    .filter((child) => isCodeBlock(child) && !isShellCommand(child))
-    .reduce((map, child) => {
-      const { fileName, language } = parseCodeBlockProps(child);
+    .flatMap((child) => {
+      switch (child.props.mdxType) {
+        case 'TutorialStep':
+          return findCodeBlocksInTutorialStep(child);
+        case 'TutorialSection':
+          return findCodeBlocksInTutorialSection(child);
+        default:
+          return [];
+      }
+    })
+    .reduce((map, codeBlock) => {
+      const { fileName, language } = parseCodeBlockProps(codeBlock);
 
       return map.has(fileName)
         ? map
         : map.set(fileName, { code: '', language });
     }, new Map());
+};
+
+const findCodeBlocksInTutorialStep = (stepElement) => {
+  return Children.toArray(stepElement.props.children).filter(
+    (child) => isCodeBlock(child) && !isShellCommand(child)
+  );
+};
+
+const findCodeBlocksInTutorialSection = (sectionElement) => {
+  return Children.toArray(sectionElement.props.children).flatMap(
+    findCodeBlocksInTutorialStep
+  );
 };
 
 export default Tutorial;
