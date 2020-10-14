@@ -25,10 +25,13 @@ const Tutorial = ({ children }) => {
         ];
       }
 
-      const previousStep =
-        idx === 0
-          ? new Map(initialState)
-          : new Map(steps[idx - 1].props.step || initialState);
+      const previousStep = new Map(
+        steps
+          .slice(0, idx)
+          .map((element) => element.props.step)
+          .reverse()
+          .find(Boolean) || initialState
+      );
 
       const { fileName, code, language } = parseCodeBlockProps(codeBlock);
 
