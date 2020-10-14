@@ -7,7 +7,6 @@ import Markdown from './Markdown';
 const TutorialStep = ({
   children,
   codeBlock,
-  initialSelectedFile,
   step,
   index,
   title,
@@ -59,8 +58,8 @@ const TutorialStep = ({
 
 TutorialStep.propTypes = {
   children: PropTypes.node,
+  codeBlock: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
-  initialSelectedFile: PropTypes.string.isRequired,
   step: PropTypes.instanceOf(Map).isRequired,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   totalSteps: PropTypes.number.isRequired,
