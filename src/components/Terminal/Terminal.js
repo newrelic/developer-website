@@ -3,20 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Button, useClipboard } from '@newrelic/gatsby-theme-newrelic';
 
-const FrameButton = ({ color }) => (
-  <div
-    css={css`
-      background: ${color};
-      border-radius: 50%;
-      width: 10px;
-      height: 10px;
-    `}
-  />
-);
-
-FrameButton.propTypes = {
-  color: PropTypes.string,
-};
+const MULTILINE_COMMAND = /\\\s*$/;
 
 const Terminal = ({ children }) => {
   const [copied, copy] = useClipboard();
@@ -38,7 +25,7 @@ const Terminal = ({ children }) => {
           grid-template-columns: repeat(3, auto) 1fr 90px;
           grid-gap: 0.5rem;
           align-items: center;
-          padding: 0.25rem 0.5rem;
+          padding: 0.25rem 1rem;
           border-top-left-radius: var(--border-radius);
           border-top-right-radius: var(--border-radius);
         `}
@@ -72,9 +59,9 @@ const Terminal = ({ children }) => {
       </div>
       <div
         css={css`
-          padding: 0.5rem;
+          padding: 1rem;
           font-family: var(--code-font);
-          font-size: 0.875rem;
+          font-size: 0.75rem;
           border-bottom-left-radius: var(--border-radius);
           border-bottom-right-radius: var(--border-radius);
         `}
@@ -82,35 +69,59 @@ const Terminal = ({ children }) => {
         {children
           .trim()
           .split('\n')
-          .map((line, idx) => (
-            <div
+          .map((line, idx, lines) => (
+            <Line
               key={idx}
-              css={css`
-                display: flex;
-              `}
+              multiline={MULTILINE_COMMAND.test(lines[idx - 1] || '')}
             >
-              <span
-                css={css`
-                  color: var(--color-nord-10);
-                  user-select: none;
-                  margin-right: 1ch;
-                `}
-              >
-                $
-              </span>
-              <div
-                css={css`
-                  color: #fafafa;
-                `}
-              >
-                {line}
-              </div>
-            </div>
+              {line}
+            </Line>
           ))}
       </div>
     </div>
   );
 };
+
+const FrameButton = ({ color }) => (
+  <div
+    css={css`
+      background: ${color};
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+    `}
+  />
+);
+
+FrameButton.propTypes = {
+  color: PropTypes.string,
+};
+
+const Line = ({ children, multiline }) => (
+  <div
+    css={css`
+      display: flex;
+    `}
+  >
+    <span
+      css={css`
+        color: var(--color-nord-10);
+        user-select: none;
+        margin-right: 1ch;
+      `}
+    >
+      {multiline ? '>' : '$'}
+    </span>
+    <div
+      css={css`
+        color: #fafafa;
+        white-space: pre;
+      `}
+    >
+      {children}
+    </div>
+  </div>
+);
 
 Terminal.propTypes = {
   children: PropTypes.string,
