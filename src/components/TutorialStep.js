@@ -15,9 +15,8 @@ const TutorialStep = ({
   return (
     <div
       css={css`
-        &:not(:last-child) {
-          margin-bottom: 2rem;
-        }
+        padding: 2rem 0;
+        border-top: 1px solid var(--divider-color);
       `}
     >
       <p

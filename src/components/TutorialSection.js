@@ -7,6 +7,10 @@ const TutorialSection = ({ children }) => {
     <section
       css={css`
         margin-bottom: 4rem;
+
+        &:not(:first-child) {
+          margin-top: 4rem;
+        }
       `}
     >
       {children}
