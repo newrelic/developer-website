@@ -6,6 +6,7 @@ import Markdown from './Markdown';
 
 const TutorialStep = ({
   children,
+  codeBlock,
   initialSelectedFile,
   step,
   index,
@@ -47,10 +48,7 @@ const TutorialStep = ({
           `}
         >
           <div>{children}</div>
-          <TutorialEditor
-            files={step}
-            initialSelectedFile={initialSelectedFile}
-          />
+          <TutorialEditor codeBlock={codeBlock} files={step} />
         </div>
       ) : (
         children

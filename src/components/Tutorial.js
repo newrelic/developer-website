@@ -34,17 +34,16 @@ const Tutorial = ({ children }) => {
           .find(Boolean) || initialState
       );
 
-      const { fileName, code, language } = parseCodeBlockProps(codeBlock);
-      const { code: prevCode } = previousStep.get(fileName);
+      const props = parseCodeBlockProps(codeBlock);
+      const { code: prevCode } = previousStep.get(props.fileName);
 
       return [
         ...steps,
         cloneElement(stepElement, {
-          initialSelectedFile: fileName,
-          step: previousStep.set(fileName, {
-            code,
-            language,
-            diff: diffLines(prevCode, code),
+          codeBlock: { ...props, diff: diffLines(prevCode, props.code) },
+          step: previousStep.set(props.fileName, {
+            code: props.code,
+            language: props.language,
           }),
           index: idx,
           totalSteps: arr.length,

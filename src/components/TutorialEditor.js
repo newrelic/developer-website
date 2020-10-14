@@ -5,30 +5,46 @@ import path from 'path';
 import { css } from '@emotion/core';
 import { darken } from 'polished';
 
-const TutorialEditor = ({ initialSelectedFile, files }) => {
-  const [selectedFile, setSelectedFile] = useState(initialSelectedFile);
-  const { diff } = files.get(selectedFile);
+const last = (arr) => arr[arr.length - 1];
 
-  const [highlightedLines] = diff.reduce(
-    ([highlightedLines, lineNumber], change) => {
-      const { count, added, removed } = change;
-      // Include current line when counting the end of the range
-      const rangeEnd = lineNumber + count - 1;
+const diffHighlightedLines = (diff) => {
+  const { highlightedLines } = diff.reduce(
+    ({ highlightedLines, currentLineNumber }, change) => {
+      const { count, added, removed, value } = change;
 
-      return [
-        added
-          ? [
-              ...highlightedLines,
-              lineNumber === rangeEnd
-                ? lineNumber
-                : `${lineNumber}-${lineNumber + count - 1}`,
-            ]
-          : highlightedLines,
-        removed ? lineNumber : lineNumber + count,
-      ];
+      if (!added) {
+        return {
+          highlightedLines,
+          currentLineNumber: removed
+            ? currentLineNumber
+            : currentLineNumber + count,
+        };
+      }
+
+      const lines = value.split('\n').slice(0, count);
+
+      // Don't highlight the last line if the last line is blank. Subtract at
+      // least 1 because we want to include the current line in the range.
+      const subtractAmount = last(lines) === '' ? 2 : 1;
+      const rangeEnd = currentLineNumber + count - subtractAmount;
+      const range =
+        currentLineNumber === rangeEnd
+          ? currentLineNumber
+          : `${currentLineNumber}-${rangeEnd}`;
+
+      return {
+        highlightedLines: [...highlightedLines, range],
+        currentLineNumber: currentLineNumber + count,
+      };
     },
-    [[], 1]
+    { highlightedLines: [], currentLineNumber: 1 }
   );
+
+  return highlightedLines.join(',');
+};
+
+const TutorialEditor = ({ codeBlock, files }) => {
+  const [selectedFile, setSelectedFile] = useState(codeBlock.fileName);
 
   return (
     <div>
@@ -69,7 +85,9 @@ const TutorialEditor = ({ initialSelectedFile, files }) => {
           language={language}
           fileName={fileName}
           highlightedLines={
-            fileName === selectedFile ? highlightedLines.join(',') : null
+            fileName === codeBlock.fileName && codeBlock.diff
+              ? diffHighlightedLines(codeBlock.diff)
+              : null
           }
           css={css`
             display: ${fileName === selectedFile ? 'block' : 'none'};
@@ -88,7 +106,7 @@ const TutorialEditor = ({ initialSelectedFile, files }) => {
 };
 
 TutorialEditor.propTypes = {
-  initialSelectedFile: PropTypes.string.isRequired,
+  codeBlock: PropTypes.object.isRequired,
   files: PropTypes.instanceOf(Map).isRequired,
 };
 
