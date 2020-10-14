@@ -13,6 +13,9 @@ const Tutorial = ({ children }) => {
     validateChildren(children);
   });
 
+  const isSectioned = children.some((child) =>
+    isMdxType(child, 'TutorialSection')
+  );
   const projectElement = isMdxType(children[0], 'Project') ? children[0] : null;
 
   if (projectElement) {
@@ -23,13 +26,27 @@ const Tutorial = ({ children }) => {
     ? parseProjectStateFromConfig(projectElement)
     : parseProjectStateFromChildren(children);
 
+  if (isSectioned) {
+    return gatherSections(children, initialProjectState);
+  }
+
+  const { steps } = gatherSteps(children, initialProjectState);
+
+  return steps;
+};
+
+Tutorial.propTypes = {
+  children: PropTypes.node,
+};
+
+const gatherSections = (children, initialProjectState) => {
   const { elements } = children.reduce(
     (memo, child) => {
       const { elements, currentProjectState } = memo;
 
       if (isMdxType(child, 'TutorialSection')) {
         const { steps, currentProjectState: projectState } = gatherSteps(
-          child,
+          child.props.children,
           currentProjectState
         );
 
@@ -47,13 +64,9 @@ const Tutorial = ({ children }) => {
   return elements;
 };
 
-Tutorial.propTypes = {
-  children: PropTypes.node,
-};
-
-const gatherSteps = (parentElement, initialProjectState) => {
-  return Children.toArray(parentElement.props.children).reduce(
-    ({ steps, currentProjectState }, stepElement, idx, children) => {
+const gatherSteps = (children, initialProjectState) => {
+  return Children.toArray(children).reduce(
+    ({ steps, currentProjectState }, stepElement, idx) => {
       const sharedProps = { stepNumber: idx + 1, totalSteps: children.length };
       const codeBlock = Children.toArray(stepElement.props.children).find(
         (child) => isCodeBlock(child) && !isShellCommand(child)
