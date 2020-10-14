@@ -6,6 +6,8 @@ export const isCodeBlock = (element) =>
 
 export const isShellCommand = (element) =>
   isCodeBlock(element) &&
-  SHELL_LANGUAGES.includes(
+  isShellLanguage(
     element.props?.children?.props?.className?.replace('language-', '')
   );
+
+export const isShellLanguage = (language) => SHELL_LANGUAGES.includes(language);
