@@ -43,7 +43,7 @@ const diffHighlightedLines = (diff) => {
   return highlightedLines.join(',');
 };
 
-const TutorialEditor = ({ codeBlock, files }) => {
+const TutorialEditor = ({ codeBlock, project }) => {
   const [selectedFile, setSelectedFile] = useState(codeBlock.fileName);
 
   return (
@@ -56,7 +56,7 @@ const TutorialEditor = ({ codeBlock, files }) => {
           border-top-right-radius: 0.25rem;
         `}
       >
-        {Array.from(files.keys()).map((fileName) => (
+        {Array.from(project.keys()).map((fileName) => (
           <button
             key={fileName}
             type="button"
@@ -78,7 +78,7 @@ const TutorialEditor = ({ codeBlock, files }) => {
         ))}
       </div>
 
-      {Array.from(files.entries()).map(([fileName, { code, language }]) => (
+      {Array.from(project.entries()).map(([fileName, { code, language }]) => (
         <CodeBlock
           key={fileName}
           lineNumbers
@@ -107,7 +107,7 @@ const TutorialEditor = ({ codeBlock, files }) => {
 
 TutorialEditor.propTypes = {
   codeBlock: PropTypes.object.isRequired,
-  files: PropTypes.instanceOf(Map).isRequired,
+  project: PropTypes.instanceOf(Map).isRequired,
 };
 
 export default TutorialEditor;

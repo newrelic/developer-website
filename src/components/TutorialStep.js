@@ -7,8 +7,8 @@ import Markdown from './Markdown';
 const TutorialStep = ({
   children,
   codeBlock,
-  step,
-  index,
+  project,
+  stepNumber,
   title,
   totalSteps,
 }) => {
@@ -27,7 +27,7 @@ const TutorialStep = ({
           margin-bottom: 0;
         `}
       >
-        Step {index + 1} of {totalSteps}
+        Step {stepNumber} of {totalSteps}
       </p>
       <h3
         css={css`
@@ -38,7 +38,7 @@ const TutorialStep = ({
       >
         <Markdown source={title} />
       </h3>
-      {step ? (
+      {project ? (
         <div
           css={css`
             display: grid;
@@ -47,7 +47,7 @@ const TutorialStep = ({
           `}
         >
           <div>{children}</div>
-          <TutorialEditor codeBlock={codeBlock} files={step} />
+          <TutorialEditor codeBlock={codeBlock} project={project} />
         </div>
       ) : (
         children
@@ -59,8 +59,8 @@ const TutorialStep = ({
 TutorialStep.propTypes = {
   children: PropTypes.node,
   codeBlock: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
-  step: PropTypes.instanceOf(Map).isRequired,
+  stepNumber: PropTypes.number.isRequired,
+  project: PropTypes.instanceOf(Map).isRequired,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   totalSteps: PropTypes.number.isRequired,
 };

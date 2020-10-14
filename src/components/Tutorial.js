@@ -7,59 +7,85 @@ import { diffLines } from 'diff';
 const Tutorial = ({ children }) => {
   children = Children.toArray(children);
 
-  const initialState =
+  const initialProjectState =
     children[0].props.mdxType === 'Project'
-      ? parseFileInfoFromConfig(children[0])
-      : parseFileInfoFromChildren(children);
+      ? parseProjectStateFromConfig(children[0])
+      : parseProjectStateFromChildren(children);
 
-  return children
-    .filter((child) => child.props.mdxType === 'TutorialStep')
-    .reduce((steps, stepElement, idx, arr) => {
-      const codeBlock = Children.toArray(stepElement.props.children).find(
-        (child) => isCodeBlock(child) && !isShellCommand(child)
-      );
+  const { elements } = children.reduce(
+    (memo, child) => {
+      const { elements, currentProjectState } = memo;
 
-      if (!codeBlock) {
-        return [
-          ...steps,
-          cloneElement(stepElement, { index: idx, totalSteps: arr.length }),
-        ];
+      if (child.props.mdxType === 'Project') {
+        return memo;
+      } else if (child.props.mdxType === 'TutorialSection') {
+        const { steps, currentProjectState: projectState } = gatherSteps(
+          child,
+          currentProjectState
+        );
+
+        return {
+          currentProjectState: projectState,
+          elements: [...elements, cloneElement(child, { children: steps })],
+        };
       }
 
-      const previousStep = new Map(
-        steps
-          .slice(0, idx)
-          .map((element) => element.props.step)
-          .reverse()
-          .find(Boolean) || initialState
-      );
+      return { elements: [...elements, child], currentProjectState };
+    },
+    { elements: [], currentProjectState: initialProjectState }
+  );
 
-      const props = parseCodeBlockProps(codeBlock);
-      const { code: prevCode } = previousStep.get(props.fileName);
-
-      return [
-        ...steps,
-        cloneElement(stepElement, {
-          codeBlock: { ...props, diff: diffLines(prevCode, props.code) },
-          step: previousStep.set(props.fileName, {
-            code: props.code,
-            language: props.language,
-          }),
-          index: idx,
-          totalSteps: arr.length,
-          children: Children.toArray(stepElement.props.children).filter(
-            (child) => isShellCommand(child) || !isCodeBlock(child)
-          ),
-        }),
-      ];
-    }, []);
+  return elements;
 };
 
 Tutorial.propTypes = {
   children: PropTypes.node,
 };
 
-const parseFileInfoFromConfig = (configElement) => {
+const gatherSteps = (parentElement, initialProjectState) => {
+  return Children.toArray(parentElement.props.children).reduce(
+    ({ steps, currentProjectState }, stepElement, idx, children) => {
+      const sharedProps = { stepNumber: idx + 1, totalSteps: children.length };
+      const codeBlock = Children.toArray(stepElement.props.children).find(
+        (child) => isCodeBlock(child) && !isShellCommand(child)
+      );
+
+      if (!codeBlock) {
+        return {
+          currentProjectState,
+          steps: [...steps, cloneElement(stepElement, sharedProps)],
+        };
+      }
+
+      const props = parseCodeBlockProps(codeBlock);
+      const { code: prevCode } = currentProjectState.get(props.fileName);
+      const projectState = clone(currentProjectState).set(props.fileName, {
+        code: props.code,
+        language: props.language,
+      });
+
+      return {
+        currentProjectState: projectState,
+        steps: [
+          ...steps,
+          cloneElement(stepElement, {
+            ...sharedProps,
+            codeBlock: { ...props, diff: diffLines(prevCode, props.code) },
+            project: projectState,
+            children: Children.toArray(stepElement.props.children).filter(
+              (child) => isShellCommand(child) || !isCodeBlock(child)
+            ),
+          }),
+        ],
+      };
+    },
+    { steps: [], currentProjectState: initialProjectState }
+  );
+};
+
+const clone = (map) => new Map(map);
+
+const parseProjectStateFromConfig = (configElement) => {
   return Children.toArray(configElement.props.children)
     .filter((child) => isCodeBlock(child) && !isShellCommand(child))
     .reduce((map, child) => {
@@ -69,7 +95,7 @@ const parseFileInfoFromConfig = (configElement) => {
     }, new Map());
 };
 
-const parseFileInfoFromChildren = (children) => {
+const parseProjectStateFromChildren = (children) => {
   return children
     .flatMap((child) => {
       switch (child.props.mdxType) {
