@@ -90,7 +90,12 @@ export default class PageViewApp extends React.Component {
 ```css fileName=pageview-app-nerdlet/styles.scss
 ```
 
+```js fileName=.extended-webpackrc.js
+```
+
 </Project>
+
+<TutorialSection>
 
 <TutorialStep title="Create and serve a new Nerdpack">
 
@@ -243,34 +248,34 @@ Congratulations! You made your app! Continue on to make it interactive and show 
 
 </TutorialStep>
 
-</Tutorial>
+</TutorialSection>
 
 ## Make your app interactive with a text field
 
 Once you confirm that data is getting to New Relic from your app, you can start customizing it and making it interactive. To do this, you add a text field to filter your data. Later, you use a third-party library called `Leaflet` to show that data on a world map.
 
-<Steps>
+<TutorialSection>
 
-<Step>
+<TutorialStep>
 
 ### Import the `TextField` component
 
 Like you did with the `TableChart` component, you need to import a [`TextField` component](/client-side-sdk/index.html#components/TextField) from New Relic One.
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 import { TextField } from 'nr1';
 ```
 
-</Step>
+</TutorialStep>
 
-<Step>
+<TutorialStep>
 
 ### Add a row for your text field
 
 To add a text field filter above the table, put this code above the `TableChart` div.
 The text field will have a default value of "US".
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 <div className="row">
   <TextField
     placeholder="US"
@@ -281,15 +286,15 @@ The text field will have a default value of "US".
 </div>
 ```
 
-</Step>
+</TutorialStep>
 
-<Step>
+<TutorialStep>
 
 ### Build the text field object
 
 Above the `render()` function, add a `constructor` to build the text field object.
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 constructor(props) {
   super(props);
   this.state = {
@@ -300,13 +305,13 @@ constructor(props) {
 
 Then, add a `constructor` to your `render()` function. Above `return`, add:
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 const { countryCode } = this.state;
 ```
 
 Now add `countryCode` to your table chart query.
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 <TableChart
   accountId={accountId}
   query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' ${
@@ -319,35 +324,33 @@ Now add `countryCode` to your table chart query.
 
 Reload your app to try out the text field.
 
-</Step>
+</TutorialStep>
 
-</Steps>
+</TutorialSection>
 
 ## Get your data on a map
 
 To create the map, you use npm to install `Leaflet`.
 
-<Steps>
+<TutorialSection>
 
-<Step>
+<TutorialStep>
 
 ### Install `Leaflet`
 
 In your terminal, type:
 
-```
+```bash
 npm install --save leaflet react-leaflet
 ```
 
 In your nerdlets `styles.scss` file, import the `Leaflet` CSS:
 
-```css
-@import `~leaflet/dist/leaflet.css`;
-```
-
 While you're in `styles.scss`, fix the width and height of your map:
 
-```css
+```css fileName=pageview-app-nerdlet/styles.scss
+@import `~leaflet/dist/leaflet.css`;
+
 .containerMap {
   width: 100%;
   z-index: 0;
@@ -355,15 +358,15 @@ While you're in `styles.scss`, fix the width and height of your map:
 }
 ```
 
-</Step>
+</TutorialStep>
 
-<Step>
+<TutorialStep>
 
 ### Add a webpack config file for `Leaflet`
 
 Add a webpack configuration file `.extended-webpackrc.js` to the top-level folder in your nerdpack. This supports your use of map tiling information data from `Leaflet`.
 
-```jsx
+```jsx fileName=.extended-webpackrc.js
 module.exports = {
   module: {
     rules: [
@@ -385,41 +388,41 @@ module.exports = {
 };
 ```
 
-</Step>
+</TutorialStep>
 
-<Step>
+<TutorialStep>
 
 ### Import modules from `Leaflet`
 
 In `index.js`, import modules from `Leaflet`.
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 import { Map, CircleMarker, TileLayer } from 'react-leaflet';
 ```
 
-</Step>
+</TutorialStep>
 
-<Step>
+<TutorialStep>
 
 ### Import additional modules from New Relic One
 
 You need several more modules from New Relic One to make the `Leaflet` map work well. Import them with this code:
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 import { NerdGraphQuery, Spinner, Button, BlockText } from 'nr1';
 ```
 
 `NerdGraphQuery` lets you make multiple NRQL queries at once and is what will populate the map with data. `Spinner` adds a loading spinner. `Button` gives you button components. `BlockText` give you block text components.
 
-</Step>
+</TutorialStep>
 
-<Step>
+<TutorialStep>
 
 ### Get data for the map
 
 Using latitude and longitude with country codes, you can put New Relic data on a map.
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 mapData() {
   const { countryCode } = this.state;
   const query = `{
@@ -436,15 +439,15 @@ mapData() {
 };
 ```
 
-</Step>
+</TutorialStep>
 
-<Step>
+<TutorialStep>
 
 ### Customize the map marker colors
 
 Above the `mapData` function, add this code to customize the map marker colors.
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 getMarkerColor(measure, apdexTarget = 1.7) {
   if (measure <= apdexTarget) {
     return '#11A600';
@@ -458,27 +461,27 @@ getMarkerColor(measure, apdexTarget = 1.7) {
 
 Feel free to change the HTML color code values to your taste. In this example, `#11A600` is green, `#FFD966` is sort of yellow, and `#BF0016` is red.
 
-</Step>
+</TutorialStep>
 
-<Step>
+<TutorialStep>
 
 ### Set your map's default center point
 
 Set a default center point for your map using latitude and longitude.
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 const defaultMapCenter = [10.5731, -7.5898];
 ```
 
-</Step>
+</TutorialStep>
 
-<Step>
+<TutorialStep>
 
 ### Add a row for your map
 
 Between the text field row and the table chart row, insert a new row for the map content using `NerdGraphQuery`.
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 <div className="row">
   <NerdGraphQuery query={this.mapData()}>
     {({ loading, error, data }) => {
@@ -498,15 +501,15 @@ Between the text field row and the table chart row, insert a new row for the map
 
 Reload your application in New Relic One to test that it works.
 
-</Step>
+</TutorialStep>
 
-<Step>
+<TutorialStep>
 
 ### Replace "Hello" with the Leaflet code
 
 Replace `return "Hello";` with:
 
-```jsx
+```jsx fileName=pageview-app-nerdlet/index.js
 return (
   <Map className="containerMap" center={defaultMapCenter} zoom={2} zoomControl>
     <TileLayer
@@ -531,10 +534,12 @@ return (
 );
 ```
 
-</Step>
+</TutorialStep>
+
+</TutorialSection>
 
 This code creates a world map centered on the latitude and longitude you chose using `OpenStreetMap` data and your marker colors.
 
 Reload your app to see the pageview data on the map!
 
-</Steps>
+</Tutorial>
