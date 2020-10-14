@@ -344,6 +344,7 @@ button::-moz-focus-inner {
 
 const MonacoLiveEditor = withLive(Editor);
 
+if (typeof window === 'undefined') global.window = {};
 const sdk = window.__NR1_SDK__?.default ?? {};
 
 monaco.init().then((monaco) => monacoConfig(monaco, sdk));
