@@ -263,7 +263,27 @@ Once you confirm that data is getting to New Relic from your app, you can start 
 Like you did with the `TableChart` component, you need to import a [`TextField` component](/client-side-sdk/index.html#components/TextField) from New Relic One.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-import { TextField } from 'nr1';
+import React from 'react';
+import { TableChart, TextField } from 'nr1';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  render() {
+    return (
+      <div className="container">
+        <div className="row">
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 </TutorialStep>
@@ -276,14 +296,35 @@ To add a text field filter above the table, put this code above the `TableChart`
 The text field will have a default value of "US".
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-<div className="row">
-  <TextField
-    placeholder="US"
-    onChange={(event) => {
-      this.setState({ countryCode: event.target.value });
-    }}
-  />
-</div>
+import React from 'react';
+import { TableChart, TextField } from 'nr1';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  render() {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="row">
+            <TextField
+              placeholder="US"
+              onChange={(event) => {
+                this.setState({ countryCode: event.target.value });
+              }}
+            />
+          </div>
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 </TutorialStep>
@@ -295,31 +336,138 @@ The text field will have a default value of "US".
 Above the `render()` function, add a `constructor` to build the text field object.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-constructor(props) {
-  super(props);
-  this.state = {
-    countryCode: null
+import React from 'react';
+import { TableChart, TextField } from 'nr1';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryCode: null,
+    };
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="row">
+            <TextField
+              placeholder="US"
+              onChange={(event) => {
+                this.setState({ countryCode: event.target.value });
+              }}
+            />
+          </div>
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
   }
 }
 ```
 
-Then, add a `constructor` to your `render()` function. Above `return`, add:
+</TutorialStep>
+
+<TutorialStep>
+
+Above `return`, add:
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-const { countryCode } = this.state;
+import React from 'react';
+import { TableChart, TextField } from 'nr1';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryCode: null,
+    };
+  }
+
+  render() {
+    const { countryCode } = this.state;
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="row">
+            <TextField
+              placeholder="US"
+              onChange={(event) => {
+                this.setState({ countryCode: event.target.value });
+              }}
+            />
+          </div>
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
+
+</TutorialStep>
+
+<TutorialStep>
 
 Now add `countryCode` to your table chart query.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-<TableChart
-  accountId={accountId}
-  query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' ${
-    countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
-  } FACET countryCode, regionCode SINCE 1 week ago LIMIT 1000`}
-  fullWidth
-  className="chart"
-/>
+import React from 'react';
+import { TableChart, TextField } from 'nr1';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryCode: null,
+    };
+  }
+
+  render() {
+    const { countryCode } = this.state;
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="row">
+            <TextField
+              placeholder="US"
+              onChange={(event) => {
+                this.setState({ countryCode: event.target.value });
+              }}
+            />
+          </div>
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' ${
+              countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+            } FACET countryCode, regionCode SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 Reload your app to try out the text field.
@@ -351,10 +499,20 @@ While you're in `styles.scss`, fix the width and height of your map:
 ```css fileName=pageview-app-nerdlet/styles.scss
 @import `~leaflet/dist/leaflet.css`;
 
-.containerMap {
+.container {
   width: 100%;
   z-index: 0;
   height: 70vh;
+  display: flex;
+  flex-direction: column;
+  .row {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+  }
+  .chart {
+    height: 250px;
+  }
 }
 ```
 
@@ -397,7 +555,47 @@ module.exports = {
 In `index.js`, import modules from `Leaflet`.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
+import React from 'react';
+import { TableChart, TextField } from 'nr1';
 import { Map, CircleMarker, TileLayer } from 'react-leaflet';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryCode: null,
+    };
+  }
+
+  render() {
+    const { countryCode } = this.state;
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="row">
+            <TextField
+              placeholder="US"
+              onChange={(event) => {
+                this.setState({ countryCode: event.target.value });
+              }}
+            />
+          </div>
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' ${
+              countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+            } FACET countryCode, regionCode SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 </TutorialStep>
@@ -409,7 +607,54 @@ import { Map, CircleMarker, TileLayer } from 'react-leaflet';
 You need several more modules from New Relic One to make the `Leaflet` map work well. Import them with this code:
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-import { NerdGraphQuery, Spinner, Button, BlockText } from 'nr1';
+import React from 'react';
+import {
+  TableChart,
+  TextField,
+  NerdGraphQuery,
+  Spinner,
+  Button,
+  BlockText,
+} from 'nr1';
+import { Map, CircleMarker, TileLayer } from 'react-leaflet';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryCode: null,
+    };
+  }
+
+  render() {
+    const { countryCode } = this.state;
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="row">
+            <TextField
+              placeholder="US"
+              onChange={(event) => {
+                this.setState({ countryCode: event.target.value });
+              }}
+            />
+          </div>
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' ${
+              countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+            } FACET countryCode, regionCode SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 `NerdGraphQuery` lets you make multiple NRQL queries at once and is what will populate the map with data. `Spinner` adds a loading spinner. `Button` gives you button components. `BlockText` give you block text components.
@@ -423,20 +668,72 @@ import { NerdGraphQuery, Spinner, Button, BlockText } from 'nr1';
 Using latitude and longitude with country codes, you can put New Relic data on a map.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-mapData() {
-  const { countryCode } = this.state;
-  const query = `{
+import React from 'react';
+import {
+  TableChart,
+  TextField,
+  NerdGraphQuery,
+  Spinner,
+  Button,
+  BlockText,
+} from 'nr1';
+import { Map, CircleMarker, TileLayer } from 'react-leaflet';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryCode: null,
+    };
+  }
+
+  mapData() {
+    const { countryCode } = this.state;
+    const query = `{
     actor {
       account(id: 1606862) {
-        mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appName = 'WebPortal' ${countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''} LIMIT 1000 ") {
+        mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appName = 'WebPortal' ${
+          countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+        } LIMIT 1000 ") {
           results
           nrql
         }
       }
     }
   }`;
-  return query;
-};
+
+    return query;
+  }
+
+  render() {
+    const { countryCode } = this.state;
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="row">
+            <TextField
+              placeholder="US"
+              onChange={(event) => {
+                this.setState({ countryCode: event.target.value });
+              }}
+            />
+          </div>
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' ${
+              countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+            } FACET countryCode, regionCode SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 </TutorialStep>
@@ -448,15 +745,82 @@ mapData() {
 Above the `mapData` function, add this code to customize the map marker colors.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-getMarkerColor(measure, apdexTarget = 1.7) {
-  if (measure <= apdexTarget) {
-    return '#11A600';
-  } else if (measure >= apdexTarget && measure <= apdexTarget * 4) {
-    return '#FFD966';
-  } else {
-    return '#BF0016';
+import React from 'react';
+import {
+  TableChart,
+  TextField,
+  NerdGraphQuery,
+  Spinner,
+  Button,
+  BlockText,
+} from 'nr1';
+import { Map, CircleMarker, TileLayer } from 'react-leaflet';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryCode: null,
+    };
   }
-};
+
+  getMarkerColor(measure, apdexTarget = 1.7) {
+    if (measure <= apdexTarget) {
+      return '#11A600';
+    } else if (measure >= apdexTarget && measure <= apdexTarget * 4) {
+      return '#FFD966';
+    } else {
+      return '#BF0016';
+    }
+  }
+
+  mapData() {
+    const { countryCode } = this.state;
+    const query = `{
+    actor {
+      account(id: 1606862) {
+        mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appName = 'WebPortal' ${
+          countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+        } LIMIT 1000 ") {
+          results
+          nrql
+        }
+      }
+    }
+  }`;
+
+    return query;
+  }
+
+  render() {
+    const { countryCode } = this.state;
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="row">
+            <TextField
+              placeholder="US"
+              onChange={(event) => {
+                this.setState({ countryCode: event.target.value });
+              }}
+            />
+          </div>
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' ${
+              countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+            } FACET countryCode, regionCode SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 Feel free to change the HTML color code values to your taste. In this example, `#11A600` is green, `#FFD966` is sort of yellow, and `#BF0016` is red.
@@ -470,7 +834,83 @@ Feel free to change the HTML color code values to your taste. In this example, `
 Set a default center point for your map using latitude and longitude.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-const defaultMapCenter = [10.5731, -7.5898];
+import React from 'react';
+import {
+  TableChart,
+  TextField,
+  NerdGraphQuery,
+  Spinner,
+  Button,
+  BlockText,
+} from 'nr1';
+import { Map, CircleMarker, TileLayer } from 'react-leaflet';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryCode: null,
+    };
+  }
+
+  getMarkerColor(measure, apdexTarget = 1.7) {
+    if (measure <= apdexTarget) {
+      return '#11A600';
+    } else if (measure >= apdexTarget && measure <= apdexTarget * 4) {
+      return '#FFD966';
+    } else {
+      return '#BF0016';
+    }
+  }
+
+  mapData() {
+    const { countryCode } = this.state;
+    const query = `{
+    actor {
+      account(id: 1606862) {
+        mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appName = 'WebPortal' ${
+          countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+        } LIMIT 1000 ") {
+          results
+          nrql
+        }
+      }
+    }
+  }`;
+
+    return query;
+  }
+
+  render() {
+    const { countryCode } = this.state;
+    const defaultMapCenter = [10.5731, -7.5898];
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="row">
+            <TextField
+              placeholder="US"
+              onChange={(event) => {
+                this.setState({ countryCode: event.target.value });
+              }}
+            />
+          </div>
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' ${
+              countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+            } FACET countryCode, regionCode SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 </TutorialStep>
@@ -482,21 +922,98 @@ const defaultMapCenter = [10.5731, -7.5898];
 Between the text field row and the table chart row, insert a new row for the map content using `NerdGraphQuery`.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-<div className="row">
-  <NerdGraphQuery query={this.mapData()}>
-    {({ loading, error, data }) => {
-      if (loading) {
-        return <Spinner fillContainer />;
+import React from 'react';
+import {
+  TableChart,
+  TextField,
+  NerdGraphQuery,
+  Spinner,
+  Button,
+  BlockText,
+} from 'nr1';
+import { Map, CircleMarker, TileLayer } from 'react-leaflet';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryCode: null,
+    };
+  }
+
+  getMarkerColor(measure, apdexTarget = 1.7) {
+    if (measure <= apdexTarget) {
+      return '#11A600';
+    } else if (measure >= apdexTarget && measure <= apdexTarget * 4) {
+      return '#FFD966';
+    } else {
+      return '#BF0016';
+    }
+  }
+
+  mapData() {
+    const { countryCode } = this.state;
+    const query = `{
+    actor {
+      account(id: 1606862) {
+        mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appName = 'WebPortal' ${
+          countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+        } LIMIT 1000 ") {
+          results
+          nrql
+        }
       }
-      if (error) {
-        return 'Error';
-      }
-      const { results } = data.actor.account.mapData;
-      console.debug(results);
-      return 'Hello';
-    }}
-  </NerdGraphQuery>
-</div>
+    }
+  }`;
+
+    return query;
+  }
+
+  render() {
+    const { countryCode } = this.state;
+    const defaultMapCenter = [10.5731, -7.5898];
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="row">
+            <TextField
+              placeholder="US"
+              onChange={(event) => {
+                this.setState({ countryCode: event.target.value });
+              }}
+            />
+          </div>
+          <div className="row">
+            <NerdGraphQuery query={this.mapData()}>
+              {({ loading, error, data }) => {
+                if (loading) {
+                  return <Spinner fillContainer />;
+                }
+                if (error) {
+                  return 'Error';
+                }
+                const { results } = data.actor.account.mapData;
+                console.debug(results);
+                return 'Hello';
+              }}
+            </NerdGraphQuery>
+          </div>
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' ${
+              countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+            } FACET countryCode, regionCode SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 Reload your application in New Relic One to test that it works.
@@ -510,28 +1027,125 @@ Reload your application in New Relic One to test that it works.
 Replace `return "Hello";` with:
 
 ```jsx fileName=pageview-app-nerdlet/index.js
-return (
-  <Map className="containerMap" center={defaultMapCenter} zoom={2} zoomControl>
-    <TileLayer
-      attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    {results.map((pt, i) => {
-      const center = [pt.lat, pt.lng];
-      return (
-        <CircleMarker
-          key={`circle-${i}`}
-          center={center}
-          color={this.getMarkerColor(pt.y)}
-          radius={Math.log(pt.x) * 3}
-          onClick={() => {
-            alert(JSON.stringify(pt));
-          }}
-        />
-      );
-    })}
-  </Map>
-);
+import React from 'react';
+import {
+  TableChart,
+  TextField,
+  NerdGraphQuery,
+  Spinner,
+  Button,
+  BlockText,
+} from 'nr1';
+import { Map, CircleMarker, TileLayer } from 'react-leaflet';
+
+const accountId = 0; // Replace with your account ID
+
+export default class PageViewApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryCode: null,
+    };
+  }
+
+  getMarkerColor(measure, apdexTarget = 1.7) {
+    if (measure <= apdexTarget) {
+      return '#11A600';
+    } else if (measure >= apdexTarget && measure <= apdexTarget * 4) {
+      return '#FFD966';
+    } else {
+      return '#BF0016';
+    }
+  }
+
+  mapData() {
+    const { countryCode } = this.state;
+    const query = `{
+    actor {
+      account(id: 1606862) {
+        mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appName = 'WebPortal' ${
+          countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+        } LIMIT 1000 ") {
+          results
+          nrql
+        }
+      }
+    }
+  }`;
+
+    return query;
+  }
+
+  render() {
+    const { countryCode } = this.state;
+    const defaultMapCenter = [10.5731, -7.5898];
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="row">
+            <TextField
+              placeholder="US"
+              onChange={(event) => {
+                this.setState({ countryCode: event.target.value });
+              }}
+            />
+          </div>
+          <div className="row">
+            <NerdGraphQuery query={this.mapData()}>
+              {({ loading, error, data }) => {
+                if (loading) {
+                  return <Spinner fillContainer />;
+                }
+                if (error) {
+                  return 'Error';
+                }
+                const { results } = data.actor.account.mapData;
+                console.debug(results);
+
+                return (
+                  <Map
+                    className="containerMap"
+                    center={defaultMapCenter}
+                    zoom={2}
+                    zoomControl
+                  >
+                    <TileLayer
+                      attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    {results.map((pt, i) => {
+                      const center = [pt.lat, pt.lng];
+                      return (
+                        <CircleMarker
+                          key={`circle-${i}`}
+                          center={center}
+                          color={this.getMarkerColor(pt.y)}
+                          radius={Math.log(pt.x) * 3}
+                          onClick={() => {
+                            alert(JSON.stringify(pt));
+                          }}
+                        />
+                      );
+                    })}
+                  </Map>
+                );
+              }}
+            </NerdGraphQuery>
+          </div>
+          <TableChart
+            accountId={accountId}
+            query={`FROM PageView SELECT count(*), average(duration) WHERE appName = 'WebPortal' ${
+              countryCode ? ` WHERE countryCode like '%${countryCode}%' ` : ''
+            } FACET countryCode, regionCode SINCE 1 week ago LIMIT 1000`}
+            fullWidth
+            className="chart"
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ```
 
 </TutorialStep>
