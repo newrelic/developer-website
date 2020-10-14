@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { LiveProvider, withLive, LivePreview, LiveError } from 'react-live';
 import { css } from '@emotion/core';
 import root from 'react-shadow';
@@ -6,6 +6,8 @@ import { CSS_BUNDLE } from '../utils/sdk';
 import NR1Logo from '../components/NR1Logo';
 import Editor, { monaco } from '@monaco-editor/react';
 import monacoConfig from './monaco.js';
+
+import AuthContext from '../components/AuthContext';
 
 const defaultCode = `
 class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
@@ -347,6 +349,7 @@ const sdk = window.__NR1_SDK__?.default ?? {};
 monaco.init().then((monaco) => monacoConfig(monaco, sdk));
 
 const SdkPlayground = () => {
+  const authContext = useContext(AuthContext);
   const [code, setCode] = useState(defaultCode);
   const editorRef = useRef();
 
@@ -391,6 +394,12 @@ const SdkPlayground = () => {
                 >
                   <NR1Logo />
                 </a>
+
+                <div>
+                  {authContext.isAuthenticated
+                    ? "you're cool"
+                    : 'who are you?!'}{' '}
+                </div>
               </header>
               <div className="nr1-app-header">
                 <h3 className="nr1-header-title">My Awesome Nerdpack</h3>

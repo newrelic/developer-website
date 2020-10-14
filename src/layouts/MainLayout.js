@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { useQuery } from '@apollo/react-hooks';
 
+import AuthContext, { userQuery } from '../components/AuthContext';
 import { Helmet } from 'react-helmet';
 import { GlobalHeader } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -19,6 +21,16 @@ const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const MainLayout = ({ children }) => {
+  const { loading, error, data } = useQuery(userQuery);
+
+  const authDetails =
+    !loading && !error
+      ? {
+          isAuthenticated: !!data?.actor?.user?.id,
+          user: { ...data?.actor?.user },
+        }
+      : { isAuthenticated: false, user: null };
+
   const {
     site: { layout, siteMetadata },
   } = useStaticQuery(graphql`
@@ -57,20 +69,21 @@ const MainLayout = ({ children }) => {
   }, [location.pathname]);
 
   return (
-    <div
-      css={css`
-        --global-header-height: ${headerEntry?.contentRect.height}px;
-        --sidebar-width: 300px;
+    <AuthContext.Provider value={authDetails}>
+      <div
+        css={css`
+          --global-header-height: ${headerEntry?.contentRect.height}px;
+          --sidebar-width: 300px;
 
-        min-height: 100vh;
-        display: grid;
-        grid-template-rows: auto 1fr;
-      `}
-    >
-      <Helmet>
-        {cookieConsent ? (
-          <script>
-            {`(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          min-height: 100vh;
+          display: grid;
+          grid-template-rows: auto 1fr;
+        `}
+      >
+        <Helmet>
+          {cookieConsent ? (
+            <script>
+              {`(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
           })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
@@ -78,86 +91,87 @@ const MainLayout = ({ children }) => {
           ga('create', '${gaTrackingId}', 'auto');
           ga('set', 'anonymizeIp', true);
           ga('send', 'pageview');`}
-          </script>
-        ) : null}
-      </Helmet>
-      <div
-        ref={headerRef}
-        css={css`
-          position: sticky;
-          z-index: 99;
-          top: 0;
-        `}
-      >
-        <GlobalHeader editUrl={editUrl} />
-      </div>
-      <MobileHeader
-        css={css`
-          @media (min-width: 761px) {
-            display: none;
-          }
-        `}
-        isOpen={isMobileNavOpen}
-        toggle={() => setIsMobileNavOpen(!isMobileNavOpen)}
-      />
-      <div
-        css={css`
-          display: ${isMobileNavOpen ? 'none' : 'grid'};
-          grid-template-areas:
-            'sidebar content'
-            'sidebar footer';
-          grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
-          grid-template-rows: 1fr auto;
-          grid-gap: ${layout.contentPadding};
-          width: 100%;
-          max-width: ${layout.maxWidth};
-          margin: 0 auto;
-
-          @media screen and (max-width: 760px) {
-            grid-template-columns: minmax(0, 1fr);
-          }
-        `}
-      >
-        <Sidebar
+            </script>
+          ) : null}
+        </Helmet>
+        <div
+          ref={headerRef}
           css={css`
-            position: fixed;
-            top: var(--global-header-height);
-            width: var(--sidebar-width);
-            height: calc(100vh - var(--global-header-height));
-            overflow: auto;
-
-            @media (max-width: 760px) {
+            position: sticky;
+            z-index: 99;
+            top: 0;
+          `}
+        >
+          <GlobalHeader editUrl={editUrl} />
+        </div>
+        <MobileHeader
+          css={css`
+            @media (min-width: 761px) {
               display: none;
             }
           `}
+          isOpen={isMobileNavOpen}
+          toggle={() => setIsMobileNavOpen(!isMobileNavOpen)}
         />
         <div
           css={css`
-            grid-area: sidebar;
-          `}
-        />
-        <article
-          data-swiftype-name="body"
-          data-swiftype-type="text"
-          css={css`
-            grid-area: content;
-            padding-top: ${layout.contentPadding};
-            padding-right: ${layout.contentPadding};
+            display: ${isMobileNavOpen ? 'none' : 'grid'};
+            grid-template-areas:
+              'sidebar content'
+              'sidebar footer';
+            grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+            grid-template-rows: 1fr auto;
+            grid-gap: ${layout.contentPadding};
+            width: 100%;
+            max-width: ${layout.maxWidth};
+            margin: 0 auto;
+
+            @media screen and (max-width: 760px) {
+              grid-template-columns: minmax(0, 1fr);
+            }
           `}
         >
-          {children}
-        </article>
-        <Footer
-          css={css`
-            grid-area: footer;
-            border-top: 1px solid var(--divider-color);
-            padding: ${layout.contentPadding} 0;
-            margin-right: ${layout.contentPadding};
-          `}
-        />
+          <Sidebar
+            css={css`
+              position: fixed;
+              top: var(--global-header-height);
+              width: var(--sidebar-width);
+              height: calc(100vh - var(--global-header-height));
+              overflow: auto;
+
+              @media (max-width: 760px) {
+                display: none;
+              }
+            `}
+          />
+          <div
+            css={css`
+              grid-area: sidebar;
+            `}
+          />
+          <article
+            data-swiftype-name="body"
+            data-swiftype-type="text"
+            css={css`
+              grid-area: content;
+              padding-top: ${layout.contentPadding};
+              padding-right: ${layout.contentPadding};
+            `}
+          >
+            {children}
+          </article>
+          <Footer
+            css={css`
+              grid-area: footer;
+              border-top: 1px solid var(--divider-color);
+              padding: ${layout.contentPadding} 0;
+              margin-right: ${layout.contentPadding};
+            `}
+          />
+        </div>
+        <CookieApprovalDialog setCookieConsent={setCookieConsent} />
       </div>
-      <CookieApprovalDialog setCookieConsent={setCookieConsent} />
-    </div>
+    </AuthContext.Provider>
   );
 };
 

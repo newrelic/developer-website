@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.21.2",
   "dependencies": {
+    "@apollo/react-hooks": "^4.0.0",
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@mdx-js/mdx": "^1.6.16",
@@ -11,6 +12,7 @@
     "@newrelic/gatsby-theme-newrelic": "^1.9.5",
     "@splitsoftware/splitio-react": "^1.2.0",
     "@xstate/react": "^1.0.0-rc.6",
+    "apollo-boost": "^0.4.9",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "eslint-plugin-react-hooks": "^4.1.1",
@@ -37,6 +39,7 @@
     "gatsby-source-filesystem": "^2.3.21",
     "gatsby-transformer-remark": "^2.8.26",
     "gatsby-transformer-sharp": "^2.5.10",
+    "isomorphic-fetch": "^3.0.0",
     "js-cookie": "^2.2.1",
     "lodash": "^4.17.20",
     "monaco-editor": "^0.20.0",
