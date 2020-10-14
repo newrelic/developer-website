@@ -50,9 +50,10 @@
     "react-middle-ellipsis": "^1.1.0",
     "react-shadow": "^18.4.2",
     "react-simple-code-editor": "^0.11.0",
+    "snyk": "^1.401.0",
     "use-dark-mode": "^2.3.1",
     "use-media": "^1.4.0",
-    "snyk": "^1.401.0",
+    "warning": "^4.0.3",
     "xstate": "^4.13.0"
   },
   "devDependencies": {
