@@ -2,23 +2,32 @@ import { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import parseCodeBlockProps from '../utils/parseCodeBlockProps';
 import { isCodeBlock, isShellCommand } from '../utils/codeBlock';
+import { isMdxType } from '../utils/mdx';
 import { diffLines } from 'diff';
+import useOnMount from '../hooks/useOnMount';
 
 const Tutorial = ({ children }) => {
   children = Children.toArray(children);
 
-  const initialProjectState =
-    children[0].props.mdxType === 'Project'
-      ? parseProjectStateFromConfig(children[0])
-      : parseProjectStateFromChildren(children);
+  useOnMount(() => {
+    validateChildren(children);
+  });
+
+  const projectElement = isMdxType(children[0], 'Project') ? children[0] : null;
+
+  if (projectElement) {
+    children = children.slice(1);
+  }
+
+  const initialProjectState = projectElement
+    ? parseProjectStateFromConfig(projectElement)
+    : parseProjectStateFromChildren(children);
 
   const { elements } = children.reduce(
     (memo, child) => {
       const { elements, currentProjectState } = memo;
 
-      if (child.props.mdxType === 'Project') {
-        return memo;
-      } else if (child.props.mdxType === 'TutorialSection') {
+      if (isMdxType(child, 'TutorialSection')) {
         const { steps, currentProjectState: projectState } = gatherSteps(
           child,
           currentProjectState
@@ -136,6 +145,45 @@ const findCodeBlocksInTutorialSection = (sectionElement) => {
   return Children.toArray(sectionElement.props.children).flatMap(
     findCodeBlocksInTutorialStep
   );
+};
+
+const validateChildren = (children) => {
+  const isSectioned = children.some((child) =>
+    isMdxType(child, 'TutorialSection')
+  );
+
+  const projectElementIdx = children.findIndex((child) =>
+    isMdxType(child, 'Project')
+  );
+
+  if (projectElementIdx > 0) {
+    throw new Error(
+      'Tutorial: A `Project` element was detected but does not reside as the first child of the `Tutorial`. Please move it to the first child of the `Tutorial`.'
+    );
+  }
+
+  children = children.slice(1);
+  isSectioned ? validateSections(children) : validateTutorialSteps(children);
+};
+
+const validateSections = (children) => {
+  const isValid = children.every((child) => !isMdxType(child, 'TutorialStep'));
+
+  if (!isValid) {
+    throw new Error(
+      'Tutorial: A `TutorialStep` was detected outside of a `TutorialSection`. Please ensure the element is wrapped in a `TutorialSection`.'
+    );
+  }
+};
+
+const validateTutorialSteps = (children) => {
+  const isValid = children.every((child) => isMdxType(child, 'TutorialStep'));
+
+  if (!isValid) {
+    throw new Error(
+      'Tutorial: Every child of a `Tutorial` must be wrapped in a `TutorialStep`. If you meant to include a non `TutorialStep` in the `Tutorial`, wrap each section in a `TutorialSection` or move the content inside of the `TutorialStep`.'
+    );
+  }
 };
 
 export default Tutorial;
