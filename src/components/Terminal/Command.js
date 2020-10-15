@@ -52,7 +52,7 @@ const machine = Machine(
   }
 );
 
-const Command = ({ animate, command, getTokenProps, onDone }) => {
+const Command = ({ animate, command, getTokenProps, onDone, typingDelay }) => {
   const [state, send] = useMachine(machine, {
     context: { command },
     actions: {
@@ -71,7 +71,7 @@ const Command = ({ animate, command, getTokenProps, onDone }) => {
           prompt={idx > 0 ? '>' : '$'}
           getTokenProps={getTokenProps}
           onDoneTyping={() => send('PRESS_ENTER')}
-          typingDelay={idx === 0 ? 2000 : 0}
+          typingDelay={idx === 0 ? typingDelay : 0}
         />
       ))}
 
@@ -99,6 +99,11 @@ Command.propTypes = {
   command: PropTypes.object.isRequired,
   getTokenProps: PropTypes.func.isRequired,
   onDone: PropTypes.func.isRequired,
+  typingDelay: PropTypes.number,
+};
+
+Command.defaultProps = {
+  typingDelay: 0,
 };
 
 export default Command;

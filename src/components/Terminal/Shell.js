@@ -54,6 +54,7 @@ const Shell = ({ animate, highlight, code }) => {
             animate={animate}
             command={command}
             getTokenProps={getTokenProps}
+            typingDelay={idx === 0 ? 2000 : 500}
             onDone={() => {
               setStep((step) => step + 1);
             }}
