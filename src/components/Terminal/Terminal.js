@@ -4,9 +4,8 @@ import { css } from '@emotion/core';
 import { Button, useClipboard } from '@newrelic/gatsby-theme-newrelic';
 import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
-import Command from './Command';
+import Shell from './Shell';
 import theme from './theme';
-import rollupIntoCommands from './rollupIntoCommands';
 
 const Terminal = ({ children }) => {
   const code = children.trim();
@@ -61,52 +60,9 @@ const Terminal = ({ children }) => {
           {copied ? 'Copied' : 'Copy'}
         </Button>
       </div>
-      <pre
-        css={css`
-          ${theme};
-
-          padding: 1rem;
-          font-family: var(--code-font);
-          font-size: 0.75rem;
-          border-bottom-left-radius: var(--border-radius);
-          border-bottom-right-radius: var(--border-radius);
-          color: var(--color-nord-6);
-          display: block;
-          overflow: auto;
-          white-space: pre;
-          word-spacing: normal;
-          word-break: normal;
-          tab-size: 2;
-          hyphens: none;
-          text-shadow: none;
-
-          > code {
-            background: none;
-            padding: 0;
-            width: 100%;
-          }
-
-          .token-line {
-            display: grid;
-            grid-template-columns: 1ch 1fr;
-            grid-gap: 1rem;
-          }
-        `}
-      >
-        <code>
-          <Highlight Prism={Prism} code={code} language="shell">
-            {({ tokens, getTokenProps }) =>
-              rollupIntoCommands(tokens, code).map((command, idx) => (
-                <Command
-                  key={idx}
-                  command={command}
-                  getTokenProps={getTokenProps}
-                />
-              ))
-            }
-          </Highlight>
-        </code>
-      </pre>
+      <Highlight Prism={Prism} code={code} language="shell">
+        {(highlight) => <Shell code={code} highlight={highlight} />}
+      </Highlight>
     </div>
   );
 };
