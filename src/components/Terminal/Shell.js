@@ -4,7 +4,6 @@ import { css } from '@emotion/core';
 import Command from './Command';
 import theme from './theme';
 import rollupIntoCommands from './rollupIntoCommands';
-import Cursor from './Cursor';
 
 const Shell = ({ animate, highlight, code }) => {
   const ref = useRef();
@@ -14,7 +13,6 @@ const Shell = ({ animate, highlight, code }) => {
   const { tokens, getTokenProps } = highlight;
   const commands = rollupIntoCommands(tokens, code);
   const shownCommands = animated ? commands.slice(0, step) : commands;
-  const cursor = <Cursor />;
 
   useLayoutEffect(() => {
     const { height } = ref.current.getBoundingClientRect();
@@ -64,7 +62,6 @@ const Shell = ({ animate, highlight, code }) => {
         {shownCommands.map((command, idx) => (
           <Command
             key={idx}
-            cursor={cursor}
             animate={animated}
             command={command}
             getTokenProps={getTokenProps}
