@@ -2,11 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Button, useClipboard } from '@newrelic/gatsby-theme-newrelic';
-import SyntaxHighlighter from './SyntaxHighlighter';
-import Cursor from './Cursor';
+import Highlight from 'prism-react-renderer';
+import Prism from 'prismjs';
+import Command from './Command';
+import Output from './Output';
 import theme from './theme';
+import rollupIntoCommands from './rollupIntoCommands';
 
 const Terminal = ({ children }) => {
+  const code = children.trim();
   const [copied, copy] = useClipboard();
 
   return (
@@ -48,7 +52,7 @@ const Terminal = ({ children }) => {
         <Button
           variant={Button.VARIANT.LINK}
           size={Button.SIZE.SMALL}
-          onClick={() => copy(filterOutput(children))}
+          onClick={() => copy(filterCopyOutput(children))}
           className="dark-mode"
           css={css`
             justify-self: end;
@@ -91,14 +95,35 @@ const Terminal = ({ children }) => {
         `}
       >
         <code>
-          <SyntaxHighlighter code={children.trim()} />
+          <Highlight Prism={Prism} code={code} language="shell">
+            {({ tokens, getTokenProps }) => {
+              const commands = rollupIntoCommands(tokens, code);
+
+              return commands.map(({ lines, output }, commandIdx) => (
+                <>
+                  {lines.map((line, idx) => (
+                    <Command
+                      key={`${commandIdx}-${idx}`}
+                      line={line}
+                      prompt={idx > 0 ? '>' : '$'}
+                      getTokenProps={getTokenProps}
+                    />
+                  ))}
+
+                  {output.map((line, idx) => (
+                    <Output key={`${commandIdx}-${idx}`} line={line} />
+                  ))}
+                </>
+              ));
+            }}
+          </Highlight>
         </code>
       </pre>
     </div>
   );
 };
 
-const filterOutput = (commands) => {
+const filterCopyOutput = (commands) => {
   return commands
     .split('\n')
     .filter((line) => !line.startsWith('[output]'))

@@ -1,46 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Highlight from 'prism-react-renderer';
-import Prism from 'prismjs';
-import Command from './Command';
-import Output from './Output';
-
 const MULTILINE_COMMAND = /\\\s*$/;
 const OUTPUT_TAG = /^\[output\](\s|$)/;
 const OUTPUT_COLOR_TOKENS = /{([a-z]+)}(.*?(?={|$))/g;
-
-const SyntaxHighlighter = ({ code }) => (
-  <Highlight Prism={Prism} code={code} language="shell">
-    {({ tokens, getTokenProps }) => {
-      const commands = rollupIntoCommands(tokens, code);
-
-      return commands.map(({ lines, output }, commandIdx) => (
-        <>
-          {lines.map((line, idx) => {
-            return (
-              <Command
-                key={`${commandIdx}-${idx}`}
-                line={line}
-                prompt={idx > 0 ? '>' : '$'}
-                getTokenProps={getTokenProps}
-              />
-            );
-          })}
-          {output.map((line, idx) => (
-            <Output key={`${commandIdx}-${idx}`} line={line} />
-          ))}
-        </>
-      ));
-    }}
-  </Highlight>
-);
-
-const collapse = (line) => {
-  return line
-    .filter((token) => !token.types.includes('comment'))
-    .map((token) => token.content)
-    .join('');
-};
 
 const rollupIntoCommands = (lines, code) => {
   const rawLines = code.split('\n');
@@ -71,6 +31,13 @@ const rollupIntoCommands = (lines, code) => {
   return commands;
 };
 
+const collapse = (line) => {
+  return line
+    .filter((token) => !token.types.includes('comment'))
+    .map((token) => token.content)
+    .join('');
+};
+
 const tokenizeOutputLine = (line) => {
   const text = line.replace(OUTPUT_TAG, '');
   const tokens = Array.from(text.matchAll(OUTPUT_COLOR_TOKENS));
@@ -89,9 +56,4 @@ const tokenizeOutputLine = (line) => {
       );
 };
 
-SyntaxHighlighter.propTypes = {
-  className: PropTypes.string,
-  code: PropTypes.string.isRequired,
-};
-
-export default SyntaxHighlighter;
+export default rollupIntoCommands;
