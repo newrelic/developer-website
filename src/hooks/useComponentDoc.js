@@ -26,7 +26,7 @@ const getExamples = (component) => {
   });
 };
 
-const getPropTypes = (component) => {
+export const getPropTypes = (component) => {
   return Object.entries(component.propTypes || {}).map(([name, propType]) =>
     getPropTypeDefinition(component, name, propType)
   );
