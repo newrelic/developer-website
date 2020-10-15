@@ -5,7 +5,6 @@ import { Button, useClipboard } from '@newrelic/gatsby-theme-newrelic';
 import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
 import Command from './Command';
-import Output from './Output';
 import theme from './theme';
 import rollupIntoCommands from './rollupIntoCommands';
 
@@ -96,26 +95,15 @@ const Terminal = ({ children }) => {
       >
         <code>
           <Highlight Prism={Prism} code={code} language="shell">
-            {({ tokens, getTokenProps }) => {
-              const commands = rollupIntoCommands(tokens, code);
-
-              return commands.map(({ lines, output }, commandIdx) => (
-                <>
-                  {lines.map((line, idx) => (
-                    <Command
-                      key={`${commandIdx}-${idx}`}
-                      line={line}
-                      prompt={idx > 0 ? '>' : '$'}
-                      getTokenProps={getTokenProps}
-                    />
-                  ))}
-
-                  {output.map((line, idx) => (
-                    <Output key={`${commandIdx}-${idx}`} line={line} />
-                  ))}
-                </>
-              ));
-            }}
+            {({ tokens, getTokenProps }) =>
+              rollupIntoCommands(tokens, code).map((command, idx) => (
+                <Command
+                  key={idx}
+                  command={command}
+                  getTokenProps={getTokenProps}
+                />
+              ))
+            }
           </Highlight>
         </code>
       </pre>

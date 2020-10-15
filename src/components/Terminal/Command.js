@@ -1,35 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Prompt from './Prompt';
-import { css } from '@emotion/core';
+import CommandLine from './CommandLine';
+import ShellOutput from './ShellOutput';
 
-const Command = ({ line, prompt, getTokenProps }) => (
-  <div
-    css={css`
-      display: grid;
-      grid-template-columns: 1ch 1fr;
-      grid-gap: 1ch;
-    `}
-  >
-    <Prompt character={prompt} />
-    <div
-      css={css`
-        color: #fafafa;
-        white-space: pre;
-      `}
-    >
-      {line.map((token, key) => (
-        // eslint-disable-next-line react/jsx-key
-        <span {...getTokenProps({ token, key })} />
+const Command = ({ command, getTokenProps }) => {
+  return (
+    <>
+      {command.lines.map((line, idx) => (
+        <CommandLine
+          key={`command-${idx}`}
+          line={line}
+          prompt={idx > 0 ? '>' : '$'}
+          getTokenProps={getTokenProps}
+        />
       ))}
-    </div>
-  </div>
-);
+
+      {command.output.map((line, idx) => (
+        <ShellOutput key={`output-${idx}`} line={line} />
+      ))}
+    </>
+  );
+};
 
 Command.propTypes = {
-  line: PropTypes.arrayOf(PropTypes.object).isRequired,
+  command: PropTypes.object.isRequired,
   getTokenProps: PropTypes.func.isRequired,
-  prompt: PropTypes.oneOf(['$', '>']),
 };
 
 export default Command;

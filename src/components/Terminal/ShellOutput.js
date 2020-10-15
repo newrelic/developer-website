@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
-const Output = ({ line }) => (
+const ShellOutput = ({ line }) => (
   <div
     css={css`
       color: #fafafa;
@@ -40,8 +40,8 @@ OUTPUT_COLORS.variable = OUTPUT_COLORS.purple;
 OUTPUT_COLORS.success = OUTPUT_COLORS.green;
 OUTPUT_COLORS.error = OUTPUT_COLORS.red;
 
-Output.propTypes = {
+ShellOutput.propTypes = {
   line: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default Output;
+export default ShellOutput;
