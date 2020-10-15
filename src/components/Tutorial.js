@@ -27,55 +27,48 @@ const Tutorial = ({ children }) => {
     ? parseProjectStateFromConfig(projectElement)
     : parseProjectStateFromChildren(children);
 
-  if (isSectioned) {
-    return gatherSections(children, initialProjectState);
-  }
+  const [elements] = isSectioned
+    ? updateCodeBlockInSections(children, initialProjectState)
+    : updateCodeBlocksInSteps(children, initialProjectState);
 
-  const { steps } = gatherSteps(children, initialProjectState);
-
-  return steps;
+  return elements;
 };
 
 Tutorial.propTypes = {
   children: PropTypes.node,
 };
 
-const gatherSections = (children, initialProjectState) => {
-  const { elements } = children.reduce(
-    (memo, child) => {
-      const { elements, currentProjectState } = memo;
-
-      if (isMdxType(child, 'TutorialSection')) {
-        const { steps, currentProjectState: projectState } = gatherSteps(
-          child.props.children,
-          currentProjectState
-        );
-
-        return {
-          currentProjectState: projectState,
-          elements: [...elements, cloneElement(child, { children: steps })],
-        };
+const updateCodeBlockInSections = (children, initialProjectState) => {
+  return children.reduce(
+    ([children, currentProjectState], child) => {
+      if (!isMdxType(child, 'TutorialSection')) {
+        return [[...children, child], currentProjectState];
       }
 
-      return { elements: [...elements, child], currentProjectState };
-    },
-    { elements: [], currentProjectState: initialProjectState }
-  );
-
-  return elements;
-};
-
-const gatherSteps = (children, initialProjectState) => {
-  return Children.toArray(children).reduce(
-    ({ steps, currentProjectState }, stepElement, idx) => {
-      const [children, projectState] = swapCodeBlocks(
-        stepElement,
+      const [steps, projectState] = updateCodeBlocksInSteps(
+        child.props.children,
         currentProjectState
       );
 
-      return {
-        currentProjectState: projectState,
-        steps: [
+      return [
+        [...children, cloneElement(child, { children: steps })],
+        projectState,
+      ];
+    },
+    [[], initialProjectState]
+  );
+};
+
+const updateCodeBlocksInSteps = (children, initialProjectState) => {
+  return Children.toArray(children).reduce(
+    ([steps, currentProjectState], stepElement, idx) => {
+      const [children, projectState] = swapCodeBlocks(
+        stepElement.props.children,
+        currentProjectState
+      );
+
+      return [
+        [
           ...steps,
           cloneElement(stepElement, {
             children,
@@ -83,16 +76,17 @@ const gatherSteps = (children, initialProjectState) => {
             totalSteps: children.length,
           }),
         ],
-      };
+        projectState,
+      ];
     },
-    { steps: [], currentProjectState: initialProjectState }
+    [[], initialProjectState]
   );
 };
 
 const clone = (map) => new Map(map);
 
-const swapCodeBlocks = (stepElement, initialProjectState) => {
-  return Children.toArray(stepElement.props.children).reduce(
+const swapCodeBlocks = (children, initialProjectState) => {
+  return Children.toArray(children).reduce(
     ([children, currentProjectState], child, idx) => {
       if (!isCodeBlock(child) || isShellCommand(child)) {
         return [[...children, child], currentProjectState];
