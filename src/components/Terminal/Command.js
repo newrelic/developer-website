@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CommandLine from './CommandLine';
-import ShellOutput from './ShellOutput';
+import StaggeredShellOutput from './StaggeredShellOutput';
 
-const Command = ({ command, getTokenProps }) => {
+const Command = ({ command, getTokenProps, onRendered }) => {
   return (
     <>
       {command.lines.map((line, idx) => (
@@ -15,9 +15,11 @@ const Command = ({ command, getTokenProps }) => {
         />
       ))}
 
-      {command.output.map((line, idx) => (
-        <ShellOutput key={`output-${idx}`} line={line} />
-      ))}
+      <StaggeredShellOutput
+        output={command.output}
+        delay={1500}
+        onRendered={onRendered}
+      />
     </>
   );
 };
@@ -25,6 +27,7 @@ const Command = ({ command, getTokenProps }) => {
 Command.propTypes = {
   command: PropTypes.object.isRequired,
   getTokenProps: PropTypes.func.isRequired,
+  onRendered: PropTypes.func.isRequired,
 };
 
 export default Command;

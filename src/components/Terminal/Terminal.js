@@ -5,7 +5,6 @@ import { Button, useClipboard } from '@newrelic/gatsby-theme-newrelic';
 import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
 import Shell from './Shell';
-import theme from './theme';
 
 const Terminal = ({ children }) => {
   const code = children.trim();

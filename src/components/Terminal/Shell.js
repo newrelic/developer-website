@@ -12,6 +12,7 @@ const Shell = ({ highlight, code }) => {
   const { tokens, getTokenProps } = highlight;
   const commands = rollupIntoCommands(tokens, code);
   const shownCommands = commands.slice(0, step);
+  const done = step >= commands.length;
 
   useTimeout(() => {
     setStep((step) => step + 1);
@@ -52,9 +53,18 @@ const Shell = ({ highlight, code }) => {
     >
       <code>
         {shownCommands.map((command, idx) => (
-          <Command key={idx} command={command} getTokenProps={getTokenProps} />
+          <Command
+            key={idx}
+            command={command}
+            getTokenProps={getTokenProps}
+            onRendered={() => {
+              setTimeout(() => {
+                setStep((step) => step + 1);
+              }, 1000);
+            }}
+          />
         ))}
-        <CommandLine cursor line={[]} prompt="$" />
+        {!done && <CommandLine cursor line={[]} prompt="$" />}
       </code>
     </pre>
   );
