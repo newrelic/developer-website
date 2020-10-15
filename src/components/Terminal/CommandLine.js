@@ -70,7 +70,7 @@ const CommandLine = ({
           cursor={{ show: false }}
           css={css`
             color: #fafafa;
-            white-space: pre;
+            white-space: pre-wrap;
           `}
         >
           {line.map((token, key) => (
