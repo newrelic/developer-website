@@ -5,8 +5,8 @@ import path from 'path';
 import { css } from '@emotion/core';
 import { darken } from 'polished';
 
-const TutorialEditor = ({ codeBlock, project }) => {
-  const [selectedFile, setSelectedFile] = useState(codeBlock.fileName);
+const TutorialEditor = ({ focusedFileName, diff, project }) => {
+  const [selectedFile, setSelectedFile] = useState(focusedFileName);
 
   return (
     <div>
@@ -47,8 +47,8 @@ const TutorialEditor = ({ codeBlock, project }) => {
           language={language}
           fileName={fileName}
           highlightedLines={
-            fileName === codeBlock.fileName && codeBlock.diff
-              ? diffHighlightedLines(codeBlock.diff)
+            fileName === focusedFileName && diff
+              ? diffHighlightedLines(diff)
               : null
           }
           css={css`
@@ -68,7 +68,8 @@ const TutorialEditor = ({ codeBlock, project }) => {
 };
 
 TutorialEditor.propTypes = {
-  codeBlock: PropTypes.object.isRequired,
+  focusedFileName: PropTypes.string.isRequired,
+  diff: PropTypes.array,
   project: PropTypes.instanceOf(Map).isRequired,
 };
 

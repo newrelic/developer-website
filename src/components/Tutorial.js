@@ -68,7 +68,7 @@ const gatherSections = (children, initialProjectState) => {
 const gatherSteps = (children, initialProjectState) => {
   return Children.toArray(children).reduce(
     ({ steps, currentProjectState }, stepElement, idx) => {
-      const { stepElement: newStepElement, projectState } = swapCodeBlocks(
+      const [children, projectState] = swapCodeBlocks(
         stepElement,
         currentProjectState
       );
@@ -77,7 +77,8 @@ const gatherSteps = (children, initialProjectState) => {
         currentProjectState: projectState,
         steps: [
           ...steps,
-          cloneElement(newStepElement, {
+          cloneElement(stepElement, {
+            children,
             stepNumber: idx + 1,
             totalSteps: children.length,
           }),
@@ -91,49 +92,44 @@ const gatherSteps = (children, initialProjectState) => {
 const clone = (map) => new Map(map);
 
 const swapCodeBlocks = (stepElement, initialProjectState) => {
-  const { children, currentProjectState } = Children.toArray(
-    stepElement.props.children
-  ).reduce(
-    ({ children, currentProjectState }, child) => {
-      if (isCodeBlock(child) && !isShellCommand(child)) {
-        const props = parseCodeBlockProps(child);
+  return Children.toArray(stepElement.props.children).reduce(
+    ([children, currentProjectState], child, idx) => {
+      if (!isCodeBlock(child) || isShellCommand(child)) {
+        return [[...children, child], currentProjectState];
+      }
 
-        if (!currentProjectState.has(props.fileName)) {
-          throw new Error(`The following block does not have a file name that matches the project. Please ensure the code block has a \`fileName\` specified:
+      const props = parseCodeBlockProps(child);
+
+      if (!currentProjectState.has(props.fileName)) {
+        throw new Error(`The following block does not have a file name that matches the project. Please ensure the code block has a \`fileName\` specified:
 
 \`\`\`${props.language}
 ${props.code}
 \`\`\`
 `);
-        }
-
-        const { code: prevCode } = currentProjectState.get(props.fileName);
-        const projectState = clone(currentProjectState).set(props.fileName, {
-          code: props.code,
-          language: props.language,
-        });
-
-        return {
-          children: [
-            ...children,
-            <TutorialEditor
-              codeBlock={{ ...props, diff: diffLines(prevCode, props.code) }}
-              project={projectState}
-            />,
-          ],
-          currentProjectState: projectState,
-        };
       }
 
-      return { children: [...children, child], currentProjectState };
-    },
-    { children: [], currentProjectState: initialProjectState }
-  );
+      const { code: prevCode } = currentProjectState.get(props.fileName);
+      const projectState = clone(currentProjectState).set(props.fileName, {
+        code: props.code,
+        language: props.language,
+      });
 
-  return {
-    stepElement: cloneElement(stepElement, { children }),
-    projectState: currentProjectState,
-  };
+      return [
+        [
+          ...children,
+          <TutorialEditor
+            key={idx}
+            focusedFileName={props.fileName}
+            diff={diffLines(prevCode, props.code)}
+            project={projectState}
+          />,
+        ],
+        projectState,
+      ];
+    },
+    [[], initialProjectState]
+  );
 };
 
 const parseProjectStateFromConfig = (configElement) => {
