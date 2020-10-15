@@ -24,7 +24,7 @@ const CommandLine = ({
     <Typist
       hideCursorWhenDone
       startDelay={typingDelay}
-      avgTypingDelay={50}
+      avgTypingDelay={40}
       onTypingDone={onDoneTyping}
       cursor={Cursor}
       css={css`

@@ -7,6 +7,7 @@ import StaggeredShellOutput from './StaggeredShellOutput';
 const Command = ({ animate, command, getTokenProps, onRendered }) => {
   const [steps, setStep] = useState(1);
   const shownLines = command.lines.slice(0, steps);
+  const done = steps >= command.lines.length;
 
   return (
     <>
@@ -21,14 +22,20 @@ const Command = ({ animate, command, getTokenProps, onRendered }) => {
         />
       ))}
 
-      {animate ? (
-        <StaggeredShellOutput
-          output={command.output}
-          delay={1500}
-          onRendered={onRendered}
-        />
-      ) : (
-        command.output.map((line, idx) => <ShellOutput key={idx} line={line} />)
+      {done && (
+        <>
+          {animate ? (
+            <StaggeredShellOutput
+              output={command.output}
+              delay={1500}
+              onRendered={onRendered}
+            />
+          ) : (
+            command.output.map((line, idx) => (
+              <ShellOutput key={idx} line={line} />
+            ))
+          )}
+        </>
       )}
     </>
   );
