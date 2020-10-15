@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Button, useClipboard } from '@newrelic/gatsby-theme-newrelic';
 import SyntaxHighlighter from './SyntaxHighlighter';
+import Cursor from './Cursor';
+import theme from './theme';
 
 const Terminal = ({ children }) => {
   const [copied, copy] = useClipboard();
@@ -56,17 +58,42 @@ const Terminal = ({ children }) => {
           {copied ? 'Copied' : 'Copy'}
         </Button>
       </div>
-      <div
+      <pre
         css={css`
+          ${theme};
+
           padding: 1rem;
           font-family: var(--code-font);
           font-size: 0.75rem;
           border-bottom-left-radius: var(--border-radius);
           border-bottom-right-radius: var(--border-radius);
+          color: var(--color-nord-6);
+          display: block;
+          overflow: auto;
+          white-space: pre;
+          word-spacing: normal;
+          word-break: normal;
+          tab-size: 2;
+          hyphens: none;
+          text-shadow: none;
+
+          > code {
+            background: none;
+            padding: 0;
+            width: 100%;
+          }
+
+          .token-line {
+            display: grid;
+            grid-template-columns: 1ch 1fr;
+            grid-gap: 1rem;
+          }
         `}
       >
-        <SyntaxHighlighter code={children.trim()} />
-      </div>
+        <code>
+          <SyntaxHighlighter code={children.trim()} />
+        </code>
+      </pre>
     </div>
   );
 };
