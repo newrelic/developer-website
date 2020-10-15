@@ -20,7 +20,6 @@ import heroBackgroundPattern from '../images/nerd-days/nerd-days-hero-bg-pattern
 import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
 import HopinLogo from '../components/HopinLogo';
-import MarketoForm from '../components/MarketoForm';
 import styled from '@emotion/styled';
 import Agenda from '../components/Agenda';
 
