@@ -1,31 +1,43 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, {
+  forwardRef,
+  useState,
+  useRef,
+  useLayoutEffect,
+  useImperativeHandle,
+} from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Command from './Command';
 import theme from './theme';
 import rollupIntoCommands from './rollupIntoCommands';
 
-const Shell = ({ animate, highlight, code }) => {
-  const ref = useRef();
+const Shell = forwardRef(({ animate, highlight, code }, ref) => {
+  const shellRef = useRef();
   const [animated, setAnimated] = useState(false);
   const [height, setHeight] = useState(null);
-  const [step, setStep] = useState(1);
   const { tokens, getTokenProps } = highlight;
   const commands = rollupIntoCommands(tokens, code);
-  const shownCommands = animated ? commands.slice(0, step) : commands;
+  const [shownCommands, setShownCommands] = useState(commands);
+
+  useImperativeHandle(ref, () => ({
+    startAnimation: () => {
+      setAnimated(true);
+      setShownCommands(commands.slice(0, 1));
+    },
+  }));
 
   useLayoutEffect(() => {
-    const { height } = ref.current.getBoundingClientRect();
+    const { height } = shellRef.current.getBoundingClientRect();
     setHeight(height);
 
     if (animate) {
-      setAnimated(true);
+      setShownCommands([]);
     }
   }, [animate]);
 
   return (
     <pre
-      ref={ref}
+      ref={shellRef}
       css={css`
         ${theme};
 
@@ -67,14 +79,16 @@ const Shell = ({ animate, highlight, code }) => {
             getTokenProps={getTokenProps}
             typingDelay={idx === 0 ? 2000 : 500}
             onDone={() => {
-              setStep((step) => step + 1);
+              setShownCommands((shownCommands) =>
+                commands.slice(0, shownCommands.length)
+              );
             }}
           />
         ))}
       </code>
     </pre>
   );
-};
+});
 
 Shell.propTypes = {
   animate: PropTypes.bool,

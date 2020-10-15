@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Button, useClipboard } from '@newrelic/gatsby-theme-newrelic';
 import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
 import Shell from './Shell';
+import { useIntersection } from 'react-use';
 
 const Terminal = ({ animate, children }) => {
+  const ref = useRef();
+  const shellRef = useRef();
   const code = children.trim();
   const [copied, copy] = useClipboard();
+  const intersection = useIntersection(ref, {
+    root: null,
+    rootMargin: '0px 0px -33% 0px',
+  });
+
+  useEffect(() => {
+    if (animate && intersection?.isIntersecting) {
+      shellRef.current.startAnimation();
+    }
+  }, [animate, intersection]);
 
   return (
     <div
+      ref={ref}
       css={css`
         --chrome-color: #252526;
         --border-radius: 0.25rem;
@@ -61,7 +75,12 @@ const Terminal = ({ animate, children }) => {
       </div>
       <Highlight Prism={Prism} code={code} language="shell">
         {(highlight) => (
-          <Shell animate={animate} code={code} highlight={highlight} />
+          <Shell
+            ref={shellRef}
+            animate={animate}
+            code={code}
+            highlight={highlight}
+          />
         )}
       </Highlight>
     </div>
