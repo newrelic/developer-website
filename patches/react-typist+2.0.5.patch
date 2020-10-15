@@ -1,13 +1,21 @@
 diff --git a/node_modules/react-typist/dist/Typist.js b/node_modules/react-typist/dist/Typist.js
-index 16ecae0..b5ffbd9 100644
+index 16ecae0..9f2a2db 100644
 --- a/node_modules/react-typist/dist/Typist.js
 +++ b/node_modules/react-typist/dist/Typist.js
-@@ -279,7 +279,7 @@ module.exports =
+@@ -267,6 +267,7 @@ module.exports =
+ 	    value: function render() {
+ 	      var _props2 = this.props,
+ 	          className = _props2.className,
++            hideCursorWhenDone = _props2.hideCursorWhenDone,
+ 	          cursor = _props2.cursor;
+ 	      var isDone = this.state.isDone;
+ 
+@@ -279,7 +280,7 @@ module.exports =
  	        'div',
  	        { className: 'Typist ' + className },
  	        innerTree,
 -	        _react2.default.createElement(_Cursor2.default, _extends({ isDone: isDone }, cursor))
-+	        _react2.default.createElement(cursor)
++          isDone && hideCursorWhenDone ? null : _react2.default.createElement(cursor)
  	      );
  	    }
  	  }]);
