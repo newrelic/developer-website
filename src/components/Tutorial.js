@@ -1,7 +1,7 @@
 import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import parseCodeBlockProps from '../utils/parseCodeBlockProps';
-import { isCodeBlock, isShellCommand } from '../utils/codeBlock';
+import { isCodeBlock, isShellCommand, hasFileName } from '../utils/codeBlock';
 import { isMdxType } from '../utils/mdx';
 import { diffLines } from 'diff';
 import useOnMount from '../hooks/useOnMount';
@@ -137,24 +137,32 @@ const parseProjectStateFromConfig = (configElement) => {
 };
 
 const parseProjectStateFromChildren = (children) => {
-  return children
-    .flatMap((child) => {
-      switch (child.props.mdxType) {
-        case 'TutorialStep':
-          return findCodeBlocksInTutorialStep(child);
-        case 'TutorialSection':
-          return findCodeBlocksInTutorialSection(child);
-        default:
-          return [];
-      }
-    })
-    .reduce((map, codeBlock) => {
-      const { fileName, language } = parseCodeBlockProps(codeBlock);
+  const project = new Map();
 
-      return map.has(fileName)
-        ? map
-        : map.set(fileName, { code: '', language });
-    }, new Map());
+  visit(
+    children,
+    (child) =>
+      isCodeBlock(child) && !isShellCommand(child) && hasFileName(child),
+    (codeBlock) => {
+      const { fileName, ...props } = parseCodeBlockProps(codeBlock);
+
+      if (!project.has(fileName)) {
+        project.set(fileName, { ...props, code: '' });
+      }
+    }
+  );
+
+  return project;
+};
+
+const visit = (children, guard, fn) => {
+  Children.toArray(children).forEach((child, idx) => {
+    if (guard(child, idx)) {
+      fn(child, idx);
+    } else if (child.props?.children) {
+      visit(child.props.children, guard, fn);
+    }
+  });
 };
 
 const findCodeBlocksInTutorialStep = (stepElement) => {

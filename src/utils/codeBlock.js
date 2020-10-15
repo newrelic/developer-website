@@ -10,4 +10,7 @@ export const isShellCommand = (element) =>
     element.props?.children?.props?.className?.replace('language-', '')
   );
 
+export const hasFileName = (element) =>
+  Boolean(element.props?.children?.props?.fileName);
+
 export const isShellLanguage = (language) => SHELL_LANGUAGES.includes(language);
