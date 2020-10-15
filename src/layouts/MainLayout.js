@@ -14,11 +14,23 @@ import '../components/styles.scss';
 import usePageContext from '../hooks/usePageContext';
 import useResizeObserver from '../hooks/useResizeObserver';
 import { useLocation } from '@reach/router';
+import { useQuery } from '@apollo/react-hooks';
+
+import AuthContext, { userQuery } from '../components/AuthContext';
 
 const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const MainLayout = ({ children }) => {
+  const { loading, error, data } = useQuery(userQuery);
+
+  const authDetails =
+    !loading && !error
+      ? {
+          isAuthenticated: !!data?.actor?.user?.id,
+          user: { ...data?.actor?.user },
+        }
+      : { isAuthenticated: false, user: null };
   const {
     site: { layout, siteMetadata },
   } = useStaticQuery(graphql`
