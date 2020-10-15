@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Command from './Command';
@@ -7,18 +7,32 @@ import rollupIntoCommands from './rollupIntoCommands';
 import Cursor from './Cursor';
 
 const Shell = ({ animate, highlight, code }) => {
+  const ref = useRef();
+  const [animated, setAnimated] = useState(false);
+  const [height, setHeight] = useState(null);
   const [step, setStep] = useState(1);
   const { tokens, getTokenProps } = highlight;
   const commands = rollupIntoCommands(tokens, code);
-  const shownCommands = animate ? commands.slice(0, step) : commands;
+  const shownCommands = animated ? commands.slice(0, step) : commands;
   const cursor = <Cursor />;
+
+  useLayoutEffect(() => {
+    const { height } = ref.current.getBoundingClientRect();
+    setHeight(height);
+
+    if (animate) {
+      setAnimated(true);
+    }
+  }, [animate]);
 
   return (
     <pre
+      ref={ref}
       css={css`
         ${theme};
 
         padding: 1rem;
+        height: ${height}px;
         font-family: var(--code-font);
         font-size: 0.75rem;
         border-bottom-left-radius: var(--border-radius);
@@ -51,7 +65,7 @@ const Shell = ({ animate, highlight, code }) => {
           <Command
             key={idx}
             cursor={cursor}
-            animate={animate}
+            animate={animated}
             command={command}
             getTokenProps={getTokenProps}
             typingDelay={idx === 0 ? 2000 : 500}
