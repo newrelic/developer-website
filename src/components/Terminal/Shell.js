@@ -4,12 +4,14 @@ import { css } from '@emotion/core';
 import Command from './Command';
 import theme from './theme';
 import rollupIntoCommands from './rollupIntoCommands';
+import Cursor from './Cursor';
 
 const Shell = ({ animate, highlight, code }) => {
   const [step, setStep] = useState(1);
   const { tokens, getTokenProps } = highlight;
   const commands = rollupIntoCommands(tokens, code);
   const shownCommands = animate ? commands.slice(0, step) : commands;
+  const cursor = <Cursor />;
 
   return (
     <pre
@@ -48,13 +50,12 @@ const Shell = ({ animate, highlight, code }) => {
         {shownCommands.map((command, idx) => (
           <Command
             key={idx}
+            cursor={cursor}
             animate={animate}
             command={command}
             getTokenProps={getTokenProps}
-            onRendered={() => {
-              setTimeout(() => {
-                setStep((step) => step + 1);
-              }, 1000);
+            onDone={() => {
+              setStep((step) => step + 1);
             }}
           />
         ))}

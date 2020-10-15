@@ -2,33 +2,29 @@ import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import ShellOutput from './ShellOutput';
 
-const StaggeredShellOutput = ({ output, timeout, delay, onRendered }) => {
+const StaggeredShellOutput = ({ output, timeout, delay, onDone }) => {
   const callback = useRef();
   const [step, setStep] = useState(0);
   const done = output.length === step;
 
   useEffect(() => {
-    callback.current = onRendered;
-  }, [onRendered]);
-
-  useEffect(() => {
-    if (!done) {
-      const id = setTimeout(
-        () => {
-          setStep((step) => step + 1);
-        },
-        step === 0 ? delay : timeout
-      );
-
-      return () => clearTimeout(id);
-    }
-  }, [step, done, delay, timeout]);
+    callback.current = onDone;
+  }, [onDone]);
 
   useEffect(() => {
     if (done) {
       callback.current();
     }
-  }, [done]);
+
+    const id = setTimeout(
+      () => {
+        setStep((step) => step + 1);
+      },
+      step === 0 ? delay : timeout
+    );
+
+    return () => clearTimeout(id);
+  }, [step, done, delay, timeout]);
 
   return output
     .slice(0, step)
@@ -38,6 +34,8 @@ const StaggeredShellOutput = ({ output, timeout, delay, onRendered }) => {
 StaggeredShellOutput.propTypes = {
   output: PropTypes.array.isRequired,
   timeout: PropTypes.number,
+  delay: PropTypes.number,
+  onDone: PropTypes.func.isRequired,
 };
 
 StaggeredShellOutput.defaultProps = {
