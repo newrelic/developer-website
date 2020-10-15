@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
+const TOKENS = /{([a-z]+)}(.*?(?={|$))/g;
+
 const ShellOutput = ({ line }) => (
   <div
     css={css`
@@ -9,7 +11,7 @@ const ShellOutput = ({ line }) => (
       white-space: pre;
     `}
   >
-    {line.map((token, key) => (
+    {tokenize(line).map((token, key) => (
       <span
         key={key}
         css={css`
@@ -25,6 +27,23 @@ const ShellOutput = ({ line }) => (
     ))}
   </div>
 );
+
+const tokenize = (text) => {
+  const tokens = Array.from(text.matchAll(TOKENS));
+
+  if (tokens.length === 0) {
+    return [{ color: 'plain', text }];
+  }
+
+  const startOfColorIdx = text.indexOf('{');
+  const coloredTokens = tokens.map(([, color, text]) => ({ color, text }));
+
+  return startOfColorIdx === 0
+    ? coloredTokens
+    : [{ color: 'plain', text: text.slice(0, startOfColorIdx) }].concat(
+        coloredTokens
+      );
+};
 
 const OUTPUT_COLORS = {
   plain: 'currentColor',
@@ -42,7 +61,7 @@ OUTPUT_COLORS.success = OUTPUT_COLORS.green;
 OUTPUT_COLORS.error = OUTPUT_COLORS.red;
 
 ShellOutput.propTypes = {
-  line: PropTypes.arrayOf(PropTypes.object).isRequired,
+  line: PropTypes.string.isRequired,
 };
 
 export default ShellOutput;
