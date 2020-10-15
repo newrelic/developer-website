@@ -18,6 +18,7 @@ const Cursor = () => (
       width: 1ch;
       height: 1.25em;
       animation: ${blink} 1s infinite;
+      vertical-align: middle;
     `}
   />
 );

@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Command from './Command';
+import CommandLine from './CommandLine';
 import theme from './theme';
 import rollupIntoCommands from './rollupIntoCommands';
+import { useTimeout } from '@newrelic/gatsby-theme-newrelic';
 
 const Shell = ({ highlight, code }) => {
+  const [step, setStep] = useState(0);
+  const { tokens, getTokenProps } = highlight;
+  const commands = rollupIntoCommands(tokens, code);
+  const shownCommands = commands.slice(0, step);
+
+  useTimeout(() => {
+    setStep((step) => step + 1);
+  }, 3000);
+
   return (
     <pre
       css={css`
@@ -40,13 +51,10 @@ const Shell = ({ highlight, code }) => {
       `}
     >
       <code>
-        {rollupIntoCommands(highlight.tokens, code).map((command, idx) => (
-          <Command
-            key={idx}
-            command={command}
-            getTokenProps={highlight.getTokenProps}
-          />
+        {shownCommands.map((command, idx) => (
+          <Command key={idx} command={command} getTokenProps={getTokenProps} />
         ))}
+        <CommandLine cursor line={[]} prompt="$" />
       </code>
     </pre>
   );
@@ -54,7 +62,10 @@ const Shell = ({ highlight, code }) => {
 
 Shell.propTypes = {
   code: PropTypes.string.isRequired,
-  highlight: PropTypes.object,
+  highlight: PropTypes.shape({
+    tokens: PropTypes.array.isRequired,
+    getTokenProps: PropTypes.func.isRequired,
+  }),
 };
 
 export default Shell;
