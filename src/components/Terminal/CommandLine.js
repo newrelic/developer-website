@@ -56,7 +56,7 @@ CommandLine.propTypes = {
   line: PropTypes.arrayOf(PropTypes.object).isRequired,
   getTokenProps: PropTypes.func.isRequired,
   prompt: PropTypes.oneOf(['$', '>']),
-  onDoneTyping: PropTypes.func.isRequired,
+  onDoneTyping: PropTypes.func,
   typingDelay: PropTypes.number,
 };
 

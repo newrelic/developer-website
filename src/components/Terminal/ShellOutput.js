@@ -33,6 +33,7 @@ const OUTPUT_COLORS = {
   muted: 'var(--color-nord-3)',
   purple: 'var(--color-nord-15)',
   blue: 'var(--color-nord-9)',
+  yellow: 'var(--color-nord-13)',
 };
 
 OUTPUT_COLORS.timestamp = OUTPUT_COLORS.muted;

@@ -53,44 +53,15 @@ const machine = Machine(
 );
 
 const Command = ({ animate, command, getTokenProps, onDone, typingDelay }) => {
-  const [state, send] = useMachine(machine, {
-    context: { command },
-    actions: {
-      notifyFinished: onDone,
-    },
-  });
-  const { currentLine } = state.context;
-
-  return (
-    <>
-      {command.lines.slice(0, currentLine).map((line, idx) => (
-        <CommandLine
-          key={idx}
-          animate={animate}
-          line={line}
-          prompt={idx > 0 ? '>' : '$'}
-          getTokenProps={getTokenProps}
-          onDoneTyping={() => send('PRESS_ENTER')}
-          typingDelay={idx === 0 ? typingDelay : 0}
-        />
-      ))}
-
-      {(state.matches('commandEntered') || state.matches('finished')) && (
-        <>
-          {animate ? (
-            <StaggeredShellOutput
-              output={command.output}
-              delay={1500}
-              onDone={() => send('COMMAND_EXECUTED')}
-            />
-          ) : (
-            command.output.map((line, idx) => (
-              <ShellOutput key={idx} line={line} />
-            ))
-          )}
-        </>
-      )}
-    </>
+  return animate ? (
+    <AnimatedCommand
+      command={command}
+      getTokenProps={getTokenProps}
+      onDone={onDone}
+      typingDelay={typingDelay}
+    />
+  ) : (
+    <StaticCommand command={command} getTokenProps={getTokenProps} />
   );
 };
 
@@ -104,6 +75,70 @@ Command.propTypes = {
 
 Command.defaultProps = {
   typingDelay: 0,
+};
+
+const AnimatedCommand = ({ command, getTokenProps, onDone, typingDelay }) => {
+  const [state, send] = useMachine(machine, {
+    context: { command },
+    actions: {
+      notifyFinished: onDone,
+    },
+  });
+  const { currentLine } = state.context;
+
+  return (
+    <>
+      {command.lines.slice(0, currentLine).map((line, idx) => (
+        <CommandLine
+          animate
+          key={idx}
+          line={line}
+          prompt={idx > 0 ? '>' : '$'}
+          getTokenProps={getTokenProps}
+          onDoneTyping={() => send('PRESS_ENTER')}
+          typingDelay={idx === 0 ? typingDelay : 0}
+        />
+      ))}
+
+      {(state.matches('commandEntered') || state.matches('finished')) && (
+        <StaggeredShellOutput
+          output={command.output}
+          delay={1500}
+          onDone={() => send('COMMAND_EXECUTED')}
+        />
+      )}
+    </>
+  );
+};
+
+AnimatedCommand.propTypes = {
+  command: PropTypes.object.isRequired,
+  getTokenProps: PropTypes.func.isRequired,
+  onDone: PropTypes.func.isRequired,
+  typingDelay: PropTypes.number,
+};
+
+const StaticCommand = ({ command, getTokenProps }) => (
+  <>
+    {command.lines.map((line, idx) => (
+      <CommandLine
+        animate={false}
+        key={`command-${idx}`}
+        line={line}
+        prompt={idx > 0 ? '>' : '$'}
+        getTokenProps={getTokenProps}
+      />
+    ))}
+
+    {command.output.map((line, idx) => (
+      <ShellOutput key={`output-${idx}`} line={line} />
+    ))}
+  </>
+);
+
+StaticCommand.propTypes = {
+  command: PropTypes.object.isRequired,
+  getTokenProps: PropTypes.func.isRequired,
 };
 
 export default Command;
