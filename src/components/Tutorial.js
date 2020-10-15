@@ -5,7 +5,6 @@ import { isMdxType } from '../utils/mdx';
 import { diffLines } from 'diff';
 import useOnMount from '../hooks/useOnMount';
 import TutorialEditor from './TutorialEditor';
-import warning from 'warning';
 
 const Tutorial = ({ children }) => {
   children = Children.toArray(children);
@@ -92,7 +91,7 @@ const swapCodeBlocks = (children, initialProjectState) => {
         return [[...children, child], currentProjectState];
       }
 
-      const props = parseCodeBlockProps(child);
+      const props = extractCodeBlockProps(child);
 
       if (!currentProjectState.has(props.fileName)) {
         throw new Error(`The following block does not have a file name that matches the project. Please ensure the code block has a \`fileName\` specified:
@@ -130,7 +129,7 @@ const parseProjectStateFromConfig = (configElement) => {
   return Children.toArray(configElement.props.children)
     .filter((child) => isCodeBlock(child) && !isShellCommand(child))
     .reduce((map, child) => {
-      const { code, fileName, language } = parseCodeBlockProps(child);
+      const { code, fileName, language } = extractCodeBlockProps(child);
 
       return map.has(fileName) ? map : map.set(fileName, { code, language });
     }, new Map());
@@ -144,7 +143,7 @@ const parseProjectStateFromChildren = (children) => {
     (child) =>
       isCodeBlock(child) && !isShellCommand(child) && hasFileName(child),
     (codeBlock) => {
-      const { fileName, ...props } = parseCodeBlockProps(codeBlock);
+      const { fileName, ...props } = extractCodeBlockProps(codeBlock);
 
       if (!project.has(fileName)) {
         project.set(fileName, { ...props, code: '' });
@@ -216,16 +215,7 @@ const validateTutorialSteps = (children) => {
   }
 };
 
-const parseCodeBlockProps = (element) => {
-  if (!isCodeBlock(element)) {
-    warning(
-      false,
-      'parseCodeBlockProps: The element passed in is not a code block'
-    );
-
-    return;
-  }
-
+const extractCodeBlockProps = (element) => {
   const {
     children: { props },
   } = element.props;
