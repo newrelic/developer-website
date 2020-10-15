@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
-import Prompt from './Prompt';
+import Command from './Command';
+import Output from './Output';
 
 const MULTILINE_COMMAND = /\\\s*$/;
 const OUTPUT_TAG = /^\[output\]\s/;
@@ -11,37 +12,26 @@ const OUTPUT_COLOR_TOKENS = /{([a-z]+)}(.*?(?={|$))/g;
 
 const SyntaxHighlighter = ({ code }) => (
   <Highlight Prism={Prism} code={code} language="shell">
-    {({ tokens, getLineProps, getTokenProps }) => {
+    {({ tokens, getTokenProps }) => {
       const commands = rollupIntoCommands(tokens, code);
 
-      return tokens.map((line, idx) => {
-        const previousLine = collapse(tokens[idx - 1] || []);
-        const isMultiline = MULTILINE_COMMAND.test(previousLine);
-
+      return commands.map(({ lines, output }, commandIdx) => {
         return (
-          // eslint-disable-next-line react/jsx-key
-          <div {...getLineProps({ line, key: idx })}>
-            <div
-              css={css`
-                display: grid;
-                grid-template-columns: 1ch 1fr;
-                grid-gap: 1ch;
-              `}
-            >
-              <Prompt character={isMultiline ? '>' : '$'} />
-              <div
-                css={css`
-                  color: #fafafa;
-                  white-space: pre;
-                `}
-              >
-                {line.map((token, key) => (
-                  // eslint-disable-next-line react/jsx-key
-                  <span {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            </div>
-          </div>
+          <>
+            {lines.map((line, idx) => {
+              return (
+                <Command
+                  key={`${commandIdx}-${idx}`}
+                  line={line}
+                  prompt={idx > 0 ? '>' : '$'}
+                  getTokenProps={getTokenProps}
+                />
+              );
+            })}
+            {output.map((line, idx) => (
+              <Output key={`${commandIdx}-${idx}`} line={line} />
+            ))}
+          </>
         );
       });
     }}
