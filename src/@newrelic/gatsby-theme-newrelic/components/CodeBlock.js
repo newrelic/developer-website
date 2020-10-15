@@ -3,9 +3,9 @@ import CodeBlock from '@newrelic/gatsby-theme-newrelic/src/components/CodeBlock'
 import Terminal from '../../../components/Terminal';
 import { isShellLanguage } from '../../../utils/codeBlock';
 
-const CustomCodeBlock = ({ language, children, ...props }) => {
+const CustomCodeBlock = ({ language, children, animate, ...props }) => {
   return isShellLanguage(language) ? (
-    <Terminal>{children}</Terminal>
+    <Terminal animate={animate}>{children}</Terminal>
   ) : (
     <CodeBlock language={language} {...props}>
       {children}

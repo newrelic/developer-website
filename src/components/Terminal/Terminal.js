@@ -6,7 +6,7 @@ import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
 import Shell from './Shell';
 
-const Terminal = ({ children }) => {
+const Terminal = ({ animate, children }) => {
   const code = children.trim();
   const [copied, copy] = useClipboard();
 
@@ -60,7 +60,9 @@ const Terminal = ({ children }) => {
         </Button>
       </div>
       <Highlight Prism={Prism} code={code} language="shell">
-        {(highlight) => <Shell code={code} highlight={highlight} />}
+        {(highlight) => (
+          <Shell animate={animate} code={code} highlight={highlight} />
+        )}
       </Highlight>
     </div>
   );
@@ -89,7 +91,12 @@ FrameButton.propTypes = {
 };
 
 Terminal.propTypes = {
+  animate: PropTypes.bool,
   children: PropTypes.string,
+};
+
+Terminal.defaultProps = {
+  animate: false,
 };
 
 export default Terminal;

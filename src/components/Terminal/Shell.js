@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Command from './Command';
@@ -7,16 +7,19 @@ import theme from './theme';
 import rollupIntoCommands from './rollupIntoCommands';
 import { useTimeout } from '@newrelic/gatsby-theme-newrelic';
 
-const Shell = ({ highlight, code }) => {
+const Shell = ({ animate, highlight, code }) => {
   const [step, setStep] = useState(0);
   const { tokens, getTokenProps } = highlight;
   const commands = rollupIntoCommands(tokens, code);
-  const shownCommands = commands.slice(0, step);
-  const done = step >= commands.length;
+  const shownCommands = animate ? commands.slice(0, step) : commands;
+  const done = animate ? step >= commands.length : true;
 
-  useTimeout(() => {
-    setStep((step) => step + 1);
-  }, 3000);
+  useTimeout(
+    () => {
+      setStep((step) => step + 1);
+    },
+    animate ? 3000 : null
+  );
 
   return (
     <pre
@@ -55,6 +58,7 @@ const Shell = ({ highlight, code }) => {
         {shownCommands.map((command, idx) => (
           <Command
             key={idx}
+            animate={animate}
             command={command}
             getTokenProps={getTokenProps}
             onRendered={() => {
@@ -71,6 +75,7 @@ const Shell = ({ highlight, code }) => {
 };
 
 Shell.propTypes = {
+  animate: PropTypes.bool,
   code: PropTypes.string.isRequired,
   highlight: PropTypes.shape({
     tokens: PropTypes.array.isRequired,
