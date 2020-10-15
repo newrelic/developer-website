@@ -14,6 +14,10 @@ const Output = ({ line }) => (
         key={key}
         css={css`
           color: ${OUTPUT_COLORS[token.color] || OUTPUT_COLORS.plain};
+
+          &:empty {
+            display: inline-block;
+          }
         `}
       >
         {token.text}

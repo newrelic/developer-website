@@ -7,7 +7,7 @@ import Command from './Command';
 import Output from './Output';
 
 const MULTILINE_COMMAND = /\\\s*$/;
-const OUTPUT_TAG = /^\[output\]\s/;
+const OUTPUT_TAG = /^\[output\](\s|$)/;
 const OUTPUT_COLOR_TOKENS = /{([a-z]+)}(.*?(?={|$))/g;
 
 const SyntaxHighlighter = ({ code }) => (
