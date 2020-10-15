@@ -6,11 +6,11 @@ import Typist from 'react-typist';
 
 const blink = keyframes`
   0%, 49% {
-    background: none;
+    background: #c0c5ce;
   }
 
   50%, 100% {
-    background: #c0c5ce;
+    background: none;
   }
 `;
 
@@ -35,6 +35,7 @@ const CommandLine = ({
   onDoneTyping,
   typingDelay,
 }) => {
+  const [empty, setEmpty] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
   const Element = animate ? Typist : 'div';
 
@@ -52,6 +53,7 @@ const CommandLine = ({
       <div
         css={css`
           position: relative;
+          height: ${empty ? '100%' : null};
 
           ${showCursor && cursor}
         `}
@@ -64,6 +66,7 @@ const CommandLine = ({
             setShowCursor(false);
             onDoneTyping();
           }}
+          onCharacterTyped={(_, idx) => idx !== 0 && setEmpty(false)}
           cursor={{ show: false }}
           css={css`
             color: #fafafa;
