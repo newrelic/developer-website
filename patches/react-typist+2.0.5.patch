@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-typist/dist/Typist.js b/node_modules/react-typist/dist/Typist.js
+index 16ecae0..b5ffbd9 100644
+--- a/node_modules/react-typist/dist/Typist.js
++++ b/node_modules/react-typist/dist/Typist.js
+@@ -279,7 +279,7 @@ module.exports =
+ 	        'div',
+ 	        { className: 'Typist ' + className },
+ 	        innerTree,
+-	        _react2.default.createElement(_Cursor2.default, _extends({ isDone: isDone }, cursor))
++	        _react2.default.createElement(cursor)
+ 	      );
+ 	    }
+ 	  }]);
