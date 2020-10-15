@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { LiveProvider, withLive, LivePreview, LiveError } from 'react-live';
 import { css } from '@emotion/core';
 import root from 'react-shadow';
@@ -347,12 +347,14 @@ const MonacoLiveEditor = withLive(Editor);
 if (typeof window === 'undefined') global.window = {};
 const sdk = window.__NR1_SDK__?.default ?? {};
 
-monaco.init().then((monaco) => monacoConfig(monaco, sdk));
-
 const SdkPlayground = () => {
   const authContext = useContext(AuthContext);
   const [code, setCode] = useState(defaultCode);
   const editorRef = useRef();
+
+  useEffect(() => {
+    monaco.init().then((monaco) => monacoConfig(monaco, sdk));
+  });
 
   if (typeof window === 'undefined') global.window = {};
 

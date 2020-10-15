@@ -7,6 +7,7 @@
 import React from 'react';
 import { JS_BUNDLE } from './src/utils/sdk';
 import wrapPageElement from './gatsby/wrap-page-element';
+import { wrapRootElement } from './gatsby/wrap-root-element';
 
 // This is needed to ensure the NR1 SDK can load properly
 const onPreRenderHTML = ({
@@ -73,4 +74,4 @@ const onRenderBody = ({ setHeadComponents }) => {
   ]);
 };
 
-export { onPreRenderHTML, onRenderBody, wrapPageElement };
+export { onPreRenderHTML, onRenderBody, wrapPageElement, wrapRootElement };
