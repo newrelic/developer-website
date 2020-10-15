@@ -7,7 +7,7 @@ const blink = keyframes`
   }
 
   50%, 100% {
-    background: #fafafa;
+    background: #c0c5ce;
   }
 `;
 
@@ -17,8 +17,10 @@ const Cursor = () => (
       display: inline-block;
       width: 1ch;
       height: 1.25em;
-      animation: ${blink} 1s infinite;
-      vertical-align: middle;
+      animation: ${blink} 1.5s infinite;
+      vertical-align: baseline;
+      position: relative;
+      top: 3px;
     `}
   />
 );

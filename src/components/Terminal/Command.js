@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import CommandLine from './CommandLine';
 import ShellOutput from './ShellOutput';
 import StaggeredShellOutput from './StaggeredShellOutput';
 
 const Command = ({ animate, command, getTokenProps, onRendered }) => {
+  const [steps, setStep] = useState(1);
+  const shownLines = command.lines.slice(0, steps);
+
   return (
     <>
-      {command.lines.map((line, idx) => (
+      {shownLines.map((line, idx) => (
         <CommandLine
           key={`command-${idx}`}
           line={line}
           prompt={idx > 0 ? '>' : '$'}
           getTokenProps={getTokenProps}
+          onDoneTyping={() => setStep((step) => step + 1)}
+          typingDelay={idx === 0 ? 2000 : 0}
         />
       ))}
 

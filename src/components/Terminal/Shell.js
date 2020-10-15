@@ -2,24 +2,14 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Command from './Command';
-import CommandLine from './CommandLine';
 import theme from './theme';
 import rollupIntoCommands from './rollupIntoCommands';
-import { useTimeout } from '@newrelic/gatsby-theme-newrelic';
 
 const Shell = ({ animate, highlight, code }) => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const { tokens, getTokenProps } = highlight;
   const commands = rollupIntoCommands(tokens, code);
   const shownCommands = animate ? commands.slice(0, step) : commands;
-  const done = animate ? step >= commands.length : true;
-
-  useTimeout(
-    () => {
-      setStep((step) => step + 1);
-    },
-    animate ? 3000 : null
-  );
 
   return (
     <pre
@@ -68,7 +58,6 @@ const Shell = ({ animate, highlight, code }) => {
             }}
           />
         ))}
-        {!done && <CommandLine cursor line={[]} prompt="$" />}
       </code>
     </pre>
   );
