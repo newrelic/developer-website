@@ -36,7 +36,7 @@ const CommandLine = ({
   typingDelay,
 }) => {
   const [empty, setEmpty] = useState(true);
-  const [showCursor, setShowCursor] = useState(true);
+  const [showCursor, setShowCursor] = useState(animate);
   const Element = animate ? Typist : 'div';
 
   return (
