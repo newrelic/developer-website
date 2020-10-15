@@ -164,18 +164,6 @@ const visit = (children, guard, fn) => {
   });
 };
 
-const findCodeBlocksInTutorialStep = (stepElement) => {
-  return Children.toArray(stepElement.props.children).filter(
-    (child) => isCodeBlock(child) && !isShellCommand(child)
-  );
-};
-
-const findCodeBlocksInTutorialSection = (sectionElement) => {
-  return Children.toArray(sectionElement.props.children).flatMap(
-    findCodeBlocksInTutorialStep
-  );
-};
-
 const validateChildren = (children) => {
   const isSectioned = children.some((child) =>
     isMdxType(child, 'TutorialSection')
