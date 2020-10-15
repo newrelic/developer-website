@@ -1,17 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import TutorialEditor from './TutorialEditor';
 import Markdown from './Markdown';
 
-const TutorialStep = ({
-  children,
-  codeBlock,
-  project,
-  stepNumber,
-  title,
-  totalSteps,
-}) => {
+const TutorialStep = ({ children, stepNumber, title, totalSteps }) => {
   return (
     <div
       css={css`
@@ -37,29 +29,14 @@ const TutorialStep = ({
       >
         <Markdown source={title} />
       </h3>
-      {project ? (
-        <div
-          css={css`
-            display: grid;
-            grid-template-columns: repeat(2, calc(50% - 0.5rem));
-            grid-gap: 1rem;
-          `}
-        >
-          <div>{children}</div>
-          <TutorialEditor codeBlock={codeBlock} project={project} />
-        </div>
-      ) : (
-        children
-      )}
+      {children}
     </div>
   );
 };
 
 TutorialStep.propTypes = {
   children: PropTypes.node,
-  codeBlock: PropTypes.object.isRequired,
   stepNumber: PropTypes.number.isRequired,
-  project: PropTypes.instanceOf(Map).isRequired,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   totalSteps: PropTypes.number.isRequired,
 };

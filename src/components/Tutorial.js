@@ -1,10 +1,11 @@
-import { Children, cloneElement } from 'react';
+import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import parseCodeBlockProps from '../utils/parseCodeBlockProps';
 import { isCodeBlock, isShellCommand } from '../utils/codeBlock';
 import { isMdxType } from '../utils/mdx';
 import { diffLines } from 'diff';
 import useOnMount from '../hooks/useOnMount';
+import TutorialEditor from './TutorialEditor';
 
 const Tutorial = ({ children }) => {
   children = Children.toArray(children);
@@ -67,46 +68,18 @@ const gatherSections = (children, initialProjectState) => {
 const gatherSteps = (children, initialProjectState) => {
   return Children.toArray(children).reduce(
     ({ steps, currentProjectState }, stepElement, idx) => {
-      const sharedProps = { stepNumber: idx + 1, totalSteps: children.length };
-      const codeBlock = Children.toArray(stepElement.props.children).find(
-        (child) => isCodeBlock(child) && !isShellCommand(child)
+      const { stepElement: newStepElement, projectState } = swapCodeBlocks(
+        stepElement,
+        currentProjectState
       );
-
-      if (!codeBlock) {
-        return {
-          currentProjectState,
-          steps: [...steps, cloneElement(stepElement, sharedProps)],
-        };
-      }
-
-      const props = parseCodeBlockProps(codeBlock);
-
-      if (!currentProjectState.has(props.fileName)) {
-        throw new Error(`The following block does not have a file name that matches the project. Please ensure the code block has a \`fileName\` specified:
-
-\`\`\`${props.language}
-${props.code}
-\`\`\`
-`);
-      }
-
-      const { code: prevCode } = currentProjectState.get(props.fileName);
-      const projectState = clone(currentProjectState).set(props.fileName, {
-        code: props.code,
-        language: props.language,
-      });
 
       return {
         currentProjectState: projectState,
         steps: [
           ...steps,
-          cloneElement(stepElement, {
-            ...sharedProps,
-            codeBlock: { ...props, diff: diffLines(prevCode, props.code) },
-            project: projectState,
-            children: Children.toArray(stepElement.props.children).filter(
-              (child) => isShellCommand(child) || !isCodeBlock(child)
-            ),
+          cloneElement(newStepElement, {
+            stepNumber: idx + 1,
+            totalSteps: children.length,
           }),
         ],
       };
@@ -116,6 +89,52 @@ ${props.code}
 };
 
 const clone = (map) => new Map(map);
+
+const swapCodeBlocks = (stepElement, initialProjectState) => {
+  const { children, currentProjectState } = Children.toArray(
+    stepElement.props.children
+  ).reduce(
+    ({ children, currentProjectState }, child) => {
+      if (isCodeBlock(child) && !isShellCommand(child)) {
+        const props = parseCodeBlockProps(child);
+
+        if (!currentProjectState.has(props.fileName)) {
+          throw new Error(`The following block does not have a file name that matches the project. Please ensure the code block has a \`fileName\` specified:
+
+\`\`\`${props.language}
+${props.code}
+\`\`\`
+`);
+        }
+
+        const { code: prevCode } = currentProjectState.get(props.fileName);
+        const projectState = clone(currentProjectState).set(props.fileName, {
+          code: props.code,
+          language: props.language,
+        });
+
+        return {
+          children: [
+            ...children,
+            <TutorialEditor
+              codeBlock={{ ...props, diff: diffLines(prevCode, props.code) }}
+              project={projectState}
+            />,
+          ],
+          currentProjectState: projectState,
+        };
+      }
+
+      return { children: [...children, child], currentProjectState };
+    },
+    { children: [], currentProjectState: initialProjectState }
+  );
+
+  return {
+    stepElement: cloneElement(stepElement, { children }),
+    projectState: currentProjectState,
+  };
+};
 
 const parseProjectStateFromConfig = (configElement) => {
   return Children.toArray(configElement.props.children)
