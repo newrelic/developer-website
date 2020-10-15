@@ -154,12 +154,12 @@ const parseProjectStateFromChildren = (children) => {
   return project;
 };
 
-const visit = (children, guard, fn) => {
+const visit = (children, guard, fn, parent = null) => {
   Children.toArray(children).forEach((child, idx) => {
-    if (guard(child, idx)) {
-      fn(child, idx);
+    if (guard(child, idx, parent)) {
+      fn(child, idx, parent);
     } else if (child.props?.children) {
-      visit(child.props.children, guard, fn);
+      visit(child.props.children, guard, fn, child);
     }
   });
 };
