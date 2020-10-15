@@ -912,7 +912,7 @@ const CtaItem = ({ date, to, children }) => (
   <li
     css={css`
       margin-top: 0.5rem;
-      margin-right: .5rem;
+      margin-right: 0.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
