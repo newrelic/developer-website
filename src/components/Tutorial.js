@@ -1,11 +1,11 @@
 import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import parseCodeBlockProps from '../utils/parseCodeBlockProps';
 import { isCodeBlock, isShellCommand, hasFileName } from '../utils/codeBlock';
 import { isMdxType } from '../utils/mdx';
 import { diffLines } from 'diff';
 import useOnMount from '../hooks/useOnMount';
 import TutorialEditor from './TutorialEditor';
+import warning from 'warning';
 
 const Tutorial = ({ children }) => {
   children = Children.toArray(children);
@@ -214,6 +214,30 @@ const validateTutorialSteps = (children) => {
       'Tutorial: Every child of a `Tutorial` must be wrapped in a `TutorialStep`. If you meant to include a non `TutorialStep` in the `Tutorial`, wrap each section in a `TutorialSection` or move the content inside of the `TutorialStep`.'
     );
   }
+};
+
+const parseCodeBlockProps = (element) => {
+  if (!isCodeBlock(element)) {
+    warning(
+      false,
+      'parseCodeBlockProps: The element passed in is not a code block'
+    );
+
+    return;
+  }
+
+  const {
+    children: { props },
+  } = element.props;
+
+  const language = props.className?.replace('language-', '');
+  const code = props.children.trim();
+
+  return {
+    code,
+    language,
+    fileName: props.fileName,
+  };
 };
 
 export default Tutorial;
