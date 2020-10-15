@@ -1,49 +1,87 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import CommandLine from './CommandLine';
 import ShellOutput from './ShellOutput';
 import StaggeredShellOutput from './StaggeredShellOutput';
+import { useMachine } from '@xstate/react';
+import { assign, Machine } from 'xstate';
+
+const machine = Machine(
+  {
+    id: 'command',
+    initial: 'typing',
+    context: {
+      currentLine: 1,
+      command: null,
+    },
+    states: {
+      typing: {
+        on: {
+          PRESS_ENTER: [
+            {
+              target: 'commandEntered',
+              cond: 'enteredEveryLine',
+            },
+            {
+              actions: assign({
+                currentLine: (context) => context.currentLine + 1,
+              }),
+            },
+          ],
+        },
+      },
+      commandEntered: {
+        always: [{ target: 'finished', cond: 'hasNoOutput' }],
+        on: {
+          COMMAND_EXECUTED: 'finished',
+        },
+      },
+      finished: {
+        final: true,
+        entry: ['notifyFinished'],
+      },
+    },
+  },
+  {
+    guards: {
+      hasNoOutput: ({ command }) => command.output.length === 0,
+      enteredEveryLine: ({ command, currentLine }) => {
+        return currentLine === command.lines.length;
+      },
+    },
+  }
+);
 
 const Command = ({ animate, command, getTokenProps, onDone }) => {
-  const callback = useRef();
-  const [outputDone, setOutputDone] = useState(command.output.length === 0);
-  const [step, setStep] = useState(1);
-  const shownLines = command.lines.slice(0, step);
-  const finishedTypingCommands = step > command.lines.length;
-
-  useEffect(() => {
-    callback.current = onDone;
-  }, [onDone]);
-
-  useEffect(() => {
-    if (finishedTypingCommands && outputDone) {
-      callback.current();
-    }
-  }, [finishedTypingCommands, outputDone]);
+  const [state, send] = useMachine(machine, {
+    context: { command },
+    actions: {
+      notifyFinished: onDone,
+    },
+  });
+  const { currentLine } = state.context;
 
   return (
     <>
-      {shownLines.map((line, idx) => (
+      {command.lines.slice(0, currentLine).map((line, idx) => (
         <CommandLine
           key={idx}
           animate={animate}
           line={line}
           prompt={idx > 0 ? '>' : '$'}
           getTokenProps={getTokenProps}
-          onDoneTyping={() => {
-            setStep((step) => step + 1);
-          }}
+          onDoneTyping={() => send('PRESS_ENTER')}
           typingDelay={idx === 0 ? 2000 : 0}
         />
       ))}
 
-      {step >= command.lines.length && (
+      {(state.matches('commandEntered') || state.matches('finished')) && (
         <>
           {animate ? (
             <StaggeredShellOutput
               output={command.output}
               delay={1500}
-              onDone={() => setOutputDone(true)}
+              onDone={() => send('COMMAND_EXECUTED')}
             />
           ) : (
             command.output.map((line, idx) => (
