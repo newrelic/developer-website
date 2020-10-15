@@ -48,7 +48,7 @@ const Terminal = ({ children }) => {
         <Button
           variant={Button.VARIANT.LINK}
           size={Button.SIZE.SMALL}
-          onClick={() => copy(children)}
+          onClick={() => copy(filterOutput(children))}
           className="dark-mode"
           css={css`
             justify-self: end;
@@ -96,6 +96,13 @@ const Terminal = ({ children }) => {
       </pre>
     </div>
   );
+};
+
+const filterOutput = (commands) => {
+  return commands
+    .split('\n')
+    .filter((line) => !line.startsWith('[output]'))
+    .join('\n');
 };
 
 const FrameButton = ({ color }) => (
