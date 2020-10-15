@@ -14,25 +14,23 @@ const SyntaxHighlighter = ({ code }) => (
     {({ tokens, getTokenProps }) => {
       const commands = rollupIntoCommands(tokens, code);
 
-      return commands.map(({ lines, output }, commandIdx) => {
-        return (
-          <>
-            {lines.map((line, idx) => {
-              return (
-                <Command
-                  key={`${commandIdx}-${idx}`}
-                  line={line}
-                  prompt={idx > 0 ? '>' : '$'}
-                  getTokenProps={getTokenProps}
-                />
-              );
-            })}
-            {output.map((line, idx) => (
-              <Output key={`${commandIdx}-${idx}`} line={line} />
-            ))}
-          </>
-        );
-      });
+      return commands.map(({ lines, output }, commandIdx) => (
+        <>
+          {lines.map((line, idx) => {
+            return (
+              <Command
+                key={`${commandIdx}-${idx}`}
+                line={line}
+                prompt={idx > 0 ? '>' : '$'}
+                getTokenProps={getTokenProps}
+              />
+            );
+          })}
+          {output.map((line, idx) => (
+            <Output key={`${commandIdx}-${idx}`} line={line} />
+          ))}
+        </>
+      ));
     }}
   </Highlight>
 );
