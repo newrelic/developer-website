@@ -14,30 +14,7 @@ const blink = keyframes`
   }
 `;
 
-const cursor = css`
-  &:after {
-    content: '';
-    display: block;
-    width: 1ch;
-    height: 1.25em;
-    animation: ${blink} 1.5s infinite;
-    position: absolute;
-    top: 1px;
-    right: -1ch;
-  }
-`;
-
-const CommandLine = ({
-  animate,
-  children,
-  prompt,
-  onDoneTyping,
-  typingDelay,
-}) => {
-  const [empty, setEmpty] = useState(true);
-  const [showCursor, setShowCursor] = useState(animate);
-  const Element = animate ? Typist : 'div';
-
+const CommandLine = ({ cursor, children, prompt }) => {
   return (
     <div
       css={css`
@@ -52,40 +29,34 @@ const CommandLine = ({
       <div
         css={css`
           position: relative;
-          height: ${empty ? '100%' : null};
+          color: #fafafa;
+          white-space: pre-wrap;
 
-          ${showCursor && cursor}
+          ${cursor &&
+          css`
+            &:after {
+              content: '';
+              display: block;
+              width: 1ch;
+              height: 1.25em;
+              animation: ${blink} 1.5s infinite;
+              position: absolute;
+              top: 1px;
+              right: -1ch;
+            }
+          `};
         `}
       >
-        <Element
-          hideCursorWhenDone={false}
-          startDelay={typingDelay}
-          avgTypingDelay={40}
-          onTypingDone={() => {
-            setShowCursor(false);
-            onDoneTyping();
-          }}
-          onCharacterTyped={(_, idx) => idx !== 0 && setEmpty(false)}
-          cursor={{ show: false }}
-          css={css`
-            color: #fafafa;
-            white-space: pre-wrap;
-          `}
-        >
-          {children}
-        </Element>
+        {children}
       </div>
     </div>
   );
 };
 
 CommandLine.propTypes = {
-  animate: PropTypes.bool,
   children: PropTypes.node,
-  getTokenProps: PropTypes.func.isRequired,
+  cursor: PropTypes.bool,
   prompt: PropTypes.oneOf(['$', '>']),
-  onDoneTyping: PropTypes.func,
-  typingDelay: PropTypes.number,
 };
 
 export default CommandLine;

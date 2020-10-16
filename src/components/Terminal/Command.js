@@ -6,6 +6,7 @@ import ShellOutput from './ShellOutput';
 import StaggeredShellOutput from './StaggeredShellOutput';
 import { useMachine } from '@xstate/react';
 import { assign, Machine } from 'xstate';
+import Typist from 'react-typist';
 
 const machine = Machine(
   {
@@ -91,24 +92,35 @@ const AnimatedCommand = ({ command, getTokenProps, onDone, typingDelay }) => {
     <>
       {command.lines.slice(0, currentLine).map((line, idx) => (
         <CommandLine
-          animate
           key={idx}
-          line={line}
+          cursor={state.matches('typing')}
           prompt={idx > 0 ? '>' : '$'}
-          getTokenProps={getTokenProps}
-          onDoneTyping={() => send('PRESS_ENTER')}
-          typingDelay={idx === 0 ? typingDelay : 0}
         >
-          {line.map((token, key) => (
-            // eslint-disable-next-line react/jsx-key
-            <span
-              css={css`
+          <Typist
+            startDelay={idx === 0 ? typingDelay : 0}
+            avgTypingDelay={40}
+            onTypingDone={() => {
+              send('PRESS_ENTER');
+            }}
+            // onCharacterTyped={(_, idx) => idx !== 0 && setEmpty(false)}
+            cursor={{ show: false }}
+            css={css`
+              &:empty {
                 display: inline-block;
-                vertical-align: baseline;
-              `}
-              {...getTokenProps({ token, key })}
-            />
-          ))}
+              }
+            `}
+          >
+            {line.map((token, key) => (
+              // eslint-disable-next-line react/jsx-key
+              <span
+                css={css`
+                  display: inline-block;
+                  vertical-align: baseline;
+                `}
+                {...getTokenProps({ token, key })}
+              />
+            ))}
+          </Typist>
         </CommandLine>
       ))}
 
