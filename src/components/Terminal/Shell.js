@@ -8,22 +8,27 @@ import React, {
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Command from './Command';
+import CommandLine from './CommandLine';
 import theme from './theme';
 import rollupIntoCommands from './rollupIntoCommands';
+import { assign, Machine } from 'xstate';
+import { useMachine } from '@xstate/react';
 
 const Shell = forwardRef(({ animate, highlight, code }, ref) => {
-  const shellRef = useRef();
-  const [animated, setAnimated] = useState(false);
-  const [height, setHeight] = useState(null);
   const { tokens, getTokenProps } = highlight;
   const commands = rollupIntoCommands(tokens, code);
-  const [shownCommands, setShownCommands] = useState(commands);
+  const [state, send] = useMachine(machine, {
+    context: { commands, step: 0 },
+  });
+  const shellRef = useRef();
+  const [height, setHeight] = useState(null);
+
+  const shownCommands = state.matches('boot')
+    ? commands
+    : commands.slice(0, state.context.step);
 
   useImperativeHandle(ref, () => ({
-    startAnimation: () => {
-      setAnimated(true);
-      setShownCommands(commands.slice(0, 1));
-    },
+    startAnimation: () => send('BEGIN_TYPING'),
   }));
 
   useLayoutEffect(() => {
@@ -31,9 +36,9 @@ const Shell = forwardRef(({ animate, highlight, code }, ref) => {
     setHeight(height);
 
     if (animate) {
-      setShownCommands([]);
+      send('INIT');
     }
-  }, [animate]);
+  }, [animate, send]);
 
   return (
     <pre
@@ -71,17 +76,16 @@ const Shell = forwardRef(({ animate, highlight, code }, ref) => {
       `}
     >
       <code>
+        {state.matches('idle') && <CommandLine cursor prompt="$" />}
         {shownCommands.map((command, idx) => (
           <Command
             key={idx}
-            animate={animated}
+            animate={!state.matches('boot')}
             command={command}
             getTokenProps={getTokenProps}
             typingDelay={idx === 0 ? 2000 : 500}
             onDone={() => {
-              setShownCommands((shownCommands) =>
-                commands.slice(0, shownCommands.length)
-              );
+              send('COMMAND_EXECUTED');
             }}
           />
         ))}
@@ -98,5 +102,44 @@ Shell.propTypes = {
     getTokenProps: PropTypes.func.isRequired,
   }),
 };
+
+const machine = Machine(
+  {
+    id: 'shell',
+    initial: 'boot',
+    states: {
+      boot: {
+        on: {
+          INIT: 'idle',
+        },
+      },
+      idle: {
+        entry: assign({ step: 0 }),
+        on: {
+          BEGIN_TYPING: {
+            target: 'typing',
+            actions: assign({ step: 1 }),
+          },
+        },
+      },
+      typing: {
+        on: {
+          COMMAND_EXECUTED: [
+            { target: 'done', cond: 'enteredEveryCommand' },
+            { actions: assign({ step: (context) => context.step + 1 }) },
+          ],
+        },
+      },
+      done: {
+        final: true,
+      },
+    },
+  },
+  {
+    guards: {
+      enteredEveryCommand: ({ commands, step }) => step === commands.length,
+    },
+  }
+);
 
 export default Shell;
