@@ -4,7 +4,9 @@ import { css } from '@emotion/core';
 import root from 'react-shadow';
 import { CSS_BUNDLE, SDK_VARS } from '../utils/sdk';
 import NR1Logo from '../components/NR1Logo';
-import AuthContext from '../components/AuthContext';
+import AuthContext, { userQuery } from '../components/AuthContext';
+import { useQuery } from '@apollo/react-hooks';
+
 // import PlaygroundSidebar from '../components/PlaygroundSidebar';
 
 const defaultCode = `
@@ -28,6 +30,16 @@ const SdkPlayground = () => {
   const monaco = useRef(null);
   const sdk = window.__NR1_SDK__?.default ?? {};
   const [isFront, setIsFront] = useState(false);
+  // Auth query
+  const { loading, error, data } = useQuery(userQuery);
+
+  const authDetails =
+    !loading && !error
+      ? {
+          isAuthenticated: !!data?.actor?.user?.id,
+          user: { ...data?.actor?.user },
+        }
+      : { isAuthenticated: false, user: null };
 
   useEffect(() => {
     process.nextTick(() => {
@@ -76,7 +88,7 @@ const SdkPlayground = () => {
   // };
 
   return (
-    <>
+    <AuthContext.Provider value={authDetails}>
       <LiveProvider code={code} scope={sdk}>
         <div
           css={css`
@@ -152,7 +164,7 @@ const SdkPlayground = () => {
           </div> */}
         </div>
       </LiveProvider>
-    </>
+    </AuthContext.Provider>
   );
 };
 
