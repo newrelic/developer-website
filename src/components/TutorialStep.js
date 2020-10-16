@@ -2,10 +2,10 @@ import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { css, ClassNames } from '@emotion/core';
 import { isMdxType } from '../utils/mdx';
-import { isCodeBlock } from '../utils/codeBlock';
 
 const TutorialStep = ({ children, stepNumber, totalSteps }) => {
   children = Children.toArray(children);
+
   const title = isMdxType(children[0], 'h3') ? children[0] : null;
   const content = title
     ? children.filter((child) => child !== title)
@@ -16,6 +16,10 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
       css={css`
         padding: 2rem 0;
         border-top: 1px solid var(--divider-color);
+
+        &:last-child {
+          border-bottom: 1px solid var(--divider-color);
+        }
       `}
     >
       <p
