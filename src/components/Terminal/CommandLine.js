@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Prompt from './Prompt';
 import { css, keyframes } from '@emotion/core';
-import Typist from 'react-typist';
 
 const blink = keyframes`
   0%, 49% {
@@ -31,6 +30,10 @@ const CommandLine = ({ cursor, children, prompt }) => {
           position: relative;
           color: #fafafa;
           white-space: pre-wrap;
+
+          &:empty {
+            height: 100%;
+          }
 
           ${cursor &&
           css`
