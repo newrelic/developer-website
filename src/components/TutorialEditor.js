@@ -5,11 +5,11 @@ import path from 'path';
 import { css } from '@emotion/core';
 import { darken } from 'polished';
 
-const TutorialEditor = ({ focusedFileName, diff, project }) => {
+const TutorialEditor = ({ className, focusedFileName, diff, project }) => {
   const [selectedFile, setSelectedFile] = useState(focusedFileName);
 
   return (
-    <div>
+    <div className={className}>
       <div
         css={css`
           display: flex;
@@ -78,6 +78,7 @@ const TutorialEditor = ({ focusedFileName, diff, project }) => {
 };
 
 TutorialEditor.propTypes = {
+  className: PropTypes.string,
   focusedFileName: PropTypes.string.isRequired,
   diff: PropTypes.array,
   project: PropTypes.instanceOf(Map).isRequired,

@@ -1,5 +1,6 @@
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import { isCodeBlock, isShellCommand, hasFileName } from '../utils/codeBlock';
 import { isMdxType } from '../utils/mdx';
 import { diffLines } from 'diff';
@@ -81,6 +82,11 @@ const replaceCodeBlocksWithTutorialEditor = (children, project) => {
         focusedFileName={fileName}
         diff={diffLines(prevCode, code)}
         project={project}
+        css={css`
+          &:not(:last-child) {
+            margin-bottom: 1rem;
+          }
+        `}
       />
     );
   });
