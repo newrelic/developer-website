@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import CommandLine from './CommandLine';
 import ShellOutput from './ShellOutput';
 import StaggeredShellOutput from './StaggeredShellOutput';
@@ -97,7 +98,18 @@ const AnimatedCommand = ({ command, getTokenProps, onDone, typingDelay }) => {
           getTokenProps={getTokenProps}
           onDoneTyping={() => send('PRESS_ENTER')}
           typingDelay={idx === 0 ? typingDelay : 0}
-        />
+        >
+          {line.map((token, key) => (
+            // eslint-disable-next-line react/jsx-key
+            <span
+              css={css`
+                display: inline-block;
+                vertical-align: baseline;
+              `}
+              {...getTokenProps({ token, key })}
+            />
+          ))}
+        </CommandLine>
       ))}
 
       {(state.matches('commandEntered') || state.matches('finished')) && (
@@ -127,7 +139,18 @@ const StaticCommand = ({ command, getTokenProps }) => (
         line={line}
         prompt={idx > 0 ? '>' : '$'}
         getTokenProps={getTokenProps}
-      />
+      >
+        {line.map((token, key) => (
+          // eslint-disable-next-line react/jsx-key
+          <span
+            css={css`
+              display: inline-block;
+              vertical-align: baseline;
+            `}
+            {...getTokenProps({ token, key })}
+          />
+        ))}
+      </CommandLine>
     ))}
 
     {command.output.map((line, idx) => (

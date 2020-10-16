@@ -29,9 +29,8 @@ const cursor = css`
 
 const CommandLine = ({
   animate,
-  line,
+  children,
   prompt,
-  getTokenProps,
   onDoneTyping,
   typingDelay,
 }) => {
@@ -73,16 +72,7 @@ const CommandLine = ({
             white-space: pre-wrap;
           `}
         >
-          {line.map((token, key) => (
-            // eslint-disable-next-line react/jsx-key
-            <span
-              css={css`
-                display: inline-block;
-                vertical-align: baseline;
-              `}
-              {...getTokenProps({ token, key })}
-            />
-          ))}
+          {children}
         </Element>
       </div>
     </div>
@@ -91,7 +81,7 @@ const CommandLine = ({
 
 CommandLine.propTypes = {
   animate: PropTypes.bool,
-  line: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.node,
   getTokenProps: PropTypes.func.isRequired,
   prompt: PropTypes.oneOf(['$', '>']),
   onDoneTyping: PropTypes.func,
