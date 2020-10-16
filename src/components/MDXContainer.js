@@ -4,8 +4,8 @@ import cx from 'classnames';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
-import Step from './Step';
-import Steps from './Steps';
+// import Step from './Step';
+// import Steps from './Steps';
 import Caution from './Caution';
 import Important from './Important';
 import Tip from './Tip';
