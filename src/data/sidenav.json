@@ -529,10 +529,6 @@
     "url": "/developer-events",
     "children": [
       {
-        "displayName": "Nerd days 1.0",
-        "url": "/nerd-days"
-      },
-      {
         "displayName": "All things open",
         "url": "/all-things-open"
       },
@@ -542,6 +538,10 @@
           {
             "displayName": "Kubecon & CloudNativeCon",
             "url": "/kubecon-europe-2020"
+          },
+          {
+            "displayName": "Nerd days 1.0",
+            "url": "/nerd-days"
           }
         ]
       }
