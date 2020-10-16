@@ -9,6 +9,8 @@ const isCodeLikeBlock = (child) =>
   isCodeBlock(child) ||
   isMdxType(child, 'TutorialEditor');
 
+const last = (arr) => arr[arr.length - 1];
+
 const findIndexes = (arr, predicate) =>
   arr.reduce(
     (memo, item, idx) => (predicate(item) ? [...memo, idx] : memo),
@@ -23,11 +25,11 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
     ? children.filter((child) => child !== title)
     : children;
 
-  const codeBlockIndices = findIndexes(content, isCodeLikeBlock);
+  const codeBlockIndexes = findIndexes(content, isCodeLikeBlock);
 
-  const columns = codeBlockIndices
+  const columns = codeBlockIndexes
     .reduce((memo, boundary, idx) => {
-      const previousIdx = idx === 0 ? 0 : codeBlockIndices[idx - 1] + 1;
+      const previousIdx = idx === 0 ? 0 : codeBlockIndexes[idx - 1] + 1;
 
       return [
         ...memo,
@@ -35,7 +37,7 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
         [content[boundary - 1], content[boundary]],
       ];
     }, [])
-    .concat(content.slice(codeBlockIndices[codeBlockIndices.length - 1] + 1));
+    .concat(content.slice(last(codeBlockIndexes) + 1));
 
   return (
     <div
@@ -62,29 +64,27 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
           }
         </ClassNames>
       )}
-      {codeBlockIndices.length === 0
-        ? content
-        : columns.map((column, idx) => {
-            return Array.isArray(column) ? (
-              <div
-                key={idx}
-                css={css`
-                  display: grid;
-                  grid-template-columns: repeat(2, calc(50% - 0.5rem));
-                  grid-gap: 1rem;
+      {columns.map((column, idx) => {
+        return Array.isArray(column) ? (
+          <div
+            key={idx}
+            css={css`
+              display: grid;
+              grid-template-columns: repeat(2, calc(50% - 0.5rem));
+              grid-gap: 1rem;
 
-                  &:not(:last-child) {
-                    margin-bottom: 2rem;
-                  }
-                `}
-              >
-                <div>{column[0]}</div>
-                <div>{column[1]}</div>
-              </div>
-            ) : (
-              column
-            );
-          })}
+              &:not(:last-child) {
+                margin-bottom: 2rem;
+              }
+            `}
+          >
+            <div>{column[0]}</div>
+            <div>{column[1]}</div>
+          </div>
+        ) : (
+          column
+        );
+      })}
     </div>
   );
 };
