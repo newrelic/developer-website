@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { Button, useClipboard } from '@newrelic/gatsby-theme-newrelic';
+import { Icon, Button, useClipboard } from '@newrelic/gatsby-theme-newrelic';
 import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
 import Shell from './Shell';
@@ -70,6 +70,12 @@ const Terminal = ({ animate, children }) => {
             white-space: nowrap;
           `}
         >
+          <Icon
+            name={Icon.TYPE.COPY}
+            css={css`
+              margin-right: 0.5rem;
+            `}
+          />
           {copied ? 'Copied' : 'Copy'}
         </Button>
       </div>
