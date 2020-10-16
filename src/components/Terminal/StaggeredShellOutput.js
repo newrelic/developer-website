@@ -7,7 +7,7 @@ const StaggeredShellOutput = ({ output, delay, onDone }) => {
   const callback = useRef();
   const timeout = useRef(guassianRound(100, 25));
   const [step, setStep] = useState(0);
-  const done = output.length === step;
+  const done = step >= output.length;
 
   useEffect(() => {
     callback.current = onDone;
@@ -16,12 +16,15 @@ const StaggeredShellOutput = ({ output, delay, onDone }) => {
   useEffect(() => {
     if (done) {
       callback.current();
+      return;
     }
 
     const id = setTimeout(
       () => {
+        const nextLine = output[step + 1];
         setStep((step) => step + 1);
-        timeout.current = guassianRound(80, 50);
+
+        timeout.current = nextLine?.trim() === '' ? 0 : guassianRound(80, 50);
       },
       step === 0 ? delay : timeout.current
     );
