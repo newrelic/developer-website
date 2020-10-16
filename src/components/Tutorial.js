@@ -77,6 +77,7 @@ const replaceCodeBlocksWithTutorialEditor = (children, project) => {
 
     return (
       <TutorialEditor
+        mdxType="TutorialEditor"
         focusedFileName={fileName}
         diff={diffLines(prevCode, code)}
         project={project}
