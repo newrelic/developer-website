@@ -1,10 +1,11 @@
-import React, { Children, cloneElement, isValidElement } from 'react';
+import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import { isCodeBlock, isShellCommand, hasFileName } from '../utils/codeBlock';
 import { isMdxType } from '../utils/mdx';
 import { diffLines } from 'diff';
 import useOnMount from '../hooks/useOnMount';
 import TutorialEditor from './TutorialEditor';
+import { reduceChildren, visit } from '../utils/children';
 
 const Tutorial = ({ children }) => {
   children = Children.toArray(children);
@@ -57,36 +58,6 @@ const parseProjectStateFromChildren = (children) => {
   });
 
   return project;
-};
-
-const visit = (children, guard, fn, parent = null) => {
-  Children.toArray(children).forEach((child, idx) => {
-    if (guard(child, idx, parent)) {
-      fn(child, idx, parent);
-    } else if (child.props?.children) {
-      visit(child.props.children, guard, fn, child);
-    }
-  });
-};
-
-const reduceChildren = (children, select, reducer, parent = null) => {
-  if (typeof children === 'string') {
-    return children;
-  }
-
-  return Children.map(children, (child, idx) => {
-    if (select(child, idx, parent)) {
-      return reducer(child, idx, parent);
-    }
-
-    if (child.props?.children) {
-      return cloneElement(child, {
-        children: reduceChildren(child.props.children, select, reducer, child),
-      });
-    }
-
-    return child;
-  });
 };
 
 const updateCodeBlocks = (children, project) => {
