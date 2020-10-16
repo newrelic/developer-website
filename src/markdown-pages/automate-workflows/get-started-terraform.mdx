@@ -27,10 +27,10 @@ tags:
 
 In this guide, you learn how to set up New Relic alerts with Terraform. More specifically, you provision an alert policy, four alert conditions, and a notification channel. The four alert conditions are based on the [four golden signals](https://landing.google.com/sre/sre-book/chapters/monitoring-distributed-systems/#xref_monitoring_golden-signals) of monitoring introduced in [Google’s Site Reliability Engineering book](https://landing.google.com/sre/sre-book/toc/index.html):
 
-1. **Latency:** The amount of time it takes your application to service a request.
-2. **Traffic:** The amount of requests your system receives.
-3. **Errors:** The rate of requests that fail.
-4. **Saturation:** The stress on resources to meet the demands of your application.
+- **Latency:** The amount of time it takes your application to service a request.
+- **Traffic:** The amount of requests your system receives.
+- **Errors:** The rate of requests that fail.
+- **Saturation:** The stress on resources to meet the demands of your application.
 
 <Video id="vifxeilp2h" type="wistia" />
 
@@ -72,9 +72,7 @@ terraform {
 }
 ```
 
-In this code block, you're setting the required version of Terraform to 0.13.x and setting the New Relic provider to the latest 2.x version.
-
-We recommend pinning your New Relic provider version by setting a [version constraint](https://www.terraform.io/docs/configuration/version-constraints.html) similar to the example (`~> 2.12`). If you only want to update with patch releases, use `~> 2.12.0`. Using the right version constraint for your setup can provide better stability with your Terraform runs.
+In this code block, you're setting the required version of Terraform to 0.13.x and setting the New Relic provider to the latest 2.x version. Using the right [version constraints](https://www.terraform.io/docs/configuration/version-constraints.html) for your setup will provide better stability with your Terraform runs.
 
 Now that you've set your Terraform and New Relic provider versions, you need to configure the New Relic provider.
 
@@ -187,7 +185,7 @@ terraform apply
 
 Every time you `apply` changes, Terraform asks you to confirm the actions you've told it to run. Type "yes".
 
-While it's running, Terraform will send logs to your console:
+While it's running, Terraform sends logs to your console:
 
 ```txt copy=false
 # Example output of `terraform apply`
@@ -328,7 +326,7 @@ For the Infrastructure alert, you created a [`newrelic_infra_alert_condition`](h
 
 Now that you've configured some important alert conditions, add a notification channel to your alert policy to ensure the proper folks get notified when an alert triggers. To do so, use a [`newrelic_alert_channel`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel).
 
-To start off, you can create an email notification channel to send alert notifications to one or more emails. This can be useful when you want to notify a specific person or team when alerts are triggered.
+To begin, create an email notification channel to send alert notifications to your email. Use this when you want to notify a specific person or team when alerts are triggered:
 
 ```hcl
 resource "newrelic_alert_channel" "team_email" {
@@ -342,21 +340,24 @@ resource "newrelic_alert_channel" "team_email" {
 }
 ```
 
-<Tip>
+If you want to specify multiple `recipients`, use a comma-delimited list of emails.
 
-`new_relic_alert_channel` [supports several types](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#argument-reference) of notification channels, including: email, slack, and pagerduty.
+Last, but not least, in order to apply the notification channel to your alert policy, create a [`newrelic_alert_policy_channel`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_policy_channel):
 
-</Tip>
+```hcl
+resource "newrelic_alert_policy_channel" "golden_signals" {
+  policy_id   = newrelic_alert_policy.golden_signal_policy.id
+  channel_ids = [newrelic_alert_channel.team_email.id]
+}
+```
 
-**Bonus**
+A `newrelic_alert_policy_channel` links the notification channel you just created to your alert policy.
 
-This step is optional, but since Slack is quite popular, creating a Slack notification channel can be a useful integration. When an alert triggers, a notification will be sent to the Slack channel of your choice.
+To finalize your golden signal alerts configuration, run `terraform apply` one last time to make sure all of your configured resources are up to date.
 
-<Important>
+<Tip title="Extra Credit">
 
-Before adding a Slack notification channel, you need to add the [New Relic Slack App](https://slack.com/apps/A0F827KK2-new-relic-alerts) to your Slack account and select a Slack channel to send the notification.
-
-</Important>
+`new_relic_alert_channel` [supports several types](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#argument-reference) of notification channels, including: email, slack, and pagerduty. So, if you want to explore this more, try creating an alert channel for a second channel type, such as Slack:
 
 ```hcl
 # Slack notification channel
@@ -372,18 +373,9 @@ resource "newrelic_alert_channel" "slack_notification" {
 }
 ```
 
-Last, but not least, in order to apply the notification channel to your alert policy, create a [`newrelic_alert_policy_channel`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_policy_channel):
+Before you `apply` this change, you need to add the [New Relic Slack App](https://slack.com/apps/A0F827KK2-new-relic-alerts) to your Slack account and select a Slack channel to send the notification. With this new alert channel, triggered alerts send notifications to the Slack channel of your choice.
 
-```hcl
-resource "newrelic_alert_policy_channel" "golden_signals" {
-  policy_id   = newrelic_alert_policy.golden_signal_policy.id
-  channel_ids = [newrelic_alert_channel.slack_notification.id]
-}
-```
-
-A `newrelic_alert_policy_channel` links the notification channel you just created to your alert policy.
-
-To finalize your golden signal alerts configuration, run `terraform apply` one last time to make sure all of your configured resources are up to date.
+</Tip>
 
 </Step>
 
