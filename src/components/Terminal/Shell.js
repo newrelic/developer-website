@@ -83,7 +83,7 @@ const Shell = forwardRef(({ animate, highlight, code }, ref) => {
             animate={!state.matches('boot')}
             command={command}
             getTokenProps={getTokenProps}
-            typingDelay={idx === 0 ? 2000 : 500}
+            typingDelay={idx === 0 ? 1500 : 500}
             onDone={() => {
               send('COMMAND_EXECUTED');
             }}
