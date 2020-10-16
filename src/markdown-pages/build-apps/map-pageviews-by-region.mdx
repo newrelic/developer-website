@@ -97,7 +97,9 @@ export default class PageViewApp extends React.Component {
 
 <TutorialSection>
 
-<TutorialStep title="Create and serve a new Nerdpack">
+<TutorialStep>
+
+### Create and serve a new Nerdpack
 
 To get started, create a new Nerdpack, and serve it up to New Relic from your local development environment:
 
@@ -141,7 +143,9 @@ cd pageviews-app && nr1 nerdpack:serve
 
 </TutorialStep>
 
-<TutorialStep title="Review your app files and view your app locally">
+<TutorialStep>
+
+### Review your app files and view your app locally
 
 1. Navigate to your `pageviews-app` to see how it's structured.
    It contains a launcher folder, where you can customize the description and icon that will be displayed on the app's launcher in New Relic One. It also contains `nerdlets`, which each contain three default files: `index.js`, `nr1.json`, and `styles.scss`. You'll edit some of these files as part of this guide. For more information, see [Nerdpack file structure](/explore-docs/nerdpack-file-structure).
@@ -152,7 +156,9 @@ When you select the launcher, you see a `Hello` message.
 
 </TutorialStep>
 
-<TutorialStep title="Hard code your account ID">
+<TutorialStep>
+
+### Hard code your account ID
 
 For the purposes of this exercise and for your convenience, hard code your account ID. In the `pageview-app-nerdlet` directory, in the `index.js` file, add this code between the `import` and `export` lines. ([Read about finding your account ID here](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id)).
 
@@ -170,7 +176,9 @@ export default class PageViewApp extends React.Component {
 
 </TutorialStep>
 
-<TutorialStep title="Import the `TableChart` component">
+<TutorialStep>
+
+### Import the `TableChart` component
 
 To show your data in a table chart, import the [`TableChart` component](/client-side-sdk/index.html#charts/TableChart) from New Relic One. To do so, in `index.js`, add this code under `import React`.
 
@@ -189,7 +197,9 @@ export default class PageViewApp extends React.Component {
 
 </TutorialStep>
 
-<TutorialStep title="Add a table with a single row">
+<TutorialStep>
+
+### Add a table with a single row
 
 To add a table with a single row, in the `index.js` file, replace this line with this `export` code:
 
@@ -212,7 +222,9 @@ export default class PageViewApp extends React.Component {
 
 </TutorialStep>
 
-<TutorialStep title="Customize the look of your table (optional)">
+<TutorialStep>
+
+### Customize the look of your table (optional)
 
 You can use standard CSS to customize the look of your components.
 
@@ -238,7 +250,9 @@ Feel free to customize this CSS to your taste.
 
 </TutorialStep>
 
-<TutorialStep title="Get your data into that table">
+<TutorialStep>
+
+### Get your data into that table
 
 Now that you've got a table, you can drop a `TableChart` populated with data from the NRQL query you wrote at the very beginning of this guide.
 

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import Markdown from './Markdown';
+import { isMdxType } from '../utils/mdx';
 
-const TutorialStep = ({ children, stepNumber, title, totalSteps }) => {
+const TutorialStep = ({ children, stepNumber, totalSteps }) => {
+  children = Children.toArray(children);
+  const title = isMdxType(children[0], 'h3') ? children[0] : null;
+
   return (
     <div
       css={css`
@@ -20,16 +23,19 @@ const TutorialStep = ({ children, stepNumber, title, totalSteps }) => {
       >
         Step {stepNumber} of {totalSteps}
       </p>
-      <h3
-        css={css`
-          font-size: 1rem;
-          font-weight: bold;
-          margin-top: 0 !important;
-        `}
-      >
-        <Markdown source={title} />
-      </h3>
-      {children}
+      {title && (
+        <h3
+          {...title.props}
+          css={css`
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 0 !important;
+          `}
+        >
+          {title.props.children}
+        </h3>
+      )}
+      {children.filter((child) => child !== title)}
     </div>
   );
 };
@@ -37,7 +43,6 @@ const TutorialStep = ({ children, stepNumber, title, totalSteps }) => {
 TutorialStep.propTypes = {
   children: PropTypes.node,
   stepNumber: PropTypes.number.isRequired,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   totalSteps: PropTypes.number.isRequired,
 };
 
