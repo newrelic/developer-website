@@ -29,7 +29,7 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
   return (
     <div
       css={css`
-        padding: 2rem 0;
+        padding: 1.5rem 0 2rem 0;
         border-top: 1px solid var(--divider-color);
 
         &:last-child {
