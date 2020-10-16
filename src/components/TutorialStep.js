@@ -4,19 +4,6 @@ import { css, ClassNames } from '@emotion/core';
 import { isMdxType } from '../utils/mdx';
 import { isShellCommand, isCodeBlock } from '../utils/codeBlock';
 
-const isCodeLikeBlock = (child) =>
-  isShellCommand(child) ||
-  isCodeBlock(child) ||
-  isMdxType(child, 'TutorialEditor');
-
-const last = (arr) => arr[arr.length - 1];
-
-const findIndexes = (arr, predicate) =>
-  arr.reduce(
-    (memo, item, idx) => (predicate(item) ? [...memo, idx] : memo),
-    []
-  );
-
 const TutorialStep = ({ children, stepNumber, totalSteps }) => {
   children = Children.toArray(children);
 
@@ -132,5 +119,18 @@ StepCounter.propTypes = {
   stepNumber: PropTypes.number,
   total: PropTypes.number,
 };
+
+const isCodeLikeBlock = (child) =>
+  isShellCommand(child) ||
+  isCodeBlock(child) ||
+  isMdxType(child, 'TutorialEditor');
+
+const last = (arr) => arr[arr.length - 1];
+
+const findIndexes = (arr, predicate) =>
+  arr.reduce(
+    (memo, item, idx) => (predicate(item) ? [...memo, idx] : memo),
+    []
+  );
 
 export default TutorialStep;
