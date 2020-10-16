@@ -21,8 +21,8 @@ import styles from './MDXContainer.module.scss';
 
 const components = {
   Video,
-  Step,
-  Steps,
+  Step: TutorialStep,
+  Steps: TutorialSection,
   Project,
   Tutorial,
   TutorialStep,

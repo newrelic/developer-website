@@ -4,8 +4,8 @@ import { css } from '@emotion/core';
 import { isMdxType } from '../utils/mdx';
 
 const TutorialSection = ({ children }) => {
-  const totalSteps = Children.toArray(children).filter((child) =>
-    isMdxType(child, 'TutorialStep')
+  const totalSteps = Children.toArray(children).filter(
+    (child) => isMdxType(child, 'TutorialStep') || isMdxType(child, 'Step')
   ).length;
   let step = 1;
 
@@ -16,7 +16,7 @@ const TutorialSection = ({ children }) => {
       `}
     >
       {Children.map(children, (child) => {
-        if (isMdxType(child, 'TutorialStep')) {
+        if (isMdxType(child, 'TutorialStep') || isMdxType(child, 'Step')) {
           return cloneElement(child, { stepNumber: step++, totalSteps });
         }
 
