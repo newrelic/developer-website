@@ -10,22 +10,21 @@ export const visit = (children, guard, fn, parent = null) => {
   });
 };
 
-export const reduceChildren = (children, select, reducer, parent = null) => {
-  if (typeof children === 'string') {
-    return children;
-  }
+export const reduceChildren = (children, select, reducer) => {
+  return Children.count(children) === 1
+    ? transform(children, select, reducer)
+    : Children.map(children, (child) => transform(child, select, reducer));
+};
 
-  return Children.map(children, (child, idx) => {
-    if (select(child, idx, parent)) {
-      return reducer(child, idx, parent);
-    }
-
-    if (child.props?.children) {
+const transform = (child, select, reducer) => {
+  switch (true) {
+    case select(child):
+      return reducer(child);
+    case Boolean(child.props?.children):
       return cloneElement(child, {
-        children: reduceChildren(child.props.children, select, reducer, child),
+        children: reduceChildren(child.props.children, select, reducer),
       });
-    }
-
-    return child;
-  });
+    default:
+      return child;
+  }
 };
