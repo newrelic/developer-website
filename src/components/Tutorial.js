@@ -6,7 +6,7 @@ import { isMdxType } from '../utils/mdx';
 import { diffLines } from 'diff';
 import useOnMount from '../hooks/useOnMount';
 import TutorialEditor from './TutorialEditor';
-import { reduceChildren, visit } from '../utils/children';
+import { replaceChildren, visit } from '../utils/children';
 
 const Tutorial = ({ children }) => {
   children = Children.toArray(children);
@@ -62,7 +62,7 @@ const parseProjectStateFromChildren = (children) => {
 };
 
 const replaceCodeBlocksWithTutorialEditor = (children, project) => {
-  return reduceChildren(children, isProjectCodeBlock, (codeBlock) => {
+  return replaceChildren(children, isProjectCodeBlock, (codeBlock) => {
     const { fileName, code, ...props } = extractCodeBlockProps(codeBlock);
 
     if (!project.has(fileName)) {

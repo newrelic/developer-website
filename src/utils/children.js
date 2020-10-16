@@ -10,19 +10,19 @@ export const visit = (children, guard, fn, parent = null) => {
   });
 };
 
-export const reduceChildren = (children, select, reducer) => {
+export const replaceChildren = (children, test, replace) => {
   return Children.count(children) === 1
-    ? transform(children, select, reducer)
-    : Children.map(children, (child) => transform(child, select, reducer));
+    ? replaceChild(children, test, replace)
+    : Children.map(children, (child) => replaceChild(child, test, replace));
 };
 
-const transform = (child, select, reducer) => {
+const replaceChild = (child, test, replace) => {
   switch (true) {
-    case select(child):
-      return reducer(child);
+    case test(child):
+      return replace(child);
     case Boolean(child.props?.children):
       return cloneElement(child, {
-        children: reduceChildren(child.props.children, select, reducer),
+        children: replaceChildren(child.props.children, test, replace),
       });
     default:
       return child;
