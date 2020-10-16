@@ -15,15 +15,6 @@ const findIndexes = (arr, predicate) =>
     []
   );
 
-const sliceRegions = (indices) =>
-  indices.reduce((memo, boundary, idx) => {
-    if (idx === 0) {
-      return [[0, boundary]];
-    }
-
-    return [...memo, [indices[idx - 1], boundary]];
-  }, []);
-
 const TutorialStep = ({ children, stepNumber, totalSteps }) => {
   children = Children.toArray(children);
 
@@ -40,7 +31,8 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
 
       return [
         ...memo,
-        [content.slice(previousIdx, boundary), content[boundary]],
+        ...content.slice(previousIdx, boundary - 1),
+        [content[boundary - 1], content[boundary]],
       ];
     }, [])
     .concat(content.slice(codeBlockIndices[codeBlockIndices.length - 1] + 1));
@@ -82,7 +74,7 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
                   grid-gap: 1rem;
 
                   &:not(:last-child) {
-                    margin-bottom: 1rem;
+                    margin-bottom: 2rem;
                   }
                 `}
               >
