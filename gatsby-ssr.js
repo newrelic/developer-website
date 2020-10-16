@@ -58,6 +58,7 @@ const onRenderBody = ({ setHeadComponents }) => {
   if (process.env.NODE_ENV !== `production`) {
     return null;
   }
+
   // Pre-connect to google analytics
   return setHeadComponents([
     <link

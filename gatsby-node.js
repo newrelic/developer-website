@@ -1,7 +1,6 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
-const MONACO_DIR = path.resolve(__dirname, './node_modules/monaco-editor');
 
 const MAX_RESULTS = 5;
 

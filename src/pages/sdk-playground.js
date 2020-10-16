@@ -1,21 +1,16 @@
-import React, { useState, useRef, useEffect, Suspense } from 'react';
-import { LiveProvider, LivePreview, LiveError } from 'react-live';
+import React, { useState, useRef, Suspense } from 'react';
+import { LiveProvider, LivePreview } from 'react-live';
 import { css } from '@emotion/core';
 import root from 'react-shadow';
 import { CSS_BUNDLE, SDK_VARS } from '../utils/sdk';
 import NR1Logo from '../components/NR1Logo';
-// import PlaygroundSidebar from '../components/PlaygroundSidebar';
+import PlaygroundSidebar from '../components/PlaygroundSidebar';
+import PlaygroundSidebarToggle from '../components/PlaygroundSidebarToggle';
 
 const defaultCode = `
 class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
   render() {
-    return <Button
-    onClick={() => alert('Hello World!')}
-    type={Button.TYPE.PRIMARY}
-    iconType={Button.ICON_TYPE.DOCUMENTS__DOCUMENTS__NOTES__A_ADD}
-  >
-    Click Me
-  </Button>;
+    return <div></div>
   }
 }
 `;
@@ -24,19 +19,22 @@ const Editor = React.lazy(() => import('react-monaco-editor'));
 
 const SdkPlayground = () => {
   const [code, setCode] = useState(defaultCode);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [editorKey, setEditorKey] = useState(null);
   const monaco = useRef(null);
   const sdk = window.__NR1_SDK__?.default ?? {};
-  const [isFront, setIsFront] = useState(false);
 
-  useEffect(() => {
-    process.nextTick(() => {
-      if (globalThis.window ?? false) {
-        setIsFront(true);
-      }
-    });
-  }, []);
+  //const [isFront, setIsFront] = useState(false);
 
-  if (!isFront) return null;
+  // useEffect(() => {
+  //   process.nextTick(() => {
+  //     if (globalThis.window ?? false) {
+  //       setIsFront(true);
+  //     }
+  //   });
+  // }, [isFront]);
+
+  // if (!isFront) return null;
 
   if (typeof window === 'undefined') global.window = {};
 
@@ -45,34 +43,44 @@ const SdkPlayground = () => {
   const handleEditorDidMount = (editor, monaco) => {
     editor.focus();
     Editor && monacoConfig(monaco, sdk);
+    window.addEventListener('resize', updateWindowDimensions);
+  };
+
+  const updateWindowDimensions = () => {
+    setEditorKey(`${window.innerWidth}`);
   };
 
   const onEditorChange = (value) => {
     setCode(value);
   };
 
-  // const onPlaygroundSubmit = (component, propTypes) => {
-  //   const { editor } = monaco.current;
+  const onPlaygroundSubmit = (component, propTypes) => {
+    const { editor } = monaco.current;
+    const edit = [`<${component}`];
+    Object.keys(propTypes).forEach((prop) => {
+      edit.push(`${prop}={${propTypes[prop]}}`);
+    });
 
-  //   const edit = [`<${component}`];
-  //   Object.keys(propTypes).forEach((prop) => {
-  //     edit.push(`${prop}={${propTypes[prop]}}`);
-  //   });
+    edit.push(`></${component}>`);
 
-  //   edit.push(`></${component}>`);
+    editor.executeEdits('', [
+      {
+        range: {
+          startLineNumber: editor.getPosition().lineNumber,
+          startColumn: editor.getPosition().column,
+          endLineNumber: editor.getPosition().lineNumber,
+          endColumn: editor.getPosition().column,
+        },
+        text: edit.join(' '),
+      },
+    ]);
+  };
 
-  //   editor.executeEdits('', [
-  //     {
-  //       range: {
-  //         startLineNumber: editor.getPosition().lineNumber,
-  //         startColumn: editor.getPosition().column,
-  //         endLineNumber: editor.getPosition().lineNumber,
-  //         endColumn: editor.getPosition().column,
-  //       },
-  //       text: edit.join(' '),
-  //     },
-  //   ]);
-  // };
+  const toggleSidebar = () => {
+    let num = Math.random() * 10;
+    setShowSidebar(!showSidebar);
+    setEditorKey(`${window.innerWidth} ${num}`);
+  };
 
   return (
     <>
@@ -114,36 +122,35 @@ const SdkPlayground = () => {
                   <h3 className="nr1-header-title">My Awesome Nerdpack</h3>
                   <hr className="nr1-divider" />
                 </div>
-                <LivePreview />
+                <div
+                  css={css`
+                    margin-left: 1rem;
+                  `}
+                >
+                  <LivePreview />
+                </div>
               </div>
             </root.div>
-            <LiveError />
+            {/* <LiveError /> */}
+
             <Suspense fallback={<div>Loading...</div>}>
               <Editor
                 height="350px"
                 language="javascript"
                 value={code}
                 theme="vs-dark"
-                options={{ selectOnLineNumbers: true }}
+                options={{ selectOnLineNumbers: true, automaticLayout: true }}
                 editorDidMount={handleEditorDidMount}
                 onChange={onEditorChange}
                 ref={monaco}
+                key={editorKey}
               />
             </Suspense>
           </div>
-          {/* <div
-            css={css`
-              width: 400px;
-              overflow: scroll;
-            `}
-          >
-            <ul>
-              <PlaygroundSidebar
-                onClick={onPlaygroundClick}
-                onPlaygroundSubmit={onPlaygroundSubmit}
-              />
-            </ul>
-          </div> */}
+          <PlaygroundSidebarToggle code={code} onClickHandler={toggleSidebar} />
+          {showSidebar && (
+            <PlaygroundSidebar onPlaygroundSubmit={onPlaygroundSubmit} />
+          )}
         </div>
       </LiveProvider>
     </>
@@ -192,7 +199,7 @@ const createComponentCompletion = (range, monaco, sdk) => {
       label: component,
       kind: monaco.languages.CompletionItemKind.Function,
       documentation: sdk[component]?.__docs__?.text || '',
-      insertText: `<${component}></${component}>`,
+      insertText: `${component}></${component}>`,
       range: range,
     };
   });
