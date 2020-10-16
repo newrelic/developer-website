@@ -22,15 +22,7 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
         }
       `}
     >
-      <p
-        css={css`
-          font-size: 0.75rem;
-          color: var(--accent-text-color);
-          margin-bottom: 0;
-        `}
-      >
-        Step {stepNumber} of {totalSteps}
-      </p>
+      <StepCounter stepNumber={stepNumber} total={totalSteps} />
       {title && (
         <ClassNames>
           {({ css }) =>
@@ -53,6 +45,44 @@ TutorialStep.propTypes = {
   children: PropTypes.node,
   stepNumber: PropTypes.number.isRequired,
   totalSteps: PropTypes.number.isRequired,
+};
+
+const StepCounter = ({ className, stepNumber, total }) => (
+  <div
+    className={className}
+    css={css`
+      --accent-size: 1.2em;
+
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent-text-color);
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    `}
+  >
+    Step{' '}
+    <span
+      css={css`
+        font-size: var(--accent-size);
+      `}
+    >
+      {stepNumber}
+    </span>{' '}
+    of{' '}
+    <span
+      css={css`
+        font-size: var(--accent-size);
+      `}
+    >
+      {total}
+    </span>
+  </div>
+);
+
+StepCounter.propTypes = {
+  className: PropTypes.string,
+  stepNumber: PropTypes.number,
+  total: PropTypes.number,
 };
 
 export default TutorialStep;
