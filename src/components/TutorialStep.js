@@ -3,8 +3,16 @@ import PropTypes from 'prop-types';
 import { css, ClassNames } from '@emotion/core';
 import { isMdxType } from '../utils/mdx';
 import { isShellCommand, isCodeBlock } from '../utils/codeBlock';
+import usePageLayout from '../hooks/usePageLayout';
+
+const BREAKPOINTS = {
+  SINGLE_COLUMN: '1240px',
+  RELATED_CONTENT: '1520px',
+};
 
 const TutorialStep = ({ children, stepNumber, totalSteps }) => {
+  const pageLayout = usePageLayout();
+
   children = Children.toArray(children);
 
   const title = isMdxType(children[0], 'h3') ? children[0] : null;
@@ -62,6 +70,10 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
 
               &:not(:last-child) {
                 margin-bottom: 2rem;
+              }
+
+              @media (max-width: ${BREAKPOINTS[pageLayout]}) {
+                grid-template-columns: minmax(0, 1fr);
               }
             `}
           >
