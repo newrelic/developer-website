@@ -42,7 +42,7 @@ const CommandLine = ({ cursor, children, prompt }) => {
               display: block;
               width: 1ch;
               height: 1.25em;
-              animation: ${blink} 1.5s infinite;
+              animation: ${blink} 1.25s infinite;
               position: absolute;
               top: 1px;
               right: -1ch;

@@ -14,7 +14,7 @@ const Terminal = ({ animate, children }) => {
   const [copied, copy] = useClipboard();
   const intersection = useIntersection(ref, {
     root: null,
-    rootMargin: '0px 0px -33% 0px',
+    rootMargin: '0px 0px -50% 0px',
   });
 
   useEffect(() => {
