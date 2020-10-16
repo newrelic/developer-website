@@ -16,6 +16,10 @@ const TutorialEditor = ({ focusedFileName, diff, project }) => {
           background: ${darken(0.05, '#2e3440')};
           border-top-left-radius: 0.25rem;
           border-top-right-radius: 0.25rem;
+
+          .light-mode & {
+            background: var(--color-nord-4);
+          }
         `}
       >
         {Array.from(project.keys()).map((fileName) => (
@@ -33,6 +37,12 @@ const TutorialEditor = ({ focusedFileName, diff, project }) => {
               background: ${fileName === selectedFile
                 ? 'var(--color-nord-0)'
                 : 'inherit'};
+
+              .light-mode & {
+                background: ${fileName === selectedFile
+                  ? 'var(--color-nord-6)'
+                  : 'inherit'};
+              }
             `}
           >
             {path.basename(fileName)}
