@@ -8,6 +8,7 @@ const headers = {
   // SG to treat this as a programatic request and provide a 401 instead
   // of a redirect response
   'X-Requested-With': 'XMLHttpRequest',
+  'NewRelic-Requesting-Services': 'developer-newrelic-com|nerd-graph',
 };
 
 export const client = new ApolloClient({
