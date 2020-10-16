@@ -2,7 +2,6 @@ import ApolloClient from 'apollo-boost';
 import fetch from 'isomorphic-fetch';
 
 const headers = {
-  'Content-Type': 'application/json',
   'X-Content-Type-Options': 'nosniff',
   'X-API-Key': 'developer.newrelic.com',
   // We need this header or the 'accept: application/json' to be set for
