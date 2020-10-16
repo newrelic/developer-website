@@ -1,4 +1,10 @@
-import React, { useState, useRef, useEffect, Suspense } from 'react';
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useContext,
+  Suspense,
+} from 'react';
 import { LiveProvider, LivePreview, LiveError } from 'react-live';
 import { css } from '@emotion/core';
 import root from 'react-shadow';
@@ -30,6 +36,7 @@ const SdkPlayground = () => {
   const monaco = useRef(null);
   const sdk = window.__NR1_SDK__?.default ?? {};
   const [isFront, setIsFront] = useState(false);
+  const authContext = useContext(AuthContext);
   // Auth query
   const { loading, error, data } = useQuery(userQuery);
 
@@ -123,7 +130,7 @@ const SdkPlayground = () => {
                     <NR1Logo />
                   </a>
                   <div>
-                    {AuthContext.isAuthenticated
+                    {authContext.isAuthenticated
                       ? "you're cool"
                       : 'who are you?!'}{' '}
                   </div>
