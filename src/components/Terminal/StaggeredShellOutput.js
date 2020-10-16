@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import ShellOutput from './ShellOutput';
 import guassianRound from './gaussianRound';
 
+const ONLY_WHITESPACE = /^\s*$/;
+
 const StaggeredShellOutput = ({ output, delay, onDone }) => {
   const callback = useRef();
   const timeout = useRef(guassianRound(100, 25));
   const [step, setStep] = useState(0);
   const done = step >= output.length;
+  const line = (output[step] || '').trim();
 
   useEffect(() => {
     callback.current = onDone;
@@ -19,18 +22,21 @@ const StaggeredShellOutput = ({ output, delay, onDone }) => {
       return;
     }
 
+    if (ONLY_WHITESPACE.test(line)) {
+      setStep((step) => step + 1);
+      return;
+    }
+
     const id = setTimeout(
       () => {
-        const nextLine = output[step + 1];
         setStep((step) => step + 1);
-
-        timeout.current = nextLine?.trim() === '' ? 0 : guassianRound(80, 50);
+        timeout.current = guassianRound(80, 50);
       },
       step === 0 ? delay : timeout.current
     );
 
     return () => clearTimeout(id);
-  }, [step, done, delay]);
+  }, [step, done, delay, line]);
 
   return output
     .slice(0, step)
