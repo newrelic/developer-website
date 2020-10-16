@@ -24,7 +24,7 @@ const Tutorial = ({ children }) => {
     ? parseProjectStateFromConfig(projectElement)
     : parseProjectStateFromChildren(children);
 
-  return updateCodeBlocks(children, initialProjectState);
+  return replaceCodeBlocksWithTutorialEditor(children, initialProjectState);
 };
 
 Tutorial.propTypes = {
@@ -60,7 +60,7 @@ const parseProjectStateFromChildren = (children) => {
   return project;
 };
 
-const updateCodeBlocks = (children, project) => {
+const replaceCodeBlocksWithTutorialEditor = (children, project) => {
   return reduceChildren(children, isProjectCodeBlock, (codeBlock) => {
     const { fileName, code, ...props } = extractCodeBlockProps(codeBlock);
 
