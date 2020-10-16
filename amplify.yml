@@ -3,6 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
+        - nvm use $VERSION_NODE_12
         - npm ci
     build:
       commands:
