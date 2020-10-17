@@ -57,7 +57,7 @@ const IndexPage = ({ data, pageContext }) => {
     <PageContext.Provider value={pageContext}>
       <SEO />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Mark your calendar for Nerd Days 1.0" />
+        <PageLayout.Header title="Mark your calendar for Nerd Days 1.0 APAC" />
 
         <PageLayout.Content>
           <section
@@ -69,20 +69,19 @@ const IndexPage = ({ data, pageContext }) => {
             <div className={styles.introText}>
               <p>
                 Nerd Days is a <strong>FREE</strong> engineering conference that
-                kicks off October 13 (Dates vary by region). Focused on building
-                more perfect software, our goal is to spend less time looking at
-                slides that tell you what software can do and more time on
-                getting your hands on the software to solve problems
-                efficiently.
+                kicks off October 22 (APAC). Focused on building more perfect
+                software, our goal is to spend less time looking at slides that
+                tell you what software can do and more time on getting your
+                hands on the software to solve problems efficiently.
               </p>
               <Countdown
-                targetDate="October 13 2020 9:00:00 PDT"
-                inactiveMessage="Countdown to Nerd Days"
+                targetDate="October 22 2020 6:00:00 PDT"
+                inactiveMessage="Countdown to Nerd Days APAC"
               />
               <p>
                 <Button
                   as={Link}
-                  to="/nerd-days"
+                  to="/apj-nerd-days"
                   variant={Button.VARIANT.PRIMARY}
                 >
                   Register
