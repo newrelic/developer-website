@@ -29,7 +29,7 @@ const CommandLine = ({ cursor, children, prompt }) => {
         css={css`
           position: relative;
           color: #fafafa;
-          white-space: pre-wrap;
+          white-space: pre;
 
           &:empty {
             height: 100%;

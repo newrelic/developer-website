@@ -8,7 +8,7 @@ const ShellOutput = ({ line }) => (
   <div
     css={css`
       color: #fafafa;
-      white-space: pre-wrap;
+      white-space: pre;
     `}
   >
     {tokenize(line).map((token, key) => (
