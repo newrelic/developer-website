@@ -79,9 +79,9 @@ export default class PageViewApp extends React.Component {
 
 ## Build a custom app with a table chart
 
-<TutorialSection>
+<Steps>
 
-<TutorialStep>
+<Step>
 
 ### Query your browser data
 
@@ -99,9 +99,9 @@ If you have PageView data, this query shows a week of average page views broken 
 
 If you don't have any results at this point, ensure your query doesn't have any errors. If your query is correct, you might not have the [Browser agent](https://docs.newrelic.com/docs/browser/new-relic-browser/installation/install-new-relic-browser-agent) installed.
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Create and serve a new Nerdpack
 
@@ -145,9 +145,9 @@ cd pageviews-app && nr1 nerdpack:serve
 [output] {success}✔  {plain}Nerdpack built successfully!
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Review your app files and view your app locally
 
@@ -158,9 +158,9 @@ cd pageviews-app && nr1 nerdpack:serve
 
 When you select the launcher, you see a `Hello` message.
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Hard code your account ID
 
@@ -178,9 +178,9 @@ export default class PageViewApp extends React.Component {
 }
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Import the `TableChart` component
 
@@ -199,9 +199,9 @@ export default class PageViewApp extends React.Component {
 }
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Add a table with a single row
 
@@ -224,9 +224,9 @@ export default class PageViewApp extends React.Component {
 }
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Customize the look of your table (optional)
 
@@ -252,9 +252,9 @@ Feel free to customize this CSS to your taste.
 }
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Get your data into that table
 
@@ -290,17 +290,17 @@ Go to New Relic One and click your app to see your data in the table. (You might
 
 Congratulations! You made your app! Continue on to make it interactive and show your data on a map.
 
-</TutorialStep>
+</Step>
 
-</TutorialSection>
+</Steps>
 
 ## Make your app interactive with a text field
 
 Once you confirm that data is getting to New Relic from your app, you can start customizing it and making it interactive. To do this, you add a text field to filter your data. Later, you use a third-party library called `Leaflet` to show that data on a world map.
 
-<TutorialSection>
+<Steps>
 
-<TutorialStep>
+<Step>
 
 ### Import the `TextField` component
 
@@ -330,9 +330,9 @@ export default class PageViewApp extends React.Component {
 }
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Add a row for your text field
 
@@ -371,9 +371,9 @@ export default class PageViewApp extends React.Component {
 }
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Build the text field object
 
@@ -508,17 +508,17 @@ export default class PageViewApp extends React.Component {
 
 Reload your app to try out the text field.
 
-</TutorialStep>
+</Step>
 
-</TutorialSection>
+</Steps>
 
 ## Get your data on a map
 
 To create the map, you use npm to install `Leaflet`.
 
-<TutorialSection>
+<Steps>
 
-<TutorialStep>
+<Step>
 
 ### Install `Leaflet`
 
@@ -576,9 +576,9 @@ While you're in `styles.scss`, fix the width and height of your map:
 }
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Add a webpack config file for `Leaflet`
 
@@ -606,9 +606,9 @@ module.exports = {
 };
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Import modules from `Leaflet`
 
@@ -658,9 +658,9 @@ export default class PageViewApp extends React.Component {
 }
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Import additional modules from New Relic One
 
@@ -719,9 +719,9 @@ export default class PageViewApp extends React.Component {
 
 `NerdGraphQuery` lets you make multiple NRQL queries at once and is what will populate the map with data. `Spinner` adds a loading spinner. `Button` gives you button components. `BlockText` give you block text components.
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Get data for the map
 
@@ -796,9 +796,9 @@ export default class PageViewApp extends React.Component {
 }
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Customize the map marker colors
 
@@ -885,9 +885,9 @@ export default class PageViewApp extends React.Component {
 
 Feel free to change the HTML color code values to your taste. In this example, `#11A600` is green, `#FFD966` is sort of yellow, and `#BF0016` is red.
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Set your map's default center point
 
@@ -973,9 +973,9 @@ export default class PageViewApp extends React.Component {
 }
 ```
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Add a row for your map
 
@@ -1078,9 +1078,9 @@ export default class PageViewApp extends React.Component {
 
 Reload your application in New Relic One to test that it works.
 
-</TutorialStep>
+</Step>
 
-<TutorialStep>
+<Step>
 
 ### Replace "Hello" with the Leaflet code
 
@@ -1208,9 +1208,9 @@ export default class PageViewApp extends React.Component {
 }
 ```
 
-</TutorialStep>
+</Step>
 
-</TutorialSection>
+</Steps>
 
 This code creates a world map centered on the latitude and longitude you chose using `OpenStreetMap` data and your marker colors.
 
