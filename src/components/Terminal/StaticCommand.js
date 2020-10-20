@@ -37,3 +37,5 @@ StaticCommand.propTypes = {
   command: PropTypes.object.isRequired,
   getTokenProps: PropTypes.func.isRequired,
 };
+
+export default StaticCommand;
