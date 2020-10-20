@@ -10,12 +10,17 @@ const BREAKPOINTS = {
   RELATED_CONTENT: '1520px',
 };
 
+const ALLOWED_HEADINGS = ['h2', 'h3', 'h4'];
+
 const TutorialStep = ({ children, stepNumber, totalSteps }) => {
   const pageLayout = usePageLayout();
 
   children = Children.toArray(children);
 
-  const title = isMdxType(children[0], 'h3') ? children[0] : null;
+  const title = ALLOWED_HEADINGS.some((level) => isMdxType(children[0], level))
+    ? children[0]
+    : null;
+
   const content = title
     ? children.filter((child) => child !== title)
     : children;
@@ -51,9 +56,11 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
           {({ css }) =>
             cloneElement(title, {
               className: css`
-                font-size: 1rem;
-                font-weight: bold;
-                margin-top: 0 !important;
+                &&& {
+                  font-size: 1rem;
+                  font-weight: bold;
+                  margin-top: 0;
+                }
               `,
             })
           }
