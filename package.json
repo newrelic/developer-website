@@ -9,7 +9,7 @@
     "@mdx-js/react": "^1.6.18",
     "@newrelic/gatsby-theme-newrelic": "^1.10.2",
     "@splitsoftware/splitio-react": "^1.2.0",
-    "@xstate/react": "^1.0.0-rc.6",
+    "@xstate/react": "^1.0.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "diff": "^4.0.2",
