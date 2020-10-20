@@ -30,7 +30,6 @@ const AnimatedCommand = ({ command, getTokenProps, onDone, typingDelay }) => {
             onTypingDone={() => {
               send('PRESS_ENTER');
             }}
-            // onCharacterTyped={(_, idx) => idx !== 0 && setEmpty(false)}
             cursor={{ show: false }}
             css={css`
               &:empty {
