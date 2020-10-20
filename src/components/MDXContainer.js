@@ -4,8 +4,6 @@ import cx from 'classnames';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
-// import Step from './Step';
-// import Steps from './Steps';
 import Caution from './Caution';
 import Important from './Important';
 import Tip from './Tip';
@@ -21,6 +19,8 @@ import styles from './MDXContainer.module.scss';
 
 const components = {
   Video,
+  // Remove these when all step/steps components have been updated to the new
+  // name
   Step: TutorialStep,
   Steps: TutorialSection,
   Project,
