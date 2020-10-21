@@ -7,25 +7,22 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import Command from './Command';
 import CommandLine from './CommandLine';
+import ShellOutput from './ShellOutput';
 import theme from './theme';
-import rollupIntoCommands from './rollupIntoCommands';
-import { assign, Machine } from 'xstate';
+import translateLines from './utils/translateLines';
 import { useMachine } from '@xstate/react';
+import machine from './machine';
 
 const Shell = forwardRef(({ animate, highlight, code }, ref) => {
   const { tokens, getTokenProps } = highlight;
-  const commands = rollupIntoCommands(tokens, code);
+  const lines = translateLines(tokens, code);
   const [state, send] = useMachine(machine, {
-    context: { commands, step: 0 },
+    context: { lines },
   });
   const shellRef = useRef();
   const [height, setHeight] = useState(null);
-
-  const shownCommands = state.matches('boot')
-    ? commands
-    : commands.slice(0, state.context.step);
+  const { lineNumber, renderedLines } = state.context;
 
   useImperativeHandle(ref, () => ({
     startAnimation: () => send('BEGIN_TYPING'),
@@ -77,18 +74,33 @@ const Shell = forwardRef(({ animate, highlight, code }, ref) => {
     >
       <code>
         {state.matches('idle') && <CommandLine cursor prompt="$" />}
-        {shownCommands.map((command, idx) => (
-          <Command
-            key={idx}
-            animate={!state.matches('boot')}
-            command={command}
-            getTokenProps={getTokenProps}
-            typingDelay={idx === 0 ? 1500 : 500}
-            onDone={() => {
-              send('COMMAND_EXECUTED');
-            }}
-          />
-        ))}
+        {renderedLines.map(({ type, line }, idx) => {
+          const animate = !state.matches('boot');
+
+          return type === 'OUTPUT' ? (
+            <ShellOutput key={idx} line={line} />
+          ) : (
+            <CommandLine
+              key={idx}
+              cursor={animate && idx === lineNumber}
+              animate={animate}
+              prompt={type === 'MULTILINE_COMMAND' ? '>' : '$'}
+              typingDelay={idx === 0 ? 1500 : 0}
+              onFinishedTyping={() => send('PRESS_ENTER')}
+            >
+              {line.map((token, key) => (
+                // eslint-disable-next-line react/jsx-key
+                <span
+                  css={css`
+                    display: inline-block;
+                    vertical-align: baseline;
+                  `}
+                  {...getTokenProps({ token, key })}
+                />
+              ))}
+            </CommandLine>
+          );
+        })}
       </code>
     </pre>
   );
@@ -102,44 +114,5 @@ Shell.propTypes = {
     getTokenProps: PropTypes.func.isRequired,
   }),
 };
-
-const machine = Machine(
-  {
-    id: 'shell',
-    initial: 'boot',
-    states: {
-      boot: {
-        on: {
-          INIT: 'idle',
-        },
-      },
-      idle: {
-        entry: assign({ step: 0 }),
-        on: {
-          BEGIN_TYPING: {
-            target: 'typing',
-            actions: assign({ step: 1 }),
-          },
-        },
-      },
-      typing: {
-        on: {
-          COMMAND_EXECUTED: [
-            { target: 'done', cond: 'enteredEveryCommand' },
-            { actions: assign({ step: (context) => context.step + 1 }) },
-          ],
-        },
-      },
-      done: {
-        final: true,
-      },
-    },
-  },
-  {
-    guards: {
-      enteredEveryCommand: ({ commands, step }) => step === commands.length,
-    },
-  }
-);
 
 export default Shell;

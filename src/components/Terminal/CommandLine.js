@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Prompt from './Prompt';
 import { css, keyframes } from '@emotion/core';
+import Prompt from './Prompt';
+import Typist from 'react-typist';
 
 const blink = keyframes`
   0%, 49% {
@@ -13,7 +14,33 @@ const blink = keyframes`
   }
 `;
 
-const CommandLine = ({ cursor, children, prompt }) => {
+const CommandLine = ({
+  animate,
+  avgTypingDelay,
+  cursor,
+  children,
+  prompt,
+  typingDelay,
+  onFinishedTyping,
+}) => {
+  const element = animate ? (
+    <Typist
+      startDelay={typingDelay}
+      avgTypingDelay={avgTypingDelay}
+      cursor={{ show: false }}
+      onTypingDone={onFinishedTyping}
+      css={css`
+        &:empty {
+          display: inline-block;
+        }
+      `}
+    >
+      {children}
+    </Typist>
+  ) : (
+    children
+  );
+
   return (
     <div
       css={css`
@@ -50,16 +77,26 @@ const CommandLine = ({ cursor, children, prompt }) => {
           `};
         `}
       >
-        {children}
+        {element}
       </div>
     </div>
   );
 };
 
 CommandLine.propTypes = {
+  animate: PropTypes.bool,
+  avgTypingDelay: PropTypes.number,
   children: PropTypes.node,
   cursor: PropTypes.bool,
   prompt: PropTypes.oneOf(['$', '>']),
+  typingDelay: PropTypes.number,
+  onFinishedTyping: PropTypes.func,
+};
+
+CommandLine.defaultProps = {
+  animate: false,
+  avgTypingDelay: 40,
+  typingDelay: 0,
 };
 
 export default CommandLine;
