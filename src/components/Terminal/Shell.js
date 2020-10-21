@@ -165,7 +165,7 @@ const getTypingDelay = (line, previousLine) => {
   }
 
   // If we are starting a new command after typing a previous command, delay
-  // the typing just a bit, unless we are typing a multiline command
+  // the typing just a bit, unless we are continuing a multiline command
   if (line.type === 'COMMAND' || previousLine.type !== 'MULTILINE_COMMAND') {
     return Math.max(250, gaussianRound(250, 25));
   }
