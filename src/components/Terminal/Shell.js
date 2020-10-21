@@ -10,16 +10,20 @@ import machine from './machine';
 import gaussianRound from './gaussianRound';
 import MenuBar from './MenuBar';
 import { useIntersection } from 'react-use';
+import { useClipboard } from '@newrelic/gatsby-theme-newrelic';
 
 const Shell = ({ animate, highlight, code }) => {
   const { tokens, getTokenProps } = highlight;
+  const lines = translateLines(tokens, code);
 
   const [height, setHeight] = useState(null);
   const ref = useRef();
   const shellRef = useRef();
   const [state, send] = useMachine(machine, {
-    context: { lines: translateLines(tokens, code) },
+    context: { lines },
   });
+
+  const [copied, copy] = useClipboard();
 
   const intersection = useIntersection(ref, {
     root: null,
@@ -54,7 +58,7 @@ const Shell = ({ animate, highlight, code }) => {
         border-radius: var(--border-radius);
       `}
     >
-      <MenuBar />
+      <MenuBar copied={copied} onCopy={() => copy(getCopyOutput(lines))} />
       <pre
         ref={shellRef}
         css={css`
@@ -127,6 +131,13 @@ const Shell = ({ animate, highlight, code }) => {
       </pre>
     </div>
   );
+};
+
+const getCopyOutput = (lines) => {
+  return lines
+    .filter(({ type }) => ['COMMAND', 'MULTILINE_COMMAND'].includes(type))
+    .map(({ line }) => line.map((token) => token.content).join(''))
+    .join('\n');
 };
 
 const getTypingDelay = (line, previousLine) => {

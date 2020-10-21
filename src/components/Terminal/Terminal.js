@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { useClipboard } from '@newrelic/gatsby-theme-newrelic';
 import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
 import Shell from './Shell';
 
 const Terminal = ({ animate, children }) => {
   const code = children.trim();
-  const [copied, copy] = useClipboard();
 
   return (
     <Highlight Prism={Prism} code={code} language="shell">
@@ -17,13 +15,6 @@ const Terminal = ({ animate, children }) => {
       )}
     </Highlight>
   );
-};
-
-const filterCopyOutput = (commands) => {
-  return commands
-    .split('\n')
-    .filter((line) => !line.startsWith('[output]'))
-    .join('\n');
 };
 
 const FrameButton = ({ color }) => (
