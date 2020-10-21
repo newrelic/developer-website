@@ -1,6 +1,8 @@
 import { assign, spawn, Machine } from 'xstate';
 import gaussianRound from './gaussianRound';
 
+const ONLY_WHITESPACE = /^\s*$/;
+
 const machine = Machine(
   {
     id: 'terminal',
@@ -30,16 +32,50 @@ const machine = Machine(
       typing: {
         on: {
           PRESS_ENTER: [
-            { actions: 'nextLine', cond: 'isMultilineCommand' },
-            { target: 'waiting', actions: 'nextLine', cond: 'awaitsOutput' },
+            {
+              actions: ['nextLine', assign({ timeout: 1500 })],
+              cond: 'isMultilineCommand',
+            },
+            {
+              target: 'waiting',
+              cond: 'awaitsOutput',
+              actions: assign({ timeout: 1000 }),
+            },
             { target: 'done' },
           ],
         },
       },
       waiting: {
+        entry: assign({
+          ref: ({ timeout }) =>
+            spawn((send) => {
+              const id = setTimeout(() => {
+                send('ECHO');
+              }, timeout);
+
+              return () => clearTimeout(id);
+            }),
+        }),
         on: {
           ECHO: [
-            { actions: 'nextLine', cond: 'awaitsOutput' },
+            {
+              target: 'waiting',
+              actions: [
+                'nextLine',
+                assign({
+                  timeout: ({ lines, lineNumber }) => {
+                    const line = lines[lineNumber];
+                    const nextLine = lines[lineNumber + 1];
+
+                    return line.terminates ||
+                      ONLY_WHITESPACE.test(nextLine.line)
+                      ? 0
+                      : Math.max(30, gaussianRound(80, 50));
+                  },
+                }),
+              ],
+              cond: 'awaitsOutput',
+            },
             { target: 'typing', actions: 'nextLine', cond: 'hasNextCommand' },
             { target: 'done' },
           ],

@@ -75,15 +75,13 @@ const Shell = forwardRef(({ animate, highlight, code }, ref) => {
       <code>
         {state.matches('idle') && <CommandLine cursor prompt="$" />}
         {renderedLines.map(({ type, line }, idx) => {
-          const animate = !state.matches('boot');
-
           return type === 'OUTPUT' ? (
             <ShellOutput key={idx} line={line} />
           ) : (
             <CommandLine
               key={idx}
-              cursor={animate && idx === lineNumber}
-              animate={animate}
+              cursor={state.matches('typing') && idx === lineNumber}
+              animate={!state.matches('boot')}
               prompt={type === 'MULTILINE_COMMAND' ? '>' : '$'}
               typingDelay={idx === 0 ? 1500 : 0}
               onFinishedTyping={() => send('PRESS_ENTER')}
