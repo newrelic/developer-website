@@ -1,10 +1,4 @@
-import React, {
-  forwardRef,
-  useState,
-  useRef,
-  useLayoutEffect,
-  useImperativeHandle,
-} from 'react';
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import CommandLine from './CommandLine';
@@ -14,20 +8,29 @@ import translateLines from './utils/translateLines';
 import { useMachine } from '@xstate/react';
 import machine from './machine';
 import gaussianRound from './gaussianRound';
+import MenuBar from './MenuBar';
+import { useIntersection } from 'react-use';
 
-const Shell = forwardRef(({ animate, highlight, code }, ref) => {
+const Shell = ({ animate, highlight, code }) => {
   const { tokens, getTokenProps } = highlight;
-  const lines = translateLines(tokens, code);
-  const [state, send] = useMachine(machine, {
-    context: { lines },
-  });
-  const shellRef = useRef();
-  const [height, setHeight] = useState(null);
-  const { lineNumber, renderedLines } = state.context;
 
-  useImperativeHandle(ref, () => ({
-    startAnimation: () => send('BEGIN_TYPING'),
-  }));
+  const [height, setHeight] = useState(null);
+  const ref = useRef();
+  const shellRef = useRef();
+  const [state, send] = useMachine(machine, {
+    context: { lines: translateLines(tokens, code) },
+  });
+
+  const intersection = useIntersection(ref, {
+    root: null,
+    rootMargin: '0px 0px -50% 0px',
+  });
+
+  useEffect(() => {
+    if (animate && intersection?.isIntersecting) {
+      send('BEGIN_TYPING');
+    }
+  }, [animate, intersection, send]);
 
   useLayoutEffect(() => {
     const { height } = shellRef.current.getBoundingClientRect();
@@ -38,79 +41,93 @@ const Shell = forwardRef(({ animate, highlight, code }, ref) => {
     }
   }, [animate, send]);
 
+  const { lineNumber, renderedLines } = state.context;
+
   return (
-    <pre
-      ref={shellRef}
+    <div
+      ref={ref}
       css={css`
-        ${theme};
+        --chrome-color: #252526;
+        --border-radius: 0.25rem;
 
-        padding: 1rem;
-        height: ${height}px;
-        font-family: var(--code-font);
-        font-size: 0.75rem;
-        border-bottom-left-radius: var(--border-radius);
-        border-bottom-right-radius: var(--border-radius);
-        color: var(--color-nord-6);
-        display: block;
-        overflow: auto;
-        white-space: pre;
-        word-spacing: normal;
-        word-break: normal;
-        tab-size: 2;
-        hyphens: none;
-        text-shadow: none;
-
-        > code {
-          background: none;
-          padding: 0;
-          width: 100%;
-        }
-
-        .token-line {
-          display: grid;
-          grid-template-columns: 1ch 1fr;
-          grid-gap: 1rem;
-        }
+        background: #1e1e1e;
+        border-radius: var(--border-radius);
       `}
     >
-      <code>
-        {state.matches('idle') && <CommandLine cursor prompt="$" />}
-        {renderedLines.map(({ type, line }, idx) => {
-          const previousLine = renderedLines[idx - 1];
+      <MenuBar />
+      <pre
+        ref={shellRef}
+        css={css`
+          ${theme};
 
-          return type === 'OUTPUT' ? (
-            <ShellOutput key={idx} line={line} />
-          ) : (
-            <CommandLine
-              key={idx}
-              cursor={state.matches('typing') && idx === lineNumber}
-              animate={!state.matches('boot')}
-              prompt={
-                type === 'MULTILINE_COMMAND' &&
-                previousLine?.type === 'MULTILINE_COMMAND'
-                  ? '>'
-                  : '$'
-              }
-              typingDelay={getTypingDelay(line, previousLine)}
-              onFinishedTyping={() => send('PRESS_ENTER')}
-            >
-              {line.map((token, key) => (
-                // eslint-disable-next-line react/jsx-key
-                <span
-                  css={css`
-                    display: inline-block;
-                    vertical-align: baseline;
-                  `}
-                  {...getTokenProps({ token, key })}
-                />
-              ))}
-            </CommandLine>
-          );
-        })}
-      </code>
-    </pre>
+          padding: 1rem;
+          height: ${height}px;
+          font-family: var(--code-font);
+          font-size: 0.75rem;
+          border-bottom-left-radius: var(--border-radius);
+          border-bottom-right-radius: var(--border-radius);
+          color: var(--color-nord-6);
+          display: block;
+          overflow: auto;
+          white-space: pre;
+          word-spacing: normal;
+          word-break: normal;
+          tab-size: 2;
+          hyphens: none;
+          text-shadow: none;
+
+          > code {
+            background: none;
+            padding: 0;
+            width: 100%;
+          }
+
+          .token-line {
+            display: grid;
+            grid-template-columns: 1ch 1fr;
+            grid-gap: 1rem;
+          }
+        `}
+      >
+        <code>
+          {state.matches('idle') && <CommandLine cursor prompt="$" />}
+          {renderedLines.map(({ type, line }, idx) => {
+            const previousLine = renderedLines[idx - 1];
+
+            return type === 'OUTPUT' ? (
+              <ShellOutput key={idx} line={line} />
+            ) : (
+              <CommandLine
+                key={idx}
+                cursor={state.matches('typing') && idx === lineNumber}
+                animate={!state.matches('boot')}
+                prompt={
+                  type === 'MULTILINE_COMMAND' &&
+                  previousLine?.type === 'MULTILINE_COMMAND'
+                    ? '>'
+                    : '$'
+                }
+                typingDelay={getTypingDelay(line, previousLine)}
+                onFinishedTyping={() => send('PRESS_ENTER')}
+              >
+                {line.map((token, key) => (
+                  // eslint-disable-next-line react/jsx-key
+                  <span
+                    css={css`
+                      display: inline-block;
+                      vertical-align: baseline;
+                    `}
+                    {...getTokenProps({ token, key })}
+                  />
+                ))}
+              </CommandLine>
+            );
+          })}
+        </code>
+      </pre>
+    </div>
   );
-});
+};
 
 const getTypingDelay = (line, previousLine) => {
   // Delay the first line more than every other line to allow time for the user
