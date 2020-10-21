@@ -33,44 +33,35 @@ const machine = Machine(
         on: {
           PRESS_ENTER: [
             { actions: 'nextLine', cond: 'isMultilineCommand' },
-            {
-              target: 'waiting',
-              cond: 'awaitsOutput',
-              actions: assign({ timeout: 800 }),
-            },
+            { target: 'waiting', cond: 'awaitsOutput' },
             { target: 'done' },
           ],
         },
       },
       waiting: {
         entry: assign({
-          ref: ({ timeout }) =>
-            spawn((send) => {
-              const id = setTimeout(() => {
-                send('ECHO');
-              }, timeout);
+          ref: ({ lines, lineNumber }, event) => {
+            return spawn((send) => {
+              if (ONLY_WHITESPACE.test(lines[lineNumber].line)) {
+                return send('ECHO');
+              }
+
+              const id = setTimeout(
+                () => {
+                  send('ECHO');
+                },
+                event.type === 'PRESS_ENTER'
+                  ? 1000
+                  : Math.max(30, gaussianRound(125, 50))
+              );
 
               return () => clearTimeout(id);
-            }),
+            });
+          },
         }),
         on: {
           ECHO: [
-            {
-              target: 'waiting',
-              actions: [
-                'nextLine',
-                assign({
-                  timeout: ({ lines, lineNumber }) => {
-                    const { line: nextLine } = lines[lineNumber];
-
-                    return ONLY_WHITESPACE.test(nextLine)
-                      ? 0
-                      : Math.max(30, gaussianRound(80, 50));
-                  },
-                }),
-              ],
-              cond: 'awaitsOutput',
-            },
+            { target: 'waiting', actions: 'nextLine', cond: 'awaitsOutput' },
             { target: 'typing', actions: 'nextLine', cond: 'hasNextCommand' },
             { target: 'done' },
           ],
