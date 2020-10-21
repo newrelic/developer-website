@@ -140,7 +140,14 @@ const Shell = ({ animate, copyable, highlight, code }) => {
 const getCopyOutput = (lines) => {
   return lines
     .filter(({ type }) => ['COMMAND', 'MULTILINE_COMMAND'].includes(type))
-    .map(({ line }) => line.map((token) => token.content).join(''))
+    .map(({ line }) =>
+      line
+        .filter((token) => !token.types.includes('comment'))
+        .map((token) => token.content)
+        .join('')
+        .trimEnd()
+    )
+    .filter(Boolean)
     .join('\n');
 };
 
