@@ -32,14 +32,11 @@ const machine = Machine(
       typing: {
         on: {
           PRESS_ENTER: [
-            {
-              actions: ['nextLine', assign({ timeout: 1500 })],
-              cond: 'isMultilineCommand',
-            },
+            { actions: 'nextLine', cond: 'isMultilineCommand' },
             {
               target: 'waiting',
               cond: 'awaitsOutput',
-              actions: assign({ timeout: 1000 }),
+              actions: assign({ timeout: 800 }),
             },
             { target: 'done' },
           ],
@@ -64,11 +61,9 @@ const machine = Machine(
                 'nextLine',
                 assign({
                   timeout: ({ lines, lineNumber }) => {
-                    const line = lines[lineNumber];
-                    const nextLine = lines[lineNumber + 1];
+                    const { line: nextLine } = lines[lineNumber];
 
-                    return line.terminates ||
-                      ONLY_WHITESPACE.test(nextLine.line)
+                    return ONLY_WHITESPACE.test(nextLine)
                       ? 0
                       : Math.max(30, gaussianRound(80, 50));
                   },
