@@ -12,7 +12,7 @@ import MenuBar from './MenuBar';
 import { useIntersection } from 'react-use';
 import { useClipboard } from '@newrelic/gatsby-theme-newrelic';
 
-const Shell = ({ animate, copyable, highlight, code }) => {
+const Shell = ({ animate, copyable, highlight, code, wrap }) => {
   const { tokens, getTokenProps } = highlight;
   const lines = translateLines(tokens, code);
 
@@ -103,7 +103,7 @@ const Shell = ({ animate, copyable, highlight, code }) => {
             const previousLine = renderedLines[idx - 1];
 
             return type === 'OUTPUT' ? (
-              <ShellOutput key={idx} line={line} />
+              <ShellOutput key={idx} line={line} wrap={wrap} />
             ) : (
               <CommandLine
                 key={idx}
@@ -117,6 +117,7 @@ const Shell = ({ animate, copyable, highlight, code }) => {
                 }
                 typingDelay={getTypingDelay(line, previousLine)}
                 onFinishedTyping={() => send('PRESS_ENTER')}
+                wrap={wrap}
               >
                 {line.map((token, key) => (
                   // eslint-disable-next-line react/jsx-key
@@ -124,6 +125,7 @@ const Shell = ({ animate, copyable, highlight, code }) => {
                     css={css`
                       display: inline-block;
                       vertical-align: baseline;
+                      word-break: break-all;
                     `}
                     {...getTokenProps({ token, key })}
                   />
@@ -181,6 +183,7 @@ Shell.propTypes = {
     tokens: PropTypes.array.isRequired,
     getTokenProps: PropTypes.func.isRequired,
   }),
+  wrap: PropTypes.bool,
 };
 
 export default Shell;

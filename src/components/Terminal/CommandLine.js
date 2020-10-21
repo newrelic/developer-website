@@ -22,6 +22,7 @@ const CommandLine = ({
   prompt,
   typingDelay,
   onFinishedTyping,
+  wrap,
 }) => {
   const element = animate ? (
     <Typist
@@ -44,19 +45,24 @@ const CommandLine = ({
   return (
     <div
       css={css`
-        display: grid;
-        grid-template-columns: 1ch auto;
-        grid-gap: 1ch;
+        display: flex;
+        flex-wrap: ${wrap ? 'wrap' : null};
+        gap: 1ch;
         justify-content: start;
-        align-items: baseline;
+        align-items: flex-start;
+
+        @supports not (gap: 1ch) {
+          margin-right: 1ch;
+        }
       `}
     >
       <Prompt character={prompt} />
       <div
         css={css`
+          flex: 1;
           position: relative;
           color: #fafafa;
-          white-space: pre;
+          white-space: ${wrap ? 'pre-wrap' : 'pre'};
 
           &:empty {
             height: 100%;
@@ -91,12 +97,14 @@ CommandLine.propTypes = {
   prompt: PropTypes.oneOf(['$', '>']),
   typingDelay: PropTypes.number,
   onFinishedTyping: PropTypes.func,
+  wrap: PropTypes.bool,
 };
 
 CommandLine.defaultProps = {
   animate: false,
   avgTypingDelay: 40,
   typingDelay: 0,
+  wrap: false,
 };
 
 export default CommandLine;

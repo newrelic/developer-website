@@ -8,10 +8,11 @@ const CustomCodeBlock = ({
   children,
   animate,
   copyable,
+  wrap,
   ...props
 }) => {
   return isShellLanguage(language) ? (
-    <Terminal animate={animate} copyable={copyable}>
+    <Terminal animate={animate} copyable={copyable} wrap={wrap}>
       {children}
     </Terminal>
   ) : (
