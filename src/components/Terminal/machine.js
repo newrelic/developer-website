@@ -53,7 +53,7 @@ const machine = Machine(
                 },
                 event.type === 'PRESS_ENTER'
                   ? 1000
-                  : Math.max(30, gaussianRound(125, 50))
+                  : Math.max(30, gaussianRound(90, 40))
               );
 
               return () => clearTimeout(id);
