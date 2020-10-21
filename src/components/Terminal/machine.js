@@ -32,8 +32,9 @@ const machine = Machine(
       typing: {
         on: {
           PRESS_ENTER: [
-            { actions: 'nextLine', cond: 'isMultilineCommand' },
             { target: 'waiting', cond: 'awaitsOutput' },
+            { actions: 'nextLine', cond: 'isMultilineCommand' },
+            { actions: 'nextLine', cond: 'hasNextCommand' },
             { target: 'done' },
           ],
         },
@@ -83,16 +84,16 @@ const machine = Machine(
       }),
     },
     guards: {
-      awaitsOutput: ({ lines, lineNumber }) => {
-        const line = lines[lineNumber];
+      awaitsOutput: ({ lines, lineNumber }) =>
+        lines[lineNumber + 1]?.type === 'OUTPUT',
 
-        return ['OUTPUT', 'COMMAND'].includes(line.type) && !line.terminates;
-      },
       isMultilineCommand: ({ lines, lineNumber }) =>
         lines[lineNumber].type === 'MULTILINE_COMMAND',
+
       isDone: ({ lines, lineNumber }) => lineNumber === lines.length - 1,
+
       hasNextCommand: ({ lines, lineNumber }) =>
-        lines[lineNumber].terminates && lineNumber !== lines.length - 1,
+        lines[lineNumber + 1]?.type === 'COMMAND',
     },
   }
 );

@@ -13,6 +13,7 @@ import theme from './theme';
 import translateLines from './utils/translateLines';
 import { useMachine } from '@xstate/react';
 import machine from './machine';
+import gaussianRound from './gaussianRound';
 
 const Shell = forwardRef(({ animate, highlight, code }, ref) => {
   const { tokens, getTokenProps } = highlight;
@@ -75,6 +76,8 @@ const Shell = forwardRef(({ animate, highlight, code }, ref) => {
       <code>
         {state.matches('idle') && <CommandLine cursor prompt="$" />}
         {renderedLines.map(({ type, line }, idx) => {
+          const previousLine = renderedLines[idx - 1];
+
           return type === 'OUTPUT' ? (
             <ShellOutput key={idx} line={line} />
           ) : (
@@ -82,8 +85,13 @@ const Shell = forwardRef(({ animate, highlight, code }, ref) => {
               key={idx}
               cursor={state.matches('typing') && idx === lineNumber}
               animate={!state.matches('boot')}
-              prompt={type === 'MULTILINE_COMMAND' ? '>' : '$'}
-              typingDelay={idx === 0 ? 1500 : 0}
+              prompt={
+                type === 'MULTILINE_COMMAND' &&
+                previousLine?.type === 'MULTILINE_COMMAND'
+                  ? '>'
+                  : '$'
+              }
+              typingDelay={getTypingDelay(line, previousLine)}
               onFinishedTyping={() => send('PRESS_ENTER')}
             >
               {line.map((token, key) => (
@@ -103,6 +111,28 @@ const Shell = forwardRef(({ animate, highlight, code }, ref) => {
     </pre>
   );
 });
+
+const getTypingDelay = (line, previousLine) => {
+  // Delay the first line more than every other line to allow time for the user
+  // to adjust to the animation after scrolling the terminal into view
+  if (!previousLine) {
+    return 1500;
+  }
+
+  // Allow commands immediately following output space to breathe so that the
+  // user has time to ingest the output before the typing animation begins again
+  if (previousLine.type === 'OUTPUT') {
+    return Math.max(800, gaussianRound(1000, 50));
+  }
+
+  // If we are starting a new command after typing a previous command, delay
+  // the typing just a bit, unless we are typing a multiline command
+  if (line.type === 'COMMAND' || previousLine.type !== 'MULTILINE_COMMAND') {
+    return Math.max(250, gaussianRound(250, 25));
+  }
+
+  return 0;
+};
 
 Shell.propTypes = {
   animate: PropTypes.bool,
