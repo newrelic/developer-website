@@ -1,11 +1,11 @@
 import { Children, cloneElement } from 'react';
 
-export const visit = (children, guard, fn, parent = null) => {
+export const visit = (children, test, fn, parent = null) => {
   Children.toArray(children).forEach((child, idx) => {
-    if (guard(child, idx, parent)) {
+    if (test(child, idx, parent)) {
       fn(child, idx, parent);
     } else if (child.props?.children) {
-      visit(child.props.children, guard, fn, child);
+      visit(child.props.children, test, fn, child);
     }
   });
 };
