@@ -12,7 +12,7 @@ import MenuBar from './MenuBar';
 import { useIntersection } from 'react-use';
 import { useClipboard } from '@newrelic/gatsby-theme-newrelic';
 
-const Shell = ({ animate, highlight, code }) => {
+const Shell = ({ animate, copyable, highlight, code }) => {
   const { tokens, getTokenProps } = highlight;
   const lines = translateLines(tokens, code);
 
@@ -58,7 +58,11 @@ const Shell = ({ animate, highlight, code }) => {
         border-radius: var(--border-radius);
       `}
     >
-      <MenuBar copied={copied} onCopy={() => copy(getCopyOutput(lines))} />
+      <MenuBar
+        copyable={copyable}
+        copied={copied}
+        onCopy={() => copy(getCopyOutput(lines))}
+      />
       <pre
         ref={shellRef}
         css={css`
@@ -165,6 +169,7 @@ const getTypingDelay = (line, previousLine) => {
 Shell.propTypes = {
   animate: PropTypes.bool,
   code: PropTypes.string.isRequired,
+  copyable: PropTypes.bool,
   highlight: PropTypes.shape({
     tokens: PropTypes.array.isRequired,
     getTokenProps: PropTypes.func.isRequired,

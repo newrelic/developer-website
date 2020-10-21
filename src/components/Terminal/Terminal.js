@@ -5,14 +5,12 @@ import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
 import Shell from './Shell';
 
-const Terminal = ({ animate, children }) => {
+const Terminal = ({ children, ...props }) => {
   const code = children.trim();
 
   return (
     <Highlight Prism={Prism} code={code} language="shell">
-      {(highlight) => (
-        <Shell animate={animate} code={code} highlight={highlight} />
-      )}
+      {(highlight) => <Shell {...props} code={code} highlight={highlight} />}
     </Highlight>
   );
 };
@@ -34,11 +32,13 @@ FrameButton.propTypes = {
 
 Terminal.propTypes = {
   animate: PropTypes.bool,
+  copyable: PropTypes.bool,
   children: PropTypes.string,
 };
 
 Terminal.defaultProps = {
   animate: false,
+  copyable: true,
 };
 
 export default Terminal;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Button, Icon } from '@newrelic/gatsby-theme-newrelic';
 
-const MenuBar = ({ copied, onCopy }) => (
+const MenuBar = ({ copyable, copied, onCopy }) => (
   <div
     css={css`
       background: var(--chrome-color);
@@ -11,9 +11,10 @@ const MenuBar = ({ copied, onCopy }) => (
       grid-template-columns: repeat(3, auto) 1fr 90px;
       grid-gap: 0.5rem;
       align-items: center;
-      padding: 0.25rem 1rem;
+      padding: 0 1rem;
       border-top-left-radius: var(--border-radius);
       border-top-right-radius: var(--border-radius);
+      height: 38px;
     `}
   >
     <FrameButton color="#ed6b60" />
@@ -29,29 +30,32 @@ const MenuBar = ({ copied, onCopy }) => (
     >
       bash
     </div>
-    <Button
-      variant={Button.VARIANT.LINK}
-      size={Button.SIZE.SMALL}
-      onClick={onCopy}
-      className="dark-mode"
-      css={css`
-        justify-self: end;
-        white-space: nowrap;
-      `}
-    >
-      <Icon
-        name={Icon.TYPE.COPY}
+    {copyable && (
+      <Button
+        variant={Button.VARIANT.LINK}
+        size={Button.SIZE.SMALL}
+        onClick={onCopy}
+        className="dark-mode"
         css={css`
-          margin-right: 0.5rem;
+          justify-self: end;
+          white-space: nowrap;
         `}
-      />
-      {copied ? 'Copied' : 'Copy'}
-    </Button>
+      >
+        <Icon
+          name={Icon.TYPE.COPY}
+          css={css`
+            margin-right: 0.5rem;
+          `}
+        />
+        {copied ? 'Copied' : 'Copy'}
+      </Button>
+    )}
   </div>
 );
 
 MenuBar.propTypes = {
   copied: PropTypes.bool,
+  copyable: PropTypes.bool,
   onCopy: PropTypes.func,
 };
 

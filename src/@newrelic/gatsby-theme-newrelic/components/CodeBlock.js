@@ -3,11 +3,19 @@ import CodeBlock from '@newrelic/gatsby-theme-newrelic/src/components/CodeBlock'
 import Terminal from '../../../components/Terminal';
 import { isShellLanguage } from '../../../utils/codeBlock';
 
-const CustomCodeBlock = ({ language, children, animate, ...props }) => {
+const CustomCodeBlock = ({
+  language,
+  children,
+  animate,
+  copyable,
+  ...props
+}) => {
   return isShellLanguage(language) ? (
-    <Terminal animate={animate}>{children}</Terminal>
+    <Terminal animate={animate} copyable={copyable}>
+      {children}
+    </Terminal>
   ) : (
-    <CodeBlock language={language} {...props}>
+    <CodeBlock language={language} copyable={copyable} {...props}>
       {children}
     </CodeBlock>
   );
