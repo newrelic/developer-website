@@ -55,7 +55,7 @@ At the bottom of the view, the **Errors** table shows you what errors occurred i
 
 In this scenario, the only error in the service has the following message:
 
-```shell
+```shell copyable=false
 [output] An error occurred during a downstream request to {blue}http://35.182.223.70:7001/api/inventory{plain} detail:response code {red}500
 ```
 
@@ -85,7 +85,7 @@ Select the row (called a span) to see more information about the request to the 
 
 Expand **Error details** to see the error message:
 
-```bash
+```shell copyable=false
 [output] {red}java.lang.Exception:{plain} The application is not yet ready to accept traffic
 ```
 
@@ -155,7 +155,7 @@ In a new tab, navigate to the login service's **Errors** view: **APM > Telco-Log
 
 If you compare these graphs, you'll see that the memory percentage reached its peak at 10:25 AM (in this example), and then dropped off. You'll also see that errors started occurring in the login service just after that, at 10:26 AM. The message for those errors is the same one you saw earlier:
 
-```bash
+```shell copyable=false
 [output] {red}java.lang.Exception:{plain} The application is not yet ready to accept traffic
 ```
 

@@ -55,7 +55,7 @@
       },
       {
         "displayName": "Use New Relic to diagnose problems in your system",
-        "url": "/automate-workflows/diagnose-problems/diagnose-problems",
+        "url": "/automate-workflows/diagnose-problems",
         "children": [
           {
             "displayName": "High response times",
