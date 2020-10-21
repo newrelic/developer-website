@@ -52,6 +52,20 @@
       {
         "displayName": "Automated end-to-end tagging of entities",
         "url": "/automate-workflows/automated-tagging"
+      },
+      {
+        "displayName": "Use New Relic to diagnose problems in your system",
+        "url": "/automate-workflows/diagnose-problems/diagnose-problems",
+        "children": [
+          {
+            "displayName": "High response times",
+            "url": "/automate-workflows/diagnose-problems/high-response-times"
+          },
+          {
+            "displayName": "Error alerts",
+            "url": "/automate-workflows/diagnose-problems/error-alerts"
+          }
+        ]
       }
     ]
   },
@@ -551,7 +565,6 @@
     "displayName": "Developer champions",
     "url": "/developer-champion"
   },
-
   {
     "displayName": "Podcasts",
     "url": "/podcasts"
