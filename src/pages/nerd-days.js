@@ -20,7 +20,6 @@ import heroBackgroundPattern from '../images/nerd-days/nerd-days-hero-bg-pattern
 import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
 import HopinLogo from '../components/HopinLogo';
-import MarketoForm from '../components/MarketoForm';
 import styled from '@emotion/styled';
 import Agenda from '../components/Agenda';
 
@@ -234,13 +233,9 @@ const NerdDaysPage = () => {
                   have any questions about Nerd Days please emails{' '}
                   <a href="mailto:deco@newrelic.com">deco@newrelic.com</a>.
                 </p>
-                <h3
-                  css={css`
-                    margin: 25px 0 0 0;
-                  `}
-                >
-                  Additional Nerd Days Events
-                </h3>
+              </div>
+              <div>
+                <h3>Upcoming Nerd Days</h3>
                 <ul
                   css={css`
                     padding: 0;
@@ -263,13 +258,6 @@ const NerdDaysPage = () => {
                   </CtaItem>
                 </ul>
               </div>
-              <MarketoForm
-                id={4783}
-                title="REGISTER FOR NERD DAYS | AMERICAS"
-                munchkinId="412-MZS-894"
-                publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
-                redirectLink="/nerd-days-thank-you"
-              />
             </div>
           </Section>
           <Section className={cx(styles.speakersSection)}>
@@ -929,7 +917,7 @@ const CtaItem = ({ date, to, children }) => (
   <li
     css={css`
       margin-top: 0.5rem;
-      margin-right: 1.25rem;
+      margin-right: 0.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
