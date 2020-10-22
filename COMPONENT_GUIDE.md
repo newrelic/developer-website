@@ -229,9 +229,9 @@ There are four props that can be supplied to a code snippet.
   ```
   ````
 
-- `copy`: `true` or `false`. Will display or not display the copy button, defaults to `true`
+- `copyable`: `true` or `false`. Will display or not display the copy button, defaults to `true`
   ````md
-  ```jsx copy=false
+  ```jsx copyable=false
   ```
   ````
 
