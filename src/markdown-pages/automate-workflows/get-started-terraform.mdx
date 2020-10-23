@@ -102,13 +102,13 @@ provider "newrelic" {
 
 By setting these values on the New Relic provider, you're configuring that provider to make changes on behalf of your account through New Relic APIs.
 
-<Tip>
+<Callout variant="tip">
 
 You can also configure the New Relic provider using [environment variables](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/guides/provider_configuration). This is a useful way to set default values for your provider configuration.
 
 For more information about configuring the New Relic provider, please feel free to check out our official provider [documentation](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/guides/provider_configuration).
 
-</Tip>
+</Callout>
 
 With your New Relic provider configured, initialize Terraform:
 
@@ -355,7 +355,7 @@ A `newrelic_alert_policy_channel` links the notification channel you just create
 
 To finalize your golden signal alerts configuration, run `terraform apply` one last time to make sure all of your configured resources are up to date.
 
-<Tip title="Extra Credit">
+<Callout variant="tip" title="Extra Credit">
 
 `new_relic_alert_channel` [supports several types](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#argument-reference) of notification channels, including: email, slack, and pagerduty. So, if you want to explore this more, try creating an alert channel for a second channel type, such as Slack:
 
@@ -375,7 +375,7 @@ resource "newrelic_alert_channel" "slack_notification" {
 
 Before you `apply` this change, you need to add the [New Relic Slack App](https://slack.com/apps/A0F827KK2-new-relic-alerts) to your Slack account and select a Slack channel to send the notification. With this new alert channel, triggered alerts send notifications to the Slack channel of your choice.
 
-</Tip>
+</Callout>
 
 </Step>
 
@@ -385,10 +385,10 @@ Before you `apply` this change, you need to add the [New Relic Slack App](https:
 
 As your team evaluates the alerting system you’ve put in place, you’ll find that you may need to tweak configuration values, such as the alert threshold and duration. If you manage your Terraform project in a remote repository, you can submit a pull request so your team can review these changes alongside the rest of your code contributions.
 
-<Tip>
+<Callout variant="tip">
 
 You may also want to consider automating this process in your CI/CD pipeline. Use Terraform's [recommended practices guide](https://www.terraform.io/docs/cloud/guides/recommended-practices/index.html) to learn more about their recommended workflow and how to evolve your provisioning practices.
 
-</Tip>
+</Callout>
 
 Congratulations! You're officially practicing observability-as-code. Review the [New Relic Terraform provider documentation](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs) to learn how you can take your configuration to the next level.

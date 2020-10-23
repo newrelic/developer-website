@@ -40,11 +40,11 @@ Throughout this guide, you use three open source projects to automatically set u
 
 Each project is distinct, and encapsulates its own behavior. This maintains a separation of concerns and allows you to compose complex scenarios using a modular approach.
 
-<Tip title="Collaborate with us">
+<Callout variant="tip" title="Collaborate with us">
 
 The Demo Deployer is currently in development. Because of our commitment to open source, we are working in the open early in the process and invite you to collaborate with us. Drop any thoughts and comments in the [Build on New Relic](https://discuss.newrelic.com/c/build-on-new-relic) support thread, and let us know what you think!
 
-</Tip>
+</Callout>
 
 The last thing you need before you get started is to install [Docker](https://docs.docker.com/get-docker/) if you don't have it already.
 
@@ -128,11 +128,11 @@ Finally, you pass a list of arguments to the entrypoint, including:
 - `-c configs/creds.json`: The user credentials configuration file
 - `-d documentation/tutorial/user_stories/Hello/hello.json`: The [deployment configuration file](https://github.com/newrelic/demo-deployer/tree/main/documentation/deploy_config)
 
-<Tip>
+<Callout variant="tip">
 
 You can specify the log level for the deployer using `-l`. `info` is the default, but you can also use `debug` or `error`. This is a helpful option to use when something goes wrong.
 
-</Tip>
+</Callout>
 
 Once you run this command, the deployer will create and instrument some specific resources. This may take a few minutes. In the meantime, read on to learn more about what is actually happening during this process.
 
