@@ -113,10 +113,10 @@ What if you want to add multiple tags? You can use tag sets for that: While tags
 
 `tag1:value1,tag2:value2`
 
-<Important>
+<Callout variant="important">
   Adding tags is an asynchronous operation: it could take a little while for the
   tags to get created.
-</Important>
+</Callout>
 
 ```bash lineNumbers=false
 # Adding a single tag
@@ -133,11 +133,11 @@ To make sure that the tags have been added to your entities, retrieve them using
 
 `newrelic entity tags get --guid GUID`
 
-<Tip>
+<Callout variant="tip">
 
 Tags can be deleted at any time by invoking the [`entity tags delete`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_delete.md) command followed by the same arguments you used to create them.
 
-</Tip>
+</Callout>
 
 ```json lineNumbers=false
 [
