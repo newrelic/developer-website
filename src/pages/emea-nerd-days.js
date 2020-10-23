@@ -302,7 +302,10 @@ const NerdDaysPage = () => {
                 track={null}
                 span={3}
               />
-              <Agenda.Session time="10:00 AM" title="Setting SLOs, SLAs and SLIs in the Real World" />
+              <Agenda.Session
+                time="10:00 AM"
+                title="Setting SLOs, SLAs and SLIs in the Real World"
+              />
               <Agenda.Session
                 time="10:00 AM"
                 title="React and the power of visualization"
