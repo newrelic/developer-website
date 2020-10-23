@@ -19,7 +19,11 @@ input[type='text'] {
   .intro-text {
     color: var(--secondary-text-color);
     font-size: 1.125rem;
-    line-height: 2rem;
+    line-height: 1.75;
+
+    li:not(:last-child) {
+      margin-bottom: 0.5rem !important;
+    }
   }
 
   .site-container {
