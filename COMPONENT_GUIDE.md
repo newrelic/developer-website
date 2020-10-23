@@ -246,13 +246,13 @@ Callouts direct your attention to information of special importance or to inform
 ### Usage
 
 ```md
-<Callout type="caution">
+<Callout variant="caution">
 
 Text with `markdown`.
 
 </Callout>
 
-<Callout type="important">
+<Callout variant="important">
 
 Text with `markdown`.
 
@@ -268,11 +268,11 @@ Text with `markdown`.
 All callouts have default titles that can be overridden like this:
 
 ```md
-<Caution title="A custom title">
+<Callout title="A custom title">
 
 Text
 
-</Caution>
+</Callout>
 ```
 
 ## Related Resources
