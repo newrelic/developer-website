@@ -13,11 +13,12 @@ import Tutorial from './Tutorial';
 import TutorialStep from './TutorialStep';
 import TutorialSection from './TutorialSection';
 import Project from './Project';
-import { MDXCodeBlock, Video } from '@newrelic/gatsby-theme-newrelic';
+import { Callout, MDXCodeBlock, Video } from '@newrelic/gatsby-theme-newrelic';
 
 import styles from './MDXContainer.module.scss';
 
 const components = {
+  Callout,
   Video,
   // Remove these when all step/steps components have been updated to the new
   // name
