@@ -4,9 +4,6 @@ import cx from 'classnames';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
-import Caution from './Caution';
-import Important from './Important';
-import Tip from './Tip';
 import Intro from './Intro';
 import Iframe from './Iframe';
 import Tutorial from './Tutorial';
@@ -28,9 +25,6 @@ const components = {
   Tutorial,
   TutorialStep,
   TutorialSection,
-  Caution,
-  Important,
-  Tip,
   Intro,
   iframe: Iframe,
   code: MDXCodeBlock,
