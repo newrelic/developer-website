@@ -30,7 +30,7 @@ const getTypeDefsFromProperty = (property, sdk) => {
     .filter(Boolean);
 };
 
-exports.getTypeDefs = (properties, sdk) => {
+const getTypeDefs = (properties, sdk) => {
   const typeDefs = properties
     .map((property) => property && property.__docs__ && property.__docs__.tags)
     .filter(Boolean)
@@ -49,3 +49,5 @@ exports.getTypeDefs = (properties, sdk) => {
 
   return uniqBy(typeDefs, 'name');
 };
+
+module.exports = getTypeDefs;
