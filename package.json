@@ -7,11 +7,12 @@
     "@emotion/styled": "^10.0.27",
     "@mdx-js/mdx": "^1.6.17",
     "@mdx-js/react": "^1.6.18",
-    "@newrelic/gatsby-theme-newrelic": "^1.9.5",
+    "@newrelic/gatsby-theme-newrelic": "^1.10.3",
     "@splitsoftware/splitio-react": "^1.2.0",
-    "@xstate/react": "^1.0.0-rc.6",
+    "@xstate/react": "^1.0.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
+    "diff": "^4.0.2",
     "eslint-plugin-react-hooks": "^4.1.2",
     "gatsby": "^2.24.2",
     "gatsby-image": "^2.4.14",
@@ -50,9 +51,12 @@
     "react-middle-ellipsis": "^1.1.0",
     "react-shadow": "^18.4.2",
     "react-simple-code-editor": "^0.11.0",
+    "react-typist": "^2.0.5",
+    "react-use": "^15.3.4",
+    "snyk": "^1.405.1",
     "use-dark-mode": "^2.3.1",
     "use-media": "^1.4.0",
-    "snyk": "^1.405.1",
+    "warning": "^4.0.3",
     "xstate": "^4.13.0"
   },
   "devDependencies": {
@@ -70,6 +74,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
     "jest-emotion": "^10.0.32",
+    "patch-package": "^6.2.2",
     "prettier": "2.0.4",
     "react-test-renderer": "^16.13.1"
   },
@@ -92,7 +97,8 @@
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "postinstall": "patch-package"
   },
   "husky": {
     "hooks": {

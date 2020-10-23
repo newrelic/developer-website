@@ -3,14 +3,16 @@ frontend:
   phases:
     preBuild:
       commands:
+        - nvm use $VERSION_NODE_12
         - npm ci
     build:
       commands:
+        - nvm use $VERSION_NODE_12
         - |
-          if [ "${AWS_BRANCH}" = "main" ]; then 
-            npm run build:production; 
-          else 
-            npm run build:staging; 
+          if [ "${AWS_BRANCH}" = "main" ]; then
+            npm run build:production;
+          else
+            npm run build:staging;
           fi
   artifacts:
     baseDirectory: public
