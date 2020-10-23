@@ -24,7 +24,7 @@ const filterPageNames = (pages, searchTerm, parent = []) => {
         return null;
       })
     ),
-  ].filter((el) => el !== undefined);
+  ].filter(Boolean);
 };
 
 const Navigation = ({ className, searchTerm }) => {
