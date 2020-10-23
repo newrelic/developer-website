@@ -297,24 +297,26 @@ const NerdDaysPage = () => {
               tracks={['Observability', 'Open source', 'Fundamentals']}
             >
               <Agenda.Session
-                time="9:00 AM"
-                title="Keynote: Observability For Good"
-                speaker="Lew Cirne"
+                time="9:45 AM"
+                title="Welcome and Opening"
                 track={null}
                 span={3}
               />
-              <Agenda.Session time="10:00 AM" title="Golden Signals" />
+              <Agenda.Session
+                time="10:00 AM"
+                title="Setting SLOs, SLAs and SLIs in the Real World"
+              />
               <Agenda.Session
                 time="10:00 AM"
                 title="React and the power of visualization"
               />
               <Agenda.Session
                 time="10:00 AM"
-                title="Instrumenting your service using agents "
+                title="Instrumenting your service using agents"
               />
               <Agenda.Session
                 time="11:00 AM"
-                title="Setting SLOs, SLAs and SLIs in the Real World"
+                title="Who watches the watchman: Micrometer and Terrraform"
               />
               <Agenda.Session
                 time="11:00 AM"
@@ -339,7 +341,7 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="1:00 PM"
-                title="From Monolith to Observable Microservices"
+                title="Who watches the watchman: Micrometer and Terrraform"
               />
               <Agenda.Session
                 time="1:00 PM"
@@ -355,7 +357,7 @@ const NerdDaysPage = () => {
               <Agenda.Session time="3:00 PM" title="A journey to the cloud" />
               <Agenda.Session
                 time="3:00 PM"
-                title="Open Source from the scratch"
+                title="How We Became Open By Default"
               />
               <Agenda.Session
                 time="3:00 PM"
