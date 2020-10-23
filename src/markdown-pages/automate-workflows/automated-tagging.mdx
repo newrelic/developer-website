@@ -211,7 +211,7 @@ The third section is `resources`:
       "type": "ec2",
       "size": "t3.micro"
     }
-  ],
+  ]
 }
 ```
 
@@ -256,30 +256,30 @@ The fourth, and final, section is `instrumentations`:
 
 When deployer has run successfully, you will see a message that describes the resources deployed and services installed during the process:
 
-```shell
-[INFO] Executing Deployment
-[✔] Parsing and validating Deployment configuration success
-[✔] Provisioner success
-[✔] Installing On-Host instrumentation success
-[✔] Installing Services and instrumentations success
-[INFO] Deployment successful!
-
-Deployed Resources:
-
-  host1 (aws/ec2):
-    ip: 52.90.86.109
-    services: ["app1"]
-    instrumentation:
-       nr_infra: newrelic v1.12.1
-
-Installed Services:
-
-  app1:
-    url: http://52.90.86.109:5001
-    instrumentation:
-       nr_node_agent: newrelic v6.11.0
-
-Completed at 2020-08-20 15:11:14 +0000
+```shell copyable=false
+[output] {muted}[INFO] Executing Deployment
+[output] [{green}✔{plain}] Parsing and validating Deployment configuration success
+[output] [{green}✔{plain}] Provisioner success
+[output] [{green}✔{plain}] Installing On-Host instrumentation success
+[output] [{green}✔{plain}] Installing Services and instrumentations success
+[output] {muted}[INFO] Deployment successful!
+[output]
+[output] Deployed Resources:
+[output]
+[output]   host1 (aws/ec2):
+[output]     ip: {blue}52.90.86.109
+[output]     services: [{green}"app1"{plain}]
+[output]     instrumentation:
+[output]        nr_infra: newrelic v1.12.1
+[output]
+[output] Installed Services:
+[output]
+[output]   app1:
+[output]     url: {blue}http://52.90.86.109:5001
+[output]     instrumentation:
+[output]        nr_node_agent: newrelic v6.11.0
+[output]
+[output] Completed at {timestamp}2020-08-20 15:11:14 +0000
 ```
 
 Visit your application by navigating to the `app1` url in your browser:
@@ -334,14 +334,14 @@ docker run -it\
 
 When the deployer has finished successfully, you'll see output that is similar to what you saw during deployment:
 
-```shell
-[INFO] Executing Teardown
-[✔] Parsing and validating Teardown configuration success
-[✔] Provisioner success
-[✔] Uninstalling On-Host instrumentation success
-[✔] Uninstalling Services and instrumentations success
-[✔] Terminating infrastructure success
-[INFO] Teardown successful!
+```shell copyable=false
+[output] {muted}[INFO] Executing Teardown
+[output] [{green}✔{plain}] Parsing and validating Teardown configuration success
+[output] [{green}✔{plain}] Provisioner success
+[output] [{green}✔{plain}] Uninstalling On-Host instrumentation success
+[output] [{green}✔{plain}] Uninstalling Services and instrumentations success
+[output] [{green}✔{plain}] Terminating infrastructure success
+[output] {muted}[INFO] Teardown successful!
 ```
 
 </Step>

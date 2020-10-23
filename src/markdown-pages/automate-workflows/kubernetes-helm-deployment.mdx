@@ -20,7 +20,7 @@ resources:
 
 [Helm](https://helm.sh/) is like a package manager for Kubernetes. Helm charts help define, install and upgrade your Kubernetes applications.
 
-In this guide you'll learn how to set up New Relic with the official [New Relic Helm charts](https://github.com/newrelic/helm-charts). 
+In this guide you'll learn how to set up New Relic with the official [New Relic Helm charts](https://github.com/newrelic/helm-charts).
 The Helm charts will deploy everything you need to get full observability of your Kubernetes environment.
 
 </Intro>
@@ -41,12 +41,14 @@ To use this guide, you should have some basic knowledge of both New Relic and Ku
 
 First, add the official [New Relic Helm repository](https://github.com/newrelic/helm-charts)
 
-```bash lineNumbers=false
+```bash
 helm repo add newrelic https://helm-charts.newrelic.com
 ```
+
 You should see something similar to the following:
-```no-highlighting lineNumbers=false
-"newrelic" has been added to your repositories
+
+```bash copyable=false
+[output] "newrelic" has been added to your repositories
 ```
 
 </Step>
@@ -57,7 +59,8 @@ You should see something similar to the following:
 Follow the instructions to [get your New Relic license key](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/new-relic-license-key)
 
 Replace `YOUR_NEW_RELIC_LICENSE_KEY` and `CLUSTER_NAME` before running the following command:
-```bash lineNumbers=false
+
+```bash
 helm install newrelic-bundle newrelic/nri-bundle \
  --set global.licenseKey=YOUR_NEW_RELIC_LICENSE_KEY \
  --set global.cluster=CLUSTER_NAME \
@@ -68,35 +71,40 @@ helm install newrelic-bundle newrelic/nri-bundle \
  --set kubeEvents.enabled=true \
  --set logging.enabled=true
 ```
+
 You should see something similar to the following:
-```no-highlighting lineNumbers=false
-NAME: newrelic-bundle
-LAST DEPLOYED: Wed Aug 19 09:04:52 2020
-NAMESPACE: default
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
+
+```bash copyable=false
+[output] NAME: newrelic-bundle
+[output] LAST DEPLOYED: Wed Aug 19 09:04:52 2020
+[output] NAMESPACE: default
+[output] STATUS: deployed
+[output] REVISION: 1
+[output] TEST SUITE: None
 ```
 
 Check if the New Relic agents have been deployed:
-```no-highlighting lineNumbers=false
+
+```bash
 kubectl get daemonsets,pods
 ```
 
 This should look similar to:
-```no-highlighting lineNumbers=false
-NAME                                                     DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
-daemonset.apps/newrelic-bundle-newrelic-infrastructure   1         1         1       1            1           <none>          2m53s
-daemonset.apps/newrelic-bundle-newrelic-logging          1         1         1       1            1           <none>          2m53s
-NAME                                                          READY   STATUS      RESTARTS   AGE
-pod/newrelic-bundle-kube-state-metrics-69ff8cfb74-rgjc5       1/1     Running     0          2m53s
-pod/newrelic-bundle-newrelic-infrastructure-z8ddb             1/1     Running     0          2m53s
-pod/newrelic-bundle-newrelic-logging-wp22p                    1/1     Running     0          2m53s
-pod/newrelic-bundle-nri-kube-events-f9d5bb944-kcxxf           2/2     Running     0          2m53s
-pod/newrelic-bundle-nri-metadata-injection-66d76c868b-xrcq8   1/1     Running     0          2m53s
-pod/newrelic-bundle-nri-metadata-injection-job-rszw5          0/1     Completed   0          2m53s
-pod/newrelic-bundle-nri-prometheus-569689b7cb-pnddg           1/1     Running     0          2m53s
+
+```bash copyable=false
+[output] NAME                                                     DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+[output] daemonset.apps/newrelic-bundle-newrelic-infrastructure   1         1         1       1            1           <none>          2m53s
+[output] daemonset.apps/newrelic-bundle-newrelic-logging          1         1         1       1            1           <none>          2m53s
+[output] NAME                                                          READY   STATUS      RESTARTS   AGE
+[output] pod/newrelic-bundle-kube-state-metrics-69ff8cfb74-rgjc5       1/1     Running     0          2m53s
+[output] pod/newrelic-bundle-newrelic-infrastructure-z8ddb             1/1     Running     0          2m53s
+[output] pod/newrelic-bundle-newrelic-logging-wp22p                    1/1     Running     0          2m53s
+[output] pod/newrelic-bundle-nri-kube-events-f9d5bb944-kcxxf           2/2     Running     0          2m53s
+[output] pod/newrelic-bundle-nri-metadata-injection-66d76c868b-xrcq8   1/1     Running     0          2m53s
+[output] pod/newrelic-bundle-nri-metadata-injection-job-rszw5          0/1     Completed   0          2m53s
+[output] pod/newrelic-bundle-nri-prometheus-569689b7cb-pnddg           1/1     Running     0          2m53s
 ```
+
 </Step>
 <Step>
 
