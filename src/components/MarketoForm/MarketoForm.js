@@ -47,7 +47,9 @@ const MarketoForm = ({
         <form id={`mktoForm_${id}`} />
         {state.matches('blocked') && (
           <Error>
-            Unable to load the form. Perhaps you have an ad blocker enabled?
+            Unable to load the form. Perhaps you have an ad blocker enabled? If
+            you’re having issues registering, or any questions, email
+            deco@newrelic.com
           </Error>
         )}
         {state.matches('error') && <Error>Unable to load the form.</Error>}

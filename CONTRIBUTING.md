@@ -8,6 +8,7 @@
     - [Cloning vs Forking](#cloning-vs-forking)
     - [Submitting a PR from a forked repo](#submitting-a-pr-from-a-forked-repo)
     - [Submitting a PR from a cloned repo](#submitting-a-pr-from-a-cloned-repo)
+    - [Using the Develop branch](#using-the-develop-branch)
     - [Draft PRs](#draft-prs)
     - [Deploy previews with Amplify](#deploy-previews-with-amplify)
   - [Style guide adherence](#style-guide-adherence)
@@ -95,6 +96,13 @@ As a non New Relic employee you can [Fork](https://help.github.com/en/github/get
 5. Submit a `Pull Request` to this project with your changes.
 6. If/when your `PR` is accepted, the automation in this project will build the site and deploy a new version of the code to `developer.newrelic.com`.
 7. And you are done!
+
+### Using the `develop` branch
+
+Use the `develop` branch when creating your working branch locally. `develop` will always contain the most
+current source code. The `develop` branch will be merged into the `main` branch by the maintainers when a new release is ready to ship.
+
+All pull requests should be made against the `develop` branch.
 
 ### Draft PRs
 

@@ -162,6 +162,7 @@ const NerdDaysPage = () => {
               )}
             >
               <div>
+                <h2>What is Nerd Days exactly…</h2>
                 <p>
                   Nerd Days is a <b>FREE</b> engineering conference that kicks
                   off November 10, 2020 <em>(Dates vary by region)</em>. Focused
@@ -170,18 +171,26 @@ const NerdDaysPage = () => {
                   more time on getting your hands on the software to solve
                   problems efficiently.
                 </p>
+                <p>
+                  <strong>Including:</strong>
+                  <ul>
+                    <li>Live workshops</li>
+                    <li>Live coding and demos</li>
+                    <li>Customer examples</li>
+                    <li>Panel / Q&A sessions</li>
+                  </ul>
+                </p>
                 <h3>Save the date &amp; join us online</h3>
                 <p>
-                  Choose the sessions you're interested in add Nerd Days to your
-                  calendar. You’ll hear from fellow engineers who built New
-                  Relic solutions and New Relic users from various industries.
                   Whether you’re new or a data nerd, there’s an interactive
-                  session for you.
+                  session for you. Choose the sessions you're interested in and
+                  add Nerd Days to your calendar.
                 </p>
                 <p>
                   <strong>Date:</strong> November 10, 2020
                   <br />
-                  <strong>Time:</strong> 9AM CET - 2:45PM CET
+                  <strong>Time:</strong> 9:45AM GMT - 3:30 - 4 pm GMT (Depending
+                  on last session)
                 </p>
                 <p>
                   We look forward to building with you during Nerd Days! If you
@@ -288,24 +297,26 @@ const NerdDaysPage = () => {
               tracks={['Observability', 'Open source', 'Fundamentals']}
             >
               <Agenda.Session
-                time="9:00 AM"
-                title="Keynote: Observability For Good"
-                speaker="Lew Cirne"
+                time="9:45 AM"
+                title="Welcome and Opening"
                 track={null}
                 span={3}
               />
-              <Agenda.Session time="10:00 AM" title="Golden Signals" />
+              <Agenda.Session
+                time="10:00 AM"
+                title="Setting SLOs, SLAs and SLIs in the Real World"
+              />
               <Agenda.Session
                 time="10:00 AM"
                 title="React and the power of visualization"
               />
               <Agenda.Session
                 time="10:00 AM"
-                title="Instrumenting your service using agents "
+                title="Instrumenting your service using agents"
               />
               <Agenda.Session
                 time="11:00 AM"
-                title="Setting SLOs, SLAs and SLIs in the Real World"
+                title="Who watches the watchman: Micrometer and Terrraform"
               />
               <Agenda.Session
                 time="11:00 AM"
@@ -330,20 +341,23 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="1:00 PM"
-                title="From Monolith to Observable Microservices"
+                title="Who watches the watchman: Micrometer and Terrraform"
               />
               <Agenda.Session
                 time="1:00 PM"
                 title="Reducing toil with Terraform"
               />
-              <Agenda.Session time="1:00 PM" title="Custom Instrumentation" />
-              <Agenda.Session time="2:00 PM" title="Stressing your services" />
+              <Agenda.Session time="1:00 PM" title="Custom Data Collection" />
+              <Agenda.Session
+                time="2:00 PM"
+                title="Test in production with KPI-driven release management"
+              />
               <Agenda.Session time="2:00 PM" title="Plot your data" />
               <Agenda.Session time="2:00 PM" title="Alerts Best Practices" />
               <Agenda.Session time="3:00 PM" title="A journey to the cloud" />
               <Agenda.Session
                 time="3:00 PM"
-                title="Open Source from the scratch"
+                title="How We Became Open By Default"
               />
               <Agenda.Session
                 time="3:00 PM"

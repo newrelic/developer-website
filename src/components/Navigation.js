@@ -20,9 +20,11 @@ const filterPageNames = (pages, searchTerm, parent = []) => {
         } else if (parent.some((el) => matchSearchString(el, searchTerm))) {
           return [...parent];
         }
+
+        return null;
       })
     ),
-  ].filter((el) => el !== undefined);
+  ].filter(Boolean);
 };
 
 const Navigation = ({ className, searchTerm }) => {

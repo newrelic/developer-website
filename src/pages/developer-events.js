@@ -78,7 +78,7 @@ const EventLandingPage = () => {
               <p>
                 <strong>US:</strong> October 13, 2020
                 <br />
-                <strong>EMEA:</strong> October 21, 2020
+                <strong>EMEA:</strong> November 10, 2020
                 <br />
                 <strong>APJ:</strong> October 22, 2020
                 <br />
