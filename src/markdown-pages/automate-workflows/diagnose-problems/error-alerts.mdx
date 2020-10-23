@@ -1,12 +1,12 @@
 ---
 path: '/automate-workflows/diagnose-problems/error-alerts'
 duration: '20 min'
-title: 'Diagnosing error alerts in Telco Lite'
+title: 'Diagnose error alerts in Telco Lite'
 template: 'GuideTemplate'
 description: 'Learn how to use New Relic to diagnose error alerts in your services.'
 tileShorthand:
-  title: 'Diagnosing error alerts in Telco Lite'
-  description: 'Learn how to diagnose error alerts with New Relic'
+  title: 'Diagnose error alerts in Telco Lite'
+  description: 'Learn how to diagnose error alerts with New Relic.'
 resources:
   - title: 'New Relic Demo Deployer'
     url: 'https://github.com/newrelic/demo-deployer'
@@ -15,17 +15,23 @@ tags:
   - explore
 ---
 
-In this tutorial, you'll use New Relic to understand why some services are raising alerts.
+Use New Relic to understand why some services are raising alerts.
 
-## Before you begin
+## Prerequisites
 
-This tutorial assumes you're familiar with the [infrastructure of Telco Lite](diagnose-problems#welcome-to-acme-telco-lite), you've [set up your local environment](diagnose-problems#set-up-your-environment), and you've [deployed and instrumented the Telco Lite services](diagnose-problems#deploy-telco-lite).
+Before you begin:
+
+- Learn about the [infrastructure of Telco Lite](diagnose-problems#welcome-to-acme-telco-lite)
+- [Set up your local environment](diagnose-problems#set-up-your-environment)
+- [Deploy and instrument the Telco Lite services](diagnose-problems#deploy-telco-lite)
+
+When you're ready, start your journey by observing the error alerts in your services.
 
 <Steps>
 
 <Step>
 
-Log in to [New Relic One](one.newrelic.com) and select **APM** from the top navigation menu. Here, you see an overview of all eight Telco Lite services, including the service names, response times, and throughputs. Notice that **Telco-Login Service** and **Telco-Web Portal** have opened critical violations for high error percentages:
+Log in to [New Relic One](https://one.newrelic.com) and select **APM** from the top navigation menu. Here, you see an overview of all eight Telco Lite services, including the service names, response times, and throughputs. Notice that **Telco-Login Service** and **Telco-Web Portal** have opened critical violations for high error percentages:
 
 ![Error alerts](../../../images/telco-lite/error-alerts.png)
 
@@ -47,7 +53,7 @@ You're now on the web portal's APM summary page. The top graph, **Web transactio
 
 ![Web portal alerts](../../../images/telco-lite/web-portal-apm-summary.png)
 
-To learn more about the errors, themselves, select **Events > Errors** from the left-hand navigation:
+From the left-hand navigation, select **Events > Errors** to learn more about the errors:
 
 ![Web portal errors](../../../images/telco-lite/web-portal-errors.png)
 
@@ -59,9 +65,9 @@ In this scenario, the only error in the service has the following message:
 [output] An error occurred during a downstream request to {blue}http://35.182.223.70:7001/api/inventory{plain} detail:response code {red}500
 ```
 
-This is a helpful message which explains that the web portal made a request to another service, raised an error, and responded with a response code of 500, indicating an **Internal server error**.
+This is a helpful message that explains that the web portal made a request to another service, raised an error, and responded with a response code of 500, indicating an **Internal server error**.
 
-Since this message tells you that the error occurred while the web portal was making an outbound request, you can use distributed tracing to better understand the issue. Select **Monitor > Distributed tracing** from the left-hand navigation.
+Since this message tells you that the error occurred while the web portal was making an outbound request, use distributed tracing to better understand the issue. Select **Monitor > Distributed tracing** from the left-hand navigation.
 
 </Step>
 
@@ -77,7 +83,7 @@ Select the first row in the table:
 
 ![Web portal trace data](../../../images/telco-lite/web-portal-dt-row.png)
 
-This trace gives a lot of information about what happened with the request once the web portal received it. One of the things the trace tells you is that the web portal made a `GET` request to **Telco-Login Service** and received an error. The trace indicates an error by coloring the text red.
+This trace gives a lot of information about what happened with the request once the web portal received it. One of the things that the trace reveals is that the web portal made a `GET` request to **Telco-Login Service** and received an error. The trace indicates an error by coloring the text red.
 
 Select the row (called a span) to see more information about the request to the login service:
 
@@ -89,9 +95,9 @@ Expand **Error details** to see the error message:
 [output] {red}java.lang.Exception:{plain} The application is not yet ready to accept traffic
 ```
 
-Interesting! This message says that, at the time that the web portal made the `GET` request to the login service, the login service was not ready to accept traffic. To dive further into the root cause of these cascading errors, you need to inspect the login service.
+Interesting! This message says that, at the time that the web portal made the `GET` request to the login service, the login service was not ready to accept traffic. Inspect the login service to dive further into the root cause of these cascading errors.
 
-Select **APM > Telco-Login Service**.
+Return to the **APM** page, and select **Telco-Login Service**.
 
 </Step>
 
@@ -105,11 +111,11 @@ Notice that the APM summary for **Telco-Login Service** has similar red flags to
 
 <Step>
 
-**Web transactions time**, in the APM, shows you that requests to the login service spend all their time in Java code. So, open **Monitor > JVMs** in the left-hand navigation:
+**Web transactions time**, in **APM**, shows that requests to the login service spend all their time in Java code. So, in the left-hand navigation, open **Monitor > JVMs**:
 
 ![JVMs overview](../../../images/telco-lite/jvm-overview.png)
 
-Java Virtual Machines, or JVMs, run Java processes, such as those used by the login service. This view shows you resource graphs for each JVM your service uses. Change the time slice to look at data for the last 3 hours, so you can get a better idea of how the service has been behaving:
+Java Virtual Machines, or JVMs, run Java processes, such as those used by the login service. This view shows resource graphs for each JVM your service uses. Change the timeslice to look at data for the last 3 hours, so you can get a better idea of how the service has been behaving:
 
 ![JVM heap memory usage](../../../images/telco-lite/jvm-heap-mem.png)
 
@@ -119,7 +125,7 @@ Notice, in **Heap memory usage**, that the line for **Used Heap** rises consiste
 
 <Step>
 
-Your Java process is leaking memory, but you need to understand the extent of the leak's impact. To dive a little deeper, navigate to the login service's host infrastructure view.
+Your Java process is leaking memory, but you need to understand the extent of the leak's impact. Navigate to the login service's host infrastructure view to dive a little deeper.
 
 First, go to the **Telco-Login Service** summary page and turn off **Show new view**:
 
@@ -131,7 +137,7 @@ Then, scroll to the bottom of the page, and select the host's name:
 
 <Important>
 
-Right now, you can only select the host's name from the old version of the UI (we're working on it). So, make sure you toggled **Show new view** to "off".
+Right now, you can only select the host's name from the old version of the UI (we're working on it). So, make sure you toggle off **Show new view**.
 
 </Important>
 
@@ -139,27 +145,27 @@ In this infrastructure view, **Memory Used %** for **Telco-Authentication-host**
 
 ![Authentication host memory](../../../images/telco-lite/infra-auth-host.png)
 
-Therefore, the memory leak effects the login service's entire host. Click and drag on **Memory Used %** to narrow the time slice to one of the peaks:
+Therefore, the memory leak effects the login service's entire host. Click and drag on **Memory Used %** to narrow the timeslice to one of the peaks:
 
-![Authentication host, new time slice](../../../images/telco-lite/auth-host-zoomed.png)
+![Authentication host, new timeslice](../../../images/telco-lite/auth-host-zoomed.png)
 
-Now, you can compare this graph with the login service's **Errors** graph to see how they relate.
+Now, compare this graph with the login service's **Errors** graph to see how they relate.
 
 </Step>
 
 <Step>
 
-In a new tab, navigate to the login service's **Errors** view: **APM > Telco-Login Service > Events > Errors**:
+Open New Relic in a new tab. From **APM**, select **Telco-Login Service**. Then, navigate to **Events > Errors**.
 
 ![Login service errors](../../../images/telco-lite/login-errors.png)
 
-If you compare these graphs, you'll see that the memory percentage reached its peak at 10:25 AM (in this example), and then dropped off. You'll also see that errors started occurring in the login service just after that, at 10:26 AM. The message for those errors is the same one you saw earlier:
+By comparing these graphs, you see that the memory percentage reached its peak at 10:25 AM (in this example) and then dropped off. You also see that errors started occurring in the login service just after that, at 10:26 AM.
+
+The message for those errors is the same one you saw earlier:
 
 ```shell copyable=false
 [output] {red}java.lang.Exception:{plain} The application is not yet ready to accept traffic
 ```
-
-<br />
 
 This suggests that the memory leaks cause the application to fail for a time. To understand the error a bit more, select the error class from the table at the bottom of the view:
 
@@ -169,15 +175,15 @@ The stack trace shows that the service raised an `UnhandledException` from a fun
 
 ![Login error stack trace](../../../images/telco-lite/login-error-stack-trace.png)
 
-With the information you've collected so far, you can conclude that **Telco-Login Service's** java code has a memory leak. Also, the login service restarts the application when it runs out of memory, and it raises an `UnhandledException` when it receives requests while the app is restarting.
+With the information you've collected so far, you can conclude that **Telco-Login Service's** Java code has a memory leak. Also, the login service restarts the application when it runs out of memory, and it raises an `UnhandledException` when it receives requests while the app is restarting.
 
-You also know the login service is effecting the Web Portal, because that is what introduced you to this problem, but does the issue effect any other services?
+You also know the login service is effecting the web portal, because that is what introduced you to this problem, but does the issue effect any other services?
 
 </Step>
 
 <Step>
 
-You can visualize service dependencies using service maps. First, navigate back to **APM > Telco-Login Service** and select  **Monitor > Service map**:
+Visualize service dependencies using service maps. First, navigate back to **APM**, and from **Telco-Login Service**, select  **Monitor > Service map**:
 
 ![Login service map](../../../images/telco-lite/login-service-map.png)
 
@@ -205,4 +211,4 @@ At the end of your investigation, you discovered:
 
 Now, as a Telco Lite developer, you have enough information to debug the issue causing the memory leak. Congratulations!
 
-You can learn more about using New Relic by diagnosing [other issues](diagnose-problems#view-your-services). If this is your last issue, you can [tear down](diagnose-problems#tear-down-telco-lite) all the Telco Lite services.
+Learn more about using New Relic by diagnosing [other issues](diagnose-problems#view-your-services). If this is your last issue, [tear down](diagnose-problems#tear-down-telco-lite) all the Telco Lite services.

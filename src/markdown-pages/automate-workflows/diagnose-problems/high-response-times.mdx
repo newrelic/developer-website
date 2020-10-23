@@ -1,12 +1,12 @@
 ---
 path: '/automate-workflows/diagnose-problems/high-response-times'
 duration: '15 min'
-title: 'Diagnosing high response times in Telco Lite'
+title: 'Diagnose high response times in Telco Lite'
 template: 'GuideTemplate'
 description: 'Learn how to use New Relic to diagnose high response times in your services.'
 tileShorthand:
-  title: 'Diagnosing high response times in Telco Lite'
-  description: 'Learn how to diagnose high response times with New Relic'
+  title: 'Diagnose high response times in Telco Lite'
+  description: 'Learn how to diagnose high response times with New Relic.'
 resources:
   - title: 'New Relic Demo Deployer'
     url: 'https://github.com/newrelic/demo-deployer'
@@ -15,21 +15,27 @@ tags:
   - explore
 ---
 
-In this tutorial, you'll use New Relic to understand why **Telco-Warehouse Portal** has slower-than-normal response times.
+Use New Relic to understand why **Telco-Warehouse Portal** has slower-than-normal response times.
 
-## Before you begin
+## Prerequisites
 
-This tutorial assumes you're familiar with the [infrastructure of Telco Lite](diagnose-problems#welcome-to-acme-telco-lite), you've [set up your local environment](diagnose-problems#set-up-your-environment), and you've [deployed and instrumented the Telco Lite services](diagnose-problems#deploy-telco-lite).
+Before you begin:
+
+- Learn about the [infrastructure of Telco Lite](diagnose-problems#welcome-to-acme-telco-lite)
+- [Set up your local environment](diagnose-problems#set-up-your-environment)
+- [Deploy and instrument the Telco Lite services](diagnose-problems#deploy-telco-lite).
+
+When you're ready, start your journey by observing the high response times in your services.
 
 <Steps>
 
 <Step>
 
-Log in to [New Relic One](one.newrelic.com) and select **APM** from the top navigation menu. Here, you see an overview of all eight Telco Lite services, including the service names, response times, and throughputs. Notice that the response time for **Telco-Warehouse Portal** is unusually high:
+Log in to [New Relic One](https://one.newrelic.com) and select **APM** from the top navigation menu. Here, you see an overview of all eight Telco Lite services, including the service names, response times, and throughputs. Notice that the response time for **Telco-Warehouse Portal** is 43 seconds, much higher than the response times in other services:
 
 ![APM overview](../../../images/telco-lite/high-response-times.png)
 
-Select the **Telco-Warehouse Portal** service name from the APM overview to see a summary of that service. The top graph in the summary view shows **Web transactions time**:
+On the **APM** page, select the **Telco-Warehouse Portal** service name to see a summary of that service. The top graph in the summary view shows **Web transactions time**:
 
 ![APM transaction time summary](../../../images/telco-lite/apm-summary.png)
 
@@ -37,11 +43,11 @@ You see several peaks, reaching almost 50,000 milliseconds—or 50 seconds! From
 
 ![APM Node.js transaction time](../../../images/telco-lite/apm-node.png)
 
-The graph changed to show only what the Node.js component contributes to the overall response time—less than 100 ms, in this example. Now, select **Web external** and deselect **Node.js**:
+The graph changes to show only what the Node.js component contributes to the overall response time—less than 100 ms, in this example. Now, select **Web external** and deselect **Node.js**:
 
 ![APM web external transaction time](../../../images/telco-lite/apm-webex.png)
 
-External web traffic is the primary contributor to the high response times. That's a good start, but "external web traffic" is vague and unhelpful. Next, you dive deeper into the specifics of what makes up that component.
+External web traffic is the primary contributor to the high response times. That's a good start, but it doesn't tell the whole story. Next, dive deeper to find out which external service is causing the issue.
 
 </Step>
 
@@ -49,7 +55,7 @@ External web traffic is the primary contributor to the high response times. That
 
 So, you know that **Web external** is the culprit of the high response times, but it's hard to tell why. External web traffic is all the requests made from your service to other services. This means you should look into what external requests that the warehouse portal makes to try to understand exactly what external service is the bottleneck.
 
-Select **Monitor > Distributed tracing** from the left-hand navigation:
+From the left-hand navigation, select **Monitor > Distributed tracing**:
 
 ![Distributed tracing overview](../../../images/telco-lite/dt-overview.png)
 
@@ -57,7 +63,7 @@ This view shows you requests to the warehouse portal. Select a request from the 
 
 ![Specific trace](../../../images/telco-lite/dt-trace.png)
 
-This trace shows you that one external request contributes almost all of the total trace duration. Specifically, an external request to the **Telco-Fulfillment Service** contributes over 99% of the overall response time.
+This trace shows that one external request contributes almost all of the total trace duration. Specifically, an external request to the **Telco-Fulfillment Service** contributes over 99% of the overall response time.
 
 This is good news! You own the fulfillment service, which means you can drill down for even more information. Select the offending row (called a span), and then select **Explore this transaction**:
 
@@ -75,7 +81,7 @@ Similar to how you modified the warehouse portal APM graph, you can look specifi
 
 `Function/__main__:inventory_item`, a Python function, contributes over 99% of the overall response time.
 
-At this point, you know that **Telco-Warehouse Portal** is slow because it makes an external request to **Telco-Fulfillment Service**, which is slow. You also know that the issue in the fulfillment service is local because over 99% of the request is spent in Python code, not external services. Take a step back to the fulfillment service's summary page to look at the service as a whole, instead of this single transaction:
+At this point, you know that **Telco-Warehouse Portal** is slow because it makes an external request to **Telco-Fulfillment Service**, which is slow. You also know that the issue in the fulfillment service is local because over 99% of the request is spent in Python code, not external services. Navigate to the fulfillment service's summary page to look at the service as a whole, instead of this single transaction:
 
 ![Fulfillment transaction time summary](../../../images/telco-lite/apm-fulfillment-summary.png)
 
@@ -83,7 +89,7 @@ At this point, you know that **Telco-Warehouse Portal** is slow because it makes
 
 <Step>
 
-Scroll down on this view to familiarize yourself with the graphs it shows, such as **Throughput** and **Error rate**. At the bottom of the page, you can see a table with the fulfillment hosts. You can't currently drill into a specific host in the new UI (we're working on it), but you can in the old UI. Toggle **Show new view** to "off" and select the host link:
+Scroll down on this view to familiarize yourself with the graphs it shows, such as **Throughput** and **Error rate**. At the bottom of the page, you can see a table with the fulfillment hosts. You can't currently drill into a specific host in the new UI (we're working on it), but you can in the old UI. Toggle **Show new view** to off and select the host link:
 
 ![Switch to the old UI](../../../images/telco-lite/old-ui.png)
 
@@ -91,7 +97,7 @@ Scroll down on this view to familiarize yourself with the graphs it shows, such 
 
 <Step>
 
-Now, you're looking at graphs in the infrastructure view for that service's host. Notice that **CPU %** has a lot of high spikes. Click and drag on the graph from the start of a spike to the end of it to narrow the time slice to the period when CPU utilization goes up:
+Now, you're looking at graphs in the infrastructure view for that service's host. Notice that **CPU %** has a lot of high spikes. Click and drag on the graph from the start of a spike to the end of it to narrow the timeslice to the period when CPU utilization goes up:
 
 ![CPU spike](../../../images/telco-lite/cpu-spike.png)
 
@@ -112,14 +118,6 @@ This map shows you the fulfillment service's incoming and outgoing dependencies.
 Select the web portal node to see that the fulfillment service also affects the web portal's response times:
 
 ![Web portal dependency](../../../images/telco-lite/web-portal-dep.png)
-
-<Tip title="Extra Credit">
-
-Notice that the web portal's response times aren't nearly as high as those in the warehouse portal.
-
-Using the same steps you used to diagnose the issue in the warehouse portal, can you discover the difference between the two services?
-
-</Tip>
 
 </Step>
 
