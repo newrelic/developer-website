@@ -20,7 +20,12 @@ const ConstantReference = ({ constant }) => {
 ConstantReference.propTypes = {
   constant: PropTypes.shape({
     name: PropTypes.string,
-    value: PropTypes.any,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+      PropTypes.number,
+      PropTypes.array,
+    ]),
   }),
 };
 

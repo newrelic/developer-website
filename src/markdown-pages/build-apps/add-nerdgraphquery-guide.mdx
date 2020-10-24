@@ -25,11 +25,11 @@ NerdGraph is our GraphQL implementation. GraphQL has some key differences when c
 - The client, not the server, determines what data is returned.
 - You can easily collect data from multiple sources. For example, in a single query, you can get account information, infrastructure data, and issue a NRQL request.
 
-<Important>
+<Callout variant="important">
 
 Before completing this exercise, you can experiment with GraphQL queries in our [NerdGraph API explorer](https://api.newrelic.com/graphiql).
 
-</Important>
+</Callout>
 
 We also have a 14-minute video that covers the steps below.
 
@@ -44,11 +44,11 @@ To develop projects, you need our New Relic One CLI (command line interface). If
 * Install [Node.js](https://nodejs.org/en/download/).
 * Complete steps 1–4 of our [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), and be sure to make a copy of your account ID from step 1 because you’ll need it later.
 
-<Important>
+<Callout variant="important">
 
 If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
 
-</Important>
+</Callout>
 
 For additional details, see [Set up your development environment](set-up-dev-env).
 
@@ -88,11 +88,11 @@ In your preferred text editor, open `index.js`.
 
 Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
-<Important>
+<Callout variant="important">
 
 Your account ID is available in the CLI quick start (see **Before you begin**).
 
-</Important>
+</Callout>
 
 ```jsx
 this.accountId = <ADD YOUR ACCOUNT ID>;
@@ -149,11 +149,11 @@ After launching the **Use NerdGraph** application, you see a dashboard that give
 
 Now you can create a dropdown menu for changing the account the application is viewing. The first step is to import the `NerdGraphQuery` component into the application's `index.js` file.
 
-<Important>
+<Callout variant="important">
 
 If you need more details about our example below, see the APIs and components page on [https://developer.newrelic.com](https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/NerdGraphQuery)
 
-</Important>
+</Callout>
 
 <Steps>
 
@@ -184,11 +184,11 @@ The `NerdGraphQuery` component takes a query object that states the source you w
 
 Add the following code to your `index.js` file in the `render` method:
 
-<Important>
+<Callout variant="important">
 
 In the browser console, you can see the data from your query returned in an object that follows the same structure of the object in the initial query.
 
-</Important>
+</Callout>
 
 ```jsx
 const query = `
