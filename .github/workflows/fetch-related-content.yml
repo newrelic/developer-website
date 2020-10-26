@@ -41,6 +41,25 @@ jobs:
       - name: Gatsby Build
         run: yarn run build:related-content
 
+      - name: Temporarily disable branch protection
+        id: disable-branch-protection
+        if: always()
+        uses: actions/github-script@v1
+        with:
+          github-token: ${{ secrets.OPENSOURCE_BOT_TOKEN }}
+          previews: luke-cage-preview
+          script: |
+            const result = await github.repos.updateBranchProtection({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: 'main',
+              required_status_checks: null,
+              restrictions: null,
+              enforce_admins: null,
+              required_pull_request_reviews: null
+            })
+            console.log("Result:", result)
+
       - name: Commit changes
         id: commit-changes
         run: |
@@ -59,3 +78,26 @@ jobs:
         with:
           github_token: ${{ secrets.OPENSOURCE_BOT_TOKEN }}
           branch: main
+
+      - name: Re-enable branch protection
+        id: enable-branch-protection
+        if: always()
+        uses: actions/github-script@v1
+        with:
+          github-token: ${{ secrets.OPENSOURCE_BOT_TOKEN }}
+          previews: luke-cage-preview
+          script: |
+            const result = await github.repos.updateBranchProtection({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: 'main',
+              required_status_checks: {
+                contexts: [
+                  'checkout-and-build'
+                ]
+              },
+              restrictions: null,
+              enforce_admins: true,
+              required_pull_request_reviews: null
+            })
+            console.log("Result:", result)
