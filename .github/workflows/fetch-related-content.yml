@@ -43,7 +43,6 @@ jobs:
 
       - name: Temporarily disable branch protection
         id: disable-branch-protection
-        if: always()
         uses: actions/github-script@v1
         with:
           github-token: ${{ secrets.OPENSOURCE_BOT_TOKEN }}
@@ -92,6 +91,7 @@ jobs:
               repo: context.repo.repo,
               branch: 'main',
               required_status_checks: {
+                strict: false,
                 contexts: [
                   'checkout-and-build'
                 ]
