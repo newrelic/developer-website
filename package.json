@@ -15,7 +15,6 @@
     "diff": "^4.0.2",
     "gatsby": "^2.24.85",
     "gatsby-image": "^2.4.20",
-    "gatsby-plugin-clearbit": "^1.1.0",
     "gatsby-plugin-emotion": "^4.3.12",
     "gatsby-plugin-google-analytics": "^2.3.15",
     "gatsby-plugin-google-tagmanager": "^2.3.14",
@@ -66,6 +65,7 @@
     "babel-jest": "^26.0.1",
     "babel-plugin-prismjs": "^2.0.1",
     "babel-preset-gatsby": "^0.4.2",
+    "core-js": "^2.4.0",
     "eslint": "^7.11.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-markdown": "^1.0.2",
@@ -86,23 +86,23 @@
     "build": "gatsby build",
     "build:production": "GATSBY_NEWRELIC_ENV=production gatsby build",
     "build:staging": "GATSBY_NEWRELIC_ENV=staging gatsby build",
-    "build:related-content": "BUILD_RELATED_CONTENT=true npm run build:production",
+    "build:related-content": "BUILD_RELATED_CONTENT=true yarn run build:production",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "yarn run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint src/",
-    "lint:fix": "npm run lint -- --fix",
+    "lint:fix": "yarn run lint -- --fix",
     "test": "jest",
-    "test:watch": "npm test -- --watch",
+    "test:watch": "yarn test -- --watch",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect",
+    "prepare": "yarn run snyk-protect",
     "postinstall": "patch-package"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run lint"
+      "pre-push": "yarn run lint"
     }
   },
   "repository": {
