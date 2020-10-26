@@ -82,7 +82,7 @@ The New Relic One CLI enables you to provide the information and images you want
 
 Update the New Relic One CLI to ensure you're working with the latest version.
 
-```
+```bash
 nr1 update
 ```
 
@@ -164,7 +164,7 @@ Save the metadata and screenshots to the catalog.
 
 This validates the information you added to the catalog directory against the criteria described in the previous step, and saves it to the catalog.
 
-```
+```bash
 nr1 catalog:submit
 ```
 
@@ -176,7 +176,7 @@ nr1 catalog:submit
 
 Publishing places your Nerdpack in New Relic One. To publish or deploy, you must be a **Nerdpack manager**.
 
-New Relic One requires that only one version (following semantic versioning) of a Nerdpack can be published at a time. 
+New Relic One requires that only one version (following semantic versioning) of a Nerdpack can be published at a time.
 
 <Callout variant="tip">
 
@@ -188,7 +188,7 @@ If you know what channel you want to deploy to (as described in the Deploy your 
 
 <Step>
 
-Update the `version` attribute in the app's `package.json` file. 
+Update the `version` attribute in the app's `package.json` file.
 
 This follows semantic versioning, and must be updated before you can successfully publish.
 

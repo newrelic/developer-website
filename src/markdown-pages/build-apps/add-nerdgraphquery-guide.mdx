@@ -41,8 +41,8 @@ We also have a 14-minute video that covers the steps below.
 
 To develop projects, you need our New Relic One CLI (command line interface). If you haven't already installed it, do the following:
 
-* Install [Node.js](https://nodejs.org/en/download/).
-* Complete steps 1–4 of our [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), and be sure to make a copy of your account ID from step 1 because you’ll need it later.
+- Install [Node.js](https://nodejs.org/en/download/).
+- Complete steps 1–4 of our [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), and be sure to make a copy of your account ID from step 1 because you’ll need it later.
 
 <Callout variant="important">
 
@@ -86,6 +86,8 @@ In your preferred text editor, open `index.js`.
 
   <Step>
 
+<>
+
 Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
 <Callout variant="important">
@@ -93,6 +95,8 @@ Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 Your account ID is available in the CLI quick start (see **Before you begin**).
 
 </Callout>
+
+</>
 
 ```jsx
 this.accountId = <ADD YOUR ACCOUNT ID>;
@@ -182,6 +186,8 @@ Add the `NerdGraphQuery` component into the first `StackItem` inside of the `ret
 
 The `NerdGraphQuery` component takes a query object that states the source you want to access and the data you want returned.
 
+<>
+
 Add the following code to your `index.js` file in the `render` method:
 
 <Callout variant="important">
@@ -189,6 +195,8 @@ Add the following code to your `index.js` file in the `render` method:
 In the browser console, you can see the data from your query returned in an object that follows the same structure of the object in the initial query.
 
 </Callout>
+
+</>
 
 ```jsx
 const query = `
@@ -211,6 +219,7 @@ To take the data returned by the NerdGraph query and display it in the applicati
 ```jsx
 return <HeadingText>{data.actor.account.name} Apps:</HeadingText>;
 ```
+
 When you go back to the browser and view your application, you see a new headline showing the name of your account returned from NerdGraph:
 
 ![App Image](../../images/nerdgraphquery-guide/with-name.png)
@@ -224,8 +233,8 @@ At this point, you have implemented the `NerdGraphQuery` component with the appl
 
 Here's what you need to do next:
 
-* Query NerdGraph inside of the `componentDidMount` lifecycle method.
-* Save the returned data for later use in the application.
+- Query NerdGraph inside of the `componentDidMount` lifecycle method.
+- Save the returned data for later use in the application.
 
 <Steps>
 
@@ -289,8 +298,8 @@ To do this, add this code to `index.js` for the second `StackItem` in the `retur
 
 After you complete these steps, look at the application in your browser, and note the following:
 
-* The dropdown menu now displays the data returned from the `NerdGraphQuery.query` and allows you to select an account.
-* After you select a new account, the application shows data from the new selection.
+- The dropdown menu now displays the data returned from the `NerdGraphQuery.query` and allows you to select an account.
+- After you select a new account, the application shows data from the new selection.
 
 ![App Complete](../../images/nerdgraphquery-guide/complete.png)
 

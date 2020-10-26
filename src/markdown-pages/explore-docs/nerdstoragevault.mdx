@@ -68,9 +68,12 @@ Below are examples of the queries used by the components to interact with NerdSt
 
 ### Write
 
-```json copy=false lineNumbers=false
+```graphql
 mutation {
-  nerdStorageVaultWriteSecret(scope: { actor: CURRENT_USER } , secret: { key: "test", value: "secret_test" } ) {
+  nerdStorageVaultWriteSecret(
+    scope: { actor: CURRENT_USER }
+    secret: { key: "test", value: "secret_test" }
+  ) {
     status
     errors {
       message
@@ -78,14 +81,16 @@ mutation {
     }
   }
 }
-
 ```
 
 ### Delete
 
-```json copy=false lineNumbers=false
+```graphql
 mutation {
-  nerdStorageVaultDeleteSecret(scope: { actor: CURRENT_USER } , key: "test_key" ) {
+  nerdStorageVaultDeleteSecret(
+    scope: { actor: CURRENT_USER }
+    key: "test_key"
+  ) {
     status
     errors {
       message
@@ -93,13 +98,12 @@ mutation {
     }
   }
 }
-
 ```
 
 ### Fetch a single secret
 
-```json copy=false lineNumbers=false
-{
+```graphql
+query {
   actor {
     nerdStorageVault {
       secret(key: "test_key") {
@@ -109,14 +113,12 @@ mutation {
     }
   }
 }
-
-
 ```
 
 ### Fetch a list of secrets
 
-```json copy=false lineNumbers=false
-{
+```graphql
+query {
   actor {
     nerdStorageVault {
       secrets {
@@ -126,8 +128,6 @@ mutation {
     }
   }
 }
-
-
 ```
 
 ### Limits

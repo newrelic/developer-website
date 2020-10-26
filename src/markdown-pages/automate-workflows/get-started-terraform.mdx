@@ -154,27 +154,27 @@ terraform plan
 
 You should see output that displays Terraform's execution plan. The plan contains the actions Terraform performs when your run `terraform apply`:
 
-```txt copy=false
-# Example output
-------------------------------------------------------------------------
-
-An execution plan has been generated and is shown below.
-Resource actions are indicated with the following symbols:
-  + create
-
-Terraform will perform the following actions:
-
-  # newrelic_alert_policy.golden_signal_policy will be created
-  + resource "newrelic_alert_policy" "golden_signal_policy" {
-      + account_id          = (known after apply)
-      + id                  = (known after apply)
-      + incident_preference = "PER_POLICY"
-      + name                = "Golden Signals - Your App Name"
-    }
-
-Plan: 1 to add, 0 to change, 0 to destroy.
-
-------------------------------------------------------------------------
+```bash copyable=false
+[output] {muted}# Example output
+[output] ------------------------------------------------------------------------
+[output]
+[output] An execution plan has been generated and is shown below.
+[output] Resource actions are indicated with the following symbols:
+[output]   + create
+[output]
+[output] Terraform will perform the following actions:
+[output]
+[output]   # newrelic_alert_policy.golden_signal_policy will be created
+[output]   + resource "newrelic_alert_policy" "golden_signal_policy" {
+[output]       + account_id          = (known after apply)
+[output]       + id                  = (known after apply)
+[output]       + incident_preference = "PER_POLICY"
+[output]       + name                = "Golden Signals - Your App Name"
+[output]     }
+[output]
+[output] Plan: 1 to add, 0 to change, 0 to destroy.
+[output]
+[output] ------------------------------------------------------------------------
 ```
 
 In this case, the plan shows you that Terraform will create a new alert policy when you run `terraform apply`. After verifying the details, execute the plan to provision the alert policy resource in your New Relic account:
@@ -187,12 +187,12 @@ Every time you `apply` changes, Terraform asks you to confirm the actions you've
 
 While it's running, Terraform sends logs to your console:
 
-```txt copy=false
-# Example output of `terraform apply`
-newrelic_alert_policy.golden_signal_policy: Creating...
-newrelic_alert_policy.golden_signal_policy: Creation complete after 1s [id=111222333]
-
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```bash copyable=false
+[output] {muted}# Example output of `terraform apply`
+[output] newrelic_alert_policy.golden_signal_policy: Creating...
+[output] newrelic_alert_policy.golden_signal_policy: Creation complete after 1s [id=111222333]
+[output]
+[output] Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
 [Log in to New Relic](https://login.newrelic.com/login) and [navigate to **Alert Policies**](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-policies/create-edit-or-find-alert-policy#alert-policy-view) to confirm that Terraform created your new policy.
