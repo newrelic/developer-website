@@ -86,23 +86,23 @@
     "build": "gatsby build",
     "build:production": "GATSBY_NEWRELIC_ENV=production gatsby build",
     "build:staging": "GATSBY_NEWRELIC_ENV=staging gatsby build",
-    "build:related-content": "BUILD_RELATED_CONTENT=true npm run build:production",
+    "build:related-content": "BUILD_RELATED_CONTENT=true yarn run build:production",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "yarn run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint src/",
-    "lint:fix": "npm run lint -- --fix",
+    "lint:fix": "yarn run lint -- --fix",
     "test": "jest",
-    "test:watch": "npm test -- --watch",
+    "test:watch": "yarn test -- --watch",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect",
+    "prepare": "yarn run snyk-protect",
     "postinstall": "patch-package"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run lint"
+      "pre-push": "yarn run lint"
     }
   },
   "repository": {
