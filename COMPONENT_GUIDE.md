@@ -155,7 +155,7 @@ render in a right column next to the description.
 Run the following command in your terminal:
 
 ```shell
-npm start
+yarn start
 ```
 
 </Step>
