@@ -21,22 +21,23 @@ jobs:
         with:
           node-version: 12
 
-      - name: Cache node_modules
-        id: cache-node
-        uses: actions/cache@v2
-        env:
-          cache-name: node-modules
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}-
+            ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Gatsby Build
-        run: npm run build:production
+        run: yarn run build:production
 
   generate-third-party-notices:
     runs-on: ubuntu-latest
@@ -54,23 +55,24 @@ jobs:
         with:
           node-version: 12
 
-      - name: Download Cached Deps
-        id: cache-node-modules
-        uses: actions/cache@v1
-        env:
-          cache-name: node-modules
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}-
+            ${{ runner.os }}-yarn-
 
       - name: Install Dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Install OSS CLI
         run: |
-          npm install -g @newrelic/newrelic-oss-cli
+          yarn global add @newrelic/newrelic-oss-cli
 
       - name: Generate Third Party Notices
         id: generate-notices
@@ -160,20 +162,21 @@ jobs:
           # semantic-release requires >= 10.18
           node-version: 12
 
-      - name: Cache node_modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        env:
-          cache-name: node-modules
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}-
+            ${{ runner.os }}-yarn-
 
       # deletes node_modules, install dependencies, does NOT update lockfile
       - name: Install Dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Temporarily disable "required_pull_request_reviews" branch protection
         id: disable-branch-protection
