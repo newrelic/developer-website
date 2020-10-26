@@ -57,20 +57,20 @@ kustomize build https://github.com/newrelic/newrelic-kubernetes-operator/config/
 To confirm the installation was successful, run a few `kubectl` commands to check the status of the Kubernetes operator.
 Ensure the Kubernetes operator's namespace, `newrelic-kubernetes-operator-system`, has been applied:
 
-```bash lineNumbers=false
+```bash
 kubectl get namespaces
 ```
 
 The output should be similar to the following, which includes the Kubernetes operator's namespace, `newrelic-kubernetes-operator-system`:
 
-```no-highlighting lineNumbers=false
-NAME                                     STATUS   AGE
-cert-manager                             Active   4m35s
-default                                  Active   20m
-kube-node-lease                          Active   20m
-kube-public                              Active   20m
-kube-system                              Active   20m
-newrelic-kubernetes-operator-system      Active   3m48s
+```bash copyable=false
+[output] NAME                                     STATUS   AGE
+[output] cert-manager                             Active   4m35s
+[output] default                                  Active   20m
+[output] kube-node-lease                          Active   20m
+[output] kube-public                              Active   20m
+[output] kube-system                              Active   20m
+[output] newrelic-kubernetes-operator-system      Active   3m48s
 ```
 
 Now, make sure the Kubernetes operator's controller manager is running:
@@ -83,15 +83,15 @@ Now, make sure the Kubernetes operator's controller manager is running:
   </em>
 </small>
 
-```bash lineNumbers=false
+```bash
 kubectl get pods --namespace newrelic-kubernetes-operator-system
 ```
 
 You should see output similar to the following:
 
-```no-highlighting lineNumbers=false
-NAME                                                              READY   STATUS    RESTARTS   AGE
-newrelic-kubernetes-operator-controller-manager-7b9c64f58crwg9j   2/2     Running   0          157m
+```bash copyable=false
+[output] NAME                                                              READY   STATUS    RESTARTS   AGE
+[output] newrelic-kubernetes-operator-controller-manager-7b9c64f58crwg9j   2/2     Running   0          157m
 ```
 
 If your output is similar to the example shown, you’re ready for the next step. If you don’t see a pod named `newrelic-kubernetes-operator-controller-manager-<hash>`, double check your Kubernetes configuration to ensure you’re within the correct context and pointing to the correct cluster.
@@ -129,14 +129,14 @@ spec:
 
 Now run the `kubectl apply` command to create your alert policy.
 
-```bash lineNumbers=false
+```bash
 kubectl apply -f ./new_relic_alert_policy.yaml
 ```
 
 You'll see output that reads similar to the following:
 
-```bash lineNumbers=false
-alertspolicy.nr.k8s.newrelic.com/my-policy created
+```bash copyable=false
+[output] alertspolicy.nr.k8s.newrelic.com/my-policy created
 ```
 
 Confirm that your alert policy was created by viewing your policies at `alerts.newrelic.com/accounts/{your account ID}/policies`. You can search for your new policy by its name. In this case, search for "Alert Policy Created With k8s."

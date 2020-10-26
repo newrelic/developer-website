@@ -10,8 +10,8 @@ You can serve this site locally to quickly see your changes and additions before
 
 ```shell
 cd developer-website/
-npm install
-npm start
+yarn
+yarn start
 ```
 
 Your site is now running at `http://localhost:8000`!
@@ -22,8 +22,8 @@ Node v12 is used in this project as specified in [.nvmrc](https://github.com/new
 
 ## 📝 Unit tests
 
-To run the unit tests, run `npm test` in the terminal. If you would like to
-have the tests automatically re-run, use `npm run test:watch`.
+To run the unit tests, run `yarn test` in the terminal. If you would like to
+have the tests automatically re-run, use `yarn run test:watch`.
 
 ## 🌎 Community
 

@@ -20,7 +20,7 @@ tags:
 ---
 
 <Intro>
-This guide steps you through the process of adding access to our time picker in the sample transaction overview application. 
+This guide steps you through the process of adding access to our time picker in the sample transaction overview application.
 
 The sample application provides an overview of the telemetry data showing your account's transactions by application, average response time, HTTP response codes, and transaction errors. When you enable the time picker, users can specify the time range of data to view.
 
@@ -34,12 +34,12 @@ We also have a 12 minute video that covers the steps below.
 
 To develop projects, you need our New Relic One CLI (command line interface). If you haven't already installed it, do the following:
 
-* Install [Node.js](https://nodejs.org/en/download/).
-* Complete steps 1–4 of the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==). In step 1, be sure to make a copy of the number preceding your account name. This is your accound ID, and you’ll need it later.
+- Install [Node.js](https://nodejs.org/en/download/).
+- Complete steps 1–4 of the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==). In step 1, be sure to make a copy of the number preceding your account name. This is your accound ID, and you’ll need it later.
 
 <Callout variant="important">
 
-  If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
+If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
 
 </Callout>
 
@@ -83,8 +83,8 @@ Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
 <Callout variant="important">
 
-  Your account ID is available in the CLI quick start (see **Before you begin**).
-  
+Your account ID is available in the CLI quick start (see **Before you begin**).
+
 </Callout>
 
 ```jsx
@@ -97,9 +97,9 @@ this.accountId = <ADD YOUR ACCOUNT ID>;
 
 Change to the `add-time-picker` directory:
 
-  ```
-  cd /nr1-how-to/add-time-picker
-  ```
+```bash
+cd /nr1-how-to/add-time-picker
+```
 
   </Step>
 
@@ -107,7 +107,7 @@ Change to the `add-time-picker` directory:
 
 Execute these commands to update the UUID and serve the sample application:
 
-```
+```bash
 nr1 nerdpack:uuid -gf
 nr1 nerdpack:serve
 ```
