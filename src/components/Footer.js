@@ -11,9 +11,9 @@ import PropTypes from 'prop-types';
 
 const Footer = ({ className }) => {
   const { fileRelativePath } = useContext(PageContext);
-  const isComponentDoc = fileRelativePath.includes(
-    'src/markdown-pages/components'
-  );
+  const isComponentDoc =
+    fileRelativePath &&
+    fileRelativePath.includes('src/markdown-pages/components');
 
   return (
     <footer
