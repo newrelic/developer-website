@@ -176,7 +176,7 @@ Guides should have actionable steps and enough information for a reader to follo
 
 ## Tips for writing guides
 
-Review the[style guide](/STYLE_GUIDE) prior to contributing contributing.
+Review the [style guide](/STYLE_GUIDE) prior to contributing.
 
 ### Check for existing content
 
