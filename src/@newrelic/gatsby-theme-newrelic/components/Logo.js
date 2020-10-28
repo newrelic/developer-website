@@ -3,24 +3,24 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 const bracket = css`
-  stroke: var(--logo-icon-color, var(--color-brand-500));
+  stroke: var(--color-brand-500);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 
   .dark-mode & {
-    stroke: var(--logo-icon-color, var(--color-brand-300));
+    stroke: var(--color-brand-300);
   }
 `;
 
-const Logo = ({ className }) => (
+const Logo = ({ className, width }) => (
   <svg
     className={className}
     viewBox="0 0 247 61"
     xmlns="http://www.w3.org/2000/svg"
     css={css`
       fill: none;
-      width: 200px;
+      width: ${width || '247px'};
     `}
   >
     <path
@@ -36,6 +36,7 @@ const Logo = ({ className }) => (
 
 Logo.propTypes = {
   className: PropTypes.string,
+  width: PropTypes.string,
 };
 
 export default Logo;
