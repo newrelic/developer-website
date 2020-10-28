@@ -22,21 +22,3 @@
   font-size: 1.125rem;
   padding: 8rem 0;
 }
-
-.footerContainer {
-  background: var(--color-neutrals-800);
-  padding: 1.5rem;
-
-  :global(.dark-mode) & {
-    background: var(--tertiary-background-color);
-  }
-}
-
-.footer {
-  color: var(--color-teal-300);
-  padding: 0 2rem;
-
-  :global(.dark-mode) & {
-    color: var(--secondary-text-color);
-  }
-}
