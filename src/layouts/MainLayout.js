@@ -6,7 +6,6 @@ import { Helmet } from 'react-helmet';
 import { GlobalHeader, GlobalFooter } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
 import Cookies from 'js-cookie';
-import Footer from '../components/Footer';
 import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
