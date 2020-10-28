@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
-import { Button, Icon, NewRelicLogo } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Button,
+  Icon,
+  NewRelicLogo,
+  Surface,
+} from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/Seo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
@@ -17,6 +22,80 @@ import HopinLogo from '../components/HopinLogo';
 import MarketoForm from '../components/MarketoForm';
 import styled from '@emotion/styled';
 import Agenda from '../components/Agenda';
+
+import StijnPolfliet from '../images/nerd-days/emea-speakers/StijnPolfliet.jpg';
+import JavierRamos from '../images/nerd-days/emea-speakers/JavierRamos.jpg';
+import DaisyMuyldermans from '../images/nerd-days/emea-speakers/DaisyMuyldermans.jpg';
+import AntonMalinovskiy from '../images/nerd-days/emea-speakers/AntonMalinovskiy.jpg';
+import JasonClark from '../images/nerd-days/emea-speakers/JasonClark.jpg';
+import IreneLopez from '../images/nerd-days/emea-speakers/IreneLopez.jpg';
+import MiguelMingorance from '../images/nerd-days/emea-speakers/MiguelMignorance.jpg';
+import PedroSousa from '../images/nerd-days/emea-speakers/PedroSousa.jpg';
+import LiamHurrell from '../images/nerd-days/emea-speakers/LiamHurrell.jpg';
+import TomDoherty from '../images/nerd-days/emea-speakers/TomDoherty.jpg';
+
+const speakers = [
+  {
+    name: 'Javier Ramos',
+    image: JavierRamos,
+    title: 'Principal Site Reliability Engineer',
+    company: 'Elsevier',
+  },
+  {
+    name: 'Daisy Muyldermans',
+    image: DaisyMuyldermans,
+    title: 'Associate Solutions Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Tom Doherty',
+    image: TomDoherty,
+    title: 'Lead Technical Training Program Manager',
+    company: 'New Relic',
+  },
+  {
+    name: 'Anton Malinovskiy',
+    image: AntonMalinovskiy,
+    title: 'Principal Software Engineer',
+    company: 'Ocado Technology',
+  },
+  {
+    name: 'Stijn Polfliet',
+    image: StijnPolfliet,
+    title: 'Principal TechOps Strategy Consultant',
+    company: 'New Relic',
+  },
+  {
+    name: 'Liam Hurrell',
+    image: LiamHurrell,
+    title: 'Senior Technical Training Specialist',
+    company: 'New Relic',
+  },
+  {
+    name: 'Irene Lopez',
+    image: IreneLopez,
+    title: 'Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Jason Clark',
+    image: JasonClark,
+    title: 'Principal Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Miguel Mingorance',
+    image: MiguelMingorance,
+    title: 'Systems Engineer',
+    company: 'Delivery Hero',
+  },
+  {
+    name: 'Pedro Sousa',
+    image: PedroSousa,
+    title: 'Senior IT Operations Analyst',
+    company: 'BizDirect',
+  },
+];
 
 const NerdDaysPage = () => {
   const {
@@ -237,6 +316,106 @@ const NerdDaysPage = () => {
               />
             </div>
           </Section>
+          <Section className={cx(styles.speakersSection)}>
+            <SectionHeading>Speaker line up</SectionHeading>
+            <SectionDescription>
+              Get hands on with sessions presented by the following Relics,
+              partners, Developer Champions, and customers.
+            </SectionDescription>
+
+            <ul
+              css={css`
+                max-width: 1200px;
+                padding: 0;
+                margin: 0 auto;
+                list-style-type: none;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+              `}
+            >
+              {speakers.map(({ name, title, image, company }, idx) => (
+                <Surface
+                  key={idx}
+                  as="li"
+                  base={Surface.BASE.SECONDARY}
+                  css={css`
+                    margin: 1rem;
+                    max-width: 256px;
+                    overflow: hidden;
+                    box-shadow: 0px 103.32px 133.205px rgba(3, 62, 70, 0.09),
+                      0px 43.1645px 55.6501px rgba(3, 62, 70, 0.0646969),
+                      0px 23.0778px 29.7532px rgba(3, 62, 70, 0.0536497),
+                      0px 12.9372px 16.6794px rgba(3, 62, 70, 0.045),
+                      0px 6.87086px 8.8583px rgba(3, 62, 70, 0.0363503),
+                      0px 2.85912px 3.68614px rgba(3, 62, 70, 0.0253031);
+                  `}
+                >
+                  <div
+                    css={css`
+                      position: relative;
+                      margin-bottom: -0.5rem;
+                      &:before {
+                        content: '';
+                        width: 100%;
+                        height: 10px;
+                        position: absolute;
+                        bottom: 10px;
+                        background-image: linear-gradient(
+                          294.8deg,
+                          #0069ce -16.42%,
+                          #0fb7c9 115.59%
+                        );
+                        clip-path: polygon(0 0, 100% 0%, 100% 0%, 0% 100%);
+                      }
+                    `}
+                  >
+                    <img
+                      src={image}
+                      alt={name}
+                      css={css`
+                        clip-path: polygon(0 0, 100% 0%, 100% 97%, 0% 93%);
+                      `}
+                    />
+                  </div>
+                  <div
+                    css={css`
+                      padding: 0.75rem 1rem 1rem;
+                    `}
+                  >
+                    <h4
+                      css={css`
+                        font-size: 1.25rem;
+                        font-weight: 800;
+                        margin-bottom: 0.25rem;
+                      `}
+                    >
+                      {name}
+                    </h4>
+                    <p
+                      css={css`
+                        font-size: 0.875rem;
+                        line-height: 1.25rem;
+                        margin-bottom: 0;
+                      `}
+                    >
+                      {title}
+                    </p>
+                    <p
+                      css={css`
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                        line-height: 1.25rem;
+                        margin-bottom: 0;
+                      `}
+                    >
+                      {company}
+                    </p>
+                  </div>
+                </Surface>
+              ))}
+            </ul>
+          </Section>
 
           <Section
             css={css`
@@ -305,26 +484,32 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 time="10:00 AM"
                 title="Setting SLOs, SLAs and SLIs in the Real World"
+                speaker="Javier Ramos"
               />
               <Agenda.Session
                 time="10:00 AM"
                 title="React and the power of visualization"
+                speaker="Daisy Muyldermans"
               />
               <Agenda.Session
                 time="10:00 AM"
                 title="Instrumenting your service using agents"
+                speaker="Tom Doherty"
               />
               <Agenda.Session
                 time="11:00 AM"
                 title="Who watches the watchman: Micrometer and Terrraform"
+                speaker="Anton Malinovskiy"
               />
               <Agenda.Session
                 time="11:00 AM"
-                title="Digging into Kubernetes's data"
+                title="5 Steps to Kubernetes Observability"
+                speaker="Stijn Polfliet"
               />
               <Agenda.Session
                 time="11:00 AM"
                 title="Exploring your data using NRQL"
+                speaker="Liam Hurrell"
               />
               <Agenda.Session
                 inactive
@@ -341,27 +526,44 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="1:00 PM"
-                title="Who watches the watchman: Micrometer and Terrraform"
+                title="GraphQL: Smooth Schemas and Rough Edges"
+                speaker="Irene Lopez & Jason Clark"
               />
               <Agenda.Session
                 time="1:00 PM"
                 title="Reducing toil with Terraform"
+                speaker="Miguel Mingorance"
               />
-              <Agenda.Session time="1:00 PM" title="Custom Data Collection" />
+              <Agenda.Session
+                time="1:00 PM"
+                title="Custom Data Collection"
+                speaker="Tom Doherty"
+              />
               <Agenda.Session
                 time="2:00 PM"
                 title="Test in production with KPI-driven release management"
+                speaker="William Janssen"
               />
               <Agenda.Session time="2:00 PM" title="Plot your data" />
-              <Agenda.Session time="2:00 PM" title="Alerts Best Practices" />
-              <Agenda.Session time="3:00 PM" title="A journey to the cloud" />
+              <Agenda.Session
+                time="2:00 PM"
+                title="Alerts Best Practices"
+                speaker="Liam Hurrell"
+              />
+              <Agenda.Session
+                time="3:00 PM"
+                title="A journey to the cloud"
+                speaker="Pedro Sousa"
+              />
               <Agenda.Session
                 time="3:00 PM"
                 title="How We Became Open By Default"
+                speaker="Ben Evans"
               />
               <Agenda.Session
                 time="3:00 PM"
                 title="True availability using Synthetics"
+                speaker="Tom Doherty"
               />
             </Agenda>
           </Section>
