@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
-import Logo from './Logo';
 import Navigation from './Navigation';
-import { HamburgerMenu, SearchInput } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Logo,
+  HamburgerMenu,
+  SearchInput,
+} from '@newrelic/gatsby-theme-newrelic';
 
 const MobileHeader = ({ className, isOpen, toggle }) => {
   const [searchTerm, setSearchTerm] = useState('');
