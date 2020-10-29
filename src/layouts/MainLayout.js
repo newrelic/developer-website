@@ -46,6 +46,8 @@ const MainLayout = ({ children }) => {
     ? null
     : `${siteMetadata.repository}/blob/main/${fileRelativePath}`;
 
+  const previousCookieConsent = usePrevious(cookieConsent);
+
   useEffect(() => {
     setIsMobileNavOpen(false);
   }, [location.pathname]);
@@ -55,8 +57,6 @@ const MainLayout = ({ children }) => {
       window.trackGoogleAnalytics();
     }
   }, [cookieConsent, previousCookieConsent]);
-
-  const previousCookieConsent = usePrevious(cookieConsent);
 
   return (
     <div
