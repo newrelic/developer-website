@@ -12,10 +12,10 @@ const CookieApprovalDialog = ({ className, setCookieConsent }) => {
   const [isCookieSet, setIsCookieSet] = useState(true);
 
   useEffect(() => {
-    setIsCookieSet(Cookies.get(gdprConsentCookieName) !== undefined);
+    setIsCookieSet(Cookies.get(gdprConsentCookieName));
   }, []);
 
-  function writeCookie(answer) {
+  const writeCookie = (answer) => {
     const currentEnvironment =
       process.env.ENV || process.env.NODE_ENV || 'development';
     const options = { expires: 365 /* days */ };
@@ -25,8 +25,9 @@ const CookieApprovalDialog = ({ className, setCookieConsent }) => {
 
     Cookies.set(gdprConsentCookieName, String(!!answer), options);
     setIsCookieSet(true);
+
     answer && setCookieConsent(true);
-  }
+  };
 
   if (isCookieSet) {
     return null;

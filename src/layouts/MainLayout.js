@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-
-import { Helmet } from 'react-helmet';
 import { GlobalHeader } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
 import Cookies from 'js-cookie';
@@ -15,7 +13,6 @@ import usePageContext from '../hooks/usePageContext';
 import useResizeObserver from '../hooks/useResizeObserver';
 import { useLocation } from '@reach/router';
 
-const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const MainLayout = ({ children }) => {
@@ -48,13 +45,15 @@ const MainLayout = ({ children }) => {
     : `${siteMetadata.repository}/blob/main/${fileRelativePath}`;
 
   useEffect(() => {
-    const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
-    consentValue && setCookieConsent(true);
-  }, []);
-
-  useEffect(() => {
     setIsMobileNavOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
+    setCookieConsent(consentValue);
+
+    consentValue && window.trackGoogleAnalytics();
+  }, [cookieConsent]);
 
   return (
     <div
@@ -67,20 +66,6 @@ const MainLayout = ({ children }) => {
         grid-template-rows: auto 1fr;
       `}
     >
-      <Helmet>
-        {cookieConsent ? (
-          <script>
-            {`(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-          ga('create', '${gaTrackingId}', 'auto');
-          ga('set', 'anonymizeIp', true);
-          ga('send', 'pageview');`}
-          </script>
-        ) : null}
-      </Helmet>
       <div
         ref={headerRef}
         css={css`
