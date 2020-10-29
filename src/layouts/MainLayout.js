@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import { Helmet } from 'react-helmet';
-import { GlobalHeader } from '@newrelic/gatsby-theme-newrelic';
+import { GlobalHeader, GlobalFooter } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
 import Cookies from 'js-cookie';
-import Footer from '../components/Footer';
 import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
@@ -147,12 +146,11 @@ const MainLayout = ({ children }) => {
         >
           {children}
         </article>
-        <Footer
+        <GlobalFooter
+          fileRelativePath={fileRelativePath}
           css={css`
             grid-area: footer;
-            border-top: 1px solid var(--divider-color);
-            padding: ${layout.contentPadding} 0;
-            margin-right: ${layout.contentPadding};
+            margin-left: -${layout.contentPadding};
           `}
         />
       </div>
