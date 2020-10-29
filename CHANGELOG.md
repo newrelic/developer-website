@@ -1,3 +1,25 @@
+# [1.27.0](https://github.com/newrelic/developer-website/compare/v1.26.0...v1.27.0) (2020-10-29)
+
+
+### Features
+
+* Add constant info to graphql schema ([b6d7198](https://github.com/newrelic/developer-website/commit/b6d71984ef73ecadd4bf500a16a2d692c43179f1))
+* Add examples to sdk source ([12b7930](https://github.com/newrelic/developer-website/commit/12b79301c1caf6be0b3905a8e50946a7b783e846))
+* Add method info for api docs ([a96cb28](https://github.com/newrelic/developer-website/commit/a96cb2801205df1c98a95ce867523332dde93fc5))
+* add new relic SDK info to graphql schema ([9dbcf9f](https://github.com/newrelic/developer-website/commit/9dbcf9f4003bd0f57838f8911e165dcfcc408f06))
+* Add node for button component ([f6cc594](https://github.com/newrelic/developer-website/commit/f6cc594a99895e961aac44bfb578c19b3e53e456))
+* Add prop type info to sdk docs ([a86e16f](https://github.com/newrelic/developer-website/commit/a86e16f7be300e538a4409f784c9bc1d6b036912))
+* Add typeDef info to docs ([33aacd6](https://github.com/newrelic/developer-website/commit/33aacd6dd8f4549325de68a08e7a14ce57400b7a))
+* Add union types for prop type meta ([2a43b79](https://github.com/newrelic/developer-website/commit/2a43b7927f4c79db8da7347067badb16c95668f8))
+* Add working code to load the sdk bundle ([718acec](https://github.com/newrelic/developer-website/commit/718acec2abbdff8ce525b629de9eda3a910c6f05))
+* Bootstrap gatsby-source-nr1-sdk plugin ([e70207d](https://github.com/newrelic/developer-website/commit/e70207ddf353b7f4027e39a6a92f66b89e019263))
+* Make the constant value a JSON scalar ([b053c00](https://github.com/newrelic/developer-website/commit/b053c00d88316666799f14246c654fad4ea1d244))
+* move sdk ssr config over to source plugin ([c7eacc0](https://github.com/newrelic/developer-website/commit/c7eacc02ad4ad261ee55e4af53eecc1dfd576d63))
+* Programatically create pages for all components/apis ([1858e28](https://github.com/newrelic/developer-website/commit/1858e28b0e710c6bb7f3d9ce0d97362bc3b210b3))
+* Pull nested type defs ([0397182](https://github.com/newrelic/developer-website/commit/03971824fec5b069d1c1cfa1a56b5d4039050f18))
+* Specify the components and apis that will be documented via options to the plugin ([895a97b](https://github.com/newrelic/developer-website/commit/895a97b9c14a9ea65b4e90bec9d5ccc2f91f7b2b))
+* Unify typeDef definition between api and component ([2bb92b2](https://github.com/newrelic/developer-website/commit/2bb92b2173b92cd3c96e2f8ad6c04e07d159a8b1))
+
 # [1.26.0](https://github.com/newrelic/developer-website/compare/v1.25.0...v1.26.0) (2020-10-29)
 
 
