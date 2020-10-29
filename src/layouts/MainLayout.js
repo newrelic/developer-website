@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-
-import { Helmet } from 'react-helmet';
 import { GlobalHeader, GlobalFooter } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
 import Cookies from 'js-cookie';
@@ -13,8 +11,8 @@ import '../components/styles.scss';
 import usePageContext from '../hooks/usePageContext';
 import useResizeObserver from '../hooks/useResizeObserver';
 import { useLocation } from '@reach/router';
+import usePrevious from '../hooks/usePrevious';
 
-const gaTrackingId = 'UA-3047412-33';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const MainLayout = ({ children }) => {
@@ -37,7 +35,9 @@ const MainLayout = ({ children }) => {
   const location = useLocation();
   const { fileRelativePath } = usePageContext();
   const [headerRef, headerEntry] = useResizeObserver();
-  const [cookieConsent, setCookieConsent] = useState(false);
+  const [cookieConsent, setCookieConsent] = useState(
+    Cookies.get(gdprConsentCookieName) === 'true'
+  );
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const isComponentDoc = fileRelativePath.includes(
     'src/markdown-pages/components'
@@ -46,14 +46,17 @@ const MainLayout = ({ children }) => {
     ? null
     : `${siteMetadata.repository}/blob/main/${fileRelativePath}`;
 
-  useEffect(() => {
-    const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
-    consentValue && setCookieConsent(true);
-  }, []);
+  const previousCookieConsent = usePrevious(cookieConsent);
 
   useEffect(() => {
     setIsMobileNavOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (cookieConsent && previousCookieConsent === false) {
+      window.trackGoogleAnalytics();
+    }
+  }, [cookieConsent, previousCookieConsent]);
 
   return (
     <div
@@ -66,20 +69,6 @@ const MainLayout = ({ children }) => {
         grid-template-rows: auto 1fr;
       `}
     >
-      <Helmet>
-        {cookieConsent ? (
-          <script>
-            {`(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-          ga('create', '${gaTrackingId}', 'auto');
-          ga('set', 'anonymizeIp', true);
-          ga('send', 'pageview');`}
-          </script>
-        ) : null}
-      </Helmet>
       <div
         ref={headerRef}
         css={css`

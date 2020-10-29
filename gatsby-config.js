@@ -160,5 +160,18 @@ module.exports = {
       },
     },
     'gatsby-plugin-meta-redirect',
+    {
+      resolve: 'gatsby-plugin-gdpr-tracking',
+      options: {
+        debug: false,
+        googleAnalytics: {
+          trackingId: 'UA-3047412-33',
+          autoStart: false,
+          anonymize: true,
+          controlCookieName: 'newrelic-gdpr-consent',
+        },
+        environments: ['production', 'development'],
+      },
+    },
   ],
 };

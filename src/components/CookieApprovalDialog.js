@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Cookies from 'js-cookie';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
@@ -9,13 +9,11 @@ import ExternalLink from './ExternalLink';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const CookieApprovalDialog = ({ className, setCookieConsent }) => {
-  const [isCookieSet, setIsCookieSet] = useState(true);
+  const [isCookieSet, setIsCookieSet] = useState(
+    Cookies.get(gdprConsentCookieName)
+  );
 
-  useEffect(() => {
-    setIsCookieSet(Cookies.get(gdprConsentCookieName) !== undefined);
-  }, []);
-
-  function writeCookie(answer) {
+  const writeCookie = (answer) => {
     const currentEnvironment =
       process.env.ENV || process.env.NODE_ENV || 'development';
     const options = { expires: 365 /* days */ };
@@ -25,8 +23,9 @@ const CookieApprovalDialog = ({ className, setCookieConsent }) => {
 
     Cookies.set(gdprConsentCookieName, String(!!answer), options);
     setIsCookieSet(true);
+
     answer && setCookieConsent(true);
-  }
+  };
 
   if (isCookieSet) {
     return null;

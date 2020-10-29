@@ -54,23 +54,5 @@ const onPreRenderHTML = ({
   ]);
 };
 
-const onRenderBody = ({ setHeadComponents }) => {
-  if (process.env.NODE_ENV !== `production`) {
-    return null;
-  }
-  // Pre-connect to google analytics
-  return setHeadComponents([
-    <link
-      rel="preconnect"
-      key="preconnect-google-analytics"
-      href="https://www.google-analytics.com"
-    />,
-    <link
-      rel="dns-prefetch"
-      key="dns-prefetch-google-analytics"
-      href="https://www.google-analytics.com"
-    />,
-  ]);
-};
 
-export { onPreRenderHTML, onRenderBody, wrapPageElement };
+export { onPreRenderHTML, wrapPageElement };
