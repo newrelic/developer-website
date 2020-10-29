@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Cookies from 'js-cookie';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
