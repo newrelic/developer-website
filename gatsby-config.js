@@ -159,6 +159,12 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-source-newrelic-sdk',
+      options: {
+        release: 'release-1339',
+      },
+    },
     'gatsby-plugin-meta-redirect',
     {
       resolve: 'gatsby-plugin-gdpr-tracking',
