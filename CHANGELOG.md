@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/newrelic/developer-website/compare/v1.25.0...v1.26.0) (2020-10-29)
+
+
+### Features
+
+* google analytics refactor ([10f9a8b](https://github.com/newrelic/developer-website/commit/10f9a8bab9bb3931ffce2818e1a5bb9a0b960f49))
+
 # [1.25.0](https://github.com/newrelic/developer-website/compare/v1.24.0...v1.25.0) (2020-10-29)
 
 
