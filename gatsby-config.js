@@ -8,6 +8,7 @@ module.exports = {
     author: 'New Relic',
     repository: 'https://github.com/newrelic/developer-website',
     siteUrl: 'https://developer.newrelic.com',
+    branch: 'develop',
   },
   plugins: [
     'gatsby-plugin-sharp',
