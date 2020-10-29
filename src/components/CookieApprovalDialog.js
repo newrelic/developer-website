@@ -9,11 +9,9 @@ import ExternalLink from './ExternalLink';
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const CookieApprovalDialog = ({ className, setCookieConsent }) => {
-  const [isCookieSet, setIsCookieSet] = useState(true);
-
-  useEffect(() => {
-    setIsCookieSet(Cookies.get(gdprConsentCookieName));
-  }, []);
+  const [isCookieSet, setIsCookieSet] = useState(
+    Cookies.get(gdprConsentCookieName)
+  );
 
   const writeCookie = (answer) => {
     const currentEnvironment =
