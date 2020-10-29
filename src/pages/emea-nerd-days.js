@@ -33,6 +33,7 @@ import MiguelMingorance from '../images/nerd-days/emea-speakers/MiguelMignorance
 import PedroSousa from '../images/nerd-days/emea-speakers/PedroSousa.jpg';
 import LiamHurrell from '../images/nerd-days/emea-speakers/LiamHurrell.jpg';
 import TomDoherty from '../images/nerd-days/emea-speakers/TomDoherty.jpg';
+import DanielAguas from '../images/nerd-days/emea-speakers/DanielAguas.jpg';
 
 const speakers = [
   {
@@ -94,6 +95,12 @@ const speakers = [
     image: PedroSousa,
     title: 'Senior IT Operations Analyst',
     company: 'BizDirect',
+  },
+  {
+    name: 'Daniel Aguas',
+    image: DanielAguas,
+    title: 'Software Developer',
+    company: 'Basecone',
   },
 ];
 
@@ -544,7 +551,11 @@ const NerdDaysPage = () => {
                 title="Test in production with KPI-driven release management"
                 speaker="William Janssen"
               />
-              <Agenda.Session time="2:00 PM" title="Plot your data" />
+              <Agenda.Session
+                time="2:00 PM"
+                title="Plot your data"
+                speaker="Daniel Aguas"
+              />
               <Agenda.Session
                 time="2:00 PM"
                 title="Alerts Best Practices"
