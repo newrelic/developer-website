@@ -1,3 +1,16 @@
+# [1.24.0](https://github.com/newrelic/developer-website/compare/v1.23.0...v1.24.0) (2020-10-29)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic version ([4daa186](https://github.com/newrelic/developer-website/commit/4daa1866f88b13d04dedde94234d95f3f280a570))
+* upgrade gatsby-theme-newrelic ([661e6e8](https://github.com/newrelic/developer-website/commit/661e6e862d4f24cd52a6355e51d8f3ce0737ff00))
+
+
+### Features
+
+* use the GlobalFooter from the theme ([c8eccc9](https://github.com/newrelic/developer-website/commit/c8eccc9d1b8fa38e52e3f5ac34d2b67f8572db5f))
+
 # [1.23.0](https://github.com/newrelic/developer-website/compare/v1.22.0...v1.23.0) (2020-10-28)
 
 
