@@ -1,13 +1,12 @@
 import React from 'react';
 import cx from 'classnames';
 import SEO from '../components/Seo';
-import { Button, Video } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Callout, Video } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import kubeconHeader from '../images/kubecon-europe-2020/kubecon-europe-2020.jpg';
 import styles from './kubecon-europe-2020.module.scss';
-import Important from '../components/Important';
 
 const KubeConPage = () => {
   return (
@@ -49,10 +48,10 @@ const KubeConPage = () => {
           </section>
           <section className={styles.section}>
             <h2>Attend one of our lightning talks</h2>
-            <Important>
+            <Callout variant="important">
               Go to the virtual expo tab, and find New Relic in Silver Hall B to
               attend a lightning talk.
-            </Important>
+            </Callout>
           </section>
           <section className={cx(styles.section, styles.assetTable)}>
             <div className={styles.point}>

@@ -22,7 +22,7 @@ tags:
 <Intro>
 
 A [New Relic One application](/build-apps) is represented by a **Nerdpack** folder, which can include one or more **Nerdlet** files,
-and (optionally) one or more **launcher** files. Here we explain: 
+and (optionally) one or more **launcher** files. Here we explain:
 
 - The file structure for a Nerdpack, a Nerdlet, and a launcher
 - How to link a launcher file to a Nerdlet
@@ -45,7 +45,7 @@ For documentation on generating and connecting Nerdpack components, see [our app
 
 When you generate a Nerdpack template using the `nr1 create` command, it has the following file structure:
 
-```bash copy=false lineNumbers=false
+```txt copyable=false lineNumbers=false
 my-nerdlet
 ├── README.md
 ├── launchers
@@ -140,7 +140,7 @@ The launcher icon that appears on the **Apps** page in New Relic One when an app
 
 Launchers have their own file structure. Note that:
 
-- A launcher is not required; as an alternative to using a launcher, you can  [associate your application with a monitored entity](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#nerdlet-json).
+- A launcher is not required; as an alternative to using a launcher, you can [associate your application with a monitored entity](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-application-nerdpack-file-structure#nerdlet-json).
 - An application can have more than one launcher, which might be desired for an application with multiple Nerdlets.
 
 After generating a launcher using the `nr1 create` command, its folder contains two files:

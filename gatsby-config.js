@@ -18,6 +18,9 @@ module.exports = {
           contentPadding: '2rem',
           maxWidth: '1700px',
         },
+        prism: {
+          languages: ['yaml', 'sass', 'scss', 'java'],
+        },
         splitio: {
           core: {
             authorizationKey: process.env.SPLITIO_AUTH_KEY,

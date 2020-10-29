@@ -44,22 +44,40 @@ The New Relic CLI can be downloaded via [Homebrew](https://brew.sh/) (macOS), [S
 
 ### Linux
 
+<>
+
 With [Snapcraft](https://snapcraft.io/) installed, run:
 
-`sudo snap install newrelic-cli`
+```sh
+sudo snap install newrelic-cli
+```
+
+</>
 
 ### macOS
 
+<>
+
 With [Homebrew](https://brew.sh/) installed, run:
 
-`brew install newrelic-cli`
+```sh
+brew install newrelic-cli
+```
+
+</>
 
 ### Windows
 
+<>
+
 With [Scoop](https://scoop.sh/) installed, run:
 
-`scoop bucket add newrelic-cli https://github.com/newrelic/newrelic-cli.git`<br />
-`scoop install newrelic-cli`
+```sh
+scoop bucket add newrelic-cli https://github.com/newrelic/newrelic-cli.git
+scoop install newrelic-cli
+```
+
+</>
 
 </Step><Step>
 
@@ -132,7 +150,9 @@ newrelic entity tags create --guid YOUR_APP_GUID --tag devkit:testing
 
 What if you want to add multiple tags? Tag sets come to the rescue! While tags are key-value pairs separated by colons, tag sets are comma separated lists of tags. For example:
 
-`tag1:value1,tag2:value2`
+```txt copyable=false
+tag1:value1,tag2:value2
+```
 
 To add multiple tags at once to your application, modify and run the following snippet.
 
@@ -140,7 +160,11 @@ To add multiple tags at once to your application, modify and run the following s
 newrelic entity tags create --guid YOUR_APP_GUID --tag tag1:test,tag2:test
 ```
 
-> Adding tags is an asynchronous operation: this means it could take a while for the tags to get created.
+<Callout variant="important">
+
+Adding tags is an asynchronous operation: this means it could take a while for the tags to get created.
+
+</Callout>
 
 </Step><Step>
 
@@ -148,7 +172,9 @@ You've created and added some tags to your application, but how do you know they
 
 To retrieve your application's tags, use the [`entity tags get`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_get.md) command.
 
-`newrelic entity tags get --guid YOUR_APP_GUID`
+```sh
+newrelic entity tags get --guid YOUR_APP_GUID
+```
 
 All tags associated with your application are retrieved as a JSON array.
 

@@ -34,7 +34,7 @@ If you wish to navigate without adding an entry to the browser history, set
           {
             label: 'Example 1',
             sourceCode: `
-nerlet.setUrlState({
+nerdlet.setUrlState({
   foo: 'bar',
 });
             `.trim(),
