@@ -20,7 +20,7 @@
     "gatsby-plugin-google-tagmanager": "^2.3.14",
     "gatsby-plugin-layout": "^1.3.12",
     "gatsby-plugin-manifest": "^2.4.33",
-    "gatsby-plugin-mdx": "^1.2.43",
+    "gatsby-plugin-mdx": "^1.2.46",
     "gatsby-plugin-meta-redirect": "^1.1.1",
     "gatsby-plugin-newrelic": "newrelic/gatsby-plugin-newrelic.git#5cd42e832f0588764dc332ce7ebd05794de5106a",
     "gatsby-plugin-offline": "^3.2.30",
