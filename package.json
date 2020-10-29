@@ -1,13 +1,13 @@
 {
   "name": "developer-website",
   "private": true,
-  "version": "1.23.0",
+  "version": "1.25.0",
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@mdx-js/mdx": "^1.6.17",
     "@mdx-js/react": "^1.6.18",
-    "@newrelic/gatsby-theme-newrelic": "^1.10.3",
+    "@newrelic/gatsby-theme-newrelic": "^1.11.1",
     "@splitsoftware/splitio-react": "^1.2.0",
     "@xstate/react": "^1.0.1",
     "classnames": "^2.2.6",
