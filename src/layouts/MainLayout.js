@@ -12,6 +12,7 @@ import '../components/styles.scss';
 import usePageContext from '../hooks/usePageContext';
 import useResizeObserver from '../hooks/useResizeObserver';
 import { useLocation } from '@reach/router';
+import usePrevious from '../hooks/usePrevious';
 
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
@@ -35,7 +36,9 @@ const MainLayout = ({ children }) => {
   const location = useLocation();
   const { fileRelativePath } = usePageContext();
   const [headerRef, headerEntry] = useResizeObserver();
-  const [cookieConsent, setCookieConsent] = useState(false);
+  const [cookieConsent, setCookieConsent] = useState(
+    Cookies.get(gdprConsentCookieName) === 'true'
+  );
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const isComponentDoc = fileRelativePath.includes(
     'src/markdown-pages/components'
@@ -49,11 +52,12 @@ const MainLayout = ({ children }) => {
   }, [location.pathname]);
 
   useEffect(() => {
-    const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
-    setCookieConsent(consentValue);
+    if (cookieConsent && previousCookieConsent === false) {
+      window.trackGoogleAnalytics();
+    }
+  }, [cookieConsent, previousCookieConsent]);
 
-    consentValue && window.trackGoogleAnalytics();
-  }, [cookieConsent]);
+  const previousCookieConsent = usePrevious(cookieConsent);
 
   return (
     <div

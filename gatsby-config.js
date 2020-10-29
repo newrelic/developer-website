@@ -170,7 +170,7 @@ module.exports = {
           anonymize: true,
           controlCookieName: 'newrelic-gdpr-consent',
         },
-        environments: ['production'],
+        environments: ['production', 'development'],
       },
     },
   ],
