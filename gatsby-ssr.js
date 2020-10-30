@@ -15,11 +15,11 @@ const onPreRenderHTML = ({
   replacePostBodyComponents([
     ...getPostBodyComponents(),
     <script
+      async
       key="marketo-form"
       src="//app-abj.marketo.com/js/forms2/js/forms2.min.js"
     />,
   ]);
 };
-
 
 export { onPreRenderHTML, wrapPageElement };
