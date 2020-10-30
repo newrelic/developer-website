@@ -9485,12 +9485,6 @@ gatsby-plugin-newrelic@^1.0.3:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-gatsby-plugin-newrelic@newrelic/gatsby-plugin-newrelic.git#5cd42e832f0588764dc332ce7ebd05794de5106a:
-  version "1.0.2"
-  resolved "https://codeload.github.com/newrelic/gatsby-plugin-newrelic/tar.gz/5cd42e832f0588764dc332ce7ebd05794de5106a"
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-
 gatsby-plugin-offline@^3.2.30:
   version "3.2.30"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-3.2.30.tgz#cb30f22aeb5d77331c8b33e36fc2acb03f520b6b"
