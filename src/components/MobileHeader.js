@@ -58,7 +58,7 @@ const MobileHeader = ({ className, isOpen, toggle }) => {
               padding: 1.5rem 0rem;
               height: calc(
                 100vh -
-                  (var(--height-mobile-nav-bar) + var(--height-global-header))
+                  (var(--height-mobile-nav-bar) + var(--global-header-height))
               );
             `}
           />
