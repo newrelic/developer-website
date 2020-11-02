@@ -9,9 +9,9 @@ import Sidebar from '../components/Sidebar';
 import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import '../components/styles.scss';
 import usePageContext from '../hooks/usePageContext';
-import useResizeObserver from '../hooks/useResizeObserver';
 import { useLocation } from '@reach/router';
 import usePrevious from '../hooks/usePrevious';
+import { useMeasure } from 'react-use';
 
 const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
@@ -34,7 +34,7 @@ const MainLayout = ({ children }) => {
 
   const location = useLocation();
   const { fileRelativePath } = usePageContext();
-  const [headerRef, headerEntry] = useResizeObserver();
+  const [headerRef, { height }] = useMeasure();
   const [cookieConsent, setCookieConsent] = useState(
     Cookies.get(gdprConsentCookieName) === 'true'
   );
@@ -61,7 +61,6 @@ const MainLayout = ({ children }) => {
   return (
     <div
       css={css`
-        --global-header-height: ${headerEntry?.contentRect.height}px;
         --sidebar-width: 300px;
 
         min-height: 100vh;
@@ -90,6 +89,8 @@ const MainLayout = ({ children }) => {
       />
       <div
         css={css`
+          --global-header-height: ${height}px;
+
           display: ${isMobileNavOpen ? 'none' : 'grid'};
           grid-template-areas:
             'sidebar content'
