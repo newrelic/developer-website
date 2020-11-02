@@ -1,3 +1,10 @@
+## [1.27.1](https://github.com/newrelic/developer-website/compare/v1.27.0...v1.27.1) (2020-11-02)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic ([be62c39](https://github.com/newrelic/developer-website/commit/be62c39f8ec30b3cc6bf53b3b9d3332001d5ab7b))
+
 # [1.27.0](https://github.com/newrelic/developer-website/compare/v1.26.0...v1.27.0) (2020-10-29)
 
 
