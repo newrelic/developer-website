@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { GlobalHeader, GlobalFooter } from '@newrelic/gatsby-theme-newrelic';
+import {
+  CookieConsentDialog,
+  GlobalHeader,
+  GlobalFooter,
+} from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
-import Cookies from 'js-cookie';
 import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
-import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import '../components/styles.scss';
 import usePageContext from '../hooks/usePageContext';
 import { useLocation } from '@reach/router';
-import usePrevious from '../hooks/usePrevious';
 import { useMeasure } from 'react-use';
-
-const gdprConsentCookieName = 'newrelic-gdpr-consent';
 
 const MainLayout = ({ children }) => {
   const {
@@ -35,9 +34,6 @@ const MainLayout = ({ children }) => {
   const location = useLocation();
   const { fileRelativePath } = usePageContext();
   const [headerRef, { height }] = useMeasure();
-  const [cookieConsent, setCookieConsent] = useState(
-    Cookies.get(gdprConsentCookieName) === 'true'
-  );
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const isComponentDoc = fileRelativePath.includes(
     'src/markdown-pages/components'
@@ -46,17 +42,9 @@ const MainLayout = ({ children }) => {
     ? null
     : `${siteMetadata.repository}/blob/main/${fileRelativePath}`;
 
-  const previousCookieConsent = usePrevious(cookieConsent);
-
   useEffect(() => {
     setIsMobileNavOpen(false);
   }, [location.pathname]);
-
-  useEffect(() => {
-    if (cookieConsent && previousCookieConsent === false) {
-      window.trackGoogleAnalytics();
-    }
-  }, [cookieConsent, previousCookieConsent]);
 
   return (
     <div
@@ -144,7 +132,7 @@ const MainLayout = ({ children }) => {
           `}
         />
       </div>
-      <CookieApprovalDialog setCookieConsent={setCookieConsent} />
+      <CookieConsentDialog />
     </div>
   );
 };
