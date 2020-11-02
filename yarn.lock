@@ -3011,10 +3011,10 @@
     eslint-plugin-promise "^4.2.1"
     eslint-plugin-react "^7.14.3"
 
-"@newrelic/gatsby-theme-newrelic@^1.11.1":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@newrelic/gatsby-theme-newrelic/-/gatsby-theme-newrelic-1.11.1.tgz#1bc65597c4e5c1c1e62e826dfd20c48f18ddfdf4"
-  integrity sha512-cIhOBOolzAB2uQH5vAXLbq0T4zNwsHIkwe+yNjvcYunS2JNrkU/iD+AroVd8EcQ8USEQC+3oOC6gA0H0Nn5ljA==
+"@newrelic/gatsby-theme-newrelic@^1.14.0":
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@newrelic/gatsby-theme-newrelic/-/gatsby-theme-newrelic-1.14.0.tgz#e46a0327bc1adca14b7029ec9f1e31d94128738e"
+  integrity sha512-qquoyEBXzhsj1jvLvOfN+Toai/ljwn18M81zz0wyPsiXZ6UXFoNnlSQ1X1J45h6ZrJ6D1MBxJV8T8V5Gh5C4/g==
   dependencies:
     "@elastic/react-search-ui" "^1.4.1"
     "@elastic/react-search-ui-views" "^1.4.1"
@@ -3023,7 +3023,7 @@
     babel-plugin-prismjs "^2.0.1"
     date-fns "^2.16.1"
     gatsby-plugin-emotion "^4.3.10"
-    gatsby-plugin-mdx "^1.2.37"
+    gatsby-plugin-gdpr-tracking "^1.2.2"
     gatsby-plugin-newrelic "^1.0.3"
     gatsby-plugin-react-helmet "^3.3.10"
     gatsby-plugin-robots-txt "^1.5.1"
@@ -3032,6 +3032,7 @@
     gatsby-plugin-use-dark-mode "^1.1.2"
     gatsby-source-filesystem "^2.3.19"
     gatsby-transformer-sharp "^2.5.11"
+    js-cookie "^2.2.1"
     lodash "^4.17.20"
     polished "^3.6.5"
     prism-react-renderer "^1.1.1"
@@ -9421,7 +9422,7 @@ gatsby-plugin-manifest@^2.4.33:
     semver "^7.3.2"
     sharp "^0.25.4"
 
-gatsby-plugin-mdx@^1.2.37, gatsby-plugin-mdx@^1.2.43:
+gatsby-plugin-mdx@^1.2.43:
   version "1.2.43"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-1.2.43.tgz#811f5f88ef5ef22abae45987d59c61ac8ad5b5bd"
   integrity sha512-TXfYarUQCEPr8BRKejYOapUto0Hqdj/TqUW2yUE/hfCzhCxDWiv2mkYV435I/Cbw7lQvnMWrVtB+qEPZxrLrLQ==

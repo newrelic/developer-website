@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
-import Section from './Section';
+import { PageTools } from '@newrelic/gatsby-theme-newrelic';
 
 const PageUpdated = ({ page }) => {
   const {
@@ -13,7 +13,7 @@ const PageUpdated = ({ page }) => {
   if (gitAuthorTime === 'Invalid date') return null;
 
   return (
-    <Section
+    <PageTools.Section
       css={css`
         font-size: 0.875rem;
         font-style: italic;
@@ -25,7 +25,7 @@ const PageUpdated = ({ page }) => {
       `}
     >
       {`Page last modified on ${gitAuthorTime}`}
-    </Section>
+    </PageTools.Section>
   );
 };
 
