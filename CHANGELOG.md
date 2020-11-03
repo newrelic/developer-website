@@ -1,3 +1,11 @@
+# [1.28.0](https://github.com/newrelic/developer-website/compare/v1.27.1...v1.28.0) (2020-11-03)
+
+
+### Features
+
+* Add new speakers to NerdDays EMEA ([10f38cd](https://github.com/newrelic/developer-website/commit/10f38cd9807c44296ee593402b951f7ac9b86aed))
+* Add new speakers to NerdDays EMEA ([614a52c](https://github.com/newrelic/developer-website/commit/614a52c3313defdeabe1dda438a407a2a43b8a10))
+
 ## [1.27.1](https://github.com/newrelic/developer-website/compare/v1.27.0...v1.27.1) (2020-11-02)
 
 
