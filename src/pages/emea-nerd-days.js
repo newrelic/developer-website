@@ -34,13 +34,16 @@ import PedroSousa from '../images/nerd-days/emea-speakers/PedroSousa.jpg';
 import LiamHurrell from '../images/nerd-days/emea-speakers/LiamHurrell.jpg';
 import TomDoherty from '../images/nerd-days/emea-speakers/TomDoherty.jpg';
 import DanielAguas from '../images/nerd-days/emea-speakers/DanielAguas.jpg';
+import WilliamJanssen from '../images/nerd-days/emea-speakers/WilliamJanssen.jpg';
+import ManeshTailor from '../images/nerd-days/emea-speakers/ManeshTailor.jpg';
+import SteveWoodard from '../images/nerd-days/emea-speakers/SteveWoodard.jpg';
 
 const speakers = [
   {
-    name: 'Javier Ramos',
-    image: JavierRamos,
-    title: 'Principal Site Reliability Engineer',
-    company: 'Elsevier',
+    name: 'Anton Malinovskiy',
+    image: AntonMalinovskiy,
+    title: 'Principal Software Engineer',
+    company: 'Ocado Technology',
   },
   {
     name: 'Daisy Muyldermans',
@@ -49,28 +52,10 @@ const speakers = [
     company: 'New Relic',
   },
   {
-    name: 'Tom Doherty',
-    image: TomDoherty,
-    title: 'Lead Technical Training Program Manager',
-    company: 'New Relic',
-  },
-  {
-    name: 'Anton Malinovskiy',
-    image: AntonMalinovskiy,
-    title: 'Principal Software Engineer',
-    company: 'Ocado Technology',
-  },
-  {
-    name: 'Stijn Polfliet',
-    image: StijnPolfliet,
-    title: 'Principal TechOps Strategy Consultant',
-    company: 'New Relic',
-  },
-  {
-    name: 'Liam Hurrell',
-    image: LiamHurrell,
-    title: 'Senior Technical Training Specialist',
-    company: 'New Relic',
+    name: 'Daniel Aguas',
+    image: DanielAguas,
+    title: 'Software Developer',
+    company: 'Basecone',
   },
   {
     name: 'Irene Lopez',
@@ -82,6 +67,25 @@ const speakers = [
     name: 'Jason Clark',
     image: JasonClark,
     title: 'Principal Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Javier Ramos',
+    image: JavierRamos,
+    title: 'Principal Site Reliability Engineer',
+    company: 'Elsevier',
+  },
+
+  {
+    name: 'Liam Hurrell',
+    image: LiamHurrell,
+    title: 'Senior Technical Training Specialist',
+    company: 'New Relic',
+  },
+  {
+    name: 'Manesh Tailor',
+    image: ManeshTailor,
+    title: 'Services Solutions Director',
     company: 'New Relic',
   },
   {
@@ -97,10 +101,28 @@ const speakers = [
     company: 'BizDirect',
   },
   {
-    name: 'Daniel Aguas',
-    image: DanielAguas,
-    title: 'Software Developer',
-    company: 'Basecone',
+    name: 'Steve Woodard',
+    image: SteveWoodard,
+    title: 'Enterprise Solutions Architect',
+    company: 'AWS',
+  },
+  {
+    name: 'Stijn Polfliet',
+    image: StijnPolfliet,
+    title: 'Principal TechOps Strategy Consultant',
+    company: 'New Relic',
+  },
+  {
+    name: 'Tom Doherty',
+    image: TomDoherty,
+    title: 'Lead Technical Training Program Manager',
+    company: 'New Relic',
+  },
+  {
+    name: 'William Janssen',
+    image: WilliamJanssen,
+    title: 'CTO',
+    company: 'Delta Blue',
   },
 ];
 
@@ -529,6 +551,7 @@ const NerdDaysPage = () => {
                 time="12:30 PM"
                 title="Fireside Chat"
                 track={null}
+                speaker="Manesh Tailor & Steve Woodard"
                 span={3}
               />
               <Agenda.Session
