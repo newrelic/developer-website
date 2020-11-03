@@ -123,7 +123,7 @@ const speakers = [
     image: WilliamJanssen,
     title: 'CTO',
     company: 'Delta Blue',
-  }
+  },
 ];
 
 const NerdDaysPage = () => {
