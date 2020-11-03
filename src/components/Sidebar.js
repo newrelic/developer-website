@@ -51,7 +51,7 @@ const Sidebar = ({ className }) => {
           />
         </Link>
         <SearchInput
-          placeholder="Filter developer docs"
+          placeholder="Filter navigation"
           onClear={() => setSearchTerm('')}
           onChange={(e) => setSearchTerm(e.target.value)}
           value={searchTerm}
