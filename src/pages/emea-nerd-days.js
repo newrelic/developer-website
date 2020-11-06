@@ -30,13 +30,13 @@ import AntonMalinovskiy from '../images/nerd-days/emea-speakers/AntonMalinovskiy
 import JasonClark from '../images/nerd-days/emea-speakers/JasonClark.jpg';
 import IreneLopez from '../images/nerd-days/emea-speakers/IreneLopez.jpg';
 import MiguelMingorance from '../images/nerd-days/emea-speakers/MiguelMignorance.jpg';
-import PedroSousa from '../images/nerd-days/emea-speakers/PedroSousa.jpg';
 import LiamHurrell from '../images/nerd-days/emea-speakers/LiamHurrell.jpg';
 import TomDoherty from '../images/nerd-days/emea-speakers/TomDoherty.jpg';
 import DanielAguas from '../images/nerd-days/emea-speakers/DanielAguas.jpg';
 import WilliamJanssen from '../images/nerd-days/emea-speakers/WilliamJanssen.jpg';
 import ManeshTailor from '../images/nerd-days/emea-speakers/ManeshTailor.jpg';
 import SteveWoodard from '../images/nerd-days/emea-speakers/SteveWoodard.jpg';
+import IdirOuhab from '../images/nerd-days/emea-speakers/IdirOuhab.jpg';
 
 const speakers = [
   {
@@ -56,6 +56,12 @@ const speakers = [
     image: DanielAguas,
     title: 'Software Developer',
     company: 'Basecone',
+  },
+  {
+    name: 'Idir Ouhab Meskine',
+    image: IdirOuhab,
+    title: 'Solutions Consultant',
+    company: 'New Relic',
   },
   {
     name: 'Irene Lopez',
@@ -93,12 +99,6 @@ const speakers = [
     image: MiguelMingorance,
     title: 'Systems Engineer',
     company: 'Delivery Hero',
-  },
-  {
-    name: 'Pedro Sousa',
-    image: PedroSousa,
-    title: 'Senior IT Operations Analyst',
-    company: 'BizDirect',
   },
   {
     name: 'Steve Woodard',
@@ -527,7 +527,7 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="11:00 AM"
-                title="Who watches the watchman: Micrometer and Terrraform"
+                title="Who Watches the Watchman: Custom metrics with Micrometer"
                 speaker="Anton Malinovskiy"
               />
               <Agenda.Session
@@ -549,7 +549,7 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="12:30 PM"
-                title="Fireside Chat"
+                title="Fireside Chat: Frontline engineering in 2020"
                 track={null}
                 speaker="Manesh Tailor & Steve Woodard"
                 span={3}
@@ -586,8 +586,8 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="3:00 PM"
-                title="A journey to the cloud"
-                speaker="Pedro Sousa"
+                title="New Relic AI"
+                speaker="Idir Ouhab Meskine"
               />
               <Agenda.Session
                 time="3:00 PM"
