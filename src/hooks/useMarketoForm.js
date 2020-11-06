@@ -58,7 +58,7 @@ const useMarketoForm = ({
           '//app-abj.marketo.com',
           munchkinId,
           id,
-          (form) => send({ type: 'READY', form })
+          (form) => (form ? send({ type: 'READY', form }) : send('LOAD_ERROR'))
         );
       }),
       defineFormActions: asEffect(({ form }) => {
