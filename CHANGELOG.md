@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/newrelic/developer-website/compare/v1.28.1...v1.29.0) (2020-11-06)
+
+
+### Features
+
+* Add speaker and update firesidechat title ([03f0258](https://github.com/newrelic/developer-website/commit/03f02582fd2b3aa14a21ccbd0255a3c13199285c))
+
 ## [1.28.1](https://github.com/newrelic/developer-website/compare/v1.28.0...v1.28.1) (2020-11-05)
 
 
