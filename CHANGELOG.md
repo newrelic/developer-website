@@ -1,3 +1,11 @@
+## [1.29.1](https://github.com/newrelic/developer-website/compare/v1.29.0...v1.29.1) (2020-11-06)
+
+
+### Bug Fixes
+
+* ensure the marketo instance and munchkin IDs are updated ([d473838](https://github.com/newrelic/developer-website/commit/d4738388da268346c31e6bc7d8a4c34ec5738131))
+* show error if the form cannot be loaded ([99b38e6](https://github.com/newrelic/developer-website/commit/99b38e61c1e89b32ef96557f64e9a03af7d733da))
+
 # [1.29.0](https://github.com/newrelic/developer-website/compare/v1.28.1...v1.29.0) (2020-11-06)
 
 
