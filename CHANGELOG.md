@@ -1,3 +1,10 @@
+## [1.28.1](https://github.com/newrelic/developer-website/compare/v1.28.0...v1.28.1) (2020-11-05)
+
+
+### Bug Fixes
+
+* upgrade multiple dependencies with Snyk ([1d6fc4a](https://github.com/newrelic/developer-website/commit/1d6fc4a6dcc8fd042bc34bc50d3d49cac41d9f85))
+
 # [1.28.0](https://github.com/newrelic/developer-website/compare/v1.27.1...v1.28.0) (2020-11-03)
 
 
