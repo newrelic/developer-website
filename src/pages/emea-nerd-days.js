@@ -37,6 +37,7 @@ import WilliamJanssen from '../images/nerd-days/emea-speakers/WilliamJanssen.jpg
 import ManeshTailor from '../images/nerd-days/emea-speakers/ManeshTailor.jpg';
 import SteveWoodard from '../images/nerd-days/emea-speakers/SteveWoodard.jpg';
 import IdirOuhab from '../images/nerd-days/emea-speakers/IdirOuhab.jpg';
+import BenEvans from '../images/nerd-days/emea-speakers/BenEvans.jpg';
 
 const speakers = [
   {
@@ -44,6 +45,12 @@ const speakers = [
     image: AntonMalinovskiy,
     title: 'Principal Software Engineer',
     company: 'Ocado Technology',
+  },
+  {
+    name: 'Ben Evans',
+    image: BenEvans,
+    title: 'Principal Software Engineer',
+    company: 'New Relic',
   },
   {
     name: 'Daisy Muyldermans',

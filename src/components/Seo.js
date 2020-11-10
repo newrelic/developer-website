@@ -27,7 +27,7 @@ function SEO({ description, lang, meta, title, tags }) {
 
     {
       name: 'google-site-verification',
-      content: 'eT8TSNhvMuDmAtqbtq5jygZKVkhDmz565fYQ3DVop4g',
+      content: 'He_vizRXYX_mUhwBe3BmyaMxNnVRAZbq_Jtm2A0e4WY',
     },
   ];
 
