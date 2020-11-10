@@ -21,5 +21,4 @@ const onPreRenderHTML = ({
   ]);
 };
 
-
 export { onPreRenderHTML, wrapPageElement };
