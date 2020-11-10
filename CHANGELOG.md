@@ -1,3 +1,10 @@
+# [1.30.0](https://github.com/newrelic/developer-website/compare/v1.29.1...v1.30.0) (2020-11-10)
+
+
+### Features
+
+* Add speaker pic ([26c067d](https://github.com/newrelic/developer-website/commit/26c067d7c94366a80a31836da510a8bc9edf55ee))
+
 ## [1.29.1](https://github.com/newrelic/developer-website/compare/v1.29.0...v1.29.1) (2020-11-06)
 
 
