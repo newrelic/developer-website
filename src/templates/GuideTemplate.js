@@ -3,18 +3,22 @@ import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
-import {
-  Contribute,
-  PageUpdated,
-  Resources,
-} from '../components/RelatedContentModules';
+import { PageUpdated, Resources } from '../components/RelatedContentModules';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import SEO from '../components/Seo';
+import {
+  ContributingGuidelines,
+  PageTools,
+} from '@newrelic/gatsby-theme-newrelic';
 
 const GuideTemplate = ({ data }) => {
   const { mdx } = data;
-  const { frontmatter, body } = mdx;
+  const {
+    frontmatter,
+    body,
+    fields: { fileRelativePath },
+  } = mdx;
   const { title, description, duration, tags } = frontmatter;
 
   return (
@@ -42,10 +46,15 @@ const GuideTemplate = ({ data }) => {
           )}
         </PageLayout.Header>
         <PageLayout.MarkdownContent>{body}</PageLayout.MarkdownContent>
-        <PageLayout.RelatedContent
-          page={mdx}
-          modules={[Contribute, Resources, PageUpdated]}
-        />
+        <PageTools
+          css={css`
+            grid-area: related-content;
+          `}
+        >
+          <ContributingGuidelines fileRelativePath={fileRelativePath} />
+          <Resources page={mdx} />
+          <PageUpdated page={mdx} />
+        </PageTools>
       </PageLayout>
     </>
   );
@@ -65,6 +74,9 @@ export const pageQuery = graphql`
         title
         description
         tags
+      }
+      fields {
+        fileRelativePath
       }
 
       ...Resources_page

@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
-import Logo from './Logo';
 import Navigation from './Navigation';
-import { SearchInput } from '@newrelic/gatsby-theme-newrelic';
+import { Logo, SearchInput } from '@newrelic/gatsby-theme-newrelic';
 
 const Sidebar = ({ className }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -52,7 +51,7 @@ const Sidebar = ({ className }) => {
           />
         </Link>
         <SearchInput
-          placeholder="Filter developer docs"
+          placeholder="Filter navigation"
           onClear={() => setSearchTerm('')}
           onChange={(e) => setSearchTerm(e.target.value)}
           value={searchTerm}

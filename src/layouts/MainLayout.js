@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-
-import { Helmet } from 'react-helmet';
-import { GlobalHeader } from '@newrelic/gatsby-theme-newrelic';
+import {
+  CookieConsentDialog,
+  GlobalHeader,
+  GlobalFooter,
+} from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
-import Cookies from 'js-cookie';
-import Footer from '../components/Footer';
 import MobileHeader from '../components/MobileHeader';
 import Sidebar from '../components/Sidebar';
-import CookieApprovalDialog from '../components/CookieApprovalDialog';
 import '../components/styles.scss';
 import usePageContext from '../hooks/usePageContext';
-import useResizeObserver from '../hooks/useResizeObserver';
 import { useLocation } from '@reach/router';
-
-const gaTrackingId = 'UA-3047412-33';
-const gdprConsentCookieName = 'newrelic-gdpr-consent';
+import { useMeasure } from 'react-use';
 
 const MainLayout = ({ children }) => {
   const {
@@ -37,8 +33,7 @@ const MainLayout = ({ children }) => {
 
   const location = useLocation();
   const { fileRelativePath } = usePageContext();
-  const [headerRef, headerEntry] = useResizeObserver();
-  const [cookieConsent, setCookieConsent] = useState(false);
+  const [headerRef, { height }] = useMeasure();
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const isComponentDoc = fileRelativePath.includes(
     'src/markdown-pages/components'
@@ -48,18 +43,12 @@ const MainLayout = ({ children }) => {
     : `${siteMetadata.repository}/blob/main/${fileRelativePath}`;
 
   useEffect(() => {
-    const consentValue = Cookies.get(gdprConsentCookieName) === 'true';
-    consentValue && setCookieConsent(true);
-  }, []);
-
-  useEffect(() => {
     setIsMobileNavOpen(false);
   }, [location.pathname]);
 
   return (
     <div
       css={css`
-        --global-header-height: ${headerEntry?.contentRect.height}px;
         --sidebar-width: 300px;
 
         min-height: 100vh;
@@ -67,20 +56,6 @@ const MainLayout = ({ children }) => {
         grid-template-rows: auto 1fr;
       `}
     >
-      <Helmet>
-        {cookieConsent ? (
-          <script>
-            {`(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-          ga('create', '${gaTrackingId}', 'auto');
-          ga('set', 'anonymizeIp', true);
-          ga('send', 'pageview');`}
-          </script>
-        ) : null}
-      </Helmet>
       <div
         ref={headerRef}
         css={css`
@@ -102,6 +77,8 @@ const MainLayout = ({ children }) => {
       />
       <div
         css={css`
+          --global-header-height: ${height}px;
+
           display: ${isMobileNavOpen ? 'none' : 'grid'};
           grid-template-areas:
             'sidebar content'
@@ -147,16 +124,15 @@ const MainLayout = ({ children }) => {
         >
           {children}
         </article>
-        <Footer
+        <GlobalFooter
+          fileRelativePath={fileRelativePath}
           css={css`
             grid-area: footer;
-            border-top: 1px solid var(--divider-color);
-            padding: ${layout.contentPadding} 0;
-            margin-right: ${layout.contentPadding};
+            margin-left: -${layout.contentPadding};
           `}
         />
       </div>
-      <CookieApprovalDialog setCookieConsent={setCookieConsent} />
+      <CookieConsentDialog />
     </div>
   );
 };

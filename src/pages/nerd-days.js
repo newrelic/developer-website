@@ -20,7 +20,6 @@ import heroBackgroundPattern from '../images/nerd-days/nerd-days-hero-bg-pattern
 import shapesIcon from '../images/nerd-days/icon-shapes.svg';
 import openSourceIcon from '../images/nerd-days/icon-open-source.svg';
 import HopinLogo from '../components/HopinLogo';
-import MarketoForm from '../components/MarketoForm';
 import styled from '@emotion/styled';
 import Agenda from '../components/Agenda';
 
@@ -36,7 +35,6 @@ import LeonChapman from '../images/nerd-days/speakers/LeonChapman.jpg';
 import LindsyFarina from '../images/nerd-days/speakers/LindsyFarina.jpg';
 import TaliaNassi from '../images/nerd-days/speakers/TaliaNassi.jpg';
 import ThomasMartin from '../images/nerd-days/speakers/ThomasMartin.jpg';
-
 import AlecSwanson from '../images/nerd-days/speakers/AlecSwanson.jpg';
 import BrianThomason from '../images/nerd-days/speakers/BrianThomason.jpg';
 import ChrisTrombley from '../images/nerd-days/speakers/ChrisTrombley.jpg';
@@ -45,6 +43,13 @@ import LiamHurrell from '../images/nerd-days/speakers/LiamHurrell.jpg';
 import MichaelCaron from '../images/nerd-days/speakers/MichaelCaron.jpg';
 import PhilWeber from '../images/nerd-days/speakers/PhilWeber.jpg';
 import SebastianRamirez from '../images/nerd-days/speakers/SebastianRamirez.jpg';
+import SanderBlue from '../images/nerd-days/speakers/SanderBlue.jpg';
+import JewelsNocera from '../images/nerd-days/speakers/JewelsNocera.jpg';
+import NicaFee from '../images/nerd-days/speakers/NicaFee.jpg';
+import StijnPolfliet from '../images/nerd-days/speakers/StijnPolfliet.jpg';
+import BradSchmitt from '../images/nerd-days/speakers/BradSchmitt.jpg';
+import EricMittelhammer from '../images/nerd-days/speakers/EricMittelhammer.jpg';
+import ColinMacNaughton from '../images/nerd-days/speakers/ColinMacNaughton.jpg';
 
 const NerdDaysPage = () => {
   const {
@@ -228,13 +233,9 @@ const NerdDaysPage = () => {
                   have any questions about Nerd Days please emails{' '}
                   <a href="mailto:deco@newrelic.com">deco@newrelic.com</a>.
                 </p>
-                <h3
-                  css={css`
-                    margin: 25px 0 0 0;
-                  `}
-                >
-                  Additional Nerd Days Events
-                </h3>
+              </div>
+              <div>
+                <h3>Upcoming Nerd Days</h3>
                 <ul
                   css={css`
                     padding: 0;
@@ -252,18 +253,8 @@ const NerdDaysPage = () => {
                   <CtaItem date="Nov 10, 2020" to="/emea-nerd-days">
                     EMEA Registration
                   </CtaItem>
-                  <CtaItem date="Oct 22, 2020" to="/apj-nerd-days">
-                    APJ Registration
-                  </CtaItem>
                 </ul>
               </div>
-              <MarketoForm
-                id={4783}
-                title="REGISTER FOR NERD DAYS | AMERICAS"
-                munchkinId="412-MZS-894"
-                publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
-                redirectLink="/nerd-days-thank-you"
-              />
             </div>
           </Section>
           <Section className={cx(styles.speakersSection)}>
@@ -459,7 +450,7 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 time="10:00AM PST"
                 title="5 Steps to Kubernetes Observability"
-                speaker="Stijn Polfliet"
+                speaker="Stijn Polfliet & Brad Schmitt"
               />
               <Agenda.Session
                 time="10:00AM PST"
@@ -493,7 +484,7 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="11:00AM PST"
-                title="Grafana and Prometheus with New Relic"
+                title="Power up your Prometheus metrics with the Telemetry Data Platform"
                 speaker="Liam Hurrell &	Colin MacNaughton"
               />
               <Agenda.Session
@@ -516,7 +507,7 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="1:00PM PST"
-                title="Tool Consolidation"
+                title="Consolidating Your Data with New Relic’s Telemetry Data Platform"
                 speaker="Eric Mittelhammer"
               />
               <Agenda.Session
@@ -542,11 +533,12 @@ const NerdDaysPage = () => {
               <Agenda.Session
                 time="2:00PM PST"
                 title="Monitoring your Cloud Usage and Spend"
+                speaker="Jewels Nocera"
               />
               <Agenda.Session
                 time="2:00PM PST"
-                title="Measuring code pipelines"
-                speaker="Zach Leslie"
+                title="Scaling the Developer Toolkit Team: Writing Code that Writes Code"
+                speaker="Sander Blue"
               />
               <Agenda.Session
                 time="2:00PM PST"
@@ -772,6 +764,12 @@ const speakers = [
     company: 'New Relic',
   },
   {
+    name: 'Sander Blue',
+    image: SanderBlue,
+    title: 'Senior Software Engineer',
+    company: 'New Relic',
+  },
+  {
     name: "Gabe O'Brien",
     image: GabeObrien,
     title: 'Senior Software Engineer',
@@ -798,6 +796,42 @@ const speakers = [
   {
     name: 'Sebastian Remirez',
     image: SebastianRamirez,
+    title: 'Lead Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Jewels Nocera',
+    image: JewelsNocera,
+    title: 'Senior Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Nica Fee',
+    image: NicaFee,
+    title: 'Developer Advocate',
+    company: 'New Relic',
+  },
+  {
+    name: 'Stijn Polfliet',
+    image: StijnPolfliet,
+    title: 'Principal TechOps Strategy Consultant',
+    company: 'New Relic',
+  },
+  {
+    name: 'Brad Schmitt',
+    image: BradSchmitt,
+    title: 'Senior TechOps Strategy Consultant',
+    company: 'New Relic',
+  },
+  {
+    name: 'Eric Mittelhammer',
+    image: EricMittelhammer,
+    title: 'Senior TechOps Strategy Consultant',
+    company: 'New Relic',
+  },
+  {
+    name: 'Colin MacNaughton',
+    image: ColinMacNaughton,
     title: 'Lead Software Engineer',
     company: 'New Relic',
   },
@@ -880,7 +914,7 @@ const CtaItem = ({ date, to, children }) => (
   <li
     css={css`
       margin-top: 0.5rem;
-      margin-right: 1.25rem;
+      margin-right: 0.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;

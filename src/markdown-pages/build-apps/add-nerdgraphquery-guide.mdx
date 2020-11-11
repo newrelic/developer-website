@@ -25,11 +25,11 @@ NerdGraph is our GraphQL implementation. GraphQL has some key differences when c
 - The client, not the server, determines what data is returned.
 - You can easily collect data from multiple sources. For example, in a single query, you can get account information, infrastructure data, and issue a NRQL request.
 
-<Important>
+<Callout variant="important">
 
 Before completing this exercise, you can experiment with GraphQL queries in our [NerdGraph API explorer](https://api.newrelic.com/graphiql).
 
-</Important>
+</Callout>
 
 We also have a 14-minute video that covers the steps below.
 
@@ -41,14 +41,14 @@ We also have a 14-minute video that covers the steps below.
 
 To develop projects, you need our New Relic One CLI (command line interface). If you haven't already installed it, do the following:
 
-* Install [Node.js](https://nodejs.org/en/download/).
-* Complete steps 1–4 of our [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), and be sure to make a copy of your account ID from step 1 because you’ll need it later.
+- Install [Node.js](https://nodejs.org/en/download/).
+- Complete steps 1–4 of our [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==), and be sure to make a copy of your account ID from step 1 because you’ll need it later.
 
-<Important>
+<Callout variant="important">
 
 If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
 
-</Important>
+</Callout>
 
 For additional details, see [Set up your development environment](set-up-dev-env).
 
@@ -86,13 +86,17 @@ In your preferred text editor, open `index.js`.
 
   <Step>
 
+<>
+
 Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
-<Important>
+<Callout variant="important">
 
 Your account ID is available in the CLI quick start (see **Before you begin**).
 
-</Important>
+</Callout>
+
+</>
 
 ```jsx
 this.accountId = <ADD YOUR ACCOUNT ID>;
@@ -149,11 +153,11 @@ After launching the **Use NerdGraph** application, you see a dashboard that give
 
 Now you can create a dropdown menu for changing the account the application is viewing. The first step is to import the `NerdGraphQuery` component into the application's `index.js` file.
 
-<Important>
+<Callout variant="important">
 
 If you need more details about our example below, see the APIs and components page on [https://developer.newrelic.com](https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/NerdGraphQuery)
 
-</Important>
+</Callout>
 
 <Steps>
 
@@ -182,13 +186,17 @@ Add the `NerdGraphQuery` component into the first `StackItem` inside of the `ret
 
 The `NerdGraphQuery` component takes a query object that states the source you want to access and the data you want returned.
 
+<>
+
 Add the following code to your `index.js` file in the `render` method:
 
-<Important>
+<Callout variant="important">
 
 In the browser console, you can see the data from your query returned in an object that follows the same structure of the object in the initial query.
 
-</Important>
+</Callout>
+
+</>
 
 ```jsx
 const query = `
@@ -211,6 +219,7 @@ To take the data returned by the NerdGraph query and display it in the applicati
 ```jsx
 return <HeadingText>{data.actor.account.name} Apps:</HeadingText>;
 ```
+
 When you go back to the browser and view your application, you see a new headline showing the name of your account returned from NerdGraph:
 
 ![App Image](../../images/nerdgraphquery-guide/with-name.png)
@@ -224,8 +233,8 @@ At this point, you have implemented the `NerdGraphQuery` component with the appl
 
 Here's what you need to do next:
 
-* Query NerdGraph inside of the `componentDidMount` lifecycle method.
-* Save the returned data for later use in the application.
+- Query NerdGraph inside of the `componentDidMount` lifecycle method.
+- Save the returned data for later use in the application.
 
 <Steps>
 
@@ -289,8 +298,8 @@ To do this, add this code to `index.js` for the second `StackItem` in the `retur
 
 After you complete these steps, look at the application in your browser, and note the following:
 
-* The dropdown menu now displays the data returned from the `NerdGraphQuery.query` and allows you to select an account.
-* After you select a new account, the application shows data from the new selection.
+- The dropdown menu now displays the data returned from the `NerdGraphQuery.query` and allows you to select an account.
+- After you select a new account, the application shows data from the new selection.
 
 ![App Complete](../../images/nerdgraphquery-guide/complete.png)
 

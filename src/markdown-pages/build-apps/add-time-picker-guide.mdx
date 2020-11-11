@@ -20,7 +20,7 @@ tags:
 ---
 
 <Intro>
-This guide steps you through the process of adding access to our time picker in the sample transaction overview application. 
+This guide steps you through the process of adding access to our time picker in the sample transaction overview application.
 
 The sample application provides an overview of the telemetry data showing your account's transactions by application, average response time, HTTP response codes, and transaction errors. When you enable the time picker, users can specify the time range of data to view.
 
@@ -34,14 +34,14 @@ We also have a 12 minute video that covers the steps below.
 
 To develop projects, you need our New Relic One CLI (command line interface). If you haven't already installed it, do the following:
 
-* Install [Node.js](https://nodejs.org/en/download/).
-* Complete steps 1–4 of the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==). In step 1, be sure to make a copy of the number preceding your account name. This is your accound ID, and you’ll need it later.
+- Install [Node.js](https://nodejs.org/en/download/).
+- Complete steps 1–4 of the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==). In step 1, be sure to make a copy of the number preceding your account name. This is your accound ID, and you’ll need it later.
 
-<Important>
+<Callout variant="important">
 
-  If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
+If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
 
-</Important>
+</Callout>
 
 For additional details, see [Set up your development environment](set-up-dev-env).
 
@@ -81,11 +81,11 @@ In your preferred text editor, open `index.js`.
 
 Replace `<ADD YOUR ACCOUNT ID>` with your account id:
 
-<Important>
+<Callout variant="important">
 
-  Your account ID is available in the CLI quick start (see **Before you begin**).
-  
-</Important>
+Your account ID is available in the CLI quick start (see **Before you begin**).
+
+</Callout>
 
 ```jsx
 this.accountId = <ADD YOUR ACCOUNT ID>;
@@ -97,9 +97,9 @@ this.accountId = <ADD YOUR ACCOUNT ID>;
 
 Change to the `add-time-picker` directory:
 
-  ```
-  cd /nr1-how-to/add-time-picker
-  ```
+```bash
+cd /nr1-how-to/add-time-picker
+```
 
   </Step>
 
@@ -107,7 +107,7 @@ Change to the `add-time-picker` directory:
 
 Execute these commands to update the UUID and serve the sample application:
 
-```
+```bash
 nr1 nerdpack:uuid -gf
 nr1 nerdpack:serve
 ```
@@ -134,11 +134,11 @@ In the following sections, you'll add the time picker to the example application
 
 The first step in adding the time picker is to import the `PlatformStateContext` component.
 
-<Important>
+<Callout variant="important">
 
 If you need more details about the `PlatformStateContext` example that follows, see the [APIs and components page](/components/platform-state-context)
 
-</Important>
+</Callout>
 
 Here's what the `PlatformStateContext` component does:
 
@@ -297,11 +297,11 @@ In your console, you should see some data from the New Relic platform state. Now
 
 This step requires you to import the `timeRangeToNrql` utility method from the New Relic One community library.
 
-<Important>
+<Callout variant="important">
 
 You can get more details on the New Relic One community library from our [GitHub repo](https://github.com/newrelic/nr1-community).
 
-</Important>
+</Callout>
 
 This helper method takes your `PlatformState.timeRange` duration data, formats it from milliseconds, and returns a formatted `SINCE` statement to add to your `NRQL`.
 
@@ -311,11 +311,11 @@ This helper method takes your `PlatformState.timeRange` duration data, formats i
 
 Import the `timeRangeToNrql` method by inserting this line of code below the other `import` sections:
 
-<Important>
+<Callout variant="important">
 
 You don't need to include the `AccountDropdown` from the community import example.
 
-</Important>
+</Callout>
 
 ```jsx
 import { timeRangeToNrql } from '@newrelic/nr1-community';
@@ -347,11 +347,11 @@ After creating the `since` variable, go through the code in the `PlatformStateCo
 
 After you update all of the chart components, confirm that the final `index.js` file looks similar to this:
 
-<Important>
+<Callout variant="important">
 
 This completed sample code is in your `nerdlet final.js`.
 
-</Important>
+</Callout>
 
 ```jsx
 import React from 'react';

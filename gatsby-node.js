@@ -7,6 +7,12 @@ const MAX_RESULTS = 5;
 const getFileRelativePath = (absolutePath) =>
   absolutePath.replace(`${process.cwd()}/`, '');
 
+const kebabCase = (string) =>
+  string
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/\s+/g, '-')
+    .toLowerCase();
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage, createRedirect } = actions;
 
@@ -39,7 +45,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  result.data.allMdx.edges.forEach(({ node }) => {
+  const { allMdx } = result.data;
+
+  allMdx.edges.forEach(({ node }) => {
     const { frontmatter } = node;
 
     if (frontmatter.redirects) {
@@ -72,6 +80,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 };
 
 exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions;
+
   // if we don't have a relative path, attempt to get one
   if (node.internal.type === 'Mdx' && node.fileAbsolutePath) {
     const gitAuthorTime = execSync(
@@ -94,6 +104,22 @@ exports.onCreateNode = ({ node, actions }) => {
       context: {
         fileRelativePath: getFileRelativePath(component),
       },
+    });
+  }
+
+  if (node.internal.type === 'NewRelicSdkComponent') {
+    createNodeField({
+      node,
+      name: 'slug',
+      value: `/components/${kebabCase(node.name)}`,
+    });
+  }
+
+  if (node.internal.type === 'NewRelicSdkApi') {
+    createNodeField({
+      node,
+      name: 'slug',
+      value: `/apis/${kebabCase(node.name)}`,
     });
   }
 };

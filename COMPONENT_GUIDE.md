@@ -155,7 +155,7 @@ render in a right column next to the description.
 Run the following command in your terminal:
 
 ```shell
-npm start
+yarn start
 ```
 
 </Step>
@@ -229,9 +229,9 @@ There are four props that can be supplied to a code snippet.
   ```
   ````
 
-- `copy`: `true` or `false`. Will display or not display the copy button, defaults to `true`
+- `copyable`: `true` or `false`. Will display or not display the copy button, defaults to `true`
   ````md
-  ```jsx copy=false
+  ```jsx copyable=false
   ```
   ````
 
@@ -246,33 +246,33 @@ Callouts direct your attention to information of special importance or to inform
 ### Usage
 
 ```md
-<Caution>
+<Callout variant="caution">
 
 Text with `markdown`.
 
-</Caution>
+</Callout>
 
-<Important>
-
-Text with `markdown`.
-
-</Important>
-
-<Tip>
+<Callout variant="important">
 
 Text with `markdown`.
 
-</Tip>
+</Callout>
+
+<Callout variant="tip">
+
+Text with `markdown`.
+
+</Callout>
 ```
 
 All callouts have default titles that can be overridden like this:
 
 ```md
-<Caution title="A custom title">
+<Callout title="A custom title">
 
 Text
 
-</Caution>
+</Callout>
 ```
 
 ## Related Resources

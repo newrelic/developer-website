@@ -4,24 +4,27 @@ import cx from 'classnames';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
-import Step from './Step';
-import Steps from './Steps';
-import Caution from './Caution';
-import Important from './Important';
-import Tip from './Tip';
 import Intro from './Intro';
 import Iframe from './Iframe';
-import { MDXCodeBlock, Video } from '@newrelic/gatsby-theme-newrelic';
+import Tutorial from './Tutorial';
+import TutorialStep from './TutorialStep';
+import TutorialSection from './TutorialSection';
+import Project from './Project';
+import { Callout, MDXCodeBlock, Video } from '@newrelic/gatsby-theme-newrelic';
 
 import styles from './MDXContainer.module.scss';
 
 const components = {
+  Callout,
   Video,
-  Step,
-  Steps,
-  Caution,
-  Important,
-  Tip,
+  // Remove these when all step/steps components have been updated to the new
+  // name
+  Step: TutorialStep,
+  Steps: TutorialSection,
+  Project,
+  Tutorial,
+  TutorialStep,
+  TutorialSection,
   Intro,
   iframe: Iframe,
   code: MDXCodeBlock,

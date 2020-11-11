@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
-import Logo from './Logo';
 import Navigation from './Navigation';
-import { HamburgerMenu, SearchInput } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Logo,
+  HamburgerMenu,
+  SearchInput,
+} from '@newrelic/gatsby-theme-newrelic';
 
 const MobileHeader = ({ className, isOpen, toggle }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -55,7 +58,7 @@ const MobileHeader = ({ className, isOpen, toggle }) => {
               padding: 1.5rem 0rem;
               height: calc(
                 100vh -
-                  (var(--height-mobile-nav-bar) + var(--height-global-header))
+                  (var(--height-mobile-nav-bar) + var(--global-header-height))
               );
             `}
           />

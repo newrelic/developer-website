@@ -8,15 +8,20 @@ module.exports = {
     author: 'New Relic',
     repository: 'https://github.com/newrelic/developer-website',
     siteUrl: 'https://developer.newrelic.com',
+    branch: 'develop',
   },
   plugins: [
     'gatsby-plugin-sharp',
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
+        gaTrackingId: 'UA-3047412-33',
         layout: {
           contentPadding: '2rem',
           maxWidth: '1700px',
+        },
+        prism: {
+          languages: ['yaml', 'sass', 'scss', 'java'],
         },
         splitio: {
           core: {
@@ -156,6 +161,25 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-source-newrelic-sdk',
+      options: {
+        release: 'release-1339',
+      },
+    },
     'gatsby-plugin-meta-redirect',
+    {
+      resolve: 'gatsby-plugin-gdpr-tracking',
+      options: {
+        debug: false,
+        googleAnalytics: {
+          trackingId: 'UA-3047412-33',
+          autoStart: false,
+          anonymize: true,
+          controlCookieName: 'newrelic-gdpr-consent',
+        },
+        environments: ['production', 'development'],
+      },
+    },
   ],
 };

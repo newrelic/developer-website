@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
-import { Button, Icon, NewRelicLogo } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Button,
+  Icon,
+  NewRelicLogo,
+  Surface,
+} from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/Seo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
@@ -17,6 +22,116 @@ import HopinLogo from '../components/HopinLogo';
 import MarketoForm from '../components/MarketoForm';
 import styled from '@emotion/styled';
 import Agenda from '../components/Agenda';
+
+import StijnPolfliet from '../images/nerd-days/emea-speakers/StijnPolfliet.jpg';
+import JavierRamos from '../images/nerd-days/emea-speakers/JavierRamos.jpg';
+import DaisyMuyldermans from '../images/nerd-days/emea-speakers/DaisyMuyldermans.jpg';
+import AntonMalinovskiy from '../images/nerd-days/emea-speakers/AntonMalinovskiy.jpg';
+import JasonClark from '../images/nerd-days/emea-speakers/JasonClark.jpg';
+import IreneLopez from '../images/nerd-days/emea-speakers/IreneLopez.jpg';
+import MiguelMingorance from '../images/nerd-days/emea-speakers/MiguelMignorance.jpg';
+import LiamHurrell from '../images/nerd-days/emea-speakers/LiamHurrell.jpg';
+import TomDoherty from '../images/nerd-days/emea-speakers/TomDoherty.jpg';
+import DanielAguas from '../images/nerd-days/emea-speakers/DanielAguas.jpg';
+import WilliamJanssen from '../images/nerd-days/emea-speakers/WilliamJanssen.jpg';
+import ManeshTailor from '../images/nerd-days/emea-speakers/ManeshTailor.jpg';
+import SteveWoodard from '../images/nerd-days/emea-speakers/SteveWoodard.jpg';
+import IdirOuhab from '../images/nerd-days/emea-speakers/IdirOuhab.jpg';
+import BenEvans from '../images/nerd-days/emea-speakers/BenEvans.jpg';
+
+const speakers = [
+  {
+    name: 'Anton Malinovskiy',
+    image: AntonMalinovskiy,
+    title: 'Principal Software Engineer',
+    company: 'Ocado Technology',
+  },
+  {
+    name: 'Ben Evans',
+    image: BenEvans,
+    title: 'Principal Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Daisy Muyldermans',
+    image: DaisyMuyldermans,
+    title: 'Associate Solutions Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Daniel Aguas',
+    image: DanielAguas,
+    title: 'Software Developer',
+    company: 'Basecone',
+  },
+  {
+    name: 'Idir Ouhab Meskine',
+    image: IdirOuhab,
+    title: 'Solutions Consultant',
+    company: 'New Relic',
+  },
+  {
+    name: 'Irene Lopez',
+    image: IreneLopez,
+    title: 'Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Jason Clark',
+    image: JasonClark,
+    title: 'Principal Software Engineer',
+    company: 'New Relic',
+  },
+  {
+    name: 'Javier Ramos',
+    image: JavierRamos,
+    title: 'Principal Site Reliability Engineer',
+    company: 'Elsevier',
+  },
+
+  {
+    name: 'Liam Hurrell',
+    image: LiamHurrell,
+    title: 'Senior Technical Training Specialist',
+    company: 'New Relic',
+  },
+  {
+    name: 'Manesh Tailor',
+    image: ManeshTailor,
+    title: 'Services Solutions Director',
+    company: 'New Relic',
+  },
+  {
+    name: 'Miguel Mingorance',
+    image: MiguelMingorance,
+    title: 'Systems Engineer',
+    company: 'Delivery Hero',
+  },
+  {
+    name: 'Steve Woodard',
+    image: SteveWoodard,
+    title: 'Enterprise Solutions Architect',
+    company: 'AWS',
+  },
+  {
+    name: 'Stijn Polfliet',
+    image: StijnPolfliet,
+    title: 'Principal TechOps Strategy Consultant',
+    company: 'New Relic',
+  },
+  {
+    name: 'Tom Doherty',
+    image: TomDoherty,
+    title: 'Lead Technical Training Program Manager',
+    company: 'New Relic',
+  },
+  {
+    name: 'William Janssen',
+    image: WilliamJanssen,
+    title: 'CTO',
+    company: 'Delta Blue',
+  },
+];
 
 const NerdDaysPage = () => {
   const {
@@ -189,7 +304,8 @@ const NerdDaysPage = () => {
                 <p>
                   <strong>Date:</strong> November 10, 2020
                   <br />
-                  <strong>Time:</strong> 9AM GMT - 3PM GMT
+                  <strong>Time:</strong> 9:45AM GMT - 3:30 - 4 pm GMT (Depending
+                  on last session)
                 </p>
                 <p>
                   We look forward to building with you during Nerd Days! If you
@@ -228,13 +344,113 @@ const NerdDaysPage = () => {
                 </ul>
               </div>
               <MarketoForm
-                id={4784}
+                id={1418}
                 title="REGISTER FOR NERD DAYS | EMEA"
-                munchkinId="412-MZS-894"
+                munchkinId="341-XKP-310"
                 publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
                 redirectLink="/nerd-days-thank-you"
               />
             </div>
+          </Section>
+          <Section className={cx(styles.speakersSection)}>
+            <SectionHeading>Speaker line up</SectionHeading>
+            <SectionDescription>
+              Get hands on with sessions presented by the following Relics,
+              partners, Developer Champions, and customers.
+            </SectionDescription>
+
+            <ul
+              css={css`
+                max-width: 1200px;
+                padding: 0;
+                margin: 0 auto;
+                list-style-type: none;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+              `}
+            >
+              {speakers.map(({ name, title, image, company }, idx) => (
+                <Surface
+                  key={idx}
+                  as="li"
+                  base={Surface.BASE.SECONDARY}
+                  css={css`
+                    margin: 1rem;
+                    max-width: 256px;
+                    overflow: hidden;
+                    box-shadow: 0px 103.32px 133.205px rgba(3, 62, 70, 0.09),
+                      0px 43.1645px 55.6501px rgba(3, 62, 70, 0.0646969),
+                      0px 23.0778px 29.7532px rgba(3, 62, 70, 0.0536497),
+                      0px 12.9372px 16.6794px rgba(3, 62, 70, 0.045),
+                      0px 6.87086px 8.8583px rgba(3, 62, 70, 0.0363503),
+                      0px 2.85912px 3.68614px rgba(3, 62, 70, 0.0253031);
+                  `}
+                >
+                  <div
+                    css={css`
+                      position: relative;
+                      margin-bottom: -0.5rem;
+                      &:before {
+                        content: '';
+                        width: 100%;
+                        height: 10px;
+                        position: absolute;
+                        bottom: 10px;
+                        background-image: linear-gradient(
+                          294.8deg,
+                          #0069ce -16.42%,
+                          #0fb7c9 115.59%
+                        );
+                        clip-path: polygon(0 0, 100% 0%, 100% 0%, 0% 100%);
+                      }
+                    `}
+                  >
+                    <img
+                      src={image}
+                      alt={name}
+                      css={css`
+                        clip-path: polygon(0 0, 100% 0%, 100% 97%, 0% 93%);
+                      `}
+                    />
+                  </div>
+                  <div
+                    css={css`
+                      padding: 0.75rem 1rem 1rem;
+                    `}
+                  >
+                    <h4
+                      css={css`
+                        font-size: 1.25rem;
+                        font-weight: 800;
+                        margin-bottom: 0.25rem;
+                      `}
+                    >
+                      {name}
+                    </h4>
+                    <p
+                      css={css`
+                        font-size: 0.875rem;
+                        line-height: 1.25rem;
+                        margin-bottom: 0;
+                      `}
+                    >
+                      {title}
+                    </p>
+                    <p
+                      css={css`
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                        line-height: 1.25rem;
+                        margin-bottom: 0;
+                      `}
+                    >
+                      {company}
+                    </p>
+                  </div>
+                </Surface>
+              ))}
+            </ul>
           </Section>
 
           <Section
@@ -296,32 +512,40 @@ const NerdDaysPage = () => {
               tracks={['Observability', 'Open source', 'Fundamentals']}
             >
               <Agenda.Session
-                time="9:00 AM"
-                title="Keynote: Observability For Good"
-                speaker="Lew Cirne"
+                time="9:45 AM"
+                title="Welcome and Opening"
                 track={null}
                 span={3}
               />
-              <Agenda.Session time="10:00 AM" title="Golden Signals" />
+              <Agenda.Session
+                time="10:00 AM"
+                title="Setting SLOs, SLAs and SLIs in the Real World"
+                speaker="Javier Ramos"
+              />
               <Agenda.Session
                 time="10:00 AM"
                 title="React and the power of visualization"
+                speaker="Daisy Muyldermans"
               />
               <Agenda.Session
                 time="10:00 AM"
-                title="Instrumenting your service using agents "
+                title="Instrumenting your service using agents"
+                speaker="Tom Doherty"
               />
               <Agenda.Session
                 time="11:00 AM"
-                title="Setting SLOs, SLAs and SLIs in the Real World"
+                title="Who Watches the Watchman: Custom metrics with Micrometer"
+                speaker="Anton Malinovskiy"
               />
               <Agenda.Session
                 time="11:00 AM"
-                title="Digging into Kubernetes's data"
+                title="5 Steps to Kubernetes Observability"
+                speaker="Stijn Polfliet"
               />
               <Agenda.Session
                 time="11:00 AM"
                 title="Exploring your data using NRQL"
+                speaker="Liam Hurrell"
               />
               <Agenda.Session
                 inactive
@@ -332,33 +556,55 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="12:30 PM"
-                title="Fireside Chat"
+                title="Fireside Chat: Frontline engineering in 2020"
                 track={null}
+                speaker="Manesh Tailor & Steve Woodard"
                 span={3}
               />
               <Agenda.Session
                 time="1:00 PM"
-                title="From Monolith to Observable Microservices"
+                title="GraphQL: Smooth Schemas and Rough Edges"
+                speaker="Irene Lopez & Jason Clark"
               />
               <Agenda.Session
                 time="1:00 PM"
                 title="Reducing toil with Terraform"
+                speaker="Miguel Mingorance"
               />
-              <Agenda.Session time="1:00 PM" title="Custom Data Collection" />
+              <Agenda.Session
+                time="1:00 PM"
+                title="Custom Data Collection"
+                speaker="Tom Doherty"
+              />
               <Agenda.Session
                 time="2:00 PM"
                 title="Test in production with KPI-driven release management"
+                speaker="William Janssen"
               />
-              <Agenda.Session time="2:00 PM" title="Plot your data" />
-              <Agenda.Session time="2:00 PM" title="Alerts Best Practices" />
-              <Agenda.Session time="3:00 PM" title="A journey to the cloud" />
+              <Agenda.Session
+                time="2:00 PM"
+                title="Plot your data"
+                speaker="Daniel Aguas"
+              />
+              <Agenda.Session
+                time="2:00 PM"
+                title="Alerts Best Practices"
+                speaker="Liam Hurrell"
+              />
               <Agenda.Session
                 time="3:00 PM"
-                title="Open Source from the scratch"
+                title="New Relic AI"
+                speaker="Idir Ouhab Meskine"
+              />
+              <Agenda.Session
+                time="3:00 PM"
+                title="How We Became Open By Default"
+                speaker="Ben Evans"
               />
               <Agenda.Session
                 time="3:00 PM"
                 title="True availability using Synthetics"
+                speaker="Tom Doherty"
               />
             </Agenda>
           </Section>

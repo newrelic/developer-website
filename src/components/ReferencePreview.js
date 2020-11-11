@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import root from 'react-shadow';
+import { graphql, useStaticQuery } from 'gatsby';
 import { LivePreview } from 'react-live';
-import { CSS_BUNDLE } from '../utils/sdk';
 
 const EXAMPLE_CSS = `
 :host {
@@ -315,12 +315,21 @@ const EXAMPLE_CSS = `
 const ReferencePreview = ({ className, style, useToastManager }) => {
   const [stylesLoaded, setStylesLoaded] = useState(false);
   const { ToastManager } = window.__NR1_SDK__;
+  const { newRelicSdk } = useStaticQuery(graphql`
+    query {
+      newRelicSdk {
+        assets {
+          css
+        }
+      }
+    }
+  `);
 
   return (
     <root.div className={className}>
       <link
         rel="stylesheet"
-        href={CSS_BUNDLE}
+        href={newRelicSdk.assets.css}
         onLoad={() => setStylesLoaded(true)}
       />
       <style type="text/css">{EXAMPLE_CSS}</style>

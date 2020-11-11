@@ -40,11 +40,11 @@ Throughout this guide, you use three open source projects to automatically set u
 
 Each project is distinct, and encapsulates its own behavior. This maintains a separation of concerns and allows you to compose complex scenarios using a modular approach.
 
-<Tip title="Collaborate with us">
+<Callout variant="tip" title="Collaborate with us">
 
 The Demo Deployer is currently in development. Because of our commitment to open source, we are working in the open early in the process and invite you to collaborate with us. Drop any thoughts and comments in the [Build on New Relic](https://discuss.newrelic.com/c/build-on-new-relic) support thread, and let us know what you think!
 
-</Tip>
+</Callout>
 
 The last thing you need before you get started is to install [Docker](https://docs.docker.com/get-docker/) if you don't have it already.
 
@@ -128,11 +128,11 @@ Finally, you pass a list of arguments to the entrypoint, including:
 - `-c configs/creds.json`: The user credentials configuration file
 - `-d documentation/tutorial/user_stories/Hello/hello.json`: The [deployment configuration file](https://github.com/newrelic/demo-deployer/tree/main/documentation/deploy_config)
 
-<Tip>
+<Callout variant="tip">
 
 You can specify the log level for the deployer using `-l`. `info` is the default, but you can also use `debug` or `error`. This is a helpful option to use when something goes wrong.
 
-</Tip>
+</Callout>
 
 Once you run this command, the deployer will create and instrument some specific resources. This may take a few minutes. In the meantime, read on to learn more about what is actually happening during this process.
 
@@ -178,11 +178,11 @@ The first section is `services`:
 
 `services` defines one service, `app1`, which lives on `host1` at port `5001`. It uses the Demo Nodetron you learned about earlier in this guide as its source.
 
-<Important>
+<Callout variant="important">
 
 In this example, some HTML has been removed for clarity. To run the deployer, you need to use the real content in `hello.json`.
 
-</Important>
+</Callout>
 
 The second section is `global_tags`:
 
@@ -211,7 +211,7 @@ The third section is `resources`:
       "type": "ec2",
       "size": "t3.micro"
     }
-  ],
+  ]
 }
 ```
 
@@ -256,30 +256,30 @@ The fourth, and final, section is `instrumentations`:
 
 When deployer has run successfully, you will see a message that describes the resources deployed and services installed during the process:
 
-```shell
-[INFO] Executing Deployment
-[✔] Parsing and validating Deployment configuration success
-[✔] Provisioner success
-[✔] Installing On-Host instrumentation success
-[✔] Installing Services and instrumentations success
-[INFO] Deployment successful!
-
-Deployed Resources:
-
-  host1 (aws/ec2):
-    ip: 52.90.86.109
-    services: ["app1"]
-    instrumentation:
-       nr_infra: newrelic v1.12.1
-
-Installed Services:
-
-  app1:
-    url: http://52.90.86.109:5001
-    instrumentation:
-       nr_node_agent: newrelic v6.11.0
-
-Completed at 2020-08-20 15:11:14 +0000
+```shell copyable=false
+[output] {muted}[INFO] Executing Deployment
+[output] [{green}✔{plain}] Parsing and validating Deployment configuration success
+[output] [{green}✔{plain}] Provisioner success
+[output] [{green}✔{plain}] Installing On-Host instrumentation success
+[output] [{green}✔{plain}] Installing Services and instrumentations success
+[output] {muted}[INFO] Deployment successful!
+[output]
+[output] Deployed Resources:
+[output]
+[output]   host1 (aws/ec2):
+[output]     ip: {blue}52.90.86.109
+[output]     services: [{green}"app1"{plain}]
+[output]     instrumentation:
+[output]        nr_infra: newrelic v1.12.1
+[output]
+[output] Installed Services:
+[output]
+[output]   app1:
+[output]     url: {blue}http://52.90.86.109:5001
+[output]     instrumentation:
+[output]        nr_node_agent: newrelic v6.11.0
+[output]
+[output] Completed at {timestamp}2020-08-20 15:11:14 +0000
 ```
 
 Visit your application by navigating to the `app1` url in your browser:
@@ -288,11 +288,11 @@ Visit your application by navigating to the `app1` url in your browser:
 
 From there, you can follow the instructions to send traffic to New Relic.
 
-<Important>
+<Callout variant="important">
 
 Your `app1` url will be different than the url shown in this guide.
 
-</Important>
+</Callout>
 
 </Step>
 
@@ -334,14 +334,14 @@ docker run -it\
 
 When the deployer has finished successfully, you'll see output that is similar to what you saw during deployment:
 
-```shell
-[INFO] Executing Teardown
-[✔] Parsing and validating Teardown configuration success
-[✔] Provisioner success
-[✔] Uninstalling On-Host instrumentation success
-[✔] Uninstalling Services and instrumentations success
-[✔] Terminating infrastructure success
-[INFO] Teardown successful!
+```shell copyable=false
+[output] {muted}[INFO] Executing Teardown
+[output] [{green}✔{plain}] Parsing and validating Teardown configuration success
+[output] [{green}✔{plain}] Provisioner success
+[output] [{green}✔{plain}] Uninstalling On-Host instrumentation success
+[output] [{green}✔{plain}] Uninstalling Services and instrumentations success
+[output] [{green}✔{plain}] Terminating infrastructure success
+[output] {muted}[INFO] Teardown successful!
 ```
 
 </Step>

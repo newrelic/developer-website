@@ -52,6 +52,20 @@
       {
         "displayName": "Automated end-to-end tagging of entities",
         "url": "/automate-workflows/automated-tagging"
+      },
+      {
+        "displayName": "Use New Relic to diagnose problems in your system",
+        "url": "/automate-workflows/diagnose-problems",
+        "children": [
+          {
+            "displayName": "High response times",
+            "url": "/automate-workflows/diagnose-problems/high-response-times"
+          },
+          {
+            "displayName": "Error alerts",
+            "url": "/automate-workflows/diagnose-problems/error-alerts"
+          }
+        ]
       }
     ]
   },
@@ -158,6 +172,10 @@
       {
         "displayName": "Intro to Nerdstorage",
         "url": "/explore-docs/nerdstorage"
+      },
+      {
+        "displayName": "Intro to NerdstorageVault",
+        "url": "/explore-docs/nerdstoragevault"
       },
       {
         "displayName": "Query and store data",
@@ -525,10 +543,6 @@
     "url": "/developer-events",
     "children": [
       {
-        "displayName": "Nerd days 1.0",
-        "url": "/nerd-days"
-      },
-      {
         "displayName": "All things open",
         "url": "/all-things-open"
       },
@@ -538,6 +552,10 @@
           {
             "displayName": "Kubecon & CloudNativeCon",
             "url": "/kubecon-europe-2020"
+          },
+          {
+            "displayName": "Nerd days 1.0",
+            "url": "/nerd-days"
           }
         ]
       }
@@ -547,7 +565,6 @@
     "displayName": "Developer champions",
     "url": "/developer-champion"
   },
-
   {
     "displayName": "Podcasts",
     "url": "/podcasts"

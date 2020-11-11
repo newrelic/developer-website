@@ -5,7 +5,6 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Content from './Content';
 import Header from './Header';
 import MarkdownContent from './MarkdownContent';
-import RelatedContent from './RelatedContent';
 import Context from './Context';
 
 const TYPES = {
@@ -75,6 +74,5 @@ PageLayout.Content = Content;
 PageLayout.Context = Context;
 PageLayout.Header = Header;
 PageLayout.MarkdownContent = MarkdownContent;
-PageLayout.RelatedContent = RelatedContent;
 
 export default PageLayout;

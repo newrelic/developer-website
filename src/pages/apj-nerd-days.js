@@ -233,9 +233,9 @@ const NerdDaysPage = () => {
                 </ul>
               </div>
               <MarketoForm
-                id={4796}
+                id={1420}
                 title="REGISTER FOR NERD DAYS | APAC"
-                munchkinId="412-MZS-894"
+                munchkinId="341-XKP-310"
                 publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
                 redirectLink="/nerd-days-thank-you"
               />
@@ -270,7 +270,7 @@ const NerdDaysPage = () => {
                 icon={<TrackFeatherIcon name="eye" size="87px" />}
               />
               <TrackItem
-                name="Modernisation"
+                name="Cloud & DevOps"
                 icon={<img src={openSourceIcon} alt="open source" />}
               />
               <TrackItem
@@ -298,12 +298,16 @@ const NerdDaysPage = () => {
                 margin: 0 auto;
               `}
               mobileBreakpoint="1000px"
-              tracks={['Observability', 'Open source', 'Fundamentals']}
+              tracks={[
+                'Fundamentals',
+                'Observability & Open source',
+                'Cloud & DevOps',
+              ]}
             >
               <Agenda.Session
                 time="12:00 PM"
                 title="Keynote: Observability For Good"
-                speaker="Lew Cirne with Jill & Dmitri opening"
+                speaker="Lew Cirne with Jill Macmurchy opening"
                 track={null}
                 span={3}
               />
@@ -364,7 +368,7 @@ const NerdDaysPage = () => {
               />
               <Agenda.Session
                 time="3:30 PM"
-                title="Measuring code pipelines"
+                title="Microservices Observability with Service Mesh and New Relic One"
                 speaker="Nik Jain"
               />
               <Agenda.Session

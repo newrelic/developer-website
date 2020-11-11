@@ -1,3 +1,167 @@
+# [1.30.0](https://github.com/newrelic/developer-website/compare/v1.29.1...v1.30.0) (2020-11-10)
+
+
+### Features
+
+* Add speaker pic ([26c067d](https://github.com/newrelic/developer-website/commit/26c067d7c94366a80a31836da510a8bc9edf55ee))
+
+## [1.29.1](https://github.com/newrelic/developer-website/compare/v1.29.0...v1.29.1) (2020-11-06)
+
+
+### Bug Fixes
+
+* ensure the marketo instance and munchkin IDs are updated ([d473838](https://github.com/newrelic/developer-website/commit/d4738388da268346c31e6bc7d8a4c34ec5738131))
+* show error if the form cannot be loaded ([99b38e6](https://github.com/newrelic/developer-website/commit/99b38e61c1e89b32ef96557f64e9a03af7d733da))
+
+# [1.29.0](https://github.com/newrelic/developer-website/compare/v1.28.1...v1.29.0) (2020-11-06)
+
+
+### Features
+
+* Add speaker and update firesidechat title ([03f0258](https://github.com/newrelic/developer-website/commit/03f02582fd2b3aa14a21ccbd0255a3c13199285c))
+
+## [1.28.1](https://github.com/newrelic/developer-website/compare/v1.28.0...v1.28.1) (2020-11-05)
+
+
+### Bug Fixes
+
+* upgrade multiple dependencies with Snyk ([1d6fc4a](https://github.com/newrelic/developer-website/commit/1d6fc4a6dcc8fd042bc34bc50d3d49cac41d9f85))
+
+# [1.28.0](https://github.com/newrelic/developer-website/compare/v1.27.1...v1.28.0) (2020-11-03)
+
+
+### Features
+
+* Add new speakers to NerdDays EMEA ([10f38cd](https://github.com/newrelic/developer-website/commit/10f38cd9807c44296ee593402b951f7ac9b86aed))
+* Add new speakers to NerdDays EMEA ([614a52c](https://github.com/newrelic/developer-website/commit/614a52c3313defdeabe1dda438a407a2a43b8a10))
+
+## [1.27.1](https://github.com/newrelic/developer-website/compare/v1.27.0...v1.27.1) (2020-11-02)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic ([be62c39](https://github.com/newrelic/developer-website/commit/be62c39f8ec30b3cc6bf53b3b9d3332001d5ab7b))
+
+# [1.27.0](https://github.com/newrelic/developer-website/compare/v1.26.0...v1.27.0) (2020-10-29)
+
+
+### Features
+
+* Add constant info to graphql schema ([b6d7198](https://github.com/newrelic/developer-website/commit/b6d71984ef73ecadd4bf500a16a2d692c43179f1))
+* Add examples to sdk source ([12b7930](https://github.com/newrelic/developer-website/commit/12b79301c1caf6be0b3905a8e50946a7b783e846))
+* Add method info for api docs ([a96cb28](https://github.com/newrelic/developer-website/commit/a96cb2801205df1c98a95ce867523332dde93fc5))
+* add new relic SDK info to graphql schema ([9dbcf9f](https://github.com/newrelic/developer-website/commit/9dbcf9f4003bd0f57838f8911e165dcfcc408f06))
+* Add node for button component ([f6cc594](https://github.com/newrelic/developer-website/commit/f6cc594a99895e961aac44bfb578c19b3e53e456))
+* Add prop type info to sdk docs ([a86e16f](https://github.com/newrelic/developer-website/commit/a86e16f7be300e538a4409f784c9bc1d6b036912))
+* Add typeDef info to docs ([33aacd6](https://github.com/newrelic/developer-website/commit/33aacd6dd8f4549325de68a08e7a14ce57400b7a))
+* Add union types for prop type meta ([2a43b79](https://github.com/newrelic/developer-website/commit/2a43b7927f4c79db8da7347067badb16c95668f8))
+* Add working code to load the sdk bundle ([718acec](https://github.com/newrelic/developer-website/commit/718acec2abbdff8ce525b629de9eda3a910c6f05))
+* Bootstrap gatsby-source-nr1-sdk plugin ([e70207d](https://github.com/newrelic/developer-website/commit/e70207ddf353b7f4027e39a6a92f66b89e019263))
+* Make the constant value a JSON scalar ([b053c00](https://github.com/newrelic/developer-website/commit/b053c00d88316666799f14246c654fad4ea1d244))
+* move sdk ssr config over to source plugin ([c7eacc0](https://github.com/newrelic/developer-website/commit/c7eacc02ad4ad261ee55e4af53eecc1dfd576d63))
+* Programatically create pages for all components/apis ([1858e28](https://github.com/newrelic/developer-website/commit/1858e28b0e710c6bb7f3d9ce0d97362bc3b210b3))
+* Pull nested type defs ([0397182](https://github.com/newrelic/developer-website/commit/03971824fec5b069d1c1cfa1a56b5d4039050f18))
+* Specify the components and apis that will be documented via options to the plugin ([895a97b](https://github.com/newrelic/developer-website/commit/895a97b9c14a9ea65b4e90bec9d5ccc2f91f7b2b))
+* Unify typeDef definition between api and component ([2bb92b2](https://github.com/newrelic/developer-website/commit/2bb92b2173b92cd3c96e2f8ad6c04e07d159a8b1))
+
+# [1.26.0](https://github.com/newrelic/developer-website/compare/v1.25.0...v1.26.0) (2020-10-29)
+
+
+### Features
+
+* google analytics refactor ([10f9a8b](https://github.com/newrelic/developer-website/commit/10f9a8bab9bb3931ffce2818e1a5bb9a0b960f49))
+
+# [1.25.0](https://github.com/newrelic/developer-website/compare/v1.24.0...v1.25.0) (2020-10-29)
+
+
+### Features
+
+* Add speaker pic ([9a4b61b](https://github.com/newrelic/developer-website/commit/9a4b61b3046e775cd154388e1f9fdfb0e4ec7f2d))
+
+# [1.24.0](https://github.com/newrelic/developer-website/compare/v1.23.0...v1.24.0) (2020-10-29)
+
+
+### Bug Fixes
+
+* bump gatsby-theme-newrelic version ([4daa186](https://github.com/newrelic/developer-website/commit/4daa1866f88b13d04dedde94234d95f3f280a570))
+* upgrade gatsby-theme-newrelic ([661e6e8](https://github.com/newrelic/developer-website/commit/661e6e862d4f24cd52a6355e51d8f3ce0737ff00))
+
+
+### Features
+
+* use the GlobalFooter from the theme ([c8eccc9](https://github.com/newrelic/developer-website/commit/c8eccc9d1b8fa38e52e3f5ac34d2b67f8572db5f))
+
+# [1.23.0](https://github.com/newrelic/developer-website/compare/v1.22.0...v1.23.0) (2020-10-28)
+
+
+### Features
+
+* Add speakers pictures ([73f80aa](https://github.com/newrelic/developer-website/commit/73f80aa96f4df3850a3cb6738dd0b818ad043522))
+
+# [1.22.0](https://github.com/newrelic/developer-website/compare/v1.21.2...v1.22.0) (2020-10-26)
+
+
+### Bug Fixes
+
+* add back step counter within a tutorial section ([ee58f46](https://github.com/newrelic/developer-website/commit/ee58f4641cb020339571fd29a6628c46c54c3ed0))
+* emea link on apj landing page ([3759a31](https://github.com/newrelic/developer-website/commit/3759a31d7c965e2aaba005a0efb59b9d99c029b2))
+* only copy non-output lines ([4ed4867](https://github.com/newrelic/developer-website/commit/4ed486778c11aaa47e3d27b02f6e70c3e6523076))
+* package.json, package-lock.json & .snyk to reduce vulnerabilities ([1f18779](https://github.com/newrelic/developer-website/commit/1f187794e93fb5562f183ab30d9f5e662e827d40))
+* show error states on the marketo form ([5a670d5](https://github.com/newrelic/developer-website/commit/5a670d5d5b7edd3ac6912bb8415ea4a2e82fd75d))
+* Update emea agenda ([e91899a](https://github.com/newrelic/developer-website/commit/e91899a639b0477bdf82b92037816cf86e0cabe7))
+* update guides to use the <Callout /> component ([c7f5f46](https://github.com/newrelic/developer-website/commit/c7f5f4610edd5a7d7fae63b01c173dd30eb3c612))
+* update guides to use the <Callout /> component ([20b3297](https://github.com/newrelic/developer-website/commit/20b3297ee1dd5278d0b46f322fc1f7dcdddba75f))
+* upgrade @mdx-js/mdx from 1.6.16 to 1.6.17 ([0b01cca](https://github.com/newrelic/developer-website/commit/0b01cca132dbfe7d198ff6d4b5e9d6871bf721e0))
+* upgrade @mdx-js/react from 1.6.16 to 1.6.17 ([21e0fc1](https://github.com/newrelic/developer-website/commit/21e0fc14b2140fef1b1a6b8dc84d1547c175510b))
+* upgrade @mdx-js/react from 1.6.17 to 1.6.18 ([55bf7e7](https://github.com/newrelic/developer-website/commit/55bf7e75baf8a763f42ebb094b7f21a84254b266))
+* upgrade @xstate/react ([47eae17](https://github.com/newrelic/developer-website/commit/47eae172c81c55dc2088a74fbfcb8b3b1eeb161a))
+* upgrade eslint ([f78741c](https://github.com/newrelic/developer-website/commit/f78741cb91600aad1139dc747591bb49d2826e4c))
+* upgrade eslint-plugin-react-hooks from 4.1.0 to 4.1.1 ([b401ea2](https://github.com/newrelic/developer-website/commit/b401ea220f8ff8227570f6f9fd905e13207dfb64))
+* upgrade eslint-plugin-react-hooks from 4.1.1 to 4.1.2 ([2ebd8c5](https://github.com/newrelic/developer-website/commit/2ebd8c5609425ac73f733ebec9019df5d9a3778b))
+* upgrade gatsby ([8a4591a](https://github.com/newrelic/developer-website/commit/8a4591a7b161687b4687a0b61d49aa7719b33014))
+* upgrade gatsby theme newrelic ([c94fdec](https://github.com/newrelic/developer-website/commit/c94fdec8ec23b41fc55680eaaf91d875d68d9f88))
+* upgrade gatsby-plugin-mdx from 1.2.37 to 1.2.38 ([b50a46f](https://github.com/newrelic/developer-website/commit/b50a46f7a12c52abc3b22ad9cb46bad9069336e6))
+* upgrade gatsby-plugin-mdx from 1.2.38 to 1.2.39 ([af35f1b](https://github.com/newrelic/developer-website/commit/af35f1be62e51d586dbf1faa9ebe26c990a825d0))
+* upgrade gatsby-plugin-mdx from 1.2.39 to 1.2.40 ([fa99f55](https://github.com/newrelic/developer-website/commit/fa99f55acdf655b797568a22eed3f743559305bd))
+* upgrade gatsby-plugin-mdx from 1.2.40 to 1.2.41 ([ab93321](https://github.com/newrelic/developer-website/commit/ab933214c0c33d46a2d466897290cc2f007c2270))
+* upgrade gatsby-plugin-mdx from 1.2.41 to 1.2.42 ([6e111e8](https://github.com/newrelic/developer-website/commit/6e111e885f3bc921cb68e10fd4c164fde75030ca))
+* upgrade gatsby-plugin-mdx from 1.2.42 to 1.2.43 ([7e942e6](https://github.com/newrelic/developer-website/commit/7e942e65d13dd541607daef92e335f76c709314b))
+* upgrade gatsby-plugin-robots-txt from 1.5.1 to 1.5.2 ([9dee9a9](https://github.com/newrelic/developer-website/commit/9dee9a9b1693b83a28247be450079da4e744c6a4))
+* upgrade gatsby-plugin-robots-txt from 1.5.2 to 1.5.3 ([993aec7](https://github.com/newrelic/developer-website/commit/993aec7664d58995241f2d25eb90e6545aad7851))
+* upgrade gatsby-plugin-sass, gatsby-plugin-sharp ([0f8f679](https://github.com/newrelic/developer-website/commit/0f8f67926d496e0e5f2aa00fca000b4fd6a3cc32))
+* upgrade gatsby-theme-newrelic ([142dda9](https://github.com/newrelic/developer-website/commit/142dda9b734e7e408af3c7125eed0401742e6d9d))
+* upgrade gatsby-transformer-sharp, gatsby-transformer-remark ([acfe53b](https://github.com/newrelic/developer-website/commit/acfe53b42d346c297a0b12b5dd4864392ba77aa2))
+* upgrade multiple dependencies with Snyk ([b6c7617](https://github.com/newrelic/developer-website/commit/b6c761730a9b39d30c25b977471619af56a96039))
+* upgrade react-shadow from 18.3.0 to 18.4.2 ([7700ac8](https://github.com/newrelic/developer-website/commit/7700ac8ac93d664eb4a076c4342530ddf377aeaa))
+* upgrade snyk from 1.401.0 to 1.402.0 ([7509b44](https://github.com/newrelic/developer-website/commit/7509b44d4e83b09f52753f6c7affbc723c2f44f3))
+* upgrade snyk from 1.402.0 to 1.405.1 ([299b76d](https://github.com/newrelic/developer-website/commit/299b76ddc5b2945e8c98b8324c188d311662f26c))
+* **NerdStorageVault:** Correct write query example ([3815374](https://github.com/newrelic/developer-website/commit/3815374a65b5afa206cbbb4a9c9c3525bccdc983))
+* upgrade snyk from 1.402.0 to 1.404.0 ([17c973e](https://github.com/newrelic/developer-website/commit/17c973e6b0211b41947a183c1bb69d158def2629))
+
+
+### Features
+
+* add a Spinner component ([e576ad1](https://github.com/newrelic/developer-website/commit/e576ad111c1423259cdd1668af0e6c1630b66598))
+* Add a Tutorial component that will flip between files and their code ([5d0fdc6](https://github.com/newrelic/developer-website/commit/5d0fdc6be54e03d75781d292cb5b2a522e194ca1))
+* add ability to define onLoad and onError handlers for useScript ([5be934e](https://github.com/newrelic/developer-website/commit/5be934ee58e0902816f2051a75ec96432b364127))
+* add ability to specify project. Update MDX to use code ([1095bd1](https://github.com/newrelic/developer-website/commit/1095bd1b65bd58f1d6fd85f483862c93053552bd))
+* add output coloring for each output line ([0ed5a72](https://github.com/newrelic/developer-website/commit/0ed5a72b11356f7f019029bd40160f2bff5ff330))
+* add Sander's speaker photo for nerd days ([67ce31f](https://github.com/newrelic/developer-website/commit/67ce31facc63ff99d7cb1cc872a07e92a54116ed))
+* add syntax highlighting to terminal commands ([d71b44d](https://github.com/newrelic/developer-website/commit/d71b44d606cc4ec771c693b81703a05ef78621a0))
+* animate output for nerdpack create command ([458ca8a](https://github.com/newrelic/developer-website/commit/458ca8a9db71f218f1d40f65f9a126290a161183))
+* beef up useScript to better load a script async ([c942c60](https://github.com/newrelic/developer-website/commit/c942c60a494bcf907cac450386ea95644852707d))
+* create a Terminal component ([9cc58b1](https://github.com/newrelic/developer-website/commit/9cc58b16b824d9215f09321835cd85edd5cad5bd))
+* create custom code block that renders a terminal for shell languages ([ca27f28](https://github.com/newrelic/developer-website/commit/ca27f28979c770459ee97d70dc70d63406acfd7b))
+* Fix emea time in agenda ([ec3a6c4](https://github.com/newrelic/developer-website/commit/ec3a6c465f474c07c2459211430bc9731467ae3f))
+* gather steps inside tutorial sections ([f96033c](https://github.com/newrelic/developer-website/commit/f96033c47b6278b12e21855c6660b8a198e7eca2))
+* handle proper diffing on each step ([ed3444c](https://github.com/newrelic/developer-website/commit/ed3444c2f0dd3b5c68f624cda2d74bb1d1157ec6))
+* highlight lines that are new ([c484371](https://github.com/newrelic/developer-website/commit/c484371514d14a9afc7dd3000b862598a17ea5fe))
+* show cursor on terminal prompts ([3782543](https://github.com/newrelic/developer-website/commit/37825431e1f4ecc5534a2d1dac6aefdf141e4ab7))
+* start animation when user scrolls the terminal into view ([e13c8fe](https://github.com/newrelic/developer-website/commit/e13c8fed47085d0898bbcb8d960176f84b0397ef))
+* **guides:** add golden signal alerts to the Terraform guide ([1cbd409](https://github.com/newrelic/developer-website/commit/1cbd4097bf64fc74ca39256b9c797b83e842a800))
+* update button styles on marketo form ([d60bde5](https://github.com/newrelic/developer-website/commit/d60bde5b633b44700c7505765a2849ef60d89e4d))
+* use an onSubmit option instead of redirecting in useMarketoForm ([d4ce6f9](https://github.com/newrelic/developer-website/commit/d4ce6f97018e630c9f53f43736d475eb5b03f75e))
+
 ## [1.21.2](https://github.com/newrelic/developer-website/compare/v1.21.1...v1.21.2) (2020-09-24)
 
 

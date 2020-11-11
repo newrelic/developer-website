@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
-import { ExternalLink, Icon, Tag } from '@newrelic/gatsby-theme-newrelic';
-import Section from './Section';
-import Title from './Title';
+import {
+  ExternalLink,
+  Icon,
+  Tag,
+  PageTools,
+} from '@newrelic/gatsby-theme-newrelic';
 
 const SITE_TAGS = {
   developer: 'https://developer.newrelic.com',
@@ -35,8 +38,8 @@ const Resources = ({ page }) => {
   const resources = (frontmatter.resources || []).concat(relatedResources);
 
   return resources.length > 0 ? (
-    <Section>
-      <Title>Related resources</Title>
+    <PageTools.Section>
+      <PageTools.Title>Related resources</PageTools.Title>
       <nav>
         <ul
           css={css`
@@ -104,7 +107,7 @@ const Resources = ({ page }) => {
           })}
         </ul>
       </nav>
-    </Section>
+    </PageTools.Section>
   ) : null;
 };
 
