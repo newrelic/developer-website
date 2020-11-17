@@ -19,7 +19,7 @@ import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import Countdown from '../components/Countdown';
-import header from '../images/header.png';
+import header from '../images/header.jpg';
 
 const getStartedGuides = [
   {
