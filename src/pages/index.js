@@ -69,12 +69,21 @@ const IndexPage = ({ data, pageContext }) => {
           >
             <div className={styles.introText}>
               <p>
-                Demos, fireside chats, product presentations, and an exclusive conversation with 
-                Celebrity Twitch Streamer, Shorty Award Finalist, and Minecraft disrupter, <a href="https://www.twitch.tv/annemunition">AnneMunition</a>.<br><br>
-                Nerd out with us during one of the following dates:<br>
-                December 3rd at 3:00PM PST/6:00PM EST<br>
-                December 9th at 3:00PM PST/6:00PM EST<br>
-                December 15th at 3:00PM PST/6:00PM EST<br><br>
+                Demos, fireside chats, product presentations, and an exclusive
+                conversation with Celebrity Twitch Streamer, Shorty Award
+                Finalist, and Minecraft disrupter,{' '}
+                <a href="https://www.twitch.tv/annemunition">AnneMunition</a>.
+                <br />
+                <br />
+                Nerd out with us during one of the following dates:
+                <br />
+                December 3rd at 3:00PM PST/6:00PM EST
+                <br />
+                December 9th at 3:00PM PST/6:00PM EST
+                <br />
+                December 15th at 3:00PM PST/6:00PM EST
+                <br />
+                <br />
               </p>
               <Countdown
                 targetDate="December 3 2020 9:45:00 GMT"
@@ -97,11 +106,7 @@ const IndexPage = ({ data, pageContext }) => {
                 width: 100%;
               `}
             >
-              <img
-                className={styles.img}
-                src={header}
-                alt="anne munition"
-              />
+              <img className={styles.img} src={header} alt="anne munition" />
             </div>
           </section>
 
