@@ -101,7 +101,6 @@ const IndexPage = ({ data, pageContext }) => {
                 className={styles.img}
                 src={header}
                 alt="anne munition"
-            />
               />
             </div>
           </section>
