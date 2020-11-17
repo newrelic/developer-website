@@ -57,7 +57,7 @@ const IndexPage = ({ data, pageContext }) => {
     <PageContext.Provider value={pageContext}>
       <SEO />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Mark your calendar for Nerd Days 1.0 EMEA" />
+        <PageLayout.Header title="Attending AWS re:Invent? We'll see you there." />
 
         <PageLayout.Content>
           <section
@@ -68,21 +68,22 @@ const IndexPage = ({ data, pageContext }) => {
           >
             <div className={styles.introText}>
               <p>
-                Nerd Days is a <strong>FREE</strong> engineering conference that
-                kicks off November 10 (EMEA). Focused on building more perfect
-                software, our goal is to spend less time looking at slides that
-                tell you what software can do and more time on getting your
-                hands on the software to solve problems efficiently.
+                Demos, fireside chats, product presentations, and an exclusive conversation with 
+                Celebrity Twitch Streamer, Shorty Award Finalist, and Minecraft disrupter, <a href="https://www.twitch.tv/annemunition">AnneMunition</a>.<br><br>
+                Nerd out with us during one of the following dates:<br>
+                December 3rd at 3:00PM PST/6:00PM EST<br>
+                December 9th at 3:00PM PST/6:00PM EST<br>
+                December 15th at 3:00PM PST/6:00PM EST<br><br>
               </p>
               <Countdown
-                targetDate="November 10 2020 9:45:00 GMT"
-                inactiveMessage="Countdown to Nerd Days EMEA"
+                targetDate="December 3 2020 9:45:00 GMT"
+                inactiveMessage="Coundown to Changing the Game Event"
               />
               <p>
-                <Button
-                  as={Link}
-                  to="/emea-nerd-days"
+               <Button
+                  as={ExternalLink}
                   variant={Button.VARIANT.PRIMARY}
+                  href="https://newrelicchangesthegame.com/"
                 >
                   Register
                 </Button>
@@ -95,12 +96,11 @@ const IndexPage = ({ data, pageContext }) => {
                 width: 100%;
               `}
             >
-              <Video
-                css={css`
-                  width: inherit;
-                `}
-                id="yop0mw3otv"
-                type="wistia"
+              <img
+                className={styles.img}
+                src={header}
+                alt="anne munition"
+            />
               />
             </div>
           </section>
