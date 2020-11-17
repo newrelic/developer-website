@@ -81,7 +81,7 @@ const IndexPage = ({ data, pageContext }) => {
                 inactiveMessage="Coundown to Changing the Game Event"
               />
               <p>
-               <Button
+                <Button
                   as={ExternalLink}
                   variant={Button.VARIANT.PRIMARY}
                   href="https://newrelicchangesthegame.com/"
