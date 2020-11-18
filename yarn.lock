@@ -9493,16 +9493,10 @@ gatsby-plugin-meta-redirect@^1.1.1:
   dependencies:
     fs-extra "^7.0.0"
 
-gatsby-plugin-newrelic@^1.0.3:
+gatsby-plugin-newrelic@1.0.4, gatsby-plugin-newrelic@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-newrelic/-/gatsby-plugin-newrelic-1.0.4.tgz#9d49c68ad1a528a8c38bd012e3c2363c7e87105d"
   integrity sha512-16ar8OoG39yZXIqjhBSlNOc4+2hJdjp7aCo1X4jGH7TOIhstOcFJI9uQ+wPur3vXFG75VpgT8nbIiyw+1uPAmA==
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-
-gatsby-plugin-newrelic@newrelic/gatsby-plugin-newrelic.git#5cd42e832f0588764dc332ce7ebd05794de5106a:
-  version "1.0.2"
-  resolved "https://codeload.github.com/newrelic/gatsby-plugin-newrelic/tar.gz/5cd42e832f0588764dc332ce7ebd05794de5106a"
   dependencies:
     "@babel/runtime" "^7.0.0"
 
