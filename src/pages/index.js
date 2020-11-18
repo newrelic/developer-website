@@ -19,7 +19,7 @@ import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import Countdown from '../components/Countdown';
-import header from '../images/header.jpg';
+import awsReinvent from '../images/aws-reinvent.jpg';
 
 const getStartedGuides = [
   {
@@ -106,7 +106,11 @@ const IndexPage = ({ data, pageContext }) => {
                 width: 100%;
               `}
             >
-              <img className={styles.img} src={header} alt="anne munition" />
+              <img
+                className={styles.img}
+                src={awsReinvent}
+                alt="anne munition"
+              />
             </div>
           </section>
 
