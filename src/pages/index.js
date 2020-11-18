@@ -107,9 +107,11 @@ const IndexPage = ({ data, pageContext }) => {
               `}
             >
               <img
-                className={styles.img}
                 src={awsReinvent}
                 alt="anne munition"
+                css={css`
+                  width: inherit;
+                `}
               />
             </div>
           </section>
