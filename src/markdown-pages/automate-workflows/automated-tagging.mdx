@@ -115,7 +115,7 @@ Now that everything is set up, you can run the deployer application in a Docker 
 ```shell
 docker run -it\
     -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby deployer main.rb -c configs/creds.json -d documentation/tutorial/user_stories/Hello/hello.json
+    --entrypoint ruby deployer main.rb -c configs/creds.json -d demo-deployer/blob/main/demo/catalog/hello.aws.json
 ```
 
 With this command, you're running the `deployer` Docker container with the following options:
@@ -126,7 +126,7 @@ With this command, you're running the `deployer` Docker container with the follo
 Finally, you pass a list of arguments to the entrypoint, including:
 
 - `-c configs/creds.json`: The user credentials configuration file
-- `-d documentation/tutorial/user_stories/Hello/hello.json`: The [deployment configuration file](https://github.com/newrelic/demo-deployer/tree/main/documentation/deploy_config)
+- `-d demo-deployer/blob/main/demo/catalog/hello.aws.json`: The [deployment configuration file](https://github.com/newrelic/demo-deployer/tree/main/documentation/deploy_config)
 
 <Callout variant="tip">
 
@@ -144,7 +144,7 @@ This is because you mounted `$HOME/configs` to `/mnt/deployer/configs/` and `/mn
 
 #### Understanding the deployment configuration file
 
-The deployment configuration file, [hello.json](https://github.com/newrelic/demo-deployer/blob/main/documentation/tutorial/user_stories/Hello/hello.json), which drives the deployer, contains four sections:
+The deployment configuration file, [hello.aws.json](https://github.com/newrelic/demo-deployer/blob/main/demo/catalog/hello.aws.json), which drives the deployer, contains four sections:
 
 - `services`
 - `global_tags`
@@ -329,7 +329,7 @@ Add the _teardown_ flag, `-t`, to the end of your command:
 ```shell
 docker run -it\
     -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby deployer main.rb -c configs/creds.json -d documentation/tutorial/user_stories/Hello/hello.json -t
+    --entrypoint ruby deployer main.rb -c configs/creds.json -d demo-deployer/blob/main/demo/catalog/hello.aws.json -t
 ```
 
 When the deployer has finished successfully, you'll see output that is similar to what you saw during deployment:
