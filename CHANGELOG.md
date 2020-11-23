@@ -1,3 +1,12 @@
+## [1.30.1](https://github.com/newrelic/developer-website/compare/v1.30.0...v1.30.1) (2020-11-23)
+
+
+### Bug Fixes
+
+* package.json & yarn.lock to reduce vulnerabilities ([bba29ae](https://github.com/newrelic/developer-website/commit/bba29aecf54bbbfbe9d413cc30e503dad2eb525c))
+* upgrade gatsby-plugin-mdx from 1.2.43 to 1.2.47 ([7361dc5](https://github.com/newrelic/developer-website/commit/7361dc548ac10c110746f45171b5edf21d7f6167))
+* upgrade multiple dependencies with Snyk ([b9734a0](https://github.com/newrelic/developer-website/commit/b9734a0d5ec6a19a77210be09e1e528b2a677208))
+
 # [1.30.0](https://github.com/newrelic/developer-website/compare/v1.29.1...v1.30.0) (2020-11-10)
 
 

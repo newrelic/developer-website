@@ -1,6 +1,6 @@
 ---
 path: '/automate-workflows/diagnose-problems'
-duration: '75 min'
+duration: '30 min'
 title: 'Practice diagnosing common issues using New Relic'
 template: 'GuideTemplate'
 description: 'Automatically spin up a microservice infrastructure, and use New Relic to diagnose its issues.'
@@ -54,7 +54,9 @@ It's time to deploy and instrument the Telco Lite services using `demo-deployer`
 
 Follow the [Deployment guide](https://github.com/newrelic/demo-deployer/tree/main/demo/README.md#deploy-your-services) in the deployer's repository for a thorough explanation of how to use the deployer in a local Docker environment. When you run the deployment script, make sure to pass the url you copied for `<demo-url>`.
 
-Since Telco Lite contains several services, the deployment can take over half an hour. When it finishes, you should see some output stating that the deployment was successful:
+> NOTE: Since Telco Lite contains several services, the deployment can take over half an hour. 
+
+When the deloyer is finished, you should see some output stating that the deployment was successful:
 
 ```shell copyable=false
 [output] {muted}[INFO] Executing Deployment
