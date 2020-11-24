@@ -77,7 +77,7 @@ const SdkPlayground = () => {
   };
 
   const toggleSidebar = () => {
-    let num = Math.random() * 10;
+    const num = Math.random() * 10;
     setShowSidebar(!showSidebar);
     setEditorKey(`${window.innerWidth} ${num}`);
   };

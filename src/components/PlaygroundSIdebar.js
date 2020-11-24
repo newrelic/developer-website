@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Button, SearchInput, Surface } from '@newrelic/gatsby-theme-newrelic';
 import useComponentDoc from '../hooks/useComponentDoc';
+import Checkbox from './Checkbox';
 
 const API_DOCS = ['events', 'tessen', 'instrumentation', 'logger', 'nerdlet'];
 
@@ -61,8 +62,7 @@ const SidebarItem = ({ handleSubmit, component }) => {
 
   const { propTypes = [] } = useComponentDoc(component) ?? {};
 
-  const toggleChecks = (e) => {
-    const prop = e.target.value;
+  const toggleChecks = (prop) => {
     const newProps = selectedProps;
 
     if (Object.keys(selectedProps).includes(prop)) {
@@ -75,6 +75,7 @@ const SidebarItem = ({ handleSubmit, component }) => {
     }
 
     setSelected({ ...newProps });
+    console.log(newProps);
   };
 
   const onSubmit = () => {
@@ -133,12 +134,12 @@ const SidebarItem = ({ handleSubmit, component }) => {
         propTypes.map((prop, i) => {
           return (
             <div key={i}>
-              <input
-                onChange={toggleChecks}
-                key={i}
-                type="checkbox"
+              <Checkbox
+                onChange={() => toggleChecks(prop.name)}
+                id={`${component}-${prop.name}-${i}`}
                 value={prop.name}
                 name={prop.name}
+                checked={Object.keys(selectedProps).includes(prop.name)}
               />
               {'  '}
               <span>{prop.name}</span>
