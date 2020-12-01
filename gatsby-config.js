@@ -37,6 +37,11 @@ module.exports = {
                 authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
               },
             },
+            production: {
+              core: {
+                authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
+              },
+            },
           },
         },
         newrelic: {
