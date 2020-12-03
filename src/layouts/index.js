@@ -6,7 +6,7 @@ const Layout = ({ children, pageContext }) => {
   if (pageContext.fileRelativePath.match(/404/)) {
     return children;
   }
-  return <MainLayout>{children}</MainLayout>;
+  return <MainLayout pageContext={pageContext}>{children}</MainLayout>;
 };
 
 Layout.propTypes = {
