@@ -20,7 +20,6 @@
     "gatsby-plugin-manifest": "^2.4.35",
     "gatsby-plugin-mdx": "^1.2.47",
     "gatsby-plugin-meta-redirect": "^1.1.1",
-    "gatsby-plugin-newrelic": "^1.0.5",
     "gatsby-plugin-offline": "^3.2.32",
     "gatsby-plugin-react-helmet": "^3.3.12",
     "gatsby-plugin-robots-txt": "^1.5.3",
