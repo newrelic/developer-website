@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import Content from './Content';
 import Header from './Header';
 import MarkdownContent from './MarkdownContent';
 import Context from './Context';
-import { useLayout } from '@newrelic/gatsby-theme-newrelic';
+import { Layout, useLayout } from '@newrelic/gatsby-theme-newrelic';
 
 const TYPES = {
   SINGLE_COLUMN: 'SINGLE_COLUMN',
@@ -60,7 +59,7 @@ PageLayout.propTypes = {
 
 PageLayout.TYPE = TYPES;
 
-PageLayout.Content = Content;
+PageLayout.Content = Layout.Content;
 PageLayout.Context = Context;
 PageLayout.Header = Header;
 PageLayout.MarkdownContent = MarkdownContent;
