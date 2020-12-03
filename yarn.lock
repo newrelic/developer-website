@@ -59,19 +59,19 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@7.11.1":
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.11.1.tgz#2c55b604e73a40dc21b0e52650b11c65cf276643"
-  integrity sha512-XqF7F6FWQdKGGWAzGELL+aCO1p+lRY5Tj5/tbT3St1G8NaH70jhhDIKknIZaDans0OQBG5wRAldROLHSt44BgQ==
+"@babel/core@7.11.6":
+  version "7.11.6"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.11.6.tgz#3a9455dc7387ff1bac45770650bc13ba04a15651"
+  integrity sha512-Wpcv03AGnmkgm6uS6k8iwhIwTrcP0m17TL1n1sy7qD0qelDu4XNeW0dN0mHfa+Gei211yDaLoEe/VlbXQzM4Bg==
   dependencies:
     "@babel/code-frame" "^7.10.4"
-    "@babel/generator" "^7.11.0"
+    "@babel/generator" "^7.11.6"
     "@babel/helper-module-transforms" "^7.11.0"
     "@babel/helpers" "^7.10.4"
-    "@babel/parser" "^7.11.1"
+    "@babel/parser" "^7.11.5"
     "@babel/template" "^7.10.4"
-    "@babel/traverse" "^7.11.0"
-    "@babel/types" "^7.11.0"
+    "@babel/traverse" "^7.11.5"
+    "@babel/types" "^7.11.5"
     convert-source-map "^1.7.0"
     debug "^4.1.0"
     gensync "^1.0.0-beta.1"
@@ -134,7 +134,7 @@
     jsesc "^2.5.1"
     source-map "^0.5.0"
 
-"@babel/generator@^7.11.0", "@babel/generator@^7.11.5":
+"@babel/generator@^7.11.5":
   version "7.11.6"
   resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.11.6.tgz#b868900f81b163b4d464ea24545c61cbac4dc620"
   integrity sha512-DWtQ1PV3r+cLbySoHrwn9RWEgKMBLLma4OBQloPRyDYvc5msJM9kvTLo1YnlJd1P/ZuKbdli3ijr5q3FvAF3uA==
@@ -669,7 +669,7 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.9.4.tgz#68a35e6b0319bbc014465be43828300113f2f2e8"
   integrity sha512-bC49otXX6N0/VYhgOMh4gnP26E9xnDZK3TmbNpxYzzz9BQLBosQwfyOe9/cXUU3txYhTzLCbcqd5c8y/OmCjHA==
 
-"@babel/parser@^7.10.4", "@babel/parser@^7.11.1":
+"@babel/parser@^7.10.4":
   version "7.11.5"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.11.5.tgz#c7ff6303df71080ec7a4f5b8c003c58f1cf51037"
   integrity sha512-X9rD8qqm695vgmeaQ4fvz/o3+Wk4ZzQvSHkDBgpYKxpD4qTAUm88ZKtHkVqIOsYFFbIQ6wQYhC6q7pjqVK0E0Q==
@@ -1908,7 +1908,7 @@
     globals "^11.1.0"
     lodash "^4.17.13"
 
-"@babel/traverse@^7.10.4", "@babel/traverse@^7.11.0":
+"@babel/traverse@^7.10.4":
   version "7.11.5"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.11.5.tgz#be777b93b518eb6d76ee2e1ea1d143daa11e61c3"
   integrity sha512-EjiPXt+r7LiCZXEfRpSJd+jUMnBd4/9OUv7Nx3+0u9+eimMwJmG0Q98lw4/289JCoxSE8OolDMNZaaF/JZ69WQ==
@@ -2909,28 +2909,28 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@mdx-js/mdx@^1.6.17":
-  version "1.6.17"
-  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.6.17.tgz#d98038961f2cf162e11479ae19a923fdf807e21a"
-  integrity sha512-ys3Tm3V3yngccBKgF80jgDQW/SH9on3C2mJ+fZBS7g5AxbaX8JghZfPD0xwtjVNkFsOUS5vsjn1D2X1aPsjKMw==
+"@mdx-js/mdx@^1.6.19":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.6.21.tgz#d3651b4802db7bdc399270c0ffa9e2aa99dd4b00"
+  integrity sha512-z35VI6qDw9eAzR/obtgHbYVUdb/Pm+oUnlP1lLR94Oe05Xs2H7vlAgpuFBCLH5g/egzAc2wZCyoVydr25CsF+A==
   dependencies:
-    "@babel/core" "7.11.1"
+    "@babel/core" "7.11.6"
     "@babel/plugin-syntax-jsx" "7.10.4"
     "@babel/plugin-syntax-object-rest-spread" "7.8.3"
-    "@mdx-js/util" "1.6.17"
-    babel-plugin-apply-mdx-type-prop "1.6.17"
-    babel-plugin-extract-import-names "1.6.17"
+    "@mdx-js/util" "1.6.21"
+    babel-plugin-apply-mdx-type-prop "1.6.21"
+    babel-plugin-extract-import-names "1.6.21"
     camelcase-css "2.0.1"
     detab "2.0.3"
-    hast-util-raw "6.0.0"
+    hast-util-raw "6.0.1"
     lodash.uniq "4.5.0"
-    mdast-util-to-hast "9.1.0"
-    remark-footnotes "1.0.0"
-    remark-mdx "1.6.17"
+    mdast-util-to-hast "9.1.2"
+    remark-footnotes "2.0.0"
+    remark-mdx "1.6.21"
     remark-parse "8.0.3"
     remark-squeeze-paragraphs "4.0.0"
     style-to-object "0.3.0"
-    unified "9.1.0"
+    unified "9.2.0"
     unist-builder "2.0.3"
     unist-util-visit "2.0.3"
 
@@ -2961,10 +2961,15 @@
     unist-builder "2.0.3"
     unist-util-visit "2.0.3"
 
-"@mdx-js/react@^1.5.2", "@mdx-js/react@^1.6.18":
+"@mdx-js/react@^1.5.2":
   version "1.6.18"
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.18.tgz#f83cbb2355de9cf36a213140ce21647da1e34fa7"
   integrity sha512-aFHsZVu7r9WamlP+WO/lyvHHZAubkQjkcRYlvS7fQElypfJvjKdHevjC3xiqlsQpasx/4KqRMoEIb++wNtd+6w==
+
+"@mdx-js/react@^1.6.19":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.21.tgz#86d962471a5e160c59a6b32054aa55c0c7ca404e"
+  integrity sha512-CgSNT9sq2LAlhEbVlPg7DwUQkypz+CWaWGcJbkgmp9WCAy6vW33CQ44UbKPiH3wet9o+UbXeQOqzZd041va83g==
 
 "@mdx-js/react@^2.0.0-next.4", "@mdx-js/react@^2.0.0-next.8":
   version "2.0.0-next.8"
@@ -2980,10 +2985,10 @@
     "@mdx-js/react" "^2.0.0-next.8"
     buble-jsx-only "^0.19.8"
 
-"@mdx-js/util@1.6.17":
-  version "1.6.17"
-  resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.17.tgz#952da84dd470427fd2033d30a999787517e61378"
-  integrity sha512-YFRBmsMyQdOQ2l48hn6DipCmSpz2ySQNrjOptA1RC3+YYC9NcOVvNu2fL0GhuN6Ji/XDJ7bXS+0BADyK6uhP8w==
+"@mdx-js/util@1.6.21":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.21.tgz#25f97a0a1b76e78c16ae5d98c6c73e1be8d89e39"
+  integrity sha512-6sANhqfEHu6gdHZSrzDjN18Y48mIon8f2Os6J+IFmMHN0IhNG/0PUIIsI07kA1sZ9t6vgZNBloVmcDa5WOSe6A==
 
 "@mdx-js/util@^2.0.0-next.8":
   version "2.0.0-next.8"
@@ -3011,10 +3016,10 @@
     eslint-plugin-promise "^4.2.1"
     eslint-plugin-react "^7.14.3"
 
-"@newrelic/gatsby-theme-newrelic@^1.16.0":
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/@newrelic/gatsby-theme-newrelic/-/gatsby-theme-newrelic-1.16.0.tgz#d0ca0b554b3c92c5ccc9d94b4ce6191fc18e47a9"
-  integrity sha512-qO8wxv5CSHKskeEHg9w5xZGChlnQrTzlPqXTbF8oyXXPgE7jIxHceUjjqBAD2gkxClXEflUGkAJpoW2spzbBNw==
+"@newrelic/gatsby-theme-newrelic@^1.16.1":
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/@newrelic/gatsby-theme-newrelic/-/gatsby-theme-newrelic-1.16.1.tgz#31bccb8922f18c873c5abb5cad6a1f98e29f0db6"
+  integrity sha512-HUNCxWw8IkCDnj4HRR9FZzMr3YsffRYEHSVohmpq/ArQraW0izjHnUKhtirBT6pBb57GulDMOyEBb2SQAuCWXw==
   dependencies:
     "@elastic/react-search-ui" "^1.4.1"
     "@elastic/react-search-ui-views" "^1.4.1"
@@ -3311,6 +3316,13 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@snyk/cli-interface@2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@snyk/cli-interface/-/cli-interface-2.11.0.tgz#9df68c8cd54de5dff69f0ab797a188541d9c8965"
+  integrity sha512-T3xfDqrEFKclHGdJx4/5+D5F7e76/99f33guE4RTlVITBhy7VVnjz4t/NDr3UYqcC0MgAmiC4bSVYHnlshuwJw==
+  dependencies:
+    "@types/graphlib" "^2"
+
 "@snyk/cli-interface@2.9.1":
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/@snyk/cli-interface/-/cli-interface-2.9.1.tgz#e0466d183e7d4a13112ba098b1702a0d628dd380"
@@ -3320,7 +3332,7 @@
     "@types/graphlib" "^2.1.7"
     tslib "^1.9.3"
 
-"@snyk/cli-interface@2.9.2", "@snyk/cli-interface@^2.0.3", "@snyk/cli-interface@^2.9.1", "@snyk/cli-interface@^2.9.2":
+"@snyk/cli-interface@^2.0.3", "@snyk/cli-interface@^2.9.1", "@snyk/cli-interface@^2.9.2":
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/@snyk/cli-interface/-/cli-interface-2.9.2.tgz#defbeafd5fa7fa5ab1c39d57f1d379b2fbfc9860"
   integrity sha512-C64bGtcQbh7941l7qgXFJ+FJIZdQtBHkPhKfGtUlCCMbC0FK0oaUmp6d7YPQxT4dEnkQdtlBT/eA2F6qIKbEng==
@@ -3362,10 +3374,10 @@
     source-map-support "^0.5.19"
     tslib "^1.13.0"
 
-"@snyk/dep-graph@^1.19.5":
-  version "1.20.0"
-  resolved "https://registry.yarnpkg.com/@snyk/dep-graph/-/dep-graph-1.20.0.tgz#258ae85f8a066dc63af4444cfca8b8d092b94bc0"
-  integrity sha512-/TOzXGh+JFgAu8pWdo1oLFKDNfFk99TnSQG2lbEu+vKLI2ZrGAk9oGO0geNogAN7Ib4EDQOEhgb7YwqwL7aA7w==
+"@snyk/dep-graph@1.21.0", "@snyk/dep-graph@^1.19.5":
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/@snyk/dep-graph/-/dep-graph-1.21.0.tgz#02bc39598c7415d6d78d2ea6fd46f44514f9039c"
+  integrity sha512-+xwiU1zw+Z1V6RaIL7oWUqZo8jDIpoKfzvv8xGiq0hYxsiP9tGSUNuFXwQzAFEP60kJyD2a/nptdRPjsKD0jPw==
   dependencies:
     graphlib "^2.1.8"
     lodash.isequal "^4.5.0"
@@ -3639,7 +3651,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/graphlib@^2.1.7":
+"@types/graphlib@^2", "@types/graphlib@^2.1.7":
   version "2.1.7"
   resolved "https://registry.yarnpkg.com/@types/graphlib/-/graphlib-2.1.7.tgz#e6a47a4f43511f5bad30058a669ce5ce93bfd823"
   integrity sha512-K7T1n6U2HbTYu+SFHlBjz/RH74OA2D/zF1qlzn8uXbvB4uRg7knOM85ugS2bbXI1TXMh7rLqk4OVRwIwEBaixg==
@@ -4839,13 +4851,13 @@ babel-plugin-add-module-exports@^0.3.3:
   optionalDependencies:
     chokidar "^2.0.4"
 
-babel-plugin-apply-mdx-type-prop@1.6.17:
-  version "1.6.17"
-  resolved "https://registry.yarnpkg.com/babel-plugin-apply-mdx-type-prop/-/babel-plugin-apply-mdx-type-prop-1.6.17.tgz#16754a719fb14c21fbf1876337d098ad1a436287"
-  integrity sha512-aDwMhMLITT70CiQ3epx5a7xCAW8LwL+6JqGoBSeeR9Jb3jY3hwDW6d4DZW9gMZJmPnCuB+cmO71QvJHleA0oLw==
+babel-plugin-apply-mdx-type-prop@1.6.21:
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/babel-plugin-apply-mdx-type-prop/-/babel-plugin-apply-mdx-type-prop-1.6.21.tgz#0c8600c965ca4203e3c026ed971ed5b7e810aeba"
+  integrity sha512-+vQarmm+g+kePH4CMp2iEN/HOx1oEvZeSKCdKCEZlnJOthXzkpaRAbM3ZNCiKqVr9WuoqPNfoXQ0EVppYpIwfg==
   dependencies:
     "@babel/helper-plugin-utils" "7.10.4"
-    "@mdx-js/util" "1.6.17"
+    "@mdx-js/util" "1.6.21"
 
 babel-plugin-apply-mdx-type-prop@^2.0.0-next.8:
   version "2.0.0-next.8"
@@ -4903,10 +4915,10 @@ babel-plugin-extract-export-names@^2.0.0-next.8:
   dependencies:
     "@babel/helper-plugin-utils" "7.10.4"
 
-babel-plugin-extract-import-names@1.6.17:
-  version "1.6.17"
-  resolved "https://registry.yarnpkg.com/babel-plugin-extract-import-names/-/babel-plugin-extract-import-names-1.6.17.tgz#7a73aabee065360d6d998984e366b48eac4cf322"
-  integrity sha512-CkC0IVA5tW1Vb9d6CnVYEU2eKR+ufZMHfzXDpC7NK90fk5FRs0xjmu+QHgUeiifQNro9capLsj/rR98aZgM5/Q==
+babel-plugin-extract-import-names@1.6.21:
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/babel-plugin-extract-import-names/-/babel-plugin-extract-import-names-1.6.21.tgz#94efffee4ea79982491573e5f67d9957ab77596a"
+  integrity sha512-mCjTry00HB/4xHGunxQNMOGZ7JEGJdEScNh7C1WJBto7nePyn9wCdYAZP61pGC6+z3ETH5btY20mqg0plcxZGA==
   dependencies:
     "@babel/helper-plugin-utils" "7.10.4"
 
@@ -10766,6 +10778,22 @@ hast-util-raw@6.0.0:
     xtend "^4.0.0"
     zwitch "^1.0.0"
 
+hast-util-raw@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/hast-util-raw/-/hast-util-raw-6.0.1.tgz#973b15930b7529a7b66984c98148b46526885977"
+  integrity sha512-ZMuiYA+UF7BXBtsTBNcLBF5HzXzkyE6MLzJnL605LKE8GJylNjGc4jjxazAHUtcwT5/CEt6afRKViYB4X66dig==
+  dependencies:
+    "@types/hast" "^2.0.0"
+    hast-util-from-parse5 "^6.0.0"
+    hast-util-to-parse5 "^6.0.0"
+    html-void-elements "^1.0.0"
+    parse5 "^6.0.0"
+    unist-util-position "^3.0.0"
+    vfile "^4.0.0"
+    web-namespaces "^1.0.0"
+    xtend "^4.0.0"
+    zwitch "^1.0.0"
+
 hast-util-raw@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/hast-util-raw/-/hast-util-raw-4.0.0.tgz#2dc10c9facd9b810ea6ac51df251e6f87c2ed5b5"
@@ -13546,6 +13574,20 @@ mdast-util-to-hast@9.1.0:
     mdast-util-definitions "^3.0.0"
     mdurl "^1.0.0"
     trim-lines "^1.0.0"
+    unist-builder "^2.0.0"
+    unist-util-generated "^1.0.0"
+    unist-util-position "^3.0.0"
+    unist-util-visit "^2.0.0"
+
+mdast-util-to-hast@9.1.2:
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/mdast-util-to-hast/-/mdast-util-to-hast-9.1.2.tgz#10fa5ed9d45bf3755891e5801d0f32e2584a9423"
+  integrity sha512-OpkFLBC2VnNAb2FNKcKWu9FMbJhQKog+FCT8nuKmQNIKXyT1n3SIskE7uWDep6x+cA20QXlK5AETHQtYmQmxtQ==
+  dependencies:
+    "@types/mdast" "^3.0.0"
+    "@types/unist" "^2.0.0"
+    mdast-util-definitions "^3.0.0"
+    mdurl "^1.0.0"
     unist-builder "^2.0.0"
     unist-util-generated "^1.0.0"
     unist-util-position "^3.0.0"
@@ -16928,19 +16970,24 @@ remark-footnotes@1.0.0:
   resolved "https://registry.yarnpkg.com/remark-footnotes/-/remark-footnotes-1.0.0.tgz#9c7a97f9a89397858a50033373020b1ea2aad011"
   integrity sha512-X9Ncj4cj3/CIvLI2Z9IobHtVi8FVdUrdJkCNaL9kdX8ohfsi18DXHsCVd/A7ssARBdccdDb5ODnt62WuEWaM/g==
 
-remark-mdx@1.6.17:
-  version "1.6.17"
-  resolved "https://registry.yarnpkg.com/remark-mdx/-/remark-mdx-1.6.17.tgz#a1ca0f99a06dc2f8dcffd0e1f29b230e12f568c4"
-  integrity sha512-/Ldq6nsrtTg5gNLdKofbSLdRtzU2o6QYABGA4NQfvF8uOVW2bResMA5bRsrO0bytCg97ZhNdFvcnrUnVXqYI8g==
+remark-footnotes@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/remark-footnotes/-/remark-footnotes-2.0.0.tgz#9001c4c2ffebba55695d2dd80ffb8b82f7e6303f"
+  integrity sha512-3Clt8ZMH75Ayjp9q4CorNeyjwIxHFcTkaektplKGl2A1jNGEUey8cKL0ZC5vJwfcD5GFGsNLImLG/NGzWIzoMQ==
+
+remark-mdx@1.6.21:
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/remark-mdx/-/remark-mdx-1.6.21.tgz#0c1a7e042e50938ff89ad8dd7e8e219d4b0404ce"
+  integrity sha512-IGb3l46a6NFi62egT+WXeTT3T8wYTunmPCEGTfDO6oRAfuss9VAb/3InVCKKGXXoiNi0mTuplI0EFusdCLGk3A==
   dependencies:
-    "@babel/core" "7.11.1"
+    "@babel/core" "7.11.6"
     "@babel/helper-plugin-utils" "7.10.4"
     "@babel/plugin-proposal-object-rest-spread" "7.11.0"
     "@babel/plugin-syntax-jsx" "7.10.4"
-    "@mdx-js/util" "1.6.17"
+    "@mdx-js/util" "1.6.21"
     is-alphabetical "1.0.4"
     remark-parse "8.0.3"
-    unified "9.1.0"
+    unified "9.2.0"
 
 remark-mdx@^2.0.0-next.4, remark-mdx@^2.0.0-next.8:
   version "2.0.0-next.8"
@@ -18067,10 +18114,10 @@ snyk-go-plugin@1.16.2:
     tmp "0.2.1"
     tslib "^1.10.0"
 
-snyk-gradle-plugin@3.10.2:
-  version "3.10.2"
-  resolved "https://registry.yarnpkg.com/snyk-gradle-plugin/-/snyk-gradle-plugin-3.10.2.tgz#f3e104d42989e49b5c05818f005cae8c544c9803"
-  integrity sha512-gTFKL0BLUN54asUQ4OIoa4lATGn27VZwWDJGQ0VuqSaaoy8I5W16Cbn/KN95oIKa7tgwrmasPLd5uviFWzo/Qw==
+snyk-gradle-plugin@3.10.3:
+  version "3.10.3"
+  resolved "https://registry.yarnpkg.com/snyk-gradle-plugin/-/snyk-gradle-plugin-3.10.3.tgz#bb4553d06930539ebfd0dbfc8db153de5b982c5e"
+  integrity sha512-aFAqQu0vvgndxQtXxNfLzL9wamOwyRceRkSb+BXVp6E+Tpz4awksyUTfV0Yc5WjR0+hYB2rtBYKHXaK+GHficg==
   dependencies:
     "@snyk/cli-interface" "2.9.1"
     "@snyk/dep-graph" "^1.19.4"
@@ -18107,10 +18154,10 @@ snyk-module@^2.0.2:
     debug "^3.1.0"
     hosted-git-info "^2.7.1"
 
-snyk-mvn-plugin@2.23.4:
-  version "2.23.4"
-  resolved "https://registry.yarnpkg.com/snyk-mvn-plugin/-/snyk-mvn-plugin-2.23.4.tgz#3f43601058aa51e8a0f9e272a7c186cad4b26950"
-  integrity sha512-1dWqvFu6eo2KsXFDqRF28JFwrdzpc0k+GwpIqv7vF2kHarsMxnLnT/akhjbKzs+xlRTNFvqdKhEQxjdq2nSD1Q==
+snyk-mvn-plugin@2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/snyk-mvn-plugin/-/snyk-mvn-plugin-2.24.0.tgz#3a57ce253f05b417a92e0fc4990bca387ce4e296"
+  integrity sha512-M/DFfJMcXwegrHFMMGPoQNyldbOl49vwklHPBlLIsA0016Pe5weBC+1nleg7+7c1OG11WhKPn7jF78sLUpYtsg==
   dependencies:
     "@snyk/cli-interface" "2.9.1"
     "@snyk/java-call-graph-builder" "1.16.5"
@@ -18264,12 +18311,12 @@ snyk-try-require@1.3.1, snyk-try-require@^1.1.1, snyk-try-require@^1.3.1:
     then-fs "^2.0.0"
 
 snyk@^1.425.4:
-  version "1.431.1"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.431.1.tgz#1e360dae1b63d83f74fe90979f7b9a0fb1607aa7"
-  integrity sha512-OW48lG89ffLsSZPHwsjfdqQcu3XG6aRQOkwASPCgTAGcVcnXzS9XHB89h0gLsDzk0fZRskEVgYpvXdh4RFjNqA==
+  version "1.433.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.433.0.tgz#a4e056c4fe94477398bdad2173d38b2b31210a5c"
+  integrity sha512-lK0w6E3xOeLlZPfOiNCAQ2lUgQ3gGJkAoApJdOkPnyEC2T6SLyyBcDk74S61N6qQTKEPNT7kOFYKRZFhKRjZkg==
   dependencies:
-    "@snyk/cli-interface" "2.9.2"
-    "@snyk/dep-graph" "1.19.4"
+    "@snyk/cli-interface" "2.11.0"
+    "@snyk/dep-graph" "1.21.0"
     "@snyk/gemfile" "1.2.0"
     "@snyk/snyk-cocoapods-plugin" "2.5.1"
     abbrev "^1.1.1"
@@ -18293,9 +18340,9 @@ snyk@^1.425.4:
     snyk-cpp-plugin "2.2.1"
     snyk-docker-plugin "4.12.0"
     snyk-go-plugin "1.16.2"
-    snyk-gradle-plugin "3.10.2"
+    snyk-gradle-plugin "3.10.3"
     snyk-module "3.1.0"
-    snyk-mvn-plugin "2.23.4"
+    snyk-mvn-plugin "2.24.0"
     snyk-nodejs-lockfile-parser "1.30.1"
     snyk-nuget-plugin "1.19.4"
     snyk-php-plugin "1.9.2"
@@ -19896,10 +19943,10 @@ unified@9.0.0:
     trough "^1.0.0"
     vfile "^4.0.0"
 
-unified@9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/unified/-/unified-9.1.0.tgz#7ba82e5db4740c47a04e688a9ca8335980547410"
-  integrity sha512-VXOv7Ic6twsKGJDeZQ2wwPqXs2hM0KNu5Hkg9WgAZbSD1pxhZ7p8swqg583nw1Je2fhwHy6U8aEjiI79x1gvag==
+unified@9.2.0, unified@^9.0.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/unified/-/unified-9.2.0.tgz#67a62c627c40589edebbf60f53edfd4d822027f8"
+  integrity sha512-vx2Z0vY+a3YoTj8+pttM3tiJHCwY5UFbYdiWrwBEbHmK8pvsPj2rtAX2BFfgXen8T39CJWblWRDT4L5WGXtDdg==
   dependencies:
     bail "^1.0.0"
     extend "^3.0.0"
@@ -19941,18 +19988,6 @@ unified@^8.4.2:
   dependencies:
     bail "^1.0.0"
     extend "^3.0.0"
-    is-plain-obj "^2.0.0"
-    trough "^1.0.0"
-    vfile "^4.0.0"
-
-unified@^9.0.0:
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/unified/-/unified-9.2.0.tgz#67a62c627c40589edebbf60f53edfd4d822027f8"
-  integrity sha512-vx2Z0vY+a3YoTj8+pttM3tiJHCwY5UFbYdiWrwBEbHmK8pvsPj2rtAX2BFfgXen8T39CJWblWRDT4L5WGXtDdg==
-  dependencies:
-    bail "^1.0.0"
-    extend "^3.0.0"
-    is-buffer "^2.0.0"
     is-plain-obj "^2.0.0"
     trough "^1.0.0"
     vfile "^4.0.0"
