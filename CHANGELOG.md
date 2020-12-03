@@ -1,3 +1,12 @@
+## [1.31.3](https://github.com/newrelic/developer-website/compare/v1.31.2...v1.31.3) (2020-12-03)
+
+
+### Bug Fixes
+
+* package.json & yarn.lock to reduce vulnerabilities ([c9b7452](https://github.com/newrelic/developer-website/commit/c9b7452ce9056f2c5cc15ae6c60e47182d925bc3))
+* update main layout to use new layout components ([c01aef8](https://github.com/newrelic/developer-website/commit/c01aef866ebccbe36e1bd50d424d799d0f9c731d))
+* upgrade multiple dependencies with Snyk ([7d20b17](https://github.com/newrelic/developer-website/commit/7d20b17ae070bef73ed89ef388d18643c53cddf2))
+
 ## [1.31.2](https://github.com/newrelic/developer-website/compare/v1.31.1...v1.31.2) (2020-12-03)
 
 
