@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { graphql, useStaticQuery } from 'gatsby';
 import Content from './Content';
 import Header from './Header';
 import MarkdownContent from './MarkdownContent';
 import Context from './Context';
+import { useLayout } from '@newrelic/gatsby-theme-newrelic';
 
 const TYPES = {
   SINGLE_COLUMN: 'SINGLE_COLUMN',
@@ -16,7 +16,7 @@ const LAYOUTS = {
   [TYPES.RELATED_CONTENT]: css`
     grid-template-areas:
       'page-header page-header'
-      'content related-content';
+      'content page-tools';
     grid-template-columns: minmax(0, 1fr) 320px;
     grid-gap: 2rem;
 
@@ -24,7 +24,7 @@ const LAYOUTS = {
       grid-template-areas:
         'page-header'
         'content'
-        'related-content';
+        'page-tools';
       grid-template-columns: minmax(0, 1fr);
     }
   `,
@@ -37,23 +37,13 @@ const LAYOUTS = {
 };
 
 const PageLayout = ({ children, type }) => {
-  const {
-    site: { layout },
-  } = useStaticQuery(graphql`
-    query {
-      site {
-        layout {
-          contentPadding
-        }
-      }
-    }
-  `);
+  const { contentPadding } = useLayout();
 
   return (
     <div
       css={css`
         display: grid;
-        grid-gap: ${layout.contentPadding};
+        grid-gap: ${contentPadding};
 
         ${LAYOUTS[type]};
       `}
