@@ -10,7 +10,12 @@ import Tutorial from './Tutorial';
 import TutorialStep from './TutorialStep';
 import TutorialSection from './TutorialSection';
 import Project from './Project';
-import { Callout, MDXCodeBlock, Video } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Callout,
+  MDXCodeBlock,
+  Table,
+  Video,
+} from '@newrelic/gatsby-theme-newrelic';
 
 import styles from './MDXContainer.module.scss';
 
@@ -22,6 +27,7 @@ const components = {
   Step: TutorialStep,
   Steps: TutorialSection,
   Project,
+  Table,
   Tutorial,
   TutorialStep,
   TutorialSection,

@@ -117,14 +117,51 @@
   },
   {
     "displayName": "Try our APIs",
+    "url": "/try-our-apis",
     "children": [
       {
-        "displayName": "New Relic API Explorer",
-        "url": "https://rpm.newrelic.com/api/explore"
+        "displayName": "Telemetry APIs",
+        "children": [
+          {
+            "displayName": "Metrics API",
+            "url": "https://docs.newrelic.com/docs/telemetry-data-platform/get-data/apis/introduction-metric-api"
+          },
+          {
+            "displayName": "Event API",
+            "url": "https://docs.newrelic.com/docs/telemetry-data-platform/ingest-manage-data/ingest-apis/use-event-api-report-custom-events"
+          },
+
+          {
+            "displayName": "Log API",
+            "url": "https://docs.newrelic.com/docs/logs/log-management/log-api/introduction-log-api"
+          },
+          {
+            "displayName": "Trace API",
+            "url": "https://docs.newrelic.com/docs/understand-dependencies/distributed-tracing/trace-api/introduction-trace-api"
+          }
+        ]
       },
+
       {
-        "displayName": "NerdGraph API Explorer",
-        "url": "https://api.newrelic.com/graphiql"
+        "displayName": "REST & GraphQL APIs",
+        "children": [
+          {
+            "displayName": "NerdGraph API Explorer",
+            "url": "https://api.newrelic.com/graphiql"
+          },
+          {
+            "displayName": "REST API Explorer",
+            "url": "https://rpm.newrelic.com/api/explore"
+          },
+          {
+            "displayName": "Insights API",
+            "url": "https://docs.newrelic.com/docs/insights/insights-api/get-data/query-insights-event-data-api"
+          },
+          {
+            "displayName": "Synthetics API",
+            "url": "https://docs.newrelic.com/docs/apis/synthetics-rest-api"
+          }
+        ]
       }
     ]
   },
