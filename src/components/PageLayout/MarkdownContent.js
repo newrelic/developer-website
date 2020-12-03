@@ -1,8 +1,16 @@
-import styled from '@emotion/styled';
+import React from 'react';
+import PropTypes from 'prop-types';
 import MDXContainer from '../MDXContainer';
+import { Layout } from '@newrelic/gatsby-theme-newrelic';
 
-const MarkdownContent = styled(MDXContainer)`
-  grid-area: content;
-`;
+const MarkdownContent = ({ children }) => (
+  <Layout.Content>
+    <MDXContainer>{children}</MDXContainer>
+  </Layout.Content>
+);
+
+MarkdownContent.propTypes = {
+  children: PropTypes.node,
+};
 
 export default MarkdownContent;
