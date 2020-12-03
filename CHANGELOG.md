@@ -1,3 +1,11 @@
+## [1.31.2](https://github.com/newrelic/developer-website/compare/v1.31.1...v1.31.2) (2020-12-03)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.17 to 1.6.19 ([abdd280](https://github.com/newrelic/developer-website/commit/abdd2805c201ae06b5bb16eafb7b76b130cdb6d8))
+* upgrade @mdx-js/react from 1.6.18 to 1.6.19 ([f0671af](https://github.com/newrelic/developer-website/commit/f0671af56b09bab75419ffc055d32fb4a355348b))
+
 ## [1.31.1](https://github.com/newrelic/developer-website/compare/v1.31.0...v1.31.1) (2020-12-01)
 
 
