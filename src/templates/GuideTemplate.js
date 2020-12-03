@@ -9,7 +9,7 @@ import FeatherIcon from '../components/FeatherIcon';
 import SEO from '../components/Seo';
 import {
   ContributingGuidelines,
-  PageTools,
+  Layout,
 } from '@newrelic/gatsby-theme-newrelic';
 
 const GuideTemplate = ({ data }) => {
@@ -46,15 +46,11 @@ const GuideTemplate = ({ data }) => {
           )}
         </PageLayout.Header>
         <PageLayout.MarkdownContent>{body}</PageLayout.MarkdownContent>
-        <PageTools
-          css={css`
-            grid-area: related-content;
-          `}
-        >
+        <Layout.PageTools>
           <ContributingGuidelines fileRelativePath={fileRelativePath} />
           <Resources page={mdx} />
           <PageUpdated page={mdx} />
-        </PageTools>
+        </Layout.PageTools>
       </PageLayout>
     </>
   );

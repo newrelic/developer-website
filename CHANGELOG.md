@@ -1,3 +1,25 @@
+## [1.31.2](https://github.com/newrelic/developer-website/compare/v1.31.1...v1.31.2) (2020-12-03)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.17 to 1.6.19 ([abdd280](https://github.com/newrelic/developer-website/commit/abdd2805c201ae06b5bb16eafb7b76b130cdb6d8))
+* upgrade @mdx-js/react from 1.6.18 to 1.6.19 ([f0671af](https://github.com/newrelic/developer-website/commit/f0671af56b09bab75419ffc055d32fb4a355348b))
+
+## [1.31.1](https://github.com/newrelic/developer-website/compare/v1.31.0...v1.31.1) (2020-12-01)
+
+
+### Bug Fixes
+
+* package.json & yarn.lock to reduce vulnerabilities ([82d920c](https://github.com/newrelic/developer-website/commit/82d920c7119da856f7f378eeaf1d44ffcdd0a710))
+
+# [1.31.0](https://github.com/newrelic/developer-website/compare/v1.30.1...v1.31.0) (2020-12-01)
+
+
+### Features
+
+* table added to dev site from theme ([34927ea](https://github.com/newrelic/developer-website/commit/34927ea5bdabd1f3bf1279c2fd16ce640642c34e))
+
 ## [1.30.1](https://github.com/newrelic/developer-website/compare/v1.30.0...v1.30.1) (2020-11-23)
 
 
