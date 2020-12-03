@@ -7,7 +7,6 @@ import {
   Layout,
   Logo,
   SearchInput,
-  useLayout,
 } from '@newrelic/gatsby-theme-newrelic';
 import MobileHeader from '../components/MobileHeader';
 import { Link } from 'gatsby';
@@ -16,7 +15,6 @@ import '../components/styles.scss';
 import { useLocation } from '@reach/router';
 
 const MainLayout = ({ children, pageContext }) => {
-  const { contentPadding, maxWidth } = useLayout();
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
   const { fileRelativePath } = pageContext;
