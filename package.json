@@ -41,7 +41,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
-    "react-live": "^2.2.3",
+    "react-live": "^2.2.2",
     "react-markdown": "^5.0.0",
     "react-middle-ellipsis": "^1.1.0",
     "react-shadow": "^18.4.2",
