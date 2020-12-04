@@ -1,3 +1,11 @@
+## [1.31.4](https://github.com/newrelic/developer-website/compare/v1.31.3...v1.31.4) (2020-12-04)
+
+
+### Bug Fixes
+
+* revert bump to react-live to fix component examples ([ad8a9ec](https://github.com/newrelic/developer-website/commit/ad8a9ec6c539c854f1791eec15a8cad6f155a04a))
+* upgrade @xstate/react from 1.0.1 to 1.0.2 ([5901387](https://github.com/newrelic/developer-website/commit/59013878711b146747525f9a990543f37a1a9f3f))
+
 ## [1.31.3](https://github.com/newrelic/developer-website/compare/v1.31.2...v1.31.3) (2020-12-03)
 
 
