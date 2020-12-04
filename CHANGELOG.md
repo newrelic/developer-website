@@ -1,3 +1,20 @@
+## [1.31.4](https://github.com/newrelic/developer-website/compare/v1.31.3...v1.31.4) (2020-12-04)
+
+
+### Bug Fixes
+
+* revert bump to react-live to fix component examples ([ad8a9ec](https://github.com/newrelic/developer-website/commit/ad8a9ec6c539c854f1791eec15a8cad6f155a04a))
+* upgrade @xstate/react from 1.0.1 to 1.0.2 ([5901387](https://github.com/newrelic/developer-website/commit/59013878711b146747525f9a990543f37a1a9f3f))
+
+## [1.31.3](https://github.com/newrelic/developer-website/compare/v1.31.2...v1.31.3) (2020-12-03)
+
+
+### Bug Fixes
+
+* package.json & yarn.lock to reduce vulnerabilities ([c9b7452](https://github.com/newrelic/developer-website/commit/c9b7452ce9056f2c5cc15ae6c60e47182d925bc3))
+* update main layout to use new layout components ([c01aef8](https://github.com/newrelic/developer-website/commit/c01aef866ebccbe36e1bd50d424d799d0f9c731d))
+* upgrade multiple dependencies with Snyk ([7d20b17](https://github.com/newrelic/developer-website/commit/7d20b17ae070bef73ed89ef388d18643c53cddf2))
+
 ## [1.31.2](https://github.com/newrelic/developer-website/compare/v1.31.1...v1.31.2) (2020-12-03)
 
 

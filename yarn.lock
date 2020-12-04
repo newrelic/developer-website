@@ -2971,10 +2971,10 @@
     eslint-plugin-promise "^4.2.1"
     eslint-plugin-react "^7.14.3"
 
-"@newrelic/gatsby-theme-newrelic@^1.16.1":
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/@newrelic/gatsby-theme-newrelic/-/gatsby-theme-newrelic-1.16.1.tgz#31bccb8922f18c873c5abb5cad6a1f98e29f0db6"
-  integrity sha512-HUNCxWw8IkCDnj4HRR9FZzMr3YsffRYEHSVohmpq/ArQraW0izjHnUKhtirBT6pBb57GulDMOyEBb2SQAuCWXw==
+"@newrelic/gatsby-theme-newrelic@^1.16.2":
+  version "1.16.2"
+  resolved "https://registry.yarnpkg.com/@newrelic/gatsby-theme-newrelic/-/gatsby-theme-newrelic-1.16.2.tgz#8a70bb64de76a623ca5642ad39a56f247600b480"
+  integrity sha512-i596QzdXGjq3RidAZBR6UEW+YWIW9LFN8YAw8iiE0+LqPJEhEPFtagTN9SNLcQnm4Ye7ViuCMV6p4R6H7DCH9A==
   dependencies:
     "@elastic/react-search-ui" "^1.4.1"
     "@elastic/react-search-ui-views" "^1.4.1"
@@ -2984,7 +2984,7 @@
     date-fns "^2.16.1"
     gatsby-plugin-emotion "^4.3.10"
     gatsby-plugin-gdpr-tracking "^1.2.2"
-    gatsby-plugin-newrelic "^1.0.3"
+    gatsby-plugin-newrelic "^1.0.5"
     gatsby-plugin-react-helmet "^3.3.10"
     gatsby-plugin-robots-txt "^1.5.1"
     gatsby-plugin-sharp "^2.6.19"
@@ -3972,10 +3972,10 @@
   resolved "https://registry.yarnpkg.com/@xobotyi/scrollbar-width/-/scrollbar-width-1.9.5.tgz#80224a6919272f405b87913ca13b92929bdf3c4d"
   integrity sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==
 
-"@xstate/react@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@xstate/react/-/react-1.0.1.tgz#cb6d64c277b20c5357eb3fc4742feeb395759090"
-  integrity sha512-FMQiXSbe2sZQdA1XSyUxTXangmpYJsLvEUyGal2C7+VMZCGoJnlxdoExKw09MR9QWpHMwsbhc8kJUvswqwxf2w==
+"@xstate/react@^1.0.2":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@xstate/react/-/react-1.0.3.tgz#90cb051e54feca35f6e9ffaf8d39e0357ae35434"
+  integrity sha512-uNyy2GJCT6ecme4yWNKoXQDfj1WOfDc4WD7yjpS7mwb3ST18gfkjJoCZoZGHBUBeLn9ptkt0JyKY1ZjSQacBoA==
   dependencies:
     use-isomorphic-layout-effect "^1.0.0"
     use-subscription "^1.3.0"
@@ -9159,16 +9159,10 @@ gatsby-plugin-meta-redirect@^1.1.1:
   dependencies:
     fs-extra "^7.0.0"
 
-gatsby-plugin-newrelic@^1.0.3:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-newrelic/-/gatsby-plugin-newrelic-1.0.4.tgz#9d49c68ad1a528a8c38bd012e3c2363c7e87105d"
-  integrity sha512-16ar8OoG39yZXIqjhBSlNOc4+2hJdjp7aCo1X4jGH7TOIhstOcFJI9uQ+wPur3vXFG75VpgT8nbIiyw+1uPAmA==
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-
-gatsby-plugin-newrelic@newrelic/gatsby-plugin-newrelic.git#5cd42e832f0588764dc332ce7ebd05794de5106a:
-  version "1.0.2"
-  resolved "https://codeload.github.com/newrelic/gatsby-plugin-newrelic/tar.gz/5cd42e832f0588764dc332ce7ebd05794de5106a"
+gatsby-plugin-newrelic@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-newrelic/-/gatsby-plugin-newrelic-1.0.5.tgz#c8a09d0a047d45c50f0947ab3b91a95d2900fb33"
+  integrity sha512-kpuX3cLIfK8Gk2rrYxWIYXfDuznG/F/ck3Zy/zmlxl9d+RwsUBoRU4R7AJJsgy0W4sxIasZFPLRxp4Nf6vJHCg==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
@@ -15923,19 +15917,6 @@ react-live@^2.2.2:
     buble "0.19.6"
     core-js "^2.4.1"
     create-react-context "0.2.2"
-    dom-iterator "^1.0.0"
-    prism-react-renderer "^1.0.1"
-    prop-types "^15.5.8"
-    react-simple-code-editor "^0.10.0"
-    unescape "^1.0.1"
-
-react-live@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/react-live/-/react-live-2.2.3.tgz#260f99194213799f0005e473e7a4154c699d6a7c"
-  integrity sha512-tpKruvfytNETuzO3o1mrQUj180GVrq35IE8F5gH1NJVPt4szYCx83/dOSCOyjgRhhc3gQvl0pQ3k/CjOjwJkKQ==
-  dependencies:
-    buble "0.19.6"
-    core-js "^2.4.1"
     dom-iterator "^1.0.0"
     prism-react-renderer "^1.0.1"
     prop-types "^15.5.8"
