@@ -106,10 +106,10 @@ A minimal alert policy configuration is represented in the code below. For the s
 
 <small>
   <em>
-    <strong>Note</strong>: For help locating your personal API key, check out
+    <strong>Note</strong>: For help locating your user key, check out
     New Relic's{' '}
-    <a href="https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#">
-      personal API key documentation
+    <a href="https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#user-api-key">
+      user key documentation
     </a>
     .
   </em>
@@ -122,7 +122,7 @@ metadata:
   name: my-policy
 spec:
   account_id: <your New Relic account ID>
-  api_key: <your New Relic personal API key>
+  api_key: <your New Relic user key>
   name: 'Alert Policy Created With k8s' # Feel free to rename
   region: 'us'
 ```
@@ -170,7 +170,7 @@ metadata:
   name: my-policy
 spec:
   account_id: <your New Relic account ID>
-  api_key: <your New Relic personal API key>
+  api_key: <your New Relic user key>
   name: 'Alert Policy Created With k8s' # Feel free to rename
   region: 'us'
 
