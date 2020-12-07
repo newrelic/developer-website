@@ -31,18 +31,17 @@ In this 5-minute guide, you use the New Relic CLI to add multiple tags to one of
 
 For this guide you need a New Relic [user key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#user-api-key): You can view and create them in the [API keys UI](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher).
 
-<Steps>
-<Step>
+<Steps><Step>
 
 ## Install the New Relic CLI
 
-You can download the New Relic CLI via [Homebrew](https://brew.sh/) (macOS), [Scoop](https://scoop.sh/) (Windows), and [Snapcraft](https://snapcraft.io/) (Linux). You can also download [pre-built binaries](https://github.com/newrelic/newrelic-cli/releases) for all platforms, including .deb and .rpm packages, and our Windows x64 .msi installer.
+You can download the New Relic CLI for macOS, Windows, and Linux. You can also download [pre-built binaries](https://github.com/newrelic/newrelic-cli/releases) for all platforms, including .deb and .rpm packages, and our Windows x64 .msi installer.
 
 ### Linux
 
 <>
 
-With [Snapcraft](https://snapcraft.io/) installed, run:
+Install [Snapcraft](https://snapcraft.io/), and then run:
 
 ```sh
 sudo snap install newrelic-cli
@@ -54,7 +53,7 @@ sudo snap install newrelic-cli
 
 <>
 
-With [Homebrew](https://brew.sh/) installed, run:
+Install [Homebrew](https://brew.sh/), and then run:
 
 ```sh
 brew install newrelic-cli
@@ -66,7 +65,7 @@ brew install newrelic-cli
 
 <>
 
-With [Scoop](https://scoop.sh/) installed, run:
+Install [Scoop](https://scoop.sh/), and then run:
 
 ```sh
 scoop bucket add newrelic-cli https://github.com/newrelic/newrelic-cli.git
@@ -96,7 +95,7 @@ newrelic profiles default -n tutorial
 
 Your New Relic account might have hundreds of entities: Have a quick look by opening the [Entity explorer](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/ui-data/new-relic-one-entity-explorer-view-performance-across-apps-services-hosts).
 
-In the terminal, run [`entity search`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_search.md) to retrieve a list of entities from your account as JSON. In the example, you're searching for all entities with "test" in their name.
+In the terminal, run [`entity search`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_search.md) to retrieve a list of entities from your account as JSON. In this example, you're searching for all entities with "test" in their name.
 
 ```bash lineNumbers=false
 # Change the `name` to match any of your existing entities
@@ -105,9 +104,9 @@ newrelic entity search --name "test"
 
 </Step><Step>
 
-If there are matching entities in your account, the query yields data in JSON format, similar to this workload example.
+If there are matching entities in your account, the query yields data in JSON format similar to this workload example.
 
-Select an entity from the results and look for its `guid` value; the `guid` is the unique identifier of the entity. Write it down.
+Select an entity from the results and look for its `guid` value; the `guid` is the unique identifier of the entity. Copy or write it down.
 
 ```json lineNumbers=false copy=false
 {
@@ -125,9 +124,9 @@ Select an entity from the results and look for its `guid` value; the `guid` is t
 
 ## Add tags and tag lists to your entity
 
-With your entity `guid`, you can add tags right away. You can do so by invoking the [`entities tags create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_create.md) command.
+Using your entity `guid`, you can add tags right away. Invoke the [`entities tags create`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_create.md) command.
 
-What if you want to add multiple tags? You can use tag sets for that: While tags are key-value pairs separated by colons, tag sets are comma-separated lists of tags. For example:
+If you want to add multiple tags, use tag sets: While tags are key-value pairs separated by colons, tag sets are comma-separated lists of tags. For example:
 
 `tag1:value1,tag2:value2`
 
