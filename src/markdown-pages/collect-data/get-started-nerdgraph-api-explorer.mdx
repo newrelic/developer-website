@@ -34,7 +34,7 @@ With NerdGraph API Explorer you don't need to know the query format: using the Q
 
 Go to [api.newrelic.com/graphiql](https://api.newrelic.com/graphiql) and log in using your New Relic user ID and password: the NerdGraph API Explorer loads up.
 
-Make sure you have a valid New Relic API key. You can create one directly from the NerdGraph API Explorer.
+Make sure you have a valid [New Relic user key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#user-api-key). You can create one from the NerdGraph API Explorer or view and create them in the [API keys UI](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher).
 
 ![Create a NerdGraph API key](../../images/graphql-guide/create-account.png)
 
@@ -65,7 +65,7 @@ This GraphQL snippet appears in the editor.
 
 ## Click the play button to see the result
 
-With this query, you're telling NerdGraph to retrieve your name. You're asking for the `name` field, which is nested within the `user` field. This refers to the user who owns the API key, which in turn is nested within `actor`.
+With this query, you're telling NerdGraph to retrieve your name. You're asking for the `name` field, which is nested within the `user` field. This refers to the user who owns the [API key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#user-api-key), which in turn is nested within `actor`.
 
 Click the **play** button to see the result: It has almost the same shape as the request. All the fields in the Query Builder make up what's called the GraphQL schema, which describes all the available data types and their attributes. To learn more about each field, click the **Docs** button, or hover over a field in the editor.
 
