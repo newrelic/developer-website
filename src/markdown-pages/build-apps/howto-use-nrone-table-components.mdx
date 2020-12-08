@@ -71,7 +71,7 @@ export default class Nr1HowtoAddTimePicker extends React.Component {
 </Step>
 <Step>
 
-Run the demo application
+Run the demo application.
 
 Change the directory back to `nr1-how-to/create-a-table`. Before you can load the demo application, you need to [update its unique id](https://developer.newrelic.com/build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions) by invoking the New Relic One CLI.
 
@@ -131,7 +131,7 @@ import {
 </Step>
 <Step>
 
-Add a basic Table component
+Add a basic Table component.
 Locate the empty `GridItem` in `index.js`: This is where you start building the table.
 
 Add the initial `<Table>` component. The `items` property collects the data by calling `_getItems()`, which contains sample values.
@@ -145,11 +145,11 @@ Add the initial `<Table>` component. The `items` property collects the data by c
 </Step>
 <Step>
 
-Add the header and rows
+Add the header and rows.
 
 As the [`Table`](https://developer.newrelic.com/client-side-sdk/index.html#components/Table) component renders a fixed number of header cells and rows, your next step is adding header components, as well as a function that returns the required table rows.
 
-Inside of the `Table` component, add the `TableHeader` and then a `TableHeaderCell` child for each heading.
+Inside the `Table` component, add the `TableHeader` and then a `TableHeaderCell` child for each heading.
 
 Since you don't know how many rows you'll need, your best bet is to call a function to build as many `TableRows` as items returned by `_getItems()`.
 
@@ -184,7 +184,7 @@ Take a look at the application running in New Relic One: you should see somethin
 </Step>
 <Step>
 
-Replace standard table cells with smart cells
+Replace standard table cells with smart cells.
 
 The New Relic One library includes cell components that can automatically format certain data types, like users, metrics, and entity names.
 

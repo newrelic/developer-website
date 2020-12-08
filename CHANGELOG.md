@@ -1,3 +1,10 @@
+## [1.31.5](https://github.com/newrelic/developer-website/compare/v1.31.4...v1.31.5) (2020-12-08)
+
+
+### Bug Fixes
+
+* updated theme ([e35127f](https://github.com/newrelic/developer-website/commit/e35127f6a857b9ee047f0867cb0e974cfb714df9))
+
 ## [1.31.4](https://github.com/newrelic/developer-website/compare/v1.31.3...v1.31.4) (2020-12-04)
 
 

@@ -2971,10 +2971,10 @@
     eslint-plugin-promise "^4.2.1"
     eslint-plugin-react "^7.14.3"
 
-"@newrelic/gatsby-theme-newrelic@^1.16.2":
-  version "1.16.2"
-  resolved "https://registry.yarnpkg.com/@newrelic/gatsby-theme-newrelic/-/gatsby-theme-newrelic-1.16.2.tgz#8a70bb64de76a623ca5642ad39a56f247600b480"
-  integrity sha512-i596QzdXGjq3RidAZBR6UEW+YWIW9LFN8YAw8iiE0+LqPJEhEPFtagTN9SNLcQnm4Ye7ViuCMV6p4R6H7DCH9A==
+"@newrelic/gatsby-theme-newrelic@^1.16.3":
+  version "1.16.3"
+  resolved "https://registry.yarnpkg.com/@newrelic/gatsby-theme-newrelic/-/gatsby-theme-newrelic-1.16.3.tgz#baae6b72a42cd838beff591ee958bdacaecf0773"
+  integrity sha512-OgZkEeOwWse7DEVYaDAxVRg0PUkYPuRJlamkj6r4+jW5qz1ZnKJKAS/tmq26P/Hxz8aexRas8NnTGkGI4r1nig==
   dependencies:
     "@elastic/react-search-ui" "^1.4.1"
     "@elastic/react-search-ui-views" "^1.4.1"
