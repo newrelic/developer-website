@@ -130,7 +130,6 @@
             "displayName": "Event API",
             "url": "https://docs.newrelic.com/docs/telemetry-data-platform/ingest-manage-data/ingest-apis/use-event-api-report-custom-events"
           },
-
           {
             "displayName": "Log API",
             "url": "https://docs.newrelic.com/docs/logs/log-management/log-api/introduction-log-api"
@@ -141,7 +140,6 @@
           }
         ]
       },
-
       {
         "displayName": "REST & GraphQL APIs",
         "children": [
@@ -413,7 +411,7 @@
             ]
           },
           {
-            "displayName": "Data visualization",
+            "displayName": "Charts",
             "children": [
               {
                 "displayName": "AreaChart",
