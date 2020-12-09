@@ -217,7 +217,7 @@
         "url": "/explore-docs/query-and-store-data"
       },
       {
-        "displayName": "Component library",
+        "displayName": "New Relic One SDK Component library",
         "url": "/explore-docs/intro-to-sdk",
         "children": [
           {
