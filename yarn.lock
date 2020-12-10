@@ -9559,6 +9559,14 @@ gatsby-plugin-use-dark-mode@^1.1.2:
     prop-types "^15.7.2"
     terser "^4.0.0"
 
+gatsby-plugin-use-dark-mode@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-use-dark-mode/-/gatsby-plugin-use-dark-mode-1.2.0.tgz#bccec15fc136c856c7086bff981ccf0c7003a541"
+  integrity sha512-eZDy9vB8B1TYT6rBjZzo8+EeQ7EC8PVM1pfHHqgTtL2+r7cYUJhJhdwk+8Nqc8c9Z5+ntMbMWVJCmDY5A+pyNw==
+  dependencies:
+    prop-types "^15.7.2"
+    terser "^4.0.0"
+
 gatsby-plugin-utils@^0.2.40:
   version "0.2.40"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-0.2.40.tgz#20e997d10efb9a0368270f79ce2e6001346f6336"
