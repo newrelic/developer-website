@@ -16244,10 +16244,10 @@ react-select@^2.4.4:
     react-input-autosize "^2.2.1"
     react-transition-group "^2.2.1"
 
-react-shadow@^18.4.2:
-  version "18.4.2"
-  resolved "https://registry.yarnpkg.com/react-shadow/-/react-shadow-18.4.2.tgz#df96f1ca80e1d450b778bd3fc11aa09bd47af692"
-  integrity sha512-morQkJH3+RRboxr0L4I19PeNwGEHBH/8vc52JAA07/QA1x1wEINRzZYntLEc96VDAbQlo/xrI7HKdyIJsUKzmQ==
+react-shadow@^18.6.1:
+  version "18.6.2"
+  resolved "https://registry.yarnpkg.com/react-shadow/-/react-shadow-18.6.2.tgz#dcfd8167b8f9d8eb5e305a9c5d05e708fe1e5d34"
+  integrity sha512-e6OjJvQ9e7KAWaeG1PWymIQ34rnQGSj1PNTt424YhBnfCN1D/r59DCQqdPTvxh80rcr1ZLGUndO2eYdVZnfyWw==
   dependencies:
     humps "^2.0.1"
     react-use "^15.3.3"
