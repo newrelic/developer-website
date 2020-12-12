@@ -1,3 +1,13 @@
+## [1.31.6](https://github.com/newrelic/developer-website/compare/v1.31.5...v1.31.6) (2020-12-10)
+
+
+### Bug Fixes
+
+* upgrade @emotion/core from 10.0.35 to 10.1.1 ([2d3aec1](https://github.com/newrelic/developer-website/commit/2d3aec16200ea49be13ce4dfb111bca5eca34a77))
+* upgrade gatsby-plugin-mdx from 1.3.1 to 1.4.0 ([af17a5d](https://github.com/newrelic/developer-website/commit/af17a5ddb4f8942a05d7a74e6146b956a33c16a4))
+* upgrade gatsby-remark-images from 3.4.1 to 3.5.1 ([8ec52b5](https://github.com/newrelic/developer-website/commit/8ec52b58636e409e9637ef02cced7aa5edc2316a))
+* upgrade xstate from 4.13.0 to 4.14.0 ([bd3793e](https://github.com/newrelic/developer-website/commit/bd3793e6d595d6d3ce9ddcbf647705b995ff9b34))
+
 ## [1.31.5](https://github.com/newrelic/developer-website/compare/v1.31.4...v1.31.5) (2020-12-08)
 
 
