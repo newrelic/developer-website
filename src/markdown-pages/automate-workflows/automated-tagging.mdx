@@ -107,7 +107,7 @@ Now that everything is set up, you can run the deployer application in a Docker 
 ```shell
 docker run -it\
     -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/creds.json -d https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello.aws.json
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/creds.json -d https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello/hello.aws.json
 ```
 
 With this command, you're running the `deployer` Docker container with the following options:
@@ -118,7 +118,7 @@ With this command, you're running the `deployer` Docker container with the follo
 Finally, you pass a list of arguments to the entrypoint, including:
 
 - `-c configs/creds.json`: The user credentials configuration file
-- `-d https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello.aws.json`: The [deployment configuration file](https://github.com/newrelic/demo-deployer/tree/main/documentation/deploy_config)
+- `-d https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello/hello.aws.json`: The [deployment configuration file](https://github.com/newrelic/demo-deployer/tree/main/documentation/deploy_config)
 
 <Callout variant="tip">
 
@@ -136,7 +136,7 @@ This is because you mounted `$HOME/configs` to `/mnt/deployer/configs/` and `/mn
 
 #### Understanding the deployment configuration file
 
-The deployment configuration file, [hello.aws.json](https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello.aws.json), which drives the deployer, contains four sections:
+The deployment configuration file, [hello.aws.json](https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello/hello.aws.json), which drives the deployer, contains four sections:
 
 - `services`
 - `global_tags`
@@ -321,7 +321,7 @@ Add the _teardown_ flag, `-t`, to the end of your command:
 ```shell
 docker run -it\
     -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/creds.json -d https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello.aws.json -t
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/creds.json -d https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello/hello.aws.json -t
 ```
 
 When the deployer has finished successfully, you'll see output that is similar to what you saw during deployment:
