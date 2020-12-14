@@ -1,5 +1,3 @@
-# Thank you for submitting a pull request to newrelic/developer-website
-
 ## Description
 
 Add a short description about the purpose of this PR here.
