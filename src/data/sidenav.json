@@ -412,62 +412,63 @@
           },
           {
             "displayName": "Charts",
+            "url": "/components/charts",
             "children": [
               {
                 "displayName": "AreaChart",
-                "url": "/components/area-chart"
+                "url": "/components/charts/area-chart"
               },
               {
                 "displayName": "BarChart",
-                "url": "/components/bar-chart"
+                "url": "/components/charts/bar-chart"
               },
               {
                 "displayName": "BillboardChart",
-                "url": "/components/billboard-chart"
+                "url": "/components/charts/billboard-chart"
               },
               {
                 "displayName": "ChartGroup",
-                "url": "/components/chart-group"
+                "url": "/components/charts/chart-group"
               },
               {
                 "displayName": "FunnelChart",
-                "url": "/components/funnel-chart"
+                "url": "/components/charts/funnel-chart"
               },
               {
                 "displayName": "HeatmapChart",
-                "url": "/components/heatmap-chart"
+                "url": "/components/charts/heatmap-chart"
               },
               {
                 "displayName": "HistogramChart",
-                "url": "/components/histogram-chart"
+                "url": "/components/charts/histogram-chart"
               },
               {
                 "displayName": "JsonChart",
-                "url": "/components/json-chart"
+                "url": "/components/charts/json-chart"
               },
               {
                 "displayName": "LineChart",
-                "url": "/components/line-chart"
+                "url": "/components/charts/line-chart"
               },
               {
                 "displayName": "PieChart",
-                "url": "/components/pie-chart"
+                "url": "/components/charts/pie-chart"
               },
               {
                 "displayName": "ScatterChart",
-                "url": "/components/scatter-chart"
+                "url": "/components/charts/scatter-chart"
               },
               {
                 "displayName": "SparklineChart",
-                "url": "/components/sparkline-chart"
+                "url": "/components/charts/sparkline-chart"
               },
               {
                 "displayName": "StackedBarChart",
-                "url": "/components/stacked-bar-chart"
+                "url": "/components/charts/stacked-bar-chart"
               },
               {
                 "displayName": "TableChart",
-                "url": "/components/table-chart"
+                "url": "/components/charts/table-chart"
               }
             ]
           },
