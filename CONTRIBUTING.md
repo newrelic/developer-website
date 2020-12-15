@@ -8,7 +8,11 @@
     - [Cloning vs Forking](#cloning-vs-forking)
     - [Submitting a PR from a forked repo](#submitting-a-pr-from-a-forked-repo)
     - [Submitting a PR from a cloned repo](#submitting-a-pr-from-a-cloned-repo)
-    - [Using the Develop branch](#using-the-develop-branch)
+    - [Using the `develop` branch](#using-the-develop-branch)
+    - [Using Conventional Commits](#using-conventional-commits)
+      - [Use `chore`](#use-chore)
+      - [Use `fix`](#use-fix)
+      - [Use `feat`](#use-feat)
     - [Draft PRs](#draft-prs)
     - [Deploy previews with Amplify](#deploy-previews-with-amplify)
   - [Style guide adherence](#style-guide-adherence)
@@ -103,6 +107,37 @@ Use the `develop` branch when creating your working branch locally. `develop` wi
 current source code. The `develop` branch will be merged into the `main` branch by the maintainers when a new release is ready to ship.
 
 All pull requests should be made against the `develop` branch.
+
+### Using Conventional Commits
+
+Please help the maintainers by leveraging the following [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/)
+standards in your pull request title and commit messages.
+
+#### Use `chore`
+
+- for minor changes / additions / corrections to content.
+- for minor changes / additions / corrections to images.
+- for minor non-functional changes / additions to github actions, github templates, package or config updates, etc
+
+```bash
+git commit -m "chore: adjusting config and content"
+```
+
+#### Use `fix`
+
+- for minor functional corrections to code.
+
+```bash
+git commit -m "fix: typo and prop error in the code of conduct"
+```
+
+#### Use `feat`
+
+- for major functional changes or additions to code.
+
+```bash
+git commit -m "feat(media): creating a video landing page"
+```
 
 ### Draft PRs
 
