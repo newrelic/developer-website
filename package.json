@@ -76,6 +76,11 @@
     "prettier": "2.0.4",
     "react-test-renderer": "^16.13.1"
   },
+  "resolutions": {
+    "bl": "^4.0.3",
+    "node-fetch": "^2.6.1",
+    "ini": "^1.3.6"
+  },
   "keywords": [
     "gatsby"
   ],
