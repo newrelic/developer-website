@@ -18,8 +18,7 @@ import { pageContext } from '../types';
 import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
-import Countdown from '../components/Countdown';
-import awsReinvent from '../images/aws-reinvent.jpg';
+import Video from '../components/Video';
 
 const getStartedGuides = [
   {
@@ -58,7 +57,7 @@ const IndexPage = ({ data, pageContext }) => {
     <PageContext.Provider value={pageContext}>
       <SEO />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Attending AWS re:Invent? We'll see you there." />
+        <PageLayout.Header title="Getting started with New Relic and Terraform" />
 
         <PageLayout.Content>
           <section
@@ -69,33 +68,23 @@ const IndexPage = ({ data, pageContext }) => {
           >
             <div className={styles.introText}>
               <p>
-                Demos, fireside chats, product presentations, and an exclusive
-                conversation with Celebrity Twitch Streamer, Shorty Award
-                Finalist, and Minecraft disrupter,{' '}
-                <a href="https://www.twitch.tv/annemunition">AnneMunition</a>.
+                <a href="https://www.terraform.io/">Terraform</a> is a popular
+                infrastructure-as-code software tool software tool software tool
+                built by HashiCorp. You use it to provision all kinds of
+                infrastructure and services, including New Relic alerts.
                 <br />
                 <br />
-                Nerd out with us during one of the following dates:
-                <br />
-                December 3rd at 3:00PM PST/6:00PM EST
-                <br />
-                December 9th at 3:00PM PST/6:00PM EST
-                <br />
-                December 15th at 3:00PM PST/6:00PM EST
-                <br />
-                <br />
+                In this guide, you learn how to set up New Relic alerts with
+                Terraform. More specifically, you provision an alert policy,
+                four alert conditions, and a notification channel.
               </p>
-              <Countdown
-                targetDate="December 3 2020 9:45:00 GMT"
-                inactiveMessage="Coundown to Changing the Game Event"
-              />
               <p>
                 <Button
                   as={ExternalLink}
                   variant={Button.VARIANT.PRIMARY}
                   href="https://newrelicchangesthegame.com/"
                 >
-                  Register
+                  Get Started with Terraform
                 </Button>
               </p>
             </div>
@@ -106,13 +95,7 @@ const IndexPage = ({ data, pageContext }) => {
                 width: 100%;
               `}
             >
-              <img
-                src={awsReinvent}
-                alt="anne munition"
-                css={css`
-                  width: inherit;
-                `}
-              />
+              <Video id="vifxeilp2h" type="wistia" />
             </div>
           </section>
 
