@@ -6,6 +6,7 @@ import { MDXProvider } from '@mdx-js/react';
 
 import Intro from './Intro';
 import Iframe from './Iframe';
+import SDKPreview from './SDKPreview';
 import Tutorial from './Tutorial';
 import TutorialStep from './TutorialStep';
 import TutorialSection from './TutorialSection';
@@ -18,6 +19,14 @@ import {
 } from '@newrelic/gatsby-theme-newrelic';
 
 import styles from './MDXContainer.module.scss';
+
+const SDKCodeBlock = (props) => (
+  <MDXCodeBlock
+    components={{ Preview: SDKPreview }}
+    scope={window.__NR1_SDK__.default}
+    {...props}
+  />
+);
 
 const components = {
   Callout,
@@ -33,7 +42,7 @@ const components = {
   TutorialSection,
   Intro,
   iframe: Iframe,
-  code: MDXCodeBlock,
+  code: SDKCodeBlock,
   pre: (props) => props.children,
 };
 
