@@ -11,7 +11,6 @@ import GuideTile from '../components/GuideTile/GuideTile';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import ExternalLink from '../components/ExternalLink';
-import NewRelicIcon from '../components/NewRelicIcon';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import styles from './index.module.scss';
@@ -33,14 +32,14 @@ const getStartedGuides = [
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
     path: '/automate-workflows/5-mins-tag-resources',
-    icon: <NewRelicIcon name="automation" />,
+    icon: <Icon name="nr-automation" />,
   },
   {
     duration: '12 min',
     title: 'Build a Hello, World! app',
     description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
     path: '/build-apps/build-hello-world-app',
-    icon: <NewRelicIcon name="buildApps" />,
+    icon: <Icon name="nr-build-apps" />,
   },
 ];
 
