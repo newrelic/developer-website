@@ -3,6 +3,18 @@ path: '/components/charts'
 title: 'Charts'
 template: 'GuideTemplate'
 description: 'How to use charts in your NR1 app.'
+resources:
+  - title: New Relic One VSCode extension
+    url: https://marketplace.visualstudio.com/items?itemName=new-relic.nr1
+  - title: Create a Hello World app
+    url: /build-apps/build-hello-world-app
+  - title: NRQL Query
+    url: /components/nrql-query
+  - title: NerdGraph Query
+    url: /components/nerd-graph-query
+tags:
+  - nr1 cli
+  - Nerdpack file structure
 ---
 
 In your application, you can display data in charts, like those used elsewhere in New Relic's user interface. The New Relic One SDK provides React components for different chart types.
@@ -13,7 +25,7 @@ Once you decide the kind of data you want to present, either from New Relic or s
 
 In some cases, you want to fetch data from New Relic's database. For example, you may want to display a line chart which plots the number of transactions your application receives over time.
 
-With your chart component, set the `accountId` and `query` props to query your New Relic data using [NRQL]([NRQL](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language)):
+With your chart component, set the `accountId` and `query` props to query your New Relic data using [NRQL](<[NRQL](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language)>):
 
 ```jsx
 <LineChart accountId={1234} query="SELECT count(*) FROM Transaction" />
@@ -25,7 +37,7 @@ Alternatively, you can fetch data with a `NrqlQuery` and set the `data` prop:
 
 ```jsx
 <NrqlQuery accountId={1234} query="SELECT count(*) FROM Transaction">
-  {({data}) => <LineChart data={data} />}
+  {({ data }) => <LineChart data={data} />}
 </NrqlQuery>
 ```
 
@@ -46,10 +58,10 @@ For example, create a chart consisting of a line between two points by supplying
 const data = [
   {
     metadata: {
-      id: "series-1",
-      name: "My series",
-      viz: "main",
-      color: "blue"
+      id: 'series-1',
+      name: 'My series',
+      viz: 'main',
+      color: 'blue',
     },
     data: [
       {
@@ -63,7 +75,7 @@ const data = [
     ],
   },
 ];
-<LineChart data={data} />
+<LineChart data={data} />;
 ```
 
 <br />
@@ -75,44 +87,44 @@ Because `data` accepts an array, you can supply two series to the same chart:
 ```jsx
 const data = [
   {
-      metadata: {
-          id: "series-1",
-          name: "My series",
-          viz: "main",
-          color: "blue"
+    metadata: {
+      id: 'series-1',
+      name: 'My series',
+      viz: 'main',
+      color: 'blue',
+    },
+    data: [
+      {
+        x: 0,
+        y: 0,
       },
-      data: [
-          {
-              x: 0,
-              y: 0,
-          },
-          {
-              x: 20,
-              y: 10,
-          },
-      ],
+      {
+        x: 20,
+        y: 10,
+      },
+    ],
   },
   {
-      metadata: {
-          id: "series-2",
-          name: "My second series",
-          viz: "main",
-          color: "red"
+    metadata: {
+      id: 'series-2',
+      name: 'My second series',
+      viz: 'main',
+      color: 'red',
+    },
+    data: [
+      {
+        x: 0,
+        y: 50,
       },
-      data: [
-          {
-              x: 0,
-              y: 50,
-          },
-          {
-              x: 20,
-              y: 100,
-          },
-      ],
+      {
+        x: 20,
+        y: 100,
+      },
+    ],
   },
 ];
 
-<LineChart data={data} />
+<LineChart data={data} />;
 ```
 
 <br />
@@ -214,7 +226,7 @@ You can assign a unit type to each axis on a chart. The chart will present data 
 So, to represent the y-axis for your series in bits, set the y-value in `units_data`:
 
 ```json copyable=false
-{units_data: {y: "BITS"}}
+{ "units_data": { "y": "BITS" } }
 ```
 
 </td>
@@ -244,10 +256,7 @@ Unidimensional
 <td>
 
 ```json copyable=false
-[
-  {y: 10},
-  {y: 20},
-]
+[{ "y": 10 }, { "y": 20 }]
 ```
 
 </td>
@@ -267,8 +276,8 @@ Two-dimensional
 
 ```json copyable=false
 [
-  {x: 10, y: 20},
-  {x: 20, y: 30},
+  { "x": 10, "y": 20 },
+  { "x": 20, "y": 30 }
 ]
 ```
 
@@ -288,9 +297,7 @@ Funnel
 <td>
 
 ```json copyable=false
-[
-  {label1: 10, label2: 20},
-]
+[{ "label1": 10, "label2": 20 }]
 ```
 
 </td>
@@ -309,9 +316,7 @@ Table
 <td>
 
 ```json copyable=false
-[
-  {jobType: "SIMPLE", count: 18},
-]
+[{ "jobType": "SIMPLE", "count": 18 }]
 ```
 
 </td>
@@ -332,13 +337,13 @@ Event
 ```json copyable=false
 [
   {
-    x0: 0,
-    x1: 5,
+    "x0": 0,
+    "x1": 5
   },
   {
-    x0: 10,
-    x1: 15,
-  },
+    "x0": 10,
+    "x1": 15
+  }
 ]
 ```
 
@@ -359,8 +364,8 @@ Histogram
 
 ```json copyable=false
 [
-  {x0: 10, x1: 20, y: 100},
-  {x0: 30, x1: 40, y: 150},
+  { "x0": 10, "x1": 20, "y": 100 },
+  { "x0": 30, "x1": 40, "y": 150 }
 ]
 ```
 
@@ -418,10 +423,16 @@ Under some circumstances, you might want to synchronize events, such as dragging
 <ChartGroup>
   <Stack>
     <StackItem>
-      <LineChart accountId={1} query="SELECT count(*) FROM Transaction SINCE 1 hour ago" />
+      <LineChart
+        accountId={1}
+        query="SELECT count(*) FROM Transaction SINCE 1 hour ago"
+      />
     </StackItem>
     <StackItem>
-      <AreaChart accountId={1} query="SELECT count(*) FROM Synthetics SINCE 1 day ago" />
+      <AreaChart
+        accountId={1}
+        query="SELECT count(*) FROM Synthetics SINCE 1 day ago"
+      />
     </StackItem>
   </Stack>
 </ChartGroup>
