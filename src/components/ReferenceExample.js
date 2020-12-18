@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReferenceExample.module.scss';
-import ReferencePreview from './ReferencePreview';
+import SDKPreview from './SDKPreview';
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 
 const platformStateContextMock = {
@@ -40,7 +40,7 @@ const ReferenceExample = ({
 
   const Preview = useCallback(
     ({ className }) => (
-      <ReferencePreview
+      <SDKPreview
         className={className}
         style={previewStyle}
         useToastManager={useToastManager}

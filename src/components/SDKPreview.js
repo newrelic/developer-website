@@ -312,7 +312,7 @@ const EXAMPLE_CSS = `
 }
 `;
 
-const ReferencePreview = ({ className, style, useToastManager }) => {
+const SDKPreview = ({ className, style, useToastManager }) => {
   const [stylesLoaded, setStylesLoaded] = useState(false);
   const { ToastManager } = window.__NR1_SDK__;
   const { newRelicSdk } = useStaticQuery(graphql`
@@ -347,10 +347,10 @@ const ReferencePreview = ({ className, style, useToastManager }) => {
   );
 };
 
-ReferencePreview.propTypes = {
+SDKPreview.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   useToastManager: PropTypes.bool,
 };
 
-export default ReferencePreview;
+export default SDKPreview;
