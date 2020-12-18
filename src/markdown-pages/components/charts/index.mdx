@@ -25,7 +25,7 @@ Once you decide the kind of data you want to present, either from New Relic or s
 
 In some cases, you want to fetch data from New Relic's database. For example, you may want to display a line chart which plots the number of transactions your application receives over time.
 
-With your chart component, set the `accountId` and `query` props to query your New Relic data using [NRQL](<[NRQL](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language)>):
+With your chart component, set the `accountId` and `query` props to query your New Relic data using [NRQL](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language):
 
 ```jsx
 <LineChart accountId={1234} query="SELECT count(*) FROM Transaction" />
