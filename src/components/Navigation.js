@@ -1,9 +1,8 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
+import { css } from '@emotion/core';
 import { NavItem } from '@newrelic/gatsby-theme-newrelic';
 import pages from '../data/sidenav.json';
-import styles from './Navigation.module.scss';
 
 const filterPages = (pages, regex) => {
   return pages
@@ -34,15 +33,21 @@ const Navigation = ({ className, searchTerm }) => {
   }, [searchTermSanitized]);
 
   if (filteredPages.length === 0) {
-    return <div className={styles.emptyResults}>No results found</div>;
+    return (
+      <div
+        css={css`
+          font-size: 0.875rem;
+          padding-top: 1rem;
+          font-style: italic;
+        `}
+      >
+        No results found
+      </div>
+    );
   }
 
   return (
-    <nav
-      className={cx(styles.container, className)}
-      role="navigation"
-      aria-label="Navigation"
-    >
+    <nav className={className} role="navigation" aria-label="Navigation">
       {filteredPages.map((page) => (
         <NavItem key={page.title} page={page} />
       ))}
