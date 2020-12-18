@@ -2,6 +2,7 @@
   {
     "title": "Collect data",
     "url": "/collect-data",
+    "icon": "nr-tdp",
     "pages": [
       {
         "title": "Collect data from any source",
@@ -28,6 +29,7 @@
   {
     "title": "Automate workflows",
     "url": "/automate-workflows",
+    "icon": "nr-automation",
     "pages": [
       {
         "title": "Get started with the New Relic CLI",
@@ -72,6 +74,7 @@
   {
     "title": "Build apps",
     "url": "/build-apps",
+    "icon": "nr-build-apps",
     "pages": [
       {
         "title": "Set up your development environment",
@@ -118,6 +121,7 @@
   {
     "title": "Try our APIs",
     "url": "/try-our-apis",
+    "icon": "nr-share",
     "pages": [
       {
         "title": "Telemetry APIs",
@@ -165,6 +169,7 @@
   },
   {
     "title": "Explore docs",
+    "icon": "nr-book",
     "pages": [
       {
         "title": "New Relic One CLI",
@@ -577,6 +582,7 @@
   {
     "title": "Developer events",
     "url": "/developer-events",
+    "icon": "nr-location",
     "pages": [
       {
         "title": "All things open",
@@ -599,10 +605,12 @@
   },
   {
     "title": "Developer champions",
-    "url": "/developer-champion"
+    "url": "/developer-champion",
+    "icon": "nr-developer-champions"
   },
   {
     "title": "Podcasts",
-    "url": "/podcasts"
+    "url": "/podcasts",
+    "icon": "nr-headphones"
   }
 ]
