@@ -27,7 +27,7 @@ In some cases, you want to fetch data from New Relic's database. For example, yo
 
 With your chart component, set the `accountId` and `query` props to query your New Relic data using [NRQL](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language):
 
-```jsx
+```jsx preview=true
 <LineChart accountId={1234} query="SELECT count(*) FROM Transaction" />
 ```
 
@@ -35,7 +35,7 @@ With your chart component, set the `accountId` and `query` props to query your N
 
 Alternatively, you can fetch data with a `NrqlQuery` and set the `data` prop:
 
-```jsx
+```jsx preview=true
 <NrqlQuery accountId={1234} query="SELECT count(*) FROM Transaction">
   {({ data }) => <LineChart data={data} />}
 </NrqlQuery>
@@ -54,28 +54,31 @@ Whether you use custom data sets or the results of a `NrqlQuery`, a chart's `dat
 
 For example, create a chart consisting of a line between two points by supplying two x-y coordinates in its `data` field:
 
-```jsx
-const data = [
-  {
-    metadata: {
-      id: 'series-1',
-      name: 'My series',
-      viz: 'main',
-      color: 'blue',
+```jsx preview=true
+() => {
+  const data = [
+    {
+      metadata: {
+        id: 'series-1',
+        name: 'My series',
+        viz: 'main',
+        color: 'blue',
+      },
+      data: [
+        {
+          x: 0,
+          y: 0,
+        },
+        {
+          x: 20,
+          y: 10,
+        },
+      ],
     },
-    data: [
-      {
-        x: 0,
-        y: 0,
-      },
-      {
-        x: 20,
-        y: 10,
-      },
-    ],
-  },
-];
-<LineChart data={data} />;
+  ];
+
+  return <LineChart data={data} />;
+};
 ```
 
 <br />
@@ -84,47 +87,49 @@ This `LineChart` plots a line between coordinates `(0, 0)` and `(20, 10)`. Use x
 
 Because `data` accepts an array, you can supply two series to the same chart:
 
-```jsx
-const data = [
-  {
-    metadata: {
-      id: 'series-1',
-      name: 'My series',
-      viz: 'main',
-      color: 'blue',
+```jsx preview=true
+() => {
+  const data = [
+    {
+      metadata: {
+        id: 'series-1',
+        name: 'My series',
+        viz: 'main',
+        color: 'blue',
+      },
+      data: [
+        {
+          x: 0,
+          y: 0,
+        },
+        {
+          x: 20,
+          y: 10,
+        },
+      ],
     },
-    data: [
-      {
-        x: 0,
-        y: 0,
+    {
+      metadata: {
+        id: 'series-2',
+        name: 'My second series',
+        viz: 'main',
+        color: 'red',
       },
-      {
-        x: 20,
-        y: 10,
-      },
-    ],
-  },
-  {
-    metadata: {
-      id: 'series-2',
-      name: 'My second series',
-      viz: 'main',
-      color: 'red',
+      data: [
+        {
+          x: 0,
+          y: 50,
+        },
+        {
+          x: 20,
+          y: 100,
+        },
+      ],
     },
-    data: [
-      {
-        x: 0,
-        y: 50,
-      },
-      {
-        x: 20,
-        y: 100,
-      },
-    ],
-  },
-];
+  ];
 
-<LineChart data={data} />;
+  return <LineChart data={data} />;
+};
 ```
 
 <br />
@@ -383,23 +388,25 @@ The chart plots the series's width based on `x0` and `x1` and height based on `y
 
 `JsonChart` is a special case because it processes any valid data. For example, you can set an arbitrary JSON object for the chart's `data`:
 
-```jsx
-const data = {
+```jsx preview=true
+() => {
+  const data = {
     data: [
-        {
-            id: 1,
-            name: 'Foo',
-            price: 123,
-            tags: ['Bar', 'Eek'],
-            stock: {
-                warehouse: 300,
-                retail: 20,
-            }
-        }
+      {
+        id: 1,
+        name: 'Foo',
+        price: 123,
+        tags: ['Bar', 'Eek'],
+        stock: {
+          warehouse: 300,
+          retail: 20,
+        },
+      },
     ],
-}
+  };
 
-<JsonChart data={data} />
+  return <JsonChart data={data} />;
+};
 ```
 
 </Callout>
@@ -419,7 +426,7 @@ As you've seen, you use `query` or `data` to supply data to your chart, but you 
 
 Under some circumstances, you might want to synchronize events, such as dragging or scrubbing, across multiple charts. To do this, use a `ChartGroup`. All charts in a `ChartGroup` synchronize their events:
 
-```jsx
+```jsx preview=true
 <ChartGroup>
   <Stack>
     <StackItem>
