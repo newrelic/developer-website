@@ -1,3 +1,12 @@
+## [1.31.7](https://github.com/newrelic/developer-website/compare/v1.31.6...v1.31.7) (2020-12-18)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-use-dark-mode from 1.1.2 to 1.2.0 ([1ed1f2d](https://github.com/newrelic/developer-website/commit/1ed1f2d859d8f92a615a674fefa791f3146cdac7))
+* upgrade react-markdown from 5.0.2 to 5.0.3 ([bf47d3b](https://github.com/newrelic/developer-website/commit/bf47d3b4d5d3165432dc792ddad331a03782581c))
+* upgrade react-shadow from 18.4.2 to 18.6.1 ([9eb617f](https://github.com/newrelic/developer-website/commit/9eb617f7e3b11c0f158ea1cc5fe10bebdeda7762))
+
 ## [1.31.6](https://github.com/newrelic/developer-website/compare/v1.31.5...v1.31.6) (2020-12-10)
 
 
