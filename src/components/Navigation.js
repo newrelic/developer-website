@@ -1,30 +1,20 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import NavigationItems from './NavigationItems';
+import { NavItem } from '@newrelic/gatsby-theme-newrelic';
 import pages from '../data/sidenav.json';
-import matchSearchString from '../utils/matchSearchString';
 import styles from './Navigation.module.scss';
 
-const filterPageNames = (pages, searchTerm, parent = []) => {
-  return [
-    ...new Set(
-      pages.flatMap((page) => {
-        if (page.children) {
-          return filterPageNames(page.children, searchTerm, [
-            ...parent,
-            page.displayName,
-          ]);
-        } else if (matchSearchString(page.displayName, searchTerm)) {
-          return [...parent, page.displayName];
-        } else if (parent.some((el) => matchSearchString(el, searchTerm))) {
-          return [...parent];
-        }
+const filterPages = (pages, regex) => {
+  return pages.filter((page) => {
+    if (regex.test(page.title)) {
+      return true;
+    } else if (page.pages) {
+      return filterPages(page.pages, regex);
+    }
 
-        return null;
-      })
-    ),
-  ].filter(Boolean);
+    return false;
+  });
 };
 
 const Navigation = ({ className, searchTerm }) => {
@@ -33,11 +23,13 @@ const Navigation = ({ className, searchTerm }) => {
     '\\$&'
   );
 
-  const filteredPageNames = searchTerm
-    ? filterPageNames(pages, searchTermSanitized)
-    : undefined;
+  const filteredPages = useMemo(() => {
+    return searchTermSanitized
+      ? filterPages(pages, new RegExp(searchTermSanitized, 'i'))
+      : pages;
+  }, [searchTermSanitized]);
 
-  if (filteredPageNames?.length === 0) {
+  if (filteredPages.length === 0) {
     return <div className={styles.emptyResults}>No results found</div>;
   }
 
@@ -47,11 +39,9 @@ const Navigation = ({ className, searchTerm }) => {
       role="navigation"
       aria-label="Navigation"
     >
-      <NavigationItems
-        searchTerm={searchTermSanitized}
-        pages={pages}
-        filteredPageNames={filteredPageNames}
-      />
+      {filteredPages.map((page) => (
+        <NavItem key={page.title} page={page} />
+      ))}
     </nav>
   );
 };
