@@ -82,7 +82,7 @@ const IndexPage = ({ data, pageContext }) => {
                 <Button
                   as={ExternalLink}
                   variant={Button.VARIANT.PRIMARY}
-                  href="https://newrelicchangesthegame.com/"
+                  href="https://developer.newrelic.com/automate-workflows/get-started-terraform"
                 >
                   Get Started with Terraform
                 </Button>
