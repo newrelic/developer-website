@@ -2,10 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import cx from 'classnames';
 import SEO from '../components/Seo';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
-import { Link } from 'gatsby';
 import PageLayout from '../components/PageLayout';
-import FeatherIcon from '../components/FeatherIcon';
 import nerdDays from '../images/nerd-days/nerd-days.png';
 import styles from './nerd-days.module.scss';
 
