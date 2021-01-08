@@ -31,32 +31,12 @@ const EventLandingPage = () => {
                   margin-bottom: 2rem;
                 `}
               >
-                There are a lot of developer events out there, so we've curated
-                a list of events we're hosting or sponsoring that are dedicated
-                to developers, engineers, problem solvers, and builders like
-                you.
+                There are a lot of developer events out there, so we will be
+                curated a list of events we're hosting or sponsoring that are
+                dedicated to developers, engineers, problem solvers, and
+                builders like you. Currently we have no events planned, but
+                below you can find some of our past events.
               </p>
-              <h2>Featured event</h2>
-              <h3>Nerd Days 1.0: Return of the Data Nerd</h3>
-              <p>
-                Nerd Days is a FREE engineering conference that kicks off
-                October 13 (Dates vary by region). Focused on building more
-                perfect software, our goal is to spend less time looking at
-                slides that tell you what software can do and more time on
-                getting your hands on the software to solve problems
-                efficiently.
-              </p>
-              <Button
-                as={Link}
-                variant={Button.VARIANT.PRIMARY}
-                href="/nerd-days"
-              >
-                Register here
-                <FeatherIcon
-                  className={styles.externalLinkIcon}
-                  name="external-link"
-                />
-              </Button>
             </div>
             <img
               src={nerdDays}
@@ -67,7 +47,7 @@ const EventLandingPage = () => {
               `}
             />
           </section>
-          <h2>Upcoming events</h2>
+          <h2>Past events</h2>
           <section className={styles.section}>
             <div
               css={css`
@@ -101,9 +81,6 @@ const EventLandingPage = () => {
                 cloud native communities.
               </p>
             </div>
-          </section>
-          <h2>Past events</h2>
-          <section className={styles.section}>
             <div>
               <h3>KubeCon and CloudNativeCon Europe 2020</h3>
               <p>August 17 – 20</p>
