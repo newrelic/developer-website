@@ -2830,27 +2830,27 @@
     tar-stream "^2.1.2"
     tmp "^0.1.0"
 
-"@splitsoftware/splitio-react@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@splitsoftware/splitio-react/-/splitio-react-1.2.0.tgz#b2d7f4268454220fb0735253bd07c9a0eefbcfdf"
-  integrity sha512-s283fyrefKjIn1Pz1r0pe51I22ioMiQzvKwNPtRR8cFws3I2uhBlhjvR+ArTjDiYfLxaShfjRmTAmjewlZWmKQ==
+"@splitsoftware/splitio-react@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@splitsoftware/splitio-react/-/splitio-react-1.2.2.tgz#09f5361375d0cd07004c9929f64f3b7ecae9633f"
+  integrity sha512-L9spoverx7EAlQBM1UlDIHpFF48CkZxCo1W9114KFTWqEhE/KPERyPwErGJiCrRtxHbNJY00zuXMJYSP5WwWdw==
   dependencies:
-    "@splitsoftware/splitio" "^10.13.0"
+    "@splitsoftware/splitio" "^10.15.2"
     shallowequal "^1.1.0"
 
-"@splitsoftware/splitio@^10.13.0":
-  version "10.14.1"
-  resolved "https://registry.yarnpkg.com/@splitsoftware/splitio/-/splitio-10.14.1.tgz#c7ef6d0492ac06953c248a4f519af6bab5768cf9"
-  integrity sha512-cIjRxl3aIBbMPsmAlOPP/et0sB6byV6inL4xPYjq89WQE7rzA7PcZrue33FlwS2l1M6lDlHlWOq/chNKTCUFzg==
+"@splitsoftware/splitio@^10.15.2":
+  version "10.15.2"
+  resolved "https://registry.yarnpkg.com/@splitsoftware/splitio/-/splitio-10.15.2.tgz#5ac8c1b493f4f606809ae2daa4dc00ec4c8534e0"
+  integrity sha512-5dRtnw0gkMwkgGIJl+eILjYi8sUA7+r3TJog3LXfa9I+/u5ct2Zh8X30q97R+e10Mi59xqZp5lhQEIytGAIN9w==
   dependencies:
     "@babel/runtime" "^7.10.2"
     "@types/google.analytics" "0.0.40"
     "@types/node" "^13.9.1"
     events "3.1.0"
-    ioredis "^4.14.1"
+    ioredis "4.18.0"
     ip "1.1.5"
     js-yaml "3.13.1"
-    node-fetch "^2.6.0"
+    node-fetch "^2.6.1"
     object-assign "^4.1.1"
     unfetch "^4.1.0"
     utfx "1.0.1"
@@ -10667,17 +10667,17 @@ invariant@^2.2.0, invariant@^2.2.3, invariant@^2.2.4:
   dependencies:
     loose-envify "^1.0.0"
 
-ioredis@^4.14.1:
-  version "4.17.3"
-  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.17.3.tgz#9938c60e4ca685f75326337177bdc2e73ae9c9dc"
-  integrity sha512-iRvq4BOYzNFkDnSyhx7cmJNOi1x/HWYe+A4VXHBu4qpwJaGT1Mp+D2bVGJntH9K/Z/GeOM/Nprb8gB3bmitz1Q==
+ioredis@4.18.0:
+  version "4.18.0"
+  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.18.0.tgz#40785bb76d30b2a50698dd9bb8d8add2a88fbef7"
+  integrity sha512-wXlB60wD+ayJxbD7t+RFBanXinhHyYpfKUxTEEXNOpd0wb+nC8GLH2r7SaZ6sSBOxr8x6jDfBiuMaiK3bPYABw==
   dependencies:
     cluster-key-slot "^1.1.0"
     debug "^4.1.1"
     denque "^1.1.0"
     lodash.defaults "^4.2.0"
     lodash.flatten "^4.4.0"
-    redis-commands "1.5.0"
+    redis-commands "1.6.0"
     redis-errors "^1.2.0"
     redis-parser "^3.0.0"
     standard-as-callback "^2.0.1"
@@ -13276,7 +13276,7 @@ node-eta@^0.9.0:
   resolved "https://registry.yarnpkg.com/node-eta/-/node-eta-0.9.0.tgz#9fb0b099bcd2a021940e603c64254dc003d9a7a8"
   integrity sha1-n7CwmbzSoCGUDmA8ZCVNwAPZp6g=
 
-node-fetch@2.6.1, node-fetch@^1.0.1, node-fetch@^2.5.0, node-fetch@^2.6.0, node-fetch@^2.6.1:
+node-fetch@2.6.1, node-fetch@^1.0.1, node-fetch@^2.5.0, node-fetch@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
@@ -15807,10 +15807,10 @@ redent@^3.0.0:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
 
-redis-commands@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/redis-commands/-/redis-commands-1.5.0.tgz#80d2e20698fe688f227127ff9e5164a7dd17e785"
-  integrity sha512-6KxamqpZ468MeQC3bkWmCB1fp56XL64D4Kf0zJSwDZbVLLm7KFkoIcHrgRvQ+sk8dnhySs7+yBg94yIkAK7aJg==
+redis-commands@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/redis-commands/-/redis-commands-1.6.0.tgz#36d4ca42ae9ed29815cdb30ad9f97982eba1ce23"
+  integrity sha512-2jnZ0IkjZxvguITjFTrGiLyzQZcTvaw8DAaCXxZq/dsHXz7KfMQ3OUJy7Tz9vnRtZRVz6VRCPDvruvU8Ts44wQ==
 
 redis-errors@^1.0.0, redis-errors@^1.2.0:
   version "1.2.0"
