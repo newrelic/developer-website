@@ -19,6 +19,7 @@ module.exports = {
         layout: {
           contentPadding: '2rem',
           maxWidth: '1700px',
+          component: require.resolve('./src/layouts'),
         },
         prism: {
           languages: ['yaml', 'sass', 'scss', 'java'],
@@ -121,12 +122,6 @@ module.exports = {
         theme_color: '#663399',
         display: 'minimal-ui',
         icon: 'src/images/favicon.png',
-      },
-    },
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve('./src/layouts'),
       },
     },
     {
