@@ -1,3 +1,16 @@
+# [1.32.0](https://github.com/newrelic/developer-website/compare/v1.31.8...v1.32.0) (2021-01-15)
+
+
+### Bug Fixes
+
+* upgrade gatsby, gatsby-remark-autolink-headers ([29c47cf](https://github.com/newrelic/developer-website/commit/29c47cfa3dc02a218bb166cf13f155ffa5356612))
+
+
+### Features
+
+* add feedback component to right rail ([7e19c02](https://github.com/newrelic/developer-website/commit/7e19c02fcd0516089e31d9e2960639ecfca2e6a7))
+* add icon for headers to make it easy to link to them ([a254146](https://github.com/newrelic/developer-website/commit/a254146b04a9b9e4cb4dab2262661189ba327485))
+
 ## [1.31.8](https://github.com/newrelic/developer-website/compare/v1.31.7...v1.31.8) (2021-01-15)
 
 
