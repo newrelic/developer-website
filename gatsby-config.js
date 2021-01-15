@@ -3,6 +3,7 @@ const quote = (str) => `"${str}"`;
 module.exports = {
   siteMetadata: {
     title: 'New Relic Developers',
+    titleTemplate: '%s | New Relic Developers',
     description:
       'Do more on our platform and make New Relic your own with APIs, SDKs, code snippets, tutorials, and more developer tools.',
     author: 'New Relic',
