@@ -1,3 +1,10 @@
+## [1.31.8](https://github.com/newrelic/developer-website/compare/v1.31.7...v1.31.8) (2021-01-15)
+
+
+### Bug Fixes
+
+* upgrade @xstate/react from 1.0.3 to 1.1.0 ([cc9bd5d](https://github.com/newrelic/developer-website/commit/cc9bd5d0a762cfa3e734210500d76e822d720d6c))
+
 ## [1.31.7](https://github.com/newrelic/developer-website/compare/v1.31.6...v1.31.7) (2020-12-18)
 
 
