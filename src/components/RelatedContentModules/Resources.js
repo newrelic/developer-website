@@ -84,7 +84,7 @@ const Resources = ({ page }) => {
 
                   {!isDeveloperSite && (
                     <Icon
-                      name={Icon.TYPE.EXTERNAL_LINK}
+                      name="fe-external-link"
                       css={css`
                         margin-left: 0.25rem;
                         vertical-align: middle;
