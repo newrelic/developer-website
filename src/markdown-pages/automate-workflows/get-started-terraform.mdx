@@ -87,7 +87,7 @@ Now that you've set your Terraform and New Relic provider versions, you need to 
 With `terraform` all set, configure the New Relic `provider` with the following items:
 
 1. Your [New Relic Account ID](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id).
-2. Your [New Relic Personal API key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#personal-api-key). Most Personal API keys begin with the prefix `NRAK-`.
+2. Your [New Relic user key](https://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys#user-api-key). Most user keys begin with the prefix `NRAK-`.
 3. Your [New Relic region](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers#verifying-account). Your region is `US` if your account settings page is located at `one.newrelic.com`, and `EU` if your account is located at `one.eu.newrelic.com`.
 
 In **main.tf**, set those values on the provider:
@@ -95,7 +95,7 @@ In **main.tf**, set those values on the provider:
 ```hcl
 provider "newrelic" {
   account_id = 12345   # Your New Relic account ID
-  api_key = "NRAK-***" # Your New Relic Personal API Key
+  api_key = "NRAK-***" # Your New Relic user key
   region = "US"        # US or EU (defaults to US)
 }
 ```
@@ -357,7 +357,7 @@ To finalize your golden signal alerts configuration, run `terraform apply` one l
 
 <Callout variant="tip" title="Extra Credit">
 
-`new_relic_alert_channel` [supports several types](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#argument-reference) of notification channels, including: email, slack, and pagerduty. So, if you want to explore this more, try creating an alert channel for a second channel type, such as Slack:
+`new_relic_alert_channel` [supports several types](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#argument-reference) of notification channels, including email, Slack, and PagerDuty. So, if you want to explore this more, try creating an alert channel for a second channel type, such as Slack:
 
 ```hcl
 # Slack notification channel

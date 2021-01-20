@@ -48,29 +48,21 @@ The Demo Deployer is currently in development. Because of our commitment to open
 
 The last thing you need before you get started is to install [Docker](https://docs.docker.com/get-docker/) if you don't have it already.
 
-Now that you have a high-level understanding of the tools you'll use, you can begin by building the Demo Deployer!
+Now that you have a high-level understanding of the tools you'll use, you can begin by pulling the Demo Deployer!
 
 <Steps>
 
 <Step>
 
-## Build the deployer
+## Pull the deployer locally
 
-To use the deployer, first clone its repository from GitHub. Then, build a Docker image using the local copy of the code.
-
-First, clone the repository from GitHub:
+Pull the `deployer` Docker image from our GitHub Container Registry:
 
 ```shell
-git clone https://github.com/newrelic/demo-deployer.git
+docker pull ghcr.io/newrelic/deployer:latest
 ```
 
-Second, build the `deployer` Docker image:
-
-```shell
-docker build -t deployer demo-deployer
-```
-
-Now, you have a Docker image, named `deployer`, which you use throughout the rest of this guide.
+Now, you have a local Docker image, named `deployer`, which you use throughout the rest of this guide.
 
 </Step>
 
@@ -115,7 +107,7 @@ Now that everything is set up, you can run the deployer application in a Docker 
 ```shell
 docker run -it\
     -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby deployer main.rb -c configs/creds.json -d documentation/tutorial/user_stories/Hello/hello.json
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/creds.json -d https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello/hello.aws.json
 ```
 
 With this command, you're running the `deployer` Docker container with the following options:
@@ -126,7 +118,7 @@ With this command, you're running the `deployer` Docker container with the follo
 Finally, you pass a list of arguments to the entrypoint, including:
 
 - `-c configs/creds.json`: The user credentials configuration file
-- `-d documentation/tutorial/user_stories/Hello/hello.json`: The [deployment configuration file](https://github.com/newrelic/demo-deployer/tree/main/documentation/deploy_config)
+- `-d https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello/hello.aws.json`: The [deployment configuration file](https://github.com/newrelic/demo-deployer/tree/main/documentation/deploy_config)
 
 <Callout variant="tip">
 
@@ -144,7 +136,7 @@ This is because you mounted `$HOME/configs` to `/mnt/deployer/configs/` and `/mn
 
 #### Understanding the deployment configuration file
 
-The deployment configuration file, [hello.json](https://github.com/newrelic/demo-deployer/blob/main/documentation/tutorial/user_stories/Hello/hello.json), which drives the deployer, contains four sections:
+The deployment configuration file, [hello.aws.json](https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello/hello.aws.json), which drives the deployer, contains four sections:
 
 - `services`
 - `global_tags`
@@ -329,7 +321,7 @@ Add the _teardown_ flag, `-t`, to the end of your command:
 ```shell
 docker run -it\
     -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby deployer main.rb -c configs/creds.json -d documentation/tutorial/user_stories/Hello/hello.json -t
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/creds.json -d https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello/hello.aws.json -t
 ```
 
 When the deployer has finished successfully, you'll see output that is similar to what you saw during deployment:
@@ -359,5 +351,5 @@ Here's one that uses a gist on GitHub:
 ```shell
 docker run -it\
     -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby deployer main.rb -c configs/creds.json -d https://gist.githubusercontent.com/markweitzel/d281fde8ca572ced6346dc25470790a5/raw/373166eb50929a0dd23ba5136abf2fa5caf3d369/MarksHelloDemoConfig.json
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/creds.json -d https://gist.githubusercontent.com/markweitzel/d281fde8ca572ced6346dc25470790a5/raw/373166eb50929a0dd23ba5136abf2fa5caf3d369/MarksHelloDemoConfig.json
 ```

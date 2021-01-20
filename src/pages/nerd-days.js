@@ -601,7 +601,7 @@ const NerdDaysPage = () => {
                   <span className={cx(styles.engagementOptionIconContainer)}>
                     <EngagementIcon
                       className={cx(styles.engagementOptionIcon)}
-                      name={Icon.TYPE.TWITTER}
+                      name="fe-twitter"
                       css={css`
                         fill: white;
                       `}
@@ -625,7 +625,7 @@ const NerdDaysPage = () => {
                   <span className={cx(styles.engagementOptionIconContainer)}>
                     <EngagementIcon
                       className={cx(styles.engagementOptionIcon)}
-                      name={Icon.TYPE.MESSAGE_SQUARE}
+                      name="fe-message-square"
                       css={css`
                         fill: white;
                       `}
@@ -644,7 +644,7 @@ const NerdDaysPage = () => {
                   <span className={cx(styles.engagementOptionIconContainer)}>
                     <EngagementIcon
                       className={cx(styles.engagementOptionIcon)}
-                      name={Icon.TYPE.CODE}
+                      name="fe-code"
                       size="1.5rem"
                     />
                   </span>

@@ -1,3 +1,97 @@
+# [1.32.0](https://github.com/newrelic/developer-website/compare/v1.31.8...v1.32.0) (2021-01-15)
+
+
+### Bug Fixes
+
+* upgrade gatsby, gatsby-remark-autolink-headers ([29c47cf](https://github.com/newrelic/developer-website/commit/29c47cfa3dc02a218bb166cf13f155ffa5356612))
+
+
+### Features
+
+* add feedback component to right rail ([7e19c02](https://github.com/newrelic/developer-website/commit/7e19c02fcd0516089e31d9e2960639ecfca2e6a7))
+* add icon for headers to make it easy to link to them ([a254146](https://github.com/newrelic/developer-website/commit/a254146b04a9b9e4cb4dab2262661189ba327485))
+
+## [1.31.8](https://github.com/newrelic/developer-website/compare/v1.31.7...v1.31.8) (2021-01-15)
+
+
+### Bug Fixes
+
+* upgrade @xstate/react from 1.0.3 to 1.1.0 ([cc9bd5d](https://github.com/newrelic/developer-website/commit/cc9bd5d0a762cfa3e734210500d76e822d720d6c))
+
+## [1.31.7](https://github.com/newrelic/developer-website/compare/v1.31.6...v1.31.7) (2020-12-18)
+
+
+### Bug Fixes
+
+* upgrade gatsby-plugin-use-dark-mode from 1.1.2 to 1.2.0 ([1ed1f2d](https://github.com/newrelic/developer-website/commit/1ed1f2d859d8f92a615a674fefa791f3146cdac7))
+* upgrade react-markdown from 5.0.2 to 5.0.3 ([bf47d3b](https://github.com/newrelic/developer-website/commit/bf47d3b4d5d3165432dc792ddad331a03782581c))
+* upgrade react-shadow from 18.4.2 to 18.6.1 ([9eb617f](https://github.com/newrelic/developer-website/commit/9eb617f7e3b11c0f158ea1cc5fe10bebdeda7762))
+
+## [1.31.6](https://github.com/newrelic/developer-website/compare/v1.31.5...v1.31.6) (2020-12-10)
+
+
+### Bug Fixes
+
+* upgrade @emotion/core from 10.0.35 to 10.1.1 ([2d3aec1](https://github.com/newrelic/developer-website/commit/2d3aec16200ea49be13ce4dfb111bca5eca34a77))
+* upgrade gatsby-plugin-mdx from 1.3.1 to 1.4.0 ([af17a5d](https://github.com/newrelic/developer-website/commit/af17a5ddb4f8942a05d7a74e6146b956a33c16a4))
+* upgrade gatsby-remark-images from 3.4.1 to 3.5.1 ([8ec52b5](https://github.com/newrelic/developer-website/commit/8ec52b58636e409e9637ef02cced7aa5edc2316a))
+* upgrade xstate from 4.13.0 to 4.14.0 ([bd3793e](https://github.com/newrelic/developer-website/commit/bd3793e6d595d6d3ce9ddcbf647705b995ff9b34))
+
+## [1.31.5](https://github.com/newrelic/developer-website/compare/v1.31.4...v1.31.5) (2020-12-08)
+
+
+### Bug Fixes
+
+* updated theme ([e35127f](https://github.com/newrelic/developer-website/commit/e35127f6a857b9ee047f0867cb0e974cfb714df9))
+
+## [1.31.4](https://github.com/newrelic/developer-website/compare/v1.31.3...v1.31.4) (2020-12-04)
+
+
+### Bug Fixes
+
+* revert bump to react-live to fix component examples ([ad8a9ec](https://github.com/newrelic/developer-website/commit/ad8a9ec6c539c854f1791eec15a8cad6f155a04a))
+* upgrade @xstate/react from 1.0.1 to 1.0.2 ([5901387](https://github.com/newrelic/developer-website/commit/59013878711b146747525f9a990543f37a1a9f3f))
+
+## [1.31.3](https://github.com/newrelic/developer-website/compare/v1.31.2...v1.31.3) (2020-12-03)
+
+
+### Bug Fixes
+
+* package.json & yarn.lock to reduce vulnerabilities ([c9b7452](https://github.com/newrelic/developer-website/commit/c9b7452ce9056f2c5cc15ae6c60e47182d925bc3))
+* update main layout to use new layout components ([c01aef8](https://github.com/newrelic/developer-website/commit/c01aef866ebccbe36e1bd50d424d799d0f9c731d))
+* upgrade multiple dependencies with Snyk ([7d20b17](https://github.com/newrelic/developer-website/commit/7d20b17ae070bef73ed89ef388d18643c53cddf2))
+
+## [1.31.2](https://github.com/newrelic/developer-website/compare/v1.31.1...v1.31.2) (2020-12-03)
+
+
+### Bug Fixes
+
+* upgrade @mdx-js/mdx from 1.6.17 to 1.6.19 ([abdd280](https://github.com/newrelic/developer-website/commit/abdd2805c201ae06b5bb16eafb7b76b130cdb6d8))
+* upgrade @mdx-js/react from 1.6.18 to 1.6.19 ([f0671af](https://github.com/newrelic/developer-website/commit/f0671af56b09bab75419ffc055d32fb4a355348b))
+
+## [1.31.1](https://github.com/newrelic/developer-website/compare/v1.31.0...v1.31.1) (2020-12-01)
+
+
+### Bug Fixes
+
+* package.json & yarn.lock to reduce vulnerabilities ([82d920c](https://github.com/newrelic/developer-website/commit/82d920c7119da856f7f378eeaf1d44ffcdd0a710))
+
+# [1.31.0](https://github.com/newrelic/developer-website/compare/v1.30.1...v1.31.0) (2020-12-01)
+
+
+### Features
+
+* table added to dev site from theme ([34927ea](https://github.com/newrelic/developer-website/commit/34927ea5bdabd1f3bf1279c2fd16ce640642c34e))
+
+## [1.30.1](https://github.com/newrelic/developer-website/compare/v1.30.0...v1.30.1) (2020-11-23)
+
+
+### Bug Fixes
+
+* package.json & yarn.lock to reduce vulnerabilities ([bba29ae](https://github.com/newrelic/developer-website/commit/bba29aecf54bbbfbe9d413cc30e503dad2eb525c))
+* upgrade gatsby-plugin-mdx from 1.2.43 to 1.2.47 ([7361dc5](https://github.com/newrelic/developer-website/commit/7361dc548ac10c110746f45171b5edf21d7f6167))
+* upgrade multiple dependencies with Snyk ([b9734a0](https://github.com/newrelic/developer-website/commit/b9734a0d5ec6a19a77210be09e1e528b2a677208))
+
 # [1.30.0](https://github.com/newrelic/developer-website/compare/v1.29.1...v1.30.0) (2020-11-10)
 
 

@@ -1,6 +1,6 @@
 ---
 path: '/automate-workflows/diagnose-problems'
-duration: '75 min'
+duration: '30 min'
 title: 'Practice diagnosing common issues using New Relic'
 template: 'GuideTemplate'
 description: 'Automatically spin up a microservice infrastructure, and use New Relic to diagnose its issues.'
@@ -8,6 +8,8 @@ tileShorthand:
   title: 'Use New Relic to diagnose problems'
   description: 'Learn to diagnose problems using New Relic.'
 resources:
+  - title: 'New Relic Demo Catalog'
+    url: 'https://github.com/newrelic/demo-catalog'
   - title: 'New Relic Demo Deployer'
     url: 'https://github.com/newrelic/demo-deployer'
 tags:
@@ -19,7 +21,7 @@ Every time you deploy an application, you hope that it's efficient and error-fre
 
 In this guide, you:
 
-- Use the open-source New Relic [`demo-deployer`](https://github.com/newrelic/demo-deployer) to spin up the infrastructure for Acme Telco Lite, a fictional company, and simulate real-world issues in a controlled, demo environment
+- Use the open-source New Relic [`demo-deployer`](https://github.com/newrelic/demo-deployer) to spin up the infrastructure for Acme Telco Lite, a fictional company. This demo scenario is part of our [Demo Catalog](https://github.com/newrelic/demo-catalog) and will simulate real-world issues in a controlled, demo environment
 - Use New Relic to understand those issues from the perspective of a Telco Lite developer
 - Use the deployer to tear down the resources you create
 
@@ -33,12 +35,11 @@ The simulator isn't part of the Telco Lite infrastructure, but it is part of the
 
 ## Set up your environment
 
-Before you begin, follow the [Prerequisites guide](https://github.com/newrelic/demo-deployer/tree/main/demo/README.md#prerequisites) from the deployer's GitHub repository for a detailed walkthrough of how to set up your environment. For this guide, you can choose between Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) to host your deployment.
+Before you begin, follow the [Prerequisites guide](https://github.com/newrelic/demo-catalog/blob/main/GETTING_STARTED.md#prerequisites) from the deployer's GitHub repository for a detailed walkthrough of how to set up your environment. For this guide, you can choose between Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) to host your deployment.
 
 The guide steps you through:
 
-- Installing Docker
-- Cloning the demo-deployer
+- Installing Docker & pulling the demo-deployer image locally
 - Creating a user config file containing credentials for New Relic and your cloud provider
 - Downloading a .pem key file (if your cloud provider is AWS)
 
@@ -48,13 +49,19 @@ Once you're all set up, deploy Acme Telco Lite.
 
 It's time to deploy and instrument the Telco Lite services using `demo-deployer`. Copy the url for the demo that corresponds to the cloud provider you chose when you set up your environment:
 
-- [AWS Telco Lite Demo](https://raw.githubusercontent.com/newrelic/demo-deployer/main/demo/catalog/telcolite.aws.json)
-- [Azure Telco Lite Demo](https://raw.githubusercontent.com/newrelic/demo-deployer/main/demo/catalog/telcolite.azure.json)
-- [GCP Telco Lite Demo](https://raw.githubusercontent.com/newrelic/demo-deployer/main/demo/catalog/telcolite.gcp.json)
+- [AWS Telco Lite Demo](https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/telco_lite/telcolite.aws.json)
+- [Azure Telco Lite Demo](https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/telco_lite/telcolite.azure.json)
+- [GCP Telco Lite Demo](https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/telco_lite/telcolite.gcp.json)
 
-Follow the [Deployment guide](https://github.com/newrelic/demo-deployer/tree/main/demo/README.md#deploy-your-services) in the deployer's repository for a thorough explanation of how to use the deployer in a local Docker environment. When you run the deployment script, make sure to pass the url you copied for `<demo-url>`.
+Follow the [Deployment guide](https://github.com/newrelic/demo-catalog/blob/main/GETTING_STARTED.md#deploy-your-services) in the Demo Catalog repository for a thorough explanation of how to use the deployer in a local Docker environment. When you run the deployment script, make sure to pass the url you copied for `<demo-url>`.
 
-Since Telco Lite contains several services, the deployment can take over half an hour. When it finishes, you should see some output stating that the deployment was successful:
+<Callout variant="tip">
+
+Since Telco Lite contains several services, the deployment can take over half an hour.
+
+</Callout>
+
+When the deloyer is finished, you should see some output stating that the deployment was successful:
 
 ```shell copyable=false
 [output] {muted}[INFO] Executing Deployment
@@ -169,15 +176,15 @@ Yikes! The alerts, high response times, and red-colored indicators suggest thing
 - [Issue 1: The Warehouse Portal has abnormally high response times](diagnose-problems/high-response-times)
 - [Issue 2: Multiple services are raising error alerts](diagnose-problems/error-alerts)
 
-<Tip>
+<Callout variant="tip">
 
 Don't worry if you don't see all the same alerts. The simulator triggers issues at regular intervals, so you should start seeing these problems in New Relic within 30 minutes to an hour.
 
-</Tip>
+</Callout>
 
 ## Tear down Telco Lite
 
-When you're finished diagnosing all the issues effecting Telco Lite, follow the [Teardown guide](https://github.com/newrelic/demo-deployer/tree/main/demo/README.md#tear-down-your-resources) in the deployer's repository to tear down the services you created in your cloud provider. If you're still exploring, don't tear down your services, or you'll have to deploy them again later.
+When you're finished diagnosing all the issues effecting Telco Lite, follow the [Teardown guide](https://github.com/newrelic/demo-catalog/blob/main/GETTING_STARTED.md#tear-down-your-resources) in the deployer's repository to tear down the services you created in your cloud provider. If you're still exploring, don't tear down your services, or you'll have to deploy them again later.
 
 ## Conclusion
 

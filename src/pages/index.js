@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 
 import SEO from '../components/Seo';
-import { Button, Video } from '@newrelic/gatsby-theme-newrelic';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import PageLayout from '../components/PageLayout';
@@ -18,7 +18,7 @@ import { pageContext } from '../types';
 import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
-import Countdown from '../components/Countdown';
+import Video from '../components/Video';
 
 const getStartedGuides = [
   {
@@ -57,7 +57,7 @@ const IndexPage = ({ data, pageContext }) => {
     <PageContext.Provider value={pageContext}>
       <SEO />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Mark your calendar for Nerd Days 1.0 EMEA" />
+        <PageLayout.Header title="Getting started with New Relic and Terraform" />
 
         <PageLayout.Content>
           <section
@@ -68,23 +68,23 @@ const IndexPage = ({ data, pageContext }) => {
           >
             <div className={styles.introText}>
               <p>
-                Nerd Days is a <strong>FREE</strong> engineering conference that
-                kicks off November 10 (EMEA). Focused on building more perfect
-                software, our goal is to spend less time looking at slides that
-                tell you what software can do and more time on getting your
-                hands on the software to solve problems efficiently.
+                <a href="https://www.terraform.io/">Terraform</a> is a popular
+                infrastructure-as-code software tool software tool software tool
+                built by HashiCorp. You use it to provision all kinds of
+                infrastructure and services, including New Relic alerts.
+                <br />
+                <br />
+                In this guide, you learn how to set up New Relic alerts with
+                Terraform. More specifically, you provision an alert policy,
+                four alert conditions, and a notification channel.
               </p>
-              <Countdown
-                targetDate="November 10 2020 9:45:00 GMT"
-                inactiveMessage="Countdown to Nerd Days EMEA"
-              />
               <p>
                 <Button
                   as={Link}
-                  to="/emea-nerd-days"
                   variant={Button.VARIANT.PRIMARY}
+                  to="/automate-workflows/get-started-terraform"
                 >
-                  Register
+                  Get Started with Terraform
                 </Button>
               </p>
             </div>
@@ -95,13 +95,7 @@ const IndexPage = ({ data, pageContext }) => {
                 width: 100%;
               `}
             >
-              <Video
-                css={css`
-                  width: inherit;
-                `}
-                id="yop0mw3otv"
-                type="wistia"
-              />
+              <Video id="vifxeilp2h" type="wistia" />
             </div>
           </section>
 

@@ -9,7 +9,7 @@ const Layout = ({ children, pageContext }) => {
   ) {
     return children;
   }
-  return <MainLayout>{children}</MainLayout>;
+  return <MainLayout pageContext={pageContext}>{children}</MainLayout>;
 };
 
 Layout.propTypes = {
