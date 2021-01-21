@@ -1,3 +1,10 @@
+## [1.32.1](https://github.com/newrelic/developer-website/compare/v1.32.0...v1.32.1) (2021-01-21)
+
+
+### Bug Fixes
+
+* bump gatsby theme new relic ([21ec1c6](https://github.com/newrelic/developer-website/commit/21ec1c6403afd132442330084dcbbfa78d418886))
+
 # [1.32.0](https://github.com/newrelic/developer-website/compare/v1.31.8...v1.32.0) (2021-01-15)
 
 
