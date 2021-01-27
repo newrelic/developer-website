@@ -25,7 +25,7 @@ const DeveloperChampionPage = () => {
               </p>
               <p>
                 {' '}
-                The <a href="http://community.newrelic.com">Reliquary</a>, our
+                The Reliquary, our
                 developer community, brings together experienced
                 developers/DevOps people with those who are new to software
                 development.
