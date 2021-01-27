@@ -12,11 +12,16 @@ global.CSSStyleDeclaration = {
 };
 global.navigator = {
   userAgent: '',
+  platform: '',
 };
 global.removeEventListener = noop;
 global.addEventListener = noop;
 global.requestAnimationFrame = noop;
 global.cancelAnimationFrame = noop;
+global.XMLHttpRequest = {};
+global.crypto = {
+  getRandomValues: () => [],
+};
 global.document = {
   cookie: '',
   getElementsByTagName() {
