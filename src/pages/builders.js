@@ -19,19 +19,8 @@ const DeveloperChampionPage = () => {
           <section className={cx(styles.section, styles.twoColumn)}>
             <div>
               <p>
-                Builder is a simple yet meaningful word. Building things is on a
-                developer’s nature independently of their tech stack and
-                experience level.{' '}
-              </p>
-              <p>
                 {' '}
-                The Reliquary, our
-                developer community, brings together experienced
-                developers/DevOps people with those who are new to software
-                development.
-              </p>
-              <p>
-                Our goal with the reliquary is to make everyone feel welcome
+                Our goal with the New Relic Community, The Reliquary, is to make everyone feel welcome
                 regardless of their background or current ability, recognize
                 everyone's individuality and help them to find a way to learn
                 that fits their needs, award members that are active and helpful
@@ -49,6 +38,7 @@ const DeveloperChampionPage = () => {
               </p>
 
               <h3>What is a Builder?</h3>
+              
               <p>
                 {' '}
                 Builders are special members of our community and will be there
