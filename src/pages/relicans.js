@@ -314,20 +314,27 @@ const RelicansPage = () => {
           <section className={cx(styles.section, styles.twoColumn)}>
             <div>
               <p>
-                As the founder of SaaS application performance management, New Relic of course loves  software. But it’s not just about the software. Or performance. Or infrastructure, observability, Kubernetes, Prometheus and all the other technologies we write about and whose performance we help you understand. We love the people who make software--the developers, SREs, engineers who code and test and deploy and deliver to ensure the best end-user experience possible. Our entire platform is designed to make your lives easier. All of which is why we’re so very proud to announce a developer relations team whose purpose will be:
+                We love software, and more than that we love the people who make it. Our entire platform is designed to make their lives easier. We’re here to help you write better software and we’re very proud to announce that we’re launching a developer relations team to do just that.
               </p>
-              <ul>
-                <li>
-                  Producing educational and inspirational content for anyone who writes code, whether in development, site reliability engineering, or IT operations.
-                </li>
-                <li>
-                  To partner with you as you explore the world of software--not just on our platform but with all the languages, frameworks, and tools you love.
-                </li>
-                <li>
-                  To invite you to hang out with us for gaming, writing code, playing music, just having fun.
-                </li>
-              </ul>
-              
+              <p>
+                You're going to be hearing a lot from us in the coming months as we join you out there on the internet, here's a quick preview of what we'll be up to:
+              </p>
+              <p>
+                <ul>
+                  <li>
+                    Producing educational and inspirational content for anyone who writes code, whether in development, site reliability engineering, or IT operations.
+                  </li>
+                  <li>
+                    Partnering with you as you explore the world of software, not just on our platform but with all of the languages, frameworks, and tools you love.
+                  </li>
+                  <li>
+                    Inviting you to hang out with us for gaming, writing code, playing music, and just having fun.
+                  </li>
+                </ul>
+              </p>
+              <p>
+                You can find news of our efforts here on this page or on our Twitter account: <a href="https://twitter.com/therelicans">@therelicans</a>.
+              </p>
             </div>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/OlW3g631ero" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </section>
