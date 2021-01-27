@@ -9,9 +9,9 @@ import { css } from '@emotion/core';
 
 const RelicansPage = () => {
   const teamMemberPanels = teamMembers.map((teamMember, i) => {
-    const socialItems = teamMember.socials.map((socialNetwork, i) => {
+    const socialItems = teamMember.socials.map((socialNetwork, j) => {
       return (
-        <li key={i}>
+        <li key={j}>
           <a href={socialNetwork.url}>
             <FeatherIcon name={socialNetwork.name} size="1.5rem" />
           </a>
