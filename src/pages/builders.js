@@ -108,11 +108,21 @@ const DeveloperChampionPage = () => {
               </p>
             </div>
             <div className={styles.point}>
-              <FeatherIcon
-                className={styles.pointIcon}
-                name="trello"
-                size="4rem"
-              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#006c75"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-trending-up"
+              >
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
               <h4>Build your personal Brand</h4>
               <p>
                 Gain exposure to build and grow your personal brand, while
@@ -121,11 +131,24 @@ const DeveloperChampionPage = () => {
               </p>
             </div>
             <div className={styles.point}>
-              <FeatherIcon
-                className={styles.pointIcon}
-                name="users"
-                size="4rem"
-              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#006c75"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-users"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+
               <h4>Mentor Others</h4>
               <p>
                 There is no better way to learn than teaching! You will have the
@@ -168,11 +191,9 @@ const DeveloperChampionPage = () => {
                 src={uptimeEverythingHeader}
                 alt="uptime everything header"
               />
-              
             </div>
             <div>
-              
-            <h2>What are the Requisites?</h2>
+              <h2>What are the Requisites?</h2>
               <small>
                 If you to not check every box bus still believe you would be a
                 great Builder, apply anyway!{' '}
@@ -205,7 +226,7 @@ const DeveloperChampionPage = () => {
                 <li>You have an existing audience</li>
                 <li>Are well known in other tech communities</li>
               </ul>
-              <hr/>
+              <hr />
               <Button
                 as={ExternalLink}
                 variant={Button.VARIANT.PRIMARY}
