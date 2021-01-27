@@ -19,6 +19,7 @@ const iconLibrary = {
   'Explore docs': 'developerDocs',
   'Developer events': 'event',
   'Developer champions': 'developerChampions',
+  'The Relicans': 'theRelicans',
   Podcasts: 'podcasts',
   'Try our APIs': 'tryOurAPIs',
 };
