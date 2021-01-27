@@ -348,6 +348,15 @@
             ]
           },
           {
+            "displayName": "Indicators",
+            "children": [
+              {
+                "displayName": "Badge",
+                "url": "/components/badge"
+              }
+            ]
+          },
+          {
             "displayName": "Overlays",
             "children": [
               {
@@ -440,10 +449,6 @@
           {
             "displayName": "Text",
             "children": [
-              {
-                "displayName": "Badge",
-                "url": "/components/badge"
-              },
               {
                 "displayName": "BlockText",
                 "url": "/components/block-text"
