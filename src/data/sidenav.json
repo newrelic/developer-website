@@ -244,6 +244,14 @@
                 "url": "/components/dropdown-item"
               },
               {
+                "displayName": "DropdownSection",
+                "url": "/components/dropdown-section"
+              },
+              {
+                "displayName": "MultilineTextField",
+                "url": "/components/multiline-text-field"
+              },
+              {
                 "displayName": "Radio",
                 "url": "/components/radio"
               },
@@ -252,12 +260,24 @@
                 "url": "/components/radio-group"
               },
               {
+                "displayName": "SegmentedControl",
+                "url": "/components/segmented-control"
+              },
+              {
+                "displayName": "SegmentedControlItem",
+                "url": "/components/segmented-control-item"
+              },
+              {
                 "displayName": "Select",
                 "url": "/components/select"
               },
               {
                 "displayName": "SelectItem",
                 "url": "/components/select-item"
+              },
+              {
+                "displayName": "Switch",
+                "url": "/components/switch"
               },
               {
                 "displayName": "TextField",
@@ -291,6 +311,10 @@
               {
                 "displayName": "EntityTitleTableRowCell",
                 "url": "/components/entity-title-table-row-cell"
+              },
+              {
+                "displayName": "FavoriteTableRowCell",
+                "url": "/components/favorite-table-row-cell"
               },
               {
                 "displayName": "MetricTableRowCell",
@@ -331,6 +355,18 @@
                 "url": "/components/modal"
               },
               {
+                "displayName": "Popover",
+                "url": "/components/popover"
+              },
+              {
+                "displayName": "PopoverBody",
+                "url": "/components/popover-body"
+              },
+              {
+                "displayName": "PopoverTrigger",
+                "url": "/components/popover-trigger"
+              },
+              {
                 "displayName": "Tooltip",
                 "url": "/components/tooltip"
               }
@@ -362,6 +398,14 @@
               {
                 "displayName": "GridItem",
                 "url": "/components/grid-item"
+              },
+              {
+                "displayName": "Layout",
+                "url": "/components/layout"
+              },
+              {
+                "displayName": "LayoutItem",
+                "url": "/components/layout-item"
               },
               {
                 "displayName": "List",
@@ -396,6 +440,10 @@
           {
             "displayName": "Text",
             "children": [
+              {
+                "displayName": "Badge",
+                "url": "/components/badge"
+              },
               {
                 "displayName": "BlockText",
                 "url": "/components/block-text"
