@@ -5,8 +5,8 @@ import { Button } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
-import devChampionHeader from '../images/developer-champion/developer-champions.jpg';
-import uptimeEverythingHeader from '../images/developer-champion/uptime-everything-header-image.jpg';
+import devReliquary from '../images/builders/The_reliquary.png';
+import onlineTeach from '../images/builders/remote-unsplash.jpg';
 import styles from './builders.module.scss';
 
 const DeveloperChampionPage = () => {
@@ -77,7 +77,7 @@ const DeveloperChampionPage = () => {
             </div>
             <img
               className={styles.img}
-              src={devChampionHeader}
+              src={devReliquary}
               alt="developer champion header"
             />
           </section>
@@ -94,11 +94,22 @@ const DeveloperChampionPage = () => {
           </section>
           <section className={cx(styles.section, styles.championProgram)}>
             <div className={styles.point}>
-              <FeatherIcon
-                className={styles.pointIcon}
-                name="github"
-                size="4rem"
-              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#006c75"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-edit-3"
+              >
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+
               <h4>Learn the Craft</h4>
               <p>
                 You will develop the art of content production for the tech
@@ -188,7 +199,7 @@ const DeveloperChampionPage = () => {
 
               <img
                 className={styles.img}
-                src={uptimeEverythingHeader}
+                src={onlineTeach}
                 alt="uptime everything header"
               />
             </div>
