@@ -1,4 +1,11 @@
-const IGNORED_PREVIEWS = ['Dropdown', 'Modal', 'Tooltip'];
+const IGNORED_PREVIEWS = [
+  'Dropdown',
+  'Modal',
+  'Popover',
+  'Toast',
+  'Tooltip',
+  'Select',
+];
 
 module.exports = (name, obj) => {
   const docs = obj[name].__docs__ || {};
