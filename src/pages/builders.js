@@ -5,7 +5,7 @@ import { Button } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
-import devReliquary from '../images/builders/The_reliquary.png';
+import devReliquary from '../images/builders/The_Relicans.png';
 import onlineTeach from '../images/builders/remote-unsplash.jpg';
 import styles from './builders.module.scss';
 
@@ -20,7 +20,7 @@ const DeveloperChampionPage = () => {
             <div>
               <p>
                 {' '}
-                Our goal with the New Relic Community, The Reliquary, is to make everyone feel welcome
+                Our goal with the New Relic Community, also known as <a href="https://www.therelicans.com/">The Relican's</a>, is to make everyone feel welcome
                 regardless of their background or current ability, recognize
                 everyone's individuality and help them to find a way to learn
                 that fits their needs, award members that are active and helpful
