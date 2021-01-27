@@ -297,10 +297,10 @@ const RelicansPage = () => {
         <img src={teamMember.avatar} className={styles.avatar}/>
         <h3>{teamMember.name}</h3>
         <h4>{teamMember.pronouns}</h4>
+        <ul className={styles.socials}>
+            {socialItems}
+        </ul>
         {teamMember.bio}
-          <ul className={styles.socials}>
-              {socialItems}
-          </ul>
       </div>
     )
   })
@@ -332,7 +332,7 @@ const RelicansPage = () => {
             <iframe width="560" height="315" src="https://www.youtube.com/embed/OlW3g631ero" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </section>
 
-          <h2 style={{ textAlign: 'center', marginBottom: 30, background: '#fff'}}>Meet the Relicans</h2>
+          <h2 className={styles.meetTheRelicansHeading}>Meet the Relicans</h2>
           
           
           <section className={cx(styles.section, styles.meetTheTeam)}>
