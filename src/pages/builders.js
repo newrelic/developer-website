@@ -66,7 +66,7 @@ const DeveloperChampionPage = () => {
               <Button
                 as={ExternalLink}
                 variant={Button.VARIANT.PRIMARY}
-                href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+                href="https://airtable.com/shrCWEQW8uv81Vxny"
               >
                 Apply to be a Builder
                 <FeatherIcon
@@ -136,7 +136,7 @@ const DeveloperChampionPage = () => {
             <Button
               as={ExternalLink}
               className={styles.nominateButton}
-              href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+              href="https://airtable.com/shrCWEQW8uv81Vxny"
               variant={Button.VARIANT.PRIMARY}
             >
               I want in!{' '}
@@ -209,7 +209,7 @@ const DeveloperChampionPage = () => {
               <Button
                 as={ExternalLink}
                 variant={Button.VARIANT.PRIMARY}
-                href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+                href="https://airtable.com/shrCWEQW8uv81Vxny"
               >
                 APPLY NOW!
                 <FeatherIcon
