@@ -6,6 +6,7 @@ const IGNORED_LIVE_EXAMPLES = [
   'Dropdown',
   'Modal',
   'Popover',
+  'Toast',
   'Tooltip',
   'Select',
 ];
