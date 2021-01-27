@@ -20,7 +20,7 @@ export const teamMembers = [
       <p>
         Aaron Bassett is a recovering senior software engineer turned Senior
         Developer Advocate with{' '}
-        <a href="https://mongodb.com" target="_blank" rel="noopener">
+        <a href="https://mongodb.com" target="_blank" rel="noreferrer">
           MongoDB
         </a>
         . He is a developer, public speaker, writer, and mentor; he spends most

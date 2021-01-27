@@ -5,7 +5,6 @@ import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './relicans.module.scss';
 import { teamMembers } from '../data/relicansData';
-import { Video } from '@newrelic/gatsby-theme-newrelic';
 import { css } from '@emotion/core';
 
 const RelicansPage = () => {
