@@ -71,7 +71,7 @@
     "jest": "^26.0.1",
     "jest-emotion": "^10.0.32",
     "patch-package": "^6.2.2",
-    "prettier": "2.0.4",
+    "prettier": "2.2.1",
     "react-test-renderer": "^16.13.1"
   },
   "resolutions": {
