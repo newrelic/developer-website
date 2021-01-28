@@ -1,7 +1,7 @@
 {
   "name": "developer-website",
   "private": true,
-  "version": "1.32.1",
+  "version": "1.33.0",
   "dependencies": {
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
@@ -59,6 +59,7 @@
     "@semantic-release/git": "^9.0.0",
     "@testing-library/react": "^10.0.4",
     "babel-jest": "^26.0.1",
+    "babel-preset-gatsby": "^0.11.0",
     "core-js": "^2.4.0",
     "eslint": "^7.11.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
@@ -70,7 +71,7 @@
     "jest": "^26.0.1",
     "jest-emotion": "^10.0.32",
     "patch-package": "^6.2.2",
-    "prettier": "2.0.4",
+    "prettier": "2.2.1",
     "react-test-renderer": "^16.13.1"
   },
   "resolutions": {

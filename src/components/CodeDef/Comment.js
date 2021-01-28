@@ -1,7 +1,7 @@
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import Markdown from 'react-markdown';
-import styles from './CodeDef.module.scss';
 
 const Content = ({ children, ...props }) => {
   if (Children.toArray(children).length === 0) {
@@ -9,7 +9,21 @@ const Content = ({ children, ...props }) => {
   }
 
   return (
-    <span {...props} className={styles.comment}>
+    <span
+      {...props}
+      css={css`
+        color: var(--color-nord-3);
+
+        > p {
+          display: inline;
+        }
+
+        code {
+          color: var(--color-nord-4) !important;
+          background: var(--color-nord-2) !important;
+        }
+      `}
+    >
       {`//`} {children}
     </span>
   );

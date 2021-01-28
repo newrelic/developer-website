@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import styles from './CodeDef.module.scss';
+import { css } from '@emotion/core';
 import Block from './Block';
 import Bracket from './Bracket';
 import Comment from './Comment';
@@ -13,7 +13,30 @@ import StringValue from './String';
 import Type from './Type';
 
 const CodeDef = ({ className, children }) => (
-  <code className={cx(styles.container, className)}>{children}</code>
+  <code
+    className={cx(className, 'code-def')}
+    css={css`
+      display: block;
+      line-height: 2;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      padding: 1rem;
+
+      &&& {
+        background: var(--color-nord-0);
+
+        .light-mode & {
+          background: var(--color-nord-6);
+        }
+      }
+
+      .code-def {
+        padding: 0;
+      }
+    `}
+  >
+    {children}
+  </code>
 );
 
 CodeDef.propTypes = {

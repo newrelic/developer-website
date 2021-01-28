@@ -1,3 +1,10 @@
+# [1.33.0](https://github.com/newrelic/developer-website/compare/v1.32.1...v1.33.0) (2021-01-27)
+
+
+### Features
+
+* **ComponentDocs:** Add 12 new components ([17823f5](https://github.com/newrelic/developer-website/commit/17823f520f725f82c481acc0a57b85d6036504ec))
+
 ## [1.32.1](https://github.com/newrelic/developer-website/compare/v1.32.0...v1.32.1) (2021-01-21)
 
 

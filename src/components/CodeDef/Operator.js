@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './CodeDef.module.scss';
+import { css } from '@emotion/core';
 
 const Operator = ({ children }) => (
-  <span className={styles.operator}>{children}</span>
+  <span
+    css={css`
+      color: var(--color-nord-9);
+    `}
+  >
+    {children}
+  </span>
 );
 
 Operator.propTypes = {
