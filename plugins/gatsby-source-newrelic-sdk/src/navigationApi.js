@@ -114,9 +114,8 @@ const entityGuid = 'Mxka102Ak';
 
 const location = navigation.getOpenEntityLocation(entityGuid);
         `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -149,9 +148,8 @@ const launcher = {
 
 const location = navigation.getOpenLauncherLocation(launcher);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 2',
@@ -172,9 +170,8 @@ const launcher = {
 
 const location = navigation.getOpenLauncherLocation(launcher);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -203,9 +200,8 @@ const nerdlet = {
 
 const location = navigation.getOpenNerdletLocation(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 2',
@@ -220,9 +216,8 @@ const nerdlet = {
 
 const location = navigation.getOpenNerdletLocation(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -251,9 +246,8 @@ const overlay = {
 
 const location = navigation.getOpenOverlayLocation(overlay);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -280,9 +274,8 @@ const entityGuid = 'Mxka102Ak';
 
 const location = navigation.getOpenStackedEntityLocation(entityGuid);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -311,9 +304,8 @@ const nerdlet = {
 
 const location = navigation.getOpenStackedNerdletLocation(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 2',
@@ -328,9 +320,8 @@ const nerdletWithState = {
 
 const location = navigation.getOpenStackedNerdletLocation(nerdletWithState);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 3',
@@ -345,9 +336,8 @@ const nerdletWithState = {
 
 const location = navigation.getOpenStackedNerdletLocation(nerdletWithState);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -376,9 +366,8 @@ const nerdlet = {
 
 const location = navigation.getReplaceNerdletLocation(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 2',
@@ -390,9 +379,8 @@ const nerdlet = {
 
 const location = navigation.getReplaceNerdletLocation(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 3',
@@ -407,9 +395,8 @@ const nerdlet = {
 
 const location = navigation.getReplaceNerdletLocation(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -441,9 +428,8 @@ const entityGuid = 'Mxka102Ak';
 
 navigation.openEntity(entityGuid);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -481,9 +467,8 @@ const launcher = {
 
 navigation.openLauncher(launcher);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 2',
@@ -504,9 +489,8 @@ const launcher = {
 
 navigation.openLauncher(launcher);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -542,9 +526,8 @@ const nerdlet = {
 
 navigation.openNerdlet(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 2',
@@ -559,9 +542,8 @@ const nerdletWithState = {
 
 const location = navigation.getOpenNerdletLocation(nerdletWithState);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -597,9 +579,8 @@ const overlay = {
 
 navigation.openOverlay(overlay);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -632,9 +613,8 @@ const entityGuid = 'Mxka102Ak';
 
 navigation.openStackedEntity(entityGuid);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -670,9 +650,8 @@ const nerdlet = {
 
 navigation.openStackedNerdlet(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 2',
@@ -687,9 +666,8 @@ const nerdletWithState = {
 
 navigation.openStackedNerdlet(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 3',
@@ -704,9 +682,8 @@ const nerdletWithState = {
 
 navigation.openStackedNerdlet(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
@@ -740,9 +717,8 @@ const nerdlet = {
 
 navigation.replaceNerdlet(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 2',
@@ -754,9 +730,8 @@ const nerdlet = {
 
 navigation.replaceNerdlet(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
         {
           label: 'Example 3',
@@ -771,9 +746,8 @@ const nerdlet = {
 
 navigation.replaceNerdlet(nerdlet);
           `.trim(),
-          options: {
-            live: false,
-          },
+          live: false,
+          preview: false,
         },
       ],
     },
