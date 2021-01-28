@@ -1,22 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import ReferenceExample from './ReferenceExample';
 import FunctionDefinition from './FunctionDefinition';
 import Markdown from './Markdown';
-import styles from './MethodReference.module.scss';
 import { graphql } from 'gatsby';
 
 const MethodReference = ({ className, method }) => (
   <div className={className}>
-    <h3 className={styles.name}>{method.name}</h3>
-    <Markdown className={styles.description} source={method.description} />
+    <h3>
+      <code>{method.name}</code>
+    </h3>
+    <Markdown
+      source={method.description}
+      css={css`
+        margin-bottom: 1rem;
+      `}
+    />
     <FunctionDefinition
-      className={styles.functionDefinition}
       arguments={method.arguments}
       returnValue={method.returnValue}
+      css={css`
+        margin-bottom: 1rem;
+      `}
     />
     {method.examples.map((example, i) => (
-      <ReferenceExample key={i} className={styles.example} example={example} />
+      <ReferenceExample
+        key={i}
+        example={example}
+        css={css`
+          &:not(:last-child) {
+            margin-bottom: 2rem;
+          }
+        `}
+      />
     ))}
   </div>
 );

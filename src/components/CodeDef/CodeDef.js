@@ -24,6 +24,10 @@ const CodeDef = ({ className, children }) => (
 
       &&& {
         background: var(--color-nord-0);
+
+        .light-mode & {
+          background: var(--color-nord-6);
+        }
       }
 
       .code-def {

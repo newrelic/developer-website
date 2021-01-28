@@ -101,7 +101,13 @@ const ComponentReferenceTemplate = ({ data }) => {
             <Section>
               <SectionTitle>Methods</SectionTitle>
               {methods.map((method, i) => (
-                <MethodReference key={i} method={method} />
+                <MethodReference
+                  key={i}
+                  method={method}
+                  css={css`
+                    margin-bottom: 4rem;
+                  `}
+                />
               ))}
             </Section>
           )}
@@ -110,7 +116,15 @@ const ComponentReferenceTemplate = ({ data }) => {
             <Section>
               <SectionTitle>Type definitions</SectionTitle>
               {typeDefs.map((typeDef, i) => (
-                <TypeDefReference key={i} typeDef={typeDef} />
+                <TypeDefReference
+                  key={i}
+                  typeDef={typeDef}
+                  css={css`
+                    &:not(:last-child) {
+                      margin-bottom: 2rem;
+                    }
+                  `}
+                />
               ))}
             </Section>
           )}

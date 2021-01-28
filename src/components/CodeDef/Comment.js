@@ -17,6 +17,11 @@ const Content = ({ children, ...props }) => {
         > p {
           display: inline;
         }
+
+        code {
+          color: var(--color-nord-4) !important;
+          background: var(--color-nord-2) !important;
+        }
       `}
     >
       {`//`} {children}

@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './TypeDefReference.module.scss';
 import CodeDef from './CodeDef';
 import { graphql } from 'gatsby';
 
-const TypeDefReference = ({ typeDef }) => {
+const TypeDefReference = ({ className, typeDef }) => {
   const { properties, name } = typeDef;
 
   return (
-    <div className={styles.container}>
-      <h3 className={styles.name}>
+    <div className={className}>
+      <h3>
         <code>{name}</code>
       </h3>
-      <CodeDef className={styles.typeDef}>
+      <CodeDef>
         <CodeDef.Bracket>{'{'}</CodeDef.Bracket>
         <CodeDef.Block>
           {properties.map((property) => (
@@ -30,6 +29,7 @@ const TypeDefReference = ({ typeDef }) => {
 };
 
 TypeDefReference.propTypes = {
+  className: PropTypes.string,
   typeDef: PropTypes.shape({
     properties: PropTypes.array,
     name: PropTypes.string,

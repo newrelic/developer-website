@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import Markdown from '../components/Markdown';
@@ -61,7 +62,13 @@ const ApiReferenceTemplate = ({ data }) => {
             <Section>
               <SectionTitle>API methods</SectionTitle>
               {methods.map((method, i) => (
-                <MethodReference key={i} method={method} />
+                <MethodReference
+                  key={i}
+                  method={method}
+                  css={css`
+                    margin-bottom: 4rem;
+                  `}
+                />
               ))}
             </Section>
           )}
@@ -70,7 +77,15 @@ const ApiReferenceTemplate = ({ data }) => {
             <Section>
               <SectionTitle>Type definitions</SectionTitle>
               {typeDefs.map((typeDef, i) => (
-                <TypeDefReference key={i} typeDef={typeDef} />
+                <TypeDefReference
+                  key={i}
+                  typeDef={typeDef}
+                  css={css`
+                    &:not(:last-child) {
+                      margin-bottom: 2rem;
+                    }
+                  `}
+                />
               ))}
             </Section>
           )}
@@ -79,7 +94,15 @@ const ApiReferenceTemplate = ({ data }) => {
             <Section>
               <SectionTitle>Constants</SectionTitle>
               {constants.map((constant, i) => (
-                <ConstantReference key={i} constant={constant} />
+                <ConstantReference
+                  key={i}
+                  constant={constant}
+                  css={css`
+                    &:not(:last-child) {
+                      margin-bottom: 2rem;
+                    }
+                  `}
+                />
               ))}
             </Section>
           )}
