@@ -14,7 +14,7 @@ const PropTypeInfo = ({ type }) => {
       return (
         <FunctionDefinition
           returnValue={type.meta.returnValue}
-          params={type.meta.params}
+          arguments={type.meta.arguments}
         />
       );
     case 'arrayOf': {
@@ -194,9 +194,618 @@ export const query = graphql`
     }
     isRequired
     type {
+      name
       raw
+      meta {
+        ... on NewRelicSdkPropTypeArrayOfMeta {
+          itemTypes {
+            ...DefType
+            meta {
+              ... on NewRelicSdkPropTypeEnumMeta {
+                constants
+              }
+              ... on NewRelicSdkPropTypeFunctionMeta {
+                ...FuncType
+              }
+              ... on NewRelicSdkPropTypeShapeMeta {
+                ...ShapeType
+                types {
+                  type {
+                    meta {
+                      ... on NewRelicSdkPropTypeArrayOfMeta {
+                        itemTypes {
+                          ...DefType
+                          meta {
+                            ... on NewRelicSdkPropTypeEnumMeta {
+                              constants
+                            }
+                            ... on NewRelicSdkPropTypeFunctionMeta {
+                              ...FuncType
+                            }
+                            ... on NewRelicSdkPropTypeShapeMeta {
+                              ...ShapeType
+                            }
+                          }
+                        }
+                      }
+                      ... on NewRelicSdkPropTypeEnumMeta {
+                        constants
+                      }
+                      ... on NewRelicSdkPropTypeFunctionMeta {
+                        ...FuncType
+                      }
+                      ... on NewRelicSdkPropTypeShapeMeta {
+                        ...ShapeType
+                      }
+                      ... on NewRelicSdkPropTypeUnionMeta {
+                        ...UnionType
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        ... on NewRelicSdkPropTypeEnumMeta {
+          constants
+        }
+        ... on NewRelicSdkPropTypeFunctionMeta {
+          ...FuncType
+        }
+        ... on NewRelicSdkPropTypeShapeMeta {
+          ...ShapeType
+          types {
+            type {
+              meta {
+                ... on NewRelicSdkPropTypeArrayOfMeta {
+                  itemTypes {
+                    ...DefType
+                    meta {
+                      ... on NewRelicSdkPropTypeEnumMeta {
+                        constants
+                      }
+                      ... on NewRelicSdkPropTypeFunctionMeta {
+                        ...FuncType
+                      }
+                      ... on NewRelicSdkPropTypeShapeMeta {
+                        ...ShapeType
+                        types {
+                          type {
+                            meta {
+                              ... on NewRelicSdkPropTypeArrayOfMeta {
+                                itemTypes {
+                                  ...DefType
+                                  meta {
+                                    ... on NewRelicSdkPropTypeEnumMeta {
+                                      constants
+                                    }
+                                    ... on NewRelicSdkPropTypeFunctionMeta {
+                                      ...FuncType
+                                    }
+                                    ... on NewRelicSdkPropTypeShapeMeta {
+                                      ...ShapeType
+                                    }
+                                  }
+                                }
+                              }
+                              ... on NewRelicSdkPropTypeEnumMeta {
+                                constants
+                              }
+                              ... on NewRelicSdkPropTypeFunctionMeta {
+                                ...FuncType
+                              }
+                              ... on NewRelicSdkPropTypeShapeMeta {
+                                ...ShapeType
+                              }
+                              ... on NewRelicSdkPropTypeUnionMeta {
+                                ...UnionType
+                                types {
+                                  meta {
+                                    ... on NewRelicSdkPropTypeArrayOfMeta {
+                                      itemTypes {
+                                        ...DefType
+                                        meta {
+                                          ... on NewRelicSdkPropTypeEnumMeta {
+                                            constants
+                                          }
+                                          ... on NewRelicSdkPropTypeFunctionMeta {
+                                            ...FuncType
+                                          }
+                                          ... on NewRelicSdkPropTypeShapeMeta {
+                                            ...ShapeType
+                                            types {
+                                              type {
+                                                meta {
+                                                  ... on NewRelicSdkPropTypeArrayOfMeta {
+                                                    itemTypes {
+                                                      ...DefType
+                                                      meta {
+                                                        ... on NewRelicSdkPropTypeEnumMeta {
+                                                          constants
+                                                        }
+                                                        ... on NewRelicSdkPropTypeFunctionMeta {
+                                                          ...FuncType
+                                                        }
+                                                        ... on NewRelicSdkPropTypeShapeMeta {
+                                                          ...ShapeType
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                  ... on NewRelicSdkPropTypeEnumMeta {
+                                                    constants
+                                                  }
+                                                  ... on NewRelicSdkPropTypeFunctionMeta {
+                                                    ...FuncType
+                                                  }
+                                                  ... on NewRelicSdkPropTypeShapeMeta {
+                                                    ...ShapeType
+                                                  }
+                                                  ... on NewRelicSdkPropTypeUnionMeta {
+                                                    ...UnionType
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                    ... on NewRelicSdkPropTypeEnumMeta {
+                                      constants
+                                    }
+                                    ... on NewRelicSdkPropTypeFunctionMeta {
+                                      ...FuncType
+                                    }
+                                    ... on NewRelicSdkPropTypeShapeMeta {
+                                      ...ShapeType
+                                      types {
+                                        type {
+                                          meta {
+                                            ... on NewRelicSdkPropTypeArrayOfMeta {
+                                              itemTypes {
+                                                ...DefType
+                                                meta {
+                                                  ... on NewRelicSdkPropTypeEnumMeta {
+                                                    constants
+                                                  }
+                                                  ... on NewRelicSdkPropTypeFunctionMeta {
+                                                    ...FuncType
+                                                  }
+                                                  ... on NewRelicSdkPropTypeShapeMeta {
+                                                    ...ShapeType
+                                                  }
+                                                }
+                                              }
+                                            }
+                                            ... on NewRelicSdkPropTypeEnumMeta {
+                                              constants
+                                            }
+                                            ... on NewRelicSdkPropTypeFunctionMeta {
+                                              ...FuncType
+                                            }
+                                            ... on NewRelicSdkPropTypeShapeMeta {
+                                              ...ShapeType
+                                            }
+                                            ... on NewRelicSdkPropTypeUnionMeta {
+                                              ...UnionType
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                    ... on NewRelicSdkPropTypeUnionMeta {
+                                      ...UnionType
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                ... on NewRelicSdkPropTypeEnumMeta {
+                  constants
+                }
+                ... on NewRelicSdkPropTypeFunctionMeta {
+                  ...FuncType
+                }
+                ... on NewRelicSdkPropTypeShapeMeta {
+                  ...ShapeType
+                  types {
+                    type {
+                      meta {
+                        ... on NewRelicSdkPropTypeArrayOfMeta {
+                          itemTypes {
+                            ...DefType
+                            meta {
+                              ... on NewRelicSdkPropTypeEnumMeta {
+                                constants
+                              }
+                              ... on NewRelicSdkPropTypeFunctionMeta {
+                                ...FuncType
+                              }
+                              ... on NewRelicSdkPropTypeShapeMeta {
+                                ...ShapeType
+                              }
+                            }
+                          }
+                        }
+                        ... on NewRelicSdkPropTypeEnumMeta {
+                          constants
+                        }
+                        ... on NewRelicSdkPropTypeFunctionMeta {
+                          ...FuncType
+                        }
+                        ... on NewRelicSdkPropTypeShapeMeta {
+                          ...ShapeType
+                        }
+                        ... on NewRelicSdkPropTypeUnionMeta {
+                          ...UnionType
+                          types {
+                            meta {
+                              ... on NewRelicSdkPropTypeArrayOfMeta {
+                                itemTypes {
+                                  ...DefType
+                                  meta {
+                                    ... on NewRelicSdkPropTypeEnumMeta {
+                                      constants
+                                    }
+                                    ... on NewRelicSdkPropTypeFunctionMeta {
+                                      ...FuncType
+                                    }
+                                    ... on NewRelicSdkPropTypeShapeMeta {
+                                      ...ShapeType
+                                      types {
+                                        type {
+                                          meta {
+                                            ... on NewRelicSdkPropTypeArrayOfMeta {
+                                              itemTypes {
+                                                ...DefType
+                                                meta {
+                                                  ... on NewRelicSdkPropTypeEnumMeta {
+                                                    constants
+                                                  }
+                                                  ... on NewRelicSdkPropTypeFunctionMeta {
+                                                    ...FuncType
+                                                  }
+                                                  ... on NewRelicSdkPropTypeShapeMeta {
+                                                    ...ShapeType
+                                                  }
+                                                }
+                                              }
+                                            }
+                                            ... on NewRelicSdkPropTypeEnumMeta {
+                                              constants
+                                            }
+                                            ... on NewRelicSdkPropTypeFunctionMeta {
+                                              ...FuncType
+                                            }
+                                            ... on NewRelicSdkPropTypeShapeMeta {
+                                              ...ShapeType
+                                            }
+                                            ... on NewRelicSdkPropTypeUnionMeta {
+                                              ...UnionType
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                              ... on NewRelicSdkPropTypeEnumMeta {
+                                constants
+                              }
+                              ... on NewRelicSdkPropTypeFunctionMeta {
+                                ...FuncType
+                              }
+                              ... on NewRelicSdkPropTypeShapeMeta {
+                                ...ShapeType
+                                types {
+                                  type {
+                                    meta {
+                                      ... on NewRelicSdkPropTypeArrayOfMeta {
+                                        itemTypes {
+                                          ...DefType
+                                          meta {
+                                            ... on NewRelicSdkPropTypeEnumMeta {
+                                              constants
+                                            }
+                                            ... on NewRelicSdkPropTypeFunctionMeta {
+                                              ...FuncType
+                                            }
+                                            ... on NewRelicSdkPropTypeShapeMeta {
+                                              ...ShapeType
+                                            }
+                                          }
+                                        }
+                                      }
+                                      ... on NewRelicSdkPropTypeEnumMeta {
+                                        constants
+                                      }
+                                      ... on NewRelicSdkPropTypeFunctionMeta {
+                                        ...FuncType
+                                      }
+                                      ... on NewRelicSdkPropTypeShapeMeta {
+                                        ...ShapeType
+                                      }
+                                      ... on NewRelicSdkPropTypeUnionMeta {
+                                        ...UnionType
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                              ... on NewRelicSdkPropTypeUnionMeta {
+                                ...UnionType
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                ... on NewRelicSdkPropTypeUnionMeta {
+                  ...UnionType
+                  types {
+                    meta {
+                      ... on NewRelicSdkPropTypeArrayOfMeta {
+                        itemTypes {
+                          ...DefType
+                          meta {
+                            ... on NewRelicSdkPropTypeEnumMeta {
+                              constants
+                            }
+                            ... on NewRelicSdkPropTypeFunctionMeta {
+                              ...FuncType
+                            }
+                            ... on NewRelicSdkPropTypeShapeMeta {
+                              ...ShapeType
+                              types {
+                                type {
+                                  meta {
+                                    ... on NewRelicSdkPropTypeArrayOfMeta {
+                                      itemTypes {
+                                        ...DefType
+                                        meta {
+                                          ... on NewRelicSdkPropTypeEnumMeta {
+                                            constants
+                                          }
+                                          ... on NewRelicSdkPropTypeFunctionMeta {
+                                            ...FuncType
+                                          }
+                                          ... on NewRelicSdkPropTypeShapeMeta {
+                                            ...ShapeType
+                                          }
+                                        }
+                                      }
+                                    }
+                                    ... on NewRelicSdkPropTypeEnumMeta {
+                                      constants
+                                    }
+                                    ... on NewRelicSdkPropTypeFunctionMeta {
+                                      ...FuncType
+                                    }
+                                    ... on NewRelicSdkPropTypeShapeMeta {
+                                      ...ShapeType
+                                    }
+                                    ... on NewRelicSdkPropTypeUnionMeta {
+                                      ...UnionType
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                      ... on NewRelicSdkPropTypeEnumMeta {
+                        constants
+                      }
+                      ... on NewRelicSdkPropTypeFunctionMeta {
+                        ...FuncType
+                      }
+                      ... on NewRelicSdkPropTypeShapeMeta {
+                        ...ShapeType
+                        types {
+                          type {
+                            meta {
+                              ... on NewRelicSdkPropTypeArrayOfMeta {
+                                itemTypes {
+                                  ...DefType
+                                  meta {
+                                    ... on NewRelicSdkPropTypeEnumMeta {
+                                      constants
+                                    }
+                                    ... on NewRelicSdkPropTypeFunctionMeta {
+                                      ...FuncType
+                                    }
+                                    ... on NewRelicSdkPropTypeShapeMeta {
+                                      ...ShapeType
+                                    }
+                                  }
+                                }
+                              }
+                              ... on NewRelicSdkPropTypeEnumMeta {
+                                constants
+                              }
+                              ... on NewRelicSdkPropTypeFunctionMeta {
+                                ...FuncType
+                              }
+                              ... on NewRelicSdkPropTypeShapeMeta {
+                                ...ShapeType
+                              }
+                              ... on NewRelicSdkPropTypeUnionMeta {
+                                ...UnionType
+                              }
+                            }
+                          }
+                        }
+                      }
+                      ... on NewRelicSdkPropTypeUnionMeta {
+                        ...UnionType
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        ... on NewRelicSdkPropTypeUnionMeta {
+          ...UnionType
+          types {
+            meta {
+              ... on NewRelicSdkPropTypeArrayOfMeta {
+                itemTypes {
+                  ...DefType
+                  meta {
+                    ... on NewRelicSdkPropTypeEnumMeta {
+                      constants
+                    }
+                    ... on NewRelicSdkPropTypeFunctionMeta {
+                      ...FuncType
+                    }
+                    ... on NewRelicSdkPropTypeShapeMeta {
+                      ...ShapeType
+                      types {
+                        type {
+                          meta {
+                            ... on NewRelicSdkPropTypeArrayOfMeta {
+                              itemTypes {
+                                ...DefType
+                                meta {
+                                  ... on NewRelicSdkPropTypeEnumMeta {
+                                    constants
+                                  }
+                                  ... on NewRelicSdkPropTypeFunctionMeta {
+                                    ...FuncType
+                                  }
+                                  ... on NewRelicSdkPropTypeShapeMeta {
+                                    ...ShapeType
+                                  }
+                                }
+                              }
+                            }
+                            ... on NewRelicSdkPropTypeEnumMeta {
+                              constants
+                            }
+                            ... on NewRelicSdkPropTypeFunctionMeta {
+                              ...FuncType
+                            }
+                            ... on NewRelicSdkPropTypeShapeMeta {
+                              ...ShapeType
+                            }
+                            ... on NewRelicSdkPropTypeUnionMeta {
+                              ...UnionType
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              ... on NewRelicSdkPropTypeEnumMeta {
+                constants
+              }
+              ... on NewRelicSdkPropTypeFunctionMeta {
+                ...FuncType
+              }
+              ... on NewRelicSdkPropTypeShapeMeta {
+                ...ShapeType
+                types {
+                  type {
+                    meta {
+                      ... on NewRelicSdkPropTypeArrayOfMeta {
+                        itemTypes {
+                          ...DefType
+                          meta {
+                            ... on NewRelicSdkPropTypeEnumMeta {
+                              constants
+                            }
+                            ... on NewRelicSdkPropTypeFunctionMeta {
+                              ...FuncType
+                            }
+                            ... on NewRelicSdkPropTypeShapeMeta {
+                              ...ShapeType
+                            }
+                          }
+                        }
+                      }
+                      ... on NewRelicSdkPropTypeEnumMeta {
+                        constants
+                      }
+                      ... on NewRelicSdkPropTypeFunctionMeta {
+                        ...FuncType
+                      }
+                      ... on NewRelicSdkPropTypeShapeMeta {
+                        ...ShapeType
+                      }
+                      ... on NewRelicSdkPropTypeUnionMeta {
+                        ...UnionType
+                      }
+                    }
+                  }
+                }
+              }
+              ... on NewRelicSdkPropTypeUnionMeta {
+                ...UnionType
+              }
+            }
+          }
+        }
+      }
     }
     defaultValue
+  }
+
+  fragment DefType on NewRelicSdkPropTypeDefinitionType {
+    name
+    raw
+  }
+
+  fragment FuncType on NewRelicSdkPropTypeFunctionMeta {
+    arguments {
+      ...FunctionDefinition_arguments
+    }
+
+    returnValue {
+      ...FunctionDefinition_returnValue
+    }
+  }
+
+  fragment ShapeType on NewRelicSdkPropTypeShapeMeta {
+    types {
+      name
+      description
+      deprecation {
+        date(formatString: "MMMM Do, YYYY")
+        description
+      }
+      examples {
+        ...ReferenceExample_example
+      }
+      isRequired
+      type {
+        name
+        raw
+      }
+      defaultValue
+    }
+  }
+
+  fragment UnionType on NewRelicSdkPropTypeUnionMeta {
+    types {
+      name
+      raw
+    }
   }
 `;
 
