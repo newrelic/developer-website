@@ -16,7 +16,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage, createRedirect } = actions;
 
   const result = await graphql(`
-    {
+    query {
       allMdx(
         limit: 1000
         filter: { fileAbsolutePath: { regex: "/src/markdown-pages/" } }
@@ -35,6 +35,26 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
+
+      allNewRelicSdkComponent {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+
+      allNewRelicSdkApi {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -44,7 +64,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  const { allMdx } = result.data;
+  const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
     const { frontmatter } = node;
@@ -76,6 +96,34 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     });
   });
+
+  allNewRelicSdkComponent.edges.forEach(({ node }) => {
+    const {
+      fields: { slug },
+    } = node;
+
+    createPage({
+      path: slug,
+      component: path.resolve('./src/templates/ComponentReferenceTemplate.js'),
+      context: {
+        slug,
+      },
+    });
+  });
+
+  allNewRelicSdkApi.edges.forEach(({ node }) => {
+    const {
+      fields: { slug },
+    } = node;
+
+    createPage({
+      path: slug,
+      component: path.resolve('./src/templates/ApiReferenceTemplate.js'),
+      context: {
+        slug,
+      },
+    });
+  });
 };
 
 exports.onCreateNode = ({ node, actions }) => {
@@ -90,19 +138,6 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       name: 'gitAuthorTime',
       value: gitAuthorTime,
-    });
-  }
-
-  if (node.context && !node.context.fileRelativePath) {
-    const { createPage } = actions;
-    const { path, component } = node;
-
-    createPage({
-      path,
-      component,
-      context: {
-        fileRelativePath: getFileRelativePath(component),
-      },
     });
   }
 

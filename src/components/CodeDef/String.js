@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './CodeDef.module.scss';
+import { css } from '@emotion/core';
 
 const StringValue = ({ value }) => (
-  <span className={styles.string}>"{value}"</span>
+  <span
+    css={css`
+      color: var(--color-nord-14);
+    `}
+  >
+    "{value}"
+  </span>
 );
 
 StringValue.propTypes = {

@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './CodeDef.module.scss';
+import { css } from '@emotion/core';
 
 const Bracket = ({ children }) => (
-  <span className={styles.bracket}>{children}</span>
+  <span
+    css={css`
+      color: var(--color-nord-9);
+    `}
+  >
+    {children}
+  </span>
 );
 
 Bracket.propTypes = {

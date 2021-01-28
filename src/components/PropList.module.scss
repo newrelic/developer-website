@@ -14,53 +14,8 @@
   }
 }
 
-.propName {
-  font-weight: bold;
-}
-
 .info {
   overflow-wrap: break-all;
-}
-
-.default {
-  margin-top: 2rem;
-
-  .label {
-    color: var(--accent-text-color);
-    font-size: 0.75rem;
-    font-weight: bold;
-  }
-}
-
-.deprecation {
-  padding: 1rem;
-  background: var(--color-red-100);
-  color: var(--color-neutrals-900);
-
-  :global(.dark-mode) & {
-    color: var(--color-white);
-    background: var(--color-red-900);
-  }
-}
-
-.deprecationDate {
-  color: var(--color-red-400);
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.deprecationMarkdownContainer {
-  p:last-child {
-    margin-bottom: 0;
-  }
-
-  code {
-    background: var(--color-red-200);
-
-    :global(.dark-mode) & {
-      background: var(--color-red-700);
-    }
-  }
 }
 
 .flagged {
@@ -69,27 +24,7 @@
   text-transform: uppercase;
   margin-left: 0.5rem;
   font-weight: bold;
-}
-
-.codeDef {
-  font-size: 0.875rem;
-  max-height: 320px;
-  overflow-y: auto;
-}
-
-.shape {
-  &:not(:last-child) {
-    margin-bottom: 4rem;
-  }
-
-  h3 {
-    color: var(--accent-text-color);
-  }
-
-  .container {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
+  letter-spacing: 0.05em;
 }
 
 .section:not(:last-child) {
