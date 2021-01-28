@@ -11,18 +11,6 @@
   }
 }
 
-.type {
-  padding: 0.125rem;
-  border-radius: 0.125rem;
-  color: var(--color-green-500);
-  background: var(--color-green-050);
-
-  :global(.dark-mode) & {
-    color: var(--color-green-600);
-    background: var(--color-green-100);
-  }
-}
-
 .comment {
   color: var(--color-neutrals-500);
 
