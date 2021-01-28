@@ -20,19 +20,11 @@ const RelicansPage = () => {
     });
 
     return (
-<<<<<<< HEAD
-      <div key={teamMember} className={styles.point}>
-        <img
-          src={teamMember.avatar}
-          className={styles.avatar}
-          alt="Relican's member avatar"
-=======
       <div className={styles.point} key={i}>
         <img
           alt={teamMember.name}
           src={teamMember.avatar}
           className={styles.avatar}
->>>>>>> 3c2a82d0dc1ffc9faf5830946bda003ed1ce0261
         />
         <h3>{teamMember.name}</h3>
         <h4>{teamMember.pronouns}</h4>
@@ -102,10 +94,6 @@ const RelicansPage = () => {
               </p>
             </div>
             <iframe
-<<<<<<< HEAD
-              title="youtubeVideo"
-              width="560"
-=======
               css={css`
                 max-width: 560px;
                 iframe {
@@ -115,7 +103,6 @@ const RelicansPage = () => {
               `}
               width="560"
               title="Relicans Page Video"
->>>>>>> 3c2a82d0dc1ffc9faf5830946bda003ed1ce0261
               height="315"
               src="https://www.youtube.com/embed/OlW3g631ero"
               frameBorder="0"
