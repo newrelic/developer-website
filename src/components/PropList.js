@@ -6,7 +6,7 @@ import FunctionDefinition from './FunctionDefinition';
 import Markdown from './Markdown';
 import ReferenceExample from './ReferenceExample';
 import styles from './PropList.module.scss';
-import { format } from 'date-fns';
+import { graphql } from 'gatsby';
 
 const PropTypeInfo = ({ type }) => {
   switch (type.raw) {
@@ -127,7 +127,7 @@ const PropList = ({ propTypes }) => {
                 {deprecation && (
                   <div className={cx(styles.deprecation, styles.section)}>
                     <div className={styles.deprecationDate}>
-                      Due {format(new Date(deprecation.date), 'MMMM do, yyyy')}
+                      Due {deprecation.date}
                     </div>
                     <Markdown
                       className={styles.deprecationMarkdownContainer}
@@ -165,8 +165,10 @@ PropList.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string,
+      examples: PropTypes.arrayOf(ReferenceExample.propTypes.example)
+        .isRequired,
       deprecation: PropTypes.shape({
-        date: PropTypes.number,
+        date: PropTypes.string,
         description: PropTypes.string,
       }),
       isRequired: PropTypes.bool,
@@ -178,5 +180,24 @@ PropList.propTypes = {
     })
   ),
 };
+
+export const query = graphql`
+  fragment PropList_propTypes on NewRelicSdkPropTypeDefinition {
+    name
+    description
+    deprecation {
+      date(formatString: "MMMM Do, YYYY")
+      description
+    }
+    examples {
+      ...ReferenceExample_example
+    }
+    isRequired
+    type {
+      raw
+    }
+    defaultValue
+  }
+`;
 
 export default PropList;

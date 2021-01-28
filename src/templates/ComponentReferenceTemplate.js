@@ -41,20 +41,22 @@ const previewStyles = {
 };
 
 const ComponentReferenceTemplate = ({ data }) => {
-  const { mdx, newRelicSdkComponent } = data;
-  const { frontmatter } = mdx;
-  const { description, component } = frontmatter;
-  const { propTypes = [] } = useComponentDoc(component) ?? {};
-
   const {
-    name,
-    description: componentDescription,
-    usage,
-    examples,
-    methods,
-    typeDefs,
-    constants,
-  } = newRelicSdkComponent;
+    mdx,
+    newRelicSdkComponent: {
+      name,
+      description: componentDescription,
+      usage,
+      examples,
+      methods,
+      typeDefs,
+      constants,
+      propTypes,
+    },
+  } = data;
+
+  const { frontmatter } = mdx;
+  const { description } = frontmatter;
 
   return (
     <>
@@ -78,17 +80,17 @@ const ComponentReferenceTemplate = ({ data }) => {
                 {examples.map((example, i) => (
                   <ReferenceExample
                     key={i}
-                    useToastManager={component === 'Toast'}
+                    useToastManager={name === 'Toast'}
                     className={styles.componentExample}
                     example={example}
-                    previewStyle={previewStyles[component]}
+                    previewStyle={previewStyles[name]}
                   />
                 ))}
               </div>
             </section>
           )}
 
-          {component === 'Icon' && (
+          {name === 'Icon' && (
             <section className={templateStyles.section}>
               <IconGallery />
             </section>
@@ -144,16 +146,16 @@ export const pageQuery = graphql`
     mdx(frontmatter: { path: { eq: $path } }) {
       body
       frontmatter {
-        path
-        title
         description
-        component
       }
     }
     newRelicSdkComponent(fields: { slug: { eq: $path } }) {
       name
       description
       usage
+      propTypes {
+        ...PropList_propTypes
+      }
       examples {
         ...ReferenceExample_example
       }
