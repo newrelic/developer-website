@@ -43,14 +43,14 @@ const ComponentReferenceTemplate = ({ data }) => {
   const { mdx, newRelicSdkComponent } = data;
   const { frontmatter } = mdx;
   const { description, component } = frontmatter;
-  const { methods = [], typeDefs = [], propTypes = [] } =
-    useComponentDoc(component) ?? {};
+  const { typeDefs = [], propTypes = [] } = useComponentDoc(component) ?? {};
 
   const {
     name,
     description: componentDescription,
     usage,
     examples,
+    methods,
   } = newRelicSdkComponent;
 
   return (
@@ -144,6 +144,9 @@ export const pageQuery = graphql`
       usage
       examples {
         ...ReferenceExample_example
+      }
+      methods {
+        ...MethodReference_method
       }
     }
   }

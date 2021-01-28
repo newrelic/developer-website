@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import CodeDef from './CodeDef';
 import styles from './FunctionDefinition.module.scss';
+import { graphql } from 'gatsby';
 
-const FunctionDefinition = ({ className, params, returnValue }) => {
+const FunctionDefinition = ({ className, arguments: params, returnValue }) => {
   return (
     <CodeDef className={cx(styles.container, className)}>
       <CodeDef.Keyword>function</CodeDef.Keyword>{' '}
@@ -33,7 +34,7 @@ const FunctionDefinition = ({ className, params, returnValue }) => {
 
 FunctionDefinition.propTypes = {
   className: PropTypes.string,
-  params: PropTypes.arrayOf(
+  arguments: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       type: PropTypes.string,
@@ -44,5 +45,17 @@ FunctionDefinition.propTypes = {
     type: PropTypes.string.isRequired,
   }).isRequired,
 };
+
+export const query = graphql`
+  fragment FunctionDefinition_arguments on NewRelicSdkFunctionArgument {
+    name
+    type
+    description
+  }
+
+  fragment FunctionDefinition_returnValue on NewRelicSdkFunctionReturnValue {
+    type
+  }
+`;
 
 export default FunctionDefinition;

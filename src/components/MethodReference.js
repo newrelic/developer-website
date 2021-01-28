@@ -4,6 +4,7 @@ import ReferenceExample from './ReferenceExample';
 import FunctionDefinition from './FunctionDefinition';
 import Markdown from './Markdown';
 import styles from './MethodReference.module.scss';
+import { graphql } from 'gatsby';
 
 const MethodReference = ({ className, method }) => (
   <div className={className}>
@@ -11,7 +12,7 @@ const MethodReference = ({ className, method }) => (
     <Markdown className={styles.description} source={method.description} />
     <FunctionDefinition
       className={styles.functionDefinition}
-      params={method.params}
+      arguments={method.arguments}
       returnValue={method.returnValue}
     />
     {method.examples.map((example, i) => (
@@ -25,10 +26,26 @@ MethodReference.propTypes = {
   method: PropTypes.shape({
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
-    params: FunctionDefinition.propTypes.params,
+    arguments: FunctionDefinition.propTypes.params,
     returnValue: FunctionDefinition.propTypes.returnValue,
     examples: PropTypes.arrayOf(ReferenceExample.propTypes.example),
   }),
 };
+
+export const query = graphql`
+  fragment MethodReference_method on NewRelicSdkMethod {
+    name
+    description
+    examples {
+      ...ReferenceExample_example
+    }
+    arguments {
+      ...FunctionDefinition_arguments
+    }
+    returnValue {
+      ...FunctionDefinition_returnValue
+    }
+  }
+`;
 
 export default MethodReference;
