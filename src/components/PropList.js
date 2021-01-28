@@ -246,6 +246,21 @@ export const query = graphql`
               ... on NewRelicSdkPropTypeFunctionMeta {
                 ...FuncType
               }
+              ... on NewRelicSdkPropTypeShapeMeta {
+                ...ShapeType
+                types {
+                  type {
+                    meta {
+                      ... on NewRelicSdkPropTypeEnumMeta {
+                        constants
+                      }
+                      ... on NewRelicSdkPropTypeFunctionMeta {
+                        ...FuncType
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
