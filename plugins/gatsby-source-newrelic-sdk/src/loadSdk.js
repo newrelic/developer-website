@@ -1,8 +1,6 @@
 const vm = require('vm');
 const fetch = require('node-fetch');
-
-const BASE_URL =
-  'https://d1zobbh8kytrtv.cloudfront.net/platform/wanda--wanda-ec-ui--nr1-docs';
+const { BASE_URL } = require('./constants');
 
 const getBundle = (cache) => async (src) => {
   const script = await cache.get(src);
