@@ -103,22 +103,26 @@ const PropList = ({ propTypes }) => {
                   )}
                 </div>
                 <CodeDef.Type>{type.name}</CodeDef.Type>
-                {defaultValue !== undefined && (
+                {defaultValue !== null && (
                   <div className={styles.default}>
                     <div className={styles.label}>DEFAULT</div>
                     <code>
                       {String(defaultValue)
                         .split('.')
-                        .map((word, idx, parts) => (
-                          <Fragment key={idx}>
-                            {word}
-                            {idx !== parts.length - 1 && (
-                              <>
-                                <wbr />.
-                              </>
-                            )}
-                          </Fragment>
-                        ))}
+                        .map((word, idx, parts) =>
+                          word === '' ? (
+                            '""'
+                          ) : (
+                            <Fragment key={idx}>
+                              {word}
+                              {idx !== parts.length - 1 && (
+                                <>
+                                  <wbr />.
+                                </>
+                              )}
+                            </Fragment>
+                          )
+                        )}
                     </code>
                   </div>
                 )}
