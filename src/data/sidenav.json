@@ -620,6 +620,10 @@
               {
                 "displayName": "nerdlet",
                 "url": "/apis/nerdlet"
+              },
+              {
+                "displayName": "ngql",
+                "url": "/apis/ngql"
               }
             ]
           }
