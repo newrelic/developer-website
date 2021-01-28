@@ -27,7 +27,11 @@ const RelicansPage = () => {
         <p>
           Aaron Bassett is a recovering senior software engineer turned Senior
           Developer Advocate with{' '}
-          <a href="https://mongodb.com" target="_blank" rel="noopener" rel="noreferrer">
+          <a
+            href="https://mongodb.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             MongoDB
           </a>
           . He is a developer, public speaker, writer, and mentor; he spends
@@ -397,8 +401,12 @@ const RelicansPage = () => {
     });
 
     return (
-      <div className={styles.point}>
-        <img src={teamMember.avatar} className={styles.avatar} />
+      <div key={teamMember} className={styles.point}>
+        <img
+          src={teamMember.avatar}
+          className={styles.avatar}
+          alt="Relican's member avatar"
+        />
         <h3>{teamMember.name}</h3>
         <h4>{teamMember.pronouns}</h4>
         <ul className={styles.socials}>{socialItems}</ul>
@@ -452,6 +460,7 @@ const RelicansPage = () => {
               </p>
             </div>
             <iframe
+              title="youtubeVideo"
               width="560"
               height="315"
               src="https://www.youtube.com/embed/OlW3g631ero"
