@@ -16,7 +16,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage, createRedirect } = actions;
 
   const result = await graphql(`
-    {
+    query {
       allMdx(
         limit: 1000
         filter: { fileAbsolutePath: { regex: "/src/markdown-pages/" } }
@@ -35,6 +35,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
+
+      allNewRelicSdkComponent {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -44,7 +54,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  const { allMdx } = result.data;
+  const { allMdx, allNewRelicSdkComponent } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
     const { frontmatter } = node;
@@ -73,6 +83,20 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           MAX_RESULTS - (frontmatter.resources || []).length,
           0
         ),
+      },
+    });
+  });
+
+  allNewRelicSdkComponent.edges.forEach(({ node }) => {
+    const {
+      fields: { slug },
+    } = node;
+
+    createPage({
+      path: slug,
+      component: path.resolve('./src/templates/ComponentReferenceTemplate.js'),
+      context: {
+        slug,
       },
     });
   });

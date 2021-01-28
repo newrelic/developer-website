@@ -40,7 +40,6 @@ const previewStyles = {
 
 const ComponentReferenceTemplate = ({ data }) => {
   const {
-    mdx,
     newRelicSdkComponent: {
       name,
       description: componentDescription,
@@ -52,12 +51,9 @@ const ComponentReferenceTemplate = ({ data }) => {
     },
   } = data;
 
-  const { frontmatter } = mdx;
-  const { description } = frontmatter;
-
   return (
     <>
-      <SEO title={name} description={description} />
+      <SEO title={name} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title={name} />
         <PageLayout.Content>
@@ -130,14 +126,8 @@ ComponentReferenceTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    mdx(frontmatter: { path: { eq: $path } }) {
-      body
-      frontmatter {
-        description
-      }
-    }
-    newRelicSdkComponent(fields: { slug: { eq: $path } }) {
+  query($slug: String!) {
+    newRelicSdkComponent(fields: { slug: { eq: $slug } }) {
       name
       description
       usage
