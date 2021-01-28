@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
@@ -11,7 +10,7 @@ import TypeDefReference from '../components/TypeDefReference';
 import ConstantReference from '../components/ConstantReference';
 import SEO from '../components/Seo';
 
-import templateStyles from './ReferenceTemplate.module.scss';
+import { Section, SectionTitle } from './referenceTemplateStyles';
 
 const ApiReferenceTemplate = ({ data }) => {
   const {
@@ -33,26 +32,20 @@ const ApiReferenceTemplate = ({ data }) => {
         <PageLayout.Header title={name} />
         <PageLayout.Content>
           {description && (
-            <section
-              className={cx(
-                templateStyles.section,
-                templateStyles.description,
-                'intro-text'
-              )}
-            >
+            <Section className="intro-text">
               <Markdown source={description} />
-            </section>
+            </Section>
           )}
 
-          <section className={templateStyles.section}>
-            <h2 className={templateStyles.sectionTitle}>Usage</h2>
+          <Section>
+            <SectionTitle>Usage</SectionTitle>
             <CodeBlock language="js">{usage}</CodeBlock>
-          </section>
+          </Section>
 
           {examples.length > 0 && (
-            <section className={templateStyles.section}>
+            <Section>
               <div>
-                <h2 className={templateStyles.sectionTitle}>Examples</h2>
+                <SectionTitle>Examples</SectionTitle>
                 {examples.map((example, i) => (
                   <ReferenceExample
                     key={i}
@@ -61,38 +54,34 @@ const ApiReferenceTemplate = ({ data }) => {
                   />
                 ))}
               </div>
-            </section>
+            </Section>
           )}
 
           {methods.length > 0 && (
-            <section className={templateStyles.section}>
-              <h2 className={templateStyles.sectionTitle}>API methods</h2>
+            <Section>
+              <SectionTitle>API methods</SectionTitle>
               {methods.map((method, i) => (
-                <MethodReference
-                  key={i}
-                  method={method}
-                  className={templateStyles.section}
-                />
+                <MethodReference key={i} method={method} />
               ))}
-            </section>
+            </Section>
           )}
 
           {typeDefs.length > 0 && (
-            <section className={templateStyles.section}>
-              <h2 className={templateStyles.sectionTitle}>Type definitions</h2>
+            <Section>
+              <SectionTitle>Type definitions</SectionTitle>
               {typeDefs.map((typeDef, i) => (
                 <TypeDefReference key={i} typeDef={typeDef} />
               ))}
-            </section>
+            </Section>
           )}
 
           {constants.length > 0 && (
-            <section className={templateStyles.section}>
-              <h2 className={templateStyles.sectionTitle}>Constants</h2>
+            <Section>
+              <SectionTitle>Constants</SectionTitle>
               {constants.map((constant, i) => (
                 <ConstantReference key={i} constant={constant} />
               ))}
-            </section>
+            </Section>
           )}
         </PageLayout.Content>
       </PageLayout>
