@@ -13,7 +13,7 @@ const ConstantReference = ({ constant }) => {
       <h3 className={styles.name}>
         <code>{name}</code>
       </h3>
-      <JsonValue value={value} />
+      <JsonValue value={JSON.parse(value)} />
     </CodeDef>
   );
 };
@@ -21,12 +21,7 @@ const ConstantReference = ({ constant }) => {
 ConstantReference.propTypes = {
   constant: PropTypes.shape({
     name: PropTypes.string,
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object,
-      PropTypes.number,
-      PropTypes.array,
-    ]),
+    value: PropTypes.string.isRequired,
   }),
 };
 
