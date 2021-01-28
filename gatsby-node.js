@@ -117,19 +117,6 @@ exports.onCreateNode = ({ node, actions }) => {
     });
   }
 
-  if (node.context && !node.context.fileRelativePath) {
-    const { createPage } = actions;
-    const { path, component } = node;
-
-    createPage({
-      path,
-      component,
-      context: {
-        fileRelativePath: getFileRelativePath(component),
-      },
-    });
-  }
-
   if (node.internal.type === 'NewRelicSdkComponent') {
     createNodeField({
       node,
