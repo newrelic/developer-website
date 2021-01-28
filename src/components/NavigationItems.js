@@ -20,7 +20,7 @@ const iconLibrary = {
   'Developer events': 'event',
   'Developer champions': 'developerChampions',
   'The Relicans': 'theRelicans',
-  'New Relic Builders' : 'builders',
+  'New Relic Builders': 'builders',
   Podcasts: 'podcasts',
   'Try our APIs': 'tryOurAPIs',
 };

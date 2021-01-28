@@ -20,13 +20,14 @@ const DeveloperChampionPage = () => {
             <div>
               <p>
                 {' '}
-                Our goal with the New Relic Community, also known as <a href="https://www.therelicans.com/">The Relican's</a>, is to make everyone feel welcome
-                regardless of their background or current ability, recognize
-                everyone's individuality and help them to find a way to learn
-                that fits their needs, award members that are active and helpful
-                and be a safe space where everyone is comfortable to teach,
-                learn and grow, The New Relic Builders is an important piece to
-                make sure these goals are reached.
+                Our goal with the New Relic Community, also known as{' '}
+                <a href="https://www.therelicans.com/">The Relican's</a>, is to
+                make everyone feel welcome regardless of their background or
+                current ability, recognize everyone's individuality and help
+                them to find a way to learn that fits their needs, award members
+                that are active and helpful and be a safe space where everyone
+                is comfortable to teach, learn and grow, The New Relic Builders
+                is an important piece to make sure these goals are reached.
               </p>
 
               <hr />
@@ -38,7 +39,7 @@ const DeveloperChampionPage = () => {
               </p>
 
               <h3>What is a Builder?</h3>
-              
+
               <p>
                 {' '}
                 Builders are special members of our community and will be there
@@ -91,13 +92,13 @@ const DeveloperChampionPage = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="#006c75"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-edit-3"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-edit-3"
               >
-                <path d="M12 20h9"></path>
-                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
               </svg>
 
               <h4>Learn the Craft</h4>
@@ -116,13 +117,13 @@ const DeveloperChampionPage = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="#006c75"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-trending-up"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-trending-up"
               >
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                <polyline points="17 6 23 6 23 12"></polyline>
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                <polyline points="17 6 23 6 23 12" />
               </svg>
               <h4>Build your personal Brand</h4>
               <p>
@@ -139,15 +140,15 @@ const DeveloperChampionPage = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="#006c75"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-users"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-users"
               >
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg>
 
               <h4>Mentor Others</h4>
