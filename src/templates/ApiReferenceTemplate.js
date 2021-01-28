@@ -5,33 +5,34 @@ import PropTypes from 'prop-types';
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import Markdown from '../components/Markdown';
+import ReferenceExample from '../components/ReferenceExample';
 import MethodReference from '../components/MethodReference';
 import TypeDefReference from '../components/TypeDefReference';
 import ConstantReference from '../components/ConstantReference';
 import SEO from '../components/Seo';
 
 import templateStyles from './ReferenceTemplate.module.scss';
-import useApiDoc from '../hooks/useApiDoc';
 
 const ApiReferenceTemplate = ({ data }) => {
-  const { mdx } = data;
-  const { frontmatter } = mdx;
-  const { title, description, api } = frontmatter;
   const {
-    description: apiDescription,
-    methods = [],
-    usage = '',
-    typeDefs = [],
-    constants = [],
-  } = useApiDoc(api) ?? {};
+    newRelicSdkApi: {
+      name,
+      usage,
+      description,
+      examples,
+      methods,
+      typeDefs,
+      constants,
+    },
+  } = data;
 
   return (
     <>
-      <SEO title={title} description={description} />
+      <SEO title={name} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title={api} />
+        <PageLayout.Header title={name} />
         <PageLayout.Content>
-          {apiDescription && (
+          {description && (
             <section
               className={cx(
                 templateStyles.section,
@@ -39,7 +40,7 @@ const ApiReferenceTemplate = ({ data }) => {
                 'intro-text'
               )}
             >
-              <Markdown source={apiDescription} />
+              <Markdown source={description} />
             </section>
           )}
 
@@ -47,6 +48,21 @@ const ApiReferenceTemplate = ({ data }) => {
             <h2 className={templateStyles.sectionTitle}>Usage</h2>
             <CodeBlock language="js">{usage}</CodeBlock>
           </section>
+
+          {examples.length > 0 && (
+            <section className={templateStyles.section}>
+              <div>
+                <h2 className={templateStyles.sectionTitle}>Examples</h2>
+                {examples.map((example, i) => (
+                  <ReferenceExample
+                    key={i}
+                    useToastManager={name === 'Toast'}
+                    example={example}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
 
           {methods.length > 0 && (
             <section className={templateStyles.section}>
@@ -90,13 +106,21 @@ ApiReferenceTemplate.propTypes = {
 
 export const pageQuery = graphql`
   query($path: String!) {
-    mdx(frontmatter: { path: { eq: $path } }) {
-      body
-      frontmatter {
-        path
-        title
-        description
-        api
+    newRelicSdkApi(fields: { slug: { eq: $path } }) {
+      name
+      description
+      usage
+      examples {
+        ...ReferenceExample_example
+      }
+      methods {
+        ...MethodReference_method
+      }
+      typeDefs {
+        ...TypeDefReference_typeDef
+      }
+      constants {
+        ...ConstantReference_constant
       }
     }
   }
