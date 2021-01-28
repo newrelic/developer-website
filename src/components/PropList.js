@@ -68,15 +68,32 @@ const PropTypeInfo = ({ type }) => {
       ));
     case 'shape':
       return (
-        <div className={styles.shape}>
+        <div
+          css={css`
+            &:not(:last-child) {
+              margin-bottom: 4rem;
+            }
+          `}
+        >
           <h3
             css={css`
-              color: var(--heading-text-color);
+              color: var(--accent-text-color);
+              font-family: var(--code-font);
             `}
           >
             shape
           </h3>
-          <PropList propTypes={type.meta.types} />
+          <PropList
+            propTypes={type.meta.types}
+            css={css`
+              border-bottom: 0 !important;
+              padding-bottom: 0 !important;
+
+              &:not(:last-child) {
+                margin-bottom: 1rem !important;
+              }
+            `}
+          />
         </div>
       );
     default:
@@ -91,7 +108,7 @@ PropTypeInfo.propTypes = {
   }),
 };
 
-const PropList = ({ propTypes }) => {
+const PropList = ({ className, propTypes }) => {
   if (propTypes.length === 0) {
     return <p>There are no props for this component.</p>;
   }
@@ -109,7 +126,7 @@ const PropList = ({ propTypes }) => {
           defaultValue,
         }) => {
           return (
-            <div key={name} className={styles.container}>
+            <div key={name} className={cx(styles.container, className)}>
               <div className={styles.info}>
                 <div
                   css={css`
@@ -218,6 +235,7 @@ const PropList = ({ propTypes }) => {
 };
 
 PropList.propTypes = {
+  className: PropTypes.string,
   propTypes: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

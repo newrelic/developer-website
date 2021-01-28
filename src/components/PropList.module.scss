@@ -27,21 +27,6 @@
   letter-spacing: 0.05em;
 }
 
-.shape {
-  &:not(:last-child) {
-    margin-bottom: 4rem;
-  }
-
-  h3 {
-    color: var(--accent-text-color);
-  }
-
-  .container {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-}
-
 .section:not(:last-child) {
   margin-bottom: 2rem;
 }
