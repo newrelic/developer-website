@@ -212,6 +212,19 @@ export const query = graphql`
               ... on NewRelicSdkPropTypeFunctionMeta {
                 ...FuncType
               }
+              ... on NewRelicSdkPropTypeUnionMeta {
+                ...UnionType
+                types {
+                  meta {
+                    ... on NewRelicSdkPropTypeEnumMeta {
+                      constants
+                    }
+                    ... on NewRelicSdkPropTypeFunctionMeta {
+                      ...FuncType
+                    }
+                  }
+                }
+              }
             }
           }
         }
