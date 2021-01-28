@@ -1,7 +1,7 @@
 module.exports.BASE_URL =
   'https://d1zobbh8kytrtv.cloudfront.net/platform/wanda--wanda-ec-ui--nr1-docs';
 
-module.exports.DOCUMENTED_APIS = ['logger', 'navigation', 'nerdlet'];
+module.exports.DOCUMENTED_APIS = ['logger', 'navigation', 'nerdlet', 'ngql'];
 module.exports.DOCUMENTED_COMPONENTS = [
   'AccountPicker',
   'AccountsQuery',
