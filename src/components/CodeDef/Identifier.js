@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './CodeDef.module.scss';
+import { css } from '@emotion/core';
 
 const Identifier = ({ children }) => (
-  <span className={styles.identifier}>{children}</span>
+  <span
+    css={css`
+      color: var(--color-nord-6);
+    `}
+  >
+    {children}
+  </span>
 );
 
 Identifier.propTypes = {

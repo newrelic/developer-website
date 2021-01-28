@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './CodeDef.module.scss';
+import { css } from '@emotion/core';
 
 const NumberValue = ({ value }) => (
-  <span className={styles.number}>{value}</span>
+  <span
+    css={css`
+      color: var(--color-nord-15);
+    `}
+  >
+    {value}
+  </span>
 );
 
 NumberValue.propTypes = {
