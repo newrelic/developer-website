@@ -2,7 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CodeDef from './CodeDef';
 
-const JsonValue = ({ inline, value }) => {
+const JsonValue = ({ inline, value: rawValue }) => {
+  const value = JSON.parse(rawValue);
+
   if (value == null) {
     return <CodeDef.Keyword>{String(value)}</CodeDef.Keyword>;
   }
@@ -82,11 +84,7 @@ ObjectValue.propTypes = {
 
 JsonValue.propTypes = {
   inline: PropTypes.bool,
-  value: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array,
-    PropTypes.string,
-  ]),
+  value: PropTypes.string.isRequired,
 };
 
 export default JsonValue;
