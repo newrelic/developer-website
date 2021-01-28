@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReferenceExample.module.scss';
 import ReferencePreview from './ReferencePreview';
+import { graphql } from 'gatsby';
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 
 const platformStateContextMock = {
@@ -26,7 +27,7 @@ const ReferenceExample = ({
     PlatformStateContext,
     NerdletStateContext,
   } = window.__NR1_SDK__.default;
-  const { live } = example.options;
+  const { label, live, preview, sourceCode } = example;
 
   const scope = useMemo(
     () => ({
@@ -53,16 +54,16 @@ const ReferenceExample = ({
     <PlatformStateContext.Provider value={platformStateContextMock}>
       <NerdletStateContext.Provider value={nerdletStateContextMock}>
         <div className={className}>
-          <h3 className={styles.title}>{example.label}</h3>
+          <h3 className={styles.title}>{label}</h3>
           <CodeBlock
             lineNumbers
             language="jsx"
             live={live}
-            preview={live}
+            preview={preview}
             scope={scope}
             components={{ Preview }}
           >
-            {example.sourceCode}
+            {sourceCode}
           </CodeBlock>
         </div>
       </NerdletStateContext.Provider>
@@ -75,10 +76,20 @@ ReferenceExample.propTypes = {
   example: PropTypes.shape({
     label: PropTypes.string.isRequired,
     sourceCode: PropTypes.string.isRequired,
-    options: PropTypes.object.isRequired,
+    live: PropTypes.bool.isRequired,
+    preview: PropTypes.bool.isRequired,
   }).isRequired,
   useToastManager: PropTypes.bool,
   previewStyle: PropTypes.object,
 };
+
+export const query = graphql`
+  fragment ReferenceExample_example on NewRelicSdkExample {
+    label
+    sourceCode
+    live
+    preview
+  }
+`;
 
 export default ReferenceExample;

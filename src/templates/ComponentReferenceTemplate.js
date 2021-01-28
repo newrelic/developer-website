@@ -40,23 +40,24 @@ const previewStyles = {
 };
 
 const ComponentReferenceTemplate = ({ data }) => {
-  const { mdx } = data;
+  const { mdx, newRelicSdkComponent } = data;
   const { frontmatter } = mdx;
-  const { title, description, component } = frontmatter;
+  const { description, component } = frontmatter;
+  const { methods = [], typeDefs = [], propTypes = [] } =
+    useComponentDoc(component) ?? {};
+
   const {
-    examples = [],
+    name,
     description: componentDescription,
-    methods = [],
-    usage = '',
-    typeDefs = [],
-    propTypes = [],
-  } = useComponentDoc(component) ?? {};
+    usage,
+    examples,
+  } = newRelicSdkComponent;
 
   return (
     <>
-      <SEO title={title} description={description} />
+      <SEO title={name} description={description} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title={component} />
+        <PageLayout.Header title={name} />
         <PageLayout.Content>
           <section className={cx(templateStyles.section, 'intro-text')}>
             <Markdown source={componentDescription} />
@@ -135,6 +136,14 @@ export const pageQuery = graphql`
         title
         description
         component
+      }
+    }
+    newRelicSdkComponent(fields: { slug: { eq: $path } }) {
+      name
+      description
+      usage
+      examples {
+        ...ReferenceExample_example
       }
     }
   }
