@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './TypeDefReference.module.scss';
 import CodeDef from './CodeDef';
+import { graphql } from 'gatsby';
 
 const TypeDefReference = ({ typeDef }) => {
   const { properties, name } = typeDef;
@@ -34,5 +35,16 @@ TypeDefReference.propTypes = {
     name: PropTypes.string,
   }),
 };
+
+export const query = graphql`
+  fragment TypeDefReference_typeDef on NewRelicSdkTypeDefinition {
+    name
+    properties {
+      name
+      description
+      type
+    }
+  }
+`;
 
 export default TypeDefReference;
