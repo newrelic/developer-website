@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import cx from 'classnames';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import CodeDef from './CodeDef';
 import FunctionDefinition from './FunctionDefinition';
@@ -21,7 +22,12 @@ const PropTypeInfo = ({ type }) => {
       const { itemTypes } = type.meta;
 
       return itemTypes.raw === 'oneOf' ? (
-        <CodeDef className={styles.codeDef}>
+        <CodeDef
+          css={css`
+            max-height: 320px;
+            overflow-y: scroll;
+          `}
+        >
           <CodeDef.Bracket>{'<'}</CodeDef.Bracket>
           <CodeDef.Keyword>Array of</CodeDef.Keyword>
           <CodeDef.Block>
@@ -35,7 +41,12 @@ const PropTypeInfo = ({ type }) => {
     }
     case 'oneOf':
       return (
-        <CodeDef className={styles.codeDef}>
+        <CodeDef
+          css={css`
+            max-height: 320px;
+            overflow-y: scroll;
+          `}
+        >
           <CodeDef.Bracket>{'<'}</CodeDef.Bracket>
           <CodeDef.Keyword>One of</CodeDef.Keyword>
           <CodeDef.Block>
@@ -57,7 +68,13 @@ const PropTypeInfo = ({ type }) => {
     case 'shape':
       return (
         <div className={styles.shape}>
-          <h3>shape</h3>
+          <h3
+            css={css`
+              color: var(--heading-text-color);
+            `}
+          >
+            shape
+          </h3>
           <PropList propTypes={type.meta.types} />
         </div>
       );
@@ -93,19 +110,60 @@ const PropList = ({ propTypes }) => {
           return (
             <div key={name} className={styles.container}>
               <div className={styles.info}>
-                <div>
-                  <code className={styles.propName}>{name}</code>
+                <div
+                  css={css`
+                    margin-bottom: 1rem;
+                  `}
+                >
+                  <span
+                    css={css`
+                      font-weight: bold;
+                      font-size: 1rem;
+                      color: var(--color-neutrals-800);
+
+                      .dark-mode & {
+                        color: var(--color-dark-800);
+                      }
+                    `}
+                  >
+                    {name}
+                  </span>
                   {isRequired && (
                     <span className={styles.flagged}>required</span>
                   )}
                   {deprecation && (
                     <span className={styles.flagged}>deprecated</span>
                   )}
+
+                  <span
+                    css={css`
+                      font-size: 0.875rem;
+                      font-family: var(--code-font);
+                      margin-left: 0.5rem;
+                      font-weight: 600;
+                      color: var(--accent-text-color);
+                    `}
+                  >
+                    {type.name}
+                  </span>
                 </div>
-                <CodeDef.Type>{type.name}</CodeDef.Type>
                 {defaultValue !== null && (
-                  <div className={styles.default}>
-                    <div className={styles.label}>DEFAULT</div>
+                  <div
+                    css={css`
+                      margin-top: 2rem;
+                    `}
+                  >
+                    <div
+                      css={css`
+                        color: var(--accent-text-color);
+                        font-size: 0.75rem;
+                        font-weight: bold;
+                        letter-spacing: 0.05em;
+                        margin-bottom: 0.25rem;
+                      `}
+                    >
+                      DEFAULT
+                    </div>
                     <code>
                       {String(defaultValue)
                         .split('.')

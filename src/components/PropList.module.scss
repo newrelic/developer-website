@@ -14,22 +14,8 @@
   }
 }
 
-.propName {
-  font-weight: bold;
-}
-
 .info {
   overflow-wrap: break-all;
-}
-
-.default {
-  margin-top: 2rem;
-
-  .label {
-    color: var(--accent-text-color);
-    font-size: 0.75rem;
-    font-weight: bold;
-  }
 }
 
 .deprecation {
@@ -69,12 +55,7 @@
   text-transform: uppercase;
   margin-left: 0.5rem;
   font-weight: bold;
-}
-
-.codeDef {
-  font-size: 0.875rem;
-  max-height: 320px;
-  overflow-y: auto;
+  letter-spacing: 0.05em;
 }
 
 .shape {
