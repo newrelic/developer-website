@@ -5,7 +5,7 @@ frontend:
       commands:
         - nvm use $VERSION_NODE_12
         - rm -rf node_modules
-        - yarn install --frozen-lockfile
+        - SHARP_IGNORE_GLOBAL_LIBVIPS=true yarn install --frozen-lockfile
         - yarn clean
     build:
       commands:
