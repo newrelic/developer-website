@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
+import ConstantReference from '../components/ConstantReference';
 import ReferenceExample from '../components/ReferenceExample';
 import PageLayout from '../components/PageLayout';
 import Markdown from '../components/Markdown';
@@ -52,6 +53,7 @@ const ComponentReferenceTemplate = ({ data }) => {
     examples,
     methods,
     typeDefs,
+    constants,
   } = newRelicSdkComponent;
 
   return (
@@ -115,6 +117,15 @@ const ComponentReferenceTemplate = ({ data }) => {
               <h2 className={templateStyles.sectionTitle}>Type definitions</h2>
               {typeDefs.map((typeDef, i) => (
                 <TypeDefReference key={i} typeDef={typeDef} />
+              ))}
+            </section>
+          )}
+
+          {constants.length > 0 && (
+            <section className={templateStyles.section}>
+              <h2 className={templateStyles.sectionTitle}>Constants</h2>
+              {constants.map((constant, i) => (
+                <ConstantReference key={i} constant={constant} />
               ))}
             </section>
           )}

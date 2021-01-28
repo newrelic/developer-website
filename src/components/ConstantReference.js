@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CodeDef from './CodeDef';
 import JsonValue from './JsonValue';
 import styles from './ConstantReference.module.scss';
+import { graphql } from 'gatsby';
 
 const ConstantReference = ({ constant }) => {
   const { name, value } = constant;
@@ -28,5 +29,12 @@ ConstantReference.propTypes = {
     ]),
   }),
 };
+
+export const query = graphql`
+  fragment ConstantReference_constant on NewRelicSdkConstant {
+    name
+    value
+  }
+`;
 
 export default ConstantReference;
