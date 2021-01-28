@@ -314,7 +314,7 @@ const EXAMPLE_CSS = `
 
 const ReferencePreview = ({ className, style, useToastManager }) => {
   const [stylesLoaded, setStylesLoaded] = useState(false);
-  const { ToastManager } = window.__NR1_SDK__;
+  const { ToastManager } = window.__NR1_SDK__.default;
   const { newRelicSdk } = useStaticQuery(graphql`
     query {
       newRelicSdk {

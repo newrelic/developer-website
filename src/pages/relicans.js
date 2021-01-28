@@ -4,20 +4,11 @@ import SEO from '../components/Seo';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './relicans.module.scss';
-
-import aaronAvatar from '../images/relicans/aaron-bassett.jpg';
-import aishaAvatar from '../images/relicans/aisha-blake.jpg';
-import aliAvatar from '../images/relicans/ali-finkelstein.jpg';
-import chrisAvatar from '../images/relicans/chris-dabatos.jpg';
-import danielAvatar from '../images/relicans/daniel-kim.jpg';
-import dannyAvatar from '../images/relicans/danny-ramos.jpg';
-import jonanAvatar from '../images/relicans/jonan-scheffler.jpg';
-import kirkAvatar from '../images/relicans/kirk-haines.jpg';
-import miaAvatar from '../images/relicans/mia-moore.jpg';
-import pachiAvatar from '../images/relicans/pachi-carlson.jpg';
-import rachaelAvatar from '../images/relicans/rachael-wright-munn.jpg';
+import { teamMembers } from '../data/relicansData';
+import { css } from '@emotion/core';
 
 const RelicansPage = () => {
+<<<<<<< HEAD
   const teamMembers = [
     {
       name: 'Aaron Bassett',
@@ -393,6 +384,12 @@ const RelicansPage = () => {
     const socialItems = teamMember.socials.map((socialNetwork) => {
       return (
         <li key={socialNetwork}>
+=======
+  const teamMemberPanels = teamMembers.map((teamMember, i) => {
+    const socialItems = teamMember.socials.map((socialNetwork, j) => {
+      return (
+        <li key={j}>
+>>>>>>> 3c2a82d0dc1ffc9faf5830946bda003ed1ce0261
           <a href={socialNetwork.url}>
             <FeatherIcon name={socialNetwork.name} size="1.5rem" />
           </a>
@@ -401,11 +398,19 @@ const RelicansPage = () => {
     });
 
     return (
+<<<<<<< HEAD
       <div key={teamMember} className={styles.point}>
         <img
           src={teamMember.avatar}
           className={styles.avatar}
           alt="Relican's member avatar"
+=======
+      <div className={styles.point} key={i}>
+        <img
+          alt={teamMember.name}
+          src={teamMember.avatar}
+          className={styles.avatar}
+>>>>>>> 3c2a82d0dc1ffc9faf5830946bda003ed1ce0261
         />
         <h3>{teamMember.name}</h3>
         <h4>{teamMember.pronouns}</h4>
@@ -421,8 +426,23 @@ const RelicansPage = () => {
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="Relicans - The New Relic Developer Relations Team" />
         <PageLayout.Content>
-          <section className={cx(styles.section, styles.twoColumn)}>
-            <div>
+          <section
+            css={css`
+              display: flex;
+              justify-content: space-between;
+
+              @media (max-width: 1080px) {
+                flex-direction: column;
+              }
+            `}
+          >
+            <div
+              css={css`
+                flex: 1;
+                margin-right: 1rem;
+                margin-bottom: 1rem;
+              `}
+            >
               <p>
                 We love software, and more than that we love the people who make
                 it. Our entire platform is designed to make their lives easier.
@@ -460,8 +480,20 @@ const RelicansPage = () => {
               </p>
             </div>
             <iframe
+<<<<<<< HEAD
               title="youtubeVideo"
               width="560"
+=======
+              css={css`
+                max-width: 560px;
+                iframe {
+                  width: 100%;
+                  height: 315px;
+                }
+              `}
+              width="560"
+              title="Relicans Page Video"
+>>>>>>> 3c2a82d0dc1ffc9faf5830946bda003ed1ce0261
               height="315"
               src="https://www.youtube.com/embed/OlW3g631ero"
               frameBorder="0"
