@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import CodeDef from './CodeDef';
-import styles from './FunctionDefinition.module.scss';
 import { graphql } from 'gatsby';
 
 const FunctionDefinition = ({ className, arguments: params, returnValue }) => {
   return (
-    <CodeDef className={cx(styles.container, className)}>
+    <CodeDef className={className}>
       <CodeDef.Keyword>function</CodeDef.Keyword>{' '}
       <CodeDef.Bracket>{params.length > 0 ? '(' : '()'}</CodeDef.Bracket>
       {params.length > 0 && (
