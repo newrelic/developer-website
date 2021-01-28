@@ -248,6 +248,109 @@ export const query = graphql`
                   }
                 }
               }
+              ... on NewRelicSdkPropTypeUnionMeta {
+                ...UnionType
+                types {
+                  meta {
+                    ... on NewRelicSdkPropTypeArrayOfMeta {
+                      itemTypes {
+                        ...DefType
+                        meta {
+                          ... on NewRelicSdkPropTypeEnumMeta {
+                            constants
+                          }
+                          ... on NewRelicSdkPropTypeFunctionMeta {
+                            ...FuncType
+                          }
+                          ... on NewRelicSdkPropTypeShapeMeta {
+                            ...ShapeType
+                            types {
+                              type {
+                                meta {
+                                  ... on NewRelicSdkPropTypeArrayOfMeta {
+                                    itemTypes {
+                                      ...DefType
+                                      meta {
+                                        ... on NewRelicSdkPropTypeEnumMeta {
+                                          constants
+                                        }
+                                        ... on NewRelicSdkPropTypeFunctionMeta {
+                                          ...FuncType
+                                        }
+                                        ... on NewRelicSdkPropTypeShapeMeta {
+                                          ...ShapeType
+                                        }
+                                      }
+                                    }
+                                  }
+                                  ... on NewRelicSdkPropTypeEnumMeta {
+                                    constants
+                                  }
+                                  ... on NewRelicSdkPropTypeFunctionMeta {
+                                    ...FuncType
+                                  }
+                                  ... on NewRelicSdkPropTypeShapeMeta {
+                                    ...ShapeType
+                                  }
+                                  ... on NewRelicSdkPropTypeUnionMeta {
+                                    ...UnionType
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                    ... on NewRelicSdkPropTypeEnumMeta {
+                      constants
+                    }
+                    ... on NewRelicSdkPropTypeFunctionMeta {
+                      ...FuncType
+                    }
+                    ... on NewRelicSdkPropTypeShapeMeta {
+                      ...ShapeType
+                      types {
+                        type {
+                          meta {
+                            ... on NewRelicSdkPropTypeArrayOfMeta {
+                              itemTypes {
+                                ...DefType
+                                meta {
+                                  ... on NewRelicSdkPropTypeEnumMeta {
+                                    constants
+                                  }
+                                  ... on NewRelicSdkPropTypeFunctionMeta {
+                                    ...FuncType
+                                  }
+                                  ... on NewRelicSdkPropTypeShapeMeta {
+                                    ...ShapeType
+                                  }
+                                }
+                              }
+                            }
+                            ... on NewRelicSdkPropTypeEnumMeta {
+                              constants
+                            }
+                            ... on NewRelicSdkPropTypeFunctionMeta {
+                              ...FuncType
+                            }
+                            ... on NewRelicSdkPropTypeShapeMeta {
+                              ...ShapeType
+                            }
+                            ... on NewRelicSdkPropTypeUnionMeta {
+                              ...UnionType
+                            }
+                          }
+                        }
+                      }
+                    }
+                    ... on NewRelicSdkPropTypeUnionMeta {
+                      ...UnionType
+                    }
+                  }
+                }
+              }
             }
           }
         }
