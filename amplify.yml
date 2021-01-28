@@ -4,9 +4,7 @@ frontend:
     preBuild:
       commands:
         - nvm use $VERSION_NODE_12
-        - rm -rf node_modules
-        - SHARP_IGNORE_GLOBAL_LIBVIPS=true yarn install --frozen-lockfile
-        - yarn clean
+        - yarn install --frozen-lockfile
     build:
       commands:
         - nvm use $VERSION_NODE_12
