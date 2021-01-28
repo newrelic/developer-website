@@ -7,6 +7,7 @@ import FunctionDefinition from './FunctionDefinition';
 import Markdown from './Markdown';
 import ReferenceExample from './ReferenceExample';
 import styles from './PropList.module.scss';
+import { Callout } from '@newrelic/gatsby-theme-newrelic';
 import { graphql } from 'gatsby';
 
 const PropTypeInfo = ({ type }) => {
@@ -187,15 +188,9 @@ const PropList = ({ propTypes }) => {
               </div>
               <div>
                 {deprecation && (
-                  <div className={cx(styles.deprecation, styles.section)}>
-                    <div className={styles.deprecationDate}>
-                      Due {deprecation.date}
-                    </div>
-                    <Markdown
-                      className={styles.deprecationMarkdownContainer}
-                      source={deprecation.description}
-                    />
-                  </div>
+                  <Callout variant="caution" title={`Due ${deprecation.date}`}>
+                    <Markdown source={deprecation.description} />
+                  </Callout>
                 )}
                 {description && (
                   <Markdown

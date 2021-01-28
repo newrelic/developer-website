@@ -18,37 +18,6 @@
   overflow-wrap: break-all;
 }
 
-.deprecation {
-  padding: 1rem;
-  background: var(--color-red-100);
-  color: var(--color-neutrals-900);
-
-  :global(.dark-mode) & {
-    color: var(--color-white);
-    background: var(--color-red-900);
-  }
-}
-
-.deprecationDate {
-  color: var(--color-red-400);
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.deprecationMarkdownContainer {
-  p:last-child {
-    margin-bottom: 0;
-  }
-
-  code {
-    background: var(--color-red-200);
-
-    :global(.dark-mode) & {
-      background: var(--color-red-700);
-    }
-  }
-}
-
 .flagged {
   font-size: 0.75rem;
   color: var(--color-red-400);
