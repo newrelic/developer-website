@@ -21,7 +21,7 @@ const DeveloperChampionPage = () => {
               <p>
                 {' '}
                 Our goal with the New Relic Community, also known as{' '}
-                <a href="https://www.therelicans.com/">The Relican's</a>, is to
+                <a href="https://www.therelicans.com/">The Relicans</a>, is to
                 make everyone feel welcome regardless of their background or
                 current ability, recognize everyone's individuality and help
                 them to find a way to learn that fits their needs, award members
