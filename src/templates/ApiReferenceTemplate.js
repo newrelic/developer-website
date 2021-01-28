@@ -105,8 +105,8 @@ ApiReferenceTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    newRelicSdkApi(fields: { slug: { eq: $path } }) {
+  query($slug: String!) {
+    newRelicSdkApi(fields: { slug: { eq: $slug } }) {
       name
       description
       usage

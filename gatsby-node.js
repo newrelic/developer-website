@@ -45,6 +45,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
+
+      allNewRelicSdkApi {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -54,7 +64,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  const { allMdx, allNewRelicSdkComponent } = result.data;
+  const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
     const { frontmatter } = node;
@@ -95,6 +105,20 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     createPage({
       path: slug,
       component: path.resolve('./src/templates/ComponentReferenceTemplate.js'),
+      context: {
+        slug,
+      },
+    });
+  });
+
+  allNewRelicSdkApi.edges.forEach(({ node }) => {
+    const {
+      fields: { slug },
+    } = node;
+
+    createPage({
+      path: slug,
+      component: path.resolve('./src/templates/ApiReferenceTemplate.js'),
       context: {
         slug,
       },
