@@ -240,6 +240,31 @@ export const query = graphql`
           ...UnionType
           types {
             meta {
+              ... on NewRelicSdkPropTypeArrayOfMeta {
+                itemTypes {
+                  ...DefType
+                  meta {
+                    ... on NewRelicSdkPropTypeEnumMeta {
+                      constants
+                    }
+                    ... on NewRelicSdkPropTypeFunctionMeta {
+                      ...FuncType
+                    }
+                    ... on NewRelicSdkPropTypeUnionMeta {
+                      types {
+                        meta {
+                          ... on NewRelicSdkPropTypeEnumMeta {
+                            constants
+                          }
+                          ... on NewRelicSdkPropTypeFunctionMeta {
+                            ...FuncType
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
               ... on NewRelicSdkPropTypeEnumMeta {
                 constants
               }
