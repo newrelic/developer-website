@@ -20,10 +20,7 @@ const Header = ({ title, children }) => (
   >
     <h1
       css={css`
-        font-size: 2.5rem;
-        font-weight: normal;
         margin-bottom: 0;
-        line-height: 1;
 
         ${children &&
         css`
