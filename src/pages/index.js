@@ -1,15 +1,16 @@
-import React, { useState, cloneElement } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
 import SEO from '../components/Seo';
-import { Button, Link, Icon, Surface } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
+import FeaturedGuideTile from '../components/FeaturedGuideTile';
 import NewRelicIcon from '../components/NewRelicIcon';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
@@ -24,21 +25,21 @@ const getStartedGuides = [
     title: 'Create custom events',
     description:
       'Define, visualize, and get alerts on the data you want using custom events',
-    path: '/collect-data/custom-events',
+    url: '/collect-data/custom-events',
     icon: <Icon name="nr-tdp" />,
   },
   {
     duration: '7 min',
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
-    path: '/automate-workflows/5-mins-tag-resources',
+    url: '/automate-workflows/5-mins-tag-resources',
     icon: <NewRelicIcon name="automation" />,
   },
   {
     duration: '12 min',
     title: 'Build a Hello, World! app',
     description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
-    path: '/build-apps/build-hello-world-app',
+    url: '/build-apps/build-hello-world-app',
     icon: <NewRelicIcon name="buildApps" />,
   },
 ];
@@ -111,106 +112,7 @@ const IndexPage = ({ data, pageContext }) => {
               </header>
               <GuideListing.List>
                 {getStartedGuides.map((guide, index) => (
-                  <Surface
-                    key={index}
-                    base={Surface.BASE.SECONDARY}
-                    css={css`
-                      display: grid;
-                      grid-template-rows: auto auto 1fr auto;
-                      border-radius: 0.25rem;
-                      position: relative;
-                      padding: 1rem;
-                      transition: all 0.15s ease-out;
-                    `}
-                  >
-                    <div
-                      css={css`
-                        position: absolute;
-                        top: -2.75rem;
-                        left: 50%;
-                        margin-left: -2.75rem;
-                        width: 5.5rem;
-                        height: 5.5rem;
-                        border: 4px solid var(--color-white);
-                        background-color: var(--color-neutrals-200);
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        .dark-mode & {
-                          background-color: var(--color-dark-050);
-                          border-color: var(--color-dark-100);
-                        }
-                      `}
-                    >
-                      {cloneElement(guide.icon, { size: '2.5rem' })}
-                    </div>
-                    <div
-                      css={css`
-                        display: grid;
-                        grid-template-columns: 1fr auto;
-                        grid-gap: 0.5rem;
-                        align-items: baseline;
-                      `}
-                    >
-                      <div
-                        css={css`
-                          font-size: 0.75rem;
-                          display: flex;
-                          align-items: center;
-                          text-align: right;
-                          color: var(--accent-text-color);
-                          padding: 0.3rem 0 0.2rem 1.2rem;
-                          justify-self: end;
-                        `}
-                      >
-                        <Icon
-                          css={css`
-                            margin-right: 0.25rem;
-                          `}
-                          name="fe-clock"
-                        />
-
-                        {guide.duration}
-                      </div>
-                    </div>
-                    <h3
-                      css={css`
-                        text-align: center;
-                        margin-top: 0.5rem;
-                      `}
-                    >
-                      {guide.title}
-                    </h3>
-                    <p
-                      css={css`
-                        font-size: 0.875rem;
-                        margin-bottom: 1.5rem;
-                        color: var(--secondary-text-color);
-                        flex: 1;
-                        text-align: center;
-                        padding: 0;
-                      `}
-                    >
-                      {guide.description}
-                    </p>
-
-                    <Button
-                      to={guide.path}
-                      as={Link}
-                      variant={Button.VARIANT.PRIMARY}
-                      css={css`
-                        justify-self: center;
-
-                        &:hover {
-                          transform: translateY(-1px);
-                        }
-                      `}
-                    >
-                      Start the guide
-                    </Button>
-                  </Surface>
+                  <FeaturedGuideTile key={index} guide={guide} />
                 ))}
               </GuideListing.List>
             </GuideListing>
