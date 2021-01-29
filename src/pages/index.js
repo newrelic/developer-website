@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { css } from '@emotion/core';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import SEO from '../components/Seo';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
-import ExternalLink from '../components/ExternalLink';
 import CollectDataIcon from '../components/CollectDataIcon';
 import NewRelicIcon from '../components/NewRelicIcon';
 import { PageContext } from '../components/PageContext';
@@ -104,9 +103,9 @@ const IndexPage = ({ data, pageContext }) => {
               <header className={styles.guideListingHeader}>
                 <h2 className={cx(styles.guideListingHeading)}>Get coding</h2>
                 <Button
-                  as={ExternalLink}
+                  as={Link}
                   variant={Button.VARIANT.PRIMARY}
-                  href="https://newrelic.com/signup?utm_source=developer-site"
+                  to="https://newrelic.com/signup?utm_source=developer-site"
                 >
                   Create a free account
                 </Button>
@@ -157,16 +156,16 @@ const IndexPage = ({ data, pageContext }) => {
 
           <p className={styles.inspiration}>
             Looking for more inspiration? Check out the{' '}
-            <ExternalLink
+            <Link
               className={styles.externalLink}
-              href="https://opensource.newrelic.com"
+              to="https://opensource.newrelic.com"
             >
               open source projects
               <FeatherIcon
                 className={styles.externalLinkIcon}
                 name="external-link"
               />
-            </ExternalLink>{' '}
+            </Link>{' '}
             built by the New Relic community.
           </p>
 
@@ -185,9 +184,9 @@ const IndexPage = ({ data, pageContext }) => {
                 New Relic technical community.
               </p>
               <Button
-                as={ExternalLink}
+                as={Link}
                 variant={Button.VARIANT.PRIMARY}
-                href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+                to="https://forms.gle/Zkdub5e1x4MNqSKW9"
                 css={css`
                   margin-right: 0.5rem;
                 `}
