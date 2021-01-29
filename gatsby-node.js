@@ -18,17 +18,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       allMdx(filter: { fileAbsolutePath: { regex: "/src/markdown-pages/" } }) {
         edges {
           node {
-            fileAbsolutePath
+            fields {
+              fileRelativePath
+              slug
+            }
             frontmatter {
               path
               template
               redirects
               resources {
                 url
-              }
-              fields {
-                fileRelativePath
-                slug
               }
             }
           }
