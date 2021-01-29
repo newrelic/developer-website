@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
 import SEO from '../components/Seo';
-import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Link, Icon, Surface } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import PageLayout from '../components/PageLayout';
@@ -111,17 +111,104 @@ const IndexPage = ({ data, pageContext }) => {
               </header>
               <GuideListing.List>
                 {getStartedGuides.map((guide, index) => (
-                  <GuideTile key={index} featured {...guide}>
+                  <Surface
+                    key={index}
+                    base={Surface.BASE.SECONDARY}
+                    css={css`
+                      display: grid;
+                      grid-template-rows: auto 1fr auto;
+                      border-radius: 0.25rem;
+                      position: relative;
+                      padding: 1rem;
+                      transition: all 0.15s ease-out;
+                    `}
+                  >
+                    <div
+                      css={css`
+                        position: absolute;
+                        top: -2.75rem;
+                        left: 50%;
+                        margin-left: -2.75rem;
+                        width: 5.5rem;
+                        height: 5.5rem;
+                        border: 4px solid var(--color-white);
+                        background-color: var(--color-neutrals-200);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        .dark-mode & {
+                          background-color: var(--color-dark-050);
+                          border-color: var(--color-dark-100);
+                        }
+                      `}
+                    >
+                      {cloneElement(guide.icon, { size: '2.5rem' })}
+                    </div>
+                    <div
+                      css={css`
+                        display: grid;
+                        grid-template-columns: 1fr auto;
+                        grid-gap: 0.5rem;
+                        align-items: baseline;
+                      `}
+                    >
+                      <h3
+                        css={css`
+                          text-align: left;
+                          margin-top: 0.5rem;
+                        `}
+                      >
+                        {guide.title}
+                      </h3>
+                      <div
+                        css={css`
+                          font-size: 0.75rem;
+                          display: flex;
+                          align-items: center;
+                          text-align: right;
+                          color: var(--accent-text-color);
+                          padding: 0.3rem 0 0.2rem 1.2rem;
+                          justify-self: end;
+                        `}
+                      >
+                        <Icon
+                          css={css`
+                            margin-right: 0.25rem;
+                          `}
+                          name="fe-clock"
+                        />
+
+                        {guide.duration}
+                      </div>
+                    </div>
+                    <p
+                      css={css`
+                        font-size: 0.9rem;
+                        margin-bottom: 1.5rem;
+                        color: var(--secondary-text-color);
+                        flex: 1;
+                        text-align: left;
+                        padding: 0;
+
+                        &:last-child {
+                          margin-bottom: 0;
+                        }
+                      `}
+                    >
+                      {guide.description}
+                    </p>
                     <GuideTile.Button to={guide.path}>
                       Start the guide
                     </GuideTile.Button>
-                  </GuideTile>
+                  </Surface>
                 ))}
               </GuideListing.List>
             </GuideListing>
           </section>
 
-          <GuideListing className={styles.section}>
+          <section className={styles.section}>
             <h2 className={styles.guideListingHeading}>Get inspired</h2>
             <GuideListing.List className={styles.allGuidesListing}>
               {guides.map(({ frontmatter }, index) => (
@@ -139,7 +226,7 @@ const IndexPage = ({ data, pageContext }) => {
                 />
               ))}
             </GuideListing.List>
-          </GuideListing>
+          </section>
           {guides.length === numberOfPromotedGuides && (
             <div className={styles.buttonContainer}>
               <Button
