@@ -102,11 +102,7 @@ const IndexPage = ({ data, pageContext }) => {
           <section className={cx(styles.section, styles.stripedSection)}>
             <GuideListing className={styles.guideListing}>
               <header className={styles.guideListingHeader}>
-                <GuideListing.Heading
-                  className={cx(styles.guideListingHeading)}
-                >
-                  Get coding
-                </GuideListing.Heading>
+                <h2 className={cx(styles.guideListingHeading)}>Get coding</h2>
                 <Button
                   as={ExternalLink}
                   variant={Button.VARIANT.PRIMARY}
@@ -128,9 +124,7 @@ const IndexPage = ({ data, pageContext }) => {
           </section>
 
           <GuideListing className={styles.section}>
-            <GuideListing.Heading className={styles.guideListingHeading}>
-              Get inspired
-            </GuideListing.Heading>
+            <h2 className={styles.guideListingHeading}>Get inspired</h2>
             <GuideListing.List className={styles.allGuidesListing}>
               {guides.map(({ frontmatter }, index) => (
                 <GuideTile
