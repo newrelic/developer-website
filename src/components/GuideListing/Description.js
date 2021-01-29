@@ -1,10 +1,21 @@
 import React from 'react';
-import cx from 'classnames';
 import PropTypes from 'prop-types';
-import styles from './GuideListing.module.scss';
+import { css } from '@emotion/core';
 
 const Description = ({ children, className }) => {
-  return <p className={cx(styles.description, className)}>{children}</p>;
+  return (
+    <p
+      className={className}
+      css={css`
+        max-width: 800px;
+        text-align: center;
+        margin-bottom: 7.5rem;
+        color: var(--accent-text-color);
+      `}
+    >
+      {children}
+    </p>
+  );
 };
 
 Description.propTypes = {
