@@ -7,7 +7,7 @@ const Header = ({ title, children }) => (
     css={css`
       grid-area: page-header;
       display: flex;
-      align-items: center;
+      align-items: baseline;
       justify-content: space-between;
       border-bottom: 1px solid var(--divider-color);
       padding-bottom: 1rem;
