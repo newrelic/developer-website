@@ -4,9 +4,6 @@ const { createFilePath } = require('gatsby-source-filesystem');
 
 const MAX_RESULTS = 5;
 
-const getFileRelativePath = (absolutePath) =>
-  absolutePath.replace(`${process.cwd()}/`, '');
-
 const kebabCase = (string) =>
   string
     .replace(/([a-z])([A-Z])/g, '$1-$2')
@@ -18,10 +15,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     query {
-      allMdx(
-        limit: 1000
-        filter: { fileAbsolutePath: { regex: "/src/markdown-pages/" } }
-      ) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/src/markdown-pages/" } }) {
         edges {
           node {
             fileAbsolutePath
@@ -31,6 +25,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               redirects
               resources {
                 url
+              }
+              fields {
+                fileRelativePath
+                slug
               }
             }
           }
@@ -68,7 +66,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
-    const { frontmatter } = node;
+    const {
+      frontmatter,
+      fields: { fileRelativePath, slug },
+    } = node;
 
     if (frontmatter.redirects) {
       frontmatter.redirects.forEach((fromPath) => {
@@ -82,10 +83,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
 
     createPage({
-      path: frontmatter.path,
+      path: frontmatter.path || slug,
       component: path.resolve(`src/templates/${frontmatter.template}.js`),
       context: {
-        fileRelativePath: getFileRelativePath(node.fileAbsolutePath),
+        slug,
+        fileRelativePath,
         guidesFilter:
           frontmatter.template === 'OverviewTemplate'
             ? `${frontmatter.path}/*`
