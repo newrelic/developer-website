@@ -172,7 +172,7 @@ const IndexPage = ({ data, pageContext }) => {
             )}
           >
             <div>
-              <h1>New Relic developer champions</h1>
+              <h2>New Relic developer champions</h2>
               <p>
                 New Relic Champions are solving big problems using New Relic as
                 their linchpin and are recognized as experts and leaders in the
@@ -215,7 +215,7 @@ const IndexPage = ({ data, pageContext }) => {
             )}
           >
             <div>
-              <h1>New Relic Podcasts</h1>
+              <h2>New Relic Podcasts</h2>
               <p>
                 We like to talk, especially to developers about developer
                 things. Join us for conversations on open source, observability,
