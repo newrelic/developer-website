@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import { MarkdownContainer, MDX } from '@newrelic/gatsby-theme-newrelic';
 
 import Intro from './Intro';
@@ -18,7 +19,14 @@ const components = {
   Tutorial,
   TutorialStep,
   TutorialSection,
-  Intro,
+  Intro: (props) => (
+    <Intro
+      {...props}
+      css={css`
+        margin-bottom: 2rem;
+      `}
+    />
+  ),
   iframe: Iframe,
 };
 
