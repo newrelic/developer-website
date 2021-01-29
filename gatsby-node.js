@@ -1,5 +1,6 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
+const { createFilePath } = require('gatsby-source-filesystem');
 
 const MAX_RESULTS = 5;
 
@@ -126,10 +127,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions }) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
-  // if we don't have a relative path, attempt to get one
   if (node.internal.type === 'Mdx' && node.fileAbsolutePath) {
     const gitAuthorTime = execSync(
       `git log -1 --pretty=format:%aI ${node.fileAbsolutePath}`
@@ -138,6 +138,12 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       name: 'gitAuthorTime',
       value: gitAuthorTime,
+    });
+
+    createNodeField({
+      node,
+      name: 'slug',
+      value: createFilePath({ node, getNode, trailingSlash: false }),
     });
   }
 
