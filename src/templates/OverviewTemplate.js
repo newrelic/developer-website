@@ -31,7 +31,6 @@ const OverviewTemplate = ({ data }) => {
                 <GuideListing.List>
                   {guides?.nodes.map(({ frontmatter }, index) => (
                     <GuideTile
-                      as={Link}
                       to={frontmatter.path}
                       key={index}
                       duration={frontmatter.duration}

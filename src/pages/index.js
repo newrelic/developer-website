@@ -116,7 +116,7 @@ const IndexPage = ({ data, pageContext }) => {
                     base={Surface.BASE.SECONDARY}
                     css={css`
                       display: grid;
-                      grid-template-rows: auto 1fr auto;
+                      grid-template-rows: auto auto 1fr auto;
                       border-radius: 0.25rem;
                       position: relative;
                       padding: 1rem;
@@ -154,14 +154,6 @@ const IndexPage = ({ data, pageContext }) => {
                         align-items: baseline;
                       `}
                     >
-                      <h3
-                        css={css`
-                          text-align: left;
-                          margin-top: 0.5rem;
-                        `}
-                      >
-                        {guide.title}
-                      </h3>
                       <div
                         css={css`
                           font-size: 0.75rem;
@@ -183,25 +175,41 @@ const IndexPage = ({ data, pageContext }) => {
                         {guide.duration}
                       </div>
                     </div>
+                    <h3
+                      css={css`
+                        text-align: center;
+                        margin-top: 0.5rem;
+                      `}
+                    >
+                      {guide.title}
+                    </h3>
                     <p
                       css={css`
-                        font-size: 0.9rem;
+                        font-size: 0.875rem;
                         margin-bottom: 1.5rem;
                         color: var(--secondary-text-color);
                         flex: 1;
-                        text-align: left;
+                        text-align: center;
                         padding: 0;
-
-                        &:last-child {
-                          margin-bottom: 0;
-                        }
                       `}
                     >
                       {guide.description}
                     </p>
-                    <GuideTile.Button to={guide.path}>
+
+                    <Button
+                      to={guide.path}
+                      as={Link}
+                      variant={Button.VARIANT.PRIMARY}
+                      css={css`
+                        justify-self: center;
+
+                        &:hover {
+                          transform: translateY(-1px);
+                        }
+                      `}
+                    >
                       Start the guide
-                    </GuideTile.Button>
+                    </Button>
                   </Surface>
                 ))}
               </GuideListing.List>
@@ -213,7 +221,6 @@ const IndexPage = ({ data, pageContext }) => {
             <GuideListing.List className={styles.allGuidesListing}>
               {guides.map(({ frontmatter }, index) => (
                 <GuideTile
-                  as={Link}
                   to={frontmatter.path}
                   key={index}
                   duration={frontmatter.duration}

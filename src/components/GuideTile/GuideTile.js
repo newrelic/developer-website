@@ -1,21 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import { Icon, Surface } from '@newrelic/gatsby-theme-newrelic';
-import Button from './Button';
+import { Link, Icon, Surface } from '@newrelic/gatsby-theme-newrelic';
 
-const GuideTile = ({
-  as: Component = 'div',
-  duration,
-  title,
-  description,
-  className,
-  children,
-  ...props
-}) => (
+const GuideTile = ({ duration, title, description, className, to }) => (
   <Surface
-    {...props}
-    as={Component}
+    as={Link}
+    to={to}
     className={className}
     base={Surface.BASE.PRIMARY}
     interactive
@@ -63,33 +54,24 @@ const GuideTile = ({
     </div>
     <p
       css={css`
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
+        font-size: 0.875rem;
         color: var(--secondary-text-color);
         flex: 1;
         text-align: left;
         padding: 0;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
       `}
     >
       {description}
     </p>
-    {children}
   </Surface>
 );
-
-GuideTile.Button = Button;
 
 GuideTile.propTypes = {
   duration: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   className: PropTypes.string,
-  children: PropTypes.node,
-  as: PropTypes.elementType,
+  to: PropTypes.string.isRequired,
 };
 
 export default GuideTile;
