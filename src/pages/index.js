@@ -144,7 +144,6 @@ const IndexPage = ({ data, pageContext }) => {
                     frontmatter.description
                   }
                   path={frontmatter.path}
-                  alignment={GuideTile.ALIGNMENT.LEFT}
                 />
               ))}
             </GuideListing.List>
