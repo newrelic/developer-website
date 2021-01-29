@@ -1,10 +1,8 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
+const { createFilePath } = require('gatsby-source-filesystem');
 
 const MAX_RESULTS = 5;
-
-const getFileRelativePath = (absolutePath) =>
-  absolutePath.replace(`${process.cwd()}/`, '');
 
 const kebabCase = (string) =>
   string
@@ -17,13 +15,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     query {
-      allMdx(
-        limit: 1000
-        filter: { fileAbsolutePath: { regex: "/src/markdown-pages/" } }
-      ) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/src/markdown-pages/" } }) {
         edges {
           node {
-            fileAbsolutePath
+            fields {
+              fileRelativePath
+              slug
+            }
             frontmatter {
               path
               template
@@ -67,7 +65,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
-    const { frontmatter } = node;
+    const {
+      frontmatter,
+      fields: { fileRelativePath, slug },
+    } = node;
 
     if (frontmatter.redirects) {
       frontmatter.redirects.forEach((fromPath) => {
@@ -81,10 +82,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
 
     createPage({
-      path: frontmatter.path,
+      path: frontmatter.path || slug,
       component: path.resolve(`src/templates/${frontmatter.template}.js`),
       context: {
-        fileRelativePath: getFileRelativePath(node.fileAbsolutePath),
+        slug,
+        fileRelativePath,
         guidesFilter:
           frontmatter.template === 'OverviewTemplate'
             ? `${frontmatter.path}/*`
@@ -126,10 +128,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions }) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
-  // if we don't have a relative path, attempt to get one
   if (node.internal.type === 'Mdx' && node.fileAbsolutePath) {
     const gitAuthorTime = execSync(
       `git log -1 --pretty=format:%aI ${node.fileAbsolutePath}`
@@ -138,6 +139,12 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       name: 'gitAuthorTime',
       value: gitAuthorTime,
+    });
+
+    createNodeField({
+      node,
+      name: 'slug',
+      value: createFilePath({ node, getNode, trailingSlash: false }),
     });
   }
 

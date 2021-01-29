@@ -3,6 +3,12 @@ import defaultIcons from '@newrelic/gatsby-theme-newrelic/src/icons/feather';
 
 export default {
   ...defaultIcons,
+  clock: (
+    <>
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </>
+  ),
   code: (
     <>
       <polyline points="16 18 22 12 16 6" />
