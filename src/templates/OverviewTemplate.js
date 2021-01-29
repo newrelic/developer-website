@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import PageLayout from '../components/PageLayout';
@@ -31,7 +31,6 @@ const OverviewTemplate = ({ data }) => {
                 <GuideListing.List>
                   {guides?.nodes.map(({ frontmatter }, index) => (
                     <GuideTile
-                      as={Link}
                       to={frontmatter.path}
                       key={index}
                       duration={frontmatter.duration}
@@ -43,7 +42,6 @@ const OverviewTemplate = ({ data }) => {
                         frontmatter.description
                       }
                       path={frontmatter.path}
-                      alignment={GuideTile.ALIGNMENT.LEFT}
                     />
                   ))}
                 </GuideListing.List>

@@ -1,44 +1,51 @@
 # Table of Contents
 
-- [Table of Contents](#table-of-contents)
-  - [Guidelines for contributing](#guidelines-for-contributing)
-  - [Getting started](#getting-started)
-    - [Using multiple versions of Node](#using-multiple-versions-of-node)
-    - [Quick edits](#quick-edits)
-    - [Cloning vs Forking](#cloning-vs-forking)
-    - [Submitting a PR from a forked repo](#submitting-a-pr-from-a-forked-repo)
-    - [Submitting a PR from a cloned repo](#submitting-a-pr-from-a-cloned-repo)
-    - [Using the `develop` branch](#using-the-develop-branch)
-    - [Using Conventional Commits](#using-conventional-commits)
-      - [Use `chore`](#use-chore)
-      - [Use `fix`](#use-fix)
-      - [Use `feat`](#use-feat)
-    - [Draft PRs](#draft-prs)
-    - [Deploy previews with Amplify](#deploy-previews-with-amplify)
-  - [Style guide adherence](#style-guide-adherence)
-  - [Reusable components](#reusable-components)
-  - [Technical reference contribution guidelines](#technical-reference-contribution-guidelines)
-  - [Editing existing pages](#editing-existing-pages)
-  - [Creating new pages](#creating-new-pages)
-  - [Deleting pages](#deleting-pages)
-  - [New Relic guides](#new-relic-guides)
-    - [Purpose](#purpose)
-  - [Tips for writing guides](#tips-for-writing-guides)
-    - [Check for existing content](#check-for-existing-content)
-    - [Editing existing guides](#editing-existing-guides)
-    - [Creating new guides](#creating-new-guides)
-    - [Deleting guides](#deleting-guides)
-  - [Related Pages](#related-pages)
-  - [Updating navigation](#updating-navigation)
-    - [Example navigation change](#example-navigation-change)
-      - [EXISTING](#existing)
-      - [UPDATED](#updated)
-  - [Split testing and running experiments](#split-testing-and-running-experiments)
-    - [Step 1](#step-1)
-    - [Step 2](#step-2)
-    - [Step 3](#step-3)
-    - [Step 4](#step-4)
-    - [Step 5](#step-5)
+<!-- TOC GFM -->
+
+- [Guidelines for contributing](#guidelines-for-contributing)
+- [Getting started](#getting-started)
+  - [Using multiple versions of Node](#using-multiple-versions-of-node)
+  - [Quick edits](#quick-edits)
+  - [Cloning vs Forking](#cloning-vs-forking)
+  - [Submitting a PR from a forked repo](#submitting-a-pr-from-a-forked-repo)
+  - [Submitting a PR from a cloned repo](#submitting-a-pr-from-a-cloned-repo)
+  - [Using the `develop` branch](#using-the-develop-branch)
+  - [Using Conventional Commits](#using-conventional-commits)
+    - [Use `chore`](#use-chore)
+    - [Use `fix`](#use-fix)
+    - [Use `feat`](#use-feat)
+  - [Draft PRs](#draft-prs)
+  - [Deploy previews with Amplify](#deploy-previews-with-amplify)
+- [Style guide adherence](#style-guide-adherence)
+- [Reusable components](#reusable-components)
+- [Technical reference contribution guidelines](#technical-reference-contribution-guidelines)
+- [Editing existing pages](#editing-existing-pages)
+- [Creating new pages](#creating-new-pages)
+- [Deleting pages](#deleting-pages)
+- [New Relic guides](#new-relic-guides)
+  - [Purpose](#purpose)
+- [Tips for writing guides](#tips-for-writing-guides)
+  - [Check for existing content](#check-for-existing-content)
+  - [Editing existing guides](#editing-existing-guides)
+  - [Creating new guides](#creating-new-guides)
+  - [Deleting guides](#deleting-guides)
+- [Related Pages](#related-pages)
+- [Updating navigation](#updating-navigation)
+  - [Example navigation change](#example-navigation-change)
+    - [EXISTING](#existing)
+    - [UPDATED](#updated)
+- [Split testing and running experiments](#split-testing-and-running-experiments)
+  - [Step 1](#step-1)
+  - [Step 2](#step-2)
+  - [Step 3](#step-3)
+  - [Step 4](#step-4)
+  - [Step 5](#step-5)
+- [Updating the documentation bundle](#updating-the-documentation-bundle)
+  - [Step 1: Update the release number in `gatsby-config`](#step-1-update-the-release-number-in-gatsby-config)
+  - [Step 2: Add any new APIs or components to our constants list](#step-2-add-any-new-apis-or-components-to-our-constants-list)
+  - [Step 3: Add any new APIs or components to the navigation](#step-3-add-any-new-apis-or-components-to-the-navigation)
+
+<!-- /TOC -->
 
 ## Guidelines for contributing
 
@@ -372,3 +379,36 @@ A good metric:
 ### Step 5
 
 Run the experiment and pick a winner!
+
+## Updating the documentation bundle
+
+Periodically we need to update the NR1 SDK bundle that we use to generate our
+component documentation. In order to update the SDK, there are a few steps that
+need to happen:
+
+### Step 1: Update the release number in `gatsby-config`
+
+We use a local plugin to source our documentation into GraphQL. This plugin has
+some configuration that tells it what release number to use. [Update
+`gatsby-config.js`](https://github.com/newrelic/developer-website/blob/ae42737f5f1cf556f3c44d864655c9a571739e28/gatsby-config.js#L161)
+with the new release number to update.
+
+### Step 2: Add any new APIs or components to our constants list
+
+At the time of this writing, we rely on the 1st party documentation bundle to
+power the developer docs. While the 1st party bundle provides many of the same
+components/APIs, there are a few minor differences between the 1st and 3rd party
+SDKs. To account for this, we list out the components we document on the site.
+If there are any new components or APIs, [update the constants
+list](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/constants.js)
+with the new components. Pages will be automatically generated for each of
+these.
+
+Once we get a 3rd party bundle built for us, we should no longer need this step
+as that will contain only 3rd party SDK documentation.
+
+### Step 3: Add any new APIs or components to the navigation
+
+If there are new APIs or components, we will want to list them in the navigation
+so that a user can easily discover them. [Add an entry to `sidenav.json`](https://github.com/newrelic/developer-website/blob/develop/src/data/sidenav.json)
+to get the new API/component in the nav.

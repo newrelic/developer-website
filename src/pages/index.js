@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { css } from '@emotion/core';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import SEO from '../components/Seo';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
-import ExternalLink from '../components/ExternalLink';
-import CollectDataIcon from '../components/CollectDataIcon';
+import FeaturedGuideTile from '../components/FeaturedGuideTile';
 import NewRelicIcon from '../components/NewRelicIcon';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
@@ -26,21 +25,21 @@ const getStartedGuides = [
     title: 'Create custom events',
     description:
       'Define, visualize, and get alerts on the data you want using custom events',
-    path: '/collect-data/custom-events',
-    icon: <CollectDataIcon />,
+    url: '/collect-data/custom-events',
+    icon: <Icon name="nr-tdp" />,
   },
   {
     duration: '7 min',
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
-    path: '/automate-workflows/5-mins-tag-resources',
+    url: '/automate-workflows/5-mins-tag-resources',
     icon: <NewRelicIcon name="automation" />,
   },
   {
     duration: '12 min',
     title: 'Build a Hello, World! app',
     description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
-    path: '/build-apps/build-hello-world-app',
+    url: '/build-apps/build-hello-world-app',
     icon: <NewRelicIcon name="buildApps" />,
   },
 ];
@@ -102,39 +101,28 @@ const IndexPage = ({ data, pageContext }) => {
           <section className={cx(styles.section, styles.stripedSection)}>
             <GuideListing className={styles.guideListing}>
               <header className={styles.guideListingHeader}>
-                <GuideListing.Heading
-                  className={cx(styles.guideListingHeading)}
-                >
-                  Get coding
-                </GuideListing.Heading>
+                <h2 className={cx(styles.guideListingHeading)}>Get coding</h2>
                 <Button
-                  as={ExternalLink}
+                  as={Link}
                   variant={Button.VARIANT.PRIMARY}
-                  href="https://newrelic.com/signup?utm_source=developer-site"
+                  to="https://newrelic.com/signup?utm_source=developer-site"
                 >
                   Create a free account
                 </Button>
               </header>
               <GuideListing.List>
                 {getStartedGuides.map((guide, index) => (
-                  <GuideTile key={index} featured {...guide}>
-                    <GuideTile.Button to={guide.path}>
-                      Start the guide
-                    </GuideTile.Button>
-                  </GuideTile>
+                  <FeaturedGuideTile key={index} guide={guide} />
                 ))}
               </GuideListing.List>
             </GuideListing>
           </section>
 
-          <GuideListing className={styles.section}>
-            <GuideListing.Heading className={styles.guideListingHeading}>
-              Get inspired
-            </GuideListing.Heading>
+          <section className={styles.section}>
+            <h2 className={styles.guideListingHeading}>Get inspired</h2>
             <GuideListing.List className={styles.allGuidesListing}>
               {guides.map(({ frontmatter }, index) => (
                 <GuideTile
-                  as={Link}
                   to={frontmatter.path}
                   key={index}
                   duration={frontmatter.duration}
@@ -144,11 +132,10 @@ const IndexPage = ({ data, pageContext }) => {
                     frontmatter.description
                   }
                   path={frontmatter.path}
-                  alignment={GuideTile.ALIGNMENT.LEFT}
                 />
               ))}
             </GuideListing.List>
-          </GuideListing>
+          </section>
           {guides.length === numberOfPromotedGuides && (
             <div className={styles.buttonContainer}>
               <Button
@@ -164,16 +151,16 @@ const IndexPage = ({ data, pageContext }) => {
 
           <p className={styles.inspiration}>
             Looking for more inspiration? Check out the{' '}
-            <ExternalLink
+            <Link
               className={styles.externalLink}
-              href="https://opensource.newrelic.com"
+              to="https://opensource.newrelic.com"
             >
               open source projects
               <FeatherIcon
                 className={styles.externalLinkIcon}
                 name="external-link"
               />
-            </ExternalLink>{' '}
+            </Link>{' '}
             built by the New Relic community.
           </p>
 
@@ -185,16 +172,16 @@ const IndexPage = ({ data, pageContext }) => {
             )}
           >
             <div>
-              <h1>New Relic developer champions</h1>
+              <h2>New Relic developer champions</h2>
               <p>
                 New Relic Champions are solving big problems using New Relic as
                 their linchpin and are recognized as experts and leaders in the
                 New Relic technical community.
               </p>
               <Button
-                as={ExternalLink}
+                as={Link}
                 variant={Button.VARIANT.PRIMARY}
-                href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+                to="https://forms.gle/Zkdub5e1x4MNqSKW9"
                 css={css`
                   margin-right: 0.5rem;
                 `}
@@ -228,7 +215,7 @@ const IndexPage = ({ data, pageContext }) => {
             )}
           >
             <div>
-              <h1>New Relic Podcasts</h1>
+              <h2>New Relic Podcasts</h2>
               <p>
                 We like to talk, especially to developers about developer
                 things. Join us for conversations on open source, observability,
