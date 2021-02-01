@@ -1,3 +1,10 @@
+# [1.35.0](https://github.com/newrelic/developer-website/compare/v1.34.0...v1.35.0) (2021-02-01)
+
+
+### Features
+
+* add jest tests to validation ([2970f60](https://github.com/newrelic/developer-website/commit/2970f60f9913b86096253c0a0c725f447b9da9f5))
+
 # [1.34.0](https://github.com/newrelic/developer-website/compare/v1.33.0...v1.34.0) (2021-01-29)
 
 
