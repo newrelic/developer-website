@@ -138,6 +138,7 @@ const PropList = ({ className, propTypes }) => {
                       font-weight: bold;
                       font-size: 1rem;
                       color: var(--color-neutrals-800);
+                      font-family: var(--code-font);
 
                       .dark-mode & {
                         color: var(--color-dark-800);

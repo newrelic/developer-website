@@ -1,3 +1,17 @@
+# [1.34.0](https://github.com/newrelic/developer-website/compare/v1.33.0...v1.34.0) (2021-01-29)
+
+
+### Bug Fixes
+
+* add ngql to documentation ([8b6b5e3](https://github.com/newrelic/developer-website/commit/8b6b5e3a5f9ae9dfc3067e8ca00503f1ea3ad73e))
+* ensure navigation api uses proper data for examples ([8facfa1](https://github.com/newrelic/developer-website/commit/8facfa17028aeb422056e0800c10dd4d92e30258))
+* use https address for all assets loaded in gatsby ssr ([7f57332](https://github.com/newrelic/developer-website/commit/7f573323540b2fb371c68be08c9bca3c44c076b9))
+
+
+### Features
+
+* automatically create pages from the data in the component sdk ([4f7f9aa](https://github.com/newrelic/developer-website/commit/4f7f9aa7014dafd686d02dcdb741869c190db6f2))
+
 # [1.33.0](https://github.com/newrelic/developer-website/compare/v1.32.1...v1.33.0) (2021-01-27)
 
 

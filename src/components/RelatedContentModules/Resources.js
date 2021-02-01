@@ -21,6 +21,7 @@ const SITE_TAGS = {
   blog: 'https://blog.newrelic.com',
   'newrelic.com': 'https://newrelic.com',
   'visual studio': 'https://marketplace.visualstudio.com',
+  learn: 'https://learn.newrelic.com',
 };
 
 const findTag = (resource) =>
