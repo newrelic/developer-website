@@ -189,7 +189,7 @@ Terragrunt starts to run but pauses to ask for the inputs to the New Relic accou
 [output] Interrupt received.
 ```
 
-Exit the `terragrunt plan` process. In the environments/dev __terragrunt.hcl__ file, add an inputs block to provide the values for your New Relic account vairables:
+Exit the `terragrunt plan` process with CTRL+C . In the `environments/dev/terragrunt.hcl` file, add an `inputs` block to provide the values for your New Relic account variables:
 ```hcl
 inputs = {
 	newrelic_personal_apikey = "NRAK-***" # Your New Relic account ID
