@@ -1,13 +1,13 @@
 {
   "name": "developer-website",
   "private": true,
-  "version": "1.33.0",
+  "version": "1.35.0",
   "dependencies": {
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
     "@mdx-js/mdx": "^1.6.19",
     "@mdx-js/react": "^1.6.19",
-    "@newrelic/gatsby-theme-newrelic": "^1.23.2",
+    "@newrelic/gatsby-theme-newrelic": "^1.25.0",
     "@splitsoftware/splitio-react": "^1.2.0",
     "@xstate/react": "^1.0.2",
     "classnames": "^2.2.6",
@@ -59,6 +59,7 @@
     "@semantic-release/git": "^9.0.0",
     "@testing-library/react": "^10.0.4",
     "babel-jest": "^26.0.1",
+    "babel-preset-gatsby": "^0.11.0",
     "core-js": "^2.4.0",
     "eslint": "^7.11.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",

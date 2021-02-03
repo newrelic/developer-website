@@ -55,12 +55,14 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       examples: [NewRelicSdkExample!]!
       propTypes: [NewRelicSdkPropTypeDefinition!]!
       typeDefs: [NewRelicSdkTypeDefinition!]!
+      methods: [NewRelicSdkMethod!]!
     }
 
     type NewRelicSdkApi implements Node {
       constants: [NewRelicSdkConstant!]!
       examples: [NewRelicSdkExample!]!
       typeDefs: [NewRelicSdkTypeDefinition]
+      methods: [NewRelicSdkMethod!]!
     }
 
     type NewRelicSdkPropTypeDefinition {
@@ -69,13 +71,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       examples: [NewRelicSdkExample!]!
     }
 
-    type NewRelicSdkComponentMethods {
-      examples: [NewRelicSdkExample!]!
-      arguments: [NewRelicSdkFunctionArgument!]!
-      returnValue: NewRelicSdkFunctionReturnValue!
-    }
-
-    type NewRelicSdkApiMethods {
+    type NewRelicSdkMethod {
       examples: [NewRelicSdkExample!]!
       arguments: [NewRelicSdkFunctionArgument!]!
       returnValue: NewRelicSdkFunctionReturnValue!

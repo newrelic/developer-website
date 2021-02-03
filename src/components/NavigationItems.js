@@ -9,8 +9,8 @@ import cx from 'classnames';
 import { BreadcrumbContext } from './BreadcrumbContext';
 import styles from './NavigationItems.module.scss';
 import { link } from '../types';
-import CollectDataIcon from './CollectDataIcon';
 import { useLocation, useMatch } from '@reach/router';
+import { Icon } from '@newrelic/gatsby-theme-newrelic';
 
 const iconLibrary = {
   'Collect data': 'collectData',
@@ -85,7 +85,11 @@ const NavigationItems = ({
 const NavIcon = ({ page }) => {
   if (page.displayName === 'Collect data') {
     return (
-      <CollectDataIcon className={styles.headerIcon} size="var(--icon-size)" />
+      <Icon
+        name="nr-tdp"
+        className={styles.headerIcon}
+        size="var(--icon-size)"
+      />
     );
   }
 

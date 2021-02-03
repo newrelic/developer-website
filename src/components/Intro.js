@@ -1,11 +1,22 @@
 import React from 'react';
+import { css } from '@emotion/core';
 import SideBySide from './SideBySide';
 import PropTypes from 'prop-types';
 
-import styles from './Intro.module.scss';
+const Intro = ({ className, children, type }) => (
+  <SideBySide
+    type={type}
+    className={className}
+    css={css`
+      color: var(--secondary-text-color);
+      font-size: 1.125rem;
+      line-height: 1.75;
 
-const Intro = ({ children, type }) => (
-  <SideBySide type={type} className={styles.container}>
+      li:not(:last-child) {
+        margin-bottom: 0.5rem !important;
+      }
+    `}
+  >
     {children}
   </SideBySide>
 );
@@ -14,6 +25,7 @@ const Intro = ({ children, type }) => (
 const SUPPORTED_TYPES = PropTypes.oneOf(['Video', 'pre']);
 
 Intro.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.node.isRequired,
   // either a single supported type, or an array of supported types
   type: PropTypes.oneOfType([

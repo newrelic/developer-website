@@ -4,8 +4,18 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
-import React from 'react';
+import React, { createContext } from 'react';
 import wrapPageElement from './gatsby/wrap-page-element';
+
+global.window = {
+  __NR1_SDK__: {
+    default: {
+      PlatformStateContext: createContext(),
+      NerdletStateContext: createContext(),
+      ToastManager: () => null,
+    },
+  },
+};
 
 // This is needed to ensure the NR1 SDK can load properly
 const onPreRenderHTML = ({

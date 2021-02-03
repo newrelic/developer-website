@@ -1,6 +1,6 @@
 import React from 'react';
-import cx from 'classnames';
 import { graphql } from 'gatsby';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
@@ -10,9 +10,7 @@ import Markdown from '../components/Markdown';
 import MethodReference from '../components/MethodReference';
 import SEO from '../components/Seo';
 import PropList from '../components/PropList';
-import styles from './ComponentReferenceTemplate.module.scss';
-import templateStyles from './ReferenceTemplate.module.scss';
-import useComponentDoc from '../hooks/useComponentDoc';
+import { Section, SectionTitle } from './referenceTemplateStyles';
 import IconGallery from '../components/IconGallery';
 import TypeDefReference from '../components/TypeDefReference';
 
@@ -40,81 +38,95 @@ const previewStyles = {
 };
 
 const ComponentReferenceTemplate = ({ data }) => {
-  const { mdx } = data;
-  const { frontmatter } = mdx;
-  const { title, description, component } = frontmatter;
   const {
-    examples = [],
-    description: componentDescription,
-    methods = [],
-    usage = '',
-    typeDefs = [],
-    propTypes = [],
-  } = useComponentDoc(component) ?? {};
+    newRelicSdkComponent: {
+      name,
+      description: componentDescription,
+      usage,
+      examples,
+      methods,
+      typeDefs,
+      propTypes,
+    },
+  } = data;
 
   return (
     <>
-      <SEO title={title} description={description} />
+      <SEO title={name} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title={component} />
+        <PageLayout.Header title={name} />
         <PageLayout.Content>
-          <section className={cx(templateStyles.section, 'intro-text')}>
+          <Section className="intro-text">
             <Markdown source={componentDescription} />
-          </section>
+          </Section>
 
-          <section className={templateStyles.section}>
-            <h2 className={templateStyles.sectionTitle}>Usage</h2>
+          <Section>
+            <SectionTitle>Usage</SectionTitle>
             <CodeBlock language="js">{usage}</CodeBlock>
-          </section>
+          </Section>
 
           {examples.length > 0 && (
-            <section className={templateStyles.section}>
+            <Section>
               <div>
-                <h2 className={templateStyles.sectionTitle}>Examples</h2>
+                <SectionTitle>Examples</SectionTitle>
                 {examples.map((example, i) => (
                   <ReferenceExample
                     key={i}
-                    useToastManager={component === 'Toast'}
-                    className={styles.componentExample}
+                    useToastManager={name === 'Toast'}
                     example={example}
-                    previewStyle={previewStyles[component]}
+                    previewStyle={previewStyles[name]}
+                    css={css`
+                      &:not(:last-child) {
+                        margin-bottom: 2rem;
+                      }
+                    `}
                   />
                 ))}
               </div>
-            </section>
+            </Section>
           )}
 
-          {component === 'Icon' && (
-            <section className={templateStyles.section}>
+          {name === 'Icon' && (
+            <Section>
               <IconGallery />
-            </section>
+            </Section>
           )}
 
-          <section className={templateStyles.section}>
-            <h2 className={templateStyles.sectionTitle}>Props</h2>
+          <Section>
+            <SectionTitle>Props</SectionTitle>
             <PropList propTypes={propTypes} />
-          </section>
+          </Section>
 
           {methods.length > 0 && (
-            <section className={templateStyles.section}>
-              <h2 className={templateStyles.sectionTitle}>Methods</h2>
+            <Section>
+              <SectionTitle>Methods</SectionTitle>
               {methods.map((method, i) => (
                 <MethodReference
                   key={i}
                   method={method}
-                  className={styles.section}
+                  css={css`
+                    margin-bottom: 4rem;
+                  `}
                 />
               ))}
-            </section>
+            </Section>
           )}
 
           {typeDefs.length > 0 && (
-            <section className={templateStyles.section}>
-              <h2 className={templateStyles.sectionTitle}>Type definitions</h2>
+            <Section>
+              <SectionTitle>Type definitions</SectionTitle>
               {typeDefs.map((typeDef, i) => (
-                <TypeDefReference key={i} typeDef={typeDef} />
+                <TypeDefReference
+                  key={i}
+                  typeDef={typeDef}
+                  css={css`
+                    &:not(:last-child) {
+                      margin-bottom: 2rem;
+                    }
+                  `}
+                />
               ))}
-            </section>
+            </Section>
           )}
         </PageLayout.Content>
       </PageLayout>
@@ -127,14 +139,22 @@ ComponentReferenceTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    mdx(frontmatter: { path: { eq: $path } }) {
-      body
-      frontmatter {
-        path
-        title
-        description
-        component
+  query($slug: String!) {
+    newRelicSdkComponent(fields: { slug: { eq: $slug } }) {
+      name
+      description
+      usage
+      propTypes {
+        ...PropList_propTypes
+      }
+      examples {
+        ...ReferenceExample_example
+      }
+      methods {
+        ...MethodReference_method
+      }
+      typeDefs {
+        ...TypeDefReference_typeDef
       }
     }
   }
