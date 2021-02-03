@@ -506,7 +506,7 @@ mkdir nonprod && cd nonprod
 touch terragrunt.hcl
 ```
 
-In the  nonprod terragrunt.hcl file copy over the configuration from the environment __terragrunt.hcl__:
+In the nonprod `terragrunt.hcl` file copy over the configuration from the environment __terragrunt.hcl__:
 ```hcl
 include {
 	path= find_in_parent_folders()
