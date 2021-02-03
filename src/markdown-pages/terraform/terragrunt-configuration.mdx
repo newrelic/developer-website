@@ -36,7 +36,7 @@ In this guide, you will use Terragrunt to generate your Terraform configurations
 
 ## Before you begin
 
-To use this guide, you should have some basic knowledge of both New Relic and Terraform. If you haven't deployed a New Relic open source agent yet, [install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application. Also, [install the Terraform CLI](https://www.terraform.io/intro/getting-started/install.html).
+To use this guide, you should have some basic knowledge of both New Relic and Terraform. If you haven't deployed a New Relic open source agent yet, [install New Relic Infrastructure agent](https://docs.newrelic.com/docs/infrastructure/install-infrastructure-agent) for your host. Also, [install the Terraform CLI](https://www.terraform.io/intro/getting-started/install.html).
 
 Start by initializing a working directory:
 
@@ -106,21 +106,21 @@ cd ./environments/dev/
 touch terragrunt.hcl
 ```
 
-Inside the dev folder __terragrunt.hcl__ add an include statement. The include statement tells Terragrunt to use any `.hcl` confgiuration files it finds in parent folders.
+Within the dev folder update the `terragrunt.hcl` file by adding the following include statement. The include statement tells Terragrunt to use any `.hcl` confgiuration files it finds in parent folders.
 ```hcl
 include {
 	path= find_in_parent_folders()
 }
 ```
 
-Next, add a Terraform block to provide Terragrunt with a Terraform source
+Next, add a Terraform block to provide Terragrunt with a Terraform source reference.
 ```hcl
 terraform {
 	source = "../../src"
 }
 ```
 
-Now you need to configure the provider with your New Relic account details.
+Now you need to configure the provider with your New Relic account details. You will need your [New Relic user API key](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher) and account ID.
 ```hcl
 provider "newrelic" {
  	account_id = 12345 # Your New Relic account ID
@@ -129,7 +129,19 @@ provider "newrelic" {
 }
 ```
 
-Tip: Documentation about the New Relic provider is provided on the [Terraform doc site.](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs)
+<Callout variant="tip">
+
+If you have a single account: The account ID is displayed on the API keys page.
+
+If your organization has multiple accounts: From [one.newrelic.com](https://one.newrelic.com/), select Entity explorer and use the account selector dropdown near the top of the page.
+
+</Callout>
+
+<Callout variant="tip">
+
+Documentation about the New Relic provider is provided on the [Terraform doc site.](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs)
+
+</Callout>
 
 Update the __provider.tf__ file to define the New Relic account variables that will help keep the Terraform configuration dynamic.
 ```hcl
@@ -198,7 +210,7 @@ inputs = {
 }
 ```
 
-Remove the New Relic account variables added to the provider.tf file in the previous steps. The updated terragrunt.hcl only has the `include`, `terraform`, and `inputs` block
+The updated terragrunt.hcl only has the `include`, `terraform`, and `inputs` block
 ```hcl
 include {
 	path = find_in_parent_folders()
@@ -472,12 +484,12 @@ Now, update the `remote_state` block to provide your S3 bucket and update the ke
     if_exists = "overwrite_terragrunt"
   }
   config = {
-    bucket = "YOUR_S3_BUCKET_NAME"
+    bucket = "YOUR_S3_BUCKET_NAME" # Amazon S3 bucket required
 
     key = "envs/${local.env_name}/terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true
-    profile		= "YOUR_PROFILE_NAME"
+    profile		= "YOUR_PROFILE_NAME" # Profile name required
   }
 }
 ```
@@ -579,4 +591,4 @@ Run `terragrunt apply`. In your New Relic account, you will see a new policy wit
 
 ## Conclusion
 
-Congratulations! You've used Terragrunt to generate your New Relic configurations and manage multiple environments.  Review the [New Relic Terraform provider documentation](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs) and [Terragrunt quick start](https://terragrunt.gruntwork.io/docs/getting-started/quick-start/) to learn how you can take your configuration to the next level.
+Congratulations! You've used Terragrunt to generate your New Relic configurations and manage multiple environments.  Review the [Terragrunt Intro Example](https://github.com/jsbnr/nr-terragrunt-intro-example), [New Relic Terraform provider documentation](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs), and [Terragrunt quick start](https://terragrunt.gruntwork.io/docs/getting-started/quick-start/) to learn how you can take your configuration to the next level.
