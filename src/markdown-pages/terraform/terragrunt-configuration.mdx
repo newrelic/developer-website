@@ -201,7 +201,7 @@ inputs = {
 Remove the New Relic account variables added to the provider.tf file in the previous steps. The updated terragrunt.hcl only has the `include`, `terraform`, and `inputs` block
 ```hcl
 include {
-	path= find_in_parent_folders()
+	path = find_in_parent_folders()
 }
 
 terraform {
