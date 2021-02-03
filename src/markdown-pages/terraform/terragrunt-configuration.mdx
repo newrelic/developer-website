@@ -439,7 +439,7 @@ At the moment, the state file is local. The next steps will update your Terrafor
 Since Terragrunt allows you to configure multiple environments, various state files will need to be store in separate S3 buckets, not to override each other.
 </Callout>
 
-Terragrunt allows you to generate files on the fly. Adding the remote_state block into the root level __terragrunt.hcl__ file, you will generate a new file named __backend.tf__.
+Terragrunt allows you to generate files on the fly. Adding the `remote_state` block into the root level __terragrunt.hcl__ file, you will generate a new file named __backend.tf__.
 ```hcl
  remote_state {
   backend = "s3"
