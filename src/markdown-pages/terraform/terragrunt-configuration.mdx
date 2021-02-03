@@ -360,7 +360,7 @@ Run `terragrunt plan` to see the environment variable added to the configuration
 
 Currently, the environment variable name is hardcoded into the root __terragrunt.hcl__ file. You want to avoid having your variables hardcoded, using a terragrunt built-in function will pass the value.
 
-In the root __terragrunt.hcl__ file, update the input to use the `path_relative_to_include()` built-in function and pass the value has the env_name variable:
+In the root __terragrunt.hcl__ file, update the input to use the `path_relative_to_include()` built-in function and pass the value has the `env_name` variable:
 ```hcl
 inputs = {
 	env_name = path_relative_to_include()
