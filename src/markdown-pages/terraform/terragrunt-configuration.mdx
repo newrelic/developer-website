@@ -463,7 +463,7 @@ After adding the `remote_state` block, you will need to give the configuration f
 To give access to the S3 bucket in your Amazon account, create an IAM user. Give the IAM user access to the S3 bucket storing the terraform state.
 </Callout>
 
-Now, update the remote_state block to provide your S3 bucket and update the key to use the local enviroment variable created previously.
+Now, update the `remote_state` block to provide your S3 bucket and update the key to use the local environment variable created previously.
 ```hcl
  remote_state {
   backend = "s3"
