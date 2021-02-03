@@ -13204,6 +13204,11 @@ monaco-editor-webpack-plugin@^2.0.0:
   dependencies:
     loader-utils "^2.0.0"
 
+monaco-editor@*:
+  version "0.22.3"
+  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.22.3.tgz#69b42451d3116c6c08d9b8e052007ff891fd85d7"
+  integrity sha512-RM559z2CJbczZ3k2b+ouacMINkAYWwRit4/vs0g2X/lkYefDiu0k2GmgWjAuiIpQi+AqASPOKvXNmYc8KUSvVQ==
+
 monaco-editor@^0.21.0:
   version "0.21.2"
   resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.21.2.tgz#37054e63e480d51a2dd17d609dcfb192304d5605"
@@ -15687,6 +15692,14 @@ react-middle-ellipsis@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-middle-ellipsis/-/react-middle-ellipsis-1.1.0.tgz#c8fb226c5621e8f0852494be05a5d1574ae37b19"
   integrity sha512-jEkF6l6l12/V70bYqCCEdHRDFHVG8kdR46tcE5HBssgPDaoLm7XC9hkrL1cW4eL4wi2/0g19PMORge38ReXp9A==
+
+react-monaco-editor@^0.41.2:
+  version "0.41.2"
+  resolved "https://registry.yarnpkg.com/react-monaco-editor/-/react-monaco-editor-0.41.2.tgz#7ec9cadc101d73003a908fca61c50011f237d2b5"
+  integrity sha512-0nNqkkSLtUQDHtcCASv3ccYukD+P2uvFzcFZGh6iWg9RZF3Rj9/+jqsTNo2cl4avkX8JVGC/qnZr/g7hxXTBTQ==
+  dependencies:
+    monaco-editor "*"
+    prop-types "^15.7.2"
 
 react-refresh@^0.8.3:
   version "0.8.3"

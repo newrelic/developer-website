@@ -1,4 +1,4 @@
-import React, { useState, useRef, Suspense } from 'react';
+import React, { useState, useRef, Suspense, useEffect } from 'react';
 import { LiveProvider, LivePreview } from 'react-live';
 import { css } from '@emotion/core';
 import root from 'react-shadow';
@@ -15,7 +15,7 @@ class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
 }
 `;
 
-const Editor = React.lazy(() => import('react-monaco-editor'));
+const Editor = React.lazy(() => import('@monaco-editor/react'));
 
 const SdkPlayground = () => {
   const [code, setCode] = useState(defaultCode);
@@ -24,24 +24,24 @@ const SdkPlayground = () => {
   const monaco = useRef(null);
   const sdk = window.__NR1_SDK__?.default ?? {};
 
-  //const [isFront, setIsFront] = useState(false);
+  const [isFront, setIsFront] = useState(false);
 
-  // useEffect(() => {
-  //   process.nextTick(() => {
-  //     if (globalThis.window ?? false) {
-  //       setIsFront(true);
-  //     }
-  //   });
-  // }, [isFront]);
+  useEffect(() => {
+    process.nextTick(() => {
+      if (globalThis.window ?? false) {
+        setIsFront(true);
+      }
+    });
+  }, [isFront]);
 
-  // if (!isFront) return null;
+  if (!isFront) return null;
 
   if (typeof window === 'undefined') global.window = {};
 
   if (!sdk) return null;
 
   const handleEditorDidMount = (editor, monaco) => {
-    editor.focus();
+    editor && editor.focus();
     Editor && monacoConfig(monaco, sdk);
     window.addEventListener('resize', updateWindowDimensions);
   };
