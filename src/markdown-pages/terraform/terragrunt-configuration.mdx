@@ -391,7 +391,7 @@ Run `terrafgrunt plan`. Looking that the output, the env_name variable will have
 [output] Plan: 2 to add, 1 to change, 2 to destroy.
 ```
 
-Next, update the __terragrunt.hcl__ to only include 'dev' as the env_name variable. Adding a locals block creates a local variable, using the replace built-in function will remove the unwanted parts of the relative path, and update the inputs block to use the local variable.
+Next, update the __terragrunt.hcl__ to only include 'dev' as the `env_name` variable. Adding a `locals` block creates a local variable, using the replace built-in function will remove the unwanted parts of the relative path, and update the `inputs` block to use the local variable.
 ```hcl
 locals {
 	env_name = replace(path_relative_to_include(), "environments/", "")
