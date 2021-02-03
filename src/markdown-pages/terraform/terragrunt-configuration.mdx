@@ -131,7 +131,7 @@ provider "newrelic" {
 
 <Callout variant="tip">
 
-If you have a single account: The account ID is displayed on the API keys page.
+If you have a single account: The account ID is displayed on the [API keys page](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher).
 
 If your organization has multiple accounts: From [one.newrelic.com](https://one.newrelic.com/), select Entity explorer and use the account selector dropdown near the top of the page.
 
@@ -161,7 +161,7 @@ In your terminal, change directories to the `environments/dev` folder and run th
 terragrunt init
 ```
 
-Terraform init sets up a bit of context, sets up environment variables, and then runs `terraform init`.
+Terraform init sets up a bit of context, sets up environment variables, and then runs `terraform init`. You will see the following output:
 
 ```bash copyable=false
 [output] {muted}# Example output
@@ -379,7 +379,7 @@ inputs = {
 }
 ```
 
-Run `terragrunt plan`. Looking that the output, the `env_name` variable will have the entire `./environments/dev/` path.
+Run `terragrunt plan`. Looking at the output, the `env_name` variable will have the entire `./environments/dev/` path.
 ```bash copyable=false
 [output] {muted}# Example output
 [output] ------------------------------------------------------------------------
@@ -414,7 +414,7 @@ inputs = {
 }
 ```
 
-Run `terragrunt plan`. Looking at the output the `env_name` variable will now have 'dev:' added.   Run `terragrunt apply` to update your configurations.
+Run `terragrunt plan`. Looking at the output the `env_name` variable will now have 'dev:' added. Run `terragrunt apply` to update your configurations.
 ```bash copyable=false
 [output] {muted}# Example output
 [output] ------------------------------------------------------------------------
