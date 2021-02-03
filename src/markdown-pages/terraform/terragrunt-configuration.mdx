@@ -557,7 +557,7 @@ module "HostConditions" {
 ```
 Run `terragrunt plan`. In the output, the `HostConditions` values have changed to use the variable defaults.
 
-Next, you want to pass the values into your environment configurations by adding the inputs block variables. In the __nonprod terrgrunt.hcl__ fiile, add the cpu_critical, cpu_warning, and diskPercentage variables:
+Next, you want to pass the values into your environment configurations by adding the inputs block variables. In the `nonprod/terrgrunt.hcl` file, add the `cpu_critical`, `cpu_warning`, and `diskPercentage` variables:
 ```hcl
 inputs = {
 	newrelic_personal_apikey = "NRAK-***" # Your New Relic account ID
