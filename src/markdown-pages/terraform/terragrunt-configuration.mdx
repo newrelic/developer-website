@@ -83,13 +83,13 @@ touch src/provider.tf
 In the __provider.tf__ file add the appropriate Terraform and New Relic provider configuration information:
 ```hcl
 terraform {
-    required_version = "~> 0.14.3"
-    required_providers {
-        newrelic = {
-		source = "newrelic/newrelic"
-		version = "~> 2.14.0"
+	required_version = "~> 0.14.3"
+	required_providers {
+		newrelic = {
+			source = "newrelic/newrelic"
+			version = "~> 2.14.0"
+		}
 	}
-    }
 }
 ```
 
@@ -123,9 +123,9 @@ terraform {
 Now you need to configure the provider with your New Relic account details. You will need your [New Relic user API key](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher) and account ID.
 ```hcl
 provider "newrelic" {
- 	account_id = 12345 # Your New Relic account ID
- 	api_key = "NRAK-***" # Your New Relic user key
- 	region = "US" # US or EU (defaults to US)
+	account_id = 12345 # Your New Relic account ID
+	api_key = "NRAK-***" # Your New Relic user key
+	region = "US" # US or EU (defaults to US)
 }
 ```
 
@@ -150,9 +150,9 @@ variable "newrelic_account_id" {}
 variable "newrelic_region" {}
 
 provider "newrelic" {
- 	account_id = var.newrelic_account_id
- 	api_key = var.newrelic_personal_apikey
- 	region = var.newrelic_region
+	account_id = var.newrelic_account_id
+	api_key = var.newrelic_personal_apikey
+	region = var.newrelic_region
 }
 ```
 
@@ -276,33 +276,33 @@ If you haven't done the previous developer guides, you can copy the configuratio
 Update the __main.tf__ to include the additional terraform configurations. Update the email address in the alert channel to your preferred email address:
 ```hcl
 resource "newrelic_alert_policy" "DemoPolicy" {
-	 name = "My Demo Policy"
-	}
+	name = "My Demo Policy"
+}
 
 resource "newrelic_alert_channel" "DemoChannel" {
-	 name = "My Demo Channel"
-	 type = "email"
+	name = "My Demo Channel"
+	type = "email"
 
-	 config {
-	 recipients = "your@email_address.com"
-	 include_json_attachment = "1"
-	 }
+	config {
+		recipients = "your@email_address.com"
+		include_json_attachment = "1"
 	}
+}
 
-	resource "newrelic_alert_policy_channel" "ChannelSubs" {
-	 policy_id = newrelic_alert_policy.DemoPolicy.id
-	 channel_ids = [
-	 newrelic_alert_channel.DemoChannel.id
-	 ]
-	}
+resource "newrelic_alert_policy_channel" "ChannelSubs" {
+	policy_id = newrelic_alert_policy.DemoPolicy.id
+	channel_ids = [
+		newrelic_alert_channel.DemoChannel.id
+	]
+}
 
-	module "HostConditions" {
-	 source = "git::https://github.com/jsbnr/demo-terraform.git"
-	 policyId = newrelic_alert_policy.DemoPolicy.id
-	 cpu_critical = 88
-	 cpu_warning = 78
-	 diskPercent = 68
-	}
+module "HostConditions" {
+	source = "git::https://github.com/jsbnr/demo-terraform.git"
+	policyId = newrelic_alert_policy.DemoPolicy.id
+	cpu_critical = 88
+	cpu_warning = 78
+	diskPercent = 68
+}
 ```
 
 You have added a New Relic alert channel, subscribed the demo policy to the alert channel, and added a module hosted on Github.
@@ -334,17 +334,17 @@ variable "env_name" {}
 Using string interpolation, add the new `env_name` variable to the alert policy and alert channel resource blocks.
 ```hcl
 resource "newrelic_alert_policy" "DemoPolicy" {
-	 name = "${var.env_name}: My Demo Policy"
-	}
+	name = "${var.env_name}: My Demo Policy"
+}
 
 resource "newrelic_alert_channel" "DemoChannel" {
-	 name = "${env_name}: My Demo Channel"
-	 type = "email"
+	name = "${env_name}: My Demo Channel"
+	type = "email"
 
-	 config {
-	 recipients = "your@email_address.com"
-	 include_json_attachment = "1"
-	 }
+	config {
+		recipients = "your@email_address.com"
+		include_json_attachment = "1"
+	}
 }
 ```
 
@@ -448,49 +448,53 @@ Run `terragrunt plan`. Looking at the output the `env_name` variable will now ha
 At the moment, the state file is local. The next steps will update your Terraform configurations to remove the local state file and use a file stored remotely in Amazon S3.
 
 <Callout variant="tip">
+
 Since Terragrunt allows you to configure multiple environments, various state files will need to be store in separate S3 buckets, not to override each other.
+
 </Callout>
 
 Terragrunt allows you to generate files on the fly. Adding the `remote_state` block into the root level __terragrunt.hcl__ file, you will generate a new file named __backend.tf__.
 ```hcl
- remote_state {
-  backend = "s3"
-  generate = {
-    path      = "backend.tf"
-    if_exists = "overwrite_terragrunt"
-  }
-  config = {
-    bucket = "my-terraform-state"
+remote_state {
+	backend = "s3"
+	generate = {
+		path      = "backend.tf"
+		if_exists = "overwrite_terragrunt"
+	}
+	config = {
+		bucket = "my-terraform-state"
 
-    key = "${path_relative_to_include()}/terraform.tfstate"
-    region         = "us-east-1"
-    encrypt        = true
-  }
+		key = "${path_relative_to_include()}/terraform.tfstate"
+		region         = "us-east-1"
+		encrypt        = true
+	}
 }
 ```
 
 After adding the `remote_state` block, you will need to give the configuration for the S3 bucket that will store the Terraform state.
 
 <Callout variant="tip">
+
 To give access to the S3 bucket in your Amazon account, create an IAM user. Give the IAM user access to the S3 bucket storing the terraform state.
+
 </Callout>
 
 Now, update the `remote_state` block to provide your S3 bucket and update the key to use the local environment variable created previously.
 ```hcl
- remote_state {
-  backend = "s3"
-  generate = {
-    path      = "backend.tf"
-    if_exists = "overwrite_terragrunt"
-  }
-  config = {
-    bucket = "YOUR_S3_BUCKET_NAME" # Amazon S3 bucket required
+remote_state {
+	backend = "s3"
+	generate = {
+		path      = "backend.tf"
+		if_exists = "overwrite_terragrunt"
+	}
+	config = {
+		bucket = "YOUR_S3_BUCKET_NAME" # Amazon S3 bucket required
 
-    key = "envs/${local.env_name}/terraform.tfstate"
-    region         = "us-east-1"
-    encrypt        = true
-    profile		= "YOUR_PROFILE_NAME" # Profile name required
-  }
+		key = "envs/${local.env_name}/terraform.tfstate"
+		region         = "us-east-1"
+		encrypt        = true
+		profile		= "YOUR_PROFILE_NAME" # Profile name required
+	}
 }
 ```
 
@@ -538,7 +542,9 @@ inputs = {
 ```
 
 <Callout variant="tip">
+
 If you are using a different account for your nonprod environment, you can update the inputs with a new New Relic account ID and API key.
+
 </Callout>
 
 Inside of your __nonprod__ directory, run `terragrunt init` then run `terragrunt apply`.
@@ -564,12 +570,12 @@ variable "diskPercentage" {default = 69}
 In the __main.tf__ update the `HostConditions` module values to use the `cpu_critical`, `cpu_warning`, and `diskPercentage` variables:
 ```hcl
 module "HostConditions" {
-	 source = "git::https://github.com/jsbnr/demo-terraform.git"
-	 policyId = newrelic_alert_policy.DemoPolicy.id
-	 cpu_critical = var.cpu_critical
-	 cpu_warning = var.cpu_warninig
-	 diskPercent = var.dskPercentage
-	}
+	source = "git::https://github.com/jsbnr/demo-terraform.git"
+	policyId = newrelic_alert_policy.DemoPolicy.id
+	cpu_critical = var.cpu_critical
+	cpu_warning = var.cpu_warninig
+	diskPercent = var.dskPercentage
+}
 ```
 Run `terragrunt plan`. In the output, the `HostConditions` values have changed to use the variable defaults.
 
