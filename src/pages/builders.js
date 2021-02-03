@@ -173,7 +173,7 @@ const DeveloperChampionPage = () => {
           </section>
           <section className={cx(styles.section, styles.twoColumn)}>
             <div>
-              <h2>What are the Builder's responsabilities?</h2>
+              <h2>What are the Builder's responsibilities?</h2>
               <p>
                 As a New Relic Builder, we will expect you to create content to
                 meet the program's needs, and you will get the help and guidance
