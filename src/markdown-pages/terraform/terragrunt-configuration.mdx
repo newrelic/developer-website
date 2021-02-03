@@ -106,7 +106,7 @@ cd ./environments/dev/
 touch terragrunt.hcl
 ```
 
-Within the dev folder update the `terragrunt.hcl` file by adding the following include statement. The include statement tells Terragrunt to use any `.hcl` confgiuration files it finds in parent folders.
+Within the `dev` folder update the `terragrunt.hcl` file by adding the following `include` statement. The `include` statement tells Terragrunt to use any `.hcl` confgiuration files it finds in parent folders.
 ```hcl
 include {
 	path= find_in_parent_folders()
