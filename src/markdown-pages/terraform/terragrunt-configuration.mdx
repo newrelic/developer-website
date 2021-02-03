@@ -319,7 +319,7 @@ in the __main.tf__ file add a new variable for 'env_name'
 variable "env_name" {}
 ```
 
-Using string interpolation add the new __env_name__ variable to the alert policy and alert channel resource blocks.
+Using string interpolation, add the new `env_name` variable to the alert policy and alert channel resource blocks.
 ```hcl
 resource "newrelic_alert_policy" "DemoPolicy" {
 	 name = "${var.env_name}: My Demo Policy"
