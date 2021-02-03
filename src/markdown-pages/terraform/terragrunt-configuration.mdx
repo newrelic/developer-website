@@ -545,7 +545,7 @@ variable "cpu_warningl" {default = 79}
 variable "diskPercentage" {default = 69}
 ```
 
-In the __main.tf__ update the HostConditions module values to use the cpu_critical, cpu_warning, and diskPercentage variables:
+In the __main.tf__ update the `HostConditions` module values to use the `cpu_critical`, `cpu_warning`, and `diskPercentage` variables:
 ```hcl
 module "HostConditions" {
 	 source = "git::https://github.com/jsbnr/demo-terraform.git"
