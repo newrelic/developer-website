@@ -21,7 +21,7 @@
     "gatsby-plugin-meta-redirect": "^1.1.1",
     "gatsby-plugin-offline": "^3.2.32",
     "gatsby-plugin-react-helmet": "^3.3.12",
-    "gatsby-plugin-robots-txt": "^1.5.3",
+    "gatsby-plugin-robots-txt": "^1.5.5",
     "gatsby-plugin-sass": "^2.3.22",
     "gatsby-plugin-sharp": "^2.6.43",
     "gatsby-plugin-sitemap": "^2.4.17",
