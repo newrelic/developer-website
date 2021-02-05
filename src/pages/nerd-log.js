@@ -6,6 +6,7 @@ import PageLayout from '../components/PageLayout';
 import { Button, NewRelicLogo } from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/Seo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
+import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerd-log.module.scss';
 import { teamMembers } from '../data/nerdlogData';
 import graphLines from '../images/nerd-days/hero-image-graph-lines.png';
@@ -26,6 +27,16 @@ const NerdlogPage = () => {
   `);
 
   const teamMemberPanels = teamMembers.map((teamMember, i) => {
+    const socialItems = teamMember.socials.map((socialNetwork, j) => {
+      return (
+        <li key={j}>
+          <a href={socialNetwork.url}>
+            <FeatherIcon name={socialNetwork.name} size="1.5rem" />
+          </a>
+        </li>
+      );
+    });
+
     return (
       <div className={styles.point} key={i}>
         <img
@@ -35,6 +46,7 @@ const NerdlogPage = () => {
         />
         <h3>{teamMember.name}</h3>
         <h4>{teamMember.pronouns}</h4>
+        <ul className={styles.socials}>{socialItems}</ul>
         {teamMember.bio}
       </div>
     );
