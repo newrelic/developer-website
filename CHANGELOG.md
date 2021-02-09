@@ -1,3 +1,10 @@
+## [1.35.2](https://github.com/newrelic/developer-website/compare/v1.35.1...v1.35.2) (2021-02-05)
+
+
+### Bug Fixes
+
+* upgrade snyk from 1.433.0 to 1.437.4 ([0207f55](https://github.com/newrelic/developer-website/commit/0207f55b262fe576b8ef7993e842eba3a958f06d))
+
 ## [1.35.1](https://github.com/newrelic/developer-website/compare/v1.35.0...v1.35.1) (2021-02-05)
 
 
