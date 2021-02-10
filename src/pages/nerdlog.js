@@ -14,18 +14,6 @@ import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
 import styled from '@emotion/styled';
 
 const NerdlogPage = () => {
-  const {
-    site: { layout },
-  } = useStaticQuery(graphql`
-    query {
-      site {
-        layout {
-          contentPadding
-        }
-      }
-    }
-  `);
-
   const teamMemberPanels = teamMembers.map((teamMember, i) => {
     const socialItems = teamMember.socials.map((socialNetwork, j) => {
       return (
