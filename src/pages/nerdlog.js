@@ -4,15 +4,13 @@ import { css } from '@emotion/core';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import MarketoForm from '../components/MarketoForm';
-import { Button, NewRelicLogo } from '@newrelic/gatsby-theme-newrelic';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/Seo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
-import styles from './nerd-log.module.scss';
+import styles from './nerdlog.module.scss';
 import { teamMembers } from '../data/nerdlogData';
-import graphLines from '../images/nerd-days/hero-image-graph-lines.png';
 import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
-import heroBackgroundPattern from '../images/nerd-days/nerd-days-hero-bg-pattern.png';
 import styled from '@emotion/styled';
 
 const NerdlogPage = () => {
