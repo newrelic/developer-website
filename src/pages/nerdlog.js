@@ -6,7 +6,7 @@ import PageLayout from '../components/PageLayout';
 import MarketoForm from '../components/MarketoForm';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/Seo';
-import { graphql, useStaticQuery, Link } from 'gatsby';
+import { Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerdlog.module.scss';
 import { teamMembers } from '../data/nerdlogData';
