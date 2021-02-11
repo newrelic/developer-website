@@ -1,43 +1,13 @@
-- [Globally available components](#globally-available-components)
-  - [Video](#video)
-    - [Usage](#usage)
-  - [Intro](#intro)
-    - [Usage](#usage-1)
-  - [Steps](#steps)
-    - [Usage](#usage-2)
-  - [Step](#step)
-    - [Usage](#usage-3)
-- [A code example](#a-code-example)
-- [Another code example](#another-code-example)
-  - [Code blocks](#code-blocks)
-    - [Usage](#usage-4)
-  - [Callouts](#callouts)
-    - [Usage](#usage-5)
-  - [Related Resources](#related-resources)
-    - [Maximum references](#maximum-references)
-    - [Resource population logic](#resource-population-logic)
-    - [Order of priority](#order-of-priority)
-    - [Resource site tags](#resource-site-tags)
-  - [Announcement Banner](#announcement-banner)
+# Component Documentation
 
-# Globally available components
+## Global Components
 
-## Video
+Refer to the [New Relic Gatsby Theme](https://github.com/newrelic/gatsby-theme-newrelic/blob/develop/packages/gatsby-theme-newrelic/README.md)
+component documentation for details on all the components used on this site.
 
-`<Video />` component provides formatting for videos in markdown.
+## Developer Site Components
 
-### Usage
-
-The Video component requires two props:
-
-- `id`: the video ID
-- `type`: the host of the video. Accepted values are:
-  - `wistia`
-  - `youtube`
-
-```md
-<Video id="zxunt1u1as" type="wistia"/>
-```
+Below are the components that are unique to the Developer Site. These components support patterns that are specific to the Developer Site and are not used by other sites.
 
 ## Intro
 
@@ -45,7 +15,7 @@ The `<Intro />` component provides formatting for the title and introduction of 
 
 ### Usage
 
-It takes the title provided in the Frontmatter and accepts plain text for the description. An example of Frontmatter that will have a title of **Example Guide**:
+It takes the title provided in the front matter and accepts plain text for the description. An example of front matter that will have a title of **Example Guide**:
 
 ```
 ---
@@ -59,10 +29,9 @@ description: 'Example guide page'
 
 It also accepts a `<Video />` component as a child, which it will place on the left side of the description.
 
-```md
-<Intro>
 This is a description for the markdown guide.
 
+```html
 <Video id="zxunt1u1as" type="youtube"/>
 </Intro>
 ```
@@ -79,7 +48,6 @@ The Steps component accepts `<Step/>` components as its children and will increm
 
 ```md
 <Steps>
-
 <Step>
 
 ## Step 1
@@ -198,120 +166,4 @@ A step description
 </Step>
 ```
 
-> Note: keep in mind that a new line is necesary after an `img` tag to ensure proper rendering of subsequent text/markdown.
-
-## Code blocks
-
-Code blocks are automatically formatted by three backticks. This is our preferred method to delineate code snippets, but it's worth noting that markdown will also consider any text that is indented 4 spaces (or 1 tab) to be a code block.
-
-### Usage
-
-There are four props that can be supplied to a code snippet.
-
-- `language`: The first prop must be a code language. [Here](https://prismjs.com/#supported-languages) is a list of accepted languages for syntax highlighting.
-
-  ````md
-  ```jsx
-  ```
-  ````
-
-- `lineNumbers`: `true` or `false`. Will show line numbers of the left side of the code, defaults to `false`.
-
-  ````md
-  ```jsx lineNumbers=true
-  ```
-  ````
-
-- `lineHighlight`: Will highlight lines of code in the snippet. You can supply individual line numbers separted by commas, or ranges by using a hyphen. Be sure not to use any spaces.
-
-  ````md
-  ```jsx lineHighlight=1,3,6-8,10
-  ```
-  ````
-
-- `copyable`: `true` or `false`. Will display or not display the copy button, defaults to `true`
-  ````md
-  ```jsx copyable=false
-  ```
-  ````
-
-## Callouts
-
-Callouts direct your attention to information of special importance or to information that doesn't fit smoothly into the main text.
-
-- Caution: Screams at you that this could cause a crash or cost you data loss beyond the task at hand.
-- Important: Urges awareness that this could impair the task at hand or cost you time if you ignore the text.
-- Tip: Whispers to you that this is nice to know, like a shortcut, best practice, or reminder.
-
-### Usage
-
-```md
-<Callout variant="caution">
-
-Text with `markdown`.
-
-</Callout>
-
-<Callout variant="important">
-
-Text with `markdown`.
-
-</Callout>
-
-<Callout variant="tip">
-
-Text with `markdown`.
-
-</Callout>
-```
-
-All callouts have default titles that can be overridden like this:
-
-```md
-<Callout title="A custom title">
-
-Text
-
-</Callout>
-```
-
-## Related Resources
-
-The related resources component is controlled by specific Frontmatter slugs that
-are defined on a page.
-
-By setting the Frontmatter for `resources` and `tags` you can control what is populated
-in this component. Please review the [Style Guide](STYLE_GUIDE.md) for further details
-on these slugs.
-
-### Maximum references
-
-This component allows a maximum of 5 resources.
-
-### Resource population logic
-
-If no resources or tags are available in the page Frontmatter the component will fallback
-to using the page title as the search query term but you will
-always have 5 results, assuming Swiftype can return 5 results for that query.
-
-### Order of priority
-
-The order of priority for populating content in this component is driven by:
-
-1. Any resources defined in the page Frontmatter.
-2. Any tags defined in the the page Frontmatter will send a search query term and return results from Swiftype.
-   2b. Any Swifttype results that match the page title.
-
-### Resource site tags
-
-Resource site tags control the labels that appears below each resource URL. These
-can be found in the [Resources.js](./src/components/RelatedContentModules/Resources.js).
-If you are adding a resource that doesn't currently have a defined site tag, you will need to
-modify this file an add a new site tag accordingly.
-
-When naming the site tag the site domain name should be used for the site tag name.
-
-## Announcement Banner
-
-To utilize the announcement banner that is available in the Global Theme please see these
-[instructions](https://github.com/newrelic/gatsby-theme-newrelic/tree/develop/packages/gatsby-theme-newrelic#announcements).
+> Note: keep in mind that a new line is necessary after an `img` tag to ensure proper rendering of subsequent text/markdown.
