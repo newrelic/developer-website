@@ -34,8 +34,8 @@ If you haven't already installed it, do the following:
 - Install [Node.js](https://nodejs.org/en/download/).
 - Complete all the steps in the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==).
 
-
 ## Creating a new visualization
+
 In this first set of steps you will use the CLI to quickly generate the boilerplate for a new visualization.
 
 <Steps>
@@ -69,12 +69,14 @@ TODO: Point to reference(s) explaining visualization props and guidance on syste
 </Steps>
 
 ## Render the visualization in local development
+
 Now let's run the generated visualization locally and view it the Visualization Explorer where you can quickly test changes to your code.
 
 <Steps>
   <Step>
 
 Start the local node server for your nerdpack.
+
 ```bash
 nr1 nerdpack:serve
 ```
@@ -89,15 +91,23 @@ Open a browser and go to [https://one.newrelic.com/?nerdpacks=local](https://one
 
   <Step>
 
-Navigate to the Visualization Explorer which you will find favorited by default in the Apps catalog. 
-<img src="../../images/build-an-app/visualization-explorer-navigation.png" alt="Visualization Explorer is located in the Apps listing" />
+Navigate to the Visualization Explorer which you will find favorited by default in the Apps catalog.
+
+<img
+  src="../../images/build-an-app/visualization-explorer-navigation.png"
+  alt="Visualization Explorer is located in the Apps listing"
+/>
 
   </Step>
 
   <Step>
 
 In the Visualization Explorer, find and click on the tile for your visualization. If the tile is not showing up or it is not indicating that it is running locally, restart the node server and refresh the browser.
-<img src="../../images/build-an-app/visualization-explorer-local-entry.png" alt="Your visualization shown in the Visualization Explorer" />
+
+<img
+  src="../../images/build-an-app/visualization-explorer-local-entry.png"
+  alt="Your visualization shown in the Visualization Explorer"
+/>
 
 Now that you have selected your locally running visualization, you will see it load in the Visualization Explorer where you can take advantage of the features outlined in the following steps.
 
@@ -127,16 +137,25 @@ TODO: Modify nr1.json details, must restart the node server
 
 </Steps>
 
-
 ## Deploy and use your visualization
 
-Once you are ready for you and others to use the visualaztion on dashboards, you can step through the following resources. 
+When your visualization is ready to be added to dashboards by you and your colleagues, follow these steps.
 
-* Share the visualization with your colleagues by deploying the nerdpack to the New Relic One catalog and subscribing accounts to your nerdpack.
-* Add the visualization to a dashboard for you and others.
-* Add details to the project in the catalog so users understand how to use it.
+<Steps>
+  
+  <Step>
+    
+Open and follow the guide to [publish and deploy the nerdpack to New Relic One and subscribe accounts to it](/build-apps/publish-deploy).
+  
+  </Step>
+  
+  <Step>
+    
+Then you can [add your visualization to a dashboard](https://docs.newrelic.com/).
 
-TODO: make these bullet points links.
+  </Step>
+
+</Steps>
 
 ## Advance configurations
 
@@ -162,5 +181,5 @@ For this reason, your network administrator may need to enable access to:
 
 Now that you've completed the steps in this example, you learned the steps to:
 
-- Create a visualization and run it locally 
+- Create a visualization and run it locally
 - Quickly test and iterate on visualization code changes using the Visualization Explorer
