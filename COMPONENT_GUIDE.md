@@ -13,6 +13,31 @@ Below are the components that are unique to the Developer Site. These components
 
 The `<Intro />` component provides formatting for the title and introduction of the markdown document.
 
+### Usage
+
+It takes the title provided in the front matter and accepts plain text for the description. An example of front matter that will have a title of **Example Guide**:
+
+```
+---
+path: '/example'
+duration: '30 min'
+title: 'Example Guide'
+template: 'GuideTemplate'
+description: 'Example guide page'
+---
+```
+
+It also accepts a `<Video />` component as a child, which it will place on the left side of the description.
+
+This is a description for the markdown guide.
+
+```html
+<Video id="zxunt1u1as" type="youtube"/>
+</Intro>
+```
+
+If there is a more than plain text and a `<Video />` (such as a code snippet or another component) the content will be posted on the left side below the description.
+
 ## Steps
 
 The `<Steps />` is a required container for the individual `<Step />` components and will autonumber from top to bottom.
@@ -141,4 +166,4 @@ A step description
 </Step>
 ```
 
-> Note: keep in mind that a new line is necesary after an `img` tag to ensure proper rendering of subsequent text/markdown.
+> Note: keep in mind that a new line is necessary after an `img` tag to ensure proper rendering of subsequent text/markdown.
