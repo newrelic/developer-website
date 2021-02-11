@@ -126,15 +126,17 @@ You can set prop values and see the visualization update automatically. The Visu
 
   <Step>
 
-Modify the visualization's Javascript code and see the result automatically update in the UI.
+Modify the visualization's Javascript code and see the result automatically update in the UI. For example, you can change the value for `fillOpacity` on the Radar component in `index.js`. Upon save you will see the page automatically update.
 
-TODO: Give a specific example & screenshot.
+```js fileName=visualizations/your-visuzalization/index.js
+  fillOpacity={1.0}
+```
 
   </Step>
 
   <Step>
 
-TODO: Modify nr1.json details, must restart the node server
+To add more props, you must update the `configuration` field in the nr1.json file for your visualization and restart the local node server. For an example of what is possible you can reference the nr1.json file of the example visualization.
 
   </Step>
 
