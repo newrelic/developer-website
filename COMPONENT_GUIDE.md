@@ -153,7 +153,7 @@ return <div>Hello, {props.name}</div>;
 </Step>
 ````
 
-You can also use images in steps. To get an image to appear on the right side as with code blocks, you must use an HTML `img` tag, traditional markdown will not align the image to the right.
+You can also use images in steps.
 
 ```md
 <Step>
