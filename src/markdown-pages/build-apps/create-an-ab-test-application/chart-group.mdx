@@ -1,0 +1,654 @@
+---
+path: '/build-apps/ab-test/chart-group'
+title: 'Add a chart group'
+template: 'GuideTemplate'
+description: 'Add a chart group'
+---
+
+In previous lessons, you added a variety of charts to your A/B test application. These charts presented different facets of information about your A/B test, and they behaved independently from one other. In this lesson, you’ll create a new pair of line charts and learn how to synchronize their behaviors. Before you write any new code, consult your design guide to understand the role that these new charts will play in your application:
+
+![Design guide for chart components](../../../images/ab-test/charts-design-guide.png)
+
+In the design guide, there is a line graph under each of the tables you created in the last lesson. These line graphs show the version-specific response times for newsletter signup requests. Now, you’ll build two more line charts, but this time, you’ll group them with a `ChartGroup` and specify that their values are measured in milliseconds.
+
+<Steps>
+
+<Step>
+
+Change to the `add-a-chart-group` directory of the course repository:
+
+```sh
+cd nru-programmability-course/add-a-chart-group
+```
+
+</Step>
+
+<Step>
+
+Open your Nerdlet's index.js file. All code you write in this lesson belongs in this file.
+
+</Step>
+
+<Step>
+
+Import `ChartGroup` the way you did for other component types in previous lessons:
+
+```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=2
+import React from 'react';
+import { ChartGroup, LineChart, PieChart, TableChart } from 'nr1';
+
+class NewsletterSignups extends React.Component {
+    render() {
+        const versionASignups = {
+            metadata: {
+                id: 'version-a-newsletter-signups',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+            },
+            data: [
+                { x: 0, y: 0 },
+                { x: 10, y: 10 },
+                { x: 20, y: 15 },
+                { x: 30, y: 5 },
+                { x: 40, y: 30 },
+                { x: 50, y: 25 },
+            ],
+        }
+        const versionBSignups = {
+            metadata: {
+                id: 'version-b-newsletter-signups',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+            },
+            data: [
+                { x: 0, y: 20 },
+                { x: 10, y: 5 },
+                { x: 20, y: 25 },
+                { x: 30, y: 45 },
+                { x: 40, y: 50 },
+                { x: 50, y: 35 },
+            ],
+        }
+        return <LineChart data={[versionASignups, versionBSignups]} fullWidth />
+    }
+}
+
+class TestDistributions extends React.Component {
+    render() {
+        const distributionA = {
+            metadata: {
+                id: 'distributions-A',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+            },
+            data: [
+                { y: 259 },
+            ],
+        }
+        const distributionB = {
+            metadata: {
+                id: 'distributions-B',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+            },
+            data: [
+                { y: 318 },
+            ],
+        }
+        return <PieChart data={[distributionA, distributionB]} fullWidth />
+    }
+}
+
+class SuccessfulRequests extends React.Component {
+    render() {
+        const successesA = {
+            metadata: {
+                id: 'successes-A',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+            },
+            data: [
+                { y: 118 },
+            ],
+        }
+        const successesB = {
+            metadata: {
+                id: 'successes-B',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+            },
+            data: [
+                { y: 400 },
+            ],
+        }
+        return <PieChart data={[successesA, successesB]} fullWidth />
+    }
+}
+
+class VersionATotals extends React.Component {
+    render() {
+        const versionATotals = {
+            metadata: {
+                id: 'totals-A',
+                name: 'Version A',
+                columns: ['name', 'count'],
+            },
+            data: [
+                {
+                    name: 'Successful Requests',
+                    count: 85
+                },
+                {
+                    name: 'Failed Requests',
+                    count: 2
+                },
+            ],
+        }
+        return <TableChart data={[versionATotals]} fullWidth />
+    }
+}
+
+class VersionBTotals extends React.Component {
+    render() {
+        const versionBTotals = {
+            metadata: {
+                id: 'totals-B',
+                name: 'Version B',
+                columns: ['name', 'count'],
+            },
+            data: [
+                {
+                    name: 'Successful Requests',
+                    count: 180
+                },
+                {
+                    name: 'Failed Requests',
+                    count: 30
+                },
+            ],
+        }
+        return <TableChart data={[versionBTotals]} fullWidth />
+    }
+}
+
+export default class AbTestNerdletNerdlet extends React.Component {
+    render() {
+        return <React.Fragment>
+            <NewsletterSignups />
+            <TestDistributions />
+            <SuccessfulRequests />
+            <VersionATotals />
+            <VersionBTotals />
+        </React.Fragment>;
+    }
+}
+```
+
+Now, you’re ready to create some chart components and group them together with a `ChartGroup`.
+
+</Step>
+
+<Step>
+
+Create a new component for each table:
+
+```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=144-192
+import React from 'react';
+import { ChartGroup, LineChart, PieChart, TableChart } from 'nr1';
+
+class NewsletterSignups extends React.Component {
+    render() {
+        const versionASignups = {
+            metadata: {
+                id: 'version-a-newsletter-signups',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+            },
+            data: [
+                { x: 0, y: 0 },
+                { x: 10, y: 10 },
+                { x: 20, y: 15 },
+                { x: 30, y: 5 },
+                { x: 40, y: 30 },
+                { x: 50, y: 25 },
+            ],
+        }
+        const versionBSignups = {
+            metadata: {
+                id: 'version-b-newsletter-signups',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+            },
+            data: [
+                { x: 0, y: 20 },
+                { x: 10, y: 5 },
+                { x: 20, y: 25 },
+                { x: 30, y: 45 },
+                { x: 40, y: 50 },
+                { x: 50, y: 35 },
+            ],
+        }
+        return <LineChart data={[versionASignups, versionBSignups]} fullWidth />
+    }
+}
+
+class TestDistributions extends React.Component {
+    render() {
+        const distributionA = {
+            metadata: {
+                id: 'distributions-A',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+            },
+            data: [
+                { y: 259 },
+            ],
+        }
+        const distributionB = {
+            metadata: {
+                id: 'distributions-B',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+            },
+            data: [
+                { y: 318 },
+            ],
+        }
+        return <PieChart data={[distributionA, distributionB]} fullWidth />
+    }
+}
+
+class SuccessfulRequests extends React.Component {
+    render() {
+        const successesA = {
+            metadata: {
+                id: 'successes-A',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+            },
+            data: [
+                { y: 118 },
+            ],
+        }
+        const successesB = {
+            metadata: {
+                id: 'successes-B',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+            },
+            data: [
+                { y: 400 },
+            ],
+        }
+        return <PieChart data={[successesA, successesB]} fullWidth />
+    }
+}
+
+class VersionATotals extends React.Component {
+    render() {
+        const versionATotals = {
+            metadata: {
+                id: 'totals-A',
+                name: 'Version A',
+                columns: ['name', 'count'],
+            },
+            data: [
+                {
+                    name: 'Successful Requests',
+                    count: 85
+                },
+                {
+                    name: 'Failed Requests',
+                    count: 2
+                },
+            ],
+        }
+        return <TableChart data={[versionATotals]} fullWidth />
+    }
+}
+
+class VersionBTotals extends React.Component {
+    render() {
+        const versionBTotals = {
+            metadata: {
+                id: 'totals-B',
+                name: 'Version B',
+                columns: ['name', 'count'],
+            },
+            data: [
+                {
+                    name: 'Successful Requests',
+                    count: 180
+                },
+                {
+                    name: 'Failed Requests',
+                    count: 30
+                },
+            ],
+        }
+        return <TableChart data={[versionBTotals]} fullWidth />
+    }
+}
+
+class VersionAResponseTimes extends React.Component {
+    render() {
+        const versionAResponseTimes = {
+            metadata: {
+                id: 'response-times-A',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+                units_data: {
+                    y: 'MS'
+                }
+            },
+            data: [
+                { x: 0, y: 10 },
+                { x: 10, y: 13 },
+                { x: 20, y: 11.5 },
+                { x: 30, y: 10 },
+                { x: 40, y: 8.75 },
+                { x: 50, y: 9 },
+            ],
+        }
+        return <LineChart data={[versionAResponseTimes]} fullWidth />
+    }
+}
+
+class VersionBResponseTimes extends React.Component {
+    render() {
+        const versionBResponseTimes = {
+            metadata: {
+                id: 'response-times-B',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+                units_data: {
+                    y: 'MS'
+                }
+            },
+            data: [
+                { x: 0, y: 15 },
+                { x: 10, y: 13 },
+                { x: 20, y: 10 },
+                { x: 30, y: 14 },
+                { x: 40, y: 16.5 },
+                { x: 50, y: 13.5 },
+            ],
+        }
+        return <LineChart data={[versionBResponseTimes]} fullWidth />
+    }
+}
+
+export default class AbTestNerdletNerdlet extends React.Component {
+    render() {
+        return <React.Fragment>
+            <NewsletterSignups />
+            <TestDistributions />
+            <SuccessfulRequests />
+            <VersionATotals />
+            <VersionBTotals />
+        </React.Fragment>;
+    }
+}
+```
+
+Notice the new attribute in the series' `metadata` fields: `units_data`. This attribute describes the unit type for a specified data axis. In this case, you set the unit type for the y axis to `'MS'`, which stands for milliseconds. Other options for unit types, include: `'PERCENTAGE'`, `'TIMESTAMP'`, and `'BYTES_PER_SECOND'`.
+
+</Step>
+
+<Step>
+
+Add your new tables to your Nerdlet in a `ChartGroup`:
+
+```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=195-207
+import React from 'react';
+import { ChartGroup, LineChart, PieChart, TableChart } from 'nr1';
+
+class NewsletterSignups extends React.Component {
+    render() {
+        const versionASignups = {
+            metadata: {
+                id: 'version-a-newsletter-signups',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+            },
+            data: [
+                { x: 0, y: 0 },
+                { x: 10, y: 10 },
+                { x: 20, y: 15 },
+                { x: 30, y: 5 },
+                { x: 40, y: 30 },
+                { x: 50, y: 25 },
+            ],
+        }
+        const versionBSignups = {
+            metadata: {
+                id: 'version-b-newsletter-signups',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+            },
+            data: [
+                { x: 0, y: 20 },
+                { x: 10, y: 5 },
+                { x: 20, y: 25 },
+                { x: 30, y: 45 },
+                { x: 40, y: 50 },
+                { x: 50, y: 35 },
+            ],
+        }
+        return <LineChart data={[versionASignups, versionBSignups]} fullWidth />
+    }
+}
+
+class TestDistributions extends React.Component {
+    render() {
+        const distributionA = {
+            metadata: {
+                id: 'distributions-A',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+            },
+            data: [
+                { y: 259 },
+            ],
+        }
+        const distributionB = {
+            metadata: {
+                id: 'distributions-B',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+            },
+            data: [
+                { y: 318 },
+            ],
+        }
+        return <PieChart data={[distributionA, distributionB]} fullWidth />
+    }
+}
+
+class SuccessfulRequests extends React.Component {
+    render() {
+        const successesA = {
+            metadata: {
+                id: 'successes-A',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+            },
+            data: [
+                { y: 118 },
+            ],
+        }
+        const successesB = {
+            metadata: {
+                id: 'successes-B',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+            },
+            data: [
+                { y: 400 },
+            ],
+        }
+        return <PieChart data={[successesA, successesB]} fullWidth />
+    }
+}
+
+class VersionATotals extends React.Component {
+    render() {
+        const versionATotals = {
+            metadata: {
+                id: 'totals-A',
+                name: 'Version A',
+                columns: ['name', 'count'],
+            },
+            data: [
+                {
+                    name: 'Successful Requests',
+                    count: 85
+                },
+                {
+                    name: 'Failed Requests',
+                    count: 2
+                },
+            ],
+        }
+        return <TableChart data={[versionATotals]} fullWidth />
+    }
+}
+
+class VersionBTotals extends React.Component {
+    render() {
+        const versionBTotals = {
+            metadata: {
+                id: 'totals-B',
+                name: 'Version B',
+                columns: ['name', 'count'],
+            },
+            data: [
+                {
+                    name: 'Successful Requests',
+                    count: 180
+                },
+                {
+                    name: 'Failed Requests',
+                    count: 30
+                },
+            ],
+        }
+        return <TableChart data={[versionBTotals]} fullWidth />
+    }
+}
+
+class VersionAResponseTimes extends React.Component {
+    render() {
+        const versionAResponseTimes = {
+            metadata: {
+                id: 'response-times-A',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+                units_data: {
+                    y: 'MS'
+                }
+            },
+            data: [
+                { x: 0, y: 10 },
+                { x: 10, y: 13 },
+                { x: 20, y: 11.5 },
+                { x: 30, y: 10 },
+                { x: 40, y: 8.75 },
+                { x: 50, y: 9 },
+            ],
+        }
+        return <LineChart data={[versionAResponseTimes]} fullWidth />
+    }
+}
+
+class VersionBResponseTimes extends React.Component {
+    render() {
+        const versionBResponseTimes = {
+            metadata: {
+                id: 'response-times-B',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+                units_data: {
+                    y: 'MS'
+                }
+            },
+            data: [
+                { x: 0, y: 15 },
+                { x: 10, y: 13 },
+                { x: 20, y: 10 },
+                { x: 30, y: 14 },
+                { x: 40, y: 16.5 },
+                { x: 50, y: 13.5 },
+            ],
+        }
+        return <LineChart data={[versionBResponseTimes]} fullWidth />
+    }
+}
+
+export default class AbTestNerdletNerdlet extends React.Component {
+    render() {
+        return <React.Fragment>
+            <NewsletterSignups />
+            <TestDistributions />
+            <SuccessfulRequests />
+            <VersionATotals />
+            <VersionBTotals />
+            <ChartGroup>
+                <VersionAResponseTimes />
+                <VersionBResponseTimes />
+            </ChartGroup>
+        </React.Fragment>;
+    }
+}
+```
+
+Because the tables are conceptually related, as they show contrasting performance metrics over the same timeslice, it makes sense to group them in a `ChartGroup`. This means that the two charts behave synchronously. For example, when you hover over one chart, the other chart shows a hover indicator at the same x coordinate:
+
+
+
+Each of the chart component types you've used in this lesson have had different series configurations. Most chart components share the same `metadata` attributes, like `LineChart` and `PieChart`, but differ in their `data` formats.
+
+It's helpful to be aware of the different `data` formats, for when you create your own charts. You can read more about the `data` formats in the [chart component documentation](https://developer.newrelic.com/components/charts#data).
+
+There is one more chart on the mockup: a table that records historical tests. The columns for this table are:
+
+- **End Date:** The end date for the test
+- **Version A Description:** A description for version A
+- **Version B Description:** A description for version B
+- **Winner:** The version selected as the final design
+
+Try to build this table in your application with these column names and some fake data, without looking at a code sample.
+
+<Callout variant="tip">
+
+If you need help, review the `charts` branch of the coursework repository, which has all the code for this lesson.
+
+</Callout>
+
+</Step>
+
+</Steps>
+
+Now your application is filled with charts, but it doesn't look great. The charts are stacked on top of one another in an unhelpful way. In the next lesson, you'll learn about the user interface components from the SDK and how you can use them to organize your charts.

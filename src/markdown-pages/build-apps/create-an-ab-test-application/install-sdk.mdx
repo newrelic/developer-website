@@ -1,0 +1,46 @@
+---
+path: '/build-apps/ab-test/install-nr1'
+title: 'Install the New Relic One CLI'
+template: 'GuideTemplate'
+description: 'Install and configure the New Relic One CLI'
+---
+
+One of the primary elements of the New Relic One SDK is the CLI. To create a Nerdpack for building your application, you'll need to install the SDK, configure the CLI to work with your New Relic account, and then utilize its `create` command.
+
+To install and configure the New Relic One CLI, head to the New Relic One applications quick start guide. There, you will complete a six-step process to get your first Nerdpack up and running.
+
+The first step in the quick start guide is to select or create an API key. You use this key to associate your New Relic account with the CLI. The CLI then uses the key to manage entities within your account.
+
+In the second step, you download the SDK's installer for your operating system. Once you install the SDK, you'll have access to the `nr1` CLI. Verify this by checking your SDK version:
+
+```bash
+nr1 --version
+```
+
+> Note: It’s important to distinguish between the `newrelic` CLI and the `nr1` CLI. `newrelic` is for managing New Relic entities in your account. `nr1` is for managing New Relic One applications.
+
+Next, you associate your New Relic account as a CLI profile. Profiles let you select which New Relic account you want to run commands against. If you have multiple accounts, you can view them with `profiles:list`:
+
+```bash
+nr1 profiles:list
+```
+
+Notice that one profile is your default profile. This is the account your commands will run against, unless you specify another. To specify a profile for a particular command, use the `--profile` option:
+
+```bash
+nr1 create --profile <your profile>
+```
+
+In the quick start guide, you add a new account with `profiles:add`. If this is your first time using the CLI, then the profile you add is your default profile. If you have other profiles, you need to set your default to the one you'd like to use for learning about New Relic One applications:
+
+```bash
+nr1 profiles:default
+```
+
+If you forget these commands, you can look them up in the profiles help menu:
+
+```bash
+nr1 profiles --help
+```
+
+In steps five and six in the quick start guide, you set up and serve an empty Nerdpack. Ignore this for now, since you will build an application throughout this course. Now, you’re ready to build an application with the New Relic One CLI.

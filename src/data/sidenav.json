@@ -112,6 +112,52 @@
       {
         "displayName": "See all open source apps",
         "url": "https://opensource.newrelic.com/nerdpacks/"
+      },
+      {
+        "displayName": "Build an A/B test application",
+        "url": "/ab-test",
+        "children": [
+          {
+            "displayName": "Install and configure the New Relic One CLI",
+            "url": "/build-apps/ab-test/install-nr1"
+          },
+          {
+            "displayName": "Create a Nerdpack",
+            "url": "/build-apps/ab-test/create-nerdpack"
+          },
+          {
+            "displayName": "Serve your New Relic One application",
+            "url": "/build-apps/ab-test/serve-app"
+          },
+          {
+            "displayName": "Add chart components to your A/B test application",
+            "url": "/build-apps/ab-test/add-charts"
+          },
+          {
+            "displayName": "Add your first chart",
+            "url": "/build-apps/ab-test/first-chart"
+          },
+          {
+            "displayName": "Add pie charts",
+            "url": "/build-apps/ab-test/pie-charts"
+          },
+          {
+            "displayName": "Add tables",
+            "url": "/build-apps/ab-test/table-charts"
+          },
+          {
+            "displayName": "Add a chart group",
+            "url": "/build-apps/ab-test/chart-group"
+          },
+          {
+            "displayName": "Add user interface components to your application",
+            "url": "/build-apps/ab-test/add-ui"
+          },
+          {
+            "displayName": "Add a grid",
+            "url": "/build-apps/ab-test/grid"
+          }
+        ]
       }
     ]
   },
