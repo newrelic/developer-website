@@ -156,6 +156,22 @@
           {
             "displayName": "Add a grid",
             "url": "/build-apps/ab-test/grid"
+          },
+          {
+            "displayName": "Add chart headings",
+            "url": "/build-apps/ab-test/chart-headings"
+          },
+          {
+            "displayName": "Add a section to end your test",
+            "url": "/build-apps/ab-test/end-test"
+          },
+          {
+            "displayName": "Persist the selected version",
+            "url": "/build-apps/ab-test/persist-version"
+          },
+          {
+            "displayName": "Present an end test confirmation message",
+            "url": "/build-apps/ab-test/confirmation-message"
           }
         ]
       }

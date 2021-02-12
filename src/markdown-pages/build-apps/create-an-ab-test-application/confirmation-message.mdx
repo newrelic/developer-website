@@ -1,0 +1,250 @@
+---
+path: '/build-apps/ab-test/confirmation-message'
+title: 'Present an end test confirmation message'
+template: 'GuideTemplate'
+description: 'Present an end test confirmation message'
+---
+
+There is another issue with the current setup. By the end of this course, pressing _End test_ will tell your users' servers that every customer should see the version selected here. This is destructive behavior that your users should know about.
+
+<Steps>
+
+<Step>
+
+Update the `Button` to use the `DESTRUCTIVE` styling:
+
+```js
+<Button type={Button.TYPE.DESTRUCTIVE}>End test</Button>
+```
+
+</Step>
+
+<Step>
+
+Display a confirmation message in a `Modal`. Import `Modal` and `BlockText`, which you'll use to format your message:
+
+```js
+import { BlockText, Button, ChartGroup, Select, SelectItem, Grid, GridItem, HeadingText, LineChart, Modal, PieChart, TableChart } from 'nr1';
+```
+
+</Step>
+
+<Step>
+
+Add the `Modal` to `EndTestButton`:
+
+```js
+return <React.Fragment>
+    <Button type={Button.TYPE.DESTRUCTIVE} onClick={this._onClick}>End test</Button>
+
+    <Modal>
+        <HeadingText>Are you sure?</HeadingText>
+        <BlockText>
+        If you end the test, all your users will receive the version you selected:
+        </BlockText>
+
+        <BlockText spacingType={[BlockText.SPACING_TYPE.LARGE]}>
+            <b>Version A</b>
+        </BlockText>
+
+        <Button>No, continue test</Button> <Button type={Button.TYPE.DESTRUCTIVE}>Yes, end test</Button>
+    </Modal>
+</React.Fragment>
+```
+
+If you visit your application in New Relic One, you'll see the modal you added, but you can't dismiss it.
+
+</Step>
+
+<Step>
+
+Fix that by storing a value in `EndTestSection.state` that determines whether or not to hide the modal:
+
+```js
+class EndTestSection extends React.Component {
+    constructor() {
+        super(...arguments);
+
+        this.state = {
+            selectedVersion: 'A',
+            modalHidden: true,
+        };
+
+        this.selectVersion = this.selectVersion.bind(this);
+    }
+
+    ...
+}
+```
+
+</Step>
+
+<Step>
+
+Pass `modalHidden` to `EndTestButton`:
+
+```js
+<EndTestButton modalHidden={this.state.modalHidden}>End test</EndTestButton>
+```
+
+</Step>
+
+<Step>
+
+Supply that prop to the `Modal` in `EndTestButton`:
+
+```js
+class EndTestButton extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return <React.Fragment>
+            <Button type={Button.TYPE.DESTRUCTIVE}>End test</Button>
+
+            <Modal hidden={this.props.modalHidden}>
+                <HeadingText>Are you sure?</HeadingText>
+                <BlockText>
+                If you end the test, all your users will receive the version you selected:
+                </BlockText>
+
+                <BlockText spacingType={[BlockText.SPACING_TYPE.LARGE]}>
+                    <b>Version A</b>
+                </BlockText>
+
+                <Button>No, continue test</Button> <Button type={Button.TYPE.DESTRUCTIVE}>Yes, end test</Button>
+            </Modal>
+        </React.Fragment>
+    }
+}
+```
+
+Now, you need to reveal the `Modal` when the user selects the "End test" button.
+
+</Step>
+
+<Step>
+
+Add and bind two new methods to `EndTestSection`:
+
+```js
+class EndTestSection extends React.Component {
+    constructor() {
+        super(...arguments);
+
+        this.state = {
+            selectedVersion: 'A',
+            modalHidden: true,
+        };
+
+        this.selectVersion = this.selectVersion.bind(this);
+        this.showModal = this.showModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+
+    selectVersion(event, value) {
+        this.setState({selectedVersion: value});
+    }
+
+    closeModal() {
+        this.setState({modalHidden: true});
+    }
+
+    showModal() {
+        this.setState({modalHidden: false});
+    }
+
+
+    ...
+}
+```
+
+</Step>
+
+<Step>
+
+Then pass those props to `EndTestButton`:
+
+```js
+<EndTestButton
+    modalHidden={this.state.modalHidden}
+    closeModal={this.closeModal}
+    showModal={this.showModal}
+>
+    End test
+</EndTestButton>
+```
+
+</Step>
+
+<Step>
+
+In `EndTestButton`, set `showModal` as the "End test" button's `onClick` callback. Also, close the modal from the `Modal.onClose` callback and from the yes and no buttons in the modal:
+
+```js
+class EndTestButton extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return <React.Fragment>
+            <Button type={Button.TYPE.DESTRUCTIVE} onClick={this.props.showModal}>End test</Button>
+
+            <Modal hidden={this.props.modalHidden} onClose={this.props.closeModal}>
+                <HeadingText>Are you sure?</HeadingText>
+                <BlockText>
+                If you end the test, all your users will receive the version you selected:
+                </BlockText>
+
+                <BlockText spacingType={[BlockText.SPACING_TYPE.LARGE]}>
+                    <b>Version A</b>
+                </BlockText>
+
+                <Button onClick={this.props.closeModal}>No, continue test</Button>
+                <Button type={Button.TYPE.DESTRUCTIVE} onClick={this.props.closeModal}>Yes, end test</Button>
+            </Modal>
+        </React.Fragment>
+    }
+}
+```
+
+Now, if you click the "End test" button, the modal will open and display a confirmation message. Any action you do in the modal closes the modal. However, if you select "Version B", the modal still says you chose "Version A", because "Version A" is hard-coded.
+
+</Step>
+
+<Step>
+
+Fix that by passing `selectedVersion` to `EndTestButton` in `EndTestSection`:
+
+```js
+<EndTestButton
+    modalHidden={this.state.modalHidden}
+    closeModal={this.closeModal}
+    showModal={this.showModal}
+    selectedVersion={this.state.selectedVersion}
+>
+    End test
+</EndTestButton>
+```
+
+</Step>
+
+<Step>
+
+Use this value in your confirmation message:
+
+```js
+<BlockText spacingType={[BlockText.SPACING_TYPE.LARGE]}>
+    <b>Version {this.props.selectedVersion}</b>
+</BlockText>
+```
+
+View your changes in New Relic One. The "End test" button matches the design and displays a `Modal` for confirmation. The dropdown maintains its state when you select a version.
+
+</Step>
+
+</Steps>
+
+Congratulations! You've done a lot of work, and it shows in the usefulness of your application. You have charts which show mocked data. You've organized your charts in a readable structure. You've added an interface for your users to interact with the test. Now, you need some real data. In the next section, you'll replace the mocked data in your charts with real data from your backend service.
