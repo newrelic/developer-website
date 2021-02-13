@@ -2061,16 +2061,35 @@ export default class AbTestNerdletNerdlet extends React.Component {
 }
 ```
 
-Visit New Relic One and try out your changes.
+</Step>
+
+
+<Step>
+
+Navigate to the root of your Nerdpack at `nru-programmability-course/persist-selected-version/ab-test`.
+
+</Step>
+
+<Step>
+
+Serve your application locally:
+
+```sh
+nr1 nerdpack:serve
+```
+
+</Step>
+
+<Step>
+
+[View your changes](https://one.newrelic.com?nerdpacks=local):
+
+![Your choice persists in the version selector](../../../images/ab-test/persist-selected-version-final.png)
+
+When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in the terminal window where you're serving your application.
 
 </Step>
 
 </Steps>
 
-Voila! The `Select` menu now tracks the selection you make. When you change your selection, `state` is updated and the new `state` reflects back in the menu.
-
-<Callout variant="caution" title="TODO">
-
-Update this conclusion
-
-</Callout>
+Voila! When you select a new version as the winner of the A/B test, the version you selected is reflected in the menu. However, when you press **End test**, nothing happens. In the next lesson, you'll create a confirmation dialog to protect yourself from prematurely ending your A/B test.
