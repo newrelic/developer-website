@@ -170,8 +170,8 @@
             "url": "/build-apps/ab-test/persist-version"
           },
           {
-            "displayName": "Present an end test confirmation message",
-            "url": "/build-apps/ab-test/confirmation-message"
+            "displayName": "Present an end test confirmation modal",
+            "url": "/build-apps/ab-test/confirmation-modal"
           }
         ]
       }
