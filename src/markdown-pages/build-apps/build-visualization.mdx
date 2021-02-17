@@ -27,22 +27,20 @@ You can build your own visualizations for New Relic One dashboards. This allows 
 
 To get started, make sure you have a [New Relic](https://newrelic.com/signup/) account.
 
-To develop projects, you need the New Relic One CLI (command line interface).
-
-If you haven't already installed it, do the following:
+To develop projects, you need the New Relic One CLI (command line interface). If you haven't already installed it, do the following:
 
 - Install [Node.js](https://nodejs.org/en/download/).
 - Complete all the steps in the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==).
 
-## Creating a new visualization
+## Create a new visualization
 
-In this first set of steps you will use the CLI to quickly generate the boilerplate for a new visualization.
+In this first set of steps you use the CLI to quickly generate the boilerplate for a new visualization.
 
 <Steps>
 
   <Step>
 
-Ensure you're working with the latest version of the New Relic One CLI.
+Ensure you're working with the latest version of the New Relic One CLI:
 
 ```bash
 nr1 update
@@ -52,7 +50,13 @@ nr1 update
 
   <Step>
 
-Generate the boilerplate for a visualization using the `nr1 create` command while at the root of your nerdpack project. If you do not yet have a nerdpack project, you can generate a new one by running `nr1 create` and selecting `nerdpack` from the options. If you followed all the steps in the "CLI quick start" above, you already have a new nerdpack project directory (for example, `my-awesome-nerdpack`).
+Start with a new Nerdpack. If you just installed the New Relic One CLI, then you have a new Nerdpack project directory (called something like, `my-awesome-nerdpack`). If you need to create one, run `nr1 create` and select the `nerdpack` option.
+
+  </Step>
+
+  <Step>
+
+ Navigate to the root of your Nerdpack project, and then run the `create` command like this:
 
 ```bash
 nr1 create --type visualization
@@ -70,7 +74,7 @@ TODO: Point to reference(s) explaining visualization props and guidance on syste
 
 ## Render the visualization in local development
 
-Now let's run the generated visualization locally and view it the Visualization Explorer where you can quickly test changes to your code.
+Now run the generated visualization locally, and view it in the Visualization Explorer, where you can quickly test changes to your code.
 
 <Steps>
   <Step>
