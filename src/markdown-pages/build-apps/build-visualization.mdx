@@ -153,11 +153,11 @@ When you select your locally running visualization, the visualization hosted by 
 
   <Step>
 
-You can set prop values and see the visualization update automatically. The props inputs are listed as defined in the prop definitions located in the `nr1.json` file in the visualization folder (for example `./visualizations/your-visualization/nr1.json`). Fill in values for the props and see the visualization update automatically. As you change props in the sidebar, a render cycle of your visualization's React component is triggered. While you look at the example visualization generated for you, you can enter any CSS color value (name, hex, rgba) in the fill color, or stroke-color prop inputs and see the plotted data color change.
+You can set prop values and see the visualization update automatically. The props inputs are listed as defined in the prop definitions located in the `nr1.json` file in the visualization folder (for example `./visualizations/my-awesome-visualization/nr1.json`). Fill in values for the props and see the visualization update automatically. As you change props in the sidebar, a render cycle of your visualization's React component is triggered.
 
 <img
   src="../../images/build-an-app/visualization-builder-props.png"
-  alt="Generated visualization rendered in the Visualization Builder"
+  alt="Generated visualization rendered in the Visualization Builderr"
 />
 
   </Step>
@@ -174,9 +174,7 @@ Modify the visualization's Javascript code and see the result automatically upda
 
   <Step>
 
-To add more props, you must update the `configuration` field in the `nr1.json` file for your visualization, and restart the local node server. For an example of what is possible, check out the `nr1.json` file of the example visualization.
-
-The props you define in the `configuration` field allow New Relic One to cleanly display a props editing UI for those using the visualization.
+To add more props, you must update the `configuration` field in the `nr1.json` file for your visualization, and restart the local node server. The props you define in the `configuration` field allow New Relic One to cleanly display a props editing UI for those using the visualization. See above for more information about the `configuration` field.
 
   </Step>
 
