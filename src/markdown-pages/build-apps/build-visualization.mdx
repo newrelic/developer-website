@@ -80,6 +80,18 @@ The `nr1.json` file provides metadata including the `configuration` field that d
 
 The `index.js` file is where you define the React component that receives the props and renders the visualization. You can install and import any javascript libraries you find useful. The example component imports [recharts](https://recharts.org), a library that wraps [D3](https://d3js.org) submodules for easy to compose visualizations.
 
+If your visualization queries data over a time range and you want it to utilize the platform time range setting, you will need to utilize the `timeRange` value from [PlatformStateContext](/components/platform-state-context). The `timeRange` can be passed directly to the [NrqlQuery](/components/nrql-query) component. Setting the NrqlQuery component's `pollInterval` prop to `NrqlQuery.AUTO_POLL_INTERVAL` automatically handles calculating an appriate data polling interval.
+
+```js
+<PlatformStateContext.Consumer>
+  {({timeRange}) => (
+    <NrqlQuery
+      timeRange={timeRange}
+      pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
+    >
+    ...
+```
+
   </Step>
 
 </Steps>
