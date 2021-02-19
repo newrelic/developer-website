@@ -30,12 +30,26 @@
     "url": "/automate-workflows",
     "children": [
       {
-        "displayName": "Get started with the New Relic CLI",
-        "url": "/automate-workflows/get-started-new-relic-cli"
+        "displayName": "Using Terrafom with New Relic",
+        "url": "/terraform",
+        "children":[
+          {
+            "displayName": "Set up New Relic using Terraform",
+            "url": "/automate-workflows/get-started-terraform"
+          },
+          {
+            "displayName": "Using Terraform modules and remote storage",
+            "url": "/terraform/terraform-modules"
+          },
+          {
+            "displayName": "Using Terragrunt to manage multiple environments",
+            "url": "/terraform/terragrunt-configuration"
+          }
+        ]
       },
       {
-        "displayName": "Set up New Relic using Terraform",
-        "url": "/automate-workflows/get-started-terraform"
+        "displayName": "Get started with the New Relic CLI",
+        "url": "/automate-workflows/get-started-new-relic-cli"
       },
       {
         "displayName": "Set up New Relic using the Kubernetes operator",
