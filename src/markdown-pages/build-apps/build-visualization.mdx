@@ -92,6 +92,15 @@ nr1 nerdpack:serve
 
 In a browser, open [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local). This url is also shown in the terminal when the node server starts. The `nerdpacks=local` query string will direct the UI to load your new visulization artifact from the local node server.
 
+<Callout variant="tip" title={`Advanced nerdpack configuration`}>
+
+See the [advanced nerdpack
+configuration](build-apps/build-hello-world-app/#advance-configurations)
+section for detailed information about how your local node server is proxied
+to the browser and how you can override webpack configuration if needed.
+
+</Callout>
+
   </Step>
 
   <Step>
@@ -157,37 +166,17 @@ When your visualization is ready to be added to dashboards by you and your colle
   
   <Step>
     
-Open and follow the guide to [publish and deploy the nerdpack to New Relic One and subscribe accounts to it](/build-apps/publish-deploy).
+  Open and follow the guide to [publish and deploy the nerdpack to New Relic One and subscribe accounts to it](/build-apps/publish-deploy).
   
   </Step>
   
   <Step>
     
-Then you can [add your visualization to a dashboard](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/add-custom-visualizations-your-dashboards).
+  Then you can [add your visualization to a dashboard](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/add-custom-visualizations-your-dashboards).
 
   </Step>
 
 </Steps>
-
-## Advanced configurations
-
-### Extend webpack configuration
-
-You can use our `.extended-webpackrc.js` file to extend the webpack 4 configuration. This allows you to add your own aliases, scripts, and configurations when locally serving or deploying your app.
-
-### Proxy browser setup
-
-Generally, you don't need to know how your application code is loaded in New Relic One. But understanding how this works can help you if you encounter issues (for example, with a proxy or browser setup).
-
-When developing, your code is served from your local laptop by using an `nr-local.net` subdomain. This domain points to `127.0.0.1`, and will use a variety of ports to connect, including `9973`.
-
-In order to load third-party code into the platform, (both in development and production), New Relic One uses an `<IFRAME>`, as well as a separate domain (a subdomain of `nr-ext.net`) to perform the load, relying on same-domain policy to sandbox the code.
-
-For this reason, your network administrator may need to enable access to:
-
-- Any subdomain of `nr-local.net`, or, at the very least, to any domain of the shape of `<UserId>`.nr-local.net, where `UserId` is a 32-hexadecimal character identifier that is unique to the user logged into the platform. You can use `[0-9a-f]{32}` to discriminate it.
-
-- Any subdomain of `nr-ext.net`, or, at the very least, to any domain in the shape of `<NerdpackUuid>`.g `<NerdpackGid>`.nr-ext.net, where `NerdpackUuid` is the UUID assigned to your package, and `NerdpackGid` is zero, or a positive integer. You can use `0|[1-9]\d+` to discriminate it.
 
 ## Summary
 
