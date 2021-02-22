@@ -1,3 +1,18 @@
+## [1.35.2](https://github.com/newrelic/developer-website/compare/v1.35.1...v1.35.2) (2021-02-05)
+
+
+### Bug Fixes
+
+* upgrade snyk from 1.433.0 to 1.437.4 ([0207f55](https://github.com/newrelic/developer-website/commit/0207f55b262fe576b8ef7993e842eba3a958f06d))
+
+## [1.35.1](https://github.com/newrelic/developer-website/compare/v1.35.0...v1.35.1) (2021-02-05)
+
+
+### Bug Fixes
+
+* fixed spelling errors and image sizing on the builders page ([f8ce0a5](https://github.com/newrelic/developer-website/commit/f8ce0a56eab6ca878fab8ae17f3dd6a5f000865b))
+* removed package-lock.json and reverting mdx package ([db3db0f](https://github.com/newrelic/developer-website/commit/db3db0f065c7b150b3e7547047419a0e1a86305e))
+
 # [1.35.0](https://github.com/newrelic/developer-website/compare/v1.34.0...v1.35.0) (2021-02-01)
 
 
