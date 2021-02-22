@@ -1,3 +1,10 @@
+## [1.35.3](https://github.com/newrelic/developer-website/compare/v1.35.2...v1.35.3) (2021-02-22)
+
+
+### Bug Fixes
+
+* typo changed "multple" to "multiple" ([68f61f5](https://github.com/newrelic/developer-website/commit/68f61f5704ef01e8c213fbcefdae3f124f3d4dff))
+
 ## [1.35.2](https://github.com/newrelic/developer-website/compare/v1.35.1...v1.35.2) (2021-02-05)
 
 
