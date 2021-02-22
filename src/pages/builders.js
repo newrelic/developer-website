@@ -224,7 +224,7 @@ const DeveloperChampionPage = () => {
                   <a
                     href="https://therelicans.com"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener, noreferrer"
                   >
                     The Relicans
                   </a>
