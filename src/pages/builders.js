@@ -219,7 +219,17 @@ const DeveloperChampionPage = () => {
               <hr />
               <ul>
                 <h4>It is nice to have:</h4>
-                <li>Be an active member of The Reliquary,</li>
+                <li>
+                  Be an active member of{' '}
+                  <a
+                    href="https://therelicans.com"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    The Relicans
+                  </a>
+                  , our online community{' '}
+                </li>
                 <li>Have experience using New Relic products.</li>
               </ul>
               <hr />
