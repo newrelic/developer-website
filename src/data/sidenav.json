@@ -110,13 +110,13 @@
         "url": "/build-apps/add-query-mutate-data-nerdstorage"
       },
       {
-        "displayName": "See all open source apps",
-        "url": "https://opensource.newrelic.com/nerdpacks/"
-      },
-      {
         "displayName": "Build an A/B test application",
         "url": "/ab-test",
         "children": [
+          {
+            "displayName": "Spin up your demo services",
+            "url": "/build-apps/ab-test/demo-setup"
+          },
           {
             "displayName": "Install and configure the New Relic One CLI",
             "url": "/build-apps/ab-test/install-nr1"
@@ -172,8 +172,16 @@
           {
             "displayName": "Present an end test confirmation modal",
             "url": "/build-apps/ab-test/confirmation-modal"
+          },
+          {
+            "displayName": "Query New Relic data from your charts",
+            "url": "/build-apps/ab-test/nrql"
           }
         ]
+      },
+      {
+        "displayName": "See all open source apps",
+        "url": "https://opensource.newrelic.com/nerdpacks/"
       }
     ]
   },

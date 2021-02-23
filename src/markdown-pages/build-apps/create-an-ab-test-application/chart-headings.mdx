@@ -356,7 +356,7 @@ class TestDistributions extends React.Component {
         }
         return <React.Fragment>
             <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total users per version
+                Total subscriptions per version
             </HeadingText>
             <PieChart data={[distributionA, distributionB]} fullWidth />
         </React.Fragment>
@@ -389,7 +389,7 @@ class SuccessfulRequests extends React.Component {
         }
         return <React.Fragment>
             <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total subscriptions per version
+                Total unsubscriptions per version
             </HeadingText>
             <PieChart data={[successesA, successesB]} fullWidth />
         </React.Fragment>
@@ -417,7 +417,7 @@ class VersionATotals extends React.Component {
         }
         return <React.Fragment>
             <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - requests
+                Version A - Page views vs. subscriptions
             </HeadingText>
             <TableChart data={[versionATotals]} fullWidth />
         </React.Fragment>
@@ -445,7 +445,7 @@ class VersionBTotals extends React.Component {
         }
         return <React.Fragment>
             <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - requests
+                Version B - Page views vs. subscriptions
             </HeadingText>
             <TableChart data={[versionBTotals]} fullWidth />
         </React.Fragment>
@@ -475,7 +475,7 @@ class VersionAResponseTimes extends React.Component {
         }
         return <React.Fragment>
             <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - response times
+                Version A - Page views
             </HeadingText>
             <LineChart data={[versionAResponseTimes]} fullWidth />
         </React.Fragment>
@@ -505,7 +505,7 @@ class VersionBResponseTimes extends React.Component {
         }
         return <React.Fragment>
             <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - response times
+                Version B - Page views
             </HeadingText>
             <LineChart data={[versionBResponseTimes]} fullWidth />
         </React.Fragment>
