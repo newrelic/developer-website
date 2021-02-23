@@ -222,10 +222,10 @@ const DeveloperChampionPage = () => {
                 <h4>It is nice to have:</h4>
                 <li>
                   Be an active member of{' '}
-                  <link
+                  <Link
                     to="https://therelicans.com">
                     The Relicans
-                  </link>
+                  </Link>
                   , our online community{' '}
                 </li>
                 <li>Have experience using New Relic products.</li>
