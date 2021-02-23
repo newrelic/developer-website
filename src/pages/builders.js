@@ -8,6 +8,7 @@ import FeatherIcon from '../components/FeatherIcon';
 import devReliquary from '../images/builders/relicans.png';
 import onlineTeach from '../images/builders/remote-unsplash.jpg';
 import styles from './builders.module.scss';
+import { Link } from '@newrelic/gatsby-theme-newrelic';
 
 const DeveloperChampionPage = () => {
   return (
@@ -221,13 +222,10 @@ const DeveloperChampionPage = () => {
                 <h4>It is nice to have:</h4>
                 <li>
                   Be an active member of{' '}
-                  <a
-                    href="https://therelicans.com"
-                    target="_blank"
-                    rel="noopener, noreferrer"
-                  >
+                  <link
+                    to="https://therelicans.com">
                     The Relicans
-                  </a>
+                  </link>
                   , our online community{' '}
                 </li>
                 <li>Have experience using New Relic products.</li>
