@@ -1,14 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
 import SEO from '../components/Seo';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import devReliquary from '../images/builders/relicans.png';
 import onlineTeach from '../images/builders/remote-unsplash.jpg';
 import styles from './builders.module.scss';
-import { Link } from '@newrelic/gatsby-theme-newrelic';
 
 const DeveloperChampionPage = () => {
   return (
@@ -222,11 +221,8 @@ const DeveloperChampionPage = () => {
                 <h4>It is nice to have:</h4>
                 <li>
                   Be an active member of{' '}
-                  <Link
-                    to="https://therelicans.com">
-                    The Relicans
-                  </Link>
-                  , our online community{' '}
+                  <Link to="https://therelicans.com">The Relicans</Link>, our
+                  online community{' '}
                 </li>
                 <li>Have experience using New Relic products.</li>
               </ul>
