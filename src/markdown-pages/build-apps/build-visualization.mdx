@@ -50,7 +50,7 @@ nr1 update
 
   <Step>
 
-Start with a new Nerdpack. If you just installed the New Relic One CLI, then you have a new Nerdpack project directory (called something like, `my-awesome-nerdpack`). If you need to create one, run `nr1 create` and select the `nerdpack` option.
+Start with a new Nerdpack. If you just installed the New Relic One CLI, then you have a new Nerdpack project directory (called something like `my-awesome-nerdpack`). If you need to create one, run `nr1 create` and select the `nerdpack` option.
 
 ```bash
 nr1 create --type nerdpack --name my-awesome-nerdpack
@@ -60,14 +60,14 @@ nr1 create --type nerdpack --name my-awesome-nerdpack
 
   <Step>
 
-Navigate to the root of your Nerdpack project, and then run the `nr1 create` command and select the visualization option.
+Navigate to the root of your Nerdpack project and run the `nr1 create` command, selecting the `visualization` option.
 
 ```bash
 cd my-awesome-nerdpack
 nr1 create --type visualization --name my-awesome-visualization
 ```
 
-As a result, you have a new visualization directory matching the name you gave your visualization. It is located in the `visualizations` directory in the root of your nerdpack project.
+As a result, you have a new visualization directory matching the name you gave your visualization. It is located in the `visualizations` directory in the root of your Nerdpack project.
 
 <img
   src="../../images/build-an-app/visualization-boilerplate-files.png"
@@ -76,17 +76,17 @@ As a result, you have a new visualization directory matching the name you gave y
 
 The files created provide an example visualization – a radar chart populated by a basic NRQL query.
 
-The `nr1.json` file provides metadata including the `configuration` field that defines the prop input fields to be shown in the UI. These are the fields users will fill in to create an instance of the visualization. Supported input types are:
+The `nr1.json` file provides metadata. The `configuration` key in this metadata defines the prop-input fields to be shown in the UI. These are the fields users will fill in to create an instance of the visualization. Supported input types are:
 
 - `boolean`
 - `string`
 - `number`
 - `json`
 - `nrql`: a single NRQL query string.
-- `namespace`: groups a set of props together in the prop editing UI under a heading.
-- `collection`: defines a set of fields that can be repeated and result in an array prop type. The `nrqlQueries` entry is an example of a collection type.
+- `namespace`: a group of input fields to be displayed together under a shared heading in the prop-editing UI.
+- `collection`: a repeatable group of input fields to be displayed together under a shared heading in the prop editing UI. The `nrqlQueries` entry is an example of a collection type.
 
-The `index.js` file is where you define the React component that receives the props and renders the visualization. You can install and import any javascript libraries you find useful. The example component imports [recharts](https://recharts.org), a library that wraps [D3](https://d3js.org) submodules for easy to compose visualizations.
+The `index.js` file is where you define the React component that receives the props and renders the visualization. You can install and import any JavaScript libraries you find useful. The example component imports [Recharts](https://recharts.org), a library that wraps [D3](https://d3js.org) submodules for easy-to-compose visualizations.
 
 If your visualization queries data over a time range and you want it to utilize the platform time range setting, you will need to utilize the `timeRange` value from [PlatformStateContext](/components/platform-state-context). The `timeRange` can be passed directly to the [NrqlQuery](/components/nrql-query) component. Setting the NrqlQuery component's `pollInterval` prop to `NrqlQuery.AUTO_POLL_INTERVAL` automatically handles calculating an appriate data polling interval.
 
@@ -106,12 +106,12 @@ If your visualization queries data over a time range and you want it to utilize 
 
 ## Render the visualization in local development
 
-Now you run the generated visualization locally, and view it in Custom Visualizations, where you can quickly test changes to your code.
+Now run the generated visualization locally, and view it in Custom Visualizations. There you can quickly test changes to your code.
 
 <Steps>
   <Step>
 
-Start the local node server for your Nerdpack.
+Start the local Node server for your Nerdpack.
 
 ```bash
 nr1 nerdpack:serve
@@ -119,7 +119,7 @@ nr1 nerdpack:serve
 
 <Callout variant="important">
 
-To see changes to the nr1.json file take effect, restart the local node server. Changes to the definition of the configuration field will not show up in the prop configuration side bar of the Custom Visualizations UI until you stop the local node server and start it back up.
+To see changes to the nr1.json file take effect, restart the local Node server. Changes to the definition of the configuration field will not show up in the prop configuration side bar of the Custom Visualizations UI until you stop the local Node server and start it back up.
 
 </Callout>
 
@@ -127,13 +127,13 @@ To see changes to the nr1.json file take effect, restart the local node server. 
 
   <Step>
 
-In a browser, open [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local). This url is also shown in the terminal when the node server starts. The `nerdpacks=local` query string will direct the UI to load your new visulization artifact from the local node server.
+In a browser, open [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local). This url is also shown in the terminal when the Node server starts. The `nerdpacks=local` query string will direct the UI to load your new visualization artifact from the local Node server.
 
 <Callout variant="tip" title={`Advanced nerdpack configuration`}>
 
 See the [advanced nerdpack
 configuration](build-apps/build-hello-world-app/#advance-configurations)
-section for detailed information about how your local node server is proxied
+section for detailed information about how your local Node server is proxied
 to the browser and how you can override webpack configuration if needed.
 
 </Callout>
@@ -153,19 +153,19 @@ Open the **Apps** page, and navigate to **Custom Visualizations**, which you wil
 
   <Step>
 
-In the **Custom Visualizations** listing, find and click on the tile for your visualization. If the tile is not showing up or it is not indicating that it is running locally, restart the node server and refresh the browser.
+In the **Custom Visualizations** listing, find and click on the tile for your visualization. If the tile is not showing up or it is not indicating that it is running locally, restart the Node server and refresh the browser.
 
-When you select your locally running visualization, the visualization hosted by your local node server is rendered with prop configuration inputs. Here you can take advantage of the features outlined in the following steps.
+When you select your locally running visualization, the visualization hosted by your local Node server is rendered with prop-configuration inputs. Here you can take advantage of the features outlined in the following steps.
 
   </Step>
 
   <Step>
 
-You can set prop values and see the visualization update automatically. The props inputs are listed as defined in the prop definitions located in the `nr1.json` file in the visualization folder (for example `./visualizations/my-awesome-visualization/nr1.json`). Fill in values for the props and see the visualization update automatically. As you change props in the sidebar, a render cycle of your visualization's React component is triggered.
+You can set prop values and see the visualization update automatically. The prop inputs are listed as defined in the prop definitions located in the `nr1.json` file in the visualization folder (for example `./visualizations/my-awesome-visualization/nr1.json`). Fill in values for the props and see the visualization update automatically. As you change props in the sidebar, a render cycle of your visualization's React component is triggered.
 
 <img
   src="../../images/build-an-app/visualization-builder-props.png"
-  alt="Generated visualization rendered in the Visualization Builderr"
+  alt="Generated visualization rendered in the Visualization Builder"
 />
 
   </Step>
@@ -174,7 +174,7 @@ You can set prop values and see the visualization update automatically. The prop
 
 Modify the visualization's Javascript code and see the result automatically update in the UI. For example, you can change the value for `fillOpacity` on the Radar component in `index.js`. Upon save, you will see the page automatically update.
 
-```js fileName=visualizations/your-visuzalization/index.js
+```js fileName=visualizations/your-visualization/index.js
   fillOpacity={1.0}
 ```
 
@@ -182,7 +182,7 @@ Modify the visualization's Javascript code and see the result automatically upda
 
   <Step>
 
-To add more props, you must update the `configuration` field in the `nr1.json` file for your visualization, and restart the local node server. The props you define in the `configuration` field allow New Relic One to cleanly display a props editing UI for those using the visualization. See above for more information about the `configuration` field.
+To add more props, you must update the `configuration` field in the `nr1.json` file for your visualization and restart the local Node server. The props you define in the `configuration` field allow New Relic One to cleanly display a prop-editing UI for users interacting with your visualization. See above for more information about the `configuration` field.
 
   </Step>
 
@@ -190,13 +190,13 @@ To add more props, you must update the `configuration` field in the `nr1.json` f
 
 ## Deploy and use your visualization
 
-When your visualization is ready to be added to dashboards just follow these steps.
+When your visualization is ready to be added to a dashboard, just follow these steps.
 
 <Steps>
 
   <Step>
 
-Open and follow the guide to [publish and deploy the nerdpack to New Relic One and subscribe accounts to it](/build-apps/publish-deploy).
+Open and follow the guide to [publish and deploy the Nerdpack to New Relic One and subscribe accounts to it](/build-apps/publish-deploy).
 
   </Step>
 
@@ -210,7 +210,7 @@ Then you can [add your visualization to a dashboard](https://docs.newrelic.com/d
 
 ## Summary
 
-Now that you've completed the steps in this example, you've learned the steps to:
+Congratulations on completing the steps in this example! You've learned how to:
 
 - Create a visualization and run it locally
 - Quickly test and iterate on visualization code changes in Custom Visualizations
