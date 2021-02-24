@@ -1,3 +1,13 @@
+## [1.35.4](https://github.com/newrelic/developer-website/compare/v1.35.3...v1.35.4) (2021-02-24)
+
+
+### Bug Fixes
+
+* add nonrerefer to link ([ead73f6](https://github.com/newrelic/developer-website/commit/ead73f6a025ac863112a822c139b0c2c39017bdf))
+* fixed typo on the Builders page ([c11f4d4](https://github.com/newrelic/developer-website/commit/c11f4d4780fb81bb00847c2808fe35ca71ebf798))
+* iported multiple times ([5cac9e2](https://github.com/newrelic/developer-website/commit/5cac9e2b58a39579c22d1a094f3b8d13ac916e0a))
+* Link lint ([cebb0fb](https://github.com/newrelic/developer-website/commit/cebb0fba5059520489fe83d7b3ab05b926f4d61c))
+
 ## [1.35.3](https://github.com/newrelic/developer-website/compare/v1.35.2...v1.35.3) (2021-02-22)
 
 
