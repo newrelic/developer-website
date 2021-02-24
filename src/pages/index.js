@@ -68,7 +68,7 @@ const IndexPage = ({ data, pageContext }) => {
             <div className={styles.introText}>
               <p>
                 <a href="https://www.terraform.io/">Terraform</a> is a popular
-                infrastructure-as-code software tool software tool software tool
+                infrastructure-as-code software tool
                 built by HashiCorp. You use it to provision all kinds of
                 infrastructure and services, including New Relic alerts.
                 <br />
