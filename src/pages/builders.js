@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import SEO from '../components/Seo';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
@@ -219,7 +219,11 @@ const DeveloperChampionPage = () => {
               <hr />
               <ul>
                 <h4>It is nice to have:</h4>
-                <li>Be an active member of The Reliquary,</li>
+                <li>
+                  Be an active member of{' '}
+                  <Link to="https://therelicans.com">The Relicans</Link>, our
+                  online community{' '}
+                </li>
                 <li>Have experience using New Relic products.</li>
               </ul>
               <hr />
