@@ -1,3 +1,10 @@
+## [1.35.5](https://github.com/newrelic/developer-website/compare/v1.35.4...v1.35.5) (2021-02-25)
+
+
+### Bug Fixes
+
+* broken links in guide ([6de7689](https://github.com/newrelic/developer-website/commit/6de768938f150089b9d6f723526ab2797659b977))
+
 ## [1.35.4](https://github.com/newrelic/developer-website/compare/v1.35.3...v1.35.4) (2021-02-24)
 
 

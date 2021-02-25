@@ -126,6 +126,10 @@
       {
         "displayName": "See all open source apps",
         "url": "https://opensource.newrelic.com/nerdpacks/"
+      },
+      {
+        "displayName": "Build custom visualizations for dashboards",
+        "url": "/build-apps/build-visualization"
       }
     ]
   },
