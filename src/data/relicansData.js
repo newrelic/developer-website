@@ -66,11 +66,11 @@ export const teamMembers = [
     socials: [
       {
         name: 'twitter',
-        url: 'https://twitter.com/aishacodes',
+        url: 'https://twitter.com/aishablake',
       },
       {
         name: 'twitch',
-        url: 'https://twitch.tv/aishablake',
+        url: 'https://twitch.tv/aishacodes',
       },
       {
         name: 'instagram',
