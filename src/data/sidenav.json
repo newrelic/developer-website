@@ -685,6 +685,10 @@
     "url": "/builders"
   },
   {
+    "displayName": "Nerd Bytes",
+    "url": "/nerd-bytes"
+  },
+  {
     "displayName": "Podcasts",
     "url": "/podcasts"
   }

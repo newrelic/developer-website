@@ -23,6 +23,7 @@ const iconLibrary = {
   'New Relic Builders': 'builders',
   Podcasts: 'podcasts',
   'Try our APIs': 'tryOurAPIs',
+  'Nerd Bytes': 'nerdBytes',
 };
 
 const getHighlightedText = (text, highlight) => {
