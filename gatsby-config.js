@@ -22,6 +22,12 @@ module.exports = {
           maxWidth: '1700px',
           component: require.resolve('./src/layouts'),
         },
+        // workaround until this is no longer needed.
+        // https://github.com/newrelic/gatsby-theme-newrelic/issues/302
+        i18n: {
+          translationsPath: `${__dirname}/src/i18n/translations`,
+          additionalLocales: [],
+        },
         prism: {
           languages: ['yaml', 'sass', 'scss', 'java'],
         },
