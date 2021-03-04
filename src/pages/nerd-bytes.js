@@ -37,7 +37,7 @@ const NerdbytesPage = () => {
                     name="external-link"
                   />
                 </Link>{' '}
-                produced by engineers and practitioners for engineers and
+                produced by engineers and practitioners _for_ engineers and
                 practitioners.
                 <br />
                 <br />
