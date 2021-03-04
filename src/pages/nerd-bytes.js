@@ -37,8 +37,8 @@ const NerdbytesPage = () => {
                     name="external-link"
                   />
                 </Link>{' '}
-                produced by engineers and practitioners _for_ engineers and
-                practitioners.
+                produced by engineers and practitioners <em>for</em> engineers
+                and practitioners.
                 <br />
                 <br />
                 Nerd Bytes episodes are crowd sourced, super short, micro topic
