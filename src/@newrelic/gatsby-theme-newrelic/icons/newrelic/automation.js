@@ -1,20 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
-import SVG from '@newrelic/gatsby-theme-newrelic/src/components/SVG';
+import NewRelicSVG from '../../../../components/NewRelicSVG';
 
 const AutomationIcon = (props) => (
-  <SVG
-    {...props}
-    viewBox="0 0 24 24"
-    css={css`
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    `}
-  >
+  <NewRelicSVG {...props}>
     <g>
       <path
         d="M14.6,14.3l1.4-0.8l-1.9-3.3l-1.4,0.8c-0.7-0.6-1.5-1.1-2.4-1.4V7.9H6.4v1.6C5.5,9.8,4.7,10.3,4,10.9l-1.4-0.8
@@ -31,11 +19,7 @@ const AutomationIcon = (props) => (
       />
       <circle cx="18.9" cy="5.1" r="1.6" />
     </g>
-  </SVG>
+  </NewRelicSVG>
 );
-
-AutomationIcon.propTypes = {
-  size: PropTypes.string,
-};
 
 export default AutomationIcon;
