@@ -188,6 +188,10 @@
           {
             "displayName": "Access NerdStorageVault from your nerdlet",
             "url": "/build-apps/ab-test/nerdstoragevault"
+          },
+          {
+            "displayName": "Fetch data from a third-party service",
+            "url": "/build-apps/ab-test/third-party-service"
           }
         ]
       },
