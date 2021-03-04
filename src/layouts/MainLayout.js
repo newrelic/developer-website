@@ -6,11 +6,11 @@ import {
   GlobalHeader,
   Layout,
   Logo,
+  MobileHeader,
   Navigation,
   NavItem,
   SearchInput,
 } from '@newrelic/gatsby-theme-newrelic';
-import MobileHeader from '../components/MobileHeader';
 import { Link } from 'gatsby';
 import '../components/styles.scss';
 import { useLocation } from '@reach/router';
@@ -29,15 +29,13 @@ const MainLayout = ({ children, pageContext }) => {
   return (
     <>
       <GlobalHeader />
-      <MobileHeader
-        css={css`
-          @media (min-width: 761px) {
-            display: none;
-          }
-        `}
-        isOpen={isMobileNavOpen}
-        toggle={() => setIsMobileNavOpen(!isMobileNavOpen)}
-      />
+      <MobileHeader>
+        <Navigation searchTerm={searchTerm}>
+          {pages.map((page, idx) => (
+            <NavItem key={idx} page={page} />
+          ))}
+        </Navigation>
+      </MobileHeader>
       <Layout
         css={css`
           display: ${isMobileNavOpen ? 'none' : 'grid'};
