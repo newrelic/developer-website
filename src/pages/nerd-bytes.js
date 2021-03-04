@@ -45,7 +45,7 @@ const NerdbytesPage = () => {
                 focused video screencast demos of tips, tricks, features,
                 functionality, news and ideas. Less formal than documentation,
                 easier to digest than a tutorial. Released regularly to
-                continually feed our practitioners with great New Relic content.
+                keep New Relic practitioners up to date with fresh and interesting content.
               </p>
               <p>
                 <Button
