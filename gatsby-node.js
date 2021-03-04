@@ -91,10 +91,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           frontmatter.template === 'OverviewTemplate'
             ? `${frontmatter.path}/*`
             : undefined,
-        relatedResourceLimit: Math.max(
-          MAX_RESULTS - (frontmatter.resources || []).length,
-          0
-        ),
       },
     });
   });
