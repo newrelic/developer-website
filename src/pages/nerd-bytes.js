@@ -53,7 +53,7 @@ const NerdbytesPage = () => {
                   variant={Button.VARIANT.PRIMARY}
                   to="https://www.youtube.com/playlist?list=PLmhYj7Jl81JEV-llIDkCVC05tD7fbOv_b"
                 >
-                  Nerd bytes playlist
+                  Nerd Bytes playlist
                 </Button>
               </p>
             </div>
