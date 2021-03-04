@@ -132,7 +132,7 @@ const NerdlogPage = () => {
                 <MarketoForm
                   id={2058}
                   title="Nerdlog Weekly Email"
-                  munchkinId="412-MZS-894"
+                  munchkinId="341-XKP-310"
                   publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
                   redirectLink="/nerd-days-thank-you"
                 />
