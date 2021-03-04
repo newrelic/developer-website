@@ -68,19 +68,50 @@ const NerdbytesPage = () => {
             </div>
           </section>
 
-          <p className={styles.inspiration}>
-            Find the latest Nerd Bytes episode on the New Relic YouTube channel:{' '}
-            <Link
-              className={styles.externalLink}
-              to="https://www.youtube.com/playlist?list=PLmhYj7Jl81JEV-llIDkCVC05tD7fbOv_b"
-            >
-              Nerd Bytes Playlist
-              <FeatherIcon
-                className={styles.externalLinkIcon}
-                name="external-link"
-              />
-            </Link>
-          </p>
+          <section>
+            <h2>How to consume Nerd Bytes</h2>
+            <p>
+              Find the latest Nerd Bytes episode on the New Relic YouTube
+              channel{' '}
+              <Link
+                className={styles.externalLink}
+                to="https://www.youtube.com/playlist?list=PLmhYj7Jl81JEV-llIDkCVC05tD7fbOv_b"
+              >
+                Nerd Bytes Playlist
+                <FeatherIcon
+                  className={styles.externalLinkIcon}
+                  name="external-link"
+                />
+              </Link>
+              . But, we encourage you to subscribe to the Nerd Bytes RSS feed
+              and add it to your Slack or Team channel. Fresh content will be
+              delivered directly to you when it is published.{' '}
+            </p>
+            <p>
+              The RSS feed url is:
+              <br />
+              <code>
+                https://www.youtube.com/feeds/videos.xml?playlist_id=PLmhYj7Jl81JEV-llIDkCVC05tD7fbOv_b
+              </code>
+            </p>
+            <p>
+              <strong>Add to Slack</strong>
+              <br />
+              In Slack you can subscribe any channel to this feed using the
+              following command:
+              <br />
+              <code>
+                /feed subscribe
+                https://www.youtube.com/feeds/videos.xml?playlist_id=PLmhYj7Jl81JEV-llIDkCVC05tD7fbOv_b
+              </code>
+            </p>
+            <p>
+              <strong>Add to Microsoft Teams</strong>
+              <br />
+              To add the feed to Teams add the RSS url to the RSS Feeds
+              connector app.
+            </p>
+          </section>
 
           <section
             className={cx(
