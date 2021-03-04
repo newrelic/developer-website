@@ -182,8 +182,12 @@
             "url": "/build-apps/ab-test/nrql-customizations"
           },
           {
-            "displayName": "Add NerdGraph components to your nerdlet",
-            "url": "/build-apps/ab-test/nerdgraph"
+            "displayName": "Access NerdStorage from your nerdlet",
+            "url": "/build-apps/ab-test/nerdstorage"
+          },
+          {
+            "displayName": "Access NerdStorageVault from your nerdlet",
+            "url": "/build-apps/ab-test/nerdstoragevault"
           }
         ]
       },
