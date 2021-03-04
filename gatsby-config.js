@@ -21,6 +21,7 @@ module.exports = {
           contentPadding: '2rem',
           maxWidth: '1700px',
           component: require.resolve('./src/layouts'),
+          mobileBreakpoint: '760px',
         },
         // workaround until this is no longer needed.
         // https://github.com/newrelic/gatsby-theme-newrelic/issues/302
