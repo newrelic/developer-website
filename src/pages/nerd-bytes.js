@@ -44,8 +44,9 @@ const NerdbytesPage = () => {
                 Nerd Bytes episodes are crowd sourced, super short, micro topic
                 focused video screencast demos of tips, tricks, features,
                 functionality, news and ideas. Less formal than documentation,
-                easier to digest than a tutorial. Released regularly to
-                keep New Relic practitioners up to date with fresh and interesting content.
+                easier to digest than a tutorial. Released regularly to keep New
+                Relic practitioners up to date with fresh and interesting
+                content.
               </p>
               <p>
                 <Button
