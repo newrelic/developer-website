@@ -1,0 +1,182 @@
+---
+path: '/build-apps/ab-test/nerdstorage'
+title: 'Access NerdStorage from your nerdlet'
+template: 'GuideTemplate'
+description: 'Access NerdStorage from your nerdlet'
+---
+
+In previous lessons, you created a user experience in your application which includes charts and a button to end your A/B test. You also configured your charts to query real data from New Relic's database. However, you left mock data in two charts:
+
+- _Past tests_
+- _Total cancellations per version_
+
+Both of these charts hold data that you can't get from New Relic. _Past tests_ shows historical test information, whereas _Total cancellations per version_ shows the number of cancellations each version sees over time. Focus, first on _Past tests_.
+
+_Past tests_ shows historical test information, so you need to store information about each test upon completion. And you have all the tools you need to accomplish this task. First, you have an _End test_ button that triggers the save action. Second, you know how to use NerdGraph and NerdStorage to hold the test information.
+
+<Steps>
+
+<Step>
+
+Change to the `add-nerdstorage` directory of the course repository:
+
+```sh
+cd nru-programmability-course/add-nerdstorage
+```
+
+This directory contains the code that we expect your application to have at this point in the course. By navigating to the correct directory at the start of each lesson, you leave your custom code behind, thereby protecting yourself from carrying incorrect code from one lesson to the next.
+
+</Step>
+
+<Step>
+
+Open your Nerdlet's index.js file. All code you write in this lesson belongs in this file.
+
+</Step>
+
+<Step>
+
+Import `AccountStorageMutation` and `AccountStorageQuery`:
+
+```js
+import { AccountStorageMutation, AccountStorageQuery, BlockText, Button, ChartGroup, Select, SelectItem, Grid, GridItem, HeadingText, LineChart, Modal, PieChart, TableChart } from 'nr1';
+```
+
+You store data about your tests in account storage so that any user with access to an account can access the same data.
+
+</Step>
+
+<Step>
+
+Create a method, `endTest()`, in `EndTestButton`:
+
+```js
+endTest() {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    const endDate = `${mm}/${dd}/${yyyy}`
+
+    AccountStorageMutation.mutate(
+        {
+            accountId: <your account id>,
+            actionType: AccountStorageMutation.ACTION_TYPE.WRITE_DOCUMENT,
+            collection: "past-tests",
+            documentId: endDate,
+            document: {
+                versionADescription: VERSION_A_DESCRIPTION,
+                versionBDescription: VERSION_B_DESCRIPTION,
+                winner: this.props.selectedVersion,
+            }
+        }
+    )
+    this.props.closeModal();
+}
+```
+
+With this code, you build a formatted date string, `endDate`. Then, you mutate account storage with a call to `AccountStorageMutation.mutate()`. You pass your account identifier, the `WRITE_DOCUMENT` action type, "past-tests" as the collection name, `endDate` as the `documentId`, and the document data.
+
+You pass `WRITE_DOCUMENT` because you're either creating a new document or updating a document, if one with a matching collection and `documentId` already exists. `documentId` is `endDate`, which is helpful for only creating one record per day.
+
+<Callout variant="tip">
+
+If you suspected you might complete multiple tests in one day, you'd need to change this logic.
+
+</Callout>
+
+</Step>
+
+<Step>
+
+Notice `this.props.closeModal()` at the end of the method. This the modal that shows when you try to end a test. Therefore, you can replace the `onClick` callback for your "Yes, end test" button in `EndTestButton.render` to `this.endTest`:
+
+```js
+<Button type={Button.TYPE.DESTRUCTIVE} onClick={this.endTest}>Yes, end test</Button>
+```
+
+When you end the test, `endTest` stores your test data in account storage and closes the modal. This is only half the behavior you need to populate your table, you also need to query this collection from account storage.
+
+</Step>
+
+<Step>
+
+Import `Spinner`, which you'll use to create a great user experience:
+
+```js
+import { AccountStorageMutation, AccountStorageQuery, BlockText, Button, ChartGroup, Select, SelectItem, Spinner, Grid, GridItem, HeadingText, LineChart, Modal, PieChart, TableChart } from 'nr1';
+```
+
+</Step>
+
+<Step>
+
+Update `HistoricalTests.render()` to fetch data from account storage and display it in the `TableChart`:
+
+```js
+class HistoricalTests extends React.Component {
+    render() {
+        var historicalData = {
+            metadata: {
+                id: 'totals-B',
+                name: 'Version B',
+                columns: ['endDate', 'versionADescription', 'versionBDescription', 'winner'],
+            },
+            data: [],
+        }
+
+        return <React.Fragment>
+            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
+                Past tests
+            </HeadingText>
+            <AccountStorageQuery accountId={2843621} collection="past-tests">
+                {({ loading, error, data }) => {
+                    if (loading) {
+                        return <Spinner />;
+                    }
+                    if (error) {
+                        console.debug(error);
+                        return 'There was an error fetching your data.';
+                    }
+                        data.forEach(
+                            function(currentValue, index) {
+                                this[index] = {
+                                    endDate: currentValue.id,
+                                    versionADescription: currentValue.document.versionADescription,
+                                    versionBDescription: currentValue.document.versionBDescription,
+                                    winner: currentValue.document.winner,
+                                }
+                            }, data
+                        )
+                        historicalData.data = data
+                        return <TableChart data={[historicalData]} fullWidth />
+                }}
+            </AccountStorageQuery>
+        </React.Fragment>
+    }
+}
+```
+
+First, you removed the mocked data from `historicalData`. Then, you used `AccountStorageQuery` to fetch data from NerdStorage. You passed your account identifier and the name of the collection in which you stored the document.
+
+Notice that there are three return values from the query:
+
+- `loading`
+- `error`
+- `data`
+
+If the query is in progress, `loading` is `true`. In this case, you show a `Spinner` user interface component to let users know that the table isn't yet ready. If the query returned an error, you can see information about that error in the `error` variable. You log that information to the console for debugging purposes and return an error message. If the query returned successfully, you can access the data in the `data` variable. Because the data doesn't match the format that the `TableChart` requires, you loop through the data, format it according to the `TableChart` specifications, and set it on `historicalData.data`. Finally, you pass `historicalData` to your `TableChart`.
+
+Serve your application locally with `nr1 nerdpack:serve` and view it in New Relic One. At first, you should see no data. Click _End test_ and approve your action in the modal. Now, you should see data in _Past tests_.
+
+</Step>
+
+</Steps>
+
+Great work! You now have experience using the NerdStorage query and mutation components. However, there's still one more chart with mocked data: _Total cancellations per version_.
+
+_Total cancellations per version_ is different from the other charts in your A/B test application. Because New Relic knows nothing about how many users unsubscribe to your newsletter, you need to request that information from an external source. For the purposes of this course, we've created an external data service that provides fake newsletter cancellation data for you to consume in your application. This mock service lives at https://api.nerdsletter.net/cancellations.
+
+New Relic One applications are React applications, which means that you can use React and Javascript facilities to gather data not only from New Relic, but any external service. In a later lesson, you'll learn how to look beyond New Relic for data that will inform you of how your software is helping you achieve your business objectives. But before you learn that, you need to know something about our mock data service: it requires an Authorization header!
+
+In this lesson, you learned how to use NerdStorage to query and mutate data in your application's own data store. While NerdStorage is a great place for many categories of data, it's not appropriate for sensitive data, like a token you would pass in an Authorization header to an external service. For that, you'd use NerdStorageVault.

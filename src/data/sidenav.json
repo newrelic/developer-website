@@ -176,6 +176,14 @@
           {
             "displayName": "Query New Relic data from your charts",
             "url": "/build-apps/ab-test/nrql"
+          },
+          {
+            "displayName": "Customize NRQL data",
+            "url": "/build-apps/ab-test/nrql-customizations"
+          },
+          {
+            "displayName": "Add NerdGraph components to your nerdlet",
+            "url": "/build-apps/ab-test/nerdgraph"
           }
         ]
       },

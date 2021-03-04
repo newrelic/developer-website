@@ -1280,15 +1280,372 @@ export default class AbTestNerdletNerdlet extends React.Component {
 }
 ```
 
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
+
 The `pollInterval` is the number of milliseconds between chart refreshes. Each time the chart refreshes, it queries fresh data from New Relic. In this case, you refresh every minute.
 
 </Step>
 
 <Step>
 
-You've passed New Relic data to _Newsletter subscriptions per version_, but the rest of the charts still use mocked data:
+Now that you've seen how to passed New Relic data to _Newsletter subscriptions per version_, it's time to move on to _Total subscriptions per version_. These two charts are is similar in that they compare subscription event data grouped by version. The primary differences between _Newsletter subscriptions per version_ and _Total subscriptions per version_ are:
 
-- _Total subscriptions per version_
+- One is a line chart and one is a pie chart
+- One shows timeseries data and one shows all-time totals
+
+Update the `PieChart` in `TestDistributions`, removing the mock data and using the same NRQL query you used for _Newsletter subscriptions per version_ but with different the `TIMESERIES` and `SINCE` clauses:
+
+```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=31-41
+import React from 'react';
+import { BlockText, Button, ChartGroup, Grid, GridItem, HeadingText, LineChart, Modal, NrqlQuery, PieChart, Select, SelectItem, TableChart } from 'nr1';
+
+class NewsletterSignups extends React.Component {
+    render() {
+        return <React.Fragment>
+            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
+                Newsletter subscriptions per version
+            </HeadingText>
+            <NrqlQuery
+                accountId={<YOUR NEW RELIC ACCOUNT ID>}
+                query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
+                pollInterval={60000}
+            >
+                {
+                    ({ data }) => {
+                        return <LineChart data={data} fullWidth />;
+                    }
+                }
+            </NrqlQuery>
+        </React.Fragment>
+    }
+}
+
+class TestDistributions extends React.Component {
+    render() {
+        return <React.Fragment>
+            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
+                Total subscriptions per version
+            </HeadingText>
+            <NrqlQuery
+                accountId={<YOUR NEW RELIC ACCOUNT ID>}
+                query="SELECT count(*) FROM subscription FACET page_version SINCE 7 DAYS AGO"
+                pollInterval={60000}
+            >
+                {
+                    ({ data }) => {
+                        return <PieChart data={data} fullWidth />
+                    }
+                }
+            </NrqlQuery>
+        </React.Fragment>
+    }
+}
+
+class SuccessfulRequests extends React.Component {
+    render() {
+        const successesA = {
+            metadata: {
+                id: 'successes-A',
+                name: 'Version A',
+                viz: 'main',
+                color: 'blue',
+            },
+            data: [
+                { y: 118 },
+            ],
+        }
+        const successesB = {
+            metadata: {
+                id: 'successes-B',
+                name: 'Version B',
+                viz: 'main',
+                color: 'green',
+            },
+            data: [
+                { y: 400 },
+            ],
+        }
+        return <React.Fragment>
+            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
+                Total unsubscriptions per version
+            </HeadingText>
+            <PieChart data={[successesA, successesB]} fullWidth />
+        </React.Fragment>
+    }
+}
+
+class VersionATotals extends React.Component {
+    render() {
+        const versionATotals = {
+            metadata: {
+                id: 'totals-A',
+                name: 'Version A',
+                columns: ['name', 'count'],
+            },
+            data: [
+                {
+                    name: 'Successful Requests',
+                    count: 85
+                },
+                {
+                    name: 'Failed Requests',
+                    count: 2
+                },
+            ],
+        }
+        return <React.Fragment>
+            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
+                Version A - Page views vs. subscriptions
+            </HeadingText>
+            <TableChart data={[versionATotals]} fullWidth />
+        </React.Fragment>
+    }
+}
+
+class VersionBTotals extends React.Component {
+    render() {
+        const versionBTotals = {
+            metadata: {
+                id: 'totals-B',
+                name: 'Version B',
+                columns: ['name', 'count'],
+            },
+            data: [
+                {
+                    name: 'Successful Requests',
+                    count: 180
+                },
+                {
+                    name: 'Failed Requests',
+                    count: 30
+                },
+            ],
+        }
+        return <React.Fragment>
+            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
+                Version B - Page views vs. subscriptions
+            </HeadingText>
+            <TableChart data={[versionBTotals]} fullWidth />
+        </React.Fragment>
+    }
+}
+
+class VersionAResponseTimes extends React.Component {
+    render() {
+        return <React.Fragment>
+            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
+                Version A - Page views
+            </HeadingText>
+            <NrqlQuery
+                accountId={<YOUR NEW RELIC ACCOUNT ID>}
+                query="SELECT count(*) FROM pageView WHERE page_version = 'a' SINCE 30 MINUTES AGO TIMESERIES"
+                pollInterval={60000}
+            >
+                {
+                    ({ data }) => {
+                        return <LineChart data={data} fullWidth />;
+                    }
+                }
+            </NrqlQuery>
+        </React.Fragment>
+    }
+}
+
+class VersionBResponseTimes extends React.Component {
+    render() {
+        return <React.Fragment>
+            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
+                Version B - Page views
+            </HeadingText>
+            <NrqlQuery
+                accountId={<YOUR NEW RELIC ACCOUNT ID>}
+                query="SELECT count(*) FROM pageView WHERE page_version = 'b' SINCE 30 MINUTES AGO TIMESERIES"
+                pollInterval={60000}
+            >
+                {
+                    ({ data }) => {
+                        return <LineChart data={data} fullWidth />;
+                    }
+                }
+            </NrqlQuery>
+        </React.Fragment>
+    }
+}
+
+class HistoricalTests extends React.Component {
+    render() {
+        var historicalData = {
+            metadata: {
+                id: 'totals-B',
+                name: 'Version B',
+                columns: ['endDate', 'versionADescription', 'versionBDescription', 'winner'],
+            },
+            data: [
+                {
+                    "endDate": "12/15/2020",
+                    "versionADescription": "The homepage's CTA button was green.",
+                    "versionBDescription": "The homepage's CTA button was blue.",
+                    "winner": "A"
+                },
+                {
+                    "endDate": "09/06/2019",
+                    "versionADescription": "The 'Deals' page showed sales in a carousel.",
+                    "versionBDescription": "The 'Deals' page showed sales in a grid.",
+                    "winner": "B"
+                }
+            ],
+        }
+
+        return <React.Fragment>
+            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
+                Past tests
+            </HeadingText>
+            <TableChart data={[historicalData]} fullWidth />
+        </React.Fragment>
+    }
+}
+
+class VersionSelector extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return <Select onChange={this.props.selectVersion} value={this.props.selectedVersion}>
+            <SelectItem value={'A'}>Version A</SelectItem>
+            <SelectItem value={'B'}>Version B</SelectItem>
+        </Select>
+    }
+}
+
+class EndTestButton extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return <React.Fragment>
+            <Button type={Button.TYPE.DESTRUCTIVE} onClick={this.props.showModal}>End test</Button>
+
+            <Modal hidden={this.props.modalHidden} onClose={this.props.closeModal}>
+                <HeadingText>Are you sure?</HeadingText>
+                <BlockText>
+                    If you end the test, all your users will receive the version you selected:
+                </BlockText>
+
+                <BlockText spacingType={[BlockText.SPACING_TYPE.LARGE]}>
+                    <b>Version {this.props.selectedVersion}</b>
+                </BlockText>
+
+                <Button onClick={this.props.closeModal}>No, continue test</Button>
+                <Button type={Button.TYPE.DESTRUCTIVE} onClick={this.props.closeModal}>Yes, end test</Button>
+            </Modal>
+        </React.Fragment>
+    }
+}
+
+class EndTestSection extends React.Component {
+    constructor() {
+        super(...arguments);
+
+        this.state = {
+            selectedVersion: 'A',
+            modalHidden: true,
+        };
+
+        this.selectVersion = this.selectVersion.bind(this);
+        this.showModal = this.showModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+
+    selectVersion(event, value) {
+        this.setState({ selectedVersion: value });
+    }
+
+    closeModal() {
+        this.setState({ modalHidden: true });
+    }
+
+    showModal() {
+        this.setState({ modalHidden: false });
+    }
+
+    render() {
+        return <Grid style={{ margin: 'auto', backgroundColor: '#fafafa', padding: '20px' }}>
+            <GridItem columnSpan={12}>
+                <HeadingText style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '20px', marginBottom: '20px', textAlign: 'center' }}>
+                    Pick a version to end the test:
+                </HeadingText>
+            </GridItem>
+            <GridItem columnStart={5} columnEnd={6} style={{ textAlign: 'right', paddingTop: '5px' }}>
+                <VersionSelector
+                    selectedVersion={this.state.selectedVersion}
+                    selectVersion={this.selectVersion}
+                />
+            </GridItem>
+            <GridItem columnStart={7} columnEnd={8}>
+                <EndTestButton
+                    modalHidden={this.state.modalHidden}
+                    closeModal={this.closeModal}
+                    showModal={this.showModal}
+                    selectedVersion={this.state.selectedVersion}
+                >
+                    End test
+                </EndTestButton>
+            </GridItem>
+        </Grid>
+    }
+}
+
+export default class AbTestNerdletNerdlet extends React.Component {
+    render() {
+        return (
+            <Grid>
+                <GridItem columnSpan={12}><NewsletterSignups /></GridItem>
+                <GridItem columnSpan={6}><TestDistributions /></GridItem>
+                <GridItem columnSpan={6}><SuccessfulRequests /></GridItem>
+                <GridItem columnSpan={6}><VersionATotals /></GridItem>
+                <GridItem columnSpan={6}><VersionBTotals /></GridItem>
+                <ChartGroup>
+                    <GridItem columnSpan={6}><VersionAResponseTimes /></GridItem>
+                    <GridItem columnSpan={6}><VersionBResponseTimes /></GridItem>
+                </ChartGroup>
+                <GridItem columnSpan={12}><EndTestSection /></GridItem>
+                <GridItem columnSpan={12}><HistoricalTests /></GridItem>
+            </Grid>
+        )
+    }
+}
+```
+
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
+
+You don't need the `TIMESERIES` clause because the pie chart only shows numerical data. You don't need the `SINCE` clause because _Total subscriptions per version_ needs to show all-time subscription totals.
+
+</Step>
+
+<Step>
+
+While still serving your nerdpack locally, view your NR1 app to see your charts serving real data:
+
+![Your New Relic One application showing real subscription totals data](../../../images/ab-test/nrql-query-chart.png)
+
+_Total subscriptions per version_ now shows all-time subscription totals from both versions of your demo application.
+
+</Step>
+
+<Step>
+
+Well done! You've configured some charts to query real subscription data from New Relic's database. Consider the remaining charts that still use mock data:
+
 - _Total unsubscriptions per version_
 - _Version A - Page views vs. subscriptions_
 - _Version B - Page views vs. subscriptions_
@@ -1296,9 +1653,9 @@ You've passed New Relic data to _Newsletter subscriptions per version_, but the 
 - _Version B - Page views_
 - _Past tests_
 
-Some of these charts use unsubscription data, which you'll learn how to get in a later tutorial, but your demo application creates a custom event for every page view like it does for subscriptions.
+Some of these charts need to show page view data. Fortunately, your demo application creates a custom event for every page view like it does for subscriptions! Since _Version A - Page views vs. subscriptions_ and _Version B - Page views vs. subscriptions_ require data from two sources, ignore these for now and focus on _Version A - Page views_ and _Version B - Page views_.
 
-Remove existing mock data, and use `NrqlQuery` components to supply page view event data to _Version A - Page views_ and _Version B - Page views_:
+To supply those charts with New Relic data, remove their existing mock data and use `NrqlQuery` components to supply a query to each:
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=153-163,174-184
 import React from 'react';
@@ -1635,6 +1992,12 @@ export default class AbTestNerdletNerdlet extends React.Component {
 }
 ```
 
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
+
 While still serving your nerdpack locally, view your NR1 app to see your charts serving real data:
 
 ![Your New Relic One application showing real page view data](../../../images/ab-test/page-views-charts.png)
@@ -1645,15 +2008,9 @@ In these new queries, you fetch `pageView` custom events instead of `subscriptio
 
 </Steps>
 
-Well done! Your line charts now show real subscription and page view data from New Relic's database. Note that there are still a few charts that use only page view and subscription data:
+Phew, that's a lot of queries, but your application looks great! You're now showing real data in four charts. Remember the two charts you ignored because they require data from two sources?
 
-- _Total subscriptions per version_
 - _Version A - Page views vs. subscriptions_
 - _Version B - Page views vs. subscriptions_
 
-These charts have a couple things in common:
-
-- They compare all-time totals between two sets of data
-- They are not timeseries charts, but rather show numerical values
-
-Because these charts don't show timeseries and compare values, in some cases across multiple custom events, you have to handle them differently than you did for the line charts. In the next lesson, you'll learn how to supply data to these three charts.
+You have to handle these differently than you did for the charts you've been dealing with because NRQL has no method for querying data from multiple sources. In the next lesson, you'll learn how to supply data to these two charts.
