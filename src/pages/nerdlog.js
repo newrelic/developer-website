@@ -74,7 +74,7 @@ const NerdlogPage = () => {
                   The Nerdlog is our brand new live-stream changelog on Twitch.
                   Every Thursday, you can:
                 </p>
-                <p>
+                <div>
                   <strong>
                     Every Thursday, you can watch New Relic experts:
                   </strong>
@@ -106,7 +106,7 @@ const NerdlogPage = () => {
                       learn about observability.{' '}
                     </li>
                   </ul>
-                </p>
+                </div>
                 <h3>Save the date &amp; join us online</h3>
                 <p>
                   <strong>We are live every Thursday!</strong>
@@ -130,8 +130,8 @@ const NerdlogPage = () => {
                   ones.
                 </p>
                 <MarketoForm
-                  id={4783}
-                  title="Stay up-to-date with Nerdlog"
+                  id={2058}
+                  title="Nerdlog Weekly Email"
                   munchkinId="412-MZS-894"
                   publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
                   redirectLink="/nerd-days-thank-you"
