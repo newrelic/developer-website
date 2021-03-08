@@ -8,6 +8,7 @@ import React, { createContext } from 'react';
 import wrapPageElement from './gatsby/wrap-page-element';
 
 global.window = {
+  requestAnimationFrame: () => {},
   __NR1_SDK__: {
     default: {
       PlatformStateContext: createContext(),
