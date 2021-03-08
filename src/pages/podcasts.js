@@ -1,11 +1,26 @@
-import React from 'react';
-import cx from 'classnames';
-import SEO from '../components/Seo';
 import PageLayout from '../components/PageLayout';
+import React from 'react';
+import SEO from '../components/Seo';
+import cx from 'classnames';
 import podcastsHeader from '../images/podcasts/podcasts.jpg';
 import styles from './podcasts.module.scss';
 
 const PodcastsPage = () => {
+  const podcastsMeta = [
+    {
+      id: '1225223',
+      title: 'Observy McObservface',
+    },
+    {
+      id: '1677727',
+      title: 'Polyglot',
+    },
+    {
+      id: '1677670',
+      title: 'Launchies',
+    },
+  ];
+
   return (
     <>
       <SEO />
@@ -54,14 +69,20 @@ const PodcastsPage = () => {
               alt="podcasts header"
             />
           </section>
-          <section className={cx(styles.section, styles.player)}>
-            <div id="buzzsprout-player">
-              <iframe
-                title="buzzsprout"
-                src="https://www.buzzsprout.com/1225223?client_source=large_player&iframe=true&referrer=https://www.buzzsprout.com/1225223.js?container_id=buzzsprout-large-player-1225223&player=large"
-              />
-            </div>
-          </section>
+
+          {podcastsMeta.map((podcastMeta) => {
+            return (
+              <section
+                className={cx(styles.section, styles.player)}
+                key={podcastMeta.id}
+              >
+                <iframe
+                  title={`${podcastMeta.title} podcast player`}
+                  src={`https://www.buzzsprout.com/${podcastMeta.id}?client_source=large_player&iframe=true&referrer=https://www.buzzsprout.com/${podcastMeta.id}.js?container_id=buzzsprout-large-player-${podcastMeta.id}&player=large`}
+                />
+              </section>
+            );
+          })}
         </PageLayout.Content>
       </PageLayout>
     </>
