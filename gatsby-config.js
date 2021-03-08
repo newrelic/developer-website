@@ -16,7 +16,6 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
-        forceTrailingSlashes: true,
         gaTrackingId: 'UA-3047412-33',
         layout: {
           contentPadding: '2rem',
