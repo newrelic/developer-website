@@ -174,7 +174,7 @@
             "url": "/build-apps/ab-test/confirmation-modal"
           },
           {
-            "displayName": "Query New Relic data from your charts",
+            "displayName": "Add NrqlQuery components to your nerdlet",
             "url": "/build-apps/ab-test/nrql"
           },
           {
