@@ -1,3 +1,11 @@
+## [1.35.6](https://github.com/newrelic/developer-website/compare/v1.35.5...v1.35.6) (2021-03-09)
+
+
+### Bug Fixes
+
+* Swap guide linked for permissions ([2736ad8](https://github.com/newrelic/developer-website/commit/2736ad82b96af23ffa938b29332c5562695e843e))
+* Use correct path for set-up-dev-env guide link ([2f0ea56](https://github.com/newrelic/developer-website/commit/2f0ea5600e9bef3fbe738383abd5c1ce9c97d1d0))
+
 ## [1.35.5](https://github.com/newrelic/developer-website/compare/v1.35.4...v1.35.5) (2021-02-25)
 
 
