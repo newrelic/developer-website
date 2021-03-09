@@ -192,6 +192,14 @@
           {
             "displayName": "Fetch data from a third-party service",
             "url": "/build-apps/ab-test/third-party-service"
+          },
+          {
+            "displayName": "Add PlatformStateContext to your nerdlet",
+            "url": "/build-apps/ab-test/platform-state-context"
+          },
+          {
+            "displayName": "Add navigation to your nerdlet",
+            "url": "/build-apps/ab-test/navigation"
           }
         ]
       },
