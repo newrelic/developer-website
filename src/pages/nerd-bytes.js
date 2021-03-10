@@ -31,7 +31,7 @@ const NerdbytesPage = () => {
                   className={styles.externalLink}
                   to="https://www.youtube.com/playlist?list=PLmhYj7Jl81JEV-llIDkCVC05tD7fbOv_b"
                 >
-                  Nerd Bytes is a video podcast series
+                  Nerd Bytes is a video series
                   <FeatherIcon
                     className={styles.externalLinkIcon}
                     name="external-link"
@@ -83,10 +83,10 @@ const NerdbytesPage = () => {
                   className={styles.externalLinkIcon}
                   name="external-link"
                 />
-              </Link>
-              . But, we encourage you to subscribe to the Nerd Bytes RSS feed
-              and add it to your Slack or Team channel. Fresh content will be
-              delivered directly to you when it is published.{' '}
+              </Link>{' '}
+              We encourage you to subscribe to the Nerd Bytes RSS feed and add
+              it to your Slack or Team channel. Fresh content will be delivered
+              directly to you when it is published.
             </p>
             <p>
               The RSS feed url is:
@@ -123,7 +123,7 @@ const NerdbytesPage = () => {
           >
             <div>
               <h2>
-                Want all the news, code and pontification that's fit for
+                Do you want all the news, code and pontification that's fit for
                 publication?
                 <br />
                 New Relic Podcasts
