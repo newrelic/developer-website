@@ -35,9 +35,9 @@ const PodcastsPage = () => {
                 perfect for each other.
               </p>
               <p>
-                We've spun up a few podcasts to bring you
-                all the news, code, and pontification that's fit for publication,
-                and rather a lot that isn't as well.
+                We've spun up a few podcasts to bring you all the news, code,
+                and pontification that's fit for publication, and rather a lot
+                that isn't as well.
               </p>
               <p>
                 We hope you enjoy them! If you don't, please feel free to{' '}
