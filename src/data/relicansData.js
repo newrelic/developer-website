@@ -356,9 +356,9 @@ export const teamMembers = [
     avatar: rachaelAvatar,
     bio: (
       <p>
-        Rachael wants to share the joy and beauty of programming through programming
+        Rachael wants to share the joy and beauty of programming through·programming
         games and regular open-source streams on Twitch. She's been a professional dev
-        since 2012, 3x Team Lead, and manages an open-source repo for playing games of 
+        since 2012, 3x Team Lead, and manages an open-source repo for playing games of
         Monster of the Week. Currently, she works as a Developer Relations Engineer for New Relic.
       </p>
     ),
