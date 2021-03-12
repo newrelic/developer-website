@@ -1,11 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
 import SEO from '../components/Seo';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
-import devReliquary from '../images/builders/The_Relicans.png';
+import devReliquary from '../images/builders/relicans.png';
 import onlineTeach from '../images/builders/remote-unsplash.jpg';
 import styles from './builders.module.scss';
 
@@ -173,7 +173,7 @@ const DeveloperChampionPage = () => {
           </section>
           <section className={cx(styles.section, styles.twoColumn)}>
             <div>
-              <h2>What are the Builder's responsabilities?</h2>
+              <h2>What are the Builder's responsibilities?</h2>
               <p>
                 As a New Relic Builder, we will expect you to create content to
                 meet the program's needs, and you will get the help and guidance
@@ -219,7 +219,11 @@ const DeveloperChampionPage = () => {
               <hr />
               <ul>
                 <h4>It is nice to have:</h4>
-                <li>Be an active member of The Reliquary,</li>
+                <li>
+                  Be an active member of{' '}
+                  <Link to="https://therelicans.com">The Relicans</Link>, our
+                  online community{' '}
+                </li>
                 <li>Have experience using New Relic products.</li>
               </ul>
               <hr />

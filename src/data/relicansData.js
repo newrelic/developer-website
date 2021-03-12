@@ -66,11 +66,11 @@ export const teamMembers = [
     socials: [
       {
         name: 'twitter',
-        url: 'https://twitter.com/aishacodes',
+        url: 'https://twitter.com/aishablake',
       },
       {
         name: 'twitch',
-        url: 'https://twitch.tv/aishablake',
+        url: 'https://twitch.tv/aishacodes',
       },
       {
         name: 'instagram',
@@ -112,7 +112,7 @@ export const teamMembers = [
       },
       {
         name: 'linkedin',
-        url: 'https://linkedin.com/in/alifinkelsteina',
+        url: 'https://linkedin.com/in/alifinkelstein',
       },
     ],
   },
@@ -323,7 +323,7 @@ export const teamMembers = [
           lives in the USA with her husband, cats and bearded dragon.
         </p>
         <p>
-          Very active online, Pachi felt in love with the community and even
+          Very active online, Pachi fell in love with the community and even
           being a junior herself, she began teaching what she knew and sharing
           her learning Journey writing and live coding on Twitch, and that was
           how she got interested in Developer Relations. Now a Developer

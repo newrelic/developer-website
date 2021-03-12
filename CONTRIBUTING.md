@@ -265,7 +265,7 @@ When a new guide is added or an existing guide path frontmatter slug is changed 
 
 1. Make your guide change and submit a PR.
 2. Within that PR also make the navigation change.
-3. In order to change navigation you will need to update the [sidenav.json](/src/data/sidenav.json) file.
+3. In order to change navigation you will need to update the [nav.yml](/src/data/nav.yml) file.
 4. Given the side navigation file is JSON, be sure to close all `[ ]` and `{ }` and use trailing `,` correctly.
 5. Navigation `displayName` should always be sentence case.
 6. Submit your PR and add the `navigation` label.
@@ -410,5 +410,5 @@ as that will contain only 3rd party SDK documentation.
 ### Step 3: Add any new APIs or components to the navigation
 
 If there are new APIs or components, we will want to list them in the navigation
-so that a user can easily discover them. [Add an entry to `sidenav.json`](https://github.com/newrelic/developer-website/blob/develop/src/data/sidenav.json)
+so that a user can easily discover them. [Add an entry to `nav.yml`](https://github.com/newrelic/developer-website/blob/develop/src/data/nav.yml)
 to get the new API/component in the nav.
