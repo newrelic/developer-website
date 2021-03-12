@@ -343,6 +343,9 @@
 - title: New Relic Builders
   icon: nr-builders
   url: '/builders'
+- title: Nerdlog
+  icon: nr-nerdlog
+  url: '/nerdlog'
 - title: Podcasts
   icon: nr-podcasts
   url: '/podcasts'

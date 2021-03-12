@@ -8,6 +8,7 @@ import event from './newrelic/event';
 import podcasts from './newrelic/podcasts';
 import relicans from './newrelic/relicans';
 import share from './newrelic/share';
+import nerdlog from './newrelic/nerdlog';
 
 export default {
   ...defaultIcons,
@@ -20,4 +21,5 @@ export default {
   relicans,
   podcasts,
   share,
+  nerdlog,
 };
