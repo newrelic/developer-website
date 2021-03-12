@@ -112,7 +112,7 @@ export const teamMembers = [
       },
       {
         name: 'linkedin',
-        url: 'https://linkedin.com/in/alifinkelsteina',
+        url: 'https://linkedin.com/in/alifinkelstein',
       },
     ],
   },
