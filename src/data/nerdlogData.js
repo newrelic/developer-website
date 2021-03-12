@@ -15,6 +15,28 @@ import rachaelAvatar from '../images/relicans/rachael-wright-munn.jpg';
 
 export const teamMembers = [
   {
+    name: 'Nočnica Fee',
+    pronouns: 'she/her',
+    avatar: nicaAvatar,
+    bio: (
+      <p>
+        Nočnica Fee is a dev advocate at New Relic specializing in cloud
+        applications, serverless, and containerization. She writes regularly for
+        The New Stack and has been published in Information Age and Forbes.
+      </p>
+    ),
+    socials: [
+      {
+        name: 'twitch',
+        url: 'https://twitch.tv/serverlessmom',
+      },
+      {
+        name: 'twitter',
+        url: 'https://twitter.com/serverlessmom',
+      },
+    ],
+  },
+  {
     name: 'Aaron Bassett',
     pronouns: 'he/him',
     avatar: aaronAvatar,
@@ -326,28 +348,6 @@ export const teamMembers = [
       {
         name: 'linkedin',
         url: 'https://www.linkedin.com/in/miamoore',
-      },
-    ],
-  },
-  {
-    name: 'Nočnica Fee',
-    pronouns: 'she/her',
-    avatar: nicaAvatar,
-    bio: (
-      <p>
-        Nočnica Fee is a dev advocate at New Relic specializing in cloud
-        applications, serverless, and containerization. She writes regularly for
-        The New Stack and has been published in Information Age and Forbes.
-      </p>
-    ),
-    socials: [
-      {
-        name: 'twitch',
-        url: 'https://twitch.tv/serverlessmom',
-      },
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/serverlessmom',
       },
     ],
   },

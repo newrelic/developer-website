@@ -75,9 +75,6 @@ const NerdlogPage = () => {
                   Every Thursday, you can:
                 </p>
                 <div>
-                  <strong>
-                    Every Thursday, you can watch New Relic experts:
-                  </strong>
                   <ul>
                     <li>
                       <strong>
@@ -102,31 +99,35 @@ const NerdlogPage = () => {
                     <li>
                       <strong>Connect with other engineers </strong>
                       <br />
-                      experiences with other New Relic users and have fun as you
-                      learn about observability.{' '}
+                      Share your experiences with other New Relic users and have
+                      fun as you learn about observability.{' '}
                     </li>
+                    <br />
                   </ul>
                 </div>
-                <h3>Save the date &amp; join us online</h3>
+                <h2>Join us live every Thursday!</h2>
+                <ul>
+                  <li>
+                    <strong>Where:</strong> Follow us on{' '}
+                    <a href="https://www.twitch.tv/new_relic">Twitch</a>
+                  </li>
+                  <li>
+                    <strong>Date:</strong> 12 P.M. PT (8 P.M. UTC)
+                  </li>
+                </ul>
                 <p>
-                  <strong>We are live every Thursday!</strong>
-                </p>
-                <p>
-                  <strong>Where:</strong> Follow us on{' '}
-                  <a href="https://www.twitch.tv/new_relic">Twitch</a>
-                  <br />
-                  <strong>Date:</strong> 12 p.m. PT
-                </p>
-                <p>
-                  Can’t make it? We’ll miss you, but recordings are available on{' '}
-                  <a href="https://www.twitch.tv/new_relic/videos">Twitch.</a>
+                  <strong>Can’t make it?</strong> We’ll miss you, but checkout
+                  our playlist on{' '}
+                  <a href="https://www.youtube.com/playlist?list=PLmhYj7Jl81JGOEHV7zUVfa_iGNyOfMGNh">
+                    YouTube.
+                  </a>
                 </p>
               </div>
               <div>
                 <h3>Get Reminders</h3>
                 <p>
                   Enter your email address to get notified before our next
-                  episode of the Nerdlog and information about our previous
+                  episode of the Nerdlog, and information about our previous
                   ones.
                 </p>
                 <MarketoForm
@@ -140,7 +141,11 @@ const NerdlogPage = () => {
             </div>
           </Section>
           <Section className={cx(styles.speakersSection)}>
-            <SectionHeading>Meet the Nerdlog Host</SectionHeading>
+            <SectionHeading>
+              Hosted by{' '}
+              <a href="https://twitter.com/ServerlessMom">@SeverlessMom</a> and{' '}
+              <a href="https://twitter.com/TheRelicans">The Relicans</a>
+            </SectionHeading>
             <section className={cx(styles.section, styles.meetTheTeam)}>
               {teamMemberPanels}
             </section>
