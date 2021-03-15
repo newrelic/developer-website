@@ -35,30 +35,12 @@ const PodcastsPage = () => {
                 perfect for each other.
               </p>
               <p>
-                We're in the process of spinning up a few podcasts to bring you
-                all the news, code and pontification that's fit for publication,
-                and rather a lot that isn't as well.
+                We've spun up a few podcasts to bring you all the news, code,
+                and pontification that's fit for publication, and rather a lot
+                that isn't as well.
               </p>
               <p>
-                For the time being we have one podcast, so we're including it
-                here for your listening enjoyment.
-              </p>
-              <p>
-                While it may seem silly to start an entire page for podcasts
-                when we only have the one (we should really have called it
-                'podcast' page), we had to start somewhere.
-              </p>
-              <p>
-                <blockquote>
-                  <p>
-                    "Omnium rerum principia parva sunt" (All things have small
-                    beginnings)
-                  </p>
-                  <footer>- Marcus Tullius Cicero (106 BC - 43 BC)</footer>
-                </blockquote>
-              </p>
-              <p>
-                We hope you enjoy it. If you don't please feel free to{' '}
+                We hope you enjoy them! If you don't, please feel free to{' '}
                 <a href="mailto:devrel@newrelic.com">send us mean emails.</a>{' '}
                 It's internet tradition.
               </p>
