@@ -3,6 +3,7 @@ import automation from './newrelic/automation';
 import book from './newrelic/book';
 import buildApps from './newrelic/build-apps';
 import builders from './newrelic/builders';
+import nerdBytes from './newrelic/nerd-bytes';
 import developerChampions from './newrelic/developer-champions';
 import event from './newrelic/event';
 import podcasts from './newrelic/podcasts';
@@ -15,6 +16,7 @@ export default {
   book,
   'build-apps': buildApps,
   builders,
+  'nerd-bytes': nerdBytes,
   'developer-champions': developerChampions,
   event,
   relicans,
