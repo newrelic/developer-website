@@ -84,21 +84,50 @@ Now `.openApmEntity()` knows that entity to show. Next, you need to create a but
 Create a button to show your APM entity:
 
 ```js
-<Grid>
-    <GridItem columnSpan={10}>
+<HeadingText className="chartHeader">
+    Newsletter subscriptions per version
+</HeadingText>
+<Button onClick={this.openAPMEntity}>
+    App performance
+</Button>
+```
+
+Here, you've created a button and configured it to call `.openApmEntity()` when it's clicked.
+
+</Step>
+
+<Step>
+
+Import `Stack` and `StackItem`:
+
+```js
+import { AccountStorageMutation, AccountStorageQuery, BlockText, Button, ChartGroup, Select, SelectItem, Spinner, Grid, GridItem, HeadingText, LineChart, Modal, NerdGraphQuery, NerdGraphMutation, navigation, PlatformStateContext, PieChart, TableChart, NrqlQuery, TextField, Stack, StackItem } from 'nr1';
+```
+
+You'll use `Stack` and `StackItem` to lay out the button on the far right side of the same row that the `HeadingText` is on.
+
+</Step>
+
+<Step>
+
+Lay out the `Stack`:
+
+```js
+<Stack fullWidth>
+    <StackItem grow={true}>
         <HeadingText className="chartHeader">
             Newsletter subscriptions per version
         </HeadingText>
-    </GridItem>
-    <GridItem columnSpan={2}>
+    </StackItem>
+    <StackItem>
         <Button onClick={this.openAPMEntity}>
             App performance
         </Button>
-    </GridItem>
-</Grid>
+    </StackItem>
+</Stack>
 ```
 
-Here, you've created a button, added a grid to place the button on the right side of the chart's heading, and configured the button to call `.openApmEntity()` when it's clicked.
+Here, you used a full-width `Stack` to set up the layout for the row. To make the `HeadingText` fill the entire row but the width of the button, you used the `StackItem.grow` prop.
 
 </Step>
 

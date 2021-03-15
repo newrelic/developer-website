@@ -162,6 +162,10 @@
             "url": "/build-apps/ab-test/chart-headings"
           },
           {
+            "displayName": "Add version descriptions",
+            "url": "/build-apps/ab-test/version-descriptions"
+          },
+          {
             "displayName": "Add a section to end your test",
             "url": "/build-apps/ab-test/end-test"
           },
@@ -200,6 +204,18 @@
           {
             "displayName": "Add navigation to your nerdlet",
             "url": "/build-apps/ab-test/navigation"
+          },
+          {
+            "displayName": "Describe your app for the catalog",
+            "url": "/build-apps/ab-test/catalog"
+          },
+          {
+            "displayName": "Publish your New Relic One application",
+            "url": "/build-apps/ab-test/publish"
+          },
+          {
+            "displayName": "Subscribe to your New Relic One application",
+            "url": "/build-apps/ab-test/subscribe"
           }
         ]
       },
