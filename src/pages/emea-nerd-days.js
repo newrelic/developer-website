@@ -9,7 +9,7 @@ import {
   NewRelicLogo,
   Surface,
 } from '@newrelic/gatsby-theme-newrelic';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerd-days.module.scss';
@@ -133,7 +133,7 @@ const speakers = [
   },
 ];
 
-const NerdDaysPage = () => {
+const NerdDaysPage = ({ location }) => {
   const {
     site: { layout },
   } = useStaticQuery(graphql`
@@ -154,7 +154,7 @@ const NerdDaysPage = () => {
 
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Content>
           <section

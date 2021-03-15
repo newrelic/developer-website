@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
@@ -9,10 +9,10 @@ import devChampionHeader from '../images/developer-champion/developer-champions.
 import uptimeEverythingHeader from '../images/developer-champion/uptime-everything-header-image.jpg';
 import styles from './developer-champion.module.scss';
 
-const DeveloperChampionPage = () => {
+const DeveloperChampionPage = ({ location }) => {
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="New Relic Developer Champions" />
         <PageLayout.Content>

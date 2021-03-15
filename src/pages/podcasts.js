@@ -1,6 +1,6 @@
 import PageLayout from '../components/PageLayout';
 import React from 'react';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import cx from 'classnames';
 import podcastsHeader from '../images/podcasts/podcasts.jpg';
 import styles from './podcasts.module.scss';
@@ -23,7 +23,7 @@ const PodcastsPage = () => {
 
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="New Relic Podcasts" />
         <PageLayout.Content>

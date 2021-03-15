@@ -1,15 +1,15 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import cx from 'classnames';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import PageLayout from '../components/PageLayout';
 import nerdDays from '../images/nerd-days/nerd-days.png';
 import styles from './nerd-days.module.scss';
 
-const EventLandingPage = () => {
+const EventLandingPage = ({ location }) => {
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="Developer events" />
         <PageLayout.Content>

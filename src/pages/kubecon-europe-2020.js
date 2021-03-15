@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import { Button, Callout, Video } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
@@ -8,10 +8,10 @@ import FeatherIcon from '../components/FeatherIcon';
 import kubeconHeader from '../images/kubecon-europe-2020/kubecon-europe-2020.jpg';
 import styles from './kubecon-europe-2020.module.scss';
 
-const KubeConPage = () => {
+const KubeConPage = ({ location }) => {
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="KubeCon and CloudNativeCon Europe 2020" />
         <PageLayout.Content>

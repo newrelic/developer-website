@@ -4,7 +4,7 @@ import cx from 'classnames';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
@@ -44,7 +44,7 @@ const getStartedGuides = [
   },
 ];
 
-const IndexPage = ({ data, pageContext }) => {
+const IndexPage = ({ data, pageContext, location }) => {
   const {
     allMdx: { nodes },
   } = data;
@@ -54,7 +54,7 @@ const IndexPage = ({ data, pageContext }) => {
 
   return (
     <PageContext.Provider value={pageContext}>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="Getting started with New Relic and Terraform" />
 

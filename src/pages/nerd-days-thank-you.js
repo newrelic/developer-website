@@ -1,14 +1,14 @@
 import React from 'react';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import nerdDays from '../images/nerd-days/nerd-days.png';
 import styles from './nerd-days.module.scss';
 
-const NerdDaysPage = () => {
+const NerdDaysPage = ({ location }) => {
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Content>
           <section className={cx(styles.section, styles.twoColumnAlt)}>

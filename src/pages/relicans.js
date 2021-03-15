@@ -1,13 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './relicans.module.scss';
 import { teamMembers } from '../data/relicansData';
 import { css } from '@emotion/core';
 
-const RelicansPage = () => {
+const RelicansPage = ({ location }) => {
   const teamMemberPanels = teamMembers.map((teamMember, i) => {
     const socialItems = teamMember.socials.map((socialNetwork, j) => {
       return (
@@ -36,7 +36,7 @@ const RelicansPage = () => {
 
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="Relicans - The New Relic Developer Relations Team" />
         <PageLayout.Content>

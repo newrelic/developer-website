@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import { Button, Icon, NewRelicLogo } from '@newrelic/gatsby-theme-newrelic';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerd-days.module.scss';
@@ -18,7 +18,7 @@ import MarketoForm from '../components/MarketoForm';
 import styled from '@emotion/styled';
 import Agenda from '../components/Agenda';
 
-const NerdDaysPage = () => {
+const NerdDaysPage = ({ location }) => {
   const {
     site: { layout },
   } = useStaticQuery(graphql`
@@ -39,7 +39,7 @@ const NerdDaysPage = () => {
 
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Content>
           <section

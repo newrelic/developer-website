@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
+import { SEO } from '@newrelic/gatsby-theme-newrelic';
 import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 
-function SEO({ description, lang, meta, title, tags }) {
+function DevSiteSeo({ description, lang, meta, title, tags }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -44,12 +44,6 @@ function SEO({ description, lang, meta, title, tags }) {
   // if we decide we need this elsewhere, abstract into gatsby-theme-newrelic
   const swiftype = [
     {
-      name: 'type',
-      class: 'swiftype',
-      'data-type': 'enum',
-      content: 'developer',
-    },
-    {
       name: 'title',
       class: 'swiftype',
       'data-type': 'string',
@@ -84,24 +78,23 @@ function SEO({ description, lang, meta, title, tags }) {
   ].filter((m) => m.content !== '');
 
   return (
-    <Helmet
-      htmlAttributes={{ lang }}
-      title={title || metaTitle}
-      titleTemplate={title ? `%s | ${metaTitle}` : metaTitle}
-      meta={validMetadata}
-    >
+    <SEO location={location} title={title}>
+      {validMetadata.map((data) => (
+        <meta key={data.name} {...data} />
+      ))}
       <script src={withPrefix('tessen.min-1.3.0.js')} type="text/javascript" />
-    </Helmet>
+    </SEO>
   );
 }
 
-SEO.defaultProps = {
+DevSiteSeo.defaultProps = {
   lang: 'en',
   meta: [],
   description: '',
 };
 
-SEO.propTypes = {
+DevSiteSeo.propTypes = {
+  location: PropTypes.object.isRequired,
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
@@ -109,4 +102,4 @@ SEO.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default SEO;
+export default DevSiteSeo;
