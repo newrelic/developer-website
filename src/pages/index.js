@@ -60,7 +60,7 @@ const IndexPage = ({ data, pageContext }) => {
 
         <PageLayout.Content>
           <section>
-            <a href="https://newrelic.com/futurestack">
+            <a href="https://web.cvent.com/event/ac440313-3922-45f5-b5b9-0812f29f4a51/summary?RefId=DEV&rt=DKI6UYQP806AeXIj4Q4uxw">
               <img
                 css={css`
                   display: block;
