@@ -672,6 +672,10 @@ const NerdDaysPage = ({ location }) => {
   );
 };
 
+NerdDaysPage.propTypes = {
+  location: PropTypes.object.isRequired,
+};
+
 const speakers = [
   {
     name: 'Aaron Soto',

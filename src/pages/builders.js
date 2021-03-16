@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
@@ -250,6 +251,10 @@ const DeveloperChampionPage = ({ location }) => {
       </PageLayout>
     </>
   );
+};
+
+DeveloperChampionPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 export default DeveloperChampionPage;

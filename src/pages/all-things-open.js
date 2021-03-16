@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import DevSiteSeo from '../components/DevSiteSeo';
+import PropTypes from 'prop-types';
 import { Button, Video } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
@@ -137,6 +138,10 @@ const allThingsOpenPage = ({ location }) => {
       </PageLayout>
     </>
   );
+};
+
+allThingsOpenPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 export default allThingsOpenPage;

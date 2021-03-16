@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import cx from 'classnames';
+import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import PageLayout from '../components/PageLayout';
 import nerdDays from '../images/nerd-days/nerd-days.png';
@@ -92,6 +93,10 @@ const EventLandingPage = ({ location }) => {
       </PageLayout>
     </>
   );
+};
+
+EventLandingPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 export default EventLandingPage;

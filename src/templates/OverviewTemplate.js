@@ -56,6 +56,7 @@ const OverviewTemplate = ({ data, location }) => {
 
 OverviewTemplate.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`

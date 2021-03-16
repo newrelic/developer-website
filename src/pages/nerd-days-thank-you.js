@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import DevSiteSeo from '../components/DevSiteSeo';
 import nerdDays from '../images/nerd-days/nerd-days.png';
@@ -51,6 +52,10 @@ const NerdDaysPage = ({ location }) => {
       </PageLayout>
     </>
   );
+};
+
+NerdDaysPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 export default NerdDaysPage;

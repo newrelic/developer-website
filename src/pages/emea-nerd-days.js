@@ -701,6 +701,10 @@ const NerdDaysPage = ({ location }) => {
   );
 };
 
+NerdDaysPage.propTypes = {
+  location: PropTypes.object.isRequired,
+};
+
 const breakpoints = {
   laptop: '@media screen and (max-width: 1100px)',
   mobile: '@media screen and (max-width: 480px)',

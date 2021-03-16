@@ -136,6 +136,7 @@ const ComponentReferenceTemplate = ({ data, location }) => {
 
 ComponentReferenceTemplate.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`

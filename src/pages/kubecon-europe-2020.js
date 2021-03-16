@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Button, Callout, Video } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
@@ -128,6 +129,10 @@ const KubeConPage = ({ location }) => {
       </PageLayout>
     </>
   );
+};
+
+KubeConPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 export default KubeConPage;

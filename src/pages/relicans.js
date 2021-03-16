@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
@@ -120,6 +121,10 @@ const RelicansPage = ({ location }) => {
       </PageLayout>
     </>
   );
+};
+
+RelicansPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 export default RelicansPage;

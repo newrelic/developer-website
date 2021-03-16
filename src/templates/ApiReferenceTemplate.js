@@ -114,6 +114,7 @@ const ApiReferenceTemplate = ({ data, location }) => {
 
 ApiReferenceTemplate.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`

@@ -71,6 +71,7 @@ const GuideTemplate = ({ data, location }) => {
 
 GuideTemplate.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`

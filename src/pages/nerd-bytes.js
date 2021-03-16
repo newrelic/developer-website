@@ -1,8 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
 import { css } from '@emotion/core';
-
-import SEO from '../components/Seo';
+import PropTypes from 'prop-types';
+import DevSiteSeo from '../components/DevSiteSeo';
 import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
@@ -11,10 +11,10 @@ import styles from './index.module.scss';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import Video from '../components/Video';
 
-const NerdbytesPage = () => {
+const NerdbytesPage = ({ location }) => {
   return (
     <PageContext.Provider>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="New Relic Nerd Bytes" />
 
@@ -148,6 +148,10 @@ const NerdbytesPage = () => {
       </PageLayout>
     </PageContext.Provider>
   );
+};
+
+NerdbytesPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 export default NerdbytesPage;
