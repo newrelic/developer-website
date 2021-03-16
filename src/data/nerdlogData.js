@@ -5,13 +5,37 @@ import aliAvatar from '../images/relicans/ali-finkelstein.jpg';
 import chrisAvatar from '../images/relicans/chris-dabatos.jpg';
 import danielAvatar from '../images/relicans/daniel-kim.jpg';
 import dannyAvatar from '../images/relicans/danny-ramos.jpg';
+import daynaAvatar from '../images/nerdlog/dayna-lord.jpg';
 import jonanAvatar from '../images/relicans/jonan-scheffler.jpg';
 import kirkAvatar from '../images/relicans/kirk-haines.jpg';
 import miaAvatar from '../images/relicans/mia-moore.jpg';
+import nicaAvatar from '../images/nerdlog/nica-fee.jpg';
 import pachiAvatar from '../images/relicans/pachi-carlson.jpg';
 import rachaelAvatar from '../images/relicans/rachael-wright-munn.jpg';
 
 export const teamMembers = [
+  {
+    name: 'Nočnica Fee',
+    pronouns: 'she/her',
+    avatar: nicaAvatar,
+    bio: (
+      <p>
+        Nočnica Fee is a dev advocate at New Relic specializing in cloud
+        applications, serverless, and containerization. She writes regularly for
+        The New Stack and has been published in Information Age and Forbes.
+      </p>
+    ),
+    socials: [
+      {
+        name: 'twitch',
+        url: 'https://twitch.tv/serverlessmom',
+      },
+      {
+        name: 'twitter',
+        url: 'https://twitter.com/serverlessmom',
+      },
+    ],
+  },
   {
     name: 'Aaron Bassett',
     pronouns: 'he/him',
@@ -66,11 +90,11 @@ export const teamMembers = [
     socials: [
       {
         name: 'twitter',
-        url: 'https://twitter.com/aishablake',
+        url: 'https://twitter.com/aishacodes',
       },
       {
         name: 'twitch',
-        url: 'https://twitch.tv/aishacodes',
+        url: 'https://twitch.tv/aishablake',
       },
       {
         name: 'instagram',
@@ -112,7 +136,7 @@ export const teamMembers = [
       },
       {
         name: 'linkedin',
-        url: 'https://linkedin.com/in/alifinkelstein',
+        url: 'https://linkedin.com/in/alifinkelsteina',
       },
     ],
   },
@@ -207,6 +231,23 @@ export const teamMembers = [
       {
         name: 'linkedin',
         url: 'https://linkedin.com/in/danny-ramos-j/',
+      },
+    ],
+  },
+  {
+    name: 'Dayna Lord',
+    pronouns: 'she/her',
+    avatar: daynaAvatar,
+    bio: (
+      <p>
+        Dayna Lord is a product marketing manager at New Relic focused on
+        customer adoption.
+      </p>
+    ),
+    socials: [
+      {
+        name: 'twitter',
+        url: 'https://twitter.com/daynaslord',
       },
     ],
   },
@@ -323,7 +364,7 @@ export const teamMembers = [
           lives in the USA with her husband, cats and bearded dragon.
         </p>
         <p>
-          Very active online, Pachi fell in love with the community and even
+          Very active online, Pachi felt in love with the community and even
           being a junior herself, she began teaching what she knew and sharing
           her learning Journey writing and live coding on Twitch, and that was
           how she got interested in Developer Relations. Now a Developer
@@ -356,11 +397,9 @@ export const teamMembers = [
     avatar: rachaelAvatar,
     bio: (
       <p>
-        Rachael wants to share the joy and beauty of programming through
-        programming games and regular open-source streams on Twitch. She's been
-        a professional dev since 2012, 3x Team Lead, and manages an open-source
-        repo for playing games of Monster of the Week. Currently, she works as a
-        Developer Relations Engineer for New Relic.
+        Rachael's been building software and web apps since 2012. Now she builds
+        her open-source vue/rails app live on Twitch. Enough people thought that
+        was cool, so she's been invited here.
       </p>
     ),
     socials: [
