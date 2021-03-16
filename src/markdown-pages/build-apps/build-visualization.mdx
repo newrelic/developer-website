@@ -56,6 +56,12 @@ Start with a new Nerdpack. If you just installed the New Relic One CLI, then you
 nr1 create --type nerdpack --name my-awesome-nerdpack
 ```
 
+<Callout variant="tip">
+
+Note: If you only want to build a visualization in your Nerdpack, you can remove the `nerdlets/` and `launchers/` folders from the nerdpack
+
+</Callout>
+
   </Step>
 
   <Step>
@@ -82,6 +88,7 @@ The `nr1.json` file provides metadata. The `configuration` key in this metadat
 - `string`
 - `number`
 - `json`
+- `enum`: a developer-defined list of string options.
 - `nrql`: a single NRQL query string.
 - `namespace`: a group of input fields to be displayed together under a shared heading in the prop-editing UI.
 - `collection`: a repeatable group of input fields to be displayed together under a shared heading in the prop-editing UI. The `nrqlQueries` entry is an example of a collection type.
@@ -216,3 +223,9 @@ Congratulations on completing the steps in this example! You've learned how to:
 - Quickly test and iterate on visualization code changes in Custom Visualizations
 - Deploy a visualization
 - Add a custom visualization to a dashboard
+
+## Additional resources
+
+- New Relic Quick Tips video: [Dashboards and Custom Visualizations](https://www.youtube.com/watch?v=_F61mxtKfGA) (6 minutes)
+- New Relic NerdBytes video: [Configuring custom visualizations for dashboards](https://www.youtube.com/watch?v=sFpG_iG7Xa8) (7 minutes)
+- New Relic Nerdlog live stream: [Custom Data Visualizations on New Relic](https://www.youtube.com/watch?v=HuR0EdHGz24) (30 minutes)

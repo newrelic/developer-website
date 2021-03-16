@@ -1,3 +1,10 @@
+## [1.35.7](https://github.com/newrelic/developer-website/compare/v1.35.6...v1.35.7) (2021-03-15)
+
+
+### Bug Fixes
+
+* fix merge conflicts ([0af1086](https://github.com/newrelic/developer-website/commit/0af1086d1bd6d91980ab3d8fdc961b3e35508c27))
+
 ## [1.35.6](https://github.com/newrelic/developer-website/compare/v1.35.5...v1.35.6) (2021-03-09)
 
 
