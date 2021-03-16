@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { SEO } from '@newrelic/gatsby-theme-newrelic';
 import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 
-function DevSiteSeo({ description, lang, meta, title, tags, location }) {
+function DevSiteSeo({ description, meta, title, tags, location }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -18,7 +18,6 @@ function DevSiteSeo({ description, lang, meta, title, tags, location }) {
     `
   );
 
-  const metaTitle = site.siteMetadata.title || '';
   const metaDescription = description || site.siteMetadata.description;
 
   const globalMetadata = [
@@ -88,7 +87,6 @@ function DevSiteSeo({ description, lang, meta, title, tags, location }) {
 }
 
 DevSiteSeo.defaultProps = {
-  lang: 'en',
   meta: [],
   description: '',
 };
@@ -96,7 +94,6 @@ DevSiteSeo.defaultProps = {
 DevSiteSeo.propTypes = {
   location: PropTypes.object.isRequired,
   description: PropTypes.string,
-  lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
