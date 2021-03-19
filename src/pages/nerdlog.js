@@ -58,8 +58,8 @@ const NerdlogPage = () => {
               <br /> share tips and tricks{' '}
             </SectionHeading>
             <SectionDescription>
-              Watch and engage with New Relic product managers and engineers
-              who are building the future of New Relic
+              Watch and engage with New Relic product managers and engineers who
+              are building the future of New Relic
             </SectionDescription>
             <div
               className={cx(
@@ -71,9 +71,9 @@ const NerdlogPage = () => {
               <div>
                 <h2>What is the Nerdlog?</h2>
                 <p>
-                  The Nerdlog is our brand new live stream changelog on {'  '}
-                  <a href="https://www.twitch.tv/new_relic">Twitch</a>.
-                  Every Thursday, you can:
+                  The Nerdlog is our brand new live stream changelog on{' '}
+                  <a href="https://www.twitch.tv/new_relic">Twitch</a>. Every
+                  Thursday, you can:
                 </p>
                 <div>
                   <ul>
