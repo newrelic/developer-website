@@ -5,25 +5,35 @@ template: 'GuideTemplate'
 description: 'Customize NRQL data'
 ---
 
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](../../../ab-test).
+
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Add NrqlQuery components to your nerdlet_](../nrql), before starting this one.
+
+</Callout>
+
 In this series, you're creating a New Relic One application, or NR1 app for short, that shows A/B test data in a variety of charts. Most of the charts need to show data that comes from a demo service you spun up at the beginning of this series. To refresh your memory on what you're building, review your design guide:
 
 ![Design guide for chart components](../../../images/ab-test/charts-design-guide.png)
 
 In the last lesson, you supplied real data, which comes from New Relic's database, to the following charts:
 
-- _Newsletter subscriptions per version_
-- _Version A - Page views_
-- _Version B - Page views_
-- _Total subscriptions per version_
+- **Newsletter subscriptions per version**
+- **Version A - Page views**
+- **Version B - Page views**
+- **Total subscriptions per version**
 
 Because you have experience querying subscription and page view data, you may feel ready to supply data to even more charts:
 
-- _Version A - Page views vs. subscriptions_
-- _Version B - Page views vs. subscriptions_
+- **Version A - Page views vs. subscriptions**
+- **Version B - Page views vs. subscriptions**
 
 However, these charts are different than the charts you've supplied data to because they compare data from two different sources: `subscription` events and `pageView` events.
 
 In this lesson, you learn how to format data from multiple sources to exist in the same chart.
+
+## Experiment with data in the Data explorer
 
 <Steps>
 
@@ -55,7 +65,7 @@ Click **Dimensions** to see a list of the attributes associated with these subsc
 
 ![Subscription event dimensions](../../../images/ab-test/data-explorer-subscription-dimensions.png)
 
-You can filter and group subscription events using these dimensions. For _Version A - Page views vs. subscriptions_ and _Version B - Page views vs. subscriptions_, you want to filter your subscription totals by `page_version`.
+You can filter and group subscription events using these dimensions. For **Version A - Page views vs. subscriptions** and **Version B - Page views vs. subscriptions**, you want to filter your subscription totals by `page_version`.
 
 </Step>
 
@@ -97,7 +107,7 @@ Click **Run** and see the data visualized in a billboard chart instead of a line
 
 <Step>
 
-_Version A - Page views vs. subscriptions_ and _Version B - Page views vs. subscriptions_ need a combined total of four data values:
+**Version A - Page views vs. subscriptions** and **Version B - Page views vs. subscriptions** need a combined total of four data values:
 
 - All-time subscription totals for version A
 - All-time page view totals for version A
@@ -123,9 +133,15 @@ Until now, you've provided every chart with a single query. Here, you have to pr
 
 </Step>
 
+</Steps>
+
+## Merge NRQL from multiple sources
+
+<Steps>
+
 <Step>
 
-Change to the `customize-nrql-data` directory of the course repository:
+Change to the _customize-nrql-data/_ directory of the course repository:
 
 ```sh
 cd nru-programmability-course/customize-nrql-data
@@ -137,102 +153,25 @@ This directory contains the code that we expect your application to have at this
 
 <Step>
 
-Open your Nerdlet's index.js file. All code you write in this lesson belongs in this file.
+In your Nerdlet's _totals.js_ file, implement `constructor()` and the React lifecycle method `componentDidMount()` in `VersionTotals`:
 
-</Step>
-
-<Step>
-
-Implement `constructor()` and the React lifecycle method `componentDidMount()` in `VersionATotals` and `VersionBTotals`:
-
-```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=80-120,127,133-173,180
+```js fileName=nerdlets/ab-test-nerdlet/totals.js
 import React from 'react';
-import { BlockText, Button, ChartGroup, Grid, GridItem, HeadingText, LineChart, Modal, NrqlQuery, PieChart, Select, SelectItem, TableChart } from 'nr1';
+import {
+    HeadingText,
+    NrqlQuery,
+    TableChart,
+} from 'nr1';
 
-class NewsletterSignups extends React.Component {
-    render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Newsletter subscriptions per version
-            </HeadingText>
-            <NrqlQuery
-                accountId={<YOUR NEW RELIC ACCOUNT ID>}
-                query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
-                pollInterval={60000}
-            >
-                {
-                    ({ data }) => {
-                        return <LineChart data={data} fullWidth />;
-                    }
-                }
-            </NrqlQuery>
-        </React.Fragment>
-    }
-}
-
-class TestDistributions extends React.Component {
-    render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total subscriptions per version
-            </HeadingText>
-            <NrqlQuery
-                accountId={<YOUR NEW RELIC ACCOUNT ID>}
-                query="SELECT count(*) FROM subscription FACET page_version SINCE 7 DAYS AGO"
-                pollInterval={60000}
-            >
-                {
-                    ({ data }) => {
-                        return <PieChart data={data} fullWidth />
-                    }
-                }
-            </NrqlQuery>
-        </React.Fragment>
-    }
-}
-
-class SuccessfulRequests extends React.Component {
-    render() {
-        const successesA = {
-            metadata: {
-                id: 'successes-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 118 },
-            ],
-        }
-        const successesB = {
-            metadata: {
-                id: 'successes-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 400 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total unsubscriptions per version
-            </HeadingText>
-            <PieChart data={[successesA, successesB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionATotals extends React.Component {
+export default class VersionTotals extends React.Component {
     constructor() {
         super(...arguments);
 
         this.state = {
             tableData: {
                 metadata: {
-                    id: 'totals-A',
-                    name: 'Version A',
+                    id: `totals-${this.props.version}`,
+                    name: `Version ${this.props.version}`,
                     columns: ['name', 'count'],
                 },
                 data: [
@@ -251,269 +190,38 @@ class VersionATotals extends React.Component {
 
     componentDidMount() {
         NrqlQuery.query({
-            accountId: <YOUR NEW RELIC ACCOUNT ID>,
-            query: "SELECT count(*) FROM subscription WHERE page_version = 'a' SINCE 7 DAYS AGO",
+            accountId: this.props.accountId,
+            query: `SELECT count(*) FROM subscription WHERE page_version = '${this.props.version}' SINCE 7 DAYS AGO`,
             formatType: NrqlQuery.FORMAT_TYPE.RAW
         }).then(({ data }) => {
-            console.log(data);
-        })
-
-        NrqlQuery.query({
-            accountId: <YOUR NEW RELIC ACCOUNT ID>,
-            query: "SELECT count(*) FROM pageView WHERE page_version = 'a' SINCE 7 DAYS AGO",
-            formatType: NrqlQuery.FORMAT_TYPE.RAW
-        }).then(({ data }) => {
-            console.log(data);
-        })
-    }
-
-    render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[this.state.tableData]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBTotals extends React.Component {
-    constructor() {
-        super(...arguments);
-
-        this.state = {
-            tableData: {
-                metadata: {
-                    id: 'totals-B',
-                    name: 'Version B',
-                    columns: ['name', 'count'],
-                },
-                data: [
-                    {
-                        name: 'Subscriptions',
-                        count: 0
-                    },
-                    {
-                        name: 'Page views',
-                        count: 0
-                    },
-                ],
+            if (data.raw) {
+                let tableData = {...this.state.tableData}
+                tableData.data[0].count = data.raw.results[0].count
+                this.setState({tableData})
             }
-        }
-    }
-
-    componentDidMount() {
-        NrqlQuery.query({
-            accountId: <YOUR NEW RELIC ACCOUNT ID>,
-            query: "SELECT count(*) FROM subscription WHERE page_version = 'b' SINCE 7 DAYS AGO",
-            formatType: NrqlQuery.FORMAT_TYPE.RAW
-        }).then(({ data }) => {
-            console.log(data)
         })
 
         NrqlQuery.query({
-            accountId: <YOUR NEW RELIC ACCOUNT ID>,
-            query: "SELECT count(*) FROM pageView WHERE page_version = 'b' SINCE 7 DAYS AGO",
+            accountId: this.props.accountId,
+            query: `SELECT count(*) FROM pageView WHERE page_version = '${this.props.version}' SINCE 7 DAYS AGO`,
             formatType: NrqlQuery.FORMAT_TYPE.RAW
         }).then(({ data }) => {
-            console.log(data);
+            if (data.raw) {
+                let tableData = {...this.state.tableData}
+                tableData.data[1].count = data.raw.results[0].count
+                this.setState({tableData})
+            }
+
         })
     }
 
     render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views vs. subscriptions
+        return <div>
+            <HeadingText className="chartHeader">
+                Version {this.props.version.toUpperCase()} - Page views vs. subscriptions
             </HeadingText>
             <TableChart data={[this.state.tableData]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionAResponseTimes extends React.Component {
-    render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views
-            </HeadingText>
-            <NrqlQuery
-                accountId={<YOUR NEW RELIC ACCOUNT ID>}
-                query="SELECT count(*) FROM pageView WHERE page_version = 'a' SINCE 30 MINUTES AGO TIMESERIES"
-                pollInterval={60000}
-            >
-                {
-                    ({ data }) => {
-                        return <LineChart data={data} fullWidth />;
-                    }
-                }
-            </NrqlQuery>
-        </React.Fragment>
-    }
-}
-
-class VersionBResponseTimes extends React.Component {
-    render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views
-            </HeadingText>
-            <NrqlQuery
-                accountId={<YOUR NEW RELIC ACCOUNT ID>}
-                query="SELECT count(*) FROM pageView WHERE page_version = 'b' SINCE 30 MINUTES AGO TIMESERIES"
-                pollInterval={60000}
-            >
-                {
-                    ({ data }) => {
-                        return <LineChart data={data} fullWidth />;
-                    }
-                }
-            </NrqlQuery>
-        </React.Fragment>
-    }
-}
-
-class HistoricalTests extends React.Component {
-    render() {
-        var historicalData = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['endDate', 'versionADescription', 'versionBDescription', 'winner'],
-            },
-            data: [
-                {
-                    "endDate": "12/15/2020",
-                    "versionADescription": "The homepage's CTA button was green.",
-                    "versionBDescription": "The homepage's CTA button was blue.",
-                    "winner": "A"
-                },
-                {
-                    "endDate": "09/06/2019",
-                    "versionADescription": "The 'Deals' page showed sales in a carousel.",
-                    "versionBDescription": "The 'Deals' page showed sales in a grid.",
-                    "winner": "B"
-                }
-            ],
-        }
-
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Past tests
-            </HeadingText>
-            <TableChart data={[historicalData]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionSelector extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return <Select onChange={this.props.selectVersion} value={this.props.selectedVersion}>
-            <SelectItem value={'A'}>Version A</SelectItem>
-            <SelectItem value={'B'}>Version B</SelectItem>
-        </Select>
-    }
-}
-
-class EndTestButton extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return <React.Fragment>
-            <Button type={Button.TYPE.DESTRUCTIVE} onClick={this.props.showModal}>End test</Button>
-
-            <Modal hidden={this.props.modalHidden} onClose={this.props.closeModal}>
-                <HeadingText>Are you sure?</HeadingText>
-                <BlockText>
-                    If you end the test, all your users will receive the version you selected:
-                </BlockText>
-
-                <BlockText spacingType={[BlockText.SPACING_TYPE.LARGE]}>
-                    <b>Version {this.props.selectedVersion}</b>
-                </BlockText>
-
-                <Button onClick={this.props.closeModal}>No, continue test</Button>
-                <Button type={Button.TYPE.DESTRUCTIVE} onClick={this.props.closeModal}>Yes, end test</Button>
-            </Modal>
-        </React.Fragment>
-    }
-}
-
-class EndTestSection extends React.Component {
-    constructor() {
-        super(...arguments);
-
-        this.state = {
-            selectedVersion: 'A',
-            modalHidden: true,
-        };
-
-        this.selectVersion = this.selectVersion.bind(this);
-        this.showModal = this.showModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
-    }
-
-    selectVersion(event, value) {
-        this.setState({ selectedVersion: value });
-    }
-
-    closeModal() {
-        this.setState({ modalHidden: true });
-    }
-
-    showModal() {
-        this.setState({ modalHidden: false });
-    }
-
-    render() {
-        return <Grid style={{ margin: 'auto', backgroundColor: '#fafafa', padding: '20px' }}>
-            <GridItem columnSpan={12}>
-                <HeadingText style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '20px', marginBottom: '20px', textAlign: 'center' }}>
-                    Pick a version to end the test:
-                </HeadingText>
-            </GridItem>
-            <GridItem columnStart={5} columnEnd={6} style={{ textAlign: 'right', paddingTop: '5px' }}>
-                <VersionSelector
-                    selectedVersion={this.state.selectedVersion}
-                    selectVersion={this.selectVersion}
-                />
-            </GridItem>
-            <GridItem columnStart={7} columnEnd={8}>
-                <EndTestButton
-                    modalHidden={this.state.modalHidden}
-                    closeModal={this.closeModal}
-                    showModal={this.showModal}
-                    selectedVersion={this.state.selectedVersion}
-                >
-                    End test
-                </EndTestButton>
-            </GridItem>
-        </Grid>
-    }
-}
-
-export default class AbTestNerdletNerdlet extends React.Component {
-    render() {
-        return (
-            <Grid>
-                <GridItem columnSpan={12}><NewsletterSignups /></GridItem>
-                <GridItem columnSpan={6}><TestDistributions /></GridItem>
-                <GridItem columnSpan={6}><SuccessfulRequests /></GridItem>
-                <GridItem columnSpan={6}><VersionATotals /></GridItem>
-                <GridItem columnSpan={6}><VersionBTotals /></GridItem>
-                <ChartGroup>
-                    <GridItem columnSpan={6}><VersionAResponseTimes /></GridItem>
-                    <GridItem columnSpan={6}><VersionBResponseTimes /></GridItem>
-                </ChartGroup>
-                <GridItem columnSpan={12}><EndTestSection /></GridItem>
-                <GridItem columnSpan={12}><HistoricalTests /></GridItem>
-            </Grid>
-        )
+        </div>
     }
 }
 ```
@@ -524,7 +232,7 @@ Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [
 
 </Callout>
 
-Here, you initialize your state in the component's constructor. The state has a single value, `tableData`, which is an empty array. In [`componentDidMount()`](https://reactjs.org/docs/react-component.html#componentdidmount), you query the data that will fill this array.
+Here, you initialize your state in the component's constructor. The state has a single value, `tableData`, which holds series data and metadata for the `TableChart`. In [`componentDidMount()`](https://reactjs.org/docs/react-component.html#componentdidmount), you query the data that populates the data in this state.
 
  `componentDidMount()` is a React lifecycle method that is called when a component is mounted in the component tree. You use this method, instead of the constructor, to query data because your logic, which requests data from New Relic, introduces side effects and sets state values, neither of which you should do in the constructor.
 
@@ -534,7 +242,89 @@ Here, you initialize your state in the component's constructor. The state has a 
 
 <Step>
 
-Navigate to the root of your Nerdpack at `nru-programmability-course/persist-selected-version/ab-test`.
+In your Nerdlet's _index.js_ file, create a constant called `ACCOUNT_ID` and pass it to `VersionTotals`:
+
+```js fileName=nerdlets/ab-test-nerdlet/ lineHighlight=12,36-41
+import React from 'react';
+import { ChartGroup, Grid, GridItem } from 'nr1';
+import EndTestSection from './end-test';
+import NewsletterSignups from './newsletter-signups';
+import PastTests from './past-tests';
+import TotalCancellations from './total-cancellations';
+import TotalSubscriptions from './total-subscriptions';
+import VersionDescription from './description';
+import VersionPageViews from './page-views';
+import VersionTotals from './totals';
+
+const ACCOUNT_ID = 123456  // <YOUR-ACCOUNT-ID>
+const VERSION_A_DESCRIPTION = 'The newsletter signup message says, "Sign up for our newsletter"'
+const VERSION_B_DESCRIPTION = 'The newsletter signup message says, "Sign up for our newsletter and get a free shirt!"'
+
+export default class AbTestNerdletNerdlet extends React.Component {
+    render() {
+        return <div>
+            <Grid className="wrapper">
+                <GridItem columnSpan={6}>
+                    <VersionDescription
+                        description={VERSION_A_DESCRIPTION}
+                        version="A"
+                    />
+                </GridItem>
+                <GridItem columnSpan={6}>
+                    <VersionDescription
+                        description={VERSION_B_DESCRIPTION}
+                        version="B"
+                    />
+                </GridItem>
+                <GridItem columnSpan={12}><hr /></GridItem>
+                <GridItem columnSpan={12}><NewsletterSignups /></GridItem>
+                <GridItem columnSpan={6}><TotalSubscriptions /></GridItem>
+                <GridItem columnSpan={6}><TotalCancellations /></GridItem>
+                <GridItem columnSpan={6}>
+                    <VersionTotals version='a' accountId={ACCOUNT_ID} />
+                </GridItem>
+                <GridItem columnSpan={6}>
+                    <VersionTotals version='b' accountId={ACCOUNT_ID} />
+                </GridItem>
+                <ChartGroup>
+                    <GridItem columnSpan={6}>
+                        <VersionPageViews version='a' />
+                    </GridItem>
+                    <GridItem columnSpan={6}>
+                        <VersionPageViews version='b' />
+                    </GridItem>
+                </ChartGroup>
+                <GridItem columnSpan={12}><EndTestSection /></GridItem>
+                <GridItem columnSpan={12}><PastTests /></GridItem>
+            </Grid>
+        </div>
+    }
+}
+```
+
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
+
+ </Step>
+
+<Step>
+
+Navigate to the root of your Nerdpack at _nru-programmability-course/customize-nrql-data/ab-test_.
+
+</Step>
+
+<Step>
+
+Generate a new UUID for your Nerdpack:
+
+```sh
+nr1 nerdpack:uuid -gf
+```
+
+Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
 </Step>
 
@@ -546,6 +336,8 @@ Serve your application locally:
 nr1 nerdpack:serve
 ```
 
+Navigate to your app in [New Relic](https://one.newrelic.com?nerdpacks=local).
+
 </Step>
 
 <Step>
@@ -556,7 +348,7 @@ To view your logs, which are useful for uncovering errors in your application, t
 - [Safari instructions](https://developer.apple.com/library/archive/documentation/NetworkingInternetWeb/Conceptual/Web_Inspector_Tutorial/DebuggingyourWebpage/DebuggingyourWebpage.html#//apple_ref/doc/uid/TP40017576-CH5-DontLinkElementID_24)
 - [Chrome instructions](https://developers.google.com/web/tools/chrome-devtools#console)
 
-[View your NR1 application](https://one.newrelic.com?nerdpacks=local) and notice the NRQL data in the console:
+With your app on-screen, notice the NRQL data in the console:
 
 ![Your query data in the console](../../../images/ab-test/raw-data-in-console.png)
 
@@ -566,96 +358,25 @@ This console log tells you that you can find the data you're looking for, namely
 
 <Step>
 
-Store the query data in state:
+In _totals.js_, store the query data in state:
 
-```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=110-112,120-122,167-169,177-179
+```js fileName=nerdlets/ab-test-nerdlet/totals.js lineHighlight=40-42,52-54
 import React from 'react';
-import { BlockText, Button, ChartGroup, Grid, GridItem, HeadingText, LineChart, Modal, NrqlQuery, PieChart, Select, SelectItem, TableChart } from 'nr1';
+import {
+    HeadingText,
+    NrqlQuery,
+    TableChart,
+} from 'nr1';
 
-class NewsletterSignups extends React.Component {
-    render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Newsletter subscriptions per version
-            </HeadingText>
-            <NrqlQuery
-                accountId={<YOUR NEW RELIC ACCOUNT ID>}
-                query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
-                pollInterval={60000}
-            >
-                {
-                    ({ data }) => {
-                        return <LineChart data={data} fullWidth />;
-                    }
-                }
-            </NrqlQuery>
-        </React.Fragment>
-    }
-}
-
-class TestDistributions extends React.Component {
-    render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total subscriptions per version
-            </HeadingText>
-            <NrqlQuery
-                accountId={<YOUR NEW RELIC ACCOUNT ID>}
-                query="SELECT count(*) FROM subscription FACET page_version SINCE 7 DAYS AGO"
-                pollInterval={60000}
-            >
-                {
-                    ({ data }) => {
-                        return <PieChart data={data} fullWidth />
-                    }
-                }
-            </NrqlQuery>
-        </React.Fragment>
-    }
-}
-
-class SuccessfulRequests extends React.Component {
-    render() {
-        const successesA = {
-            metadata: {
-                id: 'successes-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 118 },
-            ],
-        }
-        const successesB = {
-            metadata: {
-                id: 'successes-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 400 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total unsubscriptions per version
-            </HeadingText>
-            <PieChart data={[successesA, successesB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionATotals extends React.Component {
+export default class VersionTotals extends React.Component {
     constructor() {
         super(...arguments);
 
         this.state = {
             tableData: {
                 metadata: {
-                    id: 'totals-A',
-                    name: 'Version A',
+                    id: `totals-${this.props.version}`,
+                    name: `Version ${this.props.version}`,
                     columns: ['name', 'count'],
                 },
                 data: [
@@ -674,286 +395,41 @@ class VersionATotals extends React.Component {
 
     componentDidMount() {
         NrqlQuery.query({
-            accountId: <YOUR NEW RELIC ACCOUNT ID>,
-            query: "SELECT count(*) FROM subscription WHERE page_version = 'a' SINCE 7 DAYS AGO",
+            accountId: this.props.accountId,
+            query: `SELECT count(*) FROM subscription WHERE page_version = '${this.props.version}' SINCE 7 DAYS AGO`,
             formatType: NrqlQuery.FORMAT_TYPE.RAW
         }).then(({ data }) => {
-            this.setState(state => {
-                state.tableData.data[0].count = data.raw.results[0].count
-            })
-        })
-
-        NrqlQuery.query({
-            accountId: <YOUR NEW RELIC ACCOUNT ID>,
-            query: "SELECT count(*) FROM pageView WHERE page_version = 'a' SINCE 7 DAYS AGO",
-            formatType: NrqlQuery.FORMAT_TYPE.RAW
-        }).then(({ data }) => {
-            this.setState(state => {
-                state.tableData.data[1].count = data.raw.results[0].count
-            })
-        })
-    }
-
-    render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[this.state.tableData]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBTotals extends React.Component {
-    constructor() {
-        super(...arguments);
-
-        this.state = {
-            tableData: {
-                metadata: {
-                    id: 'totals-B',
-                    name: 'Version B',
-                    columns: ['name', 'count'],
-                },
-                data: [
-                    {
-                        name: 'Subscriptions',
-                        count: 0
-                    },
-                    {
-                        name: 'Page views',
-                        count: 0
-                    },
-                ],
+            if (data.raw) {
+                let tableData = {...this.state.tableData}
+                tableData.data[0].count = data.raw.results[0].count
+                this.setState({tableData})
             }
-        }
-    }
-
-    componentDidMount() {
-        NrqlQuery.query({
-            accountId: <YOUR NEW RELIC ACCOUNT ID>,
-            query: "SELECT count(*) FROM subscription WHERE page_version = 'b' SINCE 7 DAYS AGO",
-            formatType: NrqlQuery.FORMAT_TYPE.RAW
-        }).then(({ data }) => {
-            this.setState(state => {
-                state.tableData.data[0].count = data.raw.results[0].count
-            })
         })
 
         NrqlQuery.query({
-            accountId: <YOUR NEW RELIC ACCOUNT ID>,
-            query: "SELECT count(*) FROM pageView WHERE page_version = 'b' SINCE 7 DAYS AGO",
+            accountId: this.props.accountId,
+            query: `SELECT count(*) FROM pageView WHERE page_version = '${this.props.version}' SINCE 7 DAYS AGO`,
             formatType: NrqlQuery.FORMAT_TYPE.RAW
         }).then(({ data }) => {
-            this.setState(state => {
-                state.tableData.data[1].count = data.raw.results[0].count
-            })
+            if (data.raw) {
+                let tableData = {...this.state.tableData}
+                tableData.data[1].count = data.raw.results[0].count
+                this.setState({tableData})
+            }
+
         })
     }
 
     render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views vs. subscriptions
+        return <div>
+            <HeadingText className="chartHeader">
+                Version {this.props.version.toUpperCase()} - Page views vs. subscriptions
             </HeadingText>
             <TableChart data={[this.state.tableData]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionAResponseTimes extends React.Component {
-    render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views
-            </HeadingText>
-            <NrqlQuery
-                accountId={<YOUR NEW RELIC ACCOUNT ID>}
-                query="SELECT count(*) FROM pageView WHERE page_version = 'a' SINCE 30 MINUTES AGO TIMESERIES"
-                pollInterval={60000}
-            >
-                {
-                    ({ data }) => {
-                        return <LineChart data={data} fullWidth />;
-                    }
-                }
-            </NrqlQuery>
-        </React.Fragment>
-    }
-}
-
-class VersionBResponseTimes extends React.Component {
-    render() {
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views
-            </HeadingText>
-            <NrqlQuery
-                accountId={<YOUR NEW RELIC ACCOUNT ID>}
-                query="SELECT count(*) FROM pageView WHERE page_version = 'b' SINCE 30 MINUTES AGO TIMESERIES"
-                pollInterval={60000}
-            >
-                {
-                    ({ data }) => {
-                        return <LineChart data={data} fullWidth />;
-                    }
-                }
-            </NrqlQuery>
-        </React.Fragment>
-    }
-}
-
-class HistoricalTests extends React.Component {
-    render() {
-        var historicalData = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['endDate', 'versionADescription', 'versionBDescription', 'winner'],
-            },
-            data: [
-                {
-                    "endDate": "12/15/2020",
-                    "versionADescription": "The homepage's CTA button was green.",
-                    "versionBDescription": "The homepage's CTA button was blue.",
-                    "winner": "A"
-                },
-                {
-                    "endDate": "09/06/2019",
-                    "versionADescription": "The 'Deals' page showed sales in a carousel.",
-                    "versionBDescription": "The 'Deals' page showed sales in a grid.",
-                    "winner": "B"
-                }
-            ],
-        }
-
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Past tests
-            </HeadingText>
-            <TableChart data={[historicalData]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionSelector extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return <Select onChange={this.props.selectVersion} value={this.props.selectedVersion}>
-            <SelectItem value={'A'}>Version A</SelectItem>
-            <SelectItem value={'B'}>Version B</SelectItem>
-        </Select>
-    }
-}
-
-class EndTestButton extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return <React.Fragment>
-            <Button type={Button.TYPE.DESTRUCTIVE} onClick={this.props.showModal}>End test</Button>
-
-            <Modal hidden={this.props.modalHidden} onClose={this.props.closeModal}>
-                <HeadingText>Are you sure?</HeadingText>
-                <BlockText>
-                    If you end the test, all your users will receive the version you selected:
-                </BlockText>
-
-                <BlockText spacingType={[BlockText.SPACING_TYPE.LARGE]}>
-                    <b>Version {this.props.selectedVersion}</b>
-                </BlockText>
-
-                <Button onClick={this.props.closeModal}>No, continue test</Button>
-                <Button type={Button.TYPE.DESTRUCTIVE} onClick={this.props.closeModal}>Yes, end test</Button>
-            </Modal>
-        </React.Fragment>
-    }
-}
-
-class EndTestSection extends React.Component {
-    constructor() {
-        super(...arguments);
-
-        this.state = {
-            selectedVersion: 'A',
-            modalHidden: true,
-        };
-
-        this.selectVersion = this.selectVersion.bind(this);
-        this.showModal = this.showModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
-    }
-
-    selectVersion(event, value) {
-        this.setState({ selectedVersion: value });
-    }
-
-    closeModal() {
-        this.setState({ modalHidden: true });
-    }
-
-    showModal() {
-        this.setState({ modalHidden: false });
-    }
-
-    render() {
-        return <Grid style={{ margin: 'auto', backgroundColor: '#fafafa', padding: '20px' }}>
-            <GridItem columnSpan={12}>
-                <HeadingText style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '20px', marginBottom: '20px', textAlign: 'center' }}>
-                    Pick a version to end the test:
-                </HeadingText>
-            </GridItem>
-            <GridItem columnStart={5} columnEnd={6} style={{ textAlign: 'right', paddingTop: '5px' }}>
-                <VersionSelector
-                    selectedVersion={this.state.selectedVersion}
-                    selectVersion={this.selectVersion}
-                />
-            </GridItem>
-            <GridItem columnStart={7} columnEnd={8}>
-                <EndTestButton
-                    modalHidden={this.state.modalHidden}
-                    closeModal={this.closeModal}
-                    showModal={this.showModal}
-                    selectedVersion={this.state.selectedVersion}
-                >
-                    End test
-                </EndTestButton>
-            </GridItem>
-        </Grid>
-    }
-}
-
-export default class AbTestNerdletNerdlet extends React.Component {
-    render() {
-        return (
-            <Grid>
-                <GridItem columnSpan={12}><NewsletterSignups /></GridItem>
-                <GridItem columnSpan={6}><TestDistributions /></GridItem>
-                <GridItem columnSpan={6}><SuccessfulRequests /></GridItem>
-                <GridItem columnSpan={6}><VersionATotals /></GridItem>
-                <GridItem columnSpan={6}><VersionBTotals /></GridItem>
-                <ChartGroup>
-                    <GridItem columnSpan={6}><VersionAResponseTimes /></GridItem>
-                    <GridItem columnSpan={6}><VersionBResponseTimes /></GridItem>
-                </ChartGroup>
-                <GridItem columnSpan={12}><EndTestSection /></GridItem>
-                <GridItem columnSpan={12}><HistoricalTests /></GridItem>
-            </Grid>
-        )
+        </div>
     }
 }
 ```
-
-<Callout variant="important">
-
-Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
-
-</Callout>
 
 Pay close attention to the data you're accessing. The array indices are particularly important to get right. The subscription data should go to `state.tableData.data[0].count` because in `tableData`, it is the first element in the data array:
 
@@ -976,7 +452,7 @@ By similar logic, page view data should go to `state.tableData.data[1].count`.
 
 <Step>
 
-While still serving your nerdpack locally, view your NR1 app to see your charts serving real data:
+With your nerdpack served locally, [view your application](https://one.newrelic.com?nerdpacks=local) to see your charts serving real data:
 
 ![Your New Relic One application showing real subscription and page view data](../../../images/ab-test/real-table-chart-data.png)
 
@@ -986,7 +462,13 @@ While still serving your nerdpack locally, view your NR1 app to see your charts 
 
 In this lesson, you learned how to use `NrqlQuery.query()` to fetch data from multiple sources and stitch them together into data your chart can use. Notice that there are still two charts in your NR1 application that use mock data:
 
-- _Total unsubscriptions per version_
-- _Past tests_
+- **Total unsubscriptions per version**
+- **Past tests**
 
-Unfortunately, your demo application doesn't create custom New Relic events when a user unsubscribes from your newsletter or you end an A/B test. In the next lesson, you'll learn how to use NerdGraph and NerdStorage to populate _Past tests_.
+Unfortunately, your demo application doesn't create custom New Relic events when a user unsubscribes from your newsletter or you end an A/B test. In the next lesson, you'll learn how to use NerdGraph and NerdStorage to populate **Past tests**.
+
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Access NerdStorage from your nerdlet_](../nerdstorage).
+
+</Callout>

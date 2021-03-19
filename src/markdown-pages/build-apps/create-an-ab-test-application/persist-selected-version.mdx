@@ -5,6 +5,14 @@ template: 'GuideTemplate'
 description: 'Persist the selected version'
 ---
 
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](../../../ab-test).
+
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Add a section to end your test_](../end-test), before starting this one.
+
+</Callout>
+
 In the previous lesson, you created a section of your application that allows you to pick the most effective design from your A/B test. The goal of this section is to end the test once you’ve selected a winner:
 
 ![First version of your end test section](../../../images/ab-test/end-test-section-v1.png)
@@ -15,7 +23,7 @@ When you select a version from this form, the selection does not persist in the 
 
 <Step>
 
-Change to the `persist-selected-version` directory of the course repository:
+Change to the _persist-selected-version/_ directory of the course repository:
 
 ```sh
 cd nru-programmability-course/persist-selected-version
@@ -25,275 +33,18 @@ cd nru-programmability-course/persist-selected-version
 
 <Step>
 
-Open your Nerdlet's _index.js_ file. All code you write in this lesson belongs in this file.
+In _end-test.js_, initialize `EndTestSection.state` with a default `selectedVersion` field:
 
-</Step>
-
-<Step>
-
-Initialize `state` in `EndTestSection` with a default `selectedVersion` field:
-
-```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=280-286
+```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=29-35
 import React from 'react';
-import { Button, ChartGroup, Grid, GridItem, HeadingText, LineChart, PieChart, Select, SelectItem, TableChart } from 'nr1';
-
-class NewsletterSignups extends React.Component {
-    render() {
-        const versionASignups = {
-            metadata: {
-                id: 'version-a-newsletter-signups',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { x: 0, y: 0 },
-                { x: 10, y: 10 },
-                { x: 20, y: 15 },
-                { x: 30, y: 5 },
-                { x: 40, y: 30 },
-                { x: 50, y: 25 },
-            ],
-        }
-        const versionBSignups = {
-            metadata: {
-                id: 'version-b-newsletter-signups',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { x: 0, y: 20 },
-                { x: 10, y: 5 },
-                { x: 20, y: 25 },
-                { x: 30, y: 45 },
-                { x: 40, y: 50 },
-                { x: 50, y: 35 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Newsletter subscriptions per version
-            </HeadingText>
-            <LineChart data={[versionASignups, versionBSignups]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class TestDistributions extends React.Component {
-    render() {
-        const distributionA = {
-            metadata: {
-                id: 'distributions-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 259 },
-            ],
-        }
-        const distributionB = {
-            metadata: {
-                id: 'distributions-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 318 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total subscriptions per version
-            </HeadingText>
-            <PieChart data={[distributionA, distributionB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class SuccessfulRequests extends React.Component {
-    render() {
-        const successesA = {
-            metadata: {
-                id: 'successes-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 118 },
-            ],
-        }
-        const successesB = {
-            metadata: {
-                id: 'successes-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 400 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total unsubscriptions per version
-            </HeadingText>
-            <PieChart data={[successesA, successesB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionATotals extends React.Component {
-    render() {
-        const versionATotals = {
-            metadata: {
-                id: 'totals-A',
-                name: 'Version A',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 85
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 2
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionATotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBTotals extends React.Component {
-    render() {
-        const versionBTotals = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 180
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 30
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionBTotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionAResponseTimes extends React.Component {
-    render() {
-        const versionAResponseTimes = {
-            metadata: {
-                id: 'response-times-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 10 },
-                { x: 10, y: 13 },
-                { x: 20, y: 11.5 },
-                { x: 30, y: 10 },
-                { x: 40, y: 8.75 },
-                { x: 50, y: 9 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views
-            </HeadingText>
-            <LineChart data={[versionAResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBResponseTimes extends React.Component {
-    render() {
-        const versionBResponseTimes = {
-            metadata: {
-                id: 'response-times-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 15 },
-                { x: 10, y: 13 },
-                { x: 20, y: 10 },
-                { x: 30, y: 14 },
-                { x: 40, y: 16.5 },
-                { x: 50, y: 13.5 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views
-            </HeadingText>
-            <LineChart data={[versionBResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class HistoricalTests extends React.Component {
-    render() {
-        var historicalData = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['endDate', 'versionADescription', 'versionBDescription', 'winner'],
-            },
-            data: [
-                {
-                    "endDate": "12/15/2020",
-                    "versionADescription": "The homepage's CTA button was green.",
-                    "versionBDescription": "The homepage's CTA button was blue.",
-                    "winner": "A"
-                },
-                {
-                    "endDate": "09/06/2019",
-                    "versionADescription": "The 'Deals' page showed sales in a carousel.",
-                    "versionBDescription": "The 'Deals' page showed sales in a grid.",
-                    "winner": "B"
-                }
-            ],
-        }
-
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Past tests
-            </HeadingText>
-            <TableChart data={[historicalData]} fullWidth />
-        </React.Fragment>
-    }
-}
+import {
+    Button,
+    Grid,
+    GridItem,
+    HeadingText,
+    Select,
+    SelectItem,
+} from 'nr1';
 
 class VersionSelector extends React.Component {
     render() {
@@ -306,13 +57,13 @@ class VersionSelector extends React.Component {
 
 class EndTestButton extends React.Component {
     render() {
-        return <React.Fragment>
+        return <div>
             <Button>End test</Button>
-        </React.Fragment>
+        </div>
     }
 }
 
-class EndTestSection extends React.Component {
+export default class EndTestSection extends React.Component {
     constructor() {
         super(...arguments);
 
@@ -322,39 +73,19 @@ class EndTestSection extends React.Component {
     }
 
     render() {
-        return <Grid style={{ margin: 'auto', backgroundColor: '#fafafa', padding: '20px' }}>
+        return <Grid className="endTestSection">
             <GridItem columnSpan={12}>
-                <HeadingText style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '20px', marginBottom: '20px', textAlign: 'center'}}>
-                    Pick a version to end the test:
+                <HeadingText className="endTestHeader">
+                    Pick the winner of your A/B test:
                 </HeadingText>
             </GridItem>
-            <GridItem columnStart={5} columnEnd={6} style={{textAlign: 'right', paddingTop: '5px'}}>
+            <GridItem columnStart={5} columnEnd={6} className="versionSelector">
                 <VersionSelector />
             </GridItem>
             <GridItem columnStart={7} columnEnd={8}>
                 <EndTestButton>End test</EndTestButton>
             </GridItem>
         </Grid>
-    }
-}
-
-export default class AbTestNerdletNerdlet extends React.Component {
-    render() {
-        return (
-            <Grid>
-                <GridItem columnSpan={12}><NewsletterSignups /></GridItem>
-                <GridItem columnSpan={6}><TestDistributions /></GridItem>
-                <GridItem columnSpan={6}><SuccessfulRequests /></GridItem>
-                <GridItem columnSpan={6}><VersionATotals /></GridItem>
-                <GridItem columnSpan={6}><VersionBTotals /></GridItem>
-                <ChartGroup>
-                    <GridItem columnSpan={6}><VersionAResponseTimes /></GridItem>
-                    <GridItem columnSpan={6}><VersionBResponseTimes /></GridItem>
-                </ChartGroup>
-                <GridItem columnSpan={12}><EndTestSection /></GridItem>
-                <GridItem columnSpan={12}><HistoricalTests /></GridItem>
-            </Grid>
-        )
     }
 }
 ```
@@ -365,267 +96,16 @@ export default class AbTestNerdletNerdlet extends React.Component {
 
 Pass the `selectedVersion`, as a prop, to `VersionSelector`:
 
-```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=296
+```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=45-47
 import React from 'react';
-import { Button, ChartGroup, Grid, GridItem, HeadingText, LineChart, PieChart, Select, SelectItem, TableChart } from 'nr1';
-
-class NewsletterSignups extends React.Component {
-    render() {
-        const versionASignups = {
-            metadata: {
-                id: 'version-a-newsletter-signups',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { x: 0, y: 0 },
-                { x: 10, y: 10 },
-                { x: 20, y: 15 },
-                { x: 30, y: 5 },
-                { x: 40, y: 30 },
-                { x: 50, y: 25 },
-            ],
-        }
-        const versionBSignups = {
-            metadata: {
-                id: 'version-b-newsletter-signups',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { x: 0, y: 20 },
-                { x: 10, y: 5 },
-                { x: 20, y: 25 },
-                { x: 30, y: 45 },
-                { x: 40, y: 50 },
-                { x: 50, y: 35 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Newsletter subscriptions per version
-            </HeadingText>
-            <LineChart data={[versionASignups, versionBSignups]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class TestDistributions extends React.Component {
-    render() {
-        const distributionA = {
-            metadata: {
-                id: 'distributions-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 259 },
-            ],
-        }
-        const distributionB = {
-            metadata: {
-                id: 'distributions-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 318 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total subscriptions per version
-            </HeadingText>
-            <PieChart data={[distributionA, distributionB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class SuccessfulRequests extends React.Component {
-    render() {
-        const successesA = {
-            metadata: {
-                id: 'successes-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 118 },
-            ],
-        }
-        const successesB = {
-            metadata: {
-                id: 'successes-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 400 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total unsubscriptions per version
-            </HeadingText>
-            <PieChart data={[successesA, successesB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionATotals extends React.Component {
-    render() {
-        const versionATotals = {
-            metadata: {
-                id: 'totals-A',
-                name: 'Version A',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 85
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 2
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionATotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBTotals extends React.Component {
-    render() {
-        const versionBTotals = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 180
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 30
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionBTotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionAResponseTimes extends React.Component {
-    render() {
-        const versionAResponseTimes = {
-            metadata: {
-                id: 'response-times-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 10 },
-                { x: 10, y: 13 },
-                { x: 20, y: 11.5 },
-                { x: 30, y: 10 },
-                { x: 40, y: 8.75 },
-                { x: 50, y: 9 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views
-            </HeadingText>
-            <LineChart data={[versionAResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBResponseTimes extends React.Component {
-    render() {
-        const versionBResponseTimes = {
-            metadata: {
-                id: 'response-times-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 15 },
-                { x: 10, y: 13 },
-                { x: 20, y: 10 },
-                { x: 30, y: 14 },
-                { x: 40, y: 16.5 },
-                { x: 50, y: 13.5 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views
-            </HeadingText>
-            <LineChart data={[versionBResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class HistoricalTests extends React.Component {
-    render() {
-        var historicalData = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['endDate', 'versionADescription', 'versionBDescription', 'winner'],
-            },
-            data: [
-                {
-                    "endDate": "12/15/2020",
-                    "versionADescription": "The homepage's CTA button was green.",
-                    "versionBDescription": "The homepage's CTA button was blue.",
-                    "winner": "A"
-                },
-                {
-                    "endDate": "09/06/2019",
-                    "versionADescription": "The 'Deals' page showed sales in a carousel.",
-                    "versionBDescription": "The 'Deals' page showed sales in a grid.",
-                    "winner": "B"
-                }
-            ],
-        }
-
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Past tests
-            </HeadingText>
-            <TableChart data={[historicalData]} fullWidth />
-        </React.Fragment>
-    }
-}
+import {
+    Button,
+    Grid,
+    GridItem,
+    HeadingText,
+    Select,
+    SelectItem,
+} from 'nr1';
 
 class VersionSelector extends React.Component {
     render() {
@@ -638,13 +118,13 @@ class VersionSelector extends React.Component {
 
 class EndTestButton extends React.Component {
     render() {
-        return <React.Fragment>
+        return <div>
             <Button>End test</Button>
-        </React.Fragment>
+        </div>
     }
 }
 
-class EndTestSection extends React.Component {
+export default class EndTestSection extends React.Component {
     constructor() {
         super(...arguments);
 
@@ -654,39 +134,21 @@ class EndTestSection extends React.Component {
     }
 
     render() {
-        return <Grid style={{ margin: 'auto', backgroundColor: '#fafafa', padding: '20px' }}>
+        return <Grid className="endTestSection">
             <GridItem columnSpan={12}>
-                <HeadingText style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '20px', marginBottom: '20px', textAlign: 'center'}}>
-                    Pick a version to end the test:
+                <HeadingText className="endTestHeader">
+                    Pick the winner of your A/B test:
                 </HeadingText>
             </GridItem>
-            <GridItem columnStart={5} columnEnd={6} style={{textAlign: 'right', paddingTop: '5px'}}>
-                <VersionSelector selectedVersion={this.state.selectedVersion} />
+            <GridItem columnStart={5} columnEnd={6} className="versionSelector">
+                <VersionSelector
+                    selectedVersion={this.state.selectedVersion}
+                />
             </GridItem>
             <GridItem columnStart={7} columnEnd={8}>
                 <EndTestButton>End test</EndTestButton>
             </GridItem>
         </Grid>
-    }
-}
-
-export default class AbTestNerdletNerdlet extends React.Component {
-    render() {
-        return (
-            <Grid>
-                <GridItem columnSpan={12}><NewsletterSignups /></GridItem>
-                <GridItem columnSpan={6}><TestDistributions /></GridItem>
-                <GridItem columnSpan={6}><SuccessfulRequests /></GridItem>
-                <GridItem columnSpan={6}><VersionATotals /></GridItem>
-                <GridItem columnSpan={6}><VersionBTotals /></GridItem>
-                <ChartGroup>
-                    <GridItem columnSpan={6}><VersionAResponseTimes /></GridItem>
-                    <GridItem columnSpan={6}><VersionBResponseTimes /></GridItem>
-                </ChartGroup>
-                <GridItem columnSpan={12}><EndTestSection /></GridItem>
-                <GridItem columnSpan={12}><HistoricalTests /></GridItem>
-            </Grid>
-        )
     }
 }
 ```
@@ -697,267 +159,16 @@ export default class AbTestNerdletNerdlet extends React.Component {
 
 Supply the `selectedVersion` to your `Select` component in `VersionSelector`:
 
-```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=263-265,268
+```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=12-14,17
 import React from 'react';
-import { Button, ChartGroup, Grid, GridItem, HeadingText, LineChart, PieChart, Select, SelectItem, TableChart } from 'nr1';
-
-class NewsletterSignups extends React.Component {
-    render() {
-        const versionASignups = {
-            metadata: {
-                id: 'version-a-newsletter-signups',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { x: 0, y: 0 },
-                { x: 10, y: 10 },
-                { x: 20, y: 15 },
-                { x: 30, y: 5 },
-                { x: 40, y: 30 },
-                { x: 50, y: 25 },
-            ],
-        }
-        const versionBSignups = {
-            metadata: {
-                id: 'version-b-newsletter-signups',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { x: 0, y: 20 },
-                { x: 10, y: 5 },
-                { x: 20, y: 25 },
-                { x: 30, y: 45 },
-                { x: 40, y: 50 },
-                { x: 50, y: 35 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Newsletter subscriptions per version
-            </HeadingText>
-            <LineChart data={[versionASignups, versionBSignups]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class TestDistributions extends React.Component {
-    render() {
-        const distributionA = {
-            metadata: {
-                id: 'distributions-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 259 },
-            ],
-        }
-        const distributionB = {
-            metadata: {
-                id: 'distributions-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 318 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total subscriptions per version
-            </HeadingText>
-            <PieChart data={[distributionA, distributionB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class SuccessfulRequests extends React.Component {
-    render() {
-        const successesA = {
-            metadata: {
-                id: 'successes-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 118 },
-            ],
-        }
-        const successesB = {
-            metadata: {
-                id: 'successes-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 400 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total unsubscriptions per version
-            </HeadingText>
-            <PieChart data={[successesA, successesB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionATotals extends React.Component {
-    render() {
-        const versionATotals = {
-            metadata: {
-                id: 'totals-A',
-                name: 'Version A',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 85
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 2
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionATotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBTotals extends React.Component {
-    render() {
-        const versionBTotals = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 180
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 30
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionBTotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionAResponseTimes extends React.Component {
-    render() {
-        const versionAResponseTimes = {
-            metadata: {
-                id: 'response-times-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 10 },
-                { x: 10, y: 13 },
-                { x: 20, y: 11.5 },
-                { x: 30, y: 10 },
-                { x: 40, y: 8.75 },
-                { x: 50, y: 9 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views
-            </HeadingText>
-            <LineChart data={[versionAResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBResponseTimes extends React.Component {
-    render() {
-        const versionBResponseTimes = {
-            metadata: {
-                id: 'response-times-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 15 },
-                { x: 10, y: 13 },
-                { x: 20, y: 10 },
-                { x: 30, y: 14 },
-                { x: 40, y: 16.5 },
-                { x: 50, y: 13.5 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views
-            </HeadingText>
-            <LineChart data={[versionBResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class HistoricalTests extends React.Component {
-    render() {
-        var historicalData = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['endDate', 'versionADescription', 'versionBDescription', 'winner'],
-            },
-            data: [
-                {
-                    "endDate": "12/15/2020",
-                    "versionADescription": "The homepage's CTA button was green.",
-                    "versionBDescription": "The homepage's CTA button was blue.",
-                    "winner": "A"
-                },
-                {
-                    "endDate": "09/06/2019",
-                    "versionADescription": "The 'Deals' page showed sales in a carousel.",
-                    "versionBDescription": "The 'Deals' page showed sales in a grid.",
-                    "winner": "B"
-                }
-            ],
-        }
-
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Past tests
-            </HeadingText>
-            <TableChart data={[historicalData]} fullWidth />
-        </React.Fragment>
-    }
-}
+import {
+    Button,
+    Grid,
+    GridItem,
+    HeadingText,
+    Select,
+    SelectItem,
+} from 'nr1';
 
 class VersionSelector extends React.Component {
     constructor(props) {
@@ -974,13 +185,13 @@ class VersionSelector extends React.Component {
 
 class EndTestButton extends React.Component {
     render() {
-        return <React.Fragment>
+        return <div>
             <Button>End test</Button>
-        </React.Fragment>
+        </div>
     }
 }
 
-class EndTestSection extends React.Component {
+export default class EndTestSection extends React.Component {
     constructor() {
         super(...arguments);
 
@@ -990,39 +201,21 @@ class EndTestSection extends React.Component {
     }
 
     render() {
-        return <Grid style={{ margin: 'auto', backgroundColor: '#fafafa', padding: '20px' }}>
+        return <Grid className="endTestSection">
             <GridItem columnSpan={12}>
-                <HeadingText style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '20px', marginBottom: '20px', textAlign: 'center'}}>
-                    Pick a version to end the test:
+                <HeadingText className="endTestHeader">
+                    Pick the winner of your A/B test:
                 </HeadingText>
             </GridItem>
-            <GridItem columnStart={5} columnEnd={6} style={{textAlign: 'right', paddingTop: '5px'}}>
-                <VersionSelector selectedVersion={this.state.selectedVersion} />
+            <GridItem columnStart={5} columnEnd={6} className="versionSelector">
+                <VersionSelector
+                    selectedVersion={this.state.selectedVersion}
+                />
             </GridItem>
             <GridItem columnStart={7} columnEnd={8}>
                 <EndTestButton>End test</EndTestButton>
             </GridItem>
         </Grid>
-    }
-}
-
-export default class AbTestNerdletNerdlet extends React.Component {
-    render() {
-        return (
-            <Grid>
-                <GridItem columnSpan={12}><NewsletterSignups /></GridItem>
-                <GridItem columnSpan={6}><TestDistributions /></GridItem>
-                <GridItem columnSpan={6}><SuccessfulRequests /></GridItem>
-                <GridItem columnSpan={6}><VersionATotals /></GridItem>
-                <GridItem columnSpan={6}><VersionBTotals /></GridItem>
-                <ChartGroup>
-                    <GridItem columnSpan={6}><VersionAResponseTimes /></GridItem>
-                    <GridItem columnSpan={6}><VersionBResponseTimes /></GridItem>
-                </ChartGroup>
-                <GridItem columnSpan={12}><EndTestSection /></GridItem>
-                <GridItem columnSpan={12}><HistoricalTests /></GridItem>
-            </Grid>
-        )
     }
 }
 ```
@@ -1033,267 +226,16 @@ export default class AbTestNerdletNerdlet extends React.Component {
 
 Create a method, `selectVersion()`, that updates `EndTestSection.state`:
 
-```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=291,294-296
+```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=40,43-45
 import React from 'react';
-import { Button, ChartGroup, Grid, GridItem, HeadingText, LineChart, PieChart, Select, SelectItem, TableChart } from 'nr1';
-
-class NewsletterSignups extends React.Component {
-    render() {
-        const versionASignups = {
-            metadata: {
-                id: 'version-a-newsletter-signups',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { x: 0, y: 0 },
-                { x: 10, y: 10 },
-                { x: 20, y: 15 },
-                { x: 30, y: 5 },
-                { x: 40, y: 30 },
-                { x: 50, y: 25 },
-            ],
-        }
-        const versionBSignups = {
-            metadata: {
-                id: 'version-b-newsletter-signups',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { x: 0, y: 20 },
-                { x: 10, y: 5 },
-                { x: 20, y: 25 },
-                { x: 30, y: 45 },
-                { x: 40, y: 50 },
-                { x: 50, y: 35 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Newsletter subscriptions per version
-            </HeadingText>
-            <LineChart data={[versionASignups, versionBSignups]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class TestDistributions extends React.Component {
-    render() {
-        const distributionA = {
-            metadata: {
-                id: 'distributions-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 259 },
-            ],
-        }
-        const distributionB = {
-            metadata: {
-                id: 'distributions-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 318 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total subscriptions per version
-            </HeadingText>
-            <PieChart data={[distributionA, distributionB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class SuccessfulRequests extends React.Component {
-    render() {
-        const successesA = {
-            metadata: {
-                id: 'successes-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 118 },
-            ],
-        }
-        const successesB = {
-            metadata: {
-                id: 'successes-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 400 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total unsubscriptions per version
-            </HeadingText>
-            <PieChart data={[successesA, successesB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionATotals extends React.Component {
-    render() {
-        const versionATotals = {
-            metadata: {
-                id: 'totals-A',
-                name: 'Version A',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 85
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 2
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionATotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBTotals extends React.Component {
-    render() {
-        const versionBTotals = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 180
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 30
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionBTotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionAResponseTimes extends React.Component {
-    render() {
-        const versionAResponseTimes = {
-            metadata: {
-                id: 'response-times-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 10 },
-                { x: 10, y: 13 },
-                { x: 20, y: 11.5 },
-                { x: 30, y: 10 },
-                { x: 40, y: 8.75 },
-                { x: 50, y: 9 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views
-            </HeadingText>
-            <LineChart data={[versionAResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBResponseTimes extends React.Component {
-    render() {
-        const versionBResponseTimes = {
-            metadata: {
-                id: 'response-times-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 15 },
-                { x: 10, y: 13 },
-                { x: 20, y: 10 },
-                { x: 30, y: 14 },
-                { x: 40, y: 16.5 },
-                { x: 50, y: 13.5 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views
-            </HeadingText>
-            <LineChart data={[versionBResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class HistoricalTests extends React.Component {
-    render() {
-        var historicalData = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['endDate', 'versionADescription', 'versionBDescription', 'winner'],
-            },
-            data: [
-                {
-                    "endDate": "12/15/2020",
-                    "versionADescription": "The homepage's CTA button was green.",
-                    "versionBDescription": "The homepage's CTA button was blue.",
-                    "winner": "A"
-                },
-                {
-                    "endDate": "09/06/2019",
-                    "versionADescription": "The 'Deals' page showed sales in a carousel.",
-                    "versionBDescription": "The 'Deals' page showed sales in a grid.",
-                    "winner": "B"
-                }
-            ],
-        }
-
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Past tests
-            </HeadingText>
-            <TableChart data={[historicalData]} fullWidth />
-        </React.Fragment>
-    }
-}
+import {
+    Button,
+    Grid,
+    GridItem,
+    HeadingText,
+    Select,
+    SelectItem,
+} from 'nr1';
 
 class VersionSelector extends React.Component {
     constructor(props) {
@@ -1310,13 +252,13 @@ class VersionSelector extends React.Component {
 
 class EndTestButton extends React.Component {
     render() {
-        return <React.Fragment>
+        return <div>
             <Button>End test</Button>
-        </React.Fragment>
+        </div>
     }
 }
 
-class EndTestSection extends React.Component {
+export default class EndTestSection extends React.Component {
     constructor() {
         super(...arguments);
 
@@ -1328,43 +270,25 @@ class EndTestSection extends React.Component {
     }
 
     selectVersion(event, value) {
-        this.setState({selectedVersion: value});
+        this.setState({ selectedVersion: value });
     }
 
     render() {
-        return <Grid style={{ margin: 'auto', backgroundColor: '#fafafa', padding: '20px' }}>
+        return <Grid className="endTestSection">
             <GridItem columnSpan={12}>
-                <HeadingText style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '20px', marginBottom: '20px', textAlign: 'center'}}>
-                    Pick a version to end the test:
+                <HeadingText className="endTestHeader">
+                    Pick the winner of your A/B test:
                 </HeadingText>
             </GridItem>
-            <GridItem columnStart={5} columnEnd={6} style={{textAlign: 'right', paddingTop: '5px'}}>
-                <VersionSelector selectedVersion={this.state.selectedVersion} />
+            <GridItem columnStart={5} columnEnd={6} className="versionSelector">
+                <VersionSelector
+                    selectedVersion={this.state.selectedVersion}
+                />
             </GridItem>
             <GridItem columnStart={7} columnEnd={8}>
                 <EndTestButton>End test</EndTestButton>
             </GridItem>
         </Grid>
-    }
-}
-
-export default class AbTestNerdletNerdlet extends React.Component {
-    render() {
-        return (
-            <Grid>
-                <GridItem columnSpan={12}><NewsletterSignups /></GridItem>
-                <GridItem columnSpan={6}><TestDistributions /></GridItem>
-                <GridItem columnSpan={6}><SuccessfulRequests /></GridItem>
-                <GridItem columnSpan={6}><VersionATotals /></GridItem>
-                <GridItem columnSpan={6}><VersionBTotals /></GridItem>
-                <ChartGroup>
-                    <GridItem columnSpan={6}><VersionAResponseTimes /></GridItem>
-                    <GridItem columnSpan={6}><VersionBResponseTimes /></GridItem>
-                </ChartGroup>
-                <GridItem columnSpan={12}><EndTestSection /></GridItem>
-                <GridItem columnSpan={12}><HistoricalTests /></GridItem>
-            </Grid>
-        )
     }
 }
 ```
@@ -1377,267 +301,16 @@ You must bind `selectVersion` to the `EndTestSection` component so it can access
 
 Pass the method to `VersionSelector` as a prop:
 
-```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=306-309
+```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=57
 import React from 'react';
-import { Button, ChartGroup, Grid, GridItem, HeadingText, LineChart, PieChart, Select, SelectItem, TableChart } from 'nr1';
-
-class NewsletterSignups extends React.Component {
-    render() {
-        const versionASignups = {
-            metadata: {
-                id: 'version-a-newsletter-signups',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { x: 0, y: 0 },
-                { x: 10, y: 10 },
-                { x: 20, y: 15 },
-                { x: 30, y: 5 },
-                { x: 40, y: 30 },
-                { x: 50, y: 25 },
-            ],
-        }
-        const versionBSignups = {
-            metadata: {
-                id: 'version-b-newsletter-signups',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { x: 0, y: 20 },
-                { x: 10, y: 5 },
-                { x: 20, y: 25 },
-                { x: 30, y: 45 },
-                { x: 40, y: 50 },
-                { x: 50, y: 35 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Newsletter subscriptions per version
-            </HeadingText>
-            <LineChart data={[versionASignups, versionBSignups]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class TestDistributions extends React.Component {
-    render() {
-        const distributionA = {
-            metadata: {
-                id: 'distributions-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 259 },
-            ],
-        }
-        const distributionB = {
-            metadata: {
-                id: 'distributions-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 318 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total subscriptions per version
-            </HeadingText>
-            <PieChart data={[distributionA, distributionB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class SuccessfulRequests extends React.Component {
-    render() {
-        const successesA = {
-            metadata: {
-                id: 'successes-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 118 },
-            ],
-        }
-        const successesB = {
-            metadata: {
-                id: 'successes-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 400 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total unsubscriptions per version
-            </HeadingText>
-            <PieChart data={[successesA, successesB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionATotals extends React.Component {
-    render() {
-        const versionATotals = {
-            metadata: {
-                id: 'totals-A',
-                name: 'Version A',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 85
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 2
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionATotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBTotals extends React.Component {
-    render() {
-        const versionBTotals = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 180
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 30
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionBTotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionAResponseTimes extends React.Component {
-    render() {
-        const versionAResponseTimes = {
-            metadata: {
-                id: 'response-times-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 10 },
-                { x: 10, y: 13 },
-                { x: 20, y: 11.5 },
-                { x: 30, y: 10 },
-                { x: 40, y: 8.75 },
-                { x: 50, y: 9 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views
-            </HeadingText>
-            <LineChart data={[versionAResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBResponseTimes extends React.Component {
-    render() {
-        const versionBResponseTimes = {
-            metadata: {
-                id: 'response-times-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 15 },
-                { x: 10, y: 13 },
-                { x: 20, y: 10 },
-                { x: 30, y: 14 },
-                { x: 40, y: 16.5 },
-                { x: 50, y: 13.5 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views
-            </HeadingText>
-            <LineChart data={[versionBResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class HistoricalTests extends React.Component {
-    render() {
-        var historicalData = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['endDate', 'versionADescription', 'versionBDescription', 'winner'],
-            },
-            data: [
-                {
-                    "endDate": "12/15/2020",
-                    "versionADescription": "The homepage's CTA button was green.",
-                    "versionBDescription": "The homepage's CTA button was blue.",
-                    "winner": "A"
-                },
-                {
-                    "endDate": "09/06/2019",
-                    "versionADescription": "The 'Deals' page showed sales in a carousel.",
-                    "versionBDescription": "The 'Deals' page showed sales in a grid.",
-                    "winner": "B"
-                }
-            ],
-        }
-
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Past tests
-            </HeadingText>
-            <TableChart data={[historicalData]} fullWidth />
-        </React.Fragment>
-    }
-}
+import {
+    Button,
+    Grid,
+    GridItem,
+    HeadingText,
+    Select,
+    SelectItem,
+} from 'nr1';
 
 class VersionSelector extends React.Component {
     constructor(props) {
@@ -1654,13 +327,13 @@ class VersionSelector extends React.Component {
 
 class EndTestButton extends React.Component {
     render() {
-        return <React.Fragment>
+        return <div>
             <Button>End test</Button>
-        </React.Fragment>
+        </div>
     }
 }
 
-class EndTestSection extends React.Component {
+export default class EndTestSection extends React.Component {
     constructor() {
         super(...arguments);
 
@@ -1672,17 +345,17 @@ class EndTestSection extends React.Component {
     }
 
     selectVersion(event, value) {
-        this.setState({selectedVersion: value});
+        this.setState({ selectedVersion: value });
     }
 
     render() {
-        return <Grid style={{ margin: 'auto', backgroundColor: '#fafafa', padding: '20px' }}>
+        return <Grid className="endTestSection">
             <GridItem columnSpan={12}>
-                <HeadingText style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '20px', marginBottom: '20px', textAlign: 'center'}}>
-                    Pick a version to end the test:
+                <HeadingText className="endTestHeader">
+                    Pick the winner of your A/B test:
                 </HeadingText>
             </GridItem>
-            <GridItem columnStart={5} columnEnd={6} style={{textAlign: 'right', paddingTop: '5px'}}>
+            <GridItem columnStart={5} columnEnd={6} className="versionSelector">
                 <VersionSelector
                     selectedVersion={this.state.selectedVersion}
                     selectVersion={this.selectVersion}
@@ -1694,26 +367,6 @@ class EndTestSection extends React.Component {
         </Grid>
     }
 }
-
-export default class AbTestNerdletNerdlet extends React.Component {
-    render() {
-        return (
-            <Grid>
-                <GridItem columnSpan={12}><NewsletterSignups /></GridItem>
-                <GridItem columnSpan={6}><TestDistributions /></GridItem>
-                <GridItem columnSpan={6}><SuccessfulRequests /></GridItem>
-                <GridItem columnSpan={6}><VersionATotals /></GridItem>
-                <GridItem columnSpan={6}><VersionBTotals /></GridItem>
-                <ChartGroup>
-                    <GridItem columnSpan={6}><VersionAResponseTimes /></GridItem>
-                    <GridItem columnSpan={6}><VersionBResponseTimes /></GridItem>
-                </ChartGroup>
-                <GridItem columnSpan={12}><EndTestSection /></GridItem>
-                <GridItem columnSpan={12}><HistoricalTests /></GridItem>
-            </Grid>
-        )
-    }
-}
 ```
 
 </Step>
@@ -1722,267 +375,16 @@ export default class AbTestNerdletNerdlet extends React.Component {
 
 Set `selectVersion` as the `onChange` callback in `VersionSelector`:
 
-```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=268
+```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=17
 import React from 'react';
-import { Button, ChartGroup, Grid, GridItem, HeadingText, LineChart, PieChart, Select, SelectItem, TableChart } from 'nr1';
-
-class NewsletterSignups extends React.Component {
-    render() {
-        const versionASignups = {
-            metadata: {
-                id: 'version-a-newsletter-signups',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { x: 0, y: 0 },
-                { x: 10, y: 10 },
-                { x: 20, y: 15 },
-                { x: 30, y: 5 },
-                { x: 40, y: 30 },
-                { x: 50, y: 25 },
-            ],
-        }
-        const versionBSignups = {
-            metadata: {
-                id: 'version-b-newsletter-signups',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { x: 0, y: 20 },
-                { x: 10, y: 5 },
-                { x: 20, y: 25 },
-                { x: 30, y: 45 },
-                { x: 40, y: 50 },
-                { x: 50, y: 35 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Newsletter subscriptions per version
-            </HeadingText>
-            <LineChart data={[versionASignups, versionBSignups]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class TestDistributions extends React.Component {
-    render() {
-        const distributionA = {
-            metadata: {
-                id: 'distributions-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 259 },
-            ],
-        }
-        const distributionB = {
-            metadata: {
-                id: 'distributions-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 318 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total subscriptions per version
-            </HeadingText>
-            <PieChart data={[distributionA, distributionB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class SuccessfulRequests extends React.Component {
-    render() {
-        const successesA = {
-            metadata: {
-                id: 'successes-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 118 },
-            ],
-        }
-        const successesB = {
-            metadata: {
-                id: 'successes-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 400 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Total unsubscriptions per version
-            </HeadingText>
-            <PieChart data={[successesA, successesB]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionATotals extends React.Component {
-    render() {
-        const versionATotals = {
-            metadata: {
-                id: 'totals-A',
-                name: 'Version A',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 85
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 2
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionATotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBTotals extends React.Component {
-    render() {
-        const versionBTotals = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['name', 'count'],
-            },
-            data: [
-                {
-                    name: 'Successful Requests',
-                    count: 180
-                },
-                {
-                    name: 'Failed Requests',
-                    count: 30
-                },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views vs. subscriptions
-            </HeadingText>
-            <TableChart data={[versionBTotals]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionAResponseTimes extends React.Component {
-    render() {
-        const versionAResponseTimes = {
-            metadata: {
-                id: 'response-times-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 10 },
-                { x: 10, y: 13 },
-                { x: 20, y: 11.5 },
-                { x: 30, y: 10 },
-                { x: 40, y: 8.75 },
-                { x: 50, y: 9 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version A - Page views
-            </HeadingText>
-            <LineChart data={[versionAResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class VersionBResponseTimes extends React.Component {
-    render() {
-        const versionBResponseTimes = {
-            metadata: {
-                id: 'response-times-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-                units_data: {
-                    y: 'MS'
-                }
-            },
-            data: [
-                { x: 0, y: 15 },
-                { x: 10, y: 13 },
-                { x: 20, y: 10 },
-                { x: 30, y: 14 },
-                { x: 40, y: 16.5 },
-                { x: 50, y: 13.5 },
-            ],
-        }
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Version B - Page views
-            </HeadingText>
-            <LineChart data={[versionBResponseTimes]} fullWidth />
-        </React.Fragment>
-    }
-}
-
-class HistoricalTests extends React.Component {
-    render() {
-        var historicalData = {
-            metadata: {
-                id: 'totals-B',
-                name: 'Version B',
-                columns: ['endDate', 'versionADescription', 'versionBDescription', 'winner'],
-            },
-            data: [
-                {
-                    "endDate": "12/15/2020",
-                    "versionADescription": "The homepage's CTA button was green.",
-                    "versionBDescription": "The homepage's CTA button was blue.",
-                    "winner": "A"
-                },
-                {
-                    "endDate": "09/06/2019",
-                    "versionADescription": "The 'Deals' page showed sales in a carousel.",
-                    "versionBDescription": "The 'Deals' page showed sales in a grid.",
-                    "winner": "B"
-                }
-            ],
-        }
-
-        return <React.Fragment>
-            <HeadingText style={{ marginTop: '20px', marginBottom: '20px' }}>
-                Past tests
-            </HeadingText>
-            <TableChart data={[historicalData]} fullWidth />
-        </React.Fragment>
-    }
-}
+import {
+    Button,
+    Grid,
+    GridItem,
+    HeadingText,
+    Select,
+    SelectItem,
+} from 'nr1';
 
 class VersionSelector extends React.Component {
     constructor(props) {
@@ -1999,13 +401,13 @@ class VersionSelector extends React.Component {
 
 class EndTestButton extends React.Component {
     render() {
-        return <React.Fragment>
+        return <div>
             <Button>End test</Button>
-        </React.Fragment>
+        </div>
     }
 }
 
-class EndTestSection extends React.Component {
+export default class EndTestSection extends React.Component {
     constructor() {
         super(...arguments);
 
@@ -2017,17 +419,17 @@ class EndTestSection extends React.Component {
     }
 
     selectVersion(event, value) {
-        this.setState({selectedVersion: value});
+        this.setState({ selectedVersion: value });
     }
 
     render() {
-        return <Grid style={{ margin: 'auto', backgroundColor: '#fafafa', padding: '20px' }}>
+        return <Grid className="endTestSection">
             <GridItem columnSpan={12}>
-                <HeadingText style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '20px', marginBottom: '20px', textAlign: 'center'}}>
-                    Pick a version to end the test:
+                <HeadingText className="endTestHeader">
+                    Pick the winner of your A/B test:
                 </HeadingText>
             </GridItem>
-            <GridItem columnStart={5} columnEnd={6} style={{textAlign: 'right', paddingTop: '5px'}}>
+            <GridItem columnStart={5} columnEnd={6} className="versionSelector">
                 <VersionSelector
                     selectedVersion={this.state.selectedVersion}
                     selectVersion={this.selectVersion}
@@ -2039,33 +441,25 @@ class EndTestSection extends React.Component {
         </Grid>
     }
 }
-
-export default class AbTestNerdletNerdlet extends React.Component {
-    render() {
-        return (
-            <Grid>
-                <GridItem columnSpan={12}><NewsletterSignups /></GridItem>
-                <GridItem columnSpan={6}><TestDistributions /></GridItem>
-                <GridItem columnSpan={6}><SuccessfulRequests /></GridItem>
-                <GridItem columnSpan={6}><VersionATotals /></GridItem>
-                <GridItem columnSpan={6}><VersionBTotals /></GridItem>
-                <ChartGroup>
-                    <GridItem columnSpan={6}><VersionAResponseTimes /></GridItem>
-                    <GridItem columnSpan={6}><VersionBResponseTimes /></GridItem>
-                </ChartGroup>
-                <GridItem columnSpan={12}><EndTestSection /></GridItem>
-                <GridItem columnSpan={12}><HistoricalTests /></GridItem>
-            </Grid>
-        )
-    }
-}
 ```
 
 </Step>
 
 <Step>
 
-Navigate to the root of your Nerdpack at `nru-programmability-course/persist-selected-version/ab-test`.
+Navigate to the root of your Nerdpack at _nru-programmability-course/persist-selected-version/ab-test_.
+
+</Step>
+
+<Step>
+
+Generate a new UUID for your Nerdpack:
+
+```sh
+nr1 nerdpack:uuid -gf
+```
+
+Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
 </Step>
 
@@ -2092,3 +486,9 @@ When you're finished, stop serving your New Relic One application by pressing `C
 </Steps>
 
 Voila! When you select a new version as the winner of the A/B test, that version is reflected in the menu. However, when you press **End test**, nothing happens. In the next lesson, you'll create a confirmation dialog to protect yourself from prematurely ending your A/B test.
+
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Present an end test confirmation modal_](../confirmation-modal).
+
+</Callout>

@@ -5,6 +5,15 @@ template: 'GuideTemplate'
 description: 'Fetch data from a third-party service'
 ---
 
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](../../../ab-test).
+
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Access NerdStorageVault from your nerdlet_](../nerdstoragevault), before starting this one.
+
+</Callout>
+
+
 In previous lessons, you learned of a third-party service that you can use to fetch mock cancellation data for the **Total cancellations per version** chart in your New Relic One application. Even though the data in this service is fake, the real value of this lesson is learning how you can use third party services to supply data to your New Relic One application.
 
 If you make a request to the mock service with cancellation data (https://api.nerdsletter.net/cancellations) you'll see a response rejecting your request with a message that reads "Unauthorized":
@@ -27,7 +36,7 @@ In the last lesson, you used `NerdGraph` to store this API token in your New Rel
 
 <Step>
 
-Change to the `third-party-services` directory of the course repository:
+Change to the _third-party-services/_ directory of the course repository:
 
 ```sh
 cd nru-programmability-course/third-party-services
@@ -39,20 +48,27 @@ This directory contains the code that we expect your application to have at this
 
 <Step>
 
-Open your Nerdlet's index.js file. All code you write in this lesson belongs in this file.
+In nerdlets/ab-test-nerdlet/total-cancellations.js, make a request to `api.nerdsletter.net` with your API token. Save the results to state, and use that state in `render()`:
 
-</Step>
+```js fileName=nerdlets/ab-test-nerdlet/total-cancellations.js lineHighlight=9,14-42,46-70,79
+import React from 'react';
+import { HeadingText, PieChart } from 'nr1';
 
-<Step>
+export default class TotalCancellations extends React.Component {
+    constructor() {
+        super(...arguments);
 
-In `TotalCancellations`, modify `.componentDidUpdate()`:
+        this.state = {
+            cancellations: [],
+            lastToken: null
+        }
+    }
 
-```js
-constructor() {
-    super(...arguments);
+    generateChartData(data) {
+        const cancellationsA = data ? data.a : 0;
+        const cancellationsB = data ? data.b : 0;
 
-    this.state = {
-        cancellations: [
+        return [
             {
                 metadata: {
                     id: 'cancellations-A',
@@ -61,7 +77,7 @@ constructor() {
                     color: 'blue',
                 },
                 data: [
-                    { y: 0 },
+                    { y: cancellationsA },
                 ],
             },
             {
@@ -72,19 +88,20 @@ constructor() {
                     color: 'green',
                 },
                 data: [
-                    { y: 0 },
+                    { y: cancellationsB },
                 ],
             },
-        ],
-        lastToken: null
+        ]
     }
-}
 
-componentDidUpdate() {
-    if (this.props.token && this.props.token != this.state.lastToken) {
-        console.log(`requesting data with api token ${this.props.token}`)
-        fetch("https://api.nerdsletter.net/cancellations", {headers: {"Authorization": `Bearer ${this.props.token}`}})
-            .then(
+    componentDidUpdate() {
+        if (this.props.token && this.props.token != this.state.lastToken) {
+            console.log(`Requesting data with api token ${this.props.token}`)
+
+            fetch(
+                "https://api.nerdsletter.net/cancellations",
+                {headers: {"Authorization": `Bearer ${this.props.token}`}}
+            ).then(
                 (response) => {
                     if (response.status == 200) {
                         return response.json()
@@ -94,17 +111,26 @@ componentDidUpdate() {
                         console.error(response.text())
                     }
                 }
-            )
-            .then(
+            ).then(
                 (data) => {
                     if (data) {
-                        let cancellations = this.state.cancellations.slice()
-                        cancellations[0].data[0].y = data.a
-                        cancellations[1].data[0].y = data.b
-                        this.setState({ cancellations: cancellations, lastToken: this.props.token })
+                        this.setState({
+                            cancellations: this.generateChartData(data),
+                            lastToken: this.props.token
+                        })
                     }
                 }
             )
+        }
+    }
+
+    render() {
+        return <div>
+            <HeadingText className="chartHeader">
+                Total cancellations per version
+            </HeadingText>
+            <PieChart data={this.state.cancellations} fullWidth />
+        </div>
     }
 }
 ```
@@ -115,7 +141,19 @@ In this code, you initialize `TotalCancellations.state.cancellations` with zero 
 
 <Step>
 
-Navigate to the root of your Nerdpack at `nru-programmability-course/third-party-service/ab-test`.
+Navigate to the root of your Nerdpack at _nru-programmability-course/third-party-service/ab-test_.
+
+</Step>
+
+<Step>
+
+Generate a new UUID for your Nerdpack:
+
+```sh
+nr1 nerdpack:uuid -gf
+```
+
+Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account. It also allows your app to make Nerdgraph requests on behalf of your account.
 
 </Step>
 
@@ -152,3 +190,9 @@ Great job! You've come a long way from running `nr1 nerdpack:create` for the fir
 You've created eight charts with varying styles and supplied them with dynamic data from multiple sources. You've learned about the New Relic One SDK and used many of its components. You've even gathered data from a third-party service and mixed it seemlessly with your New Relic data to provide a complete look at how the competing versions in your A/B test perform against each other.
 
 From here, there is only one more set of APIs in the New Relic One SDK that you've yet to get your hands on: Platform APIs. These will come in handy in improving the usability of your New Relic One application.
+
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Add PlatformStateContext to your nerdlet_](../platform-state-context).
+
+</Callout>

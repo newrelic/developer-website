@@ -5,6 +5,14 @@ template: 'GuideTemplate'
 description: 'Add pie charts'
 ---
 
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](../../../ab-test).
+
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Add your first chart_](../first-chart), before starting this one.
+
+</Callout>
+
 You’ve begun building your A/B test application. So far, it consists of a single line chart, which represents the number of subscriptions your newsletter receives from each version of your website. To understand what you’ll build in this lesson, review the design guide to remember what charts come next:
 
 ![Design guide for chart components](../../../images/ab-test/charts-design-guide.png)
@@ -15,7 +23,7 @@ In the design, there are two pie charts beneath the line chart that you’ve alr
 
 <Step>
 
-Change to the `add-pie-charts` directory of the course repository:
+Change to the _add-pie-charts/_ directory of the course repository:
 
 ```sh
 cd nru-programmability-course/add-pie-charts
@@ -27,120 +35,30 @@ This directory contains the code that we expect your application to have at this
 
 <Step>
 
-Open your Nerdlet's index.js file. All code you write in this lesson belongs in this file.
+In _nerdlets/ab-test-nerdlet/_, add two new Javascript files:
 
-</Step>
+- _total-subscriptions.js_
+- _total-cancellations.js_
 
-<Step>
-
-Import `PieChart` from the SDK alongside the `LineChart` component you imported last lesson:
-
-```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=2
-import React from 'react';
-import { LineChart, PieChart } from 'nr1';
-
-class NewsletterSignups extends React.Component {
-    render() {
-        const versionASignups = {
-            metadata: {
-                id: 'version-a-newsletter-signups',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { x: 0, y: 0 },
-                { x: 10, y: 10 },
-                { x: 20, y: 15 },
-                { x: 30, y: 5 },
-                { x: 40, y: 30 },
-                { x: 50, y: 25 },
-            ],
-        }
-        const versionBSignups = {
-            metadata: {
-                id: 'version-b-newsletter-signups',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { x: 0, y: 20 },
-                { x: 10, y: 5 },
-                { x: 20, y: 25 },
-                { x: 30, y: 45 },
-                { x: 40, y: 50 },
-                { x: 50, y: 35 },
-            ],
-        }
-        return <LineChart data={[versionASignups, versionBSignups]} fullWidth />
-    }
-}
-
-export default class AbTestNerdletNerdlet extends React.Component {
-    render() {
-        return <React.Fragment>
-            <NewsletterSignups />
-        </React.Fragment>;
-    }
-}
+```sh
+touch total-subscriptions.js total-cancellations.js
 ```
 
-Now, you’re ready to create `PieChart` components in your application.
-
 </Step>
 
 <Step>
 
-Create two new components which render pie charts with mocked data:
+In _total-subscriptions.js_, create a component, called `TotalSubscriptions`, which renders mocked subscription data:
 
-```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=42-96
+```js fileName=nerdlets/ab-test-nerdlet/total-subscriptions.js
 import React from 'react';
-import { LineChart, PieChart } from 'nr1';
+import { PieChart } from 'nr1';
 
-class NewsletterSignups extends React.Component {
+export default class TotalSubscriptions extends React.Component {
     render() {
-        const versionASignups = {
+        const subscriptionsA = {
             metadata: {
-                id: 'version-a-newsletter-signups',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { x: 0, y: 0 },
-                { x: 10, y: 10 },
-                { x: 20, y: 15 },
-                { x: 30, y: 5 },
-                { x: 40, y: 30 },
-                { x: 50, y: 25 },
-            ],
-        }
-        const versionBSignups = {
-            metadata: {
-                id: 'version-b-newsletter-signups',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { x: 0, y: 20 },
-                { x: 10, y: 5 },
-                { x: 20, y: 25 },
-                { x: 30, y: 45 },
-                { x: 40, y: 50 },
-                { x: 50, y: 35 },
-            ],
-        }
-        return <LineChart data={[versionASignups, versionBSignups]} fullWidth />
-    }
-}
-
-class TestDistributions extends React.Component {
-    render() {
-        const distributionA = {
-            metadata: {
-                id: 'distributions-A',
+                id: 'subscriptions-A',
                 name: 'Version A',
                 viz: 'main',
                 color: 'blue',
@@ -149,9 +67,9 @@ class TestDistributions extends React.Component {
                 { y: 259 },
             ],
         }
-        const distributionB = {
+        const subscriptionsB = {
             metadata: {
-                id: 'distributions-B',
+                id: 'subscriptions-B',
                 name: 'Version B',
                 viz: 'main',
                 color: 'green',
@@ -160,130 +78,28 @@ class TestDistributions extends React.Component {
                 { y: 318 },
             ],
         }
-        return <PieChart data={[distributionA, distributionB]} fullWidth />
-    }
-}
-
-class SuccessfulRequests extends React.Component {
-    render() {
-        const successesA = {
-            metadata: {
-                id: 'successes-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 118 },
-            ],
-        }
-        const successesB = {
-            metadata: {
-                id: 'successes-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 400 },
-            ],
-        }
-        return <PieChart data={[successesA, successesB]} fullWidth />
-    }
-}
-
-export default class AbTestNerdletNerdlet extends React.Component {
-    render() {
-        return <React.Fragment>
-            <NewsletterSignups />
-        </React.Fragment>;
+        return <PieChart data={[subscriptionsA, subscriptionsB]} fullWidth />
     }
 }
 ```
 
-Notice that the series `data` is formatted differently with `PieChart`. Because `PieChart` uses unidimensional data, its series only take y-values.
+Notice that the series `data` is formatted differently for `PieChart` than it was for `LineChart`. Because `PieChart` uses unidimensional data, its series only take y-values.
 
 </Step>
 
 <Step>
 
-Update your Nerdlet's `render()` method, and view the results in your browser:
+In _total-cancellations.js_, create a component, called `TotalCancellations`, which renders mocked cancellation data:
 
-```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=99-105
+```js fileName=nerdlets/ab-test-nerdlet/total-subscriptions.js
 import React from 'react';
-import { LineChart, PieChart } from 'nr1';
+import { PieChart } from 'nr1';
 
-class NewsletterSignups extends React.Component {
+export default class TotalCancellations extends React.Component {
     render() {
-        const versionASignups = {
+        const cancellationsA = {
             metadata: {
-                id: 'version-a-newsletter-signups',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { x: 0, y: 0 },
-                { x: 10, y: 10 },
-                { x: 20, y: 15 },
-                { x: 30, y: 5 },
-                { x: 40, y: 30 },
-                { x: 50, y: 25 },
-            ],
-        }
-        const versionBSignups = {
-            metadata: {
-                id: 'version-b-newsletter-signups',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { x: 0, y: 20 },
-                { x: 10, y: 5 },
-                { x: 20, y: 25 },
-                { x: 30, y: 45 },
-                { x: 40, y: 50 },
-                { x: 50, y: 35 },
-            ],
-        }
-        return <LineChart data={[versionASignups, versionBSignups]} fullWidth />
-    }
-}
-
-class TestDistributions extends React.Component {
-    render() {
-        const distributionA = {
-            metadata: {
-                id: 'distributions-A',
-                name: 'Version A',
-                viz: 'main',
-                color: 'blue',
-            },
-            data: [
-                { y: 259 },
-            ],
-        }
-        const distributionB = {
-            metadata: {
-                id: 'distributions-B',
-                name: 'Version B',
-                viz: 'main',
-                color: 'green',
-            },
-            data: [
-                { y: 318 },
-            ],
-        }
-        return <PieChart data={[distributionA, distributionB]} fullWidth />
-    }
-}
-
-class SuccessfulRequests extends React.Component {
-    render() {
-        const successesA = {
-            metadata: {
-                id: 'successes-A',
+                id: 'cancellations-A',
                 name: 'Version A',
                 viz: 'main',
                 color: 'blue',
@@ -292,9 +108,9 @@ class SuccessfulRequests extends React.Component {
                 { y: 118 },
             ],
         }
-        const successesB = {
+        const cancellationsB = {
             metadata: {
-                id: 'successes-B',
+                id: 'cancellations-B',
                 name: 'Version B',
                 viz: 'main',
                 color: 'green',
@@ -303,29 +119,83 @@ class SuccessfulRequests extends React.Component {
                 { y: 400 },
             ],
         }
-        return <PieChart data={[successesA, successesB]} fullWidth />
-    }
-}
-
-export default class AbTestNerdletNerdlet extends React.Component {
-    render() {
-        return <React.Fragment>
-            <NewsletterSignups />
-            <TestDistributions />
-            <SuccessfulRequests />
-        </React.Fragment>;
+        return <PieChart data={[cancellationsA, cancellationsB]} fullWidth />
     }
 }
 ```
 
-<Callout variant="tip">
+</Step>
 
-Remember that as long as your local Nerdpack server is running, it will automatically update your application when it detects code changes.
+<Step>
 
-</Callout>
+In your Nerdlet's _index.js_ file, import your new components and update your Nerdlet's `render()` method:
+
+```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=3-4,10-11
+import React from 'react';
+import NewsletterSignups from './newsletter-signups';
+import TotalCancellations from './total-cancellations';
+import TotalSubscriptions from './total-subscriptions';
+
+export default class AbTestNerdletNerdlet extends React.Component {
+    render() {
+        return <div>
+            <NewsletterSignups />
+            <TotalSubscriptions />
+            <TotalCancellations />
+        </div>
+    }
+}
+```
+
+</Step>
+
+<Step>
+
+Navigate to the root of your Nerdpack at _nru-programmability-course/add-pie-charts/ab-test_.
+
+</Step>
+
+<Step>
+
+Generate a new UUID for your Nerdpack:
+
+```sh
+nr1 nerdpack:uuid -gf
+```
+
+Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
+
+</Step>
+
+<Step>
+
+Serve your application locally:
+
+```sh
+nr1 nerdpack:serve
+```
+
+</Step>
+
+<Step>
+
+View your changes in [New Relic](https://one.newrelic.com?nerdpacks=local):
+
+![Your app with pie charts](../../../images/ab-test/pie-charts.png)
+
+Here, you see the `PieChart` components displayed in your application.
+
+When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in the terminal window where you're serving your application.
 
 </Step>
 
 </Steps>
 
 Your application is starting to take shape. You’ve created a line chart and two pie charts. For now, these charts use mocked data, but you’ll provide them real data in a later lesson. Before you focus on the data in your charts, however, you’ll learn how to add a table to your application so you can visualize data in a new way.
+
+
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. When you're ready, continue on to the next lesson: [_Add tables_](../table-charts).
+
+</Callout>

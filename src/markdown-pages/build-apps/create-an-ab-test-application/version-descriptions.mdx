@@ -5,26 +5,35 @@ template: 'GuideTemplate'
 description: 'Add version descriptions'
 ---
 
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](../../../ab-test).
+
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Add chart headings_](../chart-headings), before starting this one.
+
+</Callout>
+
 With your charts organized and descriptive headings above each one, your New Relic One application is becoming more usable. In this lesson, you'll continue that trend by creating descriptions for each design version in your A/B test.
 
 <Steps>
 
 <Step>
 
-In _nerdlets/ab-test-nerdlet/_, add a new Javascript file named _description.js_.
+In _nerdlets/ab-test-nerdlet/_, add a new Javascript file named _description.js_:
+
+```sh
+touch description.js
+```
 
 </Step>
 
 <Step>
 
-In this new file, create a new React component, called `VersionDescription`, which uses a `HeadingText` and a `BlockText` to render a version description:
+In this new file, create a new React component, called `VersionDescription`, which uses a `HeadingText` and a `BlockText` to render a version description that you pass, using the `description` prop:
 
 ```js fileName=description.js
 import React from 'react';
-import {
-    BlockText,
-    HeadingText,
-} from 'nr1';
+import { BlockText, HeadingText } from 'nr1';
 
 export default class VersionDescription extends React.Component {
     constructor(props) {
@@ -52,32 +61,57 @@ You'll use this one class to create a version description for each design versio
 
 <Step>
 
-In your Nerdlet's _index.js_ file, import `VersionDescription`:
+In your Nerdlet's _index.js_ file, import `VersionDescription`, create descriptions for each design version, and create a new `GridItem` component for each design version:
 
-```js filename="index.js"
+```js filename=index.js lineHighlight=7,11-12,18-30
+import React from 'react';
+import { ChartGroup, Grid, GridItem } from 'nr1';
+import NewsletterSignups from './newsletter-signups';
+import PastTests from './past-tests';
+import TotalCancellations from './total-cancellations';
+import TotalSubscriptions from './total-subscriptions';
 import VersionDescription from './description';
-```
+import VersionPageViews from './page-views';
+import VersionTotals from './totals';
 
-</Step>
+const VERSION_A_DESCRIPTION = 'The newsletter signup message says, "Sign up for our newsletter"'
+const VERSION_B_DESCRIPTION = 'The newsletter signup message says, "Sign up for our newsletter and get a free shirt!"'
 
-<Step>
-
-Also in _index.js_, add a new `GridItem` component for each design version:
-
-```js filename=index.js
-<GridItem columnSpan={6}>
-    <VersionDescription
-        description={VERSION_A_DESCRIPTION}
-        version="A"
-    />
-</GridItem>
-<GridItem columnSpan={6}>
-    <VersionDescription
-        description={VERSION_B_DESCRIPTION}
-        version="B"
-    />
-</GridItem>
-<GridItem columnSpan={12}><hr /></GridItem>
+export default class AbTestNerdletNerdlet extends React.Component {
+    render() {
+        return <div>
+            <Grid className="wrapper">
+                <GridItem columnSpan={6}>
+                    <VersionDescription
+                        description={VERSION_A_DESCRIPTION}
+                        version="A"
+                    />
+                </GridItem>
+                <GridItem columnSpan={6}>
+                    <VersionDescription
+                        description={VERSION_B_DESCRIPTION}
+                        version="B"
+                    />
+                </GridItem>
+                <GridItem columnSpan={12}><hr /></GridItem>
+                <GridItem columnSpan={12}><NewsletterSignups /></GridItem>
+                <GridItem columnSpan={6}><TotalSubscriptions /></GridItem>
+                <GridItem columnSpan={6}><TotalCancellations /></GridItem>
+                <GridItem columnSpan={6}><VersionTotals version='a' /></GridItem>
+                <GridItem columnSpan={6}><VersionTotals version='b' /></GridItem>
+                <ChartGroup>
+                    <GridItem columnSpan={6}>
+                        <VersionPageViews version='a' />
+                    </GridItem>
+                    <GridItem columnSpan={6}>
+                        <VersionPageViews version='b' />
+                    </GridItem>
+                </ChartGroup>
+                <GridItem columnSpan={12}><PastTests /></GridItem>
+            </Grid>
+        </div>
+    }
+}
 ```
 
 Here, you've created two `VersionDescription` components. You passed the `description` and `version` props, which correspond to a design version.
@@ -88,7 +122,19 @@ You also added a horizontal rule to visually separate the descriptions from the 
 
 <Step>
 
-Navigate to the root of your Nerdpack at `nru-programmability-course/add-version-descriptions/ab-test`.
+Navigate to the root of your Nerdpack at _nru-programmability-course/add-version-descriptions/ab-test_.
+
+</Step>
+
+<Step>
+
+Generate a new UUID for your Nerdpack:
+
+```sh
+nr1 nerdpack:uuid -gf
+```
+
+Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
 </Step>
 
@@ -106,7 +152,7 @@ nr1 nerdpack:serve
 
 [View your changes](https://one.newrelic.com?nerdpacks=local):
 
-![Your choice persists in the version selector](../../../images/ab-test/persist-selected-version-final.png)
+![Your choice persists in the version selector](../../../images/ab-test/version-descriptions.png)
 
 When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in the terminal window where you're serving your application.
 
@@ -115,3 +161,9 @@ When you're finished, stop serving your New Relic One application by pressing `C
 </Steps>
 
 Now, you've added descriptions for your competing designs and your charts. In the next lesson, you’ll create a new section of your application from user interface components. This section will be used to end the A/B test with the click of a button.
+
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Add a section to end your test_](../end-test).
+
+</Callout>

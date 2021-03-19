@@ -5,6 +5,14 @@ template: 'GuideTemplate'
 description: 'Add navigation to your nerdlet'
 ---
 
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](../../../ab-test).
+
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Add PlatformStateContext to your nerdlet_](../platform-state-context), before starting this one.
+
+</Callout>
+
 In the last lesson, you used `PlatformStateContext` from the New Relic One SDK to lookup the application user's account ID and the time range they selected from the app's time picker. Now, you'll learn about another component that interacts with the New Relic platform: `navigation`.
 
 The `navigation` component lets you open entities, navigate to entities, and build Location objects for entities from your nerdlet. You can also use `navigation` for other nerdlets and launchers.
@@ -13,10 +21,10 @@ The `navigation` component lets you open entities, navigate to entities, and bui
 
 <Step>
 
-Change to the `add-platform-state-context` directory of the course repository:
+Change to the _add-navigation/_ directory of the course repository:
 
 ```sh
-cd nru-programmability-course/add-platform-state-context
+cd nru-programmability-course/add-navigation
 ```
 
 This directory contains the code that we expect your application to have at this point in the course. By navigating to the correct directory at the start of each lesson, you leave your custom code behind, thereby protecting yourself from carrying incorrect code from one lesson to the next.
@@ -25,33 +33,52 @@ This directory contains the code that we expect your application to have at this
 
 <Step>
 
-Open your Nerdlet's index.js file. All code you write in this lesson belongs in this file.
+In _newsletter-signups.js_, create a new method, called `NewsletterSignups.openApmEntity()`:
 
-</Step>
+```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=7,11-13
+import React from 'react';
+import {
+    HeadingText,
+    LineChart,
+    NrqlQuery,
+    PlatformStateContext,
+    navigation,
+} from 'nr1';
 
-<Step>
+export default class NewsletterSignups extends React.Component {
+    openAPMEntity() {
+        navigation.openStackedEntity(ENTITY_GUID)
+    }
 
-Import `PlatformStateContext`:
-
-```js
-import { AccountStorageMutation, AccountStorageQuery, BlockText, Button, ChartGroup, Select, SelectItem, Spinner, Grid, GridItem, HeadingText, LineChart, Modal, NerdGraphQuery, NerdGraphMutation, navigation, PlatformStateContext, PieChart, TableChart, NrqlQuery, TextField } from 'nr1';
-```
-
-Now, you can use the `navigation` component in your nerdlet. For this New Relic One application, you'll create a button that shows to your demo service's APM entity.
-
-</Step>
-
-<Step>
-
-Create a new `NewsletterSignups` method, called `.openApmEntity()`:
-
-```js
-openApmEntity() {
-    navigation.openStackedEntity(ENTITY_GUID)
+    render() {
+        return <div>
+            <HeadingText className="chartHeader">
+                Newsletter subscriptions per version
+            </HeadingText>
+            <PlatformStateContext.Consumer>
+                {
+                    (platformState) => {
+                        return <NrqlQuery
+                            accountId={platformState.accountId}
+                            query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
+                            timeRange={platformState.timeRange}
+                            pollInterval={60000}
+                        >
+                            {
+                                ({ data }) => {
+                                    return <LineChart data={data} fullWidth />;
+                                }
+                            }
+                        </NrqlQuery>
+                    }
+                }
+            </PlatformStateContext.Consumer>
+        </div>
+    }
 }
 ```
 
-This method uses `navigation.openStackedEntity()` to display your demo application's APM entity in a stacked view. Notice `.openApmEntity()` requires your `ENTITY_GUID`. You need to locate that ID and store it in a constant.
+This method uses `navigation.openStackedEntity()` to display your demo application's APM entity in a stacked view. Notice `openApmEntity()` requires your `ENTITY_GUID`. You need to locate that ID and store it in a constant.
 
 </Step>
 
@@ -71,11 +98,52 @@ Copy the entity's GUID:
 
 Create an `ENTITY_GUID` constant:
 
-```js
-const ENTITY_GUID = "<YOUR-ENTITY-GUID>"
+```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=10
+import React from 'react';
+import {
+    HeadingText,
+    LineChart,
+    NrqlQuery,
+    PlatformStateContext,
+    navigation,
+} from 'nr1';
+
+const ENTITY_GUID = "<YOUR NEW RELIC ENTITY GUID>"
+
+export default class NewsletterSignups extends React.Component {
+    openAPMEntity() {
+        navigation.openStackedEntity(ENTITY_GUID)
+    }
+
+    render() {
+        return <div>
+            <HeadingText className="chartHeader">
+                Newsletter subscriptions per version
+            </HeadingText>
+            <PlatformStateContext.Consumer>
+                {
+                    (platformState) => {
+                        return <NrqlQuery
+                            accountId={platformState.accountId}
+                            query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
+                            timeRange={platformState.timeRange}
+                            pollInterval={60000}
+                        >
+                            {
+                                ({ data }) => {
+                                    return <LineChart data={data} fullWidth />;
+                                }
+                            }
+                        </NrqlQuery>
+                    }
+                }
+            </PlatformStateContext.Consumer>
+        </div>
+    }
+}
 ```
 
-Now `.openApmEntity()` knows that entity to show. Next, you need to create a button to invoke this method.
+Now `openApmEntity()` knows that entity to show. Next, you need to create a button to invoke this method.
 
 </Step>
 
@@ -83,13 +151,53 @@ Now `.openApmEntity()` knows that entity to show. Next, you need to create a but
 
 Create a button to show your APM entity:
 
-```js
-<HeadingText className="chartHeader">
-    Newsletter subscriptions per version
-</HeadingText>
-<Button onClick={this.openAPMEntity}>
-    App performance
-</Button>
+```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=3,23-25
+import React from 'react';
+import {
+    Button,
+    HeadingText,
+    LineChart,
+    NrqlQuery,
+    PlatformStateContext,
+    navigation,
+} from 'nr1';
+
+const ENTITY_GUID = "<YOUR NEW RELIC ENTITY GUID>"
+
+export default class NewsletterSignups extends React.Component {
+    openAPMEntity() {
+        navigation.openStackedEntity(ENTITY_GUID)
+    }
+
+    render() {
+        return <div>
+            <HeadingText className="chartHeader">
+                Newsletter subscriptions per version
+            </HeadingText>
+            <Button onClick={this.openAPMEntity}>
+                App performance
+            </Button>
+            <PlatformStateContext.Consumer>
+                {
+                    (platformState) => {
+                        return <NrqlQuery
+                            accountId={platformState.accountId}
+                            query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
+                            timeRange={platformState.timeRange}
+                            pollInterval={60000}
+                        >
+                            {
+                                ({ data }) => {
+                                    return <LineChart data={data} fullWidth />;
+                                }
+                            }
+                        </NrqlQuery>
+                    }
+                }
+            </PlatformStateContext.Consumer>
+        </div>
+    }
+}
 ```
 
 Here, you've created a button and configured it to call `.openApmEntity()` when it's clicked.
@@ -100,8 +208,55 @@ Here, you've created a button and configured it to call `.openApmEntity()` when 
 
 Import `Stack` and `StackItem`:
 
-```js
-import { AccountStorageMutation, AccountStorageQuery, BlockText, Button, ChartGroup, Select, SelectItem, Spinner, Grid, GridItem, HeadingText, LineChart, Modal, NerdGraphQuery, NerdGraphMutation, navigation, PlatformStateContext, PieChart, TableChart, NrqlQuery, TextField, Stack, StackItem } from 'nr1';
+```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=8-9
+import React from 'react';
+import {
+    Button,
+    HeadingText,
+    LineChart,
+    NrqlQuery,
+    PlatformStateContext,
+    Stack,
+    StackItem,
+    navigation,
+} from 'nr1';
+
+const ENTITY_GUID = "<YOUR NEW RELIC ENTITY GUID>"
+
+export default class NewsletterSignups extends React.Component {
+    openAPMEntity() {
+        navigation.openStackedEntity(ENTITY_GUID)
+    }
+
+    render() {
+        return <div>
+            <HeadingText className="chartHeader">
+                Newsletter subscriptions per version
+            </HeadingText>
+            <Button onClick={this.openAPMEntity}>
+                App performance
+            </Button>
+            <PlatformStateContext.Consumer>
+                {
+                    (platformState) => {
+                        return <NrqlQuery
+                            accountId={platformState.accountId}
+                            query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
+                            timeRange={platformState.timeRange}
+                            pollInterval={60000}
+                        >
+                            {
+                                ({ data }) => {
+                                    return <LineChart data={data} fullWidth />;
+                                }
+                            }
+                        </NrqlQuery>
+                    }
+                }
+            </PlatformStateContext.Consumer>
+        </div>
+    }
+}
 ```
 
 You'll use `Stack` and `StackItem` to lay out the button on the far right side of the same row that the `HeadingText` is on.
@@ -112,19 +267,61 @@ You'll use `Stack` and `StackItem` to lay out the button on the far right side o
 
 Lay out the `Stack`:
 
-```js
-<Stack fullWidth>
-    <StackItem grow={true}>
-        <HeadingText className="chartHeader">
-            Newsletter subscriptions per version
-        </HeadingText>
-    </StackItem>
-    <StackItem>
-        <Button onClick={this.openAPMEntity}>
-            App performance
-        </Button>
-    </StackItem>
-</Stack>
+```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=22-33
+import React from 'react';
+import {
+    Button,
+    HeadingText,
+    LineChart,
+    NrqlQuery,
+    PlatformStateContext,
+    Stack,
+    StackItem,
+    navigation,
+} from 'nr1';
+
+const ENTITY_GUID = "<YOUR NEW RELIC ENTITY GUID>"
+
+export default class NewsletterSignups extends React.Component {
+    openAPMEntity() {
+        navigation.openStackedEntity(ENTITY_GUID)
+    }
+
+    render() {
+        return <div>
+            <Stack fullWidth>
+                <StackItem grow={true}>
+                    <HeadingText className="chartHeader">
+                        Newsletter subscriptions per version
+                    </HeadingText>
+                </StackItem>
+                <StackItem>
+                    <Button onClick={this.openAPMEntity}>
+                        App performance
+                    </Button>
+                </StackItem>
+            </Stack>
+            <PlatformStateContext.Consumer>
+                {
+                    (platformState) => {
+                        return <NrqlQuery
+                            accountId={platformState.accountId}
+                            query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
+                            timeRange={platformState.timeRange}
+                            pollInterval={60000}
+                        >
+                            {
+                                ({ data }) => {
+                                    return <LineChart data={data} fullWidth />;
+                                }
+                            }
+                        </NrqlQuery>
+                    }
+                }
+            </PlatformStateContext.Consumer>
+        </div>
+    }
+}
 ```
 
 Here, you used a full-width `Stack` to set up the layout for the row. To make the `HeadingText` fill the entire row but the width of the button, you used the `StackItem.grow` prop.
@@ -133,7 +330,19 @@ Here, you used a full-width `Stack` to set up the layout for the row. To make th
 
 <Step>
 
-Navigate to the root of your Nerdpack at `nru-programmability-course/persist-selected-version/ab-test`.
+Navigate to the root of your Nerdpack at _nru-programmability-course/add-navigation/ab-test_.
+
+</Step>
+
+<Step>
+
+Generate a new UUID for your Nerdpack:
+
+```sh
+nr1 nerdpack:uuid -gf
+```
+
+Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account. It also allows your app to make Nerdgraph requests on behalf of your account.
 
 </Step>
 
@@ -168,3 +377,9 @@ Congratulations! You're finished writing all the code you'll write for you New R
 On top of the visuals, you've supplied data to your charts from multiple data sources in and out of New Relic. You've created some backend functionality which utilizes your New Relic One application's own data store. You've also utilized the platform APIs for interacting with platform UI and showing a stacked entity view.
 
 You've really accomplished a lot throughout this course, so far. There are only a few things left to do! First, is to learn how to deploy and subscribe to your New Relic application so that it can run on our platform instead of your own local server. Second, is to learn how to deal with some common issues you might see in New Relic One application development.
+
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Describe your app for the catalog_](../catalog).
+
+</Callout>
