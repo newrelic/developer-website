@@ -72,7 +72,7 @@ const NerdlogPage = () => {
                 <h2>What is the Nerdlog?</h2>
                 <p>
                   The Nerdlog is our brand new live stream changelog on {'  '}
-                  <a·href="https://www.twitch.tv/new_relic">Twitch</a>.
+                  <a href="https://www.twitch.tv/new_relic">Twitch</a>.
                   Every Thursday, you can:
                 </p>
                 <div>
