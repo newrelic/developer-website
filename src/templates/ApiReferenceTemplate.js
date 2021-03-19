@@ -9,11 +9,11 @@ import ReferenceExample from '../components/ReferenceExample';
 import MethodReference from '../components/MethodReference';
 import TypeDefReference from '../components/TypeDefReference';
 import ConstantReference from '../components/ConstantReference';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 
 import { Section, SectionTitle } from './referenceTemplateStyles';
 
-const ApiReferenceTemplate = ({ data }) => {
+const ApiReferenceTemplate = ({ data, location }) => {
   const {
     newRelicSdkApi: {
       name,
@@ -28,7 +28,7 @@ const ApiReferenceTemplate = ({ data }) => {
 
   return (
     <>
-      <SEO title={name} />
+      <DevSiteSeo title={name} location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title={name} />
         <PageLayout.Content>
@@ -114,6 +114,7 @@ const ApiReferenceTemplate = ({ data }) => {
 
 ApiReferenceTemplate.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`

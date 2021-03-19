@@ -5,7 +5,7 @@ import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import MarketoForm from '../components/MarketoForm';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import { Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerdlog.module.scss';
@@ -13,7 +13,7 @@ import { teamMembers } from '../data/nerdlogData';
 import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
 import styled from '@emotion/styled';
 
-const NerdlogPage = () => {
+const NerdlogPage = ({ location }) => {
   const teamMemberPanels = teamMembers.map((teamMember, i) => {
     const socialItems = teamMember.socials.map((socialNetwork, j) => {
       return (
@@ -42,7 +42,7 @@ const NerdlogPage = () => {
 
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Content>
           <section>
@@ -58,8 +58,8 @@ const NerdlogPage = () => {
               <br /> share tips and tricks{' '}
             </SectionHeading>
             <SectionDescription>
-              Watch and engage with New relic product managers and engineers
-              (who are building the future of New Relic)
+              Watch and engage with New Relic product managers and engineers who
+              are building the future of New Relic
             </SectionDescription>
             <div
               className={cx(
@@ -71,8 +71,9 @@ const NerdlogPage = () => {
               <div>
                 <h2>What is the Nerdlog?</h2>
                 <p>
-                  The Nerdlog is our brand new live-stream changelog on Twitch.
-                  Every Thursday, you can:
+                  The Nerdlog is our brand new live stream changelog on{' '}
+                  <a href="https://www.twitch.tv/new_relic">Twitch</a>. Every
+                  Thursday, you can:
                 </p>
                 <div>
                   <ul>
@@ -127,7 +128,7 @@ const NerdlogPage = () => {
                 <h3>Get Reminders</h3>
                 <p>
                   Enter your email address to get notified before our next
-                  episode of the Nerdlog, and information about our previous
+                  episode of the Nerdlog and information about our previous
                   ones.
                 </p>
                 <MarketoForm
@@ -154,6 +155,10 @@ const NerdlogPage = () => {
       </PageLayout>
     </>
   );
+};
+
+NerdlogPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 const breakpoints = {

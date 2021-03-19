@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { PageUpdated } from '../components/RelatedContentModules';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import {
   ContributingGuidelines,
   Layout,
@@ -14,7 +14,7 @@ import {
   SimpleFeedback,
 } from '@newrelic/gatsby-theme-newrelic';
 
-const GuideTemplate = ({ data }) => {
+const GuideTemplate = ({ data, location }) => {
   const { mdx } = data;
   const {
     frontmatter,
@@ -26,7 +26,12 @@ const GuideTemplate = ({ data }) => {
 
   return (
     <>
-      <SEO title={title} description={description} tags={tags} />
+      <DevSiteSeo
+        title={title}
+        description={description}
+        tags={tags}
+        location={location}
+      />
       <PageLayout type={PageLayout.TYPE.RELATED_CONTENT}>
         <PageLayout.Header title={title}>
           {duration && (
@@ -66,6 +71,7 @@ const GuideTemplate = ({ data }) => {
 
 GuideTemplate.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
