@@ -5,7 +5,7 @@ import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import MarketoForm from '../components/MarketoForm';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import { Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './nerdlog.module.scss';
@@ -13,7 +13,7 @@ import { teamMembers } from '../data/nerdlogData';
 import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
 import styled from '@emotion/styled';
 
-const NerdlogPage = () => {
+const NerdlogPage = ({ location }) => {
   const teamMemberPanels = teamMembers.map((teamMember, i) => {
     const socialItems = teamMember.socials.map((socialNetwork, j) => {
       return (
@@ -42,7 +42,7 @@ const NerdlogPage = () => {
 
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Content>
           <section>
@@ -154,6 +154,10 @@ const NerdlogPage = () => {
       </PageLayout>
     </>
   );
+};
+
+NerdlogPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 const breakpoints = {

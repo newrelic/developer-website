@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import SEO from '../components/Seo';
+import PropTypes from 'prop-types';
+import DevSiteSeo from '../components/DevSiteSeo';
 import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
@@ -9,10 +10,10 @@ import devReliquary from '../images/builders/relicans.png';
 import onlineTeach from '../images/builders/remote-unsplash.jpg';
 import styles from './builders.module.scss';
 
-const DeveloperChampionPage = () => {
+const DeveloperChampionPage = ({ location }) => {
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="New Relic Builders" />
         <PageLayout.Content>
@@ -250,6 +251,10 @@ const DeveloperChampionPage = () => {
       </PageLayout>
     </>
   );
+};
+
+DeveloperChampionPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 export default DeveloperChampionPage;
