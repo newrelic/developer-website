@@ -19,7 +19,7 @@ tags:
 
 <Intro>
 
-Now that you have a basic visualization, let's customize it! You can use all of the <Link to="explore-docs/intro-to-sdk">New Relic One SDK</Link> components in a Custom Visualization the same way you can use them in a Nerdlet. In this guide, we will add a new chart type and a `SegmentedControl` component. You will be able to dynamically swap between the Radar chart and the new Treemap chart we will add in this guide right in the browser. 
+Now that you have a basic visualization, let's customize it! You can use all of the <Link to="explore-docs/intro-to-sdk">New Relic One SDK</Link> components in a Custom Visualization the same way you can use them in a Nerdlet. In this guide, we will add a new chart type and a `SegmentedControl` component. You will be able to dynamically swap between the Radar chart and the new chart right from the browser. 
 
 This guide builds off the <Link to="/build-apps/build-visualization">Build a custom visualization for dashboards</Link> guide. 
 
@@ -37,7 +37,7 @@ In this first set of steps you will add component state to your visualization te
 
   <Step>
 
-From the root of the Nerdpack project you created in the previous guide, navigate to `/visualizations/<your-visualization>/index.js`. We will continue to work in the `index.js` file for the rest of this lesson. Add a chart types constant above the first line of the class. 
+From the root of the Nerdpack project you created in the previous guide, navigate to `/visualizations/<your-visualization>/index.js`. We will continue to work in the `index.js` file for the rest of this guide. Add a chart types constant above the first line of the class. 
 
 
 ```js
@@ -257,13 +257,13 @@ Under the `RadarChart` closing tag in render, add the `Treemap` component and th
 
   </Step>
 
-Now <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">Render the visualziation in local development</Link> to see the new Treemap chart below your Radar chart.
+Now <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">render the visualziation in local development</Link> to see the new Treemap chart below your Radar chart.
 
 </Steps>
 
 <Steps>
 
-## Use component state to switch 
+## Use component state to switch between charts
 
 In the final step, we will use our `selectedChart` state value to determine which chart to show, the Radar chart or the Treemap chart.
 
@@ -373,7 +373,21 @@ render() {
 }
 ```
 
-Go to the browser and try it out! View your visualization in the Custom Visualization app in New Relic, and click "Treemap chart" in the SegmentedControl. You should see your Treemap chart render instead of the Radar chart! 
+Go to the browser and try it out! <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">Run your visualization locally</Link> and view it in the Custom Visualization app in New Relic. Click on "Treemap chart" in the SegmentedControl. You should see your Treemap chart render instead of the Radar chart! 
+
+<img
+  src="../../images/build-an-app/radar-chart-with-segmented-control.png"
+  alt="Final custom visualization outcome from this guide"
+/>
+
+<p style="text-align: center">Radar chart selected </p>
+
+<img
+  src="../../images/build-an-app/treemap-chart-with-segmented-control.png"
+  alt="Final custom visualization outcome from this guide"
+/>
+
+<p style="text-align: center">Treemap chart selected </p>
 
 </Steps>
 
@@ -391,4 +405,4 @@ Congratulations on completing the steps in this example! You've learned how to:
 - New Relic Quick Tips video: [Dashboards and Custom Visualizations](https://www.youtube.com/watch?v=_F61mxtKfGA) (6 minutes)
 - New Relic NerdBytes video: [Configuring custom visualizations for dashboards](https://www.youtube.com/watch?v=sFpG_iG7Xa8) (7 minutes)
 - New Relic Nerdlog live stream: [Custom Data Visualizations on New Relic](https://www.youtube.com/watch?v=HuR0EdHGz24) (30 minutes)
-- New Relic helpful components: <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK Component library</Link>
+- New Relic One SDK components: <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK Component library</Link>
