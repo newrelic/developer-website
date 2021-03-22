@@ -1,3 +1,42 @@
+## [1.35.7](https://github.com/newrelic/developer-website/compare/v1.35.6...v1.35.7) (2021-03-15)
+
+
+### Bug Fixes
+
+* fix merge conflicts ([0af1086](https://github.com/newrelic/developer-website/commit/0af1086d1bd6d91980ab3d8fdc961b3e35508c27))
+
+## [1.35.6](https://github.com/newrelic/developer-website/compare/v1.35.5...v1.35.6) (2021-03-09)
+
+
+### Bug Fixes
+
+* Swap guide linked for permissions ([2736ad8](https://github.com/newrelic/developer-website/commit/2736ad82b96af23ffa938b29332c5562695e843e))
+* Use correct path for set-up-dev-env guide link ([2f0ea56](https://github.com/newrelic/developer-website/commit/2f0ea5600e9bef3fbe738383abd5c1ce9c97d1d0))
+
+## [1.35.5](https://github.com/newrelic/developer-website/compare/v1.35.4...v1.35.5) (2021-02-25)
+
+
+### Bug Fixes
+
+* broken links in guide ([6de7689](https://github.com/newrelic/developer-website/commit/6de768938f150089b9d6f723526ab2797659b977))
+
+## [1.35.4](https://github.com/newrelic/developer-website/compare/v1.35.3...v1.35.4) (2021-02-24)
+
+
+### Bug Fixes
+
+* add nonrerefer to link ([ead73f6](https://github.com/newrelic/developer-website/commit/ead73f6a025ac863112a822c139b0c2c39017bdf))
+* fixed typo on the Builders page ([c11f4d4](https://github.com/newrelic/developer-website/commit/c11f4d4780fb81bb00847c2808fe35ca71ebf798))
+* iported multiple times ([5cac9e2](https://github.com/newrelic/developer-website/commit/5cac9e2b58a39579c22d1a094f3b8d13ac916e0a))
+* Link lint ([cebb0fb](https://github.com/newrelic/developer-website/commit/cebb0fba5059520489fe83d7b3ab05b926f4d61c))
+
+## [1.35.3](https://github.com/newrelic/developer-website/compare/v1.35.2...v1.35.3) (2021-02-22)
+
+
+### Bug Fixes
+
+* typo changed "multple" to "multiple" ([68f61f5](https://github.com/newrelic/developer-website/commit/68f61f5704ef01e8c213fbcefdae3f124f3d4dff))
+
 ## [1.35.2](https://github.com/newrelic/developer-website/compare/v1.35.1...v1.35.2) (2021-02-05)
 
 

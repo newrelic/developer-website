@@ -4,19 +4,19 @@ import cx from 'classnames';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import FeaturedGuideTile from '../components/FeaturedGuideTile';
-import NewRelicIcon from '../components/NewRelicIcon';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
+import fsBanner from '../images/futurestack-registration.png';
 import Video from '../components/Video';
 
 const getStartedGuides = [
@@ -33,18 +33,18 @@ const getStartedGuides = [
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
     url: '/automate-workflows/5-mins-tag-resources',
-    icon: <NewRelicIcon name="automation" />,
+    icon: <Icon name="nr-automation" />,
   },
   {
     duration: '12 min',
     title: 'Build a Hello, World! app',
     description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
     url: '/build-apps/build-hello-world-app',
-    icon: <NewRelicIcon name="buildApps" />,
+    icon: <Icon name="nr-build-apps" />,
   },
 ];
 
-const IndexPage = ({ data, pageContext }) => {
+const IndexPage = ({ data, pageContext, location }) => {
   const {
     allMdx: { nodes },
   } = data;
@@ -54,11 +54,24 @@ const IndexPage = ({ data, pageContext }) => {
 
   return (
     <PageContext.Provider value={pageContext}>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="Getting started with New Relic and Terraform" />
 
         <PageLayout.Content>
+          <section>
+            <a href="https://web.cvent.com/event/ac440313-3922-45f5-b5b9-0812f29f4a51/summary?RefId=DEV&rt=DKI6UYQP806AeXIj4Q4uxw">
+              <img
+                css={css`
+                  display: block;
+                  width: 99%;
+                  margin-bottom: 25px;
+                `}
+                src={fsBanner}
+                alt="Register for FutureStack 2021"
+              />
+            </a>
+          </section>
           <section
             css={css`
               margin-top: 0;
@@ -68,9 +81,9 @@ const IndexPage = ({ data, pageContext }) => {
             <div className={styles.introText}>
               <p>
                 <a href="https://www.terraform.io/">Terraform</a> is a popular
-                infrastructure-as-code software tool software tool software tool
-                built by HashiCorp. You use it to provision all kinds of
-                infrastructure and services, including New Relic alerts.
+                infrastructure-as-code software tool built by HashiCorp. You use
+                it to provision all kinds of infrastructure and services,
+                including New Relic alerts.
                 <br />
                 <br />
                 In this guide, you learn how to set up New Relic alerts with
@@ -241,6 +254,7 @@ const IndexPage = ({ data, pageContext }) => {
 IndexPage.propTypes = {
   data: PropTypes.object,
   pageContext,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
