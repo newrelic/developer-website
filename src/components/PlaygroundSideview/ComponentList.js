@@ -31,6 +31,10 @@ const ComponentList = ({ onAdd }) => {
             }
             description
           }
+          examples {
+            label
+            sourceCode
+          }
         }
       }
     }

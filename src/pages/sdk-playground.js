@@ -1,11 +1,16 @@
 import React, { useState, Suspense, useRef } from 'react';
 import { LiveProvider, LivePreview } from 'react-live';
 import { css } from '@emotion/core';
-import PlaygroundSidebar from '../components/PlaygroundSideview';
 import PlaygroundToggle from '../components/PlaygroundToggle';
 import PlaygroundChrome from '../components/Playground/Chrome';
-import { Icon, useClipboard } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Icon,
+  useClipboard,
+  useKeyPress,
+} from '@newrelic/gatsby-theme-newrelic';
 import useCustomMonaco from '../components/Playground/useCustomMonaco';
+import ComponentList from '../components/PlaygroundSideview/ComponentList';
+import formatCode from '../utils/formatCode';
 
 const defaultCode = `
 class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
@@ -21,30 +26,29 @@ const SdkPlayground = () => {
   const [code, setCode] = useState(defaultCode);
   const [showSidebar, setShowSidebar] = useState(false);
   const [copied, copy] = useClipboard();
-  const [editorKey, setEditorKey] = useState(null);
   const editorRef = useRef(null);
+
   useCustomMonaco();
+
+  useKeyPress(
+    'Enter',
+    () => {
+      setCode(formatCode(code));
+    },
+    { ignoreTextInput: false }
+  );
 
   if (typeof window === 'undefined') global.window = {};
   const sdk = window.__NR1_SDK__?.default ?? {};
   if (!sdk) return null;
 
   const handleOnMount = (editor) => {
-    window.addEventListener('resize', updateWindowDimensions);
+    // document.querySelector('.overflowingContentWidgets').style.display = 'none';
     editorRef.current = editor;
-  };
-  const updateWindowDimensions = () => {
-    setEditorKey(`${window.innerWidth}`);
   };
 
   const onEditorChange = (value) => {
     setCode(value);
-  };
-
-  const toggleSidebar = () => {
-    const num = Math.random() * 10;
-    setShowSidebar(!showSidebar);
-    setEditorKey(`${window.innerWidth} ${num}`);
   };
 
   const handleAdd = (insertCode) => {
@@ -82,40 +86,70 @@ const SdkPlayground = () => {
             <PlaygroundChrome>
               <LivePreview />
             </PlaygroundChrome>
-
-            <Suspense fallback={<div>Loading...</div>}>
+            <div
+              css={css`
+                display: flex;
+                flex-direction: row;
+              `}
+            >
+              <Suspense fallback={<div>Loading...</div>}>
+                <Editor
+                  height="340px"
+                  language="javascript"
+                  value={code}
+                  theme="nightOwl"
+                  options={{
+                    selectOnLineNumbers: true,
+                    automaticLayout: true,
+                    fixedOverflowWidgets: true,
+                    overflowWidgetsDomNode: null,
+                  }}
+                  onChange={onEditorChange}
+                  onMount={handleOnMount}
+                  width={showSidebar ? window.innerWidth - 480 : '100%'}
+                />
+              </Suspense>
               <div
                 css={css`
+                  height: 340px;
                   display: flex;
                   flex-direction: row;
                 `}
               >
-                <Editor
-                  height="350px"
-                  language="javascript"
-                  value={code}
-                  theme="nightOwl"
-                  options={{ selectOnLineNumbers: true, automaticLayout: true }}
-                  onChange={onEditorChange}
-                  onMount={handleOnMount}
-                  key={editorKey}
-                />
+                <PlaygroundToggle>
+                  <PlaygroundToggle.Item
+                    onClick={() => setShowSidebar(!showSidebar)}
+                    alt="Browse and Configure Components"
+                  >
+                    <Icon size="1.25rem" name="fe-edit" />
+                  </PlaygroundToggle.Item>
+                  <PlaygroundToggle.Item
+                    alt="Copy Code"
+                    onClick={() => copy(code)}
+                  >
+                    {copied ? (
+                      <Icon size="1.25rem" name="fe-thumbsup" />
+                    ) : (
+                      <Icon size="1.25rem" name="fe-copy" />
+                    )}
+                  </PlaygroundToggle.Item>
+                  <PlaygroundToggle.Item
+                    onClick={() => setCode(formatCode(code))}
+                    alt="Format Code"
+                  >
+                    <Icon size="1.25rem" name="fe-code" />
+                  </PlaygroundToggle.Item>
+                  <PlaygroundToggle.Item
+                    alt="Read SDK Documentation"
+                    to="https://developer.newrelic.com/explore-docs/intro-to-sdk"
+                  >
+                    <Icon size="1.25rem" name="fe-book-open" />
+                  </PlaygroundToggle.Item>
+                </PlaygroundToggle>
+                {showSidebar && <ComponentList onAdd={handleAdd} />}
               </div>
-            </Suspense>
+            </div>
           </div>
-          <PlaygroundToggle>
-            <PlaygroundToggle.Item onClick={toggleSidebar}>
-              <Icon size="1.25rem" name="fe-edit" />
-            </PlaygroundToggle.Item>
-            <PlaygroundToggle.Item onClick={() => copy(code)}>
-              {copied ? (
-                <Icon size="1.25rem" name="fe-thumbsup" />
-              ) : (
-                <Icon size="1.25rem" name="fe-copy" />
-              )}
-            </PlaygroundToggle.Item>
-          </PlaygroundToggle>
-          {showSidebar && <PlaygroundSidebar onAdd={handleAdd} />}
         </div>
       </LiveProvider>
     </>

@@ -7,8 +7,9 @@ import Editor from 'react-simple-code-editor';
 import ToolTip from '../Tooltip';
 import HighlightedCode from './HighlightedCode';
 import { Icon } from '@newrelic/gatsby-theme-newrelic';
+import PropItemType from './PropItemTypes';
 
-const PropItem = ({ propItem, onCheck, onChange }) => {
+const PropItem = ({ propItem, onCheck, onChange, component }) => {
   const {
     name: propName,
     isRequired,
@@ -35,12 +36,27 @@ const PropItem = ({ propItem, onCheck, onChange }) => {
 
   return (
     <>
-      <Checkbox
-        label={propName}
-        id={propName}
-        checked={checked}
-        onChange={onCheckboxChange}
-      />
+      <ToolTip.Wrapper
+        css={css`
+          height: 1rem;
+          width: 1rem;
+          margin-top: 0.125rem;
+          margin-right: 0.5rem;
+        `}
+      >
+        <Icon name="fe-info" />
+        <ToolTip>
+          <Markdown>{description}</Markdown>
+        </ToolTip>
+      </ToolTip.Wrapper>
+      <div>
+        <Checkbox
+          label={propName}
+          id={propName}
+          checked={checked}
+          onChange={onCheckboxChange}
+        />
+      </div>
       <div>
         <span
           css={css`
@@ -59,19 +75,10 @@ const PropItem = ({ propItem, onCheck, onChange }) => {
           {type.raw}
         </span>
       </div>
-      <ToolTip.Wrapper
-        css={css`
-          height: 1rem;
-        `}
-      >
-        <Icon name="fe-info" />
-        <ToolTip>
-          <Markdown>{description}</Markdown>
-        </ToolTip>
-      </ToolTip.Wrapper>
+
       <div
         css={css`
-          background-color: #011627;
+          background-color: var(--color-nord-0);
           padding: 0.25rem;
           margin-left: 0.5rem;
           border-radius: 4px;
@@ -86,10 +93,12 @@ const PropItem = ({ propItem, onCheck, onChange }) => {
             fontFamily: '"Fira code", "Fira Mono", monospace',
             fontSize: 12,
             height: '1rem',
-            width: '175px',
           }}
         />
       </div>
+      {component.constants && checked && (
+        <PropItemType propItem={propItem} constants={component.constants} />
+      )}
     </>
   );
 };
@@ -107,6 +116,7 @@ PropItem.propTypes = {
   propItem: PropTypes.object,
   onChange: PropTypes.func,
   onCheck: PropTypes.func,
+  component: PropTypes.object,
 };
 
 export default PropItem;

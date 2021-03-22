@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Modal from './Modal';
 import CodePreview from './CodePreview';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
-import CodeDef from '../CodeDef';
+import { Collapser } from '@newrelic/gatsby-theme-newrelic';
 import formatCode from '../../utils/formatCode';
 import PropItem from './PropItem';
+import Markdown from '../Markdown';
+import ExampleEditor from './ExampleEditor';
 
 const inBetween = (componentName) => new RegExp(`>([^<]*)</${componentName}`);
 
 const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
-  const { name: componentName, usage, propTypes = [] } = component;
+  const {
+    name: componentName,
+    description,
+    propTypes = [],
+    examples = [],
+  } = component;
   const [liveCode, setLiveCode] = useState(
     `<${componentName}></${componentName}>`
   );
@@ -27,6 +33,12 @@ const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
     setLiveCode(formatCode(createCodeString(newProps)));
     setSelectedProps(newProps);
   };
+
+  useEffect(() => {
+    if (!isOpen) {
+      setLiveCode(`<${componentName}></${componentName}>`);
+    }
+  }, [isOpen]);
 
   const handleOnChange = (propItem) => {
     const newProps = selectedProps;
@@ -51,8 +63,14 @@ const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <h2>{componentName}</h2>
-      <CodeDef>{usage}</CodeDef>
-      <CodePreview code={liveCode} onChange={(code) => onCodeChange(code)} />
+      <div
+        css={css`
+          font-size: 14px;
+        `}
+      >
+        <Markdown>{description}</Markdown>
+      </div>
+
       <h3
         css={css`
           margin-top: 1rem;
@@ -60,10 +78,15 @@ const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
       >
         Available Props
       </h3>
+      <CodePreview
+        code={liveCode}
+        onAdd={onAdd}
+        onChange={(code) => onCodeChange(code)}
+      />
       <div
         css={css`
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr;
+          grid-template-columns: auto auto auto 1fr;
           gap: 1rem 0.5rem;
           margin-top: 1rem;
         `}
@@ -72,6 +95,7 @@ const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
           <PropItem
             key={`${componentName}-${prop.name}`}
             propItem={prop}
+            component={component}
             onCheck={handleOnCheck}
             onChange={handleOnChange}
           />
@@ -83,18 +107,24 @@ const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
           justify-content: center;
           margin-top: 2rem;
         `}
-      >
-        <Button
-          variant={Button.VARIANT.NORMAL}
-          type="button"
-          onClick={() => onAdd(liveCode)}
-          css={css`
-            width: 8rem;
-          `}
-        >
-          Add
-        </Button>
-      </div>
+      />
+      {examples.length > 0 && (
+        <Collapser title="Examples">
+          {examples.map(({ sourceCode, label }) => {
+            return (
+              <div
+                css={css`
+                  margin-bottom: 1rem;
+                `}
+                key={`${componentName}-${label}`}
+              >
+                <h4>{label}</h4>
+                <ExampleEditor sourceCode={sourceCode} onAdd={onAdd} />
+              </div>
+            );
+          })}
+        </Collapser>
+      )}
     </Modal>
   );
 };

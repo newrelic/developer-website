@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import root from 'react-shadow';
 import NR1Logo from '../NR1Logo';
-import { CSS_BUNDLE, SDK_VARS } from '../../utils/sdk';
+import { SDK_VARS } from '../../utils/sdk';
+import { useStaticQuery, graphql } from 'gatsby';
 
 const PlaygroundChrome = ({ children }) => {
+  const { newRelicSdk } = useStaticQuery(graphql`
+    query {
+      newRelicSdk {
+        assets {
+          css
+        }
+      }
+    }
+  `);
+  const [stylesLoaded, setStylesLoaded] = useState(false);
   return (
     <root.div
       css={css`
@@ -13,7 +24,11 @@ const PlaygroundChrome = ({ children }) => {
         background: white;
       `}
     >
-      <link rel="stylesheet" href={CSS_BUNDLE} />
+      <link
+        rel="stylesheet"
+        href={newRelicSdk.assets.css}
+        onLoad={() => setStylesLoaded(true)}
+      />
       <style type="text/css">{SDK_VARS}</style>
       <div className="body">
         <header className="nr1-header">
@@ -35,7 +50,7 @@ const PlaygroundChrome = ({ children }) => {
             margin-left: 1rem;
           `}
         >
-          {children}
+          {stylesLoaded && children}
         </div>
       </div>
     </root.div>

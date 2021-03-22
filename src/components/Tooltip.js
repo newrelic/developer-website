@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import cx from 'classnames';
 
 const ToolTipWrapper = ({ children, className }) => {
   return (
@@ -28,13 +29,13 @@ const ToolTipWrapper = ({ children, className }) => {
   );
 };
 
-const ToolTip = ({ children }) => {
+const ToolTip = ({ children, className }) => {
   return (
     <div
-      className="tool-tip"
+      className={cx('tool-tip', className)}
       css={css`
         --arrow-size: 5px;
-        --arrow-offset: 0.5rem;
+        --arrow-offset: 1rem;
         --background-color: white;
         --text-color: var(--color-neutrals-900);
 
@@ -78,6 +79,7 @@ ToolTipWrapper.propTypes = {
 };
 ToolTip.propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
 };
 
 ToolTip.Wrapper = ToolTipWrapper;

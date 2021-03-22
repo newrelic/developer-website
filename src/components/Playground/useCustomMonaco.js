@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { useMonaco } from '@monaco-editor/react';
-import theme from './nightOwl.json';
+import theme from './nordDark';
 
 const LAST_COMPONENT = /[A-Za-z ]+(?!.*<)/;
 
