@@ -1,0 +1,56 @@
+---
+path: '/build-apps/customize-visualizations-with-configuration'
+duration: '15 min'
+title: 'Custom visualizations and the New Relic One SDK'
+template: 'GuideTemplate'
+description: 'Customize your visualization using configuration'
+resources:
+  - title: New Relic One VSCode extension
+    url: https://marketplace.visualstudio.com/items?itemName=new-relic.nr1
+  - title: 'Build on New Relic One'
+    url: https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-build-your-own-custom-new-relic-one-application
+  - title: New Relic VSCode extension pack
+    url: https://marketplace.visualstudio.com/items?itemName=new-relic.new-relic-extension-pack
+tags:
+  - nr1 cli
+  - NR One Catalog
+  - visualizations
+---
+
+<Intro>
+
+This guide builds off of the previous <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. If you haven't followed that guide, please start there as this guide assumes you have the code we built in that guide to get started. 
+
+Following the previous guide, we've added the ability to switch between two charts types. Currently this is taking up some space in the visualization. That might be ok and we might want our users to have the choice to switch between two chart types at any point in the visualization lifecycle. If we only need our users to be able to select an option about our visualization once, when they are adding it to the dashboard, we can use the `coniguration` key in our visualization's nr1.json file. We are going to do just that, we will remove the `SegmentedControl` component and instead add a value to te `configuration` array.
+
+</Intro>
+
+## Before you begin
+
+To get started, make sure you follow the <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. You should have that code as your starting point for this guide. 
+
+## First section
+
+In this first set of steps you will add component state to your visualization template form the previous guide referrenced above. 
+
+<Steps>
+
+  <Step>
+
+  </Step>
+
+
+</Steps>
+
+## Summary
+
+Congratulations on completing the steps in this example! You've learned how to:
+
+- Customize your visualization using nr1.json configuration 
+
+## Additional resources
+
+- New Relic Quick Tips video: [Dashboards and Custom Visualizations](https://www.youtube.com/watch?v=_F61mxtKfGA) (6 minutes)
+- New Relic NerdBytes video: [Configuring custom visualizations for dashboards](https://www.youtube.com/watch?v=sFpG_iG7Xa8) (7 minutes)
+- New Relic Nerdlog live stream: [Custom Data Visualizations on New Relic](https://www.youtube.com/watch?v=HuR0EdHGz24) (30 minutes)
+- New Relic One SDK components: <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK Component library</Link>
