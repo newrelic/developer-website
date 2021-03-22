@@ -21,6 +21,13 @@ module.exports = {
           contentPadding: '2rem',
           maxWidth: '1700px',
           component: require.resolve('./src/layouts'),
+          mobileBreakpoint: '760px',
+        },
+        // workaround until this is no longer needed.
+        // https://github.com/newrelic/gatsby-theme-newrelic/issues/302
+        i18n: {
+          translationsPath: `${__dirname}/src/i18n/translations`,
+          additionalLocales: [],
         },
         prism: {
           languages: ['yaml', 'sass', 'scss', 'java'],
@@ -41,70 +48,57 @@ module.exports = {
             },
           },
         },
-        swiftype: {
-          file: `${__dirname}/src/data/related-pages.json`,
-          refetch: Boolean(process.env.BUILD_RELATED_CONTENT),
-          engineKey: 'Ad9HfGjDw4GRkcmJjUut',
-          limit: 5,
-          getPath: ({ node }) => node.frontmatter.path,
-          getParams: ({ node }) => {
-            const {
-              tags,
-              title,
-              redirects = [],
-              resources = [],
-            } = node.frontmatter;
+        relatedResources: {
+          swiftype: {
+            resultsPath: `${__dirname}/src/data/related-pages.json`,
+            refetch: Boolean(process.env.BUILD_RELATED_CONTENT),
+            engineKey: 'Ad9HfGjDw4GRkcmJjUut',
+            limit: 5,
+            getSlug: ({ node }) => node.frontmatter.path,
+            getParams: ({ node }) => {
+              const { tags, title } = node.frontmatter;
 
-            const filteredUrls = resources
-              .map((resource) => resource.url)
-              .concat(redirects);
-
-            return {
-              q: tags ? tags.map(quote).join(' OR ') : title,
-              search_fields: {
-                page: ['tags^10', 'body^5', 'title^1.5', '*'],
-              },
-              filters: {
-                page: {
-                  type: ['!blog', '!forum'],
-                  url: filteredUrls.map((url) =>
-                    url.startsWith('/')
-                      ? `!https://developer.newrelic.com${url}`
-                      : `!${url}`
-                  ),
-                  document_type: [
-                    '!views_page_menu',
-                    '!term_page_api_menu',
-                    '!term_page_landing_page',
-                  ],
+              return {
+                q: tags ? tags.map(quote).join(' OR ') : title,
+                search_fields: {
+                  page: ['tags^10', 'body^5', 'title^1.5', '*'],
                 },
-              },
-            };
+                filters: {
+                  page: {
+                    type: ['!blog', '!forum'],
+                    document_type: [
+                      '!views_page_menu',
+                      '!term_page_api_menu',
+                      '!term_page_landing_page',
+                    ],
+                  },
+                },
+              };
+            },
+            filter: ({ node }) => node.frontmatter.template === 'GuideTemplate',
           },
-          filterNode: ({ node }) =>
-            node.frontmatter.template === 'GuideTemplate',
         },
         newrelic: {
           configs: {
             production: {
               instrumentationType: 'proAndSPA',
-              accountId: '10175106',
+              accountId: '10956800',
               trustKey: '1',
-              agentID: '22273498',
-              licenseKey: '23448da482',
-              applicationID: '22273498',
-              beacon: 'staging-bam.nr-data.net',
-              errorBeacon: 'staging-bam.nr-data.net',
+              agentID: '30712246',
+              licenseKey: 'NRJS-649173eb1a7b28cd6ab',
+              applicationID: '30712246',
+              beacon: 'staging-bam-cell.nr-data.net',
+              errorBeacon: 'staging-bam-cell.nr-data.net',
             },
             staging: {
               instrumentationType: 'proAndSPA',
-              accountId: '10175106',
+              accountId: '10956800',
               trustKey: '1',
-              agentID: '22273531',
-              licenseKey: '23448da482',
-              applicationID: '22273531',
-              beacon: 'staging-bam.nr-data.net',
-              errorBeacon: 'staging-bam.nr-data.net',
+              agentID: '30712246',
+              licenseKey: 'NRJS-649173eb1a7b28cd6ab',
+              applicationID: '30712246',
+              beacon: 'staging-bam-cell.nr-data.net',
+              errorBeacon: 'staging-bam-cell.nr-data.net',
             },
           },
         },
@@ -158,7 +152,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-newrelic-sdk',
       options: {
-        release: 'release-1339',
+        release: 'release-2046',
       },
     },
     'gatsby-plugin-meta-redirect',

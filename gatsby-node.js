@@ -1,11 +1,8 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const { createFilePath } = require('gatsby-source-filesystem');
 
 const MAX_RESULTS = 5;
-
-const getFileRelativePath = (absolutePath) =>
-  absolutePath.replace(`${process.cwd()}/`, '');
 
 const kebabCase = (string) =>
   string
@@ -17,14 +14,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage, createRedirect } = actions;
 
   const result = await graphql(`
-    {
-      allMdx(
-        limit: 1000
-        filter: { fileAbsolutePath: { regex: "/src/markdown-pages/" } }
-      ) {
+    query {
+      allMdx(filter: { fileAbsolutePath: { regex: "/src/markdown-pages/" } }) {
         edges {
           node {
-            fileAbsolutePath
+            fields {
+              fileRelativePath
+              slug
+            }
             frontmatter {
               path
               template
@@ -32,6 +29,26 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               resources {
                 url
               }
+            }
+          }
+        }
+      }
+
+      allNewRelicSdkComponent {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+
+      allNewRelicSdkApi {
+        edges {
+          node {
+            fields {
+              slug
             }
           }
         }
@@ -45,10 +62,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  const { allMdx } = result.data;
+  const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
-    const { frontmatter } = node;
+    const {
+      frontmatter,
+      fields: { fileRelativePath, slug },
+    } = node;
 
     if (frontmatter.redirects) {
       frontmatter.redirects.forEach((fromPath) => {
@@ -62,27 +82,51 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
 
     createPage({
-      path: frontmatter.path,
+      path: frontmatter.path || slug,
       component: path.resolve(`src/templates/${frontmatter.template}.js`),
       context: {
-        fileRelativePath: getFileRelativePath(node.fileAbsolutePath),
+        slug,
+        fileRelativePath,
         guidesFilter:
           frontmatter.template === 'OverviewTemplate'
             ? `${frontmatter.path}/*`
             : undefined,
-        relatedResourceLimit: Math.max(
-          MAX_RESULTS - (frontmatter.resources || []).length,
-          0
-        ),
+      },
+    });
+  });
+
+  allNewRelicSdkComponent.edges.forEach(({ node }) => {
+    const {
+      fields: { slug },
+    } = node;
+
+    createPage({
+      path: slug,
+      component: path.resolve('./src/templates/ComponentReferenceTemplate.js'),
+      context: {
+        slug,
+      },
+    });
+  });
+
+  allNewRelicSdkApi.edges.forEach(({ node }) => {
+    const {
+      fields: { slug },
+    } = node;
+
+    createPage({
+      path: slug,
+      component: path.resolve('./src/templates/ApiReferenceTemplate.js'),
+      context: {
+        slug,
       },
     });
   });
 };
 
-exports.onCreateNode = ({ node, actions }) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
-  // if we don't have a relative path, attempt to get one
   if (node.internal.type === 'Mdx' && node.fileAbsolutePath) {
     const gitAuthorTime = execSync(
       `git log -1 --pretty=format:%aI ${node.fileAbsolutePath}`
@@ -92,18 +136,11 @@ exports.onCreateNode = ({ node, actions }) => {
       name: 'gitAuthorTime',
       value: gitAuthorTime,
     });
-  }
 
-  if (node.context && !node.context.fileRelativePath) {
-    const { createPage } = actions;
-    const { path, component } = node;
-
-    createPage({
-      path,
-      component,
-      context: {
-        fileRelativePath: getFileRelativePath(component),
-      },
+    createNodeField({
+      node,
+      name: 'slug',
+      value: createFilePath({ node, getNode, trailingSlash: false }),
     });
   }
 

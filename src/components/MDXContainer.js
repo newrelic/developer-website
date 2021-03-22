@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { MDXProvider } from '@mdx-js/react';
+import { css } from '@emotion/core';
+import { MarkdownContainer, MDX } from '@newrelic/gatsby-theme-newrelic';
 
 import Intro from './Intro';
 import Iframe from './Iframe';
@@ -10,40 +9,32 @@ import Tutorial from './Tutorial';
 import TutorialStep from './TutorialStep';
 import TutorialSection from './TutorialSection';
 import Project from './Project';
-import {
-  Callout,
-  MDXCodeBlock,
-  Table,
-  Video,
-} from '@newrelic/gatsby-theme-newrelic';
-
-import styles from './MDXContainer.module.scss';
 
 const components = {
-  Callout,
-  Video,
   // Remove these when all step/steps components have been updated to the new
   // name
   Step: TutorialStep,
   Steps: TutorialSection,
   Project,
-  Table,
   Tutorial,
   TutorialStep,
   TutorialSection,
-  Intro,
+  Intro: (props) => (
+    <Intro
+      {...props}
+      css={css`
+        margin-bottom: 2rem;
+      `}
+    />
+  ),
   iframe: Iframe,
-  code: MDXCodeBlock,
-  pre: (props) => props.children,
 };
 
 const MDXContainer = ({ className, children }) => {
   return (
-    <div className={cx(styles.container, className)}>
-      <MDXProvider components={components}>
-        <MDXRenderer>{children}</MDXRenderer>
-      </MDXProvider>
-    </div>
+    <MarkdownContainer className={className}>
+      <MDX body={children} components={components} />
+    </MarkdownContainer>
   );
 };
 

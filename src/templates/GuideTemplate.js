@@ -3,28 +3,35 @@ import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
-import { PageUpdated, Resources } from '../components/RelatedContentModules';
+import { PageUpdated } from '../components/RelatedContentModules';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import {
   ContributingGuidelines,
   Layout,
+  RelatedResources,
   SimpleFeedback,
 } from '@newrelic/gatsby-theme-newrelic';
 
-const GuideTemplate = ({ data }) => {
+const GuideTemplate = ({ data, location }) => {
   const { mdx } = data;
   const {
     frontmatter,
     body,
+    relatedResources,
     fields: { fileRelativePath },
   } = mdx;
   const { title, description, duration, tags, path } = frontmatter;
 
   return (
     <>
-      <SEO title={title} description={description} tags={tags} />
+      <DevSiteSeo
+        title={title}
+        description={description}
+        tags={tags}
+        location={location}
+      />
       <PageLayout type={PageLayout.TYPE.RELATED_CONTENT}>
         <PageLayout.Header title={title}>
           {duration && (
@@ -48,13 +55,13 @@ const GuideTemplate = ({ data }) => {
         </PageLayout.Header>
         <PageLayout.MarkdownContent>{body}</PageLayout.MarkdownContent>
         <Layout.PageTools>
-          <ContributingGuidelines fileRelativePath={fileRelativePath} />
-          <Resources page={mdx} />
           <SimpleFeedback
             pageTitle={title}
             slug={path}
             labels={['content', 'feedback']}
           />
+          <ContributingGuidelines fileRelativePath={fileRelativePath} />
+          <RelatedResources resources={relatedResources} />
           <PageUpdated page={mdx} />
         </Layout.PageTools>
       </PageLayout>
@@ -64,10 +71,11 @@ const GuideTemplate = ({ data }) => {
 
 GuideTemplate.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
-  query($path: String!, $relatedResourceLimit: Int!) {
+  query($path: String!) {
     mdx(frontmatter: { path: { eq: $path } }) {
       body
       frontmatter {
@@ -80,8 +88,11 @@ export const pageQuery = graphql`
       fields {
         fileRelativePath
       }
+      relatedResources(limit: 5) {
+        title
+        url
+      }
 
-      ...Resources_page
       ...PageUpdated_page
     }
   }

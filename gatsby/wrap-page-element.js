@@ -1,15 +1,8 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { BreadcrumbContext } from '../src/components/BreadcrumbContext';
 import { PageContext } from '../src/components/PageContext';
 import { Global, css } from '@emotion/core';
 
-import createBreadcrumbs from '../src/utils/create-breadcrumbs';
-import pages from '../src/data/sidenav.json';
-
 const wrapPageElement = ({ element, props }) => {
-  const crumbs = createBreadcrumbs(props.path ?? '/404', pages);
-
   return (
     <>
       <Global
@@ -43,9 +36,7 @@ const wrapPageElement = ({ element, props }) => {
         `}
       />
       <PageContext.Provider value={props.pageContext}>
-        <BreadcrumbContext.Provider value={crumbs}>
-          {element}
-        </BreadcrumbContext.Provider>
+        {element}
       </PageContext.Provider>
     </>
   );

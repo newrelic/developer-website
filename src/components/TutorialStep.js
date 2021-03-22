@@ -1,6 +1,6 @@
-import React, { Children, cloneElement } from 'react';
+import React, { Children } from 'react';
 import PropTypes from 'prop-types';
-import { css, ClassNames } from '@emotion/core';
+import { css } from '@emotion/core';
 import { isMdxType } from '../utils/mdx';
 import { isShellCommand, isCodeBlock } from '../utils/codeBlock';
 import usePageLayout from '../hooks/usePageLayout';
@@ -51,21 +51,7 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
       `}
     >
       <StepCounter stepNumber={stepNumber} total={totalSteps} />
-      {title && (
-        <ClassNames>
-          {({ css }) =>
-            cloneElement(title, {
-              className: css`
-                &&& {
-                  font-size: 1rem;
-                  font-weight: bold;
-                  margin-top: 0;
-                }
-              `,
-            })
-          }
-        </ClassNames>
-      )}
+      {title}
       {columns.map((column, idx) => {
         return Array.isArray(column) ? (
           <div

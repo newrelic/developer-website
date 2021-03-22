@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
+import { css } from '@emotion/core';
 import ReactMarkdown from 'react-markdown';
-import styles from './Markdown.module.scss';
 
 const Markdown = ({ className, ...props }) => (
-  <ReactMarkdown className={cx(styles.container, className)} {...props} />
+  <ReactMarkdown
+    {...props}
+    className={className}
+    css={css`
+      > *:first-child {
+        margin-top: 0;
+      }
+    `}
+  />
 );
 
 Markdown.propTypes = {

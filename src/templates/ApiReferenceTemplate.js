@@ -1,82 +1,110 @@
 import React from 'react';
-import cx from 'classnames';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import Markdown from '../components/Markdown';
+import ReferenceExample from '../components/ReferenceExample';
 import MethodReference from '../components/MethodReference';
 import TypeDefReference from '../components/TypeDefReference';
 import ConstantReference from '../components/ConstantReference';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 
-import templateStyles from './ReferenceTemplate.module.scss';
-import useApiDoc from '../hooks/useApiDoc';
+import { Section, SectionTitle } from './referenceTemplateStyles';
 
-const ApiReferenceTemplate = ({ data }) => {
-  const { mdx } = data;
-  const { frontmatter } = mdx;
-  const { title, description, api } = frontmatter;
+const ApiReferenceTemplate = ({ data, location }) => {
   const {
-    description: apiDescription,
-    methods = [],
-    usage = '',
-    typeDefs = [],
-    constants = [],
-  } = useApiDoc(api) ?? {};
+    newRelicSdkApi: {
+      name,
+      usage,
+      description,
+      examples,
+      methods,
+      typeDefs,
+      constants,
+    },
+  } = data;
 
   return (
     <>
-      <SEO title={title} description={description} />
+      <DevSiteSeo title={name} location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title={api} />
+        <PageLayout.Header title={name} />
         <PageLayout.Content>
-          {apiDescription && (
-            <section
-              className={cx(
-                templateStyles.section,
-                templateStyles.description,
-                'intro-text'
-              )}
-            >
-              <Markdown source={apiDescription} />
-            </section>
+          {description && (
+            <Section className="intro-text">
+              <Markdown source={description} />
+            </Section>
           )}
 
-          <section className={templateStyles.section}>
-            <h2 className={templateStyles.sectionTitle}>Usage</h2>
+          <Section>
+            <SectionTitle>Usage</SectionTitle>
             <CodeBlock language="js">{usage}</CodeBlock>
-          </section>
+          </Section>
+
+          {examples.length > 0 && (
+            <Section>
+              <div>
+                <SectionTitle>Examples</SectionTitle>
+                {examples.map((example, i) => (
+                  <ReferenceExample
+                    key={i}
+                    useToastManager={name === 'Toast'}
+                    example={example}
+                  />
+                ))}
+              </div>
+            </Section>
+          )}
 
           {methods.length > 0 && (
-            <section className={templateStyles.section}>
-              <h2 className={templateStyles.sectionTitle}>API methods</h2>
+            <Section>
+              <SectionTitle>API methods</SectionTitle>
               {methods.map((method, i) => (
                 <MethodReference
                   key={i}
                   method={method}
-                  className={templateStyles.section}
+                  css={css`
+                    margin-bottom: 4rem;
+                  `}
                 />
               ))}
-            </section>
+            </Section>
           )}
 
           {typeDefs.length > 0 && (
-            <section className={templateStyles.section}>
-              <h2 className={templateStyles.sectionTitle}>Type definitions</h2>
+            <Section>
+              <SectionTitle>Type definitions</SectionTitle>
               {typeDefs.map((typeDef, i) => (
-                <TypeDefReference key={i} typeDef={typeDef} />
+                <TypeDefReference
+                  key={i}
+                  typeDef={typeDef}
+                  css={css`
+                    &:not(:last-child) {
+                      margin-bottom: 2rem;
+                    }
+                  `}
+                />
               ))}
-            </section>
+            </Section>
           )}
 
           {constants.length > 0 && (
-            <section className={templateStyles.section}>
-              <h2 className={templateStyles.sectionTitle}>Constants</h2>
+            <Section>
+              <SectionTitle>Constants</SectionTitle>
               {constants.map((constant, i) => (
-                <ConstantReference key={i} constant={constant} />
+                <ConstantReference
+                  key={i}
+                  constant={constant}
+                  css={css`
+                    &:not(:last-child) {
+                      margin-bottom: 2rem;
+                    }
+                  `}
+                />
               ))}
-            </section>
+            </Section>
           )}
         </PageLayout.Content>
       </PageLayout>
@@ -86,17 +114,26 @@ const ApiReferenceTemplate = ({ data }) => {
 
 ApiReferenceTemplate.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    mdx(frontmatter: { path: { eq: $path } }) {
-      body
-      frontmatter {
-        path
-        title
-        description
-        api
+  query($slug: String!) {
+    newRelicSdkApi(fields: { slug: { eq: $slug } }) {
+      name
+      description
+      usage
+      examples {
+        ...ReferenceExample_example
+      }
+      methods {
+        ...MethodReference_method
+      }
+      typeDefs {
+        ...TypeDefReference_typeDef
+      }
+      constants {
+        ...ConstantReference_constant
       }
     }
   }
