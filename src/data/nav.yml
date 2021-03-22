@@ -101,7 +101,7 @@
           url: '/build-apps/ab-test/persist-version'
         - title: Present an end test confirmation modal
           url: '/build-apps/ab-test/confirmation-modal'
-        - title: Query New Relic data from your charts
+        - title: Add NrqlQuery components to your nerdlet
           url: '/build-apps/ab-test/nrql'
         - title: Customize NRQL data
           url: '/build-apps/ab-test/nrql-customizations'
