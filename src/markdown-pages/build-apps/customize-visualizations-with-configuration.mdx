@@ -21,7 +21,7 @@ tags:
 
 This guide builds off of the previous <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. If you haven't followed that guide, please start there as this guide assumes you have the code we built in that guide to get started. 
 
-Following the previous guide, we've added the ability to switch between two charts types. Currently this is taking up some space in the visualization. That might be ok and we might want our users to have the choice to switch between two chart types at any point in the visualization lifecycle. If we only need our users to be able to select an option about our visualization once, when they are adding it to the dashboard, we can use the `coniguration` key in our visualization's nr1.json file. We are going to do just that, we will remove the `SegmentedControl` component and instead add a value to te `configuration` array.
+Following the previous guide, users should be able to switch between two charts types. Our current implementation takes up some space in the visualization gives our users the choice to switch between two chart types at any point in the visualization lifecycle. What if we only need to be able to select an option once, when adding it to the dashboard? In that case, we can use the `coniguration` key in our visualization's nr1.json file. In the following steps, we will remove the `SegmentedControl` component and instead add a value to te `configuration` array.
 
 </Intro>
 
@@ -29,15 +29,44 @@ Following the previous guide, we've added the ability to switch between two char
 
 To get started, make sure you follow the <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. You should have that code as your starting point for this guide. 
 
-## First section
-
-In this first set of steps you will add component state to your visualization template form the previous guide referrenced above. 
+## Replacing the SegmentedControl with configuration
 
 <Steps>
 
   <Step>
 
+#### Adding a configuration object
+
+In you visualization's root folder, open the `nr1.json` file. You should already have some configuration objects defined. We are going to add an enum for `selectedChart`. This should look familiar to the component state options we added in the previous guide. 
+
+```json
+{
+...
+  "configuration": [
+    ...
+    {
+      "name": "selectedChart",
+      "title": "Select chart type",
+      "description": "Select which chart to display",
+      "type": "enum",
+      "items": [
+        {
+          "title": "Radar",
+          "value": "radar"
+        },
+        {
+          "title": "Treemap",
+          "value": "treemap"
+        }
+      ]
+    }
+  ]
+}
+```
+
   </Step>
+
+
 
 
 </Steps>
