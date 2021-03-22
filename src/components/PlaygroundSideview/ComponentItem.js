@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Icon } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Icon, Link } from '@newrelic/gatsby-theme-newrelic';
 import { css } from '@emotion/core';
 import ToolTip from '../Tooltip';
 import PropsModal from '../Playground/PropsModal';
@@ -44,6 +44,9 @@ const ComponentItem = ({ component, onAdd }) => {
             <Icon name="fe-info" size="0.825rem" />
             <ToolTip>
               <Markdown>{component.description}</Markdown>
+              <Link to={component.url}>
+                Learn More <Icon name="fe-external-link" />
+              </Link>
             </ToolTip>
           </ToolTip.Wrapper>
         </div>{' '}
@@ -86,7 +89,7 @@ const ComponentItem = ({ component, onAdd }) => {
 
 ComponentItem.propTypes = {
   component: PropTypes.object,
-  onClick: PropTypes.func,
+  onAdd: PropTypes.func,
 };
 
 export default ComponentItem;

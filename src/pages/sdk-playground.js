@@ -23,7 +23,7 @@ const SdkPlayground = () => {
   const [copied, copy] = useClipboard();
   const [editorKey, setEditorKey] = useState(null);
   const editorRef = useRef(null);
-  const monaco = useCustomMonaco();
+  useCustomMonaco();
 
   if (typeof window === 'undefined') global.window = {};
   const sdk = window.__NR1_SDK__?.default ?? {};

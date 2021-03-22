@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { SearchInput } from '@newrelic/gatsby-theme-newrelic';
 import { graphql, useStaticQuery } from 'gatsby';
-import ComponentListItem from './ComponentListItem';
+import ComponentItem from './ComponentItem';
 import pages from '../../data/componentGroup.json';
 
 const ComponentList = ({ onAdd }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const {
-    allNewRelicSdkComponent: { nodes },
+    allNewRelicSdkComponent: { nodes: components },
   } = useStaticQuery(graphql`
     query {
       allNewRelicSdkComponent {
@@ -35,23 +35,28 @@ const ComponentList = ({ onAdd }) => {
       }
     }
   `);
-  const components = nodes.filter(({ name: componentName }) =>
-    componentName.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const componentGroups = pages.map(({ displayName, children }) => {
-    return {
+  const componentGroups = pages
+    .map(({ displayName, children }) => {
+      return {
+        displayName,
+        children: children.map(({ displayName, url }) => {
+          const component = components.find(
+            ({ name: componentName }) => componentName === displayName
+          );
+          return {
+            ...component,
+            url,
+          };
+        }),
+      };
+    })
+    .map(({ displayName, children }) => ({
       displayName,
-      children: children.map(({ displayName }) => {
-        const component = components.find(
-          ({ name: componentName }) => componentName === displayName
-        );
-        return {
-          ...component,
-        };
-      }),
-    };
-  });
+      children: children.filter(({ name: componentName }) =>
+        componentName.toLowerCase().includes(searchTerm.toLowerCase())
+      ),
+    }))
+    .filter(({ children }) => children.length > 1);
 
   return (
     <div
@@ -62,7 +67,6 @@ const ComponentList = ({ onAdd }) => {
       `}
     >
       <SearchInput
-        style={{ margin: '1rem 0' }}
         placeholder="Search Components"
         onClear={() => setSearchTerm('')}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -81,7 +85,7 @@ const ComponentList = ({ onAdd }) => {
             {displayName}
           </h3>
           {children.map((component) => (
-            <ComponentListItem
+            <ComponentItem
               key={component.name}
               component={component}
               onAdd={onAdd}
@@ -91,6 +95,10 @@ const ComponentList = ({ onAdd }) => {
       ))}
     </div>
   );
+};
+
+ComponentList.propTypes = {
+  onAdd: PropTypes.func,
 };
 
 export default ComponentList;

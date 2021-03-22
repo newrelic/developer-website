@@ -14,6 +14,9 @@ const ToolTipWrapper = ({ children, className }) => {
           display: none;
         }
         &:hover {
+          cursor: pointer;
+        }
+        &:hover {
           .tool-tip {
             display: block;
           }
