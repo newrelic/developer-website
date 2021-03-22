@@ -1,6 +1,6 @@
 ---
 path: '/build-apps/customize-visualizations-with-configuration'
-duration: '15 min'
+duration: '10 min'
 title: 'Custom visualizations and the New Relic One SDK'
 template: 'GuideTemplate'
 description: 'Customize your visualization using configuration'
@@ -39,14 +39,14 @@ To get started, make sure you follow the <Link to="/build-apps/custom-visualizat
 
 In you visualization's root folder, open the `nr1.json` file. You should already have some configuration objects defined. We are going to add an enum for `selectedChart`. This should look familiar to the component state options we added in the previous guide. 
 
-```json
+```json fileName=visualizations/your-visualization/nr1.json
 {
 ...
   "configuration": [
     ...
     {
       "name": "selectedChart",
-      "title": "Select chart type",
+      "title": "Select chart",
       "description": "Select which chart to display",
       "type": "enum",
       "items": [
@@ -66,10 +66,206 @@ In you visualization's root folder, open the `nr1.json` file. You should already
 
   </Step>
 
+  <Step>
 
+#### Update your propTypes definition
 
+In your visualization's root folder, open `index.js`. We will be working in this file for the rest of the guide. 
+
+```js fileName=visualizations/your-visualization/index.js
+static propTypes = {
+  ...
+  /**
+    * A chart type configuration to switch between "Radar" and "Treemap" chart types
+    */
+  selectedChart: PropTypes.string
+}
+```
+
+  </Step>
+
+#### Replacing component state with component props
+
+  <Step>
+
+In render, add `selectedChart` to the prop descrtructuring and remove the state referrence. 
+
+```js fileName=visualizations/your-visualization/index.js autoformat=false
+// ADD selectedChart
++ const { nrqlQueries, stroke, fill, selectedChart = CHART_TYPES.Radar } = this.props;
+// REMOVE BELOW LINE
+- const { selectedChart } = this.state;
+```
+
+  </Step>
+
+  <Step>
+
+We no longer have a default defined and we want the Radar chart to be the default still. We can add more to the ternary in the render to achieve the same default state. 
+
+```jsx
+{ 
+  selectedChart === CHART_TYPES.Radar || !Boolean(selectedChart) 
+    ? <RadarChart ... />
+    : <Treemap ... />
+}
+```
+  
+  </Step>
+
+  <Step>
+
+#### Clean up the UI 
+
+We don't need the `SegmentedControl` component any longer so let's remove that from our render. 
+
+```jsx fileName=visualizations/your-visualization/index.js
+// REMOVE THE BELOW
+<SegmentedControl onChange={this.updateSelectedChart}>
+  <SegmentedControlItem value={CHART_TYPES.Radar} label="Radar chart" />
+  <SegmentedControlItem value={CHART_TYPES.Treemap} label="Treemap chart" />
+</SegmentedControl>
+```
+
+  </Step>
+
+  <Step>
+
+#### Remove component state referrences
+
+In this last step, we just need to delete all of the code for state in our component. 
+
+Remove `static state = { selectedChart: CHART_TYPES.Radar }`
+
+Remove `updateSelectedChart = (evt, value) => { this.setState({ selectedChart: value }) }` 
+
+  </Step>
 
 </Steps>
+
+Your component should now look like the following:
+
+```jsx
+export default class TypicalDoorVisualization extends React.Component {
+  // Custom props you wish to be configurable in the UI must also be defined in
+  // the nr1.json file for the visualization. See docs for more details.
+  static propTypes = {
+    /**
+     * A fill color to override the default fill color. This is an example of
+     * a custom chart configuration.
+     */
+    fill: PropTypes.string,
+
+    /**
+     * A stroke color to override the default stroke color. This is an example of
+     * a custom chart configuration.
+     */
+    stroke: PropTypes.string,
+    /**
+     * A chart type configuration to switch between "Radar" and "Treemap" chart types
+     */
+    selectedChart: PropTypes.string,
+    /**
+     * An array of objects consisting of a nrql `query` and `accountId`.
+     * This should be a standard prop for any NRQL based visualizations.
+     */
+    nrqlQueries: PropTypes.arrayOf(
+      PropTypes.shape({
+        accountId: PropTypes.number,
+        query: PropTypes.string,
+      })
+    ),
+  };
+
+  /**
+   * Restructure the data for a non-time-series, facet-based NRQL query into a
+   * form accepted by the Recharts library's RadarChart.
+   * (https://recharts.org/api/RadarChart).
+   */
+  transformData = (rawData) => {
+    return rawData.map((entry) => ({
+      name: entry.metadata.name,
+      // Only grabbing the first data value because this is not time-series data.
+      value: entry.data[0].y,
+    }));
+  };
+
+  /**
+   * Format the given axis tick's numeric value into a string for display.
+   */
+  formatTick = (value) => {
+    return value.toLocaleString();
+  };
+
+  render() {
+    const { nrqlQueries, stroke, fill, selectedChart } = this.props;
+
+    const nrqlQueryPropsAvailable =
+      nrqlQueries &&
+      nrqlQueries[0] &&
+      nrqlQueries[0].accountId &&
+      nrqlQueries[0].query;
+
+    if (!nrqlQueryPropsAvailable) {
+      return <EmptyState />;
+    }
+
+    return (
+      <AutoSizer>
+        {({width, height}) => (
+          <NrqlQuery
+            query={nrqlQueries[0].query}
+            accountId={parseInt(nrqlQueries[0].accountId)}
+            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
+          >
+            {({data, loading, error}) => {
+              if (loading) { return <Spinner />; }
+
+              if (error) { return <ErrorState />; }
+
+              const transformedData = this.transformData(data);
+
+              return (
+                <React.Fragment>
+                  { selectedChart === CHART_TYPES.Radar || !Boolean(selectedChart) ?
+                    <RadarChart
+                      width={width}
+                      height={height}
+                      data={transformedData}
+                    >
+                      <PolarGrid />
+                      <PolarAngleAxis dataKey="name" />
+                      <PolarRadiusAxis tickFormatter={this.formatTick} />
+                      <Radar
+                        dataKey="value"
+                        stroke={stroke || '#51C9B7'}
+                        fill={fill || '#51C9B7'}
+                        fillOpacity={0.6}
+                      />
+                    </RadarChart>
+                    :
+                    <Treemap 
+                      width={width}
+                      height={height}
+                      data={transformedData}
+                      dataKey="value"
+                      ratio={4 / 3}
+                      stroke="#fff"
+                      fill="#8884d8"
+                    />
+                  }
+                </React.Fragment>
+              );
+            }}
+          </NrqlQuery>
+        )}
+      </AutoSizer>
+    );
+  }
+}
+```
+
+<Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">Run your visualization locally</Link> and view it in the Custom Visualization app in New Relic. Select a chart type from the dropdown in the configuration sidebar.
 
 ## Summary
 
