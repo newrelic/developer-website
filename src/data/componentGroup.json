@@ -1,0 +1,327 @@
+[
+  {
+    "displayName": "Controls",
+    "children": [
+      {
+        "displayName": "AccountPicker",
+        "url": "/components/account-picker"
+      },
+      {
+        "displayName": "Button",
+        "url": "/components/button"
+      },
+      {
+        "displayName": "Checkbox",
+        "url": "/components/checkbox"
+      },
+      {
+        "displayName": "Dropdown",
+        "url": "/components/dropdown"
+      },
+      {
+        "displayName": "DropdownItem",
+        "url": "/components/dropdown-item"
+      },
+      {
+        "displayName": "Radio",
+        "url": "/components/radio"
+      },
+      {
+        "displayName": "RadioGroup",
+        "url": "/components/radio-group"
+      },
+      {
+        "displayName": "Select",
+        "url": "/components/select"
+      },
+      {
+        "displayName": "SelectItem",
+        "url": "/components/select-item"
+      },
+      {
+        "displayName": "TextField",
+        "url": "/components/text-field"
+      }
+    ]
+  },
+  {
+    "displayName": "Tables",
+    "children": [
+      {
+        "displayName": "Table",
+        "url": "/components/table"
+      },
+      {
+        "displayName": "TableHeader",
+        "url": "/components/table-header"
+      },
+      {
+        "displayName": "TableHeaderCell",
+        "url": "/components/table-header-cell"
+      },
+      {
+        "displayName": "TableRow",
+        "url": "/components/table-row"
+      },
+      {
+        "displayName": "TableRowCell",
+        "url": "/components/table-row-cell"
+      },
+      {
+        "displayName": "EntityTitleTableRowCell",
+        "url": "/components/entity-title-table-row-cell"
+      },
+      {
+        "displayName": "MetricTableRowCell",
+        "url": "/components/metric-table-row-cell"
+      },
+      {
+        "displayName": "SparklineTableRowCell",
+        "url": "/components/sparkline-table-row-cell"
+      },
+      {
+        "displayName": "UserTableRowCell",
+        "url": "/components/user-table-row-cell"
+      }
+    ]
+  },
+  {
+    "displayName": "Feedback",
+    "children": [
+      {
+        "displayName": "Icon",
+        "url": "/components/icon"
+      },
+      {
+        "displayName": "Spinner",
+        "url": "/components/spinner"
+      },
+      {
+        "displayName": "Toast",
+        "url": "/components/toast"
+      }
+    ]
+  },
+  {
+    "displayName": "Overlays",
+    "children": [
+      {
+        "displayName": "Modal",
+        "url": "/components/modal"
+      },
+      {
+        "displayName": "Tooltip",
+        "url": "/components/tooltip"
+      }
+    ]
+  },
+  {
+    "displayName": "Structure",
+    "children": [
+      {
+        "displayName": "AutoSizer",
+        "url": "/components/auto-sizer"
+      },
+      {
+        "displayName": "Card",
+        "url": "/components/card"
+      },
+      {
+        "displayName": "CardBody",
+        "url": "/components/card-body"
+      },
+      {
+        "displayName": "CardHeader",
+        "url": "/components/card-header"
+      },
+      {
+        "displayName": "Grid",
+        "url": "/components/grid"
+      },
+      {
+        "displayName": "GridItem",
+        "url": "/components/grid-item"
+      },
+      {
+        "displayName": "List",
+        "url": "/components/list"
+      },
+      {
+        "displayName": "ListItem",
+        "url": "/components/list-item"
+      },
+      {
+        "displayName": "Spacing",
+        "url": "/components/spacing"
+      },
+      {
+        "displayName": "Stack",
+        "url": "/components/stack"
+      },
+      {
+        "displayName": "StackItem",
+        "url": "/components/stack-item"
+      },
+      {
+        "displayName": "Tabs",
+        "url": "/components/tabs"
+      },
+      {
+        "displayName": "TabsItem",
+        "url": "/components/tabs-item"
+      }
+    ]
+  },
+  {
+    "displayName": "Text",
+    "children": [
+      {
+        "displayName": "BlockText",
+        "url": "/components/block-text"
+      },
+      {
+        "displayName": "HeadingText",
+        "url": "/components/heading-text"
+      },
+      {
+        "displayName": "Link",
+        "url": "/components/link"
+      }
+    ]
+  },
+  {
+    "displayName": "Charts",
+    "url": "/components/charts",
+    "children": [
+      {
+        "displayName": "AreaChart",
+        "url": "/components/charts/area-chart"
+      },
+      {
+        "displayName": "BarChart",
+        "url": "/components/charts/bar-chart"
+      },
+      {
+        "displayName": "BillboardChart",
+        "url": "/components/charts/billboard-chart"
+      },
+      {
+        "displayName": "ChartGroup",
+        "url": "/components/charts/chart-group"
+      },
+      {
+        "displayName": "FunnelChart",
+        "url": "/components/charts/funnel-chart"
+      },
+      {
+        "displayName": "HeatmapChart",
+        "url": "/components/charts/heatmap-chart"
+      },
+      {
+        "displayName": "HistogramChart",
+        "url": "/components/charts/histogram-chart"
+      },
+      {
+        "displayName": "JsonChart",
+        "url": "/components/charts/json-chart"
+      },
+      {
+        "displayName": "LineChart",
+        "url": "/components/charts/line-chart"
+      },
+      {
+        "displayName": "PieChart",
+        "url": "/components/charts/pie-chart"
+      },
+      {
+        "displayName": "ScatterChart",
+        "url": "/components/charts/scatter-chart"
+      },
+      {
+        "displayName": "SparklineChart",
+        "url": "/components/charts/sparkline-chart"
+      },
+      {
+        "displayName": "StackedBarChart",
+        "url": "/components/charts/stacked-bar-chart"
+      },
+      {
+        "displayName": "TableChart",
+        "url": "/components/charts/table-chart"
+      }
+    ]
+  },
+  {
+    "displayName": "Query and storage",
+    "children": [
+      {
+        "displayName": "AccountStorageMutation",
+        "url": "/components/account-storage-mutation"
+      },
+      {
+        "displayName": "AccountStorageQuery",
+        "url": "/components/account-storage-query"
+      },
+      {
+        "displayName": "AccountsQuery",
+        "url": "/components/accounts-query"
+      },
+      {
+        "displayName": "EntitiesByDomainTypeQuery",
+        "url": "/components/entities-by-domain-type-query"
+      },
+      {
+        "displayName": "EntitiesByGuidsQuery",
+        "url": "/components/entities-by-guids-query"
+      },
+      {
+        "displayName": "EntitiesByNameQuery",
+        "url": "/components/entities-by-name-query"
+      },
+      {
+        "displayName": "EntityByGuidQuery",
+        "url": "/components/entity-by-guid-query"
+      },
+      {
+        "displayName": "EntityCountQuery",
+        "url": "/components/entity-count-query"
+      },
+      {
+        "displayName": "EntitySearchQuery",
+        "url": "/components/entity-search-query"
+      },
+      {
+        "displayName": "EntityStorageMutation",
+        "url": "/components/entity-storage-mutation"
+      },
+      {
+        "displayName": "EntityStorageQuery",
+        "url": "/components/entity-storage-query"
+      },
+      {
+        "displayName": "NerdGraphMutation",
+        "url": "/components/nerd-graph-mutation"
+      },
+      {
+        "displayName": "NerdGraphQuery",
+        "url": "/components/nerd-graph-query"
+      },
+      {
+        "displayName": "NrqlQuery",
+        "url": "/components/nrql-query"
+      },
+      {
+        "displayName": "UserQuery",
+        "url": "/components/user-query"
+      },
+      {
+        "displayName": "UserStorageMutation",
+        "url": "/components/user-storage-mutation"
+      },
+      {
+        "displayName": "UserStorageQuery",
+        "url": "/components/user-storage-query"
+      }
+    ]
+  }
+]
