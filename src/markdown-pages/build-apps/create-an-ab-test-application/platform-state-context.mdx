@@ -173,6 +173,20 @@ export default class NewsletterSignups extends React.Component {
 
 Now, `NewsletterSignups` uses `platformState.timeRange` instead of a hardcoded `SINCE` clause.
 
+<Callout variant="tip">
+
+While `NrqlQuery` components accept a convenient `timeRange` prop, not every component does. You can still use `timeRange` in other contexts by accessing `duration`, `begin_time`, or `end_time`:
+
+```jsx
+<PlatformStateContext.Consumer>
+    {
+        (platformState) => { console.log(platformState.timeRange.duration); }
+    }
+</PlatformStateContext.Consumer>
+```
+
+</Callout>
+
 </Step>
 
 <Step>

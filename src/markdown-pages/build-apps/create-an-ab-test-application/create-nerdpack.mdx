@@ -88,4 +88,27 @@ export default class AbTestNerdletNerdlet extends React.Component {
 
 Here, you have `AbTestNerdletNerdlet`, which `nr1` created for you. It's a React component that renders a first-level welcome heading. Because this is the root Nerdlet, as specified in your launcher's _nr1.json_ file, when you click on your launcher in the New Relic One platform, the launcher will open a view that displays this heading.
 
+<Callout variant="tip">
+
+In this lesson, you used `nr1 create` to create a Nerdpack, complete with a launcher and a Nerdlet. If you want to create another Nerdlet or Launcher in your Nerdpack, you can also do that with `nr1 create`:
+
+```sh
+nr1 create --type nerdlet
+nr1 create --type launcher
+```
+
+You can even skip the `--type` flag and select an option from a list:
+
+```sh
+nr1 create
+[output] {green}?{plain} What kind of component do you want to create? {muted}› - Use arrow-keys. Return to submit.
+[output]     nerdpack
+[output] {green}❯   nerdlet{muted} - create a/an Nerdlet artifact inside your Nerdpack.
+[output]     launcher
+[output]     catalog
+[output]     visualization
+```
+
+</Callout>
+
 Next, you learn how to serve your Nerdpack locally and see your application in action!
