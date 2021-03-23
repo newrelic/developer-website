@@ -39,13 +39,15 @@ To get started, make sure you follow the <Link to="/build-apps/custom-visualizat
 
 #### Adding a configuration object
 
-In you visualization's root folder, open the `nr1.json` file. You should already have some configuration objects defined. We are going to add an enum for `selectedChart`. This should look familiar to the component state options we added in the previous guide. 
+In you visualization's root folder, open the `nr1.json` file. You should already have some configuration objects defined. You're going to add an `enum` for `selectedChart`. This should look familiar to the component state options you added in the previous guide.
 
-```json fileName=visualizations/your-visualization/nr1.json
+```json fileName=visualizations/your-visualization/nr1.json lineHighlight=7-22 lineNumbers=true
 {
-...
+  "schemaType": "VISUALIZATION",
+  "id": "typical-door",
+  "displayName": "TypicalDoor",
+  "description": "",
   "configuration": [
-    ...
     {
       "name": "selectedChart",
       "title": "Select chart",
@@ -61,6 +63,37 @@ In you visualization's root folder, open the `nr1.json` file. You should already
           "value": "treemap"
         }
       ]
+    },
+    {
+      "name": "nrqlQueries",
+      "title": "NRQL Queries",
+      "type": "collection",
+      "items": [
+        {
+          "name": "accountId",
+          "title": "Account ID",
+          "description": "Account ID to be associated with the query",
+          "type": "number"
+        },
+        {
+          "name": "query",
+          "title": "Query",
+          "description": "NRQL query for visualization",
+          "type": "nrql"
+        }
+      ]
+    },
+    {
+      "name": "fill",
+      "title": "Fill color",
+      "description": "A fill color to override the default fill color",
+      "type": "string"
+    },
+    {
+      "name": "stroke",
+      "title": "Stroke color",
+      "description": "A stroke color to override the default stroke color",
+      "type": "string"
     }
   ]
 }
