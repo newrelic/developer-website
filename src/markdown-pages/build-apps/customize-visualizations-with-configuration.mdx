@@ -31,7 +31,7 @@ Following the previous guide, the current visualization you are beginning with s
 
 To get started, make sure you follow the <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. You should have that code as your starting point for this guide. 
 
-## Replacing the SegmentedControl with configuration
+## Replace the SegmentedControl with configuration
 
 <Steps>
 
@@ -103,7 +103,7 @@ In you visualization's root folder, open the `nr1.json` file. You should already
 
   <Step>
 
-In your visualization's root folder, open `index.js`. We will be working in this file for the rest of the guide. 
+In your visualization's root folder, open `index.js`. You'll be working in this file for the rest of the guide. 
 
 ```js fileName=visualizations/your-visualization/index.js
 static propTypes = {
@@ -132,7 +132,8 @@ In render, add `selectedChart` to the prop descrtructuring and remove the state 
 
   <Step>
 
-We no longer have a default defined and we want the Radar chart to be the default still. We can add more to the ternary in the render to achieve the same default state. 
+
+You no longer have a default chart defined at this point, but you still want the Radar chart to be the default. You can add more to the ternary in the render to achieve the same default state as you had previously. 
 
 ```jsx
 { 
@@ -146,7 +147,7 @@ We no longer have a default defined and we want the Radar chart to be the defaul
 
   <Step>
 
-We don't need the `SegmentedControl` component any longer so let's remove that from our render. 
+You don't need the `SegmentedControl` component any longer so remove that from your render. 
 
 ```jsx fileName=visualizations/your-visualization/index.js
 // REMOVE THE BELOW
@@ -160,7 +161,7 @@ We don't need the `SegmentedControl` component any longer so let's remove that f
 
   <Step>
 
-In this last step, we just need to delete all of the code for state in our component. 
+In this last step, you just need to delete all of the code for state in your component. 
 
 Remove `static state = { selectedChart: CHART_TYPES.Radar }`
 
