@@ -23,7 +23,7 @@ tags:
 
 This guide builds off of the previous <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. If you haven't followed that guide, please start there as this guide assumes you have the code you built there to get started. 
 
-Following the previous guide, your current visualization should be able to switch between two charts types. Your current implementation takes up some space in the visualization but offers your users the choice to switch between two chart types at any point in the visualization lifecycle. What if you only need to be able to select an option once, when adding it to the dashboard? In that case, you can use the `configuration` key in your visualization's nr1.json file. In the following steps, you'll remove the `SegmentedControl` component and instead add a value to the `configuration` array.
+Following the previous guide, your current visualization should be able to switch between two charts types. Your current implementation takes up some space in the visualization but offers your users the choice to switch between two chart types at any point in the visualization lifecycle. What if you only need to be able to select an option once, when adding it to the dashboard? In that case, you can use the `configuration` key in your visualization's nr1.json file. In the following steps, you'll replace the `SegmentedControl` component with an option in the `configuration` array.
 
 </Intro>
 
@@ -169,10 +169,36 @@ Remove `updateSelectedChart = (evt, value) => { this.setState({ selectedChart: v
 
 </Steps>
 
-Your component should now look like the following:
+Your index.js file should now look like the following:
 
-```jsx
-export default class TypicalDoorVisualization extends React.Component {
+```jsx fileName=visualizations/your-visualization/index.js lineNumbers=true
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  Treemap
+} from 'recharts';
+import { 
+  Card,
+  CardBody,
+  HeadingText,
+  NrqlQuery,
+  SegmentedControl,
+  SegmentedControlItem,
+  Spinner,
+  AutoSizer
+} from 'nr1';
+
+const CHART_TYPES = {
+  'Radar': 'radar',
+  'Treemap': 'treemap'
+}
+
+export default class YourAwesomeVisualization extends React.Component {
   // Custom props you wish to be configurable in the UI must also be defined in
   // the nr1.json file for the visualization. See docs for more details.
   static propTypes = {
@@ -238,13 +264,13 @@ export default class TypicalDoorVisualization extends React.Component {
 
     return (
       <AutoSizer>
-        {({width, height}) => (
+        {({ width, height }) => (
           <NrqlQuery
             query={nrqlQueries[0].query}
             accountId={parseInt(nrqlQueries[0].accountId)}
             pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
           >
-            {({data, loading, error}) => {
+            {({ data, loading, error }) => {
               if (loading) { return <Spinner />; }
 
               if (error) { return <ErrorState />; }
@@ -289,6 +315,40 @@ export default class TypicalDoorVisualization extends React.Component {
     );
   }
 }
+
+const EmptyState = () => (
+  <Card className="EmptyState">
+    <CardBody className="EmptyState-cardBody">
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Please provide at least one NRQL query & account ID pair
+      </HeadingText>
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
+        type={HeadingText.TYPE.HEADING_4}
+      >
+        An example NRQL query you can try is:
+      </HeadingText>
+      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
+    </CardBody>
+  </Card>
+);
+
+const ErrorState = () => (
+  <Card className="ErrorState">
+    <CardBody className="ErrorState-cardBody">
+      <HeadingText
+        className="ErrorState-headingText"
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Oops! Something went wrong.
+      </HeadingText>
+    </CardBody>
+  </Card>
+);
 ```
 
 <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">Run your visualization locally</Link> and view it in the Custom Visualization app in New Relic. You should be able to select a chart type from the dropdown in the configuration sidebar and see your visualization update to show the matching chart type. Your visualization should look like the following: 
