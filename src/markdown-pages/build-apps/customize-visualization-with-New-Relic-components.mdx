@@ -19,7 +19,7 @@ tags:
 
 <Intro>
 
-Now that you have a basic visualization, let's customize it! You can use all of the <Link to="explore-docs/intro-to-sdk">New Relic One SDK</Link> components in a Custom Visualization the same way you can use them in a Nerdlet. In this guide, we will add a new chart type and a `SegmentedControl` component. You will be able to dynamically swap between the Radar chart and the new chart right from the browser. 
+Now that you have a basic visualization, let's customize it! You can use all of the <Link to="explore-docs/intro-to-sdk">New Relic One SDK</Link> components in a Custom Visualization the same way you can use them in a Nerdlet. In this guide, you'll add a new chart type and a `SegmentedControl` component. You'll be able to dynamically swap between the Radar chart and the new chart right from the browser. 
 
 This guide builds off the <Link to="/build-apps/build-visualization">Build a custom visualization for dashboards</Link> guide. 
 
@@ -27,17 +27,17 @@ This guide builds off the <Link to="/build-apps/build-visualization">Build a cus
 
 ## Before you begin
 
-To get started, follow the <Link to="/build-apps/build-visualization">Build a custom visualization for dashboards</Link> guide to get setup with your <Link to="https://newrelic.com/signup?utm_source=developer-site">New Relic</Link> account, install the <Link to="/explore-docs/nr1-cli">New Relic One CLI</Link>, and create your first visualization. We will use the visualization you create in that guide as a starting point for this guide.
+To get started, follow the <Link to="/build-apps/build-visualization">Build a custom visualization for dashboards</Link> guide to get setup with your <Link to="https://newrelic.com/signup?utm_source=developer-site">New Relic</Link> account, install the <Link to="/explore-docs/nr1-cli">New Relic One CLI</Link>, and create your first visualization. You'll use the visualization you create in that guide as a starting point for this guide.
 
 ## Setup the visualization component state
 
-In this first set of steps you will add component state to your visualization template form the previous guide referrenced above. 
+In this first set of steps you'll add component state to your visualization template form the previous guide referrenced above. 
 
 <Steps>
 
   <Step>
 
-From the root of the Nerdpack project you created in the previous guide, navigate to `/visualizations/<your-visualization>/index.js`. We will continue to work in the `index.js` file for the rest of this guide. Add a chart types constant above the first line of the class. 
+From the root of the Nerdpack project you created in the previous guide, navigate to `/visualizations/<your-visualization>/index.js`. You'll continue to work in the `index.js` file for the rest of this guide. Add a chart types constant above the first line of the class. 
 
 
 ```js
@@ -61,7 +61,7 @@ In the class component, just after the `static propTypes` block, add the compone
 
   </Step>
 
-After these two steps, the beginning of you `index.js` file should look like this:
+After these two steps, the beginning of your `index.js` file should look like this:
 
 ```jsx
 
@@ -90,14 +90,14 @@ export default class MyAwesomeVisualization extends React.Component {
 
 ## Add `SegmentedControl` and `SegmentedControlItem` components
 
-To let our visualization consumer decide what type of chart they want to display, we are going to use `SegmentedControl` and `SegmentedControlItem` for switching between our chart types. To learn more about the components available from New Relic, go to our <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK</Link>.
+To let your visualization consumer decide what type of chart they want to display, you're going to use `SegmentedControl` and `SegmentedControlItem` for switching between your chart types. To learn more about the components available from New Relic, go to our <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK</Link>.
 
 <Steps>
   <Step>
 
 ### Import components
 
-Add `SegmentedControl` and `SegmentedControlItem` to the import from `nr1` at the top of our index.js.
+Add `SegmentedControl` and `SegmentedControlItem` to the import from `nr1` at the top of your index.js.
 
 ```js
 import { 
@@ -186,7 +186,7 @@ return (
 
 ## Connect component state with the new UI controls
 
-In the next steps, we are going to add a function to update state and connect that with the `SegmentedControl` component.
+In the next steps, you're going to add a function to update state and connect that with the `SegmentedControl` component.
 
 <Steps>
 
@@ -216,9 +216,9 @@ Use the `updateSelectedChart` method in `SegmentedControl` onChange prop.
 
 <Steps>
 
-## Add our new chart option 
+## Add your new chart option 
 
-In the next couple of steps, we will add the <Link to="https://recharts.org/en-US/api/Treemap">Treemap chart from Recharts</Link> and get the correct values passed into it.
+In the next couple of steps, you'll add the <Link to="https://recharts.org/en-US/api/Treemap">Treemap chart from Recharts</Link> and get the correct values passed into it.
 
   <Step>
 
@@ -265,7 +265,7 @@ Now <Link to="/build-apps/build-visualization#render-the-visualization-in-local-
 
 ## Use component state to switch between charts
 
-In the final step, we will use our `selectedChart` state value to determine which chart to show, the Radar chart or the Treemap chart.
+In the final step, you'll use the `selectedChart` state value to determine which chart to show, the Radar chart or the Treemap chart.
 
   <Step>
 
