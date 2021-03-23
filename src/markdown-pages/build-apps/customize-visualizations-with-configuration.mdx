@@ -37,15 +37,13 @@ To get started, make sure you follow the <Link to="/build-apps/custom-visualizat
 
   <Step>
 
-#### Adding a configuration object
-
 In you visualization's root folder, open the `nr1.json` file. You should already have some configuration objects defined. You're going to add an `enum` for `selectedChart`. This should look familiar to the component state options you added in the previous guide.
 
 ```json fileName=visualizations/your-visualization/nr1.json lineHighlight=7-22 lineNumbers=true
 {
   "schemaType": "VISUALIZATION",
-  "id": "typical-door",
-  "displayName": "TypicalDoor",
+  "id": "your-awesome-visualization",
+  "displayName": "Your Awesome Visualization",
   "description": "",
   "configuration": [
     {
@@ -161,7 +159,7 @@ You don't need the `SegmentedControl` component any longer so remove that from y
 
   <Step>
 
-In this last step, you just need to delete all of the code for state in your component. 
+In this last step, you just need to delete all of the component state code. 
 
 Remove `static state = { selectedChart: CHART_TYPES.Radar }`
 
@@ -293,7 +291,12 @@ export default class TypicalDoorVisualization extends React.Component {
 }
 ```
 
-<Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">Run your visualization locally</Link> and view it in the Custom Visualization app in New Relic. Select a chart type from the dropdown in the configuration sidebar.
+<Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">Run your visualization locally</Link> and view it in the Custom Visualization app in New Relic. You should be able to select a chart type from the dropdown in the configuration sidebar and see your visualization update to show the matching chart type. Your visualization should look like the following: 
+
+<img
+  src="../../images/build-an-app/custom-chart-type-configuration-prop.png"
+  alt="Final custom visualization outcome from this guide"
+/>
 
 ## Summary
 
