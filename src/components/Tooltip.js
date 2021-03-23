@@ -43,7 +43,6 @@ const ToolTip = ({ children, className }) => {
           --text-color: var(--color-dark-900);
           --background-color: var(--color-dark-050);
         }
-        width: 200px;
 
         position: absolute;
 
@@ -54,6 +53,7 @@ const ToolTip = ({ children, className }) => {
         box-shadow: 0 3px 8px 0 rgba(22, 38, 59, 0.2);
         right: var(---arrow-offset);
         font-size: 12px;
+        width: 200px;
 
         &::before {
           content: '';

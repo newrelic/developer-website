@@ -75,26 +75,29 @@ const PropItem = ({ propItem, onCheck, onChange, component }) => {
           {type.raw}
         </span>
       </div>
-
-      <div
-        css={css`
-          background-color: var(--color-nord-0);
-          padding: 0.25rem;
-          margin-left: 0.5rem;
-          border-radius: 4px;
-          height: 1.5rem;
-        `}
-      >
-        <Editor
-          value={code}
-          highlight={(code) => <HighlightedCode>{code}</HighlightedCode>}
-          onValueChange={onEditorChange}
-          style={{
-            fontFamily: '"Fira code", "Fira Mono", monospace',
-            fontSize: 12,
-            height: '1rem',
-          }}
-        />
+      <div>
+        {checked && (
+          <div
+            css={css`
+              background-color: var(--color-nord-0);
+              padding: 0.25rem;
+              margin-left: 0.5rem;
+              border-radius: 4px;
+              height: 1.5rem;
+            `}
+          >
+            <Editor
+              value={code}
+              highlight={(code) => <HighlightedCode>{code}</HighlightedCode>}
+              onValueChange={onEditorChange}
+              style={{
+                fontFamily: '"Fira code", "Fira Mono", monospace',
+                fontSize: 12,
+                height: '1rem',
+              }}
+            />
+          </div>
+        )}
       </div>
       {component.constants && checked && (
         <PropItemType propItem={propItem} constants={component.constants} />

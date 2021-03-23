@@ -7,7 +7,8 @@ import Editor from 'react-simple-code-editor';
 import { SDK_VARS } from '../../utils/sdk';
 import root from 'react-shadow';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Icon } from '@newrelic/gatsby-theme-newrelic';
+import formatCode from '../../utils/formatCode';
 
 const platformStateContextMock = {
   timeRange: {
@@ -79,6 +80,7 @@ const CodePreview = ({ code, onChange, onAdd }) => {
               padding: 1rem;
               background-color: var(--color-nord-0);
               border-radius: 0.25rem;
+              overflow: scroll;
             `}
           >
             <Editor
@@ -118,7 +120,19 @@ const CodePreview = ({ code, onChange, onAdd }) => {
                 overflow: hidden;
                 padding-right: 0.5rem;
               `}
-            />
+            >
+              <Button
+                type="button"
+                variant={Button.VARIANT.LINK}
+                onClick={() => onChange(formatCode(code))}
+                size={Button.SIZE.SMALL}
+                css={css`
+                  white-space: nowrap;
+                `}
+              >
+                <Icon name="fe-code" />
+              </Button>
+            </div>
             <Button
               type="button"
               variant={Button.VARIANT.LINK}

@@ -36,6 +36,7 @@ const PlaygroundToggleItem = ({ onClick, children, to, alt }) => {
             top: 0;
             transform: translate(-100%);
             background-color: black;
+            width: 100px;
           `}
         >
           {alt}

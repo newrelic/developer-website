@@ -5,6 +5,15 @@ import theme from './nordDark';
 
 const LAST_COMPONENT = /[A-Za-z ]+(?!.*<)/;
 
+const DEFAULT_PROPS = {
+  func: '() => {}',
+  number: '0',
+  string: "''",
+  arrayOf: '[]',
+  bool: 'false',
+  object: '{}',
+};
+
 const useCustomMonaco = () => {
   const {
     allNewRelicSdkComponent: { nodes: components },
@@ -159,8 +168,10 @@ const provideCompletion = ({ model, position, components, monaco }) => {
         const startTag = `${name}`;
         const endTag = `</${name}>`;
         const attributes = requiredProps
-          .map(({ name, defaultValue }) => {
-            return `${name}={${defaultValue}}`;
+          .map(({ name, defaultValue, type }) => {
+            return `${name}={${String(
+              defaultValue ?? (DEFAULT_PROPS[type.raw] || null)
+            )}}`;
           })
           .join(' ');
 

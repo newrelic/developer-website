@@ -9,8 +9,6 @@ import PropItem from './PropItem';
 import Markdown from '../Markdown';
 import ExampleEditor from './ExampleEditor';
 
-const inBetween = (componentName) => new RegExp(`>([^<]*)</${componentName}`);
-
 const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
   const {
     name: componentName,
@@ -53,12 +51,13 @@ const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
 
   // prop: value
   const createCodeString = (selectedProps) => {
-    const childMatch = liveCode.match(inBetween(componentName));
-    const child = childMatch > 1 ? '' : childMatch[1];
     return `<${componentName}${Object.entries(selectedProps).reduce(
-      (acc, [name, value]) => `${acc} ${name}={${value}}`,
+      (acc, [name, value]) =>
+        name === 'children' ? acc : `${acc} ${name}={${value}}`,
       ''
-    )}>${child}</${componentName}>`;
+    )}>${
+      selectedProps.children ? `{${selectedProps.children}}` : ''
+    }</${componentName}>`;
   };
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
