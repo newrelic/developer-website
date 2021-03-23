@@ -183,7 +183,7 @@ To let your visualization consumer decide what type of chart they want to displa
 
 Add `SegmentedControl` and `SegmentedControlItem` to the import from `nr1` at the top of your index.js.
 
-```js
+```js fileName=visualizations/your-visualization/index.js
 import { 
   Card,
   CardBody,
@@ -191,7 +191,6 @@ import {
   NrqlQuery,
   SegmentedControl,
   SegmentedControlItem,
-  Spacing,
   Spinner,
   AutoSizer
 } from 'nr1';
@@ -205,7 +204,7 @@ import {
 
 In the `render` function, wrap `RadarChart` in `<React.Fragment> ... </React.Fragment>`. Then add the `SegmentedControl` and `SegmentedControlItem` above the `RadarChart` and set the value and label.
 
-```jsx
+```jsx fileName=visualizations/your-visualization/index.js
   <SegmentedControl onChange={(event, value) => console.log(value)}>
     <SegmentedControlItem value={CHART_TYPES.Radar} label="Radar chart" />
     <SegmentedControlItem value={CHART_TYPES.Treemap} label="Treemap chart" />
@@ -216,7 +215,7 @@ In the `render` function, wrap `RadarChart` in `<React.Fragment> ... </React.Fra
 
 Now the final return in your render block should look like this:
 
-```jsx
+```jsx fileName=visualizations/your-visualization/index.js
 return (
   <AutoSizer>
     {({width, height}) => (
@@ -236,12 +235,10 @@ return (
 
           return (
             <React.Fragment>
-              <Spacing type={[Spacing.TYPE.EXTRA_LARGE]}>
                 <SegmentedControl onChange={(event, value) => console.log(value)}>
                   <SegmentedControlItem value={CHART_TYPES.Radar} label="Radar chart" />
                   <SegmentedControlItem value={CHART_TYPES.Treemap} label="Treemap chart" />
                 </SegmentedControl>
-              </Spacing>
               <RadarChart
                 width={width}
                 height={height}
@@ -266,6 +263,13 @@ return (
 );
 ```
 
+If you <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">run your visualization locally</Link>, your visualization should match the following image and changing the SegmentedControl should not have any effect on the visualization. 
+
+<img
+  src="../../images/build-an-app/radar-chart-with-segmented-control.png"
+  alt="Visualization with SegmenetedControl"
+/>
+
 </Steps>
 
 ## Connect component state with the new UI controls
@@ -278,7 +282,7 @@ In the next steps, you're going to add a function to update state and connect th
 
 Add a component method that updates state to your visualization class.
 
-```js
+```js fileName=visualizations/your-visualization/index.js 
   updateSelectedChart = (evt, value) => {
     this.setState({ selectedChart: value })
   }
@@ -290,7 +294,7 @@ Add a component method that updates state to your visualization class.
 
 Use the `updateSelectedChart` method in `SegmentedControl` onChange prop.
 
-```jsx
+```jsx fileName=visualizations/your-visualization/index.js 
 <SegmentedControl onChange={this.updateSelectedChart}>
 ```
 
@@ -308,7 +312,7 @@ In the next couple of steps, you'll add the <Link to="https://recharts.org/en-US
 
 Add `Treemap` to the import from recharts. 
 
-```js
+```jsx fileName=visualizations/your-visualization/index.js 
 import {
   Radar,
   RadarChart,
@@ -327,7 +331,7 @@ To learn more about `Treemap` chart, go to the <Link to="https://recharts.org/en
 
 Under the `RadarChart` closing tag in render, add the `Treemap` component and the neccessary props.
 
-```jsx
+```jsx fileName=visualizations/your-visualization/index.js 
 <Treemap
   width={width}
   height={height}
@@ -341,7 +345,7 @@ Under the `RadarChart` closing tag in render, add the `Treemap` component and th
 
   </Step>
 
-Now <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">render the visualziation in local development</Link> to see the new Treemap chart below your Radar chart.
+Now <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">render the visualization in local development</Link> to see the new Treemap chart below your Radar chart.
 
 </Steps>
 
@@ -355,7 +359,7 @@ In the final step, you'll use the `selectedChart` state value to determine which
 
 Destructure `selectedChart` from state near the top of the `render()` function.
 
-```js
+```jsx fileName=visualizations/your-visualization/index.js 
 const { selectedChart } = this.state;
 ```
 
@@ -363,9 +367,9 @@ const { selectedChart } = this.state;
 
   <Step>
 
-Wrap the `RadarChart` and `Treemap` in a ternary using the `selectedChart` state.
+Here, you compare `selectedChart` to `CHART_TYPES.Radar`. If `selectedChart` is a Radar, you render a RadarChart. Otherwise, you render a Treemap. You can achieve this by wrapping the `RadarChart` and `Treemap` in a ternary using the `selectedChart` state.
 
-```jsx
+```jsx fileName=visualizations/your-visualization/index.js 
 {
   selectedChart === CHART_TYPES.Radar ?
   <RadarChart> ... <RadarChart>
@@ -378,7 +382,7 @@ Wrap the `RadarChart` and `Treemap` in a ternary using the `selectedChart` state
 
 Your full render function should look like this: 
 
-```jsx
+```jsx fileName=visualizations/your-visualization/index.js lineNumbers=true
 render() {
   const { nrqlQueries, stroke, fill } = this.props;
   const { selectedChart } = this.state;
@@ -414,12 +418,10 @@ render() {
 
             return (
               <React.Fragment>
-                <Spacing type={[Spacing.TYPE.EXTRA_LARGE]}>
                   <SegmentedControl onChange={this.updateSelectedChart}>
                     <SegmentedControlItem value={CHART_TYPES.Radar} label="Radar chart" />
                     <SegmentedControlItem value={CHART_TYPES.Treemap} label="Treemap chart" />
                   </SegmentedControl>
-                </Spacing>
                 { selectedChart === CHART_TYPES.Radar ?
                   <RadarChart
                     width={width}
