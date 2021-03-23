@@ -21,9 +21,9 @@ tags:
 
 <Intro>
 
-This guide builds off of the previous <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. If you haven't followed that guide, please start there as this guide assumes you have the code you built in that guide to get started. 
+This guide builds off of the previous <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. If you haven't followed that guide, please start there as this guide assumes you have the code you built there to get started. 
 
-Following the previous guide, the current visualization you are beginning with should be able to switch between two charts types. Your current implementation takes up some space in the visualization gives your users the choice to switch between two chart types at any point in the visualization lifecycle. What if you only need to be able to select an option once, when adding it to the dashboard? In that case, you can use the `coniguration` key in your visualization's nr1.json file. In the following steps, you'll remove the `SegmentedControl` component and instead add a value to the `configuration` array.
+Following the previous guide, your current visualization should be able to switch between two charts types. Your current implementation takes up some space in the visualization but offers your users the choice to switch between two chart types at any point in the visualization lifecycle. What if you only need to be able to select an option once, when adding it to the dashboard? In that case, you can use the `configuration` key in your visualization's nr1.json file. In the following steps, you'll remove the `SegmentedControl` component and instead add a value to the `configuration` array.
 
 </Intro>
 
