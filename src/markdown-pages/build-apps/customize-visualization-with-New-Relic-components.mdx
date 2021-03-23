@@ -27,18 +27,19 @@ This guide builds off the <Link to="/build-apps/build-visualization">Build a cus
 
 ## Before you begin
 
-To get started, follow the <Link to="/build-apps/build-visualization">Build a custom visualization for dashboards</Link> guide to get setup with your <Link to="https://newrelic.com/signup?utm_source=developer-site">New Relic</Link> account, install the <Link to="/explore-docs/nr1-cli">New Relic One CLI</Link>, and create your first visualization. You'll use the visualization you create in that guide as a starting point for this guide.
+To get started, follow the <Link to="/build-apps/build-visualization">Build a custom visualization for dashboards</Link> guide to get set up with your <Link to="https://newrelic.com/signup?utm_source=developer-site">New Relic</Link> account, install the <Link to="/explore-docs/nr1-cli">New Relic One CLI</Link>, and create your first visualization. You'll use the visualization you create in that guide as a starting point for this guide.
 
-## Setup the visualization component state
+## Set up the visualization component state
 
-In this first set of steps you'll add component state to your visualization template form the previous guide referrenced above. 
+In this first set of steps you'll add component state to your visualization template from the previous guide referenced above. 
 
 <Steps>
 
   <Step>
 
-From the root of the Nerdpack project you created in the previous guide, navigate to `/visualizations/<your-visualization>/index.js`. You'll continue to work in the `index.js` file for the rest of this guide. Add a chart types constant above the first line of the class. 
+From the root of the Nerdpack project you created in the previous guide, navigate to `/visualizations/<your-visualization>/index.js`. You'll continue to work in the `index.js` file for the rest of this guide. 
 
+Add a chart types constant above the first line of the class and add the component state property with an initial state for `selectedChart`. 
 
 ```js
 const CHART_TYPES = {
