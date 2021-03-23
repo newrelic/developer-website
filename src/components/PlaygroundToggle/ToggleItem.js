@@ -50,6 +50,7 @@ PlaygroundToggleItem.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node,
   to: PropTypes.string,
+  alt: PropTypes.string,
 };
 
 export default PlaygroundToggleItem;
