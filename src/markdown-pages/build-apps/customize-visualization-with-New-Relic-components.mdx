@@ -5,6 +5,8 @@ title: 'Custom visualizations and the New Relic One SDK'
 template: 'GuideTemplate'
 description: 'Customize your visualization'
 resources:
+  - title: Build a custom visualization for dashboards
+    url: '/build-apps/build-visualization'
   - title: New Relic One VSCode extension
     url: https://marketplace.visualstudio.com/items?itemName=new-relic.nr1
   - title: 'Build on New Relic One'
@@ -172,14 +174,10 @@ export default class TypicalDoorVisualization extends React.Component {
 
 </Steps>
 
-## Add `SegmentedControl` and `SegmentedControlItem` components
-
 To let your visualization consumer decide what type of chart they want to display, you're going to use `SegmentedControl` and `SegmentedControlItem` for switching between your chart types. To learn more about the components available from New Relic, go to our <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK</Link>.
 
 <Steps>
   <Step>
-
-### Import components
 
 Add `SegmentedControl` and `SegmentedControlItem` to the import from `nr1` at the top of your index.js.
 
@@ -199,8 +197,6 @@ import {
   </Step>
 
   <Step>
-
-### Use the newly imported components
 
 In the `render` function, wrap `RadarChart` in `<React.Fragment> ... </React.Fragment>`. Then add the `SegmentedControl` and `SegmentedControlItem` above the `RadarChart` and set the value and label.
 
@@ -292,7 +288,7 @@ Add a component method that updates state to your visualization class.
 
   <Step>
 
-Use the `updateSelectedChart` method in `SegmentedControl` onChange prop.
+Pass `updateSelectedChart` as the `SegmentedControl` component's onChange prop.
 
 ```jsx fileName=visualizations/your-visualization/index.js 
 <SegmentedControl onChange={this.updateSelectedChart}>
@@ -322,14 +318,17 @@ import {
   Treemap
 } from 'recharts';
 ```
+
+<Callout variant="tip" title="Further reading">
+To learn more about the Treemap chart component, go to the <Link to="https://recharts.org/en-US/examples/SimpleTreemap">Recharts Treemap example</Link> or the <Link to="https://recharts.org/en-US/api/Treemap">Recharts Treemap API docs</Link>.
+</Callout>
     
   </Step>
 
-To learn more about `Treemap` chart, go to the <Link to="https://recharts.org/en-US/examples/SimpleTreemap">Recharts Treemap example</Link> or the <Link to="https://recharts.org/en-US/api/Treemap">Recharts Treemap API docs</Link>.
 
   <Step>
 
-Under the `RadarChart` closing tag in render, add the `Treemap` component and the neccessary props.
+Under the `RadarChart` closing tag in render, add the `Treemap` component and the necessary props.
 
 ```jsx fileName=visualizations/your-visualization/index.js 
 <Treemap
