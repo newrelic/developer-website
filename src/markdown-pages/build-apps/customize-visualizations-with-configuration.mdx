@@ -1,10 +1,12 @@
 ---
 path: '/build-apps/customize-visualizations-with-configuration'
 duration: '10 min'
-title: 'Custom visualizations and the New Relic One SDK'
+title: 'Customize visualizations with configuration'
 template: 'GuideTemplate'
 description: 'Customize your visualization using configuration'
 resources:
+  - title: Custom visualizations and the New Relic One SDK
+    url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
   - title: New Relic One VSCode extension
     url: https://marketplace.visualstudio.com/items?itemName=new-relic.nr1
   - title: 'Build on New Relic One'
@@ -19,9 +21,9 @@ tags:
 
 <Intro>
 
-This guide builds off of the previous <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. If you haven't followed that guide, please start there as this guide assumes you have the code we built in that guide to get started. 
+This guide builds off of the previous <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. If you haven't followed that guide, please start there as this guide assumes you have the code you built in that guide to get started. 
 
-Following the previous guide, users should be able to switch between two charts types. Our current implementation takes up some space in the visualization gives our users the choice to switch between two chart types at any point in the visualization lifecycle. What if we only need to be able to select an option once, when adding it to the dashboard? In that case, we can use the `coniguration` key in our visualization's nr1.json file. In the following steps, we will remove the `SegmentedControl` component and instead add a value to te `configuration` array.
+Following the previous guide, the current visualization you are beginning with should be able to switch between two charts types. Your current implementation takes up some space in the visualization gives your users the choice to switch between two chart types at any point in the visualization lifecycle. What if you only need to be able to select an option once, when adding it to the dashboard? In that case, you can use the `coniguration` key in your visualization's nr1.json file. In the following steps, you'll remove the `SegmentedControl` component and instead add a value to the `configuration` array.
 
 </Intro>
 
