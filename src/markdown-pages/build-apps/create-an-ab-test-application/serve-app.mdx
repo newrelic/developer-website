@@ -32,11 +32,11 @@ When the Nerdpack has succeeded building and your application is ready to view, 
 [output] {blue}↩{plain}  Server will reload automatically if you modify any file!
 ```
 
-Notice the appended query parameter `nerdpacks=local`. This query parameter tells New Relic One to include locally served Nerdpacks.
+Notice the appended query parameter `nerdpacks=local`. This query parameter tells New Relic to show locally served Nerdpacks.
 
 <Callout variant="tip">
 
-If you don't see your application on the New Relic One platform, make sure you've included `nerdpacks=local` in your querystring!
+If you don't see your application on the New Relic platform, make sure you've included `nerdpacks=local` in your querystring!
 
 </Callout>
 
@@ -44,7 +44,7 @@ If you don't see your application on the New Relic One platform, make sure you'v
 
 <Step>
 
-Navigate to the provided url. From the home page, select _Apps_ to view New Relic One applications:
+Navigate to the provided url. From the home page, select **Apps** to view New Relic One applications:
 
 ![Navigate to the applications view in New Relic](../../../images/ab-test/select-apps.png)
 
@@ -52,7 +52,7 @@ Navigate to the provided url. From the home page, select _Apps_ to view New Reli
 
 <Step>
 
-Under the _Your apps_ section, find your launcher, called "A/B Test Launcher":
+Under the **Your apps** section, find your launcher, called "A/B Test Launcher":
 
 ![Select your application's launcher](../../../images/ab-test/select-launcher.png)
 
@@ -60,7 +60,7 @@ Under the _Your apps_ section, find your launcher, called "A/B Test Launcher":
 
 <Step>
 
-Select your launcher and see the default welcome message:
+Select your launcher to see your root Nerdlet and its default welcome message:
 
 ![Your application's default welcome message](../../../images/ab-test/default-message.png)
 
@@ -82,7 +82,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
 }
 ```
 
-New Relic One automatically refreshes your application to show the new heading:
+Your app automatically refreshes to show the new heading:
 
 ![Your application's new welcome message](../../../images/ab-test/new-message.png)
 

@@ -13,46 +13,109 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 
 </Callout>
 
+One of the primary elements of the New Relic One SDK is the command line interface (CLI). To create a Nerdpack , you'll need to install the SDK, configure the CLI to work with your New Relic account, and then utilize its `create` command.
 
-One of the primary elements of the New Relic One SDK is the CLI. To create a Nerdpack for building your application, you'll need to install the SDK, configure the CLI to work with your New Relic account, and then utilize its `create` command.
+# Install and configure the CLI
 
-To install and configure the New Relic One CLI, head to the New Relic One applications quick start guide. There, you will complete a six-step process to get your first Nerdpack up and running.
+<Steps>
 
-The first step in the quick start guide is to select or create a User key. You use this key to associate your New Relic account with the CLI. The CLI then uses the key to manage entities within your account.
+<Step>
 
-In the second step, you download the SDK's installer for your operating system. Once you install the SDK, you'll have access to the `nr1` CLI. Verify this by checking your SDK version:
+**Select or create a User key.**
 
-```bash
+From the top navigation, go to **API keys**:
+
+![API keys](../../../images/ab-test/api-keys.png)
+
+If you have an existing User key, copy it:
+
+![Copy existing key](../../../images/ab-test/copy-existing-key.png)
+
+If not, click **Create key**:
+
+![Create key button](../../../images/ab-test/create-key-button.png)
+
+Select **User** for **Key type**, optionally add a name and notes, and click **Create key**:
+
+![Create key details](../../../images/ab-test/create-key-details.png)
+
+You use this key to associate your New Relic account with the CLI. The CLI then uses the key to manage entities within your account.
+
+</Step>
+
+<Step>
+
+**Download the SDK's installer for your operating system.**
+
+Install the SDK for your operating system:
+
+- [Mac download](https://cli.nr-ext.net/installer.pkg)
+- [Linux download](https://cli.nr-ext.net/installer.sh)
+- [Windows download](https://cli.nr-ext.net/installer.exe)
+
+Once you've installed the SDK, you'll have access to the `nr1` CLI. Verify this by checking your SDK version:
+
+```sh
 nr1 --version
 ```
 
-> Note: It’s important to distinguish between the `newrelic` CLI and the `nr1` CLI. `newrelic` is for managing New Relic entities in your account. `nr1` is for managing New Relic One applications.
+<Callout variant="tip">
 
-Next, you associate your New Relic account as a CLI profile. Profiles let you select which New Relic account you want to run commands against. If you have multiple accounts, you can view them with `profiles:list`:
+It’s important to distinguish between the `newrelic` CLI and the `nr1` CLI. `newrelic` is for managing entities in your New Relic account. `nr1` is for managing New Relic One applications.
 
-```bash
+</Callout>
+
+</Step>
+
+<Step>
+
+**Associate your New Relic account as a CLI profile.**
+
+Use `nr1 profiles:add` to associate the CLI with your New Relic account:
+
+```sh
+nr1 profiles:add --name <profile name> --api-key <User key> --region <region>
+```
+
+<Callout variant="important">
+
+Make sure to replace the `<profile name>`, the `<User key>`, and the region (either `us` or `eu`) with real values.
+
+</Callout>
+
+Profiles let you select which New Relic account you want to run commands against. If you have multiple accounts, you can view them with `profiles:list`:
+
+```sh
 nr1 profiles:list
 ```
 
 Notice that one profile is your default profile. This is the account your commands will run against, unless you specify another. To specify a profile for a particular command, use the `--profile` option:
 
-```bash
+```sh
 nr1 create --profile <your profile>
 ```
 
-In the quick start guide, you add a new account with `profiles:add`. If this is your first time using the CLI, then the profile you add is your default profile. If you have other profiles, you need to set your default to the one you'd like to use for learning about New Relic One applications:
+If this is your first time using the CLI, then the profile you just added is your default profile. If you have other profiles, you need to set your default to the one you'd like to use for this course:
 
-```bash
+```sh
 nr1 profiles:default
 ```
 
+<Callout variant="tip">
+
 If you forget these commands, you can look them up in the profiles help menu:
 
-```bash
+```sh
 nr1 profiles --help
 ```
 
-In steps five and six in the quick start guide, you set up and serve an empty Nerdpack. Ignore this for now, since you will build an application throughout this course. Now, you’re ready to build an application with the New Relic One CLI.
+</Callout>
+
+</Step>
+
+</Steps>
+
+Now, you’re ready to build an application with the New Relic One CLI.
 
 <Callout variant="tip" title="Course">
 
