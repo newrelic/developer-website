@@ -28,7 +28,7 @@ const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
     } else {
       newProps[propItem.name] = propItem.value;
     }
-    setLiveCode(formatCode(createCodeString(newProps)));
+    setLiveCode(formatCode(createCodeString(newProps), { language: 'jsx' }));
     setSelectedProps(newProps);
   };
 

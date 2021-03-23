@@ -124,7 +124,7 @@ const CodePreview = ({ code, onChange, onAdd }) => {
               <Button
                 type="button"
                 variant={Button.VARIANT.LINK}
-                onClick={() => onChange(formatCode(code))}
+                onClick={() => onChange(formatCode(code), { language: 'jsx' })}
                 size={Button.SIZE.SMALL}
                 css={css`
                   white-space: nowrap;

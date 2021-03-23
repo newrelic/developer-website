@@ -23,7 +23,7 @@ const PropItemType = ({ propItem, constants }) => {
           grid-column: span 4;
         `}
       >
-        <RawCode language="json" code={code} />{' '}
+        <RawCode language="javascript" code={code} />{' '}
       </div>
     );
   }

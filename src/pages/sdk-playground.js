@@ -33,7 +33,7 @@ const SdkPlayground = () => {
   useKeyPress(
     'Enter',
     () => {
-      setCode(formatCode(code));
+      setCode(formatCode(code, { language: 'jsx', semicolons: false }));
     },
     { ignoreTextInput: false }
   );
