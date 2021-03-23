@@ -174,16 +174,15 @@ export default class YourAwesomeVisualization extends React.Component {
 
 </Steps>
 
-<Steps>
-
 ## Add the `SegmentedControl` components
 
+To let the consumers of your visualization decide what type of chart they want to display, you'll use `SegmentedControl` and `SegmentedControlItem`, which allow users to switch between a set of provided options. To learn more about the components available from New Relic, go to our <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK</Link>.
 
-To let your visualization consumer decide what type of chart they want to display, you're going to use `SegmentedControl` and `SegmentedControlItem` for switching between your chart types. To learn more about the components available from New Relic, go to our <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK</Link>.
+<Steps>
 
   <Step>
 
-Add `SegmentedControl` and `SegmentedControlItem` to the import from `nr1` at the top of your index.js.
+Add `SegmentedControl` and `SegmentedControlItem` to the import from `nr1`. 
 
 ```js fileName=visualizations/your-visualization/index.js
 import { 
@@ -302,7 +301,6 @@ Pass `updateSelectedChart` as the `SegmentedControl` component's onChange prop.
 
 </Steps>
 
-<Steps>
 
 ## Add your new chart option 
 
@@ -311,6 +309,8 @@ In the next couple of steps, you'll add the <Link to="https://recharts.org/en-US
 <Callout variant="tip">
 This guide uses <Link to="https://recharts.org">Recharts</Link> chart components but you can explore any other JavaScript charting libraries that are compatible with the current React version on the New Relic One Platform.
 </Callout>
+
+<Steps>
 
   <Step>
 
@@ -361,11 +361,12 @@ Now <Link to="/build-apps/build-visualization#render-the-visualization-in-local-
 
 </Steps>
 
-<Steps>
 
 ## Use component state to switch between charts 
 
 In the final steps, you'll use the `selectedChart` state value to determine which chart to show, the Radar chart or the Treemap chart.
+
+<Steps>
 
   <Step>
 
