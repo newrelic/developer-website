@@ -103,8 +103,6 @@ In you visualization's root folder, open the `nr1.json` file. You should already
 
   <Step>
 
-#### Update your propTypes definition
-
 In your visualization's root folder, open `index.js`. We will be working in this file for the rest of the guide. 
 
 ```js fileName=visualizations/your-visualization/index.js
@@ -119,13 +117,11 @@ static propTypes = {
 
   </Step>
 
-#### Replacing component state with component props
-
   <Step>
 
 In render, add `selectedChart` to the prop descrtructuring and remove the state referrence. 
 
-```js fileName=visualizations/your-visualization/index.js autoformat=false
+```js fileName=visualizations/your-visualization/index.js 
 // ADD selectedChart
 + const { nrqlQueries, stroke, fill, selectedChart = CHART_TYPES.Radar } = this.props;
 // REMOVE BELOW LINE
@@ -150,8 +146,6 @@ We no longer have a default defined and we want the Radar chart to be the defaul
 
   <Step>
 
-#### Clean up the UI 
-
 We don't need the `SegmentedControl` component any longer so let's remove that from our render. 
 
 ```jsx fileName=visualizations/your-visualization/index.js
@@ -165,8 +159,6 @@ We don't need the `SegmentedControl` component any longer so let's remove that f
   </Step>
 
   <Step>
-
-#### Remove component state referrences
 
 In this last step, we just need to delete all of the code for state in our component. 
 
