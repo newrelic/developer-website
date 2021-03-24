@@ -136,7 +136,7 @@ const NerdlogPage = ({ location }) => {
                   title="Nerdlog Weekly Email"
                   munchkinId="341-XKP-310"
                   publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
-                  redirectLink="/nerd-days-thank-you"
+                  redirectLink="/nerdlog-thank-you"
                 />
               </div>
             </div>
