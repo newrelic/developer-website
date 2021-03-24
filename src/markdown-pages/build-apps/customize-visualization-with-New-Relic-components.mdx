@@ -21,9 +21,9 @@ tags:
 
 <Intro>
 
-Now that you have a basic visualization, it's time to customize it! You can use all of the <Link to="explore-docs/intro-to-sdk">New Relic One SDK</Link> components in a Custom Visualization the same way you can use them in a Nerdlet. In this guide, you'll add a new chart type and a `SegmentedControl` component. You'll be able to dynamically swap between the Radar chart and the new chart right from the browser. 
+Now that you have a basic visualization, it's time to customize it! You can use all of the <Link to="explore-docs/intro-to-sdk">New Relic One SDK</Link> components in a Custom Visualization the same way you can use them in a Nerdlet. In this guide, you'll add a new chart type and a `SegmentedControl` component. You'll be able to dynamically swap between the Radar chart and the new chart right from the browser.
 
-This guide builds off the <Link to="/build-apps/build-visualization">Build a custom visualization for dashboards</Link> guide. 
+This guide builds off the <Link to="/build-apps/build-visualization">Build a custom visualization for dashboards</Link> guide.
 
 </Intro>
 
@@ -33,7 +33,7 @@ To get started, follow the <Link to="/build-apps/build-visualization">Build a cu
 
 ## Set up the visualization component state
 
-In this first set of steps you'll add component state to your visualization template from the previous guide referenced above. 
+In this first set of steps you'll add component state to your visualization template from the previous guide referenced above.
 
 <Tutorial>
 
@@ -49,7 +49,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -84,10 +84,6 @@ export default class YourAwesomeVisualization extends React.Component {
       })
     ),
   };
-
-  state = {
-    selectedChart: CHART_TYPES.Radar
-  }
 
   /**
    * Restructure the data for a non-time-series, facet-based NRQL query into a
@@ -207,7 +203,7 @@ const ErrorState = () => (
 
   <Step>
 
-From the root of the Nerdpack project you created in the previous guide, navigate to `/visualizations/<your-visualization>/index.js`. You'll continue to work in the `index.js` file for the rest of this guide. 
+From the root of the Nerdpack project you created in the previous guide, navigate to `/visualizations/<your-visualization>/index.js`. You'll continue to work in the `index.js` file for the rest of this guide.
 
 Add a chart types constant above the first line of the class and add the component state property with an initial state for `selectedChart`:
 
@@ -222,7 +218,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -391,7 +387,7 @@ To let the consumers of your visualization decide what type of chart they want t
 
   <Step>
 
-Add `SegmentedControl` and `SegmentedControlItem` to the import from `nr1`. 
+Add `SegmentedControl` and `SegmentedControlItem` to the import from `nr1`:
 
 ```js fileName=visualizations/your-visualization/index.js
 import React from 'react';
@@ -403,7 +399,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -578,7 +574,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -740,7 +736,7 @@ const ErrorState = () => (
 
   </Step>
 
-If you <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">run your visualization locally</Link>, your visualization should match the following image and changing the SegmentedControl should not have any effect on the visualization. 
+If you <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">run your visualization locally</Link>, your visualization should match the following image and changing the SegmentedControl should not have any effect on the visualization:
 
 <img
   src="../../images/build-an-app/radar-chart-with-segmented-control.png"
@@ -757,9 +753,9 @@ In the next steps, you're going to add a function to update state and connect th
 
   <Step>
 
-Add a component method that updates state to your visualization class.
+Add a component method that updates state to your visualization class:
 
-```js fileName=visualizations/your-visualization/index.js 
+```js fileName=visualizations/your-visualization/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -769,7 +765,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -940,7 +936,7 @@ const ErrorState = () => (
 
 Pass `updateSelectedChart` as the `SegmentedControl` component's onChange prop:
 
-```jsx fileName=visualizations/your-visualization/index.js 
+```jsx fileName=visualizations/your-visualization/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -950,7 +946,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -1118,7 +1114,7 @@ const ErrorState = () => (
 </Steps>
 
 
-## Add your new chart option 
+## Add your new chart option
 
 In the next couple of steps, you'll add the <Link to="https://recharts.org/en-US/api/Treemap">Treemap chart from Recharts</Link> and get the correct values passed into it.
 
@@ -1132,7 +1128,7 @@ This guide uses <Link to="https://recharts.org">Recharts</Link> chart components
 
 Add `Treemap` to the import from recharts:
 
-```jsx fileName=visualizations/your-visualization/index.js 
+```jsx fileName=visualizations/your-visualization/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -1143,7 +1139,7 @@ import {
   PolarRadiusAxis,
   Treemap,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -1309,7 +1305,7 @@ const ErrorState = () => (
 <Callout variant="tip" title="Further reading">
 To learn more about the Treemap chart component, go to the <Link to="https://recharts.org/en-US/examples/SimpleTreemap">Recharts Treemap example</Link> or the <Link to="https://recharts.org/en-US/api/Treemap">Recharts Treemap API docs</Link>.
 </Callout>
-    
+
   </Step>
 
 
@@ -1317,7 +1313,7 @@ To learn more about the Treemap chart component, go to the <Link to="https://rec
 
 Under the `RadarChart` closing tag in render, add the `Treemap` component and the necessary props:
 
-```jsx fileName=visualizations/your-visualization/index.js 
+```jsx fileName=visualizations/your-visualization/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -1327,7 +1323,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -1499,7 +1495,7 @@ const ErrorState = () => (
 );
 ```
 
-Now <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">render the visualization in local development</Link> to see the new Treemap chart below your Radar chart. If you scroll down a bit in your visualization, it should look something like the following: 
+Now <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">render the visualization in local development</Link> to see the new Treemap chart below your Radar chart. If you scroll down a bit in your visualization, it should look something like the following:
 
 <img
   src="../../images/build-an-app/scrolled-custom-visualization-treemap-radar.png"
@@ -1511,7 +1507,7 @@ Now <Link to="/build-apps/build-visualization#render-the-visualization-in-local-
 </Steps>
 
 
-## Use component state to switch between charts 
+## Use component state to switch between charts
 
 In the final steps, you'll use the `selectedChart` state value to determine which chart to show, the Radar chart or the Treemap chart.
 
@@ -1521,7 +1517,7 @@ In the final steps, you'll use the `selectedChart` state value to determine whic
 
 Destructure `selectedChart` from state near the top of the `render()` function:
 
-```jsx fileName=visualizations/your-visualization/index.js 
+```jsx fileName=visualizations/your-visualization/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -1531,7 +1527,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -1710,7 +1706,7 @@ const ErrorState = () => (
 
 Here, you compare `selectedChart` to `CHART_TYPES.Radar`. If `selectedChart` is a Radar, you render a RadarChart. Otherwise, you render a Treemap. You can achieve this by wrapping the `RadarChart` and `Treemap` in a ternary using the `selectedChart` state:
 
-```jsx fileName=visualizations/your-visualization/index.js 
+```jsx fileName=visualizations/your-visualization/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -1720,7 +1716,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -1898,7 +1894,7 @@ const ErrorState = () => (
 
   </Step>
 
-Go to the browser and try it out! <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">Run your visualization locally</Link> and view it in the Custom Visualization app in New Relic. Click on "Treemap chart" in the SegmentedControl. You should see your Treemap chart render instead of the Radar chart! 
+Go to the browser and try it out! <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">Run your visualization locally</Link> and view it in the Custom Visualization app in New Relic. Click on "Treemap chart" in the SegmentedControl. You should see your Treemap chart render instead of the Radar chart:
 
 <img
   src="../../images/build-an-app/radar-chart-with-segmented-control.png"
