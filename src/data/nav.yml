@@ -70,6 +70,8 @@
       url: '/build-apps/build-visualization'
     - title: Custom visualizations and the New Relic One SDK
       url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
+    - title: Customize visualizations with configuration
+      url: '/build-apps/customize-visualizations-with-configuration'
 - title: Try our APIs
   icon: nr-share
   url: '/try-our-apis'
