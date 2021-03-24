@@ -167,3 +167,96 @@ A step description
 ```
 
 > Note: keep in mind that a new line is necessary after an `img` tag to ensure proper rendering of subsequent text/markdown.
+
+# Tutorial 
+
+## Usage
+
+The `<Tutorial/>` component can be used to help a user step through changes in code by highlighting the difference between each step. It utilizes children `<Steps>` and `<Step>` components to find codeblocks with new code based off of the starting code. You can set the starting code as the first child of the `<Tutorial>` with the `<Project>` component. In order to use the tutorial component, you must set a `fileName` for your codeblocks so that the parser can find the corresponding codeblocks with changes in them. 
+
+````md
+  <Tutorial>
+
+  <Project>
+
+  ```jsx fileName="myfile.js"
+  const myCode = "here is my starting code" 
+  ```
+
+  </Project>
+
+  ## Here is my tutorial! 
+
+  <Steps>
+
+  <Step>
+
+  ```jsx fileName="myfile.js"
+  const myCode = "here is my code" 
+  const myNewCode = "here is my new code"
+  ```
+
+  </Step>
+
+  <Step>
+
+  ```jsx fileName="myfile.js"
+  const myCode = "here is my code" 
+  const myNewCode = "here is my new code"
+  const evenMoreNewCode = "he is even more new code"
+  ```
+
+  </Step>
+
+  </Tutorial>
+````
+
+In this example, for the first step the second line (`myNewCode`) will be highlighted, and for the second step, the third line (`evenMoreNewCode`) will be highlighted.
+
+You can also pass in multiple codeblocks to the `<Project>` component and the parser will track all changes in each of the codeblocks. The multiple codeblocks will show up as tabs of the same editor, mimicking how a user might actually be editing these files in their IDE. For example: 
+
+````md
+  <Tutorial>
+
+  <Project>
+
+  ```jsx fileName="myfile.js"
+  const myCode = "here is my starting code" 
+  ```
+
+  ```css fileName="mystyles.css"
+  .myStyle {
+    color: blue;
+  } 
+  ```
+
+  </Project>
+
+  ## Here is my tutorial! 
+
+  <Steps>
+
+  <Step>
+
+  ```jsx fileName="myfile.js"
+  const myCode = "here is my code" 
+  const myNewCode = "here is my new code"
+  ```
+
+  </Step>
+
+  <Step>
+
+  ```css fileName="mystyles.css"
+  .myStyle {
+    color: blue;
+    font-size: 1000px;
+  } 
+  ```
+
+  </Step>
+
+  </Tutorial>
+````
+
+In this example, in the first step, line 2 will be highlighted (`myNewCode`) and in the second step, line 3 will be highlighted (`font-size: 1000px`). Both steps will have both files, where as the default file shown will be `myfile.js` for the first step and `mystyles.css` for the second step. Users can toggle between the two files to see what the current state of the code is.
