@@ -6,7 +6,7 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
 import styles from './nerd-days.module.scss';
 
-const NerdDaysPage = ({ location }) => {
+const NerdlogPage = ({ location }) => {
   return (
     <>
       <DevSiteSeo location={location} />
@@ -35,8 +35,8 @@ const NerdDaysPage = ({ location }) => {
   );
 };
 
-NerdDaysPage.propTypes = {
+NerdlogPage.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-export default NerdDaysPage;
+export default NerdlogPage;
