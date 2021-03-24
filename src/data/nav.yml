@@ -68,6 +68,8 @@
       url: https://opensource.newrelic.com/nerdpacks/
     - title: Build custom visualizations for dashboards
       url: '/build-apps/build-visualization'
+    - title: Custom visualizations and the New Relic One SDK
+      url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
 - title: Try our APIs
   icon: nr-share
   url: '/try-our-apis'
