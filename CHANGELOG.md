@@ -1,3 +1,11 @@
+# [1.38.0](https://github.com/newrelic/developer-website/compare/v1.37.0...v1.38.0) (2021-03-24)
+
+
+### Features
+
+* **CustomViz:** Adds a new guide for custom visualizations and nr1 json configuration ([32d985d](https://github.com/newrelic/developer-website/commit/32d985dc0076ebc7b386d999ec5d61f6bb745278))
+* **CustomViz:** Adds a new guide for custom visualizations and nr1 json configuration ([73e5b26](https://github.com/newrelic/developer-website/commit/73e5b26508e1affa5850a5ec1f2abbd20efec1f4))
+
 # [1.37.0](https://github.com/newrelic/developer-website/compare/v1.36.0...v1.37.0) (2021-03-24)
 
 
