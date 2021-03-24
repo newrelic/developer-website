@@ -21,7 +21,7 @@ tags:
 
 <Intro>
 
-This guide builds off of the previous <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. If you haven't followed that guide, please start there as this guide assumes you have the code you built there to get started. 
+This guide builds off of the previous <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. If you haven't followed that guide, please start there as this guide assumes you have the code you built there to get started.
 
 Following the previous guide, your current visualization should be able to switch between two charts types. Your current implementation takes up some space in the visualization but offers your users the choice to switch between two chart types at any point in the visualization lifecycle. What if you only need to be able to select an option once, when adding it to the dashboard? In that case, you can use the `configuration` key in your visualization's nr1.json file. In the following steps, you'll replace the `SegmentedControl` component with an option in the `configuration` array.
 
@@ -40,8 +40,9 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
+  Treemap,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -267,7 +268,7 @@ const ErrorState = () => (
 
 ## Before you begin
 
-To get started, make sure you follow the <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. You should have that code as your starting point for this guide. 
+To get started, make sure you follow the <Link to="/build-apps/custom-visualizations-and-the-new-relic-one-sdk">Custom visualizations and the New Relic One SDK</Link> guide. You should have that code as your starting point for this guide.
 
 ## Replace the SegmentedControl with configuration
 
@@ -275,7 +276,7 @@ To get started, make sure you follow the <Link to="/build-apps/custom-visualizat
 
   <Step>
 
-In you visualization's root folder, open the `nr1.json` file. You should already have some configuration objects defined. You're going to add an `enum` for `selectedChart`. This should look familiar to the component state options you added in the previous guide.
+In you visualization's root folder, open the `nr1.json` file. Add an `enum` configuration object for `selectedChart`:
 
 ```json fileName=visualizations/your-visualization/nr1.json
 {
@@ -335,11 +336,13 @@ In you visualization's root folder, open the `nr1.json` file. You should already
 }
 ```
 
+This should look familiar to the component state options you added in the previous guide.
+
   </Step>
 
   <Step>
 
-In your visualization's root folder, open `index.js`. You'll be working in this file for the rest of the guide. 
+In your visualization's root folder, open `index.js`. You'll be working in this file for the rest of the guide:
 
 ```jsx fileName=visualizations/your-visualization/index.js
 import React from 'react';
@@ -350,8 +353,9 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
+  Treemap,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -534,10 +538,9 @@ const ErrorState = () => (
 
 <Step>
 
-In render, add `selectedChart` to the prop descrtructuring and remove the state referrence. 
+In `render()`, add `selectedChart` to the prop descrtructuring and remove the state reference:
 
-```jsx fileName=visualizations/your-visualization/index.js 
-
+```jsx fileName=visualizations/your-visualization/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -546,8 +549,9 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
+  Treemap,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -731,8 +735,7 @@ const ErrorState = () => (
 
   <Step>
 
-
-You no longer have a default chart defined at this point, but you still want the Radar chart to be the default. You can add more to the ternary in the render to achieve the same default state as you had previously. 
+You no longer have a default chart defined at this point, but you still want the Radar chart to be the default. Add more to the ternary in the render to achieve the same default state as you had previously:
 
 ```jsx fileName=visualizations/your-visualization/index.js
 import React from 'react';
@@ -743,8 +746,9 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
+  Treemap,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -923,12 +927,12 @@ const ErrorState = () => (
   </Card>
 );
 ```
-  
+
   </Step>
 
   <Step>
 
-You don't need the `SegmentedControl` component any longer so remove that from your render. 
+You no longer need `SegmentedControl`, so remove it from `render()`:
 
 ```jsx fileName=visualizations/your-visualization/index.js
 import React from 'react';
@@ -939,8 +943,9 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
+  Treemap,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -1126,7 +1131,7 @@ const ErrorState = () => (
 
   <Step>
 
-In this last step, you just need to delete all of the component state code. 
+Delete all of the component state code:
 
 ```jsx fileName=visualizations/your-visualization/index.js
 import React from 'react';
@@ -1137,8 +1142,9 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
+  Treemap,
 } from 'recharts';
-import { 
+import {
   Card,
   CardBody,
   HeadingText,
@@ -1237,16 +1243,6 @@ export default class YourAwesomeVisualization extends React.Component {
               const transformedData = this.transformData(data);
               return (
                 <React.Fragment>
-                <SegmentedControl onChange={this.updateSelectedChart}>
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Radar}
-                      label="Radar chart"
-                    />
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Treemap}
-                      label="Treemap chart"
-                    />
-                  </SegmentedControl>
                 {
                   selectedChart === CHART_TYPES.Radar || !Boolean(selectedChart) ?
                 (<RadarChart
@@ -1325,7 +1321,7 @@ const ErrorState = () => (
 
 </Tutorial>
 
-<Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">Run your visualization locally</Link> and view it in the Custom Visualization app in New Relic. You should be able to select a chart type from the dropdown in the configuration sidebar and see your visualization update to show the matching chart type. Your visualization should look like the following: 
+[Run your visualization locally](/build-apps/build-visualization#render-the-visualization-in-local-development), and view it in the **Custom Visualizations** app in New Relic. Select a chart type from the dropdown in the configuration sidebar, and see your visualization update to show the matching chart type:
 
 <img
   src="../../images/build-an-app/custom-chart-type-configuration-prop.png"
@@ -1334,9 +1330,7 @@ const ErrorState = () => (
 
 ## Summary
 
-Congratulations on completing the steps in this example! You've learned how to:
-
-- Customize your visualization using nr1.json configuration 
+Congratulations on completing the steps in this example! You've learned how to customize your visualization using _nr1.json_ configuration.
 
 ## Additional resources
 
