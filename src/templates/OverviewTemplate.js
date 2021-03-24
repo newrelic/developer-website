@@ -8,16 +8,16 @@ import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
 import styles from './OverviewTemplate.module.scss';
 
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 
-const OverviewTemplate = ({ data }) => {
+const OverviewTemplate = ({ data, location }) => {
   const { mdx, guides } = data;
   const { frontmatter, body } = mdx;
   const { title, description } = frontmatter;
 
   return (
     <>
-      <SEO title={title} description={description} />
+      <DevSiteSeo title={title} description={description} location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title={title} />
         <PageLayout.Content>
@@ -56,6 +56,7 @@ const OverviewTemplate = ({ data }) => {
 
 OverviewTemplate.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`

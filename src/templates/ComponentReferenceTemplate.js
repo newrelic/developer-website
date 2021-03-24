@@ -8,7 +8,7 @@ import ReferenceExample from '../components/ReferenceExample';
 import PageLayout from '../components/PageLayout';
 import Markdown from '../components/Markdown';
 import MethodReference from '../components/MethodReference';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
 import PropList from '../components/PropList';
 import { Section, SectionTitle } from './referenceTemplateStyles';
 import IconGallery from '../components/IconGallery';
@@ -37,7 +37,7 @@ const previewStyles = {
   },
 };
 
-const ComponentReferenceTemplate = ({ data }) => {
+const ComponentReferenceTemplate = ({ data, location }) => {
   const {
     newRelicSdkComponent: {
       name,
@@ -52,7 +52,7 @@ const ComponentReferenceTemplate = ({ data }) => {
 
   return (
     <>
-      <SEO title={name} />
+      <DevSiteSeo title={name} location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title={name} />
         <PageLayout.Content>
@@ -136,6 +136,7 @@ const ComponentReferenceTemplate = ({ data }) => {
 
 ComponentReferenceTemplate.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
