@@ -1,3 +1,10 @@
+# [1.36.0](https://github.com/newrelic/developer-website/compare/v1.35.7...v1.36.0) (2021-03-24)
+
+
+### Features
+
+* **CustomViz:** Adds a new guide for custom visualizations ([a37de0c](https://github.com/newrelic/developer-website/commit/a37de0c164e2bd46130d1b22dd8909fb24f58038))
+
 ## [1.35.7](https://github.com/newrelic/developer-website/compare/v1.35.6...v1.35.7) (2021-03-15)
 
 
