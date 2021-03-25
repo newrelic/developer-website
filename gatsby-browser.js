@@ -69,4 +69,11 @@ const onRouteUpdate = ({ location }) => {
 
   return null;
 };
-export { onRouteUpdate, wrapPageElement, onInitialClientRender };
+
+const onClientEntry = () => {
+  // Expose both globals so that the NR1 docs can read it.
+  window.React = require('react');
+  window.ReactDOM = require('react-dom');
+};
+
+export { onRouteUpdate, wrapPageElement, onInitialClientRender, onClientEntry };
