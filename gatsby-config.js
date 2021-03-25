@@ -1,6 +1,9 @@
 const quote = (str) => `"${str}"`;
 
 module.exports = {
+  flags: {
+    LAZY_IMAGES: true,
+  },
   siteMetadata: {
     title: 'New Relic Developers',
     titleTemplate: '%s | New Relic Developers',
@@ -152,7 +155,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-newrelic-sdk',
       options: {
-        release: 'release-2046',
+        release: 'release-2394',
       },
     },
     'gatsby-plugin-meta-redirect',
