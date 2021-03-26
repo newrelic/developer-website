@@ -75,10 +75,14 @@ const useCustomMonaco = () => {
         },
       });
       setDisposable(editor);
-    }
-  }, [monaco, components]);
 
-  return monaco;
+      return () => {
+        editor.dispose();
+        monaco.languages.registerHoverProvider('javascript', {});
+        monaco.languages.registerCompletionItemProvider('javascript', {});
+      };
+    }
+  }, [monaco]);
 };
 
 const hoverProvider = ({ model, position, components }) => {

@@ -181,5 +181,8 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
     externals: {
       tessen: 'Tessen',
     },
+    node: {
+      fs: 'empty',
+    },
   });
 };

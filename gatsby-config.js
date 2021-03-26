@@ -152,7 +152,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-newrelic-sdk',
       options: {
-        release: 'release-2046',
+        release: 'release-2051',
       },
     },
     'gatsby-plugin-meta-redirect',

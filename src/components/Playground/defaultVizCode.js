@@ -1,62 +1,56 @@
-export const indexJS = `
+export const indexJS = `const transformData = (rawData) => {
+  return rawData.map((entry) => ({
+    name: entry.metadata.name,
+    // Only grabbing the first data value because this is not time-series data.
+    value: entry.data[0].y,
+  }));
+};
 
-<RadarChart outerRadius={90} width={730} height={250} data={[
-  {
-    subject: 'Math',
-    A: 120,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: 'Chinese',
-    A: 98,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: 'English',
-    A: 86,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: 'Geography',
-    A: 99,
-    B: 100,
-    fullMark: 150,
-  },
-  {
-    subject: 'Physics',
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: 'History',
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
-]}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis angle={30} domain={[0, 150]} />
-            <Radar
-              name="Mike"
-              dataKey="A"
-              stroke="#8884d8"
-              fill="#8884d8"
-              fillOpacity={0.6}
-            />
-            <Radar
-              name="Lily"
-              dataKey="B"
-              stroke="#82ca9d"
-              fill="#82ca9d"
-              fillOpacity={0.6}
-            />
-            <Legend />
-          </RadarChart>
+const formatTick = (value) => {
+  return value.toLocaleString();
+};
+
+ class MyAwesomeVisualizationVisualization extends React.Component {
+
+  render() {
+    const {stroke, fill} = this.props;
+
+    return (
+      <AutoSizer>
+        {({width}) => (
+          <NrqlQuery
+            query="SELECT count(*) FROM Synthetics"
+            accountId={1}
+          >
+            {({data, loading, error}) => {
+              if (loading) {
+                return <div>I am loading...</div>
+              }
+
+              if (error) {
+                return <div>There is an error: {error}</div>
+              }
+
+              const transformedData = transformData(data);
+
+              return (
+                <div>
+                  <RadarChart width={width} height={340} data={transformedData}>
+                    <PolarGrid />
+                    <PolarAngleAxis dataKey="name" />
+                    <PolarRadiusAxis tickFormatter={formatTick} />
+                    <Radar dataKey="value" stroke={stroke || '#51C9B7'} fill={fill || '#51C9B7'} fillOpacity={0.6} />
+                    <Legend />
+                  </RadarChart>
+                </div>
+              );
+            }}
+          </NrqlQuery>
+        )}
+      </AutoSizer>
+    );
+  }
+}
 `;
 
 export const nr1JSON = `{
@@ -65,25 +59,6 @@ export const nr1JSON = `{
   "displayName": "MyAwesomeVisualization",
   "description": "",
   "configuration": [
-    {
-      "name": "nrqlQueries",
-      "title": "NRQL Queries",
-      "type": "collection",
-      "items": [
-        {
-          "name": "accountId",
-          "title": "Account ID",
-          "description": "Account ID to be associated with the query",
-          "type": "number"
-        },
-        {
-          "name": "query",
-          "title": "Query",
-          "description": "NRQL query for visualization",
-          "type": "nrql"
-        }
-      ]
-    },
     {
       "name": "fill",
       "title": "Fill color",

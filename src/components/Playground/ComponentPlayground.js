@@ -43,7 +43,6 @@ const ComponentPlayground = () => {
   if (!sdk) return null;
 
   const handleOnMount = (editor) => {
-    // document.querySelector('.overflowingContentWidgets').style.display = 'none';
     editorRef.current = editor;
   };
 
