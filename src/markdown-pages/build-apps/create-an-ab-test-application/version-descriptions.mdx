@@ -31,7 +31,7 @@ touch description.js
 
 In this new file, create a new React component, called `VersionDescription`, which uses a `HeadingText` and a `BlockText` to render a version description that you pass, using the `description` prop:
 
-```js fileName=description.js
+```js fileName=nerdlets/ab-test-nerdlet/description.js
 import React from 'react';
 import { BlockText, HeadingText } from 'nr1';
 
@@ -63,7 +63,7 @@ You'll use this one class to create a version description for each design versio
 
 In your Nerdlet's _index.js_ file, import `VersionDescription`, create descriptions for each design version, and create a new `GridItem` component for each design version:
 
-```js filename=index.js lineHighlight=7,11-12,18-30
+```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=7,11-12,18-30
 import React from 'react';
 import { ChartGroup, Grid, GridItem } from 'nr1';
 import NewsletterSignups from './newsletter-signups';
