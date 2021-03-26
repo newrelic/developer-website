@@ -72,6 +72,8 @@
       url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
     - title: Customize visualizations with configuration
       url: '/build-apps/customize-visualizations-with-configuration'
+    - title: Add custom visualizations to your dashboards
+      url: '/build-apps/add-visualizations-to-dashboard'
 - title: Try our APIs
   icon: nr-share
   url: '/try-our-apis'
