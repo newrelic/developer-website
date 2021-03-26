@@ -1,70 +1,98 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor';
 import HighlightedCode from './HighlightedCode';
 import { css } from '@emotion/core';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { LiveProvider } from 'react-live';
+import ReferencePreview from '../ReferencePreview';
 
-const ExampleEditor = ({ sourceCode, onAdd }) => {
+const ExampleEditor = ({ sourceCode, onAdd, preview }) => {
   const [code, setCode] = useState(sourceCode);
+  const scope = useMemo(
+    () => ({
+      ...window.__NR1_SDK__.default,
+      navigation: {
+        getOpenLauncherLocation: () => {},
+      },
+    }),
+    []
+  );
+
   return (
     <div>
-      <div
-        css={css`
-          padding: 1rem;
-          background-color: var(--color-nord-0);
-          border-radius: 0.25rem;
-        `}
-      >
-        <Editor
-          value={code}
-          highlight={(code) => <HighlightedCode>{code}</HighlightedCode>}
-          onValueChange={(code) => setCode(code)}
-          style={{
-            fontFamily: '"Fira code", "Fira Mono", monospace',
-            fontSize: 12,
-            height: '200px',
-            overflow: 'scroll',
-          }}
-        />
-      </div>
-      <div
-        css={css`
-          color: var(--color-nord-6);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          background: var(--color-nord-1);
-          border-bottom-left-radius: 4px;
-          border-bottom-right-radius: 4px;
-          padding: 0 1rem;
-          font-size: 0.75rem;
-          .light-mode & {
-            color: var(--color-nord-0);
-            background: var(--color-nord-4);
-          }
-        `}
-      >
+      <LiveProvider code={code} scope={scope}>
+        <div>
+          {preview && (
+            <div
+              css={css`
+                background-color: white;
+                padding: 1rem;
+                border-top-left-radius: 0.25rem;
+                border-top-right-radius: 0.25rem;
+              `}
+            >
+              <ReferencePreview />
+            </div>
+          )}
+          <div
+            css={css`
+              padding: 1rem;
+              background-color: var(--color-nord-0);
+              border-radius: 0.25rem;
+            `}
+          >
+            <Editor
+              value={code}
+              highlight={(code) => <HighlightedCode>{code}</HighlightedCode>}
+              onValueChange={(code) => setCode(code)}
+              style={{
+                fontFamily: '"Fira code", "Fira Mono", monospace',
+                fontSize: 12,
+                height: '200px',
+                overflow: 'scroll',
+              }}
+            />
+          </div>
+        </div>
         <div
           css={css`
-            font-family: var(--code-font);
-            white-space: nowrap;
-            overflow: hidden;
-            padding-right: 0.5rem;
-          `}
-        />
-        <Button
-          type="button"
-          variant={Button.VARIANT.LINK}
-          onClick={() => onAdd(code)}
-          size={Button.SIZE.SMALL}
-          css={css`
-            white-space: nowrap;
+            color: var(--color-nord-6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--color-nord-1);
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            padding: 0 1rem;
+            font-size: 0.75rem;
+            .light-mode & {
+              color: var(--color-nord-0);
+              background: var(--color-nord-4);
+            }
           `}
         >
-          Add to playground
-        </Button>
-      </div>
+          <div
+            css={css`
+              font-family: var(--code-font);
+              white-space: nowrap;
+              overflow: hidden;
+              padding-right: 0.5rem;
+            `}
+          />
+          <Button
+            type="button"
+            variant={Button.VARIANT.LINK}
+            onClick={() => onAdd(code)}
+            size={Button.SIZE.SMALL}
+            css={css`
+              white-space: nowrap;
+            `}
+          >
+            Add to playground
+          </Button>
+        </div>
+      </LiveProvider>
     </div>
   );
 };
@@ -72,6 +100,7 @@ const ExampleEditor = ({ sourceCode, onAdd }) => {
 ExampleEditor.propTypes = {
   sourceCode: PropTypes.string,
   onAdd: PropTypes.func,
+  preview: PropTypes.bool,
 };
 
 export default ExampleEditor;

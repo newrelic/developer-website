@@ -8,6 +8,8 @@ import formatCode from '../../utils/formatCode';
 import PropItem from './PropItem';
 import Markdown from '../Markdown';
 import ExampleEditor from './ExampleEditor';
+import ReferencePreview from '../ReferencePreview';
+import { LiveProvider } from 'react-live';
 
 const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
   const {
@@ -59,6 +61,7 @@ const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
       selectedProps.children ? `{${selectedProps.children}}` : ''
     }</${componentName}>`;
   };
+  const showPreview = examples.some(({ preview }) => preview);
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <h2>{componentName}</h2>
@@ -81,6 +84,7 @@ const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
         code={liveCode}
         onAdd={onAdd}
         onChange={(code) => onCodeChange(code)}
+        showPreview={showPreview}
       />
       <div
         css={css`
@@ -109,7 +113,7 @@ const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
       />
       {examples.length > 0 && (
         <Collapser title="Examples">
-          {examples.map(({ sourceCode, label }) => {
+          {examples.map(({ sourceCode, label, preview }) => {
             return (
               <div
                 css={css`
@@ -118,7 +122,12 @@ const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
                 key={`${componentName}-${label}`}
               >
                 <h4>{label}</h4>
-                <ExampleEditor sourceCode={sourceCode} onAdd={onAdd} />
+
+                <ExampleEditor
+                  sourceCode={sourceCode}
+                  onAdd={onAdd}
+                  preview={preview}
+                />
               </div>
             );
           })}

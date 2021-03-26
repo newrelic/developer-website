@@ -30,14 +30,6 @@ const ComponentPlayground = () => {
 
   useCustomMonaco();
 
-  useKeyPress(
-    'Enter',
-    () => {
-      setCode(formatCode(code, { language: 'jsx', semicolons: false }));
-    },
-    { ignoreTextInput: false }
-  );
-
   if (typeof window === 'undefined') global.window = {};
   const sdk = window.__NR1_SDK__?.default ?? {};
   if (!sdk) return null;

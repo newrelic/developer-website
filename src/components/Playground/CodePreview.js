@@ -22,7 +22,7 @@ const nerdletStateContextMock = {
   entityGuid: 'MTIzNDU2fEZPT3xCQVJ8OTg3NjU0MzIx',
 };
 
-const CodePreview = ({ code, onChange, onAdd }) => {
+const CodePreview = ({ code, onChange, onAdd, showPreview }) => {
   const { newRelicSdk } = useStaticQuery(graphql`
     query {
       newRelicSdk {
@@ -74,7 +74,18 @@ const CodePreview = ({ code, onChange, onAdd }) => {
     <PlatformStateContext.Provider value={platformStateContextMock}>
       <NerdletStateContext.Provider value={nerdletStateContextMock}>
         <LiveProvider code={code} scope={scope}>
-          <Preview />
+          {showPreview && (
+            <div
+              css={css`
+                background-color: white;
+                padding: 1rem;
+                border-top-left-radius: 0.25rem;
+                border-top-right-radius: 0.25rem;
+              `}
+            >
+              <Preview />
+            </div>
+          )}
           <div
             css={css`
               padding: 1rem;
@@ -155,6 +166,7 @@ CodePreview.propTypes = {
   code: PropTypes.string,
   onChange: PropTypes.func,
   onAdd: PropTypes.func,
+  showPreview: PropTypes.bool,
 };
 
 export default CodePreview;

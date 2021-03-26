@@ -34,6 +34,8 @@ const ComponentList = ({ onAdd }) => {
           examples {
             label
             sourceCode
+            preview
+            live
           }
         }
       }
