@@ -13,14 +13,25 @@ const formatTick = (value) => {
  class MyAwesomeVisualizationVisualization extends React.Component {
 
   render() {
-    const {stroke, fill} = this.props;
+    const {nrqlQueries, stroke, fill} = this.props;
+
+    const nrqlQueryPropsAvailable =
+      nrqlQueries &&
+      nrqlQueries[0] &&
+      nrqlQueries[0].accountId &&
+      nrqlQueries[0].query;
+    
+    if (!nrqlQueryPropsAvailable) {
+      return <div>Configure NRQL Props to see viz!</div>;
+    }
+    
 
     return (
       <AutoSizer>
         {({width}) => (
           <NrqlQuery
-            query="SELECT count(*) FROM Synthetics"
-            accountId={1}
+            query={nrqlQueries[0].query}
+            accountId={nrqlQueries[0].accountId}
           >
             {({data, loading, error}) => {
               if (loading) {
@@ -59,6 +70,25 @@ export const nr1JSON = `{
   "displayName": "MyAwesomeVisualization",
   "description": "",
   "configuration": [
+    {
+      "name": "nrqlQueries",
+      "title": "NRQL Queries",
+      "type": "collection",
+      "items": [
+        {
+          "name": "accountId",
+          "title": "Account ID",
+          "description": "Account ID to be associated with the query",
+          "type": "number"
+        },
+        {
+          "name": "query",
+          "title": "Query",
+          "description": "NRQL query for visualization",
+          "type": "nrql"
+        }
+      ]
+    },
     {
       "name": "fill",
       "title": "Fill color",

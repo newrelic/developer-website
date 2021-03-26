@@ -1,6 +1,6 @@
 import React, { useState, Suspense } from 'react';
 import { LiveProvider, LivePreview, LiveError } from 'react-live';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Collapser } from '@newrelic/gatsby-theme-newrelic';
 import { nr1JSON, indexJS } from './defaultVizCode';
 import {
   RadarChart,
@@ -12,10 +12,39 @@ import {
 } from 'recharts';
 import { css } from '@emotion/core';
 import VizPropInput from './VizPropInput';
+import { darken } from 'polished';
+import useCustomMonaco from './useCustomMonaco';
+import VisualizationChrome from './VisualizationChrome';
 
-const initialInputProps = JSON.parse(nr1JSON).configuration.reduce(
-  (acc, { name }) => acc.set(name, ''),
-  new Map()
+const typeMap = {
+  string: `''`,
+  number: 1,
+  boolean: true,
+  json: {},
+  nrql: `'SELECT count(*) FROM Transaction'`,
+};
+
+const codeString = ({ items, name, code }) =>
+  `[{${items
+    .map(({ name: subName, value, type }) => {
+      if (subName === name) {
+        return `${subName}: ${code}`;
+      }
+      return `${subName}: ${value || typeMap[type] || ''}`;
+    })
+    .join(',')}}]`;
+
+const initialInputProps = JSON.parse(nr1JSON).configuration.map(
+  (configItem) => {
+    if (configItem.items) {
+      return { ...configItem, value: codeString({ items: configItem.items }) };
+    } else {
+      return {
+        ...configItem,
+        value: typeMap[configItem.type] || `null`,
+      };
+    }
+  }
 );
 
 const initialVisualizationName = JSON.parse(nr1JSON).displayName;
@@ -48,12 +77,9 @@ const nerdletStateContextMock = {
 const Editor = React.lazy(() => import('@monaco-editor/react'));
 
 const buildCodeString = ({ code, visualizationName, inputProps }) => {
-  const inputPropsString = Array.from(inputProps.entries()).reduce(
-    (acc, [name, value]) => {
-      return `${acc} ${name}={'${value}'}`;
-    },
-    ''
-  );
+  const inputPropsString = inputProps.reduce((acc, { name, value }) => {
+    return `${acc} ${name}={${value ?? `''`}}`;
+  }, '');
   return `${code}
     
   render(<${visualizationName}Visualization ${inputPropsString}/>)
@@ -61,7 +87,7 @@ const buildCodeString = ({ code, visualizationName, inputProps }) => {
 };
 
 const VisualizationPlayground = () => {
-  const [fileName, setFileName] = useState('index.js');
+  const [selectedFile, setSelectedFile] = useState('index.js');
   const [files, setFiles] = useState(initialFiles);
   const [inputProps, setInputProps] = useState(initialInputProps);
   const [visualizationName, setVisualizationName] = useState(
@@ -75,6 +101,8 @@ const VisualizationPlayground = () => {
       inputProps,
     })
   );
+
+  useCustomMonaco();
 
   if (typeof window === 'undefined') global.window = {};
   const sdk = window.__NR1_SDK__?.default ?? {};
@@ -95,10 +123,10 @@ const VisualizationPlayground = () => {
     ...sdk,
   };
 
-  const file = files[fileName];
+  const file = files[selectedFile];
 
   const handleOnChange = (code) => {
-    const currentFile = files[fileName];
+    const currentFile = files[selectedFile];
     currentFile.value = code;
     setFiles({
       currentFile,
@@ -113,9 +141,14 @@ const VisualizationPlayground = () => {
     );
   };
 
-  const handleVizInputChange = ({ inputProp, code }) => {
-    const newInputProps = inputProps;
-    inputProps.set(inputProp, code);
+  const handleVizInputChange = ({ name, code }) => {
+    const newInputProps = inputProps.map((prop) => {
+      if (prop.name === name) {
+        prop.value = code;
+      }
+      return prop;
+    });
+
     setInputProps(newInputProps);
     setCode(
       buildCodeString({
@@ -129,21 +162,16 @@ const VisualizationPlayground = () => {
   const handleNR1JsonUpdate = () => {
     const json = files['nr1.json'].value;
     try {
-      const newInputProps = JSON.parse(json).configuration.reduce(
-        (acc, { name }) => {
-          if (inputProps.has(name)) {
-            const value = inputProps.get(name);
-            acc.set(name, value);
-            return acc;
-          } else {
-            acc.set(name, '');
-            return acc;
-          }
-        },
-        new Map()
-      );
+      const newInputProps = JSON.parse(json).configuration.map((prop) => {
+        const oldProp = inputProps.find(({ name }) => name === prop.name);
+        if (oldProp) {
+          prop.value = oldProp.value;
+        }
+        prop.value = typeMap[prop.type] || `null`;
+        return prop;
+      });
       const displayName = JSON.parse(nr1JSON).displayName;
-      setInputProps(newInputProps);
+      setInputProps([...newInputProps]);
       setVisualizationName(displayName);
       setNr1JsonError(null);
     } catch (e) {
@@ -158,57 +186,66 @@ const VisualizationPlayground = () => {
           css={css`
             display: flex;
             flex-direction: row;
+            height: 100vh;
           `}
         >
           <div
             css={css`
               flex-grow: 1;
+              position: relative;
               width: 50%;
-              background-color: white;
+
               display: flex;
               flex-direction: column;
+              justify-content: space-between;
             `}
           >
             <div
               css={css`
-                height: 60%;
+                flex-grow: 1;
+                background-color: white;
               `}
             >
-              <PlatformStateContext.Provider value={platformStateContextMock}>
-                <NerdletStateContext.Provider value={nerdletStateContextMock}>
-                  <LivePreview />
-                  <LiveError />
-                  {nr1JsonError && <div>{nr1JsonError.toString()}</div>}
-                </NerdletStateContext.Provider>
-              </PlatformStateContext.Provider>
+              <VisualizationChrome displayName={visualizationName}>
+                <PlatformStateContext.Provider value={platformStateContextMock}>
+                  <NerdletStateContext.Provider value={nerdletStateContextMock}>
+                    <LivePreview />
+                    <LiveError />
+                    {nr1JsonError && <div>{nr1JsonError.toString()}</div>}
+                  </NerdletStateContext.Provider>
+                </PlatformStateContext.Provider>
+              </VisualizationChrome>
             </div>
+
             <div
               css={css`
-                flex-grow: 1;
-                padding: 1rem;
-                background-color: var(--secondary-background-color);
+                position: absolute;
+                bottom: 0;
+                background-color: var(--primary-background-color);
+                width: 100%;
               `}
             >
-              <h3>Configure Props</h3>
-              <div
-                css={css`
-                  display: grid;
-                  grid-template-columns: auto 1fr;
-                  gap: 0.5rem 0.5rem;
-                `}
-              >
-                {Array.from(inputProps.keys()).map((inputProp) => {
-                  return (
-                    <VizPropInput
-                      key={inputProp}
-                      propName={inputProp}
-                      onChange={(code) =>
-                        handleVizInputChange({ inputProp, code })
-                      }
-                    />
-                  );
-                })}
-              </div>
+              <Collapser title="Configure Props">
+                <div
+                  css={css`
+                    display: grid;
+                    grid-template-columns: auto auto 1fr;
+                    gap: 0.5rem 0.5rem;
+                  `}
+                >
+                  {inputProps.map((inputProp, key) => {
+                    return (
+                      <VizPropInput
+                        key={key}
+                        inputProp={inputProp}
+                        onChange={({ name, code }) =>
+                          handleVizInputChange({ name, code })
+                        }
+                      />
+                    );
+                  })}
+                </div>
+              </Collapser>
             </div>
           </div>
           <div
@@ -219,31 +256,83 @@ const VisualizationPlayground = () => {
             `}
           >
             <div>
-              <Button
-                variant={Button.VARIANT.NORMAL}
-                onClick={() => setFileName('index.js')}
-                disabled={fileName === 'index.js'}
+              <div
+                css={css`
+                  display: flex;
+                  flex-direction: row;
+                  background: ${darken(0.05, '#2e3440')};
+                `}
               >
-                index.js
-              </Button>
-              <Button
-                variant={Button.VARIANT.NORMAL}
-                onClick={() => setFileName('nr1.json')}
-                disabled={fileName === 'nr1.json'}
-              >
-                nr1.json
-              </Button>
-              <Button
-                variant={Button.VARIANT.PRIMARY}
-                onClick={handleNR1JsonUpdate}
-              >
-                update nr1.json
-              </Button>
+                <div
+                  css={css`
+                    display: flex;
+                    background: ${darken(0.05, '#2e3440')};
+                    border-top-left-radius: 0.25rem;
+                    border-top-right-radius: 0.25rem;
+
+                    .light-mode & {
+                      background: var(--color-nord-4);
+                    }
+                  `}
+                >
+                  {['index.js', 'nr1.json'].map((fileName) => (
+                    <button
+                      key={fileName}
+                      type="button"
+                      onClick={() => setSelectedFile(fileName)}
+                      css={css`
+                        padding: 0.5rem 1rem;
+                        cursor: pointer;
+                        font-size: 0.75rem;
+                        border: 0;
+                        outline: 0;
+                        color: currentColor;
+                        background: ${fileName === selectedFile
+                          ? 'var(--color-nord-0)'
+                          : 'inherit'};
+
+                        .light-mode & {
+                          background: ${fileName === selectedFile
+                            ? 'var(--color-nord-6)'
+                            : 'inherit'};
+                        }
+                      `}
+                    >
+                      {fileName}
+                    </button>
+                  ))}
+                </div>
+
+                <div
+                  css={css`
+                    padding: 0.35rem;
+                  `}
+                >
+                  <div
+                    css={css`
+                      opacity: ${selectedFile === 'nr1.json' ? 1 : 0};
+                    `}
+                  >
+                    <Button
+                      variant={Button.VARIANT.PRIMARY}
+                      onClick={handleNR1JsonUpdate}
+                      size={Button.SIZE.EXTRA_SMALL}
+                    >
+                      UPDATE NR1.JSON
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
+            <div
+              css={css`
+                position: relative;
+                flex-grow: 1;
+              `}
+            >
               <Suspense fallback={<div>Loading...</div>}>
                 <Editor
-                  height="100vh"
+                  height="100%"
                   language={file.language}
                   path={file.name}
                   value={file.value}

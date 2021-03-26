@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 const Layout = ({ children, pageContext }) => {
   if (
     pageContext.fileRelativePath.match(/404/) ||
-    pageContext.fileRelativePath.match(/sdk-playground/)
+    pageContext.fileRelativePath.match(/sdk-playground/) ||
+    pageContext.fileRelativePath.match(/visualization-playground/)
   ) {
     return children;
   }

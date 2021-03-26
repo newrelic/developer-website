@@ -164,7 +164,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage } = actions;
 
-  if (page.path.match(/sdk-playground/)) {
+  if (
+    page.path.match(/sdk-playground/) ||
+    page.path.match(/visualization-playground/)
+  ) {
     page.context.layout = 'minimal';
     createPage(page);
   }
