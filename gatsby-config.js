@@ -155,6 +155,7 @@ module.exports = {
         release: 'release-2046',
       },
     },
+    'gatsby-plugin-embed-pages',
     'gatsby-plugin-meta-redirect',
     {
       resolve: 'gatsby-plugin-gdpr-tracking',
