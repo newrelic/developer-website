@@ -156,6 +156,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-meta-redirect',
+    'gatsby-plugin-embed-pages',
     {
       resolve: 'gatsby-plugin-gdpr-tracking',
       options: {
