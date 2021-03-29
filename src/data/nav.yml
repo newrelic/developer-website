@@ -66,6 +66,10 @@
       url: '/build-apps/add-query-mutate-data-nerdstorage'
     - title: Build custom visualizations for dashboards
       url: '/build-apps/build-visualization'
+    - title: Custom visualizations and the New Relic One SDK
+      url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
+    - title: Customize visualizations with configuration
+      url: '/build-apps/customize-visualizations-with-configuration'
     - title: Build an A/B test application
       url: '/ab-test'
       pages:

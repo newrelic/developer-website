@@ -1,3 +1,31 @@
+# [1.38.0](https://github.com/newrelic/developer-website/compare/v1.37.0...v1.38.0) (2021-03-24)
+
+
+### Features
+
+* **CustomViz:** Adds a new guide for custom visualizations and nr1 json configuration ([32d985d](https://github.com/newrelic/developer-website/commit/32d985dc0076ebc7b386d999ec5d61f6bb745278))
+* **CustomViz:** Adds a new guide for custom visualizations and nr1 json configuration ([73e5b26](https://github.com/newrelic/developer-website/commit/73e5b26508e1affa5850a5ec1f2abbd20efec1f4))
+
+# [1.37.0](https://github.com/newrelic/developer-website/compare/v1.36.0...v1.37.0) (2021-03-24)
+
+
+### Bug Fixes
+
+* change function name ([e7b0ba8](https://github.com/newrelic/developer-website/commit/e7b0ba804c01cf63aa0b498dc157e7139d7c17a7))
+* update nerdlog marketo form thank you page ([eea3d99](https://github.com/newrelic/developer-website/commit/eea3d99df31ea53acb0e6c0b59c8f1ce3fcce1b1))
+
+
+### Features
+
+* **page:** creating nerdlog thank you page ([308dcc5](https://github.com/newrelic/developer-website/commit/308dcc56c3b3475757f8888e527d5dcf8b94cca8))
+
+# [1.36.0](https://github.com/newrelic/developer-website/compare/v1.35.7...v1.36.0) (2021-03-24)
+
+
+### Features
+
+* **CustomViz:** Adds a new guide for custom visualizations ([a37de0c](https://github.com/newrelic/developer-website/commit/a37de0c164e2bd46130d1b22dd8909fb24f58038))
+
 ## [1.35.7](https://github.com/newrelic/developer-website/compare/v1.35.6...v1.35.7) (2021-03-15)
 
 
