@@ -12,12 +12,12 @@ This lesson is part of a course that teaches you how to build a New Relic One ap
 
 </Callout>
 
-Before you build your New Relic One application, you need to spin up your demo services. This coursework depends on three important services:
+Before you build your New Relic One application, you need to spin up your demo services. This coursework depends on two important services:
 
 - A web service that shows a newsletter signup form. The form's heading text alternates between two versions because you're performing an A/B test to determine which text leads to more high-quality subscriptions.
 - A simulator service that sends steady traffic to the website so that you don't have to manually generate data
 
-To spin up your demo services, you first need to install [Docker](https://docs.docker.com/get-docker/).
+To spin up your demo services, you first need to install [Docker](https://docs.docker.com/get-docker/) and [Docker compose](https://docs.docker.com/compose/install/).
 
 ## Spin up your demo services
 
@@ -25,68 +25,45 @@ To spin up your demo services, you first need to install [Docker](https://docs.d
 
 <Step>
 
-Clone the `demo-nodetron` repository from GitHub:
+Clone the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course) from GitHub:
 
 ```sh
-git clone https://github.com/newrelic/demo-nodetron
+git clone https://github.com/newrelic-experimental/nru-programmability-course
 ```
 
-This repository contains code for creating NodeJS New Relic automations.
+This repository contains code for creating NodeJS New Relic automations. It also contains a an app code directory for each lesson in the course. You'll use these directories to follow along with the course content.
 
 </Step>
 
 <Step>
 
-Change to the project directory and checkout the A/B test demo branch:
+Change to the demo directory, called `ab-test-app`:
 
 ```sh
-cd demo-nodetron
-git checkout DEMO-2536-ab-test-app
+cd nru-programmability-course/ab-test-app
 ```
 
-The `DEMO-2536-ab-test-app` branch contains several important additions to the code in `main`:
-
-- Information in the README.md for spinning up the demo
-- The `abtester.aws.json` deployment configuration file. This is used for Demotron deployments.
-
-<Callout variant="tip">
-
-There are two ways to deploy the code for this demo:
-
-- Docker
-- Demotron
-
-In this tutorial, you'll Docker to deploy your code to a local container. If you'd prefer to deploy this demo to AWS, you can follow the [instructions in the demo's README](https://github.com/newrelic/demo-nodetron/tree/DEMO-2536-ab-test-app#demo-deployer) to use the [`demo-deployer`](https://github.com/newrelic/demo-deployer), also known as Demotron.
-
-</Callout>
+This directory contains configuration files and READMEs for using the demo.
 
 </Step>
 
 <Step>
 
-Build the `ab-tester` image from your local directory:
+Build and run the web service and simulator containers, using `docker-compose`:
 
 ```sh
-docker build -t ab-tester .
-```
-
-</Step>
-
-<Step>
-
-Run the docker container from the image you created in the last step:
-
-```sh
-docker run -d -p 3001:3001 -e NEW_RELIC_LICENSE_KEY=<your NR license key> -e NEW_RELIC_APP_NAME="Newsletter"  ab-tester
+NEW_RELIC_LICENSE_KEY=<your New Relic license key> docker-compose up -d
 ```
 
 <Callout variant="important">
 
-Make sure you replace `<your NR license key>` with your actual [license key](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/new-relic-license-key/).
+Make sure you replace `<your New Relic license key>` with your actual [license key](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/new-relic-license-key/).
 
 </Callout>
 
-Once it's finished, you can view the website at localhost:3001.
+Once it's finished, view the website at localhost:3001:
+
+![Demo service](../../../images/ab-test/demo-service.png)
 
 </Step>
 
@@ -104,10 +81,10 @@ You may have to wait a minute or two for New Relic to recieve data from your dem
 
 <Step>
 
-If you need to spin down your demo services at any time, you can look up your container's ID with `docker ps` and then kill your container:
+To spin down your demo services, run `docker-compose down` from your `ab-test-app` directory:
 
 ```sh
-docker container kill <container id>
+docker-compose down
 ```
 
 </Step>
