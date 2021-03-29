@@ -17,7 +17,6 @@ import { useLocation } from '@reach/router';
 import pages from '../data/nav.yml';
 
 const MainLayout = ({ children, pageContext }) => {
-  const isEmbed = pageContext.layout && pageContext.layout === 'embed';
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
   const { fileRelativePath } = pageContext;

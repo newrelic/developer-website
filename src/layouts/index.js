@@ -9,7 +9,7 @@ const Layout = ({ children, pageContext }) => {
     return children;
   }
   if (isEmbed) {
-    return <EmbedLayout pageContext={pageContext}>{children}</EmbedLayout>;
+    return <EmbedLayout>{children}</EmbedLayout>;
   }
   return <MainLayout pageContext={pageContext}>{children}</MainLayout>;
 };
