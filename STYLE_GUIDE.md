@@ -39,6 +39,7 @@
     - [GuideTemplate Frontmatter slugs](#guidetemplate-frontmatter-slugs)
     - [GuideTemplate Frontmatter example](#guidetemplate-frontmatter-example)
   - [Reusable components](#reusable-components)
+  - [Embed guides](#embed-guides)
   - [Grammar and formatting](#grammar-and-formatting)
     - [Format titles](#format-titles)
     - [Format headers](#format-headers)
@@ -338,6 +339,22 @@ tags:
 
 In order to drive simplicity and ease of use New Relic has provided a set of reusable components you can leverage
 when creating documentation. Refer to our [Component Guide](COMPONENT_GUIDE.md) for more information.
+
+## Embed guides
+
+Each guide on the site (in frontmatter `template: GuideTemplate`) has an embed page automatically generated. The page URL has the same path as the guide with `/embed` appended to the end. The embed page contains only the body content of the `.mdx` file and no other site components (nav, header, footer, etc). The page defaults to light mode.
+
+### Example
+
+If there's a guide with this URL:
+
+    https://developer.newrelic.com/path/to/guide
+
+The embed page URL would be:
+
+    https://developer.newrelic.com/path/to/guide/embed
+
+You can use the embed URL in an `<iframe src=EMBED_URL />` on another site to display guide content.
 
 ## Grammar and formatting
 
