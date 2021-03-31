@@ -7,11 +7,9 @@ const Logo = ({ className, width }) => (
     viewBox="0 0 400 70"
     className={className}
     css={css`
-      stroke: #007e8a;
       width: ${width || '221px'};
 
       .dark-mode & {
-        stroke: #70ccd3;
         fill: white;
       }
     `}
