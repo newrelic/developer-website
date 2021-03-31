@@ -23,7 +23,7 @@ tags:
 
 <Intro>
 
-When you create a [dashboard](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/introduction-dashboards/), you add a variety of charts to visualize your New Relic telemetry data. These charts, offered out-of-the-box, are customizable in that you can:
+When you create a [dashboard](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/introduction-dashboards/), you add a variety of charts to visualize your New Relic telemetry data. These charts, offered out-of-the-box, are [customizable](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/manage-your-dashboard/) in that you can:
 
 - Resize and arrange their positions in your dashboard
 - Update their names, display options, and underlying data queries
@@ -44,13 +44,13 @@ With the New Relic One SDK, you can create a Nerdpack, which houses your visuali
 
 ### Quickstart
 
-To build your first custom visualization, download the New Relic One SDK and make sure you have the latest version:
+To build your first custom visualization, [install the New Relic One SDK](../../automate-workflows/get-started-new-relic-cli) and make sure you have the latest version:
 
 ```sh
 nr1 update
 ```
 
-Create a nerdpack and a visualization:
+Create a Nerdpack and a visualization:
 
 ```sh
 nr1 create --type nerdpack --name quickstart
@@ -76,11 +76,11 @@ To view the locally served visualization, you must use the `nerdpacks=local` que
 
 </Callout>
 
-Enter values into the fields under **Configure visualization properties** to see how the chart changes:
+Enter values into the fields under **Configure visualization properties** and see how the chart changes:
 
 ![Your first custom visualization](../../images/custom-viz/first-viz.png)
 
-### Further reading
+### Resources
 
 Here is a list of resources for building custom visualizations:
 
@@ -89,13 +89,13 @@ Here is a list of resources for building custom visualizations:
 - [Custom visualizations and the New Relic One SDK **(Guide)**](../../build-apps/custom-visualizations-and-the-new-relic-one-sdk)
 - [Dashboards and Custom Visualizations **(Video)**](https://www.youtube.com/watch?v=_F61mxtKfGA)
 
-## Customizing your visualization
+## Customize your visualization
 
 You have a lot of control over how your visualization operates. You can choose what properties of the visualization are customizable, such as colors, sizes, and how you present your legend. You can choose whether it presents New Relic data or data from an external source. You can even install and use third-party components to create a specific look:
 
 ![Recharts AreaChart](../../images/custom-viz/charts.png)
 
-### Further reading
+### Resources
 
 Here is a list of resources for configuring custom visualizations:
 
@@ -103,7 +103,7 @@ Here is a list of resources for configuring custom visualizations:
 - [Customize visualizations with configuration **(Guide)**](../../build-apps/customize-visualizations-with-configuration)
 - [Configuring custom visualizations for dashboards **(Video)**](https://www.youtube.com/watch?v=sFpG_iG7Xa8)
 
-## Use a custom visualization
+## Use your custom visualization
 
 During development, you can serve your visualization locally. Under **Apps > Custom Visualizations**, you can view and configure your visualization to see how your data looks, but you can't instantiate that chart and use it in your account:
 
@@ -111,15 +111,15 @@ During development, you can serve your visualization locally. Under **Apps > Cus
 
 To do that, you need to publish it to the New Relic One catalog and subscribe to it from your account.
 
-Because custom visualizations are Nerdpack artifacts, you publish and subscribe to them the same way you publish and subscribe to New Relic One applications. Once you've done so, you can add your custom visualization to a dashboard:
+Because custom visualizations are Nerdpack artifacts, you publish and subscribe to them the same way you [publish and subscribe to New Relic One applications](../../build-apps/publish-deploy). Once you've done so, you can add your custom visualization to a dashboard:
 
 ![Add your published visualization to a dashboard](../../images/custom-viz/published-viz.png)
 
-If you want to reuse your visualization to include different data or change its presentation, you can go back to **Apps > Custom Visualizations**, choose your visualization, configure another instance and add it to your dashboard:
+If you want to reuse your visualization to present different data or the same data in a new way, you can go back to **Apps > Custom Visualizations**, choose your visualization, configure another instance and add it to your dashboard:
 
 ![Multiple instances of the same chart](../../images/custom-viz/chart-instances.png)
 
-### Further reading
+### Resources
 
 Here is a list of resources for using custom visualizations:
 
