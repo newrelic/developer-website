@@ -181,6 +181,13 @@
       url: '/explore-docs/nerdstoragevault'
     - title: Query and store data
       url: '/explore-docs/query-and-store-data'
+    - title: Custom Visualizations
+      url: '/explore-docs/custom-viz'
+      pages:
+        - title: Configuration options
+          url: '/explore-docs/custom-viz/configuration-options'
+        - title: Visualization files
+          url: '/explore-docs/custom-viz/viz-files'
     - title: New Relic One SDK Component library
       url: '/explore-docs/intro-to-sdk'
       pages:
