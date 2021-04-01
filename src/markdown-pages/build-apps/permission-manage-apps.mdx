@@ -1,7 +1,7 @@
 ---
 path: '/build-apps/permission-manage-apps'
 duration: ''
-title: 'Permissions for managing applications'
+title: 'New Relic One app permissions'
 template: 'GuideTemplate'
 description: 'Learn about permissions for subscribing to apps'
 redirects:
@@ -15,40 +15,33 @@ tags:
 
 <Intro>
 
-When you create an app, you'll likely want to share it. From New Relic One's **Apps** page, you can subscribe to apps you create, publish, and deploy, and to other publicly available apps.
-
-You must have the **Nerdpack manager** role to subcribe accounts to apps. Read on to learn about permissions and versions.
+Details about permissions required for creating and managing [New Relic One applications](https://developer.newrelic.com/build-apps).
 
 </Intro>
 
-## Permissions for managing applications
+There are several factors affecting your New Relic One app permissions. 
 
-The Nerdpack manager role is a [New Relic add-on role](https://docs.newrelic.com/docs/accounts/accounts/roles-permissions/add-roles-permissions). When you create a Nerdpack, you have the Nerdpack manager role for handling that Nerdpack. New Relic account administrators have the Nerdpack manager role automatically, and can subscribe their accounts to available Nerdpacks.
+## Basic user restrictions 
 
-User permissions vary depending on which pricing plan you are on.
+The most important permissions factor is [user type](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#user-type): 
 
-### New Relic One pricing plan
+* Basic users: can build New Relic One apps, but can't: 
+  * use apps built by others (whether deployed locally in your organization or available from [the public catalog](https://opensource.newrelic.com/nerdpacks/)). 
+  * subscribe other accounts or users to apps they've created.
+* Full users: can build and access New Relic One apps, with some additional permissions related to managing/assigning apps (see below). 
 
-For accounts with New Relic One pricing, there are permissions differences for basic users and full users:
+## Role-related management abilities 
 
-**Full users** have the Nerdpack manager role and have full capabilities for creating and managing New Relic One applications, as well as accessing all types of applications in the New Relic One catalog.
+Full users have role-related rules that impact their ability to assign New Relic One apps and subscribe accounts to them. How this works depends on your account/user model: 
 
-A **basic user** can develop and view their own local New Relic One apps, but they ***cannot***:
+* [Original user model](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models): Owners and Admins can manage New Relic One apps, as can users specifically assigned the **Nerdpack manager** add-on role. For more details about how account access works for users, see [Account access](#account-access)
+* [New Relic One user model](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models): Both the default groups [**Admin** and **User**](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#groups) have the ability to manage New Relic One apps. It's possible for a custom group to have restricted capabilities.  
 
-- Subscribe other users to apps they’ve created.
-- Access or manage apps in the New Relic One catalog.
-- Access apps in the entity explorer sidebar.
+To learn more about account/user models, see [User model overview](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models).
 
-### Original product-based pricing
+## Account access
 
-For accounts on our original product-based pricing, here are access details:
+For organizations with master/sub-account structures: 
 
-**Subscribe to publicly available applications**
-
-To subscribe to publicly available applications, you must have the Nerdpack manager role. Nerdpack manager permissions are automatically assigned to New Relic account owners and admins and can be assigned to individual users. If you aren’t an owner or admin, you can request Nerdpack manager permission, or ask your New Relic admin or owner to subscribe the apps to your account for you.
-
-You can add any of the publicly available applications to master accounts or separate sub-accounts on which you have the Nerdpack manager role, or to separate sub-accounts under a master account you own or administer. If you add the application to a master account, the access flows to all of its sub-accounts as well.
-
-**Subscribe to applications that you create**
-
-You also must have the Nerdpack manager role to subscribe the applications you create to accounts. Applications that you publish and deploy can only be subscribed to the master account that was used to publish them, or to its sub-accounts. This means you might want a New Relic admin to deploy your applications for you if they need to be available across the organization.
+* If you add New Relic One apps to a master account, that access is inherited by all of its sub-accounts.
+* Applications that you create and deploy can only be subscribed to the master account that was used to publish them, or to its sub-accounts. This means that, if the app needs to be available across your organization, you might need a New Relic admin to deploy your app.
