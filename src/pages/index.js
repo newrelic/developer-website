@@ -104,15 +104,6 @@ const IndexPage = ({ data, pageContext, location }) => {
             >
               <Video id="wyjntz5y24" type="wistia" />
             </div>
-            {/* <p>
-              <Button
-                as={Link}
-                variant={Button.VARIANT.PRIMARY}
-                to="https://web.cvent.com/event/ac440313-3922-45f5-b5b9-0812f29f4a51/summary?RefId=WEBL31&rt=DKI6UYQP806AeXIj4Q4uxw"
-              >
-                Register
-              </Button>
-            </p> */}
           </section>
 
           <section className={cx(styles.section, styles.stripedSection)}>
