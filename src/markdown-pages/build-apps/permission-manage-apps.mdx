@@ -25,18 +25,15 @@ There are several factors affecting your New Relic One app permissions.
 
 The most important permissions factor is [user type](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#user-type): 
 
-* Basic users: can build New Relic One apps, but can't: 
-  * publish or deploy apps they've developed 
-  * use apps built by others (whether deployed locally in their account or available from [the public catalog](https://opensource.newrelic.com/nerdpacks/)). 
-  * subscribe other accounts or users to apps they've created.
-* Full users: can build and access New Relic One apps, with some additional permissions related to managing/assigning apps (see below). 
+* **Basic users** can only develop New Relic One apps locally. They can’t publish or subscribe to an app, whether it's deployed in their account, available in [the public catalog](https://opensource.newrelic.com/nerdpacks/), or one they've built. 
+* **Full users** can theoretically do everything, but there may be restrictions due to custom role assignments (see below). 
 
-## Role-related management abilities 
+## Role-related permissions 
 
 Full users have role-related rules that impact their ability to assign New Relic One apps and subscribe accounts to them. How this works depends on your account/user model: 
 
 * [Original user model](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models): Owners and Admins can manage New Relic One apps, as can users specifically assigned the **Nerdpack manager** add-on role. For more details about how account access works for users, see [Account access](#account-access)
-* [New Relic One user model](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models): Both the default groups [**Admin** and **User**](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#groups) have the ability to manage New Relic One apps. It's possible for a custom group to have restricted capabilities.  
+* [New Relic One user model](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models): the ability to publish and subscribe to apps is dependent on the "modify Nerdpacks" [capability](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#roles). The **All product admin** role has this capability, as do the default groups [**Admin** and **User**](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#groups). 
 
 To learn more about account/user models, see [User model overview](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models).
 
