@@ -186,8 +186,6 @@
       pages:
         - title: Configuration options
           url: '/explore-docs/custom-viz/configuration-options'
-        - title: Visualization files
-          url: '/explore-docs/custom-viz/viz-files'
     - title: New Relic One SDK Component library
       url: '/explore-docs/intro-to-sdk'
       pages:
