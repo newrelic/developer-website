@@ -23,13 +23,7 @@ module.exports = {
           component: require.resolve('./src/layouts'),
           mobileBreakpoint: '760px',
         },
-        // workaround until this is no longer needed.
-        // https://github.com/newrelic/gatsby-theme-newrelic/issues/302
-        i18n: {
-          translationsPath: `${__dirname}/src/i18n/translations`,
-          additionalLocales: [],
-        },
-        prism: {
+       prism: {
           languages: ['yaml', 'sass', 'scss', 'java'],
         },
         splitio: {

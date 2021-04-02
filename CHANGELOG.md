@@ -1,3 +1,15 @@
+# [1.40.0](https://github.com/newrelic/developer-website/compare/v1.39.0...v1.40.0) (2021-04-02)
+
+
+### Bug Fixes
+
+* **logo:** remove  rogue semicolons so fill colors render ([8fca904](https://github.com/newrelic/developer-website/commit/8fca9042375123d847220c16431aac27a982090e))
+
+
+### Features
+
+* **logo:** update logo in side nav and footer ([8e6e205](https://github.com/newrelic/developer-website/commit/8e6e205765d9d2a7e6fe7d71a71e620fea309a1c))
+
 # [1.39.0](https://github.com/newrelic/developer-website/compare/v1.38.0...v1.39.0) (2021-03-29)
 
 
