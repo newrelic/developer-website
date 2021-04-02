@@ -26,11 +26,18 @@ const NerdlogPage = ({ location }) => {
                 You will now be notified when we have episodes of the Nerdlog
                 and get information about previous episodes every week.
               </p>
-              <p> 
-                  To learn more about the latest features from the people who built them, check out our 
-                   <a href="https://blog.newrelic.com/tag/nerdlog/" target="_blank"> weekly Nerdlog recaps.</a>
-
-               </p>
+              <p>
+                To learn more about the latest features from the people who
+                built them, check out our
+                <a
+                  href="https://blog.newrelic.com/tag/nerdlog/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {' '}
+                  weekly Nerdlog recaps.
+                </a>
+              </p>
             </div>
           </section>
           <section />
