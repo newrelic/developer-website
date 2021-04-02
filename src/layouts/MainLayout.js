@@ -59,16 +59,7 @@ const MainLayout = ({ children, pageContext }) => {
               `}
               to="/"
             >
-              <Logo
-                css={css`
-                  display: block;
-                  width: 150px;
-
-                  @media screen and (max-width: 760px) {
-                    width: 160px;
-                  }
-                `}
-              />
+              <Logo />
             </Link>
             <SearchInput
               placeholder="Filter navigation"
