@@ -16,6 +16,8 @@ class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
 }
 `;
 
+let globalThis;
+
 const Editor = React.lazy(() => import('@monaco-editor/react'));
 
 const ComponentPlayground = () => {

@@ -26,6 +26,8 @@ const typeMap = {
   nrql: `'SELECT count(*) FROM Transaction'`,
 };
 
+let globalThis;
+
 const codeString = ({ items, name, code }) =>
   `[{${items
     .map(({ name: subName, value, type }) => {

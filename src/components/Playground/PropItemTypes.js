@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Checkbox from '../Checkbox';
 import { css } from '@emotion/core';
 import { camelCase } from 'lodash';
-import RawCode from './RawCode';
 
 const PropItemType = ({ propItem, constants }) => {
   const matchedConstant = constants.find(({ name }) => {
@@ -23,7 +22,7 @@ const PropItemType = ({ propItem, constants }) => {
           grid-column: span 4;
         `}
       >
-        <RawCode language="javascript" code={code} />{' '}
+        <code language="javascript" code={code} />{' '}
       </div>
     );
   }
