@@ -22,7 +22,7 @@ module.exports = {
           component: require.resolve('./src/layouts'),
           mobileBreakpoint: '760px',
         },
-        prism: {
+       prism: {
           languages: ['yaml', 'sass', 'scss', 'java'],
         },
         splitio: {
