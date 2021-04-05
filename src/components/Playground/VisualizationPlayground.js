@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState, Suspense, useEffect } from 'react';
 import { LiveProvider, LivePreview, LiveError } from 'react-live';
 import { Button, Collapser } from '@newrelic/gatsby-theme-newrelic';
 import { nr1JSON, indexJS } from './defaultVizCode';
@@ -103,8 +103,19 @@ const VisualizationPlayground = () => {
       inputProps,
     })
   );
+  const [isFront, setIsFront] = useState(false);
+
+  useEffect(() => {
+    process.nextTick(() => {
+      if (globalThis.window ?? false) {
+        setIsFront(true);
+      }
+    });
+  }, [isFront]);
 
   useCustomMonaco();
+
+  if (!isFront) return null;
 
   if (typeof window === 'undefined') global.window = {};
   const sdk = window.__NR1_SDK__?.default ?? {};
