@@ -18,16 +18,16 @@ To set up your Nerdpacks, use the commands below. You can click any command to s
 
 | Command | Description |
 |---|---|
-| [`nr1 nerdpack:build`](#nr1-nerdpackbuild)       | Assembles your Nerdpack into bundles|
-| [`nr1 nerdpack:clone`](#nr1-nerdpackclone)       | Clones a Nerdpack from a git repository. |
-| [`nr1 nerdpack:serve`](#nr1-nerdpackserve)       | Serves your Nerdpack for testing and development purposes. |
-| [`nr1 nerdpack:uuid`](#nr1-nerdpackuuid)         | Shows or regenerates the UUID of a Nerdpack.  |
-| [`nr1 nerdpack:publish`](#nr1-nerdpackpublish)   | Publishes your Nerdpack to New Relic. |
-| [`nr1 nerdpack:deploy`](#nr1-nerdpackdeploy)     | Deploys a Nerdpack version to a specific channel. |
-| [`nr1 nerdpack:undeploy`](#nr1-nerdpackundeploy) | Undeploys a Nerdpack version from a specific channel. |
-| [`nr1 nerdpack:clean`](#nr1-nerdpackclean)       | Cleans your development folders. |
-| [`nr1 nerdpack:validate`](#nr1-nerdpackvalidate) | Validates the contents of your Nerdpack. |
-| [`nr1 nerdpack:info`](#nr1-nerdpackinfo)         | Shows the state of your Nerdpack in the New Relic's registry.  |
+| [`nr1 nerdpack:build`](#nr1-nerdpackbuild) | Builds a Nerdpack |
+| [`nr1 nerdpack:clean`](#nr1-nerdpackclean) | Removes all built artifacts |
+| [`nr1 nerdpack:clone`](#nr1-nerdpackclone) | Clones a Nerdpack from a git repository |
+| [`nr1 nerdpack:info`](#nr1-nerdpackinfo) | Shows the state of your Nerdpack in the New Relic's registry |
+| [`nr1 nerdpack:publish`](#nr1-nerdpackpublish) | Publish this Nerdpack |
+| [`nr1 nerdpack:serve`](#nr1-nerdpackserve) | Serves your Nerdpack for testing and development purposes |
+| [`nr1 nerdpack:tag`](#nr1-nerdpacktag) | Tags a specific Nerdpack version |
+| [`nr1 nerdpack:untag`](#nr1-nerdpackuntag) | Removes a tag from the registry |
+| [`nr1 nerdpack:uuid`](#nr1-nerdpackuuid) | Shows or regenerates the UUID of a Nerdpack |
+| [`nr1 nerdpack:validate`](#nr1-nerdpackvalidate) | Validates artifacts inside your Nerdpack |
 
 # Command details
 
@@ -35,203 +35,261 @@ To set up your Nerdpacks, use the commands below. You can click any command to s
 
 ## `nr1 nerdpack:build`
 
-### Builds a Nerdpack
-Runs a webpack process to assemble your Nerdpack into javascript and CSS bundles. As many other CLI commands, it should be run at the package.json level of your Nerdpack.
+Builds a nerdpack
 
 ### Usage
-`$ nr1 nerdpack:build OPTION`
+
+```sh
+nr1 nerdpack:build
+```
 
 ### Options
-| | |
+
+|||
 |---|---|
-|  `--extra-metadata-path=extra-metadata-path`  | Specify a json file path with extra metadata. [default: extra-metadata.json] |
-|  `--prerelease=prerelease`                    | If specififed, the value will be appended to the current version of generated files. ie: --prerelease=abc. Then the version will be "1.2.3-abc". |
-|  `--profile=profile`                          |   The authencation profile you want to use. |
-|  `--verbose`                                  | Adds extra information to the output. |
+| `--extra-metadata-path=extra-metadata-path` | [default: extra-metadata.json] specify a json file path with extra metadata |
+| `--prerelease=prerelease` | if specified, the value will be appended to the current version of generated files. ie: --prerelease=abc. Then the version will be "1.2.3-abc". |
+| `--profile=profile` | the authentication profile you want to use |
+| `--verbose` | adds extra information to the output |
 
-<br/>
+### Description
 
-***
+Runs a webpack process to assemble your Nerdpack into javascript and css bundles. As many other CLI commands, it should be run at the `package.json` level of your Nerdpack. It will search for `nr1.json` files in your subdirectories, validate them, and try to build them. This also runs `nr1 nerdpack:validate` before starting the build process.
+
+## `nr1 nerdpack:clean`
+
+Removes all built artifacts
+
+### Usage
+
+```sh
+nr1 nerdpack:clean
+```
+
+### Options
+
+|||
+|---|---|
+| `--profile=profile` | the authentication profile you want to use |
+| `--verbose` | adds extra information to the output |
+
+### Description
+
+Cleans and removes the content and the development folders (`dist/`, `tmp/`)
 
 ## `nr1 nerdpack:clone`
 
-### Clone an existing Nerdpack
-Duplicates an existing Nerdpack onto your local computer. You can clone an open source Nerdpack from [our Open Source GitHub repositories](https://opensource.newrelic.com/explore-projects/). After choosing a git repository, this command performs the following actions so that you can start using the Nerdpack:
-1. Clones the repository.
-2. Sets the repository as remote upstream.
-3. Installs all of its dependencies (using npm).
-4. Generates a new UUID using your profile, and commits it.
+Clones a nerdpack from a git repository
 
 ### Usage
-`$ nr1 nerdpack:clone OPTION`
+
+```sh
+nr1 nerdpack:clone
+```
 
 ### Options
-| | |
+
+|||
 |---|---|
-|  `-r, --repo=REPO`  | Repository location (either an HTTPS or SSH path). **(Required)** |
-|  `-p, --path=PATH`  | Determines the directory to clone to (defaults to the repository name). |
-|  `-f, --force`      |   Replaces destination folder if it exists. |
-|  `--profile=PROFILE`| The authentication profile you want to use. |
-|  `--verbose`        | Adds extra information to the output. |
+| `-f`, `--force` | Replace destination folder if it exists |
+| `-p`, `--path=path` | Directory where to clone (defaults to the repository name) |
+| `-r`, `--repo=repo` | (required) Repository location (either an HTTPS or SSH path) |
+| `--profile=profile` | the authentication profile you want to use |
+| `--verbose` | adds extra information to the output |
 
-<br/>
+### Description
 
-*** 
+Given a git repository, it performs all the actions so that you can start using it. This includes, in order:
 
-## `nr1 nerdpack:serve`
-### Serve your Nerdpack locally
-Launches a server with your Nerdpack locally on the [New Relic One platform](https://one.newrelic.com/?nerdpacks=local), where it can be tested live. 
+1. Clone the repository
+2. Set the repository as remote upstream
+3. Install all of its dependencies (using npm)
+4. Generate a new UUID using your profile, and commit it
 
-To learn more about working with apps locally, see our guide on how to [serve, publish, and deploy documentation](/build-apps/publish-deploy/).
+## `nr1 nerdpack:info`
+
+Shows the state of your nerdpack in the new relic's registry
 
 ### Usage
-`$ nr1 nerdpack:serve` 
+
+```sh
+nr1 nerdpack:info
+```
 
 ### Options
-| | |
+
+|||
 |---|---|
-|  `--profile=PROFILE`| The authentication profile you want to use. |
-|  `--verbose`        | Adds extra information to the output. |
+| `-a`, `--all` | show all versions |
+| `-i`, `--nerdpack-id=nerdpack-id` | get info from the specified Nerdpack instead of local one |
+| `--profile=profile` | the authentication profile you want to use |
+| `--verbose` | adds extra information to the output |
 
-<br/>
+### Description
 
-*** 
-
-## `nr1 nerdpack:uuid`
-### Get your Nerdpack's UUID
-Prints the UUID (Universal Unique ID) of your Nerdpack, by default. The UUID determines what data the Nerdpack can access and who can subscribe to the Nerdpack. To deploy a Nerdpack you didn't make, you'll have to assign it a new UUID by using the `-g` or `--generate` option.
-
-For more details, see [our GitHub workshop](https://github.com/newrelic/nr1-workshop/blob/master/lab-cli/INSTRUCTIONS.md) on GitHub.
-
-### Usage
-`$ nr1 nerdpack:uuid` 
-
-### Options
-| | |
-|---|---|
-|  `--profile=PROFILE`| The authentication profile you want to use. |
-|  `-f, --force`      | If present, it will override the existing UUID without asking. |
-|  `-g, --generate`   | Generates a new UUID if not available. |
-|  `--verbose`        | Adds extra information to the output. |
-
-<br/>
-
-***
+The default amount of versions shown is 10 but all versions can be shown if the `--all` (or `-a`) flag is used
 
 ## `nr1 nerdpack:publish`
-### Publish your Nerdpack
-Publishes your Nerdpack to New Relic. 
 
-Please note:
-* If no additional parameters are passed in, this command will automatically deploy the Nerdpack onto the DEV channel. 
-* If you want to specify your own list of deploy channels, add the `--channel` option. For example, `$ nr1 nerdpack:publish --channel BETA --channel STABLE`.
-* If you want to disable this behavior, add `-D` or `--skip-deploy` to the command. Then, you can use `nr1 nerdpack:deploy` to perform a deploy manually.
-
-For more on publishing and deploying, see [Deploy to New Relic One](/build-tools/new-relic-one-applications/publish-deploy).
+Publish this nerdpack
 
 ### Usage
-`$ nr1 nerdpack:publish` 
+
+```sh
+nr1 nerdpack:publish
+```
 
 ### Options
-| | |
+
+|||
 |---|---|
-| `-B, --skip-build`                           | Skips the previous build process. |
-| `-D, --skip-deploy`                          | Skips the following deploy process. |
-| `-c, --channel=DEV/BETA/STABLE`              | Specifies the channel to deploys to. [default: STABLE] |
-|  `-f, --force`                               |  Forces the publish, overriding any existing version in the registry. |
-|  `--dry-run`                                 | Undergoes publishing process without actually publishing anything. |
-|  `--extra-metadata-path=extra-metadata-path` | Specifies a json file .path with extra metadata. [default: extra-metadata.json] |
-|  `--prerelease=STRING`                       | The value you enter will be appended to the current version of generated files. |
-|  `--profile=PROFILE`                         | The authentication profile you want to use. |
-|  `--verbose`                                 | Adds extra information to the output. |
+| `-B`, `--skip-build` | skip the previous build process |
+| `-T`, `--skip-tag` | do not tag the version |
+| `-t`, `--tag=tag` | [default: STABLE] |
+| `--dry-run` | publish process without actually publishing anything. |
+| `--extra-metadata-path=extra-metadata-path` | [default: extra-metadata.json] specify a json file path with extra metadata |
+| `--prerelease=prerelease` | if specified, the value will be appended to the current version of generated files. ie: --prerelease=abc. Then the version will be "1.2.3-abc". |
+| `--profile=profile` | the authentication profile you want to use |
+| `--verbose` | adds extra information to the output |
 
-<br/>
+### Description
 
-***
+This command will build and upload your Nerdpack to the registry.
 
-## `nr1 nerdpack:deploy`
-### Deploy your Nerdpack to a channel
-Deploys a Nerdpack version to a specific channel (DEV, BETA, or STABLE). A channel can only have one Nerdpack version deployed to it at one time. If a channel has an existing Nerdpack associated with it, deploying a new Nerdpack version to that channel will undeploy the previous one. 
+If no additional parameters are passed in, this command will automatically tag the nerdpack version as `STABLE`. If you want to disable this behavior, pass the `--skip-tag` flag to the command.
 
-For more on publishing and deploying, see [Deploy to New Relic One](/build-tools/new-relic-one-applications/publish-deploy).
+See `nr1 nerdpack:tag --help` for more info on tags.
+
+## `nr1 nerdpack:serve`
+
+Serves your nerdpack for testing and development purposes
 
 ### Usage
-`$ nr1 nerdpack:deploy OPTION` 
+
+```sh
+nr1 nerdpack:serve
+```
 
 ### Options
-| | |
+
+|||
 |---|---|
-|  `-c, --channel=DEV/BETA/STABLE` | Specifies the channel to deploy to. **(required)** |
-|  `-i, --nerdpack-id=NERDPACK_ID` | Specifies the Nerdpack to deploy. By default, the command will use the one in package.json. |
-|  `--from-version=VERSION`        | Specifies which version to deploy. By default, the command will use the one in package.json. |
-|  `--profile=PROFILE`             | The authentication profile you want to use. |
-|  `--verbose`                     | Adds extra information to the output. |
+| `--profile=profile` | the authentication profile you want to use |
+| `--verbose` | adds extra information to the output |
 
-<br/>
+### Description
 
-***
+Launches a server with your local code, ready to be tested live on the platform.
 
-## `nr1 nerdpack:undeploy`
-### Undeploy your Nerdpack
-Undeploys a Nerdpack version from a specific channel (for example, DEV, BETA, or STABLE). 
+## `nr1 nerdpack:tag`
+
+Tags a specific nerdpack version
 
 ### Usage
-`$ nr1 nerdpack:undeploy OPTION` 
+
+```sh
+nr1 nerdpack:tag
+```
 
 ### Options
-| | |
+
+|||
 |---|---|
-|  `-c, --channel=DEV/BETA/STABLE` | Specifies the channel to undeploy from. **(required)** |
-|  `-i, --nerdpack-id=NERDPACK_ID` | Specifies the Nerdpack to undeploy. By default, the command will use the one in package.json. |
-|  `--profile=PROFILE`             | The authentication profile you want to use. |
-|  `--verbose`                     | Adds extra information to the output. |
+| `-V`, `--from-version=from-version` | version to tag. If it's not provided will use the one in package.json |
+| `-i`, `--nerdpack-id=nerdpack-id` | nerdpack uuid to deploy. If it's not provided will use the one in nr1.json |
+| `-t`, `--tag=tag` | [default: STABLE] tag name |
+| `--profile=profile` | the authentication profile you want to use |
+| `--verbose` | adds extra information to the output |
 
-***
+### Description
 
-## `nr1 nerdpack:clean`
-### Removes all built artifacts
-Cleans and removes the content and the developtment folders (dist/, tmp/).
+A single version may have several tags, but each tag can only be applied to one version. Tagging a different version with an existing tag will untag the previous one.
+
+We recommend using `STABLE` to tag the versions you want to show to your subscribers. See the command `nr1 nerdpack:subscribe` for more info.
+
+### Aliases
+
+```sh
+$ nr1 nerdpack:deploy
+```
+
+## `nr1 nerdpack:untag`
+
+Removes a tag from the registry
 
 ### Usage
-`$ nr1 nerdpack:clean OPTION` 
+
+```sh
+nr1 nerdpack:untag
+```
 
 ### Options
-| | |
-|---|---|
-|  `--profile=profile`             | The authentication profile you want to use |
-|  `--verbose`                     | Adds extra information to the output. |
 
-***
+|||
+|---|---|
+| `-i`, `--nerdpack-id=nerdpack-id` | nerdpack uuid to deploy. If it's not provided will use the one in nr1.json |
+| `-t`, `--tag=tag` | [default: STABLE] tag name |
+| `--profile=profile` | the authentication profile you want to use |
+| `--verbose` | adds extra information to the output |
+
+### Description
+
+Specified tag will be removed. No files will be actually deleted.
+
+### Aliases
+
+```sh
+$ nr1 nerdpack:undeploy
+```
+
+## `nr1 nerdpack:uuid`
+
+Shows or regenerates the uuid of a nerdpack
+
+### Usage
+
+```sh
+nr1 nerdpack:uuid
+```
+
+### Options
+
+|||
+|---|---|
+| `-f`, `--force` | if present, it will override the existing UUID without asking |
+| `-g`, `--generate` | generates a new UUID if not available |
+| `--profile=profile` | the authentication profile you want to use |
+| `--verbose` | adds extra information to the output |
+
+### Description
+
+By default, prints the Universal Unique ID of the specified package. It also enables generation (or regeneration) of the UUID of your package, depending on the flags passed.
 
 ## `nr1 nerdpack:validate`
-### Validates artifacts inside your Nerdpack
-Validates artifacts inside your Nerdpack.
+
+Validates artifacts inside your nerdpack
 
 ### Usage
-`$ nr1 nerdpack:validate OPTION` 
+
+```sh
+nr1 nerdpack:validate
+```
 
 ### Options
-| | |
+
+|||
 |---|---|
-|  `-l, --force-local`             | The authentication profile you want to use. |
-|  `-r, --force-remote`            | Force download of new schema files. |
-|  `--profile=profile`             | The authentication profile you want to uset. |
-|  `--verbose`                     | Adds extra information to the output. |
+| `-l`, `--force-local` | do not download new schema files |
+| `-r`, `--force-remote` | force download of new schema files |
+| `--profile=profile` | the authentication profile you want to use |
+| `--verbose` | adds extra information to the output |
 
-***
+### Aliases
 
-## `nr1 nerdpack:Info`
-### Shows the state of your Nerdpack in the New Relic's registry
-Shows the state of your Nerdpack in the New Relic's registry. The default amount of versions shown is 10 but all versions can be shown if the --all (or -a) flag is used
+```sh
+nr1 nerdpack:ls
+```
 
-
-### Usage
-`$ nr1 nerdpack:info OPTION` 
-
-### Options
-| | |
-|---|---|
-|  `-a, --all `                    | Show all versions. |
-|  `-i, --nerdpack-id=nerdpack-id` | Get info from the specified Nerdpack instead of local one. |
-|  `--profile=profile`             | The authentication profile you want to use. |
-|  `--verbose`                     | Adds extra information to the output. |
+```sh
+nr1 nerdpack:val
+```
