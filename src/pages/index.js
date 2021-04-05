@@ -56,7 +56,7 @@ const IndexPage = ({ data, pageContext, location }) => {
     <PageContext.Provider value={pageContext}>
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Getting started with New Relic and Terraform" />
+        <PageLayout.Header title="Futurestack: Master Observability" />
 
         <PageLayout.Content>
           <section>
@@ -80,34 +80,29 @@ const IndexPage = ({ data, pageContext, location }) => {
           >
             <div className={styles.introText}>
               <p>
-                <a href="https://www.terraform.io/">Terraform</a> is a popular
-                infrastructure-as-code software tool built by HashiCorp. You use
-                it to provision all kinds of infrastructure and services,
-                including New Relic alerts.
-                <br />
-                <br />
-                In this guide, you learn how to set up New Relic alerts with
-                Terraform. More specifically, you provision an alert policy,
-                four alert conditions, and a notification channel.
+                Data Nerds, get ready to hack the future. Level Up your
+                observability game at{' '}
+                <a href="https://newrelic.com/futurestack">Futurestack</a> 2021.
               </p>
               <p>
-                <Button
-                  as={Link}
-                  variant={Button.VARIANT.PRIMARY}
-                  to="/automate-workflows/get-started-terraform"
-                >
-                  Get Started with Terraform
-                </Button>
+                Rack up your experience points with new tools, new skills, and
+                whole new ways to play with your data through Observability.
+              </p>
+              <p>
+                Connect with Nerds from across the globe to learn, share, and
+                get inspired as we reinvent the future of software — and have
+                lots of fun doing it.
               </p>
             </div>
             <div
               css={css`
                 flex: 1;
                 margin-top: 0;
+                margin-left: 50px;
                 width: 100%;
               `}
             >
-              <Video id="vifxeilp2h" type="wistia" />
+              <Video id="wyjntz5y24" type="wistia" />
             </div>
           </section>
 
