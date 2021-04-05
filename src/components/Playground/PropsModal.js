@@ -8,8 +8,6 @@ import formatCode from '../../utils/formatCode';
 import PropItem from './PropItem';
 import Markdown from '../Markdown';
 import ExampleEditor from './ExampleEditor';
-import ReferencePreview from '../ReferencePreview';
-import { LiveProvider } from 'react-live';
 
 const PropsModal = ({ component, isOpen, onClose, onAdd }) => {
   const {

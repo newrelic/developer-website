@@ -9,6 +9,8 @@ import {
   PolarRadiusAxis,
   Radar,
   Legend,
+  PieChart,
+  Pie,
 } from 'recharts';
 import { css } from '@emotion/core';
 import VizPropInput from './VizPropInput';
@@ -18,9 +20,9 @@ import VisualizationChrome from './VisualizationChrome';
 
 const typeMap = {
   string: `''`,
-  number: 1,
-  boolean: true,
-  json: {},
+  number: '1',
+  boolean: 'true',
+  json: '{}',
   nrql: `'SELECT count(*) FROM Transaction'`,
 };
 
@@ -120,6 +122,8 @@ const VisualizationPlayground = () => {
     PolarRadiusAxis,
     Radar,
     Legend,
+    RechartPieChart: PieChart,
+    RechartPie: Pie,
     ...sdk,
   };
 
@@ -166,13 +170,24 @@ const VisualizationPlayground = () => {
         const oldProp = inputProps.find(({ name }) => name === prop.name);
         if (oldProp) {
           prop.value = oldProp.value;
+        } else if (prop.type === 'collection') {
+          prop.value = codeString({ items: prop.items });
+        } else {
+          prop.value = typeMap[prop.type] || `''`;
         }
-        prop.value = typeMap[prop.type] || `null`;
+
         return prop;
       });
       const displayName = JSON.parse(nr1JSON).displayName;
       setInputProps([...newInputProps]);
       setVisualizationName(displayName);
+      setCode(
+        buildCodeString({
+          code: files['index.js'].value,
+          visualizationName,
+          inputProps: newInputProps,
+        })
+      );
       setNr1JsonError(null);
     } catch (e) {
       setNr1JsonError(e);

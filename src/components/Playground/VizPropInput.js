@@ -190,9 +190,9 @@ CollectionInput.propTypes = {
 
 const typeMap = {
   string: `''`,
-  number: 1,
-  boolean: true,
-  json: {},
+  number: '1',
+  boolean: 'true',
+  json: '{}',
   nrql: `'SELECT count(*) FROM Transaction'`,
 };
 

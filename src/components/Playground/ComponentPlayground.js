@@ -3,11 +3,7 @@ import { LiveProvider, LivePreview } from 'react-live';
 import { css } from '@emotion/core';
 import PlaygroundToggle from '../PlaygroundToggle';
 import PlaygroundChrome from './Chrome';
-import {
-  Icon,
-  useClipboard,
-  useKeyPress,
-} from '@newrelic/gatsby-theme-newrelic';
+import { Icon, useClipboard } from '@newrelic/gatsby-theme-newrelic';
 import useCustomMonaco from './useCustomMonaco';
 import ComponentList from '../PlaygroundSideview/ComponentList';
 import formatCode from '../../utils/formatCode';
