@@ -1,0 +1,122 @@
+---
+path: '/build-apps/publish-deploy/catalog'
+duration: '30 min'
+title: 'Update your Nerdpack's catalog information'
+template: 'GuideTemplate'
+description: 'Learn to describe your Nerdpack in the catalog'
+tileShorthand:
+  title: 'Update your Nerdpack's catalog information'
+  description: 'Update catalog info'
+tags:
+  - nerdpack
+  - catalog
+---
+
+## Add images and metadata to your apps
+
+Application creators can include a description of what their apps do and how they're best used when they build an app. They can also include screenshots, icons, and metadata that help to make them easy to spot amongst other applications.
+
+Some metadata is added automatically when an app is published:
+
+- Related entities, listed if there are any.
+- Origin label to indicate where the app comes from: local, custom, or public.
+
+![app metadata in catalog](../../images/build-an-app/app_metadata.png)
+
+The New Relic One CLI enables you to provide the information and images you want to include with your application. Then it's a matter of kicking off a catalog command that validates the information and saves it to the catalog.
+
+<Steps>
+
+<Step>
+
+Update the New Relic One CLI to ensure you're working with the latest version.
+
+```bash
+nr1 update
+```
+
+</Step>
+
+<Step>
+
+Add catalog metadata and screenshots.
+
+Run `nr1 create` and then select `catalog` to add a catalog folder to your New Relic One project. The folder contains the following empty files and folder. Add the information as described in the following sections for the process to succeed.
+
+### screenshots folder
+
+A directory that must contain no more than 6 images and meet these criteria:
+
+- 3:2 aspect ratio
+- PNG format
+- landscape orientation
+- 1600 to 2400 pixels wide
+
+### `documentation.md`
+
+A markdown file that presents usage information pulled into the **Documentation** tab for the application in the catalog.
+
+### `additionalInfo.md`
+
+An optional markdown file for any additional information about using your application.
+
+<>
+
+### `config.json`
+
+A JSON file that contains the following fields:
+
+- `tagline`: A brief headline for the application. Must not exceed 30 characters.
+- `repository`: The URL to the GitHub repo for the application. Must not exceed 1000 characters.
+- `details`: Describes the purpose of the application and how to use it. Information must not exceed 1000. Use carriage returns for formatting. Do not include any markdown or HTML.
+- `support`: An object that contains:
+  - `issues`: A valid URL to the GitHub repository's issues list, generally the GitHub **Issues** tab for the repo.
+  - `email`: A valid email address for the team supporting the application.
+  - `community`: URL to a support thread, forum, or website for troubleshooting and usage support.
+- `whatsNew`: A bulleted list of changes in this version. Must not exceed 500 characters. Use carriage returns for formatting. Do not include markdown or HTML.
+
+Example:
+
+```json
+{
+  "tagline": "Map your workloads &amp; entities",
+  "repository": "https://github.com/newrelic/nr1-workload-geoops.git",
+  "details": "Describe, consume, and manage Workloads and Entities in a geographic \n
+  model that supports location-specific KPI's, custom metadata, drill-down navigation into Entities \n
+  and Workloads, real-time configuration, and configuration via automation using the newrelic-cli.",
+  "support": {
+    "issues": {
+      "url": "https://github.com/newrelic/nr1-workload-geoops/issues"
+    },
+    "email": {
+      "address": "opensource+nr1-workload-geoops@newrelic.com"
+    },
+    "community": {
+      "url": "https://discuss.newrelic.com/t/workload-geoops-nerdpack/99478"
+    }
+  },
+  "whatsNew": "\n-Feat: Geographic mapping of Workloads and Entities\n
+  -Feat: Programmatic alerting rollup of underlying Entities\n
+  -Feat: Custom KPI measurement per location\n
+  -Feat: Empty-state edit workflow\n
+  -Feat: JSON file upload format\n-Feat: Published (in open source docs) guide to automating configuration using the newrelic-cli"
+}
+```
+
+</>
+
+</Step>
+
+<Step>
+
+Save the metadata and screenshots to the catalog.
+
+This validates the information you added to the catalog directory against the criteria described in the previous step, and saves it to the catalog.
+
+```bash
+nr1 catalog:submit
+```
+
+</Step>
+
+</Steps>

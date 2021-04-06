@@ -1,0 +1,64 @@
+---
+path: '/build-apps/publish-deploy/subscribe'
+duration: '30 min'
+title: 'Subscribe to your app or visualization'
+template: 'GuideTemplate'
+description: 'Learn to subscribe to your app or visualization'
+tileShorthand:
+  title: 'Subscribe to your app or visualization'
+  description: 'Subscribe to your app or visualization'
+tags:
+  - nerdpack
+  - subscribe
+---
+
+## Subscribe or unsubscribe apps
+
+Whether you want to subscribe accounts to an app you've created or to apps already available in the catalog, the process is the same. Note that if you subscribe to an app in the catalog, you'll automatically get any updates that are added to the app.
+
+To learn about the appropriate permissions for subscribing, see [Permissions for managing applications](/build-apps/permission-manage-apps).
+
+<Steps>
+
+<Step>
+
+Subscribe accounts to an application.
+
+1. Select an application you want to add to your New Relic account.
+2. Click **Add this app**. Note that this button says **Manage access** if the app has already been subscribed to an account you manage.
+3. On the **Account access** page listing the accounts you can subscribe to an application:
+
+- Select the accounts you want to subscribe the app to.
+- Choose the channel you want to subscribe the app to, **Stable** or **Dev**. This can only be **Stable** for the public apps created by New Relic.
+- Click the update button. Now you and members of the accounts you have subscribed to the app can launch it from New Relic One.
+
+</Step>
+
+</Steps>
+
+## Handle duplicate applications
+
+You might end up with duplicate applications on your New Relic One **Apps** page. This can happen when you subscribe to the same app using both the CLI and the catalog. Or if you clone an app, modify, and deploy it, but keep the original name. You can manage duplicates with the catalog.
+
+Good to know before you start:
+
+- You need a user role with the ability to manage Nerdpacks for accounts that you want to unsubscribe and undeploy from applications.
+- You can't remove the public apps.
+- When a duplicate application has no accounts subscribed to it, you undeploy it. For applications that have accounts subscribed to them, you **unscubscribe** and **undeploy**.
+- The unsubscribe and undeploy process happens in a batch. To remove an account from an application, but ensure that other accounts continue to be subscribed, select the checkbox, **Resubscribe these accounts to the new application**.
+
+<Steps>
+
+<Step>
+
+Remove duplicates.
+
+1. In the New Relic One catalog, click a public application that has one or more duplicates. (You can only manage duplicates from the public version of the application.)
+2. On the application information page, select **Clean up applications**.
+3. Review the information about the application that's open, as well as any duplicates. Click **Manage app** for duplicates you want to remove.
+4. If needed, select **Resubscribe these accounts to the new application**.
+5. Click **Unsubscribe and undeploy**, and agree to the terms and conditions.
+
+</Step>
+
+</Steps>
