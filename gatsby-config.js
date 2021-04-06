@@ -16,7 +16,6 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
-        gaTrackingId: 'UA-3047412-33',
         layout: {
           contentPadding: '2rem',
           maxWidth: '1700px',
@@ -94,6 +93,20 @@ module.exports = {
               beacon: 'staging-bam-cell.nr-data.net',
               errorBeacon: 'staging-bam-cell.nr-data.net',
             },
+          },
+        },
+        tessen: {
+          product: 'DEV',
+          subproduct: 'TDEV',
+          segmentWriteKey: 'AEfP8c1VSuFxhMdk3jYFQrYQV9sHbUXx',
+          trackPageViews: true,
+          pageView: {
+            name: 'pageView',
+            category: 'DocPageView',
+            getProperties: ({ location, env }) => ({
+              path: location.pathname,
+              env: env === 'production' ? 'prod' : env,
+            }),
           },
         },
       },
