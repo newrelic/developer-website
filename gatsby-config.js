@@ -22,7 +22,7 @@ module.exports = {
           component: require.resolve('./src/layouts'),
           mobileBreakpoint: '760px',
         },
-       prism: {
+        prism: {
           languages: ['yaml', 'sass', 'scss', 'java'],
         },
         splitio: {
@@ -98,7 +98,7 @@ module.exports = {
         tessen: {
           product: 'DEV',
           subproduct: 'TDEV',
-          segmentWriteKey: 'AEfP8c1VSuFxhMdk3jYFQrYQV9sHbUXx',
+          segmentWriteKey: 'Ako0hclX8WGHwl9rm4n5uxLtT4wgEtuU',
           trackPageViews: true,
           pageView: {
             name: 'pageView',
