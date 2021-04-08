@@ -1,3 +1,22 @@
+# [1.40.0](https://github.com/newrelic/developer-website/compare/v1.39.0...v1.40.0) (2021-04-02)
+
+
+### Bug Fixes
+
+* **logo:** remove  rogue semicolons so fill colors render ([8fca904](https://github.com/newrelic/developer-website/commit/8fca9042375123d847220c16431aac27a982090e))
+
+
+### Features
+
+* **logo:** update logo in side nav and footer ([8e6e205](https://github.com/newrelic/developer-website/commit/8e6e205765d9d2a7e6fe7d71a71e620fea309a1c))
+
+# [1.39.0](https://github.com/newrelic/developer-website/compare/v1.38.0...v1.39.0) (2021-03-29)
+
+
+### Features
+
+* **embeds:** create embed pages ([e84f1e8](https://github.com/newrelic/developer-website/commit/e84f1e895a3c1d3240845943ceb54fcc61e7245f))
+
 # [1.38.0](https://github.com/newrelic/developer-website/compare/v1.37.0...v1.38.0) (2021-03-24)
 
 
