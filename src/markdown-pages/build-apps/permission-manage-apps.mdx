@@ -17,12 +17,20 @@ There are several restrictions around who can publish, use, and subscribe to Ner
 
 ## Restrictions for basic users
 
-The most important permissions factor is [user type](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#user-type): 
+The most important permissions factor is [user type](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#user-type). A basic user has several restrictions related to their inability to access Full Stack Observability, and a full user theoretically has full abilities. 
 
+Basic users can: 
+* Build and serve their own Nerdpacks locally
+* Use some public Nerdpacks that don't make use of Full Stack Observability features that another user has subscribed their account to.
 
+Basic users can't:
+* Publish the Nerdpacks they've built
+* Tag their Nerdpacks
+* Subscribe an account to a Nerdpack
+* Use private Nerdpacks (including their own)
+* Use public Nerdpacks that have Full Stack Observability features
 
-* **Basic users** can build their own Nerdpacks locally but can't publish them or subscribe accounts to them. They can view apps and visualizations in the [apps catalog](https://opensource.newrelic.com/nerdpacks/) but can't use most of them. 
-* **Full users** can use any Nerdpacks the account they're in has been subscribed to, whether built by New Relic or by others. Full users theoretically have Nerdpack management permissions, but there may be restrictions related to custom role assignments (see below). 
+Full users can use any Nerdpacks that the account they're in has been subscribed to, whether built by New Relic or others. Full users theoretically have Nerdpack management permissions, but there may be restrictions related to custom role assignments (see below). 
 
 ## Role-related restrictions
 
