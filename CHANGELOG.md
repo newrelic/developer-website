@@ -1,3 +1,14 @@
+## [1.40.1](https://github.com/newrelic/developer-website/compare/v1.40.0...v1.40.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* add dashboard nav link ([27a2239](https://github.com/newrelic/developer-website/commit/27a22390bf9e94f59da67883b9e1746927a745e3))
+* fix nav merge conflict ([7116705](https://github.com/newrelic/developer-website/commit/7116705077f22f6164b871317192f42de6d6346d))
+* remove typos ([0d1098a](https://github.com/newrelic/developer-website/commit/0d1098a05a61b6540807e84e4d595827bedee88b))
+* update doc to use markdown instead of html ([2e411df](https://github.com/newrelic/developer-website/commit/2e411dfd39396ccfe7c17dc3d1c379d8b5d9dc8f))
+* update guide based on pr comments ([4a913f1](https://github.com/newrelic/developer-website/commit/4a913f15e858e3cbd83bf1aeb201dbd7f13b22f3))
+
 # [1.40.0](https://github.com/newrelic/developer-website/compare/v1.39.0...v1.40.0) (2021-04-02)
 
 
