@@ -16,14 +16,13 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
-        gaTrackingId: 'UA-3047412-33',
         layout: {
           contentPadding: '2rem',
           maxWidth: '1700px',
           component: require.resolve('./src/layouts'),
           mobileBreakpoint: '760px',
         },
-       prism: {
+        prism: {
           languages: ['yaml', 'sass', 'scss', 'java'],
         },
         splitio: {
@@ -94,6 +93,20 @@ module.exports = {
               beacon: 'staging-bam-cell.nr-data.net',
               errorBeacon: 'staging-bam-cell.nr-data.net',
             },
+          },
+        },
+        tessen: {
+          product: 'DEV',
+          subproduct: 'TDEV',
+          segmentWriteKey: 'Ako0hclX8WGHwl9rm4n5uxLtT4wgEtuU',
+          trackPageViews: true,
+          pageView: {
+            name: 'pageView',
+            category: 'DocPageView',
+            getProperties: ({ location, env }) => ({
+              path: location.pathname,
+              env: env === 'production' ? 'prod' : env,
+            }),
           },
         },
       },
