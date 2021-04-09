@@ -70,6 +70,8 @@
       url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
     - title: Customize visualizations with configuration
       url: '/build-apps/customize-visualizations-with-configuration'
+    - title: Add custom visualizations to your dashboards
+      url: '/build-apps/add-visualizations-to-dashboard'
     - title: Build an A/B test application
       url: '/ab-test'
       pages:
@@ -105,19 +107,19 @@
           url: '/build-apps/ab-test/persist-version'
         - title: Present an end test confirmation modal
           url: '/build-apps/ab-test/confirmation-modal'
-        - title: Add NrqlQuery components to your nerdlet
+        - title: Add NrqlQuery components to your Nerdlet
           url: '/build-apps/ab-test/nrql'
         - title: Customize NRQL data
           url: '/build-apps/ab-test/nrql-customizations'
-        - title: Access NerdStorage from your nerdlet
+        - title: Access NerdStorage from your Nerdlet
           url: '/build-apps/ab-test/nerdstorage'
-        - title: Access NerdStorageVault from your nerdlet
+        - title: Access NerdStorageVault from your Nerdlet
           url: '/build-apps/ab-test/nerdstoragevault'
         - title: Fetch data from a third-party service
           url: '/build-apps/ab-test/third-party-service'
-        - title: Add PlatformStateContext to your nerdlet
+        - title: Add PlatformStateContext to your Nerdlet
           url: '/build-apps/ab-test/platform-state-context'
-        - title: Add navigation to your nerdlet
+        - title: Add navigation to your Nerdlet
           url: '/build-apps/ab-test/navigation'
         - title: Describe your app for the catalog
           url: '/build-apps/ab-test/catalog'
@@ -179,6 +181,11 @@
       url: '/explore-docs/nerdstoragevault'
     - title: Query and store data
       url: '/explore-docs/query-and-store-data'
+    - title: Custom visualizations
+      url: '/explore-docs/custom-viz'
+      pages:
+        - title: Configuration options
+          url: '/explore-docs/custom-viz/configuration-options'
     - title: New Relic One SDK Component library
       url: '/explore-docs/intro-to-sdk'
       pages:
