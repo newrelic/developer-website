@@ -26,7 +26,7 @@ curl https://api.nerdsletter.net/cancellations
 This is because the Nerdsletter API requires an `Authorization` header. More specifically, you must pass a bearer token of `ABC123` to gain authorized access to its data. If you make a request to the service with the header `Authorization: Bearer ABC123`, you'll get a successful response with the mocked cancellation data:
 
 ```sh
-curl https://api.nerdsletter.net/cancellations -h 'Authorization: Bearer ABC123'
+curl https://api.nerdsletter.net/cancellations -H 'Authorization: Bearer ABC123'
 [output] {"a": 15, "b": 78}
 ```
 
