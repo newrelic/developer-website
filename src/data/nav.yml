@@ -48,6 +48,8 @@
   pages:
     - title: Set up your development environment
       url: '/build-apps/set-up-dev-env'
+    - title: Enable advanced configurations for your Nerdpack
+      url: '/build-apps/advanced-config'
     - title: Create a 'Hello, World!' app
       url: '/build-apps/build-hello-world-app'
     - title: Publish and deploy your app
