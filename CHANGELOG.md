@@ -1,3 +1,10 @@
+## [1.40.2](https://github.com/newrelic/developer-website/compare/v1.40.1...v1.40.2) (2021-04-12)
+
+
+### Bug Fixes
+
+* Update md links with full relative paths ([dfa83ad](https://github.com/newrelic/developer-website/commit/dfa83ade65dc22ec946584923aa8a80b13cce423))
+
 ## [1.40.1](https://github.com/newrelic/developer-website/compare/v1.40.0...v1.40.1) (2021-04-08)
 
 
