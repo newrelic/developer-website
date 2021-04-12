@@ -356,6 +356,10 @@ The embed page URL would be:
 
 You can use the embed URL in an `<iframe src=EMBED_URL />` on another site to display guide content.
 
+### Hiding content on embedded pages
+
+You can hide content on embedded pages with the `HideWhenEmbedded` component. The documentation for that component can be found [here](COMPONENT_GUIDE.md#HideWhenEmbedded).
+
 ## Grammar and formatting
 
 ### Format titles

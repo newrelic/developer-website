@@ -356,3 +356,37 @@ const evenMoreCode = "here is even more code"
 ````
 
 In this case, `Tutorial` will show _first-file.js_, but it won't indicate that the second constant (`moreCode`) was removed.
+
+## HideWhenEmbedded
+
+### Usage
+
+You can use the `HideWhenEmbedded` component to hide content displayed for an embedded page. 
+
+When the page is not embedded, the content is displayed as normal.
+
+You can hide any content with this component, including other components. This allows you to hide things like Callouts, which we will show you in an example below.
+
+### Example
+
+```md
+<HideWhenEmbedded>
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
+
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Install and configure the New Relic One CLI_](/build-apps/ab-test/install-nr1), before starting this one.
+
+</Callout>
+</HideWhenEmbedded>
+
+Other text ...
+```
+
+You can see the difference in what is displayed below:
+
+With HideWhenEmbedded Component:
+![alt text](readme_images/hidden_embed.png "Hidden Embed")
+
+Without:
+![alt text](readme_images/non_hidden_embed.png "Normal")
