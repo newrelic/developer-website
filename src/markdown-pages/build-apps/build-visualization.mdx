@@ -86,16 +86,7 @@ As a result, you have a new visualization directory matching the name you gave y
 
 The files created provide an example visualization – a radar chart populated by a basic NRQL query.
 
-The `nr1.json` file provides metadata. The `configuration` key in this metadata defines the prop-input fields to be shown in the UI. These are the fields users will fill in to create an instance of the visualization. Supported input types are:
-
-- `boolean`
-- `string`
-- `number`
-- `json`
-- `enum`: a developer-defined list of string options.
-- `nrql`: a single NRQL query string.
-- `namespace`: a group of input fields to be displayed together under a shared heading in the prop-editing UI.
-- `collection`: a repeatable group of input fields to be displayed together under a shared heading in the prop-editing UI. The `nrqlQueries` entry is an example of a collection type.
+The `nr1.json` file provides metadata. The `configuration` key in this metadata defines the prop-input fields to be shown in the UI. To learn more about the options available under the `configuration` key, check out the [Configure your custom visualization](/explore-docs/custom-viz/configuration-options) article.
 
 The `index.js` file is where you define the React component that receives the props and renders the visualization. You can install and import any JavaScript libraries you find useful. The example component imports [Recharts](https://recharts.org), a library that wraps [D3](https://d3js.org) submodules for easy-to-compose visualizations.
 
