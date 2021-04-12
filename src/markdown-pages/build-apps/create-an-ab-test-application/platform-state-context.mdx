@@ -7,24 +7,24 @@ description: 'Add PlatformStateContext to your Nerdlet'
 
 <Callout variant="tip" title="Course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](../../../ab-test).
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
-Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Fetch data from a third-party service_](../third-party-service), before starting this one.
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Fetch data from a third-party service_](/build-apps/ab-test/third-party-service), before starting this one.
 
 </Callout>
 
 In this course, you're building a New Relic One application. This application shows telemetry data from a demo service that is running an A/B test so that it can reveal that data in charts, like a dashboard. Your New Relic application is different than a dashboard, however, because it does more than show New Relic data. It pulls external data, provides UI components and functionality, and even has its own small data stores. The purpose of this New Relic application is to present context so you can better understand the A/B test results and how those results tie in to your business objectives.
 
-So far, you've built all your charts, organized them for improved usability, provided them with real data, and more. There are some final improvements you can make, using Platform API components. In this lesson, you learn how to take use values in the New Relic platform state.
+So far, you've built all your charts, organized them for improved usability, provided them with real data, and more. There are some final improvements you can make, using Platform API components. In this lesson, you learn how to use values in the New Relic platform state.
 
 <Steps>
 
 <Step>
 
-Change to the _add-platform-state-context_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
+Change to the _add-platform-state-context/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
 ```sh
-cd nru-programmability-course/add-platform-state-context
+cd nru-programmability-course/add-platform-state-context/ab-test
 ```
 
 This directory contains the code that we expect your application to have at this point in the course. By navigating to the correct directory at the start of each lesson, you leave your custom code behind, thereby protecting yourself from carrying incorrect code from one lesson to the next.
@@ -191,7 +191,7 @@ While `NrqlQuery` components accept a convenient `timeRange` prop, not every com
 
 <Step>
 
-Navigate to the root of your Nerdpack at _nru-programmability-course/persist-selected-version/ab-test_.
+Navigate to the root of your Nerdpack at _nru-programmability-course/add-platform-state-context/ab-test_.
 
 </Step>
 
@@ -299,6 +299,6 @@ The Platform API components offer a lot more functionality, too, including the a
 
 <Callout variant="tip" title="Course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Add navigation to your nerdlet_](../navigation).
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Add navigation to your nerdlet_](/build-apps/ab-test/navigation).
 
 </Callout>

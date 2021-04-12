@@ -7,9 +7,9 @@ description: 'Add NrqlQuery components to your Nerdlet'
 
 <Callout variant="tip" title="Course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](../../../ab-test).
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
-Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Present an end test confirmation modal_](../confirmation-modal), before starting this one.
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Present an end test confirmation modal_](/build-apps/ab-test/confirmation-modal), before starting this one.
 
 </Callout>
 
@@ -38,7 +38,7 @@ const versionASignups = {
 
 A chart's `data` prop is useful for supplying manually-crafted data like this or even reformatted third-party data. But for many of your charts, you want to show real-time New Relic data. For example, **Newsletter subscriptions by version** should show subscription data, which exists in New Relic's database, NRDB for short.
 
-To query NRDB, you first need to know what data you're looking for. Remember your [demo backend service](../demo-setup)? Well, that service reports a subscription event to New Relic when a user subscribes to a newsletter from your site. You can view these subscription events in New Relic while your demo services are running.
+To query NRDB, you first need to know what data you're looking for. Remember your [demo backend service](/build-apps/ab-test/demo-setup)? Well, that service reports a subscription event to New Relic when a user subscribes to a newsletter from your site. You can view these subscription events in New Relic while your demo services are running.
 
 ## View Subscription Events in New Relic
 
@@ -130,10 +130,10 @@ Next, you learn how to pass your NRQL query to your **Newsletter subscriptions p
 
 <Step>
 
-Change to the _add-nrql-components_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
+Change to the _add-nrql-components/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
 ```sh
-cd nru-programmability-course/add-nrql-components
+cd nru-programmability-course/add-nrql-components/ab-test
 ```
 
 This directory contains the code that we expect your application to have at this point in the course. By navigating to the correct directory at the start of each lesson, you leave your custom code behind, thereby protecting yourself from carrying incorrect code from one lesson to the next.
@@ -440,6 +440,6 @@ You have to handle these differently than you did for the charts you've been dea
 
 <Callout variant="tip" title="Course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Customize NRQL data_](../nrql-customizations).
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Customize NRQL data_](/build-apps/ab-test/nrql-customizations).
 
 </Callout>

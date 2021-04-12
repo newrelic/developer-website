@@ -7,9 +7,9 @@ description: 'Create a Nerdpack'
 
 <Callout variant="tip" title="Course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](../../../ab-test).
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
-Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Install and configure the New Relic One CLI_](../install-nr1), before starting this one.
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Install and configure the New Relic One CLI_](/build-apps/ab-test/install-nr1), before starting this one.
 
 </Callout>
 
@@ -43,7 +43,7 @@ _nr1.json_ is the Nerdpack's metadata file, containing a schema type, unique ide
 
 ```json fileName=nr1.json
 {
-    "schemaType": "Nerdpack",
+    "schemaType": "NERDPACK",
     "id": "311bcd0c-f7eb-4285-afed-4219179bf91d",
     "displayName": "A/B Test",
     "description": "A/B test your application using New Relic One."
@@ -69,7 +69,7 @@ Use "A/B Test Launcher" for the launcher's `displayName` and "Open the A/B test 
     "id": "ab-test-launcher",
     "displayName": "A/B Test Launcher",
     "description": "Open the A/B test Nerdlet",
-    "rootNerdletId": "ab-test-Nerdlet"
+    "rootNerdletId": "ab-test-nerdlet"
 }
 ```
 
@@ -87,8 +87,8 @@ Update your Nerdlet's `displayName` to "A/B Test" and `description` to "Control 
 
 ```json fileName=nerdlets/ab-test-nerdlet/nr1.json
 {
-    "schemaType": "Nerdlet",
-    "id": "ab-test-Nerdlet",
+    "schemaType": "NERDLET",
+    "id": "ab-test-nerdlet",
     "displayName": "A/B Test",
     "description": "Control and view results of your A/B test"
 }
@@ -135,6 +135,6 @@ In the next lesson, you'll learn how to serve your Nerdpack locally and see your
 
 <Callout variant="tip" title="Course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Serve your New Relic One application_](../serve-app).
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Serve your New Relic One application_](/build-apps/ab-test/serve-app).
 
 </Callout>
