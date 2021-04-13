@@ -3,6 +3,7 @@ path: '/build-apps/ab-test/navigation'
 title: 'Add navigation to your Nerdlet'
 template: 'GuideTemplate'
 description: 'Add navigation to your Nerdlet'
+duration: '10 min'
 ---
 
 <Callout variant="tip" title="Course">
@@ -360,7 +361,7 @@ Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` and `<YOUR NEW RELIC ENTITY 
 
 </Callout>
 
-Here, you used a full-width `Stack` to set up the layout for the row. To make the `HeadingText` fill the entire row but the width of the button, you used the `StackItem.grow` prop.
+Here, you used a full-width `Stack` to set up the layout for the row. To make the `HeadingText` fill the entire row except the width of the button, you used the `StackItem.grow` prop.
 
 </Step>
 
@@ -394,15 +395,13 @@ nr1 nerdpack:serve
 
 <Step>
 
-[View your application](https://one.newrelic.com?nerdpacks=local):
+[View your application](https://one.newrelic.com?nerdpacks=local) and click **App performance**:
 
 ![Your New Relic One application with an App performance button](../../../images/ab-test/performance-button.png)
 
-Click **App performance**:
+Now you see the stacked entity:
 
 ![APM stacked entity](../../../images/ab-test/stacked-entity.png)
-
-Now you see the stacked entity!
 
 <Callout variant="tip">
 
@@ -420,11 +419,11 @@ If something doesn't work, use your browser's debug tools to try to identify the
 
 </Steps>
 
-Congratulations! You're finished writing all the code you'll write for you New Relic One A/B test application. Now, you have an application reporting New Relic data from your demo application that is running an A/B test. You've created several charts, buttons, and other UI elements. You've organized your components into a readable and usable view.
+Congratulations! You're finished writing all the code you'll write for your New Relic One A/B test application. Now, you have an application reporting New Relic data from your demo service that is running an A/B test. You've created several charts, buttons, and other UI elements. And you've organized your components into a readable and usable view.
 
-On top of the visuals, you've supplied data to your charts from multiple data sources in and out of New Relic. You've created some backend functionality which utilizes your New Relic One application's own data store. You've also utilized the platform APIs for interacting with platform UI and showing a stacked entity view.
+On top of the visuals, you've supplied data to your charts from multiple data sources in and outside of New Relic. You've created some backend functionality which utilizes your New Relic One application's own data store. You've also utilized the platform APIs for interacting with platform UI and showing a stacked entity view.
 
-You've really accomplished a lot throughout this course, so far. There are only a few things left to do! First, is to learn how to deploy and subscribe to your New Relic application so that it can run on our platform instead of your own local server. Second, is to learn how to deal with some common issues you might see in New Relic One application development.
+You've really accomplished a lot throughout this course, so far. There are only a few things left to do! First, is to learn how to publish and subscribe to your New Relic One application so that it can run on our platform instead of your own local server. Second, is to learn how to deal with some common issues you might see in New Relic One application development.
 
 <Callout variant="tip" title="Course">
 
