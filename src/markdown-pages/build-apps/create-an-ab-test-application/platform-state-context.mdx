@@ -75,57 +75,9 @@ export default class NewsletterSignups extends React.Component {
 
 ```
 
-`PlatformStateContext.Consumer` provides access to the platform's URL state. This state contains two important values for you to use in this context:
+`PlatformStateContext.Consumer` provides access to the platform's URL state. This context contains an important value you'll use in your app, called `timeRange`.
 
-- accountId
-- timeRange
-
-Notice that `NrqlQuery` uses a constant called `ACCOUNT_ID`. Instead of hardcoding an account identifier in your nerdlet, you can use `accountId` from the platform URL state.
-
-</Step>
-
-<Step>
-
-Use `platformState.accountId` in your `NrqlQuery`:
-
-```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=21
-import React from 'react';
-import {
-    HeadingText,
-    LineChart,
-    NrqlQuery,
-    PlatformStateContext,
-} from 'nr1';
-
-export default class NewsletterSignups extends React.Component {
-    render() {
-        return <div>
-            <HeadingText className="chartHeader">
-                Newsletter subscriptions per version
-            </HeadingText>
-            <PlatformStateContext.Consumer>
-                {
-                    (platformState) => {
-                        return <NrqlQuery
-                            accountId={platformState.accountId}
-                            query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
-                            pollInterval={60000}
-                        >
-                            {
-                                ({ data }) => {
-                                    return <LineChart data={data} fullWidth />;
-                                }
-                            }
-                        </NrqlQuery>
-                    }
-                }
-            </PlatformStateContext.Consumer>
-        </div>
-    }
-}
-```
-
-Next, notice that your query uses a `SINCE` clause, which identifies the historical timeframe your query should fetch data from.
+Notice that your `NrqlQuery` uses a `SINCE` clause that identifies the historical timeframe your query should fetch data from. Right now, that `SINCE` clause is set to `30 MINUTES AGO`. With `timeRange`, you can use the platform's time picker to make this timeframe adjustable.
 
 </Step>
 
@@ -142,6 +94,8 @@ import {
     PlatformStateContext,
 } from 'nr1';
 
+const ACCOUNT_ID = 123456  // <YOUR NEW RELIC ACCOUNT ID>
+
 export default class NewsletterSignups extends React.Component {
     render() {
         return <div>
@@ -152,7 +106,7 @@ export default class NewsletterSignups extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={platformState.accountId}
+                            accountId={ACCOUNT_ID}
                             query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
                             timeRange={platformState.timeRange}
                             pollInterval={60000}
@@ -229,7 +183,7 @@ nr1 nerdpack:serve
 
 ![Your New Relic One application using platform state](../../../images/ab-test/platform-state.png)
 
-Your `NrqlQuery` is now using the account ID, which it got from platform state. It's also using the platform state's time range, but your chart probably still shows the last 30 minutes. Why? Where does the `timeRange` in platform state come from?
+Your `NrqlQuery` now uses the platform state's time range, but your chart probably still shows the last 30 minutes. Why? Where does the `timeRange` in platform state come from?
 
 The time picker sits on the right side of your application's navigation bar:
 
@@ -257,7 +211,7 @@ If something doesn't work, use your browser's debug tools to try to identify the
 
 Update `VersionPageViews`:
 
-```js fileName=nerdlets/ab-test-nerdlet/page-views.js lineHighlight=6,15-32
+```js fileName=nerdlets/ab-test-nerdlet/page-views.js lineHighlight=6,17-34
 import React from 'react';
 import {
     HeadingText,
@@ -265,6 +219,8 @@ import {
     NrqlQuery,
     PlatformStateContext,
 } from 'nr1';
+
+const ACCOUNT_ID = 1234567  // <YOUR NEW RELIC ACCOUNT ID>
 
 export default class VersionPageViews extends React.Component {
     render() {
@@ -276,7 +232,7 @@ export default class VersionPageViews extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={platformState.accountId}
+                            accountId={ACCOUNT_ID}
                             query={`SELECT count(*) FROM pageView WHERE page_version = '${this.props.version}' TIMESERIES`}
                             timeRange={platformState.timeRange}
                             pollInterval={60000}
