@@ -75,6 +75,12 @@ export default class NewsletterSignups extends React.Component {
 
 ```
 
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
+
 `PlatformStateContext.Consumer` provides access to the platform's URL state. This context contains an important value you'll use in your app, called `timeRange`.
 
 Notice that your `NrqlQuery` uses a `SINCE` clause that identifies the historical timeframe your query should fetch data from. Right now, that `SINCE` clause is set to `30 MINUTES AGO`. With `timeRange`, you can use the platform's time picker to make this timeframe adjustable.
@@ -83,7 +89,7 @@ Notice that your `NrqlQuery` uses a `SINCE` clause that identifies the historica
 
 <Step>
 
-Utilize platform state's `timeRange`:
+Utilize the platform state's `timeRange`:
 
 ```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=22-23
 import React from 'react';
@@ -133,8 +139,6 @@ Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [
 
 Now, `NewsletterSignups` uses `platformState.timeRange` instead of a hardcoded `SINCE` clause.
 
-<Callout variant="tip">
-
 While `NrqlQuery` components accept a convenient `timeRange` prop, not every component does. You can still use `timeRange` in other contexts by accessing `duration`, `begin_time`, or `end_time`:
 
 ```jsx
@@ -144,8 +148,6 @@ While `NrqlQuery` components accept a convenient `timeRange` prop, not every com
     }
 </PlatformStateContext.Consumer>
 ```
-
-</Callout>
 
 </Step>
 
@@ -183,7 +185,7 @@ nr1 nerdpack:serve
 
 ![Your New Relic One application using platform state](../../../images/ab-test/platform-state.png)
 
-Your `NrqlQuery` now uses the platform state's time range, but your chart probably still shows the last 30 minutes. Why? Where does the `timeRange` in platform state come from?
+Your `NrqlQuery` now uses the platform state's `timeRange`, but your chart probably still shows the last 30 minutes. Why? Where does the `timeRange` in platform state come from?
 
 The time picker sits on the right side of your application's navigation bar:
 
