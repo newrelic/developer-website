@@ -370,6 +370,7 @@ You can hide any content with this component, including other components. This a
 ### Example
 
 ```md
+## Hidden Embed
 <HideWhenEmbedded>
 <Callout variant="tip" title="Course">
 
@@ -381,12 +382,21 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 </HideWhenEmbedded>
 
 Other text ...
+
+### VS.
+
+## Normal Embed
+<Callout variant="tip" title="Course">
+
+This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
+
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Install and configure the New Relic One CLI_](/build-apps/ab-test/install-nr1), before starting this one.
+
+</Callout>
+
+Other text ...
 ```
 
 You can see the difference in what is displayed below:
 
-With HideWhenEmbedded Component:
-![alt text](readme_images/hidden_embed.png "Hidden Embed")
-
-Without:
-![alt text](readme_images/non_hidden_embed.png "Normal")
+![alt text](readme_images/hidden_vs_normal.png "Hidden vs Normal")
