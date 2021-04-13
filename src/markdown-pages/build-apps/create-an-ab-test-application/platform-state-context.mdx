@@ -171,6 +171,12 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
+
 Now, `NewsletterSignups` uses `platformState.timeRange` instead of a hardcoded `SINCE` clause.
 
 <Callout variant="tip">
@@ -277,6 +283,12 @@ export default class VersionPageViews extends React.Component {
 }
 ```
 
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
+
 Of all the charts in your New Relic One application, these three charts are the ones that should update with the time picker. The others, **Total subscriptions per version**, **Total cancellations per version**, **Version A - Page views vs. subscriptions**, **Version B - Page views vs. subscriptions**, show total values over time. So, hardcoding their `SINCE` clauses to `7 DAYS AGO` makes sense, as this is a reasonable time period for the purposes of this course.
 
 </Step>
@@ -286,6 +298,18 @@ Of all the charts in your New Relic One application, these three charts are the 
 While still serving your nerdpack locally, view your NR1 app to see your charts updating with the time range you choose:
 
 ![Your charts showing your selected time period](../../../images/ab-test/page-views-time-range.png)
+
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
 
 When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in the terminal window where you're serving your application.
 

@@ -78,6 +78,12 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
+
 This method uses `navigation.openStackedEntity()` to display your demo application's APM entity in a stacked view. Notice `openApmEntity()` requires your `ENTITY_GUID`. You need to locate that ID and store it in a constant.
 
 </Step>
@@ -143,7 +149,13 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
-Now `openApmEntity()` knows that entity to show. Next, you need to create a button to invoke this method.
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` and `<YOUR NEW RELIC ENTITY GUID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id) and the entity GUID you just copied, respectively.
+
+</Callout>
+
+Now, `openApmEntity()` knows what entity to show. Next, you need to create a button to invoke this method.
 
 </Step>
 
@@ -200,7 +212,13 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
-Here, you've created a button and configured it to call `.openApmEntity()` when it's clicked.
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` and `<YOUR NEW RELIC ENTITY GUID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id) and entity GUID, respectively.
+
+</Callout>
+
+Here, you've created a button and configured it to call `openApmEntity()` when it's clicked.
 
 </Step>
 
@@ -258,6 +276,12 @@ export default class NewsletterSignups extends React.Component {
     }
 }
 ```
+
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` and `<YOUR NEW RELIC ENTITY GUID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id) and entity GUID, respectively.
+
+</Callout>
 
 You'll use `Stack` and `StackItem` to lay out the button on the far right side of the same row that the `HeadingText` is on.
 
@@ -324,6 +348,12 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` and `<YOUR NEW RELIC ENTITY GUID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id) and entity GUID, respectively.
+
+</Callout>
+
 Here, you used a full-width `Stack` to set up the layout for the row. To make the `HeadingText` fill the entire row but the width of the button, you used the `StackItem.grow` prop.
 
 </Step>
@@ -367,6 +397,18 @@ Click **App performance**:
 ![APM stacked entity](../../../images/ab-test/stacked-entity.png)
 
 Now you see the stacked entity!
+
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` and `<YOUR NEW RELIC ENTITY GUID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id) and entity GUID, respectively
+
+</Callout>
 
 </Step>
 
