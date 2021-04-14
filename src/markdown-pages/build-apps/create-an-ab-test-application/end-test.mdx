@@ -5,6 +5,8 @@ template: 'GuideTemplate'
 description: 'Add a section to end your test'
 ---
 
+<HideWhenEmbedded>
+
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
@@ -12,6 +14,8 @@ This lesson is part of a course that teaches you how to build a New Relic One ap
 Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Add version descriptions_](/build-apps/ab-test/version-descriptions), before starting this one.
 
 </Callout>
+
+</HideWhenEmbedded>
 
 In this course, you’re building an A/B test application in New Relic. The application presents a lot of data, through its charts, about the effectiveness of each design version you’re testing on your demo website. Ultimately, you’ll be able to use that data to decide which design is most effective and show that design to every user who visits your site. In this lesson, you’ll build a form into your application that lets you choose which design you want to show to every user of your site. Before writing any code, look at your design guide to review the section you’re going to build:
 
@@ -257,8 +261,12 @@ When you're finished, stop serving your New Relic One application by pressing `C
 
 However, you need to make a few improvements to this code. When you select a version, the selected value in the component doesn't change. You must control the value that `Select` displays using its `value` prop and `onChange` event handler. In the next lesson, you’ll update your code to persist your version choice in the `Select` component.
 
+<HideWhenEmbedded>
+
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Persist the selected version_](/build-apps/ab-test/persist-version).
 
 </Callout>
+
+</HideWhenEmbedded>
