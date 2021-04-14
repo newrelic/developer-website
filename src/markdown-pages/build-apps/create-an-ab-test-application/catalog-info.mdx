@@ -3,6 +3,7 @@ path: '/build-apps/ab-test/catalog'
 title: 'Describe your app for the catalog'
 template: 'GuideTemplate'
 description: 'Describe your app for the catalog'
+duration: '5 min'
 ---
 
 <HideWhenEmbedded>
@@ -40,10 +41,10 @@ cd nru-programmability-course/describe-app/ab-test
 Create the _catalog_ directory:
 
 ```sh
-nr1 create -t catalog
+nr1 create --type catalog
 ```
 
-This creates a _catalog_ directory with template files for inputting custom information about your application.
+This creates a _catalog_ directory with template files for inputting custom information about your app.
 
 <Callout variant="tip">
 
@@ -57,7 +58,7 @@ Read [our documentation](/build-apps/publish-deploy#add-images-and-metadata-to-y
 
 Update _catalog/documentation.md_:
 
-```md
+```md fileName=catalog/documentation.md
 ## Documentation
 
 This application combines and presents data from New Relic and the Nerdsletter API so that we can make an informed decision on which design version results in more high-quality newsletter subscriptions.
@@ -75,7 +76,7 @@ For this course, you're keeping the documentation concise by merely describing w
 
 Update _catalog/config.json_:
 
-```json
+```json fileName=catalog/config.json
 {
   "tagline": "Win @ newsletter subscriptions",
   "details": "Display test data for our newsletter subscription A/B test",
@@ -101,9 +102,7 @@ Here, you've specified a tagline, project details, the source code repository, a
 
 <Step>
 
-Save the [this screenshot](https://github.com/newrelic-experimental/nru-programmability-course/raw/main/publish/ab-test/catalog/screenshots/screenshot.png) to your _catalog/screenshots_ directory:
-
-![App screenshot](../../../images/ab-test/screenshot.png)
+Save the [this screenshot](https://github.com/newrelic-experimental/nru-programmability-course/raw/main/publish/ab-test/catalog/screenshots/screenshot.png) to your _catalog/screenshots_ directory.
 
 Users will be able to see a carousel of screenshots in your app's **About** page in the catalog.
 
