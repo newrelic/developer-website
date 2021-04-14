@@ -3,6 +3,7 @@ path: '/build-apps/ab-test/platform-state-context'
 title: 'Add PlatformStateContext to your Nerdlet'
 template: 'GuideTemplate'
 description: 'Add PlatformStateContext to your Nerdlet'
+duration: '10 min'
 ---
 
 <Callout variant="tip" title="Course">
@@ -75,10 +76,11 @@ export default class NewsletterSignups extends React.Component {
 
 ```
 
-`PlatformStateContext.Consumer` provides access to the platform's URL state. This state contains two important values for you to use in this context:
+<Callout variant="important">
 
-- accountId
-- timeRange
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
 
 Notice that `NrqlQuery` uses a constant called `ACCOUNT_ID`. Instead of hardcoding an account identifier in your Nerdlet, you can use `accountId` from the platform URL state.
 
@@ -86,52 +88,15 @@ Notice that `NrqlQuery` uses a constant called `ACCOUNT_ID`. Instead of hardcodi
 
 <Step>
 
-Use `platformState.accountId` in your `NrqlQuery`:
+`PlatformStateContext.Consumer` provides access to the platform's URL state. This context contains an important value you'll use in your app, called `timeRange`.
 
-```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=21
-import React from 'react';
-import {
-    HeadingText,
-    LineChart,
-    NrqlQuery,
-    PlatformStateContext,
-} from 'nr1';
-
-export default class NewsletterSignups extends React.Component {
-    render() {
-        return <div>
-            <HeadingText className="chartHeader">
-                Newsletter subscriptions per version
-            </HeadingText>
-            <PlatformStateContext.Consumer>
-                {
-                    (platformState) => {
-                        return <NrqlQuery
-                            accountId={platformState.accountId}
-                            query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
-                            pollInterval={60000}
-                        >
-                            {
-                                ({ data }) => {
-                                    return <LineChart data={data} fullWidth />;
-                                }
-                            }
-                        </NrqlQuery>
-                    }
-                }
-            </PlatformStateContext.Consumer>
-        </div>
-    }
-}
-```
-
-Next, notice that your query uses a `SINCE` clause, which identifies the historical timeframe your query should fetch data from.
+Notice that your `NrqlQuery` uses a `SINCE` clause that identifies the historical timeframe your query should fetch data from. Right now, that `SINCE` clause is set to `30 MINUTES AGO`. With `timeRange`, you can use the platform's time picker to make this timeframe adjustable.
 
 </Step>
 
 <Step>
 
-Utilize platform state's `timeRange`:
+Utilize the platform state's `timeRange`:
 
 ```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=22-23
 import React from 'react';
@@ -142,6 +107,8 @@ import {
     PlatformStateContext,
 } from 'nr1';
 
+const ACCOUNT_ID = 123456  // <YOUR NEW RELIC ACCOUNT ID>
+
 export default class NewsletterSignups extends React.Component {
     render() {
         return <div>
@@ -152,7 +119,7 @@ export default class NewsletterSignups extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={platformState.accountId}
+                            accountId={ACCOUNT_ID}
                             query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
                             timeRange={platformState.timeRange}
                             pollInterval={60000}
@@ -171,9 +138,13 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
-Now, `NewsletterSignups` uses `platformState.timeRange` instead of a hardcoded `SINCE` clause.
+<Callout variant="important">
 
-<Callout variant="tip">
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
+
+Now, `NewsletterSignups` uses `platformState.timeRange` instead of a hardcoded `SINCE` clause.
 
 While `NrqlQuery` components accept a convenient `timeRange` prop, not every component does. You can still use `timeRange` in other contexts by accessing `duration`, `begin_time`, or `end_time`:
 
@@ -184,8 +155,6 @@ While `NrqlQuery` components accept a convenient `timeRange` prop, not every com
     }
 </PlatformStateContext.Consumer>
 ```
-
-</Callout>
 
 </Step>
 
@@ -223,7 +192,7 @@ nr1 nerdpack:serve
 
 ![Your New Relic One application using platform state](../../../images/ab-test/platform-state.png)
 
-Your `NrqlQuery` is now using the account ID, which it got from platform state. It's also using the platform state's time range, but your chart probably still shows the last 30 minutes. Why? Where does the `timeRange` in platform state come from?
+Your `NrqlQuery` now uses the platform state's `timeRange`, but your chart probably still shows the last 30 minutes. Why? Where does the `timeRange` in platform state come from?
 
 The time picker sits on the right side of your application's navigation bar:
 
@@ -233,13 +202,25 @@ Change this value and see your chart update:
 
 ![Your New Relic One application showing the last 6 hours of data](../../../images/ab-test/time-picked.png)
 
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
+
 </Step>
 
 <Step>
 
 Update `VersionPageViews`:
 
-```js fileName=nerdlets/ab-test-nerdlet/page-views.js lineHighlight=6,15-32
+```js fileName=nerdlets/ab-test-nerdlet/page-views.js lineHighlight=6,17-34
 import React from 'react';
 import {
     HeadingText,
@@ -247,6 +228,8 @@ import {
     NrqlQuery,
     PlatformStateContext,
 } from 'nr1';
+
+const ACCOUNT_ID = 1234567  // <YOUR NEW RELIC ACCOUNT ID>
 
 export default class VersionPageViews extends React.Component {
     render() {
@@ -258,7 +241,7 @@ export default class VersionPageViews extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={platformState.accountId}
+                            accountId={ACCOUNT_ID}
                             query={`SELECT count(*) FROM pageView WHERE page_version = '${this.props.version}' TIMESERIES`}
                             timeRange={platformState.timeRange}
                             pollInterval={60000}
@@ -277,6 +260,12 @@ export default class VersionPageViews extends React.Component {
 }
 ```
 
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
+
 Of all the charts in your New Relic One application, these three charts are the ones that should update with the time picker. The others, **Total subscriptions per version**, **Total cancellations per version**, **Version A - Page views vs. subscriptions**, **Version B - Page views vs. subscriptions**, show total values over time. So, hardcoding their `SINCE` clauses to `7 DAYS AGO` makes sense, as this is a reasonable time period for the purposes of this course.
 
 </Step>
@@ -287,7 +276,19 @@ While still serving your Nerdpack locally, view your NR1 app to see your charts 
 
 ![Your charts showing your selected time period](../../../images/ab-test/page-views-time-range.png)
 
-When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in the terminal window where you're serving your application.
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
+
+When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in your local server's terminal window.
 
 </Step>
 

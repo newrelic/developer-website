@@ -391,7 +391,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
 
 <Callout variant="important">
 
-Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
 
 </Callout>
 
@@ -631,7 +631,7 @@ import VersionDescription from './description';
 import VersionPageViews from './page-views';
 import VersionTotals from './totals';
 
-const ACCOUNT_ID = 3014918  // <YOUR-ACCOUNT-ID>
+const ACCOUNT_ID = 1234567  // <YOUR NEW RELIC ACCOUNT ID>
 const VERSION_A_DESCRIPTION = 'The newsletter signup message says, "Sign up for our newsletter"'
 const VERSION_B_DESCRIPTION = 'The newsletter signup message says, "Sign up for our newsletter and get a free shirt!"'
 
@@ -687,7 +687,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
 
 <Callout variant="important">
 
-Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
 
 </Callout>
 
@@ -732,7 +732,19 @@ Click **End test** and approve your action in the modal. Now, you see data in **
 
 ![Past tests after you end the test](../../../images/ab-test/past-tests-after.png)
 
-When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in the terminal window where you're serving your application.
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
+
+When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in your local server's terminal window.
 
 </Step>
 

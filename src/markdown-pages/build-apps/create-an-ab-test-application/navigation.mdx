@@ -3,6 +3,7 @@ path: '/build-apps/ab-test/navigation'
 title: 'Add navigation to your Nerdlet'
 template: 'GuideTemplate'
 description: 'Add navigation to your Nerdlet'
+duration: '10 min'
 ---
 
 <Callout variant="tip" title="Course">
@@ -13,7 +14,7 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 
 </Callout>
 
-In the last lesson, you used `PlatformStateContext` from the New Relic One SDK to lookup the application user's account ID and the time range they selected from the app's time picker. Now, you'll learn about another component that interacts with the New Relic platform: `navigation`.
+In the last lesson, you used `PlatformStateContext` from the New Relic One SDK to look up the time range that the user selected from the app's time picker. Now, you'll learn about another component that interacts with the New Relic platform: `navigation`.
 
 The `navigation` component lets you open entities, navigate to entities, and build Location objects for entities from your Nerdlet. You can also use `navigation` for other Nerdlets and launchers.
 
@@ -35,7 +36,7 @@ This directory contains the code that we expect your application to have at this
 
 In _newsletter-signups.js_, create a new method, called `NewsletterSignups.openApmEntity()`:
 
-```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=7,11-13
+```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=7,13-15
 import React from 'react';
 import {
     HeadingText,
@@ -44,6 +45,8 @@ import {
     PlatformStateContext,
     navigation,
 } from 'nr1';
+
+const ACCOUNT_ID = 1234567  // <YOUR NEW RELIC ACCOUNT ID>
 
 export default class NewsletterSignups extends React.Component {
     openAPMEntity() {
@@ -59,7 +62,7 @@ export default class NewsletterSignups extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={platformState.accountId}
+                            accountId={ACCOUNT_ID}
                             query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
                             timeRange={platformState.timeRange}
                             pollInterval={60000}
@@ -77,6 +80,12 @@ export default class NewsletterSignups extends React.Component {
     }
 }
 ```
+
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+
+</Callout>
 
 This method uses `navigation.openStackedEntity()` to display your demo application's APM entity in a stacked view. Notice `openApmEntity()` requires your `ENTITY_GUID`. You need to locate that ID and store it in a constant.
 
@@ -98,7 +107,7 @@ Copy the entity's GUID:
 
 Create an `ENTITY_GUID` constant:
 
-```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=10
+```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=11
 import React from 'react';
 import {
     HeadingText,
@@ -108,6 +117,7 @@ import {
     navigation,
 } from 'nr1';
 
+const ACCOUNT_ID = 1234567  // <YOUR NEW RELIC ACCOUNT ID>
 const ENTITY_GUID = "<YOUR NEW RELIC ENTITY GUID>"
 
 export default class NewsletterSignups extends React.Component {
@@ -124,7 +134,7 @@ export default class NewsletterSignups extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={platformState.accountId}
+                            accountId={ACCOUNT_ID}
                             query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
                             timeRange={platformState.timeRange}
                             pollInterval={60000}
@@ -143,7 +153,13 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
-Now `openApmEntity()` knows that entity to show. Next, you need to create a button to invoke this method.
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` and `<YOUR NEW RELIC ENTITY GUID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id) and the entity GUID you just copied, respectively.
+
+</Callout>
+
+Now, `openApmEntity()` knows what entity to show. Next, you need to create a button to invoke this method.
 
 </Step>
 
@@ -151,7 +167,7 @@ Now `openApmEntity()` knows that entity to show. Next, you need to create a butt
 
 Create a button to show your APM entity:
 
-```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=3,23-25
+```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=3,24-26
 import React from 'react';
 import {
     Button,
@@ -162,6 +178,7 @@ import {
     navigation,
 } from 'nr1';
 
+const ACCOUNT_ID = 1234567  // <YOUR NEW RELIC ACCOUNT ID>
 const ENTITY_GUID = "<YOUR NEW RELIC ENTITY GUID>"
 
 export default class NewsletterSignups extends React.Component {
@@ -181,7 +198,7 @@ export default class NewsletterSignups extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={platformState.accountId}
+                            accountId={ACCOUNT_ID}
                             query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
                             timeRange={platformState.timeRange}
                             pollInterval={60000}
@@ -200,7 +217,13 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
-Here, you've created a button and configured it to call `.openApmEntity()` when it's clicked.
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` and `<YOUR NEW RELIC ENTITY GUID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id) and entity GUID, respectively.
+
+</Callout>
+
+Here, you've created a button and configured it to call `openApmEntity()` when it's clicked.
 
 </Step>
 
@@ -221,6 +244,7 @@ import {
     navigation,
 } from 'nr1';
 
+const ACCOUNT_ID = 1234567  // <YOUR NEW RELIC ACCOUNT ID>
 const ENTITY_GUID = "<YOUR NEW RELIC ENTITY GUID>"
 
 export default class NewsletterSignups extends React.Component {
@@ -240,7 +264,7 @@ export default class NewsletterSignups extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={platformState.accountId}
+                            accountId={ACCOUNT_ID}
                             query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
                             timeRange={platformState.timeRange}
                             pollInterval={60000}
@@ -259,6 +283,12 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` and `<YOUR NEW RELIC ENTITY GUID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id) and entity GUID, respectively.
+
+</Callout>
+
 You'll use `Stack` and `StackItem` to lay out the button on the far right side of the same row that the `HeadingText` is on.
 
 </Step>
@@ -267,7 +297,7 @@ You'll use `Stack` and `StackItem` to lay out the button on the far right side o
 
 Lay out the `Stack`:
 
-```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=22-33
+```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=23-34
 import React from 'react';
 import {
     Button,
@@ -280,6 +310,7 @@ import {
     navigation,
 } from 'nr1';
 
+const ACCOUNT_ID = 1234567  // <YOUR NEW RELIC ACCOUNT ID>
 const ENTITY_GUID = "<YOUR NEW RELIC ENTITY GUID>"
 
 export default class NewsletterSignups extends React.Component {
@@ -305,7 +336,7 @@ export default class NewsletterSignups extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={platformState.accountId}
+                            accountId={ACCOUNT_ID}
                             query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
                             timeRange={platformState.timeRange}
                             pollInterval={60000}
@@ -324,7 +355,13 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
-Here, you used a full-width `Stack` to set up the layout for the row. To make the `HeadingText` fill the entire row but the width of the button, you used the `StackItem.grow` prop.
+<Callout variant="important">
+
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` and `<YOUR NEW RELIC ENTITY GUID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id) and entity GUID, respectively.
+
+</Callout>
+
+Here, you used a full-width `Stack` to set up the layout for the row. To make the `HeadingText` fill the entire row except the width of the button, you used the `StackItem.grow` prop.
 
 </Step>
 
@@ -358,25 +395,35 @@ nr1 nerdpack:serve
 
 <Step>
 
-[View your application](https://one.newrelic.com?nerdpacks=local):
+[View your application](https://one.newrelic.com?nerdpacks=local) and click **App performance**:
 
 ![Your New Relic One application with an App performance button](../../../images/ab-test/performance-button.png)
 
-Click **App performance**:
+Now you see the stacked entity:
 
 ![APM stacked entity](../../../images/ab-test/stacked-entity.png)
 
-Now you see the stacked entity!
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` and `<YOUR NEW RELIC ENTITY GUID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id) and entity GUID, respectively
+
+</Callout>
 
 </Step>
 
 </Steps>
 
-Congratulations! You're finished writing all the code you'll write for you New Relic One A/B test application. Now, you have an application reporting New Relic data from your demo application that is running an A/B test. You've created several charts, buttons, and other UI elements. You've organized your components into a readable and usable view.
+Congratulations! You're finished writing all the code you'll write for your New Relic One A/B test application. Now, you have an application reporting New Relic data from your demo service that is running an A/B test. You've created several charts, buttons, and other UI elements. And you've organized your components into a readable and usable view.
 
-On top of the visuals, you've supplied data to your charts from multiple data sources in and out of New Relic. You've created some backend functionality which utilizes your New Relic One application's own data store. You've also utilized the platform APIs for interacting with platform UI and showing a stacked entity view.
+On top of the visuals, you've supplied data to your charts from multiple data sources in and outside of New Relic. You've created some backend functionality which utilizes your New Relic One application's own data store. You've also utilized the platform APIs for interacting with platform UI and showing a stacked entity view.
 
-You've really accomplished a lot throughout this course, so far. There are only a few things left to do! First, is to learn how to deploy and subscribe to your New Relic application so that it can run on our platform instead of your own local server. Second, is to learn how to deal with some common issues you might see in New Relic One application development.
+You've really accomplished a lot throughout this course, so far. There are only a few things left to do! First, is to learn how to publish and subscribe to your New Relic One application so that it can run on our platform instead of your own local server. Second, is to learn how to deal with some common issues you might see in New Relic One application development.
 
 <Callout variant="tip" title="Course">
 

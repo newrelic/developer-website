@@ -228,7 +228,7 @@ export default class VersionTotals extends React.Component {
 
 <Callout variant="important">
 
-Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
 
 </Callout>
 
@@ -304,11 +304,11 @@ export default class AbTestNerdletNerdlet extends React.Component {
 
 <Callout variant="important">
 
-Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
 
 </Callout>
 
- </Step>
+</Step>
 
 <Step>
 
@@ -353,6 +353,18 @@ With your app on-screen, notice the NRQL data in the console:
 ![Your query data in the console](../../../images/ab-test/raw-data-in-console.png)
 
 This console log tells you that you can find the data you're looking for, namely the `subscription` or `pageView` count, at `data.raw.results[0].count`. The next step is to store that count in `state.tableData`.
+
+<Callout variant="tip">
+
+If something doesn't work, use these debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
 
 </Step>
 
@@ -455,6 +467,18 @@ By similar logic, page view data should go to `state.tableData.data[1].count`.
 With your Nerdpack served locally, [view your application](https://one.newrelic.com?nerdpacks=local) to see your charts serving real data:
 
 ![Your New Relic One application showing real subscription and page view data](../../../images/ab-test/real-table-chart-data.png)
+
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
 
 </Step>
 

@@ -556,7 +556,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
 }
 ```
 
-Here, in `.componentDidMount()`, you've queried `NerdGraph` for your `api_token` data. `.componentDidMount()` is a React lifecycle method that's called when your component is mounted in the component tree. This means that early in it's setup process, your application will request your `api_token`.
+Here, in `componentDidMount()`, you've queried `NerdGraph` for your `api_token` data. `componentDidMount()` is a React lifecycle method that's called when your component is mounted in the component tree. This means that early in it's setup process, your application will request your `api_token`.
 
 If the `NerdGraph` query responds successfully with your token from `NerdStorageVault`, it sets the token in `state`. Otherwise, it shows the prompt so that you can enter a token.
 
@@ -601,7 +601,7 @@ class ApiTokenButton extends React.Component {
 }
 ```
 
-`ApiTokenButton` receives `.showPrompt()` in its props and calls that method when its `Button` is clicked.
+`ApiTokenButton` receives `showPrompt()` in its props and calls that method when its `Button` is clicked.
 
 </Step>
 
@@ -1001,6 +1001,18 @@ When you visit your application for the first time, the prompt is automatically 
 
 ![Update API token button](../../../images/ab-test/update-api-token-button.png)
 
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
+
 </Step>
 
 </Steps>
@@ -1245,7 +1257,7 @@ export default class TotalCancellations extends React.Component {
 }
 ```
 
-Here, you've implemented another React lifecycle method, called `.componentDidUpdate()`. Now, every time your Nerdlet's `state.token` changes, `TotalCancellations` gets a new token prop, which triggers `.componentDidUpdate()`. In `.componentDidUpdate()`, you check that the incoming token is not the same as the last token it knew about, which is stored in local state. If the incoming token is different, you log a message with the new token and update `state.lastToken`.
+Here, you've implemented another React lifecycle method, called `componentDidUpdate()`. Now, every time your Nerdlet's `state.token` changes, `TotalCancellations` gets a new token prop, which triggers `componentDidUpdate()`. In `componentDidUpdate()`, you check that the incoming token is not the same as the last token it knew about, which is stored in local state. If the incoming token is different, you log a message with the new token and update `state.lastToken`.
 
 This logic prepares your code for a future change to use your API token in a request to a third-party service.
 
@@ -1259,7 +1271,19 @@ With your Nerdpack served locally, [view your application](https://one.newrelic.
 
 If you change your token, you'll see another log from `TotalCancellations` with your updated token.
 
-When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in the terminal window where you're serving your application.
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
+
+When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in your local server's terminal window.
 
 </Step>
 
