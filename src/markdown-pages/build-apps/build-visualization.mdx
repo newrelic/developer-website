@@ -46,6 +46,163 @@ If you haven't already:
 
 Use `nr1` to generate the boilerplate for a new visualization.
 
+<Tutorial>
+
+<Project>
+
+```js fileName=visualizations/my-awesome-visualization/index.js
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+} from 'recharts';
+import {Card, CardBody, HeadingText, NrqlQuery, Spinner, AutoSizer} from 'nr1';
+
+export default class MyAwesomeVisualizationVisualization extends React.Component {
+  // Custom props you wish to be configurable in the UI must also be defined in
+  // the nr1.json file for the visualization. See docs for more details.
+  static propTypes = {
+    /**
+     * A fill color to override the default fill color. This is an example of
+     * a custom chart configuration.
+     */
+    fill: PropTypes.string,
+
+    /**
+     * A stroke color to override the default stroke color. This is an example of
+     * a custom chart configuration.
+     */
+    stroke: PropTypes.string,
+    /**
+     * An array of objects consisting of a nrql `query` and `accountId`.
+     * This should be a standard prop for any NRQL based visualizations.
+     */
+    nrqlQueries: PropTypes.arrayOf(
+      PropTypes.shape({
+        accountId: PropTypes.number,
+        query: PropTypes.string,
+      })
+    ),
+  };
+
+  /**
+   * Restructure the data for a non-time-series, facet-based NRQL query into a
+   * form accepted by the Recharts library's RadarChart.
+   * (https://recharts.org/api/RadarChart).
+   */
+  transformData = (rawData) => {
+    return rawData.map((entry) => ({
+      name: entry.metadata.name,
+      // Only grabbing the first data value because this is not time-series data.
+      value: entry.data[0].y,
+    }));
+  };
+
+  /**
+   * Format the given axis tick's numeric value into a string for display.
+   */
+  formatTick = (value) => {
+    return value.toLocaleString();
+  };
+
+  render() {
+    const {nrqlQueries, stroke, fill} = this.props;
+
+    const nrqlQueryPropsAvailable =
+      nrqlQueries &&
+      nrqlQueries[0] &&
+      nrqlQueries[0].accountId &&
+      nrqlQueries[0].query;
+
+    if (!nrqlQueryPropsAvailable) {
+      return <EmptyState />;
+    }
+
+    return (
+      <AutoSizer>
+        {({width, height}) => (
+          <NrqlQuery
+            query={nrqlQueries[0].query}
+            accountId={parseInt(nrqlQueries[0].accountId)}
+            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
+          >
+            {({data, loading, error}) => {
+              if (loading) {
+                return <Spinner />;
+              }
+
+              if (error) {
+                return <ErrorState />;
+              }
+
+              const transformedData = this.transformData(data);
+
+              return (
+                <RadarChart
+                  width={width}
+                  height={height}
+                  data={transformedData}
+                >
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="name" />
+                  <PolarRadiusAxis tickFormatter={this.formatTick} />
+                  <Radar
+                    dataKey="value"
+                    stroke={stroke || '#51C9B7'}
+                    fill={fill || '#51C9B7'}
+                    fillOpacity={0.6}
+                  />
+                </RadarChart>
+              );
+            }}
+          </NrqlQuery>
+        )}
+      </AutoSizer>
+    );
+  }
+}
+
+const EmptyState = () => (
+  <Card className="EmptyState">
+    <CardBody className="EmptyState-cardBody">
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Please provide at least one NRQL query & account ID pair
+      </HeadingText>
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
+        type={HeadingText.TYPE.HEADING_4}
+      >
+        An example NRQL query you can try is:
+      </HeadingText>
+      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
+    </CardBody>
+  </Card>
+);
+
+const ErrorState = () => (
+  <Card className="ErrorState">
+    <CardBody className="ErrorState-cardBody">
+      <HeadingText
+        className="ErrorState-headingText"
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Oops! Something went wrong.
+      </HeadingText>
+    </CardBody>
+  </Card>
+);
+```
+
+</Project>
+
 <Steps>
 
 <Step>
@@ -123,82 +280,331 @@ While it's running, your local server recognizes changes to certain files, such 
 
 <Step>
 
-In a browser, open [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local). This url is also shown in the terminal when the Node server starts. The `nerdpacks=local` query string will direct the UI to load your new visualization artifact from the local Node server.
+In a browser, open [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local). This url is also shown in the terminal when the Node server starts:
 
-<Callout variant="tip" title={`Advanced nerdpack configuration`}>
-
-See the [advanced nerdpack
-configuration](/build-apps/build-hello-world-app/#advance-configurations)
-section for detailed information about how your local Node server is proxied
-to the browser and how you can override webpack configuration if needed.
-
-</Callout>
-
-</Step>
-
-<Step>
-
-Open the **Apps** page, and navigate to **Custom Visualizations**, which you will find favorited by default.
-
-<img
-  src="../../images/build-an-app/visualization-apps-navigation.png"
-  alt="Apps navigation is located in the New Relic One top navigation"
-/>
-
-</Step>
-
-<Step>
-
-In the **Custom Visualizations** listing, find and click on the tile for your visualization. If the tile is not showing up or it is not indicating that it is running locally, restart the Node server and refresh the browser.
-
-When you select your locally running visualization, the visualization hosted by your local Node server is rendered with prop-configuration inputs. Here you can take advantage of the features outlined in the following steps.
-
-</Step>
-
-<Step>
-
-You can set prop values and see the visualization update automatically. The prop inputs are listed as defined in the prop definitions located in the `nr1.json` file in the visualization folder (for example `./visualizations/my-awesome-visualization/nr1.json`). Fill in values for the props and see the visualization update automatically. As you change props in the sidebar, a render cycle of your visualization's React component is triggered.
-
-<img
-  src="../../images/build-an-app/visualization-builder-props.png"
-  alt="Generated visualization rendered in the Visualization Builder"
-/>
-
-</Step>
-
-<Step>
-
-Modify the visualization's Javascript code and see the result automatically update in the UI. For example, you can change the value for `fillOpacity` on the Radar component in `index.js`. Upon save, you will see the page automatically update.
-
-```js fileName=visualizations/your-visualization/index.js
-  fillOpacity={1.0}
+```sh
+[output] {success}✔{normal}  Server ready! Test it at: https://one.newrelic.com/?nerdpacks=local
+[output] {blue}↩{normal}  Server will reload automatically if you modify any file!
 ```
 
+The `nerdpacks=local` query string directs the UI to load your visualization from the local server.
+
 </Step>
 
 <Step>
 
-To add more props, you must update the `configuration` field in the `nr1.json` file for your visualization and restart the local Node server. The props you define in the `configuration` field allow New Relic One to cleanly display a prop-editing UI for users interacting with your visualization. See above for more information about the `configuration` field.
+Open the **Apps** page:
+
+![Apps navigation is located in the New Relic One top navigation](../../images/build-an-app/nav-to-apps.png)
+
+</Step>
+
+<Step>
+
+Go to **Custom Visualizations**, which is favorited by default:
+
+![Navigate to Custom Visualizations](../../images/build-an-app/nav-to-custom-viz.png)
+
+</Step>
+
+<Step>
+
+In **Custom Visualizations**, find and click the tile for your visualization:
+
+![Navigate to your visualization](../../images/custom-viz/nav-to-your-viz.png)
+
+Notice the **</\> Local** label on the tile. This identifies the visualization as locally served and not one that is published to the New Relic One catalog. If you don't see this label or the tile isn't there at all, you may need to restart your server and refresh your browser.
+
+When you select your local visualization, it's rendered with a list of configuration options established in _nr1.json_:
+
+![Default visualization](../../images/custom-viz/default-viz.png)
+
+</Step>
+
+<Step>
+
+Update the **Configuration visualization properties**, and watch your visualization update automatically:
+
+![Generated visualization rendered in the Visualization Builder](../../images/custom-viz/visualization-builder-props.png)
+
+To add more of these properties, update the `configuration` field in _nr1.json_, and restart your local server.
+
+Configuring these properties is one way to update your visualization at runtime. Changing your React code is another.
+
+</Step>
+
+<Step>
+
+In _index.js_, change your component's `Radar.fillOpacity`:
+
+```js fileName=visualizations/my-awesome-visualization/index.js
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+} from 'recharts';
+import {Card, CardBody, HeadingText, NrqlQuery, Spinner, AutoSizer} from 'nr1';
+
+export default class MyAwesomeVisualizationVisualization extends React.Component {
+  // Custom props you wish to be configurable in the UI must also be defined in
+  // the nr1.json file for the visualization. See docs for more details.
+  static propTypes = {
+    /**
+     * A fill color to override the default fill color. This is an example of
+     * a custom chart configuration.
+     */
+    fill: PropTypes.string,
+
+    /**
+     * A stroke color to override the default stroke color. This is an example of
+     * a custom chart configuration.
+     */
+    stroke: PropTypes.string,
+    /**
+     * An array of objects consisting of a nrql `query` and `accountId`.
+     * This should be a standard prop for any NRQL based visualizations.
+     */
+    nrqlQueries: PropTypes.arrayOf(
+      PropTypes.shape({
+        accountId: PropTypes.number,
+        query: PropTypes.string,
+      })
+    ),
+  };
+
+  /**
+   * Restructure the data for a non-time-series, facet-based NRQL query into a
+   * form accepted by the Recharts library's RadarChart.
+   * (https://recharts.org/api/RadarChart).
+   */
+  transformData = (rawData) => {
+    return rawData.map((entry) => ({
+      name: entry.metadata.name,
+      // Only grabbing the first data value because this is not time-series data.
+      value: entry.data[0].y,
+    }));
+  };
+
+  /**
+   * Format the given axis tick's numeric value into a string for display.
+   */
+  formatTick = (value) => {
+    return value.toLocaleString();
+  };
+
+  render() {
+    const {nrqlQueries, stroke, fill} = this.props;
+
+    const nrqlQueryPropsAvailable =
+      nrqlQueries &&
+      nrqlQueries[0] &&
+      nrqlQueries[0].accountId &&
+      nrqlQueries[0].query;
+
+    if (!nrqlQueryPropsAvailable) {
+      return <EmptyState />;
+    }
+
+    return (
+      <AutoSizer>
+        {({width, height}) => (
+          <NrqlQuery
+            query={nrqlQueries[0].query}
+            accountId={parseInt(nrqlQueries[0].accountId)}
+            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
+          >
+            {({data, loading, error}) => {
+              if (loading) {
+                return <Spinner />;
+              }
+
+              if (error) {
+                return <ErrorState />;
+              }
+
+              const transformedData = this.transformData(data);
+
+              return (
+                <RadarChart
+                  width={width}
+                  height={height}
+                  data={transformedData}
+                >
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="name" />
+                  <PolarRadiusAxis tickFormatter={this.formatTick} />
+                  <Radar
+                    dataKey="value"
+                    stroke={stroke || '#51C9B7'}
+                    fill={fill || '#51C9B7'}
+                    fillOpacity={1.0}
+                  />
+                </RadarChart>
+              );
+            }}
+          </NrqlQuery>
+        )}
+      </AutoSizer>
+    );
+  }
+}
+
+const EmptyState = () => (
+  <Card className="EmptyState">
+    <CardBody className="EmptyState-cardBody">
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Please provide at least one NRQL query & account ID pair
+      </HeadingText>
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
+        type={HeadingText.TYPE.HEADING_4}
+      >
+        An example NRQL query you can try is:
+      </HeadingText>
+      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
+    </CardBody>
+  </Card>
+);
+
+const ErrorState = () => (
+  <Card className="ErrorState">
+    <CardBody className="ErrorState-cardBody">
+      <HeadingText
+        className="ErrorState-headingText"
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Oops! Something went wrong.
+      </HeadingText>
+    </CardBody>
+  </Card>
+);
+```
+
+Look at your visualization in the New Relic platform to see the change:
+
+![Visualization with new fill opacity](../../images/custom-viz/opaque-viz.png)
+
+Now you've seen how to:
+
+- Serve your visualization locally
+- View it in New Relic platform
+- Update the visualization with configurable properties and code changes
+
+Once you've developed and configured a chart to show your data in an effective way, you can save that instance of the chart, complete with your configurations and the data or query, in a dashboard. However, you can't do this with a locally served visualization. You need to publish your visualization, first.
 
 </Step>
 
 </Steps>
 
+</Tutorial>
+
 ## Publish and use your visualization
 
-When your visualization is ready to be added to a dashboard, just follow these steps.
+To add an instance of your visualization to a dashboard, you first need to [publish your Nerdpack](/build-apps/publish-deploy#publish-your-app).
 
 <Steps>
 
 <Step>
 
-Open and follow the guide to [publish and deploy the Nerdpack to New Relic One and subscribe accounts to it](/build-apps/publish-deploy).
+Publish your Nerdpack from its root directory:
+
+```sh
+nr1 nerdpack:publish
+```
+
+Look for a success message in your output:
+
+```sh
+[output] {success}✔{normal}  Nerdpack published successfully!
+[output] {success}✔{normal}  Tagged {purple}5f4c2af8-3b27-40b5-954c-356d1ef88dd0{normal} version {blue}1.0.0{normal} as {blue}STABLE{normal}.
+```
+
+This means that your Nerdpack was published to the New Relic One catalog that you can find under **Apps**.
 
 </Step>
 
 <Step>
 
-Then you can [add your visualization to a dashboard](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/add-custom-visualizations-your-dashboards).
+Subscribe to your Nerdpack:
+
+```sh
+nr1 nerdpack:subscribe
+[output] Subscribed account {blue}3014918{normal} to the nerdpack {purple}5f4c2af8-3b27-40b5-954c-356d1ef88dd0{normal} on the {blue}STABLE{normal} channel.
+```
+
+Now, you're subscribed to your Nerdpack and can build an instance of a visualization in New Relic.
+
+</Step>
+
+<Step>
+
+Once again, open the **Apps** page at [New Relic](https://one.newrelic.com):
+
+![Apps navigation is located in the New Relic One top navigation](../../images/build-an-app/nav-to-apps.png)
+
+Here, you don't need to use the `?nerdpacks=local` query string because you're looking for a visualization that you've published and subscribed to, rather than one that is locally served.
+
+</Step>
+
+<Step>
+
+Go to **Custom Visualizations**:
+
+![Navigate to Custom Visualizations](../../images/build-an-app/nav-to-custom-viz.png)
+
+</Step>
+
+<Step>
+
+Find and click your published visualization:
+
+![Navigate to your published visualization](../../images/custom-viz/nav-to-published-viz.png)
+
+You may have to refresh your browser page if you can't find your visualization.
+
+Notice that this new tile no longer has a **</\> Local** label. This is because you're looking at the visualization you published and subscribed to in the previous steps. If you're still serving your Nerdpack locally, you might see two tiles here, one with the label and one without it.
+
+</Step>
+
+<Step>
+
+Configure your visualization the same way you did when it was locally served:
+
+![Configure published visualization](../../images/custom-viz/configured-published-viz.png)
+
+</Step>
+
+<Step>
+
+Click **Add to dashboard**:
+
+![Add visualization to dashboard](../../images/custom-viz/add-to-dashboard.png)
+
+Follow the prompts to [add your visualization to a dashboard](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/add-custom-visualizations-your-dashboards).
+
+</Step>
+
+<Step>
+
+From the homepage, go to **Dashboards**:
+
+![Add visualization to dashboard](../../images/build-an-app/nav-to-dashboards.png)
+
+</Step>
+
+<Step>
+
+Select the dashboard you added your visualization to and see your visualization in it:
+
+![Add visualization to dashboard](../../images/custom-viz/viz-in-dashboard.png)
 
 </Step>
 
@@ -206,12 +612,14 @@ Then you can [add your visualization to a dashboard](https://docs.newrelic.com/d
 
 ## Summary
 
-Congratulations on completing the steps in this example! You've learned how to:
+Congratulations on building your first visualization! In this guide, you learned how to:
 
-- Create a visualization and run it locally
-- Quickly test and iterate on visualization code changes in Custom Visualizations
-- Deploy a visualization
-- Add a custom visualization to a dashboard
+- Create a visualization
+- Serve your visualization locally
+- Iterate on visualization code changes and customizations in **Custom Visualizations**
+- Publish your visualization
+- Subscribe to your visualization
+- Add your visualization to a dashboard
 
 ## Additional resources
 
