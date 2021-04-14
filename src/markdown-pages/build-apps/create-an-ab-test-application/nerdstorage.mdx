@@ -5,6 +5,8 @@ template: 'GuideTemplate'
 description: 'Access NerdStorage from your Nerdlet'
 ---
 
+<HideWhenEmbedded>
+
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
@@ -13,6 +15,7 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 
 </Callout>
 
+</HideWhenEmbedded>
 
 In previous lessons, you created a user experience in your application which includes charts and a button to end your A/B test. You also configured your charts to query real data from New Relic's database. However, you left mock data in two charts:
 
@@ -758,9 +761,12 @@ New Relic One applications are React applications, which means that you can use 
 
 In this lesson, you learned how to use NerdStorage to query and mutate data in your application's own data store. While NerdStorage is a great place for many categories of data, it's not appropriate for sensitive data, like a token you would pass in an Authorization header to an external service. For that, you'd use NerdStorageVault.
 
+<HideWhenEmbedded>
 
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Access NerdStorageVault from your nerdlet_](/build-apps/ab-test/nerdstoragevault).
 
 </Callout>
+
+</HideWhenEmbedded>
