@@ -1,3 +1,10 @@
+# [1.42.0](https://github.com/newrelic/developer-website/compare/v1.41.0...v1.42.0) (2021-04-15)
+
+
+### Features
+
+* Create new Serve you Nerdpack doc ([2a252d4](https://github.com/newrelic/developer-website/commit/2a252d4f643fceae6fa7dc46b9f3ecf1addcce75))
+
 # [1.41.0](https://github.com/newrelic/developer-website/compare/v1.40.2...v1.41.0) (2021-04-13)
 
 

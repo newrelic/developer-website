@@ -70,7 +70,7 @@ mkdir HostConditions && cd HostConditions
 touch main.tf
 ```
 
-Remove the two alert conditions from the root project's __main.tf__ file and copy it to the new __main.tf__ file in the HostModules directory.
+Remove the two alert conditions from the root project's __main.tf__ file and copy it to the new __main.tf__ file in the HostConditions directory.
 
 In the root directory's __main.tf__ file call the new module using a module block:
 ```hcl
@@ -285,7 +285,7 @@ You can reuse your module connecting to a New Relic policy that already exists. 
 
 First, In your root __main.tf__ file add the data block to import an existing policy:
 ```hcl
-data "newrelic_alert_channel" "ExistingPolicy" {
+data "newrelic_alert_policy" "ExistingPolicy" {
 	name = "Preexisting Policy"
 }
 ```
