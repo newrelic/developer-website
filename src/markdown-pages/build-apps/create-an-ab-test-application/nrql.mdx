@@ -5,6 +5,8 @@ template: 'GuideTemplate'
 description: 'Add NrqlQuery components to your Nerdlet'
 ---
 
+<HideWhenEmbedded>
+
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
@@ -12,6 +14,8 @@ This lesson is part of a course that teaches you how to build a New Relic One ap
 Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Present an end test confirmation modal_](/build-apps/ab-test/confirmation-modal), before starting this one.
 
 </Callout>
+
+</HideWhenEmbedded>
 
 In this series, you're building a full-fledged New Relic One application that ingests data from a demo service that's running an A/B test. The app shows the A/B test data in interesting ways so that you'll ultimately be able to choose whether Version A or Version B is more effective at accomplishing your business goal: to increase high-quality newsletter subscriptions.
 
@@ -177,7 +181,7 @@ export default class NewsletterSignups extends React.Component {
 
 <Callout variant="important">
 
-Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
 
 </Callout>
 
@@ -241,6 +245,18 @@ nr1 nerdpack:serve
 
 **Newsletter subscriptions by version** now shows real data from New Relic's database rather than the mock data you defined before. Notice that your chart pulls data when your application loads, but does not continue pulling data while the application is open. You can fix this by adding another prop.
 
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
+
 </Step>
 
 <Step>
@@ -281,7 +297,7 @@ export default class NewsletterSignups extends React.Component {
 
 <Callout variant="important">
 
-Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
 
 </Callout>
 
@@ -338,7 +354,7 @@ export default class TotalSubscriptions extends React.Component {
 
 <Callout variant="important">
 
-Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
 
 </Callout>
 
@@ -348,11 +364,23 @@ You don't need the `TIMESERIES` clause because the pie chart only shows numerica
 
 <Step>
 
-With your nerdpack served locally, [view your application](https://one.newrelic.com?nerdpacks=local) to see your charts serving real data:
+With your Nerdpack served locally, [view your application](https://one.newrelic.com?nerdpacks=local) to see your charts serving real data:
 
 ![Your New Relic One application showing real subscription totals data](../../../images/ab-test/nr1-app-subscription-totals.png)
 
 **Total subscriptions per version** now shows all-time subscription totals from both versions of your demo application.
+
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
 
 </Step>
 
@@ -413,7 +441,7 @@ export default class VersionPageViews extends React.Component {
 
 <Callout variant="important">
 
-Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account id](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
+Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
 
 </Callout>
 
@@ -421,11 +449,23 @@ Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [
 
 <Step>
 
-With your nerdpack served locally, [view your application](https://one.newrelic.com?nerdpacks=local) to see your charts serving real data:
+With your Nerdpack served locally, [view your application](https://one.newrelic.com?nerdpacks=local) to see your charts serving real data:
 
 ![Your New Relic One application showing real page view data](../../../images/ab-test/page-views-charts.png)
 
 In these new queries, you fetch `pageView` custom events instead of `subscription` events. You also use a `WHERE` clause to filter to a particular `page_version` rather than a `FACET` to group by `page_version`.
+
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
 
 </Step>
 
@@ -438,8 +478,12 @@ Phew, that's a lot of queries, but your application looks great! You're now show
 
 You have to handle these differently than you did for the charts you've been dealing with because NRQL has no method for querying data from multiple sources. In the next lesson, you'll learn how to supply data to these two charts.
 
+<HideWhenEmbedded>
+
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Customize NRQL data_](/build-apps/ab-test/nrql-customizations).
 
 </Callout>
+
+</HideWhenEmbedded>

@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
+import EmbedContext from '../components/EmbedContext';
 
 const EmbedPage = ({ data }) => {
   const { mdx } = data;
@@ -9,10 +10,10 @@ const EmbedPage = ({ data }) => {
   const { title } = frontmatter;
 
   return (
-    <>
+    <EmbedContext.Provider value={{ isEmbedded: true }}>
       <h1>{title}</h1>
       <PageLayout.MarkdownContent>{body}</PageLayout.MarkdownContent>
-    </>
+    </EmbedContext.Provider>
   );
 };
 

@@ -5,6 +5,8 @@ template: 'GuideTemplate'
 description: 'Install and configure the New Relic One CLI'
 ---
 
+<HideWhenEmbedded>
+
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
@@ -12,6 +14,8 @@ This lesson is part of a course that teaches you how to build a New Relic One ap
 Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Spin up your demo services_](/build-apps/ab-test/demo-setup), before starting this one.
 
 </Callout>
+
+</HideWhenEmbedded>
 
 One of the primary elements of the New Relic One SDK is the command line interface (CLI). To create a Nerdpack , you'll need to install the SDK, configure the CLI to work with your New Relic account, and then utilize its `create` command.
 
@@ -39,7 +43,7 @@ Select **User** for **Key type**, optionally add a name and notes, and click **C
 
 ![Create key details](../../../images/ab-test/create-key-details.png)
 
-You use this key to associate your New Relic account with the CLI. The CLI then uses the key to manage entities within your account.
+Copy the key you created. You'll use it to associate your New Relic account with the CLI. The CLI will then use the key to manage entities within your account.
 
 </Step>
 
@@ -79,7 +83,7 @@ nr1 profiles:add --name <profile name> --api-key <User key> --region <region>
 
 <Callout variant="important">
 
-Make sure to replace the `<profile name>`, the `<User key>`, and the region (either `us` or `eu`) with real values.
+Make sure to replace the `<profile name>` with an arbirary name, the `<User key>` with the key you copied in **Step 1**, and the region with either `us` or `eu`.
 
 </Callout>
 
@@ -117,8 +121,12 @@ nr1 profiles --help
 
 Now, you’re ready to build an application with the New Relic One CLI.
 
+<HideWhenEmbedded>
+
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Create a Nerdpack_](/build-apps/ab-test/create-nerdpack).
 
 </Callout>
+
+</HideWhenEmbedded>

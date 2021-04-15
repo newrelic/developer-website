@@ -5,6 +5,8 @@ template: 'GuideTemplate'
 description: 'Access NerdStorageVault from your Nerdlet'
 ---
 
+<HideWhenEmbedded>
+
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
@@ -13,6 +15,7 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 
 </Callout>
 
+</HideWhenEmbedded>
 
 Throughout this course, you're building a New Relic One application that gathers telemetry data from a demo web service that's running an A/B test on a newsletter signup form. The purpose of your New Relic One application is to help you understand how design changes impact the number of high quality newsletter subscriptions your service gets. The business objective, to increase your service's high quality newsletter subscriptions, relies primarily on three key pieces of information:
 
@@ -125,7 +128,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
 }
 ```
 
-Your nerdlet uses this `token` state to manage the authorization token you'll later pass to the third-party service. However, a component's `state` is not a long-term solution for data management. For that, you need `NerdStorageVault`.
+Your Nerdlet uses this `token` state to manage the authorization token you'll later pass to the third-party service. However, a component's `state` is not a long-term solution for data management. For that, you need `NerdStorageVault`.
 
 </Step>
 
@@ -244,7 +247,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
 }
 ```
 
-When you call `storeToken()` with a new token value, your nerdlet uses `NerdGraph` APIs to mutate `NerdStorageVault` data for the `api_token` key. If the request to `NerdGraph` is successful, `storeToken()` updates `state.token` so that the new token is locally accessible.
+When you call `storeToken()` with a new token value, your Nerdlet uses `NerdGraph` APIs to mutate `NerdStorageVault` data for the `api_token` key. If the request to `NerdGraph` is successful, `storeToken()` updates `state.token` so that the new token is locally accessible.
 
 Unlike `NerdStorage`, which has query and mutation components for your convenience, `NerdStorageVault` has no components in the SDK. Instead, you have to use `NerdGraphQuery` and `NerdGraphMutation` to interact with it
 
@@ -556,7 +559,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
 }
 ```
 
-Here, in `.componentDidMount()`, you've queried `NerdGraph` for your `api_token` data. `.componentDidMount()` is a React lifecycle method that's called when your component is mounted in the component tree. This means that early in it's setup process, your application will request your `api_token`.
+Here, in `componentDidMount()`, you've queried `NerdGraph` for your `api_token` data. `componentDidMount()` is a React lifecycle method that's called when your component is mounted in the component tree. This means that early in it's setup process, your application will request your `api_token`.
 
 If the `NerdGraph` query responds successfully with your token from `NerdStorageVault`, it sets the token in `state`. Otherwise, it shows the prompt so that you can enter a token.
 
@@ -601,7 +604,7 @@ class ApiTokenButton extends React.Component {
 }
 ```
 
-`ApiTokenButton` receives `.showPrompt()` in its props and calls that method when its `Button` is clicked.
+`ApiTokenButton` receives `showPrompt()` in its props and calls that method when its `Button` is clicked.
 
 </Step>
 
@@ -690,7 +693,7 @@ class ApiTokenPrompt extends React.Component {
 
 `ApiTokenPrompt` renders a `Modal` with a `TextField`, a `Button`, and an explanatory prompt. You use the `Modal` to enter your API token. It also provides basic error handling if you try to submit the form with no token value.
 
-It's important to distinguish the `token` in `AbTestNerdletNerdlet.state` and the `token` in `ApiTokenPrompt.state`. The `token` in your nerdlet's `state` is the current token that your nerdlet knows about. It's this token that matches what's in `NerdStorageVault`. The `token` in `ApiTokenPrompt.state` is a fluid value that changes as you update the text in the `TextField`. When you press **Submit** in the modal, `ApiTokenPrompt` submits its `token` to your nerdlet's `storeToken()` method. Then, `storeToken()` mutates `NerdStorageVault` with the new token.
+It's important to distinguish the `token` in `AbTestNerdletNerdlet.state` and the `token` in `ApiTokenPrompt.state`. The `token` in your Nerdlet's `state` is the current token that your Nerdlet knows about. It's this token that matches what's in `NerdStorageVault`. The `token` in `ApiTokenPrompt.state` is a fluid value that changes as you update the text in the `TextField`. When you press **Submit** in the modal, `ApiTokenPrompt` submits its `token` to your Nerdlet's `storeToken()` method. Then, `storeToken()` mutates `NerdStorageVault` with the new token.
 
 You also implemented a few methods to improve the user experience:
 
@@ -997,9 +1000,21 @@ nr1 nerdpack:serve
 
 ![API token prompt](../../../images/ab-test/api-token-prompt.png)
 
-When you visit your application for the first time, the prompt is automatically revealed. Enter "ABC123" in the `TextField`, as that's the token that the third-party service expects. Once you submit your token and your nerdlet hides the prompt, click **Update API token** at the bottom of your New Relic One application to reveal it again:
+When you visit your application for the first time, the prompt is automatically revealed. Enter "ABC123" in the `TextField`, as that's the token that the third-party service expects. Once you submit your token and your Nerdlet hides the prompt, click **Update API token** at the bottom of your New Relic One application to reveal it again:
 
 ![Update API token button](../../../images/ab-test/update-api-token-button.png)
+
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
 
 </Step>
 
@@ -1245,7 +1260,7 @@ export default class TotalCancellations extends React.Component {
 }
 ```
 
-Here, you've implemented another React lifecycle method, called `.componentDidUpdate()`. Now, every time your nerdlet's `state.token` changes, `TotalCancellations` gets a new token prop, which triggers `.componentDidUpdate()`. In `.componentDidUpdate()`, you check that the incoming token is not the same as the last token it knew about, which is stored in local state. If the incoming token is different, you log a message with the new token and update `state.lastToken`.
+Here, you've implemented another React lifecycle method, called `componentDidUpdate()`. Now, every time your Nerdlet's `state.token` changes, `TotalCancellations` gets a new token prop, which triggers `componentDidUpdate()`. In `componentDidUpdate()`, you check that the incoming token is not the same as the last token it knew about, which is stored in local state. If the incoming token is different, you log a message with the new token and update `state.lastToken`.
 
 This logic prepares your code for a future change to use your API token in a request to a third-party service.
 
@@ -1253,13 +1268,25 @@ This logic prepares your code for a future change to use your API token in a req
 
 <Step>
 
-With your nerdpack served locally, [view your application](https://one.newrelic.com?nerdpacks=local) to see the log from `TotalCancellations` in your browser's console:
+With your Nerdpack served locally, [view your application](https://one.newrelic.com?nerdpacks=local) to see the log from `TotalCancellations` in your browser's console:
 
 ![Total cancellations request log](../../../images/ab-test/request-log.png)
 
 If you change your token, you'll see another log from `TotalCancellations` with your updated token.
 
-When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in the terminal window where you're serving your application.
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
+
+When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in your local server's terminal window.
 
 </Step>
 
@@ -1269,8 +1296,12 @@ Now you know how to use `NerdGraphQuery` and `NerdGraphMutation` to manage data 
 
 Whether it's been with `NrqlQuery`, `AccountStorageQuery`, `AccountStorageMutation`, `NerdGraphQuery`, or `NerdGraphMutation`, you've learned several ways to interact with New Relic data in your New Relic One application. But New Relic One applications aren't just another way to show New Relic data. The purpose of New Relic One applications is to show you how your software is helping you meet your business objectives. Sometimes, New Relic data is all you need to make that happen, but other times you need to look beyond New Relic for data to fill in the gaps.
 
+<HideWhenEmbedded>
+
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Fetch data from a third-party service_](/build-apps/ab-test/third-party-service).
 
 </Callout>
+
+</HideWhenEmbedded>

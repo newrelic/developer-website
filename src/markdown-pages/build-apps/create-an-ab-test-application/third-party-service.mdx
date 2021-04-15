@@ -5,6 +5,8 @@ template: 'GuideTemplate'
 description: 'Fetch data from a third-party service'
 ---
 
+<HideWhenEmbedded>
+
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
@@ -13,6 +15,7 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 
 </Callout>
 
+</HideWhenEmbedded>
 
 In previous lessons, you learned of a third-party service that you can use to fetch mock cancellation data for the **Total cancellations per version** chart in your New Relic One application. Even though the data in this service is fake, the real value of this lesson is learning how you can use third party services to supply data to your New Relic One application.
 
@@ -177,7 +180,19 @@ If you set the token to "ABC123", then **Total cancellations per version** updat
 
 ![Real data from the Nerdsletter API](../../../images/ab-test/nerdsletter-success.png)
 
-When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in the terminal window where you're serving your application.
+<Callout variant="tip">
+
+If something doesn't work, use your browser's debug tools to try to identify the problem.
+
+**Make sure you:**
+
+- Copied the code correctly from the lesson
+- Generated a new UUID
+- Replaced all instances of `<YOUR NEW RELIC ACCOUNT ID>` in your project with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id)
+
+</Callout>
+
+When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in your local server's terminal window.
 
 </Step>
 
@@ -191,8 +206,12 @@ You've created eight charts with varying styles and supplied them with dynamic d
 
 From here, there is only one more set of APIs in the New Relic One SDK that you've yet to get your hands on: Platform APIs. These will come in handy in improving the usability of your New Relic One application.
 
+<HideWhenEmbedded>
+
 <Callout variant="tip" title="Course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Add PlatformStateContext to your nerdlet_](/build-apps/ab-test/platform-state-context).
 
 </Callout>
+
+</HideWhenEmbedded>
