@@ -86,6 +86,12 @@ Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [
 
 </Callout>
 
+Notice that `NrqlQuery` uses a constant called `ACCOUNT_ID`. Instead of hardcoding an account identifier in your Nerdlet, you can use `accountId` from the platform URL state.
+
+</Step>
+
+<Step>
+
 `PlatformStateContext.Consumer` provides access to the platform's URL state. This context contains an important value you'll use in your app, called `timeRange`.
 
 Notice that your `NrqlQuery` uses a `SINCE` clause that identifies the historical timeframe your query should fetch data from. Right now, that `SINCE` clause is set to `30 MINUTES AGO`. With `timeRange`, you can use the platform's time picker to make this timeframe adjustable.
@@ -270,7 +276,7 @@ Of all the charts in your New Relic One application, these three charts are the 
 
 <Step>
 
-While still serving your nerdpack locally, view your NR1 app to see your charts updating with the time range you choose:
+While still serving your Nerdpack locally, view your NR1 app to see your charts updating with the time range you choose:
 
 ![Your charts showing your selected time period](../../../images/ab-test/page-views-time-range.png)
 
