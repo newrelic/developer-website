@@ -66,8 +66,6 @@
       url: '/build-apps/howto-use-nrone-table-components'
     - title: Add, query, and mutate data using NerdStorage
       url: '/build-apps/add-query-mutate-data-nerdstorage'
-    - title: Build custom visualizations for dashboards
-      url: '/build-apps/build-visualization'
     - title: Custom visualizations and the New Relic One SDK
       url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
     - title: Customize visualizations with configuration
@@ -188,6 +186,8 @@
       pages:
         - title: Configuration options
           url: '/explore-docs/custom-viz/configuration-options'
+        - title: Your first custom visualization
+          url: '/explore-docs/custom-viz/build-visualization'
     - title: New Relic One SDK Component library
       url: '/explore-docs/intro-to-sdk'
       pages:
