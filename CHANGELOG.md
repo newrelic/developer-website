@@ -1,3 +1,10 @@
+## [1.42.1](https://github.com/newrelic/developer-website/compare/v1.42.0...v1.42.1) (2021-04-16)
+
+
+### Bug Fixes
+
+* Adjust resource URL path ([d8741f7](https://github.com/newrelic/developer-website/commit/d8741f7b57c62599a967448e4263b5f510ff8f40))
+
 # [1.42.0](https://github.com/newrelic/developer-website/compare/v1.41.0...v1.42.0) (2021-04-15)
 
 
