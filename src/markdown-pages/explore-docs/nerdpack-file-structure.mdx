@@ -117,7 +117,11 @@ In the following example, the Nerdlet has been associated with all Browser-monit
   "id": "my-nerdlet",
   "description": "Describe me",
   "displayName": "Custom Data",
-  "entities": [{ "domain": "BROWSER", "type": "APPLICATION" }],
+  "context": {
+    "entities": [
+      { "domain": "BROWSER", "type": "APPLICATION" }
+    ]
+  },
   "actionCategory": "monitor"
 }
 ```
