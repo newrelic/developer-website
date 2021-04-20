@@ -20,6 +20,21 @@ If you haven't already:
 - [Sign up](https://newrelic.com/signup/) for a New Relic account
 - [Install and configure the New Relic One CLI](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==)
 
+<Tutorial>
+
+<Project>
+
+```json fileName=nerdlets/entity-nerdlet-nerdlet/nr1.json
+{
+    "schemaType": "NERDLET",
+    "id": "entity-nerdlet-nerdlet",
+    "displayName": "EntityNerdletNerdlet",
+    "description": ""
+}
+```
+
+</Project>
+
 ## Create a Nerdpack
 
 <Steps>
@@ -49,7 +64,7 @@ nr1 nerdpack:serve
 
 <Step>
 
-Go to [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local) and navigate to **Apps**:
+Go to [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local), and navigate to **Apps**:
 
 ![Navigate to Apps](../../images/ab-test/nav-to-apps.png)
 
@@ -70,21 +85,6 @@ Under **Your apps**, click your launcher to view your New Relic One application:
 ## Attach your Nerdlet to entities
 
 You've seen how you can access your Nerdlet from a launcher. Now, access your Nerdlet from your entities.
-
-<Tutorial>
-
-<Project>
-
-```json fileName=nerdlets/entity-nerdlet-nerdlet/nr1.json
-{
-    "schemaType": "NERDLET",
-    "id": "entity-nerdlet-nerdlet",
-    "displayName": "EntityNerdletNerdlet",
-    "description": ""
-}
-```
-
-</Project>
 
 <Steps>
 
