@@ -50,10 +50,15 @@ nr1 update
 
 Create a Nerdpack and a visualization:
 
-```sh
-nr1 create --type nerdpack --name my-first-viz
-cd my-first-viz
+```bash animate
 nr1 create --type visualization --name custom-viz
+[output] {success}✔  {plain}You are attempting to create a nerdlet outside of a nerdpack. We will create a nerdpack for you. What would you like to name it? ...my-first-viz
+[output]
+[output] {success}✔  {plain}Component created successfully!
+[output]    {purple}nerdpack {blue}my-first-viz {plain}is available at {green}"./my-first-viz"
+[output]
+[output] {success}✔  {plain}Component created successfully!
+[output]    {purple}visualization {blue}custom-viz {plain}is available at {green}"./my-first-viz/visualizations/custom-viz"
 ```
 
 The visualization you created in the `my-first-viz` Nerdpack contains a default component to help you get started.
