@@ -67,7 +67,6 @@
     - title: Add, query, and mutate data using NerdStorage
       url: '/build-apps/add-query-mutate-data-nerdstorage'
     - title: Display your data in different ways with a custom visualization
-      url: '/build-apps/custom-viz-alternate-charts'
       pages:
         - title: Custom visualizations and the New Relic One SDK
           url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'

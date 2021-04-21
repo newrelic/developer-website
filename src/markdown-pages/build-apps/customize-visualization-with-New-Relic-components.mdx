@@ -19,11 +19,9 @@ tags:
   - Subscribe visualizations
 ---
 
-<Callout variant="tip" title="Course">
+<Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One custom visualization from the ground up. If you haven't already, check out the [course introduction](/build-apps/ab-test).
-
-Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Present an end test confirmation modal_](../confirmation-modal), before starting this one.
+This lesson is part of a course that teaches you how to build a custom visualization in the New Relic One platform
 
 </Callout>
 
@@ -32,6 +30,12 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 Use New Relic One custom visualizations to display your data, whether it's from New Relic's database or an external source, in unique ways that are distinct from the charts offered by the New Relic platform.
 
 In this lesson, you build a visualization that displays your data in one of two chart types: [`RadarChart`](https://recharts.org/en-US/api/RadarChart) or [`Treemap`](https://recharts.org/en-US/api/Treemap). You then implement a `SegmentedControl` component from the New Relic One SDK, which allows you to alternate between the two chart types. Ultimately, this gives you freedom to view your data in a dynamic way that isn't possible with New Relic's base offerings.
+
+<Callout variant="tip">
+
+If you get lost in the code project and would like to see what the files should look like when you're done with each lesson, check out the [course project](https://github.com/newrelic/nru-custom-visualization-course) on Github.
+
+</Callout>
 
 </Intro>
 
@@ -2045,7 +2049,7 @@ Use `state.selectedChart` to determine which chart to show: the `RadarChart` or 
 
 <Step>
 
-Compare `state.selectedChart` to `CHART_TYPES.Radar`. If they are the same, render a `RadarChart`. Otherwise, render a `Treemap`:
+Destructure `this.state` to access `selectedChart` as a separate constant. Then, compare `selectedChart` to `CHART_TYPES.Radar`. If they are the same, render a `RadarChart`. Otherwise, render a `Treemap`:
 
 ```js fileName=visualizations/radar-or-treemap/index.js
 import React from 'react';
@@ -2131,6 +2135,7 @@ export default class RadarOrTreemapVisualization extends React.Component {
 
   render() {
     const {nrqlQueries, stroke, fill} = this.props;
+    const {selectedChart} = this.state;
 
     const nrqlQueryPropsAvailable =
       nrqlQueries &&
@@ -2175,7 +2180,7 @@ export default class RadarOrTreemapVisualization extends React.Component {
                     label="Treemap chart"
                   />
                 </SegmentedControl>
-                {this.state.selectedChart === CHART_TYPES.Radar ? (
+                {selectedChart === CHART_TYPES.Radar ? (
                 <RadarChart
                   width={width}
                   height={height}
