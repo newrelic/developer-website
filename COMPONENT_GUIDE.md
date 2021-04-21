@@ -361,7 +361,7 @@ In this case, `Tutorial` will show _first-file.js_, but it won't indicate that t
 
 ### Usage
 
-You can use the `HideWhenEmbedded` component to hide content displayed for an embedded page. 
+You can use the `HideWhenEmbedded` component to hide content displayed for an embedded page.
 
 When the page is not embedded, the content is displayed as normal.
 
@@ -372,7 +372,7 @@ You can hide any content with this component, including other components. This a
 ```md
 ## Hidden Embed
 <HideWhenEmbedded>
-<Callout variant="tip" title="Course">
+<Callout variant="course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
@@ -386,7 +386,7 @@ Other text ...
 ### VS.
 
 ## Normal Embed
-<Callout variant="tip" title="Course">
+<Callout variant="course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
