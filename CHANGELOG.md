@@ -1,3 +1,10 @@
+## [1.42.2](https://github.com/newrelic/developer-website/compare/v1.42.1...v1.42.2) (2021-04-21)
+
+
+### Bug Fixes
+
+* **related-resources:** update swiftype type filter to include sonly results for specific sites ([0a37903](https://github.com/newrelic/developer-website/commit/0a379031fedd07a7cb0c8b747606d34def31a322))
+
 ## [1.42.1](https://github.com/newrelic/developer-website/compare/v1.42.0...v1.42.1) (2021-04-16)
 
 
