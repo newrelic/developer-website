@@ -12,7 +12,7 @@ const NerdDaysPage = ({ location }) => {
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Content>
-          <section className={cx(styles.section, styles.twoColumnAlt)}>
+          <section className={cx(styles.twoColumnAlt)}>
             <div>
               <img
                 className={styles.img}

@@ -175,8 +175,7 @@ const NerdDaysPage = ({ location }) => {
                 }
               `}
             >
-              Nerd Days is a{' '}
-              <em className={cx(styles.heroHeadingHighlight)}>free</em>
+              Nerd Days is a <em>free</em>
               {` `}
               1-day event focused on building more perfect software
             </h3>
@@ -188,11 +187,7 @@ const NerdDaysPage = ({ location }) => {
               13 (Dates vary by region)
             </SectionDescription>
             <div
-              className={cx(
-                styles.section,
-                styles.twoColumnAlt,
-                styles.registrationSection
-              )}
+              className={cx(styles.twoColumnAlt, styles.registrationSection)}
             >
               <div>
                 <h2>What’s is Nerd Days exactly…</h2>
@@ -257,7 +252,7 @@ const NerdDaysPage = ({ location }) => {
               </div>
             </div>
           </Section>
-          <Section className={cx(styles.speakersSection)}>
+          <Section>
             <SectionHeading>Speaker line up</SectionHeading>
             <SectionDescription>
               Get hands on with sessions presented by the following Relics,
@@ -398,13 +393,7 @@ const NerdDaysPage = ({ location }) => {
               />
               <TrackItem
                 name="Fundamentals"
-                icon={
-                  <img
-                    className={cx(styles.trackIcon)}
-                    src={shapesIcon}
-                    alt="Fundamentals"
-                  />
-                }
+                icon={<img src={shapesIcon} alt="Fundamentals" />}
               />
             </ul>
           </Section>

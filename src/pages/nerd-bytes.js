@@ -135,14 +135,10 @@ const NerdbytesPage = ({ location }) => {
               </p>
               <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
                 Listen
-                <FeatherIcon className={styles.Icon} name="link" />
+                <FeatherIcon name="link" />
               </Button>
             </div>
-            <img
-              className={styles.img}
-              src={podcastBadge}
-              alt="podcast badge"
-            />
+            <img src={podcastBadge} alt="podcast badge" />
           </section>
         </PageLayout.Content>
       </PageLayout>

@@ -208,11 +208,7 @@ const IndexPage = ({ data, pageContext, location }) => {
                 Learn more about developer champions
               </Button>
             </div>
-            <img
-              className={styles.img}
-              src={devChampionBadge}
-              alt="developer champion badge"
-            />
+            <img src={devChampionBadge} alt="developer champion badge" />
           </section>
 
           <section
@@ -231,14 +227,10 @@ const IndexPage = ({ data, pageContext, location }) => {
               </p>
               <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
                 Listen
-                <FeatherIcon className={styles.Icon} name="link" />
+                <FeatherIcon name="link" />
               </Button>
             </div>
-            <img
-              className={styles.img}
-              src={podcastBadge}
-              alt="podcast badge"
-            />
+            <img src={podcastBadge} alt="podcast badge" />
           </section>
         </PageLayout.Content>
       </PageLayout>
