@@ -13,7 +13,7 @@ import FeatherIcon from '../components/FeatherIcon';
 import FeaturedGuideTile from '../components/FeaturedGuideTile';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
-import styles from './index.module.scss';
+import * as styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import fsBanner from '../images/futurestack-registration.png';

@@ -7,7 +7,7 @@ import { Button, Icon, NewRelicLogo } from '@newrelic/gatsby-theme-newrelic';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
-import styles from './nerd-days.module.scss';
+import * as styles from './nerd-days.module.scss';
 import NerdDaysLogo from '../components/NerdDaysLogo';
 import graphLines from '../images/nerd-days/hero-image-graph-lines.png';
 import heroBackgroundPattern from '../images/nerd-days/nerd-days-hero-bg-pattern.png';

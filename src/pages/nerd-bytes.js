@@ -7,7 +7,7 @@ import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import { PageContext } from '../components/PageContext';
-import styles from './index.module.scss';
+import * as styles from './index.module.scss';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import Video from '../components/Video';
 

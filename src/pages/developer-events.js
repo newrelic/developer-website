@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import PageLayout from '../components/PageLayout';
 import nerdDays from '../images/nerd-days/nerd-days.png';
-import styles from './nerd-days.module.scss';
+import * as styles from './nerd-days.module.scss';
 
 const EventLandingPage = ({ location }) => {
   return (

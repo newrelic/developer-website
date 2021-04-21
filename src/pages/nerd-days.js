@@ -12,7 +12,7 @@ import {
 import DevSiteSeo from '../components/DevSiteSeo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
-import styles from './nerd-days.module.scss';
+import * as styles from './nerd-days.module.scss';
 import roadIcon from '../images/nerd-days/icon-road.svg';
 import NerdDaysLogo from '../components/NerdDaysLogo';
 import graphLines from '../images/nerd-days/hero-image-graph-lines.png';

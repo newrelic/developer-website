@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import styles from './ReferenceExample.module.scss';
+import * as styles from './ReferenceExample.module.scss';
 import ReferencePreview from './ReferencePreview';
 import { graphql } from 'gatsby';
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';

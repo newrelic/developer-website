@@ -9,7 +9,7 @@ import FeatherIcon from '../components/FeatherIcon';
 import allthingsopen from '../images/all-things-open/allthingsopen.png';
 import gavinjohnson from '../images/all-things-open/gavin-johnson.jpg';
 import michaellang from '../images/all-things-open/michael-lang.jpg';
-import styles from './all-things-open.module.scss';
+import * as styles from './all-things-open.module.scss';
 
 const allThingsOpenPage = ({ location }) => {
   return (

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import DevSiteSeo from '../components/DevSiteSeo';
 import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
-import styles from './nerd-days.module.scss';
+import * as styles from './nerd-days.module.scss';
 
 const NerdlogPage = ({ location }) => {
   return (

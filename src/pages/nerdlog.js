@@ -8,7 +8,7 @@ import { Button } from '@newrelic/gatsby-theme-newrelic';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
-import styles from './nerdlog.module.scss';
+import * as styles from './nerdlog.module.scss';
 import { teamMembers } from '../data/nerdlogData';
 import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
 import styled from '@emotion/styled';

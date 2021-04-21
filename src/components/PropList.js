@@ -6,7 +6,7 @@ import CodeDef from './CodeDef';
 import FunctionDefinition from './FunctionDefinition';
 import Markdown from './Markdown';
 import ReferenceExample from './ReferenceExample';
-import styles from './PropList.module.scss';
+import * as styles from './PropList.module.scss';
 import { Callout } from '@newrelic/gatsby-theme-newrelic';
 import { graphql } from 'gatsby';
 

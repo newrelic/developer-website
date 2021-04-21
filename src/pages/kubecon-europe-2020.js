@@ -7,7 +7,7 @@ import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import kubeconHeader from '../images/kubecon-europe-2020/kubecon-europe-2020.jpg';
-import styles from './kubecon-europe-2020.module.scss';
+import * as styles from './kubecon-europe-2020.module.scss';
 
 const KubeConPage = ({ location }) => {
   return (
