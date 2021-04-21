@@ -1,7 +1,7 @@
 ---
 path: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
 duration: '25 min'
-title: 'Custom visualizations and the New Relic One SDK'
+title: 'Customize your visualization with SDK components'
 template: 'GuideTemplate'
 description: 'Customize your visualization'
 resources:
@@ -19,11 +19,15 @@ tags:
   - Subscribe visualizations
 ---
 
+<HideWhenEmbedded>
+
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a custom visualization in the New Relic One platform
+This lesson is part of a course that teaches you how to build a custom visualization in the New Relic One platform.
 
 </Callout>
+
+</HideWhenEmbedded>
 
 <Intro>
 
@@ -260,7 +264,7 @@ Add component state to the default visualization template that `nr1` created for
 
 <Step>
 
-Navigate to _alternate-viz/visualizations/radar-or-treemap/index.js_. You'll work in _index.js_ for the rest of this guide.
+Navigate to _alternate-viz/visualizations/radar-or-treemap/index.js_. You'll work in here for the rest of this lesson.
 
 </Step>
 
@@ -424,7 +428,7 @@ const ErrorState = () => (
 );
 ```
 
-`CHART_TYPES` enumerates the two chart types you'll be able to alternate between in your visualization.
+`CHART_TYPES` enumerates the two chart types you'll alternate between in your visualization.
 
 </Step>
 
@@ -1611,7 +1615,7 @@ const ErrorState = () => (
 );
 ```
 
-Now, when you change your selection in the `SegmentedControl`,
+Now, when you change your selection in the `SegmentedControl`, your selection will be set in `state`.
 
 </Step>
 
@@ -2277,3 +2281,13 @@ Congratulations! In this lesson, you learned how to:
 - Customize your visualization using New Relic One SDK components
 - Add a new chart type to your visualization
 - Create a user interaction in your visualization
+
+<HideWhenEmbedded>
+
+<Callout variant="course">
+
+This lesson is part of a course that teaches you how to build a custom visualization in the New Relic One platform. When you're ready, continue on to the next lesson: [_Customize visualizations with configuration_](/build-apps/customize-visualizations-with-configuration).
+
+</Callout>
+
+</HideWhenEmbedded>

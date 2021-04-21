@@ -1,7 +1,7 @@
 ---
 path: '/build-apps/add-visualizations-to-dashboard'
 duration: '10 min'
-title: 'Add custom visualizations to your dashboards'
+title: 'Add your custom visualization to a dashboard'
 template: 'GuideTemplate'
 description: 'Add your custom visualization to a New Relic dashboard'
 resources:
@@ -19,9 +19,21 @@ tags:
   - visualizations
 ---
 
+<HideWhenEmbedded>
+
+<Callout variant="course">
+
+This lesson is part of a course that teaches you how to build a custom visualization in the New Relic One platform.
+
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Customize visualizations with configuration_](/build-apps/customize-visualizations-with-configuration), before starting this one.
+
+</Callout>
+
+</HideWhenEmbedded>
+
 <Intro>
 
-In the previous lesson, you added a configuration option to your visualization that allows you to choose how you want to represent your data. This was different from the previous version of your code because, while you can still choose your chart type, you can now only only do it before you create an instance of your visualization. But what does it mean to create an instance of your  visualization? How do you use a visualization once you've configured it?
+In the previous lesson, you added a configuration option to your visualization that allows you to choose how you want to represent your data. This was different from the previous version of your code because, while you can still choose your chart type, you can now only do it before you create an instance of your visualization. But what does it mean to create an instance of your  visualization? How do you use a visualization once you've configured it?
 
 In this lesson, you'll learn how to create an instance of your visualization and add that instance to dashboard.
 
@@ -34,8 +46,6 @@ If you got lost in the previous steps and would like to see what your files shou
 </Intro>
 
 ## Add your custom visualization to a dashboard
-
-Once you've published your custom visualization to your account, in the following steps you'll configure your visualization and add it to a dashboard. You can add a visualization to a new or existing dashboard within your New Relic account.
 
 <Steps>
 
@@ -52,7 +62,7 @@ nr1 nerdpack:subscribe
 
 To publish a Nerdpack you must be a Full user with the Nerdpacks “modify” privilege (this is granted by default).
 
-Read our [Nerdpacks privileges](https://developer.newrelic.com/build-apps/permission-manage-apps/) documentation to learn more.
+Read our [Nerdpacks privileges](/build-apps/permission-manage-apps/) documentation to learn more.
 
 </Callout>
 
@@ -86,15 +96,15 @@ Select **RadarOrTreemap**:
 
 <Step>
 
-In the previous lesson, you changed your visualization to use the platform configurations panel for selecting a chart type. Use this panel options to configure your chart:
+In the previous lesson, you changed your visualization to use the platform configurations panel for selecting a chart type. Use this panel to configure your chart:
 
-![Configure your visualization](../../images/custom-viz/configure-radar-or-treemap.png)
+![Configure your visualization](../../images/custom-viz/configure-radar-or-treemap-viz.png)
 
 </Step>
 
 <Step>
 
-Click **Add to dashboard** and then select a dashboard from the list of available dashboards, or select **New dashboard**:
+Click **Add to dashboard**. Then, select a dashboard from the list of available dashboards, or select **New dashboard**:
 
 ![Click the add to dashboard button](../../images/custom-viz/add-radar-or-treemap-to-dashboard.png)
 
@@ -111,6 +121,8 @@ Click **Add to dashboard**.
 Go to your dashboard to see your custom visualization:
 
 ![View the dashboard](../../images/custom-viz/view-sweet-new-dashboard.png)
+
+Note that you can create another version of the visualization with the other chart type and add it to the same dashboard. That's why we call these instances of your visualization.
 
 </Step>
 
@@ -142,11 +154,11 @@ Confirm that you want to delete your visualization:
 
 ## Summary
 
-Congratulations on completing this final lesson! Throughout this course, you:
+Now you know how to:
 
-- Created a new custom visualization with the New Relic One SDK
-- Configured your visualization using the SDK and configuration options
-- Added your visualization to a dashboard
+- Create new custom visualizations with the New Relic One SDK
+- Configure your visualizations using the SDK and configuration options
+- Add your visualizations to a dashboards
 
 To learn more about custom visualizations, check out the following resources:
 
@@ -156,3 +168,14 @@ To learn more about custom visualizations, check out the following resources:
 - New Relic One SDK components: <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK Component library</Link>
 
 Or, to learn more about other cool things you can build with the New Relic One SDK, check out our [apps course](/ab-test)!
+
+
+<HideWhenEmbedded>
+
+<Callout variant="course">
+
+This lesson is part of a course that teaches you how to build a custom visualization in the New Relic One platform. Congratulations on making it to the end!
+
+</Callout>
+
+</HideWhenEmbedded>

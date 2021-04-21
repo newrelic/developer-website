@@ -1,7 +1,7 @@
 ---
 path: '/build-apps/customize-visualizations-with-configuration'
 duration: '10 min'
-title: 'Customize visualizations with configuration'
+title: 'Customize your visualization with configuration options'
 template: 'GuideTemplate'
 description: 'Customize your visualization using configuration'
 resources:
@@ -18,6 +18,18 @@ tags:
   - NR One Catalog
   - visualizations
 ---
+
+<HideWhenEmbedded>
+
+<Callout variant="course">
+
+This lesson is part of a course that teaches you how to build a custom visualization in the New Relic One platform.
+
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Custom visualizations and the New Relic One SDK_](/build-apps/custom-visualizations-and-the-new-relic-one-sdk), before starting this one.
+
+</Callout>
+
+</HideWhenEmbedded>
 
 <Intro>
 
@@ -619,7 +631,7 @@ const ErrorState = () => (
 );
 ```
 
-Now that you're using `selectedChart` from the configuration options instead of component `state`, you can select a chart in the web UI and watch the visualization change. Unfortunately, there's a bug. The default chart option is **Radar**, but the initial render shows a Treemap.
+Now that you're using `selectedChart` from the configuration options instead of component `state`, you can select a chart in the configuration panel and watch the visualization change. Unfortunately, there's a bug. The default chart option is **Radar**, but the initial render shows a Treemap.
 
 </Step>
 
@@ -1009,7 +1021,7 @@ const ErrorState = () => (
 
 [Serve your Nerdpack locally](/build-apps/publish-deploy/serve/), and view it in the **Custom Visualizations** app in New Relic. Select a chart type from the dropdown in the configuration sidebar, and see your visualization update to show the matching chart type:
 
-![Final custom visualization outcome from this guide](../../images/custom-viz/custom-chart-type-configuration-prop.png)
+![Configured visualization](../../images/custom-viz/radar-or-treemap-configured.png)
 
 </Step>
 
@@ -1020,3 +1032,13 @@ const ErrorState = () => (
 ## Summary
 
 Congratulations on completing this lesson! You've learned how to customize your visualization using _nr1.json_ configuration.
+
+<HideWhenEmbedded>
+
+<Callout variant="course">
+
+This lesson is part of a course that teaches you how to build a custom visualization in the New Relic One platform. When you're ready, continue on to the next lesson: [_Add custom visualizations to your dashboards_](/build-apps/add-visualizations-to-dashboard).
+
+</Callout>
+
+</HideWhenEmbedded>
