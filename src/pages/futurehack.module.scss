@@ -1,0 +1,213 @@
+.futurehackBanner{
+    display: block;
+    width: 100%;
+  }
+
+.twoColumnAlt {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  grid-gap: 2rem;
+}
+
+.registrationSection {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.img {
+  width: 100%;
+  margin: 0.25rem auto;
+}
+
+.engagementOptions {
+  display: inline-flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding: 0;
+}
+
+.engagementOption {
+  margin: 10px 12px;
+  border: 3px solid #006c75;
+  border-radius: 4px;
+  box-shadow: 0 15px 20px rgba(4, 89, 97, 0.1),
+    0px 6.26664px 8.35552px rgba(4, 89, 97, 0.0718854),
+    0px 3.35045px 4.46726px rgba(4, 89, 97, 0.0596107),
+    0px 1.87823px 2.50431px rgba(4, 89, 97, 0.05),
+    0px 0.997515px 1.33002px rgba(4, 89, 97, 0.0403893),
+    0px 0.415088px 0.553451px rgba(4, 89, 97, 0.0281146);
+  transition: transform 0.095s ease-out;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+.engagementOptionLink {
+  display: inline-flex;
+  align-items: stretch;
+  height: 40px;
+  font-weight: 600;
+}
+
+.engagementOptionLabel {
+  font-size: 20px;
+  display: inline-flex;
+  padding: 6px 14px;
+  align-items: center;
+}
+
+.engagementOptionIconContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 11px 0 24px;
+  background-color: #006c75;
+  border-right: 1px solid #006c75;
+  clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.engagementOptionIcon {
+  .engagementOptionForum & {
+    stroke-width: 2.5px;
+  }
+}
+
+.sponsorLogoContainer {
+  display: block;
+  width: 200px;
+  margin: 10px auto 0;
+  margin-top: 10px;
+}
+
+.agendaDate {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 2.5rem 0 1rem;
+}
+
+.hackTrack{
+    padding: 2rem;
+    box-sizing: border-box;
+    .hackTitle{
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+    .hackPersona{
+        font-size: 1rem;
+    }
+    .hackChallengeHead{
+        font-weight: 600;
+    }
+    .hackChallengeBody{
+        font-size: 1rem;
+    }
+}
+
+// ==============================================================
+// Responsive styles
+// ==============================================================
+@media screen and (max-width: 1200px) {
+  .twoColumnAlt {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .heroLogoContainer {
+    max-width: 300px;
+  }
+
+  .twoColumnAlt {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+  }
+
+  .agendaSession,
+  .agendaTime {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+  }
+
+  .agendaTime {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .agendaTime {
+    display: none;
+  }
+
+  .agendaRow {
+    grid-template-columns: 1fr;
+  }
+
+  .agendaSession {
+    font-size: 16px;
+    display: block;
+  }
+
+  .agendaSession5Col {
+    grid-column: span 1;
+  }
+
+  .agendaSession4Col {
+    grid-column: span 1;
+  }
+
+  .agendaSession3Col {
+    grid-column: span 1;
+  }
+
+  .agendaSession2Col {
+    grid-column: span 1;
+  }
+
+  .agendaSessionSpeaker {
+    display: inline;
+    margin-left: 6px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 13px;
+
+    &:before {
+      content: '(';
+    }
+
+    &:after {
+      content: ')';
+    }
+  }
+
+  .agendaSessionMetaList {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heroLogoContainer {
+    margin: 0;
+    max-width: 220px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .sectionHeading {
+    font-size: 24px;
+  }
+}
