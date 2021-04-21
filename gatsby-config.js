@@ -58,7 +58,7 @@ module.exports = {
                 },
                 filters: {
                   page: {
-                    type: ['!blog', '!forum'],
+                    type: ['docs', 'developer', 'opensource'],
                     document_type: [
                       '!views_page_menu',
                       '!term_page_api_menu',
