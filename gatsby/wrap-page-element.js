@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageContext } from '../src/components/PageContext';
-import { Global, css } from '@emotion/core';
+import { Global, css } from '@emotion/react';
 
 const wrapPageElement = ({ element, props }) => {
   return (

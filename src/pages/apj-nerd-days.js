@@ -1,6 +1,6 @@
 import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import { Button, Icon, NewRelicLogo } from '@newrelic/gatsby-theme-newrelic';

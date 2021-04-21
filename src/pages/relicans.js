@@ -6,7 +6,7 @@ import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import styles from './relicans.module.scss';
 import { teamMembers } from '../data/relicansData';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const RelicansPage = ({ location }) => {
   const teamMemberPanels = teamMembers.map((teamMember, i) => {

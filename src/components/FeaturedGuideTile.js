@@ -1,6 +1,6 @@
 import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Button, Icon, Surface, Link } from '@newrelic/gatsby-theme-newrelic';
 
 const FeaturedGuideTile = ({

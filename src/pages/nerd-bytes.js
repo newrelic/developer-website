@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
