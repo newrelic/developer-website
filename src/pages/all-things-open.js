@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import SEO from '../components/Seo';
+import DevSiteSeo from '../components/DevSiteSeo';
+import PropTypes from 'prop-types';
 import { Button, Video } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
@@ -10,10 +11,10 @@ import gavinjohnson from '../images/all-things-open/gavin-johnson.jpg';
 import michaellang from '../images/all-things-open/michael-lang.jpg';
 import styles from './all-things-open.module.scss';
 
-const allThingsOpenPage = () => {
+const allThingsOpenPage = ({ location }) => {
   return (
     <>
-      <SEO />
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="All Things Open 2020" />
         <PageLayout.Content>
@@ -137,6 +138,10 @@ const allThingsOpenPage = () => {
       </PageLayout>
     </>
   );
+};
+
+allThingsOpenPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 export default allThingsOpenPage;

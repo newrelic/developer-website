@@ -1,3 +1,96 @@
+## [1.42.2](https://github.com/newrelic/developer-website/compare/v1.42.1...v1.42.2) (2021-04-21)
+
+
+### Bug Fixes
+
+* **related-resources:** update swiftype type filter to include sonly results for specific sites ([0a37903](https://github.com/newrelic/developer-website/commit/0a379031fedd07a7cb0c8b747606d34def31a322))
+
+## [1.42.1](https://github.com/newrelic/developer-website/compare/v1.42.0...v1.42.1) (2021-04-16)
+
+
+### Bug Fixes
+
+* Adjust resource URL path ([d8741f7](https://github.com/newrelic/developer-website/commit/d8741f7b57c62599a967448e4263b5f510ff8f40))
+
+# [1.42.0](https://github.com/newrelic/developer-website/compare/v1.41.0...v1.42.0) (2021-04-15)
+
+
+### Features
+
+* Create new Serve you Nerdpack doc ([2a252d4](https://github.com/newrelic/developer-website/commit/2a252d4f643fceae6fa7dc46b9f3ecf1addcce75))
+
+# [1.41.0](https://github.com/newrelic/developer-website/compare/v1.40.2...v1.41.0) (2021-04-13)
+
+
+### Features
+
+* add mechanism to hide content on embedded pages ([dbcedd2](https://github.com/newrelic/developer-website/commit/dbcedd21aa5aaf4c59f5b336af0af4ed0fc2a1ff))
+
+## [1.40.2](https://github.com/newrelic/developer-website/compare/v1.40.1...v1.40.2) (2021-04-12)
+
+
+### Bug Fixes
+
+* Update md links with full relative paths ([dfa83ad](https://github.com/newrelic/developer-website/commit/dfa83ade65dc22ec946584923aa8a80b13cce423))
+
+## [1.40.1](https://github.com/newrelic/developer-website/compare/v1.40.0...v1.40.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* add dashboard nav link ([27a2239](https://github.com/newrelic/developer-website/commit/27a22390bf9e94f59da67883b9e1746927a745e3))
+* fix nav merge conflict ([7116705](https://github.com/newrelic/developer-website/commit/7116705077f22f6164b871317192f42de6d6346d))
+* remove typos ([0d1098a](https://github.com/newrelic/developer-website/commit/0d1098a05a61b6540807e84e4d595827bedee88b))
+* update doc to use markdown instead of html ([2e411df](https://github.com/newrelic/developer-website/commit/2e411dfd39396ccfe7c17dc3d1c379d8b5d9dc8f))
+* update guide based on pr comments ([4a913f1](https://github.com/newrelic/developer-website/commit/4a913f15e858e3cbd83bf1aeb201dbd7f13b22f3))
+
+# [1.40.0](https://github.com/newrelic/developer-website/compare/v1.39.0...v1.40.0) (2021-04-02)
+
+
+### Bug Fixes
+
+* **logo:** remove  rogue semicolons so fill colors render ([8fca904](https://github.com/newrelic/developer-website/commit/8fca9042375123d847220c16431aac27a982090e))
+
+
+### Features
+
+* **logo:** update logo in side nav and footer ([8e6e205](https://github.com/newrelic/developer-website/commit/8e6e205765d9d2a7e6fe7d71a71e620fea309a1c))
+
+# [1.39.0](https://github.com/newrelic/developer-website/compare/v1.38.0...v1.39.0) (2021-03-29)
+
+
+### Features
+
+* **embeds:** create embed pages ([e84f1e8](https://github.com/newrelic/developer-website/commit/e84f1e895a3c1d3240845943ceb54fcc61e7245f))
+
+# [1.38.0](https://github.com/newrelic/developer-website/compare/v1.37.0...v1.38.0) (2021-03-24)
+
+
+### Features
+
+* **CustomViz:** Adds a new guide for custom visualizations and nr1 json configuration ([32d985d](https://github.com/newrelic/developer-website/commit/32d985dc0076ebc7b386d999ec5d61f6bb745278))
+* **CustomViz:** Adds a new guide for custom visualizations and nr1 json configuration ([73e5b26](https://github.com/newrelic/developer-website/commit/73e5b26508e1affa5850a5ec1f2abbd20efec1f4))
+
+# [1.37.0](https://github.com/newrelic/developer-website/compare/v1.36.0...v1.37.0) (2021-03-24)
+
+
+### Bug Fixes
+
+* change function name ([e7b0ba8](https://github.com/newrelic/developer-website/commit/e7b0ba804c01cf63aa0b498dc157e7139d7c17a7))
+* update nerdlog marketo form thank you page ([eea3d99](https://github.com/newrelic/developer-website/commit/eea3d99df31ea53acb0e6c0b59c8f1ce3fcce1b1))
+
+
+### Features
+
+* **page:** creating nerdlog thank you page ([308dcc5](https://github.com/newrelic/developer-website/commit/308dcc56c3b3475757f8888e527d5dcf8b94cca8))
+
+# [1.36.0](https://github.com/newrelic/developer-website/compare/v1.35.7...v1.36.0) (2021-03-24)
+
+
+### Features
+
+* **CustomViz:** Adds a new guide for custom visualizations ([a37de0c](https://github.com/newrelic/developer-website/commit/a37de0c164e2bd46130d1b22dd8909fb24f58038))
+
 ## [1.35.7](https://github.com/newrelic/developer-website/compare/v1.35.6...v1.35.7) (2021-03-15)
 
 

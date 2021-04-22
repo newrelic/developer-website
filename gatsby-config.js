@@ -19,18 +19,11 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
-        gaTrackingId: 'UA-3047412-33',
         layout: {
           contentPadding: '2rem',
           maxWidth: '1700px',
           component: require.resolve('./src/layouts'),
           mobileBreakpoint: '760px',
-        },
-        // workaround until this is no longer needed.
-        // https://github.com/newrelic/gatsby-theme-newrelic/issues/302
-        i18n: {
-          translationsPath: `${__dirname}/src/i18n/translations`,
-          additionalLocales: [],
         },
         prism: {
           languages: ['yaml', 'sass', 'scss', 'java'],
@@ -68,7 +61,7 @@ module.exports = {
                 },
                 filters: {
                   page: {
-                    type: ['!blog', '!forum'],
+                    type: ['docs', 'developer', 'opensource'],
                     document_type: [
                       '!views_page_menu',
                       '!term_page_api_menu',
@@ -103,6 +96,20 @@ module.exports = {
               beacon: 'staging-bam-cell.nr-data.net',
               errorBeacon: 'staging-bam-cell.nr-data.net',
             },
+          },
+        },
+        tessen: {
+          product: 'DEV',
+          subproduct: 'TDEV',
+          segmentWriteKey: 'Ako0hclX8WGHwl9rm4n5uxLtT4wgEtuU',
+          trackPageViews: true,
+          pageView: {
+            name: 'pageView',
+            category: 'DocPageView',
+            getProperties: ({ location, env }) => ({
+              path: location.pathname,
+              env: env === 'production' ? 'prod' : env,
+            }),
           },
         },
       },
@@ -158,6 +165,7 @@ module.exports = {
         release: 'release-2394',
       },
     },
+    'gatsby-plugin-embed-pages',
     'gatsby-plugin-meta-redirect',
     {
       resolve: 'gatsby-plugin-gdpr-tracking',

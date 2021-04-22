@@ -9,6 +9,7 @@ import Tutorial from './Tutorial';
 import TutorialStep from './TutorialStep';
 import TutorialSection from './TutorialSection';
 import Project from './Project';
+import HideWhenEmbedded from './HideWhenEmbedded';
 
 const components = {
   // Remove these when all step/steps components have been updated to the new
@@ -28,6 +29,7 @@ const components = {
     />
   ),
   iframe: Iframe,
+  HideWhenEmbedded,
 };
 
 const MDXContainer = ({ className, children }) => {

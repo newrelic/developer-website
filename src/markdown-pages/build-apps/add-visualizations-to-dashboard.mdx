@@ -1,0 +1,162 @@
+---
+path: '/build-apps/add-visualizations-to-dashboard'
+duration: '10 min'
+title: 'Add custom visualizations to your dashboards'
+template: 'GuideTemplate'
+description: 'Add your custom visualization to a New Relic dashboard'
+resources:
+  - title: Build custom visualizations for dashboards
+    url: '/build-apps/build-visualization'
+  - title: Custom visualizations and the New Relic One SDK
+    url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
+  - title: Customize visualizations with configuration
+    url: '/build-apps/customize-visualizations-with-configuration'
+  - title: Add custom visualizations to your dashboards
+    url: '/build-apps/add-visualizations-to-dashboard'
+  - title: 'Build on New Relic One'
+    url: https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-build-your-own-custom-new-relic-one-application
+  - title: New Relic One VSCode extension
+    url: https://marketplace.visualstudio.com/items?itemName=new-relic.nr1
+  - title: New Relic VSCode extension pack
+    url: https://marketplace.visualstudio.com/items?itemName=new-relic.new-relic-extension-pack
+tags:
+  - nr1 cli
+  - NR One Catalog
+  - visualizations
+---
+
+<Intro>
+
+This lesson builds off of the previous [Customize visualizations with configuration](/build-apps/customize-visualizations-with-configuration) lesson. If you haven't followed that lesson, please start there as this lesson assumes you have the code you built there to get started.
+
+If you don't have a visualization to follow the examples in this gude, a accompanying example visualization is available on [GitHub](https://github.com/newrelic/nru-custom-visualization-course)
+
+Following the previous lesson, you reconfigured your visualization to use the platform configurations panel removing the unneeded `SegmentedControl` component. Now that you can customize your visualization using nr1.json configuration, in the following steps, you will configure and add your custom visualization to a New Relic dashboard.
+
+</Intro>
+
+## Before you begin
+
+To get started, follow the [Customize visualizations with configuration](/build-apps/customize-visualizations-with-configuration) lesson. Then, [publish and subscribe to your Nerdpack](/build-apps/publish-deploy).
+
+<Callout variant="tip"  title="Note">
+
+To publish a Nerdpack you must be a Full user and granted the Nerdpacks “modify” privilege (which is granted by default).
+
+Read our documentation to learn more about [Nerdpacks privileges](https://developer.newrelic.com/build-apps/permission-manage-apps/).
+
+</Callout>
+
+## Add your custom visualization to a dashboard
+
+Once you've published your custom visualization to your account, in the following steps you'll configure your visualization and add it to a dashboard. You can add a visualization to a new or existing dashboard within your New Relic account.
+
+<Steps>
+
+  <Step>
+
+  To find the **My Awesome Visualization** that you have deployed, you need to look for your visualization in the app catalog. From the [New Relic One homepage](https://one.newrelic.com), select the **Apps** button in the top right navigation bar:
+
+  <img
+    src="../../images/build-an-app/click-app-button.png"
+    alt="Click the apps button in New Relic One"
+  />
+
+</Step>
+
+<Step>
+
+  Once on the **Apps** page, click the **Custom Visualizations** launcher:
+
+  <img
+    src="../../images/build-an-app/click-viz-launcher.png"
+    alt="Select the custom visualization launcher"
+  /><br />
+
+
+  <Callout variant="tip"  title="Note">
+
+  If you don't see the **Custom Visualizations** tile, use the search to locate it.
+
+  </Callout>
+
+  </Step>
+
+  <Step>
+
+  In **Custom Visualizations**, you will see all of the visualization that have been deployed to your account and any visualizations you are serving locally.
+
+  Select the **My Awesome Visualization** to add to a dashboard and then enable it:
+
+  <img
+    src="../../images/build-an-app/select-viz.png"
+    alt="Select your desired visualization"
+  />
+
+  </Step>
+
+  <Step>
+
+  In the previous lesson, you reconfigured your visualization to use the platform configurations panel. Use the configuration options to select your desired chart, select your account, insert a NRQL query, and any other configurations you desire.
+
+  As you make your selections, the visualization will update with your changes:
+
+  <img
+    src="../../images/build-an-app/configure-viz.png"
+    alt="Configure your visualization"
+  />
+
+  </Step>
+
+  <Step>
+
+  Click **Add to dashboard** and then select a dashboard from the list of available dashboards, or select **New dashboard**:
+
+  <img
+    src="../../images/build-an-app/click-add-to-dashboard.png"
+    alt="Click the add to dashboard button"
+  /><br />
+
+  If you decide to create a new dashboard, select the account where you want to run the dashboard, and give the dashboard a name:
+
+  <img
+    src="../../images/build-an-app/select-dashboard.png"
+    alt="Select the dashboard"
+  />
+
+  </Step>
+
+  <Step>
+
+  Click **Add to dashboard**, then click the link to your dashboard to see the custom visualization:
+
+  <img
+    src="../../images/build-an-app/review-dashboard.png"
+    alt="Final custom visualization outcome from this guide"
+  />
+
+  </Step>
+
+</Steps>
+
+## Manage your dashboard visualizations
+**Deleting:** To remove a visualization from a dashboard, click the ellipses button in the right-hand corner of the visualization and click delete.
+
+<img
+    src="../../images/build-an-app/delete-viz.png"
+    alt="Delete your custom visualization"
+/><br />
+
+**Editing:** If your visualization needs some tweaking, delete the visualization, then follow the steps above to re-add the visualization, making any updates in Custom Visualizations.
+
+## Summary
+
+Congratulations on completing this final lesson and adding your custom visualization to a New Relic dashboard. In the previous lessons, you've used the tools in the New Relic SDK to create a new custom visualization, configured the visualization using the SDK and using the platform configuration panel.
+
+## Additional resources
+
+- New Relic Quick Tips video: [Dashboards and Custom Visualizations](https://www.youtube.com/watch?v=_F61mxtKfGA) (6 minutes)
+- New Relic NerdBytes video: [Configuring custom visualizations for dashboards](https://www.youtube.com/watch?v=sFpG_iG7Xa8) (7 minutes)
+- New Relic Nerdlog live stream: [Custom Data Visualizations on New Relic](https://www.youtube.com/watch?v=HuR0EdHGz24) (30 minutes)
+- New Relic One SDK components: <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK Component library</Link>
+
