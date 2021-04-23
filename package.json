@@ -1,7 +1,7 @@
 {
   "name": "developer-website",
   "private": true,
-  "version": "1.42.2",
+  "version": "1.42.3",
   "dependencies": {
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",

@@ -1,3 +1,10 @@
+## [1.42.3](https://github.com/newrelic/developer-website/compare/v1.42.2...v1.42.3) (2021-04-23)
+
+
+### Bug Fixes
+
+* correct spelling of FutureStack ([9b8cea6](https://github.com/newrelic/developer-website/commit/9b8cea6ee26ebce44089eb5835a406f9ff700040))
+
 ## [1.42.2](https://github.com/newrelic/developer-website/compare/v1.42.1...v1.42.2) (2021-04-21)
 
 
