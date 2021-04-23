@@ -1,9 +1,6 @@
 const quote = (str) => `"${str}"`;
 
 module.exports = {
-  flags: {
-    LAZY_IMAGES: true,
-  },
   siteMetadata: {
     title: 'New Relic Developers',
     titleTemplate: '%s | New Relic Developers',
