@@ -58,7 +58,8 @@ const FutureHackPage = ({ location }) => {
                 Level Up.
               </strong>
               <br /> After you've registered for FutureStack, make sure to had
-              FutureHack to your<br /> conference schedule and{' '}
+              FutureHack to your
+              <br /> conference schedule and{' '}
               <a href="/">fill out the team submission form.</a>
             </SectionDescription>
             <CtaItem to="https://web.cvent.com/event/ac440313-3922-45f5-b5b9-0812f29f4a51/summary?RefId=WEBL31&rt=DKI6UYQP806AeXIj4Q4uxw">
