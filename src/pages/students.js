@@ -7,13 +7,12 @@ import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import studentsHeader from '../images/students/students-banner.png';
-import uptimeEverythingHeader from '../images/developer-champion/uptime-everything-header-image.jpg';
 import styles from './students.module.scss';
 
 const StudentsPage = ({ location }) => {
   return (
     <>
-      {/* <DevSiteSeo location={location} /> */}
+      <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="New Relic Student Edition" />
         <PageLayout.Content>
