@@ -44,12 +44,22 @@ const FutureHackPage = ({ location }) => {
           </section>
 
           <Section>
-            <SectionHeading>Register for FutureHack 2021</SectionHeading>
+            <SectionHeading>Register for FutureStack: Level Up</SectionHeading>
             <SectionDescription>
-              FutureHack welcomes all competitors across varying technical skill
-              sets to participate in varying tracks. Whether you're a student,
-              <br /> new hacker, seasoned vet, or builder of dashboards, we hope
-              you join us at FutureHack.
+              Jump into our 24-hour virtual FutureHack to compete with fellow
+              developers, engineers, practitioners, and students to create
+              <br /> your most kick-ass project. It's your opportunity to shine,
+              with Relics and sponsor engineers
+              <br /> there to help you through Slack and Zoom rooms.
+            </SectionDescription>
+            <SectionDescription>
+              <strong>
+                To participate in FutureHack, you must register for FutureStack:
+                Level Up.
+              </strong>
+              <br /> After you've registered for FutureStack, make sure to had
+              FutureHack to your<br /> conference schedule and{' '}
+              <a href="/">fill out the team submission form.</a>
             </SectionDescription>
             <CtaItem to="https://web.cvent.com/event/ac440313-3922-45f5-b5b9-0812f29f4a51/summary?RefId=WEBL31&rt=DKI6UYQP806AeXIj4Q4uxw">
               Register for FutureHack
