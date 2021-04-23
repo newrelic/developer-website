@@ -1,17 +1,9 @@
 import React from 'react';
-import { BASE_URL } from './src/constants';
 
-export const onPreRenderHTML = (
-  {
-    getHeadComponents,
-    replaceHeadComponents,
-    getPostBodyComponents,
-    replacePostBodyComponents,
-  },
-  pluginOptions
-) => {
-  const { release } = pluginOptions;
-
+export const onPreRenderHTML = ({
+  getHeadComponents,
+  replaceHeadComponents,
+}) => {
   replaceHeadComponents([
     ...getHeadComponents(),
     <script
@@ -30,16 +22,6 @@ export const onPreRenderHTML = (
       key="d3"
       crossOrigin="anonymous"
       src="https://nr1.nr-assets.net/lib/d3/3.5.17/d3.js"
-    />,
-  ]);
-
-  replacePostBodyComponents([
-    ...getPostBodyComponents(),
-    <script
-      key="nr1-sdk"
-      defer
-      crossOrigin="anonymous"
-      src={`${BASE_URL}-${release}.js`}
     />,
   ]);
 };
