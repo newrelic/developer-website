@@ -56,7 +56,7 @@ const IndexPage = ({ data, pageContext, location }) => {
     <PageContext.Provider value={pageContext}>
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Futurestack: Master Observability" />
+        <PageLayout.Header title="FutureStack: Master Observability" />
 
         <PageLayout.Content>
           <section>
