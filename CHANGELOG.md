@@ -1,3 +1,10 @@
+# [1.43.0](https://github.com/newrelic/developer-website/compare/v1.42.3...v1.43.0) (2021-04-26)
+
+
+### Features
+
+* Language/image edits to custom viz course ([6900a7a](https://github.com/newrelic/developer-website/commit/6900a7a033d2da6089deda9e590cc5cd1c87ab7c))
+
 ## [1.42.3](https://github.com/newrelic/developer-website/compare/v1.42.2...v1.42.3) (2021-04-23)
 
 
