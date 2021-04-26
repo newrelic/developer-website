@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import cx from 'classnames';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
@@ -9,6 +9,8 @@ import ReferenceExample from './ReferenceExample';
 import * as styles from './PropList.module.scss';
 import { Callout } from '@newrelic/gatsby-theme-newrelic';
 import { graphql } from 'gatsby';
+import { SdkContext } from './SdkContext';
+import Spinner from './Spinner';
 
 const PropTypeInfo = ({ type }) => {
   switch (type.raw) {
@@ -109,6 +111,8 @@ PropTypeInfo.propTypes = {
 };
 
 const PropList = ({ className, propTypes }) => {
+  const { loaded: sdkLoaded, error: sdkError } = useContext(SdkContext);
+
   if (propTypes.length === 0) {
     return <p>There are no props for this component.</p>;
   }
@@ -219,13 +223,16 @@ const PropList = ({ className, propTypes }) => {
                 <div className={styles.section}>
                   <PropTypeInfo type={type} />
                 </div>
-                {examples.map((example, idx) => (
-                  <ReferenceExample
-                    key={idx}
-                    className={styles.section}
-                    example={example}
-                  />
-                ))}
+                {sdkLoaded &&
+                  examples.map((example, idx) => (
+                    <ReferenceExample
+                      key={idx}
+                      className={styles.section}
+                      example={example}
+                    />
+                  ))}
+                {!sdkLoaded && !sdkError && <Spinner />}
+                {sdkError && <div>There was a problem loading the example</div>}
               </div>
             </div>
           );
