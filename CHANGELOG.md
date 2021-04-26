@@ -1,3 +1,15 @@
+# [1.44.0](https://github.com/newrelic/developer-website/compare/v1.43.0...v1.44.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* Fix an incorrect resource link. Use absolute URLs instead of relative. ([e0808f1](https://github.com/newrelic/developer-website/commit/e0808f1ac75a70e135e59b98d8c342efd9f956c8))
+
+
+### Features
+
+* Upgrade to Gatsby v3 ([6e7c2a4](https://github.com/newrelic/developer-website/commit/6e7c2a4542e80dc44da7223f0beee54d0c7dee50))
+
 # [1.43.0](https://github.com/newrelic/developer-website/compare/v1.42.3...v1.43.0) (2021-04-26)
 
 
