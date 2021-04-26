@@ -1,3 +1,10 @@
+## [1.44.2](https://github.com/newrelic/developer-website/compare/v1.44.1...v1.44.2) (2021-04-26)
+
+
+### Bug Fixes
+
+* referrer field not being sent on sign up ([968abe9](https://github.com/newrelic/developer-website/commit/968abe90ebe86fb7ed4bfc73503681d655cc0c18))
+
 ## [1.44.1](https://github.com/newrelic/developer-website/compare/v1.44.0...v1.44.1) (2021-04-26)
 
 
