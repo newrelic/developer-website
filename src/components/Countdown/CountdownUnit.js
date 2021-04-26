@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './CountdownContainer.module.scss';
+import * as styles from './CountdownContainer.module.scss';
 import PropTypes from 'prop-types';
 
 const CountdownUnit = ({ value, label }) => {

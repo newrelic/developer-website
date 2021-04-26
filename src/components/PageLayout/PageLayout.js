@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Header from './Header';
 import MarkdownContent from './MarkdownContent';
 import Context from './Context';

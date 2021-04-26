@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import Markdown from '../components/Markdown';

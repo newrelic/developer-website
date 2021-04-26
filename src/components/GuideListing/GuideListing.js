@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Description from './Description';
 import List from './List';
 import PropTypes from 'prop-types';

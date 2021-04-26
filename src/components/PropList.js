@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import cx from 'classnames';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import CodeDef from './CodeDef';
 import FunctionDefinition from './FunctionDefinition';
 import Markdown from './Markdown';
 import ReferenceExample from './ReferenceExample';
-import styles from './PropList.module.scss';
+import * as styles from './PropList.module.scss';
 import { Callout } from '@newrelic/gatsby-theme-newrelic';
 import { graphql } from 'gatsby';
 

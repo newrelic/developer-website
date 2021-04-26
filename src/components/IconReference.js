@@ -1,6 +1,6 @@
 import React from 'react';
 import useClipboard from '../hooks/useClipboard';
-import styles from './IconReference.module.scss';
+import * as styles from './IconReference.module.scss';
 import PropTypes from 'prop-types';
 
 const IconReference = ({ type }) => {

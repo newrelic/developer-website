@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import FeatherIcon from './FeatherIcon';
-import styles from './SearchInput.module.scss';
+import * as styles from './SearchInput.module.scss';
 
 const SearchInput = ({ className, onClear, value, ...props }) => {
   const handleClick = (e) => {
