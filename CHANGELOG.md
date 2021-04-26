@@ -1,3 +1,10 @@
+## [1.44.1](https://github.com/newrelic/developer-website/compare/v1.44.0...v1.44.1) (2021-04-26)
+
+
+### Bug Fixes
+
+* Corrupted screenshots caused all images to not load ([c20d613](https://github.com/newrelic/developer-website/commit/c20d613899977198f2e9cff87b329e7a4fe6cb25))
+
 # [1.44.0](https://github.com/newrelic/developer-website/compare/v1.43.0...v1.44.0) (2021-04-26)
 
 
