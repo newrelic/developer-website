@@ -1,3 +1,10 @@
+## [1.44.3](https://github.com/newrelic/developer-website/compare/v1.44.2...v1.44.3) (2021-04-26)
+
+
+### Bug Fixes
+
+* Add gatsby's react to the window instead of importing from nr-assets ([253e7a7](https://github.com/newrelic/developer-website/commit/253e7a73c43e61abc0f5ba63435b654614ff80da))
+
 ## [1.44.2](https://github.com/newrelic/developer-website/compare/v1.44.1...v1.44.2) (2021-04-26)
 
 
