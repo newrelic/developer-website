@@ -6,7 +6,7 @@ import PageLayout from '../components/PageLayout';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
-import styles from './OverviewTemplate.module.scss';
+import * as styles from './OverviewTemplate.module.scss';
 
 import DevSiteSeo from '../components/DevSiteSeo';
 

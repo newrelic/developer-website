@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
-import styles from './CodeHighlight.module.scss';
+import * as styles from './CodeHighlight.module.scss';
 import { partition, range } from '../utils/array';
 
 const CodeHighlight = ({

@@ -8,7 +8,7 @@ import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import devReliquary from '../images/builders/relicans.png';
 import onlineTeach from '../images/builders/remote-unsplash.jpg';
-import styles from './builders.module.scss';
+import * as styles from './builders.module.scss';
 
 const DeveloperChampionPage = ({ location }) => {
   return (

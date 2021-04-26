@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Countdown from './Countdown';
 import PropTypes from 'prop-types';
-import styles from './CountdownContainer.module.scss';
+import * as styles from './CountdownContainer.module.scss';
 
 const getRemainingTime = (targetDate) => {
   const countDownDate = new Date(targetDate).getTime();

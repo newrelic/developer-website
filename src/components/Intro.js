@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import SideBySide from './SideBySide';
 import PropTypes from 'prop-types';
 

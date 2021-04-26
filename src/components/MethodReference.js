@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import ReferenceExample from './ReferenceExample';
 import FunctionDefinition from './FunctionDefinition';
 import Markdown from './Markdown';
