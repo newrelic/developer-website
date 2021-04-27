@@ -3,7 +3,6 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Surface, Button, Link } from '@newrelic/gatsby-theme-newrelic';
-import { css } from '@emotion/core';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
