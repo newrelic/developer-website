@@ -19,7 +19,7 @@ const DeveloperChampionPage = ({ location }) => {
         <PageLayout.Content>
           <section className={cx(styles.section, styles.twoColumn)}>
             <div>
-              <p>
+              <p className="intro-text">
                 {' '}
                 Our goal with the New Relic Community, also known as{' '}
                 <a href="https://www.therelicans.com/">The Relicans</a>, is to
