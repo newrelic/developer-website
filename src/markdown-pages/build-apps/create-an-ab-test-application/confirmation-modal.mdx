@@ -7,7 +7,7 @@ description: 'Present an end test confirmation modal'
 
 <HideWhenEmbedded>
 
-<Callout variant="tip" title="Course">
+<Callout variant="course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
@@ -142,7 +142,7 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 <Step>
 
-Serve your application locally:
+[Serve your application locally](/build-apps/publish-deploy/serve):
 
 ```sh
 nr1 nerdpack:serve
@@ -152,7 +152,7 @@ nr1 nerdpack:serve
 
 <Step>
 
-[View your application](https://one.newrelic.com?nerdpacks=local):
+Go to [https://one.newrelic.com?nerdpacks=local](https://one.newrelic.com?nerdpacks=local), and view your application under **Apps > Your apps**:
 
 ![Second version of your end test section](../../../images/ab-test/end-test-section-v2.png)
 
@@ -696,7 +696,9 @@ export default class EndTestSection extends React.Component {
 
 Here, you've supplied `showModal()` as the callback for the `Button` component's `onClick` event.
 
-[View your application](https://one.newrelic.com?nerdpacks=local) where the modal is hidden by default. Click **End test** to see the modal.
+Go back to [https://one.newrelic.com?nerdpacks=local](https://one.newrelic.com?nerdpacks=local), and view your changes.
+
+The modal is hidden by default. Click **End test** to see the modal.
 
 </Step>
 
@@ -807,7 +809,9 @@ export default class EndTestSection extends React.Component {
 }
 ```
 
-[View your application](https://one.newrelic.com?nerdpacks=local) and click **End test**. The modal opens and displays your confirmation message. Close the modal by clicking **X** at the top right, either of its buttons, or even in the dark space to its left.
+Go back to [https://one.newrelic.com?nerdpacks=local](https://one.newrelic.com?nerdpacks=local), and view your changes.
+
+Click **End test**. The modal opens and displays your confirmation message. Close the modal by clicking **X** at the top right, either of its buttons, or even in the dark space to its left.
 
 Notice that the modal says you chose "Version A", even if you choose "Version B". This is because "Version A" is hardcoded in the `Modal` text. Next, you'll make that dynamic.
 
@@ -1037,7 +1041,9 @@ export default class EndTestSection extends React.Component {
 }
 ```
 
-[View your application](https://one.newrelic.com?nerdpacks=local) and select "Version B" from the menu. Click **End test** to see "Version B" in the confirmation modal:
+Go back to [https://one.newrelic.com?nerdpacks=local](https://one.newrelic.com?nerdpacks=local), and view your changes.
+
+Select "Version B" from the menu. Click **End test** to see "Version B" in the confirmation modal:
 
 ![The modal shows your selected version](../../../images/ab-test/selected-version-in-modal.png)
 
@@ -1051,7 +1057,7 @@ Congratulations! You've done a lot of work and it shows in the usefulness of you
 
 <HideWhenEmbedded>
 
-<Callout variant="tip" title="Course">
+<Callout variant="course">
 
 This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Add NrqlQuery components to your nerdlet_](/build-apps/ab-test/nrql).
 

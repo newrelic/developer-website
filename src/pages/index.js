@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
 
 import DevSiteSeo from '../components/DevSiteSeo';
@@ -13,7 +13,7 @@ import FeatherIcon from '../components/FeatherIcon';
 import FeaturedGuideTile from '../components/FeaturedGuideTile';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
-import styles from './index.module.scss';
+import * as styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import fsBanner from '../images/futurestack-registration.png';
@@ -56,7 +56,7 @@ const IndexPage = ({ data, pageContext, location }) => {
     <PageContext.Provider value={pageContext}>
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Futurestack: Master Observability" />
+        <PageLayout.Header title="FutureStack: Master Observability" />
 
         <PageLayout.Content>
           <section>
@@ -208,11 +208,7 @@ const IndexPage = ({ data, pageContext, location }) => {
                 Learn more about developer champions
               </Button>
             </div>
-            <img
-              className={styles.img}
-              src={devChampionBadge}
-              alt="developer champion badge"
-            />
+            <img src={devChampionBadge} alt="developer champion badge" />
           </section>
 
           <section
@@ -231,14 +227,10 @@ const IndexPage = ({ data, pageContext, location }) => {
               </p>
               <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
                 Listen
-                <FeatherIcon className={styles.Icon} name="link" />
+                <FeatherIcon name="link" />
               </Button>
             </div>
-            <img
-              className={styles.img}
-              src={podcastBadge}
-              alt="podcast badge"
-            />
+            <img src={podcastBadge} alt="podcast badge" />
           </section>
         </PageLayout.Content>
       </PageLayout>

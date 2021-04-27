@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Callouts.module.scss';
+import * as styles from './Callouts.module.scss';
 
 const Caution = ({ title, children }) => {
   return (

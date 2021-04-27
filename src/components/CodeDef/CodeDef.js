@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Block from './Block';
 import Bracket from './Bracket';
 import Comment from './Comment';

@@ -1,6 +1,6 @@
 import React, { cloneElement, Children, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Heading from './Heading';
 import Session from './Session';
 import Time from './Time';

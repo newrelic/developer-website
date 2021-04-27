@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import Markdown from '../components/Markdown';
@@ -10,6 +10,8 @@ import MethodReference from '../components/MethodReference';
 import TypeDefReference from '../components/TypeDefReference';
 import ConstantReference from '../components/ConstantReference';
 import DevSiteSeo from '../components/DevSiteSeo';
+import { SdkContext } from '../components/SdkContext';
+import Spinner from '../components/Spinner';
 
 import { Section, SectionTitle } from './referenceTemplateStyles';
 
@@ -25,6 +27,7 @@ const ApiReferenceTemplate = ({ data, location }) => {
       constants,
     },
   } = data;
+  const { loaded: sdkLoaded, error: sdkError } = useContext(SdkContext);
 
   return (
     <>
@@ -47,13 +50,16 @@ const ApiReferenceTemplate = ({ data, location }) => {
             <Section>
               <div>
                 <SectionTitle>Examples</SectionTitle>
-                {examples.map((example, i) => (
-                  <ReferenceExample
-                    key={i}
-                    useToastManager={name === 'Toast'}
-                    example={example}
-                  />
-                ))}
+                {sdkLoaded &&
+                  examples.map((example, i) => (
+                    <ReferenceExample
+                      key={i}
+                      useToastManager={name === 'Toast'}
+                      example={example}
+                    />
+                  ))}
+                {!sdkLoaded && !sdkError && <Spinner />}
+                {sdkError && <div>There was a problem loading the example</div>}
               </div>
             </Section>
           )}

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
+import FeatherIcon from '../components/FeatherIcon';
 import MarketoForm from '../components/MarketoForm';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Link } from 'gatsby';
-import FeatherIcon from '../components/FeatherIcon';
-import styles from './nerdlog.module.scss';
+import * as styles from './nerdlog.module.scss';
 import { teamMembers } from '../data/nerdlogData';
 import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
 import styled from '@emotion/styled';
@@ -62,11 +62,7 @@ const NerdlogPage = ({ location }) => {
               are building the future of New Relic
             </SectionDescription>
             <div
-              className={cx(
-                styles.section,
-                styles.twoColumnAlt,
-                styles.registrationSection
-              )}
+              className={cx(styles.twoColumnAlt, styles.registrationSection)}
             >
               <div>
                 <h2>What is the Nerdlog?</h2>
@@ -141,13 +137,13 @@ const NerdlogPage = ({ location }) => {
               </div>
             </div>
           </Section>
-          <Section className={cx(styles.speakersSection)}>
+          <Section>
             <SectionHeading>
               Hosted by{' '}
               <a href="https://twitter.com/ServerlessMom">@SeverlessMom</a> and{' '}
               <a href="https://twitter.com/TheRelicans">The Relicans</a>
             </SectionHeading>
-            <section className={cx(styles.section, styles.meetTheTeam)}>
+            <section className={cx(styles.meetTheTeam)}>
               {teamMemberPanels}
             </section>
           </Section>
