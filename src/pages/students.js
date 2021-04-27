@@ -2,7 +2,8 @@ import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Surface, Button, Link } from '@newrelic/gatsby-theme-newrelic';
+import { css } from '@emotion/core';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
@@ -50,6 +51,84 @@ const StudentsPage = ({ location }) => {
               src={studentsHeader}
               alt="student edition header"
             />
+          </section>
+          <section className={cx(styles.section, styles.stepsSection)}>
+            <h2>Access the New Relic Student Edition</h2>
+            <div className={styles.stepsListing}>
+              <div className={styles.signupSteps}>
+                <Surface
+                  base={Surface.BASE.SECONDARY}
+                  className={styles.signupStep}
+                >
+                  <div className={styles.stepNumber}>1</div>
+                  <h3 className={styles.stepHeader}>
+                    Signup for{' '}
+                    <em>
+                      <strong>FREE</strong>
+                    </em>{' '}
+                    Account
+                  </h3>
+                  <p className={styles.stepDetail}>
+                    To access the Student Edition you will need a New Relic
+                    free-tier account. After you will need to verify your
+                    student status.
+                  </p>
+
+                  <Button
+                    to="/"
+                    as={Link}
+                    variant={Button.VARIANT.PRIMARY}
+                    className={styles.stepButton}
+                  >
+                    Signup for a free account
+                  </Button>
+                </Surface>
+                <Surface
+                  base={Surface.BASE.SECONDARY}
+                  className={styles.signupStep}
+                >
+                  <div className={styles.stepNumber}>2</div>
+                  <h3 className={styles.stepHeader}>
+                    Verify Your Student Status
+                  </h3>
+                  <p className={styles.stepDetail}>
+                    The Student Edition is offered through the Github Student
+                    Pack. If you don't have access to GitHub Students, and
+                    verify your account.
+                  </p>
+
+                  <Button
+                    to="/"
+                    as={Link}
+                    variant={Button.VARIANT.SECONDARY}
+                    className={styles.stepButton}
+                  >
+                    Github Student Pack
+                  </Button>
+                </Surface>
+                <Surface
+                  base={Surface.BASE.SECONDARY}
+                  className={styles.signupStep}
+                >
+                  <div className={styles.stepNumber}>3</div>
+                  <h3 className={styles.stepHeader}>Enjoy Using New Relic</h3>
+                  <p className={styles.stepDetail}>
+                    After your status is verified. Your Student Edition account
+                    will be created giving you 3 full users and 500GB of data
+                    ingest.
+                  </p>
+
+                  <Button
+                    to="/"
+                    as={Link}
+                    variant={Button.VARIANT.SECONDARY}
+                    className={styles.stepButton}
+                  >
+                    Access New Relic ONe
+                  </Button>
+                </Surface>
+              </div>
+            </div>
           </section>
           <section className={styles.offerSection}>
             <h2>What does the Student Edition offer?</h2>
