@@ -19,14 +19,14 @@ const DeveloperChampionPage = ({ location }) => {
         <PageLayout.Content>
           <section className={cx(styles.section, styles.twoColumn)}>
             <div>
-              <p>
+              <p className="intro-text">
                 New Relic Champions are the voice of the developer community. As
                 experts and innovators, they are given the resources to not only
                 share the newest product innovations and updates but also to
                 provide feedback of the community back to New Relic product and
                 engineering teams.
               </p>
-              <p>
+              <p className="intro-text">
                 Champions solve big problems using New Relic as their toolkit
                 and are recognized as experts and leaders in the New Relic
                 technical community.{' '}
