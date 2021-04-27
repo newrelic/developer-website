@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import { Button, Icon } from '@newrelic/gatsby-theme-newrelic';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
-import styles from './futurehack.module.scss';
+import * as styles from './futurehack.module.scss';
 import nerdlogBanner from '../images/futurehack/futurehack-banner.png';
 import styled from '@emotion/styled';
 import Agenda from '../components/Agenda';
