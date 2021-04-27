@@ -21,7 +21,7 @@ const RelicansPage = ({ location }) => {
     });
 
     return (
-      <div className={styles.point} key={i}>
+      <div className={cx(styles.point, styles.relicansProfileTile)} key={i}>
         <img
           alt={teamMember.name}
           src={teamMember.avatar}
@@ -58,19 +58,19 @@ const RelicansPage = ({ location }) => {
                 margin-bottom: 1rem;
               `}
             >
-              <p>
+              <p className="intro-text">
                 We love software, and more than that we love the people who make
                 it. Our entire platform is designed to make their lives easier.
                 We’re here to help you write better software and we’re very
                 proud to announce that we’re launching a developer relations
                 team to do just that.
               </p>
-              <p>
+              <p className="intro-text">
                 You're going to be hearing a lot from us in the coming months as
                 we join you out there on the internet, here's a quick preview of
                 what we'll be up to:
               </p>
-              <p>
+              <p className="intro-text">
                 <ul>
                   <li>
                     Producing educational and inspirational content for anyone
@@ -88,7 +88,7 @@ const RelicansPage = ({ location }) => {
                   </li>
                 </ul>
               </p>
-              <p>
+              <p className="intro-text">
                 You can find news of our efforts here on this page or on our
                 Twitter account:{' '}
                 <a href="https://twitter.com/therelicans">@therelicans</a>.
