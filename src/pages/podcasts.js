@@ -30,17 +30,17 @@ const PodcastsPage = ({ location }) => {
         <PageLayout.Content>
           <section className={cx(styles.section, styles.twoColumn)}>
             <div className={styles.bodyText}>
-              <p>
+              <p className="intro-text">
                 Sometimes we talk on the internet about some things. You
                 probably listen to some things on the internet sometimes. We're
                 perfect for each other.
               </p>
-              <p>
+              <p className="intro-text">
                 We've spun up a few podcasts to bring you all the news, code,
                 and pontification that's fit for publication, and rather a lot
                 that isn't as well.
               </p>
-              <p>
+              <p className="intro-text">
                 We hope you enjoy them! If you don't, please feel free to{' '}
                 <a href="mailto:devrel@newrelic.com">send us mean emails.</a>{' '}
                 It's internet tradition.
