@@ -61,14 +61,10 @@
           url: '/build-apps/publish-deploy/publish'
         - title: Subscribe to your app or visualization
           url: '/build-apps/publish-deploy/subscribe'
-        - title: Unsubscribe from your app or visualization
-          url: '/build-apps/publish-deploy/unsubscribe'
         - title: Update your Nerdpack's catalog information
           url: '/build-apps/publish-deploy/catalog'
         - title: Tag your Nerdpack's release version
           url: '/build-apps/publish-deploy/tag'
-        - title: Untag your Nerdpack's release version
-          url: '/build-apps/publish-deploy/untag'
     - title: Permissions for managing apps
       url: '/build-apps/permission-manage-apps'
     - title: Map pageviews by region
