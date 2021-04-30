@@ -78,6 +78,13 @@
   }
   
   .meetTheRelicansHeading {
-    text-align: center;
+    text-align: left;
     margin-bottom: 30px;
+  }
+
+  .relicansProfileTile {
+    background-color: var(--primary-background-color);
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    padding: 1.25rem;
   }

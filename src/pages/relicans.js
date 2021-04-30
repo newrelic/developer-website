@@ -21,7 +21,7 @@ const RelicansPage = ({ location }) => {
     });
 
     return (
-      <div className={styles.point} key={i}>
+      <div className={cx(styles.point, styles.relicansProfileTile)} key={i}>
         <img
           alt={teamMember.name}
           src={teamMember.avatar}
