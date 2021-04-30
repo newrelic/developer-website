@@ -19,7 +19,7 @@ Publish your Nerdpack, whether it's still in development, ready for testing, or 
 
 ## Check your permissions
 
-When you publish your Nerdpack, it's registered with the New Relic One catalog. From there, some users can subscribe to your app or visualization. Subscribing users need to have:
+When you publish your Nerdpack, it's registered with the New Relic One catalog. From there, some users can subscribe to your Nerdpack. Subscribing users need to have:
 
 - Access to the account that published the Nerdpack
 - The [necessary permissions for managing Nerdpacks](/build-apps/permission-manage-apps)
@@ -159,15 +159,15 @@ Whether you published a New Relic One application or a custom visualization, you
 
 <Step>
 
-Find your published app or visualization under **New Relic One catalog**:
+Find your published Nerdpack under **New Relic One catalog**:
 
-![Published app or visualization](../../../images/serve-publish-subscribe/published-app.png)
+![Published Nerdpack](../../../images/serve-publish-subscribe/published-app.png)
 
 Notice the `Custom` indicator on its UI tile. Use this to distinguish between published Nerdpacks and locally-served Nerdpacks.
 
 <Callout variant="tip">
 
-Only apps and visualizations with tagged versions are shown under **New Relic One catalog**. So, if you published without a tag or removed a tag from your published app or visualization, you won't see it in the catalog.
+Only Nerdpacks with tagged versions are shown under **New Relic One catalog**. So, if you published without a tag or removed a tag from your published Nerdpack, you won't see it in the catalog.
 
 </Callout>
 
@@ -204,7 +204,7 @@ nr1 nerdpack:publish --verbose
 
 ## Reveal your published Nerdpack information
 
-If you don't find your app or visualization in New Relic, it may not be tagged. Remember, at least one version of your published Nerdpack must have a tag for it to show on the **Apps** page. See more information about your published Nerdpack with `nr1 nerdpack:info`:
+If you don't find your Nerdpack in New Relic, it may not be tagged. Remember, at least one version of your published Nerdpack must have a tag for it to show on the **Apps** page. See more information about your published Nerdpack with `nr1 nerdpack:info`:
 
 ```sh
 nr1 nerdpack:info
@@ -226,7 +226,7 @@ In this example, there is one published version, but it isn't tagged. You can ta
 nr1 nerdpack:tag --from-version=1.0.0 --tag=DEV
 ```
 
-Now, if you refresh your browser page, you should see your app or visualization on **Apps**.
+Now, if you refresh your browser page, you should see your Nerdpack on **Apps**.
 
 <Callout variant="tip">
 
@@ -238,4 +238,4 @@ Read our [`nr1 nerdpack:tag`](/explore-docs/nr1-nerdpack#nr1-nerdpacktag) docume
 
 With `nr1`, you can [set a default New Relic profile](/explore-docs/nr1-common#nr1-profiles). This profile is used for all commands unless otherwise specified with the command's `--profile` option. When you publish your Nerdpack, only users who can access your account can see your published Nerdpack.
 
-So, if you don't find your app or visualization in New Relic but you know it's published, compare your local profile with the profile you're using in the browser to make sure they're the same.
+So, if you don't find your Nerdpack in New Relic but you know it's published, compare your local profile with the profile you're using in the browser to make sure they're the same.

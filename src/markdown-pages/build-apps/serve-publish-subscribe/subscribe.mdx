@@ -1,11 +1,11 @@
 ---
 path: '/build-apps/publish-deploy/subscribe'
-title: 'Subscribe to an app or visualization'
+title: 'Subscribe to a Nerdpack'
 template: 'GuideTemplate'
-description: 'Learn to subscribe to an app or visualization'
+description: 'Learn to subscribe to a Nerdpack'
 tileShorthand:
-  title: 'Subscribe to an app or visualization'
-  description: 'Subscribe to an app or visualization'
+  title: 'Subscribe to a Nerdpack'
+  description: 'Subscribe to a Nerdpack'
 tags:
   - nerdpack
   - subscribe
@@ -13,13 +13,13 @@ tags:
 
 <Intro>
 
-Subscribe to an app or visualization to use it in the New Relic platform. Unsubscribe from apps and visualizations you no longer use.
+Subscribe to a Nerdpack to use it in the New Relic platform. Unsubscribe from Nerdpacks you no longer use.
 
 </Intro>
 
 ## Check your permissions
 
-To subscribe to an app or visualization, you need:
+To subscribe to a Nerdpack, you need:
 
 - Access to the account that published it
 - The [necessary permissions for managing Nerdpacks](/build-apps/permission-manage-apps)
@@ -31,13 +31,13 @@ You need to publish Nerdpacks that you create before you can subscribe to them:
 1. [Publish your Nerdpack](/build-apps/publish-deploy/publish)
 2. [Tag your Nerdpack](/build-apps/publish-deploy/tag) if it's published and doesn't yet have a tag
 
-## Subscribe to an app or visualization
+## Subscribe to a Nerdpack
 
-Subscribe to a published app or visualization, with either the web UI or the `nr1` CLI, to use it in your account. Subscribing allows you to select the tagged version you want to use as well as the account you want to subscribe with. This lets you control what apps and visualizations you use in your account.
+Subscribe to a published Nerdpack, with either the web UI or the `nr1` CLI, to use it in your account. Subscribing allows you to select the tagged version you want to use as well as the account you want to subscribe with. This lets you control what Nerdpacks you use in your account.
 
 <Callout variant="tip">
 
-When the tag you've subscribed to gets an update, New Relic updates your app or visualization automatically.
+When the tag you've subscribed to gets an update, New Relic updates your Nerdpack automatically.
 
 </Callout>
 
@@ -61,11 +61,11 @@ Navigate to **Apps**:
 
 <Step>
 
-Find your published app or visualization under **New Relic One catalog**:
+Find your published Nerdpack under **New Relic One catalog**:
 
-![Published app or visualization](../../../images/serve-publish-subscribe/published-app.png)
+![Published Nerdpack](../../../images/serve-publish-subscribe/published-app.png)
 
-All published apps and visualizations are shown in the New Relic One catalog. However, the one you're looking for maybe filtered out. Adjust the filter to find the app or visualization you're looking for:
+All published Nerdpacks are shown in the New Relic One catalog. However, the one you're looking for maybe filtered out. Adjust the filter to find the Nerdpack you're looking for:
 
 ![Filter the catalog](../../../images/build-an-app/catalog-filter.png)
 
@@ -73,9 +73,9 @@ All published apps and visualizations are shown in the New Relic One catalog. Ho
 
 <Step>
 
-Select the app or visualization you want to add to your New Relic account:
+Select the Nerdpack you want to add to your New Relic account:
 
-![Select an app or visualization](../../../images/serve-publish-subscribe/select-account-maturity-app.png)
+![Select a Nerdpack](../../../images/serve-publish-subscribe/select-account-maturity-app.png)
 
 </Step>
 
@@ -85,7 +85,7 @@ Click **Add this app**:
 
 ![Select Add this app](../../../images/serve-publish-subscribe/add-this-account-maturity-app.png)
 
-This button says **Manage access** if you're already subscribed to the app or visualization.
+This button says **Manage access** if you're already subscribed to the Nerdpack.
 
 </Step>
 
@@ -93,7 +93,7 @@ This button says **Manage access** if you're already subscribed to the app or vi
 
 Select the account to subscribe with and the tagged version to subscribe to. Then, update your account(s):
 
-![Subscribe to the app or visualization](../../../images/serve-publish-subscribe/subscribe-to-account-maturity-app.png)
+![Subscribe to the Nerdpack](../../../images/serve-publish-subscribe/subscribe-to-account-maturity-app.png)
 
 <Callout variant="tip">
 
@@ -101,7 +101,7 @@ In the web UI, and some places in the CLI, we refer to **tags** as **channels**.
 
 </Callout>
 
-Now you, and members of the accounts you've subscribed with, can launch the app or visualization from New Relic.
+Now you, and members of the accounts you've subscribed with, can launch the Nerdpack from New Relic.
 
 </Step>
 
@@ -121,7 +121,7 @@ If you subscribed to a visualization, find it under **Custom visualizations**:
 
 ## Subscribe from the command line
 
-If you've published your own Nerdpack, it may be quicker to subscribe to your app or visualization with the `nr1` CLI.
+If you've published your own Nerdpack, it may be quicker to subscribe to your Nerdpack with the `nr1` CLI.
 
 <Steps>
 
@@ -188,9 +188,9 @@ nr1 subscription:set --help
 
 </Steps>
 
-## Unsubscribe from an app or visualization
+## Unsubscribe from a Nerdpack
 
-Unsubscribe from an app or visualization to remove it from your account.
+Unsubscribe from a Nerdpack to remove it from your account.
 
 <Steps>
 
@@ -212,7 +212,7 @@ Navigate to **Apps**:
 
 <Step>
 
-Click the "i" icon next to the app or visualization you're subscribed to:
+Click the "i" icon next to the Nerdpack you're subscribed to:
 
 ![Navigate to the Apps page](../../../images/build-an-app/click-info-icon.png)
 
@@ -240,7 +240,7 @@ Deselect the accounts you want to unsubscribe with. Then, update those accounts:
 
 ## Unsubscribe using the command line
 
-Quickly unsubscribe your CLI profile from apps or visualizations.
+Quickly unsubscribe your CLI profile from Nerdpacks.
 
 <Steps>
 
@@ -270,7 +270,7 @@ nr1 subscription:list
 
 <Step>
 
-Unsubscribe from the app or visualization with the UUID:
+Unsubscribe from the Nerdpack with the UUID:
 
 ```sh
 nr1 nerdpack:unsubscribe --nerdpack-id=384de6e5-8e57-4d56-9d13-299ee7ae8641
@@ -295,11 +295,11 @@ nr1 subscription:unset --help
 
 ## Resolve issues with accessing your published Nerdpack
 
-Sometimes, when you subscribe to an app or visualization, you may come across issues. Whether you can't subscribe or see duplicate subscriptions in your account, consider some common solutions for resolving these issues.
+Sometimes, when you subscribe to a Nerdpack, you may run into issues. Whether you can't subscribe or see duplicate subscriptions in your account, consider some common solutions for resolving these issues.
 
-### Tag your app or visualization
+### Tag your Nerdpack version
 
-When you subscribe to an app or visualization, you choose a specific tag. So, if the app or visualization you're trying to subscribe to isn't tagged, or doesn't have the tag you're targeting, [tag](/build-apps/publish-deploy/tag) your release version:
+When you subscribe to an Nerdpack, you choose a specific tag. So, if the Nerdpack you're trying to subscribe to isn't tagged, or doesn't have the tag you're targeting, [tag](/build-apps/publish-deploy/tag) your release version:
 
 ```sh
 nr1 nerdpack:subscribe --channel=DEV

@@ -59,7 +59,7 @@
           url: '/build-apps/publish-deploy/serve'
         - title: Publish your Nerdpack
           url: '/build-apps/publish-deploy/publish'
-        - title: Subscribe to your app or visualization
+        - title: Subscribe to your Nerdpack
           url: '/build-apps/publish-deploy/subscribe'
         - title: Update your Nerdpack's catalog information
           url: '/build-apps/publish-deploy/catalog'

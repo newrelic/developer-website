@@ -13,7 +13,7 @@ tags:
 
 <Intro>
 
-Tag your Nerdpack versions to track and subscribe to them. Untag versions to prevent subscriptions or hide apps and visualizations from the catalog.
+Tag your Nerdpack versions to track and subscribe to them. Untag versions to prevent subscriptions or hide Nerdpacks from the catalog.
 
 </Intro>
 
@@ -47,12 +47,12 @@ Here, you tagged version `1.0.0` as `DEV`.
 
 Now, you, and other users on your account, can use this tag:
 
-- You see the tag as an option to subscribe to when you add the app or visualization to your account
+- You see the tag as an option to subscribe to when you add the Nerdpack to your account
 - If you subscribe to the `DEV` tag and it gets updated later—say, `DEV` is applied to version `1.0.1`—you automatically get upgraded to the new version without having to subscribe again.
 
 <Callout variant="important">
 
-One of the features of tagging release versions is that users who are subscribed to a tag automatically get updates when that tag is used for another version. This means that if a user is testing one version, say `1.0.0`, and you apply that same tag to  another version, say `1.0.1`, that user will see version `1.0.1` in their account, and they can no longer access the app or visualization they were testing before. Often times, this is the expected behavior, but make sure you consider this side effect when you use tags.
+One of the features of tagging release versions is that users who are subscribed to a tag automatically get updates when that tag is used for another version. This means that if a user is testing one version, say `1.0.0`, and you apply that same tag to  another version, say `1.0.1`, that user will see version `1.0.1` in their account, and they can no longer access the Nerdpack they were testing before. Often times, this is the expected behavior, but make sure you consider this side effect when you use tags.
 
 </Callout>
 
@@ -211,7 +211,7 @@ nr1 nerdpack:publish --tag=DEV
 
 </Callout>
 
-### Unsubscribe from the app or visualization
+### Unsubscribe from the Nerdpack
 
 You can only remove tags that have no subscribers. If you try to remove a tag that users are subscribed to, you'll get an error:
 
@@ -234,7 +234,7 @@ nr1 nerdpack:untag -t DEV
 [output] {error}›{normal}   Error: A downstream error occurred.
 ```
 
-In this case, check to see if you're subscribed to the app or visualization:
+In this case, check to see if you're subscribed to the Nerdpack:
 
 ```sh
 nr1 subscription:list
