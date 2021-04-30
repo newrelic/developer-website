@@ -396,6 +396,8 @@
   icon: nr-event
   url: '/developer-events'
   pages:
+    - title: FutureHack 2021
+      url: '/futurehack-2021'
     - title: Past events
       pages:
         - title: Kubecon & CloudNativeCon
