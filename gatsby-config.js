@@ -27,7 +27,12 @@ module.exports = {
         },
         splitio: {
           core: {
-            authorizationKey: process.env.SPLITIO_AUTH_KEY,
+            authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
+          },
+          features: {
+            free_account_button_color: {
+              treatment: 'off',
+            },
           },
           env: {
             development: {
