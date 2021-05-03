@@ -219,35 +219,29 @@ nr1 update
 
 <Step>
 
-Create a Nerdpack:
+Create a visualization, called `my-awesome-visualization`, in a Nerdpack, called `my-awesome-nerdpack`:
 
-```bash
-nr1 create --type nerdpack --name my-awesome-nerdpack
+```bash animate
+nr1 create --type visualization --name my-awesome-visualization
+[output] {success}✔  {plain}You are attempting to create a nerdlet outside of a nerdpack. We will create a nerdpack for you. What would you like to name it? ... my-awesome-nerdpack
+[output]
+[output] {success}✔  {plain}Component created successfully!
+[output]    {purple}nerdpack {blue}my-awesome-nerdpack {plain}is available at {green}"./my-awesome-nerdpack"
+[output]
+[output] {success}✔  {plain}Component created successfully!
+[output]    {purple}visualization {blue}my-awesome-visualization {plain}is available at {green}"./my-awesome-nerdpack/visualizations/my-awesome-visualization"
 ```
 
 <Callout variant="tip">
 
-If you only want to build a visualization in your Nerdpack, you can remove the Nerdpack's _nerdlets_ and _launchers_ directories.
+If you receive a `RequestError` for a self-signed certificate when you run `nr1 create`, you may need to add a certificate to Node's certificate chain. Read more about this and other advanced configurations in [Enable advanced configurations for your Nerdpack](/build-apps/advanced-config).
 
 </Callout>
 
-If you receive a `RequestError` for a self-signed certificate when you run `nr1 create`, you may need to add a certificate to Node's certificate chain. Read more about this and other advanced configurations in [Enable advanced configurations for your Nerdpack](/build-apps/advanced-config).
+As a result, you have a new `visualizations/my-awesome-visualization` directory in `my-awesome-nerdpack`:
 
-</Step>
-
-<Step>
-
-From the root of your Nerdpack, create a visualization:
-
-```bash
-cd my-awesome-nerdpack
-nr1 create --type visualization --name my-awesome-visualization
-```
-
-As a result, you have a new `visualizations/my-awesome-visualization` directory:
-
-```bash
-ls visualizations/my-awesome-visualization
+```bash animate
+ls my-awesome-nerdpack/visualizations/my-awesome-visualization
 [output] index.js    nr1.json    styles.scss
 ```
 
@@ -268,11 +262,13 @@ The top-level `visualizations` directory holds all of your Nerdpack's visualizat
 [Serve your visualization locally](), and view it in **Apps > Custom Visualizations**. There, you can quickly test changes to your code.
 
 <Steps>
+
 <Step>
 
 From the root directory of your Nerdpack, start a local Node server:
 
 ```bash
+cd my-awesome-nerdpack
 nr1 nerdpack:serve
 ```
 
@@ -282,56 +278,24 @@ While it's running, your local server recognizes changes to certain files, such 
 
 <Step>
 
-In a browser, open [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local). This url is also shown in the terminal when the Node server starts:
+Open the link to your visualization that's shown in the terminal when the Node server starts:
 
 ```sh
-[output] {success}✔{normal}  Server ready! Test it at: https://one.newrelic.com/?nerdpacks=local
-[output] {blue}↩{normal}  Server will reload automatically if you modify any file!
+[output] {purple}Visualizations:
+[output] ⁎  {green}my-awesome-visualization {blue}https://one.nr/012ab3cd4Ef
 ```
 
-The `nerdpacks=local` query string directs the UI to load your visualization from the local server.
-
 </Step>
 
 <Step>
 
-Open the **Apps** page:
-
-![Apps navigation is located in the New Relic One top navigation](../../images/build-an-app/nav-to-apps.png)
-
-</Step>
-
-<Step>
-
-Go to **Custom Visualizations**, which is favorited by default:
-
-![Navigate to Custom Visualizations](../../images/build-an-app/nav-to-custom-viz.png)
-
-</Step>
-
-<Step>
-
-In **Custom Visualizations**, find and click the tile for your visualization:
-
-![Navigate to your visualization](../../images/custom-viz/nav-to-your-viz.png)
-
-Notice the **</\> Local** label on the tile. This identifies the visualization as locally served and not one that is published to the New Relic One catalog. If you don't see this label or the tile isn't there at all, you may need to restart your server and refresh your browser.
-
-When you select your local visualization, it's rendered with a list of configuration options established in _nr1.json_:
-
-![Default visualization](../../images/custom-viz/default-viz.png)
-
-</Step>
-
-<Step>
-
-Update the **Configuration visualization properties**, and watch your visualization update automatically:
+Update the fields under **Configure visualization properties**, and watch your visualization update automatically:
 
 ![Generated visualization rendered in the Visualization Builder](../../images/custom-viz/visualization-builder-props.png)
 
 To add more of these properties, update the `configuration` field in _nr1.json_, and restart your local server.
 
-Configuring these properties is one way to update your visualization at runtime. Changing your React code is another.
+Configuring these properties is one way to update your visualization. Changing your React code is another.
 
 </Step>
 
