@@ -1,3 +1,36 @@
+## [1.44.3](https://github.com/newrelic/developer-website/compare/v1.44.2...v1.44.3) (2021-04-26)
+
+
+### Bug Fixes
+
+* Add gatsby's react to the window instead of importing from nr-assets ([253e7a7](https://github.com/newrelic/developer-website/commit/253e7a73c43e61abc0f5ba63435b654614ff80da))
+
+## [1.44.2](https://github.com/newrelic/developer-website/compare/v1.44.1...v1.44.2) (2021-04-26)
+
+
+### Bug Fixes
+
+* referrer field not being sent on sign up ([968abe9](https://github.com/newrelic/developer-website/commit/968abe90ebe86fb7ed4bfc73503681d655cc0c18))
+
+## [1.44.1](https://github.com/newrelic/developer-website/compare/v1.44.0...v1.44.1) (2021-04-26)
+
+
+### Bug Fixes
+
+* Corrupted screenshots caused all images to not load ([c20d613](https://github.com/newrelic/developer-website/commit/c20d613899977198f2e9cff87b329e7a4fe6cb25))
+
+# [1.44.0](https://github.com/newrelic/developer-website/compare/v1.43.0...v1.44.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* Fix an incorrect resource link. Use absolute URLs instead of relative. ([e0808f1](https://github.com/newrelic/developer-website/commit/e0808f1ac75a70e135e59b98d8c342efd9f956c8))
+
+
+### Features
+
+* Upgrade to Gatsby v3 ([6e7c2a4](https://github.com/newrelic/developer-website/commit/6e7c2a4542e80dc44da7223f0beee54d0c7dee50))
+
 # [1.43.0](https://github.com/newrelic/developer-website/compare/v1.42.3...v1.43.0) (2021-04-26)
 
 

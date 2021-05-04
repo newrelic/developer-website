@@ -15,6 +15,8 @@ import { Link } from 'gatsby';
 import '../components/styles.scss';
 import { useLocation } from '@reach/router';
 import pages from '../data/nav.yml';
+import useSDK from '../hooks/useSDK';
+import { SdkContext } from '../components/SdkContext';
 
 const MainLayout = ({ children, pageContext }) => {
   const location = useLocation();
@@ -25,6 +27,8 @@ const MainLayout = ({ children, pageContext }) => {
   useEffect(() => {
     setIsMobileNavOpen(false);
   }, [location.pathname]);
+
+  const sdkStatus = useSDK();
 
   return (
     <>
@@ -74,7 +78,9 @@ const MainLayout = ({ children, pageContext }) => {
             ))}
           </Navigation>
         </Layout.Sidebar>
-        <Layout.Main>{children}</Layout.Main>
+        <SdkContext.Provider value={sdkStatus}>
+          <Layout.Main>{children}</Layout.Main>
+        </SdkContext.Provider>
         <Layout.Footer fileRelativePath={fileRelativePath} />
       </Layout>
       <CookieConsentDialog />

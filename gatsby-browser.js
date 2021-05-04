@@ -27,7 +27,7 @@ const onInitialClientRender = () => {
       styleSheets.forEach(function (ss) {
         if (
           // eslint-disable-next-line no-undef
-          [mktoForms2BaseStyle, mktoForms2ThemeStyle].indexOf(ss.ownerNode) !=
+          [mktoForms2BaseStyle, mktoForms2ThemeStyle].indexOf(ss.ownerNode) !==
             -1 ||
           formEl.contains(ss.ownerNode)
         ) {
@@ -49,4 +49,10 @@ const onInitialClientRender = () => {
   }
 };
 
-export { wrapPageElement, onInitialClientRender };
+const onClientEntry = () => {
+  // Expose both globals so that the NR1 docs can read it.
+  window.React = require('react');
+  window.ReactDOM = require('react-dom');
+};
+
+export { wrapPageElement, onInitialClientRender, onClientEntry };

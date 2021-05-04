@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
+import Intro from '../components/Intro';
 import * as styles from './relicans.module.scss';
 import { teamMembers } from '../data/relicansData';
 import { css } from '@emotion/react';
@@ -21,7 +22,7 @@ const RelicansPage = ({ location }) => {
     });
 
     return (
-      <div className={styles.point} key={i}>
+      <div className={cx(styles.point, styles.relicansProfileTile)} key={i}>
         <img
           alt={teamMember.name}
           src={teamMember.avatar}
@@ -58,41 +59,43 @@ const RelicansPage = ({ location }) => {
                 margin-bottom: 1rem;
               `}
             >
-              <p>
-                We love software, and more than that we love the people who make
-                it. Our entire platform is designed to make their lives easier.
-                We’re here to help you write better software and we’re very
-                proud to announce that we’re launching a developer relations
-                team to do just that.
-              </p>
-              <p>
-                You're going to be hearing a lot from us in the coming months as
-                we join you out there on the internet, here's a quick preview of
-                what we'll be up to:
-              </p>
-              <p>
-                <ul>
-                  <li>
-                    Producing educational and inspirational content for anyone
-                    who writes code, whether in development, site reliability
-                    engineering, or IT operations.
-                  </li>
-                  <li>
-                    Partnering with you as you explore the world of software,
-                    not just on our platform but with all of the languages,
-                    frameworks, and tools you love.
-                  </li>
-                  <li>
-                    Inviting you to hang out with us for gaming, writing code,
-                    playing music, and just having fun.
-                  </li>
-                </ul>
-              </p>
-              <p>
-                You can find news of our efforts here on this page or on our
-                Twitter account:{' '}
-                <a href="https://twitter.com/therelicans">@therelicans</a>.
-              </p>
+              <Intro>
+                <p>
+                  We love software, and more than that we love the people who
+                  make it. Our entire platform is designed to make their lives
+                  easier. We’re here to help you write better software and we’re
+                  very proud to announce that we’re launching a developer
+                  relations team to do just that.
+                </p>
+                <p>
+                  You're going to be hearing a lot from us in the coming months
+                  as we join you out there on the internet, here's a quick
+                  preview of what we'll be up to:
+                </p>
+                <p>
+                  <ul>
+                    <li>
+                      Producing educational and inspirational content for anyone
+                      who writes code, whether in development, site reliability
+                      engineering, or IT operations.
+                    </li>
+                    <li>
+                      Partnering with you as you explore the world of software,
+                      not just on our platform but with all of the languages,
+                      frameworks, and tools you love.
+                    </li>
+                    <li>
+                      Inviting you to hang out with us for gaming, writing code,
+                      playing music, and just having fun.
+                    </li>
+                  </ul>
+                </p>
+                <p>
+                  You can find news of our efforts here on this page or on our
+                  Twitter account:{' '}
+                  <a href="https://twitter.com/therelicans">@therelicans</a>.
+                </p>
+              </Intro>
             </div>
             <iframe
               css={css`
