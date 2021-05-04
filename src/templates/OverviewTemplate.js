@@ -60,8 +60,8 @@ OverviewTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!, $guidesFilter: String!) {
-    mdx(frontmatter: { path: { eq: $path } }) {
+  query($slug: String!, $guidesFilter: String!) {
+    mdx(fields: { slug: { eq: $slug } }) {
       body
       frontmatter {
         path
