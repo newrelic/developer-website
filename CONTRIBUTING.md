@@ -11,6 +11,7 @@
     - [Submitting a PR from a forked repo](#submitting-a-pr-from-a-forked-repo)
     - [Submitting a PR from a cloned repo](#submitting-a-pr-from-a-cloned-repo)
     - [Using the `develop` branch](#using-the-develop-branch)
+    - [Branch Protection](#branch-protection)
     - [Using Conventional Commits](#using-conventional-commits)
       - [Use `chore`](#use-chore)
       - [Use `fix`](#use-fix)
@@ -115,6 +116,14 @@ Use the `develop` branch when creating your working branch locally. `develop` wi
 current source code. The `develop` branch will be merged into the `main` branch by the maintainers when a new release is ready to ship.
 
 All pull requests should be made against the `develop` branch.
+
+### Branch Protection
+
+The `develop` and `main` branches have "Branch Protection" enabled in Github. In order to merge a pull request into `develop`, you must have (at least) one approval. Additionally a few of the "PR Checks" are required and must pass before the pull request can be merged in. 
+
+You can review full Branch Protection details [here](https://docs.google.com/document/d/1O1SGS0i3OmPfvPhylpFe1CTMkE20889iAOF_cMFJ344/edit#heading=h.cy3jfpnyvv5z), and check out a visual representation of the workflow below:
+
+![](src/images/Dev_site_branch_protection_workflow_(develop_main).png)
 
 ### Using Conventional Commits
 
