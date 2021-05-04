@@ -82,7 +82,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
 
     createPage({
-      path: frontmatter.path || slug,
+      path: frontmatter.path
+        ? path.join(frontmatter.path, '/')
+        : path.join(slug, '/'),
       component: path.resolve(`src/templates/${frontmatter.template}.js`),
       context: {
         slug,
@@ -101,7 +103,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     } = node;
 
     createPage({
-      path: slug,
+      path: path.join(slug, '/'),
       component: path.resolve('./src/templates/ComponentReferenceTemplate.js'),
       context: {
         slug,
@@ -115,7 +117,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     } = node;
 
     createPage({
-      path: slug,
+      path: path.join(slug, '/'),
       component: path.resolve('./src/templates/ApiReferenceTemplate.js'),
       context: {
         slug,
