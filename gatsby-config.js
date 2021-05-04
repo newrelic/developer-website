@@ -16,6 +16,7 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
+        forceTrailingSlashes: true,
         layout: {
           contentPadding: '2rem',
           maxWidth: '1700px',
