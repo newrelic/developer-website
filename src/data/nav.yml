@@ -190,6 +190,8 @@
           url: '/explore-docs/custom-viz/configuration-options'
         - title: Your first custom visualization
           url: '/explore-docs/custom-viz/build-visualization'
+        - title: Add your visualization to a dashboard with NerdGraph
+          url: '/explore-docs/custom-viz/add-to-dashboard-nerdgraph'
     - title: New Relic One SDK Component library
       url: '/explore-docs/intro-to-sdk'
       pages:
