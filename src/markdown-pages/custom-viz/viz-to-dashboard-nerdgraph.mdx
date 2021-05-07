@@ -25,7 +25,7 @@ Create a Nerdpack with a visualization. You'll add this visualization to a dashb
 
 <Callout variant="tip" title="Further reading">
 
-Because this guide about using visualizations, not creating and publishing them, it breezes over these topics. If you're unfamiliar with visualizations or would like a thorough explanation of dealing with visualization Nerdpacks, check out the following resources:
+Because this guide is about using visualizations, not creating and publishing them, it breezes over these topics. If you're unfamiliar with visualizations or would like a thorough explanation of dealing with visualization Nerdpacks, check out the following resources:
 
 - [Introduction to custom visualizations](/explore-docs/custom-viz)
 - [Build your first custom visualization](/explore-docs/custom-viz/build-visualization)
@@ -96,7 +96,7 @@ Now, that your account is subscribed to your visualization, you can describe you
 
 ## Describe your visualization options with JSON
 
-Whether you're adding your visualization to a new dashboard or an existing one, you need to send your configuration to NerdGraph as JSON.
+Whether you're adding your visualization to a new dashboard or an existing one, you need to send your configuration to NerdGraph.
 
 Your custom visualization JSON object represents a dashboard widget and consists of the following fields:
 
@@ -135,7 +135,7 @@ Start with a JSON template based on the fields you need to describe your custom 
 
 <Step>
 
-Give your visualization widget a name:
+Give your visualization widget a title:
 
 ```json lineHighlight=2
 {
@@ -272,7 +272,7 @@ The `name` fields in `configuration` are important for describing your visualiza
 
 <Step>
 
-Using the `name` field for every configuration object in your visualization's _nr1.json_, build a `rawConfiguration` object for your widget:
+Using the `name` field for every configuration object in your visualization's _nr1.json_ file, build a `rawConfiguration` for your widget:
 
 ```json lineHighlight=6-15
 {
@@ -293,7 +293,7 @@ Using the `name` field for every configuration object in your visualization's _n
 }
 ```
 
-Here, you've created a `rawConfiguration` object by supplying values for each configuration option in _nr1.json_. Note that `nrqlQueries` is an array because its type is `collection`. The other values are strings. Learn more about these configuration options in [Configure your custom visualization](/explore-docs/custom-viz/configuration-options/).
+Here, you've created a `rawConfiguration` by supplying values for each configuration option in _nr1.json_. Note that `nrqlQueries` is an array because its type is `collection`. The other values are strings. Learn more about these configuration options in [Configure your custom visualization](/explore-docs/custom-viz/configuration-options/).
 
 Now that you've described your visualization widget in JSON, you can add your configured visualization to a dashboard. In the next section, you'll learn how to create a new dashboard with your visualization. If you already have one ready, skip ahead to [add your visualization to your existing dashboard](#add-your-visualization-to-an-existing-dashboard).
 
@@ -312,7 +312,7 @@ The NerdGraph `dashboardCreate()` mutation takes the following fields:
 | `accountId` | Integer | The ID for the account for which you want to create your dashboard |
 | `dashboard` | JSON | The details of the dashboard you're creating |
 | `dashboard.name` | String | The name of your dashboard |
-| `dashboard.permissions` | Enum: PRIVATE, PUBLIC_READ_ONLY, PUBLIC_READ_WRITE | The access control of your dashboard |
+| `dashboard.permissions` | Enum: `PRIVATE`, `PUBLIC_READ_ONLY`, `PUBLIC_READ_WRITE` | The access control of your dashboard |
 | `dashboard.pages` | Array: JSON | The details of your dashboard's pages |
 | `dashboard.pages[].name` | String | The name of the dashboard page |
 | `dashboard.pages[].widgets` | Array: JSON | The widgets to add to the dashboard page |
@@ -323,7 +323,7 @@ You can also pass more fields to `dashboardCreate()` to add details, widgets, an
 
 </Callout>
 
-For the purposes of this guide, you'll create a dashboard with a single page that contains a single widget—the visualization widget you created in the [last section](#describe-your-visualization-options-with-json).
+In this guide, you create a dashboard with a single page that contains a single widget—the visualization widget you described in the [last section](#describe-your-visualization-options-with-json).
 
 <Steps>
 
@@ -355,7 +355,7 @@ Here, you've defined the template for a private dashboard. Now, it's time to fil
 
 <Step>
 
-Look up your account ID and enter it for your `accountId`:
+[Look up your account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id/) and enter it for your `accountId`:
 
 ```json lineHighlight=3
 mutation {
@@ -485,6 +485,12 @@ mutation {
 }
 ```
 
+<Callout variant="important">
+
+Make sure you replace the IDs in your mutation query with ones that match your account, Nerdpack, and visualization.
+
+</Callout>
+
 Now, you have a mutation ready to send to NerdGraph to create single-page dashboard with a widget for your custom visualization. As a result, you'll see the new dashboard's entity GUID.
 
 In the next section, you'll learn how to add your visualization to an existing dashboard. If that's not relevant to your goals, skip ahead to [send your request to NerdGraph](#send-your-request-to-nerdgraph).
@@ -495,7 +501,7 @@ In the next section, you'll learn how to add your visualization to an existing d
 
 ## Add your visualization to an existing dashboard
 
-If you want to add your visualization widget to an existing dashboard, use NerdGraph's `dashboardAddWidgetsToPage()` mutation.
+To add your visualization widget to an existing dashboard, use NerdGraph's `dashboardAddWidgetsToPage()` mutation.
 
 The NerdGraph `dashboardAddWidgetsToPage()` mutation takes the following fields:
 
@@ -533,7 +539,7 @@ mutation {
 
 <Step>
 
-Look up your dashboard's GUID and enter it for `guid`:
+[Look up your dashboard's GUID](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/core-concepts/what-entity-new-relic/#find) and enter it for `guid`:
 
 ```txt lineHighlight=3
 mutation {
@@ -552,7 +558,7 @@ mutation {
 
 <Step>
 
-In widgets, place the widget object you created in [a previous section](#describe-your-visualization-options-with-json):
+In widgets, place the widget object you created in [Describe your visualization options with JSON](#describe-your-visualization-options-with-json):
 
 ```txt
 mutation {
@@ -624,7 +630,7 @@ The last thing you need to do is actually send your request to NerdGraph.
 
 ## Send your request to NerdGraph
 
-Send an HTTP request to NerdGraph with the payload you built in previous sections for the mutation that best suits your needs. There are many tools you can use to send an HTTP request, but in this guide, you'll learn how to communicate with NerdGraph using three specific tools:
+Send an HTTP request to NerdGraph with the payload you built in previous sections for the mutation that best suits your needs. There are many tools you can use to send an HTTP request, but in this guide, you learn how to communicate with NerdGraph using three specific tools:
 
 - [NerdGraph API explorer](https://api.newrelic.com/graphiql)
 - [cURL](https://curl.se/)
@@ -654,13 +660,13 @@ Select or create a new API key:
 
 <Step>
 
-In the center console, paste your mutation:
+In the center console, paste your mutation query:
 
 ![Paste your mutation](../../images/custom-viz/nerdgraph-create-dashboard-with-viz.png)
 
 <Callout variant="important">
 
-Make sure you replace the IDs in your mutation with ones that match your account, Nerdpack, and visualization.
+Make sure you replace the IDs in your mutation query with ones that match your account, Nerdpack, and visualization.
 
 </Callout>
 
@@ -672,9 +678,9 @@ Press **Execute Query** and see the results in the right pane:
 
 ![Execute your query](../../images/custom-viz/nerdgraph-successful-dashboard-creation.png)
 
-If you created a new dashboard, your response has an entity GUID. This means you've successfully created your dashboard! If you don't have an entity GUID, the response contains error messages to help you debug your query.
+If you successfully created a new dashboard, your response has an entity GUID. If you don't have an entity GUID, the response contains error messages to help you debug your query.
 
-If you added your visualization to an existing dashboard, you should see no errors in the response. If you do see error messages, use them to debug your query.
+If you added your visualization to an existing dashboard, you won't see errors in the response. If you do see error messages, use them to debug your query.
 
 <Callout variant="tip" title="Explore">
 
@@ -711,7 +717,7 @@ curl https://api.newrelic.com/graphql \
 
 <Callout variant="important">
 
-Make sure you replace `<YOUR-USER-KEY>` with the user key you copied in the last step and `<YOUR-ACCOUNT-ID>` with your actual account ID.
+Make sure you replace the IDs in your mutation query with ones that match your account, Nerdpack, and visualization.
 
 </Callout>
 
@@ -782,7 +788,7 @@ newrelic nerdgraph query 'mutation {
 
 <Callout variant="important">
 
-Make sure you replace `<YOUR-ACCOUNT-ID>` with your actual account ID.
+Make sure you replace the IDs in your mutation query with ones that match your account, Nerdpack, and visualization.
 
 </Callout>
 
@@ -824,7 +830,7 @@ View your dashboard:
 
 ![My Awesome Dashboard](../../images/custom-viz/my-awesome-dashboard.png)
 
-The dashboard you created has the `name` you passed in your mutation, "My Awesome Dashboard". It also has the configuration you sent in `rawConfiguration` from the NRQL data query to the fill and stroke colors.
+The dashboard you created has the `name` you passed in your mutation, "My Awesome Dashboard". It also has the configuration you sent in `rawConfiguration`, from the NRQL data query to the fill and stroke colors.
 
 </Step>
 
