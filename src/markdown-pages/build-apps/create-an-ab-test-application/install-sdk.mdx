@@ -25,37 +25,35 @@ One of the primary elements of the New Relic One SDK is the command line interfa
 
 <Step>
 
-**Select or create a User key.**
-
-From the top navigation, go to **API keys**:
-
-![API keys](../../../images/ab-test/api-keys.png)
-
-If you have an existing User key, copy it:
-
-![Copy existing key](../../../images/ab-test/copy-existing-key.png)
-
-If not, click **Create key**:
-
-![Create key button](../../../images/ab-test/create-key-button.png)
-
-Select **User** for **Key type**, optionally add a name and notes, and click **Create key**:
-
-![Create key details](../../../images/ab-test/create-key-details.png)
-
-Copy the key you created. You'll use it to associate your New Relic account with the CLI. The CLI will then use the key to manage entities within your account.
+Go to the [**Build on New Relic**](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) quick start.
 
 </Step>
 
 <Step>
 
-**Download the SDK's installer for your operating system.**
+Get your API key:
 
-Install the SDK for your operating system:
+![API key](../../../images/ab-test/api-key.png)
 
-- [Mac download](https://cli.nr-ext.net/installer.pkg)
-- [Linux download](https://cli.nr-ext.net/installer.sh)
-- [Windows download](https://cli.nr-ext.net/installer.exe)
+Once you install the CLI, you'll use this key to create a user profile that's associated with your account. The CLI uses this profile to manage entities within your account.
+
+</Step>
+
+<Step>
+
+Read and accept the New Relic developer terms and conditions:
+
+![Terms and conditions](../../../images/ab-test/dev-terms-and-conditions.png)
+
+Even if you install the CLI, you won't be able to use it without first accepting these terms and conditions.
+
+</Step>
+
+<Step>
+
+Choose your operating system and click **Download installer**:
+
+![Download installer](../../../images/ab-test/download-installer.png)
 
 Once you've installed the SDK, you'll have access to the `nr1` CLI. Verify this by checking your SDK version:
 
@@ -73,19 +71,17 @@ It’s important to distinguish between the `newrelic` CLI and the `nr1` CLI. `n
 
 <Step>
 
-**Associate your New Relic account as a CLI profile.**
+Copy the command to save your credentials:
 
-Use `nr1 profiles:add` to associate the CLI with your New Relic account:
+![Save your credentials](../../../images/ab-test/add-profile.png)
+
+This command has a profile name, your region, and your API key baked in.
+
+Run the command in your terminal:
 
 ```sh
 nr1 profiles:add --name <profile name> --api-key <User key> --region <region>
 ```
-
-<Callout variant="important">
-
-Make sure to replace the `<profile name>` with an arbirary name, the `<User key>` with the key you copied in **Step 1**, and the region with either `us` or `eu`.
-
-</Callout>
 
 Profiles let you select which New Relic account you want to run commands against. If you have multiple accounts, you can view them with `profiles:list`:
 
@@ -119,7 +115,7 @@ nr1 profiles --help
 
 </Steps>
 
-Now, you’re ready to build an application with the New Relic One CLI.
+Now, you can exit the **Build on New Relic** quick start. You’re ready to build an application with the New Relic One CLI!
 
 <HideWhenEmbedded>
 
