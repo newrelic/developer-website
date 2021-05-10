@@ -1,3 +1,19 @@
+# [1.45.0](https://github.com/newrelic/developer-website/compare/v1.44.3...v1.45.0) (2021-05-10)
+
+
+### Bug Fixes
+
+* Broken image link ([ca6efbb](https://github.com/newrelic/developer-website/commit/ca6efbb7f2a86670c7d8053055a9f3a2071c53b9))
+* typo ([e9cb6cb](https://github.com/newrelic/developer-website/commit/e9cb6cb80dff22f3f2db1ac6c8a05302b2b4d016))
+
+
+### Features
+
+* Add catalog guide ([07c691e](https://github.com/newrelic/developer-website/commit/07c691e00e429f0ec43e82c61492c13a08d5ee5c))
+* Add more screenshots ([6ac1b40](https://github.com/newrelic/developer-website/commit/6ac1b40ca2c7f47379b6fcb27ebb27468a48fbb6))
+* Initial commit for tag ([0f9ac7c](https://github.com/newrelic/developer-website/commit/0f9ac7cf3bf6a15b6a9be946c0db26b22354481f))
+* Initial commit of subscribe doc ([9f43790](https://github.com/newrelic/developer-website/commit/9f437909729e403ddc8eac75df0a433ee746f4db))
+
 ## [1.44.3](https://github.com/newrelic/developer-website/compare/v1.44.2...v1.44.3) (2021-04-26)
 
 
