@@ -50,10 +50,15 @@ nr1 update
 
 Create a Nerdpack and a visualization:
 
-```sh
-nr1 create --type nerdpack --name my-first-viz
-cd my-first-viz
+```bash animate
 nr1 create --type visualization --name custom-viz
+[output] {success}✔  {plain}You are attempting to create a nerdlet outside of a nerdpack. We will create a nerdpack for you. What would you like to name it? ...my-first-viz
+[output]
+[output] {success}✔  {plain}nerdpack created successfully!
+[output]    {purple}nerdpack {blue}my-first-viz {plain}is available at {green}"./my-first-viz"
+[output]
+[output] {success}✔  {plain}visualization created successfully!
+[output]    {purple}visualization {blue}custom-viz {plain}is available at {green}"./my-first-viz/visualizations/custom-viz"
 ```
 
 The visualization you created in the `my-first-viz` Nerdpack contains a default component to help you get started.
@@ -61,10 +66,16 @@ The visualization you created in the `my-first-viz` Nerdpack contains a default 
 Serve your visualization locally:
 
 ```sh
+cd my-first-viz
 nr1 nerdpack:serve
 ```
 
-Then visit [New Relic](https://one.newrelic.com?nerdpacks=local) and navigate to **Apps > Custom Visualizations > CustomViz** to see it in action:
+Open the link to your visualization that's shown in the terminal when the Node server starts:
+
+```bash
+[output] {purple}Visualizations:
+[output]  ⁎  {green}custom-viz {blue}https://one.nr/012ab3cd4Ef
+```
 
 ![Configuration options](../../images/custom-viz/viz-config.png)
 
