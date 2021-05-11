@@ -1,3 +1,17 @@
+# [1.46.0](https://github.com/newrelic/developer-website/compare/v1.45.0...v1.46.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* nav-to-apps image path ([85510af](https://github.com/newrelic/developer-website/commit/85510af1790da95c346e66d7cf26d337bfa7bc6e))
+* Tutorial usage error ([e1067dd](https://github.com/newrelic/developer-website/commit/e1067dd989d081030483f269ca8e2be63d83cfcc))
+
+
+### Features
+
+* Add a new doc covering entities context ([d4b8b59](https://github.com/newrelic/developer-website/commit/d4b8b59b1442bf11ed9f1f6370500398d3d51974))
+* New guide to add viz to dashboard with NerdGraph ([d1f8c18](https://github.com/newrelic/developer-website/commit/d1f8c18b8bc1cde29ff588fa0b4468b94b63fe37))
+
 # [1.45.0](https://github.com/newrelic/developer-website/compare/v1.44.3...v1.45.0) (2021-05-10)
 
 
