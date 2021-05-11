@@ -67,6 +67,8 @@
           url: '/build-apps/publish-deploy/tag'
     - title: Permissions for managing apps
       url: '/build-apps/permission-manage-apps'
+    - title: Attach your Nerdlet to your entities
+      url: '/build-apps/attach-nerdlet-to-entities'
     - title: Map pageviews by region
       url: '/build-apps/map-pageviews-by-region'
     - title: Add a time picker
