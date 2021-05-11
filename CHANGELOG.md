@@ -1,3 +1,10 @@
+## [1.47.1](https://github.com/newrelic/developer-website/compare/v1.47.0...v1.47.1) (2021-05-11)
+
+
+### Bug Fixes
+
+* create embed pages with trailing slashes ([3fd3230](https://github.com/newrelic/developer-website/commit/3fd3230c27c278739085258c331871dcbc6832a6))
+
 # [1.47.0](https://github.com/newrelic/developer-website/compare/v1.46.0...v1.47.0) (2021-05-11)
 
 
