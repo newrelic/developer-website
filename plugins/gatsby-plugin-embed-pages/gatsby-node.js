@@ -28,7 +28,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       body,
     } = node;
     const nodePath = frontmatter.path || slug;
-    const pagePath = path.join(nodePath, 'embed');
+    const pagePath = path.join(nodePath, 'embed', '/');
     const contentSourcePath = nodePath;
 
     createPage({
