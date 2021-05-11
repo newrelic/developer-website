@@ -1,3 +1,10 @@
+# [1.47.0](https://github.com/newrelic/developer-website/compare/v1.46.0...v1.47.0) (2021-05-11)
+
+
+### Features
+
+* Update theme to include split(a/b) testing ([9c698ca](https://github.com/newrelic/developer-website/commit/9c698cad0f8312e43d62bff20b574c7919f34d60))
+
 # [1.46.0](https://github.com/newrelic/developer-website/compare/v1.45.0...v1.46.0) (2021-05-11)
 
 
