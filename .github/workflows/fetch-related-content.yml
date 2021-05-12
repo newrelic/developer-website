@@ -93,7 +93,7 @@ jobs:
               required_status_checks: {
                 strict: false,
                 contexts: [
-                  'checkout-and-build'
+                  'Gatsby Build'
                 ]
               },
               restrictions: null,
