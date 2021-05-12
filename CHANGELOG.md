@@ -1,3 +1,10 @@
+## [1.47.2](https://github.com/newrelic/developer-website/compare/v1.47.1...v1.47.2) (2021-05-12)
+
+
+### Bug Fixes
+
+* enable branch protection with correct check ([8115d5e](https://github.com/newrelic/developer-website/commit/8115d5eab19c2a95d0ea74e5800ea579817db941))
+
 ## [1.47.1](https://github.com/newrelic/developer-website/compare/v1.47.0...v1.47.1) (2021-05-11)
 
 
