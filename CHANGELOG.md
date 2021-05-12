@@ -1,3 +1,54 @@
+## [1.47.2](https://github.com/newrelic/developer-website/compare/v1.47.1...v1.47.2) (2021-05-12)
+
+
+### Bug Fixes
+
+* enable branch protection with correct check ([8115d5e](https://github.com/newrelic/developer-website/commit/8115d5eab19c2a95d0ea74e5800ea579817db941))
+
+## [1.47.1](https://github.com/newrelic/developer-website/compare/v1.47.0...v1.47.1) (2021-05-11)
+
+
+### Bug Fixes
+
+* create embed pages with trailing slashes ([3fd3230](https://github.com/newrelic/developer-website/commit/3fd3230c27c278739085258c331871dcbc6832a6))
+
+# [1.47.0](https://github.com/newrelic/developer-website/compare/v1.46.0...v1.47.0) (2021-05-11)
+
+
+### Features
+
+* Update theme to include split(a/b) testing ([9c698ca](https://github.com/newrelic/developer-website/commit/9c698cad0f8312e43d62bff20b574c7919f34d60))
+
+# [1.46.0](https://github.com/newrelic/developer-website/compare/v1.45.0...v1.46.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* nav-to-apps image path ([85510af](https://github.com/newrelic/developer-website/commit/85510af1790da95c346e66d7cf26d337bfa7bc6e))
+* Tutorial usage error ([e1067dd](https://github.com/newrelic/developer-website/commit/e1067dd989d081030483f269ca8e2be63d83cfcc))
+
+
+### Features
+
+* Add a new doc covering entities context ([d4b8b59](https://github.com/newrelic/developer-website/commit/d4b8b59b1442bf11ed9f1f6370500398d3d51974))
+* New guide to add viz to dashboard with NerdGraph ([d1f8c18](https://github.com/newrelic/developer-website/commit/d1f8c18b8bc1cde29ff588fa0b4468b94b63fe37))
+
+# [1.45.0](https://github.com/newrelic/developer-website/compare/v1.44.3...v1.45.0) (2021-05-10)
+
+
+### Bug Fixes
+
+* Broken image link ([ca6efbb](https://github.com/newrelic/developer-website/commit/ca6efbb7f2a86670c7d8053055a9f3a2071c53b9))
+* typo ([e9cb6cb](https://github.com/newrelic/developer-website/commit/e9cb6cb80dff22f3f2db1ac6c8a05302b2b4d016))
+
+
+### Features
+
+* Add catalog guide ([07c691e](https://github.com/newrelic/developer-website/commit/07c691e00e429f0ec43e82c61492c13a08d5ee5c))
+* Add more screenshots ([6ac1b40](https://github.com/newrelic/developer-website/commit/6ac1b40ca2c7f47379b6fcb27ebb27468a48fbb6))
+* Initial commit for tag ([0f9ac7c](https://github.com/newrelic/developer-website/commit/0f9ac7cf3bf6a15b6a9be946c0db26b22354481f))
+* Initial commit of subscribe doc ([9f43790](https://github.com/newrelic/developer-website/commit/9f437909729e403ddc8eac75df0a433ee746f4db))
+
 ## [1.44.3](https://github.com/newrelic/developer-website/compare/v1.44.2...v1.44.3) (2021-04-26)
 
 

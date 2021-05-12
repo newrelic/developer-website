@@ -69,28 +69,29 @@ nr1 update
 
 <Step>
 
-Create a Nerdpack:
+Create a visualization, called `radar-or-treemap`, in a Nerdpack, called `alternate-viz`:
 
-```bash
-nr1 create --type nerdpack --name alternate-viz
+```bash animate
+nr1 create --type visualization --name radar-or-treemap
+[output] {success}✔ {plain}You’re trying to create a visualization outside of a Nerdpack.  We’ll create a Nerdpack for you—what do you want to name it? … alternate-viz
+[output]
+[output] {success}✔  {plain}nerdpack created successfully!
+[output]    {purple}nerdpack {blue}alternate-viz {plain}is available at {green}"./alternate-viz"
+[output]
+[output] {success}✔  {plain}visualization created successfully!
+[output]    {purple}visualization {blue}radar-or-treemap {plain}is available at {green}"./alternate-viz/visualizations/radar-or-treemap"
 ```
+
+<Callout variant="tip">
 
 If you receive a `RequestError` for a self-signed certificate when you run `nr1 create`, you may need to add a certificate to Node's certificate chain. Read more about this and other advanced configurations in [Enable advanced configurations for your Nerdpack](/build-apps/advanced-config).
 
-</Step>
+</Callout>
 
-<Step>
-
-From the root of your Nerdpack, create a visualization:
+As a result, you have a new `visualizations/radar-or-treemap` directory under `alternate-viz`:
 
 ```bash
 cd alternate-viz
-nr1 create --type visualization --name radar-or-treemap
-```
-
-As a result, you have a new `visualizations/radar-or-treemap` directory:
-
-```bash
 ls visualizations/radar-or-treemap
 [output] index.js    nr1.json    styles.scss
 ```
@@ -1179,31 +1180,12 @@ nr1 nerdpack:serve
 
 <Step>
 
-Go to [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local). The `nerdpacks=local` query string directs the UI to load your visualization from the local server.
+Open the link to your visualization that's shown in the terminal when the Node server starts:
 
-</Step>
-
-<Step>
-
-Open the **Apps** page:
-
-![Apps navigation is located in the New Relic One top navigation](../../images/build-an-app/nav-to-apps.png)
-
-</Step>
-
-<Step>
-
-Go to **Custom Visualizations**, which is favorited by default:
-
-![Navigate to Custom Visualizations](../../images/build-an-app/nav-to-custom-viz.png)
-
-</Step>
-
-<Step>
-
-In **Custom Visualizations**, find and click your visualization:
-
-![Navigate to your visualization](../../images/custom-viz/nav-to-radar-or-treemap-viz.png)
+```bash
+[output] {purple}Visualizations:
+[output]  ⁎  {green}radar-or-treemap {blue}https://one.nr/012ab3cd4Ef
+```
 
 </Step>
 
