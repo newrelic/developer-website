@@ -1,3 +1,17 @@
+## [1.48.1](https://github.com/newrelic/developer-website/compare/v1.48.0...v1.48.1) (2021-05-14)
+
+
+### Bug Fixes
+
+* update to gatsby 3.5 ([5b439c3](https://github.com/newrelic/developer-website/commit/5b439c34ef89e87718a5feec566178325499b7f8))
+
+# [1.48.0](https://github.com/newrelic/developer-website/compare/v1.47.3...v1.48.0) (2021-05-13)
+
+
+### Features
+
+* adding feature flags for faster building ([7c7a892](https://github.com/newrelic/developer-website/commit/7c7a8921af50c4cef0077642ac6a90de18aa9de3))
+
 ## [1.47.3](https://github.com/newrelic/developer-website/compare/v1.47.2...v1.47.3) (2021-05-12)
 
 
