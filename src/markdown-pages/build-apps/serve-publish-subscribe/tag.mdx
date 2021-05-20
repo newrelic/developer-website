@@ -17,6 +17,14 @@ Tag your Nerdpack versions to track and subscribe to them. Untag versions to pre
 
 </Intro>
 
+## Update your CLI
+
+Before you run any commands, ensure that you have the latest version of the CLI:
+
+```sh
+nr1 update
+```
+
 ## Check your permissions
 
 To tag a Nerdpack version, you need:
@@ -43,7 +51,7 @@ nr1 nerdpack:tag --tag=DEV
 [output] {success}✔{normal}  Tagged {purple}ab123c45-678d-9012-efg3-45hi6jkl7890{normal} version {green}1.0.0{normal} as {green}DEV{normal}.
 ```
 
-Here, you tagged version `1.0.0` as `DEV`. 
+Here, you tagged version `1.0.0` as `DEV`.
 
 Now, you, and other users on your account, can use this tag:
 
@@ -70,7 +78,7 @@ nr1 nerdpack:info
 [output] Local version: 1.0.0
 [output] Subscription Model: OWNER_AND_ALLOWED
 [output] Version Count: 1
-[output] 
+[output]
 [output] Version  Date         Tags
 [output] -------  -----------  ----
 [output] 1.0.0    {muted}5 hours ago{green}  DEV
@@ -100,7 +108,7 @@ nr1 nerdpack:info
 [output] Local version: 1.0.0
 [output] Subscription Model: OWNER_AND_ALLOWED
 [output] Version Count: 1
-[output] 
+[output]
 [output] Version  Date               Tags
 [output] -------  -----------------  ----
 [output] 2.0.0    {muted}a few seconds ago{green}  DEV
@@ -135,7 +143,7 @@ nr1 nerdpack:info
 [output] Local version: 1.0.0
 [output] Subscription Model: OWNER_AND_ALLOWED
 [output] Version Count: 1
-[output] 
+[output]
 [output] Version  Date            Tags
 [output] -------  --------------  ----
 [output] 2.0.0    {muted}5 minutes ago{green}   DEV
@@ -223,13 +231,13 @@ nr1 nerdpack:info
 [output] Local version: 2.0.0
 [output] Subscription Model: OWNER_AND_ALLOWED
 [output] Version Count: 3
-[output] 
+[output]
 [output] Version  Date         Tags
 [output] -------  -----------  ----
 [output] 2.0.0    {muted}an hour ago  {green}DEV
 [output] 1.0.1    {muted}an hour ago
 [output] 1.0.0    {muted}6 hours ago
-[output] 
+[output]
 nr1 nerdpack:untag -t DEV
 [output] {error}›{normal}   Error: A downstream error occurred.
 ```
@@ -249,10 +257,10 @@ This shows that you're subscribed to `MyAwesomeNerdpack`. Unsubscribe, then try 
 ```sh
 nr1 nerdpack:unsubscribe
 [output] Unsubscribed account {green}1234567{normal} from the nerdpack {purple}ab123c45-678d-9012-efg3-45hi6jkl7890{normal} on the {green}DEV{normal} channel.
-[output] 
+[output]
 nr1 nerdpack:untag --tag=DEV
 [output] {success}✔{normal}  Removed nerdpack {purple}ab123c45-678d-9012-efg3-45hi6jkl7890{normal} tag {green}DEV{normal}.
-[output] 
+[output]
 nr1 nerdpack:info
 [output] Id: {purple}ab123c45-678d-9012-efg3-45hi6jkl7890
 [output] Region: {muted}us
@@ -260,7 +268,7 @@ nr1 nerdpack:info
 [output] Local version: 2.0.0
 [output] Subscription Model: OWNER_AND_ALLOWED
 [output] Version Count: 3
-[output] 
+[output]
 [output] Version  Date         Tags
 [output] -------  -----------  ----
 [output] 2.0.0    {muted}an hour ago
