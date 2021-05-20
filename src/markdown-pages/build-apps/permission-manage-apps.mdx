@@ -1,6 +1,6 @@
 ---
 path: '/build-apps/permission-manage-apps'
-duration: ''
+duration: '10 minutes'
 title: 'Nerdpack permissions'
 template: 'GuideTemplate'
 description: 'Learn about permissions for using and subscribing accounts to Nerdpacks'
@@ -13,41 +13,122 @@ tags:
 
 ---
 
-There are several restrictions around who can publish, use, and subscribe to Nerdpacks (the file packages that represent [New Relic One applications](https://developer.newrelic.com/build-apps)).
+<Intro>
 
-## Restrictions for basic users
+Understand the requirements for managing and using Nerdpacks in New Relic One.
 
-The most important permissions factor is [user type](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#user-type). A basic user has several restrictions related to their inability to access Full Stack Observability, and a full user theoretically has full abilities.
+</Intro>
 
-Basic users can build and serve their own Nerdpacks locally. They can also use public Nerdpacks that meet **both** of the following criteria:
+## Capabilities at a glance
 
-* New Relic must have specifically allowed basic users to use the Nerdpack
-* Someone else on the basic user's account must have already subscribed to the Nerdpack
+Your ability to manage and use Nerdpacks depends on your user's:
 
-Nerdpacks that basic users can use are rare.
+- Model (original or New Relic One model)
+- Type
+- Role
 
-Basic users can't:
+Whether you're on the [original user model](https://docs.newrelic.com/docs/accounts/original-accounts-billing/original-users-roles/users-roles-original-user-model/) or the [New Relic One user model](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/), review the tables below for a summary of your Nerdpack capabilities.
 
-* Publish the Nerdpacks they build
-* Tag their Nerdpacks
-* Subscribe an account to a Nerdpack
-* Use private Nerdpacks (including their own)
-* Use public Nerdpacks that New Relic hasn't specifically allowed them to use
+### Original user model
 
-Full users can use any Nerdpacks that the account they're in has been subscribed to, whether built by New Relic or others. Full users theoretically have Nerdpack management permissions, but there may be restrictions related to custom role assignments (see below).
+If your organization was created before July 30, 2020 and you haven't transitioned to our New Relic One pricing model, you're on the [original pricing plan](https://docs.newrelic.com/docs/accounts/original-accounts-billing/product-pricing/product-based-pricing/). Capabilities for our [original user model](https://docs.newrelic.com/docs/accounts/original-accounts-billing/original-users-roles/users-roles-original-user-model/) differ from those of our [new user model](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/):
 
-## Role-related restrictions
+| | Basic user | Full user without the Nerdpack Manager add-on role | Full user with the Nerdpack Manager add-on role | Owner/Admin user |
+|:--|:-:|:-:|:-:|:-:|
+| Serve Nerdpacks | yes | yes | yes | yes |
+| Publish Nerdpacks | no | no | yes | yes |
+| Subscribe to Nerdpacks | no | no | yes | yes |
+| Tag Nerdpacks | no | no | yes | yes |
+| Use Nerdlets or visualizations created by your accounts | no | yes | yes | yes |
+| Use Nerdlets created by New Relic | no* | yes | yes | yes |
+| Use visualizations created by New Relic | no | yes | yes | yes |
 
-For full users, there are role-related rules that may impact one's ability to manage Nerdpacks (publish them and subscribe to them). How this works depends on your account/user model:
+_* There are a few Nerdlets that basic users are allowed to use. See [Basic users](#basic-users) for more information._
 
-* [Original user model](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models): Owners and Admins can manage Nerdpacks, as can users specifically assigned the **Nerdpack manager** add-on role. For more details about how account access works for users, see [Account access](#account-access)
-* [New Relic One user model](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models): the ability to manage Nerdpacks is dependent on the "modify Nerdpacks" [capability](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#capabilities). That capability is included in the [**All product admin** role](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#standard-roles), which both the default [**Admin** and **User** groups](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#groups) have. And it can also be assigned to a custom role.
+### New Relic One user model
 
-To learn more about account/user models, see [User model overview](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models).
+If your organization is part of the [New Relic One pricing model](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-pricing-billing/new-relic-one-pricing-billing/), the user types, privileges, and capabilities are different than those of our original user model:
 
-## Account access
+| | Basic user | Full user |
+|---|---|---|
+| Serve Nerdpacks | yes | yes |
+| Publish Nerdpacks | no | yes |
+| Subscribe to Nerdpacks | no | yes |
+| Tag Nerdpacks | no | yes |
+| Use Nerdlets or visualizations created by your accounts | no | yes |
+| Use Nerdlets created by New Relic | no* | yes |
+| Use visualizations created by New Relic | no | yes |
 
-For organizations with master/sub-account structures:
+_* There are a few Nerdlets that basic users are allowed to use. See [Basic users](#basic-users-1) for more information._
 
-* If you subscribe to a Nerdpack from a master account, that access is inherited by all of its sub-accounts.
-* A Nerdpack made by your team can only be subscribed to from the master account that was used to publish it, or from its sub-accounts. This means that, if the Nerdpack needs to be available across your organization, you may need a New Relic admin to deploy it.
+## Nerdpack permissions: Original user model
+
+Learn the differences between how basic users, full users, and admins can use and manage Nerdpacks in the [original user model](https://docs.newrelic.com/docs/accounts/original-accounts-billing/original-users-roles/users-roles-original-user-model/).
+
+### Basic users
+
+If you're a basic user in the original user model, you're limited in your Nerdpack capabilities. You can only create and serve Nerdpacks locally. To publish, tag, subscribe to, and use your Nerdpacks, an admin must upgrade you to a full user.
+
+<Callout variant="tip">
+
+If you're a basic user, you generally can't use any Nerdpacks. However, there are some Nerdlets that New Relic maintains that you can use. These are rare and there is currently no way for you to distinguish them in our web interface. And even if you can use a Nerdlet in a Nerdpack, you're never able to use custom visualizations. For this, you must be upgraded to a full user.
+
+</Callout>
+
+### Full users
+
+If you're a full user in the original user model, you either:
+
+- Have the **Nerdpack Manager** add-on role
+- Don't have the **Nerdpack Manager** add-on role
+
+The **Nerdpack Manager** role is required to publish, subscribe to, and tag Nerdpacks. So if you don't have the **Nerdpack Manager** role, you can only create and serve Nerdpacks locally and use Nerdpacks that your accounts have already been subscribed to.
+
+To publish, tag, or subscribe to a Nerdpack, an admin must upgrade you to a full user or grant you the **Nerdpack Manager** add-on role.
+
+### Owner/Admin users
+
+If you're an owner or admin user, you can perform any of the Nerdpack capabilities. You can create, serve, publish, tag, subscribe to, and use any and all Nerdpack artifacts, both Nerdlets and visualizations. This includes Nerdpacks built by New Relic or by one of your accounts.
+
+## Nerdpack permissions: New Relic One user model
+
+Learn the differences between how basic users and full users can use and manage Nerdpacks in the [New Relic One user model](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/).
+
+### Basic users
+
+If you're a basic user in the New Relic One user model, you're limited in your Nerdpack capabilities. You can only create and serve Nerdpacks locally. To publish, tag, subscribe to, and use your Nerdpacks, an admin must upgrade you to a full user.
+
+<Callout variant="tip">
+
+If you're a basic user, you generally can't use any Nerdpacks. However, there are some Nerdlets that New Relic maintains that you can use. These are rare and there is currently no way for you to distinguish them in our web interface. And even if you can use a Nerdlet in a Nerdpack, you're never able to use custom visualizations. For this, you must be upgraded to a full user.
+
+</Callout>
+
+### Full users
+
+If you're a full user in the New Relic One user model, you either:
+
+- Have the **Nerdpacks "modify"** privilege
+- Don't have the **Nerdpacks "modify"** privilege
+
+The **Nerdpacks "modify"** privilege is required to publish, subscribe to, and tag Nerdpacks. So if you don't have the **Nerdpacks "modify"** privilege, you can only create and serve Nerdpacks locally and use Nerdpacks that your accounts have already been subscribed to.
+
+To publish, tag, or subscribe to your Nerdpack, an admin must grant you the **Nerdpacks "modify"** privilege.
+
+<Callout variant="tip">
+
+The **Nerdpacks "modify"** privilege is included in both the **User** and **Admin** groups, the only groups available by default. So in most cases, you'll have the ability to manage Nerdpacks as a full user. However, if you're a full user assigned to a custom group that doesn't include the **Nerdpacks "modify"** privilege, you won't be able to manage Nerdpacks.
+
+</Callout>
+
+## Master/Sub-account Capabilities
+
+Some accounts, called master accounts, have sub-accounts that report data back up to them. This organizational hierarchy affects Nerdpack capabilities.
+
+In general, the flow of control moves downstream:
+
+![Master/Sub-account example](../../images/build-an-app/master-sub-accounts-nerdpacks.png)
+
+In this example scenario **A**, the master account publishes a Nerdpack. This means that all three accounts, **Master**, **Account 1**, and **Account 2**, can subscribe to it. If you subscribe the master account to the Nerdpack, then users of all three accounts can use it. If you subscribe **Account 1** to it, only **Account 1** users can use it, because neither **Master** nor **Account 2** is downstream in the hierarchy.
+
+In scenario **B**, the sub-account, **Account 1**, publishes a Nerdpack, so you can't use or subscribe to the Nerdpack from **Master** or **Account 2**.
