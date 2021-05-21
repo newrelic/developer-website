@@ -1,3 +1,10 @@
+# [1.49.0](https://github.com/newrelic/developer-website/compare/v1.48.1...v1.49.0) (2021-05-20)
+
+
+### Features
+
+* Rewrite Nerdpack permissions to clarify ([be4bc03](https://github.com/newrelic/developer-website/commit/be4bc034548bac3400b6e2b6c5cb63fd34933072))
+
 ## [1.48.1](https://github.com/newrelic/developer-website/compare/v1.48.0...v1.48.1) (2021-05-14)
 
 
