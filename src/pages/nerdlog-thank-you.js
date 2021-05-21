@@ -1,10 +1,9 @@
 import React from 'react';
-import cx from 'classnames';
 import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import DevSiteSeo from '../components/DevSiteSeo';
 import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
-import styles from './nerd-days.module.scss';
+import * as styles from './nerd-days.module.scss';
 
 const NerdlogPage = ({ location }) => {
   return (
@@ -12,7 +11,7 @@ const NerdlogPage = ({ location }) => {
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Content>
-          <section className={cx(styles.section)}>
+          <section>
             <div>
               <img
                 className={styles.img}

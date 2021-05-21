@@ -32,14 +32,19 @@ See the video, which demonstrates the steps in this guide in five minutes.
 
 ## Before you begin
 
-To get started, make sure you have accounts in GitHub and [New Relic](https://newrelic.com/signup/).
+Developing applications requires a New Relic account and the New Relic One CLI (`nr1`).
 
-To develop projects, you need the New Relic One CLI (command line interface).
+If you haven't already:
 
-If you haven't already installed it, do the following:
+- [Sign up](https://newrelic.com/signup/) for a New Relic account
+- Install [Node.js](https://nodejs.org/en/download/)
+- Complete the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==)
 
-- Install [Node.js](https://nodejs.org/en/download/).
-- Complete all the steps in the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==).
+Finally, make sure your `nr1` is up-to-date:
+
+```sh
+nr1 update
+```
 
 For additional details about setting up your environment, see [Set up your development environment](/build-apps/set-up-dev-env) and [Enable advanced configurations for your Nerdpack](/build-apps/advanced-config).
 
@@ -275,19 +280,11 @@ Select the accounts you want to subscribe to the application, and then click **U
 
 When you return to the Apps page, you'll see the launcher for your new application.
 
-## Proxy browser setup
+<Callout variant="tip" title="Advanced configurations">
 
-Generally, you don't need to know how your application code is loaded in New Relic One. But understanding how this works can help you if you encounter issues (for example, with a proxy or browser setup).
+If you're interested in advanced configurations for your Nerdpack, read [Enable advanced configurations for your Nerdpack](/build-apps/advanced-config).
 
-When developing, your code is served from your local laptop by using an nr-local.net subdomain. This domain points to 127.0.0.1, and will use a variety of ports to connect, including 9973.
-
-In order to load third-party code into the platform, (both in development and production), New Relic One uses an `<IFRAME>`, as well as a separate domain (a subdomain of nr-ext.net) to perform the load, relying on same-domain policy to sandbox the code.
-
-For this reason, your network administrator may need to enable access to:
-
-- Any subdomain of nr-local.net, or, at the very least, to any domain of the shape of `<UserId>`.nr-local.net, where UserId is a 32-hexadecimal character identifier that is unique to the user logged into the platform (you can use `[0-9a-f]{32}` to discriminate it).
-
-- Any subdomain of nr-ext.net, or, at the very least, to any domain in the shape of `<NerdpackUuid>`.g `<NerdpackGid>`.nr-ext.net, where NerdpackUuid is the UUID assigned to your package, and NerdpackGid is zero, or a positive integer (you can use `0|[1-9]\d+` to discriminate it).
+</Callout>
 
 ## Summary
 

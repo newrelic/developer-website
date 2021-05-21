@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Editor from 'react-simple-code-editor';
 import CodeHighlight from './CodeHighlight';
-import styles from './CodeEditor.module.scss';
+import * as styles from './CodeEditor.module.scss';
 
 const CodeEditor = ({ value, language, lineNumbers, onChange }) => {
   const lineNumberWidth = value.trim().split('\n').length.toString().length;

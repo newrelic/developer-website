@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Layout } from '@newrelic/gatsby-theme-newrelic';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import useDarkMode from 'use-dark-mode';
 
 const EmbedLayout = ({ children }) => {

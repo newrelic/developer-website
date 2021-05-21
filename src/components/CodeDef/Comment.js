@@ -1,6 +1,6 @@
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Markdown from 'react-markdown';
 
 const Content = ({ children, ...props }) => {

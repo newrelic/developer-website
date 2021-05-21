@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import cx from 'classnames';
 import podcastsHeader from '../images/podcasts/podcasts.jpg';
-import styles from './podcasts.module.scss';
+import * as styles from './podcasts.module.scss';
 
 const PodcastsPage = ({ location }) => {
   const podcastsMeta = [

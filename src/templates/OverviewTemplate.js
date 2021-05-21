@@ -6,7 +6,7 @@ import PageLayout from '../components/PageLayout';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
-import styles from './OverviewTemplate.module.scss';
+import * as styles from './OverviewTemplate.module.scss';
 
 import DevSiteSeo from '../components/DevSiteSeo';
 
@@ -60,8 +60,8 @@ OverviewTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!, $guidesFilter: String!) {
-    mdx(frontmatter: { path: { eq: $path } }) {
+  query($slug: String!, $guidesFilter: String!) {
+    mdx(fields: { slug: { eq: $slug } }) {
       body
       frontmatter {
         path

@@ -1,7 +1,7 @@
 import React from 'react';
 import CountdownUnit from './CountdownUnit';
 import PropTypes from 'prop-types';
-import styles from './CountdownContainer.module.scss';
+import * as styles from './CountdownContainer.module.scss';
 
 const Countdown = ({ countdown }) => {
   return (

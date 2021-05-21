@@ -1,45 +1,110 @@
 ---
 path: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
 duration: '25 min'
-title: 'Custom visualizations and the New Relic One SDK'
+title: 'Customize your visualization with SDK components'
 template: 'GuideTemplate'
 description: 'Customize your visualization'
 resources:
   - title: Build a custom visualization for dashboards
     url: '/build-apps/build-visualization'
-  - title: New Relic One VSCode extension
-    url: https://marketplace.visualstudio.com/items?itemName=new-relic.nr1
-  - title: 'Build on New Relic One'
-    url: https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-build-your-own-custom-new-relic-one-application
-  - title: New Relic VSCode extension pack
-    url: https://marketplace.visualstudio.com/items?itemName=new-relic.new-relic-extension-pack
+  - title: Dashboards and Custom Visualizations
+    url: https://www.youtube.com/watch?v=_F61mxtKfGA
+  - title: 'Configuring custom visualizations for dashboards'
+    url: https://www.youtube.com/watch?v=sFpG_iG7Xa8
+  - title: Custom Data Visualizations on New Relic
+    url: https://www.youtube.com/watch?v=HuR0EdHGz24
 tags:
   - nr1 cli
   - NR One Catalog
   - Subscribe visualizations
 ---
 
+<HideWhenEmbedded>
+
+<Callout variant="course">
+
+This lesson is part of a course that teaches you how to build a custom visualization in the New Relic One platform.
+
+</Callout>
+
+</HideWhenEmbedded>
+
 <Intro>
 
-Now that you have a basic visualization, it's time to customize it! You can use all of the <Link to="explore-docs/intro-to-sdk">New Relic One SDK</Link> components in a Custom Visualization the same way you can use them in a Nerdlet. In this guide, you'll add a new chart type and a `SegmentedControl` component. You'll be able to dynamically swap between the Radar chart and the new chart right from the browser.
+Use New Relic One custom visualizations to display your data, whether it's from New Relic's database or an external source, in unique ways that are distinct from the charts offered by the New Relic platform.
 
-This guide builds off the <Link to="/build-apps/build-visualization">Build a custom visualization for dashboards</Link> guide.
+In this lesson, you build a visualization that displays your data in one of two chart types: [`RadarChart`](https://recharts.org/en-US/api/RadarChart) or [`Treemap`](https://recharts.org/en-US/api/Treemap). You then implement a `SegmentedControl` component from the New Relic One SDK, which allows you to alternate between the two chart types. Ultimately, this gives you freedom to view your data in a dynamic way that isn't possible with New Relic's base offerings.
+
+<Callout variant="tip">
+
+If you get lost in the code project and would like to see what the files should look like when you're done with each lesson, check out the [course project](https://github.com/newrelic/nru-custom-visualization-course) on Github.
+
+</Callout>
 
 </Intro>
 
 ## Before you begin
 
-To get started, follow the <Link to="/build-apps/build-visualization">Build a custom visualization for dashboards</Link> guide to get set up with your <Link to="https://newrelic.com/signup?utm_source=developer-site">New Relic</Link> account, install the <Link to="/explore-docs/nr1-cli">New Relic One CLI</Link>, and create your first visualization. You'll use the visualization you create in that guide as a starting point for this guide.
+Explore our [custom visualization](/explore-docs/custom-viz) guides and [build your first visualization](/explore-docs/custom-viz/build-visualization). After you're done, you'll have a better foundation for building more complex visualizations, such as the one you'll build in this course.
 
-## Set up the visualization component state
+Finally, if you haven't already:
 
-In this first set of steps you'll add component state to your visualization template from the previous guide referenced above.
+- Sign up for a [New Relic account](https://newrelic.com/signup?utm_source=developer-site)
+- Install [Node.js](https://nodejs.org/en/download/)
+- Complete the steps in the [`nr1` quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) to install and configure the CLI
+
+## Create your visualization
+
+<Steps>
+
+<Step>
+
+Ensure you're working with the latest version of the New Relic One CLI:
+
+```bash
+nr1 update
+```
+
+</Step>
+
+<Step>
+
+Create a visualization, called `radar-or-treemap`, in a Nerdpack, called `alternate-viz`:
+
+```bash animate
+nr1 create --type visualization --name radar-or-treemap
+[output] {success}✔ {plain}You’re trying to create a visualization outside of a Nerdpack.  We’ll create a Nerdpack for you—what do you want to name it? … alternate-viz
+[output]
+[output] {success}✔  {plain}nerdpack created successfully!
+[output]    {purple}nerdpack {blue}alternate-viz {plain}is available at {green}"./alternate-viz"
+[output]
+[output] {success}✔  {plain}visualization created successfully!
+[output]    {purple}visualization {blue}radar-or-treemap {plain}is available at {green}"./alternate-viz/visualizations/radar-or-treemap"
+```
+
+<Callout variant="tip">
+
+If you receive a `RequestError` for a self-signed certificate when you run `nr1 create`, you may need to add a certificate to Node's certificate chain. Read more about this and other advanced configurations in [Enable advanced configurations for your Nerdpack](/build-apps/advanced-config).
+
+</Callout>
+
+As a result, you have a new `visualizations/radar-or-treemap` directory under `alternate-viz`:
+
+```bash
+cd alternate-viz
+ls visualizations/radar-or-treemap
+[output] index.js    nr1.json    styles.scss
+```
+
+</Step>
+
+</Steps>
 
 <Tutorial>
 
 <Project>
 
-```jsx fileName=visualizations/your-visualization/index.js
+```js fileName=visualizations/radar-or-treemap/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -49,16 +114,9 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import {
-  Card,
-  CardBody,
-  HeadingText,
-  NrqlQuery,
-  Spinner,
-  AutoSizer
-} from 'nr1';
+import {Card, CardBody, HeadingText, NrqlQuery, Spinner, AutoSizer} from 'nr1';
 
-export default class YourAwesomeVisualization extends React.Component {
+export default class RadarOrTreemapVisualization extends React.Component {
   // Custom props you wish to be configurable in the UI must also be defined in
   // the nr1.json file for the visualization. See docs for more details.
   static propTypes = {
@@ -162,7 +220,6 @@ export default class YourAwesomeVisualization extends React.Component {
   }
 }
 
-
 const EmptyState = () => (
   <Card className="EmptyState">
     <CardBody className="EmptyState-cardBody">
@@ -182,6 +239,7 @@ const EmptyState = () => (
     </CardBody>
   </Card>
 );
+
 const ErrorState = () => (
   <Card className="ErrorState">
     <CardBody className="ErrorState-cardBody">
@@ -199,197 +257,23 @@ const ErrorState = () => (
 
 </Project>
 
-<Steps>
+## Set up your component state
 
-  <Step>
-
-From the root of the Nerdpack project you created in the previous guide, navigate to `/visualizations/<your-visualization>/index.js`. You'll continue to work in the `index.js` file for the rest of this guide.
-
-Add a chart types constant above the first line of the class and add the component state property with an initial state for `selectedChart`:
-
-
-```jsx fileName=visualizations/your-visualization/index.js
-import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-} from 'recharts';
-import {
-  Card,
-  CardBody,
-  HeadingText,
-  NrqlQuery,
-  Spinner,
-  AutoSizer
-} from 'nr1';
-
-const CHART_TYPES = {
-  'Radar': 'radar',
-  'Treemap': 'treemap'
-}
-
-export default class YourAwesomeVisualization extends React.Component {
-  // Custom props you wish to be configurable in the UI must also be defined in
-  // the nr1.json file for the visualization. See docs for more details.
-  static propTypes = {
-    /**
-     * A fill color to override the default fill color. This is an example of
-     * a custom chart configuration.
-     */
-    fill: PropTypes.string,
-
-    /**
-     * A stroke color to override the default stroke color. This is an example of
-     * a custom chart configuration.
-     */
-    stroke: PropTypes.string,
-    /**
-     * An array of objects consisting of a nrql `query` and `accountId`.
-     * This should be a standard prop for any NRQL based visualizations.
-     */
-    nrqlQueries: PropTypes.arrayOf(
-      PropTypes.shape({
-        accountId: PropTypes.number,
-        query: PropTypes.string,
-      })
-    ),
-  };
-
-  state = {
-    selectedChart: CHART_TYPES.Radar
-  }
-
-  /**
-   * Restructure the data for a non-time-series, facet-based NRQL query into a
-   * form accepted by the Recharts library's RadarChart.
-   * (https://recharts.org/api/RadarChart).
-   */
-  transformData = (rawData) => {
-    return rawData.map((entry) => ({
-      name: entry.metadata.name,
-      // Only grabbing the first data value because this is not time-series data.
-      value: entry.data[0].y,
-    }));
-  };
-
-  /**
-   * Format the given axis tick's numeric value into a string for display.
-   */
-  formatTick = (value) => {
-    return value.toLocaleString();
-  };
-
-  render() {
-    const {nrqlQueries, stroke, fill} = this.props;
-
-    const nrqlQueryPropsAvailable =
-      nrqlQueries &&
-      nrqlQueries[0] &&
-      nrqlQueries[0].accountId &&
-      nrqlQueries[0].query;
-
-    if (!nrqlQueryPropsAvailable) {
-      return <EmptyState />;
-    }
-
-    return (
-      <AutoSizer>
-        {({width, height}) => (
-          <NrqlQuery
-            query={nrqlQueries[0].query}
-            accountId={parseInt(nrqlQueries[0].accountId)}
-            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
-          >
-            {({data, loading, error}) => {
-              if (loading) {
-                return <Spinner />;
-              }
-
-              if (error) {
-                return <ErrorState />;
-              }
-
-              const transformedData = this.transformData(data);
-
-              return (
-                <RadarChart
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                >
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="name" />
-                  <PolarRadiusAxis tickFormatter={this.formatTick} />
-                  <Radar
-                    dataKey="value"
-                    stroke={stroke || '#51C9B7'}
-                    fill={fill || '#51C9B7'}
-                    fillOpacity={0.6}
-                  />
-                </RadarChart>
-              );
-            }}
-          </NrqlQuery>
-        )}
-      </AutoSizer>
-    );
-  }
-}
-
-
-const EmptyState = () => (
-  <Card className="EmptyState">
-    <CardBody className="EmptyState-cardBody">
-      <HeadingText
-        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-        type={HeadingText.TYPE.HEADING_3}
-      >
-        Please provide at least one NRQL query & account ID pair
-      </HeadingText>
-      <HeadingText
-        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
-        type={HeadingText.TYPE.HEADING_4}
-      >
-        An example NRQL query you can try is:
-      </HeadingText>
-      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
-    </CardBody>
-  </Card>
-);
-const ErrorState = () => (
-  <Card className="ErrorState">
-    <CardBody className="ErrorState-cardBody">
-      <HeadingText
-        className="ErrorState-headingText"
-        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-        type={HeadingText.TYPE.HEADING_3}
-      >
-        Oops! Something went wrong.
-      </HeadingText>
-    </CardBody>
-  </Card>
-);
-```
-
-  </Step>
-
-</Steps>
-
-## Add the `SegmentedControl` components
-
-To let the consumers of your visualization decide what type of chart they want to display, you'll use `SegmentedControl` and `SegmentedControlItem`, which allow users to switch between a set of provided options. To learn more about the components available from New Relic, go to our <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK</Link>.
+Add component state to the default visualization template that `nr1` created for you.
 
 <Steps>
 
-  <Step>
+<Step>
 
-Add `SegmentedControl` and `SegmentedControlItem` to the import from `nr1`:
+Navigate to _alternate-viz/visualizations/radar-or-treemap/index.js_. You'll work in here for the rest of this lesson.
 
-```js fileName=visualizations/your-visualization/index.js
+</Step>
+
+<Step>
+
+Add a constant called `CHART_TYPES`:
+
+```js fileName=visualizations/radar-or-treemap/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -399,23 +283,14 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import {
-  Card,
-  CardBody,
-  HeadingText,
-  NrqlQuery,
-  SegmentedControl,
-  SegmentedControlItem,
-  Spinner,
-  AutoSizer
-} from 'nr1';
+import {Card, CardBody, HeadingText, NrqlQuery, Spinner, AutoSizer} from 'nr1';
 
 const CHART_TYPES = {
   'Radar': 'radar',
   'Treemap': 'treemap'
 }
 
-export default class YourAwesomeVisualization extends React.Component {
+export default class RadarOrTreemapVisualization extends React.Component {
   // Custom props you wish to be configurable in the UI must also be defined in
   // the nr1.json file for the visualization. See docs for more details.
   static propTypes = {
@@ -441,10 +316,6 @@ export default class YourAwesomeVisualization extends React.Component {
       })
     ),
   };
-
-  state = {
-    selectedChart: CHART_TYPES.Radar
-  }
 
   /**
    * Restructure the data for a non-time-series, facet-based NRQL query into a
@@ -523,7 +394,6 @@ export default class YourAwesomeVisualization extends React.Component {
   }
 }
 
-
 const EmptyState = () => (
   <Card className="EmptyState">
     <CardBody className="EmptyState-cardBody">
@@ -543,6 +413,7 @@ const EmptyState = () => (
     </CardBody>
   </Card>
 );
+
 const ErrorState = () => (
   <Card className="ErrorState">
     <CardBody className="ErrorState-cardBody">
@@ -558,13 +429,15 @@ const ErrorState = () => (
 );
 ```
 
-  </Step>
+`CHART_TYPES` enumerates the two chart types you'll alternate between in your visualization.
 
-  <Step>
+</Step>
 
-In the `render` function, wrap `RadarChart` in `<React.Fragment> ... </React.Fragment>`. Then add the `SegmentedControl` and `SegmentedControlItem` above the `RadarChart` and set the value and label:
+<Step>
 
-```jsx fileName=visualizations/your-visualization/index.js
+Initialize `selectedChart` in your component's `state`:
+
+```js fileName=visualizations/radar-or-treemap/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -574,21 +447,14 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
-import {
-  Card,
-  CardBody,
-  HeadingText,
-  NrqlQuery,
-  SegmentedControl,
-  SegmentedControlItem,
-  Spinner,
-  AutoSizer
-} from 'nr1';
+import {Card, CardBody, HeadingText, NrqlQuery, Spinner, AutoSizer} from 'nr1';
+
 const CHART_TYPES = {
   'Radar': 'radar',
   'Treemap': 'treemap'
 }
-export default class YourAwesomeVisualization extends React.Component {
+
+export default class RadarOrTreemapVisualization extends React.Component {
   // Custom props you wish to be configurable in the UI must also be defined in
   // the nr1.json file for the visualization. See docs for more details.
   static propTypes = {
@@ -597,6 +463,7 @@ export default class YourAwesomeVisualization extends React.Component {
      * a custom chart configuration.
      */
     fill: PropTypes.string,
+
     /**
      * A stroke color to override the default stroke color. This is an example of
      * a custom chart configuration.
@@ -613,9 +480,11 @@ export default class YourAwesomeVisualization extends React.Component {
       })
     ),
   };
+
   state = {
-    selectedChart: CHART_TYPES.Radar
-  }
+    selectedChart: CHART_TYPES.Radar,
+  };
+
   /**
    * Restructure the data for a non-time-series, facet-based NRQL query into a
    * form accepted by the Recharts library's RadarChart.
@@ -628,22 +497,27 @@ export default class YourAwesomeVisualization extends React.Component {
       value: entry.data[0].y,
     }));
   };
+
   /**
    * Format the given axis tick's numeric value into a string for display.
    */
   formatTick = (value) => {
     return value.toLocaleString();
   };
+
   render() {
     const {nrqlQueries, stroke, fill} = this.props;
+
     const nrqlQueryPropsAvailable =
       nrqlQueries &&
       nrqlQueries[0] &&
       nrqlQueries[0].accountId &&
       nrqlQueries[0].query;
+
     if (!nrqlQueryPropsAvailable) {
       return <EmptyState />;
     }
+
     return (
       <AutoSizer>
         {({width, height}) => (
@@ -656,24 +530,14 @@ export default class YourAwesomeVisualization extends React.Component {
               if (loading) {
                 return <Spinner />;
               }
+
               if (error) {
                 return <ErrorState />;
               }
+
               const transformedData = this.transformData(data);
+
               return (
-                <React.Fragment>
-                <SegmentedControl
-                    onChange={(event, value) => console.log(value)}
-                  >
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Radar}
-                      label="Radar chart"
-                    />
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Treemap}
-                      label="Treemap chart"
-                    />
-                  </SegmentedControl>
                 <RadarChart
                   width={width}
                   height={height}
@@ -689,7 +553,6 @@ export default class YourAwesomeVisualization extends React.Component {
                     fillOpacity={0.6}
                   />
                 </RadarChart>
-                </React.Fragment>
               );
             }}
           </NrqlQuery>
@@ -698,7 +561,6 @@ export default class YourAwesomeVisualization extends React.Component {
     );
   }
 }
-
 
 const EmptyState = () => (
   <Card className="EmptyState">
@@ -719,6 +581,7 @@ const EmptyState = () => (
     </CardBody>
   </Card>
 );
+
 const ErrorState = () => (
   <Card className="ErrorState">
     <CardBody className="ErrorState-cardBody">
@@ -734,401 +597,1029 @@ const ErrorState = () => (
 );
 ```
 
-  </Step>
+This `state` value stores the chart type in which you want to show your data.
 
-If you <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">run your visualization locally</Link>, your visualization should match the following image and changing the SegmentedControl should not have any effect on the visualization:
+Now that you've created an object which enumerates the chart type options for your visualization, and you've initialized `state.selectedChart`, you're ready to implement a control UI for switching between the two chart types.
 
-<img
-  src="../../images/build-an-app/radar-chart-with-segmented-control.png"
-  alt="Visualization with SegmenetedControl"
-/>
+</Step>
 
 </Steps>
 
-## Connect component state with the new UI controls
+## Add `SegmentedControl` components
 
-In the next steps, you're going to add a function to update state and connect that with the `SegmentedControl` component.
-
-<Steps>
-
-  <Step>
-
-Add a component method that updates state to your visualization class:
-
-```js fileName=visualizations/your-visualization/index.js
-import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-} from 'recharts';
-import {
-  Card,
-  CardBody,
-  HeadingText,
-  NrqlQuery,
-  SegmentedControl,
-  SegmentedControlItem,
-  Spinner,
-  AutoSizer
-} from 'nr1';
-const CHART_TYPES = {
-  'Radar': 'radar',
-  'Treemap': 'treemap'
-}
-export default class YourAwesomeVisualization extends React.Component {
-  // Custom props you wish to be configurable in the UI must also be defined in
-  // the nr1.json file for the visualization. See docs for more details.
-  static propTypes = {
-    /**
-     * A fill color to override the default fill color. This is an example of
-     * a custom chart configuration.
-     */
-    fill: PropTypes.string,
-    /**
-     * A stroke color to override the default stroke color. This is an example of
-     * a custom chart configuration.
-     */
-    stroke: PropTypes.string,
-    /**
-     * An array of objects consisting of a nrql `query` and `accountId`.
-     * This should be a standard prop for any NRQL based visualizations.
-     */
-    nrqlQueries: PropTypes.arrayOf(
-      PropTypes.shape({
-        accountId: PropTypes.number,
-        query: PropTypes.string,
-      })
-    ),
-  };
-  state = {
-    selectedChart: CHART_TYPES.Radar
-  }
-  /**
-   * Restructure the data for a non-time-series, facet-based NRQL query into a
-   * form accepted by the Recharts library's RadarChart.
-   * (https://recharts.org/api/RadarChart).
-   */
-  transformData = (rawData) => {
-    return rawData.map((entry) => ({
-      name: entry.metadata.name,
-      // Only grabbing the first data value because this is not time-series data.
-      value: entry.data[0].y,
-    }));
-  };
-  /**
-   * Format the given axis tick's numeric value into a string for display.
-   */
-  formatTick = (value) => {
-    return value.toLocaleString();
-  };
-
-  updateSelectedChart = (evt, value) => {
-    this.setState({ selectedChart: value })
-  };
-
-  render() {
-    const {nrqlQueries, stroke, fill} = this.props;
-    const nrqlQueryPropsAvailable =
-      nrqlQueries &&
-      nrqlQueries[0] &&
-      nrqlQueries[0].accountId &&
-      nrqlQueries[0].query;
-    if (!nrqlQueryPropsAvailable) {
-      return <EmptyState />;
-    }
-    return (
-      <AutoSizer>
-        {({width, height}) => (
-          <NrqlQuery
-            query={nrqlQueries[0].query}
-            accountId={parseInt(nrqlQueries[0].accountId)}
-            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
-          >
-            {({data, loading, error}) => {
-              if (loading) {
-                return <Spinner />;
-              }
-              if (error) {
-                return <ErrorState />;
-              }
-              const transformedData = this.transformData(data);
-              return (
-                <React.Fragment>
-                <SegmentedControl
-                    onChange={(event, value) => console.log(value)}
-                  >
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Radar}
-                      label="Radar chart"
-                    />
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Treemap}
-                      label="Treemap chart"
-                    />
-                  </SegmentedControl>
-                <RadarChart
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                >
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="name" />
-                  <PolarRadiusAxis tickFormatter={this.formatTick} />
-                  <Radar
-                    dataKey="value"
-                    stroke={stroke || '#51C9B7'}
-                    fill={fill || '#51C9B7'}
-                    fillOpacity={0.6}
-                  />
-                </RadarChart>
-                </React.Fragment>
-              );
-            }}
-          </NrqlQuery>
-        )}
-      </AutoSizer>
-    );
-  }
-}
-
-
-const EmptyState = () => (
-  <Card className="EmptyState">
-    <CardBody className="EmptyState-cardBody">
-      <HeadingText
-        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-        type={HeadingText.TYPE.HEADING_3}
-      >
-        Please provide at least one NRQL query & account ID pair
-      </HeadingText>
-      <HeadingText
-        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
-        type={HeadingText.TYPE.HEADING_4}
-      >
-        An example NRQL query you can try is:
-      </HeadingText>
-      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
-    </CardBody>
-  </Card>
-);
-const ErrorState = () => (
-  <Card className="ErrorState">
-    <CardBody className="ErrorState-cardBody">
-      <HeadingText
-        className="ErrorState-headingText"
-        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-        type={HeadingText.TYPE.HEADING_3}
-      >
-        Oops! Something went wrong.
-      </HeadingText>
-    </CardBody>
-  </Card>
-);
-```
-
-  </Step>
-
-  <Step>
-
-Pass `updateSelectedChart` as the `SegmentedControl` component's onChange prop:
-
-```jsx fileName=visualizations/your-visualization/index.js
-import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-} from 'recharts';
-import {
-  Card,
-  CardBody,
-  HeadingText,
-  NrqlQuery,
-  SegmentedControl,
-  SegmentedControlItem,
-  Spinner,
-  AutoSizer
-} from 'nr1';
-const CHART_TYPES = {
-  'Radar': 'radar',
-  'Treemap': 'treemap'
-}
-export default class YourAwesomeVisualization extends React.Component {
-  // Custom props you wish to be configurable in the UI must also be defined in
-  // the nr1.json file for the visualization. See docs for more details.
-  static propTypes = {
-    /**
-     * A fill color to override the default fill color. This is an example of
-     * a custom chart configuration.
-     */
-    fill: PropTypes.string,
-    /**
-     * A stroke color to override the default stroke color. This is an example of
-     * a custom chart configuration.
-     */
-    stroke: PropTypes.string,
-    /**
-     * An array of objects consisting of a nrql `query` and `accountId`.
-     * This should be a standard prop for any NRQL based visualizations.
-     */
-    nrqlQueries: PropTypes.arrayOf(
-      PropTypes.shape({
-        accountId: PropTypes.number,
-        query: PropTypes.string,
-      })
-    ),
-  };
-  state = {
-    selectedChart: CHART_TYPES.Radar
-  }
-  /**
-   * Restructure the data for a non-time-series, facet-based NRQL query into a
-   * form accepted by the Recharts library's RadarChart.
-   * (https://recharts.org/api/RadarChart).
-   */
-  transformData = (rawData) => {
-    return rawData.map((entry) => ({
-      name: entry.metadata.name,
-      // Only grabbing the first data value because this is not time-series data.
-      value: entry.data[0].y,
-    }));
-  };
-  /**
-   * Format the given axis tick's numeric value into a string for display.
-   */
-  formatTick = (value) => {
-    return value.toLocaleString();
-  };
-
-  updateSelectedChart = (evt, value) => {
-    this.setState({ selectedChart: value })
-  };
-
-  render() {
-    const {nrqlQueries, stroke, fill} = this.props;
-    const nrqlQueryPropsAvailable =
-      nrqlQueries &&
-      nrqlQueries[0] &&
-      nrqlQueries[0].accountId &&
-      nrqlQueries[0].query;
-    if (!nrqlQueryPropsAvailable) {
-      return <EmptyState />;
-    }
-    return (
-      <AutoSizer>
-        {({width, height}) => (
-          <NrqlQuery
-            query={nrqlQueries[0].query}
-            accountId={parseInt(nrqlQueries[0].accountId)}
-            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
-          >
-            {({data, loading, error}) => {
-              if (loading) {
-                return <Spinner />;
-              }
-              if (error) {
-                return <ErrorState />;
-              }
-              const transformedData = this.transformData(data);
-              return (
-                <React.Fragment>
-                <SegmentedControl onChange={this.updateSelectedChart}>
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Radar}
-                      label="Radar chart"
-                    />
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Treemap}
-                      label="Treemap chart"
-                    />
-                  </SegmentedControl>
-                <RadarChart
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                >
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="name" />
-                  <PolarRadiusAxis tickFormatter={this.formatTick} />
-                  <Radar
-                    dataKey="value"
-                    stroke={stroke || '#51C9B7'}
-                    fill={fill || '#51C9B7'}
-                    fillOpacity={0.6}
-                  />
-                </RadarChart>
-                </React.Fragment>
-              );
-            }}
-          </NrqlQuery>
-        )}
-      </AutoSizer>
-    );
-  }
-}
-
-
-const EmptyState = () => (
-  <Card className="EmptyState">
-    <CardBody className="EmptyState-cardBody">
-      <HeadingText
-        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-        type={HeadingText.TYPE.HEADING_3}
-      >
-        Please provide at least one NRQL query & account ID pair
-      </HeadingText>
-      <HeadingText
-        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
-        type={HeadingText.TYPE.HEADING_4}
-      >
-        An example NRQL query you can try is:
-      </HeadingText>
-      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
-    </CardBody>
-  </Card>
-);
-const ErrorState = () => (
-  <Card className="ErrorState">
-    <CardBody className="ErrorState-cardBody">
-      <HeadingText
-        className="ErrorState-headingText"
-        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-        type={HeadingText.TYPE.HEADING_3}
-      >
-        Oops! Something went wrong.
-      </HeadingText>
-    </CardBody>
-  </Card>
-);
-```
-
-  </Step>
-
-</Steps>
-
-
-## Add your new chart option
-
-In the next couple of steps, you'll add the <Link to="https://recharts.org/en-US/api/Treemap">Treemap chart from Recharts</Link> and get the correct values passed into it.
+`state.selectedChart` isn't useful unless your visualization's users can actually select a chart type. Use [`SegmentedControl`](/components/segmented-control) and [`SegmentedControlItem`](/components/segmented-control-item) to switch between the two chart types.
 
 <Callout variant="tip">
-This guide uses <Link to="https://recharts.org">Recharts</Link> chart components but you can explore any other JavaScript charting libraries that are compatible with the current React version on the New Relic One Platform.
+
+To learn more about the components available in the New Relic One SDK, go to our [Intro to New Relic One SDK](/explore-docs/intro-to-sdk).
+
 </Callout>
 
 <Steps>
 
-  <Step>
+<Step>
 
-Add `Treemap` to the import from recharts:
+Import `SegmentedControl` and `SegmentedControlItem` from `nr1`:
 
-```jsx fileName=visualizations/your-visualization/index.js
+```js fileName=visualizations/radar-or-treemap/index.js
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+} from 'recharts';
+import {
+    AutoSizer,
+    Card,
+    CardBody,
+    HeadingText,
+    NrqlQuery,
+    SegmentedControl,
+    SegmentedControlItem,
+    Spinner,
+} from 'nr1';
+
+const CHART_TYPES = {
+  'Radar': 'radar',
+  'Treemap': 'treemap'
+}
+
+export default class RadarOrTreemapVisualization extends React.Component {
+  // Custom props you wish to be configurable in the UI must also be defined in
+  // the nr1.json file for the visualization. See docs for more details.
+  static propTypes = {
+    /**
+     * A fill color to override the default fill color. This is an example of
+     * a custom chart configuration.
+     */
+    fill: PropTypes.string,
+
+    /**
+     * A stroke color to override the default stroke color. This is an example of
+     * a custom chart configuration.
+     */
+    stroke: PropTypes.string,
+    /**
+     * An array of objects consisting of a nrql `query` and `accountId`.
+     * This should be a standard prop for any NRQL based visualizations.
+     */
+    nrqlQueries: PropTypes.arrayOf(
+      PropTypes.shape({
+        accountId: PropTypes.number,
+        query: PropTypes.string,
+      })
+    ),
+  };
+
+  state = {
+    selectedChart: CHART_TYPES.Radar,
+  };
+
+  /**
+   * Restructure the data for a non-time-series, facet-based NRQL query into a
+   * form accepted by the Recharts library's RadarChart.
+   * (https://recharts.org/api/RadarChart).
+   */
+  transformData = (rawData) => {
+    return rawData.map((entry) => ({
+      name: entry.metadata.name,
+      // Only grabbing the first data value because this is not time-series data.
+      value: entry.data[0].y,
+    }));
+  };
+
+  /**
+   * Format the given axis tick's numeric value into a string for display.
+   */
+  formatTick = (value) => {
+    return value.toLocaleString();
+  };
+
+  render() {
+    const {nrqlQueries, stroke, fill} = this.props;
+
+    const nrqlQueryPropsAvailable =
+      nrqlQueries &&
+      nrqlQueries[0] &&
+      nrqlQueries[0].accountId &&
+      nrqlQueries[0].query;
+
+    if (!nrqlQueryPropsAvailable) {
+      return <EmptyState />;
+    }
+
+    return (
+      <AutoSizer>
+        {({width, height}) => (
+          <NrqlQuery
+            query={nrqlQueries[0].query}
+            accountId={parseInt(nrqlQueries[0].accountId)}
+            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
+          >
+            {({data, loading, error}) => {
+              if (loading) {
+                return <Spinner />;
+              }
+
+              if (error) {
+                return <ErrorState />;
+              }
+
+              const transformedData = this.transformData(data);
+
+              return (
+                <RadarChart
+                  width={width}
+                  height={height}
+                  data={transformedData}
+                >
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="name" />
+                  <PolarRadiusAxis tickFormatter={this.formatTick} />
+                  <Radar
+                    dataKey="value"
+                    stroke={stroke || '#51C9B7'}
+                    fill={fill || '#51C9B7'}
+                    fillOpacity={0.6}
+                  />
+                </RadarChart>
+              );
+            }}
+          </NrqlQuery>
+        )}
+      </AutoSizer>
+    );
+  }
+}
+
+const EmptyState = () => (
+  <Card className="EmptyState">
+    <CardBody className="EmptyState-cardBody">
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Please provide at least one NRQL query & account ID pair
+      </HeadingText>
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
+        type={HeadingText.TYPE.HEADING_4}
+      >
+        An example NRQL query you can try is:
+      </HeadingText>
+      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
+    </CardBody>
+  </Card>
+);
+
+const ErrorState = () => (
+  <Card className="ErrorState">
+    <CardBody className="ErrorState-cardBody">
+      <HeadingText
+        className="ErrorState-headingText"
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Oops! Something went wrong.
+      </HeadingText>
+    </CardBody>
+  </Card>
+);
+```
+
+</Step>
+
+<Step>
+
+In `render()`, wrap `RadarChart` in a `React.Fragment`:
+
+```js fileName=visualizations/radar-or-treemap/index.js
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+} from 'recharts';
+import {
+    AutoSizer,
+    Card,
+    CardBody,
+    HeadingText,
+    NrqlQuery,
+    SegmentedControl,
+    SegmentedControlItem,
+    Spinner,
+} from 'nr1';
+
+const CHART_TYPES = {
+  'Radar': 'radar',
+  'Treemap': 'treemap'
+}
+
+export default class RadarOrTreemapVisualization extends React.Component {
+  // Custom props you wish to be configurable in the UI must also be defined in
+  // the nr1.json file for the visualization. See docs for more details.
+  static propTypes = {
+    /**
+     * A fill color to override the default fill color. This is an example of
+     * a custom chart configuration.
+     */
+    fill: PropTypes.string,
+
+    /**
+     * A stroke color to override the default stroke color. This is an example of
+     * a custom chart configuration.
+     */
+    stroke: PropTypes.string,
+    /**
+     * An array of objects consisting of a nrql `query` and `accountId`.
+     * This should be a standard prop for any NRQL based visualizations.
+     */
+    nrqlQueries: PropTypes.arrayOf(
+      PropTypes.shape({
+        accountId: PropTypes.number,
+        query: PropTypes.string,
+      })
+    ),
+  };
+
+  state = {
+    selectedChart: CHART_TYPES.Radar,
+  };
+
+  /**
+   * Restructure the data for a non-time-series, facet-based NRQL query into a
+   * form accepted by the Recharts library's RadarChart.
+   * (https://recharts.org/api/RadarChart).
+   */
+  transformData = (rawData) => {
+    return rawData.map((entry) => ({
+      name: entry.metadata.name,
+      // Only grabbing the first data value because this is not time-series data.
+      value: entry.data[0].y,
+    }));
+  };
+
+  /**
+   * Format the given axis tick's numeric value into a string for display.
+   */
+  formatTick = (value) => {
+    return value.toLocaleString();
+  };
+
+  render() {
+    const {nrqlQueries, stroke, fill} = this.props;
+
+    const nrqlQueryPropsAvailable =
+      nrqlQueries &&
+      nrqlQueries[0] &&
+      nrqlQueries[0].accountId &&
+      nrqlQueries[0].query;
+
+    if (!nrqlQueryPropsAvailable) {
+      return <EmptyState />;
+    }
+
+    return (
+      <AutoSizer>
+        {({width, height}) => (
+          <NrqlQuery
+            query={nrqlQueries[0].query}
+            accountId={parseInt(nrqlQueries[0].accountId)}
+            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
+          >
+            {({data, loading, error}) => {
+              if (loading) {
+                return <Spinner />;
+              }
+
+              if (error) {
+                return <ErrorState />;
+              }
+
+              const transformedData = this.transformData(data);
+
+              return (
+                <React.Fragment>
+                <RadarChart
+                  width={width}
+                  height={height}
+                  data={transformedData}
+                >
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="name" />
+                  <PolarRadiusAxis tickFormatter={this.formatTick} />
+                  <Radar
+                    dataKey="value"
+                    stroke={stroke || '#51C9B7'}
+                    fill={fill || '#51C9B7'}
+                    fillOpacity={0.6}
+                  />
+                </RadarChart>
+                </React.Fragment>
+              );
+            }}
+          </NrqlQuery>
+        )}
+      </AutoSizer>
+    );
+  }
+}
+
+const EmptyState = () => (
+  <Card className="EmptyState">
+    <CardBody className="EmptyState-cardBody">
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Please provide at least one NRQL query & account ID pair
+      </HeadingText>
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
+        type={HeadingText.TYPE.HEADING_4}
+      >
+        An example NRQL query you can try is:
+      </HeadingText>
+      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
+    </CardBody>
+  </Card>
+);
+
+const ErrorState = () => (
+  <Card className="ErrorState">
+    <CardBody className="ErrorState-cardBody">
+      <HeadingText
+        className="ErrorState-headingText"
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Oops! Something went wrong.
+      </HeadingText>
+    </CardBody>
+  </Card>
+);
+```
+
+This allows you to return multiple components from the same `render()`.
+
+</Step>
+
+<Step>
+
+Add a `SegmentedControl` and two `SegmentedControlItem` components, each with a `value` and a `label`:
+
+```js fileName=visualizations/radar-or-treemap/index.js
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+} from 'recharts';
+import {
+    AutoSizer,
+    Card,
+    CardBody,
+    HeadingText,
+    NrqlQuery,
+    SegmentedControl,
+    SegmentedControlItem,
+    Spinner,
+} from 'nr1';
+
+const CHART_TYPES = {
+  'Radar': 'radar',
+  'Treemap': 'treemap'
+}
+
+export default class RadarOrTreemapVisualization extends React.Component {
+  // Custom props you wish to be configurable in the UI must also be defined in
+  // the nr1.json file for the visualization. See docs for more details.
+  static propTypes = {
+    /**
+     * A fill color to override the default fill color. This is an example of
+     * a custom chart configuration.
+     */
+    fill: PropTypes.string,
+
+    /**
+     * A stroke color to override the default stroke color. This is an example of
+     * a custom chart configuration.
+     */
+    stroke: PropTypes.string,
+    /**
+     * An array of objects consisting of a nrql `query` and `accountId`.
+     * This should be a standard prop for any NRQL based visualizations.
+     */
+    nrqlQueries: PropTypes.arrayOf(
+      PropTypes.shape({
+        accountId: PropTypes.number,
+        query: PropTypes.string,
+      })
+    ),
+  };
+
+  state = {
+    selectedChart: CHART_TYPES.Radar,
+  };
+
+  /**
+   * Restructure the data for a non-time-series, facet-based NRQL query into a
+   * form accepted by the Recharts library's RadarChart.
+   * (https://recharts.org/api/RadarChart).
+   */
+  transformData = (rawData) => {
+    return rawData.map((entry) => ({
+      name: entry.metadata.name,
+      // Only grabbing the first data value because this is not time-series data.
+      value: entry.data[0].y,
+    }));
+  };
+
+  /**
+   * Format the given axis tick's numeric value into a string for display.
+   */
+  formatTick = (value) => {
+    return value.toLocaleString();
+  };
+
+  render() {
+    const {nrqlQueries, stroke, fill} = this.props;
+
+    const nrqlQueryPropsAvailable =
+      nrqlQueries &&
+      nrqlQueries[0] &&
+      nrqlQueries[0].accountId &&
+      nrqlQueries[0].query;
+
+    if (!nrqlQueryPropsAvailable) {
+      return <EmptyState />;
+    }
+
+    return (
+      <AutoSizer>
+        {({width, height}) => (
+          <NrqlQuery
+            query={nrqlQueries[0].query}
+            accountId={parseInt(nrqlQueries[0].accountId)}
+            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
+          >
+            {({data, loading, error}) => {
+              if (loading) {
+                return <Spinner />;
+              }
+
+              if (error) {
+                return <ErrorState />;
+              }
+
+              const transformedData = this.transformData(data);
+
+              return (
+                <React.Fragment>
+                <SegmentedControl
+                  onChange={(event, value) => console.log(value)}
+                >
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Radar}
+                    label="Radar chart"
+                  />
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Treemap}
+                    label="Treemap chart"
+                  />
+                </SegmentedControl>
+                <RadarChart
+                  width={width}
+                  height={height}
+                  data={transformedData}
+                >
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="name" />
+                  <PolarRadiusAxis tickFormatter={this.formatTick} />
+                  <Radar
+                    dataKey="value"
+                    stroke={stroke || '#51C9B7'}
+                    fill={fill || '#51C9B7'}
+                    fillOpacity={0.6}
+                  />
+                </RadarChart>
+                </React.Fragment>
+              );
+            }}
+          </NrqlQuery>
+        )}
+      </AutoSizer>
+    );
+  }
+}
+
+const EmptyState = () => (
+  <Card className="EmptyState">
+    <CardBody className="EmptyState-cardBody">
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Please provide at least one NRQL query & account ID pair
+      </HeadingText>
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
+        type={HeadingText.TYPE.HEADING_4}
+      >
+        An example NRQL query you can try is:
+      </HeadingText>
+      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
+    </CardBody>
+  </Card>
+);
+
+const ErrorState = () => (
+  <Card className="ErrorState">
+    <CardBody className="ErrorState-cardBody">
+      <HeadingText
+        className="ErrorState-headingText"
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Oops! Something went wrong.
+      </HeadingText>
+    </CardBody>
+  </Card>
+);
+```
+
+Here, your `SegmentedControl` logs the `SegmentedControlItem.value` to the console when you change your selection. The values you've defined for your `SegmentedControlItem` components correspond to the two `CHART_TYPES` you created in a previous step.
+
+</Step>
+
+<Step>
+
+Navigate to the root of your Nerdpack at _alternate-viz_.
+
+</Step>
+
+<Step>
+
+[Serve your Nerdpack locally](/build-apps/publish-deploy/serve/):
+
+```bash
+nr1 nerdpack:serve
+```
+
+</Step>
+
+<Step>
+
+Open the link to your visualization that's shown in the terminal when the Node server starts:
+
+```bash
+[output] {purple}Visualizations:
+[output]  ⁎  {green}radar-or-treemap {blue}https://one.nr/012ab3cd4Ef
+```
+
+</Step>
+
+<Step>
+
+Configure your visualization with an account ID and a query:
+
+![Visualization with SegmentedControl](../../images/custom-viz/radar-chart-with-segmented-control.png)
+
+With some required data for your chart to process, you now see a `RadarChart` with the `SegmentedControl` at the top of the view.
+
+Look at your browser's console to see your `SegmentedControl` logs:
+
+![SegmentedControl logs](../../images/custom-viz/radar-or-treemap-viz-logs.png)
+
+</Step>
+
+</Steps>
+
+## Connect your component's `state` to the `SegmentedControl`
+
+Add a method to update `state` and connect that method with the `SegmentedControl` you added in the last section.
+
+<Steps>
+
+<Step>
+
+Add a component method, called `updateSelectedChart()`:
+
+```js fileName=visualizations/radar-or-treemap/index.js
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+} from 'recharts';
+import {
+    AutoSizer,
+    Card,
+    CardBody,
+    HeadingText,
+    NrqlQuery,
+    SegmentedControl,
+    SegmentedControlItem,
+    Spinner,
+} from 'nr1';
+
+const CHART_TYPES = {
+  'Radar': 'radar',
+  'Treemap': 'treemap'
+}
+
+export default class RadarOrTreemapVisualization extends React.Component {
+  // Custom props you wish to be configurable in the UI must also be defined in
+  // the nr1.json file for the visualization. See docs for more details.
+  static propTypes = {
+    /**
+     * A fill color to override the default fill color. This is an example of
+     * a custom chart configuration.
+     */
+    fill: PropTypes.string,
+
+    /**
+     * A stroke color to override the default stroke color. This is an example of
+     * a custom chart configuration.
+     */
+    stroke: PropTypes.string,
+    /**
+     * An array of objects consisting of a nrql `query` and `accountId`.
+     * This should be a standard prop for any NRQL based visualizations.
+     */
+    nrqlQueries: PropTypes.arrayOf(
+      PropTypes.shape({
+        accountId: PropTypes.number,
+        query: PropTypes.string,
+      })
+    ),
+  };
+
+  state = {
+    selectedChart: CHART_TYPES.Radar,
+  };
+
+  /**
+   * Restructure the data for a non-time-series, facet-based NRQL query into a
+   * form accepted by the Recharts library's RadarChart.
+   * (https://recharts.org/api/RadarChart).
+   */
+  transformData = (rawData) => {
+    return rawData.map((entry) => ({
+      name: entry.metadata.name,
+      // Only grabbing the first data value because this is not time-series data.
+      value: entry.data[0].y,
+    }));
+  };
+
+  /**
+   * Format the given axis tick's numeric value into a string for display.
+   */
+  formatTick = (value) => {
+    return value.toLocaleString();
+  };
+
+  updateSelectedChart = (evt, value) => {
+    this.setState({ selectedChart: value })
+  };
+
+  render() {
+    const {nrqlQueries, stroke, fill} = this.props;
+
+    const nrqlQueryPropsAvailable =
+      nrqlQueries &&
+      nrqlQueries[0] &&
+      nrqlQueries[0].accountId &&
+      nrqlQueries[0].query;
+
+    if (!nrqlQueryPropsAvailable) {
+      return <EmptyState />;
+    }
+
+    return (
+      <AutoSizer>
+        {({width, height}) => (
+          <NrqlQuery
+            query={nrqlQueries[0].query}
+            accountId={parseInt(nrqlQueries[0].accountId)}
+            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
+          >
+            {({data, loading, error}) => {
+              if (loading) {
+                return <Spinner />;
+              }
+
+              if (error) {
+                return <ErrorState />;
+              }
+
+              const transformedData = this.transformData(data);
+
+              return (
+                <React.Fragment>
+                <SegmentedControl
+                  onChange={(event, value) => console.log(value)}
+                >
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Radar}
+                    label="Radar chart"
+                  />
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Treemap}
+                    label="Treemap chart"
+                  />
+                </SegmentedControl>
+                <RadarChart
+                  width={width}
+                  height={height}
+                  data={transformedData}
+                >
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="name" />
+                  <PolarRadiusAxis tickFormatter={this.formatTick} />
+                  <Radar
+                    dataKey="value"
+                    stroke={stroke || '#51C9B7'}
+                    fill={fill || '#51C9B7'}
+                    fillOpacity={0.6}
+                  />
+                </RadarChart>
+                </React.Fragment>
+              );
+            }}
+          </NrqlQuery>
+        )}
+      </AutoSizer>
+    );
+  }
+}
+
+const EmptyState = () => (
+  <Card className="EmptyState">
+    <CardBody className="EmptyState-cardBody">
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Please provide at least one NRQL query & account ID pair
+      </HeadingText>
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
+        type={HeadingText.TYPE.HEADING_4}
+      >
+        An example NRQL query you can try is:
+      </HeadingText>
+      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
+    </CardBody>
+  </Card>
+);
+
+const ErrorState = () => (
+  <Card className="ErrorState">
+    <CardBody className="ErrorState-cardBody">
+      <HeadingText
+        className="ErrorState-headingText"
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Oops! Something went wrong.
+      </HeadingText>
+    </CardBody>
+  </Card>
+);
+```
+
+This new method takes a `value` argument and sets `state.selectedChart` to that value.
+
+</Step>
+
+<Step>
+
+Set `SegmentedControl.onChange` to `updateSelectedChart()`:
+
+```js fileName=visualizations/radar-or-treemap/index.js
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+} from 'recharts';
+import {
+    AutoSizer,
+    Card,
+    CardBody,
+    HeadingText,
+    NrqlQuery,
+    SegmentedControl,
+    SegmentedControlItem,
+    Spinner,
+} from 'nr1';
+
+const CHART_TYPES = {
+  'Radar': 'radar',
+  'Treemap': 'treemap'
+}
+
+export default class RadarOrTreemapVisualization extends React.Component {
+  // Custom props you wish to be configurable in the UI must also be defined in
+  // the nr1.json file for the visualization. See docs for more details.
+  static propTypes = {
+    /**
+     * A fill color to override the default fill color. This is an example of
+     * a custom chart configuration.
+     */
+    fill: PropTypes.string,
+
+    /**
+     * A stroke color to override the default stroke color. This is an example of
+     * a custom chart configuration.
+     */
+    stroke: PropTypes.string,
+    /**
+     * An array of objects consisting of a nrql `query` and `accountId`.
+     * This should be a standard prop for any NRQL based visualizations.
+     */
+    nrqlQueries: PropTypes.arrayOf(
+      PropTypes.shape({
+        accountId: PropTypes.number,
+        query: PropTypes.string,
+      })
+    ),
+  };
+
+  state = {
+    selectedChart: CHART_TYPES.Radar,
+  };
+
+  /**
+   * Restructure the data for a non-time-series, facet-based NRQL query into a
+   * form accepted by the Recharts library's RadarChart.
+   * (https://recharts.org/api/RadarChart).
+   */
+  transformData = (rawData) => {
+    return rawData.map((entry) => ({
+      name: entry.metadata.name,
+      // Only grabbing the first data value because this is not time-series data.
+      value: entry.data[0].y,
+    }));
+  };
+
+  /**
+   * Format the given axis tick's numeric value into a string for display.
+   */
+  formatTick = (value) => {
+    return value.toLocaleString();
+  };
+
+  updateSelectedChart = (evt, value) => {
+    this.setState({ selectedChart: value })
+  };
+
+  render() {
+    const {nrqlQueries, stroke, fill} = this.props;
+
+    const nrqlQueryPropsAvailable =
+      nrqlQueries &&
+      nrqlQueries[0] &&
+      nrqlQueries[0].accountId &&
+      nrqlQueries[0].query;
+
+    if (!nrqlQueryPropsAvailable) {
+      return <EmptyState />;
+    }
+
+    return (
+      <AutoSizer>
+        {({width, height}) => (
+          <NrqlQuery
+            query={nrqlQueries[0].query}
+            accountId={parseInt(nrqlQueries[0].accountId)}
+            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
+          >
+            {({data, loading, error}) => {
+              if (loading) {
+                return <Spinner />;
+              }
+
+              if (error) {
+                return <ErrorState />;
+              }
+
+              const transformedData = this.transformData(data);
+
+              return (
+                <React.Fragment>
+                <SegmentedControl
+                  onChange={this.updateSelectedChart}
+                >
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Radar}
+                    label="Radar chart"
+                  />
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Treemap}
+                    label="Treemap chart"
+                  />
+                </SegmentedControl>
+                <RadarChart
+                  width={width}
+                  height={height}
+                  data={transformedData}
+                >
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="name" />
+                  <PolarRadiusAxis tickFormatter={this.formatTick} />
+                  <Radar
+                    dataKey="value"
+                    stroke={stroke || '#51C9B7'}
+                    fill={fill || '#51C9B7'}
+                    fillOpacity={0.6}
+                  />
+                </RadarChart>
+                </React.Fragment>
+              );
+            }}
+          </NrqlQuery>
+        )}
+      </AutoSizer>
+    );
+  }
+}
+
+const EmptyState = () => (
+  <Card className="EmptyState">
+    <CardBody className="EmptyState-cardBody">
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Please provide at least one NRQL query & account ID pair
+      </HeadingText>
+      <HeadingText
+        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
+        type={HeadingText.TYPE.HEADING_4}
+      >
+        An example NRQL query you can try is:
+      </HeadingText>
+      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
+    </CardBody>
+  </Card>
+);
+
+const ErrorState = () => (
+  <Card className="ErrorState">
+    <CardBody className="ErrorState-cardBody">
+      <HeadingText
+        className="ErrorState-headingText"
+        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+        type={HeadingText.TYPE.HEADING_3}
+      >
+        Oops! Something went wrong.
+      </HeadingText>
+    </CardBody>
+  </Card>
+);
+```
+
+Now, when you change your selection in the `SegmentedControl`, your selection will be set in `state`.
+
+</Step>
+
+</Steps>
+
+## Implement a `Treemap` option
+
+Add a [`Treemap`](https://recharts.org/en-US/api/Treemap) to your visualization. This map will be an alternative to the existing `RadarChart`.
+
+<Callout variant="tip" title="Technical detail">
+
+This guide uses [Recharts](https://recharts.org) components for third-party charts, but you can use any other JavaScript charting libraries that are compatible with the current React version when you build New Relic One visualizations and apps.
+
+</Callout>
+
+<Steps>
+
+<Step>
+
+Import `Treemap` from `recharts`:
+
+```js fileName=visualizations/radar-or-treemap/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -1140,20 +1631,22 @@ import {
   Treemap,
 } from 'recharts';
 import {
-  Card,
-  CardBody,
-  HeadingText,
-  NrqlQuery,
-  SegmentedControl,
-  SegmentedControlItem,
-  Spinner,
-  AutoSizer
+    AutoSizer,
+    Card,
+    CardBody,
+    HeadingText,
+    NrqlQuery,
+    SegmentedControl,
+    SegmentedControlItem,
+    Spinner,
 } from 'nr1';
+
 const CHART_TYPES = {
   'Radar': 'radar',
   'Treemap': 'treemap'
 }
-export default class YourAwesomeVisualization extends React.Component {
+
+export default class RadarOrTreemapVisualization extends React.Component {
   // Custom props you wish to be configurable in the UI must also be defined in
   // the nr1.json file for the visualization. See docs for more details.
   static propTypes = {
@@ -1162,6 +1655,7 @@ export default class YourAwesomeVisualization extends React.Component {
      * a custom chart configuration.
      */
     fill: PropTypes.string,
+
     /**
      * A stroke color to override the default stroke color. This is an example of
      * a custom chart configuration.
@@ -1178,9 +1672,11 @@ export default class YourAwesomeVisualization extends React.Component {
       })
     ),
   };
+
   state = {
-    selectedChart: CHART_TYPES.Radar
-  }
+    selectedChart: CHART_TYPES.Radar,
+  };
+
   /**
    * Restructure the data for a non-time-series, facet-based NRQL query into a
    * form accepted by the Recharts library's RadarChart.
@@ -1193,6 +1689,7 @@ export default class YourAwesomeVisualization extends React.Component {
       value: entry.data[0].y,
     }));
   };
+
   /**
    * Format the given axis tick's numeric value into a string for display.
    */
@@ -1206,14 +1703,17 @@ export default class YourAwesomeVisualization extends React.Component {
 
   render() {
     const {nrqlQueries, stroke, fill} = this.props;
+
     const nrqlQueryPropsAvailable =
       nrqlQueries &&
       nrqlQueries[0] &&
       nrqlQueries[0].accountId &&
       nrqlQueries[0].query;
+
     if (!nrqlQueryPropsAvailable) {
       return <EmptyState />;
     }
+
     return (
       <AutoSizer>
         {({width, height}) => (
@@ -1226,22 +1726,27 @@ export default class YourAwesomeVisualization extends React.Component {
               if (loading) {
                 return <Spinner />;
               }
+
               if (error) {
                 return <ErrorState />;
               }
+
               const transformedData = this.transformData(data);
+
               return (
                 <React.Fragment>
-                <SegmentedControl onChange={this.updateSelectedChart}>
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Radar}
-                      label="Radar chart"
-                    />
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Treemap}
-                      label="Treemap chart"
-                    />
-                  </SegmentedControl>
+                <SegmentedControl
+                  onChange={this.updateSelectedChart}
+                >
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Radar}
+                    label="Radar chart"
+                  />
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Treemap}
+                    label="Treemap chart"
+                  />
+                </SegmentedControl>
                 <RadarChart
                   width={width}
                   height={height}
@@ -1267,7 +1772,6 @@ export default class YourAwesomeVisualization extends React.Component {
   }
 }
 
-
 const EmptyState = () => (
   <Card className="EmptyState">
     <CardBody className="EmptyState-cardBody">
@@ -1287,6 +1791,7 @@ const EmptyState = () => (
     </CardBody>
   </Card>
 );
+
 const ErrorState = () => (
   <Card className="ErrorState">
     <CardBody className="ErrorState-cardBody">
@@ -1302,18 +1807,15 @@ const ErrorState = () => (
 );
 ```
 
-<Callout variant="tip" title="Further reading">
-To learn more about the Treemap chart component, go to the <Link to="https://recharts.org/en-US/examples/SimpleTreemap">Recharts Treemap example</Link> or the <Link to="https://recharts.org/en-US/api/Treemap">Recharts Treemap API docs</Link>.
-</Callout>
+Now, you can use `Treemap` in your visualization component.
 
-  </Step>
+</Step>
 
+<Step>
 
-  <Step>
+In `render()`, add a `Treemap` component:
 
-Under the `RadarChart` closing tag in render, add the `Treemap` component and the necessary props:
-
-```jsx fileName=visualizations/your-visualization/index.js
+```js fileName=visualizations/radar-or-treemap/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -1322,22 +1824,25 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
+  Treemap,
 } from 'recharts';
 import {
-  Card,
-  CardBody,
-  HeadingText,
-  NrqlQuery,
-  SegmentedControl,
-  SegmentedControlItem,
-  Spinner,
-  AutoSizer
+    AutoSizer,
+    Card,
+    CardBody,
+    HeadingText,
+    NrqlQuery,
+    SegmentedControl,
+    SegmentedControlItem,
+    Spinner,
 } from 'nr1';
+
 const CHART_TYPES = {
   'Radar': 'radar',
   'Treemap': 'treemap'
 }
-export default class YourAwesomeVisualization extends React.Component {
+
+export default class RadarOrTreemapVisualization extends React.Component {
   // Custom props you wish to be configurable in the UI must also be defined in
   // the nr1.json file for the visualization. See docs for more details.
   static propTypes = {
@@ -1346,6 +1851,7 @@ export default class YourAwesomeVisualization extends React.Component {
      * a custom chart configuration.
      */
     fill: PropTypes.string,
+
     /**
      * A stroke color to override the default stroke color. This is an example of
      * a custom chart configuration.
@@ -1362,9 +1868,11 @@ export default class YourAwesomeVisualization extends React.Component {
       })
     ),
   };
+
   state = {
-    selectedChart: CHART_TYPES.Radar
-  }
+    selectedChart: CHART_TYPES.Radar,
+  };
+
   /**
    * Restructure the data for a non-time-series, facet-based NRQL query into a
    * form accepted by the Recharts library's RadarChart.
@@ -1377,6 +1885,7 @@ export default class YourAwesomeVisualization extends React.Component {
       value: entry.data[0].y,
     }));
   };
+
   /**
    * Format the given axis tick's numeric value into a string for display.
    */
@@ -1390,14 +1899,17 @@ export default class YourAwesomeVisualization extends React.Component {
 
   render() {
     const {nrqlQueries, stroke, fill} = this.props;
+
     const nrqlQueryPropsAvailable =
       nrqlQueries &&
       nrqlQueries[0] &&
       nrqlQueries[0].accountId &&
       nrqlQueries[0].query;
+
     if (!nrqlQueryPropsAvailable) {
       return <EmptyState />;
     }
+
     return (
       <AutoSizer>
         {({width, height}) => (
@@ -1410,22 +1922,27 @@ export default class YourAwesomeVisualization extends React.Component {
               if (loading) {
                 return <Spinner />;
               }
+
               if (error) {
                 return <ErrorState />;
               }
+
               const transformedData = this.transformData(data);
+
               return (
                 <React.Fragment>
-                <SegmentedControl onChange={this.updateSelectedChart}>
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Radar}
-                      label="Radar chart"
-                    />
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Treemap}
-                      label="Treemap chart"
-                    />
-                  </SegmentedControl>
+                <SegmentedControl
+                  onChange={this.updateSelectedChart}
+                >
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Radar}
+                    label="Radar chart"
+                  />
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Treemap}
+                    label="Treemap chart"
+                  />
+                </SegmentedControl>
                 <RadarChart
                   width={width}
                   height={height}
@@ -1447,8 +1964,8 @@ export default class YourAwesomeVisualization extends React.Component {
                   data={transformedData}
                   dataKey="value"
                   ratio={4 / 3}
-                  stroke="#fff"
-                  fill="#8884d8"
+                  stroke={stroke || '#000000'}
+                  fill={fill || '#51C9B7'}
                 />
                 </React.Fragment>
               );
@@ -1459,7 +1976,6 @@ export default class YourAwesomeVisualization extends React.Component {
     );
   }
 }
-
 
 const EmptyState = () => (
   <Card className="EmptyState">
@@ -1480,6 +1996,7 @@ const EmptyState = () => (
     </CardBody>
   </Card>
 );
+
 const ErrorState = () => (
   <Card className="ErrorState">
     <CardBody className="ErrorState-cardBody">
@@ -1495,29 +2012,32 @@ const ErrorState = () => (
 );
 ```
 
-Now <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">render the visualization in local development</Link> to see the new Treemap chart below your Radar chart. If you scroll down a bit in your visualization, it should look something like the following:
+Here, you've defined a new `Treemap` component with some props, including `height`, `width`, `fill`, and `stroke`.
 
-<img
-  src="../../images/build-an-app/scrolled-custom-visualization-treemap-radar.png"
-  alt="Custom visualization scrolled to show both Radar and Treemap charts"
-/>
+</Step>
 
-  </Step>
+<Step>
+
+With your Nerdpack served locally, [view your visualization](https://one.newrelic.com?nerdpacks=local). The `SegmentedControl` and `RadarChart` are at the top of the view, but if you scroll down, you'll see your new `Treemap`:
+
+![Treemap and RadarChart together](../../images/custom-viz/radar-and-treemap.png)
+
+</Step>
 
 </Steps>
 
 
-## Use component state to switch between charts
+## Switch between charts with your component's `state`
 
-In the final steps, you'll use the `selectedChart` state value to determine which chart to show, the Radar chart or the Treemap chart.
+Use `state.selectedChart` to determine which chart to show: the `RadarChart` or the `Treemap`.
 
 <Steps>
 
-  <Step>
+<Step>
 
-Destructure `selectedChart` from state near the top of the `render()` function:
+Destructure `this.state` to access `selectedChart` as a separate constant. Then, compare `selectedChart` to `CHART_TYPES.Radar`. If they are the same, render a `RadarChart`. Otherwise, render a `Treemap`:
 
-```jsx fileName=visualizations/your-visualization/index.js
+```js fileName=visualizations/radar-or-treemap/index.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -1526,22 +2046,25 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
+  Treemap,
 } from 'recharts';
 import {
-  Card,
-  CardBody,
-  HeadingText,
-  NrqlQuery,
-  SegmentedControl,
-  SegmentedControlItem,
-  Spinner,
-  AutoSizer
+    AutoSizer,
+    Card,
+    CardBody,
+    HeadingText,
+    NrqlQuery,
+    SegmentedControl,
+    SegmentedControlItem,
+    Spinner,
 } from 'nr1';
+
 const CHART_TYPES = {
   'Radar': 'radar',
   'Treemap': 'treemap'
 }
-export default class YourAwesomeVisualization extends React.Component {
+
+export default class RadarOrTreemapVisualization extends React.Component {
   // Custom props you wish to be configurable in the UI must also be defined in
   // the nr1.json file for the visualization. See docs for more details.
   static propTypes = {
@@ -1550,6 +2073,7 @@ export default class YourAwesomeVisualization extends React.Component {
      * a custom chart configuration.
      */
     fill: PropTypes.string,
+
     /**
      * A stroke color to override the default stroke color. This is an example of
      * a custom chart configuration.
@@ -1566,9 +2090,11 @@ export default class YourAwesomeVisualization extends React.Component {
       })
     ),
   };
+
   state = {
-    selectedChart: CHART_TYPES.Radar
-  }
+    selectedChart: CHART_TYPES.Radar,
+  };
+
   /**
    * Restructure the data for a non-time-series, facet-based NRQL query into a
    * form accepted by the Recharts library's RadarChart.
@@ -1581,6 +2107,7 @@ export default class YourAwesomeVisualization extends React.Component {
       value: entry.data[0].y,
     }));
   };
+
   /**
    * Format the given axis tick's numeric value into a string for display.
    */
@@ -1594,15 +2121,18 @@ export default class YourAwesomeVisualization extends React.Component {
 
   render() {
     const {nrqlQueries, stroke, fill} = this.props;
-    const { selectedChart } = this.state;
+    const {selectedChart} = this.state;
+
     const nrqlQueryPropsAvailable =
       nrqlQueries &&
       nrqlQueries[0] &&
       nrqlQueries[0].accountId &&
       nrqlQueries[0].query;
+
     if (!nrqlQueryPropsAvailable) {
       return <EmptyState />;
     }
+
     return (
       <AutoSizer>
         {({width, height}) => (
@@ -1615,22 +2145,28 @@ export default class YourAwesomeVisualization extends React.Component {
               if (loading) {
                 return <Spinner />;
               }
+
               if (error) {
                 return <ErrorState />;
               }
+
               const transformedData = this.transformData(data);
+
               return (
                 <React.Fragment>
-                <SegmentedControl onChange={this.updateSelectedChart}>
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Radar}
-                      label="Radar chart"
-                    />
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Treemap}
-                      label="Treemap chart"
-                    />
-                  </SegmentedControl>
+                <SegmentedControl
+                  onChange={this.updateSelectedChart}
+                >
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Radar}
+                    label="Radar chart"
+                  />
+                  <SegmentedControlItem
+                    value={CHART_TYPES.Treemap}
+                    label="Treemap chart"
+                  />
+                </SegmentedControl>
+                {selectedChart === CHART_TYPES.Radar ? (
                 <RadarChart
                   width={width}
                   height={height}
@@ -1646,15 +2182,17 @@ export default class YourAwesomeVisualization extends React.Component {
                     fillOpacity={0.6}
                   />
                 </RadarChart>
+                ) : (
                 <Treemap
                   width={width}
                   height={height}
                   data={transformedData}
                   dataKey="value"
                   ratio={4 / 3}
-                  stroke="#fff"
-                  fill="#8884d8"
+                  stroke={stroke || '#000000'}
+                  fill={fill || '#51C9B7'}
                 />
+                )}
                 </React.Fragment>
               );
             }}
@@ -1664,7 +2202,6 @@ export default class YourAwesomeVisualization extends React.Component {
     );
   }
 }
-
 
 const EmptyState = () => (
   <Card className="EmptyState">
@@ -1685,6 +2222,7 @@ const EmptyState = () => (
     </CardBody>
   </Card>
 );
+
 const ErrorState = () => (
   <Card className="ErrorState">
     <CardBody className="ErrorState-cardBody">
@@ -1700,232 +2238,38 @@ const ErrorState = () => (
 );
 ```
 
-  </Step>
+Here, you used a ternary expression to render a `RadarChart` or a `Treemap`. The rendered chart is determined by the value of `selectedChart`.
 
-  <Step>
+</Step>
 
-Here, you compare `selectedChart` to `CHART_TYPES.Radar`. If `selectedChart` is a Radar, you render a RadarChart. Otherwise, you render a Treemap. You can achieve this by wrapping the `RadarChart` and `Treemap` in a ternary using the `selectedChart` state:
+With your Nerdpack served locally, [view your visualization](https://one.newrelic.com?nerdpacks=local).
 
-```jsx fileName=visualizations/your-visualization/index.js
-import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-} from 'recharts';
-import {
-  Card,
-  CardBody,
-  HeadingText,
-  NrqlQuery,
-  SegmentedControl,
-  SegmentedControlItem,
-  Spinner,
-  AutoSizer
-} from 'nr1';
-const CHART_TYPES = {
-  'Radar': 'radar',
-  'Treemap': 'treemap'
-}
-export default class YourAwesomeVisualization extends React.Component {
-  // Custom props you wish to be configurable in the UI must also be defined in
-  // the nr1.json file for the visualization. See docs for more details.
-  static propTypes = {
-    /**
-     * A fill color to override the default fill color. This is an example of
-     * a custom chart configuration.
-     */
-    fill: PropTypes.string,
-    /**
-     * A stroke color to override the default stroke color. This is an example of
-     * a custom chart configuration.
-     */
-    stroke: PropTypes.string,
-    /**
-     * An array of objects consisting of a nrql `query` and `accountId`.
-     * This should be a standard prop for any NRQL based visualizations.
-     */
-    nrqlQueries: PropTypes.arrayOf(
-      PropTypes.shape({
-        accountId: PropTypes.number,
-        query: PropTypes.string,
-      })
-    ),
-  };
-  state = {
-    selectedChart: CHART_TYPES.Radar
-  }
-  /**
-   * Restructure the data for a non-time-series, facet-based NRQL query into a
-   * form accepted by the Recharts library's RadarChart.
-   * (https://recharts.org/api/RadarChart).
-   */
-  transformData = (rawData) => {
-    return rawData.map((entry) => ({
-      name: entry.metadata.name,
-      // Only grabbing the first data value because this is not time-series data.
-      value: entry.data[0].y,
-    }));
-  };
-  /**
-   * Format the given axis tick's numeric value into a string for display.
-   */
-  formatTick = (value) => {
-    return value.toLocaleString();
-  };
+Select **Radar chart** from the `SegmentedControl`:
 
-  updateSelectedChart = (evt, value) => {
-    this.setState({ selectedChart: value })
-  };
+![RadarChart selected](../../images/custom-viz/radar-selected.png)
 
-  render() {
-    const {nrqlQueries, stroke, fill} = this.props;
-    const { selectedChart } = this.state;
-    const nrqlQueryPropsAvailable =
-      nrqlQueries &&
-      nrqlQueries[0] &&
-      nrqlQueries[0].accountId &&
-      nrqlQueries[0].query;
-    if (!nrqlQueryPropsAvailable) {
-      return <EmptyState />;
-    }
-    return (
-      <AutoSizer>
-        {({width, height}) => (
-          <NrqlQuery
-            query={nrqlQueries[0].query}
-            accountId={parseInt(nrqlQueries[0].accountId)}
-            pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
-          >
-            {({data, loading, error}) => {
-              if (loading) {
-                return <Spinner />;
-              }
-              if (error) {
-                return <ErrorState />;
-              }
-              const transformedData = this.transformData(data);
-              return (
-                <React.Fragment>
-                <SegmentedControl onChange={this.updateSelectedChart}>
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Radar}
-                      label="Radar chart"
-                    />
-                    <SegmentedControlItem
-                      value={CHART_TYPES.Treemap}
-                      label="Treemap chart"
-                    />
-                  </SegmentedControl>
-                {
-                  selectedChart === CHART_TYPES.Radar ?
-                (<RadarChart
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                >
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="name" />
-                  <PolarRadiusAxis tickFormatter={this.formatTick} />
-                  <Radar
-                    dataKey="value"
-                    stroke={stroke || '#51C9B7'}
-                    fill={fill || '#51C9B7'}
-                    fillOpacity={0.6}
-                  />
-                </RadarChart>)
-                :
-                (<Treemap
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                  dataKey="value"
-                  ratio={4 / 3}
-                  stroke="#fff"
-                  fill="#8884d8"
-                />)}
-                </React.Fragment>
-              );
-            }}
-          </NrqlQuery>
-        )}
-      </AutoSizer>
-    );
-  }
-}
+Select **Treemap chart** from the `SegmentedControl`:
 
-
-const EmptyState = () => (
-  <Card className="EmptyState">
-    <CardBody className="EmptyState-cardBody">
-      <HeadingText
-        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-        type={HeadingText.TYPE.HEADING_3}
-      >
-        Please provide at least one NRQL query & account ID pair
-      </HeadingText>
-      <HeadingText
-        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
-        type={HeadingText.TYPE.HEADING_4}
-      >
-        An example NRQL query you can try is:
-      </HeadingText>
-      <code>FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago</code>
-    </CardBody>
-  </Card>
-);
-const ErrorState = () => (
-  <Card className="ErrorState">
-    <CardBody className="ErrorState-cardBody">
-      <HeadingText
-        className="ErrorState-headingText"
-        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-        type={HeadingText.TYPE.HEADING_3}
-      >
-        Oops! Something went wrong.
-      </HeadingText>
-    </CardBody>
-  </Card>
-);
-```
-
-  </Step>
-
-Go to the browser and try it out! <Link to="/build-apps/build-visualization#render-the-visualization-in-local-development">Run your visualization locally</Link> and view it in the Custom Visualization app in New Relic. Click on "Treemap chart" in the SegmentedControl. You should see your Treemap chart render instead of the Radar chart:
-
-<img
-  src="../../images/build-an-app/radar-chart-with-segmented-control.png"
-  alt="Final custom visualization outcome from this guide"
-/>
-
-<p style="text-align: center">Radar chart selected </p>
-
-<img
-  src="../../images/build-an-app/treemap-chart-with-segmented-control.png"
-  alt="Final custom visualization outcome from this guide"
-/>
-
-<p style="text-align: center">Treemap chart selected </p>
+![Treemap selected](../../images/custom-viz/treemap-selected.png)
 
 </Steps>
 
 </Tutorial>
 
-
 ## Summary
 
-Congratulations on completing the steps in this example! You've learned how to:
+Congratulations! In this lesson, you learned how to:
 
 - Customize your visualization using New Relic One SDK components
 - Add a new chart type to your visualization
 - Create a user interaction in your visualization
 
-## Additional resources
+<HideWhenEmbedded>
 
-- New Relic Quick Tips video: [Dashboards and Custom Visualizations](https://www.youtube.com/watch?v=_F61mxtKfGA) (6 minutes)
-- New Relic NerdBytes video: [Configuring custom visualizations for dashboards](https://www.youtube.com/watch?v=sFpG_iG7Xa8) (7 minutes)
-- New Relic Nerdlog live stream: [Custom Data Visualizations on New Relic](https://www.youtube.com/watch?v=HuR0EdHGz24) (30 minutes)
-- New Relic One SDK components: <Link to="explore-docs/intro-to-sdk">Intro to New Relic One SDK Component library</Link>
+<Callout variant="course">
+
+This lesson is part of a course that teaches you how to build a custom visualization in the New Relic One platform. When you're ready, continue on to the next lesson: [_Customize visualizations with configuration_](/build-apps/customize-visualizations-with-configuration).
+
+</Callout>
+
+</HideWhenEmbedded>

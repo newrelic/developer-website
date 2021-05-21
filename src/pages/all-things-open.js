@@ -9,7 +9,7 @@ import FeatherIcon from '../components/FeatherIcon';
 import allthingsopen from '../images/all-things-open/allthingsopen.png';
 import gavinjohnson from '../images/all-things-open/gavin-johnson.jpg';
 import michaellang from '../images/all-things-open/michael-lang.jpg';
-import styles from './all-things-open.module.scss';
+import * as styles from './all-things-open.module.scss';
 
 const allThingsOpenPage = ({ location }) => {
   return (
@@ -111,27 +111,15 @@ const allThingsOpenPage = ({ location }) => {
           <section className={cx(styles.section, styles.assetTable)}>
             <div className={styles.point}>
               <h4>How to use the Kubernetes cluster explorer</h4>
-              <Video
-                id="qfv8ud2pai"
-                type="wistia"
-                className={styles.videoGrid}
-              />
+              <Video id="qfv8ud2pai" type="wistia" />
             </div>
             <div className={styles.point}>
               <h4>What is OpenTelemetry?</h4>
-              <Video
-                id="yY6hHhiDths"
-                type="youtube"
-                className={styles.videoGrid}
-              />
+              <Video id="yY6hHhiDths" type="youtube" />
             </div>
             <div className={styles.point}>
               <h4>Connecting Prometheus and Grafana to New Relic</h4>
-              <Video
-                id="AvqBp2joY5Q"
-                type="youtube"
-                className={styles.videoGrid}
-              />
+              <Video id="AvqBp2joY5Q" type="youtube" />
             </div>
           </section>
         </PageLayout.Content>

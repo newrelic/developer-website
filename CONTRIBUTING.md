@@ -2,48 +2,50 @@
 
 <!-- TOC GFM -->
 
-- [Guidelines for contributing](#guidelines-for-contributing)
-- [Getting started](#getting-started)
-  - [Using multiple versions of Node](#using-multiple-versions-of-node)
-  - [Quick edits](#quick-edits)
-  - [Cloning vs Forking](#cloning-vs-forking)
-  - [Submitting a PR from a forked repo](#submitting-a-pr-from-a-forked-repo)
-  - [Submitting a PR from a cloned repo](#submitting-a-pr-from-a-cloned-repo)
-  - [Using the `develop` branch](#using-the-develop-branch)
-  - [Using Conventional Commits](#using-conventional-commits)
-    - [Use `chore`](#use-chore)
-    - [Use `fix`](#use-fix)
-    - [Use `feat`](#use-feat)
-  - [Draft PRs](#draft-prs)
-  - [Deploy previews with Amplify](#deploy-previews-with-amplify)
-- [Style guide adherence](#style-guide-adherence)
-- [Reusable components](#reusable-components)
-- [Technical reference contribution guidelines](#technical-reference-contribution-guidelines)
-- [Editing existing pages](#editing-existing-pages)
-- [Creating new pages](#creating-new-pages)
-- [Deleting pages](#deleting-pages)
-- [New Relic guides](#new-relic-guides)
-  - [Purpose](#purpose)
-- [Tips for writing guides](#tips-for-writing-guides)
-  - [Check for existing content](#check-for-existing-content)
-  - [Editing existing guides](#editing-existing-guides)
-  - [Creating new guides](#creating-new-guides)
-  - [Deleting guides](#deleting-guides)
-- [Related Pages](#related-pages)
-- [Updating navigation](#updating-navigation)
-  - [Example navigation change](#example-navigation-change)
-    - [EXISTING](#existing)
-    - [UPDATED](#updated)
-- [Split testing and running experiments](#split-testing-and-running-experiments)
-  - [Step 1](#step-1)
-  - [Step 2](#step-2)
-  - [Step 3](#step-3)
-  - [Step 4](#step-4)
-  - [Step 5](#step-5)
-- [Updating the documentation bundle](#updating-the-documentation-bundle)
-  - [Step 1: Update the release number in `gatsby-config`](#step-1-update-the-release-number-in-gatsby-config)
-  - [Step 2: Add any new APIs or components to our constants list](#step-2-add-any-new-apis-or-components-to-our-constants-list)
-  - [Step 3: Add any new APIs or components to the navigation](#step-3-add-any-new-apis-or-components-to-the-navigation)
+- [Table of Contents](#table-of-contents)
+  - [Guidelines for contributing](#guidelines-for-contributing)
+  - [Getting started](#getting-started)
+    - [Using multiple versions of Node](#using-multiple-versions-of-node)
+    - [Quick edits](#quick-edits)
+    - [Cloning vs Forking](#cloning-vs-forking)
+    - [Submitting a PR from a forked repo](#submitting-a-pr-from-a-forked-repo)
+    - [Submitting a PR from a cloned repo](#submitting-a-pr-from-a-cloned-repo)
+    - [Using the `develop` branch](#using-the-develop-branch)
+    - [Branch Protection](#branch-protection)
+    - [Using Conventional Commits](#using-conventional-commits)
+      - [Use `chore`](#use-chore)
+      - [Use `fix`](#use-fix)
+      - [Use `feat`](#use-feat)
+    - [Draft PRs](#draft-prs)
+    - [Deploy previews with Amplify](#deploy-previews-with-amplify)
+  - [Style guide adherence](#style-guide-adherence)
+  - [Reusable components](#reusable-components)
+  - [Technical reference contribution guidelines](#technical-reference-contribution-guidelines)
+  - [Editing existing pages](#editing-existing-pages)
+  - [Creating new pages](#creating-new-pages)
+  - [Deleting pages](#deleting-pages)
+  - [New Relic guides](#new-relic-guides)
+    - [Purpose](#purpose)
+  - [Tips for writing guides](#tips-for-writing-guides)
+    - [Check for existing content](#check-for-existing-content)
+    - [Editing existing guides](#editing-existing-guides)
+    - [Creating new guides](#creating-new-guides)
+    - [Deleting guides](#deleting-guides)
+  - [Related Pages](#related-pages)
+  - [Updating navigation](#updating-navigation)
+    - [Example navigation change](#example-navigation-change)
+      - [EXISTING](#existing)
+      - [UPDATED](#updated)
+  - [Split testing and running experiments](#split-testing-and-running-experiments)
+    - [Step 1](#step-1)
+    - [Step 2](#step-2)
+    - [Step 3](#step-3)
+    - [Step 4](#step-4)
+    - [Step 5](#step-5)
+  - [Updating the documentation bundle](#updating-the-documentation-bundle)
+    - [Step 1: Update the release number in `gatsby-config`](#step-1-update-the-release-number-in-gatsby-config)
+    - [Step 2: Add any new APIs or components to our constants list](#step-2-add-any-new-apis-or-components-to-our-constants-list)
+    - [Step 3: Add any new APIs or components to the navigation](#step-3-add-any-new-apis-or-components-to-the-navigation)
 
 <!-- /TOC -->
 
@@ -114,6 +116,14 @@ Use the `develop` branch when creating your working branch locally. `develop` wi
 current source code. The `develop` branch will be merged into the `main` branch by the maintainers when a new release is ready to ship.
 
 All pull requests should be made against the `develop` branch.
+
+### Branch Protection
+
+The `develop` and `main` branches have "Branch Protection" enabled in Github. In order to merge a pull request into `develop`, you must have (at least) one approval. Additionally a few of the "PR Checks" are required and must pass before the pull request can be merged in. 
+
+You can review full Branch Protection details [here](https://docs.google.com/document/d/1O1SGS0i3OmPfvPhylpFe1CTMkE20889iAOF_cMFJ344/edit#heading=h.cy3jfpnyvv5z), and check out a visual representation of the workflow below:
+
+![](src/images/Dev_site_branch_protection_workflow_(develop_main).png)
 
 ### Using Conventional Commits
 
@@ -392,6 +402,9 @@ We use a local plugin to source our documentation into GraphQL. This plugin has
 some configuration that tells it what release number to use. [Update
 `gatsby-config.js`](https://github.com/newrelic/developer-website/blob/ae42737f5f1cf556f3c44d864655c9a571739e28/gatsby-config.js#L161)
 with the new release number to update.
+
+To obtain the release number visit the `wanda-ec-ui` repository on GH enterprise and
+look at the release version.
 
 ### Step 2: Add any new APIs or components to our constants list
 

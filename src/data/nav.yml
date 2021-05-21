@@ -52,10 +52,23 @@
       url: '/build-apps/advanced-config'
     - title: Create a 'Hello, World!' app
       url: '/build-apps/build-hello-world-app'
-    - title: Publish and deploy your app
+    - title: Publish and deploy your Nerdpack
       url: '/build-apps/publish-deploy'
+      pages:
+        - title: Serve your Nerdpack
+          url: '/build-apps/publish-deploy/serve'
+        - title: Publish your Nerdpack
+          url: '/build-apps/publish-deploy/publish'
+        - title: Subscribe to your Nerdpack
+          url: '/build-apps/publish-deploy/subscribe'
+        - title: Update your Nerdpack's catalog information
+          url: '/build-apps/publish-deploy/catalog'
+        - title: Tag your Nerdpack's release version
+          url: '/build-apps/publish-deploy/tag'
     - title: Permissions for managing apps
       url: '/build-apps/permission-manage-apps'
+    - title: Attach your Nerdlet to your entities
+      url: '/build-apps/attach-nerdlet-to-entities'
     - title: Map pageviews by region
       url: '/build-apps/map-pageviews-by-region'
     - title: Add a time picker
@@ -66,14 +79,14 @@
       url: '/build-apps/howto-use-nrone-table-components'
     - title: Add, query, and mutate data using NerdStorage
       url: '/build-apps/add-query-mutate-data-nerdstorage'
-    - title: Build custom visualizations for dashboards
-      url: '/build-apps/build-visualization'
-    - title: Custom visualizations and the New Relic One SDK
-      url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
-    - title: Customize visualizations with configuration
-      url: '/build-apps/customize-visualizations-with-configuration'
-    - title: Add custom visualizations to your dashboards
-      url: '/build-apps/add-visualizations-to-dashboard'
+    - title: Display your data in different ways with a custom visualization
+      pages:
+        - title: Customize your visualization with SDK components
+          url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
+        - title: Customize your visualization with configuration options
+          url: '/build-apps/customize-visualizations-with-configuration'
+        - title: Add your custom visualization to a dashboard
+          url: '/build-apps/add-visualizations-to-dashboard'
     - title: Build an A/B test application
       url: '/ab-test'
       pages:
@@ -188,6 +201,10 @@
       pages:
         - title: Configuration options
           url: '/explore-docs/custom-viz/configuration-options'
+        - title: Your first custom visualization
+          url: '/explore-docs/custom-viz/build-visualization'
+        - title: Add your visualization to a dashboard with NerdGraph
+          url: '/explore-docs/custom-viz/add-to-dashboard-nerdgraph'
     - title: New Relic One SDK Component library
       url: '/explore-docs/intro-to-sdk'
       pages:
@@ -394,6 +411,8 @@
   icon: nr-event
   url: '/developer-events'
   pages:
+    - title: FutureHack 2021
+      url: '/futurehack-2021'
     - title: Past events
       pages:
         - title: Kubecon & CloudNativeCon

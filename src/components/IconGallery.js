@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './IconGallery.module.scss';
+import * as styles from './IconGallery.module.scss';
 import IconReference from './IconReference';
 import SearchInput from './SearchInput';
 

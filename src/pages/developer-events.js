@@ -1,11 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import cx from 'classnames';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import PageLayout from '../components/PageLayout';
 import nerdDays from '../images/nerd-days/nerd-days.png';
-import styles from './nerd-days.module.scss';
 
 const EventLandingPage = ({ location }) => {
   return (
@@ -15,7 +13,6 @@ const EventLandingPage = ({ location }) => {
         <PageLayout.Header title="Developer events" />
         <PageLayout.Content>
           <section
-            className={cx(styles.section, styles.twoColumn)}
             css={css`
               @media screen and (max-width: 1180px) {
                 grid-template-columns: 1fr;
@@ -46,7 +43,7 @@ const EventLandingPage = ({ location }) => {
             />
           </section>
           <h2>Past events</h2>
-          <section className={styles.section}>
+          <section>
             <div
               css={css`
                 margin-bottom: 2rem;

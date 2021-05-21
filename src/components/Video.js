@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import styles from './Video.module.scss';
+import * as styles from './Video.module.scss';
 
 const videoPlatforms = {
   youtube: (id) => `//www.youtube.com/embed/${id}?modestbranding=1`,

@@ -1,6 +1,11 @@
 const quote = (str) => `"${str}"`;
 
 module.exports = {
+  flags: {
+    DEV_SSR: true,
+    PRESERVE_WEBPACK_CACHE: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+  },
   siteMetadata: {
     title: 'New Relic Developers',
     titleTemplate: '%s | New Relic Developers',
@@ -16,6 +21,7 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
+        forceTrailingSlashes: true,
         layout: {
           contentPadding: '2rem',
           maxWidth: '1700px',
@@ -27,7 +33,12 @@ module.exports = {
         },
         splitio: {
           core: {
-            authorizationKey: process.env.SPLITIO_AUTH_KEY,
+            authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
+          },
+          features: {
+            free_account_button_color: {
+              treatment: 'off',
+            },
           },
           env: {
             development: {
@@ -159,7 +170,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-newrelic-sdk',
       options: {
-        release: 'release-2046',
+        release: 'release-2532',
       },
     },
     'gatsby-plugin-embed-pages',

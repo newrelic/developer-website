@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { MarkdownContainer, MDX } from '@newrelic/gatsby-theme-newrelic';
 
 import Intro from './Intro';

@@ -1,6 +1,6 @@
 import React, { Children, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import splitUsing from '../utils/splitUsing';
 import splitWhen from '../utils/splitWhen';
 import { isMdxType } from '../utils/mdx';

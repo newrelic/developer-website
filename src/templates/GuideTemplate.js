@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
 import { PageUpdated } from '../components/RelatedContentModules';
@@ -75,8 +75,8 @@ GuideTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    mdx(frontmatter: { path: { eq: $path } }) {
+  query($slug: String!) {
+    mdx(fields: { slug: { eq: $slug } }) {
       body
       frontmatter {
         duration

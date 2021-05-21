@@ -1,6 +1,5 @@
 ---
 path: '/build-apps/publish-deploy/serve'
-duration: '30 min'
 title: 'Serve your Nerdpack'
 template: 'GuideTemplate'
 description: 'Learn to serve your Nerdpack locally'
@@ -19,9 +18,17 @@ tags:
 
 <Intro>
 
-Serve your Nerdpack locally when it's still in development and you're not ready to share it with others. You'll use your own machine's resources, but you'll see the app or visualization in the New Relic platform as you would if it were published.
+Serve your Nerdpack locally when it's still in development and you're not ready to share it with others. You'll use your own machine's resources, but you'll see the Nerdpack in the New Relic platform as you would if it were published.
 
 </Intro>
+
+## Update your CLI
+
+Before you run any commands, ensure that you have the latest version of the CLI:
+
+```sh
+nr1 update
+```
 
 ## Serve your Nerdpack locally
 
@@ -42,7 +49,7 @@ If you've successfully served your Nerdpack, you should see some success output,
 [output] {blue}↩{normal}  Server will reload automatically if you modify any file!
 ```
 
-While your Nerdpack is being served locally, the server will automatically reload your app or visualization when it detects that you've modified a file. This doesn't include the metadata file _nr1.json_ or the styles file _styles.css_. If you update those files, you need to stop your local server with `CTRL+C` and restart it with `nr1 nerdpack:serve`.
+While your Nerdpack is being served locally, the server will automatically reload your Nerdpack when it detects that you've modified a file. This doesn't include the metadata file _nr1.json_ or the styles file _styles.css_. If you update those files, you need to stop your local server with `CTRL+C` and restart it with `nr1 nerdpack:serve`.
 
 </Step>
 
@@ -74,7 +81,7 @@ If you're serving a Nerdpack with a launcher and a Nerdlet, you'll find your loc
 
 If you're serving a Nerdpack with a visualization, go to **Favorite apps > Custom Visualizations**:
 
-![Custom visualizations](../../../images/serve-publish-subscribe/custom-visualizations.png)
+![Custom visualizations](../../../images/serve-publish-subscribe/custom-viz.png)
 
 <Callout variant="tip">
 
@@ -84,7 +91,7 @@ If **Custom Visualizations** isn't favorited, you can find it under **Your apps*
 
 From **Custom Visualizations**, you'll see your visualization:
 
-![Locally served visualization in New Relic](../../../images/serve-publish-subscribe/local-viz.png)
+![Locally served visualization in New Relic](../../../images/serve-publish-subscribe/local-visualization.png)
 
 Whether you're serving a Nerdpack for an app or a visualization, you'll see a `</> Local` indicator on its UI tile. Use this to distinguish between published Nerdpacks and locally served Nerdpacks.
 
@@ -98,7 +105,7 @@ When you're ready to stop serving your Nerdpack locally, type `CTRL+C` into your
 
 </Steps>
 
-## Resolve issues with accessing your local server
+## Resolve issues with accessing your local Nerdpack
 
 Sometimes, when you serve your Nerdpack locally, you may come across issues. You may be unable to serve your Nerdpack because of bugs in your code. Or, you may successfully serve your Nerdpack but be unable to find it in New Relic. Consider some common solutions for resolving these issues.
 
@@ -119,13 +126,13 @@ nr1 nerdpack:serve --verbose
 
 ### Show locally served Nerdpacks
 
-If you don't find your app or visualization in New Relic, make sure you're using the `?nerdpacks=local` query string. If you're not, New Relic won't load your locally served Nerdpack on the platform.
+If you don't find your Nerdpack in New Relic, make sure you're using the `?nerdpacks=local` query string. If you're not, New Relic won't load your locally served Nerdpack on the platform.
 
 ### Check your local profile
 
-With `nr1`, you can [set a default New Relic profile](../../../explore-docs/nr1-common#nr1-profiles). This profile is used for all commands unless otherwise specified with the command's `--profile` option. When you serve your Nerdpack with `nr1 nerdpack:serve`, you must be signed into the same profile in New Relic that you're serving with locally.
+With `nr1`, you can [set a default New Relic profile](/explore-docs/nr1-common#nr1-profiles). This profile is used for all commands unless otherwise specified with the command's `--profile` option. When you serve your Nerdpack with `nr1 nerdpack:serve`, you must be signed into the same profile in New Relic that you're serving with locally.
 
-So, if you don't find your app or visualization in New Relic and you're using the correct query string, compare your local profile with the profile you're using in the browser to make sure they're the same.
+So, if you don't find your Nerdpack in New Relic and you're using the correct query string, compare your local profile with the profile you're using in the browser to make sure they're the same.
 
 ### Access your proxy browser
 
@@ -135,14 +142,14 @@ When you run `nr1 nerdpack:serve`, your code is served by your local machine usi
 
 To load a Nerdpack into the platform, whether it's locally served or published to the app catalog, New Relic uses an `<IFRAME>` and a separate domain (a subdomain of nr-ext.net), relying on same-domain policy to sandbox the code.
 
-So, if you don't find your app or visualization in New Relic, you're using the correct query string, and you're using the correct profile, your network administrator may need to enable access to:
+So, if you don't find your Nerdpack in New Relic, you're using the correct query string, and you're using the correct profile, your network administrator may need to enable access to:
 
 - Any subdomain of nr-local.net, or, at the very least, to any domain of the shape of `<UserId>`.nr-local.net, where `<UserId>` is a 32-hexadecimal character identifier that is unique to the user logged into the platform. You can use `[0-9a-f]{32}` to discriminate it.
 - Any subdomain of nr-ext.net, or, at the very least, to any domain in the shape of `<NerdpackUuid>`.g `<NerdpackGid>`.nr-ext.net, where `<NerdpackUuid>` is the UUID assigned to your package, and `<NerdpackGid>` is zero, or a positive integer. You can use `0|[1-9]\d+` to discriminate it.
 
 ## Further reading
 
-Read the [`nr1 nerdpack:serve` documentation](../../../explore-docs/nr1-nerdpack#nr1-nerdpackserve) to learn more. Or, view the `nr1` help page:
+Read the [`nr1 nerdpack:serve`](/explore-docs/nr1-nerdpack#nr1-nerdpackserve) documentation to learn more. Or, view the `nr1` help page:
 
 ```sh
 nr1 nerdpack:serve --help

@@ -7,7 +7,7 @@ import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import kubeconHeader from '../images/kubecon-europe-2020/kubecon-europe-2020.jpg';
-import styles from './kubecon-europe-2020.module.scss';
+import * as styles from './kubecon-europe-2020.module.scss';
 
 const KubeConPage = ({ location }) => {
   return (
@@ -102,27 +102,15 @@ const KubeConPage = ({ location }) => {
           <section className={cx(styles.section, styles.assetTable)}>
             <div className={styles.point}>
               <h4>How to use the Kubernetes cluster explorer</h4>
-              <Video
-                id="qfv8ud2pai"
-                type="wistia"
-                className={styles.videoGrid}
-              />
+              <Video id="qfv8ud2pai" type="wistia" />
             </div>
             <div className={styles.point}>
               <h4>What is OpenTelemetry?</h4>
-              <Video
-                id="yY6hHhiDths"
-                type="youtube"
-                className={styles.videoGrid}
-              />
+              <Video id="yY6hHhiDths" type="youtube" />
             </div>
             <div className={styles.point}>
               <h4>Connecting Prometheus and Grafana to New Relic</h4>
-              <Video
-                id="AvqBp2joY5Q"
-                type="youtube"
-                className={styles.videoGrid}
-              />
+              <Video id="AvqBp2joY5Q" type="youtube" />
             </div>
           </section>
         </PageLayout.Content>

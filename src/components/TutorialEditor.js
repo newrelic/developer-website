@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
 import path from 'path';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { darken } from 'polished';
 
 const TutorialEditor = ({ className, focusedFileName, diff, project }) => {

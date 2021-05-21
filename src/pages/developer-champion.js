@@ -8,7 +8,7 @@ import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import devChampionHeader from '../images/developer-champion/developer-champions.jpg';
 import uptimeEverythingHeader from '../images/developer-champion/uptime-everything-header-image.jpg';
-import styles from './developer-champion.module.scss';
+import * as styles from './developer-champion.module.scss';
 
 const DeveloperChampionPage = ({ location }) => {
   return (

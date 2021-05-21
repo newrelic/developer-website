@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { graphql } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
@@ -13,6 +13,8 @@ import PropList from '../components/PropList';
 import { Section, SectionTitle } from './referenceTemplateStyles';
 import IconGallery from '../components/IconGallery';
 import TypeDefReference from '../components/TypeDefReference';
+import { SdkContext } from '../components/SdkContext';
+import Spinner from '../components/Spinner';
 
 const chartStyles = {
   height: '200px',
@@ -50,6 +52,8 @@ const ComponentReferenceTemplate = ({ data, location }) => {
     },
   } = data;
 
+  const { loaded: sdkLoaded, error: sdkError } = useContext(SdkContext);
+
   return (
     <>
       <DevSiteSeo title={name} location={location} />
@@ -69,19 +73,24 @@ const ComponentReferenceTemplate = ({ data, location }) => {
             <Section>
               <div>
                 <SectionTitle>Examples</SectionTitle>
-                {examples.map((example, i) => (
-                  <ReferenceExample
-                    key={i}
-                    useToastManager={name === 'Toast'}
-                    example={example}
-                    previewStyle={previewStyles[name]}
-                    css={css`
-                      &:not(:last-child) {
-                        margin-bottom: 2rem;
-                      }
-                    `}
-                  />
-                ))}
+                {sdkLoaded &&
+                  examples.map((example, i) => (
+                    <ReferenceExample
+                      key={i}
+                      useToastManager={name === 'Toast'}
+                      example={example}
+                      previewStyle={previewStyles[name]}
+                      css={css`
+                        &:not(:last-child) {
+                          margin-bottom: 2rem;
+                        }
+                      `}
+                    />
+                  ))}
+                {!sdkLoaded && !sdkError && <Spinner />}
+                {sdkError && (
+                  <div>There was a problem loading this example</div>
+                )}
               </div>
             </Section>
           )}

@@ -1,3 +1,129 @@
+# [1.49.0](https://github.com/newrelic/developer-website/compare/v1.48.1...v1.49.0) (2021-05-20)
+
+
+### Features
+
+* Rewrite Nerdpack permissions to clarify ([be4bc03](https://github.com/newrelic/developer-website/commit/be4bc034548bac3400b6e2b6c5cb63fd34933072))
+
+## [1.48.1](https://github.com/newrelic/developer-website/compare/v1.48.0...v1.48.1) (2021-05-14)
+
+
+### Bug Fixes
+
+* update to gatsby 3.5 ([5b439c3](https://github.com/newrelic/developer-website/commit/5b439c34ef89e87718a5feec566178325499b7f8))
+
+# [1.48.0](https://github.com/newrelic/developer-website/compare/v1.47.3...v1.48.0) (2021-05-13)
+
+
+### Features
+
+* adding feature flags for faster building ([7c7a892](https://github.com/newrelic/developer-website/commit/7c7a8921af50c4cef0077642ac6a90de18aa9de3))
+
+## [1.47.3](https://github.com/newrelic/developer-website/compare/v1.47.2...v1.47.3) (2021-05-12)
+
+
+### Bug Fixes
+
+* update to latest version of theme ([cd271d9](https://github.com/newrelic/developer-website/commit/cd271d9b41fa841632ae56a874230c7b3a4fb53a))
+
+## [1.47.2](https://github.com/newrelic/developer-website/compare/v1.47.1...v1.47.2) (2021-05-12)
+
+
+### Bug Fixes
+
+* enable branch protection with correct check ([8115d5e](https://github.com/newrelic/developer-website/commit/8115d5eab19c2a95d0ea74e5800ea579817db941))
+
+## [1.47.1](https://github.com/newrelic/developer-website/compare/v1.47.0...v1.47.1) (2021-05-11)
+
+
+### Bug Fixes
+
+* create embed pages with trailing slashes ([3fd3230](https://github.com/newrelic/developer-website/commit/3fd3230c27c278739085258c331871dcbc6832a6))
+
+# [1.47.0](https://github.com/newrelic/developer-website/compare/v1.46.0...v1.47.0) (2021-05-11)
+
+
+### Features
+
+* Update theme to include split(a/b) testing ([9c698ca](https://github.com/newrelic/developer-website/commit/9c698cad0f8312e43d62bff20b574c7919f34d60))
+
+# [1.46.0](https://github.com/newrelic/developer-website/compare/v1.45.0...v1.46.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* nav-to-apps image path ([85510af](https://github.com/newrelic/developer-website/commit/85510af1790da95c346e66d7cf26d337bfa7bc6e))
+* Tutorial usage error ([e1067dd](https://github.com/newrelic/developer-website/commit/e1067dd989d081030483f269ca8e2be63d83cfcc))
+
+
+### Features
+
+* Add a new doc covering entities context ([d4b8b59](https://github.com/newrelic/developer-website/commit/d4b8b59b1442bf11ed9f1f6370500398d3d51974))
+* New guide to add viz to dashboard with NerdGraph ([d1f8c18](https://github.com/newrelic/developer-website/commit/d1f8c18b8bc1cde29ff588fa0b4468b94b63fe37))
+
+# [1.45.0](https://github.com/newrelic/developer-website/compare/v1.44.3...v1.45.0) (2021-05-10)
+
+
+### Bug Fixes
+
+* Broken image link ([ca6efbb](https://github.com/newrelic/developer-website/commit/ca6efbb7f2a86670c7d8053055a9f3a2071c53b9))
+* typo ([e9cb6cb](https://github.com/newrelic/developer-website/commit/e9cb6cb80dff22f3f2db1ac6c8a05302b2b4d016))
+
+
+### Features
+
+* Add catalog guide ([07c691e](https://github.com/newrelic/developer-website/commit/07c691e00e429f0ec43e82c61492c13a08d5ee5c))
+* Add more screenshots ([6ac1b40](https://github.com/newrelic/developer-website/commit/6ac1b40ca2c7f47379b6fcb27ebb27468a48fbb6))
+* Initial commit for tag ([0f9ac7c](https://github.com/newrelic/developer-website/commit/0f9ac7cf3bf6a15b6a9be946c0db26b22354481f))
+* Initial commit of subscribe doc ([9f43790](https://github.com/newrelic/developer-website/commit/9f437909729e403ddc8eac75df0a433ee746f4db))
+
+## [1.44.3](https://github.com/newrelic/developer-website/compare/v1.44.2...v1.44.3) (2021-04-26)
+
+
+### Bug Fixes
+
+* Add gatsby's react to the window instead of importing from nr-assets ([253e7a7](https://github.com/newrelic/developer-website/commit/253e7a73c43e61abc0f5ba63435b654614ff80da))
+
+## [1.44.2](https://github.com/newrelic/developer-website/compare/v1.44.1...v1.44.2) (2021-04-26)
+
+
+### Bug Fixes
+
+* referrer field not being sent on sign up ([968abe9](https://github.com/newrelic/developer-website/commit/968abe90ebe86fb7ed4bfc73503681d655cc0c18))
+
+## [1.44.1](https://github.com/newrelic/developer-website/compare/v1.44.0...v1.44.1) (2021-04-26)
+
+
+### Bug Fixes
+
+* Corrupted screenshots caused all images to not load ([c20d613](https://github.com/newrelic/developer-website/commit/c20d613899977198f2e9cff87b329e7a4fe6cb25))
+
+# [1.44.0](https://github.com/newrelic/developer-website/compare/v1.43.0...v1.44.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* Fix an incorrect resource link. Use absolute URLs instead of relative. ([e0808f1](https://github.com/newrelic/developer-website/commit/e0808f1ac75a70e135e59b98d8c342efd9f956c8))
+
+
+### Features
+
+* Upgrade to Gatsby v3 ([6e7c2a4](https://github.com/newrelic/developer-website/commit/6e7c2a4542e80dc44da7223f0beee54d0c7dee50))
+
+# [1.43.0](https://github.com/newrelic/developer-website/compare/v1.42.3...v1.43.0) (2021-04-26)
+
+
+### Features
+
+* Language/image edits to custom viz course ([6900a7a](https://github.com/newrelic/developer-website/commit/6900a7a033d2da6089deda9e590cc5cd1c87ab7c))
+
+## [1.42.3](https://github.com/newrelic/developer-website/compare/v1.42.2...v1.42.3) (2021-04-23)
+
+
+### Bug Fixes
+
+* correct spelling of FutureStack ([9b8cea6](https://github.com/newrelic/developer-website/commit/9b8cea6ee26ebce44089eb5835a406f9ff700040))
+
 ## [1.42.2](https://github.com/newrelic/developer-website/compare/v1.42.1...v1.42.2) (2021-04-21)
 
 

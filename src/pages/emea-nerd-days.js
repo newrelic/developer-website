@@ -1,6 +1,6 @@
 import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import {
@@ -12,7 +12,7 @@ import {
 import DevSiteSeo from '../components/DevSiteSeo';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import FeatherIcon from '../components/FeatherIcon';
-import styles from './nerd-days.module.scss';
+import * as styles from './nerd-days.module.scss';
 import NerdDaysLogo from '../components/NerdDaysLogo';
 import graphLines from '../images/nerd-days/hero-image-graph-lines.png';
 import heroBackgroundPattern from '../images/nerd-days/nerd-days-hero-bg-pattern.png';
@@ -257,8 +257,7 @@ const NerdDaysPage = ({ location }) => {
                 }
               `}
             >
-              Nerd Days is a{' '}
-              <em className={cx(styles.heroHeadingHighlight)}>free</em>
+              Nerd Days is a <em>free</em>
               {` `}
               1-day event focused on building more perfect software
             </h3>
@@ -270,11 +269,7 @@ const NerdDaysPage = ({ location }) => {
               10 (Dates vary by region)
             </SectionDescription>
             <div
-              className={cx(
-                styles.section,
-                styles.twoColumnAlt,
-                styles.registrationSection
-              )}
+              className={cx(styles.twoColumnAlt, styles.registrationSection)}
             >
               <div>
                 <h2>What is Nerd Days exactly…</h2>
@@ -352,7 +347,7 @@ const NerdDaysPage = ({ location }) => {
               />
             </div>
           </Section>
-          <Section className={cx(styles.speakersSection)}>
+          <Section>
             <SectionHeading>Speaker line up</SectionHeading>
             <SectionDescription>
               Get hands on with sessions presented by the following Relics,
@@ -486,13 +481,7 @@ const NerdDaysPage = ({ location }) => {
               />
               <TrackItem
                 name="Fundamentals"
-                icon={
-                  <img
-                    className={cx(styles.trackIcon)}
-                    src={shapesIcon}
-                    alt="Fundamentals"
-                  />
-                }
+                icon={<img src={shapesIcon} alt="Fundamentals" />}
               />
             </ul>
           </Section>

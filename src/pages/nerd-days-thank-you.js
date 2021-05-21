@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import DevSiteSeo from '../components/DevSiteSeo';
 import nerdDays from '../images/nerd-days/nerd-days.png';
-import styles from './nerd-days.module.scss';
+import * as styles from './nerd-days.module.scss';
 
 const NerdDaysPage = ({ location }) => {
   return (
@@ -12,7 +12,7 @@ const NerdDaysPage = ({ location }) => {
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Content>
-          <section className={cx(styles.section, styles.twoColumnAlt)}>
+          <section className={cx(styles.twoColumnAlt)}>
             <div>
               <img
                 className={styles.img}

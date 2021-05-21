@@ -1,13 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import { PageContext } from '../components/PageContext';
-import styles from './index.module.scss';
+import * as styles from './index.module.scss';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import Video from '../components/Video';
 
@@ -135,14 +135,10 @@ const NerdbytesPage = ({ location }) => {
               </p>
               <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
                 Listen
-                <FeatherIcon className={styles.Icon} name="link" />
+                <FeatherIcon name="link" />
               </Button>
             </div>
-            <img
-              className={styles.img}
-              src={podcastBadge}
-              alt="podcast badge"
-            />
+            <img src={podcastBadge} alt="podcast badge" />
           </section>
         </PageLayout.Content>
       </PageLayout>
