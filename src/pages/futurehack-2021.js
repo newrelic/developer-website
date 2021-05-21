@@ -10,6 +10,7 @@ import * as styles from './futurehack.module.scss';
 import nerdlogBanner from '../images/futurehack/futurehack-banner.png';
 import styled from '@emotion/styled';
 import Agenda from '../components/Agenda';
+import Video from '../components/Video';
 
 const FutureHackPage = ({ location }) => {
   const {
@@ -44,29 +45,37 @@ const FutureHackPage = ({ location }) => {
           </section>
 
           <Section>
-            <SectionHeading>Register for FutureStack: Level Up</SectionHeading>
-            <SectionDescription>
-              Jump into our 24-hour virtual FutureHack to compete with fellow
-              developers, engineers, practitioners, and students to create
-              <br /> your most kick-ass project. It's your opportunity to shine,
-              with Relics and sponsor engineers
-              <br /> there to help you through Slack and Zoom rooms.
-            </SectionDescription>
-            <SectionDescription>
-              <strong>
-                To participate in FutureHack,{' '}
-                <a href="https://web.cvent.com/event/ac440313-3922-45f5-b5b9-0812f29f4a51/summary?RefId=WEBL31&rt=DKI6UYQP806AeXIj4Q4uxw">
-                  you must register for FutureStack: Level Up.
-                </a>
-              </strong>
-              <br /> After you've registered for FutureStack, make sure to add
-              FutureHack to your
-              <br /> conference schedule and{' '}
-              <a href="/">fill out the team submission form.</a>
-            </SectionDescription>
-            <CtaItem to="https://web.cvent.com/event/ac440313-3922-45f5-b5b9-0812f29f4a51/summary?RefId=WEBL31&rt=DKI6UYQP806AeXIj4Q4uxw">
-              Register for FutureHack
-            </CtaItem>
+            <div className={cx(styles.twoColumnAlt)}>
+              <div>
+                <SectionHeading>
+                  Register for FutureStack: Level Up
+                </SectionHeading>
+                <SectionDescription>
+                  Jump into our 24-hour virtual FutureHack to compete with
+                  fellow developers, engineers, practitioners, and students to
+                  create your most kick-ass project. It's your opportunity to
+                  shine, with Relics and sponsor engineers there to help you
+                  through Slack and Zoom rooms.
+                </SectionDescription>
+                <SectionDescription>
+                  <strong>
+                    To participate in FutureHack,{' '}
+                    <a href="https://web.cvent.com/event/ac440313-3922-45f5-b5b9-0812f29f4a51/summary?RefId=WEBL31&rt=DKI6UYQP806AeXIj4Q4uxw">
+                      you must register for FutureStack: Level Up.
+                    </a>
+                  </strong>{' '}
+                  After you've registered for FutureStack, make sure to add
+                  FutureHack to your conference schedule and{' '}
+                  <a href="/">fill out the team submission form.</a>
+                </SectionDescription>
+                <CtaItem to="https://web.cvent.com/event/ac440313-3922-45f5-b5b9-0812f29f4a51/summary?RefId=WEBL31&rt=DKI6UYQP806AeXIj4Q4uxw">
+                  Register for FutureHack
+                </CtaItem>
+              </div>
+              <div>
+                <Video id="38ds3lkugt" type="wistia" />
+              </div>
+            </div>
           </Section>
 
           <Section
@@ -75,8 +84,10 @@ const FutureHackPage = ({ location }) => {
               margin-top: 2rem;
             `}
           >
-            <SectionHeading>FutureHack 2021 Tracks</SectionHeading>
-            <SectionDescription>
+            <SectionHeading className={styles.sectionTitle}>
+              FutureHack 2021 Tracks
+            </SectionHeading>
+            <SectionDescription className={styles.sectionDesc}>
               FutureHack welcomes all competitors across varying techincal
               skillsets to participate in varying tracks.
               <br /> Wheather you're a student, new hacker, seasoned vet, or
@@ -179,7 +190,9 @@ const FutureHackPage = ({ location }) => {
           </Section>
 
           <Section>
-            <SectionHeading>FutureHack Agenda</SectionHeading>
+            <SectionHeading className={styles.sectionTitle}>
+              FutureHack Agenda
+            </SectionHeading>
             <h4 className={styles.agendaDate}>Tuesday, May 25, 2021</h4>
 
             <Agenda
@@ -389,7 +402,6 @@ const Section = styled.section`
 
 const SectionHeading = styled.h3`
   font-size: 1.75rem;
-  text-align: center;
 
   ${breakpoints.mobile} {
     font-size: 1.5rem;
@@ -398,7 +410,6 @@ const SectionHeading = styled.h3`
 
 const SectionDescription = styled.p`
   margin-bottom: 2rem;
-  text-align: center;
 `;
 
 const CtaItem = ({ date, to, children }) => (
@@ -409,7 +420,7 @@ const CtaItem = ({ date, to, children }) => (
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: start;
 
       &:last-child {
         margin-right: 0;

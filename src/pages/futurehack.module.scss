@@ -5,7 +5,7 @@
 
 .twoColumnAlt {
   display: grid;
-  grid-template-columns: 45% 45%;
+  grid-template-columns: 45% 40%;
   grid-gap: 2rem;
 }
 
@@ -93,6 +93,14 @@
     text-align: center;
     font-size: 1.2rem;
     margin: 2.5rem 0 1rem;
+}
+
+.sectionTitle{
+  text-align: center;
+}
+
+.sectionDesc {
+  text-align: center;
 }
 
 .hackTrack{
