@@ -6,8 +6,9 @@ import { Surface, Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
-import studentsHeader from '../images/students/students-banner.png';
-import styles from './students.module.scss';
+import Video from '../components/Video';
+import studentPackLogo from '../images/students/studentPack.png';
+import * as styles from './students.module.scss';
 
 const StudentsPage = ({ location }) => {
   return (
@@ -18,6 +19,12 @@ const StudentsPage = ({ location }) => {
         <PageLayout.Content>
           <section className={cx(styles.section, styles.twoColumn)}>
             <div>
+              <img
+                src={studentPackLogo}
+                alt="New Relic Student Edition in GitHub Student Developer Pack"
+              />
+              <br />
+              <br />
               <p>
                 Traditional computer sciences are great, but hands-on experience
                 with modern platforms positions you as a more competitive
@@ -35,21 +42,17 @@ const StudentsPage = ({ location }) => {
               </p>
               <p>
                 We are excited to announce the New Relic Student Edition as an
-                exclusive offer in the GitHub Student Pack. Github created the
-                Student Pack to help students ship software like a pro, and with
+                exclusive offer in the GitHub Student Developer Pack. GitHub created the
+                Student Developer Pack to help students ship software like a pro, and with
                 New Relic, the Student Edition adds to making that possible.
               </p>
               <p>
                 To get access to the Student Edition,{' '}
                 <a href="/">sign up for a free account</a> and verify your
-                student status using the GitHub Student Pack
+                student status using the GitHub Student Developer Pack
               </p>
             </div>
-            <img
-              className={styles.img}
-              src={studentsHeader}
-              alt="student edition header"
-            />
+            <Video id="irf10ez4h1" type="wistia" />
           </section>
           <section className={cx(styles.section, styles.stepsSection)}>
             <h2>Access the New Relic Student Edition</h2>
@@ -91,8 +94,8 @@ const StudentsPage = ({ location }) => {
                     Verify Your Student Status
                   </h3>
                   <p className={styles.stepDetail}>
-                    The Student Edition is offered through the Github Student
-                    Pack. If you don't have access to GitHub Students, and
+                    The Student Edition is offered through the <a href="https://education.GitHub.com/benefits">GitHub Student
+                    Developer Pack</a>. If you don't have access to GitHub Students, and
                     verify your account.
                   </p>
 
@@ -102,7 +105,7 @@ const StudentsPage = ({ location }) => {
                     variant={Button.VARIANT.SECONDARY}
                     className={styles.stepButton}
                   >
-                    Github Student Pack
+                    GitHub Student Developer Pack
                   </Button>
                 </Surface>
                 <Surface
@@ -123,7 +126,7 @@ const StudentsPage = ({ location }) => {
                     variant={Button.VARIANT.SECONDARY}
                     className={styles.stepButton}
                   >
-                    Access New Relic ONe
+                    Access New Relic One
                   </Button>
                 </Surface>
               </div>
