@@ -32,6 +32,34 @@
   }
 }
 
+
+
+.faqSection {
+  margin: 6rem 0 3rem;
+  h2{
+      text-align: center;
+      margin-bottom: 2rem;
+  }
+  .group{
+    margin: 0 0 3rem 0;
+    .question{
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+  }
+  .chart{
+    width: 450px;
+    thead {
+      border-bottom: 2px solid #000;
+      td{
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+}
+
 .stepsListing {
   --guide-list-row-height: auto;
   position: relative;
