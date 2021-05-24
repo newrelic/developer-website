@@ -281,8 +281,8 @@ const StudentsPage = ({ location }) => {
                   <tbody>
                     <tr>
                       <td>Free Full Users</td>
-                      <td>3 /month</td>
-                      <td>1 /month</td>
+                      <td>3 users</td>
+                      <td>1 user</td>
                     </tr>
                     <tr>
                       <td>Free Data</td>
