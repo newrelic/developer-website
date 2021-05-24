@@ -208,8 +208,8 @@ const StudentsPage = ({ location }) => {
                 </p>
                 <ul>
                   <li>
-                    Sign up for Student Edition. You will be prompted to create
-                    or log in to your GitHub account
+                    Sign up for Student Edition. You'll be prompted to create or
+                    log in to your GitHub account
                   </li>
                   <li>
                     Apply for the GitHub Student Developer Pack, which requires
@@ -317,8 +317,8 @@ const StudentsPage = ({ location }) => {
             <div className={styles.group}>
               <p className={styles.question}>Does my Student Edition expire?</p>
               <p className={styles.answer}>
-                You will have access to the Student Edition for as long as
-                you’re an active student in the GitHub Student pack.
+                You'll have access to the Student Edition for as long as you’re
+                an active student in the GitHub Student pack.
               </p>
             </div>
             <div className={styles.group}>
