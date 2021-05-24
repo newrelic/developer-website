@@ -29,26 +29,26 @@ const StudentsPage = ({ location }) => {
                 Traditional computer sciences are great, but hands-on experience
                 with modern platforms positions you as a more competitive
                 candidate. The New Relic Student Edition gives you access to the
-                same industry tools that observability professionals use -- for
+                same industry tools that observability professionals use--for
                 free.
               </p>
               <p>
                 Whether you’re just getting started with your engineering
-                career, looking to pivot, or an educator ready to share the
-                value of modern technology - we’ve got you covered. From access
-                to the best-in-class observability platform, training, and
-                certifications, you’ll have access to everything you need to
+                journey, looking to pivot into a career in tech, or an educator
+                ready to share the value of modern technology, we’ve got you
+                covered. With our training, certifications, and best-in-class
+                observability platform you'll have everything you need to
                 compete in the market.
               </p>
               <p>
-                We are excited to announce the New Relic Student Edition as an
+                We're excited to announce the New Relic Student Edition as an
                 exclusive offer in the GitHub Student Developer Pack. GitHub
                 created the Student Developer Pack to help students ship
-                software like a pro, and with New Relic, the Student Edition
-                adds to making that possible.
+                software like pros, and the New Relic Student Edition
+                contributes to that goal.
               </p>
               <p>
-                To get access to the Student Edition,{' '}
+                To access the Student Edition,{' '}
                 <a href="/">sign up for a free account</a> and verify your
                 student status using the GitHub Student Developer Pack
               </p>
@@ -72,9 +72,8 @@ const StudentsPage = ({ location }) => {
                     Account
                   </h3>
                   <p className={styles.stepDetail}>
-                    To access the Student Edition you will need a New Relic
-                    free-tier account. After you will need to verify your
-                    student status.
+                    To access the Student Edition, create a free New Relic
+                    account. After that, verify your student status.
                   </p>
 
                   <Button
@@ -83,7 +82,7 @@ const StudentsPage = ({ location }) => {
                     variant={Button.VARIANT.PRIMARY}
                     className={styles.stepButton}
                   >
-                    Signup for a free account
+                    Sign up for a free account
                   </Button>
                 </Surface>
                 <Surface
@@ -99,8 +98,8 @@ const StudentsPage = ({ location }) => {
                     <a href="https://education.GitHub.com/benefits">
                       GitHub Student Developer Pack
                     </a>
-                    . If you don't have access to GitHub Students, and verify
-                    your account.
+                    . If you don't have access to GitHub Students, sign up and
+                    verify your account.
                   </p>
 
                   <Button
@@ -119,9 +118,9 @@ const StudentsPage = ({ location }) => {
                   <div className={styles.stepNumber}>3</div>
                   <h3 className={styles.stepHeader}>Enjoy Using New Relic</h3>
                   <p className={styles.stepDetail}>
-                    After your status is verified. Your Student Edition account
-                    will be created giving you 3 full users and 500GB of data
-                    ingest.
+                    After your status is verified, your account is upgraded to
+                    the Student Edition, giving you three full users and 500GB
+                    of data ingest.
                   </p>
 
                   <Button
@@ -152,7 +151,7 @@ const StudentsPage = ({ location }) => {
                 name="users"
                 size="4rem"
               />
-              <h4>Three Full Users</h4>
+              <h4>Three full users</h4>
               <p>
                 Work with your friends and classmates like a real-world
                 production team
@@ -164,7 +163,7 @@ const StudentsPage = ({ location }) => {
                 name="database"
                 size="4rem"
               />
-              <h4>500 GB/month of Data Ingest</h4>
+              <h4>500 GB/month of data ingest</h4>
               <p>
                 Collect, analyze, and alert on all your metrics, events, logs,
                 and traces from any source
@@ -176,7 +175,7 @@ const StudentsPage = ({ location }) => {
                 name="cpu"
                 size="4rem"
               />
-              <h4>Free Tier AI</h4>
+              <h4>Free-tier AI</h4>
               <p>
                 Instantly detect, diagnose, and resolve issues before they
                 become a problem
@@ -201,7 +200,7 @@ const StudentsPage = ({ location }) => {
                 <p>
                   New Relic offers the Student Edition exclusively through the
                   GitHub Student Pack. To verify your account's eligibility,
-                  please authorize your Github account.
+                  authorize your GitHub account.
                 </p>
                 <p>
                   Learn more about GitHub Education if you don't have GitHub
@@ -209,16 +208,16 @@ const StudentsPage = ({ location }) => {
                 </p>
                 <ul>
                   <li>
-                    Sign up up for Student Edition - you will be prompted to
-                    create or log in to your GitHub account
+                    Sign up for Student Edition. You will be prompted to create
+                    or log in to your GitHub account
                   </li>
                   <li>
                     Apply for the GitHub Student Developer Pack, which requires
-                    proof of enrollment in an accredited institution.
+                    proof of enrollment in an accredited institution
                   </li>
                   <li>
-                    Once you’re verified through GitHub, sign in to Student
-                    Edition with the token emailed to you to get started.{' '}
+                    Once you’re verified through GitHub, sign in to the Student
+                    Edition with the token emailed to you to get started{' '}
                   </li>
                 </ul>
               </div>
@@ -235,8 +234,8 @@ const StudentsPage = ({ location }) => {
                 Can I share my Student Edition with friends?
               </p>
               <p className={styles.answer}>
-                The student edition comes with 3 FSO users. Your friends and
-                classmates are also welcome to sign up for their own free
+                The student edition comes with three full users. Your friends
+                and classmates are also welcome to sign up for their own free
                 account.
               </p>
             </div>
@@ -246,11 +245,12 @@ const StudentsPage = ({ location }) => {
                 GitHub?
               </p>
               <p className={styles.answer}>
-                In your GitHub account settings, visit Applications > Authorized
-                OAuth Apps to check whether you have authorized the New Relic
-                OAuth app. If you granted this application access to your GitHub
-                account, you should hear back from GitHub as soon as they have
-                verified your student status.
+                In your GitHub account settings, visit{' '}
+                <strong>Applications > Authorized OAuth Apps</strong> to check
+                whether you have authorized the New Relic OAuth app. If you
+                granted this application access to your GitHub account, you
+                should hear back from GitHub as soon as they have verified your
+                student status.
               </p>
             </div>
             <div className={styles.group}>
@@ -286,8 +286,8 @@ const StudentsPage = ({ location }) => {
                     </tr>
                     <tr>
                       <td>Free Data</td>
-                      <td>500 gb/m</td>
-                      <td>100 gb/m</td>
+                      <td>500 GB/mo</td>
+                      <td>100 GB/mo</td>
                     </tr>
                     <tr>
                       <td>Production Use</td>
