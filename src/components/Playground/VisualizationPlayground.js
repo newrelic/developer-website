@@ -1,4 +1,4 @@
-import React, { useState, Suspense, useEffect } from 'react';
+import React, { useState, Suspense } from 'react';
 import { LiveProvider, LivePreview, LiveError } from 'react-live';
 import { Button, Collapser } from '@newrelic/gatsby-theme-newrelic';
 import { nr1JSON, indexJS } from './defaultVizCode';
