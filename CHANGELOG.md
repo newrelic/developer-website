@@ -1,3 +1,18 @@
+# [1.50.0](https://github.com/newrelic/developer-website/compare/v1.49.0...v1.50.0) (2021-05-24)
+
+
+### Bug Fixes
+
+* add contractions ([c45a645](https://github.com/newrelic/developer-website/commit/c45a645fdcf3b22ea552057733305a16d669b308))
+* remove dup cpu icon ([999fc89](https://github.com/newrelic/developer-website/commit/999fc89e27ba665ce5034ee05fd053b532d0c925))
+* resolve comments ([bef8309](https://github.com/newrelic/developer-website/commit/bef83095d701a870f7de1188038ba7f8018dde71))
+* update user language ([58cc9a9](https://github.com/newrelic/developer-website/commit/58cc9a908ebf089dc0eb8143e962fe7bc4d23eb8))
+
+
+### Features
+
+* Add student edition page ([7584600](https://github.com/newrelic/developer-website/commit/75846006541f72413f26bcca31691bb9c32d7ba7))
+
 # [1.49.0](https://github.com/newrelic/developer-website/compare/v1.48.1...v1.49.0) (2021-05-20)
 
 
