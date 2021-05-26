@@ -26,8 +26,6 @@ const typeMap = {
   nrql: `'SELECT count(*) FROM Transaction'`,
 };
 
-let globalThis;
-
 const codeString = ({ items, name, code }) =>
   `[{${items
     .map(({ name: subName, value, type }) => {
@@ -105,19 +103,8 @@ const VisualizationPlayground = () => {
       inputProps,
     })
   );
-  const [isFront, setIsFront] = useState(false);
-
-  useEffect(() => {
-    process.nextTick(() => {
-      if (globalThis.window ?? false) {
-        setIsFront(true);
-      }
-    });
-  }, [isFront]);
 
   useCustomMonaco();
-
-  if (!isFront) return null;
 
   if (typeof window === 'undefined') global.window = {};
   const sdk = window.__NR1_SDK__?.default ?? {};
