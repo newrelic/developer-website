@@ -1,3 +1,10 @@
+## [1.50.1](https://github.com/newrelic/developer-website/compare/v1.50.0...v1.50.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* update links ([cc853a4](https://github.com/newrelic/developer-website/commit/cc853a45f3126e7e0304369cd118956fa142cf5f))
+
 # [1.50.0](https://github.com/newrelic/developer-website/compare/v1.49.0...v1.50.0) (2021-05-24)
 
 
