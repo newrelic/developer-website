@@ -65,6 +65,8 @@
           url: '/build-apps/publish-deploy/catalog'
         - title: Tag your Nerdpack's release version
           url: '/build-apps/publish-deploy/tag'
+    - title: Customize an open-source Nerdpack
+      url: '/build-apps/customize-nerdpack'
     - title: Permissions for managing apps
       url: '/build-apps/permission-manage-apps'
     - title: Attach your Nerdlet to your entities
