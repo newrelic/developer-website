@@ -49,8 +49,11 @@ const StudentsPage = ({ location }) => {
               </p>
               <p>
                 To access the Student Edition,{' '}
-                <a href="/">sign up for a free account</a> and verify your
-                student status using the GitHub Student Developer Pack
+                <a href="https://newrelic.com/signup">
+                  sign up for a free account
+                </a>{' '}
+                and verify your student status using the GitHub Student
+                Developer Pack
               </p>
             </div>
             <Video id="irf10ez4h1" type="wistia" />
@@ -77,7 +80,7 @@ const StudentsPage = ({ location }) => {
                   </p>
 
                   <Button
-                    to="/"
+                    to="https://newrelic.com/signup"
                     as={Link}
                     variant={Button.VARIANT.PRIMARY}
                     className={styles.stepButton}
@@ -95,7 +98,7 @@ const StudentsPage = ({ location }) => {
                   </h3>
                   <p className={styles.stepDetail}>
                     The Student Edition is offered through the{' '}
-                    <a href="https://education.GitHub.com/benefits">
+                    <a href="https://education.github.com/?utm_source=GitHub-NewRelic">
                       GitHub Student Developer Pack
                     </a>
                     . If you don't have access to GitHub Students, sign up and
@@ -103,7 +106,7 @@ const StudentsPage = ({ location }) => {
                   </p>
 
                   <Button
-                    to="/"
+                    to="https://education.github.com/?utm_source=GitHub-NewRelic"
                     as={Link}
                     variant={Button.VARIANT.SECONDARY}
                     className={styles.stepButton}
@@ -124,7 +127,7 @@ const StudentsPage = ({ location }) => {
                   </p>
 
                   <Button
-                    to="/"
+                    to="https://one.newrelic.com"
                     as={Link}
                     variant={Button.VARIANT.SECONDARY}
                     className={styles.stepButton}
