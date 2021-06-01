@@ -158,7 +158,7 @@
       "description": "Official New Relic pack for Consul\nUse this pack together with the New Relic Consul On Host Integration to get insight into the performance of your Consul instances.\n\n",
       "icon": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.3.1/packs/consul/icon.png",
       "id": "Q29uc3Vs",
-      "level": "NEWRELIC",
+      "level": "VERIFIED",
       "logo": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.3.1/packs/consul/logo.png",
       "name": "Consul",
       "website": "https://www.consul.io/"
@@ -230,7 +230,7 @@
       "description": "The infrastructure pack allows you to get visibilility into the performance and availability of your hosts and operating system.\n\n",
       "icon": null,
       "id": "SW5mcmFzdHJ1Y3R1cmU=",
-      "level": "NEWRELIC",
+      "level": "VERIFIED",
       "logo": null,
       "name": "Infrastructure",
       "website": null
@@ -513,7 +513,7 @@
       "description": "Official New Relic pack for Redis\nUse this pack together with the New Relic Redis On Host Integration to get insight into the performance of your Redis instances.\n\n",
       "icon": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.3.1/packs/redis/icon.png",
       "id": "UmVkaXM=",
-      "level": "NEWRELIC",
+      "level": "COMMUNITY",
       "logo": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.3.1/packs/redis/logo.png",
       "name": "Redis",
       "website": "https://redis.io/"
@@ -526,7 +526,7 @@
       "description": "Official New Relic pack for Varnish\nUse this pack together with the New Relic Varnish On Host Integration to get insight into the performance of your Varnish instances.\n\n",
       "icon": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.3.1/packs/varnish/icon.png",
       "id": "VmFybmlzaA==",
-      "level": "NEWRELIC",
+      "level": "COMMUNITY",
       "logo": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.3.1/packs/varnish/logo.png",
       "name": "Varnish",
       "website": "https://varnish-cache.org/"
