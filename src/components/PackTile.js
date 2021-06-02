@@ -30,6 +30,7 @@ const PackTile = ({
         {featuredImageUrl && (
           <img
             src={featuredImageUrl}
+            alt="Preview of the pack in action"
             css={css`
               display: block;
               object-fit: cover;
@@ -55,14 +56,14 @@ const PackTile = ({
           <h4>
             {name}{' '}
             {supportLevel === 'NEWRELIC' && (
-              <span title={'New Relic supported'}>
+              <span title="New Relic supported">
                 <Icon
                   css={css`
                     stroke: none;
                     width: 2rem;
                     height: 2rem;
                   `}
-                  name={'nr-check-shield'}
+                  name="nr-check-shield"
                 />
               </span>
             )}

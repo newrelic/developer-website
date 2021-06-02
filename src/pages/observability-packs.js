@@ -7,26 +7,22 @@ import PackTile from '../components/PackTile';
 import PackList from '../components/PackList';
 import { SearchInput, Button, Dropdown } from '@newrelic/gatsby-theme-newrelic';
 
-const LIST_VIEWS = {
-  GRID: 'grid',
-  LIST: 'list',
-};
-
-const ObservabilityPacksPage = ({ data, listView }) => {
+const ObservabilityPacksPage = ({ data, location }) => {
   const {
     allObservabilityPacks: { nodes: o11yPacks },
   } = data;
 
   return (
     <>
+      <DevSiteSeo title="Observability Packs" location={location} />
       <SearchInput
         size={SearchInput.SIZE.LARGE}
-        width={'100%'}
+        width="100%"
         css={css`
           margin: 15px 0;
         `}
-        onClear={() => console.log('clear me')}
-        placeholder={'Search for an observability pack'}
+        onClear={() => null}
+        placeholder="Search for an observability pack"
       />
       <div
         css={css`
@@ -129,6 +125,7 @@ const ObservabilityPacksPage = ({ data, listView }) => {
             return (
               <PackTile
                 name={pack.name}
+                key={pack.id}
                 supportLevel={pack.level}
                 description={pack.description}
                 featuredImageUrl={
@@ -144,13 +141,9 @@ const ObservabilityPacksPage = ({ data, listView }) => {
   );
 };
 
-ObservabilityPacksPage.defaultProps = {
-  listView: 'grid',
-};
-
 ObservabilityPacksPage.propTypes = {
   data: PropTypes.object.isRequired,
-  listView: PropTypes.oneOf(Object.values(LIST_VIEWS)).isRequired,
+  location: PropTypes.object,
 };
 
 export const pageQuery = graphql`
