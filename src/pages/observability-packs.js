@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import React from 'react';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import PackTile from '../components/PackTile';
