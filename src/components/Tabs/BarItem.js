@@ -29,6 +29,10 @@ const BarItem = ({ index, children, id, count, disabled }) => {
         user-select: none;
         white-space: nowrap;
 
+        @media (max-width: 760px) {
+          display: block;
+        }
+
         .dark-mode & {
           border-bottom-color: var(--color-dark-300);
         }
