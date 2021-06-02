@@ -8,6 +8,7 @@ const Bar = ({ children }) => (
     css={css`
       display: flex;
       margin-bottom: 1em;
+      overflow: scroll;
     `}
   >
     {React.Children.map(children, (child, index) =>
