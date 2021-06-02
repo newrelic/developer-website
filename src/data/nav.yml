@@ -422,6 +422,7 @@
         - title: All things open
           url: '/all-things-open'
 - title: Observability packs
+  icon: box
   url: '/observability-packs'
 - title: Nerd Bytes
   icon: nr-nerd-bytes
