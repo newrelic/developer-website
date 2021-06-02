@@ -11,9 +11,16 @@ const BarItem = ({ index, children, id, count, disabled }) => {
     id === currentTab || (currentTab === undefined && index === 0);
 
   return (
-    <div
+    <button
+      role="tab"
+      aria-controls={id}
+      type="button"
       onClick={() => !disabled && setCurrentTab(id)}
       css={css`
+        border: 0;
+        background: none;
+        color: var(--primary-text-color);
+
         flex-grow: 1;
         text-align: center;
         padding: 0.5em 0;
@@ -109,7 +116,7 @@ const BarItem = ({ index, children, id, count, disabled }) => {
           {count}
         </span>
       )}
-    </div>
+    </button>
   );
 };
 

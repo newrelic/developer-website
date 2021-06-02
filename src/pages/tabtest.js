@@ -5,6 +5,7 @@ const TabTest = () => (
   <Tabs>
     <Tabs.Bar>
       <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
+      <Tabs.BarItem id="dependencies">Dependencies</Tabs.BarItem>
       <Tabs.BarItem id="dashboards" count={12}>
         Dashboards
       </Tabs.BarItem>
@@ -13,6 +14,12 @@ const TabTest = () => (
       </Tabs.BarItem>
       <Tabs.BarItem id="synthetics" count={0} disabled>
         Synthetics checks
+      </Tabs.BarItem>
+      <Tabs.BarItem id="visualizations" count={0} disabled>
+        Visualizations
+      </Tabs.BarItem>
+      <Tabs.BarItem id="applications" count={4}>
+        Applications
       </Tabs.BarItem>
     </Tabs.Bar>
 

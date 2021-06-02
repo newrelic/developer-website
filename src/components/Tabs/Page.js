@@ -11,7 +11,11 @@ const Page = ({ index, children, id }) => {
 
   if (!isSelected) return null;
 
-  return <div>{children}</div>;
+  return (
+    <div role="tabpanel" aria-labelledby={id}>
+      {children}
+    </div>
+  );
 };
 
 Page.propTypes = {

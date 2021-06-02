@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 
 const Bar = ({ children }) => (
   <div
+    role="tablist"
     css={css`
       display: flex;
       margin-bottom: 1em;
