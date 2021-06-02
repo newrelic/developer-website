@@ -1,5 +1,4 @@
- {
-  "observabilityPacks": [
+[
     {
       "authors": [
         "New Relic",
@@ -532,4 +531,3 @@
       "website": "https://varnish-cache.org/"
     }
   ]
-}
