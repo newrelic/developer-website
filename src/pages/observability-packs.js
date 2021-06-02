@@ -33,10 +33,10 @@ const ObservabilityPacksPage = ({ data, listView }) => {
           background-color: var(--color-neutrals-100);
           margin: 15px 0;
           padding: 1rem;
-          height: 75px;
           display: flex;
           justify-content: space-between;
           align-items: center;
+          flex-wrap: wrap;
           .dark-mode & {
             background-color: var(--color-dark-100);
           }
@@ -123,10 +123,13 @@ const ObservabilityPacksPage = ({ data, listView }) => {
       <div>
         <PackList>
           {o11yPacks.map((pack) => {
+            // TODO: Figure out what image should be shown
+            // if not added to API explicitly
             const imgSrc = pack.dashboards?.[0]?.screenshots?.[0];
             return (
               <PackTile
                 name={pack.name}
+                supportLevel={pack.level}
                 description={pack.description}
                 featuredImageUrl={
                   imgSrc || 'https://via.placeholder.com/400x275.png?text=Image'
