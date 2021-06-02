@@ -43,7 +43,7 @@ MobileTabControl.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const Bar = ({ children }) => {
+const Bar = ({ children, className }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
@@ -53,11 +53,13 @@ const Bar = ({ children }) => {
 
   return (
     <div
+      className={className}
       role="tablist"
       css={css`
         display: flex;
+        width: 100%;
         margin-bottom: 1em;
-        overflow: scroll;
+        overflow: auto;
       `}
     >
       {React.Children.map(children, (child, index) =>
@@ -69,6 +71,7 @@ const Bar = ({ children }) => {
 
 Bar.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
 };
 
 export default Bar;
