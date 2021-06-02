@@ -135,9 +135,7 @@ const ObservabilityPacksPage = ({ data, listView }) => {
                   imgSrc || 'https://via.placeholder.com/400x275.png?text=Image'
                 }
                 to={`/observability-packs/${pack.name}/${pack.id}`}
-              >
-                {pack.name}
-              </PackTile>
+              />
             );
           })}
         </PackList>
