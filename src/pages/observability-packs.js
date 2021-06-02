@@ -5,8 +5,7 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import PackTile from '../components/PackTile';
 import PackList from '../components/PackList';
-import { SearchInput, Button } from '@newrelic/gatsby-theme-newrelic';
-import * as styles from './observability-packs.module.scss';
+import { SearchInput, Button, Dropdown } from '@newrelic/gatsby-theme-newrelic';
 
 const LIST_VIEWS = {
   GRID: 'grid',
@@ -27,20 +26,98 @@ const ObservabilityPacksPage = ({ data, listView }) => {
           margin: 15px 0;
         `}
         onClear={() => console.log('clear me')}
+        placeholder={'Search for an observability pack'}
       />
       <div
         css={css`
           background-color: var(--color-neutrals-100);
           margin: 15px 0;
+          padding: 1rem;
           height: 75px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
           .dark-mode & {
             background-color: var(--color-dark-100);
           }
         `}
       >
         <span>Showing {o11yPacks.length} results</span>
+        <div
+          css={css`
+            display: flex;
+          `}
+        >
+          <div
+            css={css`
+              margin: 0 0.5rem;
+            `}
+          >
+            <span
+              css={css`
+                font-size: 12px;
+                font-weight: bold;
+              `}
+            >
+              Sort by
+            </span>
+            <Dropdown align="left">
+              <Dropdown.Toggle
+                css={css`
+                  background-color: var(--color-white);
+                  .dark-mode & {
+                    background-color: transparent;
+                  }
+                `}
+                size={Button.SIZE.SMALL}
+                variant={Button.VARIANT.OUTLINE}
+              >
+                Popularity
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.MenuItem>Item 1</Dropdown.MenuItem>
+                <Dropdown.MenuItem>Item 2</Dropdown.MenuItem>
+                <Dropdown.MenuItem>Item 3</Dropdown.MenuItem>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+          <div
+            css={css`
+              margin: 0 0.5rem;
+            `}
+          >
+            <span
+              css={css`
+                font-size: 12px;
+                font-weight: bold;
+              `}
+            >
+              Filter packs containing
+            </span>
+            <Dropdown align="left">
+              <Dropdown.Toggle
+                css={css`
+                  background-color: var(--color-white);
+                  .dark-mode & {
+                    background-color: transparent;
+                  }
+                `}
+                size={Button.SIZE.SMALL}
+                variant={Button.VARIANT.OUTLINE}
+              >
+                Anything
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.MenuItem>Item 1</Dropdown.MenuItem>
+                <Dropdown.MenuItem>Item 2</Dropdown.MenuItem>
+                <Dropdown.MenuItem>Item 3</Dropdown.MenuItem>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        </div>
         <div>
-          <span>Sort by</span>
+          <Button variant={Button.VARIANT.PRIMARY}>Grid view</Button>
+          <Button variant={Button.VARIANT.OUTLINE}>List view</Button>
         </div>
       </div>
       <div>
