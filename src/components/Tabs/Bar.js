@@ -9,8 +9,7 @@ const MobileTabControl = ({ children }) => {
   const [currentTab, setCurrentTab] = useTabs();
 
   // eslint gets angry about using props from React.Children.map
-  // eslint also suggests using onBlur vs onChange, but i think we want the immediate change.
-  /* eslint-disable react/prop-types, jsx-a11y/no-onchange */
+  /* eslint-disable react/prop-types */
   return (
     <select
       onChange={(e) => setCurrentTab(e.target.value)}
@@ -36,8 +35,8 @@ const MobileTabControl = ({ children }) => {
         </option>
       ))}
     </select>
-    /* eslint-enable react/prop-types, jsx-a11y/no-onchange */
   );
+  /* eslint-enable react/prop-types */
 };
 
 MobileTabControl.propTypes = {
