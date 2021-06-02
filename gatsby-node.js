@@ -1,7 +1,7 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
 const { createFilePath } = require('gatsby-source-filesystem');
-const { observabilityPacks } = require('./src/data/observability-packs.json');
+const observabilityPacks = require('./src/data/observability-packs.json');
 
 const kebabCase = (string) =>
   string
@@ -106,7 +106,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       path: path.join(slug, '/'),
       component: path.resolve('./src/templates/ObservabilityPackDetails.js'),
       context: {
-        slug,
         pack,
       },
     });
