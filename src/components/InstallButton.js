@@ -37,7 +37,7 @@ const InstallButton = ({ children, title, ...props }) => {
           margin-right: 2px;
         `}
       >
-        Install
+        {title}
       </Button>
       <Dropdown>
         <Dropdown.Toggle
