@@ -18,7 +18,8 @@ export const teamMembers = [
     avatar: aaronAvatar,
     bio: (
       <p>
-        Aaron Bassett is a recovering senior software engineer turned Principal Developer Relations Engineer with{' '}
+        Aaron Bassett is a recovering senior software engineer turned Principal
+        Developer Relations Engineer with{' '}
         <a href="https://newrelic.com" target="_blank" rel="noreferrer">
           New Relic
         </a>
