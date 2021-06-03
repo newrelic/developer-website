@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import PackTile from '../components/PackTile';
@@ -11,6 +11,8 @@ const ObservabilityPacksPage = ({ data, location }) => {
   const {
     allObservabilityPacks: { nodes: o11yPacks },
   } = data;
+  const [filteredPacks, setFilteredPacks] = useState(o11yPacks);
+  console.log(o11yPacks)
 
   return (
     <>
@@ -23,6 +25,16 @@ const ObservabilityPacksPage = ({ data, location }) => {
         `}
         onClear={() => null}
         placeholder="Search for an observability pack"
+        onChange={(e) => {
+          const tempFilteredPacks = o11yPacks.filter(
+            (pack) =>
+              pack.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+              pack.description
+                .toLowerCase()
+                .includes(e.target.value.toLowerCase())
+          );
+          setFilteredPacks(tempFilteredPacks);
+        }}
       />
       <div
         css={css`
@@ -38,7 +50,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
           }
         `}
       >
-        <span>Showing {o11yPacks.length} results</span>
+        <span>Showing {filteredPacks.length} results</span>
         <div
           css={css`
             display: flex;
@@ -118,7 +130,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
       </div>
       <div>
         <PackList>
-          {o11yPacks.map((pack) => {
+          {filteredPacks.map((pack) => {
             // TODO: Figure out what image should be shown
             // if not added to API explicitly
             const imgSrc = pack.dashboards?.[0]?.screenshots?.[0];
