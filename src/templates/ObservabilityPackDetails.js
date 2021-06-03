@@ -75,10 +75,10 @@ const ObservabilityPackDetails = ({ data }) => {
                 <p>{pack.description}</p>
               </Tabs.Page>
               <Tabs.Page id="dashboards">
-                {pack.dashboards.map((dashboard) => (
+                {pack.dashboards?.map((dashboard) => (
                   <>
-                    <p>{dashboard.name}</p>
-                    {dashboard.screenshots.map((screenshot, index) => (
+                    <p>{dashboard?.name}</p>
+                    {dashboard?.screenshots?.map((screenshot, index) => (
                       <img
                         key={index}
                         alt="dashboard example"
