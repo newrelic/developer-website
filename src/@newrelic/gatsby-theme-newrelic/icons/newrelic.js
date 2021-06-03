@@ -10,6 +10,7 @@ import podcasts from './newrelic/podcasts';
 import relicans from './newrelic/relicans';
 import share from './newrelic/share';
 import nerdlog from './newrelic/nerdlog';
+import checkShield from './newrelic/check-shield';
 
 export default {
   ...defaultIcons,
@@ -24,4 +25,5 @@ export default {
   podcasts,
   share,
   nerdlog,
+  'check-shield': checkShield,
 };
