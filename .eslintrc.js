@@ -26,6 +26,7 @@ module.exports = {
   },
   ignorePatterns: ['**/__tests__/**/*'],
   rules: {
+    'jsx-a11y/no-onchange': 0,
     'no-unused-vars': [
       'error',
       {
