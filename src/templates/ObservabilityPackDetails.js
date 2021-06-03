@@ -22,7 +22,7 @@ const exampleContributors = [
 ];
 
 const ObservabilityPackDetails = ({ data }) => {
-  const { pack } = data.sitePage.context;
+  const pack = data.observabilityPacks;
 
   return (
     <>
@@ -205,32 +205,27 @@ ObservabilityPackDetails.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    sitePage(context: { slug: { eq: $slug } }) {
-      context {
-        slug
-        pack {
-          name
-          website
-          logo
-          level
-          id
-          icon
-          description
-          alerts {
-            name
-            definition
-            url
-          }
-          dashboards {
-            description
-            name
-            screenshots
-            url
-          }
-          authors
-        }
+  query($id: String!) {
+    observabilityPacks(id: { eq: $id }) {
+      name
+      website
+      logo
+      level
+      id
+      icon
+      description
+      alerts {
+        name
+        definition
+        url
       }
+      dashboards {
+        description
+        name
+        screenshots
+        url
+      }
+      authors
     }
   }
 `;

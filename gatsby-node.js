@@ -1,7 +1,7 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
 const { createFilePath } = require('gatsby-source-filesystem');
-const observabilityPacks = require('./src/data/observability-packs.json');
+const slugify = require('./src/utils/slugify.js');
 
 const kebabCase = (string) =>
   string
@@ -52,6 +52,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
+
+      allObservabilityPacks {
+        edges {
+          node {
+            name
+            id
+          }
+        }
+      }
     }
   `);
 
@@ -61,7 +70,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
+  const {
+    allMdx,
+    allNewRelicSdkComponent,
+    allNewRelicSdkApi,
+    allObservabilityPacks,
+  } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
     const {
@@ -96,18 +110,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
-  observabilityPacks.forEach((pack) => {
-    const { name } = pack;
-    const urlNormalizedName = kebabCase(name);
+  allObservabilityPacks.edges.forEach(({ node }) => {
+    const { name, id } = node;
 
-    const slug = `/observability-packs/${urlNormalizedName}`;
+    const slug = `/observability-packs/${slugify(name)}/${id}`;
+    console.log(slug);
 
     createPage({
       path: path.join(slug, '/'),
       component: path.resolve('./src/templates/ObservabilityPackDetails.js'),
       context: {
-        pack,
-        slug,
+        id,
       },
     });
   });
