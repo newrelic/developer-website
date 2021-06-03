@@ -1980,10 +1980,10 @@
     eslint-plugin-promise "^4.2.1"
     eslint-plugin-react "^7.14.3"
 
-"@newrelic/gatsby-theme-newrelic@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@newrelic/gatsby-theme-newrelic/-/gatsby-theme-newrelic-2.4.0.tgz#cd53bda7fd8230be0cc350a3f83067c7352f18ab"
-  integrity sha512-HXN+hkP6ixiOlN4ZOfjNefmH2dYfmDRBPJISM85+lvhZIJZ1EkHPEvmslIiAbixMOpolEgulYjT0PNMYMOdMaQ==
+"@newrelic/gatsby-theme-newrelic@^2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@newrelic/gatsby-theme-newrelic/-/gatsby-theme-newrelic-2.4.3.tgz#dfd0376bd2d813d98d586d8997776ad859343f80"
+  integrity sha512-j9W1gJNlTiu9eDoo4ov6DLZuA01DfsnOgd8vXJwz+FYBQMDphH6MJk4I4SEJ8ihFgz69r2qus94DuNgfzjznuw==
   dependencies:
     "@wry/equality" "^0.4.0"
     "@xstate/react" "^1.3.1"
@@ -2019,6 +2019,7 @@
     terser "^5.6.1"
     ua-parser-js "^0.7.28"
     use-dark-mode "^2.3.1"
+    use-local-storage-state "^9.0.2"
     use-media "^1.4.0"
     util "^0.12.3"
     warning "^4.0.3"
@@ -18709,6 +18710,11 @@ use-isomorphic-layout-effect@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/use-isomorphic-layout-effect/-/use-isomorphic-layout-effect-1.1.1.tgz#7bb6589170cd2987a152042f9084f9effb75c225"
   integrity sha512-L7Evj8FGcwo/wpbv/qvSfrkHFtOpCzvM5yl2KVyDJoylVuSvzphiiasmjgQPttIGBAy2WKiBNR98q8w7PiNgKQ==
+
+use-local-storage-state@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/use-local-storage-state/-/use-local-storage-state-9.0.2.tgz#77ace2fd72c8d17d3da5be74cf6aa3e25b6e321c"
+  integrity sha512-loNVFqrzfsNoNVtM/3RJbjKVhSgTX15vPC5Tcuk7oflF0nonldRivMGAgFU3toi9v6hfTT/x8M+o6ifDN2n0OQ==
 
 use-media@^1.4.0:
   version "1.4.0"
