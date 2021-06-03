@@ -5,13 +5,8 @@ import { css } from '@emotion/react';
 
 const sampleItems = new Array(10).fill().map((_, i) => i + 1);
 
-const createMenuItems = (items) => items.map((i) => <Dropdown.MenuItem>{i}</Dropdown.MenuItem>)
-  const menuItems = [];
-  for (const item of items) {
-    menuItems.push(<Dropdown.MenuItem>{item}</Dropdown.MenuItem>);
-  }
-  return menuItems;
-};
+const createMenuItems = (items) =>
+  items.map((item) => <Dropdown.MenuItem>{item}</Dropdown.MenuItem>);
 
 const createInstallLink = () => {
   return `https://one.newrelic.com/launcher/nr1-core.explorer`;
@@ -23,7 +18,6 @@ const InstallButton = ({ children, title, ...props }) => {
       css={css`
         display: flex;
         flex-direction: row;
-        float: right;
       `}
     >
       <Button
@@ -48,7 +42,7 @@ const InstallButton = ({ children, title, ...props }) => {
             padding: 5px;
           `}
         />
-        <Dropdown.Menu>{createMenuItems(children, sampleItems)}</Dropdown.Menu>
+        <Dropdown.Menu>{createMenuItems(sampleItems)}</Dropdown.Menu>
       </Dropdown>
     </div>
   );
