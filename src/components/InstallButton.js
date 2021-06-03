@@ -12,7 +12,7 @@ const createInstallLink = () => {
   return `https://one.newrelic.com/launcher/nr1-core.explorer`;
 };
 
-const InstallButton = ({ children, title, ...props }) => {
+const InstallButton = ({ title, ...props }) => {
   return (
     <div
       css={css`
@@ -49,7 +49,6 @@ const InstallButton = ({ children, title, ...props }) => {
 };
 
 InstallButton.propTypes = {
-  children: PropTypes.node,
   title: PropTypes.string,
   guid: PropTypes.string,
 };
