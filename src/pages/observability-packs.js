@@ -12,7 +12,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
     allObservabilityPacks: { nodes: o11yPacks },
   } = data;
   const [filteredPacks, setFilteredPacks] = useState(o11yPacks);
-  console.log(o11yPacks)
 
   return (
     <>
