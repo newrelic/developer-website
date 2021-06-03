@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import PackTile from '../components/PackTile';
@@ -12,6 +12,35 @@ const ObservabilityPacksPage = ({ data, location }) => {
     allObservabilityPacks: { nodes: o11yPacks },
   } = data;
   const [filteredPacks, setFilteredPacks] = useState(o11yPacks);
+  const [containingFilterState, setContainingFilterState] = useState(
+    'Anything'
+  );
+  const [sortState, setSortState] = useState('Alphabetical');
+  const [searchTerm, setSearchTerm] = useState('');
+  useEffect(() => {
+    let tempFilteredPacks = o11yPacks.filter(
+      (pack) =>
+        pack.name.toLowerCase().includes(searchTerm) ||
+        pack.description.toLowerCase().includes(searchTerm)
+    );
+
+    if (containingFilterState !== 'Anything') {
+      tempFilteredPacks = tempFilteredPacks.filter(
+        (pack) => pack[containingFilterState.toLowerCase()]?.length > 0
+      );
+    }
+
+    if (sortState === 'Alphabetical') {
+      tempFilteredPacks = tempFilteredPacks.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+    } else if (sortState === 'Reverse') {
+      tempFilteredPacks = tempFilteredPacks.sort((a, b) =>
+        b.name.localeCompare(a.name)
+      );
+    }
+    setFilteredPacks(tempFilteredPacks);
+  }, [o11yPacks, searchTerm, containingFilterState, sortState]);
 
   return (
     <>
@@ -25,14 +54,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
         onClear={() => null}
         placeholder="Search for an observability pack"
         onChange={(e) => {
-          const tempFilteredPacks = o11yPacks.filter(
-            (pack) =>
-              pack.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
-              pack.description
-                .toLowerCase()
-                .includes(e.target.value.toLowerCase())
-          );
-          setFilteredPacks(tempFilteredPacks);
+          setSearchTerm(e.target.value.toLowerCase());
         }}
       />
       <div
@@ -79,12 +101,30 @@ const ObservabilityPacksPage = ({ data, location }) => {
                 size={Button.SIZE.SMALL}
                 variant={Button.VARIANT.OUTLINE}
               >
-                Popularity
+                {sortState}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.MenuItem>Item 1</Dropdown.MenuItem>
-                <Dropdown.MenuItem>Item 2</Dropdown.MenuItem>
-                <Dropdown.MenuItem>Item 3</Dropdown.MenuItem>
+                <Dropdown.MenuItem
+                  onClick={() => {
+                    setSortState('Alphabetical');
+                  }}
+                >
+                  Alphabetical
+                </Dropdown.MenuItem>
+                <Dropdown.MenuItem
+                  onClick={() => {
+                    setSortState('Reverse');
+                  }}
+                >
+                  Reverse
+                </Dropdown.MenuItem>
+                <Dropdown.MenuItem
+                  onClick={() => {
+                    setSortState('Popularity');
+                  }}
+                >
+                  Popularity
+                </Dropdown.MenuItem>
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -112,12 +152,51 @@ const ObservabilityPacksPage = ({ data, location }) => {
                 size={Button.SIZE.SMALL}
                 variant={Button.VARIANT.OUTLINE}
               >
-                Anything
+                {containingFilterState}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.MenuItem>Item 1</Dropdown.MenuItem>
-                <Dropdown.MenuItem>Item 2</Dropdown.MenuItem>
-                <Dropdown.MenuItem>Item 3</Dropdown.MenuItem>
+                <Dropdown.MenuItem
+                  onClick={() => {
+                    setContainingFilterState('Anything');
+                  }}
+                >
+                  Anything
+                </Dropdown.MenuItem>
+                <Dropdown.MenuItem
+                  onClick={() => {
+                    setContainingFilterState('Dashboards');
+                  }}
+                >
+                  Dashboards
+                </Dropdown.MenuItem>
+                <Dropdown.MenuItem
+                  onClick={() => {
+                    setContainingFilterState('Alerts');
+                  }}
+                >
+                  Alerts
+                </Dropdown.MenuItem>
+                <Dropdown.MenuItem
+                  onClick={() => {
+                    setContainingFilterState('Visualizations');
+                  }}
+                >
+                  Visualizations
+                </Dropdown.MenuItem>
+                <Dropdown.MenuItem
+                  onClick={() => {
+                    setContainingFilterState('Synthetics');
+                  }}
+                >
+                  Synthetic Checks
+                </Dropdown.MenuItem>
+                <Dropdown.MenuItem
+                  onClick={() => {
+                    setContainingFilterState('Applications');
+                  }}
+                >
+                  Applications
+                </Dropdown.MenuItem>
               </Dropdown.Menu>
             </Dropdown>
           </div>
