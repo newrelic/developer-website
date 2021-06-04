@@ -3,7 +3,9 @@ import { graphql } from 'gatsby';
 import React, { useState, useEffect } from 'react';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
-import PackTile from '../components/PackTile';
+import PackGrid from '../components/PackGrid';
+import PackGridTile from '../components/PackGridTile';
+import PackListTile from '../components/PackListTile';
 import PackList from '../components/PackList';
 import { SearchInput, Button, Dropdown } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
@@ -34,6 +36,11 @@ const ObservabilityPacksPage = ({ data, location }) => {
     }
   }, [querySearch, queryFilter, querySort]);
 
+  const [packView, setPackView] = useState('GRID_VIEW');
+
+  useEffect(() => {
+    setPackView(packView);
+  }, [packView]);
   useEffect(() => {
     let tempFilteredPacks = o11yPacks.filter(
       (pack) =>
@@ -239,30 +246,72 @@ const ObservabilityPacksPage = ({ data, location }) => {
           </div>
         </div>
         <div>
-          <Button variant={Button.VARIANT.PRIMARY}>Grid view</Button>
-          <Button variant={Button.VARIANT.OUTLINE}>List view</Button>
+          <Button
+            variant={
+              packView === 'GRID_VIEW'
+                ? Button.VARIANT.PRIMARY
+                : Button.VARIANT.OUTLINE
+            }
+            onClick={() => setPackView('GRID_VIEW')}
+          >
+            Grid view
+          </Button>
+          <Button
+            variant={
+              packView === 'LIST_VIEW'
+                ? Button.VARIANT.PRIMARY
+                : Button.VARIANT.OUTLINE
+            }
+            onClick={() => setPackView('LIST_VIEW')}
+          >
+            List view
+          </Button>
         </div>
       </div>
       <div>
-        <PackList>
-          {filteredPacks.map((pack) => {
-            // TODO: Figure out what image should be shown
-            // if not added to API explicitly
-            const imgSrc = pack.dashboards?.[0]?.screenshots?.[0];
-            return (
-              <PackTile
-                name={pack.name}
-                key={pack.id}
-                supportLevel={pack.level}
-                description={pack.description}
-                featuredImageUrl={
-                  imgSrc || 'https://via.placeholder.com/400x275.png?text=Image'
-                }
-                to={`${pack.fields.slug}`}
-              />
-            );
-          })}
-        </PackList>
+        {packView === 'GRID_VIEW' ? (
+          <PackGrid>
+            {filteredPacks.map((pack) => {
+              // TODO: Figure out what image should be shown
+              // if not added to API explicitly
+              const imgSrc = pack.dashboards?.[0]?.screenshots?.[0];
+              return (
+                <PackGridTile
+                  name={pack.name}
+                  key={pack.id}
+                  supportLevel={pack.level}
+                  description={pack.description}
+                  featuredImageUrl={
+                    imgSrc ||
+                    'https://via.placeholder.com/400x275.png?text=Image'
+                  }
+                  to={`${pack.fields.slug}`}
+                />
+              );
+            })}
+          </PackGrid>
+        ) : (
+          <PackList>
+            {filteredPacks.map((pack) => {
+              // TODO: Figure out what image should be shown
+              // if not added to API explicitly
+              const imgSrc = pack.dashboards?.[0]?.screenshots?.[0];
+              return (
+                <PackListTile
+                  name={pack.name}
+                  key={pack.id}
+                  supportLevel={pack.level}
+                  description={pack.description}
+                  featuredImageUrl={
+                    imgSrc ||
+                    'https://via.placeholder.com/400x275.png?text=Image'
+                  }
+                  to={`${pack.fields.slug}`}
+                />
+              );
+            })}
+          </PackList>
+        )}
       </div>
     </>
   );
