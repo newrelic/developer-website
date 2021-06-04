@@ -46,7 +46,6 @@
     - [Step 1: Update the release number in `gatsby-config`](#step-1-update-the-release-number-in-gatsby-config)
     - [Step 2: Add any new APIs or components to our constants list](#step-2-add-any-new-apis-or-components-to-our-constants-list)
     - [Step 3: Add any new APIs or components to the navigation](#step-3-add-any-new-apis-or-components-to-the-navigation)
-    - [Step 4: Misc Info](#step-4-misc-info)
 
 <!-- /TOC -->
 
@@ -422,9 +421,3 @@ with the new components.
 If there are new APIs or components, we will want to list them in the navigation
 so that a user can easily discover them. [Add an entry to `nav.yml`](https://github.com/newrelic/developer-website/blob/develop/src/data/nav.yml)
 to get the new API/component in the nav.
-
-### Step 4: Misc Info
-
-- This [file](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/navigationApi.js) contains the manually generated navigation API this is currently missing from the API.
-- [Here](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/getPropTypes.js#L123-L128) is how prop type functions are extracted.
-- Similarly, any methods on a component will need to be updated [here](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/getMethods.js).
