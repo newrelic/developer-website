@@ -4,7 +4,6 @@ import { css } from '@emotion/react';
 import { Link, Icon, Surface } from '@newrelic/gatsby-theme-newrelic';
 import NewRelicIcon from '@newrelic/gatsby-theme-newrelic/src/icons/logo/newrelic.js';
 
-
 const PackListTile = ({
   name,
   description,
