@@ -7,7 +7,7 @@ const PackList = ({ children, className }) => {
     <div
       className={className}
       css={css`
-        display: list-item;
+        display: grid;
         align-items: stretch;
         width: 100%;
       `}
