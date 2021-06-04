@@ -258,7 +258,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
                 featuredImageUrl={
                   imgSrc || 'https://via.placeholder.com/400x275.png?text=Image'
                 }
-                to={`/observability-packs/${pack.name}/${pack.id}`}
+                to={`${pack.fields.slug}`}
               />
             );
           })}
@@ -277,6 +277,9 @@ export const pageQuery = graphql`
   query {
     allObservabilityPacks {
       nodes {
+        fields {
+          slug
+        }
         id
         name
         website

@@ -29,7 +29,6 @@ const BarItem = ({ index, children, id, count, disabled }) => {
         user-select: none;
         white-space: nowrap;
 
-
         .dark-mode & {
           border-bottom-color: var(--color-dark-300);
         }
@@ -123,7 +122,7 @@ const BarItem = ({ index, children, id, count, disabled }) => {
 };
 
 BarItem.propTypes = {
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number,
   children: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
   count: PropTypes.number,

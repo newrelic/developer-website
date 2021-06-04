@@ -1,8 +1,7 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
 const { createFilePath } = require('gatsby-source-filesystem');
-
-const MAX_RESULTS = 5;
+const slugify = require('./src/utils/slugify.js');
 
 const kebabCase = (string) =>
   string
@@ -53,6 +52,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
+
+      allObservabilityPacks {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            id
+          }
+        }
+      }
     }
   `);
 
@@ -62,7 +72,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
+  const {
+    allMdx,
+    allNewRelicSdkComponent,
+    allNewRelicSdkApi,
+    allObservabilityPacks,
+  } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
     const {
@@ -93,6 +108,21 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           frontmatter.template === 'OverviewTemplate'
             ? `${frontmatter.path}/*`
             : undefined,
+      },
+    });
+  });
+
+  allObservabilityPacks.edges.forEach(({ node }) => {
+    const {
+      fields: { slug },
+      id,
+    } = node;
+
+    createPage({
+      path: path.join(slug, '/'),
+      component: path.resolve('./src/templates/ObservabilityPackDetails.js'),
+      context: {
+        id,
       },
     });
   });
@@ -159,6 +189,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       name: 'slug',
       value: `/apis/${kebabCase(node.name)}`,
+    });
+  }
+
+  if (node.internal.type === 'ObservabilityPacks') {
+    createNodeField({
+      node,
+      name: 'slug',
+      value: `/observability-packs/${slugify(node.name)}/${node.id}`,
     });
   }
 };
