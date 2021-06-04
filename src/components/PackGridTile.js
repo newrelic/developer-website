@@ -22,12 +22,14 @@ const PackGridTile = ({
       display: grid;
       grid-template-rows: auto 1fr auto;
       border-radius: 0.25rem;
-      position: relative;
       transition: all 0.15s ease-out;
     `}
   >
     <div>
-      <div>
+      <div 
+        css={css`
+          background-color: white;
+        `}>
         {featuredImageUrl ? (
           <img
             src={featuredImageUrl}

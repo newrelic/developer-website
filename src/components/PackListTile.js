@@ -21,7 +21,6 @@ const PackListTile = ({
     css={css`
       display: grid;
       border-radius: 0.25rem;
-      position: relative;
       transition: all 0.15s ease-out;
       margin-bottom: 1rem;
     `}
@@ -41,6 +40,8 @@ const PackListTile = ({
         css={css`
           padding: 1rem;
           max-height: 150px;
+          background-color: white;
+
           @media (max-width: 1080px) {
             display: none;
           }
@@ -53,8 +54,11 @@ const PackListTile = ({
             css={css`
               display: block;
               object-fit: scale-down;
-              width: 100%;
+              width: 90%;
               height: 100%;
+              margin-left: auto;
+              margin-right: auto;
+              background-color: white;
 
               @media (max-width: 1080px) {
                 display: none;
@@ -68,6 +72,9 @@ const PackListTile = ({
               object-fit: scale-down;
               width: 100%;
               height: 100%;
+              margin-left: auto;
+              margin-right: auto;
+              background-color: white;
 
               @media (max-width: 1080px) {
                 display: none;
