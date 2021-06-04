@@ -274,7 +274,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
             {filteredPacks.map((pack) => {
               // TODO: Figure out what image should be shown
               // if not added to API explicitly
-              const imgSrc = pack.dashboards?.[0]?.screenshots?.[0];
               return (
                 <PackGridTile
                   name={pack.name}
@@ -282,7 +281,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
                   supportLevel={pack.level}
                   description={pack.description}
                   featuredImageUrl={
-                    imgSrc ||
+                    pack.logo ||
                     'https://via.placeholder.com/400x275.png?text=Image'
                   }
                   to={`${pack.fields.slug}`}
@@ -295,7 +294,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
             {filteredPacks.map((pack) => {
               // TODO: Figure out what image should be shown
               // if not added to API explicitly
-              const imgSrc = pack.dashboards?.[0]?.screenshots?.[0];
               return (
                 <PackListTile
                   name={pack.name}
@@ -303,7 +301,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
                   supportLevel={pack.level}
                   description={pack.description}
                   featuredImageUrl={
-                    imgSrc ||
+                    pack.logo ||
                     'https://via.placeholder.com/400x275.png?text=Image'
                   }
                   to={`${pack.fields.slug}`}

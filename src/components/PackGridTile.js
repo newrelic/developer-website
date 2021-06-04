@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Link, Icon, Surface } from '@newrelic/gatsby-theme-newrelic';
+import NewRelicIcon from '@newrelic/gatsby-theme-newrelic/src/icons/logo/newrelic.js';
 
 const PackGridTile = ({
   name,
@@ -27,13 +28,24 @@ const PackGridTile = ({
   >
     <div>
       <div>
-        {featuredImageUrl && (
+        {featuredImageUrl ? (
           <img
             src={featuredImageUrl}
             alt="Preview of the pack in action"
             css={css`
               display: block;
-              object-fit: cover;
+              object-fit: scale-down;
+              margin-left: auto;
+              margin-right: auto;
+              width: 90%;
+              height: 200px;
+            `}
+          />
+        ) : (
+          <NewRelicIcon
+            css={css`
+              display: block;
+              object-fit: scale-down;
               width: 100%;
               height: 200px;
             `}

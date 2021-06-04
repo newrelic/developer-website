@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Link, Icon, Surface } from '@newrelic/gatsby-theme-newrelic';
+import NewRelicIcon from '@newrelic/gatsby-theme-newrelic/src/icons/logo/newrelic.js';
+
 
 const PackListTile = ({
   name,
@@ -45,13 +47,26 @@ const PackListTile = ({
           }
         `}
       >
-        {featuredImageUrl && (
+        {featuredImageUrl ? (
           <img
             src={featuredImageUrl}
             alt="Preview of the pack in action"
             css={css`
               display: block;
-              object-fit: cover;
+              object-fit: scale-down;
+              width: 100%;
+              height: 100%;
+
+              @media (max-width: 1080px) {
+                display: none;
+              }
+            `}
+          />
+        ) : (
+          <NewRelicIcon
+            css={css`
+              display: block;
+              object-fit: scale-down;
               width: 100%;
               height: 100%;
 
