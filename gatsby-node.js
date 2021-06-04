@@ -56,7 +56,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       allObservabilityPacks {
         edges {
           node {
-            name
+            fields {
+              slug
+            }
             id
           }
         }
@@ -111,10 +113,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 
   allObservabilityPacks.edges.forEach(({ node }) => {
-    const { name, id } = node;
-
-    const slug = `/observability-packs/${slugify(name)}/${id}`;
-    console.log(slug);
+    const {
+      fields: { slug },
+      id,
+    } = node;
 
     createPage({
       path: path.join(slug, '/'),
@@ -187,6 +189,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       name: 'slug',
       value: `/apis/${kebabCase(node.name)}`,
+    });
+  }
+
+  if (node.internal.type === 'ObservabilityPacks') {
+    createNodeField({
+      node,
+      name: 'slug',
+      value: `/observability-packs/${slugify(node.name)}/${node.id}`,
     });
   }
 };

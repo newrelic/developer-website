@@ -5,7 +5,6 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import PackTile from '../components/PackTile';
 import PackList from '../components/PackList';
-import slugify from '../utils/slugify';
 import { SearchInput, Button, Dropdown } from '@newrelic/gatsby-theme-newrelic';
 
 const ObservabilityPacksPage = ({ data, location }) => {
@@ -132,7 +131,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
                 featuredImageUrl={
                   imgSrc || 'https://via.placeholder.com/400x275.png?text=Image'
                 }
-                to={`/observability-packs/${slugify(pack.name)}/${pack.id}`}
+                to={`${pack.fields.slug}`}
               />
             );
           })}
@@ -151,6 +150,9 @@ export const pageQuery = graphql`
   query {
     allObservabilityPacks {
       nodes {
+        fields {
+          slug
+        }
         id
         name
         website
