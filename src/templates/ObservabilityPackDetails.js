@@ -7,6 +7,7 @@ import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import Tabs from '../components/Tabs';
 import noImagePlaceholder from '../images/no-image-placeholder.png';
+import ImageCarousel from '../components/ImageCarousel/ImageCarousel';
 import {
   Layout,
   PageTools,
@@ -42,21 +43,21 @@ const ObservabilityPackDetails = ({ data }) => {
                 margin-top: 1rem;
               `}
             >
-              <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
-              <Tabs.BarItem id="dependencies">Dependencies</Tabs.BarItem>
-              <Tabs.BarItem id="dashboards" count={3}>
+              <Tabs.BarItem id='overview'>Overview</Tabs.BarItem>
+              <Tabs.BarItem id='dependencies'>Dependencies</Tabs.BarItem>
+              <Tabs.BarItem id='dashboards' count={3}>
                 Dashboards
               </Tabs.BarItem>
-              <Tabs.BarItem id="alerts" count={4}>
+              <Tabs.BarItem id='alerts' count={4}>
                 Alerts
               </Tabs.BarItem>
-              <Tabs.BarItem id="synthetics" disabled count={0}>
+              <Tabs.BarItem id='synthetics' disabled count={0}>
                 Synthetics checks
               </Tabs.BarItem>
-              <Tabs.BarItem id="visualizations" disabled count={0}>
+              <Tabs.BarItem id='visualizations' disabled count={0}>
                 Visualizations
               </Tabs.BarItem>
-              <Tabs.BarItem id="applications" count={1}>
+              <Tabs.BarItem id='applications' count={1}>
                 Applications
               </Tabs.BarItem>
             </Tabs.Bar>
@@ -65,23 +66,27 @@ const ObservabilityPackDetails = ({ data }) => {
           <Layout.Content>
             {/* carousel component if we decide to use multiple images */}
             <Tabs.Pages>
-              <Tabs.Page id="overview">
-                <img
-                  src={noImagePlaceholder}
-                  alt="placeholder"
-                  height="250px"
-                />
+              <Tabs.Page id='overview'>
+                <ImageCarousel
+                  images={[
+                    'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png',
+                    'https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.3.1/packs/apache/dashboards/apache01.png',
+                    'https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.3.1/packs/apache/dashboards/apache02.png', 
+                    noImagePlaceholder,
+                    noImagePlaceholder,
+                  ]}
+                ></ImageCarousel>
                 <h3>Description</h3>
                 <p>{pack.description}</p>
               </Tabs.Page>
-              <Tabs.Page id="dashboards">
-                {pack.dashboards?.map((dashboard) => (
+              <Tabs.Page id='dashboards'>
+                {pack.dashboards?.map(dashboard => (
                   <>
                     <p>{dashboard?.name}</p>
                     {dashboard?.screenshots?.map((screenshot, index) => (
                       <img
                         key={index}
-                        alt="dashboard example"
+                        alt='dashboard example'
                         src={screenshot}
                         css={css`
                           height: 200px;
@@ -106,40 +111,40 @@ const ObservabilityPackDetails = ({ data }) => {
               <PageTools.Title>Ratings and installs</PageTools.Title>
               {/* probably want a component for the ratings if we keep them */}
               <FeatherIcon
-                name="star"
-                size="2em"
+                name='star'
+                size='2em'
                 css={css`
                   color: gold;
                   fill: gold;
                 `}
               />
               <FeatherIcon
-                name="star"
-                size="2em"
+                name='star'
+                size='2em'
                 css={css`
                   color: gold;
                   fill: gold;
                 `}
               />
               <FeatherIcon
-                name="star"
-                size="2em"
+                name='star'
+                size='2em'
                 css={css`
                   color: gold;
                   fill: gold;
                 `}
               />
               <FeatherIcon
-                name="star"
-                size="2em"
+                name='star'
+                size='2em'
                 css={css`
                   color: gold;
                   fill: gold;
                 `}
               />
               <FeatherIcon
-                name="star"
-                size="2em"
+                name='star'
+                size='2em'
                 css={css`
                   color: lightgray;
                   fill: lightgray;
@@ -180,7 +185,7 @@ const ObservabilityPackDetails = ({ data }) => {
                   <img
                     src={avatar_url}
                     key={avatar_url}
-                    alt="github avatar"
+                    alt='github avatar'
                     css={css`
                       height: 35px;
                       border-radius: 50%;
@@ -190,7 +195,7 @@ const ObservabilityPackDetails = ({ data }) => {
               </div>
               <p>
                 Want to contribute to this observability pack?{' '}
-                <ExternalLink href="#">Go to the repo</ExternalLink>
+                <ExternalLink href='#'>Go to the repo</ExternalLink>
               </p>
             </PageTools.Section>
           </Layout.PageTools>
