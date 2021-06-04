@@ -205,5 +205,6 @@ module.exports = {
         environments: ['production', 'development'],
       },
     },
+    'gatsby-plugin-use-query-params',
   ],
 };
