@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import PackTile from '../components/PackTile';
 import PackList from '../components/PackList';
 import { SearchInput, Button, Dropdown } from '@newrelic/gatsby-theme-newrelic';
-import { useQueryParam, NumberParam, StringParam } from 'use-query-params';
+import { useQueryParam, StringParam } from 'use-query-params';
 
 const ObservabilityPacksPage = ({ data, location }) => {
   const {
@@ -32,7 +32,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
     if (querySort) {
       setSortState(querySort);
     }
-  }, []);
+  }, [querySearch, queryFilter, querySort]);
 
   useEffect(() => {
     let tempFilteredPacks = o11yPacks.filter(
@@ -65,7 +65,18 @@ const ObservabilityPacksPage = ({ data, location }) => {
     setQueryFilter(containingFilterState);
     setQuerySort(sortState);
     setFilteredPacks(tempFilteredPacks);
-  }, [o11yPacks, searchTerm, containingFilterState, sortState]);
+  }, [
+    o11yPacks,
+    searchTerm,
+    containingFilterState,
+    sortState,
+    queryFilter,
+    querySort,
+    querySearch,
+    setQueryFilter,
+    setQuerySort,
+    setQuerySearch,
+  ]);
 
   return (
     <>
