@@ -237,17 +237,13 @@ const ObservabilityPacksPage = ({ data, location }) => {
             {filteredPacks.map((pack) => {
               // TODO: Figure out what image should be shown
               // if not added to API explicitly
-              const imgSrc = pack.dashboards?.[0]?.screenshots?.[0];
               return (
                 <PackGridTile
                   name={pack.name}
                   key={pack.id}
                   supportLevel={pack.level}
                   description={pack.description}
-                  featuredImageUrl={
-                    imgSrc ||
-                    'https://via.placeholder.com/400x275.png?text=Image'
-                  }
+                  featuredImageUrl={pack.logo}
                   to={`/observability-packs/${pack.name}/${pack.id}`}
                 />
               );
@@ -258,17 +254,13 @@ const ObservabilityPacksPage = ({ data, location }) => {
             {filteredPacks.map((pack) => {
               // TODO: Figure out what image should be shown
               // if not added to API explicitly
-              const imgSrc = pack.dashboards?.[0]?.screenshots?.[0];
               return (
                 <PackListTile
                   name={pack.name}
                   key={pack.id}
                   supportLevel={pack.level}
                   description={pack.description}
-                  featuredImageUrl={
-                    imgSrc ||
-                    'https://via.placeholder.com/400x275.png?text=Image'
-                  }
+                  featuredImageUrl={pack.logo}
                   to={`/observability-packs/${pack.name}/${pack.id}`}
                 />
               );
