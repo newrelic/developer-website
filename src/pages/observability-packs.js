@@ -6,6 +6,7 @@ import { css } from '@emotion/react';
 import PackTile from '../components/PackTile';
 import PackList from '../components/PackList';
 import { SearchInput, Button, Dropdown } from '@newrelic/gatsby-theme-newrelic';
+import { useQueryParam, StringParam } from 'use-query-params';
 
 const ObservabilityPacksPage = ({ data, location }) => {
   const {
@@ -17,6 +18,22 @@ const ObservabilityPacksPage = ({ data, location }) => {
   );
   const [sortState, setSortState] = useState('Alphabetical');
   const [searchTerm, setSearchTerm] = useState('');
+  const [querySearch, setQuerySearch] = useQueryParam('search', StringParam);
+  const [queryFilter, setQueryFilter] = useQueryParam('filter', StringParam);
+  const [querySort, setQuerySort] = useQueryParam('sort', StringParam);
+
+  useEffect(() => {
+    if (querySearch) {
+      setSearchTerm(querySearch);
+    }
+    if (queryFilter) {
+      setContainingFilterState(queryFilter);
+    }
+    if (querySort) {
+      setSortState(querySort);
+    }
+  }, [querySearch, queryFilter, querySort]);
+
   useEffect(() => {
     let tempFilteredPacks = o11yPacks.filter(
       (pack) =>
@@ -39,8 +56,27 @@ const ObservabilityPacksPage = ({ data, location }) => {
         b.name.localeCompare(a.name)
       );
     }
+
+    if (searchTerm !== '') {
+      setQuerySearch(searchTerm);
+    } else {
+      setQuerySearch(undefined);
+    }
+    setQueryFilter(containingFilterState);
+    setQuerySort(sortState);
     setFilteredPacks(tempFilteredPacks);
-  }, [o11yPacks, searchTerm, containingFilterState, sortState]);
+  }, [
+    o11yPacks,
+    searchTerm,
+    containingFilterState,
+    sortState,
+    queryFilter,
+    querySort,
+    querySearch,
+    setQueryFilter,
+    setQuerySort,
+    setQuerySearch,
+  ]);
 
   return (
     <>
@@ -56,6 +92,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
         onChange={(e) => {
           setSearchTerm(e.target.value.toLowerCase());
         }}
+        defaultValue={querySearch}
       />
       <div
         css={css`
