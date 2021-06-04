@@ -26,10 +26,11 @@ const PackGridTile = ({
     `}
   >
     <div>
-      <div 
+      <div
         css={css`
           background-color: white;
-        `}>
+        `}
+      >
         {featuredImageUrl ? (
           <img
             src={featuredImageUrl}
