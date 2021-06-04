@@ -1,31 +1,19 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
+import DevSiteSeo from '../components/DevSiteSeo';
 import PropTypes from 'prop-types';
-
 import PageLayout from '../components/PageLayout';
-import FeatherIcon from '../components/FeatherIcon';
 import Tabs from '../components/Tabs';
 import noImagePlaceholder from '../images/no-image-placeholder.png';
-import {
-  Layout,
-  PageTools,
-  ExternalLink,
-  Button,
-} from '@newrelic/gatsby-theme-newrelic';
+import { Layout, PageTools, Button } from '@newrelic/gatsby-theme-newrelic';
 
-const exampleContributors = [
-  { avatar_url: 'https://avatars.githubusercontent.com/u/583231?v=4' },
-  { avatar_url: 'https://avatars.githubusercontent.com/u/583231?v=4' },
-  { avatar_url: 'https://avatars.githubusercontent.com/u/583231?v=4' },
-  { avatar_url: 'https://avatars.githubusercontent.com/u/583231?v=4' },
-];
-
-const ObservabilityPackDetails = ({ data }) => {
+const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
 
   return (
     <>
+      <DevSiteSeo title={pack.name} location={location} />
       <Tabs>
         <PageLayout type={PageLayout.TYPE.RELATED_CONTENT}>
           <PageLayout.Header
@@ -44,20 +32,40 @@ const ObservabilityPackDetails = ({ data }) => {
             >
               <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
               <Tabs.BarItem id="dependencies">Dependencies</Tabs.BarItem>
-              <Tabs.BarItem id="dashboards" count={3}>
+              <Tabs.BarItem
+                id="dashboards"
+                disabled={!(pack.dashboards?.length ?? 0)}
+                count={pack.dashboards?.length ?? 0}
+              >
                 Dashboards
               </Tabs.BarItem>
-              <Tabs.BarItem id="alerts" count={4}>
+              <Tabs.BarItem
+                id="alerts"
+                disabled={!(pack.alerts?.length ?? 0)}
+                count={pack.alerts?.length ?? 0}
+              >
                 Alerts
               </Tabs.BarItem>
-              <Tabs.BarItem id="synthetics" disabled count={0}>
+              <Tabs.BarItem
+                id="synthetics"
+                disabled={!(pack.synthetics?.length ?? 0)}
+                count={pack.synthetics?.length ?? 0}
+              >
                 Synthetics checks
               </Tabs.BarItem>
-              <Tabs.BarItem id="visualizations" disabled count={0}>
+              <Tabs.BarItem
+                id="visualizations"
+                disabled={!(pack.visualizations?.length ?? 0)}
+                count={pack.visualizations?.length ?? 0}
+              >
                 Visualizations
               </Tabs.BarItem>
-              <Tabs.BarItem id="applications" count={1}>
-                Applications
+              <Tabs.BarItem
+                id="nerdpacks"
+                disabled={!(pack.nerdpacks?.length ?? 0)}
+                count={pack.nerdpacks?.length ?? 0}
+              >
+                Nerdpacks
               </Tabs.BarItem>
             </Tabs.Bar>
           </PageLayout.Header>
@@ -77,8 +85,8 @@ const ObservabilityPackDetails = ({ data }) => {
               <Tabs.Page id="dashboards">
                 {pack.dashboards?.map((dashboard) => (
                   <>
-                    <p>{dashboard?.name}</p>
-                    {dashboard?.screenshots?.map((screenshot, index) => (
+                    <h3>{dashboard.name}</h3>
+                    {dashboard.screenshots?.map((screenshot, index) => (
                       <img
                         key={index}
                         alt="dashboard example"
@@ -89,6 +97,25 @@ const ObservabilityPackDetails = ({ data }) => {
                         `}
                       />
                     ))}
+                    {dashboard.description && (
+                      <>
+                        <h4>Description</h4>
+                        <p>{dashboard.description}</p>
+                      </>
+                    )}
+                  </>
+                ))}
+              </Tabs.Page>
+              <Tabs.Page id="alerts">
+                {pack.alerts?.map((alert) => (
+                  <>
+                    <h3>{alert.name}</h3>
+                    {alert.description && (
+                      <>
+                        <h4>Description</h4>
+                        <p>{alert.description}</p>
+                      </>
+                    )}
                   </>
                 ))}
               </Tabs.Page>
@@ -102,51 +129,6 @@ const ObservabilityPackDetails = ({ data }) => {
               }
             `}
           >
-            <PageTools.Section>
-              <PageTools.Title>Ratings and installs</PageTools.Title>
-              {/* probably want a component for the ratings if we keep them */}
-              <FeatherIcon
-                name="star"
-                size="2em"
-                css={css`
-                  color: gold;
-                  fill: gold;
-                `}
-              />
-              <FeatherIcon
-                name="star"
-                size="2em"
-                css={css`
-                  color: gold;
-                  fill: gold;
-                `}
-              />
-              <FeatherIcon
-                name="star"
-                size="2em"
-                css={css`
-                  color: gold;
-                  fill: gold;
-                `}
-              />
-              <FeatherIcon
-                name="star"
-                size="2em"
-                css={css`
-                  color: gold;
-                  fill: gold;
-                `}
-              />
-              <FeatherIcon
-                name="star"
-                size="2em"
-                css={css`
-                  color: lightgray;
-                  fill: lightgray;
-                `}
-              />
-              <p>37 ratings from 247 installs</p>
-            </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>How to use this pack</PageTools.Title>
               <ol>
@@ -166,32 +148,8 @@ const ObservabilityPackDetails = ({ data }) => {
               </ol>
             </PageTools.Section>
             <PageTools.Section>
-              <PageTools.Title>Contributors</PageTools.Title>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  flex: 5;
-                  width: 60%;
-                  margin-bottom: 0.5rem;
-                `}
-              >
-                {exampleContributors.map(({ avatar_url }) => (
-                  <img
-                    src={avatar_url}
-                    key={avatar_url}
-                    alt="github avatar"
-                    css={css`
-                      height: 35px;
-                      border-radius: 50%;
-                    `}
-                  />
-                ))}
-              </div>
-              <p>
-                Want to contribute to this observability pack?{' '}
-                <ExternalLink href="#">Go to the repo</ExternalLink>
-              </p>
+              <PageTools.Title>Authors</PageTools.Title>
+              <p>{pack.authors.join(', ')}</p>
             </PageTools.Section>
           </Layout.PageTools>
         </PageLayout>
@@ -202,6 +160,7 @@ const ObservabilityPackDetails = ({ data }) => {
 
 ObservabilityPackDetails.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
