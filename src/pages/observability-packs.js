@@ -139,52 +139,39 @@ const ObservabilityPacksPage = ({ data, location }) => {
             }
           `}
         >
-          <div
-            css={css`
-              margin: 0 0.5rem;
-            `}
-          >
-            <FormControl>
-              <Label htmlFor="sortFilter">Sort by</Label>
-              <Select
-                id="sortFilter"
-                value={sortState}
-                onChange={(e) => {
-                  setSortState(e.target.value);
-                }}
-              >
-                {sortOptionValues.map((sortOption) => (
-                  <option key={sortOption} value={sortOption}>
-                    {sortOption}
-                  </option>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
-          <div
-            css={css`
-              margin: 0 0.5rem;
-            `}
-          >
-            <FormControl>
-              <Label htmlFor="packContentsFilter">
-                Filter packs containing
-              </Label>
-              <Select
-                id="packContentsFilter"
-                value={containingFilterState}
-                onChange={(e) => {
-                  setContainingFilterState(e.target.value);
-                }}
-              >
-                {packContentsFilterValues.map((packContentsItem) => (
-                  <option key={packContentsItem} value={packContentsItem}>
-                    {packContentsItem}
-                  </option>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
+          <FormControl>
+            <Label htmlFor="sortFilter">Sort by</Label>
+            <Select
+              id="sortFilter"
+              value={sortState}
+              onChange={(e) => {
+                setSortState(e.target.value);
+              }}
+            >
+              {sortOptionValues.map((sortOption) => (
+                <option key={sortOption} value={sortOption}>
+                  {sortOption}
+                </option>
+              ))}
+            </Select>
+          </FormControl>
+
+          <FormControl>
+            <Label htmlFor="packContentsFilter">Filter packs containing</Label>
+            <Select
+              id="packContentsFilter"
+              value={containingFilterState}
+              onChange={(e) => {
+                setContainingFilterState(e.target.value);
+              }}
+            >
+              {packContentsFilterValues.map((packContentsItem) => (
+                <option key={packContentsItem} value={packContentsItem}>
+                  {packContentsItem}
+                </option>
+              ))}
+            </Select>
+          </FormControl>
         </div>
         <div>
           <Button variant={Button.VARIANT.PRIMARY}>Grid view</Button>
@@ -274,8 +261,10 @@ Label.propTypes = {
 const FormControl = ({ children }) => (
   <div
     css={css`
-      &:not(:last-child) {
-        margin-bottom: 1.5rem;
+      margin: 0 0.5rem;
+
+      @media screen and (max-width: 1180px) {
+        margin: 0.5rem 0;
       }
     `}
   >
