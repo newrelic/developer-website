@@ -8,7 +8,17 @@ const noImagePlaceholder =
 
 const CreateImageBlock = (image) => {
   return (
-    <a href={image} target="_blank" rel="noreferrer">
+    <a
+      href={image}
+      target="_blank"
+      rel="noreferrer"
+      css={css`
+        height: 207px;
+
+        margin-right: 16px;
+        margin-bottom: 6px;
+      `}
+    >
       <img
         src={image}
         alt="placeholder-text"
@@ -28,9 +38,6 @@ const CreateImageBlock = (image) => {
           box-shadow: inset 0px 0px 0px 4px #ffffff;
           border-radius: 4px;
           padding: 3px;
-
-          margin-right: 16px;
-          margin-bottom: 6px;
 
           object-fit: cover;
         `}
