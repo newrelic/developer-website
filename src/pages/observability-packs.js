@@ -146,6 +146,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
               value={sortState}
               onChange={(e) => {
                 setSortState(e.target.value);
+                document.getElementById(e.target.id).blur();
               }}
             >
               {sortOptionValues.map((sortOption) => (
@@ -163,6 +164,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
               value={containingFilterState}
               onChange={(e) => {
                 setContainingFilterState(e.target.value);
+                document.getElementById(e.target.id).blur();
               }}
             >
               {packContentsFilterValues.map((packContentsItem) => (
