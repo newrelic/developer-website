@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import PackTile from '../components/PackTile';
 import PackList from '../components/PackList';
 import Select from '../components/Select';
-import { SearchInput, Button, Dropdown } from '@newrelic/gatsby-theme-newrelic';
+import { SearchInput, Button } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
@@ -282,5 +282,9 @@ const FormControl = ({ children }) => (
     {children}
   </div>
 );
+
+FormControl.propTypes = {
+  children: PropTypes.node,
+};
 
 export default ObservabilityPacksPage;
