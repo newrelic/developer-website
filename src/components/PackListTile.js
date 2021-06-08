@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Link, Icon, Surface } from '@newrelic/gatsby-theme-newrelic';
+import NewRelicIcon from '@newrelic/gatsby-theme-newrelic/src/icons/logo/newrelic.js';
 
-const PackTile = ({
+const PackListTile = ({
   name,
   description,
   featuredImageUrl,
@@ -19,23 +20,65 @@ const PackTile = ({
     interactive
     css={css`
       display: grid;
-      grid-template-rows: auto 1fr auto;
       border-radius: 0.25rem;
-      position: relative;
       transition: all 0.15s ease-out;
+      margin-bottom: 1rem;
     `}
   >
-    <div>
-      <div>
-        {featuredImageUrl && (
+    <div
+      css={css`
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
+
+        @media (max-width: 1080px) {
+          grid-template-columns: 1fr;
+        }
+      `}
+    >
+      <div
+        css={css`
+          padding: 1rem;
+          max-height: 150px;
+          background-color: white;
+
+          @media (max-width: 1080px) {
+            display: none;
+          }
+        `}
+      >
+        {featuredImageUrl ? (
           <img
             src={featuredImageUrl}
             alt="Preview of the pack in action"
             css={css`
               display: block;
-              object-fit: cover;
+              object-fit: scale-down;
+              width: 90%;
+              height: 100%;
+              margin-left: auto;
+              margin-right: auto;
+              background-color: white;
+
+              @media (max-width: 1080px) {
+                display: none;
+              }
+            `}
+          />
+        ) : (
+          <NewRelicIcon
+            css={css`
+              display: block;
+              object-fit: scale-down;
               width: 100%;
-              height: 200px;
+              height: 100%;
+              margin-left: auto;
+              margin-right: auto;
+              background-color: white;
+
+              @media (max-width: 1080px) {
+                display: none;
+              }
             `}
           />
         )}
@@ -43,6 +86,7 @@ const PackTile = ({
       <div
         css={css`
           padding: 1rem;
+          width: 100%;
         `}
       >
         <div
@@ -85,7 +129,7 @@ const PackTile = ({
   </Surface>
 );
 
-PackTile.propTypes = {
+PackListTile.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   featuredImageUrl: PropTypes.string,
@@ -94,4 +138,4 @@ PackTile.propTypes = {
   className: PropTypes.string,
 };
 
-export default PackTile;
+export default PackListTile;
