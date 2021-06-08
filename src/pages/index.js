@@ -16,7 +16,6 @@ import { pageContext } from '../types';
 import * as styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
-import fsBanner from '../images/futurestack-registration.png';
 import Video from '../components/Video';
 
 const getStartedGuides = [
