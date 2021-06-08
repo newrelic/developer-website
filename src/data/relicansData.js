@@ -18,10 +18,10 @@ export const teamMembers = [
     avatar: aaronAvatar,
     bio: (
       <p>
-        Aaron Bassett is a recovering senior software engineer turned Senior
-        Developer Advocate with{' '}
-        <a href="https://mongodb.com" target="_blank" rel="noreferrer">
-          MongoDB
+        Aaron Bassett is a recovering senior software engineer turned Principal
+        Developer Relations Engineer with{' '}
+        <a href="https://newrelic.com" target="_blank" rel="noreferrer">
+          New Relic
         </a>
         . He is a developer, public speaker, writer, and mentor; he spends most
         of his time making cool stuff and helping other people make{' '}
