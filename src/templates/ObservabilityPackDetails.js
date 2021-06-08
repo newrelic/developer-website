@@ -5,8 +5,8 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import Tabs from '../components/Tabs';
-import noImagePlaceholder from '../images/no-image-placeholder.png';
 import { Layout, PageTools, Button } from '@newrelic/gatsby-theme-newrelic';
+import ImageGallery from '../components/ImageGallery';
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
@@ -74,11 +74,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
             {/* carousel component if we decide to use multiple images */}
             <Tabs.Pages>
               <Tabs.Page id="overview">
-                <img
-                  src={noImagePlaceholder}
-                  alt="placeholder"
-                  height="250px"
-                />
+                <ImageGallery images={[]} />
                 <h3>Description</h3>
                 <p>{pack.description}</p>
               </Tabs.Page>
@@ -86,17 +82,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 {pack.dashboards?.map((dashboard) => (
                   <>
                     <h3>{dashboard.name}</h3>
-                    {dashboard.screenshots?.map((screenshot, index) => (
-                      <img
-                        key={index}
-                        alt="dashboard example"
-                        src={screenshot}
-                        css={css`
-                          height: 200px;
-                          margin: 1rem;
-                        `}
-                      />
-                    ))}
+                    <ImageGallery images={dashboard.screenshots} />
                     {dashboard.description && (
                       <>
                         <h4>Description</h4>
