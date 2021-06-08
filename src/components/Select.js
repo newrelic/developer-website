@@ -60,6 +60,7 @@ const Select = ({ disabled, ...props }) => (
         font-size: 14px;
         cursor: inherit;
         line-height: inherit;
+        outline: none;
 
         &:focus + .focus-ring {
           position: absolute;
@@ -67,7 +68,7 @@ const Select = ({ disabled, ...props }) => (
           left: -1px;
           right: -1px;
           bottom: -1px;
-          border: 2px solid var(--color-brand-500);
+          outline: 2px solid var(--color-brand-500);
           border-radius: inherit;
         }
 
