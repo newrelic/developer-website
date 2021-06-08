@@ -56,22 +56,9 @@ const IndexPage = ({ data, pageContext, location }) => {
     <PageContext.Provider value={pageContext}>
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="FutureStack: Master Observability" />
+        <PageLayout.Header title="Getting started with New Relic and Terraform" />
 
         <PageLayout.Content>
-          <section>
-            <a href="https://web.cvent.com/event/ac440313-3922-45f5-b5b9-0812f29f4a51/summary?RefId=DEV&rt=DKI6UYQP806AeXIj4Q4uxw">
-              <img
-                css={css`
-                  display: block;
-                  width: 99%;
-                  margin-bottom: 25px;
-                `}
-                src={fsBanner}
-                alt="Register for FutureStack 2021"
-              />
-            </a>
-          </section>
           <section
             css={css`
               margin-top: 0;
@@ -80,18 +67,24 @@ const IndexPage = ({ data, pageContext, location }) => {
           >
             <div className={styles.introText}>
               <p>
-                Data Nerds, get ready to hack the future. Level Up your
-                observability game at{' '}
-                <a href="https://newrelic.com/futurestack">Futurestack</a> 2021.
+                <a href="https://www.terraform.io/">Terraform</a> is a popular
+                infrastructure-as-code software tool built by HashiCorp. You use
+                it to provision all kinds of infrastructure and services,
+                including New Relic alerts.
+                <br />
+                <br />
+                In this guide, you learn how to set up New Relic alerts with
+                Terraform. More specifically, you provision an alert policy,
+                four alert conditions, and a notification channel.
               </p>
               <p>
-                Rack up your experience points with new tools, new skills, and
-                whole new ways to play with your data through Observability.
-              </p>
-              <p>
-                Connect with Nerds from across the globe to learn, share, and
-                get inspired as we reinvent the future of software — and have
-                lots of fun doing it.
+                <Button
+                  as={Link}
+                  variant={Button.VARIANT.PRIMARY}
+                  to="/automate-workflows/get-started-terraform"
+                >
+                  Get Started with Terraform
+                </Button>
               </p>
             </div>
             <div
@@ -102,7 +95,7 @@ const IndexPage = ({ data, pageContext, location }) => {
                 width: 100%;
               `}
             >
-              <Video id="wyjntz5y24" type="wistia" />
+              <Video id="vifxeilp2h" type="wistia" />
             </div>
           </section>
 
