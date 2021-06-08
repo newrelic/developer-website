@@ -5,12 +5,11 @@ import { css } from '@emotion/react';
 const Select = ({ disabled, ...props }) => (
   <div
     css={css`
-      height: 28px;
+      height: 1.75rem;
       display: grid;
       grid-template-areas: 'select';
       align-items: center;
       width: 100%;
-      min-width: 15ch;
       border: 1px solid var(--color-neutrals-500);
       border-radius: 0.25rem;
       padding: 0.25rem 0.5rem;
@@ -61,7 +60,6 @@ const Select = ({ disabled, ...props }) => (
         font-size: 14px;
         cursor: inherit;
         line-height: inherit;
-        outline: none;
 
         &:focus + .focus-ring {
           position: absolute;
