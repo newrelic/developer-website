@@ -80,7 +80,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 <p>{pack.description}</p>
               </Tabs.Page>
               <Tabs.Page id="dependencies">
-                <Intro>
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -92,7 +96,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 </Intro>
               </Tabs.Page>
               <Tabs.Page id="dashboards">
-                <Intro>
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -116,7 +124,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 ))}
               </Tabs.Page>
               <Tabs.Page id="alerts">
-                <Intro>
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -139,7 +151,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 ))}
               </Tabs.Page>
               <Tabs.Page id="synthetics">
-                <Intro>
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -151,7 +167,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 </Intro>
               </Tabs.Page>
               <Tabs.Page id="visualizations">
-                <Intro>
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -163,7 +183,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 </Intro>
               </Tabs.Page>
               <Tabs.Page id="nerdpacks">
-                <Intro>
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
