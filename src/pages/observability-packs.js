@@ -7,8 +7,19 @@ import PackGrid from '../components/PackGrid';
 import PackGridTile from '../components/PackGridTile';
 import PackListTile from '../components/PackListTile';
 import PackList from '../components/PackList';
-import { SearchInput, Button, Dropdown } from '@newrelic/gatsby-theme-newrelic';
+import Select from '../components/Select';
+import { SearchInput, Button } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
+
+const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
+const packContentsFilterValues = [
+  'Anything',
+  'Dashboards',
+  'Alerts',
+  'Visualizations',
+  'Synthetics Checks',
+  'Applications',
+];
 
 const ObservabilityPacksPage = ({ data, location }) => {
   const {
@@ -113,137 +124,63 @@ const ObservabilityPacksPage = ({ data, location }) => {
           .dark-mode & {
             background-color: var(--color-dark-100);
           }
+          @media screen and (max-width: 1180px) {
+            flex-direction: column;
+            align-items: normal;
+            > * {
+              margin: 0.5rem 0;
+            }
+          }
         `}
       >
         <span>Showing {filteredPacks.length} results</span>
         <div
           css={css`
             display: flex;
+            @media screen and (max-width: 1180px) {
+              flex-direction: column;
+              align-items: normal;
+              > * {
+                margin: 0.5rem 0;
+              }
+            }
           `}
         >
-          <div
-            css={css`
-              margin: 0 0.5rem;
-            `}
-          >
-            <span
-              css={css`
-                font-size: 12px;
-                font-weight: bold;
-              `}
+          <FormControl>
+            <Label htmlFor="sortFilter">Sort by</Label>
+            <Select
+              id="sortFilter"
+              value={sortState}
+              onChange={(e) => {
+                setSortState(e.target.value);
+                document.getElementById(e.target.id).blur();
+              }}
             >
-              Sort by
-            </span>
-            <Dropdown align="left">
-              <Dropdown.Toggle
-                css={css`
-                  background-color: var(--color-white);
-                  .dark-mode & {
-                    background-color: transparent;
-                  }
-                `}
-                size={Button.SIZE.SMALL}
-                variant={Button.VARIANT.OUTLINE}
-              >
-                {sortState}
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.MenuItem
-                  onClick={() => {
-                    setSortState('Alphabetical');
-                  }}
-                >
-                  Alphabetical
-                </Dropdown.MenuItem>
-                <Dropdown.MenuItem
-                  onClick={() => {
-                    setSortState('Reverse');
-                  }}
-                >
-                  Reverse
-                </Dropdown.MenuItem>
-                <Dropdown.MenuItem
-                  onClick={() => {
-                    setSortState('Popularity');
-                  }}
-                >
-                  Popularity
-                </Dropdown.MenuItem>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
-          <div
-            css={css`
-              margin: 0 0.5rem;
-            `}
-          >
-            <span
-              css={css`
-                font-size: 12px;
-                font-weight: bold;
-              `}
+              {sortOptionValues.map((sortOption) => (
+                <option key={sortOption} value={sortOption}>
+                  {sortOption}
+                </option>
+              ))}
+            </Select>
+          </FormControl>
+
+          <FormControl>
+            <Label htmlFor="packContentsFilter">Filter packs containing</Label>
+            <Select
+              id="packContentsFilter"
+              value={containingFilterState}
+              onChange={(e) => {
+                setContainingFilterState(e.target.value);
+                document.getElementById(e.target.id).blur();
+              }}
             >
-              Filter packs containing
-            </span>
-            <Dropdown align="left">
-              <Dropdown.Toggle
-                css={css`
-                  background-color: var(--color-white);
-                  .dark-mode & {
-                    background-color: transparent;
-                  }
-                `}
-                size={Button.SIZE.SMALL}
-                variant={Button.VARIANT.OUTLINE}
-              >
-                {containingFilterState}
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.MenuItem
-                  onClick={() => {
-                    setContainingFilterState('Anything');
-                  }}
-                >
-                  Anything
-                </Dropdown.MenuItem>
-                <Dropdown.MenuItem
-                  onClick={() => {
-                    setContainingFilterState('Dashboards');
-                  }}
-                >
-                  Dashboards
-                </Dropdown.MenuItem>
-                <Dropdown.MenuItem
-                  onClick={() => {
-                    setContainingFilterState('Alerts');
-                  }}
-                >
-                  Alerts
-                </Dropdown.MenuItem>
-                <Dropdown.MenuItem
-                  onClick={() => {
-                    setContainingFilterState('Visualizations');
-                  }}
-                >
-                  Visualizations
-                </Dropdown.MenuItem>
-                <Dropdown.MenuItem
-                  onClick={() => {
-                    setContainingFilterState('Synthetics');
-                  }}
-                >
-                  Synthetic Checks
-                </Dropdown.MenuItem>
-                <Dropdown.MenuItem
-                  onClick={() => {
-                    setContainingFilterState('Applications');
-                  }}
-                >
-                  Applications
-                </Dropdown.MenuItem>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
+              {packContentsFilterValues.map((packContentsItem) => (
+                <option key={packContentsItem} value={packContentsItem}>
+                  {packContentsItem}
+                </option>
+              ))}
+            </Select>
+          </FormControl>
         </div>
         <div>
           <Button
@@ -350,5 +287,42 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+const Label = ({ children, htmlFor }) => (
+  <label
+    htmlFor={htmlFor}
+    css={css`
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    `}
+  >
+    {children}
+  </label>
+);
+
+Label.propTypes = {
+  children: PropTypes.node,
+  htmlFor: PropTypes.string,
+};
+
+const FormControl = ({ children }) => (
+  <div
+    css={css`
+      margin: 0 0.5rem;
+
+      @media screen and (max-width: 1180px) {
+        margin: 0.5rem 0;
+      }
+    `}
+  >
+    {children}
+  </div>
+);
+
+FormControl.propTypes = {
+  children: PropTypes.node,
+};
 
 export default ObservabilityPacksPage;
