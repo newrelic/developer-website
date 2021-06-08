@@ -20,6 +20,9 @@ const ObservabilityPackDetails = ({ data, location }) => {
             title={pack.name}
             css={css`
               border-bottom: none;
+              @media (max-width: 480px) {
+                gap: 1rem;
+              }
             `}
           >
             <Button variant={Button.VARIANT.PRIMARY} size={Button.SIZE.MEDIUM}>
