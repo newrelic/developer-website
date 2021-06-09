@@ -51,3 +51,9 @@ Please submit any issues or enhancement requests using one of our
 [Issue Templates](https://github.com/newrelic/developer-website/issues/new/choose).
 Please search for and review the existing open issues before submitting a new
 issue to prevent the submission of duplicate issues.
+
+## CI/CD
+### fetch-observability-packs
+* Purpose: This workflow pulls down Observability Packs from the GraphQL API, writes them to src/data/observability-packs.json (overwriting any previous content), and commits that file to the `main` branch. 
+* Trigger: Schedule, 12am everyday
+
