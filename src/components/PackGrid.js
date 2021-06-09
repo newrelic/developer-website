@@ -13,7 +13,9 @@ const PackGrid = ({ children, className }) => {
         grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
         align-items: stretch;
         width: 100%;
-
+        @media (max-width: 1450px) {
+          grid-template-columns: repeat(3, minmax(260px, 1fr));
+        }
         @media (max-width: 1180px) {
           grid-template-columns: 1fr;
           grid-gap: 3rem;
