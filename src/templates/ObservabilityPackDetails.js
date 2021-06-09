@@ -21,6 +21,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
             title={pack.name}
             css={css`
               border-bottom: none;
+              gap: 1rem;
             `}
           >
             <Button variant={Button.VARIANT.PRIMARY} size={Button.SIZE.MEDIUM}>
@@ -72,7 +73,6 @@ const ObservabilityPackDetails = ({ data, location }) => {
           </PageLayout.Header>
 
           <Layout.Content>
-            {/* carousel component if we decide to use multiple images */}
             <Tabs.Pages>
               <Tabs.Page id="overview">
                 <ImageGallery images={[]} />
