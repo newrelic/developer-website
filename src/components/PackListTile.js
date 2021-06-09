@@ -64,6 +64,11 @@ const PackListTile = ({
                 display: none;
               }
             `}
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src =
+                'https://via.placeholder.com/400x275.png?text=Image';
+            }}
           />
         ) : (
           <NewRelicIcon

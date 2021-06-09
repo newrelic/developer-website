@@ -43,6 +43,11 @@ const PackGridTile = ({
               width: 90%;
               height: 200px;
             `}
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src =
+                'https://via.placeholder.com/400x275.png?text=Image';
+            }}
           />
         ) : (
           <NewRelicIcon
