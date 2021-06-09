@@ -85,6 +85,16 @@ const writePacks = (path, packs) => {
   fs.writeFileSync(path, JSON.stringify(packs, null, 2));
 };
 
+const validateEnvVars = () => {
+  if (typeof NR_GQL_URL !== 'string') {
+    throw new Error('NR_GQL_URL environment variable not set, exiting...');
+  }
+
+  if (typeof NR_API_TOKEN !== 'string') {
+    throw new Error('NR_API_TOKEN environment variable not set, exiting...');
+  }
+};
+
 const main = async () => {
   const results = await fetchPacks(packQuery, NR_GQL_URL, NR_API_TOKEN);
 
@@ -99,6 +109,7 @@ const main = async () => {
   }
 };
 
+validateEnvVars();
 main();
 
 /* eslint-enable no-console */
