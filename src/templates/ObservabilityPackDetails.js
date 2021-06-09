@@ -7,6 +7,7 @@ import PageLayout from '../components/PageLayout';
 import Tabs from '../components/Tabs';
 import { Layout, PageTools, Button } from '@newrelic/gatsby-theme-newrelic';
 import ImageGallery from '../components/ImageGallery';
+import Intro from '../components/Intro';
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
@@ -78,7 +79,37 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 <h3>Description</h3>
                 <p>{pack.description}</p>
               </Tabs.Page>
+              <Tabs.Page id="dependencies">
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </Intro>
+              </Tabs.Page>
               <Tabs.Page id="dashboards">
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </Intro>
                 {pack.dashboards?.map((dashboard) => (
                   <>
                     <h3>{dashboard.name}</h3>
@@ -93,6 +124,20 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 ))}
               </Tabs.Page>
               <Tabs.Page id="alerts">
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </Intro>
                 {pack.alerts?.map((alert) => (
                   <>
                     <h3>{alert.name}</h3>
@@ -104,6 +149,54 @@ const ObservabilityPackDetails = ({ data, location }) => {
                     )}
                   </>
                 ))}
+              </Tabs.Page>
+              <Tabs.Page id="synthetics">
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </Intro>
+              </Tabs.Page>
+              <Tabs.Page id="visualizations">
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </Intro>
+              </Tabs.Page>
+              <Tabs.Page id="nerdpacks">
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </Intro>
               </Tabs.Page>
             </Tabs.Pages>
           </Layout.Content>
