@@ -267,11 +267,11 @@ export const pageQuery = graphql`
   query($id: String!) {
     observabilityPacks(id: { eq: $id }) {
       name
-      website
-      logo
+      websiteUrl
+      logoUrl
       level
       id
-      icon
+      iconUrl
       description
       alerts {
         name

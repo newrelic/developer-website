@@ -243,7 +243,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
           }}
         />
       </div>
-
       <div
         css={css`
           display: grid;
@@ -266,7 +265,78 @@ const ObservabilityPacksPage = ({ data, location }) => {
         `}
       >
         {filteredPacks.map((pack) => (
-          <PackTile key={pack.id} view={view} {...pack} />
+          <Surface
+            key={pack.id}
+            to={pack.fields.slug}
+            as={Link}
+            base={Surface.BASE.PRIMARY}
+            interactive
+            css={css`
+              overflow: hidden;
+
+              ${view === VIEWS.LIST &&
+              css`
+                display: flex;
+                margin-bottom: 1em;
+              `}
+            `}
+          >
+            <img
+              src={pack.logoUrl || DEFAULT_IMAGE}
+              alt={pack.name}
+              onError={(e) => {
+                e.preventDefault();
+                e.target.src = DEFAULT_IMAGE;
+              }}
+              css={css`
+                display: block;
+                height: 200px;
+                background-color: var(--color-white);
+                object-fit: scale-down;
+                width: ${view === VIEWS.GRID ? 100 : 25}%;
+                padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
+                margin: ${view === VIEWS.GRID ? 'auto' : 0};
+
+                ${view === VIEWS.LIST &&
+                css`
+                  max-height: 150px;
+
+                  @media (max-width: 1080px) {
+                    display: none;
+                  }
+                `}
+              `}
+            />
+            <div
+              css={css`
+                padding: 1em;
+
+                ${view === VIEWS.LIST &&
+                css`
+                  width: 75%;
+
+                  @media (max-width: 1080px) {
+                    width: 100%;
+                  }
+                `}
+              `}
+            >
+              <h4>
+                {pack.name}{' '}
+                {pack.level === LEVELS.NEWRELIC && (
+                  <Icon name="nr-check-shield" />
+                )}
+              </h4>
+              <p
+                css={css`
+                  font-size: 0.875rem;
+                  color: var(--secondary-text-color);
+                `}
+              >
+                {pack.description}
+              </p>
+            </div>
+          </Surface>
         ))}
       </div>
     </>
@@ -287,8 +357,8 @@ export const pageQuery = graphql`
         }
         id
         name
-        website
-        logo
+        websiteUrl
+        logoUrl
         level
         dashboards {
           description
@@ -303,7 +373,7 @@ export const pageQuery = graphql`
         }
         authors
         description
-        icon
+        iconUrl
       }
     }
   }
