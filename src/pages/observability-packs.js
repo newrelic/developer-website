@@ -8,6 +8,7 @@ import PackGridTile from '../components/PackGridTile';
 import PackListTile from '../components/PackListTile';
 import PackList from '../components/PackList';
 import Select from '../components/Select';
+import SegmentedControl from '../components/SegmentedControl';
 import { SearchInput, Button } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
 
@@ -20,6 +21,11 @@ const packContentsFilterValues = [
   'Synthetics Checks',
   'Applications',
 ];
+
+const VIEWS = {
+  GRID: 'Grid view',
+  LIST: 'List view',
+};
 
 const ObservabilityPacksPage = ({ data, location }) => {
   const {
@@ -47,11 +53,11 @@ const ObservabilityPacksPage = ({ data, location }) => {
     }
   }, [querySearch, queryFilter, querySort]);
 
-  const [packView, setPackView] = useState('GRID_VIEW');
+  const [view, setView] = useState(VIEWS.GRID);
 
   useEffect(() => {
-    setPackView(packView);
-  }, [packView]);
+    setView(view);
+  }, [view]);
   useEffect(() => {
     let tempFilteredPacks = o11yPacks.filter(
       (pack) =>
@@ -182,31 +188,13 @@ const ObservabilityPacksPage = ({ data, location }) => {
             </Select>
           </FormControl>
         </div>
-        <div>
-          <Button
-            variant={
-              packView === 'GRID_VIEW'
-                ? Button.VARIANT.PRIMARY
-                : Button.VARIANT.OUTLINE
-            }
-            onClick={() => setPackView('GRID_VIEW')}
-          >
-            Grid view
-          </Button>
-          <Button
-            variant={
-              packView === 'LIST_VIEW'
-                ? Button.VARIANT.PRIMARY
-                : Button.VARIANT.OUTLINE
-            }
-            onClick={() => setPackView('LIST_VIEW')}
-          >
-            List view
-          </Button>
-        </div>
+        <SegmentedControl
+          items={Object.values(VIEWS)}
+          onChange={(_e, view) => setView(view)}
+        />
       </div>
       <div>
-        {packView === 'GRID_VIEW' ? (
+        {view === VIEWS.GRID ? (
           <PackGrid>
             {filteredPacks.map((pack) => {
               // TODO: Figure out what image should be shown
