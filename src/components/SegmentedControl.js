@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/react';
 
 const get = (x, key) =>
   Object.prototype.hasOwnProperty.call(x, key) ? x[key] : x;
@@ -8,7 +9,52 @@ const SegmentedControl = ({ items, onChange }) => {
   const [selected, setSelected] = useState(get(items[0], 'value'));
 
   return (
-    <div>
+    <div
+      css={css`
+        border: 2px solid var(--color-white);
+        background-color: var(--color-white);
+        display: flex;
+        border-radius: 3px;
+
+        button {
+          border: 0;
+          border-radius: 3px;
+          background: none;
+          font-size: 0.75em;
+          padding: 0.5em 1em;
+          cursor: pointer;
+          user-select: none;
+
+          &[aria-pressed='true'] {
+            color: var(--color-white);
+            background-color: var(--color-brand-600);
+          }
+
+          &[disabled='true'] {
+            color: var(--color-neutrals-500);
+            background-color: var(--color-brand-600);
+            cursor: default;
+          }
+        }
+
+        .dark-mode & {
+          border-color: var(--primary-background-color);
+          background-color: var(--primary-background-color);
+
+          button {
+            color: var(--primary-text-color);
+
+            &[aria-pressed='true'] {
+              color: var(--color-white);
+            }
+
+            &[disabled='true'] {
+              color: var(--color-brand-600);
+            }
+          }
+        }
+      `}
+    >
       {items.map((item, index) => {
         const value = get(item, 'value');
 
@@ -21,6 +67,7 @@ const SegmentedControl = ({ items, onChange }) => {
             aria-pressed={selected === value}
             disabled={item.disabled}
             onClick={(e) => {
+              if (item.disabled) return;
               setSelected(value);
               onChange && onChange(e, value);
             }}
