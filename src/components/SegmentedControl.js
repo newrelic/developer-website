@@ -13,7 +13,7 @@ const SegmentedControl = ({ items, onChange }) => {
       css={css`
         border: 2px solid var(--color-white);
         background-color: var(--color-white);
-        display: flex;
+        display: inline-flex;
         border-radius: 3px;
 
         button {
@@ -24,6 +24,7 @@ const SegmentedControl = ({ items, onChange }) => {
           padding: 0.5em 1em;
           cursor: pointer;
           user-select: none;
+          flex-grow: 1;
 
           &[aria-pressed='true'] {
             color: var(--color-white);
