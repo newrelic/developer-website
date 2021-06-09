@@ -9,7 +9,7 @@ import PackListTile from '../components/PackListTile';
 import PackList from '../components/PackList';
 import Select from '../components/Select';
 import SegmentedControl from '../components/SegmentedControl';
-import { SearchInput, Button } from '@newrelic/gatsby-theme-newrelic';
+import { SearchInput } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
