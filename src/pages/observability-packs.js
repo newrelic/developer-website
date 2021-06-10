@@ -3,14 +3,21 @@ import { graphql } from 'gatsby';
 import React, { useState, useEffect } from 'react';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
-import PackGrid from '../components/PackGrid';
-import PackGridTile from '../components/PackGridTile';
-import PackListTile from '../components/PackListTile';
-import PackList from '../components/PackList';
+// import PackGrid from '../components/PackGrid';
+// import PackGridTile from '../components/PackGridTile';
+// import PackListTile from '../components/PackListTile';
+// import PackList from '../components/PackList';
 import Select from '../components/Select';
 import SegmentedControl from '../components/SegmentedControl';
-import { SearchInput } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Icon,
+  Link,
+  SearchInput,
+  Surface,
+} from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
+
+import DEFAULT_IMAGE from '../images/new-relic-logo.png';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
 const packContentsFilterValues = [
@@ -25,6 +32,10 @@ const packContentsFilterValues = [
 const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
+};
+
+const LEVELS = {
+  NEWRELIC: 'NEWRELIC',
 };
 
 const ObservabilityPacksPage = ({ data, location }) => {
@@ -193,6 +204,73 @@ const ObservabilityPacksPage = ({ data, location }) => {
           onChange={(_e, view) => setView(view)}
         />
       </div>
+
+      <div
+        css={css`
+          display: grid;
+          grid-gap: 1rem;
+          grid-template-columns: repeat(4, 1fr);
+          grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
+
+          @media (max-width: 1450px) {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        `}
+      >
+        {filteredPacks.map((pack) => (
+          <Surface
+            key={pack.id}
+            to={pack.fields.slug}
+            as={Link}
+            base={Surface.BASE.PRIMARY}
+            interactive
+            css={css`
+              overflow: hidden;
+            `}
+          >
+            <img
+              src={pack.logo || DEFAULT_IMAGE}
+              alt={pack.name}
+              onError={(e) => {
+                e.preventDefault();
+                console.log('error');
+                e.target.src = DEFAULT_IMAGE;
+              }}
+              css={css`
+                display: block;
+                width: 100%;
+                padding: 0 5%;
+                height: 200px;
+                background-color: var(--color-white);
+                margin: auto;
+                object-fit: scale-down;
+              `}
+            />
+            <div
+              css={css`
+                padding: 1em;
+              `}
+            >
+              <h4>
+                {pack.name}{' '}
+                {pack.level === LEVELS.NEWRELIC && (
+                  <Icon name="nr-check-shield" />
+                )}
+              </h4>
+              <p
+                css={css`
+                  font-size: 0.875rem;
+                  color: var(--secondary-text-color);
+                `}
+              >
+                {pack.description}
+              </p>
+            </div>
+          </Surface>
+        ))}
+      </div>
+
+      {/* START
       <div>
         {view === VIEWS.GRID ? (
           <PackGrid>
@@ -236,6 +314,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
           </PackList>
         )}
       </div>
+      {/* END */}
     </>
   );
 };
