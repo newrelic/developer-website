@@ -3,14 +3,17 @@ import { graphql } from 'gatsby';
 import React, { useState, useEffect } from 'react';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
-import PackGrid from '../components/PackGrid';
-import PackGridTile from '../components/PackGridTile';
-import PackListTile from '../components/PackListTile';
-import PackList from '../components/PackList';
 import Select from '../components/Select';
 import SegmentedControl from '../components/SegmentedControl';
-import { SearchInput } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Icon,
+  Link,
+  SearchInput,
+  Surface,
+} from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
+
+import DEFAULT_IMAGE from '../images/new-relic-logo.png';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
 const packContentsFilterValues = [
@@ -25,6 +28,10 @@ const packContentsFilterValues = [
 const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
+};
+
+const LEVELS = {
+  NEWRELIC: 'NEWRELIC',
 };
 
 const ObservabilityPacksPage = ({ data, location }) => {
@@ -193,48 +200,102 @@ const ObservabilityPacksPage = ({ data, location }) => {
           onChange={(_e, view) => setView(view)}
         />
       </div>
-      <div>
-        {view === VIEWS.GRID ? (
-          <PackGrid>
-            {filteredPacks.map((pack) => {
-              // TODO: Figure out what image should be shown
-              // if not added to API explicitly
-              return (
-                <PackGridTile
-                  name={pack.name}
-                  key={pack.id}
-                  supportLevel={pack.level}
-                  description={pack.description}
-                  featuredImageUrl={
-                    pack.logo ||
-                    'https://via.placeholder.com/400x275.png?text=Image'
+
+      <div
+        css={css`
+          display: grid;
+          grid-gap: 1rem;
+          grid-template-columns: repeat(4, 1fr);
+          grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
+
+          @media (max-width: 1450px) {
+            grid-template-columns: repeat(3, 1fr);
+          }
+
+          @media (max-width: 1180px) {
+            grid-template-columns: repeat(1, 1fr);
+          }
+
+          ${view === VIEWS.LIST &&
+          css`
+            display: initial;
+          `}
+        `}
+      >
+        {filteredPacks.map((pack) => (
+          <Surface
+            key={pack.id}
+            to={pack.fields.slug}
+            as={Link}
+            base={Surface.BASE.PRIMARY}
+            interactive
+            css={css`
+              overflow: hidden;
+
+              ${view === VIEWS.LIST &&
+              css`
+                display: flex;
+                margin-bottom: 1em;
+              `}
+            `}
+          >
+            <img
+              src={pack.logo || DEFAULT_IMAGE}
+              alt={pack.name}
+              onError={(e) => {
+                e.preventDefault();
+                e.target.src = DEFAULT_IMAGE;
+              }}
+              css={css`
+                display: block;
+                height: 200px;
+                background-color: var(--color-white);
+                object-fit: scale-down;
+                width: ${view === VIEWS.GRID ? 100 : 25}%;
+                padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
+                margin: ${view === VIEWS.GRID ? 'auto' : 0};
+
+                ${view === VIEWS.LIST &&
+                css`
+                  max-height: 150px;
+
+                  @media (max-width: 1080px) {
+                    display: none;
                   }
-                  to={`${pack.fields.slug}`}
-                />
-              );
-            })}
-          </PackGrid>
-        ) : (
-          <PackList>
-            {filteredPacks.map((pack) => {
-              // TODO: Figure out what image should be shown
-              // if not added to API explicitly
-              return (
-                <PackListTile
-                  name={pack.name}
-                  key={pack.id}
-                  supportLevel={pack.level}
-                  description={pack.description}
-                  featuredImageUrl={
-                    pack.logo ||
-                    'https://via.placeholder.com/400x275.png?text=Image'
+                `}
+              `}
+            />
+            <div
+              css={css`
+                padding: 1em;
+
+                ${view === VIEWS.LIST &&
+                css`
+                  width: 75%;
+
+                  @media (max-width: 1080px) {
+                    width: 100%;
                   }
-                  to={`${pack.fields.slug}`}
-                />
-              );
-            })}
-          </PackList>
-        )}
+                `}
+              `}
+            >
+              <h4>
+                {pack.name}{' '}
+                {pack.level === LEVELS.NEWRELIC && (
+                  <Icon name="nr-check-shield" />
+                )}
+              </h4>
+              <p
+                css={css`
+                  font-size: 0.875rem;
+                  color: var(--secondary-text-color);
+                `}
+              >
+                {pack.description}
+              </p>
+            </div>
+          </Surface>
+        ))}
       </div>
     </>
   );
