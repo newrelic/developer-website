@@ -64,7 +64,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
     }
   }, [querySearch, queryFilter, querySort]);
 
-  const [view, setView] = useState(VIEWS.GRID);
+  const [view, setView] = useState(VIEWS.LIST);
 
   useEffect(() => {
     setView(view);
@@ -215,6 +215,11 @@ const ObservabilityPacksPage = ({ data, location }) => {
           @media (max-width: 1450px) {
             grid-template-columns: repeat(3, 1fr);
           }
+
+          ${view === VIEWS.LIST &&
+          css`
+            display: initial;
+          `}
         `}
       >
         {filteredPacks.map((pack) => (
@@ -226,6 +231,12 @@ const ObservabilityPacksPage = ({ data, location }) => {
             interactive
             css={css`
               overflow: hidden;
+
+              ${view === VIEWS.LIST &&
+              css`
+                display: flex;
+                margin-bottom: 1em;
+              `}
             `}
           >
             <img
@@ -233,7 +244,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
               alt={pack.name}
               onError={(e) => {
                 e.preventDefault();
-                console.log('error');
                 e.target.src = DEFAULT_IMAGE;
               }}
               css={css`
@@ -244,6 +254,14 @@ const ObservabilityPacksPage = ({ data, location }) => {
                 background-color: var(--color-white);
                 margin: auto;
                 object-fit: scale-down;
+
+                ${view === VIEWS.LIST &&
+                css`
+                  width: 25%;
+                  padding: 0 1%;
+                  max-height: 150px;
+                  margin: 0;
+                `}
               `}
             />
             <div
@@ -269,52 +287,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
           </Surface>
         ))}
       </div>
-
-      {/* START
-      <div>
-        {view === VIEWS.GRID ? (
-          <PackGrid>
-            {filteredPacks.map((pack) => {
-              // TODO: Figure out what image should be shown
-              // if not added to API explicitly
-              return (
-                <PackGridTile
-                  name={pack.name}
-                  key={pack.id}
-                  supportLevel={pack.level}
-                  description={pack.description}
-                  featuredImageUrl={
-                    pack.logo ||
-                    'https://via.placeholder.com/400x275.png?text=Image'
-                  }
-                  to={`${pack.fields.slug}`}
-                />
-              );
-            })}
-          </PackGrid>
-        ) : (
-          <PackList>
-            {filteredPacks.map((pack) => {
-              // TODO: Figure out what image should be shown
-              // if not added to API explicitly
-              return (
-                <PackListTile
-                  name={pack.name}
-                  key={pack.id}
-                  supportLevel={pack.level}
-                  description={pack.description}
-                  featuredImageUrl={
-                    pack.logo ||
-                    'https://via.placeholder.com/400x275.png?text=Image'
-                  }
-                  to={`${pack.fields.slug}`}
-                />
-              );
-            })}
-          </PackList>
-        )}
-      </div>
-      {/* END */}
     </>
   );
 };
