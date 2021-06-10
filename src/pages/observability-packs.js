@@ -9,8 +9,9 @@ import PackListTile from '../components/PackListTile';
 import PackList from '../components/PackList';
 import Select from '../components/Select';
 import SegmentedControl from '../components/SegmentedControl';
-import { SearchInput } from '@newrelic/gatsby-theme-newrelic';
+import { SearchInput, useTessen } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
+import { useDebounce } from 'react-use';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
 const packContentsFilterValues = [
@@ -28,6 +29,7 @@ const VIEWS = {
 };
 
 const ObservabilityPacksPage = ({ data, location }) => {
+  const tessen = useTessen();
   const {
     allObservabilityPacks: { nodes: o11yPacks },
   } = data;
@@ -40,7 +42,17 @@ const ObservabilityPacksPage = ({ data, location }) => {
   const [querySearch, setQuerySearch] = useQueryParam('search', StringParam);
   const [queryFilter, setQueryFilter] = useQueryParam('filter', StringParam);
   const [querySort, setQuerySort] = useQueryParam('sort', StringParam);
-
+  useDebounce(
+    () => {
+      if (searchTerm && searchTerm !== '') {
+        tessen.track('ObservabilityPack', `ObservabilityPackSearch`, {
+          observabilityPackSearchTerm: searchTerm,
+        });
+      }
+    },
+    1000,
+    [searchTerm]
+  );
   useEffect(() => {
     if (querySearch) {
       setSearchTerm(querySearch);
@@ -160,6 +172,9 @@ const ObservabilityPacksPage = ({ data, location }) => {
               onChange={(e) => {
                 setSortState(e.target.value);
                 document.getElementById(e.target.id).blur();
+                tessen.track('ObservabilityPack', `ObservabilityPackFilter`, {
+                  filter: containingFilterState,
+                });
               }}
             >
               {sortOptionValues.map((sortOption) => (
@@ -178,6 +193,9 @@ const ObservabilityPacksPage = ({ data, location }) => {
               onChange={(e) => {
                 setContainingFilterState(e.target.value);
                 document.getElementById(e.target.id).blur();
+                tessen.track('ObservabilityPack', `ObservabilityPackSort`, {
+                  sort: sortState,
+                });
               }}
             >
               {packContentsFilterValues.map((packContentsItem) => (
@@ -190,7 +208,12 @@ const ObservabilityPacksPage = ({ data, location }) => {
         </div>
         <SegmentedControl
           items={Object.values(VIEWS)}
-          onChange={(_e, view) => setView(view)}
+          onChange={(_e, view) => {
+            setView(view);
+            tessen.track('ObservabilityPack', `ObservabilityPackViewToggle`, {
+              viewToggle: view,
+            });
+          }}
         />
       </div>
       <div>
@@ -229,6 +252,24 @@ const ObservabilityPacksPage = ({ data, location }) => {
                     pack.logo ||
                     'https://via.placeholder.com/400x275.png?text=Image'
                   }
+                  onClick={() => {
+                    tessen.track(
+                      'ObservabilityPack',
+                      `ObservabilityPackClickThroughView`,
+                      {
+                        clickThroughFromView: view,
+                      }
+                    );
+                    tessen.track(
+                      'ObservabilityPack',
+                      `ObservabilityPackClickThroughPack`,
+                      {
+                        clickThroughToPackSlug: pack.fields.slug,
+                        clickThroughToPackId: pack.id,
+                        clickThroughToPackName: pack.name,
+                      }
+                    );
+                  }}
                   to={`${pack.fields.slug}`}
                 />
               );
