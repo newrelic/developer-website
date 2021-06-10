@@ -248,19 +248,16 @@ const ObservabilityPacksPage = ({ data, location }) => {
               }}
               css={css`
                 display: block;
-                width: 100%;
-                padding: 0 5%;
                 height: 200px;
                 background-color: var(--color-white);
-                margin: auto;
                 object-fit: scale-down;
+                width: ${view === VIEWS.GRID ? 100 : 25}%;
+                padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
+                margin: ${view === VIEWS.GRID ? 'auto' : 0};
 
                 ${view === VIEWS.LIST &&
                 css`
-                  width: 25%;
-                  padding: 0 1%;
                   max-height: 150px;
-                  margin: 0;
 
                   @media (max-width: 1080px) {
                     display: none;
@@ -271,6 +268,15 @@ const ObservabilityPacksPage = ({ data, location }) => {
             <div
               css={css`
                 padding: 1em;
+
+                ${view === VIEWS.LIST &&
+                css`
+                  width: 75%;
+
+                  @media (max-width: 1080px) {
+                    width: 100%;
+                  }
+                `}
               `}
             >
               <h4>
