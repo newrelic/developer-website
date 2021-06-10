@@ -64,7 +64,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
     }
   }, [querySearch, queryFilter, querySort]);
 
-  const [view, setView] = useState(VIEWS.LIST);
+  const [view, setView] = useState(VIEWS.GRID);
 
   useEffect(() => {
     setView(view);
@@ -216,6 +216,10 @@ const ObservabilityPacksPage = ({ data, location }) => {
             grid-template-columns: repeat(3, 1fr);
           }
 
+          @media (max-width: 1180px) {
+            grid-template-columns: repeat(1, 1fr);
+          }
+
           ${view === VIEWS.LIST &&
           css`
             display: initial;
@@ -261,6 +265,10 @@ const ObservabilityPacksPage = ({ data, location }) => {
                   padding: 0 1%;
                   max-height: 150px;
                   margin: 0;
+
+                  @media (max-width: 1080px) {
+                    display: none;
+                  }
                 `}
               `}
             />
