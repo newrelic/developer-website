@@ -3,10 +3,6 @@ import { graphql } from 'gatsby';
 import React, { useState, useEffect } from 'react';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
-// import PackGrid from '../components/PackGrid';
-// import PackGridTile from '../components/PackGridTile';
-// import PackListTile from '../components/PackListTile';
-// import PackList from '../components/PackList';
 import Select from '../components/Select';
 import SegmentedControl from '../components/SegmentedControl';
 import {
