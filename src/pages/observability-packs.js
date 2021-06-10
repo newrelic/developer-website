@@ -30,6 +30,7 @@ const VIEWS = {
 
 const ObservabilityPacksPage = ({ data, location }) => {
   const tessen = useTessen();
+  window.Tessen.debugLevel(2);
   const {
     allObservabilityPacks: { nodes: o11yPacks },
   } = data;
