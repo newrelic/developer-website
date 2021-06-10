@@ -1,4 +1,4 @@
-.sectionz {
+.section {
   &:not(:last-child) {
     margin-bottom: 4rem;
   }
@@ -15,12 +15,12 @@
 }
 
 .offerSection {
-    text-align: center;
-    margin: 6rem 0 2.5rem;
+  text-align: center;
+  margin: 6rem 0 2.5rem;
 
-    h2{
-        text-align: center;
-    }
+  h2 {
+    text-align: center;
+  }
 }
 
 .stepsSection {
@@ -32,27 +32,25 @@
   }
 }
 
-
-
 .faqSection {
   margin: 6rem 0 3rem;
-  h2{
-      text-align: center;
-      margin-bottom: 2rem;
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
   }
-  .group{
+  .group {
     margin: 0 0 3rem 0;
-    .question{
+    .question {
       font-size: 1.3rem;
       font-weight: 600;
-      margin-bottom: .25rem;
+      margin-bottom: 0.25rem;
     }
   }
-  .chart{
+  .chart {
     width: 450px;
     thead {
       border-bottom: 2px solid #000;
-      td{
+      td {
         font-weight: 600;
         margin-bottom: 1.5rem;
       }
@@ -72,10 +70,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(260px, 1fr));
   grid-gap: 1rem;
-  grid-auto-rows: minmax(
-    var(--guide-list-row-height, 150px),
-    auto
-  );
+  grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
   align-items: stretch;
   width: 100%;
 
@@ -92,7 +87,7 @@
   padding: 1rem;
   transition: all 0.15s ease-out;
 }
-.stepNumber{
+.stepNumber {
   position: absolute;
   top: -0.75rem;
   left: 0;
@@ -113,11 +108,11 @@
     border-color: var(--color-dark-100);
   }
 }
-.stepHeader{
+.stepHeader {
   text-align: center;
   margin-top: 0.5rem;
 }
-.stepDetail{
+.stepDetail {
   font-size: 0.875rem;
   margin-bottom: 1.5rem;
   color: var(--secondary-text-color);
@@ -125,7 +120,7 @@
   text-align: center;
   padding: 0;
 }
-.stepButton{
+.stepButton {
   justify-self: center;
 
   &:hover {

@@ -199,7 +199,7 @@ const StudentsPage = ({ location }) => {
               <p className={styles.question}>
                 How do I access New Relic Student Edition?
               </p>
-              <div className={styles.answer}>
+              <div>
                 <p>
                   New Relic offers the Student Edition exclusively through the
                   GitHub Student Pack. To verify your account's eligibility,
@@ -227,7 +227,7 @@ const StudentsPage = ({ location }) => {
             </div>
             <div className={styles.group}>
               <p className={styles.question}>Can I purchase Student Edition?</p>
-              <p className={styles.answer}>
+              <p>
                 New Relic offers the Student Edition for FREE to students and
                 educators.
               </p>
@@ -236,7 +236,7 @@ const StudentsPage = ({ location }) => {
               <p className={styles.question}>
                 Can I share my Student Edition with friends?
               </p>
-              <p className={styles.answer}>
+              <p>
                 The student edition comes with three full users. Your friends
                 and classmates are also welcome to sign up for their own free
                 account.
@@ -247,7 +247,7 @@ const StudentsPage = ({ location }) => {
                 Where can I check the status of my student verification with
                 GitHub?
               </p>
-              <p className={styles.answer}>
+              <p>
                 In your GitHub account settings, visit{' '}
                 <strong>Applications > Authorized OAuth Apps</strong> to check
                 whether you have authorized the New Relic OAuth app. If you
@@ -260,7 +260,7 @@ const StudentsPage = ({ location }) => {
               <p className={styles.question}>
                 What if I already have a New Relic free account?
               </p>
-              <p className={styles.answer}>
+              <p>
                 No problem! Just upgrade your account to the Student Edition. In
                 the main menu, look for Student Edition and follow the
                 instructions.
@@ -271,7 +271,7 @@ const StudentsPage = ({ location }) => {
                 What is the difference between the Student Edition and New Relic
                 free account?
               </p>
-              <div className={styles.answer}>
+              <div>
                 <p>Check out this quick comparison chart</p>
                 <table className={styles.chart}>
                   <thead>
@@ -305,7 +305,7 @@ const StudentsPage = ({ location }) => {
               <p className={styles.question}>
                 I’m having trouble verifying my student status with GitHub.
               </p>
-              <div className={styles.answer}>
+              <div>
                 <p>
                   Troubleshoot any GitHub verification related issues{' '}
                   <a href="https://help.github.com/en/github/teaching-and-learning-with-github-education/why-wasnt-my-application-for-a-student-developer-pack-approved">
@@ -319,7 +319,7 @@ const StudentsPage = ({ location }) => {
             </div>
             <div className={styles.group}>
               <p className={styles.question}>Does my Student Edition expire?</p>
-              <p className={styles.answer}>
+              <p>
                 You'll have access to the Student Edition for as long as you’re
                 an active student in the GitHub Student pack.
               </p>
@@ -328,7 +328,7 @@ const StudentsPage = ({ location }) => {
               <p className={styles.question}>
                 Can I upgrade my Student Edition account to a paid account?
               </p>
-              <p className={styles.answer}>
+              <p>
                 Yes! Just enter your information and credit card details into
                 the ‘Manage Plan’ screen, and you’ll convert your account to a
                 paid account!
