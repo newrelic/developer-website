@@ -30,7 +30,6 @@ const VIEWS = {
 
 const ObservabilityPacksPage = ({ data, location }) => {
   const tessen = useTessen();
-  window.Tessen.debugLevel(2);
   const {
     allObservabilityPacks: { nodes: o11yPacks },
   } = data;
@@ -46,7 +45,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   useDebounce(
     () => {
       if (searchTerm && searchTerm !== '') {
-        tessen.track('ObservabilityPack', `ObservabilityPackSearch`, {
+        tessen.track('observabilityPack', `ObservabilityPackSearch`, {
           observabilityPackSearchTerm: searchTerm,
         });
       }
@@ -173,7 +172,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
               onChange={(e) => {
                 setSortState(e.target.value);
                 document.getElementById(e.target.id).blur();
-                tessen.track('ObservabilityPack', `ObservabilityPackFilter`, {
+                tessen.track('observabilityPack', `ObservabilityPackFilter`, {
                   filter: containingFilterState,
                 });
               }}
@@ -194,7 +193,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
               onChange={(e) => {
                 setContainingFilterState(e.target.value);
                 document.getElementById(e.target.id).blur();
-                tessen.track('ObservabilityPack', `ObservabilityPackSort`, {
+                tessen.track('observabilityPack', `ObservabilityPackSort`, {
                   sort: sortState,
                 });
               }}
@@ -211,7 +210,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
           items={Object.values(VIEWS)}
           onChange={(_e, view) => {
             setView(view);
-            tessen.track('ObservabilityPack', `ObservabilityPackViewToggle`, {
+            tessen.track('observabilityPack', `ObservabilityPackViewToggle`, {
               viewToggle: view,
             });
           }}
