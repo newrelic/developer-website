@@ -52,6 +52,7 @@ const ImageGallery = ({ images, className }) => {
           white-space: nowrap;
           overflow-x: auto;
           &:after {
+            pointer-events: none;
             content: '';
             position: absolute;
             background: linear-gradient(
