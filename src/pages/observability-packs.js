@@ -118,7 +118,8 @@ const ObservabilityPacksPage = ({ data, location }) => {
         css={css`
           margin: 15px 0;
         `}
-        onClear={() => null}
+        value={searchTerm}
+        onClear={() => setSearchTerm('')}
         placeholder="Search for an observability pack"
         onChange={(e) => {
           setSearchTerm(e.target.value.toLowerCase());
