@@ -14,7 +14,6 @@ const CreateImageBlock = (image) => {
       rel="noreferrer"
       css={css`
         height: 207px;
-
         margin-right: 16px;
         margin-bottom: 6px;
       `}
@@ -23,9 +22,7 @@ const CreateImageBlock = (image) => {
         src={image}
         alt="placeholder-text"
         css={css`
-          width: 285px;
           height: 207px;
-
           background: linear-gradient(0deg, #f3f4f4, #f3f4f4),
             linear-gradient(
               293.05deg,
@@ -38,8 +35,6 @@ const CreateImageBlock = (image) => {
           box-shadow: inset 0px 0px 0px 4px #ffffff;
           border-radius: 4px;
           padding: 3px;
-
-          object-fit: cover;
         `}
       />
     </a>
