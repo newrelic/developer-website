@@ -9,7 +9,11 @@ import PackListTile from '../components/PackListTile';
 import PackList from '../components/PackList';
 import Select from '../components/Select';
 import SegmentedControl from '../components/SegmentedControl';
-import { SearchInput, useTessen } from '@newrelic/gatsby-theme-newrelic';
+import {
+  SearchInput,
+  useTessen,
+  useInstrumentedData,
+} from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
 import { useDebounce } from 'react-use';
 
@@ -42,12 +46,30 @@ const ObservabilityPacksPage = ({ data, location }) => {
   const [querySearch, setQuerySearch] = useQueryParam('search', StringParam);
   const [queryFilter, setQueryFilter] = useQueryParam('filter', StringParam);
   const [querySort, setQuerySort] = useQueryParam('sort', StringParam);
+  const [view, setView] = useState(VIEWS.GRID);
+  useInstrumentedData(
+    { actionName: 'oPackViewToggle', oPackViewState: view },
+    { enabled: Boolean(view) }
+  );
+  useInstrumentedData(
+    { actionName: 'oPackSort', oPackSortState: sortState },
+    { enabled: Boolean(searchTerm) }
+  );
+  useInstrumentedData(
+    { actionName: 'oPackFilter', oPackFilterState: containingFilterState },
+    { enabled: Boolean(containingFilterState) }
+  );
   useDebounce(
     () => {
       if (searchTerm && searchTerm !== '') {
         tessen.track('observabilityPack', `ObservabilityPackSearch`, {
-          observabilityPackSearchTerm: searchTerm,
+          oPackSearchTerm: searchTerm,
         });
+        if (typeof window !== 'undefined' && window.newrelic) {
+          window.newrelic.addPageAction('oPackSearch', {
+            oPackSearchTerm: searchTerm,
+          });
+        }
       }
     },
     1000,
@@ -64,8 +86,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
       setSortState(querySort);
     }
   }, [querySearch, queryFilter, querySort]);
-
-  const [view, setView] = useState(VIEWS.GRID);
 
   useEffect(() => {
     setView(view);
@@ -113,7 +133,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
     setQuerySort,
     setQuerySearch,
   ]);
-
   return (
     <>
       <DevSiteSeo title="Observability Packs" location={location} />
@@ -172,8 +191,8 @@ const ObservabilityPacksPage = ({ data, location }) => {
               onChange={(e) => {
                 setSortState(e.target.value);
                 document.getElementById(e.target.id).blur();
-                tessen.track('observabilityPack', `ObservabilityPackFilter`, {
-                  filter: containingFilterState,
+                tessen.track('observabilityPack', `ObservabilityPackSort`, {
+                  oPackSortState: e.target.value,
                 });
               }}
             >
@@ -193,8 +212,8 @@ const ObservabilityPacksPage = ({ data, location }) => {
               onChange={(e) => {
                 setContainingFilterState(e.target.value);
                 document.getElementById(e.target.id).blur();
-                tessen.track('observabilityPack', `ObservabilityPackSort`, {
-                  sort: sortState,
+                tessen.track('observabilityPack', `ObservabilityPackFilter`, {
+                  oPackFilterState: containingFilterState,
                 });
               }}
             >
@@ -211,7 +230,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
           onChange={(_e, view) => {
             setView(view);
             tessen.track('observabilityPack', `ObservabilityPackViewToggle`, {
-              viewToggle: view,
+              oPackViewState: view,
             });
           }}
         />
@@ -252,24 +271,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
                     pack.logo ||
                     'https://via.placeholder.com/400x275.png?text=Image'
                   }
-                  onClick={() => {
-                    tessen.track(
-                      'ObservabilityPack',
-                      `ObservabilityPackClickThroughView`,
-                      {
-                        clickThroughFromView: view,
-                      }
-                    );
-                    tessen.track(
-                      'ObservabilityPack',
-                      `ObservabilityPackClickThroughPack`,
-                      {
-                        clickThroughToPackSlug: pack.fields.slug,
-                        clickThroughToPackId: pack.id,
-                        clickThroughToPackName: pack.name,
-                      }
-                    );
-                  }}
                   to={`${pack.fields.slug}`}
                 />
               );

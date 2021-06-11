@@ -2,17 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import useMobileDetect from 'use-mobile-detect-hook';
 import { css } from '@emotion/react';
-
+import {
+  useTessen,
+  useInstrumentedData,
+} from '@newrelic/gatsby-theme-newrelic';
 import useTabs from './useTabs';
 
 const MobileTabControl = ({ children }) => {
   const [currentTab, setCurrentTab] = useTabs();
-
+  const tessen = useTessen();
+  useInstrumentedData(
+    { actionName: 'oPackTabToggle', currentTab },
+    { enabled: Boolean(currentTab) }
+  );
   // eslint gets angry about using props from React.Children.map
   /* eslint-disable react/prop-types */
   return (
     <select
-      onChange={(e) => setCurrentTab(e.target.value)}
+      onChange={(e) => {
+        setCurrentTab(e.target.value);
+        tessen.track('observabilityPack', `ObservabilityPackTabToggle`, {
+          oPackTabToggle: e.target.value,
+        });
+      }}
       css={css`
         width: 100%;
         margin-bottom: 1em;
