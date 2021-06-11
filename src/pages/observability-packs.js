@@ -366,11 +366,6 @@ export const pageQuery = graphql`
           screenshots
           url
         }
-        alerts {
-          definition
-          name
-          url
-        }
         authors
         description
         iconUrl

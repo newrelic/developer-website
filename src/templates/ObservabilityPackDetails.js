@@ -273,11 +273,6 @@ export const pageQuery = graphql`
       id
       iconUrl
       description
-      alerts {
-        name
-        definition
-        url
-      }
       dashboards {
         description
         name
