@@ -7,7 +7,7 @@
     "@emotion/styled": "^11.3.0",
     "@mdx-js/mdx": "^1.6.19",
     "@mdx-js/react": "^1.6.19",
-    "@newrelic/gatsby-theme-newrelic": "^2.4.2",
+    "@newrelic/gatsby-theme-newrelic": "^2.4.4",
     "@splitsoftware/splitio-react": "^1.2.0",
     "@xstate/react": "^1.0.2",
     "classnames": "^2.2.6",
