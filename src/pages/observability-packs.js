@@ -133,6 +133,27 @@ const ObservabilityPacksPage = ({ data, location }) => {
     setQuerySort,
     setQuerySearch,
   ]);
+  useEffect(() => {
+    const handleClickThrough = () => {
+      tessen.track('observabilityPack', `ObservabilityPackClickThroughView`, {
+        oPackClickThroughView: view,
+      });
+      if (typeof window !== 'undefined' && window.newrelic) {
+        window.newrelic.addPageAction('oPackClickThroughView', {
+          oPackClickThroughView: view,
+        });
+      }
+    };
+    document.querySelectorAll('.pack-tile-instrument').forEach((item) => {
+      item.addEventListener('click', handleClickThrough);
+    });
+    // cleanup this component
+    return () => {
+      document.querySelectorAll('.pack-tile-instrument').forEach((item) => {
+        item.removeEventListener('click', handleClickThrough);
+      });
+    };
+  });
   return (
     <>
       <DevSiteSeo title="Observability Packs" location={location} />
@@ -251,6 +272,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
                     pack.logo ||
                     'https://via.placeholder.com/400x275.png?text=Image'
                   }
+                  className="pack-tile-instrument"
                   to={`${pack.fields.slug}`}
                 />
               );
@@ -271,6 +293,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
                     pack.logo ||
                     'https://via.placeholder.com/400x275.png?text=Image'
                   }
+                  className="pack-tile-instrument"
                   to={`${pack.fields.slug}`}
                 />
               );
