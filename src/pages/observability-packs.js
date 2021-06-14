@@ -31,19 +31,22 @@ const VIEWS = {
 
 const ObservabilityPacksPage = ({ data, location }) => {
   const tessen = useTessen();
+
   const {
     allObservabilityPacks: { nodes: o11yPacks },
   } = data;
+
   const [filteredPacks, setFilteredPacks] = useState(o11yPacks);
   const [containingFilterState, setContainingFilterState] = useState(
     'Anything'
   );
   const [sortState, setSortState] = useState('Alphabetical');
   const [searchTerm, setSearchTerm] = useState('');
+  const [view, setView] = useState(VIEWS.GRID);
+
   const [querySearch, setQuerySearch] = useQueryParam('search', StringParam);
   const [queryFilter, setQueryFilter] = useQueryParam('filter', StringParam);
   const [querySort, setQuerySort] = useQueryParam('sort', StringParam);
-  const [view, setView] = useState(VIEWS.GRID);
 
   useInstrumentedData(
     { actionName: 'packViewToggle', packViewState: view },
