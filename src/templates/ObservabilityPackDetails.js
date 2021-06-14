@@ -5,7 +5,12 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import Tabs from '../components/Tabs';
-import { Layout, PageTools, useTessen } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Layout,
+  PageTools,
+  useTessen,
+  useInstrumentedHandler,
+} from '@newrelic/gatsby-theme-newrelic';
 import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
@@ -13,6 +18,19 @@ import InstallButton from '../components/InstallButton';
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
   const tessen = useTessen();
+  const handleInstallClick = useInstrumentedHandler(
+    (pack) => {
+      tessen.track('observabilityPack', 'ObservabilityPackInstall', {
+        installPackName: pack.name,
+        installPackId: pack.id,
+      });
+    },
+    {
+      actionName: 'oPackInstall',
+      installPackName: pack.name,
+      installPackId: pack.id,
+    }
+  );
   return (
     <>
       <DevSiteSeo title={pack.name} location={location} />
@@ -26,20 +44,9 @@ const ObservabilityPackDetails = ({ data, location }) => {
             `}
           >
             <InstallButton
-              title="Install"
+              title={`Install ${pack.name}`}
               guid={pack.id}
-              onClick={() => {
-                tessen.track('observabilityPack', `ObservabilityPackInstall`, {
-                  installPackName: pack.name,
-                  installPackId: pack.id,
-                });
-                if (typeof window !== 'undefined' && window.newrelic) {
-                  window.newrelic.addPageAction('oPackInstall', {
-                    installPackName: pack.name,
-                    installPackId: pack.id,
-                  });
-                }
-              }}
+              onClick={() => handleInstallClick(pack)}
             />
             <Tabs.Bar
               css={css`
