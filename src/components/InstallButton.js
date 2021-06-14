@@ -51,8 +51,8 @@ const InstallButton = ({ title, ...props }) => {
 };
 
 InstallButton.propTypes = {
-  title: PropTypes.string,
-  guid: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  guid: PropTypes.string.isRequired,
 };
 
 export default InstallButton;

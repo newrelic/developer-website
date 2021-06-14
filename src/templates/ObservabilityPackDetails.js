@@ -5,13 +5,32 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import Tabs from '../components/Tabs';
-import { Layout, PageTools, Button } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Layout,
+  PageTools,
+  useTessen,
+  useInstrumentedHandler,
+} from '@newrelic/gatsby-theme-newrelic';
 import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
+import InstallButton from '../components/InstallButton';
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
-
+  const tessen = useTessen();
+  const handleInstallClick = useInstrumentedHandler(
+    () => {
+      tessen.track('observabilityPack', 'packInstall', {
+        packName: pack.name,
+        packId: pack.id,
+      });
+    },
+    {
+      actionName: 'packInstall',
+      packName: pack.name,
+      packId: pack.id,
+    }
+  );
   return (
     <>
       <DevSiteSeo title={pack.name} location={location} />
@@ -24,9 +43,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
               gap: 1rem;
             `}
           >
-            <Button variant={Button.VARIANT.PRIMARY} size={Button.SIZE.MEDIUM}>
-              Install
-            </Button>
+            <InstallButton
+              title={`Install ${pack.name}`}
+              guid={pack.id}
+              onClick={handleInstallClick}
+            />
             <Tabs.Bar
               css={css`
                 margin-top: 1rem;
