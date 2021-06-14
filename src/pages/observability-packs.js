@@ -5,15 +5,14 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import Select from '../components/Select';
 import SegmentedControl from '../components/SegmentedControl';
+import PackTile from '../components/PackTile';
 import {
-  Icon,
-  Link,
   SearchInput,
-  Surface,
+  useTessen,
+  useInstrumentedData,
 } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
-
-import DEFAULT_IMAGE from '../images/new-relic-logo.png';
+import { useDebounce } from 'react-use';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
 const packContentsFilterValues = [
@@ -30,23 +29,56 @@ const VIEWS = {
   LIST: 'List view',
 };
 
-const LEVELS = {
-  NEWRELIC: 'NEWRELIC',
-};
-
 const ObservabilityPacksPage = ({ data, location }) => {
+  const tessen = useTessen();
+
   const {
     allObservabilityPacks: { nodes: o11yPacks },
   } = data;
+
   const [filteredPacks, setFilteredPacks] = useState(o11yPacks);
   const [containingFilterState, setContainingFilterState] = useState(
     'Anything'
   );
   const [sortState, setSortState] = useState('Alphabetical');
   const [searchTerm, setSearchTerm] = useState('');
+  const [view, setView] = useState(VIEWS.GRID);
+
   const [querySearch, setQuerySearch] = useQueryParam('search', StringParam);
   const [queryFilter, setQueryFilter] = useQueryParam('filter', StringParam);
   const [querySort, setQuerySort] = useQueryParam('sort', StringParam);
+
+  useInstrumentedData(
+    { actionName: 'packViewToggle', packViewState: view },
+    { enabled: Boolean(view) }
+  );
+
+  useInstrumentedData(
+    { actionName: 'packSort', packSortState: sortState },
+    { enabled: Boolean(sortState) }
+  );
+
+  useInstrumentedData(
+    { actionName: 'packFilter', packFilterState: containingFilterState },
+    { enabled: Boolean(containingFilterState) }
+  );
+
+  useDebounce(
+    () => {
+      if (searchTerm && searchTerm !== '') {
+        tessen.track('observabilityPack', `packSearch`, {
+          packSearchTerm: searchTerm,
+        });
+        if (typeof window !== 'undefined' && window.newrelic) {
+          window.newrelic.addPageAction('packSearch', {
+            packSearchTerm: searchTerm,
+          });
+        }
+      }
+    },
+    1000,
+    [searchTerm]
+  );
 
   useEffect(() => {
     if (querySearch) {
@@ -60,11 +92,10 @@ const ObservabilityPacksPage = ({ data, location }) => {
     }
   }, [querySearch, queryFilter, querySort]);
 
-  const [view, setView] = useState(VIEWS.GRID);
-
   useEffect(() => {
     setView(view);
   }, [view]);
+
   useEffect(() => {
     let tempFilteredPacks = o11yPacks.filter(
       (pack) =>
@@ -168,6 +199,9 @@ const ObservabilityPacksPage = ({ data, location }) => {
               onChange={(e) => {
                 setSortState(e.target.value);
                 document.getElementById(e.target.id).blur();
+                tessen.track('observabilityPack', `packSort`, {
+                  packSortState: e.target.value,
+                });
               }}
             >
               {sortOptionValues.map((sortOption) => (
@@ -186,6 +220,9 @@ const ObservabilityPacksPage = ({ data, location }) => {
               onChange={(e) => {
                 setContainingFilterState(e.target.value);
                 document.getElementById(e.target.id).blur();
+                tessen.track('observabilityPack', `packFilter`, {
+                  packFilterState: containingFilterState,
+                });
               }}
             >
               {packContentsFilterValues.map((packContentsItem) => (
@@ -198,7 +235,12 @@ const ObservabilityPacksPage = ({ data, location }) => {
         </div>
         <SegmentedControl
           items={Object.values(VIEWS)}
-          onChange={(_e, view) => setView(view)}
+          onChange={(_e, view) => {
+            setView(view);
+            tessen.track('observabilityPack', `packViewToggle`, {
+              packViewState: view,
+            });
+          }}
         />
       </div>
 
@@ -224,78 +266,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
         `}
       >
         {filteredPacks.map((pack) => (
-          <Surface
-            key={pack.id}
-            to={pack.fields.slug}
-            as={Link}
-            base={Surface.BASE.PRIMARY}
-            interactive
-            css={css`
-              overflow: hidden;
-
-              ${view === VIEWS.LIST &&
-              css`
-                display: flex;
-                margin-bottom: 1em;
-              `}
-            `}
-          >
-            <img
-              src={pack.logo || DEFAULT_IMAGE}
-              alt={pack.name}
-              onError={(e) => {
-                e.preventDefault();
-                e.target.src = DEFAULT_IMAGE;
-              }}
-              css={css`
-                display: block;
-                height: 200px;
-                background-color: var(--color-white);
-                object-fit: scale-down;
-                width: ${view === VIEWS.GRID ? 100 : 25}%;
-                padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
-                margin: ${view === VIEWS.GRID ? 'auto' : 0};
-
-                ${view === VIEWS.LIST &&
-                css`
-                  max-height: 150px;
-
-                  @media (max-width: 1080px) {
-                    display: none;
-                  }
-                `}
-              `}
-            />
-            <div
-              css={css`
-                padding: 1em;
-
-                ${view === VIEWS.LIST &&
-                css`
-                  width: 75%;
-
-                  @media (max-width: 1080px) {
-                    width: 100%;
-                  }
-                `}
-              `}
-            >
-              <h4>
-                {pack.name}{' '}
-                {pack.level === LEVELS.NEWRELIC && (
-                  <Icon name="nr-check-shield" />
-                )}
-              </h4>
-              <p
-                css={css`
-                  font-size: 0.875rem;
-                  color: var(--secondary-text-color);
-                `}
-              >
-                {pack.description}
-              </p>
-            </div>
-          </Surface>
+          <PackTile key={pack.id} view={view} {...pack} />
         ))}
       </div>
     </>
