@@ -44,18 +44,22 @@ const ObservabilityPacksPage = ({ data, location }) => {
   const [queryFilter, setQueryFilter] = useQueryParam('filter', StringParam);
   const [querySort, setQuerySort] = useQueryParam('sort', StringParam);
   const [view, setView] = useState(VIEWS.GRID);
+
   useInstrumentedData(
     { actionName: 'packViewToggle', packViewState: view },
     { enabled: Boolean(view) }
   );
+
   useInstrumentedData(
     { actionName: 'packSort', packSortState: sortState },
     { enabled: Boolean(sortState) }
   );
+
   useInstrumentedData(
     { actionName: 'packFilter', packFilterState: containingFilterState },
     { enabled: Boolean(containingFilterState) }
   );
+
   useDebounce(
     () => {
       if (searchTerm && searchTerm !== '') {
@@ -72,6 +76,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
     1000,
     [searchTerm]
   );
+
   useEffect(() => {
     if (querySearch) {
       setSearchTerm(querySearch);
@@ -87,6 +92,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   useEffect(() => {
     setView(view);
   }, [view]);
+
   useEffect(() => {
     let tempFilteredPacks = o11yPacks.filter(
       (pack) =>
@@ -130,6 +136,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
     setQuerySort,
     setQuerySearch,
   ]);
+
   return (
     <>
       <DevSiteSeo title="Observability Packs" location={location} />
