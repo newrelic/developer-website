@@ -57,7 +57,7 @@ const ImageGallery = ({ images, className }) => {
             position: absolute;
             background: linear-gradient(
               to right,
-              transparent 75%,
+              transparent 87%,
               var(--primary-background-color)
             );
             width: 100%;
