@@ -19,16 +19,16 @@ const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
   const tessen = useTessen();
   const handleInstallClick = useInstrumentedHandler(
-    (pack) => {
-      tessen.track('observabilityPack', 'ObservabilityPackInstall', {
-        installPackName: pack.name,
-        installPackId: pack.id,
+    () => {
+      tessen.track('observabilityPack', 'packInstall', {
+        packName: pack.name,
+        packId: pack.id,
       });
     },
     {
-      actionName: 'oPackInstall',
-      installPackName: pack.name,
-      installPackId: pack.id,
+      actionName: 'packInstall',
+      packName: pack.name,
+      packId: pack.id,
     }
   );
   return (
@@ -46,7 +46,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
             <InstallButton
               title={`Install ${pack.name}`}
               guid={pack.id}
-              onClick={() => handleInstallClick(pack)}
+              onClick={handleInstallClick}
             />
             <Tabs.Bar
               css={css`
