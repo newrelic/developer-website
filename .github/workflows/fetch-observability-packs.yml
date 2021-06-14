@@ -38,7 +38,7 @@ jobs:
       - name: Fetch observability packs
         run: yarn run fetch-observability-packs
         env:
-          NR_GQL_URL: 'https://api.newrelic.com/graphql'
+          NR_API_URL: 'https://api.newrelic.com/graphql'
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN }}
 
       - name: Temporarily disable branch protection

@@ -13,7 +13,7 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 
 const PACKS_FILE_PATH = './src/data/observability-packs.json';
-const NR_GQL_URL = process.env.NR_GQL_URL;
+const NR_API_URL = process.env.NR_API_URL;
 const NR_API_TOKEN = process.env.NR_API_TOKEN;
 
 const packQuery = `# gql 
@@ -56,14 +56,16 @@ const packQuery = `# gql
  **/
 const fetchPacks = async (queryString, url, token) => {
   try {
-    const results = await fetch(url, {
+    const res = await fetch(url, {
       method: 'post',
       body: JSON.stringify({ query: queryString }),
       headers: {
         'Content-Type': 'application/json',
         'Api-Key': token,
       },
-    }).then((res) => res.json());
+    });
+
+    const results = await res.json();
 
     if (results.errors) {
       console.log('GRAPHQL Errors:', JSON.stringify(results.errors, null, 2));
@@ -86,7 +88,7 @@ const writePacks = (path, packs) => {
 };
 
 const validateEnvVars = () => {
-  if (typeof NR_GQL_URL !== 'string') {
+  if (typeof NR_API_URL !== 'string') {
     throw new Error('NR_GQL_URL environment variable not set, exiting...');
   }
 
@@ -96,7 +98,7 @@ const validateEnvVars = () => {
 };
 
 const main = async () => {
-  const results = await fetchPacks(packQuery, NR_GQL_URL, NR_API_TOKEN);
+  const results = await fetchPacks(packQuery, NR_API_URL, NR_API_TOKEN);
 
   if (results) {
     const packs = results.observabilityPacks;

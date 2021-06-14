@@ -9,18 +9,18 @@
         "description": "",
         "name": "Apache",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/apache/dashboards/apache01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/apache/dashboards/apache02.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/apache/dashboards/apache03.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/apache/dashboards/apache01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/apache/dashboards/apache02.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/apache/dashboards/apache03.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/apache/dashboards/apache.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/apache/dashboards/apache.json"
       }
     ],
     "description": "Official New Relic pack for Apache\nUse this pack together with the New Relic Apache On Host Integration to get insight into the performance of your Apache instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/apache/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/apache/icon.png",
     "id": "QXBhY2hl",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/apache/logo.svg",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/apache/logo.svg",
     "name": "Apache",
     "websiteUrl": "https://httpd.apache.org/"
   },
@@ -35,33 +35,33 @@
         "description": "",
         "name": "Browser Overview",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/browser/dashboards/browser_overview.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/browser/dashboards/browser_overview.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/browser/dashboards/browser_overview.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/browser/dashboards/browser_overview.json"
       },
       {
         "description": "",
         "name": "Browser Pages Dashboard",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/browser/dashboards/browser_pages_dashboard.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/browser/dashboards/browser_pages_dashboard.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/browser/dashboards/browser_pages_dashboard.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/browser/dashboards/browser_pages_dashboard.json"
       },
       {
         "description": "",
         "name": "JavaScript Errors",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/browser/dashboards/javascript_errors.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/browser/dashboards/javascript_errors.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/browser/dashboards/javascript_errors.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/browser/dashboards/javascript_errors.json"
       },
       {
         "description": "",
         "name": "Browser Traffic Analysis",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/browser/dashboards/traffic_analysis.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/browser/dashboards/traffic_analysis.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/browser/dashboards/traffic_analysis.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/browser/dashboards/traffic_analysis.json"
       }
     ],
     "description": "Set of dashboards based on New Relic Browser agent data.",
@@ -82,16 +82,16 @@
         "description": "",
         "name": "Cassandra",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/cassandra/dashboards/cassandra.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/cassandra/dashboards/cassandra.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/cassandra/dashboards/cassandra.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/cassandra/dashboards/cassandra.json"
       }
     ],
     "description": "Official New Relic pack for Cassandra\nUse this pack together with the New Relic Cassandra On Host Integration to get insight into the performance of your Cassandra instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/cassandra/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/cassandra/icon.png",
     "id": "Q2Fzc2FuZHJh",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/cassandra/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/cassandra/logo.png",
     "name": "Cassandra",
     "websiteUrl": "https://cassandra.apache.org/"
   },
@@ -105,16 +105,16 @@
         "description": "",
         "name": "HashiCorp Consul",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/consul/dashboards/consul.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/consul/dashboards/consul.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/consul/dashboards/consul.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/consul/dashboards/consul.json"
       }
     ],
     "description": "Official New Relic pack for Consul\nUse this pack together with the New Relic Consul On Host Integration to get insight into the performance of your Consul instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/consul/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/consul/icon.png",
     "id": "Q29uc3Vs",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/consul/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/consul/logo.png",
     "name": "Consul",
     "websiteUrl": "https://www.consul.io/"
   },
@@ -128,16 +128,16 @@
         "description": "",
         "name": "Couchbase",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/couchbase/dashboards/couchbase.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/couchbase/dashboards/couchbase.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/couchbase/dashboards/couchbase.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/couchbase/dashboards/couchbase.json"
       }
     ],
     "description": "Official New Relic pack for Couchbase\nUse this pack together with the New Relic Couchbase On Host Integration to get insight into the performance of your Couchbase instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/couchbase/icon.jpeg",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/couchbase/icon.jpeg",
     "id": "Q291Y2hiYXNl",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/couchbase/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/couchbase/logo.svg",
     "name": "Couchbase",
     "websiteUrl": "https://www.couchbase.com/"
   },
@@ -147,10 +147,10 @@
     ],
     "dashboards": null,
     "description": "This observability pack includes dashboards and alerts for popular signals regarding Elasticsearch cluster health and performance.\nUse this pack together with the New Relic Elasticsearch On Host Integration and New Relic Infrastructure agent log forwarding to get insight into the performance of your Elasticsearch clusters.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/elasticsearch/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/elasticsearch/icon.png",
     "id": "RWxhc3RpY3NlYXJjaA==",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/elasticsearch/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/elasticsearch/logo.png",
     "name": "Elasticsearch",
     "websiteUrl": "https://www.elastic.co/what-is/elasticsearch"
   },
@@ -164,16 +164,16 @@
         "description": "Monitor Telemetry traces from your Gatsby Build steps in production and develop",
         "name": "Gatsby Build",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/gatsby-build/dashboards/gatsby-build.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/gatsby-build/dashboards/gatsby-build.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/gatsby-build/dashboards/gatsby-build.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/gatsby-build/dashboards/gatsby-build.json"
       }
     ],
     "description": "The Gatsby observability pack allows you to get visibility into the build time of your Gatsby Sites, \nusing [Open Telemetry](https://docs.newrelic.com/docs/integrations/open-source-telemetry-integrations/opentelemetry/introduction-opentelemetry-new-relic/)\nto collect each step as a span in a Distributed Trace. This Dashboard lets you monitor your build in real-time to highlight which steps are affecting performance,\nso you can improve them faster.\n\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/gatsby-build/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/gatsby-build/icon.png",
     "id": "R2F0c2J5IEJ1aWxk",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/gatsby-build/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/gatsby-build/logo.png",
     "name": "Gatsby Build",
     "websiteUrl": null
   },
@@ -184,10 +184,10 @@
     ],
     "dashboards": null,
     "description": "Golden signals alerts for web servers. Includes alerts and a dashboard for throughput, errors, response time, CPU usage, and memory usage.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/golden-signals-web/icon.jpeg",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/golden-signals-web/icon.jpeg",
     "id": "R29sZGVuIFNpZ25hbHMgZm9yIFdlYiBTZXJ2ZXJz",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/golden-signals-web/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/golden-signals-web/logo.png",
     "name": "Golden Signals for Web Servers",
     "websiteUrl": null
   },
@@ -201,19 +201,19 @@
         "description": "",
         "name": "HAProxy",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/haproxy/dashboards/haproxy01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/haproxy/dashboards/haproxy02.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/haproxy/dashboards/haproxy03.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/haproxy/dashboards/haproxy04.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/haproxy/dashboards/haproxy01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/haproxy/dashboards/haproxy02.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/haproxy/dashboards/haproxy03.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/haproxy/dashboards/haproxy04.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/haproxy/dashboards/haproxy.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/haproxy/dashboards/haproxy.json"
       }
     ],
     "description": "Official New Relic pack for HAProxy\nUse this pack together with the New Relic HAProxy On Host Integration to get insight into the performance of your HAProxy instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/haproxy/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/haproxy/icon.png",
     "id": "SEFQcm94eQ==",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/haproxy/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/haproxy/logo.png",
     "name": "HAProxy",
     "websiteUrl": "https://www.haproxy.org/"
   },
@@ -227,9 +227,9 @@
         "description": "",
         "name": "Infrastructure Dashboard",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/infrastructure/dashboards/infra_pages_dashboard.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/infrastructure/dashboards/infra_pages_dashboard.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/infrastructure/dashboards/infra_pages_dashboard.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/infrastructure/dashboards/infra_pages_dashboard.json"
       }
     ],
     "description": "The infrastructure pack allows you to get visibilility into the performance and availability of your hosts and operating system.\n\n",
@@ -250,17 +250,17 @@
         "description": "",
         "name": "JMX",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/jmx/dashboards/jmx01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/jmx/dashboards/jmx02.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/jmx/dashboards/jmx01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/jmx/dashboards/jmx02.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/jmx/dashboards/jmx.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/jmx/dashboards/jmx.json"
       }
     ],
     "description": "Official New Relic pack for JMX\nUse this pack together with the New Relic JMX On Host Integration to get insight into the performance of your Java instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/jmx/icon.svg",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/jmx/icon.svg",
     "id": "Sk1YIChKYXZhKQ==",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/jmx/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/jmx/logo.png",
     "name": "JMX (Java)",
     "websiteUrl": "https://docs.oracle.com/javase/tutorial/jmx/overview/index.html"
   },
@@ -274,19 +274,19 @@
         "description": "",
         "name": "Kafka",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/kafka/dashboards/kafka01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/kafka/dashboards/kafka02.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/kafka/dashboards/kafka03.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/kafka/dashboards/kafka04.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/kafka/dashboards/kafka01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/kafka/dashboards/kafka02.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/kafka/dashboards/kafka03.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/kafka/dashboards/kafka04.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/kafka/dashboards/kafka.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/kafka/dashboards/kafka.json"
       }
     ],
     "description": "Official New Relic pack for Kafka\nUse this pack together with the New Relic Kafka On Host Integration to get insight into the performance of your Kafka cluster.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/kafka/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/kafka/icon.png",
     "id": "S2Fma2E=",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/kafka/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/kafka/logo.png",
     "name": "Kafka",
     "websiteUrl": "https://kafka.apache.org/"
   },
@@ -314,16 +314,16 @@
         "description": "",
         "name": "Memcached",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/memcached/dashboards/memcached.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/memcached/dashboards/memcached.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/memcached/dashboards/memcached.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/memcached/dashboards/memcached.json"
       }
     ],
     "description": "Official New Relic pack for Memcached\nUse this pack together with the New Relic Memcached On Host Integration to get insight into the performance of your Memcached instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/memcached/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/memcached/icon.png",
     "id": "TWVtY2FjaGVk",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/memcached/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/memcached/logo.png",
     "name": "Memcached",
     "websiteUrl": "https://www.newrelic.com"
   },
@@ -337,18 +337,18 @@
         "description": "",
         "name": "MongoDB",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/mongodb/dashboards/mongodb01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/mongodb/dashboards/mongodb02.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/mongodb/dashboards/mongodb03.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/mongodb/dashboards/mongodb01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/mongodb/dashboards/mongodb02.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/mongodb/dashboards/mongodb03.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/mongodb/dashboards/mongodb.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/mongodb/dashboards/mongodb.json"
       }
     ],
     "description": "Official New Relic pack for MongoDB\nUse this pack together with the New Relic MongoDB On Host Integration to get insight into the performance of your MongoDB instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/mongodb/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/mongodb/icon.png",
     "id": "TW9uZ29EQg==",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/mongodb/logo.jpeg",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/mongodb/logo.jpeg",
     "name": "MongoDB",
     "websiteUrl": "https://www.mongodb.com/"
   },
@@ -361,17 +361,17 @@
         "description": "Official New Relic dashboard to show MySQL data",
         "name": "MySQL overview dashboard",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/mysql/dashboards/mysql01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/mysql/dashboards/mysql02.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/mysql/dashboards/mysql01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/mysql/dashboards/mysql02.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/mysql/dashboards/mysql.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/mysql/dashboards/mysql.json"
       }
     ],
     "description": "Official New Relic pack for MySQL and MariaDB\nUse this pack together with the New Relic MySQL On Host Integration to get insight into the performance of your MySQL and MariaDB instances.\n\n",
     "iconUrl": null,
     "id": "TXlTUUwgLyBNYXJpYURC",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/mysql/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/mysql/logo.png",
     "name": "MySQL / MariaDB",
     "websiteUrl": "https://en.wikipedia.org/wiki/MySQL"
   },
@@ -386,17 +386,17 @@
         "description": "",
         "name": "Nagios",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/nagios/dashboards/nagios01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/nagios/dashboards/nagios02.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/nagios/dashboards/nagios01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/nagios/dashboards/nagios02.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/nagios/dashboards/nagios.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/nagios/dashboards/nagios.json"
       }
     ],
     "description": "Official New Relic pack for Nagios\nUse this pack together with the New Relic Nagios On Host Integration to run Nagios custom scripts and display the data in New Relic.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/nagios/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/nagios/icon.png",
     "id": "TmFnaW9z",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/nagios/logo.jpeg",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/nagios/logo.jpeg",
     "name": "Nagios",
     "websiteUrl": "https://www.nagios.org/"
   },
@@ -410,16 +410,16 @@
         "description": "",
         "name": "Nginx",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/nginx/dashboards/nginx.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/nginx/dashboards/nginx.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/nginx/dashboards/nginx.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/nginx/dashboards/nginx.json"
       }
     ],
     "description": "Official New Relic pack for Nginx\nUse this pack together with the New Relic Cassandra On Host Integration to get insight into the performance of your Cassandra instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/nginx/icon.webp",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/nginx/icon.webp",
     "id": "Tmdpbng=",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/nginx/logo.jpeg",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/nginx/logo.jpeg",
     "name": "Nginx",
     "websiteUrl": "https://nginx.org/"
   },
@@ -433,7 +433,7 @@
     "iconUrl": null,
     "id": "UEhQ",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/php/logo.jpg",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/php/logo.jpg",
     "name": "PHP",
     "websiteUrl": "https://www.php.net/"
   },
@@ -447,17 +447,17 @@
         "description": "",
         "name": "PostgreSQL",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/postgresql/dashboards/postgresql01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/postgresql/dashboards/postgresql02.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/postgresql/dashboards/postgresql01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/postgresql/dashboards/postgresql02.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/postgresql/dashboards/postgresql.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/postgresql/dashboards/postgresql.json"
       }
     ],
     "description": "Official New Relic pack for PostgreSQL\nUse this pack together with the New Relic PostgreSQL On Host Integration to get insight into the performance of your PostgreSQL instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/postgresql/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/postgresql/icon.png",
     "id": "UG9zdGdyZVNRTA==",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/postgresql/logo.jpeg",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/postgresql/logo.jpeg",
     "name": "PostgreSQL",
     "websiteUrl": "https://www.postgresql.org/"
   },
@@ -471,9 +471,9 @@
         "description": "Dashboard showing disk, network and memory usage coming from Prometheus node exporter.",
         "name": "Prometheus Node Exporter",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/prometheus-node-exporter-macos/dashboards/node-exporter-macos.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/prometheus-node-exporter-macos/dashboards/node-exporter-macos.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/prometheus-node-exporter-macos/dashboards/node-exporter-macos.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/prometheus-node-exporter-macos/dashboards/node-exporter-macos.json"
       }
     ],
     "description": "Get visibility into the performance of Mac OS. See disk, network and memory usage through the Prometheus Node Exporter.\n\n",
@@ -494,16 +494,16 @@
         "description": "",
         "name": "RabbitMQ",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/rabbitmq/dashboards/rabbitmq.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/rabbitmq/dashboards/rabbitmq.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/rabbitmq/dashboards/rabbitmq.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/rabbitmq/dashboards/rabbitmq.json"
       }
     ],
     "description": "Official New Relic pack for RabbitMQ\nUse this pack together with the New Relic RabbitMQ On Host Integration to get insight into the performance of your RabbitMQ instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/rabbitmq/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/rabbitmq/icon.png",
     "id": "UmFiYml0TVE=",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/rabbitmq/logo.svg",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/rabbitmq/logo.svg",
     "name": "RabbitMQ",
     "websiteUrl": "https://www.rabbitmq.com/"
   },
@@ -517,18 +517,18 @@
         "description": "",
         "name": "Redis",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/redis/dashboards/redis01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/redis/dashboards/redis02.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/redis/dashboards/redis03.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/redis/dashboards/redis01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/redis/dashboards/redis02.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/redis/dashboards/redis03.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/redis/dashboards/redis.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/redis/dashboards/redis.json"
       }
     ],
     "description": "Official New Relic pack for Redis\nUse this pack together with the New Relic Redis On Host Integration to get insight into the performance of your Redis instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/redis/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/redis/icon.png",
     "id": "UmVkaXM=",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/redis/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/redis/logo.png",
     "name": "Redis",
     "websiteUrl": "https://redis.io/"
   },
@@ -542,18 +542,18 @@
         "description": "",
         "name": "Varnish Cache",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/varnish/dashboards/varnish01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/varnish/dashboards/varnish02.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/varnish/dashboards/varnish03.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/varnish/dashboards/varnish01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/varnish/dashboards/varnish02.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/varnish/dashboards/varnish03.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/varnish/dashboards/varnish.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/varnish/dashboards/varnish.json"
       }
     ],
     "description": "Official New Relic pack for Varnish\nUse this pack together with the New Relic Varnish On Host Integration to get insight into the performance of your Varnish instances.\n\n",
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/varnish/icon.png",
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/varnish/icon.png",
     "id": "VmFybmlzaA==",
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.0/packs/varnish/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/varnish/logo.png",
     "name": "Varnish",
     "websiteUrl": "https://varnish-cache.org/"
   }
