@@ -5,18 +5,14 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import Select from '../components/Select';
 import SegmentedControl from '../components/SegmentedControl';
+import PackTile from '../components/PackTile';
 import {
   SearchInput,
   useTessen,
   useInstrumentedData,
-  Icon,
-  Link,
-  Surface,
 } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
 import { useDebounce } from 'react-use';
-
-import DEFAULT_IMAGE from '../images/new-relic-logo.png';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
 const packContentsFilterValues = [
@@ -31,10 +27,6 @@ const packContentsFilterValues = [
 const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
-};
-
-const LEVELS = {
-  NEWRELIC: 'NEWRELIC',
 };
 
 const ObservabilityPacksPage = ({ data, location }) => {
@@ -53,26 +45,26 @@ const ObservabilityPacksPage = ({ data, location }) => {
   const [querySort, setQuerySort] = useQueryParam('sort', StringParam);
   const [view, setView] = useState(VIEWS.GRID);
   useInstrumentedData(
-    { actionName: 'oPackViewToggle', oPackViewState: view },
+    { actionName: 'packViewToggle', packViewState: view },
     { enabled: Boolean(view) }
   );
   useInstrumentedData(
-    { actionName: 'oPackSort', oPackSortState: sortState },
-    { enabled: Boolean(searchTerm) }
+    { actionName: 'packSort', packSortState: sortState },
+    { enabled: Boolean(sortState) }
   );
   useInstrumentedData(
-    { actionName: 'oPackFilter', oPackFilterState: containingFilterState },
+    { actionName: 'packFilter', packFilterState: containingFilterState },
     { enabled: Boolean(containingFilterState) }
   );
   useDebounce(
     () => {
       if (searchTerm && searchTerm !== '') {
-        tessen.track('observabilityPack', `ObservabilityPackSearch`, {
-          oPackSearchTerm: searchTerm,
+        tessen.track('observabilityPack', `packSearch`, {
+          packSearchTerm: searchTerm,
         });
         if (typeof window !== 'undefined' && window.newrelic) {
-          window.newrelic.addPageAction('oPackSearch', {
-            oPackSearchTerm: searchTerm,
+          window.newrelic.addPageAction('packSearch', {
+            packSearchTerm: searchTerm,
           });
         }
       }
@@ -138,27 +130,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
     setQuerySort,
     setQuerySearch,
   ]);
-  useEffect(() => {
-    const handleClickThrough = () => {
-      tessen.track('observabilityPack', `ObservabilityPackClickThroughView`, {
-        oPackClickThroughView: view,
-      });
-      if (typeof window !== 'undefined' && window.newrelic) {
-        window.newrelic.addPageAction('oPackClickThroughView', {
-          oPackClickThroughView: view,
-        });
-      }
-    };
-    document.querySelectorAll('.pack-tile-instrument').forEach((item) => {
-      item.addEventListener('click', handleClickThrough);
-    });
-    // cleanup this component
-    return () => {
-      document.querySelectorAll('.pack-tile-instrument').forEach((item) => {
-        item.removeEventListener('click', handleClickThrough);
-      });
-    };
-  });
   return (
     <>
       <DevSiteSeo title="Observability Packs" location={location} />
@@ -218,8 +189,8 @@ const ObservabilityPacksPage = ({ data, location }) => {
               onChange={(e) => {
                 setSortState(e.target.value);
                 document.getElementById(e.target.id).blur();
-                tessen.track('observabilityPack', `ObservabilityPackSort`, {
-                  oPackSortState: e.target.value,
+                tessen.track('observabilityPack', `packSort`, {
+                  packSortState: e.target.value,
                 });
               }}
             >
@@ -239,8 +210,8 @@ const ObservabilityPacksPage = ({ data, location }) => {
               onChange={(e) => {
                 setContainingFilterState(e.target.value);
                 document.getElementById(e.target.id).blur();
-                tessen.track('observabilityPack', `ObservabilityPackFilter`, {
-                  oPackFilterState: containingFilterState,
+                tessen.track('observabilityPack', `packFilter`, {
+                  packFilterState: containingFilterState,
                 });
               }}
             >
@@ -256,8 +227,8 @@ const ObservabilityPacksPage = ({ data, location }) => {
           items={Object.values(VIEWS)}
           onChange={(_e, view) => {
             setView(view);
-            tessen.track('observabilityPack', `ObservabilityPackViewToggle`, {
-              oPackViewState: view,
+            tessen.track('observabilityPack', `packViewToggle`, {
+              packViewState: view,
             });
           }}
         />
@@ -285,79 +256,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
         `}
       >
         {filteredPacks.map((pack) => (
-          <Surface
-            key={pack.id}
-            to={pack.fields.slug}
-            as={Link}
-            base={Surface.BASE.PRIMARY}
-            className="pack-tile-instrument"
-            interactive
-            css={css`
-              overflow: hidden;
-
-              ${view === VIEWS.LIST &&
-              css`
-                display: flex;
-                margin-bottom: 1em;
-              `}
-            `}
-          >
-            <img
-              src={pack.logo || DEFAULT_IMAGE}
-              alt={pack.name}
-              onError={(e) => {
-                e.preventDefault();
-                e.target.src = DEFAULT_IMAGE;
-              }}
-              css={css`
-                display: block;
-                height: 200px;
-                background-color: var(--color-white);
-                object-fit: scale-down;
-                width: ${view === VIEWS.GRID ? 100 : 25}%;
-                padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
-                margin: ${view === VIEWS.GRID ? 'auto' : 0};
-
-                ${view === VIEWS.LIST &&
-                css`
-                  max-height: 150px;
-
-                  @media (max-width: 1080px) {
-                    display: none;
-                  }
-                `}
-              `}
-            />
-            <div
-              css={css`
-                padding: 1em;
-
-                ${view === VIEWS.LIST &&
-                css`
-                  width: 75%;
-
-                  @media (max-width: 1080px) {
-                    width: 100%;
-                  }
-                `}
-              `}
-            >
-              <h4>
-                {pack.name}{' '}
-                {pack.level === LEVELS.NEWRELIC && (
-                  <Icon name="nr-check-shield" />
-                )}
-              </h4>
-              <p
-                css={css`
-                  font-size: 0.875rem;
-                  color: var(--secondary-text-color);
-                `}
-              >
-                {pack.description}
-              </p>
-            </div>
-          </Surface>
+          <PackTile key={pack.id} view={view} {...pack} />
         ))}
       </div>
     </>

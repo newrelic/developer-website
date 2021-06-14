@@ -15,9 +15,9 @@ const BarItem = ({ index, children, id, count, disabled }) => {
   const tessen = useTessen();
   useInstrumentedData(
     {
-      actionName: 'oPackTabToggle',
-      currentTab,
-      oPackTabCount: count,
+      actionName: 'packTabToggle',
+      packTabState: currentTab,
+      packTabCount: count,
     },
     { enabled: Boolean(currentTab) }
   );
@@ -28,9 +28,9 @@ const BarItem = ({ index, children, id, count, disabled }) => {
       type="button"
       onClick={() => {
         !disabled && setCurrentTab(id);
-        tessen.track('observabilityPack', `ObservabilityPackTabToggle`, {
-          oPackTabToggle: id,
-          oPackTabCount: count,
+        tessen.track('observabilityPack', `packTabToggle`, {
+          packTabState: id,
+          packTabCount: count,
         });
       }}
       css={css`
