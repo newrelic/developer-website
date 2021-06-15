@@ -14,8 +14,7 @@ const CreateImageBlock = (image) => {
       rel="noreferrer"
       css={css`
         height: 207px;
-        margin-right: 16px;
-        margin-bottom: 6px;
+        margin-right: 1rem;
       `}
     >
       <img
@@ -23,18 +22,10 @@ const CreateImageBlock = (image) => {
         alt="placeholder-text"
         css={css`
           height: 207px;
-          background: linear-gradient(0deg, #f3f4f4, #f3f4f4),
-            linear-gradient(
-              293.05deg,
-              #70d3af -73.46%,
-              #007e8a -24.52%,
-              #052a3a 69.75%
-            );
-          border: 1px solid rgba(0, 0, 0, 0.1);
           box-sizing: border-box;
-          box-shadow: inset 0px 0px 0px 4px #ffffff;
+          box-shadow: inset 0px 0px 0px 4px var(--divider-color);
           border-radius: 4px;
-          padding: 3px;
+          padding: 0.25rem;
         `}
       />
     </a>
@@ -49,19 +40,37 @@ const CreateImageBlock = (image) => {
 const ImageGallery = ({ images, className }) => {
   return (
     <div
-      className={className}
       css={css`
-        display: flex;
-        white-space: nowrap;
-        overflow-x: auto;
-        margin-bottom: 32px;
+        position: relative;
+        margin-bottom: 2rem;
       `}
     >
-      {images && images.length > 0
-        ? images.map((image) => {
-            return CreateImageBlock(image);
-          })
-        : CreateImageBlock(noImagePlaceholder)}
+      <div
+        className={className}
+        css={css`
+          display: flex;
+          white-space: nowrap;
+          overflow-x: auto;
+          &:after {
+            pointer-events: none;
+            content: '';
+            position: absolute;
+            background: linear-gradient(
+              to right,
+              transparent 87%,
+              var(--primary-background-color)
+            );
+            width: 100%;
+            height: 100%;
+          }
+        `}
+      >
+        {images && images.length > 0
+          ? images.map((image) => {
+              return CreateImageBlock(image);
+            })
+          : CreateImageBlock(noImagePlaceholder)}
+      </div>
     </div>
   );
 };
