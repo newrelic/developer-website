@@ -1,3 +1,13 @@
+## [1.50.2](https://github.com/newrelic/developer-website/compare/v1.50.1...v1.50.2) (2021-06-15)
+
+
+### Bug Fixes
+
+* bump theme to version that handles blocked cookies ([0481fac](https://github.com/newrelic/developer-website/commit/0481facb04b98e32bf3621837ada6eab6d73c889))
+* remove checkout-and-build ([7fc57db](https://github.com/newrelic/developer-website/commit/7fc57dbcb518753358a1fcb7065b1ce0cfab7682))
+* remove checkout-and-build reference ([bbc2fff](https://github.com/newrelic/developer-website/commit/bbc2fffa0d050d7af7d6b1ae2306fbbdd9950175))
+* upgrade gatsby-theme-newrelic ([ec6866d](https://github.com/newrelic/developer-website/commit/ec6866dbc3723e34077899f67bc4915e4011e63c))
+
 ## [1.50.1](https://github.com/newrelic/developer-website/compare/v1.50.0...v1.50.1) (2021-05-27)
 
 
