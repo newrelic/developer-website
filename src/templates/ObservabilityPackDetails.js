@@ -14,6 +14,8 @@ import {
 import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
+import ImageSlider from '../components/ImageSlider/ImageSlider';
+import ImageSliderAnimated from '../components/ImageSlider/IndexSliderAnimated';
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
@@ -134,7 +136,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 {pack.dashboards?.map((dashboard) => (
                   <>
                     <h3>{dashboard.name}</h3>
-                    <ImageGallery images={dashboard.screenshots} />
+                    <ImageSliderAnimated
+                      height={980}
+                      width={735}
+                      images={dashboard.screenshots}
+                    />
                     {dashboard.description && (
                       <>
                         <h4>Description</h4>
