@@ -11,6 +11,7 @@
 /* eslint-disable no-console */
 const fs = require('fs');
 const fetch = require('node-fetch');
+const get = require('lodash.get');
 
 const PACKS_FILE_PATH = './src/data/observability-packs.json';
 const NR_API_URL = process.env.NR_API_URL;
@@ -65,13 +66,20 @@ const fetchPacks = async (queryString, url, token) => {
       },
     });
 
+    if (!res.ok) {
+      throw new Error(`Received status code ${res.status} from the API`);
+    }
+
     const results = await res.json();
 
     if (results.errors) {
-      console.log('GRAPHQL Errors:', JSON.stringify(results.errors, null, 2));
+      throw new Error(JSON.stringify(results.errors, null, 2));
     }
 
-    return results.data.docs.openInstallation.observabilityPackSearch.results;
+    return get(
+      results,
+      'data.docs.openInstallation.observabilityPackSearch.results'
+    );
   } catch (error) {
     console.error('Encountered a problem querying the graphql api', error);
   }
@@ -97,8 +105,13 @@ const validateEnvVars = () => {
   }
 };
 
-const main = async () => {
-  const results = await fetchPacks(packQuery, NR_API_URL, NR_API_TOKEN);
+/*
+ * @param {String} query a graphql query for observability packs
+ * @param {String} url the New Relic API endpoint
+ * @param {String} token a New Relic API token
+ **/
+const main = async (query, url, token) => {
+  const results = await fetchPacks(query, url, token);
 
   if (results) {
     const packs = results.observabilityPacks;
@@ -108,10 +121,17 @@ const main = async () => {
     console.log(
       'No packs were returned from the api, check the logs for errors.'
     );
+    if (process.env.CI) {
+      process.exit(1);
+    }
   }
 };
 
-validateEnvVars();
-main();
+if (process.env.CI) {
+  validateEnvVars();
+  main(packQuery, NR_API_URL, NR_API_TOKEN);
+}
+
+module.exports = main;
 
 /* eslint-enable no-console */
