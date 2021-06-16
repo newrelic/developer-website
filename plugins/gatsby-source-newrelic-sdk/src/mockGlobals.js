@@ -1,4 +1,6 @@
 const noop = () => {};
+const Blob = require('blob-polyfill').Blob;
+const fetch = require("node-fetch");
 
 global.Element = {
   prototype: {
@@ -53,3 +55,7 @@ global.window = {
   requestAnimationFrame: global.requestAnimationFrame,
   cancelAnimationFrame: global.cancelAnimationFrame,
 };
+
+global.Blob = Blob;
+
+global.fetch = fetch;

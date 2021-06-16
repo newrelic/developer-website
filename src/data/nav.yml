@@ -270,16 +270,12 @@
               url: '/components/user-table-row-cell'
         - title: Feedback
           pages:
-            - title: Banner
-              url: '/components/banner'
             - title: EmptyState
               url: '/components/empty-state'
             - title: Icon
               url: '/components/icon'
             - title: InlineMessage
               url: '/components/inline-message'
-            - title: SectionMessage
-              url: '/components/section-message'
             - title: Spinner
               url: '/components/spinner'
             - title: Toast
@@ -423,12 +419,6 @@
               url: '/components/nerdlet-state-context'
             - title: PlatformStateContext
               url: '/components/platform-state-context'
-            - title: catalog
-              url: '/apis/catalog'
-            - title: events
-              url: '/apis/events'
-            - title: instrumentation
-              url: '/apis/instrumentation'
             - title: logger
               url: '/apis/logger'
             - title: navigation

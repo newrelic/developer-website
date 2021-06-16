@@ -10,6 +10,7 @@
     "@newrelic/gatsby-theme-newrelic": "^2.4.4",
     "@splitsoftware/splitio-react": "^1.2.0",
     "@xstate/react": "^1.0.2",
+    "blob-polyfill": "^5.0.20210201",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "diff": "^4.0.2",
