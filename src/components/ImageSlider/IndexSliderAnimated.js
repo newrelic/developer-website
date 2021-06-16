@@ -20,8 +20,8 @@ const ImageSliderAnimated = ({ width, height, images, className }) => {
     >
       <button onClick={handleClickNext}>Next</button>
       <AnimateOnChange
-        animationIn="slideIn"
-        animationOut="slideOut"
+        animationIn="fadeIn"
+        animationOut="fadeOut"
         durationOut={250}
       >
         {CreateImageBlock(images[selectedImageIndex])}
