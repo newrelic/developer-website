@@ -85,16 +85,6 @@ const fetchPacks = async (queryString, url, token) => {
   }
 };
 
-/**
- * Writes a JSON file
- * @param {String} path the file path to write to
- * @param {Object|Object[]} packs the contents to write
- **/
-const writePacks = (path, packs) => {
-  console.log(`Writing ${path}`);
-  fs.writeFileSync(path, JSON.stringify(packs, null, 2));
-};
-
 const validateEnvVars = () => {
   if (typeof NR_API_URL !== 'string') {
     throw new Error('NR_GQL_URL environment variable not set, exiting...');
@@ -116,7 +106,8 @@ const main = async (query, url, token) => {
   if (results) {
     const packs = results.observabilityPacks;
     console.log(`Found ${packs.length} packs.`);
-    writePacks(PACKS_FILE_PATH, packs);
+    console.log(`Writing ${PACKS_FILE_PATH}`);
+    fs.writeFileSync(PACKS_FILE_PATH, JSON.stringify(packs, null, 2));
   } else {
     console.log(
       'No packs were returned from the api, check the logs for errors.'

@@ -7,14 +7,6 @@ const fetchObservabilityPacks = require('../fetch-observability-packs');
 jest.mock('node-fetch');
 jest.mock('fs');
 
-const mockAPIResponse = (response) => {
-  fetch.mockResolvedValueOnce({
-    json: jest.fn(() => Promise.resolve(response))
-  });
-};
-
-jest.mock('fs');
-
 describe('Action: Fetch Observability Packs', () => {
   const fakeAPIURL = 'fakeapi.com/graphql';
   const fakeToken = 'fake_token';
@@ -75,11 +67,12 @@ describe('Action: Fetch Observability Packs', () => {
       }
     };
     fetch.mockResolvedValueOnce({
-      json: jest.fn(() => Promise.resolve(apiReturnValue))
+      json: jest.fn(() => Promise.resolve(apiReturnValue)),
+      ok: true
     });
 
     await fetchObservabilityPacks(fakeGqlQuery, fakeAPIURL, fakeToken);
-    expect(fs.writeFileSync.mock.calls.length).toBe(0);
+    expect(fs.writeFileSync).not.toHaveBeenCalled();
   });
 
   test('does not write file when graphql response is malformed', async () => {
@@ -99,17 +92,18 @@ describe('Action: Fetch Observability Packs', () => {
       }
     };
     fetch.mockResolvedValueOnce({
-      json: jest.fn(() => Promise.resolve(apiReturnValue))
+      json: jest.fn(() => Promise.resolve(apiReturnValue)),
+      ok: true
     });
 
     await fetchObservabilityPacks(fakeGqlQuery, fakeAPIURL, fakeToken);
-    expect(fs.writeFileSync.mock.calls.length).toBe(0);
+    expect(fs.writeFileSync).not.toHaveBeenCalled();
   });
 
   test('does not write file when a network error occurs', async () => {
     fetch.mockImplementation(() => Promise.reject());
     await fetchObservabilityPacks(fakeGqlQuery, fakeAPIURL, fakeToken);
-    expect(fs.writeFileSync.mock.calls.length).toBe(0);
+    expect(fs.writeFileSync).not.toHaveBeenCalled();
   });
 
   test('does not write file when a non-200 status is returned from the API', async () => {
@@ -118,6 +112,6 @@ describe('Action: Fetch Observability Packs', () => {
       ok: false
     });
     await fetchObservabilityPacks(fakeGqlQuery, fakeAPIURL, fakeToken);
-    expect(fs.writeFileSync.mock.calls.length).toBe(0);
+    expect(fs.writeFileSync).not.toHaveBeenCalled();
   });
 });
