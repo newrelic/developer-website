@@ -15100,6 +15100,11 @@ react-simple-code-editor@^0.11.0:
   resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.11.0.tgz#bb57c7c29b570f2ab229872599eac184f5bc673c"
   integrity sha512-xGfX7wAzspl113ocfKQAR8lWPhavGWHL3xSzNLeseDRHysT+jzRBi/ExdUqevSMos+7ZtdfeuBOXtgk9HTwsrw==
 
+react-simple-image-slider@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-simple-image-slider/-/react-simple-image-slider-2.1.0.tgz#1945cab06f7b0c82a9acb7a83c6ac647d096e0a5"
+  integrity sha512-5fbApkODamlU1kgwr6Y/OWfAiBXLoxaPTc+y35l/a/rbRjM6aaOrwH2+CDhIwbzmmoCoDLzg6xJrfuStVbAHgQ==
+
 react-spring@^9.1.2:
   version "9.1.2"
   resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-9.1.2.tgz#a2392f5468bfd960976747d59361236536e1f303"

@@ -14,6 +14,7 @@ import {
 import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
+import SimpleImageSlider from 'react-simple-image-slider';
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
@@ -31,6 +32,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
       packId: pack.id,
     }
   );
+
   return (
     <>
       <DevSiteSeo title={pack.name} location={location} />
@@ -131,18 +133,34 @@ const ObservabilityPackDetails = ({ data, location }) => {
                   cupidatat non proident, sunt in culpa qui officia deserunt
                   mollit anim id est laborum.
                 </Intro>
-                {pack.dashboards?.map((dashboard) => (
-                  <>
-                    <h3>{dashboard.name}</h3>
-                    <ImageGallery images={dashboard.screenshots} />
-                    {dashboard.description && (
-                      <>
-                        <h4>Description</h4>
-                        <p>{dashboard.description}</p>
-                      </>
-                    )}
-                  </>
-                ))}
+                {pack.dashboards?.map((dashboard) => {
+                  const images = dashboard.screenshots.map((screenshotUrl) => ({
+                    url: screenshotUrl,
+                  }));
+                  console.log(images);
+                  return (
+                    <>
+                      <h3>{dashboard.name}</h3>
+                      {images && (
+                        <SimpleImageSlider
+                          height={735}
+                          width={980}
+                          showNavs
+                          style={{
+                            objectFit: 'cover',
+                          }}
+                          images={images}
+                        />
+                      )}
+                      {dashboard.description && (
+                        <>
+                          <h4>Description</h4>
+                          <p>{dashboard.description}</p>
+                        </>
+                      )}
+                    </>
+                  );
+                })}
               </Tabs.Page>
               <Tabs.Page id="alerts">
                 <Intro
