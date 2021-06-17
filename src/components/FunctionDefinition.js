@@ -5,28 +5,36 @@ import { graphql } from 'gatsby';
 
 const FunctionDefinition = ({ className, arguments: params, returnValue }) => {
   return (
-    <CodeDef className={className}>
-      <CodeDef.Keyword>function</CodeDef.Keyword>{' '}
-      <CodeDef.Bracket>{params.length > 0 ? '(' : '()'}</CodeDef.Bracket>
-      {params.length > 0 && (
-        <CodeDef.Block>
-          {params.map((param, i) => (
-            <div key={i}>
-              <CodeDef.Identifier>
-                {param.type.startsWith('...') ? `...${param.name}` : param.name}
-                :{' '}
-              </CodeDef.Identifier>
-              <CodeDef.Type>{param.type}</CodeDef.Type>
-              {i !== params.length - 1 ? ', ' : ' '}
-              <CodeDef.Comment text={param.description} />
-            </div>
-          ))}
-        </CodeDef.Block>
-      )}
-      {params.length > 0 && <CodeDef.Bracket>)</CodeDef.Bracket>}
-      <CodeDef.Operator> => </CodeDef.Operator>
-      <CodeDef.Type>{returnValue.type}</CodeDef.Type>
-    </CodeDef>
+    (params.length > 0 || returnValue.length > 0) && (
+      <CodeDef className={className}>
+        <CodeDef.Keyword>function</CodeDef.Keyword>{' '}
+        <CodeDef.Bracket>{params.length > 0 ? '(' : '()'}</CodeDef.Bracket>
+        {params.length > 0 && (
+          <CodeDef.Block>
+            {params.map((param, i) => (
+              <div key={i}>
+                <CodeDef.Identifier>
+                  {param.type.startsWith('...')
+                    ? `...${param.name}`
+                    : param.name}
+                  :{' '}
+                </CodeDef.Identifier>
+                <CodeDef.Type>{param.type}</CodeDef.Type>
+                {i !== params.length - 1 ? ', ' : ' '}
+                <CodeDef.Comment text={param.description} />
+              </div>
+            ))}
+          </CodeDef.Block>
+        )}
+        {params.length > 0 && <CodeDef.Bracket>)</CodeDef.Bracket>}
+        {returnValue.length > 0 && (
+          <>
+            <CodeDef.Operator> => </CodeDef.Operator>
+            <CodeDef.Type>{returnValue[0].type}</CodeDef.Type>
+          </>
+        )}
+      </CodeDef>
+    )
   );
 };
 
@@ -39,9 +47,12 @@ FunctionDefinition.propTypes = {
       description: PropTypes.string,
     })
   ).isRequired,
-  returnValue: PropTypes.shape({
-    type: PropTypes.string.isRequired,
-  }).isRequired,
+  returnValue: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string,
+      description: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 export const query = graphql`
@@ -53,6 +64,7 @@ export const query = graphql`
 
   fragment FunctionDefinition_returnValue on NewRelicSdkFunctionReturnValue {
     type
+    description
   }
 `;
 

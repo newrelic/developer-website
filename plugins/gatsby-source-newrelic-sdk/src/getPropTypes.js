@@ -12,14 +12,7 @@ const SPECIAL_NUMBERS = [
   'EPSILON',
 ];
 
-const IGNORED_PROPERTIES = [
-  'prototype',
-  'length',
-  'name',
-  'propTypes',
-  'getDerivedStateFromProps',
-  'defaultProps',
-];
+const IGNORED_PROPERTIES = [];
 
 const getArgs = (propType) =>
   (propType.__reflect__.find(({ args }) => args) || {}).args;
@@ -121,10 +114,9 @@ const getTypeMeta = (name, propType, { component }) => {
 
   switch (getRawTypeName(propType)) {
     case 'func':
+      console.log(propTypeDocs.tags);
       return {
-        returnValue: (propTypeDocs.tags || {}).returnValue || {
-          type: 'undefined',
-        },
+        returnValue: (propTypeDocs.tags || {}).return || [],
         arguments: (propTypeDocs.tags || {}).param || [],
       };
     case 'shape': {
