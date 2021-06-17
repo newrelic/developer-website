@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
@@ -15,6 +15,7 @@ const CreateImageBlock = (image) => {
       css={css`
         height: 207px;
         margin-right: 1rem;
+        /* scroll-snap-align: center; */
       `}
     >
       <img
@@ -38,6 +39,24 @@ const CreateImageBlock = (image) => {
  * @param {String} props.className
  */
 const ImageGallery = ({ images, className }) => {
+  const gallery = useRef();
+  const [isGalleryScrolledToEnd, setIsGalleryScrolledToEnd] = useState(false);
+
+  console.log(gallery);
+  const onScroll = () => {
+    const scrollLeft = Math.round(gallery.current.scrollLeft);
+    const scrollWidth = gallery.current.scrollWidth;
+    const offsetWidth = gallery.current.offsetWidth;
+    const isScrolledToEnd = scrollWidth - offsetWidth === scrollLeft;
+    setIsGalleryScrolledToEnd(isScrolledToEnd);
+    console.log(
+      `gallery.srollLeft: ${Math.round(
+        scrollLeft
+      )} offsetWidth: ${offsetWidth} scrollWidth: ${scrollWidth}`
+    );
+    console.log({ isScrolledToEnd });
+  };
+
   return (
     <div
       css={css`
@@ -47,19 +66,26 @@ const ImageGallery = ({ images, className }) => {
     >
       <div
         className={className}
+        ref={gallery}
+        onScroll={onScroll}
         css={css`
           display: flex;
           white-space: nowrap;
           overflow-x: auto;
+          /* scroll-snap-type: x mandatory;
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch; */
           &:after {
             pointer-events: none;
             content: '';
             position: absolute;
-            background: linear-gradient(
+            background: ${!isGalleryScrolledToEnd
+              ? `linear-gradient(
               to right,
               transparent 87%,
               var(--primary-background-color)
-            );
+            )`
+              : `none`};
             width: 100%;
             height: 100%;
           }
