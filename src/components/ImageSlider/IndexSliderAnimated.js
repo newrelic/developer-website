@@ -19,7 +19,7 @@ const ImageSliderAnimated = ({ width, height, images, className }) => {
       `}
     >
       <button onClick={handleClickNext}>Next</button>
-      {typeof document != 'undefined' && (
+      {typeof document !== 'undefined' && (
         <AnimateOnChange
           animationIn="fadeIn"
           animationOut="fadeOut"
