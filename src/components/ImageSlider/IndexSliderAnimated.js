@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 import { AnimateOnChange } from 'react-animation';
@@ -19,13 +19,15 @@ const ImageSliderAnimated = ({ width, height, images, className }) => {
       `}
     >
       <button onClick={handleClickNext}>Next</button>
-      <AnimateOnChange
-        animationIn="fadeIn"
-        animationOut="fadeOut"
-        durationOut={250}
-      >
-        {CreateImageBlock(images[selectedImageIndex])}
-      </AnimateOnChange>
+      {typeof document != 'undefined' && (
+        <AnimateOnChange
+          animationIn="fadeIn"
+          animationOut="fadeOut"
+          durationOut={250}
+        >
+          {CreateImageBlock(images[selectedImageIndex])}
+        </AnimateOnChange>
+      )}
     </div>
   );
 };
