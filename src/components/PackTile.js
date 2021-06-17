@@ -19,7 +19,7 @@ const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
 };
-const PackTile = ({ id, view, name, fields, logo, description, level }) => {
+const PackTile = ({ id, view, name, fields, logoUrl, description, level }) => {
   const tessen = useTessen();
   const handlePackClick = useInstrumentedHandler(
     () => {
@@ -53,7 +53,7 @@ const PackTile = ({ id, view, name, fields, logo, description, level }) => {
       onClick={handlePackClick}
     >
       <img
-        src={logo || DEFAULT_IMAGE}
+        src={logoUrl || DEFAULT_IMAGE}
         alt={name}
         onError={(e) => {
           e.preventDefault();
@@ -115,7 +115,7 @@ PackTile.propTypes = {
   fields: PropTypes.shape({
     slug: PropTypes.string.isRequired,
   }).isRequired,
-  logo: PropTypes.string,
+  logoUrl: PropTypes.string,
   description: PropTypes.string,
   level: PropTypes.string,
 };

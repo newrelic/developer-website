@@ -287,8 +287,8 @@ export const pageQuery = graphql`
         }
         id
         name
-        website
-        logo
+        websiteUrl
+        logoUrl
         level
         dashboards {
           description
@@ -296,14 +296,9 @@ export const pageQuery = graphql`
           screenshots
           url
         }
-        alerts {
-          definition
-          name
-          url
-        }
         authors
         description
-        icon
+        iconUrl
       }
     }
   }
