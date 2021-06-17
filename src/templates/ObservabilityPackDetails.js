@@ -137,7 +137,6 @@ const ObservabilityPackDetails = ({ data, location }) => {
                   const images = dashboard.screenshots.map((screenshotUrl) => ({
                     url: screenshotUrl,
                   }));
-                  console.log(images);
                   return (
                     <>
                       <h3>{dashboard.name}</h3>
@@ -146,9 +145,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                           height={735}
                           width={980}
                           showNavs
-                          style={{
-                            objectFit: 'cover',
-                          }}
+                          showBullets
                           images={images}
                         />
                       )}
