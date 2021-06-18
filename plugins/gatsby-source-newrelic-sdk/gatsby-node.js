@@ -88,7 +88,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     }
 
     type NewRelicSdkPropTypeFunctionMeta {
-      returnValue: NewRelicSdkFunctionReturnValue!
+      returnValue: [NewRelicSdkFunctionReturnValue]!
       arguments: [NewRelicSdkFunctionArgument!]!
     }
 

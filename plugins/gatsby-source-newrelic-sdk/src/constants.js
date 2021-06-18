@@ -1,7 +1,12 @@
 module.exports.BASE_URL =
-  'https://d1zobbh8kytrtv.cloudfront.net/platform/wanda--wanda-ec-ui--nr1-docs';
+  'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
 
-module.exports.DOCUMENTED_APIS = ['logger', 'navigation', 'nerdlet', 'ngql'];
+module.exports.DOCUMENTED_APIS = [
+  'logger',
+  'navigation',
+  'nerdlet',
+  'ngql',
+];
 module.exports.DOCUMENTED_COMPONENTS = [
   'AccountPicker',
   'AccountsQuery',
@@ -14,6 +19,9 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'BillboardChart',
   'BlockText',
   'Button',
+  'Callout',
+  'CalloutBody',
+  'CalloutTarget',
   'Card',
   'CardBody',
   'CardHeader',
@@ -22,6 +30,7 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'Dropdown',
   'DropdownItem',
   'DropdownSection',
+  'EmptyState',
   'EntitiesByDomainTypeQuery',
   'EntitiesByGuidsQuery',
   'EntitiesByNameQuery',
@@ -32,6 +41,7 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'EntityStorageQuery',
   'EntityTitleTableRowCell',
   'FavoriteTableRowCell',
+  'Form',
   'FunnelChart',
   'Grid',
   'GridItem',
@@ -39,6 +49,7 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'HeatmapChart',
   'HistogramChart',
   'Icon',
+  'InlineMessage',
   'JsonChart',
   'Layout',
   'LayoutItem',
@@ -53,11 +64,13 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'NerdGraphQuery',
   'NerdletStateContext',
   'NrqlQuery',
+  'NrqlQueries',
   'PieChart',
   'PlatformStateContext',
   'Popover',
   'PopoverBody',
   'PopoverTrigger',
+  'QueryGroup',
   'Radio',
   'RadioGroup',
   'ScatterChart',
@@ -72,6 +85,8 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'Stack',
   'StackedBarChart',
   'StackItem',
+  'Steps',
+  'StepsItem',
   'Switch',
   'Table',
   'TableChart',
@@ -82,6 +97,8 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'Tabs',
   'TabsItem',
   'TextField',
+  'Tile',
+  'TileGroup',
   'Toast',
   'Tooltip',
   'UserQuery',

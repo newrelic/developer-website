@@ -44,25 +44,27 @@ const PropTypeInfo = ({ type }) => {
     }
     case 'oneOf':
       return (
-        <CodeDef
-          css={css`
-            max-height: 320px;
-            overflow-y: scroll;
-          `}
-        >
-          <CodeDef.Bracket>{'<'}</CodeDef.Bracket>
-          <CodeDef.Keyword>One of</CodeDef.Keyword>
-          <CodeDef.Block>
-            {type.meta.constants.map((constant) => (
-              <div key={constant}>
-                <CodeDef.Identifier key={constant}>
-                  {constant},
-                </CodeDef.Identifier>
-              </div>
-            ))}
-          </CodeDef.Block>
-          <CodeDef.Bracket>{'>'}</CodeDef.Bracket>
-        </CodeDef>
+        type.meta.constants.length > 0 && (
+          <CodeDef
+            css={css`
+              max-height: 320px;
+              overflow-y: scroll;
+            `}
+          >
+            <CodeDef.Bracket>{'<'}</CodeDef.Bracket>
+            <CodeDef.Keyword>One of</CodeDef.Keyword>
+            <CodeDef.Block>
+              {type.meta.constants.map((constant) => (
+                <div key={constant}>
+                  <CodeDef.Identifier key={constant}>
+                    {constant},
+                  </CodeDef.Identifier>
+                </div>
+              ))}
+            </CodeDef.Block>
+            <CodeDef.Bracket>{'>'}</CodeDef.Bracket>
+          </CodeDef>
+        )
       );
     case 'oneOfType':
       return type.meta.types.map((type, idx) => (
