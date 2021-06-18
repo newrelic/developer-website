@@ -1,3 +1,12 @@
+# [1.51.0](https://github.com/newrelic/developer-website/compare/v1.50.2...v1.51.0) (2021-06-18)
+
+
+### Features
+
+* apply polyfills and refactor function components ([b9ac1eb](https://github.com/newrelic/developer-website/commit/b9ac1ebd6d81464c372c958fe7f773ff52fabcde))
+* upgrade SDK components and APIs ([122efa0](https://github.com/newrelic/developer-website/commit/122efa0a56a5d3fc4d1c80f7ddc49bb152c3d516))
+* upgrading SDK version for new components and APIs ([75dfaba](https://github.com/newrelic/developer-website/commit/75dfaba24676c4ace5762775b462025a89bbbe7b))
+
 ## [1.50.2](https://github.com/newrelic/developer-website/compare/v1.50.1...v1.50.2) (2021-06-15)
 
 
