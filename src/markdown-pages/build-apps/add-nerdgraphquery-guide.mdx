@@ -404,9 +404,9 @@ export default class UseNerdgraphNerdletNerdlet extends React.Component {
                 <StackItem>
                 <hr />
                     <PlatformStateContext.Consumer>
-                    {(PlatformState) => {
-                        /* Taking a peek at the PlatformState */
-                        const since = timeRangeToNrql(PlatformState);
+                    {(platformState) => {
+                        /* Taking a peek at the platformState */
+                        const since = timeRangeToNrql(platformState);
                         return (
                         <>
                             <Grid
