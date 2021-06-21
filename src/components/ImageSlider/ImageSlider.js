@@ -120,7 +120,4 @@ ImageSlider.propTypes = {
   height: PropTypes.number,
 };
 
-const noImagePlaceholder =
-  'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png';
-
 export default ImageSlider;
