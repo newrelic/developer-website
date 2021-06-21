@@ -62,7 +62,11 @@ const ImageSlider = ({ images, height }) => {
         </>
       )}
       <a
-        href={images && images.length > 0 ? images[selectedImageIndex] : ''}
+        href={
+          images && images.length > 0
+            ? images[selectedImageIndex]
+            : noImagePlaceholder
+        }
         target="_blank"
         rel="noreferrer"
         css={css`
