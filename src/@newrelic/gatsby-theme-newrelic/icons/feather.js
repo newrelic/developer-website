@@ -34,6 +34,11 @@ export default {
       />
     </>
   ),
+  'chevron-right': (
+    <>
+      <polyline points="9 18 15 12 9 6" />
+    </>
+  ),
   clock: (
     <>
       <circle cx="12" cy="12" r="10" />
