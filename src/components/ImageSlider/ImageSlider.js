@@ -15,7 +15,6 @@ const ImageSlider = ({ images, height }) => {
     const prevImageIndex = selectedImageIndex - 1;
     if (prevImageIndex < 0) {
       setSelectedImageIndex(images.length - 1);
-      console.log(images.length - 1);
     } else {
       setSelectedImageIndex(prevImageIndex % images.length);
     }
