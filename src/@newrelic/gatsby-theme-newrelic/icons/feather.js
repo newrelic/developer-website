@@ -34,6 +34,11 @@ export default {
       />
     </>
   ),
+  'chevron-left': (
+    <>
+      <polyline points="15 18 9 12 15 6" />
+    </>
+  ),
   'chevron-right': (
     <>
       <polyline points="9 18 15 12 9 6" />

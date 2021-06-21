@@ -11,6 +11,16 @@ const ImageSlider = ({ images, height }) => {
     setSelectedImageIndex(nextImageIndex % images.length);
   };
 
+  const handleClickPrev = () => {
+    const prevImageIndex = selectedImageIndex - 1;
+    if (prevImageIndex < 0) {
+      setSelectedImageIndex(images.length - 1);
+      console.log(images.length - 1);
+    } else {
+      setSelectedImageIndex(prevImageIndex % images.length);
+    }
+  };
+
   return (
     <div
       css={css`
@@ -19,20 +29,36 @@ const ImageSlider = ({ images, height }) => {
       `}
     >
       {images.length > 1 && (
-        <button
-          onClick={handleClickNext}
-          css={css`
-            position: absolute;
-            top: 38%;
-            right: 0;
-            background: none;
-            color: var(--color-white);
-            border: none;
-            cursor: pointer;
-          `}
-        >
-          <Icon name="chevron-right" size="4rem" />
-        </button>
+        <>
+          <button
+            onClick={handleClickPrev}
+            css={css`
+              position: absolute;
+              top: 38%;
+              left: 0;
+              background: none;
+              color: var(--color-white);
+              border: none;
+              cursor: pointer;
+            `}
+          >
+            <Icon name="chevron-left" size="4rem" />
+          </button>
+          <button
+            onClick={handleClickNext}
+            css={css`
+              position: absolute;
+              top: 38%;
+              right: 0;
+              background: none;
+              color: var(--color-white);
+              border: none;
+              cursor: pointer;
+            `}
+          >
+            <Icon name="chevron-right" size="4rem" />
+          </button>
+        </>
       )}
       <a
         href={images[selectedImageIndex]}
