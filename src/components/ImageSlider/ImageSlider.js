@@ -18,21 +18,48 @@ const ImageSlider = ({ images, height }) => {
         margin-bottom: 2rem;
       `}
     >
-      <button
-        onClick={handleClickNext}
+      {images.length > 1 && (
+        <button
+          onClick={handleClickNext}
+          css={css`
+            position: absolute;
+            top: 38%;
+            right: 0;
+            background: none;
+            color: var(--color-white);
+            border: none;
+            cursor: pointer;
+          `}
+        >
+          <Icon name="chevron-right" size="4rem" />
+        </button>
+      )}
+      <a
+        href={images[selectedImageIndex]}
+        target="_blank"
+        rel="noreferrer"
         css={css`
-          position: absolute;
-          top: 38%;
-          right: 0;
-          background: none;
-          color: var(--color-white);
-          border: none;
-          cursor: pointer;
+          height: ${height}px;
+          width: 100%;
+          margin-right: 1rem;
         `}
       >
-        <Icon name="chevron-right" size="4rem" />
-      </button>
-      {CreateImageBlock(images[selectedImageIndex], height)}
+        <img
+          src={images[selectedImageIndex]}
+          alt="placeholder-text"
+          css={css`
+            height: ${height}px;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: inset 0px 0px 0px 4px var(--divider-color);
+            border-radius: 4px;
+            padding: 0.25rem;
+            @media screen and (max-width: 760px) {
+              object-fit: contain;
+            }
+          `}
+        />
+      </a>
     </div>
   );
 };
@@ -40,34 +67,6 @@ const ImageSlider = ({ images, height }) => {
 ImageSlider.propTypes = {
   images: PropTypes.array,
   height: PropTypes.number,
-};
-
-const CreateImageBlock = (image, height) => {
-  return (
-    <a
-      href={image}
-      target="_blank"
-      rel="noreferrer"
-      css={css`
-        height: ${height}px;
-        width: 100%;
-        margin-right: 1rem;
-      `}
-    >
-      <img
-        src={image}
-        alt="placeholder-text"
-        css={css`
-          height: ${height}px;
-          width: 100%;
-          box-sizing: border-box;
-          box-shadow: inset 0px 0px 0px 4px var(--divider-color);
-          border-radius: 4px;
-          padding: 0.25rem;
-        `}
-      />
-    </a>
-  );
 };
 
 const noImagePlaceholder =
