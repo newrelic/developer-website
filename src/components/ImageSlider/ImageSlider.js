@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
 import { Button, Icon } from '@newrelic/gatsby-theme-newrelic';
+import { Transition, animated, config } from 'react-spring';
 
 const ImageSlider = ({ images, height }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -24,6 +25,7 @@ const ImageSlider = ({ images, height }) => {
     <div
       css={css`
         position: relative;
+        height: ${height}px;
         margin-bottom: 2rem;
       `}
     >
@@ -34,6 +36,7 @@ const ImageSlider = ({ images, height }) => {
             variant={Button.VARIANT.PLAIN}
             css={css`
               position: absolute;
+              z-index: 200;
               top: 38%;
               left: 0;
               background: none;
@@ -49,6 +52,7 @@ const ImageSlider = ({ images, height }) => {
             variant={Button.VARIANT.PLAIN}
             css={css`
               position: absolute;
+              z-index: 200;
               top: 38%;
               right: 0;
               background: none;
@@ -61,40 +65,52 @@ const ImageSlider = ({ images, height }) => {
           </Button>
         </>
       )}
-      <a
-        href={
-          images && images.length > 0
-            ? images[selectedImageIndex]
-            : noImagePlaceholder
-        }
-        target="_blank"
-        rel="noreferrer"
-        css={css`
-          height: ${height}px;
-          width: 100%;
-          margin-right: 1rem;
-        `}
-      >
-        <img
-          src={
-            images && images.length > 0
-              ? images[selectedImageIndex]
-              : noImagePlaceholder
-          }
-          alt="placeholder-text"
-          css={css`
-            height: ${height}px;
-            width: 100%;
-            box-sizing: border-box;
-            box-shadow: inset 0px 0px 0px 4px var(--divider-color);
-            border-radius: 4px;
-            padding: 0.25rem;
-            @media screen and (max-width: 760px) {
-              object-fit: contain;
-            }
-          `}
-        />
-      </a>
+      {
+        <Transition
+          items={images[selectedImageIndex]}
+          from={{ opacity: 0 }}
+          enter={{ opacity: 1 }}
+          leave={{ opacity: 0 }}
+          delay={200}
+          config={config.molasses}
+        >
+          {(styles, item) => (
+            <animated.div
+              css={css`
+                position: absolute;
+              `}
+              style={styles}
+            >
+              <a
+                href={item}
+                target="_blank"
+                rel="noreferrer"
+                css={css`
+                  height: ${height}px;
+                  width: 100%;
+                  margin-right: 1rem;
+                `}
+              >
+                <img
+                  src={item}
+                  alt="placeholder-text"
+                  css={css`
+                    height: ${height}px;
+                    width: 100%;
+                    box-sizing: border-box;
+                    box-shadow: inset 0px 0px 0px 4px var(--divider-color);
+                    border-radius: 4px;
+                    padding: 0.25rem;
+                    @media screen and (max-width: 760px) {
+                      object-fit: contain;
+                    }
+                  `}
+                />
+              </a>
+            </animated.div>
+          )}
+        </Transition>
+      }
     </div>
   );
 };
