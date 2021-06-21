@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
-import { Icon } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Icon } from '@newrelic/gatsby-theme-newrelic';
 
 const ImageSlider = ({ images, height }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -29,8 +29,9 @@ const ImageSlider = ({ images, height }) => {
     >
       {images.length > 1 && (
         <>
-          <button
+          <Button
             onClick={handleClickPrev}
+            variant={Button.VARIANT.PLAIN}
             css={css`
               position: absolute;
               top: 38%;
@@ -42,9 +43,10 @@ const ImageSlider = ({ images, height }) => {
             `}
           >
             <Icon name="chevron-left" size="4rem" />
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={handleClickNext}
+            variant={Button.VARIANT.PLAIN}
             css={css`
               position: absolute;
               top: 38%;
@@ -56,7 +58,7 @@ const ImageSlider = ({ images, height }) => {
             `}
           >
             <Icon name="chevron-right" size="4rem" />
-          </button>
+          </Button>
         </>
       )}
       <a
