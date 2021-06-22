@@ -44,6 +44,11 @@ export default {
       <polyline points="9 18 15 12 9 6" />
     </>
   ),
+  circle: (
+    <>
+      <circle cx="12" cy="12" r="10" />
+    </>
+  ),
   clock: (
     <>
       <circle cx="12" cy="12" r="10" />

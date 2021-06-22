@@ -6,10 +6,12 @@ import { Transition, animated, config } from 'react-spring';
 
 const ImageSlider = ({ images, height }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [forward, setForward] = useState(true);
 
   const handleClickNext = () => {
     const nextImageIndex = selectedImageIndex + 1;
     setSelectedImageIndex(nextImageIndex % images.length);
+    setForward(true);
   };
 
   const handleClickPrev = () => {
@@ -19,6 +21,11 @@ const ImageSlider = ({ images, height }) => {
     } else {
       setSelectedImageIndex(prevImageIndex % images.length);
     }
+    setForward(false);
+  };
+
+  const handleClickSpecificSlide = (indexValue) => {
+    setSelectedImageIndex(indexValue);
   };
 
   return (
@@ -27,6 +34,7 @@ const ImageSlider = ({ images, height }) => {
         position: relative;
         height: ${height}px;
         margin-bottom: 2rem;
+        overflow: hidden;
       `}
     >
       {images.length > 1 && (
@@ -68,19 +76,19 @@ const ImageSlider = ({ images, height }) => {
       {
         <Transition
           items={images[selectedImageIndex]}
-          from={{ opacity: 0 }}
-          enter={{ opacity: 1 }}
-          leave={{ opacity: 0 }}
+          from={{
+            opacity: 0.5,
+            transform: `translate3d(${forward ? '100%' : '-100%'}, 0px, 0px)`,
+          }}
+          enter={{ opacity: 1, transform: 'translate3d(-0%, 0px, 0px)' }}
+          leave={{
+            transform: `translate3d(${forward ? '-100%' : '100%'}, 0px, 0px)`,
+          }}
           delay={200}
-          config={config.molasses}
+          config={{ mass: 1, tension: 100, friction: 20 }}
         >
           {(styles, item) => (
-            <animated.div
-              css={css`
-                position: absolute;
-              `}
-              style={styles}
-            >
+            <animated.div style={{ ...styles, position: 'absolute' }}>
               <a
                 href={item}
                 target="_blank"
@@ -111,6 +119,40 @@ const ImageSlider = ({ images, height }) => {
           )}
         </Transition>
       }
+      <div
+        css={css`
+          z-index: 200;
+          position: absolute;
+          bottom: 2%;
+          width: 100%;
+        `}
+      >
+        <div
+          css={css`
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+          `}
+        >
+          {images.map((_, index) => (
+            <Button
+              onClick={() => handleClickSpecificSlide(index)}
+              variant={Button.VARIANT.PLAIN}
+              css={css`
+                border: none;
+                cursor: pointer;
+              `}
+            >
+              <Icon
+                name="circle"
+                css={css`
+                  fill: ${selectedImageIndex === index ? 'white' : 'none'};
+                `}
+              />
+            </Button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
