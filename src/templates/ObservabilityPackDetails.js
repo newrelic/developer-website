@@ -14,7 +14,7 @@ import {
 import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
-import ImageSlider from '../components/ImageSlider/ImageSlider';
+import ImageSlider from '../components/ImageSlider';
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;

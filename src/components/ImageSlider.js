@@ -134,6 +134,7 @@ const ImageSlider = ({ images, height }) => {
                     }
                     @media screen and (max-width: 760px) {
                       object-fit: contain;
+                      width: 100%;
                     }
                   `}
                 />
