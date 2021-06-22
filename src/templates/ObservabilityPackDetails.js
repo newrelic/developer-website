@@ -54,7 +54,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
               `}
             >
               <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
-              <Tabs.BarItem id="dependencies">Dependencies</Tabs.BarItem>
+              <Tabs.BarItem id="requirements">Requirements</Tabs.BarItem>
               <Tabs.BarItem
                 id="dashboards"
                 disabled={!(pack.dashboards?.length ?? 0)}
@@ -100,7 +100,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 <h3>Description</h3>
                 <p>{pack.description}</p>
               </Tabs.Page>
-              <Tabs.Page id="dependencies">
+              <Tabs.Page id="requirements">
                 <Intro
                   css={css`
                     margin-bottom: 16px;
