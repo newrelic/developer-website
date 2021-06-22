@@ -4,7 +4,11 @@ import { css } from '@emotion/react';
 import { Button, Icon } from '@newrelic/gatsby-theme-newrelic';
 import { Transition, animated } from 'react-spring';
 
-const ImageSlider = ({ images, height }) => {
+const ImageSlider = ({ _, height }) => {
+  const images = [
+    'https://docs.newrelic.com/static/6f1272aa038f79c90a0c07a3d60b16df/109e2/FSO_landing0.png',
+    'https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/apache/dashboards/apache01.png',
+  ];
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [forward, setForward] = useState(true);
 
@@ -48,12 +52,17 @@ const ImageSlider = ({ images, height }) => {
               top: 38%;
               left: 0;
               background: none;
-              color: var(--color-white);
               border: none;
               cursor: pointer;
             `}
           >
-            <Icon name="chevron-left" size="4rem" />
+            <Icon
+              css={css`
+                color: var(--color-teal-500);
+              `}
+              name="chevron-left"
+              size="4rem"
+            />
           </Button>
           <Button
             onClick={handleClickNext}
@@ -64,12 +73,17 @@ const ImageSlider = ({ images, height }) => {
               top: 38%;
               right: 0;
               background: none;
-              color: var(--color-white);
               border: none;
               cursor: pointer;
             `}
           >
-            <Icon name="chevron-right" size="4rem" />
+            <Icon
+              name="chevron-right"
+              size="4rem"
+              css={css`
+                color: var(--color-teal-500);
+              `}
+            />
           </Button>
         </>
       )}
@@ -142,12 +156,13 @@ const ImageSlider = ({ images, height }) => {
               css={css`
                 border: none;
                 cursor: pointer;
+                color: var(--color-teal-500);
               `}
             >
               <Icon
                 name="circle"
                 css={css`
-                  fill: ${selectedImageIndex === index ? 'white' : 'none'};
+                  fill: ${selectedImageIndex === index ? 'teal' : 'none'};
                 `}
               />
             </Button>
