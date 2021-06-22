@@ -133,6 +133,7 @@ const ImageSlider = ({ images, height }) => {
                   alt={`${item.split('/').slice(-1)}`}
                   css={css`
                     width: 100%;
+                    max-height: ${height}px;
                     box-sizing: border-box;
                     box-shadow: inset 0px 0px 0px 4px var(--divider-color);
                     border-radius: 4px;
