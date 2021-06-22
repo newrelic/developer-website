@@ -127,7 +127,7 @@ const ImageSlider = ({ images, height }) => {
               `}
               style={{ ...styles, position: 'absolute' }}
             >
-              <a href={item} target="_blank" rel="noreferrer" css={css``}>
+              <a href={item} target="_blank" rel="noreferrer">
                 <img
                   src={item}
                   alt={`${item.split('/').slice(-1)}`}
@@ -137,10 +137,6 @@ const ImageSlider = ({ images, height }) => {
                     box-shadow: inset 0px 0px 0px 4px var(--divider-color);
                     border-radius: 4px;
                     padding: 0.25rem;
-                    @media screen and (max-width: 760px) {
-                      object-fit: contain;
-                      width: 100%;
-                    }
                   `}
                 />
               </a>
