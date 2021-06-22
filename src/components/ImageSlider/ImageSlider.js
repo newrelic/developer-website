@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
 import { Button, Icon } from '@newrelic/gatsby-theme-newrelic';
-import { Transition, animated, config } from 'react-spring';
+import { Transition, animated } from 'react-spring';
 
 const ImageSlider = ({ images, height }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -137,6 +137,7 @@ const ImageSlider = ({ images, height }) => {
           {images.map((_, index) => (
             <Button
               onClick={() => handleClickSpecificSlide(index)}
+              key={`goToSlide${index}`}
               variant={Button.VARIANT.PLAIN}
               css={css`
                 border: none;
