@@ -38,23 +38,33 @@ const ImageSlider = ({ images, height }) => {
       `}
     >
       {images.length > 1 && (
-        <>
+        <div
+          css={css`
+            position: absolute;
+            z-index: 200;
+            top: 38%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+          `}
+        >
           <Button
             onClick={handleClickPrev}
             variant={Button.VARIANT.PLAIN}
             css={css`
-              position: absolute;
-              z-index: 200;
-              top: 38%;
-              left: 0;
-              background: none;
+              background: var(--color-neutrals-300);
+              opacity: 0.2;
               border: none;
               cursor: pointer;
+              &:hover {
+                opacity: 0.5;
+                background: var(--color-neutrals-300);
+              }
             `}
           >
             <Icon
               css={css`
-                color: var(--color-teal-500);
+                color: var(--color-black);
               `}
               name="chevron-left"
               size="4rem"
@@ -64,24 +74,25 @@ const ImageSlider = ({ images, height }) => {
             onClick={handleClickNext}
             variant={Button.VARIANT.PLAIN}
             css={css`
-              position: absolute;
-              z-index: 200;
-              top: 38%;
-              right: 0;
-              background: none;
+              background: var(--color-neutrals-300);
+              opacity: 0.2;
               border: none;
               cursor: pointer;
+              &:hover {
+                opacity: 0.5;
+                background: var(--color-neutrals-300);
+              }
             `}
           >
             <Icon
               name="chevron-right"
               size="4rem"
               css={css`
-                color: var(--color-teal-500);
+                color: var(--color-black);
               `}
             />
           </Button>
-        </>
+        </div>
       )}
       {
         <Transition
@@ -152,13 +163,23 @@ const ImageSlider = ({ images, height }) => {
               css={css`
                 border: none;
                 cursor: pointer;
-                color: var(--color-teal-500);
+                color: var(--color-neutrals-300);
+                &:hover {
+                  background: none;
+                  border: none;
+                  color: var(--color-neutrals-300);
+                }
               `}
             >
               <Icon
                 name="circle"
                 css={css`
-                  fill: ${selectedImageIndex === index ? 'teal' : 'none'};
+                  fill: ${selectedImageIndex === index
+                    ? `var(--color-neutrals-300)`
+                    : 'none'};
+                  &:hover {
+                    fill: var(--color-neutrals-300);
+                  }
                 `}
               />
             </Button>
