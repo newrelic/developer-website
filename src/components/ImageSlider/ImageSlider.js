@@ -125,11 +125,13 @@ const ImageSlider = ({ images, height }) => {
                   alt={`${item.split('/').slice(-1)}`}
                   css={css`
                     height: ${height}px;
-                    width: 100%;
                     box-sizing: border-box;
                     box-shadow: inset 0px 0px 0px 4px var(--divider-color);
                     border-radius: 4px;
                     padding: 0.25rem;
+                    @media screen and (min-width: 1240px) {
+                      width: 100%;
+                    }
                     @media screen and (max-width: 760px) {
                       object-fit: contain;
                     }
@@ -191,8 +193,8 @@ const ImageSlider = ({ images, height }) => {
 };
 
 ImageSlider.propTypes = {
-  images: PropTypes.array,
-  height: PropTypes.number,
+  images: PropTypes.array.isRequired,
+  height: PropTypes.number.isRequired,
 };
 
 export default ImageSlider;
