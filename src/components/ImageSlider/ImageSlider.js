@@ -122,7 +122,7 @@ const ImageSlider = ({ images, height }) => {
               >
                 <img
                   src={item}
-                  alt="placeholder-text"
+                  alt={`Image ${item.split('/').slice(-1)}`}
                   css={css`
                     height: ${height}px;
                     width: 100%;
