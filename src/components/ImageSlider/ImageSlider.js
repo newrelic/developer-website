@@ -4,11 +4,7 @@ import { css } from '@emotion/react';
 import { Button, Icon } from '@newrelic/gatsby-theme-newrelic';
 import { Transition, animated } from 'react-spring';
 
-const ImageSlider = ({ _, height }) => {
-  const images = [
-    'https://docs.newrelic.com/static/6f1272aa038f79c90a0c07a3d60b16df/109e2/FSO_landing0.png',
-    'https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/apache/dashboards/apache01.png',
-  ];
+const ImageSlider = ({ images, height }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [forward, setForward] = useState(true);
 
