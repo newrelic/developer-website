@@ -7,7 +7,7 @@ description: 'Customize an open-source Nerdpack'
 
 <Intro>
 
-Most Nerdpacks in the New Relic One catalog are open source. This means you can clone or fork their repositories, customize them to suit your specific needs, and re-publish them for your account to use.
+Most Nerdpacks in the New Relic One catalog are open-source. This means you can clone or fork their repositories, customize them to suit your specific needs, and re-publish them to use with your account.
 
 </Intro>
 
@@ -397,7 +397,7 @@ Go to the Nerdpack's source code repository:
 
 ![Victory Charts repo](../../images/build-an-app/victory-charts-repo.png)
 
-All open source Nerdpacks in the catalog have links to their source code in their catalog information.
+All open-source Nerdpacks in the catalog have links to their source code in their catalog information.
 
 </Step>
 
@@ -409,7 +409,7 @@ Clone the repository:
 nr1 nerdpack:clone -r https://github.com/newrelic/nr1-victory-visualizations.git
 ```
 
-Now you have a local version of the **Victory Charts Visualizations** Nerdpack! Notice that you used `nr1 nerdpack:clone` instead of `git clone` to copy the repo. `nr1 nerdpack:clone` offers built in functionality to help keep your local copy distinct from the original Nerdpack in the New Relic One public catalog. Specifically, it generates a new Nerdpack UUID so you don't have to do this yourself:
+Now you have a local version of the **Victory Charts Visualizations** Nerdpack! Notice that you used `nr1 nerdpack:clone` instead of `git clone` to copy the repo. `nr1 nerdpack:clone` offers built-in functionality to help keep your local copy distinct from the original Nerdpack in the New Relic One public catalog. Specifically, it generates a new Nerdpack UUID so you don't have to do this yourself:
 
 ```sh
 [output] Re-generating UUID...
@@ -454,7 +454,7 @@ In _nr1-victory-visualizations/nr1.json_, change your Nerdpack's `displayName`:
 }
 ```
 
-Now when you serve or publish your custom Nerdpack, you'll easily be able to distinguish it from the original.
+Now when you serve or publish your custom Nerdpack, you can easily distinguish it from the original.
 
 </Step>
 
@@ -812,6 +812,12 @@ Once the server is running, find the url for your local `circular-progress-bar`:
 Open your locally served visualization and configure your chart with your account, data query, and segment colors:
 
 ![Progress bar with custom colors](../../images/build-an-app/progress-bar-chart-with-colors.png)
+
+<Callout variant="tip">
+
+To add a second color, click the **+** in the top right of the **Colors** property.
+
+</Callout>
 
 Because there are two segments, you add two colors. The first color is for the progress section. The second color is for the remaining percentage.
 
