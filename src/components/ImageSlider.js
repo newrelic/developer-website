@@ -32,6 +32,8 @@ const ImageSlider = ({ images, height }) => {
     <div
       css={css`
         position: relative;
+        display: flex;
+        align-items: center;
         height: ${height}px;
         margin-bottom: 2rem;
         overflow: hidden;
@@ -40,12 +42,14 @@ const ImageSlider = ({ images, height }) => {
       {images.length > 1 && (
         <div
           css={css`
-            position: absolute;
             z-index: 200;
-            top: 38%;
             width: 100%;
+            height: 20%;
             display: flex;
             justify-content: space-between;
+            @media screen and (max-width: 400px) {
+              height: 12%;
+            }
           `}
         >
           <Button
@@ -56,6 +60,9 @@ const ImageSlider = ({ images, height }) => {
               opacity: 0.2;
               border: none;
               cursor: pointer;
+              width: 10%;
+              min-width: 3rem;
+              height: 100%;
               &:hover {
                 opacity: 0.5;
                 background: var(--color-neutrals-300);
@@ -67,7 +74,7 @@ const ImageSlider = ({ images, height }) => {
                 color: var(--color-black);
               `}
               name="chevron-left"
-              size="4rem"
+              size="100%"
             />
           </Button>
           <Button
@@ -78,6 +85,9 @@ const ImageSlider = ({ images, height }) => {
               opacity: 0.2;
               border: none;
               cursor: pointer;
+              width: 10%;
+              min-width: 3rem;
+              height: 100%;
               &:hover {
                 opacity: 0.5;
                 background: var(--color-neutrals-300);
@@ -86,7 +96,7 @@ const ImageSlider = ({ images, height }) => {
           >
             <Icon
               name="chevron-right"
-              size="4rem"
+              size="100%"
               css={css`
                 color: var(--color-black);
               `}
@@ -109,29 +119,24 @@ const ImageSlider = ({ images, height }) => {
           config={{ mass: 1, tension: 100, friction: 20 }}
         >
           {(styles, item) => (
-            <animated.div style={{ ...styles, position: 'absolute' }}>
-              <a
-                href={item}
-                target="_blank"
-                rel="noreferrer"
-                css={css`
-                  height: ${height}px;
-                  width: 100%;
-                  margin-right: 1rem;
-                `}
-              >
+            <animated.div
+              css={css`
+                display: flex;
+                height: 100%;
+                align-items: center;
+              `}
+              style={{ ...styles, position: 'absolute' }}
+            >
+              <a href={item} target="_blank" rel="noreferrer" css={css``}>
                 <img
                   src={item}
                   alt={`${item.split('/').slice(-1)}`}
                   css={css`
-                    height: ${height}px;
+                    width: 100%;
                     box-sizing: border-box;
                     box-shadow: inset 0px 0px 0px 4px var(--divider-color);
                     border-radius: 4px;
                     padding: 0.25rem;
-                    @media screen and (min-width: 1240px) {
-                      width: 100%;
-                    }
                     @media screen and (max-width: 760px) {
                       object-fit: contain;
                       width: 100%;
