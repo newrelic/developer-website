@@ -439,6 +439,22 @@ git log -1 -p
 [output]    "description": "Visualizations built on top of Victory charts"
 [output]  }
 ```
+</Step>
+
+<Step>
+
+In _nr1-victory-visualizations/nr1.json_, change your Nerdpack's `displayName`:
+
+```json fileName=nr1-victory-visualizations/nr1.json lineHighlight=4
+{
+  "schemaType": "NERDPACK",
+  "id": "269055dd-67e8-4713-8da3-bff01c6a8687",
+  "displayName": "My custom Victory Charts visualizations",
+  "description": "Visualizations built on top of Victory charts"
+}
+```
+
+Now when you serve or publish your custom Nerdpack, you'll easily be able to distinguish it from the original.
 
 </Step>
 
