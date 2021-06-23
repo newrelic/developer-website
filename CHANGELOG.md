@@ -1,3 +1,10 @@
+# [1.52.0](https://github.com/newrelic/developer-website/compare/v1.51.0...v1.52.0) (2021-06-23)
+
+
+### Features
+
+* Add new doc for customizing an open source Nerdpack ([05a2c52](https://github.com/newrelic/developer-website/commit/05a2c52494f571a94ce04b990ac17226b0e8c628))
+
 # [1.51.0](https://github.com/newrelic/developer-website/compare/v1.50.2...v1.51.0) (2021-06-18)
 
 
