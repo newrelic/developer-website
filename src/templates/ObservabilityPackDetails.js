@@ -14,6 +14,7 @@ import {
 import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
+import ImageSlider from '../components/ImageSlider';
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
@@ -134,7 +135,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 {pack.dashboards?.map((dashboard) => (
                   <>
                     <h3>{dashboard.name}</h3>
-                    <ImageGallery images={dashboard.screenshots} />
+                    <ImageSlider height={400} images={dashboard.screenshots} />
                     {dashboard.description && (
                       <>
                         <h4>Description</h4>
@@ -267,11 +268,8 @@ export const pageQuery = graphql`
   query($id: String!) {
     observabilityPacks(id: { eq: $id }) {
       name
-      websiteUrl
-      logoUrl
       level
       id
-      iconUrl
       description
       dashboards {
         description
