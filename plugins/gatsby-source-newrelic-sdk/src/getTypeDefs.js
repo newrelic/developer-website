@@ -1,11 +1,4 @@
-const IGNORED_TYPE_DEFS = [
-  'Object',
-  'ReactNode',
-  'Event',
-  'number',
-  'string',
-  'boolean',
-];
+const IGNORED_TYPE_DEFS = [];
 
 const flatten = (arr) => [].concat(...arr);
 const uniqBy = (arr, key) => {

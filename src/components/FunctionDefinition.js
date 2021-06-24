@@ -4,6 +4,10 @@ import CodeDef from './CodeDef';
 import { graphql } from 'gatsby';
 
 const FunctionDefinition = ({ className, arguments: params, returnValue }) => {
+  if (!params.length && !returnValue.length) {
+    return null;
+  }
+
   return (
     <CodeDef className={className}>
       <CodeDef.Keyword>function</CodeDef.Keyword>{' '}
@@ -24,8 +28,12 @@ const FunctionDefinition = ({ className, arguments: params, returnValue }) => {
         </CodeDef.Block>
       )}
       {params.length > 0 && <CodeDef.Bracket>)</CodeDef.Bracket>}
-      <CodeDef.Operator> => </CodeDef.Operator>
-      <CodeDef.Type>{returnValue.type}</CodeDef.Type>
+      {returnValue.length > 0 && (
+        <>
+          <CodeDef.Operator> => </CodeDef.Operator>
+          <CodeDef.Type>{returnValue[0].type}</CodeDef.Type>
+        </>
+      )}
     </CodeDef>
   );
 };
@@ -39,9 +47,12 @@ FunctionDefinition.propTypes = {
       description: PropTypes.string,
     })
   ).isRequired,
-  returnValue: PropTypes.shape({
-    type: PropTypes.string.isRequired,
-  }).isRequired,
+  returnValue: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string,
+      description: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 export const query = graphql`
@@ -53,6 +64,7 @@ export const query = graphql`
 
   fragment FunctionDefinition_returnValue on NewRelicSdkFunctionReturnValue {
     type
+    description
   }
 `;
 

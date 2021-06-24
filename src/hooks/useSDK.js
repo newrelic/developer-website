@@ -12,7 +12,7 @@ const useSDK = () => {
 
   useEffect(() => {}, [sdkLoaded]);
 
-  useScript(`${SDK_BASE_URL}-${release}.js`, {
+  useScript(`${SDK_BASE_URL}-${release}-dev.js`, {
     onError: () => setSdkLoaded({ loaded: false, error: 'failed to load' }),
     onLoad: () => setSdkLoaded({ loaded: true, error: null }),
   });
