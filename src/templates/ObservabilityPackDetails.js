@@ -75,7 +75,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 disabled={!(pack.synthetics?.length ?? 0)}
                 count={pack.synthetics?.length ?? 0}
               >
-                Synthetics checks
+                Synthetics
               </Tabs.BarItem>
               <Tabs.BarItem
                 id="visualizations"
