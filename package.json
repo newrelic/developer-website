@@ -93,7 +93,7 @@
     "build:production": "GATSBY_NEWRELIC_ENV=production gatsby build",
     "build:staging": "GATSBY_NEWRELIC_ENV=staging gatsby build",
     "build:related-content": "BUILD_RELATED_CONTENT=true yarn run build:production",
-    "fetch-observability-packs": "CI=true node ./scripts/actions/fetch-observability-packs.js",
+    "fetch-observability-packs": "node ./scripts/actions/fetch-observability-packs.js",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "yarn run develop",

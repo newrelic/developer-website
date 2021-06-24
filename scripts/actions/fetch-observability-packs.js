@@ -112,13 +112,13 @@ const main = async (query, url, token) => {
     console.log(
       'No packs were returned from the api, check the logs for errors.'
     );
-    if (process.env.CI) {
+    if (require.main === module) {
       process.exit(1);
     }
   }
 };
 
-if (process.env.CI) {
+if (require.main === module) {
   validateEnvVars();
   main(packQuery, NR_API_URL, NR_API_TOKEN);
 }
