@@ -20,8 +20,8 @@ const packContentsFilterValues = [
   'Dashboards',
   'Alerts',
   'Visualizations',
-  'Synthetics Checks',
-  'Applications',
+  'Synthetics',
+  'Nerdpacks',
 ];
 
 const VIEWS = {
