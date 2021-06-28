@@ -35,7 +35,7 @@ const InstallButton = ({ title, ...props }) => {
       >
         {title}
       </Button>
-      <Dropdown>
+      <Dropdown align="right">
         <Dropdown.Toggle
           variant={Button.VARIANT.PRIMARY}
           css={css`
