@@ -28,11 +28,11 @@ module.exports = async (release, { cache }) => {
     bundle(
       'https://nr1.nr-assets.net/lib/react-router-dom/4.2.2/react-router-dom.js'
     ),
-    bundle(`${BASE_URL}-${release}.js`),
+    bundle(`${BASE_URL}-${release}-dev.js`),
   ]);
 
   return vm.runInThisContext(
     [...bundles, '__NR1_SDK__.default'].join('\n'),
-    `wanda--wanda-ec-ui--nr1-docs-${release}.js`
+    `doc-app-${release}-dev.js`
   );
 };

@@ -7,6 +7,7 @@ const IGNORED_METHODS = [
   'propTypes',
   'getDerivedStateFromProps',
   'defaultProps',
+  'render',
 ];
 
 module.exports = (name, sdk) => {

@@ -65,6 +65,8 @@
           url: '/build-apps/publish-deploy/catalog'
         - title: Tag your Nerdpack's release version
           url: '/build-apps/publish-deploy/tag'
+    - title: Customize open-source Nerdpacks
+      url: '/build-apps/customize-nerdpack'
     - title: Permissions for managing apps
       url: '/build-apps/permission-manage-apps'
     - title: Attach your Nerdlet to your entities
@@ -222,8 +224,8 @@
               url: '/components/dropdown-item'
             - title: DropdownSection
               url: '/components/dropdown-section'
-            - title: MultilineTextField
-              url: '/components/multiline-text-field'
+            - title: Form
+              url: '/components/form'
             - title: Radio
               url: '/components/radio'
             - title: RadioGroup
@@ -236,6 +238,10 @@
               url: '/components/select'
             - title: SelectItem
               url: '/components/select-item'
+            - title: Steps
+              url: '/components/steps'
+            - title: StepsItem
+              url: '/components/steps-item'
             - title: Switch
               url: '/components/switch'
             - title: TextField
@@ -264,8 +270,12 @@
               url: '/components/user-table-row-cell'
         - title: Feedback
           pages:
+            - title: EmptyState
+              url: '/components/empty-state'
             - title: Icon
               url: '/components/icon'
+            - title: InlineMessage
+              url: '/components/inline-message'
             - title: Spinner
               url: '/components/spinner'
             - title: Toast
@@ -276,6 +286,8 @@
               url: '/components/badge'
         - title: Overlays
           pages:
+            - title: Callout
+              url: '/components/callout'
             - title: Modal
               url: '/components/modal'
             - title: Popover
@@ -318,6 +330,10 @@
               url: '/components/tabs'
             - title: TabsItem
               url: '/components/tabs-item'
+            - title: Tile
+              url: '/components/tile'
+            - title: TileGroup
+              url: '/components/tile-group'
         - title: Text
           pages:
             - title: BlockText
@@ -326,6 +342,8 @@
               url: '/components/heading-text'
             - title: Link
               url: '/components/link'
+            - title: MultilineTextField
+              url: '/components/multiline-text-field'
         - title: Charts
           url: '/components/charts'
           pages:
@@ -387,6 +405,8 @@
               url: '/components/nerd-graph-query'
             - title: NrqlQuery
               url: '/components/nrql-query'
+            - title: NrqlQueries
+              url: '/components/nrql-queries'
             - title: UserQuery
               url: '/components/user-query'
             - title: UserStorageMutation
