@@ -193,12 +193,12 @@ return (
 
   <Step>
 
-Move the current application code so it is under the `return` of the `PlatformState` function call. The `return` statement should now look like this:
+Move the current application code so it is under the `return` of the `platformState` function call. The `return` statement should now look like this:
 
 ```jsx
 return (
   <PlatformStateContext.Consumer>
-    {(PlatformState) => {
+    {(platformState) => {
       return (
         <>
           <Grid
@@ -281,7 +281,7 @@ Add a `console.log` statement to make sure you are seeing appropriate data. Inse
 
 ```jsx
 /* Taking a peek at the PlatformState */
-console.log(PlatformState);
+console.log(platformState);
 ```
 
   </Step>
@@ -326,10 +326,10 @@ import { timeRangeToNrql } from '@newrelic/nr1-community';
 
   <Step>
 
-Pass the `PlatformState` to the `timeRangeToNrql` helper, and save its output as a `since` statement for later use:
+Pass the `platformState` to the `timeRangeToNrql` helper, and save its output as a `since` statement for later use:
 
 ```jsx
-const since = timeRangeToNrql(PlatformState);
+const since = timeRangeToNrql(platformState);
 ```
 
   </Step>
@@ -380,11 +380,11 @@ export default class Nr1HowtoAddTimePicker extends React.Component {
 
     return (
       <PlatformStateContext.Consumer>
-        {(PlatformState) => {
-          /* Taking a peek at the PlatformState */
-          console.log(PlatformState);
+        {(platformState) => {
+          /* Taking a peek at the platformState */
+          console.log(platformState);
 
-          const since = timeRangeToNrql(PlatformState);
+          const since = timeRangeToNrql(platformState);
           console.log(since);
 
           return (

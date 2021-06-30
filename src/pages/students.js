@@ -249,8 +249,8 @@ const StudentsPage = ({ location }) => {
               </p>
               <p>
                 In your GitHub account settings, visit{' '}
-                <strong>Applications > Authorized OAuth Apps</strong> to check
-                whether you have authorized the New Relic OAuth app. If you
+                <strong>Applications {'>'} Authorized OAuth Apps</strong> to
+                check if you have authorized the New Relic OAuth app. If you
                 granted this application access to your GitHub account, you
                 should hear back from GitHub as soon as they have verified your
                 student status.

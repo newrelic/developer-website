@@ -310,7 +310,7 @@ describe('getTypeMeta', () => {
     };
 
     expect(getTypeMeta('onClick', propType, { component })).toEqual({
-      returnValue: { type: 'undefined' },
+      returnValue: [],
       arguments: [{ description: '', name: 'event', type: 'Event' }],
     });
   });
@@ -617,7 +617,7 @@ describe('getTypeMeta', () => {
                     examples: [],
                     type: {
                       meta: {
-                        returnValue: { type: 'undefined' },
+                        returnValue: [],
                         arguments: [],
                       },
                       raw: 'func',
@@ -637,7 +637,7 @@ describe('getTypeMeta', () => {
                     },
                     type: {
                       meta: {
-                        returnValue: { type: 'undefined' },
+                        returnValue: [],
                         arguments: [],
                       },
                       raw: 'func',

@@ -53,3 +53,12 @@ global.window = {
   requestAnimationFrame: global.requestAnimationFrame,
   cancelAnimationFrame: global.cancelAnimationFrame,
 };
+function Blob() {
+  return { size: null };
+}
+global.Blob = Blob;
+
+global.fetch = () => ({
+  catch: noop,
+  then: noop,
+});

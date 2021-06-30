@@ -9,4 +9,4 @@ export const SPLIT_TRACKING_EVENTS = {
 };
 
 export const SDK_BASE_URL =
-  'https://d1zobbh8kytrtv.cloudfront.net/platform/wanda--wanda-ec-ui--nr1-docs';
+  'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
