@@ -170,7 +170,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-newrelic-sdk',
       options: {
-        release: 'release-2776',
+        release: 'release-2751',
       },
     },
     'gatsby-plugin-embed-pages',
