@@ -114,7 +114,6 @@ const getTypeMeta = (name, propType, { component }) => {
 
   switch (getRawTypeName(propType)) {
     case 'func':
-      console.log(propTypeDocs.tags);
       return {
         returnValue: (propTypeDocs.tags || {}).return || [],
         arguments: (propTypeDocs.tags || {}).param || [],
