@@ -52,8 +52,8 @@ const MainLayout = ({ children, pageContext }) => {
               position: sticky;
               top: -2rem;
               z-index: 10;
-              margin: -2rem -0.5rem 1rem;
-              padding: 1rem 0.5rem;
+              margin: -2rem -0.5rem 0rem;
+              padding: 2rem 0.5rem 1rem;
             `}
           >
             <Link
