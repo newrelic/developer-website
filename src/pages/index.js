@@ -219,7 +219,9 @@ const IndexPage = ({ data, pageContext, location }) => {
               </p>
               <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
                 Listen
-                <FeatherIcon name="link" />
+                <FeatherIcon
+                className={styles.externalLinkIcon}
+                name="external-link" />
               </Button>
             </div>
             <img src={podcastBadge} alt="podcast badge" />
