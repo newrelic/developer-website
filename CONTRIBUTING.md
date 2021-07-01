@@ -404,7 +404,7 @@ to source our documentation into GraphQL. This plugin has some configuration tha
 - [Update `gatsby-config.js`](https://github.com/newrelic/developer-website/blob/ae42737f5f1cf556f3c44d864655c9a571739e28/gatsby-config.js#L161)
 with the new release number to update the bundle release version.
 
-- To obtain the version release number visit the `wanda-ec-ui` repository on Github enterprise and look at the release version.
+- To obtain the version release number visit the `one-core` repository on Github enterprise and look at the release version in `sdk-loader.js`. You can use the one-core site to confirm if any issues are developer site specific or occurring in the SDK.
 
 ### Step 2: Add any new APIs or components to our constants list
 
