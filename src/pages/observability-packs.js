@@ -15,7 +15,7 @@ import { useQueryParam, StringParam } from 'use-query-params';
 import { useDebounce } from 'react-use';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
-const packContentsFilterValues = [
+const packContentsFilterGroups = [
   'Anything',
   'Dashboards',
   'Alerts',
@@ -140,6 +140,19 @@ const ObservabilityPacksPage = ({ data, location }) => {
     setQuerySearch,
   ]);
 
+  const packContentsFilterValues = packContentsFilterGroups.map(
+    (filterName) => {
+      if (filterName === 'Anything') {
+        const filterCount = o11yPacks.length;
+        return { filterName, filterCount };
+      }
+      const filterCount = o11yPacks.filter(
+        (pack) => pack[filterName.toLowerCase()]
+      ).length;
+      return { filterName, filterCount };
+    }
+  );
+
   return (
     <>
       <DevSiteSeo title="Observability Packs" location={location} />
@@ -226,8 +239,11 @@ const ObservabilityPacksPage = ({ data, location }) => {
               }}
             >
               {packContentsFilterValues.map((packContentsItem) => (
-                <option key={packContentsItem} value={packContentsItem}>
-                  {packContentsItem}
+                <option
+                  key={packContentsItem.filterName}
+                  value={packContentsItem.filterName}
+                >
+                  {`${packContentsItem.filterName} (${packContentsItem.filterCount})`}
                 </option>
               ))}
             </Select>
