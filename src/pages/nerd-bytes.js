@@ -136,8 +136,9 @@ const NerdbytesPage = ({ location }) => {
               <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
                 Listen
                 <FeatherIcon
-                className={styles.externalLinkIcon}
-                name="external-link" />
+                  className={styles.externalLinkIcon}
+                  name="external-link"
+                />
               </Button>
             </div>
             <img src={podcastBadge} alt="podcast badge" />
