@@ -16,7 +16,7 @@ import { useDebounce } from 'react-use';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
 const packContentsFilterGroups = [
-  'Anything',
+  'All',
   'Dashboards',
   'Alerts',
   'Visualizations',
@@ -37,9 +37,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   } = data;
 
   const [filteredPacks, setFilteredPacks] = useState(o11yPacks);
-  const [containingFilterState, setContainingFilterState] = useState(
-    'Anything'
-  );
+  const [containingFilterState, setContainingFilterState] = useState('All');
   const [sortState, setSortState] = useState('Alphabetical');
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState(VIEWS.GRID);
@@ -103,7 +101,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
         pack.description.toLowerCase().includes(searchTerm)
     );
 
-    if (containingFilterState !== 'Anything') {
+    if (containingFilterState !== 'All') {
       tempFilteredPacks = tempFilteredPacks.filter(
         (pack) => pack[containingFilterState.toLowerCase()]?.length > 0
       );
@@ -142,7 +140,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
 
   const packContentsFilterValues = packContentsFilterGroups.map(
     (filterName) => {
-      if (filterName === 'Anything') {
+      if (filterName === 'All') {
         const filterCount = o11yPacks.length;
         return { filterName, filterCount };
       }
