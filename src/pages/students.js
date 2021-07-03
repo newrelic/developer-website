@@ -187,7 +187,7 @@ const StudentsPage = ({ location }) => {
             <Button
               as={ExternalLink}
               className={styles.nominateButton}
-              href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+              href="https://newrelic.com/signup"
               variant={Button.VARIANT.PRIMARY}
             >
               Sign up for a free account{' '}
