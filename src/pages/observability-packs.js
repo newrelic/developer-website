@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import Select from '../components/Select';
@@ -10,11 +10,11 @@ import {
   SearchInput,
   useTessen,
   useInstrumentedData,
-  Icon,
-  Button,
+  useKeyPress,
 } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
 import { useDebounce } from 'react-use';
+import { search } from 'core-js/fn/symbol';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
 const packContentsFilterGroups = [
@@ -48,6 +48,12 @@ const ObservabilityPacksPage = ({ data, location }) => {
   const [querySearch, setQuerySearch] = useQueryParam('search', StringParam);
   const [queryFilter, setQueryFilter] = useQueryParam('filter', StringParam);
   const [querySort, setQuerySort] = useQueryParam('sort', StringParam);
+
+  const searchInputRef = useRef();
+
+  useKeyPress('s', () => {
+    setSearchOpen(!searchOpen);
+  });
 
   useInstrumentedData(
     { actionName: 'packViewToggle', packViewState: view },
@@ -97,6 +103,13 @@ const ObservabilityPacksPage = ({ data, location }) => {
   useEffect(() => {
     setView(view);
   }, [view]);
+
+  useEffect(() => {
+    let duration = 500;
+    searchOpen
+      ? setTimeout(() => searchInputRef.current.focus(), duration)
+      : setTimeout(() => searchInputRef.current.blur(), duration);
+  }, [searchOpen]);
 
   useEffect(() => {
     let tempFilteredPacks = o11yPacks.filter(
@@ -189,29 +202,50 @@ const ObservabilityPacksPage = ({ data, location }) => {
             > * {
               margin: 0 0.5rem;
             }
+            @media screen and (max-width: 1180px) {
+              flex-direction: column;
+              align-items: normal;
+              > * {
+                margin: 0.5rem 0;
+              }
+            }
           `}
         >
-          <div>
-            {searchOpen && (
-              <SearchInput
-                value={searchTerm}
-                size={SearchInput.SIZE.MEDIUM}
-                style={{ maxWidth: '500px' }}
-                onClear={() => setSearchTerm('')}
-                onChange={(e) => {
-                  setSearchTerm(e.target.value.toLowerCase());
-                }}
-                defaultValue={querySearch}
-              />
-            )}
-            {!searchOpen && (
-              <Button
-                variant={Button.VARIANT.PLAIN}
-                onClick={() => setSearchOpen(true)}
-              >
-                <Icon name="fe-search" />
-              </Button>
-            )}
+          <div
+            css={css`
+              input {
+                border: ${searchOpen
+                  ? '1px solid var(--border-color)'
+                  : 'none'};
+                background: inherit;
+                cursor: ${searchOpen ? 'text' : 'pointer'};
+              }
+            `}
+            style={{
+              overflow: 'hidden',
+              cursor: 'pointer',
+              width: `${searchOpen ? '300px' : '50px'}`,
+              transition: 'all 0.5s ease',
+            }}
+            onClick={() => setSearchOpen(true)}
+            role="button"
+            tabIndex={0}
+          >
+            <SearchInput
+              ref={searchInputRef}
+              value={searchTerm}
+              style={{
+                border: `${searchOpen ? 'auto' : 'none'}`,
+              }}
+              onClear={() => {
+                setSearchTerm('');
+                setSearchOpen(false);
+              }}
+              onChange={(e) => {
+                setSearchTerm(e.target.value.toLowerCase());
+              }}
+              defaultValue={querySearch}
+            />
           </div>
           <div
             css={css`
