@@ -10,6 +10,8 @@ import {
   SearchInput,
   useTessen,
   useInstrumentedData,
+  Icon,
+  Button,
 } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
 import { useDebounce } from 'react-use';
@@ -41,6 +43,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   const [sortState, setSortState] = useState('Alphabetical');
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState(VIEWS.GRID);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const [querySearch, setQuerySearch] = useQueryParam('search', StringParam);
   const [queryFilter, setQueryFilter] = useQueryParam('filter', StringParam);
@@ -81,6 +84,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   useEffect(() => {
     if (querySearch) {
       setSearchTerm(querySearch);
+      setSearchOpen(true);
     }
     if (queryFilter) {
       setContainingFilterState(queryFilter);
@@ -119,8 +123,10 @@ const ObservabilityPacksPage = ({ data, location }) => {
 
     if (searchTerm !== '') {
       setQuerySearch(searchTerm);
+      setSearchOpen(true);
     } else {
       setQuerySearch(undefined);
+      setSearchOpen(false);
     }
     setQueryFilter(containingFilterState);
     setQuerySort(sortState);
@@ -154,20 +160,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
   return (
     <>
       <DevSiteSeo title="Observability Packs" location={location} />
-      <SearchInput
-        size={SearchInput.SIZE.LARGE}
-        width="100%"
-        css={css`
-          margin: 15px 0;
-        `}
-        value={searchTerm}
-        onClear={() => setSearchTerm('')}
-        placeholder="Search for an observability pack"
-        onChange={(e) => {
-          setSearchTerm(e.target.value.toLowerCase());
-        }}
-        defaultValue={querySearch}
-      />
       <div
         css={css`
           background-color: var(--color-neutrals-100);
@@ -193,69 +185,103 @@ const ObservabilityPacksPage = ({ data, location }) => {
         <div
           css={css`
             display: flex;
-            @media screen and (max-width: 1180px) {
-              flex-direction: column;
-              align-items: normal;
-              > * {
-                margin: 0.5rem 0;
-              }
+            align-items: center;
+            > * {
+              margin: 0 0.5rem;
             }
           `}
         >
-          <FormControl>
-            <Label htmlFor="sortFilter">Sort by</Label>
-            <Select
-              id="sortFilter"
-              value={sortState}
-              onChange={(e) => {
-                setSortState(e.target.value);
-                document.getElementById(e.target.id).blur();
-                tessen.track('observabilityPack', `packSort`, {
-                  packSortState: e.target.value,
-                });
-              }}
-            >
-              {sortOptionValues.map((sortOption) => (
-                <option key={sortOption} value={sortOption}>
-                  {sortOption}
-                </option>
-              ))}
-            </Select>
-          </FormControl>
+          <div>
+            {searchOpen && (
+              <SearchInput
+                value={searchTerm}
+                size={SearchInput.SIZE.MEDIUM}
+                style={{ maxWidth: '500px' }}
+                onClear={() => setSearchTerm('')}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value.toLowerCase());
+                }}
+                defaultValue={querySearch}
+              />
+            )}
+            {!searchOpen && (
+              <Button
+                variant={Button.VARIANT.PLAIN}
+                onClick={() => setSearchOpen(true)}
+              >
+                <Icon name="fe-search" />
+              </Button>
+            )}
+          </div>
+          <div
+            css={css`
+              display: flex;
+              @media screen and (max-width: 1180px) {
+                flex-direction: column;
+                align-items: normal;
+                > * {
+                  margin: 0.5rem 0;
+                }
+              }
+            `}
+          >
+            <FormControl>
+              <Label htmlFor="sortFilter">Sort by</Label>
+              <Select
+                id="sortFilter"
+                value={sortState}
+                onChange={(e) => {
+                  setSortState(e.target.value);
+                  document.getElementById(e.target.id).blur();
+                  tessen.track('observabilityPack', `packSort`, {
+                    packSortState: e.target.value,
+                  });
+                }}
+              >
+                {sortOptionValues.map((sortOption) => (
+                  <option key={sortOption} value={sortOption}>
+                    {sortOption}
+                  </option>
+                ))}
+              </Select>
+            </FormControl>
 
-          <FormControl>
-            <Label htmlFor="packContentsFilter">Filter packs containing</Label>
-            <Select
-              id="packContentsFilter"
-              value={containingFilterState}
-              onChange={(e) => {
-                setContainingFilterState(e.target.value);
-                document.getElementById(e.target.id).blur();
-                tessen.track('observabilityPack', `packFilter`, {
-                  packFilterState: containingFilterState,
-                });
-              }}
-            >
-              {packContentsFilterValues.map((packContentsItem) => (
-                <option
-                  key={packContentsItem.filterName}
-                  value={packContentsItem.filterName}
-                >
-                  {`${packContentsItem.filterName} (${packContentsItem.filterCount})`}
-                </option>
-              ))}
-            </Select>
-          </FormControl>
+            <FormControl>
+              <Label htmlFor="packContentsFilter">
+                Filter packs containing
+              </Label>
+              <Select
+                id="packContentsFilter"
+                value={containingFilterState}
+                onChange={(e) => {
+                  setContainingFilterState(e.target.value);
+                  document.getElementById(e.target.id).blur();
+                  tessen.track('observabilityPack', `packFilter`, {
+                    packFilterState: containingFilterState,
+                  });
+                }}
+              >
+                {packContentsFilterValues.map((packContentsItem) => (
+                  <option
+                    key={packContentsItem.filterName}
+                    value={packContentsItem.filterName}
+                  >
+                    {`${packContentsItem.filterName} (${packContentsItem.filterCount})`}
+                  </option>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+          <SegmentedControl
+            items={Object.values(VIEWS)}
+            onChange={(_e, view) => {
+              setView(view);
+              tessen.track('observabilityPack', `packViewToggle`, {
+                packViewState: view,
+              });
+            }}
+          />
         </div>
-        <SegmentedControl
-          items={Object.values(VIEWS)}
-          onChange={(_e, view) => {
-            setView(view);
-            tessen.track('observabilityPack', `packViewToggle`, {
-              packViewState: view,
-            });
-          }}
-        />
       </div>
 
       <div
