@@ -213,13 +213,13 @@ const PropList = ({ className, propTypes }) => {
               <div>
                 {deprecation && (
                   <Callout variant="caution" title={`Due ${deprecation.date}`}>
-                    <Markdown source={deprecation.description} />
+                    <Markdown children={deprecation.description} />
                   </Callout>
                 )}
                 {description && (
                   <Markdown
                     className={cx(styles.section)}
-                    source={description}
+                    children={description}
                   />
                 )}
                 <div className={styles.section}>

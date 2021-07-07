@@ -33,7 +33,9 @@ const renderers = {
   root: Content,
 };
 
-const Comment = ({ text }) => <Markdown source={text} renderers={renderers} />;
+const Comment = ({ text }) => (
+  <Markdown children={text} components={renderers} />
+);
 
 Content.propTypes = {
   children: PropTypes.node,
