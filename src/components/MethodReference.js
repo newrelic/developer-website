@@ -17,11 +17,12 @@ const MethodReference = ({ className, method }) => {
         <code>{method.name}</code>
       </h3>
       <Markdown
-        children={method.description}
         css={css`
           margin-bottom: 1rem;
         `}
-      />
+      >
+        {method.description}
+      </Markdown>
       <FunctionDefinition
         arguments={method.arguments}
         returnValue={method.returnValue}

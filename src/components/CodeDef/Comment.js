@@ -34,7 +34,7 @@ const renderers = {
 };
 
 const Comment = ({ text }) => (
-  <Markdown children={text} components={renderers} />
+  <Markdown components={renderers}>{text}</Markdown>
 );
 
 Content.propTypes = {

@@ -37,7 +37,7 @@ const ApiReferenceTemplate = ({ data, location }) => {
         <PageLayout.Content>
           {description && (
             <Section className="intro-text">
-              <Markdown children={description} />
+              <Markdown>{description}</Markdown>
             </Section>
           )}
 

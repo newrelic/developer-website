@@ -61,7 +61,7 @@ const ComponentReferenceTemplate = ({ data, location }) => {
         <PageLayout.Header title={name} />
         <PageLayout.Content>
           <Section className="intro-text">
-            <Markdown children={componentDescription} />
+            <Markdown>{componentDescription}</Markdown>
           </Section>
 
           <Section>

@@ -62,7 +62,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
             `}
           >
             <InstallButton
-              title={`Install Pack`}
+              title="Install Pack"
               guid={pack.id}
               onClick={handleInstallClick}
             />
