@@ -9,6 +9,7 @@ import PackTile from '../components/PackTile';
 import {
   SearchInput,
   Icon,
+  Button,
   useTessen,
   useInstrumentedData,
   useKeyPress,
@@ -223,7 +224,8 @@ const ObservabilityPacksPage = ({ data, location }) => {
             }}
           >
             {!searchOpen && (
-              <button
+              <Button
+                variant={Button.VARIANT.PLAIN}
                 css={css`
                   background: none;
                   border: none;
@@ -233,7 +235,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
                 onClick={() => setSearchOpen(true)}
               >
                 <Icon name="fe-search" />
-              </button>
+              </Button>
             )}
             <SearchInput
               ref={searchInputRef}
