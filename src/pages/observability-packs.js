@@ -44,7 +44,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   const [sortState, setSortState] = useState('Alphabetical');
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState(VIEWS.GRID);
-  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchExpanded, setSearchExpanded] = useState(false);
 
   const [querySearch, setQuerySearch] = useQueryParam('search', StringParam);
   const [queryFilter, setQueryFilter] = useQueryParam('filter', StringParam);
@@ -53,7 +53,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   const searchInputRef = useRef();
 
   useKeyPress('s', () => {
-    setSearchOpen(!searchOpen);
+    setSearchExpanded(!searchExpanded);
   });
 
   useInstrumentedData(
@@ -91,7 +91,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   useEffect(() => {
     if (querySearch) {
       setSearchTerm(querySearch);
-      setSearchOpen(true);
+      setsearchExpanded(true);
     }
     if (queryFilter) {
       setContainingFilterState(queryFilter);
@@ -107,10 +107,10 @@ const ObservabilityPacksPage = ({ data, location }) => {
 
   useEffect(() => {
     const duration = 500;
-    searchOpen
+    searchExpanded
       ? setTimeout(() => searchInputRef.current.focus(), duration)
       : setTimeout(() => searchInputRef.current.blur(), duration);
-  }, [searchOpen]);
+  }, [searchExpanded]);
 
   useEffect(() => {
     let tempFilteredPacks = o11yPacks.filter(
@@ -137,10 +137,10 @@ const ObservabilityPacksPage = ({ data, location }) => {
 
     if (searchTerm !== '') {
       setQuerySearch(searchTerm);
-      setSearchOpen(true);
+      setSearchExpanded(true);
     } else {
       setQuerySearch(undefined);
-      setSearchOpen(false);
+      setSearchExpanded(false);
     }
     setQueryFilter(containingFilterState);
     setQuerySort(sortState);
@@ -219,11 +219,11 @@ const ObservabilityPacksPage = ({ data, location }) => {
               }
             `}
             style={{
-              width: `${searchOpen ? '300px' : '50px'}`,
+              width: `${searchExpanded ? '300px' : '50px'}`,
               transition: 'all 0.5s ease',
             }}
           >
-            {!searchOpen && (
+            {!searchExpanded && (
               <Button
                 variant={Button.VARIANT.PLAIN}
                 css={css`
@@ -232,7 +232,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
                   color: inherit;
                   cursor: pointer;
                 `}
-                onClick={() => setSearchOpen(true)}
+                onClick={() => setSearchExpanded(true)}
               >
                 <Icon name="fe-search" />
               </Button>
@@ -240,12 +240,13 @@ const ObservabilityPacksPage = ({ data, location }) => {
             <SearchInput
               ref={searchInputRef}
               value={searchTerm}
+              placeholder="Search pack names / descriptions"
               style={{
-                display: `${searchOpen ? 'block' : 'none'}`,
+                display: `${searchExpanded ? 'block' : 'none'}`,
               }}
               onClear={() => {
                 setSearchTerm('');
-                setSearchOpen(false);
+                setSearchExpanded(false);
               }}
               onChange={(e) => {
                 setSearchTerm(e.target.value.toLowerCase());
