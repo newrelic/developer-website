@@ -24,7 +24,7 @@ const PackImg = ({ className, logoUrl, packName }) => {
     <div
       className={className}
       css={css`
-        color: dodgerblue;
+        color: var(--color-brand-400);
         font-family: 'Space Mono', monospace;
         font-size: 7rem;
       `}
