@@ -9,7 +9,7 @@ import {
   useTessen,
   useInstrumentedHandler,
 } from '@newrelic/gatsby-theme-newrelic';
-import DEFAULT_IMAGE from '../images/new-relic-logo.png';
+import PackImg from './PackImg';
 
 const LEVELS = {
   NEWRELIC: 'NEWRELIC',
@@ -19,6 +19,7 @@ const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
 };
+
 const PackTile = ({ id, view, name, fields, logoUrl, description, level }) => {
   const tessen = useTessen();
   const handlePackClick = useInstrumentedHandler(
@@ -52,15 +53,10 @@ const PackTile = ({ id, view, name, fields, logoUrl, description, level }) => {
       `}
       onClick={handlePackClick}
     >
-      <img
-        src={logoUrl || DEFAULT_IMAGE}
-        alt={name}
-        onError={(e) => {
-          e.preventDefault();
-          e.target.src = DEFAULT_IMAGE;
-        }}
+      <PackImg
+        logoUrl={logoUrl}
+        packName={name}
         css={css`
-          display: block;
           height: 200px;
           background-color: var(--color-white);
           object-fit: scale-down;
