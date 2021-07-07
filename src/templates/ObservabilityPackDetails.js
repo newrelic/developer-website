@@ -10,11 +10,13 @@ import {
   PageTools,
   useTessen,
   useInstrumentedHandler,
+  Button,
 } from '@newrelic/gatsby-theme-newrelic';
 import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
 import ImageSlider from '../components/ImageSlider';
+import iconGitHubWhite from '../images/github/icon-github-white.svg';
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
@@ -32,6 +34,23 @@ const ObservabilityPackDetails = ({ data, location }) => {
       packId: pack.id,
     }
   );
+
+  const getPackUrl = () => {
+    const baseUrl =
+      'https://github.com/newrelic/newrelic-observability-packs/tree/main/packs';
+
+    if (!pack.logoUrl) {
+      return baseUrl;
+    }
+
+    /**
+     * logoUrl looks something like: 'https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/couchbase/logo.svg'
+     */
+    const [packName, ..._] = pack.logoUrl.split('/').slice(-2);
+
+    return `${baseUrl}/${packName}`;
+  };
+
   return (
     <>
       <DevSiteSeo title={pack.name} location={location} />
@@ -45,7 +64,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
             `}
           >
             <InstallButton
-              title={`Install Pack`}
+              title="Install Pack"
               guid={pack.id}
               onClick={handleInstallClick}
             />
@@ -231,6 +250,28 @@ const ObservabilityPackDetails = ({ data, location }) => {
             `}
           >
             <PageTools.Section>
+              <div>
+                <Button
+                  as="a"
+                  variant={Button.VARIANT.PRIMARY}
+                  href={getPackUrl()}
+                  rel="noopener noreferrer"
+                  css={css`
+                    margin-top: 0.5rem;
+                  `}
+                >
+                  <img
+                    css={css`
+                      margin-right: 0.5rem;
+                    `}
+                    src={iconGitHubWhite}
+                    alt="GitHub logo"
+                  />
+                  View Repo
+                </Button>
+              </div>
+            </PageTools.Section>
+            <PageTools.Section>
               <PageTools.Title>How to use this pack</PageTools.Title>
               <ol>
                 <li>
@@ -271,6 +312,7 @@ export const pageQuery = graphql`
       level
       id
       description
+      logoUrl
       dashboards {
         description
         name
