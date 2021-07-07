@@ -8,6 +8,7 @@ import SegmentedControl from '../components/SegmentedControl';
 import PackTile from '../components/PackTile';
 import {
   SearchInput,
+  Icon,
   useTessen,
   useInstrumentedData,
   useKeyPress,
@@ -213,28 +214,32 @@ const ObservabilityPacksPage = ({ data, location }) => {
           <div
             css={css`
               input {
-                border: ${searchOpen
-                  ? '1px solid var(--border-color)'
-                  : 'none'};
                 background: inherit;
-                cursor: ${searchOpen ? 'text' : 'pointer'};
               }
             `}
             style={{
-              overflow: 'hidden',
-              cursor: 'pointer',
               width: `${searchOpen ? '300px' : '50px'}`,
               transition: 'all 0.5s ease',
             }}
-            onClick={() => setSearchOpen(true)}
-            role="button"
-            tabIndex={0}
           >
+            {!searchOpen && (
+              <button
+                css={css`
+                  background: none;
+                  border: none;
+                  color: inherit;
+                  cursor: pointer;
+                `}
+                onClick={() => setSearchOpen(true)}
+              >
+                <Icon name="fe-search" />
+              </button>
+            )}
             <SearchInput
               ref={searchInputRef}
               value={searchTerm}
               style={{
-                border: `${searchOpen ? 'auto' : 'none'}`,
+                display: `${searchOpen ? 'block' : 'none'}`,
               }}
               onClear={() => {
                 setSearchTerm('');
