@@ -71,6 +71,14 @@ const ObservabilityPacksPage = ({ data, location }) => {
     { enabled: Boolean(containingFilterState) }
   );
 
+  const handleSearchButtonClick = () => {
+    setSearchExpanded(true);
+    tessen.track('observabilityPack', `packSearchButtonClick`);
+    if (typeof window !== 'undefined' && window.newrelic) {
+      window.newrelic.addPageAction('packSearchButtonClick');
+    }
+  };
+
   useDebounce(
     () => {
       if (searchTerm && searchTerm !== '') {
@@ -232,7 +240,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
                   color: inherit;
                   cursor: pointer;
                 `}
-                onClick={() => setSearchExpanded(true)}
+                onClick={handleSearchButtonClick}
               >
                 <Icon name="fe-search" />
               </Button>
