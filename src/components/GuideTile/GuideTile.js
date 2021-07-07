@@ -67,7 +67,7 @@ const GuideTile = ({ duration, title, description, className, to }) => (
 );
 
 GuideTile.propTypes = {
-  duration: PropTypes.string.isRequired,
+  duration: PropTypes.string,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   className: PropTypes.string,
