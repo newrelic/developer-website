@@ -25,6 +25,7 @@ const allowedElements = [
   'ul',
   'li',
   'p',
+  'blockquote',
   'code',
   'a',
   'strong',
