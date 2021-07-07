@@ -14,7 +14,6 @@ import {
 } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
 import { useDebounce } from 'react-use';
-import { search } from 'core-js/fn/symbol';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
 const packContentsFilterGroups = [
@@ -105,7 +104,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   }, [view]);
 
   useEffect(() => {
-    let duration = 500;
+    const duration = 500;
     searchOpen
       ? setTimeout(() => searchInputRef.current.focus(), duration)
       : setTimeout(() => searchInputRef.current.blur(), duration);
