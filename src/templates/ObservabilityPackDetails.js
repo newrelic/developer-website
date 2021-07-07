@@ -12,6 +12,7 @@ import {
   useInstrumentedHandler,
   Button,
   Icon,
+  Link,
 } from '@newrelic/gatsby-theme-newrelic';
 import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
@@ -256,21 +257,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
             >
               <div>
                 <Button
-                  as="a"
+                  as={Link}
                   variant={Button.VARIANT.PRIMARY}
-                  href={getPackUrl()}
+                  to={getPackUrl()}
                   rel="noopener noreferrer"
-                  // css={css`
-                  //   margin-top: 0.5rem;
-                  // `}
                 >
-                  {/* <img
-                    css={css`
-                      margin-right: 0.5rem;
-                    `}
-                    src={iconGitHubWhite}
-                    alt="GitHub logo"
-                  /> */}
                   <Icon
                     name="fe-github"
                     css={css`
