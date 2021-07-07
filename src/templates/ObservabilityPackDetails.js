@@ -11,12 +11,12 @@ import {
   useTessen,
   useInstrumentedHandler,
   Button,
+  Icon,
 } from '@newrelic/gatsby-theme-newrelic';
 import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
 import ImageSlider from '../components/ImageSlider';
-import iconGitHubWhite from '../images/github/icon-github-white.svg';
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
@@ -249,23 +249,33 @@ const ObservabilityPackDetails = ({ data, location }) => {
               }
             `}
           >
-            <PageTools.Section>
+            <PageTools.Section
+              css={css`
+                background-color: var(--divider-color);
+              `}
+            >
               <div>
                 <Button
                   as="a"
                   variant={Button.VARIANT.PRIMARY}
                   href={getPackUrl()}
                   rel="noopener noreferrer"
-                  css={css`
-                    margin-top: 0.5rem;
-                  `}
+                  // css={css`
+                  //   margin-top: 0.5rem;
+                  // `}
                 >
-                  <img
+                  {/* <img
                     css={css`
                       margin-right: 0.5rem;
                     `}
                     src={iconGitHubWhite}
                     alt="GitHub logo"
+                  /> */}
+                  <Icon
+                    name="fe-github"
+                    css={css`
+                      margin-right: 7px;
+                    `}
                   />
                   View Repo
                 </Button>
