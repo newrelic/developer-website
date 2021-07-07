@@ -91,7 +91,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   useEffect(() => {
     if (querySearch) {
       setSearchTerm(querySearch);
-      setsearchExpanded(true);
+      setSearchExpanded(true);
     }
     if (queryFilter) {
       setContainingFilterState(queryFilter);
