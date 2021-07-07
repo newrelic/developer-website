@@ -235,10 +235,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
               <Button
                 variant={Button.VARIANT.PLAIN}
                 css={css`
-                  background: none;
                   border: none;
-                  color: inherit;
-                  cursor: pointer;
                 `}
                 onClick={handleSearchButtonClick}
               >
