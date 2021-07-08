@@ -4,6 +4,14 @@ import { css } from '@emotion/react';
 import DEFAULT_IMAGE from '../images/new-relic-logo.png';
 
 const PackImg = ({ className, logoUrl, packName }) => {
+  const getPackNameAcronym = () => {
+    let packNameAcronym = '';
+    packName.split(' ').forEach((word) => {
+      packNameAcronym = packNameAcronym.concat('', word.charAt(0));
+    });
+    return packNameAcronym.toUpperCase();
+  };
+
   if (logoUrl) {
     return (
       <img
@@ -25,7 +33,7 @@ const PackImg = ({ className, logoUrl, packName }) => {
       className={className}
       css={css`
         color: var(--color-brand-400);
-        font-family: 'Space Mono', monospace;
+        font-family: var(--code-font);
         font-size: 7rem;
       `}
     >
@@ -75,7 +83,7 @@ const PackImg = ({ className, logoUrl, packName }) => {
           line-height: 150%;
         `}
       >
-        {packName.charAt(0)}
+        {getPackNameAcronym()}
       </p>
     </div>
   );
