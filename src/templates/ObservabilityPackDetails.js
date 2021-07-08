@@ -265,6 +265,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                   variant={Button.VARIANT.PRIMARY}
                   to={getPackUrl(pack.name)}
                   rel="noopener noreferrer"
+                  instrumentation={{ packName: pack.name }}
                 >
                   <Icon
                     name="fe-github"
