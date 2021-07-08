@@ -9,6 +9,7 @@ import { Layout, useLayout } from '@newrelic/gatsby-theme-newrelic';
 const TYPES = {
   SINGLE_COLUMN: 'SINGLE_COLUMN',
   RELATED_CONTENT: 'RELATED_CONTENT',
+  RELATED_CONTENT_TABS: 'RELATED_CONTENT_TABS',
 };
 
 const LAYOUTS = {
