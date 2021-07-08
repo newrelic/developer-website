@@ -3,24 +3,21 @@ import getPackUrl from '../get-pack-url';
 describe('getPackUrl', () => {
   test.each([
     [
-      'apache',
+      'https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.1/packs/apache/logo.svg',
       'https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/apache',
     ],
     [
-      'cassandra',
-      'https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/cassandra',
+      'https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/couchbase/logo.svg',
+      'https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/couchbase',
     ],
-  ])(
-    'given non-falsy pack name, %p, returns %p',
-    (firstArg, expectedResult) => {
-      const packUrl = getPackUrl(firstArg);
+  ])('given non-falsy logoUrl, %p, returns %p', (firstArg, expectedResult) => {
+    const packUrl = getPackUrl(firstArg);
 
-      expect(packUrl).toBe(expectedResult);
-    }
-  );
+    expect(packUrl).toBe(expectedResult);
+  });
 
   test.each([[''], [null], [undefined]])(
-    'given falsy pack name, %p, returns "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/"',
+    'given falsy logoUrl, %p, returns "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/"',
     (firstArg) => {
       const packUrl = getPackUrl(firstArg);
 

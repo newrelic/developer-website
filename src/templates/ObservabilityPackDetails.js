@@ -263,7 +263,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 <Button
                   as={Link}
                   variant={Button.VARIANT.PRIMARY}
-                  to={getPackUrl(pack.name)}
+                  to={getPackUrl(pack.logoUrl)}
                   rel="noopener noreferrer"
                   instrumentation={{ packName: pack.name }}
                 >
