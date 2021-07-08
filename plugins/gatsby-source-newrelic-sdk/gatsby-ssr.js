@@ -6,11 +6,6 @@ export const onPreRenderHTML = ({
 }) => {
   replaceHeadComponents([
     ...getHeadComponents(),
-    <link
-      key="space-mono"
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
-    />,
     <script
       key="react-router"
       defer
