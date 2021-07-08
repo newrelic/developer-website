@@ -4,7 +4,7 @@ import useMobileDetect from 'use-mobile-detect-hook';
 import { css } from '@emotion/react';
 import useTabs from './useTabs';
 
-const MobileTabControl = ({ children }) => {
+const MobileTabControl = ({ children, isIos }) => {
   const [currentTab, setCurrentTab] = useTabs();
   // eslint gets angry about using props from React.Children.map
   /* eslint-disable react/prop-types */
@@ -20,7 +20,7 @@ const MobileTabControl = ({ children }) => {
         border-radius: 4px;
         border-color: var(--secondary-background-color);
         background-color: var(--primary-background-color);
-        color: var(--primary-text-color);
+        color: ${isIos ? `var(--color-black)` : `var(--primary-text-color)`};
       `}
     >
       {React.Children.map(children, ({ props }) => (
@@ -41,14 +41,16 @@ const MobileTabControl = ({ children }) => {
 
 MobileTabControl.propTypes = {
   children: PropTypes.node.isRequired,
+  isIos: PropTypes.bool,
 };
 
 const Bar = ({ children, className }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
+  const isIos = detectMobile.isIos();
 
   if (isMobile) {
-    return <MobileTabControl>{children}</MobileTabControl>;
+    return <MobileTabControl isIos={isIos}>{children}</MobileTabControl>;
   }
 
   return (
