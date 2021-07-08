@@ -41,7 +41,6 @@ const BarItem = ({ index, children, id, count, disabled }) => {
         flex-grow: 1;
         text-align: center;
         padding: 0.5em;
-        border-bottom: 1px solid var(--color-neutrals-300);
         cursor: pointer;
         user-select: none;
         white-space: nowrap;
