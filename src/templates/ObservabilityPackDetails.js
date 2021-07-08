@@ -18,6 +18,7 @@ import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
 import ImageSlider from '../components/ImageSlider';
+import { join } from 'path';
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
@@ -48,8 +49,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
      * logoUrl looks something like: 'https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.8.2/packs/couchbase/logo.svg'
      */
     const [packName, ..._] = pack.logoUrl.split('/').slice(-2);
-
-    return `${baseUrl}/${packName}`;
+    return join(baseUrl, packName);
   };
 
   return (
