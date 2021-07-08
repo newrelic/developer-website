@@ -10,11 +10,15 @@ import {
   PageTools,
   useTessen,
   useInstrumentedHandler,
+  Button,
+  Icon,
+  Link,
 } from '@newrelic/gatsby-theme-newrelic';
 import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
 import ImageSlider from '../components/ImageSlider';
+import getPackUrl from '../utils/get-pack-url';
 import Markdown from '../components/Markdown';
 
 const allowedElements = [
@@ -49,6 +53,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
       packId: pack.id,
     }
   );
+
   return (
     <>
       <DevSiteSeo title={pack.name} location={location} />
@@ -248,6 +253,29 @@ const ObservabilityPackDetails = ({ data, location }) => {
               }
             `}
           >
+            <PageTools.Section
+              css={css`
+                background-color: var(--divider-color);
+              `}
+            >
+              <div>
+                <Button
+                  as={Link}
+                  variant={Button.VARIANT.PRIMARY}
+                  to={getPackUrl(pack.logoUrl)}
+                  rel="noopener noreferrer"
+                  instrumentation={{ packName: pack.name }}
+                >
+                  <Icon
+                    name="fe-github"
+                    css={css`
+                      margin-right: 7px;
+                    `}
+                  />
+                  View Repo
+                </Button>
+              </div>
+            </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>How to use this pack</PageTools.Title>
               <ol>
@@ -296,6 +324,7 @@ export const pageQuery = graphql`
       level
       id
       description
+      logoUrl
       dashboards {
         description
         name
