@@ -37,17 +37,12 @@ const BarItem = ({ index, children, id, count, disabled }) => {
         border: 0;
         background: none;
         color: var(--primary-text-color);
-
         flex-grow: 1;
         text-align: center;
         padding: 0.5em;
         cursor: pointer;
         user-select: none;
         white-space: nowrap;
-
-        .dark-mode & {
-          border-bottom-color: var(--color-dark-300);
-        }
 
         &:hover {
           color: var(--color-brand-500);
@@ -90,12 +85,11 @@ const BarItem = ({ index, children, id, count, disabled }) => {
         ${isSelected &&
         css`
           color: var(--color-brand-500);
-          border-bottom-width: 3px;
-          border-bottom-color: var(--color-brand-500);
+          border-bottom: var(--color-brand-500) solid 3px;
 
           .dark-mode & {
             color: var(--color-brand-400);
-            border-bottom-color: var(--color-brand-400);
+            border-bottom: var(--color-brand-400) solid 3px;
           }
         `}
       `}
