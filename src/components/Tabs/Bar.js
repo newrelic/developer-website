@@ -58,6 +58,7 @@ const Bar = ({ children, className }) => {
       css={css`
         display: flex;
         width: 100%;
+        border-bottom: 1px solid var(--color-neutrals-300);
         margin-bottom: 1em;
         overflow: auto;
       `}
