@@ -53,7 +53,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
     <>
       <DevSiteSeo title={pack.name} location={location} />
       <Tabs>
-        <PageLayout type={PageLayout.TYPE.RELATED_CONTENT}>
+        <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
           <PageLayout.Header
             title={pack.name}
             css={css`
@@ -66,51 +66,50 @@ const ObservabilityPackDetails = ({ data, location }) => {
               guid={pack.id}
               onClick={handleInstallClick}
             />
-            <Tabs.Bar
-              css={css`
-                margin-top: 1rem;
-              `}
-            >
-              <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
-              <Tabs.BarItem id="requirements">Requirements</Tabs.BarItem>
-              <Tabs.BarItem
-                id="dashboards"
-                disabled={!(pack.dashboards?.length ?? 0)}
-                count={pack.dashboards?.length ?? 0}
-              >
-                Dashboards
-              </Tabs.BarItem>
-              <Tabs.BarItem
-                id="alerts"
-                disabled={!(pack.alerts?.length ?? 0)}
-                count={pack.alerts?.length ?? 0}
-              >
-                Alerts
-              </Tabs.BarItem>
-              <Tabs.BarItem
-                id="synthetics"
-                disabled={!(pack.synthetics?.length ?? 0)}
-                count={pack.synthetics?.length ?? 0}
-              >
-                Synthetics
-              </Tabs.BarItem>
-              <Tabs.BarItem
-                id="visualizations"
-                disabled={!(pack.visualizations?.length ?? 0)}
-                count={pack.visualizations?.length ?? 0}
-              >
-                Visualizations
-              </Tabs.BarItem>
-              <Tabs.BarItem
-                id="nerdpacks"
-                disabled={!(pack.nerdpacks?.length ?? 0)}
-                count={pack.nerdpacks?.length ?? 0}
-              >
-                Nerdpacks
-              </Tabs.BarItem>
-            </Tabs.Bar>
           </PageLayout.Header>
-
+          <Tabs.Bar
+            css={css`
+              grid-column: 1/3;
+              box-sizing: border-box;
+              padding-right: 30%;
+              @media (max-width: 1240px) {
+                padding: 0;
+              }
+              @media (max-width: 760px) {
+                flex-wrap: wrap;
+              }
+            `}
+          >
+            <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
+            <Tabs.BarItem
+              id="dashboards"
+              disabled={!(pack.dashboards?.length ?? 0)}
+              count={pack.dashboards?.length ?? 0}
+            >
+              Dashboards
+            </Tabs.BarItem>
+            <Tabs.BarItem
+              id="alerts"
+              disabled={!(pack.alerts?.length ?? 0)}
+              count={pack.alerts?.length ?? 0}
+            >
+              Alerts
+            </Tabs.BarItem>
+            <Tabs.BarItem
+              id="synthetics"
+              disabled={!(pack.synthetics?.length ?? 0)}
+              count={pack.synthetics?.length ?? 0}
+            >
+              Synthetics
+            </Tabs.BarItem>
+            <Tabs.BarItem
+              id="visualizations"
+              disabled={!(pack.visualizations?.length ?? 0)}
+              count={pack.visualizations?.length ?? 0}
+            >
+              Visualizations
+            </Tabs.BarItem>
+          </Tabs.Bar>
           <Layout.Content>
             <Tabs.Pages>
               <Tabs.Page id="overview">
@@ -270,6 +269,13 @@ const ObservabilityPackDetails = ({ data, location }) => {
             <PageTools.Section>
               <PageTools.Title>Authors</PageTools.Title>
               <p>{pack.authors.join(', ')}</p>
+            </PageTools.Section>
+            <PageTools.Section>
+              <PageTools.Title>Requirements</PageTools.Title>
+              <ul>
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Lorem ipsum dolor sit amet</li>
+              </ul>
             </PageTools.Section>
           </Layout.PageTools>
         </PageLayout>
