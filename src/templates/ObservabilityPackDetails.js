@@ -19,6 +19,23 @@ import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
 import ImageSlider from '../components/ImageSlider';
 import getPackUrl from '../utils/get-pack-url';
+import Markdown from '../components/Markdown';
+
+const allowedElements = [
+  'h1',
+  'h2',
+  'h3',
+  'ol',
+  'ul',
+  'li',
+  'p',
+  'blockquote',
+  'code',
+  'a',
+  'strong',
+  'em',
+  'hr',
+];
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
@@ -104,7 +121,9 @@ const ObservabilityPackDetails = ({ data, location }) => {
               <Tabs.Page id="overview">
                 <ImageGallery images={[]} />
                 <h3>Description</h3>
-                <p>{pack.description}</p>
+                <Markdown skipHtml allowedElements={allowedElements}>
+                  {pack.description}
+                </Markdown>
               </Tabs.Page>
               <Tabs.Page id="requirements">
                 <Intro
