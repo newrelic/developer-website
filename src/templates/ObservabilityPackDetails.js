@@ -145,7 +145,7 @@ const renderVisualizations = (pack) => {
   );
 };
 
-const emptyStateContent = (pack) => {
+const emptyStateContent = (pack, tabName) => {
   return (
     <div
       css={css`
@@ -174,11 +174,10 @@ const emptyStateContent = (pack) => {
           text-align: center;
         `}
       >
-        I'm baby quinoa DIY narwhal artisan organic slow-carb cliche twee. Kogi
-        YOLO meggings quinoa affogato vegan bespoke hashtag. VHS skateboard palo
-        santo, gastropub edison bulb asymmetrical humblebrag plaid disrupt.
-        Activated charcoal glossier kinfolk before they sold out pok pok quinoa
-        bicycle rights humblebrag fanny pack church-key enamel pin.
+        This pack doesn't include any {tabName}. Do you think it should?
+        <br />
+        You can modify this pack to add useful components. View the pack source
+        code and open a pull request.
       </p>
       <div
         css={css`
@@ -283,20 +282,22 @@ const ObservabilityPackDetails = ({ data, location }) => {
               <Tabs.Page id="dashboards">
                 {pack.dashboards
                   ? renderDashboards(pack.dashboards)
-                  : emptyStateContent(pack)}
+                  : emptyStateContent(pack, 'dasboards')}
               </Tabs.Page>
               <Tabs.Page id="alerts">
                 {pack.alerts
                   ? renderAlerts(pack.alerts)
-                  : emptyStateContent(pack)}
+                  : emptyStateContent(pack, 'alerts')}
               </Tabs.Page>
               <Tabs.Page id="synthetics">
-                {pack.synthetics ? renderSynthetics() : emptyStateContent(pack)}
+                {pack.synthetics
+                  ? renderSynthetics()
+                  : emptyStateContent(pack, 'Synthetics checks')}
               </Tabs.Page>
               <Tabs.Page id="visualizations">
                 {pack.visualizations
                   ? renderVisualizations()
-                  : emptyStateContent(pack)}
+                  : emptyStateContent(pack, 'visualizations')}
               </Tabs.Page>
             </Tabs.Pages>
           </Layout.Content>
