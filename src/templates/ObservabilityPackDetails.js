@@ -56,7 +56,7 @@ const SUPPORT_CONTENT = {
 const renderDashboards = (pack) => {
   const content = pack.dashboards.map((dashboard) => (
     <>
-      <h3>{dashboard.name}</h3>
+      <h3 key={index}>{dashboard.name}</h3>
       <ImageSlider height={400} images={dashboard.screenshots} />
       {dashboard.description && (
         <>
@@ -87,7 +87,7 @@ const renderDashboards = (pack) => {
 const renderAlerts = (pack) => {
   const alertContent = pack.alerts.map((alert) => (
     <>
-      <h3>{alert.name}</h3>
+      <h3 key={index}>{alert.name}</h3>
       {alert.description && (
         <>
           <h4>Description</h4>
