@@ -166,11 +166,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
                   `}
                 >
                   {pack.name} observability pack contains{' '}
-                  {pluralize('alert', pack.alerts?.length ?? 0, true)}, which
-                  detect changes in key performance metrics. Integrate these
-                  alerts with your favorite tools (like Slack, PagerDuty, etc.)
-                  and New Relic will let you know when something needs your
-                  attention.
+                  {pluralize('alert', pack.alerts?.length ?? 0, true)}. These
+                  alerts detect changes in key performance metrics. Integrate
+                  these alerts with your favorite tools (like Slack, PagerDuty,
+                  etc.) and New Relic will let you know when something needs
+                  your attention.
                 </Intro>
               </Tabs.Page>
               <Tabs.Page id="synthetics">
@@ -306,15 +306,6 @@ export const pageQuery = graphql`
         name
         screenshots
         url
-      }
-      alerts {
-        name
-      }
-      synthetics {
-        name
-      }
-      nerdpacks {
-        name
       }
       authors
     }
