@@ -37,6 +37,21 @@ const allowedElements = [
   'hr',
 ];
 
+const SUPPORT_CONTENT = {
+  NEWRELIC: {
+    title: 'Built by New Relic',
+    content: `Need help? [Visit our Support Center](https://support.newrelic.com) or check out our community forum, [the Explorers Hub](https://discuss.newrelic.com).`,
+  },
+  VERIFIED: {
+    title: 'Verified by New Relic',
+    content: `Need help? [Visit our Support Center](https://support.newrelic.com) or check out our community forum, [the Explorers Hub](https://discuss.newrelic.com).`,
+  },
+  COMMUNITY: {
+    title: 'Built by the community',
+    content: `Need help? Visit our community forum, [the Explorers Hub](https://discuss.newrelic.com) to find an answer or post a question.`,
+  },
+};
+
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
   const tessen = useTessen();
@@ -297,6 +312,19 @@ const ObservabilityPackDetails = ({ data, location }) => {
             <PageTools.Section>
               <PageTools.Title>Authors</PageTools.Title>
               <p>{pack.authors.join(', ')}</p>
+            </PageTools.Section>
+            <PageTools.Section>
+              <PageTools.Title>Support</PageTools.Title>
+              <h5
+                css={css`
+                  text-transform: uppercase;
+                `}
+              >
+                {SUPPORT_CONTENT[`${pack.level}`].title}
+              </h5>
+              <p>
+                <Markdown>{SUPPORT_CONTENT[`${pack.level}`].content}</Markdown>
+              </p>
             </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>Requirements</PageTools.Title>
