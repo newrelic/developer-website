@@ -10,11 +10,15 @@ import {
   PageTools,
   useTessen,
   useInstrumentedHandler,
+  Button,
+  Icon,
+  Link,
 } from '@newrelic/gatsby-theme-newrelic';
 import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
 import ImageSlider from '../components/ImageSlider';
+import getPackUrl from '../utils/get-pack-url';
 import Markdown from '../components/Markdown';
 
 const allowedElements = [
@@ -64,11 +68,12 @@ const ObservabilityPackDetails = ({ data, location }) => {
       packId: pack.id,
     }
   );
+
   return (
     <>
       <DevSiteSeo title={pack.name} location={location} />
       <Tabs>
-        <PageLayout type={PageLayout.TYPE.RELATED_CONTENT}>
+        <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
           <PageLayout.Header
             title={pack.name}
             css={css`
@@ -81,51 +86,50 @@ const ObservabilityPackDetails = ({ data, location }) => {
               guid={pack.id}
               onClick={handleInstallClick}
             />
-            <Tabs.Bar
-              css={css`
-                margin-top: 1rem;
-              `}
-            >
-              <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
-              <Tabs.BarItem id="requirements">Requirements</Tabs.BarItem>
-              <Tabs.BarItem
-                id="dashboards"
-                disabled={!(pack.dashboards?.length ?? 0)}
-                count={pack.dashboards?.length ?? 0}
-              >
-                Dashboards
-              </Tabs.BarItem>
-              <Tabs.BarItem
-                id="alerts"
-                disabled={!(pack.alerts?.length ?? 0)}
-                count={pack.alerts?.length ?? 0}
-              >
-                Alerts
-              </Tabs.BarItem>
-              <Tabs.BarItem
-                id="synthetics"
-                disabled={!(pack.synthetics?.length ?? 0)}
-                count={pack.synthetics?.length ?? 0}
-              >
-                Synthetics
-              </Tabs.BarItem>
-              <Tabs.BarItem
-                id="visualizations"
-                disabled={!(pack.visualizations?.length ?? 0)}
-                count={pack.visualizations?.length ?? 0}
-              >
-                Visualizations
-              </Tabs.BarItem>
-              <Tabs.BarItem
-                id="nerdpacks"
-                disabled={!(pack.nerdpacks?.length ?? 0)}
-                count={pack.nerdpacks?.length ?? 0}
-              >
-                Nerdpacks
-              </Tabs.BarItem>
-            </Tabs.Bar>
           </PageLayout.Header>
-
+          <Tabs.Bar
+            css={css`
+              grid-column: 1/3;
+              box-sizing: border-box;
+              padding-right: 30%;
+              @media (max-width: 1240px) {
+                padding: 0;
+              }
+              @media (max-width: 760px) {
+                flex-wrap: wrap;
+              }
+            `}
+          >
+            <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
+            <Tabs.BarItem
+              id="dashboards"
+              disabled={!(pack.dashboards?.length ?? 0)}
+              count={pack.dashboards?.length ?? 0}
+            >
+              Dashboards
+            </Tabs.BarItem>
+            <Tabs.BarItem
+              id="alerts"
+              disabled={!(pack.alerts?.length ?? 0)}
+              count={pack.alerts?.length ?? 0}
+            >
+              Alerts
+            </Tabs.BarItem>
+            <Tabs.BarItem
+              id="synthetics"
+              disabled={!(pack.synthetics?.length ?? 0)}
+              count={pack.synthetics?.length ?? 0}
+            >
+              Synthetics
+            </Tabs.BarItem>
+            <Tabs.BarItem
+              id="visualizations"
+              disabled={!(pack.visualizations?.length ?? 0)}
+              count={pack.visualizations?.length ?? 0}
+            >
+              Visualizations
+            </Tabs.BarItem>
+          </Tabs.Bar>
           <Layout.Content>
             <Tabs.Pages>
               <Tabs.Page id="overview">
@@ -264,6 +268,29 @@ const ObservabilityPackDetails = ({ data, location }) => {
               }
             `}
           >
+            <PageTools.Section
+              css={css`
+                background-color: var(--divider-color);
+              `}
+            >
+              <div>
+                <Button
+                  as={Link}
+                  variant={Button.VARIANT.PRIMARY}
+                  to={getPackUrl(pack.logoUrl)}
+                  rel="noopener noreferrer"
+                  instrumentation={{ packName: pack.name }}
+                >
+                  <Icon
+                    name="fe-github"
+                    css={css`
+                      margin-right: 7px;
+                    `}
+                  />
+                  View Repo
+                </Button>
+              </div>
+            </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>How to use this pack</PageTools.Title>
               <ol>
@@ -299,6 +326,13 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 <Markdown>{SUPPORT_CONTENT[`${pack.level}`].content}</Markdown>
               </p>
             </PageTools.Section>
+            <PageTools.Section>
+              <PageTools.Title>Requirements</PageTools.Title>
+              <ul>
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Lorem ipsum dolor sit amet</li>
+              </ul>
+            </PageTools.Section>
           </Layout.PageTools>
         </PageLayout>
       </Tabs>
@@ -318,6 +352,7 @@ export const pageQuery = graphql`
       level
       id
       description
+      logoUrl
       dashboards {
         description
         name
