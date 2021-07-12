@@ -176,8 +176,8 @@ const emptyStateContent = (pack, tabName) => {
       >
         This pack doesn't include any {tabName}. Do you think it should?
         <br />
-        You can modify this pack to add useful components. View the pack source
-        code and open a pull request.
+        You can edit this pack to add helpful components. View the repository
+        and open a pull request.
       </p>
       <div
         css={css`
