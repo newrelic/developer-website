@@ -38,9 +38,9 @@ const allowedElements = [
 ];
 
 const renderDashboards = (dashboards) => {
-  const content = dashboards.map((dashboard) => (
+  const content = dashboards.map((dashboard, index) => (
     <>
-      <h3>{dashboard.name}</h3>
+      <h3 key={index}>{dashboard.name}</h3>
       <ImageSlider height={400} images={dashboard.screenshots} />
       {dashboard.description && (
         <>
@@ -72,9 +72,9 @@ const renderDashboards = (dashboards) => {
 };
 
 const renderAlerts = (alerts) => {
-  const alertContent = alerts.map((alert) => (
+  const alertContent = alerts.map((alert, index) => (
     <>
-      <h3>{alert.name}</h3>
+      <h3 key={index}>{alert.name}</h3>
       {alert.description && (
         <>
           <h4>Description</h4>
