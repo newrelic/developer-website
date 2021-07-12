@@ -37,6 +37,7 @@
     "lodash.get": "^4.4.2",
     "node-fetch": "^2.6.1",
     "node-sass": "^4.14.1",
+    "pluralize": "^8.0.0",
     "prism-react-renderer": "^1.1.1",
     "prismjs": "^1.21.0",
     "prop-types": "^15.7.2",

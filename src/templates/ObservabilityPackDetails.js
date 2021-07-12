@@ -20,6 +20,7 @@ import InstallButton from '../components/InstallButton';
 import ImageSlider from '../components/ImageSlider';
 import getPackUrl from '../utils/get-pack-url';
 import Markdown from '../components/Markdown';
+import pluralize from 'pluralize';
 
 const allowedElements = [
   'h1',
@@ -153,9 +154,9 @@ const ObservabilityPackDetails = ({ data, location }) => {
                   `}
                 >
                   {pack.name} observability pack contains{' '}
-                  {pack.dashboards?.length ?? 0} dashboards. These interactive
-                  visualizations let you easily explore your data, understand
-                  context, and resolve problems faster.
+                  {pluralize('dashboard', pack.dashboards?.length ?? 0, true)}.
+                  These interactive visualizations let you easily explore your
+                  data, understand context, and resolve problems faster.
                 </Intro>
               </Tabs.Page>
               <Tabs.Page id="alerts">
@@ -165,10 +166,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
                   `}
                 >
                   {pack.name} observability pack contains{' '}
-                  {pack.alerts?.length ?? 0} alerts, which detect changes in key
-                  performance metrics. Integrate these alerts with your favorite
-                  tools (like Slack, PagerDuty, etc.) and New Relic will let you
-                  know when something needs your attention.
+                  {pluralize('alert', pack.alerts?.length ?? 0, true)}, which
+                  detect changes in key performance metrics. Integrate these
+                  alerts with your favorite tools (like Slack, PagerDuty, etc.)
+                  and New Relic will let you know when something needs your
+                  attention.
                 </Intro>
               </Tabs.Page>
               <Tabs.Page id="synthetics">
@@ -178,10 +180,14 @@ const ObservabilityPackDetails = ({ data, location }) => {
                   `}
                 >
                   {pack.name} observability pack includes{' '}
-                  {pack.synthetics?.length ?? 0} Synthetics checks. These checks
-                  will run automatically to simulate user traffic and ensure
-                  your site or API endpoint is not only available, but fully
-                  functional.
+                  {pluralize(
+                    'Synthetics check',
+                    pack.synthetics?.length ?? 0,
+                    true
+                  )}
+                  . These checks will run automatically to simulate user traffic
+                  and ensure your site or API endpoint is not only available,
+                  but fully functional.
                 </Intro>
               </Tabs.Page>
               <Tabs.Page id="visualizations">
@@ -208,8 +214,9 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 >
                   Nerdpacks are custom applications that extend the monitoring
                   capabilities of the New Relic One platform. {pack.name}
-                  observability pack includes {pack.nerdpacks?.length ?? 0}
-                  Nerdpacks to make sure you’re monitoring what matters.
+                  observability pack includes{' '}
+                  {pluralize('Nerdpack', pack.nerdpacks?.length ?? 0, true)} to
+                  make sure you’re monitoring what matters.
                 </Intro>
               </Tabs.Page>
             </Tabs.Pages>
