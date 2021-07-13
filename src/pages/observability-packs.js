@@ -230,9 +230,16 @@ const ObservabilityPacksPage = ({ data, location }) => {
           <div
             css={css`
               align-self: flex-end;
-              ${searchExpanded ? `width: 650px;` : `width: 50px;`}
+              ${searchExpanded ? `width: 30vw;` : `width: 50px;`}
+              margin-left: 20px;
               input {
                 background: inherit;
+              }
+              @media screen and (max-width: 1450px) {
+                ${searchExpanded && `width: 25vw;`}
+              }
+              @media screen and (max-width: 1350px) {
+                ${searchExpanded && `width: 15vw;`}
               }
               @media screen and (max-width: 1180px) {
                 width: 100%;
