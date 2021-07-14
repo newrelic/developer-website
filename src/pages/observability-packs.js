@@ -260,7 +260,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
                 `}
                 onClick={handleSearchButtonClick}
               >
-                <Icon name="fe-search" />
+                <Icon name="fe-search" size="1.5em" />
               </Button>
             )}
             <SearchInput
