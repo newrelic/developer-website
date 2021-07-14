@@ -196,14 +196,15 @@ const ObservabilityPackDetails = ({ data, location }) => {
                     margin-bottom: 16px;
                   `}
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  {pack.name} observability pack includes{' '}
+                  {pluralize(
+                    'visualization',
+                    pack.visualizations?.length ?? 0,
+                    true
+                  )}
+                  . These charts have been customized to represent data in a way
+                  that a standard dashboard isn’t able to, so you can monitor
+                  what’s essential.
                 </Intro>
               </Tabs.Page>
               <Tabs.Page id="nerdpacks">
