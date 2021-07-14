@@ -79,6 +79,12 @@ const ObservabilityPacksPage = ({ data, location }) => {
     }
   };
 
+  const handleBlurSearch = () => {
+    if (!searchTerm) {
+      setSearchExpanded(false);
+    }
+  };
+
   useDebounce(
     () => {
       if (searchTerm && searchTerm !== '') {
@@ -169,10 +175,10 @@ const ObservabilityPacksPage = ({ data, location }) => {
   const packContentsFilterValues = packContentsFilterGroups.map(
     (filterName) => {
       if (filterName === 'All') {
-        const filterCount = o11yPacks.length;
+        const filterCount = filteredPacks.length;
         return { filterName, filterCount };
       }
-      const filterCount = o11yPacks.filter(
+      const filterCount = filteredPacks.filter(
         (pack) => pack[filterName.toLowerCase()]
       ).length;
       return { filterName, filterCount };
@@ -208,8 +214,9 @@ const ObservabilityPacksPage = ({ data, location }) => {
           css={css`
             display: flex;
             align-items: center;
+            justify-content: space-between;
             > * {
-              margin: 0 0.5rem;
+              margin: 0 0.1rem;
             }
             @media screen and (max-width: 1180px) {
               flex-direction: column;
@@ -222,12 +229,23 @@ const ObservabilityPacksPage = ({ data, location }) => {
         >
           <div
             css={css`
+              align-self: flex-end;
+              ${searchExpanded ? `width: 30vw;` : `width: 50px;`}
+              margin-left: 20px;
               input {
                 background: inherit;
               }
+              @media screen and (max-width: 1450px) {
+                ${searchExpanded && `width: 25vw;`}
+              }
+              @media screen and (max-width: 1350px) {
+                ${searchExpanded && `width: 15vw;`}
+              }
+              @media screen and (max-width: 1180px) {
+                width: 100%;
+              }
             `}
             style={{
-              width: `${searchExpanded ? '300px' : '50px'}`,
               transition: 'all 0.5s ease',
             }}
           >
@@ -236,6 +254,9 @@ const ObservabilityPacksPage = ({ data, location }) => {
                 variant={Button.VARIANT.PLAIN}
                 css={css`
                   border: none;
+                  @media screen and (max-width: 1180px) {
+                    display: none;
+                  }
                 `}
                 onClick={handleSearchButtonClick}
               >
@@ -246,17 +267,20 @@ const ObservabilityPacksPage = ({ data, location }) => {
               ref={searchInputRef}
               value={searchTerm}
               placeholder="Search pack names / descriptions"
-              style={{
-                display: `${searchExpanded ? 'block' : 'none'}`,
-              }}
+              css={css`
+                ${searchExpanded ? `display: block;` : `display: none;`}
+                @media screen and (max-width: 1180px) {
+                  display: block;
+                }
+              `}
               onClear={() => {
                 setSearchTerm('');
-                setSearchExpanded(false);
               }}
               onChange={(e) => {
                 setSearchTerm(e.target.value.toLowerCase());
               }}
               defaultValue={querySearch}
+              onBlur={handleBlurSearch}
             />
           </div>
           <div
