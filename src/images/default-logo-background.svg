@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 95 490 260" xmlns="http://www.w3.org/2000/svg">
+  <line style="stroke-width: 4px; stroke: rgb(0, 179, 195);" x1="0" y1="115" x2="90" y2="115"/>
+  <line style="stroke-width: 4px; stroke: rgb(236, 132, 126);" x1="0" y1="145" x2="50" y2="145"/>
+  <line style="stroke-width: 4px; stroke: rgb(127, 232, 152);" x1="400" y1="305" x2="490" y2="305"/>
+  <line style="stroke-width: 4px; stroke: rgb(112, 204, 211);" x1="440" y1="335" x2="490" y2="335"/>
+</svg>

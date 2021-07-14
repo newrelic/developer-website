@@ -20,7 +20,16 @@ const VIEWS = {
   LIST: 'List view',
 };
 
-const PackTile = ({ id, view, name, fields, logoUrl, description, level }) => {
+const PackTile = ({
+  id,
+  view,
+  name,
+  fields,
+  logoUrl,
+  description,
+  level,
+  className,
+}) => {
   const tessen = useTessen();
   const handlePackClick = useInstrumentedHandler(
     () => {
@@ -40,7 +49,7 @@ const PackTile = ({ id, view, name, fields, logoUrl, description, level }) => {
     <Surface
       key={id}
       base={Surface.BASE.PRIMARY}
-      className="pack-tile-instrument"
+      className={className}
       interactive
       css={css`
         overflow: hidden;
@@ -51,7 +60,11 @@ const PackTile = ({ id, view, name, fields, logoUrl, description, level }) => {
           margin-bottom: 1em;
         `}
       `}
-      onClick={handlePackClick}
+      onClick={() => {
+        if (fields.slug) {
+          handlePackClick();
+        }
+      }}
     >
       <PackImg
         logoUrl={logoUrl}
@@ -114,6 +127,7 @@ PackTile.propTypes = {
   logoUrl: PropTypes.string,
   description: PropTypes.string,
   level: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default PackTile;
