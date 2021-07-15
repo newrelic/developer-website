@@ -20,6 +20,7 @@ import InstallButton from '../components/InstallButton';
 import ImageSlider from '../components/ImageSlider';
 import getPackUrl from '../utils/get-pack-url';
 import Markdown from '../components/Markdown';
+import pluralize from 'pluralize';
 
 const allowedElements = [
   'h1',
@@ -145,31 +146,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
                     margin-bottom: 16px;
                   `}
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  Before you install the {pack.name} observability pack, make
+                  sure you meet the requirements documented below.
                 </Intro>
               </Tabs.Page>
               <Tabs.Page id="dashboards">
-                <Intro
-                  css={css`
-                    margin-bottom: 16px;
-                  `}
-                >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </Intro>
                 {pack.dashboards?.map((dashboard) => (
                   <>
                     <h3>{dashboard.name}</h3>
@@ -182,6 +163,16 @@ const ObservabilityPackDetails = ({ data, location }) => {
                     )}
                   </>
                 ))}
+                <Intro
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
+                  {pack.name} observability pack contains{' '}
+                  {pluralize('dashboard', pack.dashboards?.length ?? 0, true)}.
+                  These interactive visualizations let you easily explore your
+                  data, understand context, and resolve problems faster.
+                </Intro>
               </Tabs.Page>
               <Tabs.Page id="alerts">
                 <Intro
@@ -189,26 +180,13 @@ const ObservabilityPackDetails = ({ data, location }) => {
                     margin-bottom: 16px;
                   `}
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  {pack.name} observability pack contains{' '}
+                  {pluralize('alert', pack.alerts?.length ?? 0, true)}. These
+                  alerts detect changes in key performance metrics. Integrate
+                  these alerts with your favorite tools (like Slack, PagerDuty,
+                  etc.) and New Relic will let you know when something needs
+                  your attention.
                 </Intro>
-                {pack.alerts?.map((alert) => (
-                  <>
-                    <h3>{alert.name}</h3>
-                    {alert.description && (
-                      <>
-                        <h4>Description</h4>
-                        <p>{alert.description}</p>
-                      </>
-                    )}
-                  </>
-                ))}
               </Tabs.Page>
               <Tabs.Page id="synthetics">
                 <Intro
@@ -216,14 +194,15 @@ const ObservabilityPackDetails = ({ data, location }) => {
                     margin-bottom: 16px;
                   `}
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  {pack.name} observability pack includes{' '}
+                  {pluralize(
+                    'Synthetics check',
+                    pack.synthetics?.length ?? 0,
+                    true
+                  )}
+                  . These checks will run automatically to simulate user traffic
+                  and ensure your site or API endpoint is not only available,
+                  but fully functional.
                 </Intro>
               </Tabs.Page>
               <Tabs.Page id="visualizations">
@@ -232,14 +211,15 @@ const ObservabilityPackDetails = ({ data, location }) => {
                     margin-bottom: 16px;
                   `}
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  {pack.name} observability pack includes{' '}
+                  {pluralize(
+                    'visualization',
+                    pack.visualizations?.length ?? 0,
+                    true
+                  )}
+                  . These charts have been customized to represent data in a way
+                  that a standard dashboard isn’t able to, so you can monitor
+                  what’s essential.
                 </Intro>
               </Tabs.Page>
               <Tabs.Page id="nerdpacks">
@@ -248,14 +228,11 @@ const ObservabilityPackDetails = ({ data, location }) => {
                     margin-bottom: 16px;
                   `}
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  Nerdpacks are custom applications that extend the monitoring
+                  capabilities of the New Relic One platform. {pack.name}
+                  observability pack includes{' '}
+                  {pluralize('Nerdpack', pack.nerdpacks?.length ?? 0, true)} to
+                  make sure you’re monitoring what matters.
                 </Intro>
               </Tabs.Page>
             </Tabs.Pages>
