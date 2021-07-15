@@ -54,7 +54,7 @@ const SUPPORT_CONTENT = {
 };
 
 const renderDashboards = (pack) => {
-  const content = pack.dashboards.map((dashboard) => (
+  const content = pack.dashboards.map((dashboard, index) => (
     <>
       <h3 key={index}>{dashboard.name}</h3>
       <ImageSlider height={400} images={dashboard.screenshots} />
@@ -85,7 +85,7 @@ const renderDashboards = (pack) => {
 };
 
 const renderAlerts = (pack) => {
-  const alertContent = pack.alerts.map((alert) => (
+  const alertContent = pack.alerts.map((alert, index) => (
     <>
       <h3 key={index}>{alert.name}</h3>
       {alert.description && (
@@ -281,22 +281,22 @@ const ObservabilityPackDetails = ({ data, location }) => {
               </Tabs.Page>
               <Tabs.Page id="dashboards">
                 {pack.dashboards
-                  ? renderDashboards(pack.dashboards)
+                  ? renderDashboards(pack)
                   : emptyStateContent(pack, 'dasboards')}
               </Tabs.Page>
               <Tabs.Page id="alerts">
                 {pack.alerts
-                  ? renderAlerts(pack.alerts)
+                  ? renderAlerts(pack)
                   : emptyStateContent(pack, 'alerts')}
               </Tabs.Page>
               <Tabs.Page id="synthetics">
                 {pack.synthetics
-                  ? renderSynthetics()
+                  ? renderSynthetics(pack)
                   : emptyStateContent(pack, 'Synthetics checks')}
               </Tabs.Page>
               <Tabs.Page id="visualizations">
                 {pack.visualizations
-                  ? renderVisualizations()
+                  ? renderVisualizations(pack)
                   : emptyStateContent(pack, 'visualizations')}
               </Tabs.Page>
             </Tabs.Pages>
