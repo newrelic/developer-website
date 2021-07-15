@@ -31,6 +31,7 @@ const PackTile = ({
   className,
 }) => {
   const tessen = useTessen();
+
   const handlePackClick = useInstrumentedHandler(
     () => {
       tessen.track('observabilityPack', 'observabilityPackClick', {
@@ -45,6 +46,21 @@ const PackTile = ({
       packName: name,
     }
   );
+
+  const handleBuildTileClick = useInstrumentedHandler(
+    () => {
+      tessen.track('observabilityPack', 'buildYourOwnObservabilityPackClick', {
+        publicCatalogView: view,
+        packName: name,
+      });
+    },
+    {
+      actionName: 'buildYourOwnObservabilityPackClick',
+      publicCatalogView: view,
+      packName: name,
+    }
+  );
+
   return (
     <Surface
       key={id}
@@ -60,11 +76,7 @@ const PackTile = ({
           margin-bottom: 1em;
         `}
       `}
-      onClick={() => {
-        if (fields.slug) {
-          handlePackClick();
-        }
-      }}
+      onClick={fields ? handlePackClick : handleBuildTileClick}
     >
       <PackImg
         logoUrl={logoUrl}
