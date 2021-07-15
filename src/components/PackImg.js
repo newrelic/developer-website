@@ -46,16 +46,12 @@ const PackImg = ({ className, logoUrl, packName }) => {
         background-repeat: no-repeat;
         background-position: center;
         background-origin: content-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       `}
     >
-      <p
-        css={css`
-          text-align: center;
-          line-height: ${packAcronym.length < 4 ? '190%' : '300%'};
-        `}
-      >
-        {packAcronym}
-      </p>
+      <p>{packAcronym}</p>
     </div>
   );
 };
