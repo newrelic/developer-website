@@ -53,6 +53,158 @@ const SUPPORT_CONTENT = {
   },
 };
 
+const renderDashboards = (pack) => {
+  const content = pack.dashboards.map((dashboard, index) => (
+    <>
+      <h3 key={index}>{dashboard.name}</h3>
+      <ImageSlider height={400} images={dashboard.screenshots} />
+      {dashboard.description && (
+        <>
+          <h4>Description</h4>
+          <p>{dashboard.description}</p>
+        </>
+      )}
+    </>
+  ));
+
+  return (
+    <>
+      <Intro
+        css={css`
+          margin-bottom: 16px;
+        `}
+      >
+        {pack.name} observability pack contains{' '}
+        {pluralize('dashboard', pack.dashboards?.length ?? 0, true)}. These
+        interactive visualizations let you easily explore your data, understand
+        context, and resolve problems faster.
+      </Intro>
+      {content}
+    </>
+  );
+};
+
+const renderAlerts = (pack) => {
+  const alertContent = pack.alerts.map((alert, index) => (
+    <>
+      <h3 key={index}>{alert.name}</h3>
+      {alert.description && (
+        <>
+          <h4>Description</h4>
+          <p>{alert.description}</p>
+        </>
+      )}
+    </>
+  ));
+
+  return (
+    <>
+      <Intro
+        css={css`
+          margin-bottom: 16px;
+        `}
+      >
+        {pack.name} observability pack contains{' '}
+        {pluralize('alert', pack.alerts?.length ?? 0, true)}. These alerts
+        detect changes in key performance metrics. Integrate these alerts with
+        your favorite tools (like Slack, PagerDuty, etc.) and New Relic will let
+        you know when something needs your attention.
+      </Intro>
+      {alertContent}
+    </>
+  );
+};
+
+const renderSynthetics = (pack) => {
+  return (
+    <Intro
+      css={css`
+        margin-bottom: 16px;
+      `}
+    >
+      {pack.name} observability pack includes{' '}
+      {pluralize('Synthetics check', pack.synthetics?.length ?? 0, true)}. These
+      checks will run automatically to simulate user traffic and ensure your
+      site or API endpoint is not only available, but fully functional.
+    </Intro>
+  );
+};
+
+const renderVisualizations = (pack) => {
+  return (
+    <Intro
+      css={css`
+        margin-bottom: 16px;
+      `}
+    >
+      {pack.name} observability pack includes{' '}
+      {pluralize('visualization', pack.visualizations?.length ?? 0, true)}.
+      These charts have been customized to represent data in a way that a
+      standard dashboard isn’t able to, so you can monitor what’s essential.
+    </Intro>
+  );
+};
+
+const emptyStateContent = (pack, tabName) => {
+  return (
+    <div
+      css={css`
+        border: 1px solid var(--divider-color);
+        border-radius: 0.25rem;
+        padding: 1rem;
+      `}
+    >
+      <div
+        css={css`
+          display: flex;
+          justify-content: center;
+          padding: 2rem;
+        `}
+      >
+        <Icon
+          css={css`
+            font-size: 4rem;
+            color: var(--divider-color);
+          `}
+          name="edit"
+        />
+      </div>
+      <p
+        css={css`
+          text-align: center;
+        `}
+      >
+        This pack doesn't include any {tabName}. Do you think it should?
+        <br />
+        You can edit this pack to add helpful components. View the repository
+        and open a pull request.
+      </p>
+      <div
+        css={css`
+          display: flex;
+          justify-content: center;
+        `}
+      >
+        <Button
+          as={Link}
+          variant={Button.VARIANT.PRIMARY}
+          to={getPackUrl(pack.logoUrl)}
+          rel="noopener noreferrer"
+          instrumentation={{ packName: pack.name }}
+        >
+          <Icon
+            name="fe-github"
+            css={css`
+              margin-right: 7px;
+            `}
+          />
+          View Repo
+        </Button>
+      </div>
+    </div>
+  );
+};
+
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
   const tessen = useTessen();
@@ -102,30 +254,17 @@ const ObservabilityPackDetails = ({ data, location }) => {
             `}
           >
             <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
-            <Tabs.BarItem
-              id="dashboards"
-              disabled={!(pack.dashboards?.length ?? 0)}
-              count={pack.dashboards?.length ?? 0}
-            >
+            <Tabs.BarItem id="dashboards" count={pack.dashboards?.length ?? 0}>
               Dashboards
             </Tabs.BarItem>
-            <Tabs.BarItem
-              id="alerts"
-              disabled={!(pack.alerts?.length ?? 0)}
-              count={pack.alerts?.length ?? 0}
-            >
+            <Tabs.BarItem id="alerts" count={pack.alerts?.length ?? 0}>
               Alerts
             </Tabs.BarItem>
-            <Tabs.BarItem
-              id="synthetics"
-              disabled={!(pack.synthetics?.length ?? 0)}
-              count={pack.synthetics?.length ?? 0}
-            >
+            <Tabs.BarItem id="synthetics" count={pack.synthetics?.length ?? 0}>
               Synthetics
             </Tabs.BarItem>
             <Tabs.BarItem
               id="visualizations"
-              disabled={!(pack.visualizations?.length ?? 0)}
               count={pack.visualizations?.length ?? 0}
             >
               Visualizations
@@ -140,100 +279,25 @@ const ObservabilityPackDetails = ({ data, location }) => {
                   {pack.description}
                 </Markdown>
               </Tabs.Page>
-              <Tabs.Page id="requirements">
-                <Intro
-                  css={css`
-                    margin-bottom: 16px;
-                  `}
-                >
-                  Before you install the {pack.name} observability pack, make
-                  sure you meet the requirements documented below.
-                </Intro>
-              </Tabs.Page>
               <Tabs.Page id="dashboards">
-                {pack.dashboards?.map((dashboard) => (
-                  <>
-                    <h3>{dashboard.name}</h3>
-                    <ImageSlider height={400} images={dashboard.screenshots} />
-                    {dashboard.description && (
-                      <>
-                        <h4>Description</h4>
-                        <p>{dashboard.description}</p>
-                      </>
-                    )}
-                  </>
-                ))}
-                <Intro
-                  css={css`
-                    margin-bottom: 16px;
-                  `}
-                >
-                  {pack.name} observability pack contains{' '}
-                  {pluralize('dashboard', pack.dashboards?.length ?? 0, true)}.
-                  These interactive visualizations let you easily explore your
-                  data, understand context, and resolve problems faster.
-                </Intro>
+                {pack.dashboards
+                  ? renderDashboards(pack)
+                  : emptyStateContent(pack, 'dasboards')}
               </Tabs.Page>
               <Tabs.Page id="alerts">
-                <Intro
-                  css={css`
-                    margin-bottom: 16px;
-                  `}
-                >
-                  {pack.name} observability pack contains{' '}
-                  {pluralize('alert', pack.alerts?.length ?? 0, true)}. These
-                  alerts detect changes in key performance metrics. Integrate
-                  these alerts with your favorite tools (like Slack, PagerDuty,
-                  etc.) and New Relic will let you know when something needs
-                  your attention.
-                </Intro>
+                {pack.alerts
+                  ? renderAlerts(pack)
+                  : emptyStateContent(pack, 'alerts')}
               </Tabs.Page>
               <Tabs.Page id="synthetics">
-                <Intro
-                  css={css`
-                    margin-bottom: 16px;
-                  `}
-                >
-                  {pack.name} observability pack includes{' '}
-                  {pluralize(
-                    'Synthetics check',
-                    pack.synthetics?.length ?? 0,
-                    true
-                  )}
-                  . These checks will run automatically to simulate user traffic
-                  and ensure your site or API endpoint is not only available,
-                  but fully functional.
-                </Intro>
+                {pack.synthetics
+                  ? renderSynthetics(pack)
+                  : emptyStateContent(pack, 'Synthetics checks')}
               </Tabs.Page>
               <Tabs.Page id="visualizations">
-                <Intro
-                  css={css`
-                    margin-bottom: 16px;
-                  `}
-                >
-                  {pack.name} observability pack includes{' '}
-                  {pluralize(
-                    'visualization',
-                    pack.visualizations?.length ?? 0,
-                    true
-                  )}
-                  . These charts have been customized to represent data in a way
-                  that a standard dashboard isn’t able to, so you can monitor
-                  what’s essential.
-                </Intro>
-              </Tabs.Page>
-              <Tabs.Page id="nerdpacks">
-                <Intro
-                  css={css`
-                    margin-bottom: 16px;
-                  `}
-                >
-                  Nerdpacks are custom applications that extend the monitoring
-                  capabilities of the New Relic One platform. {pack.name}
-                  observability pack includes{' '}
-                  {pluralize('Nerdpack', pack.nerdpacks?.length ?? 0, true)} to
-                  make sure you’re monitoring what matters.
-                </Intro>
+                {pack.visualizations
+                  ? renderVisualizations(pack)
+                  : emptyStateContent(pack, 'visualizations')}
               </Tabs.Page>
             </Tabs.Pages>
           </Layout.Content>
