@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import DEFAULT_IMAGE from '../images/new-relic-logo.png';
+import DEFAULT_IMAGE from '../images/default-logo-background.svg';
 
 const PackImg = ({ className, logoUrl, packName }) => {
+  const [packAcronym, setPackAcronym] = useState('');
+
   const getPackNameAcronym = () => {
     let packNameAcronym = '';
     packName.split(' ').forEach((word) => {
       packNameAcronym = packNameAcronym.concat('', word.charAt(0));
     });
-    return packNameAcronym.toUpperCase();
+    setPackAcronym(packNameAcronym.toUpperCase());
   };
+  useEffect(() => {
+    if (!logoUrl) {
+      getPackNameAcronym();
+    }
+  });
 
   if (logoUrl) {
     return (
@@ -34,57 +41,17 @@ const PackImg = ({ className, logoUrl, packName }) => {
       css={css`
         color: var(--color-brand-400);
         font-family: var(--code-font);
-        font-size: 7rem;
+        font-size: ${packAcronym.length < 4 ? '6rem' : '4rem'};
+        background-image: url(${DEFAULT_IMAGE});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-origin: content-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       `}
     >
-      <div
-        css={css`
-          border: solid var(--color-brand-400) 2px;
-          height: 1px;
-          width: 60px;
-          position: relative;
-          top: 20%;
-          left: 0;
-        `}
-      />
-      <div
-        css={css`
-          border: solid var(--color-green-200) 2px;
-          height: 1px;
-          width: 30px;
-          position: relative;
-          top: 75%;
-          left: 90%;
-        `}
-      />
-      <div
-        css={css`
-          border: solid var(--color-red-300) 2px;
-          height: 1px;
-          width: 20px;
-          position: relative;
-          top: 50px;
-          left: 0px;
-        `}
-      />
-      <div
-        css={css`
-          border: solid var(--color-brand-300) 2px;
-          height: 1px;
-          width: 50px;
-          position: relative;
-          top: 80%;
-          left: 83%;
-        `}
-      />
-      <p
-        css={css`
-          text-align: center;
-          line-height: 150%;
-        `}
-      >
-        {getPackNameAcronym()}
-      </p>
+      <p>{packAcronym}</p>
     </div>
   );
 };

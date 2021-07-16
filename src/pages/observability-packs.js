@@ -13,9 +13,11 @@ import {
   useTessen,
   useInstrumentedData,
   useKeyPress,
+  ExternalLink,
 } from '@newrelic/gatsby-theme-newrelic';
 import { useQueryParam, StringParam } from 'use-query-params';
 import { useDebounce } from 'react-use';
+import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
 const packContentsFilterGroups = [
@@ -375,6 +377,25 @@ const ObservabilityPacksPage = ({ data, location }) => {
           `}
         `}
       >
+        <ExternalLink
+          href="https://github.com/newrelic/newrelic-observability-packs"
+          css={css`
+            text-decoration: none;
+          `}
+        >
+          <PackTile
+            css={
+              view === VIEWS.GRID &&
+              css`
+                height: 100%;
+              `
+            }
+            view={view}
+            logoUrl={BUILD_YOUR_OWN}
+            name="Build your own Observability Pack"
+            description="Can't find the right pack for your needs? Check out our README and build your own!"
+          />
+        </ExternalLink>
         {filteredPacks.map((pack) => (
           <PackTile key={pack.id} view={view} {...pack} />
         ))}

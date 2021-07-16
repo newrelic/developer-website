@@ -20,8 +20,18 @@ const VIEWS = {
   LIST: 'List view',
 };
 
-const PackTile = ({ id, view, name, fields, logoUrl, description, level }) => {
+const PackTile = ({
+  id,
+  view,
+  name,
+  fields,
+  logoUrl,
+  description,
+  level,
+  className,
+}) => {
   const tessen = useTessen();
+
   const handlePackClick = useInstrumentedHandler(
     () => {
       tessen.track('observabilityPack', 'observabilityPackClick', {
@@ -36,11 +46,26 @@ const PackTile = ({ id, view, name, fields, logoUrl, description, level }) => {
       packName: name,
     }
   );
+
+  const handleBuildTileClick = useInstrumentedHandler(
+    () => {
+      tessen.track('observabilityPack', 'buildYourOwnObservabilityPackClick', {
+        publicCatalogView: view,
+        packName: name,
+      });
+    },
+    {
+      actionName: 'buildYourOwnObservabilityPackClick',
+      publicCatalogView: view,
+      packName: name,
+    }
+  );
+
   return (
     <Surface
       key={id}
       base={Surface.BASE.PRIMARY}
-      className="pack-tile-instrument"
+      className={className}
       interactive
       css={css`
         overflow: hidden;
@@ -51,7 +76,7 @@ const PackTile = ({ id, view, name, fields, logoUrl, description, level }) => {
           margin-bottom: 1em;
         `}
       `}
-      onClick={handlePackClick}
+      onClick={fields ? handlePackClick : handleBuildTileClick}
     >
       <PackImg
         logoUrl={logoUrl}
@@ -114,6 +139,7 @@ PackTile.propTypes = {
   logoUrl: PropTypes.string,
   description: PropTypes.string,
   level: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default PackTile;
