@@ -392,8 +392,8 @@ const ObservabilityPacksPage = ({ data, location }) => {
             }
             view={view}
             logoUrl={BUILD_YOUR_OWN}
-            name="Build your own Observability Pack"
-            description="Can't find the right pack for your needs? Check out our README and build your own!"
+            name="Build your own observability pack"
+            description="Can't find a pack with what you need? Check out our README and build your own."
           />
         </ExternalLink>
         {filteredPacks.map((pack) => (
