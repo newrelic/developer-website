@@ -115,36 +115,6 @@ const renderAlerts = (pack) => {
   );
 };
 
-const renderSynthetics = (pack) => {
-  return (
-    <Intro
-      css={css`
-        margin-bottom: 16px;
-      `}
-    >
-      {pack.name} observability pack includes{' '}
-      {pluralize('Synthetics check', pack.synthetics?.length ?? 0, true)}. These
-      checks will run automatically to simulate user traffic and ensure your
-      site or API endpoint is not only available, but fully functional.
-    </Intro>
-  );
-};
-
-const renderVisualizations = (pack) => {
-  return (
-    <Intro
-      css={css`
-        margin-bottom: 16px;
-      `}
-    >
-      {pack.name} observability pack includes{' '}
-      {pluralize('visualization', pack.visualizations?.length ?? 0, true)}.
-      These charts have been customized to represent data in a way that a
-      standard dashboard isn’t able to, so you can monitor what’s essential.
-    </Intro>
-  );
-};
-
 const emptyStateContent = (pack, tabName) => {
   return (
     <div
@@ -260,15 +230,6 @@ const ObservabilityPackDetails = ({ data, location }) => {
             <Tabs.BarItem id="alerts" count={pack.alerts?.length ?? 0}>
               Alerts
             </Tabs.BarItem>
-            <Tabs.BarItem id="synthetics" count={pack.synthetics?.length ?? 0}>
-              Synthetics
-            </Tabs.BarItem>
-            <Tabs.BarItem
-              id="visualizations"
-              count={pack.visualizations?.length ?? 0}
-            >
-              Visualizations
-            </Tabs.BarItem>
           </Tabs.Bar>
           <Layout.Content>
             <Tabs.Pages>
@@ -288,16 +249,6 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 {pack.alerts
                   ? renderAlerts(pack)
                   : emptyStateContent(pack, 'alerts')}
-              </Tabs.Page>
-              <Tabs.Page id="synthetics">
-                {pack.synthetics
-                  ? renderSynthetics(pack)
-                  : emptyStateContent(pack, 'Synthetics checks')}
-              </Tabs.Page>
-              <Tabs.Page id="visualizations">
-                {pack.visualizations
-                  ? renderVisualizations(pack)
-                  : emptyStateContent(pack, 'visualizations')}
               </Tabs.Page>
             </Tabs.Pages>
           </Layout.Content>
