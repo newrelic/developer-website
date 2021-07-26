@@ -204,11 +204,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
               gap: 1rem;
             `}
           >
-            <InstallButton
-              title="Install Pack"
-              guid={pack.id}
-              onClick={handleInstallClick}
-            />
+            <InstallButton packId={pack.id} onClick={handleInstallClick} />
           </PageLayout.Header>
           <Tabs.Bar
             css={css`

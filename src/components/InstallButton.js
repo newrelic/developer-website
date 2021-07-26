@@ -1,17 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Dropdown, Link } from '@newrelic/gatsby-theme-newrelic';
-import { css } from '@emotion/react';
+import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import getPackNr1Url from '../utils/get-pack-nr1-url';
 import { NR1_LOGIN_URL } from '../data/constants';
 
-const sampleItems = new Array(10).fill().map((_, i) => i + 1);
-
-const createMenuItems = (items, index) =>
-  items.map((item) => (
-    <Dropdown.MenuItem key={index}>{item}</Dropdown.MenuItem>
-  ));
-
+/** @param {string} packId */
 const createInstallLink = (packId) => {
   const platformUrl = getPackNr1Url(packId, true); // FIXME: remove `true` when deployed
   const url = new URL(
@@ -22,45 +15,19 @@ const createInstallLink = (packId) => {
   return url.href;
 };
 
-const InstallButton = ({ title, ...props }) => {
-  return (
-    <div
-      css={css`
-        display: flex;
-        flex-direction: row;
-      `}
-    >
-      <Button
-        {...props}
-        as={Link}
-        to={createInstallLink()}
-        variant={Button.VARIANT.PRIMARY}
-        css={css`
-          border-bottom-right-radius: 0px;
-          border-top-right-radius: 0px;
-          margin-right: 2px;
-        `}
-      >
-        {title}
-      </Button>
-      <Dropdown align="right">
-        <Dropdown.Toggle
-          variant={Button.VARIANT.PRIMARY}
-          css={css`
-            border-bottom-left-radius: 0px;
-            border-top-left-radius: 0px;
-            padding: 5px;
-          `}
-        />
-        <Dropdown.Menu>{createMenuItems(sampleItems)}</Dropdown.Menu>
-      </Dropdown>
-    </div>
-  );
-};
+const InstallButton = ({ packId, ...props }) => (
+  <Button
+    {...props}
+    as={Link}
+    to={createInstallLink(packId)}
+    variant={Button.VARIANT.PRIMARY}
+  >
+    Install Pack
+  </Button>
+);
 
 InstallButton.propTypes = {
-  title: PropTypes.string.isRequired,
-  guid: PropTypes.string.isRequired,
+  packId: PropTypes.string.isRequired,
 };
 
 export default InstallButton;
