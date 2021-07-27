@@ -18,4 +18,4 @@ export const NR1_LOGIN_URL = 'https://staging-login.newrelic.com/login';
 export const NR1_BASE_URL = 'https://dev-one.newrelic.com';
 
 export const NR1_PACK_DETAILS_NERDLET =
-  'catalog-pack-details.catalog-pack-details';
+  'catalog-pack-details.catalog-pack-contents';
