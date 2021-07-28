@@ -155,7 +155,7 @@ const location = navigation.getOpenLauncherLocation(launcher);
           label: 'Example 2',
           sourceCode: `
 // You can also specify a nerdlet and stacked nerdlets to be opened.
-// You can combine Nerdpack items from different nerdpacks.
+// You can combine nerdpack items from different nerdpacks.
 const launcher = {
   id: '074e8260-fa9c-4d71-f7a0-51835417a423.my-launcher-id',
   nerdlet: {
@@ -474,7 +474,7 @@ navigation.openLauncher(launcher);
           label: 'Example 2',
           sourceCode: `
 // You can also specify a nerdlet and stacked nerdlets to be opened.
-// You can combine Nerdpack items from different nerdpacks.
+// You can combine nerdpack items from different nerdpacks.
 const launcher = {
   id: '074e8260-fa9c-4d71-f7a0-51835417a423.my-launcher-id',
   nerdlet: {
