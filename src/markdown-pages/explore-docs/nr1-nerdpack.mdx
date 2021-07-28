@@ -19,7 +19,7 @@ To set up your Nerdpacks, use the commands below. You can click any command to s
 | Command | Description |
 |---|---|
 | [`nr1 nerdpack:build`](#nr1-nerdpackbuild) | Builds a Nerdpack |
-| [`nr1 nerdpack:clean`](#nr1-nerdpackclean) | Removes all built artifacts |
+| [`nr1 nerdpack:clean`](#nr1-nerdpackclean) | Removes all built nerdpack items |
 | [`nr1 nerdpack:clone`](#nr1-nerdpackclone) | Clones a Nerdpack from a git repository |
 | [`nr1 nerdpack:info`](#nr1-nerdpackinfo) | Shows the state of your Nerdpack in the New Relic's registry |
 | [`nr1 nerdpack:publish`](#nr1-nerdpackpublish) | Publish this Nerdpack |
@@ -27,7 +27,7 @@ To set up your Nerdpacks, use the commands below. You can click any command to s
 | [`nr1 nerdpack:tag`](#nr1-nerdpacktag) | Tags a specific Nerdpack version |
 | [`nr1 nerdpack:untag`](#nr1-nerdpackuntag) | Removes a tag from the registry |
 | [`nr1 nerdpack:uuid`](#nr1-nerdpackuuid) | Shows or regenerates the UUID of a Nerdpack |
-| [`nr1 nerdpack:validate`](#nr1-nerdpackvalidate) | Validates artifacts inside your Nerdpack |
+| [`nr1 nerdpack:validate`](#nr1-nerdpackvalidate) | Validates nerdpack items inside your Nerdpack |
 
 # Command details
 
@@ -58,7 +58,7 @@ Runs a webpack process to assemble your Nerdpack into javascript and css bundles
 
 ## `nr1 nerdpack:clean`
 
-Removes all built artifacts
+Removes all built nerdpack items
 
 ### Usage
 
@@ -267,7 +267,7 @@ By default, prints the Universal Unique ID of the specified package. It also ena
 
 ## `nr1 nerdpack:validate`
 
-Validates artifacts inside your nerdpack
+Validates nerdpack items inside your nerdpack
 
 ### Usage
 
