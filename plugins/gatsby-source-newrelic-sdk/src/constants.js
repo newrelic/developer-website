@@ -25,6 +25,7 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'Card',
   'CardBody',
   'CardHeader',
+  'CardSection',
   'ChartGroup',
   'Checkbox',
   'Dropdown',
