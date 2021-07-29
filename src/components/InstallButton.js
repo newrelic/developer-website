@@ -6,7 +6,7 @@ import { NR1_LOGIN_URL } from '../data/constants';
 
 /** @param {string} packId */
 const createInstallLink = (packId) => {
-  const platformUrl = getPackNr1Url(packId, false); // FIXME: remove `true` when deployed
+  const platformUrl = getPackNr1Url(packId); // FIXME: remove `true` when deployed
   const url = new URL(
     `?return_to=${encodeURIComponent(platformUrl)}`,
     NR1_LOGIN_URL
