@@ -14,7 +14,7 @@ frontend:
           else
             yarn run build:staging;
           fi
-  Nerdpack items:
+  artifacts:
     baseDirectory: public
     files:
       - '**/*'
