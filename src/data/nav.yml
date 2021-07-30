@@ -308,6 +308,8 @@
               url: '/components/card-body'
             - title: CardHeader
               url: '/components/card-header'
+            - title: CardSection
+              url: '/components/card-section'
             - title: Grid
               url: '/components/grid'
             - title: GridItem
