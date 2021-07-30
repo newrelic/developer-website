@@ -274,7 +274,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
             <SearchInput
               ref={searchInputRef}
               value={formState.search || ''}
-              placeholder="Search pack names / descriptions"
+              placeholder="Search pack names / descriptions. Enter to search"
               css={css`
                 ${searchExpanded ? `display: block;` : `display: none;`}
                 @media screen and (max-width: 1180px) {
