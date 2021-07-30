@@ -13,10 +13,11 @@ import {
   useTessen,
   useInstrumentedData,
   useKeyPress,
+  useQueryParams,
   ExternalLink,
 } from '@newrelic/gatsby-theme-newrelic';
-import { useQueryParam, StringParam } from 'use-query-params';
 import { useDebounce } from 'react-use';
+import { navigate } from '@reach/router';
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
@@ -42,15 +43,45 @@ const ObservabilityPacksPage = ({ data, location }) => {
   } = data;
 
   const [filteredPacks, setFilteredPacks] = useState(o11yPacks);
-  const [containingFilterState, setContainingFilterState] = useState('All');
-  const [sortState, setSortState] = useState('Alphabetical');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [view, setView] = useState(VIEWS.GRID);
   const [searchExpanded, setSearchExpanded] = useState(false);
 
-  const [querySearch, setQuerySearch] = useQueryParam('search', StringParam);
-  const [queryFilter, setQueryFilter] = useQueryParam('filter', StringParam);
-  const [querySort, setQuerySort] = useQueryParam('sort', StringParam);
+  const { queryParams } = useQueryParams();
+
+  const [formState, setFormState] = useState({
+    search: queryParams.get('search'),
+    packContains: queryParams.get('packContains'),
+    sort: queryParams.get('sort'),
+  });
+
+  const [view, setView] = useState(VIEWS.GRID);
+
+  useEffect(() => {
+    setFormState({
+      search: queryParams.get('search'),
+      packContains: queryParams.get('packContains'),
+      sort: queryParams.get('sort'),
+    });
+  }, [queryParams]);
+
+  const navigateToParams = (params) => {
+    Object.entries(params).forEach(([key, value]) => {
+      value ? queryParams.set(key, value) : queryParams.delete(key);
+    });
+
+    navigate(`?${queryParams}`);
+  };
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.keyCode === 13) {
+        navigateToParams(formState);
+      }
+    };
+    document.addEventListener('keydown', handler);
+    return () => {
+      document.removeEventListener('keydown', handler);
+    };
+  });
 
   const searchInputRef = useRef();
 
@@ -64,13 +95,13 @@ const ObservabilityPacksPage = ({ data, location }) => {
   );
 
   useInstrumentedData(
-    { actionName: 'packSort', packSortState: sortState },
-    { enabled: Boolean(sortState) }
+    { actionName: 'packSort', packSortState: formState.sort },
+    { enabled: Boolean(formState.sort) }
   );
 
   useInstrumentedData(
-    { actionName: 'packFilter', packFilterState: containingFilterState },
-    { enabled: Boolean(containingFilterState) }
+    { actionName: 'packFilter', packFilterState: formState.packContains },
+    { enabled: Boolean(formState.packContains) }
   );
 
   const handleSearchButtonClick = () => {
@@ -82,44 +113,27 @@ const ObservabilityPacksPage = ({ data, location }) => {
   };
 
   const handleBlurSearch = () => {
-    if (!searchTerm) {
+    if (!formState.search) {
       setSearchExpanded(false);
     }
   };
 
   useDebounce(
     () => {
-      if (searchTerm && searchTerm !== '') {
+      if (formState.search && formState.search !== '') {
         tessen.track('observabilityPack', `packSearch`, {
-          packSearchTerm: searchTerm,
+          packSearchTerm: formState.search,
         });
         if (typeof window !== 'undefined' && window.newrelic) {
           window.newrelic.addPageAction('packSearch', {
-            packSearchTerm: searchTerm,
+            packSearchTerm: formState.search,
           });
         }
       }
     },
     1000,
-    [searchTerm]
+    [formState.search]
   );
-
-  useEffect(() => {
-    if (querySearch) {
-      setSearchTerm(querySearch);
-      setSearchExpanded(true);
-    }
-    if (queryFilter) {
-      setContainingFilterState(queryFilter);
-    }
-    if (querySort) {
-      setSortState(querySort);
-    }
-  }, [querySearch, queryFilter, querySort]);
-
-  useEffect(() => {
-    setView(view);
-  }, [view]);
 
   useEffect(() => {
     const duration = 500;
@@ -129,50 +143,42 @@ const ObservabilityPacksPage = ({ data, location }) => {
   }, [searchExpanded]);
 
   useEffect(() => {
-    let tempFilteredPacks = o11yPacks.filter(
-      (pack) =>
-        pack.name.toLowerCase().includes(searchTerm) ||
-        pack.description.toLowerCase().includes(searchTerm)
-    );
+    let tempFilteredPacks = queryParams.has('search')
+      ? o11yPacks.filter(
+          (pack) =>
+            pack.name.toLowerCase().includes(queryParams.get('search')) ||
+            pack.description.toLowerCase().includes(queryParams.get('search'))
+        )
+      : o11yPacks;
 
-    if (containingFilterState !== 'All') {
+    if (
+      queryParams.has('packContains') &&
+      queryParams.get('packContains') !== 'All'
+    ) {
       tempFilteredPacks = tempFilteredPacks.filter(
-        (pack) => pack[containingFilterState.toLowerCase()]?.length > 0
+        (pack) =>
+          pack[queryParams.get('packContains').toLowerCase()]?.length > 0
       );
     }
 
-    if (sortState === 'Alphabetical') {
+    if (queryParams.has('sort') && queryParams.get('sort') === 'Alphabetical') {
       tempFilteredPacks = tempFilteredPacks.sort((a, b) =>
         a.name.localeCompare(b.name)
       );
-    } else if (sortState === 'Reverse') {
+    } else if (
+      queryParams.has('sort') &&
+      queryParams.get('sort') === 'Reverse'
+    ) {
       tempFilteredPacks = tempFilteredPacks.sort((a, b) =>
         b.name.localeCompare(a.name)
       );
     }
-
-    if (searchTerm !== '') {
-      setQuerySearch(searchTerm);
-      setSearchExpanded(true);
-    } else {
-      setQuerySearch(undefined);
-      setSearchExpanded(false);
-    }
-    setQueryFilter(containingFilterState);
-    setQuerySort(sortState);
     setFilteredPacks(tempFilteredPacks);
-  }, [
-    o11yPacks,
-    searchTerm,
-    containingFilterState,
-    sortState,
-    queryFilter,
-    querySort,
-    querySearch,
-    setQueryFilter,
-    setQuerySort,
-    setQuerySearch,
-  ]);
+  }, [queryParams, o11yPacks]);
+
+  useEffect(() => {
+    setView(view);
+  }, [view]);
 
   const packContentsFilterValues = packContentsFilterGroups.map(
     (filterName) => {
@@ -267,7 +273,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
             )}
             <SearchInput
               ref={searchInputRef}
-              value={searchTerm}
+              value={formState.search || ''}
               placeholder="Search pack names / descriptions"
               css={css`
                 ${searchExpanded ? `display: block;` : `display: none;`}
@@ -276,12 +282,17 @@ const ObservabilityPacksPage = ({ data, location }) => {
                 }
               `}
               onClear={() => {
-                setSearchTerm('');
+                setFormState((state) => ({
+                  ...state,
+                  search: null,
+                }));
               }}
               onChange={(e) => {
-                setSearchTerm(e.target.value.toLowerCase());
+                setFormState((state) => ({
+                  ...state,
+                  search: e.target.value.toLowerCase(),
+                }));
               }}
-              defaultValue={querySearch}
               onBlur={handleBlurSearch}
             />
           </div>
@@ -301,9 +312,12 @@ const ObservabilityPacksPage = ({ data, location }) => {
               <Label htmlFor="sortFilter">Sort by</Label>
               <Select
                 id="sortFilter"
-                value={sortState}
+                value={formState.sort || 'Alphabetical'}
                 onChange={(e) => {
-                  setSortState(e.target.value);
+                  setFormState((state) => ({
+                    ...state,
+                    sort: e.target.value,
+                  }));
                   document.getElementById(e.target.id).blur();
                   tessen.track('observabilityPack', `packSort`, {
                     packSortState: e.target.value,
@@ -324,12 +338,15 @@ const ObservabilityPacksPage = ({ data, location }) => {
               </Label>
               <Select
                 id="packContentsFilter"
-                value={containingFilterState}
+                value={formState.packContains || 'All'}
                 onChange={(e) => {
-                  setContainingFilterState(e.target.value);
+                  setFormState((state) => ({
+                    ...state,
+                    packContains: e.target.value,
+                  }));
                   document.getElementById(e.target.id).blur();
                   tessen.track('observabilityPack', `packFilter`, {
-                    packFilterState: containingFilterState,
+                    packFilterState: formState.packContains,
                   });
                 }}
               >
@@ -348,6 +365,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
             items={Object.values(VIEWS)}
             onChange={(_e, view) => {
               setView(view);
+
               tessen.track('observabilityPack', `packViewToggle`, {
                 packViewState: view,
               });
