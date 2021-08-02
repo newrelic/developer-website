@@ -52,6 +52,8 @@ global.window = {
   },
   requestAnimationFrame: global.requestAnimationFrame,
   cancelAnimationFrame: global.cancelAnimationFrame,
+  React: require('react'),
+  ReactDOM: require('react-dom'),
 };
 function Blob() {
   return { size: null };
