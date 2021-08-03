@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
+import Cookies from 'js-cookie';
 import DevSiteSeo from '../components/DevSiteSeo';
 import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
@@ -178,8 +179,21 @@ const emptyStateContent = (pack, tabName) => {
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
   const tessen = useTessen();
+
+  const writeCookie = () => {
+    const currentEnvironment =
+      process.env.ENV || process.env.NODE_ENV || 'development';
+    const options = { expires: 1 /* days */ };
+    if (currentEnvironment !== 'development') {
+      options.domain = 'newrelic.com';
+    }
+
+    Cookies.set('newrelic-pack-id', pack.id, options);
+  };
+
   const handleInstallClick = useInstrumentedHandler(
     () => {
+      writeCookie();
       tessen.track('observabilityPack', 'packInstall', {
         packName: pack.name,
         packId: pack.id,
