@@ -188,7 +188,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
       options.domain = 'newrelic.com';
     }
 
-    Cookies.set('newrelic-pack-id', pack.id, options);
+    Cookies.set('newrelic-pack-id', String(pack.id), options);
   };
 
   const handleInstallClick = useInstrumentedHandler(
