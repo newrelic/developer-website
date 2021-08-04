@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import cx from 'classnames';
+import Cookies from 'js-cookie';
 import PageLayout from '../components/PageLayout';
 import { Button, Icon } from '@newrelic/gatsby-theme-newrelic';
 import DevSiteSeo from '../components/DevSiteSeo';
@@ -29,6 +30,21 @@ const FutureHackPage = ({ location }) => {
     margin-left: -${layout.contentPadding};
     margin-right: -${layout.contentPadding};
   `;
+
+  const writeCookie = () => {
+    const currentEnvironment =
+      process.env.ENV || process.env.NODE_ENV || 'development';
+    const options = { expires: 1 /* days */ };
+    if (currentEnvironment !== 'development') {
+      options.domain = 'newrelic.com';
+    }
+
+    Cookies.set('newrelic-pack-id', 'test', options);
+  };
+
+  useEffect(() => {
+    writeCookie();
+  });
 
   return (
     <>
