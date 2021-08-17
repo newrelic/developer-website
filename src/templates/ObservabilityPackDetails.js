@@ -226,7 +226,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
             <Tabs.BarItem id="alerts" count={pack.alerts?.length ?? 0}>
               Alerts
             </Tabs.BarItem>
-            <Tabs.BarItem id="data-sources">Data Sources</Tabs.BarItem>
+            <Tabs.BarItem id="data-sources">Data sources</Tabs.BarItem>
           </Tabs.Bar>
           <Layout.Content>
             <Tabs.Pages>
