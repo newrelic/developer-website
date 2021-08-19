@@ -21,6 +21,8 @@ import ImageSlider from '../components/ImageSlider';
 import getPackUrl from '../utils/get-pack-url';
 import Markdown from '../components/Markdown';
 import pluralize from 'pluralize';
+import { quickstart } from '../types';
+import { QUICKSTART_SUPPORT_LEVELS } from '../data/constants';
 
 const allowedElements = [
   'h1',
@@ -39,20 +41,23 @@ const allowedElements = [
 ];
 
 const SUPPORT_CONTENT = {
-  NEWRELIC: {
+  [QUICKSTART_SUPPORT_LEVELS.NEWRELIC]: {
     title: 'Built by New Relic',
     content: `Need help? [Visit our Support Center](https://support.newrelic.com) or check out our community forum, [the Explorers Hub](https://discuss.newrelic.com).`,
   },
-  VERIFIED: {
+  [QUICKSTART_SUPPORT_LEVELS.VERIFIED]: {
     title: 'Verified by New Relic',
     content: `Need help? [Visit our Support Center](https://support.newrelic.com) or check out our community forum, [the Explorers Hub](https://discuss.newrelic.com).`,
   },
-  COMMUNITY: {
+  [QUICKSTART_SUPPORT_LEVELS.COMMUNITY]: {
     title: 'Built by the community',
     content: `Need help? Visit our community forum, [the Explorers Hub](https://discuss.newrelic.com) to find an answer or post a question.`,
   },
 };
 
+/**
+ * @param {quickstart} pack
+ */
 const renderDashboards = (pack) => {
   const content = pack.dashboards.map((dashboard, index) => (
     <>
@@ -84,6 +89,9 @@ const renderDashboards = (pack) => {
   );
 };
 
+/**
+ * @param {quickstart} pack
+ */
 const renderAlerts = (pack) => {
   const alertContent = pack.alerts.map((alert, index) => (
     <>
@@ -115,6 +123,10 @@ const renderAlerts = (pack) => {
   );
 };
 
+/**
+ * @param {quickstart} pack
+ * @param {String} tabName
+ */
 const emptyStateContent = (pack, tabName) => {
   return (
     <div
@@ -175,6 +187,11 @@ const emptyStateContent = (pack, tabName) => {
   );
 };
 
+/**
+ * @param {Object} props
+ * @param {{ observabilityPacks: quickstart }} props.data
+ * @param {String} props.location
+ */
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
   const tessen = useTessen();
@@ -341,7 +358,9 @@ const ObservabilityPackDetails = ({ data, location }) => {
 };
 
 ObservabilityPackDetails.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.shape({
+    observabilityPacks: quickstart,
+  }),
   location: PropTypes.object.isRequired,
 };
 
