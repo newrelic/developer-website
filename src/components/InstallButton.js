@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import getPackNr1Url from '../utils/get-pack-nr1-url';
 import { NR1_LOGIN_URL } from '../data/constants';
+import { quickstart } from '../types';
 
-/** @param {string} packId */
-const createInstallLink = (packId) => {
-  const platformUrl = getPackNr1Url(packId);
+/**
+ * @param {String} id
+ * @returns {String}
+ */
+const createInstallLink = (id) => {
+  const platformUrl = getPackNr1Url(id);
   const url = new URL(
     `?return_to=${encodeURIComponent(platformUrl)}`,
     NR1_LOGIN_URL
@@ -15,19 +19,40 @@ const createInstallLink = (packId) => {
   return url.href;
 };
 
-const InstallButton = ({ packId, ...props }) => (
-  <Button
-    {...props}
-    as={Link}
-    to={createInstallLink(packId)}
-    variant={Button.VARIANT.PRIMARY}
-  >
-    Install Pack
-  </Button>
-);
+/**
+ * @param {quickstart} quickstart
+ * @param {String} key
+ * @returns {Boolean}
+ */
+const hasComponent = (quickstart, key) =>
+  quickstart[key] && quickstart[key].length > 0;
+
+const InstallButton = ({ quickstart, ...props }) => {
+  const hasInstallableComponent =
+    hasComponent(quickstart, 'dashboards') ||
+    hasComponent(quickstart, 'alerts');
+
+  // If there is nothing to install AND no documentation, don't show this button.
+  if (!hasInstallableComponent && !hasComponent(quickstart, 'documentation')) {
+    return null;
+  }
+
+  // If we have an install-able component, generate a URL. Otherwise, link to the
+  // first documentation supplied.
+  const url = hasInstallableComponent
+    ? createInstallLink(quickstart.id)
+    : quickstart.documentation[0].url;
+
+  return (
+    <Button {...props} as={Link} to={url} variant={Button.VARIANT.PRIMARY}>
+      {hasInstallableComponent ? 'Install Pack' : 'See installation docs'}
+    </Button>
+  );
+};
 
 InstallButton.propTypes = {
-  packId: PropTypes.string.isRequired,
+  quickstart: quickstart.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default InstallButton;

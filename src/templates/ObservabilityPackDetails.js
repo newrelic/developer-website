@@ -187,11 +187,6 @@ const emptyStateContent = (pack, tabName) => {
   );
 };
 
-/**
- * @param {Object} props
- * @param {{ observabilityPacks: quickstart }} props.data
- * @param {String} props.location
- */
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
   const tessen = useTessen();
@@ -221,7 +216,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
               gap: 1rem;
             `}
           >
-            <InstallButton packId={pack.id} onClick={handleInstallClick} />
+            <InstallButton quickstart={pack} onClick={handleInstallClick} />
           </PageLayout.Header>
           <Tabs.Bar
             css={css`
