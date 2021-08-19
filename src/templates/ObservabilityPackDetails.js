@@ -18,7 +18,6 @@ import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
 import ImageSlider from '../components/ImageSlider';
-import getPackUrl from '../utils/get-pack-url';
 import Markdown from '../components/Markdown';
 import pluralize from 'pluralize';
 import { quickstart } from '../types';
@@ -170,7 +169,7 @@ const emptyStateContent = (pack, tabName) => {
         <Button
           as={Link}
           variant={Button.VARIANT.PRIMARY}
-          to={getPackUrl(pack.logoUrl)}
+          to={pack.packUrl}
           rel="noopener noreferrer"
           instrumentation={{ packName: pack.name }}
         >
@@ -289,7 +288,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 <Button
                   as={Link}
                   variant={Button.VARIANT.PRIMARY}
-                  to={getPackUrl(pack.logoUrl)}
+                  to={pack.packUrl}
                   rel="noopener noreferrer"
                   instrumentation={{ packName: pack.name }}
                 >
@@ -367,6 +366,7 @@ export const pageQuery = graphql`
       id
       description
       logoUrl
+      packUrl
       dashboards {
         description
         name

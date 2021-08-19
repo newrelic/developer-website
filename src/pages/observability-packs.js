@@ -420,6 +420,7 @@ export const pageQuery = graphql`
         name
         websiteUrl
         logoUrl
+        packUrl
         level
         dashboards {
           description

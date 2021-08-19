@@ -34,6 +34,7 @@ const packQuery = `# gql
               }
               description
               iconUrl
+              packUrl
               id
               level
               logoUrl
@@ -73,6 +74,7 @@ const fetchPacks = async (queryString, url, token) => {
     const results = await res.json();
 
     if (results.errors) {
+      console.log(results.errors);
       throw new Error(JSON.stringify(results.errors, null, 2));
     }
 
