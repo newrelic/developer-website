@@ -17,7 +17,7 @@ export const pageContext = PropTypes.shape({
 export const quickstartDashboard = PropTypes.shape({
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   screenshots: PropTypes.arrayOf(PropTypes.string),
 });
 
@@ -37,7 +37,7 @@ export const quickstartDocumentation = PropTypes.shape({
 export const quickstart = PropTypes.shape({
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  level: PropTypes.oneOf(QUICKSTART_SUPPORT_LEVELS).isRequired,
+  level: PropTypes.oneOf(Object.values(QUICKSTART_SUPPORT_LEVELS)).isRequired,
   description: PropTypes.string.isRequired,
   authors: PropTypes.arrayOf(PropTypes.string).isRequired,
   summary: PropTypes.string,
