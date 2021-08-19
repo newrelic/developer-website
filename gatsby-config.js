@@ -188,5 +188,11 @@ module.exports = {
         environments: ['production', 'development'],
       },
     },
+    {
+      resolve: 'gatsby-plugin-gatsby-cloud',
+      options: {
+        allPageHeaders: ['Referrer-Policy: strict-origin'],
+      },
+    },
   ],
 };
