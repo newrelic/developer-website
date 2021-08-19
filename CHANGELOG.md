@@ -1,3 +1,10 @@
+## [1.52.1](https://github.com/newrelic/developer-website/compare/v1.52.0...v1.52.1) (2021-08-19)
+
+
+### Bug Fixes
+
+* add gatsby cloud plugin and referrer policy setting ([c63e3dc](https://github.com/newrelic/developer-website/commit/c63e3dc8d0e60786c1cc6795ff61886ababa4a88))
+
 # [1.52.0](https://github.com/newrelic/developer-website/compare/v1.51.0...v1.52.0) (2021-06-23)
 
 
