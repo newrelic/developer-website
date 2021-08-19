@@ -226,6 +226,15 @@ const ObservabilityPackDetails = ({ data, location }) => {
             <Tabs.BarItem id="alerts" count={pack.alerts?.length ?? 0}>
               Alerts
             </Tabs.BarItem>
+            <Tabs.BarItem
+              id="data-sources"
+              count={
+                (pack.instrumentation?.length ?? 0) +
+                (pack.documentation?.length ?? 0)
+              }
+            >
+              Data sources
+            </Tabs.BarItem>
           </Tabs.Bar>
           <Layout.Content>
             <Tabs.Pages>
@@ -245,6 +254,9 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 {pack.alerts
                   ? renderAlerts(pack)
                   : emptyStateContent(pack, 'alerts')}
+              </Tabs.Page>
+              <Tabs.Page id="data-sources">
+                {emptyStateContent(pack, 'data sources')}
               </Tabs.Page>
             </Tabs.Pages>
           </Layout.Content>
