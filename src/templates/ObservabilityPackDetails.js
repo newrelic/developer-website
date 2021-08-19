@@ -230,7 +230,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
               id="data-sources"
               count={
                 (pack.instrumentation?.length ?? 0) +
-                (pack.documentation ? 1 : 0)
+                (pack.documentation?.length ?? 0)
               }
             >
               Data sources
