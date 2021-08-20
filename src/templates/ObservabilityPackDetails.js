@@ -23,6 +23,8 @@ import pluralize from 'pluralize';
 import { quickstart } from '../types';
 import { QUICKSTART_SUPPORT_LEVELS } from '../data/constants';
 
+const { REPO_URL } = require('../data/constants');
+
 const allowedElements = [
   'h1',
   'h2',
@@ -127,6 +129,7 @@ const renderAlerts = (pack) => {
  * @param {String} tabName
  */
 const emptyStateContent = (pack, tabName) => {
+  const packUrl = pack.packUrl || REPO_URL;
   return (
     <div
       css={css`
@@ -169,7 +172,7 @@ const emptyStateContent = (pack, tabName) => {
         <Button
           as={Link}
           variant={Button.VARIANT.PRIMARY}
-          to={pack.packUrl}
+          to={packUrl}
           rel="noopener noreferrer"
           instrumentation={{ packName: pack.name }}
         >
@@ -188,6 +191,7 @@ const emptyStateContent = (pack, tabName) => {
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
+  const packUrl = pack.packUrl || REPO_URL;
   const tessen = useTessen();
   const handleInstallClick = useInstrumentedHandler(
     () => {
@@ -288,7 +292,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 <Button
                   as={Link}
                   variant={Button.VARIANT.PRIMARY}
-                  to={pack.packUrl}
+                  to={packUrl}
                   rel="noopener noreferrer"
                   instrumentation={{ packName: pack.name }}
                 >
