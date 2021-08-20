@@ -46,6 +46,12 @@ const packQuery = `# gql
               logoUrl
               name
               websiteUrl
+              packUrl
+              documentation {
+                name
+                description
+                url
+              }
             }
           }
         }
