@@ -19,7 +19,7 @@ import { useQueryParam, StringParam } from 'use-query-params';
 import { useDebounce } from 'react-use';
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 
-const { REPO_URL } = require('../data/constants');
+const { QUICKSTARTS_REPO } = require('../data/constants');
 
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
 const packContentsFilterGroups = [
@@ -380,7 +380,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
         `}
       >
         <ExternalLink
-          href={REPO_URL}
+          href={QUICKSTARTS_REPO}
           css={css`
             text-decoration: none;
           `}

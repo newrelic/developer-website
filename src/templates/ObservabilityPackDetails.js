@@ -23,7 +23,7 @@ import pluralize from 'pluralize';
 import { quickstart } from '../types';
 import { QUICKSTART_SUPPORT_LEVELS } from '../data/constants';
 
-const { REPO_URL } = require('../data/constants');
+const { QUICKSTARTS_REPO } = require('../data/constants');
 
 const allowedElements = [
   'h1',
@@ -129,7 +129,7 @@ const renderAlerts = (pack) => {
  * @param {String} tabName
  */
 const emptyStateContent = (pack, tabName) => {
-  const packUrl = pack.packUrl || REPO_URL;
+  const packUrl = pack.packUrl || QUICKSTARTS_REPO;
   return (
     <div
       css={css`
@@ -191,7 +191,7 @@ const emptyStateContent = (pack, tabName) => {
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
-  const packUrl = pack.packUrl || REPO_URL;
+  const packUrl = pack.packUrl || QUICKSTARTS_REPO;
   const tessen = useTessen();
   const handleInstallClick = useInstrumentedHandler(
     () => {
