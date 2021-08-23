@@ -5,6 +5,7 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import Tabs from '../components/Tabs';
+import EmptyTab from '../components/quickstarts/EmptyTab';
 import {
   Layout,
   PageTools,
@@ -124,71 +125,6 @@ const renderAlerts = (pack) => {
   );
 };
 
-/**
- * @param {quickstart} pack
- * @param {String} tabName
- */
-const emptyStateContent = (pack, tabName) => {
-  const packUrl = pack.packUrl || QUICKSTARTS_REPO;
-  return (
-    <div
-      css={css`
-        border: 1px solid var(--divider-color);
-        border-radius: 0.25rem;
-        padding: 1rem;
-      `}
-    >
-      <div
-        css={css`
-          display: flex;
-          justify-content: center;
-          padding: 2rem;
-        `}
-      >
-        <Icon
-          css={css`
-            font-size: 4rem;
-            color: var(--divider-color);
-          `}
-          name="edit"
-        />
-      </div>
-      <p
-        css={css`
-          text-align: center;
-        `}
-      >
-        This pack doesn't include any {tabName}. Do you think it should?
-        <br />
-        You can edit this pack to add helpful components. View the repository
-        and open a pull request.
-      </p>
-      <div
-        css={css`
-          display: flex;
-          justify-content: center;
-        `}
-      >
-        <Button
-          as={Link}
-          variant={Button.VARIANT.PRIMARY}
-          to={packUrl}
-          rel="noopener noreferrer"
-          instrumentation={{ packName: pack.name }}
-        >
-          <Icon
-            name="fe-github"
-            css={css`
-              margin-right: 7px;
-            `}
-          />
-          View Repo
-        </Button>
-      </div>
-    </div>
-  );
-};
-
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
   const packUrl = pack.packUrl || QUICKSTARTS_REPO;
@@ -261,17 +197,33 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 </Markdown>
               </Tabs.Page>
               <Tabs.Page id="dashboards">
-                {pack.dashboards
-                  ? renderDashboards(pack)
-                  : emptyStateContent(pack, 'dasboards')}
+                {pack.dashboards ? (
+                  renderDashboards(pack)
+                ) : (
+                  <EmptyTab
+                    quickstartUrl={pack.packUrl}
+                    quickstartName={pack.name}
+                    tabName="dashboard"
+                  />
+                )}
               </Tabs.Page>
               <Tabs.Page id="alerts">
-                {pack.alerts
-                  ? renderAlerts(pack)
-                  : emptyStateContent(pack, 'alerts')}
+                {pack.alerts ? (
+                  renderAlerts(pack)
+                ) : (
+                  <EmptyTab
+                    quickstartUrl={pack.packUrl}
+                    quickstartName={pack.name}
+                    tabName="alerts"
+                  />
+                )}
               </Tabs.Page>
               <Tabs.Page id="data-sources">
-                {emptyStateContent(pack, 'data sources')}
+                <EmptyTab
+                  quickstartUrl={pack.packUrl}
+                  quickstartName={pack.name}
+                  tabName="data sources"
+                />
               </Tabs.Page>
             </Tabs.Pages>
           </Layout.Content>
