@@ -7,6 +7,7 @@ import PageLayout from '../components/PageLayout';
 import Tabs from '../components/Tabs';
 import EmptyTab from '../components/quickstarts/EmptyTab';
 import QuickstartAlerts from '../components/quickstarts/QuickstartAlerts';
+import QuickstartDashboards from '../components/quickstarts/QuickstartDashboards';
 import {
   Layout,
   PageTools,
@@ -17,11 +18,8 @@ import {
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
 import ImageGallery from '../components/ImageGallery';
-import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
-import ImageSlider from '../components/ImageSlider';
 import Markdown from '../components/Markdown';
-import pluralize from 'pluralize';
 import { quickstart } from '../types';
 import {
   QUICKSTARTS_REPO,
@@ -43,40 +41,6 @@ const allowedElements = [
   'em',
   'hr',
 ];
-
-/**
- * @param {quickstart} pack
- */
-const renderDashboards = (pack) => {
-  const content = pack.dashboards.map((dashboard, index) => (
-    <>
-      <h3 key={index}>{dashboard.name}</h3>
-      <ImageSlider height={400} images={dashboard.screenshots} />
-      {dashboard.description && (
-        <>
-          <h4>Description</h4>
-          <p>{dashboard.description}</p>
-        </>
-      )}
-    </>
-  ));
-
-  return (
-    <>
-      <Intro
-        css={css`
-          margin-bottom: 16px;
-        `}
-      >
-        {pack.name} observability pack contains{' '}
-        {pluralize('dashboard', pack.dashboards?.length ?? 0, true)}. These
-        interactive visualizations let you easily explore your data, understand
-        context, and resolve problems faster.
-      </Intro>
-      {content}
-    </>
-  );
-};
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
@@ -151,7 +115,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
               </Tabs.Page>
               <Tabs.Page id="dashboards">
                 {pack.dashboards ? (
-                  renderDashboards(pack)
+                  <QuickstartDashboards quickstart={pack} />
                 ) : (
                   <EmptyTab
                     quickstartUrl={pack.packUrl}
