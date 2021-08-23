@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import Tabs from '../components/Tabs';
 import EmptyTab from '../components/quickstarts/EmptyTab';
+import QuickstartAlerts from '../components/quickstarts/QuickstartAlerts';
 import {
   Layout,
   PageTools,
@@ -73,40 +74,6 @@ const renderDashboards = (pack) => {
         context, and resolve problems faster.
       </Intro>
       {content}
-    </>
-  );
-};
-
-/**
- * @param {quickstart} pack
- */
-const renderAlerts = (pack) => {
-  const alertContent = pack.alerts.map((alert, index) => (
-    <>
-      <h3 key={index}>{alert.name}</h3>
-      {alert.description && (
-        <>
-          <h4>Description</h4>
-          <p>{alert.description}</p>
-        </>
-      )}
-    </>
-  ));
-
-  return (
-    <>
-      <Intro
-        css={css`
-          margin-bottom: 16px;
-        `}
-      >
-        {pack.name} observability pack contains{' '}
-        {pluralize('alert', pack.alerts?.length ?? 0, true)}. These alerts
-        detect changes in key performance metrics. Integrate these alerts with
-        your favorite tools (like Slack, PagerDuty, etc.) and New Relic will let
-        you know when something needs your attention.
-      </Intro>
-      {alertContent}
     </>
   );
 };
@@ -195,7 +162,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
               </Tabs.Page>
               <Tabs.Page id="alerts">
                 {pack.alerts ? (
-                  renderAlerts(pack)
+                  <QuickstartAlerts quickstart={pack} />
                 ) : (
                   <EmptyTab
                     quickstartUrl={pack.packUrl}
