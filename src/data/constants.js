@@ -31,3 +31,6 @@ export const QUICKSTART_ALERT_TYPES = {
   OUTLIER: 'OUTLIER',
   STATIC: 'STATIC',
 };
+
+export const QUICKSTARTS_REPO =
+  'https://github.com/newrelic/newrelic-observability-packs';

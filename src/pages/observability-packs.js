@@ -19,6 +19,8 @@ import { useQueryParam, StringParam } from 'use-query-params';
 import { useDebounce } from 'react-use';
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 
+const { QUICKSTARTS_REPO } = require('../data/constants');
+
 const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
 const packContentsFilterGroups = [
   'All',
@@ -378,7 +380,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
         `}
       >
         <ExternalLink
-          href="https://github.com/newrelic/newrelic-observability-packs"
+          href={QUICKSTARTS_REPO}
           css={css`
             text-decoration: none;
           `}
@@ -420,6 +422,7 @@ export const pageQuery = graphql`
         name
         websiteUrl
         logoUrl
+        packUrl
         level
         dashboards {
           description

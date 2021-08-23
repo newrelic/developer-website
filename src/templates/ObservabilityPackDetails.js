@@ -18,11 +18,12 @@ import ImageGallery from '../components/ImageGallery';
 import Intro from '../components/Intro';
 import InstallButton from '../components/InstallButton';
 import ImageSlider from '../components/ImageSlider';
-import getPackUrl from '../utils/get-pack-url';
 import Markdown from '../components/Markdown';
 import pluralize from 'pluralize';
 import { quickstart } from '../types';
 import { QUICKSTART_SUPPORT_LEVELS } from '../data/constants';
+
+const { QUICKSTARTS_REPO } = require('../data/constants');
 
 const allowedElements = [
   'h1',
@@ -128,6 +129,7 @@ const renderAlerts = (pack) => {
  * @param {String} tabName
  */
 const emptyStateContent = (pack, tabName) => {
+  const packUrl = pack.packUrl || QUICKSTARTS_REPO;
   return (
     <div
       css={css`
@@ -170,7 +172,7 @@ const emptyStateContent = (pack, tabName) => {
         <Button
           as={Link}
           variant={Button.VARIANT.PRIMARY}
-          to={getPackUrl(pack.logoUrl)}
+          to={packUrl}
           rel="noopener noreferrer"
           instrumentation={{ packName: pack.name }}
         >
@@ -189,6 +191,7 @@ const emptyStateContent = (pack, tabName) => {
 
 const ObservabilityPackDetails = ({ data, location }) => {
   const pack = data.observabilityPacks;
+  const packUrl = pack.packUrl || QUICKSTARTS_REPO;
   const tessen = useTessen();
   const handleInstallClick = useInstrumentedHandler(
     () => {
@@ -289,7 +292,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 <Button
                   as={Link}
                   variant={Button.VARIANT.PRIMARY}
-                  to={getPackUrl(pack.logoUrl)}
+                  to={packUrl}
                   rel="noopener noreferrer"
                   instrumentation={{ packName: pack.name }}
                 >
@@ -367,6 +370,7 @@ export const pageQuery = graphql`
       id
       description
       logoUrl
+      packUrl
       dashboards {
         description
         name

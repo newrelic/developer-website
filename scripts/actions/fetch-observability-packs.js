@@ -34,6 +34,7 @@ const packQuery = `# gql
               }
               description
               iconUrl
+              packUrl
               id
               level
               logoUrl

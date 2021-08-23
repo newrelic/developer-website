@@ -22,6 +22,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/apache/logo.svg",
     "name": "Apache",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/apache",
     "websiteUrl": "https://httpd.apache.org/"
   },
   {
@@ -70,6 +71,7 @@
     "level": "NEWRELIC",
     "logoUrl": null,
     "name": "Browser examples",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/browser",
     "websiteUrl": null
   },
   {
@@ -93,6 +95,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/cassandra/logo.png",
     "name": "Cassandra",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/cassandra",
     "websiteUrl": "https://cassandra.apache.org/"
   },
   {
@@ -116,6 +119,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/consul/logo.png",
     "name": "Consul",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/consul",
     "websiteUrl": "https://www.consul.io/"
   },
   {
@@ -139,6 +143,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/couchbase/logo.svg",
     "name": "Couchbase",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/couchbase",
     "websiteUrl": "https://www.couchbase.com/"
   },
   {
@@ -164,6 +169,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/elasticsearch/logo.png",
     "name": "Elasticsearch",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/elasticsearch",
     "websiteUrl": "https://www.elastic.co/what-is/elasticsearch"
   },
   {
@@ -187,6 +193,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/gatsby-build/logo.png",
     "name": "Gatsby Build",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gatsby-build",
     "websiteUrl": null
   },
   {
@@ -208,6 +215,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/golden-signals-web/logo.png",
     "name": "Golden Signals for Web Servers",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golden-signals-web",
     "websiteUrl": null
   },
   {
@@ -234,6 +242,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/haproxy/logo.png",
     "name": "HAProxy",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/haproxy",
     "websiteUrl": "https://www.haproxy.org/"
   },
   {
@@ -257,6 +266,7 @@
     "level": "NEWRELIC",
     "logoUrl": null,
     "name": "Infrastructure",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/infrastructure",
     "websiteUrl": null
   },
   {
@@ -281,6 +291,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/jmx/logo.png",
     "name": "JMX (Java)",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/jmx",
     "websiteUrl": "https://docs.oracle.com/javase/tutorial/jmx/overview/index.html"
   },
   {
@@ -307,6 +318,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/kafka/logo.png",
     "name": "Kafka",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/kafka",
     "websiteUrl": "https://kafka.apache.org/"
   },
   {
@@ -330,6 +342,7 @@
     "level": "NEWRELIC",
     "logoUrl": null,
     "name": "LAMP stack",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/lamp",
     "websiteUrl": null
   },
   {
@@ -353,6 +366,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/memcached/logo.png",
     "name": "Memcached",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/memcached",
     "websiteUrl": "https://www.newrelic.com"
   },
   {
@@ -378,6 +392,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/mongodb/logo.jpeg",
     "name": "MongoDB",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/mongodb",
     "websiteUrl": "https://www.mongodb.com/"
   },
   {
@@ -401,6 +416,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/mysql/logo.png",
     "name": "MySQL / MariaDB",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/mysql",
     "websiteUrl": "https://en.wikipedia.org/wiki/MySQL"
   },
   {
@@ -426,6 +442,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/nagios/logo.jpeg",
     "name": "Nagios",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/nagios",
     "websiteUrl": "https://www.nagios.org/"
   },
   {
@@ -449,6 +466,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/nginx/logo.jpeg",
     "name": "Nginx",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/nginx",
     "websiteUrl": "https://nginx.org/"
   },
   {
@@ -472,6 +490,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/php/logo.jpg",
     "name": "PHP",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php",
     "websiteUrl": "https://www.php.net/"
   },
   {
@@ -496,6 +515,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/postgresql/logo.jpeg",
     "name": "PostgreSQL",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/postgresql",
     "websiteUrl": "https://www.postgresql.org/"
   },
   {
@@ -519,6 +539,7 @@
     "level": "NEWRELIC",
     "logoUrl": null,
     "name": "Prometheus Node Exporter for Mac OS",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/prometheus-node-exporter-macos",
     "websiteUrl": null
   },
   {
@@ -542,6 +563,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/rabbitmq/logo.svg",
     "name": "RabbitMQ",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/rabbitmq",
     "websiteUrl": "https://www.rabbitmq.com/"
   },
   {
@@ -567,6 +589,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/redis/logo.png",
     "name": "Redis",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/redis",
     "websiteUrl": "https://redis.io/"
   },
   {
@@ -592,6 +615,7 @@
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/varnish/logo.png",
     "name": "Varnish",
+    "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/varnish",
     "websiteUrl": "https://varnish-cache.org/"
   }
 ]
