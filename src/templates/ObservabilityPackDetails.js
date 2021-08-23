@@ -22,9 +22,10 @@ import ImageSlider from '../components/ImageSlider';
 import Markdown from '../components/Markdown';
 import pluralize from 'pluralize';
 import { quickstart } from '../types';
-import { QUICKSTART_SUPPORT_LEVELS } from '../data/constants';
-
-const { QUICKSTARTS_REPO } = require('../data/constants');
+import {
+  QUICKSTARTS_REPO,
+  QUICKSTART_SUPPORT_CONTENT,
+} from '../data/constants';
 
 const allowedElements = [
   'h1',
@@ -41,21 +42,6 @@ const allowedElements = [
   'em',
   'hr',
 ];
-
-const SUPPORT_CONTENT = {
-  [QUICKSTART_SUPPORT_LEVELS.NEWRELIC]: {
-    title: 'Built by New Relic',
-    content: `Need help? [Visit our Support Center](https://support.newrelic.com) or check out our community forum, [the Explorers Hub](https://discuss.newrelic.com).`,
-  },
-  [QUICKSTART_SUPPORT_LEVELS.VERIFIED]: {
-    title: 'Verified by New Relic',
-    content: `Need help? [Visit our Support Center](https://support.newrelic.com) or check out our community forum, [the Explorers Hub](https://discuss.newrelic.com).`,
-  },
-  [QUICKSTART_SUPPORT_LEVELS.COMMUNITY]: {
-    title: 'Built by the community',
-    content: `Need help? Visit our community forum, [the Explorers Hub](https://discuss.newrelic.com) to find an answer or post a question.`,
-  },
-};
 
 /**
  * @param {quickstart} pack
@@ -287,10 +273,12 @@ const ObservabilityPackDetails = ({ data, location }) => {
                   text-transform: uppercase;
                 `}
               >
-                {SUPPORT_CONTENT[`${pack.level}`].title}
+                {QUICKSTART_SUPPORT_CONTENT[`${pack.level}`].title}
               </h5>
               <p>
-                <Markdown>{SUPPORT_CONTENT[`${pack.level}`].content}</Markdown>
+                <Markdown>
+                  {QUICKSTART_SUPPORT_CONTENT[`${pack.level}`].content}
+                </Markdown>
               </p>
             </PageTools.Section>
             <PageTools.Section>
