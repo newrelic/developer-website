@@ -19,3 +19,15 @@ export const NR1_BASE_URL = 'https://staging-one.newrelic.com';
 
 export const NR1_PACK_DETAILS_NERDLET =
   'catalog-pack-details.catalog-pack-contents';
+
+export const QUICKSTART_SUPPORT_LEVELS = {
+  NEWRELIC: 'NEWRELIC',
+  VERIFIED: 'VERIFIED',
+  COMMUNITY: 'COMMUNITY',
+};
+
+export const QUICKSTART_ALERT_TYPES = {
+  BASELINE: 'BASELINE',
+  OUTLIER: 'OUTLIER',
+  STATIC: 'STATIC',
+};
