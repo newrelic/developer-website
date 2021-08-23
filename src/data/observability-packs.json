@@ -1,5 +1,6 @@
 [
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Jakub Kotkowiak"
@@ -26,6 +27,7 @@
     "websiteUrl": "https://httpd.apache.org/"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Darren Doyle.",
@@ -75,6 +77,7 @@
     "websiteUrl": null
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Daniel Gola"
@@ -99,6 +102,7 @@
     "websiteUrl": "https://cassandra.apache.org/"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Daniel Gola"
@@ -123,6 +127,7 @@
     "websiteUrl": "https://www.consul.io/"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Daniel Gola"
@@ -147,6 +152,50 @@
     "websiteUrl": "https://www.couchbase.com/"
   },
   {
+    "alerts": [
+      {
+        "details": "This alert triggers when the reported health of an Elasticsearch cluster is 'red'.\n\n",
+        "name": "Cluster Health",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/elasticsearch/alerts/Cluster Health.yml"
+      },
+      {
+        "details": "This alert will trigger when the File Store of an Elasticsearch cluster node is >90% full.\n\n",
+        "name": "FS Utilization Percent",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/elasticsearch/alerts/FS Utilization Percent.yml"
+      },
+      {
+        "details": "This alert will trigger when the Flush latency for an Elasticsearch cluster's primary shards is >5ms.\nThis is measured by: # of Flushes / Time spent on Flushes (ms) for the evaluated time window.\nIncreased Flush Latency is an indication that your disks cannot keep up with your cluster's demands and you may need to reconfigure the 'flush_threshold_size' setting to reduce the translog size needed to trigger a flush operation.\n\n",
+        "name": "Flush Latency Threshold",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/elasticsearch/alerts/Flush Latency Threshold.yml"
+      },
+      {
+        "details": "This alert triggers when the reported health of an Elasticsearch index is 'red'.\n\n",
+        "name": "Index Health",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/elasticsearch/alerts/Index Health.yml"
+      },
+      {
+        "details": "This alert will trigger when the Indexing latency for an Elasticsearch cluster's primary shards is >5ms.\nThis is measured by: # of Docs Indexed / Time spent Indexing (ms) for the evaluated time window.\nIncreased Flush Latency is an indication that you are trying to index too many documents at one time and you may need to reconfigured your settings to increase performance.\n\n",
+        "name": "Indexing Latency Threshold",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/elasticsearch/alerts/Indexing Latency Threshold.yml"
+      },
+      {
+        "details": "This alert will trigger when the JVM Heap utilization of an Elasticsearch cluster node is >90%.\n\n",
+        "name": "JVM Heap Utilization Percent",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/elasticsearch/alerts/JVM Heap Utilization Percent.yml"
+      },
+      {
+        "details": "This alert is triggered when the count of active queries on primary shards deviates more than 2 standard deviations above or below the baseline.\nThis can be a leading indicator of a potential loss of service or flood of requests.\n\n",
+        "name": "Query Load Baseline",
+        "type": "BASELINE",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/elasticsearch/alerts/Query Load Baseline.yml"
+      }
+    ],
     "authors": [
       "Zack Mutchler"
     ],
@@ -173,6 +222,7 @@
     "websiteUrl": "https://www.elastic.co/what-is/elasticsearch"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Ruairi Douglas"
@@ -197,6 +247,38 @@
     "websiteUrl": null
   },
   {
+    "alerts": [
+      {
+        "details": "This alert fires when a host's CPU usage goes above 90 percent for a period of 5 minutes.\n\n",
+        "name": "CPU Usage",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/golden-signals-web/alerts/cpu.yml"
+      },
+      {
+        "details": "This alert fires when 10 percent of the transactions against an application end with an error, over a period of 5 minutes.\n\n",
+        "name": "Errors",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/golden-signals-web/alerts/errors.yml"
+      },
+      {
+        "details": "When memory limits are reached, applications can do weird and unpredictable things.\nThis alert fires when the percentage of memory used on a host exceeds 90 percent for 5 minutes.\n\n",
+        "name": "Memory Usage",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/golden-signals-web/alerts/memory.yml"
+      },
+      {
+        "details": "This alert fires when the average transaction duration is above 5 seconds for 5 minutes.\n\n",
+        "name": "Response time",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/golden-signals-web/alerts/response_time.yml"
+      },
+      {
+        "details": "Throughput is a great way to measure the health of your applications.\nThis alert fires when the throughput of a web application drops below 5 transactions in a 5 minute period.\n\n",
+        "name": "Throughput",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/golden-signals-web/alerts/throughput.yml"
+      }
+    ],
     "authors": [
       "New Relic",
       "Alec Swanson"
@@ -219,6 +301,7 @@
     "websiteUrl": null
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Jakub Kotkowiak"
@@ -246,6 +329,7 @@
     "websiteUrl": "https://www.haproxy.org/"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Darren Doyle"
@@ -270,6 +354,7 @@
     "websiteUrl": null
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Jakub Kotkowiak"
@@ -295,6 +380,7 @@
     "websiteUrl": "https://docs.oracle.com/javase/tutorial/jmx/overview/index.html"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Jakub Kotkowiak"
@@ -322,6 +408,7 @@
     "websiteUrl": "https://kafka.apache.org/"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Stijn Polfliet"
@@ -346,6 +433,7 @@
     "websiteUrl": null
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Daniel Gola"
@@ -370,6 +458,7 @@
     "websiteUrl": "https://www.newrelic.com"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Daniel Gola"
@@ -396,6 +485,32 @@
     "websiteUrl": "https://www.mongodb.com/"
   },
   {
+    "alerts": [
+      {
+        "details": "This alert is triggered when the aggregate number of pending reads and writes in the MySQL buffer pool is greater than 2 for 5 minutes, which indicates the database engine is backlogged and waiting on resources.\n\n",
+        "name": "Innodb Pending Reads and Writes",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/mysql/alerts/Innodb Pending Reads and Writes.yml"
+      },
+      {
+        "details": "This alert is triggered when there are greater than 1 errors against the max_connections limit in a 5 minute window, which indicates you have requests to your MySQL instance that are failing to connect.\nThis setting's default is 501, but can vary based on the underlying resources available to your instance. You can review your current max_connections limit with this query:\nSHOW VARIABLES LIKE 'max_connections';\n\n",
+        "name": "Max Connection Errors per Second",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/mysql/alerts/Max Connection Errors per Second.yml"
+      },
+      {
+        "details": "This alert is triggered when the current rate of Questions is greater than 2 standard deviations above the baseline for 60s, which could be an early indicator of a saturation problem for your instance.\nIt is important to note that this alert is disabled by default and you need to edit the configuration in New Relic One to add a targeted MySQL instance:\n\"WHERE displayName = 'MySql Instance Name'\"\nThis allows the baseline to be calculated against a single instance instead of all running MySQL instances being monitored.\n\n",
+        "name": "Questions per Second",
+        "type": "BASELINE",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/mysql/alerts/Questions per Second.yml"
+      },
+      {
+        "details": "This alert is triggered when the number of slow queries per second is greater than 5 for 5 minutes, which could indicate capacity issues or a query that has been changed and is experiencing performance issues.\nThe Slow_queries counter increments based on your settings applied to MySQL's long_query_time parameter (default 10s), which you can review with this query:\nSHOW VARIABLES LIKE 'long_query_time';\n\n",
+        "name": "Slow Queries per Second",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/mysql/alerts/Slow Queries per Second.yml"
+      }
+    ],
     "authors": [
       "New Relic"
     ],
@@ -420,6 +535,7 @@
     "websiteUrl": "https://en.wikipedia.org/wiki/MySQL"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Jakub Kotkowiak",
@@ -446,6 +562,7 @@
     "websiteUrl": "https://www.nagios.org/"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Daniel Gola"
@@ -470,6 +587,26 @@
     "websiteUrl": "https://nginx.org/"
   },
   {
+    "alerts": [
+      {
+        "details": "This alert is triggered when the total duration of the web transaction is longer than 10 seconds during 5 minutes\n\n",
+        "name": "High duration",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/php/alerts/duration.yml"
+      },
+      {
+        "details": "This alert is triggered when the error percentage of web transactions is higher than 5% during 5 minutes\n\n",
+        "name": "High error rate",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/php/alerts/error rate.yml"
+      },
+      {
+        "details": "This alert is triggered when the throughput is 0 for 5 minutes\n\n",
+        "name": "Low throughput",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.10.0/packs/php/alerts/throughput.yml"
+      }
+    ],
     "authors": [
       "New Relic",
       "Stijn Polfliet"
@@ -494,6 +631,7 @@
     "websiteUrl": "https://www.php.net/"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Daniel Gola"
@@ -519,6 +657,7 @@
     "websiteUrl": "https://www.postgresql.org/"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Samuel Vandamme"
@@ -543,6 +682,7 @@
     "websiteUrl": null
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Daniel Gola"
@@ -567,6 +707,7 @@
     "websiteUrl": "https://www.rabbitmq.com/"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Jakub Kotkowiak"
@@ -593,6 +734,7 @@
     "websiteUrl": "https://redis.io/"
   },
   {
+    "alerts": null,
     "authors": [
       "New Relic",
       "Jakub Kotkowiak"

@@ -32,6 +32,12 @@ const packQuery = `# gql
                 screenshots
                 url
               }
+              alerts {
+                name
+                details
+                type
+                url
+              }
               description
               iconUrl
               packUrl
