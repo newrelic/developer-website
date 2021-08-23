@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
-import { QUICKSTART_SUPPORT_LEVELS } from './data/constants';
+import {
+  QUICKSTART_SUPPORT_LEVELS,
+  QUICKSTART_ALERT_TYPES,
+} from './data/constants';
 
 // NOTE: while creating a recursive data structure is feasible,
 // it is not very performant.
@@ -24,7 +27,7 @@ export const quickstartDashboard = PropTypes.shape({
 export const quickstartAlert = PropTypes.shape({
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['BASELINE', 'OUTLIER', 'STATIC']).isRequired,
+  type: PropTypes.oneOf(Object.values(QUICKSTART_ALERT_TYPES)).isRequired,
   details: PropTypes.string,
 });
 
