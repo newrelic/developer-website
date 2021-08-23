@@ -284,6 +284,11 @@ export const pageQuery = graphql`
         screenshots
         url
       }
+      alerts {
+        details
+        name
+        url
+      }
       authors
     }
   }

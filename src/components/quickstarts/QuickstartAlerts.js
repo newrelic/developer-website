@@ -1,4 +1,7 @@
 import React from 'react';
+import { css } from '@emotion/react';
+import pluralize from 'pluralize';
+import Intro from '../Intro';
 import { quickstart } from '../../types';
 
 const QuickstartAlerts = ({ quickstart }) => (
@@ -15,17 +18,25 @@ const QuickstartAlerts = ({ quickstart }) => (
       you know when something needs your attention.
     </Intro>
 
-    {quickstart.alerts.map((alert, index) => (
-      <div key={index}>
-        <h3>{alert.name}</h3>
-        {alert.details && (
-          <>
-            <h4>Description</h4>
-            <p>{alert.details}</p>
-          </>
-        )}
-      </div>
-    ))}
+    <dl>
+      {quickstart.alerts.map((alert, index) => (
+        <div
+          key={index}
+          css={css`
+            margin-bottom: 1rem;
+          `}
+        >
+          <dt
+            css={css`
+              font-weight: bold;
+            `}
+          >
+            {alert.name}
+          </dt>
+          {alert.details && <dd>{alert.details}</dd>}
+        </div>
+      ))}
+    </dl>
   </>
 );
 
