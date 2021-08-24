@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import pluralize from 'pluralize';
+import { Surface, Tag } from '@newrelic/gatsby-theme-newrelic';
 import Intro from '../Intro';
 import { quickstart } from '../../types';
 
@@ -18,25 +19,40 @@ const QuickstartAlerts = ({ quickstart }) => (
       you know when something needs your attention.
     </Intro>
 
-    {quickstart.alerts.map((alert, index) => (
-      <div
-        key={index}
-        css={css`
-          margin-bottom: 1rem;
-          padding-bottom: 1rem;
-          border-bottom: 1px solid var(--divider-color);
-        `}
-      >
-        <h3>{alert.name}</h3>
-        {alert.type && (
-          <>
-            <h4>Alert Type</h4>
-            <p>{alert.type}</p>
-          </>
-        )}
-        {alert.details && <p>{alert.details}</p>}
-      </div>
-    ))}
+    <div
+      css={css`
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(3, 1fr);
+
+        @media (max-width: 1180px) {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      `}
+    >
+      {quickstart.alerts.map((alert, index) => (
+        <Surface
+          key={index}
+          base={Surface.BASE.PRIMARY}
+          css={css`
+            padding: 1rem;
+          `}
+        >
+          <h3>{alert.name}</h3>
+          {alert.type && (
+            <Tag
+              css={css`
+                display: inline-block;
+                margin-bottom: 1rem;
+              `}
+            >
+              Alert Type: {alert.type}
+            </Tag>
+          )}
+          {alert.details && <p>{alert.details}</p>}
+        </Surface>
+      ))}
+    </div>
   </>
 );
 
