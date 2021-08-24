@@ -18,25 +18,25 @@ const QuickstartAlerts = ({ quickstart }) => (
       you know when something needs your attention.
     </Intro>
 
-    <dl>
-      {quickstart.alerts.map((alert, index) => (
-        <div
-          key={index}
-          css={css`
-            margin-bottom: 1rem;
-          `}
-        >
-          <dt
-            css={css`
-              font-weight: bold;
-            `}
-          >
-            {alert.name}
-          </dt>
-          {alert.details && <dd>{alert.details}</dd>}
-        </div>
-      ))}
-    </dl>
+    {quickstart.alerts.map((alert, index) => (
+      <div
+        key={index}
+        css={css`
+          margin-bottom: 1rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid var(--divider-color);
+        `}
+      >
+        <h3>{alert.name}</h3>
+        {alert.type && (
+          <>
+            <h4>Alert Type</h4>
+            <p>{alert.type}</p>
+          </>
+        )}
+        {alert.details && <p>{alert.details}</p>}
+      </div>
+    ))}
   </>
 );
 

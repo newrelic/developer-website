@@ -252,6 +252,7 @@ export const pageQuery = graphql`
         details
         name
         url
+        type
       }
       authors
     }
