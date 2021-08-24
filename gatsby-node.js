@@ -120,7 +120,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
     createPage({
       path: path.join(slug, '/'),
-      component: path.resolve('./src/templates/ObservabilityPackDetails.js'),
+      component: path.resolve('./src/templates/QuickstartDetails.js'),
       context: {
         id,
       },
