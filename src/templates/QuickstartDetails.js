@@ -120,7 +120,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                   <EmptyTab
                     quickstartUrl={pack.packUrl}
                     quickstartName={pack.name}
-                    tabName="dashboard"
+                    tabName="dashboards"
                   />
                 )}
               </Tabs.Page>
