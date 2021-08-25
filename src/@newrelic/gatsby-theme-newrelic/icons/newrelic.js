@@ -11,7 +11,6 @@ import relicans from './newrelic/relicans';
 import share from './newrelic/share';
 import nerdlog from './newrelic/nerdlog';
 import checkShield from './newrelic/check-shield';
-import documentation from './newrelic/documentation';
 
 export default {
   ...defaultIcons,
@@ -27,5 +26,4 @@ export default {
   share,
   nerdlog,
   'check-shield': checkShield,
-  documentation,
 };

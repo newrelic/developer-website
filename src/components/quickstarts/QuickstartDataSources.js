@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import pluralize from 'pluralize';
-import { Surface, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
+import { Surface, Link, Tag } from '@newrelic/gatsby-theme-newrelic';
 import Intro from '../Intro';
 import { quickstart } from '../../types';
 
@@ -34,36 +34,26 @@ const QuickstartDataSources = ({ quickstart }) => (
       {quickstart.documentation.map((doc, index) => (
         <Surface
           key={index}
+          as={Link}
+          to={doc.url}
           base={Surface.BASE.PRIMARY}
           css={css`
             padding: 1rem;
+            color: inherit;
           `}
           interactive
         >
-          <Link
-            to={doc.url}
+          <h3>{doc.name}</h3>
+          <Tag
             css={css`
-              text-decoration: none;
-              color: inherit;
+              display: inline-block;
+              margin-bottom: 1rem;
             `}
           >
-            <h3
-              css={css`
-                display: flex;
-                align-items: center;
-              `}
-            >
-              <Icon name="nr-documentation" />
-              <span
-                css={css`
-                  margin-left: 0.5rem;
-                `}
-              >
-                {doc.name}
-              </span>
-            </h3>
-            {doc.description && <p>{doc.description}</p>}
-          </Link>
+            Docs
+          </Tag>
+
+          {doc.description && <p>{doc.description}</p>}
         </Surface>
       ))}
     </div>
