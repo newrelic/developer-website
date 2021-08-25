@@ -7,7 +7,7 @@ import {
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
-const EmbedLayout = ({ children }) => {
+const QuickStartLayout = ({ children }) => {
   return (
     <>
       <GlobalHeader />
@@ -27,8 +27,8 @@ const EmbedLayout = ({ children }) => {
   );
 };
 
-EmbedLayout.propTypes = {
+QuickStartLayout.propTypes = {
   children: PropTypes.node,
 };
 
-export default EmbedLayout;
+export default QuickStartLayout;
