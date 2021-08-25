@@ -123,6 +123,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: path.resolve('./src/templates/ObservabilityPackDetails.js'),
       context: {
         id,
+        layout: 'QuickStartLayout',
       },
     });
   });

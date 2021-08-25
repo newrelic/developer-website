@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Layout,
   GlobalHeader,
   MobileHeader,
-  Navigation,
-  NavItem,
 } from '@newrelic/gatsby-theme-newrelic';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
