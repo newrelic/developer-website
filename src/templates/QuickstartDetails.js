@@ -215,13 +215,6 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 </Markdown>
               </p>
             </PageTools.Section>
-            <PageTools.Section>
-              <PageTools.Title>Requirements</PageTools.Title>
-              <ul>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-              </ul>
-            </PageTools.Section>
           </Layout.PageTools>
         </PageLayout>
       </Tabs>
