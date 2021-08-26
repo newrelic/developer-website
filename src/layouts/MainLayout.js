@@ -18,11 +18,24 @@ import pages from '../data/nav.yml';
 import useSDK from '../hooks/useSDK';
 import { SdkContext } from '../components/SdkContext';
 
+import { useQuery } from '@apollo/react-hooks';
+import AuthContext, { userQuery } from '../components/AuthContext';
+
 const MainLayout = ({ children, pageContext }) => {
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
   const { fileRelativePath } = pageContext;
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+
+  const { loading, error, data } = useQuery(userQuery);
+
+  const authDetails =
+    !loading && !error
+      ? {
+          isAuthenticated: !!data?.actor?.user?.id,
+          user: { ...data?.actor?.user },
+        }
+      : { isAuthenticated: false, user: null };
 
   useEffect(() => {
     setIsMobileNavOpen(false);
@@ -31,7 +44,7 @@ const MainLayout = ({ children, pageContext }) => {
   const sdkStatus = useSDK();
 
   return (
-    <>
+    <AuthContext.Provider value={authDetails}>
       <GlobalHeader />
       <MobileHeader>
         <Navigation searchTerm={searchTerm}>
@@ -84,7 +97,7 @@ const MainLayout = ({ children, pageContext }) => {
         <Layout.Footer fileRelativePath={fileRelativePath} />
       </Layout>
       <CookieConsentDialog />
-    </>
+    </AuthContext.Provider>
   );
 };
 

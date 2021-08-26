@@ -1,10 +1,12 @@
 import React from 'react';
 import { PageContext } from '../src/components/PageContext';
 import { Global, css } from '@emotion/react';
+import { ApolloProvider } from '@apollo/react-hooks';
+import { client } from '../src/apollo/client';
 
 const wrapPageElement = ({ element, props }) => {
   return (
-    <>
+    <ApolloProvider client={client}>
       <Global
         styles={css`
           // add additional styles needed for gatsby-remark-autolink-headers
@@ -38,7 +40,7 @@ const wrapPageElement = ({ element, props }) => {
       <PageContext.Provider value={props.pageContext}>
         {element}
       </PageContext.Provider>
-    </>
+    </ApolloProvider>
   );
 };
 
