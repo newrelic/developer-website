@@ -24,6 +24,8 @@ import { quickstart } from '../types';
 import {
   QUICKSTARTS_REPO,
   QUICKSTART_SUPPORT_CONTENT,
+  SIGNUP_LINK,
+  LOGIN_LINK,
 } from '../data/constants';
 
 const allowedElements = [
@@ -179,10 +181,9 @@ const ObservabilityPackDetails = ({ data, location }) => {
               <PageTools.Title>How to use this pack</PageTools.Title>
               <ol>
                 <li>
-                  <Link to="https://newrelic.com/signup">Sign Up</Link> for a
-                  free New Relic account (or{' '}
-                  <Link to="https://login.newrelic.com/login">Log In</Link> to
-                  your existing account)
+                  <Link to={SIGNUP_LINK}>Sign Up</Link> for a free New Relic
+                  account (or <Link to={LOGIN_LINK}>Log In</Link> to your
+                  existing account)
                 </li>
                 <li>Click the green install button above</li>
                 <li>

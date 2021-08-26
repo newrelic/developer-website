@@ -49,3 +49,6 @@ export const QUICKSTART_ALERT_TYPES = {
 
 export const QUICKSTARTS_REPO =
   'https://github.com/newrelic/newrelic-observability-packs';
+
+export const SIGNUP_LINK = 'https://newrelic.com/signup';
+export const LOGIN_LINK = 'https://login.newrelic.com/login';
