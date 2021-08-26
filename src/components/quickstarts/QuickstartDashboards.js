@@ -4,6 +4,7 @@ import pluralize from 'pluralize';
 import Intro from '../Intro';
 import ImageSlider from '../ImageSlider';
 import { quickstart } from '../../types';
+import DividingLine from '../DividingLine';
 
 const QuickstartDashboards = ({ quickstart }) => (
   <>
@@ -23,6 +24,7 @@ const QuickstartDashboards = ({ quickstart }) => (
         <h3>{dashboard.name}</h3>
         {dashboard.description && <p>{dashboard.description}</p>}
         <ImageSlider height={400} images={dashboard.screenshots} />
+        {index !== quickstart.dashboards.length - 1 && <DividingLine />}
       </div>
     ))}
   </>
