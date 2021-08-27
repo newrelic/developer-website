@@ -213,6 +213,22 @@ const ObservabilityPacksPage = ({ data, location }) => {
           }
         `}
       >
+        <SearchInput
+          ref={searchInputRef}
+          value={searchTerm}
+          placeholder="Search pack names / descriptions"
+          css={css`
+            width: 100%;
+          `}
+          onClear={() => {
+            setSearchTerm('');
+          }}
+          onChange={(e) => {
+            setSearchTerm(e.target.value.toLowerCase());
+          }}
+          defaultValue={querySearch}
+          onBlur={handleBlurSearch}
+        />
         <span>Showing {filteredPacks.length} results</span>
         <div
           css={css`
