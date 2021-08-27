@@ -38,6 +38,11 @@ const packQuery = `# gql
                 type
                 url
               }
+              documentation {
+                name
+                url
+                description
+              }
               description
               iconUrl
               packUrl
