@@ -20,6 +20,7 @@ import {
 import ImageGallery from '../components/ImageGallery';
 import InstallButton from '../components/InstallButton';
 import Markdown from '../components/Markdown';
+import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
 import { quickstart } from '../types';
 import {
   QUICKSTARTS_REPO,
@@ -138,11 +139,15 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 )}
               </Tabs.Page>
               <Tabs.Page id="data-sources">
-                <EmptyTab
-                  quickstartUrl={pack.packUrl}
-                  quickstartName={pack.name}
-                  tabName="data sources"
-                />
+                {pack.documentation ? (
+                  <QuickstartDataSources quickstart={pack} />
+                ) : (
+                  <EmptyTab
+                    quickstartUrl={pack.packUrl}
+                    quickstartName={pack.name}
+                    tabName="data sources"
+                  />
+                )}
               </Tabs.Page>
             </Tabs.Pages>
           </Layout.Content>
@@ -249,6 +254,11 @@ export const pageQuery = graphql`
         name
         url
         type
+      }
+      documentation {
+        name
+        url
+        description
       }
       authors
     }
