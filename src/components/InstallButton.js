@@ -45,7 +45,7 @@ const InstallButton = ({ quickstart, ...props }) => {
 
   return (
     <Button {...props} as={Link} to={url} variant={Button.VARIANT.PRIMARY}>
-      {hasInstallableComponent ? 'Install Pack' : 'See installation docs'}
+      {hasInstallableComponent ? 'Install quickstart' : 'See installation docs'}
     </Button>
   );
 };

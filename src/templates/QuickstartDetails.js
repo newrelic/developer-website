@@ -183,7 +183,7 @@ const QuickstartDetails = ({ data, location }) => {
               </div>
             </PageTools.Section>
             <PageTools.Section>
-              <PageTools.Title>How to use this pack</PageTools.Title>
+              <PageTools.Title>How to use this quickstart</PageTools.Title>
               <ol>
                 <li>
                   <Link to={SIGNUP_LINK}>Sign Up</Link> for a free New Relic
@@ -193,7 +193,7 @@ const QuickstartDetails = ({ data, location }) => {
                 <li>Click the green install button above</li>
                 <li>
                   Follow the instructions to install the necessary
-                  instrumentation to get the data used in this pack
+                  instrumentation to get the data used in this quickstart
                 </li>
                 <li>
                   Enjoy the dashboards, alerts, and appications filled with
