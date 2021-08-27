@@ -38,6 +38,11 @@ const packQuery = `# gql
                 type
                 url
               }
+              documentation {
+                name
+                description
+                url
+              }
               description
               iconUrl
               packUrl
@@ -46,12 +51,6 @@ const packQuery = `# gql
               logoUrl
               name
               websiteUrl
-              packUrl
-              documentation {
-                name
-                description
-                url
-              }
             }
           }
         }
