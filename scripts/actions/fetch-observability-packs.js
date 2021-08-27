@@ -40,8 +40,8 @@ const packQuery = `# gql
               }
               documentation {
                 name
-                url
                 description
+                url
               }
               description
               iconUrl
