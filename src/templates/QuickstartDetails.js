@@ -45,8 +45,8 @@ const allowedElements = [
   'hr',
 ];
 
-const ObservabilityPackDetails = ({ data, location }) => {
-  const pack = data.observabilityPacks;
+const QuickstartDetails = ({ data, location }) => {
+  const pack = data.quickstarts;
   const packUrl = pack.packUrl || QUICKSTARTS_REPO;
   const tessen = useTessen();
   const handleInstallClick = useInstrumentedHandler(
@@ -227,16 +227,16 @@ const ObservabilityPackDetails = ({ data, location }) => {
   );
 };
 
-ObservabilityPackDetails.propTypes = {
+QuickstartDetails.propTypes = {
   data: PropTypes.shape({
-    observabilityPacks: quickstart,
+    quickstarts: quickstart,
   }),
   location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
   query($id: String!) {
-    observabilityPacks(id: { eq: $id }) {
+    quickstarts(id: { eq: $id }) {
       name
       level
       id
@@ -265,4 +265,4 @@ export const pageQuery = graphql`
   }
 `;
 
-export default ObservabilityPackDetails;
+export default QuickstartDetails;

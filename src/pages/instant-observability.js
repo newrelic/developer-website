@@ -36,14 +36,14 @@ const VIEWS = {
   LIST: 'List view',
 };
 
-const ObservabilityPacksPage = ({ data, location }) => {
+const QuickstartsPage = ({ data, location }) => {
   const tessen = useTessen();
 
   const {
-    allObservabilityPacks: { nodes: o11yPacks },
+    allQuickstarts: { nodes: quickstarts },
   } = data;
 
-  const [filteredPacks, setFilteredPacks] = useState(o11yPacks);
+  const [filteredPacks, setFilteredPacks] = useState(quickstarts);
   const [containingFilterState, setContainingFilterState] = useState('All');
   const [sortState, setSortState] = useState('Alphabetical');
   const [searchTerm, setSearchTerm] = useState('');
@@ -131,7 +131,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   }, [searchExpanded]);
 
   useEffect(() => {
-    let tempFilteredPacks = o11yPacks.filter(
+    let tempFilteredPacks = quickstarts.filter(
       (pack) =>
         pack.name.toLowerCase().includes(searchTerm) ||
         pack.description.toLowerCase().includes(searchTerm)
@@ -164,7 +164,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
     setQuerySort(sortState);
     setFilteredPacks(tempFilteredPacks);
   }, [
-    o11yPacks,
+    quickstarts,
     searchTerm,
     containingFilterState,
     sortState,
@@ -191,7 +191,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
 
   return (
     <>
-      <DevSiteSeo title="Observability Packs" location={location} />
+      <DevSiteSeo title="Instant Observability" location={location} />
       <div
         css={css`
           background-color: var(--color-neutrals-100);
@@ -394,7 +394,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
             }
             view={view}
             logoUrl={BUILD_YOUR_OWN}
-            name="Build your own observability pack"
+            name="Build your own quickstart"
             description="Can't find a pack with what you need? Check out our README and build your own."
           />
         </ExternalLink>
@@ -406,14 +406,14 @@ const ObservabilityPacksPage = ({ data, location }) => {
   );
 };
 
-ObservabilityPacksPage.propTypes = {
+QuickstartsPage.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object,
 };
 
 export const pageQuery = graphql`
   query {
-    allObservabilityPacks {
+    allQuickstarts {
       nodes {
         fields {
           slug
@@ -475,4 +475,4 @@ FormControl.propTypes = {
   children: PropTypes.node,
 };
 
-export default ObservabilityPacksPage;
+export default QuickstartsPage;

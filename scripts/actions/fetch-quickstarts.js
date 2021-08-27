@@ -1,8 +1,8 @@
 'use strict';
 
 /**
- * This script is used to query the New Relic GraphQL API for Observability Packs.
- * It then writes the array of Observability Packs to src/data/observability-packs.json
+ * This script is used to query the New Relic GraphQL API for Quickstarts.
+ * It then writes the array of Quickstarts to src/data/quickstarts.json
  * It requires the following environment variables to be set:
  * NR_GQL_URL - The New Relic GraphQL URL
  * NR_API_TOKEN - A New Relic personal API token
@@ -13,7 +13,7 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const get = require('lodash.get');
 
-const PACKS_FILE_PATH = './src/data/observability-packs.json';
+const PACKS_FILE_PATH = './src/data/quickstarts.json';
 const NR_API_URL = process.env.NR_API_URL;
 const NR_API_TOKEN = process.env.NR_API_TOKEN;
 
@@ -21,10 +21,10 @@ const packQuery = `# gql
   {
     docs {
       openInstallation {
-        observabilityPackSearch {
+        quickstartSearch {
           count
           results {
-            observabilityPacks {
+            quickstarts {
               authors
               dashboards {
                 description
@@ -88,10 +88,7 @@ const fetchPacks = async (queryString, url, token) => {
       throw new Error(JSON.stringify(results.errors, null, 2));
     }
 
-    return get(
-      results,
-      'data.docs.openInstallation.observabilityPackSearch.results'
-    );
+    return get(results, 'data.docs.openInstallation.quickstartSearch.results');
   } catch (error) {
     console.error('Encountered a problem querying the graphql api', error);
   }
@@ -116,7 +113,7 @@ const main = async (query, url, token) => {
   const results = await fetchPacks(query, url, token);
 
   if (results) {
-    const packs = results.observabilityPacks;
+    const packs = results.quickstarts;
     console.log(`Found ${packs.length} packs.`);
     console.log(`Writing ${PACKS_FILE_PATH}`);
     fs.writeFileSync(PACKS_FILE_PATH, JSON.stringify(packs, null, 2));
