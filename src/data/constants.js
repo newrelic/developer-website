@@ -26,6 +26,21 @@ export const QUICKSTART_SUPPORT_LEVELS = {
   COMMUNITY: 'COMMUNITY',
 };
 
+export const QUICKSTART_SUPPORT_CONTENT = {
+  [QUICKSTART_SUPPORT_LEVELS.NEWRELIC]: {
+    title: 'Built by New Relic',
+    content: `Need help? [Visit our Support Center](https://support.newrelic.com) or check out our community forum, [the Explorers Hub](https://discuss.newrelic.com).`,
+  },
+  [QUICKSTART_SUPPORT_LEVELS.VERIFIED]: {
+    title: 'Verified by New Relic',
+    content: `Need help? [Visit our Support Center](https://support.newrelic.com) or check out our community forum, [the Explorers Hub](https://discuss.newrelic.com).`,
+  },
+  [QUICKSTART_SUPPORT_LEVELS.COMMUNITY]: {
+    title: 'Built by the community',
+    content: `Need help? Visit our community forum, [the Explorers Hub](https://discuss.newrelic.com) to find an answer or post a question.`,
+  },
+};
+
 export const QUICKSTART_ALERT_TYPES = {
   BASELINE: 'BASELINE',
   OUTLIER: 'OUTLIER',
@@ -34,3 +49,6 @@ export const QUICKSTART_ALERT_TYPES = {
 
 export const QUICKSTARTS_REPO =
   'https://github.com/newrelic/newrelic-observability-packs';
+
+export const SIGNUP_LINK = 'https://newrelic.com/signup';
+export const LOGIN_LINK = 'https://login.newrelic.com/login';
