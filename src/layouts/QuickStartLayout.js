@@ -6,6 +6,7 @@ import {
 } from '@newrelic/gatsby-theme-newrelic';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import '../components/styles.scss';
 
 const QuickStartLayout = ({ children }) => {
   return (
@@ -18,7 +19,6 @@ const QuickStartLayout = ({ children }) => {
           css={css`
             min-height: 100vh;
           `}
-          className="light-mode"
         >
           {children}
         </Layout.Main>
