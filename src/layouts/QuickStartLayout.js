@@ -6,22 +6,18 @@ import {
 } from '@newrelic/gatsby-theme-newrelic';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { useLocation } from '@reach/router';
 import '../components/styles.scss';
 
 const QuickStartLayout = ({ children }) => {
-  const location = useLocation();
-  const isLanding = location.pathname === '/observability-packs/';
   return (
     <>
       <GlobalHeader />
       <MobileHeader>New sidebar here</MobileHeader>
       <Layout
         css={css`
-          --sidebar-width: ${isLanding ? '300px' : '0'};
+          --sidebar-width: 0;
         `}
       >
-        {isLanding && <Layout.Sidebar>New sidebar here</Layout.Sidebar>}
         <Layout.Main
           css={css`
             min-height: 100vh;
@@ -29,6 +25,7 @@ const QuickStartLayout = ({ children }) => {
         >
           {children}
         </Layout.Main>
+        <Layout.Footer />
       </Layout>
     </>
   );

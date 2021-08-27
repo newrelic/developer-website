@@ -8,11 +8,8 @@ import SegmentedControl from '../components/SegmentedControl';
 import PackTile from '../components/PackTile';
 import {
   SearchInput,
-  Icon,
-  Button,
   useTessen,
   useInstrumentedData,
-  useKeyPress,
   useQueryParams,
   ExternalLink,
 } from '@newrelic/gatsby-theme-newrelic';
@@ -22,15 +19,7 @@ import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 
 const { QUICKSTARTS_REPO } = require('../data/constants');
 
-const sortOptionValues = ['Alphabetical', 'Reverse', 'Popularity'];
-const packContentsFilterGroups = [
-  'All',
-  'Dashboards',
-  'Alerts',
-  'Visualizations',
-  'Synthetics',
-  'Nerdpacks',
-];
+const packContentsFilterGroups = ['All', 'Dashboards', 'Alerts', 'Dat sources'];
 
 const VIEWS = {
   GRID: 'Grid view',
@@ -45,14 +34,12 @@ const ObservabilityPacksPage = ({ data, location }) => {
   } = data;
 
   const [filteredPacks, setFilteredPacks] = useState(o11yPacks);
-  const [searchExpanded, setSearchExpanded] = useState(false);
 
   const { queryParams } = useQueryParams();
 
   const [formState, setFormState] = useState({
     search: queryParams.get('search'),
     packContains: queryParams.get('packContains'),
-    sort: queryParams.get('sort'),
   });
 
   const [view, setView] = useState(VIEWS.GRID);
@@ -61,7 +48,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
     setFormState({
       search: queryParams.get('search'),
       packContains: queryParams.get('packContains'),
-      sort: queryParams.get('sort'),
     });
   }, [queryParams]);
 
@@ -87,38 +73,15 @@ const ObservabilityPacksPage = ({ data, location }) => {
 
   const searchInputRef = useRef();
 
-  useKeyPress('s', () => {
-    setSearchExpanded(!searchExpanded);
-  });
-
   useInstrumentedData(
     { actionName: 'packViewToggle', packViewState: view },
     { enabled: Boolean(view) }
   );
 
   useInstrumentedData(
-    { actionName: 'packSort', packSortState: formState.sort },
-    { enabled: Boolean(formState.sort) }
-  );
-
-  useInstrumentedData(
     { actionName: 'packFilter', packFilterState: formState.packContains },
     { enabled: Boolean(formState.packContains) }
   );
-
-  const handleSearchButtonClick = () => {
-    setSearchExpanded(true);
-    tessen.track('observabilityPack', `packSearchButtonClick`);
-    if (typeof window !== 'undefined' && window.newrelic) {
-      window.newrelic.addPageAction('packSearchButtonClick');
-    }
-  };
-
-  const handleBlurSearch = () => {
-    if (!formState.search) {
-      setSearchExpanded(false);
-    }
-  };
 
   useDebounce(
     () => {
@@ -136,13 +99,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
     1000,
     [formState.search]
   );
-
-  useEffect(() => {
-    const duration = 500;
-    searchExpanded
-      ? setTimeout(() => searchInputRef.current.focus(), duration)
-      : setTimeout(() => searchInputRef.current.blur(), duration);
-  }, [searchExpanded]);
 
   useEffect(() => {
     let tempFilteredPacks = queryParams.has('search')
@@ -163,18 +119,6 @@ const ObservabilityPacksPage = ({ data, location }) => {
       );
     }
 
-    if (queryParams.has('sort') && queryParams.get('sort') === 'Alphabetical') {
-      tempFilteredPacks = tempFilteredPacks.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      );
-    } else if (
-      queryParams.has('sort') &&
-      queryParams.get('sort') === 'Reverse'
-    ) {
-      tempFilteredPacks = tempFilteredPacks.sort((a, b) =>
-        b.name.localeCompare(a.name)
-      );
-    }
     setFilteredPacks(tempFilteredPacks);
   }, [queryParams, o11yPacks]);
 
@@ -200,140 +144,48 @@ const ObservabilityPacksPage = ({ data, location }) => {
       <DevSiteSeo title="Observability Packs" location={location} />
       <div
         css={css`
-          background-color: var(--color-neutrals-100);
-          margin: 15px 0;
-          padding: 1rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-          .dark-mode & {
-            background-color: var(--color-dark-100);
-          }
-          @media screen and (max-width: 1180px) {
-            flex-direction: column;
-            align-items: normal;
-            > * {
-              margin: 0.5rem 0;
-            }
+          --sidebar-width: 300px;
+
+          display: grid;
+          grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+          grid-template-areas: 'sidebar main';
+          grid-template-rows: 1fr auto;
+          min-height: calc(100vh - var(--global-header-height));
+          margin: 0 auto;
+          max-width: var(--site-max-width);
+
+          @media screen and (max-width: 760px) {
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-areas: 'main';
+            grid-template-rows: unset;
           }
         `}
       >
-        <span>Showing {filteredPacks.length} results</span>
-        <div
+        <aside
+          data-swiftype-index={false}
           css={css`
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            > * {
-              margin: 0 0.1rem;
-            }
-            @media screen and (max-width: 1180px) {
-              flex-direction: column;
-              align-items: normal;
-              > * {
-                margin: 0.5rem 0;
-              }
+            grid-area: sidebar;
+            border-right: 1px solid var(--divider-color);
+            height: calc(100vh - var(--global-header-height));
+            position: sticky;
+            top: var(--global-header-height);
+
+            @media screen and (max-width: 760px) {
+              display: none;
             }
           `}
         >
           <div
             css={css`
-              align-self: flex-end;
-              ${searchExpanded ? `width: 30vw;` : `width: 50px;`}
-              margin-left: 20px;
-              input {
-                background: inherit;
-              }
-              @media screen and (max-width: 1450px) {
-                ${searchExpanded && `width: 25vw;`}
-              }
-              @media screen and (max-width: 1350px) {
-                ${searchExpanded && `width: 15vw;`}
-              }
-              @media screen and (max-width: 1180px) {
-                width: 100%;
-              }
-            `}
-            style={{
-              transition: 'all 0.5s ease',
-            }}
-          >
-            {!searchExpanded && (
-              <Button
-                variant={Button.VARIANT.PLAIN}
-                css={css`
-                  border: none;
-                  @media screen and (max-width: 1180px) {
-                    display: none;
-                  }
-                `}
-                onClick={handleSearchButtonClick}
-              >
-                <Icon name="fe-search" size="1.5em" />
-              </Button>
-            )}
-            <SearchInput
-              ref={searchInputRef}
-              value={formState.search || ''}
-              placeholder="Search pack names / descriptions. Enter to search"
-              css={css`
-                ${searchExpanded ? `display: block;` : `display: none;`}
-                @media screen and (max-width: 1180px) {
-                  display: block;
-                }
-              `}
-              onClear={() => {
-                setFormState((state) => ({
-                  ...state,
-                  search: null,
-                }));
-              }}
-              onChange={(e) => {
-                setFormState((state) => ({
-                  ...state,
-                  search: e.target.value.toLowerCase(),
-                }));
-              }}
-              onBlur={handleBlurSearch}
-            />
-          </div>
-          <div
-            css={css`
-              display: flex;
-              @media screen and (max-width: 1180px) {
-                flex-direction: column;
-                align-items: normal;
-                > * {
-                  margin: 0.5rem 0;
-                }
-              }
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              padding: var(--site-content-padding);
+              overflow: auto;
             `}
           >
-            <FormControl>
-              <Label htmlFor="sortFilter">Sort by</Label>
-              <Select
-                id="sortFilter"
-                value={formState.sort || 'Alphabetical'}
-                onChange={(e) => {
-                  setFormState((state) => ({
-                    ...state,
-                    sort: e.target.value,
-                  }));
-                  document.getElementById(e.target.id).blur();
-                  tessen.track('observabilityPack', `packSort`, {
-                    packSortState: e.target.value,
-                  });
-                }}
-              >
-                {sortOptionValues.map((sortOption) => (
-                  <option key={sortOption} value={sortOption}>
-                    {sortOption}
-                  </option>
-                ))}
-              </Select>
-            </FormControl>
-
             <FormControl>
               <Label htmlFor="packContentsFilter">
                 Filter packs containing
@@ -363,62 +215,151 @@ const ObservabilityPacksPage = ({ data, location }) => {
               </Select>
             </FormControl>
           </div>
-          <SegmentedControl
-            items={Object.values(VIEWS)}
-            onChange={(_e, view) => {
-              setView(view);
-
-              tessen.track('observabilityPack', `packViewToggle`, {
-                packViewState: view,
-              });
-            }}
-          />
-        </div>
-      </div>
-
-      <div
-        css={css`
-          display: grid;
-          grid-gap: 1rem;
-          grid-template-columns: repeat(4, 1fr);
-          grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
-
-          @media (max-width: 1450px) {
-            grid-template-columns: repeat(3, 1fr);
-          }
-
-          @media (max-width: 1180px) {
-            grid-template-columns: repeat(1, 1fr);
-          }
-
-          ${view === VIEWS.LIST &&
-          css`
-            display: initial;
-          `}
-        `}
-      >
-        <ExternalLink
-          href={QUICKSTARTS_REPO}
+        </aside>
+        <div
           css={css`
-            text-decoration: none;
+            grid-area: main;
+            padding: var(--site-content-padding);
           `}
         >
-          <PackTile
-            css={
-              view === VIEWS.GRID &&
+          <div
+            css={css`
+              background-color: var(--color-neutrals-100);
+              margin: 15px 0;
+              padding: 1rem;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              flex-wrap: wrap;
+              .dark-mode & {
+                background-color: var(--color-dark-100);
+              }
+              @media screen and (max-width: 1180px) {
+                flex-direction: column;
+                align-items: normal;
+                > * {
+                  margin: 0.5rem 0;
+                }
+              }
+            `}
+          >
+            <div
+              css={css`
+                display: flex;
+                align-items: center;
+                width: 100%;
+                /* justify-content: space-between; */
+                > * {
+                  margin: 0 0.1rem;
+                }
+                /* @media screen and (max-width: 1180px) {
+                  flex-direction: column;
+                  align-items: normal;
+                  > * {
+                    margin: 0.5rem 0;
+                  }
+                } */
+              `}
+            >
+              <div
+                css={css`
+                  width: 100%;
+                  margin-left: 20px;
+                  input {
+                    background: inherit;
+                  }
+                `}
+              >
+                <SearchInput
+                  ref={searchInputRef}
+                  value={formState.search || ''}
+                  placeholder="Search pack names / descriptions. Enter to search"
+                  onClear={() => {
+                    setFormState((state) => ({
+                      ...state,
+                      search: null,
+                    }));
+                  }}
+                  onChange={(e) => {
+                    setFormState((state) => ({
+                      ...state,
+                      search: e.target.value.toLowerCase(),
+                    }));
+                  }}
+                />
+              </div>
+              <div
+                css={css`
+                  display: inline-block;
+                  min-width: 155px;
+                  margin-left: 20px;
+                `}
+              >
+                <SegmentedControl
+                  items={Object.values(VIEWS)}
+                  onChange={(_e, view) => {
+                    setView(view);
+
+                    tessen.track('observabilityPack', `packViewToggle`, {
+                      packViewState: view,
+                    });
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            css={css`
+              margin: 2em 0;
+            `}
+          >
+            <span>Showing {filteredPacks.length} results</span>
+          </div>
+          <div
+            css={css`
+              display: grid;
+              grid-gap: 1rem;
+              grid-template-columns: repeat(4, 1fr);
+              grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
+
+              @media (max-width: 1450px) {
+                grid-template-columns: repeat(3, 1fr);
+              }
+
+              @media (max-width: 1180px) {
+                grid-template-columns: repeat(1, 1fr);
+              }
+
+              ${view === VIEWS.LIST &&
               css`
-                height: 100%;
-              `
-            }
-            view={view}
-            logoUrl={BUILD_YOUR_OWN}
-            name="Build your own observability pack"
-            description="Can't find a pack with what you need? Check out our README and build your own."
-          />
-        </ExternalLink>
-        {filteredPacks.map((pack) => (
-          <PackTile key={pack.id} view={view} {...pack} />
-        ))}
+                display: initial;
+              `}
+            `}
+          >
+            <ExternalLink
+              href={QUICKSTARTS_REPO}
+              css={css`
+                text-decoration: none;
+              `}
+            >
+              <PackTile
+                css={
+                  view === VIEWS.GRID &&
+                  css`
+                    height: 100%;
+                  `
+                }
+                view={view}
+                logoUrl={BUILD_YOUR_OWN}
+                name="Build your own observability pack"
+                description="Can't find a pack with what you need? Check out our README and build your own."
+              />
+            </ExternalLink>
+            {filteredPacks.map((pack) => (
+              <PackTile key={pack.id} view={view} {...pack} />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
