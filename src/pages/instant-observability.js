@@ -282,6 +282,7 @@ const QuickstartsPage = ({ data, location }) => {
               >
                 <SearchInput
                   ref={searchInputRef}
+                  size={SearchInput.SIZE.LARGE}
                   value={formState.search || ''}
                   placeholder="Search pack names / descriptions. Enter to search"
                   onClear={() => {
