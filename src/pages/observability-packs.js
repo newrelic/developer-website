@@ -156,7 +156,9 @@ const ObservabilityPacksPage = ({ data, location }) => {
 
           @media screen and (max-width: 760px) {
             grid-template-columns: minmax(0, 1fr);
-            grid-template-areas: 'main';
+            grid-template-areas:
+              'sidebar'
+              'main';
             grid-template-rows: unset;
           }
         `}
@@ -171,7 +173,10 @@ const ObservabilityPacksPage = ({ data, location }) => {
             top: var(--global-header-height);
 
             @media screen and (max-width: 760px) {
-              display: none;
+              display: block;
+              position: relative;
+              width: 100%;
+              height: 100%;
             }
           `}
         >
@@ -184,6 +189,9 @@ const ObservabilityPacksPage = ({ data, location }) => {
               right: 0;
               padding: var(--site-content-padding);
               overflow: auto;
+              @media screen and (max-width: 760px) {
+                position: relative;
+              }
             `}
           >
             <FormControl>
