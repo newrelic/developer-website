@@ -35,10 +35,10 @@ const QuickstartsPage = ({ data, location }) => {
   const tessen = useTessen();
 
   const {
-    allObservabilityPacks: { nodes: o11yPacks },
+    allQuickstarts: { nodes: quickstarts },
   } = data;
 
-  const [filteredPacks, setFilteredPacks] = useState(o11yPacks);
+  const [filteredPacks, setFilteredPacks] = useState(quickstarts);
 
   const { queryParams } = useQueryParams();
 
@@ -107,12 +107,12 @@ const QuickstartsPage = ({ data, location }) => {
 
   useEffect(() => {
     let tempFilteredPacks = queryParams.has('search')
-      ? o11yPacks.filter(
+      ? quickstarts.filter(
           (pack) =>
             pack.name.toLowerCase().includes(queryParams.get('search')) ||
             pack.description.toLowerCase().includes(queryParams.get('search'))
         )
-      : o11yPacks;
+      : quickstarts;
 
     if (
       queryParams.has('packContains') &&
@@ -125,7 +125,7 @@ const QuickstartsPage = ({ data, location }) => {
     }
 
     setFilteredPacks(tempFilteredPacks);
-  }, [queryParams, o11yPacks]);
+  }, [queryParams, quickstarts]);
 
   useEffect(() => {
     setView(view);
@@ -146,7 +146,7 @@ const QuickstartsPage = ({ data, location }) => {
 
   return (
     <>
-      <DevSiteSeo title="Observability Packs" location={location} />
+      <DevSiteSeo title="Instant Observability" location={location} />
       <div
         css={css`
           --sidebar-width: 300px;
@@ -265,17 +265,10 @@ const QuickstartsPage = ({ data, location }) => {
                 display: flex;
                 align-items: center;
                 width: 100%;
-                /* justify-content: space-between; */
+
                 > * {
                   margin: 0 0.1rem;
                 }
-                /* @media screen and (max-width: 1180px) {
-                  flex-direction: column;
-                  align-items: normal;
-                  > * {
-                    margin: 0.5rem 0;
-                  }
-                } */
               `}
             >
               <div
@@ -368,7 +361,7 @@ const QuickstartsPage = ({ data, location }) => {
                 }
                 view={view}
                 logoUrl={BUILD_YOUR_OWN}
-                name="Build your own observability pack"
+                name="Build your own quickstart"
                 description="Can't find a pack with what you need? Check out our README and build your own."
               />
             </ExternalLink>
@@ -389,7 +382,7 @@ QuickstartsPage.propTypes = {
 
 export const pageQuery = graphql`
   query {
-    allObservabilityPacks {
+    allQuickstarts {
       nodes {
         fields {
           slug

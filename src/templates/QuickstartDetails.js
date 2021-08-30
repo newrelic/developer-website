@@ -20,6 +20,7 @@ import {
 import ImageGallery from '../components/ImageGallery';
 import InstallButton from '../components/InstallButton';
 import Markdown from '../components/Markdown';
+import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
 import { quickstart } from '../types';
 import {
   QUICKSTARTS_REPO,
@@ -44,8 +45,8 @@ const allowedElements = [
   'hr',
 ];
 
-const ObservabilityPackDetails = ({ data, location }) => {
-  const pack = data.observabilityPacks;
+const QuickstartDetails = ({ data, location }) => {
+  const pack = data.quickstarts;
   const packUrl = pack.packUrl || QUICKSTARTS_REPO;
   const tessen = useTessen();
   const handleInstallClick = useInstrumentedHandler(
@@ -138,11 +139,15 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 )}
               </Tabs.Page>
               <Tabs.Page id="data-sources">
-                <EmptyTab
-                  quickstartUrl={pack.packUrl}
-                  quickstartName={pack.name}
-                  tabName="data sources"
-                />
+                {pack.documentation ? (
+                  <QuickstartDataSources quickstart={pack} />
+                ) : (
+                  <EmptyTab
+                    quickstartUrl={pack.packUrl}
+                    quickstartName={pack.name}
+                    tabName="data sources"
+                  />
+                )}
               </Tabs.Page>
             </Tabs.Pages>
           </Layout.Content>
@@ -178,7 +183,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
               </div>
             </PageTools.Section>
             <PageTools.Section>
-              <PageTools.Title>How to use this pack</PageTools.Title>
+              <PageTools.Title>How to use this quickstart</PageTools.Title>
               <ol>
                 <li>
                   <Link to={SIGNUP_LINK}>Sign Up</Link> for a free New Relic
@@ -188,7 +193,7 @@ const ObservabilityPackDetails = ({ data, location }) => {
                 <li>Click the green install button above</li>
                 <li>
                   Follow the instructions to install the necessary
-                  instrumentation to get the data used in this pack
+                  instrumentation to get the data used in this quickstart
                 </li>
                 <li>
                   Enjoy the dashboards, alerts, and appications filled with
@@ -222,16 +227,16 @@ const ObservabilityPackDetails = ({ data, location }) => {
   );
 };
 
-ObservabilityPackDetails.propTypes = {
+QuickstartDetails.propTypes = {
   data: PropTypes.shape({
-    observabilityPacks: quickstart,
+    quickstarts: quickstart,
   }),
   location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
   query($id: String!) {
-    observabilityPacks(id: { eq: $id }) {
+    quickstarts(id: { eq: $id }) {
       name
       level
       id
@@ -250,9 +255,14 @@ export const pageQuery = graphql`
         url
         type
       }
+      documentation {
+        name
+        url
+        description
+      }
       authors
     }
   }
 `;
 
-export default ObservabilityPackDetails;
+export default QuickstartDetails;

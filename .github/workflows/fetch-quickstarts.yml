@@ -1,4 +1,4 @@
-name: Fetch Observability Packs
+name: Fetch Quickstarts
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ env:
   NODE_OPTIONS: '--max-old-space-size=4096'
 
 jobs:
-  fetch-observability-packs:
+  fetch-quickstarts:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -35,8 +35,8 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
 
-      - name: Fetch observability packs
-        run: yarn run fetch-observability-packs
+      - name: Fetch quickstarts
+        run: yarn run fetch-quickstarts
         env:
           NR_API_URL: 'https://api.newrelic.com/graphql'
           NR_API_TOKEN: ${{ secrets.NR_API_TOKEN }}
@@ -64,8 +64,8 @@ jobs:
         run: |
           git config --local user.email "${{ env.BOT_EMAIL }}"
           git config --local user.name "${{ env.BOT_NAME }}"
-          git add ./src/data/observability-packs.json
-          git diff-index --quiet HEAD ./src/data/observability-packs.json || git commit -m 'chore(observability-packs): updated observability packs'
+          git add ./src/data/quickstarts.json
+          git diff-index --quiet HEAD ./src/data/quickstarts.json || git commit -m 'chore(quickstarts): updated quickstarts'
           echo "::set-output name=commit::true"
 
       - name: Push Commit

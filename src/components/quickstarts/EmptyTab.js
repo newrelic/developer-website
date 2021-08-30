@@ -27,10 +27,10 @@ const EmptyTab = ({
       name="edit"
     />
     <p>
-      This pack doesn't include any {tabName}. Do you think it should?
+      This quickstart doesn't include any {tabName}. Do you think it should?
       <br />
-      You can edit this pack to add helpful components. View the repository and
-      open a pull request.
+      You can edit this quickstart to add helpful components. View the
+      repository and open a pull request.
     </p>
     <div
       css={css`
