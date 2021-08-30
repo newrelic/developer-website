@@ -19,14 +19,19 @@ import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 
 const { QUICKSTARTS_REPO } = require('../data/constants');
 
-const packContentsFilterGroups = ['All', 'Dashboards', 'Alerts', 'Dat sources'];
+const packContentsFilterGroups = [
+  'All',
+  'Dashboards',
+  'Alerts',
+  'Data sources',
+];
 
 const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
 };
 
-const ObservabilityPacksPage = ({ data, location }) => {
+const QuickstartsPage = ({ data, location }) => {
   const tessen = useTessen();
 
   const {
@@ -194,6 +199,10 @@ const ObservabilityPacksPage = ({ data, location }) => {
               }
             `}
           >
+            <p>
+              A place to find quickstarts of resources like dashboards,
+              instrumentation, and alerts to help you monitor your environment.
+            </p>
             <FormControl>
               <Label htmlFor="packContentsFilter">
                 Filter packs containing
@@ -373,7 +382,7 @@ const ObservabilityPacksPage = ({ data, location }) => {
   );
 };
 
-ObservabilityPacksPage.propTypes = {
+QuickstartsPage.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object,
 };
@@ -442,4 +451,4 @@ FormControl.propTypes = {
   children: PropTypes.node,
 };
 
-export default ObservabilityPacksPage;
+export default QuickstartsPage;

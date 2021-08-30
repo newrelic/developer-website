@@ -161,7 +161,7 @@ exports.onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
   const oldPage = { ...page };
 
-  if (page.path === '/observability-packs/') {
+  if (page.path === '/instant-observability/') {
     page.context.layout = 'QuickStartLayout';
   }
   deletePage(oldPage);
@@ -208,7 +208,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: 'slug',
-      value: `/observability-packs/${slugify(node.name)}/${node.id}`,
+      value: `/instant-observability/${slugify(node.name)}/${node.id}`,
     });
   }
 };
