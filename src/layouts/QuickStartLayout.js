@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Layout,
-  GlobalHeader,
-  MobileHeader,
-} from '@newrelic/gatsby-theme-newrelic';
+import { Layout, GlobalHeader } from '@newrelic/gatsby-theme-newrelic';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import '../components/styles.scss';
@@ -12,7 +8,6 @@ const QuickStartLayout = ({ children }) => {
   return (
     <>
       <GlobalHeader />
-      <MobileHeader>New sidebar here</MobileHeader>
       <Layout
         css={css`
           --sidebar-width: 0;
