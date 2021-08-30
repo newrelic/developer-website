@@ -194,6 +194,10 @@ const ObservabilityPacksPage = ({ data, location }) => {
               }
             `}
           >
+            <p>
+              A place to find quickstarts of resources like dashboards,
+              instrumentation, and alerts to help you monitor your environment.
+            </p>
             <FormControl>
               <Label htmlFor="packContentsFilter">
                 Filter packs containing
