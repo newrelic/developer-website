@@ -18,8 +18,16 @@ const QuickstartDashboards = ({ quickstart }) => (
       context, and resolve problems faster.
     </Intro>
 
-    {quickstart.dashboards.map((dashboard, index) => (
-      <div key={index}>
+    {quickstart.dashboards.map((dashboard) => (
+      <div
+        key={dashboard.name}
+        css={css`
+          &:not(:last-child) {
+            border-bottom: 2px solid var(--divider-color);
+            margin-bottom: 1rem;
+          }
+        `}
+      >
         <h3>{dashboard.name}</h3>
         {dashboard.description && <p>{dashboard.description}</p>}
         <ImageSlider height={400} images={dashboard.screenshots} />
