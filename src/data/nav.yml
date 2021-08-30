@@ -441,9 +441,9 @@
           url: '/nerd-days'
         - title: All things open
           url: '/all-things-open'
-- title: Observability packs
+- title: Instant Observability
   icon: box
-  url: '/observability-packs'
+  url: '/instant-observability'
 - title: Nerd Bytes
   icon: nr-nerd-bytes
   url: '/nerd-bytes'

@@ -53,7 +53,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
 
-      allObservabilityPacks {
+      allQuickstarts {
         edges {
           node {
             fields {
@@ -76,7 +76,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     allMdx,
     allNewRelicSdkComponent,
     allNewRelicSdkApi,
-    allObservabilityPacks,
+    allQuickstarts,
   } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
@@ -112,7 +112,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
-  allObservabilityPacks.edges.forEach(({ node }) => {
+  allQuickstarts.edges.forEach(({ node }) => {
     const {
       fields: { slug },
       id,
@@ -192,11 +192,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     });
   }
 
-  if (node.internal.type === 'ObservabilityPacks') {
+  if (node.internal.type === 'Quickstarts') {
     createNodeField({
       node,
       name: 'slug',
-      value: `/observability-packs/${slugify(node.name)}/${node.id}`,
+      value: `/instant-observability/${slugify(node.name)}/${node.id}`,
     });
   }
 };

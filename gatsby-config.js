@@ -145,9 +145,9 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'observability-packs',
-        path: `${__dirname}/src/data/observability-packs.json`
-      }
+        name: 'quickstarts',
+        path: `${__dirname}/src/data/quickstarts.json`,
+      },
     },
     {
       resolve: 'gatsby-transformer-json',
@@ -156,7 +156,7 @@ module.exports = {
         // consider making this dynamic. See the docs for ways to do this.
         //
         // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-json
-        typeName: 'ObservabilityPacks',
+        typeName: 'Quickstarts',
       },
     },
     'gatsby-remark-images',
