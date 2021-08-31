@@ -89,6 +89,11 @@ const PackTile = ({
           padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
           margin: ${view === VIEWS.GRID ? 'auto' : 0};
 
+          .dark-mode & {
+            filter: brightness(1) invert(1) hue-rotate(188deg);
+            /* filter: grayscale(50%); */
+          }
+
           ${view === VIEWS.LIST &&
           css`
             max-height: 150px;
