@@ -91,7 +91,7 @@ const PackTile = ({
 
           .dark-mode & {
             filter: brightness(1) invert(1) hue-rotate(188deg);
-            /* filter: grayscale(50%); */
+            background-color: rgb(231 231 231 / 8%);
           }
 
           ${view === VIEWS.LIST &&
