@@ -67,16 +67,19 @@ const QuickstartDetails = ({ data, location }) => {
     <>
       <DevSiteSeo title={pack.name} location={location} />
       <Tabs>
-        <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
+        <PageLayout
+          type={PageLayout.TYPE.RELATED_CONTENT_TABS}
+          css={css`
+            grid-template-columns: minmax(0, 1fr) 360px;
+          `}
+        >
           <PageLayout.Header
             title={pack.name}
             css={css`
               border-bottom: none;
               gap: 1rem;
             `}
-          >
-            <InstallButton quickstart={pack} onClick={handleInstallClick} />
-          </PageLayout.Header>
+          />
           <Tabs.Bar
             css={css`
               grid-column: 1/3;
@@ -164,13 +167,27 @@ const QuickstartDetails = ({ data, location }) => {
                 background-color: var(--divider-color);
               `}
             >
-              <div>
+              <div
+                css={css`
+                  display: flex;
+                  justify-content: space-between;
+                  @media (max-width: 1240px) {
+                    justify-content: flex-start;
+                  }
+                `}
+              >
+                <InstallButton quickstart={pack} onClick={handleInstallClick} />
                 <Button
                   as={Link}
-                  variant={Button.VARIANT.PRIMARY}
+                  variant={Button.VARIANT.OUTLINE}
                   to={packUrl}
                   rel="noopener noreferrer"
                   instrumentation={{ packName: pack.name }}
+                  css={css`
+                    @media (max-width: 1240px) {
+                      margin-left: 2rem;
+                    }
+                  `}
                 >
                   <Icon
                     name="fe-github"
