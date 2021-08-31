@@ -191,10 +191,8 @@ const QuickstartDetails = ({ data, location }) => {
                     @media (max-width: 1240px) {
                       margin: 0 0 0 2rem;
                     }
-
                     @media (max-width: 760px) {
                       margin: 1rem 0 0 0;
-
                     }
                   `}
                 >
