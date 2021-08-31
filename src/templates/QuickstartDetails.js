@@ -174,6 +174,10 @@ const QuickstartDetails = ({ data, location }) => {
                   @media (max-width: 1240px) {
                     justify-content: flex-start;
                   }
+                  @media (max-width: 760px) {
+                    flex-direction: column;
+                    align-items: stretch;
+                  }
                 `}
               >
                 <InstallButton quickstart={pack} onClick={handleInstallClick} />
@@ -185,7 +189,12 @@ const QuickstartDetails = ({ data, location }) => {
                   instrumentation={{ packName: pack.name }}
                   css={css`
                     @media (max-width: 1240px) {
-                      margin-left: 2rem;
+                      margin: 0 0 0 2rem;
+                    }
+
+                    @media (max-width: 760px) {
+                      margin: 1rem 0 0 0;
+
                     }
                   `}
                 >
