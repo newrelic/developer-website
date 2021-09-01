@@ -17,20 +17,31 @@ const Breadcrumbs = ({ segments, separator }) => {
       `}
       aria-label="breadcrumb"
     >
-      {segments
-        .map((segment) => {
-          const elem = segment.url ? (
-            <Link to={segment.url}>{segment.name}</Link>
-          ) : (
-            segment.name
-          );
-          return <span key={`breadcrumb-${segment.name}`}>{elem}</span>;
-        })
-        .reduce((prev, curr) => [
-          prev,
-          React.createElement('span', {}, separator),
-          curr,
-        ])}
+      {segments.map((segment) => {
+        const elem = segment.url ? (
+          <Link to={segment.url}>{segment.name}</Link>
+        ) : (
+          segment.name
+        );
+        return (
+          <span
+            key={`breadcrumb-${segment.name}`}
+            css={css`
+              :after {
+                margin-left: 0.5em;
+                content: ' ${separator} ';
+              }
+              :last-child {
+                :after {
+                  content: '';
+                }
+              }
+            `}
+          >
+            {elem}
+          </span>
+        );
+      })}
     </div>
   );
 };
