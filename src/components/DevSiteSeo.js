@@ -78,8 +78,8 @@ function DevSiteSeo({ description, meta, title, tags, location }) {
 
   return (
     <SEO location={location} title={title}>
-      {validMetadata.map((data) => (
-        <meta key={data.name} {...data} />
+      {validMetadata.map((data, index) => (
+        <meta key={`${data.name}-${index}`} {...data} />
       ))}
       <script src={withPrefix('tessen.min-1.3.0.js')} type="text/javascript" />
     </SEO>
