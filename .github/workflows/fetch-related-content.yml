@@ -93,7 +93,7 @@ jobs:
               required_status_checks: {
                 strict: false,
                 contexts: [
-                  'Gatsby Build'
+                  'Gatsby Build Service - developer-website'
                 ]
               },
               restrictions: null,
