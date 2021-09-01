@@ -21,6 +21,7 @@ import ImageGallery from '../components/ImageGallery';
 import InstallButton from '../components/InstallButton';
 import Markdown from '../components/Markdown';
 import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { quickstart } from '../types';
 import {
   QUICKSTARTS_REPO,
@@ -49,6 +50,15 @@ const QuickstartDetails = ({ data, location }) => {
   const pack = data.quickstarts;
   const packUrl = pack.packUrl || QUICKSTARTS_REPO;
   const tessen = useTessen();
+  const breadcrumbs = [
+    {
+      name: 'Instant Observability (I/O)',
+      url: '/instant-observability/',
+    },
+    {
+      name: pack.name,
+    },
+  ];
   const handleInstallClick = useInstrumentedHandler(
     () => {
       tessen.track('observabilityPack', 'packInstall', {
@@ -66,6 +76,7 @@ const QuickstartDetails = ({ data, location }) => {
   return (
     <>
       <DevSiteSeo title={pack.name} location={location} />
+      <Breadcrumbs segments={breadcrumbs} />
       <Tabs>
         <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
           <PageLayout.Header
