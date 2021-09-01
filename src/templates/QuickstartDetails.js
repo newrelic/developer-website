@@ -50,14 +50,13 @@ const QuickstartDetails = ({ data, location }) => {
   const pack = data.quickstarts;
   const packUrl = pack.packUrl || QUICKSTARTS_REPO;
   const tessen = useTessen();
-  const breadcrumbSegments = [
+  const breadcrumbs = [
     {
       name: 'Instant Observability (I/O)',
       url: '/instant-observability/',
     },
     {
       name: pack.name,
-      url: null,
     },
   ];
   const handleInstallClick = useInstrumentedHandler(
@@ -77,7 +76,7 @@ const QuickstartDetails = ({ data, location }) => {
   return (
     <>
       <DevSiteSeo title={pack.name} location={location} />
-      <Breadcrumbs segments={breadcrumbSegments} />
+      <Breadcrumbs segments={breadcrumbs} />
       <Tabs>
         <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
           <PageLayout.Header

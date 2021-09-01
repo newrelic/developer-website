@@ -8,12 +8,6 @@ const Breadcrumbs = ({ segments, separator }) => {
     <div
       css={css`
         margin: 2em 0;
-        > :first-child {
-          margin-left: 0;
-        }
-        > * {
-          margin-left: 0.5em;
-        }
       `}
       aria-label="breadcrumb"
     >
@@ -27,13 +21,11 @@ const Breadcrumbs = ({ segments, separator }) => {
           <span
             key={`breadcrumb-${segment.name}`}
             css={css`
-              :after {
-                margin-left: 0.5em;
-                content: ' ${separator} ';
-              }
-              :last-child {
+              :not(:last-of-type) {
                 :after {
-                  content: '';
+                  margin: 0 0.5em;
+                  display: inline-block;
+                  content: '${separator}';
                 }
               }
             `}
