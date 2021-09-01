@@ -1,5 +1,6 @@
 import defaultIcons from '@newrelic/gatsby-theme-newrelic/src/icons/newrelic';
 import automation from './newrelic/automation';
+import allEntities from './newrelic/all-entities';
 import dashboard from './newrelic/dashboard';
 import document from './newrelic/document';
 import alert from './newrelic/alert';
@@ -19,6 +20,7 @@ export default {
   ...defaultIcons,
   automation,
   alert,
+  'all-entities': allEntities,
   dashboard,
   document,
   book,
