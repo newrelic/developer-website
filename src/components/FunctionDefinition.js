@@ -4,8 +4,12 @@ import CodeDef from './CodeDef';
 import { graphql } from 'gatsby';
 
 const FunctionDefinition = ({ className, arguments: params, returnValue }) => {
-  if (!params.length && !returnValue.length) {
+  if (!params.length && !returnValue && !returnValue.length) {
     return null;
+  }
+
+  if (!Array.isArray(returnValue)) {
+    returnValue = [returnValue];
   }
 
   return (
@@ -30,13 +34,18 @@ const FunctionDefinition = ({ className, arguments: params, returnValue }) => {
       {params.length > 0 && <CodeDef.Bracket>)</CodeDef.Bracket>}
       {returnValue.length > 0 && (
         <>
-          <CodeDef.Operator> => </CodeDef.Operator>
+          <CodeDef.Operator> =&gt; </CodeDef.Operator>
           <CodeDef.Type>{returnValue[0].type}</CodeDef.Type>
         </>
       )}
     </CodeDef>
   );
 };
+
+const ReturnValueType = PropTypes.shape({
+  type: PropTypes.string,
+  description: PropTypes.string,
+});
 
 FunctionDefinition.propTypes = {
   className: PropTypes.string,
@@ -47,12 +56,10 @@ FunctionDefinition.propTypes = {
       description: PropTypes.string,
     })
   ).isRequired,
-  returnValue: PropTypes.arrayOf(
-    PropTypes.shape({
-      type: PropTypes.string,
-      description: PropTypes.string,
-    })
-  ).isRequired,
+  returnValue: PropTypes.oneOfType([
+    ReturnValueType,
+    PropTypes.arrayOf(ReturnValueType),
+  ]).isRequired,
 };
 
 export const query = graphql`
