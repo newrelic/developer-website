@@ -227,9 +227,15 @@ const QuickstartsPage = ({ data, location }) => {
                   ({ filterName, filterCount }, i) => (
                     <Button
                       css={css`
-                        background: none;
                         padding: 1rem 0;
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-start;
                         color: var(--primary-text-color);
+                        font-weight: 100;
+                        background: ${formState.packContains === filterName
+                          ? 'var(--divider-color)'
+                          : 'none'};
                       `}
                       type="button"
                       key={i}
@@ -238,33 +244,44 @@ const QuickstartsPage = ({ data, location }) => {
                       {filterName === 'Dashboards' && (
                         <Icon
                           name="nr-dashboard"
-                          font-size="2em"
                           css={css`
                             fill: currentColor;
-                            stroke-width: 0.5;
+                            stroke-width: 0.25;
+                            margin: 0 0.5rem;
                           `}
                         />
                       )}
                       {filterName === 'Alerts' && (
                         <Icon
                           name="nr-alert"
-                          font-size="2em"
                           css={css`
                             fill: currentColor;
-                            stroke-width: 0.5;
+                            stroke-width: 0.25;
+                            margin: 0 0.5rem;
                           `}
                         />
                       )}
                       {filterName === 'Data sources' && (
                         <Icon
                           name="nr-document"
-                          font-size="2em"
                           css={css`
                             fill: currentColor;
-                            stroke-width: 0.5;
+                            stroke-width: 0.25;
+                            margin: 0 0.5rem;
                           `}
                         />
                       )}
+                      {!filterName ||
+                        (filterName === 'All' && (
+                          <Icon
+                            name="nr-all-entities"
+                            css={css`
+                              fill: currentColor;
+                              stroke-width: 1;
+                              margin: 0 0.5rem;
+                            `}
+                          />
+                        ))}
                       {`${filterName} (${filterCount})`}
                     </Button>
                   )
