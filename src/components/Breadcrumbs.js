@@ -56,7 +56,7 @@ Breadcrumbs.propTypes = {
       name: PropTypes.string.isRequired,
       url: PropTypes.string,
     })
-  ),
+  ).isRequired,
   separator: PropTypes.string,
 };
 
