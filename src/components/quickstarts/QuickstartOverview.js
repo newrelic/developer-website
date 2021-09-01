@@ -23,7 +23,7 @@ const QuickstartOverview = ({ quickstart }) => {
           <OverviewTile
             key={index}
             title={dashboard.name}
-            image={dashboard?.screenshots[0]}
+            image={dashboard.screenshots[0]}
             description={dashboard.description}
             tag="Dashboard"
           />
