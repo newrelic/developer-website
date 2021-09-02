@@ -59,7 +59,7 @@ const QuickstartDetails = ({ data, location }) => {
 
   return (
     <>
-      <DevSiteSeo title={pack.name} location={location} />
+      <DevSiteSeo title={pack.name} location={location} tags={pack.keywords} />
       <Breadcrumbs segments={breadcrumbs} />
       <Tabs>
         <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
@@ -230,6 +230,7 @@ export const pageQuery = graphql`
     quickstarts(id: { eq: $id }) {
       name
       level
+      keywords
       id
       description
       logoUrl
