@@ -11,7 +11,7 @@ import kirkAvatar from '../images/relicans/kirk-haines.jpg';
 import miaAvatar from '../images/relicans/mia-moore.jpg';
 import nicaAvatar from '../images/nerdlog/nica-fee.jpg';
 import pachiAvatar from '../images/relicans/pachi-carlson.jpg';
-import rachaelAvatar from '../images/relicans/rachael-wright-munn.jpg';
+import laurenAvatar from '../images/relicans/lauren-lee.jpg';
 
 export const teamMembers = [
   {
@@ -107,7 +107,7 @@ export const teamMembers = [
     ],
   },
   {
-    name: 'Ali Finkelstein',
+    name: 'Ali Diamond',
     pronouns: 'she/her',
     avatar: aliAvatar,
     bio: (
@@ -320,6 +320,43 @@ export const teamMembers = [
     ],
   },
   {
+    name: 'Lauren Lee',
+    pronouns: 'she/her',
+    avatar: laurenAvatar,
+    bio: (
+      <p>
+        Lauren is a Sr. Developer Relations Engineer at New Relic. She is an
+        English teacher turned empathetic software engineer. A curious optimist
+        with a passion for creating accessible content, celebrating unique
+        journeys to tech, and helping developers level up their skills. Lauren
+        is the host of the{' '}
+        <a href="https://webelongpodcast.com" target="_blank" rel="noreferrer">
+          We Belong Here podcast
+        </a>
+        , which aims to interview career changers and folks that are
+        diversifying the tech industry.
+      </p>
+    ),
+    socials: [
+      {
+        name: 'twitter',
+        url: 'https://twitter.com/lolocoding',
+      },
+      {
+        name: 'twitch',
+        url: 'https://twitch.tv/lolocoding',
+      },
+      {
+        name: 'linkedin',
+        url: 'https://www.linkedin.com/in/dev-lauren-lee/',
+      },
+      {
+        name: 'instagram',
+        url: 'https://instagram.com/lolocoding',
+      },
+    ],
+  },
+  {
     name: 'Mia Moore',
     pronouns: 'they/them',
     avatar: miaAvatar,
@@ -388,32 +425,6 @@ export const teamMembers = [
       {
         name: 'linkedin',
         url: 'https://linkedin.com/in/pachicodes',
-      },
-    ],
-  },
-  {
-    name: 'Rachael Wright-Munn',
-    pronouns: 'she/her',
-    avatar: rachaelAvatar,
-    bio: (
-      <p>
-        Rachael's been building software and web apps since 2012. Now she builds
-        her open-source vue/rails app live on Twitch. Enough people thought that
-        was cool, so she's been invited here.
-      </p>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/ChaelCodes',
-      },
-      {
-        name: 'twitch',
-        url: 'https://twitch.tv/ChaelCodes',
-      },
-      {
-        name: 'linkedin',
-        url: 'https://www.linkedin.com/in/rachael-wright-chaelcodes/',
       },
     ],
   },
