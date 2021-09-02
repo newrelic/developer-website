@@ -10,12 +10,10 @@ import {
   useInstrumentedHandler,
 } from '@newrelic/gatsby-theme-newrelic';
 import PackImg from './PackImg';
-import { QUICKSTART_SUPPORT_LEVELS } from '../data/constants';
-
-const VIEWS = {
-  GRID: 'Grid view',
-  LIST: 'List view',
-};
+import {
+  QUICKSTART_SUPPORT_LEVELS,
+  QUICKSTART_CATALOG_VIEWS,
+} from '../data/constants';
 
 const SHIELD_LEVELS = [
   QUICKSTART_SUPPORT_LEVELS.NEWRELIC,
@@ -72,7 +70,7 @@ const PackTile = ({
       css={css`
         overflow: hidden;
 
-        ${view === VIEWS.LIST &&
+        ${view === QUICKSTART_CATALOG_VIEWS.LIST &&
         css`
           display: flex;
           margin-bottom: 1em;
@@ -87,11 +85,11 @@ const PackTile = ({
           height: 200px;
           background-color: var(--color-white);
           object-fit: scale-down;
-          width: ${view === VIEWS.GRID ? 100 : 25}%;
-          padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
-          margin: ${view === VIEWS.GRID ? 'auto' : 0};
+          width: ${view === QUICKSTART_CATALOG_VIEWS.GRID ? 100 : 25}%;
+          padding: 0 ${view === QUICKSTART_CATALOG_VIEWS.GRID ? 5 : 1}%;
+          margin: ${view === QUICKSTART_CATALOG_VIEWS.GRID ? 'auto' : 0};
 
-          ${view === VIEWS.LIST &&
+          ${view === QUICKSTART_CATALOG_VIEWS.LIST &&
           css`
             max-height: 150px;
 
@@ -105,7 +103,7 @@ const PackTile = ({
         css={css`
           padding: 1em;
 
-          ${view === VIEWS.LIST &&
+          ${view === QUICKSTART_CATALOG_VIEWS.LIST &&
           css`
             width: 75%;
 
@@ -134,7 +132,7 @@ const PackTile = ({
 
 PackTile.propTypes = {
   id: PropTypes.string.isRequired,
-  view: PropTypes.oneOf(Object.values(VIEWS)).isRequired,
+  view: PropTypes.oneOf(Object.values(QUICKSTART_CATALOG_VIEWS)).isRequired,
   name: PropTypes.string.isRequired,
   fields: PropTypes.shape({
     slug: PropTypes.string.isRequired,

@@ -3,21 +3,11 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import DEFAULT_IMAGE from '../images/default-logo-background.svg';
 
-const PackImg = ({ className, logoUrl, packName }) => {
-  const [packAcronym, setPackAcronym] = useState('');
+const createPackAcronym = (name) =>
+  name.split(' ').reduce((acc, word) => `${acc}${word.charAt(0)}`, '');
 
-  const getPackNameAcronym = () => {
-    let packNameAcronym = '';
-    packName.split(' ').forEach((word) => {
-      packNameAcronym = packNameAcronym.concat('', word.charAt(0));
-    });
-    setPackAcronym(packNameAcronym.toUpperCase());
-  };
-  useEffect(() => {
-    if (!logoUrl) {
-      getPackNameAcronym();
-    }
-  });
+const PackImg = ({ className, logoUrl, packName }) => {
+  const packAcronym = createPackAcronym(packName);
 
   if (logoUrl) {
     return (

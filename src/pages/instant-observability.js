@@ -1,27 +1,27 @@
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import Select from '../components/Select';
 import SegmentedControl from '../components/SegmentedControl';
-import PackTile from '../components/PackTile';
-import {
-  SearchInput,
-  useTessen,
-  ExternalLink,
-} from '@newrelic/gatsby-theme-newrelic';
+import QuickstartGridList from '../components/quickstarts/QuickstartGridList';
+import { SearchInput, useTessen } from '@newrelic/gatsby-theme-newrelic';
+import { QUICKSTART_CATALOG_VIEWS } from '../data/constants';
 
 import { useDebounce } from 'react-use';
 import { useQueryParams, StringParam } from 'use-query-params';
-import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 
-const { QUICKSTARTS_REPO } = require('../data/constants');
-
-const VIEWS = {
-  GRID: 'Grid view',
-  LIST: 'List view',
-};
+const VIEWS = [
+  {
+    label: 'Grid view',
+    value: QUICKSTART_CATALOG_VIEWS.GRID,
+  },
+  {
+    label: 'List view',
+    value: QUICKSTART_CATALOG_VIEWS.LIST,
+  },
+];
 
 const prop = (key) => (obj) => obj[key];
 const withComponent = (packs, key) => packs.filter((p) => p[key].length > 0);
@@ -29,11 +29,16 @@ const withComponent = (packs, key) => packs.filter((p) => p[key].length > 0);
 const QuickstartsPage = ({ data, location }) => {
   const tessen = useTessen();
 
+  const [isClient, setClient] = useState(false);
+  useEffect(() => {
+    setClient(true);
+  }, []);
+
   const {
     allQuickstarts: { nodes: quickstarts },
   } = data;
 
-  const [view, setView] = useState(VIEWS.GRID);
+  const [view, setView] = useState(QUICKSTART_CATALOG_VIEWS.GRID);
   useEffect(() => {
     setView(view);
   }, [view]);
@@ -43,8 +48,8 @@ const QuickstartsPage = ({ data, location }) => {
     filter: StringParam,
   });
   const [formState, setFormState] = useState({
-    search: '',
-    filter: '',
+    search: queryParams.search || '',
+    filter: queryParams.filter || '',
   });
 
   // This is purely to prevent sending incomplete search events
@@ -65,14 +70,6 @@ const QuickstartsPage = ({ data, location }) => {
     1000,
     [formState]
   );
-
-  // Reads any existing query parameters into the form state
-  useEffect(() => {
-    const qpSearch = queryParams.search || '';
-    const qpFilter = queryParams.filter || '';
-
-    setFormState({ search: qpSearch, filter: qpFilter });
-  }, []);
 
   // Updates the url based on the current form state
   useEffect(() => {
@@ -269,7 +266,7 @@ const QuickstartsPage = ({ data, location }) => {
                 `}
               >
                 <SegmentedControl
-                  items={Object.values(VIEWS)}
+                  items={VIEWS}
                   onChange={(_e, view) => {
                     setView(view);
 
@@ -281,57 +278,11 @@ const QuickstartsPage = ({ data, location }) => {
               </div>
             </div>
           </div>
-          <div
-            css={css`
-              margin: 2em 0;
-            `}
-          >
-            <span>Showing {filteredPacks.length} results</span>
-          </div>
-          <div
-            css={css`
-              display: grid;
-              grid-gap: 1rem;
-              grid-template-columns: repeat(4, 1fr);
-              grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
-
-              @media (max-width: 1450px) {
-                grid-template-columns: repeat(3, 1fr);
-              }
-
-              @media (max-width: 1180px) {
-                grid-template-columns: repeat(1, 1fr);
-              }
-
-              ${view === VIEWS.LIST &&
-              css`
-                display: initial;
-              `}
-            `}
-          >
-            <ExternalLink
-              href={QUICKSTARTS_REPO}
-              css={css`
-                text-decoration: none;
-              `}
-            >
-              <PackTile
-                css={
-                  view === VIEWS.GRID &&
-                  css`
-                    height: 100%;
-                  `
-                }
-                view={view}
-                logoUrl={BUILD_YOUR_OWN}
-                name="Build your own quickstart"
-                description="Can't find a pack with what you need? Check out our README and build your own."
-              />
-            </ExternalLink>
-            {filteredPacks.map((pack) => (
-              <PackTile key={pack.id} view={view} {...pack} />
-            ))}
-          </div>
+          {isClient ? (
+            <QuickstartGridList quickstarts={filteredPacks} view={view} />
+          ) : (
+            <QuickstartGridList quickstarts={quickstarts} view={view} />
+          )}
         </div>
       </div>
     </>
