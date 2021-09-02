@@ -4,7 +4,12 @@ import CodeDef from './CodeDef';
 import { graphql } from 'gatsby';
 
 const FunctionDefinition = ({ className, arguments: params, returnValue }) => {
-  if (!params.length && !returnValue && !returnValue.length) {
+  const hasParams = params.length;
+  const isReturnArray = Array.isArray(returnValue);
+  const hasReturn =
+    (isReturnArray && returnValue.length) || (!isReturnArray && returnValue);
+
+  if (!hasParams && !hasReturn) {
     return null;
   }
 
