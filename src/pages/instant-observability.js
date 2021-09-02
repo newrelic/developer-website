@@ -9,27 +9,22 @@ import PackTile from '../components/PackTile';
 import {
   SearchInput,
   useTessen,
-  useInstrumentedData,
-  useQueryParams,
   ExternalLink,
 } from '@newrelic/gatsby-theme-newrelic';
+
 import { useDebounce } from 'react-use';
-import { navigate } from '@reach/router';
+import { useQueryParams, StringParam } from 'use-query-params';
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 
 const { QUICKSTARTS_REPO } = require('../data/constants');
-
-const packContentsFilterGroups = [
-  'All',
-  'Dashboards',
-  'Alerts',
-  'Data sources',
-];
 
 const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
 };
+
+const prop = (key) => (obj) => obj[key];
+const withComponent = (packs, key) => packs.filter((p) => p[key].length > 0);
 
 const QuickstartsPage = ({ data, location }) => {
   const tessen = useTessen();
@@ -38,56 +33,22 @@ const QuickstartsPage = ({ data, location }) => {
     allQuickstarts: { nodes: quickstarts },
   } = data;
 
-  const [filteredPacks, setFilteredPacks] = useState(quickstarts);
-
-  const { queryParams } = useQueryParams();
-
-  const [formState, setFormState] = useState({
-    search: queryParams.get('search'),
-    packContains: queryParams.get('packContains'),
-  });
-
   const [view, setView] = useState(VIEWS.GRID);
-
   useEffect(() => {
-    setFormState({
-      search: queryParams.get('search'),
-      packContains: queryParams.get('packContains'),
-    });
-  }, [queryParams]);
+    setView(view);
+  }, [view]);
 
-  const navigateToParams = (params) => {
-    Object.entries(params).forEach(([key, value]) => {
-      value ? queryParams.set(key, value) : queryParams.delete(key);
-    });
-
-    navigate(`?${queryParams}`);
-  };
-
-  useEffect(() => {
-    const handler = (e) => {
-      if (e.keyCode === 13) {
-        navigateToParams(formState);
-      }
-    };
-    document.addEventListener('keydown', handler);
-    return () => {
-      document.removeEventListener('keydown', handler);
-    };
+  const [queryParams, setQueryParams] = useQueryParams({
+    search: StringParam,
+    filter: StringParam,
+  });
+  const [formState, setFormState] = useState({
+    search: '',
+    filter: '',
   });
 
-  const searchInputRef = useRef();
-
-  useInstrumentedData(
-    { actionName: 'packViewToggle', packViewState: view },
-    { enabled: Boolean(view) }
-  );
-
-  useInstrumentedData(
-    { actionName: 'packFilter', packFilterState: formState.packContains },
-    { enabled: Boolean(formState.packContains) }
-  );
-
+  // This is purely to prevent sending incomplete search events
+  // to tessen
   useDebounce(
     () => {
       if (formState.search && formState.search !== '') {
@@ -102,47 +63,59 @@ const QuickstartsPage = ({ data, location }) => {
       }
     },
     1000,
-    [formState.search]
+    [formState]
   );
 
+  // Reads any existing query parameters into the form state
   useEffect(() => {
-    let tempFilteredPacks = queryParams.has('search')
-      ? quickstarts.filter(
-          (pack) =>
-            pack.name.toLowerCase().includes(queryParams.get('search')) ||
-            pack.description.toLowerCase().includes(queryParams.get('search'))
-        )
-      : quickstarts;
+    const qpSearch = queryParams.search || '';
+    const qpFilter = queryParams.filter || '';
 
-    if (
-      queryParams.has('packContains') &&
-      queryParams.get('packContains') !== 'All'
-    ) {
-      tempFilteredPacks = tempFilteredPacks.filter(
-        (pack) =>
-          pack[queryParams.get('packContains').toLowerCase()]?.length > 0
-      );
-    }
+    setFormState({ search: qpSearch, filter: qpFilter });
+  }, []);
 
-    setFilteredPacks(tempFilteredPacks);
-  }, [queryParams, quickstarts]);
-
+  // Updates the url based on the current form state
   useEffect(() => {
-    setView(view);
-  }, [view]);
+    setQueryParams(formState, 'replace');
+  }, [formState]);
 
-  const packContentsFilterValues = packContentsFilterGroups.map(
-    (filterName) => {
-      if (filterName === 'All') {
-        const filterCount = filteredPacks.length;
-        return { filterName, filterCount };
-      }
-      const filterCount = filteredPacks.filter(
-        (pack) => pack[filterName.toLowerCase()]
-      ).length;
-      return { filterName, filterCount };
-    }
+  let filteredPacks = quickstarts.filter(
+    (qs) =>
+      qs.name.toLowerCase().includes(formState.search.toLowerCase()) ||
+      qs.description.toLowerCase().includes(formState.search.toLowerCase())
   );
+
+  // This array is used to populate filters with a name, value,
+  // and count of packs within each filter
+  const packContentsFilterValues = [
+    {
+      filterName: 'All',
+      filterValue: 'all',
+      filterCount: filteredPacks.length,
+    },
+    {
+      filterName: 'Dashboards',
+      filterValue: 'dashboards',
+      filterCount: withComponent(filteredPacks, 'dashboards').length,
+    },
+    {
+      filterName: 'Alerts',
+      filterValue: 'alerts',
+      filterCount: withComponent(filteredPacks, 'alerts').length,
+    },
+    {
+      filterName: 'Data sources',
+      filterValue: 'documentation',
+      filterCount: withComponent(filteredPacks, 'documentation').length,
+    },
+  ];
+
+  if (
+    formState.filter !== 'all' &&
+    packContentsFilterValues.map(prop('filterValue')).includes(formState.filter)
+  ) {
+    filteredPacks = withComponent(filteredPacks, formState.filter);
+  }
 
   return (
     <>
@@ -209,22 +182,20 @@ const QuickstartsPage = ({ data, location }) => {
               </Label>
               <Select
                 id="packContentsFilter"
-                value={formState.packContains || 'All'}
+                value={formState.filter}
                 onChange={(e) => {
-                  setFormState((state) => ({
-                    ...state,
-                    packContains: e.target.value,
-                  }));
+                  setFormState({ ...formState, filter: e.target.value });
+
                   document.getElementById(e.target.id).blur();
                   tessen.track('observabilityPack', `packFilter`, {
-                    packFilterState: formState.packContains,
+                    packFilterState: formState.filter,
                   });
                 }}
               >
                 {packContentsFilterValues.map((packContentsItem) => (
                   <option
                     key={packContentsItem.filterName}
-                    value={packContentsItem.filterName}
+                    value={packContentsItem.filterValue}
                   >
                     {`${packContentsItem.filterName} (${packContentsItem.filterCount})`}
                   </option>
@@ -242,7 +213,6 @@ const QuickstartsPage = ({ data, location }) => {
           <div
             css={css`
               background-color: var(--color-neutrals-100);
-              margin: 15px 0;
               padding: 1rem;
               display: flex;
               justify-content: space-between;
@@ -274,28 +244,20 @@ const QuickstartsPage = ({ data, location }) => {
               <div
                 css={css`
                   width: 100%;
-                  margin-left: 20px;
                   input {
                     background: inherit;
                   }
                 `}
               >
                 <SearchInput
-                  ref={searchInputRef}
                   size={SearchInput.SIZE.LARGE}
-                  value={formState.search || ''}
+                  value={formState.search}
                   placeholder="Search pack names / descriptions. Enter to search"
                   onClear={() => {
-                    setFormState((state) => ({
-                      ...state,
-                      search: null,
-                    }));
+                    setFormState({ ...formState, search: '' });
                   }}
                   onChange={(e) => {
-                    setFormState((state) => ({
-                      ...state,
-                      search: e.target.value.toLowerCase(),
-                    }));
+                    setFormState({ ...formState, search: e.target.value });
                   }}
                 />
               </div>
@@ -303,7 +265,7 @@ const QuickstartsPage = ({ data, location }) => {
                 css={css`
                   display: inline-block;
                   min-width: 155px;
-                  margin-left: 20px;
+                  margin-left: 1rem;
                 `}
               >
                 <SegmentedControl
@@ -395,10 +357,13 @@ export const pageQuery = graphql`
         packUrl
         level
         dashboards {
-          description
           name
-          screenshots
-          url
+        }
+        alerts {
+          name
+        }
+        documentation {
+          name
         }
         authors
         description
