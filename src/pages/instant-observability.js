@@ -151,7 +151,11 @@ const QuickstartsPage = ({ data, location }) => {
 
   return (
     <>
-      <DevSiteSeo title="Instant Observability" location={location} />
+      <DevSiteSeo
+        title="Instant Observability"
+        location={location}
+        type="quickstarts"
+      />
       <div
         css={css`
           --sidebar-width: 300px;

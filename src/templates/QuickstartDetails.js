@@ -75,7 +75,12 @@ const QuickstartDetails = ({ data, location }) => {
 
   return (
     <>
-      <DevSiteSeo title={pack.name} location={location} />
+      <DevSiteSeo
+        title={pack.name}
+        type="quickstarts"
+        location={location}
+        quickStartName={pack.title}
+      />
       <Breadcrumbs segments={breadcrumbs} />
       <Tabs>
         <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
