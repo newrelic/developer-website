@@ -10,15 +10,17 @@ import {
   useInstrumentedHandler,
 } from '@newrelic/gatsby-theme-newrelic';
 import PackImg from './PackImg';
-
-const LEVELS = {
-  NEWRELIC: 'NEWRELIC',
-};
+import { QUICKSTART_SUPPORT_LEVELS } from '../data/constants';
 
 const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
 };
+
+const SHIELD_LEVELS = [
+  QUICKSTART_SUPPORT_LEVELS.NEWRELIC,
+  QUICKSTART_SUPPORT_LEVELS.VERIFIED,
+];
 
 const PackTile = ({
   id,
@@ -114,7 +116,8 @@ const PackTile = ({
         `}
       >
         <h4>
-          {name} {level === LEVELS.NEWRELIC && <Icon name="nr-check-shield" />}
+          {name}{' '}
+          {SHIELD_LEVELS.includes(level) && <Icon name="nr-check-shield" />}
         </h4>
         <p
           css={css`
