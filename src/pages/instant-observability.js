@@ -74,7 +74,7 @@ const QuickstartsPage = ({ data, location }) => {
   // Updates the url based on the current form state
   useEffect(() => {
     setQueryParams(formState, 'replace');
-  }, [formState]);
+  }, [formState, setQueryParams]);
 
   let filteredPacks = quickstarts.filter(
     (qs) =>

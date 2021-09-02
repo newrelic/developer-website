@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { ExternalLink } from '@newrelic/gatsby-theme-newrelic';
@@ -62,7 +62,7 @@ const QuickstartGridList = ({
             name="Build your own quickstart"
             description="Can't find a pack with what you need? Check out our README and build your own."
             fields={{ slug: '' }}
-            id={''}
+            id=""
           />
         </ExternalLink>
         {quickstarts.map((pack) => (

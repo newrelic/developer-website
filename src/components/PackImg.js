@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import DEFAULT_IMAGE from '../images/default-logo-background.svg';
@@ -41,7 +41,7 @@ const PackImg = ({ className, logoUrl, packName }) => {
         align-items: center;
       `}
     >
-      <p>{packAcronym}</p>
+      <p>{packAcronym.toUpperCase()}</p>
     </div>
   );
 };
