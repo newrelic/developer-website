@@ -309,12 +309,19 @@ export const pageQuery = graphql`
         level
         dashboards {
           name
+          url
+          description
         }
         alerts {
           name
+          details
+          url
+          type
         }
         documentation {
           name
+          url
+          description
         }
         authors
         description

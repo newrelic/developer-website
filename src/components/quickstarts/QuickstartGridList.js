@@ -61,6 +61,8 @@ const QuickstartGridList = ({
             logoUrl={BUILD_YOUR_OWN}
             name="Build your own quickstart"
             description="Can't find a pack with what you need? Check out our README and build your own."
+            fields={{ slug: '' }}
+            id={''}
           />
         </ExternalLink>
         {quickstarts.map((pack) => (
