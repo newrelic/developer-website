@@ -26,9 +26,9 @@ const PackTile = ({
   name,
   fields,
   logoUrl,
-  description,
   level,
   className,
+  summary,
 }) => {
   const tessen = useTessen();
 
@@ -122,7 +122,7 @@ const PackTile = ({
             color: var(--secondary-text-color);
           `}
         >
-          {description}
+          {summary}
         </p>
       </div>
     </Surface>
@@ -137,7 +137,7 @@ PackTile.propTypes = {
     slug: PropTypes.string.isRequired,
   }).isRequired,
   logoUrl: PropTypes.string,
-  description: PropTypes.string,
+  summary: PropTypes.string,
   level: PropTypes.string,
   className: PropTypes.string,
 };

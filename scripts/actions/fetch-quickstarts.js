@@ -50,6 +50,7 @@ const quickstartQuery = `# gql
               level
               logoUrl
               name
+              summary
               websiteUrl
             }
           }

@@ -403,6 +403,7 @@ export const pageQuery = graphql`
         authors
         description
         iconUrl
+        summary
       }
     }
   }
