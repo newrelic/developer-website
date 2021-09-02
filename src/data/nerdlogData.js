@@ -107,7 +107,7 @@ export const teamMembers = [
     ],
   },
   {
-    name: 'Ali Finkelstein',
+    name: 'Ali Diamond',
     pronouns: 'she/her',
     avatar: aliAvatar,
     bio: (
