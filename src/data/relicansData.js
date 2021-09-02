@@ -3,13 +3,12 @@ import aaronAvatar from '../images/relicans/aaron-bassett.jpg';
 import aishaAvatar from '../images/relicans/aisha-blake.jpg';
 import aliAvatar from '../images/relicans/ali-finkelstein.jpg';
 import chrisAvatar from '../images/relicans/chris-dabatos.jpg';
-import danielAvatar from '../images/relicans/daniel-kim.jpg';
 import dannyAvatar from '../images/relicans/danny-ramos.jpg';
 import jonanAvatar from '../images/relicans/jonan-scheffler.jpg';
 import kirkAvatar from '../images/relicans/kirk-haines.jpg';
 import miaAvatar from '../images/relicans/mia-moore.jpg';
 import pachiAvatar from '../images/relicans/pachi-carlson.jpg';
-import rachaelAvatar from '../images/relicans/rachael-wright-munn.jpg';
+import laurenAvatar from '../images/relicans/lauren-lee.jpg';
 
 export const teamMembers = [
   {
@@ -83,7 +82,7 @@ export const teamMembers = [
     ],
   },
   {
-    name: 'Ali Finkelstein',
+    name: 'Ali Diamond',
     pronouns: 'she/her',
     avatar: aliAvatar,
     bio: (
@@ -140,39 +139,6 @@ export const teamMembers = [
       {
         name: 'instagram',
         url: 'https://www.instagram.com/realchrissean/',
-      },
-    ],
-  },
-  {
-    name: 'Daniel Kim',
-    pronouns: 'he/him',
-    avatar: danielAvatar,
-    bio: (
-      <p>
-        Daniel Kim (He/Him) is a Senior Developer Relations Engineer at New
-        Relic and the founder of Bit Project, a 501(c)(3) nonprofit dedicated
-        make tech accessible to underserved communities. He wants to inspire
-        generations of students in tech to be the best they can be through
-        inclusive, accessible developer education. He is passionate about
-        diversity & inclusion in tech, good food, and dad jokes.
-      </p>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/journeyer_',
-      },
-      {
-        name: 'twitch',
-        url: 'https://twitch.tv/teachdaniel',
-      },
-      {
-        name: 'instagram',
-        url: 'https://instagram.com/journeyer',
-      },
-      {
-        name: 'linkedin',
-        url: 'https://linkedin.com/in/journeyer',
       },
     ],
   },
@@ -279,6 +245,43 @@ export const teamMembers = [
     ],
   },
   {
+    name: 'Lauren Lee',
+    pronouns: 'she/her',
+    avatar: laurenAvatar,
+    bio: (
+      <p>
+        Lauren is a Sr. Developer Relations Engineer at New Relic. She is an
+        English teacher turned empathetic software engineer. A curious optimist
+        with a passion for creating accessible content, celebrating unique
+        journeys to tech, and helping developers level up their skills. Lauren
+        is the host of the{' '}
+        <a href="https://webelongpodcast.com" target="_blank" rel="noreferrer">
+          We Belong Here podcast
+        </a>
+        , which aims to interview career changers and folks that are
+        diversifying the tech industry.
+      </p>
+    ),
+    socials: [
+      {
+        name: 'twitter',
+        url: 'https://twitter.com/lolocoding',
+      },
+      {
+        name: 'twitch',
+        url: 'https://twitch.tv/lolocoding',
+      },
+      {
+        name: 'linkedin',
+        url: 'https://www.linkedin.com/in/dev-lauren-lee/',
+      },
+      {
+        name: 'instagram',
+        url: 'https://instagram.com/lolocoding',
+      },
+    ],
+  },
+  {
     name: 'Mia Moore',
     pronouns: 'they/them',
     avatar: miaAvatar,
@@ -347,34 +350,6 @@ export const teamMembers = [
       {
         name: 'linkedin',
         url: 'https://linkedin.com/in/pachicodes',
-      },
-    ],
-  },
-  {
-    name: 'Rachael Wright-Munn',
-    pronouns: 'she/her',
-    avatar: rachaelAvatar,
-    bio: (
-      <p>
-        Rachael wants to share the joy and beauty of programming through
-        programming games and regular open-source streams on Twitch. She's been
-        a professional dev since 2012, 3x Team Lead, and manages an open-source
-        repo for playing games of Monster of the Week. Currently, she works as a
-        Developer Relations Engineer for New Relic.
-      </p>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/ChaelCodes',
-      },
-      {
-        name: 'twitch',
-        url: 'https://twitch.tv/ChaelCodes',
-      },
-      {
-        name: 'linkedin',
-        url: 'https://www.linkedin.com/in/rachael-wright-chaelcodes/',
       },
     ],
   },
