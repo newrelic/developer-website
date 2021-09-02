@@ -439,8 +439,6 @@
       pages:
         - title: Kubecon & CloudNativeCon
           url: '/kubecon-europe-2020'
-        - title: Nerd days 1.0
-          url: '/nerd-days'
         - title: All things open
           url: '/all-things-open'
 - title: Nerd Bytes
