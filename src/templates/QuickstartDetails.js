@@ -17,10 +17,10 @@ import {
   Icon,
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
-import ImageGallery from '../components/ImageGallery';
 import InstallButton from '../components/InstallButton';
 import Markdown from '../components/Markdown';
 import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { quickstart } from '../types';
 import {
   QUICKSTARTS_REPO,
@@ -28,27 +28,21 @@ import {
   SIGNUP_LINK,
   LOGIN_LINK,
 } from '../data/constants';
-
-const allowedElements = [
-  'h1',
-  'h2',
-  'h3',
-  'ol',
-  'ul',
-  'li',
-  'p',
-  'blockquote',
-  'code',
-  'a',
-  'strong',
-  'em',
-  'hr',
-];
+import QuickstartOverview from '../components/quickstarts/QuickstartOverview';
 
 const QuickstartDetails = ({ data, location }) => {
   const pack = data.quickstarts;
   const packUrl = pack.packUrl || QUICKSTARTS_REPO;
   const tessen = useTessen();
+  const breadcrumbs = [
+    {
+      name: 'Instant Observability (I/O)',
+      url: '/instant-observability/',
+    },
+    {
+      name: pack.name,
+    },
+  ];
   const handleInstallClick = useInstrumentedHandler(
     () => {
       tessen.track('observabilityPack', 'packInstall', {
@@ -66,6 +60,7 @@ const QuickstartDetails = ({ data, location }) => {
   return (
     <>
       <DevSiteSeo title={pack.name} location={location} />
+      <Breadcrumbs segments={breadcrumbs} />
       <Tabs>
         <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
           <PageLayout.Header
@@ -110,11 +105,7 @@ const QuickstartDetails = ({ data, location }) => {
           <Layout.Content>
             <Tabs.Pages>
               <Tabs.Page id="overview">
-                <ImageGallery images={[]} />
-                <h3>Description</h3>
-                <Markdown skipHtml allowedElements={allowedElements}>
-                  {pack.description}
-                </Markdown>
+                <QuickstartOverview quickstart={pack} />
               </Tabs.Page>
               <Tabs.Page id="dashboards">
                 {pack.dashboards ? (
