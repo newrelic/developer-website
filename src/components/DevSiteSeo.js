@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import { SEO } from '@newrelic/gatsby-theme-newrelic';
 import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 
-function DevSiteSeo({
-  description,
-  meta,
-  title,
-  tags,
-  location,
-  type,
-  quickStartName,
-}) {
+function DevSiteSeo({ description, meta, title, tags, location, type }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -74,22 +66,6 @@ function DevSiteSeo({
       'data-type': 'string',
       content: tag,
     })),
-    ...(quickStartName
-      ? [
-          {
-            name: 'quick_start_name',
-            class: 'swiftype',
-            'data-type': 'string',
-            content: quickStartName,
-          },
-          {
-            name: 'type',
-            class: 'swiftype',
-            'data-type': 'enum',
-            content: 'quickstarts',
-          },
-        ]
-      : []),
   ];
 
   // only add metadata if we have content

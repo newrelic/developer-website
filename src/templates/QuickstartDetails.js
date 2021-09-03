@@ -59,6 +59,14 @@ const QuickstartDetails = ({ data, location }) => {
       name: pack.name,
     },
   ];
+  const quickStartMeta = [
+    {
+      name: 'quick_start_name',
+      class: 'swiftype',
+      'data-type': 'string',
+      content: pack.title,
+    },
+  ];
   const handleInstallClick = useInstrumentedHandler(
     () => {
       tessen.track('observabilityPack', 'packInstall', {
@@ -79,7 +87,7 @@ const QuickstartDetails = ({ data, location }) => {
         title={pack.name}
         type="quickstarts"
         location={location}
-        quickStartName={pack.title}
+        meta={quickStartMeta}
       />
       <Breadcrumbs segments={breadcrumbs} />
       <Tabs>
