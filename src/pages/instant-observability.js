@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import React, { useState, useEffect, useRef } from 'react';
+import useMobileDetect from 'use-mobile-detect-hook';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
-import Select from '../components/Select';
 import SegmentedControl from '../components/SegmentedControl';
 import PackTile from '../components/PackTile';
+import MobileQSFilter from '../components/MobileQSFilter';
 import {
   SearchInput,
   useTessen,
   useInstrumentedData,
   useQueryParams,
   ExternalLink,
+  Button,
+  Icon,
 } from '@newrelic/gatsby-theme-newrelic';
 import { useDebounce } from 'react-use';
 import { navigate } from '@reach/router';
@@ -33,6 +36,8 @@ const VIEWS = {
 
 const QuickstartsPage = ({ data, location }) => {
   const tessen = useTessen();
+  const detectMobile = useMobileDetect();
+  const isMobile = detectMobile.isMobile();
 
   const {
     allQuickstarts: { nodes: quickstarts },
@@ -203,33 +208,85 @@ const QuickstartsPage = ({ data, location }) => {
               A place to find quickstarts of resources like dashboards,
               instrumentation, and alerts to help you monitor your environment.
             </p>
+            <aside
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+                margin-bottom: 1.5rem;
+              `}
+            />
             <FormControl>
-              <Label htmlFor="packContentsFilter">
-                Filter packs containing
-              </Label>
-              <Select
-                id="packContentsFilter"
-                value={formState.packContains || 'All'}
-                onChange={(e) => {
-                  setFormState((state) => ({
-                    ...state,
-                    packContains: e.target.value,
-                  }));
-                  document.getElementById(e.target.id).blur();
-                  tessen.track('observabilityPack', `packFilter`, {
-                    packFilterState: formState.packContains,
-                  });
-                }}
-              >
-                {packContentsFilterValues.map((packContentsItem) => (
-                  <option
-                    key={packContentsItem.filterName}
-                    value={packContentsItem.filterName}
-                  >
-                    {`${packContentsItem.filterName} (${packContentsItem.filterCount})`}
-                  </option>
-                ))}
-              </Select>
+              <Label htmlFor="packContentsFilter">FILTER BY</Label>
+              {isMobile ? (
+                <MobileQSFilter
+                  setFormState={setFormState}
+                  packContains={formState.packContains}
+                  packContentsFilterValues={packContentsFilterValues}
+                />
+              ) : (
+                packContentsFilterValues.map(
+                  ({ filterName, filterCount }, i) => (
+                    <Button
+                      css={css`
+                        padding: 1rem 0;
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-start;
+                        color: var(--primary-text-color);
+                        font-weight: 100;
+                        background: ${formState.packContains === filterName
+                          ? 'var(--divider-color)'
+                          : 'none'};
+                      `}
+                      type="button"
+                      key={i}
+                      onClick={() => setFormState({ packContains: filterName })}
+                    >
+                      {filterName === 'Dashboards' && (
+                        <Icon
+                          name="nr-dashboard"
+                          css={css`
+                            fill: currentColor;
+                            stroke-width: 0.25;
+                            margin: 0 0.5rem;
+                          `}
+                        />
+                      )}
+                      {filterName === 'Alerts' && (
+                        <Icon
+                          name="nr-alert"
+                          css={css`
+                            fill: currentColor;
+                            stroke-width: 0.25;
+                            margin: 0 0.5rem;
+                          `}
+                        />
+                      )}
+                      {filterName === 'Data sources' && (
+                        <Icon
+                          name="nr-document"
+                          css={css`
+                            fill: currentColor;
+                            stroke-width: 0.25;
+                            margin: 0 0.5rem;
+                          `}
+                        />
+                      )}
+                      {!filterName ||
+                        (filterName === 'All' && (
+                          <Icon
+                            name="nr-all-entities"
+                            css={css`
+                              fill: currentColor;
+                              stroke-width: 1;
+                              margin: 0 0.5rem;
+                            `}
+                          />
+                        ))}
+                      {`${filterName} (${filterCount})`}
+                    </Button>
+                  )
+                )
+              )}
             </FormControl>
           </div>
         </aside>
@@ -400,6 +457,17 @@ export const pageQuery = graphql`
           screenshots
           url
         }
+        alerts {
+          details
+          name
+          url
+          type
+        }
+        documentation {
+          name
+          url
+          description
+        }
         authors
         description
         iconUrl
@@ -431,6 +499,9 @@ const FormControl = ({ children }) => (
   <div
     css={css`
       margin: 0 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 
       @media screen and (max-width: 1180px) {
         margin: 0.5rem 0;
