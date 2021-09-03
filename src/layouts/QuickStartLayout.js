@@ -16,6 +16,11 @@ const QuickStartLayout = ({ children }) => {
         <Layout.Main
           css={css`
             min-height: 100vh;
+            padding: 0;
+
+            > * {
+              margin: var(--site-content-padding);
+            }
           `}
         >
           {children}
