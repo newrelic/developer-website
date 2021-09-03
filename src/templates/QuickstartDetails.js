@@ -43,6 +43,14 @@ const QuickstartDetails = ({ data, location }) => {
       name: pack.name,
     },
   ];
+  const quickStartMeta = [
+    {
+      name: 'quick_start_name',
+      class: 'swiftype',
+      'data-type': 'string',
+      content: pack.title,
+    },
+  ];
   const handleInstallClick = useInstrumentedHandler(
     () => {
       tessen.track('observabilityPack', 'packInstall', {
@@ -59,7 +67,12 @@ const QuickstartDetails = ({ data, location }) => {
 
   return (
     <>
-      <DevSiteSeo title={pack.name} location={location} />
+      <DevSiteSeo
+        title={pack.name}
+        type="quickstarts"
+        location={location}
+        meta={quickStartMeta}
+      />
       <Breadcrumbs segments={breadcrumbs} />
       <Tabs>
         <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
@@ -229,6 +242,7 @@ export const pageQuery = graphql`
   query($id: String!) {
     quickstarts(id: { eq: $id }) {
       name
+      title
       level
       id
       description
