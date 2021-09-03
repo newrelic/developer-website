@@ -254,6 +254,7 @@ export const pageQuery = graphql`
   query($id: String!) {
     quickstarts(id: { eq: $id }) {
       name
+      title
       level
       id
       description
