@@ -79,15 +79,53 @@ const QuickstartDetails = ({ data, location }) => {
           type={PageLayout.TYPE.RELATED_CONTENT_TABS}
           css={css`
             grid-template-columns: minmax(0, 1fr) 360px;
+            margin-top: 1rem;
           `}
         >
           <PageLayout.Header
             title={pack.name}
             css={css`
               border-bottom: none;
-              gap: 1rem;
+              display: grid;
+              padding-bottom: 0;
+              grid-template-areas: 'title logo' 'desc logo';
+              grid-column-gap: 1rem;
+
+              h1 {
+                font-weight: normal;
+                grid-area: title;
+              }
             `}
-          />
+          >
+            {pack.logoUrl && (
+              <img
+                src={pack.logoUrl}
+                alt={pack.title}
+                css={css`
+                  max-height: 5rem;
+                  grid-area: logo;
+                  align-self: center;
+
+                  .dark-mode & {
+                    background-color: white;
+                  }
+
+                  @media (max-width: 760px) {
+                    display: none;
+                  }
+                `}
+              />
+            )}
+            {pack.description && (
+              <p
+                css={css`
+                  grid-area: desc;
+                `}
+              >
+                {pack.description}
+              </p>
+            )}
+          </PageLayout.Header>
           <Tabs.Bar
             css={css`
               grid-column: 1/3;
