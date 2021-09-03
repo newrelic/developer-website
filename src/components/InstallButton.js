@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
+import { css } from '@emotion/react';
+import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
 import getPackNr1Url from '../utils/get-pack-nr1-url';
 import { NR1_LOGIN_URL } from '../data/constants';
 import { quickstart } from '../types';
@@ -45,6 +46,13 @@ const InstallButton = ({ quickstart, ...props }) => {
 
   return (
     <Button {...props} as={Link} to={url} variant={Button.VARIANT.PRIMARY}>
+      <Icon
+        name="fe-plus"
+        viewBox="0 0 16 16"
+        css={css`
+          margin-right: 7px;
+        `}
+      />
       {hasInstallableComponent ? 'Install quickstart' : 'See installation docs'}
     </Button>
   );

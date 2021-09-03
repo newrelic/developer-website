@@ -170,7 +170,7 @@ const QuickstartDetails = ({ data, location }) => {
               <div
                 css={css`
                   display: flex;
-                  justify-content: space-between;
+                  justify-content: center;
                   @media (max-width: 1240px) {
                     justify-content: flex-start;
                   }
@@ -188,9 +188,7 @@ const QuickstartDetails = ({ data, location }) => {
                   rel="noopener noreferrer"
                   instrumentation={{ packName: pack.name }}
                   css={css`
-                    @media (max-width: 1240px) {
-                      margin: 0 0 0 2rem;
-                    }
+                    margin: 0 0 0 0.5rem;
                     @media (max-width: 760px) {
                       margin: 1rem 0 0 0;
                     }
