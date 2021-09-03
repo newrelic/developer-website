@@ -75,16 +75,19 @@ const QuickstartDetails = ({ data, location }) => {
       />
       <Breadcrumbs segments={breadcrumbs} />
       <Tabs>
-        <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
+        <PageLayout
+          type={PageLayout.TYPE.RELATED_CONTENT_TABS}
+          css={css`
+            grid-template-columns: minmax(0, 1fr) 360px;
+          `}
+        >
           <PageLayout.Header
             title={pack.name}
             css={css`
               border-bottom: none;
               gap: 1rem;
             `}
-          >
-            <InstallButton quickstart={pack} onClick={handleInstallClick} />
-          </PageLayout.Header>
+          />
           <Tabs.Bar
             css={css`
               grid-column: 1/3;
@@ -168,13 +171,32 @@ const QuickstartDetails = ({ data, location }) => {
                 background-color: var(--divider-color);
               `}
             >
-              <div>
+              <div
+                css={css`
+                  display: flex;
+                  justify-content: center;
+                  @media (max-width: 1240px) {
+                    justify-content: flex-start;
+                  }
+                  @media (max-width: 760px) {
+                    flex-direction: column;
+                    align-items: stretch;
+                  }
+                `}
+              >
+                <InstallButton quickstart={pack} onClick={handleInstallClick} />
                 <Button
                   as={Link}
-                  variant={Button.VARIANT.PRIMARY}
+                  variant={Button.VARIANT.OUTLINE}
                   to={packUrl}
                   rel="noopener noreferrer"
                   instrumentation={{ packName: pack.name }}
+                  css={css`
+                    margin: 0 0 0 0.5rem;
+                    @media (max-width: 760px) {
+                      margin: 1rem 0 0 0;
+                    }
+                  `}
                 >
                   <Icon
                     name="fe-github"
