@@ -46,14 +46,20 @@ const InstallButton = ({ quickstart, ...props }) => {
 
   return (
     <Button {...props} as={Link} to={url} variant={Button.VARIANT.PRIMARY}>
-      <Icon
-        name="fe-plus"
-        viewBox="0 0 16 16"
-        css={css`
-          margin-right: 7px;
-        `}
-      />
-      {hasInstallableComponent ? 'Install quickstart' : 'See installation docs'}
+      {hasInstallableComponent ? (
+        <>
+          <Icon
+            name="fe-plus"
+            viewBox="0 0 16 16"
+            css={css`
+              margin-right: 7px;
+            `}
+          />
+          Install quickstart
+        </>
+      ) : (
+        'See installation docs'
+      )}
     </Button>
   );
 };
