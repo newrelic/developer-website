@@ -22,11 +22,18 @@ import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 
 const { QUICKSTARTS_REPO } = require('../data/constants');
 
-const packContentsFilterGroups = [
-  'All',
-  'Dashboards',
-  'Alerts',
-  'Data sources',
+// const packContentsFilterGroups = [
+//   'All',
+//   'Dashboards',
+//   'Alerts',
+//   'Data sources',
+// ];
+
+const FILTERS = [
+  { name: 'All', type: 'all', icon: 'nr-all-entities' },
+  { name: 'Dashboards', type: 'dashboard', icon: 'nr-dashboard' },
+  { name: 'Alerts', type: 'alerts', icon: 'nr-alert' },
+  { name: 'Data sources', type: 'documentation', icon: 'nr-document' },
 ];
 
 const VIEWS = {
@@ -34,7 +41,25 @@ const VIEWS = {
   LIST: 'List view',
 };
 
+/**
+ * Filters a quickstart based on a provided search term.
+ * @param {String} search Search term.
+ * @returns {(Object) => Boolean} Callback function to be used by filter.
+ */
+const filterBySearch = (search) => ({ name, description }) =>
+  name.toLowerCase().includes(search.toLowerCase()) ||
+  description.toLowerCase().includes(search.toLowerCase());
+
+/**
+ * Filters a quickstart based on a content type.
+ * @param {String} type The content type (e.g. 'alerts').
+ * @returns {(Object) => Boolean} Callback function to be used by filter.
+ */
+const filterByContentType = (type) => (quickstart) =>
+  type === 'all' || (quickstart[type] && quickstart[type].length > 0);
+
 const QuickstartsPage = ({ data, location }) => {
+  /*
   const tessen = useTessen();
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
@@ -148,6 +173,34 @@ const QuickstartsPage = ({ data, location }) => {
       return { filterName, filterCount };
     }
   );
+  */
+
+  // yes
+  const detectMobile = useMobileDetect();
+  const tessen = useTessen();
+
+  // maybe?
+  // const searchInputRef = useRef();
+  const packContentsFilterValues = [];
+  // const view = VIEWS.GRID;
+  // const filteredPacks = [];
+  const formState = {};
+
+  // new
+  const [view, setView] = useState(VIEWS.GRID);
+  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('all');
+
+  const quickstarts = data.allQuickstarts.nodes;
+
+  const filteredQuickstarts = quickstarts
+    .filter(filterBySearch(search))
+    .filter(filterByContentType(filter));
+
+  const filtersWithCount = FILTERS.map((filter) => ({
+    ...filter,
+    count: filteredQuickstarts.filter(filterByContentType(filter.type)).length,
+  }));
 
   return (
     <>
@@ -220,76 +273,41 @@ const QuickstartsPage = ({ data, location }) => {
             />
             <FormControl>
               <Label htmlFor="packContentsFilter">FILTER BY</Label>
-              {isMobile ? (
+              {detectMobile.isMobile() ? (
                 <MobileQSFilter
                   setFormState={setFormState}
                   packContains={formState.packContains}
                   packContentsFilterValues={packContentsFilterValues}
                 />
               ) : (
-                packContentsFilterValues.map(
-                  ({ filterName, filterCount }, i) => (
-                    <Button
+                filtersWithCount.map(({ name, type, icon, count }) => (
+                  <Button
+                    type="button"
+                    key={name}
+                    onClick={() => setFilter(type)}
+                    css={css`
+                      padding: 1rem 0;
+                      width: 100%;
+                      display: flex;
+                      justify-content: flex-start;
+                      color: var(--primary-text-color);
+                      font-weight: 100;
+                      background: ${filter === type
+                        ? 'var(--divider-color)'
+                        : 'none'};
+                    `}
+                  >
+                    <Icon
+                      name={icon}
                       css={css`
-                        padding: 1rem 0;
-                        width: 100%;
-                        display: flex;
-                        justify-content: flex-start;
-                        color: var(--primary-text-color);
-                        font-weight: 100;
-                        background: ${formState.packContains === filterName
-                          ? 'var(--divider-color)'
-                          : 'none'};
+                        fill: currentColor;
+                        stroke-width: ${name === 'All' ? 1 : 0.25};
+                        margin: 0 0.5rem;
                       `}
-                      type="button"
-                      key={i}
-                      onClick={() => setFormState({ packContains: filterName })}
-                    >
-                      {filterName === 'Dashboards' && (
-                        <Icon
-                          name="nr-dashboard"
-                          css={css`
-                            fill: currentColor;
-                            stroke-width: 0.25;
-                            margin: 0 0.5rem;
-                          `}
-                        />
-                      )}
-                      {filterName === 'Alerts' && (
-                        <Icon
-                          name="nr-alert"
-                          css={css`
-                            fill: currentColor;
-                            stroke-width: 0.25;
-                            margin: 0 0.5rem;
-                          `}
-                        />
-                      )}
-                      {filterName === 'Data sources' && (
-                        <Icon
-                          name="nr-document"
-                          css={css`
-                            fill: currentColor;
-                            stroke-width: 0.25;
-                            margin: 0 0.5rem;
-                          `}
-                        />
-                      )}
-                      {!filterName ||
-                        (filterName === 'All' && (
-                          <Icon
-                            name="nr-all-entities"
-                            css={css`
-                              fill: currentColor;
-                              stroke-width: 1;
-                              margin: 0 0.5rem;
-                            `}
-                          />
-                        ))}
-                      {`${filterName} (${filterCount})`}
-                    </Button>
-                  )
-                )
+                    />
+                    {`${name} (${count})`}
+                  </Button>
+                ))
               )}
             </FormControl>
           </div>
@@ -342,22 +360,11 @@ const QuickstartsPage = ({ data, location }) => {
                 `}
               >
                 <SearchInput
-                  ref={searchInputRef}
                   size={SearchInput.SIZE.LARGE}
-                  value={formState.search || ''}
+                  value={search}
                   placeholder="Search pack names / descriptions. Enter to search"
-                  onClear={() => {
-                    setFormState((state) => ({
-                      ...state,
-                      search: null,
-                    }));
-                  }}
-                  onChange={(e) => {
-                    setFormState((state) => ({
-                      ...state,
-                      search: e.target.value.toLowerCase(),
-                    }));
-                  }}
+                  onClear={() => setSearch('')}
+                  onChange={(e) => setSearch(e.target.value)}
                 />
               </div>
               <div
@@ -385,7 +392,7 @@ const QuickstartsPage = ({ data, location }) => {
               margin: 2em 0;
             `}
           >
-            <span>Showing {filteredPacks.length} results</span>
+            <span>Showing {filteredQuickstarts.length} results</span>
           </div>
           <div
             css={css`
@@ -427,7 +434,7 @@ const QuickstartsPage = ({ data, location }) => {
                 description="Can't find a pack with what you need? Check out our README and build your own."
               />
             </ExternalLink>
-            {filteredPacks.map((pack) => (
+            {filteredQuickstarts.map((pack) => (
               <PackTile key={pack.id} view={view} {...pack} />
             ))}
           </div>
