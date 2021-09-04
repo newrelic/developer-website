@@ -6,7 +6,7 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
 import PackTile from '../components/PackTile';
-import MobileQSFilter from '../components/MobileQSFilter';
+import MobileQuickstartFilter from '../components/MobileQuickstartFilter';
 import {
   SearchInput,
   useTessen,
@@ -274,10 +274,10 @@ const QuickstartsPage = ({ data, location }) => {
             <FormControl>
               <Label htmlFor="packContentsFilter">FILTER BY</Label>
               {detectMobile.isMobile() ? (
-                <MobileQSFilter
-                  setFormState={setFormState}
-                  packContains={formState.packContains}
-                  packContentsFilterValues={packContentsFilterValues}
+                <MobileQuickstartFilter
+                  filter={filter}
+                  setFilter={setFilter}
+                  filters={filtersWithCount}
                 />
               ) : (
                 filtersWithCount.map(({ name, type, icon, count }) => (
