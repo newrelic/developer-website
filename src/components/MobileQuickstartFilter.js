@@ -13,7 +13,7 @@ const MobileQuickstartFilter = ({ filter, setFilter, filters }) => {
       onChange={(e) => {
         const filter = e.target.value;
         setFilter(filter);
-        tessen.track('observabilityPack', `quickstartFilter`, { filter });
+        tessen.track('observabilityPack', 'quickstartFilter', { filter });
       }}
     >
       {filters.map(({ name, count, type }) => (

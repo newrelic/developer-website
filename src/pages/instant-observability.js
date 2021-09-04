@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import useMobileDetect from 'use-mobile-detect-hook';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
@@ -10,24 +10,13 @@ import MobileQuickstartFilter from '../components/MobileQuickstartFilter';
 import {
   SearchInput,
   useTessen,
-  useInstrumentedData,
-  useQueryParams,
   ExternalLink,
   Button,
   Icon,
 } from '@newrelic/gatsby-theme-newrelic';
-import { useDebounce } from 'react-use';
-import { navigate } from '@reach/router';
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 
 const { QUICKSTARTS_REPO } = require('../data/constants');
-
-// const packContentsFilterGroups = [
-//   'All',
-//   'Dashboards',
-//   'Alerts',
-//   'Data sources',
-// ];
 
 const FILTERS = [
   { name: 'All', type: 'all', icon: 'nr-all-entities' },
@@ -46,150 +35,28 @@ const VIEWS = {
  * @param {String} search Search term.
  * @returns {(Object) => Boolean} Callback function to be used by filter.
  */
-const filterBySearch = (search) => ({ name, description }) =>
-  name.toLowerCase().includes(search.toLowerCase()) ||
-  description.toLowerCase().includes(search.toLowerCase());
+const filterBySearch = (search) => ({ name, description }) => {
+  return (
+    name.toLowerCase().includes(search.toLowerCase()) ||
+    description.toLowerCase().includes(search.toLowerCase())
+  );
+};
 
 /**
  * Filters a quickstart based on a content type.
  * @param {String} type The content type (e.g. 'alerts').
  * @returns {(Object) => Boolean} Callback function to be used by filter.
  */
-const filterByContentType = (type) => (quickstart) =>
-  type === 'all' || (quickstart[type] && quickstart[type].length > 0);
+const filterByContentType = (type) => (quickstart) => {
+  return type === 'all' || (quickstart[type] && quickstart[type].length > 0);
+};
 
 const QuickstartsPage = ({ data, location }) => {
-  /*
-  const tessen = useTessen();
-  const detectMobile = useMobileDetect();
-  const isMobile = detectMobile.isMobile();
-
-  const {
-    allQuickstarts: { nodes: quickstarts },
-  } = data;
-
-  const [filteredPacks, setFilteredPacks] = useState(quickstarts);
-
-  const { queryParams } = useQueryParams();
-
-  const [formState, setFormState] = useState({
-    search: queryParams.get('search'),
-    packContains: queryParams.get('packContains'),
-  });
-
-  const [view, setView] = useState(VIEWS.GRID);
-
-  useEffect(() => {
-    setFormState({
-      search: queryParams.get('search'),
-      packContains: queryParams.get('packContains'),
-    });
-  }, [queryParams]);
-
-  const navigateToParams = (params) => {
-    Object.entries(params).forEach(([key, value]) => {
-      value ? queryParams.set(key, value) : queryParams.delete(key);
-    });
-
-    navigate(`?${queryParams}`);
-  };
-
-  useEffect(() => {
-    const handler = (e) => {
-      if (e.keyCode === 13) {
-        navigateToParams(formState);
-      }
-    };
-    document.addEventListener('keydown', handler);
-    return () => {
-      document.removeEventListener('keydown', handler);
-    };
-  });
-
-  const searchInputRef = useRef();
-
-  useInstrumentedData(
-    { actionName: 'packViewToggle', packViewState: view },
-    { enabled: Boolean(view) }
-  );
-
-  useInstrumentedData(
-    { actionName: 'packFilter', packFilterState: formState.packContains },
-    { enabled: Boolean(formState.packContains) }
-  );
-
-  useDebounce(
-    () => {
-      if (formState.search && formState.search !== '') {
-        tessen.track('observabilityPack', `packSearch`, {
-          packSearchTerm: formState.search,
-        });
-        if (typeof window !== 'undefined' && window.newrelic) {
-          window.newrelic.addPageAction('packSearch', {
-            packSearchTerm: formState.search,
-          });
-        }
-      }
-    },
-    1000,
-    [formState.search]
-  );
-
-  useEffect(() => {
-    let tempFilteredPacks = queryParams.has('search')
-      ? quickstarts.filter(
-          (pack) =>
-            pack.name.toLowerCase().includes(queryParams.get('search')) ||
-            pack.description.toLowerCase().includes(queryParams.get('search'))
-        )
-      : quickstarts;
-
-    if (
-      queryParams.has('packContains') &&
-      queryParams.get('packContains') !== 'All'
-    ) {
-      tempFilteredPacks = tempFilteredPacks.filter(
-        (pack) =>
-          pack[queryParams.get('packContains').toLowerCase()]?.length > 0
-      );
-    }
-
-    setFilteredPacks(tempFilteredPacks);
-  }, [queryParams, quickstarts]);
-
-  useEffect(() => {
-    setView(view);
-  }, [view]);
-
-  const packContentsFilterValues = packContentsFilterGroups.map(
-    (filterName) => {
-      if (filterName === 'All') {
-        const filterCount = filteredPacks.length;
-        return { filterName, filterCount };
-      }
-      const filterCount = filteredPacks.filter(
-        (pack) => pack[filterName.toLowerCase()]
-      ).length;
-      return { filterName, filterCount };
-    }
-  );
-  */
-
-  // yes
-  const detectMobile = useMobileDetect();
-  const tessen = useTessen();
-
-  // maybe?
-  // const searchInputRef = useRef();
-  const packContentsFilterValues = [];
-  // const view = VIEWS.GRID;
-  // const filteredPacks = [];
-  const formState = {};
-
-  // new
   const [view, setView] = useState(VIEWS.GRID);
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('all');
+  const detectMobile = useMobileDetect();
+  const tessen = useTessen();
 
   const quickstarts = data.allQuickstarts.nodes;
 
