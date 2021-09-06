@@ -13,6 +13,8 @@ const DEFAULT_PARAMS = {
 };
 
 /**
+ * Helper function to track events, given specific conditions.
+ *
  * @param {Object} tessen Tessen instance to be used (from useTessen).
  * @param {string} postfix String to be used at the end of the event name.
  * @param {Object} params Params from hook.
@@ -33,7 +35,6 @@ const track = (tessen, params, postfix, data = {}) => {
   }
 };
 
-
 /**
  * A collection of `useState` hooks with some optional instrumentation and
  * optional logic to update the URL state.
@@ -46,14 +47,6 @@ const track = (tessen, params, postfix, data = {}) => {
  *
  * @todo Expose the data via context.
  * @todo Enable URL updates (and document it).
- *
- * @param {Object} args
- * @param {string} [trackingCategory] If set, will be used to track via Tessen.
- * @param {string} [trackingPrefix] Used in the beginning of event names.
- * @param {Object<string, any>} [args.filters]
- * @param {string} [args.search]
- * @param {{by: string, dir: string}} [args.sort]
- * @param {string} [args.tessenCategory]
  *
  * @example
  * ```js
@@ -71,6 +64,14 @@ const track = (tessen, params, postfix, data = {}) => {
  *   trackingPrefix: 'featureA'
  * });
  * ```
+ *
+ * @param {Object} args
+ * @param {string} [args.trackingCategory] If set, will be used to track via Tessen.
+ * @param {string} [args.trackingPrefix] Used in the beginning of event names.
+ * @param {Object<string, any>} [args.filters]
+ * @param {string} [args.search]
+ * @param {{by: string, dir: 'ASC'|'DESC'}} [args.sort]
+ * @param {string} [args.tessenCategory]
  */
 const useFilterSearchSort = (args) => {
   const params = { ...DEFAULT_PARAMS, ...args };

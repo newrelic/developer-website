@@ -6,7 +6,7 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
 import PackTile from '../components/PackTile';
-import MobileQuickstartFilter from '../components/MobileQuickstartFilter';
+import useFilterSearchSort from '../hooks/useFilterSearchSort';
 import {
   SearchInput,
   useTessen,
@@ -53,16 +53,18 @@ const filterByContentType = (type) => (quickstart) => {
 
 const QuickstartsPage = ({ data, location }) => {
   const [view, setView] = useState(VIEWS.GRID);
-  const [search, setSearch] = useState('');
-  const [filter, setFilter] = useState('all');
   const detectMobile = useMobileDetect();
   const tessen = useTessen();
+
+  const { search, setSearch, filters, setFilters } = useFilterSearchSort({
+    filters: { type: 'all' },
+  });
 
   const quickstarts = data.allQuickstarts.nodes;
 
   const filteredQuickstarts = quickstarts
     .filter(filterBySearch(search))
-    .filter(filterByContentType(filter));
+    .filter(filterByContentType(filters.type));
 
   const filtersWithCount = FILTERS.map((filter) => ({
     ...filter,
@@ -139,19 +141,28 @@ const QuickstartsPage = ({ data, location }) => {
               `}
             />
             <FormControl>
-              <Label htmlFor="packContentsFilter">FILTER BY</Label>
+              <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
               {detectMobile.isMobile() ? (
-                <MobileQuickstartFilter
-                  filter={filter}
-                  setFilter={setFilter}
-                  filters={filtersWithCount}
-                />
+                <Select
+                  id="quickstartFilterByType"
+                  value={filters.type}
+                  onChange={(e) => {
+                    const type = e.target.value;
+                    setFilters((filters) => ({ ...filters, type }));
+                  }}
+                >
+                  {filtersWithCount.map(({ name, count, type }) => (
+                    <option key={type} value={type}>
+                      {`${name} (${count})`}
+                    </option>
+                  ))}
+                </Select>
               ) : (
                 filtersWithCount.map(({ name, type, icon, count }) => (
                   <Button
                     type="button"
                     key={name}
-                    onClick={() => setFilter(type)}
+                    onClick={() => setFilters((filters) => ({ ...filters, type }))}
                     css={css`
                       padding: 1rem 0;
                       width: 100%;
@@ -159,7 +170,7 @@ const QuickstartsPage = ({ data, location }) => {
                       justify-content: flex-start;
                       color: var(--primary-text-color);
                       font-weight: 100;
-                      background: ${filter === type
+                      background: ${filters.type === type
                         ? 'var(--divider-color)'
                         : 'none'};
                     `}
