@@ -59,6 +59,8 @@ const QuickstartsPage = ({ data, location }) => {
 
   const { search, setSearch, filters, setFilters } = useFilterSearchSort({
     filters: { type: 'all' },
+    trackingCategory: 'InstantObservability',
+    trackingPrefix: 'quickstart',
     updateURL: true,
   });
 
