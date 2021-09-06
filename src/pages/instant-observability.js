@@ -58,6 +58,7 @@ const QuickstartsPage = ({ data, location }) => {
 
   const { search, setSearch, filters, setFilters } = useFilterSearchSort({
     filters: { type: 'all' },
+    updateURL: true,
   });
 
   const quickstarts = data.allQuickstarts.nodes;
@@ -162,7 +163,9 @@ const QuickstartsPage = ({ data, location }) => {
                   <Button
                     type="button"
                     key={name}
-                    onClick={() => setFilters((filters) => ({ ...filters, type }))}
+                    onClick={() =>
+                      setFilters((filters) => ({ ...filters, type }))
+                    }
                     css={css`
                       padding: 1rem 0;
                       width: 100%;

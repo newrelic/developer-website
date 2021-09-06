@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDebounce } from 'react-use';
-import { useTessen } from '@newrelic/gatsby-theme-newrelic';
+import { useQueryParams, useTessen } from '@newrelic/gatsby-theme-newrelic';
 
 export const SORT_DIRS = {
   ASC: 'ASC',
@@ -10,6 +10,7 @@ export const SORT_DIRS = {
 const DEFAULT_PARAMS = {
   search: '',
   sort: { by: null, dir: SORT_DIRS.DESC },
+  updateURL: false,
 };
 
 /**
@@ -25,10 +26,11 @@ const DEFAULT_PARAMS = {
 const track = (tessen, params, postfix, data = {}) => {
   const inBrowser = typeof window !== 'undefined';
   const shouldTessenTrack = params.trackingCategory && params.trackingPrefix;
-  const shouldNewrelicTrack = inBrowser && window.newrelic && params.trackingPrefix;
+  const shouldNewrelicTrack =
+    inBrowser && window.newrelic && params.trackingPrefix;
 
   if (shouldTessenTrack) {
-    tessen.track(trackingCategory, `${trackingPrefix}${postfix}`, data)
+    tessen.track(trackingCategory, `${trackingPrefix}${postfix}`, data);
   }
   if (shouldNewrelicTrack) {
     window.newrelic.addPageAction(`${trackingPrefix}${postfix}`, data);
@@ -39,14 +41,16 @@ const track = (tessen, params, postfix, data = {}) => {
  * A collection of `useState` hooks with some optional instrumentation and
  * optional logic to update the URL state.
  *
+ * If `updateURL` is set to true, this will manage the filter & search state
+ * in the url via `useQueryParams`.
+ *
  * If a `trackingPrefix` is supplied, events will be tracked with New Relic
  * Browser (via `PageAction` - assuming the library is available).
  *
  * If a `trackingCategory` is supplied, events will be tracked with Tessen this
  * requires that a `trackingPrefix` is set as well.
  *
- * @todo Expose the data via context.
- * @todo Enable URL updates (and document it).
+ * @todo Provide the option to consume this via context.
  *
  * @example
  * ```js
@@ -72,11 +76,14 @@ const track = (tessen, params, postfix, data = {}) => {
  * @param {string} [args.search]
  * @param {{by: string, dir: 'ASC'|'DESC'}} [args.sort]
  * @param {string} [args.tessenCategory]
+ * @param {boolean} [args.updateURL]
  */
 const useFilterSearchSort = (args) => {
   const params = { ...DEFAULT_PARAMS, ...args };
+  const { updateURL } = params;
 
   const tessen = useTessen();
+  const { setQueryParam } = useQueryParams();
 
   const [filters, setFilters] = useState(params.filters);
   const [search, setSearch] = useState(params.search);
@@ -84,13 +91,27 @@ const useFilterSearchSort = (args) => {
 
   useEffect(() => {
     track(tessen, params, 'Filter', filters);
+
+    if (updateURL) {
+      for (const [key, value] of Object.entries(filters)) {
+        setQueryParam(key, value);
+      }
+    }
   }, [filters]);
 
-  useDebounce(() => {
-    if (search !== '') {
-      track(tessen, params, 'Search', { search });
-    }
-  }, 1000, [search]);
+  useDebounce(
+    () => {
+      if (search !== '') {
+        track(tessen, params, 'Search', { search });
+      }
+
+      if (updateURL) {
+        setQueryParam('search', search);
+      }
+    },
+    1000,
+    [search]
+  );
 
   return { search, setSearch, filters, setFilters, sort, setSort };
 };
