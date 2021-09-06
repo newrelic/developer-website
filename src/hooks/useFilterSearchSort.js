@@ -76,7 +76,7 @@ const track = (tessen, params, postfix, data = {}) => {
  * @param {Object<string, any>} [args.filters]
  * @param {string} [args.search]
  * @param {{by: string, dir: 'ASC'|'DESC'}} [args.sort]
- * @param {string} [args.tessenCategory]
+ * @param {string} [args.trackingCategory]
  * @param {boolean} [args.updateURL]
  */
 const useFilterSearchSort = (args) => {
