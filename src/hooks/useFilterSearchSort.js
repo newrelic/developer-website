@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useDebounce } from 'react-use';
 import { useQueryParams, useTessen } from '@newrelic/gatsby-theme-newrelic';
 
@@ -24,10 +24,11 @@ const DEFAULT_PARAMS = {
  * @param {any} [data] Optional data to be sent with the event.
  */
 const track = (tessen, params, postfix, data = {}) => {
+  const { trackingCategory, trackingPrefix } = params;
+
   const inBrowser = typeof window !== 'undefined';
-  const shouldTessenTrack = params.trackingCategory && params.trackingPrefix;
-  const shouldNewrelicTrack =
-    inBrowser && window.newrelic && params.trackingPrefix;
+  const shouldTessenTrack = trackingCategory && trackingPrefix;
+  const shouldNewrelicTrack = inBrowser && window.newrelic && trackingPrefix;
 
   if (shouldTessenTrack) {
     tessen.track(trackingCategory, `${trackingPrefix}${postfix}`, data);
@@ -79,8 +80,13 @@ const track = (tessen, params, postfix, data = {}) => {
  * @param {boolean} [args.updateURL]
  */
 const useFilterSearchSort = (args) => {
-  const params = { ...DEFAULT_PARAMS, ...args };
-  const { updateURL } = params;
+  const params = useMemo(
+    () => ({
+      ...DEFAULT_PARAMS,
+      ...args,
+    }),
+    [args]
+  );
 
   const tessen = useTessen();
   const { setQueryParam } = useQueryParams();
@@ -90,6 +96,7 @@ const useFilterSearchSort = (args) => {
   const [sort, setSort] = useState(params.sort);
 
   useEffect(() => {
+    const { updateURL } = params;
     track(tessen, params, 'Filter', filters);
 
     if (updateURL) {
@@ -97,10 +104,11 @@ const useFilterSearchSort = (args) => {
         setQueryParam(key, value);
       }
     }
-  }, [filters]);
+  }, [filters, params, setQueryParam, tessen]);
 
   useDebounce(
     () => {
+      const { updateURL } = params;
       if (search !== '') {
         track(tessen, params, 'Search', { search });
       }
@@ -110,7 +118,7 @@ const useFilterSearchSort = (args) => {
       }
     },
     1000,
-    [search]
+    [search, params, setQueryParam, tessen]
   );
 
   return { search, setSearch, filters, setFilters, sort, setSort };

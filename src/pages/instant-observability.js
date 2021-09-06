@@ -7,6 +7,7 @@ import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
 import PackTile from '../components/PackTile';
 import useFilterSearchSort from '../hooks/useFilterSearchSort';
+import Select from '../components/Select';
 import {
   SearchInput,
   useTessen,
