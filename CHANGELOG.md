@@ -1,3 +1,13 @@
+## [1.52.2](https://github.com/newrelic/developer-website/compare/v1.52.1...v1.52.2) (2021-09-02)
+
+
+### Bug Fixes
+
+* allowing one or many return values ([55af575](https://github.com/newrelic/developer-website/commit/55af575e0070f0e2999a22b2bcb3505eb24495b1))
+* correct logic for checking function definition validity ([053becf](https://github.com/newrelic/developer-website/commit/053becf26d6d6816782ea4a43d1a60aa2ae85b0b))
+* ensuring that all meta tags have a unque key ([0eef057](https://github.com/newrelic/developer-website/commit/0eef057c981a0adb4ac2b278bb97dff8646aac0c))
+* only display the method description when present ([46294d9](https://github.com/newrelic/developer-website/commit/46294d9552f363f72400a97619770e0277a07042))
+
 ## [1.52.1](https://github.com/newrelic/developer-website/compare/v1.52.0...v1.52.1) (2021-08-19)
 
 
