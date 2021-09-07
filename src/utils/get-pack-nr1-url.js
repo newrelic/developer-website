@@ -4,8 +4,6 @@ import {
   NR1_PACK_DETAILS_NERDLET,
 } from '../data/constants';
 
-const NERDLET_PATH = `nerdlet/${NR1_PACK_DETAILS_NERDLET}`;
-
 /**
  * @param {string} packId The ID for an observability pack.
  * @param {boolean} [debug] If set to true, this will add `packages=local`.
@@ -27,7 +25,7 @@ const getPackNr1Url = (quickstartId, debug = false) => {
   const local = debug ? 'packages=local&' : '';
   const NR1_URL = debug ? NR1_BASE_URL_LOCAL : NR1_BASE_URL;
 
-  const url = new URL(`${NERDLET_PATH}?${local}pane=${hash}`, NR1_URL);
+  const url = new URL(`?${local}pane=${hash}`, NR1_URL);
 
   return url.href;
 };
