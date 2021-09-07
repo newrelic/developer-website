@@ -104,15 +104,18 @@ There are no screenshots, icons, details, or what's new features. To add these, 
 
 <Step>
 
-From the root of your Nerdpack, create a _catalog_ directory to house your Nerdpack's screenshots and metadata:
+From the root of your Nerdpack, create _catalog_ directories to house your Nerdpack's screenshots and metadata:
 
 ```sh
 nr1 create --type catalog
-[output] {success}✔{normal}  Component created successfully!
+[output] {success}✔{normal}  created: launchers/launcher/catalog
+[output] {success}✔{normal}  created: nerdlets/home/catalog
+[output]
+[output] {success}✔{normal}  catalog created successfully!
 [output]    {purple}catalog{normal} is available at "./catalog"
 ```
 
-Inside your _catalog_ directory, you'll find specific files and directories for portraying information about your Nerdpack to your users:
+Inside your root _catalog_ directory, you'll find specific files and directories for portraying information about your Nerdpack to your users:
 
 ```sh
 ls catalog
@@ -126,6 +129,16 @@ ls catalog
 | _documentation.md_  | A markdown file that tells users how to use the Nerdpack's Nerdlets or visualizations. This shows in the detail view's **Documentation** tab.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | _additionalInfo.md_ | An optional markdown file for any additional information about using your application                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | _screenshots_       | A directory that contains screenshots of your Nerdlets or visualizations. This can contain no more than 6 images. All screenshots must meet the following criteria:<br /><br /><ul><li>3:2 aspect ratio</li><li>PNG format</li><li>landscape orientation</li><li>1600 to 2400 pixels wide</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+
+This command also generates a `catalog` directory for each launcher, nerdlet, and visualization in your Nerdpack. Inside you'll find a directory that allows you to add screenshots for each artifact.
+
+```sh
+ls launchers/launcher/catalog
+[output] {blue}screenshots
+[output]
+ls nerdlets/home/catalog
+[output] {blue}screenshots
+```
 
 </Step>
 
@@ -156,7 +169,7 @@ Update your _config.json_ file:
 
 <Step>
 
-Include screenshots in your _screenshots_ directory.
+Include screenshots in your root _screenshots_ directory or any artifact _screenshots_ directory.
 
 </Step>
 
@@ -166,8 +179,12 @@ Submit the information to the New Relic One catalog:
 
 ```sh
 nr1 catalog:submit
-[output] Uploading screenshots...
-[output]  {success}✔{normal}  Screenshots uploaded
+[output] Uploading screenshots from demo-app...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app
+[output] Uploading screenshots from demo-app/launchers/launcher...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app/launchers/launcher
+[output] Uploading screenshots from demo-app/nerdlets/home...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app/nerdlets/home
 [output]  {success}✔{normal}  Updated metadata for DemoApp 1.0.0
 ```
 
@@ -272,8 +289,12 @@ Submit this new metadata to the catalog:
 
 ```sh
 nr1 catalog:submit
-[output] Uploading screenshots...
-[output]  {success}✔{normal}  Screenshots uploaded
+[output] Uploading screenshots from demo-app...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app
+[output] Uploading screenshots from demo-app/launchers/launcher...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app/launchers/launcher
+[output] Uploading screenshots from demo-app/nerdlets/home...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app/nerdlets/home
 [output]  {success}✔{normal}  Updated metadata for DemoApp 1.0.1
 ```
 
@@ -344,4 +365,3 @@ nr1 catalog:submit
 [output]  {error}›{normal}   {error}Invalid Metadata: `tagline` has a character length of 266. Must be no longer than 30 characters
 [output]  {error}›{normal}   Code: UNKNOWN
 ```
-
