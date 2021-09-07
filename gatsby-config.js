@@ -65,11 +65,17 @@ module.exports = {
               return {
                 q: tags ? tags.map(quote).join(' OR ') : title,
                 search_fields: {
-                  page: ['tags^10', 'body^5', 'title^1.5', '*'],
+                  page: [
+                    'tags^10',
+                    'quick_start_name^8',
+                    'body^5',
+                    'title^1.5',
+                    '*',
+                  ],
                 },
                 filters: {
                   page: {
-                    type: ['docs', 'developer', 'opensource'],
+                    type: ['docs', 'developer', 'opensource', 'quick_starts'],
                     document_type: [
                       '!views_page_menu',
                       '!term_page_api_menu',
