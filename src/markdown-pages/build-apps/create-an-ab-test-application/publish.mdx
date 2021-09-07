@@ -205,8 +205,8 @@ Submit your catalog information:
 
 ```sh
 nr1 catalog:submit
-[output] Uploading screenshots...
-[output]  {green}✔  {plain}Screenshots uploaded
+[output] Uploading screenshots from nru-programmability-course/publish/ab-test...
+[output]  {success}✔{normal}  Screenshots uploaded from: nru-programmability-course/publish/ab-test
 [output]  {green}✔  {plain}Updated metadata for AbTest 1.0.0
 ```
 
@@ -234,18 +234,26 @@ View your catalog information:
 
 ```sh
 nr1 catalog:info
-[output] {purple}description: {plain}Nerdpack ab-test
-[output] {purple}details: {plain}Display test data for our newsletter subscription A/B test
-[output] {purple}displayName: {plain}AbTest
-[output] {purple}icon.url: {plain}https://nr3.nr-ext.net/artifact-index-production/a685fec2-29fb-40b0-9f65-4178...
-[output] {purple}previews.0.url: {plain}https://application-catalog-production.s3.us-east-2.amazonaws.com/nerdpacks/a...
-[output] {purple}releaseDate: {plain}2021-03-12T15:46:09.600138Z
-[output] {purple}repository: {plain}https://github.com/newrelic-experimental/nru-programmability-course
-[output] {purple}tagline: {plain}Win @ newsletter subscriptions
-[output] {purple}version: {plain}1.0.0
-[output] {purple}whatsNew.changes: {plain}Initial release! Includes:
-[output] - A variety of charts for understanding the test r...
-[output] {purple}whatsNew.version: {plain}1.0.0
+[output] AbTest (Nerdpack):
+[output]     {purple}description: {plain}Nerdpack ab-test
+[output]     {purple}details: {plain}Display test data for our newsletter subscription A/B test
+[output]     {purple}displayName: {plain}AbTest
+[output]     {purple}icon.url: {plain}https://nr3.nr-ext.net/artifact-index-production/a685fec2-29fb-40b0-9f65-4178...
+[output]     {purple}previews.0.url: {plain}https://application-catalog-production.s3.us-east-2.amazonaws.com/nerdpacks/a...
+[output]     {purple}releaseDate: {plain}2021-03-12T15:46:09.600138Z
+[output]     {purple}repository: {plain}https://github.com/newrelic-experimental/nru-programmability-course
+[output]     {purple}tagline: {plain}Win @ newsletter subscriptions
+[output]     {purple}version: {plain}1.0.0
+[output]     {purple}whatsNew.changes: {plain}Initial release! Includes:
+[output]     - A variety of charts for understanding the test r...
+[output]     {purple}whatsNew.version: {plain}1.0.0
+[output] AbTestLauncher (Launcher):
+[output]     {purple}description: {plain}Describe me
+[output]     {purple}displayName: {plain}AbTestLauncher
+[output]     {purple}icon.url: {plain}https://nr3.nr-ext.net/artifact-index-production/a685fec2-29fb-40b0-9f65-4178...
+[output] AbTestNerdlet (Nerdlet):
+[output]     {purple}displayName: {plain}AbTestNerdlet
+[output]     {purple}supportedEntityTypes.mode: NONE
 ```
 
 All the information from _catalog_ shows here.
