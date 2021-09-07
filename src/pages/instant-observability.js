@@ -302,90 +302,82 @@ const QuickstartsPage = ({ data, location }) => {
         >
           <div
             css={css`
-              background-color: var(--color-neutrals-100);
-              margin: 15px 0;
+              background-color: var(--secondary-background-color);
+              border-radius: 4px;
               padding: 1rem;
               display: flex;
               justify-content: space-between;
               align-items: center;
-              flex-wrap: wrap;
-              .dark-mode & {
-                background-color: var(--color-dark-100);
+
+              input {
+                font-size: 1.15em;
+                padding: 0.5rem;
+                padding-left: 3.75rem;
+                border-radius: 4px;
+
+                &::placeholder {
+                  color: var(--border-color);
+                }
               }
+
+              .dark-mode & {
+                background-color: var(--tertiary-background-color);
+              }
+
               @media screen and (max-width: 1180px) {
                 flex-direction: column;
                 align-items: normal;
+
                 > * {
                   margin: 0.5rem 0;
                 }
               }
             `}
           >
+            <SearchInput
+              ref={searchInputRef}
+              size={SearchInput.SIZE.LARGE}
+              value={formState.search || ''}
+              placeholder="Search for any quickstart (e.g. Node, AWS, LAMP, etc.)"
+              onClear={() => {
+                setFormState((state) => ({
+                  ...state,
+                  search: null,
+                }));
+              }}
+              onChange={(e) => {
+                setFormState((state) => ({
+                  ...state,
+                  search: e.target.value.toLowerCase(),
+                }));
+              }}
+            />
             <div
               css={css`
-                display: flex;
-                align-items: center;
-                width: 100%;
-
-                > * {
-                  margin: 0 0.1rem;
-                }
+                min-width: 155px;
+                margin-left: 20px;
               `}
             >
-              <div
-                css={css`
-                  width: 100%;
-                  margin-left: 20px;
-                  input {
-                    background: inherit;
-                  }
-                `}
-              >
-                <SearchInput
-                  ref={searchInputRef}
-                  size={SearchInput.SIZE.LARGE}
-                  value={formState.search || ''}
-                  placeholder="Search pack names / descriptions. Enter to search"
-                  onClear={() => {
-                    setFormState((state) => ({
-                      ...state,
-                      search: null,
-                    }));
-                  }}
-                  onChange={(e) => {
-                    setFormState((state) => ({
-                      ...state,
-                      search: e.target.value.toLowerCase(),
-                    }));
-                  }}
-                />
-              </div>
-              <div
-                css={css`
-                  display: inline-block;
-                  min-width: 155px;
-                  margin-left: 20px;
-                `}
-              >
-                <SegmentedControl
-                  items={Object.values(VIEWS)}
-                  onChange={(_e, view) => {
-                    setView(view);
+              <SegmentedControl
+                items={Object.values(VIEWS)}
+                onChange={(_e, view) => {
+                  setView(view);
 
-                    tessen.track('observabilityPack', `packViewToggle`, {
-                      packViewState: view,
-                    });
-                  }}
-                />
-              </div>
+                  tessen.track('observabilityPack', `packViewToggle`, {
+                    packViewState: view,
+                  });
+                }}
+              />
             </div>
           </div>
           <div
             css={css`
-              margin: 2em 0;
+              padding: 1.25rem 0;
+              font-size: 0.9rem;
+              color: var(--secondary-text-color);
             `}
           >
-            <span>Showing {filteredPacks.length} results</span>
+            Showing {filteredPacks.length} results
           </div>
           <div
             css={css`
