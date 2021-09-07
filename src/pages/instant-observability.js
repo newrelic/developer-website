@@ -416,7 +416,7 @@ const QuickstartsPage = ({ data, location }) => {
                 view={view}
                 logoUrl={BUILD_YOUR_OWN}
                 name="Build your own quickstart"
-                description="Can't find a pack with what you need? Check out our README and build your own."
+                summary="Can't find a pack with what you need? Check out our README and build your own."
               />
             </ExternalLink>
             {filteredPacks.map((pack) => (
@@ -467,6 +467,7 @@ export const pageQuery = graphql`
         authors
         description
         iconUrl
+        summary
       }
     }
   }

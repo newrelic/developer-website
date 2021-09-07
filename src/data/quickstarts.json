@@ -19,6 +19,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/android/logo.svg",
     "name": "android",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/android",
+    "summary": "Mobile operating system based on a modified Linux kernel and other open source software.",
     "title": "Android",
     "websiteUrl": null
   },
@@ -42,6 +43,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ansible/logo.svg",
     "name": "ansible",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ansible",
+    "summary": "Open-source software provisioning, configuration management, and application-deployment tool enabling infrastructure as code.",
     "title": "Ansible",
     "websiteUrl": null
   },
@@ -87,6 +89,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/apache/logo.svg",
     "name": "Apache",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/apache",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://httpd.apache.org/"
   },
@@ -110,6 +113,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/apis/event/logo.png",
     "name": "Event API",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/apis/event",
+    "summary": "The New Relic Event API is one way to report custom events to New Relic. The Event API lets you send custom event data to your New Relic account with a POST command. These events are then queryable and chartable using NRQL.",
     "title": "Event API",
     "websiteUrl": null
   },
@@ -133,6 +137,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/apis/logs/logo.png",
     "name": "Logs API",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/apis/logs",
+    "summary": "If our logging solutions don't meet your needs, you can use our Log API to send log data directly to New Relic's Log management via an HTTP endpoint.",
     "title": "Logs API",
     "websiteUrl": null
   },
@@ -156,6 +161,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/apis/metric/logo.png",
     "name": "Metric API",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/apis/metric",
+    "summary": "New Relic's Metric API can be used to send metric data to New Relic from a variety of sources. This API is how metrics from some of our integrations and exporters get into New Relic.",
     "title": "Metric API",
     "websiteUrl": null
   },
@@ -179,6 +185,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/apis/trace/logo.png",
     "name": "Trace and Span API",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/apis/trace",
+    "summary": "Our Trace API is used to send distributed tracing data to New Relic: either in our own generic format or the Zipkin data format. This API is also how trace data from some of our integrations and exporters is reported to New Relic.",
     "title": "Trace and Span API",
     "websiteUrl": null
   },
@@ -202,6 +209,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/amazon-athena/logo.svg",
     "name": "amazon-athena",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/amazon-athena",
+    "summary": "Serverless, interactive query service to query data and analyze big data in Amazon S3 using standard SQL.",
     "title": "Amazon Athena",
     "websiteUrl": null
   },
@@ -225,6 +233,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/amazon-cloudwatch-metric-streams/logo.svg",
     "name": "amazon-cloudwatch-metric-streams",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/amazon-cloudwatch-metric-streams",
+    "summary": "Faster telemetry from Amazon CloudWatch for all AWS Services and custom namespaces without API throttling.",
     "title": "Amazon CloudWatch Metric Streams",
     "websiteUrl": null
   },
@@ -248,6 +257,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/amazon-documentdb/logo.svg",
     "name": "amazon-documentdb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/amazon-documentdb",
+    "summary": "Fast, scalable, highly available, and fully managed document database service that supports MongoDB workloads.",
     "title": "Amazon DocumentDB",
     "websiteUrl": null
   },
@@ -271,6 +281,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/amazon-eks-on-aws-fargate/logo.svg",
     "name": "amazon-eks-on-aws-fargate",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/amazon-eks-on-aws-fargate",
+    "summary": "Telemetry from Kube State Metrics, Kubelet, and cAdvisor for full observability of Kubernetes clusters running on EKS in Fargate.",
     "title": "Amazon EKS on AWS Fargate",
     "websiteUrl": null
   },
@@ -294,6 +305,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/amazon-linux/logo.svg",
     "name": "amazon-linux",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/amazon-linux",
+    "summary": "Amazon supported and maintained Linux image provided by Amazon Web Services for use on Amazon Elastic Compute Cloud.",
     "title": "Amazon Linux",
     "websiteUrl": null
   },
@@ -317,6 +329,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/amazon-msk/logo.svg",
     "name": "amazon-msk",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/amazon-msk",
+    "summary": "Fully managed service that makes it easy for you to build and run applications that use Apache Kafka to process streaming data.",
     "title": "Amazon MSK",
     "websiteUrl": null
   },
@@ -340,6 +353,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-api-gateway/logo.svg",
     "name": "aws-api-gateway",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-api-gateway",
+    "summary": "Fully managed service for creating, publishing, maintaining, monitoring, and securing APIs at any scale.",
     "title": "AWS API Gateway",
     "websiteUrl": null
   },
@@ -363,6 +377,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-appsync/logo.svg",
     "name": "aws-appsync",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-appsync",
+    "summary": "Fully managed serverless GraphQL service for real-time data queries, synchronization, communications and offline programming features.",
     "title": "AWS AppSync",
     "websiteUrl": null
   },
@@ -386,6 +401,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-auto-scaling/logo.svg",
     "name": "aws-auto-scaling",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-auto-scaling",
+    "summary": "Launch or terminate EC2 instances automatically, adapting capacity based on user-defined policies, schedules, and health checks.",
     "title": "AWS Auto Scaling",
     "websiteUrl": null
   },
@@ -409,6 +425,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-billing/logo.svg",
     "name": "aws-billing",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-billing",
+    "summary": "Service that can be used to pay your AWS bill, monitor your usage, and analyze and control your costs.",
     "title": "AWS Billing",
     "websiteUrl": null
   },
@@ -432,6 +449,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-cloudformation/logo.svg",
     "name": "aws-cloudformation",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-cloudformation",
+    "summary": "Use programming languages or text files to model resources for your applications, then create and duplicate a collection of AWS resources.",
     "title": "AWS CloudFormation",
     "websiteUrl": null
   },
@@ -455,6 +473,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-cloudfront/logo.svg",
     "name": "aws-cloudfront",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-cloudfront",
+    "summary": "Speeds up the distribution of web content served from Amazon Web Services.",
     "title": "AWS CloudFront",
     "websiteUrl": null
   },
@@ -478,6 +497,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-cloudtrail/logo.svg",
     "name": "aws-cloudtrail",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-cloudtrail",
+    "summary": "Capture and record AWS account activity and API requests for security or governance purposes.",
     "title": "AWS CloudTrail",
     "websiteUrl": null
   },
@@ -501,6 +521,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-cloudwatch-plugin-for-logs/logo.svg",
     "name": "AWS Cloudwatch plugin for Logs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-cloudwatch-plugin-for-logs",
+    "summary": "",
     "title": null,
     "websiteUrl": null
   },
@@ -524,6 +545,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-cognito/logo.svg",
     "name": "aws-cognito",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-cognito",
+    "summary": "Add user account management functionality to your web or mobile application.",
     "title": "AWS Cognito",
     "websiteUrl": null
   },
@@ -547,6 +569,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-connect/logo.svg",
     "name": "aws-connect",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-connect",
+    "summary": "Build cloud-based omnichannel support centers to serve customers dynamically.",
     "title": "AWS Connect",
     "websiteUrl": null
   },
@@ -570,6 +593,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-direct-connect/logo.svg",
     "name": "aws-direct-connect",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-direct-connect",
+    "summary": "Establish a private, secure connection to AWS that runs outside of your ISP.",
     "title": "AWS Direct Connect",
     "websiteUrl": null
   },
@@ -593,6 +617,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-dynamodb/logo.svg",
     "name": "aws-dynamodb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-dynamodb",
+    "summary": "Fully managed NoSQL cloud database that supports both document and key-value store models.",
     "title": "AWS DynamoDB",
     "websiteUrl": null
   },
@@ -616,6 +641,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-ebs/logo.svg",
     "name": "aws-ebs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-ebs",
+    "summary": "Block level storage volumes for Amazon EC2 instances.",
     "title": "AWS EBS",
     "websiteUrl": null
   },
@@ -639,6 +665,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-ec2/logo.svg",
     "name": "aws-ec2",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-ec2",
+    "summary": "Build scalable and flexible applications on top of AWS container services.",
     "title": "AWS EC2",
     "websiteUrl": null
   },
@@ -662,6 +689,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-ecs-ecr/logo.svg",
     "name": "aws-ecs-ecr",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-ecs-ecr",
+    "summary": "Fully managed container orchestration service built on AWS with a focus on security, reliability, and scalability.",
     "title": "AWS ECS/ECR",
     "websiteUrl": null
   },
@@ -685,6 +713,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-efs/logo.svg",
     "name": "aws-efs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-efs",
+    "summary": "Full managed NFS with support for both AWS and on-prem resources.",
     "title": "AWS EFS",
     "websiteUrl": null
   },
@@ -708,6 +737,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-elastic-beanstalk/logo.svg",
     "name": "aws-elastic-beanstalk",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-elastic-beanstalk",
+    "summary": "Dynamic service that allows easy deployment and scalability for your applications on AWS.",
     "title": "AWS Elastic Beanstalk",
     "websiteUrl": null
   },
@@ -731,6 +761,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-elasticache/logo.svg",
     "name": "aws-elasticache",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-elasticache",
+    "summary": "Deploy, operate, and scale an in-memory data store or cache in the cloud.",
     "title": "AWS ElastiCache",
     "websiteUrl": null
   },
@@ -754,6 +785,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-elasticsearch/logo.svg",
     "name": "aws-elasticsearch",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-elasticsearch",
+    "summary": "Fully managed services for deploying and managing Elasticsearch implementations on AWS.",
     "title": "AWS Elasticsearch",
     "websiteUrl": null
   },
@@ -777,6 +809,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-elb/logo.svg",
     "name": "aws-elb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-elb",
+    "summary": "Automatically redirect incoming web traffic to balance load when demand rises.",
     "title": "AWS ELB",
     "websiteUrl": null
   },
@@ -800,6 +833,7 @@
     "logoUrl": null,
     "name": "aws-elemental-mediapackage-vod",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-elemental-mediapackage-vod",
+    "summary": "Collect AWS MediaPackage VOD data for PackagingConfiguration. Maintained by Amazon.",
     "title": "AWS Elemental MediaPackage VOD",
     "websiteUrl": null
   },
@@ -823,6 +857,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-emr/logo.svg",
     "name": "aws-emr",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-emr",
+    "summary": "Process and manage big data inputs from popular frameworks.",
     "title": "AWS EMR",
     "websiteUrl": null
   },
@@ -846,6 +881,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-firelens-plugin-for-logs/logo.svg",
     "name": "aws-firelens-plugin-for-logs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-firelens-plugin-for-logs",
+    "summary": "Collect log data and export to AWS or other services for analysis.",
     "title": "AWS FireLens plugin for Logs",
     "websiteUrl": null
   },
@@ -869,6 +905,7 @@
     "logoUrl": null,
     "name": "aws-fsx",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-fsx",
+    "summary": "Collect AWS FSx data for WindowsFileServer; change polling frequency and filter data using configuration options. Maintained by Amazon.",
     "title": "AWS FSx",
     "websiteUrl": null
   },
@@ -892,6 +929,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-glue/logo.svg",
     "name": "aws-glue",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-glue",
+    "summary": "Fully managed service for data analytics and ETF operations.",
     "title": "AWS Glue",
     "websiteUrl": null
   },
@@ -915,6 +953,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-health/logo.svg",
     "name": "aws-health",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-health",
+    "summary": "Oversight and alerts for how AWS outages and maintenance may affect your services.",
     "title": "AWS Health",
     "websiteUrl": null
   },
@@ -938,6 +977,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-iam/logo.svg",
     "name": "aws-iam",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-iam",
+    "summary": "Securely control access to AWS services and resources, create and manage users, groups, and permissions.",
     "title": "AWS IAM",
     "websiteUrl": null
   },
@@ -961,6 +1001,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-iot/logo.svg",
     "name": "aws-iot",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-iot",
+    "summary": "Provides communication and collects telemetry data between Internet-connected devices and the AWS Cloud.",
     "title": "AWS IoT",
     "websiteUrl": null
   },
@@ -984,6 +1025,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-kinesis-data-firehose/logo.svg",
     "name": "aws-kinesis-data-firehose",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-kinesis-data-firehose",
+    "summary": "Capture, transform, and load streaming data into various Amazon Web Services, enabling near real-time analytics.",
     "title": "AWS Kinesis Data Firehose",
     "websiteUrl": null
   },
@@ -1007,6 +1049,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-kinesis-data-streams/logo.svg",
     "name": "aws-kinesis-data-streams",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-kinesis-data-streams",
+    "summary": "Platform for streaming data on AWS, making it easy to load and analyze data in real time and build applications for specialized needs.",
     "title": "AWS Kinesis Data Streams",
     "websiteUrl": null
   },
@@ -1030,6 +1073,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-lambda/logo.svg",
     "name": "aws-lambda",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-lambda",
+    "summary": "Zero-administration compute platform for back-end web developers that runs your code for you in AWS cloud.",
     "title": "AWS Lambda",
     "websiteUrl": null
   },
@@ -1053,6 +1097,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-mq/logo.svg",
     "name": "aws-mq",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-mq",
+    "summary": "Message brokering service for Apache ActiveMQ managed by AWS.",
     "title": "AWS MQ",
     "websiteUrl": null
   },
@@ -1076,6 +1121,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-neptunedb/logo.svg",
     "name": "aws-neptunedb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-neptunedb",
+    "summary": "Develop applications on top of interconnected datasets with this AWS graph database service.",
     "title": "AWS NeptuneDB",
     "websiteUrl": null
   },
@@ -1099,6 +1145,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-nlb-alb/logo.svg",
     "name": "aws-nlb-alb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-nlb-alb",
+    "summary": "Distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple availability zones.",
     "title": "AWS NLB/ALB",
     "websiteUrl": null
   },
@@ -1122,6 +1169,7 @@
     "logoUrl": null,
     "name": "aws-outposts",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-outposts",
+    "summary": "An introduction to AWS integrations on New Relic One. Use the Amazon CloudWatch API to obtain metrics from the AWS services you monitor.",
     "title": "AWS Outposts",
     "websiteUrl": null
   },
@@ -1145,6 +1193,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-qldb/logo.svg",
     "name": "aws-qldb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-qldb",
+    "summary": "Create a cryptographically verifiable ledger database that's managed by one group.",
     "title": "AWS QLDB",
     "websiteUrl": null
   },
@@ -1168,6 +1217,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-rds-enhanced/logo.svg",
     "name": "aws-rds-enhanced",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-rds-enhanced",
+    "summary": "Supplement your RDS monitoring with real-time metrics about the OS.",
     "title": "AWS RDS Enhanced",
     "websiteUrl": null
   },
@@ -1191,6 +1241,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-rds/logo.svg",
     "name": "aws-rds",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-rds",
+    "summary": "Set up and manage a relational database in the cloud by providing resizable capacity and managing common database administration tasks.",
     "title": "AWS RDS",
     "websiteUrl": null
   },
@@ -1214,6 +1265,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-redshift/logo.svg",
     "name": "aws-redshift",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-redshift",
+    "summary": "Fully managed data warehouse used to analyze all your data using standard SQL and your existing Amazon Business Intelligence tools.",
     "title": "AWS Redshift",
     "websiteUrl": null
   },
@@ -1237,6 +1289,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-route-53/logo.svg",
     "name": "aws-route-53",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-route-53",
+    "summary": "Register domain names, route Internet traffic to the appropriate resources, and check the health of your web app’s resources.",
     "title": "AWS Route 53",
     "websiteUrl": null
   },
@@ -1260,6 +1313,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-route53-resolver/logo.svg",
     "name": "aws-route53-resolver",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-route53-resolver",
+    "summary": "Create and configure endpoints in AWS Route 53.",
     "title": "AWS Route53 Resolver",
     "websiteUrl": null
   },
@@ -1283,6 +1337,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-s3/logo.svg",
     "name": "aws-s3",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-s3",
+    "summary": "Provides developers and IT teams with secure, durable, highly-scalable cloud storage.",
     "title": "AWS S3",
     "websiteUrl": null
   },
@@ -1306,6 +1361,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-ses/logo.svg",
     "name": "aws-ses",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-ses",
+    "summary": "Cloud-based service for sending and receiving email.",
     "title": "AWS SES",
     "websiteUrl": null
   },
@@ -1329,6 +1385,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-sns/logo.svg",
     "name": "aws-sns",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-sns",
+    "summary": "Fully managed push notification service compatible with pub/sub, SMS, email, and mobile.",
     "title": "AWS SNS",
     "websiteUrl": null
   },
@@ -1352,6 +1409,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-sqs/logo.svg",
     "name": "aws-sqs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-sqs",
+    "summary": "Provides fully managed, hosted queues for storing messages in transit.",
     "title": "AWS SQS",
     "websiteUrl": null
   },
@@ -1375,6 +1433,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-step-functions/logo.svg",
     "name": "aws-step-functions",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-step-functions",
+    "summary": "Orchestrate serverless functions in Amazon Web Services, including Lambda.",
     "title": "AWS Step Functions",
     "websiteUrl": null
   },
@@ -1398,6 +1457,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-transitgateway/logo.svg",
     "name": "aws-transitgateway",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-transitgateway",
+    "summary": "Collate VPC and on-premises resources through a central gateway.",
     "title": "AWS TransitGateway",
     "websiteUrl": null
   },
@@ -1421,6 +1481,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-trusted-advisor/logo.svg",
     "name": "aws-trusted-advisor",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-trusted-advisor",
+    "summary": "Online tool that provides real-time guidance to help you follow AWS best practices for provisioning your resources.",
     "title": "AWS Trusted Advisor",
     "websiteUrl": null
   },
@@ -1444,6 +1505,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-vpc-flow-logs/logo.svg",
     "name": "aws-vpc-flow-logs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-vpc-flow-logs",
+    "summary": "Enables you to capture information about the IP traffic going to and from network interfaces in your AWS VPC.",
     "title": "AWS VPC Flow Logs",
     "websiteUrl": null
   },
@@ -1467,6 +1529,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-vpc/logo.svg",
     "name": "aws-vpc",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-vpc",
+    "summary": "Virtual network that leverages AWS to gain visibility into configuration event changes that are overlaid across your Amazon services.",
     "title": "AWS VPC",
     "websiteUrl": null
   },
@@ -1490,6 +1553,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/aws/aws-waf/logo.svg",
     "name": "aws-waf",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-waf",
+    "summary": "Secure web traffic with a firewall built on top of Amazon Web Services.",
     "title": "AWS WAF",
     "websiteUrl": null
   },
@@ -1513,6 +1577,7 @@
     "logoUrl": null,
     "name": "aws-x-ray",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/aws/aws-x-ray",
+    "summary": "Capture data and debug protection for applications built on distributed frameworks.",
     "title": "AWS X-Ray",
     "websiteUrl": null
   },
@@ -1536,6 +1601,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-api-management/logo.svg",
     "name": "azure-api-management",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-api-management",
+    "summary": "Complete API management platform built for multi-cloud environments.",
     "title": "Azure API Management",
     "websiteUrl": null
   },
@@ -1559,6 +1625,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-app-service/logo.svg",
     "name": "azure-app-service",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-app-service",
+    "summary": "Service for hosting and running web applications, REST APIs, and mobile back ends in a fully managed platform.",
     "title": "Azure App Service",
     "websiteUrl": null
   },
@@ -1582,6 +1649,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-containers/logo.svg",
     "name": "azure-containers",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-containers",
+    "summary": "Framework for building and running microservice applications on Azure.",
     "title": "Azure Containers",
     "websiteUrl": null
   },
@@ -1605,6 +1673,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-cosmos-db/logo.svg",
     "name": "azure-cosmos-db",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-cosmos-db",
+    "summary": "Quickly and easily scale your database traffic across multiple Azure regions.",
     "title": "Azure Cosmos DB",
     "websiteUrl": null
   },
@@ -1628,6 +1697,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-cost-management/logo.svg",
     "name": "azure-cost-management",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-cost-management",
+    "summary": "Monitor billing, manage subscriptions, and optimize spending across your Azure services.",
     "title": "Azure Cost Management",
     "websiteUrl": null
   },
@@ -1651,6 +1721,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-datafactories/logo.svg",
     "name": "azure-datafactories",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-datafactories",
+    "summary": "Visual environment for creating and processing ETL operations from multiple data sources.",
     "title": "Azure DataFactories",
     "websiteUrl": null
   },
@@ -1674,6 +1745,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-event-hubs/logo.svg",
     "name": "azure-event-hubs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-event-hubs",
+    "summary": "Collect and centralize real-time streaming data into a central cloud-based pipeline.",
     "title": "Azure Event Hubs",
     "websiteUrl": null
   },
@@ -1697,6 +1769,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-express-route/logo.svg",
     "name": "azure-express-route",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-express-route",
+    "summary": "Create a dedicated connection between your on-prem infrastructure and Azure's services.",
     "title": "Azure Express Route",
     "websiteUrl": null
   },
@@ -1720,6 +1793,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-front-door/logo.svg",
     "name": "azure-front-door",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-front-door",
+    "summary": "Azure service for creating rules and redirecting your incoming web traffic’s global routing.",
     "title": "Azure Front Door",
     "websiteUrl": null
   },
@@ -1743,6 +1817,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-functions/logo.svg",
     "name": "azure-functions",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-functions",
+    "summary": "Event-driven serverless compute platform that enables you to build locally and deploy on the cloud.",
     "title": "Azure Functions",
     "websiteUrl": null
   },
@@ -1766,6 +1841,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-load-balancer/logo.svg",
     "name": "azure-load-balancer",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-load-balancer",
+    "summary": "Watches incoming TCP and UDP traffic from different services, and uses health to distribute those requests across different instances.",
     "title": "Azure Load Balancer",
     "websiteUrl": null
   },
@@ -1789,6 +1865,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-logic-apps/logo.svg",
     "name": "azure-logic-apps",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-logic-apps",
+    "summary": "Scalable workflows, business processes, and enterprise orchestrations for apps and data across cloud services and on-prem systems.",
     "title": "Azure Logic Apps",
     "websiteUrl": null
   },
@@ -1812,6 +1889,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-machine-learning-services/logo.svg",
     "name": "azure-machine-learning-services",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-machine-learning-services",
+    "summary": "Build and manage machine-learning applications on Azure.",
     "title": "Azure Machine Learning Services",
     "websiteUrl": null
   },
@@ -1835,6 +1913,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-mariadb/logo.svg",
     "name": "azure-mariadb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-mariadb",
+    "summary": "Fully managed database as a service with predictable performance and scalability for applications using open-source tools and platforms.",
     "title": "Azure MariaDB",
     "websiteUrl": null
   },
@@ -1858,6 +1937,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-mysql/logo.svg",
     "name": "azure-mysql",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-mysql",
+    "summary": "Fully managed MySQL Community database as a service with high availability, elastic scaling, automatic backups, and data protection.",
     "title": "Azure MySQL",
     "websiteUrl": null
   },
@@ -1881,6 +1961,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-postgresql/logo.svg",
     "name": "azure-postgresql",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-postgresql",
+    "summary": "Fully managed PostgreSQL Community database as a service with high availability, elastic scaling, automatic backups, and data protection.",
     "title": "Azure PostgreSQL",
     "websiteUrl": null
   },
@@ -1904,6 +1985,7 @@
     "logoUrl": null,
     "name": "azure-power-bi-dedicated-capacities",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-power-bi-dedicated-capacities",
+    "summary": "Collect Azure Power BI Dedicated data for Capacity. Maintained by Microsoft.",
     "title": "Azure Power BI Dedicated capacities",
     "websiteUrl": null
   },
@@ -1927,6 +2009,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-redis-cache/logo.svg",
     "name": "azure-redis-cache",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-redis-cache",
+    "summary": "Fully managed in-memory data store built for quickly scaling application performance.",
     "title": "Azure Redis Cache",
     "websiteUrl": null
   },
@@ -1950,6 +2033,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-service-bus/logo.svg",
     "name": "azure-service-bus",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-service-bus",
+    "summary": "Fully managed message broker designed to bridge the gaps between applications and services.",
     "title": "Azure Service Bus",
     "websiteUrl": null
   },
@@ -1973,6 +2057,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-sql-database/logo.svg",
     "name": "azure-sql-database",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-sql-database",
+    "summary": "Azure SQL provides single databases with their own set of resources, and elastic pools that share a set of resources.",
     "title": "Azure SQL Database",
     "websiteUrl": null
   },
@@ -1996,6 +2081,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-sql-managed-instances/logo.svg",
     "name": "azure-sql-managed-instances",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-sql-managed-instances",
+    "summary": "Cloud-based database service based on the SQL framework.",
     "title": "Azure SQL Managed Instances",
     "websiteUrl": null
   },
@@ -2019,6 +2105,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-storage/logo.svg",
     "name": "azure-storage",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-storage",
+    "summary": "Managed cloud service that provides highly available, secure, durable, scalable, and redundant storage.",
     "title": "Azure Storage",
     "websiteUrl": null
   },
@@ -2042,6 +2129,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-virtual-machine-scale-sets/logo.svg",
     "name": "azure-virtual-machine-scale-sets",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-virtual-machine-scale-sets",
+    "summary": "Automatically scale application load across a series of heterogeneous, load-balanced virtual machines.",
     "title": "Azure Virtual Machine Scale Sets",
     "websiteUrl": null
   },
@@ -2065,6 +2153,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-virtual-network/logo.svg",
     "name": "azure-virtual-network",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-virtual-network",
+    "summary": "Network for connecting on-prem, Azure, and external sources.",
     "title": "Azure Virtual Network",
     "websiteUrl": null
   },
@@ -2088,6 +2177,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-vms/logo.svg",
     "name": "azure-vms",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-vms",
+    "summary": "Provides on-demand cloud infrastructure in a variety of server sizes, regions, and operating systems.",
     "title": "Azure VMs",
     "websiteUrl": null
   },
@@ -2111,6 +2201,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/azure/azure-vpn-gateways/logo.svg",
     "name": "azure-vpn-gateways",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/azure/azure-vpn-gateways",
+    "summary": "Used to send encrypted data between on-premises infrastructure and Azure services.",
     "title": "Azure VPN Gateways",
     "websiteUrl": null
   },
@@ -2134,6 +2225,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/blameless/logo.svg",
     "name": "blameless",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/blameless",
+    "summary": "Site reliability engineering (SRE) platform with AI-driven incident resolution, SLOs/Error budgets, and reliability insights.",
     "title": "Blameless",
     "websiteUrl": null
   },
@@ -2186,6 +2278,7 @@
     "logoUrl": null,
     "name": "Browser examples",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/browser",
+    "summary": "",
     "title": null,
     "websiteUrl": null
   },
@@ -2209,6 +2302,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/c/logo.svg",
     "name": "c",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/c",
+    "summary": "General-purpose, procedural, imperative computer programming language developed in 1972 by Dennis M. Ritchie at the Bell Telephone.",
     "title": "C",
     "websiteUrl": null
   },
@@ -2242,6 +2336,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/cassandra/logo.png",
     "name": "Cassandra",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/cassandra",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://cassandra.apache.org/"
   },
@@ -2265,6 +2360,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/centos/logo.svg",
     "name": "centos",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/centos",
+    "summary": "Free Linux distribution built to be compatible with Red Hat Enterprise.",
     "title": "CentOS",
     "websiteUrl": null
   },
@@ -2288,6 +2384,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/chef/chef/logo.svg",
     "name": "chef",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/chef/chef",
+    "summary": "Chef is a configuration management tool written in Ruby and Erlang.",
     "title": "Chef",
     "websiteUrl": null
   },
@@ -2311,6 +2408,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/cloudfoundry/logo.svg",
     "name": "cloudfoundry",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/cloudfoundry",
+    "summary": "Create, deploy, and manage microservice applications in Kubernetes containers.",
     "title": "CloudFoundry",
     "websiteUrl": null
   },
@@ -2334,6 +2432,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/collectd/logo.svg",
     "name": "collectd",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/collectd",
+    "summary": "Unix daemon for gathering and storing performance data across application and network infrastructure.",
     "title": "Collectd",
     "websiteUrl": null
   },
@@ -2367,6 +2466,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/consul/logo.png",
     "name": "Consul",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/consul",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://www.consul.io/"
   },
@@ -2390,6 +2490,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/cordova/logo.svg",
     "name": "cordova",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/cordova",
+    "summary": "Cordova wraps your HTML/JavaScript app into a native container which can access the device functions of several platforms.",
     "title": "Cordova",
     "websiteUrl": null
   },
@@ -2423,6 +2524,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/couchbase/logo.svg",
     "name": "Couchbase",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/couchbase",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://www.couchbase.com/"
   },
@@ -2446,6 +2548,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/cplusplus/logo.svg",
     "name": "cplusplus",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/cplusplus",
+    "summary": "General-purpose programming language that extends C with modern object-oriented, generic, and functional features.",
     "title": "C++",
     "websiteUrl": null
   },
@@ -2469,6 +2572,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/datastax-cassandra/logo.svg",
     "name": "datastax-cassandra",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/datastax-cassandra",
+    "summary": "Open-source NoSQL database-as-a-service built on Apache Cassandra.",
     "title": "Datastax Cassandra",
     "websiteUrl": null
   },
@@ -2492,6 +2596,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/debian/logo.svg",
     "name": "debian",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/debian",
+    "summary": "Debian, also known as Debian GNU/Linux, is a Linux distribution composed of free and open-source software.",
     "title": "Debian",
     "websiteUrl": null
   },
@@ -2515,6 +2620,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/docker/logo.svg",
     "name": "docker",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/docker",
+    "summary": "Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.",
     "title": "Docker",
     "websiteUrl": null
   },
@@ -2538,6 +2644,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/asp-dotnet-mvc/logo.svg",
     "name": "asp-dotnet-mvc",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/asp-dotnet-mvc",
+    "summary": "Open-source web application framework developed by Microsoft, which implements the model-view-controller pattern.",
     "title": "ASP .NET MVC",
     "websiteUrl": null
   },
@@ -2561,6 +2668,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/asp-dotnet-web-forms/logo.svg",
     "name": "asp-dotnet-web-forms",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/asp-dotnet-web-forms",
+    "summary": "Framework with a drag-and-drop, event-driven model that can be used to build web applications.",
     "title": "ASP .NET Web forms",
     "websiteUrl": null
   },
@@ -2584,6 +2692,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/csla-dotnet/logo.svg",
     "name": "csla-dotnet",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/csla-dotnet",
+    "summary": "Software framework for building an object-oriented layer for tracking business logic.",
     "title": "CSLA .NET",
     "websiteUrl": null
   },
@@ -2607,6 +2716,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/dnn-community/logo.svg",
     "name": "dnn-community",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/dnn-community",
+    "summary": "DNN is the largest and most popular open source CMS on the Microsoft ASP.NET stack.",
     "title": "DNN Community",
     "websiteUrl": null
   },
@@ -2630,6 +2740,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/dotnet-core/logo.svg",
     "name": "dotnet-core",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/dotnet-core",
+    "summary": "The cross-platform successor to .NET Framework for building websites, services, and console apps.",
     "title": ".NET core",
     "websiteUrl": null
   },
@@ -2653,6 +2764,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/dotnet-mvc-web-api/logo.svg",
     "name": "dotnet-mvc-web-api",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/dotnet-mvc-web-api",
+    "summary": "Web application framework developed by Microsoft, which implements the model-view-controller pattern for building web applications.",
     "title": ".NET MVC Web API",
     "websiteUrl": null
   },
@@ -2676,6 +2788,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/dotnet/logo.svg",
     "name": "dotnet",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/dotnet",
+    "summary": "A developer platform with tools and libraries for building web, mobile, desktop, games, IoT, cloud, and microservices.",
     "title": ".NET",
     "websiteUrl": null
   },
@@ -2699,6 +2812,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/episerver-cms/logo.svg",
     "name": "episerver-cms",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/episerver-cms",
+    "summary": "Full service CMS with dedicated layers for commerce and marketing.",
     "title": "Episerver CMS",
     "websiteUrl": null
   },
@@ -2722,6 +2836,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/fubumvc/logo.svg",
     "name": "fubumvc",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/fubumvc",
+    "summary": "A .Net framework for enabling teams to efficiently build server-side systems.",
     "title": "FubuMVC",
     "websiteUrl": null
   },
@@ -2745,6 +2860,7 @@
     "logoUrl": null,
     "name": "iis",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/iis",
+    "summary": "Set of web server tools developed by Microsoft to support the .Net platform.",
     "title": "IIS",
     "websiteUrl": null
   },
@@ -2768,6 +2884,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/monorail/logo.svg",
     "name": "monorail",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/monorail",
+    "summary": "Open source web application framework built for .NET designed to imitate some of the functions of Ruby on Rails.",
     "title": "MonoRail",
     "websiteUrl": null
   },
@@ -2791,6 +2908,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/msmq/logo.svg",
     "name": "msmq",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/msmq",
+    "summary": "Microsoft Message Queueing is a messaging protocol that allows applications running on separate servers/processes to communicate.",
     "title": "MSMQ",
     "websiteUrl": null
   },
@@ -2814,6 +2932,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/nancyfx/logo.svg",
     "name": "nancyfx",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/nancyfx",
+    "summary": "Nancy is a lightweight, low-ceremony, framework for building HTTP based services on .NET Framework/Core and Mono.",
     "title": "NancyFX",
     "websiteUrl": null
   },
@@ -2837,6 +2956,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/nservicebus/logo.svg",
     "name": "nservicebus",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/nservicebus",
+    "summary": "NServiceBus is an implementation of a 'service bus' pattern for .NET.",
     "title": "NServiceBus",
     "websiteUrl": null
   },
@@ -2860,6 +2980,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/openrasta/logo.svg",
     "name": "openrasta",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/openrasta",
+    "summary": "OpenRasta is an open-source .NET framework for building everything web, from web sites to RESTful APIs.",
     "title": "OpenRasta",
     "websiteUrl": null
   },
@@ -2883,6 +3004,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/restsharp/logo.svg",
     "name": "restsharp",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/restsharp",
+    "summary": "Popular REST API client library for .NET that features auto-serialization, request type detection, a variety of authentications, and more.",
     "title": "RestSharp",
     "websiteUrl": null
   },
@@ -2906,6 +3028,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/servicestack/logo.svg",
     "name": "servicestack",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/servicestack",
+    "summary": "Open-source framework designed to be an alternative to the WCF, ASP.NET MVC, and ASP.NET Web API frameworks.",
     "title": "ServiceStack",
     "websiteUrl": null
   },
@@ -2929,6 +3052,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/silverlight/logo.svg",
     "name": "silverlight",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/silverlight",
+    "summary": "Microsoft Silverlight is a deprecated application framework for writing and running rich Internet applications.",
     "title": "Silverlight",
     "websiteUrl": null
   },
@@ -2952,6 +3076,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dotnet/springdotnet/logo.svg",
     "name": "springdotnet",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/springdotnet",
+    "summary": "Comprehensive infrastructural support for developing enterprise .NET applications; conceptually based on the Java Spring Framework.",
     "title": "Spring.net",
     "websiteUrl": null
   },
@@ -2975,6 +3100,7 @@
     "logoUrl": null,
     "name": "umbraco",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dotnet/umbraco",
+    "summary": "Open source CMS for the web built in ASP.NET.",
     "title": "Umbraco",
     "websiteUrl": null
   },
@@ -2998,6 +3124,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dropwizard-metrics-reporter/logo.svg",
     "name": "dropwizard-metrics-reporter",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dropwizard-metrics-reporter",
+    "summary": "Java library which provides measuring instruments for Java applications.",
     "title": "Dropwizard Metrics Reporter",
     "websiteUrl": null
   },
@@ -3021,6 +3148,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dropwizard/logo.svg",
     "name": "dropwizard",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/dropwizard",
+    "summary": "Java framework intended for use in RESTful web services.",
     "title": "Dropwizard",
     "websiteUrl": null
   },
@@ -3044,6 +3172,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/drupal/logo.svg",
     "name": "drupal",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/drupal",
+    "summary": "Drupal is a free and open-source web content management framework written in PHP.",
     "title": "Drupal",
     "websiteUrl": null
   },
@@ -3067,6 +3196,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ejb-session-beans/logo.svg",
     "name": "ejb-session-beans",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ejb-session-beans",
+    "summary": "Individual components in EJB that are created on request of a client for a single session.",
     "title": "EJB Session Beans",
     "websiteUrl": null
   },
@@ -3145,6 +3275,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/elasticsearch/logo.png",
     "name": "Elasticsearch",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/elasticsearch",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://www.elastic.co/what-is/elasticsearch"
   },
@@ -3168,6 +3299,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/f5/logo.svg",
     "name": "f5",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/f5",
+    "summary": "Family of software and hardware products designed around application availability, access control, and security.",
     "title": "F5",
     "websiteUrl": null
   },
@@ -3191,6 +3323,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/fluent-bit-plugin-for-logs/logo.svg",
     "name": "fluent-bit-plugin-for-logs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/fluent-bit-plugin-for-logs",
+    "summary": "Open source and multi-platform Log Processor and Forwarder which allows you to collect data/logs from different sources.",
     "title": "Fluent Bit plugin for Logs",
     "websiteUrl": null
   },
@@ -3214,6 +3347,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/fluentd-plugin-for-logs/logo.svg",
     "name": "fluentd-plugin-for-logs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/fluentd-plugin-for-logs",
+    "summary": "Open source data collector, which lets you unify the data collection and consumption for a better use and understanding of data.",
     "title": "Fluentd plugin for Logs",
     "websiteUrl": null
   },
@@ -3237,6 +3371,7 @@
     "logoUrl": null,
     "name": "full-story",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/full-story",
+    "summary": "FullStory’s URL session replay. See users’ views of errors and performance issues alongside essential details flowing through New Relic.",
     "title": "Full Story",
     "websiteUrl": null
   },
@@ -3264,6 +3399,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gatsby-build/logo.png",
     "name": "Gatsby Build",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gatsby-build",
+    "summary": "",
     "title": null,
     "websiteUrl": null
   },
@@ -3287,6 +3423,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/gcp-cloud-run/logo.svg",
     "name": "gcp-cloud-run",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/gcp-cloud-run",
+    "summary": "Fully managed platform for taking locally developed applications and deploying them on containers for simple scaling.",
     "title": "GCP Cloud Run",
     "websiteUrl": null
   },
@@ -3310,6 +3447,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/gcp-dataflow/logo.svg",
     "name": "gcp-dataflow",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/gcp-dataflow",
+    "summary": "Execute Apache Beam pipelines in a fully managed google cloud environment.",
     "title": "GCP Dataflow",
     "websiteUrl": null
   },
@@ -3333,6 +3471,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/gcp-dataproc/logo.svg",
     "name": "gcp-dataproc",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/gcp-dataproc",
+    "summary": "Run Apache Spark and Hadoop clusters in a fully managed Google Cloud environment.",
     "title": "GCP Dataproc",
     "websiteUrl": null
   },
@@ -3356,6 +3495,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/gcp-datastore/logo.svg",
     "name": "gcp-datastore",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/gcp-datastore",
+    "summary": "A highly scalable, fully managed NoSQL database service offered by Google on the Google Cloud Platform.",
     "title": "GCP Datastore",
     "websiteUrl": null
   },
@@ -3379,6 +3519,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/gcp-dedicated-interconnect/logo.svg",
     "name": "gcp-dedicated-interconnect",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/gcp-dedicated-interconnect",
+    "summary": "Provides direct physical connections between your on-premises network and Google's network.",
     "title": "GCP Dedicated Interconnect",
     "websiteUrl": null
   },
@@ -3402,6 +3543,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/gcp-firebase-database/logo.svg",
     "name": "gcp-firebase-database",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/gcp-firebase-database",
+    "summary": "An efficient, low-latency solution for mobile apps that require synced states across clients in real time.",
     "title": "GCP Firebase Database",
     "websiteUrl": null
   },
@@ -3425,6 +3567,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/gcp-firebase-hosting/logo.svg",
     "name": "gcp-firebase-hosting",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/gcp-firebase-hosting",
+    "summary": "Provides fast and secure hosting for your web app, static and dynamic content, and microservices.",
     "title": "GCP Firebase Hosting",
     "websiteUrl": null
   },
@@ -3448,6 +3591,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/gcp-firebase-storage/logo.svg",
     "name": "gcp-firebase-storage",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/gcp-firebase-storage",
+    "summary": "Service built for app developers that need to store and serve user-generated content, such as photos or videos.",
     "title": "GCP Firebase Storage",
     "websiteUrl": null
   },
@@ -3471,6 +3615,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/gcp-firestore/logo.svg",
     "name": "gcp-firestore",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/gcp-firestore",
+    "summary": "A NoSQL document database that lets you easily store, sync, and query data for your mobile and web apps - at global scale.",
     "title": "GCP Firestore",
     "websiteUrl": null
   },
@@ -3494,6 +3639,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/gcp-router/logo.svg",
     "name": "gcp-router",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/gcp-router",
+    "summary": "Service that exchanges routes between Virtual Private Clouds (VPC) and on-premises networks by using Border Gateway Protocol (BGP).",
     "title": "GCP Router",
     "websiteUrl": null
   },
@@ -3517,6 +3663,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/gcp-vpc/logo.svg",
     "name": "gcp-vpc",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/gcp-vpc",
+    "summary": "Provides networking for Google Compute instances, Google Kubernetes Engine (GKE) clusters, and the App Engine flexible environment.",
     "title": "GCP VPC",
     "websiteUrl": null
   },
@@ -3540,6 +3687,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/google-app-engine/logo.svg",
     "name": "google-app-engine",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/google-app-engine",
+    "summary": "GCP service that abstracts away underlying infrastructure for your mobile and web applications, allowing you to focus on their development.",
     "title": "Google App Engine",
     "websiteUrl": null
   },
@@ -3563,6 +3711,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/google-bigquery/logo.svg",
     "name": "google-bigquery",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/google-bigquery",
+    "summary": "Fully managed data warehouse with options for user-defined or automated data schemes and exploration via SQL queries.",
     "title": "Google BigQuery",
     "websiteUrl": null
   },
@@ -3586,6 +3735,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/google-cloud-functions/logo.svg",
     "name": "google-cloud-functions",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/google-cloud-functions",
+    "summary": "Create short pieces of code that respond to cloud events without the need to manage an application server or runtime environment.",
     "title": "Google Cloud Functions",
     "websiteUrl": null
   },
@@ -3609,6 +3759,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/google-cloud-spanner/logo.svg",
     "name": "google-cloud-spanner",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/google-cloud-spanner",
+    "summary": "Globally-distributed relational database service built for the cloud. Add schemas, write and modify data, and run queries.",
     "title": "Google Cloud Spanner",
     "websiteUrl": null
   },
@@ -3632,6 +3783,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/google-cloud-sql/logo.svg",
     "name": "google-cloud-sql",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/google-cloud-sql",
+    "summary": "Set up, maintain, manage, and administer MySQL and PostgreSQL databases in the cloud.",
     "title": "Google Cloud SQL",
     "websiteUrl": null
   },
@@ -3655,6 +3807,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/google-cloud-storage/logo.svg",
     "name": "google-cloud-storage",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/google-cloud-storage",
+    "summary": "Serve website content, store data for archival and disaster recovery, and distribute data objects via direct download.",
     "title": "Google Cloud Storage",
     "websiteUrl": null
   },
@@ -3678,6 +3831,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/google-compute-engine/logo.svg",
     "name": "google-compute-engine",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/google-compute-engine",
+    "summary": "Provides on-demand cloud infrastructure for general purpose applications with a variety of server sizes, regions, and operating systems.",
     "title": "Google Compute Engine",
     "websiteUrl": null
   },
@@ -3701,6 +3855,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/google-load-balancing/logo.svg",
     "name": "google-load-balancing",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/google-load-balancing",
+    "summary": "Managed service for distributing traffic in a single or multiple regions with seamless, immediate autoscaling and wide protocol support.",
     "title": "Google Load Balancing",
     "websiteUrl": null
   },
@@ -3724,6 +3879,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gcp/google-pub-sub/logo.svg",
     "name": "google-pub-sub",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/gcp/google-pub-sub",
+    "summary": "Ingests and delivers event streams for quick data processing and analysis.",
     "title": "Google Pub/Sub",
     "websiteUrl": null
   },
@@ -3747,6 +3903,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/golang/echo/logo.svg",
     "name": "echo",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/echo",
+    "summary": "Web framework for Go that's built for scalability and ease of use.",
     "title": "Echo",
     "websiteUrl": null
   },
@@ -3770,6 +3927,7 @@
     "logoUrl": null,
     "name": "gin",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/gin",
+    "summary": "GoLang-based HTTP Web Framework with a focus on fast API.",
     "title": "Gin",
     "websiteUrl": null
   },
@@ -3793,6 +3951,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/golang/go-insights/logo.svg",
     "name": "go-insights",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/go-insights",
+    "summary": "Open source monitoring integration for the Go language built by New Relic.",
     "title": "Go Insights",
     "websiteUrl": null
   },
@@ -3816,6 +3975,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/golang/golang/logo.svg",
     "name": "golang",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/golang",
+    "summary": "Popular open source programming language with automated features.",
     "title": "Golang",
     "websiteUrl": null
   },
@@ -3839,6 +3999,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/golang/httprouter/logo.svg",
     "name": "httprouter",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/httprouter",
+    "summary": "Go-based HTTP request router built with a focus on performance and light resource usage.",
     "title": "HTTPRouter",
     "websiteUrl": null
   },
@@ -3862,6 +4023,7 @@
     "logoUrl": null,
     "name": "lambda-go",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/lambda-go",
+    "summary": "Libraries, samples, and tools to help Go developers develop AWS Lambda functions.",
     "title": "Lambda-go (aws-lambda-go)",
     "websiteUrl": null
   },
@@ -3885,6 +4047,7 @@
     "logoUrl": null,
     "name": "logrus",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/logrus",
+    "summary": "Logrus is a structured logger for Go (golang), completely API compatible with the standard library logger.",
     "title": "Logrus",
     "websiteUrl": null
   },
@@ -3908,6 +4071,7 @@
     "logoUrl": null,
     "name": "logxi",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/logxi",
+    "summary": "log XI is a structured 12-factor app logger built for speed and happy development.",
     "title": "Logxi",
     "websiteUrl": null
   },
@@ -3931,6 +4095,7 @@
     "logoUrl": null,
     "name": "micro",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/micro",
+    "summary": "Platform and set of utilities for running microservices across disparate platforms in Go.",
     "title": "Micro",
     "websiteUrl": null
   },
@@ -3954,6 +4119,7 @@
     "logoUrl": null,
     "name": "mux",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/mux",
+    "summary": "Mux implements a request router and dispatcher for matching incoming requests to their respective handler in Go.",
     "title": "Mux",
     "websiteUrl": null
   },
@@ -3977,6 +4143,7 @@
     "logoUrl": null,
     "name": "nats",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/nats",
+    "summary": "NATS is an open-source messaging system written in Go.",
     "title": "NATS",
     "websiteUrl": null
   },
@@ -4000,6 +4167,7 @@
     "logoUrl": null,
     "name": "zap",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golang/zap",
+    "summary": "Go-based logging tool for leveled logging across your applications.",
     "title": "Zap",
     "websiteUrl": null
   },
@@ -4056,6 +4224,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/golden-signals-web/logo.png",
     "name": "Golden Signals for Web Servers",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/golden-signals-web",
+    "summary": "",
     "title": null,
     "websiteUrl": null
   },
@@ -4092,6 +4261,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/haproxy/logo.png",
     "name": "HAProxy",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/haproxy",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://www.haproxy.org/"
   },
@@ -4119,6 +4289,7 @@
     "logoUrl": null,
     "name": "Infrastructure",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/infrastructure",
+    "summary": "",
     "title": null,
     "websiteUrl": null
   },
@@ -4142,6 +4313,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ios/logo.svg",
     "name": "ios",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ios",
+    "summary": "Default operating system for Apple mobile devices, including the iPhone and iPad.",
     "title": "iOS",
     "websiteUrl": null
   },
@@ -4165,6 +4337,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/istio/logo.svg",
     "name": "istio",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/istio",
+    "summary": "Open source service mesh that allows you to connect various services and platforms together in a single point.",
     "title": "Istio",
     "websiteUrl": null
   },
@@ -4188,6 +4361,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/adobe-cq/logo.svg",
     "name": "adobe-cq",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/adobe-cq",
+    "summary": "Java-based Content Management platform solution for building website, mobile apps and forms.",
     "title": "Adobe CQ",
     "websiteUrl": null
   },
@@ -4211,6 +4385,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/akka/logo.svg",
     "name": "akka",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/akka",
+    "summary": "Toolkit and runtime simplifying the construction of concurrent and distributed applications in Java.",
     "title": "Akka",
     "websiteUrl": null
   },
@@ -4234,6 +4409,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/anorm/logo.svg",
     "name": "anorm",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/anorm",
+    "summary": "Data access layer that uses plain SQL to interact with the database and provides an API to parse and transform the resulting datasets.",
     "title": "Anorm",
     "websiteUrl": null
   },
@@ -4257,6 +4433,7 @@
     "logoUrl": null,
     "name": "asynchttpclient",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/asynchttpclient",
+    "summary": "Library that allows Java applications to easily execute HTTP requests and asynchronously process HTTP responses.",
     "title": "ASyncHTTPClient",
     "websiteUrl": null
   },
@@ -4280,6 +4457,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/coldfusion/logo.svg",
     "name": "coldfusion",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/coldfusion",
+    "summary": "Adobe ColdFusion is a rapid-development platform for building and deploying web and mobile applications.",
     "title": "ColdFusion",
     "websiteUrl": null
   },
@@ -4303,6 +4481,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/cxf/logo.svg",
     "name": "cxf",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/cxf",
+    "summary": "Open source service framework for building and developing on front-end APIs.",
     "title": "CXF",
     "websiteUrl": null
   },
@@ -4326,6 +4505,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/derby/logo.svg",
     "name": "derby",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/derby",
+    "summary": "Apache-developed relational database with both application and network benefits.",
     "title": "Derby",
     "websiteUrl": null
   },
@@ -4349,6 +4529,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/generic-jdbc/logo.svg",
     "name": "generic-jdbc",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/generic-jdbc",
+    "summary": "Java Database Connectivity is a standard Java API for database-independent connectivity between Java and a wide range of databases.",
     "title": "Generic JDBC",
     "websiteUrl": null
   },
@@ -4372,6 +4553,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/glassfish/logo.svg",
     "name": "glassfish",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/glassfish",
+    "summary": "Open source Java Enterprise Edition application server and reference platform.",
     "title": "Glassfish",
     "websiteUrl": null
   },
@@ -4395,6 +4577,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/grails/logo.svg",
     "name": "grails",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/grails",
+    "summary": "Open source web application framework that leverages Apache Groovy.",
     "title": "Grails",
     "websiteUrl": null
   },
@@ -4418,6 +4601,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/grpc/logo.svg",
     "name": "grpc",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/grpc",
+    "summary": "Open source framework for remote procedure calls designed for multi-platform usage.",
     "title": "gRPC",
     "websiteUrl": null
   },
@@ -4441,6 +4625,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/h2/logo.svg",
     "name": "h2",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/h2",
+    "summary": "Java-based relational database management system.",
     "title": "H2",
     "websiteUrl": null
   },
@@ -4464,6 +4649,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/hibernate/logo.svg",
     "name": "hibernate",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/hibernate",
+    "summary": "Object-relational mapping tool with data query and retrieval functionality built in in Java.",
     "title": "Hibernate",
     "websiteUrl": null
   },
@@ -4487,6 +4673,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/hsql/logo.svg",
     "name": "hsql",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/hsql",
+    "summary": "Java-based relational database management platform with a rich feature set.",
     "title": "HSQL",
     "websiteUrl": null
   },
@@ -4510,6 +4697,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/hystrix/logo.svg",
     "name": "hystrix",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/hystrix",
+    "summary": "Tool built by Netflix for fault tolerance, latency reduction, realtime operation monitoring, and concurrency aware request caching.",
     "title": "Hystrix",
     "websiteUrl": null
   },
@@ -4533,6 +4721,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/ibm-db2/logo.svg",
     "name": "ibm-db2",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/ibm-db2",
+    "summary": "Database management tool that supports a wide variety of data types.",
     "title": "IBM DB2",
     "websiteUrl": null
   },
@@ -4556,6 +4745,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/inet-merlia/logo.svg",
     "name": "inet-merlia",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/inet-merlia",
+    "summary": "Java driver built by Inet for managing Microsoft SQL servers.",
     "title": "Inet Merlia",
     "websiteUrl": null
   },
@@ -4579,6 +4769,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/java/logo.svg",
     "name": "java",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/java",
+    "summary": "Popular object-oriented programming language with widespread platform and operating system support.",
     "title": "Java",
     "websiteUrl": null
   },
@@ -4602,6 +4793,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/jax-rs/logo.svg",
     "name": "jax-rs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/jax-rs",
+    "summary": "API specification for Java that enables faster web application development.",
     "title": "JAX-RS",
     "websiteUrl": null
   },
@@ -4625,6 +4817,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/jayrock/logo.svg",
     "name": "jayrock",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/jayrock",
+    "summary": "Open source implementation of JSON and JSON-RPC built for Microsoft’s .NET platform.",
     "title": "Jayrock",
     "websiteUrl": null
   },
@@ -4648,6 +4841,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/jcache-api/logo.svg",
     "name": "jcache-api",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/jcache-api",
+    "summary": "Standard API in Java used for managing cache.",
     "title": "JCache API",
     "websiteUrl": null
   },
@@ -4671,6 +4865,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/jersey/logo.svg",
     "name": "jersey",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/jersey",
+    "summary": "Open source RESTful web services framework for java development.",
     "title": "Jersey",
     "websiteUrl": null
   },
@@ -4694,6 +4889,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/jetty/logo.svg",
     "name": "jetty",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/jetty",
+    "summary": "Java-based web server and javax.servlet container with support for a variety of protocols and services.",
     "title": "Jetty",
     "websiteUrl": null
   },
@@ -4717,6 +4913,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/jms/logo.svg",
     "name": "jms",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/jms",
+    "summary": "Java Messaging Library for asynchronously sending and receiving data and events.",
     "title": "JMS",
     "websiteUrl": null
   },
@@ -4740,6 +4937,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/jsf/logo.svg",
     "name": "jsf",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/jsf",
+    "summary": "Web Application Framework for Java intended for use with web-based user interfaces.",
     "title": "JSF",
     "websiteUrl": null
   },
@@ -4763,6 +4961,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/jsp/logo.svg",
     "name": "jsp",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/jsp",
+    "summary": "Standard Java technology that enables the building and management of dynamic pages.",
     "title": "JSP",
     "websiteUrl": null
   },
@@ -4786,6 +4985,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/mule-esb/logo.svg",
     "name": "mule-esb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/mule-esb",
+    "summary": "Mule is a lightweight Java-based enterprise service bus (ESB) and integration platform.",
     "title": "Mule ESB",
     "websiteUrl": null
   },
@@ -4809,6 +5009,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/netty/logo.svg",
     "name": "netty",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/netty",
+    "summary": "Netty is a NIO client server framework which enables development of network applications such as protocol servers and clients.",
     "title": "Netty",
     "websiteUrl": null
   },
@@ -4832,6 +5033,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/oc4j/logo.svg",
     "name": "oc4j",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/oc4j",
+    "summary": "OC4J is Oracle's implementation of the Java EE specification.",
     "title": "OC4J",
     "websiteUrl": null
   },
@@ -4855,6 +5057,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/opentelemetry-java-exporter/logo.svg",
     "name": "opentelemetry-java-exporter",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/opentelemetry-java-exporter",
+    "summary": "Java exporter for the suite of APIs and agents intended to capture metric and trace data from your software.",
     "title": "OpenTelemetry Java Exporter",
     "websiteUrl": null
   },
@@ -4878,6 +5081,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/play-ws/logo.svg",
     "name": "play-ws",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/play-ws",
+    "summary": "Play WS is a powerful asynchronous HTTP Client library.",
     "title": "Play WS",
     "websiteUrl": null
   },
@@ -4901,6 +5105,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/play/logo.svg",
     "name": "play",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/play",
+    "summary": "The Play Framework combines productivity and performance making it easy to build scalable web applications with Java and Scala.",
     "title": "Play",
     "websiteUrl": null
   },
@@ -4924,6 +5129,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/quartz-job-scheduler/logo.svg",
     "name": "quartz-job-scheduler",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/quartz-job-scheduler",
+    "summary": "Quartz is a job scheduling library that can be integrated into a wide variety of Java applications.",
     "title": "Quartz Job Scheduler",
     "websiteUrl": null
   },
@@ -4947,6 +5153,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/resin/logo.svg",
     "name": "resin",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/resin",
+    "summary": "A reliable, fast web server and load balancer written in Java from Caucho Technology.",
     "title": "Resin",
     "websiteUrl": null
   },
@@ -4970,6 +5177,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/resteasy/logo.svg",
     "name": "resteasy",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/resteasy",
+    "summary": "RESTEasy provides various frameworks to help you build RESTful Web Services and RESTful Java applications.",
     "title": "RESTeasy",
     "websiteUrl": null
   },
@@ -4993,6 +5201,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/scala/logo.svg",
     "name": "scala",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/scala",
+    "summary": "Scala is a general-purpose programming language providing support for both object-oriented programming and functional programming.",
     "title": "Scala",
     "websiteUrl": null
   },
@@ -5016,6 +5225,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/slick/logo.svg",
     "name": "slick",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/slick",
+    "summary": "Slick is a modern database query and access library for Scala.",
     "title": "Slick",
     "websiteUrl": null
   },
@@ -5039,6 +5249,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/solr/logo.svg",
     "name": "solr",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/solr",
+    "summary": "Open-source enterprise-search platform. Supporting full-text search, hit highlighting, faceted search, real-time indexing, and more.",
     "title": "Solr",
     "websiteUrl": null
   },
@@ -5062,6 +5273,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/spray-can/logo.svg",
     "name": "spray-can",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/spray-can",
+    "summary": "A low-overhead, high-performance, fully asynchronous HTTP server and client library implemented entirely in Scala on top of Akka.",
     "title": "Spray-can",
     "websiteUrl": null
   },
@@ -5085,6 +5297,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/spring-jms/logo.svg",
     "name": "spring-jms",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/spring-jms",
+    "summary": "Spring's JMS (Java Message Service) integration framework that simplifies the use of the JMS API.",
     "title": "Spring-JMS",
     "websiteUrl": null
   },
@@ -5108,6 +5321,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/spring/logo.svg",
     "name": "spring",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/spring",
+    "summary": "Programming and configuration model that uses an inversion of control container to build modern Java-based enterprise applications.",
     "title": "Spring",
     "websiteUrl": null
   },
@@ -5131,6 +5345,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/spymemcached/logo.svg",
     "name": "spymemcached",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/spymemcached",
+    "summary": "SpyMemcached is a simple, asynchronous, single-threaded memcached client written in java.",
     "title": "SpyMemcached",
     "websiteUrl": null
   },
@@ -5154,6 +5369,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/struts/logo.svg",
     "name": "struts",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/struts",
+    "summary": "Open-source web application framework for Java EE web applications that extends the Java Servlet API to encourage an MVC architecture.",
     "title": "Struts",
     "websiteUrl": null
   },
@@ -5177,6 +5393,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/thrift/logo.svg",
     "name": "thrift",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/thrift",
+    "summary": "Strongly-typed language-agnostic RPC system that can used to build scalable cross-language services.",
     "title": "Thrift",
     "websiteUrl": null
   },
@@ -5200,6 +5417,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/tomcat/logo.svg",
     "name": "tomcat",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/tomcat",
+    "summary": "Open-source implementation of the Java Servlet, JavaServer Pages, Java Expression Language and WebSocket technologies.",
     "title": "Tomcat",
     "websiteUrl": null
   },
@@ -5223,6 +5441,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/tomee/logo.svg",
     "name": "tomee",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/tomee",
+    "summary": "Java Enterprise Edition of Apache Tomcat that combines enterprise projects including OpenEJB, OpenWebBeans, OpenJPA, MyFaces, and others.",
     "title": "TomEE",
     "websiteUrl": null
   },
@@ -5246,6 +5465,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/vert-x/logo.svg",
     "name": "vert-x",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/vert-x",
+    "summary": "Application framework for development of reactive and event-driven software in Java or a variety of other languages.",
     "title": "Vert.x",
     "websiteUrl": null
   },
@@ -5269,6 +5489,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/weblogic/logo.svg",
     "name": "weblogic",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/weblogic",
+    "summary": "Java Enterprise Edition application server built and maintained by Oracle.",
     "title": "WebLogic",
     "websiteUrl": null
   },
@@ -5292,6 +5513,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/websphere/logo.svg",
     "name": "websphere",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/websphere",
+    "summary": "Web application server built and maintained by IBM.",
     "title": "WebSphere",
     "websiteUrl": null
   },
@@ -5315,6 +5537,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/java/wildfly/logo.svg",
     "name": "wildfly",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/java/wildfly",
+    "summary": "Application server built in and implementing the Java Enterprise Edition standard.",
     "title": "WildFly",
     "websiteUrl": null
   },
@@ -5349,6 +5572,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/jmx/logo.png",
     "name": "JMX (Java)",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/jmx",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://docs.oracle.com/javase/tutorial/jmx/overview/index.html"
   },
@@ -5385,6 +5609,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/kafka/logo.png",
     "name": "Kafka",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/kafka",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://kafka.apache.org/"
   },
@@ -5408,6 +5633,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/kamon/logo.svg",
     "name": "kamon",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/kamon",
+    "summary": "Kamon is used to automatically instrument, monitor and debug distributed systems.",
     "title": "Kamon",
     "websiteUrl": null
   },
@@ -5431,6 +5657,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/kubernetes/google-kubernetes-engine/logo.svg",
     "name": "google-kubernetes-engine",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/kubernetes/google-kubernetes-engine",
+    "summary": "Provides a managed environment for deploying, managing, and scaling your containerized applications using Google infrastructure.",
     "title": "Google Kubernetes Engine",
     "websiteUrl": null
   },
@@ -5454,6 +5681,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/kubernetes/kubernetes-plugin-for-logs/logo.svg",
     "name": "kubernetes-plugin-for-logs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/kubernetes/kubernetes-plugin-for-logs",
+    "summary": "Log collection tool that's built to be easily deployed in a Kubernetes cluster.",
     "title": "Kubernetes plugin for Logs",
     "websiteUrl": null
   },
@@ -5477,6 +5705,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/kubernetes/kubernetes/logo.svg",
     "name": "kubernetes",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/kubernetes/kubernetes",
+    "summary": "Kubernetes is an open-source container-orchestration system for automating computer application deployment, scaling, and management.",
     "title": "Kubernetes",
     "websiteUrl": null
   },
@@ -5500,6 +5729,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/lacework/logo.svg",
     "name": "lacework",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/lacework",
+    "summary": "End-to-end security management and diagnostics for major cloud platforms.",
     "title": "Lacework",
     "websiteUrl": null
   },
@@ -5527,6 +5757,7 @@
     "logoUrl": null,
     "name": "LAMP stack",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/lamp",
+    "summary": "",
     "title": null,
     "websiteUrl": null
   },
@@ -5550,6 +5781,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/launchdarkly/logo.svg",
     "name": "launchdarkly",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/launchdarkly",
+    "summary": "LaunchDarkly provides simple, scalable feature flag &amp; toggle management (feature management) for the modern enterprise.",
     "title": "LaunchDarkly",
     "websiteUrl": null
   },
@@ -5573,6 +5805,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/lighthouse/logo.svg",
     "name": "lighthouse",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/lighthouse",
+    "summary": "Lighthouse is a simple web-based issue-tracking application.",
     "title": "Lighthouse",
     "websiteUrl": null
   },
@@ -5596,6 +5829,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/linux/logo.svg",
     "name": "linux",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/linux",
+    "summary": "Linux is a family of open-source Unix-like operating systems, typically packaged in a distribution.",
     "title": "Linux",
     "websiteUrl": null
   },
@@ -5619,6 +5853,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/logstash-plugin-for-logs/logo.svg",
     "name": "logstash-plugin-for-logs",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/logstash-plugin-for-logs",
+    "summary": "Open source server-side data processing pipeline for condensing disparate data sources.",
     "title": "Logstash plugin for Logs",
     "websiteUrl": null
   },
@@ -5642,6 +5877,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/mariadb/logo.svg",
     "name": "mariadb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/mariadb",
+    "summary": "MariaDB is a community-developed, commercially supported fork of the MySQL relational database management system.",
     "title": "MariaDB",
     "websiteUrl": null
   },
@@ -5675,6 +5911,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/memcached/logo.png",
     "name": "Memcached",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/memcached",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://www.newrelic.com"
   },
@@ -5698,6 +5935,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/micrometer/logo.svg",
     "name": "micrometer",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/micrometer",
+    "summary": "Library for viewing and managing instrumentation clients for popular services and applications.",
     "title": "Micrometer",
     "websiteUrl": null
   },
@@ -5733,6 +5971,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/mongodb/logo.jpeg",
     "name": "MongoDB",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/mongodb",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://www.mongodb.com/"
   },
@@ -5756,6 +5995,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/mssql/mssql/logo.svg",
     "name": "mssql",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/mssql/mssql",
+    "summary": "Relational database management system used to store and retrieve data as requested by other software applications.",
     "title": "MSSQL",
     "websiteUrl": null
   },
@@ -5814,6 +6054,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/mysql/logo.png",
     "name": "MySQL / MariaDB",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/mysql",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://en.wikipedia.org/wiki/MySQL"
   },
@@ -5849,6 +6090,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/nagios/logo.jpeg",
     "name": "Nagios",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/nagios",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://www.nagios.org/"
   },
@@ -5872,6 +6114,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/new-relic-micrometer-registry/logo.svg",
     "name": "new-relic-micrometer-registry",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/new-relic-micrometer-registry",
+    "summary": "Implementation of Micrometer built for sending dimensional data to New Relic.",
     "title": "New Relic Micrometer Registry",
     "websiteUrl": null
   },
@@ -5905,6 +6148,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/nginx/logo.jpeg",
     "name": "Nginx",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/nginx",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://nginx.org/"
   },
@@ -5928,6 +6172,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/node-js/express/logo.svg",
     "name": "express",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/node-js/express",
+    "summary": "Web application framework built for Node.JS with full functionality and interaction with common APIs.",
     "title": "Express",
     "websiteUrl": null
   },
@@ -5951,6 +6196,7 @@
     "logoUrl": null,
     "name": "hapi",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/node-js/hapi",
+    "summary": "Lightweight and highly scalable backend server support built in Node.JS.",
     "title": "Hapi",
     "websiteUrl": null
   },
@@ -5974,6 +6220,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/node-js/koa/logo.svg",
     "name": "koa",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/node-js/koa",
+    "summary": "Expressive HTTP middleware framework for node.js to make web applications and APIs more enjoyable to write.",
     "title": "Koa",
     "websiteUrl": null
   },
@@ -5997,6 +6244,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/node-js/node-js/logo.svg",
     "name": "node-js",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/node-js/node-js",
+    "summary": "Node.js is an open-source, cross-platform, back-end, JavaScript runtime environment that executes JavaScript code outside a web browser.",
     "title": "Node.js",
     "websiteUrl": null
   },
@@ -6020,6 +6268,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/node-js/restify/logo.svg",
     "name": "restify",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/node-js/restify",
+    "summary": "Restify is a Node.js web service framework optimized for building semantically correct RESTful web services.",
     "title": "Restify",
     "websiteUrl": null
   },
@@ -6043,6 +6292,7 @@
     "logoUrl": null,
     "name": "okhttp",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/okhttp",
+    "summary": "OkHttp is a third-party library developed by Square for sending and receive HTTP-based network requests.",
     "title": "OKHTTP",
     "websiteUrl": null
   },
@@ -6066,6 +6316,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/opencensus/logo.svg",
     "name": "opencensus",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/opencensus",
+    "summary": "OpenCensus is a set of libraries that allow you to collect application metrics and distributed traces.",
     "title": "OpenCensus",
     "websiteUrl": null
   },
@@ -6089,6 +6340,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/opentelemetry/logo.svg",
     "name": "opentelemetry",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/opentelemetry",
+    "summary": "Suite of APIs and agents intended to capture metric and trace data from your software.",
     "title": "OpenTelemetry",
     "websiteUrl": null
   },
@@ -6112,6 +6364,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/oracle/inet-oracle-driver/logo.svg",
     "name": "inet-oracle-driver",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/oracle/inet-oracle-driver",
+    "summary": "Java driver built by Inet for managing Oracle database servers.",
     "title": "Inet Oracle Driver (oranxo)",
     "websiteUrl": null
   },
@@ -6135,6 +6388,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/oracle/oracle-database/logo.svg",
     "name": "oracledb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/oracle/oracle-database",
+    "summary": "Traditional database management system for running online transaction processing, data warehousing, and mixed database workloads.",
     "title": "OracleDB",
     "websiteUrl": null
   },
@@ -6158,6 +6412,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/oracle/oracle/logo.svg",
     "name": "oracle",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/oracle/oracle",
+    "summary": "An object-relational database management system developed and marketed by Oracle Corporation.",
     "title": "Oracle",
     "websiteUrl": null
   },
@@ -6181,6 +6436,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/pagerduty/pagerduty/logo.svg",
     "name": "pagerduty",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/pagerduty/pagerduty",
+    "summary": "PagerDuty provides a SaaS incident response platform for IT departments.",
     "title": "Pagerduty",
     "websiteUrl": null
   },
@@ -6204,6 +6460,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/perfmon/logo.svg",
     "name": "perfmon",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/perfmon",
+    "summary": "Windows Performance Monitor is a toolkit that enables system performance data and analytics.",
     "title": "PerfMon",
     "websiteUrl": null
   },
@@ -6227,6 +6484,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/cakephp/logo.svg",
     "name": "cakephp",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/cakephp",
+    "summary": "PHP open-source web framework that follows the model–view–controller approach, modeled after the concepts of Ruby on Rails.",
     "title": "CakePHP",
     "websiteUrl": null
   },
@@ -6250,6 +6508,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/codeigniter/logo.svg",
     "name": "codeigniter",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/codeigniter",
+    "summary": "Open-source PHP-based web framework built for rapid development.",
     "title": "CodeIgniter",
     "websiteUrl": null
   },
@@ -6273,6 +6532,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/guzzle/logo.svg",
     "name": "guzzle",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/guzzle",
+    "summary": "PHP-based HTTP client built for ease of use and integration with popular web services.",
     "title": "Guzzle",
     "websiteUrl": null
   },
@@ -6296,6 +6556,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/joomla/logo.svg",
     "name": "joomla",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/joomla",
+    "summary": "Joomla is a free and open-source PHP content management system for publishing web content.",
     "title": "Joomla",
     "websiteUrl": null
   },
@@ -6319,6 +6580,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/kohana/logo.svg",
     "name": "kohana",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/kohana",
+    "summary": "Kohana is an HMVC PHP5 framework that provides a rich set of components for building web applications.",
     "title": "Kohana",
     "websiteUrl": null
   },
@@ -6342,6 +6604,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/laravel/logo.svg",
     "name": "laravel",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/laravel",
+    "summary": "Laravel is a free, open-source PHP MVC web framework.",
     "title": "Laravel",
     "websiteUrl": null
   },
@@ -6365,6 +6628,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/magento/logo.svg",
     "name": "magento",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/magento",
+    "summary": "Magento is an open-source e-commerce platform written in PHP.",
     "title": "Magento",
     "websiteUrl": null
   },
@@ -6388,6 +6652,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/mediawiki/logo.svg",
     "name": "mediawiki",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/mediawiki",
+    "summary": "MediaWiki is a free and open-source wiki engine developed for use on Wikipedia.",
     "title": "MediaWiki",
     "websiteUrl": null
   },
@@ -6411,6 +6676,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/odbc/logo.svg",
     "name": "odbc",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/odbc",
+    "summary": "Open Database Connectivity (ODBC) is a standard application programming interface (API) for accessing database management systems (DBMS).",
     "title": "ODBC",
     "websiteUrl": null
   },
@@ -6434,6 +6700,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/pdo/logo.svg",
     "name": "pdo",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/pdo",
+    "summary": "PDO is a lean, consistent way to access databases in PHP.",
     "title": "PDO",
     "websiteUrl": null
   },
@@ -6486,6 +6753,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/php/logo.jpg",
     "name": "PHP",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/php",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://www.php.net/"
   },
@@ -6509,6 +6777,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/phpunit/logo.svg",
     "name": "phpunit",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/phpunit",
+    "summary": "PHPUnit is a unit testing framework for the PHP programming language.",
     "title": "PHPunit",
     "websiteUrl": null
   },
@@ -6532,6 +6801,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/predis/logo.svg",
     "name": "predis",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/predis",
+    "summary": "Predis is a flexible and feature-complete Redis client for PHP.",
     "title": "Predis",
     "websiteUrl": null
   },
@@ -6555,6 +6825,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/silex/logo.svg",
     "name": "silex",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/silex",
+    "summary": "Silex is a PHP micro-framework based on the Symfony Components.",
     "title": "Silex",
     "websiteUrl": null
   },
@@ -6578,6 +6849,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/slim/logo.svg",
     "name": "slim",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/slim",
+    "summary": "PHP micro framework that helps you quickly write simple yet powerful web applications and APIs.",
     "title": "Slim",
     "websiteUrl": null
   },
@@ -6601,6 +6873,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/sqlite/logo.svg",
     "name": "sqlite",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/sqlite",
+    "summary": "SQLite is a relational database management system that is embedded into applications.",
     "title": "SQLite",
     "websiteUrl": null
   },
@@ -6624,6 +6897,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/symfony/logo.svg",
     "name": "symfony",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/symfony",
+    "summary": "A set of reusable PHP components and a PHP framework to build web applications, APIs, microservices and web services.",
     "title": "Symfony",
     "websiteUrl": null
   },
@@ -6647,6 +6921,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/php/yii/logo.svg",
     "name": "yii",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/php/yii",
+    "summary": "Open source, object-oriented web framework for PHP.",
     "title": "Yii",
     "websiteUrl": null
   },
@@ -6670,6 +6945,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/pivotal-tracker/logo.svg",
     "name": "pivotal-tracker",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/pivotal-tracker",
+    "summary": "Pivotal Tracker is an agile project management tool used for real-time collaboration around a shared, prioritized backlog.",
     "title": "Pivotal Tracker",
     "websiteUrl": null
   },
@@ -6693,6 +6969,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/port-monitoring/logo.svg",
     "name": "port-monitoring",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/port-monitoring",
+    "summary": "Monitor the status for networking ports, such as TCP, UDP, etc.",
     "title": "Port monitoring",
     "websiteUrl": null
   },
@@ -6727,6 +7004,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/postgresql/logo.jpeg",
     "name": "PostgreSQL",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/postgresql",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://www.postgresql.org/"
   },
@@ -6754,6 +7032,7 @@
     "logoUrl": null,
     "name": "Prometheus Node Exporter for Mac OS",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/prometheus-node-exporter-macos",
+    "summary": "",
     "title": null,
     "websiteUrl": null
   },
@@ -6777,6 +7056,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/prometheus/logo.svg",
     "name": "prometheus",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/prometheus",
+    "summary": "Prometheus is a free software application used for event monitoring and alerting.",
     "title": "Prometheus",
     "websiteUrl": null
   },
@@ -6800,6 +7080,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/puppet/logo.svg",
     "name": "puppet",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/puppet",
+    "summary": "Puppet is a configuration management tool used to manage various stages of the IT infrastructure lifecycle.",
     "title": "Puppet",
     "websiteUrl": null
   },
@@ -6823,6 +7104,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/aiohttp/logo.svg",
     "name": "aiohttp",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/aiohttp",
+    "summary": "Async HTTP framework for Python with support for client and server management.",
     "title": "AIOHTTP",
     "websiteUrl": null
   },
@@ -6846,6 +7128,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/amqplib/logo.svg",
     "name": "amqplib",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/amqplib",
+    "summary": "Python library implementing the Advanced Message Queuing Protocol (AMQP) standard.",
     "title": "AMQPlib",
     "websiteUrl": null
   },
@@ -6869,6 +7152,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/bottle/logo.svg",
     "name": "bottle",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/bottle",
+    "summary": "WSGI micro web-framework for Python. Single file module with no dependencies other than the Python Standard Library.",
     "title": "bottle",
     "websiteUrl": null
   },
@@ -6892,6 +7176,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/celery/logo.svg",
     "name": "celery",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/celery",
+    "summary": "Open source distributed task queue built for real-time operations.",
     "title": "celery",
     "websiteUrl": null
   },
@@ -6915,6 +7200,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/cherrypy/logo.svg",
     "name": "cherrypy",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/cherrypy",
+    "summary": "Object-oriented web framework built on Python.",
     "title": "cherrypy",
     "websiteUrl": null
   },
@@ -6938,6 +7224,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/django/logo.svg",
     "name": "django",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/django",
+    "summary": "Django is a Python-based free and open-source web framework that follows the model-template-views architectural pattern.",
     "title": "django",
     "websiteUrl": null
   },
@@ -6961,6 +7248,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/dropbox/logo.svg",
     "name": "dropbox",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/dropbox",
+    "summary": "Dropbox is a file hosting service that offers cloud storage, file synchronization, personal cloud, and client software.",
     "title": "dropbox",
     "websiteUrl": null
   },
@@ -6984,6 +7272,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/facepy/logo.svg",
     "name": "facepy",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/facepy",
+    "summary": "Framework for using Python to access and communicate with Facebook’s APIs.",
     "title": "facepy",
     "websiteUrl": null
   },
@@ -7007,6 +7296,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/falcon/logo.svg",
     "name": "falcon",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/falcon",
+    "summary": "Python-based web server gateway interface with a focus on clean implementation.",
     "title": "Falcon",
     "websiteUrl": null
   },
@@ -7030,6 +7320,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/feedparser/logo.svg",
     "name": "feedparser",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/feedparser",
+    "summary": "Python parser for a wide variety of Atom and RSS feeds.",
     "title": "feedparser",
     "websiteUrl": null
   },
@@ -7053,6 +7344,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/flask/logo.svg",
     "name": "flask",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/flask",
+    "summary": "Popular python web application microframework built with a focus on simplicity.",
     "title": "flask",
     "websiteUrl": null
   },
@@ -7076,6 +7368,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/gearman/logo.svg",
     "name": "gearman",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/gearman",
+    "summary": "Python API for distributing workloads efficiently and in parallel.",
     "title": "Gearman",
     "websiteUrl": null
   },
@@ -7099,6 +7392,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/gevent/logo.svg",
     "name": "gevent",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/gevent",
+    "summary": "Python networking library for coroutine operations through a libev or libuv API.",
     "title": "gevent",
     "websiteUrl": null
   },
@@ -7122,6 +7416,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/httplib2/logo.svg",
     "name": "httplib2",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/httplib2",
+    "summary": "Lightweight HTTP client for Python with straightforward usage and full feature support.",
     "title": "httplib2",
     "websiteUrl": null
   },
@@ -7145,6 +7440,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/jinja2/logo.svg",
     "name": "jinja2",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/jinja2",
+    "summary": "Python-based web templating language designed to make it easier for designers to work quickly and efficiently.",
     "title": "jinja2",
     "websiteUrl": null
   },
@@ -7168,6 +7464,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/mako/logo.svg",
     "name": "mako",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/mako",
+    "summary": "Mako is a template library written in Python.",
     "title": "mako",
     "websiteUrl": null
   },
@@ -7191,6 +7488,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/oursql/logo.svg",
     "name": "oursql",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/oursql",
+    "summary": "oursql is a set of MySQL bindings for Python which wraps the MYSQL_STMT API to provide real parameterization and server-side cursors.",
     "title": "OurSQL",
     "websiteUrl": null
   },
@@ -7214,6 +7512,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/pika/logo.svg",
     "name": "pika",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/pika",
+    "summary": "Pika is a fully featured, dynamic programming language.",
     "title": "Pika",
     "websiteUrl": null
   },
@@ -7237,6 +7536,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/piston/logo.svg",
     "name": "piston",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/piston",
+    "summary": "Lightweight Python framework for building RESTful APIs in Django.",
     "title": "piston",
     "websiteUrl": null
   },
@@ -7260,6 +7560,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/proboscis/logo.svg",
     "name": "proboscis",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/proboscis",
+    "summary": "Proboscis is a Python test framework that extends Python's built- in unittest module and Nose with features from TestNG.",
     "title": "Proboscis",
     "websiteUrl": null
   },
@@ -7283,6 +7584,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/psycopg2/logo.svg",
     "name": "psycopg2",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/psycopg2",
+    "summary": "Psycopg is the most popular PostgreSQL database adapter for the Python programming language.",
     "title": "Psycopg2",
     "websiteUrl": null
   },
@@ -7306,6 +7608,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/pyelasticsearch/logo.svg",
     "name": "pyelasticsearch",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/pyelasticsearch",
+    "summary": "PyElasticSearch is a clean, future-proof, high-scale API to Elasticsearch for Python.",
     "title": "PyElasticSearch",
     "websiteUrl": null
   },
@@ -7329,6 +7632,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/pylibmc/logo.svg",
     "name": "pylibmc",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/pylibmc",
+    "summary": "Pylibmc is a Python client for memcached written in C.",
     "title": "pylibmc",
     "websiteUrl": null
   },
@@ -7352,6 +7656,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/pylons/logo.svg",
     "name": "pylons",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/pylons",
+    "summary": "Pylons Framework is an open-source Web application framework written in Python.",
     "title": "pylons",
     "websiteUrl": null
   },
@@ -7375,6 +7680,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/pymongo/logo.svg",
     "name": "pymongo",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/pymongo",
+    "summary": "The PyMongo distribution contains tools for interacting with MongoDB database from Python.",
     "title": "PyMongo",
     "websiteUrl": null
   },
@@ -7398,6 +7704,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/pyramid/logo.svg",
     "name": "pyramid",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/pyramid",
+    "summary": "Pyramid is an open source and minimalistic web framework written in Python and is based on WSGI.",
     "title": "pyramid",
     "websiteUrl": null
   },
@@ -7421,6 +7728,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/pysqlite/logo.svg",
     "name": "pysqlite",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/pysqlite",
+    "summary": "pysqlite is a Python interface to the SQLite 3.x embedded relational database engine.",
     "title": "PySQLite",
     "websiteUrl": null
   },
@@ -7444,6 +7752,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/python/logo.svg",
     "name": "python",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/python",
+    "summary": "Python is an interpreted, high-level and general-purpose programming language.",
     "title": "Python",
     "websiteUrl": null
   },
@@ -7467,6 +7776,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/pywapi/logo.svg",
     "name": "pywapi",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/pywapi",
+    "summary": "pywapi is a Python wrapper around different weather APIs.",
     "title": "pywapi",
     "websiteUrl": null
   },
@@ -7490,6 +7800,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/sanic/logo.svg",
     "name": "sanic",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/sanic",
+    "summary": "Sanic is a fast Python web server and web framework that utilizes the async/await syntax, which makes your code non-blocking and speedy.",
     "title": "Sanic",
     "websiteUrl": null
   },
@@ -7513,6 +7824,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/tastypie/logo.svg",
     "name": "tastypie",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/tastypie",
+    "summary": "Web Service API framework for Django that provides a convenient and highly customizable abstraction for creating REST-style interfaces.",
     "title": "tastypie",
     "websiteUrl": null
   },
@@ -7536,6 +7848,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/tornado/logo.svg",
     "name": "tornado",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/tornado",
+    "summary": "Python web application framework built for asynchronous networking operations.",
     "title": "tornado",
     "websiteUrl": null
   },
@@ -7559,6 +7872,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/twisted/logo.svg",
     "name": "twisted",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/twisted",
+    "summary": "An event-based framework for internet applications written in Python.",
     "title": "twisted",
     "websiteUrl": null
   },
@@ -7582,6 +7896,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/urllib/logo.svg",
     "name": "urllib",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/urllib",
+    "summary": "Timing of external Python web service requests may be carried out via urllib.",
     "title": "urllib",
     "websiteUrl": null
   },
@@ -7605,6 +7920,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/urllib2/logo.svg",
     "name": "urllib2",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/urllib2",
+    "summary": "Timing of external Python web service requests may be carried out via urllib2.",
     "title": "urllib2",
     "websiteUrl": null
   },
@@ -7628,6 +7944,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/urllib3/logo.svg",
     "name": "urllib3",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/urllib3",
+    "summary": "Timing of external Python web service requests may be carried out via urllib3.",
     "title": "urllib3",
     "websiteUrl": null
   },
@@ -7651,6 +7968,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/web2py/logo.svg",
     "name": "web2py",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/web2py",
+    "summary": "Open source, Python-based web application framework that enables development via browser.",
     "title": "web2py",
     "websiteUrl": null
   },
@@ -7674,6 +7992,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/python/webpy/logo.svg",
     "name": "webpy",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/python/webpy",
+    "summary": "Webpy is a web framework for Python that is as simple as it is powerful.",
     "title": "webpy",
     "websiteUrl": null
   },
@@ -7697,6 +8016,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/quantum-metric/logo.svg",
     "name": "quantum-metric",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/quantum-metric",
+    "summary": "Quantum Metric is a platform for continuous product design.",
     "title": "Quantum Metric",
     "websiteUrl": null
   },
@@ -7730,6 +8050,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/rabbitmq/logo.svg",
     "name": "RabbitMQ",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/rabbitmq",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://www.rabbitmq.com/"
   },
@@ -7753,6 +8074,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/react-native/logo.svg",
     "name": "react-native",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/react-native",
+    "summary": "React Native is an open source framework for building native apps using React.",
     "title": "React Native",
     "websiteUrl": null
   },
@@ -7776,6 +8098,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/redhat/red-hat-enterprise-linux/logo.svg",
     "name": "red-hat-enterprise-linux",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/redhat/red-hat-enterprise-linux",
+    "summary": "Red Hat Enterprise Linux is a Linux distribution developed by Red Hat for the commercial market.",
     "title": "Red Hat Enterprise Linux",
     "websiteUrl": null
   },
@@ -7799,6 +8122,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/redhat/red-hat-openshift/logo.svg",
     "name": "red-hat-openshift",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/redhat/red-hat-openshift",
+    "summary": "Red Hat OpenShift is a hybrid cloud, enterprise Kubernetes application platform.",
     "title": "Red Hat OpenShift",
     "websiteUrl": null
   },
@@ -7834,6 +8158,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/redis/logo.png",
     "name": "Redis",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/redis",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://redis.io/"
   },
@@ -7857,6 +8182,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/roku/logo.svg",
     "name": "roku",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/roku",
+    "summary": "Build applications that deliver high-quality video to the Roku platform.",
     "title": "Roku",
     "websiteUrl": null
   },
@@ -7880,6 +8206,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/activerecord/logo.svg",
     "name": "activerecord",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/activerecord",
+    "summary": "Active Record facilitates the creation and use of business objects whose data requires persistent storage to a database.",
     "title": "ActiveRecord",
     "websiteUrl": null
   },
@@ -7903,6 +8230,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/acts-as-solr/logo.svg",
     "name": "actsassolr",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/acts-as-solr",
+    "summary": "Ruby plugins that adds full text search capabilities and other features from Apache's Solr to any Rails model.",
     "title": "Acts_as_solr",
     "websiteUrl": null
   },
@@ -7926,6 +8254,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/authlogic/logo.svg",
     "name": "authlogic",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/authlogic",
+    "summary": "Unobtrusive Ruby authentication library based on ActiveRecord.",
     "title": "Authlogic",
     "websiteUrl": null
   },
@@ -7949,6 +8278,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/bunny/logo.svg",
     "name": "bunny",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/bunny",
+    "summary": "RabbitMQ client that focuses on ease of use. Supports all recent RabbitMQ features and does not have any heavyweight dependencies.",
     "title": "Bunny",
     "websiteUrl": null
   },
@@ -7972,6 +8302,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/curb/logo.svg",
     "name": "curb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/curb",
+    "summary": "Establishes Ruby bindings for the client-side URL transfer library libcurl(3).",
     "title": "Curb",
     "websiteUrl": null
   },
@@ -7995,6 +8326,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/dalli/logo.svg",
     "name": "dalli",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/dalli",
+    "summary": "Ruby client built for accessing Memcached servers.",
     "title": "Dalli",
     "websiteUrl": null
   },
@@ -8018,6 +8350,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/delayed-job/logo.svg",
     "name": "delayedjob",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/delayed-job",
+    "summary": "Ruby Gem that enables asynchronously distributing tasks to the background.",
     "title": "Delayed_Job",
     "websiteUrl": null
   },
@@ -8041,6 +8374,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/excon/logo.svg",
     "name": "excon",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/excon",
+    "summary": "Simple and straightforward HTTP client built on Ruby.",
     "title": "Excon",
     "websiteUrl": null
   },
@@ -8064,6 +8398,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/grape/logo.svg",
     "name": "grape",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/grape",
+    "summary": "Ruby Gem that provides a framework for users to create REST-like APIs.",
     "title": "Grape",
     "websiteUrl": null
   },
@@ -8087,6 +8422,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/httpclient/logo.svg",
     "name": "httpclient",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/httpclient",
+    "summary": "Framework for using Ruby to access web resources.",
     "title": "HttpClient",
     "websiteUrl": null
   },
@@ -8110,6 +8446,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/httprb/logo.svg",
     "name": "httprb",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/httprb",
+    "summary": "Straightforward Ruby-based HTTP client with advanced feature set.",
     "title": "HttpRb",
     "websiteUrl": null
   },
@@ -8133,6 +8470,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/net-http/logo.svg",
     "name": "net-http",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/net-http",
+    "summary": "Net::HTTP for Ruby provides a rich library which can be used to build HTTP user-agents.",
     "title": "Net::HTTP",
     "websiteUrl": null
   },
@@ -8156,6 +8494,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/padrino/logo.svg",
     "name": "padrino",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/padrino",
+    "summary": "Padrino is a free and open-source web framework, written in Ruby and based on Sinatra.",
     "title": "Padrino",
     "websiteUrl": null
   },
@@ -8179,6 +8518,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/passenger/logo.svg",
     "name": "passenger",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/passenger",
+    "summary": "Web application server with support for several platforms, and can run standalone or integrate with other servers.",
     "title": "Passenger",
     "websiteUrl": null
   },
@@ -8202,6 +8542,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/puma/logo.svg",
     "name": "puma",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/puma",
+    "summary": "Puma is an HTTP web server for Ruby and Rack.",
     "title": "Puma",
     "websiteUrl": null
   },
@@ -8225,6 +8566,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/rack/logo.svg",
     "name": "rack",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/rack",
+    "summary": "A minimal, modular, and adaptable interface for developing web applications in Ruby.",
     "title": "Rack",
     "websiteUrl": null
   },
@@ -8248,6 +8590,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/rails/logo.svg",
     "name": "rails",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/rails",
+    "summary": "Rails is an open source server-side MVC web application framework written in Ruby under the MIT License.",
     "title": "Rails",
     "websiteUrl": null
   },
@@ -8271,6 +8614,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/rainbows/logo.svg",
     "name": "rainbows",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/rainbows",
+    "summary": "An HTTP Rack app server designed to handle applications that expect long request/response times and/or slow clients.",
     "title": "Rainbows!",
     "websiteUrl": null
   },
@@ -8294,6 +8638,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/rake/logo.svg",
     "name": "rake",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/rake",
+    "summary": "Rake is a software task management and build automation tool.",
     "title": "Rake",
     "websiteUrl": null
   },
@@ -8317,6 +8662,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/resque/logo.svg",
     "name": "resque",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/resque",
+    "summary": "Redis-backed Ruby library for creating background jobs, placing them on multiple queues, and processing them later.",
     "title": "Resque",
     "websiteUrl": null
   },
@@ -8340,6 +8686,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/ruby/logo.svg",
     "name": "ruby",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/ruby",
+    "summary": "Ruby is an interpreted, high-level, general-purpose programming language.",
     "title": "Ruby",
     "websiteUrl": null
   },
@@ -8363,6 +8710,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/sequel/logo.svg",
     "name": "sequel",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/sequel",
+    "summary": "A simple, flexible, and powerful SQL database access toolkit for Ruby.",
     "title": "Sequel",
     "websiteUrl": null
   },
@@ -8386,6 +8734,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/sidekiq/logo.svg",
     "name": "sidekiq",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/sidekiq",
+    "summary": "Simple, efficient background processing for Ruby. Sidekiq uses threads to handle many jobs at the same time in the same process.",
     "title": "Sidekiq",
     "websiteUrl": null
   },
@@ -8409,6 +8758,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/sinatra/logo.svg",
     "name": "sinatra",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/sinatra",
+    "summary": "Free and open source software web application library and domain-specific language written in Ruby.",
     "title": "Sinatra",
     "websiteUrl": null
   },
@@ -8432,6 +8782,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/sunspot/logo.svg",
     "name": "sunspot",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/sunspot",
+    "summary": "Library providing a powerful, all-Ruby API for the Solr search engine.",
     "title": "Sunspot",
     "websiteUrl": null
   },
@@ -8455,6 +8806,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/thin/logo.svg",
     "name": "thin",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/thin",
+    "summary": "A Ruby web server that glues together popular Ruby libraries: the Mongrel parser, Event Machine, and Rack.",
     "title": "Thin",
     "websiteUrl": null
   },
@@ -8478,6 +8830,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/typhoeus/logo.svg",
     "name": "typhoeus",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/typhoeus",
+    "summary": "Ruby-based framework for running parallel HTTP requests.",
     "title": "Typhoeus",
     "websiteUrl": null
   },
@@ -8501,6 +8854,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/unicorn/logo.svg",
     "name": "unicorn",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/unicorn",
+    "summary": "Rack HTTP Server based on the now-deprecated Mongrel for managing Ruby applications.",
     "title": "Unicorn",
     "websiteUrl": null
   },
@@ -8524,6 +8878,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ruby/webrick/logo.svg",
     "name": "webrick",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ruby/webrick",
+    "summary": "Set of web server tools in Ruby for creating and managing a variety of services.",
     "title": "Webrick",
     "websiteUrl": null
   },
@@ -8547,6 +8902,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/signl4/logo.svg",
     "name": "signl4",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/signl4",
+    "summary": "Mobile alerting SaaS that bridges the last mile from IT systems, machines, and sensors to engineers, IT staff and workers in the field.",
     "title": "SIGNL4",
     "websiteUrl": null
   },
@@ -8570,6 +8926,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/slack/logo.svg",
     "name": "slack",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/slack",
+    "summary": "Slack is a proprietary real-time business communication platform developed by American software company Slack Technologies.",
     "title": "Slack",
     "websiteUrl": null
   },
@@ -8593,6 +8950,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/snmp/logo.svg",
     "name": "snmp",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/snmp",
+    "summary": "Internet Standard protocol for collecting and organizing information about managed devices on IP networks.",
     "title": "SNMP",
     "websiteUrl": null
   },
@@ -8616,6 +8974,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/split/logo.svg",
     "name": "split",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/split",
+    "summary": "A feature delivery platform that powers feature flag management, software experimentation, and continuous delivery.",
     "title": "Split",
     "websiteUrl": null
   },
@@ -8639,6 +8998,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/statsd/logo.svg",
     "name": "statsd",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/statsd",
+    "summary": "Lightweight, open-source Node.js application that listens for metrics from different applications and aggregates them.",
     "title": "StatsD",
     "websiteUrl": null
   },
@@ -8662,6 +9022,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/suse-linux-enterprise-server/logo.svg",
     "name": "suse-linux-enterprise-server",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/suse-linux-enterprise-server",
+    "summary": "Linux-based operating system developed by SUSE designed for servers, mainframes, and workstations.",
     "title": "SUSE Linux Enterprise Server",
     "websiteUrl": null
   },
@@ -8685,6 +9046,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/tvos/logo.svg",
     "name": "tvos",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/tvos",
+    "summary": "Default operating system for Apple media streaming devices, including the Apple TV.",
     "title": "tvOS",
     "websiteUrl": null
   },
@@ -8708,6 +9070,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/ubuntu/logo.svg",
     "name": "ubuntu",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/ubuntu",
+    "summary": "Open source Linux distribution for both personal and enterprise use, based on Debian.",
     "title": "Ubuntu",
     "websiteUrl": null
   },
@@ -8731,6 +9094,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/unix/logo.svg",
     "name": "unix",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/unix",
+    "summary": "The Unix monitoring integration allows for system-level monitoring of AIX, Linux, macOS, Solaris/SunOS and other Unix-based servers.",
     "title": "Unix",
     "websiteUrl": null
   },
@@ -8766,6 +9130,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/varnish/logo.png",
     "name": "Varnish",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/varnish",
+    "summary": "",
     "title": null,
     "websiteUrl": "https://varnish-cache.org/"
   },
@@ -8789,6 +9154,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/victorops/logo.svg",
     "name": "victorops",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/victorops",
+    "summary": "Get notified via VictorOps when incidents are opened, acknowledged, or closed. Notifications can include charts about the incident.",
     "title": "VictorOps",
     "websiteUrl": null
   },
@@ -8812,6 +9178,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/vmware/vmware-esxi/logo.svg",
     "name": "vmware-esxi",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/vmware/vmware-esxi",
+    "summary": "Hypervisor built for direct interaction with server hardware and resources.",
     "title": "VMware ESXi",
     "websiteUrl": null
   },
@@ -8835,6 +9202,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/vmware/vmware-tanzu/logo.svg",
     "name": "vmware-tanzu",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/vmware/vmware-tanzu",
+    "summary": "Kubernetes management built and maintained by VMWare.",
     "title": "VMWare Tanzu",
     "websiteUrl": null
   },
@@ -8858,6 +9226,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/windows-event-log/logo.svg",
     "name": "windows-event-log",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/windows-event-log",
+    "summary": "Monitor and report Windows event log entries to New Relic.",
     "title": "Windows event log",
     "websiteUrl": null
   },
@@ -8881,6 +9250,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/wordpress/logo.svg",
     "name": "wordpress",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/wordpress",
+    "summary": "Monitoring for the self-hosted version of the popular CMS and blogging tool.",
     "title": "WordPress",
     "websiteUrl": null
   },
@@ -8904,6 +9274,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/xmatters/logo.svg",
     "name": "xmatters",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/xmatters",
+    "summary": "Automated alerts for detecting and responding to events and critical issues.",
     "title": "xMatters",
     "websiteUrl": null
   },
@@ -8927,6 +9298,7 @@
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/zipkin/logo.svg",
     "name": "zipkin",
     "packUrl": "https://github.com/newrelic/newrelic-observability-packs/tree/main/packs/zipkin",
+    "summary": "Distributed Tracing system built in Java.",
     "title": "Zipkin",
     "websiteUrl": null
   }
