@@ -6,6 +6,7 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
 import PackTile from '../components/PackTile';
+import IOBanner from '../components/IOBanner';
 import MobileQSFilter from '../components/MobileQSFilter';
 import {
   SearchInput,
@@ -194,6 +195,8 @@ const QuickstartsPage = ({ data, location }) => {
             }
           `}
         >
+          {isMobile && <IOBanner />}
+
           <div
             css={css`
               position: absolute;
@@ -213,6 +216,7 @@ const QuickstartsPage = ({ data, location }) => {
               instrumentation, and alerts to help you monitor your environment.
             </p>
             <aside
+              data-swiftype-index={false}
               css={css`
                 border-bottom: 1px solid var(--divider-color);
                 margin-bottom: 1.5rem;
@@ -300,6 +304,8 @@ const QuickstartsPage = ({ data, location }) => {
             padding: var(--site-content-padding);
           `}
         >
+          {!isMobile && <IOBanner />}
+
           <div
             css={css`
               background-color: var(--color-neutrals-100);
