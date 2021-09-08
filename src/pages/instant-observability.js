@@ -7,6 +7,7 @@ import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
 import PackTile from '../components/PackTile';
 import MobileQSFilter from '../components/MobileQSFilter';
+import IOLogo from '../components/IOLogo';
 import {
   SearchInput,
   useTessen,
@@ -14,6 +15,7 @@ import {
   ExternalLink,
   Button,
   Icon,
+  Link,
 } from '@newrelic/gatsby-theme-newrelic';
 import { useDebounce } from 'react-use';
 import { navigate } from '@reach/router';
@@ -192,11 +194,6 @@ const QuickstartsPage = ({ data, location }) => {
         >
           <div
             css={css`
-              position: absolute;
-              top: 0;
-              bottom: 0;
-              left: 0;
-              right: 0;
               padding: var(--site-content-padding);
               overflow: auto;
               @media screen and (max-width: 760px) {
@@ -204,6 +201,15 @@ const QuickstartsPage = ({ data, location }) => {
               }
             `}
           >
+            <Link
+              css={css`
+                display: block;
+                margin-bottom: 1rem;
+              `}
+              to="/instant-observability"
+            >
+              <IOLogo />
+            </Link>
             <p>
               A place to find quickstarts of resources like dashboards,
               instrumentation, and alerts to help you monitor your environment.
