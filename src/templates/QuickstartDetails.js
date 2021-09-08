@@ -55,6 +55,7 @@ const QuickstartDetails = ({ data, location }) => {
     tessen.track('quickstart', 'QuickstartInstall', {
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
+      quickstartUrl: quickstart.packUrl,
     });
 
   const viewRepoClick = () =>
