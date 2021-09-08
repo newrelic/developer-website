@@ -359,7 +359,7 @@ const QuickstartsPage = ({ data, location }) => {
                 onChange={(_e, view) => {
                   setView(view);
 
-                  tessen.track('quickstart', `quickstartViewToggle`, {
+                  tessen.track('quickstart', `QuickstartViewToggle`, {
                     quickstartViewState: view,
                   });
                 }}
