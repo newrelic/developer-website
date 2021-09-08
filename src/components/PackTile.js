@@ -34,30 +34,30 @@ const PackTile = ({
 
   const handlePackClick = useInstrumentedHandler(
     () => {
-      tessen.track('observabilityPack', 'observabilityPackClick', {
+      tessen.track('quickstart', 'QuickstartClick', {
         publicCatalogView: view,
-        packName: name,
+        quickstartName: name,
       });
       navigate(fields.slug);
     },
     {
-      actionName: 'observabilityPackClick',
+      actionName: 'QuickstartClick',
       publicCatalogView: view,
-      packName: name,
+      quickstartName: name,
     }
   );
 
   const handleBuildTileClick = useInstrumentedHandler(
     () => {
-      tessen.track('observabilityPack', 'buildYourOwnObservabilityPackClick', {
+      tessen.track('quickstart', 'BuildYourOwnQuickstartClick', {
         publicCatalogView: view,
-        packName: name,
+        quickstartName: name,
       });
     },
     {
-      actionName: 'buildYourOwnObservabilityPackClick',
+      actionName: 'BuildYourOwnQuickstartClick',
       publicCatalogView: view,
-      packName: name,
+      quickstartName: name,
     }
   );
 

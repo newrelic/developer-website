@@ -10,7 +10,6 @@ import MobileQSFilter from '../components/MobileQSFilter';
 import {
   SearchInput,
   useTessen,
-  useInstrumentedData,
   useQueryParams,
   ExternalLink,
   Button,
@@ -83,27 +82,24 @@ const QuickstartsPage = ({ data, location }) => {
 
   const searchInputRef = useRef();
 
-  useInstrumentedData(
-    { actionName: 'packViewToggle', packViewState: view },
-    { enabled: Boolean(view) }
-  );
+  useEffect(() => {
+    tessen.track('quickstart', 'QuickstartViewToggle', {
+      quickstartViewState: view,
+    });
+  }, []);
 
-  useInstrumentedData(
-    { actionName: 'packFilter', packFilterState: formState.packContains },
-    { enabled: Boolean(formState.packContains) }
-  );
+  useEffect(() => {
+    tessen.track('quickstart', 'QuickstartFilter', {
+      quickstartFilterState: formState.packContains,
+    });
+  }, [formState.packContains]);
 
   useDebounce(
     () => {
       if (formState.search && formState.search !== '') {
-        tessen.track('observabilityPack', `packSearch`, {
-          packSearchTerm: formState.search,
+        tessen.track('quickstart', `QuickstartSearch`, {
+          quickstartSearchTerm: formState.search,
         });
-        if (typeof window !== 'undefined' && window.newrelic) {
-          window.newrelic.addPageAction('packSearch', {
-            packSearchTerm: formState.search,
-          });
-        }
       }
     },
     1000,
@@ -363,8 +359,8 @@ const QuickstartsPage = ({ data, location }) => {
                 onChange={(_e, view) => {
                   setView(view);
 
-                  tessen.track('observabilityPack', `packViewToggle`, {
-                    packViewState: view,
+                  tessen.track('quickstart', `QuickstartViewToggle`, {
+                    quickstartViewState: view,
                   });
                 }}
               />
