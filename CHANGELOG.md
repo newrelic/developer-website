@@ -1,3 +1,13 @@
+## [1.52.3](https://github.com/newrelic/developer-website/compare/v1.52.2...v1.52.3) (2021-09-10)
+
+
+### Bug Fixes
+
+* Add additional information about catalog directories on ab-test ([aeec991](https://github.com/newrelic/developer-website/commit/aeec99134fdb517eb1490921fc567dba5d7430e0))
+* Update CLI output to match latest release in ab-test guide ([2a264ec](https://github.com/newrelic/developer-website/commit/2a264ec3b08b784075cc122a76510c10fb083ecf))
+* Update guide on updating catalog info to include artifact screenshots ([2e9d98c](https://github.com/newrelic/developer-website/commit/2e9d98cb2d9f60397186a5e04b213196fcee9553))
+* Update hello world guide to mention multiple catalog directories ([f3c296b](https://github.com/newrelic/developer-website/commit/f3c296b05c17d7e53dc46153f7e25d6f1f57a801))
+
 ## [1.52.2](https://github.com/newrelic/developer-website/compare/v1.52.1...v1.52.2) (2021-09-02)
 
 
