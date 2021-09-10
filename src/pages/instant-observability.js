@@ -18,6 +18,7 @@ import {
 import { useDebounce } from 'react-use';
 import { navigate } from '@reach/router';
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
+import { sortFeaturedPacks } from '../utils/sortFeaturedPacks';
 
 const { QUICKSTARTS_REPO } = require('../data/constants');
 
@@ -26,12 +27,15 @@ const packContentsFilterGroups = [
   'Dashboards',
   'Alerts',
   'Data sources',
+  'Featured',
 ];
 
 const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
 };
+
+const packContentsDataSources = ['documentation'];
 
 const QuickstartsPage = ({ data, location }) => {
   const tessen = useTessen();
@@ -41,7 +45,7 @@ const QuickstartsPage = ({ data, location }) => {
   const {
     allQuickstarts: { nodes: quickstarts },
   } = data;
-
+  
   const [filteredPacks, setFilteredPacks] = useState(quickstarts);
 
   const { queryParams } = useQueryParams();
@@ -119,12 +123,25 @@ const QuickstartsPage = ({ data, location }) => {
       queryParams.has('packContains') &&
       queryParams.get('packContains') !== 'All'
     ) {
-      tempFilteredPacks = tempFilteredPacks.filter(
-        (pack) =>
-          pack[queryParams.get('packContains').toLowerCase()]?.length > 0
-      );
+      if (queryParams.get('packContains') === 'Featured') {
+        tempFilteredPacks = tempFilteredPacks.filter((pack) =>
+          pack.keywords?.includes('featured')
+        );
+      } else if (queryParams.get('packContains') === 'Data sources') {
+        tempFilteredPacks = tempFilteredPacks.filter((pack) => {
+          return Object.keys(pack).some(
+            (key) =>
+              packContentsDataSources.includes(key) && pack[key].length > 0
+          );
+        });
+      } else {
+        tempFilteredPacks = tempFilteredPacks.filter(
+          (pack) =>
+            pack[queryParams.get('packContains').toLowerCase()]?.length > 0
+        );
+      }
     }
-
+    tempFilteredPacks = sortFeaturedPacks(tempFilteredPacks);
     setFilteredPacks(tempFilteredPacks);
   }, [queryParams, quickstarts]);
 
@@ -138,13 +155,29 @@ const QuickstartsPage = ({ data, location }) => {
         const filterCount = filteredPacks.length;
         return { filterName, filterCount };
       }
+      if (filterName === 'Featured') {
+        const filterCount = filteredPacks.filter((pack) =>
+          pack.keywords?.includes(filterName.toLowerCase())
+        ).length;
+        return { filterName, filterCount };
+      }
+      if (filterName === 'Data sources') {
+        const filterCount = filteredPacks.filter((pack) =>
+          Object.keys(pack).some(
+            (key) =>
+              packContentsDataSources.includes(key) && pack[key].length > 0
+          )
+        ).length;
+        return { filterName, filterCount };
+      }
       const filterCount = filteredPacks.filter(
-        (pack) => pack[filterName.toLowerCase()]
+        (pack) =>
+          pack[filterName.toLowerCase()] &&
+          pack[filterName.toLowerCase()].length > 0
       ).length;
       return { filterName, filterCount };
     }
   );
-
   return (
     <>
       <DevSiteSeo
@@ -264,6 +297,16 @@ const QuickstartsPage = ({ data, location }) => {
                       {filterName === 'Data sources' && (
                         <Icon
                           name="nr-document"
+                          css={css`
+                            fill: currentColor;
+                            stroke-width: 0.25;
+                            margin: 0 0.5rem;
+                          `}
+                        />
+                      )}
+                      {filterName === 'Featured' && (
+                        <Icon
+                          name="nr-relicans"
                           css={css`
                             fill: currentColor;
                             stroke-width: 0.25;
@@ -416,7 +459,12 @@ const QuickstartsPage = ({ data, location }) => {
               />
             </ExternalLink>
             {filteredPacks.map((pack) => (
-              <PackTile key={pack.id} view={view} {...pack} />
+              <PackTile
+                key={pack.id}
+                view={view}
+                featured={pack.keywords?.includes('featured')}
+                {...pack}
+              />
             ))}
           </div>
         </div>
@@ -443,6 +491,7 @@ export const pageQuery = graphql`
         logoUrl
         packUrl
         level
+        keywords
         dashboards {
           description
           name

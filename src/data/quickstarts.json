@@ -65,6 +65,7 @@
         "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/apache/dashboards/apache.json"
       }
     ],
+    "keywords": ["featured"],
     "description": "Official New Relic pack for Apache\nUse this pack together with the New Relic Apache On Host Integration to get insight into the performance of your Apache instances.\n\n",
     "documentation": [
       {
@@ -179,6 +180,7 @@
         "url": "https://docs.newrelic.com/docs/distributed-tracing/trace-api/introduction-trace-api/"
       }
     ],
+    "keywords": ["featured"],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/apis/trace/icon.png",
     "id": "VHJhY2UgYW5kIFNwYW4gQVBJ",
     "level": "NEWRELIC",
@@ -3118,6 +3120,7 @@
         "url": "https://docs.newrelic.com/docs/integrations/open-source-telemetry-integrations/open-source-telemetry-integration-list/new-relics-dropwizard-integration"
       }
     ],
+    "keywords": ["featured"],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/dropwizard-metrics-reporter/icon.svg",
     "id": "ZHJvcHdpemFyZC1tZXRyaWNzLXJlcG9ydGVy",
     "level": "COMMUNITY",
@@ -3391,6 +3394,7 @@
         "url": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gatsby-build/dashboards/gatsby-build.json"
       }
     ],
+    "keywords": ["featured"],
     "description": "The Gatsby observability pack allows you to get visibility into the build time of your Gatsby Sites, \nusing [Open Telemetry](https://docs.newrelic.com/docs/integrations/open-source-telemetry-integrations/opentelemetry/introduction-opentelemetry-new-relic/)\nto collect each step as a span in a Distributed Trace. This Dashboard lets you monitor your build in real-time to highlight which steps are affecting performance,\nso you can improve them faster.\n\n\n",
     "documentation": [],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.12.0/packs/gatsby-build/icon.png",
