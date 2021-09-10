@@ -45,7 +45,7 @@ const QuickstartsPage = ({ data, location }) => {
   const {
     allQuickstarts: { nodes: quickstarts },
   } = data;
-  
+
   const [filteredPacks, setFilteredPacks] = useState(quickstarts);
 
   const { queryParams } = useQueryParams();
