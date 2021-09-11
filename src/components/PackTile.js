@@ -10,15 +10,15 @@ import {
   useInstrumentedHandler,
 } from '@newrelic/gatsby-theme-newrelic';
 import PackImg from './PackImg';
-import {
-  QUICKSTART_SUPPORT_LEVELS,
-  QUICKSTART_CATALOG_VIEWS,
-} from '../data/constants';
 
-const SHIELD_LEVELS = [
-  QUICKSTART_SUPPORT_LEVELS.NEWRELIC,
-  QUICKSTART_SUPPORT_LEVELS.VERIFIED,
-];
+const LEVELS = {
+  NEWRELIC: 'NEWRELIC',
+};
+
+const VIEWS = {
+  GRID: 'Grid view',
+  LIST: 'List view',
+};
 
 const PackTile = ({
   id,
@@ -70,7 +70,7 @@ const PackTile = ({
       css={css`
         overflow: hidden;
 
-        ${view === QUICKSTART_CATALOG_VIEWS.LIST &&
+        ${view === VIEWS.LIST &&
         css`
           display: flex;
           margin-bottom: 1em;
@@ -85,11 +85,11 @@ const PackTile = ({
           height: 200px;
           background-color: var(--color-white);
           object-fit: scale-down;
-          width: ${view === QUICKSTART_CATALOG_VIEWS.GRID ? 100 : 25}%;
-          padding: 0 ${view === QUICKSTART_CATALOG_VIEWS.GRID ? 5 : 1}%;
-          margin: ${view === QUICKSTART_CATALOG_VIEWS.GRID ? 'auto' : 0};
+          width: ${view === VIEWS.GRID ? 100 : 25}%;
+          padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
+          margin: ${view === VIEWS.GRID ? 'auto' : 0};
 
-          ${view === QUICKSTART_CATALOG_VIEWS.LIST &&
+          ${view === VIEWS.LIST &&
           css`
             max-height: 150px;
 
@@ -103,7 +103,7 @@ const PackTile = ({
         css={css`
           padding: 1em;
 
-          ${view === QUICKSTART_CATALOG_VIEWS.LIST &&
+          ${view === VIEWS.LIST &&
           css`
             width: 75%;
 
@@ -114,8 +114,7 @@ const PackTile = ({
         `}
       >
         <h4>
-          {name}{' '}
-          {SHIELD_LEVELS.includes(level) && <Icon name="nr-check-shield" />}
+          {name} {level === LEVELS.NEWRELIC && <Icon name="nr-check-shield" />}
         </h4>
         <p
           css={css`
@@ -132,7 +131,7 @@ const PackTile = ({
 
 PackTile.propTypes = {
   id: PropTypes.string.isRequired,
-  view: PropTypes.oneOf(Object.values(QUICKSTART_CATALOG_VIEWS)).isRequired,
+  view: PropTypes.oneOf(Object.values(VIEWS)).isRequired,
   name: PropTypes.string.isRequired,
   fields: PropTypes.shape({
     slug: PropTypes.string.isRequired,

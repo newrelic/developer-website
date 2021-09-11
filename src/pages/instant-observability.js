@@ -2,135 +2,118 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import React, { useState, useEffect } from 'react';
 import useMobileDetect from 'use-mobile-detect-hook';
-import { useQueryParams, StringParam } from 'use-query-params';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
-import QuickstartGridList from '../components/quickstarts/QuickstartGridList';
-import { QUICKSTART_CATALOG_VIEWS } from '../data/constants';
-import MobileQSFilter from '../components/MobileQSFilter';
+import PackTile from '../components/PackTile';
+import Select from '../components/Select';
 import {
   SearchInput,
   useTessen,
+  ExternalLink,
   Button,
   Icon,
 } from '@newrelic/gatsby-theme-newrelic';
+import { navigate } from '@reach/router';
+
+import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 import { useDebounce } from 'react-use';
 
-import { useDebounce } from 'react-use';
-import { useQueryParams, StringParam } from 'use-query-params';
+const { QUICKSTARTS_REPO } = require('../data/constants');
 
-const VIEWS = [
-  {
-    label: 'Grid view',
-    value: QUICKSTART_CATALOG_VIEWS.GRID,
-  },
-  {
-    label: 'List view',
-    value: QUICKSTART_CATALOG_VIEWS.LIST,
-  },
+const FILTERS = [
+  { name: 'All', type: '', icon: 'nr-all-entities' },
+  { name: 'Dashboards', type: 'dashboards', icon: 'nr-dashboard' },
+  { name: 'Alerts', type: 'alerts', icon: 'nr-alert' },
+  { name: 'Data sources', type: 'documentation', icon: 'nr-document' },
 ];
 
-const prop = (key) => (obj) => obj[key];
-const withComponent = (packs, key) => packs.filter((p) => p[key].length > 0);
+const VIEWS = {
+  GRID: 'Grid view',
+  LIST: 'List view',
+};
+
+/**
+ * Filters a quickstart based on a provided search term.
+ * @param {String} search Search term.
+ * @returns {(Object) => Boolean} Callback function to be used by filter.
+ */
+const filterBySearch = (search) => ({ name, description }) => {
+  return (
+    !search ||
+    name.toLowerCase().includes(search.toLowerCase()) ||
+    description.toLowerCase().includes(search.toLowerCase())
+  );
+};
+
+/**
+ * Filters a quickstart based on a content type.
+ * @param {String} type The content type (e.g. 'alerts').
+ * @returns {(Object) => Boolean} Callback function to be used by filter.
+ */
+const filterByContentType = (type) => (quickstart) => {
+  return !type || (quickstart[type] && quickstart[type].length > 0);
+};
 
 const QuickstartsPage = ({ data, location }) => {
-  const tessen = useTessen();
+  const [view, setView] = useState(VIEWS.GRID);
   const detectMobile = useMobileDetect();
-  const isMobile = detectMobile.isMobile();
+  const tessen = useTessen();
 
-  const [isClient, setClient] = useState(false);
+  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('');
   useEffect(() => {
-    setClient(true);
-  }, []);
+    const params = new URLSearchParams(location.search);
+    const searchParam = params.get('search');
+    const filterParam = params.get('filter');
+    setSearch(searchParam);
+    setFilter(filterParam);
+  }, [location.search]);
 
-  const {
-    allQuickstarts: { nodes: quickstarts },
-  } = data;
+  const handleFilter = (value) => {
+    setFilter(value);
+    const params = new URLSearchParams(location.search);
+    params.set('filter', value);
+    navigate(`?${params.toString()}`);
+  };
 
-  const [view, setView] = useState(QUICKSTART_CATALOG_VIEWS.GRID);
-  useEffect(() => {
-    setView(view);
-  }, [view]);
+  const handleSearch = (value) => {
+    if (value !== null && value !== undefined) {
+      const params = new URLSearchParams(location.search);
+      params.set('search', value);
 
-  const [queryParams, setQueryParams] = useQueryParams({
-    search: StringParam,
-    filter: StringParam,
-  });
-  const [formState, setFormState] = useState({
-    search: queryParams.search || '',
-    filter: queryParams.filter || '',
-  });
+      navigate(`?${params.toString()}`);
+    }
+  };
 
-  // This is purely to prevent sending incomplete search events
-  // to tessen
   useDebounce(
     () => {
-      if (formState.search && formState.search !== '') {
-        tessen.track('observabilityPack', `packSearch`, {
-          packSearchTerm: formState.search,
-        });
-        if (typeof window !== 'undefined' && window.newrelic) {
-          window.newrelic.addPageAction('packSearch', {
-            packSearchTerm: formState.search,
-          });
-        }
-      }
+      handleSearch(search);
     },
-    1000,
-    [formState]
+    400,
+    [search]
   );
 
-  // Updates the url based on the current form state
-  useEffect(() => {
-    setQueryParams(formState, 'replace');
-  }, [formState, setQueryParams]);
+  const quickstarts = data.allQuickstarts.nodes;
 
-  let filteredPacks = quickstarts.filter(
-    (qs) =>
-      qs.name.toLowerCase().includes(formState.search.toLowerCase()) ||
-      qs.description.toLowerCase().includes(formState.search.toLowerCase())
-  );
+  const filteredQuickstarts = quickstarts
+    .filter(filterBySearch(search))
+    .filter(filterByContentType(filter));
 
-  // This array is used to populate filters with a name, value,
-  // and count of packs within each filter
-  const packContentsFilterValues = [
-    {
-      filterName: 'All',
-      filterValue: 'all',
-      filterCount: filteredPacks.length,
-      iconName: 'nr-all-entities',
-    },
-    {
-      filterName: 'Dashboards',
-      filterValue: 'dashboards',
-      filterCount: withComponent(filteredPacks, 'dashboards').length,
-      iconName: 'nr-dashboard',
-    },
-    {
-      filterName: 'Alerts',
-      filterValue: 'alerts',
-      filterCount: withComponent(filteredPacks, 'alerts').length,
-      iconName: 'nr-alerts',
-    },
-    {
-      filterName: 'Data sources',
-      filterValue: 'documentation',
-      filterCount: withComponent(filteredPacks, 'documentation').length,
-      iconName: 'nr-document',
-    },
-  ];
-
-  if (
-    formState.filter !== 'all' &&
-    packContentsFilterValues.map(prop('filterValue')).includes(formState.filter)
-  ) {
-    filteredPacks = withComponent(filteredPacks, formState.filter);
-  }
+  const filtersWithCount = FILTERS.map((filter) => ({
+    ...filter,
+    count: quickstarts
+      .filter(filterBySearch(search))
+      .filter(filterByContentType(filter.type)).length,
+  }));
 
   return (
     <>
-      <DevSiteSeo title="Instant Observability" location={location} />
+      <DevSiteSeo
+        title="Instant Observability"
+        location={location}
+        type="quickstarts"
+      />
       <div
         css={css`
           --sidebar-width: 300px;
@@ -194,74 +177,52 @@ const QuickstartsPage = ({ data, location }) => {
               `}
             />
             <FormControl>
-              //START my code
-              {/* <Label htmlFor="packContentsFilter"> */}
-              {/*   Filter packs containing */}
-              {/* </Label> */}
-              {/* <Select */}
-              {/*   id="packContentsFilter" */}
-              {/*   value={formState.filter} */}
-              {/*   onChange={(e) => { */}
-              {/*     setFormState({ ...formState, filter: e.target.value }); */}
-              {/*     document.getElementById(e.target.id).blur(); */}
-              {/*     tessen.track('observabilityPack', `packFilter`, { */}
-              {/*       packFilterState: formState.filter, */}
-              {/*     }); */}
-              {/*   }} */}
-              {/* > */}
-              {/*   {packContentsFilterValues.map((packContentsItem) => ( */}
-              {/*     <option */}
-              {/*       key={packContentsItem.filterName} */}
-              {/*       value={packContentsItem.filterValue} */}
-              {/*     > */}
-              {/*       {`${packContentsItem.filterName} (${packContentsItem.filterCount})`} */}
-              {/*     </option> */}
-              {/*   ))} */}
-              {/* </Select> */}
-              // END my code // START LIZ CODE
-              <Label htmlFor="packContentsFilter">FILTER BY</Label>
-              {isMobile ? (
-                <MobileQSFilter
-                  setFormState={setFormState}
-                  packContains={formState.packContains}
-                  packContentsFilterValues={packContentsFilterValues}
-                />
+              <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
+              {detectMobile.isMobile() ? (
+                <Select
+                  id="quickstartFilterByType"
+                  value={filter}
+                  onChange={(e) => {
+                    const type = e.target.value;
+                    handleFilter(type);
+                  }}
+                >
+                  {filtersWithCount.map(({ name, count, type }) => (
+                    <option key={type} value={type}>
+                      {`${name} (${count})`}
+                    </option>
+                  ))}
+                </Select>
               ) : (
-                packContentsFilterValues.map(
-                  ({ filterName, filterValue, filterCount, iconName }, i) => (
-                    <Button
+                filtersWithCount.map(({ name, type, icon, count }) => (
+                  <Button
+                    type="button"
+                    key={name}
+                    onClick={() => handleFilter(type)}
+                    css={css`
+                      padding: 1rem 0;
+                      width: 100%;
+                      display: flex;
+                      justify-content: flex-start;
+                      color: var(--primary-text-color);
+                      font-weight: 100;
+                      background: ${filter === type
+                        ? 'var(--divider-color)'
+                        : 'none'};
+                    `}
+                  >
+                    <Icon
+                      name={icon}
                       css={css`
-                        padding: 1rem 0;
-                        width: 100%;
-                        display: flex;
-                        justify-content: flex-start;
-                        color: var(--primary-text-color);
-                        font-weight: 100;
-                        background: ${formState.filter === filterValue
-                          ? 'var(--divider-color)'
-                          : 'none'};
+                        fill: currentColor;
+                        stroke-width: ${name === 'All' ? 1 : 0.25};
+                        margin: 0 0.5rem;
                       `}
-                      type="button"
-                      key={i}
-                      onClick={() =>
-                        setFormState({ ...formState, filter: filterValue })
-                      }
-                    >
-                      <Icon
-                        name={iconName}
-                        css={css`
-                          fill: currentColor;
-                          stroke-width: 0.25;
-                          margin: 0 0.5rem;
-                        `}
-                      />
-                      ))}
-                      {`${filterName} (${filterCount})`}
-                    </Button>
-                  )
-                )
+                    />
+                    {`${name} (${count})`}
+                  </Button>
+                ))
               )}
-              // END LIZ CODE
             </FormControl>
           </div>
         </aside>
@@ -274,6 +235,7 @@ const QuickstartsPage = ({ data, location }) => {
           <div
             css={css`
               background-color: var(--color-neutrals-100);
+              margin: 15px 0;
               padding: 1rem;
               display: flex;
               justify-content: space-between;
@@ -305,6 +267,7 @@ const QuickstartsPage = ({ data, location }) => {
               <div
                 css={css`
                   width: 100%;
+                  margin-left: 20px;
                   input {
                     background: inherit;
                   }
@@ -312,13 +275,12 @@ const QuickstartsPage = ({ data, location }) => {
               >
                 <SearchInput
                   size={SearchInput.SIZE.LARGE}
-                  value={formState.search}
-                  placeholder="Search pack names / descriptions. Enter to search"
-                  onClear={() => {
-                    setFormState({ ...formState, search: '' });
-                  }}
+                  value={search}
+                  placeholder="Search pack names / descriptions"
+                  onClear={() => setSearch('')}
                   onChange={(e) => {
-                    setFormState({ ...formState, search: e.target.value });
+                    const value = e.target.value;
+                    setSearch(value);
                   }}
                 />
               </div>
@@ -326,11 +288,11 @@ const QuickstartsPage = ({ data, location }) => {
                 css={css`
                   display: inline-block;
                   min-width: 155px;
-                  margin-left: 1rem;
+                  margin-left: 20px;
                 `}
               >
                 <SegmentedControl
-                  items={VIEWS}
+                  items={Object.values(VIEWS)}
                   onChange={(_e, view) => {
                     setView(view);
 
@@ -342,11 +304,57 @@ const QuickstartsPage = ({ data, location }) => {
               </div>
             </div>
           </div>
-          {isClient ? (
-            <QuickstartGridList quickstarts={filteredPacks} view={view} />
-          ) : (
-            <QuickstartGridList quickstarts={quickstarts} view={view} />
-          )}
+          <div
+            css={css`
+              margin: 2em 0;
+            `}
+          >
+            <span>Showing {filteredQuickstarts.length} results</span>
+          </div>
+          <div
+            css={css`
+              display: grid;
+              grid-gap: 1rem;
+              grid-template-columns: repeat(4, 1fr);
+              grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
+
+              @media (max-width: 1450px) {
+                grid-template-columns: repeat(3, 1fr);
+              }
+
+              @media (max-width: 1180px) {
+                grid-template-columns: repeat(1, 1fr);
+              }
+
+              ${view === VIEWS.LIST &&
+              css`
+                display: initial;
+              `}
+            `}
+          >
+            <ExternalLink
+              href={QUICKSTARTS_REPO}
+              css={css`
+                text-decoration: none;
+              `}
+            >
+              <PackTile
+                css={
+                  view === VIEWS.GRID &&
+                  css`
+                    height: 100%;
+                  `
+                }
+                view={view}
+                logoUrl={BUILD_YOUR_OWN}
+                name="Build your own quickstart"
+                description="Can't find a pack with what you need? Check out our README and build your own."
+              />
+            </ExternalLink>
+            {filteredQuickstarts.map((pack) => (
+              <PackTile key={pack.id} view={view} {...pack} />
+            ))}
+          </div>
         </div>
       </div>
     </>
@@ -372,20 +380,10 @@ export const pageQuery = graphql`
         packUrl
         level
         dashboards {
-          name
-          url
           description
-        }
-        alerts {
           name
-          details
+          screenshots
           url
-          type
-        }
-        documentation {
-          name
-          url
-          description
         }
         alerts {
           details

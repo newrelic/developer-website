@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import DEFAULT_IMAGE from '../images/default-logo-background.svg';
 
-const createPackAcronym = (name) =>
-  name.split(' ').reduce((acc, word) => `${acc}${word.charAt(0)}`, '');
-
 const PackImg = ({ className, logoUrl, packName }) => {
-  const packAcronym = createPackAcronym(packName);
+  const [packAcronym, setPackAcronym] = useState('');
+
+  const getPackNameAcronym = () => {
+    let packNameAcronym = '';
+    packName.split(' ').forEach((word) => {
+      packNameAcronym = packNameAcronym.concat('', word.charAt(0));
+    });
+    setPackAcronym(packNameAcronym.toUpperCase());
+  };
+  useEffect(() => {
+    if (!logoUrl) {
+      getPackNameAcronym();
+    }
+  });
 
   if (logoUrl) {
     return (
@@ -41,7 +51,7 @@ const PackImg = ({ className, logoUrl, packName }) => {
         align-items: center;
       `}
     >
-      <p>{packAcronym.toUpperCase()}</p>
+      <p>{packAcronym}</p>
     </div>
   );
 };

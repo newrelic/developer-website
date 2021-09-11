@@ -49,11 +49,6 @@ export const QUICKSTART_ALERT_TYPES = {
   STATIC: 'STATIC',
 };
 
-export const QUICKSTART_CATALOG_VIEWS = {
-  GRID: 'GRID',
-  LIST: 'LIST',
-};
-
 export const QUICKSTARTS_REPO =
   'https://github.com/newrelic/newrelic-observability-packs';
 
