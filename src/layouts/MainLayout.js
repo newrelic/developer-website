@@ -10,6 +10,7 @@ import {
   Navigation,
   NavItem,
   SearchInput,
+  NR_SITES,
 } from '@newrelic/gatsby-theme-newrelic';
 import { Link } from 'gatsby';
 import '../components/styles.scss';
@@ -32,7 +33,7 @@ const MainLayout = ({ children, pageContext }) => {
 
   return (
     <>
-      <GlobalHeader />
+      <GlobalHeader activeSite={NR_SITES.DEVELOPER} />
       <MobileHeader>
         <Navigation searchTerm={searchTerm}>
           {pages.map((page, idx) => (
