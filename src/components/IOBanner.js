@@ -17,6 +17,10 @@ const IOBanner = () => {
       <img
         css={css`
           width: 100%;
+          @media (max-width: 500px) {
+            height: 150px;
+            object-fit: cover;
+          }
         `}
         src={ioBanner}
         alt="New Relic IO"
@@ -28,7 +32,7 @@ const IOBanner = () => {
           width: 45%;
           color: var(--color-white);
           margin: 0;
-          top: 15%;
+          top: ${!isMobile ? '25%' : '15%'};
           left: 5%;
         `}
       >
@@ -36,9 +40,6 @@ const IOBanner = () => {
           css={css`
             color: var(--color-white);
             font-size: ${isMobile ? '1rem' : '1.5vw'};
-            @media (max-width: 500px) {
-              margin-bottom: 10px;
-            }
           `}
         >
           Instant observability
@@ -62,7 +63,7 @@ const IOBanner = () => {
             background: none;
             border: solid var(--color-neutrals-100) 1px;
             @media (max-width: 500px) {
-              width: 45%;
+              width: 55%;
               font-size: 0.65rem;
             }
           `}
