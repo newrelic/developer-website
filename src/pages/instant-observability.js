@@ -208,7 +208,11 @@ const QuickstartsPage = ({ data, location }) => {
               `}
               to="/instant-observability"
             >
-              <IOLogo />
+              <IOLogo
+                css={css`
+                  width: 100%;
+                `}
+              />
             </Link>
             <p>
               A place to find quickstarts of resources like dashboards,
