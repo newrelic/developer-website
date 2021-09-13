@@ -68,12 +68,20 @@ const QuickstartsPage = ({ data, location }) => {
     const filterParam = params.get('filter');
     setSearch(searchParam);
     setFilter(filterParam);
+
+    if (searchParam || filterParam) {
+      tessen.track('InstantObservability', 'quickstartsCatalog', {
+        filter: filterParam,
+        search: searchParam,
+      });
+    }
   }, [location.search]);
 
   const handleFilter = (value) => {
     setFilter(value);
     const params = new URLSearchParams(location.search);
     params.set('filter', value);
+
     navigate(`?${params.toString()}`);
   };
 
@@ -275,7 +283,7 @@ const QuickstartsPage = ({ data, location }) => {
               >
                 <SearchInput
                   size={SearchInput.SIZE.LARGE}
-                  value={search}
+                  value={search || ''}
                   placeholder="Search pack names / descriptions"
                   onClear={() => setSearch('')}
                   onChange={(e) => {
