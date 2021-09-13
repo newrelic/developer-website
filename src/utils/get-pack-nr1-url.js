@@ -4,7 +4,7 @@ import {
   NR1_PACK_DETAILS_NERDLET,
 } from '../data/constants';
 
-const NERDLET_PATH = `nerdlet/${NR1_PACK_DETAILS_NERDLET}`;
+const NERDLET_PATH = `launcher/nr1-core.explorer/`;
 
 /**
  * @param {string} packId The ID for an observability pack.
