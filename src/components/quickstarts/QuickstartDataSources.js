@@ -13,8 +13,8 @@ const QuickstartDataSources = ({ quickstart }) => (
       `}
     >
       {quickstart.name} observability quickstart contains{' '}
-      {pluralize('data source', quickstart.documentation?.length ?? 0, true)}.
-      A data source is the location where data that is being used originates from.{' '}
+      {pluralize('data source', quickstart.documentation?.length ?? 0, true)}. A
+      data source is the location where data that is being used originates from.{' '}
     </Intro>
 
     <div
