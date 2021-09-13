@@ -20,8 +20,8 @@ const MobileQSFilter = ({
           packContains: e.target.value,
         }));
         document.getElementById(e.target.id).blur();
-        tessen.track('observabilityPack', `packFilter`, {
-          packFilterState: packContains,
+        tessen.track('quickstart', `QuickstartFilter`, {
+          quickstartFilterState: packContains,
         });
       }}
     >

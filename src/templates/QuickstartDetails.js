@@ -12,7 +12,6 @@ import {
   Layout,
   PageTools,
   useTessen,
-  useInstrumentedHandler,
   Button,
   Icon,
   Link,
@@ -31,8 +30,8 @@ import {
 import QuickstartOverview from '../components/quickstarts/QuickstartOverview';
 
 const QuickstartDetails = ({ data, location }) => {
-  const pack = data.quickstarts;
-  const packUrl = pack.packUrl || QUICKSTARTS_REPO;
+  const quickstart = data.quickstarts;
+  const quickstartUrl = quickstart.packUrl || QUICKSTARTS_REPO;
   const tessen = useTessen();
   const breadcrumbs = [
     {
@@ -40,37 +39,92 @@ const QuickstartDetails = ({ data, location }) => {
       url: '/instant-observability/',
     },
     {
-      name: pack.name,
+      name: quickstart.name,
     },
   ];
-  const handleInstallClick = useInstrumentedHandler(
-    () => {
-      tessen.track('observabilityPack', 'packInstall', {
-        packName: pack.name,
-        packId: pack.id,
-      });
-    },
+  const quickStartMeta = [
     {
-      actionName: 'packInstall',
-      packName: pack.name,
-      packId: pack.id,
-    }
-  );
+      name: 'quick_start_name',
+      class: 'swiftype',
+      'data-type': 'string',
+      content: quickstart.title,
+    },
+  ];
+
+  const handleInstallClick = () =>
+    tessen.track('quickstart', 'QuickstartInstall', {
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+      quickstartUrl: quickstart.packUrl,
+    });
+
+  const viewRepoClick = () =>
+    tessen.track('quickstart', 'QuickstartViewRepoClick', {
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+      quickstartUrl: quickstart.packUrl,
+    });
 
   return (
     <>
-      <DevSiteSeo title={pack.name} location={location} />
+      <DevSiteSeo
+        title={quickstart.name}
+        type="quickstarts"
+        location={location}
+        meta={quickStartMeta}
+      />
       <Breadcrumbs segments={breadcrumbs} />
       <Tabs>
-        <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
+        <PageLayout
+          type={PageLayout.TYPE.RELATED_CONTENT_TABS}
+          css={css`
+            grid-template-columns: minmax(0, 1fr) 360px;
+            margin-top: 1rem;
+          `}
+        >
           <PageLayout.Header
-            title={pack.name}
+            title={quickstart.name}
             css={css`
               border-bottom: none;
-              gap: 1rem;
+              display: grid;
+              padding-bottom: 0;
+              grid-template-areas: 'title logo' 'desc logo';
+              grid-column-gap: 1rem;
+
+              h1 {
+                font-weight: normal;
+                grid-area: title;
+              }
             `}
           >
-            <InstallButton quickstart={pack} onClick={handleInstallClick} />
+            {quickstart.logoUrl && (
+              <img
+                src={quickstart.logoUrl}
+                alt={quickstart.title}
+                css={css`
+                  max-height: 5rem;
+                  grid-area: logo;
+                  align-self: center;
+
+                  .dark-mode & {
+                    background-color: white;
+                  }
+
+                  @media (max-width: 760px) {
+                    display: none;
+                  }
+                `}
+              />
+            )}
+            {quickstart.description && (
+              <p
+                css={css`
+                  grid-area: desc;
+                `}
+              >
+                {quickstart.description}
+              </p>
+            )}
           </PageLayout.Header>
           <Tabs.Bar
             css={css`
@@ -86,17 +140,20 @@ const QuickstartDetails = ({ data, location }) => {
             `}
           >
             <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
-            <Tabs.BarItem id="dashboards" count={pack.dashboards?.length ?? 0}>
+            <Tabs.BarItem
+              id="dashboards"
+              count={quickstart.dashboards?.length ?? 0}
+            >
               Dashboards
             </Tabs.BarItem>
-            <Tabs.BarItem id="alerts" count={pack.alerts?.length ?? 0}>
+            <Tabs.BarItem id="alerts" count={quickstart.alerts?.length ?? 0}>
               Alerts
             </Tabs.BarItem>
             <Tabs.BarItem
               id="data-sources"
               count={
-                (pack.instrumentation?.length ?? 0) +
-                (pack.documentation?.length ?? 0)
+                (quickstart.instrumentation?.length ?? 0) +
+                (quickstart.documentation?.length ?? 0)
               }
             >
               Data sources
@@ -105,37 +162,37 @@ const QuickstartDetails = ({ data, location }) => {
           <Layout.Content>
             <Tabs.Pages>
               <Tabs.Page id="overview">
-                <QuickstartOverview quickstart={pack} />
+                <QuickstartOverview quickstart={quickstart} />
               </Tabs.Page>
               <Tabs.Page id="dashboards">
-                {pack.dashboards ? (
-                  <QuickstartDashboards quickstart={pack} />
+                {quickstart.dashboards ? (
+                  <QuickstartDashboards quickstart={quickstart} />
                 ) : (
                   <EmptyTab
-                    quickstartUrl={pack.packUrl}
-                    quickstartName={pack.name}
+                    quickstartUrl={quickstart.packUrl}
+                    quickstartName={quickstart.name}
                     tabName="dashboards"
                   />
                 )}
               </Tabs.Page>
               <Tabs.Page id="alerts">
-                {pack.alerts ? (
-                  <QuickstartAlerts quickstart={pack} />
+                {quickstart.alerts ? (
+                  <QuickstartAlerts quickstart={quickstart} />
                 ) : (
                   <EmptyTab
-                    quickstartUrl={pack.packUrl}
-                    quickstartName={pack.name}
+                    quickstartUrl={quickstart.packUrl}
+                    quickstartName={quickstart.name}
                     tabName="alerts"
                   />
                 )}
               </Tabs.Page>
               <Tabs.Page id="data-sources">
-                {pack.documentation ? (
-                  <QuickstartDataSources quickstart={pack} />
+                {quickstart.documentation ? (
+                  <QuickstartDataSources quickstart={quickstart} />
                 ) : (
                   <EmptyTab
-                    quickstartUrl={pack.packUrl}
-                    quickstartName={pack.name}
+                    quickstartUrl={quickstart.packUrl}
+                    quickstartName={quickstart.name}
                     tabName="data sources"
                   />
                 )}
@@ -155,13 +212,35 @@ const QuickstartDetails = ({ data, location }) => {
                 background-color: var(--divider-color);
               `}
             >
-              <div>
+              <div
+                css={css`
+                  display: flex;
+                  justify-content: center;
+                  @media (max-width: 1240px) {
+                    justify-content: flex-start;
+                  }
+                  @media (max-width: 760px) {
+                    flex-direction: column;
+                    align-items: stretch;
+                  }
+                `}
+              >
+                <InstallButton
+                  quickstart={quickstart}
+                  onClick={handleInstallClick}
+                />
                 <Button
                   as={Link}
-                  variant={Button.VARIANT.PRIMARY}
-                  to={packUrl}
+                  variant={Button.VARIANT.OUTLINE}
+                  to={quickstartUrl}
                   rel="noopener noreferrer"
-                  instrumentation={{ packName: pack.name }}
+                  css={css`
+                    margin: 0 0 0 0.5rem;
+                    @media (max-width: 760px) {
+                      margin: 1rem 0 0 0;
+                    }
+                  `}
+                  onClick={viewRepoClick}
                 >
                   <Icon
                     name="fe-github"
@@ -194,7 +273,7 @@ const QuickstartDetails = ({ data, location }) => {
             </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>Authors</PageTools.Title>
-              <p>{pack.authors.join(', ')}</p>
+              <p>{quickstart.authors.join(', ')}</p>
             </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>Support</PageTools.Title>
@@ -203,11 +282,11 @@ const QuickstartDetails = ({ data, location }) => {
                   text-transform: uppercase;
                 `}
               >
-                {QUICKSTART_SUPPORT_CONTENT[`${pack.level}`].title}
+                {QUICKSTART_SUPPORT_CONTENT[`${quickstart.level}`].title}
               </h5>
               <p>
                 <Markdown>
-                  {QUICKSTART_SUPPORT_CONTENT[`${pack.level}`].content}
+                  {QUICKSTART_SUPPORT_CONTENT[`${quickstart.level}`].content}
                 </Markdown>
               </p>
             </PageTools.Section>
@@ -229,6 +308,7 @@ export const pageQuery = graphql`
   query($id: String!) {
     quickstarts(id: { eq: $id }) {
       name
+      title
       level
       id
       description

@@ -9,10 +9,8 @@ const Page = ({ index, children, id }) => {
   const isSelected =
     id === currentTab || (currentTab === undefined && index === 0);
 
-  if (!isSelected) return null;
-
   return (
-    <div role="tabpanel" aria-labelledby={id}>
+    <div role="tabpanel" aria-labelledby={id} hidden={!isSelected}>
       {children}
     </div>
   );
