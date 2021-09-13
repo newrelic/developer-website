@@ -23,11 +23,11 @@ import { sortFeaturedPacks } from '../utils/sortFeaturedPacks';
 const { QUICKSTARTS_REPO } = require('../data/constants');
 
 const packContentsFilterGroups = [
+  'Featured',
   'All',
   'Dashboards',
   'Alerts',
   'Data sources',
-  'Featured',
 ];
 
 const VIEWS = {
