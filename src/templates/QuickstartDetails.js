@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
+import Cookies from 'js-cookie';
 import DevSiteSeo from '../components/DevSiteSeo';
 import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
@@ -51,12 +52,25 @@ const QuickstartDetails = ({ data, location }) => {
     },
   ];
 
-  const handleInstallClick = () =>
+  const writeCookie = () => {
+    const currentEnvironment =
+      process.env.ENV || process.env.NODE_ENV || 'development';
+    const options = { expires: 1 /* days */ };
+    if (currentEnvironment !== 'development') {
+      options.domain = 'newrelic.com';
+    }
+
+    Cookies.set('newrelic-quickstart-id', quickstart.id, options);
+  };
+
+  const handleInstallClick = () => {
+    writeCookie();
     tessen.track('quickstart', 'QuickstartInstall', {
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,
     });
+  };
 
   const viewRepoClick = () =>
     tessen.track('quickstart', 'QuickstartViewRepoClick', {
