@@ -9,7 +9,7 @@ const IOBanner = () => {
   const isMobile = detectMobile.isMobile();
 
   return (
-    <div
+    <section
       css={css`
         position: relative;
       `}
@@ -20,6 +20,8 @@ const IOBanner = () => {
           @media (max-width: 500px) {
             height: 150px;
             object-fit: cover;
+            width: 100vw;
+            margin-left: calc(var(--site-content-padding) * -1);
           }
         `}
         src={ioBanner}
@@ -73,7 +75,7 @@ const IOBanner = () => {
           Learn more
         </Button>
       </div>
-    </div>
+    </section>
   );
 };
 
