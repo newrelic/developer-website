@@ -88,7 +88,7 @@ const QuickstartDetails = ({ data, location }) => {
               border-bottom: none;
               display: grid;
               padding-bottom: 0;
-              grid-template-areas: 'title logo' 'desc logo';
+              grid-template-areas: 'title logo' 'desc logo' 'cta logo';
               grid-column-gap: 1rem;
 
               h1 {
@@ -125,6 +125,43 @@ const QuickstartDetails = ({ data, location }) => {
                 {quickstart.description}
               </p>
             )}
+            <div
+              css={css`
+                grid-area: cta;
+                display: flex;
+                justify-content: flex-start;
+                @media (max-width: 760px) {
+                  flex-direction: column;
+                  align-items: stretch;
+                }
+              `}
+            >
+              <InstallButton
+                quickstart={quickstart}
+                onClick={handleInstallClick}
+              />
+              <Button
+                as={Link}
+                variant={Button.VARIANT.OUTLINE}
+                to={quickstartUrl}
+                rel="noopener noreferrer"
+                css={css`
+                  margin: 0 0 0 0.5rem;
+                  @media (max-width: 760px) {
+                    margin: 1rem 0 0 0;
+                  }
+                `}
+                onClick={viewRepoClick}
+              >
+                <Icon
+                  name="fe-github"
+                  css={css`
+                    margin-right: 7px;
+                  `}
+                />
+                View Repo
+              </Button>
+            </div>
           </PageLayout.Header>
           <Tabs.Bar
             css={css`
@@ -207,51 +244,6 @@ const QuickstartDetails = ({ data, location }) => {
               }
             `}
           >
-            <PageTools.Section
-              css={css`
-                background-color: var(--divider-color);
-              `}
-            >
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: center;
-                  @media (max-width: 1240px) {
-                    justify-content: flex-start;
-                  }
-                  @media (max-width: 760px) {
-                    flex-direction: column;
-                    align-items: stretch;
-                  }
-                `}
-              >
-                <InstallButton
-                  quickstart={quickstart}
-                  onClick={handleInstallClick}
-                />
-                <Button
-                  as={Link}
-                  variant={Button.VARIANT.OUTLINE}
-                  to={quickstartUrl}
-                  rel="noopener noreferrer"
-                  css={css`
-                    margin: 0 0 0 0.5rem;
-                    @media (max-width: 760px) {
-                      margin: 1rem 0 0 0;
-                    }
-                  `}
-                  onClick={viewRepoClick}
-                >
-                  <Icon
-                    name="fe-github"
-                    css={css`
-                      margin-right: 7px;
-                    `}
-                  />
-                  View Repo
-                </Button>
-              </div>
-            </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>How to use this quickstart</PageTools.Title>
               <ol>
