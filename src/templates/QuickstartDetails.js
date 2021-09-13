@@ -266,7 +266,7 @@ const QuickstartDetails = ({ data, location }) => {
                   instrumentation to get the data used in this quickstart
                 </li>
                 <li>
-                  Enjoy the dashboards, alerts, and appications filled with
+                  Enjoy the dashboards, alerts, and applications filled with
                   insights on our environment and services.
                 </li>
               </ol>
