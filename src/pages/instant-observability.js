@@ -6,6 +6,7 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
 import PackTile from '../components/PackTile';
+import IOBanner from '../components/IOBanner';
 import IOLogo from '../components/IOLogo';
 import Select from '../components/Select';
 import {
@@ -59,7 +60,7 @@ const filterByContentType = (type) => (quickstart) => {
 
 const QuickstartsPage = ({ data, location }) => {
   const [view, setView] = useState(VIEWS.GRID);
-  const detectMobile = useMobileDetect();
+  const isMobile = useMobileDetect().isMobile();
   const tessen = useTessen();
 
   const [search, setSearch] = useState('');
@@ -149,7 +150,9 @@ const QuickstartsPage = ({ data, location }) => {
           data-swiftype-index={false}
           css={css`
             grid-area: sidebar;
-            border-right: 1px solid var(--divider-color);
+            border-right: ${isMobile
+              ? 'none'
+              : '1px solid var(--divider-color)'};
             height: calc(100vh - var(--global-header-height));
             position: sticky;
             top: var(--global-header-height);
@@ -162,6 +165,8 @@ const QuickstartsPage = ({ data, location }) => {
             }
           `}
         >
+          {isMobile && <IOBanner isMobile />}
+
           <div
             css={css`
               padding: var(--site-content-padding);
@@ -189,6 +194,7 @@ const QuickstartsPage = ({ data, location }) => {
               instrumentation, and alerts to help you monitor your environment.
             </p>
             <aside
+              data-swiftype-index={false}
               css={css`
                 border-bottom: 1px solid var(--divider-color);
                 margin-bottom: 1.5rem;
@@ -196,7 +202,7 @@ const QuickstartsPage = ({ data, location }) => {
             />
             <FormControl>
               <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
-              {detectMobile.isMobile() ? (
+              {isMobile ? (
                 <Select
                   id="quickstartFilterByType"
                   value={filter}
@@ -250,6 +256,8 @@ const QuickstartsPage = ({ data, location }) => {
             padding: var(--site-content-padding);
           `}
         >
+          {!isMobile && <IOBanner />}
+
           <div
             css={css`
               background-color: var(--secondary-background-color);
