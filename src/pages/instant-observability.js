@@ -381,6 +381,7 @@ export const pageQuery = graphql`
           slug
         }
         id
+        title
         name
         websiteUrl
         logoUrl

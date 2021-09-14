@@ -23,6 +23,7 @@ const VIEWS = {
 const PackTile = ({
   id,
   view,
+  title,
   name,
   fields,
   logoUrl,
@@ -80,7 +81,7 @@ const PackTile = ({
     >
       <PackImg
         logoUrl={logoUrl}
-        packName={name}
+        packName={title || name}
         css={css`
           height: 200px;
           background-color: var(--color-white);
@@ -114,7 +115,7 @@ const PackTile = ({
         `}
       >
         <h4>
-          {name} {level === LEVELS.NEWRELIC && <Icon name="nr-check-shield" />}
+          {title} {level === LEVELS.NEWRELIC && <Icon name="nr-check-shield" />}
         </h4>
         <p
           css={css`
@@ -133,6 +134,7 @@ PackTile.propTypes = {
   id: PropTypes.string.isRequired,
   view: PropTypes.oneOf(Object.values(VIEWS)).isRequired,
   name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   fields: PropTypes.shape({
     slug: PropTypes.string.isRequired,
   }).isRequired,

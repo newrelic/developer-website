@@ -40,7 +40,7 @@ const QuickstartDetails = ({ data, location }) => {
       url: '/instant-observability/',
     },
     {
-      name: quickstart.name,
+      name: quickstart.title,
     },
   ];
   const quickStartMeta = [
@@ -82,7 +82,7 @@ const QuickstartDetails = ({ data, location }) => {
   return (
     <>
       <DevSiteSeo
-        title={quickstart.name}
+        title={quickstart.title}
         type="quickstarts"
         location={location}
         meta={quickStartMeta}
@@ -97,7 +97,7 @@ const QuickstartDetails = ({ data, location }) => {
           `}
         >
           <PageLayout.Header
-            title={quickstart.name}
+            title={quickstart.title}
             css={css`
               border-bottom: none;
               display: grid;
@@ -216,34 +216,34 @@ const QuickstartDetails = ({ data, location }) => {
                 <QuickstartOverview quickstart={quickstart} />
               </Tabs.Page>
               <Tabs.Page id="dashboards">
-                {quickstart.dashboards ? (
+                {quickstart.dashboards?.length > 0 ? (
                   <QuickstartDashboards quickstart={quickstart} />
                 ) : (
                   <EmptyTab
                     quickstartUrl={quickstart.packUrl}
-                    quickstartName={quickstart.name}
+                    quickstartName={quickstart.title}
                     tabName="dashboards"
                   />
                 )}
               </Tabs.Page>
               <Tabs.Page id="alerts">
-                {quickstart.alerts ? (
+                {quickstart.alerts?.length > 0 ? (
                   <QuickstartAlerts quickstart={quickstart} />
                 ) : (
                   <EmptyTab
                     quickstartUrl={quickstart.packUrl}
-                    quickstartName={quickstart.name}
+                    quickstartName={quickstart.title}
                     tabName="alerts"
                   />
                 )}
               </Tabs.Page>
               <Tabs.Page id="data-sources">
-                {quickstart.documentation ? (
+                {quickstart.documentation?.length > 0 ? (
                   <QuickstartDataSources quickstart={quickstart} />
                 ) : (
                   <EmptyTab
                     quickstartUrl={quickstart.packUrl}
-                    quickstartName={quickstart.name}
+                    quickstartName={quickstart.title}
                     tabName="data sources"
                   />
                 )}
