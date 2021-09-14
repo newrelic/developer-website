@@ -41,14 +41,9 @@ const QuickStartLayout = ({ children }) => {
           css={css`
             --sidebar-offset: ${getSidebarWidth()}px;
 
-            max-width: calc(
-              var(--site-max-width) - var(--site-content-padding) * 2 -
-                var(--sidebar-offset)
-            );
+            max-width: calc(var(--site-max-width) - var(--sidebar-offset));
 
-            margin-left: calc(
-              var(--sidebar-offset) + var(--site-content-padding)
-            );
+            margin-left: calc(var(--sidebar-offset));
 
             @media screen and (max-width: 760px) {
               margin-left: 0;
