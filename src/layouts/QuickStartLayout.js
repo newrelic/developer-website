@@ -9,6 +9,7 @@ const getSidebarWidth = () => {
     case !window.location:
       return 0;
     case window.location.pathname === '/instant-observability/':
+      // this value matches '--sidebar-width' variable defined in instant-observability.js
       return 300;
     default:
       return 0;
