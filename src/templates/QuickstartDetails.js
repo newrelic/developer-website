@@ -108,6 +108,7 @@ const QuickstartDetails = ({ data, location }) => {
               h1 {
                 font-weight: normal;
                 grid-area: title;
+                padding-bottom: 1rem;
               }
             `}
           >
