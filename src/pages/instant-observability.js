@@ -21,8 +21,13 @@ import { navigate } from '@reach/router';
 
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 import { useDebounce } from 'react-use';
+import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 
 const { QUICKSTARTS_REPO } = require('../data/constants');
+
+const CATEGORIES = [
+  { name: 'Featured', type: 'featured', icon: 'nr-relicans' },
+];
 
 const FILTERS = [
   { name: 'All', type: '', icon: 'nr-all-entities' },
@@ -58,6 +63,15 @@ const filterByContentType = (type) => (quickstart) => {
   return !type || (quickstart[type] && quickstart[type].length > 0);
 };
 
+/**
+ * Filters a quickstart based on a category.
+ * @param {String} type The category type (e.g. 'featured').
+ * @returns {(Object) => Boolean} Callback function to be used by filter.
+ */
+const filterByCategoryType = (type) => (quickstart) => {
+  return !type || (quickstart.keywords && quickstart.keywords.includes(type));
+};
+
 const QuickstartsPage = ({ data, location }) => {
   const [view, setView] = useState(VIEWS.GRID);
   const isMobile = useMobileDetect().isMobile();
@@ -65,17 +79,23 @@ const QuickstartsPage = ({ data, location }) => {
 
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('');
+  const [category, setCategory] = useState('');
+
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const searchParam = params.get('search');
     const filterParam = params.get('filter');
+    const categoryParam = params.get('category');
+
     setSearch(searchParam);
     setFilter(filterParam);
+    setCategory(categoryParam);
 
-    if (searchParam || filterParam) {
+    if (searchParam || filterParam || categoryParam) {
       tessen.track('instantObservability', 'CatalogSearch', {
         filter: filterParam,
         search: searchParam,
+        category: categoryParam,
       });
     }
   }, [location.search]);
@@ -97,6 +117,15 @@ const QuickstartsPage = ({ data, location }) => {
     }
   };
 
+  const handleCategory = (value) => {
+    if (value !== null && value !== undefined) {
+      const params = new URLSearchParams(location.search);
+      params.set('category', value);
+
+      navigate(`?${params.toString()}`);
+    }
+  };
+
   useDebounce(
     () => {
       handleSearch(search);
@@ -107,15 +136,19 @@ const QuickstartsPage = ({ data, location }) => {
 
   const quickstarts = data.allQuickstarts.nodes;
 
-  const filteredQuickstarts = quickstarts
+  const sortedQuickstarts = sortFeaturedQuickstarts(quickstarts);
+
+  const filteredQuickstarts = sortedQuickstarts
     .filter(filterBySearch(search))
-    .filter(filterByContentType(filter));
+    .filter(filterByContentType(filter))
+    .filter(filterByCategoryType(category));
 
   const filtersWithCount = FILTERS.map((filter) => ({
     ...filter,
     count: quickstarts
       .filter(filterBySearch(search))
-      .filter(filterByContentType(filter.type)).length,
+      .filter(filterByContentType(filter.type))
+      .filter(filterByCategoryType(category)).length,
   }));
 
   return (
@@ -200,6 +233,56 @@ const QuickstartsPage = ({ data, location }) => {
                 margin-bottom: 1.5rem;
               `}
             />
+            <FormControl>
+              <Label htmlFor="quickstartCategoryByType">Categories</Label>
+              {detectMobile.isMobile() ? (
+                <Select
+                  id="quickstartCategoryByType"
+                  value={category}
+                  onChange={(e) => {
+                    const type = e.target.value;
+                    handleCategory(type);
+                  }}
+                >
+                  {CATEGORIES.map(({ name, type }) => (
+                    <option key={type} value={type}>
+                      {`${name}`}
+                    </option>
+                  ))}
+                </Select>
+              ) : (
+                CATEGORIES.map(({ name, type, icon }) => (
+                  <Button
+                    type="button"
+                    key={name}
+                    onClick={() => handleCategory(type)}
+                    css={css`
+                      padding: 1rem 0;
+                      width: 100%;
+                      display: flex;
+                      justify-content: flex-start;
+                      color: var(--primary-text-color);
+                      font-weight: 100;
+                      background: ${category === type
+                        ? 'var(--divider-color)'
+                        : 'none'};
+                    `}
+                  >
+                    {category === 'featured' && (
+                      <Icon
+                        name={icon}
+                        css={css`
+                          fill: currentColor;
+                          stroke-width: ${name === 'All' ? 1 : 0.25};
+                          margin: 0 0.5rem;
+                        `}
+                      />
+                    )}
+                    {`${name}`}
+                  </Button>
+                ))
+              )}
+            </FormControl>
             <FormControl>
               <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
               {isMobile ? (
@@ -367,7 +450,12 @@ const QuickstartsPage = ({ data, location }) => {
               />
             </ExternalLink>
             {filteredQuickstarts.map((pack) => (
-              <PackTile key={pack.id} view={view} {...pack} />
+              <PackTile
+                key={pack.id}
+                view={view}
+                featured={pack.keywords?.includes('featured')}
+                {...pack}
+              />
             ))}
           </div>
         </div>
@@ -394,6 +482,7 @@ export const pageQuery = graphql`
         logoUrl
         packUrl
         level
+        keywords
         dashboards {
           description
           name
