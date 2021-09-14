@@ -235,7 +235,7 @@ const QuickstartsPage = ({ data, location }) => {
             />
             <FormControl>
               <Label htmlFor="quickstartCategoryByType">Categories</Label>
-              {detectMobile.isMobile() ? (
+              {useMobileDetect.isMobile() ? (
                 <Select
                   id="quickstartCategoryByType"
                   value={category}
