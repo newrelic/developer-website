@@ -1,13 +1,10 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import useMobileDetect from 'use-mobile-detect-hook';
+import PropTypes from 'prop-types';
 import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import ioBanner from '../images/ioBanner.svg';
 
-const IOBanner = () => {
-  const detectMobile = useMobileDetect();
-  const isMobile = detectMobile.isMobile();
-
+const IOBanner = ({ isMobile }) => {
   return (
     <section
       css={css`
@@ -49,7 +46,7 @@ const IOBanner = () => {
         <p
           css={css`
             font-size: 0.75vw;
-            @media screen and (max-width: 1180px) {
+            @media screen and (max-width: 1280px) {
               display: none;
             }
           `}
@@ -64,7 +61,7 @@ const IOBanner = () => {
             color: var(--color-neutrals-100);
             background: none;
             border: solid var(--color-neutrals-100) 1px;
-            @media (max-width: 500px) {
+            @media (max-width: 850px) {
               width: 55%;
               font-size: 0.65rem;
             }
@@ -77,6 +74,10 @@ const IOBanner = () => {
       </div>
     </section>
   );
+};
+
+IOBanner.propTypes = {
+  isMobile: PropTypes.bool,
 };
 
 export default IOBanner;

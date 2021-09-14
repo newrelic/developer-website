@@ -60,7 +60,7 @@ const filterByContentType = (type) => (quickstart) => {
 
 const QuickstartsPage = ({ data, location }) => {
   const [view, setView] = useState(VIEWS.GRID);
-  const isMobile = useMobileDetect().isMobile;
+  const isMobile = useMobileDetect().isMobile();
   const tessen = useTessen();
 
   const [search, setSearch] = useState('');
@@ -165,7 +165,7 @@ const QuickstartsPage = ({ data, location }) => {
             }
           `}
         >
-          {isMobile && <IOBanner />}
+          {isMobile && <IOBanner isMobile />}
 
           <div
             css={css`
