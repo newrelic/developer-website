@@ -9,6 +9,7 @@ const IOBanner = ({ isMobile }) => {
     <section
       css={css`
         position: relative;
+        margin-bottom: 2rem;
       `}
     >
       <img
