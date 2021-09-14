@@ -28,25 +28,28 @@ const IOBanner = ({ isMobile }) => {
         css={css`
           position: absolute;
           height: 0;
-          width: 45%;
+          width: 40%;
           color: var(--color-white);
           margin: 0;
-          top: ${!isMobile ? '25%' : '15%'};
+          top: ${isMobile ? '25%' : '15%'};
           left: 5%;
         `}
       >
         <h1
           css={css`
             color: var(--color-white);
-            font-size: ${isMobile ? '1rem' : '1.5vw'};
+            font-size: ${isMobile ? '1rem' : 'max(.85rem, 1.5vw)'};
           `}
         >
           Instant observability
         </h1>
         <p
           css={css`
-            font-size: 0.75vw;
-            @media screen and (max-width: 1280px) {
+            font-size: max(12px, 0.75vw);
+            @media screen and (max-width: 1303px) {
+              margin-bottom: 0.3rem;
+            }
+            @media screen and (max-width: 1250px) {
               display: none;
             }
           `}
