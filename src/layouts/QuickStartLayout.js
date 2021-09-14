@@ -38,13 +38,16 @@ const QuickStartLayout = ({ children }) => {
         </Layout.Main>
         <Layout.Footer
           css={css`
-            --left-margin: ${getSidebarWidth()}px;
+            --sidebar-offset: ${getSidebarWidth()}px;
 
             max-width: calc(
-              var(--site-max-width) - var(--site-content-padding) -
-                var(--left-margin)
+              var(--site-max-width) - var(--site-content-padding) * 2 -
+                var(--sidebar-offset)
             );
-            margin-left: var(--left-margin);
+
+            margin-left: calc(
+              var(--sidebar-offset) + var(--site-content-padding)
+            );
 
             @media screen and (max-width: 760px) {
               margin-left: 0;
