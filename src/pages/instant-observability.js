@@ -73,7 +73,7 @@ const QuickstartsPage = ({ data, location }) => {
     setFilter(filterParam);
 
     if (searchParam || filterParam) {
-      tessen.track('InstantObservability', 'QuickstartsCatalog', {
+      tessen.track('instantObservability', 'CatalogSearch', {
         filter: filterParam,
         search: searchParam,
       });
@@ -310,7 +310,7 @@ const QuickstartsPage = ({ data, location }) => {
                 onChange={(_e, view) => {
                   setView(view);
 
-                  tessen.track('InstantObservability', `QuickstartViewToggle`, {
+                  tessen.track('instantObservability', `QuickstartViewToggle`, {
                     quickstartViewState: view,
                   });
                 }}

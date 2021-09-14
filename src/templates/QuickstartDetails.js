@@ -65,7 +65,7 @@ const QuickstartDetails = ({ data, location }) => {
 
   const handleInstallClick = () => {
     writeCookie();
-    tessen.track('quickstart', 'QuickstartInstall', {
+    tessen.track('instantObservability', 'QuickstartInstall', {
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,
@@ -73,7 +73,7 @@ const QuickstartDetails = ({ data, location }) => {
   };
 
   const viewRepoClick = () =>
-    tessen.track('quickstart', 'QuickstartViewRepoClick', {
+    tessen.track('instantObservability', 'QuickstartViewRepoClick', {
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,
