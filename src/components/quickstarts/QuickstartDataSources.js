@@ -14,7 +14,7 @@ const QuickstartDataSources = ({ quickstart }) => (
     >
       {quickstart.name} observability quickstart contains{' '}
       {pluralize('data source', quickstart.documentation?.length ?? 0, true)}.
-      This is how your get your data into New Relic.{' '}
+      This is how you'll get your data into New Relic.{' '}
     </Intro>
 
     <div
