@@ -9,7 +9,7 @@ const IOBanner = ({ isMobile }) => {
     <section
       css={css`
         position: relative;
-        margin-bottom: 2rem;
+        margin-bottom: ${isMobile ? 0 : '2rem'};
       `}
     >
       <img
@@ -19,7 +19,6 @@ const IOBanner = ({ isMobile }) => {
             height: 150px;
             object-fit: cover;
             width: 100vw;
-            margin-left: calc(var(--site-content-padding) * -1);
           }
         `}
         src={ioBanner}
