@@ -26,38 +26,38 @@ const PackTile = ({
   name,
   fields,
   logoUrl,
-  description,
   level,
   className,
+  summary,
 }) => {
   const tessen = useTessen();
 
   const handlePackClick = useInstrumentedHandler(
     () => {
-      tessen.track('observabilityPack', 'observabilityPackClick', {
+      tessen.track('quickstart', 'QuickstartClick', {
         publicCatalogView: view,
-        packName: name,
+        quickstartName: name,
       });
       navigate(fields.slug);
     },
     {
-      actionName: 'observabilityPackClick',
+      actionName: 'QuickstartClick',
       publicCatalogView: view,
-      packName: name,
+      quickstartName: name,
     }
   );
 
   const handleBuildTileClick = useInstrumentedHandler(
     () => {
-      tessen.track('observabilityPack', 'buildYourOwnObservabilityPackClick', {
+      tessen.track('quickstart', 'BuildYourOwnQuickstartClick', {
         publicCatalogView: view,
-        packName: name,
+        quickstartName: name,
       });
     },
     {
-      actionName: 'buildYourOwnObservabilityPackClick',
+      actionName: 'BuildYourOwnQuickstartClick',
       publicCatalogView: view,
-      packName: name,
+      quickstartName: name,
     }
   );
 
@@ -122,7 +122,7 @@ const PackTile = ({
             color: var(--secondary-text-color);
           `}
         >
-          {description}
+          {summary}
         </p>
       </div>
     </Surface>
@@ -137,7 +137,7 @@ PackTile.propTypes = {
     slug: PropTypes.string.isRequired,
   }).isRequired,
   logoUrl: PropTypes.string,
-  description: PropTypes.string,
+  summary: PropTypes.string,
   level: PropTypes.string,
   className: PropTypes.string,
 };
