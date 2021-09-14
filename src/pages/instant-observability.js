@@ -57,11 +57,16 @@ const filterBySearch = (search) => ({ name, description }) => {
  * @returns {(Object) => Boolean} Callback function to be used by filter.
  */
 const filterByContentType = (type) => (quickstart) => {
-  return (
-    !type ||
-    (quickstart[type] && quickstart[type].length > 0) ||
-    (quickstart.keywords && quickstart.keywords.includes(type))
-  );
+  return !type || (quickstart[type] && quickstart[type].length > 0);
+};
+
+/**
+ * Filters a quickstart based on a category.
+ * @param {String} type The category type (e.g. 'featured').
+ * @returns {(Object) => Boolean} Callback function to be used by filter.
+ */
+const filterByCategoryType = (type) => (quickstart) => {
+  return !type || (quickstart.keywords && quickstart.keywords.includes(type));
 };
 
 const QuickstartsPage = ({ data, location }) => {
@@ -133,14 +138,14 @@ const QuickstartsPage = ({ data, location }) => {
   const filteredQuickstarts = sortedQuickstarts
     .filter(filterBySearch(search))
     .filter(filterByContentType(filter))
-    .filter(filterByContentType(category));
+    .filter(filterByCategoryType(category));
 
   const filtersWithCount = FILTERS.map((filter) => ({
     ...filter,
     count: quickstarts
       .filter(filterBySearch(search))
       .filter(filterByContentType(filter.type))
-      .filter(filterByContentType(category)).length,
+      .filter(filterByCategoryType(category)).length,
   }));
 
   return (
