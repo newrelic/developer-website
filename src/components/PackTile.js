@@ -36,7 +36,7 @@ const PackTile = ({
 
   const handlePackClick = useInstrumentedHandler(
     () => {
-      tessen.track('quickstart', 'QuickstartClick', {
+      tessen.track('instantObservability', 'QuickstartClick', {
         publicCatalogView: view,
         quickstartName: name,
       });
@@ -51,7 +51,7 @@ const PackTile = ({
 
   const handleBuildTileClick = useInstrumentedHandler(
     () => {
-      tessen.track('quickstart', 'BuildYourOwnQuickstartClick', {
+      tessen.track('instantObservability', 'BuildYourOwnQuickstartClick', {
         publicCatalogView: view,
         quickstartName: name,
       });
