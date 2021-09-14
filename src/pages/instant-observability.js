@@ -68,7 +68,7 @@ const filterByContentType = (type) => (quickstart) => {
  * @param {String} type The category type (e.g. 'featured').
  * @returns {(Object) => Boolean} Callback function to be used by filter.
  */
-const filterByCategoryType = (type) => (quickstart) => {
+const filterByCategory = (type) => (quickstart) => {
   return !type || (quickstart.keywords && quickstart.keywords.includes(type));
 };
 
@@ -141,14 +141,14 @@ const QuickstartsPage = ({ data, location }) => {
   const filteredQuickstarts = sortedQuickstarts
     .filter(filterBySearch(search))
     .filter(filterByContentType(filter))
-    .filter(filterByCategoryType(category));
+    .filter(filterByCategory(category));
 
   const filtersWithCount = FILTERS.map((filter) => ({
     ...filter,
     count: quickstarts
       .filter(filterBySearch(search))
       .filter(filterByContentType(filter.type))
-      .filter(filterByCategoryType(category)).length,
+      .filter(filterByCategory(category)).length,
   }));
 
   return (
@@ -235,7 +235,7 @@ const QuickstartsPage = ({ data, location }) => {
             />
             <FormControl>
               <Label htmlFor="quickstartCategoryByType">Categories</Label>
-              {detectMobile.isMobile() ? (
+              {isMobile ? (
                 <Select
                   id="quickstartCategoryByType"
                   value={category}
