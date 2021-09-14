@@ -91,7 +91,7 @@ const PackTile = ({
           object-fit: scale-down;
           width: ${view === VIEWS.GRID ? 100 : 25}%;
           padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
-          margin: 10px auto 10px auto;
+          margin: 10px auto;
 
           ${view === VIEWS.LIST &&
           css`
