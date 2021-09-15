@@ -288,7 +288,7 @@ const QuickstartsPage = ({ data, location }) => {
                       key={value}
                       onClick={() => handleCategory(value)}
                       css={css`
-                        padding: 0.75rem 0;
+                        padding: 1rem 0.5rem;
                         width: 100%;
                         display: flex;
                         justify-content: flex-start;
