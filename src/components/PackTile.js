@@ -81,7 +81,7 @@ const PackTile = ({
     >
       <PackImg
         logoUrl={logoUrl}
-        packName={title || name}
+        packName={title}
         css={css`
           height: 200px;
           background-color: var(--color-white);
