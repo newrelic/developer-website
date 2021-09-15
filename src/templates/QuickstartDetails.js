@@ -30,6 +30,22 @@ import {
 } from '../data/constants';
 import QuickstartOverview from '../components/quickstarts/QuickstartOverview';
 
+const allowedElements = [
+  'h1',
+  'h2',
+  'h3',
+  'ol',
+  'ul',
+  'li',
+  'p',
+  'blockquote',
+  'code',
+  'a',
+  'strong',
+  'em',
+  'hr',
+];
+
 const QuickstartDetails = ({ data, location }) => {
   const quickstart = data.quickstarts;
   const quickstartUrl = quickstart.packUrl || QUICKSTARTS_REPO;
@@ -132,13 +148,15 @@ const QuickstartDetails = ({ data, location }) => {
               />
             )}
             {quickstart.description && (
-              <p
+              <Markdown
+                skipHtml
+                allowedElements={allowedElements}
                 css={css`
                   grid-area: desc;
                 `}
               >
                 {quickstart.description}
-              </p>
+              </Markdown>
             )}
             <div
               css={css`
