@@ -108,6 +108,7 @@ const QuickstartDetails = ({ data, location }) => {
               h1 {
                 font-weight: normal;
                 grid-area: title;
+                padding-bottom: 1rem;
               }
             `}
           >
@@ -263,17 +264,14 @@ const QuickstartDetails = ({ data, location }) => {
               <ol>
                 <li>
                   <Link to={SIGNUP_LINK}>Sign Up</Link> for a free New Relic
-                  account (or <Link to={LOGIN_LINK}>Log In</Link> to your
-                  existing account)
+                  account or <Link to={LOGIN_LINK}>Log In</Link> to your
+                  existing account.
                 </li>
-                <li>Click the green install button above</li>
+                <li>Click the green install button above.</li>
                 <li>
-                  Follow the instructions to install the necessary
-                  instrumentation to get the data used in this quickstart
-                </li>
-                <li>
-                  Enjoy the dashboards, alerts, and applications filled with
-                  insights on our environment and services.
+                  Install the quickstart to get started or improve how you
+                  monitor your environment. They’re filled with pre-built
+                  resources like dashboards, instrumentation, and alerts.
                 </li>
               </ol>
             </PageTools.Section>
