@@ -23,6 +23,7 @@ const VIEWS = {
 
 const PackTile = ({
   id,
+  title,
   view,
   featured,
   name,
