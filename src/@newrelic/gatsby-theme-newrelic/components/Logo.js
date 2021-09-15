@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import IOLogo from '../../../components/IOLogo';
@@ -41,10 +41,15 @@ const Logo = ({ className, width }) => {
     <IOLogo className={className} width={width} />
   );
 
-  return window.location &&
-    window.location.href.includes('instant-observability')
-    ? instantObservabilityLogo
-    : developerLogo;
+  const [logo, setLogo] = useState(developerLogo);
+
+  useEffect(() => {
+    if (window.location.pathname.includes('instant-observability')) {
+      setLogo(instantObservabilityLogo);
+    }
+  }, []);
+
+  return logo;
 };
 
 Logo.propTypes = {
