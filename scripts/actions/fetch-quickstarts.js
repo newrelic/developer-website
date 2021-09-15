@@ -53,6 +53,7 @@ const quickstartQuery = `# gql
               name
               summary
               websiteUrl
+              keywords
             }
           }
         }
