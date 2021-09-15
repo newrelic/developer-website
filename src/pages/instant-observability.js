@@ -24,10 +24,7 @@ import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 
 const { QUICKSTARTS_REPO } = require('../data/constants');
-
-const CATEGORIES = [
-  { name: 'Featured', type: 'featured', icon: 'nr-relicans' },
-];
+const CATEGORIES = require('../data/instant-observability-categories');
 
 const FILTERS = [
   { name: 'All', type: '', icon: 'nr-all-entities' },
@@ -65,11 +62,19 @@ const filterByContentType = (type) => (quickstart) => {
 
 /**
  * Filters a quickstart based on a category.
- * @param {String} type The category type (e.g. 'featured').
+ * @param {String} category The category type (e.g. 'featured').
  * @returns {(Object) => Boolean} Callback function to be used by filter.
  */
-const filterByCategory = (type) => (quickstart) => {
-  return !type || (quickstart.keywords && quickstart.keywords.includes(type));
+const filterByCategory = (category) => {
+  const associatedKeywords = CATEGORIES.find((cat) => cat.value === category)
+    ?.associatedKeywords;
+  const isValidCategory = category && associatedKeywords;
+  return (quickstart) => {
+    return (
+      !isValidCategory ||
+      (quickstart.keywords && quickstart.keywords.includes(category))
+    );
+  };
 };
 
 const QuickstartsPage = ({ data, location }) => {
@@ -233,56 +238,52 @@ const QuickstartsPage = ({ data, location }) => {
                 margin-bottom: 1.5rem;
               `}
             />
-            <FormControl>
-              <Label htmlFor="quickstartCategoryByType">Categories</Label>
-              {isMobile ? (
-                <Select
-                  id="quickstartCategoryByType"
-                  value={category}
-                  onChange={(e) => {
-                    const type = e.target.value;
-                    handleCategory(type);
-                  }}
-                >
-                  {CATEGORIES.map(({ name, type }) => (
-                    <option key={type} value={type}>
-                      {`${name}`}
-                    </option>
-                  ))}
-                </Select>
-              ) : (
-                CATEGORIES.map(({ name, type, icon }) => (
-                  <Button
-                    type="button"
-                    key={name}
-                    onClick={() => handleCategory(type)}
-                    css={css`
-                      padding: 1rem 0;
-                      width: 100%;
-                      display: flex;
-                      justify-content: flex-start;
-                      color: var(--primary-text-color);
-                      font-weight: 100;
-                      background: ${category === type
-                        ? 'var(--divider-color)'
-                        : 'none'};
-                    `}
+            <div
+              css={css`
+                margin-bottom: 1rem;
+              `}
+            >
+              <FormControl>
+                <Label htmlFor="quickstartCategory">CATEGORIES</Label>
+                {isMobile ? (
+                  <Select
+                    id="quickstartCategory"
+                    value={category}
+                    onChange={(e) => {
+                      const type = e.target.value;
+                      handleCategory(type);
+                    }}
                   >
-                    {category === 'featured' && (
-                      <Icon
-                        name={icon}
-                        css={css`
-                          fill: currentColor;
-                          stroke-width: ${name === 'All' ? 1 : 0.25};
-                          margin: 0 0.5rem;
-                        `}
-                      />
-                    )}
-                    {`${name}`}
-                  </Button>
-                ))
-              )}
-            </FormControl>
+                    {CATEGORIES.map(({ displayName, value }) => (
+                      <option key={value} value={value}>
+                        {`${displayName}`}
+                      </option>
+                    ))}
+                  </Select>
+                ) : (
+                  CATEGORIES.map(({ displayName, value }) => (
+                    <Button
+                      type="button"
+                      key={value}
+                      onClick={() => handleCategory(value)}
+                      css={css`
+                        padding: 0.75rem 0;
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-start;
+                        color: var(--primary-text-color);
+                        font-weight: 100;
+                        background: ${category === value
+                          ? 'var(--divider-color)'
+                          : 'none'};
+                      `}
+                    >
+                      {`${displayName}`}
+                    </Button>
+                  ))
+                )}
+              </FormControl>
+            </div>
             <FormControl>
               <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
               {isMobile ? (

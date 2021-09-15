@@ -1,0 +1,89 @@
+[
+  {
+    "value": "featured",
+    "displayName": "Featured",
+    "associatedKeywords": [
+      "featured"
+    ]
+  },
+  {
+    "value": "apm-application-monitoring",
+    "displayName": "APM (Application monitoring)",
+    "associatedKeywords": [
+      "language agent"
+    ]
+  },
+  {
+    "value": "infrastructure-and-os",
+    "displayName": "Infrastructure & OS",
+    "associatedKeywords": [
+      "os",
+      "infrastructure"
+    ]
+  },
+  {
+    "value": "browser-and-mobile",
+    "displayName": "Browser & Mobile",
+    "associatedKeywords": [
+      "browser agent",
+      "mobile agent"
+    ]
+  },
+  {
+    "value": "simulate-traffic",
+    "displayName": "Simulate traffic",
+    "associatedKeywords": [
+      "synthetics"
+    ]
+  },
+  {
+    "value": "logging",
+    "displayName": "Logging",
+    "associatedKeywords": [
+      "logs"
+    ]
+  },
+  {
+    "value": "kubernetes-and-containers",
+    "displayName": "Kubernetes & Containers",
+    "associatedKeywords": [
+      "kubernetes",
+      "containers"
+    ]
+  },
+  {
+    "value": "aws-amazon-web-services",
+    "displayName": "AWS (Amazon Web Services)",
+    "associatedKeywords": [
+      "aws"
+    ]
+  },
+  {
+    "value": "azure",
+    "displayName": "Azure",
+    "associatedKeywords": [
+      "azure"
+    ]
+  },
+  {
+    "value": "gcp-google-cloud-platform",
+    "displayName": "GCP (Google Cloud Platform)",
+    "associatedKeywords": [
+      "gcp"
+    ]
+  },
+  {
+    "value": "open-source-monitoring",
+    "displayName": "Open source monitoring",
+    "associatedKeywords": [
+      "open source monitoring"
+    ]
+  },
+  {
+    "value": "mlops",
+    "displayName": "MLOps",
+    "associatedKeywords": [
+      "mlops"
+    ]
+  }
+]
