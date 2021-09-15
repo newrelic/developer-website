@@ -1,5 +1,10 @@
 [
   {
+    "value": "",
+    "displayName": "All",
+    "associatedKeywords": []
+  },
+  {
     "value": "featured",
     "displayName": "Featured",
     "associatedKeywords": [
@@ -23,7 +28,7 @@
   },
   {
     "value": "browser-and-mobile",
-    "displayName": "Browser & Mobile",
+    "displayName": "Browser & mobile",
     "associatedKeywords": [
       "browser agent",
       "mobile agent"
@@ -45,7 +50,7 @@
   },
   {
     "value": "kubernetes-and-containers",
-    "displayName": "Kubernetes & Containers",
+    "displayName": "Kubernetes & containers",
     "associatedKeywords": [
       "kubernetes",
       "containers"

@@ -43,11 +43,16 @@ const VIEWS = {
  * @param {String} search Search term.
  * @returns {(Object) => Boolean} Callback function to be used by filter.
  */
-const filterBySearch = (search) => ({ name, description }) => {
+const filterBySearch = (search) => ({ name, description, keywords }) => {
+  if (!search) {
+    return true;
+  }
+
+  const lowerSearch = search.toLowerCase();
   return (
-    !search ||
-    name.toLowerCase().includes(search.toLowerCase()) ||
-    description.toLowerCase().includes(search.toLowerCase())
+    name.toLowerCase().includes(lowerSearch) ||
+    description.toLowerCase().includes(lowerSearch) ||
+    keywords.map((s) => s.toLowerCase()).includes(lowerSearch)
   );
 };
 
@@ -69,10 +74,16 @@ const filterByCategory = (category) => {
   const associatedKeywords = CATEGORIES.find((cat) => cat.value === category)
     ?.associatedKeywords;
   const isValidCategory = category && associatedKeywords;
+
   return (quickstart) => {
+    if (!isValidCategory) {
+      return true;
+    }
+
+    const catKeywords = new Set([...associatedKeywords]);
+
     return (
-      !isValidCategory ||
-      (quickstart.keywords && quickstart.keywords.includes(category))
+      quickstart.keywords && quickstart.keywords.find((k) => catKeywords.has(k))
     );
   };
 };
