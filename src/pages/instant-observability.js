@@ -77,7 +77,7 @@ const QuickstartsPage = ({ data, location }) => {
         search: searchParam,
       });
     }
-  }, [location.search]);
+  }, [location.search, tessen]);
 
   const handleFilter = (value) => {
     setFilter(value);
