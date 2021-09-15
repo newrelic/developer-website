@@ -6,6 +6,7 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
 import PackTile from '../components/PackTile';
+import IOBanner from '../components/IOBanner';
 import IOLogo from '../components/IOLogo';
 import Select from '../components/Select';
 import {
@@ -20,8 +21,13 @@ import { navigate } from '@reach/router';
 
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 import { useDebounce } from 'react-use';
+import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 
 const { QUICKSTARTS_REPO } = require('../data/constants');
+
+const CATEGORIES = [
+  { name: 'Featured', type: 'featured', icon: 'nr-relicans' },
+];
 
 const FILTERS = [
   { name: 'All', type: '', icon: 'nr-all-entities' },
@@ -57,24 +63,39 @@ const filterByContentType = (type) => (quickstart) => {
   return !type || (quickstart[type] && quickstart[type].length > 0);
 };
 
+/**
+ * Filters a quickstart based on a category.
+ * @param {String} type The category type (e.g. 'featured').
+ * @returns {(Object) => Boolean} Callback function to be used by filter.
+ */
+const filterByCategory = (type) => (quickstart) => {
+  return !type || (quickstart.keywords && quickstart.keywords.includes(type));
+};
+
 const QuickstartsPage = ({ data, location }) => {
   const [view, setView] = useState(VIEWS.GRID);
-  const detectMobile = useMobileDetect();
+  const isMobile = useMobileDetect().isMobile();
   const tessen = useTessen();
 
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('');
+  const [category, setCategory] = useState('');
+
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const searchParam = params.get('search');
     const filterParam = params.get('filter');
+    const categoryParam = params.get('category');
+
     setSearch(searchParam);
     setFilter(filterParam);
+    setCategory(categoryParam);
 
-    if (searchParam || filterParam) {
-      tessen.track('InstantObservability', 'QuickstartsCatalog', {
+    if (searchParam || filterParam || categoryParam) {
+      tessen.track('instantObservability', 'QuickstartCatalogSearch', {
         filter: filterParam,
         search: searchParam,
+        category: categoryParam,
       });
     }
   }, [location.search]);
@@ -96,6 +117,15 @@ const QuickstartsPage = ({ data, location }) => {
     }
   };
 
+  const handleCategory = (value) => {
+    if (value !== null && value !== undefined) {
+      const params = new URLSearchParams(location.search);
+      params.set('category', value);
+
+      navigate(`?${params.toString()}`);
+    }
+  };
+
   useDebounce(
     () => {
       handleSearch(search);
@@ -106,15 +136,19 @@ const QuickstartsPage = ({ data, location }) => {
 
   const quickstarts = data.allQuickstarts.nodes;
 
-  const filteredQuickstarts = quickstarts
+  const sortedQuickstarts = sortFeaturedQuickstarts(quickstarts);
+
+  const filteredQuickstarts = sortedQuickstarts
     .filter(filterBySearch(search))
-    .filter(filterByContentType(filter));
+    .filter(filterByContentType(filter))
+    .filter(filterByCategory(category));
 
   const filtersWithCount = FILTERS.map((filter) => ({
     ...filter,
     count: quickstarts
       .filter(filterBySearch(search))
-      .filter(filterByContentType(filter.type)).length,
+      .filter(filterByContentType(filter.type))
+      .filter(filterByCategory(category)).length,
   }));
 
   return (
@@ -149,7 +183,9 @@ const QuickstartsPage = ({ data, location }) => {
           data-swiftype-index={false}
           css={css`
             grid-area: sidebar;
-            border-right: 1px solid var(--divider-color);
+            border-right: ${isMobile
+              ? 'none'
+              : '1px solid var(--divider-color)'};
             height: calc(100vh - var(--global-header-height));
             position: sticky;
             top: var(--global-header-height);
@@ -162,6 +198,8 @@ const QuickstartsPage = ({ data, location }) => {
             }
           `}
         >
+          {isMobile && <IOBanner isMobile />}
+
           <div
             css={css`
               padding: var(--site-content-padding);
@@ -189,14 +227,65 @@ const QuickstartsPage = ({ data, location }) => {
               instrumentation, and alerts to help you monitor your environment.
             </p>
             <aside
+              data-swiftype-index={false}
               css={css`
                 border-bottom: 1px solid var(--divider-color);
                 margin-bottom: 1.5rem;
               `}
             />
             <FormControl>
+              <Label htmlFor="quickstartCategoryByType">Categories</Label>
+              {isMobile ? (
+                <Select
+                  id="quickstartCategoryByType"
+                  value={category}
+                  onChange={(e) => {
+                    const type = e.target.value;
+                    handleCategory(type);
+                  }}
+                >
+                  {CATEGORIES.map(({ name, type }) => (
+                    <option key={type} value={type}>
+                      {`${name}`}
+                    </option>
+                  ))}
+                </Select>
+              ) : (
+                CATEGORIES.map(({ name, type, icon }) => (
+                  <Button
+                    type="button"
+                    key={name}
+                    onClick={() => handleCategory(type)}
+                    css={css`
+                      padding: 1rem 0;
+                      width: 100%;
+                      display: flex;
+                      justify-content: flex-start;
+                      color: var(--primary-text-color);
+                      font-weight: 100;
+                      background: ${category === type
+                        ? 'var(--divider-color)'
+                        : 'none'};
+                    `}
+                  >
+                    {category === 'featured' && (
+                      <Icon
+                        name={icon}
+                        css={css`
+                          fill: currentColor;
+                          stroke-width: ${name === 'All' ? 1 : 0.25};
+                          margin: 0 0.5rem;
+                        `}
+                      />
+                    )}
+                    {`${name}`}
+                  </Button>
+                ))
+              )}
+            </FormControl>
+            <FormControl>
               <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
-              {detectMobile.isMobile() ? (
+              {isMobile ? (
                 <Select
                   id="quickstartFilterByType"
                   value={filter}
@@ -250,6 +339,8 @@ const QuickstartsPage = ({ data, location }) => {
             padding: var(--site-content-padding);
           `}
         >
+          {!isMobile && <IOBanner />}
+
           <div
             css={css`
               background-color: var(--secondary-background-color);
@@ -302,7 +393,7 @@ const QuickstartsPage = ({ data, location }) => {
                 onChange={(_e, view) => {
                   setView(view);
 
-                  tessen.track('InstantObservability', `QuickstartViewToggle`, {
+                  tessen.track('instantObservability', `QuickstartViewToggle`, {
                     quickstartViewState: view,
                   });
                 }}
@@ -359,7 +450,12 @@ const QuickstartsPage = ({ data, location }) => {
               />
             </ExternalLink>
             {filteredQuickstarts.map((pack) => (
-              <PackTile key={pack.id} view={view} {...pack} />
+              <PackTile
+                key={pack.id}
+                view={view}
+                featured={pack.keywords?.includes('featured')}
+                {...pack}
+              />
             ))}
           </div>
         </div>
@@ -387,6 +483,7 @@ export const pageQuery = graphql`
         logoUrl
         packUrl
         level
+        keywords
         dashboards {
           description
           name

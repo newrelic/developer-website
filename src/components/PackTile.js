@@ -8,6 +8,7 @@ import {
   Icon,
   useTessen,
   useInstrumentedHandler,
+  Tag,
 } from '@newrelic/gatsby-theme-newrelic';
 import PackImg from './PackImg';
 
@@ -23,7 +24,7 @@ const VIEWS = {
 const PackTile = ({
   id,
   view,
-  title,
+  featured,
   name,
   fields,
   logoUrl,
@@ -35,7 +36,7 @@ const PackTile = ({
 
   const handlePackClick = useInstrumentedHandler(
     () => {
-      tessen.track('quickstart', 'QuickstartClick', {
+      tessen.track('instantObservability', 'QuickstartClick', {
         publicCatalogView: view,
         quickstartName: name,
       });
@@ -50,7 +51,7 @@ const PackTile = ({
 
   const handleBuildTileClick = useInstrumentedHandler(
     () => {
-      tessen.track('quickstart', 'BuildYourOwnQuickstartClick', {
+      tessen.track('instantObservability', 'BuildYourOwnQuickstartClick', {
         publicCatalogView: view,
         quickstartName: name,
       });
@@ -70,11 +71,13 @@ const PackTile = ({
       interactive
       css={css`
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
 
         ${view === VIEWS.LIST &&
         css`
-          display: flex;
           margin-bottom: 1em;
+          flex-direction: row;
         `}
       `}
       onClick={fields ? handlePackClick : handleBuildTileClick}
@@ -88,12 +91,13 @@ const PackTile = ({
           object-fit: scale-down;
           width: ${view === VIEWS.GRID ? 100 : 25}%;
           padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
-          margin: ${view === VIEWS.GRID ? 'auto' : 0};
+          margin: 10px auto;
 
           ${view === VIEWS.LIST &&
           css`
             max-height: 150px;
 
+            flex: 0 0 auto;
             @media (max-width: 1080px) {
               display: none;
             }
@@ -103,11 +107,11 @@ const PackTile = ({
       <div
         css={css`
           padding: 1em;
-
+          flex: 1 1 auto;
           ${view === VIEWS.LIST &&
           css`
-            width: 75%;
-
+            width: 100%;
+            flex: 1 1 auto;
             @media (max-width: 1080px) {
               width: 100%;
             }
@@ -126,6 +130,31 @@ const PackTile = ({
           {summary}
         </p>
       </div>
+      <div
+        css={css`
+          padding: 1em;
+          display: flex;
+          justify-content: flex-end;
+          ${view === VIEWS.LIST &&
+          css`
+            flex-direction: column;
+            justify-content: flex-end;
+            @media (max-width: 1080px) {
+              width: 100%;
+            }
+          `}
+        `}
+      >
+        {featured && (
+          <Tag
+            css={css`
+              background-color: var(--color-brand-300);
+            `}
+          >
+            Featured
+          </Tag>
+        )}
+      </div>
     </Surface>
   );
 };
@@ -142,6 +171,7 @@ PackTile.propTypes = {
   summary: PropTypes.string,
   level: PropTypes.string,
   className: PropTypes.string,
+  featured: PropTypes.bool,
 };
 
 export default PackTile;
