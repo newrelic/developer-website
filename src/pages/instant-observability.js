@@ -23,8 +23,8 @@ import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 
-const { QUICKSTARTS_REPO } = require('../data/constants');
-const CATEGORIES = require('../data/instant-observability-categories');
+import { QUICKSTARTS_REPO } from '../data/constants';
+import CATEGORIES from '../data/instant-observability-categories';
 
 const FILTERS = [
   { name: 'All', type: '', icon: 'nr-all-entities' },
@@ -148,6 +148,13 @@ const QuickstartsPage = ({ data, location }) => {
     .filter(filterByContentType(filter))
     .filter(filterByCategory(category));
 
+  const categoriesWithCount = CATEGORIES.map((cat) => ({
+    ...cat,
+    count: quickstarts
+      .filter(filterBySearch(search))
+      .filter(filterByCategory(cat.value)).length,
+  }));
+
   const filtersWithCount = FILTERS.map((filter) => ({
     ...filter,
     count: quickstarts
@@ -208,6 +215,7 @@ const QuickstartsPage = ({ data, location }) => {
           <div
             css={css`
               padding: var(--site-content-padding);
+              height: 100%;
               overflow: auto;
               @media screen and (max-width: 760px) {
                 position: relative;
@@ -254,14 +262,16 @@ const QuickstartsPage = ({ data, location }) => {
                       handleCategory(type);
                     }}
                   >
-                    {CATEGORIES.map(({ displayName, value }) => (
-                      <option key={value} value={value}>
-                        {`${displayName}`}
-                      </option>
-                    ))}
+                    {categoriesWithCount.map(
+                      ({ displayName, value, count }) => (
+                        <option key={value} value={value}>
+                          {`${displayName} (${count})`}
+                        </option>
+                      )
+                    )}
                   </Select>
                 ) : (
-                  CATEGORIES.map(({ displayName, value }) => (
+                  categoriesWithCount.map(({ displayName, value, count }) => (
                     <Button
                       type="button"
                       key={value}
@@ -278,7 +288,7 @@ const QuickstartsPage = ({ data, location }) => {
                           : 'none'};
                       `}
                     >
-                      {`${displayName}`}
+                      {`${displayName} (${count})`}
                     </Button>
                   ))
                 )}
