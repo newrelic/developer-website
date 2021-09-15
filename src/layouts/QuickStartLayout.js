@@ -8,6 +8,18 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import '../components/styles.scss';
 
+const getSidebarWidth = () => {
+  switch (true) {
+    case !window.location:
+      return 0;
+    case window.location.pathname === '/instant-observability/':
+      // this value matches '--sidebar-width' variable defined in instant-observability.js
+      return 300;
+    default:
+      return 0;
+  }
+};
+
 const QuickStartLayout = ({ children }) => {
   return (
     <>
@@ -29,7 +41,19 @@ const QuickStartLayout = ({ children }) => {
         >
           {children}
         </Layout.Main>
-        <Layout.Footer />
+        <Layout.Footer
+          css={css`
+            --sidebar-offset: ${getSidebarWidth()}px;
+
+            max-width: calc(var(--site-max-width) - var(--sidebar-offset));
+
+            margin-left: calc(var(--sidebar-offset));
+
+            @media screen and (max-width: 760px) {
+              margin-left: 0;
+            }
+          `}
+        />
       </Layout>
     </>
   );
