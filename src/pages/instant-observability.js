@@ -98,7 +98,7 @@ const QuickstartsPage = ({ data, location }) => {
         category: categoryParam,
       });
     }
-  }, [location.search]);
+  }, [location.search, tessen]);
 
   const handleFilter = (value) => {
     setFilter(value);
@@ -445,8 +445,8 @@ const QuickstartsPage = ({ data, location }) => {
                 }
                 view={view}
                 logoUrl={BUILD_YOUR_OWN}
-                name="Build your own quickstart"
-                summary="Can't find a pack with what you need? Check out our README and build your own."
+                title="Build your own quickstart"
+                summary="Can't find a quickstart with what you need? Check out our README and build your own."
               />
             </ExternalLink>
             {filteredQuickstarts.map((pack) => (
@@ -477,6 +477,7 @@ export const pageQuery = graphql`
           slug
         }
         id
+        title
         name
         websiteUrl
         logoUrl
