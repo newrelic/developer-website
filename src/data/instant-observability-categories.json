@@ -12,8 +12,8 @@
     ]
   },
   {
-    "value": "apm-application-monitoring",
-    "displayName": "APM (Application monitoring)",
+    "value": "application-monitoring",
+    "displayName": "Application monitoring",
     "associatedKeywords": [
       "language agent"
     ]
@@ -57,8 +57,8 @@
     ]
   },
   {
-    "value": "aws-amazon-web-services",
-    "displayName": "AWS (Amazon Web Services)",
+    "value": "amazon-web-services",
+    "displayName": "Amazon Web Services",
     "associatedKeywords": [
       "aws"
     ]
@@ -71,8 +71,8 @@
     ]
   },
   {
-    "value": "gcp-google-cloud-platform",
-    "displayName": "GCP (Google Cloud Platform)",
+    "value": "google-cloud-platform",
+    "displayName": "Google Cloud Platform",
     "associatedKeywords": [
       "gcp"
     ]
@@ -85,8 +85,8 @@
     ]
   },
   {
-    "value": "mlops",
-    "displayName": "MLOps",
+    "value": "machine-learning-ops",
+    "displayName": "Machine learning ops",
     "associatedKeywords": [
       "mlops"
     ]
