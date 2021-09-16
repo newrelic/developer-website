@@ -42,7 +42,7 @@ const IOBanner = ({ isMobile }) => {
             font-weight: 400;
           `}
         >
-          Instant observability
+          Instant Observability
         </h1>
         <p
           css={css`
