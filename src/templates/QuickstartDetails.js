@@ -30,22 +30,6 @@ import {
 } from '../data/constants';
 import QuickstartOverview from '../components/quickstarts/QuickstartOverview';
 
-const allowedElements = [
-  'h1',
-  'h2',
-  'h3',
-  'ol',
-  'ul',
-  'li',
-  'p',
-  'blockquote',
-  'code',
-  'a',
-  'strong',
-  'em',
-  'hr',
-];
-
 const QuickstartDetails = ({ data, location }) => {
   const quickstart = data.quickstarts;
   const quickstartUrl = quickstart.packUrl || QUICKSTARTS_REPO;
@@ -118,8 +102,10 @@ const QuickstartDetails = ({ data, location }) => {
               border-bottom: none;
               display: grid;
               padding-bottom: 0;
-              grid-template-areas: 'title logo' 'desc logo' 'cta logo';
+              grid-template-areas: 'title logo' 'summ logo' 'cta logo';
               grid-column-gap: 1rem;
+              grid-row-gap: 1rem;
+              row-gap: 1rem;
 
               h1 {
                 font-weight: normal;
@@ -147,16 +133,20 @@ const QuickstartDetails = ({ data, location }) => {
                 `}
               />
             )}
-            {quickstart.description && (
-              <Markdown
-                skipHtml
-                allowedElements={allowedElements}
+            {quickstart.summary && (
+              <div
                 css={css`
-                  grid-area: desc;
+                  grid-area: summ;
+                  margin-bottom: 1em;
+                  max-width: 40vw;
+
+                  @media (max-width: 760px) {
+                    max-width: 100%;
+                  }
                 `}
               >
-                {quickstart.description}
-              </Markdown>
+                {quickstart.summary}
+              </div>
             )}
             <div
               css={css`
@@ -334,6 +324,7 @@ export const pageQuery = graphql`
       level
       id
       description
+      summary
       logoUrl
       packUrl
       dashboards {
