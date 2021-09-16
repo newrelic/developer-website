@@ -23,11 +23,8 @@ import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 
-const { QUICKSTARTS_REPO } = require('../data/constants');
-
-const CATEGORIES = [
-  { name: 'Featured', type: 'featured', icon: 'nr-relicans' },
-];
+import { QUICKSTARTS_REPO } from '../data/constants';
+import CATEGORIES from '../data/instant-observability-categories';
 
 const FILTERS = [
   { name: 'All', type: '', icon: 'nr-all-entities' },
@@ -42,22 +39,35 @@ const VIEWS = {
 };
 
 /**
+ * Determines if one string is a substring of the other, case insensitive
+ * @param {String} substring the substring to test against
+ * @returns {(Function) => Boolean} Callback function that determines if the argument has the substring
+ */
+const stringIncludes = (substring) => (fullstring) =>
+  fullstring.toLowerCase().includes(substring.toLowerCase());
+
+/**
  * Filters a quickstart based on a provided search term.
  * @param {String} search Search term.
- * @returns {(Object) => Boolean} Callback function to be used by filter.
+ * @returns {(Function) => Boolean} Callback function to be used by filter.
  */
-const filterBySearch = (search) => ({ name, description }) => {
+const filterBySearch = (search) => ({ name, description, keywords }) => {
+  if (!search) {
+    return true;
+  }
+
+  const searchIncludes = stringIncludes(search);
   return (
-    !search ||
-    name.toLowerCase().includes(search.toLowerCase()) ||
-    description.toLowerCase().includes(search.toLowerCase())
+    searchIncludes(name) ||
+    searchIncludes(description) ||
+    keywords.some(searchIncludes)
   );
 };
 
 /**
  * Filters a quickstart based on a content type.
  * @param {String} type The content type (e.g. 'alerts').
- * @returns {(Object) => Boolean} Callback function to be used by filter.
+ * @returns {(Function) => Boolean} Callback function to be used by filter.
  */
 const filterByContentType = (type) => (quickstart) => {
   return !type || (quickstart[type] && quickstart[type].length > 0);
@@ -65,11 +75,17 @@ const filterByContentType = (type) => (quickstart) => {
 
 /**
  * Filters a quickstart based on a category.
- * @param {String} type The category type (e.g. 'featured').
- * @returns {(Object) => Boolean} Callback function to be used by filter.
+ * @param {String} category The category type (e.g. 'featured').
+ * @returns {(Function) => Boolean} Callback function to be used by filter.
  */
-const filterByCategory = (type) => (quickstart) => {
-  return !type || (quickstart.keywords && quickstart.keywords.includes(type));
+const filterByCategory = (category) => {
+  const { associatedKeywords = [] } =
+    CATEGORIES.find(({ value }) => value === category) || {};
+
+  return (quickstart) =>
+    !category ||
+    (quickstart.keywords &&
+      quickstart.keywords.find((k) => associatedKeywords.includes(k)));
 };
 
 const QuickstartsPage = ({ data, location }) => {
@@ -88,8 +104,8 @@ const QuickstartsPage = ({ data, location }) => {
     const categoryParam = params.get('category');
 
     setSearch(searchParam);
-    setFilter(filterParam);
-    setCategory(categoryParam);
+    setFilter(filterParam || '');
+    setCategory(categoryParam || '');
 
     if (searchParam || filterParam || categoryParam) {
       tessen.track('instantObservability', 'QuickstartCatalogSearch', {
@@ -143,6 +159,13 @@ const QuickstartsPage = ({ data, location }) => {
     .filter(filterByContentType(filter))
     .filter(filterByCategory(category));
 
+  const categoriesWithCount = CATEGORIES.map((cat) => ({
+    ...cat,
+    count: quickstarts
+      .filter(filterBySearch(search))
+      .filter(filterByCategory(cat.value)).length,
+  }));
+
   const filtersWithCount = FILTERS.map((filter) => ({
     ...filter,
     count: quickstarts
@@ -193,6 +216,7 @@ const QuickstartsPage = ({ data, location }) => {
             @media screen and (max-width: 760px) {
               display: block;
               position: relative;
+              overflow: hidden;
               width: 100%;
               height: 100%;
             }
@@ -203,6 +227,7 @@ const QuickstartsPage = ({ data, location }) => {
           <div
             css={css`
               padding: var(--site-content-padding);
+              height: 100%;
               overflow: auto;
               @media screen and (max-width: 760px) {
                 position: relative;
@@ -233,56 +258,54 @@ const QuickstartsPage = ({ data, location }) => {
                 margin-bottom: 1.5rem;
               `}
             />
-            <FormControl>
-              <Label htmlFor="quickstartCategoryByType">Categories</Label>
-              {isMobile ? (
-                <Select
-                  id="quickstartCategoryByType"
-                  value={category}
-                  onChange={(e) => {
-                    const type = e.target.value;
-                    handleCategory(type);
-                  }}
-                >
-                  {CATEGORIES.map(({ name, type }) => (
-                    <option key={type} value={type}>
-                      {`${name}`}
-                    </option>
-                  ))}
-                </Select>
-              ) : (
-                CATEGORIES.map(({ name, type, icon }) => (
-                  <Button
-                    type="button"
-                    key={name}
-                    onClick={() => handleCategory(type)}
-                    css={css`
-                      padding: 1rem 0;
-                      width: 100%;
-                      display: flex;
-                      justify-content: flex-start;
-                      color: var(--primary-text-color);
-                      font-weight: 100;
-                      background: ${category === type
-                        ? 'var(--divider-color)'
-                        : 'none'};
-                    `}
+            <div
+              css={css`
+                margin-bottom: 1rem;
+              `}
+            >
+              <FormControl>
+                <Label htmlFor="quickstartCategory">CATEGORIES</Label>
+                {isMobile ? (
+                  <Select
+                    id="quickstartCategory"
+                    value={category}
+                    onChange={(e) => {
+                      const type = e.target.value;
+                      handleCategory(type);
+                    }}
                   >
-                    {category === 'featured' && (
-                      <Icon
-                        name={icon}
-                        css={css`
-                          fill: currentColor;
-                          stroke-width: ${name === 'All' ? 1 : 0.25};
-                          margin: 0 0.5rem;
-                        `}
-                      />
+                    {categoriesWithCount.map(
+                      ({ displayName, value, count }) => (
+                        <option key={value} value={value}>
+                          {`${displayName} (${count})`}
+                        </option>
+                      )
                     )}
-                    {`${name}`}
-                  </Button>
-                ))
-              )}
-            </FormControl>
+                  </Select>
+                ) : (
+                  categoriesWithCount.map(({ displayName, value, count }) => (
+                    <Button
+                      type="button"
+                      key={value}
+                      onClick={() => handleCategory(value)}
+                      css={css`
+                        padding: 1rem 0.5rem;
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-start;
+                        color: var(--primary-text-color);
+                        font-weight: 100;
+                        background: ${category === value
+                          ? 'var(--divider-color)'
+                          : 'none'};
+                      `}
+                    >
+                      {`${displayName} (${count})`}
+                    </Button>
+                  ))
+                )}
+              </FormControl>
+            </div>
             <FormControl>
               <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
               {isMobile ? (
@@ -386,6 +409,10 @@ const QuickstartsPage = ({ data, location }) => {
               css={css`
                 min-width: 155px;
                 margin-left: 20px;
+
+                @media screen and (max-width: 1180px) {
+                  margin-left: 0px;
+                }
               `}
             >
               <SegmentedControl
