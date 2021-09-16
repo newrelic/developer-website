@@ -106,8 +106,8 @@ const QuickstartsPage = ({ data, location }) => {
     const categoryParam = params.get('category');
 
     setSearch(searchParam);
-    setFilter(filterParam);
-    setCategory(categoryParam);
+    setFilter(filterParam || '');
+    setCategory(categoryParam || '');
 
     if (searchParam || filterParam || categoryParam) {
       tessen.track('instantObservability', 'QuickstartCatalogSearch', {
