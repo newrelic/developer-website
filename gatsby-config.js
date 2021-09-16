@@ -21,6 +21,8 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
+        // TODO: update this to use the non `-test` ID when we launch I/O
+        oneTrustID: '77dd4d78-49db-4057-81ea-4bc325d6ecdd-test',
         forceTrailingSlashes: true,
         layout: {
           contentPadding: '2rem',
