@@ -39,27 +39,35 @@ const VIEWS = {
 };
 
 /**
+ * Determines if one string is a substring of the other, case insensitive
+ * @param {String} substring the substring to test against
+ * @returns {(Function) => Boolean} Callback function that determines if the argument has the substring
+ */
+const stringIncludes = (substring) => (fullstring) =>
+  fullstring.toLowerCase().includes(substring.toLowerCase());
+
+/**
  * Filters a quickstart based on a provided search term.
  * @param {String} search Search term.
- * @returns {(Object) => Boolean} Callback function to be used by filter.
+ * @returns {(Function) => Boolean} Callback function to be used by filter.
  */
 const filterBySearch = (search) => ({ name, description, keywords }) => {
   if (!search) {
     return true;
   }
 
-  const lowerSearch = search.toLowerCase();
+  const searchIncludes = stringIncludes(search);
   return (
-    name.toLowerCase().includes(lowerSearch) ||
-    description.toLowerCase().includes(lowerSearch) ||
-    keywords.map((s) => s.toLowerCase()).includes(lowerSearch)
+    searchIncludes(name) ||
+    searchIncludes(description) ||
+    keywords.some(searchIncludes)
   );
 };
 
 /**
  * Filters a quickstart based on a content type.
  * @param {String} type The content type (e.g. 'alerts').
- * @returns {(Object) => Boolean} Callback function to be used by filter.
+ * @returns {(Function) => Boolean} Callback function to be used by filter.
  */
 const filterByContentType = (type) => (quickstart) => {
   return !type || (quickstart[type] && quickstart[type].length > 0);
@@ -68,24 +76,18 @@ const filterByContentType = (type) => (quickstart) => {
 /**
  * Filters a quickstart based on a category.
  * @param {String} category The category type (e.g. 'featured').
- * @returns {(Object) => Boolean} Callback function to be used by filter.
+ * @returns {(Function) => Boolean} Callback function to be used by filter.
  */
 const filterByCategory = (category) => {
-  const associatedKeywords = CATEGORIES.find((cat) => cat.value === category)
-    ?.associatedKeywords;
-  const isValidCategory = category && associatedKeywords;
+  const { associatedKeywords = [] } =
+    CATEGORIES.find(({ value }) => value === category) || {};
 
-  return (quickstart) => {
-    if (!isValidCategory) {
-      return true;
-    }
+  const catKeywords = new Set(associatedKeywords);
 
-    const catKeywords = new Set([...associatedKeywords]);
-
-    return (
-      quickstart.keywords && quickstart.keywords.find((k) => catKeywords.has(k))
-    );
-  };
+  return (quickstart) =>
+    !category ||
+    (quickstart.keywords &&
+      quickstart.keywords.find((k) => catKeywords.has(k)));
 };
 
 const QuickstartsPage = ({ data, location }) => {
