@@ -218,6 +218,7 @@ const QuickstartsPage = ({ data, location }) => {
             @media screen and (max-width: 760px) {
               display: block;
               position: relative;
+              overflow: hidden;
               width: 100%;
               height: 100%;
             }
@@ -410,6 +411,10 @@ const QuickstartsPage = ({ data, location }) => {
               css={css`
                 min-width: 155px;
                 margin-left: 20px;
+
+                @media screen and (max-width: 1180px) {
+                  margin-left: 0px;
+                }
               `}
             >
               <SegmentedControl
