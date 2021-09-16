@@ -111,7 +111,7 @@ const QuickstartsPage = ({ data, location }) => {
       tessen.track('instantObservability', 'QuickstartCatalogSearch', {
         filter: filterParam,
         search: searchParam,
-        category: categoryParam,
+        quickstartCategory: categoryParam,
       });
     }
   }, [location.search, tessen]);
