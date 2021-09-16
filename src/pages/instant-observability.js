@@ -82,12 +82,10 @@ const filterByCategory = (category) => {
   const { associatedKeywords = [] } =
     CATEGORIES.find(({ value }) => value === category) || {};
 
-  const catKeywords = new Set(associatedKeywords);
-
   return (quickstart) =>
     !category ||
     (quickstart.keywords &&
-      quickstart.keywords.find((k) => catKeywords.has(k)));
+      quickstart.keywords.find((k) => associatedKeywords.includes(k)));
 };
 
 const QuickstartsPage = ({ data, location }) => {
