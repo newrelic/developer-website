@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
-import ioBanner from '../images/ioBanner.svg';
+import ioBanner from '../images/ioBanner.png';
 
 const IOBanner = ({ isMobile }) => {
   return (
@@ -39,6 +39,7 @@ const IOBanner = ({ isMobile }) => {
           css={css`
             color: var(--color-white);
             font-size: ${isMobile ? '1rem' : 'max(.85rem, 1.5vw)'};
+            font-weight: 400;
           `}
         >
           Instant observability
