@@ -446,7 +446,7 @@ const QuickstartsPage = ({ data, location }) => {
                 view={view}
                 logoUrl={BUILD_YOUR_OWN}
                 title="Build your own quickstart"
-                summary="Can't find a pack with what you need? Check out our README and build your own."
+                summary="Can't find a quickstart with what you need? Check out our README and build your own."
               />
             </ExternalLink>
             {filteredQuickstarts.map((pack) => (
