@@ -107,6 +107,7 @@ module.exports = {
           },
         },
         tessen: {
+          tessenVersion: '1.14.0',
           product: 'DEV',
           subproduct: 'TDEV',
           segmentWriteKey: 'Ako0hclX8WGHwl9rm4n5uxLtT4wgEtuU',
