@@ -12,7 +12,7 @@ const QuickstartDashboards = ({ quickstart }) => (
         margin-bottom: 16px;
       `}
     >
-      {quickstart.name} quickstart contains{' '}
+      {quickstart.title} quickstart contains{' '}
       {pluralize('dashboard', quickstart.dashboards?.length ?? 0, true)}. These
       interactive visualizations let you easily explore your data, understand
       context, and resolve problems faster.
