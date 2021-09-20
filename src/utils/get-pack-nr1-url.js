@@ -1,8 +1,4 @@
-import {
-  NR1_BASE_URL,
-  NR1_BASE_URL_LOCAL,
-  NR1_PACK_DETAILS_NERDLET,
-} from '../data/constants';
+import { NR1_BASE_URL, NR1_BASE_URL_LOCAL } from '../data/constants';
 
 const NERDLET_PATH = `launcher/nr1-core.explorer/`;
 
@@ -11,9 +7,9 @@ const NERDLET_PATH = `launcher/nr1-core.explorer/`;
  * @param {boolean} [debug] If set to true, this will add `packages=local`.
  * @returns {string} The URL for the pack details within the platform.
  */
-const getPackNr1Url = (quickstartId, debug = false) => {
+const getPackNr1Url = (quickstartId, nerdletId, debug = false) => {
   const pane = JSON.stringify({
-    nerdletId: NR1_PACK_DETAILS_NERDLET,
+    nerdletId,
     quickstartId,
   });
 
