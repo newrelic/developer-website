@@ -51,14 +51,20 @@ const stringIncludes = (substring) => (fullstring) =>
  * @param {String} search Search term.
  * @returns {(Function) => Boolean} Callback function to be used by filter.
  */
-const filterBySearch = (search) => ({ name, description, keywords }) => {
+const filterBySearch = (search) => ({
+  title,
+  summary,
+  description,
+  keywords,
+}) => {
   if (!search) {
     return true;
   }
 
   const searchIncludes = stringIncludes(search);
   return (
-    searchIncludes(name) ||
+    searchIncludes(title) ||
+    searchIncludes(summary) ||
     searchIncludes(description) ||
     keywords.some(searchIncludes)
   );
@@ -152,7 +158,8 @@ const QuickstartsPage = ({ data, location }) => {
 
   const quickstarts = data.allQuickstarts.nodes;
 
-  const sortedQuickstarts = sortFeaturedQuickstarts(quickstarts);
+  const alphaSort = quickstarts.sort((a, b) => a.title.localeCompare(b.title));
+  const sortedQuickstarts = sortFeaturedQuickstarts(alphaSort);
 
   const filteredQuickstarts = sortedQuickstarts
     .filter(filterBySearch(search))
