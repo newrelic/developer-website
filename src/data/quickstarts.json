@@ -15,6 +15,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/android/icon.svg",
     "id": "23802e4e-518b-409f-857e-dfe8c32d5562",
+    "installPlans": [],
     "keywords": [
       "mobile",
       "mobile agent"
@@ -43,6 +44,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ansible/icon.svg",
     "id": "c377d781-da77-4dd6-b5a8-6a25a39e2582",
+    "installPlans": [],
     "keywords": [
       "automation",
       "devops",
@@ -84,6 +86,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/apache/icon.png",
     "id": "ad5affab-545a-4355-ad48-cfd66e2fbf00",
+    "installPlans": [
+      {
+        "id": "apache-integration",
+        "name": "Apache"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "http",
@@ -115,6 +123,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/apis/event/icon.png",
     "id": "bc62e8f8-0d0c-4c86-9f05-b9e83e21d0fc",
+    "installPlans": [],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/apis/event/logo.png",
@@ -140,6 +149,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/apis/logs/icon.png",
     "id": "b40194c0-c7a0-497c-82c1-ca47b60726da",
+    "installPlans": [],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/apis/logs/logo.png",
@@ -165,6 +175,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/apis/metric/icon.png",
     "id": "028e4c30-1567-4b9a-8417-6606bc9d83c8",
+    "installPlans": [],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/apis/metric/logo.png",
@@ -190,6 +201,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/apis/trace/icon.png",
     "id": "07f0b96c-add9-43d5-962d-1865d0149082",
+    "installPlans": [],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/apis/trace/logo.png",
@@ -215,6 +227,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/amazon-athena/icon.svg",
     "id": "5f3d35d7-668b-41f3-98d7-ccc93a50933c",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -244,6 +257,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/amazon-cloudwatch-metric-streams/icon.svg",
     "id": "32688a77-f5c8-4a37-9b4b-6f83a66fa4a5",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/amazon-cloudwatch-metric-streams/logo.svg",
@@ -269,6 +283,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/amazon-documentdb/icon.svg",
     "id": "16dcca43-1a4f-4f94-8fd5-d05a085a99a3",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -298,6 +313,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/amazon-eks-on-aws-fargate/icon.svg",
     "id": "066eb2a4-65a4-456d-a5ac-0e1fcc2740a2",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/amazon-eks-on-aws-fargate/logo.svg",
@@ -323,6 +339,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/amazon-linux/icon.svg",
     "id": "bede2fa6-1325-4e58-9885-811beecaccad",
+    "installPlans": [
+      {
+        "id": "guided-install",
+        "name": "Guided install"
+      }
+    ],
     "keywords": [
       "aws",
       "amazon web services",
@@ -353,6 +375,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/amazon-msk/icon.svg",
     "id": "2ac719f2-e3bf-4f7d-8cff-80c0bfecb516",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -382,6 +405,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-api-gateway/icon.svg",
     "id": "b2fe368b-6e09-4f63-9c10-e888aa22a292",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -412,6 +436,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-appsync/icon.svg",
     "id": "c97c5208-a83e-49dd-9555-45ab01692634",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -441,6 +466,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-auto-scaling/icon.svg",
     "id": "e6a1654d-2e00-4956-a2da-39f1f5f5f5e9",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -469,6 +495,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-billing/icon.svg",
     "id": "c7f15a54-e243-4e23-95dd-ff08937041ed",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -497,6 +524,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-cloudformation/icon.svg",
     "id": "d8848b3c-2510-415e-be55-cd50014206f9",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -526,6 +554,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-cloudfront/icon.svg",
     "id": "c6a0f98b-94f3-4f66-9217-83526d7c1afb",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -554,6 +583,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-cloudtrail/icon.svg",
     "id": "f38d0d8e-cbc6-4d0e-aaf3-d4a8229a5ff1",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -583,6 +613,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-cloudwatch-plugin-for-logs/icon.svg",
     "id": "d62097ef-91df-4c13-9939-a694cb4d2322",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -613,6 +644,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-cognito/icon.svg",
     "id": "70c5611b-51e8-41ca-8659-abc6b0d5c795",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -641,6 +673,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-connect/icon.svg",
     "id": "ddf0d06c-12c7-4951-9335-ab2c10dbd1c5",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -669,6 +702,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-direct-connect/icon.svg",
     "id": "913f6003-d559-4538-a6b2-9c19a7cc7d46",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-direct-connect/logo.svg",
@@ -694,6 +728,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-dynamodb/icon.svg",
     "id": "af330c97-f27a-4160-a4e6-5495685f6852",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -723,6 +758,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-ebs/icon.svg",
     "id": "e9aeb0ad-18d2-4e0f-b68b-356ef5788da4",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -753,6 +789,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-ec2/icon.svg",
     "id": "4e11966f-04c2-49ca-8815-9e7de8645b1b",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -782,6 +819,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-ecs-ecr/icon.svg",
     "id": "7360ba74-1822-474e-be8e-4636dd22e7ca",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -811,6 +849,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-efs/icon.svg",
     "id": "29b8f0ce-b573-48e3-98ab-52e4231d2225",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -840,6 +879,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-elastic-beanstalk/icon.svg",
     "id": "b232f332-e27a-4d34-a966-e7f678d35145",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -868,6 +908,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-elasticache/icon.svg",
     "id": "5c1e7b31-df21-4acb-b72c-0a8786b88301",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -897,6 +938,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-elasticsearch/icon.svg",
     "id": "a69e9de8-2968-44a9-9fff-9065dd9075dd",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -925,6 +967,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-elb/icon.svg",
     "id": "ceb7f12e-fc9c-48c8-8fa8-a6d353c5f751",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -955,6 +998,7 @@
     ],
     "iconUrl": null,
     "id": "5e7868a3-df26-4c03-bad1-39b99ca89841",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": null,
@@ -980,6 +1024,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-emr/icon.svg",
     "id": "d84051ba-365f-4542-8db9-0829384ea55a",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -1008,6 +1053,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-firelens-plugin-for-logs/icon.svg",
     "id": "2e34f06f-8338-41e9-a89a-1293326ee8bb",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1038,6 +1084,7 @@
     ],
     "iconUrl": null,
     "id": "4a669b03-90fe-471c-8562-78ed529d57b8",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -1066,6 +1113,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-glue/icon.svg",
     "id": "6f4ca9e9-5b33-4073-b609-948bd59da406",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -1094,6 +1142,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-health/icon.svg",
     "id": "b9835593-aa0a-4d02-845b-33d5cec4da42",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -1122,6 +1171,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-iam/icon.svg",
     "id": "f9e383f7-5851-4296-9cdd-1ae94f21abd3",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -1150,6 +1200,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-iot/icon.svg",
     "id": "1ad84671-9c86-464e-aca0-87110057541c",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -1178,6 +1229,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-kinesis-data-firehose/icon.svg",
     "id": "2cbfb92b-9016-448b-993e-86d06a986c0a",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-kinesis-data-firehose/logo.svg",
@@ -1203,6 +1255,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-kinesis-data-streams/icon.svg",
     "id": "15ba39d9-f2de-4c4f-8ae5-255e5cf40d4d",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-kinesis-data-streams/logo.svg",
@@ -1228,6 +1281,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-lambda/icon.svg",
     "id": "6908e6c3-fed5-4c6c-a3fc-f85e467cefa1",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1257,6 +1311,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-mq/icon.svg",
     "id": "73de5982-8f59-4d2d-a90a-4838414d3304",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1287,6 +1342,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-neptunedb/icon.svg",
     "id": "3ed7e509-9e82-4357-b076-82e30eeb0d1d",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1316,6 +1372,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-nlb-alb/icon.svg",
     "id": "739f2e65-4fb4-4db4-bb9a-34c7bffb7755",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1345,6 +1402,7 @@
     ],
     "iconUrl": null,
     "id": "30a0b609-de2b-411f-a95a-f3083df738dd",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -1373,6 +1431,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-qldb/icon.svg",
     "id": "e9d8985a-7ff0-450a-b037-0eed63a5a55f",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1402,6 +1461,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-rds-enhanced/icon.svg",
     "id": "998141b4-32dd-4c6b-a550-4e0d74faacf3",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1431,6 +1491,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-rds/icon.svg",
     "id": "4f6d6f0c-a258-4c5f-9d0f-9820c3067a51",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1460,6 +1521,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-redshift/icon.svg",
     "id": "cfceb579-a15e-4a13-84ab-72bd0ffd69e8",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1489,6 +1551,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-route-53/icon.svg",
     "id": "bf043e5a-213c-411e-8eea-4e386a29a088",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1518,6 +1581,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-route53-resolver/icon.svg",
     "id": "91a052fe-cb0f-4b98-ae79-56d61abef5ec",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1547,6 +1611,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-s3/icon.svg",
     "id": "2e3b5255-667e-4084-8aad-3dd6e0df2f78",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1578,6 +1643,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-ses/icon.svg",
     "id": "4d72d691-d338-4b53-9dbf-97c5030db09e",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1607,6 +1673,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-sns/icon.svg",
     "id": "651e8b9f-955b-49b1-bd27-0db7623a2ca1",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1636,6 +1703,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-sqs/icon.svg",
     "id": "ef58d468-bcee-4a66-a641-8ff5453b5363",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1665,6 +1733,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-step-functions/icon.svg",
     "id": "7a864c4a-5005-4419-a729-3da92426b49a",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1694,6 +1763,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-transitgateway/icon.svg",
     "id": "a77fc65d-c2a3-4025-94b6-4af11ec82739",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1723,6 +1793,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-trusted-advisor/icon.svg",
     "id": "a248809c-704c-440c-bdbc-fc2e7a183a3b",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services"
@@ -1751,6 +1822,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-vpc-flow-logs/icon.svg",
     "id": "61d2ff67-f519-492c-a8de-6019b47d5bb2",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-vpc-flow-logs/logo.svg",
@@ -1776,6 +1848,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-vpc/icon.svg",
     "id": "3c6f4c9b-8369-4ec6-8b3a-b6e9f93b712a",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1805,6 +1878,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/aws/aws-waf/icon.svg",
     "id": "8aa3f09f-63ad-416f-b505-b377ad88ff06",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1834,6 +1908,7 @@
     ],
     "iconUrl": null,
     "id": "e7a26e5b-535e-4494-a770-3e8eef1390d5",
+    "installPlans": [],
     "keywords": [
       "aws",
       "amazon web services",
@@ -1863,6 +1938,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-api-management/icon.svg",
     "id": "86047b47-5628-4c80-8202-03ebd3133357",
+    "installPlans": [],
     "keywords": [
       "azure",
       "api"
@@ -1891,6 +1967,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-app-service/icon.svg",
     "id": "d58c337e-476a-4c38-b5b2-b43f66945085",
+    "installPlans": [],
     "keywords": [
       "azure",
       "web"
@@ -1919,6 +1996,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-containers/icon.svg",
     "id": "fde01772-978b-40c4-9339-51f57c6f60a8",
+    "installPlans": [],
     "keywords": [
       "azure",
       "containers"
@@ -1947,6 +2025,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-cosmos-db/icon.svg",
     "id": "81c38d53-5931-4fbc-9288-57c2c84cb1fd",
+    "installPlans": [],
     "keywords": [
       "azure",
       "database"
@@ -1975,6 +2054,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-cost-management/icon.svg",
     "id": "e49b270c-5b73-4057-8254-7aed6d39f21d",
+    "installPlans": [],
     "keywords": [
       "azure"
     ],
@@ -2002,6 +2082,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-datafactories/icon.svg",
     "id": "17f25003-8917-4e5f-bcd1-86f2bbe367ef",
+    "installPlans": [],
     "keywords": [
       "azure"
     ],
@@ -2029,6 +2110,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-event-hubs/icon.svg",
     "id": "235e5650-444d-4075-865f-5a580a2d94ef",
+    "installPlans": [],
     "keywords": [
       "azure"
     ],
@@ -2056,6 +2138,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-express-route/icon.svg",
     "id": "083affcf-780d-4c42-8c5e-0f5c76d0cdb9",
+    "installPlans": [],
     "keywords": [
       "azure",
       "networking"
@@ -2084,6 +2167,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-front-door/icon.svg",
     "id": "67cc48a3-5d43-4bca-8100-82f89b4e61dc",
+    "installPlans": [],
     "keywords": [
       "azure",
       "networking"
@@ -2112,6 +2196,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-functions/icon.svg",
     "id": "6ded839e-9df7-46db-8df9-e734cea1bd68",
+    "installPlans": [],
     "keywords": [
       "azure",
       "serverless"
@@ -2140,6 +2225,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-load-balancer/icon.svg",
     "id": "b9db8bba-d817-47c1-9325-3eb9b75852ef",
+    "installPlans": [],
     "keywords": [
       "azure",
       "load balancer"
@@ -2168,6 +2254,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-logic-apps/icon.svg",
     "id": "f0ba712c-8ffb-4d0b-a806-8cf3c444fb13",
+    "installPlans": [],
     "keywords": [
       "azure"
     ],
@@ -2195,6 +2282,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-machine-learning-services/icon.svg",
     "id": "4022bc8b-c395-424e-9073-7d4174910da7",
+    "installPlans": [],
     "keywords": [
       "azure"
     ],
@@ -2222,6 +2310,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-mariadb/icon.svg",
     "id": "55eab714-b85f-4e75-9eda-2a612ec3e6bf",
+    "installPlans": [],
     "keywords": [
       "azure",
       "database"
@@ -2250,6 +2339,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-mysql/icon.svg",
     "id": "f126b6c1-a1e8-4473-b5d3-44c22ff93008",
+    "installPlans": [],
     "keywords": [
       "azure",
       "database"
@@ -2278,6 +2368,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-postgresql/icon.svg",
     "id": "570c0703-52dc-4481-8b56-e6c0bcacb47d",
+    "installPlans": [],
     "keywords": [
       "azure",
       "database"
@@ -2306,6 +2397,7 @@
     ],
     "iconUrl": null,
     "id": "258a1a34-165c-4911-bcd4-80bb60597b24",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": null,
@@ -2331,6 +2423,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-redis-cache/icon.svg",
     "id": "690d2dd3-0b67-415a-8616-f9ae9c9c5899",
+    "installPlans": [],
     "keywords": [
       "azure",
       "database"
@@ -2359,6 +2452,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-service-bus/icon.svg",
     "id": "42a7c07b-da82-4c83-93fe-e5000060688d",
+    "installPlans": [],
     "keywords": [
       "azure",
       "messaging"
@@ -2387,6 +2481,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-sql-database/icon.svg",
     "id": "d8d0d97f-4105-436f-ba25-1e57dbd175c7",
+    "installPlans": [],
     "keywords": [
       "azure",
       "database"
@@ -2415,6 +2510,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-sql-managed-instances/icon.svg",
     "id": "16516e34-a906-4e5a-a173-1ce57a96339e",
+    "installPlans": [],
     "keywords": [
       "azure",
       "database"
@@ -2443,6 +2539,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-storage/icon.svg",
     "id": "20a76661-a6f9-4f2a-a005-5fcd6589800e",
+    "installPlans": [],
     "keywords": [
       "azure",
       "storage"
@@ -2471,6 +2568,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-virtual-machine-scale-sets/icon.svg",
     "id": "6613fa94-df3d-4244-af9d-08987a713e76",
+    "installPlans": [],
     "keywords": [
       "azure"
     ],
@@ -2498,6 +2596,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-virtual-network/icon.svg",
     "id": "f812a124-5443-4451-94d3-32b54c109555",
+    "installPlans": [],
     "keywords": [
       "azure",
       "networking"
@@ -2526,6 +2625,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-vms/icon.svg",
     "id": "d4d5667f-1c10-4b06-aa74-fbbf29dda8a8",
+    "installPlans": [],
     "keywords": [
       "azure"
     ],
@@ -2553,6 +2653,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/azure/azure-vpn-gateways/icon.svg",
     "id": "22cf0fc1-a0ea-454a-b40b-5df015c1799e",
+    "installPlans": [],
     "keywords": [
       "azure",
       "networking"
@@ -2581,6 +2682,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/blameless/icon.svg",
     "id": "16f63478-7238-4c52-8145-ec5a2f56162e",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/blameless/logo.svg",
@@ -2635,6 +2737,12 @@
     "documentation": [],
     "iconUrl": null,
     "id": "721fd258-326d-41f4-8f5d-0d5538ac7487",
+    "installPlans": [
+      {
+        "id": "browser-docs",
+        "name": "Browser"
+      }
+    ],
     "keywords": [
       "browser agent",
       "web",
@@ -2667,6 +2775,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/c/icon.svg",
     "id": "7fa19c5e-b97b-4c4d-954e-bc209afec3ba",
+    "installPlans": [
+      {
+        "id": "setup-c-agent",
+        "name": "C SDK Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "language agent"
@@ -2705,6 +2819,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/cassandra/icon.png",
     "id": "ea959955-15c6-4db2-9d35-bb57e4c0a283",
+    "installPlans": [
+      {
+        "id": "cassandra-integration",
+        "name": "Cassandra"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "database"
@@ -2733,6 +2853,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/centos/icon.svg",
     "id": "b3d951d1-82f3-4dc3-82bc-d7ecd56a749d",
+    "installPlans": [
+      {
+        "id": "guided-install",
+        "name": "Guided install"
+      }
+    ],
     "keywords": [
       "os",
       "operating system"
@@ -2761,6 +2887,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/chef/icon.svg",
     "id": "ad40ccc2-f7ef-44bf-b961-07813088fce0",
+    "installPlans": [],
     "keywords": [
       "automation",
       "devops",
@@ -2790,6 +2917,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/cloudfoundry/icon.svg",
     "id": "944e2662-5ff7-4989-b9a6-66a200401d1e",
+    "installPlans": [],
     "keywords": [
       "containers"
     ],
@@ -2817,6 +2945,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/collectd/icon.svg",
     "id": "b0ba29c2-be55-4da2-bf24-f8cc3c27715c",
+    "installPlans": [],
     "keywords": [
       "open source monitoring"
     ],
@@ -2854,6 +2983,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/consul/icon.png",
     "id": "b65825cc-faee-47b5-8d7c-6d60d6ab3c59",
+    "installPlans": [
+      {
+        "id": "hashicorp-consul-integration",
+        "name": "HashiCorp Consul"
+      }
+    ],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/consul/logo.png",
@@ -2879,6 +3014,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/cordova/icon.svg",
     "id": "b5845bee-2b61-454f-9e6a-1a14ffc3e052",
+    "installPlans": [],
     "keywords": [
       "android",
       "ios",
@@ -2918,6 +3054,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/couchbase/icon.png",
     "id": "f10edd8d-57d0-4b11-b074-eb20c6c3fd45",
+    "installPlans": [
+      {
+        "id": "couchbase-integration",
+        "name": "Couchbase"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "database"
@@ -2946,6 +3088,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/cplusplus/icon.svg",
     "id": "e9c70324-f5c2-48fc-943e-57b4600ebd3e",
+    "installPlans": [
+      {
+        "id": "setup-c-agent",
+        "name": "C SDK Agent"
+      }
+    ],
     "keywords": [
       "apm"
     ],
@@ -2982,6 +3130,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/databricks/icon.png",
     "id": "924fd4b3-a6d1-4a6e-9e2c-b598f197f713",
+    "installPlans": [
+      {
+        "id": "third-party-databricks",
+        "name": "Databricks"
+      }
+    ],
     "keywords": [
       "nrlabs",
       "nrlabs-data",
@@ -3013,6 +3167,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/debian/icon.svg",
     "id": "1961cd44-68b3-4a59-8d48-45a881c0e3c0",
+    "installPlans": [
+      {
+        "id": "guided-install",
+        "name": "Guided install"
+      }
+    ],
     "keywords": [
       "os",
       "operating system"
@@ -3041,6 +3201,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/docker/icon.svg",
     "id": "ba8030a4-7351-4798-ae36-d74d08f39e4e",
+    "installPlans": [],
     "keywords": [
       "containers"
     ],
@@ -3098,6 +3259,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/asp-dotnet-mvc/icon.svg",
     "id": "8fb22c76-46c3-4720-bd82-bd101e5c890c",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet"
@@ -3156,6 +3323,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/asp-dotnet-web-forms/icon.svg",
     "id": "9ec196c6-1725-40fd-b18a-6224a7377851",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet"
@@ -3214,6 +3387,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/csla-dotnet/icon.svg",
     "id": "29451385-d9b5-4f31-86b7-70b940531074",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet"
@@ -3272,6 +3451,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/dnn-community/icon.svg",
     "id": "8808f632-18b7-4a81-b48e-fd4f3077be2a",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet",
@@ -3332,6 +3517,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/dotnet-core/icon.svg",
     "id": "cbffd8f3-11db-40d7-a723-50e744485651",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet"
@@ -3390,6 +3581,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/dotnet-mvc-web-api/icon.svg",
     "id": "5313d4e0-13e1-4f50-982a-09d0cb67618e",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/dotnet-mvc-web-api/logo.svg",
@@ -3446,6 +3643,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/dotnet/icon.svg",
     "id": "2dff13b6-0fac-43a6-abc6-57f0a3299639",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet",
@@ -3505,6 +3708,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/episerver-cms/icon.svg",
     "id": "abd04f74-c83f-47f5-a9f0-635ae12376d8",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet",
@@ -3565,6 +3774,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/fubumvc/icon.svg",
     "id": "dbce65a2-5f9a-48cb-a957-966338a065d3",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet"
@@ -3623,6 +3838,12 @@
     ],
     "iconUrl": null,
     "id": "1df9c507-ceb3-46d6-be43-7d8c43a161b3",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet"
@@ -3651,6 +3872,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/jayrock/icon.svg",
     "id": "bc2343ee-5cf0-4213-8aaa-aad8569fd03c",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet"
@@ -3709,6 +3936,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/monorail/icon.svg",
     "id": "3082c380-5cc1-48f7-976c-2b5157ecad92",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet"
@@ -3767,6 +4000,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/msmq/icon.svg",
     "id": "8a2e0510-8a26-4a61-bd41-512dff1e2f01",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet",
@@ -3826,6 +4065,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/nancyfx/icon.svg",
     "id": "d676107b-9f7d-4770-bda0-440d94eeac50",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "dotnet"
@@ -3884,6 +4129,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/nservicebus/icon.svg",
     "id": "f3f28a00-8cea-41f1-a6fe-ebf5eae5791e",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/nservicebus/logo.svg",
@@ -3939,6 +4190,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/openrasta/icon.svg",
     "id": "74600672-3ccb-4e18-baf9-459dc272d654",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/openrasta/logo.svg",
@@ -3994,6 +4251,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/restsharp/icon.svg",
     "id": "4967824f-1a29-417f-88f2-093d30a41fc2",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/restsharp/logo.svg",
@@ -4049,6 +4312,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/servicestack/icon.svg",
     "id": "a31a0d6f-0c4c-4652-849f-c5537fbe617a",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/servicestack/logo.svg",
@@ -4104,6 +4373,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/silverlight/icon.svg",
     "id": "fe42916f-1756-4c93-af10-7236de6d0f6e",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/silverlight/logo.svg",
@@ -4159,6 +4434,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/springdotnet/icon.svg",
     "id": "a9e5eef7-efc9-475f-91d9-81981d968e90",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dotnet/springdotnet/logo.svg",
@@ -4214,6 +4495,12 @@
     ],
     "iconUrl": null,
     "id": "f3b27140-ec22-4f7c-bd06-27d705370c6e",
+    "installPlans": [
+      {
+        "id": "dotnet-agent",
+        "name": ".NET Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": null,
@@ -4239,6 +4526,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/dropwizard/icon.svg",
     "id": "ad44341f-63a7-4fb0-be4e-61db55d28455",
+    "installPlans": [],
     "keywords": [
       "open source monitoring"
     ],
@@ -4266,6 +4554,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/drupal/icon.svg",
     "id": "12c2e734-6da4-4723-b484-e3dcf2e20012",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/drupal/logo.svg",
@@ -4291,6 +4585,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ejb-session-beans/icon.svg",
     "id": "d3935d9c-ddc1-47a7-ac6c-7d1ee513a6b4",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ejb-session-beans/logo.svg",
@@ -4371,6 +4666,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/elasticsearch/icon.png",
     "id": "d42f2744-3d69-4860-97af-ec9e75885038",
+    "installPlans": [
+      {
+        "id": "elasticsearch-integration",
+        "name": "Elasticsearch"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "database"
@@ -4399,6 +4700,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/f5/icon.svg",
     "id": "0da402d7-e8ef-4a97-8e3f-fc476a86a3c0",
+    "installPlans": [],
     "keywords": [
       "infrastructure",
       "load balancer"
@@ -4427,6 +4729,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/fluent-bit-plugin-for-logs/icon.svg",
     "id": "6cf85c11-8e07-40b1-9236-b1581c18bfd1",
+    "installPlans": [],
     "keywords": [
       "logs",
       "logging"
@@ -4455,6 +4758,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/fluentd-plugin-for-logs/icon.svg",
     "id": "f556df41-4cff-4e22-a4aa-e674e4d6ade8",
+    "installPlans": [],
     "keywords": [
       "logs",
       "logging"
@@ -4483,6 +4787,7 @@
     ],
     "iconUrl": null,
     "id": "7d67b885-4a85-4c2e-b639-8d8b704b6def",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": null,
@@ -4512,6 +4817,7 @@
     "documentation": [],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gatsby-build/icon.png",
     "id": "d234c09c-3338-4713-8340-ca75766445d6",
+    "installPlans": [],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gatsby-build/logo.png",
@@ -4537,6 +4843,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/gcp-cloud-run/icon.svg",
     "id": "161abdd1-8d62-49c7-84cf-3b3f3abb59ef",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -4566,6 +4873,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/gcp-dataflow/icon.svg",
     "id": "dec05983-5c59-4fdd-9446-211d5bd7e20d",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform"
@@ -4594,6 +4902,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/gcp-dataproc/icon.svg",
     "id": "3128c4a1-0807-48f8-90e4-08314f450613",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform"
@@ -4622,6 +4931,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/gcp-datastore/icon.svg",
     "id": "55107a4b-fb51-4ba2-9ac7-0fe1278c1310",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -4651,6 +4961,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/gcp-dedicated-interconnect/icon.svg",
     "id": "4041f83f-32ba-4406-8c08-06b669a83d06",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -4680,6 +4991,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/gcp-firebase-database/icon.svg",
     "id": "8737e244-282b-41a8-a25b-f527c40eaa4d",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform"
@@ -4708,6 +5020,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/gcp-firebase-hosting/icon.svg",
     "id": "655923cb-651b-4b69-a790-1b0bb4ab906d",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform"
@@ -4736,6 +5049,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/gcp-firebase-storage/icon.svg",
     "id": "e336e54a-6b3c-4bbf-b869-3bca0e89e5c2",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform"
@@ -4764,6 +5078,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/gcp-firestore/icon.svg",
     "id": "862aa133-98f2-407b-a807-7b9e6496cd89",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -4793,6 +5108,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/gcp-router/icon.svg",
     "id": "8f682165-82e6-4cf4-b67f-348cd7624689",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -4822,6 +5138,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/gcp-vpc/icon.svg",
     "id": "9ead6653-26c0-46c0-9e84-8cb5f2ad0f89",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -4851,6 +5168,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/google-app-engine/icon.svg",
     "id": "77bf282e-6a21-4d32-a805-de97cd06b595",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/google-app-engine/logo.svg",
@@ -4876,6 +5194,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/google-bigquery/icon.svg",
     "id": "c5a46745-81dd-4f5c-8918-398da04b03e6",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -4905,6 +5224,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/google-cloud-functions/icon.svg",
     "id": "b8d43c33-c1e3-4ce0-ac77-efa48f339ea7",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -4934,6 +5254,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/google-cloud-spanner/icon.svg",
     "id": "98957106-b7dc-43d7-99c7-f367a9879813",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -4963,6 +5284,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/google-cloud-sql/icon.svg",
     "id": "139a99a9-d9b8-4b17-96b0-114c4434a023",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -4992,6 +5314,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/google-cloud-storage/icon.svg",
     "id": "88f15100-4a66-465c-9b4b-747c9ab32071",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -5021,6 +5344,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/google-compute-engine/icon.svg",
     "id": "a88622bb-b942-444f-a4aa-8e034c237f41",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform"
@@ -5049,6 +5373,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/google-load-balancing/icon.svg",
     "id": "11f68d4b-8a52-4b05-acce-08de24c99b09",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -5079,6 +5404,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/gcp/google-pub-sub/icon.svg",
     "id": "7ee5466d-31ec-4b91-a7ca-18dc91b43424",
+    "installPlans": [],
     "keywords": [
       "gcp",
       "google cloud platform",
@@ -5108,6 +5434,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/golang/echo/icon.svg",
     "id": "31e4cb0c-fdb0-4bdd-9631-1072be75bd8b",
+    "installPlans": [
+      {
+        "id": "setup-go-agent",
+        "name": "Go Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "golang"
@@ -5136,6 +5468,12 @@
     ],
     "iconUrl": null,
     "id": "d0dee9c1-b67b-427d-bb85-303cc5dab2a8",
+    "installPlans": [
+      {
+        "id": "setup-go-agent",
+        "name": "Go Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "golang"
@@ -5164,6 +5502,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/golang/golang/icon.svg",
     "id": "87dc92ae-94df-4034-a9fa-d5edfb253e29",
+    "installPlans": [
+      {
+        "id": "setup-go-agent",
+        "name": "Go Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "golang",
@@ -5193,6 +5537,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/golang/httprouter/icon.svg",
     "id": "66433ac5-1908-4af0-b1f8-9c78e5eed8df",
+    "installPlans": [
+      {
+        "id": "setup-go-agent",
+        "name": "Go Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "golang"
@@ -5221,6 +5571,12 @@
     ],
     "iconUrl": null,
     "id": "0ec4a7a7-9f9a-4c1d-af3d-07803619711b",
+    "installPlans": [
+      {
+        "id": "setup-go-agent",
+        "name": "Go Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "golang",
@@ -5250,6 +5606,12 @@
     ],
     "iconUrl": null,
     "id": "075e9126-ea33-44e0-bae4-f7dec0db91fd",
+    "installPlans": [
+      {
+        "id": "setup-go-agent",
+        "name": "Go Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "golang",
@@ -5280,6 +5642,12 @@
     ],
     "iconUrl": null,
     "id": "0c244f76-acd6-474f-86f6-1e65f324b976",
+    "installPlans": [
+      {
+        "id": "setup-go-agent",
+        "name": "Go Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "golang",
@@ -5310,6 +5678,12 @@
     ],
     "iconUrl": null,
     "id": "1b217f59-7152-40f9-b63b-01b5952ff45a",
+    "installPlans": [
+      {
+        "id": "setup-go-agent",
+        "name": "Go Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "golang"
@@ -5338,6 +5712,12 @@
     ],
     "iconUrl": null,
     "id": "dc906e6a-ff9c-4fe5-935f-e8a7673c14bf",
+    "installPlans": [
+      {
+        "id": "setup-go-agent",
+        "name": "Go Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "golang"
@@ -5366,6 +5746,12 @@
     ],
     "iconUrl": null,
     "id": "ac4355fd-31bc-4753-a67f-7e24feb9cb55",
+    "installPlans": [
+      {
+        "id": "setup-go-agent",
+        "name": "Go Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": null,
@@ -5391,6 +5777,12 @@
     ],
     "iconUrl": null,
     "id": "f49bc8d7-8dee-4096-974f-109eb6cbb058",
+    "installPlans": [
+      {
+        "id": "setup-go-agent",
+        "name": "Go Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "golang"
@@ -5454,6 +5846,12 @@
     "documentation": [],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/golden-signals-web/icon.jpeg",
     "id": "aae62e98-51c4-4e73-82b4-29d9ae95433a",
+    "installPlans": [
+      {
+        "id": "guided-install",
+        "name": "Guided install"
+      }
+    ],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/golden-signals-web/logo.png",
@@ -5492,6 +5890,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/haproxy/icon.png",
     "id": "9ce1d531-ac54-4c70-809f-1e4e04db1fd2",
+    "installPlans": [
+      {
+        "id": "haproxy-integration",
+        "name": "HAProxy"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "load balancer"
@@ -5520,6 +5924,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/heroku/icon.png",
     "id": "30b8f247-a3c9-4f48-bcb5-9a02a398fc4b",
+    "installPlans": [
+      {
+        "id": "logs-heroku",
+        "name": "Heroku Logs"
+      }
+    ],
     "keywords": [
       "logs",
       "heroku",
@@ -5553,6 +5963,12 @@
     "documentation": [],
     "iconUrl": null,
     "id": "71419258-a96f-4845-b4f7-723f3b29d6a5",
+    "installPlans": [
+      {
+        "id": "infra-agent-standard",
+        "name": "Infrastructure Agent"
+      }
+    ],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": null,
@@ -5578,6 +5994,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ios/icon.svg",
     "id": "63bf288d-707e-4214-aac9-b51e7121b22d",
+    "installPlans": [],
     "keywords": [
       "mobile",
       "mobile agent"
@@ -5606,6 +6023,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/istio/icon.svg",
     "id": "36aa41e3-2d2a-41d7-844a-083f00c5d65e",
+    "installPlans": [],
     "keywords": [
       "kubernetes"
     ],
@@ -5653,6 +6071,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/adobe-cq/icon.svg",
     "id": "5f832d4a-8563-44b0-aff0-f9449a993121",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/adobe-cq/logo.svg",
@@ -5698,6 +6122,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/akka/icon.svg",
     "id": "a117414a-959c-4830-af3c-55d612ad043e",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -5746,6 +6176,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/anorm/icon.svg",
     "id": "ff7d6b8a-b6cd-445e-b679-65458b405453",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -5794,6 +6230,12 @@
     ],
     "iconUrl": null,
     "id": "7659dfcd-54c1-46f8-8916-6a038300133c",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "http",
@@ -5843,6 +6285,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/coldfusion/icon.svg",
     "id": "c09a9f00-2339-45ae-b680-696ad467154a",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -5891,6 +6339,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/cxf/icon.svg",
     "id": "7c880505-ed7d-4f2d-98b6-13fc2a3fa114",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -5919,6 +6373,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/datastax-cassandra/icon.svg",
     "id": "06bf5a72-2b2b-472d-83cc-af9b8156eea3",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java",
@@ -5968,6 +6428,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/derby/icon.svg",
     "id": "c3839af0-2041-4bb7-a330-fb6444c43097",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java",
@@ -6017,6 +6483,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/generic-jdbc/icon.svg",
     "id": "495ecdd5-ba37-47b9-819f-c02a528c2c37",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/generic-jdbc/logo.svg",
@@ -6062,6 +6534,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/glassfish/icon.svg",
     "id": "f325b81a-9d6f-46ee-8ac4-42815ec6cd1b",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6110,6 +6588,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/grails/icon.svg",
     "id": "04619b1c-a26c-457e-b274-d8347a759631",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6158,6 +6642,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/grpc/icon.svg",
     "id": "3473982b-d42a-4505-82be-9f3cda13bb8e",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6206,6 +6696,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/h2/icon.svg",
     "id": "33d2fa2c-edd9-4ad4-91a1-a2202df6d977",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java",
@@ -6255,6 +6751,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/hibernate/icon.svg",
     "id": "120df901-2cce-4ddc-bb47-c573dea92449",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java",
@@ -6304,6 +6806,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/hsql/icon.svg",
     "id": "224a0391-6733-4472-8325-2e84d1eb71f3",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java",
@@ -6353,6 +6861,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/hystrix/icon.svg",
     "id": "05eaa88e-417e-48aa-aa85-ecef493a2b44",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6401,6 +6915,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/ibm-db2/icon.svg",
     "id": "ccd61ecf-8f95-4fba-b57c-bff8f96b2877",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java",
@@ -6450,6 +6970,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/inet-merlia/icon.svg",
     "id": "bbb9953a-217b-4168-9316-891d65f2c90f",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6499,6 +7025,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/java/icon.svg",
     "id": "3ebfb315-d0a6-4b27-9f89-b16a9a1ada5f",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java",
@@ -6548,6 +7080,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/jax-rs/icon.svg",
     "id": "c622cf23-937a-40be-873c-0af1f1e17d96",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6596,6 +7134,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/jcache-api/icon.svg",
     "id": "e2eac9ef-7fc7-4c7b-90bb-66d9d0a8ad9a",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6644,6 +7188,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/jersey/icon.svg",
     "id": "11e3307b-961f-401a-8c70-6ba7e8281a61",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6692,6 +7242,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/jetty/icon.svg",
     "id": "bd25431c-30f4-4e48-80b5-737178ec9125",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java",
@@ -6741,6 +7297,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/jms/icon.svg",
     "id": "b4d77144-cbb8-4e08-9266-a13c33e1cb40",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6789,6 +7351,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/jsf/icon.svg",
     "id": "efd3c5ea-f478-47ed-bbfb-e730e48e3fd6",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6837,6 +7405,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/jsp/icon.svg",
     "id": "b95404a4-e64b-48c6-9bef-5d1697d95090",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6885,6 +7459,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/mule-esb/icon.svg",
     "id": "fb550b47-c33b-48a8-be4f-5cf469d34b59",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6933,6 +7513,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/netty/icon.svg",
     "id": "6c25b345-1377-42be-b265-d511e0d170f8",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -6981,6 +7567,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/oc4j/icon.svg",
     "id": "e69ba5e0-04bc-48df-a246-9d371a2ecdf5",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7029,6 +7621,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/opentelemetry-java-exporter/icon.svg",
     "id": "e1a0b7db-3d39-47af-b239-d6d172e4c211",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/opentelemetry-java-exporter/logo.svg",
@@ -7074,6 +7672,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/play-ws/icon.svg",
     "id": "5df06d60-ba6c-4522-8536-21757c49a5f0",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7122,6 +7726,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/play/icon.svg",
     "id": "ff857ff5-2464-48f2-ab4b-27a2d58bf605",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7170,6 +7780,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/quartz-job-scheduler/icon.svg",
     "id": "c4569c6c-1ef5-4be0-a235-8b2027e0813d",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7218,6 +7834,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/resin/icon.svg",
     "id": "ffb08d84-b825-4550-baa0-1b8c6b94bde7",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7266,6 +7888,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/resteasy/icon.svg",
     "id": "7d8d1010-ac74-44a0-92ba-84488fb85280",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7314,6 +7942,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/scala/icon.svg",
     "id": "b946df67-a9d8-45e4-8af3-f96079d6ad38",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7362,6 +7996,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/slick/icon.svg",
     "id": "c47bbe84-8279-4730-80cf-92563ff0f8bd",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7410,6 +8050,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/solr/icon.svg",
     "id": "77c77c91-17c4-4448-89cb-b0068a4e45ac",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7458,6 +8104,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/spray-can/icon.svg",
     "id": "2907733c-6b3d-4044-97e2-2677889017b8",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7506,6 +8158,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/spring-jms/icon.svg",
     "id": "f27c303f-4a6b-4cc6-b4ab-6d0d33e99d0a",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7554,6 +8212,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/spring/icon.svg",
     "id": "a02ce528-4ba6-42bd-a109-25bfbb827b3e",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7602,6 +8266,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/spymemcached/icon.svg",
     "id": "523d68d1-aab4-4fc9-ae69-9dea53374a14",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7650,6 +8320,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/struts/icon.svg",
     "id": "ae3c5a6c-4c3b-4b72-ae07-5f90a633073f",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7698,6 +8374,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/thrift/icon.svg",
     "id": "2c1daa78-fd43-4fd8-84f6-ffe4b2ced430",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7746,6 +8428,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/tomcat/icon.svg",
     "id": "d3e84281-6094-4cb2-b323-30e4f13b4f0c",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7794,6 +8482,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/tomee/icon.svg",
     "id": "65a5accd-3395-4a8c-b385-03e4f2200137",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7842,6 +8536,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/vert-x/icon.svg",
     "id": "6f1446cc-d4be-4de0-8716-cf60d38c01c2",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/vert-x/logo.svg",
@@ -7887,6 +8587,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/weblogic/icon.svg",
     "id": "dc6e140e-79fd-43ab-b113-26376e534e63",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7935,6 +8641,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/websphere/icon.svg",
     "id": "ace9ed93-a009-4245-b595-b386fbdd6590",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -7983,6 +8695,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/java/wildfly/icon.svg",
     "id": "51925d0c-0e76-45cb-97f9-4b0b8428f3cc",
+    "installPlans": [
+      {
+        "id": "setup-java-agent",
+        "name": "Java Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "java"
@@ -8022,6 +8740,16 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/jmx/icon.svg",
     "id": "63785e32-4153-41af-a70b-18e896e37f44",
+    "installPlans": [
+      {
+        "id": "infra-agent-targeted",
+        "name": "Infrastructure Agent"
+      },
+      {
+        "id": "jmx-integration-docs",
+        "name": "JMX"
+      }
+    ],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/jmx/logo.png",
@@ -8060,6 +8788,16 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/kafka/icon.png",
     "id": "9c559112-90e1-4ff4-b38b-90c0ba3c56fe",
+    "installPlans": [
+      {
+        "id": "infra-agent-targeted",
+        "name": "Infrastructure Agent"
+      },
+      {
+        "id": "kafka-integration-docs",
+        "name": "Kafka"
+      }
+    ],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/kafka/logo.png",
@@ -8085,6 +8823,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/kamon/icon.svg",
     "id": "24ac944c-c546-42df-891f-29fb89d51237",
+    "installPlans": [],
     "keywords": [
       "open source monitoring"
     ],
@@ -8112,6 +8851,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/kubernetes/google-kubernetes-engine/icon.svg",
     "id": "7ecb459a-eb29-4346-a6f0-c9fe1acf8830",
+    "installPlans": [],
     "keywords": [
       "kubernetes",
       "containers"
@@ -8140,6 +8880,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/kubernetes/kubernetes-plugin-for-logs/icon.svg",
     "id": "6868d952-7e27-4dbb-823b-1077f6258bbf",
+    "installPlans": [],
     "keywords": [
       "kubernetes",
       "logs",
@@ -8169,6 +8910,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/kubernetes/kubernetes/icon.svg",
     "id": "88a79f52-81c1-4fa2-99f8-3cb5b012f160",
+    "installPlans": [],
     "keywords": [
       "kubernetes",
       "containers"
@@ -8197,6 +8939,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/lacework/icon.svg",
     "id": "8a7a7220-e8ec-4959-b35d-0fe082be8039",
+    "installPlans": [],
     "keywords": [
       "security"
     ],
@@ -8228,6 +8971,20 @@
     "documentation": [],
     "iconUrl": null,
     "id": "816e3eba-ffea-4b0c-9150-b7a0f3a025d9",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      },
+      {
+        "id": "apache-integration",
+        "name": "Apache"
+      },
+      {
+        "id": "mysql-integration",
+        "name": "MySQL"
+      }
+    ],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": null,
@@ -8253,6 +9010,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/launchdarkly/icon.svg",
     "id": "f81fac99-351c-4e50-9991-69cff5bf7798",
+    "installPlans": [],
     "keywords": [
       "testing"
     ],
@@ -8280,6 +9038,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/lighthouse/icon.svg",
     "id": "4e3eb972-60a0-46c1-9983-0a40f7ee0cd9",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/lighthouse/logo.svg",
@@ -8305,6 +9064,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/linux/icon.svg",
     "id": "5b420314-fbfb-4c62-85ed-42200d76cf9a",
+    "installPlans": [
+      {
+        "id": "guided-install",
+        "name": "Guided install"
+      }
+    ],
     "keywords": [
       "os",
       "operating system"
@@ -8333,6 +9098,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/logstash-plugin-for-logs/icon.svg",
     "id": "fc6425fb-4fe9-40c7-be05-a27214cb5772",
+    "installPlans": [],
     "keywords": [
       "logs",
       "logging"
@@ -8361,6 +9127,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/mariadb/icon.svg",
     "id": "0919c174-0ce5-4b34-a5c0-255986ff9706",
+    "installPlans": [
+      {
+        "id": "mysql-integration",
+        "name": "MySQL"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "database"
@@ -8399,6 +9171,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/memcached/icon.png",
     "id": "b892f939-8c3b-4419-b041-639117b14874",
+    "installPlans": [
+      {
+        "id": "memcached-integration",
+        "name": "Memcached"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "database"
@@ -8432,6 +9210,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/micrometer/icon.svg",
     "id": "95e7fd2d-b9a9-4088-ba1d-a2f5d208dbdc",
+    "installPlans": [],
     "keywords": [
       "open source monitoring"
     ],
@@ -8468,6 +9247,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/mlops/algorithmia/icon.svg",
     "id": "d0e829a6-ede4-4933-9065-9f0c56f8aa7e",
+    "installPlans": [
+      {
+        "id": "algorithmia-mlops",
+        "name": "Algorithmia"
+      }
+    ],
     "keywords": [
       "mlops",
       "ml",
@@ -8512,6 +9297,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/mongodb/icon.png",
     "id": "6183e12f-a398-48e6-8431-a48db03e4443",
+    "installPlans": [
+      {
+        "id": "mongodb-integration",
+        "name": "MongoDB"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "database"
@@ -8540,6 +9331,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/mssql/icon.svg",
     "id": "58b693d2-6e8d-4df0-b8b4-00a089376d2d",
+    "installPlans": [
+      {
+        "id": "microsoft-sql-server-integration",
+        "name": "Microsoft SQL Server"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "database"
@@ -8603,6 +9400,12 @@
     ],
     "iconUrl": null,
     "id": "ad9f635b-6496-48a8-b373-9fab81a7f719",
+    "installPlans": [
+      {
+        "id": "mysql-integration",
+        "name": "MySQL"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "database"
@@ -8643,6 +9446,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/nagios/icon.png",
     "id": "a55b5d3b-bff6-4caa-b56f-b28dfa3fc94b",
+    "installPlans": [
+      {
+        "id": "nagios-integration",
+        "name": "Nagios"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "open source monitoring"
@@ -8695,6 +9504,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/network-flow-devices/icon.png",
     "id": "6d275d10-9aaf-4351-b556-0174fca3ffca",
+    "installPlans": [],
     "keywords": [
       "npm",
       "network",
@@ -8741,6 +9551,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/nginx/icon.png",
     "id": "2567c5e0-06de-4ff6-a4f2-6cbe5aed07b3",
+    "installPlans": [
+      {
+        "id": "nginx-integration",
+        "name": "Nginx"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "web"
@@ -8798,6 +9614,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/node-js/express/icon.svg",
     "id": "da8f3197-7766-4096-92db-32edc8a8a36e",
+    "installPlans": [
+      {
+        "id": "node-agent",
+        "name": "Node Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "node.js"
@@ -8855,6 +9677,12 @@
     ],
     "iconUrl": null,
     "id": "2124da5b-0174-457a-be5a-e0068673b2b5",
+    "installPlans": [
+      {
+        "id": "node-agent",
+        "name": "Node Agent"
+      }
+    ],
     "keywords": [
       "api",
       "apm",
@@ -8913,6 +9741,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/node-js/koa/icon.svg",
     "id": "394619e0-fd94-47ce-98dd-6f6f5183264b",
+    "installPlans": [
+      {
+        "id": "node-agent",
+        "name": "Node Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "node.js"
@@ -8971,6 +9805,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/node-js/node-js/icon.svg",
     "id": "01fdea36-5a15-44b4-a864-c4c99866735b",
+    "installPlans": [
+      {
+        "id": "node-agent",
+        "name": "Node Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "node.js",
@@ -9029,6 +9869,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/node-js/restify/icon.svg",
     "id": "027439cc-1ee3-40ba-be68-fc684bdbdc8b",
+    "installPlans": [
+      {
+        "id": "node-agent",
+        "name": "Node Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "node.js"
@@ -9057,6 +9903,7 @@
     ],
     "iconUrl": null,
     "id": "0b9f2f49-3a5d-4fda-a006-24be1ccf15e3",
+    "installPlans": [],
     "keywords": [
       "mobile",
       "android"
@@ -9090,6 +9937,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/opencensus/icon.svg",
     "id": "7ffcbd99-a8ac-4414-bdd1-f3bb9f02598e",
+    "installPlans": [],
     "keywords": [
       "tracing",
       "open source monitoring"
@@ -9118,6 +9966,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/opentelemetry/icon.svg",
     "id": "55445c3b-36dc-4bea-b31f-9f82fd551650",
+    "installPlans": [],
     "keywords": [
       "open source monitoring"
     ],
@@ -9145,6 +9994,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/oracle/inet-oracle-driver/icon.svg",
     "id": "6294013d-2179-4604-90c0-abe4460e815c",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/oracle/inet-oracle-driver/logo.svg",
@@ -9170,6 +10020,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/oracle/oracle-database/icon.svg",
     "id": "f344c2bd-3d86-43d9-9e6f-24bdc3873918",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/oracle/oracle-database/logo.svg",
@@ -9195,6 +10046,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/pagerduty/pagerduty/icon.svg",
     "id": "f2143fb1-5504-4850-8620-06e9341858ea",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/pagerduty/pagerduty/logo.svg",
@@ -9220,6 +10072,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/perfmon/icon.svg",
     "id": "db769025-d3a7-437b-896d-64f5a7a26cac",
+    "installPlans": [],
     "keywords": [
       "windows"
     ],
@@ -9247,6 +10100,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/cakephp/icon.svg",
     "id": "64bbbba3-10ab-4f15-8151-5079cecda894",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php"
@@ -9275,6 +10134,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/codeigniter/icon.svg",
     "id": "66a6a268-9a89-43be-9226-5f3ca0dfa268",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php"
@@ -9303,6 +10168,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/guzzle/icon.svg",
     "id": "6b6b1702-7636-4b60-a2b8-d5765d11ec13",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php"
@@ -9331,6 +10202,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/joomla/icon.svg",
     "id": "64a0fd15-349e-4083-96cc-3ef1f2b31e1a",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php",
@@ -9361,6 +10238,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/kohana/icon.svg",
     "id": "5435090b-1267-4341-b53b-fcad31274e56",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php"
@@ -9389,6 +10272,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/laravel/icon.svg",
     "id": "919aad44-52ba-47fd-9e29-12195979015e",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php"
@@ -9417,6 +10306,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/magento/icon.svg",
     "id": "509a6b56-d580-4e8c-8c64-cb71a61b8a26",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php",
@@ -9447,6 +10342,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/mediawiki/icon.svg",
     "id": "f3dcd610-a35c-4464-b141-f1440508b23b",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php",
@@ -9477,6 +10378,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/odbc/icon.svg",
     "id": "f6728c42-38bb-4e23-b78f-298555640b98",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php",
@@ -9506,6 +10413,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/pdo/icon.svg",
     "id": "6de33cc8-dff7-4b25-8221-2ae01ca988af",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php",
@@ -9564,6 +10477,12 @@
     ],
     "iconUrl": null,
     "id": "475dec69-10c9-4bc6-8312-3caa266fb028",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php",
@@ -9593,6 +10512,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/phpunit/icon.svg",
     "id": "17164f15-752d-435b-96c6-9d4803cdfa01",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php",
@@ -9622,6 +10547,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/predis/icon.svg",
     "id": "e77de8fd-ae73-4853-b00a-2e42b0841464",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/predis/logo.svg",
@@ -9647,6 +10578,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/silex/icon.svg",
     "id": "d154455e-ae50-4feb-a277-9b6ea0eb998e",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/silex/logo.svg",
@@ -9672,6 +10604,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/slim/icon.svg",
     "id": "c2bbf5f0-e04b-4450-97a6-362e027ff316",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php"
@@ -9700,6 +10638,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/sqlite/icon.svg",
     "id": "4e928e1a-0e78-4c2f-bba2-fb0804774e86",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php",
@@ -9729,6 +10673,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/symfony/icon.svg",
     "id": "ff0c7881-b5a5-4ccc-8596-b28a982b1586",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php"
@@ -9757,6 +10707,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/php/yii/icon.svg",
     "id": "5d2be045-5f50-4b0e-a3c4-c61446c05152",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "php"
@@ -9785,6 +10741,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/pivotal-tracker/icon.svg",
     "id": "26a11545-4bd4-45d8-ac5e-63a73813c04e",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/pivotal-tracker/logo.svg",
@@ -9810,6 +10767,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/port-monitoring/icon.svg",
     "id": "650d963a-8568-49a8-81d4-fc226f12ec10",
+    "installPlans": [],
     "keywords": [
       "infrastructure",
       "networking"
@@ -9849,6 +10807,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/postgresql/icon.png",
     "id": "18ee5d2e-f5dd-4e0a-9616-af9deaa12cb2",
+    "installPlans": [
+      {
+        "id": "postgresql-integration",
+        "name": "PostgreSQL"
+      }
+    ],
     "keywords": [],
     "level": "NEWRELIC",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/postgresql/logo.jpeg",
@@ -9874,6 +10838,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/prometheus/icon.svg",
     "id": "0dcf38e5-0e99-499b-94ca-2d515a9b1df1",
+    "installPlans": [],
     "keywords": [
       "open source monitoring"
     ],
@@ -9901,6 +10866,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/puppet/icon.svg",
     "id": "b70291ad-ff88-4ff9-9173-d4b2f99656af",
+    "installPlans": [],
     "keywords": [
       "automation"
     ],
@@ -9958,6 +10924,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/aiohttp/icon.svg",
     "id": "e7948525-8726-46a5-83fa-04732ad42fd1",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "python",
       "apm",
@@ -10017,6 +10989,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/amqplib/icon.svg",
     "id": "1dd2fabd-8ab9-409d-a606-d1c0d1e694b9",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10075,6 +11053,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/bottle/icon.svg",
     "id": "38dc3bf5-e96c-43b8-98f4-80e444cdb657",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10133,6 +11117,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/celery/icon.svg",
     "id": "c0484a1b-d778-47f5-879b-2d01dce3df78",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10191,6 +11181,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/cherrypy/icon.svg",
     "id": "a5b3b2d6-d3f9-4db9-8091-15615893bbc9",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10249,6 +11245,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/django/icon.svg",
     "id": "d8ab0fa9-205e-4c7d-92f1-09ef04b2b8e6",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/django/logo.svg",
@@ -10304,6 +11306,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/facepy/icon.svg",
     "id": "846aaa7d-ecce-455f-88f8-4ed1661fb966",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10362,6 +11370,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/falcon/icon.svg",
     "id": "70c647fd-114f-4b64-9e54-21f7fd1ed652",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10420,6 +11434,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/feedparser/icon.svg",
     "id": "006a5c26-9aa0-4249-b83f-118d7057f5da",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10478,6 +11498,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/flask/icon.svg",
     "id": "2c13db46-a9ce-4595-854f-32e76dac6793",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10536,6 +11562,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/gearman/icon.svg",
     "id": "989d6047-c0f3-437e-9d58-ac4c8cdd36ad",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10594,6 +11626,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/gevent/icon.svg",
     "id": "30e39b88-ad5f-4850-b4e6-d9960bceece6",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10652,6 +11690,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/httplib2/icon.svg",
     "id": "6bab5c37-1444-4d47-a87a-80edbe316c46",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10710,6 +11754,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/jinja2/icon.svg",
     "id": "09e0582c-dd93-4bf9-9b5c-d4faa4aa2c28",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10768,6 +11818,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/mako/icon.svg",
     "id": "594f92b6-9996-4328-af75-129329a36a2c",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10826,6 +11882,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/oursql/icon.svg",
     "id": "fbf8ee31-2699-406f-ab38-2e1789ec76cd",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python",
@@ -10885,6 +11947,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/pika/icon.svg",
     "id": "7bdea1cd-d723-4655-ae9f-c13468d593b7",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -10943,6 +12011,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/piston/icon.svg",
     "id": "cf253fcd-6c6b-4834-912b-1f9e0e03dd08",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11001,6 +12075,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/proboscis/icon.svg",
     "id": "073b82b5-0cb7-43c2-9f39-de4fc1411b88",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11059,6 +12139,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/psycopg2/icon.svg",
     "id": "e0dfa6c8-09b9-44e7-bae9-a0d5a0dca5f5",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11117,6 +12203,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/pyelasticsearch/icon.svg",
     "id": "08489d43-4804-42b7-85d5-4e9e1597bb4b",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11175,6 +12267,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/pylibmc/icon.svg",
     "id": "50b770b5-03a3-4e0e-b981-c2df9ac18d53",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11233,6 +12331,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/pylons/icon.svg",
     "id": "906c1589-c412-4337-8c65-50619a322c95",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11291,6 +12395,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/pymongo/icon.svg",
     "id": "29e0a497-4a67-440f-ac6c-e5a8b7620e19",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python",
@@ -11350,6 +12460,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/pyramid/icon.svg",
     "id": "02f1dc20-9034-405b-90c1-8ad1bbf7755e",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11408,6 +12524,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/pysqlite/icon.svg",
     "id": "a7dda741-365b-4d47-a1ad-538cff1ea467",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python",
@@ -11468,6 +12590,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/python/icon.svg",
     "id": "986df593-98db-485b-8e8c-dd866fa28813",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python",
@@ -11527,6 +12655,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/sanic/icon.svg",
     "id": "74a3783e-3601-442d-8b64-69b29ae0896b",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11585,6 +12719,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/tastypie/icon.svg",
     "id": "f627481c-46b4-4d46-8646-9995e5475aaf",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11643,6 +12783,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/tornado/icon.svg",
     "id": "47934616-fc0c-4e02-8b25-0a92d3f43928",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11701,6 +12847,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/twisted/icon.svg",
     "id": "f697c86c-385f-40e9-83d2-c01215045912",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11759,6 +12911,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/web2py/icon.svg",
     "id": "272f1fcb-624f-41be-8ae3-19f552b15d7c",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11817,6 +12975,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/python/webpy/icon.svg",
     "id": "535f37ab-3b88-471d-b107-266f39d28819",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "python"
@@ -11845,6 +13009,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/quantum-metric/icon.svg",
     "id": "a9b96df0-fb21-4bca-adcf-5501bc9a7756",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/quantum-metric/logo.svg",
@@ -11880,6 +13045,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/rabbitmq/icon.png",
     "id": "523d091a-7949-433b-91cf-ae2736251af7",
+    "installPlans": [
+      {
+        "id": "rabbitmq-integration",
+        "name": "RabbitMQ"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "messaging",
@@ -11909,6 +13080,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/react-native/icon.svg",
     "id": "b87283f1-be71-4a8b-a04d-e10406b7e391",
+    "installPlans": [],
     "keywords": [
       "mobile"
     ],
@@ -11936,6 +13108,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/redhat/red-hat-enterprise-linux/icon.svg",
     "id": "bd684b5a-a5ee-48fc-b97a-1ad041002370",
+    "installPlans": [
+      {
+        "id": "guided-install",
+        "name": "Guided install"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/redhat/red-hat-enterprise-linux/logo.svg",
@@ -11961,6 +13139,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/redhat/red-hat-openshift/icon.svg",
     "id": "accac9b5-ec27-4d15-8879-51220086b8a1",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/redhat/red-hat-openshift/logo.svg",
@@ -11998,6 +13177,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/redis/icon.png",
     "id": "289983fe-378e-4690-9302-2490e2afe11c",
+    "installPlans": [
+      {
+        "id": "redis-integration",
+        "name": "Redis"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "database"
@@ -12026,6 +13211,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/roku/icon.svg",
     "id": "71e1b882-ce4e-4037-b8f1-997d9e317ddd",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/roku/logo.svg",
@@ -12051,6 +13237,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/activerecord/icon.svg",
     "id": "088e4f27-310c-49fb-b530-070607c911c2",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12079,6 +13271,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/acts-as-solr/icon.svg",
     "id": "62227703-3f2a-4e75-a457-5f74f26bc400",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/acts-as-solr/logo.svg",
@@ -12104,6 +13302,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/authlogic/icon.svg",
     "id": "6b00d1b5-cf61-4d5d-a327-8227fdbea6b5",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12132,6 +13336,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/bunny/icon.svg",
     "id": "8623fe7e-9805-4778-a886-6b4c83720aed",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12160,6 +13370,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/curb/icon.svg",
     "id": "dbe3684e-d688-4d2d-9279-f900c2f76c36",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12188,6 +13404,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/dalli/icon.svg",
     "id": "14a85e0d-9714-4a90-a2cb-ba17ead23e60",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12216,6 +13438,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/delayed-job/icon.svg",
     "id": "1a11f0ea-8f8b-422c-be1f-414dc0b81698",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/delayed-job/logo.svg",
@@ -12241,6 +13469,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/excon/icon.svg",
     "id": "a6f3126e-8207-4295-b04a-b0a216974b16",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12269,6 +13503,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/grape/icon.svg",
     "id": "99aad761-82a1-4298-b677-1b724d9a75eb",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12297,6 +13537,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/httpclient/icon.svg",
     "id": "53d1e197-7ff5-4f52-9046-2f2d6a74dcab",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12325,6 +13571,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/httprb/icon.svg",
     "id": "18adf8b8-f2d2-47a5-b8a2-278f526b5243",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12353,6 +13605,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/net-http/icon.svg",
     "id": "932f757b-98aa-460c-8ce8-bbab9c2cbf09",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/net-http/logo.svg",
@@ -12378,6 +13636,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/padrino/icon.svg",
     "id": "7c11a5e8-d9fd-4dbe-9846-1181dfebbe11",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12406,6 +13670,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/passenger/icon.svg",
     "id": "d2ca1774-3493-4897-9bc2-f578ded4bd87",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12434,6 +13704,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/puma/icon.svg",
     "id": "c1eeccb2-3995-41e3-94ec-d252b5836fce",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12462,6 +13738,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/rack/icon.svg",
     "id": "c86fdad1-314b-4987-951f-ff4d3fd42151",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12490,6 +13772,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/rails/icon.svg",
     "id": "c722b540-6e96-437d-9cd9-aa6625ab443f",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12518,6 +13806,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/rainbows/icon.svg",
     "id": "5dd54f65-c84d-4830-8432-9a0be7d30d1b",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/rainbows/logo.svg",
@@ -12543,6 +13837,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/rake/icon.svg",
     "id": "f216a462-b82f-4baa-85f9-d4bbfb931a94",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12571,6 +13871,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/resque/icon.svg",
     "id": "c5382aec-085d-428e-9aa6-daf0630fb0c2",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12599,6 +13905,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/ruby/icon.svg",
     "id": "1357d042-1f5b-4871-a14a-e2db10bec795",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby",
@@ -12628,6 +13940,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/sequel/icon.svg",
     "id": "ad53676f-7384-4ce4-99d2-786f8566fc93",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby",
@@ -12657,6 +13975,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/sidekiq/icon.svg",
     "id": "b93d4d1a-c90c-46da-8f82-086270b05fee",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12685,6 +14009,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/sinatra/icon.svg",
     "id": "23a2fe56-bcd7-4466-91d2-b0b4e44ffb29",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12713,6 +14043,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/sunspot/icon.svg",
     "id": "bddc7786-fe78-484c-a263-98cdf5d51f2f",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12741,6 +14077,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/thin/icon.svg",
     "id": "9a027632-7df7-4e81-b2bc-4959b7b64615",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12769,6 +14111,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/typhoeus/icon.svg",
     "id": "fea37113-cb1b-4b10-8e2c-20fbd52be00b",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12797,6 +14145,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/unicorn/icon.svg",
     "id": "b82fc20e-a8b6-449a-b6d7-241b4a6dfba7",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12825,6 +14179,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ruby/webrick/icon.svg",
     "id": "6c327009-b269-49c1-b3a3-392f86ece8fe",
+    "installPlans": [
+      {
+        "id": "setup-ruby-agent",
+        "name": "Ruby Agent"
+      }
+    ],
     "keywords": [
       "apm",
       "ruby"
@@ -12853,6 +14213,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/signl4/icon.svg",
     "id": "c7117ee1-91aa-4ce1-997a-2ceab65dabad",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/signl4/logo.svg",
@@ -12878,6 +14239,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/slack/icon.svg",
     "id": "db34c333-7b4a-4bb8-8fbf-becce43bfa44",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/slack/logo.svg",
@@ -12903,6 +14265,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/snmp/icon.svg",
     "id": "9eb6470e-fffd-4f16-b29a-9c78ae43f0e6",
+    "installPlans": [],
     "keywords": [
       "infrastructure",
       "networking",
@@ -12932,6 +14295,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/split/icon.svg",
     "id": "772501cd-2b71-4544-9768-aec5efb91ef5",
+    "installPlans": [],
     "keywords": [
       "testing"
     ],
@@ -12959,6 +14323,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/statsd/icon.svg",
     "id": "293c4da1-11cd-4942-8e40-8b6e85663003",
+    "installPlans": [],
     "keywords": [
       "open source monitoring"
     ],
@@ -12986,6 +14351,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/suse-linux-enterprise-server/icon.svg",
     "id": "902c5c2f-41db-44ed-8381-f3cb9b8a4b9e",
+    "installPlans": [
+      {
+        "id": "guided-install",
+        "name": "Guided install"
+      }
+    ],
     "keywords": [
       "os",
       "operating system"
@@ -13014,6 +14385,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/synthetics/availability/icon.jpeg",
     "id": "260027d0-9d8f-4a35-a676-73b5ee6c0d2d",
+    "installPlans": [],
     "keywords": [
       "http",
       "ping",
@@ -13048,6 +14420,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/synthetics/endpoint-availability/icon.jpeg",
     "id": "d78a22cb-1e17-47fe-b9f6-00a80ece4764",
+    "installPlans": [],
     "keywords": [
       "http",
       "ping",
@@ -13081,6 +14454,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/synthetics/page-link-crawler/icon.jpeg",
     "id": "4ff03759-36c0-4052-bb8b-588a93eb1fae",
+    "installPlans": [],
     "keywords": [
       "http",
       "uptime",
@@ -13113,6 +14487,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/synthetics/page-load-performance/icon.jpeg",
     "id": "07237bca-7867-405c-9bf0-9bafd17dd095",
+    "installPlans": [],
     "keywords": [
       "http",
       "uptime",
@@ -13145,6 +14520,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/synthetics/ssl-certification-check/icon.jpeg",
     "id": "e5ac132e-2da5-478a-afcf-7037601a9bea",
+    "installPlans": [],
     "keywords": [
       "http",
       "uptime",
@@ -13178,6 +14554,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/synthetics/user-flow/icon.jpeg",
     "id": "931908a8-d6a0-4ca6-a3d0-d2d0266350ff",
+    "installPlans": [],
     "keywords": [
       "http",
       "uptime",
@@ -13211,6 +14588,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/synthetics/user-step-execution/icon.jpeg",
     "id": "ef502f3e-4321-44f2-9668-e52619462cc3",
+    "installPlans": [],
     "keywords": [
       "http",
       "uptime",
@@ -13262,6 +14640,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/trendmicro-cloudone-conformity/icon.png",
     "id": "c3ae3b79-260a-436f-ba25-1d97c61da3ad",
+    "installPlans": [
+      {
+        "id": "third-party-trendmicro-cloudone-conformity",
+        "name": "Trend Micro Cloud One - Conformity"
+      }
+    ],
     "keywords": [
       "devops",
       "aws",
@@ -13292,6 +14676,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/tvos/icon.svg",
     "id": "36061f8f-c057-4a01-b578-c9b67bdf1859",
+    "installPlans": [],
     "keywords": [
       "mobile"
     ],
@@ -13319,6 +14704,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/ubuntu/icon.svg",
     "id": "bb4a3bc6-b595-45d5-b65d-f375c428f31a",
+    "installPlans": [
+      {
+        "id": "guided-install",
+        "name": "Guided install"
+      }
+    ],
     "keywords": [
       "os",
       "operating system"
@@ -13347,6 +14738,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/unix/icon.svg",
     "id": "9fdfa9b9-4a83-47e6-a8d5-b23cc05b653a",
+    "installPlans": [],
     "keywords": [
       "os",
       "operating system"
@@ -13387,6 +14779,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/varnish/icon.png",
     "id": "fc256226-d755-48a6-ac20-3334681ce43d",
+    "installPlans": [
+      {
+        "id": "varnish-cache-integration",
+        "name": "Varnish Cache"
+      }
+    ],
     "keywords": [
       "infrastructure",
       "load balancer"
@@ -13415,6 +14813,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/victorops/icon.svg",
     "id": "3937fc57-4414-4db7-8f23-b313892379ab",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/victorops/logo.svg",
@@ -13440,6 +14839,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/vmware/vmware-esxi/icon.svg",
     "id": "1b913236-5aab-424c-8135-c1d2a4a03441",
+    "installPlans": [],
     "keywords": [
       "infrastructure"
     ],
@@ -13467,6 +14867,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/vmware/vmware-tanzu/icon.svg",
     "id": "de3953e3-67c4-482f-819a-09e3a1f4da46",
+    "installPlans": [],
     "keywords": [
       "infrastructure"
     ],
@@ -13494,6 +14895,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/windows-event-log/icon.svg",
     "id": "fdf159bc-44ad-45a6-a7b9-b83146967bc2",
+    "installPlans": [],
     "keywords": [
       "logs",
       "logging",
@@ -13523,6 +14925,12 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/wordpress/icon.svg",
     "id": "59ba7d1f-7833-4d9b-893d-2b493e5ddac8",
+    "installPlans": [
+      {
+        "id": "php-agent",
+        "name": "PHP Agent"
+      }
+    ],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/wordpress/logo.svg",
@@ -13548,6 +14956,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/xmatters/icon.svg",
     "id": "9dce812a-d316-46d3-8f65-3cbc8bb3747d",
+    "installPlans": [],
     "keywords": [],
     "level": "COMMUNITY",
     "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/xmatters/logo.svg",
@@ -13573,6 +14982,7 @@
     ],
     "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-observability-packs/v0.24.1/packs/zipkin/icon.svg",
     "id": "51fe9abd-ecab-4d2a-aecf-97fbecf01c28",
+    "installPlans": [],
     "keywords": [
       "tracing",
       "apm"

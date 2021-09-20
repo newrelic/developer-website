@@ -345,6 +345,10 @@ export const pageQuery = graphql`
         description
       }
       authors
+      installPlans {
+        id
+        name
+      }
     }
   }
 `;

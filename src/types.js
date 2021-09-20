@@ -37,6 +37,11 @@ export const quickstartDocumentation = PropTypes.shape({
   description: PropTypes.string,
 });
 
+export const quickstartInstallPlans = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+});
+
 export const quickstart = PropTypes.shape({
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -51,4 +56,5 @@ export const quickstart = PropTypes.shape({
   dashboards: PropTypes.arrayOf(quickstartDashboard),
   alerts: PropTypes.arrayOf(quickstartAlert),
   documentation: PropTypes.arrayOf(quickstartDocumentation),
+  installPlans: PropTypes.arrayOf(quickstartInstallPlans),
 });
