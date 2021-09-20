@@ -29,9 +29,7 @@ const hasComponent = (quickstart, key) =>
   quickstart[key] && quickstart[key].length > 0;
 
 const InstallButton = ({ quickstart, ...props }) => {
-  const hasInstallableComponent =
-    hasComponent(quickstart, 'dashboards') ||
-    hasComponent(quickstart, 'alerts');
+  const hasInstallableComponent = hasComponent(quickstart, 'installPlans');
 
   // If there is nothing to install AND no documentation, don't show this button.
   if (!hasInstallableComponent && !hasComponent(quickstart, 'documentation')) {
