@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Layout,
   GlobalHeader,
@@ -8,19 +8,15 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import '../components/styles.scss';
 
-const getSidebarWidth = () => {
-  switch (true) {
-    case !window.location:
-      return 0;
-    case window.location.pathname === '/instant-observability/':
-      // this value matches '--sidebar-width' variable defined in instant-observability.js
-      return 300;
-    default:
-      return 0;
-  }
-};
-
 const QuickStartLayout = ({ children }) => {
+  const [sidebarWidth, setSidebarWidth] = useState(0);
+
+  useEffect(() => {
+    if (window.location.pathname === '/instant-observability/') {
+      setSidebarWidth(300);
+    } else setSidebarWidth(0);
+  }, [children]);
+
   return (
     <>
       <GlobalHeader activeSite={NR_SITES.IO} />
@@ -43,7 +39,7 @@ const QuickStartLayout = ({ children }) => {
         </Layout.Main>
         <Layout.Footer
           css={css`
-            --sidebar-offset: ${getSidebarWidth()}px;
+            --sidebar-offset: ${sidebarWidth}px;
 
             max-width: calc(var(--site-max-width) - var(--sidebar-offset));
 
