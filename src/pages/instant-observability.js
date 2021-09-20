@@ -532,6 +532,10 @@ export const pageQuery = graphql`
         description
         iconUrl
         summary
+        installPlans {
+          id
+          name
+        }
       }
     }
   }

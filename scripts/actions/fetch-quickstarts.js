@@ -54,6 +54,10 @@ const quickstartQuery = `# gql
               summary
               websiteUrl
               keywords
+              installPlans {
+                id
+                name
+              }
             }
           }
         }
