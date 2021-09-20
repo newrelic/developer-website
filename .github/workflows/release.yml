@@ -129,8 +129,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          # semantic-release requires >= 10.18
-          node-version: 12
+          # semantic-release requires >= 14
+          node-version: 14
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -176,7 +176,7 @@ jobs:
           GIT_COMMITTER_NAME: ${{ env.BOT_NAME }}
           GIT_COMMITTER_EMAIL: ${{ env.BOT_EMAIL }}
           GITHUB_TOKEN: ${{ secrets.OPENSOURCE_BOT_TOKEN }}
-        run: npx semantic-release
+        run: npx semantic-release@^18.0.0
 
       - name: Re-enable "required_pull_request_reviews" branch protection
         id: enable-branch-protection
