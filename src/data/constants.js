@@ -22,6 +22,9 @@ export const NR1_BASE_URL_LOCAL = 'https://dev-one.newrelic.com';
 export const NR1_PACK_DETAILS_NERDLET =
   'catalog-pack-details.catalog-pack-contents';
 
+export const NR1_GUIDED_INSTALL_NERDLET =
+  'nr1-install-newrelic.nr1-install-newrelic';
+
 export const QUICKSTART_SUPPORT_LEVELS = {
   NEWRELIC: 'NEWRELIC',
   VERIFIED: 'VERIFIED',
