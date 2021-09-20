@@ -21,6 +21,7 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
+        oneTrustID: '77dd4d78-49db-4057-81ea-4bc325d6ecdd-test',
         forceTrailingSlashes: true,
         layout: {
           contentPadding: '2rem',
@@ -107,6 +108,7 @@ module.exports = {
           },
         },
         tessen: {
+          tessenVersion: '1.14.0',
           product: 'DEV',
           subproduct: 'TDEV',
           segmentWriteKey: 'Ako0hclX8WGHwl9rm4n5uxLtT4wgEtuU',
