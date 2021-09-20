@@ -1,0 +1,91 @@
+---
+path: '/instant-observability/build-a-quickstart/create-alerts'
+title: 'Create Alerts'
+template: 'GuideTemplate'
+description: 'create alerts in New Relic One'
+duration: '15 min'
+---
+
+New Relic alerts allow you to create robust and customizable alert policies for anything that you want to monitor. 
+When you set up alert conditions, you can get notified about the problems that you're interested in and you can troubleshoot and resolve problems faster. 
+
+<Callout variant='important'>
+
+This lesson is a part of a lab that teaches you to build quickstart. Before you proceed with the lesson, make sure your demo services are up and running.
+It is assumed that you are already familiar with alerts basics. If you're just getting started then visit the [alert documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/) to familiarize yourself with the basics before proceeding.
+
+</Callout>
+
+### Create alert policy
+
+Before you could set alert conditions, you must create a policy. For example, you want to get an alert whenever your database takes longer to respond. You can create a policy for high response rate. 
+Move to _Policies_ under Alerts section of Alert & AI and click **New alert policy**.
+
+![alert](../../../images/instant-observability/alerts-main.png)
+
+Give a meaningful name to your policy such as **FlashDB alert policy**. Use the default values for the rest of the fields and click **Create alert policy**.
+
+![alert policy](../../../images/instant-observability/create-alert-policy.png)
+
+The next step is to add alert conditions to the alert policy. Click **Create a condition**.
+
+![alert condition](../../../images/instant-observability/create-alert-condition.png)
+
+On the next page, choose the category for which you want to define the alert condition. NRQL category allow you to create alert conditions using NRQL queries. Choose this option and click **Next, define thresholds**.
+
+![alert condition nrql](../../../images/instant-observability/create-alert-condition-nrql.png)
+
+Enter a meaningful name for your alert condition. For example, you want to get notified if the read operation is taking longer than expected then you can create an alert condition _slow read responses_ and enter the following NRQL query for your condition.
+
+>```bash
+> SELECT average(fdb_read_responses) FROM Metric
+>```
+
+![slow read response nrql](../../../images/instant-observability/slow-read-response-nrql.png)
+
+Here, you just selected the average read response for FlashDB. Scroll down on the same page to define threshold. Select **Static** as the threshold type. It is the simplest threshold type and creates a condition based on the numeric value returned by the query. 
+Now, set the critical threshold value at 0.9 as follow:
+
+![slow read response critical threshold](../../../images/instant-observability/critical-threshold.png)
+
+Here, you define the alert condition that will open violation whenever read response time is above 0.9 for at least 5 minutes. You can also add a warning threshold by clicking **Add warning threshold**.
+
+![add warning threshold](../../../images/instant-observability/add-warning-threshold.png)
+
+Now, specify a threshold value for warning. Say, you want the alert condition to warn you when the read response is above 0.8 for at least 5 minutes. Enter the threshold value as 0.8 and click **Save condition**. 
+
+![slow read response warning threshold](../../../images/instant-observability/warning-threshold.png)
+
+You can see your alert consition under your FlashDB alert policy now. 
+
+![flashdb slow response alert](../../../images/instant-observability/flashdb-alert-slow-response.png)
+
+Since you claimed that your database is fastest in the space, you also want to observe cache hit ratio and get a notification if it is low. You can add another alert condition under the same policy by clicking **Add a condition**.
+
+![add more alert conditions](../../../images/instant-observability/add-more-alert-conditions.png)
+
+You are familiar with the next page where you choose the category for your alert condition. Choose NRQL and click **Next, define threshold**.
+
+![add more alert conditions nrql](../../../images/instant-observability/add-more-alert-conditions-nrql.png)
+
+Enter the name _low cache hit ratio_ for your conditiona and the following NRQL query.
+
+>```bash
+> SELECT sum(fdb_cache_hits)/sum(fdb_read_responses) FROM Metric
+>```
+
+![low cache hit ratio nrql](../../../images/instant-observability/low-cache-hit-ratio-nrql.png)
+
+The next step is adding threshold values for critical violation as well as warning. The procedure is same as we did before. The only difference is that we want to get warning notification if the query returns a value _below_ 0.85 and a critical violation notification is the value falls _below_ 0.75 for at least 5 minutes.
+
+![low cache hit ratio threshold](../../../images/instant-observability/low-cache-hit-ratio-threshold.png)
+
+Save condition to add it to previoulsy defined FlashDB alert policy. Your policy will look something like the following.
+
+![alert policy conditions](../../../images/instant-observability/alert-conditions.png)
+
+<Callout variant='important'>
+
+This lesson is a part of lab that teaches you to build a quickstart. Continue on to next lesson: [_Add related documentation_](/instant-observability/build-a-quickstart/add-documentation)
+
+</Callout>

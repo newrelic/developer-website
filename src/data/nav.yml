@@ -146,6 +146,22 @@
           url: '/build-apps/ab-test/subscribe'
     - title: See all open source apps
       url: https://opensource.newrelic.com/nerdpacks/
+
+- title: Instant observability
+  icon: nr-build-apps
+  url: '/instant-observability'
+  pages:
+    - title: Build a quickstart
+      url: '/instant-observability/build-a-quickstart'
+      pages: 
+        - title: Send data to New Relic
+          url: /instant-observability/build-a-quickstart/send-data-to-newrelic
+        - title: Create dashboard in New Relic One
+          url: /instant-observability/build-a-quickstart/create-dashboard
+        - title: Create alerts
+          url: /instant-observability/build-a-quickstart/create-alerts
+        - title: Add related documentation
+          url: /instant-observability/build-a-quickstart/add-documentation
 - title: Try our APIs
   icon: nr-share
   url: '/try-our-apis'
