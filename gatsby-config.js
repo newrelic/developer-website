@@ -192,7 +192,10 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-gatsby-cloud',
       options: {
-        allPageHeaders: ['Referrer-Policy: no-referrer-when-downgrade'],
+        allPageHeaders: [
+          'Referrer-Policy: no-referrer-when-downgrade',
+          'Content-Security-Policy: frame-ancestors https://*.newrelic.com http://*.newrelic.com',
+        ],
       },
     },
   ],
