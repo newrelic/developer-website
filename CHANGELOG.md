@@ -1,3 +1,10 @@
+## [1.53.1](https://github.com/newrelic/developer-website/compare/v1.53.0...v1.53.1) (2021-09-21)
+
+
+### Bug Fixes
+
+* add skilljar as an iframe-able domain ([1f902f8](https://github.com/newrelic/developer-website/commit/1f902f8bdd3c9ffa66a66e8dbf2e37d36265c519))
+
 # [1.53.0](https://github.com/newrelic/developer-website/compare/v1.52.3...v1.53.0) (2021-09-21)
 
 
