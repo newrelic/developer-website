@@ -8,7 +8,7 @@ const NERDLET_PATH = `launcher/nr1-core.explorer/`;
  * @param {boolean} [debug] If set to true, this will add `packages=local`.
  * @returns {string} The URL for the pack details within the platform.
  */
-const getPackNr1Url = (quickstartId, nerdletId, debug = false) => {
+export const getPackNr1Url = (quickstartId, nerdletId, debug = false) => {
   const pane = JSON.stringify({
     nerdletId,
     quickstartId,
@@ -24,9 +24,35 @@ const getPackNr1Url = (quickstartId, nerdletId, debug = false) => {
   const local = debug ? 'packages=local&' : '';
   const NR1_URL = debug ? NR1_BASE_URL_LOCAL : NR1_BASE_URL;
 
-  const url = new URL(`${NERDLET_PATH}?${local}pane=${hash}`, NR1_URL);
+  const packDetailsUrl = new URL(
+    `${NERDLET_PATH}?${local}pane=${hash}`,
+    NR1_URL
+  );
 
-  return url.href;
+  return packDetailsUrl.href;
 };
 
-module.exports = getPackNr1Url;
+export const getGuidedInstallStackedNr1Url = (nerdletId, debug = false) => {
+  const pane = JSON.stringify({ nerdletId: 'nr1-core.listing' });
+  const card = JSON.stringify({ nerdletId });
+
+  const paneHash =
+    window && window.btoa
+      ? btoa(pane)
+      : Buffer.from(pane, 'utf-8').toString('base64');
+
+  const cardHash =
+    window && window.btoa
+      ? btoa(card)
+      : Buffer.from(card, 'utf-8').toString('base64');
+
+  const local = debug ? 'packages=local&' : '';
+  const NR1_URL = debug ? NR1_BASE_URL_LOCAL : NR1_BASE_URL;
+
+  const guidedInstallUrl = new URL(
+    `${NERDLET_PATH}?${local}pane=${paneHash}&cards[0]=${cardHash}`,
+    NR1_URL
+  );
+
+  return guidedInstallUrl.href;
+};

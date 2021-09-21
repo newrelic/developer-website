@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
-import getPackNr1Url from '../utils/get-pack-nr1-url';
+import {
+  getPackNr1Url,
+  getGuidedInstallStackedNr1Url,
+} from '../utils/get-pack-nr1-url';
 import {
   NR1_LOGIN_URL,
   NR1_GUIDED_INSTALL_NERDLET,
@@ -15,7 +18,10 @@ import { quickstart } from '../types';
  * @returns {String}
  */
 const createInstallLink = (id, nerdletId) => {
-  const platformUrl = getPackNr1Url(id, nerdletId);
+  const platformUrl =
+    nerdletId === NR1_GUIDED_INSTALL_NERDLET
+      ? getGuidedInstallStackedNr1Url(nerdletId)
+      : getPackNr1Url(id, nerdletId);
   const url = new URL(
     `?return_to=${encodeURIComponent(platformUrl)}`,
     NR1_LOGIN_URL
