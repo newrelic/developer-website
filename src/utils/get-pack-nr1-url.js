@@ -1,16 +1,22 @@
+import {
+  NR1_PACK_DETAILS_NERDLET,
+  NR1_GUIDED_INSTALL_NERDLET,
+  NR1_EXPLORER_NERDLET,
+} from '../data/constants';
+
 // FIXME: update this to production URL when deployed / launched
 const NR1_BASE_URL = 'https://staging-one.newrelic.com';
 const NR1_BASE_URL_LOCAL = 'https://dev-one.newrelic.com';
 const NERDLET_PATH = `launcher/nr1-core.explorer/`;
 
 /**
- * @param {string} packId The ID for an observability pack.
+ * @param {string} quickstartId The ID for an observability pack.
  * @param {boolean} [debug] If set to true, this will add `packages=local`.
  * @returns {string} The URL for the pack details within the platform.
  */
-export const getPackNr1Url = (quickstartId, nerdletId, debug = false) => {
+export const getPackNr1Url = (quickstartId, debug = false) => {
   const pane = JSON.stringify({
-    nerdletId,
+    nerdletId: NR1_PACK_DETAILS_NERDLET,
     quickstartId,
   });
 
@@ -32,9 +38,13 @@ export const getPackNr1Url = (quickstartId, nerdletId, debug = false) => {
   return packDetailsUrl.href;
 };
 
-export const getGuidedInstallStackedNr1Url = (nerdletId, debug = false) => {
-  const pane = JSON.stringify({ nerdletId: 'nr1-core.listing' });
-  const card = JSON.stringify({ nerdletId });
+/**
+ * @param {boolean} [debug] If set to true, this will add `packages=local`.
+ * @returns {string} The URL for the pack details within the platform.
+ */
+export const getGuidedInstallStackedNr1Url = (debug = false) => {
+  const pane = JSON.stringify({ nerdletId: NR1_EXPLORER_NERDLET });
+  const card = JSON.stringify({ nerdletId: NR1_GUIDED_INSTALL_NERDLET });
 
   const paneHash =
     window && window.btoa
