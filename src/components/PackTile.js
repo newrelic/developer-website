@@ -128,7 +128,7 @@ const PackTile = ({
             color: var(--secondary-text-color);
           `}
         >
-          {summary}
+          {summary || 'No summary provided'}
         </p>
       </div>
       <div
