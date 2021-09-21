@@ -1,4 +1,4 @@
-const getPackNr1Url = require('../src/utils/get-pack-nr1-url');
+const { getPackNr1Url } = require('../src/utils/get-pack-nr1-url');
 const quickstarts = require('../src/data/quickstarts.json');
 const fs = require('fs');
 

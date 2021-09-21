@@ -20,6 +20,8 @@ export const NR1_PACK_DETAILS_NERDLET =
 export const NR1_GUIDED_INSTALL_NERDLET =
   'nr1-install-newrelic.nr1-install-newrelic';
 
+export const NR1_EXPLORER_NERDLET = 'nr1-core.listing';
+
 export const QUICKSTART_SUPPORT_LEVELS = {
   NEWRELIC: 'NEWRELIC',
   VERIFIED: 'VERIFIED',
