@@ -1,3 +1,17 @@
+# [1.53.0](https://github.com/newrelic/developer-website/compare/v1.52.3...v1.53.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* allow embed content in iframes ([4c9e27e](https://github.com/newrelic/developer-website/commit/4c9e27eed211ae415b0aae405e1da0e90d73423e))
+* remove custom cookie consent component in favor of onetrust ([77f8cc0](https://github.com/newrelic/developer-website/commit/77f8cc0f1229ff40ec978cd2e5365ce535be2773))
+* revert to using custom cookie consent component until onetrust issue is resolved ([26c5141](https://github.com/newrelic/developer-website/commit/26c51416204fc45aa1870832619503af7363be20))
+
+
+### Features
+
+* bump theme and update tessen ([ee5ef74](https://github.com/newrelic/developer-website/commit/ee5ef74abaa8a0701672805521c5e1eee3323299))
+
 ## [1.52.3](https://github.com/newrelic/developer-website/compare/v1.52.2...v1.52.3) (2021-09-10)
 
 
