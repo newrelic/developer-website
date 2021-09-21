@@ -1,5 +1,6 @@
-import { NR1_BASE_URL, NR1_BASE_URL_LOCAL } from '../data/constants';
-
+// FIXME: update this to production URL when deployed / launched
+const NR1_BASE_URL = 'https://staging-one.newrelic.com';
+const NR1_BASE_URL_LOCAL = 'https://dev-one.newrelic.com';
 const NERDLET_PATH = `launcher/nr1-core.explorer/`;
 
 /**
@@ -16,7 +17,7 @@ const getPackNr1Url = (quickstartId, nerdletId, debug = false) => {
   // Note: this works differently depending on whether or not we have access
   // to the window object (and the btoa function).
   const hash =
-    window && window.btoa
+    typeof window !== 'undefined' && window.btoa
       ? btoa(pane)
       : Buffer.from(pane, 'utf-8').toString('base64');
 
@@ -28,4 +29,4 @@ const getPackNr1Url = (quickstartId, nerdletId, debug = false) => {
   return url.href;
 };
 
-export default getPackNr1Url;
+module.exports = getPackNr1Url;
