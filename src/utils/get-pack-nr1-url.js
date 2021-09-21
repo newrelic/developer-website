@@ -14,7 +14,7 @@ const NERDLET_PATH = `launcher/nr1-core.explorer/`;
  * @param {boolean} [debug] If set to true, this will add `packages=local`.
  * @returns {string} The URL for the pack details within the platform.
  */
-export const getPackNr1Url = (quickstartId, debug = false) => {
+const getPackNr1Url = (quickstartId, debug = false) => {
   const pane = JSON.stringify({
     nerdletId: NR1_PACK_DETAILS_NERDLET,
     quickstartId,
@@ -42,7 +42,7 @@ export const getPackNr1Url = (quickstartId, debug = false) => {
  * @param {boolean} [debug] If set to true, this will add `packages=local`.
  * @returns {string} The URL for the pack details within the platform.
  */
-export const getGuidedInstallStackedNr1Url = (debug = false) => {
+const getGuidedInstallStackedNr1Url = (debug = false) => {
   const pane = JSON.stringify({ nerdletId: NR1_EXPLORER_NERDLET });
   const card = JSON.stringify({ nerdletId: NR1_GUIDED_INSTALL_NERDLET });
 
@@ -66,3 +66,5 @@ export const getGuidedInstallStackedNr1Url = (debug = false) => {
 
   return guidedInstallUrl.href;
 };
+
+module.exports = { getPackNr1Url, getGuidedInstallStackedNr1Url };

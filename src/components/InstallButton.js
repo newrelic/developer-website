@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
-import {
-  getPackNr1Url,
-  getGuidedInstallStackedNr1Url,
-} from '../utils/get-pack-nr1-url';
 import { NR1_LOGIN_URL } from '../data/constants';
 import { quickstart } from '../types';
+
+const {
+  getPackNr1Url,
+  getGuidedInstallStackedNr1Url,
+} = require('../utils/get-pack-nr1-url');
 
 /**
  * @param {String} id
