@@ -21,6 +21,7 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
+        oneTrustID: '77dd4d78-49db-4057-81ea-4bc325d6ecdd',
         forceTrailingSlashes: true,
         layout: {
           contentPadding: '2rem',
@@ -194,7 +195,7 @@ module.exports = {
       options: {
         allPageHeaders: [
           'Referrer-Policy: no-referrer-when-downgrade',
-          'Content-Security-Policy: frame-ancestors *.newrelic.com *.skilljar.com',
+          'Content-Security-Policy: frame-ancestors *.newrelic.com *.skilljar.com *.sj-cdn.net',
         ],
       },
     },
