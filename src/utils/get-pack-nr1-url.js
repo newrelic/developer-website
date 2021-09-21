@@ -1,8 +1,8 @@
-import {
+const {
   NR1_PACK_DETAILS_NERDLET,
   NR1_GUIDED_INSTALL_NERDLET,
   NR1_EXPLORER_NERDLET,
-} from '../data/constants';
+} = require('../data/constants');
 
 // FIXME: update this to production URL when deployed / launched
 const NR1_BASE_URL = 'https://staging-one.newrelic.com';
