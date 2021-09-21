@@ -194,7 +194,7 @@ module.exports = {
       options: {
         allPageHeaders: [
           'Referrer-Policy: no-referrer-when-downgrade',
-          'Content-Security-Policy: frame-ancestors https://*.newrelic.com http://*.newrelic.com',
+          'Content-Security-Policy: frame-ancestors *.newrelic.com *.skilljar.com',
         ],
       },
     },
