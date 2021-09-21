@@ -1,3 +1,10 @@
+# [1.54.0](https://github.com/newrelic/developer-website/compare/v1.53.1...v1.54.0) (2021-09-21)
+
+
+### Features
+
+* add onetrust and remove custom cookie component ([f341ace](https://github.com/newrelic/developer-website/commit/f341acefa22d6783291c4f0100eede28edfbb02f))
+
 ## [1.53.1](https://github.com/newrelic/developer-website/compare/v1.53.0...v1.53.1) (2021-09-21)
 
 
