@@ -41,6 +41,7 @@ const QuickstartDataSources = ({ quickstart }) => (
           interactive
         >
           <h3>{doc.name}</h3>
+          {doc.description && <p>{doc.description}</p>}
           <Tag
             css={css`
               display: inline-block;
@@ -49,8 +50,6 @@ const QuickstartDataSources = ({ quickstart }) => (
           >
             Docs
           </Tag>
-
-          {doc.description && <p>{doc.description}</p>}
         </Surface>
       ))}
     </div>
