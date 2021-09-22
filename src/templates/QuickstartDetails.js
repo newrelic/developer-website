@@ -162,6 +162,7 @@ const QuickstartDetails = ({ data, location }) => {
               <InstallButton
                 quickstart={quickstart}
                 onClick={handleInstallClick}
+                location={location}
               />
               <Button
                 as={Link}

@@ -32,6 +32,7 @@ const PackTile = ({
   level,
   className,
   summary,
+  location,
 }) => {
   const tessen = useTessen();
 
@@ -41,7 +42,9 @@ const PackTile = ({
         publicCatalogView: view,
         quickstartName: name,
       });
-      navigate(fields.slug);
+      navigate(fields.slug, {
+        state: { prevPath: location },
+      });
     },
     {
       actionName: 'QuickstartClick',
@@ -173,6 +176,7 @@ PackTile.propTypes = {
   level: PropTypes.string,
   className: PropTypes.string,
   featured: PropTypes.bool,
+  location: PropTypes.object.isRequired,
 };
 
 export default PackTile;

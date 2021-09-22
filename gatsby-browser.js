@@ -54,5 +54,10 @@ const onClientEntry = () => {
   window.React = require('react');
   window.ReactDOM = require('react-dom');
 };
+const onRouteUpdate = ({ location, prevLocation }) => {
+  if (prevLocation && prevLocation.search && !location.search) {
+    location.search = prevLocation.search;
+  }
+};
 
-export { wrapPageElement, onInitialClientRender, onClientEntry };
+export { wrapPageElement, onInitialClientRender, onClientEntry, onRouteUpdate };
