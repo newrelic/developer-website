@@ -160,8 +160,8 @@
           url: /instant-observability/build-a-quickstart/create-dashboard
         - title: Create alerts
           url: /instant-observability/build-a-quickstart/create-alerts
-        - title: Add related documentation
-          url: /instant-observability/build-a-quickstart/add-documentation
+        - title: Create quickstart
+          url: /instant-observability/build-a-quickstart/create-quickstart
 - title: Try our APIs
   icon: nr-share
   url: '/try-our-apis'
