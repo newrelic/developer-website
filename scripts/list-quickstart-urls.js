@@ -8,7 +8,7 @@ const NR1_GUIDED_INSTALL_NERDLET = 'nr1-install-newrelic.nr1-install-newrelic';
 const csvColumns = ['Quickstart name,url'];
 const urls = quickstarts
   .map((quickstart) => {
-    const hasInstallableComponent = quickstart.installPlans.length === 1;
+    const hasInstallableComponent = quickstart.installPlans.length > 0;
     const hasGuidedInstall =
       hasInstallableComponent &&
       quickstart.installPlans[0].id.includes('guided-install');
