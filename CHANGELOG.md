@@ -1,3 +1,15 @@
+# [1.55.0](https://github.com/newrelic/developer-website/compare/v1.54.0...v1.55.0) (2021-09-22)
+
+
+### Bug Fixes
+
+* Don't sound threatening ([761958f](https://github.com/newrelic/developer-website/commit/761958f10c74ed0253b44a64d5620b2370227b81))
+
+
+### Features
+
+* **docs:** Add NPM lab ([dd5285f](https://github.com/newrelic/developer-website/commit/dd5285ffe22a17c39c6309716106668c27a85035))
+
 # [1.54.0](https://github.com/newrelic/developer-website/compare/v1.53.1...v1.54.0) (2021-09-21)
 
 
