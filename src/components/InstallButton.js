@@ -90,7 +90,6 @@ const InstallButton = ({ quickstart, location, ...props }) => {
       )
     : quickstart.documentation[0].url;
 
-  console.log(utmParameters);
   return (
     <Button {...props} as={Link} to={url} variant={Button.VARIANT.PRIMARY}>
       {hasInstallableComponent ? (
