@@ -1,6 +1,5 @@
 import React from 'react';
 import { css } from '@emotion/react';
-
 import { quickstart } from '../../types';
 import OverviewTile from './OverviewTile';
 import Markdown from '../Markdown';
