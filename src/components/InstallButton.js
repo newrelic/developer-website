@@ -11,43 +11,60 @@ import {
   NR1_GUIDED_INSTALL_NERDLET,
   NR1_PACK_DETAILS_NERDLET,
   UTM_PARAMETERS,
+  NR1_SIGNUP_URL,
 } from '../data/constants';
 import { quickstart } from '../types';
+
+/**
+ * @param {String} parameters
+ * @returns {Array}
+ */
+const strippedParameters = (parameters) => {
+  return parameters[0] === '?'
+    ? parameters.slice(1).split('&')
+    : parameters.split('&');
+};
 
 /**
  * @param {Object} location
  * @returns {String}
  */
-const parseUtmParameters = (location) => {
-  const parameters = location.state.prevPath.search;
+const checkUtmParameters = (location) => {
+  const { state } = location;
+  if (!state) {
+    return false;
+  }
+  const { search: parameters } = state.prevPath;
+  const parametersArray = strippedParameters(parameters);
 
-  const parametersArray =
-    parameters[0] === '?'
-      ? parameters.slice(1).split('&')
-      : parameters.split('&');
-
-  const utmParametersArray = parametersArray.filter((param) => {
-    const [key] = param.split('=');
-    return UTM_PARAMETERS.includes(key);
-  });
-
-  return utmParametersArray.join('&');
+  const hasUtmParameters = parametersArray.some((value) =>
+    UTM_PARAMETERS.includes(value)
+  );
+  return hasUtmParameters;
 };
 
 /**
  * @param {String} id
  * @param {String} nerdletId
- * @param {String} utmParameters
+ * @param {Boolean} hasGuidedInstall
+ * @param {Boolean} hasUtmParameters
+ * @param {String} parameters
  * @returns {String}
  */
-const createInstallLink = (id, nerdletId, hasGuidedInstall, utmParameters) => {
+const createInstallLink = (
+  id,
+  nerdletId,
+  hasGuidedInstall,
+  hasUtmParameters,
+  parameters
+) => {
   const platformUrl = hasGuidedInstall
     ? getGuidedInstallStackedNr1Url(nerdletId)
     : getPackNr1Url(id, nerdletId);
 
   const url = new URL(
-    `?return_to=${encodeURIComponent(platformUrl)}&${utmParameters}`,
-    NR1_LOGIN_URL
+    `?${parameters}&return_to=${encodeURIComponent(platformUrl)}`,
+    hasUtmParameters ? NR1_SIGNUP_URL : NR1_LOGIN_URL
   );
 
   return url.href;
@@ -64,6 +81,9 @@ const hasComponent = (quickstart, key) =>
 const InstallButton = ({ quickstart, location, ...props }) => {
   const hasInstallableComponent = hasComponent(quickstart, 'installPlans');
 
+  const parameters =
+    location.state && strippedParameters(location.state.prevPath.search);
+
   const hasGuidedInstall =
     hasInstallableComponent &&
     quickstart.installPlans.length === 1 &&
@@ -78,7 +98,8 @@ const InstallButton = ({ quickstart, location, ...props }) => {
     ? NR1_GUIDED_INSTALL_NERDLET
     : NR1_PACK_DETAILS_NERDLET;
 
-  const utmParameters = parseUtmParameters(location);
+  const hasUtmParameters = checkUtmParameters(location);
+
   // If we have an install-able component, generate a URL. Otherwise, link to the
   // first documentation supplied.
   const url = hasInstallableComponent
@@ -86,7 +107,8 @@ const InstallButton = ({ quickstart, location, ...props }) => {
         quickstart.id,
         nerdletId,
         hasGuidedInstall,
-        utmParameters
+        hasUtmParameters,
+        parameters
       )
     : quickstart.documentation[0].url;
 

@@ -60,4 +60,10 @@ const onRouteUpdate = ({ location, prevLocation }) => {
   }
 };
 
-export { wrapPageElement, onInitialClientRender, onClientEntry, onRouteUpdate };
+export {
+  wrapPageElement,
+  onInitialClientRender,
+  onClientEntry,
+  onRouteUpdate,
+  // onPreRouteUpdate,
+};
