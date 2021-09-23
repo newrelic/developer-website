@@ -154,13 +154,13 @@
     - title: Build a quickstart
       url: '/instant-observability/build-a-quickstart'
       pages: 
-        - title: Send data to New Relic
-          url: /instant-observability/build-a-quickstart/send-data-to-newrelic
-        - title: Create dashboard in New Relic One
-          url: /instant-observability/build-a-quickstart/create-dashboard
+        - title: Deploy your application
+          url: /instant-observability/build-a-quickstart/deploy-your-application
+        - title: Create a dashboard 
+          url: /instant-observability/build-a-quickstart/create-a-dashboard
         - title: Create alerts
           url: /instant-observability/build-a-quickstart/create-alerts
-        - title: Create quickstart
+        - title: Create a quickstart
           url: /instant-observability/build-a-quickstart/create-quickstart
 - title: Try our APIs
   icon: nr-share

@@ -1,0 +1,49 @@
+---
+path: '/instant-observability/build-a-quickstart/deploy-your-application'
+title: 'Deploy your application'
+template: 'GuideTemplate'
+description: 'Spin up your demo services to follow along the lab'
+duration: '5 min'
+---
+
+<Callout variant="course" title="Lab">
+
+This procedure is a part of lab that teaches you how to build a quickstart. If you haven't already, check out the [_Lab introduction_](/instant-observability/build-a-quickstart)
+
+</Callout>
+
+Before you build a quickstart, you need to spin up demo services. The lab depends on two important services:
+- A python program that mimics the database and also provides functions for CRUD operations. It also makes use of `newrelic_telemetry_sdk` to send telemetry data to New Relic One.
+- A simulator service that generates dummy database traffic so you don't have to manually perform CRUD operations
+
+To spin up demo services, you first need to install [Docker](https://www.docker.com/) and also set **NEW_RELIC_INSERT_KEY** environment variable.
+
+> **Note:** **NEW_RELIC_INSERT_KEY** environment variable is your New Relic liscence key. [You can find your New Relic liscence key in your New Relic account](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/). 
+
+## Spin up demo services
+
+Clone the lab repository from GitHub: 
+>```bash
+> git clone https://github.com/mehreentahir16/FlashDB.git
+>``` 
+
+This repository contains the code for flashdb as well as the simulator for dummy database traffic. Navigate to the demo directory and execute the following commands to build and run docker image.
+
+> ```bash
+> docker build -t flashdb . 
+> docker run flashdb
+>```
+
+Here, you build and run docker image that generates mock database traffic. You will observe this data in New Relic. Once the docker image is up and running, you see the following output in your terminal:
+
+![deploy-your-application](../../../images/instant-observability/terminal-output.png)
+
+>**Important:** Make sure you set NEW_RELIC_INSERT_KEY with your actual [license key](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/new-relic-license-key/).
+
+The next step is to observe this data in New Relic. 
+
+<Callout variant="course" title="Lab">
+
+This procedure is a part of lab that teaches you how to build a quickstart. Continue on to next lesson: [_Create a dashboard_](/instant-observability/build-a-quickstart/create-a-dashboard).
+
+</Callout>

@@ -1,0 +1,138 @@
+---
+path: '/instant-observability/build-a-quickstart/create-a-dashboard'
+title: 'Create a dashboard'
+template: 'GuideTemplate'
+description: 'create a dashboard to observe your data in New Relic'
+duration: '15 min'
+---
+
+<Callout variant="course" title="Lab">
+
+This procedure is a part of lab that teaches you how to build a quickstart. If you haven't already, checkout the [_Lab introduction_](/instant-observability/build-a-quickstart)
+
+Each procedure in this lab builds on top of the last one, so make sure you [_deploy your application_](/instant-observability/build-a-quickstart/deploy-your-application) before proceeding with this one.
+
+</Callout>
+
+New Relic One dashboards allow you to quickly observe and make meaning of the information that you collect. You can gather and chart the specific data you want to see and customize it the way you want to see.
+
+You're going to create dashboard in New Relic One. Navigate to https://one.newrelic.com/ and sign in with your account. Here, you can see different tabs such as **Browse Data**, **Dashboards**, **Alerts & AI** etc. 
+Move to **Dashboards** and click **Create a dashboard** in the top right corner. 
+
+![create a dashboard](../../../images/instant-observability/create-dashboard.png)
+
+Name your dashboard **FlashDB** and click create.
+
+![name your dashboard](../../../images/instant-observability/name-dashboard.png)
+
+## Add charts to your dashboard
+
+Once the dashboard is in place, you can start creating charts. You're going to add the folloiwng charts:
+- Database methods
+- Avergae response time
+- Errors
+- Database size
+- Cache hits
+- Keys
+
+Hover over the dashboard and click **Add a new chart**.
+
+![add a new chart](../../../images/instant-observability/add-new-chart.png)
+
+New Relic One allow you to add charts using query builder or you can choose to add text, images or links using Markdown. Click **Add a chart**.
+
+![add a chart](../../../images/instant-observability/add-a-chart.png)
+
+It will take you to a query builder option. Edit the query as follow:
+
+>```SQL
+>SELECT count(*) FROM fdb_method FACET method 
+>```
+
+![database methods chart](../../../images/instant-observability/fdb-methods.png)
+
+Here, you group your results of FlashDB methods by attribute values and see the count of each type of transaction. You can choose to present your results in different formats such as table, billboard, pie chart etc. 
+
+![chart formats](../../../images/instant-observability/chart-formats.png)
+
+Change the chart type to pie, name your chart and click save.
+
+![pie chart](../../../images/instant-observability/piechart.png)
+
+The chart is now visible on your dashboard.
+
+![piechart dashboard](../../../images/instant-observability/piechart-dashboard.png)
+
+
+You can add more charts to your dashboard following the same pattern. To do so, click **+** in upper right hand corner. 
+
+![add more charts](../../../images/instant-observability/add-more-charts.png)
+
+This will take you to the same _Add to your dashboard_ page, allowing you to add another chart, text, image or links. Add a few more charts to your dashboard as follow:
+
+### Average response time
+Run the following query to observe the **average response time** of database transactions. 
+
+>```SQL
+> SELECT average(fdb_create_responses), average(fdb_read_responses), average(fdb_update_responses), average(fdb_delete_responses) FROM Metric SINCE 30 MINUTES AGO TIMESERIES
+>```
+
+![average response time chart](../../../images/instant-observability/average-response-time.png )
+
+>**Note:** Make sure to click **Run** to see above results. 
+
+Here, you observe average response time for different transactions for past 30 minutes. Click save to add this chart to your dashboard as well. Follow the same procedure to add the following charts as well.
+
+### Errors
+
+>```SQL
+> SELECT sum(fdb_create_errors), sum(fdb_read_errors), sum(fdb_update_errors), sum(fdb_delete_errors) FROM Metric SINCE 60 MINUTES AGO TIMESERIES
+>```
+
+Here, you observe errors for all database transactions for past one hour.
+
+![errors chart](../../../images/instant-observability/errors.png )
+
+### Database size
+
+>```SQL
+> SELECT sum(mdb_size) FROM Metric
+>```
+
+![database size chart](../../../images/instant-observability/database-size.png )
+
+This chart will show you the database size. 
+
+### Cache hits
+
+>```SQL
+> SELECT sum(fdb_cache_hits) FROM Metric SINCE 30 MINUTES AGO TIMESERIES
+>```
+
+![cache hits chart](../../../images/instant-observability/cache-hits.png )
+
+Here, you observe the total number of cache hits for past 30 minutes using line chart.
+
+### Keys
+
+>```SQL
+> SELECT count(fdb_keys) FROM Metric SINCE 5 MINUTES AGO TIMESERIES
+>```
+
+![keys chart](../../../images/instant-observability/keys.png )
+
+Here, you observe the flashDB key count for past 5 minutes. 
+
+You can manipulate the above queries and change time window to focus on the data that you want to observe. Your final dashboard will look similar to the following:
+
+![dashboard with charts](../../../images/instant-observability/dashboard-final.png )
+
+## Summary
+
+Following this procedure, you created a dashboard and added multiple charts to it to observe your services in New Relic One.
+
+<Callout variant="course" title="Lab">
+
+This procedure is a part of lab that teaches you how to build a quickstart. Continue on to next procedure:  [_Create alerts_](/instant-observability/build-a-quickstart/create-alerts).
+
+</Callout>
