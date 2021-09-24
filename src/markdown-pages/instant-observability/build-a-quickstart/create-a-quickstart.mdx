@@ -10,7 +10,7 @@ duration: '30 min'
 
 This procedure is a part of lab that teaches you how to build quickstart. If you haven't already, checkout the [_lab introduction_](/instant-observability/build-a-quickstart)
 
-As this procedure builds on top of the last ones in the lab, make you create a [dashboard](instant-observability/build-a-quickstart/create-a-dashboard) and [alerts](/instant-observability/build-a-quickstart/create-alerts) before proceeding with this one.
+As this procedure builds on top of the last ones in the lab, make sure you create a [dashboard](instant-observability/build-a-quickstart/create-a-dashboard) and [alerts](/instant-observability/build-a-quickstart/create-alerts) before proceeding with this one.
 
 </Callout>
 
@@ -34,14 +34,14 @@ Copy the _\_template_ directory and it's content to a new directory within the _
 
 ![flashdb directory](../../../images/instant-observability/flashdb-directory.png)
 
-You're going to add existing dashboard to your quickstart. Move to your dashboard in New Relic One and copy its JSON. Then save it as a JSON file in the _dashboards_ directory.
+You're going to add existing dashboard to your quickstart. Move to your dashboard in New Relic and copy its JSON. Then save it as a JSON file in the _dashboards_ directory.
 
 ![dashboard'\s json](../../../images/instant-observability/json-dashboard.png)
 
-Here, you copied your dashboard's JSON to clipboard. Replace the content of existing JSON file in _dashboards_ directory and rename it as **flashDB.json**. Your _flashDB.json_ file should contain the following content:
+Here, you copied your dashboard's JSON to clipboard. Replace the content of existing JSON file in _dashboards_ directory and rename it as _flashDB.json_. Your _flashDB.json_ file should contain the following content:
 
->```json
-> {
+```json
+ {
     "name": "FlashDB",
     "description": null,
     "permissions": "PUBLIC_READ_WRITE",
@@ -209,7 +209,7 @@ Here, you copied your dashboard's JSON to clipboard. Replace the content of exis
       }
     ]
   }
-> ```
+```
 
 Next, create a screenshot of your dashboard and add it to _dashboards_ directory. Give it the same name as your JSON file. Your _dashboard_ directory should look similar to the following:
 
@@ -218,14 +218,16 @@ Next, create a screenshot of your dashboard and add it to _dashboards_ directory
 ## Add alerts to quickstart
 
 Next, you add alerts to the quickstart. You're going to add existing static alerts to the quickstart. The _alerts_ directory contain the templates for static alerts.
-To help you populate your .yml alert files, you can use New Relic One's [Graphql API](https://api.newrelic.com/graphiql) to get the json object. Open the Graphql APi and select your account from the drop down.
+To help you populate your .yml alert files, you can use New Relic One's [Graphql API](https://api.newrelic.com/graphiql) to get the json object. 
+
+Open the Graphql APi and select your account from the drop down.
 
 ![graphiql interface](../../../images/instant-observability/graphiql.png)
 
 Building a query is simple in graphiql. Check the appropriate boxes to build the query in Graphql. Your query should be same as follows:
 
->```json
->{
+```js
+{
   actor {
     account(id: {_your account id_}) {
       alerts {
@@ -249,61 +251,61 @@ Building a query is simple in graphiql. Check the appropriate boxes to build the
     }
   }
 }
->
+```
 
 Running the above query in Graphql will respond with the details of your alert condition that you can use to update your quickstart.
 
 ![cache hit ratio in graphql](../../../images/instant-observability/cache-hit-ratio-graphql.png)
 
 For static condition, take the static-alert.yml file and start populating it using the information returned from above query. 
-First, name the file as **Cache Hit Ratio.yml** and populate it as follow:
+First, name the file as **Cache Hit Ratio.yml** and populate it:
 
->```yml
-> ---
-># Name of the alert
+```yml
+---
+# Name of the alert
 name: low cache hit ratio
->
-># Description and details
->details: |+
+
+# Description and details
+details: |+
   This alert is triggered whenever the cache hit ratio for database is < 0.85.
   The cache hit ratio can be measured simply by: # of cache hits/ # of total read responses.
   Itrepresents the proportion of block requests satisfied by the cache without requiring a disk read. 
   A low cache hit score means that the database is inefficient.
->
-># Type of alert
->type: STATIC
->
-># NRQL query
->nrql:
->  query: "SELECT sum(fdb_cache_hits)/sum(fdb_read_responses) FROM Metric"
->
-># Function used to aggregate the NRQL query value(s) for comparison to the terms.threshold
->valueFunction: SINGLE_VALUE 
->
-># List of Critical and Warning thresholds for the condition
->terms:
->- priority: CRITICAL
->  # Operator used to compare against the threshold.
->  operator: BELOW 
->  # Value that triggers a violation
->  threshold: 0.75
->  # Time in seconds; 120 - 3600
->  thresholdDuration: 300
->  # How many data points must be in violation for the duration
->  thresholdOccurrences: ALL 
->
-># Adding a Warning threshold is optional
->- priority: WARNING
->  operator: BELOW 
->  threshold: 0.85
->  thresholdDuration: 300
->  thresholdOccurrences: ALL
->
-># Duration after which a violation automatically closes
-># Time in seconds; 300 - 2592000 (Default: 86400 [1 day])
->violationTimeLimitSeconds: 259200
->___
->```
+
+# Type of alert
+type: STATIC
+
+# NRQL query
+nrql:
+  query: "SELECT sum(fdb_cache_hits)/sum(fdb_read_responses) FROM Metric"
+
+# Function used to aggregate the NRQL query value(s) for comparison to the terms.threshold
+valueFunction: SINGLE_VALUE 
+
+# List of Critical and Warning thresholds for the condition
+terms:
+- priority: CRITICAL
+  # Operator used to compare against the threshold.
+  operator: BELOW 
+  # Value that triggers a violation
+  threshold: 0.75
+  # Time in seconds; 120 - 3600
+  thresholdDuration: 300
+  # How many data points must be in violation for the duration
+  thresholdOccurrences: ALL 
+
+# Adding a Warning threshold is optional
+- priority: WARNING
+  operator: BELOW 
+  threshold: 0.85
+  thresholdDuration: 300
+  thresholdOccurrences: ALL
+
+# Duration after which a violation automatically closes
+# Time in seconds; 300 - 2592000 (Default: 86400 [1 day])
+violationTimeLimitSeconds: 259200
+___
+```
 
 Here, you added the pre-existing low cache hit ratio alert to the quickstart. Follow the same procedure to add the slow read response alert.
 For your reference, here's the graphql response.
@@ -312,48 +314,48 @@ For your reference, here's the graphql response.
 
 Create your **Read response.yml** file based on the above response.
 
->```yml
-> ---
-># Name of the alert
->name: slow read response
->
-># Description and details
->details: |+
->  This alert is triggered when read operation takes > 0.85.
->
-># Type of alert
->type: STATIC
->
-># NRQL query
->nrql:
->  query: "SELECT average(fdb_read_responses) FROM Metric"
->
-># Function used to aggregate the NRQL query value(s) for comparison to the terms.threshold (Default: SINGLE_VALUE)
->valueFunction: SINGLE_VALUE 
->
-># List of Critical and Warning thresholds for the condition
->terms:
->- priority: CRITICAL
->  # Operator used to compare against the threshold.
->  operator: ABOVE
->  # Value that triggers a violation
->  threshold: 0.85
->  # Time in seconds; 120 - 3600
->  thresholdDuration: 300
->  # How many data points must be in violation for the duration
->  thresholdOccurrences: ALL 
->
-># Adding a Warning threshold is optional
->- priority: WARNING
->  operator: ABOVE 
->  threshold: 0.75
-> thresholdDuration: 300
->  thresholdOccurrences: ALL 
->
-># Duration after which a violation automatically closes
-># Time in seconds; 300 - 2592000 (Default: 86400 [1 day])
->violationTimeLimitSeconds: 259200
->```
+```yml
+---
+# Name of the alert
+name: slow read response
+
+# Description and details
+details: |+
+  This alert is triggered when read operation takes > 0.85.
+
+# Type of alert
+type: STATIC
+
+# NRQL query
+nrql:
+  query: "SELECT average(fdb_read_responses) FROM Metric"
+
+# Function used to aggregate the NRQL query value(s) for comparison to the terms.threshold (Default: SINGLE_VALUE)
+valueFunction: SINGLE_VALUE 
+
+# List of Critical and Warning thresholds for the condition
+terms:
+- priority: CRITICAL
+  # Operator used to compare against the threshold.
+  operator: ABOVE
+  # Value that triggers a violation
+  threshold: 0.85
+  # Time in seconds; 120 - 3600
+  thresholdDuration: 300
+  # How many data points must be in violation for the duration
+  thresholdOccurrences: ALL 
+
+# Adding a Warning threshold is optional
+- priority: WARNING
+  operator: ABOVE 
+  threshold: 0.75
+ thresholdDuration: 300
+  thresholdOccurrences: ALL 
+
+# Duration after which a violation automatically closes
+# Time in seconds; 300 - 2592000 (Default: 86400 [1 day])
+violationTimeLimitSeconds: 259200
+```
 
 ## Add quickstart description
 
@@ -363,16 +365,16 @@ To help others understnad the purpose of your quickstart, you need to add quicks
 In the root directory of your pack, you can find a _config.yml_ file. 
 Open the file in your IDE and edit it as follow:
 
->```yml
-> 
-># Name of the pack (required)
->name: flashdb
->
-># Description of the pack (required)
->description: |
+```yml
+ 
+# Name of the pack (required)
+name: flashdb
+
+# Description of the pack (required)
+description: |
   Flashdb is the fastest database in the space. 
   The flashdb quickstart allows you to get visibility into the performance of flashdb with the help of following features:
->
+
   Dashboards:
   - Database methods: Monitor the number of transactions for each database method
   - Database size: Monitor the size of database
@@ -380,34 +382,34 @@ Open the file in your IDE and edit it as follow:
   - Cache hits: Monitor the cache hits
   - Errors: Monitor the errors occured for each type of database transaction
   - Database keys: Monitor the keys for database
-> 
+ 
   Alerts:
   - Cache hit ratio: Alert is triggered when cache hit ratio falls below the set limit.
   - Read response: Alert is triggered when read responses are slow and exceeds a set limit
->
->summary: |
+
+summary: |
   Flashdb is the fastest database in the space. 
   This quickstart allows you to get visibility into the performance of flashdb.
->
-># Support level: New Relic | Verified | Community (required)
->level: Community
->
-># Design
->icon: icon.jpeg
->logo: logo.png
->
-># Authors of the pack (required)
->authors:
->  - {"enter your name"}
->
-># References to other packs (optional)
-># References are grouped by the type: operating-system, database, webserver, queue, ..
-># The reference under the type is a at least one system, so at least one operating-system, database, ..
->references:
->  - type: database
->    name:
->    - flashdb
->```
+
+# Support level: New Relic | Verified | Community (required)
+level: Community
+
+# Design
+icon: icon.jpeg
+logo: logo.png
+
+# Authors of the pack (required)
+authors:
+  - {"enter your name"}
+
+# References to other packs (optional)
+# References are grouped by the type: operating-system, database, webserver, queue, ..
+# The reference under the type is a at least one system, so at least one operating-system, database, ..
+references:
+  - type: database
+    name:
+    - flashdb
+```
 
 Here's how your final _flashdb_ quickstart folder should look like.
 ![quickstart description](../../../images/instant-observability/quickstart-description.png)
@@ -417,10 +419,10 @@ Here's how your final _flashdb_ quickstart folder should look like.
 Your quickstart is now ready to be published. You're going to commit your changes back to GitHub where it will be reviewed by New Relic. 
 Follow the [conventional commit syntax](https://github.com/newrelic/newrelic-observability-packs/blob/alerts-doc-update/CONTRIBUTING.md#using-conventional-commits) for New Relic to commit your changes.
 
->```bash
-> git add -A
-> git commit -m "feat(flashdb): Added a quickstart for flashdb"
-> ```
+```bash
+ git add -A
+ git commit -m "feat(flashdb): Added a quickstart for flashdb"
+```
 
 <Callout variant="important">
 
@@ -430,9 +432,9 @@ To help us manage your contributions efficiently, we encourage you to label your
 </Callout>
 
 Push your changes to GitHub:
->```bash
-> git Push
-> ```
+```bash
+ git Push
+```
 
 Once you've pushed your changes to GitHub, you can [create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 

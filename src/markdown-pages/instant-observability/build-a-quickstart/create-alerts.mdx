@@ -8,15 +8,19 @@ duration: '15 min'
 
 <Callout variant="course" title="Lab">
 
-This procedure is a part of a lab that teaches you how to build a quickstart. If you haven't already, checkout the [_Lab introduction_](/instant-observability/build-a-quickstart)
+This procedure is a part of a lab that teaches you how to build a quickstart. If you haven't already, checkout the [_lab introduction_](/instant-observability/build-a-quickstart)
 
-Each procedure in this lab builds on top of the last one, so make sure you [_create a dashboard_](/instant-observability/build-a-quickstart/create-a-dashboard) before proceeding with this one.
+Each procedure in this lab builds on top of the last one, so make sure you [_Create a dashboard_](/instant-observability/build-a-quickstart/create-a-dashboard) before proceeding with this one.
 
 </Callout>
 
 New Relic alerts allow you to monitor your services and notify you about problems that you're interested in, so you can react fast to troubleshoot and resolve them.
 
->**Note:** It is assumed that you are already familiar with the alerts basics. If you're just getting started, visit the [alert documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/) to familiarize yourself with the basics before proceeding.
+<Callout variant='tip'>
+
+It is assumed that you are already familiar with the alerts basics. If you're just getting started, visit the [alert documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/) to familiarize yourself with the basics before proceeding.
+
+</Callout>
 
 ## Create an alert policy
 
@@ -29,25 +33,29 @@ Name your policy **FlashDB alert policy**. Use the default values for the rest o
 
 ![create an alert policy](../../../images/instant-observability/create-alert-policy.png)
 
-The next step is to add alert conditions to the alert policy. You're going to add folloinwg alert conditions:
-- slow read response
-- low cache hit ratio
+The next step is to add conditions to the alert policy. 
 
 ## Create alert conditions
+
+You're going to add the following alert conditions:
+- slow read responses
+- low cache hit ratio
+
+### Create a high response time alert condition
 
 Under **FlashDB alert policy**, click **Create a condition**.
 
 ![create alert condition](../../../images/instant-observability/create-alert-condition.png)
 
-The next page asks you to choose a category for your condition. Choose NRQL, which allows you to create a condition using a NRQL query. Then click **Next, define thresholds**.
+The next page asks you to choose a category for your condition. Choose NRQL, which allows you to create a condition using a NRQL query. Then, click **Next, define thresholds**.
 
 ![alert condition using nrql](../../../images/instant-observability/create-alert-condition-nrql.png)
 
-You want to get notified if the read operation is taking longer than expected. Name your alert condition _slow read responses_ and enter the following NRQL query for your condition.
+You want to get notified if the read operation is taking longer than expected. Name your alert condition "slow read responses" and enter the following NRQL query for your condition.
 
->```SQL
-> SELECT average(fdb_read_responses) FROM Metric
->```
+```sql
+SELECT average(fdb_read_responses) FROM Metric
+```
 
 ![slow read response nrql](../../../images/instant-observability/slow-read-response-nrql.png)
 
@@ -58,7 +66,9 @@ Set the critical threshold value at 0.9:
 
 ![slow read response critical threshold](../../../images/instant-observability/critical-threshold.png)
 
-Here, you defined a condition that will open violation whenever read response time is above 0.9 for at least 5 minutes. You can also add a warning threshold by clicking **Add warning threshold**.
+Here, you defined a condition that will open violation whenever read response time is above 0.9 for at least 5 minutes. 
+
+Next, click **Add warning threshold**.
 
 ![add warning threshold](../../../images/instant-observability/add-warning-threshold.png)
 
@@ -81,11 +91,11 @@ The next page asks you to choose the category for your condition. Choose NRQL an
 
 ![add alert condition using nrql](../../../images/instant-observability/add-more-alert-conditions-nrql.png)
 
-Enter the name Low cache hit ratio for your condition and use the following NRQL query.
+Enter the name "Low cache hit ratio" for your condition and use the following NRQL query.
 
->```SQL
-> SELECT sum(fdb_cache_hits)/sum(fdb_read_responses) FROM Metric
->```
+```sql
+SELECT sum(fdb_cache_hits)/sum(fdb_read_responses) FROM Metric
+```
 
 ![low cache hit ratio nrql](../../../images/instant-observability/low-cache-hit-ratio-nrql.png)
 
@@ -115,7 +125,7 @@ Select the email you want to receive your notifications on, and click **Update p
 
 ## Summary
 
-During this procedure, you created FlashDB alert policy and added slow read responses and low cache hit ratio conditions to it. Y ou also added a notoification channel to receive notifications about any opened violations.
+During this procedure, you created FlashDB alert policy and added slow read responses and low cache hit ratio conditions to it. You also added a notoification channel to receive notifications about any opened violations.
 
 <Callout variant="course" title="Lab">
 
