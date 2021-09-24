@@ -23,7 +23,7 @@ const allowedElements = [
 const QuickstartOverview = ({ quickstart }) => {
   return (
     <>
-      <h3> What&apos;s included: </h3>
+      <h2> What&apos;s included </h2>
       <div
         css={css`
           display: grid;
@@ -62,15 +62,37 @@ const QuickstartOverview = ({ quickstart }) => {
         ))}
       </div>
       {quickstart.description && (
-        <Markdown
-          skipHtml
-          allowedElements={allowedElements}
+        <div
           css={css`
-            margin: 2em 0;
+            h1,
+            h2,
+            h3 {
+              margin: 1em 0 0.25em 0;
+            }
+            p,
+            pre {
+              margin-left: 1em;
+            }
+            h1,
+            h2 {
+              font-size: 1.5em;
+              font-weight: 600;
+            }
+            h3 {
+              font-size: 1.2em;
+            }
           `}
         >
-          {quickstart.description}
-        </Markdown>
+          <Markdown
+            skipHtml
+            allowedElements={allowedElements}
+            css={css`
+              margin: 2em 0;
+            `}
+          >
+            {quickstart.description}
+          </Markdown>
+        </div>
       )}
     </>
   );
