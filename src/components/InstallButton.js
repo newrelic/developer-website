@@ -16,30 +16,20 @@ import {
 import { quickstart } from '../types';
 
 /**
- * @param {String} parameters
- * @returns {Array}
- */
-const strippedParameters = (parameters) => {
-  return parameters[0] === '?'
-    ? parameters.slice(1).split('&')
-    : parameters.split('&');
-};
-
-/**
  * @param {Object} location
  * @returns {String}
  */
-const checkUtmParameters = (location) => {
-  const { state } = location;
-  if (!state) {
+const checkUtmParameters = (parameters) => {
+  if (!parameters) {
     return false;
   }
-  const { search: parameters } = state.prevPath;
-  const parametersArray = strippedParameters(parameters);
 
-  const hasUtmParameters = parametersArray.some((value) =>
-    UTM_PARAMETERS.includes(value)
+  const hasUtmParameters = Object.entries(UTM_PARAMETERS).some(
+    ([key, value]) => {
+      return parameters.get(key) === value;
+    }
   );
+
   return hasUtmParameters;
 };
 
@@ -62,12 +52,14 @@ const createInstallLink = (
     ? getGuidedInstallStackedNr1Url(nerdletId)
     : getPackNr1Url(id, nerdletId);
 
-  const url = new URL(
-    `?${parameters}&return_to=${encodeURIComponent(platformUrl)}`,
-    hasUtmParameters ? NR1_SIGNUP_URL : NR1_LOGIN_URL
-  );
+  const installUrl = new URL(hasUtmParameters ? NR1_SIGNUP_URL : NR1_LOGIN_URL);
+  parameters &&
+    parameters.forEach((value, key) => {
+      installUrl.searchParams.set(key, value);
+    });
 
-  return url.href;
+  installUrl.searchParams.set('return_to', encodeURIComponent(platformUrl));
+  return installUrl.href;
 };
 
 /**
@@ -81,8 +73,7 @@ const hasComponent = (quickstart, key) =>
 const InstallButton = ({ quickstart, location, ...props }) => {
   const hasInstallableComponent = hasComponent(quickstart, 'installPlans');
 
-  const parameters =
-    location.state && strippedParameters(location.state.prevPath.search);
+  const parameters = location.search && new URLSearchParams(location.search);
 
   const hasGuidedInstall =
     hasInstallableComponent &&
@@ -98,8 +89,7 @@ const InstallButton = ({ quickstart, location, ...props }) => {
     ? NR1_GUIDED_INSTALL_NERDLET
     : NR1_PACK_DETAILS_NERDLET;
 
-  const hasUtmParameters = checkUtmParameters(location);
-
+  const hasUtmParameters = checkUtmParameters(parameters);
   // If we have an install-able component, generate a URL. Otherwise, link to the
   // first documentation supplied.
   const url = hasInstallableComponent

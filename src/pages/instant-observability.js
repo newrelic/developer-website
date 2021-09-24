@@ -488,7 +488,6 @@ const QuickstartsPage = ({ data, location }) => {
                 key={pack.id}
                 view={view}
                 featured={pack.keywords?.includes('featured')}
-                location={location}
                 {...pack}
               />
             ))}

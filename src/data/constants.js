@@ -56,4 +56,4 @@ export const QUICKSTARTS_REPO =
 export const SIGNUP_LINK = 'https://newrelic.com/signup';
 export const LOGIN_LINK = 'https://login.newrelic.com/login';
 
-export const UTM_PARAMETERS = ['utm_medium=cpc'];
+export const UTM_PARAMETERS = { utm_medium: 'cpc' };
