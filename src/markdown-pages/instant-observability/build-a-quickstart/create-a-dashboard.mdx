@@ -84,24 +84,24 @@ This takes you to the same **Add to your dashboard** page. Add another chart to 
 Run the following query to observe the **average response time** of flashDB queries. 
 
 ```sql
-SELECT average(fdb_create_responses), average(fdb_read_responses), average(fdb_update_responses), average(fdb_delete_responses) FROM Metric SINCE 30 MINUTES AGO TIMESERIES
+SELECT average(fdb_create_responses), average(fdb_read_responses), average(fdb_update_responses), average(fdb_delete_responses) FROM Metric TIMESERIES
 ```
 
-![average response time chart](../../../images/instant-observability/average-response-time.png ) 
+![average response time chart](../../../images/instant-observability/average-response-time-chart.png ) 
 
-Here, you the observe average response time for different flashDB queries for past 30 minutes. Click **Save** to add this chart to your dashboard. Follow the same procedure to add the rest of the charts.
+Here, you the observe average response time for different flashDB queries. Click **Save** to add this chart to your dashboard. Follow the same procedure to add the rest of the charts.
 
 ### Errors
 
 For the Errors chart, use the following query:
 
 ```sql
-SELECT sum(fdb_create_errors), sum(fdb_read_errors), sum(fdb_update_errors), sum(fdb_delete_errors) FROM Metric SINCE 60 MINUTES AGO TIMESERIES
+SELECT sum(fdb_create_errors), sum(fdb_read_errors), sum(fdb_update_errors), sum(fdb_delete_errors) FROM Metric TIMESERIES
 ```
 
-Here, you observe errors for all database transactions for the past one hour.
+Here, you observe errors for all database queries.
 
-![errors chart](../../../images/instant-observability/errors.png )
+![errors chart](../../../images/instant-observability/errors-chart.png )
 
 ### Database size
 
@@ -120,28 +120,28 @@ This chart shows you the database size.
 For the cache hits charts, use the following query:
 
 ```sql
-SELECT sum(fdb_cache_hits) FROM Metric SINCE 30 MINUTES AGO TIMESERIES
+SELECT sum(fdb_cache_hits) FROM Metric TIMESERIES
 ```
 
-![cache hits chart](../../../images/instant-observability/cache-hits.png )
+![cache hits chart](../../../images/instant-observability/cache-hits-chart.png )
 
-Here, you observe the total number of cache hits for past 30 minutes using line chart.
+Here, you observe the total number of cache hits using line chart.
 
 ### Keys
 
 Use the following query to get keys chart.
 
 ```sql
-SELECT count(fdb_keys) FROM Metric SINCE 5 MINUTES AGO TIMESERIES
+SELECT count(fdb_keys) FROM Metric TIMESERIES
 ```
 
-![keys chart](../../../images/instant-observability/keys.png )
+![keys chart](../../../images/instant-observability/keys-chart.png )
 
-Here, you observe the flashDB key count for past 5 minutes. 
+Here, you observe the flashDB key count. 
 
 Your final dashboard will look similar to the following:
 
-![dashboard with charts](../../../images/instant-observability/dashboard-final.png )
+![dashboard with charts](../../../images/instant-observability/final-dashboard.png )
 
 ## Summary
 
