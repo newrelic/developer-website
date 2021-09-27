@@ -46,7 +46,7 @@ const IOBanner = ({ isMobile }) => {
         </h1>
         <p
           css={css`
-            font-size: max(12px, 0.75vw);
+            font-size: 0.75rem;
             @media screen and (max-width: 1303px) {
               margin-bottom: 0.3rem;
             }
