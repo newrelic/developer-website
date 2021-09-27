@@ -16,31 +16,32 @@ As this procedure builds on top of the last ones in the lab, make sure you creat
 
 New Relic One quickstarts allow you to quickly and easily observe and monitor your services since they include observability building blocks like dashboards and alerts. You can package your dashboards and alerts into a quickstart and contribute it to New Relic One catalog.
 
-To get started, navigate to GitHub repository of [New Relic One Observability Packs](https://github.com/newrelic/newrelic-observability-packs) and fork it.
+To get started, navigate to GitHub repository of [New Relic One Quickstarts](https://github.com/newrelic/newrelic-observability-packs) and fork it.
 
-![fork github repo](../../../images/instant-observability/fork-github-repo.png)
+![fork github quickstart repo](../../../images/instant-observability/fork-github-quickstart.png)
 
 Now, clone your own repository to your local machine using `git clone` command and open it in the IDE of your choice. 
 
 Notice the directory structure. __template_ folder is of special importance since it contains the templates for observability building blocks in the quickstart. 
 
-![quickstart template](../../../images/instant-observability/template-directory.png)
+![quickstart template](../../../images/instant-observability/quickstart-template-directory.png)
 
 The _\_template_ directory contains the folders for dashboards, alerts, and instrumentation. Each of these folders contain a template or template directories that you can use to create entities for your quickstart.
 
 ## Add dashboards to quickstart
 
-Copy the _\_template_ directory and it's content to a new directory within the _packs_ folder. You don't need to copy the entire content but only the entities you want to create. Since you're only going to add dashboards and alerts to your quickstart, delete the _instrumentation_ directory. Name the directory as **flashdb**.
+Copy the _\_template_ directory and it's content to a new directory within the _quickstarts_ folder. Name the directory as _flashdb_.
 
-![flashdb directory](../../../images/instant-observability/flashdb-directory.png)
+![flashdb quickstart directory](../../../images/instant-observability/flashdb-quickstart-template.png)
 
 You're going to add existing dashboard to your quickstart. Move to your dashboard in New Relic and copy its JSON. Then save it as a JSON file in the _dashboards_ directory.
 
-![dashboard'\s json](../../../images/instant-observability/copy-dashboard-json.png)
+![dashboard'\s json](../../../images/instant-observability/copy-flashdb-dashboard-json.png)
 
 Here, you copied your dashboard's JSON to clipboard. Replace the content of existing JSON file in _dashboards_ directory and rename it as _flashDB.json_. Your _flashDB.json_ file should contain the following content:
 
-```json
+
+```json 
 {
   "name": "FlashDB",
   "description": null,
@@ -68,7 +69,7 @@ Here, you copied your dashboard's JSON to clipboard. Replace the content of exis
             "nrqlQueries": [
               {
                 "accountId": 3248695,
-                "query": "SELECT count(*) FROM fdb_method FACET method "
+                "query": "SELECT count(*) FROM fdb_method FACET method"
               }
             ]
           },
@@ -84,13 +85,13 @@ Here, you copied your dashboard's JSON to clipboard. Replace the content of exis
             "height": 3,
             "width": 4
           },
-          "title": "database size (bytes)",
+          "title": "Database size",
           "rawConfiguration": {
             "dataFormatters": [],
             "nrqlQueries": [
               {
                 "accountId": 3248695,
-                "query": "SELECT sum(fdb_size) FROM Metric"
+                "query": "SELECT latest(fdb_size) FROM Metric"
               }
             ],
             "thresholds": []
@@ -107,7 +108,7 @@ Here, you copied your dashboard's JSON to clipboard. Replace the content of exis
             "height": 3,
             "width": 4
           },
-          "title": "Average response time",
+          "title": "Average Response Time",
           "rawConfiguration": {
             "legend": {
               "enabled": true
@@ -188,7 +189,7 @@ Here, you copied your dashboard's JSON to clipboard. Replace the content of exis
             "height": 3,
             "width": 4
           },
-          "title": "FlashDB keys",
+          "title": "FlashDB Keys",
           "rawConfiguration": {
             "legend": {
               "enabled": true
@@ -213,14 +214,14 @@ Here, you copied your dashboard's JSON to clipboard. Replace the content of exis
 
 Next, create a screenshot of your dashboard and add it to _dashboards_ directory. Give it the same name as your JSON file. Your _dashboard_ directory should look similar to the following:
 
-![flashDB dashboard](../../../images/instant-observability/flashdb-dashboard-directory.png)
+![flashDB dashboard](../../../images/instant-observability/flashdb-quickstart-dashboard-directory.png)
 
 ## Add alerts to quickstart
 
 Next, you add alerts to the quickstart. You're going to add existing static alerts to the quickstart. The _alerts_ directory contain the templates for static alerts.
 To help you populate your .yml alert files, you can use New Relic One's [Graphql API](https://api.newrelic.com/graphiql) to get the json object. 
 
-Open the Graphql APi and select your account from the drop down.
+Open the Graphql API and select your account from the drop down.
 
 ![graphiql interface](../../../images/instant-observability/graphiql.png)
 
@@ -357,10 +358,10 @@ terms:
 violationTimeLimitSeconds: 259200
 ```
 
-## Add quickstart description
+## Add a description
 
 Your quickstart is almost ready to go live. But how will other's know and understand what your quickstart is about and what it can do?
-To help others understnad the purpose of your quickstart, you need to add quickstart's description. 
+To help others understand the purpose of your quickstart, add a description. 
 
 In the root directory of your pack, you can find a _config.yml_ file. 
 Open the file in your IDE and edit it as follow:
@@ -412,7 +413,29 @@ references:
 ```
 
 Here's how your final _flashdb_ quickstart folder should look like.
-![quickstart description](../../../images/instant-observability/quickstart-description.png)
+![flashdb quickstart directory](../../../images/instant-observability/final-flashdb-quickstart.png)
+
+## Test your quickstart
+
+You use `importer` utility for testing quickstarts on your account. Run the utility using the _impor.sh_ script in the quickstarts.  
+
+Navigate to the root directory of New Relic Quickstarts. Modify _importer-config.sh_ script with your account number and New Relic API Key.
+
+![modify importer config script](../../../images/instant-observability/modify-importer-script.png)
+
+Now, run _import.sh_ from the root of the project:
+
+```bash 
+./import.sh flashdb
+```
+
+<Callout variant='important'>
+
+The importer spins up a docker container, so make sure the docker is running for this function. 
+
+</Callout>
+
+Now, you see the dashboard and alert policy deployed in your account.
 
 ## Contribute quickstart to GitHub
 
@@ -438,15 +461,22 @@ Push your changes to GitHub:
 
 Once you've pushed your changes to GitHub, you can [create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-![pull request](../../../images/instant-observability/pull-request.png)
+![pull request](../../../images/instant-observability/create-pull-request.png)
 
 Submit and wait for the review. Thanks a lot for your submission!
 
-## What's Next
+<Callout variant="important">
 
-If you haven't already, we encourgae you to read through the related docs as follow:
+At this stage, your quickstart will be automatically validated in GitHub. If this were a real-life submission, it would then be approved and incorporated into New Relic I/O for your users to see. As this is a lab, we will not actually review this PR. Feel free to delete it after it validates your work.
+
+</Callout>
+
+
+## Homework
+
+If you haven't already, we encourage you to read through some related docs as:
 
 - [Dashboards](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/introduction-dashboards/)
 - [Alerts](https://docs.newrelic.com/docs/alerts-applied-intelligence/#:~:text=Together%2C%20New%20Relic%20Alerts%20and,metrics%20you%20care%20about%20most.)
 
-The above docs will give you a head start on your observability journey with New Relic. We always welcome contributions from community so feel free to get in touch.
+The above docs give you a head start on your observability journey with New Relic. We always welcome contributions from community so feel free to get in touch.

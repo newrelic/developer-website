@@ -52,7 +52,7 @@ From this screen, you add charts using our query builder, or you choose to add t
 
 ![add a chart](../../../images/instant-observability/add-a-chart.png)
 
-It takes you to a query builder option. Switch to the NRQL editor and edit the query as follows:
+It may open the query builder option. Switch to the NRQL editor and edit the query as follows:
 
 ```sql
 SELECT count(*) FROM fdb_method FACET method 
@@ -81,7 +81,7 @@ You can add more charts to your dashboard following the same pattern. To do so, 
 This takes you to the same **Add to your dashboard** page. Add another chart to your dashboard.
 
 ### Average response time
-Run the following query to observe the **average response time** of flashDB queries. 
+Run the following query to observe the average response time of flashDB queries. 
 
 ```sql
 SELECT average(fdb_create_responses), average(fdb_read_responses), average(fdb_update_responses), average(fdb_delete_responses) FROM Metric TIMESERIES
@@ -89,7 +89,7 @@ SELECT average(fdb_create_responses), average(fdb_read_responses), average(fdb_u
 
 ![average response time chart](../../../images/instant-observability/average-response-time-chart.png ) 
 
-Here, you the observe average response time for different flashDB queries. Click **Save** to add this chart to your dashboard. Follow the same procedure to add the rest of the charts.
+Here, you observe the average response time for different flashDB queries. Click **Save** to add this chart to your dashboard. Follow the same procedure to add the rest of the charts.
 
 ### Errors
 
@@ -108,10 +108,10 @@ Here, you observe errors for all database queries.
 Use the following query to get Database size chart.
 
 ```sql
-SELECT sum(mdb_size) FROM Metric
+SELECT latest(fdb_size) FROM Metric
 ```
 
-![database size chart](../../../images/instant-observability/database-size.png )
+![database size chart](../../../images/instant-observability/latest-database-size.png )
 
 This chart shows you the database size. 
 
@@ -125,7 +125,7 @@ SELECT sum(fdb_cache_hits) FROM Metric TIMESERIES
 
 ![cache hits chart](../../../images/instant-observability/cache-hits-chart.png )
 
-Here, you observe the total number of cache hits using line chart.
+Here, you observe the total number of cache hits using a line chart.
 
 ### Keys
 
@@ -141,7 +141,7 @@ Here, you observe the flashDB key count.
 
 Your final dashboard will look similar to the following:
 
-![dashboard with charts](../../../images/instant-observability/final-dashboard.png )
+![dashboard with charts](../../../images/instant-observability/final-flashdb-dashboard.png )
 
 ## Summary
 

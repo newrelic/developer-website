@@ -148,7 +148,7 @@
       url: https://opensource.newrelic.com/nerdpacks/
 
 - title: Instant observability
-  icon: 
+  icon: zap
   url: '/instant-observability'
   pages:
     - title: Build a quickstart
