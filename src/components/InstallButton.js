@@ -16,8 +16,8 @@ import {
 import { quickstart } from '../types';
 
 /**
- * @param {Object} location
- * @returns {String}
+ * @param {Object} parameters
+ * @returns {Boolean}
  */
 const checkUtmParameters = (parameters) => {
   if (!parameters) {
@@ -53,10 +53,11 @@ const createInstallLink = (
     : getPackNr1Url(id, nerdletId);
 
   const installUrl = new URL(hasUtmParameters ? NR1_SIGNUP_URL : NR1_LOGIN_URL);
-  parameters &&
+  if (parameters) {
     parameters.forEach((value, key) => {
       installUrl.searchParams.set(key, value);
     });
+  }
 
   installUrl.searchParams.set('return_to', encodeURIComponent(platformUrl));
   return installUrl.href;
