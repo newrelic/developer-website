@@ -59,7 +59,7 @@ const createInstallLink = (
     });
   }
 
-  installUrl.searchParams.set('return_to', encodeURIComponent(platformUrl));
+  installUrl.searchParams.set('return_to', platformUrl);
   return installUrl.href;
 };
 
