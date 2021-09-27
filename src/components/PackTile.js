@@ -94,6 +94,10 @@ const PackTile = ({
           padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
           margin: 10px auto;
 
+          .dark-mode & {
+            background-color: rgb(231 231 231 / 0);
+          }
+
           ${view === VIEWS.LIST &&
           css`
             max-height: 150px;
