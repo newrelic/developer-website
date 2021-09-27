@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
+import Cookies from 'js-cookie';
 import DevSiteSeo from '../components/DevSiteSeo';
 import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
@@ -12,15 +13,14 @@ import {
   Layout,
   PageTools,
   useTessen,
-  useInstrumentedHandler,
   Button,
   Icon,
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
-import ImageGallery from '../components/ImageGallery';
 import InstallButton from '../components/InstallButton';
 import Markdown from '../components/Markdown';
 import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { quickstart } from '../types';
 import {
   QUICKSTARTS_REPO,
@@ -28,54 +28,163 @@ import {
   SIGNUP_LINK,
   LOGIN_LINK,
 } from '../data/constants';
-
-const allowedElements = [
-  'h1',
-  'h2',
-  'h3',
-  'ol',
-  'ul',
-  'li',
-  'p',
-  'blockquote',
-  'code',
-  'a',
-  'strong',
-  'em',
-  'hr',
-];
+import QuickstartOverview from '../components/quickstarts/QuickstartOverview';
 
 const QuickstartDetails = ({ data, location }) => {
-  const pack = data.quickstarts;
-  const packUrl = pack.packUrl || QUICKSTARTS_REPO;
+  const quickstart = data.quickstarts;
+  const quickstartUrl = quickstart.packUrl || QUICKSTARTS_REPO;
   const tessen = useTessen();
-  const handleInstallClick = useInstrumentedHandler(
-    () => {
-      tessen.track('observabilityPack', 'packInstall', {
-        packName: pack.name,
-        packId: pack.id,
-      });
+  const breadcrumbs = [
+    {
+      name: 'Instant Observability (I/O)',
+      url: '/instant-observability/',
     },
     {
-      actionName: 'packInstall',
-      packName: pack.name,
-      packId: pack.id,
+      name: quickstart.title,
+    },
+  ];
+  const quickStartMeta = [
+    {
+      name: 'quick_start_name',
+      class: 'swiftype',
+      'data-type': 'string',
+      content: quickstart.title,
+    },
+  ];
+
+  const writeCookie = () => {
+    const currentEnvironment =
+      process.env.ENV || process.env.NODE_ENV || 'development';
+    const options = { expires: 1 /* days */ };
+    if (currentEnvironment !== 'development') {
+      options.domain = 'newrelic.com';
     }
-  );
+
+    Cookies.set('newrelic-quickstart-id', quickstart.id, options);
+  };
+
+  const handleInstallClick = () => {
+    writeCookie();
+    tessen.track('instantObservability', 'QuickstartInstall', {
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+      quickstartUrl: quickstart.packUrl,
+    });
+  };
+
+  const viewRepoClick = () =>
+    tessen.track('instantObservability', 'QuickstartViewRepoClick', {
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+      quickstartUrl: quickstart.packUrl,
+    });
 
   return (
     <>
-      <DevSiteSeo title={pack.name} location={location} />
+      <DevSiteSeo
+        title={quickstart.title}
+        type="quickstarts"
+        location={location}
+        meta={quickStartMeta}
+      />
+      <Breadcrumbs segments={breadcrumbs} />
       <Tabs>
-        <PageLayout type={PageLayout.TYPE.RELATED_CONTENT_TABS}>
+        <PageLayout
+          type={PageLayout.TYPE.RELATED_CONTENT_TABS}
+          css={css`
+            grid-template-columns: minmax(0, 1fr) 360px;
+            margin-top: 1rem;
+          `}
+        >
           <PageLayout.Header
-            title={pack.name}
+            title={quickstart.title}
             css={css`
               border-bottom: none;
-              gap: 1rem;
+              display: grid;
+              padding-bottom: 0;
+              grid-template-areas: 'title logo' 'summ logo' 'cta logo';
+              grid-column-gap: 1rem;
+              grid-row-gap: 1rem;
+              row-gap: 1rem;
+
+              h1 {
+                font-weight: normal;
+                grid-area: title;
+                padding-bottom: 1rem;
+              }
             `}
           >
-            <InstallButton quickstart={pack} onClick={handleInstallClick} />
+            {quickstart.logoUrl && (
+              <img
+                src={quickstart.logoUrl}
+                alt={quickstart.title}
+                css={css`
+                  max-height: 5rem;
+                  grid-area: logo;
+                  align-self: center;
+
+                  .dark-mode & {
+                    background-color: white;
+                  }
+
+                  @media (max-width: 760px) {
+                    display: none;
+                  }
+                `}
+              />
+            )}
+            {quickstart.summary && (
+              <div
+                css={css`
+                  grid-area: summ;
+                  margin-bottom: 1em;
+                  max-width: 40vw;
+
+                  @media (max-width: 760px) {
+                    max-width: 100%;
+                  }
+                `}
+              >
+                {quickstart.summary}
+              </div>
+            )}
+            <div
+              css={css`
+                grid-area: cta;
+                display: flex;
+                justify-content: flex-start;
+                @media (max-width: 760px) {
+                  flex-direction: column;
+                  align-items: stretch;
+                }
+              `}
+            >
+              <InstallButton
+                quickstart={quickstart}
+                onClick={handleInstallClick}
+              />
+              <Button
+                as={Link}
+                variant={Button.VARIANT.OUTLINE}
+                to={quickstartUrl}
+                rel="noopener noreferrer"
+                css={css`
+                  margin: 0 0 0 0.5rem;
+                  @media (max-width: 760px) {
+                    margin: 1rem 0 0 0;
+                  }
+                `}
+                onClick={viewRepoClick}
+              >
+                <Icon
+                  name="fe-github"
+                  css={css`
+                    margin-right: 7px;
+                  `}
+                />
+                View Repo
+              </Button>
+            </div>
           </PageLayout.Header>
           <Tabs.Bar
             css={css`
@@ -91,17 +200,20 @@ const QuickstartDetails = ({ data, location }) => {
             `}
           >
             <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
-            <Tabs.BarItem id="dashboards" count={pack.dashboards?.length ?? 0}>
+            <Tabs.BarItem
+              id="dashboards"
+              count={quickstart.dashboards?.length ?? 0}
+            >
               Dashboards
             </Tabs.BarItem>
-            <Tabs.BarItem id="alerts" count={pack.alerts?.length ?? 0}>
+            <Tabs.BarItem id="alerts" count={quickstart.alerts?.length ?? 0}>
               Alerts
             </Tabs.BarItem>
             <Tabs.BarItem
               id="data-sources"
               count={
-                (pack.instrumentation?.length ?? 0) +
-                (pack.documentation?.length ?? 0)
+                (quickstart.instrumentation?.length ?? 0) +
+                (quickstart.documentation?.length ?? 0)
               }
             >
               Data sources
@@ -110,41 +222,37 @@ const QuickstartDetails = ({ data, location }) => {
           <Layout.Content>
             <Tabs.Pages>
               <Tabs.Page id="overview">
-                <ImageGallery images={[]} />
-                <h3>Description</h3>
-                <Markdown skipHtml allowedElements={allowedElements}>
-                  {pack.description}
-                </Markdown>
+                <QuickstartOverview quickstart={quickstart} />
               </Tabs.Page>
               <Tabs.Page id="dashboards">
-                {pack.dashboards ? (
-                  <QuickstartDashboards quickstart={pack} />
+                {quickstart.dashboards?.length > 0 ? (
+                  <QuickstartDashboards quickstart={quickstart} />
                 ) : (
                   <EmptyTab
-                    quickstartUrl={pack.packUrl}
-                    quickstartName={pack.name}
+                    quickstartUrl={quickstart.packUrl}
+                    quickstartName={quickstart.title}
                     tabName="dashboards"
                   />
                 )}
               </Tabs.Page>
               <Tabs.Page id="alerts">
-                {pack.alerts ? (
-                  <QuickstartAlerts quickstart={pack} />
+                {quickstart.alerts?.length > 0 ? (
+                  <QuickstartAlerts quickstart={quickstart} />
                 ) : (
                   <EmptyTab
-                    quickstartUrl={pack.packUrl}
-                    quickstartName={pack.name}
+                    quickstartUrl={quickstart.packUrl}
+                    quickstartName={quickstart.title}
                     tabName="alerts"
                   />
                 )}
               </Tabs.Page>
               <Tabs.Page id="data-sources">
-                {pack.documentation ? (
-                  <QuickstartDataSources quickstart={pack} />
+                {quickstart.documentation?.length > 0 ? (
+                  <QuickstartDataSources quickstart={quickstart} />
                 ) : (
                   <EmptyTab
-                    quickstartUrl={pack.packUrl}
-                    quickstartName={pack.name}
+                    quickstartUrl={quickstart.packUrl}
+                    quickstartName={quickstart.title}
                     tabName="data sources"
                   />
                 )}
@@ -159,51 +267,25 @@ const QuickstartDetails = ({ data, location }) => {
               }
             `}
           >
-            <PageTools.Section
-              css={css`
-                background-color: var(--divider-color);
-              `}
-            >
-              <div>
-                <Button
-                  as={Link}
-                  variant={Button.VARIANT.PRIMARY}
-                  to={packUrl}
-                  rel="noopener noreferrer"
-                  instrumentation={{ packName: pack.name }}
-                >
-                  <Icon
-                    name="fe-github"
-                    css={css`
-                      margin-right: 7px;
-                    `}
-                  />
-                  View Repo
-                </Button>
-              </div>
-            </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>How to use this quickstart</PageTools.Title>
               <ol>
                 <li>
                   <Link to={SIGNUP_LINK}>Sign Up</Link> for a free New Relic
-                  account (or <Link to={LOGIN_LINK}>Log In</Link> to your
-                  existing account)
+                  account or <Link to={LOGIN_LINK}>Log In</Link> to your
+                  existing account.
                 </li>
-                <li>Click the green install button above</li>
+                <li>Click the green install button above.</li>
                 <li>
-                  Follow the instructions to install the necessary
-                  instrumentation to get the data used in this quickstart
-                </li>
-                <li>
-                  Enjoy the dashboards, alerts, and appications filled with
-                  insights on our environment and services.
+                  Install the quickstart to get started or improve how you
+                  monitor your environment. They’re filled with pre-built
+                  resources like dashboards, instrumentation, and alerts.
                 </li>
               </ol>
             </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>Authors</PageTools.Title>
-              <p>{pack.authors.join(', ')}</p>
+              <p>{quickstart.authors.join(', ')}</p>
             </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>Support</PageTools.Title>
@@ -212,11 +294,11 @@ const QuickstartDetails = ({ data, location }) => {
                   text-transform: uppercase;
                 `}
               >
-                {QUICKSTART_SUPPORT_CONTENT[`${pack.level}`].title}
+                {QUICKSTART_SUPPORT_CONTENT[`${quickstart.level}`].title}
               </h5>
               <p>
                 <Markdown>
-                  {QUICKSTART_SUPPORT_CONTENT[`${pack.level}`].content}
+                  {QUICKSTART_SUPPORT_CONTENT[`${quickstart.level}`].content}
                 </Markdown>
               </p>
             </PageTools.Section>
@@ -238,9 +320,11 @@ export const pageQuery = graphql`
   query($id: String!) {
     quickstarts(id: { eq: $id }) {
       name
+      title
       level
       id
       description
+      summary
       logoUrl
       packUrl
       dashboards {
@@ -261,6 +345,10 @@ export const pageQuery = graphql`
         description
       }
       authors
+      installPlans {
+        id
+        name
+      }
     }
   }
 `;

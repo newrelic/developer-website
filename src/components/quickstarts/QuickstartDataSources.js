@@ -12,12 +12,9 @@ const QuickstartDataSources = ({ quickstart }) => (
         margin-bottom: 16px;
       `}
     >
-      {quickstart.name} observability quickstart contains{' '}
+      {quickstart.title} observability quickstart contains{' '}
       {pluralize('data source', quickstart.documentation?.length ?? 0, true)}.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Aenean et tortor at
-      risus. Platea dictumst quisque sagittis purus sit amet volutpat consequat
-      mauris.{' '}
+      This is how you'll get your data into New Relic.{' '}
     </Intro>
 
     <div
@@ -44,6 +41,7 @@ const QuickstartDataSources = ({ quickstart }) => (
           interactive
         >
           <h3>{doc.name}</h3>
+          {doc.description && <p>{doc.description}</p>}
           <Tag
             css={css`
               display: inline-block;
@@ -52,8 +50,6 @@ const QuickstartDataSources = ({ quickstart }) => (
           >
             Docs
           </Tag>
-
-          {doc.description && <p>{doc.description}</p>}
         </Surface>
       ))}
     </div>

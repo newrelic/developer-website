@@ -14,13 +14,13 @@ export const SDK_BASE_URL =
 // FIXME: update this to production URL when deployed / launched
 export const NR1_LOGIN_URL = 'https://staging-login.newrelic.com/login';
 
-// FIXME: update this to production URL when deployed / launched
-export const NR1_BASE_URL = 'https://staging-one.newrelic.com';
-
-export const NR1_BASE_URL_LOCAL = 'https://dev-one.newrelic.com';
-
 export const NR1_PACK_DETAILS_NERDLET =
   'catalog-pack-details.catalog-pack-contents';
+
+export const NR1_GUIDED_INSTALL_NERDLET =
+  'nr1-install-newrelic.nr1-install-newrelic';
+
+export const NR1_EXPLORER_NERDLET = 'nr1-core.listing';
 
 export const QUICKSTART_SUPPORT_LEVELS = {
   NEWRELIC: 'NEWRELIC',

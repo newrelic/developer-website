@@ -123,6 +123,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: path.resolve('./src/templates/QuickstartDetails.js'),
       context: {
         id,
+        layout: 'QuickStartLayout',
       },
     });
   });
@@ -154,6 +155,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     });
   });
+};
+
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+  const oldPage = { ...page };
+
+  if (page.path === '/instant-observability/') {
+    page.context.layout = 'QuickStartLayout';
+  }
+  deletePage(oldPage);
+  createPage(page);
 };
 
 exports.onCreateNode = ({ node, getNode, actions }) => {

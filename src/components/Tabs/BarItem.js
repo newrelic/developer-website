@@ -28,9 +28,9 @@ const BarItem = ({ index, children, id, count, disabled }) => {
       type="button"
       onClick={() => {
         !disabled && setCurrentTab(id);
-        tessen.track('observabilityPack', `packTabToggle`, {
-          packTabState: id,
-          packTabCount: count,
+        tessen.track('instantObservability', `QuickstartTabToggle`, {
+          QuickstartTabState: id,
+          QuickstartTabCount: count,
         });
       }}
       css={css`

@@ -1,5 +1,9 @@
 import defaultIcons from '@newrelic/gatsby-theme-newrelic/src/icons/newrelic';
 import automation from './newrelic/automation';
+import allEntities from './newrelic/all-entities';
+import dashboard from './newrelic/dashboard';
+import document from './newrelic/document';
+import alert from './newrelic/alert';
 import book from './newrelic/book';
 import buildApps from './newrelic/build-apps';
 import builders from './newrelic/builders';
@@ -15,6 +19,10 @@ import checkShield from './newrelic/check-shield';
 export default {
   ...defaultIcons,
   automation,
+  alert,
+  'all-entities': allEntities,
+  dashboard,
+  document,
   book,
   'build-apps': buildApps,
   builders,
