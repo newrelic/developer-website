@@ -95,7 +95,6 @@ const PackTile = ({
           margin: 10px auto;
 
           .dark-mode & {
-            filter: brightness(1) invert(1) hue-rotate(188deg);
             background-color: rgb(231 231 231 / 0);
           }
 
