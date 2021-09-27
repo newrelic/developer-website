@@ -38,26 +38,22 @@ You can only publish a package version to the catalog one time. For example, you
 
 ```json fileName=package.json lineHighlight=4
 {
-    "private": true,
-    "name": "demo-app",
-    "version": "1.0.0",
-    "scripts": {
-        "start": "nr1 nerdpack:serve",
-        "test": "exit 0"
-    },
-    "nr1": {
-        "uuid": "ab123c45-678d-9012-efg3-45hi6jkl7890"
-    },
-    "dependencies": {
-        "prop-types": "^15.6.2",
-        "react": "^16.6.3",
-        "react-dom": "^16.6.3"
-    },
-    "browserslist": [
-        "last 2 versions",
-        "not ie < 11",
-        "not dead"
-    ]
+  "private": true,
+  "name": "demo-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nr1 nerdpack:serve",
+    "test": "exit 0"
+  },
+  "nr1": {
+    "uuid": "ab123c45-678d-9012-efg3-45hi6jkl7890"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "browserslist": ["last 2 versions", "not ie < 11", "not dead"]
 }
 ```
 
@@ -73,10 +69,10 @@ If you built your Nerdpack from scratch with `nr1 create --type nerdpack`, then 
 
 ```json fileName=nr1.json lineHighlight=3
 {
-    "schemaType": "NERDPACK",
-    "id": "ab123c45-678d-9012-efg3-45hi6jkl7890",
-    "displayName": "DemoApp",
-    "description": "Nerdpack demo-app"
+  "schemaType": "NERDPACK",
+  "id": "ab123c45-678d-9012-efg3-45hi6jkl7890",
+  "displayName": "DemoApp",
+  "description": "Nerdpack demo-app"
 }
 ```
 
@@ -157,17 +153,17 @@ Because you're going to view a published Nerdpack, rather than a locally served 
 
 <Step>
 
-Navigate to **Apps**:
+Navigate to **Instant Observability**:
 
-![Navigate to the Apps page](../../../images/serve-publish-subscribe/nav-to-apps.png)
+![Navigate to the Apps page](../../../images/serve-publish-subscribe/nav-to-io.png)
 
-Whether you published a New Relic One application or a custom visualization, you'll find your project under **Apps**.
+Whether you published a New Relic One application or a custom visualization, you'll find your project under **Instant Observability**.
 
 </Step>
 
 <Step>
 
-Find your published Nerdpack under **New Relic One catalog**:
+Find your published Nerdpack using the Apps filter or search bar:
 
 ![Published Nerdpack](../../../images/serve-publish-subscribe/published-app.png)
 
