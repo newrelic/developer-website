@@ -13,6 +13,7 @@ export const SDK_BASE_URL =
 
 // FIXME: update this to production URL when deployed / launched
 export const NR1_LOGIN_URL = 'https://staging-login.newrelic.com/login';
+export const NR1_SIGNUP_URL = 'https://newrelic.com/signup';
 
 export const NR1_PACK_DETAILS_NERDLET =
   'catalog-pack-details.catalog-pack-contents';
@@ -54,3 +55,5 @@ export const QUICKSTARTS_REPO =
 
 export const SIGNUP_LINK = 'https://newrelic.com/signup';
 export const LOGIN_LINK = 'https://login.newrelic.com/login';
+
+export const UTM_PARAMETERS = { utm_medium: 'cpc' };
