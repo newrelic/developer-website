@@ -35,6 +35,7 @@ const ImageSlider = ({ images, height }) => {
           position: relative;
           display: flex;
           align-items: center;
+          justify-content: center;
           height: ${height}px;
           overflow: hidden;
           ${images.length === 1 && 'margin-bottom: 2rem;'}
@@ -114,6 +115,7 @@ const ImageSlider = ({ images, height }) => {
             }}
             enter={{ opacity: 1, transform: 'translate3d(-0%, 0px, 0px)' }}
             leave={{
+              opacity: 0,
               transform: `translate3d(${forward ? '-100%' : '100%'}, 0px, 0px)`,
             }}
             delay={200}
