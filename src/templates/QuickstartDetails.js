@@ -27,6 +27,7 @@ import {
   QUICKSTART_SUPPORT_CONTENT,
   SIGNUP_LINK,
   LOGIN_LINK,
+  SHIELD_LEVELS,
 } from '../data/constants';
 import QuickstartOverview from '../components/quickstarts/QuickstartOverview';
 import BetaBanner from '../components/quickstarts/BetaBanner';
@@ -100,6 +101,19 @@ const QuickstartDetails = ({ data, location }) => {
         >
           <PageLayout.Header
             title={quickstart.title}
+            icon={
+              SHIELD_LEVELS.includes(quickstart.level) && (
+                <Icon
+                  name="nr-check-shield"
+                  size="50%"
+                  css={css`
+                    width: 0.75rem;
+                    height: 1rem;
+                    margin-left: 0.5rem;
+                  `}
+                />
+              )
+            }
             css={css`
               border-bottom: none;
               display: grid;

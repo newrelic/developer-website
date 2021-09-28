@@ -10,11 +10,8 @@ import {
   useInstrumentedHandler,
   Tag,
 } from '@newrelic/gatsby-theme-newrelic';
+import { SHIELD_LEVELS } from '../data/constants';
 import PackImg from './PackImg';
-
-const LEVELS = {
-  NEWRELIC: 'NEWRELIC',
-};
 
 const VIEWS = {
   GRID: 'Grid view',
@@ -124,7 +121,8 @@ const PackTile = ({
         `}
       >
         <h4>
-          {title} {level === LEVELS.NEWRELIC && <Icon name="nr-check-shield" />}
+          {title}{' '}
+          {SHIELD_LEVELS.includes(level) && <Icon name="nr-check-shield" />}
         </h4>
         <p
           css={css`
