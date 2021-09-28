@@ -149,8 +149,9 @@ export default class CircularProgressBar extends React.Component {
 
   nrqlInputIsValid = (data) => {
     const { data: seriesEntries } = data[0];
-    const { uniqueAggregates, uniqueFacets } =
-      getUniqueAggregatesAndFacets(data);
+    const { uniqueAggregates, uniqueFacets } = getUniqueAggregatesAndFacets(
+      data
+    );
     const isNonTimeseries = seriesEntries.length === 1;
 
     return (
@@ -306,9 +307,9 @@ Subscribe to the **Victory Charts Visualizations** Nerdpack and open the **Circu
 
 <Step>
 
-From your homepage at New Relic, navigate to **Apps**:
+From your homepage at New Relic, navigate to **Instant Observability**:
 
-![Navigate to apps](../../images/build-an-app/nav-to-apps.png)
+![Navigate to Instant Observability](../../images/serve-publish-subscribe/nav-to-io.png)
 
 </Step>
 
@@ -377,9 +378,9 @@ Find the source code repository from the Nerdpack's catalog entry and clone it t
 
 <Step>
 
-From your homepage at New Relic, navigate to **Apps**:
+From your homepage at New Relic, navigate to **Instant Observability**:
 
-![Navigate to apps](../../images/build-an-app/nav-to-apps.png)
+![Navigate to Instant Observability](../../images/serve-publish-subscribe/nav-to-io.png)
 
 </Step>
 
@@ -439,6 +440,7 @@ git log -1 -p
 [output]    "description": "Visualizations built on top of Victory charts"
 [output]  }
 ```
+
 </Step>
 
 <Step>
@@ -636,8 +638,9 @@ export default class CircularProgressBar extends React.Component {
 
   nrqlInputIsValid = (data) => {
     const { data: seriesEntries } = data[0];
-    const { uniqueAggregates, uniqueFacets } =
-      getUniqueAggregatesAndFacets(data);
+    const { uniqueAggregates, uniqueFacets } = getUniqueAggregatesAndFacets(
+      data
+    );
     const isNonTimeseries = seriesEntries.length === 1;
 
     return (
@@ -666,7 +669,7 @@ export default class CircularProgressBar extends React.Component {
 
   render() {
     const { nrqlQueries, colors } = this.props;
-    const colorScale = Array.from(colors, x => x.segmentColor)
+    const colorScale = Array.from(colors, (x) => x.segmentColor);
 
     const nrqlQueryPropsAvailable =
       nrqlQueries &&
@@ -904,8 +907,9 @@ export default class CircularProgressBar extends React.Component {
 
   nrqlInputIsValid = (data) => {
     const { data: seriesEntries } = data[0];
-    const { uniqueAggregates, uniqueFacets } =
-      getUniqueAggregatesAndFacets(data);
+    const { uniqueAggregates, uniqueFacets } = getUniqueAggregatesAndFacets(
+      data
+    );
     const isNonTimeseries = seriesEntries.length === 1;
 
     return (
@@ -934,7 +938,7 @@ export default class CircularProgressBar extends React.Component {
 
   render() {
     const { nrqlQueries, colors } = this.props;
-    const colorScale = Array.from(colors, x => x.segmentColor)
+    const colorScale = Array.from(colors, (x) => x.segmentColor);
 
     const nrqlQueryPropsAvailable =
       nrqlQueries &&
