@@ -1,5 +1,5 @@
 ---
-path: '/instant-observability/build-a-quickstart/create-a-dashboard'
+path: '/contribute-to-io/build-a-quickstart/create-a-dashboard'
 title: 'Create a dashboard'
 template: 'GuideTemplate'
 description: 'create a dashboard to observe your data in New Relic'
@@ -8,9 +8,9 @@ duration: '15 min'
 
 <Callout variant="course" title="Lab">
 
-This procedure is a part of lab that teaches you how to build a quickstart. If you haven't already, checkout the [_lab introduction_](/instant-observability/build-a-quickstart)
+This procedure is a part of lab that teaches you how to build a quickstart. If you haven't already, checkout the [_lab introduction_](/contribute-to-io/build-a-quickstart)
 
-Each procedure in this lab builds on top of the last one, so make sure you [_Deploy your application_](/instant-observability/build-a-quickstart/deploy-your-application) before proceeding with this one.
+Each procedure in this lab builds on top of the last one, so make sure you [_Deploy your application_](/contribute-to-io/build-a-quickstart/deploy-your-application) before proceeding with this one.
 
 </Callout>
 
@@ -22,15 +22,15 @@ In this procedure, you create a dashboard in New Relic.
 
 Navigate to [New Relic](https://one.newrelic.com/) and sign in with your account. Here, you see different tabs such as **Browse Data**, **Dashboards**, **Alerts & AI**. 
 
-![New Relic UI](../../../images/instant-observability/newrelic-homepage.png)
+![New Relic UI](../../../images/contribute-to-io/newrelic-homepage.png)
 
 Move to **Dashboards** and click **Create a dashboard** in the top right corner. 
 
-![create a dashboard](../../../images/instant-observability/create-dashboard.png)
+![create a dashboard](../../../images/contribute-to-io/create-dashboard.png)
 
 Name your dashboard "FlashDB" and click create.
 
-![name your dashboard](../../../images/instant-observability/name-dashboard.png)
+![name your dashboard](../../../images/contribute-to-io/name-dashboard.png)
 
 ## Add charts to your dashboard
 
@@ -46,11 +46,11 @@ Once the dashboard is in place, you can start creating charts. You're going to a
 
 Hover over the dashboard and click **Add a new chart**.
 
-![add a new chart](../../../images/instant-observability/add-new-chart.png)
+![add a new chart](../../../images/contribute-to-io/add-new-chart.png)
 
 From this screen, you add charts using our query builder, or you choose to add text, images, or links using Markdown. Click **Add a chart**.
 
-![add a chart](../../../images/instant-observability/add-a-chart.png)
+![add a chart](../../../images/contribute-to-io/add-a-chart.png)
 
 It may open the query builder option. Switch to the NRQL editor and edit the query as follows:
 
@@ -58,38 +58,38 @@ It may open the query builder option. Switch to the NRQL editor and edit the que
 SELECT count(*) FROM fdb_method FACET method 
 ```
 
-![database methods chart](../../../images/instant-observability/fdb-methods.png)
+![database methods chart](../../../images/contribute-to-io/fdb-methods.png)
 
 Click **Run** to see above results.
 
 Here, you see the count of each FlashDB query, grouped by method. You can choose to present your results in different formats such as table, billboard, or pie chart. 
 
-![chart formats](../../../images/instant-observability/chart-formats.png)
+![chart formats](../../../images/contribute-to-io/chart-formats.png)
 
 Change the chart type to pie, name your chart "Database methods", and click save.
 
-![pie chart](../../../images/instant-observability/piechart.png)
+![pie chart](../../../images/contribute-to-io/piechart.png)
 
 The chart is now visible on your dashboard.
 
-![piechart dashboard](../../../images/instant-observability/piechart-dashboard.png)
+![piechart dashboard](../../../images/contribute-to-io/piechart-dashboard.png)
 
 You can add more charts to your dashboard following the same pattern. To do so, click **+** in upper right hand corner. 
 
-![add more charts](../../../images/instant-observability/add-more-charts.png)
+![add more charts](../../../images/contribute-to-io/add-more-charts.png)
 
 This takes you to the same **Add to your dashboard** page. Add another chart to your dashboard.
 
 ### Average response time
-Run the following query to observe the average response time of flashDB queries. 
+Run the following query to observe the average response time of FlashDB queries. 
 
 ```sql
 SELECT average(fdb_create_responses), average(fdb_read_responses), average(fdb_update_responses), average(fdb_delete_responses) FROM Metric TIMESERIES
 ```
 
-![average response time chart](../../../images/instant-observability/average-response-time-chart.png ) 
+![average response time chart](../../../images/contribute-to-io/average-response-time-chart.png ) 
 
-Here, you observe the average response time for different flashDB queries. Click **Save** to add this chart to your dashboard. Follow the same procedure to add the rest of the charts.
+Here, you observe the average response time for different FlashDB queries. Click **Save** to add this chart to your dashboard. Follow the same procedure to add the rest of the charts.
 
 ### Errors
 
@@ -101,7 +101,7 @@ SELECT sum(fdb_create_errors), sum(fdb_read_errors), sum(fdb_update_errors), sum
 
 Here, you observe errors for all database queries.
 
-![errors chart](../../../images/instant-observability/errors-chart.png )
+![errors chart](../../../images/contribute-to-io/errors-chart.png )
 
 ### Database size
 
@@ -111,19 +111,19 @@ Use the following query to get Database size chart.
 SELECT latest(fdb_size) FROM Metric
 ```
 
-![database size chart](../../../images/instant-observability/latest-database-size.png )
+![database size chart](../../../images/contribute-to-io/latest-database-size.png )
 
 This chart shows you the database size. 
 
 ### Cache hits
 
-For the cache hits charts, use the following query:
+For the Cache hits chart, use the following query:
 
 ```sql
 SELECT sum(fdb_cache_hits) FROM Metric TIMESERIES
 ```
 
-![cache hits chart](../../../images/instant-observability/cache-hits-chart.png )
+![cache hits chart](../../../images/contribute-to-io/cache-hits-chart.png )
 
 Here, you observe the total number of cache hits using a line chart.
 
@@ -135,13 +135,13 @@ Use the following query to count the number of keys in your database.
 SELECT count(fdb_keys) FROM Metric TIMESERIES
 ```
 
-![keys chart](../../../images/instant-observability/keys-chart.png )
+![keys chart](../../../images/contribute-to-io/keys-chart.png )
 
-Here, you observe the flashDB key count. 
+Here, you observe the FlashDB key count. 
 
 Your final dashboard will look similar to the following:
 
-![dashboard with charts](../../../images/instant-observability/final-flashdb-dashboard.png )
+![dashboard with charts](../../../images/contribute-to-io/final-flashdb-dashboard.png )
 
 ## Summary
 
@@ -149,6 +149,6 @@ In this procedure, you created a dashboard and added multiple charts to it to ob
 
 <Callout variant="course" title="Lab">
 
-This procedure is a part of lab that teaches you how to build a quickstart. Continue on to next procedure:  [_Create alerts_](/instant-observability/build-a-quickstart/create-alerts).
+This procedure is a part of lab that teaches you how to build a quickstart. Continue on to next procedure:  [_Create alerts_](/contribute-to-io/build-a-quickstart/create-alerts).
 
 </Callout>

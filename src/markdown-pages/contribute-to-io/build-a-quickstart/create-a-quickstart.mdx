@@ -1,5 +1,5 @@
 ---
-path: '/instant-observability/build-a-quickstart/create-quickstart'
+path: '/contribute-to-io/build-a-quickstart/create-quickstart'
 title: 'Create a quickstart'
 template: 'GuideTemplate'
 description: 'Package up your dashboards and alerts and create a quickstart'
@@ -8,9 +8,9 @@ duration: '30 min'
 
 <Callout variant="course" title="Lab">
 
-This procedure is a part of lab that teaches you how to build quickstart. If you haven't already, checkout the [_lab introduction_](/instant-observability/build-a-quickstart)
+This procedure is a part of lab that teaches you how to build quickstart. If you haven't already, checkout the [_lab introduction_](/contribute-to-io/build-a-quickstart)
 
-As this procedure builds on top of the last ones in the lab, make sure you create a [dashboard](instant-observability/build-a-quickstart/create-a-dashboard) and [alerts](/instant-observability/build-a-quickstart/create-alerts) before proceeding with this one.
+As this procedure builds on top of the last ones in the lab, make sure you create a [dashboard](contribute-to-io/build-a-quickstart/create-a-dashboard) and [alerts](/contribute-to-io/build-a-quickstart/create-alerts) before proceeding with this one.
 
 </Callout>
 
@@ -18,13 +18,13 @@ New Relic One quickstarts allow you to quickly and easily observe and monitor yo
 
 To get started, navigate to GitHub repository of [New Relic One Quickstarts](https://github.com/newrelic/newrelic-observability-packs) and fork it.
 
-![fork github quickstart repo](../../../images/instant-observability/fork-github-quickstart.png)
+![fork github quickstart repo](../../../images/contribute-to-io/fork-github-quickstart.png)
 
 Now, clone your own repository to your local machine using `git clone` command and open it in the IDE of your choice. 
 
 Notice the directory structure. __template_ folder is of special importance since it contains the templates for observability building blocks in the quickstart. 
 
-![quickstart template](../../../images/instant-observability/quickstart-template-directory.png)
+![quickstart template](../../../images/contribute-to-io/quickstart-template-directory.png)
 
 The _\_template_ directory contains the folders for dashboards, alerts, and instrumentation. Each of these folders contain a template or template directories that you can use to create entities for your quickstart.
 
@@ -32,11 +32,11 @@ The _\_template_ directory contains the folders for dashboards, alerts, and inst
 
 Copy the _\_template_ directory and it's content to a new directory within the _quickstarts_ folder. Name the directory as _flashdb_.
 
-![flashdb quickstart directory](../../../images/instant-observability/flashdb-quickstart-template.png)
+![flashdb quickstart directory](../../../images/contribute-to-io/flashdb-quickstart-template.png)
 
 You're going to add existing dashboard to your quickstart. Move to your dashboard in New Relic and copy its JSON. Then save it as a JSON file in the _dashboards_ directory.
 
-![dashboard'\s json](../../../images/instant-observability/copy-flashdb-dashboard-json.png)
+![dashboard'\s json](../../../images/contribute-to-io/copy-flashdb-json.png)
 
 Here, you copied your dashboard's JSON to clipboard. Replace the content of existing JSON file in _dashboards_ directory and rename it as _flashDB.json_. Your _flashDB.json_ file should contain the following content:
 
@@ -214,7 +214,7 @@ Here, you copied your dashboard's JSON to clipboard. Replace the content of exis
 
 Next, create a screenshot of your dashboard and add it to _dashboards_ directory. Give it the same name as your JSON file. Your _dashboard_ directory should look similar to the following:
 
-![flashDB dashboard](../../../images/instant-observability/flashdb-quickstart-dashboard-directory.png)
+![FlashDB dashboard](../../../images/contribute-to-io/flashdb-quickstart-dashboard-directory.png)
 
 ## Add alerts to quickstart
 
@@ -223,7 +223,7 @@ To help you populate your .yml alert files, you can use New Relic One's [Graphql
 
 Open the Graphql API and select your account from the drop down.
 
-![graphiql interface](../../../images/instant-observability/graphiql.png)
+![graphiql interface](../../../images/contribute-to-io/graphiql.png)
 
 Building a query is simple in graphiql. Check the appropriate boxes to build the query in Graphql. Your query should be same as follows:
 
@@ -256,7 +256,7 @@ Building a query is simple in graphiql. Check the appropriate boxes to build the
 
 Running the above query in Graphql will respond with the details of your alert condition that you can use to update your quickstart.
 
-![cache hit ratio in graphql](../../../images/instant-observability/cache-hit-ratio-graphql.png)
+![cache hit ratio in graphql](../../../images/contribute-to-io/cache-hit-ratio-graphql.png)
 
 For static condition, take the static-alert.yml file and start populating it using the information returned from above query. 
 First, name the file as **Cache Hit Ratio.yml** and populate it:
@@ -311,7 +311,7 @@ ___
 Here, you added the pre-existing low cache hit ratio alert to the quickstart. Follow the same procedure to add the slow read response alert.
 For your reference, here's the graphql response.
 
-![slow read response graphql](../../../images/instant-observability/slow-read-response-graphql.png)
+![slow read response graphql](../../../images/contribute-to-io/slow-read-response-graphql.png)
 
 Create your **Read response.yml** file based on the above response.
 
@@ -374,7 +374,7 @@ name: flashdb
 # Description of the pack (required)
 description: |
   Flashdb is the fastest database in the space. 
-  The flashdb quickstart allows you to get visibility into the performance of flashdb with the help of following features:
+  The Flashdb quickstart allows you to get visibility into the performance of flashdb with the help of following features:
 
   Dashboards:
   - Database methods: Monitor the number of transactions for each database method
@@ -413,29 +413,7 @@ references:
 ```
 
 Here's how your final _flashdb_ quickstart folder should look like.
-![flashdb quickstart directory](../../../images/instant-observability/final-flashdb-quickstart.png)
-
-## Test your quickstart
-
-You use `importer` utility for testing quickstarts on your account. Run the utility using the _impor.sh_ script in the quickstarts.  
-
-Navigate to the root directory of New Relic Quickstarts. Modify _importer-config.sh_ script with your account number and New Relic API Key.
-
-![modify importer config script](../../../images/instant-observability/modify-importer-script.png)
-
-Now, run _import.sh_ from the root of the project:
-
-```bash 
-./import.sh flashdb
-```
-
-<Callout variant='important'>
-
-The importer spins up a docker container, so make sure the docker is running for this function. 
-
-</Callout>
-
-Now, you see the dashboard and alert policy deployed in your account.
+![flashdb quickstart directory](../../../images/contribute-to-io/final-flashdb-quickstart.png)
 
 ## Contribute quickstart to GitHub
 
@@ -443,8 +421,8 @@ Your quickstart is now ready to be published. You're going to commit your change
 Follow the [conventional commit syntax](https://github.com/newrelic/newrelic-observability-packs/blob/alerts-doc-update/CONTRIBUTING.md#using-conventional-commits) for New Relic to commit your changes.
 
 ```bash
- git add -A
- git commit -m "feat(flashdb): Added a quickstart for flashdb"
+git add -A
+git commit -m "feat(flashdb): Added a quickstart for flashdb"
 ```
 
 <Callout variant="important">
@@ -456,12 +434,12 @@ To help us manage your contributions efficiently, we encourage you to label your
 
 Push your changes to GitHub:
 ```bash
- git Push
+ git push
 ```
 
 Once you've pushed your changes to GitHub, you can [create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-![pull request](../../../images/instant-observability/create-pull-request.png)
+![pull request](../../../images/contribute-to-io/create-pull-request.png)
 
 Submit and wait for the review. Thanks a lot for your submission!
 

@@ -1,5 +1,5 @@
 ---
-path: '/instant-observability/build-a-quickstart/deploy-your-application'
+path: '/contribute-to-io/build-a-quickstart/deploy-your-application'
 title: 'Deploy your application'
 template: 'GuideTemplate'
 description: 'Spin up your demo services to follow along the lab'
@@ -8,7 +8,7 @@ duration: '5 min'
 
 <Callout variant="course" title="Lab">
 
-This procedure is a part of lab that teaches you how to build a quickstart. If you haven't already, check out the [_lab introduction_](/instant-observability/build-a-quickstart).
+This procedure is a part of lab that teaches you how to build a quickstart. If you haven't already, check out the [_lab introduction_](/contribute-to-io/build-a-quickstart).
 
 </Callout>
 
@@ -16,7 +16,7 @@ Before you build a quickstart, you need to spin up a docker container. The conta
 - A python program that mimics the database and also provides functions for create, read, update, and delete (CRUD) operations. It also makes use of [newrelic_telemetry_sdk](https://github.com/newrelic/newrelic-telemetry-sdk-python) to send telemetry data to New Relic.
 - A simulator service that generates dummy database traffic so you don't have to manually perform CRUD operations
 
-To spin up these services, you first need to  set **NEW_RELIC_INSERT_KEY** environment variable.
+To spin up these services, you first need to set `NEW_RELIC_INSERT_KEY` environment variable.
 
 ## Prepare your environment
 
@@ -38,8 +38,8 @@ Clone the lab repository from GitHub:
 This repository contains the code for Flashdb as well as the simulator for dummy database traffic. Navigate to the demo directory and execute the following commands to build and run docker image:
 
  ```bash
- docker build -t flashdb . 
- docker run -e NEW_RELIC_INSERT_KEY=$NEW_RELIC_INSERT_KEY flashdb
+docker build -t flashdb . 
+docker run -e NEW_RELIC_INSERT_KEY=$NEW_RELIC_INSERT_KEY flashdb
 ```
 
 Here, you build and run docker image that generates mock database traffic. You will observe this data in New Relic. Once the docker image is up and running, you see the following output in your terminal:
@@ -70,6 +70,6 @@ Next, you observe this data in New Relic using dashboard.
 
 <Callout variant="course" title="Lab">
 
-This procedure is a part of lab that teaches you how to build a quickstart. Continue on to next lesson: [_Create a dashboard_](/instant-observability/build-a-quickstart/create-a-dashboard).
+This procedure is a part of lab that teaches you how to build a quickstart. Continue on to next lesson: [_Create a dashboard_](/contribute-to-io/build-a-quickstart/create-a-dashboard).
 
 </Callout>
