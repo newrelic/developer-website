@@ -14,29 +14,32 @@ As this procedure builds on top of the last ones in the lab, make sure you creat
 
 </Callout>
 
-New Relic One quickstarts allow you to quickly and easily observe and monitor your services since they include observability building blocks like dashboards and alerts. You can package your dashboards and alerts into a quickstart and contribute it to New Relic One catalog.
+With quickstarts, you can quickly and easily observe and monitor your services since they include observability building blocks like dashboards and alerts. 
+You've already created a useful dashboard and alert policy for your database. Now, you can package them into a quickstart and contribute it to New Relic I/O as a benefit to your users.
 
-To get started, navigate to GitHub repository of [New Relic One Quickstarts](https://github.com/newrelic/newrelic-observability-packs) and fork it.
+To get started, navigate to GitHub repository of [New Relic One quickstarts](https://github.com/newrelic/newrelic-observability-packs) and fork it.
 
 ![fork github quickstart repo](../../../images/contribute-to-io/fork-github-quickstart.png)
 
-Now, clone your own repository to your local machine using `git clone` command and open it in the IDE of your choice. 
+Now, clone your own repository to your local machine using `git clone` and open it in the IDE of your choice. 
 
-Notice the directory structure. __template_ folder is of special importance since it contains the templates for observability building blocks in the quickstart. 
+Notice the directory structure. The __template_ folder is of special importance since it contains the templates for observability building blocks in the quickstart. 
 
 ![quickstart template](../../../images/contribute-to-io/quickstart-template-directory.png)
 
-The _\_template_ directory contains the folders for dashboards, alerts, and instrumentation. Each of these folders contain a template or template directories that you can use to create entities for your quickstart.
-
-## Add dashboards to quickstart
+The _\_template_ directory contains the folders for dashboards and alerts. Each of these folders contain templates that you can use to create entities for your quickstart.
 
 Copy the _\_template_ directory and it's content to a new directory within the _quickstarts_ folder. Name the directory as _flashdb_.
 
 ![flashdb quickstart directory](../../../images/contribute-to-io/flashdb-quickstart-template.png)
 
-You're going to add existing dashboard to your quickstart. Move to your dashboard in New Relic and copy its JSON. Then save it as a JSON file in the _dashboards_ directory.
+## Add your dashboard to the quickstart
 
-![dashboard'\s json](../../../images/contribute-to-io/copy-flashdb-json.png)
+In a previous procedure, you created a dashboard for monitoring FlashDB. Now, you add it to your quickstart so your users can use it too. 
+
+First, look up your dashboard in New Relic and copy its JSON. Then, save it as a JSON file in the _dashboards_ directory.
+
+![copy flashdb dashboard](../../../images/contribute-to-io/copy-flashdb-json.png)
 
 Here, you copied your dashboard's JSON to clipboard. Replace the content of existing JSON file in _dashboards_ directory and rename it as _flashDB.json_. Your _flashDB.json_ file should contain the following content:
 
@@ -216,16 +219,22 @@ Next, create a screenshot of your dashboard and add it to _dashboards_ directory
 
 ![FlashDB dashboard](../../../images/contribute-to-io/flashdb-quickstart-dashboard-directory.png)
 
-## Add alerts to quickstart
+## Add your alerts to the quickstart
 
-Next, you add alerts to the quickstart. You're going to add existing static alerts to the quickstart. The _alerts_ directory contain the templates for static alerts.
-To help you populate your .yml alert files, you can use New Relic One's [Graphql API](https://api.newrelic.com/graphiql) to get the json object. 
+Next, add the static alerts you created previously to the quickstart. The _alerts_ directory contains the templates for static alerts.
+To help you populate your yaml files, you can use New Relic's [Nerdgraph API explorer](https://api.newrelic.com/graphiql) to get a JSON representation of each alert condition.
 
-Open the Graphql API and select your account from the drop down.
+<Callout variant="tip">
+
+Nerdgraph is New Relic's GraphQL API.
+
+</Callout>
+
+Open the Nerdgraph explorer and select your key from the dropdown menu.
 
 ![graphiql interface](../../../images/contribute-to-io/graphiql.png)
 
-Building a query is simple in graphiql. Check the appropriate boxes to build the query in Graphql. Your query should be same as follows:
+Building a query is simple in the explorer. Check the appropriate boxes to build a GraphQL query:
 
 ```js
 {
@@ -270,7 +279,7 @@ name: low cache hit ratio
 details: |+
   This alert is triggered whenever the cache hit ratio for database is < 0.85.
   The cache hit ratio can be measured simply by: # of cache hits/ # of total read responses.
-  Itrepresents the proportion of block requests satisfied by the cache without requiring a disk read. 
+  It represents the proportion of block requests satisfied by the cache without requiring a disk read. 
   A low cache hit score means that the database is inefficient.
 
 # Type of alert
@@ -360,7 +369,8 @@ violationTimeLimitSeconds: 259200
 
 ## Add a description
 
-Your quickstart is almost ready to go live. But how will other's know and understand what your quickstart is about and what it can do?
+Your quickstart is almost ready to go live. But how will others know what your quickstart is for and what it can do?
+
 To help others understand the purpose of your quickstart, add a description. 
 
 In the root directory of your pack, you can find a _config.yml_ file. 
