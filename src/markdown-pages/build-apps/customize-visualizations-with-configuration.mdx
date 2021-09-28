@@ -66,20 +66,20 @@ import {
   Treemap,
 } from 'recharts';
 import {
-    AutoSizer,
-    Card,
-    CardBody,
-    HeadingText,
-    NrqlQuery,
-    SegmentedControl,
-    SegmentedControlItem,
-    Spinner,
+  AutoSizer,
+  Card,
+  CardBody,
+  HeadingText,
+  NrqlQuery,
+  SegmentedControl,
+  SegmentedControlItem,
+  Spinner,
 } from 'nr1';
 
 const CHART_TYPES = {
-  'Radar': 'radar',
-  'Treemap': 'treemap'
-}
+  Radar: 'radar',
+  Treemap: 'treemap',
+};
 
 export default class RadarOrTreemapVisualization extends React.Component {
   // Custom props you wish to be configurable in the UI must also be defined in
@@ -133,12 +133,12 @@ export default class RadarOrTreemapVisualization extends React.Component {
   };
 
   updateSelectedChart = (evt, value) => {
-    this.setState({ selectedChart: value })
+    this.setState({ selectedChart: value });
   };
 
   render() {
-    const {nrqlQueries, stroke, fill} = this.props;
-    const {selectedChart} = this.state;
+    const { nrqlQueries, stroke, fill } = this.props;
+    const { selectedChart } = this.state;
 
     const nrqlQueryPropsAvailable =
       nrqlQueries &&
@@ -152,13 +152,13 @@ export default class RadarOrTreemapVisualization extends React.Component {
 
     return (
       <AutoSizer>
-        {({width, height}) => (
+        {({ width, height }) => (
           <NrqlQuery
             query={nrqlQueries[0].query}
             accountId={parseInt(nrqlQueries[0].accountId)}
             pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
           >
-            {({data, loading, error}) => {
+            {({ data, loading, error }) => {
               if (loading) {
                 return <Spinner />;
               }
@@ -171,45 +171,43 @@ export default class RadarOrTreemapVisualization extends React.Component {
 
               return (
                 <React.Fragment>
-                <SegmentedControl
-                  onChange={this.updateSelectedChart}
-                >
-                  <SegmentedControlItem
-                    value={CHART_TYPES.Radar}
-                    label="Radar chart"
-                  />
-                  <SegmentedControlItem
-                    value={CHART_TYPES.Treemap}
-                    label="Treemap chart"
-                  />
-                </SegmentedControl>
-                {selectedChart === CHART_TYPES.Radar ? (
-                <RadarChart
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                >
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="name" />
-                  <PolarRadiusAxis tickFormatter={this.formatTick} />
-                  <Radar
-                    dataKey="value"
-                    stroke={stroke || '#51C9B7'}
-                    fill={fill || '#51C9B7'}
-                    fillOpacity={0.6}
-                  />
-                </RadarChart>
-                ) : (
-                <Treemap
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                  dataKey="value"
-                  ratio={4 / 3}
-                  stroke={stroke || '#000000'}
-                  fill={fill || '#51C9B7'}
-                />
-                )}
+                  <SegmentedControl onChange={this.updateSelectedChart}>
+                    <SegmentedControlItem
+                      value={CHART_TYPES.Radar}
+                      label="Radar chart"
+                    />
+                    <SegmentedControlItem
+                      value={CHART_TYPES.Treemap}
+                      label="Treemap chart"
+                    />
+                  </SegmentedControl>
+                  {selectedChart === CHART_TYPES.Radar ? (
+                    <RadarChart
+                      width={width}
+                      height={height}
+                      data={transformedData}
+                    >
+                      <PolarGrid />
+                      <PolarAngleAxis dataKey="name" />
+                      <PolarRadiusAxis tickFormatter={this.formatTick} />
+                      <Radar
+                        dataKey="value"
+                        stroke={stroke || '#51C9B7'}
+                        fill={fill || '#51C9B7'}
+                        fillOpacity={0.6}
+                      />
+                    </RadarChart>
+                  ) : (
+                    <Treemap
+                      width={width}
+                      height={height}
+                      data={transformedData}
+                      dataKey="value"
+                      ratio={4 / 3}
+                      stroke={stroke || '#000000'}
+                      fill={fill || '#51C9B7'}
+                    />
+                  )}
                 </React.Fragment>
               );
             }}
@@ -453,20 +451,20 @@ import {
   Treemap,
 } from 'recharts';
 import {
-    AutoSizer,
-    Card,
-    CardBody,
-    HeadingText,
-    NrqlQuery,
-    SegmentedControl,
-    SegmentedControlItem,
-    Spinner,
+  AutoSizer,
+  Card,
+  CardBody,
+  HeadingText,
+  NrqlQuery,
+  SegmentedControl,
+  SegmentedControlItem,
+  Spinner,
 } from 'nr1';
 
 const CHART_TYPES = {
-  'Radar': 'radar',
-  'Treemap': 'treemap'
-}
+  Radar: 'radar',
+  Treemap: 'treemap',
+};
 
 export default class RadarOrTreemapVisualization extends React.Component {
   // Custom props you wish to be configurable in the UI must also be defined in
@@ -516,7 +514,7 @@ export default class RadarOrTreemapVisualization extends React.Component {
   };
 
   render() {
-    const {nrqlQueries, stroke, fill, selectedChart} = this.props;
+    const { nrqlQueries, stroke, fill, selectedChart } = this.props;
 
     const nrqlQueryPropsAvailable =
       nrqlQueries &&
@@ -530,13 +528,13 @@ export default class RadarOrTreemapVisualization extends React.Component {
 
     return (
       <AutoSizer>
-        {({width, height}) => (
+        {({ width, height }) => (
           <NrqlQuery
             query={nrqlQueries[0].query}
             accountId={parseInt(nrqlQueries[0].accountId)}
             pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
           >
-            {({data, loading, error}) => {
+            {({ data, loading, error }) => {
               if (loading) {
                 return <Spinner />;
               }
@@ -549,43 +547,43 @@ export default class RadarOrTreemapVisualization extends React.Component {
 
               return (
                 <React.Fragment>
-                <SegmentedControl>
-                  <SegmentedControlItem
-                    value={CHART_TYPES.Radar}
-                    label="Radar chart"
-                  />
-                  <SegmentedControlItem
-                    value={CHART_TYPES.Treemap}
-                    label="Treemap chart"
-                  />
-                </SegmentedControl>
-                {selectedChart === CHART_TYPES.Radar ? (
-                <RadarChart
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                >
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="name" />
-                  <PolarRadiusAxis tickFormatter={this.formatTick} />
-                  <Radar
-                    dataKey="value"
-                    stroke={stroke || '#51C9B7'}
-                    fill={fill || '#51C9B7'}
-                    fillOpacity={0.6}
-                  />
-                </RadarChart>
-                ) : (
-                <Treemap
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                  dataKey="value"
-                  ratio={4 / 3}
-                  stroke={stroke || '#000000'}
-                  fill={fill || '#51C9B7'}
-                />
-                )}
+                  <SegmentedControl>
+                    <SegmentedControlItem
+                      value={CHART_TYPES.Radar}
+                      label="Radar chart"
+                    />
+                    <SegmentedControlItem
+                      value={CHART_TYPES.Treemap}
+                      label="Treemap chart"
+                    />
+                  </SegmentedControl>
+                  {selectedChart === CHART_TYPES.Radar ? (
+                    <RadarChart
+                      width={width}
+                      height={height}
+                      data={transformedData}
+                    >
+                      <PolarGrid />
+                      <PolarAngleAxis dataKey="name" />
+                      <PolarRadiusAxis tickFormatter={this.formatTick} />
+                      <Radar
+                        dataKey="value"
+                        stroke={stroke || '#51C9B7'}
+                        fill={fill || '#51C9B7'}
+                        fillOpacity={0.6}
+                      />
+                    </RadarChart>
+                  ) : (
+                    <Treemap
+                      width={width}
+                      height={height}
+                      data={transformedData}
+                      dataKey="value"
+                      ratio={4 / 3}
+                      stroke={stroke || '#000000'}
+                      fill={fill || '#51C9B7'}
+                    />
+                  )}
                 </React.Fragment>
               );
             }}
@@ -651,20 +649,20 @@ import {
   Treemap,
 } from 'recharts';
 import {
-    AutoSizer,
-    Card,
-    CardBody,
-    HeadingText,
-    NrqlQuery,
-    SegmentedControl,
-    SegmentedControlItem,
-    Spinner,
+  AutoSizer,
+  Card,
+  CardBody,
+  HeadingText,
+  NrqlQuery,
+  SegmentedControl,
+  SegmentedControlItem,
+  Spinner,
 } from 'nr1';
 
 const CHART_TYPES = {
-  'Radar': 'radar',
-  'Treemap': 'treemap'
-}
+  Radar: 'radar',
+  Treemap: 'treemap',
+};
 
 export default class RadarOrTreemapVisualization extends React.Component {
   // Custom props you wish to be configurable in the UI must also be defined in
@@ -714,7 +712,7 @@ export default class RadarOrTreemapVisualization extends React.Component {
   };
 
   render() {
-    const {nrqlQueries, stroke, fill, selectedChart} = this.props;
+    const { nrqlQueries, stroke, fill, selectedChart } = this.props;
 
     const nrqlQueryPropsAvailable =
       nrqlQueries &&
@@ -728,13 +726,13 @@ export default class RadarOrTreemapVisualization extends React.Component {
 
     return (
       <AutoSizer>
-        {({width, height}) => (
+        {({ width, height }) => (
           <NrqlQuery
             query={nrqlQueries[0].query}
             accountId={parseInt(nrqlQueries[0].accountId)}
             pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
           >
-            {({data, loading, error}) => {
+            {({ data, loading, error }) => {
               if (loading) {
                 return <Spinner />;
               }
@@ -747,43 +745,43 @@ export default class RadarOrTreemapVisualization extends React.Component {
 
               return (
                 <React.Fragment>
-                <SegmentedControl>
-                  <SegmentedControlItem
-                    value={CHART_TYPES.Radar}
-                    label="Radar chart"
-                  />
-                  <SegmentedControlItem
-                    value={CHART_TYPES.Treemap}
-                    label="Treemap chart"
-                  />
-                </SegmentedControl>
-                {!selectedChart || selectedChart === CHART_TYPES.Radar ? (
-                <RadarChart
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                >
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="name" />
-                  <PolarRadiusAxis tickFormatter={this.formatTick} />
-                  <Radar
-                    dataKey="value"
-                    stroke={stroke || '#51C9B7'}
-                    fill={fill || '#51C9B7'}
-                    fillOpacity={0.6}
-                  />
-                </RadarChart>
-                ) : (
-                <Treemap
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                  dataKey="value"
-                  ratio={4 / 3}
-                  stroke={stroke || '#000000'}
-                  fill={fill || '#51C9B7'}
-                />
-                )}
+                  <SegmentedControl>
+                    <SegmentedControlItem
+                      value={CHART_TYPES.Radar}
+                      label="Radar chart"
+                    />
+                    <SegmentedControlItem
+                      value={CHART_TYPES.Treemap}
+                      label="Treemap chart"
+                    />
+                  </SegmentedControl>
+                  {!selectedChart || selectedChart === CHART_TYPES.Radar ? (
+                    <RadarChart
+                      width={width}
+                      height={height}
+                      data={transformedData}
+                    >
+                      <PolarGrid />
+                      <PolarAngleAxis dataKey="name" />
+                      <PolarRadiusAxis tickFormatter={this.formatTick} />
+                      <Radar
+                        dataKey="value"
+                        stroke={stroke || '#51C9B7'}
+                        fill={fill || '#51C9B7'}
+                        fillOpacity={0.6}
+                      />
+                    </RadarChart>
+                  ) : (
+                    <Treemap
+                      width={width}
+                      height={height}
+                      data={transformedData}
+                      dataKey="value"
+                      ratio={4 / 3}
+                      stroke={stroke || '#000000'}
+                      fill={fill || '#51C9B7'}
+                    />
+                  )}
                 </React.Fragment>
               );
             }}
@@ -849,18 +847,18 @@ import {
   Treemap,
 } from 'recharts';
 import {
-    AutoSizer,
-    Card,
-    CardBody,
-    HeadingText,
-    NrqlQuery,
-    Spinner,
+  AutoSizer,
+  Card,
+  CardBody,
+  HeadingText,
+  NrqlQuery,
+  Spinner,
 } from 'nr1';
 
 const CHART_TYPES = {
-  'Radar': 'radar',
-  'Treemap': 'treemap'
-}
+  Radar: 'radar',
+  Treemap: 'treemap',
+};
 
 export default class RadarOrTreemapVisualization extends React.Component {
   // Custom props you wish to be configurable in the UI must also be defined in
@@ -910,7 +908,7 @@ export default class RadarOrTreemapVisualization extends React.Component {
   };
 
   render() {
-    const {nrqlQueries, stroke, fill, selectedChart} = this.props;
+    const { nrqlQueries, stroke, fill, selectedChart } = this.props;
 
     const nrqlQueryPropsAvailable =
       nrqlQueries &&
@@ -924,13 +922,13 @@ export default class RadarOrTreemapVisualization extends React.Component {
 
     return (
       <AutoSizer>
-        {({width, height}) => (
+        {({ width, height }) => (
           <NrqlQuery
             query={nrqlQueries[0].query}
             accountId={parseInt(nrqlQueries[0].accountId)}
             pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
           >
-            {({data, loading, error}) => {
+            {({ data, loading, error }) => {
               if (loading) {
                 return <Spinner />;
               }
@@ -943,33 +941,33 @@ export default class RadarOrTreemapVisualization extends React.Component {
 
               return (
                 <React.Fragment>
-                {!selectedChart || selectedChart === CHART_TYPES.Radar ? (
-                <RadarChart
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                >
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="name" />
-                  <PolarRadiusAxis tickFormatter={this.formatTick} />
-                  <Radar
-                    dataKey="value"
-                    stroke={stroke || '#51C9B7'}
-                    fill={fill || '#51C9B7'}
-                    fillOpacity={0.6}
-                  />
-                </RadarChart>
-                ) : (
-                <Treemap
-                  width={width}
-                  height={height}
-                  data={transformedData}
-                  dataKey="value"
-                  ratio={4 / 3}
-                  stroke={stroke || '#000000'}
-                  fill={fill || '#51C9B7'}
-                />
-                )}
+                  {!selectedChart || selectedChart === CHART_TYPES.Radar ? (
+                    <RadarChart
+                      width={width}
+                      height={height}
+                      data={transformedData}
+                    >
+                      <PolarGrid />
+                      <PolarAngleAxis dataKey="name" />
+                      <PolarRadiusAxis tickFormatter={this.formatTick} />
+                      <Radar
+                        dataKey="value"
+                        stroke={stroke || '#51C9B7'}
+                        fill={fill || '#51C9B7'}
+                        fillOpacity={0.6}
+                      />
+                    </RadarChart>
+                  ) : (
+                    <Treemap
+                      width={width}
+                      height={height}
+                      data={transformedData}
+                      dataKey="value"
+                      ratio={4 / 3}
+                      stroke={stroke || '#000000'}
+                      fill={fill || '#51C9B7'}
+                    />
+                  )}
                 </React.Fragment>
               );
             }}
@@ -1021,7 +1019,7 @@ const ErrorState = () => (
 
 [Serve your Nerdpack locally](/build-apps/publish-deploy/serve/), and view it in the **Custom Visualizations** app in New Relic. Select a chart type from the dropdown in the configuration sidebar, and see your visualization update to show the matching chart type:
 
-![Configured visualization](../../images/custom-viz/radar-or-treemap-configured.png)
+![Configured visualization](../../images/custom-viz/radar-or-treemap-chart-configured.png)
 
 </Step>
 
