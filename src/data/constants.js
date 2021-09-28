@@ -50,6 +50,8 @@ export const QUICKSTART_ALERT_TYPES = {
   STATIC: 'STATIC',
 };
 
+export const SHIELD_LEVELS = ['NEWRELIC', 'VERIFIED'];
+
 export const QUICKSTARTS_REPO =
   'https://github.com/newrelic/newrelic-observability-packs';
 
