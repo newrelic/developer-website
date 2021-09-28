@@ -9,6 +9,7 @@ import PackTile from '../components/PackTile';
 import IOBanner from '../components/IOBanner';
 import IOLogo from '../components/IOLogo';
 import Select from '../components/Select';
+import BetaBanner from '../components/quickstarts/BetaBanner';
 import {
   SearchInput,
   useTessen,
@@ -230,7 +231,7 @@ const QuickstartsPage = ({ data, location }) => {
           `}
         >
           {isMobile && <IOBanner isMobile />}
-
+          <div>{isMobile && <BetaBanner />}</div>
           <div
             css={css`
               padding: var(--site-content-padding);
@@ -353,6 +354,7 @@ const QuickstartsPage = ({ data, location }) => {
                       css={css`
                         fill: currentColor;
                         stroke-width: ${name === 'All' ? 1 : 0.25};
+
                         margin: 0 0.5rem;
                       `}
                     />
@@ -370,7 +372,7 @@ const QuickstartsPage = ({ data, location }) => {
           `}
         >
           {!isMobile && <IOBanner />}
-
+          <div>{!isMobile && <BetaBanner />}</div>
           <div
             css={css`
               background-color: var(--secondary-background-color);
