@@ -195,7 +195,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-newrelic-sdk',
       options: {
-        release: 'release-2751',
+        release: 'release-2837',
       },
     },
     'gatsby-plugin-embed-pages',
@@ -214,5 +214,14 @@ module.exports = {
       },
     },
     'gatsby-plugin-use-query-params',
+    {
+      resolve: 'gatsby-plugin-gatsby-cloud',
+      options: {
+        allPageHeaders: [
+          'Referrer-Policy: no-referrer-when-downgrade',
+          'Content-Security-Policy: frame-ancestors *.newrelic.com *.skilljar.com *.sj-cdn.net',
+        ],
+      },
+    },
   ],
 };
