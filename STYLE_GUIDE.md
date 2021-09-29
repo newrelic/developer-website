@@ -40,6 +40,8 @@
     - [GuideTemplate Frontmatter example](#guidetemplate-frontmatter-example)
   - [Reusable components](#reusable-components)
   - [Embed guides](#embed-guides)
+    - [Example](#example)
+    - [Hiding content on embedded pages](#hiding-content-on-embedded-pages)
   - [Grammar and formatting](#grammar-and-formatting)
     - [Format titles](#format-titles)
     - [Format headers](#format-headers)
@@ -348,11 +350,11 @@ Each guide on the site (in frontmatter `template: GuideTemplate`) has an embed p
 
 If there's a guide with this URL:
 
-    https://developer.newrelic.com/path/to/guide
+  https://developer.newrelic.com/path/to/guide
 
 The embed page URL would be:
 
-    https://developer.newrelic.com/path/to/guide/embed
+  https://developer.newrelic.com/path/to/guide/embed
 
 You can use the embed URL in an `<iframe src=EMBED_URL />` on another site to display guide content.
 

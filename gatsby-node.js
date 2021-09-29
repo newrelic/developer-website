@@ -1,8 +1,7 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
 const { createFilePath } = require('gatsby-source-filesystem');
-
-const MAX_RESULTS = 5;
+const slugify = require('./src/utils/slugify.js');
 
 const kebabCase = (string) =>
   string
@@ -53,6 +52,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
+
+      allQuickstarts {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            id
+          }
+        }
+      }
     }
   `);
 
@@ -62,7 +72,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
+  const {
+    allMdx,
+    allNewRelicSdkComponent,
+    allNewRelicSdkApi,
+    allQuickstarts,
+  } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
     const {
@@ -97,6 +112,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
+  allQuickstarts.edges.forEach(({ node }) => {
+    const {
+      fields: { slug },
+      id,
+    } = node;
+
+    createPage({
+      path: path.join(slug, '/'),
+      component: path.resolve('./src/templates/QuickstartDetails.js'),
+      context: {
+        id,
+        layout: 'QuickStartLayout',
+      },
+    });
+  });
+
   allNewRelicSdkComponent.edges.forEach(({ node }) => {
     const {
       fields: { slug },
@@ -124,6 +155,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     });
   });
+};
+
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+  const oldPage = { ...page };
+
+  if (page.path === '/instant-observability/') {
+    page.context.layout = 'QuickStartLayout';
+  }
+  deletePage(oldPage);
+  createPage(page);
 };
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -159,6 +201,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       name: 'slug',
       value: `/apis/${kebabCase(node.name)}`,
+    });
+  }
+
+  if (node.internal.type === 'Quickstarts') {
+    createNodeField({
+      node,
+      name: 'slug',
+      value: `/instant-observability/${slugify(node.name)}/${node.id}`,
     });
   }
 };

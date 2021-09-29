@@ -148,6 +148,22 @@
           url: '/build-apps/ab-test/subscribe'
     - title: See all open source apps
       url: https://opensource.newrelic.com/nerdpacks/
+
+- title: Contribute to quickstarts
+  icon: zap
+  url: '/contribute-to-quickstarts'
+  pages:
+    - title: Build a quickstart
+      url: '/contribute-to-quickstarts/build-a-quickstart'
+      pages: 
+        - title: Deploy your application
+          url: /contribute-to-quickstarts/build-a-quickstart/deploy-your-application
+        - title: Create a dashboard 
+          url: /contribute-to-quickstarts/build-a-quickstart/create-a-dashboard
+        - title: Create alerts
+          url: /contribute-to-quickstarts/build-a-quickstart/create-alerts
+        - title: Create a quickstart
+          url: /contribute-to-quickstarts/build-a-quickstart/create-quickstart
 - title: Try our APIs
   icon: nr-share
   url: '/try-our-apis'
@@ -443,6 +459,9 @@
           url: '/kubecon-europe-2020'
         - title: All things open
           url: '/all-things-open'
+- title: Instant Observability
+  icon: box
+  url: '/instant-observability'
 - title: Nerd Bytes
   icon: nr-nerd-bytes
   url: '/nerd-bytes'

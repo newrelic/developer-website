@@ -5,7 +5,6 @@ import SVG from '@newrelic/gatsby-theme-newrelic/src/components/SVG';
 const NewRelicSVG = (props) => (
   <SVG
     {...props}
-    viewBox="0 0 24 24"
     css={css`
       fill: none;
       stroke: currentColor;
@@ -18,6 +17,7 @@ const NewRelicSVG = (props) => (
 
 NewRelicSVG.defaultProps = {
   size: '1em',
+  viewBox: '0 0 24 24',
 };
 
 export default NewRelicSVG;
