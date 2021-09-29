@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
@@ -7,7 +7,6 @@ import {
   getGuidedInstallStackedNr1Url,
 } from '../utils/get-pack-nr1-url';
 import {
-  NR1_LOGIN_URL,
   NR1_GUIDED_INSTALL_NERDLET,
   NR1_PACK_DETAILS_NERDLET,
   UTM_PARAMETERS,
@@ -52,14 +51,16 @@ const createInstallLink = (
     ? getGuidedInstallStackedNr1Url(nerdletId)
     : getPackNr1Url(id, nerdletId);
 
-  const installUrl = new URL(hasUtmParameters ? NR1_SIGNUP_URL : NR1_LOGIN_URL);
+  const installUrl = new URL(hasUtmParameters ? NR1_SIGNUP_URL : platformUrl);
   if (parameters) {
     parameters.forEach((value, key) => {
       installUrl.searchParams.set(key, value);
     });
   }
 
-  installUrl.searchParams.set('return_to', platformUrl);
+  if (hasUtmParameters) {
+    installUrl.searchParams.set('return_to', platformUrl);
+  }
   return installUrl.href;
 };
 
@@ -74,7 +75,12 @@ const hasComponent = (quickstart, key) =>
 const InstallButton = ({ quickstart, location, ...props }) => {
   const hasInstallableComponent = hasComponent(quickstart, 'installPlans');
 
-  const parameters = location.search && new URLSearchParams(location.search);
+  const [parameters, setParameters] = useState();
+  useEffect(() => {
+    if (location.search) {
+      setParameters(new URLSearchParams(location.search));
+    }
+  }, [location.search, setParameters]);
 
   const hasGuidedInstall =
     hasInstallableComponent &&
