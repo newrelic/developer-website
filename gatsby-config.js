@@ -66,11 +66,17 @@ module.exports = {
               return {
                 q: tags ? tags.map(quote).join(' OR ') : title,
                 search_fields: {
-                  page: ['tags^10', 'body^5', 'title^1.5', '*'],
+                  page: [
+                    'tags^10',
+                    'quick_start_name^8',
+                    'body^5',
+                    'title^1.5',
+                    '*',
+                  ],
                 },
                 filters: {
                   page: {
-                    type: ['docs', 'developer', 'opensource'],
+                    type: ['docs', 'developer', 'opensource', 'quick_starts'],
                     document_type: [
                       '!views_page_menu',
                       '!term_page_api_menu',
@@ -144,6 +150,23 @@ module.exports = {
         path: `${__dirname}/src/markdown-pages`,
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'quickstarts',
+        path: `${__dirname}/src/data/quickstarts.json`,
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-json',
+      options: {
+        // If we need to source json files other than the i18n/nav, we should
+        // consider making this dynamic. See the docs for ways to do this.
+        //
+        // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-json
+        typeName: 'Quickstarts',
+      },
+    },
     'gatsby-remark-images',
     'gatsby-transformer-remark',
     {
@@ -190,6 +213,7 @@ module.exports = {
         environments: ['production', 'development'],
       },
     },
+    'gatsby-plugin-use-query-params',
     {
       resolve: 'gatsby-plugin-gatsby-cloud',
       options: {

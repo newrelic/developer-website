@@ -168,6 +168,45 @@ A step description
 
 > Note: keep in mind that a new line is necessary after an `img` tag to ensure proper rendering of subsequent text/markdown.
 
+# Tabs
+
+You can use the `Tabs` component, and related sub-components to construct a tabbed interface. Along with the top-level `<Tab>` component, the following components are available:
+
+* `<Tabs.Bar>` - A wrapper for all of the "tab" elements that the user can click on.
+* `<Tabs.BarItem>` - An individual "tab" that the user can click on.
+* `<Tabs.Pages>` - A wrapper for all the tab "pages" that the user can view.
+* `<Tabs.Page>` - An individual "page" of information that is shown.
+
+## Props
+
+|Component|Prop|Required?|Type|Description|
+|-|-|-|-|-|
+|`Tabs.BarItem`|`id`|yes|string|A label to associate a tab with a page.|
+|`Tabs.BarItem`|`count`|no|number|A numeric badge to display next to the tab.|
+|`Tabs.BarItem`|`disabled`|no|boolean|Whether or not a user can interact with the tab.|
+|`Tabs.Page`|`id`|yes|string|A label to associate a tab with a page.|
+
+## Usage
+
+```jsx
+<Tabs>
+  <Tabs.Bar>
+    <Tabs.BarItem id="tacos">Tacos</Tabs.BarItem>
+    <Tabs.BarItem id="nachos" count={70}>Nachos</Tabs.BarItem>
+    <Tabs.BarItem id="burritos">Burritos</Tabs.BarItem>
+    <Tabs.BarItem id="enchiladas" disabled>Enchiladas</Tabs.BarItem>
+  </Tabs.Bar>
+
+  <Tabs.Pages>
+    <Tabs.Page id="tacos">This is a page talking about tacos</Tabs.Page>
+    <Tabs.Page id="nachos">This is a page talking about nachos</Tabs.Page>
+    <Tabs.Page id="burritos">This is a page talking about burritos</Tabs.Page>
+  </Tab.Pages>
+</Tabs>
+```
+
+An example of how it could be use
+
 # Tutorial
 
 ## Usage

@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
-const Header = ({ title, children }) => (
+const Header = ({ title, children, className, icon }) => (
   <header
+    className={className}
     css={css`
       grid-area: page-header;
       display: flex;
+      flex-wrap: wrap;
       align-items: baseline;
       justify-content: space-between;
       border-bottom: 1px solid var(--divider-color);
@@ -31,14 +33,17 @@ const Header = ({ title, children }) => (
       `}
     >
       {title}
+      {icon}
     </h1>
     {children}
   </header>
 );
 
 Header.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.node,
   title: PropTypes.string.isRequired,
+  icon: PropTypes.node,
 };
 
 export default Header;

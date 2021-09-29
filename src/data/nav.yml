@@ -459,6 +459,9 @@
           url: '/kubecon-europe-2020'
         - title: All things open
           url: '/all-things-open'
+- title: Instant Observability
+  icon: box
+  url: '/instant-observability'
 - title: Nerd Bytes
   icon: nr-nerd-bytes
   url: '/nerd-bytes'
