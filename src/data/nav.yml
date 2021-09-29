@@ -12,6 +12,8 @@
       url: '/collect-data/query-data-nrql'
     - title: Explore NerdGraph using the API Explorer
       url: '/collect-data/get-started-nerdgraph-api-explorer'
+    - title: Monitor your network devices with New Relic
+      url: '/collect-data/network-performance-monitoring'
 - title: Automate workflows
   icon: nr-automation
   url: '/automate-workflows'

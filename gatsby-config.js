@@ -21,6 +21,7 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
+        oneTrustID: '77dd4d78-49db-4057-81ea-4bc325d6ecdd',
         forceTrailingSlashes: true,
         layout: {
           contentPadding: '2rem',
@@ -107,6 +108,7 @@ module.exports = {
           },
         },
         tessen: {
+          tessenVersion: '1.14.0',
           product: 'DEV',
           subproduct: 'TDEV',
           segmentWriteKey: 'Ako0hclX8WGHwl9rm4n5uxLtT4wgEtuU',
@@ -191,7 +193,10 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-gatsby-cloud',
       options: {
-        allPageHeaders: ['Referrer-Policy: no-referrer-when-downgrade'],
+        allPageHeaders: [
+          'Referrer-Policy: no-referrer-when-downgrade',
+          'Content-Security-Policy: frame-ancestors *.newrelic.com *.skilljar.com *.sj-cdn.net',
+        ],
       },
     },
   ],

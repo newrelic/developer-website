@@ -1,3 +1,43 @@
+# [1.55.0](https://github.com/newrelic/developer-website/compare/v1.54.0...v1.55.0) (2021-09-22)
+
+
+### Bug Fixes
+
+* Don't sound threatening ([761958f](https://github.com/newrelic/developer-website/commit/761958f10c74ed0253b44a64d5620b2370227b81))
+
+
+### Features
+
+* **docs:** Add NPM lab ([dd5285f](https://github.com/newrelic/developer-website/commit/dd5285ffe22a17c39c6309716106668c27a85035))
+
+# [1.54.0](https://github.com/newrelic/developer-website/compare/v1.53.1...v1.54.0) (2021-09-21)
+
+
+### Features
+
+* add onetrust and remove custom cookie component ([f341ace](https://github.com/newrelic/developer-website/commit/f341acefa22d6783291c4f0100eede28edfbb02f))
+
+## [1.53.1](https://github.com/newrelic/developer-website/compare/v1.53.0...v1.53.1) (2021-09-21)
+
+
+### Bug Fixes
+
+* add skilljar as an iframe-able domain ([1f902f8](https://github.com/newrelic/developer-website/commit/1f902f8bdd3c9ffa66a66e8dbf2e37d36265c519))
+
+# [1.53.0](https://github.com/newrelic/developer-website/compare/v1.52.3...v1.53.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* allow embed content in iframes ([4c9e27e](https://github.com/newrelic/developer-website/commit/4c9e27eed211ae415b0aae405e1da0e90d73423e))
+* remove custom cookie consent component in favor of onetrust ([77f8cc0](https://github.com/newrelic/developer-website/commit/77f8cc0f1229ff40ec978cd2e5365ce535be2773))
+* revert to using custom cookie consent component until onetrust issue is resolved ([26c5141](https://github.com/newrelic/developer-website/commit/26c51416204fc45aa1870832619503af7363be20))
+
+
+### Features
+
+* bump theme and update tessen ([ee5ef74](https://github.com/newrelic/developer-website/commit/ee5ef74abaa8a0701672805521c5e1eee3323299))
+
 ## [1.52.3](https://github.com/newrelic/developer-website/compare/v1.52.2...v1.52.3) (2021-09-10)
 
 
