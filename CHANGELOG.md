@@ -1,3 +1,19 @@
+# [1.56.0](https://github.com/newrelic/developer-website/compare/v1.55.0...v1.56.0) (2021-09-29)
+
+
+### Bug Fixes
+
+* fixed inconsistent dashboard charts ([d82c883](https://github.com/newrelic/developer-website/commit/d82c88329390f6f62f3003c2316ceab5587510de))
+* nav item update ([fca55d7](https://github.com/newrelic/developer-website/commit/fca55d77a4703efa8efce83b3eb11345d87f4433))
+* observability pack -> quickstarts & screenshot fixture ([1fa7356](https://github.com/newrelic/developer-website/commit/1fa73564b6cb2ff68d15134775f9e84c200da13d))
+* typos and language revision ([cc31bc1](https://github.com/newrelic/developer-website/commit/cc31bc18f0b0eeb5df84cb8de36d708886c8e1d0))
+* updated directory ([547019f](https://github.com/newrelic/developer-website/commit/547019f853bda564c30c48e10667e4a50145978e))
+
+
+### Features
+
+* added lab for building quickstart ([d5f4a35](https://github.com/newrelic/developer-website/commit/d5f4a35ee6ac77af5039f7ea28c35453c3da6c3a))
+
 # [1.55.0](https://github.com/newrelic/developer-website/compare/v1.54.0...v1.55.0) (2021-09-22)
 
 
