@@ -2,7 +2,7 @@
 path: '/build-apps/publish-deploy/publish'
 title: 'Publish your Nerdpack'
 template: 'GuideTemplate'
-description: 'Learn to publish your Nerdpack to the New Relic One catalog'
+description: 'Learn to publish your Nerdpack to Instant Observability'
 tileShorthand:
   title: 'Publish your Nerdpack'
   description: 'Publish your Nerdpack'
@@ -27,37 +27,33 @@ nr1 update
 
 ## Check your permissions
 
-When you publish your Nerdpack, it's registered with the New Relic One catalog. From there, some users can subscribe to your Nerdpack. Subscribing users need to have:
+When you publish your Nerdpack, it's registered with the Instant Observability catalog. From there, some users can subscribe to your Nerdpack. Subscribing users need to have:
 
 - Access to the account that published the Nerdpack
 - The [necessary permissions for managing Nerdpacks](/build-apps/permission-manage-apps)
 
 ## Update your package version
 
-You can only publish a package version to the catalog one time. For example, you can't publish two instances of version _1.0.0_. So, each time you want to deploy a new version of your code, you need to increment its version in the Nerdpack's _package.json_ file:
+You can only publish a package version to the Instant Observabiltiy catalog one time. For example, you can't publish two instances of version _1.0.0_. So, each time you want to deploy a new version of your code, you need to increment its version in the Nerdpack's _package.json_ file:
 
 ```json fileName=package.json lineHighlight=4
 {
-    "private": true,
-    "name": "demo-app",
-    "version": "1.0.0",
-    "scripts": {
-        "start": "nr1 nerdpack:serve",
-        "test": "exit 0"
-    },
-    "nr1": {
-        "uuid": "ab123c45-678d-9012-efg3-45hi6jkl7890"
-    },
-    "dependencies": {
-        "prop-types": "^15.6.2",
-        "react": "^16.6.3",
-        "react-dom": "^16.6.3"
-    },
-    "browserslist": [
-        "last 2 versions",
-        "not ie < 11",
-        "not dead"
-    ]
+  "private": true,
+  "name": "demo-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nr1 nerdpack:serve",
+    "test": "exit 0"
+  },
+  "nr1": {
+    "uuid": "ab123c45-678d-9012-efg3-45hi6jkl7890"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "browserslist": ["last 2 versions", "not ie < 11", "not dead"]
 }
 ```
 
@@ -73,10 +69,10 @@ If you built your Nerdpack from scratch with `nr1 create --type nerdpack`, then 
 
 ```json fileName=nr1.json lineHighlight=3
 {
-    "schemaType": "NERDPACK",
-    "id": "ab123c45-678d-9012-efg3-45hi6jkl7890",
-    "displayName": "DemoApp",
-    "description": "Nerdpack demo-app"
+  "schemaType": "NERDPACK",
+  "id": "ab123c45-678d-9012-efg3-45hi6jkl7890",
+  "displayName": "DemoApp",
+  "description": "Nerdpack demo-app"
 }
 ```
 
@@ -157,17 +153,17 @@ Because you're going to view a published Nerdpack, rather than a locally served 
 
 <Step>
 
-Navigate to **Apps**:
+Navigate to **Instant Observability**:
 
-![Navigate to the Apps page](../../../images/serve-publish-subscribe/nav-to-apps.png)
+![Navigate to Instant Observability](../../../images/serve-publish-subscribe/nav-to-io.png)
 
-Whether you published a New Relic One application or a custom visualization, you'll find your project under **Apps**.
+Whether you published a New Relic One application or a custom visualization, you'll find your project under **Instant Observability**.
 
 </Step>
 
 <Step>
 
-Find your published Nerdpack under **New Relic One catalog**:
+Find your published Nerdpack using the Apps filter or search bar:
 
 ![Published Nerdpack](../../../images/serve-publish-subscribe/published-app.png)
 
@@ -175,7 +171,7 @@ Notice the `Custom` indicator on its UI tile. Use this to distinguish between pu
 
 <Callout variant="tip">
 
-Only Nerdpacks with tagged versions are shown under **New Relic One catalog**. So, if you published without a tag or removed a tag from your published Nerdpack, you won't see it in the catalog.
+Only Nerdpacks with tagged versions are shown in Instant Observability. So, if you published without a tag or removed a tag from your published Nerdpack, you won't see it in the catalog.
 
 </Callout>
 
@@ -185,7 +181,7 @@ Only Nerdpacks with tagged versions are shown under **New Relic One catalog**. S
 
 ## Resolve issues with accessing your published Nerdpack
 
-Sometimes, when you publish your Nerdpack, you may come across issues. Whether you can't publish your Nerdpack due to some issue with your code or you can't find your Nerdpack in the catalog, consider some common solutions for resolving these issues.
+Sometimes, when you publish your Nerdpack, you may come across issues. Whether you can't publish your Nerdpack due to some issue with your code or you can't find your Nerdpack in Instant Observability, consider some common solutions for resolving these issues.
 
 ### Debug your command
 
