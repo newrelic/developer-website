@@ -1,3 +1,10 @@
+## [1.57.2](https://github.com/newrelic/developer-website/compare/v1.57.1...v1.57.2) (2021-09-29)
+
+
+### Bug Fixes
+
+* link directly to nr1 instead of login page ([bf6604e](https://github.com/newrelic/developer-website/commit/bf6604e3d4c050a82f0b479470f6cc0c796babbb))
+
 ## [1.57.1](https://github.com/newrelic/developer-website/compare/v1.57.0...v1.57.1) (2021-09-29)
 
 
