@@ -2048,7 +2048,7 @@
     eslint-plugin-promise "^4.2.1"
     eslint-plugin-react "^7.14.3"
 
-"@newrelic/gatsby-theme-newrelic@^3.0.0":
+"@newrelic/gatsby-theme-newrelic@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@newrelic/gatsby-theme-newrelic/-/gatsby-theme-newrelic-3.1.0.tgz#83a9f36158df6e0378a09753cf7ece5cc3178d2b"
   integrity sha512-ORkTYS/VJJvajDV7854Xsb/jdokwrdawvlD6Ex0oQkxA8/X//wk0sUvZvrHvQk0guG00NhX11tW09iEJPcuTFw==
