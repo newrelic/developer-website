@@ -17,7 +17,7 @@
       - [Use `fix`](#use-fix)
       - [Use `feat`](#use-feat)
     - [Draft PRs](#draft-prs)
-    - [Deploy previews with Amplify](#deploy-previews-with-amplify)
+    - [Deploy previews with Gatsby Cloud](#deploy-previews-with-gatsby-cloud)
   - [Style guide adherence](#style-guide-adherence)
   - [Reusable components](#reusable-components)
   - [Technical reference contribution guidelines](#technical-reference-contribution-guidelines)
@@ -168,9 +168,9 @@ To submit a [Draft PR](https://github.blog/2019-02-14-introducing-draft-pull-req
    `PR` you wish to submit.
 3. Once you are ready to have the `PR` reviewed and merge, click the Ready for review button on the `PR`.
 
-### Deploy previews with Amplify
+### Deploy previews with Gatsby Cloud 
 
-PRs that are opened from a branch in this repo (not forks) will generate preview links on Amplify automatically. Amplify preview links can be found within the PR under the `Checks` Tab.
+PRs that are opened from a branch in this repo (not forks) will generate preview links on Gatsby Cloud automatically. Gatsby Cloud preview links can be found as comments on your pull request once they finish building. Progress can be monitored via the `Gatsby Build Service` job under the `Checks` section.
 
 ## Style guide adherence
 
