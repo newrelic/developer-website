@@ -1,5 +1,5 @@
 ---
-path: '/contribute-to-io/build-a-quickstart/create-alerts'
+path: '/contribute-to-quickstarts/build-a-quickstart/create-alerts'
 title: 'Create alerts'
 template: 'GuideTemplate'
 description: 'create alerts in New Relic One'
@@ -8,9 +8,9 @@ duration: '15 min'
 
 <Callout variant="course" title="Lab">
 
-This procedure is a part of a lab that teaches you how to build a quickstart. If you haven't already, checkout the [_lab introduction_](/contribute-to-io/build-a-quickstart)
+This procedure is a part of a lab that teaches you how to build a quickstart. If you haven't already, checkout the [_lab introduction_](/contribute-to-quickstarts/build-a-quickstart)
 
-Each procedure in this lab builds on top of the last one, so make sure you [_Create a dashboard_](/contribute-to-io/build-a-quickstart/create-a-dashboard) before proceeding with this one.
+Each procedure in this lab builds on top of the last one, so make sure you [_Create a dashboard_](/contribute-to-quickstarts/build-a-quickstart/create-a-dashboard) before proceeding with this one.
 
 </Callout>
 
@@ -28,11 +28,11 @@ Before you set alert conditions, you must create a policy.
 
 From **Alert & AI**, go to the **Alerts** section and click **Policies** from left-hand navigation. Then, click **New alert policy**.
 
-![new alert policy](../../../images/contribute-to-io/alerts-main.png)
+![new alert policy](../../../images/contribute-to-quickstarts/alerts-main.png)
 
 Name your policy FlashDB alert policy. Use the default values for the rest of the fields and click **Create alert policy**.
 
-![create an alert policy](../../../images/contribute-to-io/create-alert-policy.png)
+![create an alert policy](../../../images/contribute-to-quickstarts/create-alert-policy.png)
 
 The next step is to add conditions to the alert policy. 
 
@@ -46,11 +46,11 @@ You're going to add the following alert conditions:
 
 Under **FlashDB alert policy**, click **Create a condition**.
 
-![create alert condition](../../../images/contribute-to-io/create-alert-condition.png)
+![create alert condition](../../../images/contribute-to-quickstarts/create-alert-condition.png)
 
 The next page asks you to choose a category for your condition. Choose NRQL, which allows you to create a condition using a NRQL query. Then, click **Next, define thresholds**.
 
-![alert condition using nrql](../../../images/contribute-to-io/create-alert-condition-nrql.png)
+![alert condition using nrql](../../../images/contribute-to-quickstarts/create-alert-condition-nrql.png)
 
 You want New Relic to notify you if the read operation is taking longer than expected. Name your alert condition "slow read responses" and enter the following NRQL query for your condition.
 
@@ -58,39 +58,39 @@ You want New Relic to notify you if the read operation is taking longer than exp
 SELECT average(fdb_read_responses) FROM Metric
 ```
 
-![slow read response nrql](../../../images/contribute-to-io/slow-read-response-nrql.png)
+![slow read response nrql](../../../images/contribute-to-quickstarts/slow-read-response-nrql.png)
 
 Here, you selected the average read response for FlashDB. 
 
 Scroll down on the same page to define threshold. Select **Static** as the threshold type. It is the simplest threshold type and creates a condition based on the numeric value returned by the query. 
 Set the critical threshold value at 0.9:
 
-![slow read response critical threshold](../../../images/contribute-to-io/critical-threshold.png)
+![slow read response critical threshold](../../../images/contribute-to-quickstarts/critical-threshold.png)
 
 Here, you defined a condition that will open violation whenever read response time is above 0.9 for at least 5 minutes. 
 
 Next, click **Add warning threshold**.
 
-![add warning threshold](../../../images/contribute-to-io/add-warning-threshold.png)
+![add warning threshold](../../../images/contribute-to-quickstarts/add-warning-threshold.png)
 
 Enter the threshold value at 0.8 to get a warning when the read response is above 0.8 for at least 5 minutes.
 Then, click **Save condition**. 
 
-![slow read response warning threshold](../../../images/contribute-to-io/warning-threshold.png)
+![slow read response warning threshold](../../../images/contribute-to-quickstarts/warning-threshold.png)
 
 Now, You can see your new condition under your FlashDB alert policy. 
 
-![flashdb slow response alert](../../../images/contribute-to-io/flashdb-alert-slow-response.png)
+![flashdb slow response alert](../../../images/contribute-to-quickstarts/flashdb-alert-slow-response.png)
 
 ### Create a cache hit ratio condition 
 
 You claimed that your database is fastest in the space, so you also want New Relic to notify you if your cache hit ratio is too low. Add another condition under the same policy by clicking **Add a condition**.
 
-![add more alert conditions](../../../images/contribute-to-io/add-more-alert-conditions.png)
+![add more alert conditions](../../../images/contribute-to-quickstarts/add-more-alert-conditions.png)
 
 The next page asks you to choose the category for your condition. Choose NRQL and click **Next, define threshold**.
 
-![add alert condition using nrql](../../../images/contribute-to-io/add-more-alert-conditions-nrql.png)
+![add alert condition using nrql](../../../images/contribute-to-quickstarts/add-more-alert-conditions-nrql.png)
 
 Enter the name "Low cache hit ratio" for your condition and use the following NRQL query.
 
@@ -98,15 +98,15 @@ Enter the name "Low cache hit ratio" for your condition and use the following NR
 SELECT sum(fdb_cache_hits)/sum(fdb_read_responses) FROM Metric
 ```
 
-![low cache hit ratio nrql](../../../images/contribute-to-io/low-cache-hit-ratio-nrql.png)
+![low cache hit ratio nrql](../../../images/contribute-to-quickstarts/low-cache-hit-ratio-nrql.png)
 
 Next, add threshold values for critical violation and warning. The procedure is same as before. The only difference is that you want New Relic to notify you if the query returns a value _below_ 0.85 and open a critical violation if the value falls _below_ 0.75 for at least 5 minutes.
 
-![low cache hit ratio threshold](../../../images/contribute-to-io/low-cache-hit-ratio-threshold.png)
+![low cache hit ratio threshold](../../../images/contribute-to-quickstarts/low-cache-hit-ratio-threshold.png)
 
 Save the condition to add it to your alert policy which now looks like the following.
 
-![alert policy conditions](../../../images/contribute-to-io/alert-conditions.png)
+![alert policy conditions](../../../images/contribute-to-quickstarts/alert-conditions.png)
 
 ## Add a notification channel
 
@@ -114,15 +114,17 @@ To receive notifications for any opened violations, you also need to add a notif
 
 First, move to the **Notification channels** tab and click **Add notification channels**.
 
-![add notification channel](../../../images/contribute-to-io/add-notification-channel.png)
+![add notification channel](../../../images/contribute-to-quickstarts/add-notification-channel.png)
 
 From the list of channel options, click Email.
 
-![email notification channel](../../../images/contribute-to-io/email-notification-channel.png)
+![email notification channel](../../../images/contribute-to-quickstarts/email-notification-channel.png)
 
 Select the email you want to receive your notifications on, and click **Update policy**.
 
-![update policy](../../../images/contribute-to-io/update-policy.png)
+![update policy](../../../images/contribute-to-quickstarts/update-policy.png)
+
+Notification channel is now added.
 
 ## Summary
 
@@ -130,6 +132,6 @@ During this procedure, you created FlashDB alert policy and added slow read resp
 
 <Callout variant="course" title="Lab">
 
-This procedure is a part of lab that teaches you how to build a quickstart. Continue on to next lesson: [_Create a quickstart_](/contribute-to-io/build-a-quickstart/create-quickstart)
+This procedure is a part of lab that teaches you how to build a quickstart. Continue on to next lesson: [_Create a quickstart_](/contribute-to-quickstarts/build-a-quickstart/create-quickstart)
 
 </Callout>
