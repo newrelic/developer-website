@@ -1,6 +1,6 @@
 const NR1_BASE_URL = 'https://one.newrelic.com';
 const NR1_BASE_URL_LOCAL = 'https://dev-one.newrelic.com';
-const NERDLET_PATH = `launcher/nr1-core.explorer/`;
+const NERDLET_PATH = `launcher/catalog-pack-details.launcher/`;
 const NR1_EXPLORER_NERDLET = 'nr1-core.listing';
 
 /**
