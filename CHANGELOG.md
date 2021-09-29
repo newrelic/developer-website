@@ -1,3 +1,10 @@
+## [1.57.1](https://github.com/newrelic/developer-website/compare/v1.57.0...v1.57.1) (2021-09-29)
+
+
+### Bug Fixes
+
+* **customize-visualizations-with-configuration:** broken image ref ([3627747](https://github.com/newrelic/developer-website/commit/3627747f4e5684df2016ed966924726b67fc5849))
+
 # [1.57.0](https://github.com/newrelic/developer-website/compare/v1.56.0...v1.57.0) (2021-09-29)
 
 
