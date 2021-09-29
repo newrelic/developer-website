@@ -7,7 +7,7 @@ description: 'Customize open-source Nerdpacks'
 
 <Intro>
 
-Most Nerdpacks in the New Relic One catalog are open-source. This means you can clone or fork their repositories, customize them to suit your specific needs, and re-publish them to use with your account. In this guide, you customize a Nerdpack with visualizations and publish it to your account. However, to customize any Nerdpack, you follow the same steps.
+Most Nerdpacks in the Instant Observability catalog are open-source. This means you can clone or fork their repositories, customize them to suit your specific needs, and re-publish them to use with your account. In this guide, you customize a Nerdpack with visualizations and publish it to your account. However, to customize any Nerdpack, you follow the same steps.
 
 </Intro>
 
@@ -410,7 +410,7 @@ Clone the repository:
 nr1 nerdpack:clone -r https://github.com/newrelic/nr1-victory-visualizations.git
 ```
 
-Now you have a local version of the **Victory Charts Visualizations** Nerdpack! Notice that you used `nr1 nerdpack:clone` instead of `git clone` to copy the repo. `nr1 nerdpack:clone` offers built-in functionality to help keep your local copy distinct from the original Nerdpack in the New Relic One public catalog. Specifically, it generates a new Nerdpack UUID so you don't have to do this yourself:
+Now you have a local version of the **Victory Charts Visualizations** Nerdpack! Notice that you used `nr1 nerdpack:clone` instead of `git clone` to copy the repo. `nr1 nerdpack:clone` offers built-in functionality to help keep your local copy distinct from the original Nerdpack in the Instant Observability public catalog. Specifically, it generates a new Nerdpack UUID so you don't have to do this yourself:
 
 ```sh
 [output] Re-generating UUID...
@@ -1059,7 +1059,7 @@ This will revert the bar corners to the default 90-degrees instead of being roun
 
 ![Progress bar with straight corners](../../images/build-an-app/progress-bar-chart-no-corner-radius.png)
 
-Perfect! You cloned and updated the open-source **Circular progress bar** visualization from the New Relic One catalog. The only thing left to do is publish your version to the catalog so your accounts can subscribe to it.
+Perfect! You cloned and updated the open-source **Circular progress bar** visualization from the Instant Observability catalog. The only thing left to do is publish your version to the catalog so your accounts can subscribe to it.
 
 </Step>
 
@@ -1077,7 +1077,7 @@ Publish your version of the **Victory charts** Nerdpack to the catalog. Then sub
 
 <Callout variant="tip">
 
-Because you used `nr1 clone` to clone the Nerdpack's repository, your local copy already has its own UUID. This is a prerequisite for publishing your version to the New Relic One catalog. If you used `git clone` to copy, you need to update the Nerdpack's UUID manually:
+Because you used `nr1 clone` to clone the Nerdpack's repository, your local copy already has its own UUID. This is a prerequisite for publishing your version to the Instant Observability catalog. If you used `git clone` to copy, you need to update the Nerdpack's UUID manually:
 
 ```sh
 nr1 nerdpack:uuid -gf
@@ -1152,7 +1152,7 @@ Go to your dashboard and see your new, customized circular progress bar:
 
 In this guide, you:
 
-- Subscribed to a Nerdpack from the New Relic One catalog
+- Subscribed to a Nerdpack from the Instant Observability catalog
 - Cloned an open-source Nerdpack
 - Edited an existing visualization to meet your needs
 - Published and subscribed to your own custom Nerdpack
