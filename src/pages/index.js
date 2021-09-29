@@ -99,7 +99,13 @@ const IndexPage = ({ data, pageContext, location }) => {
                 width: 100%;
               `}
             >
-              <img src={ioBeta} alt="IO Beta" />
+              <img
+                src={ioBeta}
+                alt="IO Beta"
+                css={css`
+                  width: 100%;
+                `}
+              />
             </div>
           </section>
 
