@@ -1,4 +1,3 @@
-// FIXME: update this to production URL when deployed / launched
 const NR1_BASE_URL = 'https://one.newrelic.com';
 const NR1_BASE_URL_LOCAL = 'https://dev-one.newrelic.com';
 const NERDLET_PATH = `launcher/nr1-core.explorer/`;
