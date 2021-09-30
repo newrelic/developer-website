@@ -35,7 +35,8 @@ export const QUICKSTART_SUPPORT_CONTENT = {
   },
   [QUICKSTART_SUPPORT_LEVELS.VERIFIED]: {
     title: 'Verified by New Relic',
-    content: `Need help? [Visit our Support Center](https://support.newrelic.com) or check out our community forum, [the Explorers Hub](https://discuss.newrelic.com).`,
+    content: `Need help? Find the author's support resources under **What's included**. Or check out our community forum, the [Explorers Hub](https://discuss.newrelic.com/).
+    `,
   },
   [QUICKSTART_SUPPORT_LEVELS.COMMUNITY]: {
     title: 'Built by the community',
