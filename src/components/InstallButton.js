@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
+import { Button, Link, Icon, useTessen } from '@newrelic/gatsby-theme-newrelic';
 import {
   getPackNr1Url,
   getGuidedInstallStackedNr1Url,
@@ -13,6 +13,7 @@ import {
   NR1_SIGNUP_URL,
 } from '../data/constants';
 import { quickstart } from '../types';
+import Cookies from 'js-cookie';
 
 /**
  * @param {Object} parameters
@@ -75,6 +76,8 @@ const hasComponent = (quickstart, key) =>
 const InstallButton = ({ quickstart, location, ...props }) => {
   const hasInstallableComponent = hasComponent(quickstart, 'installPlans');
 
+  const tessen = useTessen();
+
   const [parameters, setParameters] = useState();
   useEffect(() => {
     if (location.search) {
@@ -109,8 +112,37 @@ const InstallButton = ({ quickstart, location, ...props }) => {
       )
     : quickstart.documentation[0].url;
 
+  const writeCookie = () => {
+    const currentEnvironment =
+      process.env.ENV || process.env.NODE_ENV || 'development';
+    const options = { expires: 1 /* days */ };
+    if (currentEnvironment !== 'development') {
+      options.domain = 'newrelic.com';
+    }
+
+    Cookies.set('newrelic-quickstart-id', quickstart.id, options);
+  };
+
+  const handleInstallClick = () => {
+    writeCookie();
+    tessen.track('instantObservability', 'QuickstartInstall', {
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+      quickstartUrl: quickstart.packUrl,
+      quickstartButtonText: hasInstallableComponent
+        ? 'Install quickstart'
+        : 'See installation docs',
+    });
+  };
+
   return (
-    <Button {...props} as={Link} to={url} variant={Button.VARIANT.PRIMARY}>
+    <Button
+      {...props}
+      as={Link}
+      to={url}
+      onClick={handleInstallClick}
+      variant={Button.VARIANT.PRIMARY}
+    >
       {hasInstallableComponent ? (
         <>
           <Icon
