@@ -11,16 +11,16 @@ export const SPLIT_TRACKING_EVENTS = {
 export const SDK_BASE_URL =
   'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
 
-// FIXME: update this to production URL when deployed / launched
-export const NR1_LOGIN_URL = 'https://staging-login.newrelic.com/login';
-
-// FIXME: update this to production URL when deployed / launched
-export const NR1_BASE_URL = 'https://staging-one.newrelic.com';
-
-export const NR1_BASE_URL_LOCAL = 'https://dev-one.newrelic.com';
+export const NR1_LOGIN_URL = 'https://login.newrelic.com/login';
+export const NR1_SIGNUP_URL = 'https://newrelic.com/signup';
 
 export const NR1_PACK_DETAILS_NERDLET =
   'catalog-pack-details.catalog-pack-contents';
+
+export const NR1_GUIDED_INSTALL_NERDLET =
+  'nr1-install-newrelic.nr1-install-newrelic';
+
+export const NR1_EXPLORER_NERDLET = 'nr1-core.listing';
 
 export const QUICKSTART_SUPPORT_LEVELS = {
   NEWRELIC: 'NEWRELIC',
@@ -35,7 +35,8 @@ export const QUICKSTART_SUPPORT_CONTENT = {
   },
   [QUICKSTART_SUPPORT_LEVELS.VERIFIED]: {
     title: 'Verified by New Relic',
-    content: `Need help? [Visit our Support Center](https://support.newrelic.com) or check out our community forum, [the Explorers Hub](https://discuss.newrelic.com).`,
+    content: `Need help? Find the author's support resources under **What's included**. Or check out our community forum, the [Explorers Hub](https://discuss.newrelic.com/).
+    `,
   },
   [QUICKSTART_SUPPORT_LEVELS.COMMUNITY]: {
     title: 'Built by the community',
@@ -49,8 +50,12 @@ export const QUICKSTART_ALERT_TYPES = {
   STATIC: 'STATIC',
 };
 
+export const SHIELD_LEVELS = ['NEWRELIC', 'VERIFIED'];
+
 export const QUICKSTARTS_REPO =
-  'https://github.com/newrelic/newrelic-observability-packs';
+  'https://github.com/newrelic/newrelic-quickstarts';
 
 export const SIGNUP_LINK = 'https://newrelic.com/signup';
 export const LOGIN_LINK = 'https://login.newrelic.com/login';
+
+export const UTM_PARAMETERS = { utm_medium: 'cpc' };

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import {
-  CookieConsentDialog,
   GlobalHeader,
   Layout,
   Logo,
@@ -10,6 +9,7 @@ import {
   Navigation,
   NavItem,
   SearchInput,
+  NR_SITES,
 } from '@newrelic/gatsby-theme-newrelic';
 import { Link } from 'gatsby';
 import '../components/styles.scss';
@@ -32,7 +32,7 @@ const MainLayout = ({ children, pageContext }) => {
 
   return (
     <>
-      <GlobalHeader />
+      <GlobalHeader activeSite={NR_SITES.DEVELOPER} />
       <MobileHeader>
         <Navigation searchTerm={searchTerm}>
           {pages.map((page, idx) => (
@@ -83,7 +83,6 @@ const MainLayout = ({ children, pageContext }) => {
         </SdkContext.Provider>
         <Layout.Footer fileRelativePath={fileRelativePath} />
       </Layout>
-      <CookieConsentDialog />
     </>
   );
 };

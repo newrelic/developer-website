@@ -16,13 +16,14 @@ const MethodReference = ({ className, method }) => {
       <h3>
         <code>{method.name}</code>
       </h3>
-      <Markdown
-        css={css`
-          margin-bottom: 1rem;
-        `}
-      >
-        {method.description}
-      </Markdown>
+      {method.description && method.description !== 'undefined' && (
+        <Markdown
+          source={method.description}
+          css={css`
+            margin-bottom: 1rem;
+          `}
+        />
+      )}
       <FunctionDefinition
         arguments={method.arguments}
         returnValue={method.returnValue}

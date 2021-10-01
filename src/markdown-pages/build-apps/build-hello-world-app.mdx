@@ -24,10 +24,6 @@ tags:
 
 Here's how you can quickly build a "Hello, World!" application in New Relic One. In these steps, you create a local version of the New Relic One site where you can prototype your application. Then, when you're ready to share the application with others, you can publish it to New Relic One.
 
-See the video, which demonstrates the steps in this guide in five minutes.
-
-<Video id="7omo0qHxku8" type="youtube" />
-
 </Intro>
 
 ## Before you begin
@@ -67,7 +63,7 @@ If you followed all the steps in the CLI quick start, you now have files under a
 
 Open a code editor and point it to the new directory named after your nerdpack project (for example, `my-awesome-nerdpack`).
 
-Your code editor displays two artifacts:
+Your code editor displays two Nerdpack items:
 
 - `launchers` containing the homepage tile
 - `nerdlets` containing your application code
@@ -102,13 +98,13 @@ export default class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
 
 As an optional step, you can add a custom launcher icon using any image file named `icon.png`. Replace the default `icon.png` file under `launcher` by dragging in your new image file:
 
-![Launcher artifact with icon.png](../../images/create-hello-world/custom-tile.png)
+![Launcher Nerdpack item with icon.png](../../images/create-hello-world/custom-tile.png)
 
   </Step>
 
  <Callout variant="tip">
 
-You will need an icon.png in 2 places for it to be representing properly in the New Relic One Catalog, To set a launcher icon place an icon.png file in the the launcher directory. To set the icon for the app details page place an icon in the root directory of the project.
+You will need an icon.png in 2 places for it to be representing properly in Instant Observability, To set a launcher icon place an icon.png file in the the launcher directory. To set the icon for the app details page place an icon in the root directory of the project.
 
 </Callout>
 
@@ -152,7 +148,7 @@ Open a browser and go to [https://one.newrelic.com/?nerdpacks=local](https://one
 
   <Step>
 
-When the browser opens, click **Apps**, and then in the **Other apps** section, click the new launcher for your application. Here's an example where we inserted a leaf icon:
+When the browser opens, click **Apps**, and then in the **Your apps** section, click the new launcher for your application. Here's an example where we inserted a leaf icon:
 
 ![The customized nerdlet launcher](../../images/create-hello-world/hello-world-launcher.png)
 
@@ -166,7 +162,7 @@ After you click the new launcher, your "Hello, World!" appears:
 
 ## Publish your application to New Relic
 
-Your colleagues can't see your local application, so when you are ready to share it, publish it to the New Relic One catalog. The catalog is where you can find any pre-existing custom applications, as well as any applications you create in your own organization.
+Your colleagues can't see your local application, so when you are ready to share it, publish it to Instant Observability. Instant Observability is where you can find any pre-existing custom applications, as well as any applications you create in your own organization.
 
 <Steps>
 
@@ -188,13 +184,15 @@ Close your local New Relic One development tab, and open [New Relic One](https:/
 
   <Step>
 
-Click the **Apps** launcher.
+Click the **Instant Observability** launcher.
+
+![Navigate to Instant Observability](../../images/serve-publish-subscribe/nav-to-io.png)
 
   </Step>
 
   <Step>
 
-Under **New Relic One catalog**, click the launcher for your new application.
+Click the launcher for your new application.
 
   </Step>
 
@@ -202,11 +200,11 @@ Under **New Relic One catalog**, click the launcher for your new application.
 
 When your new application opens, notice that it doesn't display any helpful descriptive information. The next section shows you how to add descriptive metadata.
 
-![An empty application description in the catalog](../../images/create-hello-world/catalog-description-empty.png)
+![An empty application description in Instant Observability](../../images/create-hello-world/catalog-description-empty.png)
 
 ## Add details to describe your project
 
-Now that your new application is in the New Relic One catalog, you can add details that help users understand what your application does and how to use it.
+Now that your new application is in Instant Observability, you can add details that help users understand what your application does and how to use it.
 
 <Steps>
 
@@ -222,7 +220,7 @@ nr1 create
 
   <Step>
 
-Select **catalog**, which creates a stub in your project under the `catalog` directory. Here's how the results might look in your code editor:
+Select **catalog**, which creates a stub in your project under the _catalog_ directory in the root directory and any launcher, Nerdlet, or visualization directory. Here's how the results might look in your code editor:
 
 ![Catalog stub](../../images/create-hello-world/new-catalog-stub.png)
 
@@ -230,13 +228,13 @@ Select **catalog**, which creates a stub in your project under the `catalog` dir
 
   <Step>
 
-In the `catalog` directory of your project, add screenshots or various types of metadata to describe your project. For details about what you can add, see [Add catalog metadata and screenshots](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/discover-manage-applications-new-relic-one-catalog#clamshell-2).
+In the root `catalog` directory of your project, add screenshots or various types of metadata to describe your project. For details about what you can add, see [Add catalog metadata and screenshots](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/discover-manage-applications-new-relic-one-catalog#clamshell-2).
 
   </Step>
 
   <Step>
 
-After you add the screenshots and descriptions you want, execute the following to save your metadata to the catalog:
+After you add the screenshots and descriptions you want, execute the following to save your metadata to the Instant Observability catalog:
 
 ```bash
 nr1 catalog:submit
@@ -246,7 +244,7 @@ nr1 catalog:submit
 
   <Step>
 
-Return to the catalog and refresh the page to see your new screenshots and metadata describing your project.
+Return to Instant Observability and refresh the page to see your new screenshots and metadata describing your project.
 
   </Step>
 
@@ -254,7 +252,7 @@ Return to the catalog and refresh the page to see your new screenshots and metad
 
 ## Subscribe accounts to your application
 
-To make sure other users see your application in the catalog, you need to subscribe accounts to the application. Any user with the NerdPack manager or admin role can subscribe to an application from accounts that they have permission to manage.
+To make sure other users see your application in Instant Observability, you need to subscribe accounts to the application. Any user with the NerdPack manager or admin role can subscribe to an application from accounts that they have permission to manage.
 
 <Steps>
 
@@ -291,6 +289,6 @@ If you're interested in advanced configurations for your Nerdpack, read [Enable 
 Now that you've completed the steps in this example, you learned the basic steps to:
 
 - Create a local application.
-- Publish the application to the New Relic One catalog so you can share it with your colleagues.
+- Publish the application to Instant Observability so you can share it with your colleagues.
 - Add details to the project in the catalog so users understand how to use it.
 - Subscribe accounts to your application so other users can use it.

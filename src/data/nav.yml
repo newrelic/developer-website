@@ -12,6 +12,8 @@
       url: '/collect-data/query-data-nrql'
     - title: Explore NerdGraph using the API Explorer
       url: '/collect-data/get-started-nerdgraph-api-explorer'
+    - title: Monitor your network devices with New Relic
+      url: '/collect-data/network-performance-monitoring'
 - title: Automate workflows
   icon: nr-automation
   url: '/automate-workflows'
@@ -146,6 +148,22 @@
           url: '/build-apps/ab-test/subscribe'
     - title: See all open source apps
       url: https://opensource.newrelic.com/nerdpacks/
+
+- title: Contribute to quickstarts
+  icon: zap
+  url: '/contribute-to-quickstarts'
+  pages:
+    - title: Build a quickstart
+      url: '/contribute-to-quickstarts/build-a-quickstart'
+      pages: 
+        - title: Deploy your application
+          url: /contribute-to-quickstarts/build-a-quickstart/deploy-your-application
+        - title: Create a dashboard 
+          url: /contribute-to-quickstarts/build-a-quickstart/create-a-dashboard
+        - title: Create alerts
+          url: /contribute-to-quickstarts/build-a-quickstart/create-alerts
+        - title: Create a quickstart
+          url: /contribute-to-quickstarts/build-a-quickstart/create-quickstart
 - title: Try our APIs
   icon: nr-share
   url: '/try-our-apis'
@@ -308,6 +326,8 @@
               url: '/components/card-body'
             - title: CardHeader
               url: '/components/card-header'
+            - title: CardSection
+              url: '/components/card-section'
             - title: Grid
               url: '/components/grid'
             - title: GridItem
@@ -437,8 +457,6 @@
       pages:
         - title: Kubecon & CloudNativeCon
           url: '/kubecon-europe-2020'
-        - title: Nerd days 1.0
-          url: '/nerd-days'
         - title: All things open
           url: '/all-things-open'
 - title: Instant Observability

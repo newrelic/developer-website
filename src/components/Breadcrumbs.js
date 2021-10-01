@@ -7,13 +7,23 @@ const Breadcrumbs = ({ segments, separator }) => {
   return (
     <div
       css={css`
-        margin: 2em 0;
+        margin: 1rem 0 0;
+        padding: 1rem 2rem;
+
+        background-color: var(--secondary-background-color); ;
       `}
       aria-label="breadcrumb"
     >
       {segments.map((segment) => {
         const elem = segment.url ? (
-          <Link to={segment.url}>{segment.name}</Link>
+          <Link
+            to={segment.url}
+            css={css`
+              text-decoration: none;
+            `}
+          >
+            {segment.name}
+          </Link>
         ) : (
           segment.name
         );
@@ -21,12 +31,12 @@ const Breadcrumbs = ({ segments, separator }) => {
           <span
             key={`breadcrumb-${segment.name}`}
             css={css`
-              :not(:last-of-type) {
-                :after {
-                  margin: 0 0.5em;
-                  display: inline-block;
-                  content: '${separator}';
-                }
+              font-size: 0.85rem;
+
+              :not(:last-of-type):after {
+                margin: 0 0.5em;
+                display: inline-block;
+                content: '${separator}';
               }
             `}
           >

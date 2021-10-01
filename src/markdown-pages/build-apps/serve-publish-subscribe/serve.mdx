@@ -140,7 +140,7 @@ Generally, you don't need to know how your application code is loaded in New Rel
 
 When you run `nr1 nerdpack:serve`, your code is served by your local machine using an nr-local.net subdomain. This domain points to 127.0.0.1, and uses a variety of ports to connect, including 9973.
 
-To load a Nerdpack into the platform, whether it's locally served or published to the app catalog, New Relic uses an `<IFRAME>` and a separate domain (a subdomain of nr-ext.net), relying on same-domain policy to sandbox the code.
+To load a Nerdpack into the platform, whether it's locally served or published to the Instant Observability catalog, New Relic uses an `<IFRAME>` and a separate domain (a subdomain of nr-ext.net), relying on same-domain policy to sandbox the code.
 
 So, if you don't find your Nerdpack in New Relic, you're using the correct query string, and you're using the correct profile, your network administrator may need to enable access to:
 

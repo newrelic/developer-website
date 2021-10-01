@@ -1,9 +1,11 @@
 import React from 'react';
 import SVG from '@newrelic/gatsby-theme-newrelic/src/components/SVG';
 import { css } from '@emotion/react';
+import PropTypes from 'prop-types';
 
-const CheckShieldIcon = () => (
+const CheckShieldIcon = ({ className }) => (
   <SVG
+    className={className}
     viewBox="0 0 15 19"
     css={css`
       fill: none;
@@ -19,5 +21,9 @@ const CheckShieldIcon = () => (
     />
   </SVG>
 );
+
+CheckShieldIcon.propTypes = {
+  className: PropTypes.string,
+};
 
 export default CheckShieldIcon;

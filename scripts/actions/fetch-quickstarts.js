@@ -47,10 +47,17 @@ const quickstartQuery = `# gql
               iconUrl
               packUrl
               id
+              title
               level
               logoUrl
               name
+              summary
               websiteUrl
+              keywords
+              installPlans {
+                id
+                name
+              }
             }
           }
         }
@@ -116,7 +123,10 @@ const main = async (query, url, token) => {
     const quickstarts = results.quickstarts;
     console.log(`Found ${quickstarts.length} quickstarts.`);
     console.log(`Writing ${QUICKSTARTS_FILE_PATH}`);
-    fs.writeFileSync(QUICKSTARTS_FILE_PATH, JSON.stringify(quickstarts, null, 2));
+    fs.writeFileSync(
+      QUICKSTARTS_FILE_PATH,
+      JSON.stringify(quickstarts, null, 2)
+    );
   } else {
     console.log(
       'No quickstarts were returned from the api, check the logs for errors.'

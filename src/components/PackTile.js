@@ -8,12 +8,10 @@ import {
   Icon,
   useTessen,
   useInstrumentedHandler,
+  Tag,
 } from '@newrelic/gatsby-theme-newrelic';
+import { SHIELD_LEVELS } from '../data/constants';
 import PackImg from './PackImg';
-
-const LEVELS = {
-  NEWRELIC: 'NEWRELIC',
-};
 
 const VIEWS = {
   GRID: 'Grid view',
@@ -22,42 +20,44 @@ const VIEWS = {
 
 const PackTile = ({
   id,
+  title,
   view,
+  featured,
   name,
   fields,
   logoUrl,
-  description,
   level,
   className,
+  summary,
 }) => {
   const tessen = useTessen();
 
   const handlePackClick = useInstrumentedHandler(
     () => {
-      tessen.track('observabilityPack', 'observabilityPackClick', {
+      tessen.track('instantObservability', 'QuickstartClick', {
         publicCatalogView: view,
-        packName: name,
+        quickstartName: name,
       });
       navigate(fields.slug);
     },
     {
-      actionName: 'observabilityPackClick',
+      actionName: 'QuickstartClick',
       publicCatalogView: view,
-      packName: name,
+      quickstartName: name,
     }
   );
 
   const handleBuildTileClick = useInstrumentedHandler(
     () => {
-      tessen.track('observabilityPack', 'buildYourOwnObservabilityPackClick', {
+      tessen.track('instantObservability', 'BuildYourOwnQuickstartClick', {
         publicCatalogView: view,
-        packName: name,
+        quickstartName: name,
       });
     },
     {
-      actionName: 'buildYourOwnObservabilityPackClick',
+      actionName: 'BuildYourOwnQuickstartClick',
       publicCatalogView: view,
-      packName: name,
+      quickstartName: name,
     }
   );
 
@@ -69,30 +69,37 @@ const PackTile = ({
       interactive
       css={css`
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
 
         ${view === VIEWS.LIST &&
         css`
-          display: flex;
           margin-bottom: 1em;
+          flex-direction: row;
         `}
       `}
       onClick={fields ? handlePackClick : handleBuildTileClick}
     >
       <PackImg
         logoUrl={logoUrl}
-        packName={name}
+        packName={title || name}
         css={css`
           height: 200px;
           background-color: var(--color-white);
           object-fit: scale-down;
           width: ${view === VIEWS.GRID ? 100 : 25}%;
           padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
-          margin: ${view === VIEWS.GRID ? 'auto' : 0};
+          margin: 10px auto;
+
+          .dark-mode & {
+            background-color: rgb(231 231 231 / 0);
+          }
 
           ${view === VIEWS.LIST &&
           css`
             max-height: 150px;
 
+            flex: 0 0 auto;
             @media (max-width: 1080px) {
               display: none;
             }
@@ -102,11 +109,11 @@ const PackTile = ({
       <div
         css={css`
           padding: 1em;
-
+          flex: 1 1 auto;
           ${view === VIEWS.LIST &&
           css`
-            width: 75%;
-
+            width: 100%;
+            flex: 1 1 auto;
             @media (max-width: 1080px) {
               width: 100%;
             }
@@ -114,7 +121,8 @@ const PackTile = ({
         `}
       >
         <h4>
-          {name} {level === LEVELS.NEWRELIC && <Icon name="nr-check-shield" />}
+          {title}{' '}
+          {SHIELD_LEVELS.includes(level) && <Icon name="nr-check-shield" />}
         </h4>
         <p
           css={css`
@@ -122,8 +130,33 @@ const PackTile = ({
             color: var(--secondary-text-color);
           `}
         >
-          {description}
+          {summary || 'No summary provided'}
         </p>
+      </div>
+      <div
+        css={css`
+          padding: 1em;
+          display: flex;
+          justify-content: flex-end;
+          ${view === VIEWS.LIST &&
+          css`
+            flex-direction: column;
+            justify-content: flex-end;
+            @media (max-width: 1080px) {
+              width: 100%;
+            }
+          `}
+        `}
+      >
+        {featured && (
+          <Tag
+            css={css`
+              background-color: var(--color-brand-300);
+            `}
+          >
+            Featured
+          </Tag>
+        )}
       </div>
     </Surface>
   );
@@ -133,13 +166,15 @@ PackTile.propTypes = {
   id: PropTypes.string.isRequired,
   view: PropTypes.oneOf(Object.values(VIEWS)).isRequired,
   name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   fields: PropTypes.shape({
     slug: PropTypes.string.isRequired,
   }).isRequired,
   logoUrl: PropTypes.string,
-  description: PropTypes.string,
+  summary: PropTypes.string,
   level: PropTypes.string,
   className: PropTypes.string,
+  featured: PropTypes.bool,
 };
 
 export default PackTile;

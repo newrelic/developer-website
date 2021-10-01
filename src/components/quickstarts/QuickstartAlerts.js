@@ -12,7 +12,7 @@ const QuickstartAlerts = ({ quickstart }) => (
         margin-bottom: 16px;
       `}
     >
-      {quickstart.name} observability quickstart contains{' '}
+      {quickstart.title} observability quickstart contains{' '}
       {pluralize('alert', quickstart.alerts?.length ?? 0, true)}. These alerts
       detect changes in key performance metrics. Integrate these alerts with
       your favorite tools (like Slack, PagerDuty, etc.) and New Relic will let

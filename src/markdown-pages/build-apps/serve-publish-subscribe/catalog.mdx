@@ -3,7 +3,7 @@ path: '/build-apps/publish-deploy/catalog'
 title: "Update your Nerdpack's catalog information"
 duration: '10 minutes'
 template: 'GuideTemplate'
-description: 'Learn to describe your Nerdpack in the catalog'
+description: 'Learn to describe your Nerdpack in the Instant Observability catalog'
 tileShorthand:
   title: "Update your Nerdpack's catalog information"
   description: 'Update catalog info'
@@ -14,7 +14,7 @@ tags:
 
 <Intro>
 
-Add screenshots, descriptions, and other metadata to your Nerdpack, and upload it all to the New Relic One catalog.
+Add screenshots, descriptions, and other metadata to your Nerdpack, and upload it all to Instant Observability.
 
 </Intro>
 
@@ -39,13 +39,14 @@ You need to [publish](/build-apps/publish-deploy/publish) Nerdpacks that you cre
 
 ## Update your Nerdpack's catalog metadata
 
-After you've published your Nerdpack to the New Relic One catalog, update the Nerdpack's metadata to let users know all about your Nerdlets or visualizations.
+After you've published your Nerdpack to the Instant Observability catalog, update the Nerdpack's metadata to let users know all about your Nerdlets or visualizations.
 
 <Tutorial>
 
 <Project>
 
 ```md fileName=catalog/documentation.md
+
 ```
 
 ```json fileName=catalog/config.json
@@ -82,50 +83,63 @@ Go to [New Relic](https://one.newrelic.com):
 
 <Step>
 
-Navigate to **Apps**:
+Navigate to **Instant Observability**:
 
-![Navigate to the Apps page](../../../images/serve-publish-subscribe/nav-to-apps.png)
+![Navigate to the Instant Observability page](../../../images/serve-publish-subscribe/nav-to-io.png)
 
 </Step>
 
 <Step>
 
-Find your published Nerdpack under **New Relic One catalog**:
+Find your published Nerdpack using the Apps filter or search bar:
 
 ![Published Nerdpack](../../../images/serve-publish-subscribe/published-app.png)
 
-Notice that there is no information on the **Apps** or details page other than the Nerdpack's name and the brief description found in _nr1.json_:
+Notice that there is no information on the **Instant Observability** or details page other than the Nerdpack's name and the brief description found in _nr1.json_:
 
 ![Published Nerdpack](../../../images/serve-publish-subscribe/demo-app-no-details.png)
 
-There are no screenshots, icons, details, or what's new features. To add these, your Nerdpack needs a _catalog_ directory.
+There are no screenshots, icons, details, or what's new features. For these, you need to provide catalog information to your Nerdpack.
 
 </Step>
 
 <Step>
 
-From the root of your Nerdpack, create a _catalog_ directory to house your Nerdpack's screenshots and metadata:
+From the root of your Nerdpack, create _catalog_ directories to house your Nerdpack's screenshots and metadata:
 
 ```sh
 nr1 create --type catalog
-[output] {success}✔{normal}  Component created successfully!
+[output] {success}✔{normal}  created: launchers/launcher/catalog
+[output] {success}✔{normal}  created: nerdlets/home/catalog
+[output]
+[output] {success}✔{normal}  catalog created successfully!
 [output]    {purple}catalog{normal} is available at "./catalog"
 ```
 
-Inside your _catalog_ directory, you'll find specific files and directories for portraying information about your Nerdpack to your users:
+Inside your root _catalog_ directory, you'll find specific files and directories for portraying information about your Nerdpack to your users:
 
 ```sh
 ls catalog
 [output] README.md         additionalInfo.md config.json       documentation.md  {blue}screenshots
 ```
 
-| File | Description |
-|---|---|
-| _README.md_ | A markdown file that instructs you how to use the information and metadata in _catalog_ |
-| _config.json_ | A JSON file that contains the following fields:<br /><br /><ul><li>`tagline`: A brief headline for the application. This cannot exceed 30 characters.</li><li>`repository`: The URL for the Nerdpack's remote repository. This cannot exceed 1000 characters.</li><li>`details`: The purpose of the Nerdpack and how to use it. This cannot exceed 1000 characters. Use newlines for formatting, and don't include any markdown or HTML.</li><li>`support`: An object that contains:</li><ul><li>`issues`: A URL for the repository's issues list. For example, the **Issues** tab if using GitHub.</li><li>`email`: A valid email address for the team supporting the application</li><li>`community`: A URL for a support thread, forum, or website for troubleshooting and usage support</li></ul><li>`whatsNew`: A bulleted list of changes in the current release version. This cannot exceed 500 characters. Use newlines for formatting, and don't include markdown or HTML.</li></ul>Check out our [Pageview Map application's _config.json_](https://github.com/newrelic/nr1-pageview-map/blob/main/catalog/config.json) to see a real-life implementation.
-| _documentation.md_ | A markdown file that tells users how to use the Nerdpack's Nerdlets or visualizations. This shows in the  detail view's **Documentation** tab. |
-| _additionalInfo.md_ | An optional markdown file for any additional information about using your application |
-| _screenshots_ | A directory that contains screenshots of your Nerdlets or visualizations. This can contain no more than 6 images. All screenshots must meet the following criteria:<br /><br /><ul><li>3:2 aspect ratio</li><li>PNG format</li><li>landscape orientation</li><li>1600 to 2400 pixels wide</li></ul> |
+| File                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _README.md_         | A markdown file that instructs you how to use the information and metadata in _catalog_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| _config.json_       | A JSON file that contains the following fields:<br /><br /><ul><li>`tagline`: A brief headline for the application. This cannot exceed 30 characters.</li><li>`repository`: The URL for the Nerdpack's remote repository. This cannot exceed 1000 characters.</li><li>`details`: The purpose of the Nerdpack and how to use it. This cannot exceed 1000 characters. Use newlines for formatting, and don't include any markdown or HTML.</li><li>`support`: An object that contains:</li><ul><li>`issues`: A URL for the repository's issues list. For example, the **Issues** tab if using GitHub.</li><li>`email`: A valid email address for the team supporting the application</li><li>`community`: A URL for a support thread, forum, or website for troubleshooting and usage support</li></ul><li>`whatsNew`: A bulleted list of changes in the current release version. This cannot exceed 500 characters. Use newlines for formatting, and don't include markdown or HTML.</li></ul>Check out our [Pageview Map application's _config.json_](https://github.com/newrelic/nr1-pageview-map/blob/main/catalog/config.json) to see a real-life implementation. |
+| _documentation.md_  | A markdown file that tells users how to use the Nerdpack's Nerdlets or visualizations. This shows in the detail view's **Documentation** tab.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| _additionalInfo.md_ | An optional markdown file for any additional information about using your application                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| _screenshots_       | A directory that contains screenshots showcasing your Nerdpack, such as select images of Nerdlets or visualizations. This can contain no more than 6 images. All screenshots must meet the following criteria:<br /><br /><ul><li>3:2 aspect ratio</li><li>PNG format</li><li>landscape orientation</li><li>1600 to 2400 pixels wide</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+
+This command also generates a `catalog` directory for each launcher, Nerdlet, and visualization in your Nerdpack. Inside you'll find a directory that allows you to add screenshots for each Nerdpack item.
+
+```sh
+ls launchers/launcher/catalog
+[output] {blue}screenshots
+[output]
+ls nerdlets/home/catalog
+[output] {blue}screenshots
+```
 
 </Step>
 
@@ -156,18 +170,22 @@ Update your _config.json_ file:
 
 <Step>
 
-Include screenshots in your _screenshots_ directory.
+Include screenshots in your root _screenshots_ directory or any Nerdpack item _screenshots_ directory.
 
 </Step>
 
 <Step>
 
-Submit the information to the New Relic One catalog:
+Submit the information to the Instant Observability catalog:
 
 ```sh
 nr1 catalog:submit
-[output] Uploading screenshots...
-[output]  {success}✔{normal}  Screenshots uploaded
+[output] Uploading screenshots from demo-app...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app
+[output] Uploading screenshots from demo-app/launchers/launcher...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app/launchers/launcher
+[output] Uploading screenshots from demo-app/nerdlets/home...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app/nerdlets/home
 [output]  {success}✔{normal}  Updated metadata for DemoApp 1.0.0
 ```
 
@@ -175,7 +193,7 @@ nr1 catalog:submit
 
 <Step>
 
-Go to the catalog to see your changes:
+Go to Instant Observability to see your changes:
 
 ![DemoApp with a tagline](../../../images/serve-publish-subscribe/demo-app-tagline.png)
 
@@ -216,26 +234,22 @@ Update your _package.json_ version:
 
 ```json fileName=package.json lineHighlight=4
 {
-    "private": true,
-    "name": "demo-app",
-    "version": "1.0.1",
-    "scripts": {
-        "start": "nr1 nerdpack:serve",
-        "test": "exit 0"
-    },
-    "nr1": {
-        "uuid": "f2dbc999-e9a3-49b9-933d-5a704c6750bd"
-    },
-    "dependencies": {
-        "prop-types": "^15.6.2",
-        "react": "^16.6.3",
-        "react-dom": "^16.6.3"
-    },
-    "browserslist": [
-        "last 2 versions",
-        "not ie < 11",
-        "not dead"
-    ]
+  "private": true,
+  "name": "demo-app",
+  "version": "1.0.1",
+  "scripts": {
+    "start": "nr1 nerdpack:serve",
+    "test": "exit 0"
+  },
+  "nr1": {
+    "uuid": "f2dbc999-e9a3-49b9-933d-5a704c6750bd"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "browserslist": ["last 2 versions", "not ie < 11", "not dead"]
 }
 ```
 
@@ -276,8 +290,12 @@ Submit this new metadata to the catalog:
 
 ```sh
 nr1 catalog:submit
-[output] Uploading screenshots...
-[output]  {success}✔{normal}  Screenshots uploaded
+[output] Uploading screenshots from demo-app...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app
+[output] Uploading screenshots from demo-app/launchers/launcher...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app/launchers/launcher
+[output] Uploading screenshots from demo-app/nerdlets/home...
+[output]  {success}✔{normal}  Screenshots uploaded from: demo-app/nerdlets/home
 [output]  {success}✔{normal}  Updated metadata for DemoApp 1.0.1
 ```
 

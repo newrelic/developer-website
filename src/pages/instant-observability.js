@@ -1,32 +1,37 @@
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import useMobileDetect from 'use-mobile-detect-hook';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
 import PackTile from '../components/PackTile';
-import MobileQSFilter from '../components/MobileQSFilter';
+import IOBanner from '../components/IOBanner';
+import IOLogo from '../components/IOLogo';
+import Select from '../components/Select';
+import BetaBanner from '../components/quickstarts/BetaBanner';
 import {
   SearchInput,
   useTessen,
-  useInstrumentedData,
-  useQueryParams,
   ExternalLink,
   Button,
   Icon,
+  Link,
 } from '@newrelic/gatsby-theme-newrelic';
-import { useDebounce } from 'react-use';
 import { navigate } from '@reach/router';
+
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
+import { useDebounce } from 'react-use';
+import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 
-const { QUICKSTARTS_REPO } = require('../data/constants');
+import { QUICKSTARTS_REPO } from '../data/constants';
+import CATEGORIES from '../data/instant-observability-categories';
 
-const packContentsFilterGroups = [
-  'All',
-  'Dashboards',
-  'Alerts',
-  'Data sources',
+const FILTERS = [
+  { name: 'All', type: '', icon: 'nr-all-entities' },
+  { name: 'Dashboards', type: 'dashboards', icon: 'nr-dashboard' },
+  { name: 'Alerts', type: 'alerts', icon: 'nr-alert' },
+  { name: 'Data sources', type: 'documentation', icon: 'nr-document' },
 ];
 
 const VIEWS = {
@@ -34,124 +39,156 @@ const VIEWS = {
   LIST: 'List view',
 };
 
+/**
+ * Determines if one string is a substring of the other, case insensitive
+ * @param {String} substring the substring to test against
+ * @returns {(Function) => Boolean} Callback function that determines if the argument has the substring
+ */
+const stringIncludes = (substring) => (fullstring) =>
+  fullstring.toLowerCase().includes(substring.toLowerCase());
+
+/**
+ * Filters a quickstart based on a provided search term.
+ * @param {String} search Search term.
+ * @returns {(Function) => Boolean} Callback function to be used by filter.
+ */
+const filterBySearch = (search) => ({
+  title,
+  summary,
+  description,
+  keywords,
+}) => {
+  if (!search) {
+    return true;
+  }
+
+  const searchIncludes = stringIncludes(search);
+  return (
+    searchIncludes(title) ||
+    searchIncludes(summary) ||
+    searchIncludes(description) ||
+    keywords.some(searchIncludes)
+  );
+};
+
+/**
+ * Filters a quickstart based on a content type.
+ * @param {String} type The content type (e.g. 'alerts').
+ * @returns {(Function) => Boolean} Callback function to be used by filter.
+ */
+const filterByContentType = (type) => (quickstart) => {
+  return !type || (quickstart[type] && quickstart[type].length > 0);
+};
+
+/**
+ * Filters a quickstart based on a category.
+ * @param {String} category The category type (e.g. 'featured').
+ * @returns {(Function) => Boolean} Callback function to be used by filter.
+ */
+const filterByCategory = (category) => {
+  const { associatedKeywords = [] } =
+    CATEGORIES.find(({ value }) => value === category) || {};
+
+  return (quickstart) =>
+    !category ||
+    (quickstart.keywords &&
+      quickstart.keywords.find((k) => associatedKeywords.includes(k)));
+};
+
 const QuickstartsPage = ({ data, location }) => {
-  const tessen = useTessen();
-  const detectMobile = useMobileDetect();
-  const isMobile = detectMobile.isMobile();
-
-  const {
-    allQuickstarts: { nodes: quickstarts },
-  } = data;
-
-  const [filteredPacks, setFilteredPacks] = useState(quickstarts);
-
-  const { queryParams } = useQueryParams();
-
-  const [formState, setFormState] = useState({
-    search: queryParams.get('search'),
-    packContains: queryParams.get('packContains'),
-  });
-
   const [view, setView] = useState(VIEWS.GRID);
+  const isMobile = useMobileDetect().isMobile();
+  const tessen = useTessen();
+
+  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('');
+  const [category, setCategory] = useState('');
 
   useEffect(() => {
-    setFormState({
-      search: queryParams.get('search'),
-      packContains: queryParams.get('packContains'),
-    });
-  }, [queryParams]);
+    const params = new URLSearchParams(location.search);
+    const searchParam = params.get('search');
+    const filterParam = params.get('filter');
+    const categoryParam = params.get('category');
 
-  const navigateToParams = (params) => {
-    Object.entries(params).forEach(([key, value]) => {
-      value ? queryParams.set(key, value) : queryParams.delete(key);
-    });
+    setSearch(searchParam);
+    setFilter(filterParam || '');
+    setCategory(categoryParam || '');
 
-    navigate(`?${queryParams}`);
+    if (searchParam || filterParam || categoryParam) {
+      tessen.track('instantObservability', 'QuickstartCatalogSearch', {
+        filter: filterParam,
+        search: searchParam,
+        quickstartCategory: categoryParam,
+      });
+    }
+  }, [location.search, tessen]);
+
+  const handleFilter = (value) => {
+    setFilter(value);
+    const params = new URLSearchParams(location.search);
+    params.set('filter', value);
+
+    navigate(`?${params.toString()}`);
   };
 
-  useEffect(() => {
-    const handler = (e) => {
-      if (e.keyCode === 13) {
-        navigateToParams(formState);
-      }
-    };
-    document.addEventListener('keydown', handler);
-    return () => {
-      document.removeEventListener('keydown', handler);
-    };
-  });
+  const handleSearch = (value) => {
+    if (value !== null && value !== undefined) {
+      const params = new URLSearchParams(location.search);
+      params.set('search', value);
 
-  const searchInputRef = useRef();
+      navigate(`?${params.toString()}`);
+    }
+  };
 
-  useInstrumentedData(
-    { actionName: 'packViewToggle', packViewState: view },
-    { enabled: Boolean(view) }
-  );
+  const handleCategory = (value) => {
+    if (value !== null && value !== undefined) {
+      const params = new URLSearchParams(location.search);
+      params.set('category', value);
 
-  useInstrumentedData(
-    { actionName: 'packFilter', packFilterState: formState.packContains },
-    { enabled: Boolean(formState.packContains) }
-  );
+      navigate(`?${params.toString()}`);
+    }
+  };
 
   useDebounce(
     () => {
-      if (formState.search && formState.search !== '') {
-        tessen.track('observabilityPack', `packSearch`, {
-          packSearchTerm: formState.search,
-        });
-        if (typeof window !== 'undefined' && window.newrelic) {
-          window.newrelic.addPageAction('packSearch', {
-            packSearchTerm: formState.search,
-          });
-        }
-      }
+      handleSearch(search);
     },
-    1000,
-    [formState.search]
+    400,
+    [search]
   );
 
-  useEffect(() => {
-    let tempFilteredPacks = queryParams.has('search')
-      ? quickstarts.filter(
-          (pack) =>
-            pack.name.toLowerCase().includes(queryParams.get('search')) ||
-            pack.description.toLowerCase().includes(queryParams.get('search'))
-        )
-      : quickstarts;
+  const quickstarts = data.allQuickstarts.nodes;
 
-    if (
-      queryParams.has('packContains') &&
-      queryParams.get('packContains') !== 'All'
-    ) {
-      tempFilteredPacks = tempFilteredPacks.filter(
-        (pack) =>
-          pack[queryParams.get('packContains').toLowerCase()]?.length > 0
-      );
-    }
+  const alphaSort = quickstarts.sort((a, b) => a.title.localeCompare(b.title));
+  const sortedQuickstarts = sortFeaturedQuickstarts(alphaSort);
 
-    setFilteredPacks(tempFilteredPacks);
-  }, [queryParams, quickstarts]);
+  const filteredQuickstarts = sortedQuickstarts
+    .filter(filterBySearch(search))
+    .filter(filterByContentType(filter))
+    .filter(filterByCategory(category));
 
-  useEffect(() => {
-    setView(view);
-  }, [view]);
+  const categoriesWithCount = CATEGORIES.map((cat) => ({
+    ...cat,
+    count: quickstarts
+      .filter(filterBySearch(search))
+      .filter(filterByCategory(cat.value)).length,
+  }));
 
-  const packContentsFilterValues = packContentsFilterGroups.map(
-    (filterName) => {
-      if (filterName === 'All') {
-        const filterCount = filteredPacks.length;
-        return { filterName, filterCount };
-      }
-      const filterCount = filteredPacks.filter(
-        (pack) => pack[filterName.toLowerCase()]
-      ).length;
-      return { filterName, filterCount };
-    }
-  );
+  const filtersWithCount = FILTERS.map((filter) => ({
+    ...filter,
+    count: quickstarts
+      .filter(filterBySearch(search))
+      .filter(filterByContentType(filter.type))
+      .filter(filterByCategory(category)).length,
+  }));
 
   return (
     <>
-      <DevSiteSeo title="Instant Observability" location={location} />
+      <DevSiteSeo
+        title="Instant Observability"
+        location={location}
+        type="quickstarts"
+      />
       <div
         css={css`
           --sidebar-width: 300px;
@@ -177,7 +214,9 @@ const QuickstartsPage = ({ data, location }) => {
           data-swiftype-index={false}
           css={css`
             grid-area: sidebar;
-            border-right: 1px solid var(--divider-color);
+            border-right: ${isMobile
+              ? 'none'
+              : '1px solid var(--divider-color)'};
             height: calc(100vh - var(--global-header-height));
             position: sticky;
             top: var(--global-header-height);
@@ -185,107 +224,143 @@ const QuickstartsPage = ({ data, location }) => {
             @media screen and (max-width: 760px) {
               display: block;
               position: relative;
+              overflow: hidden;
               width: 100%;
               height: 100%;
             }
           `}
         >
+          {isMobile && <IOBanner isMobile />}
+          <div>{isMobile && <BetaBanner />}</div>
           <div
             css={css`
-              position: absolute;
-              top: 0;
-              bottom: 0;
-              left: 0;
-              right: 0;
               padding: var(--site-content-padding);
+              height: 100%;
               overflow: auto;
               @media screen and (max-width: 760px) {
                 position: relative;
               }
             `}
           >
+            <Link
+              css={css`
+                display: block;
+                margin-bottom: 1rem;
+              `}
+              to="/instant-observability"
+            >
+              <IOLogo
+                css={css`
+                  width: 100%;
+                `}
+              />
+            </Link>
             <p>
               A place to find quickstarts of resources like dashboards,
               instrumentation, and alerts to help you monitor your environment.
             </p>
             <aside
+              data-swiftype-index={false}
               css={css`
                 border-bottom: 1px solid var(--divider-color);
                 margin-bottom: 1.5rem;
               `}
             />
-            <FormControl>
-              <Label htmlFor="packContentsFilter">FILTER BY</Label>
-              {isMobile ? (
-                <MobileQSFilter
-                  setFormState={setFormState}
-                  packContains={formState.packContains}
-                  packContentsFilterValues={packContentsFilterValues}
-                />
-              ) : (
-                packContentsFilterValues.map(
-                  ({ filterName, filterCount }, i) => (
+            <div
+              css={css`
+                margin-bottom: 1rem;
+              `}
+            >
+              <FormControl>
+                <Label htmlFor="quickstartCategory">CATEGORIES</Label>
+                {isMobile ? (
+                  <Select
+                    id="quickstartCategory"
+                    value={category}
+                    onChange={(e) => {
+                      const type = e.target.value;
+                      handleCategory(type);
+                    }}
+                  >
+                    {categoriesWithCount.map(
+                      ({ displayName, value, count }) => (
+                        <option key={value} value={value}>
+                          {`${displayName} (${count})`}
+                        </option>
+                      )
+                    )}
+                  </Select>
+                ) : (
+                  categoriesWithCount.map(({ displayName, value, count }) => (
                     <Button
+                      type="button"
+                      key={value}
+                      onClick={() => handleCategory(value)}
                       css={css`
-                        padding: 1rem 0;
+                        padding: 1rem 0.5rem;
                         width: 100%;
                         display: flex;
                         justify-content: flex-start;
                         color: var(--primary-text-color);
                         font-weight: 100;
-                        background: ${formState.packContains === filterName
+                        background: ${category === value
                           ? 'var(--divider-color)'
                           : 'none'};
                       `}
-                      type="button"
-                      key={i}
-                      onClick={() => setFormState({ packContains: filterName })}
                     >
-                      {filterName === 'Dashboards' && (
-                        <Icon
-                          name="nr-dashboard"
-                          css={css`
-                            fill: currentColor;
-                            stroke-width: 0.25;
-                            margin: 0 0.5rem;
-                          `}
-                        />
-                      )}
-                      {filterName === 'Alerts' && (
-                        <Icon
-                          name="nr-alert"
-                          css={css`
-                            fill: currentColor;
-                            stroke-width: 0.25;
-                            margin: 0 0.5rem;
-                          `}
-                        />
-                      )}
-                      {filterName === 'Data sources' && (
-                        <Icon
-                          name="nr-document"
-                          css={css`
-                            fill: currentColor;
-                            stroke-width: 0.25;
-                            margin: 0 0.5rem;
-                          `}
-                        />
-                      )}
-                      {!filterName ||
-                        (filterName === 'All' && (
-                          <Icon
-                            name="nr-all-entities"
-                            css={css`
-                              fill: currentColor;
-                              stroke-width: 1;
-                              margin: 0 0.5rem;
-                            `}
-                          />
-                        ))}
-                      {`${filterName} (${filterCount})`}
+                      {`${displayName} (${count})`}
                     </Button>
-                  )
-                )
+                  ))
+                )}
+              </FormControl>
+            </div>
+            <FormControl>
+              <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
+              {isMobile ? (
+                <Select
+                  id="quickstartFilterByType"
+                  value={filter}
+                  onChange={(e) => {
+                    const type = e.target.value;
+                    handleFilter(type);
+                  }}
+                >
+                  {filtersWithCount.map(({ name, count, type }) => (
+                    <option key={type} value={type}>
+                      {`${name} (${count})`}
+                    </option>
+                  ))}
+                </Select>
+              ) : (
+                filtersWithCount.map(({ name, type, icon, count }) => (
+                  <Button
+                    type="button"
+                    key={name}
+                    onClick={() => handleFilter(type)}
+                    css={css`
+                      padding: 1rem 0;
+                      width: 100%;
+                      display: flex;
+                      justify-content: flex-start;
+                      color: var(--primary-text-color);
+                      font-weight: 100;
+                      background: ${filter === type
+                        ? 'var(--divider-color)'
+                        : 'none'};
+                    `}
+                  >
+                    <Icon
+                      name={icon}
+                      css={css`
+                        fill: currentColor;
+                        stroke-width: ${name === 'All' ? 1 : 0.25};
+
+                        margin: 0 0.5rem;
+                      `}
+                    />
+                    {`${name} (${count})`}
+                  </Button>
+                ))
               )}
             </FormControl>
           </div>
@@ -296,92 +371,79 @@ const QuickstartsPage = ({ data, location }) => {
             padding: var(--site-content-padding);
           `}
         >
+          {!isMobile && <IOBanner />}
+          <div>{!isMobile && <BetaBanner />}</div>
           <div
             css={css`
-              background-color: var(--color-neutrals-100);
-              margin: 15px 0;
+              background-color: var(--secondary-background-color);
+              border-radius: 4px;
               padding: 1rem;
               display: flex;
               justify-content: space-between;
               align-items: center;
-              flex-wrap: wrap;
-              .dark-mode & {
-                background-color: var(--color-dark-100);
+
+              input {
+                font-size: 1.15em;
+                padding: 0.5rem;
+                padding-left: 3.75rem;
+                border-radius: 4px;
+
+                &::placeholder {
+                  color: var(--border-color);
+                }
               }
+
+              .dark-mode & {
+                background-color: var(--tertiary-background-color);
+              }
+
               @media screen and (max-width: 1180px) {
                 flex-direction: column;
                 align-items: normal;
+
                 > * {
                   margin: 0.5rem 0;
                 }
               }
             `}
           >
+            <SearchInput
+              size={SearchInput.SIZE.LARGE}
+              value={search || ''}
+              placeholder="Search for any quickstart (e.g. Node, AWS, LAMP, etc.)"
+              onClear={() => setSearch('')}
+              onChange={(e) => setSearch(e.target.value)}
+            />
             <div
               css={css`
-                display: flex;
-                align-items: center;
-                width: 100%;
+                min-width: 155px;
+                margin-left: 20px;
 
-                > * {
-                  margin: 0 0.1rem;
+                @media screen and (max-width: 1180px) {
+                  margin-left: 0px;
                 }
               `}
             >
-              <div
-                css={css`
-                  width: 100%;
-                  margin-left: 20px;
-                  input {
-                    background: inherit;
-                  }
-                `}
-              >
-                <SearchInput
-                  ref={searchInputRef}
-                  size={SearchInput.SIZE.LARGE}
-                  value={formState.search || ''}
-                  placeholder="Search pack names / descriptions. Enter to search"
-                  onClear={() => {
-                    setFormState((state) => ({
-                      ...state,
-                      search: null,
-                    }));
-                  }}
-                  onChange={(e) => {
-                    setFormState((state) => ({
-                      ...state,
-                      search: e.target.value.toLowerCase(),
-                    }));
-                  }}
-                />
-              </div>
-              <div
-                css={css`
-                  display: inline-block;
-                  min-width: 155px;
-                  margin-left: 20px;
-                `}
-              >
-                <SegmentedControl
-                  items={Object.values(VIEWS)}
-                  onChange={(_e, view) => {
-                    setView(view);
+              <SegmentedControl
+                items={Object.values(VIEWS)}
+                onChange={(_e, view) => {
+                  setView(view);
 
-                    tessen.track('observabilityPack', `packViewToggle`, {
-                      packViewState: view,
-                    });
-                  }}
-                />
-              </div>
+                  tessen.track('instantObservability', `QuickstartViewToggle`, {
+                    quickstartViewState: view,
+                  });
+                }}
+              />
             </div>
           </div>
           <div
             css={css`
-              margin: 2em 0;
+              padding: 1.25rem 0;
+              font-size: 0.9rem;
+              color: var(--secondary-text-color);
             `}
           >
-            <span>Showing {filteredPacks.length} results</span>
+            <span>Showing {filteredQuickstarts.length} results</span>
           </div>
           <div
             css={css`
@@ -419,12 +481,17 @@ const QuickstartsPage = ({ data, location }) => {
                 }
                 view={view}
                 logoUrl={BUILD_YOUR_OWN}
-                name="Build your own quickstart"
-                description="Can't find a pack with what you need? Check out our README and build your own."
+                title="Build your own quickstart"
+                summary="Can't find a quickstart with what you need? Check out our README and build your own."
               />
             </ExternalLink>
-            {filteredPacks.map((pack) => (
-              <PackTile key={pack.id} view={view} {...pack} />
+            {filteredQuickstarts.map((pack) => (
+              <PackTile
+                key={pack.id}
+                view={view}
+                featured={pack.keywords?.includes('featured')}
+                {...pack}
+              />
             ))}
           </div>
         </div>
@@ -446,11 +513,13 @@ export const pageQuery = graphql`
           slug
         }
         id
+        title
         name
         websiteUrl
         logoUrl
         packUrl
         level
+        keywords
         dashboards {
           description
           name
@@ -471,6 +540,11 @@ export const pageQuery = graphql`
         authors
         description
         iconUrl
+        summary
+        installPlans {
+          id
+          name
+        }
       }
     }
   }
