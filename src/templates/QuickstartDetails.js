@@ -87,6 +87,7 @@ const QuickstartDetails = ({ data, location }) => {
         title={quickstart.title}
         type="quickstarts"
         location={location}
+        tags={quickstart.keywords}
         meta={quickStartMeta}
       />
       <Breadcrumbs segments={breadcrumbs} />
@@ -339,6 +340,7 @@ export const pageQuery = graphql`
       name
       title
       level
+      keywords
       id
       description
       summary
