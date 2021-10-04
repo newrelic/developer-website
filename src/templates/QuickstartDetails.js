@@ -200,7 +200,7 @@ const QuickstartDetails = ({ data, location }) => {
                     margin-right: 7px;
                   `}
                 />
-                View Repo
+                View repo
               </Button>
             </div>
           </PageLayout.Header>

@@ -51,7 +51,7 @@ const EmptyTab = ({
             margin-right: 7px;
           `}
         />
-        View Repo
+        View repo
       </Button>
     </div>
   </div>
