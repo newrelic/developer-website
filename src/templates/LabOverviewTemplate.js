@@ -27,22 +27,33 @@ const LabOverviewTemplate = ({ data, location }) => {
               <h2 className={styles.subtitle}>Procedures</h2>
               <GuideListing className={styles.guideListing}>
                 <GuideListing.List className={styles.labGuideList}>
-                  {guides?.nodes.sort((a, b) => a.frontmatter.procIdx > b.frontmatter.procIdx ? 1 : (a.frontmatter.procIdx < b.frontmatter.procIdx ? -1 : 0)).map(({ frontmatter }, index) => (
-                    <GuideTile
-                      className={styles.labGuideCard}
-                      to={frontmatter.path}
-                      key={index}
-                      duration={frontmatter.duration}
-                      title={
-                        frontmatter.procIdx + ". " + (frontmatter.tileShorthand?.title || frontmatter.title)
-                      }
-                      description={
-                        frontmatter.tileShorthand?.description ||
-                        frontmatter.description
-                      }
-                      path={frontmatter.path}
-                    />
-                  ))}
+                  {guides?.nodes
+                    .sort((a, b) =>
+                      a.frontmatter.procIdx > b.frontmatter.procIdx
+                        ? 1
+                        : a.frontmatter.procIdx < b.frontmatter.procIdx
+                        ? -1
+                        : 0
+                    )
+                    .map(({ frontmatter }, index) => (
+                      <GuideTile
+                        className={styles.labGuideCard}
+                        to={frontmatter.path}
+                        key={index}
+                        duration={frontmatter.duration}
+                        title={
+                          frontmatter.procIdx +
+                          '. ' +
+                          (frontmatter.tileShorthand?.title ||
+                            frontmatter.title)
+                        }
+                        description={
+                          frontmatter.tileShorthand?.description ||
+                          frontmatter.description
+                        }
+                        path={frontmatter.path}
+                      />
+                    ))}
                 </GuideListing.List>
               </GuideListing>
             </>
