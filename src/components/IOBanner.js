@@ -1,10 +1,26 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
-import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Button,
+  Link,
+  useTessen,
+  useInstrumentedHandler,
+} from '@newrelic/gatsby-theme-newrelic';
 import ioBanner from '../images/ioBanner.png';
 
 const IOBanner = ({ isMobile }) => {
+  const tessen = useTessen();
+
+  const handleBannerButtonClick = useInstrumentedHandler(
+    () => {
+      tessen.track('instantObservability', 'BannerButtonClick', {});
+    },
+    {
+      actionName: 'BannerButtonClick',
+    }
+  );
+
   return (
     <section
       css={css`
@@ -71,6 +87,7 @@ const IOBanner = ({ isMobile }) => {
           `}
           to="https://docs.newrelic.com/docs/full-stack-observability/observe-everything/get-started/new-relic-quickstarts-overview/"
           instrumentation={{ component: 'IOBanner' }}
+          onClick={handleBannerButtonClick}
         >
           Learn more
         </Button>
