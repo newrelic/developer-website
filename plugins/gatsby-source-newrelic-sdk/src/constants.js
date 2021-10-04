@@ -7,6 +7,7 @@ module.exports.DOCUMENTED_APIS = [
   'nerdlet',
   'ngql',
 ];
+
 module.exports.DOCUMENTED_COMPONENTS = [
   'AccountPicker',
   'AccountsQuery',
@@ -26,8 +27,12 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'CardBody',
   'CardHeader',
   'CardSection',
+  'CardSectionBody',
+  'CardSectionHeader',
   'ChartGroup',
   'Checkbox',
+  'CheckboxGroup',
+  'CollapsibleLayoutItem',
   'Dropdown',
   'DropdownItem',
   'DropdownSection',
@@ -57,6 +62,9 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'LineChart',
   'Link',
   'List',
+  'Listbox',
+  'ListboxItem',
+  'ListboxSection',
   'ListItem',
   'MetricTableRowCell',
   'Modal',
@@ -70,6 +78,7 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'PlatformStateContext',
   'Popover',
   'PopoverBody',
+  'PopoverFooter',
   'PopoverTrigger',
   'QueryGroup',
   'Radio',

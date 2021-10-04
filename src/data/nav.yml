@@ -236,6 +236,8 @@
               url: '/components/button'
             - title: Checkbox
               url: '/components/checkbox'
+            - title: CheckboxGroup
+              url: '/components/checkbox-group'
             - title: Dropdown
               url: '/components/dropdown'
             - title: DropdownItem
@@ -312,6 +314,8 @@
               url: '/components/popover'
             - title: PopoverBody
               url: '/components/popover-body'
+            - title: PopoverFooter
+              url: '/components/popover-footer'
             - title: PopoverTrigger
               url: '/components/popover-trigger'
             - title: Tooltip
@@ -328,6 +332,12 @@
               url: '/components/card-header'
             - title: CardSection
               url: '/components/card-section'
+            - title: CardSectionBody
+              url: '/components/card-section-body'
+            - title: CardSectionHeader
+              url: '/components/card-section-header'
+            - title: CollapsibleLayoutItem
+              url: '/components/collapsible-layout-item'
             - title: Grid
               url: '/components/grid'
             - title: GridItem
@@ -338,6 +348,12 @@
               url: '/components/layout-item'
             - title: List
               url: '/components/list'
+            - title: Listbox
+              url: '/components/listbox'
+            - title: ListboxItem
+              url: '/components/listbox-item'
+            - title: ListboxSection
+              url: '/components/listbox-section'
             - title: ListItem
               url: '/components/list-item'
             - title: Spacing
