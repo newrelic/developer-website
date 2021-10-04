@@ -15,6 +15,18 @@ const LabOverviewTemplate = ({ data, location }) => {
   const { frontmatter, body } = mdx;
   const { title, description } = frontmatter;
 
+  function sortProcedures(a, b) {
+    if (a.frontmatter.procIdx > b.frontmatter.procIdx) {
+      return 1;
+    }
+
+    if (a.frontmatter.procIdx < b.frontmatter.procIdx) {
+      return -1;
+    }
+
+    return 0;
+  }
+
   return (
     <>
       <DevSiteSeo title={title} description={description} location={location} />
@@ -28,25 +40,16 @@ const LabOverviewTemplate = ({ data, location }) => {
               <GuideListing className={styles.guideListing}>
                 <GuideListing.List className={styles.labGuideList}>
                   {guides?.nodes
-                    .sort((a, b) =>
-                      a.frontmatter.procIdx > b.frontmatter.procIdx
-                        ? 1
-                        : a.frontmatter.procIdx < b.frontmatter.procIdx
-                        ? -1
-                        : 0
-                    )
+                    .sort(sortProcedures)
                     .map(({ frontmatter }, index) => (
                       <GuideTile
                         className={styles.labGuideCard}
                         to={frontmatter.path}
                         key={index}
                         duration={frontmatter.duration}
-                        title={
-                          frontmatter.procIdx +
-                          '. ' +
-                          (frontmatter.tileShorthand?.title ||
-                            frontmatter.title)
-                        }
+                        title={`${frontmatter.procIdx}. ${
+                          frontmatter.tileShorthand?.title || frontmatter.title
+                        }`}
                         description={
                           frontmatter.tileShorthand?.description ||
                           frontmatter.description
