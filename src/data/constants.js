@@ -1,4 +1,4 @@
-import { useTessen } from '@newrelic/gatsby-theme-newrelic';
+// import { useTessen } from '@newrelic/gatsby-theme-newrelic';
 
 export const githubBaseUrl = 'https://github.com/newrelic/developer-website';
 
@@ -39,7 +39,7 @@ export const QUICKSTART_SUPPORT_LEVELS = {
 //   };
 
 //   const handlePackClick = () => {
-//     tessen.track('instantObservability', 'SupportCenterClick');
+//     tessen.track('instantObservability', 'Click');
 //   };
 
 export const QUICKSTART_SUPPORT_CONTENT = {
