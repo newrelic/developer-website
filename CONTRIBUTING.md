@@ -408,11 +408,20 @@ with the new release number to update the bundle release version.
 
 ### Step 2: Add any new APIs or components to our constants list
 
+#### How to identify new components, APIs
+
+At the moment, we don't have a rigorous or automatic process for identifying new components and APIs that we need to document. The goto manual process is to just eyeball the difference between the components we have on the site (or in constants.js), and what's displayed on the one-core site.
+
+It is possible to see a list of components from the SDK itself. If you run the site with the updated SDK version, you can enter `Object.entries(window.__NR1_SDK__.default).map(array => array[0])` into the dev console in the browser for the running site. That will show you an array containing component and API names. You can use this to try and compare differences, but some manual investigation is still necessary, since the SDK also contains pre-release and internal-only components.
+
+If a component looks like it should be internal only, feel free to ask #help-one-core to confirm if it should have public documentation, or if it is internal only.
+
+#### Adding new components
+
 - We rely on the 1st party documentation bundle to power the developer docs. While the 1st party bundle provides many of the same components/APIs, there are a few minor differences between the 1st and 3rd party SDKs. To account for this, we white list the specific components we document on the site.
-- If there are any new components or APIs, [update the constants
-list](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/constants.js)
-with the new components.
-- Pages will be then automatically generated for each of these.
+- If there are any new components or APIs, update the [constants
+list](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/constants.js) with the new components.
+- Pages will be then automatically generated for each of the new components.
 
 > Once we have a 3rd party bundle automatically built for us, we should no longer need this step as that will contain only 3rd party SDK documentation. That is an open request to the NR One Core Team.
 
