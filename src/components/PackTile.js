@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
 
 import { css } from '@emotion/react';
-import {
-  Surface,
-  Icon,
-  useTessen,
-  useInstrumentedHandler,
-  Tag,
-} from '@newrelic/gatsby-theme-newrelic';
+import { Surface, Icon, useTessen, Tag } from '@newrelic/gatsby-theme-newrelic';
 import { SHIELD_LEVELS } from '../data/constants';
 import PackImg from './PackImg';
 
@@ -32,34 +26,20 @@ const PackTile = ({
 }) => {
   const tessen = useTessen();
 
-  const handlePackClick = useInstrumentedHandler(
-    () => {
-      tessen.track('instantObservability', 'QuickstartClick', {
-        publicCatalogView: view,
-        quickstartName: name,
-      });
-      navigate(fields.slug);
-    },
-    {
-      actionName: 'QuickstartClick',
+  const handlePackClick = () => {
+    tessen.track('instantObservability', 'QuickstartClick', {
       publicCatalogView: view,
       quickstartName: name,
-    }
-  );
+    });
+    navigate(fields.slug);
+  };
 
-  const handleBuildTileClick = useInstrumentedHandler(
-    () => {
-      tessen.track('instantObservability', 'BuildYourOwnQuickstartClick', {
-        publicCatalogView: view,
-        quickstartName: name,
-      });
-    },
-    {
-      actionName: 'BuildYourOwnQuickstartClick',
+  const handleBuildTileClick = () => {
+    tessen.track('instantObservability', 'BuildYourOwnQuickstartClick', {
       publicCatalogView: view,
       quickstartName: name,
-    }
-  );
+    });
+  };
 
   return (
     <Surface

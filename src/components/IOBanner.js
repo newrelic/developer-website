@@ -1,25 +1,15 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  Link,
-  useTessen,
-  useInstrumentedHandler,
-} from '@newrelic/gatsby-theme-newrelic';
+import { Button, Link, useTessen } from '@newrelic/gatsby-theme-newrelic';
 import ioBanner from '../images/ioBanner.png';
 
 const IOBanner = ({ isMobile }) => {
   const tessen = useTessen();
 
-  const handleBannerButtonClick = useInstrumentedHandler(
-    () => {
-      tessen.track('instantObservability', 'BannerButtonClick', {});
-    },
-    {
-      actionName: 'BannerButtonClick',
-    }
-  );
+  const handleBannerButtonClick = () => {
+    tessen.track('instantObservability', 'BannerButtonClick');
+  };
 
   return (
     <section
