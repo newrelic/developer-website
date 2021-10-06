@@ -1,5 +1,3 @@
-// import { useTessen } from '@newrelic/gatsby-theme-newrelic';
-
 export const githubBaseUrl = 'https://github.com/newrelic/developer-website';
 
 export const SPLITS = {
@@ -30,17 +28,6 @@ export const QUICKSTART_SUPPORT_LEVELS = {
   VERIFIED: 'VERIFIED',
   COMMUNITY: 'COMMUNITY',
 };
-
-// const SetTessen = () => {
-//   const tessen = useTessen();
-
-//   const handlePackClick = () => {
-//     tessen.track('instantObservability', 'ExplorersHubClick');
-//   };
-
-//   const handlePackClick = () => {
-//     tessen.track('instantObservability', 'Click');
-//   };
 
 export const QUICKSTART_SUPPORT_CONTENT = {
   [QUICKSTART_SUPPORT_LEVELS.NEWRELIC]: {
