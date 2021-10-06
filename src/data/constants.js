@@ -12,6 +12,7 @@ export const SDK_BASE_URL =
   'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
 
 export const NR1_LOGIN_URL = 'https://login.newrelic.com/login';
+
 export const NR1_SIGNUP_URL = 'https://newrelic.com/signup';
 
 export const NR1_PACK_DETAILS_NERDLET =
