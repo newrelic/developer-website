@@ -47,7 +47,7 @@ const Logo = ({ className, width }) => {
     if (window.location.pathname.includes('instant-observability')) {
       setLogo(instantObservabilityLogo);
     }
-  });
+  }, []);
 
   return logo;
 };
