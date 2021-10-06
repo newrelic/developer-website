@@ -1,12 +1,7 @@
 module.exports.BASE_URL =
   'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
 
-module.exports.DOCUMENTED_APIS = [
-  'logger',
-  'navigation',
-  'nerdlet',
-  'ngql',
-];
+module.exports.DOCUMENTED_APIS = ['logger', 'navigation', 'nerdlet', 'ngql'];
 
 module.exports.DOCUMENTED_COMPONENTS = [
   'AccountPicker',
@@ -16,6 +11,7 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'AreaChart',
   'AutoSizer',
   'Badge',
+  'Banner',
   'BarChart',
   'BillboardChart',
   'BlockText',
@@ -84,6 +80,7 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'Radio',
   'RadioGroup',
   'ScatterChart',
+  'SectionMessage',
   'SegmentedControl',
   'SegmentedControlItem',
   'Select',

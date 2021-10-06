@@ -155,10 +155,10 @@
   pages:
     - title: Build a quickstart
       url: '/contribute-to-quickstarts/build-a-quickstart'
-      pages: 
+      pages:
         - title: Deploy your application
           url: /contribute-to-quickstarts/build-a-quickstart/deploy-your-application
-        - title: Create a dashboard 
+        - title: Create a dashboard
           url: /contribute-to-quickstarts/build-a-quickstart/create-a-dashboard
         - title: Create alerts
           url: /contribute-to-quickstarts/build-a-quickstart/create-alerts
@@ -290,12 +290,16 @@
               url: '/components/user-table-row-cell'
         - title: Feedback
           pages:
+            - title: Banner
+              url: '/components/banner'
             - title: EmptyState
               url: '/components/empty-state'
             - title: Icon
               url: '/components/icon'
             - title: InlineMessage
               url: '/components/inline-message'
+            - title: SectionMessage
+              url: '/components/section-message'
             - title: Spinner
               url: '/components/spinner'
             - title: Toast
