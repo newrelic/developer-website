@@ -26,6 +26,7 @@ import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 
 import { QUICKSTARTS_REPO } from '../data/constants';
 import CATEGORIES from '../data/instant-observability-categories';
+import nodeFetch from 'node-fetch';
 
 const FILTERS = [
   { name: 'All', type: '', icon: 'nr-all-entities' },
@@ -95,7 +96,7 @@ const filterByCategory = (category) => {
       quickstart.keywords.find((k) => associatedKeywords.includes(k)));
 };
 
-const QuickstartsPage = ({ data, location }) => {
+const QuickstartsPage = ({ data, serverData, location }) => {
   const [view, setView] = useState(VIEWS.GRID);
   const isMobile = useMobileDetect().isMobile();
   const tessen = useTessen();
@@ -157,7 +158,7 @@ const QuickstartsPage = ({ data, location }) => {
     [search]
   );
 
-  const quickstarts = data.allQuickstarts.nodes;
+  const quickstarts = serverData.quickstarts;
 
   const alphaSort = quickstarts.sort((a, b) => a.title.localeCompare(b.title));
   const sortedQuickstarts = sortFeaturedQuickstarts(alphaSort);
@@ -589,5 +590,94 @@ const FormControl = ({ children }) => (
 FormControl.propTypes = {
   children: PropTypes.node,
 };
+
+const fetchQuickstarts = async (queryString, url, token) => {
+  try {
+    const res = await nodeFetch(url, {
+      method: 'post',
+      body: JSON.stringify({ query: queryString }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Api-Key': token,
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(`Received status code ${res.status} from the API`);
+    }
+
+    const results = await res.json();
+
+    if (results.errors) {
+      throw new Error(JSON.stringify(results.errors, null, 2));
+    }
+
+    return results.data.docs.openInstallation.quickstartSearch.results;
+  } catch (error) {
+    console.error('Encountered a problem querying the graphql api', error);
+  }
+};
+
+export async function getServerData() {
+  const NR_API_URL = 'https://staging-api.newrelic.com/graphql';
+  const NR_API_TOKEN = '';
+  const quickstartQuery = `# gql 
+  {
+    docs {
+      openInstallation {
+        quickstartSearch {
+          count
+          results {
+            quickstarts {
+              authors
+              dashboards {
+                description
+                name
+                screenshots
+                url
+              }
+              alerts {
+                name
+                details
+                type
+                url
+              }
+              documentation {
+                name
+                description
+                url
+              }
+              description
+              iconUrl
+              packUrl
+              id
+              title
+              level
+              logoUrl
+              name
+              summary
+              websiteUrl
+              keywords
+              installPlans {
+                id
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+  const quickstarts = await fetchQuickstarts(
+    quickstartQuery,
+    NR_API_URL,
+    NR_API_TOKEN
+  );
+  return {
+    props: quickstarts,
+  };
+}
 
 export default QuickstartsPage;

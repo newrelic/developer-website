@@ -10,7 +10,7 @@
 
 /* eslint-disable no-console */
 const fs = require('fs');
-const fetch = require('node-fetch');
+const nodeFetch = require('node-fetch');
 const get = require('lodash.get');
 
 const QUICKSTARTS_FILE_PATH = './src/data/quickstarts.json';
@@ -76,7 +76,7 @@ const quickstartQuery = `# gql
  **/
 const fetchQuickstarts = async (queryString, url, token) => {
   try {
-    const res = await fetch(url, {
+    const res = await nodeFetch(url, {
       method: 'post',
       body: JSON.stringify({ query: queryString }),
       headers: {
