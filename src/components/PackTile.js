@@ -34,8 +34,8 @@ const PackTile = ({
     navigate(fields.slug);
   };
 
-  const handleBuildTileClick = () => {
-    tessen.track('instantObservability', 'BuildYourOwnQuickstartClick', {
+  const handleGuidedInstallTileClick = () => {
+    tessen.track('instantObservability', 'GuidedInstallClick', {
       publicCatalogView: view,
       quickstartName: name,
     });
@@ -58,7 +58,7 @@ const PackTile = ({
           flex-direction: row;
         `}
       `}
-      onClick={fields ? handlePackClick : handleBuildTileClick}
+      onClick={fields ? handlePackClick : handleGuidedInstallTileClick}
     >
       <PackImg
         logoUrl={logoUrl}
