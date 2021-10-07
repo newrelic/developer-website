@@ -20,11 +20,9 @@ import {
 } from '@newrelic/gatsby-theme-newrelic';
 import { navigate } from '@reach/router';
 
-import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 
-import { QUICKSTARTS_REPO } from '../data/constants';
 import CATEGORIES from '../data/instant-observability-categories';
 
 const FILTERS = [
@@ -466,25 +464,26 @@ const QuickstartsPage = ({ data, location }) => {
               `}
             `}
           >
-            <ExternalLink
-              href={QUICKSTARTS_REPO}
-              css={css`
-                text-decoration: none;
-              `}
-            >
-              <PackTile
-                css={
-                  view === VIEWS.GRID &&
-                  css`
-                    height: 100%;
-                  `
-                }
-                view={view}
-                logoUrl={BUILD_YOUR_OWN}
-                title="Build your own quickstart"
-                summary="Can't find a quickstart with what you need? Check out our README and build your own."
-              />
-            </ExternalLink>
+            {filter && filter === 'documentation' && (
+              <ExternalLink
+                href="https://one.newrelic.com/launcher/catalog-pack-details.launcher/?pane=eyJuZXJkbGV0SWQiOiJjYXRhbG9nLXBhY2stZGV0YWlscy5jYXRhbG9nLXBhY2stY29udGVudHMiLCJxdWlja3N0YXJ0SWQiOiJlNjdmMjg1OS04MGMxLTQyMzQtYmJjZi1iY2JlZWIzMWQ3MGQifQ==&cards[0]=eyJuZXJkbGV0SWQiOiJucjEtaW5zdGFsbC1uZXdyZWxpYy5ucjEtaW5zdGFsbC1uZXdyZWxpYyJ9&state=8e5be50f-f6fa-6f19-2aae-4dab7bf1f278"
+                css={css`
+                  text-decoration: none;
+                `}
+              >
+                <PackTile
+                  css={
+                    view === VIEWS.GRID &&
+                    css`
+                      height: 100%;
+                    `
+                  }
+                  view={view}
+                  title="Guided Install"
+                  summary="Not sure how to get started? We'll walk you through the process of instrumenting your environment so that you can monitor it."
+                />
+              </ExternalLink>
+            )}
             {filteredQuickstarts.map((pack) => (
               <PackTile
                 key={pack.id}
