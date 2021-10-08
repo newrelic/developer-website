@@ -20,9 +20,12 @@ import {
 } from '@newrelic/gatsby-theme-newrelic';
 import { navigate } from '@reach/router';
 
+import BUILD_YOUR_OWN from '../images/build-your-own.svg';
+import GUIDED_INSTALL from '../images/guided-install.svg';
 import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 
+import { QUICKSTARTS_REPO, RESERVED_QUICKSTART_IDS } from '../data/constants';
 import CATEGORIES from '../data/instant-observability-categories';
 
 const FILTERS = [
@@ -464,7 +467,8 @@ const QuickstartsPage = ({ data, location }) => {
               `}
             `}
           >
-            {filter && filter === 'documentation' && (
+            {filter && filter === 'documentation' ? (
+              // if data source filter is selected, display guided install
               <ExternalLink
                 href="https://one.newrelic.com/launcher/catalog-pack-details.launcher/?pane=eyJuZXJkbGV0SWQiOiJjYXRhbG9nLXBhY2stZGV0YWlscy5jYXRhbG9nLXBhY2stY29udGVudHMiLCJxdWlja3N0YXJ0SWQiOiJlNjdmMjg1OS04MGMxLTQyMzQtYmJjZi1iY2JlZWIzMWQ3MGQifQ==&cards[0]=eyJuZXJkbGV0SWQiOiJucjEtaW5zdGFsbC1uZXdyZWxpYy5ucjEtaW5zdGFsbC1uZXdyZWxpYyJ9&state=8e5be50f-f6fa-6f19-2aae-4dab7bf1f278"
                 css={css`
@@ -472,15 +476,35 @@ const QuickstartsPage = ({ data, location }) => {
                 `}
               >
                 <PackTile
-                  css={
-                    view === VIEWS.GRID &&
-                    css`
-                      height: 100%;
-                    `
-                  }
+                  id={RESERVED_QUICKSTART_IDS.GUIDED_INSTALL}
+                  css={css`
+                    ${view === VIEWS.GRID && `height: 100%;`}
+                    background-color: var(--tertiary-background-color);
+                  `}
                   view={view}
+                  logoUrl={GUIDED_INSTALL}
                   title="Guided Install"
                   summary="Not sure how to get started? We'll walk you through the process of instrumenting your environment so that you can monitor it."
+                />
+              </ExternalLink>
+            ) : (
+              // else, display build your own quickstart
+              <ExternalLink
+                href={QUICKSTARTS_REPO}
+                css={css`
+                  text-decoration: none;
+                `}
+              >
+                <PackTile
+                  id={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
+                  css={css`
+                    ${view === VIEWS.GRID && `height: 100%;`}
+                    background-color: var(--tertiary-background-color);
+                  `}
+                  view={view}
+                  logoUrl={BUILD_YOUR_OWN}
+                  title="Build your own quickstart"
+                  summary="Can't find a quickstart with what you need? Check out our README and build your own."
                 />
               </ExternalLink>
             )}
