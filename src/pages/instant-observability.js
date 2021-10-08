@@ -25,8 +25,14 @@ import GUIDED_INSTALL from '../images/guided-install.svg';
 import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 
-import { QUICKSTARTS_REPO, RESERVED_QUICKSTART_IDS } from '../data/constants';
+import {
+  QUICKSTARTS_REPO,
+  RESERVED_QUICKSTART_IDS,
+  NR1_GUIDED_INSTALL_NERDLET,
+} from '../data/constants';
 import CATEGORIES from '../data/instant-observability-categories';
+
+import { getGuidedInstallStackedNr1Url } from '../utils/get-pack-nr1-url';
 
 const FILTERS = [
   { name: 'All', type: '', icon: 'nr-all-entities' },
@@ -470,7 +476,7 @@ const QuickstartsPage = ({ data, location }) => {
             {filter && filter === 'documentation' ? (
               // if data source filter is selected, display guided install
               <ExternalLink
-                href="https://one.newrelic.com/launcher/catalog-pack-details.launcher/?pane=eyJuZXJkbGV0SWQiOiJjYXRhbG9nLXBhY2stZGV0YWlscy5jYXRhbG9nLXBhY2stY29udGVudHMifQ==&cards[0]=eyJuZXJkbGV0SWQiOiJucjEtaW5zdGFsbC1uZXdyZWxpYy5ucjEtaW5zdGFsbC1uZXdyZWxpYyJ9"
+                href={getGuidedInstallStackedNr1Url(NR1_GUIDED_INSTALL_NERDLET)}
                 css={css`
                   text-decoration: none;
                 `}
