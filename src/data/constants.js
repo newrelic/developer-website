@@ -61,7 +61,6 @@ export const LOGIN_LINK = 'https://login.newrelic.com/login';
 
 export const UTM_PARAMETERS = { utm_medium: 'cpc' };
 
-//
 export const RESERVED_QUICKSTART_IDS = {
   GUIDED_INSTALL: 'GUIDED_INSTALL',
   BUILD_YOUR_OWN_QUICKSTART: 'BUILD_YOUR_OWN_QUICKSTART',
