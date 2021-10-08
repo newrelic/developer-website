@@ -470,7 +470,7 @@ const QuickstartsPage = ({ data, location }) => {
             {filter && filter === 'documentation' ? (
               // if data source filter is selected, display guided install
               <ExternalLink
-                href="https://one.newrelic.com/launcher/catalog-pack-details.launcher/?pane=eyJuZXJkbGV0SWQiOiJjYXRhbG9nLXBhY2stZGV0YWlscy5jYXRhbG9nLXBhY2stY29udGVudHMiLCJxdWlja3N0YXJ0SWQiOiJlNjdmMjg1OS04MGMxLTQyMzQtYmJjZi1iY2JlZWIzMWQ3MGQifQ==&cards[0]=eyJuZXJkbGV0SWQiOiJucjEtaW5zdGFsbC1uZXdyZWxpYy5ucjEtaW5zdGFsbC1uZXdyZWxpYyJ9&state=8e5be50f-f6fa-6f19-2aae-4dab7bf1f278"
+                href="https://one.newrelic.com/launcher/catalog-pack-details.launcher/?pane=eyJuZXJkbGV0SWQiOiJjYXRhbG9nLXBhY2stZGV0YWlscy5jYXRhbG9nLXBhY2stY29udGVudHMifQ==&cards[0]=eyJuZXJkbGV0SWQiOiJucjEtaW5zdGFsbC1uZXdyZWxpYy5ucjEtaW5zdGFsbC1uZXdyZWxpYyJ9"
                 css={css`
                   text-decoration: none;
                 `}
