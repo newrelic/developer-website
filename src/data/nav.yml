@@ -155,10 +155,10 @@
   pages:
     - title: Build a quickstart
       url: '/contribute-to-quickstarts/build-a-quickstart'
-      pages: 
+      pages:
         - title: Deploy your application
           url: /contribute-to-quickstarts/build-a-quickstart/deploy-your-application
-        - title: Create a dashboard 
+        - title: Create a dashboard
           url: /contribute-to-quickstarts/build-a-quickstart/create-a-dashboard
         - title: Create alerts
           url: /contribute-to-quickstarts/build-a-quickstart/create-alerts
@@ -236,6 +236,8 @@
               url: '/components/button'
             - title: Checkbox
               url: '/components/checkbox'
+            - title: CheckboxGroup
+              url: '/components/checkbox-group'
             - title: Dropdown
               url: '/components/dropdown'
             - title: DropdownItem
@@ -294,6 +296,8 @@
               url: '/components/icon'
             - title: InlineMessage
               url: '/components/inline-message'
+            - title: SectionMessage
+              url: '/components/section-message'
             - title: Spinner
               url: '/components/spinner'
             - title: Toast
@@ -312,6 +316,8 @@
               url: '/components/popover'
             - title: PopoverBody
               url: '/components/popover-body'
+            - title: PopoverFooter
+              url: '/components/popover-footer'
             - title: PopoverTrigger
               url: '/components/popover-trigger'
             - title: Tooltip
@@ -328,6 +334,12 @@
               url: '/components/card-header'
             - title: CardSection
               url: '/components/card-section'
+            - title: CardSectionBody
+              url: '/components/card-section-body'
+            - title: CardSectionHeader
+              url: '/components/card-section-header'
+            - title: CollapsibleLayoutItem
+              url: '/components/collapsible-layout-item'
             - title: Grid
               url: '/components/grid'
             - title: GridItem

@@ -264,9 +264,30 @@ const QuickstartDetails = ({ data, location }) => {
               <PageTools.Title>How to use this quickstart</PageTools.Title>
               <ol>
                 <li>
-                  <Link to={SIGNUP_LINK}>Sign Up</Link> for a free New Relic
-                  account or <Link to={LOGIN_LINK}>Log In</Link> to your
-                  existing account.
+                  <Link
+                    to={SIGNUP_LINK}
+                    onClick={() =>
+                      tessen.track(
+                        'instantObservability',
+                        'QuickstartDetailsSignUpClick'
+                      )
+                    }
+                  >
+                    Sign Up
+                  </Link>{' '}
+                  for a free New Relic account or{' '}
+                  <Link
+                    to={LOGIN_LINK}
+                    onClick={() =>
+                      tessen.track(
+                        'instantObservability',
+                        'QuickstartDetailsLoginClick'
+                      )
+                    }
+                  >
+                    Log In
+                  </Link>{' '}
+                  to your existing account.
                 </li>
                 <li>Click the green install button above.</li>
                 <li>

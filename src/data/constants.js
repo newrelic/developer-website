@@ -12,6 +12,7 @@ export const SDK_BASE_URL =
   'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
 
 export const NR1_LOGIN_URL = 'https://login.newrelic.com/login';
+
 export const NR1_SIGNUP_URL = 'https://newrelic.com/signup';
 
 export const NR1_PACK_DETAILS_NERDLET =
@@ -59,3 +60,8 @@ export const SIGNUP_LINK = 'https://newrelic.com/signup';
 export const LOGIN_LINK = 'https://login.newrelic.com/login';
 
 export const UTM_PARAMETERS = { utm_medium: 'cpc' };
+
+export const RESERVED_QUICKSTART_IDS = {
+  GUIDED_INSTALL: 'GUIDED_INSTALL',
+  BUILD_YOUR_OWN_QUICKSTART: 'BUILD_YOUR_OWN_QUICKSTART',
+};

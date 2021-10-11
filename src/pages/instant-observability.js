@@ -21,11 +21,18 @@ import {
 import { navigate } from '@reach/router';
 
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
+import GUIDED_INSTALL from '../images/guided-install.svg';
 import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 
-import { QUICKSTARTS_REPO } from '../data/constants';
+import {
+  QUICKSTARTS_REPO,
+  RESERVED_QUICKSTART_IDS,
+  NR1_GUIDED_INSTALL_NERDLET,
+} from '../data/constants';
 import CATEGORIES from '../data/instant-observability-categories';
+
+import { getGuidedInstallStackedNr1Url } from '../utils/get-pack-nr1-url';
 
 const FILTERS = [
   { name: 'All', type: '', icon: 'nr-all-entities' },
@@ -466,25 +473,47 @@ const QuickstartsPage = ({ data, location }) => {
               `}
             `}
           >
-            <ExternalLink
-              href={QUICKSTARTS_REPO}
-              css={css`
-                text-decoration: none;
-              `}
-            >
-              <PackTile
-                css={
-                  view === VIEWS.GRID &&
-                  css`
-                    height: 100%;
-                  `
-                }
-                view={view}
-                logoUrl={BUILD_YOUR_OWN}
-                title="Build your own quickstart"
-                summary="Can't find a quickstart with what you need? Check out our README and build your own."
-              />
-            </ExternalLink>
+            {filter && filter === 'documentation' ? (
+              // if data source filter is selected, display guided install
+              <ExternalLink
+                href={getGuidedInstallStackedNr1Url(NR1_GUIDED_INSTALL_NERDLET)}
+                css={css`
+                  text-decoration: none;
+                `}
+              >
+                <PackTile
+                  id={RESERVED_QUICKSTART_IDS.GUIDED_INSTALL}
+                  css={css`
+                    ${view === VIEWS.GRID && `height: 100%;`}
+                    background-color: var(--tertiary-background-color);
+                  `}
+                  view={view}
+                  logoUrl={GUIDED_INSTALL}
+                  title="Guided Install"
+                  summary="Not sure how to get started? We'll walk you through the process of instrumenting your environment so that you can monitor it."
+                />
+              </ExternalLink>
+            ) : (
+              // else, display build your own quickstart
+              <ExternalLink
+                href={QUICKSTARTS_REPO}
+                css={css`
+                  text-decoration: none;
+                `}
+              >
+                <PackTile
+                  id={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
+                  css={css`
+                    ${view === VIEWS.GRID && `height: 100%;`}
+                    background-color: var(--tertiary-background-color);
+                  `}
+                  view={view}
+                  logoUrl={BUILD_YOUR_OWN}
+                  title="Build your own quickstart"
+                  summary="Can't find a quickstart with what you need? Check out our README and build your own."
+                />
+              </ExternalLink>
+            )}
             {filteredQuickstarts.map((pack) => (
               <PackTile
                 key={pack.id}

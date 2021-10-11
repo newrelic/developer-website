@@ -1,3 +1,10 @@
+# [1.58.0](https://github.com/newrelic/developer-website/compare/v1.57.2...v1.58.0) (2021-10-11)
+
+
+### Features
+
+* add guided install tile ([2c5bbfc](https://github.com/newrelic/developer-website/commit/2c5bbfc77b13654598445fd50d387b457d36328b))
+
 ## [1.57.2](https://github.com/newrelic/developer-website/compare/v1.57.1...v1.57.2) (2021-09-29)
 
 

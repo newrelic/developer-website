@@ -3,14 +3,8 @@ import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
 
 import { css } from '@emotion/react';
-import {
-  Surface,
-  Icon,
-  useTessen,
-  useInstrumentedHandler,
-  Tag,
-} from '@newrelic/gatsby-theme-newrelic';
-import { SHIELD_LEVELS } from '../data/constants';
+import { Surface, Icon, useTessen, Tag } from '@newrelic/gatsby-theme-newrelic';
+import { SHIELD_LEVELS, RESERVED_QUICKSTART_IDS } from '../data/constants';
 import PackImg from './PackImg';
 
 const VIEWS = {
@@ -32,34 +26,28 @@ const PackTile = ({
 }) => {
   const tessen = useTessen();
 
-  const handlePackClick = useInstrumentedHandler(
-    () => {
-      tessen.track('instantObservability', 'QuickstartClick', {
-        publicCatalogView: view,
-        quickstartName: name,
-      });
-      navigate(fields.slug);
-    },
-    {
-      actionName: 'QuickstartClick',
-      publicCatalogView: view,
-      quickstartName: name,
+  const handlePackClick = (quickstartId) => {
+    switch (true) {
+      case quickstartId === RESERVED_QUICKSTART_IDS.GUIDED_INSTALL:
+        tessen.track('instantObservability', 'GuidedInstallClick', {
+          publicCatalogView: view,
+          quickstartName: name,
+        });
+        break;
+      case quickstartId === RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART:
+        tessen.track('instantObservability', 'BuildYourOwnQuickstartClick', {
+          publicCatalogView: view,
+          quickstartName: name,
+        });
+        break;
+      default:
+        tessen.track('instantObservability', 'QuickstartClick', {
+          publicCatalogView: view,
+          quickstartName: name,
+        });
+        navigate(fields.slug);
     }
-  );
-
-  const handleBuildTileClick = useInstrumentedHandler(
-    () => {
-      tessen.track('instantObservability', 'BuildYourOwnQuickstartClick', {
-        publicCatalogView: view,
-        quickstartName: name,
-      });
-    },
-    {
-      actionName: 'BuildYourOwnQuickstartClick',
-      publicCatalogView: view,
-      quickstartName: name,
-    }
-  );
+  };
 
   return (
     <Surface
@@ -78,14 +66,13 @@ const PackTile = ({
           flex-direction: row;
         `}
       `}
-      onClick={fields ? handlePackClick : handleBuildTileClick}
+      onClick={() => handlePackClick(id)}
     >
       <PackImg
         logoUrl={logoUrl}
         packName={title || name}
         css={css`
           height: 200px;
-          background-color: var(--color-white);
           object-fit: scale-down;
           width: ${view === VIEWS.GRID ? 100 : 25}%;
           padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
