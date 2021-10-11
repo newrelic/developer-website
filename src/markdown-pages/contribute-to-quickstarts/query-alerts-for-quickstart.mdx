@@ -1,12 +1,9 @@
 ---
 path: '/contribute-to-quickstarts/query-alerts-for-quickstart'
 duration: '10 min'
-title: 'Query alerts for quickstart'
+title: 'Populate your alert configurations with NerdGraph'
 template: 'GuideTemplate'
-description: 'Reference guide to query alerts for quickstarts using NerdGraph'
-tileShorthand:
-  title: 'Query alerts for quickstart'
-  description: 'Reference guide to query alerts for quickstarts using NerdGraph'
+description: 'Use NerdGraph to query your existing alert configurations, and add those configurations to your quickstart.'
 tags:
   - nerdgraph query components
   - quickstart
@@ -14,36 +11,36 @@ tags:
 
 <Intro>
 
-Quickstarts equips you with dashboards, alerts, and other observability building blocks to get value from your data faster. To help you query your existing alerts and add them to your [quickstart](/contribute-to-quickstarts/build-a-quickstart), we provide you with the New Relic's [Nerdgraph API explorer](https://api.newrelic.com/graphiql). Here you learn how to use the Nerdgraph to get a JSON representation of each alert condition and populate the corresponding alert file in quickstart.
+With a quickstart, you let your users quickly install dashboards, alerts, and other resources. Here, you learn how to use New Relic's GraphQL API, [NerdGraph](https://api.newrelic.com/graphiql), to query your existing alert conditions and configure them in your quickstart.
 
 </Intro>
 
 <Callout variant="important">
 
-It is assumed that you already have alerts and a quickstart. This guide will walk you through adding the alerts with Nerdgraph. Refer to [Build a quickstart](/contribute-to-quickstart/build-a-quickstart) for a detailed guide.
+This guide assumes you already have alerts in your New Relic account and a quickstart that you want to add those alerts to. If you don't already have a quickstart, follow [our lab](/contribute-to-quickstarts/build-a-quickstart) to learn how to build one.
 
 </Callout>
 
-## Build a query in Nerdgraph
+## Build a query in NerdGraph
 
-Open the [Nerdgraph API explorer](https://api.newrelic.com/graphiql) and select your key from the dropdown menu.
+Open the [NerdGraph API explorer](https://api.newrelic.com/graphiql) and select your key from the dropdown menu.
 
 ![graphiql interface](../../images/query-alerts/nerdgraph-interface.png)
 
-Building a query is simple in the explorer. Check the appropriate boxes to build a GraphQL query:
+Check the appropriate boxes to build a GraphQL query.
+
+![build a query](../../images/query-alerts/build-query.png)
+
+This updates the GraphQL query in the center pane of the explorer.
 
 ```js
 {
   actor {
     account(id: REPLACE_ACCOUNT_ID) {
       alerts {
-        nrqlCondition(id: REPLACE_CONDITION_ID) {
-          ... on AlertsNrqlStaticCondition {
-            id
-            name
-            nrql {
-              query
-            }
+        nrqlCondition(id: "") {
+          nrql {
+            query
           }
         }
       }
@@ -52,15 +49,35 @@ Building a query is simple in the explorer. Check the appropriate boxes to build
 }
 ```
 
-![build a query](../../images/query-alerts/build-query.png)
+Replace your account ID and condition ID in the above query to get the details of your alert condition. By using the UI, the explorer automatically inserts your account ID, but you need to look up your alert condition's ID.
 
-Replace your account ID and condition ID in the above query to get the details of your alert condition. In [New Relic](https://one.newrelic.com/), go to **Alerts & AI** an then **Policies** in left hand navigation. Choose your policy from the list and click on the corresponding condition to get its ID. 
+In your [New Relic homepage](https://one.newrelic.com/), go to **Alerts & AI**.
 
-![get alert condition id](../../images/query-alerts/condition-id.png)
+![Alerts & AI](../../images/query-alerts/alerts-and-ai.png)
+ 
+Click **Policies** in left hand navigation. 
 
-## Query an existing static alert in Nerdgraph
+![Policies](../../images/query-alerts/policies.png)
 
-Build the following query for existing static alert in Nerdgraph:
+Here, choose your policy from the list and click on the corresponding condition to get its ID. 
+
+![alert condition](../../images/query-alerts/alert-conditions.png)
+
+![get alert condition id](../../images/query-alerts/alert-id.png)
+
+The next few sections cover how to:
+
+ - Query an existing static alert in NerdGraph
+ - Query an existing baseline alert in NerdGraph
+ - Query an existing outlier alert in NerdGraph
+
+## Query an existing static alert in NerdGraph
+
+Check the appropriate boxes to build the following query for existing static alert in NerdGraph.
+
+![NRQL static alert query](../../images/query-alerts/nrql-static-alert-query.png)
+
+For reference, this updates the GraphQL query as follow:
 
 ```js
 {
@@ -93,28 +110,28 @@ Build the following query for existing static alert in Nerdgraph:
 
 ```
 
-The above query will return you the json representation of the specified static condition that you can use to update your quickstart. 
+Execute the query to get a JSON representation of the specified static condition that you can use to update your quickstart. 
 
-![static alert query](../../images/query-alerts/static-alert-query.png)
+![static alert query](../../images/query-alerts/static-query-response.png)
 
-Use the _static-alert.yml_ file from quickstart template and start populating it using the information returned from above query.
+Use the _static-alert.yml_ file from quickstart template and populate it using the information returned from above query.
 
 ```yml
 ---
 
 # Name of the alert
-name: Apdex
+name: Static Condition
 
 # Description and details
 details: |+
-  This alert is triggered whenever the apdex score is below 0.85 for at least 5 minutes.
+  This alert is triggered whenever the host count is < 2.
 
 # Type of alert
 type: STATIC
 
 # NRQL query
 nrql:
-  query: "SELECT apdex(apm.service.apdex) FROM Metric WHERE entity.guid = 'MzAxNDkwMXxBUE18QVBQTElDQVRJT058NTE3NTY0MzAz' FACET entity.guid"
+  query: "SELECT uniqueCount(host) FROM Transaction"
 
 # Function used to aggregate the NRQL query value(s) for comparison to the terms.threshold (Default: SINGLE_VALUE)
 valueFunction: SINGLE_VALUE
@@ -125,11 +142,11 @@ terms:
   # Operator used to compare against the threshold.
   operator: BELOW
   # Value that triggers a violation
-  threshold: 0.85
+  threshold: 2
   # Time in seconds; 120 - 3600
   thresholdDuration: 300
   # How many data points must be in violation for the duration
-  thresholdOccurrences: ALL 
+  thresholdOccurrences: AT_LEAST_ONCE
 
 # Duration after which a violation automatically closes
 # Time in seconds; 300 - 2592000 (Default: 86400 [1 day])
@@ -137,11 +154,15 @@ violationTimeLimitSeconds: 259200
 
 ```
 
-Here, you added the pre-existing apdex alert to the quickstart. Follow the same procedure to add baseline and outlier alerts. 
+Here, you added the pre-existing static alert to the quickstart. Follow the same procedure to add baseline and outlier alerts. 
 
-## Query an existing baseline alert in Nerdgraph
+## Query an existing baseline alert in NerdGraph
 
-Build the following query for baseline alert in Nerdgraph:
+Check the appropriate boxes to build the following query for baseline alert in NerdGraph.
+
+![NRQL baseline alert query](../../images/query-alerts/nrql-baseline-alert-query.png)
+
+Here, you checked the box for AlertsNrqlBaselineCondition. For reference, following is the GraphQL query.
 
 ```js
 {
@@ -172,22 +193,21 @@ Build the following query for baseline alert in Nerdgraph:
 
 ```
 
-Note that here, we run query on AlertsNrqlBaselineCondition. The above query will return you the json representation of the specified baseline condition. 
+This returns you the JSON representation of the specified baseline condition. 
 
-![baseline alert query](../../images/query-alerts/baseline-alert-query.png)
+![baseline alert query response](../../images/query-alerts/baseline-query-response.png)
 
-Use the _baseline-alert.yml_ file from quickstart template and start populating it using the information returned from above query.
+Use the _baseline-alert.yml_ file from quickstart template and populate it using the information returned from above query.
 
 ```yml
 ---
 
 # Name of the alert
-name: Error Percentage
+name: Baseline Condition
 
 # Description and details
 details: |+
-  This alert is triggered whenever error percentage deviates 3 standard deviations for at least 5 minutes from the baseline.  
-  It also sends a warning signal if error percentage only deviates 2 standard deviations from the baseline.
+  This alert is triggered whenever the average Transaction duration deviates 2 standard deviations from the normal.
 
 # Type of alert
 type: BASELINE
@@ -195,7 +215,7 @@ type: BASELINE
 # NRQL query
 nrql:
   # Baseline alerts can use an optional FACET
-  query: "SELECT count(apm.service.error.count) / count(apm.service.transaction.duration) * 100 FROM Metric WHERE entity.guid = 'MzAxNDkwMXxBUE18QVBQTElDQVRJT058NTE3NTY0MzAz' FACET entity.guid"
+  query: "SELECT average(duration) FROM Transaction"
 
 # Direction in which baseline is set (Default: LOWER_ONLY)
 baselineDirection: UPPER_ONLY
@@ -204,16 +224,10 @@ baselineDirection: UPPER_ONLY
 terms:
 - priority: CRITICAL
   # Value that triggers a violation
-  threshold: 3
-  # Time in seconds; 120 - 3600, must be a multiple of 60 for Baseline conditions
-  thresholdDuration: 300
-  # How many data points must be in violation for the duration
-  thresholdOccurrences: ALL 
-
-# Adding a Warning threshold is optional
-- priority: WARNING
   threshold: 2
-  thresholdDuration: 300
+  # Time in seconds; 120 - 3600, must be a multiple of 60 for Baseline conditions
+  thresholdDuration: 180
+  # How many data points must be in violation for the duration
   thresholdOccurrences: ALL 
 
 # Duration after which a violation automatically closes
@@ -221,11 +235,15 @@ terms:
 violationTimeLimitSeconds: 259200
 
 ```
-Here, you added an existing baseline alert called Error Percentage to your quickstart.
+Here, you added an existing baseline alert to your quickstart.
 
-## Query an existing outlier alert in Nerdgraph
+## Query an existing outlier alert in NerdGraph
 
-Build the following query for outlier alert in Nerdgraph:
+Check the appropriate boxes to build query for outlier alert in NerdGraph.
+
+![NRQL outlier alert query](../../images/query-alerts/nrql-outlier-alert-query.png)
+
+Note here, that we check the box for AlertsNrqlOutlierCondition. This updates the following GraphQL query.
 
 ```js
 {
@@ -255,18 +273,17 @@ Build the following query for outlier alert in Nerdgraph:
 }
 
 ```
+Execute the above query to get the JSON representation of the specified outlier condition that you can use to update your quickstart. 
 
-The above query will return you the json representation of the specified outlier condition that you can use to update your quickstart. 
+![outlier alert query response](../../images/query-alerts/outlier-query-response.png)
 
-![outlier alert query](../../images/query-alerts/outlier-alert-query.png)
-
-Use the _outlier-alert.yml_ file from quickstart template and start populating it using the information returned from above query.
+Use the _outlier-alert.yml_ file from quickstart template and populate it using the information returned from above query.
 
 ```yml
 ---
 
 # Name of the alert
-name: Misbehaving instance
+name: Outlier Condition
 
 # Description and details
 details: |+
@@ -278,10 +295,10 @@ type: OUTLIER
 # NRQL query
 nrql:
   # Outlier alerts require FACET
-  query: "SELECT average(duration) FROM Transaction WHERE appName='UTE' FACET host"
+  query: "SELECT average(duration) FROM Transaction FACET http.statusCode"
 
 # Number of groups expected in the returned values for the condition (Default: 2)
-expectedGroups: 2
+expectedGroups: 4
 
 # List of Critical and Warning thresholds for the condition
 terms:
@@ -303,6 +320,7 @@ Here, you added an outlier alert to your quickstart.
 
 ## Summary
 
-This guide teaches you to query your existing alert conditions using Nerdgraph and use the json response to populate corresponding alert files in quickstart. 
-If you're not familiar with alerts, then check our [docs for alerts](https://docs.newrelic.com/docs/alerts-applied-intelligence/).
-To learn more about the quickstarts and how to create one, please refer to [Build a quickstart](/contribute-to-quickstart/build-a-quickstart).
+In this guide, you learned how to query your existing alert conditions using NerdGraph and how to use the query's JSON response to populate corresponding alert files in quickstart. Read our documentation to learn more about:
+
+ - [Alerts](https://docs.newrelic.com/docs/alerts-applied-intelligence/)
+ - [Building quickstarts](/contribute-to-quickstart/build-a-quickstart)
