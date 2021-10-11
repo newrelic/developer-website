@@ -290,8 +290,6 @@
               url: '/components/user-table-row-cell'
         - title: Feedback
           pages:
-            - title: Banner
-              url: '/components/banner'
             - title: EmptyState
               url: '/components/empty-state'
             - title: Icon
@@ -352,12 +350,6 @@
               url: '/components/layout-item'
             - title: List
               url: '/components/list'
-            - title: Listbox
-              url: '/components/listbox'
-            - title: ListboxItem
-              url: '/components/listbox-item'
-            - title: ListboxSection
-              url: '/components/listbox-section'
             - title: ListItem
               url: '/components/list-item'
             - title: Spacing
