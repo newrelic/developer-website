@@ -14,7 +14,7 @@ import FeaturedGuideTile from '../components/FeaturedGuideTile';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import * as styles from './index.module.scss';
-import ioBeta from '../images/io-beta.png';
+import Video from '../components/Video';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 
@@ -99,13 +99,7 @@ const IndexPage = ({ data, pageContext, location }) => {
                 width: 100%;
               `}
             >
-              <img
-                src={ioBeta}
-                alt="IO Beta"
-                css={css`
-                  width: 100%;
-                `}
-              />
+              <Video id="33kreqnm3p" type="wistia" />
             </div>
           </section>
 
