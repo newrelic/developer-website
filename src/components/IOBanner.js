@@ -75,7 +75,7 @@ const IOBanner = ({ isMobile }) => {
               font-size: 0.65rem;
             }
           `}
-          to="https://www.youtube.com/watch?v=sFt1Tx5qPRU"
+          to="https://docs.newrelic.com/docs/full-stack-observability/observe-everything/get-started/new-relic-quickstarts-overview/"
           instrumentation={{ component: 'IOBanner' }}
           onClick={handleBannerButtonClick}
         >
