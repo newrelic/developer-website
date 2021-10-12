@@ -29,7 +29,6 @@ import {
   SHIELD_LEVELS,
 } from '../data/constants';
 import QuickstartOverview from '../components/quickstarts/QuickstartOverview';
-import BetaBanner from '../components/quickstarts/BetaBanner';
 
 const QuickstartDetails = ({ data, location }) => {
   const quickstart = data.quickstarts;
@@ -70,7 +69,6 @@ const QuickstartDetails = ({ data, location }) => {
         meta={quickStartMeta}
       />
       <Breadcrumbs segments={breadcrumbs} />
-      <BetaBanner />
       <Tabs>
         <PageLayout
           type={PageLayout.TYPE.RELATED_CONTENT_TABS}
