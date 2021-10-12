@@ -117,12 +117,13 @@ const validateEnvVars = () => {
  * @param {String} token a New Relic API token
  **/
 const main = async (query, url, token) => {
+  const CODESTREAM_QUICKSTART_ID = '29bd9a4a-1c19-4219-9694-0942f6411ce7';
   const results = await fetchQuickstarts(query, url, token);
 
   if (results) {
     // TODO: remove filter once we are ready to display codestream quickstart
     const quickstarts = results.quickstarts.filter(
-      (q) => q.id !== '29bd9a4a-1c19-4219-9694-0942f6411ce7'
+      (q) => q.id !== CODESTREAM_QUICKSTART_ID
     );
     console.log(`Found ${quickstarts.length} quickstarts.`);
     console.log(`Writing ${QUICKSTARTS_FILE_PATH}`);
