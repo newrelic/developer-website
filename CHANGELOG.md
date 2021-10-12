@@ -1,3 +1,10 @@
+# [1.59.0](https://github.com/newrelic/developer-website/compare/v1.58.0...v1.59.0) (2021-10-12)
+
+
+### Features
+
+* add redirects for embed pages ([1ce56bb](https://github.com/newrelic/developer-website/commit/1ce56bbd468f7b9a249e999c2c8c65f87ea3d349))
+
 # [1.58.0](https://github.com/newrelic/developer-website/compare/v1.57.2...v1.58.0) (2021-10-11)
 
 
