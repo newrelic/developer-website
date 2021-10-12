@@ -120,7 +120,10 @@ const main = async (query, url, token) => {
   const results = await fetchQuickstarts(query, url, token);
 
   if (results) {
-    const quickstarts = results.quickstarts;
+    // TODO: remove filter once we are ready to display codestream quickstart
+    const quickstarts = results.quickstarts.filter(
+      (q) => q.id !== '29bd9a4a-1c19-4219-9694-0942f6411ce7'
+    );
     console.log(`Found ${quickstarts.length} quickstarts.`);
     console.log(`Writing ${QUICKSTARTS_FILE_PATH}`);
     fs.writeFileSync(
