@@ -1,3 +1,17 @@
+## [1.59.2](https://github.com/newrelic/developer-website/compare/v1.59.1...v1.59.2) (2021-10-13)
+
+
+### Bug Fixes
+
+* k8s operator is not official ([d173779](https://github.com/newrelic/developer-website/commit/d173779fd102fb9ec85fee1735c0d2a49c951d4f))
+
+## [1.59.1](https://github.com/newrelic/developer-website/compare/v1.59.0...v1.59.1) (2021-10-13)
+
+
+### Bug Fixes
+
+* broken embed link ([697160f](https://github.com/newrelic/developer-website/commit/697160f910aa8aa645ba4e8aee34fd62a3cb8034))
+
 # [1.59.0](https://github.com/newrelic/developer-website/compare/v1.58.0...v1.59.0) (2021-10-12)
 
 
