@@ -18,7 +18,6 @@ import {
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
 import InstallButton from '../components/InstallButton';
-import Markdown from '../components/Markdown';
 import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { quickstart } from '../types';
