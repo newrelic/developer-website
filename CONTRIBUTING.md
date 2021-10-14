@@ -65,7 +65,7 @@ guidelines below.
 ### Using multiple versions of Node
 
 If you intend to run multiple versions of Node please be aware that the New Relic
-Developer Site is currently on Node v12. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
+Developer Site is currently on Node v16. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
 
 Review [this article](https://itnext.io/nvm-the-easiest-way-to-switch-node-js-environments-on-your-machine-in-a-flash-17babb7d5f1b)
 which clearly explains the setup and configuration of NVM.
@@ -123,7 +123,7 @@ The `develop` and `main` branches have "Branch Protection" enabled in Github. In
 
 You can review full Branch Protection details [here](https://docs.google.com/document/d/1O1SGS0i3OmPfvPhylpFe1CTMkE20889iAOF_cMFJ344/edit#heading=h.cy3jfpnyvv5z), and check out a visual representation of the workflow below:
 
-![](src/images/Dev_site_branch_protection_workflow_(develop_main).png)
+![](<src/images/Dev_site_branch_protection_workflow_(develop_main).png>)
 
 ### Using Conventional Commits
 
@@ -168,7 +168,7 @@ To submit a [Draft PR](https://github.blog/2019-02-14-introducing-draft-pull-req
    `PR` you wish to submit.
 3. Once you are ready to have the `PR` reviewed and merge, click the Ready for review button on the `PR`.
 
-### Deploy previews with Gatsby Cloud 
+### Deploy previews with Gatsby Cloud
 
 PRs that are opened from a branch in this repo (not forks) will generate preview links on Gatsby Cloud automatically. Gatsby Cloud preview links can be found as comments on your pull request once they finish building. Progress can be monitored via the `Gatsby Build Service` job under the `Checks` section.
 
@@ -399,10 +399,10 @@ need to happen:
 ### Step 1: Update the release number in `gatsby-config`
 
 - We use a [local Gatsby plugin `gatsby-source-newrelic-sdk`](https://github.com/newrelic/developer-website/tree/develop/plugins/gatsby-source-newrelic-sdk)
-to source our documentation into GraphQL. This plugin has some configuration that tells it what release number to use.
+  to source our documentation into GraphQL. This plugin has some configuration that tells it what release number to use.
 
 - [Update `gatsby-config.js`](https://github.com/newrelic/developer-website/blob/ae42737f5f1cf556f3c44d864655c9a571739e28/gatsby-config.js#L161)
-with the new release number to update the bundle release version.
+  with the new release number to update the bundle release version.
 
 - To obtain the version release number visit the `one-core` repository on Github enterprise and look at the release version in `sdk-loader.js`. You can use the one-core site to confirm if any issues are developer site specific or occurring in the SDK.
 
@@ -420,7 +420,7 @@ If a component looks like it should be internal only, feel free to ask #help-one
 
 - We rely on the 1st party documentation bundle to power the developer docs. While the 1st party bundle provides many of the same components/APIs, there are a few minor differences between the 1st and 3rd party SDKs. To account for this, we white list the specific components we document on the site.
 - If there are any new components or APIs, update the [constants
-list](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/constants.js) with the new components.
+  list](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/constants.js) with the new components.
 - Pages will be then automatically generated for each of the new components.
 
 > Once we have a 3rd party bundle automatically built for us, we should no longer need this step as that will contain only 3rd party SDK documentation. That is an open request to the NR One Core Team.
