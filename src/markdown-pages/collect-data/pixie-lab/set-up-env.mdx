@@ -1,0 +1,143 @@
+---
+path: '/collect-data/pixie/set-up-env'
+duration: '10 min'
+title: 'Set up your TinyHat environment'
+template: 'GuideTemplate'
+description: 'Before you begin, set up a local minikube cluster that runs your TinyHat application.'
+procIdx: 1
+---
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to monitor your Kubernetes cluster with Pixie. If you haven't already, check out the [lab introduction](/collect-data/pixie).
+
+</Callout>
+
+Before you learn how you can use Pixie to monitor your Kubernetes clusters, you need to set one up. We've designed a cluster for you to use in this lab.
+
+<Steps>
+
+<Step>
+
+Clone `pixie-lab-materials` from GitHub:
+
+<>
+
+```bash
+git clone https://github.com/newrelic-experimental/pixie-lab-materials
+```
+
+</>
+
+This repository contains all the code you need to complete this lab.
+
+</Step>
+
+<Step>
+
+Start a new minikube cluster:
+
+<>
+
+```bash
+minikube start --driver=hyperkit --cni=flannel --cpus=4 --memory=8000
+[output] 😄  minikube v1.13.1 on Darwin 11.6
+[output] ✨  Using the hyperkit driver based on user configuration
+[output] 👍  Starting control plane node minikube in cluster minikube
+[output] 🔥  Creating hyperkit VM (CPUs=4, Memory=8000MB, Disk=20000MB) ...
+[output] 🐳  Preparing Kubernetes v1.19.2 on Docker 19.03.12 ...
+[output] 🔗  Configuring Flannel (Container Networking Interface) ...
+[output] 🔎  Verifying Kubernetes components...
+[output] 🌟  Enabled addons: default-storageclass, storage-provisioner
+[output] 🏄  Done! kubectl is now configured to use "minikube" by default
+```
+
+</>
+
+This uses the pixie-supported hyperkit driver and configures your network memory and CPU with limits that will work well with this lab.
+
+<Callout variant="tip">
+
+If you're using linux, use the `kvm2` driver instead. If you're missing any dependencies, see the [requirements](/collect-data/pixie/#requirements) in the lab overview for installation links.
+
+</Callout>
+
+</Step>
+
+<Step>
+
+From the root directory and the main branch of your `pixie-lab-materials` repo, apply your manifests:
+
+<>
+
+```bash
+cd pixie-lab-materials
+git checkout main
+kubectl apply -f kube
+[output] Already on 'main'
+[output] Your branch is up to date with 'origin/main'.
+[output] deployment.apps/add-service created
+[output] service/add-service created
+[output] deployment.apps/admin-service created
+[output] service/admin-service created
+[output] deployment.apps/fetch-service created
+[output] service/fetch-service created
+[output] deployment.apps/frontend-service created
+[output] service/frontend-service created
+[output] deployment.apps/gateway-service created
+[output] service/gateway-service created
+[output] deployment.apps/manipulation-service created
+[output] service/manipulation-service created
+[output] deployment.apps/moderate-service created
+[output] service/moderate-service created
+[output] service/mysql created
+[output] deployment.apps/mysql created
+[output] persistentvolume/mysql-pv-volume created
+[output] persistentvolumeclaim/mysql-pv-claim created
+[output] configmap/mysql-initdb-config created
+[output] deployment.apps/upload-service created
+[output] service/upload-service created
+```
+
+</>
+
+This deploys your TinyHat application into your minikube cluster.
+
+</Step>
+
+<Step>
+
+In a new terminal window, open a minikube tunnel:
+
+<>
+
+```bash
+minikube tunnel
+```
+
+</>
+
+This exposes the load balancer services in your cluster so you can access them.
+
+<Callout variant="important">
+
+You may have to provide your user's password to allow minikube to work.
+
+</Callout>
+
+</Step>
+
+</Steps>
+
+You should now have two terminal windows:
+
+- One that contains your tunnel. This needs to remain open as long as you use your website.
+- One for running the rest of the commands in this lab
+
+In the next procedure, you familiarize yourself with your cluster and website.
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to monitor your Kubernetes cluster with Pixie. Now that you've set up your environment, [explore your cluster](/collect-data/pixie/explore-cluster).
+
+</Callout>

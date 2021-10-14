@@ -1,0 +1,107 @@
+---
+path: '/collect-data/pixie/explore-cluster'
+duration: '5 min'
+title: 'Explore your cluster'
+template: 'GuideTemplate'
+description: 'Explore your cluster'
+procIdx: 2
+---
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to monitor your Kubernetes cluster with Pixie.
+
+Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_Set up your TinyHat environment_](/collect-data/pixie/set-up-env), before starting this one.
+
+</Callout>
+
+Your website, TinyHat.me, runs in Kubernetes. While Pixie helps you monitor your cluster and find the source of problems that arise within it, it's helpful to know about your cluster's structure and the components that make it up before learning how to use Pixie.
+
+<Steps>
+
+<Step>
+
+View your pods:
+
+<>
+
+```bash
+kubectl get pods
+[output] NAME                                   READY   STATUS    RESTARTS   AGE
+[output] add-service-7bd4df79d8-pvtz6           1/1     Running   0          2m31s
+[output] admin-service-6877db7bcc-t86qj         1/1     Running   0          2m31s
+[output] fetch-service-768d9f9988-8k8jp         1/1     Running   2          2m31s
+[output] frontend-service-d6d79cc6d-q496f       1/1     Running   0          2m31s
+[output] gateway-service-5bc8bcc679-stxbn       1/1     Running   0          2m31s
+[output] manipulation-service-96c8fd7d4-64gfr   1/1     Running   0          2m31s
+[output] moderate-service-859498d88b-nsg5q      1/1     Running   0          2m31s
+[output] mysql-6d65cdf67f-59dfg                 1/1     Running   0          2m31s
+[output] upload-service-7c8d8b648f-x6kq5        1/1     Running   0          2m31s
+```
+
+</>
+
+<Callout variant="tip">
+
+Every pod should be running by now, but if one isn't, give it few more minutes.
+
+</Callout>
+
+Here, you see nine containerized services, each with their own pod. Instead of going into detail about these services now, you'll learn about them in context as you walk through this lab's scenarios.
+
+</Step>
+
+<Step>
+
+View your services next:
+
+<>
+
+```bash
+kubectl get services
+[output] NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)        AGE
+[output] add-service            ClusterIP      10.106.237.140   <none>           80/TCP         3m22s
+[output] admin-service          ClusterIP      10.101.252.142   <none>           80/TCP         3m22s
+[output] fetch-service          ClusterIP      10.105.255.200   <none>           80/TCP         3m22s
+[output] frontend-service       LoadBalancer   10.110.241.254   10.110.241.254   80:30183/TCP   3m22s
+[output] gateway-service        LoadBalancer   10.100.146.125   10.100.146.125   80:30605/TCP   3m22s
+[output] kubernetes             ClusterIP      10.96.0.1        <none>           443/TCP        3m27s
+[output] manipulation-service   ClusterIP      10.105.191.228   <none>           80/TCP         3m22s
+[output] moderate-service       ClusterIP      10.97.33.66      <none>           80/TCP         3m22s
+[output] mysql                  ClusterIP      10.111.4.242     <none>           3306/TCP       3m22s
+[output] upload-service         ClusterIP      10.98.220.212    <none>           80/TCP         3m22s
+```
+
+</>
+
+Here, you see your Kubernetes services. Notice that most of your app services have a corresponding Kubernetes service. One of these services is particularly important: `frontend-service`. This is a `LoadBalancer` that you connect to when you view your site.
+
+</Step>
+
+<Step>
+
+Speaking of viewing your site, do that now by opening the `EXTERNAL_IP` that you see for `frontend-service` in your browser:
+
+![TinyHat.me](../../../images/pixie/frontend.png)
+
+</Step>
+
+<Step>
+
+Select a number of hats to display and a hat type. Then, select **Hat Me**:
+
+![TinyHat.me showing a picture of Bob Ross with cat ears](../../../images/pixie/cat-ears-bob.png)
+
+Now Bob Ross is wearing the hat(s) that you selected. Cool, right?
+
+</Step>
+
+</Steps>
+
+With a better understanding of your cluster's resources and your website, you're better prepared to install Pixie and use it to monitor and debug your application when problems arise.
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a course that teaches you how to monitor your Kubernetes cluster with Pixie. Now that you've explored your cluster, [instrument it with Pixie](/collect-data/pixie/instrument-cluster).
+
+</Callout>

@@ -6,7 +6,8 @@ import PageLayout from '../components/PageLayout';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
-import * as styles from './LabOverviewTemplate.module.scss';
+import * as overviewStyles from './OverviewTemplate.module.scss';
+import * as labOverviewStyles from './LabOverviewTemplate.module.scss';
 
 import DevSiteSeo from '../components/DevSiteSeo';
 
@@ -14,6 +15,7 @@ const LabOverviewTemplate = ({ data, location }) => {
   const { mdx, guides } = data;
   const { frontmatter, body } = mdx;
   const { title, description } = frontmatter;
+  console.log(guides?.nodes)
 
   function sortProcedures(a, b) {
     if (a.frontmatter.procIdx > b.frontmatter.procIdx) {
@@ -36,20 +38,19 @@ const LabOverviewTemplate = ({ data, location }) => {
           <MDXContainer>{body}</MDXContainer>
           {!!guides?.nodes.length && (
             <>
-              <h2 className={styles.subtitle}>Procedures</h2>
-              <GuideListing className={styles.guideListing}>
-                <GuideListing.List className={styles.labGuideList}>
+              <h2 className={overviewStyles.subtitle}>Procedures</h2>
+              <GuideListing className={overviewStyles.guideListing}>
+                <GuideListing.List className={labOverviewStyles.labGuideList}>
                   {guides?.nodes
                     .sort(sortProcedures)
                     .map(({ frontmatter }, index) => (
                       <GuideTile
-                        className={styles.labGuideCard}
+                        className={labOverviewStyles.labGuideCard}
                         to={frontmatter.path}
                         key={index}
                         duration={frontmatter.duration}
-                        title={`${frontmatter.procIdx}. ${
-                          frontmatter.tileShorthand?.title || frontmatter.title
-                        }`}
+                        title={`${frontmatter.procIdx}. ${frontmatter.tileShorthand?.title || frontmatter.title
+                          }`}
                         description={
                           frontmatter.tileShorthand?.description ||
                           frontmatter.description
