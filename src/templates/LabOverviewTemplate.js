@@ -15,7 +15,7 @@ const LabOverviewTemplate = ({ data, location }) => {
   const { mdx, guides } = data;
   const { frontmatter, body } = mdx;
   const { title, description } = frontmatter;
-  console.log(guides?.nodes)
+  console.log(guides?.nodes);
 
   function sortProcedures(a, b) {
     if (a.frontmatter.procIdx > b.frontmatter.procIdx) {
@@ -49,8 +49,9 @@ const LabOverviewTemplate = ({ data, location }) => {
                         to={frontmatter.path}
                         key={index}
                         duration={frontmatter.duration}
-                        title={`${frontmatter.procIdx}. ${frontmatter.tileShorthand?.title || frontmatter.title
-                          }`}
+                        title={`${frontmatter.procIdx}. ${
+                          frontmatter.tileShorthand?.title || frontmatter.title
+                        }`}
                         description={
                           frontmatter.tileShorthand?.description ||
                           frontmatter.description
