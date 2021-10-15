@@ -15,7 +15,6 @@ const LabOverviewTemplate = ({ data, location }) => {
   const { mdx, guides } = data;
   const { frontmatter, body } = mdx;
   const { title, description } = frontmatter;
-  console.log(guides?.nodes);
 
   function sortProcedures(a, b) {
     if (a.frontmatter.procIdx > b.frontmatter.procIdx) {
