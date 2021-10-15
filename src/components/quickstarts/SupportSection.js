@@ -10,7 +10,6 @@ import {
 
 const SupportSection = ({ supportLevel }) => {
   const tessen = useTessen();
-  const whatsIncluded = <strong>What's included</strong>;
   const supportLink = (
     <Link
       to={SUPPORT_LINK}
@@ -38,31 +37,31 @@ const SupportSection = ({ supportLevel }) => {
   const QUICKSTART_SUPPORT_CONTENT = {
     [QUICKSTART_SUPPORT_LEVELS.NEWRELIC]: {
       title: 'Built by New Relic',
-      content: [
-        'Need help? ',
-        supportLink,
-        ' or check out our community forum, ',
-        communityLink,
-        '.',
-      ],
+      content: (
+        <p>
+          Need help? {supportLink} or check out our community forum,{' '}
+          {communityLink}.
+        </p>
+      ),
     },
     [QUICKSTART_SUPPORT_LEVELS.VERIFIED]: {
       title: 'Verified by New Relic',
-      content: [
-        "Need help? Find the author's support resources under ",
-        whatsIncluded,
-        '. Or check out our community forum, ',
-        communityLink,
-        '.',
-      ],
+      content: (
+        <p>
+          Need help? Find the author's support resources under{' '}
+          <strong>What's included</strong>. Or check out our community forum,{' '}
+          {communityLink}.
+        </p>
+      ),
     },
     [QUICKSTART_SUPPORT_LEVELS.COMMUNITY]: {
       title: 'Built by the community',
-      content: [
-        'Need help? Visit our community forum, ',
-        communityLink,
-        ' to find an answer or post a question.',
-      ],
+      content: (
+        <p>
+          Need help? Visit our community forum, {communityLink} to find an
+          answer or post a question.
+        </p>
+      ),
     },
   };
 
@@ -75,7 +74,7 @@ const SupportSection = ({ supportLevel }) => {
       >
         {QUICKSTART_SUPPORT_CONTENT[`${supportLevel}`].title}
       </h5>
-      <p>{QUICKSTART_SUPPORT_CONTENT[`${supportLevel}`].content}</p>
+      {QUICKSTART_SUPPORT_CONTENT[`${supportLevel}`].content}
     </>
   );
 };
