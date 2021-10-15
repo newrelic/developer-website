@@ -1,3 +1,15 @@
+# [1.60.0](https://github.com/newrelic/developer-website/compare/v1.59.2...v1.60.0) (2021-10-15)
+
+
+### Bug Fixes
+
+* remove unused markdown ([176083a](https://github.com/newrelic/developer-website/commit/176083afad992b4b70eae177209f14399c794dc7))
+
+
+### Features
+
+* added a support section component with tessen tracking ([8b0c076](https://github.com/newrelic/developer-website/commit/8b0c0766612c9d9a31ebabfa4753811f43f7da2f))
+
 ## [1.59.2](https://github.com/newrelic/developer-website/compare/v1.59.1...v1.59.2) (2021-10-13)
 
 
