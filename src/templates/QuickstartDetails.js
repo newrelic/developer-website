@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import Tabs from '../components/Tabs';
 import EmptyTab from '../components/quickstarts/EmptyTab';
+import SupportSection from '../components/quickstarts/SupportSection';
 import QuickstartAlerts from '../components/quickstarts/QuickstartAlerts';
 import QuickstartDashboards from '../components/quickstarts/QuickstartDashboards';
 import {
@@ -17,13 +18,11 @@ import {
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
 import InstallButton from '../components/InstallButton';
-import Markdown from '../components/Markdown';
 import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { quickstart } from '../types';
 import {
   QUICKSTARTS_REPO,
-  QUICKSTART_SUPPORT_CONTENT,
   SIGNUP_LINK,
   LOGIN_LINK,
   SHIELD_LEVELS,
@@ -301,18 +300,7 @@ const QuickstartDetails = ({ data, location }) => {
             </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>Support</PageTools.Title>
-              <h5
-                css={css`
-                  text-transform: uppercase;
-                `}
-              >
-                {QUICKSTART_SUPPORT_CONTENT[`${quickstart.level}`].title}
-              </h5>
-              <p>
-                <Markdown>
-                  {QUICKSTART_SUPPORT_CONTENT[`${quickstart.level}`].content}
-                </Markdown>
-              </p>
+              <SupportSection supportLevel={quickstart.level} />
             </PageTools.Section>
           </Layout.PageTools>
         </PageLayout>
