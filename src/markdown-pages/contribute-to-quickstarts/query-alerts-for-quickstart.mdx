@@ -21,11 +21,79 @@ This guide assumes you already have alerts in your New Relic account and a quick
 
 </Callout>
 
-## Query an existing static alert in NerdGraph
+## Set up your quickstart's alerts directory
+
+This guide assumes you have a quickstart. However, your quickstart may or may not already have alerts. Either way, to add alerts to your quickstart, you need an _alerts_ directory. If your quickstart already have one, you can skip this section.
+
+The [__template_ directory](https://github.com/newrelic/newrelic-quickstarts/tree/main/_template) of [New Relic One quickstarts](https://github.com/newrelic/newrelic-quickstarts) contains an _alerts_ template folder. Copy this folder to your quickstart. From here, you use the YAML file that corresponds to the alert condition type you want to add to your quickstart.
+
+Once your quickstart is ready to add alerts, you need to look up your alert condition's ID.
+
+## Look up your alert's condition ID
+
+To populate your alert configurations with NerdGraph, you first need to look up its identifier.
+
+<Steps>
+
+<Step>
+
+From your [New Relic homepage](https://one.newrelic.com/), go to **Alerts & AI**.
+
+![Alerts & AI](../../images/query-alerts/alerts-and-ai.png)
+
+</Step>
+
+<Step>
+
+Click **Policies** in left hand navigation.
+
+![Policies](../../images/query-alerts/policies.png)
+
+</Step>
+
+<Step>
+
+Choose your policy from the list.
+
+![alert condition](../../images/query-alerts/alert-conditions.png)
+
+</Step>
+
+<Step>
+
+Click the corresponding condition and copy its ID.
+
+![get alert condition id](../../images/query-alerts/alert-id.png)
+
+</Step>
+
+</Steps>
+
+With this identifier, you can now query your alert conditions and use the response to build out alert resources in your quickstart.
+
+## Query alert conditions in NerdGraph
+
+There are three types of alerts you can have in New Relic:
+
+- [Static](#query-your-static-alert-condition)
+- [Baseline](#query-your-baseline-alert-condition)
+- [Outlier](#query-your-outlier-alert-condition)
+
+Jump to the appropriate section for the kind of alert you want to add to your quickstart.
+
+### Query your static alert condition
+
+<Steps>
+
+<Step>
 
 Open the [NerdGraph API explorer](https://api.newrelic.com/graphiql) and select your key from the dropdown menu.
 
 ![graphiql interface](../../images/query-alerts/nerdgraph-interface.png)
+
+</Step>
+
+<Step>
 
 Copy the following GraphQL query and paste it in the center pane of the explorer.
 
@@ -60,41 +128,36 @@ Copy the following GraphQL query and paste it in the center pane of the explorer
 
 ```
 
-Note here that you're building the query on `AlertsNrqlStaticCondition` to query the existing static alert. It returns alert's id, name, query and other information that you can use to update your quickstart. 
+Here, you query `AlertsNrqlStaticCondition` for your condition's ID, name, query and more. These are the required fields you need to create the same alert in your quickstart.
 
-Replace your account ID and condition ID in the above query to get the details of your alert condition. By using the UI, the explorer automatically inserts your account ID, but you need to look up your condition's ID.
+<Callout variant="important">
 
-In your [New Relic homepage](https://one.newrelic.com/), go to **Alerts & AI**.
+Make sure you replace your account ID and condition ID in the above query.
 
-![Alerts & AI](../../images/query-alerts/alerts-and-ai.png)
+</Callout>
+
+</Step>
  
-Click **Policies** in left hand navigation. 
+<Step>
 
-![Policies](../../images/query-alerts/policies.png)
-
-Here, choose your policy from the list and click on the corresponding condition to get its ID. 
-
-![alert condition](../../images/query-alerts/alert-conditions.png)
-
-![get alert condition id](../../images/query-alerts/alert-id.png)
-
-Insert this ID in the above query and execute it to get a JSON representation of the specified condition. 
+Execute the query to get a JSON representation of the specified condition.
 
 ![static alert query](../../images/query-alerts/static-query-response.png)
 
-You can use this response to add static alert to your quickstart. 
+Next, use this response to add static alert to your quickstart.
 
 <Callout variant='tip'>
 
-Notice that the checkboxes in the left-hand pane get checked when you paste the query in the explorer. This query returns the fileds required to add alert to the quickstart. 
+Notice the checkboxes in the left-hand pane get checked when you paste the query in the explorer. This query returns the fileds required to add alert to the quickstart. 
 If you've set custom fields or want to query more information, feel free to either edit the query in the center pane of the explorer or check the corresponding box in the left-hand pane.
 
 </Callout>
 
-The [__template_ directory](https://github.com/newrelic/newrelic-quickstarts/tree/main/_template) of [New Relic One quickstarts](https://github.com/newrelic/newrelic-observability-packs) contains the folder for alerts. You find the templates for static, baseline and outlier alerts inside this folder. 
-If you don't already have an _alerts_ directory in your quickstart, copy this folder to your quickstart. From here, you use the corresponding yaml file to add alerts to your quickstart.
+</Step>
 
-Use the _static-alert.yml_ file from _alerts_ folder and populate it using the information returned from above query. For reference, your _static-alert.yml_ file contains the following content.
+<Step>
+
+Populate _static-alert.yml_ from your _alerts_ quickstart folder with the data returned from your query. Given the example response from the last step, our file looks like:
 
 ```yml
 ---
@@ -134,11 +197,19 @@ violationTimeLimitSeconds: 259200
 
 ```
 
-Here, you added the pre-existing static alert to the quickstart. Follow the same procedure to add baseline and outlier alerts. 
+Here, you added a static alert to your quickstart. 
 
-## Query an existing baseline alert in NerdGraph
+</Step>
 
-Use the following GraphQL query to query an existing baseline alert. 
+</Steps>
+
+### Query your baseline alert condition
+
+<Steps>
+
+<Step>
+
+Use the following GraphQL query to query an existing baseline alert in NerdGraph. 
 
 ```js
 {
@@ -169,11 +240,23 @@ Use the following GraphQL query to query an existing baseline alert.
 
 ```
 
-Note that you build the query on `AlertsNrqlBaselineCondition`. This will return you the id, name, query, baselineDirection and other information related to the specified baseline condition. 
+Note that here you query `AlertsNrqlBaselineCondition` for your condition's name, query, baselineDirection, and other fields required to add the condition to your quickstart. 
+
+</Step>
+
+<Step>
+
+Execute the query to get the configuration data of your alert. 
 
 ![baseline alert query response](../../images/query-alerts/baseline-query-response.png)
 
-Use the _baseline-alert.yml_ file from _alerts_ folder and populate it using the information returned from above query.
+Next, use this response to add baseline alert to your quickstart.
+
+</Step>
+
+<Step>
+
+Populate _baseline-alert.yml_ file from _alerts_ quickstart folder with the data returned from your query. For your reference, our file looks like: 
 
 ```yml
 ---
@@ -213,9 +296,17 @@ violationTimeLimitSeconds: 259200
 ```
 Here, you added an existing baseline alert to your quickstart.
 
-## Query an existing outlier alert in NerdGraph
+</Step>
 
-Use the following GraphQL query to query an existing outlier alert.
+</Steps>
+
+### Query your outlier alert condition
+
+<Steps>
+
+<Step>
+
+Copy & paste the following GraphQL query in NerdGraph to query an existing outlier alert.
 
 ```js
 {
@@ -245,11 +336,21 @@ Use the following GraphQL query to query an existing outlier alert.
 }
 
 ```
-Note that you build the query on `AlertsNrqlOutlierCondition` for outlier alert. This returns the JSON representation of the required fields to add outlier alert to your quickstart. 
+Here, you query `AlertsNrqlOutlierCondition` for required fields to add outlier alert to your quickstart. 
+
+</Step>
+
+<Step>
+
+Execute the query to get the configuration data of your alert condition.
 
 ![outlier alert query response](../../images/query-alerts/outlier-query-response.png)
 
-Use the _outlier-alert.yml_ file from _alerts_ folder and populate it using the information returned from above query.
+</Step>
+
+<Step>
+
+Populate the _outlier-alert.yml_ file from _alerts_ quickstart folder using the information returned from your query.
 
 ```yml
 ---
@@ -289,6 +390,10 @@ violationTimeLimitSeconds: 2592000
 ```
 
 Here, you added an outlier alert to your quickstart. 
+
+</Step>
+
+</Steps>
 
 ## Summary
 
