@@ -189,14 +189,27 @@ const QuickstartDetails = ({ data, location }) => {
               }
             `}
           >
-            <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
+            <Tabs.BarItem
+              id="overview"
+              quickstartName={quickstart.name}
+              quickstartId={quickstart.id}
+            >
+              Overview
+            </Tabs.BarItem>
             <Tabs.BarItem
               id="dashboards"
               count={quickstart.dashboards?.length ?? 0}
+              quickstartName={quickstart.name}
+              quickstartId={quickstart.id}
             >
               Dashboards
             </Tabs.BarItem>
-            <Tabs.BarItem id="alerts" count={quickstart.alerts?.length ?? 0}>
+            <Tabs.BarItem
+              id="alerts"
+              count={quickstart.alerts?.length ?? 0}
+              quickstartName={quickstart.name}
+              quickstartId={quickstart.id}
+            >
               Alerts
             </Tabs.BarItem>
             <Tabs.BarItem
@@ -205,6 +218,8 @@ const QuickstartDetails = ({ data, location }) => {
                 (quickstart.instrumentation?.length ?? 0) +
                 (quickstart.documentation?.length ?? 0)
               }
+              quickstartName={quickstart.name}
+              quickstartId={quickstart.id}
             >
               Data sources
             </Tabs.BarItem>
@@ -266,7 +281,11 @@ const QuickstartDetails = ({ data, location }) => {
                     onClick={() =>
                       tessen.track(
                         'instantObservability',
-                        'QuickstartDetailsSignUpClick'
+                        'QuickstartDetailsSignUpClick',
+                        {
+                          quickstartName: quickstart.name,
+                          quickstartId: quickstart.id,
+                        }
                       )
                     }
                   >
@@ -278,7 +297,11 @@ const QuickstartDetails = ({ data, location }) => {
                     onClick={() =>
                       tessen.track(
                         'instantObservability',
-                        'QuickstartDetailsLoginClick'
+                        'QuickstartDetailsLoginClick',
+                        {
+                          quickstartName: quickstart.name,
+                          quickstartId: quickstart.id,
+                        }
                       )
                     }
                   >
@@ -300,7 +323,11 @@ const QuickstartDetails = ({ data, location }) => {
             </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>Support</PageTools.Title>
-              <SupportSection supportLevel={quickstart.level} />
+              <SupportSection
+                supportLevel={quickstart.level}
+                quickstartName={quickstart.name}
+                quickstartId={quickstart.id}
+              />
             </PageTools.Section>
           </Layout.PageTools>
         </PageLayout>

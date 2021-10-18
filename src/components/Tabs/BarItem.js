@@ -7,7 +7,15 @@ import {
 } from '@newrelic/gatsby-theme-newrelic';
 import useTabs from './useTabs';
 
-const BarItem = ({ index, children, id, count, disabled }) => {
+const BarItem = ({
+  index,
+  children,
+  id,
+  count,
+  disabled,
+  quickstartName,
+  quickstartId,
+}) => {
   const [currentTab, setCurrentTab] = useTabs();
 
   const isSelected =
@@ -18,6 +26,8 @@ const BarItem = ({ index, children, id, count, disabled }) => {
       actionName: 'packTabToggle',
       packTabState: currentTab,
       packTabCount: count,
+      quickstartName,
+      quickstartId,
     },
     { enabled: Boolean(currentTab) }
   );
@@ -31,6 +41,8 @@ const BarItem = ({ index, children, id, count, disabled }) => {
         tessen.track('instantObservability', `QuickstartTabToggle`, {
           QuickstartTabState: id,
           QuickstartTabCount: count,
+          quickstartName,
+          quickstartId,
         });
       }}
       css={css`
@@ -137,6 +149,8 @@ BarItem.propTypes = {
   id: PropTypes.string.isRequired,
   count: PropTypes.number,
   disabled: PropTypes.bool,
+  quickstartName: PropTypes.string.isRequired,
+  quickstartId: PropTypes.string.isRequired,
 };
 
 export default BarItem;

@@ -8,14 +8,17 @@ import {
   QUICKSTART_SUPPORT_LEVELS,
 } from '../../data/constants';
 
-const SupportSection = ({ supportLevel }) => {
+const SupportSection = ({ supportLevel, quickstartName, quickstartId }) => {
   const tessen = useTessen();
   const supportLink = (
     <Link
       to={SUPPORT_LINK}
       key={QUICKSTART_SUPPORT_LEVELS.NEWRELIC}
       onClick={() =>
-        tessen.track('instantObservability', 'QuickstartDetailsSupportClick')
+        tessen.track('instantObservability', 'QuickstartDetailsSupportClick', {
+          quickstartName,
+          quickstartId,
+        })
       }
     >
       Visit our Support Center
@@ -27,7 +30,14 @@ const SupportSection = ({ supportLevel }) => {
       to={COMMUNITY_LINK}
       key={QUICKSTART_SUPPORT_LEVELS.NEWRELIC}
       onClick={() =>
-        tessen.track('instantObservability', 'QuickstartDetailsCommunityClick')
+        tessen.track(
+          'instantObservability',
+          'QuickstartDetailsCommunityClick',
+          {
+            quickstartName,
+            quickstartId,
+          }
+        )
       }
     >
       the Explorers Hub
@@ -81,6 +91,8 @@ const SupportSection = ({ supportLevel }) => {
 
 SupportSection.propTypes = {
   supportLevel: PropTypes.string.isRequired,
+  quickstartName: PropTypes.string.isRequired,
+  quickstartId: PropTypes.string.isRequired,
 };
 
 export default SupportSection;
