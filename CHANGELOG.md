@@ -1,3 +1,10 @@
+# [1.61.0](https://github.com/newrelic/developer-website/compare/v1.60.0...v1.61.0) (2021-10-18)
+
+
+### Features
+
+* Update to node 16 ([45d219e](https://github.com/newrelic/developer-website/commit/45d219ed6a7a24416ad9500437ec296e03ac18ed))
+
 # [1.60.0](https://github.com/newrelic/developer-website/compare/v1.59.2...v1.60.0) (2021-10-15)
 
 
