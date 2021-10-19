@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import useTabs from './useTabs';
 
-const BarItem = ({ index, children, id, count, disabled, ...props }) => {
+const BarItem = ({
+  index,
+  children,
+  id,
+  count,
+  disabled,
+  onClick: onTabClick,
+}) => {
   const [currentTab, setCurrentTab] = useTabs();
-  const { onClick: onTabClick } = props;
   const isSelected =
     id === currentTab || (currentTab === undefined && index === 0);
 

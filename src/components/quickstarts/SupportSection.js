@@ -8,8 +8,7 @@ import {
   QUICKSTART_SUPPORT_LEVELS,
 } from '../../data/constants';
 
-const SupportSection = ({ supportLevel, ...props }) => {
-  const { onClick: onLinkClick } = props;
+const SupportSection = ({ supportLevel, onClick: onLinkClick }) => {
   const supportLink = (
     <Link
       to={SUPPORT_LINK}
