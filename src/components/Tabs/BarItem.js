@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import {
-  useTessen,
-  useInstrumentedData,
-} from '@newrelic/gatsby-theme-newrelic';
 import useTabs from './useTabs';
 
 const BarItem = ({ index, children, id, count, disabled, ...props }) => {
