@@ -162,7 +162,7 @@ If our existing [logging integrations](https://docs.newrelic.com/docs/new-relic-
 ```shell lineNumbers=true
 curl -i -X POST https://log-api.newrelic.com/log/v1 \
   -H "Content-Type: application/json" \
-  -H "Api-Key: LICENSE_KEY" \
+  -H "Api-Key: $LICENSE_KEY" \
   -d '[
         "logs": [
           {
