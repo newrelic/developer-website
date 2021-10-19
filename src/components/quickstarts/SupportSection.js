@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { useTessen, Link } from '@newrelic/gatsby-theme-newrelic';
+import { Link } from '@newrelic/gatsby-theme-newrelic';
 import {
   SUPPORT_LINK,
   COMMUNITY_LINK,
   QUICKSTART_SUPPORT_LEVELS,
 } from '../../data/constants';
 
-const SupportSection = ({ supportLevel }) => {
-  const tessen = useTessen();
+const SupportSection = ({ supportLevel, onClick: onLinkClick }) => {
   const supportLink = (
     <Link
       to={SUPPORT_LINK}
       key={QUICKSTART_SUPPORT_LEVELS.NEWRELIC}
       onClick={() =>
-        tessen.track('instantObservability', 'QuickstartDetailsSupportClick')
+        onLinkClick && onLinkClick('QuickstartDetailsSupportClick')
       }
     >
       Visit our Support Center
@@ -26,9 +25,7 @@ const SupportSection = ({ supportLevel }) => {
     <Link
       to={COMMUNITY_LINK}
       key={QUICKSTART_SUPPORT_LEVELS.NEWRELIC}
-      onClick={() =>
-        tessen.track('instantObservability', 'QuickstartDetailsCommunityClick')
-      }
+      onClick={() => onLinkClick('QuickstartDetailsCommunityClick')}
     >
       the Explorers Hub
     </Link>
@@ -81,6 +78,7 @@ const SupportSection = ({ supportLevel }) => {
 
 SupportSection.propTypes = {
   supportLevel: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default SupportSection;

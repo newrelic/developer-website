@@ -1,26 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import {
-  useTessen,
-  useInstrumentedData,
-} from '@newrelic/gatsby-theme-newrelic';
 import useTabs from './useTabs';
 
-const BarItem = ({ index, children, id, count, disabled }) => {
+const BarItem = ({
+  index,
+  children,
+  id,
+  count,
+  disabled,
+  onClick: onTabClick,
+}) => {
   const [currentTab, setCurrentTab] = useTabs();
-
   const isSelected =
     id === currentTab || (currentTab === undefined && index === 0);
-  const tessen = useTessen();
-  useInstrumentedData(
-    {
-      actionName: 'packTabToggle',
-      packTabState: currentTab,
-      packTabCount: count,
-    },
-    { enabled: Boolean(currentTab) }
-  );
+
   return (
     <button
       role="tab"
@@ -28,10 +22,7 @@ const BarItem = ({ index, children, id, count, disabled }) => {
       type="button"
       onClick={() => {
         !disabled && setCurrentTab(id);
-        tessen.track('instantObservability', `QuickstartTabToggle`, {
-          QuickstartTabState: id,
-          QuickstartTabCount: count,
-        });
+        onTabClick && onTabClick(id, count);
       }}
       css={css`
         border: 0;
@@ -137,6 +128,7 @@ BarItem.propTypes = {
   id: PropTypes.string.isRequired,
   count: PropTypes.number,
   disabled: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default BarItem;
