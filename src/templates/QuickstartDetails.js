@@ -57,6 +57,20 @@ const QuickstartDetails = ({ data, location }) => {
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,
     });
+  const tessenTabTrack = (action, quickstart) => (id, count) => {
+    tessen.track('instantObservability', action, {
+      QuickstartTabState: id,
+      QuickstartTabCount: count,
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+    });
+  };
+  const tessenSupportTrack = (quickstart) => (action) => {
+    tessen.track('instantObservability', action, {
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+    });
+  };
 
   return (
     <>
@@ -189,26 +203,18 @@ const QuickstartDetails = ({ data, location }) => {
               }
             `}
           >
-            <Tabs.BarItem
-              id="overview"
-              quickstartName={quickstart.name}
-              quickstartId={quickstart.id}
-            >
-              Overview
-            </Tabs.BarItem>
+            <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
             <Tabs.BarItem
               id="dashboards"
               count={quickstart.dashboards?.length ?? 0}
-              quickstartName={quickstart.name}
-              quickstartId={quickstart.id}
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
               Dashboards
             </Tabs.BarItem>
             <Tabs.BarItem
               id="alerts"
               count={quickstart.alerts?.length ?? 0}
-              quickstartName={quickstart.name}
-              quickstartId={quickstart.id}
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
               Alerts
             </Tabs.BarItem>
@@ -218,8 +224,7 @@ const QuickstartDetails = ({ data, location }) => {
                 (quickstart.instrumentation?.length ?? 0) +
                 (quickstart.documentation?.length ?? 0)
               }
-              quickstartName={quickstart.name}
-              quickstartId={quickstart.id}
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
               Data sources
             </Tabs.BarItem>
@@ -325,8 +330,7 @@ const QuickstartDetails = ({ data, location }) => {
               <PageTools.Title>Support</PageTools.Title>
               <SupportSection
                 supportLevel={quickstart.level}
-                quickstartName={quickstart.name}
-                quickstartId={quickstart.id}
+                onClick={tessenSupportTrack(quickstart)}
               />
             </PageTools.Section>
           </Layout.PageTools>
