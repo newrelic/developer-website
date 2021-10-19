@@ -166,7 +166,21 @@ const QuickstartsPage = ({ data, location }) => {
   const quickstarts = data.allQuickstarts.nodes;
 
   const alphaSort = quickstarts.sort((a, b) => a.title.localeCompare(b.title));
-  const sortedQuickstarts = sortFeaturedQuickstarts(alphaSort);
+  let sortedQuickstarts = sortFeaturedQuickstarts(alphaSort);
+
+
+  // Hard-code for moving codestream object to front of sortedQuickstarts array - CM
+  if (!category && !filter && !search || 
+        category === 'featured' && !filter && !search ) {
+    // uuid is codestream id specifically - CM
+    const codestreamIndex = sortedQuickstarts.findIndex(({ id }) => id === '29bd9a4a-1c19-4219-9694-0942f6411ce7');
+    const codestreamObject = sortedQuickstarts[codestreamIndex];
+    sortedQuickstarts = [
+      codestreamObject, 
+      ...sortedQuickstarts.slice(0, codestreamIndex), 
+      ...sortedQuickstarts.slice(codestreamIndex + 1)
+    ];
+  };
 
   const filteredQuickstarts = sortedQuickstarts
     .filter(filterBySearch(search))
