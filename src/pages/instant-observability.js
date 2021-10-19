@@ -177,12 +177,15 @@ const QuickstartsPage = ({ data, location }) => {
     const codestreamIndex = sortedQuickstarts.findIndex(
       ({ id }) => id === '29bd9a4a-1c19-4219-9694-0942f6411ce7'
     );
-    const codestreamObject = sortedQuickstarts[codestreamIndex];
-    sortedQuickstarts = [
-      codestreamObject,
-      ...sortedQuickstarts.slice(0, codestreamIndex),
-      ...sortedQuickstarts.slice(codestreamIndex + 1),
-    ];
+
+    if (codestreamIndex > -1) {
+      const codestreamObject = sortedQuickstarts[codestreamIndex];
+      sortedQuickstarts = [
+        codestreamObject,
+        ...sortedQuickstarts.slice(0, codestreamIndex),
+        ...sortedQuickstarts.slice(codestreamIndex + 1),
+      ];
+    }
   }
 
   const filteredQuickstarts = sortedQuickstarts
