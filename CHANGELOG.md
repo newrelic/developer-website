@@ -1,3 +1,15 @@
+# [1.62.0](https://github.com/newrelic/developer-website/compare/v1.61.0...v1.62.0) (2021-10-19)
+
+
+### Bug Fixes
+
+* remove unused vars ([5a4e4b3](https://github.com/newrelic/developer-website/commit/5a4e4b33393877cd5e7ef33e96a7549d8454187e))
+
+
+### Features
+
+* add quickstart name and id to tessen events ([28422b0](https://github.com/newrelic/developer-website/commit/28422b0ee8936cca2919557825a0f48e58959b73))
+
 # [1.61.0](https://github.com/newrelic/developer-website/compare/v1.60.0...v1.61.0) (2021-10-18)
 
 
