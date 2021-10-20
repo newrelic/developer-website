@@ -1,3 +1,17 @@
+# [1.63.0](https://github.com/newrelic/developer-website/compare/v1.62.0...v1.63.0) (2021-10-20)
+
+
+### Bug Fixes
+
+* architecture change ([ec9b4f4](https://github.com/newrelic/developer-website/commit/ec9b4f477dc8ee5a12e889c3f9755ca82c1db23e))
+* updated guide structure ([af45c47](https://github.com/newrelic/developer-website/commit/af45c476db675a265ec536518cbc25a70bc3f34d))
+* updated queries and screenshots ([2d664c5](https://github.com/newrelic/developer-website/commit/2d664c538a7bb36441f83ed9aa8a677138ac162c))
+
+
+### Features
+
+* Added guide to query alerts for quickstarts ([322e592](https://github.com/newrelic/developer-website/commit/322e5923eb22f187bdbac9ee5f78779c61a19c68))
+
 # [1.62.0](https://github.com/newrelic/developer-website/compare/v1.61.0...v1.62.0) (2021-10-19)
 
 
