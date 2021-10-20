@@ -164,6 +164,8 @@
           url: /contribute-to-quickstarts/build-a-quickstart/create-alerts
         - title: Create a quickstart
           url: /contribute-to-quickstarts/build-a-quickstart/create-quickstart
+    - title: Populate your alert configurations with NerdGraph
+      url: '/contribute-to-quickstarts/query-alerts-for-quickstart'  
 - title: Try our APIs
   icon: nr-share
   url: '/try-our-apis'
