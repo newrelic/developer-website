@@ -117,23 +117,10 @@ const validateEnvVars = () => {
  * @param {String} token a New Relic API token
  **/
 const main = async (query, url, token) => {
-  const CODESTREAM_QUICKSTART_ID = '29bd9a4a-1c19-4219-9694-0942f6411ce7';
-  const CODESTREAM_INSTALL_PLAN = [
-    {
-      id: 'codestream-install',
-      name: 'CodeStream integration',
-    },
-  ];
   const results = await fetchQuickstarts(query, url, token);
 
   if (results) {
-    // TODO: remove filter once we are ready to display codestream quickstart
-    const quickstarts = results.quickstarts.map((q) => {
-      if (q.id === CODESTREAM_QUICKSTART_ID) {
-        q.installPlans = CODESTREAM_INSTALL_PLAN;
-      }
-      return q;
-    });
+    const quickstarts = results.quickstarts;
     console.log(`Found ${quickstarts.length} quickstarts.`);
     console.log(`Writing ${QUICKSTARTS_FILE_PATH}`);
     fs.writeFileSync(
