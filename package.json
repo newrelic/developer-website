@@ -100,7 +100,7 @@
     "list-quickstart-urls": "node ./scripts/list-quickstart-urls.js",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "yarn run develop",
+    "start": "GATSBY_NEWRELIC_ENV=development yarn run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint src/",
