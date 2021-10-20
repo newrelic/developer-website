@@ -5,17 +5,19 @@ import useMobileDetect from 'use-mobile-detect-hook';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
+import Overlay from '../components/Overlay';
 import PackTile from '../components/PackTile';
 import IOBanner from '../components/IOBanner';
 import IOLogo from '../components/IOLogo';
+import QuickstartFilter from '../components/quickstarts/QuickstartFilter';
 import Select from '../components/Select';
 import {
   SearchInput,
   useTessen,
   ExternalLink,
   Button,
-  Icon,
   Link,
+  Icon,
 } from '@newrelic/gatsby-theme-newrelic';
 import { navigate } from '@reach/router';
 
@@ -34,7 +36,7 @@ import CATEGORIES from '../data/instant-observability-categories';
 import { getGuidedInstallStackedNr1Url } from '../utils/get-pack-nr1-url';
 
 const FILTERS = [
-  { name: 'All', type: '', icon: 'nr-all-entities' },
+  { name: 'All', type: 'all', icon: 'nr-all-entities' },
   { name: 'Dashboards', type: 'dashboards', icon: 'nr-dashboard' },
   { name: 'Alerts', type: 'alerts', icon: 'nr-alert' },
   { name: 'Data sources', type: 'documentation', icon: 'nr-document' },
@@ -83,7 +85,7 @@ const filterBySearch = (search) => ({
  * @returns {(Function) => Boolean} Callback function to be used by filter.
  */
 const filterByContentType = (type) => (quickstart) => {
-  return !type || (quickstart[type] && quickstart[type].length > 0);
+  return type === 'all' || (quickstart[type] && quickstart[type].length > 0);
 };
 
 /**
@@ -107,8 +109,10 @@ const QuickstartsPage = ({ data, location }) => {
   const tessen = useTessen();
 
   const [search, setSearch] = useState('');
-  const [filter, setFilter] = useState('');
+  const [filters, setFilters] = useState([]);
   const [category, setCategory] = useState('');
+
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -117,9 +121,8 @@ const QuickstartsPage = ({ data, location }) => {
     const categoryParam = params.get('category');
 
     setSearch(searchParam);
-    setFilter(filterParam || '');
+    setFilters(filterParam && filterParam.length ? filterParam.split(',') : []);
     setCategory(categoryParam || '');
-
     if (searchParam || filterParam || categoryParam) {
       tessen.track('instantObservability', 'QuickstartCatalogSearch', {
         filter: filterParam,
@@ -129,11 +132,28 @@ const QuickstartsPage = ({ data, location }) => {
     }
   }, [location.search, tessen]);
 
-  const handleFilter = (value) => {
-    setFilter(value);
-    const params = new URLSearchParams(location.search);
-    params.set('filter', value);
+  const onCloseOverlay = () => {
+    setIsOverlayOpen(false);
+  };
 
+  const handleFilter = (value, e) => {
+    const currentFilters = filters.slice();
+    const params = new URLSearchParams(location.search);
+
+    if (value === 'all') {
+      setFilters([]);
+      params.set('filter', []);
+    } else if (e.target.checked) {
+      currentFilters.push(value);
+      setFilters(currentFilters);
+      params.set('filter', currentFilters);
+    } else {
+      const filteredFilters = currentFilters.filter(
+        (filter) => filter !== value
+      );
+      setFilters(filteredFilters);
+      params.set('filter', filteredFilters);
+    }
     navigate(`?${params.toString()}`);
   };
 
@@ -168,10 +188,14 @@ const QuickstartsPage = ({ data, location }) => {
   const alphaSort = quickstarts.sort((a, b) => a.title.localeCompare(b.title));
   const sortedQuickstarts = sortFeaturedQuickstarts(alphaSort);
 
-  const filteredQuickstarts = sortedQuickstarts
+  const filteredQuickstarts1 = sortedQuickstarts
     .filter(filterBySearch(search))
-    .filter(filterByContentType(filter))
     .filter(filterByCategory(category));
+
+  const filteredQuickstarts = filters?.reduce(
+    (acc, filter) => acc.filter(filterByContentType(filter)),
+    filteredQuickstarts1
+  );
 
   const categoriesWithCount = CATEGORIES.map((cat) => ({
     ...cat,
@@ -277,93 +301,60 @@ const QuickstartsPage = ({ data, location }) => {
               `}
             >
               <FormControl>
-                <Label htmlFor="quickstartCategory">CATEGORIES</Label>
-                {isMobile ? (
-                  <Select
-                    id="quickstartCategory"
-                    value={category}
-                    onChange={(e) => {
-                      const type = e.target.value;
-                      handleCategory(type);
-                    }}
-                  >
-                    {categoriesWithCount.map(
-                      ({ displayName, value, count }) => (
-                        <option key={value} value={value}>
-                          {`${displayName} (${count})`}
-                        </option>
-                      )
-                    )}
-                  </Select>
-                ) : (
-                  categoriesWithCount.map(({ displayName, value, count }) => (
-                    <Button
-                      type="button"
-                      key={value}
-                      onClick={() => handleCategory(value)}
-                      css={css`
-                        padding: 1rem 0.5rem;
-                        width: 100%;
-                        display: flex;
-                        justify-content: flex-start;
-                        color: var(--primary-text-color);
-                        font-weight: 100;
-                        background: ${category === value
-                          ? 'var(--divider-color)'
-                          : 'none'};
-                      `}
-                    >
-                      {`${displayName} (${count})`}
-                    </Button>
-                  ))
+                {!isMobile && (
+                  <>
+                    <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
+                    {filtersWithCount.map(({ name, type, icon, count }) => (
+                      <QuickstartFilter
+                        key={name}
+                        name={name}
+                        type={type}
+                        icon={icon}
+                        count={count}
+                        filters={filters}
+                        handleFilter={handleFilter}
+                      />
+                    ))}
+                  </>
                 )}
               </FormControl>
             </div>
             <FormControl>
-              <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
+              <Label htmlFor="quickstartCategory">CATEGORIES</Label>
               {isMobile ? (
                 <Select
-                  id="quickstartFilterByType"
-                  value={filter}
+                  id="quickstartCategory"
+                  value={category}
                   onChange={(e) => {
                     const type = e.target.value;
-                    handleFilter(type);
+                    handleCategory(type);
                   }}
                 >
-                  {filtersWithCount.map(({ name, count, type }) => (
-                    <option key={type} value={type}>
-                      {`${name} (${count})`}
+                  {categoriesWithCount.map(({ displayName, value, count }) => (
+                    <option key={value} value={value}>
+                      {`${displayName} (${count})`}
                     </option>
                   ))}
                 </Select>
               ) : (
-                filtersWithCount.map(({ name, type, icon, count }) => (
+                categoriesWithCount.map(({ displayName, value, count }) => (
                   <Button
                     type="button"
-                    key={name}
-                    onClick={() => handleFilter(type)}
+                    key={value}
+                    onClick={() => handleCategory(value)}
                     css={css`
-                      padding: 1rem 0;
+                      padding: 1rem 0.5rem;
                       width: 100%;
                       display: flex;
                       justify-content: flex-start;
                       color: var(--primary-text-color);
                       font-weight: 100;
-                      background: ${filter === type
+                      background: ${category === value
                         ? 'var(--divider-color)'
                         : 'none'};
                     `}
                   >
-                    <Icon
-                      name={icon}
-                      css={css`
-                        fill: currentColor;
-                        stroke-width: ${name === 'All' ? 1 : 0.25};
-
-                        margin: 0 0.5rem;
-                      `}
-                    />
-                    {`${name} (${count})`}
+                    {`${displayName} (${count})`}
                   </Button>
                 ))
               )}
@@ -418,10 +409,101 @@ const QuickstartsPage = ({ data, location }) => {
               onClear={() => setSearch('')}
               onChange={(e) => setSearch(e.target.value)}
             />
+            {isMobile && (
+              <>
+                <Button
+                  css={css`
+                    justify-content: flex-start;
+                    padding: 0;
+                    margin: 0.5rem 0 0;
+                  `}
+                  variant={Button.VARIANT.LINK}
+                  onClick={() => setIsOverlayOpen(true)}
+                >
+                  Filters
+                </Button>
+                <Overlay onCloseOverlay={onCloseOverlay} isOpen={isOverlayOpen}>
+                  <div
+                    css={css`
+                      border-radius: 5px;
+                      width: 100%;
+                      margin: 30% auto 0;
+                      padding: 1rem;
+                      background: var(--primary-background-color);
+                    `}
+                  >
+                    <h3
+                      css={css`
+                        padding: 0.5rem 0 0 0.5rem;
+                      `}
+                    >
+                      Filter
+                    </h3>
+                    {filtersWithCount.map(({ name, type, icon, count }) => (
+                      <QuickstartFilter
+                        key={name}
+                        name={name}
+                        type={type}
+                        icon={icon}
+                        count={count}
+                        filters={filters}
+                        handleFilter={handleFilter}
+                      />
+                    ))}
+                    <div
+                      css={css`
+                        background: var(--secondary-background-color);
+                        width: calc(100% + 2rem);
+                        height: 4rem;
+                        margin: 0 -1rem -1rem;
+                        border-bottom-right-radius: 5px;
+                        border-bottom-left-radius: 5px;
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                      `}
+                    >
+                      <Button
+                        css={css`
+                          height: 2rem;
+                          margin-right: 1rem;
+                        `}
+                        onClick={onCloseOverlay}
+                        variant={Button.VARIANT.PRIMARY}
+                      >
+                        OK
+                      </Button>
+                    </div>
+                  </div>
+                </Overlay>
+              </>
+            )}
+          </div>
+          <div>
+            <Button
+              onClick={() => handleFilter('all')}
+              variant={Button.VARIANT.LINK}
+            >
+              <Icon name="fe-x" />
+            </Button>
+            <span>{`Clear current (${filters.length}) filters`}</span>
+          </div>
+          <div
+            css={css`
+              padding: 1.25rem 0;
+              font-size: 0.9rem;
+              color: var(--secondary-text-color);
+              display: flex;
+              justify-content: space-between;
+            `}
+          >
+            <span>Showing {filteredQuickstarts.length} results</span>
+
             <div
               css={css`
                 min-width: 155px;
                 margin-left: 20px;
+                display: inline;
 
                 @media screen and (max-width: 1180px) {
                   margin-left: 0px;
@@ -439,15 +521,6 @@ const QuickstartsPage = ({ data, location }) => {
                 }}
               />
             </div>
-          </div>
-          <div
-            css={css`
-              padding: 1.25rem 0;
-              font-size: 0.9rem;
-              color: var(--secondary-text-color);
-            `}
-          >
-            <span>Showing {filteredQuickstarts.length} results</span>
           </div>
           <div
             css={css`
@@ -470,7 +543,7 @@ const QuickstartsPage = ({ data, location }) => {
               `}
             `}
           >
-            {filter && filter === 'documentation' ? (
+            {filters && filters === 'documentation' ? (
               // if data source filter is selected, display guided install
               <ExternalLink
                 href={getGuidedInstallStackedNr1Url(NR1_GUIDED_INSTALL_NERDLET)}
