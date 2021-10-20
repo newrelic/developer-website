@@ -50,7 +50,6 @@ const IndexPage = ({ data, pageContext, location }) => {
   const numberOfPromotedGuides = 6;
   const [guides, setGuides] = useState(() => nodes.slice(0, 6));
   const guidesMinusPromoted = nodes.length - numberOfPromotedGuides;
-
   return (
     <PageContext.Provider value={pageContext}>
       <DevSiteSeo location={location} />
@@ -86,6 +85,9 @@ const IndexPage = ({ data, pageContext, location }) => {
                   as={Link}
                   variant={Button.VARIANT.PRIMARY}
                   to="/instant-observability"
+                  instrumentation={{
+                    navInteractionType: 'getQuickstartsButtonClick',
+                  }}
                 >
                   Get quickstarts
                 </Button>
