@@ -147,20 +147,18 @@ const QuickstartsPage = ({ data, location }) => {
     if (value === 'all') {
       setFilters([]);
       params.set('filter', []);
-      navigate(`?${params.toString()}`);
     } else if (e.target.checked) {
       currentFilters.push(value);
       setFilters(currentFilters);
       params.set('filter', currentFilters);
-      navigate(`?${params.toString()}`);
     } else {
       const filteredFilters = currentFilters.filter(
         (filter) => filter !== value
       );
       setFilters(filteredFilters);
       params.set('filter', filteredFilters);
-      navigate(`?${params.toString()}`);
     }
+    navigate(`?${params.toString()}`);
   };
 
   const handleSearch = (value) => {
