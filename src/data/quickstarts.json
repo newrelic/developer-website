@@ -3497,51 +3497,6 @@
     "websiteUrl": "https://deeper.network/"
   },
   {
-    "alerts": [
-      {
-        "details": "Alert to monitor Delphix engines storage utilization\n\n",
-        "name": "Delphix Storage Utilization",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.51.0/quickstarts/delphix/alerts/static-alert.yml"
-      }
-    ],
-    "authors": [
-      "Diego Loureda",
-      "Carlos Cuellar"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Delphix Dashboard",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.51.0/quickstarts/delphix/dashboards/my-dashboard.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.51.0/quickstarts/delphix/dashboards/my-dashboard.json"
-      }
-    ],
-    "description": "This Delphix quickstart allows you to get visibility into all your Delphix Virtualization platforms. Use this quickstart together with this [integration](https://github.com/delphix/dct-newrelic-integration) \n",
-    "documentation": [
-      {
-        "description": "Description about this doc reference",
-        "name": "Installation Docs",
-        "url": "https://github.com/delphix/dct-newrelic-integration"
-      }
-    ],
-    "iconUrl": null,
-    "id": "98f77308-4ac3-4c55-bc56-eb9d12f52ab7",
-    "installPlans": [],
-    "keywords": [
-      "delphix"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": null,
-    "name": "Delphix",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/delphix",
-    "summary": "Monitor Delphix Virtualization operations with New Relic.\n",
-    "title": "Delphix",
-    "websiteUrl": null
-  },
-  {
     "alerts": [],
     "authors": [
       "New Relic"
@@ -17309,6 +17264,51 @@
     "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/zipkin",
     "summary": "Send Zipkin-format traces to New Relic\n",
     "title": "Zipkin",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [
+      {
+        "details": "Alert to monitor Delphix engines storage utilization\n\n",
+        "name": "Delphix Storage Utilization",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.51.0/quickstarts/delphix/alerts/static-alert.yml"
+      }
+    ],
+    "authors": [
+      "Diego Loureda",
+      "Carlos Cuellar"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Delphix Dashboard",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.51.0/quickstarts/delphix/dashboards/my-dashboard.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.51.0/quickstarts/delphix/dashboards/my-dashboard.json"
+      }
+    ],
+    "description": "This Delphix quickstart allows you to get visibility into all your Delphix Virtualization platforms. Use this quickstart together with this [integration](https://github.com/delphix/dct-newrelic-integration) \n",
+    "documentation": [
+      {
+        "description": "Description about this doc reference",
+        "name": "Installation Docs",
+        "url": "https://github.com/delphix/dct-newrelic-integration"
+      }
+    ],
+    "iconUrl": null,
+    "id": "98f77308-4ac3-4c55-bc56-eb9d12f52ab7",
+    "installPlans": [],
+    "keywords": [
+      "delphix"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": null,
+    "name": "Delphix",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/delphix",
+    "summary": "Monitor Delphix Virtualization operations with New Relic.\n",
+    "title": "Delphix",
     "websiteUrl": null
   }
 ]
