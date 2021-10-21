@@ -202,13 +202,13 @@ const QuickstartsPage = ({ data, location }) => {
   const alphaSort = quickstarts.sort((a, b) => a.title.localeCompare(b.title));
   const sortedQuickstarts = sortFeaturedQuickstarts(alphaSort);
 
-  const filteredQuickstarts1 = sortedQuickstarts
+  const filteredSearchAndCategoryQuickstarts = sortedQuickstarts
     .filter(filterBySearch(search))
     .filter(filterByCategory(category));
 
   const filteredQuickstarts = filters?.reduce(
     (acc, filter) => acc.filter(filterByContentType(filter)),
-    filteredQuickstarts1
+    filteredSearchAndCategoryQuickstarts
   );
 
   const categoriesWithCount = CATEGORIES.map((cat) => ({
