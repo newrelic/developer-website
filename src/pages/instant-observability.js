@@ -585,35 +585,32 @@ const QuickstartsPage = ({ data, location }) => {
                 </Overlay>
               </div>
             )}
-          </div>
-          {isMobile && (filters.length > 0 || category.length > 0) && (
-            <div
-              css={css`
-                display: flex;
-                justify-content: flex-end;
-              `}
-            >
+            {isMobile && (filters.length > 0 || category.length > 0) && (
               <Button
                 css={css`
-                  padding: 0 0.5rem 0 0;
+                  padding: 0;
+                  justify-content: flex-start;
+                  color: var(--primary-text-color);
                 `}
                 onClick={clearFilters}
                 variant={Button.VARIANT.LINK}
               >
                 <Icon
                   name="fe-x"
-                  size="1.25rem"
+                  size="1rem"
                   css={css`
-                    border: solid var(--color-brand-500) 1px;
+                    border: solid var(--secondary-text-color) 1px;
                     border-radius: 3px;
+                    margin: 0 0.5rem 0 0;
                   `}
                 />
+                {`Clear current (${
+                  filters.length + (category.length > 0 ? 1 : 0)
+                }) filters`}
               </Button>
-              <span>{`Clear current (${
-                filters.length + (category.length > 0 ? 1 : 0)
-              }) filters`}</span>
-            </div>
-          )}
+            )}
+          </div>
+
           <div
             css={css`
               padding: 1.25rem 0;
