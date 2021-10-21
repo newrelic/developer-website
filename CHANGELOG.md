@@ -1,3 +1,10 @@
+# [1.66.0](https://github.com/newrelic/developer-website/compare/v1.65.0...v1.66.0) (2021-10-21)
+
+
+### Features
+
+* adding codestream quickstart ([6d9c990](https://github.com/newrelic/developer-website/commit/6d9c990797aaaababd40fa885206d2ef68c348df))
+
 # [1.65.0](https://github.com/newrelic/developer-website/compare/v1.64.0...v1.65.0) (2021-10-21)
 
 
