@@ -10,7 +10,6 @@ import PackTile from '../components/PackTile';
 import IOBanner from '../components/IOBanner';
 import IOLogo from '../components/IOLogo';
 import QuickstartFilter from '../components/quickstarts/QuickstartFilter';
-import Select from '../components/Select';
 import {
   SearchInput,
   useTessen,
@@ -112,7 +111,8 @@ const QuickstartsPage = ({ data, location }) => {
   const [filters, setFilters] = useState([]);
   const [category, setCategory] = useState('');
 
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const [isFilterOverlayOpen, setIsFilterOverlayOpen] = useState(false);
+  const [isCategoriesOverlayOpen, setIsCategoriesOverlayOpen] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -132,8 +132,12 @@ const QuickstartsPage = ({ data, location }) => {
     }
   }, [location.search, tessen]);
 
-  const onCloseOverlay = () => {
-    setIsOverlayOpen(false);
+  const closeFilterOverlay = () => {
+    setIsFilterOverlayOpen(false);
+  };
+
+  const closeCategoriesOverlay = () => {
+    setIsCategoriesOverlayOpen(false);
   };
 
   const handleFilter = (value, e) => {
@@ -143,18 +147,20 @@ const QuickstartsPage = ({ data, location }) => {
     if (value === 'all') {
       setFilters([]);
       params.set('filter', []);
+      navigate(`?${params.toString()}`);
     } else if (e.target.checked) {
       currentFilters.push(value);
       setFilters(currentFilters);
       params.set('filter', currentFilters);
+      navigate(`?${params.toString()}`);
     } else {
       const filteredFilters = currentFilters.filter(
         (filter) => filter !== value
       );
       setFilters(filteredFilters);
       params.set('filter', filteredFilters);
+      navigate(`?${params.toString()}`);
     }
-    navigate(`?${params.toString()}`);
   };
 
   const handleSearch = (value) => {
@@ -173,6 +179,16 @@ const QuickstartsPage = ({ data, location }) => {
 
       navigate(`?${params.toString()}`);
     }
+  };
+
+  const clearFilters = () => {
+    setCategory('');
+    setFilters([]);
+    const params = new URLSearchParams(location.search);
+    params.set('category', '');
+    params.set('filter', []);
+
+    navigate(`?${params.toString()}`);
   };
 
   useDebounce(
@@ -295,14 +311,15 @@ const QuickstartsPage = ({ data, location }) => {
                 margin-bottom: 1.5rem;
               `}
             />
-            <div
-              css={css`
-                margin-bottom: 1rem;
-              `}
-            >
-              <FormControl>
-                {!isMobile && (
-                  <>
+            {!isMobile && (
+              <>
+                {' '}
+                <div
+                  css={css`
+                    margin-bottom: 1rem;
+                  `}
+                >
+                  <FormControl>
                     <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
                     {filtersWithCount.map(({ name, type, icon, count }) => (
                       <QuickstartFilter
@@ -315,50 +332,33 @@ const QuickstartsPage = ({ data, location }) => {
                         handleFilter={handleFilter}
                       />
                     ))}
-                  </>
-                )}
-              </FormControl>
-            </div>
-            <FormControl>
-              <Label htmlFor="quickstartCategory">CATEGORIES</Label>
-              {isMobile ? (
-                <Select
-                  id="quickstartCategory"
-                  value={category}
-                  onChange={(e) => {
-                    const type = e.target.value;
-                    handleCategory(type);
-                  }}
-                >
+                  </FormControl>
+                </div>
+                <FormControl>
+                  <Label htmlFor="quickstartCategory">CATEGORIES</Label>
                   {categoriesWithCount.map(({ displayName, value, count }) => (
-                    <option key={value} value={value}>
+                    <Button
+                      type="button"
+                      key={value}
+                      onClick={() => handleCategory(value)}
+                      css={css`
+                        padding: 1rem 0.5rem;
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-start;
+                        color: var(--primary-text-color);
+                        font-weight: 100;
+                        background: ${category === value
+                          ? 'var(--divider-color)'
+                          : 'none'};
+                      `}
+                    >
                       {`${displayName} (${count})`}
-                    </option>
+                    </Button>
                   ))}
-                </Select>
-              ) : (
-                categoriesWithCount.map(({ displayName, value, count }) => (
-                  <Button
-                    type="button"
-                    key={value}
-                    onClick={() => handleCategory(value)}
-                    css={css`
-                      padding: 1rem 0.5rem;
-                      width: 100%;
-                      display: flex;
-                      justify-content: flex-start;
-                      color: var(--primary-text-color);
-                      font-weight: 100;
-                      background: ${category === value
-                        ? 'var(--divider-color)'
-                        : 'none'};
-                    `}
-                  >
-                    {`${displayName} (${count})`}
-                  </Button>
-                ))
-              )}
-            </FormControl>
+                </FormControl>
+              </>
+            )}
           </div>
         </aside>
         <div
@@ -410,7 +410,22 @@ const QuickstartsPage = ({ data, location }) => {
               onChange={(e) => setSearch(e.target.value)}
             />
             {isMobile && (
-              <>
+              <div
+                css={css`
+                  display: flex;
+                `}
+              >
+                <Button
+                  css={css`
+                    justify-content: flex-start;
+                    padding: 0;
+                    margin: 0.5rem 1rem 0 0;
+                  `}
+                  variant={Button.VARIANT.LINK}
+                  onClick={() => setIsCategoriesOverlayOpen(true)}
+                >
+                  Categories
+                </Button>
                 <Button
                   css={css`
                     justify-content: flex-start;
@@ -418,14 +433,19 @@ const QuickstartsPage = ({ data, location }) => {
                     margin: 0.5rem 0 0;
                   `}
                   variant={Button.VARIANT.LINK}
-                  onClick={() => setIsOverlayOpen(true)}
+                  onClick={() => setIsFilterOverlayOpen(true)}
                 >
                   Filters
                 </Button>
-                <Overlay onCloseOverlay={onCloseOverlay} isOpen={isOverlayOpen}>
+
+                <Overlay
+                  onCloseOverlay={closeFilterOverlay}
+                  isOpen={isFilterOverlayOpen}
+                >
                   <div
                     css={css`
                       border-radius: 5px;
+                      position: relative;
                       width: 100%;
                       margin: 30% auto 0;
                       padding: 1rem;
@@ -439,23 +459,33 @@ const QuickstartsPage = ({ data, location }) => {
                     >
                       Filter
                     </h3>
-                    {filtersWithCount.map(({ name, type, icon, count }) => (
-                      <QuickstartFilter
-                        key={name}
-                        name={name}
-                        type={type}
-                        icon={icon}
-                        count={count}
-                        filters={filters}
-                        handleFilter={handleFilter}
-                      />
-                    ))}
+                    <div
+                      css={css`
+                        max-height: 400px;
+                        padding-bottom: 3rem;
+                        overflow-y: scroll;
+                      `}
+                    >
+                      {filtersWithCount.map(({ name, type, icon, count }) => (
+                        <QuickstartFilter
+                          key={name}
+                          name={name}
+                          type={type}
+                          icon={icon}
+                          count={count}
+                          filters={filters}
+                          handleFilter={handleFilter}
+                        />
+                      ))}
+                    </div>
                     <div
                       css={css`
                         background: var(--secondary-background-color);
-                        width: calc(100% + 2rem);
+                        width: 100%;
                         height: 4rem;
-                        margin: 0 -1rem -1rem;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
                         border-bottom-right-radius: 5px;
                         border-bottom-left-radius: 5px;
                         display: flex;
@@ -468,7 +498,7 @@ const QuickstartsPage = ({ data, location }) => {
                           height: 2rem;
                           margin-right: 1rem;
                         `}
-                        onClick={onCloseOverlay}
+                        onClick={closeFilterOverlay}
                         variant={Button.VARIANT.PRIMARY}
                       >
                         OK
@@ -476,18 +506,116 @@ const QuickstartsPage = ({ data, location }) => {
                     </div>
                   </div>
                 </Overlay>
-              </>
+                <Overlay
+                  isOpen={isCategoriesOverlayOpen}
+                  onCloseOverlay={closeCategoriesOverlay}
+                >
+                  <div
+                    css={css`
+                      border-radius: 5px;
+                      position: relative;
+                      width: 100%;
+                      margin: 30% auto 0;
+                      padding: 1rem;
+                      background: var(--primary-background-color);
+                    `}
+                  >
+                    <h3
+                      css={css`
+                        padding: 0.5rem 0 0 0.5rem;
+                      `}
+                    >
+                      Category
+                    </h3>
+                    <div
+                      css={css`
+                        max-height: 400px;
+                        padding-bottom: 3rem;
+                        overflow-y: scroll;
+                      `}
+                    >
+                      {categoriesWithCount.map(
+                        ({ displayName, value, count }) => (
+                          <Button
+                            type="button"
+                            key={value}
+                            onClick={() => handleCategory(value)}
+                            css={css`
+                              padding: 1rem 0.5rem;
+                              width: 100%;
+                              display: flex;
+                              justify-content: flex-start;
+                              color: var(--primary-text-color);
+                              font-weight: 100;
+                              background: ${category === value
+                                ? 'var(--divider-color)'
+                                : 'none'};
+                            `}
+                          >
+                            {`${displayName} (${count})`}
+                          </Button>
+                        )
+                      )}
+                    </div>
+                    <div
+                      css={css`
+                        background: var(--secondary-background-color);
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 4rem;
+                        border-bottom-right-radius: 5px;
+                        border-bottom-left-radius: 5px;
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                      `}
+                    >
+                      <Button
+                        css={css`
+                          height: 2rem;
+                          margin-right: 1rem;
+                        `}
+                        onClick={closeCategoriesOverlay}
+                        variant={Button.VARIANT.PRIMARY}
+                      >
+                        OK
+                      </Button>
+                    </div>
+                  </div>
+                </Overlay>
+              </div>
             )}
           </div>
-          <div>
-            <Button
-              onClick={() => handleFilter('all')}
-              variant={Button.VARIANT.LINK}
+          {isMobile && (filters.length > 0 || category.length > 0) && (
+            <div
+              css={css`
+                display: flex;
+                justify-content: flex-end;
+              `}
             >
-              <Icon name="fe-x" />
-            </Button>
-            <span>{`Clear current (${filters.length}) filters`}</span>
-          </div>
+              <Button
+                css={css`
+                  padding: 0 0.5rem 0 0;
+                `}
+                onClick={clearFilters}
+                variant={Button.VARIANT.LINK}
+              >
+                <Icon
+                  name="fe-x"
+                  size="1.25rem"
+                  css={css`
+                    border: solid var(--color-brand-500) 1px;
+                    border-radius: 3px;
+                  `}
+                />
+              </Button>
+              <span>{`Clear current (${
+                filters.length + (category.length > 0 ? 1 : 0)
+              }) filters`}</span>
+            </div>
+          )}
           <div
             css={css`
               padding: 1.25rem 0;
