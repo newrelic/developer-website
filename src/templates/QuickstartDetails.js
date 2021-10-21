@@ -51,12 +51,13 @@ const QuickstartDetails = ({ data, location }) => {
     },
   ];
 
-  const viewRepoClick = () =>
-    tessen.track('instantObservability', 'QuickstartViewRepoClick', {
+  const trackButtonClick = (action, quickstart) => () =>
+    tessen.track('instantObservability', action, {
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,
     });
+
   const tessenTabTrack = (action, quickstart) => (id, count) => {
     tessen.track('instantObservability', action, {
       QuickstartTabState: id,
@@ -178,7 +179,10 @@ const QuickstartDetails = ({ data, location }) => {
                     margin: 1rem 0 0 0;
                   }
                 `}
-                onClick={viewRepoClick}
+                onClick={trackButtonClick(
+                  'QuickstartViewRepoClick',
+                  quickstart
+                )}
               >
                 <Icon
                   name="fe-github"
@@ -283,32 +287,20 @@ const QuickstartDetails = ({ data, location }) => {
                 <li>
                   <Link
                     to={SIGNUP_LINK}
-                    onClick={() =>
-                      tessen.track(
-                        'instantObservability',
-                        'QuickstartDetailsSignUpClick',
-                        {
-                          quickstartName: quickstart.name,
-                          quickstartId: quickstart.id,
-                        }
-                      )
-                    }
+                    onClick={trackButtonClick(
+                      'QuickstartDetailsSignUpClick',
+                      quickstart
+                    )}
                   >
                     Sign Up
                   </Link>{' '}
                   for a free New Relic account or{' '}
                   <Link
                     to={LOGIN_LINK}
-                    onClick={() =>
-                      tessen.track(
-                        'instantObservability',
-                        'QuickstartDetailsLoginClick',
-                        {
-                          quickstartName: quickstart.name,
-                          quickstartId: quickstart.id,
-                        }
-                      )
-                    }
+                    onClick={trackButtonClick(
+                      'QuickstartDetailsLoginClick',
+                      quickstart
+                    )}
                   >
                     Log In
                   </Link>{' '}
