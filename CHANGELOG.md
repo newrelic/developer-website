@@ -1,3 +1,11 @@
+# [1.65.0](https://github.com/newrelic/developer-website/compare/v1.64.0...v1.65.0) (2021-10-21)
+
+
+### Features
+
+* hardcode installplan for codestream ([e24d6e5](https://github.com/newrelic/developer-website/commit/e24d6e511023aecca9f7fc0c00a4b25174e5f6de))
+* point codestream qs to correct nerdlet ([159fa58](https://github.com/newrelic/developer-website/commit/159fa58a8c02f30827d231415cb166513d80c1c9))
+
 # [1.64.0](https://github.com/newrelic/developer-website/compare/v1.63.0...v1.64.0) (2021-10-20)
 
 
