@@ -106,7 +106,6 @@ const InstallButton = ({ quickstart, location, ...props }) => {
   if (quickstart.id === CODESTREAM_QUICKSTART_ID) {
     nerdletId = NR1_CODESTREAM_INSTALL_NERDLET;
   }
-
   const hasUtmParameters = checkUtmParameters(parameters);
   // If we have an install-able component, generate a URL. Otherwise, link to the
   // first documentation supplied.
