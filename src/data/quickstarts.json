@@ -3090,6 +3090,39 @@
       "New Relic"
     ],
     "dashboards": [],
+    "description": "## What is New Relic CodeStream?\n\nNew Relic CodeStream helps dev teams discuss, review, and understand code.\n\n### Get started!\n\nNew Relic CodeStream supercharges development workflows by putting collaboration tools in your IDE. It supports pull requests from GitHub, BitBucket and GitLab, issue management from Jira, Trello, Asana and 9 others, observability from New Relic One and Pixie, and provides code discussion that ties it all together, integrated with Slack, MS Teams, email, and in-editor notifications.\n\nWith the New Relic One integration:\n- Click from Errors Inbox right to the code that caused it in your IDE\n- Step through stack-traces and method calls, navigating to specific lines of code\n- Add production logging on the fly, and see the results, without leaving your editor\n- Discover recent errors assigned to you, assign errors, and update their status \n- View telemetry such as error rate, throughput and executions/sec for a given method\n\nInstall the extension for [VS Code](https://marketplace.visualstudio.com/items?itemName=CodeStream.codestream), [Visual Studio](https://marketplace.visualstudio.com/items?itemName=CodeStream.codestream-vs), and all [JetBrains](https://plugins.jetbrains.com/plugin/12206-codestream-github-gitlab-bitbucket-prs-and-code-review) editors.\n\n### More info\n\nCheck out the [documentation](https://docs.codestream.com)\n",
+    "documentation": [
+      {
+        "description": "View production telemetry and troubleshoot errors from your IDE",
+        "name": "Installation Docs",
+        "url": "https://docs.codestream.com"
+      },
+      {
+        "description": "See New Relic CodeStream in action",
+        "name": "New Relic CodeStream Demo",
+        "url": "https://codestream.com/demo"
+      }
+    ],
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.51.0/quickstarts/codestream/icon.png",
+    "id": "29bd9a4a-1c19-4219-9694-0942f6411ce7",
+    "installPlans": [],
+    "keywords": [
+      "featured"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.51.0/quickstarts/codestream/logo.svg",
+    "name": "codestream",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/codestream",
+    "summary": "View production telemetry and troubleshoot errors from your IDE\n",
+    "title": "CodeStream",
+    "websiteUrl": "https://codestream.com"
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic"
+    ],
+    "dashboards": [],
     "description": "## What is CollectD?\n\nUnix daemon for gathering and storing performance data across application and network infrastructure.\n\n## Get started!\n\nNew Relic's CollectD integration lets you easily get CollectD-format data into New Relic.\nFollow [the documentation](https://docs.newrelic.com/docs/integrations/host-integrations/open-source-host-integrations-list/collectd-open-source-integration) to get started!\n",
     "documentation": [
       {

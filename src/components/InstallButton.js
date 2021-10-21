@@ -11,6 +11,8 @@ import {
   NR1_PACK_DETAILS_NERDLET,
   UTM_PARAMETERS,
   NR1_SIGNUP_URL,
+  NR1_CODESTREAM_INSTALL_NERDLET,
+  CODESTREAM_QUICKSTART_ID,
 } from '../data/constants';
 import { quickstart } from '../types';
 import Cookies from 'js-cookie';
@@ -74,7 +76,9 @@ const hasComponent = (quickstart, key) =>
   quickstart[key] && quickstart[key].length > 0;
 
 const InstallButton = ({ quickstart, location, ...props }) => {
-  const hasInstallableComponent = hasComponent(quickstart, 'installPlans');
+  const hasInstallableComponent =
+    hasComponent(quickstart, 'installPlans') ||
+    quickstart.id === CODESTREAM_QUICKSTART_ID;
 
   const tessen = useTessen();
 
@@ -95,10 +99,13 @@ const InstallButton = ({ quickstart, location, ...props }) => {
     return null;
   }
 
-  const nerdletId = hasGuidedInstall
+  let nerdletId = hasGuidedInstall
     ? NR1_GUIDED_INSTALL_NERDLET
     : NR1_PACK_DETAILS_NERDLET;
 
+  if (quickstart.id === CODESTREAM_QUICKSTART_ID) {
+    nerdletId = NR1_CODESTREAM_INSTALL_NERDLET;
+  }
   const hasUtmParameters = checkUtmParameters(parameters);
   // If we have an install-able component, generate a URL. Otherwise, link to the
   // first documentation supplied.
