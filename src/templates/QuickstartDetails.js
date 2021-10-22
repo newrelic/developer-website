@@ -51,7 +51,7 @@ const QuickstartDetails = ({ data, location }) => {
     },
   ];
 
-  const trackButtonClick = (action, quickstart) => () =>
+  const tessenTrack = (action, quickstart) => () =>
     tessen.track('instantObservability', action, {
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
@@ -179,10 +179,7 @@ const QuickstartDetails = ({ data, location }) => {
                     margin: 1rem 0 0 0;
                   }
                 `}
-                onClick={trackButtonClick(
-                  'QuickstartViewRepoClick',
-                  quickstart
-                )}
+                onClick={tessenTrack('QuickstartViewRepoClick', quickstart)}
               >
                 <Icon
                   name="fe-github"
@@ -209,7 +206,6 @@ const QuickstartDetails = ({ data, location }) => {
           >
             <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
             <Tabs.BarItem
-              id="dashboards"
               count={quickstart.dashboards?.length ?? 0}
               onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
@@ -287,7 +283,7 @@ const QuickstartDetails = ({ data, location }) => {
                 <li>
                   <Link
                     to={SIGNUP_LINK}
-                    onClick={trackButtonClick(
+                    onClick={tessenTrack(
                       'QuickstartDetailsSignUpClick',
                       quickstart
                     )}
@@ -297,7 +293,7 @@ const QuickstartDetails = ({ data, location }) => {
                   for a free New Relic account or{' '}
                   <Link
                     to={LOGIN_LINK}
-                    onClick={trackButtonClick(
+                    onClick={tessenTrack(
                       'QuickstartDetailsLoginClick',
                       quickstart
                     )}
