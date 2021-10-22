@@ -1,3 +1,10 @@
+## [1.66.1](https://github.com/newrelic/developer-website/compare/v1.66.0...v1.66.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* bug fixed ([b13ddc4](https://github.com/newrelic/developer-website/commit/b13ddc4187ff9a1373aeb51471c46022b49ccde5))
+
 # [1.66.0](https://github.com/newrelic/developer-website/compare/v1.65.0...v1.66.0) (2021-10-21)
 
 
