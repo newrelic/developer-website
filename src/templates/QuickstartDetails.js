@@ -51,12 +51,13 @@ const QuickstartDetails = ({ data, location }) => {
     },
   ];
 
-  const viewRepoClick = () =>
-    tessen.track('instantObservability', 'QuickstartViewRepoClick', {
+  const trackQuickstart = (action, quickstart) => () =>
+    tessen.track('instantObservability', action, {
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,
     });
+
   const tessenTabTrack = (action, quickstart) => (id, count) => {
     tessen.track('instantObservability', action, {
       QuickstartTabState: id,
@@ -178,7 +179,7 @@ const QuickstartDetails = ({ data, location }) => {
                     margin: 1rem 0 0 0;
                   }
                 `}
-                onClick={viewRepoClick}
+                onClick={trackQuickstart('QuickstartViewRepoClick', quickstart)}
               >
                 <Icon
                   name="fe-github"
@@ -205,7 +206,6 @@ const QuickstartDetails = ({ data, location }) => {
           >
             <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
             <Tabs.BarItem
-              id="dashboards"
               count={quickstart.dashboards?.length ?? 0}
               onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
@@ -283,32 +283,20 @@ const QuickstartDetails = ({ data, location }) => {
                 <li>
                   <Link
                     to={SIGNUP_LINK}
-                    onClick={() =>
-                      tessen.track(
-                        'instantObservability',
-                        'QuickstartDetailsSignUpClick',
-                        {
-                          quickstartName: quickstart.name,
-                          quickstartId: quickstart.id,
-                        }
-                      )
-                    }
+                    onClick={trackQuickstart(
+                      'QuickstartDetailsSignUpClick',
+                      quickstart
+                    )}
                   >
                     Sign Up
                   </Link>{' '}
                   for a free New Relic account or{' '}
                   <Link
                     to={LOGIN_LINK}
-                    onClick={() =>
-                      tessen.track(
-                        'instantObservability',
-                        'QuickstartDetailsLoginClick',
-                        {
-                          quickstartName: quickstart.name,
-                          quickstartId: quickstart.id,
-                        }
-                      )
-                    }
+                    onClick={trackQuickstart(
+                      'QuickstartDetailsLoginClick',
+                      quickstart
+                    )}
                   >
                     Log In
                   </Link>{' '}
