@@ -666,7 +666,7 @@ const QuickstartsPage = ({ data, location }) => {
               `}
             `}
           >
-            {filters && filters === 'documentation' ? (
+            {filters?.length === 1 && filters[0] === 'documentation' ? (
               // if data source filter is selected, display guided install
               <ExternalLink
                 href={getGuidedInstallStackedNr1Url(NR1_GUIDED_INSTALL_NERDLET)}
