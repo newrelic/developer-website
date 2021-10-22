@@ -1,3 +1,10 @@
+## [1.67.1](https://github.com/newrelic/developer-website/compare/v1.67.0...v1.67.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* refactor tessen tracking so it includes quickstart attributes ([8136a91](https://github.com/newrelic/developer-website/commit/8136a91bbf38d1e2d0d29a79a7b88579e07f3dc1))
+
 # [1.67.0](https://github.com/newrelic/developer-website/compare/v1.66.1...v1.67.0) (2021-10-22)
 
 
