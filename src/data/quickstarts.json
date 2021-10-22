@@ -10035,16 +10035,16 @@
     "id": "816e3eba-ffea-4b0c-9150-b7a0f3a025d9",
     "installPlans": [
       {
-        "id": "php-agent",
-        "name": "PHP Agent"
+        "id": "mysql-integration",
+        "name": "MySQL"
       },
       {
         "id": "apache-integration",
         "name": "Apache"
       },
       {
-        "id": "mysql-integration",
-        "name": "MySQL"
+        "id": "php-agent",
+        "name": "PHP Agent"
       }
     ],
     "keywords": [],
