@@ -554,7 +554,7 @@ export default class EndTestSection extends React.Component {
 
 In _past-tests.js_, update `PastTests` to fetch data from account storage and display it in the `TableChart`:
 
-```js fileName=nerdlets/ab-test-nerdlet/past-tests.js lineHighlight=2-7,17,24-46
+```js fileName=nerdlets/ab-test-nerdlet/past-tests.js lineHighlight=2-7,17,24-45
 import React from 'react';
 import {
     AccountStorageQuery,
@@ -589,15 +589,14 @@ export default class PastTests extends React.Component {
                     }
                     data.forEach(
                         function (currentValue, index) {
-                            this[index] = {
+                            historicalData.data.push({
                                 endDate: currentValue.id,
                                 versionADescription: currentValue.document.versionADescription,
                                 versionBDescription: currentValue.document.versionBDescription,
                                 winner: currentValue.document.winner,
-                            }
+                            })
                         }, data
                     )
-                    historicalData.data = data
                     return <TableChart data={[historicalData]} fullWidth />
                 }}
             </AccountStorageQuery>
@@ -614,7 +613,7 @@ Notice that there are three return values from the query:
 - `error`
 - `data`
 
-If the query is in progress, `loading` is `true`. In this case, you show a `Spinner` user interface component to let users know that the table isn't yet ready. If the query returned an error, you can see information about that error in the `error` variable. You log that information to the console for debugging purposes and return an error message. If the query returned successfully, you can access the data in the `data` variable. Because the data doesn't match the format that the `TableChart` requires, you loop through the data, format it according to the `TableChart` specifications, and set it on `historicalData.data`. Finally, you pass `historicalData` to your `TableChart`.
+If the query is in progress, `loading` is `true`. In this case, you show a `Spinner` user interface component to let users know that the table isn't yet ready. If the query returned an error, you can see information about that error in the `error` variable. You log that information to the console for debugging purposes and return an error message. If the query returned successfully, you can access the data in the `data` variable. Because the data doesn't match the format that the `TableChart` requires, you loop through the data and format it according to the `TableChart` specifications. Finally, you pass `historicalData` to your `TableChart`.
 
 </Step>
 
