@@ -86,6 +86,9 @@ const IndexPage = ({ data, pageContext, location }) => {
                   as={Link}
                   variant={Button.VARIANT.PRIMARY}
                   to="/instant-observability"
+                  instrumentation={{
+                    navInteractionType: 'getQuickstartsButtonClick',
+                  }}
                 >
                   Get quickstarts
                 </Button>

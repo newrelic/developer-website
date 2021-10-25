@@ -17,6 +17,9 @@ export const NR1_PACK_DETAILS_NERDLET =
 export const NR1_GUIDED_INSTALL_NERDLET =
   'nr1-install-newrelic.nr1-install-newrelic';
 
+export const NR1_CODESTREAM_INSTALL_NERDLET = 'codestream-install.home';
+export const CODESTREAM_QUICKSTART_ID = '29bd9a4a-1c19-4219-9694-0942f6411ce7';
+
 export const NR1_EXPLORER_NERDLET = 'nr1-core.listing';
 
 export const QUICKSTART_SUPPORT_LEVELS = {

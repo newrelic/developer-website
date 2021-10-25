@@ -1,3 +1,80 @@
+## [1.67.1](https://github.com/newrelic/developer-website/compare/v1.67.0...v1.67.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* refactor tessen tracking so it includes quickstart attributes ([8136a91](https://github.com/newrelic/developer-website/commit/8136a91bbf38d1e2d0d29a79a7b88579e07f3dc1))
+
+# [1.67.0](https://github.com/newrelic/developer-website/compare/v1.66.1...v1.67.0) (2021-10-22)
+
+
+### Features
+
+* add codestream quickstart ([b27fe28](https://github.com/newrelic/developer-website/commit/b27fe289afec1728c5aa24161ebb837e03365426))
+
+## [1.66.1](https://github.com/newrelic/developer-website/compare/v1.66.0...v1.66.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* bug fixed ([b13ddc4](https://github.com/newrelic/developer-website/commit/b13ddc4187ff9a1373aeb51471c46022b49ccde5))
+
+# [1.66.0](https://github.com/newrelic/developer-website/compare/v1.65.0...v1.66.0) (2021-10-21)
+
+
+### Features
+
+* adding codestream quickstart ([6d9c990](https://github.com/newrelic/developer-website/commit/6d9c990797aaaababd40fa885206d2ef68c348df))
+
+# [1.65.0](https://github.com/newrelic/developer-website/compare/v1.64.0...v1.65.0) (2021-10-21)
+
+
+### Features
+
+* hardcode installplan for codestream ([e24d6e5](https://github.com/newrelic/developer-website/commit/e24d6e511023aecca9f7fc0c00a4b25174e5f6de))
+* point codestream qs to correct nerdlet ([159fa58](https://github.com/newrelic/developer-website/commit/159fa58a8c02f30827d231415cb166513d80c1c9))
+
+# [1.64.0](https://github.com/newrelic/developer-website/compare/v1.63.0...v1.64.0) (2021-10-20)
+
+
+### Features
+
+* hardcode codestream  quickstart to top of marketplace page ([95623b9](https://github.com/newrelic/developer-website/commit/95623b9e38cd9b782c37dda3afdac124b3458ead))
+* hardcode codestream  quickstart to top of marketplace page ([a9e95e9](https://github.com/newrelic/developer-website/commit/a9e95e99ed11cad090e66342bdf39494554ca290))
+
+# [1.63.0](https://github.com/newrelic/developer-website/compare/v1.62.0...v1.63.0) (2021-10-20)
+
+
+### Bug Fixes
+
+* architecture change ([ec9b4f4](https://github.com/newrelic/developer-website/commit/ec9b4f477dc8ee5a12e889c3f9755ca82c1db23e))
+* updated guide structure ([af45c47](https://github.com/newrelic/developer-website/commit/af45c476db675a265ec536518cbc25a70bc3f34d))
+* updated queries and screenshots ([2d664c5](https://github.com/newrelic/developer-website/commit/2d664c538a7bb36441f83ed9aa8a677138ac162c))
+
+
+### Features
+
+* Added guide to query alerts for quickstarts ([322e592](https://github.com/newrelic/developer-website/commit/322e5923eb22f187bdbac9ee5f78779c61a19c68))
+
+# [1.62.0](https://github.com/newrelic/developer-website/compare/v1.61.0...v1.62.0) (2021-10-19)
+
+
+### Bug Fixes
+
+* remove unused vars ([5a4e4b3](https://github.com/newrelic/developer-website/commit/5a4e4b33393877cd5e7ef33e96a7549d8454187e))
+
+
+### Features
+
+* add quickstart name and id to tessen events ([28422b0](https://github.com/newrelic/developer-website/commit/28422b0ee8936cca2919557825a0f48e58959b73))
+
+# [1.61.0](https://github.com/newrelic/developer-website/compare/v1.60.0...v1.61.0) (2021-10-18)
+
+
+### Features
+
+* Update to node 16 ([45d219e](https://github.com/newrelic/developer-website/commit/45d219ed6a7a24416ad9500437ec296e03ac18ed))
+
 # [1.60.0](https://github.com/newrelic/developer-website/compare/v1.59.2...v1.60.0) (2021-10-15)
 
 

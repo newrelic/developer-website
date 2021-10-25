@@ -51,12 +51,27 @@ const QuickstartDetails = ({ data, location }) => {
     },
   ];
 
-  const viewRepoClick = () =>
-    tessen.track('instantObservability', 'QuickstartViewRepoClick', {
+  const trackQuickstart = (action, quickstart) => () =>
+    tessen.track('instantObservability', action, {
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,
     });
+
+  const tessenTabTrack = (action, quickstart) => (id, count) => {
+    tessen.track('instantObservability', action, {
+      QuickstartTabState: id,
+      QuickstartTabCount: count,
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+    });
+  };
+  const tessenSupportTrack = (quickstart) => (action) => {
+    tessen.track('instantObservability', action, {
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+    });
+  };
 
   return (
     <>
@@ -164,7 +179,7 @@ const QuickstartDetails = ({ data, location }) => {
                     margin: 1rem 0 0 0;
                   }
                 `}
-                onClick={viewRepoClick}
+                onClick={trackQuickstart('QuickstartViewRepoClick', quickstart)}
               >
                 <Icon
                   name="fe-github"
@@ -191,12 +206,16 @@ const QuickstartDetails = ({ data, location }) => {
           >
             <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
             <Tabs.BarItem
-              id="dashboards"
               count={quickstart.dashboards?.length ?? 0}
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
               Dashboards
             </Tabs.BarItem>
-            <Tabs.BarItem id="alerts" count={quickstart.alerts?.length ?? 0}>
+            <Tabs.BarItem
+              id="alerts"
+              count={quickstart.alerts?.length ?? 0}
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
+            >
               Alerts
             </Tabs.BarItem>
             <Tabs.BarItem
@@ -205,6 +224,7 @@ const QuickstartDetails = ({ data, location }) => {
                 (quickstart.instrumentation?.length ?? 0) +
                 (quickstart.documentation?.length ?? 0)
               }
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
               Data sources
             </Tabs.BarItem>
@@ -263,24 +283,20 @@ const QuickstartDetails = ({ data, location }) => {
                 <li>
                   <Link
                     to={SIGNUP_LINK}
-                    onClick={() =>
-                      tessen.track(
-                        'instantObservability',
-                        'QuickstartDetailsSignUpClick'
-                      )
-                    }
+                    onClick={trackQuickstart(
+                      'QuickstartDetailsSignUpClick',
+                      quickstart
+                    )}
                   >
                     Sign Up
                   </Link>{' '}
                   for a free New Relic account or{' '}
                   <Link
                     to={LOGIN_LINK}
-                    onClick={() =>
-                      tessen.track(
-                        'instantObservability',
-                        'QuickstartDetailsLoginClick'
-                      )
-                    }
+                    onClick={trackQuickstart(
+                      'QuickstartDetailsLoginClick',
+                      quickstart
+                    )}
                   >
                     Log In
                   </Link>{' '}
@@ -300,7 +316,10 @@ const QuickstartDetails = ({ data, location }) => {
             </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>Support</PageTools.Title>
-              <SupportSection supportLevel={quickstart.level} />
+              <SupportSection
+                supportLevel={quickstart.level}
+                onClick={tessenSupportTrack(quickstart)}
+              />
             </PageTools.Section>
           </Layout.PageTools>
         </PageLayout>
