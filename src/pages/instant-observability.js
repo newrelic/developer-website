@@ -621,7 +621,7 @@ const QuickstartsPage = ({ data, location }) => {
                 </Overlay>
               </div>
             )}
-            {isMobile && (filters.length > 0 || category.length > 0) && (
+            {isMobile && filters.length > 0 && (
               <Button
                 css={css`
                   padding: 0;
