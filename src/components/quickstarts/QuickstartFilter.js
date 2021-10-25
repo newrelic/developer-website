@@ -10,7 +10,7 @@ const QuickstartFilter = ({
   type,
   icon,
   count,
-  filters,
+  isChecked,
   handleFilter,
   className,
 }) => (
@@ -57,7 +57,7 @@ const QuickstartFilter = ({
     </div>
     <input
       type="checkbox"
-      checked={filters.includes(type)}
+      checked={isChecked}
       id={type}
       onChange={(e) => handleFilter(type, e)}
       css={css`
@@ -86,7 +86,7 @@ QuickstartFilter.propTypes = {
   type: PropTypes.string,
   icon: PropTypes.string,
   count: PropTypes.number,
-  filters: PropTypes.arrayOf(PropTypes.string),
+  isChecked: PropTypes.bool,
   handleFilter: PropTypes.func,
   className: PropTypes.string,
 };

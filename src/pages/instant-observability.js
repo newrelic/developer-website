@@ -83,7 +83,7 @@ const filterBySearch = (search) => ({
  * @returns {(Function) => Boolean} Callback function to be used by filter.
  */
 const filterByContentType = (type) => (quickstart) => {
-  return type === 'all' || (quickstart[type] && quickstart[type].length > 0);
+  return type === [] || (quickstart[type] && quickstart[type].length > 0);
 };
 
 /**
@@ -120,7 +120,9 @@ const QuickstartsPage = ({ data, location }) => {
     const categoryParam = params.get('category');
 
     setSearch(searchParam);
-    setFilters(filterParam && filterParam.length ? filterParam.split(',') : []);
+    setFilters(
+      !filterParam || filterParam === '' ? [] : filterParam.split(',')
+    );
     setCategory(categoryParam || '');
     if (searchParam || filterParam || categoryParam) {
       tessen.track('instantObservability', 'QuickstartCatalogSearch', {
@@ -176,10 +178,8 @@ const QuickstartsPage = ({ data, location }) => {
   };
 
   const clearFilters = () => {
-    setCategory('');
     setFilters([]);
     const params = new URLSearchParams(location.search);
-    params.set('category', '');
     params.set('filter', []);
 
     navigate(`?${params.toString()}`);
@@ -327,7 +327,6 @@ const QuickstartsPage = ({ data, location }) => {
             />
             {!isMobile && (
               <>
-                {' '}
                 <div
                   css={css`
                     margin-bottom: 1rem;
@@ -346,6 +345,7 @@ const QuickstartsPage = ({ data, location }) => {
                       <Button
                         css={css`
                           padding: 0;
+                          margin-bottom: 0.25rem;
                           justify-content: flex-start;
                           color: var(--color-brand-500);
                         `}
@@ -362,7 +362,7 @@ const QuickstartsPage = ({ data, location }) => {
                         type={type}
                         icon={icon}
                         count={count}
-                        filters={filters}
+                        isChecked={filters.includes(type)}
                         handleFilter={handleFilter}
                       />
                     ))}
@@ -507,7 +507,7 @@ const QuickstartsPage = ({ data, location }) => {
                           type={type}
                           icon={icon}
                           count={count}
-                          filters={filters}
+                          isChecked={filters.includes(type)}
                           handleFilter={handleFilter}
                         />
                       ))}
@@ -640,9 +640,7 @@ const QuickstartsPage = ({ data, location }) => {
                     margin: 0 0.5rem 0 0;
                   `}
                 />
-                {`Clear current (${
-                  filters.length + (category.length > 0 ? 1 : 0)
-                }) filters`}
+                {`Clear current (${filters.length}) filters`}
               </Button>
             )}
           </div>
