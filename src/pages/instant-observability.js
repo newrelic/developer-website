@@ -200,8 +200,8 @@ const QuickstartsPage = ({ data, location }) => {
 
   // Hard-code for moving codestream object to front of sortedQuickstarts array - CM
   if (
-    (!category && !filter && !search) ||
-    (category === 'featured' && !filter && !search)
+    (!category && !filters.length && !search) ||
+    (category === 'featured' && !filters.length && !search)
   ) {
     // uuid is codestream id specifically - CM
     const codestreamIndex = sortedQuickstarts.findIndex(
