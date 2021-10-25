@@ -317,7 +317,7 @@ const QuickstartsPage = ({ data, location }) => {
                     <div
                       css={css`
                         display: flex;
-                        width: 100%auto;
+                        width: 100%;
                         align-items: center;
                         justify-content: space-between;
                       `}
