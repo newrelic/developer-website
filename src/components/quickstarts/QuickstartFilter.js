@@ -24,25 +24,40 @@ const QuickstartFilter = ({
       justify-content: space-between;
       color: var(--primary-text-color);
       font-weight: 100;
+      display: flex;
+      align-items: center;
     `}
   >
-    <div>
+    <div
+      css={css`
+        display: flex;
+        align-items: center;
+        width: 100%;
+      `}
+    >
       <Icon
         name={icon}
+        size="1.25rem"
         css={css`
           fill: currentColor;
-          stroke-width: ${name === 'All' ? 1 : 0.25};
-
+          stroke-width: 0.25;
           margin: 0 0.5rem;
         `}
       />
-      {`${name} (${count})`}
+      <label
+        css={css`
+          width: 100%;
+          :hover {
+            cursor: pointer;
+            color: var(--color-brand-500);
+          }
+        `}
+        htmlFor={type}
+      >{`${name} (${count})`}</label>
     </div>
     <input
       type="checkbox"
-      checked={
-        filters.includes(type) || (filters.length === 0 && type === 'all')
-      }
+      checked={filters.includes(type)}
       id={type}
       onChange={(e) => handleFilter(type, e)}
       css={css`
@@ -51,6 +66,9 @@ const QuickstartFilter = ({
         height: 1rem;
         width: 1rem;
         border-radius: 3px;
+        :hover {
+          cursor: pointer;
+        }
         :checked {
           background-color: var(--color-brand-500);
           border: solid 1px var(--color-brand-500);
