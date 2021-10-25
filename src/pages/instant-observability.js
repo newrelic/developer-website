@@ -35,7 +35,6 @@ import CATEGORIES from '../data/instant-observability-categories';
 import { getGuidedInstallStackedNr1Url } from '../utils/get-pack-nr1-url';
 
 const FILTERS = [
-  { name: 'All', type: 'all', icon: 'nr-all-entities' },
   { name: 'Dashboards', type: 'dashboards', icon: 'nr-dashboard' },
   { name: 'Alerts', type: 'alerts', icon: 'nr-alert' },
   { name: 'Data sources', type: 'documentation', icon: 'nr-document' },
@@ -144,10 +143,7 @@ const QuickstartsPage = ({ data, location }) => {
     const currentFilters = filters.slice();
     const params = new URLSearchParams(location.search);
 
-    if (value === 'all') {
-      setFilters([]);
-      params.set('filter', []);
-    } else if (e.target.checked) {
+    if (e.target.checked) {
       currentFilters.push(value);
       setFilters(currentFilters);
       params.set('filter', currentFilters);
@@ -318,7 +314,27 @@ const QuickstartsPage = ({ data, location }) => {
                   `}
                 >
                   <FormControl>
-                    <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
+                    <div
+                      css={css`
+                        display: flex;
+                        width: 100%auto;
+                        align-items: center;
+                        justify-content: space-between;
+                      `}
+                    >
+                      <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
+                      <Button
+                        css={css`
+                          padding: 0;
+                          justify-content: flex-start;
+                          color: var(--color-brand-500);
+                        `}
+                        onClick={clearFilters}
+                        variant={Button.VARIANT.LINK}
+                      >
+                        Clear
+                      </Button>
+                    </div>
                     {filtersWithCount.map(({ name, type, icon, count }) => (
                       <QuickstartFilter
                         key={name}
