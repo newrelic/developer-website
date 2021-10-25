@@ -2,7 +2,7 @@ import React from 'react';
 import NewRelicSVG from '../../../../components/NewRelicSVG';
 
 const DashboardIcon = (props) => (
-  <NewRelicSVG viewBox="0 0 16 16" {...props}>
+  <NewRelicSVG viewBox="0 0 16 13" {...props}>
     <g>
       <path
         d="M14,0H2C0.9,0,0,0.9,0,2v10c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V2C16,0.9,15.1,0,14,0z M15,12c0,0.6-0.4,1-1,1H2
