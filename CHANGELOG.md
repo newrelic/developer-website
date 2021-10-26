@@ -1,3 +1,10 @@
+## [1.67.3](https://github.com/newrelic/developer-website/compare/v1.67.2...v1.67.3) (2021-10-26)
+
+
+### Bug Fixes
+
+* Add back dashboards id to tab item ([461bab0](https://github.com/newrelic/developer-website/commit/461bab03ec77bd5309d2a9af8757d5f36bda262a))
+
 ## [1.67.2](https://github.com/newrelic/developer-website/compare/v1.67.1...v1.67.2) (2021-10-26)
 
 
