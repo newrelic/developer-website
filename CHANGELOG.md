@@ -1,3 +1,10 @@
+## [1.67.2](https://github.com/newrelic/developer-website/compare/v1.67.1...v1.67.2) (2021-10-26)
+
+
+### Bug Fixes
+
+* Match quickstarts type in config to meta tag ([1b6fd83](https://github.com/newrelic/developer-website/commit/1b6fd83ba7c3cadea086f180f25d9c16dde085bb))
+
 ## [1.67.1](https://github.com/newrelic/developer-website/compare/v1.67.0...v1.67.1) (2021-10-22)
 
 
