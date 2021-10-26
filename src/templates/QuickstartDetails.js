@@ -206,6 +206,7 @@ const QuickstartDetails = ({ data, location }) => {
           >
             <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
             <Tabs.BarItem
+              id="dashboards"
               count={quickstart.dashboards?.length ?? 0}
               onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
