@@ -48,8 +48,10 @@ const QuickstartFilter = ({
         css={css`
           width: 100%;
           :hover {
-            cursor: pointer;
-            color: var(--color-brand-500);
+            cursor: ${count === 0 ? `auto` : `pointer`};
+            color: ${count === 0
+              ? `var(--primary-text-color)`
+              : `var(--color-brand-500)`};
           }
         `}
         htmlFor={type}
@@ -59,6 +61,7 @@ const QuickstartFilter = ({
       type="checkbox"
       checked={isChecked}
       id={type}
+      disabled={count === 0}
       onChange={(e) => handleFilter(type, e)}
       css={css`
         appearance: none;
@@ -75,6 +78,10 @@ const QuickstartFilter = ({
           background-image: url(${check});
           background-position: 50%;
           background-repeat: no-repeat;
+        }
+        :disabled {
+          border: solid 1px var(--border-color);
+          cursor: auto;
         }
       `}
     />
