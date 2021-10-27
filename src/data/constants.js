@@ -11,15 +11,14 @@ export const SPLIT_TRACKING_EVENTS = {
 export const SDK_BASE_URL =
   'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
 
-export const NR1_LOGIN_URL = 'https://login.newrelic.com/login';
-
-export const NR1_SIGNUP_URL = 'https://newrelic.com/signup';
-
 export const NR1_PACK_DETAILS_NERDLET =
   'catalog-pack-details.catalog-pack-contents';
 
 export const NR1_GUIDED_INSTALL_NERDLET =
   'nr1-install-newrelic.nr1-install-newrelic';
+
+export const NR1_CODESTREAM_INSTALL_NERDLET = 'codestream-install.home';
+export const CODESTREAM_QUICKSTART_ID = '29bd9a4a-1c19-4219-9694-0942f6411ce7';
 
 export const NR1_EXPLORER_NERDLET = 'nr1-core.listing';
 
@@ -29,21 +28,8 @@ export const QUICKSTART_SUPPORT_LEVELS = {
   COMMUNITY: 'COMMUNITY',
 };
 
-export const QUICKSTART_SUPPORT_CONTENT = {
-  [QUICKSTART_SUPPORT_LEVELS.NEWRELIC]: {
-    title: 'Built by New Relic',
-    content: `Need help? [Visit our Support Center](https://support.newrelic.com) or check out our community forum, [the Explorers Hub](https://discuss.newrelic.com).`,
-  },
-  [QUICKSTART_SUPPORT_LEVELS.VERIFIED]: {
-    title: 'Verified by New Relic',
-    content: `Need help? Find the author's support resources under **What's included**. Or check out our community forum, the [Explorers Hub](https://discuss.newrelic.com/).
-    `,
-  },
-  [QUICKSTART_SUPPORT_LEVELS.COMMUNITY]: {
-    title: 'Built by the community',
-    content: `Need help? Visit our community forum, [the Explorers Hub](https://discuss.newrelic.com) to find an answer or post a question.`,
-  },
-};
+export const SUPPORT_LINK = 'https://support.newrelic.com';
+export const COMMUNITY_LINK = 'https://discuss.newrelic.com';
 
 export const QUICKSTART_ALERT_TYPES = {
   BASELINE: 'BASELINE',
@@ -65,5 +51,3 @@ export const RESERVED_QUICKSTART_IDS = {
   GUIDED_INSTALL: 'GUIDED_INSTALL',
   BUILD_YOUR_OWN_QUICKSTART: 'BUILD_YOUR_OWN_QUICKSTART',
 };
-export const NR1_CODESTREAM_INSTALL_NERDLET = 'codestream-install.home';
-export const CODESTREAM_QUICKSTART_ID = '29bd9a4a-1c19-4219-9694-0942f6411ce7';

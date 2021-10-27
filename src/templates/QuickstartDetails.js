@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import Tabs from '../components/Tabs';
 import EmptyTab from '../components/quickstarts/EmptyTab';
+import SupportSection from '../components/quickstarts/SupportSection';
 import QuickstartAlerts from '../components/quickstarts/QuickstartAlerts';
 import QuickstartDashboards from '../components/quickstarts/QuickstartDashboards';
 import {
@@ -17,13 +18,11 @@ import {
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
 import InstallButton from '../components/InstallButton';
-import Markdown from '../components/Markdown';
 import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { quickstart } from '../types';
 import {
   QUICKSTARTS_REPO,
-  QUICKSTART_SUPPORT_CONTENT,
   SIGNUP_LINK,
   LOGIN_LINK,
   SHIELD_LEVELS,
@@ -52,12 +51,27 @@ const QuickstartDetails = ({ data, location }) => {
     },
   ];
 
-  const viewRepoClick = () =>
-    tessen.track('instantObservability', 'QuickstartViewRepoClick', {
+  const trackQuickstart = (action, quickstart) => () =>
+    tessen.track('instantObservability', action, {
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,
     });
+
+  const tessenTabTrack = (action, quickstart) => (id, count) => {
+    tessen.track('instantObservability', action, {
+      QuickstartTabState: id,
+      QuickstartTabCount: count,
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+    });
+  };
+  const tessenSupportTrack = (quickstart) => (action) => {
+    tessen.track('instantObservability', action, {
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+    });
+  };
 
   return (
     <>
@@ -165,7 +179,7 @@ const QuickstartDetails = ({ data, location }) => {
                     margin: 1rem 0 0 0;
                   }
                 `}
-                onClick={viewRepoClick}
+                onClick={trackQuickstart('QuickstartViewRepoClick', quickstart)}
               >
                 <Icon
                   name="fe-github"
@@ -194,10 +208,15 @@ const QuickstartDetails = ({ data, location }) => {
             <Tabs.BarItem
               id="dashboards"
               count={quickstart.dashboards?.length ?? 0}
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
               Dashboards
             </Tabs.BarItem>
-            <Tabs.BarItem id="alerts" count={quickstart.alerts?.length ?? 0}>
+            <Tabs.BarItem
+              id="alerts"
+              count={quickstart.alerts?.length ?? 0}
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
+            >
               Alerts
             </Tabs.BarItem>
             <Tabs.BarItem
@@ -206,6 +225,7 @@ const QuickstartDetails = ({ data, location }) => {
                 (quickstart.instrumentation?.length ?? 0) +
                 (quickstart.documentation?.length ?? 0)
               }
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
               Data sources
             </Tabs.BarItem>
@@ -264,24 +284,20 @@ const QuickstartDetails = ({ data, location }) => {
                 <li>
                   <Link
                     to={SIGNUP_LINK}
-                    onClick={() =>
-                      tessen.track(
-                        'instantObservability',
-                        'QuickstartDetailsSignUpClick'
-                      )
-                    }
+                    onClick={trackQuickstart(
+                      'QuickstartDetailsSignUpClick',
+                      quickstart
+                    )}
                   >
                     Sign Up
                   </Link>{' '}
                   for a free New Relic account or{' '}
                   <Link
                     to={LOGIN_LINK}
-                    onClick={() =>
-                      tessen.track(
-                        'instantObservability',
-                        'QuickstartDetailsLoginClick'
-                      )
-                    }
+                    onClick={trackQuickstart(
+                      'QuickstartDetailsLoginClick',
+                      quickstart
+                    )}
                   >
                     Log In
                   </Link>{' '}
@@ -301,18 +317,10 @@ const QuickstartDetails = ({ data, location }) => {
             </PageTools.Section>
             <PageTools.Section>
               <PageTools.Title>Support</PageTools.Title>
-              <h5
-                css={css`
-                  text-transform: uppercase;
-                `}
-              >
-                {QUICKSTART_SUPPORT_CONTENT[`${quickstart.level}`].title}
-              </h5>
-              <p>
-                <Markdown>
-                  {QUICKSTART_SUPPORT_CONTENT[`${quickstart.level}`].content}
-                </Markdown>
-              </p>
+              <SupportSection
+                supportLevel={quickstart.level}
+                onClick={tessenSupportTrack(quickstart)}
+              />
             </PageTools.Section>
           </Layout.PageTools>
         </PageLayout>

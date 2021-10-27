@@ -3,7 +3,7 @@ name: Fetch Quickstarts
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *' # midnight
+    - cron: '0 1,5,9,13,17,21 * * *' # Every 4 hours staggered by 1 hour
 
 env:
   BOT_NAME: nr-opensource-bot
@@ -22,7 +22,7 @@ jobs:
       - name: Setup node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 16
 
       - name: Cache dependencies
         id: yarn-cache

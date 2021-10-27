@@ -9,10 +9,10 @@ import {
 import {
   NR1_GUIDED_INSTALL_NERDLET,
   NR1_PACK_DETAILS_NERDLET,
-  UTM_PARAMETERS,
-  NR1_SIGNUP_URL,
   NR1_CODESTREAM_INSTALL_NERDLET,
   CODESTREAM_QUICKSTART_ID,
+  UTM_PARAMETERS,
+  SIGNUP_LINK,
 } from '../data/constants';
 import { quickstart } from '../types';
 import Cookies from 'js-cookie';
@@ -54,7 +54,7 @@ const createInstallLink = (
     ? getGuidedInstallStackedNr1Url(nerdletId)
     : getPackNr1Url(id, nerdletId);
 
-  const installUrl = new URL(hasUtmParameters ? NR1_SIGNUP_URL : platformUrl);
+  const installUrl = new URL(hasUtmParameters ? SIGNUP_LINK : platformUrl);
   if (parameters) {
     parameters.forEach((value, key) => {
       installUrl.searchParams.set(key, value);

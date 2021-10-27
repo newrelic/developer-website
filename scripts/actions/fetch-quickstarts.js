@@ -120,7 +120,6 @@ const main = async (query, url, token) => {
   const results = await fetchQuickstarts(query, url, token);
 
   if (results) {
-    // TODO: remove filter once we are ready to display codestream quickstart
     const quickstarts = results.quickstarts;
     console.log(`Found ${quickstarts.length} quickstarts.`);
     console.log(`Writing ${QUICKSTARTS_FILE_PATH}`);

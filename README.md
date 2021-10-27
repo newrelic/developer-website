@@ -18,7 +18,7 @@ Your site is now running at `http://localhost:8000`!
 
 ### Dependencies
 
-Node v12 is used in this project as specified in [.nvmrc](https://github.com/newrelic/developer-website/blob/master/.nvmrc).
+Node v16 is used in this project as specified in [.nvmrc](https://github.com/newrelic/developer-website/blob/master/.nvmrc).
 
 ## 📝 Unit tests
 
@@ -53,7 +53,8 @@ Please search for and review the existing open issues before submitting a new
 issue to prevent the submission of duplicate issues.
 
 ## CI/CD
-### fetch-observability-packs
-* Purpose: This workflow pulls down Observability Packs from the GraphQL API, writes them to src/data/observability-packs.json (overwriting any previous content), and commits that file to the `main` branch. 
-* Trigger: Schedule, 12am everyday
 
+### fetch-observability-packs
+
+- Purpose: This workflow pulls down Observability Packs from the GraphQL API, writes them to src/data/observability-packs.json (overwriting any previous content), and commits that file to the `main` branch.
+- Trigger: Schedule, 12am everyday
