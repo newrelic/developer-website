@@ -348,9 +348,13 @@ const QuickstartsPage = ({ data, location }) => {
                           margin-bottom: 0.25rem;
                           justify-content: flex-start;
                           color: var(--color-brand-500);
+                          :disabled {
+                            color: var(--secondary-text-color);
+                          }
                         `}
                         onClick={clearFilters}
                         variant={Button.VARIANT.LINK}
+                        disabled={!filters || !filters.length}
                       >
                         Clear
                       </Button>
