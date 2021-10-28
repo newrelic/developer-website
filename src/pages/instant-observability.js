@@ -13,7 +13,6 @@ import QuickstartFilter from '../components/quickstarts/QuickstartFilter';
 import {
   SearchInput,
   useTessen,
-  ExternalLink,
   Button,
   Link,
   Icon,
@@ -706,44 +705,34 @@ const QuickstartsPage = ({ data, location }) => {
           >
             {filters?.length === 1 && filters[0] === 'documentation' ? (
               // if data source filter is selected, display guided install
-              <ExternalLink
-                href={getGuidedInstallStackedNr1Url(NR1_GUIDED_INSTALL_NERDLET)}
+
+              <PackTile
+                id={RESERVED_QUICKSTART_IDS.GUIDED_INSTALL}
                 css={css`
-                  text-decoration: none;
+                  ${view === VIEWS.GRID && `height: 100%;`}
+                  background-color: var(--tertiary-background-color);
                 `}
-              >
-                <PackTile
-                  id={RESERVED_QUICKSTART_IDS.GUIDED_INSTALL}
-                  css={css`
-                    ${view === VIEWS.GRID && `height: 100%;`}
-                    background-color: var(--tertiary-background-color);
-                  `}
-                  view={view}
-                  logoUrl={GUIDED_INSTALL}
-                  title="Guided Install"
-                  summary="Not sure how to get started? We'll walk you through the process of instrumenting your environment so that you can monitor it."
-                />
-              </ExternalLink>
+                href={getGuidedInstallStackedNr1Url(NR1_GUIDED_INSTALL_NERDLET)}
+                view={view}
+                logoUrl={GUIDED_INSTALL}
+                title="Guided Install"
+                summary="Not sure how to get started? We'll walk you through the process of instrumenting your environment so that you can monitor it."
+              />
             ) : (
               // else, display build your own quickstart
-              <ExternalLink
-                href={QUICKSTARTS_REPO}
+
+              <PackTile
+                id={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
                 css={css`
-                  text-decoration: none;
+                  ${view === VIEWS.GRID && `height: 100%;`}
+                  background-color: var(--tertiary-background-color);
                 `}
-              >
-                <PackTile
-                  id={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
-                  css={css`
-                    ${view === VIEWS.GRID && `height: 100%;`}
-                    background-color: var(--tertiary-background-color);
-                  `}
-                  view={view}
-                  logoUrl={BUILD_YOUR_OWN}
-                  title="Build your own quickstart"
-                  summary="Can't find a quickstart with what you need? Check out our README and build your own."
-                />
-              </ExternalLink>
+                href={QUICKSTARTS_REPO}
+                view={view}
+                logoUrl={BUILD_YOUR_OWN}
+                title="Build your own quickstart"
+                summary="Can't find a quickstart with what you need? Check out our README and build your own."
+              />
             )}
             {filteredQuickstarts.map((pack) => (
               <PackTile
