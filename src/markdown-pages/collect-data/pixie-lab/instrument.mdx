@@ -78,7 +78,7 @@ This specifies that TinyHat.me, and all its services, should live in a New Relic
 
 <Step>
 
-Leave the default choices on the next screen. These provide a range of observability features for your cluster. Notably, the default options include "Instant service-level insights, full-body requests, and application profiles through Pixie" which you focus on in this lab.
+Leave the default choices on the next screen. These provide a [range of observability features](https://docs.newrelic.com/docs/kubernetes-pixie/kubernetes-integration/installation/kubernetes-integration-install-configure/) for your cluster, including our infrastructure agent which gives you a high level overview of the health of your cluster. Notably, the default options include "Instant service-level insights, full-body requests, and application profiles through Pixie" which you focus on in this lab.
 
 Click **Continue**:
 
@@ -137,9 +137,9 @@ Click **Kubernetes cluster explorer** to see your nodes, pods, deployments and a
 
 ![New Relic cluster explorer](../../../images/pixie/cluster-explorer.png)
 
-In minutes, Pixie was able to instrument your entire cluster without you having to install language-specific agents or specify detailed cluster information!
+In minutes, you were able to instrument your entire cluster without having to install language-specific agents or specify detailed cluster information!
 
-On top of all the data you see in the cluster explorer, click a pod or a node to dig deeper and see the granular data that Pixie was able to access near-instantly:
+On top of all the data you see in the cluster explorer, click a pod or a node to dig deeper and see the granular data that the infrastructure agent was able to access near-instantly:
 
 ![Pod data collected by Pixie](../../../images/pixie/pod-data.png)
 

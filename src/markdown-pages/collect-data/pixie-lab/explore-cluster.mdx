@@ -27,16 +27,17 @@ View your pods:
 
 ```bash
 kubectl get pods
-[output] NAME                                   READY   STATUS    RESTARTS   AGE
-[output] add-service-7bd4df79d8-pvtz6           1/1     Running   0          2m31s
-[output] admin-service-6877db7bcc-t86qj         1/1     Running   0          2m31s
-[output] fetch-service-768d9f9988-8k8jp         1/1     Running   2          2m31s
-[output] frontend-service-d6d79cc6d-q496f       1/1     Running   0          2m31s
-[output] gateway-service-5bc8bcc679-stxbn       1/1     Running   0          2m31s
-[output] manipulation-service-96c8fd7d4-64gfr   1/1     Running   0          2m31s
-[output] moderate-service-859498d88b-nsg5q      1/1     Running   0          2m31s
-[output] mysql-6d65cdf67f-59dfg                 1/1     Running   0          2m31s
-[output] upload-service-7c8d8b648f-x6kq5        1/1     Running   0          2m31s
+[output] NAME                                    READY   STATUS    RESTARTS   AGE
+[output] add-service-5487c78c86-rsx2n            1/1     Running   0          10m
+[output] admin-service-7cdcb754c9-blwpf          1/1     Running   0          10m
+[output] fetch-service-68d9876b8b-2tb45          1/1     Running   5          10m
+[output] frontend-service-649f75984b-xdgtg       1/1     Running   0          10m
+[output] gateway-service-6bcb8bc8d5-hwxcl        1/1     Running   0          10m
+[output] manipulation-service-75c4454b5d-687tf   1/1     Running   0          10m
+[output] moderate-service-55985878d-td2tl        1/1     Running   0          10m
+[output] mysql-576f9d87d9-45cc4                  1/1     Running   0          10m
+[output] simulator-554c8577-5nn52                1/1     Running   0          10m
+[output] upload-service-7f68c55ddc-d5kd5         1/1     Running   0          10m
 ```
 
 </>
@@ -47,7 +48,7 @@ Every pod should be running by now, but if one isn't, give it few more minutes.
 
 </Callout>
 
-Here, you see nine containerized services, each with their own pod. Instead of going into detail about these services now, you'll learn about them in context as you walk through this lab's scenarios.
+Here, you see nine containerized services and one simulator, each with their own pod. Instead of going into detail about the services now, you'll learn about them in context as you walk through this lab's scenarios. The simulator generates load to your website so you don't have to.
 
 </Step>
 
@@ -58,18 +59,17 @@ View your services next:
 <>
 
 ```bash
-kubectl get services
 [output] NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)        AGE
-[output] add-service            ClusterIP      10.106.237.140   <none>           80/TCP         3m22s
-[output] admin-service          ClusterIP      10.101.252.142   <none>           80/TCP         3m22s
-[output] fetch-service          ClusterIP      10.105.255.200   <none>           80/TCP         3m22s
-[output] frontend-service       LoadBalancer   10.110.241.254   10.110.241.254   80:30183/TCP   3m22s
-[output] gateway-service        LoadBalancer   10.100.146.125   10.100.146.125   80:30605/TCP   3m22s
-[output] kubernetes             ClusterIP      10.96.0.1        <none>           443/TCP        3m27s
-[output] manipulation-service   ClusterIP      10.105.191.228   <none>           80/TCP         3m22s
-[output] moderate-service       ClusterIP      10.97.33.66      <none>           80/TCP         3m22s
-[output] mysql                  ClusterIP      10.111.4.242     <none>           3306/TCP       3m22s
-[output] upload-service         ClusterIP      10.98.220.212    <none>           80/TCP         3m22s
+[output] add-service            ClusterIP      10.108.136.0     <none>           80/TCP         13m
+[output] admin-service          ClusterIP      10.108.79.227    <none>           80/TCP         13m
+[output] fetch-service          ClusterIP      10.97.60.129     <none>           80/TCP         13m
+[output] frontend-service       LoadBalancer   10.106.184.90    10.106.184.90    80:32327/TCP   13m
+[output] gateway-service        LoadBalancer   10.108.122.133   10.108.122.133   80:30691/TCP   13m
+[output] kubernetes             ClusterIP      10.96.0.1        <none>           443/TCP        15m
+[output] manipulation-service   ClusterIP      10.102.93.91     <none>           80/TCP         13m
+[output] moderate-service       ClusterIP      10.107.191.29    <none>           80/TCP         13m
+[output] mysql                  ClusterIP      10.96.37.225     <none>           3306/TCP       13m
+[output] upload-service         ClusterIP      10.96.216.177    <none>           80/TCP         13m
 ```
 
 </>
@@ -80,9 +80,15 @@ Here, you see your Kubernetes services. Notice that most of your app services ha
 
 <Step>
 
-Speaking of viewing your site, do that now by opening the `EXTERNAL_IP` that you see for `frontend-service` in your browser:
+Speaking of viewing your site, do that now by opening the `EXTERNAL-IP` that you see for `frontend-service` in your browser:
 
 ![TinyHat.me](../../../images/pixie/frontend.png)
+
+<Callout variant="important">
+
+If the frontend service's `External-IP` is pending, you probably forgot to `minikube tunnel` in another window.
+
+</Callout>
 
 </Step>
 

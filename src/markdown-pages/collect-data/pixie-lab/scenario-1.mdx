@@ -7,8 +7,6 @@ description: "Figure out why users can't render a particular hat in TinyHat.me"
 procIdx: 4
 ---
 
-test
-
 <Callout variant="course" title="lab">
 
 This procedure is part of a lab that teaches you how to monitor your Kubernetes cluster with Pixie.
@@ -206,7 +204,17 @@ You know that the website lives at `frontend-service`. You can reasonably rule t
 
 <Step>
 
-To decide which service to look at first, scroll back up to the service graph:
+To decide which service to look at first, scroll up to **NAMESPACES** and choose `default`:
+
+![Choose the default namespace](../../../images/pixie/default-namespace.png)
+
+Your app services live in the default namespace. This helps you filter the service graph to show more useful nodes.
+
+</Step>
+
+<Step>
+
+Scroll up to the service graph:
 
 ![Pixie service graph highlighting the erroring services](../../../images/pixie/order-of-operations.png)
 
@@ -220,7 +228,7 @@ Double click the **gateway-service** in your service graph to learn more about i
 
 ![Pixie's service view](../../../images/pixie/service-script.png)
 
-Notice that Pixie's live debugger has seamlessly replaced cluster data with service data by changing the script:
+Notice that Pixie's live debugger has seamlessly replaced namespace data with service data by changing the script:
 
 ![A box showing the service script is selected](../../../images/pixie/service-script-selector.png)
 
@@ -236,31 +244,49 @@ Click the script selector to switch to the `px/service_stats` script. Filter the
 
 This gives a better picture of the errors in your service.
 
+</Step>
+
+<Step>
+
 Scroll down to the **Incoming Traffic** and **Outgoing Traffic** tables:
 
 ![Gateway service traffic](../../../images/pixie/traffic.png)
 
 The gateway service is returning the same amount of errors on inbound requests as it's receiving from outbound requests to the fetch service. This is a good indicator that you need to look at what's happening upstream.
 
+</Step>
+
+<Step>
+
 Switch to the `px/http_data_filtered` script, targeting `default/fetch-service` and requests with a 400 response status code:
 
 ![400 responses in the fetch service](../../../images/pixie/fetch-400s.png)
 
-<Callout variant="tip">
+</Step>
 
-If you don't see any rows, switch back to your frontend, and try to render the PIXIE hat again a few times.
+<Step>
 
-</Callout>
-
-Click on the row to learn more about requests to the fetch service that result in errors:
+Click on a row to learn more about a request to the fetch service that resulted in an error:
 
 ![400 response details](../../../images/pixie/400-response-details.png)
 
 Here, you see that the request path looks like `/fetch?style=PIXIE&number=1`. This looks right, because the hat style you chose is called `PIXIE`. So if the fetch service is still returning 400s, something wrong is happening when it tries to find the hat.
 
+</Step>
+
+<Step>
+
 Switch to the `px/mysql_data` script and add a source filter for `default/fetch-service`:
 
-Many of these queries are returning no results. Click on one and look at the `req_body` to see the query:
+![Fetch queries](../../../images/pixie/fetch-queries.png)
+
+Many of these queries returned no results.
+
+</Step>
+
+<Step>
+
+Click on one with no results, and look at the `req_body` to see the query:
 
 ![Fetch PIXIE query](../../../images/pixie/query.png)
 
