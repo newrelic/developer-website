@@ -36,6 +36,14 @@ const checkUtmParameters = (parameters) => {
 };
 
 /**
+ * Method which returns `false` if current user is 'new'. Returns `true` if user is a returning user.
+ * @returns {Boolean}
+ */
+const checkIfReturningUser = () => {
+  return Boolean(Cookies.get('ajs_user_id'));
+};
+
+/**
  * @param {String} id
  * @param {String} nerdletId
  * @param {Boolean} hasGuidedInstall
@@ -48,13 +56,14 @@ const createInstallLink = (
   nerdletId,
   hasGuidedInstall,
   hasUtmParameters,
+  isReturningUser,
   parameters
 ) => {
   const platformUrl = hasGuidedInstall
     ? getGuidedInstallStackedNr1Url(nerdletId)
     : getPackNr1Url(id, nerdletId);
 
-  const installUrl = new URL(hasUtmParameters ? SIGNUP_LINK : platformUrl);
+  const installUrl = new URL(isReturningUser ? platformUrl : SIGNUP_LINK);
   if (parameters) {
     parameters.forEach((value, key) => {
       installUrl.searchParams.set(key, value);
@@ -115,6 +124,7 @@ const InstallButton = ({ quickstart, location, ...props }) => {
         nerdletId,
         hasGuidedInstall,
         hasUtmParameters,
+        checkIfReturningUser(),
         parameters
       )
     : quickstart.documentation[0].url;
