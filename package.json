@@ -1,7 +1,7 @@
 {
   "name": "developer-website",
   "private": true,
-  "version": "1.67.3",
+  "version": "1.67.4",
   "dependencies": {
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
@@ -24,7 +24,7 @@
     "gatsby-plugin-react-helmet": "^4.8.0",
     "gatsby-plugin-robots-txt": "^1.6.8",
     "gatsby-plugin-sass": "^4.8.0",
-    "gatsby-plugin-sharp": "^3.13.0",
+    "gatsby-plugin-sharp": "^3.14.1",
     "gatsby-plugin-sitemap": "^4.4.0",
     "gatsby-plugin-use-dark-mode": "^1.3.0",
     "gatsby-plugin-use-query-params": "^1.0.1",
@@ -100,7 +100,7 @@
     "list-quickstart-urls": "node ./scripts/list-quickstart-urls.js",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "yarn run develop",
+    "start": "GATSBY_NEWRELIC_ENV=development yarn run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint src/",

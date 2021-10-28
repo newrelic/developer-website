@@ -1,3 +1,10 @@
+## [1.67.4](https://github.com/newrelic/developer-website/compare/v1.67.3...v1.67.4) (2021-10-28)
+
+
+### Bug Fixes
+
+* change required status check ([fef9a51](https://github.com/newrelic/developer-website/commit/fef9a51bdf3ca8694b1d5a84959b3e52431d92cc))
+
 ## [1.67.3](https://github.com/newrelic/developer-website/compare/v1.67.2...v1.67.3) (2021-10-26)
 
 

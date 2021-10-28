@@ -47,6 +47,8 @@ const Logo = ({ className, width }) => {
     if (window.location.pathname.includes('instant-observability')) {
       setLogo(instantObservabilityLogo);
     }
+    // Disable eslint rule because we are just using this in place of a componentDidMount method
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return logo;
