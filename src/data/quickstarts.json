@@ -10572,6 +10572,55 @@
   {
     "alerts": [],
     "authors": [
+      "Mona Labs"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Mona: Initial Dashboard",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/mlops/mona/dashboards/mona.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/mlops/mona/dashboards/mona.json"
+      }
+    ],
+    "description": "Mona provides the best visibility into AI systems in order to reduce associated risks with production AI, optimize operational processes, and enable teams to plan better AI roadmaps. The Mona - New Relic integration provides users with the ability to automatically view Mona generated insights directly on their New Relic dashboard, explore production AI / ML data with NRQL, and connect specific Mona insight events to New Relic Incident Intelligence.\n\nInstantly get alerted on latency issues and automatically detect anomalies to ensure the best performance within production systems.\n",
+    "documentation": [
+      {
+        "description": "Documentation on the workings of the Mona Labs integration\n",
+        "name": "Mona Labs Docs",
+        "url": "https://docs.newrelic.com/docs/alerts-applied-intelligence/applied-intelligence/mlops-integrations/mona-mlops-integration/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "99df45ed-c710-4f21-80f8-b519101e0000",
+    "installPlans": [
+      {
+        "id": "monalabs-mlops",
+        "name": "Mona Labs"
+      }
+    ],
+    "keywords": [
+      "mlops",
+      "ai",
+      "mona",
+      "machine learning",
+      "monitoring",
+      "data monitoring",
+      "integrity",
+      "data integrity"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/mlops/mona/logo.png",
+    "name": "mlops-monalabs",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mlops/mona",
+    "summary": "Mona’s integration with New Relic provides next-level monitoring capabilities under a unified production AI environment.\n",
+    "title": "Mona Labs",
+    "websiteUrl": "https://monalabs.io/"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "New Relic",
       "Daniel Gola"
     ],
@@ -16301,6 +16350,49 @@
   {
     "alerts": [],
     "authors": [
+      "Kota Saito"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "SendGrid",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/sendgrid/dashboards/sendgrid-dashboard.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/sendgrid/dashboards/sendgrid-dashboard.json"
+      }
+    ],
+    "description": "SendGrid provides a cloud-based service that assists businesses with email delivery. This quickstart allows you to easily visualize the status of email delivery via SendGrid. In order to use this quickstart you will need to send SendGrid events to New Relic. If you are already sending events to AWS S3 using the SendGrid Event Webhook, they can be transferred to New Relic by using NewRelic-log-ingestion-s3.\n",
+    "documentation": [
+      {
+        "description": "Description about how to send SendGrid Events via Webhook",
+        "name": "SendGrid Getting started with the Event Webhook",
+        "url": "https://docs.sendgrid.com/for-developers/tracking-events/getting-started-event-webhook"
+      },
+      {
+        "description": "Description about how to send logs stored in AWS S3 to New Relic",
+        "name": "AWS Lambda for sending logs from S3",
+        "url": "https://docs.newrelic.com/docs/logs/forward-logs/aws-lambda-sending-logs-s3/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "6e0cc60a-e6ae-4c97-b5d4-b99568f04e9d",
+    "installPlans": [],
+    "keywords": [
+      "sendgrid",
+      "log"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/sendgrid/logo.png",
+    "name": "sendgrid-quickstart",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/sendgrid",
+    "summary": "SendGrid provides a cloud-based service that assists businesses with email delivery. This quickstart allows you to visualize status of email delivery.\n",
+    "title": "SendGrid Events",
+    "websiteUrl": "https://sendgrid.com/"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "Signl4"
     ],
     "dashboards": [],
@@ -17481,140 +17573,5 @@
     "summary": "Send Zipkin-format traces to New Relic\n",
     "title": "Zipkin",
     "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Mona Labs"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Mona: Initial Dashboard",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/mlops/mona/dashboards/mona.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/mlops/mona/dashboards/mona.json"
-      }
-    ],
-    "description": "Mona provides the best visibility into AI systems in order to reduce associated risks with production AI, optimize operational processes, and enable teams to plan better AI roadmaps. The Mona - New Relic integration provides users with the ability to automatically view Mona generated insights directly on their New Relic dashboard, explore production AI / ML data with NRQL, and connect specific Mona insight events to New Relic Incident Intelligence.\n\nInstantly get alerted on latency issues and automatically detect anomalies to ensure the best performance within production systems.\n",
-    "documentation": [
-      {
-        "description": "Documentation on the workings of the Mona Labs integration\n",
-        "name": "Mona Labs Docs",
-        "url": "https://docs.newrelic.com/docs/alerts-applied-intelligence/applied-intelligence/mlops-integrations/mona-mlops-integration/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "99df45ed-c710-4f21-80f8-b519101e0000",
-    "installPlans": [
-      {
-        "id": "monalabs-mlops",
-        "name": "Mona Labs"
-      }
-    ],
-    "keywords": [
-      "mlops",
-      "ai",
-      "mona",
-      "machine learning",
-      "monitoring",
-      "data monitoring",
-      "integrity",
-      "data integrity"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/mlops/mona/logo.png",
-    "name": "mlops-monalabs",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mlops/mona",
-    "summary": "Mona’s integration with New Relic provides next-level monitoring capabilities under a unified production AI environment.\n",
-    "title": "Mona Labs",
-    "websiteUrl": "https://monalabs.io/"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Kota Saito"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "SendGrid",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/sendgrid/dashboards/sendgrid-dashboard.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/sendgrid/dashboards/sendgrid-dashboard.json"
-      }
-    ],
-    "description": "SendGrid provides a cloud-based service that assists businesses with email delivery. This quickstart allows you to easily visualize the status of email delivery via SendGrid. In order to use this quickstart you will need to send SendGrid events to New Relic. If you are already sending events to AWS S3 using the SendGrid Event Webhook, they can be transferred to New Relic by using NewRelic-log-ingestion-s3.\n",
-    "documentation": [
-      {
-        "description": "Description about how to send SendGrid Events via Webhook",
-        "name": "SendGrid Getting started with the Event Webhook",
-        "url": "https://docs.sendgrid.com/for-developers/tracking-events/getting-started-event-webhook"
-      },
-      {
-        "description": "Description about how to send logs stored in AWS S3 to New Relic",
-        "name": "AWS Lambda for sending logs from S3",
-        "url": "https://docs.newrelic.com/docs/logs/forward-logs/aws-lambda-sending-logs-s3/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "6e0cc60a-e6ae-4c97-b5d4-b99568f04e9d",
-    "installPlans": [],
-    "keywords": [
-      "sendgrid",
-      "log"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/sendgrid/logo.png",
-    "name": "sendgrid-quickstart",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/sendgrid",
-    "summary": "SendGrid provides a cloud-based service that assists businesses with email delivery. This quickstart allows you to visualize status of email delivery.\n",
-    "title": "SendGrid Events",
-    "websiteUrl": "https://sendgrid.com/"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Kota Saito"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "SendGrid",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/sendgrid/dashboards/sendgrid-dashboard.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/sendgrid/dashboards/sendgrid-dashboard.json"
-      }
-    ],
-    "description": "SendGrid provides a cloud-based service that assists businesses with email delivery. This quickstart allows you to easily visualize the status of email delivery via SendGrid. In order to use this quickstart you will need to send SendGrid events to New Relic. If you are already sending events to AWS S3 using the SendGrid Event Webhook, they can be transferred to New Relic by using NewRelic-log-ingestion-s3.\n",
-    "documentation": [
-      {
-        "description": "Description about how to send SendGrid Events via Webhook",
-        "name": "SendGrid Getting started with the Event Webhook",
-        "url": "https://docs.sendgrid.com/for-developers/tracking-events/getting-started-event-webhook"
-      },
-      {
-        "description": "Description about how to send logs stored in AWS S3 to New Relic",
-        "name": "AWS Lambda for sending logs from S3",
-        "url": "https://docs.newrelic.com/docs/logs/forward-logs/aws-lambda-sending-logs-s3/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "6e0cc60a-e6ae-4c97-b5d4-b99568f04e9d",
-    "installPlans": [],
-    "keywords": [
-      "sendgrid",
-      "log"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.54.0/quickstarts/sendgrid/logo.png",
-    "name": "sendgrid-quickstart",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/sendgrid",
-    "summary": "SendGrid provides a cloud-based service that assists businesses with email delivery. This quickstart allows you to visualize status of email delivery.\n",
-    "title": "SendGrid Events",
-    "websiteUrl": "https://sendgrid.com/"
   }
 ]
