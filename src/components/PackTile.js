@@ -28,6 +28,7 @@ const PackTile = ({
   level,
   className,
   summary,
+  href,
 }) => {
   const tessen = useTessen();
 
@@ -56,7 +57,7 @@ const PackTile = ({
   return (
     <Surface
       as={Link}
-      to={fields?.slug || '/'}
+      to={href || fields?.slug || '/'}
       key={id}
       base={Surface.BASE.PRIMARY}
       className={className}
@@ -168,6 +169,7 @@ PackTile.propTypes = {
   level: PropTypes.string,
   className: PropTypes.string,
   featured: PropTypes.bool,
+  href: PropTypes.string,
 };
 
 export default PackTile;
