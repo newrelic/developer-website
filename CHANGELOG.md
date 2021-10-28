@@ -1,3 +1,10 @@
+## [1.67.5](https://github.com/newrelic/developer-website/compare/v1.67.4...v1.67.5) (2021-10-28)
+
+
+### Bug Fixes
+
+* Remove link within link ([bfb5ee6](https://github.com/newrelic/developer-website/commit/bfb5ee68b67c4aca524405fd938e60b714bcda07))
+
 ## [1.67.4](https://github.com/newrelic/developer-website/compare/v1.67.3...v1.67.4) (2021-10-28)
 
 
