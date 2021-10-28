@@ -107,10 +107,8 @@ const QuickstartDetails = ({ data, location }) => {
               )
             }
             css={css`
-              background: var(--primary-background-color);
               border-bottom: none;
               display: grid;
-              padding-bottom: 0;
               grid-template-areas:
                 'logo title cta'
                 'logo summ cta';
@@ -118,16 +116,22 @@ const QuickstartDetails = ({ data, location }) => {
               grid-row-gap: 1rem;
               justify-content: normal;
               justify-self: center;
-              position: sticky;
+              padding-bottom: 8px;
+              padding-top: 8px;
               row-gap: 1rem;
-              top: var(--global-header-height);
               width: 101%;
-              z-index: 80;
 
               h1 {
                 font-weight: normal;
                 grid-area: title;
                 padding-bottom: 1rem;
+              }
+
+              @media (min-width: 760px) {
+                background: var(--primary-background-color);
+                position: sticky;
+                top: var(--global-header-height);
+                z-index: 80;
               }
             `}
           >
