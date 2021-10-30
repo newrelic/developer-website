@@ -35,26 +35,30 @@ This repository contains all the code you need to complete this lab.
 
 <Step>
 
-Run the setup script to spin up a new minikube cluster:
+Change to the _main_ directory, and run the setup script to spin up a new minikube cluster:
 
 <>
 
 ```bash
-cd pixie-lab-materials
+cd pixie-lab-materials/main
 ./setup.sh
 ```
 
 </>
 
-This uses the pixie-supported hyperkit driver and configures your network memory and CPU with limits that will work well with this lab.
+This uses the pixie-supported hyperkit driver and configures your network memory and CPU with limits that will work well with this lab. It also deploys your TinyHat application to your cluster.
 
 <Callout variant="tip">
 
-If you're using linux, use the `kvm2` driver instead. If you're missing any dependencies, see the [requirements](/collect-data/pixie/#requirements) in the lab overview for installation links.
+If you're using linux, update _setup.sh_ to use the `kvm2` driver instead:
+
+```bash
+minikube start --driver=kvm2 --cni=flannel --cpus=4 --memory=8000 -p minikube-pixie-lab
+```
+
+If you're missing any dependencies, see the [requirements](/collect-data/pixie/#requirements) in the lab overview for installation links.
 
 </Callout>
-
-It also deploys your TinyHat application to your cluster.
 
 </Step>
 

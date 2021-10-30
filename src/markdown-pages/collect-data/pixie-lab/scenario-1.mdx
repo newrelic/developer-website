@@ -17,16 +17,16 @@ Each procedure in the lab builds upon the last, so make sure you've completed th
 
 Until now, you've been working with application services that don't have bugs (we hope). You've been able to access TinyHat.me and render Bob Ross with one or more silly hats without a hitch. But it's time to deploy some new code to your cluster.
 
-Change to the `scenario-1` branch and set up your environment:
+Change to the `scenario-1` directory and set up your environment:
 
 <>
 
 ```bash
-git checkout scenario-1
+cd ../scenario-1
 ./setup.sh
-[output] Switched to branch 'scenario-1'
 [output] Please wait while we update your lab environment.
 [output] deployment.apps/fetch-service configured
+[output] deployment.apps/simulator configured
 [output] Done!
 ```
 
@@ -167,7 +167,7 @@ Notice the **script** dropdown menu at the top of the debugger:
 
 ![Pixie's script selector](../../../images/pixie/scripts.png)
 
-Pixie's live debugger renders data based on open source scripts written in PxL, [a proprietary scripting language](https://docs.pixielabs.ai/tutorials/pxl-scripts/write-pxl-scripts). The default script is `px/cluster`, which shows cluster-level information including:
+Pixie's live debugger renders data based on open source scripts written in PxL, [Pixie's proprietary query language](https://docs.pixielabs.ai/tutorials/pxl-scripts/write-pxl-scripts). The default script is `px/cluster`, which shows cluster-level information including:
 
 - A service graph
 - Nodes
@@ -219,6 +219,12 @@ Scroll up to the service graph:
 ![Pixie service graph highlighting the erroring services](../../../images/pixie/order-of-operations.png)
 
 Here, you see that the `frontend-service` requests data from `gateway-service`. In turn, `gateway-service` requests data from `fetch-service`. So, following that order of operations, focus first on the `gateway-service`.
+
+<Callout variant="tip">
+
+You can click and drag the nodes in the service map to make it more readable.
+
+</Callout>
 
 </Step>
 

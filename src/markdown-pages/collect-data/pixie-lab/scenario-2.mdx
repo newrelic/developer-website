@@ -17,18 +17,18 @@ Each procedure in the lab builds upon the last, so make sure you've completed th
 
 After fixing your last TinyHat.me bug, you and your team are feeling confident. It's time to push your next release to production.
 
-Change to the `scenario-2` branch and set up your environment:
+Change to the `scenario-2` directory and set up your environment:
 
 <>
 
 ```bash
-git checkout scenario-2
+cd ../scenario-2
 ./setup.sh
-[output] Switched to branch 'scenario-2'
 [output] Please wait while we update your lab environment.
 [output] deployment.apps/admin-service configured
 [output] deployment.apps/fetch-service configured
 [output] deployment.apps/frontend-service configured
+[output] deployment.apps/simulator configured
 [output] Done!
 ```
 
@@ -178,13 +178,13 @@ But this only shows you the symptom of an underlying problem. To figure out why 
 
 <Step>
 
-Scroll down to see the **Sample Of Slow Requests** table:
+Scroll down to see the **Sample Of Slow Inbound Requests** table:
 
-![Sample of slow requests table](../../../images/pixie/sample-of-slow-requests.png)
+![Sample Of Slow Inbound Requests table](../../../images/pixie/sample-of-slow-requests.png)
 
 Here, you see that the frontend's requests to `/api/admin` are slow. That's a promising lead!
 
-Now that you know that the admin service is the cause of your app latency, it's time to investigate that service. One good place to look when you want to know what's causing slowness in your application is a performance flamegraph for that service.
+Now that you know that the admin service is causing your app latency, it's time to investigate that service. One good place to look when you want to know what's causing slowness in your application is a performance flamegraph for that service.
 
 Pixie's performance flamegraph shows the frequency that every function appears in stack traces across your CPUs. Pixie collects this data with a feature called [continuous application profiling](https://docs.pixielabs.ai/tutorials/pixie-101/profiler/) where it samples stack traces, aggregates those samples, and then groups the aggregates in the flamegraph.
 
