@@ -53,10 +53,16 @@
     - title: Use New Relic to diagnose problems in your system
       url: '/automate-workflows/diagnose-problems'
       pages:
+        - title: Spin up Acme Telco Lite architecture
+          url: '/automate-workflows/diagnose-problems/spin-up-acme'
+        - title: View your services
+          url: '/automate-workflows/diagnose-problems/view-your-services'
         - title: High response times
           url: '/automate-workflows/diagnose-problems/high-response-times'
         - title: Error alerts
           url: '/automate-workflows/diagnose-problems/error-alerts'
+        - title: Tear down Telco Lite
+          url: '/automate-workflows/diagnose-problems/tear-down'
 - title: Build apps
   icon: nr-build-apps
   url: '/build-apps'
