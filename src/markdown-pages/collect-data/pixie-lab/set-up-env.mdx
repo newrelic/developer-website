@@ -1,6 +1,6 @@
 ---
 path: '/collect-data/pixie/set-up-env'
-duration: '10 min'
+duration: '5 min'
 title: 'Set up your TinyHat environment'
 template: 'GuideTemplate'
 description: 'Before you begin, set up a local minikube cluster that runs your TinyHat application.'
@@ -35,7 +35,7 @@ This repository contains all the code you need to complete this lab.
 
 <Step>
 
-Change to the _main_ directory, and run the setup script to spin up a new minikube cluster:
+Change to the _main_ directory, and run the setup script:
 
 <>
 
@@ -46,7 +46,7 @@ cd pixie-lab-materials/main
 
 </>
 
-This uses the pixie-supported hyperkit driver and configures your network memory and CPU with limits that will work well with this lab. It also deploys your TinyHat application to your cluster.
+This script spins up a new minikube cluster using the Pixie-supported hyperkit driver. It also configures your network memory and CPU with limits that work well with this lab. Finally, it creates all the pods and services that make up the TinyHat application.
 
 <Callout variant="tip">
 

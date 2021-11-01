@@ -42,7 +42,7 @@ kubectl get pods
 
 </>
 
-<Callout variant="tip">
+<Callout variant="important">
 
 Every pod should be running by now, but if one isn't, give it few more minutes.
 
@@ -59,6 +59,7 @@ View your services next:
 <>
 
 ```bash
+kubectl get services
 [output] NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)        AGE
 [output] add-service            ClusterIP      10.108.136.0     <none>           80/TCP         13m
 [output] admin-service          ClusterIP      10.108.79.227    <none>           80/TCP         13m

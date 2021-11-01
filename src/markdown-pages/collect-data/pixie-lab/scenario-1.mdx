@@ -169,7 +169,7 @@ Notice the **script** dropdown menu at the top of the debugger:
 
 Pixie's live debugger renders data based on open source scripts written in PxL, [Pixie's proprietary query language](https://docs.pixielabs.ai/tutorials/pxl-scripts/write-pxl-scripts). The default script is `px/cluster`, which shows cluster-level information including:
 
-- A service graph
+- A service map
 - Nodes
 - Namespaces
 - Services
@@ -189,12 +189,6 @@ Yikes! You have three services returning a high percentage of errors:
 - frontend-service
 - gateway-service
 
-<Callout variant="tip">
-
-If your data doesn't show any requests, switch back to your frontend, and try to render the PIXIE hat again a few times.
-
-</Callout>
-
 You know that the website lives at `frontend-service`. You can reasonably rule this out as the culprit because you know it renders other hats just fine. That leaves two potential problem services:
 
 - `gateway-service`
@@ -208,15 +202,15 @@ To decide which service to look at first, scroll up to **NAMESPACES** and choose
 
 ![Choose the default namespace](../../../images/pixie/default-namespace.png)
 
-Your app services live in the default namespace. This helps you filter the service graph to show more useful nodes.
+Your app services live in the default namespace. This helps you filter the service map to show more useful nodes.
 
 </Step>
 
 <Step>
 
-Scroll up to the service graph:
+Scroll up to the service map:
 
-![Pixie service graph highlighting the erroring services](../../../images/pixie/order-of-operations.png)
+![Pixie service map highlighting the erroring services](../../../images/pixie/order-of-operations.png)
 
 Here, you see that the `frontend-service` requests data from `gateway-service`. In turn, `gateway-service` requests data from `fetch-service`. So, following that order of operations, focus first on the `gateway-service`.
 
@@ -230,7 +224,7 @@ You can click and drag the nodes in the service map to make it more readable.
 
 <Step>
 
-Double click the **gateway-service** in your service graph to learn more about it:
+Double click the **gateway-service** in your service map to learn more about it:
 
 ![Pixie's service view](../../../images/pixie/service-script.png)
 
