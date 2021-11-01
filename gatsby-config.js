@@ -76,7 +76,7 @@ module.exports = {
                 },
                 filters: {
                   page: {
-                    type: ['docs', 'developer', 'opensource', 'quick_starts'],
+                    type: ['docs', 'developer', 'opensource', 'quickstarts'],
                     document_type: [
                       '!views_page_menu',
                       '!term_page_api_menu',

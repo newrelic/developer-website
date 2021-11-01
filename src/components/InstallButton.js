@@ -9,6 +9,8 @@ import {
 import {
   NR1_GUIDED_INSTALL_NERDLET,
   NR1_PACK_DETAILS_NERDLET,
+  NR1_CODESTREAM_INSTALL_NERDLET,
+  CODESTREAM_QUICKSTART_ID,
   UTM_PARAMETERS,
   SIGNUP_LINK,
 } from '../data/constants';
@@ -34,6 +36,14 @@ const checkUtmParameters = (parameters) => {
 };
 
 /**
+ * Method which returns `false` if current user is 'new'. Returns `true` if user is a returning user.
+ * @returns {Boolean}
+ */
+const checkIfReturningUser = () => {
+  return Boolean(Cookies.get('ajs_user_id'));
+};
+
+/**
  * @param {String} id
  * @param {String} nerdletId
  * @param {Boolean} hasGuidedInstall
@@ -46,13 +56,14 @@ const createInstallLink = (
   nerdletId,
   hasGuidedInstall,
   hasUtmParameters,
+  isReturningUser,
   parameters
 ) => {
   const platformUrl = hasGuidedInstall
     ? getGuidedInstallStackedNr1Url(nerdletId)
     : getPackNr1Url(id, nerdletId);
 
-  const installUrl = new URL(hasUtmParameters ? SIGNUP_LINK : platformUrl);
+  const installUrl = new URL(isReturningUser ? platformUrl : SIGNUP_LINK);
   if (parameters) {
     parameters.forEach((value, key) => {
       installUrl.searchParams.set(key, value);
@@ -74,7 +85,9 @@ const hasComponent = (quickstart, key) =>
   quickstart[key] && quickstart[key].length > 0;
 
 const InstallButton = ({ quickstart, location, ...props }) => {
-  const hasInstallableComponent = hasComponent(quickstart, 'installPlans');
+  const hasInstallableComponent =
+    hasComponent(quickstart, 'installPlans') ||
+    quickstart.id === CODESTREAM_QUICKSTART_ID;
 
   const tessen = useTessen();
 
@@ -95,10 +108,13 @@ const InstallButton = ({ quickstart, location, ...props }) => {
     return null;
   }
 
-  const nerdletId = hasGuidedInstall
+  let nerdletId = hasGuidedInstall
     ? NR1_GUIDED_INSTALL_NERDLET
     : NR1_PACK_DETAILS_NERDLET;
 
+  if (quickstart.id === CODESTREAM_QUICKSTART_ID) {
+    nerdletId = NR1_CODESTREAM_INSTALL_NERDLET;
+  }
   const hasUtmParameters = checkUtmParameters(parameters);
   // If we have an install-able component, generate a URL. Otherwise, link to the
   // first documentation supplied.
@@ -108,6 +124,7 @@ const InstallButton = ({ quickstart, location, ...props }) => {
         nerdletId,
         hasGuidedInstall,
         hasUtmParameters,
+        checkIfReturningUser(),
         parameters
       )
     : quickstart.documentation[0].url;

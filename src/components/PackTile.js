@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { navigate } from 'gatsby';
 
 import { css } from '@emotion/react';
-import { Surface, Icon, useTessen, Tag } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Surface,
+  Icon,
+  useTessen,
+  Tag,
+  Link,
+} from '@newrelic/gatsby-theme-newrelic';
 import { SHIELD_LEVELS, RESERVED_QUICKSTART_IDS } from '../data/constants';
 import PackImg from './PackImg';
 
@@ -23,6 +28,7 @@ const PackTile = ({
   level,
   className,
   summary,
+  href,
 }) => {
   const tessen = useTessen();
 
@@ -45,12 +51,13 @@ const PackTile = ({
           publicCatalogView: view,
           quickstartName: name,
         });
-        navigate(fields.slug);
     }
   };
 
   return (
     <Surface
+      as={Link}
+      to={href || fields?.slug || '/'}
       key={id}
       base={Surface.BASE.PRIMARY}
       className={className}
@@ -162,6 +169,7 @@ PackTile.propTypes = {
   level: PropTypes.string,
   className: PropTypes.string,
   featured: PropTypes.bool,
+  href: PropTypes.string,
 };
 
 export default PackTile;

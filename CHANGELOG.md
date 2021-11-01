@@ -1,3 +1,75 @@
+## [1.67.5](https://github.com/newrelic/developer-website/compare/v1.67.4...v1.67.5) (2021-10-28)
+
+
+### Bug Fixes
+
+* Remove link within link ([bfb5ee6](https://github.com/newrelic/developer-website/commit/bfb5ee68b67c4aca524405fd938e60b714bcda07))
+
+## [1.67.4](https://github.com/newrelic/developer-website/compare/v1.67.3...v1.67.4) (2021-10-28)
+
+
+### Bug Fixes
+
+* change required status check ([fef9a51](https://github.com/newrelic/developer-website/commit/fef9a51bdf3ca8694b1d5a84959b3e52431d92cc))
+
+## [1.67.3](https://github.com/newrelic/developer-website/compare/v1.67.2...v1.67.3) (2021-10-26)
+
+
+### Bug Fixes
+
+* Add back dashboards id to tab item ([461bab0](https://github.com/newrelic/developer-website/commit/461bab03ec77bd5309d2a9af8757d5f36bda262a))
+
+## [1.67.2](https://github.com/newrelic/developer-website/compare/v1.67.1...v1.67.2) (2021-10-26)
+
+
+### Bug Fixes
+
+* Match quickstarts type in config to meta tag ([1b6fd83](https://github.com/newrelic/developer-website/commit/1b6fd83ba7c3cadea086f180f25d9c16dde085bb))
+
+## [1.67.1](https://github.com/newrelic/developer-website/compare/v1.67.0...v1.67.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* refactor tessen tracking so it includes quickstart attributes ([8136a91](https://github.com/newrelic/developer-website/commit/8136a91bbf38d1e2d0d29a79a7b88579e07f3dc1))
+
+# [1.67.0](https://github.com/newrelic/developer-website/compare/v1.66.1...v1.67.0) (2021-10-22)
+
+
+### Features
+
+* add codestream quickstart ([b27fe28](https://github.com/newrelic/developer-website/commit/b27fe289afec1728c5aa24161ebb837e03365426))
+
+## [1.66.1](https://github.com/newrelic/developer-website/compare/v1.66.0...v1.66.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* bug fixed ([b13ddc4](https://github.com/newrelic/developer-website/commit/b13ddc4187ff9a1373aeb51471c46022b49ccde5))
+
+# [1.66.0](https://github.com/newrelic/developer-website/compare/v1.65.0...v1.66.0) (2021-10-21)
+
+
+### Features
+
+* adding codestream quickstart ([6d9c990](https://github.com/newrelic/developer-website/commit/6d9c990797aaaababd40fa885206d2ef68c348df))
+
+# [1.65.0](https://github.com/newrelic/developer-website/compare/v1.64.0...v1.65.0) (2021-10-21)
+
+
+### Features
+
+* hardcode installplan for codestream ([e24d6e5](https://github.com/newrelic/developer-website/commit/e24d6e511023aecca9f7fc0c00a4b25174e5f6de))
+* point codestream qs to correct nerdlet ([159fa58](https://github.com/newrelic/developer-website/commit/159fa58a8c02f30827d231415cb166513d80c1c9))
+
+# [1.64.0](https://github.com/newrelic/developer-website/compare/v1.63.0...v1.64.0) (2021-10-20)
+
+
+### Features
+
+* hardcode codestream  quickstart to top of marketplace page ([95623b9](https://github.com/newrelic/developer-website/commit/95623b9e38cd9b782c37dda3afdac124b3458ead))
+* hardcode codestream  quickstart to top of marketplace page ([a9e95e9](https://github.com/newrelic/developer-website/commit/a9e95e99ed11cad090e66342bdf39494554ca290))
+
 # [1.63.0](https://github.com/newrelic/developer-website/compare/v1.62.0...v1.63.0) (2021-10-20)
 
 
