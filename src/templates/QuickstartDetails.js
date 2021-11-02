@@ -324,7 +324,12 @@ const QuickstartDetails = ({ data, location }) => {
               />
             </PageTools.Section>
             <PageTools.Section>
-              <RelatedResources resources={quickstart.relatedResources} />
+              <RelatedResources
+                css={css`
+                  padding: 0;
+                `}
+                resources={quickstart.relatedResources}
+              />
             </PageTools.Section>
           </Layout.PageTools>
         </PageLayout>
