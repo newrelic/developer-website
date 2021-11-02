@@ -16,6 +16,7 @@ import {
   Button,
   Icon,
   Link,
+  RelatedResources,
 } from '@newrelic/gatsby-theme-newrelic';
 import InstallButton from '../components/InstallButton';
 import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
@@ -322,6 +323,9 @@ const QuickstartDetails = ({ data, location }) => {
                 onClick={tessenSupportTrack(quickstart)}
               />
             </PageTools.Section>
+            <PageTools.Section>
+              <RelatedResources resources={quickstart.relatedResources} />
+            </PageTools.Section>
           </Layout.PageTools>
         </PageLayout>
       </Tabs>
@@ -341,6 +345,10 @@ export const pageQuery = graphql`
     quickstarts(id: { eq: $id }) {
       name
       title
+      relatedResources(limit: 5) {
+        title
+        url
+      }
       level
       keywords
       id
