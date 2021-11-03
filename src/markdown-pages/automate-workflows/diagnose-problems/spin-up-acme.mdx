@@ -7,18 +7,23 @@ duration: '15 min'
 procIdx: 1
 ---
 
-
 <Callout variant="course" title="lab">
 
 This procedure is part of a lab that teaches you how to diagnose common issues using New Relic. If you haven't already, check out the [lab introduction](/automate-workflows/diagnose-problems).
 
 </Callout>
 
+The Telco Lite architecture has eight, interconnected microservices:
+
+![Acme Telco Lite's architecture](../../../images/telco-lite/acme.png)
+
+In this procedure, you use our [`demo-deployer`](https://github.com/newrelic/demo-deployer) to spin up this infrastructure.
+
 ## Set up your environment
 
 Before you begin, follow the [Prerequisites guide](https://github.com/newrelic/demo-catalog/blob/main/GETTING_STARTED.md#prerequisites) from the deployer's GitHub repository for a detailed walkthrough of how to set up your environment. You can choose between Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) to host your deployment.
 
-To summarize: 
+To summarize:
 
 - Install Docker & pull the demo-deployer image locally
 - Create a user config file containing credentials for New Relic and your cloud provider
