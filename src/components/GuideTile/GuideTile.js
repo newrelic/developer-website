@@ -8,7 +8,7 @@ const GuideTile = ({ duration, title, description, className, to }) => (
     as={Link}
     to={to}
     className={className}
-    base={Surface.BASE.PRIMARY}
+    base={Surface.BASE.SECONDARY}
     interactive
     css={css`
       display: grid;
