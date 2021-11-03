@@ -2,13 +2,12 @@ import React from 'react';
 import aaronAvatar from '../images/relicans/aaron-bassett.jpg';
 import aishaAvatar from '../images/relicans/aisha-blake.jpg';
 import aliAvatar from '../images/relicans/ali-finkelstein.jpg';
-import chrisAvatar from '../images/relicans/chris-dabatos.jpg';
 import dannyAvatar from '../images/relicans/danny-ramos.jpg';
 import jonanAvatar from '../images/relicans/jonan-scheffler.jpg';
 import kirkAvatar from '../images/relicans/kirk-haines.jpg';
+import laurenAvatar from '../images/relicans/lauren-lee.jpg';
 import miaAvatar from '../images/relicans/mia-moore.jpg';
 import pachiAvatar from '../images/relicans/pachi-carlson.jpg';
-import laurenAvatar from '../images/relicans/lauren-lee.jpg';
 
 export const teamMembers = [
   {
@@ -112,33 +111,6 @@ export const teamMembers = [
       {
         name: 'linkedin',
         url: 'https://www.linkedin.com/in/ali-diamond/',
-      },
-    ],
-  },
-  {
-    name: 'Chris Dabatos',
-    pronouns: 'he/him',
-    avatar: chrisAvatar,
-    bio: (
-      <p>
-        Chris is a developer relations engineer for New Relic. He's been a
-        front-end engineer since 2016. He has been documenting his journey as a
-        self-taught developer on YouTube in hopes of inspiring aspiring
-        developers around the world.
-      </p>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://www.twitter.com/realchrissean/',
-      },
-      {
-        name: 'twitch',
-        url: 'https://www.twitch.tv/chrissean/',
-      },
-      {
-        name: 'instagram',
-        url: 'https://www.instagram.com/realchrissean/',
       },
     ],
   },
