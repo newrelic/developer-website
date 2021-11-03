@@ -1,16 +1,18 @@
-import React from 'react';
-import cx from 'classnames';
-import PropTypes from 'prop-types';
+import * as styles from './relicans.module.scss';
+
 import DevSiteSeo from '../components/DevSiteSeo';
-import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import Intro from '../components/Intro';
-import * as styles from './relicans.module.scss';
-import { teamMembers } from '../data/relicansData';
+import PageLayout from '../components/PageLayout';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { teamMembers as alumniTeamMembers } from '../data/relicansAlumniData';
 import { css } from '@emotion/react';
+import cx from 'classnames';
+import { teamMembers } from '../data/relicansData';
 
-const RelicansPage = ({ location }) => {
-  const teamMemberPanels = teamMembers.map((teamMember, i) => {
+const createTeamMemberPanels = (teamMembers) => {
+  return teamMembers.map((teamMember, i) => {
     const socialItems = teamMember.socials.map((socialNetwork, j) => {
       return (
         <li key={j}>
@@ -35,6 +37,11 @@ const RelicansPage = ({ location }) => {
       </div>
     );
   });
+};
+
+const RelicansPage = ({ location }) => {
+  const teamMemberPanels = createTeamMemberPanels(teamMembers);
+  const alumniTeamMemberPanels = createTeamMemberPanels(alumniTeamMembers);
 
   return (
     <>
@@ -119,6 +126,12 @@ const RelicansPage = ({ location }) => {
 
           <section className={cx(styles.section, styles.meetTheTeam)}>
             {teamMemberPanels}
+          </section>
+
+          <h2 className={styles.meetTheRelicansHeading}>The Relicans Alumni</h2>
+
+          <section className={cx(styles.section, styles.meetTheTeam)}>
+            {alumniTeamMemberPanels}
           </section>
         </PageLayout.Content>
       </PageLayout>
