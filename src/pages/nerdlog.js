@@ -142,12 +142,13 @@ const NerdlogPage = ({ location }) => {
               </div>
             </div>
           </Section>
-          <Section>
+          <Section className={cx(styles.meetTheTeamHeading)}>
             <SectionHeading>
               Hosted by{' '}
               <a href="https://twitter.com/ServerlessMom">@SeverlessMom</a> and{' '}
               <a href="https://twitter.com/TheRelicans">The Relicans</a>
             </SectionHeading>
+
             <section className={cx(styles.meetTheTeam)}>
               {teamMemberPanels}
             </section>
