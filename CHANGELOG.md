@@ -1,3 +1,10 @@
+## [1.68.1](https://github.com/newrelic/developer-website/compare/v1.68.0...v1.68.1) (2021-11-03)
+
+
+### Bug Fixes
+
+* reframed existing tutorial as lab ([ff763f1](https://github.com/newrelic/developer-website/commit/ff763f13177bbfc07ff7f528059681052388749d))
+
 # [1.68.0](https://github.com/newrelic/developer-website/compare/v1.67.5...v1.68.0) (2021-11-03)
 
 
