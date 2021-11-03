@@ -27,30 +27,30 @@ const OverviewTemplate = ({ data, location }) => {
                 css={css`
                   margin-top: 2rem;
                 `}
-              >{`Guides to ${title.toLowerCase()}`}</h2>
-              <GuideListing
+              >
+                Guides to {title.toLowerCase()}
+              </h2>
+              <GuideListing.List
                 css={css`
                   margin-top: 2rem;
                 `}
               >
-                <GuideListing.List>
-                  {guides?.nodes.map(({ frontmatter }, index) => (
-                    <GuideTile
-                      to={frontmatter.path}
-                      key={index}
-                      duration={frontmatter.duration}
-                      title={
-                        frontmatter.tileShorthand?.title || frontmatter.title
-                      }
-                      description={
-                        frontmatter.tileShorthand?.description ||
-                        frontmatter.description
-                      }
-                      path={frontmatter.path}
-                    />
-                  ))}
-                </GuideListing.List>
-              </GuideListing>
+                {guides?.nodes.map(({ frontmatter }, index) => (
+                  <GuideTile
+                    to={frontmatter.path}
+                    key={index}
+                    duration={frontmatter.duration}
+                    title={
+                      frontmatter.tileShorthand?.title || frontmatter.title
+                    }
+                    description={
+                      frontmatter.tileShorthand?.description ||
+                      frontmatter.description
+                    }
+                    path={frontmatter.path}
+                  />
+                ))}
+              </GuideListing.List>
             </>
           )}
         </PageLayout.Content>
