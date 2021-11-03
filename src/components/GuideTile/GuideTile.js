@@ -52,7 +52,7 @@ const GuideTile = ({ duration, title, description, className, to }) => (
         `}
       >
         <Icon name="fe-clock" />
-        {duration}
+        {duration} min
       </div>
     )}
   </Surface>
