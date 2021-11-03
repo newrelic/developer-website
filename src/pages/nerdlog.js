@@ -1,17 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { css } from '@emotion/react';
-import cx from 'classnames';
-import PageLayout from '../components/PageLayout';
-import FeatherIcon from '../components/FeatherIcon';
-import MarketoForm from '../components/MarketoForm';
+import * as styles from './nerdlog.module.scss';
+
 import { Button } from '@newrelic/gatsby-theme-newrelic';
 import DevSiteSeo from '../components/DevSiteSeo';
+import FeatherIcon from '../components/FeatherIcon';
 import { Link } from 'gatsby';
-import * as styles from './nerdlog.module.scss';
-import { teamMembers } from '../data/nerdlogData';
+import MarketoForm from '../components/MarketoForm';
+import PageLayout from '../components/PageLayout';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { css } from '@emotion/react';
+import cx from 'classnames';
+import { teamMembers as nerdLogTeamMembers } from '../data/nerdlogData';
 import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
+import { teamMembers as relicanTeamMembers } from '../data/relicansData';
 import styled from '@emotion/styled';
+
+const teamMembers = nerdLogTeamMembers.concat(relicanTeamMembers);
+teamMembers.sort((a, b) => (a.name > b.name ? 1 : -1));
 
 const NerdlogPage = ({ location }) => {
   const teamMemberPanels = teamMembers.map((teamMember, i) => {
