@@ -20,7 +20,7 @@ import podcastBadge from '../images/podcasts/podcasts-badge.png';
 
 const getStartedGuides = [
   {
-    duration: '5 min',
+    duration: 5,
     title: 'Create custom events',
     description:
       'Define, visualize, and get alerts on the data you want using custom events',
@@ -28,14 +28,14 @@ const getStartedGuides = [
     icon: <Icon name="nr-tdp" />,
   },
   {
-    duration: '7 min',
+    duration: 7,
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
     url: '/automate-workflows/5-mins-tag-resources',
     icon: <Icon name="nr-automation" />,
   },
   {
-    duration: '12 min',
+    duration: 12,
     title: 'Build a Hello, World! app',
     description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
     url: '/build-apps/build-hello-world-app',
