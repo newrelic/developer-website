@@ -128,19 +128,18 @@ const QuickstartDetails = ({ data, location }) => {
 
               @media (min-width: 760px) {
                 background: var(--primary-background-color);
-                border: 1px solid var(--border-color);
+                border-bottom: 1px solid var(--border-color);
                 border-radius: 0.25rem;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 grid-template-areas:
                   'logo title cta'
                   'logo summ cta';
-                padding: 8px 0;
+                padding: 16px 0 24px;
                 position: sticky;
                 top: var(--global-header-height);
                 z-index: 80;
               }
 
-              .dark-mode & {
+              .dark-mode {
                 box-shadow: none;
               }
             `}
