@@ -19,39 +19,14 @@ const GuideTile = ({ duration, title, description, className, to }) => (
       transition: all 0.15s ease-out;
     `}
   >
-    <div
+    <h3
       css={css`
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-gap: 0.5rem;
-        align-items: baseline;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
       `}
     >
-      <h3>{title}</h3>
-      <div
-        css={css`
-          font-size: 0.75rem;
-          display: flex;
-          align-items: center;
-          text-align: right;
-          color: var(--accent-text-color);
-          padding: 0.3rem 0 0.2rem 1.2rem;
-          justify-self: end;
-        `}
-      >
-        {duration ? (
-          <Icon
-            css={css`
-              margin-right: 0.25rem;
-            `}
-            name="fe-clock"
-          />
-        ) : (
-          <span>&nbsp;</span>
-        )}
-        {duration}
-      </div>
-    </div>
+      {title}
+    </h3>
     <p
       css={css`
         font-size: 0.875rem;
@@ -63,6 +38,23 @@ const GuideTile = ({ duration, title, description, className, to }) => (
     >
       {description}
     </p>
+
+    {duration && (
+      <div
+        css={css`
+          font-size: 0.75rem;
+          display: inline-flex;
+          gap: 0.25rem;
+          align-items: center;
+          color: var(--accent-text-color);
+          border-radius: 0.25rem;
+          justify-self: start;
+        `}
+      >
+        <Icon name="fe-clock" />
+        {duration}
+      </div>
+    )}
   </Surface>
 );
 
