@@ -105,7 +105,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         slug,
         fileRelativePath,
         guidesFilter:
-          frontmatter.template === 'OverviewTemplate'
+          ['OverviewTemplate', 'LabOverviewTemplate'].includes(frontmatter.template)
             ? `${frontmatter.path}/*`
             : undefined,
       },
