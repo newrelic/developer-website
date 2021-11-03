@@ -109,16 +109,38 @@ const QuickstartDetails = ({ data, location }) => {
             css={css`
               border-bottom: none;
               display: grid;
-              padding-bottom: 0;
-              grid-template-areas: 'title logo' 'summ logo' 'cta logo';
               grid-column-gap: 1rem;
               grid-row-gap: 1rem;
+              grid-template-areas:
+                'title logo'
+                'summ logo'
+                'cta logo';
+              justify-content: normal;
+              justify-self: center;
               row-gap: 1rem;
+              width: 101%;
 
               h1 {
                 font-weight: normal;
                 grid-area: title;
                 padding-bottom: 1rem;
+              }
+
+              @media (min-width: 760px) {
+                background: var(--primary-background-color);
+                border-bottom: 1px solid var(--border-color);
+                border-radius: 0.25rem;
+                grid-template-areas:
+                  'logo title cta'
+                  'logo summ cta';
+                padding: 16px 0 24px;
+                position: sticky;
+                top: var(--global-header-height);
+                z-index: 80;
+              }
+
+              .dark-mode {
+                box-shadow: none;
               }
             `}
           >
@@ -130,6 +152,7 @@ const QuickstartDetails = ({ data, location }) => {
                   max-height: 5rem;
                   grid-area: logo;
                   align-self: center;
+                  justify-self: center;
 
                   .dark-mode & {
                     background-color: white;
@@ -145,8 +168,7 @@ const QuickstartDetails = ({ data, location }) => {
               <div
                 css={css`
                   grid-area: summ;
-                  margin-bottom: 1em;
-                  max-width: 40vw;
+                  max-width: 50vw;
 
                   @media (max-width: 760px) {
                     max-width: 100%;
@@ -160,7 +182,8 @@ const QuickstartDetails = ({ data, location }) => {
               css={css`
                 grid-area: cta;
                 display: flex;
-                justify-content: flex-start;
+                justify-content: center;
+                align-self: center;
                 @media (max-width: 760px) {
                   flex-direction: column;
                   align-items: stretch;
