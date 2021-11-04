@@ -335,10 +335,22 @@ const QuickstartDetails = ({ data, location }) => {
                 </li>
               </ol>
             </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
             <PageTools.Section>
               <PageTools.Title>Authors</PageTools.Title>
               <p>{quickstart.authors.join(', ')}</p>
             </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
             <PageTools.Section>
               <PageTools.Title>Support</PageTools.Title>
               <SupportSection
@@ -346,6 +358,12 @@ const QuickstartDetails = ({ data, location }) => {
                 onClick={tessenSupportTrack(quickstart)}
               />
             </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
             <PageTools.Section>
               <RelatedResources
                 css={css`
@@ -354,6 +372,12 @@ const QuickstartDetails = ({ data, location }) => {
                 resources={quickstart.relatedResources}
               />
             </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
           </Layout.PageTools>
         </PageLayout>
       </Tabs>
