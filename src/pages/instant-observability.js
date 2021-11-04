@@ -241,6 +241,7 @@ const QuickstartsPage = ({ data, location }) => {
     ...filter,
     count: quickstarts
       .filter(filterBySearch(search))
+      .filter(filterByContentTypes)
       .filter(filterByContentType(filter.type))
       .filter(filterByCategory(category)).length,
   }));
