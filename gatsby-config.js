@@ -59,7 +59,7 @@ module.exports = {
             refetch: Boolean(process.env.BUILD_RELATED_CONTENT),
             engineKey: 'Ad9HfGjDw4GRkcmJjUut',
             limit: 5,
-            getSlug: ({ node }) => node.frontmatter.path,
+            getSlug: ({ node }) => node.frontmatter?.path,
             getParams: ({ node }) => {
               const { tags, title } = node.frontmatter;
 
@@ -86,7 +86,8 @@ module.exports = {
                 },
               };
             },
-            filter: ({ node }) => node.frontmatter.template === 'GuideTemplate',
+            filter: ({ node }) =>
+              node.frontmatter?.template === 'GuideTemplate',
           },
         },
         newrelic: {
