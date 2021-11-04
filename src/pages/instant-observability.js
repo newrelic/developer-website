@@ -140,6 +140,9 @@ const QuickstartsPage = ({ data, location }) => {
     setIsCategoriesOverlayOpen(false);
   };
 
+  const filterByContentTypes = (quickstart) =>
+    filters.every((filter) => filterByContentType(filter)(quickstart));
+
   const handleFilter = (value, e) => {
     const currentFilters = filters.slice();
     const params = new URLSearchParams(location.search);
@@ -230,7 +233,8 @@ const QuickstartsPage = ({ data, location }) => {
     ...cat,
     count: quickstarts
       .filter(filterBySearch(search))
-      .filter(filterByCategory(cat.value)).length,
+      .filter(filterByCategory(cat.value))
+      .filter(filterByContentTypes).length,
   }));
 
   const filtersWithCount = FILTERS.map((filter) => ({
@@ -365,7 +369,7 @@ const QuickstartsPage = ({ data, location }) => {
                         type={type}
                         icon={icon}
                         count={count}
-                        isChecked={filters.includes(type)}
+                        isChecked={filters.includes(type) && count !== 0}
                         handleFilter={handleFilter}
                       />
                     ))}
@@ -377,6 +381,7 @@ const QuickstartsPage = ({ data, location }) => {
                     <Button
                       type="button"
                       key={value}
+                      disabled={count === 0}
                       onClick={() => handleCategory(value)}
                       css={css`
                         padding: 1rem 0.5rem;
