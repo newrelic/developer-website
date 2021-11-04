@@ -45,6 +45,8 @@
   - [Updating the SDK documentation bundle](#updating-the-sdk-documentation-bundle)
     - [Step 1: Update the release number in `gatsby-config`](#step-1-update-the-release-number-in-gatsby-config)
     - [Step 2: Add any new APIs or components to our constants list](#step-2-add-any-new-apis-or-components-to-our-constants-list)
+      - [How to identify new components, APIs](#how-to-identify-new-components-apis)
+      - [Adding new components](#adding-new-components)
     - [Step 3: Add any new APIs or components to the navigation](#step-3-add-any-new-apis-or-components-to-the-navigation)
 
 <!-- /TOC -->
@@ -401,10 +403,19 @@ need to happen:
 - We use a [local Gatsby plugin `gatsby-source-newrelic-sdk`](https://github.com/newrelic/developer-website/tree/develop/plugins/gatsby-source-newrelic-sdk)
   to source our documentation into GraphQL. This plugin has some configuration that tells it what release number to use.
 
-- [Update `gatsby-config.js`](https://github.com/newrelic/developer-website/blob/ae42737f5f1cf556f3c44d864655c9a571739e28/gatsby-config.js#L161)
+- [Update `gatsby-config.js`](https://github.com/newrelic/developer-website/blob/develop/gatsby-config.js#L198)
   with the new release number to update the bundle release version.
 
-- To obtain the version release number visit the `one-core` repository on Github enterprise and look at the release version in `sdk-loader.js`. You can use the one-core site to confirm if any issues are developer site specific or occurring in the SDK.
+  ```json
+  {
+      resolve: 'gatsby-source-newrelic-sdk',
+      options: {
+        release: 'release-3250',
+      },
+  }
+  ```
+
+- To obtain the version release number visit the `one-core` repository on Github enterprise and look at the release version in `one-core/src/constants/sdk.js `. You can use the one-core docs site to confirm if any issues are developer site specific or occurring in the SDK.
 
 ### Step 2: Add any new APIs or components to our constants list
 
