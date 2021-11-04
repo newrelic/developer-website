@@ -137,6 +137,11 @@ const InstallButton = ({ quickstart, location, ...props }) => {
       options.domain = 'newrelic.com';
     }
 
+    const startTarget = btoa(JSON.stringify({
+      source: "nrio",
+      target: quickstart.id
+    }));
+    Cookies.set('start_target', startTarget, options);
     Cookies.set('newrelic-quickstart-id', quickstart.id, options);
   };
 
