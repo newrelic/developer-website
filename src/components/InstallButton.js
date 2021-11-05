@@ -103,11 +103,6 @@ const InstallButton = ({ quickstart, location, ...props }) => {
     quickstart.installPlans.length === 1 &&
     quickstart.installPlans[0].id.includes('guided-install');
 
-  // If there is nothing to install AND no documentation, don't show this button.
-  if (!hasInstallableComponent && !hasComponent(quickstart, 'documentation')) {
-    return null;
-  }
-
   let nerdletId = hasGuidedInstall
     ? NR1_GUIDED_INSTALL_NERDLET
     : NR1_PACK_DETAILS_NERDLET;
@@ -128,6 +123,18 @@ const InstallButton = ({ quickstart, location, ...props }) => {
         parameters
       )
     : quickstart.documentation[0].url;
+
+  const [installUrl, setInstallUrl] = useState(SIGNUP_LINK);
+  useEffect(() => {
+    setInstallUrl(url);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // If there is nothing to install AND no documentation, don't show this button.
+  if (!hasInstallableComponent && !hasComponent(quickstart, 'documentation')) {
+    return null;
+  }
 
   const writeCookie = () => {
     const currentEnvironment =
@@ -156,7 +163,7 @@ const InstallButton = ({ quickstart, location, ...props }) => {
     <Button
       {...props}
       as={Link}
-      to={url}
+      to={installUrl}
       onClick={handleInstallClick}
       variant={Button.VARIANT.PRIMARY}
     >
