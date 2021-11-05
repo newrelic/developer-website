@@ -86,8 +86,7 @@ const PackTile = ({
           margin: 0 auto 10px;
 
           .dark-mode & {
-            background-color: rgb(231 231 231 / 0);
-            background: white;
+            background-color: white;
           }
 
           ${view === VIEWS.LIST &&
