@@ -1,4 +1,5 @@
 const quote = (str) => `"${str}"`;
+const resolveQuickstartSlug = require('./src/utils/resolveQuickstartSlug');
 
 module.exports = {
   flags: {
@@ -59,10 +60,23 @@ module.exports = {
             refetch: Boolean(process.env.BUILD_RELATED_CONTENT),
             engineKey: 'Ad9HfGjDw4GRkcmJjUut',
             limit: 5,
-            getSlug: ({ node }) => node.frontmatter?.path,
+            getSlug: ({ node }) => {
+              if (node.internal.type === 'Mdx') {
+                return node.frontmatter.path;
+              } else if (node.internal.type === 'Quickstarts') {
+                return resolveQuickstartSlug(node.name, node.id);
+              }
+            },
             getParams: ({ node }) => {
-              const { tags, title } = node.frontmatter;
-
+              let tags = [];
+              let title = '';
+              if (node.frontmatter) {
+                tags = node.frontmatter.tags;
+                title = node.frontmatter.title;
+              } else {
+                tags = node.keywords;
+                title = node.title;
+              }
               return {
                 q: tags ? tags.map(quote).join(' OR ') : title,
                 search_fields: {
@@ -87,7 +101,8 @@ module.exports = {
               };
             },
             filter: ({ node }) =>
-              node.frontmatter?.template === 'GuideTemplate',
+              node.frontmatter?.template === 'GuideTemplate' ||
+              node.internal.type === 'Quickstarts',
           },
         },
         newrelic: {
