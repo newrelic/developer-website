@@ -421,7 +421,9 @@ need to happen:
 
 #### How to identify new components, APIs
 
-At the moment, we don't have a rigorous or automatic process for identifying new components and APIs that we need to document. The goto manual process is to just eyeball the difference between the components we have on the site (or in constants.js), and what's displayed on the one-core site.
+At the moment, we don't have a rigorous or automatic process for identifying new components and APIs that we need to document. The goto manual process is to just eyeball the difference between the components we have on the site (or in `constants.js`), and what's displayed on the one-core site.
+
+You can also check a file that resides in the One Core repository found in `/src/__snapshots__/index.spec.js.snap` that provides a visual check for SDK components and their levels of exposure.
 
 It is possible to see a list of components from the SDK itself. If you run the site with the updated SDK version, you can enter `Object.entries(window.__NR1_SDK__.default).map(array => array[0])` into the dev console in the browser for the running site. That will show you an array containing component and API names. You can use this to try and compare differences, but some manual investigation is still necessary, since the SDK also contains pre-release and internal-only components.
 
