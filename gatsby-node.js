@@ -224,5 +224,8 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
     externals: {
       tessen: 'Tessen',
     },
+    resolve: {
+      fallback: { "os": false }
+    }
   });
 };
