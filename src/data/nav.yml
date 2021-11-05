@@ -14,6 +14,19 @@
       url: '/collect-data/get-started-nerdgraph-api-explorer'
     - title: Monitor your network devices with New Relic
       url: '/collect-data/network-performance-monitoring'
+    - title: Monitor your Kubernetes cluster with New Relic and Pixie
+      url: '/collect-data/pixie'
+      pages:
+        - title: Set up your TinyHat environment
+          url: '/collect-data/pixie/set-up-env'
+        - title: Explore your cluster
+          url: '/collect-data/pixie/explore-cluster'
+        - title: Instrument your cluster
+          url: '/collect-data/pixie/instrument-cluster'
+        - title: Debug missing images in your service
+          url: '/collect-data/pixie/scenario-1'
+        - title: Debug latency in the TinyHat admin
+          url: '/collect-data/pixie/scenario-2'
 - title: Automate workflows
   icon: nr-automation
   url: '/automate-workflows'
@@ -40,10 +53,16 @@
     - title: Use New Relic to diagnose problems in your system
       url: '/automate-workflows/diagnose-problems'
       pages:
-        - title: High response times
+        - title: Spin up Acme Telco Lite architecture
+          url: '/automate-workflows/diagnose-problems/spin-up-acme'
+        - title: View your services
+          url: '/automate-workflows/diagnose-problems/view-your-services'
+        - title: Diagnose high response time
           url: '/automate-workflows/diagnose-problems/high-response-times'
-        - title: Error alerts
+        - title: Diagnose error alerts
           url: '/automate-workflows/diagnose-problems/error-alerts'
+        - title: Tear down Telco Lite
+          url: '/automate-workflows/diagnose-problems/tear-down'
 - title: Build apps
   icon: nr-build-apps
   url: '/build-apps'
@@ -165,7 +184,7 @@
         - title: Create a quickstart
           url: /contribute-to-quickstarts/build-a-quickstart/create-quickstart
     - title: Populate your alert configurations with NerdGraph
-      url: '/contribute-to-quickstarts/query-alerts-for-quickstart'  
+      url: '/contribute-to-quickstarts/query-alerts-for-quickstart'
 - title: Try our APIs
   icon: nr-share
   url: '/try-our-apis'

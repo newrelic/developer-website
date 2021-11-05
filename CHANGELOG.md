@@ -1,3 +1,25 @@
+## [1.68.1](https://github.com/newrelic/developer-website/compare/v1.68.0...v1.68.1) (2021-11-03)
+
+
+### Bug Fixes
+
+* reframed existing tutorial as lab ([ff763f1](https://github.com/newrelic/developer-website/commit/ff763f13177bbfc07ff7f528059681052388749d))
+
+# [1.68.0](https://github.com/newrelic/developer-website/compare/v1.67.5...v1.68.0) (2021-11-03)
+
+
+### Bug Fixes
+
+* prettify LabOverviewTemplate ([88cca0f](https://github.com/newrelic/developer-website/commit/88cca0f69f621994b079a7737c2536edf6bfdeb7))
+* remove console.log ([f833555](https://github.com/newrelic/developer-website/commit/f8335555b22fba950247fbe48fbbe93acab4b490))
+* update pixie lab duration ([34cfc58](https://github.com/newrelic/developer-website/commit/34cfc58c2d9210bcfe41af2707bdf5915abd5a46))
+
+
+### Features
+
+* Add lab overview template ([d4be133](https://github.com/newrelic/developer-website/commit/d4be133acf0f46f24594f7c4bdd1fefefe9f794e))
+* Add Pixie lab ([b7f7c19](https://github.com/newrelic/developer-website/commit/b7f7c198de05ef10bbbe2c5a5d741fdd11379cf4))
+
 ## [1.67.5](https://github.com/newrelic/developer-website/compare/v1.67.4...v1.67.5) (2021-10-28)
 
 

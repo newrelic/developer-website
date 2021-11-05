@@ -1,197 +1,37 @@
 ---
 path: '/automate-workflows/diagnose-problems'
-duration: 30
 title: 'Practice diagnosing common issues using New Relic'
-template: 'GuideTemplate'
+template: 'LabOverviewTemplate'
 description: 'Automatically spin up a microservice infrastructure, and use New Relic to diagnose its issues.'
-tileShorthand:
-  title: 'Use New Relic to diagnose problems'
-  description: 'Learn to diagnose problems using New Relic.'
-resources:
-  - title: 'New Relic Demo Catalog'
-    url: 'https://github.com/newrelic/demo-catalog'
-  - title: 'New Relic Demo Deployer'
-    url: 'https://github.com/newrelic/demo-deployer'
-tags:
-  - demo
-  - explore
 ---
 
-Every time you deploy an application, you hope that it's efficient and error-free. The reality, however, is usually quite different. You might introduce a bug in a release, overlook an edge case, or rely on a broken dependency. These issues, and others, can result in bad user experiences.
+<Intro>
 
-In this guide, you:
+You're a developer at Acme Telco Lite, a mock telecom business that maintains an eCommerce website for its customers. Recently, your users have been complaining about errors and slow response times. Use New Relic to discover the sources of your users' frustrations.
 
-- Use the open-source New Relic [`demo-deployer`](https://github.com/newrelic/demo-deployer) to spin up the infrastructure for Acme Telco Lite, a fictional company. This demo scenario is part of our [Demo Catalog](https://github.com/newrelic/demo-catalog) and will simulate real-world issues in a controlled, demo environment
-- Use New Relic to understand those issues from the perspective of a Telco Lite developer
+</Intro>
+
+<div style="display: flex;">
+
+<div style="flex: 1;">
+
+## Learning Objectives
+
+In this lab, you:
+
+- Spin up the infrastructure for Acme Telco Lite using the New Relic [`demo-deployer`](https://github.com/newrelic/demo-deployer)
+- Use New Relic to understand the issues with Acme Telco Lite
 - Use the deployer to tear down the resources you create
 
-## Welcome to Acme Telco Lite!
+</div>
 
-Acme Telco Lite is a mock telecom business that maintains an eCommerce website for its customers. The site's architecture has eight, interconnected microservices, plus a simulator:
+<div style="flex: 1;">
 
-![Acme Telco Lite architecture diagram](../../../images/telco-lite/acme.png)
+## Requirements
 
-The simulator isn't part of the Telco Lite infrastructure, but it is part of the demo deployment. It runs scenarios against the application to create web traffic and generate interesting data in New Relic.
+- Create a free [New Relic account](https://newrelic.com/signup?utm_source=developer-site)
+- Install [Docker](https://www.docker.com/)
 
-## Set up your environment
+</div>
 
-Before you begin, follow the [Prerequisites guide](https://github.com/newrelic/demo-catalog/blob/main/GETTING_STARTED.md#prerequisites) from the deployer's GitHub repository for a detailed walkthrough of how to set up your environment. For this guide, you can choose between Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) to host your deployment.
-
-The guide steps you through:
-
-- Installing Docker & pulling the demo-deployer image locally
-- Creating a user config file containing credentials for New Relic and your cloud provider
-- Downloading a .pem key file (if your cloud provider is AWS)
-
-Once you're all set up, deploy Acme Telco Lite.
-
-## Deploy Telco Lite
-
-It's time to deploy and instrument the Telco Lite services using `demo-deployer`. Copy the url for the demo that corresponds to the cloud provider you chose when you set up your environment:
-
-- [AWS Telco Lite Demo](https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/telco_lite/telcolite.aws.json)
-- [Azure Telco Lite Demo](https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/telco_lite/telcolite.azure.json)
-- [GCP Telco Lite Demo](https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/telco_lite/telcolite.gcp.json)
-
-Follow the [Deployment guide](https://github.com/newrelic/demo-catalog/blob/main/GETTING_STARTED.md#deploy-your-services) in the Demo Catalog repository for a thorough explanation of how to use the deployer in a local Docker environment. When you run the deployment script, make sure to pass the url you copied for `<demo-url>`.
-
-<Callout variant="tip">
-
-Since Telco Lite contains several services, the deployment can take over half an hour.
-
-</Callout>
-
-When the deloyer is finished, you should see some output stating that the deployment was successful:
-
-```shell copyable=false
-[output] {muted}[INFO] Executing Deployment
-[output] [{green}✔{plain}] Parsing and validating Deployment configuration {green}success
-[output] [{green}✔{plain}] Provisioner {green}success
-[output] [{green}✔{plain}] Installing On-Host instrumentation {green}success
-[output] [{green}✔{plain}] Installing Services and instrumentations {green}success
-[output]
-[output] {muted}[INFO] Deployment successful!
-[output]
-[output] Deployed Resources:
-[output]
-[output]  simuhost (aws/ec2):
-[output]    ip: {blue}34.201.60.23
-[output]    services: ["simulator"]
-[output]
-[output]  uihost (aws/ec2):
-[output]    ip: {blue}18.233.97.28
-[output]    services: ["webportal", "fluentd"]
-[output]    instrumentation:
-[output]       nr_infra: newrelic v1.12.1
-[output]
-[output]  backendhost (aws/ec2):
-[output]    ip: {blue}35.170.192.236
-[output]    services: ["promo", "login", "inventory", "plan", "fulfillment", "warehouse", "fluentd"]
-[output]    instrumentation:
-[output]       nr_infra: newrelic v1.12.1
-[output]
-[output]  reportinghost (aws/ec2):
-[output]    ip: {blue}54.152.82.127
-[output]    services: ["billing", "fluentd"]
-[output]    instrumentation:
-[output]       nr_infra: newrelic v1.12.1
-[output]
-[output] Installed Services:
-[output]
-[output]  simulator:
-[output]    url: {blue}http://34.201.60.23:5000
-[output]
-[output]  webportal:
-[output]    url: {blue}http://18.233.97.28:5001
-[output]    instrumentation:
-[output]       nr_node_agent: newrelic v6.11.0
-[output]       nr_logging_in_context: newrelic
-[output]
-[output]  promo:
-[output]    url: {blue}http://35.170.192.236:8001
-[output]    instrumentation:
-[output]       nr_python_agent: newrelic v5.14.1.144
-[output]       nr_logging_in_context: newrelic
-[output]
-[output]  login:
-[output]    url: {blue}http://35.170.192.236:8002
-[output]    instrumentation:
-[output]       nr_python_agent: newrelic v5.14.1.144
-[output]       nr_logging_in_context: newrelic
-[output]
-[output]  inventory:
-[output]    url: {blue}http://35.170.192.236:8003
-[output]    instrumentation:
-[output]       nr_python_agent: newrelic v5.14.1.144
-[output]       nr_logging_in_context: newrelic
-[output]
-[output]  plan:
-[output]    url: {blue}http://35.170.192.236:8004
-[output]    instrumentation:
-[output]       nr_python_agent: newrelic v5.14.1.144
-[output]       nr_logging_in_context: newrelic
-[output]
-[output]  fulfillment:
-[output]    url: {blue}http://35.170.192.236:8005
-[output]    instrumentation:
-[output]       nr_python_agent: newrelic v5.14.1.144
-[output]       nr_logging_in_context: newrelic
-[output]
-[output]  billing:
-[output]    url: {blue}http://54.152.82.127:9001
-[output]    instrumentation:
-[output]       nr_java_agent: newrelic v5.14.0
-[output]       nr_logging_in_context: newrelic
-[output]       nr_logging: newrelic
-[output]
-[output]  warehouse:
-[output]    url: {blue}http://35.170.192.236:9002
-[output]    instrumentation:
-[output]       nr_python_agent: newrelic v5.14.1.144
-[output]       nr_logging_in_context: newrelic
-[output]
-[output]  fluentd:
-[output]    url: {blue}http://18.233.97.28:9999
-[output]    url: {blue}http://35.170.192.236:9999
-[output]    url: {blue}http://54.152.82.127:9999
-[output]
-[output] Completed at 2020-08-11 11:27:00 -0700
-[output]
-[output] {muted}[INFO] This deployment summary can also be found in:
-[output] {muted}[INFO]   /tmp/telcolite/deploy_summary.txt
-```
-
-<br />
-
-After configuring your environment, you only needed two commands (and a bit of patience) to spin up all the Telco Lite services!
-
-## View your services
-
-With your services running in the cloud, log in to New Relic and select **APM** from the top navigation to see how your services are holding up:
-
-![APM story introduction](../../../images/telco-lite/story-introduction.png)
-
-Yikes! The alerts, high response times, and red-colored indicators suggest things aren't well. Use New Relic to diagnose these issues, which are simultaneously affecting your services:
-
-- [Issue 1: The Warehouse Portal has abnormally high response times](/automate-workflows/diagnose-problems/high-response-times)
-- [Issue 2: Multiple services are raising error alerts](/automate-workflows/diagnose-problems/error-alerts)
-
-<Callout variant="tip">
-
-Don't worry if you don't see all the same alerts. The simulator triggers issues at regular intervals, so you should start seeing these problems in New Relic within 30 minutes to an hour.
-
-</Callout>
-
-## Tear down Telco Lite
-
-When you're finished diagnosing all the issues effecting Telco Lite, follow the [Teardown guide](https://github.com/newrelic/demo-catalog/blob/main/GETTING_STARTED.md#tear-down-your-resources) in the deployer's repository to tear down the services you created in your cloud provider. If you're still exploring, don't tear down your services, or you'll have to deploy them again later.
-
-## Conclusion
-
-Congratulations, you're done! Throughout this tutorial, you:
-
-- Used the `demo-deployer` to deploy Telco Lite to the cloud
-- Used New Relic to investigate simulated issues in Telco Lite services
-- Tore down all the infrastructural resources you created throughout this tutorial
-
-Hopefully, you learned a lot about using New Relic to investigate issues in your services. To get your hands on more features of New Relic, pick another demo from the [catalog](https://github.com/newrelic/demo-catalog) and spin it up with the deployer!
+</div>

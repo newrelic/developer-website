@@ -1,41 +1,37 @@
 ---
 path: '/automate-workflows/diagnose-problems/high-response-times'
-duration: 15
-title: 'Diagnose high response times in Telco Lite'
+duration: '15 min'
+title: 'Diagnose high response time'
 template: 'GuideTemplate'
 description: 'Learn how to use New Relic to diagnose high response times in your services.'
-tileShorthand:
-  title: 'Diagnose high response times in Telco Lite'
-  description: 'Learn how to diagnose high response times with New Relic.'
-resources:
-  - title: 'New Relic Demo Catalog'
-    url: 'https://github.com/newrelic/demo-catalog'
-  - title: 'New Relic Demo Deployer'
-    url: 'https://github.com/newrelic/demo-deployer'
-tags:
-  - demo
-  - explore
+procIdx: 3
 ---
 
-Use New Relic to understand why **Telco-Warehouse Portal** has slower-than-normal response times.
+<Callout variant="course" title="lab">
 
-## Prerequisites
+This procedure is part of a lab that teaches you how to diagnose common issues using New Relic.
 
-Before you begin:
+Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_View your services_](/automate-workflows/diagnose-problems/view-your-services), before starting this one.
 
-- Learn about the [infrastructure of Telco Lite](/automate-workflows/diagnose-problems#welcome-to-acme-telco-lite)
-- [Set up your local environment](/automate-workflows/diagnose-problems#set-up-your-environment)
-- [Deploy and instrument the Telco Lite services](/automate-workflows/diagnose-problems#deploy-telco-lite)
+</Callout>
 
-When you're ready, start your journey by observing the high response times in your services.
+In this procedure, you use New Relic to understand why **Telco-Warehouse Portal** has slower-than-normal response times.
+
+## Diagnose high response times in Telco Lite
 
 <Steps>
 
 <Step>
 
-Log in to [New Relic One](https://one.newrelic.com) and select **APM** from the top navigation menu. Here, you see an overview of all eight Telco Lite services, including the service names, response times, and throughputs. Notice that the response time for **Telco-Warehouse Portal** is 43 seconds, much higher than the response times in other services:
+Log in to [New Relic One](https://one.newrelic.com) and select **APM** from the top navigation menu. Here, you see an overview of all eight Telco Lite services:
 
 ![APM overview](../../../images/telco-lite/high-response-times.png)
+
+The overview includes the service names, response times, and throughputs. Notice that the response time for **Telco-Warehouse Portal** is 43 seconds, much higher than the response times in other services.
+
+</Step>
+
+<Step>
 
 On the **APM** page, select the **Telco-Warehouse Portal** service name to see a summary of that service. The top graph in the summary view shows **Web transactions time**:
 
@@ -49,73 +45,95 @@ The graph changes to show only what the Node.js component contributes to the ove
 
 ![APM web external transaction time](../../../images/telco-lite/apm-webex.png)
 
-External web traffic is the primary contributor to the high response times. That's a good start, but it doesn't tell the whole story. Next, dive deeper to find out which external service is causing the issue.
+Here, you see that **Web external** is the culprit of the high response times, but it's hard to tell why.
+
+External web traffic is all the requests made from your service to other services. This means you should look into what external requests the warehouse portal makes to try to understand exactly what external service is the bottleneck.
 
 </Step>
 
 <Step>
-
-So, you know that **Web external** is the culprit of the high response times, but it's hard to tell why. External web traffic is all the requests made from your service to other services. This means you should look into what external requests that the warehouse portal makes to try to understand exactly what external service is the bottleneck.
 
 From the left-hand navigation, select **Monitor > Distributed tracing**:
 
 ![Distributed tracing overview](../../../images/telco-lite/dt-overview.png)
 
-This view shows you requests to the warehouse portal. Select a request from the table at the bottom of the view to see a trace through that request:
+This view shows you requests to the warehouse portal.
+
+</Step>
+
+<Step>
+
+Select a request from the table at the bottom of the view to see a trace through that request:
 
 ![Specific trace](../../../images/telco-lite/dt-trace.png)
 
 This trace shows that one external request contributes almost all of the total trace duration. Specifically, an external request to the **Telco-Fulfillment Service** contributes over 99% of the overall response time.
 
-This is good news! You own the fulfillment service, which means you can drill down for even more information. Select the offending row (called a span), and then select **Explore this transaction**:
-
-![Span details](../../../images/telco-lite/dt-span-details.png)
+Next, drill into the fulfillment service for even more information.
 
 </Step>
 
 <Step>
 
-You're now looking at the `__main__:inventory_item` transaction overview. Because you know that some part of this transaction is slow, you can use this overview to narrow your focus even further.
+Select the offending row (called a span), and then select **Explore this transaction**:
 
-Similar to how you modified the warehouse portal APM graph, you can look specifically at the components of this transaction to understand where the root cause of the slowness is. Another way to view this information is to scroll down to the **Breakdown table** in that same view:
+![Span details](../../../images/telco-lite/dt-span-details.png)
+
+You're now looking at the **__main__:inventory_item** transaction overview. Because you know that some part of this transaction is slow, you use this overview to narrow your focus even further. Similar to how you modified the warehouse portal APM graph, you look specifically at the components of this transaction to understand where the root cause of the slowness is.
+
+Another way to view this information is to scroll down to the **Breakdown table** in that same view:
 
 ![Transaction breakdown](../../../images/telco-lite/transaction-breakdown.png)
 
 `Function/__main__:inventory_item`, a Python function, contributes over 99% of the overall response time.
 
-At this point, you know that **Telco-Warehouse Portal** is slow because it makes an external request to **Telco-Fulfillment Service**, which is slow. You also know that the issue in the fulfillment service is local because over 99% of the request is spent in Python code, not external services. Navigate to the fulfillment service's summary page to look at the service as a whole, instead of this single transaction:
+At this point, you know that **Telco-Warehouse Portal** is slow because it makes an external request to **Telco-Fulfillment Service**, which is slow. You also know that the issue in the fulfillment service is local because over 99% of the request is spent in Python code, not external services.
+
+</Step>
+
+<Step>
+
+Navigate to the fulfillment service's summary page to look at the service as a whole:
 
 ![Fulfillment transaction time summary](../../../images/telco-lite/apm-fulfillment-summary.png)
 
+Scroll down on this view to familiarize yourself with the graphs and tables it shows, such as **Throughput**, **Error rate**, and **Hosts**. Next, look at the host to see what's happening.
+
 </Step>
 
 <Step>
 
-Scroll down on this view to familiarize yourself with the graphs it shows, such as **Throughput** and **Error rate**. At the bottom of the page, you can see a table with the fulfillment hosts. You can't currently drill into a specific host in the new UI (we're working on it), but you can in the old UI. Toggle **Show new view** to off and select the host link:
+First, switch to the old UI. Toggle **Show new view** to off and select the host link:
 
 ![Switch to the old UI](../../../images/telco-lite/old-ui.png)
 
+Now, you're looking at graphs in the infrastructure view for that service's host. Notice that **CPU %** has a lot of high spikes.
+
 </Step>
 
 <Step>
 
-Now, you're looking at graphs in the infrastructure view for that service's host. Notice that **CPU %** has a lot of high spikes. Click and drag on the graph from the start of a spike to the end of it to narrow the timeslice to the period when CPU utilization goes up:
+Click and drag on the graph from the start of a spike to the end of it to narrow the timeslice to the period when CPU utilization goes up:
 
 ![CPU spike](../../../images/telco-lite/cpu-spike.png)
 
 If you compare this graph to the fulfillment service's transaction graph you looked at earlier, you'll see that soon after `__main__:inventory_item` begins executing, the CPU utilization of the host sharply rises to 100%!
 
+Now, you understand the problem causing slow response times in the warehouse portal, but you don't know the extent of the issue. Using service maps, you can see all your services that depend on the fullfillment service.
+
 </Step>
 
 <Step>
-
-Now, you understand the problem causing slow response times in the warehouse portal, but you don't know the extent of the issue. Using service maps, you can see all your services that depend on the fullfillment service.
 
 Navigate to the service map under **APM > Telco-Fulfillment Service**:
 
 ![Service map](../../../images/telco-lite/service-map.png)
 
 This map shows you the fulfillment service's incoming and outgoing dependencies. Not only is **Telco-Warehouse Portal** dependent on the fullfillment service, but so is **Telco-Web Portal**!
+
+</Step>
+
+<Step>
 
 Select the web portal node to see that the fulfillment service also affects the web portal's response times:
 
@@ -136,4 +154,8 @@ At the end of your investigation, you discovered:
 
 Now, as the developer behind the fulfillment service, you have enough information to debug the issue causing the CPU spikes. Congratulations!
 
-You can learn more about using New Relic by diagnosing [other issues](/automate-workflows/diagnose-problems#view-your-services). If this is your last issue, you can [tear down](/automate-workflows/diagnose-problems#tear-down-telco-lite) all the Telco Lite services.
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to diagnose common issues using New Relic. Continue on to the next procedure: [_Diagnose error alerts_](/automate-workflows/diagnose-problems/error-alerts).
+
+</Callout>
