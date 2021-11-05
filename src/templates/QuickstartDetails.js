@@ -300,6 +300,7 @@ const QuickstartDetails = ({ data, location }) => {
               li {
                 font-size: 0.85rem;
               }
+              max-height: 100%;
             `}
           >
             <PageTools.Section>
