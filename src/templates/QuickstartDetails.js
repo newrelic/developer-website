@@ -301,11 +301,32 @@ const QuickstartDetails = ({ data, location }) => {
                 font-size: 0.85rem;
               }
               max-height: 100%;
+              @media (min-width: 1240px) {
+                width: 320px;
+                justify-self: flex-end;
+              }
             `}
           >
             <PageTools.Section>
-              <PageTools.Title>How to use this quickstart</PageTools.Title>
-              <ol>
+              <div
+                css={css`
+                  background-color: var(--divider-color);
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  padding: 1rem;
+                  padding-top: 0.5rem;
+                  height: 2.5rem;
+                  width: 100%;
+                `}
+              >
+                <PageTools.Title>How to use this quickstart</PageTools.Title>
+              </div>
+              <ol
+                css={css`
+                  margin-top: 2.5rem;
+                `}
+              >
                 <li>
                   <Link
                     to={SIGNUP_LINK}
