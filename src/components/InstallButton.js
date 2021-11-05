@@ -140,7 +140,7 @@ const InstallButton = ({ quickstart, location, ...props }) => {
     const startTarget = btoa(
       JSON.stringify({
         source: 'nrio',
-        target: quickstart.id,
+        id: quickstart.id,
       })
     );
     Cookies.set('start_target', startTarget, options);
