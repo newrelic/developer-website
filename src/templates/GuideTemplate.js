@@ -49,7 +49,7 @@ const GuideTemplate = ({ data, location }) => {
                   margin-right: 0.25rem;
                 `}
               />
-              {duration}
+              {duration} min
             </div>
           )}
         </PageLayout.Header>

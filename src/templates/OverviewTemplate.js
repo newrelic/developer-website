@@ -1,4 +1,5 @@
 import React from 'react';
+import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
@@ -6,8 +7,6 @@ import PageLayout from '../components/PageLayout';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
-import * as styles from './OverviewTemplate.module.scss';
-
 import DevSiteSeo from '../components/DevSiteSeo';
 
 const OverviewTemplate = ({ data, location }) => {
@@ -25,27 +24,33 @@ const OverviewTemplate = ({ data, location }) => {
           {!!guides?.nodes.length && (
             <>
               <h2
-                className={styles.subtitle}
-              >{`Guides to ${title.toLowerCase()}`}</h2>
-              <GuideListing className={styles.guideListing}>
-                <GuideListing.List>
-                  {guides?.nodes.map(({ frontmatter }, index) => (
-                    <GuideTile
-                      to={frontmatter.path}
-                      key={index}
-                      duration={frontmatter.duration}
-                      title={
-                        frontmatter.tileShorthand?.title || frontmatter.title
-                      }
-                      description={
-                        frontmatter.tileShorthand?.description ||
-                        frontmatter.description
-                      }
-                      path={frontmatter.path}
-                    />
-                  ))}
-                </GuideListing.List>
-              </GuideListing>
+                css={css`
+                  margin-top: 2rem;
+                `}
+              >
+                Guides to {title.toLowerCase()}
+              </h2>
+              <GuideListing.List
+                css={css`
+                  margin-top: 2rem;
+                `}
+              >
+                {guides?.nodes.map(({ frontmatter }, index) => (
+                  <GuideTile
+                    to={frontmatter.path}
+                    key={index}
+                    duration={frontmatter.duration}
+                    title={
+                      frontmatter.tileShorthand?.title || frontmatter.title
+                    }
+                    description={
+                      frontmatter.tileShorthand?.description ||
+                      frontmatter.description
+                    }
+                    path={frontmatter.path}
+                  />
+                ))}
+              </GuideListing.List>
             </>
           )}
         </PageLayout.Content>

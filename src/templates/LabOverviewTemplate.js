@@ -1,4 +1,5 @@
 import React from 'react';
+import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
@@ -6,7 +7,6 @@ import PageLayout from '../components/PageLayout';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
-import * as overviewStyles from './OverviewTemplate.module.scss';
 import * as labOverviewStyles from './LabOverviewTemplate.module.scss';
 
 import DevSiteSeo from '../components/DevSiteSeo';
@@ -37,29 +37,33 @@ const LabOverviewTemplate = ({ data, location }) => {
           <MDXContainer>{body}</MDXContainer>
           {!!guides?.nodes.length && (
             <>
-              <h2 className={overviewStyles.subtitle}>Procedures</h2>
-              <GuideListing className={overviewStyles.guideListing}>
-                <GuideListing.List className={labOverviewStyles.labGuideList}>
-                  {guides?.nodes
-                    .sort(sortProcedures)
-                    .map(({ frontmatter }, index) => (
-                      <GuideTile
-                        className={labOverviewStyles.labGuideCard}
-                        to={frontmatter.path}
-                        key={index}
-                        duration={frontmatter.duration}
-                        title={`${frontmatter.procIdx}. ${
-                          frontmatter.tileShorthand?.title || frontmatter.title
-                        }`}
-                        description={
-                          frontmatter.tileShorthand?.description ||
-                          frontmatter.description
-                        }
-                        path={frontmatter.path}
-                      />
-                    ))}
-                </GuideListing.List>
-              </GuideListing>
+              <h2
+                css={css`
+                  margin-top: 2rem;
+                `}
+              >
+                Procedures
+              </h2>
+              <GuideListing.List className={labOverviewStyles.labGuideList}>
+                {guides?.nodes
+                  .sort(sortProcedures)
+                  .map(({ frontmatter }, index) => (
+                    <GuideTile
+                      className={labOverviewStyles.labGuideCard}
+                      to={frontmatter.path}
+                      key={index}
+                      duration={frontmatter.duration}
+                      title={`${frontmatter.procIdx}. ${
+                        frontmatter.tileShorthand?.title || frontmatter.title
+                      }`}
+                      description={
+                        frontmatter.tileShorthand?.description ||
+                        frontmatter.description
+                      }
+                      path={frontmatter.path}
+                    />
+                  ))}
+              </GuideListing.List>
             </>
           )}
         </PageLayout.Content>

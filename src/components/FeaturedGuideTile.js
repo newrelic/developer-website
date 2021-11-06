@@ -65,8 +65,7 @@ const FeaturedGuideTile = ({
           `}
           name="fe-clock"
         />
-
-        {duration}
+        {duration} min
       </div>
     </div>
     <h3
