@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const API_URL = 'https://api.newrelic.com/graphql';
+const API_URL = 'https://staging-api.newrelic.com/graphql';
 
 const QUERY = `
 {
@@ -23,7 +23,9 @@ const TestSSR = ({ serverData }) => {
     return <div>Loading...</div>;
   }
 
-  const quickstartMetadata = serverData?.actor?.nr1Catalog?.quickstart?.metadata;
+  const quickstartMetadata =
+    serverData.data?.actor?.nr1Catalog?.quickstart?.metadata;
+  console.log(serverData);
   const { displayName, summary } = quickstartMetadata;
 
   return (
@@ -32,7 +34,7 @@ const TestSSR = ({ serverData }) => {
       <p>{summary}</p>
     </>
   );
-}
+};
 
 TestSSR.propTypes = {
   serverData: propTypes.object.isRequired,
@@ -52,13 +54,14 @@ export const getServerData = async () => {
     if (!resp.ok) {
       throw new Error(`Response failed`);
     }
+    const jsonData = await resp.json();
 
     return {
-      props: await resp.json(),
+      props: jsonData,
     };
   } catch (error) {
     console.log('Error fetching data from NerdGraph', error);
   }
-}
+};
 
 export default TestSSR;

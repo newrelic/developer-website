@@ -1,10 +1,3 @@
-const path = require('path');
-
-// FIXME: don't hard-code the environment (.local)
-require('dotenv').config({
-  path: path.join(__dirname, '.env.local'),
-});
-
 const quote = (str) => `"${str}"`;
 const resolveQuickstartSlug = require('./src/utils/resolveQuickstartSlug');
 
