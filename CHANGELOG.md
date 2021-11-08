@@ -1,3 +1,10 @@
+## [1.68.3](https://github.com/newrelic/developer-website/compare/v1.68.2...v1.68.3) (2021-11-08)
+
+
+### Bug Fixes
+
+* added white background for quickstart icons ([f4cec54](https://github.com/newrelic/developer-website/commit/f4cec5476202346aeac42b40182ad1b7c02f1d7c))
+
 ## [1.68.2](https://github.com/newrelic/developer-website/compare/v1.68.1...v1.68.2) (2021-11-05)
 
 
