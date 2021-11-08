@@ -90,5 +90,14 @@
     "associatedKeywords": [
       "mlops"
     ]
+  },
+  {
+    "value": "notifications",
+    "displayName": "Notifications",
+    "associatedKeywords": [
+      "notifications",
+      "outbound integrations",
+      "destinations"
+    ]
   }
 ]
