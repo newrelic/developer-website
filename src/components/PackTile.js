@@ -83,10 +83,10 @@ const PackTile = ({
           object-fit: scale-down;
           width: ${view === VIEWS.GRID ? 100 : 25}%;
           padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
-          margin: 10px auto;
+          margin: 0 auto 10px;
 
           .dark-mode & {
-            background-color: rgb(231 231 231 / 0);
+            background-color: white;
           }
 
           ${view === VIEWS.LIST &&
