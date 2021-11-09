@@ -24,9 +24,9 @@ const TestSSR = ({ serverData }) => {
     return <div>Loading...</div>;
   }
 
+  console.log(serverData);
   const quickstartMetadata =
     serverData.data?.actor?.nr1Catalog?.quickstart?.metadata;
-  console.log(serverData);
   const { displayName, summary } = quickstartMetadata;
 
   return (
