@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import nodeFetch from 'node-fetch';
 
 const API_URL = 'https://staging-api.newrelic.com/graphql';
 
@@ -42,7 +43,7 @@ TestSSR.propTypes = {
 
 export const getServerData = async () => {
   try {
-    const resp = await fetch(API_URL, {
+    const resp = await nodeFetch(API_URL, {
       method: 'POST',
       body: JSON.stringify({ query: QUERY }),
       headers: {
