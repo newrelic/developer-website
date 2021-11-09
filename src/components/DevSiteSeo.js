@@ -19,7 +19,10 @@ function DevSiteSeo({ description, meta, title, tags, location, type }) {
   );
 
   const crazyEgg = (location) => {
-    if (location.pathname === '/instant-observability/') {
+    if (
+      location.pathname === '/' ||
+      location.pathname === '/instant-observability/'
+    )
       return (
         <script
           type="text/javascript"
@@ -27,7 +30,6 @@ function DevSiteSeo({ description, meta, title, tags, location, type }) {
           async="async"
         />
       );
-    }
   };
 
   const metaDescription = description || site.siteMetadata.description;
