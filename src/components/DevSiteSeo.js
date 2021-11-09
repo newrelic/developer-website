@@ -20,7 +20,7 @@ function DevSiteSeo({ description, meta, title, tags, location, type }) {
 
   const crazyEgg = (location) => {
     if (
-      location.pathname === '/index.html' ||
+      location.pathname === '/' ||
       location.pathname === '/instant-observability/'
     )
       return (
