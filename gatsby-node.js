@@ -1,7 +1,7 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
 const { createFilePath } = require('gatsby-source-filesystem');
-const slugify = require('./src/utils/slugify.js');
+const resolveQuickstartSlug = require('./src/utils/resolveQuickstartSlug.js');
 
 const kebabCase = (string) =>
   string
@@ -208,7 +208,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: 'slug',
-      value: `/instant-observability/${slugify(node.name)}/${node.id}`,
+      value: `${resolveQuickstartSlug(node.name, node.id)}`,
     });
   }
 };

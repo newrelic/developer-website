@@ -1,3 +1,17 @@
+## [1.68.3](https://github.com/newrelic/developer-website/compare/v1.68.2...v1.68.3) (2021-11-08)
+
+
+### Bug Fixes
+
+* added white background for quickstart icons ([f4cec54](https://github.com/newrelic/developer-website/commit/f4cec5476202346aeac42b40182ad1b7c02f1d7c))
+
+## [1.68.2](https://github.com/newrelic/developer-website/compare/v1.68.1...v1.68.2) (2021-11-05)
+
+
+### Bug Fixes
+
+* fix for install button having signup as link too often ([d74c7fd](https://github.com/newrelic/developer-website/commit/d74c7fd69f850e79e8067e8323e454baba72fdbd))
+
 ## [1.68.1](https://github.com/newrelic/developer-website/compare/v1.68.0...v1.68.1) (2021-11-03)
 
 

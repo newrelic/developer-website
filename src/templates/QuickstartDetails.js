@@ -16,6 +16,7 @@ import {
   Button,
   Icon,
   Link,
+  RelatedResources,
 } from '@newrelic/gatsby-theme-newrelic';
 import InstallButton from '../components/InstallButton';
 import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
@@ -299,11 +300,33 @@ const QuickstartDetails = ({ data, location }) => {
               li {
                 font-size: 0.85rem;
               }
+              max-height: 100%;
+              @media (min-width: 1240px) {
+                width: 320px;
+                justify-self: flex-end;
+              }
             `}
           >
             <PageTools.Section>
-              <PageTools.Title>How to use this quickstart</PageTools.Title>
-              <ol>
+              <div
+                css={css`
+                  background-color: var(--divider-color);
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  padding: 1rem;
+                  padding-top: 0.5rem;
+                  height: 2.5rem;
+                  width: 100%;
+                `}
+              >
+                <PageTools.Title>How to use this quickstart</PageTools.Title>
+              </div>
+              <ol
+                css={css`
+                  margin-top: 2.5rem;
+                `}
+              >
                 <li>
                   <Link
                     to={SIGNUP_LINK}
@@ -334,10 +357,22 @@ const QuickstartDetails = ({ data, location }) => {
                 </li>
               </ol>
             </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
             <PageTools.Section>
               <PageTools.Title>Authors</PageTools.Title>
               <p>{quickstart.authors.join(', ')}</p>
             </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
             <PageTools.Section>
               <PageTools.Title>Support</PageTools.Title>
               <SupportSection
@@ -345,6 +380,26 @@ const QuickstartDetails = ({ data, location }) => {
                 onClick={tessenSupportTrack(quickstart)}
               />
             </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
+            <PageTools.Section>
+              <RelatedResources
+                css={css`
+                  padding: 0;
+                `}
+                resources={quickstart.relatedResources}
+              />
+            </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
           </Layout.PageTools>
         </PageLayout>
       </Tabs>
@@ -364,6 +419,10 @@ export const pageQuery = graphql`
     quickstarts(id: { eq: $id }) {
       name
       title
+      relatedResources(limit: 5) {
+        title
+        url
+      }
       level
       keywords
       id
