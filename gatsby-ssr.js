@@ -9,6 +9,8 @@ import wrapPageElement from './gatsby/wrap-page-element';
 
 global.window = {
   requestAnimationFrame: () => {},
+  cancelAnimationFrame: () => {},
+  Date: { now: () => {} },
   __NR1_SDK__: {
     default: {
       PlatformStateContext: createContext(),
