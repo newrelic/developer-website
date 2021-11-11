@@ -22,6 +22,8 @@ const QUERY = `
 const prop = (k) => (x) => x[k];
 
 const TestSSR = ({ serverData }) => {
+  console.log('serverData', serverData);
+
   if (!serverData) {
     return <div>Loading...</div>;
   }
