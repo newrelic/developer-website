@@ -52,14 +52,7 @@ const GuidedInstallTile = () => {
           </span>
         </div>
         <div>
-          <Button
-            css={css`
-              background-color: var(--color-brand-500);
-            `}
-            variant={Button.VARIANT.PRIMARY}
-          >
-            Install New Relic
-          </Button>
+          <Button variant={Button.VARIANT.PRIMARY}>Install New Relic</Button>
         </div>
       </div>
     </SuperTile>

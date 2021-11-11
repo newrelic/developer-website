@@ -35,7 +35,10 @@ const CodeStreamTile = () => {
           </h2>
           <span
             css={css`
-              color: var(--primary-text-color);
+              color: var(--color-neutrals-600);
+              .dark-mode & {
+                color: var(--primary-text-color);
+              }
             `}
           >
             CodeStream supercharges development workflows by putting
@@ -43,7 +46,19 @@ const CodeStreamTile = () => {
           </span>
         </div>
         <div>
-          <Button variant={Button.VARIANT.OUTLINE}>Install CodeStream</Button>
+          <Button
+            css={css`
+              border-color: var(--color-brand-400);
+              color: var(--color-brand-400);
+
+              .dark-mode & {
+                color: var(--color-brand-400);
+              }
+            `}
+            variant={Button.VARIANT.OUTLINE}
+          >
+            Install CodeStream
+          </Button>
         </div>
       </div>
     </SuperTile>
