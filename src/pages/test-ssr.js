@@ -3,6 +3,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const API_URL = 'https://staging-api.newrelic.com/graphql';
+const API_KEY = process.env.NEW_RELIC_API_KEY;
 
 const QUERY = `
 {
@@ -25,7 +26,18 @@ const TestSSR = ({ serverData }) => {
   console.log('serverData', serverData);
 
   if (!serverData) {
-    return <div>Loading...</div>;
+    return <h1>Loading...</h1>;
+  }
+
+  if (serverData.error || serverData.messages) {
+    return (
+      <>
+        <h1>Error!</h1>
+        {serverData.messages.map((error, i) => (
+          <p key={i}>{error}</p>
+        ))}
+      </>
+    );
   }
 
   const quickstartMetadata =
@@ -52,20 +64,32 @@ export const getServerData = async () => {
       body: JSON.stringify({ query: QUERY }),
       headers: {
         'Content-Type': 'application/json',
-        'Api-Key': process.env.NEW_RELIC_API_KEY,
+        'Api-Key': API_KEY,
       },
     });
 
     const json = await resp.json();
 
     if (!resp.ok) {
-      const errors = json.errors.map(prop('message'));
-      throw new Error(`Response failed: ${errors.join('\n')}`);
+      throw json.errors;
     }
 
-    return { props: json };
-  } catch (error) {
-    console.log('Error fetching data from NerdGraph', error);
+    return {
+      props: {
+        error: false,
+        data: json.data,
+      },
+    };
+  } catch (errors) {
+    const messages = errors.map(prop('message'));
+    console.log('Error fetching data from NerdGraph', messages);
+
+    return {
+      props: {
+        error: true,
+        messages,
+      },
+    };
   }
 };
 
