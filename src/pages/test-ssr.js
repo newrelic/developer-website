@@ -3,7 +3,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const API_URL = 'https://staging-api.newrelic.com/graphql';
-const API_KEY = process.env.NEW_RELIC_API_KEY;
+const API_KEY = process.env.GATSBY_NEW_RELIC_API_KEY;
 
 const QUERY = `
 {
