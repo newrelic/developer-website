@@ -2,48 +2,6 @@
   {
     "alerts": [],
     "authors": [
-      "New Relic",
-      "Sri Shetty"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Data Ingestion Breakdown",
-        "screenshots": [],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/account-data-ingestion-analysis/dashboards/data_ingestion_breakdown.json"
-      }
-    ],
-    "description": "Shows bytes ingested for APM, Browser, Mobile, Infrastructure, Logs, Synthetics, and Kubernetes.\n",
-    "documentation": [
-      {
-        "description": "Manage data coming into New Relic",
-        "name": "TDP Manage Data",
-        "url": "https://docs.newrelic.com/docs/telemetry-data-platform/manage-data/manage-data-coming-new-relic/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "51e66f0d-153c-493c-a75c-a386c3f170ce",
-    "installPlans": [
-      {
-        "id": "telemetry-data-platform",
-        "name": "Telemetry Data Platform"
-      }
-    ],
-    "keywords": [
-      "data",
-      "ingest"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": null,
-    "name": "account-data-ingestion",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/account-data-ingestion-analysis",
-    "summary": "Shows bytes ingested for different entity types.\n",
-    "title": "Data Ingestion Breakdown",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
       "New Relic Labs"
     ],
     "dashboards": [],
@@ -315,6 +273,313 @@
     "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/apis/trace",
     "summary": "Our Trace API is used to send distributed tracing data to New Relic: either in our own generic format or the Zipkin data format. This API is also how trace data from some of our integrations and exporters is reported to New Relic.\n",
     "title": "Trace and Span API",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic",
+      "Sri Shetty"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Data Ingestion Breakdown",
+        "screenshots": [],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/account-data-ingestion-analysis/dashboards/data_ingestion_breakdown.json"
+      }
+    ],
+    "description": "Shows bytes ingested for APM, Browser, Mobile, Infrastructure, Logs, Synthetics, and Kubernetes.\n",
+    "documentation": [
+      {
+        "description": "Manage data coming into New Relic",
+        "name": "TDP Manage Data",
+        "url": "https://docs.newrelic.com/docs/telemetry-data-platform/manage-data/manage-data-coming-new-relic/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "51e66f0d-153c-493c-a75c-a386c3f170ce",
+    "installPlans": [
+      {
+        "id": "telemetry-data-platform",
+        "name": "Telemetry Data Platform"
+      }
+    ],
+    "keywords": [
+      "data",
+      "ingest"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": null,
+    "name": "account-data-ingestion",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/account-data-ingestion-analysis",
+    "summary": "Shows bytes ingested for different entity types.\n",
+    "title": "Data Ingestion Breakdown",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic",
+      "Swati Joshi"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "New Relic Audit",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/audit-events-analysis/dashboards/audit.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/audit-events-analysis/dashboards/audit.json"
+      }
+    ],
+    "description": "Dashboard to analyse the New Relic Audit events that New Relic captures out of the box as an additional security measure for managing your New Relic account. This includes:\n\n- Individuals added or deleted\n- Role changes\n- Account changes made via API\n- Synthetic monitor changes\n- Dashboard deletion\n- Workload configuration changes\n\nAll New Relic accounts can query up to 13 months of account changes. To ensure account security, the audit logging NRQL query only tracks changes in your currently selected account. It does not show audit log events for any associated child accounts. To query changes in another account or sub-account, select the account and run a NRQL query there.\n\nAudit logging is different than configuring audit mode for your APM agent. APM audit mode records information about all data being transmitted from your app.\n",
+    "documentation": [
+      {
+        "description": "Additional information on the New Relic Audit events\n",
+        "name": "Query account audit logs",
+        "url": "https://docs.newrelic.com/docs/data-apis/understand-data/event-data/query-account-audit-logs-nrauditevent/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "ec610a31-5374-47de-b8f7-ed240221412a",
+    "installPlans": [],
+    "keywords": [
+      "audit events",
+      "new relic"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": null,
+    "name": "audit-events-analysis",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/audit-events-analysis",
+    "summary": "Dashboard to analyse the New Relic Audit events\n",
+    "title": "New Relic Audit",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic",
+      "Zack Mutchler"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Kubernetes Data Ingest Analysis",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis02.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis03.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis04.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis.json"
+      }
+    ],
+    "description": "Paginated dashboard that analyzes overall data ingest generated by the New Relic Kubernetes integration and outlines options available to fine-tune your environment to help control ingest and cost.\n",
+    "documentation": [
+      {
+        "description": "Introduction to the New Relic Kubernetes integration\n",
+        "name": "New Relic Kubernetes integration",
+        "url": "https://docs.newrelic.com/docs/kubernetes-pixie/kubernetes-integration/get-started/introduction-kubernetes-integration/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "006d3670-eb7c-4039-a29c-e086278fd520",
+    "installPlans": [],
+    "keywords": [
+      "k8s",
+      "kubernetes",
+      "data ingest",
+      "audit"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": null,
+    "name": "audit-kubernetes-data-ingest-analysis",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/k8s-data-ingestion-analysis",
+    "summary": "Paginated dashboard that analyzes overall data ingest generated by the New Relic Kubernetes integration and outlines options available to fine-tune your environment to help control ingest and cost.\n",
+    "title": "Kubernetes Data Ingest Analysis",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic",
+      "Jim Hagan",
+      "Brian Bost"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Log Ingest Breakdown",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-log-ingestion-analysis/dashboards/k8s-log-ingest-breakdown.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-log-ingestion-analysis/dashboards/k8s-log-ingest-breakdown.json"
+      }
+    ],
+    "description": "Shows log bytes ingest for Kubernetes faceted by several common attributes k8s logs: application, environment, and container.\n",
+    "documentation": [
+      {
+        "description": "Kubernetes plugin for log forwarding\n",
+        "name": "New Relic Kubernetes Logs integration",
+        "url": "https://docs.newrelic.com/docs/logs/forward-logs/kubernetes-plugin-log-forwarding/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "b3cafc0a-6876-41e5-876c-5ae3c8c9ecea",
+    "installPlans": [],
+    "keywords": [
+      "k8s",
+      "kubernetes",
+      "data ingest",
+      "audit",
+      "logs"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": null,
+    "name": "audit-kubernetes-log-data-ingest-analysis",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/k8s-log-ingestion-analysis",
+    "summary": "Paginated dashboard that analyzes overall data ingest generated by the New Relic Kubernetes Logs integration and outlines options available to fine-tune your environment to help control ingest and cost.\n",
+    "title": "Kubernetes Log Ingest Analysis",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "Thiago Anate"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Logs Analysis",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/log-ingestion-analysis/dashboards/log-analysis.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/log-ingestion-analysis/dashboards/log-analysis.json"
+      }
+    ],
+    "description": "The logs analysis dashboard allows you to get deep visibility into the ingestion of your logs. With this panel, you will be able to identify the services and host that send the most logs, which types of serverity are being sent, the cost for each of the attributes and also if the essential attributes are being sent for the ccorrelation between services and logs, such as: service name, log in context and hostname.\n",
+    "documentation": [
+      {
+        "description": "New Relic offers a fast, scalable log management platform so you can connect your logs with the rest of your telemetry and infrastructure data in a single place.\n",
+        "name": "Log Management",
+        "url": "https://docs.newrelic.com/docs/logs/log-management/get-started/get-started-log-management/"
+      }
+    ],
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/log-ingestion-analysis/icon.jpeg",
+    "id": "4d0ec923-b3d7-40dd-a0df-d32e403d666f",
+    "installPlans": [],
+    "keywords": [
+      "logs",
+      "ingest",
+      "consumption",
+      "data"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/log-ingestion-analysis/logo.png",
+    "name": "log-analysis",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/log-ingestion-analysis",
+    "summary": "Logs analysis dashboard allows you to get deep visibility into the ingestion of your logs\n",
+    "title": "Logs Analysis Dashboard",
+    "websiteUrl": "https://www.newrelic.com"
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic",
+      "Zack Mutchler"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Network - Data Ingest and Cardinality",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/dashboards/network-data-ingest-and-cardinality1.jpg",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/dashboards/network-data-ingest-and-cardinality2.jpg",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/dashboards/network-data-ingest-and-cardinality3.jpg",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/dashboards/network-data-ingest-and-cardinality4.jpg"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/dashboards/network-data-ingest-and-cardinality.json"
+      }
+    ],
+    "description": "The Network Data Ingest and Cardinality quickstart provides a dashboard with several pages dedicated to analyzing both overall ingest and cardinality of telemetry from Network Performance Monitoring.\n",
+    "documentation": [
+      {
+        "description": "Get started with Network Performance Monitoring (NPM).\n",
+        "name": "Network Performance Monitoring docs",
+        "url": "https://docs.newrelic.com/docs/network-performance-monitoring/get-started/npm-introduction/"
+      }
+    ],
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/icon.png",
+    "id": "9ae44533-5dfa-4e8e-b72d-03b5b1bf9dba",
+    "installPlans": [
+      {
+        "id": "network-performance-monitoring",
+        "name": "NPM"
+      }
+    ],
+    "keywords": [
+      "npm",
+      "network",
+      "ingest",
+      "consumption",
+      "cardinality",
+      "ktranslate",
+      "kentik",
+      "featured",
+      "infrastructure"
+    ],
+    "level": "VERIFIED",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/logo.png",
+    "name": "network-data-ingest-and-cardinality",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/network-data-ingest-and-cardinality-analysis",
+    "summary": "Granular analysis of TDP consumption for your network performance data.\n",
+    "title": "Network Data Ingest and Cardinality",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic",
+      "Brad Schmitt"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Prometheus OpenMetrics Integration Stats",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/pomi-data-ingestion-analysis/dashboards/pomi-stats1.jpg",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/pomi-data-ingestion-analysis/dashboards/pomi-stats2.jpg"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/pomi-data-ingestion-analysis/dashboards/pomi-stats.json"
+      }
+    ],
+    "description": "The purpose of this dashboard is to provide performance visibility for the New Relic Prometheus OpenMetrics Integration (aka POMI).\nThis dashboard uses a mix of data from POMI as well as the New Relic Kubernetes Integration.\nIt’s recommended to have both integrations deployed to your cluster for best results.\n",
+    "documentation": [
+      {
+        "description": "Send Prometheus metric data to New Relic",
+        "name": "New Relic Prometheus Open Metrics Integration",
+        "url": "https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/get-started/send-prometheus-metric-data-new-relic/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "1938d362-653f-4fee-83ac-fd8835a9ec8d",
+    "installPlans": [],
+    "keywords": [
+      "k8s",
+      "kubernetes",
+      "data ingest",
+      "audit",
+      "prometheus",
+      "open metric",
+      "pomi"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": null,
+    "name": "audit-prometheus-data-ingest-analysis",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/pomi-data-ingestion-analysis",
+    "summary": "Paginated dashboard that analyzes overall data ingest generated by the New Relic Prometheus OpenMetrics Integration (aka POMI) and outlines options available to fine-tune your environment to help control ingest and cost.\n",
+    "title": "Prometheus OpenMetrics Integration Stats",
     "websiteUrl": null
   },
   {
@@ -5419,6 +5684,47 @@
   {
     "alerts": [],
     "authors": [
+      "New Relic",
+      "Samuel Vandamme"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Full Stack Observability",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability1.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability2.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability3.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability4.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability.json"
+      }
+    ],
+    "description": "Set of dashboards with data from all New Relic Products, giving you Full Stack Observability over Metrics, Events, Logs and Traces.\n",
+    "documentation": [],
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/icon.jpeg",
+    "id": "24da1e3a-035d-493c-a881-72c42b601027",
+    "installPlans": [
+      {
+        "id": "guided-install",
+        "name": "Guided install"
+      }
+    ],
+    "keywords": [
+      "full stack observability"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/logo.png",
+    "name": "full-stack-observability",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/full-stack-observability",
+    "summary": "",
+    "title": "Full Stack Observability",
+    "websiteUrl": "https://www.newrelic.com/"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "Full Story"
     ],
     "dashboards": [],
@@ -10340,46 +10646,6 @@
   {
     "alerts": [],
     "authors": [
-      "Thiago Anate"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Logs Analysis",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/log-ingestion-analysis/dashboards/log-analysis.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/log-ingestion-analysis/dashboards/log-analysis.json"
-      }
-    ],
-    "description": "The logs analysis dashboard allows you to get deep visibility into the ingestion of your logs. With this panel, you will be able to identify the services and host that send the most logs, which types of serverity are being sent, the cost for each of the attributes and also if the essential attributes are being sent for the ccorrelation between services and logs, such as: service name, log in context and hostname.\n",
-    "documentation": [
-      {
-        "description": "New Relic offers a fast, scalable log management platform so you can connect your logs with the rest of your telemetry and infrastructure data in a single place.\n",
-        "name": "Log Management",
-        "url": "https://docs.newrelic.com/docs/logs/log-management/get-started/get-started-log-management/"
-      }
-    ],
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/log-ingestion-analysis/icon.jpeg",
-    "id": "4d0ec923-b3d7-40dd-a0df-d32e403d666f",
-    "installPlans": [],
-    "keywords": [
-      "logs",
-      "ingest",
-      "consumption",
-      "data"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/log-ingestion-analysis/logo.png",
-    "name": "log-analysis",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/log-ingestion-analysis",
-    "summary": "Logs analysis dashboard allows you to get deep visibility into the ingestion of your logs\n",
-    "title": "Logs Analysis Dashboard",
-    "websiteUrl": "https://www.newrelic.com"
-  },
-  {
-    "alerts": [],
-    "authors": [
       "New Relic"
     ],
     "dashboards": [],
@@ -10846,60 +11112,6 @@
     "summary": "Run your custom Nagios scripts and see the data in New Relic\n",
     "title": "Nagios",
     "websiteUrl": "https://www.nagios.org/"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic",
-      "Zack Mutchler"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Network - Data Ingest and Cardinality",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/dashboards/network-data-ingest-and-cardinality1.jpg",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/dashboards/network-data-ingest-and-cardinality2.jpg",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/dashboards/network-data-ingest-and-cardinality3.jpg",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/dashboards/network-data-ingest-and-cardinality4.jpg"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/dashboards/network-data-ingest-and-cardinality.json"
-      }
-    ],
-    "description": "The Network Data Ingest and Cardinality quickstart provides a dashboard with several pages dedicated to analyzing both overall ingest and cardinality of telemetry from Network Performance Monitoring.\n",
-    "documentation": [
-      {
-        "description": "Get started with Network Performance Monitoring (NPM).\n",
-        "name": "Network Performance Monitoring docs",
-        "url": "https://docs.newrelic.com/docs/network-performance-monitoring/get-started/npm-introduction/"
-      }
-    ],
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/icon.png",
-    "id": "9ae44533-5dfa-4e8e-b72d-03b5b1bf9dba",
-    "installPlans": [
-      {
-        "id": "network-performance-monitoring",
-        "name": "NPM"
-      }
-    ],
-    "keywords": [
-      "npm",
-      "network",
-      "ingest",
-      "consumption",
-      "cardinality",
-      "ktranslate",
-      "kentik",
-      "featured",
-      "infrastructure"
-    ],
-    "level": "VERIFIED",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/network-data-ingest-and-cardinality-analysis/logo.png",
-    "name": "network-data-ingest-and-cardinality",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/network-data-ingest-and-cardinality-analysis",
-    "summary": "Granular analysis of TDP consumption for your network performance data.\n",
-    "title": "Network Data Ingest and Cardinality",
-    "websiteUrl": null
   },
   {
     "alerts": [
@@ -13522,6 +13734,79 @@
     "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/python/falcon",
     "summary": "Monitor Falcon with New Relic's Python agent\n",
     "title": "Falcon",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [
+      {
+        "details": "This alert is triggered when the CPU Utilization is above 90%.\n",
+        "name": "High CPU Utilization",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/alerts/CPUUtilization.yml"
+      },
+      {
+        "details": "This alert is triggered when Memory usage is above 90%\n",
+        "name": "Memory Usage",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/alerts/HighMemoryUsage.yml"
+      },
+      {
+        "details": "This alert is triggered when the Apdex score is below 0.5 for 5 minutes\n",
+        "name": "Apdex Score",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/alerts/LowApdexScore.yml"
+      },
+      {
+        "details": "This alert is triggered when the the transactions fail more than 10% of the time in 5 minutes.\n",
+        "name": "Transaction Errors",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/alerts/TransactionError.yml"
+      }
+    ],
+    "authors": [
+      "New Relic",
+      "Emil Hammarstrand"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "fastAPI",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/dashboards/fastAPI-02.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/dashboards/fastAPI-03.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/dashboards/fastAPI.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/dashboards/fastAPI.json"
+      }
+    ],
+    "description": "## What is fastAPI?\n\nFastAPI is a modern and really fast web framework for developing RESTful APIs in Python. \n\n\n## Get started!\n\nLeverage community expertise and instantly get value out of your telemetry data. This quickstart automatically instruments fastAPI with the New Relic Python agent, and allows you to instantly monitor your Python application with out-of-the-box dashboards and alerts. Further leverage New Relic's APM capabilities by setting up [errors inbox](https://docs.newrelic.com/docs/apm/apm-ui-pages/errors-inbox/errors-inbox/), [transaction tracing](https://docs.newrelic.com/docs/apm/transactions/transaction-traces/introduction-transaction-traces/), and [service maps](https://docs.newrelic.com/docs/understand-dependencies/understand-system-dependencies/service-maps/introduction-service-maps/).\n\n## More info\n\nCheck out the [documentation](https://docs.newrelic.com/docs/agents/python-agent/) to learn more about New Relic monitoring for fastAPI.\n",
+    "documentation": [
+      {
+        "description": "Python is an interpreted, high-level and general-purpose programming\nlanguage.\n",
+        "name": "Python installation docs",
+        "url": "https://docs.newrelic.com/docs/agents/python-agent/getting-started/compatibility-requirements-python-agent"
+      }
+    ],
+    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/icon.svg",
+    "id": "e559ec64-f765-4470-a15f-1901fcebb468",
+    "installPlans": [
+      {
+        "id": "setup-python-agent",
+        "name": "Python Agent"
+      }
+    ],
+    "keywords": [
+      "apm",
+      "python",
+      "language agent",
+      "fastapi"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/logo.png",
+    "name": "fastAPI",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/python/fastapi",
+    "summary": "Monitor fastAPI with New Relic's Python agent\n",
+    "title": "fastAPI",
     "websiteUrl": null
   },
   {
@@ -17672,291 +17957,6 @@
     "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/zipkin",
     "summary": "Send Zipkin-format traces to New Relic\n",
     "title": "Zipkin",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic",
-      "Samuel Vandamme"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Full Stack Observability",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability1.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability2.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability3.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability4.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/dashboards/full-stack-observability.json"
-      }
-    ],
-    "description": "Set of dashboards with data from all New Relic Products, giving you Full Stack Observability over Metrics, Events, Logs and Traces.\n",
-    "documentation": [],
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/icon.jpeg",
-    "id": "24da1e3a-035d-493c-a881-72c42b601027",
-    "installPlans": [
-      {
-        "id": "guided-install",
-        "name": "Guided install"
-      }
-    ],
-    "keywords": [
-      "full stack observability"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/full-stack-observability/logo.png",
-    "name": "full-stack-observability",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/full-stack-observability",
-    "summary": "",
-    "title": "Full Stack Observability",
-    "websiteUrl": "https://www.newrelic.com/"
-  },
-  {
-    "alerts": [
-      {
-        "details": "This alert is triggered when the CPU Utilization is above 90%.\n",
-        "name": "High CPU Utilization",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/alerts/CPUUtilization.yml"
-      },
-      {
-        "details": "This alert is triggered when Memory usage is above 90%\n",
-        "name": "Memory Usage",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/alerts/HighMemoryUsage.yml"
-      },
-      {
-        "details": "This alert is triggered when the Apdex score is below 0.5 for 5 minutes\n",
-        "name": "Apdex Score",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/alerts/LowApdexScore.yml"
-      },
-      {
-        "details": "This alert is triggered when the the transactions fail more than 10% of the time in 5 minutes.\n",
-        "name": "Transaction Errors",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/alerts/TransactionError.yml"
-      }
-    ],
-    "authors": [
-      "New Relic",
-      "Emil Hammarstrand"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "fastAPI",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/dashboards/fastAPI-02.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/dashboards/fastAPI-03.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/dashboards/fastAPI.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/dashboards/fastAPI.json"
-      }
-    ],
-    "description": "## What is fastAPI?\n\nFastAPI is a modern and really fast web framework for developing RESTful APIs in Python. \n\n\n## Get started!\n\nLeverage community expertise and instantly get value out of your telemetry data. This quickstart automatically instruments fastAPI with the New Relic Python agent, and allows you to instantly monitor your Python application with out-of-the-box dashboards and alerts. Further leverage New Relic's APM capabilities by setting up [errors inbox](https://docs.newrelic.com/docs/apm/apm-ui-pages/errors-inbox/errors-inbox/), [transaction tracing](https://docs.newrelic.com/docs/apm/transactions/transaction-traces/introduction-transaction-traces/), and [service maps](https://docs.newrelic.com/docs/understand-dependencies/understand-system-dependencies/service-maps/introduction-service-maps/).\n\n## More info\n\nCheck out the [documentation](https://docs.newrelic.com/docs/agents/python-agent/) to learn more about New Relic monitoring for fastAPI.\n",
-    "documentation": [
-      {
-        "description": "Python is an interpreted, high-level and general-purpose programming\nlanguage.\n",
-        "name": "Python installation docs",
-        "url": "https://docs.newrelic.com/docs/agents/python-agent/getting-started/compatibility-requirements-python-agent"
-      }
-    ],
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/icon.svg",
-    "id": "e559ec64-f765-4470-a15f-1901fcebb468",
-    "installPlans": [
-      {
-        "id": "setup-python-agent",
-        "name": "Python Agent"
-      }
-    ],
-    "keywords": [
-      "apm",
-      "python",
-      "language agent",
-      "fastapi"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/python/fastapi/logo.png",
-    "name": "fastAPI",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/python/fastapi",
-    "summary": "Monitor fastAPI with New Relic's Python agent\n",
-    "title": "fastAPI",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic",
-      "Swati Joshi"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "New Relic Audit",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/audit-events-analysis/dashboards/audit.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/audit-events-analysis/dashboards/audit.json"
-      }
-    ],
-    "description": "Dashboard to analyse the New Relic Audit events that New Relic captures out of the box as an additional security measure for managing your New Relic account. This includes:\n\n- Individuals added or deleted\n- Role changes\n- Account changes made via API\n- Synthetic monitor changes\n- Dashboard deletion\n- Workload configuration changes\n\nAll New Relic accounts can query up to 13 months of account changes. To ensure account security, the audit logging NRQL query only tracks changes in your currently selected account. It does not show audit log events for any associated child accounts. To query changes in another account or sub-account, select the account and run a NRQL query there.\n\nAudit logging is different than configuring audit mode for your APM agent. APM audit mode records information about all data being transmitted from your app.\n",
-    "documentation": [
-      {
-        "description": "Additional information on the New Relic Audit events\n",
-        "name": "Query account audit logs",
-        "url": "https://docs.newrelic.com/docs/data-apis/understand-data/event-data/query-account-audit-logs-nrauditevent/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "ec610a31-5374-47de-b8f7-ed240221412a",
-    "installPlans": [],
-    "keywords": [
-      "audit events",
-      "new relic"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": null,
-    "name": "audit-events-analysis",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/audit-events-analysis",
-    "summary": "Dashboard to analyse the New Relic Audit events\n",
-    "title": "New Relic Audit",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic",
-      "Zack Mutchler"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Kubernetes Data Ingest Analysis",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis02.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis03.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis04.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis.json"
-      }
-    ],
-    "description": "Paginated dashboard that analyzes overall data ingest generated by the New Relic Kubernetes integration and outlines options available to fine-tune your environment to help control ingest and cost.\n",
-    "documentation": [
-      {
-        "description": "Introduction to the New Relic Kubernetes integration\n",
-        "name": "New Relic Kubernetes integration",
-        "url": "https://docs.newrelic.com/docs/kubernetes-pixie/kubernetes-integration/get-started/introduction-kubernetes-integration/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "006d3670-eb7c-4039-a29c-e086278fd520",
-    "installPlans": [],
-    "keywords": [
-      "k8s",
-      "kubernetes",
-      "data ingest",
-      "audit"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": null,
-    "name": "audit-kubernetes-data-ingest-analysis",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/k8s-data-ingestion-analysis",
-    "summary": "Paginated dashboard that analyzes overall data ingest generated by the New Relic Kubernetes integration and outlines options available to fine-tune your environment to help control ingest and cost.\n",
-    "title": "Kubernetes Data Ingest Analysis",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic",
-      "Jim Hagan",
-      "Brian Bost"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Log Ingest Breakdown",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-log-ingestion-analysis/dashboards/k8s-log-ingest-breakdown.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/k8s-log-ingestion-analysis/dashboards/k8s-log-ingest-breakdown.json"
-      }
-    ],
-    "description": "Shows log bytes ingest for Kubernetes faceted by several common attributes k8s logs: application, environment, and container.\n",
-    "documentation": [
-      {
-        "description": "Kubernetes plugin for log forwarding\n",
-        "name": "New Relic Kubernetes Logs integration",
-        "url": "https://docs.newrelic.com/docs/logs/forward-logs/kubernetes-plugin-log-forwarding/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "b3cafc0a-6876-41e5-876c-5ae3c8c9ecea",
-    "installPlans": [],
-    "keywords": [
-      "k8s",
-      "kubernetes",
-      "data ingest",
-      "audit",
-      "logs"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": null,
-    "name": "audit-kubernetes-log-data-ingest-analysis",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/k8s-log-ingestion-analysis",
-    "summary": "Paginated dashboard that analyzes overall data ingest generated by the New Relic Kubernetes Logs integration and outlines options available to fine-tune your environment to help control ingest and cost.\n",
-    "title": "Kubernetes Log Ingest Analysis",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic",
-      "Brad Schmitt"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Prometheus OpenMetrics Integration Stats",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/pomi-data-ingestion-analysis/dashboards/pomi-stats1.jpg",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/pomi-data-ingestion-analysis/dashboards/pomi-stats2.jpg"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.60.3/quickstarts/audit/pomi-data-ingestion-analysis/dashboards/pomi-stats.json"
-      }
-    ],
-    "description": "The purpose of this dashboard is to provide performance visibility for the New Relic Prometheus OpenMetrics Integration (aka POMI).\nThis dashboard uses a mix of data from POMI as well as the New Relic Kubernetes Integration.\nIt’s recommended to have both integrations deployed to your cluster for best results.\n",
-    "documentation": [
-      {
-        "description": "Send Prometheus metric data to New Relic",
-        "name": "New Relic Prometheus Open Metrics Integration",
-        "url": "https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/get-started/send-prometheus-metric-data-new-relic/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "1938d362-653f-4fee-83ac-fd8835a9ec8d",
-    "installPlans": [],
-    "keywords": [
-      "k8s",
-      "kubernetes",
-      "data ingest",
-      "audit",
-      "prometheus",
-      "open metric",
-      "pomi"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": null,
-    "name": "audit-prometheus-data-ingest-analysis",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/pomi-data-ingestion-analysis",
-    "summary": "Paginated dashboard that analyzes overall data ingest generated by the New Relic Prometheus OpenMetrics Integration (aka POMI) and outlines options available to fine-tune your environment to help control ingest and cost.\n",
-    "title": "Prometheus OpenMetrics Integration Stats",
     "websiteUrl": null
   },
   {
