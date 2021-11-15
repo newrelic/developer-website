@@ -1,9 +1,19 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import SuperTile from './SuperTile';
-import { Button } from '@newrelic/gatsby-theme-newrelic';
+import { Button, useTessen } from '@newrelic/gatsby-theme-newrelic';
+import { Link } from 'gatsby';
 
 const CodeStreamTile = () => {
+  const tessen = useTessen();
+
+  const link =
+    '/instant-observability/codestream/29bd9a4a-1c19-4219-9694-0942f6411ce7/';
+
+  const handleButtonClick = () => {
+    tessen.track('clickSuperTile', 'QuickstartLanding', { tile: 'codestream' });
+  };
+
   return (
     <SuperTile>
       <div
@@ -55,7 +65,10 @@ const CodeStreamTile = () => {
                 color: var(--color-brand-400);
               }
             `}
+            onClick={handleButtonClick}
             variant={Button.VARIANT.OUTLINE}
+            to={link}
+            as={Link}
           >
             Install CodeStream
           </Button>
