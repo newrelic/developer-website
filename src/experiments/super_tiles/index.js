@@ -13,11 +13,14 @@ const SuperTilesExperiment = ({ isMobile }) => {
     return (
       <div
         css={css`
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
+          display: grid;
           margin-bottom: 16px;
           gap: 16px;
+          grid-template-columns: repeat(2, 1fr);
+
+          @media (max-width: 1180px) {
+            grid-template-columns: repeat(1, 1fr);
+          }
         `}
       >
         <GuidedInstallTile />
