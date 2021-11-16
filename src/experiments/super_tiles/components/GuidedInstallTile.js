@@ -3,16 +3,14 @@ import { css } from '@emotion/react';
 import SuperTile from './SuperTile';
 import { Button, useTessen } from '@newrelic/gatsby-theme-newrelic';
 import { navigate } from 'gatsby';
+import { SIGNUP_LINK } from '../../../data/constants';
 
 const GuidedInstallTile = () => {
   const tessen = useTessen();
 
-  const link =
-    'https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/new-relic-guided-install-overview/';
-
   const handleButtonClick = () => {
     tessen.track('clickSuperTile', 'QuickstartLanding', { tile: 'guided' });
-    navigate(link);
+    navigate(SIGNUP_LINK);
   };
 
   return (
