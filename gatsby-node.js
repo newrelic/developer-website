@@ -1,7 +1,7 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
 const { createFilePath } = require('gatsby-source-filesystem');
-const slugify = require('./src/utils/slugify.js');
+const resolveQuickstartSlug = require('./src/utils/resolveQuickstartSlug.js');
 
 const kebabCase = (string) =>
   string
@@ -105,7 +105,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         slug,
         fileRelativePath,
         guidesFilter:
-          frontmatter.template === 'OverviewTemplate'
+          ['OverviewTemplate', 'LabOverviewTemplate'].includes(frontmatter.template)
             ? `${frontmatter.path}/*`
             : undefined,
       },
@@ -208,7 +208,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: 'slug',
-      value: `/instant-observability/${slugify(node.name)}/${node.id}`,
+      value: `${resolveQuickstartSlug(node.name, node.id)}`,
     });
   }
 };

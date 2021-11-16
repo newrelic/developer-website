@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { navigate } from 'gatsby';
 
 import { css } from '@emotion/react';
 import {
   Surface,
   Icon,
   useTessen,
-  useInstrumentedHandler,
   Tag,
+  Link,
 } from '@newrelic/gatsby-theme-newrelic';
-import { SHIELD_LEVELS } from '../data/constants';
+import { SHIELD_LEVELS, RESERVED_QUICKSTART_IDS } from '../data/constants';
 import PackImg from './PackImg';
 
 const VIEWS = {
@@ -29,40 +28,36 @@ const PackTile = ({
   level,
   className,
   summary,
+  href,
 }) => {
   const tessen = useTessen();
 
-  const handlePackClick = useInstrumentedHandler(
-    () => {
-      tessen.track('instantObservability', 'QuickstartClick', {
-        publicCatalogView: view,
-        quickstartName: name,
-      });
-      navigate(fields.slug);
-    },
-    {
-      actionName: 'QuickstartClick',
-      publicCatalogView: view,
-      quickstartName: name,
+  const handlePackClick = (quickstartId) => {
+    switch (true) {
+      case quickstartId === RESERVED_QUICKSTART_IDS.GUIDED_INSTALL:
+        tessen.track('instantObservability', 'GuidedInstallClick', {
+          publicCatalogView: view,
+          quickstartName: name,
+        });
+        break;
+      case quickstartId === RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART:
+        tessen.track('instantObservability', 'BuildYourOwnQuickstartClick', {
+          publicCatalogView: view,
+          quickstartName: name,
+        });
+        break;
+      default:
+        tessen.track('instantObservability', 'QuickstartClick', {
+          publicCatalogView: view,
+          quickstartName: name,
+        });
     }
-  );
-
-  const handleBuildTileClick = useInstrumentedHandler(
-    () => {
-      tessen.track('instantObservability', 'BuildYourOwnQuickstartClick', {
-        publicCatalogView: view,
-        quickstartName: name,
-      });
-    },
-    {
-      actionName: 'BuildYourOwnQuickstartClick',
-      publicCatalogView: view,
-      quickstartName: name,
-    }
-  );
+  };
 
   return (
     <Surface
+      as={Link}
+      to={href || fields?.slug || '/'}
       key={id}
       base={Surface.BASE.PRIMARY}
       className={className}
@@ -78,21 +73,20 @@ const PackTile = ({
           flex-direction: row;
         `}
       `}
-      onClick={fields ? handlePackClick : handleBuildTileClick}
+      onClick={() => handlePackClick(id)}
     >
       <PackImg
         logoUrl={logoUrl}
         packName={title || name}
         css={css`
           height: 200px;
-          background-color: var(--color-white);
           object-fit: scale-down;
           width: ${view === VIEWS.GRID ? 100 : 25}%;
           padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
-          margin: 10px auto;
+          margin: 0 auto 10px;
 
           .dark-mode & {
-            background-color: rgb(231 231 231 / 0);
+            background-color: white;
           }
 
           ${view === VIEWS.LIST &&
@@ -175,6 +169,7 @@ PackTile.propTypes = {
   level: PropTypes.string,
   className: PropTypes.string,
   featured: PropTypes.bool,
+  href: PropTypes.string,
 };
 
 export default PackTile;

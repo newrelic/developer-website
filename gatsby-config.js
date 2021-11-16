@@ -1,4 +1,5 @@
 const quote = (str) => `"${str}"`;
+const resolveQuickstartSlug = require('./src/utils/resolveQuickstartSlug');
 
 module.exports = {
   flags: {
@@ -46,6 +47,7 @@ module.exports = {
               features: {
                 'developer-website_global-header-gh-buttons': 'on',
                 'developer-website_right-rail-buttons': 'outline',
+                super_tiles: 'on',
               },
               core: {
                 authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
@@ -59,10 +61,23 @@ module.exports = {
             refetch: Boolean(process.env.BUILD_RELATED_CONTENT),
             engineKey: 'Ad9HfGjDw4GRkcmJjUut',
             limit: 5,
-            getSlug: ({ node }) => node.frontmatter.path,
+            getSlug: ({ node }) => {
+              if (node.internal.type === 'Mdx') {
+                return node.frontmatter.path;
+              } else if (node.internal.type === 'Quickstarts') {
+                return resolveQuickstartSlug(node.name, node.id);
+              }
+            },
             getParams: ({ node }) => {
-              const { tags, title } = node.frontmatter;
-
+              let tags = [];
+              let title = '';
+              if (node.frontmatter) {
+                tags = node.frontmatter.tags;
+                title = node.frontmatter.title;
+              } else {
+                tags = node.keywords;
+                title = node.title;
+              }
               return {
                 q: tags ? tags.map(quote).join(' OR ') : title,
                 search_fields: {
@@ -76,7 +91,7 @@ module.exports = {
                 },
                 filters: {
                   page: {
-                    type: ['docs', 'developer', 'opensource', 'quick_starts'],
+                    type: ['docs', 'developer', 'opensource', 'quickstarts'],
                     document_type: [
                       '!views_page_menu',
                       '!term_page_api_menu',
@@ -86,7 +101,9 @@ module.exports = {
                 },
               };
             },
-            filter: ({ node }) => node.frontmatter.template === 'GuideTemplate',
+            filter: ({ node }) =>
+              node.frontmatter?.template === 'GuideTemplate' ||
+              node.internal.type === 'Quickstarts',
           },
         },
         newrelic: {
@@ -195,7 +212,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-newrelic-sdk',
       options: {
-        release: 'release-2837',
+        release: 'release-3366',
       },
     },
     'gatsby-plugin-embed-pages',

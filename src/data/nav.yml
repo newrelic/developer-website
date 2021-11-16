@@ -14,6 +14,19 @@
       url: '/collect-data/get-started-nerdgraph-api-explorer'
     - title: Monitor your network devices with New Relic
       url: '/collect-data/network-performance-monitoring'
+    - title: Monitor your Kubernetes cluster with New Relic and Pixie
+      url: '/collect-data/pixie'
+      pages:
+        - title: Set up your TinyHat environment
+          url: '/collect-data/pixie/set-up-env'
+        - title: Explore your cluster
+          url: '/collect-data/pixie/explore-cluster'
+        - title: Instrument your cluster
+          url: '/collect-data/pixie/instrument-cluster'
+        - title: Debug missing images in your service
+          url: '/collect-data/pixie/scenario-1'
+        - title: Debug latency in the TinyHat admin
+          url: '/collect-data/pixie/scenario-2'
 - title: Automate workflows
   icon: nr-automation
   url: '/automate-workflows'
@@ -40,10 +53,16 @@
     - title: Use New Relic to diagnose problems in your system
       url: '/automate-workflows/diagnose-problems'
       pages:
-        - title: High response times
+        - title: Spin up Acme Telco Lite architecture
+          url: '/automate-workflows/diagnose-problems/spin-up-acme'
+        - title: View your services
+          url: '/automate-workflows/diagnose-problems/view-your-services'
+        - title: Diagnose high response time
           url: '/automate-workflows/diagnose-problems/high-response-times'
-        - title: Error alerts
+        - title: Diagnose error alerts
           url: '/automate-workflows/diagnose-problems/error-alerts'
+        - title: Tear down Telco Lite
+          url: '/automate-workflows/diagnose-problems/tear-down'
 - title: Build apps
   icon: nr-build-apps
   url: '/build-apps'
@@ -150,20 +169,22 @@
       url: https://opensource.newrelic.com/nerdpacks/
 
 - title: Contribute to quickstarts
-  icon: zap
+  icon: fe-zap
   url: '/contribute-to-quickstarts'
   pages:
     - title: Build a quickstart
       url: '/contribute-to-quickstarts/build-a-quickstart'
-      pages: 
+      pages:
         - title: Deploy your application
           url: /contribute-to-quickstarts/build-a-quickstart/deploy-your-application
-        - title: Create a dashboard 
+        - title: Create a dashboard
           url: /contribute-to-quickstarts/build-a-quickstart/create-a-dashboard
         - title: Create alerts
           url: /contribute-to-quickstarts/build-a-quickstart/create-alerts
         - title: Create a quickstart
           url: /contribute-to-quickstarts/build-a-quickstart/create-quickstart
+    - title: Populate your alert configurations with NerdGraph
+      url: '/contribute-to-quickstarts/query-alerts-for-quickstart'
 - title: Try our APIs
   icon: nr-share
   url: '/try-our-apis'
@@ -236,6 +257,8 @@
               url: '/components/button'
             - title: Checkbox
               url: '/components/checkbox'
+            - title: CheckboxGroup
+              url: '/components/checkbox-group'
             - title: Dropdown
               url: '/components/dropdown'
             - title: DropdownItem
@@ -294,6 +317,8 @@
               url: '/components/icon'
             - title: InlineMessage
               url: '/components/inline-message'
+            - title: SectionMessage
+              url: '/components/section-message'
             - title: Spinner
               url: '/components/spinner'
             - title: Toast
@@ -312,6 +337,8 @@
               url: '/components/popover'
             - title: PopoverBody
               url: '/components/popover-body'
+            - title: PopoverFooter
+              url: '/components/popover-footer'
             - title: PopoverTrigger
               url: '/components/popover-trigger'
             - title: Tooltip
@@ -328,6 +355,12 @@
               url: '/components/card-header'
             - title: CardSection
               url: '/components/card-section'
+            - title: CardSectionBody
+              url: '/components/card-section-body'
+            - title: CardSectionHeader
+              url: '/components/card-section-header'
+            - title: CollapsibleLayoutItem
+              url: '/components/collapsible-layout-item'
             - title: Grid
               url: '/components/grid'
             - title: GridItem
@@ -460,7 +493,7 @@
         - title: All things open
           url: '/all-things-open'
 - title: Instant Observability
-  icon: box
+  icon: fe-box
   url: '/instant-observability'
 - title: Nerd Bytes
   icon: nr-nerd-bytes

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import Tabs from '../components/Tabs';
 import EmptyTab from '../components/quickstarts/EmptyTab';
+import SupportSection from '../components/quickstarts/SupportSection';
 import QuickstartAlerts from '../components/quickstarts/QuickstartAlerts';
 import QuickstartDashboards from '../components/quickstarts/QuickstartDashboards';
 import {
@@ -15,21 +16,19 @@ import {
   Button,
   Icon,
   Link,
+  RelatedResources,
 } from '@newrelic/gatsby-theme-newrelic';
 import InstallButton from '../components/InstallButton';
-import Markdown from '../components/Markdown';
 import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { quickstart } from '../types';
 import {
   QUICKSTARTS_REPO,
-  QUICKSTART_SUPPORT_CONTENT,
   SIGNUP_LINK,
   LOGIN_LINK,
   SHIELD_LEVELS,
 } from '../data/constants';
 import QuickstartOverview from '../components/quickstarts/QuickstartOverview';
-import BetaBanner from '../components/quickstarts/BetaBanner';
 
 const QuickstartDetails = ({ data, location }) => {
   const quickstart = data.quickstarts;
@@ -53,12 +52,27 @@ const QuickstartDetails = ({ data, location }) => {
     },
   ];
 
-  const viewRepoClick = () =>
-    tessen.track('instantObservability', 'QuickstartViewRepoClick', {
+  const trackQuickstart = (action, quickstart) => () =>
+    tessen.track('instantObservability', action, {
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,
     });
+
+  const tessenTabTrack = (action, quickstart) => (id, count) => {
+    tessen.track('instantObservability', action, {
+      QuickstartTabState: id,
+      QuickstartTabCount: count,
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+    });
+  };
+  const tessenSupportTrack = (quickstart) => (action) => {
+    tessen.track('instantObservability', action, {
+      quickstartName: quickstart.name,
+      quickstartId: quickstart.id,
+    });
+  };
 
   return (
     <>
@@ -70,7 +84,6 @@ const QuickstartDetails = ({ data, location }) => {
         meta={quickStartMeta}
       />
       <Breadcrumbs segments={breadcrumbs} />
-      <BetaBanner />
       <Tabs>
         <PageLayout
           type={PageLayout.TYPE.RELATED_CONTENT_TABS}
@@ -97,16 +110,38 @@ const QuickstartDetails = ({ data, location }) => {
             css={css`
               border-bottom: none;
               display: grid;
-              padding-bottom: 0;
-              grid-template-areas: 'title logo' 'summ logo' 'cta logo';
               grid-column-gap: 1rem;
               grid-row-gap: 1rem;
+              grid-template-areas:
+                'title logo'
+                'summ logo'
+                'cta logo';
+              justify-content: normal;
+              justify-self: center;
               row-gap: 1rem;
+              width: 101%;
 
               h1 {
                 font-weight: normal;
                 grid-area: title;
                 padding-bottom: 1rem;
+              }
+
+              @media (min-width: 760px) {
+                background: var(--primary-background-color);
+                border-bottom: 1px solid var(--border-color);
+                border-radius: 0.25rem;
+                grid-template-areas:
+                  'logo title cta'
+                  'logo summ cta';
+                padding: 16px 0 24px;
+                position: sticky;
+                top: var(--global-header-height);
+                z-index: 80;
+              }
+
+              .dark-mode {
+                box-shadow: none;
               }
             `}
           >
@@ -118,6 +153,7 @@ const QuickstartDetails = ({ data, location }) => {
                   max-height: 5rem;
                   grid-area: logo;
                   align-self: center;
+                  justify-self: center;
 
                   .dark-mode & {
                     background-color: white;
@@ -133,8 +169,7 @@ const QuickstartDetails = ({ data, location }) => {
               <div
                 css={css`
                   grid-area: summ;
-                  margin-bottom: 1em;
-                  max-width: 40vw;
+                  max-width: 50vw;
 
                   @media (max-width: 760px) {
                     max-width: 100%;
@@ -148,7 +183,8 @@ const QuickstartDetails = ({ data, location }) => {
               css={css`
                 grid-area: cta;
                 display: flex;
-                justify-content: flex-start;
+                justify-content: center;
+                align-self: center;
                 @media (max-width: 760px) {
                   flex-direction: column;
                   align-items: stretch;
@@ -167,7 +203,7 @@ const QuickstartDetails = ({ data, location }) => {
                     margin: 1rem 0 0 0;
                   }
                 `}
-                onClick={viewRepoClick}
+                onClick={trackQuickstart('QuickstartViewRepoClick', quickstart)}
               >
                 <Icon
                   name="fe-github"
@@ -196,10 +232,15 @@ const QuickstartDetails = ({ data, location }) => {
             <Tabs.BarItem
               id="dashboards"
               count={quickstart.dashboards?.length ?? 0}
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
               Dashboards
             </Tabs.BarItem>
-            <Tabs.BarItem id="alerts" count={quickstart.alerts?.length ?? 0}>
+            <Tabs.BarItem
+              id="alerts"
+              count={quickstart.alerts?.length ?? 0}
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
+            >
               Alerts
             </Tabs.BarItem>
             <Tabs.BarItem
@@ -208,6 +249,7 @@ const QuickstartDetails = ({ data, location }) => {
                 (quickstart.instrumentation?.length ?? 0) +
                 (quickstart.documentation?.length ?? 0)
               }
+              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
             >
               Data sources
             </Tabs.BarItem>
@@ -258,15 +300,54 @@ const QuickstartDetails = ({ data, location }) => {
               li {
                 font-size: 0.85rem;
               }
+              max-height: 100%;
+              @media (min-width: 1240px) {
+                width: 320px;
+                justify-self: flex-end;
+              }
             `}
           >
             <PageTools.Section>
-              <PageTools.Title>How to use this quickstart</PageTools.Title>
-              <ol>
+              <div
+                css={css`
+                  background-color: var(--divider-color);
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  padding: 1rem;
+                  padding-top: 0.5rem;
+                  height: 2.5rem;
+                  width: 100%;
+                `}
+              >
+                <PageTools.Title>How to use this quickstart</PageTools.Title>
+              </div>
+              <ol
+                css={css`
+                  margin-top: 2.5rem;
+                `}
+              >
                 <li>
-                  <Link to={SIGNUP_LINK}>Sign Up</Link> for a free New Relic
-                  account or <Link to={LOGIN_LINK}>Log In</Link> to your
-                  existing account.
+                  <Link
+                    to={SIGNUP_LINK}
+                    onClick={trackQuickstart(
+                      'QuickstartDetailsSignUpClick',
+                      quickstart
+                    )}
+                  >
+                    Sign Up
+                  </Link>{' '}
+                  for a free New Relic account or{' '}
+                  <Link
+                    to={LOGIN_LINK}
+                    onClick={trackQuickstart(
+                      'QuickstartDetailsLoginClick',
+                      quickstart
+                    )}
+                  >
+                    Log In
+                  </Link>{' '}
+                  to your existing account.
                 </li>
                 <li>Click the green install button above.</li>
                 <li>
@@ -276,25 +357,49 @@ const QuickstartDetails = ({ data, location }) => {
                 </li>
               </ol>
             </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
             <PageTools.Section>
               <PageTools.Title>Authors</PageTools.Title>
               <p>{quickstart.authors.join(', ')}</p>
             </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
             <PageTools.Section>
               <PageTools.Title>Support</PageTools.Title>
-              <h5
-                css={css`
-                  text-transform: uppercase;
-                `}
-              >
-                {QUICKSTART_SUPPORT_CONTENT[`${quickstart.level}`].title}
-              </h5>
-              <p>
-                <Markdown>
-                  {QUICKSTART_SUPPORT_CONTENT[`${quickstart.level}`].content}
-                </Markdown>
-              </p>
+              <SupportSection
+                supportLevel={quickstart.level}
+                onClick={tessenSupportTrack(quickstart)}
+              />
             </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
+            <PageTools.Section>
+              <RelatedResources
+                css={css`
+                  padding: 0;
+                `}
+                resources={quickstart.relatedResources}
+              />
+            </PageTools.Section>
+            <aside
+              data-swiftype-index={false}
+              css={css`
+                border-bottom: 1px solid var(--divider-color);
+              `}
+            />
           </Layout.PageTools>
         </PageLayout>
       </Tabs>
@@ -314,6 +419,10 @@ export const pageQuery = graphql`
     quickstarts(id: { eq: $id }) {
       name
       title
+      relatedResources(limit: 5) {
+        title
+        url
+      }
       level
       keywords
       id

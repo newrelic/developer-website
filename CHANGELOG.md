@@ -1,3 +1,197 @@
+# [1.69.0](https://github.com/newrelic/developer-website/compare/v1.68.3...v1.69.0) (2021-11-16)
+
+
+### Bug Fixes
+
+* responsiveness for tiles on smaller screens ([e7bed53](https://github.com/newrelic/developer-website/commit/e7bed53dad0b6e0ab62c7f1bcbe176f8eeef8ca4))
+
+
+### Features
+
+* add initial super tile experiment ([f64a22f](https://github.com/newrelic/developer-website/commit/f64a22fbbf93029841c109e19ce9477ad5a7bb05))
+* add tracking ([cd51378](https://github.com/newrelic/developer-website/commit/cd51378a2783cc384c48503a52f07e4f8fea8d56))
+
+## [1.68.3](https://github.com/newrelic/developer-website/compare/v1.68.2...v1.68.3) (2021-11-08)
+
+
+### Bug Fixes
+
+* added white background for quickstart icons ([f4cec54](https://github.com/newrelic/developer-website/commit/f4cec5476202346aeac42b40182ad1b7c02f1d7c))
+
+## [1.68.2](https://github.com/newrelic/developer-website/compare/v1.68.1...v1.68.2) (2021-11-05)
+
+
+### Bug Fixes
+
+* fix for install button having signup as link too often ([d74c7fd](https://github.com/newrelic/developer-website/commit/d74c7fd69f850e79e8067e8323e454baba72fdbd))
+
+## [1.68.1](https://github.com/newrelic/developer-website/compare/v1.68.0...v1.68.1) (2021-11-03)
+
+
+### Bug Fixes
+
+* reframed existing tutorial as lab ([ff763f1](https://github.com/newrelic/developer-website/commit/ff763f13177bbfc07ff7f528059681052388749d))
+
+# [1.68.0](https://github.com/newrelic/developer-website/compare/v1.67.5...v1.68.0) (2021-11-03)
+
+
+### Bug Fixes
+
+* prettify LabOverviewTemplate ([88cca0f](https://github.com/newrelic/developer-website/commit/88cca0f69f621994b079a7737c2536edf6bfdeb7))
+* remove console.log ([f833555](https://github.com/newrelic/developer-website/commit/f8335555b22fba950247fbe48fbbe93acab4b490))
+* update pixie lab duration ([34cfc58](https://github.com/newrelic/developer-website/commit/34cfc58c2d9210bcfe41af2707bdf5915abd5a46))
+
+
+### Features
+
+* Add lab overview template ([d4be133](https://github.com/newrelic/developer-website/commit/d4be133acf0f46f24594f7c4bdd1fefefe9f794e))
+* Add Pixie lab ([b7f7c19](https://github.com/newrelic/developer-website/commit/b7f7c198de05ef10bbbe2c5a5d741fdd11379cf4))
+
+## [1.67.5](https://github.com/newrelic/developer-website/compare/v1.67.4...v1.67.5) (2021-10-28)
+
+
+### Bug Fixes
+
+* Remove link within link ([bfb5ee6](https://github.com/newrelic/developer-website/commit/bfb5ee68b67c4aca524405fd938e60b714bcda07))
+
+## [1.67.4](https://github.com/newrelic/developer-website/compare/v1.67.3...v1.67.4) (2021-10-28)
+
+
+### Bug Fixes
+
+* change required status check ([fef9a51](https://github.com/newrelic/developer-website/commit/fef9a51bdf3ca8694b1d5a84959b3e52431d92cc))
+
+## [1.67.3](https://github.com/newrelic/developer-website/compare/v1.67.2...v1.67.3) (2021-10-26)
+
+
+### Bug Fixes
+
+* Add back dashboards id to tab item ([461bab0](https://github.com/newrelic/developer-website/commit/461bab03ec77bd5309d2a9af8757d5f36bda262a))
+
+## [1.67.2](https://github.com/newrelic/developer-website/compare/v1.67.1...v1.67.2) (2021-10-26)
+
+
+### Bug Fixes
+
+* Match quickstarts type in config to meta tag ([1b6fd83](https://github.com/newrelic/developer-website/commit/1b6fd83ba7c3cadea086f180f25d9c16dde085bb))
+
+## [1.67.1](https://github.com/newrelic/developer-website/compare/v1.67.0...v1.67.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* refactor tessen tracking so it includes quickstart attributes ([8136a91](https://github.com/newrelic/developer-website/commit/8136a91bbf38d1e2d0d29a79a7b88579e07f3dc1))
+
+# [1.67.0](https://github.com/newrelic/developer-website/compare/v1.66.1...v1.67.0) (2021-10-22)
+
+
+### Features
+
+* add codestream quickstart ([b27fe28](https://github.com/newrelic/developer-website/commit/b27fe289afec1728c5aa24161ebb837e03365426))
+
+## [1.66.1](https://github.com/newrelic/developer-website/compare/v1.66.0...v1.66.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* bug fixed ([b13ddc4](https://github.com/newrelic/developer-website/commit/b13ddc4187ff9a1373aeb51471c46022b49ccde5))
+
+# [1.66.0](https://github.com/newrelic/developer-website/compare/v1.65.0...v1.66.0) (2021-10-21)
+
+
+### Features
+
+* adding codestream quickstart ([6d9c990](https://github.com/newrelic/developer-website/commit/6d9c990797aaaababd40fa885206d2ef68c348df))
+
+# [1.65.0](https://github.com/newrelic/developer-website/compare/v1.64.0...v1.65.0) (2021-10-21)
+
+
+### Features
+
+* hardcode installplan for codestream ([e24d6e5](https://github.com/newrelic/developer-website/commit/e24d6e511023aecca9f7fc0c00a4b25174e5f6de))
+* point codestream qs to correct nerdlet ([159fa58](https://github.com/newrelic/developer-website/commit/159fa58a8c02f30827d231415cb166513d80c1c9))
+
+# [1.64.0](https://github.com/newrelic/developer-website/compare/v1.63.0...v1.64.0) (2021-10-20)
+
+
+### Features
+
+* hardcode codestream  quickstart to top of marketplace page ([95623b9](https://github.com/newrelic/developer-website/commit/95623b9e38cd9b782c37dda3afdac124b3458ead))
+* hardcode codestream  quickstart to top of marketplace page ([a9e95e9](https://github.com/newrelic/developer-website/commit/a9e95e99ed11cad090e66342bdf39494554ca290))
+
+# [1.63.0](https://github.com/newrelic/developer-website/compare/v1.62.0...v1.63.0) (2021-10-20)
+
+
+### Bug Fixes
+
+* architecture change ([ec9b4f4](https://github.com/newrelic/developer-website/commit/ec9b4f477dc8ee5a12e889c3f9755ca82c1db23e))
+* updated guide structure ([af45c47](https://github.com/newrelic/developer-website/commit/af45c476db675a265ec536518cbc25a70bc3f34d))
+* updated queries and screenshots ([2d664c5](https://github.com/newrelic/developer-website/commit/2d664c538a7bb36441f83ed9aa8a677138ac162c))
+
+
+### Features
+
+* Added guide to query alerts for quickstarts ([322e592](https://github.com/newrelic/developer-website/commit/322e5923eb22f187bdbac9ee5f78779c61a19c68))
+
+# [1.62.0](https://github.com/newrelic/developer-website/compare/v1.61.0...v1.62.0) (2021-10-19)
+
+
+### Bug Fixes
+
+* remove unused vars ([5a4e4b3](https://github.com/newrelic/developer-website/commit/5a4e4b33393877cd5e7ef33e96a7549d8454187e))
+
+
+### Features
+
+* add quickstart name and id to tessen events ([28422b0](https://github.com/newrelic/developer-website/commit/28422b0ee8936cca2919557825a0f48e58959b73))
+
+# [1.61.0](https://github.com/newrelic/developer-website/compare/v1.60.0...v1.61.0) (2021-10-18)
+
+
+### Features
+
+* Update to node 16 ([45d219e](https://github.com/newrelic/developer-website/commit/45d219ed6a7a24416ad9500437ec296e03ac18ed))
+
+# [1.60.0](https://github.com/newrelic/developer-website/compare/v1.59.2...v1.60.0) (2021-10-15)
+
+
+### Bug Fixes
+
+* remove unused markdown ([176083a](https://github.com/newrelic/developer-website/commit/176083afad992b4b70eae177209f14399c794dc7))
+
+
+### Features
+
+* added a support section component with tessen tracking ([8b0c076](https://github.com/newrelic/developer-website/commit/8b0c0766612c9d9a31ebabfa4753811f43f7da2f))
+
+## [1.59.2](https://github.com/newrelic/developer-website/compare/v1.59.1...v1.59.2) (2021-10-13)
+
+
+### Bug Fixes
+
+* k8s operator is not official ([d173779](https://github.com/newrelic/developer-website/commit/d173779fd102fb9ec85fee1735c0d2a49c951d4f))
+
+## [1.59.1](https://github.com/newrelic/developer-website/compare/v1.59.0...v1.59.1) (2021-10-13)
+
+
+### Bug Fixes
+
+* broken embed link ([697160f](https://github.com/newrelic/developer-website/commit/697160f910aa8aa645ba4e8aee34fd62a3cb8034))
+
+# [1.59.0](https://github.com/newrelic/developer-website/compare/v1.58.0...v1.59.0) (2021-10-12)
+
+
+### Features
+
+* add redirects for embed pages ([1ce56bb](https://github.com/newrelic/developer-website/commit/1ce56bbd468f7b9a249e999c2c8c65f87ea3d349))
+
+# [1.58.0](https://github.com/newrelic/developer-website/compare/v1.57.2...v1.58.0) (2021-10-11)
+
+
+### Features
+
+* add guided install tile ([2c5bbfc](https://github.com/newrelic/developer-website/commit/2c5bbfc77b13654598445fd50d387b457d36328b))
+
 ## [1.57.2](https://github.com/newrelic/developer-website/compare/v1.57.1...v1.57.2) (2021-09-29)
 
 

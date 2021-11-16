@@ -18,6 +18,20 @@ function DevSiteSeo({ description, meta, title, tags, location, type }) {
     `
   );
 
+  const crazyEgg = (location) => {
+    if (
+      location.pathname === '/' ||
+      location.pathname === '/instant-observability/'
+    )
+      return (
+        <script
+          type="text/javascript"
+          src="//script.crazyegg.com/pages/scripts/0045/9836.js"
+          async="async"
+        />
+      );
+  };
+
   const metaDescription = description || site.siteMetadata.description;
 
   const globalMetadata = [
@@ -78,6 +92,7 @@ function DevSiteSeo({ description, meta, title, tags, location, type }) {
 
   return (
     <SEO location={location} title={title} type={type}>
+      {crazyEgg(location)}
       {validMetadata.map((data, index) => (
         <meta key={`${data.name}-${index}`} {...data} />
       ))}

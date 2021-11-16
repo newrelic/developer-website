@@ -14,13 +14,13 @@ import FeaturedGuideTile from '../components/FeaturedGuideTile';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import * as styles from './index.module.scss';
-import ioBeta from '../images/io-beta.png';
+import Video from '../components/Video';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 
 const getStartedGuides = [
   {
-    duration: '5 min',
+    duration: 5,
     title: 'Create custom events',
     description:
       'Define, visualize, and get alerts on the data you want using custom events',
@@ -28,14 +28,14 @@ const getStartedGuides = [
     icon: <Icon name="nr-tdp" />,
   },
   {
-    duration: '7 min',
+    duration: 7,
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
     url: '/automate-workflows/5-mins-tag-resources',
     icon: <Icon name="nr-automation" />,
   },
   {
-    duration: '12 min',
+    duration: 12,
     title: 'Build a Hello, World! app',
     description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
     url: '/build-apps/build-hello-world-app',
@@ -86,6 +86,9 @@ const IndexPage = ({ data, pageContext, location }) => {
                   as={Link}
                   variant={Button.VARIANT.PRIMARY}
                   to="/instant-observability"
+                  instrumentation={{
+                    navInteractionType: 'getQuickstartsButtonClick',
+                  }}
                 >
                   Get quickstarts
                 </Button>
@@ -99,13 +102,7 @@ const IndexPage = ({ data, pageContext, location }) => {
                 width: 100%;
               `}
             >
-              <img
-                src={ioBeta}
-                alt="IO Beta"
-                css={css`
-                  width: 100%;
-                `}
-              />
+              <Video id="33kreqnm3p" type="wistia" />
             </div>
           </section>
 

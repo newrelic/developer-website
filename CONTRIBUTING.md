@@ -45,6 +45,8 @@
   - [Updating the SDK documentation bundle](#updating-the-sdk-documentation-bundle)
     - [Step 1: Update the release number in `gatsby-config`](#step-1-update-the-release-number-in-gatsby-config)
     - [Step 2: Add any new APIs or components to our constants list](#step-2-add-any-new-apis-or-components-to-our-constants-list)
+      - [How to identify new components, APIs](#how-to-identify-new-components-apis)
+      - [Adding new components](#adding-new-components)
     - [Step 3: Add any new APIs or components to the navigation](#step-3-add-any-new-apis-or-components-to-the-navigation)
 
 <!-- /TOC -->
@@ -65,7 +67,7 @@ guidelines below.
 ### Using multiple versions of Node
 
 If you intend to run multiple versions of Node please be aware that the New Relic
-Developer Site is currently on Node v12. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
+Developer Site is currently on Node v16. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
 
 Review [this article](https://itnext.io/nvm-the-easiest-way-to-switch-node-js-environments-on-your-machine-in-a-flash-17babb7d5f1b)
 which clearly explains the setup and configuration of NVM.
@@ -123,7 +125,7 @@ The `develop` and `main` branches have "Branch Protection" enabled in Github. In
 
 You can review full Branch Protection details [here](https://docs.google.com/document/d/1O1SGS0i3OmPfvPhylpFe1CTMkE20889iAOF_cMFJ344/edit#heading=h.cy3jfpnyvv5z), and check out a visual representation of the workflow below:
 
-![](src/images/Dev_site_branch_protection_workflow_(develop_main).png)
+![](<src/images/Dev_site_branch_protection_workflow_(develop_main).png>)
 
 ### Using Conventional Commits
 
@@ -168,7 +170,7 @@ To submit a [Draft PR](https://github.blog/2019-02-14-introducing-draft-pull-req
    `PR` you wish to submit.
 3. Once you are ready to have the `PR` reviewed and merge, click the Ready for review button on the `PR`.
 
-### Deploy previews with Gatsby Cloud 
+### Deploy previews with Gatsby Cloud
 
 PRs that are opened from a branch in this repo (not forks) will generate preview links on Gatsby Cloud automatically. Gatsby Cloud preview links can be found as comments on your pull request once they finish building. Progress can be monitored via the `Gatsby Build Service` job under the `Checks` section.
 
@@ -399,20 +401,40 @@ need to happen:
 ### Step 1: Update the release number in `gatsby-config`
 
 - We use a [local Gatsby plugin `gatsby-source-newrelic-sdk`](https://github.com/newrelic/developer-website/tree/develop/plugins/gatsby-source-newrelic-sdk)
-to source our documentation into GraphQL. This plugin has some configuration that tells it what release number to use.
+  to source our documentation into GraphQL. This plugin has some configuration that tells it what release number to use.
 
-- [Update `gatsby-config.js`](https://github.com/newrelic/developer-website/blob/ae42737f5f1cf556f3c44d864655c9a571739e28/gatsby-config.js#L161)
-with the new release number to update the bundle release version.
+- [Update `gatsby-config.js`](https://github.com/newrelic/developer-website/blob/develop/gatsby-config.js#L198)
+  with the new release number to update the bundle release version.
 
-- To obtain the version release number visit the `one-core` repository on Github enterprise and look at the release version in `sdk-loader.js`. You can use the one-core site to confirm if any issues are developer site specific or occurring in the SDK.
+  ```json
+  {
+      resolve: 'gatsby-source-newrelic-sdk',
+      options: {
+        release: 'release-3250',
+      },
+  }
+  ```
+
+- To obtain the version release number visit the `one-core` repository on Github enterprise and look at the release version in `one-core/src/constants/sdk.js `. You can use the one-core docs site to confirm if any issues are developer site specific or occurring in the SDK.
 
 ### Step 2: Add any new APIs or components to our constants list
 
+#### How to identify new components, APIs
+
+At the moment, we don't have a rigorous or automatic process for identifying new components and APIs that we need to document. The goto manual process is to just eyeball the difference between the components we have on the site (or in `constants.js`), and what's displayed on the one-core site.
+
+You can also check a file that resides in the One Core repository found in `/src/__snapshots__/index.spec.js.snap` that provides a visual check for SDK components and their levels of exposure.
+
+It is possible to see a list of components from the SDK itself. If you run the site with the updated SDK version, you can enter `Object.entries(window.__NR1_SDK__.default).map(array => array[0])` into the dev console in the browser for the running site. That will show you an array containing component and API names. You can use this to try and compare differences, but some manual investigation is still necessary, since the SDK also contains pre-release and internal-only components.
+
+If a component looks like it should be internal only, feel free to ask #help-one-core to confirm if it should have public documentation, or if it is internal only.
+
+#### Adding new components
+
 - We rely on the 1st party documentation bundle to power the developer docs. While the 1st party bundle provides many of the same components/APIs, there are a few minor differences between the 1st and 3rd party SDKs. To account for this, we white list the specific components we document on the site.
-- If there are any new components or APIs, [update the constants
-list](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/constants.js)
-with the new components.
-- Pages will be then automatically generated for each of these.
+- If there are any new components or APIs, update the [constants
+  list](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/constants.js) with the new components.
+- Pages will be then automatically generated for each of the new components.
 
 > Once we have a 3rd party bundle automatically built for us, we should no longer need this step as that will contain only 3rd party SDK documentation. That is an open request to the NR One Core Team.
 
