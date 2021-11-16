@@ -1,3 +1,16 @@
+# [1.69.0](https://github.com/newrelic/developer-website/compare/v1.68.3...v1.69.0) (2021-11-16)
+
+
+### Bug Fixes
+
+* responsiveness for tiles on smaller screens ([e7bed53](https://github.com/newrelic/developer-website/commit/e7bed53dad0b6e0ab62c7f1bcbe176f8eeef8ca4))
+
+
+### Features
+
+* add initial super tile experiment ([f64a22f](https://github.com/newrelic/developer-website/commit/f64a22fbbf93029841c109e19ce9477ad5a7bb05))
+* add tracking ([cd51378](https://github.com/newrelic/developer-website/commit/cd51378a2783cc384c48503a52f07e4f8fea8d56))
+
 ## [1.68.3](https://github.com/newrelic/developer-website/compare/v1.68.2...v1.68.3) (2021-11-08)
 
 
