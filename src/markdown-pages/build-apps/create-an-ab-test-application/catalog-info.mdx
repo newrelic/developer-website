@@ -44,7 +44,7 @@ Create the _catalog_ directories:
 nr1 create --type catalog
 ```
 
-This creates a root _catalog_ directory with template files for inputting custom information about your app and a catalog directory for each Nerdpack item where screenshots can be stored.
+This creates a root _catalog_ directory with template files for inputting custom information about your app and a _catalog_ directory for each Nerdpack item where screenshots can be stored.
 
 <Callout variant="tip">
 
@@ -110,22 +110,24 @@ Read [our documentation](/build-apps/publish-deploy/catalog#update-your-nerdpack
 
 <Step>
 
-Save [this screenshot](https://github.com/newrelic-experimental/nru-programmability-course/raw/main/publish/ab-test/catalog/screenshots/screenshot.png) to your _catalog/screenshots_ directory.
 
-Users will be able to see a carousel of screenshots in your app's **About** page in the catalog.
+Save [this screenshot](https://github.com/newrelic-experimental/nru-programmability-course/raw/main/publish/ab-test/catalog/screenshots/screenshot.png) to the following two directories: 
+
+
+- _nru-programmability-course/describe-app/ab-test/catalog/screenshots_ 
+- _nru-programmability-course/describe-app/ab-test/nerdlets/ab-test-nerdlet/catalog/screenshots_ 
+
+Users will be able to see a carousel of screenshots in your app's **Overview** page in the catalog.
 
 </Step>
 
 <Step>
 
-Save the following icon as _icon.png_ in two places:
-
-- _nru-programmability-course/describe-app/ab-test_
-- _nru-programmability-course/describe-app/ab-test/launchers/ab-test-launcher_
+Save the following icon as _icon.png_ in _nru-programmability-course/describe-app/ab-test_.
 
 ![App icon](../../../images/ab-test/icon.png)
 
-This will act as the launcher's icon and the app's catalog icon on the **About** page.
+This will act as the app's catalog icon on the **Overview** page.
 
 </Step>
 
