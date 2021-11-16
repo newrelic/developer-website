@@ -1,3 +1,11 @@
+## [1.69.1](https://github.com/newrelic/developer-website/compare/v1.69.0...v1.69.1) (2021-11-16)
+
+
+### Bug Fixes
+
+* Update cookie to match original spec ([479705f](https://github.com/newrelic/developer-website/commit/479705fc0dcb7d5a12d73fb01901b6b099fc875b))
+* update to id instead of target to match spec ([2ce5b59](https://github.com/newrelic/developer-website/commit/2ce5b5935d98ccbe720d78ff1cc70a1dd98e2d02))
+
 # [1.69.0](https://github.com/newrelic/developer-website/compare/v1.68.3...v1.69.0) (2021-11-16)
 
 
