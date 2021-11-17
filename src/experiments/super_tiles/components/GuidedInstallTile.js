@@ -1,17 +1,23 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import SuperTile from './SuperTile';
-import { Button, useTessen } from '@newrelic/gatsby-theme-newrelic';
+import {
+  Button,
+  useInstrumentedHandler,
+} from '@newrelic/gatsby-theme-newrelic';
 import { navigate } from 'gatsby';
 import { SIGNUP_LINK } from '../../../data/constants';
 
 const GuidedInstallTile = () => {
-  const tessen = useTessen();
-
-  const handleButtonClick = () => {
-    tessen.track('clickSuperTile', 'QuickstartLanding', { tile: 'guided' });
-    navigate(SIGNUP_LINK);
-  };
+  const handleButtonClick = useInstrumentedHandler(
+    () => navigate(SIGNUP_LINK),
+    {
+      tessenEventName: 'clickSuperTile',
+      tessenCategoryName: 'QuickstartLanding',
+      tile: 'guided',
+    },
+    'tessen'
+  );
 
   return (
     <SuperTile type="primary">

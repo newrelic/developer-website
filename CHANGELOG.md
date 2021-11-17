@@ -1,3 +1,17 @@
+# [1.70.0](https://github.com/newrelic/developer-website/compare/v1.69.2...v1.70.0) (2021-11-17)
+
+
+### Features
+
+* add notification category ([f6eedef](https://github.com/newrelic/developer-website/commit/f6eedef0ae0f7b5a55ea8e8b8b7af891413bb6e5))
+
+## [1.69.2](https://github.com/newrelic/developer-website/compare/v1.69.1...v1.69.2) (2021-11-17)
+
+
+### Bug Fixes
+
+* tessen event not triggered on click ([99b9613](https://github.com/newrelic/developer-website/commit/99b9613c4ff2a05f0b0cd38a86f6d50a734935af))
+
 ## [1.69.1](https://github.com/newrelic/developer-website/compare/v1.69.0...v1.69.1) (2021-11-16)
 
 
