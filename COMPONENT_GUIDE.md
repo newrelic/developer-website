@@ -439,3 +439,64 @@ Other text ...
 You can see the difference in what is displayed below:
 
 ![alt text](readme_images/hidden_vs_normal.png "Hidden vs Normal")
+
+# Experiments
+
+## SuperTilesExperiment
+
+### Usage
+
+The `SuperTilesExperiment` component renders the `IOBanner` (control component) or the `GuidedInstallTile` and `CodeStreamTile` (treatment) components based on a 50%/50% A/B test.
+
+To include it: 
+```md
+<SuperTilesExperiment />
+
+# Render <IOBanner> for mobile devices
+<SuperTilesExperiment isMobile={true} />
+```
+
+## Props
+
+|Component|Prop|Required?|Type|Description|
+|-|-|-|-|-|
+|`SuperTilesExperiment`|`isMobile`|no|boolean|Specifies whether the `IOBanner` child component should be rendered for mobile devices.|
+
+
+## SuperTile
+
+### Usage
+
+The `SuperTile` component is a wrapper component that can display a primary and secondary tile.
+
+```md
+# Primary
+<SuperTile type="primary">
+  My content
+</SuperTile>
+
+# Secondary
+<SuperTile>
+  My content
+</SuperTile>
+```
+
+## GuidedInstallTile
+
+### Usage
+
+The `GuidedInstallTile` component includes custom content relevant to the guided install flow in New Relic.
+
+```md
+<GuidedInstallTile />
+```
+
+## CodeStreamTile
+
+### Usage
+
+The `CodeStreamTile` component includes custom content relevant to New Relic CodeStream.
+
+```md
+<CodeStreamTile />
+```
