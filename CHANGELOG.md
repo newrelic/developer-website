@@ -1,3 +1,10 @@
+# [1.70.0](https://github.com/newrelic/developer-website/compare/v1.69.2...v1.70.0) (2021-11-17)
+
+
+### Features
+
+* add notification category ([f6eedef](https://github.com/newrelic/developer-website/commit/f6eedef0ae0f7b5a55ea8e8b8b7af891413bb6e5))
+
 ## [1.69.2](https://github.com/newrelic/developer-website/compare/v1.69.1...v1.69.2) (2021-11-17)
 
 
