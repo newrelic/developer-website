@@ -10,7 +10,7 @@ import { SIGNUP_LINK } from '../../../data/constants';
 
 const GuidedInstallTile = () => {
   const handleButtonClick = useInstrumentedHandler(
-    () => navigate(SIGNUP_LINK),
+    navigate(SIGNUP_LINK),
     {
       tessenEventName: 'clickSuperTile',
       tessenCategoryName: 'QuickstartLanding',
