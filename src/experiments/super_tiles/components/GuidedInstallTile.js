@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/react';
 import SuperTile from './SuperTile';
 import { Button, useTessen } from '@newrelic/gatsby-theme-newrelic';
-import { navigate } from 'gatsby';
+import { Link } from 'gatsby';
 import { SIGNUP_LINK } from '../../../data/constants';
 
 const GuidedInstallTile = () => {
@@ -10,7 +10,6 @@ const GuidedInstallTile = () => {
 
   const handleButtonClick = () => {
     tessen.track('clickSuperTile', 'QuickstartLanding', { tile: 'guided' });
-    navigate(SIGNUP_LINK);
   };
 
   return (
@@ -61,7 +60,12 @@ const GuidedInstallTile = () => {
           </span>
         </div>
         <div>
-          <Button onClick={handleButtonClick} variant={Button.VARIANT.PRIMARY}>
+          <Button
+            onClick={handleButtonClick}
+            as={Link}
+            to={SIGNUP_LINK}
+            variant={Button.VARIANT.PRIMARY}
+          >
             Install New Relic
           </Button>
         </div>
