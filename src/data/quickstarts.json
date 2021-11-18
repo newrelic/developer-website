@@ -10948,7 +10948,7 @@
         "url": "https://docs.newrelic.com/docs/integrations/mlops-integrations/dagshub-mlops-integration/"
       }
     ],
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.64.0/quickstarts/mlops/dagshub/icon.svg",
+    "iconUrl": null,
     "id": "7ada1bce-43e4-4e32-a16d-58c71ecffaed",
     "installPlans": [
       {
@@ -11043,7 +11043,7 @@
         "url": "https://docs.newrelic.com/docs/integrations/mlops-integrations/superwise-mlops-integration/"
       }
     ],
-    "iconUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.64.0/quickstarts/mlops/superwise/icon.png",
+    "iconUrl": null,
     "id": "6c61cb57-c966-4435-b46c-f96b568d9873",
     "installPlans": [
       {
