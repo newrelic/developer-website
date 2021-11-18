@@ -124,7 +124,9 @@ const QuickstartsPage = ({ data, location }) => {
     );
     setCategory(categoryParam || '');
     if (searchParam || filterParam || categoryParam) {
-      tessen.track('instantObservability', 'QuickstartCatalogSearch', {
+      tessen.track({
+        eventName: 'instantObservability',
+        category: 'QuickstartCatalogSearch',
         filter: filterParam,
         search: searchParam,
         quickstartCategory: categoryParam,
@@ -681,7 +683,9 @@ const QuickstartsPage = ({ data, location }) => {
                 onChange={(_e, view) => {
                   setView(view);
 
-                  tessen.track('instantObservability', `QuickstartViewToggle`, {
+                  tessen.track({
+                    eventName: 'instantObservability',
+                    category: 'QuickstartViewToggle',
                     quickstartViewState: view,
                   });
                 }}

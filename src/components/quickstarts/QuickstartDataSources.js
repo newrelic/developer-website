@@ -9,7 +9,9 @@ const QuickstartDataSources = ({ quickstart }) => {
   const tessen = useTessen();
 
   const handleDocsTileClick = () => {
-    tessen.track('instantObservability', 'DocsTileClick', {
+    tessen.track({
+      eventName: 'instantObservability',
+      category: 'DocsTileClick',
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
     });
