@@ -35,19 +35,25 @@ const PackTile = ({
   const handlePackClick = (quickstartId) => {
     switch (true) {
       case quickstartId === RESERVED_QUICKSTART_IDS.GUIDED_INSTALL:
-        tessen.track('instantObservability', 'GuidedInstallClick', {
+        tessen.track({
+          eventName: 'instantObservability',
+          category: 'GuidedInstallClick',
           publicCatalogView: view,
           quickstartName: name,
         });
         break;
       case quickstartId === RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART:
-        tessen.track('instantObservability', 'BuildYourOwnQuickstartClick', {
+        tessen.track({
+          eventName: 'instantObservability',
+          category: 'BuildYourOwnQuickstartClick',
           publicCatalogView: view,
           quickstartName: name,
         });
         break;
       default:
-        tessen.track('instantObservability', 'QuickstartClick', {
+        tessen.track({
+          eventName: 'instantObservability',
+          category: 'QuickstartClick',
           publicCatalogView: view,
           quickstartName: name,
         });
