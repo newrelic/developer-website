@@ -1,0 +1,130 @@
+---
+path: '/collect-data/opentelemetry/set-up-env'
+duration: 5
+title: 'Set up your lab environment'
+template: 'GuideTemplate'
+description: 'Spin up your weather forecast application and simulator'
+procIdx: 1
+---
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to instrument your application with OpenTelemetry. If you haven't already, check out the [lab introduction](/collect-data/opentelemetry).
+
+</Callout>
+
+Before you can walk through the lab proper, you need to set up your development environment. Here, you:
+
+1. Spin up your .NET application
+2. Send traffic to your app with a simple load generator
+
+<Steps>
+
+<Step>
+
+Clone the lab repository:
+
+<>
+
+```bash
+git clone https://github.com/newrelic-experimental/opentelemetry-dotnet-lab-materials
+```
+
+</>
+
+</Step>
+
+<Step>
+
+Restore dependencies, build, and run the application:
+
+<>
+
+```bash
+cd opentelemetry-dotnet-lab-materials
+dotnet restore app
+dotnet build app
+dotnet run --project app
+```
+
+</>
+
+In the output, you see a url for your app:
+
+<>
+
+```bash
+[output]   Determining projects to restore...
+[output]   All projects are up-to-date for restore.
+[output] Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+[output] Copyright (C) Microsoft Corporation. All rights reserved.
+[output]
+[output]   Determining projects to restore...
+[output]   All projects are up-to-date for restore.
+[output]   opentelemetry-dotnet-lab-materials -> /workspace/opentelemetry-dotnet-lab-materials/app/bin/Debug/net6.0/opentelemetry-dotnet-lab-materials.dll
+[output]
+[output] {success}Build succeeded.
+[output]     0 Warning(s)
+[output]     0 Error(s)
+[output]
+[output] Time Elapsed 00:00:01.42
+[output] Building...
+[output] {success}info: {plain}Microsoft.Hosting.Lifetime[14]
+[output]       Now listening on: {blue}https://localhost:7072
+[output] {success}info: {plain}Microsoft.Hosting.Lifetime[0]
+[output]       Application started. Press Ctrl+C to shut down.
+[output] {success}info: {plain}Microsoft.Hosting.Lifetime[0]
+[output]       Hosting environment: Development
+[output] {success}info: {plain}Microsoft.Hosting.Lifetime[0]
+[output]       Content root path: /workspace/opentelemetry-dotnet-lab-materials/app/
+```
+
+</>
+
+The application has a single endpoint at `/WeatherForcast`, which you can visit in your browser or with curl:
+
+<>
+
+```bash
+curl -k https://localhost:7072/WeatherForecast
+[output] [{"date":"2021-11-18T16:03:02.655159-05:00","temperatureC":38,"temperatureF":100,"summary":"Chilly"},{"date":"2021-11-19T16:03:02.655161-05:00","temperatureC":-3,"temperatureF":27,"summary":"Mild"},{"date":"2021-11-20T16:03:02.655162-05:00","temperatureC":-8,"temperatureF":18,"summary":"Hot"},{"date":"2021-11-21T16:03:02.655162-05:00","temperatureC":3,"temperatureF":37,"summary":"Cool"},{"date":"2021-11-22T16:03:02.655162-05:00","temperatureC":10,"temperatureF":49,"summary":"Warm"}]
+```
+
+</>
+
+<Callout variant="tip" title="Technical Detail">
+
+You use the `-k` option to instruct curl to not verify the site's SSL certification. This is fine because you're making a request against localhost.
+
+</Callout>
+
+Leave this open so you can simulate requests against it.
+
+</Step>
+
+<Step>
+
+In another terminal window, run the load generator:
+
+<>
+
+```bash
+cd opentelemetry-dotnet-lab-materials/sim
+pip install requests
+python simulator.py
+```
+
+</>
+
+</Step>
+
+</Steps>
+
+Now that you've got your application and load generator running, it's time to see what OpenTelemetry's all about.
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to instrument your application with OpenTelemetry. Now that you've set up your environment, [instrument your application](/collect-data/opentelemetry/instrument).
+
+</Callout>
+

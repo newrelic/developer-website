@@ -27,6 +27,15 @@
           url: '/collect-data/pixie/scenario-1'
         - title: Debug latency in the TinyHat admin
           url: '/collect-data/pixie/scenario-2'
+    - title: Instrument your application with OpenTelemetry
+      url: '/collect-data/opentelemetry'
+      pages:
+          - title: Set up your lab environment
+            url: '/collect-data/opentelemetry/set-up-env'
+          - title: Instrument your app with Open Telemetry
+            url: '/collect-data/opentelemetry/instrument'
+          - title: View your OpenTelemetry data in New Relic
+            url: '/collect-data/opentelemetry/view'
 - title: Automate workflows
   icon: nr-automation
   url: '/automate-workflows'
