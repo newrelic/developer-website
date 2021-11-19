@@ -8,7 +8,10 @@ const IOBanner = ({ isMobile }) => {
   const tessen = useTessen();
 
   const handleBannerButtonClick = () => {
-    tessen.track('instantObservability', 'BannerButtonClick');
+    tessen.track({
+      eventName: 'instantObservability',
+      category: 'BannerButtonClick',
+    });
   };
 
   return (

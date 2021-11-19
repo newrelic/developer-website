@@ -159,7 +159,9 @@ const InstallButton = ({ quickstart, location, ...props }) => {
 
   const handleInstallClick = () => {
     writeCookie();
-    tessen.track('instantObservability', 'QuickstartInstall', {
+    tessen.track({
+      eventName: 'instantObservability',
+      category: 'QuickstartInstall',
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,

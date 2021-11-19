@@ -53,14 +53,18 @@ const QuickstartDetails = ({ data, location }) => {
   ];
 
   const trackQuickstart = (action, quickstart) => () =>
-    tessen.track('instantObservability', action, {
+    tessen.track({
+      eventName: 'instantObservability',
+      category: action,
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,
     });
 
   const tessenTabTrack = (action, quickstart) => (id, count) => {
-    tessen.track('instantObservability', action, {
+    tessen.track({
+      eventName: 'instantObservability',
+      category: action,
       QuickstartTabState: id,
       QuickstartTabCount: count,
       quickstartName: quickstart.name,
@@ -68,7 +72,9 @@ const QuickstartDetails = ({ data, location }) => {
     });
   };
   const tessenSupportTrack = (quickstart) => (action) => {
-    tessen.track('instantObservability', action, {
+    tessen.track({
+      eventName: 'instantObservability',
+      category: action,
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
     });
