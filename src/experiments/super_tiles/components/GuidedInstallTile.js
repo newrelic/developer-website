@@ -6,11 +6,14 @@ import {
   useInstrumentedHandler,
 } from '@newrelic/gatsby-theme-newrelic';
 import { navigate } from 'gatsby';
-import { SIGNUP_LINK } from '../../../data/constants';
+import Cookies from 'js-cookie';
+import { SIGNUP_LINK, LOGIN_LINK } from '../../../data/constants';
 
 const GuidedInstallTile = () => {
+  const isReturningUser = Boolean(Cookies.get('ajs_user_id'));
+
   const handleButtonClick = useInstrumentedHandler(
-    () => navigate(SIGNUP_LINK),
+    () => navigate(isReturningUser ? LOGIN_LINK : SIGNUP_LINK),
     {
       tessenEventName: 'clickSuperTile',
       tessenCategoryName: 'QuickstartLanding',
