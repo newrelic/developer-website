@@ -15,8 +15,8 @@ const GuidedInstallTile = () => {
   const handleButtonClick = useInstrumentedHandler(
     () => navigate(isReturningUser ? LOGIN_LINK : SIGNUP_LINK),
     {
-      tessenEventName: 'clickSuperTile',
-      tessenCategoryName: 'QuickstartLanding',
+      eventName: 'clickSuperTile',
+      category: 'QuickstartLanding',
       tile: 'guided',
     },
     'tessen'
