@@ -9,6 +9,27 @@ const kebabCase = (string) =>
     .replace(/\s+/g, '-')
     .toLowerCase();
 
+// This is a temporary customization to ensure that the path field is always
+// queryable from the createPages API. We rely on the path for deprecation
+// warnings to inform authors that path is no longer a supported markdown
+// property. Because of Gatsby's type inference from frontmatter properties, the
+// query in createPages fails without this patch if no file contains a 'path'
+// frontmatter property.
+//
+// This patch can be safely removed when removing the deprecation warning in
+// createPages.
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  const typeDefs = `
+    type MdxFrontmatter {
+      path: String
+    }
+  `;
+
+  createTypes(typeDefs);
+};
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage, createRedirect } = actions;
 
