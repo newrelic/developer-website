@@ -33,7 +33,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       context: {
         slug,
         fileRelativePath,
-        contentSourcePath: slug,
         layout: 'EmbedLayout',
       },
     });
