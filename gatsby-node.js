@@ -96,6 +96,23 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       });
     }
 
+    if (frontmatter.path !== slug) {
+      const newPath = path.join(
+        'src/markdown-pages',
+        fileRelativePath.endsWith('index.mdx')
+          ? path.join(frontmatter.path, 'index.mdx')
+          : `${frontmatter.path}.mdx`
+      );
+
+      reporter.error(
+        `
+File path does not match frontmatter path:
+  mkdir -p ${path.dirname(newPath)}
+  mv ${fileRelativePath} ${newPath}
+`.trim()
+      );
+    }
+
     createPage({
       path: frontmatter.path
         ? path.join(frontmatter.path, '/')
