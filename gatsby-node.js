@@ -89,7 +89,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       frontmatter.redirects.forEach((fromPath) => {
         createRedirect({
           fromPath,
-          toPath: frontmatter.path,
+          toPath: slug,
           isPermanent: true,
           redirectInBrowser: true,
         });
@@ -114,9 +114,7 @@ File path does not match frontmatter path:
     }
 
     createPage({
-      path: frontmatter.path
-        ? path.join(frontmatter.path, '/')
-        : path.join(slug, '/'),
+      path: path.join(slug, '/'),
       component: path.resolve(`src/templates/${frontmatter.template}.js`),
       context: {
         slug,
@@ -124,7 +122,7 @@ File path does not match frontmatter path:
         guidesFilter: ['OverviewTemplate', 'LabOverviewTemplate'].includes(
           frontmatter.template
         )
-          ? `${frontmatter.path}/*`
+          ? `${slug}/*`
           : undefined,
       },
     });
