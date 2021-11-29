@@ -104,10 +104,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       context: {
         slug,
         fileRelativePath,
-        guidesFilter:
-          ['OverviewTemplate', 'LabOverviewTemplate'].includes(frontmatter.template)
-            ? `${frontmatter.path}/*`
-            : undefined,
+        guidesFilter: ['OverviewTemplate', 'LabOverviewTemplate'].includes(
+          frontmatter.template
+        )
+          ? `${frontmatter.path}/*`
+          : undefined,
       },
     });
   });
@@ -220,7 +221,11 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
     // source instead of the node source. See the following issue for this
     // recommendation:
     // https://github.com/escaladesports/legacy-gatsby-plugin-prefetch-google-fonts/issues/18
-    plugins: [plugins.normalModuleReplacement(/^\.\/node\.js/, './browser.js')],
+    resolve: { fallback: { os: require.resolve('os-browserify/browser') } },
+    plugins: [
+      plugins.normalModuleReplacement(/^\.\/node\.js/, './browser.js'),
+      plugins.provide({ process: 'process/browser' }),
+    ],
     externals: {
       tessen: 'Tessen',
     },
