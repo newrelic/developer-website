@@ -104,10 +104,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       context: {
         slug,
         fileRelativePath,
-        guidesFilter:
-          ['OverviewTemplate', 'LabOverviewTemplate'].includes(frontmatter.template)
-            ? `${frontmatter.path}/*`
-            : undefined,
+        guidesFilter: ['OverviewTemplate', 'LabOverviewTemplate'].includes(
+          frontmatter.template
+        )
+          ? `${frontmatter.path}/*`
+          : undefined,
       },
     });
   });
