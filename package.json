@@ -95,7 +95,7 @@
   ],
   "license": "Apache-2",
   "scripts": {
-    "build": "GATSBY_NEWRELIC_ENV=development gatsby build",
+    "build": "gatsby build",
     "build:production": "GATSBY_NEWRELIC_ENV=production gatsby build",
     "build:staging": "GATSBY_NEWRELIC_ENV=staging gatsby build",
     "build:related-content": "BUILD_RELATED_CONTENT=true yarn run build:production",
