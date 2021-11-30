@@ -15,7 +15,7 @@ const CodeStreamTile = () => {
 
   const link = isReturningUser
     ? getPackNr1Url(quickstartId, nerdletId)
-    : '/instant-observability/codestream/29bd9a4a-1c19-4219-9694-0942f6411ce7/';
+    : `/instant-observability/codestream/${quickstartId}/`;
 
   const handleButtonClick = () => {
     tessen.track('clickSuperTile', 'QuickstartLanding', { tile: 'codestream' });
