@@ -221,11 +221,7 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
     // source instead of the node source. See the following issue for this
     // recommendation:
     // https://github.com/escaladesports/legacy-gatsby-plugin-prefetch-google-fonts/issues/18
-    resolve: { fallback: { os: require.resolve('os-browserify/browser') } },
-    plugins: [
-      plugins.normalModuleReplacement(/^\.\/node\.js/, './browser.js'),
-      plugins.provide({ process: 'process/browser' }),
-    ],
+    plugins: [plugins.normalModuleReplacement(/^\.\/node\.js/, './browser.js')],
     externals: {
       tessen: 'Tessen',
     },
