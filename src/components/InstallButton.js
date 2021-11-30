@@ -16,6 +16,7 @@ import {
 } from '../data/constants';
 import { quickstart } from '../types';
 import Cookies from 'js-cookie';
+import useTreatment from '../hooks/useTreatment';
 
 /**
  * @param {Object} parameters
@@ -85,6 +86,8 @@ const hasComponent = (quickstart, key) =>
   quickstart[key] && quickstart[key].length > 0;
 
 const InstallButton = ({ quickstart, location, ...props }) => {
+  const { treatment } = useTreatment('super_tiles');
+
   const hasInstallableComponent =
     hasComponent(quickstart, 'installPlans') ||
     quickstart.id === CODESTREAM_QUICKSTART_ID;
@@ -144,15 +147,25 @@ const InstallButton = ({ quickstart, location, ...props }) => {
       options.domain = 'newrelic.com';
     }
 
+    const startTarget = btoa(
+      JSON.stringify({
+        source: 'nrio',
+        id: quickstart.id,
+      })
+    );
+    Cookies.set('start_target', startTarget, options);
     Cookies.set('newrelic-quickstart-id', quickstart.id, options);
   };
 
   const handleInstallClick = () => {
     writeCookie();
-    tessen.track('instantObservability', 'QuickstartInstall', {
+    tessen.track({
+      eventName: 'instantObservability',
+      category: 'QuickstartInstall',
       quickstartName: quickstart.name,
       quickstartId: quickstart.id,
       quickstartUrl: quickstart.packUrl,
+      super_tiles_treatment: treatment,
       quickstartButtonText: hasInstallableComponent
         ? 'Install quickstart'
         : 'See installation docs',

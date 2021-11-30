@@ -70,3 +70,7 @@ yarn-error.log
 
 # In case npm is accidently used to install deps
 package-lock.json
+
+# VSCode files
+.vscode
+

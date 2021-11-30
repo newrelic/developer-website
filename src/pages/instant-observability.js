@@ -7,7 +7,6 @@ import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
 import Overlay from '../components/Overlay';
 import PackTile from '../components/PackTile';
-import IOBanner from '../components/IOBanner';
 import IOLogo from '../components/IOLogo';
 import QuickstartFilter from '../components/quickstarts/QuickstartFilter';
 import {
@@ -23,6 +22,7 @@ import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 import GUIDED_INSTALL from '../images/guided-install.svg';
 import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
+import SuperTilesExperiment from '../experiments/super_tiles';
 
 import {
   QUICKSTARTS_REPO,
@@ -124,7 +124,9 @@ const QuickstartsPage = ({ data, location }) => {
     );
     setCategory(categoryParam || '');
     if (searchParam || filterParam || categoryParam) {
-      tessen.track('instantObservability', 'QuickstartCatalogSearch', {
+      tessen.track({
+        eventName: 'instantObservability',
+        category: 'QuickstartCatalogSearch',
         filter: filterParam,
         search: searchParam,
         quickstartCategory: categoryParam,
@@ -294,7 +296,7 @@ const QuickstartsPage = ({ data, location }) => {
             }
           `}
         >
-          {isMobile && <IOBanner isMobile />}
+          {isMobile && <SuperTilesExperiment isMobile />}
           <div
             css={css`
               padding: var(--site-content-padding);
@@ -410,7 +412,7 @@ const QuickstartsPage = ({ data, location }) => {
             padding: var(--site-content-padding);
           `}
         >
-          {!isMobile && <IOBanner />}
+          {!isMobile && <SuperTilesExperiment />}
           <div
             css={css`
               background-color: var(--secondary-background-color);
@@ -681,7 +683,9 @@ const QuickstartsPage = ({ data, location }) => {
                 onChange={(_e, view) => {
                   setView(view);
 
-                  tessen.track('instantObservability', `QuickstartViewToggle`, {
+                  tessen.track({
+                    eventName: 'instantObservability',
+                    category: 'QuickstartViewToggle',
                     quickstartViewState: view,
                   });
                 }}
@@ -794,7 +798,6 @@ export const pageQuery = graphql`
         }
         authors
         description
-        iconUrl
         summary
         installPlans {
           id

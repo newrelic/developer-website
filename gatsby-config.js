@@ -46,6 +46,7 @@ module.exports = {
               features: {
                 'developer-website_global-header-gh-buttons': 'on',
                 'developer-website_right-rail-buttons': 'outline',
+                super_tiles: 'on',
               },
               core: {
                 authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
@@ -135,7 +136,7 @@ module.exports = {
           segmentWriteKey: 'Ako0hclX8WGHwl9rm4n5uxLtT4wgEtuU',
           trackPageViews: true,
           pageView: {
-            name: 'pageView',
+            eventName: 'pageView',
             category: 'DocPageView',
             getProperties: ({ location, env }) => ({
               path: location.pathname,

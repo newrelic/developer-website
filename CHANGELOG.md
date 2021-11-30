@@ -1,3 +1,38 @@
+# [1.70.0](https://github.com/newrelic/developer-website/compare/v1.69.2...v1.70.0) (2021-11-17)
+
+
+### Features
+
+* add notification category ([f6eedef](https://github.com/newrelic/developer-website/commit/f6eedef0ae0f7b5a55ea8e8b8b7af891413bb6e5))
+
+## [1.69.2](https://github.com/newrelic/developer-website/compare/v1.69.1...v1.69.2) (2021-11-17)
+
+
+### Bug Fixes
+
+* tessen event not triggered on click ([99b9613](https://github.com/newrelic/developer-website/commit/99b9613c4ff2a05f0b0cd38a86f6d50a734935af))
+
+## [1.69.1](https://github.com/newrelic/developer-website/compare/v1.69.0...v1.69.1) (2021-11-16)
+
+
+### Bug Fixes
+
+* Update cookie to match original spec ([479705f](https://github.com/newrelic/developer-website/commit/479705fc0dcb7d5a12d73fb01901b6b099fc875b))
+* update to id instead of target to match spec ([2ce5b59](https://github.com/newrelic/developer-website/commit/2ce5b5935d98ccbe720d78ff1cc70a1dd98e2d02))
+
+# [1.69.0](https://github.com/newrelic/developer-website/compare/v1.68.3...v1.69.0) (2021-11-16)
+
+
+### Bug Fixes
+
+* responsiveness for tiles on smaller screens ([e7bed53](https://github.com/newrelic/developer-website/commit/e7bed53dad0b6e0ab62c7f1bcbe176f8eeef8ca4))
+
+
+### Features
+
+* add initial super tile experiment ([f64a22f](https://github.com/newrelic/developer-website/commit/f64a22fbbf93029841c109e19ce9477ad5a7bb05))
+* add tracking ([cd51378](https://github.com/newrelic/developer-website/commit/cd51378a2783cc384c48503a52f07e4f8fea8d56))
+
 ## [1.68.3](https://github.com/newrelic/developer-website/compare/v1.68.2...v1.68.3) (2021-11-08)
 
 

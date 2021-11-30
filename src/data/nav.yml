@@ -169,7 +169,7 @@
       url: https://opensource.newrelic.com/nerdpacks/
 
 - title: Contribute to quickstarts
-  icon: zap
+  icon: fe-zap
   url: '/contribute-to-quickstarts'
   pages:
     - title: Build a quickstart
@@ -329,8 +329,6 @@
               url: '/components/badge'
         - title: Overlays
           pages:
-            - title: Callout
-              url: '/components/callout'
             - title: Modal
               url: '/components/modal'
             - title: Popover
@@ -458,8 +456,6 @@
               url: '/components/nerd-graph-query'
             - title: NrqlQuery
               url: '/components/nrql-query'
-            - title: NrqlQueries
-              url: '/components/nrql-queries'
             - title: UserQuery
               url: '/components/user-query'
             - title: UserStorageMutation
@@ -493,7 +489,7 @@
         - title: All things open
           url: '/all-things-open'
 - title: Instant Observability
-  icon: box
+  icon: fe-box
   url: '/instant-observability'
 - title: Nerd Bytes
   icon: nr-nerd-bytes
