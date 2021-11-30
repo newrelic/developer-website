@@ -1,3 +1,10 @@
+# [1.71.0](https://github.com/newrelic/developer-website/compare/v1.70.0...v1.71.0) (2021-11-30)
+
+
+### Features
+
+* update theme to pull in new header ([e38051a](https://github.com/newrelic/developer-website/commit/e38051ad551190efd3dcec65b25bf59ea628414c))
+
 # [1.70.0](https://github.com/newrelic/developer-website/compare/v1.69.2...v1.70.0) (2021-11-17)
 
 
