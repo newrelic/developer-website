@@ -239,7 +239,13 @@ const QuickstartDetails = ({ rawQuickstart, location }) => {
                 }
               `}
             >
-              <InstallButton installer={installer} location={location} />
+              <InstallButton
+                installer={installer}
+                id={id}
+                quickstartUrl={quickstartUrl}
+                slug={slug}
+                location={location}
+              />
               <Button
                 as={Link}
                 variant={Button.VARIANT.OUTLINE}
@@ -251,7 +257,7 @@ const QuickstartDetails = ({ rawQuickstart, location }) => {
                     margin: 1rem 0 0 0;
                   }
                 `}
-                onClick={trackQuickstart('QuickstartViewRepoClick', quickstart)}
+                onClick={trackQuickstart('QuickstartViewRepoClick')}
               >
                 <Icon
                   name="fe-github"
@@ -280,21 +286,21 @@ const QuickstartDetails = ({ rawQuickstart, location }) => {
             <Tabs.BarItem
               id="dashboards"
               count={dashboards?.length ?? 0}
-              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
+              onClick={tessenTabTrack(`QuickstartTabToggle`)}
             >
               Dashboards
             </Tabs.BarItem>
             <Tabs.BarItem
               id="alerts"
               count={alerts?.length ?? 0}
-              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
+              onClick={tessenTabTrack(`QuickstartTabToggle`)}
             >
               Alerts
             </Tabs.BarItem>
             <Tabs.BarItem
               id="data-sources"
               count={documentation?.length ?? 0}
-              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
+              onClick={tessenTabTrack(`QuickstartTabToggle`)}
             >
               Data sources
             </Tabs.BarItem>
@@ -383,20 +389,14 @@ const QuickstartDetails = ({ rawQuickstart, location }) => {
                 <li>
                   <Link
                     to={SIGNUP_LINK}
-                    onClick={trackQuickstart(
-                      'QuickstartDetailsSignUpClick',
-                      quickstart
-                    )}
+                    onClick={trackQuickstart('QuickstartDetailsSignUpClick')}
                   >
                     Sign Up
                   </Link>{' '}
                   for a free New Relic account or{' '}
                   <Link
                     to={LOGIN_LINK}
-                    onClick={trackQuickstart(
-                      'QuickstartDetailsLoginClick',
-                      quickstart
-                    )}
+                    onClick={trackQuickstart('QuickstartDetailsLoginClick')}
                   >
                     Log In
                   </Link>{' '}

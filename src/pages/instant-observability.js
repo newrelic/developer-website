@@ -42,7 +42,8 @@ export const getServerData = async () => {
 };
 
 const QuickstartsPageRouter = ({ serverData }) => {
-  const quickstarts = serverData?.data?.actor?.nr1Catalog?.quickstarts?.results;
+  const quickstarts =
+    serverData?.data?.actor?.nr1Catalog?.quickstarts?.results || [];
 
   return (
     <Router basepath="/instant-observability">

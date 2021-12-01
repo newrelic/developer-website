@@ -83,7 +83,14 @@ const createInstallLink = (
  * @returns {Boolean}
  */
 
-const InstallButton = ({ installer, id, location, ...props }) => {
+const InstallButton = ({
+  installer,
+  id,
+  slug,
+  quickstartUrl,
+  location,
+  ...props
+}) => {
   const { treatment } = useTreatment('super_tiles');
 
   const hasInstallableComponent =
@@ -159,9 +166,9 @@ const InstallButton = ({ installer, id, location, ...props }) => {
     tessen.track({
       eventName: 'instantObservability',
       category: 'QuickstartInstall',
-      quickstartName: quickstart.name,
+      quickstartName: slug,
       quickstartId: id,
-      quickstartUrl: quickstart.packUrl,
+      quickstartUrl: quickstartUrl,
       super_tiles_treatment: treatment,
       quickstartButtonText: hasInstallableComponent
         ? 'Install quickstart'
@@ -198,7 +205,8 @@ const InstallButton = ({ installer, id, location, ...props }) => {
 InstallButton.propTypes = {
   installer: PropTypes.object,
   id: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  quickstartUrl: PropTypes.string,
+  slug: PropTypes.string,
   location: PropTypes.object.isRequired,
 };
 
