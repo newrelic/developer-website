@@ -10671,6 +10671,64 @@
     "websiteUrl": "https://docs.oracle.com/javase/tutorial/jmx/overview/index.html"
   },
   {
+    "alerts": [
+      {
+        "details": "Describe the purpose of this alert condition.\nYou can use multiple lines.\nTry to be as descriptive as possible and provide \"The Why\".\n\n",
+        "name": "Name of this alert condition",
+        "type": "BASELINE",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/jumpstart/alerts/baseline-alert.yml"
+      },
+      {
+        "details": "Describe the purpose of this alert condition.\nYou can use multiple lines.\nTry to be as descriptive as possible and provide \"The Why\".\n\n",
+        "name": "Name of this alert condition",
+        "type": "OUTLIER",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/jumpstart/alerts/outlier-alert.yml"
+      },
+      {
+        "details": "Describe the purpose of this alert condition.\nYou can use multiple lines.\nTry to be as descriptive as possible and provide \"The Why\".\n\n",
+        "name": "Name of this alert condition",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/jumpstart/alerts/static-alert.yml"
+      }
+    ],
+    "authors": [
+      "New Relic"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Partner I/O quickstart",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/jumpstart/dashboards/Jumpstart01.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/jumpstart/dashboards/Jumpstart.json"
+      }
+    ],
+    "description": "The Jumpstart quickstart is a tool that has everything you need to help you get started building your own quickstart. It has some basic steps to follow to get started, some sample dashboards and queries, as well as a list of resources to help you build your own quickstart faster !\n",
+    "documentation": [
+      {
+        "description": "Description about this doc reference",
+        "name": "Guides to quickstarts",
+        "url": "https://developer.newrelic.com/contribute-to-quickstarts/build-a-quickstart/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "fbca935b-5a3e-41d7-b708-c24d90fcd820",
+    "installPlans": [],
+    "keywords": [
+      "Jumpstart",
+      "Quickstart",
+      "Intro"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/jumpstart/logo.png",
+    "name": "Jumpstart quickstart",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/jumpstart",
+    "summary": "A Quickstart to help you get started building your own quickstart!\n",
+    "title": "Jumpstart quickstart",
+    "websiteUrl": "https://www.newrelic.com"
+  },
+  {
     "alerts": [],
     "authors": [
       "New Relic",
@@ -11395,6 +11453,58 @@
   {
     "alerts": [],
     "authors": [
+      "Jacques Verre"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Demo Comet dashboard",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/mlops/comet/dashboards/comet.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/mlops/comet/dashboards/comet.json"
+      }
+    ],
+    "description": "[Comet](https://www.comet.ml/site/) is a machine learning (ML) development platform built to meet the intense demands of enterprise teams deploying ML at scale. Comet’s integration with New Relic allows you to manage and optimize your ML models in production from your New Relic One dashboard. With Comet and New Relic, you can accelerate ML development and realize business value faster.\n",
+    "documentation": [
+      {
+        "description": "Documentation about Integrating Comet with New Relic",
+        "name": "Comet Docs",
+        "url": "https://docs.newrelic.com/docs/alerts-applied-intelligence/applied-intelligence/mlops-integrations/comet-mlops-integration/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "dda42643-7efa-4ae3-8cad-5b4406e874e0",
+    "installPlans": [
+      {
+        "id": "comet-mlops",
+        "name": "comet"
+      }
+    ],
+    "keywords": [
+      "mlops",
+      "ml-ops",
+      "model ops",
+      "model-ops",
+      "ml",
+      "machine learning",
+      "ai",
+      "comet",
+      "observability",
+      "monitoring",
+      "data monitoring"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/mlops/comet/logo.png",
+    "name": "mlops-comet",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mlops/comet",
+    "summary": "Together, Comet and New Relic extend infrastructure observability to include your machine learning models in production, so you can build better models faster.\n",
+    "title": "Comet",
+    "websiteUrl": "https://www.comet.ml/site"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "New Relic"
     ],
     "dashboards": [
@@ -11849,6 +11959,56 @@
     "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/network-routers-and-switches",
     "summary": "Router and Switch monitoring from NPM give you valuable insights into potential issues with your network.\n",
     "title": "Network Routers and Switches",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic",
+      "Zack Mutchler"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Network Syslog Overview",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/network-syslog/dashboards/network-syslog.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/network-syslog/dashboards/network-syslog.json"
+      }
+    ],
+    "description": "The Network Syslog quickstart provides a dashboard that gives you a holistic view of collected syslogs from your network.\nUse this quickstart together with New Relic's Network Performance Monitoring (NPM) feature to analyze and alert on system messages in your network.\n",
+    "documentation": [
+      {
+        "description": "Install NPM for syslog collection using a simple Docker container.\n",
+        "name": "Network syslog installation docs",
+        "url": "https://docs.newrelic.com/docs/network-performance-monitoring/setup-performance-monitoring/network-syslog-monitoring/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "478be4d3-134a-4738-995a-7bbe020edcad",
+    "installPlans": [
+      {
+        "id": "network-syslog",
+        "name": "Syslog"
+      }
+    ],
+    "keywords": [
+      "npm",
+      "network",
+      "networking",
+      "logging",
+      "ktranslate",
+      "kentik",
+      "featured",
+      "infrastructure"
+    ],
+    "level": "VERIFIED",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/network-syslog/logo.svg",
+    "name": "network-syslog",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/network-syslog",
+    "summary": "Syslog monitoring from NPM gives you valuable insights into potential issues and changes within your network.\n",
+    "title": "Network Syslog",
     "websiteUrl": null
   },
   {
@@ -19703,107 +19863,5 @@
     "summary": "Send Zipkin-format traces to New Relic\n",
     "title": "Zipkin",
     "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic",
-      "Zack Mutchler"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Network Syslog Overview",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/network-syslog/dashboards/network-syslog.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/network-syslog/dashboards/network-syslog.json"
-      }
-    ],
-    "description": "The Network Syslog quickstart provides a dashboard that gives you a holistic view of collected syslogs from your network.\nUse this quickstart together with New Relic's Network Performance Monitoring (NPM) feature to analyze and alert on system messages in your network.\n",
-    "documentation": [
-      {
-        "description": "Install NPM for syslog collection using a simple Docker container.\n",
-        "name": "Network syslog installation docs",
-        "url": "https://docs.newrelic.com/docs/network-performance-monitoring/setup-performance-monitoring/network-syslog-monitoring/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "478be4d3-134a-4738-995a-7bbe020edcad",
-    "installPlans": [
-      {
-        "id": "network-syslog",
-        "name": "Syslog"
-      }
-    ],
-    "keywords": [
-      "npm",
-      "network",
-      "networking",
-      "logging",
-      "ktranslate",
-      "kentik",
-      "featured",
-      "infrastructure"
-    ],
-    "level": "VERIFIED",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/network-syslog/logo.svg",
-    "name": "network-syslog",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/network-syslog",
-    "summary": "Syslog monitoring from NPM gives you valuable insights into potential issues and changes within your network.\n",
-    "title": "Network Syslog",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Jacques Verre"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Demo Comet dashboard",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/mlops/comet/dashboards/comet.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/mlops/comet/dashboards/comet.json"
-      }
-    ],
-    "description": "[Comet](https://www.comet.ml/site/) is a machine learning (ML) development platform built to meet the intense demands of enterprise teams deploying ML at scale. Comet’s integration with New Relic allows you to manage and optimize your ML models in production from your New Relic One dashboard. With Comet and New Relic, you can accelerate ML development and realize business value faster.\n",
-    "documentation": [
-      {
-        "description": "Documentation about Integrating Comet with New Relic",
-        "name": "Comet Docs",
-        "url": "https://docs.newrelic.com/docs/alerts-applied-intelligence/applied-intelligence/mlops-integrations/comet-mlops-integration/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "dda42643-7efa-4ae3-8cad-5b4406e874e0",
-    "installPlans": [
-      {
-        "id": "comet-mlops",
-        "name": "comet"
-      }
-    ],
-    "keywords": [
-      "mlops",
-      "ml-ops",
-      "model ops",
-      "model-ops",
-      "ml",
-      "machine learning",
-      "ai",
-      "comet",
-      "observability",
-      "monitoring",
-      "data monitoring"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.70.1/quickstarts/mlops/comet/logo.png",
-    "name": "mlops-comet",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mlops/comet",
-    "summary": "Together, Comet and New Relic extend infrastructure observability to include your machine learning models in production, so you can build better models faster.\n",
-    "title": "Comet",
-    "websiteUrl": "https://www.comet.ml/site"
   }
 ]
