@@ -95,7 +95,6 @@ export const QUICKSTARTS_QUERY = `
               }
               ... on Nr1CatalogQuickstartDashboard {
                 __typename
-                sourceUrl
                 metadata {
                   description
                   displayName
@@ -106,7 +105,6 @@ export const QUICKSTARTS_QUERY = `
               }
               ... on Nr1CatalogQuickstartAlertCondition {
                 __typename
-                sourceUrl
                 metadata {
                   description
                   displayName
