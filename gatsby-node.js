@@ -52,17 +52,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-
-      allQuickstarts {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            id
-          }
-        }
-      }
     }
   `);
 
@@ -72,12 +61,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  const {
-    allMdx,
-    allNewRelicSdkComponent,
-    allNewRelicSdkApi,
-    allQuickstarts,
-  } = result.data;
+  const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
 
   allMdx.edges.forEach(({ node }) => {
     const {
@@ -109,22 +93,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         )
           ? `${frontmatter.path}/*`
           : undefined,
-      },
-    });
-  });
-
-  allQuickstarts.edges.forEach(({ node }) => {
-    const {
-      fields: { slug },
-      id,
-    } = node;
-
-    createPage({
-      path: path.join(slug, '/'),
-      component: path.resolve('./src/templates/QuickstartDetails.js'),
-      context: {
-        id,
-        layout: 'QuickStartLayout',
       },
     });
   });
@@ -167,6 +135,13 @@ exports.onCreatePage = async ({ page, actions }) => {
   }
   deletePage(oldPage);
   createPage(page);
+
+  if (page.path.match(/^\/instant-observability\/$/)) {
+    createPage({
+      ...page,
+      matchPath: '/:slug/*',
+    });
+  }
 };
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
