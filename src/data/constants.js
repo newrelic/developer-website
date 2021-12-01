@@ -8,6 +8,8 @@ export const SPLIT_TRACKING_EVENTS = {
   RELATED_CONTENT_ACTION_CLICKED: 'related_content.contribute_action_clicked',
 };
 
+export const NERDGRAPH_URL = 'https://staging-api.newrelic.com/graphql';
+
 export const SDK_BASE_URL =
   'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
 
@@ -23,7 +25,7 @@ export const CODESTREAM_QUICKSTART_ID = '29bd9a4a-1c19-4219-9694-0942f6411ce7';
 export const NR1_EXPLORER_NERDLET = 'nr1-core.listing';
 
 export const QUICKSTART_SUPPORT_LEVELS = {
-  NEWRELIC: 'NEWRELIC',
+  NEWRELIC: 'NEW_RELIC',
   VERIFIED: 'VERIFIED',
   COMMUNITY: 'COMMUNITY',
 };
@@ -37,7 +39,7 @@ export const QUICKSTART_ALERT_TYPES = {
   STATIC: 'STATIC',
 };
 
-export const SHIELD_LEVELS = ['NEWRELIC', 'VERIFIED'];
+export const SHIELD_LEVELS = ['NEW_RELIC', 'VERIFIED'];
 
 export const QUICKSTARTS_REPO =
   'https://github.com/newrelic/newrelic-quickstarts';
@@ -51,3 +53,71 @@ export const RESERVED_QUICKSTART_IDS = {
   GUIDED_INSTALL: 'GUIDED_INSTALL',
   BUILD_YOUR_OWN_QUICKSTART: 'BUILD_YOUR_OWN_QUICKSTART',
 };
+
+export const QUICKSTARTS_QUERY = `
+{
+  actor {
+    nr1Catalog {
+      quickstarts {
+        results {
+          id
+          sourceUrl
+          supportLevel
+          metadata {
+            slug
+            summary
+            authors {
+              name
+            }
+            description
+            displayName
+            installer {
+              type
+              ... on Nr1CatalogInstallPlan {
+                steps {
+                  id
+                  displayName
+                }
+              }
+            }
+            icon {
+              url
+            }
+            keywords
+            quickstartComponents {
+              ... on Nr1CatalogQuickstartDocumentation {
+                __typename
+                metadata {
+                  displayName
+                  url
+                  description
+                }
+              }
+              ... on Nr1CatalogQuickstartDashboard {
+                __typename
+                sourceUrl
+                metadata {
+                  description
+                  displayName
+                  previews {
+                    url
+                  }
+                }
+              }
+              ... on Nr1CatalogQuickstartAlertCondition {
+                __typename
+                sourceUrl
+                metadata {
+                  description
+                  displayName
+                  type
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
