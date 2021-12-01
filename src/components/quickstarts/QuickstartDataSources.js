@@ -3,17 +3,17 @@ import { css } from '@emotion/react';
 import pluralize from 'pluralize';
 import { Surface, Link, Tag, useTessen } from '@newrelic/gatsby-theme-newrelic';
 import Intro from '../Intro';
-import { quickstart } from '../../types';
+import PropTypes from 'prop-types';
 
-const QuickstartDataSources = ({ quickstart }) => {
+const QuickstartDataSources = ({ displayName, documentation, id, slug }) => {
   const tessen = useTessen();
 
   const handleDocsTileClick = () => {
     tessen.track({
       eventName: 'instantObservability',
       category: 'DocsTileClick',
-      quickstartName: quickstart.name,
-      quickstartId: quickstart.id,
+      quickstartName: slug,
+      quickstartId: id,
     });
   };
 
@@ -24,9 +24,9 @@ const QuickstartDataSources = ({ quickstart }) => {
           margin-bottom: 16px;
         `}
       >
-        {quickstart.title} observability quickstart contains{' '}
-        {pluralize('data source', quickstart.documentation?.length ?? 0, true)}.
-        This is how you'll get your data into New Relic.{' '}
+        {displayName} observability quickstart contains{' '}
+        {pluralize('data source', documentation?.length ?? 0, true)}. This is
+        how you'll get your data into New Relic.{' '}
       </Intro>
 
       <div
@@ -40,7 +40,7 @@ const QuickstartDataSources = ({ quickstart }) => {
           }
         `}
       >
-        {quickstart.documentation.map((doc, index) => (
+        {documentation.map((doc, index) => (
           <Surface
             key={index}
             as={Link}
@@ -53,7 +53,7 @@ const QuickstartDataSources = ({ quickstart }) => {
             `}
             interactive
           >
-            <h3>{doc.name}</h3>
+            <h3>{doc.displayName}</h3>
             {doc.description && <p>{doc.description}</p>}
             <Tag
               css={css`
@@ -71,7 +71,10 @@ const QuickstartDataSources = ({ quickstart }) => {
 };
 
 QuickstartDataSources.propTypes = {
-  quickstart: quickstart.isRequired,
+  displayName: PropTypes.string,
+  documentation: PropTypes.array,
+  id: PropTypes.string,
+  slug: PropTypes.string,
 };
 
 export default QuickstartDataSources;

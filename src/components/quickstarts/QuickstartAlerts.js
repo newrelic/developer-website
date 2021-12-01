@@ -3,20 +3,20 @@ import { css } from '@emotion/react';
 import pluralize from 'pluralize';
 import { Surface, Tag } from '@newrelic/gatsby-theme-newrelic';
 import Intro from '../Intro';
-import { quickstart } from '../../types';
+import PropTypes from 'prop-types';
 
-const QuickstartAlerts = ({ quickstart }) => (
+const QuickstartAlerts = ({ displayName, alerts }) => (
   <>
     <Intro
       css={css`
         margin-bottom: 16px;
       `}
     >
-      {quickstart.title} observability quickstart contains{' '}
-      {pluralize('alert', quickstart.alerts?.length ?? 0, true)}. These alerts
-      detect changes in key performance metrics. Integrate these alerts with
-      your favorite tools (like Slack, PagerDuty, etc.) and New Relic will let
-      you know when something needs your attention.
+      {displayName} observability quickstart contains{' '}
+      {pluralize('alert', alerts?.length ?? 0, true)}. These alerts detect
+      changes in key performance metrics. Integrate these alerts with your
+      favorite tools (like Slack, PagerDuty, etc.) and New Relic will let you
+      know when something needs your attention.
     </Intro>
 
     <div
@@ -30,7 +30,7 @@ const QuickstartAlerts = ({ quickstart }) => (
         }
       `}
     >
-      {quickstart.alerts.map((alert, index) => (
+      {alerts.map((alert, index) => (
         <Surface
           key={index}
           base={Surface.BASE.PRIMARY}
@@ -38,7 +38,7 @@ const QuickstartAlerts = ({ quickstart }) => (
             padding: 1rem;
           `}
         >
-          <h3>{alert.name}</h3>
+          <h3>{alert.displayName}</h3>
           {alert.type && (
             <Tag
               css={css`
@@ -49,7 +49,7 @@ const QuickstartAlerts = ({ quickstart }) => (
               Alert Type: {alert.type}
             </Tag>
           )}
-          {alert.details && <p>{alert.details}</p>}
+          {alert.description && <p>{alert.description}</p>}
         </Surface>
       ))}
     </div>
@@ -57,7 +57,8 @@ const QuickstartAlerts = ({ quickstart }) => (
 );
 
 QuickstartAlerts.propTypes = {
-  quickstart: quickstart.isRequired,
+  alerts: PropTypes.object.isRequired,
+  displayName: PropTypes.string.isRequired,
 };
 
 export default QuickstartAlerts;
