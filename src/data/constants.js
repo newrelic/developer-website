@@ -8,7 +8,7 @@ export const SPLIT_TRACKING_EVENTS = {
   RELATED_CONTENT_ACTION_CLICKED: 'related_content.contribute_action_clicked',
 };
 
-export const NERDGRAPH_URL = 'https://api.newrelic.com/graphql';
+export const NERDGRAPH_URL = 'https://staging-api.newrelic.com/graphql';
 
 export const SDK_BASE_URL =
   'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
@@ -119,3 +119,79 @@ export const QUICKSTARTS_QUERY = `
   }
 }
 `;
+
+export const QUICKSTART_QUERY = `
+  actor {
+    nr1Catalog {
+      quickstart(id: $id) {
+        featured
+        id
+        metadata {
+          authors {
+            name
+          }
+          categories {
+            displayName
+            slug
+            terms
+          }
+          categoryTerms
+          description
+          displayName
+          icon {
+            url
+          }
+          installer {
+            type
+            ... on Nr1CatalogInstallPlan {
+              steps {
+                description
+                displayName
+              }
+            }
+          }
+          keywords
+          quickstartComponents {
+            ... on Nr1CatalogQuickstartAlertCondition {
+              id
+              metadata {
+                description
+                displayName
+                type
+              }
+              sourceUrl
+            }
+            ... on Nr1CatalogQuickstartDashboard {
+              id
+              metadata {
+                description
+                displayName
+                previews {
+                  url
+                  ... on Nr1CatalogPreview {
+                    url
+                  }
+                  ... on Nr1CatalogScreenshot {
+                    url
+                  }
+                }
+              }
+              sourceUrl
+            }
+            ... on Nr1CatalogQuickstartDocumentation {
+              metadata {
+                description
+                displayName
+                url
+              }
+            }
+          }
+          slug
+          summary
+        }
+        sourceUrl
+        supportLevel
+      }
+    }
+  }
+}`;
