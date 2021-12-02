@@ -8,7 +8,7 @@ export const SPLIT_TRACKING_EVENTS = {
   RELATED_CONTENT_ACTION_CLICKED: 'related_content.contribute_action_clicked',
 };
 
-export const NERDGRAPH_URL = 'https://staging-api.newrelic.com/graphql';
+export const NERDGRAPH_URL = 'https://api.newrelic.com/graphql';
 
 export const SDK_BASE_URL =
   'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
