@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { NERDGRAPH_URL, QUICKSTARTS_QUERY } from '../data/constants';
+import { QUICKSTARTS_QUERY } from '../data/constants';
 import QuickstartsPage from '../components/quickstarts/QuickstartsPage';
 
 export const getServerData = async () => {
   try {
-    const resp = await fetch(NERDGRAPH_URL, {
+    const resp = await fetch(process.env.NERDGRAPH_URL, {
       method: 'POST',
       body: JSON.stringify({ query: QUICKSTARTS_QUERY }),
       headers: {

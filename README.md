@@ -8,13 +8,21 @@
 
 You can serve this site locally to quickly see your changes and additions before you PR them. To get started, navigate into your new site’s directory and start it up, as follows.
 
-```shell
+```sh
 cd developer-website/
 yarn
 yarn start
 ```
 
 Your site is now running at `http://localhost:8000`!
+
+If you want to view the Instant Observability page or a quickstart you'll need to add a `.env.development` file with keys of `NEW_RELIC_API_KEY` and `NERDGRAPH_URL`.
+ex:
+
+```
+NEW_RELIC_API_KEY=NRAK-abc1234456
+NERDGRAPH_URL=https://api.newrelic.com/graphql
+```
 
 ### Dependencies
 
