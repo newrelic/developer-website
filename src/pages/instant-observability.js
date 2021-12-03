@@ -28,6 +28,7 @@ export const getServerData = async () => {
     };
   } catch (err) {
     /* eslint-disable-next-line no-console */
+    console.dir(err);
     console.log('Error fetching data from NerdGraph', err.message);
 
     return {
@@ -39,11 +40,11 @@ export const getServerData = async () => {
   }
 };
 
-const QuickstartsPageSSR = ({ serverData }) => {
+const QuickstartsPageSSR = ({ serverData, location }) => {
   const quickstarts =
     serverData?.data?.actor?.nr1Catalog?.quickstarts?.results || [];
 
-  return <QuickstartsPage quickstarts={quickstarts} path="/" />;
+  return <QuickstartsPage quickstarts={quickstarts} location={location} />;
 };
 
 QuickstartsPageSSR.propTypes = {

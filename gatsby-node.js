@@ -130,7 +130,7 @@ exports.onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
   const oldPage = { ...page };
 
-  if (page.path === '/instant-observability/') {
+  if (page.path.match(/^\/instant-observability\/.*/)) {
     page.context.layout = 'QuickStartLayout';
   }
   deletePage(oldPage);
