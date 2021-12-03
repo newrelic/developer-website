@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Router } from '@reach/router';
 import { NERDGRAPH_URL, QUICKSTARTS_QUERY } from '../data/constants';
 import QuickstartsPage from '../components/quickstarts/QuickstartsPage';
-import QuickstartDetails from '../templates/QuickstartDetails';
 
 export const getServerData = async () => {
   try {
@@ -41,28 +39,15 @@ export const getServerData = async () => {
   }
 };
 
-const QuickstartsPageRouter = ({ serverData }) => {
+const QuickstartsPageSSR = ({ serverData }) => {
   const quickstarts =
     serverData?.data?.actor?.nr1Catalog?.quickstarts?.results || [];
 
-  return (
-    <Router basepath="/instant-observability">
-      <QuickstartsPage quickstarts={quickstarts} path="/" />
-      {quickstarts.map((quickstart) => {
-        return (
-          <QuickstartDetails
-            key={quickstart.id}
-            path={`/${quickstart.metadata.slug}/${quickstart.id}`}
-            rawQuickstart={quickstart}
-          />
-        );
-      })}
-    </Router>
-  );
+  return <QuickstartsPage quickstarts={quickstarts} path="/" />;
 };
 
-QuickstartsPageRouter.propTypes = {
+QuickstartsPageSSR.propTypes = {
   serverData: PropTypes.object.isRequired,
 };
 
-export default QuickstartsPageRouter;
+export default QuickstartsPageSSR;

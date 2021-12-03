@@ -30,9 +30,11 @@ import {
 import QuickstartOverview from '../components/quickstarts/QuickstartOverview';
 
 const QuickstartDetails = ({ rawQuickstart, location }) => {
-  const { metadata, id, sourceUrl, supportLevel } = rawQuickstart;
+  const { metadata, id, supportLevel } = rawQuickstart;
 
+  const sourceUrl = rawQuickstart.sourceUrl || QUICKSTARTS_REPO;
   const quickstartUrl = sourceUrl || QUICKSTARTS_REPO;
+
   const {
     displayName,
     slug,

@@ -135,13 +135,6 @@ exports.onCreatePage = async ({ page, actions }) => {
   }
   deletePage(oldPage);
   createPage(page);
-
-  if (page.path.match(/^\/instant-observability\/$/)) {
-    createPage({
-      ...page,
-      matchPath: '/:slug/*',
-    });
-  }
 };
 
 exports.onCreateNode = ({ node, getNode, actions }) => {

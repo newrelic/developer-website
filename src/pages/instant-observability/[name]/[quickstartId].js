@@ -9,7 +9,7 @@ export const getServerData = async ({ params }) => {
       method: 'POST',
       body: JSON.stringify({
         query: QUICKSTART_QUERY,
-        variables: { id: params.quickstartId },
+        variables: { quickstartId: params.quickstartId },
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -27,12 +27,13 @@ export const getServerData = async ({ params }) => {
       props: {
         error: false,
         data: json.data,
+        pathname: `/instant-observability/${params.name}/${params.quickstartId}`,
       },
     };
   } catch (err) {
     // FIXME: FYI, err is an array
     /* eslint-disable-next-line no-console */
-    console.log('Error fetching data from NerdGraph', ...err);
+    console.log('Details: Error fetching data from NerdGraph', ...err);
 
     return {
       props: {
@@ -44,10 +45,14 @@ export const getServerData = async ({ params }) => {
 };
 
 const QuickstartDetailsSSR = ({ serverData }) => {
-  const quickstart =
-    serverData?.data?.actor?.nr1Catalog?.quickstarts?.results || [];
+  const quickstart = serverData?.data?.actor?.nr1Catalog?.quickstart;
 
-  return <QuickstartDetails rawQuickstart={quickstart} />;
+  return (
+    <QuickstartDetails
+      rawQuickstart={quickstart}
+      location={{ pathname: serverData.pathname }}
+    />
+  );
 };
 
 QuickstartDetailsSSR.propTypes = {
