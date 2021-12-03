@@ -23,12 +23,13 @@ Before you begin with the lab, set up your development environment.
 Clone the lab repository:
 
 ```bash
-git clone https://github.com/newrelic-experimental/error-inbox-lab-materical.git
+git clone https://github.com/newrelic-experimental/error-inbox-lab-material.git
 ```
 
 </Step>
 <Step>
-Open the cloned repo in your IDE and create a .env file from env.template and set these variables:
+
+Open the cloned repo in your IDE and create a _.env_ file from _env.template_ and set these variables:
 
 ```
 DOCKERHUB_USER=username
@@ -40,15 +41,16 @@ NEW_RELIC_LICENSE_KEY=<YOUR_LISCENCE_KEY>
 ```
 
 Here, NEW_RELIC_LICENSE_KEY is your liscence key for New Relic account. Your application uses this key to write telemetry data to New Relic. [You can find your New Relic license key in your account settings](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/).
-
 </Step>
 <Step>
 
-Navigate to the root directory of your application and export these variables:
+Navigate to the root directory of your application and execute the _env.sh_ script to export these variables:
 
 ```bash
 ./env.sh
 ```
+
+This scripts takes all the variables you declared in _.env_ file and set them so you don't have to manually set all the environment variables to run your application. 
 </Step>
 <Step>
 Build and run the application:
@@ -90,6 +92,6 @@ Leave the application running so you could see the telemetry data in New Relic.
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to track full stack errors using Error Inbox. Now that you've set up your environment, [Create a workload](/automate-workflows/error-inbox/create-a-workload).
+This procedure is part of a lab that teaches you how to track full stack errors using Error Inbox. Now that you've set up your lab environment, continue on to next procedure [Create a workload](/automate-workflows/error-inbox/create-a-workload).
 
 </Callout>
