@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import QuickstartDetails from '../../../templates/QuickstartDetails';
+import QuickstartDetails from '../../../components/quickstarts/QuickstartDetails';
 
 const QUICKSTART_QUERY = `
 query QuickstartDetailsQuery(
@@ -122,19 +122,21 @@ export const getServerData = async ({ params }) => {
   }
 };
 
-const QuickstartDetailsSSR = ({ serverData }) => {
+const QuickstartDetailsSSR = ({ serverData, location }) => {
   const quickstart = serverData?.data?.actor?.nr1Catalog?.quickstart;
 
   return (
     <QuickstartDetails
       rawQuickstart={quickstart}
-      location={{ pathname: serverData.pathname }}
+      error={serverData.error}
+      location={location}
     />
   );
 };
 
 QuickstartDetailsSSR.propTypes = {
   serverData: PropTypes.object.isRequired,
+  location: PropTypes.string,
 };
 
 export default QuickstartDetailsSSR;
