@@ -285,295 +285,295 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
           handleFilter={handleFilter}
           handleCategory={handleCategory}
         />
-        {errored ? (
-          <QuickstartError />
-        ) : (
+        <div
+          css={css`
+            grid-area: main;
+            padding: var(--site-content-padding);
+          `}
+        >
+          {!isMobile && <SuperTilesExperiment />}
           <div
             css={css`
-              grid-area: main;
-              padding: var(--site-content-padding);
+              background-color: var(--secondary-background-color);
+              border-radius: 4px;
+              padding: 1rem;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              input {
+                font-size: 1.15em;
+                padding: 0.5rem;
+                padding-left: 3.75rem;
+                border-radius: 4px;
+
+                &::placeholder {
+                  color: var(--border-color);
+                }
+              }
+
+              .dark-mode & {
+                background-color: var(--tertiary-background-color);
+              }
+
+              @media screen and (max-width: 1180px) {
+                flex-direction: column;
+                align-items: normal;
+
+                > * {
+                  margin: 0.5rem 0;
+                }
+              }
             `}
           >
-            {!isMobile && <SuperTilesExperiment />}
-            <div
-              css={css`
-                background-color: var(--secondary-background-color);
-                border-radius: 4px;
-                padding: 1rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-
-                input {
-                  font-size: 1.15em;
-                  padding: 0.5rem;
-                  padding-left: 3.75rem;
-                  border-radius: 4px;
-
-                  &::placeholder {
-                    color: var(--border-color);
-                  }
-                }
-
-                .dark-mode & {
-                  background-color: var(--tertiary-background-color);
-                }
-
-                @media screen and (max-width: 1180px) {
-                  flex-direction: column;
-                  align-items: normal;
-
-                  > * {
-                    margin: 0.5rem 0;
-                  }
-                }
-              `}
-            >
-              <SearchInput
-                size={SearchInput.SIZE.LARGE}
-                value={search || ''}
-                placeholder="Search for any quickstart (e.g. Node, AWS, LAMP, etc.)"
-                onClear={() => setSearch('')}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              {isMobile && (
-                <div
-                  css={css`
-                    display: flex;
-                  `}
-                >
-                  <Button
-                    css={css`
-                      justify-content: flex-start;
-                      padding: 0;
-                      margin: 0.5rem 1rem 0 0;
-                    `}
-                    variant={Button.VARIANT.LINK}
-                    onClick={() => setIsCategoriesOverlayOpen(true)}
-                  >
-                    Categories
-                  </Button>
-                  <Button
-                    css={css`
-                      justify-content: flex-start;
-                      padding: 0;
-                      margin: 0.5rem 0 0;
-                    `}
-                    variant={Button.VARIANT.LINK}
-                    onClick={() => setIsFilterOverlayOpen(true)}
-                  >
-                    Filters
-                  </Button>
-
-                  <Overlay
-                    onCloseOverlay={closeFilterOverlay}
-                    isOpen={isFilterOverlayOpen}
-                  >
-                    <div
-                      css={css`
-                        border-radius: 5px;
-                        position: relative;
-                        width: 100%;
-                        margin: 30% auto 0;
-                        padding: 1rem;
-                        background: var(--primary-background-color);
-                      `}
-                    >
-                      <h3
-                        css={css`
-                          padding: 0.5rem 0 0 0.5rem;
-                        `}
-                      >
-                        Filter
-                      </h3>
-                      <div
-                        css={css`
-                          max-height: 400px;
-                          padding-bottom: 3rem;
-                          overflow-y: scroll;
-                        `}
-                      >
-                        {filtersWithCount.map(({ name, type, icon, count }) => (
-                          <QuickstartFilter
-                            key={name}
-                            name={name}
-                            type={type}
-                            icon={icon}
-                            count={count}
-                            isChecked={filters.includes(type)}
-                            handleFilter={handleFilter}
-                          />
-                        ))}
-                      </div>
-                      <div
-                        css={css`
-                          background: var(--secondary-background-color);
-                          width: 100%;
-                          height: 4rem;
-                          position: absolute;
-                          bottom: 0;
-                          left: 0;
-                          border-bottom-right-radius: 5px;
-                          border-bottom-left-radius: 5px;
-                          display: flex;
-                          justify-content: flex-end;
-                          align-items: center;
-                        `}
-                      >
-                        <Button
-                          css={css`
-                            height: 2rem;
-                            margin-right: 1rem;
-                          `}
-                          onClick={closeFilterOverlay}
-                          variant={Button.VARIANT.PRIMARY}
-                        >
-                          OK
-                        </Button>
-                      </div>
-                    </div>
-                  </Overlay>
-                  <Overlay
-                    isOpen={isCategoriesOverlayOpen}
-                    onCloseOverlay={closeCategoriesOverlay}
-                  >
-                    <div
-                      css={css`
-                        border-radius: 5px;
-                        position: relative;
-                        width: 100%;
-                        margin: 30% auto 0;
-                        padding: 1rem;
-                        background: var(--primary-background-color);
-                      `}
-                    >
-                      <h3
-                        css={css`
-                          padding: 0.5rem 0 0 0.5rem;
-                        `}
-                      >
-                        Category
-                      </h3>
-                      <div
-                        css={css`
-                          max-height: 400px;
-                          padding-bottom: 3rem;
-                          overflow-y: scroll;
-                        `}
-                      >
-                        {categoriesWithCount.map(
-                          ({ displayName, value, count }) => (
-                            <Button
-                              type="button"
-                              key={value}
-                              onClick={() => handleCategory(value)}
-                              css={css`
-                                padding: 1rem 0.5rem;
-                                width: 100%;
-                                display: flex;
-                                justify-content: flex-start;
-                                color: var(--primary-text-color);
-                                font-weight: 100;
-                                background: ${category === value
-                                  ? 'var(--divider-color)'
-                                  : 'none'};
-                              `}
-                            >
-                              {`${displayName} (${count})`}
-                            </Button>
-                          )
-                        )}
-                      </div>
-                      <div
-                        css={css`
-                          background: var(--secondary-background-color);
-                          position: absolute;
-                          bottom: 0;
-                          left: 0;
-                          width: 100%;
-                          height: 4rem;
-                          border-bottom-right-radius: 5px;
-                          border-bottom-left-radius: 5px;
-                          display: flex;
-                          justify-content: flex-end;
-                          align-items: center;
-                        `}
-                      >
-                        <Button
-                          css={css`
-                            height: 2rem;
-                            margin-right: 1rem;
-                          `}
-                          onClick={closeCategoriesOverlay}
-                          variant={Button.VARIANT.PRIMARY}
-                        >
-                          OK
-                        </Button>
-                      </div>
-                    </div>
-                  </Overlay>
-                </div>
-              )}
-              {isMobile && filters.length > 0 && (
-                <Button
-                  css={css`
-                    padding: 0;
-                    justify-content: flex-start;
-                    color: var(--primary-text-color);
-                  `}
-                  onClick={clearFilters}
-                  variant={Button.VARIANT.LINK}
-                >
-                  <Icon
-                    name="fe-x"
-                    size="1rem"
-                    css={css`
-                      border: solid var(--secondary-text-color) 1px;
-                      border-radius: 3px;
-                      margin: 0 0.5rem 0 0;
-                    `}
-                  />
-                  {`Clear current (${filters.length}) filters`}
-                </Button>
-              )}
-            </div>
-
-            <div
-              css={css`
-                padding: 1.25rem 0;
-                font-size: 0.9rem;
-                color: var(--secondary-text-color);
-                display: flex;
-                justify-content: space-between;
-              `}
-            >
-              <span>Showing {filteredQuickstarts.length} results</span>
-
+            <SearchInput
+              size={SearchInput.SIZE.LARGE}
+              value={search || ''}
+              placeholder="Search for any quickstart (e.g. Node, AWS, LAMP, etc.)"
+              onClear={() => setSearch('')}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            {isMobile && (
               <div
                 css={css`
-                  min-width: 155px;
-                  margin-left: 20px;
-                  display: inline;
-
-                  @media screen and (max-width: 1180px) {
-                    margin-left: 0px;
-                  }
+                  display: flex;
                 `}
               >
-                <SegmentedControl
-                  items={Object.values(VIEWS)}
-                  onChange={(_e, view) => {
-                    setView(view);
+                <Button
+                  css={css`
+                    justify-content: flex-start;
+                    padding: 0;
+                    margin: 0.5rem 1rem 0 0;
+                  `}
+                  variant={Button.VARIANT.LINK}
+                  onClick={() => setIsCategoriesOverlayOpen(true)}
+                >
+                  Categories
+                </Button>
+                <Button
+                  css={css`
+                    justify-content: flex-start;
+                    padding: 0;
+                    margin: 0.5rem 0 0;
+                  `}
+                  variant={Button.VARIANT.LINK}
+                  onClick={() => setIsFilterOverlayOpen(true)}
+                >
+                  Filters
+                </Button>
 
-                    tessen.track({
-                      eventName: 'instantObservability',
-                      category: 'QuickstartViewToggle',
-                      quickstartViewState: view,
-                    });
-                  }}
-                />
+                <Overlay
+                  onCloseOverlay={closeFilterOverlay}
+                  isOpen={isFilterOverlayOpen}
+                >
+                  <div
+                    css={css`
+                      border-radius: 5px;
+                      position: relative;
+                      width: 100%;
+                      margin: 30% auto 0;
+                      padding: 1rem;
+                      background: var(--primary-background-color);
+                    `}
+                  >
+                    <h3
+                      css={css`
+                        padding: 0.5rem 0 0 0.5rem;
+                      `}
+                    >
+                      Filter
+                    </h3>
+                    <div
+                      css={css`
+                        max-height: 400px;
+                        padding-bottom: 3rem;
+                        overflow-y: scroll;
+                      `}
+                    >
+                      {filtersWithCount.map(({ name, type, icon, count }) => (
+                        <QuickstartFilter
+                          key={name}
+                          name={name}
+                          type={type}
+                          icon={icon}
+                          count={count}
+                          isChecked={filters.includes(type)}
+                          handleFilter={handleFilter}
+                        />
+                      ))}
+                    </div>
+                    <div
+                      css={css`
+                        background: var(--secondary-background-color);
+                        width: 100%;
+                        height: 4rem;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        border-bottom-right-radius: 5px;
+                        border-bottom-left-radius: 5px;
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                      `}
+                    >
+                      <Button
+                        css={css`
+                          height: 2rem;
+                          margin-right: 1rem;
+                        `}
+                        onClick={closeFilterOverlay}
+                        variant={Button.VARIANT.PRIMARY}
+                      >
+                        OK
+                      </Button>
+                    </div>
+                  </div>
+                </Overlay>
+                <Overlay
+                  isOpen={isCategoriesOverlayOpen}
+                  onCloseOverlay={closeCategoriesOverlay}
+                >
+                  <div
+                    css={css`
+                      border-radius: 5px;
+                      position: relative;
+                      width: 100%;
+                      margin: 30% auto 0;
+                      padding: 1rem;
+                      background: var(--primary-background-color);
+                    `}
+                  >
+                    <h3
+                      css={css`
+                        padding: 0.5rem 0 0 0.5rem;
+                      `}
+                    >
+                      Category
+                    </h3>
+                    <div
+                      css={css`
+                        max-height: 400px;
+                        padding-bottom: 3rem;
+                        overflow-y: scroll;
+                      `}
+                    >
+                      {categoriesWithCount.map(
+                        ({ displayName, value, count }) => (
+                          <Button
+                            type="button"
+                            key={value}
+                            onClick={() => handleCategory(value)}
+                            css={css`
+                              padding: 1rem 0.5rem;
+                              width: 100%;
+                              display: flex;
+                              justify-content: flex-start;
+                              color: var(--primary-text-color);
+                              font-weight: 100;
+                              background: ${category === value
+                                ? 'var(--divider-color)'
+                                : 'none'};
+                            `}
+                          >
+                            {`${displayName} (${count})`}
+                          </Button>
+                        )
+                      )}
+                    </div>
+                    <div
+                      css={css`
+                        background: var(--secondary-background-color);
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 4rem;
+                        border-bottom-right-radius: 5px;
+                        border-bottom-left-radius: 5px;
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                      `}
+                    >
+                      <Button
+                        css={css`
+                          height: 2rem;
+                          margin-right: 1rem;
+                        `}
+                        onClick={closeCategoriesOverlay}
+                        variant={Button.VARIANT.PRIMARY}
+                      >
+                        OK
+                      </Button>
+                    </div>
+                  </div>
+                </Overlay>
               </div>
+            )}
+            {isMobile && filters.length > 0 && (
+              <Button
+                css={css`
+                  padding: 0;
+                  justify-content: flex-start;
+                  color: var(--primary-text-color);
+                `}
+                onClick={clearFilters}
+                variant={Button.VARIANT.LINK}
+              >
+                <Icon
+                  name="fe-x"
+                  size="1rem"
+                  css={css`
+                    border: solid var(--secondary-text-color) 1px;
+                    border-radius: 3px;
+                    margin: 0 0.5rem 0 0;
+                  `}
+                />
+                {`Clear current (${filters.length}) filters`}
+              </Button>
+            )}
+          </div>
+
+          <div
+            css={css`
+              padding: 1.25rem 0;
+              font-size: 0.9rem;
+              color: var(--secondary-text-color);
+              display: flex;
+              justify-content: space-between;
+            `}
+          >
+            <span>Showing {filteredQuickstarts.length} results</span>
+
+            <div
+              css={css`
+                min-width: 155px;
+                margin-left: 20px;
+                display: inline;
+
+                @media screen and (max-width: 1180px) {
+                  margin-left: 0px;
+                }
+              `}
+            >
+              <SegmentedControl
+                items={Object.values(VIEWS)}
+                onChange={(_e, view) => {
+                  setView(view);
+
+                  tessen.track({
+                    eventName: 'instantObservability',
+                    category: 'QuickstartViewToggle',
+                    quickstartViewState: view,
+                  });
+                }}
+              />
             </div>
+          </div>
+          {errored ? (
+            <QuickstartError />
+          ) : (
             <div
               css={css`
                 display: grid;
@@ -646,8 +646,8 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                 />
               ))}
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </>
   );
