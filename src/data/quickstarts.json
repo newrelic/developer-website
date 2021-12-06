@@ -11648,6 +11648,55 @@
   {
     "alerts": [],
     "authors": [
+      "Truera"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Truera: Initial Dashboard",
+        "screenshots": [],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.72.1/quickstarts/mlops/truera/dashboards/truera.json"
+      }
+    ],
+    "description": "TruEra provides best in class AI Quality diagnostics and monitoring solution. TruEra and NewRelic users can go beyond standard accuracy, input and output drift monitoring by identifying consequential data drift, and other AI Quality diagnostics such as fairness, conceptual soundness and segment behavior. When combined with NewRelic’s comprehensive observability capabilities, MLOps teams can correlate signals throughout the ML lifecycle.\n",
+    "documentation": [
+      {
+        "description": "Documentation on the workings of the Truera integration\n",
+        "name": "Truera Docs",
+        "url": "https://docs.newrelic.com/docs/alerts-applied-intelligence/applied-intelligence/mlops-integrations/truera-integration/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "81402789-9ae9-4cbd-8686-4d2d4de8951f",
+    "installPlans": [
+      {
+        "id": "truera-mlops",
+        "name": "Truera Inc"
+      }
+    ],
+    "keywords": [
+      "mlops",
+      "ml",
+      "ai",
+      "machine learning",
+      "ml monitoring",
+      "machine learning monitoring",
+      "xai",
+      "explainable ai",
+      "explanability",
+      "truera"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.72.1/quickstarts/mlops/truera/logo.svg",
+    "name": "truera",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mlops/truera",
+    "summary": "With TruEra you can go beyond standard accuracy, input and output drift monitoring and identify consequential data drift and other AI quality diagnostics as well as correlate signals throughout the machine learning lifecycle.\n",
+    "title": "Truera",
+    "websiteUrl": "https://truera.com/"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "New Relic",
       "Daniel Gola"
     ],
@@ -19863,54 +19912,5 @@
     "summary": "Send Zipkin-format traces to New Relic\n",
     "title": "Zipkin",
     "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Truera"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Truera: Initial Dashboard",
-        "screenshots": [],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.72.1/quickstarts/mlops/truera/dashboards/truera.json"
-      }
-    ],
-    "description": "TruEra provides best in class AI Quality diagnostics and monitoring solution. TruEra and NewRelic users can go beyond standard accuracy, input and output drift monitoring by identifying consequential data drift, and other AI Quality diagnostics such as fairness, conceptual soundness and segment behavior. When combined with NewRelic’s comprehensive observability capabilities, MLOps teams can correlate signals throughout the ML lifecycle.\n",
-    "documentation": [
-      {
-        "description": "Documentation on the workings of the Truera integration\n",
-        "name": "Truera Docs",
-        "url": "https://docs.newrelic.com/docs/alerts-applied-intelligence/applied-intelligence/mlops-integrations/truera-integration/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "81402789-9ae9-4cbd-8686-4d2d4de8951f",
-    "installPlans": [
-      {
-        "id": "truera-mlops",
-        "name": "Truera Inc"
-      }
-    ],
-    "keywords": [
-      "mlops",
-      "ml",
-      "ai",
-      "machine learning",
-      "ml monitoring",
-      "machine learning monitoring",
-      "xai",
-      "explainable ai",
-      "explanability",
-      "truera"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.72.1/quickstarts/mlops/truera/logo.svg",
-    "name": "truera",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mlops/truera",
-    "summary": "With TruEra you can go beyond standard accuracy, input and output drift monitoring and identify consequential data drift and other AI quality diagnostics as well as correlate signals throughout the machine learning lifecycle.\n",
-    "title": "Truera",
-    "websiteUrl": "https://truera.com/"
   }
 ]
