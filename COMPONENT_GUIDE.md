@@ -19,7 +19,6 @@ It takes the title provided in the front matter and accepts plain text for the d
 
 ```
 ---
-path: '/example'
 duration: 30
 title: 'Example Guide'
 template: 'GuideTemplate'

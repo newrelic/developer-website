@@ -63,7 +63,7 @@ module.exports = {
             limit: 5,
             getSlug: ({ node }) => {
               if (node.internal.type === 'Mdx') {
-                return node.frontmatter.path;
+                return node.fields.slug;
               } else if (node.internal.type === 'Quickstarts') {
                 return resolveQuickstartSlug(node.name, node.id);
               }
