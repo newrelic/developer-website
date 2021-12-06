@@ -1,26 +1,28 @@
 ---
-path: '/automate-workflows/error-inbox/create-a-workload'
-title: 'Create a workload in New Relic'
+path: '/automate-workflows/error-inbox/set-up-errors-inbox'
+title: 'Set up errors inbox'
 template: 'GuideTemplate'
-description: 'Create a workload consisting of geek movie services'
+description: 'Set up errors inbox in New Relic'
 duration: 15
 procIdx: 2
 ---
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to track full stack errors using Error Inbox. 
+This procedure is part of a lab that teaches you how to track full stack errors using errors inbox. 
 
-Each procedure in the lab builds upon the last, so make sure you've [set your lab environment](/automate-workflows/error-inbox/spin-up-geek-movie), before starting this one.
+Each procedure in the lab builds upon the last, so make sure you've [set your lab environment](/automate-workflows/error-inbox/spin-up-geek-movie) before starting this one.
 
 </Callout>
- 
-You can group specific apps and services that you want to monitor in a workload. This allows you to get an aggregated view of health and activity of the entities in the workload. You can also use workloads with error inbox to detect issues and track errors across your entire stack. 
+Your app is now running in a development environment and your goal is to use errors inbox to proactively debug your application before deploying it to production. To observe your application in errors inbox, you first create a workload.
 
-In this procedure, you create a workload with all the geek movie shop services. 
+A workload groups specific apps and services that you want to monitor and provides an aggregated view of the health and activities of the entities in the workload.
+
+In this procedure, you create a workload with all the geek movie shop services and observe this workload in errors inbox. 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-# Create a workload
+## Create a workload
 
+Before you observe your application in errors inbox, you need to create a workload.
 <Steps>
 <Step>
 
@@ -33,7 +35,7 @@ Click **+ Create a workload** in top right hand corner.
 </Step>
 <Step>
 
-Name your workload as _error-inbox-lab_. Under **Select entities**, click **+ Add** for each of the geek shop services to include it in the workload.
+Name your workload as _error-inbox-lab_. Under **Select entities**, click **+ Add** for each of the following geek shop services to include it in the workload.
 
 - geek-shop-cart-service
 - geek-shop-catalogue-service
@@ -54,12 +56,37 @@ Click **Create a workload** once you've added all the services.
 </Steps>
 
 This creates a workload with all the geek-movie services for you and automatically redirects you to view the workload in New Relic. 
-![error inbox lab workload](../../../images/error-inbox/workload-ui.png)
+![errors inbox lab workload](../../../images/error-inbox/workload-ui.png)
 
-Now that you have created workload, you can set up error inbox. 
+Read more about workloads in [our docs](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/workloads/workloads-isolate-resolve-incidents-faster/).
+
+Now that you have created workload, you can set up errors inbox. 
+
+## Set up errors inbox
+Set up errors inbox to start tracking errors across your workload.
+
+<Steps>
+<Step>
+
+From [New Relic One](one.newrelic.com), select **Errors Inbox** from the top nav.
+![navigate to errors inbox](../../../images/error-inbox/errors-inbox-ui.png)
+</Step>
+<Step>
+
+Click **Select Workload** and select **error-inbox-lab** workload from the drop down.
+![select a workload](../../../images/error-inbox/select-workload.png)
+</Step>
+<Step>
+
+You see the error groups across your workload here.
+![errors group in errors inbox](../../../images/error-inbox/error-groups-in-errors-inbox.png)
+</Step>
+</Steps>
+
+Your errors inbox is now set and you can start proactively monitoring errors across your stack.
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to track full stack errors using Error Inbox. Now that you've created a workload, continue on to next procedure [Track and triage errors in error inbox](/automate-workflows/error-inbox/set-up-error-inbox).
+This procedure is part of a lab that teaches you how to track full stack errors using errors inbox. Now that you've set up errors inbox, continue on to next procedure, [Triage your errors](/automate-workflows/error-inbox/triage-errors).
 
 </Callout>

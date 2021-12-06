@@ -9,11 +9,13 @@ procIdx: 1
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to track full stack errors using Error Inbox. If you haven't already, check out the [lab introduction](/automate-workflows/error-inbox).
+This procedure is part of a lab that teaches you how to track full stack errors using errors inbox. If you haven't already, check out the [lab introduction](/automate-workflows/error-inbox).
 
 </Callout>
 
-Geek's Movie Shop (former Stan's Robot Shop) is a web application that consists of several interconnected microservices like cart, catalogue, payment, user, and more. These services are instrumented with New Relic for performance monitoring and full visibility across all layers. The application also has a loader service that generates traffic In this lab, we use New Relic's Error Inbox for full stack error tracking.
+Geek's Movie Shop is a web application that consists of several interconnected microservices like cart, catalogue, payment, user, and more. These services are instrumented with New Relic for performance monitoring and full visibility across all layers. 
+The application is currently running in development environment and you're trying to catch any errors that you can before pushing the site to production. To test your application services, you're also generating load with a special service running in your docker network.
+In this lab, you use New Relic's Errors Inbox to track and triage errors across your stack.
 
 ## Set up your environment
 
@@ -29,7 +31,7 @@ git clone https://github.com/newrelic-experimental/error-inbox-lab-material.git
 </Step>
 <Step>
 
-Open the cloned repo in your IDE and create a _.env_ file from _env.template_ and set these variables:
+Open the cloned repo in your IDE and edit the _.env_ file to set these variables:
 
 ```
 DOCKERHUB_USER=username
@@ -44,13 +46,13 @@ Here, NEW_RELIC_LICENSE_KEY is your liscence key for New Relic account. Your app
 </Step>
 <Step>
 
-Navigate to the root directory of your application and execute the _env.sh_ script to export these variables:
+Navigate to the root directory of your application and export these variables:
 
 ```bash
-./env.sh
+source .env
 ```
 
-This scripts takes all the variables you declared in _.env_ file and set them so you don't have to manually set all the environment variables to run your application. 
+This sets all the environment variables needed to run your application. 
 </Step>
 <Step>
 Build and run the application:
@@ -92,6 +94,6 @@ Leave the application running so you could see the telemetry data in New Relic.
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to track full stack errors using Error Inbox. Now that you've set up your lab environment, continue on to next procedure [Create a workload](/automate-workflows/error-inbox/create-a-workload).
+This procedure is part of a lab that teaches you how to track full stack errors using errors inbox. Now that you've set up your lab environment, continue on to next procedure, [Set up errors inbox](/automate-workflows/error-inbox/set-up-errors-inbox).
 
 </Callout>

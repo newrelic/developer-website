@@ -68,10 +68,12 @@
       pages:
         - title: Spin up Geek movie shop architecture
           url: '/automate-workflows/error-inbox/spin-up-geek-movie'
-        - title: Create a workload
-          url: '/automate-workflows/error-inbox/create-a-workload'
-        - title: Track and triage errors in error inbox
-          url: '/automate-workflows/error-inbox/set-up-error-inbox'
+        - title: Set up errors inbox
+          url: '/automate-workflows/error-inbox/set-up-errors-inbox'
+        - title: Triage your errors
+          url: '/automate-workflows/error-inbox/triage-errors'
+        - title: Manage your triaged errors
+          url: '/automate-workflows/error-inbox/manage-errors'
 - title: Build apps
   icon: nr-build-apps
   url: '/build-apps'
