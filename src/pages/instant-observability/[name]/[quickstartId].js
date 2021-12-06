@@ -100,7 +100,7 @@ export const getServerData = async ({ params }) => {
     const json = await resp.json();
 
     if (!resp.ok) {
-      throw json.errors;
+      throw Error(`Non 200 status code returned`, json);
     }
 
     return {
@@ -111,14 +111,12 @@ export const getServerData = async ({ params }) => {
       },
     };
   } catch (err) {
-    // FIXME: FYI, err is an array
     /* eslint-disable-next-line no-console */
-    console.log('Details: Error fetching data from NerdGraph', ...err);
+    console.error(err);
 
     return {
       props: {
         error: true,
-        message: err.message,
       },
     };
   }

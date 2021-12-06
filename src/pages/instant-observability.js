@@ -17,7 +17,7 @@ export const getServerData = async () => {
     const json = await resp.json();
 
     if (!resp.ok) {
-      throw json.errors;
+      throw Error(`Non 200 status code returned`, json);
     }
 
     return {
@@ -28,11 +28,11 @@ export const getServerData = async () => {
     };
   } catch (err) {
     /* eslint-disable-next-line no-console */
-    console.dir(err); // FIXME
+    console.error(err);
+
     return {
       props: {
         error: true,
-        message: err.message,
       },
     };
   }
