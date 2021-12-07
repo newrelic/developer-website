@@ -1,9 +1,74 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { QUICKSTARTS_QUERY } from '../data/constants';
 import QuickstartsPage from '../components/quickstarts/QuickstartsPage';
 
 export const getServerData = async () => {
+  const QUICKSTARTS_QUERY = `
+{
+  actor {
+    nr1Catalog {
+      quickstarts {
+        results {
+          id
+          sourceUrl
+          supportLevel
+          metadata {
+            slug
+            summary
+            authors {
+              name
+            }
+            description
+            displayName
+            installer {
+              type
+              ... on Nr1CatalogInstallPlan {
+                steps {
+                  id
+                  displayName
+                }
+              }
+            }
+            icon {
+              url
+            }
+            keywords
+            quickstartComponents {
+              ... on Nr1CatalogQuickstartDocumentation {
+                __typename
+                metadata {
+                  displayName
+                  url
+                  description
+                }
+              }
+              ... on Nr1CatalogQuickstartDashboard {
+                __typename
+                metadata {
+                  description
+                  displayName
+                  previews {
+                    url
+                  }
+                }
+              }
+              ... on Nr1CatalogQuickstartAlertCondition {
+                __typename
+                metadata {
+                  description
+                  displayName
+                  type
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
   try {
     const resp = await fetch(process.env.NERDGRAPH_URL, {
       method: 'POST',
