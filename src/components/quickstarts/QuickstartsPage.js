@@ -8,6 +8,7 @@ import Overlay from '../Overlay';
 import PackTile from '../PackTile';
 import QuickstartFilter from './QuickstartFilter';
 import QuickstartError from './QuickstartError';
+import QuickstartSort from './QuickstartSort';
 import {
   SearchInput,
   useTessen,
@@ -333,6 +334,7 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
               onClear={() => setSearch('')}
               onChange={(e) => setSearch(e.target.value)}
             />
+            <QuickstartSort />
             {isMobile && (
               <div
                 css={css`
