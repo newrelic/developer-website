@@ -35,9 +35,9 @@ const OverviewTemplate = ({ data, location }) => {
                   margin-top: 2rem;
                 `}
               >
-                {guides?.nodes.map(({ frontmatter }, index) => (
+                {guides?.nodes.map(({ fields, frontmatter }, index) => (
                   <GuideTile
-                    to={frontmatter.path}
+                    to={fields.slug}
                     key={index}
                     duration={frontmatter.duration}
                     title={
@@ -47,7 +47,6 @@ const OverviewTemplate = ({ data, location }) => {
                       frontmatter.tileShorthand?.description ||
                       frontmatter.description
                     }
-                    path={frontmatter.path}
                   />
                 ))}
               </GuideListing.List>
@@ -76,15 +75,15 @@ export const pageQuery = graphql`
     }
     guides: allMdx(
       filter: {
-        frontmatter: {
-          template: { eq: "GuideTemplate" }
-          path: { glob: $guidesFilter }
-        }
+        fields: { slug: { glob: $guidesFilter } }
+        frontmatter: { template: { eq: "GuideTemplate" } }
       }
     ) {
       nodes {
+        fields {
+          slug
+        }
         frontmatter {
-          path
           title
           description
           duration

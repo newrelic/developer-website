@@ -18,7 +18,11 @@ const CodeStreamTile = () => {
     : `/instant-observability/codestream/${quickstartId}/`;
 
   const handleButtonClick = () => {
-    tessen.track('clickSuperTile', 'QuickstartLanding', { tile: 'codestream' });
+    tessen.track({
+      eventName: 'clickSuperTile',
+      category: 'QuickstartLanding',
+      tile: 'codestream',
+    });
   };
 
   return (

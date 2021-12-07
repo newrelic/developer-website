@@ -129,9 +129,9 @@ const IndexPage = ({ data, pageContext, location }) => {
           <section className={styles.section}>
             <h2 className={styles.guideListingHeading}>Get inspired</h2>
             <GuideListing.List className={styles.allGuidesListing}>
-              {guides.map(({ frontmatter }, index) => (
+              {guides.map(({ fields, frontmatter }, index) => (
                 <GuideTile
-                  to={frontmatter.path}
+                  to={fields.slug}
                   key={index}
                   duration={frontmatter.duration}
                   title={frontmatter.tileShorthand?.title || frontmatter.title}
@@ -139,7 +139,6 @@ const IndexPage = ({ data, pageContext, location }) => {
                     frontmatter.tileShorthand?.description ||
                     frontmatter.description
                   }
-                  path={frontmatter.path}
                 />
               ))}
             </GuideListing.List>
@@ -259,11 +258,13 @@ export const pageQuery = graphql`
       sort: { fields: [frontmatter___promote, frontmatter___title] }
     ) {
       nodes {
+        fields {
+          slug
+        }
         frontmatter {
           title
           description
           duration
-          path
           tileShorthand {
             title
             description

@@ -24,8 +24,8 @@ const GuidedInstallTile = () => {
   const handleButtonClick = useInstrumentedHandler(
     handleNavigation,
     {
-      tessenEventName: 'clickSuperTile',
-      tessenCategoryName: 'QuickstartLanding',
+      eventName: 'clickSuperTile',
+      category: 'QuickstartLanding',
       tile: 'guided',
     },
     'tessen'

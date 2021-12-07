@@ -285,7 +285,6 @@ The value that is assigned to the key slug is used in order to navigate to your 
 
 ### GuideTemplate Frontmatter slugs
 
-- `path`: the relative path to the file
 - `duration`: the estimated time to complete the exercise in minutes
 - `title`: the title of the page
 - `template`: the Gatsby template used
@@ -311,7 +310,6 @@ The value that is assigned to the key slug is used in order to navigate to your 
 
 ```md
 ---
-path: '/build-apps/add-time-picker-guide'
 duration: 20
 title: 'Add the time picker to a sample application'
 template: 'GuideTemplate'

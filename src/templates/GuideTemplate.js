@@ -20,9 +20,9 @@ const GuideTemplate = ({ data, location }) => {
     frontmatter,
     body,
     relatedResources,
-    fields: { fileRelativePath },
+    fields: { fileRelativePath, slug },
   } = mdx;
-  const { title, description, duration, tags, path } = frontmatter;
+  const { title, description, duration, tags } = frontmatter;
 
   return (
     <>
@@ -57,7 +57,7 @@ const GuideTemplate = ({ data, location }) => {
         <Layout.PageTools>
           <SimpleFeedback
             pageTitle={title}
-            slug={path}
+            slug={slug}
             labels={['content', 'feedback']}
           />
           <ContributingGuidelines fileRelativePath={fileRelativePath} />
@@ -80,13 +80,13 @@ export const pageQuery = graphql`
       body
       frontmatter {
         duration
-        path
         title
         description
         tags
       }
       fields {
         fileRelativePath
+        slug
       }
       relatedResources(limit: 5) {
         title
