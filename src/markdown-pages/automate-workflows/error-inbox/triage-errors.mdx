@@ -15,9 +15,11 @@ Each procedure in the lab builds upon the last, so make sure you've completed th
 
 </Callout>
 
-Errors inbox provides a unified error tracking to detect and triage errors from across your stack. Since you want to ensure a smooth experience for your customers, you can use errors inbox to analyze the errors in full context and resolve them before they impact your customers. 
+Although your application is still running in development but now, you're able to observe errors across your application in errors inbox. Since you want to ensure a smooth experience for your customers, the next step is to use errors inbox to analyze the errors in full context and triage them before you push changes to production.  
 
-In this procedure, you track and triage errors across your stack using errors inbox. 
+Triaging helps removing the noise from your errors inbox so you focus on the high impact errors and resolve them before they affect your customers.
+
+In this procedure, you track and triage errors across your workload using errors inbox. 
 
 <Callout variant='important'>
 
@@ -27,19 +29,20 @@ Errors inbox is not available in the EU region.
 
 ## Triage your errors in errors inbox
 
-You can triage error groups directly from the main screen. Triaging helps removing the noise from your errors inbox so you focus on the high impact errors.  
+You can triage error groups directly from the main screen. 
 
 ### See error details
 
-By default, errors inbox shows all your unresolved errors on one screen. To understand the root cause of these errors, you need more details. For instance:
+You see all the unresolved errors across your application in errors inbox but now you want to understand the root cause of the errors. To debug your application, you need more details. You see the error details on error details page:
 
 Click on **pika.exceptions:ChannelWrongStateError** error.
 ![pika.exceptions:ChannelWrongStateError error](../../../images/error-inbox/channel-wrong-state-error.png)
 
-This takes you to error details page. You find full context of the issue here including **Occurances**, **Stack Trace**, and others.
+This takes you to error details page. 
 ![error detail page](../../../images/error-inbox/error-detail-page.png)
 
-Stack trace is especially important since it helps you narrow down the cause of the problem. 
+Here, you find full context of the issue including **Occurances**, **Stack Trace**, and others. Stack trace is especially important since it helps you narrow down the cause of the problem. 
+
 Under **Stack Trace**, click **Show all** in bottom right corner.
 ![show full stack trace](../../../images/error-inbox/show-full-stack-trace.png)
 
@@ -56,15 +59,16 @@ You can also integrate [CodeStream](https://newrelic.com/codestream) with your e
 
 ### Set error statuses
 
-Each error in errors inbox has **unresolved** status by defulat. But you can set your error status as resolved, or ignored and filter your inbox by status. 
+You were told that another developer on your team fixed **pika.exceptions:ChannelWrongStateError** and you want to change it's status now.
+Each error in errors inbox has unresolved status by defulat. But you can set your error status as resolved, or ignored.  
 
 #### Set the error status as 'Resolved'
-Once you fixed the issue, you come back to errors inbox and change its status to resolved. 
+Since you were told that the issue was fixed, you come back to errors inbox and change its status to resolved. 
 
 Navigate to **Errors inbox** in New Relic One.
 ![errors inbox](../../../images/error-inbox/errors-inbox.png)
 
-You were told that another developer on your team has fixed **pika.exceptions:ChannelWrongStateError** but the errors inbox still has this issue marked as unresolved. Change it's status:
+Change your error status:
 
 Click **Unresolved** against the error.
 ![channel wrong state error](../../../images/error-inbox/channel-wrong-state.png)
@@ -102,7 +106,7 @@ The error is now assigned to you.
 Currently assigning an error group to a user does not send a notification. Notifications of assignment and changes to error groups will be coming soon.
 </Callout>
 
-Once you assign error in errors inbox, it keeps a track of who worked on the error.
+Once you assign error in errors inbox, it keeps a track of who worked on the error. In case you come back to see this error again sometime later, it'll be easier for you to keep a track of who worked on this error. 
 
 <Callout variant="course" title="lab">
 

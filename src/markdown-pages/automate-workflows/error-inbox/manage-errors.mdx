@@ -15,8 +15,15 @@ Each procedure in the lab builds upon the last, so make sure you've completed th
 
 </Callout>
 
-## Change filter
-By default, errors inbox show all the unresolved errors on the main screen. Once the error status is updated to resolved or ignored, you no longer see the error on the main screen. However, you can change the filter to view these errors.
+You're now observing all the errors in errors inbox and you're trying to debug your application ASAP so you could make your site live. You also want to keep a track of all the triaged errors so you could track progress and (optionally) create tasks to resolve the other errors.
+
+By default, errors inbox show all the unresolved errors on the main screen. Once the error status is updated to resolved or ignored, you no longer see the error on the main screen. However, You can change the filter to view your triaged errors.
+
+In this procedure, you view your triaged errors and (optionally) integrate Jira with errors inbox.
+
+## View triaged errors
+
+Change the filter in errors inbox to view your triaged errors:
 
 The main screen of errors inbox has a filter pane right below the top nav.
 ![filters pane of errors inbox](../../../images/error-inbox/filters-pane.png)
@@ -24,18 +31,24 @@ The main screen of errors inbox has a filter pane right below the top nav.
 Click **Unresolved** to change the filter value.
 ![chnage filter value](../../../images/error-inbox/change-filter.png)
 
-Here, you see three options in the dropdown. Select **Ignored**.
-![view ignored error groups](../../../images/error-inbox/view-ignored-errors.png)
+Here, you see three options in the dropdown. Select **Resolved**.
+![view resolved error groups](../../../images/error-inbox/view-resolved-errors.png)
 
-Your errors inbox now show all the ignored error groups, if any.
-![ignored error groups](../../../images/error-inbox/ignored-error-groups.png)
+Your errors inbox now show all the resolved error groups, if any.
+![resolved error groups](../../../images/error-inbox/resolved-error-groups.png)
+
+You don't see any error group here because none of the errors were marked resolved. If this was your real world application, you could resolve the error, mark the error as resolved and track your resolved errors here.
+
+<Callout variant='tip'>
+
+If you want to observe your ignored error groups instead of resolved, you could set the filter to **Ignored** here. Ignored filter show all the ignored error groups, if any, in errors inbox.
+</Callout>
 
 ## Optional
+Now you have a list of issues that you need to fix. You want to create tasks in your workspace so you could collaborate with your teammates and easily keep a track. Connect errors inbox to Jira to qucikly and easily create tickets containing error details and link to the stack trace. This allows you to collaborate and resolve errors faster.
 
 ### Connect errors inbox to Jira
-Connect errors inbox to jira to qucikly and easily create tickets containing error details and link to the stack trace. It allows you to collaborate and resolve errors faster.
-
-Connect your errors inbox to jira:
+Connect your errors inbox to Jira:
 <Steps>
 <Step>
 
@@ -77,10 +90,10 @@ You can also connect errors inbox with Slack and CodeStream. Read [our docs](htt
 
 </Callout>
 
-# Summary:
-In this lab, you set up errors inbox to track and triage errors in your application. You also managed triaged errors in errors inbox and integrated your errors inbox with jira to help you effectively collaborate and resolve errors faster from across your stack. 
+## Summary:
+In this lab, you set up errors inbox to proactively observe and catch errors from across your stack. You analyzed the errors in full context and triaged them before they could affect your customers. You also managed triaged errors in errors inbox and integrated your errors inbox with jira to help you effectively collaborate and resolve errors faster from across your stack. 
 
-# Homework
+## Homework
 Now that you know how to track and triage errors using errors inbox, here are some other things to familiarize yourself even more with errors inbox.
 - Read our documentation on [errors inbox](https://docs.newrelic.com/docs/errors-inbox/errors-inbox/)
 - Read our blog [Collaborate and fix errors quickly with Errors Inbox and workloads](https://newrelic.com/blog/how-to-relic/track-errors-errors-inbox)
