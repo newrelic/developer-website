@@ -9,7 +9,6 @@ import Overlay from '../components/Overlay';
 import PackTile from '../components/PackTile';
 import IOLogo from '../components/IOLogo';
 import QuickstartFilter from '../components/quickstarts/QuickstartFilter';
-import IOBanner from '../components/IOBanner';
 import {
   SearchInput,
   useTessen,
@@ -296,7 +295,6 @@ const QuickstartsPage = ({ data, location }) => {
             }
           `}
         >
-          {isMobile && <IOBanner isMobile={isMobile} />}
           <div
             css={css`
               padding: var(--site-content-padding);
