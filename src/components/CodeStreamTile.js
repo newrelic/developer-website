@@ -4,7 +4,7 @@ import SuperTile from './SuperTile';
 import { Button, useTessen } from '@newrelic/gatsby-theme-newrelic';
 import { Link } from 'gatsby';
 import Cookies from 'js-cookie';
-import { getPackNr1Url } from '../../../utils/get-pack-nr1-url';
+import { getPackNr1Url } from '../utils/get-pack-nr1-url';
 
 const CodeStreamTile = () => {
   const tessen = useTessen();

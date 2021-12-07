@@ -9,6 +9,7 @@ import Overlay from '../components/Overlay';
 import PackTile from '../components/PackTile';
 import IOLogo from '../components/IOLogo';
 import QuickstartFilter from '../components/quickstarts/QuickstartFilter';
+import IOBanner from '../components/IOBanner';
 import {
   SearchInput,
   useTessen,
@@ -22,8 +23,6 @@ import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 import GUIDED_INSTALL from '../images/guided-install.svg';
 import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
-import SuperTilesExperiment from '../experiments/super_tiles';
-
 import {
   QUICKSTARTS_REPO,
   RESERVED_QUICKSTART_IDS,
@@ -32,6 +31,7 @@ import {
 import CATEGORIES from '../data/instant-observability-categories';
 
 import { getGuidedInstallStackedNr1Url } from '../utils/get-pack-nr1-url';
+import SuperTiles from '../components/SuperTiles';
 
 const FILTERS = [
   { name: 'Dashboards', type: 'dashboards', icon: 'nr-dashboard' },
@@ -296,7 +296,7 @@ const QuickstartsPage = ({ data, location }) => {
             }
           `}
         >
-          {isMobile && <SuperTilesExperiment isMobile />}
+          {isMobile && <IOBanner isMobile={isMobile} />}
           <div
             css={css`
               padding: var(--site-content-padding);
@@ -412,7 +412,7 @@ const QuickstartsPage = ({ data, location }) => {
             padding: var(--site-content-padding);
           `}
         >
-          {!isMobile && <SuperTilesExperiment />}
+          <SuperTiles />
           <div
             css={css`
               background-color: var(--secondary-background-color);

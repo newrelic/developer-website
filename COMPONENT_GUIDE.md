@@ -440,27 +440,18 @@ You can see the difference in what is displayed below:
 
 ![alt text](readme_images/hidden_vs_normal.png "Hidden vs Normal")
 
-## A/B Experiments
-
-### SuperTilesExperiment
+### SuperTiles
 
 ### Usage
 
-The `SuperTilesExperiment` component renders the `IOBanner` (control component) or the `GuidedInstallTile` and `CodeStreamTile` (treatment) components based on a `50% 50%` A/B test.
+The `SuperTiles` component renders the `GuidedInstallTile` and `CodeStreamTile` (treatment) components.
 
 To include it:
 
 ```html
-<SuperTilesExperiment />
-# Render <IOBanner> for mobile devices
-<SuperTilesExperiment isMobile={true} />
+<SuperTiles />
 ```
 
-## Props
-
-|Component|Prop|Required?|Type|Description|
-|-|-|-|-|-|
-|`SuperTilesExperiment`|`isMobile`|no|boolean|Specifies whether the `IOBanner` child component should be rendered for mobile devices.|
 
 ### SuperTile
 
