@@ -41,7 +41,7 @@ const getGuidedInstallStackedNr1Url = (nerdletId, debug = false) => {
       : Buffer.from(pane, 'utf-8').toString('base64');
 
   const cardHash =
-    window && window.btoa
+    typeof window !== 'undefined' && window.btoa
       ? btoa(card)
       : Buffer.from(card, 'utf-8').toString('base64');
 
