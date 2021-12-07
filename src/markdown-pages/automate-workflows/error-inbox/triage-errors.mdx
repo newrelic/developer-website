@@ -74,21 +74,14 @@ You see two options in the dropdown here. Select **Resolve**.
 
 Once the status is updated, you no longer see the error on the main screen. However, if the error still persists, then it'll automatically be marked as unresolved.
 
-#### Set the error status as 'Ignored'
-Some errors are expected and part of the system as it operates. Set those errors as ignored:
+<Callout variant='tip'>
 
-Navigate to **Errors inbox** in New Relic One.
-![errors inbox](../../../images/error-inbox/error-inbox.png)
+Some errors are expected and part of the system as it operates. Those errors can be ignored from inside errors inbox. For instance, if instead of resolving the error, you wanted to ignore it, you could do that here as well.
 
-Take a quick scan of the errors here. There's one **builtins:AssertionError**.
-![assertion-error](../../../images/error-inbox/builtin-assertion-error.png)
-
-This error occured because the service was aborted due to connection failure at user's end and there's nothing you can do about it. Ignore this error:
- 
-Click **Unresolved** against the error and then select **Ignore** from the dropdown.
-![ignore error](../../../images/error-inbox/ignore-assertion-error.png)
+![ignore error](../../../images/error-inbox/set-ignore-error.png)
 
 Once the status is updated, you no longer see the error on the main screen until you stop ignoring or change the filter to include ignored error groups. 
+</Callout>
 
 ### Assign errors
 You were told that somebody on your team fixed **pika.exceptions:ChannelWrongStateError** error and you marked it resolved. However, you come back to see the error is marked unresolved again. 
