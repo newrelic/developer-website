@@ -78,6 +78,7 @@ const QuickstartDetails = ({ rawQuickstart = {}, location, error }) => {
     displayName,
     slug,
     description,
+    installer,
   };
 
   const relatedResources = relatedPages[`/instant-observability/${slug}/${id}`];
@@ -249,13 +250,7 @@ const QuickstartDetails = ({ rawQuickstart = {}, location, error }) => {
                   }
                 `}
               >
-                <InstallButton
-                  installer={installer}
-                  id={id}
-                  quickstartUrl={quickstartUrl}
-                  slug={slug}
-                  location={location}
-                />
+                <InstallButton quickstart={quickstart} location={location} />
                 <Button
                   as={Link}
                   variant={Button.VARIANT.OUTLINE}

@@ -14,7 +14,6 @@ import {
   UTM_PARAMETERS,
   SIGNUP_LINK,
 } from '../data/constants';
-import { quickstart } from '../types';
 import Cookies from 'js-cookie';
 import useTreatment from '../hooks/useTreatment';
 
@@ -83,15 +82,9 @@ const createInstallLink = (
  * @returns {Boolean}
  */
 
-const InstallButton = ({
-  installer,
-  id,
-  slug,
-  quickstartUrl,
-  location,
-  ...props
-}) => {
+const InstallButton = ({ quickstart, location, ...props }) => {
   const { treatment } = useTreatment('super_tiles');
+  const { installer, id, slug, quickstartUrl, documentation } = quickstart;
 
   const hasInstallableComponent =
     installer.steps || id === CODESTREAM_QUICKSTART_ID;
@@ -139,9 +132,9 @@ const InstallButton = ({
   }, []);
 
   // If there is nothing to install AND no documentation, don't show this button.
-  // if (!hasInstallableComponent && !hasComponent(quickstart, 'documentation')) {
-  //   return null;
-  // }
+  if (!hasInstallableComponent && !documentation.length > 0) {
+    return null;
+  }
 
   const writeCookie = () => {
     const currentEnvironment =
@@ -203,10 +196,13 @@ const InstallButton = ({
 };
 
 InstallButton.propTypes = {
-  installer: PropTypes.object,
-  id: PropTypes.string,
-  quickstartUrl: PropTypes.string,
-  slug: PropTypes.string,
+  quickstart: PropTypes.shapeOf({
+    installer: PropTypes.object,
+    id: PropTypes.string,
+    quickstartUrl: PropTypes.string,
+    slug: PropTypes.string,
+    documentation: PropTypes.array,
+  }),
   location: PropTypes.object.isRequired,
 };
 
