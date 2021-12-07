@@ -196,7 +196,7 @@ const InstallButton = ({ quickstart, location, ...props }) => {
 };
 
 InstallButton.propTypes = {
-  quickstart: PropTypes.shapeOf({
+  quickstart: PropTypes.shape({
     installer: PropTypes.object,
     id: PropTypes.string,
     quickstartUrl: PropTypes.string,
