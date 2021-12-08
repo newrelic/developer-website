@@ -8,6 +8,7 @@ export const getServerData = async () => {
   actor {
     nr1Catalog {
       quickstarts {
+        totalCount
         results {
           id
           sourceUrl
@@ -70,7 +71,7 @@ export const getServerData = async () => {
 `;
 
   try {
-    const resp = await fetch(process.env.GATSBY_NERDGRAPH_URL, {
+    const resp = await fetch(process.env.NERDGRAPH_URL, {
       method: 'POST',
       body: JSON.stringify({ query: QUICKSTARTS_QUERY }),
       headers: {
@@ -79,15 +80,18 @@ export const getServerData = async () => {
       },
     });
 
-    const json = await resp.json();
-
     if (!resp.ok) {
-      throw Error(`Non 200 status code returned`, json);
+      throw Error(`Non 200 status code returned`, resp.status, resp.statusText);
     }
+
+    const json = await resp.json();
 
     if (json.data?.errors) {
       throw Error(`Errors returned from nerdgraph`, json.data.errors);
     }
+
+    const quickstarts = json.data?.actor?.nr1Catalog?.quickstarts;
+    console.log(`Found ${quickstarts.totalCount} quickstarts`);
 
     return {
       props: {

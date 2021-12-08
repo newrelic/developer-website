@@ -98,11 +98,11 @@ export const getServerData = async ({ params }) => {
       },
     });
 
-    const json = await resp.json();
-
     if (!resp.ok) {
-      throw Error(`Non 200 status code returned`, json);
+      throw Error(`Non 200 status code returned`, resp.status, resp.statusText);
     }
+
+    const json = await resp.json();
 
     if (json.data?.errors) {
       throw Error(`Errors returned from nerdgraph`, json.data.errors);
