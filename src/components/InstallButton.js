@@ -202,7 +202,7 @@ InstallButton.propTypes = {
     quickstartUrl: PropTypes.string,
     slug: PropTypes.string,
     documentation: PropTypes.array,
-  }),
+  }).isRequired,
   location: PropTypes.object.isRequired,
 };
 
