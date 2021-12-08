@@ -75,7 +75,7 @@ export const getServerData = async () => {
       body: JSON.stringify({ query: QUICKSTARTS_QUERY }),
       headers: {
         'Content-Type': 'application/json',
-        'Api-Key': process.env.GATSBY_NEW_RELIC_API_KEY,
+        'Api-Key': process.env.NEW_RELIC_API_KEY,
       },
     });
 
