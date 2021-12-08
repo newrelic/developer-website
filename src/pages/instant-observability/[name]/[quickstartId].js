@@ -83,6 +83,7 @@ query QuickstartDetailsQuery(
   }
 }
 `;
+
 export const getServerData = async ({ params }) => {
   try {
     const resp = await fetch(process.env.NERDGRAPH_URL, {
@@ -97,10 +98,14 @@ export const getServerData = async ({ params }) => {
       },
     });
 
+    if (!resp.ok) {
+      throw Error(`Non 200 status code returned`, resp.status, resp.statusText);
+    }
+
     const json = await resp.json();
 
-    if (!resp.ok) {
-      throw Error(`Non 200 status code returned`, json);
+    if (json.data?.errors) {
+      throw Error(`Errors returned from nerdgraph`, json.data.errors);
     }
 
     return {
