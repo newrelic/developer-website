@@ -85,6 +85,10 @@ export const getServerData = async () => {
       throw Error(`Non 200 status code returned`, json);
     }
 
+    if (json.data?.errors) {
+      throw Error(`Errors returned from nerdgraph`, json.data.errors);
+    }
+
     return {
       props: {
         error: false,
