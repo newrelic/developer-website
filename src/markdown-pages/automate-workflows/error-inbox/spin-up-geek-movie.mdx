@@ -1,5 +1,4 @@
 ---
-path: '/automate-workflows/error-inbox/spin-up-geek-movie'
 title: 'Spin up Geek movie architecture'
 template: 'GuideTemplate'
 description: 'Set up your your environment to deploy geek movie shop.'
@@ -13,13 +12,13 @@ This procedure is part of a lab that teaches you how to track full stack errors 
 
 </Callout>
 
-Geek's Movie Shop is a web application that consists of several interconnected microservices like cart, catalogue, payment, user, and more. These services are instrumented with New Relic for performance monitoring and full visibility across all layers. 
+Geek's Movie Shop is a web application that consists of several interconnected microservices like cart, catalogue, payment, user, and more. These services are instrumented with New Relic for performance monitoring and full visibility across all layers.
 The application is currently running in development environment and you're trying to catch any errors that you can before pushing the site to production. To test your application services, you're also generating load with a special service running in your docker network.
 In this lab, you use New Relic's Errors Inbox to track and triage errors across your stack.
 
 ## Set up your environment
 
-Before you begin with the lab, set up your development environment. 
+Before you begin with the lab, set up your development environment.
 <Steps>
 <Step>
 Clone the lab repository:
@@ -52,7 +51,7 @@ Navigate to the root directory of your application and export these variables:
 source .env
 ```
 
-This sets all the environment variables needed to run your application. 
+This sets all the environment variables needed to run your application.
 </Step>
 <Step>
 Build and run the application:
@@ -60,7 +59,7 @@ Build and run the application:
 ```bash animate
 docker compose build
 docker compose up
-[output] {blue} [+] Building 96.1s (103/103) FINISHED 
+[output] {blue} [+] Building 96.1s (103/103) FINISHED
 [output] {blue}=> [username/rs-shipping:latest internal] load build definition from Dockerfile                        0.0s
 [output] {blue}=> => transferring dockerfile: 784B                                                                    0.0s
 [output] {blue}=> [username/rs-mongodb:latest internal] load build definition from Dockerfile                         0.0s
