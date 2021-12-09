@@ -2,6 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import QuickstartsPage from '../components/quickstarts/QuickstartsPage';
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+
 export const getServerData = async () => {
   const QUICKSTARTS_QUERY = `
 {
@@ -97,6 +102,7 @@ export const getServerData = async () => {
       props: {
         error: false,
         data: json.data,
+        cats: process.env.CATS,
       },
     };
   } catch (err) {
@@ -114,6 +120,8 @@ export const getServerData = async () => {
 const QuickstartsPageSSR = ({ serverData, location }) => {
   const quickstarts =
     serverData.data?.actor?.nr1Catalog?.quickstarts?.results || [];
+
+  console.log('cats?', serverData?.cats);
 
   return (
     <QuickstartsPage
