@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import QuickstartsPage from '../components/quickstarts/QuickstartsPage';
 
-export const getServerData = async () => {
-  const QUICKSTARTS_QUERY = `
+const NERDGRAPH_URL = process.env.NERDGRAPH_URL;
+const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
+const QUICKSTARTS_QUERY = `
 {
   actor {
     nr1Catalog {
@@ -69,14 +70,14 @@ export const getServerData = async () => {
   }
 }
 `;
-
+export const getServerData = async () => {
   try {
-    const resp = await fetch(process.env.NERDGRAPH_URL, {
+    const resp = await fetch(NERDGRAPH_URL, {
       method: 'POST',
       body: JSON.stringify({ query: QUICKSTARTS_QUERY }),
       headers: {
         'Content-Type': 'application/json',
-        'Api-Key': process.env.NEW_RELIC_API_KEY,
+        'Api-Key': NEW_RELIC_API_KEY,
       },
     });
 

@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import QuickstartDetails from '../../../components/quickstarts/QuickstartDetails';
 
+const NERDGRAPH_URL = process.env.NERDGRAPH_URL;
+const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
 const QUICKSTART_QUERY = `
 query QuickstartDetailsQuery(
       $quickstartId: ID!
@@ -86,7 +88,7 @@ query QuickstartDetailsQuery(
 
 export const getServerData = async ({ params }) => {
   try {
-    const resp = await fetch(process.env.NERDGRAPH_URL, {
+    const resp = await fetch(NERDGRAPH_URL, {
       method: 'POST',
       body: JSON.stringify({
         query: QUICKSTART_QUERY,
@@ -94,7 +96,7 @@ export const getServerData = async ({ params }) => {
       }),
       headers: {
         'Content-Type': 'application/json',
-        'Api-Key': process.env.NEW_RELIC_API_KEY,
+        'Api-Key': NEW_RELIC_API_KEY,
       },
     });
 
