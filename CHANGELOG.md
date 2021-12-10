@@ -1,3 +1,10 @@
+## [1.71.2](https://github.com/newrelic/developer-website/compare/v1.71.1...v1.71.2) (2021-12-10)
+
+
+### Bug Fixes
+
+* redirect to specific nerdlets if returning user ([08a5a35](https://github.com/newrelic/developer-website/commit/08a5a35b893deb079abcab2a4d1176b876b7c40c))
+
 ## [1.71.1](https://github.com/newrelic/developer-website/compare/v1.71.0...v1.71.1) (2021-12-06)
 
 
