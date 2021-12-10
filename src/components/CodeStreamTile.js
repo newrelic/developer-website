@@ -3,12 +3,19 @@ import { css } from '@emotion/react';
 import SuperTile from './SuperTile';
 import { Button, useTessen } from '@newrelic/gatsby-theme-newrelic';
 import { Link } from 'gatsby';
+import Cookies from 'js-cookie';
+import { getPackNr1Url } from '../utils/get-pack-nr1-url';
 
 const CodeStreamTile = () => {
   const tessen = useTessen();
 
-  const link =
-    '/instant-observability/codestream/29bd9a4a-1c19-4219-9694-0942f6411ce7/';
+  const isReturningUser = Boolean(Cookies.get('ajs_user_id'));
+  const quickstartId = '29bd9a4a-1c19-4219-9694-0942f6411ce7';
+  const nerdletId = 'codestream-install.home';
+
+  const link = isReturningUser
+    ? getPackNr1Url(quickstartId, nerdletId)
+    : `/instant-observability/codestream/${quickstartId}/`;
 
   const handleButtonClick = () => {
     tessen.track({
