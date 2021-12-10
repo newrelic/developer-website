@@ -109,7 +109,7 @@ const FeaturedGuideTile = ({
 FeaturedGuideTile.propTypes = {
   guide: PropTypes.shape({
     description: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
+    duration: PropTypes.number.isRequired,
     icon: PropTypes.element.isRequired,
     title: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,

@@ -1,3 +1,22 @@
+## [1.71.2](https://github.com/newrelic/developer-website/compare/v1.71.1...v1.71.2) (2021-12-10)
+
+
+### Bug Fixes
+
+* redirect to specific nerdlets if returning user ([08a5a35](https://github.com/newrelic/developer-website/commit/08a5a35b893deb079abcab2a4d1176b876b7c40c))
+
+## [1.71.1](https://github.com/newrelic/developer-website/compare/v1.71.0...v1.71.1) (2021-12-06)
+
+
+### Bug Fixes
+
+* Add deprecation warning for path property when creating pages ([9586bdf](https://github.com/newrelic/developer-website/commit/9586bdfed6386afb30587af89c96c2847e37bfe1))
+* Create pages based on the slug ([85c4d05](https://github.com/newrelic/developer-website/commit/85c4d05536bc68d4775941f8d5949207c76fc201))
+* Fix prop type for featured guide tile duration ([65d7f5c](https://github.com/newrelic/developer-website/commit/65d7f5c9e869971cf3a67a543e2e681b2ab3da48))
+* Move markdown pages to paths that match frontmatter path property ([d4d3b4b](https://github.com/newrelic/developer-website/commit/d4d3b4be2f02ea8f0e8bf94ada7ca80ef6709fe0))
+* Update embed plugin to use slug instead of frontmatter path ([310cfe2](https://github.com/newrelic/developer-website/commit/310cfe25403e3e2c8f28b93fd78588ec7f5346b3))
+* Use slug instead of path for homepage ([e28311e](https://github.com/newrelic/developer-website/commit/e28311e5e8d00275575c73869e821058cc1fcd0f))
+
 # [1.71.0](https://github.com/newrelic/developer-website/compare/v1.70.0...v1.71.0) (2021-11-30)
 
 

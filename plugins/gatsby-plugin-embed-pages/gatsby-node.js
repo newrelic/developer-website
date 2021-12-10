@@ -13,7 +13,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
           frontmatter {
             title
-            path
             redirects
           }
         }
@@ -23,13 +22,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   data.allMdx.nodes.forEach((node) => {
     const {
-      frontmatter,
+      frontmatter: { redirects },
       fields: { fileRelativePath, slug },
     } = node;
-    const { redirects } = frontmatter;
-    const nodePath = frontmatter.path || slug;
-    const pagePath = path.join(nodePath, 'embed', '/');
-    const contentSourcePath = nodePath;
+    const pagePath = path.join(slug, 'embed', '/');
 
     createPage({
       path: pagePath,
@@ -37,7 +33,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       context: {
         slug,
         fileRelativePath,
-        contentSourcePath,
         layout: 'EmbedLayout',
       },
     });
