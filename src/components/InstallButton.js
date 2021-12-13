@@ -76,12 +76,6 @@ const createInstallLink = (
   return installUrl.href;
 };
 
-/**
- * @param {quickstart} quickstart
- * @param {String} key
- * @returns {Boolean}
- */
-
 const InstallButton = ({ quickstart, location, ...props }) => {
   const { treatment } = useTreatment('super_tiles');
   const { installer, id, slug, quickstartUrl, documentation } = quickstart;
