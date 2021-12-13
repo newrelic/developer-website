@@ -19,18 +19,16 @@ const VIEWS = {
 
 const PackTile = ({
   id,
-  title,
+  metadata,
   view,
   featured,
-  name,
-  fields,
-  logoUrl,
-  level,
+  supportLevel,
   className,
-  summary,
   href,
 }) => {
   const tessen = useTessen();
+
+  const { displayName, slug, icon, summary } = metadata;
 
   const handlePackClick = (quickstartId) => {
     switch (true) {
@@ -39,7 +37,7 @@ const PackTile = ({
           eventName: 'instantObservability',
           category: 'GuidedInstallClick',
           publicCatalogView: view,
-          quickstartName: name,
+          quickstartName: slug,
         });
         break;
       case quickstartId === RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART:
@@ -47,7 +45,7 @@ const PackTile = ({
           eventName: 'instantObservability',
           category: 'BuildYourOwnQuickstartClick',
           publicCatalogView: view,
-          quickstartName: name,
+          quickstartName: slug,
         });
         break;
       default:
@@ -55,7 +53,7 @@ const PackTile = ({
           eventName: 'instantObservability',
           category: 'QuickstartClick',
           publicCatalogView: view,
-          quickstartName: name,
+          quickstartName: slug,
         });
     }
   };
@@ -63,7 +61,7 @@ const PackTile = ({
   return (
     <Surface
       as={Link}
-      to={href || fields?.slug || '/'}
+      to={href || `/instant-observability/${slug}/${id}` || '/'}
       key={id}
       base={Surface.BASE.PRIMARY}
       className={className}
@@ -82,8 +80,8 @@ const PackTile = ({
       onClick={() => handlePackClick(id)}
     >
       <PackImg
-        logoUrl={logoUrl}
-        packName={title || name}
+        logoUrl={icon.url}
+        packName={displayName}
         css={css`
           height: 200px;
           object-fit: scale-down;
@@ -121,8 +119,10 @@ const PackTile = ({
         `}
       >
         <h4>
-          {title}{' '}
-          {SHIELD_LEVELS.includes(level) && <Icon name="nr-check-shield" />}
+          {displayName}{' '}
+          {SHIELD_LEVELS.includes(supportLevel) && (
+            <Icon name="nr-check-shield" />
+          )}
         </h4>
         <p
           css={css`
@@ -165,14 +165,13 @@ const PackTile = ({
 PackTile.propTypes = {
   id: PropTypes.string.isRequired,
   view: PropTypes.oneOf(Object.values(VIEWS)).isRequired,
-  name: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  fields: PropTypes.shape({
+  metadata: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-  }).isRequired,
-  logoUrl: PropTypes.string,
-  summary: PropTypes.string,
-  level: PropTypes.string,
+    displayName: PropTypes.string.isRequired,
+    icon: PropTypes.shape({ url: PropTypes.string }),
+    summary: PropTypes.string,
+  }),
+  supportLevel: PropTypes.string,
   className: PropTypes.string,
   featured: PropTypes.bool,
   href: PropTypes.string,

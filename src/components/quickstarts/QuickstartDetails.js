@@ -1,14 +1,13 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
-import DevSiteSeo from '../components/DevSiteSeo';
+import DevSiteSeo from '../DevSiteSeo';
 import PropTypes from 'prop-types';
-import PageLayout from '../components/PageLayout';
-import Tabs from '../components/Tabs';
-import EmptyTab from '../components/quickstarts/EmptyTab';
-import SupportSection from '../components/quickstarts/SupportSection';
-import QuickstartAlerts from '../components/quickstarts/QuickstartAlerts';
-import QuickstartDashboards from '../components/quickstarts/QuickstartDashboards';
+import PageLayout from '../PageLayout';
+import Tabs from '../Tabs';
+import EmptyTab from './EmptyTab';
+import SupportSection from './SupportSection';
+import QuickstartAlerts from './QuickstartAlerts';
+import QuickstartDashboards from './QuickstartDashboards';
 import {
   Layout,
   PageTools,
@@ -16,23 +15,79 @@ import {
   Button,
   Icon,
   Link,
+  ExternalLink,
   RelatedResources,
 } from '@newrelic/gatsby-theme-newrelic';
-import InstallButton from '../components/InstallButton';
-import QuickstartDataSources from '../components/quickstarts/QuickstartDataSources';
-import Breadcrumbs from '../components/Breadcrumbs';
-import { quickstart } from '../types';
+import InstallButton from '../InstallButton';
+import QuickstartDataSources from './QuickstartDataSources';
+import Breadcrumbs from '../Breadcrumbs';
+import relatedPages from '../../data/related-pages.json';
 import {
   QUICKSTARTS_REPO,
   SIGNUP_LINK,
   LOGIN_LINK,
   SHIELD_LEVELS,
-} from '../data/constants';
-import QuickstartOverview from '../components/quickstarts/QuickstartOverview';
+} from '../../data/constants';
+import { rawQuickstart } from '../../types';
+import QuickstartOverview from './QuickstartOverview';
+import QuickstartError from './QuickstartError';
 
-const QuickstartDetails = ({ data, location }) => {
-  const quickstart = data.quickstarts;
-  const quickstartUrl = quickstart.packUrl || QUICKSTARTS_REPO;
+const QuickstartDetails = ({ rawQuickstart = {}, location, error }) => {
+  const {
+    metadata = {},
+    id = {},
+    supportLevel = {},
+    sourceUrl = {},
+  } = rawQuickstart;
+
+  const quickstartUrl = sourceUrl || QUICKSTARTS_REPO;
+
+  const {
+    displayName,
+    slug,
+    keywords,
+    icon,
+    summary,
+    description,
+    quickstartComponents = [],
+    authors,
+    installer,
+  } = metadata;
+
+  const sortedQuickstartComponents = quickstartComponents.reduce(
+    (acc, component) => {
+      switch (component.__typename) {
+        case 'Nr1CatalogQuickstartDocumentation':
+          acc = {
+            ...acc,
+            documentation: [...acc.documentation, component.metadata],
+          };
+          return acc;
+        case 'Nr1CatalogQuickstartAlertCondition':
+          acc = { ...acc, alerts: [...acc.alerts, component.metadata] };
+          return acc;
+        case 'Nr1CatalogQuickstartDashboard':
+          acc = { ...acc, dashboards: [...acc.dashboards, component.metadata] };
+          return acc;
+      }
+      return acc;
+    },
+    { alerts: [], dashboards: [], documentation: [] }
+  );
+
+  const { alerts, dashboards, documentation } = sortedQuickstartComponents;
+
+  const quickstart = {
+    ...sortedQuickstartComponents,
+    id,
+    displayName,
+    slug,
+    description,
+    installer,
+  };
+
+  const relatedResources = relatedPages[`/instant-observability/${slug}/${id}`];
+
   const tessen = useTessen();
   const breadcrumbs = [
     {
@@ -40,7 +95,7 @@ const QuickstartDetails = ({ data, location }) => {
       url: '/instant-observability/',
     },
     {
-      name: quickstart.title,
+      name: displayName,
     },
   ];
   const quickStartMeta = [
@@ -48,48 +103,51 @@ const QuickstartDetails = ({ data, location }) => {
       name: 'quick_start_name',
       class: 'swiftype',
       'data-type': 'string',
-      content: quickstart.title,
+      content: displayName,
     },
   ];
 
-  const trackQuickstart = (action, quickstart) => () =>
-    tessen.track({
-      eventName: 'instantObservability',
-      category: action,
-      quickstartName: quickstart.name,
-      quickstartId: quickstart.id,
-      quickstartUrl: quickstart.packUrl,
-    });
+  const getTrackingData = (action) => ({
+    eventName: 'instantObservability',
+    quickstartName: slug,
+    quickstartId: id,
+    category: action,
+  });
 
-  const tessenTabTrack = (action, quickstart) => (id, count) => {
+  const trackQuickstart = (action) => () => {
     tessen.track({
-      eventName: 'instantObservability',
-      category: action,
-      QuickstartTabState: id,
+      ...getTrackingData(action),
+      quickstartUrl,
+    });
+  };
+
+  const tessenTabTrack = (action) => (tabId, count) => {
+    tessen.track({
+      ...getTrackingData(action),
+      QuickstartTabState: tabId,
       QuickstartTabCount: count,
-      quickstartName: quickstart.name,
-      quickstartId: quickstart.id,
     });
   };
-  const tessenSupportTrack = (quickstart) => (action) => {
-    tessen.track({
-      eventName: 'instantObservability',
-      category: action,
-      quickstartName: quickstart.name,
-      quickstartId: quickstart.id,
-    });
+
+  const tessenSupportTrack = () => (action) => {
+    tessen.track(getTrackingData(action));
   };
+
+  if (error) {
+    return <QuickstartError singular />;
+  }
 
   return (
     <>
       <DevSiteSeo
-        title={quickstart.title}
+        title={displayName}
         type="quickstarts"
         location={location}
-        tags={quickstart.keywords}
+        tags={keywords}
         meta={quickStartMeta}
       />
       <Breadcrumbs segments={breadcrumbs} />
+
       <Tabs>
         <PageLayout
           type={PageLayout.TYPE.RELATED_CONTENT_TABS}
@@ -99,9 +157,9 @@ const QuickstartDetails = ({ data, location }) => {
           `}
         >
           <PageLayout.Header
-            title={quickstart.title}
+            title={displayName}
             icon={
-              SHIELD_LEVELS.includes(quickstart.level) && (
+              SHIELD_LEVELS.includes(supportLevel) && (
                 <Icon
                   name="nr-check-shield"
                   size="50%"
@@ -151,10 +209,10 @@ const QuickstartDetails = ({ data, location }) => {
               }
             `}
           >
-            {quickstart.logoUrl && (
+            {icon.url && (
               <img
-                src={quickstart.logoUrl}
-                alt={quickstart.title}
+                src={icon.url}
+                alt={displayName}
                 css={css`
                   max-height: 5rem;
                   grid-area: logo;
@@ -171,7 +229,7 @@ const QuickstartDetails = ({ data, location }) => {
                 `}
               />
             )}
-            {quickstart.summary && (
+            {summary && (
               <div
                 css={css`
                   grid-area: summ;
@@ -182,7 +240,7 @@ const QuickstartDetails = ({ data, location }) => {
                   }
                 `}
               >
-                {quickstart.summary}
+                {summary}
               </div>
             )}
             <div
@@ -199,17 +257,16 @@ const QuickstartDetails = ({ data, location }) => {
             >
               <InstallButton quickstart={quickstart} location={location} />
               <Button
-                as={Link}
+                as={ExternalLink}
                 variant={Button.VARIANT.OUTLINE}
                 to={quickstartUrl}
-                rel="noopener noreferrer"
                 css={css`
                   margin: 0 0 0 0.5rem;
                   @media (max-width: 760px) {
                     margin: 1rem 0 0 0;
                   }
                 `}
-                onClick={trackQuickstart('QuickstartViewRepoClick', quickstart)}
+                onClick={trackQuickstart('QuickstartViewRepoClick')}
               >
                 <Icon
                   name="fe-github"
@@ -237,25 +294,22 @@ const QuickstartDetails = ({ data, location }) => {
             <Tabs.BarItem id="overview">Overview</Tabs.BarItem>
             <Tabs.BarItem
               id="dashboards"
-              count={quickstart.dashboards?.length ?? 0}
-              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
+              count={dashboards?.length ?? 0}
+              onClick={tessenTabTrack(`QuickstartTabToggle`)}
             >
               Dashboards
             </Tabs.BarItem>
             <Tabs.BarItem
               id="alerts"
-              count={quickstart.alerts?.length ?? 0}
-              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
+              count={alerts?.length ?? 0}
+              onClick={tessenTabTrack(`QuickstartTabToggle`)}
             >
               Alerts
             </Tabs.BarItem>
             <Tabs.BarItem
               id="data-sources"
-              count={
-                (quickstart.instrumentation?.length ?? 0) +
-                (quickstart.documentation?.length ?? 0)
-              }
-              onClick={tessenTabTrack(`QuickstartTabToggle`, quickstart)}
+              count={documentation?.length ?? 0}
+              onClick={tessenTabTrack(`QuickstartTabToggle`)}
             >
               Data sources
             </Tabs.BarItem>
@@ -266,34 +320,42 @@ const QuickstartDetails = ({ data, location }) => {
                 <QuickstartOverview quickstart={quickstart} />
               </Tabs.Page>
               <Tabs.Page id="dashboards">
-                {quickstart.dashboards?.length > 0 ? (
-                  <QuickstartDashboards quickstart={quickstart} />
+                {dashboards?.length ? (
+                  <QuickstartDashboards
+                    displayName={displayName}
+                    dashboards={dashboards}
+                  />
                 ) : (
                   <EmptyTab
-                    quickstartUrl={quickstart.packUrl}
-                    quickstartName={quickstart.title}
+                    quickstartUrl={quickstartUrl}
+                    quickstartName={displayName}
                     tabName="dashboards"
                   />
                 )}
               </Tabs.Page>
               <Tabs.Page id="alerts">
-                {quickstart.alerts?.length > 0 ? (
-                  <QuickstartAlerts quickstart={quickstart} />
+                {alerts?.length ? (
+                  <QuickstartAlerts alerts={alerts} displayName={displayName} />
                 ) : (
                   <EmptyTab
-                    quickstartUrl={quickstart.packUrl}
-                    quickstartName={quickstart.title}
+                    quickstartUrl={quickstartUrl}
+                    quickstartName={displayName}
                     tabName="alerts"
                   />
                 )}
               </Tabs.Page>
               <Tabs.Page id="data-sources">
-                {quickstart.documentation?.length > 0 ? (
-                  <QuickstartDataSources quickstart={quickstart} />
+                {documentation?.length ? (
+                  <QuickstartDataSources
+                    displayName={displayName}
+                    documentation={documentation}
+                    id={id}
+                    slug={slug}
+                  />
                 ) : (
                   <EmptyTab
-                    quickstartUrl={quickstart.packUrl}
-                    quickstartName={quickstart.title}
+                    quickstartUrl={quickstartUrl}
+                    quickstartName={displayName}
                     tabName="data sources"
                   />
                 )}
@@ -336,20 +398,14 @@ const QuickstartDetails = ({ data, location }) => {
                 <li>
                   <Link
                     to={SIGNUP_LINK}
-                    onClick={trackQuickstart(
-                      'QuickstartDetailsSignUpClick',
-                      quickstart
-                    )}
+                    onClick={trackQuickstart('QuickstartDetailsSignUpClick')}
                   >
                     Sign Up
                   </Link>{' '}
                   for a free New Relic account or{' '}
                   <Link
                     to={LOGIN_LINK}
-                    onClick={trackQuickstart(
-                      'QuickstartDetailsLoginClick',
-                      quickstart
-                    )}
+                    onClick={trackQuickstart('QuickstartDetailsLoginClick')}
                   >
                     Log In
                   </Link>{' '}
@@ -371,7 +427,7 @@ const QuickstartDetails = ({ data, location }) => {
             />
             <PageTools.Section>
               <PageTools.Title>Authors</PageTools.Title>
-              <p>{quickstart.authors.join(', ')}</p>
+              <p>{authors.map((author) => author.name).join(', ')}</p>
             </PageTools.Section>
             <aside
               data-swiftype-index={false}
@@ -382,7 +438,7 @@ const QuickstartDetails = ({ data, location }) => {
             <PageTools.Section>
               <PageTools.Title>Support</PageTools.Title>
               <SupportSection
-                supportLevel={quickstart.level}
+                supportLevel={supportLevel}
                 onClick={tessenSupportTrack(quickstart)}
               />
             </PageTools.Section>
@@ -393,12 +449,14 @@ const QuickstartDetails = ({ data, location }) => {
               `}
             />
             <PageTools.Section>
-              <RelatedResources
-                css={css`
-                  padding: 0;
-                `}
-                resources={quickstart.relatedResources}
-              />
+              {relatedResources && (
+                <RelatedResources
+                  css={css`
+                    padding: 0;
+                  `}
+                  resources={relatedResources}
+                />
+              )}
             </PageTools.Section>
             <aside
               data-swiftype-index={false}
@@ -414,52 +472,9 @@ const QuickstartDetails = ({ data, location }) => {
 };
 
 QuickstartDetails.propTypes = {
-  data: PropTypes.shape({
-    quickstarts: quickstart,
-  }),
+  rawQuickstart: rawQuickstart.isRequired,
   location: PropTypes.object.isRequired,
+  error: PropTypes.bool,
 };
-
-export const pageQuery = graphql`
-  query($id: String!) {
-    quickstarts(id: { eq: $id }) {
-      name
-      title
-      relatedResources(limit: 5) {
-        title
-        url
-      }
-      level
-      keywords
-      id
-      description
-      summary
-      logoUrl
-      packUrl
-      dashboards {
-        description
-        name
-        screenshots
-        url
-      }
-      alerts {
-        details
-        name
-        url
-        type
-      }
-      documentation {
-        name
-        url
-        description
-      }
-      authors
-      installPlans {
-        id
-        name
-      }
-    }
-  }
-`;
 
 export default QuickstartDetails;

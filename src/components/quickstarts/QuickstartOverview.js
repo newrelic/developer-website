@@ -38,8 +38,8 @@ const QuickstartOverview = ({ quickstart }) => {
         {quickstart.dashboards.map((dashboard, index) => (
           <OverviewTile
             key={index}
-            title={dashboard.name}
-            image={dashboard.screenshots[0]}
+            title={dashboard.displayName}
+            image={dashboard.previews?.[0]?.url}
             description={dashboard.description}
             tag="Dashboard"
           />
@@ -47,15 +47,15 @@ const QuickstartOverview = ({ quickstart }) => {
         {quickstart.alerts.map((alert, index) => (
           <OverviewTile
             key={index}
-            title={alert.name}
-            description={alert.details}
+            title={alert.displayName}
+            description={alert.description}
             tag="Alert"
           />
         ))}
         {quickstart.documentation.map((doc, index) => (
           <OverviewTile
             key={index}
-            title={doc.name}
+            title={doc.displayName}
             description={doc.description}
             tag="Doc"
           />

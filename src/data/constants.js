@@ -23,7 +23,7 @@ export const CODESTREAM_QUICKSTART_ID = '29bd9a4a-1c19-4219-9694-0942f6411ce7';
 export const NR1_EXPLORER_NERDLET = 'nr1-core.listing';
 
 export const QUICKSTART_SUPPORT_LEVELS = {
-  NEWRELIC: 'NEWRELIC',
+  NEWRELIC: 'NEW_RELIC',
   VERIFIED: 'VERIFIED',
   COMMUNITY: 'COMMUNITY',
 };
@@ -37,7 +37,7 @@ export const QUICKSTART_ALERT_TYPES = {
   STATIC: 'STATIC',
 };
 
-export const SHIELD_LEVELS = ['NEWRELIC', 'VERIFIED'];
+export const SHIELD_LEVELS = ['NEW_RELIC', 'VERIFIED'];
 
 export const QUICKSTARTS_REPO =
   'https://github.com/newrelic/newrelic-quickstarts';
