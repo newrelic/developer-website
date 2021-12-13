@@ -6,7 +6,7 @@ const NERDGRAPH_URL = process.env.NERDGRAPH_URL;
 const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
 
 export const getServerData = async ({ query }) => {
-  const sortParam = query.sort || 'ALPHABETICAL';
+  const sortParam = query.sort || 'RELEVANCE';
 
   const QUICKSTARTS_QUERY = `
 query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
