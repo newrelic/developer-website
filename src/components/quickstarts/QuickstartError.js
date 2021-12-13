@@ -12,7 +12,7 @@ const QuickstartError = () => (
         text-align: center;
       `}
     >
-      Could not load quickstarts, try refreshing the page
+      Could not load quickstarts, try refreshing the page.
     </p>
   </div>
 );
