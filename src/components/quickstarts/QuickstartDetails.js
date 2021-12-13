@@ -320,7 +320,7 @@ const QuickstartDetails = ({ rawQuickstart = {}, location, error }) => {
                 <QuickstartOverview quickstart={quickstart} />
               </Tabs.Page>
               <Tabs.Page id="dashboards">
-                {dashboards?.length > 0 ? (
+                {dashboards?.length ? (
                   <QuickstartDashboards
                     displayName={displayName}
                     dashboards={dashboards}
@@ -334,7 +334,7 @@ const QuickstartDetails = ({ rawQuickstart = {}, location, error }) => {
                 )}
               </Tabs.Page>
               <Tabs.Page id="alerts">
-                {alerts?.length > 0 ? (
+                {alerts?.length ? (
                   <QuickstartAlerts alerts={alerts} displayName={displayName} />
                 ) : (
                   <EmptyTab
@@ -345,7 +345,7 @@ const QuickstartDetails = ({ rawQuickstart = {}, location, error }) => {
                 )}
               </Tabs.Page>
               <Tabs.Page id="data-sources">
-                {documentation?.length > 0 ? (
+                {documentation?.length ? (
                   <QuickstartDataSources
                     displayName={displayName}
                     documentation={documentation}
