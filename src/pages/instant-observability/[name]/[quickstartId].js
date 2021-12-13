@@ -40,6 +40,7 @@ query QuickstartDetailsQuery(
           keywords
           quickstartComponents {
             ... on Nr1CatalogQuickstartAlertCondition {
+              __typename
               id
               metadata {
                 description
@@ -49,6 +50,7 @@ query QuickstartDetailsQuery(
               sourceUrl
             }
             ... on Nr1CatalogQuickstartDashboard {
+              __typename
               id
               metadata {
                 description
@@ -66,6 +68,7 @@ query QuickstartDetailsQuery(
               sourceUrl
             }
             ... on Nr1CatalogQuickstartDocumentation {
+              __typename
               metadata {
                 description
                 displayName
