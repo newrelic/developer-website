@@ -43,18 +43,18 @@ export const quickstartInstallPlans = PropTypes.shape({
 });
 
 export const quickstart = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  level: PropTypes.oneOf(Object.values(QUICKSTART_SUPPORT_LEVELS)).isRequired,
-  description: PropTypes.string.isRequired,
-  authors: PropTypes.arrayOf(PropTypes.string).isRequired,
-  summary: PropTypes.string,
-  iconUrl: PropTypes.string,
-  logoUrl: PropTypes.string,
-  websiteUrl: PropTypes.string,
-  tags: PropTypes.arrayOf(PropTypes.string),
-  dashboards: PropTypes.arrayOf(quickstartDashboard),
-  alerts: PropTypes.arrayOf(quickstartAlert),
-  documentation: PropTypes.arrayOf(quickstartDocumentation),
-  installPlans: PropTypes.arrayOf(quickstartInstallPlans),
+  metadata: PropTypes.shape({
+    displayName: PropTypes.string,
+    slug: PropTypes.string,
+    keywords: PropTypes.array,
+    icon: PropTypes.shape({ url: PropTypes.string }),
+    summary: PropTypes.string,
+    description: PropTypes.string,
+    quickstartComponents: PropTypes.array,
+    authors: PropTypes.array,
+    installer: PropTypes.object,
+  }),
+  id: PropTypes.string,
+  sourceUrl: PropTypes.string,
+  supportLevel: PropTypes.oneOf(Object.values(QUICKSTART_SUPPORT_LEVELS)),
 });
