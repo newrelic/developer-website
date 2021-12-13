@@ -4,63 +4,27 @@ import QuickstartsPage from '../components/quickstarts/QuickstartsPage';
 
 const NERDGRAPH_URL = process.env.NERDGRAPH_URL;
 const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
-const QUICKSTARTS_QUERY = `
-{
+
+export const getServerData = async ({ query }) => {
+  const sortParam = query.sort || 'ALPHABETICAL';
+
+  const QUICKSTARTS_QUERY = `
+query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
   actor {
     nr1Catalog {
-      quickstarts {
+      search(sortBy: $sortBy) {
         totalCount
         results {
-          id
-          sourceUrl
-          supportLevel
-          metadata {
-            slug
-            summary
-            authors {
-              name
-            }
-            description
-            displayName
-            installer {
-              type
-              ... on Nr1CatalogInstallPlan {
-                steps {
-                  id
-                  displayName
-                }
-              }
-            }
-            icon {
-              url
-            }
-            keywords
-            quickstartComponents {
-              ... on Nr1CatalogQuickstartDocumentation {
-                __typename
-                metadata {
-                  displayName
-                  url
-                  description
-                }
-              }
-              ... on Nr1CatalogQuickstartDashboard {
-                __typename
-                metadata {
-                  description
-                  displayName
-                  previews {
-                    url
-                  }
-                }
-              }
-              ... on Nr1CatalogQuickstartAlertCondition {
-                __typename
-                metadata {
-                  description
-                  displayName
-                  type
-                }
+          ... on Nr1CatalogQuickstart {
+            id
+            supportLevel
+            featured
+            metadata {
+              summary
+              displayName
+              slug
+              icon {
+                url
               }
             }
           }
@@ -70,11 +34,14 @@ const QUICKSTARTS_QUERY = `
   }
 }
 `;
-export const getServerData = async () => {
+
   try {
     const resp = await fetch(NERDGRAPH_URL, {
       method: 'POST',
-      body: JSON.stringify({ query: QUICKSTARTS_QUERY }),
+      body: JSON.stringify({
+        query: QUICKSTARTS_QUERY,
+        variables: { sortBy: sortParam },
+      }),
       headers: {
         'Content-Type': 'application/json',
         'Api-Key': NEW_RELIC_API_KEY,
@@ -90,14 +57,15 @@ export const getServerData = async () => {
     if (json.data?.errors) {
       throw Error(`Errors returned from nerdgraph`, json.data.errors);
     }
-
-    const quickstarts = json.data?.actor?.nr1Catalog?.quickstarts;
-    console.log(`Found ${quickstarts.totalCount} quickstarts`);
+    const results = json.data?.actor?.nr1Catalog?.search?.results.filter(
+      (item) => Object.keys(item).length !== 0
+    );
+    console.log(`Found ${results?.length} quickstarts`);
 
     return {
       props: {
         error: false,
-        data: json.data,
+        data: results,
       },
     };
   } catch (err) {
@@ -113,13 +81,10 @@ export const getServerData = async () => {
 };
 
 const QuickstartsPageSSR = ({ serverData, location }) => {
-  const quickstarts =
-    serverData.data?.actor?.nr1Catalog?.quickstarts?.results || [];
-
   return (
     <QuickstartsPage
       errored={serverData.error}
-      quickstarts={quickstarts}
+      quickstarts={serverData.data}
       location={location}
     />
   );
