@@ -21,7 +21,12 @@ tags:
 
 <Intro>
 
-Here's how you can quickly build a "Hello, World!" application in New Relic One. In these steps, you create a local version of the New Relic One site where you can prototype your application. Then, when you're ready to share the application with others, you can publish it to New Relic One.
+Here's how you build a "Hello, world!" application in New Relic One.
+
+In this guide, you:
+
+- Create a local version of the New Relic One site where you prototype your application
+- Share your application with your teammates by publishing it to Instant Observability
 
 </Intro>
 
@@ -31,9 +36,11 @@ Developing applications requires a New Relic account and the New Relic One CLI (
 
 If you haven't already:
 
-- [Sign up](https://newrelic.com/signup/) for a New Relic account
+- [Sign up](https://newrelic.com/signup/) for a New Relic account. You need [publish and subscribe permissions](https://developer.newrelic.com/build-apps/permission-manage-apps/) to complete this guide.
 - Install [Node.js](https://nodejs.org/en/download/)
 - Complete the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==)
+
+Now, you have a Nerdpack, called `my-awesome-nerdpack`. This Nerdpack has a Nerdlet and a launcher that you named (though, this guide uses the default launcher name, "launcher", and Nerdlet name, "home"). You use this Nerdpack throughout this guide.
 
 Finally, make sure your `nr1` is up-to-date:
 
@@ -45,193 +52,323 @@ For additional details about setting up your environment, see [Set up your devel
 
 <Callout variant="tip">
 
-Use the [New Relic One VSCode extension](https://marketplace.visualstudio.com/items?itemName=new-relic.nr1)
-or the [New Relic VSCode extension pack](https://marketplace.visualstudio.com/items?itemName=new-relic.new-relic-extension-pack) to build your apps.
+If you use VSCode, we have an [extension](https://marketplace.visualstudio.com/items?itemName=new-relic.nr1) and an [extension pack](https://marketplace.visualstudio.com/items?itemName=new-relic.new-relic-extension-pack) you can use to build your app.
 
 </Callout>
 
-## Create a local version of the "Hello, World!" application
+## Update and serve your application locally
 
-The CLI allows you to run a local version of New Relic One. You can develop your application locally before you publish it in New Relic One.
+With `nr1`, you can serve a local build of your Nerdpack to New Relic One. This helps you develop your application in a production-like environment before you publish it.
 
-If you followed all the steps in the CLI quick start, you now have files under a new directory named after your nerdpack project. Here's how you edit those files to create a "Hello, World!" project:
+Before you change any code, familiarize yourself with the Nerdpack's directory structure:
+
+```txt lineHighlight=3-10,12
+my-awesome-nerdpack/
+├───README.md
+├───launchers/
+│   └───launcher/
+│       └───nr1.json
+├───nerdlets/
+│   └───home
+│       ├───index.js
+│       ├───nr1.json
+│       └───styles.scss
+├───node_modules/
+├───nr1.json
+├───package-lock.json
+└───package.json
+```
+
+The _launchers_ and _nerdlets_ directories contain the logic of your application. It's in these directories that you update most of your code. The _nr1.json_ files throughout the Nerdpack hold metadata about your Nerdpack, Nerdlets, and launchers.
+
+<Callout variant="tip">
+
+Read [our documentation](https://developer.newrelic.com/explore-docs/nerdpack-file-structure/) to learn more about the Nerdpack file structure.
+
+</Callout>
 
 <Steps>
 
 <Step>
 
-Open a code editor and point it to the new directory named after your nerdpack project (for example, `my-awesome-nerdpack`).
+In _my-awesome-nerdpack/nerdlets/home/index.js_, change the default return message to "Hello, world!":
 
-Your code editor displays two Nerdpack items:
-
-- `launchers` containing the homepage tile
-- `nerdlets` containing your application code
-
-</Step>
-
-  <Step>
-
-Expand `nerdlets` in your code editor, and open `index.js`.
-
-  </Step>
-
-  <Step>
-
-Change the default `return` message to `"Hello, World!"`:
-
-```js
+```js lineHighlight=7
 import React from 'react';
 
 // https://docs.newrelic.com/docs/new-relic-programmable-platform-introduction
 
-export default class MyAwesomeNerdpackNerdletNerdlet extends React.Component {
+export default class HomeNerdlet extends React.Component {
   render() {
-    return <h1>"Hello, World!"</h1>;
+    return <h1>Hello, world!</h1>;
   }
 }
 ```
 
-  </Step>
+</Step>
 
-  <Step>
+<Step>
 
-As an optional step, you can add a custom launcher icon using any image file named `icon.png`. Replace the default `icon.png` file under `launcher` by dragging in your new image file:
+As an optional step, you can [add a custom launcher icon](https://developer.newrelic.com/build-apps/publish-deploy/catalog/#update-your-nerdpacks-icons) using any image named _icon.png_.
 
-![Launcher Nerdpack item with icon.png](../../images/create-hello-world/custom-tile.png)
+In _launchers/launcher_, add an image called _icon.png_:
 
-  </Step>
+```txt lineHighlight=5
+my-awesome-nerdpack/
+├───README.md
+├───launchers/
+│   └───launcher/
+│       ├───icon.png
+│       └───nr1.json
+├───nerdlets/
+│   └───home
+│       ├───index.js
+│       ├───nr1.json
+│       └───styles.scss
+├───node_modules/
+├───nr1.json
+├───package-lock.json
+└───package.json
+```
 
- <Callout variant="tip">
+This creates an icon for your launcher.
 
-You will need an icon.png in 2 places for it to be representing properly in Instant Observability, To set a launcher icon place an icon.png file in the the launcher directory. To set the icon for the app details page place an icon in the root directory of the project.
+In the root directory, add the same image:
 
-</Callout>
+```txt lineHighlight=3
+my-awesome-nerdpack/
+├───README.md
+├───icon.png
+├───launchers/
+│   └───launcher/
+│       ├───icon.png
+│       └───nr1.json
+├───nerdlets/
+│   └───home
+│       ├───index.js
+│       ├───nr1.json
+│       └───styles.scss
+├───node_modules/
+├───nr1.json
+├───package-lock.json
+└───package.json
+```
 
-  <Step>
+This sets the icon for the app details page.
 
-To change the name of the launcher to something meaningful, in your code editor under `launchers`, open `nr1.json`.
+</Step>
 
-  </Step>
+<Step>
 
-  <Step>
+Next, change the name of the launcher to something more meaningful. In _my-awesome-nerdpack/launchers/launcher/nr1.json_, change the `displayName` to "Hello world":
 
-Change the value for `displayName` to anything you want as the launcher label, and save the file:
 
-```json
+```json lineHighlight=5
 {
   "schemaType": "LAUNCHER",
   "id": "my-awesome-nerdpack-launcher",
   "description": "Describe me",
-  "displayName": "INSERT_YOUR_TILE_LABEL_HERE",
+  "displayName": "Hello world",
   "rootNerdletId": "my-awesome-nerdpack-nerdlet"
 }
 ```
 
-  </Step>
+</Step>
 
-  <Step>
+<Step>
 
-To see your new changes locally, start the Node server with this command in your terminal:
+To see your new changes locally, start a local Node server from within the Nerdpack:
 
 ```bash
-npm start
+nr1 nerdpack:serve
+[output] Found and loaded {success}2 {plain}nr1.json files on MyAwesomeNerdpack ({purple}123a4b95-678c-9012-3456-d7e8f90g1hi2{plain}) Nerdpack.
+[output]
+[output] {purple}Nerdpack:
+[output]  {success}✔  MyAwesomeNerdpack {plain}({purple}123a4b95-678c-9012-3456-d7e8f90g1hi2{plain}) {blue}nr1.json
+[output]
+[output] {purple}Launchers:
+[output]  {success}✔  launcher {blue}launchers/launcher/nr1.json
+[output]
+[output] {purple}Nerdlets:
+[output]  {success}✔  home {blue}nerdlets/home/nr1.json
+[output]
+[output] There is no certificate created yet.
+[output]  {success}✔  {plain}New certificate created.
+[output]
+[output] Webpack bundle analyzer is enabled (you need to wait for the first build to finish)
+[output]  └  You can head to {blue}http://127.0.0.1:27888
+[output]
+[output] {blue}NOTE: {plain}To verify how your assets will look in production, you need to
+[output]       add "--mode=prod" when starting the development server.
+[output]
+[output] 🛠  Built artifact files for:ex.js...
+[output]  ⁎  {purple}123a4b95-678c-9012-3456-d7e8f90g1hi2--home {plain}built {success}✔
+[output]
+[output]  {success}✔  {plain}Nerdpack built successfully!
+[output]  {yellow}★  {plain}Starting as orchestrator...
+[output]
+[output]  {success}✔  {plain}Server ready! Test it at: {blue}https://one.newrelic.com/?nerdpacks=local
+[output]  {blue}↩  {plain}Server will reload automatically if you modify any file!
+[output]
+[output]  {blue}ℹ  {plain}Additionally, you can test the following artifacts at:
+[output]
+[output] {purple}Launchers:
+[output]  ⁎  {success}launcher {blue}https://onenr.io/0JBQrggmDwZ
+[output]  {blue}ℹ  {plain}You can use "npm start -- --mode=prod" to run the development server in prod mode.
 ```
 
-  </Step>
+</Step>
 
-  <Step>
+<Step>
 
-Open a browser and go to [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local) (this url is also shown in the terminal).
+Use the url at the bottom of the output to open your launcher:
 
-  </Step>
+```bash
+[output] {purple}Launchers:
+[output]  ⁎  {success}launcher {blue}https://onenr.io/0JBQrggmDwZ
+[output]  {blue}ℹ  {plain}You can use "npm start -- --mode=prod" to run the development server in prod mode.
+```
 
-  <Step>
+</Step>
 
-When the browser opens, click **Apps**, and then in the **Your apps** section, click the new launcher for your application. Here's an example where we inserted a leaf icon:
+<Step>
 
-![The customized nerdlet launcher](../../images/create-hello-world/hello-world-launcher.png)
-
-After you click the new launcher, your "Hello, World!" appears:
+Here, you see your Nerdlet with your "Hello, world!" message:
 
 ![Hello, World in the browser](../../images/create-hello-world/hello-world-output-local.png)
 
-  </Step>
-
-  </Steps>
-
-## Publish your application to New Relic
-
-Your colleagues can't see your local application, so when you are ready to share it, publish it to Instant Observability. Instant Observability is where you can find any pre-existing custom applications, as well as any applications you create in your own organization.
-
-<Steps>
-
-  <Step>
-
-Execute the following in your terminal:
-
-```bash
-nr1 nerdpack:publish
-```
-
-  </Step>
-
-  <Step>
-
-Close your local New Relic One development tab, and open [New Relic One](https://one.newrelic.com).
-
-  </Step>
-
-  <Step>
-
-Click the **Instant Observability** launcher.
-
-![Navigate to Instant Observability](../../images/serve-publish-subscribe/nav-to-io.png)
-
-  </Step>
-
-  <Step>
-
-Click the launcher for your new application.
-
-  </Step>
+</Step>
 
 </Steps>
 
-When your new application opens, notice that it doesn't display any helpful descriptive information. The next section shows you how to add descriptive metadata.
+## Publish your application
 
-![An empty application description in Instant Observability](../../images/create-hello-world/catalog-description-empty.png)
-
-## Add details to describe your project
-
-Now that your new application is in Instant Observability, you can add details that help users understand what your application does and how to use it.
+Because you're serving your Nerdpack locally, your colleagues can't see it. When you're ready, publish it to [Instant Observability](https://developer.newrelic.com/instant-observability/), our unified catalog of integrations, dashboards, alerts, Nerdpacks, and more. Read [our documentation](https://developer.newrelic.com/build-apps/permission-manage-apps/) to learn about Nerdpack permissions if you have trouble publishing your Nerdpack.
 
 <Steps>
 
-  <Step>
+<Step>
 
-Go to your project in the terminal and execute the following:
+From its root directory, publish your Nerdpack:
 
 ```bash
-nr1 create
+nr1 nerdpack:publish
+[output] Found and loaded {success}2 {plain}nr1.json files on MyAwesomeNerdpack ({purple}123a4b95-678c-9012-3456-d7e8f90g1hi2{plain}) Nerdpack.
+[output]
+[output] {purple}Nerdpack:
+[output]  {success}✔  MyAwesomeNerdpack ({purple}123a4b95-678c-9012-3456-d7e8f90g1hi2{plain}) {blue}nr1.json
+[output]
+[output] {purple}Launchers:
+[output]  {success}✔  {blue}launcher launchers/launcher/nr1.json
+[output]
+[output] {purple}Nerdlets:
+[output]  {success}✔  {blue}home nerdlets/home/nr1.json
+[output]
+[output] 🛠  Built artifact files for:
+[output]  ⁎  {purple}123a4b95-678c-9012-3456-d7e8f90g1hi2--home {plain}built {success}✔
+[output]
+[output]  {success}✔  {plain}Nerdpack built successfully!
+[output]
+[output] Publishing Nerdpack MyAwesomeNerdpack ({purple}123a4b95-678c-9012-3456-d7e8f90g1hi2{plain})
+[output]  {success}✔  {plain}Nerdpack published successfully!
+[output]  {success}✔  {plain}Tagged {purple}123a4b95-678c-9012-3456-d7e8f90g1hi2 {plain}version {blue}0.1.0 {plain}as {blue}STABLE.
 ```
 
-  </Step>
+</Step>
 
-  <Step>
+<Step>
 
-Select **catalog**, which creates a stub in your project under the _catalog_ directory in the root directory and any launcher, Nerdlet, or visualization directory. Here's how the results might look in your code editor:
+In [New Relic](https://one.newrelic.com), click **Instant Observability**:
 
-![Catalog stub](../../images/create-hello-world/new-catalog-stub.png)
+![Navigate to Instant Observability](../../images/serve-publish-subscribe/nav-to-io.png)
 
-  </Step>
+</Step>
 
-  <Step>
+<Step>
 
-In the root `catalog` directory of your project, add screenshots or various types of metadata to describe your project. You can also add screenshots in the catalog directories of your launcher or Nerdlet. For details about what you can add, see [Update your Nerdpack's catalog metadata](https://developer.newrelic.com/build-apps/publish-deploy/catalog/#update-your-nerdpacks-catalog-metadata)
+Find and click your new Nerdpack:
 
-  </Step>
+![Find your Nerdpack in Instant Observability](../../images/create-hello-world/click-nerdpack.png)
 
-  <Step>
+</Step>
+
+</Steps>
+
+When your new application opens, notice that it doesn't display any descriptive information. The next section shows you how to add descriptive metadata.
+
+![An empty application description in Instant Observability](../../images/create-hello-world/catalog-description-empty.png)
+
+## Describe your project with catalog details
+
+Now that your new application is in Instant Observability, you can add information to help users understand what your application does and how to use it.
+
+<Steps>
+
+<Step>
+
+In your Nerdpack's root directory, execute the following:
+
+```bash
+nr1 create --type catalog
+[output]  {success}✔  {plain}created: launchers/launcher/catalog
+[output]  {success}✔  {plain}created: nerdlets/home/catalog
+[output]
+[output]  {success}✔  {plain}catalog created successfully!
+[output]     {purple}catalog {plain}is available at "./catalog"
+```
+
+This creates three directories:
+
+- _launchers/launcher/catalog_: This holds launcher screenshots
+- _nerdlets/home/catalog_: This holds Nerdlet screenshots
+- _catalog_: This holds documentation, screenshots, a description, and more information about your Nerdpack
+
+<Callout variant="tip">
+
+If you had other launchers, Nerdlets, or custom visualizations, they would also get catalog directories from this command.
+
+</Callout>
+
+ Here's how the results look in your project:
+
+```txt lineHighlight=4-9,13-14,20-21
+my-awesome-nerdpack/
+├───README.md
+├───icon.png
+├───catalog/
+│   ├───README.md
+│   ├───additionalInfo.md
+│   ├───config.json
+│   ├───documentation.md
+│   └───screenshots/
+├───launchers/
+│   └───launcher/
+│       ├───icon.png
+│       ├───catalog/
+│       │   └───screenshots/
+│       └───nr1.json
+├───nerdlets/
+│   └───home
+│       ├───index.js
+│       ├───nr1.json
+│       ├───catalog/
+│       │   └───screenshots/
+│       └───styles.scss
+├───node_modules/
+├───nr1.json
+├───package-lock.json
+└───package.json
+```
+
+</Step>
+
+<Step>
+
+In the root _catalog_ directory of your project, add screenshots or various types of metadata to describe your project. You can also add screenshots in the catalog directories of your launcher or Nerdlet. For details about what you can add, see [Update your Nerdpack's catalog metadata](https://developer.newrelic.com/build-apps/publish-deploy/catalog/#update-your-nerdpacks-catalog-metadata).
+
+</Step>
+
+<Step>
 
 After you add the screenshots and descriptions you want, execute the following to save your metadata to the Instant Observability catalog:
 
@@ -239,15 +376,15 @@ After you add the screenshots and descriptions you want, execute the following t
 nr1 catalog:submit
 ```
 
-  </Step>
+</Step>
 
-  <Step>
+<Step>
 
 Return to Instant Observability and refresh the page to see your new screenshots and metadata describing your project.
 
 ![Overview View](../../images/create-hello-world/hello-world-overview.png)
 
-And if you added screenshots to your launcher or Nerdlet, you can see them under What's inside:
+And if you added screenshots to your launcher or Nerdlet, you can see them under **What's inside**:
 
 ![What's Inside View](../../images/create-hello-world/hello-world-whats-inside.png)
 
@@ -257,43 +394,63 @@ And if you added screenshots to your launcher or Nerdlet, you can see them under
 
 ## Subscribe accounts to your application
 
-To make sure other users see your application in Instant Observability, you need to subscribe accounts to the application. Any user with the NerdPack manager or admin role can subscribe to an application from accounts that they have permission to manage.
+You need to subscribe to your application to use it. To learn about what users on your account have the ability to subscribe, read our [permissions documentation](https://developer.newrelic.com/build-apps/permission-manage-apps/).
 
 <Steps>
 
-  <Step>
+<Step>
 
-If you're not already displaying your application's description page in the browser, click the launcher for the application in the catalog under **Your company applications**.
+If you're not already there, navigate to your application in Instant Observability:
 
-  </Step>
+![Find your Nerdpack in Instant Observability](../../images/create-hello-world/click-nerdpack.png)
 
-  <Step>
+</Step>
 
-On your application's description page, click **Add this app**.
+<Step>
 
-  </Step>
+On your application's description page, click **Add this app**:
 
-  <Step>
+![Add this app](../../images/create-hello-world/add-app.png)
 
-Select the accounts you want to subscribe to the application, and then click **Update accounts** to save your selections.
+</Step>
 
-  </Step>
+<Step>
+
+Select the accounts that you want to subscribe to the application, then update your accounts:
+
+![Update your accounts](../../images/create-hello-world/update-account.png)
+
+</Step>
+
+<Step>
+
+Go to the **Apps** page:
+
+![Apps page](../../images/create-hello-world/apps.png)
+
+Here, you find the apps your accounts are susbscribed to.
+
+</Step>
+
+<Step>
+
+Click your launcher:
+
+![Launcher](../../images/create-hello-world/launcher.png)
+
+Here, you see your application:
+
+![Hello, World in the browser](../../images/create-hello-world/hello-world-output-local.png)
+
+</Step>
 
 </Steps>
-
-When you return to the Apps page, you'll see the launcher for your new application.
-
-<Callout variant="tip" title="Advanced configurations">
-
-If you're interested in advanced configurations for your Nerdpack, read [Enable advanced configurations for your Nerdpack](/build-apps/advanced-config).
-
-</Callout>
 
 ## Summary
 
 Now that you've completed the steps in this example, you learned the basic steps to:
 
-- Create a local application.
-- Publish the application to Instant Observability so you can share it with your colleagues.
-- Add details to the project in the catalog so users understand how to use it.
-- Subscribe accounts to your application so other users can use it.
+- Create a local application
+- Publish the application to Instant Observability so you can share it with your colleagues
+- Add details to the project in the catalog so users understand how to use it
+- Subscribe accounts to your application so other users can use it
