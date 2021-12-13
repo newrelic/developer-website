@@ -14,6 +14,7 @@ import {
   UTM_PARAMETERS,
   SIGNUP_LINK,
 } from '../data/constants';
+import { quickstart } from '../types';
 import Cookies from 'js-cookie';
 import useTreatment from '../hooks/useTreatment';
 
@@ -190,13 +191,7 @@ const InstallButton = ({ quickstart, location, ...props }) => {
 };
 
 InstallButton.propTypes = {
-  quickstart: PropTypes.shape({
-    installer: PropTypes.object,
-    id: PropTypes.string,
-    quickstartUrl: PropTypes.string,
-    slug: PropTypes.string,
-    documentation: PropTypes.array,
-  }).isRequired,
+  quickstart: quickstart.isRequired,
   location: PropTypes.object.isRequired,
 };
 

@@ -27,6 +27,7 @@ import {
   LOGIN_LINK,
   SHIELD_LEVELS,
 } from '../../data/constants';
+import { rawQuickstart } from '../../types';
 import QuickstartOverview from './QuickstartOverview';
 import QuickstartError from './QuickstartError';
 
@@ -472,22 +473,7 @@ const QuickstartDetails = ({ rawQuickstart = {}, location, error }) => {
 };
 
 QuickstartDetails.propTypes = {
-  rawQuickstart: PropTypes.shape({
-    metadata: PropTypes.shape({
-      displayName: PropTypes.string,
-      slug: PropTypes.string,
-      keywords: PropTypes.array,
-      icon: PropTypes.shape({ url: PropTypes.string }),
-      summary: PropTypes.string,
-      description: PropTypes.string,
-      quickstartComponents: PropTypes.array,
-      authors: PropTypes.array,
-      installer: PropTypes.object,
-    }),
-    id: PropTypes.string,
-    sourceUrl: PropTypes.string,
-    supportLevel: PropTypes.string,
-  }),
+  rawQuickstart: rawQuickstart.isRequired,
   location: PropTypes.object.isRequired,
   error: PropTypes.bool,
 };
