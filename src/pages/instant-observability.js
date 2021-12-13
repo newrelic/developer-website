@@ -3,7 +3,7 @@ import React from 'react';
 import QuickstartsPage from '../components/quickstarts/QuickstartsPage';
 
 export const getServerData = async ({ query }) => {
-  const sortParam = query.sort || 'RELAVENCE';
+  const sortParam = query.sort || 'RELEVANCE';
   const NERDGRAPH_URL = process.env.NERDGRAPH_URL;
   const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
 
