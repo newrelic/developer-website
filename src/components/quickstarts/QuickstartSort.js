@@ -1,25 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { css } from '@emotion/react';
 import { navigate } from 'gatsby';
+import PropTypes from 'prop-types';
 
-import { Button, Icon, Link } from '@newrelic/gatsby-theme-newrelic';
-import { QUICKSTARTS_REPO } from '../../data/constants';
-
-const QuickstartSort = () => {
+const QuickstartSort = ({ className }) => {
+  const params = new URLSearchParams(location.search);
+  const sortParam = params.get('sort');
   const handleChange = (event) => {
-    console.log(event);
-    const params = new URLSearchParams(location.search);
     params.set('sort', event.target.value);
     navigate(`/instant-observability?${params.toString()}`);
   };
   return (
     <>
-      <label htmlFor="quickstart-sort-select">Sort</label>
       <select
+        className={className}
         onChange={handleChange}
         name="catalog-sort"
-        id="quickstart-sort-select"
+        value={sortParam || 'ALPHABETICAL'}
       >
         <option value="ALPHABETICAL">Alphabetical</option>
         <option value="POPULARITY">Popularity</option>
@@ -30,4 +26,7 @@ const QuickstartSort = () => {
   );
 };
 
+QuickstartSort.propTypes = {
+  className: PropTypes.string,
+};
 export default QuickstartSort;
