@@ -24,6 +24,8 @@ NEW_RELIC_API_KEY=NRAK-abc1234456
 NERDGRAPH_URL=https://api.newrelic.com/graphql
 ```
 
+For local production builds (yarn build:production) you'll need to use a `.env.production` file for the env vars.
+
 ### Dependencies
 
 Node v16 is used in this project as specified in [.nvmrc](https://github.com/newrelic/developer-website/blob/master/.nvmrc).

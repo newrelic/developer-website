@@ -3,7 +3,9 @@ import React from 'react';
 import QuickstartsPage from '../components/quickstarts/QuickstartsPage';
 
 export const getServerData = async ({ query }) => {
-  const sortParam = query.sort || 'ALPHABETICAL';
+  const sortParam = query.sort || 'RELAVENCE';
+  const NERDGRAPH_URL = process.env.NERDGRAPH_URL;
+  const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
 
   const QUICKSTARTS_QUERY = `
 query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
@@ -33,7 +35,7 @@ query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
 `;
 
   try {
-    const resp = await fetch(process.env.NERDGRAPH_URL, {
+    const resp = await fetch(NERDGRAPH_URL, {
       method: 'POST',
       body: JSON.stringify({
         query: QUICKSTARTS_QUERY,
@@ -41,7 +43,7 @@ query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
       }),
       headers: {
         'Content-Type': 'application/json',
-        'Api-Key': process.env.NEW_RELIC_API_KEY,
+        'Api-Key': NEW_RELIC_API_KEY,
       },
     });
 
@@ -57,6 +59,7 @@ query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
     const results = json.data?.actor?.nr1Catalog?.search?.results.filter(
       (item) => Object.keys(item).length !== 0
     );
+    /* eslint-disable-next-line no-console */
     console.log(`Found ${results?.length} quickstarts`);
 
     return {

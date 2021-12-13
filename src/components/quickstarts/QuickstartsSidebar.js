@@ -34,6 +34,7 @@ const QuickstartsSidebar = ({
       }
     `}
   >
+    {/* FIXME super tiles component moved out of experiment folder */}
     {isMobile && <SuperTilesExperiment isMobile />}
     <div
       css={css`

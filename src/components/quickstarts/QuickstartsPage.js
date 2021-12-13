@@ -19,6 +19,7 @@ import { navigate } from '@reach/router';
 
 import BUILD_YOUR_OWN from '../../images/build-your-own.svg';
 import GUIDED_INSTALL from '../../images/guided-install.svg';
+import { rawQuickstart } from '../../types';
 import { useDebounce } from 'react-use';
 import SuperTilesExperiment from '../../experiments/super_tiles';
 import QuickstartsSidebar from './QuickstartsSidebar';
@@ -575,7 +576,7 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
 };
 
 QuickstartsPage.propTypes = {
-  quickstarts: PropTypes.object.isRequired,
+  quickstarts: PropTypes.arrayOf(rawQuickstart),
   location: PropTypes.object,
   errored: PropTypes.bool,
 };
