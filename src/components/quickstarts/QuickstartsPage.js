@@ -20,7 +20,6 @@ import { navigate } from '@reach/router';
 import BUILD_YOUR_OWN from '../../images/build-your-own.svg';
 import GUIDED_INSTALL from '../../images/guided-install.svg';
 import { useDebounce } from 'react-use';
-import { sortFeaturedQuickstarts } from '../../utils/sortFeaturedQuickstarts';
 import SuperTilesExperiment from '../../experiments/super_tiles';
 import QuickstartsSidebar from './QuickstartsSidebar';
 
@@ -42,62 +41,6 @@ const FILTERS = [
 const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
-};
-
-/**
- * Determines if one string is a substring of the other, case insensitive
- * @param {String} substring the substring to test against
- * @returns {(Function) => Boolean} Callback function that determines if the argument has the substring
- */
-const stringIncludes = (substring) => (fullstring) =>
-  fullstring.toLowerCase().includes(substring.toLowerCase());
-
-/**
- * Filters a quickstart based on a provided search term.
- * @param {String} search Search term.
- * @returns {(Function) => Boolean} Callback function to be used by filter.
- */
-const filterBySearch = (search) => ({
-  title,
-  summary,
-  description,
-  keywords,
-}) => {
-  if (!search) {
-    return true;
-  }
-
-  const searchIncludes = stringIncludes(search);
-  return (
-    searchIncludes(title) ||
-    searchIncludes(summary) ||
-    searchIncludes(description) ||
-    keywords.some(searchIncludes)
-  );
-};
-
-/**
- * Filters a quickstart based on a content type.
- * @param {String} type The content type (e.g. 'alerts').
- * @returns {(Function) => Boolean} Callback function to be used by filter.
- */
-const filterByContentType = (type) => (quickstart) => {
-  return type === [] || (quickstart[type] && quickstart[type].length > 0);
-};
-
-/**
- * Filters a quickstart based on a category.
- * @param {String} category The category type (e.g. 'featured').
- * @returns {(Function) => Boolean} Callback function to be used by filter.
- */
-const filterByCategory = (category) => {
-  const { associatedKeywords = [] } =
-    CATEGORIES.find(({ value }) => value === category) || {};
-
-  return (quickstart) =>
-    !category ||
-    (quickstart.keywords &&
-      quickstart.keywords.find((k) => associatedKeywords.includes(k)));
 };
 
 const QuickstartsPage = ({ location, quickstarts, errored }) => {
@@ -141,9 +84,6 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
   const closeCategoriesOverlay = () => {
     setIsCategoriesOverlayOpen(false);
   };
-
-  const filterByContentTypes = (quickstart) =>
-    filters.every((filter) => filterByContentType(filter)(quickstart));
 
   const handleFilter = (value, e) => {
     const currentFilters = filters.slice();
@@ -197,56 +137,25 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
     [search]
   );
 
-  const alphaSort = quickstarts.sort((a, b) =>
-    a.metadata.displayName.localeCompare(b.metadata.displayName)
-  );
-  let sortedQuickstarts = sortFeaturedQuickstarts(alphaSort);
-
   // Hard-code for moving codestream object to front of sortedQuickstarts array - CM
   if (
     (!category && !filters.length && !search) ||
     (category === 'featured' && !filters.length && !search)
   ) {
     // uuid is codestream id specifically - CM
-    const codestreamIndex = sortedQuickstarts.findIndex(
+    const codestreamIndex = quickstarts.findIndex(
       ({ id }) => id === '29bd9a4a-1c19-4219-9694-0942f6411ce7'
     );
 
     if (codestreamIndex > -1) {
-      const codestreamObject = sortedQuickstarts[codestreamIndex];
-      sortedQuickstarts = [
+      const codestreamObject = quickstarts[codestreamIndex];
+      quickstarts = [
         codestreamObject,
-        ...sortedQuickstarts.slice(0, codestreamIndex),
-        ...sortedQuickstarts.slice(codestreamIndex + 1),
+        ...quickstarts.slice(0, codestreamIndex),
+        ...quickstarts.slice(codestreamIndex + 1),
       ];
     }
   }
-
-  const filteredSearchAndCategoryQuickstarts = sortedQuickstarts
-    .filter(filterBySearch(search))
-    .filter(filterByCategory(category));
-
-  const filteredQuickstarts = filters?.reduce(
-    (acc, filter) => acc.filter(filterByContentType(filter)),
-    filteredSearchAndCategoryQuickstarts
-  );
-
-  const categoriesWithCount = CATEGORIES.map((cat) => ({
-    ...cat,
-    count: quickstarts
-      .filter(filterBySearch(search))
-      .filter(filterByCategory(cat.value))
-      .filter(filterByContentTypes).length,
-  }));
-
-  const filtersWithCount = FILTERS.map((filter) => ({
-    ...filter,
-    count: quickstarts
-      .filter(filterBySearch(search))
-      .filter(filterByContentTypes)
-      .filter(filterByContentType(filter.type))
-      .filter(filterByCategory(category)).length,
-  }));
 
   return (
     <>
@@ -279,9 +188,9 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
         <QuickstartsSidebar
           isMobile={isMobile}
           clearFilters={clearFilters}
+          filtersWithCount={FILTERS}
+          categoriesWithCount={CATEGORIES}
           filters={filters}
-          filtersWithCount={filtersWithCount}
-          categoriesWithCount={categoriesWithCount}
           category={category}
           handleFilter={handleFilter}
           handleCategory={handleCategory}
@@ -334,7 +243,6 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
               onClear={() => setSearch('')}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <QuickstartSort />
             {isMobile && (
               <div
                 css={css`
@@ -392,7 +300,7 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                         overflow-y: scroll;
                       `}
                     >
-                      {filtersWithCount.map(({ name, type, icon, count }) => (
+                      {FILTERS.map(({ name, type, icon, count }) => (
                         <QuickstartFilter
                           key={name}
                           name={name}
@@ -460,28 +368,26 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                         overflow-y: scroll;
                       `}
                     >
-                      {categoriesWithCount.map(
-                        ({ displayName, value, count }) => (
-                          <Button
-                            type="button"
-                            key={value}
-                            onClick={() => handleCategory(value)}
-                            css={css`
-                              padding: 1rem 0.5rem;
-                              width: 100%;
-                              display: flex;
-                              justify-content: flex-start;
-                              color: var(--primary-text-color);
-                              font-weight: 100;
-                              background: ${category === value
-                                ? 'var(--divider-color)'
-                                : 'none'};
-                            `}
-                          >
-                            {`${displayName} (${count})`}
-                          </Button>
-                        )
-                      )}
+                      {CATEGORIES.map(({ displayName, value, count }) => (
+                        <Button
+                          type="button"
+                          key={value}
+                          onClick={() => handleCategory(value)}
+                          css={css`
+                            padding: 1rem 0.5rem;
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-start;
+                            color: var(--primary-text-color);
+                            font-weight: 100;
+                            background: ${category === value
+                              ? 'var(--divider-color)'
+                              : 'none'};
+                          `}
+                        >
+                          {`${displayName} (${count})`}
+                        </Button>
+                      ))}
                     </div>
                     <div
                       css={css`
@@ -536,41 +442,54 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
               </Button>
             )}
           </div>
-
           <div
             css={css`
-              padding: 1.25rem 0;
-              font-size: 0.9rem;
-              color: var(--secondary-text-color);
               display: flex;
-              justify-content: space-between;
+              flex-direction: column;
+              margin-top: 1rem;
             `}
           >
-            <span>Showing {filteredQuickstarts.length} results</span>
-
+            <QuickstartSort
+              css={css`
+                align-self: flex-end;
+                width: fit-content;
+              `}
+            />
             <div
               css={css`
-                min-width: 155px;
-                margin-left: 20px;
-                display: inline;
-
-                @media screen and (max-width: 1180px) {
-                  margin-left: 0px;
-                }
+                padding: 1.25rem 0;
+                font-size: 0.9rem;
+                color: var(--secondary-text-color);
+                display: flex;
+                justify-content: space-between;
               `}
             >
-              <SegmentedControl
-                items={Object.values(VIEWS)}
-                onChange={(_e, view) => {
-                  setView(view);
+              <span>Showing {quickstarts.length} results</span>
 
-                  tessen.track({
-                    eventName: 'instantObservability',
-                    category: 'QuickstartViewToggle',
-                    quickstartViewState: view,
-                  });
-                }}
-              />
+              <div
+                css={css`
+                  min-width: 155px;
+                  margin-left: 20px;
+                  display: inline;
+
+                  @media screen and (max-width: 1180px) {
+                    margin-left: 0px;
+                  }
+                `}
+              >
+                <SegmentedControl
+                  items={Object.values(VIEWS)}
+                  onChange={(_e, view) => {
+                    setView(view);
+
+                    tessen.track({
+                      eventName: 'instantObservability',
+                      category: 'QuickstartViewToggle',
+                      quickstartViewState: view,
+                    });
+                  }}
+                />
+              </div>
             </div>
           </div>
           {errored ? (
@@ -639,11 +558,11 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                   }}
                 />
               )}
-              {filteredQuickstarts.map((quickstart) => (
+              {quickstarts.map((quickstart) => (
                 <PackTile
                   key={quickstart.id}
                   view={view}
-                  featured={quickstart.metadata.keywords?.includes('featured')}
+                  featured={quickstart.featured}
                   {...quickstart}
                 />
               ))}
