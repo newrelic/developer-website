@@ -531,7 +531,9 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                     margin: 0 0.5rem 0 0;
                   `}
                 />
-                {`Clear current (${filters.length}) filters`}
+                {`Clear current (${filters.length}) filter${
+                  filters.length === 1 ? '' : 's'
+                }`}
               </Button>
             )}
           </div>
@@ -545,7 +547,9 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
               justify-content: space-between;
             `}
           >
-            <span>Showing {filteredQuickstarts.length} results</span>
+            <span>{`Showing ${filteredQuickstarts.length} result${
+              filteredQuickstarts.length === 1 ? '' : 's'
+            }`}</span>
 
             <div
               css={css`
