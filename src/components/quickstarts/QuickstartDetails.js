@@ -15,6 +15,7 @@ import {
   Button,
   Icon,
   Link,
+  ExternalLink,
   RelatedResources,
 } from '@newrelic/gatsby-theme-newrelic';
 import InstallButton from '../InstallButton';
@@ -256,10 +257,9 @@ const QuickstartDetails = ({ rawQuickstart = {}, location, error }) => {
             >
               <InstallButton quickstart={quickstart} location={location} />
               <Button
-                as={Link}
+                as={ExternalLink}
                 variant={Button.VARIANT.OUTLINE}
                 to={quickstartUrl}
-                rel="noopener noreferrer"
                 css={css`
                   margin: 0 0 0 0.5rem;
                   @media (max-width: 760px) {
