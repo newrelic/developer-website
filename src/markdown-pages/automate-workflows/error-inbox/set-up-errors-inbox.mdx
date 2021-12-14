@@ -1,40 +1,52 @@
 ---
-title: 'Set up errors inbox'
+title: 'Set up Errors Inbox'
 template: 'GuideTemplate'
-description: 'Set up errors inbox in New Relic'
-duration: 15
+description: 'Set up Errors Inbox in New Relic'
+duration: 5
 procIdx: 2
 ---
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to track full stack errors using errors inbox.
+This procedure is part of a lab that teaches you how to manage errors using Errors Inbox.
 
-Each procedure in the lab builds upon the last, so make sure you've [set your lab environment](/automate-workflows/error-inbox/spin-up-geek-movie) before starting this one.
+Each procedure in the lab builds upon the last, so make sure you're [running your application locally](/automate-workflows/error-inbox/spin-up-geek-movie) before starting this one.
 
 </Callout>
-Your app is now running in a development environment and your goal is to use errors inbox to proactively debug your application before deploying it to production. To observe your application in errors inbox, you first create a workload.
 
-A workload groups specific apps and services that you want to monitor and provides an aggregated view of the health and activities of the entities in the workload.
-
-In this procedure, you create a workload with all the geek movie shop services and observe this workload in errors inbox.
+With your app now running in a local development environment, your next goal is to set up Errors Inbox. With it, you can debug your application before you deploy it to production.
 
 ## Create a workload
 
-Before you observe your application in errors inbox, you need to create a workload.
+To observe your application in Errors Inbox, you first create a [workload](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/workloads/workloads-isolate-resolve-incidents-faster/).
+
+In a workload, you group specific apps and services that you want to monitor. The workload then provides an aggregated view of the health and activities of those apps and services.
+
 <Steps>
+
 <Step>
 
-Navigate to [New Relic One](one.newrelic.com) and sign in with your account.
+Sign in to [New Relic](https://one.newrelic.com).
+
 </Step>
+
 <Step>
 
-Click **+ Create a workload** in top right hand corner.
-![create a workload](../../../images/error-inbox/create-a-workload.png)
+In the top right corner, click **Create a workload**.
+
+![Create a workload](../../../images/error-inbox/create-a-workload.png)
+
 </Step>
+
 <Step>
 
-Name your workload as _error-inbox-lab_. Under **Select entities**, click **+ Add** for each of the following geek shop services to include it in the workload.
+Name your workload "error-inbox-lab".
+
+</Step>
+
+<Step>
+
+Under **Select entities**, click **Add** for each of the following services to include it in the workload:
 
 - geek-shop-cart-service
 - geek-shop-catalogue-service
@@ -44,48 +56,56 @@ Name your workload as _error-inbox-lab_. Under **Select entities**, click **+ Ad
 - geek-shop-shipping-service
 - geek-shop-user-service
 
-![add service to workload](../../../images/error-inbox/add-service-to-workload.png)
+![Add service to workload](../../../images/error-inbox/add-service-to-workload.png)
 
 </Step>
+
 <Step>
 
-Click **Create a workload** once you've added all the services.
-![create a workload with services](../../../images/error-inbox/create-a-service-workload.png)
+Click **Create a workload**.
+
+![Create a workload with services](../../../images/error-inbox/create-a-service-workload.png)
+
+This creates a workload with all the geek-shop services.
+
+![Errors Inbox lab workload](../../../images/error-inbox/workload-ui.png)
+
 </Step>
+
 </Steps>
 
-This creates a workload with all the geek-movie services for you and automatically redirects you to view the workload in New Relic.
-![errors inbox lab workload](../../../images/error-inbox/workload-ui.png)
+## View the Errors Inbox
 
-Read more about workloads in [our docs](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/workloads/workloads-isolate-resolve-incidents-faster/).
-
-Now that you have created workload, you can set up errors inbox.
-
-## Set up errors inbox
-Set up errors inbox to start tracking errors across your workload.
+Now that you've created a workload, view its Errors Inbox.
 
 <Steps>
+
 <Step>
 
-From [New Relic One](one.newrelic.com), select **Errors Inbox** from the top nav.
-![navigate to errors inbox](../../../images/error-inbox/errors-inbox-ui.png)
+From the top navigation bar on the homepage, select **Errors Inbox**.
+
+![Navigate to Errors Inbox](../../../images/error-inbox/errors-inbox-ui.png)
+
 </Step>
+
 <Step>
 
-Click **Select Workload** and select **error-inbox-lab** workload from the drop down.
+Click **Select Workload**, then **error-inbox-lab** from the dropdown.
+
 ![select a workload](../../../images/error-inbox/select-workload.png)
-</Step>
-<Step>
 
-You see the error groups across your workload here.
-![errors group in errors inbox](../../../images/error-inbox/error-groups-in-errors-inbox.png)
+This shows you the error groups across your workload.
+
+![Errors group in Errors Inbox](../../../images/error-inbox/error-groups-in-errors-inbox.png)
+
 </Step>
+
 </Steps>
 
-Your errors inbox is now set and you can start proactively monitoring errors across your stack.
+Now that you have an Errors Inbox for your workload, you can proactively monitor the errors across your stack.
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to track full stack errors using errors inbox. Now that you've set up errors inbox, continue on to next procedure, [Triage your errors](/automate-workflows/error-inbox/triage-errors).
+This procedure is part of a lab that teaches you how to track full stack errors using Errors Inbox. Now that you've set up Errors Inbox, it's time to [triage your errors](/automate-workflows/error-inbox/triage-errors).
 
 </Callout>

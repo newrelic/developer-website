@@ -68,7 +68,7 @@
       pages:
         - title: Spin up Geek movie shop architecture
           url: '/automate-workflows/error-inbox/spin-up-geek-movie'
-        - title: Set up errors inbox
+        - title: Set up Errors Inbox
           url: '/automate-workflows/error-inbox/set-up-errors-inbox'
         - title: Triage your errors
           url: '/automate-workflows/error-inbox/triage-errors'

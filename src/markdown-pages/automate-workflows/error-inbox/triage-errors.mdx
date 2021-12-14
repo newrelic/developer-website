@@ -2,114 +2,160 @@
 path: '/automate-workflows/error-inbox/triage-errors'
 title: 'Triage your errors'
 template: 'GuideTemplate'
-description: 'Track and triage errors across your stack with errors inbox'
-duration: 15
+description: 'Track and triage errors across your stack with Errors Inbox'
+duration: 5
 procIdx: 3
 ---
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to track full stack errors using errors inbox. 
+This procedure is part of a lab that teaches you how to manage errors using Errors Inbox.
 
-Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [Set up errors inbox](/automate-workflows/error-inbox/set-up-errors-inbox), before starting this one.
-
-</Callout>
-
-Although your application is still running in development but now, you're able to observe errors across your application in errors inbox. Since you want to ensure a smooth experience for your customers, the next step is to use errors inbox to analyze the errors in full context and triage them before you push changes to production.  
-
-Triaging helps removing the noise from your errors inbox so you focus on the high impact errors and resolve them before they affect your customers.
-
-In this procedure, you track and triage errors across your workload using errors inbox. 
-
-<Callout variant='important'>
-
-Errors inbox is not available in the EU region.
+Each procedure in the lab builds upon the last, so make sure you've [set up Errors Inbox](/automate-workflows/error-inbox/set-up-errors-inbox) before starting this one.
 
 </Callout>
 
-## Triage your errors in errors inbox
+Geek's Movie Shop is running in your development environment, and you're able to see its errors in Errors Inbox. Because you want to ensure a smooth experience for your customers, you need to analyze and triage these errors.
 
-You can triage error groups directly from the main screen. 
+By triaging your errors, you reduce the noise in your inbox. This helps you focus on the errors that impact your application the most.
 
-### See error details
+## View error details
 
-You see all the unresolved errors across your application in errors inbox but now you want to understand the root cause of the errors. To debug your application, you need more details. You see the error details on error details page:
+In Errors Inbox, you see all unresolved errors across your application by default. Sometimes you need to learn more about an error before you can decide what to do with it.
 
-Click on **pika.exceptions:ChannelWrongStateError** error.
+<Steps>
+
+<Step>
+
+Click the `pika.exceptions:ChannelWrongStateError`.
+
 ![pika.exceptions:ChannelWrongStateError error](../../../images/error-inbox/channel-wrong-state-error.png)
 
-This takes you to error details page. 
-![error detail page](../../../images/error-inbox/error-detail-page.png)
+This takes you to its details page.
 
-Here, you find full context of the issue including **Occurances**, **Stack Trace**, and others. Stack trace is especially important since it helps you narrow down the cause of the problem. 
+![Error detail page](../../../images/error-inbox/error-detail-page.png)
 
-Under **Stack Trace**, click **Show all** in bottom right corner.
-![show full stack trace](../../../images/error-inbox/show-full-stack-trace.png)
+Here, you see the error's full context, including its stack trace and the number of times it occurred. The stack trace is especially important since it helps you narrow down the cause of the problem.
 
-This shows you the full stack trace. 
+</Step>
+
+<Step>
+
+In the bottom right corner of **Stack Trace**, click **Show all**.
+
+![Show full stack trace](../../../images/error-inbox/show-full-stack-trace.png)
+
+The full trace tells you that something is wrong in your payment service.
+
 ![full stack trace](../../../images/error-inbox/full-trace.png)
 
-By taking a closer look at the above trace, you know for sure that something is wrong in your payment service. If this were your real world application, you could use this stack trace and other details from this view to fix the issue before pushing your code to production. As you're focused on using errors inbox in this lab, ignore this step.
+If this were a real-world application, you could use this stack trace and other details from this view to fix the issue. However, in this lab you're focused on using Errors Inbox, so skip this step.
 
 <Callout variant='tip'>
 
-You can also integrate [CodeStream](https://newrelic.com/codestream) with your errors inbox. This allows you to explore the stack trace in your IDE on a click of a single button. Once you've configured CodeStream, click ** Open in IDE** button to navigate to your IDE and explore the error.
+You can also integrate [CodeStream](https://newrelic.com/codestream) with your Errors Inbox. This allows you to jump to the relevant code in your IDE with the click of a button.
+
+Once you've configured CodeStream, click ** Open in IDE**.
+
 ![Code Stream Integration](../../../images/error-inbox/codestream.png)
+
 </Callout>
 
-### Set error statuses
+</Step>
 
-You were told that another developer on your team fixed **pika.exceptions:ChannelWrongStateError** and you want to change it's status now.
-Each error in errors inbox has unresolved status by defulat. But you can set your error status as resolved, or ignored.  
+</Steps>
 
-#### Set the error status as 'Resolved'
-Since you were told that the issue was fixed, you come back to errors inbox and change its status to resolved. 
+## Set an error's status
 
-Navigate to **Errors inbox** in New Relic One.
-![errors inbox](../../../images/error-inbox/errors-inbox.png)
+Each error in Errors Inbox is **Unresolved** by default. But if you fix a bug or decide it isn't worth fixing, you can change its status to reflect that.
 
-Change your error status:
+Another developer on your team said they fixed this `pika.exceptions:ChannelWrongStateError`, so update its status to **Resolved**.
 
-Click **Unresolved** against the error.
-![channel wrong state error](../../../images/error-inbox/channel-wrong-state.png)
+<Steps>
 
-You see two options in the dropdown here. Select **Resolve**.
-![set error status to resolve](../../../images/error-inbox/resolve-error.png)
+<Step>
 
-Once the status is updated, you no longer see the error on the main screen. However, if the error still persists, then it'll automatically be marked as unresolved.
+In New Relic, navigate to **Errors Inbox**.
+
+![Errors Inbox](../../../images/error-inbox/errors-inbox.png)
+
+</Step>
+
+<Step>
+
+On the error's row, click the status dropdown.
+
+![Channel wrong state error](../../../images/error-inbox/channel-wrong-state.png)
+
+You see two options in the dropdown:
+
+- **Resolve**
+- **Ignore**
+
+</Step>
+
+<Step>
+
+Select **Resolve**.
+
+![Set error status to resolve](../../../images/error-inbox/resolve-error.png)
+
+When you resolve an error, it no longer appears on the main screen. However, if the error occurs again, Errors Inbox automatically unresolves it.
 
 <Callout variant='tip'>
 
-Some errors are expected and part of the system as it operates. Those errors can be ignored from inside errors inbox. For instance, if instead of resolving the error, you wanted to ignore it, you could do that here as well.
+If you want to ignore an error instead of resolving it, you can do that here as well.
 
-![ignore error](../../../images/error-inbox/set-ignore-error.png)
+![Ignore error](../../../images/error-inbox/set-ignore-error.png)
 
-Once the status is updated, you no longer see the error on the main screen until you stop ignoring or change the filter to include ignored error groups. 
+When you ignore an error, it no longer appears on the main screen. To see it again, either change the filter to include ignored error groups or stop ignoring the error.
+
 </Callout>
 
-### Assign errors
-You were told that somebody on your team fixed **pika.exceptions:ChannelWrongStateError** error and you marked it resolved. However, you come back to see the error is marked unresolved again. 
-![unresolved error groups](../../../images/error-inbox/unresolved-errors.png)
+</Step>
 
-Oops! You don't know who fixed this error previously and there's no way for you to find that out. To avoid such situation in future, assign the error from inside errors inbox.
+</Steps>
 
-Click the person icon on the far right side of the error group.
-![assign error](../../../images/error-inbox/assign-error.png)
+## Assign an error
 
-You've decided you're going to take care of this error yourself. Enter your email address and click **+**. 
-![assign error via email](../../../images/error-inbox/assign-error-via-email.png)
+Refresh the page. Oops! You resolved `pika.exceptions:ChannelWrongStateError`, but it's back in your **Unresolved** error groups.
 
-The error is now assigned to you. 
+![Unresolved error groups](../../../images/error-inbox/unresolved-errors.png)
+
+Apparently the bug wasn't fixed after all. You've decided to fix the error yourself.
+
+<Steps>
+
+<Step>
+
+On the far right side of the error group, click the user icon.
+
+![Assign error](../../../images/error-inbox/assign-error.png)
+
+</Step>
+
+<Step>
+
+Enter and submit your email address.
+
+![Assign error via email](../../../images/error-inbox/assign-error-via-email.png)
+
+This tells your team that you're responsible for resolving the error.
 
 <Callout variant='tip'>
 
-Currently assigning an error group to a user does not send a notification. Notifications of assignment and changes to error groups will be coming soon.
+Currently, when you assign an error group to a user, they don't receive a notification. Notifications are coming soon.
+
 </Callout>
 
-Once you assign error in errors inbox, it keeps a track of who worked on the error. In case you come back to see this error again sometime later, it'll be easier for you to keep a track of who worked on this error. 
+</Step>
+
+</Steps>
+
+You've triaged the `pika.exceptions:ChannelWrongStateError`. You can do the same for a few others as well. After ignoring, resolving, and assigning errors, your inbox is looking a lot cleaner than when you first saw it. Next, you filter your inbox and integrate it with other services so you can find, prioritize, and fix the errors that need fixing before you release your new app version to the world.
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to track full stack errors using errors inbox. Now that you've triaged errors in errors inbox, continue on to next procedure, [Manage your triaged errors](/automate-workflows/error-inbox/manage-errors).
+This procedure is part of a lab that teaches you how to track full stack errors using Errors Inbox. Now that you've triaged your errors, it's time to [manage them](/automate-workflows/error-inbox/manage-errors).
 
 </Callout>

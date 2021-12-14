@@ -1,60 +1,77 @@
 ---
-title: 'Spin up Geek movie architecture'
+title: 'Spin up your application'
 template: 'GuideTemplate'
-description: 'Set up your your environment to deploy geek movie shop.'
-duration: 20
+description: "Set up your your environment to deploy Geek's Movie Shop."
+duration: 5
 procIdx: 1
 ---
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to track full stack errors using errors inbox. If you haven't already, check out the [lab introduction](/automate-workflows/error-inbox).
+This procedure is part of a lab that teaches you how to manage errors using Errors Inbox. If you haven't already, check out the [lab introduction](/automate-workflows/error-inbox).
 
 </Callout>
 
-Geek's Movie Shop is a web application that consists of several interconnected microservices like cart, catalogue, payment, user, and more. These services are instrumented with New Relic for performance monitoring and full visibility across all layers.
-The application is currently running in development environment and you're trying to catch any errors that you can before pushing the site to production. To test your application services, you're also generating load with a special service running in your docker network.
-In this lab, you use New Relic's Errors Inbox to track and triage errors across your stack.
+Geek's Movie Shop is a web application that consists of several interconnected microservices:
+
+- cart
+- catalogue
+- dispatch
+- payment
+- ratings
+- shipping
+- user
+
+You've instrumented these services with New Relic to monitor their performance and gain full visibility across your stack.
+
+Before you begin using Errors Inbox to proactively find and manage errors in your app, you need to spin up these services in a local docker network. To mimic the traffic of real users, you run a special service that automatically generates load.
 
 ## Set up your environment
 
-Before you begin with the lab, set up your development environment.
 <Steps>
+
 <Step>
-Clone the lab repository:
+
+Clone the lab repository.
 
 ```bash
 git clone https://github.com/newrelic-experimental/error-inbox-lab-material.git
 ```
 
 </Step>
+
 <Step>
 
-Open the cloned repo in your IDE and edit the _.env_ file to set these variables:
+In your cloned repo, open _.env_ to customize your environment variables.
 
-```
+```txt
 DOCKERHUB_USER=username
 TAG=latest
 CLUSTER_NAME=local
 PUBLIC_URL=http://docker-for-desktop:8888
 
-NEW_RELIC_LICENSE_KEY=<YOUR_LISCENCE_KEY>
+NEW_RELIC_LICENSE_KEY=<YOUR_LICENSE_KEY>
 ```
 
-Here, NEW_RELIC_LICENSE_KEY is your liscence key for New Relic account. Your application uses this key to write telemetry data to New Relic. [You can find your New Relic license key in your account settings](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/).
+Replace `<YOUR_LICENSE_KEY>` with your real [license key](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher). Your services use this key to write telemetry data to New Relic.
+
 </Step>
+
 <Step>
 
-Navigate to the root directory of your application and export these variables:
+From the root directory of your application, export these variables.
 
 ```bash
 source .env
 ```
 
-This sets all the environment variables needed to run your application.
+Now you're ready to run your app!
+
 </Step>
+
 <Step>
-Build and run the application:
+
+Build and run your application.
 
 ```bash animate
 docker compose build
@@ -83,16 +100,19 @@ docker compose up
 [output] {blue}=> [username/rs-loader:latest internal] load build definition from Dockerfile                          0.0s
 [output] {blue}=> => transferring dockerfile: 187B                                                                    0.0s
 ```
-Once your application is up and running, you'll see loader generating the traffic:
+
+Once it's up and running, the loader generates traffic to your services.
 
 ![loader traffic](../../../images/error-inbox/loader-traffic.png)
 
-Leave the application running so you could see the telemetry data in New Relic.
+Leave this running so you'll see your telemetry data in New Relic.
+
 </Step>
+
 </Steps>
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to track full stack errors using errors inbox. Now that you've set up your lab environment, continue on to next procedure, [Set up errors inbox](/automate-workflows/error-inbox/set-up-errors-inbox).
+This procedure is part of a lab that teaches you how to manage errors using Errors Inbox. Now that you're running a local version of your app, it's time to [set up Errors Inbox](/automate-workflows/error-inbox/set-up-errors-inbox).
 
 </Callout>
