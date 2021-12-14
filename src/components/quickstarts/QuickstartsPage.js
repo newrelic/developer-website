@@ -452,12 +452,7 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
               margin-top: 1rem;
             `}
           >
-            <QuickstartSort
-              css={css`
-                align-self: flex-end;
-                width: fit-content;
-              `}
-            />
+            {isMobile && <QuickstartSort location={location} />}
             <div
               css={css`
                 padding: 1.25rem 0;
@@ -482,6 +477,14 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                   }
                 `}
               >
+                {!isMobile && (
+                  <QuickstartSort
+                    location={location}
+                    css={css`
+                      width: fit-content;
+                    `}
+                  />
+                )}
                 <SegmentedControl
                   items={Object.values(VIEWS)}
                   onChange={(_e, view) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 
-const QuickstartSort = ({ className }) => {
+const QuickstartSort = ({ className, location }) => {
   const params = new URLSearchParams(location.search);
   const sortParam = params.get('sort');
   const handleChange = (event) => {
@@ -28,5 +28,6 @@ const QuickstartSort = ({ className }) => {
 
 QuickstartSort.propTypes = {
   className: PropTypes.string,
+  location: PropTypes.object,
 };
 export default QuickstartSort;
