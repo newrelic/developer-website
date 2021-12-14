@@ -15,7 +15,7 @@ const QuickstartSort = ({ className }) => {
         className={className}
         onChange={handleChange}
         name="catalog-sort"
-        value={sortParam || 'ALPHABETICAL'}
+        value={sortParam || 'RELEVANCE'}
       >
         <option value="ALPHABETICAL">Alphabetical</option>
         <option value="POPULARITY">Popularity</option>
