@@ -12,7 +12,7 @@ export const getServerData = async ({ query }) => {
 query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
   actor {
     nr1Catalog {
-      search(sortBy: $sortBy) {
+      search(sortBy: $sortBy, filter: {types: QUICKSTART}) {
         totalCount
         results {
           ... on Nr1CatalogQuickstart {
@@ -57,9 +57,9 @@ query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
     if (json.data?.errors) {
       throw Error(`Errors returned from nerdgraph`, json.data.errors);
     }
-    const results = json.data?.actor?.nr1Catalog?.search?.results.filter(
-      (item) => Object.keys(item).length !== 0
-    );
+    const results = json.data?.actor?.nr1Catalog?.search?.results;
+
+    /* eslint-disable-next-line no-console */
     console.log(`Found ${results?.length} quickstarts`);
 
     return {
