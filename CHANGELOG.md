@@ -1,3 +1,16 @@
+# [1.72.0](https://github.com/newrelic/developer-website/compare/v1.71.2...v1.72.0) (2021-12-14)
+
+
+### Bug Fixes
+
+* architectural change ([1e74ee6](https://github.com/newrelic/developer-website/commit/1e74ee6322d8efb738e1c7d1ca90a0cd9f580367))
+* small fixes ([16552df](https://github.com/newrelic/developer-website/commit/16552df71402fcb32c700a1fffd94f2dfd1a1cd1))
+
+
+### Features
+
+* added errors inbox lab ([ba93d28](https://github.com/newrelic/developer-website/commit/ba93d28a37bb9a5cd2f1eab105d50be8a8b07298))
+
 ## [1.71.2](https://github.com/newrelic/developer-website/compare/v1.71.1...v1.71.2) (2021-12-10)
 
 
