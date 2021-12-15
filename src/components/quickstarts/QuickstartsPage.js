@@ -137,7 +137,7 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
     (category === 'featured' && !filters.length && !search)
   ) {
     // uuid is codestream id specifically - CM
-    const codestreamIndex = quickstarts.findIndex(
+    const codestreamIndex = quickstarts?.findIndex(
       ({ id }) => id === '29bd9a4a-1c19-4219-9694-0942f6411ce7'
     );
 
@@ -145,8 +145,8 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
       const codestreamObject = quickstarts[codestreamIndex];
       quickstarts = [
         codestreamObject,
-        ...quickstarts.slice(0, codestreamIndex),
-        ...quickstarts.slice(codestreamIndex + 1),
+        ...quickstarts?.slice(0, codestreamIndex),
+        ...quickstarts?.slice(codestreamIndex + 1),
       ];
     }
   }
@@ -463,8 +463,8 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                 justify-content: space-between;
               `}
             >
-              <span>{`Showing ${quickstarts.length} result${
-                quickstarts.length === 1 ? '' : 's'
+              <span>{`Showing ${quickstarts?.length} result${
+                quickstarts?.length === 1 ? '' : 's'
               }`}</span>
 
               <div
@@ -547,7 +547,7 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                   }}
                 />
               )}
-              {quickstarts.map((quickstart) => (
+              {quickstarts?.map((quickstart) => (
                 <PackTile
                   key={quickstart.id}
                   featured={quickstart.featured}
