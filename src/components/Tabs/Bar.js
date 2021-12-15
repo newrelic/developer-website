@@ -3,24 +3,20 @@ import PropTypes from 'prop-types';
 import useMobileDetect from 'use-mobile-detect-hook';
 import { css } from '@emotion/react';
 import useTabs from './useTabs';
+import Select from '../Select';
 
-const MobileTabControl = ({ children, isIos }) => {
+const MobileTabControl = ({ children }) => {
   const [currentTab, setCurrentTab] = useTabs();
   // eslint gets angry about using props from React.Children.map
   /* eslint-disable react/prop-types */
   return (
-    <select
+    <Select
       onChange={(e) => {
         setCurrentTab(e.target.value);
       }}
       css={css`
-        width: 100%;
-        margin-bottom: 1em;
-        padding: 0.5em;
-        border-radius: 4px;
-        border-color: var(--secondary-background-color);
-        background-color: var(--primary-background-color);
-        color: ${isIos ? `var(--color-black)` : `var(--primary-text-color)`};
+        padding-top: 1rem;
+        padding-bottom: 1rem;
       `}
     >
       {React.Children.map(children, ({ props }) => (
@@ -34,14 +30,13 @@ const MobileTabControl = ({ children, isIos }) => {
           {(props.count || props.count === 0) && ` (${props.count})`}
         </option>
       ))}
-    </select>
+    </Select>
   );
   /* eslint-enable react/prop-types */
 };
 
 MobileTabControl.propTypes = {
   children: PropTypes.node.isRequired,
-  isIos: PropTypes.bool,
 };
 
 const Bar = ({ children, className }) => {
