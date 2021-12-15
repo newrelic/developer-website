@@ -149,6 +149,13 @@ const QuickstartsSidebar = ({
 
 QuickstartsSidebar.propTypes = {
   isMobile: PropTypes.bool,
+  clearFilters: PropTypes.func,
+  filters: PropTypes.array,
+  filtersWithCount: PropTypes.array,
+  categoriesWithCount: PropTypes.array,
+  category: PropTypes.string,
+  handleFilter: PropTypes.func,
+  handleCategory: PropTypes.func,
 };
 
 const Label = ({ children, htmlFor }) => (
