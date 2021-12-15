@@ -36,12 +36,11 @@ const apiRequest = async (key, accountId, data) => {
 /**
  * Tracks an event in New Relic using the custom Events API.
  *
- * @param {Object} options
- * @param {string} options.eventType The name of the event type to track
- * @param {Object} [options.metadata] (Optional) metadata to attach to the event
+ * @param {string} eventType The name of the event type to track
+ * @param {Object} [metadata] (Optional) metadata to attach to the event
  * @returns {Promise<boolean>} Whether or not the request was (eventually) successful
  */
-const track = async ({ eventType, metadata = {} }) =>
+const track = async (eventType, metadata = {}) =>
   apiRequest(NEW_RELIC_API_KEY, NEW_RELIC_ACCOUNT_ID, {
     eventType,
     account: NEW_RELIC_ACCOUNT_ID,
