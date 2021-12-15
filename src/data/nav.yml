@@ -63,7 +63,7 @@
           url: '/automate-workflows/diagnose-problems/error-alerts'
         - title: Tear down Telco Lite
           url: '/automate-workflows/diagnose-problems/tear-down'
-    - title: Resolve Errors Faster with Full Stack Error Tracking
+    - title: Resolve errors faster with full stack error tracking
       url: '/automate-workflows/error-inbox'
       pages:
         - title: Spin up Geek movie shop architecture
