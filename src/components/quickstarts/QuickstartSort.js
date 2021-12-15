@@ -1,6 +1,7 @@
 import React from 'react';
 import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
+import Select from '../Select';
 
 const QuickstartSort = ({ className, location }) => {
   const params = new URLSearchParams(location.search);
@@ -11,7 +12,7 @@ const QuickstartSort = ({ className, location }) => {
   };
   return (
     <>
-      <select
+      <Select
         className={className}
         onChange={handleChange}
         name="catalog-sort"
@@ -21,7 +22,7 @@ const QuickstartSort = ({ className, location }) => {
         <option value="POPULARITY">Popularity</option>
         <option value="RELEVANCE">Relevance</option>
         <option value="REVERSE_ALPHABETICAL">Reverse Alphabetical</option>
-      </select>
+      </Select>
     </>
   );
 };
