@@ -8,24 +8,32 @@ const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
 export const getServerData = async ({ query }) => {
   const sortParam = query.sort || 'RELEVANCE';
   const searchParam = query.search;
+  const categoryParam = query.category;
+  const filterParam =
+    !query.filter || query.filter === '' ? [] : query.filter.split(',');
 
   const QUICKSTARTS_QUERY = `
-query getQuickstarts($sortBy: Nr1CatalogSearchSortOption, $query: String){
-  actor {
-    nr1Catalog {
-      search(sortBy: $sortBy, filter: {types: QUICKSTART}, query: $query) {
-        totalCount
-        results {
-          ... on Nr1CatalogQuickstart {
-            id
-            supportLevel
-            featured
-            metadata {
-              summary
-              displayName
-              slug
-              icon {
-                url
+  query getQuickstarts($sortBy: Nr1CatalogSearchSortOption, $query: String, $categories: [String!], $components: [Nr1CatalogSearchComponentType!]) {
+    actor {
+      nr1Catalog {
+        categories {
+          displayName
+          terms
+        }
+        search(sortBy: $sortBy, filter: {types: QUICKSTART, components: $components, categories: $categories}, query: $query) {
+          totalCount
+          results {
+            ... on Nr1CatalogQuickstart {
+              id
+              supportLevel
+              featured
+              metadata {
+                summary
+                displayName
+                slug
+                icon {
+                  url
+                }
               }
             }
           }
@@ -33,7 +41,6 @@ query getQuickstarts($sortBy: Nr1CatalogSearchSortOption, $query: String){
       }
     }
   }
-}
 `;
 
   try {
@@ -41,7 +48,12 @@ query getQuickstarts($sortBy: Nr1CatalogSearchSortOption, $query: String){
       method: 'POST',
       body: JSON.stringify({
         query: QUICKSTARTS_QUERY,
-        variables: { sortBy: sortParam, query: searchParam },
+        variables: {
+          sortBy: sortParam,
+          query: searchParam,
+          categories: categoryParam,
+          components: filterParam,
+        },
       }),
       headers: {
         'Content-Type': 'application/json',
