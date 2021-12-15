@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import useMobileDetect from 'use-mobile-detect-hook';
 import DevSiteSeo from '../DevSiteSeo';
 import { css } from '@emotion/react';
-import SegmentedControl from '../SegmentedControl';
 import Overlay from '../Overlay';
 import PackTile from '../PackTile';
 import QuickstartFilter from './QuickstartFilter';
@@ -39,13 +38,7 @@ const FILTERS = [
   { name: 'Data sources', type: 'documentation', icon: 'nr-document' },
 ];
 
-const VIEWS = {
-  GRID: 'Grid view',
-  LIST: 'List view',
-};
-
 const QuickstartsPage = ({ location, quickstarts, errored }) => {
-  const [view, setView] = useState(VIEWS.GRID);
   const isMobile = useMobileDetect().isMobile();
   const tessen = useTessen();
 
@@ -452,7 +445,15 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
               margin-top: 1rem;
             `}
           >
-            {isMobile && <QuickstartSort location={location} />}
+            {isMobile && (
+              <QuickstartSort
+                location={location}
+                css={css`
+                  padding-top: 1rem;
+                  padding-bottom: 1rem;
+                `}
+              />
+            )}
             <div
               css={css`
                 padding: 1.25rem 0;
@@ -470,7 +471,8 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                 css={css`
                   min-width: 155px;
                   margin-left: 20px;
-                  display: inline;
+                  display: flex;
+                  align-items: center;
 
                   @media screen and (max-width: 1180px) {
                     margin-left: 0px;
@@ -485,18 +487,6 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                     `}
                   />
                 )}
-                <SegmentedControl
-                  items={Object.values(VIEWS)}
-                  onChange={(_e, view) => {
-                    setView(view);
-
-                    tessen.track({
-                      eventName: 'instantObservability',
-                      category: 'QuickstartViewToggle',
-                      quickstartViewState: view,
-                    });
-                  }}
-                />
               </div>
             </div>
           </div>
@@ -520,11 +510,6 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                 @media (max-width: 1180px) {
                   grid-template-columns: repeat(1, 1fr);
                 }
-
-                ${view === VIEWS.LIST &&
-                css`
-                  display: initial;
-                `}
               `}
             >
               {filters?.length === 1 && filters[0] === 'documentation' ? (
@@ -533,13 +518,11 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                 <PackTile
                   id={RESERVED_QUICKSTART_IDS.GUIDED_INSTALL}
                   css={css`
-                    ${view === VIEWS.GRID && `height: 100%;`}
                     background-color: var(--tertiary-background-color);
                   `}
                   href={getGuidedInstallStackedNr1Url(
                     NR1_GUIDED_INSTALL_NERDLET
                   )}
-                  view={view}
                   metadata={{
                     displayName: 'Guided Install',
                     icon: { url: GUIDED_INSTALL },
@@ -553,11 +536,9 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                 <PackTile
                   id={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
                   css={css`
-                    ${view === VIEWS.GRID && `height: 100%;`}
                     background-color: var(--tertiary-background-color);
                   `}
                   href={QUICKSTARTS_REPO}
-                  view={view}
                   metadata={{
                     displayName: 'Build your own quickstart',
                     icon: { url: BUILD_YOUR_OWN },
@@ -569,7 +550,6 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
               {quickstarts.map((quickstart) => (
                 <PackTile
                   key={quickstart.id}
-                  view={view}
                   featured={quickstart.featured}
                   {...quickstart}
                 />
