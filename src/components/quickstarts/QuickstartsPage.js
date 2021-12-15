@@ -14,7 +14,7 @@ import {
   Button,
   Icon,
 } from '@newrelic/gatsby-theme-newrelic';
-import { navigate } from '@reach/router';
+import { navigate } from 'gatsby';
 
 import BUILD_YOUR_OWN from '../../images/build-your-own.svg';
 import GUIDED_INSTALL from '../../images/guided-install.svg';

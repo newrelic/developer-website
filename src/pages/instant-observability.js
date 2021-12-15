@@ -7,12 +7,13 @@ const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
 
 export const getServerData = async ({ query }) => {
   const sortParam = query.sort || 'RELEVANCE';
+  const searchParam = query.search;
 
   const QUICKSTARTS_QUERY = `
-query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
+query getQuickstarts($sortBy: Nr1CatalogSearchSortOption, $query: String){
   actor {
     nr1Catalog {
-      search(sortBy: $sortBy, filter: {types: QUICKSTART}) {
+      search(sortBy: $sortBy, filter: {types: QUICKSTART}, query: $query) {
         totalCount
         results {
           ... on Nr1CatalogQuickstart {
@@ -40,7 +41,7 @@ query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
       method: 'POST',
       body: JSON.stringify({
         query: QUICKSTARTS_QUERY,
-        variables: { sortBy: sortParam },
+        variables: { sortBy: sortParam, query: searchParam },
       }),
       headers: {
         'Content-Type': 'application/json',
