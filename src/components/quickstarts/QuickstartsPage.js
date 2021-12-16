@@ -28,7 +28,6 @@ import {
   RESERVED_QUICKSTART_IDS,
   NR1_GUIDED_INSTALL_NERDLET,
 } from '../../data/constants';
-import CATEGORIES from '../../data/instant-observability-categories';
 
 import { getGuidedInstallStackedNr1Url } from '../../utils/get-pack-nr1-url';
 
@@ -38,7 +37,12 @@ const FILTERS = [
   { name: 'Data sources', type: 'documentation', icon: 'nr-document' },
 ];
 
-const QuickstartsPage = ({ location, quickstarts, errored }) => {
+const QuickstartsPage = ({ location, serverData, errored }) => {
+  const { categories } = serverData;
+  let quickstarts = serverData.search.results;
+  const { totalCount, facets } = serverData.search;
+  console.log(facets.categories);
+
   const isMobile = useMobileDetect().isMobile();
   const tessen = useTessen();
 
@@ -106,14 +110,34 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
     }
   };
 
-  const handleCategory = (value) => {
-    if (value !== null && value !== undefined) {
+  const handleCategory = (terms) => {
+    if (terms !== null && terms !== undefined) {
       const params = new URLSearchParams(location.search);
-      params.set('category', value);
+      params.set('category', terms);
 
       navigate(`?${params.toString()}`);
     }
   };
+  // FIX ME
+  // const filtersWithCount = () => {
+  //   return components.map((component) => {
+  //     const count =
+  //       facets.components.find((facet) => facet.component === component)
+  //         ?.count ?? 0;
+  //     return {
+  //       ...component,
+  //       count,
+  //     };
+  //   });
+  // };
+
+  // FIX ME
+  const categoriesWithCount = () => {
+    let categories = {};
+    quickstarts.forEach(quickstart => {
+      categories.
+    })
+  }
 
   const clearFilters = () => {
     setFilters([]);
@@ -183,7 +207,7 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
           isMobile={isMobile}
           clearFilters={clearFilters}
           filtersWithCount={FILTERS}
-          categoriesWithCount={CATEGORIES}
+          categoriesWithCount={categoriesWithCount()}
           filters={filters}
           category={category}
           handleFilter={handleFilter}
@@ -362,11 +386,11 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                         overflow-y: scroll;
                       `}
                     >
-                      {CATEGORIES.map(({ displayName, value, count }) => (
+                      {categories.map(({ displayName, slug, terms }) => (
                         <Button
                           type="button"
-                          key={value}
-                          onClick={() => handleCategory(value)}
+                          key={slug}
+                          onClick={() => handleCategory(terms)}
                           css={css`
                             padding: 1rem 0.5rem;
                             width: 100%;
@@ -374,12 +398,12 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
                             justify-content: flex-start;
                             color: var(--primary-text-color);
                             font-weight: 100;
-                            background: ${category === value
+                            background: ${category === terms.toString()
                               ? 'var(--divider-color)'
                               : 'none'};
                           `}
                         >
-                          {`${displayName} (${count})`}
+                          {`${displayName} (${facets}.categories.${displayName}.count)`}
                         </Button>
                       ))}
                     </div>
@@ -564,6 +588,9 @@ const QuickstartsPage = ({ location, quickstarts, errored }) => {
 
 QuickstartsPage.propTypes = {
   quickstarts: PropTypes.arrayOf(rawQuickstart),
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({ displayName: PropTypes.string, terms: PropTypes.array })
+  ),
   location: PropTypes.object,
   errored: PropTypes.bool,
 };

@@ -8,7 +8,8 @@ const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
 export const getServerData = async ({ query }) => {
   const sortParam = query.sort || 'RELEVANCE';
   const searchParam = query.search;
-  const categoryParam = query.category;
+  const categoryParam =
+    !query.category || query.category === '' ? [] : query.category.split(',');
   const filterParam =
     !query.filter || query.filter === '' ? [] : query.filter.split(',');
 
@@ -16,10 +17,6 @@ export const getServerData = async ({ query }) => {
   query getQuickstarts($sortBy: Nr1CatalogSearchSortOption, $query: String, $categories: [String!], $components: [Nr1CatalogSearchComponentType!]) {
     actor {
       nr1Catalog {
-        categories {
-          displayName
-          terms
-        }
         search(sortBy: $sortBy, filter: {types: QUICKSTART, components: $components, categories: $categories}, query: $query) {
           totalCount
           results {
@@ -37,10 +34,25 @@ export const getServerData = async ({ query }) => {
               }
             }
           }
+          facets {
+            categories {
+              count
+              displayName
+            }
+            components {
+              component
+              count
+            }
+          }
+        }
+        categories {
+          displayName
+          terms
         }
       }
     }
   }
+  
 `;
 
   try {
@@ -70,10 +82,10 @@ export const getServerData = async ({ query }) => {
     if (json.data?.errors) {
       throw Error(`Errors returned from nerdgraph`, json.data.errors);
     }
-    const results = json.data?.actor?.nr1Catalog?.search?.results;
+    const results = json.data?.actor?.nr1Catalog;
 
     /* eslint-disable-next-line no-console */
-    console.log(`Found ${results?.length} quickstarts`);
+    console.log(`Found ${results.search.totalCount?.length} quickstarts`);
 
     return {
       props: {
@@ -97,7 +109,7 @@ const QuickstartsPageSSR = ({ serverData, location }) => {
   return (
     <QuickstartsPage
       errored={serverData.error}
-      quickstarts={serverData.data}
+      serverData={serverData.data}
       location={location}
     />
   );

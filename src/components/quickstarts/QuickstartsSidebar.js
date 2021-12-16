@@ -119,12 +119,12 @@ const QuickstartsSidebar = ({
           </div>
           <FormControl>
             <Label htmlFor="quickstartCategory">CATEGORIES</Label>
-            {categoriesWithCount.map(({ displayName, value, count }) => (
+            {categoriesWithCount.map(({ displayName, terms, slug, count }) => (
               <Button
                 type="button"
-                key={value}
+                key={slug}
                 disabled={count === 0}
-                onClick={() => handleCategory(value)}
+                onClick={() => handleCategory(terms)}
                 css={css`
                   padding: 1rem 0.5rem;
                   width: 100%;
@@ -132,7 +132,7 @@ const QuickstartsSidebar = ({
                   justify-content: flex-start;
                   color: var(--primary-text-color);
                   font-weight: 100;
-                  background: ${category === value
+                  background: ${category === terms.toString()
                     ? 'var(--divider-color)'
                     : 'none'};
                 `}
