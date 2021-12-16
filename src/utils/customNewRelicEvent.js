@@ -1,12 +1,12 @@
 const fetch = require('node-fetch');
 
 const NEW_RELIC_ACCOUNT_ID = process.env.NEW_RELIC_ACCOUNT_ID;
-const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
+const NEW_RELIC_LICENSE_KEY = process.env.NEW_RELIC_LICENSE_KEY;
 
 /**
  * Helper function to make an API request to the Events API.
  *
- * @param {string} key New Relic API key
+ * @param {string} key New Relic license key for the account
  * @param {string} accountId The New Relic account to send the request to
  * @param {Object} data The data to be sent
  * @returns {Promise<boolean>} Whether or not the request was (eventually) successful
@@ -41,7 +41,7 @@ const apiRequest = async (key, accountId, data) => {
  * @returns {Promise<boolean>} Whether or not the request was (eventually) successful
  */
 const track = async (eventType, metadata = {}) =>
-  apiRequest(NEW_RELIC_API_KEY, NEW_RELIC_ACCOUNT_ID, {
+  apiRequest(NEW_RELIC_LICENSE_KEY, NEW_RELIC_ACCOUNT_ID, {
     eventType,
     account: NEW_RELIC_ACCOUNT_ID,
     ...metadata,
