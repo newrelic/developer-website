@@ -38,9 +38,10 @@ const FILTERS = [
 ];
 
 const QuickstartsPage = ({ location, serverData, errored }) => {
-  const { categories } = serverData;
-  let quickstarts = serverData.search.results;
-  const { totalCount, facets } = serverData.search;
+  console.log(serverData);
+  const { categories } = serverData.quickstartsQuery;
+  let quickstarts = serverData.quickstartsQuery.search.results;
+  const { totalCount, facets } = serverData.quickstartsQuery.search;
   console.log(facets.categories);
 
   const isMobile = useMobileDetect().isMobile();
@@ -131,13 +132,35 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
   //   });
   // };
 
-  // FIX ME
   const categoriesWithCount = () => {
-    let categories = {};
-    quickstarts.forEach(quickstart => {
-      categories.
-    })
-  }
+    const categoryCountDictionary = {};
+    quickstarts.forEach((quickstart) => {
+      const categories = quickstart.metadata.categories;
+      let dedupedCategories = [];
+      categories.forEach((category) => {
+        if (!dedupedCategories.includes(category.displayName)) {
+          dedupedCategories.push(category.displayName);
+        }
+      });
+      dedupedCategories.forEach((category) => {
+        console.log('categories', categories);
+        categoryCountDictionary[category] =
+          ++categoryCountDictionary[category] || 1;
+      });
+    });
+    const categoriesWithCount = categories.map((category) => {
+      return {
+        ...category,
+        count: categoryCountDictionary[category.displayName],
+      };
+    });
+    // if (filters.length) {
+
+    // }
+    return categoriesWithCount;
+  };
+
+  console.log('with count', categoriesWithCount());
 
   const clearFilters = () => {
     setFilters([]);
