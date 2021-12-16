@@ -31,6 +31,9 @@ export const getServerData = async ({ query }) => {
                 icon {
                   url
                 }
+                categories {
+                  displayName
+                }
               }
             }
           }
@@ -52,21 +55,42 @@ export const getServerData = async ({ query }) => {
       }
     }
   }
-  
 `;
+
+  const FACET_QUERY = `{
+  actor {
+    nr1Catalog {
+      search {
+        facets {
+          categories {
+            count
+            displayName
+          }
+        }
+      }
+    }
+  }
+}`;
 
   try {
     const resp = await fetch(NERDGRAPH_URL, {
       method: 'POST',
-      body: JSON.stringify({
-        query: QUICKSTARTS_QUERY,
-        variables: {
-          sortBy: sortParam,
-          query: searchParam,
-          categories: categoryParam,
-          components: filterParam,
+      body: JSON.stringify([
+        {
+          id: 'quickstartsQuery',
+          query: QUICKSTARTS_QUERY,
+          variables: {
+            sortBy: sortParam,
+            query: searchParam,
+            categories: categoryParam,
+            components: filterParam,
+          },
         },
-      }),
+        {
+          id: 'facetsQuery',
+          query: FACET_QUERY,
+        },
+      ]),
       headers: {
         'Content-Type': 'application/json',
         'Api-Key': NEW_RELIC_API_KEY,
@@ -82,7 +106,12 @@ export const getServerData = async ({ query }) => {
     if (json.data?.errors) {
       throw Error(`Errors returned from nerdgraph`, json.data.errors);
     }
-    const results = json.data?.actor?.nr1Catalog;
+    const results = json.reduce((acc, queryResponse) => {
+      return {
+        ...acc,
+        [queryResponse.payload.id]: queryResponse.payload.data,
+      };
+    }, {});
 
     /* eslint-disable-next-line no-console */
     console.log(`Found ${results.search.totalCount?.length} quickstarts`);
