@@ -32,16 +32,18 @@ import {
 import { getGuidedInstallStackedNr1Url } from '../../utils/get-pack-nr1-url';
 
 const FILTERS = [
-  { name: 'Dashboards', type: 'dashboards', icon: 'nr-dashboard' },
-  { name: 'Alerts', type: 'alerts', icon: 'nr-alert' },
-  { name: 'Data sources', type: 'documentation', icon: 'nr-document' },
+  { displayName: 'Dashboards', type: 'DASHBOARDS', icon: 'nr-dashboard' },
+  { displayName: 'Alerts', type: 'ALERTS', icon: 'nr-alert' },
+  { displayName: 'Data sources', type: 'DATA_SOURCES', icon: 'nr-document' },
 ];
 
 const QuickstartsPage = ({ location, serverData, errored }) => {
-  const categoriesWithCount = serverData.facetsQuery.search.facets.categories;
-  const categoriesWithTerms = serverData.quickstartsQuery.categories;
-  let quickstarts = serverData.quickstartsQuery.search.results;
-  const { totalCount, facets } = serverData.quickstartsQuery.search;
+  const allCategoriesWithTerms = serverData?.facetsQuery?.categories ?? [];
+  const allCategoriesWithCount =
+    serverData?.facetsQuery?.search?.facets?.categories ?? [];
+  let quickstarts = serverData?.quickstartsQuery?.search?.results ?? [];
+  const facets = serverData?.quickstartsQuery?.search?.facets ?? {};
+  const totalCount = serverData?.facetsQuery?.search?.totalCount;
 
   const isMobile = useMobileDetect().isMobile();
   const tessen = useTessen();
@@ -118,20 +120,28 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
       navigate(`?${params.toString()}`);
     }
   };
-  // FIX ME
-  // const filtersWithCount = () => {
-  //   return components.map((component) => {
-  //     const count =
-  //       facets.components.find((facet) => facet.component === component)
-  //         ?.count ?? 0;
-  //     return {
-  //       ...component,
-  //       count,
-  //     };
-  //   });
-  // };
+
+  const getFilters = () => {
+    const filterCountDictionary = facets.components.reduce((acc, component) => {
+      acc = {
+        ...acc,
+        [component.component]: component.count,
+      };
+      return acc;
+    }, {});
+    return FILTERS.map((component) => {
+      return {
+        ...component,
+        count: filterCountDictionary[component.type] || 0,
+      };
+    });
+  };
 
   const getCategories = () => {
+    const categoriesWithCount = filters.length
+      ? facets.categories || []
+      : allCategoriesWithCount;
+
     const categoryCountDictionary = categoriesWithCount.reduce(
       (acc, category) => {
         acc = { ...acc, [category.displayName]: category.count };
@@ -139,15 +149,18 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
       },
       {}
     );
-    const categories = categoriesWithTerms.map((category) => {
+
+    const categories = allCategoriesWithTerms.map((category) => {
       return {
         ...category,
-        count: categoryCountDictionary[category.displayName],
+        count: categoryCountDictionary[category.displayName] || 0,
       };
     });
-    // if (filters.length) {
-
-    // }
+    categories.unshift({
+      displayName: 'All',
+      count: totalCount,
+      terms: [''],
+    });
     return categories;
   };
 
@@ -186,7 +199,7 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
       ];
     }
   }
-
+  const categories = getCategories();
   return (
     <>
       <DevSiteSeo
@@ -218,7 +231,7 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
         <QuickstartsSidebar
           isMobile={isMobile}
           clearFilters={clearFilters}
-          filtersWithCount={FILTERS}
+          filtersWithCount={getFilters()}
           categoriesWithCount={getCategories()}
           filters={filters}
           category={category}
@@ -548,7 +561,7 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
                 }
               `}
             >
-              {filters?.length === 1 && filters[0] === 'documentation' ? (
+              {filters?.length === 1 && filters[0] === 'DATA_SOURCES' ? (
                 // if data source filter is selected, display guided install
 
                 <PackTile
@@ -599,10 +612,12 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
 };
 
 QuickstartsPage.propTypes = {
-  quickstarts: PropTypes.arrayOf(rawQuickstart),
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({ displayName: PropTypes.string, terms: PropTypes.array })
-  ),
+  quickstartsQuery: PropTypes.shape({
+    results: PropTypes.arrayOf(rawQuickstart),
+    categories: PropTypes.arrayOf(
+      PropTypes.shape({ displayName: PropTypes.string, terms: PropTypes.array })
+    ),
+  }),
   location: PropTypes.object,
   errored: PropTypes.bool,
 };

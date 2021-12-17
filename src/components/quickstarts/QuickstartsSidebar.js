@@ -104,10 +104,10 @@ const QuickstartsSidebar = ({
                   Clear
                 </Button>
               </div>
-              {filtersWithCount.map(({ name, type, icon, count }) => (
+              {filtersWithCount.map(({ displayName, type, icon, count }) => (
                 <QuickstartFilter
                   key={name}
-                  name={name}
+                  name={displayName}
                   type={type}
                   icon={icon}
                   count={count}
