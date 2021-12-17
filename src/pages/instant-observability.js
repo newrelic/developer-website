@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import QuickstartsPage from '../components/quickstarts/QuickstartsPage';
+import customEventTrack from '../utils/customNewRelicEvent';
 
 const NERDGRAPH_URL = process.env.NERDGRAPH_URL;
 const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
@@ -122,6 +123,11 @@ export const getServerData = async ({ query }) => {
       `Found ${results.quickstartsQuery?.search?.totalCount} quickstarts`
     );
 
+    customEventTrack('NerdGraphRequest', {
+      success: true,
+      ...query,
+    });
+
     return {
       props: {
         error: false,
@@ -131,6 +137,13 @@ export const getServerData = async ({ query }) => {
   } catch (err) {
     /* eslint-disable-next-line no-console */
     console.error(err);
+
+    customEventTrack('NerdGraphRequest', {
+      success: false,
+      errorMessage: err,
+      ...query,
+    });
+
     return {
       props: {
         error: true,
