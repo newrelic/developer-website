@@ -18,7 +18,6 @@ export const getServerData = async ({ query }) => {
     actor {
       nr1Catalog {
         search(sortBy: $sortBy, filter: {types: QUICKSTART, components: $components, categories: $categories}, query: $query) {
-          totalCount
           results {
             ... on Nr1CatalogQuickstart {
               id
@@ -48,10 +47,6 @@ export const getServerData = async ({ query }) => {
             }
           }
         }
-        categories {
-          displayName
-          terms
-        }
       }
     }
   }
@@ -60,7 +55,12 @@ export const getServerData = async ({ query }) => {
   const FACET_QUERY = `{
   actor {
     nr1Catalog {
-      search {
+      categories {
+        displayName
+        terms
+      }
+      search(filter: {types: QUICKSTART}) {
+        totalCount
         facets {
           categories {
             count
@@ -103,10 +103,13 @@ export const getServerData = async ({ query }) => {
 
     const json = await resp.json();
 
-    if (json.data?.errors) {
-      throw Error(`Errors returned from nerdgraph`, json.data.errors);
-    }
     const results = json.reduce((acc, queryResponse) => {
+      if (queryResponse.payload.errors) {
+        throw Error(
+          `Errors returned from nerdgraph`,
+          queryResponse.payload.errors
+        );
+      }
       acc = {
         ...acc,
         [queryResponse.id]: queryResponse.payload.data.actor.nr1Catalog,
