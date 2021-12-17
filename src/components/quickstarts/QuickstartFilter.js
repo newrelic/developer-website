@@ -6,7 +6,7 @@ import { Icon } from '@newrelic/gatsby-theme-newrelic';
 import check from '../../images/check.svg';
 
 const QuickstartFilter = ({
-  name,
+  displayName,
   type,
   icon,
   count,
@@ -16,7 +16,7 @@ const QuickstartFilter = ({
 }) => (
   <div
     className={className}
-    key={name}
+    key={displayName}
     css={css`
       padding: 1rem 0;
       width: 100%;
@@ -55,7 +55,7 @@ const QuickstartFilter = ({
           }
         `}
         htmlFor={type}
-      >{`${name} (${count})`}</label>
+      >{`${displayName} (${count})`}</label>
     </div>
     <input
       type="checkbox"
@@ -89,7 +89,7 @@ const QuickstartFilter = ({
 );
 
 QuickstartFilter.propTypes = {
-  name: PropTypes.string,
+  displayName: PropTypes.string,
   type: PropTypes.string,
   icon: PropTypes.string,
   count: PropTypes.number,

@@ -199,7 +199,8 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
       ];
     }
   }
-  const categories = getCategories();
+  const categoriesWithCount = getCategories();
+  const filtersWithCount = getFilters();
   return (
     <>
       <DevSiteSeo
@@ -231,8 +232,8 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
         <QuickstartsSidebar
           isMobile={isMobile}
           clearFilters={clearFilters}
-          filtersWithCount={getFilters()}
-          categoriesWithCount={getCategories()}
+          filtersWithCount={filtersWithCount}
+          categoriesWithCount={categoriesWithCount}
           filters={filters}
           category={category}
           handleFilter={handleFilter}
@@ -343,17 +344,19 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
                         overflow-y: scroll;
                       `}
                     >
-                      {FILTERS.map(({ name, type, icon, count }) => (
-                        <QuickstartFilter
-                          key={name}
-                          name={name}
-                          type={type}
-                          icon={icon}
-                          count={count}
-                          isChecked={filters.includes(type)}
-                          handleFilter={handleFilter}
-                        />
-                      ))}
+                      {filtersWithCount.map(
+                        ({ displayName, type, icon, count }) => (
+                          <QuickstartFilter
+                            key={displayName}
+                            displayName={displayName}
+                            type={type}
+                            icon={icon}
+                            count={count}
+                            isChecked={filters.includes(type)}
+                            handleFilter={handleFilter}
+                          />
+                        )
+                      )}
                     </div>
                     <div
                       css={css`
@@ -411,26 +414,28 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
                         overflow-y: scroll;
                       `}
                     >
-                      {categories.map(({ displayName, slug, terms }) => (
-                        <Button
-                          type="button"
-                          key={slug}
-                          onClick={() => handleCategory(terms)}
-                          css={css`
-                            padding: 1rem 0.5rem;
-                            width: 100%;
-                            display: flex;
-                            justify-content: flex-start;
-                            color: var(--primary-text-color);
-                            font-weight: 100;
-                            background: ${category === terms.toString()
-                              ? 'var(--divider-color)'
-                              : 'none'};
-                          `}
-                        >
-                          {`${displayName} (${facets}.categories.${displayName}.count)`}
-                        </Button>
-                      ))}
+                      {categoriesWithCount.map(
+                        ({ displayName, slug, terms, count }) => (
+                          <Button
+                            type="button"
+                            key={slug}
+                            onClick={() => handleCategory(terms)}
+                            css={css`
+                              padding: 1rem 0.5rem;
+                              width: 100%;
+                              display: flex;
+                              justify-content: flex-start;
+                              color: var(--primary-text-color);
+                              font-weight: 100;
+                              background: ${category === terms.toString()
+                                ? 'var(--divider-color)'
+                                : 'none'};
+                            `}
+                          >
+                            {`${displayName} (${count})`}
+                          </Button>
+                        )
+                      )}
                     </div>
                     <div
                       css={css`

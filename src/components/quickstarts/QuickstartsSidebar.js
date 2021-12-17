@@ -107,7 +107,7 @@ const QuickstartsSidebar = ({
               {filtersWithCount.map(({ displayName, type, icon, count }) => (
                 <QuickstartFilter
                   key={name}
-                  name={displayName}
+                  displayName={displayName}
                   type={type}
                   icon={icon}
                   count={count}
