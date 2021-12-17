@@ -617,11 +617,39 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
 };
 
 QuickstartsPage.propTypes = {
-  quickstartsQuery: PropTypes.shape({
-    results: PropTypes.arrayOf(rawQuickstart),
-    categories: PropTypes.arrayOf(
-      PropTypes.shape({ displayName: PropTypes.string, terms: PropTypes.array })
-    ),
+  serverData: PropTypes.shape({
+    quickstartsQuery: PropTypes.shape({
+      search: PropTypes.shape({
+        facets: PropTypes.shape({
+          categories: PropTypes.shape({
+            count: PropTypes.string,
+            displayName: PropTypes.string,
+          }),
+        }),
+        results: PropTypes.arrayOf(rawQuickstart),
+        categories: PropTypes.arrayOf(
+          PropTypes.shape({
+            displayName: PropTypes.string,
+            terms: PropTypes.array,
+          })
+        ),
+      }),
+    }),
+    facetsQuery: PropTypes.shape({
+      categories: PropTypes.shape({
+        displayName: PropTypes.string,
+        terms: PropTypes.array,
+      }),
+      search: PropTypes.shape({
+        totalCount: PropTypes.string,
+        facets: PropTypes.shape({
+          categories: PropTypes.shape({
+            count: PropTypes.string,
+            displayName: PropTypes.string,
+          }),
+        }),
+      }),
+    }),
   }),
   location: PropTypes.object,
   errored: PropTypes.bool,
