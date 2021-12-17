@@ -1,7 +1,8 @@
 const fetch = require('node-fetch');
 
-const NEW_RELIC_ACCOUNT_ID = process.env.NEW_RELIC_ACCOUNT_ID;
-const NEW_RELIC_LICENSE_KEY = process.env.NEW_RELIC_LICENSE_KEY;
+// taken from gatsby-config.js
+const NEW_RELIC_ACCOUNT_ID = '10956800';
+const NEW_RELIC_LICENSE_KEY = 'NRJS-649173eb1a7b28cd6ab';
 
 /**
  * Helper function to make an API request to the Events API.
