@@ -38,11 +38,10 @@ const FILTERS = [
 ];
 
 const QuickstartsPage = ({ location, serverData, errored }) => {
-  console.log(serverData);
-  const { categories } = serverData.quickstartsQuery;
+  const categoriesWithCount = serverData.facetsQuery.search.facets.categories;
+  const categoriesWithTerms = serverData.quickstartsQuery.categories;
   let quickstarts = serverData.quickstartsQuery.search.results;
   const { totalCount, facets } = serverData.quickstartsQuery.search;
-  console.log(facets.categories);
 
   const isMobile = useMobileDetect().isMobile();
   const tessen = useTessen();
@@ -132,23 +131,15 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
   //   });
   // };
 
-  const categoriesWithCount = () => {
-    const categoryCountDictionary = {};
-    quickstarts.forEach((quickstart) => {
-      const categories = quickstart.metadata.categories;
-      let dedupedCategories = [];
-      categories.forEach((category) => {
-        if (!dedupedCategories.includes(category.displayName)) {
-          dedupedCategories.push(category.displayName);
-        }
-      });
-      dedupedCategories.forEach((category) => {
-        console.log('categories', categories);
-        categoryCountDictionary[category] =
-          ++categoryCountDictionary[category] || 1;
-      });
-    });
-    const categoriesWithCount = categories.map((category) => {
+  const getCategories = () => {
+    const categoryCountDictionary = categoriesWithCount.reduce(
+      (acc, category) => {
+        acc = { ...acc, [category.displayName]: category.count };
+        return acc;
+      },
+      {}
+    );
+    const categories = categoriesWithTerms.map((category) => {
       return {
         ...category,
         count: categoryCountDictionary[category.displayName],
@@ -157,10 +148,8 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
     // if (filters.length) {
 
     // }
-    return categoriesWithCount;
+    return categories;
   };
-
-  console.log('with count', categoriesWithCount());
 
   const clearFilters = () => {
     setFilters([]);
@@ -230,7 +219,7 @@ const QuickstartsPage = ({ location, serverData, errored }) => {
           isMobile={isMobile}
           clearFilters={clearFilters}
           filtersWithCount={FILTERS}
-          categoriesWithCount={categoriesWithCount()}
+          categoriesWithCount={getCategories()}
           filters={filters}
           category={category}
           handleFilter={handleFilter}

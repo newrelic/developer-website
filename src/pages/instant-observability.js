@@ -107,14 +107,17 @@ export const getServerData = async ({ query }) => {
       throw Error(`Errors returned from nerdgraph`, json.data.errors);
     }
     const results = json.reduce((acc, queryResponse) => {
-      return {
+      acc = {
         ...acc,
-        [queryResponse.payload.id]: queryResponse.payload.data,
+        [queryResponse.id]: queryResponse.payload.data.actor.nr1Catalog,
       };
+      return acc;
     }, {});
 
     /* eslint-disable-next-line no-console */
-    console.log(`Found ${results.search.totalCount?.length} quickstarts`);
+    console.log(
+      `Found ${results.quickstartsQuery?.search?.totalCount} quickstarts`
+    );
 
     return {
       props: {
@@ -125,7 +128,6 @@ export const getServerData = async ({ query }) => {
   } catch (err) {
     /* eslint-disable-next-line no-console */
     console.error(err);
-
     return {
       props: {
         error: true,
