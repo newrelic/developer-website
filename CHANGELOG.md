@@ -1,3 +1,10 @@
+## [1.72.1](https://github.com/newrelic/developer-website/compare/v1.72.0...v1.72.1) (2021-12-17)
+
+
+### Bug Fixes
+
+* failure on no docs and no install plan ([e7c00f0](https://github.com/newrelic/developer-website/commit/e7c00f0e2f4b895e3efcde3fff2fed38c4662544))
+
 # [1.72.0](https://github.com/newrelic/developer-website/compare/v1.71.2...v1.72.0) (2021-12-14)
 
 
