@@ -119,9 +119,7 @@ export const getServerData = async ({ query }) => {
     }, {});
 
     /* eslint-disable-next-line no-console */
-    console.log(
-      `Found ${results.quickstartsQuery?.search?.totalCount} quickstarts`
-    );
+    console.log(`Found ${results.facetsQuery?.search?.totalCount} quickstarts`);
 
     customEventTrack('NerdGraphRequest', {
       success: true,
