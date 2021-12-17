@@ -11,14 +11,12 @@ export const getServerData = async ({ query }) => {
   const searchParam = query.search;
   const categoryParam =
     !query.category || query.category === '' ? [] : query.category.split(',');
-  const filterParam =
-    !query.filter || query.filter === '' ? [] : query.filter.split(',');
 
   const QUICKSTARTS_QUERY = `
-  query getQuickstarts($sortBy: Nr1CatalogSearchSortOption, $query: String, $categories: [String!], $components: [Nr1CatalogSearchComponentType!]) {
+  query getQuickstarts($sortBy: Nr1CatalogSearchSortOption, $query: String, $categories: [String!]) {
     actor {
       nr1Catalog {
-        search(sortBy: $sortBy, filter: {types: QUICKSTART, components: $components, categories: $categories}, query: $query) {
+        search(sortBy: $sortBy, filter: {types: QUICKSTART, categories: $categories}, query: $query) {
           results {
             ... on Nr1CatalogQuickstart {
               id
@@ -31,9 +29,6 @@ export const getServerData = async ({ query }) => {
                 icon {
                   url
                 }
-                categories {
-                  displayName
-                }
               }
             }
           }
@@ -41,10 +36,6 @@ export const getServerData = async ({ query }) => {
             categories {
               count
               displayName
-            }
-            components {
-              component
-              count
             }
           }
         }
@@ -84,7 +75,6 @@ export const getServerData = async ({ query }) => {
             sortBy: sortParam,
             query: searchParam,
             categories: categoryParam,
-            components: filterParam,
           },
         },
         {

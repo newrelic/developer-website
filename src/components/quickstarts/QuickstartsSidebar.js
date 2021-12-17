@@ -3,17 +3,12 @@ import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import SuperTilesExperiment from '../../experiments/super_tiles';
 import IOLogo from '../IOLogo';
-import QuickstartFilter from './QuickstartFilter';
 import { Link, Button } from '@newrelic/gatsby-theme-newrelic';
 
 const QuickstartsSidebar = ({
   isMobile,
-  clearFilters,
-  filters,
-  filtersWithCount,
   categoriesWithCount,
   category,
-  handleFilter,
   handleCategory,
 }) => (
   <aside
@@ -72,51 +67,6 @@ const QuickstartsSidebar = ({
       />
       {!isMobile && (
         <>
-          <div
-            css={css`
-              margin-bottom: 1rem;
-            `}
-          >
-            <FormControl>
-              <div
-                css={css`
-                  display: flex;
-                  width: 100%;
-                  align-items: center;
-                  justify-content: space-between;
-                `}
-              >
-                <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
-                <Button
-                  css={css`
-                    padding: 0;
-                    margin-bottom: 0.25rem;
-                    justify-content: flex-start;
-                    color: var(--color-brand-500);
-                    :disabled {
-                      color: var(--secondary-text-color);
-                    }
-                  `}
-                  onClick={clearFilters}
-                  variant={Button.VARIANT.LINK}
-                  disabled={!filters || !filters.length}
-                >
-                  Clear
-                </Button>
-              </div>
-              {filtersWithCount.map(({ displayName, type, icon, count }) => (
-                <QuickstartFilter
-                  key={name}
-                  displayName={displayName}
-                  type={type}
-                  icon={icon}
-                  count={count}
-                  isChecked={filters.includes(type) && count !== 0}
-                  handleFilter={handleFilter}
-                />
-              ))}
-            </FormControl>
-          </div>
           <FormControl>
             <Label htmlFor="quickstartCategory">CATEGORIES</Label>
             {categoriesWithCount.map(({ displayName, terms, slug, count }) => (
@@ -149,12 +99,8 @@ const QuickstartsSidebar = ({
 
 QuickstartsSidebar.propTypes = {
   isMobile: PropTypes.bool,
-  clearFilters: PropTypes.func,
-  filters: PropTypes.array,
-  filtersWithCount: PropTypes.array,
   categoriesWithCount: PropTypes.array,
   category: PropTypes.string,
-  handleFilter: PropTypes.func,
   handleCategory: PropTypes.func,
 };
 
