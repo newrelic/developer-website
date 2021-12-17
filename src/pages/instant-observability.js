@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import QuickstartsPage from '../components/quickstarts/QuickstartsPage';
+import customEventTrack from '../utils/customNewRelicEvent';
 
 const NERDGRAPH_URL = process.env.NERDGRAPH_URL;
 const NEW_RELIC_API_KEY = process.env.NEW_RELIC_API_KEY;
@@ -62,6 +63,11 @@ query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
     /* eslint-disable-next-line no-console */
     console.log(`Found ${results?.length} quickstarts`);
 
+    customEventTrack('NerdGraphRequest', {
+      success: true,
+      ...query,
+    });
+
     return {
       props: {
         error: false,
@@ -71,6 +77,12 @@ query getQuickstarts($sortBy: Nr1CatalogSearchSortOption){
   } catch (err) {
     /* eslint-disable-next-line no-console */
     console.error(err);
+
+    customEventTrack('NerdGraphRequest', {
+      success: false,
+      errorMessage: err,
+      ...query,
+    });
 
     return {
       props: {
