@@ -1,3 +1,10 @@
+# [1.74.0](https://github.com/newrelic/developer-website/compare/v1.73.0...v1.74.0) (2021-12-20)
+
+
+### Features
+
+* Add OpenTelemetry lab ([bb7d224](https://github.com/newrelic/developer-website/commit/bb7d224591cd08a538d4bbd88d4e042a380a193e))
+
 # [1.73.0](https://github.com/newrelic/developer-website/compare/v1.72.1...v1.73.0) (2021-12-20)
 
 
