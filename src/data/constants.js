@@ -33,7 +33,6 @@ export const COMMUNITY_LINK = 'https://discuss.newrelic.com';
 
 export const QUICKSTART_ALERT_TYPES = {
   BASELINE: 'BASELINE',
-  OUTLIER: 'OUTLIER',
   STATIC: 'STATIC',
 };
 
