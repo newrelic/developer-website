@@ -1,3 +1,24 @@
+# [1.74.0](https://github.com/newrelic/developer-website/compare/v1.73.0...v1.74.0) (2021-12-20)
+
+
+### Features
+
+* Add OpenTelemetry lab ([bb7d224](https://github.com/newrelic/developer-website/commit/bb7d224591cd08a538d4bbd88d4e042a380a193e))
+
+# [1.73.0](https://github.com/newrelic/developer-website/compare/v1.72.1...v1.73.0) (2021-12-20)
+
+
+### Bug Fixes
+
+* remove self-reference ([17455ac](https://github.com/newrelic/developer-website/commit/17455ac0b578c6f401a42f1c498fc0b83b23f40c))
+* typo ([95149b1](https://github.com/newrelic/developer-website/commit/95149b168a7f351bf2f764ffdbd96e99481b07b6))
+* unclear deprecation message ([155ba40](https://github.com/newrelic/developer-website/commit/155ba403beb5cd5026fb1b04879b0a6c664c196b))
+
+
+### Features
+
+* NR1 deprecation guide ([ce27ec0](https://github.com/newrelic/developer-website/commit/ce27ec0c21ddd25fc8a6c36a3fe85ec28021e806))
+
 ## [1.72.1](https://github.com/newrelic/developer-website/compare/v1.72.0...v1.72.1) (2021-12-17)
 
 
