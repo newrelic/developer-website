@@ -48,6 +48,9 @@
       - [How to identify new components, APIs](#how-to-identify-new-components-apis)
       - [Adding new components](#adding-new-components)
     - [Step 3: Add any new APIs or components to the navigation](#step-3-add-any-new-apis-or-components-to-the-navigation)
+  - [Updating Developer terms](#updating-developer-terms)
+    - [Developer terms tips](#developer-terms-tips)
+    - [Developer terms testing](#developer-terms-testing)
 
 <!-- /TOC -->
 
@@ -443,3 +446,38 @@ If a component looks like it should be internal only, feel free to ask #help-one
 If there are new APIs or components, we will want to list them in the navigation
 so that a user can easily discover them. [Add an entry to `nav.yml`](https://github.com/newrelic/developer-website/blob/develop/src/data/nav.yml)
 to get the new API/component in the nav.
+
+## Updating Developer terms
+
+If you need to update the developer terms the following process can be used.
+These terms only change when requested by New Relic Legal, and they should not be modified
+unless requested by our legal team.
+
+The Developers terms are found [here](./src/markdown-pages/terms.mdx)
+
+1. Obtain the approved file from Legal, usually in the form of a `.docx` type.
+2. Use a tool such as [Pandoc](https://pandoc.org/installing.html) to convert the file to markdown.
+3. Run this command to convert the file:
+
+```sh
+pandoc devterms.docx -o devterms.md
+```
+
+4. Start the process of updating the terms.
+
+### Developer terms tips
+
+It's very important all formatting stays the same as this is a legal document, so when making your changes
+look for the following issues that can occur when using Pandoc.
+
+- `URL conversions` - many times a URL will be formatted incorrectly.
+- `Spacing or tab issues` - can occur. Check the document is formatted correctly to align with legal standards.
+- `Addition of / in place of commas or bolded text` - when converting a document this issue will occur.
+- `Formatting of bullets` - sometimes bullets are formatted incorrectly.
+- `Correct bolding of sub terms` - sub terms sometimes are combined into a single paragraph.
+
+### Developer terms testing
+
+1. Compare the original terms file to the changes you wish to make to look for issues and correct them as needed. Doing a split screen comparison can help you identify issues.
+2. Review the terms on a preview branch after pushing your changes in a PR.
+3. Have someone from the Legal team review the PR branch.
