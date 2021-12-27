@@ -8,6 +8,7 @@ import SegmentedControl from '../components/SegmentedControl';
 import Overlay from '../components/Overlay';
 import PackTile from '../components/PackTile';
 import IOLogo from '../components/IOLogo';
+import IOBanner from '../components/IOBanner';
 import QuickstartFilter from '../components/quickstarts/QuickstartFilter';
 import {
   SearchInput,
@@ -254,16 +255,18 @@ const QuickstartsPage = ({ data, location }) => {
         location={location}
         type="quickstarts"
       />
+      <IOBanner />
       <div
         css={css`
           --sidebar-width: 300px;
+          --banner-height: 308px;
 
           display: grid;
           grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
           grid-template-areas: 'sidebar main';
           grid-template-rows: 1fr auto;
           min-height: calc(100vh - var(--global-header-height));
-          margin: 0 auto;
+          margin: var(--banner-height) auto;
           max-width: var(--site-max-width);
 
           @media screen and (max-width: 760px) {
