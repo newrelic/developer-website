@@ -49,7 +49,7 @@ const GuidedInstallTile = () => {
               line-height: 20px;
             `}
           >
-            First Steps
+            First step
           </span>
           <h2
             css={css`
@@ -63,7 +63,7 @@ const GuidedInstallTile = () => {
               }
             `}
           >
-            Guided Install
+            Guided install
           </h2>
           <span
             css={css`
@@ -74,8 +74,9 @@ const GuidedInstallTile = () => {
               }
             `}
           >
-            Install the New Relic agent with a single command line and start
-            monitoring your log and infrastructure data in real time.
+            Many engineers start here. You'll install an agent with a single
+            command line and start monitoring your log and infrastructure data
+            in real time.
           </span>
         </div>
         <div>
