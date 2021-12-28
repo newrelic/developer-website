@@ -7,13 +7,11 @@ import { css } from '@emotion/react';
 import SegmentedControl from '../components/SegmentedControl';
 import Overlay from '../components/Overlay';
 import PackTile from '../components/PackTile';
-import IOLogo from '../components/IOLogo';
 import QuickstartFilter from '../components/quickstarts/QuickstartFilter';
 import {
   SearchInput,
   useTessen,
   Button,
-  Link,
   Icon,
 } from '@newrelic/gatsby-theme-newrelic';
 import { navigate } from '@reach/router';
@@ -238,6 +236,18 @@ const QuickstartsPage = ({ data, location }) => {
       .filter(filterByContentTypes).length,
   }));
 
+  /**
+   * Finds display name for selected category.
+   * @returns {String} Display name for results found.
+   */
+  const getDisplayName = () => {
+    const found = CATEGORIES.find((cat) => cat.value === category);
+
+    if (!found.value) return 'All quickstarts';
+
+    return found.displayName;
+  };
+
   const filtersWithCount = FILTERS.map((filter) => ({
     ...filter,
     count: quickstarts
@@ -279,9 +289,6 @@ const QuickstartsPage = ({ data, location }) => {
           data-swiftype-index={false}
           css={css`
             grid-area: sidebar;
-            border-right: ${isMobile
-              ? 'none'
-              : '1px solid var(--divider-color)'};
             height: calc(100vh - var(--global-header-height));
             position: sticky;
             top: var(--global-header-height);
@@ -305,79 +312,55 @@ const QuickstartsPage = ({ data, location }) => {
               }
             `}
           >
-            <Link
+            <div
               css={css`
-                display: block;
                 margin-bottom: 1rem;
               `}
-              to="/instant-observability"
             >
-              <IOLogo
-                css={css`
-                  width: 100%;
-                `}
-              />
-            </Link>
-            <p>
-              A place to find quickstarts of resources like dashboards,
-              instrumentation, and alerts to help you monitor your environment.
-            </p>
-            <aside
-              data-swiftype-index={false}
-              css={css`
-                border-bottom: 1px solid var(--divider-color);
-                margin-bottom: 1.5rem;
-              `}
-            />
-            {!isMobile && (
-              <>
+              <FormControl>
                 <div
                   css={css`
-                    margin-bottom: 1rem;
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: space-between;
                   `}
                 >
-                  <FormControl>
-                    <div
-                      css={css`
-                        display: flex;
-                        width: 100%;
-                        align-items: center;
-                        justify-content: space-between;
-                      `}
-                    >
-                      <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
-                      <Button
-                        css={css`
-                          padding: 0;
-                          margin-bottom: 0.25rem;
-                          justify-content: flex-start;
-                          color: var(--color-brand-500);
-                          :disabled {
-                            color: var(--secondary-text-color);
-                          }
-                        `}
-                        onClick={clearFilters}
-                        variant={Button.VARIANT.LINK}
-                        disabled={!filters || !filters.length}
-                      >
-                        Clear
-                      </Button>
-                    </div>
-                    {filtersWithCount.map(({ name, type, icon, count }) => (
-                      <QuickstartFilter
-                        key={name}
-                        name={name}
-                        type={type}
-                        icon={icon}
-                        count={count}
-                        isChecked={filters.includes(type) && count !== 0}
-                        handleFilter={handleFilter}
-                      />
-                    ))}
-                  </FormControl>
+                  <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
+                  <Button
+                    css={css`
+                      padding: 0;
+                      margin-bottom: 0.25rem;
+                      justify-content: flex-start;
+                      color: var(--color-brand-500);
+                      :disabled {
+                        color: var(--secondary-text-color);
+                      }
+                    `}
+                    onClick={clearFilters}
+                    variant={Button.VARIANT.LINK}
+                    disabled={!filters || !filters.length}
+                  >
+                    Clear
+                  </Button>
                 </div>
+                {filtersWithCount.map(({ name, type, icon, count }) => (
+                  <QuickstartFilter
+                    key={name}
+                    name={name}
+                    type={type}
+                    icon={icon}
+                    count={count}
+                    isChecked={filters.includes(type) && count !== 0}
+                    handleFilter={handleFilter}
+                  />
+                ))}
+              </FormControl>
+            </div>
+            {!isMobile && (
+              <>
                 <FormControl>
-                  <Label htmlFor="quickstartCategory">CATEGORIES</Label>
+                  <Label htmlFor="quickstartCategory">Categories</Label>
                   {categoriesWithCount.map(({ displayName, value, count }) => (
                     <Button
                       type="button"
@@ -448,9 +431,27 @@ const QuickstartsPage = ({ data, location }) => {
             <SearchInput
               size={SearchInput.SIZE.LARGE}
               value={search || ''}
-              placeholder="Search for any quickstart (e.g. Node, AWS, LAMP, etc.)"
+              placeholder="What do you want to monitor? (e.g., AWS, LAMP, Kubernetes)"
               onClear={() => setSearch('')}
               onChange={(e) => setSearch(e.target.value)}
+              css={css`
+                .light-mode & {
+                  background: #ffffff;
+                  border: var(--color-neutrals-500);
+
+                  max-width: 630px;
+
+                  input::placeholder {
+                    color: var(--color-neutrals-600);
+                  }
+                }
+              `}
+            />
+            <Icon
+              css={css`
+                margin-right: 0.25rem;
+              `}
+              name="fe-clock"
             />
             {isMobile && (
               <div
@@ -480,7 +481,6 @@ const QuickstartsPage = ({ data, location }) => {
                 >
                   Filters
                 </Button>
-
                 <Overlay
                   onCloseOverlay={closeFilterOverlay}
                   isOpen={isFilterOverlayOpen}
@@ -663,8 +663,10 @@ const QuickstartsPage = ({ data, location }) => {
               justify-content: space-between;
             `}
           >
-            <span>Showing {filteredQuickstarts.length} results</span>
-
+            <span>
+              Showing {filteredQuickstarts.length} results for:{' '}
+              <strong>{search || getDisplayName()}</strong>
+            </span>
             <div
               css={css`
                 min-width: 155px;
@@ -811,9 +813,13 @@ const Label = ({ children, htmlFor }) => (
     htmlFor={htmlFor}
     css={css`
       display: block;
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 0.25rem;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+
+      .light-mode & {
+        color: var(--color-neutrals-800);
+      }
     `}
   >
     {children}
