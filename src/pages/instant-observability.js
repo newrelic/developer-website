@@ -14,6 +14,7 @@ import {
   useTessen,
   Button,
   Icon,
+  Dropdown,
 } from '@newrelic/gatsby-theme-newrelic';
 import { navigate } from '@reach/router';
 
@@ -30,7 +31,6 @@ import CATEGORIES from '../data/instant-observability-categories';
 
 import { getGuidedInstallStackedNr1Url } from '../utils/get-pack-nr1-url';
 import SuperTiles from '../components/SuperTiles';
-import { convertChangesToDMP } from 'diff';
 
 const COLLAPSE_BREAKPOINT = '760px';
 
@@ -694,17 +694,34 @@ const QuickstartsPage = ({ data, location }) => {
           <div
             css={css`
               padding: 1.25rem 0;
-              font-size: 0.9rem;
-              color: var(--secondary-text-color);
+              font-size: 16px;
+              color: var(--color-neutrals-800);
               display: flex;
               justify-content: space-between;
+              align-items: center;
+              align-text: center;
+
+              strong {
+                color: var(--color-neutrals-700);
+              }
             `}
           >
             <span>
               Showing {filteredQuickstarts.length} results for:{' '}
               <strong>{search || getDisplayName()}</strong>
             </span>
-            <div>HELLO</div>
+            <div>
+              <Dropdown align="left">
+                <Dropdown.Toggle variant={Button.VARIANT.NORMAL}>
+                  sort state here
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.MenuItem>Item 1</Dropdown.MenuItem>
+                  <Dropdown.MenuItem>Item 2</Dropdown.MenuItem>
+                  <Dropdown.MenuItem>Item 3</Dropdown.MenuItem>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
           </div>
           <div
             css={css`
