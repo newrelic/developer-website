@@ -14,7 +14,6 @@ import {
   useTessen,
   Button,
   Icon,
-  Dropdown,
 } from '@newrelic/gatsby-theme-newrelic';
 import { navigate } from '@reach/router';
 
@@ -38,13 +37,6 @@ const FILTERS = [
   { name: 'Dashboards', type: 'dashboards', icon: 'nr-dashboard' },
   { name: 'Alerts', type: 'alerts', icon: 'nr-alert' },
   { name: 'Data sources', type: 'documentation', icon: 'nr-document' },
-];
-
-const SORT = [
-  'Relevance',
-  'Alphabetical',
-  'Popularity',
-  'Reverse alphabetical',
 ];
 
 const VIEWS = {
@@ -116,7 +108,6 @@ const QuickstartsPage = ({ data, location }) => {
   const [search, setSearch] = useState('');
   const [filters, setFilters] = useState([]);
   const [category, setCategory] = useState('');
-  const [sort, setSort] = useState('Alphabetical');
 
   const [isFilterOverlayOpen, setIsFilterOverlayOpen] = useState(false);
   const [isCategoriesOverlayOpen, setIsCategoriesOverlayOpen] = useState(false);
@@ -304,9 +295,8 @@ const QuickstartsPage = ({ data, location }) => {
           css={css`
             grid-area: sidebar;
             height: calc(100vh - var(--global-header-height));
-            position: sticky;
-
-            @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+            position: sticky @media screen and
+              (max-width: ${COLLAPSE_BREAKPOINT}) {
               display: none;
               position: relative;
               overflow: hidden;
@@ -325,51 +315,6 @@ const QuickstartsPage = ({ data, location }) => {
               }
             `}
           >
-            {/* <div
-              css={css`
-                margin-bottom: 1rem;
-              `}
-            >
-              <FormControl>
-                <div
-                  css={css`
-                    display: flex;
-                    width: 100%;
-                    align-items: center;
-                    justify-content: space-between;
-                  `}
-                >
-                  <Label htmlFor="quickstartFilterByType">FILTER BY</Label>
-                  <Button
-                    css={css`
-                      padding: 0;
-                      margin-bottom: 0.25rem;
-                      justify-content: flex-start;
-                      color: var(--color-brand-500);
-                      :disabled {
-                        color: var(--secondary-text-color);
-                      }
-                    `}
-                    onClick={clearFilters}
-                    variant={Button.VARIANT.LINK}
-                    disabled={!filters || !filters.length}
-                  >
-                    Clear
-                  </Button>
-                </div>
-                {filtersWithCount.map(({ name, type, icon, count }) => (
-                  <QuickstartFilter
-                    key={name}
-                    name={name}
-                    type={type}
-                    icon={icon}
-                    count={count}
-                    isChecked={filters.includes(type) && count !== 0}
-                    handleFilter={handleFilter}
-                  />
-                ))}
-              </FormControl>
-            </div> */}
             {!isMobile && (
               <>
                 <FormControl>
@@ -717,33 +662,6 @@ const QuickstartsPage = ({ data, location }) => {
               Showing {filteredQuickstarts.length} results for:{' '}
               <strong>{search || getDisplayName()}</strong>
             </span>
-
-            <Dropdown
-              align="left"
-              css={css`
-                padding-rightl: 10px;
-              `}
-            >
-              <Dropdown.Toggle variant={Button.VARIANT.NORMAL}>
-                {sort}
-              </Dropdown.Toggle>
-              <Dropdown.Menu
-                css={css`
-                  width: 159px;
-                `}
-              >
-                {SORT.map((sortValue) => (
-                  <Dropdown.MenuItem
-                    key={sortValue}
-                    onClick={() => {
-                      setSort(sortValue);
-                    }}
-                  >
-                    {sortValue}
-                  </Dropdown.MenuItem>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
           </div>
           <div
             css={css`
@@ -774,6 +692,14 @@ const QuickstartsPage = ({ data, location }) => {
                 css={css`
                   ${view === VIEWS.GRID && `height: 100%;`}
                   background-color: var(--tertiary-background-color);
+
+                  @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+                    flex-direction: row;
+
+                    img {
+                      display: none;
+                    }
+                  }
                 `}
                 href={getGuidedInstallStackedNr1Url(NR1_GUIDED_INSTALL_NERDLET)}
                 view={view}
@@ -787,8 +713,14 @@ const QuickstartsPage = ({ data, location }) => {
               <PackTile
                 id={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
                 css={css`
-                  ${view === VIEWS.GRID && `height: 100%;`}
                   background-color: var(--tertiary-background-color);
+                  @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+                    flex-direction: row;
+
+                    img {
+                      display: none;
+                    }
+                  }
                 `}
                 href={QUICKSTARTS_REPO}
                 view={view}
@@ -799,6 +731,19 @@ const QuickstartsPage = ({ data, location }) => {
             )}
             {filteredQuickstarts.map((pack) => (
               <PackTile
+                css={css`
+                  @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+                    flex-direction: row;
+
+                    img {
+                      display: none;
+                    }
+                    .tag-div {
+                      flex-direction: column;
+                      justify-content: flex-end;
+                    }
+                  }
+                `}
                 key={pack.id}
                 view={view}
                 featured={pack.keywords?.includes('featured')}

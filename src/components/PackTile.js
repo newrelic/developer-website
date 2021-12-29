@@ -134,6 +134,7 @@ const PackTile = ({
         </p>
       </div>
       <div
+        className="tag-div"
         css={css`
           padding: 1em;
           display: flex;
@@ -142,16 +143,16 @@ const PackTile = ({
           css`
             flex-direction: column;
             justify-content: flex-end;
-            @media (max-width: 1080px) {
-              width: 100%;
-            }
           `}
+          span {
+            color: var(--color-brand-500);
+          }
         `}
       >
         {featured && (
           <Tag
             css={css`
-              background-color: var(--color-brand-300);
+              background-color: var(--color-brand-100);
             `}
           >
             Featured
