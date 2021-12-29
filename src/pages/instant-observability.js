@@ -295,8 +295,8 @@ const QuickstartsPage = ({ data, location }) => {
           css={css`
             grid-area: sidebar;
             height: calc(100vh - var(--global-header-height));
-            position: sticky @media screen and
-              (max-width: ${COLLAPSE_BREAKPOINT}) {
+            position: sticky;
+            @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
               display: none;
               position: relative;
               overflow: hidden;
