@@ -1,3 +1,10 @@
+# [1.75.0](https://github.com/newrelic/developer-website/compare/v1.74.0...v1.75.0) (2021-12-29)
+
+
+### Features
+
+* add codeowners ([faef5ad](https://github.com/newrelic/developer-website/commit/faef5ad4c6121703f14cbc01815ab171afec4840))
+
 # [1.74.0](https://github.com/newrelic/developer-website/compare/v1.73.0...v1.74.0) (2021-12-20)
 
 
