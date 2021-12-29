@@ -40,6 +40,13 @@ const FILTERS = [
   { name: 'Data sources', type: 'documentation', icon: 'nr-document' },
 ];
 
+const SORT = [
+  'Relevance',
+  'Alphabetical',
+  'Popularity',
+  'Reverse alphabetical',
+];
+
 const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
@@ -109,6 +116,7 @@ const QuickstartsPage = ({ data, location }) => {
   const [search, setSearch] = useState('');
   const [filters, setFilters] = useState([]);
   const [category, setCategory] = useState('');
+  const [sort, setSort] = useState('Alphabetical');
 
   const [isFilterOverlayOpen, setIsFilterOverlayOpen] = useState(false);
   const [isCategoriesOverlayOpen, setIsCategoriesOverlayOpen] = useState(false);
@@ -698,7 +706,6 @@ const QuickstartsPage = ({ data, location }) => {
               color: var(--color-neutrals-800);
               display: flex;
               justify-content: space-between;
-              align-items: center;
               align-text: center;
 
               strong {
@@ -710,18 +717,33 @@ const QuickstartsPage = ({ data, location }) => {
               Showing {filteredQuickstarts.length} results for:{' '}
               <strong>{search || getDisplayName()}</strong>
             </span>
-            <div>
-              <Dropdown align="left">
-                <Dropdown.Toggle variant={Button.VARIANT.NORMAL}>
-                  sort state here
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.MenuItem>Item 1</Dropdown.MenuItem>
-                  <Dropdown.MenuItem>Item 2</Dropdown.MenuItem>
-                  <Dropdown.MenuItem>Item 3</Dropdown.MenuItem>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
+
+            <Dropdown
+              align="left"
+              css={css`
+                padding-rightl: 10px;
+              `}
+            >
+              <Dropdown.Toggle variant={Button.VARIANT.NORMAL}>
+                {sort}
+              </Dropdown.Toggle>
+              <Dropdown.Menu
+                css={css`
+                  width: 159px;
+                `}
+              >
+                {SORT.map((sortValue) => (
+                  <Dropdown.MenuItem
+                    key={sortValue}
+                    onClick={() => {
+                      setSort(sortValue);
+                    }}
+                  >
+                    {sortValue}
+                  </Dropdown.MenuItem>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
           <div
             css={css`
