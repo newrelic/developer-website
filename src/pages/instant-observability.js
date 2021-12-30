@@ -191,7 +191,7 @@ const QuickstartsPage = ({ data, location }) => {
       <IOBanner />
       <div
         css={css`
-          --sidebar-width: 300px;
+          --sidebar-width: 377px;
           --banner-height: 308px;
 
           display: grid;
@@ -498,9 +498,12 @@ const QuickstartsPage = ({ data, location }) => {
           <div
             css={css`
               display: grid;
-              grid-gap: 1rem;
+              grid-gap: 2rem;
               grid-template-columns: repeat(4, 1fr);
-              grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
+              grid-auto-rows: minmax(
+                var(--guide-list-row-height, 150px),
+                287px
+              );
 
               @media (max-width: 1450px) {
                 grid-template-columns: repeat(3, 1fr);

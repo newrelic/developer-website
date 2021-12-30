@@ -93,10 +93,10 @@ const PackTile = ({
         logoUrl={logoUrl}
         packName={title || name}
         css={css`
-          height: 200px;
+          height: 100px;
           object-fit: scale-down;
           width: ${view === VIEWS.GRID ? 100 : 25}%;
-          padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
+          padding: 5% ${view === VIEWS.GRID ? 5 : 1}%;
           margin: 0 auto 10px;
 
           .dark-mode & {
@@ -122,6 +122,7 @@ const PackTile = ({
         css={css`
           padding: 1em;
           flex: 1 1 auto;
+          min-height: 0; /* needed to stop the summary text from pushing outside the flexbox */
           ${view === VIEWS.LIST &&
           css`
             width: 100%;
@@ -140,6 +141,10 @@ const PackTile = ({
           css={css`
             font-size: 0.875rem;
             color: var(--secondary-text-color);
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
           `}
         >
           {summary || 'No summary provided'}
@@ -148,6 +153,7 @@ const PackTile = ({
       <div
         css={css`
           padding: 1em;
+          margin-top: 1rem;
           display: flex;
           justify-content: flex-end;
           ${view === VIEWS.LIST &&
