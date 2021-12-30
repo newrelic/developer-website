@@ -243,7 +243,13 @@ const QuickstartsPage = ({ data, location }) => {
                         : 'none'};
                     `}
                   >
-                    {`${displayName} (${count})`}
+                    {`${displayName}`}
+                    <span
+                      css={css`
+                        color: var(--secondary-text-color);
+                        padding-left: 0.25rem;
+                      `}
+                    >{`(${count})`}</span>
                   </Button>
                 ))}
               </FormControl>
