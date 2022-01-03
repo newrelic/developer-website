@@ -55,19 +55,4 @@ const onClientEntry = () => {
   window.ReactDOM = require('react-dom');
 };
 
-const shouldUpdateScroll = ({ routerProps: { location } }) => {
-  const TRANSITION_DELAY = 600;
-
-  // Scroll window to top position if there is no search (i.e., page load)
-  if (!location.search) {
-    window.setTimeout(() => window.scrollTo(0, 0), TRANSITION_DELAY);
-  }
-  return false;
-};
-
-export {
-  wrapPageElement,
-  onInitialClientRender,
-  onClientEntry,
-  shouldUpdateScroll,
-};
+export { wrapPageElement, onInitialClientRender, onClientEntry };
