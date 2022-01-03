@@ -56,11 +56,11 @@ const onClientEntry = () => {
 };
 
 const shouldUpdateScroll = ({ routerProps: { location } }) => {
-  const transitionDelay = 600;
+  const TRANSITION_DELAY = 600;
 
   // Scroll window to top position if there is no search (i.e., page load)
   if (!location.search) {
-    window.setTimeout(() => window.scrollTo(0, 0), transitionDelay);
+    window.setTimeout(() => window.scrollTo(0, 0), TRANSITION_DELAY);
   }
   return false;
 };
