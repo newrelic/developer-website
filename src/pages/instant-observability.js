@@ -516,7 +516,9 @@ const QuickstartsPage = ({ data, location }) => {
 
               ${view === VIEWS.LIST &&
               css`
-                display: initial;
+                grid-auto-rows: 1fr;
+                grid-template-columns: 1fr;
+                grid-gap: 0.25rem;
               `}
             `}
           >

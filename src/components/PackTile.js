@@ -80,6 +80,8 @@ const PackTile = ({
         ${view === VIEWS.LIST &&
         css`
           margin-bottom: 1em;
+          display: grid;
+          grid-template-columns: 1fr 3.5fr 0.5fr;
           flex-direction: row;
         `}
 
@@ -95,8 +97,8 @@ const PackTile = ({
         css={css`
           height: 100px;
           object-fit: scale-down;
-          width: ${view === VIEWS.GRID ? 100 : 25}%;
-          padding: 5% ${view === VIEWS.GRID ? 5 : 1}%;
+          width: 100%;
+          padding: 5% 5%;
           margin: 0 auto 10px;
 
           .dark-mode & {
@@ -106,6 +108,7 @@ const PackTile = ({
           ${view === VIEWS.LIST &&
           css`
             max-height: 150px;
+            height: 100%;
 
             flex: 0 0 auto;
             @media (max-width: 1080px) {
