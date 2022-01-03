@@ -24,6 +24,7 @@ const PackImg = ({ className, logoUrl, packName }) => {
       <img
         css={css`
           display: block;
+          width: 100%;
         `}
         src={logoUrl}
         alt={packName}
