@@ -658,7 +658,11 @@ const QuickstartsPage = ({ data, location }) => {
               }
             `}
           >
-            <span>
+            <span
+              css={css`
+                color: var(--primary-text-color);
+              `}
+            >
               Showing {filteredQuickstarts.length} results for:{' '}
               <strong>{search || getDisplayName()}</strong>
             </span>
