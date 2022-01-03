@@ -50,6 +50,7 @@ const SegmentedControl = ({ items, onChange, className }) => {
             `}
           >
             <Icon
+              title={value}
               css={css`
                 margin-top: 4px;
                 font-size: 2em;

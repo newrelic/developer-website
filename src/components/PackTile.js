@@ -78,6 +78,10 @@ const PackTile = ({
           margin-bottom: 1em;
           flex-direction: row;
         `}
+
+        @media screen and (max-width: 760px) {
+          flex-direction: row;
+        }
       `}
       onClick={() => handlePackClick(id)}
     >
@@ -104,6 +108,10 @@ const PackTile = ({
               display: none;
             }
           `}
+
+          @media screen and (max-width: 760px) {
+            display: none;
+          }
         `}
       />
       <div
@@ -134,7 +142,6 @@ const PackTile = ({
         </p>
       </div>
       <div
-        className="tag-div"
         css={css`
           padding: 1em;
           display: flex;
@@ -146,6 +153,10 @@ const PackTile = ({
           `}
           span {
             color: var(--color-brand-500);
+          }
+          @media screen and (max-width: 760px) {
+            flex-direction: column;
+            justify-content: flex-end;
           }
         `}
       >

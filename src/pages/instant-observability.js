@@ -311,7 +311,7 @@ const QuickstartsPage = ({ data, location }) => {
               .dark-mode & {
                 background-color: var(--tertiary-background-color);
                 input {
-                  background: var(--color-dark-500);
+                  background: var(--color-dark-400);
 
                   &::placeholder {
                     color: var(primary-text-color);
@@ -470,6 +470,8 @@ const QuickstartsPage = ({ data, location }) => {
 
           <div
             css={css`
+              --text-color: var(--primary-text-color);
+
               padding: 1.25rem 0;
               font-size: 16px;
               color: var(--color-neutrals-800);
@@ -477,16 +479,16 @@ const QuickstartsPage = ({ data, location }) => {
               justify-content: space-between;
               align-text: center;
 
+              span {
+                color: var(--text-color);
+              }
+
               strong {
-                color: var(--color-neutrals-700);
+                color: var(--text-color);
               }
             `}
           >
-            <span
-              css={css`
-                color: var(--primary-text-color);
-              `}
-            >
+            <span>
               Showing {filteredQuickstarts.length} results for:{' '}
               <strong>{search || getDisplayName()}</strong>
             </span>
@@ -526,19 +528,6 @@ const QuickstartsPage = ({ data, location }) => {
             />
             {filteredQuickstarts.map((pack) => (
               <PackTile
-                css={css`
-                  @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
-                    flex-direction: row;
-
-                    img {
-                      display: none;
-                    }
-                    .tag-div {
-                      flex-direction: column;
-                      justify-content: flex-end;
-                    }
-                  }
-                `}
                 key={pack.id}
                 view={view}
                 featured={pack.keywords?.includes('featured')}
@@ -609,10 +598,7 @@ const Label = ({ children, htmlFor }) => (
       font-size: 1rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
-
-      .light-mode & {
-        color: var(--color-neutrals-800);
-      }
+      color: var(--color-neutrals-800);
     `}
   >
     {children}
