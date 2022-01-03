@@ -598,7 +598,7 @@ const Label = ({ children, htmlFor }) => (
       font-size: 1rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
-      color: var(--color-neutrals-800);
+      color: var(--primary-text-color);
     `}
   >
     {children}
