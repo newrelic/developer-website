@@ -139,10 +139,11 @@ const PackTile = ({
         </h4>
         <p
           css={css`
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             color: var(--secondary-text-color);
             overflow: hidden;
             display: -webkit-box;
+            white-space: normal;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 3;
           `}
