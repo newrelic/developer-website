@@ -9,7 +9,11 @@ import {
   Tag,
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
-import { SHIELD_LEVELS, RESERVED_QUICKSTART_IDS } from '../data/constants';
+import {
+  SHIELD_LEVELS,
+  RESERVED_QUICKSTART_IDS,
+  QUICKSTARTS_COLLAPSE_BREAKPOINT,
+} from '../data/constants';
 import PackImg from './PackImg';
 
 const VIEWS = {
@@ -78,6 +82,10 @@ const PackTile = ({
           margin-bottom: 1em;
           flex-direction: row;
         `}
+
+        @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+          flex-direction: row;
+        }
       `}
       onClick={() => handlePackClick(id)}
     >
@@ -104,6 +112,10 @@ const PackTile = ({
               display: none;
             }
           `}
+
+          @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+            display: none;
+          }
         `}
       />
       <div
@@ -142,16 +154,20 @@ const PackTile = ({
           css`
             flex-direction: column;
             justify-content: flex-end;
-            @media (max-width: 1080px) {
-              width: 100%;
-            }
           `}
+          span {
+            color: var(--color-brand-500);
+          }
+          @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+            flex-direction: column;
+            justify-content: flex-end;
+          }
         `}
       >
         {featured && (
           <Tag
             css={css`
-              background-color: var(--color-brand-300);
+              background-color: var(--color-brand-100);
             `}
           >
             Featured

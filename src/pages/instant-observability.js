@@ -18,7 +18,11 @@ import { navigate } from '@reach/router';
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
-import { QUICKSTARTS_REPO, RESERVED_QUICKSTART_IDS } from '../data/constants';
+import {
+  QUICKSTARTS_REPO,
+  RESERVED_QUICKSTART_IDS,
+  QUICKSTARTS_COLLAPSE_BREAKPOINT,
+} from '../data/constants';
 import CATEGORIES from '../data/instant-observability-categories';
 
 import SuperTiles from '../components/SuperTiles';
@@ -165,6 +169,18 @@ const QuickstartsPage = ({ data, location }) => {
       .filter(filterByCategory(cat.value)).length,
   }));
 
+  /**
+   * Finds display name for selected category.
+   * @returns {String} Display name for results found.
+   */
+  const getDisplayName = () => {
+    const found = CATEGORIES.find((cat) => cat.value === category);
+
+    if (!found.value) return 'All quickstarts';
+
+    return found.displayName;
+  };
+
   return (
     <>
       <DevSiteSeo
@@ -186,7 +202,7 @@ const QuickstartsPage = ({ data, location }) => {
           margin: var(--banner-height) auto;
           max-width: var(--site-max-width);
 
-          @media screen and (max-width: 760px) {
+          @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
             grid-template-columns: minmax(0, 1fr);
             grid-template-areas:
               'sidebar'
@@ -203,8 +219,8 @@ const QuickstartsPage = ({ data, location }) => {
             position: sticky;
             top: var(--global-header-height);
 
-            @media screen and (max-width: 760px) {
-              display: block;
+            @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+              display: none;
               position: relative;
               overflow: hidden;
               width: 100%;
@@ -217,7 +233,7 @@ const QuickstartsPage = ({ data, location }) => {
               padding: var(--site-content-padding);
               height: 100%;
               overflow: auto;
-              @media screen and (max-width: 760px) {
+              @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
                 position: relative;
               }
             `}
@@ -262,12 +278,20 @@ const QuickstartsPage = ({ data, location }) => {
             padding: var(--site-content-padding);
           `}
         >
-          <SuperTiles />
+          <div
+            css={css`
+              @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+                display: none;
+              }
+            `}
+          >
+            <SuperTiles />
+          </div>
           <div
             css={css`
               background-color: var(--secondary-background-color);
               border-radius: 4px;
-              padding: 1rem;
+              padding: 0.5rem;
               display: flex;
               justify-content: space-between;
               align-items: center;
@@ -275,34 +299,76 @@ const QuickstartsPage = ({ data, location }) => {
               input {
                 font-size: 1.15em;
                 padding: 0.5rem;
-                padding-left: 3.75rem;
+                padding-left: 2.25rem;
+                background: var(--color-white);
+                border: var(--color-neutrals-600);
                 border-radius: 4px;
 
                 &::placeholder {
-                  color: var(--border-color);
+                  color: var(--color-neutrals-600);
+                  padding-left: 0.5rem;
                 }
               }
 
               .dark-mode & {
                 background-color: var(--tertiary-background-color);
-              }
+                input {
+                  background: var(--color-dark-400);
 
-              @media screen and (max-width: 1180px) {
-                flex-direction: column;
-                align-items: normal;
-
-                > * {
-                  margin: 0.5rem 0;
+                  &::placeholder {
+                    color: var(primary-text-color);
+                  }
                 }
+              }
+              @media (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+                background-color: var(--primary-background-color);
               }
             `}
           >
             <SearchInput
               size={SearchInput.SIZE.LARGE}
               value={search || ''}
-              placeholder="Search for any quickstart (e.g. Node, AWS, LAMP, etc.)"
+              placeholder="What do you want to monitor? (e.g., AWS, LAMP, Kubernetes)"
               onClear={() => setSearch('')}
               onChange={(e) => setSearch(e.target.value)}
+              css={css`
+                --svg-color: var(--color-neutrals-700);
+
+                svg {
+                  width: 16px;
+                  height: 16px;
+                  color: var(--svg-color);
+                }
+
+                .dark-mode & {
+                  --svg-color: var(--primary-text-color);
+                }
+
+                @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+                  max-width: 100%;
+                }
+
+                @media screen and (min-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+                  max-width: 630px;
+                }
+              `}
+            />
+            <SegmentedControl
+              items={Object.values(VIEWS)}
+              onChange={(_e, view) => {
+                setView(view);
+
+                tessen.track({
+                  eventName: 'instantObservability',
+                  category: 'QuickstartViewToggle',
+                  quickstartViewState: view,
+                });
+              }}
+              css={css`
+                @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+                  display: none;
+                }
+              `}
             />
             {isMobile && (
               <div
@@ -406,39 +472,28 @@ const QuickstartsPage = ({ data, location }) => {
 
           <div
             css={css`
+              --text-color: var(--primary-text-color);
+
               padding: 1.25rem 0;
-              font-size: 0.9rem;
-              color: var(--secondary-text-color);
+              font-size: 16px;
+              color: var(--color-neutrals-800);
               display: flex;
               justify-content: space-between;
+              align-text: center;
+
+              span {
+                color: var(--text-color);
+              }
+
+              strong {
+                color: var(--text-color);
+              }
             `}
           >
-            <span>Showing {filteredQuickstarts.length} results</span>
-
-            <div
-              css={css`
-                min-width: 155px;
-                margin-left: 20px;
-                display: inline;
-
-                @media screen and (max-width: 1180px) {
-                  margin-left: 0px;
-                }
-              `}
-            >
-              <SegmentedControl
-                items={Object.values(VIEWS)}
-                onChange={(_e, view) => {
-                  setView(view);
-
-                  tessen.track({
-                    eventName: 'instantObservability',
-                    category: 'QuickstartViewToggle',
-                    quickstartViewState: view,
-                  });
-                }}
-              />
-            </div>
+            <span>
+              Showing {filteredQuickstarts.length} results for:{' '}
+              <strong>{search || getDisplayName()}</strong>
+            </span>
           </div>
           <div
             css={css`
@@ -545,6 +600,7 @@ const Label = ({ children, htmlFor }) => (
       font-size: 1rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
+      color: var(--primary-text-color);
     `}
   >
     {children}
@@ -559,14 +615,9 @@ Label.propTypes = {
 const FormControl = ({ children }) => (
   <div
     css={css`
-      margin: 0 0.5rem;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-
-      @media screen and (max-width: 1180px) {
-        margin: 0.5rem 0;
-      }
     `}
   >
     {children}
