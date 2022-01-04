@@ -21,7 +21,7 @@ import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 import {
   QUICKSTARTS_REPO,
   RESERVED_QUICKSTART_IDS,
-  COLLAPSE_BREAKPOINT,
+  QUICKSTARTS_COLLAPSE_BREAKPOINT,
 } from '../data/constants';
 import CATEGORIES from '../data/instant-observability-categories';
 
@@ -202,7 +202,7 @@ const QuickstartsPage = ({ data, location }) => {
           margin: var(--banner-height) auto;
           max-width: var(--site-max-width);
 
-          @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+          @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
             grid-template-columns: minmax(0, 1fr);
             grid-template-areas:
               'sidebar'
@@ -219,7 +219,7 @@ const QuickstartsPage = ({ data, location }) => {
             position: sticky;
             top: var(--global-header-height);
 
-            @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+            @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
               display: none;
               position: relative;
               overflow: hidden;
@@ -233,7 +233,7 @@ const QuickstartsPage = ({ data, location }) => {
               padding: var(--site-content-padding);
               height: 100%;
               overflow: auto;
-              @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+              @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
                 position: relative;
               }
             `}
@@ -280,7 +280,7 @@ const QuickstartsPage = ({ data, location }) => {
         >
           <div
             css={css`
-              @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+              @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
                 display: none;
               }
             `}
@@ -320,7 +320,7 @@ const QuickstartsPage = ({ data, location }) => {
                   }
                 }
               }
-              @media (max-width: ${COLLAPSE_BREAKPOINT}) {
+              @media (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
                 background-color: var(--primary-background-color);
               }
             `}
@@ -344,11 +344,11 @@ const QuickstartsPage = ({ data, location }) => {
                   --svg-color: var(--primary-text-color);
                 }
 
-                @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+                @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
                   max-width: 100%;
                 }
 
-                @media screen and (min-width: ${COLLAPSE_BREAKPOINT}) {
+                @media screen and (min-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
                   max-width: 630px;
                 }
               `}
@@ -365,7 +365,7 @@ const QuickstartsPage = ({ data, location }) => {
                 });
               }}
               css={css`
-                @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+                @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
                   display: none;
                 }
               `}

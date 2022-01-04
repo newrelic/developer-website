@@ -12,7 +12,7 @@ import {
 import {
   SHIELD_LEVELS,
   RESERVED_QUICKSTART_IDS,
-  COLLAPSE_BREAKPOINT,
+  QUICKSTARTS_COLLAPSE_BREAKPOINT,
 } from '../data/constants';
 import PackImg from './PackImg';
 
@@ -83,7 +83,7 @@ const PackTile = ({
           flex-direction: row;
         `}
 
-        @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+        @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
           flex-direction: row;
         }
       `}
@@ -113,7 +113,7 @@ const PackTile = ({
             }
           `}
 
-          @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+          @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
             display: none;
           }
         `}
@@ -158,7 +158,7 @@ const PackTile = ({
           span {
             color: var(--color-brand-500);
           }
-          @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
+          @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
             flex-direction: column;
             justify-content: flex-end;
           }
