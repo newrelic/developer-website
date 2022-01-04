@@ -16,6 +16,8 @@ import {
 } from '../data/constants';
 import PackImg from './PackImg';
 
+const IMAGE_BREAKPOINT = 1080;
+
 const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
@@ -74,15 +76,17 @@ const PackTile = ({
       interactive
       css={css`
         overflow: hidden;
-        display: flex;
-        flex-direction: column;
-
+        //display: flex;
+        //flex-direction: column;
+        display: grid;
+        grid-template-rows: 1fr 3.5fr 0.5fr;
         ${view === VIEWS.LIST &&
         css`
           margin-bottom: 1em;
           display: grid;
           grid-template-columns: 1fr 3.5fr 0.5fr;
-          flex-direction: row;
+          @media (max-width: 1080px) {
+            grid-template-columns: 4.5fr 0.5fr;
         `}
 
         @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
@@ -91,36 +95,38 @@ const PackTile = ({
       `}
       onClick={() => handlePackClick(id)}
     >
-      <PackImg
-        logoUrl={logoUrl}
-        packName={title || name}
+      <div
         css={css`
-          height: 100px;
-          object-fit: scale-down;
-          width: 100%;
-          padding: 5% 5%;
-          margin: 0 auto 10px;
+          height: 130px;
+        `}
+      >
+        <PackImg
+          logoUrl={logoUrl}
+          packName={title || name}
+          css={css`
+            object-fit: scale-down;
+            padding: 5% 5%;
+            margin: 0 auto 10px;
 
-          .dark-mode & {
-            background-color: white;
-          }
+            .dark-mode & {
+              background-color: white;
+            }
 
-          ${view === VIEWS.LIST &&
-          css`
-            max-height: 150px;
-            height: 100%;
+            ${view === VIEWS.LIST &&
+            css`
+              max-height: 150px;
+              height: 100%;
 
-            flex: 0 0 auto;
-            @media (max-width: 1080px) {
+              @media (max-width: ${IMAGE_BREAKPOINT}px) {
+                display: none;
+              }
+            `}
+            @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
               display: none;
             }
           `}
-
-          @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
-            display: none;
-          }
-        `}
-      />
+        />
+      </div>
       <div
         css={css`
           padding: 1em;
@@ -130,7 +136,7 @@ const PackTile = ({
           css`
             width: 100%;
             flex: 1 1 auto;
-            @media (max-width: 1080px) {
+            @media (max-width: ${IMAGE_BREAKPOINT}px) {
               width: 100%;
             }
           `}

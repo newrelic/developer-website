@@ -506,13 +506,16 @@ const QuickstartsPage = ({ data, location }) => {
                 287px
               );
 
-              @media (max-width: 1350px) {
-                grid-template-columns: repeat(3, 1fr);
-              }
+              ${view === VIEWS.GRID &&
+              css`
+                @media (max-width: 1350px) {
+                  grid-template-columns: repeat(3, 1fr);
+                }
 
-              @media (max-width: 1180px) {
-                grid-template-columns: repeat(1, 1fr);
-              }
+                @media (max-width: 1180px) {
+                  grid-template-columns: repeat(1, 1fr);
+                }
+              `}
 
               ${view === VIEWS.LIST &&
               css`
