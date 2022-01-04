@@ -9,9 +9,12 @@ import {
   Tag,
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
-import { SHIELD_LEVELS, RESERVED_QUICKSTART_IDS } from '../data/constants';
+import {
+  SHIELD_LEVELS,
+  RESERVED_QUICKSTART_IDS,
+  COLLAPSE_BREAKPOINT,
+} from '../data/constants';
 import PackImg from './PackImg';
-import { COLLAPSE_BREAKPOINT } from './InstantObservability/constants';
 
 const VIEWS = {
   GRID: 'Grid view',

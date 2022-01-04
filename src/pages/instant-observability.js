@@ -18,9 +18,12 @@ import { navigate } from '@reach/router';
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
-import { QUICKSTARTS_REPO, RESERVED_QUICKSTART_IDS } from '../data/constants';
+import {
+  QUICKSTARTS_REPO,
+  RESERVED_QUICKSTART_IDS,
+  COLLAPSE_BREAKPOINT,
+} from '../data/constants';
 import CATEGORIES from '../data/instant-observability-categories';
-import { COLLAPSE_BREAKPOINT } from '../components/InstantObservability/constants';
 
 import SuperTiles from '../components/SuperTiles';
 
