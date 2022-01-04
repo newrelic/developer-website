@@ -11,6 +11,7 @@ import {
 } from '@newrelic/gatsby-theme-newrelic';
 import { SHIELD_LEVELS, RESERVED_QUICKSTART_IDS } from '../data/constants';
 import PackImg from './PackImg';
+import { COLLAPSE_BREAKPOINT } from './InstantObservability/constants';
 
 const VIEWS = {
   GRID: 'Grid view',
@@ -79,7 +80,7 @@ const PackTile = ({
           flex-direction: row;
         `}
 
-        @media screen and (max-width: 760px) {
+        @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
           flex-direction: row;
         }
       `}
@@ -109,7 +110,7 @@ const PackTile = ({
             }
           `}
 
-          @media screen and (max-width: 760px) {
+          @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
             display: none;
           }
         `}
@@ -154,7 +155,7 @@ const PackTile = ({
           span {
             color: var(--color-brand-500);
           }
-          @media screen and (max-width: 760px) {
+          @media screen and (max-width: ${COLLAPSE_BREAKPOINT}) {
             flex-direction: column;
             justify-content: flex-end;
           }

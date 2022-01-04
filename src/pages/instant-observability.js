@@ -20,10 +20,9 @@ import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 import { QUICKSTARTS_REPO, RESERVED_QUICKSTART_IDS } from '../data/constants';
 import CATEGORIES from '../data/instant-observability-categories';
+import { COLLAPSE_BREAKPOINT } from '../components/InstantObservability/constants';
 
 import SuperTiles from '../components/SuperTiles';
-
-const COLLAPSE_BREAKPOINT = '760px';
 
 const VIEWS = {
   GRID: 'Grid view',
