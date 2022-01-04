@@ -278,6 +278,39 @@
   {
     "alerts": [],
     "authors": [
+      "Matan Moser (New Relic)",
+      "Ismail Azam (New Relic)"
+    ],
+    "dashboards": [],
+    "description": "Jira is a proprietary issue tracking product developed by Atlassian that allows bug tracking and agile project management. You can Integrate New Relic with Atlassian Jira(Cloud) and automatically create and update Jira issues.\n\n[Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#jira) to set up a JIRA notification channel and provide fast and consistent ways for the right personnel to be notified about incidents\n",
+    "documentation": [],
+    "iconUrl": null,
+    "id": "a99b22a5-5666-4096-b239-8f315700fde0",
+    "installPlans": [
+      {
+        "id": "third-party-atlassian-jira",
+        "name": "Atlassian JIRA"
+      }
+    ],
+    "keywords": [
+      "JIRA",
+      "Atlassian",
+      "notifications",
+      "AIOps",
+      "Incident Intelligence",
+      "Destinations"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/atlassian/atlassian-jira/logo.png",
+    "name": "atlassian-jira",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/atlassian/atlassian-jira",
+    "summary": "Integrate New Relic with Atlassian Jira(Cloud) and automatically create and update Jira issues.\n",
+    "title": "Atlassian JIRA",
+    "websiteUrl": "https://www.atlassian.com/"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "New Relic",
       "Sri Shetty"
     ],
@@ -359,46 +392,85 @@
   {
     "alerts": [],
     "authors": [
-      "New Relic",
       "Zack Mutchler"
     ],
     "dashboards": [
       {
         "description": "",
+        "name": "AWS Integrations Data Ingest Analysis",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/aws-integrations-data-ingest-analysis.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/aws-integrations-data-ingest-analysis.json"
+      },
+      {
+        "description": "",
+        "name": "Azure Integrations Data Ingest Analysis",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/azure-integrations-data-ingest-analysis.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/azure-integrations-data-ingest-analysis.json"
+      },
+      {
+        "description": "",
+        "name": "GCP Integrations Data Ingest Analysis",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/gcp-integrations-data-ingest-analysis.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/gcp-integrations-data-ingest-analysis.json"
+      },
+      {
+        "description": "",
         "name": "Kubernetes Data Ingest Analysis",
         "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.80.7/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.80.7/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis02.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.80.7/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis03.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.80.7/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis04.png"
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/kubernetes-data-ingest-analysis.png"
         ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.80.7/quickstarts/audit/k8s-data-ingestion-analysis/dashboards/k8s-data-ingest-analysis.json"
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/kubernetes-data-ingest-analysis.json"
+      },
+      {
+        "description": "",
+        "name": "On-Host Integrations Data Analysis",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/on-host-integrations-data-analysis.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/on-host-integrations-data-analysis.json"
       }
     ],
-    "description": "Paginated dashboard that analyzes overall data ingest generated by the New Relic Kubernetes integration and outlines options available to fine-tune your environment to help control ingest and cost.\n",
+    "description": "This quickstart provides several dashboards to analyze overall data ingest created by the various Infrastructure On-Host, Cloud, and Kubernetes integrations that contribute to the \"Infrastructure integrations\" portion of the Data Management Hub.\nAdditional pages have been added that analyze data ingest created by Pixie, Prometheus, and AWS CloudWatch Metric Stream integrations, which are associated with infrastructure data, but feed other categories of the Data Management Hub.\n",
     "documentation": [
       {
-        "description": "Introduction to the New Relic Kubernetes integration\n",
-        "name": "New Relic Kubernetes integration",
-        "url": "https://docs.newrelic.com/docs/kubernetes-pixie/kubernetes-integration/get-started/introduction-kubernetes-integration/"
+        "description": "New Relic Data Management Hub\n",
+        "name": "Data Management Hub",
+        "url": "https://docs.newrelic.com/docs/data-apis/manage-data/manage-your-data/"
       }
     ],
     "iconUrl": null,
-    "id": "006d3670-eb7c-4039-a29c-e086278fd520",
-    "installPlans": [],
+    "id": "8e31a0ae-81c0-4df0-a119-a0ada9ec16fa",
+    "installPlans": [
+      {
+        "id": "telemetry-data-platform",
+        "name": "Telemetry Data Platform"
+      }
+    ],
     "keywords": [
+      "audit",
+      "data ingest",
       "k8s",
       "kubernetes",
-      "data ingest",
-      "audit"
+      "on-host integration",
+      "ohi",
+      "prometheus",
+      "pomi",
+      "remote-write",
+      "pixie"
     ],
     "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.80.7/quickstarts/audit/k8s-data-ingestion-analysis/logo.svg",
-    "name": "audit-kubernetes-data-ingest-analysis",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/k8s-data-ingestion-analysis",
-    "summary": "Paginated dashboard that analyzes overall data ingest generated by the New Relic Kubernetes integration and outlines options available to fine-tune your environment to help control ingest and cost.\n",
-    "title": "Kubernetes Data Ingest Analysis",
-    "websiteUrl": null
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/icon.jpeg",
+    "name": "infrastructure-integrations-data-analysis",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/infrastructure-integrations-data-analysis",
+    "summary": "Dashboards designed to analyze data ingest from \"Infrastructure Integrations\" category in the Data Management Hub.\n",
+    "title": "Infrastructure Integrations Data Analysis",
+    "websiteUrl": "https://www.newrelic.com"
   },
   {
     "alerts": [],
@@ -10898,6 +10970,50 @@
     "dashboards": [
       {
         "description": "",
+        "name": "Azure Kubernetes Service",
+        "screenshots": [],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/kubernetes/azure-kubernetes-service/dashboards/aks.json"
+      }
+    ],
+    "description": "Provides a managed environment for deploying, managing, and scaling your\ncontainerized applications using Azure infrastructure.\n",
+    "documentation": [
+      {
+        "description": "Provides a managed environment for deploying, managing, and scaling your\ncontainerized applications using Azure infrastructure.\n",
+        "name": "Azure Kubernetes Service installation docs",
+        "url": "https://docs.newrelic.com/docs/integrations/kubernetes-integration/get-started/introduction-kubernetes-integration"
+      }
+    ],
+    "iconUrl": null,
+    "id": "ce59998f-0daf-434b-9e80-b8ba0f576300",
+    "installPlans": [
+      {
+        "id": "kubernetes-install",
+        "name": "Kubernetes integration"
+      }
+    ],
+    "keywords": [
+      "kubernetes",
+      "azure",
+      "k8s",
+      "aks"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/kubernetes/azure-kubernetes-service/logo.svg",
+    "name": "azure-kubernetes-service",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/kubernetes/azure-kubernetes-service",
+    "summary": "Provides a managed environment for deploying, managing, and scaling your\ncontainerized applications using Azure infrastructure.\n",
+    "title": "Azure Kubernetes Service",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic",
+      "Emil Hammarstrand"
+    ],
+    "dashboards": [
+      {
+        "description": "",
         "name": "Google Kubernetes Engine",
         "screenshots": [],
         "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/kubernetes/google-kubernetes-engine/dashboards/gke.json"
@@ -11501,6 +11617,38 @@
   {
     "alerts": [],
     "authors": [
+      "New Relic"
+    ],
+    "dashboards": [],
+    "description": "With bring your own data (BYO), after just a few minutes, you can quickly send your model's inference and metric data to the New Relic platform, directly from a notebook or any other environment.# Displayed in search results and recommendations. Summarizes a quickstarts functionality.\n",
+    "documentation": [
+      {
+        "description": "Documentation on how to bring your own ML data",
+        "name": "Bring your own data repo",
+        "url": "https://github.com/newrelic-experimental/ml-performance-monitoring"
+      }
+    ],
+    "iconUrl": null,
+    "id": "2ea87c6d-f819-4d41-b885-002b13bad099",
+    "installPlans": [],
+    "keywords": [
+      "mlops",
+      "ml",
+      "ai",
+      "bring-your-own",
+      "machine-learning"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/mlops/bring-your-own/logo.svg",
+    "name": "mlops-bring-your-own",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mlops/bring-your-own",
+    "summary": "Bring your own data from any kind of ML stack with this flexible integration framework to keep your data-science projects on track.\n",
+    "title": "Build your own ML Integration",
+    "websiteUrl": "https://github.com/newrelic-experimental/ml-performance-monitoring"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "Jacques Verre"
     ],
     "dashboards": [
@@ -11647,6 +11795,40 @@
     "summary": "Mona’s integration with New Relic provides next-level monitoring capabilities under a unified production AI environment.\n",
     "title": "Mona Labs",
     "websiteUrl": "https://monalabs.io/"
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic"
+    ],
+    "dashboards": [],
+    "description": "Use this integration to quickly monitor your Amazon SageMaker metrics and objects (sent to AWS CloudWatch) and view them as entities and dashboards in New Relic One.\n",
+    "documentation": [
+      {
+        "description": "Documentation on the Amazon SageMaker integration",
+        "name": "Sagemaker Docs",
+        "url": "https://docs.newrelic.com/docs/alerts-applied-intelligence/mlops/integrations/aws-sagemaker-mlops-integration/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "cee03961-f9e3-46e1-89fd-70a626cfe8ce",
+    "installPlans": [],
+    "keywords": [
+      "mlops",
+      "ml",
+      "ai",
+      "sagemaker",
+      "amazon-sagemaker",
+      "aws-sagemaker",
+      "machine-learning"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/mlops/sagemaker/logo.svg",
+    "name": "mlops-sagemaker",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mlops/sagemaker",
+    "summary": "By integrating Amazon SageMaker telemetry into New Relic One you will be able to get a view of the performance metrics, visualize sophisticated ML models and create a comprehensive monitoring dashboards in New Relic for your ML models and applications pipelines.\n",
+    "title": "Amazon SageMaker",
+    "websiteUrl": "https://aws.amazon.com/sagemaker/"
   },
   {
     "alerts": [],
@@ -12485,6 +12667,114 @@
   {
     "alerts": [],
     "authors": [
+      "Matan Moser (New Relic)",
+      "Ismail Azam (New Relic)"
+    ],
+    "dashboards": [],
+    "description": "Send your New Relic alert notifications via email. You can send email notifications to users with or without New Relic accounts.\n\n[Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#email) to set up an email notification channel and provide fast and consistent ways for the right personnel to be notified about incidents\n",
+    "documentation": [],
+    "iconUrl": null,
+    "id": "92357393-03bb-4230-8600-032adad5ccb5",
+    "installPlans": [],
+    "keywords": [
+      "email",
+      "notifications",
+      "AIOps",
+      "Incident Intelligence",
+      "Destinations"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/notification-channels/email-notifications/logo.png",
+    "name": "email-notifications",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/notification-channels/email-notifications",
+    "summary": "Send your New Relic alerts via email\n",
+    "title": "Email Notifications",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "Matan Moser (New Relic)",
+      "Ismail Azam (New Relic)"
+    ],
+    "dashboards": [],
+    "description": "\nServiceNow is a software that helps companies manage digital workflows for enterprise operations.\n\nIntegrate New Relic with ServiceNow Incident-Management and automatically create and update incidents.\n\n[Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#servicenow) to set up a ServiceNow notification channel and provide fast and consistent ways for the right personnel to be notified about incidents\n",
+    "documentation": [],
+    "iconUrl": null,
+    "id": "0e2c5c90-bda2-4147-82af-8b9bf8038ee6",
+    "installPlans": [],
+    "keywords": [
+      "servicenow",
+      "notifications",
+      "AIOps",
+      "Incident Intelligence",
+      "Destinations"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/notification-channels/servicenow-notifications/logo.png",
+    "name": "servicenow-notifications",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/notification-channels/servicenow-notifications",
+    "summary": "Send your New Relic alerts to ServiceNow\n",
+    "title": "ServiceNow Notifications",
+    "websiteUrl": "https://www.servicenow.com/"
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "Matan Moser (New Relic)",
+      "Ismail Azam (New Relic)"
+    ],
+    "dashboards": [],
+    "description": "\nSlack is a a messaging app for business that connects people to the information that they need.\n\nIntegrate New Relic with Slack to send notification messages to your Slack channels.\n\n[Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#slack) to set up a Slack notification channel and provide fast and consistent ways for the right personnel to be notified about incidents\n",
+    "documentation": [],
+    "iconUrl": null,
+    "id": "db34c333-7b4a-4bb8-8fbf-becce43bfa44",
+    "installPlans": [],
+    "keywords": [
+      "slack",
+      "notifications",
+      "AIOps",
+      "Incident Intelligence",
+      "Destinations"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/notification-channels/slack-notifications/logo.png",
+    "name": "slack-notifications",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/notification-channels/slack-notifications",
+    "summary": "Send your New Relic alerts to Slack\n",
+    "title": "Slack Notifications",
+    "websiteUrl": "https://slack.com/"
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "Matan Moser (New Relic)",
+      "Ismail Azam (New Relic)"
+    ],
+    "dashboards": [],
+    "description": "\nWebhook is a method of augmenting or altering the behavior of a web page or web application with custom callbacks.\n\nIntegrate New Relic with Webhook to use the webhook notifier to send the notification messages to any endpoint you like.\n\n[Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#webhook) to set up a Webhook notification channel and provide fast and consistent ways for the right personnel to be notified about incidents\n",
+    "documentation": [],
+    "iconUrl": null,
+    "id": "ecb02f86-d2fd-478f-9ec9-1331dae3cc2d",
+    "installPlans": [],
+    "keywords": [
+      "webhook",
+      "notifications",
+      "AIOps",
+      "Incident Intelligence",
+      "Destinations"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/notification-channels/webhook-notifications/logo.png",
+    "name": "webhook-notifications",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/notification-channels/webhook-notifications",
+    "summary": "Send your New Relic alerts via Webhook\n",
+    "title": "Webhook Notifications",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
       "New Relic"
     ],
     "dashboards": [],
@@ -12510,6 +12800,47 @@
     "summary": "OkHttp is a third-party library developed by Square for sending and receive\nHTTP-based network requests.\n",
     "title": "OKHTTP",
     "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "Alec Isaacson (New Relic)",
+      "Andrew Faria (New Relic)"
+    ],
+    "dashboards": [
+      {
+        "description": "Alert quality management KPI dashboard",
+        "name": "Alert Quality Management",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/oma-aqm/dashboards/alert-quality-management.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/oma-aqm/dashboards/alert-quality-management.json"
+      }
+    ],
+    "description": "Alert Quality Management (AQM) focuses on reducing the number of nuisance incidents so that you focus only on alerts with true business impact. This reduces alert fatigue and ensures that you and your team focus your attention on the right places at the right times.\n\nFor more information view the [implementation guide](https://docs.newrelic.com/docs/new-relic-solutions/observability-maturity/uptime-performance-reliability/aqm-implementation-guide/).\n",
+    "documentation": [
+      {
+        "description": "The implementation guide will show you how to implement the AQM process, including the webhook required to generate the data that feeds this dashboard.\n",
+        "name": "Installation Docs",
+        "url": "https://docs.newrelic.com/docs/new-relic-solutions/observability-maturity/uptime-performance-reliability/aqm-implementation-guide/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "ccdf1cf7-29f0-42ca-ae0d-239dfb073fd0",
+    "installPlans": [],
+    "keywords": [
+      "oma",
+      "observabilty maturity",
+      "AQM",
+      "alert quality management"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/oma-aqm/logo.png",
+    "name": "alert-quality-management",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/oma-aqm",
+    "summary": "Reduce the volume of nuisance incidents with the Alert Quality Management dashboard and process.\n",
+    "title": "Alert Quality Management Quickstart",
+    "websiteUrl": "https://www.newrelic.com"
   },
   {
     "alerts": [],
@@ -18652,33 +18983,6 @@
   {
     "alerts": [],
     "authors": [
-      "Matan Moser (New Relic)",
-      "Ismail Azam (New Relic)"
-    ],
-    "dashboards": [],
-    "description": "\nSlack is a a messaging app for business that connects people to the information that they need.\n\nIntegrate New Relic with Slack to send notification messages to your Slack channels.\n\n[Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#slack) to set up a Slack notification channel and provide fast and consistent ways for the right personnel to be notified about incidents\n",
-    "documentation": [],
-    "iconUrl": null,
-    "id": "db34c333-7b4a-4bb8-8fbf-becce43bfa44",
-    "installPlans": [],
-    "keywords": [
-      "slack",
-      "notifications",
-      "AIOps",
-      "Incident Intelligence",
-      "Destinations"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/notification-channels/slack-notifications/logo.png",
-    "name": "slack-notifications",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/notification-channels/slack-notifications",
-    "summary": "Send your New Relic alerts to Slack\n",
-    "title": "Slack Notifications",
-    "websiteUrl": "https://slack.com/"
-  },
-  {
-    "alerts": [],
-    "authors": [
       "New Relic"
     ],
     "dashboards": [],
@@ -18705,6 +19009,57 @@
     "summary": "Internet Standard protocol for collecting and organizing information about\nmanaged devices on IP networks.\n",
     "title": "Legacy SNMP",
     "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "Speedscale Inc."
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Speedscale Reports",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/speedscale/dashboards/speedscale-reports.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/speedscale/dashboards/speedscale-reports.json"
+      }
+    ],
+    "description": "Speedscale lets you capture traffic from one environment and replay elsewhere. Use the traffic replay to validate new code performance and functionality. Track the SRE golden signals of latency, throughput, CPU, memory and error metrics before you deploy. Preview your container or API behavior in your CI pipeline without having to write any scripts. Any necessary backends are provided by Speedscale’s mocking technology, which also uses past traffic to generate proper responses you expect during traffic replay. \n\nSpeedscale Snapshots are subsets of traffic that you would like to replay to test how your new code reacts, similar to test scenarios. Deploying this quickstart adds a Speedscale dashboard to your New Relic account that includes replay success rates, response time and deep links to reports.\n\nRead the integration tutorial for the Speedscale quickstart on [New Relic Explorer Hub](https://discuss.newrelic.com/t/how-to-integrate-with-speedscale/171099).\n\nIf you have questions about this quickstart please contact support@speedscale.com.\n",
+    "documentation": [
+      {
+        "description": "The only prerequisite is to obtain your New Relic account id and license key.",
+        "name": "Speedscale Installation Docs",
+        "url": "https://docs.speedscale.com/reference/integrations/new-relic"
+      },
+      {
+        "description": "Ask questions in the post on New Relic Explorer Hub",
+        "name": "New Relic Explorer Hub",
+        "url": "https://discuss.newrelic.com/t/how-to-integrate-with-speedscale/171099"
+      }
+    ],
+    "iconUrl": null,
+    "id": "c4512294-8f81-4efa-8f28-6c1db28d288c",
+    "installPlans": [
+      {
+        "id": "third-party-speedscale-integration",
+        "name": "speedscale"
+      }
+    ],
+    "keywords": [
+      "traffic",
+      "replay",
+      "simulate",
+      "report",
+      "newrelic partner"
+    ],
+    "level": "VERIFIED",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/speedscale/logo.svg",
+    "name": "speedscale",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/speedscale",
+    "summary": "Visualize Speedscale traffic replay performance data in New Relic One dashboards to see how new code will perform in production.\n",
+    "title": "Speedscale",
+    "websiteUrl": "https://speedscale.com"
   },
   {
     "alerts": [],
@@ -19969,404 +20324,5 @@
     "summary": "Send Zipkin-format traces to New Relic\n",
     "title": "Zipkin",
     "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic",
-      "Emil Hammarstrand"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Azure Kubernetes Service",
-        "screenshots": [],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/kubernetes/azure-kubernetes-service/dashboards/aks.json"
-      }
-    ],
-    "description": "Provides a managed environment for deploying, managing, and scaling your\ncontainerized applications using Azure infrastructure.\n",
-    "documentation": [
-      {
-        "description": "Provides a managed environment for deploying, managing, and scaling your\ncontainerized applications using Azure infrastructure.\n",
-        "name": "Azure Kubernetes Service installation docs",
-        "url": "https://docs.newrelic.com/docs/integrations/kubernetes-integration/get-started/introduction-kubernetes-integration"
-      }
-    ],
-    "iconUrl": null,
-    "id": "ce59998f-0daf-434b-9e80-b8ba0f576300",
-    "installPlans": [
-      {
-        "id": "kubernetes-install",
-        "name": "Kubernetes integration"
-      }
-    ],
-    "keywords": [
-      "kubernetes",
-      "azure",
-      "k8s",
-      "aks"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/kubernetes/azure-kubernetes-service/logo.svg",
-    "name": "azure-kubernetes-service",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/kubernetes/azure-kubernetes-service",
-    "summary": "Provides a managed environment for deploying, managing, and scaling your\ncontainerized applications using Azure infrastructure.\n",
-    "title": "Azure Kubernetes Service",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Alec Isaacson (New Relic)",
-      "Andrew Faria (New Relic)"
-    ],
-    "dashboards": [
-      {
-        "description": "Alert quality management KPI dashboard",
-        "name": "Alert Quality Management",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/oma-aqm/dashboards/alert-quality-management.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/oma-aqm/dashboards/alert-quality-management.json"
-      }
-    ],
-    "description": "Alert Quality Management (AQM) focuses on reducing the number of nuisance incidents so that you focus only on alerts with true business impact. This reduces alert fatigue and ensures that you and your team focus your attention on the right places at the right times.\n\nFor more information view the [implementation guide](https://docs.newrelic.com/docs/new-relic-solutions/observability-maturity/uptime-performance-reliability/aqm-implementation-guide/).\n",
-    "documentation": [
-      {
-        "description": "The implementation guide will show you how to implement the AQM process, including the webhook required to generate the data that feeds this dashboard.\n",
-        "name": "Installation Docs",
-        "url": "https://docs.newrelic.com/docs/new-relic-solutions/observability-maturity/uptime-performance-reliability/aqm-implementation-guide/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "ccdf1cf7-29f0-42ca-ae0d-239dfb073fd0",
-    "installPlans": [],
-    "keywords": [
-      "oma",
-      "observabilty maturity",
-      "AQM",
-      "alert quality management"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/oma-aqm/logo.png",
-    "name": "alert-quality-management",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/oma-aqm",
-    "summary": "Reduce the volume of nuisance incidents with the Alert Quality Management dashboard and process.\n",
-    "title": "Alert Quality Management Quickstart",
-    "websiteUrl": "https://www.newrelic.com"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic"
-    ],
-    "dashboards": [],
-    "description": "With bring your own data (BYO), after just a few minutes, you can quickly send your model's inference and metric data to the New Relic platform, directly from a notebook or any other environment.# Displayed in search results and recommendations. Summarizes a quickstarts functionality.\n",
-    "documentation": [
-      {
-        "description": "Documentation on how to bring your own ML data",
-        "name": "Bring your own data repo",
-        "url": "https://github.com/newrelic-experimental/ml-performance-monitoring"
-      }
-    ],
-    "iconUrl": null,
-    "id": "2ea87c6d-f819-4d41-b885-002b13bad099",
-    "installPlans": [],
-    "keywords": [
-      "mlops",
-      "ml",
-      "ai",
-      "bring-your-own",
-      "machine-learning"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/mlops/bring-your-own/logo.svg",
-    "name": "mlops-bring-your-own",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mlops/bring-your-own",
-    "summary": "Bring your own data from any kind of ML stack with this flexible integration framework to keep your data-science projects on track.\n",
-    "title": "Build your own ML Integration",
-    "websiteUrl": "https://github.com/newrelic-experimental/ml-performance-monitoring"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic"
-    ],
-    "dashboards": [],
-    "description": "Use this integration to quickly monitor your Amazon SageMaker metrics and objects (sent to AWS CloudWatch) and view them as entities and dashboards in New Relic One.\n",
-    "documentation": [
-      {
-        "description": "Documentation on the Amazon SageMaker integration",
-        "name": "Sagemaker Docs",
-        "url": "https://docs.newrelic.com/docs/alerts-applied-intelligence/mlops/integrations/aws-sagemaker-mlops-integration/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "cee03961-f9e3-46e1-89fd-70a626cfe8ce",
-    "installPlans": [],
-    "keywords": [
-      "mlops",
-      "ml",
-      "ai",
-      "sagemaker",
-      "amazon-sagemaker",
-      "aws-sagemaker",
-      "machine-learning"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/mlops/sagemaker/logo.svg",
-    "name": "mlops-sagemaker",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mlops/sagemaker",
-    "summary": "By integrating Amazon SageMaker telemetry into New Relic One you will be able to get a view of the performance metrics, visualize sophisticated ML models and create a comprehensive monitoring dashboards in New Relic for your ML models and applications pipelines.\n",
-    "title": "Amazon SageMaker",
-    "websiteUrl": "https://aws.amazon.com/sagemaker/"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Speedscale Inc."
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Speedscale Reports",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/speedscale/dashboards/speedscale-reports.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/speedscale/dashboards/speedscale-reports.json"
-      }
-    ],
-    "description": "Speedscale lets you capture traffic from one environment and replay elsewhere. Use the traffic replay to validate new code performance and functionality. Track the SRE golden signals of latency, throughput, CPU, memory and error metrics before you deploy. Preview your container or API behavior in your CI pipeline without having to write any scripts. Any necessary backends are provided by Speedscale’s mocking technology, which also uses past traffic to generate proper responses you expect during traffic replay. \n\nSpeedscale Snapshots are subsets of traffic that you would like to replay to test how your new code reacts, similar to test scenarios. Deploying this quickstart adds a Speedscale dashboard to your New Relic account that includes replay success rates, response time and deep links to reports.\n\nRead the integration tutorial for the Speedscale quickstart on [New Relic Explorer Hub](https://discuss.newrelic.com/t/how-to-integrate-with-speedscale/171099).\n\nIf you have questions about this quickstart please contact support@speedscale.com.\n",
-    "documentation": [
-      {
-        "description": "The only prerequisite is to obtain your New Relic account id and license key.",
-        "name": "Speedscale Installation Docs",
-        "url": "https://docs.speedscale.com/reference/integrations/new-relic"
-      },
-      {
-        "description": "Ask questions in the post on New Relic Explorer Hub",
-        "name": "New Relic Explorer Hub",
-        "url": "https://discuss.newrelic.com/t/how-to-integrate-with-speedscale/171099"
-      }
-    ],
-    "iconUrl": null,
-    "id": "c4512294-8f81-4efa-8f28-6c1db28d288c",
-    "installPlans": [
-      {
-        "id": "third-party-speedscale-integration",
-        "name": "speedscale"
-      }
-    ],
-    "keywords": [
-      "traffic",
-      "replay",
-      "simulate",
-      "report",
-      "newrelic partner"
-    ],
-    "level": "VERIFIED",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/speedscale/logo.svg",
-    "name": "speedscale",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/speedscale",
-    "summary": "Visualize Speedscale traffic replay performance data in New Relic One dashboards to see how new code will perform in production.\n",
-    "title": "Speedscale",
-    "websiteUrl": "https://speedscale.com"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Matan Moser (New Relic)",
-      "Ismail Azam (New Relic)"
-    ],
-    "dashboards": [],
-    "description": "Jira is a proprietary issue tracking product developed by Atlassian that allows bug tracking and agile project management. You can Integrate New Relic with Atlassian Jira(Cloud) and automatically create and update Jira issues.\n\n[Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#jira) to set up a JIRA notification channel and provide fast and consistent ways for the right personnel to be notified about incidents\n",
-    "documentation": [],
-    "iconUrl": null,
-    "id": "a99b22a5-5666-4096-b239-8f315700fde0",
-    "installPlans": [
-      {
-        "id": "third-party-atlassian-jira",
-        "name": "Atlassian JIRA"
-      }
-    ],
-    "keywords": [
-      "JIRA",
-      "Atlassian",
-      "notifications",
-      "AIOps",
-      "Incident Intelligence",
-      "Destinations"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/atlassian/atlassian-jira/logo.png",
-    "name": "atlassian-jira",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/atlassian/atlassian-jira",
-    "summary": "Integrate New Relic with Atlassian Jira(Cloud) and automatically create and update Jira issues.\n",
-    "title": "Atlassian JIRA",
-    "websiteUrl": "https://www.atlassian.com/"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Matan Moser (New Relic)",
-      "Ismail Azam (New Relic)"
-    ],
-    "dashboards": [],
-    "description": "Send your New Relic alert notifications via email. You can send email notifications to users with or without New Relic accounts.\n\n[Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#email) to set up an email notification channel and provide fast and consistent ways for the right personnel to be notified about incidents\n",
-    "documentation": [],
-    "iconUrl": null,
-    "id": "92357393-03bb-4230-8600-032adad5ccb5",
-    "installPlans": [],
-    "keywords": [
-      "email",
-      "notifications",
-      "AIOps",
-      "Incident Intelligence",
-      "Destinations"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/notification-channels/email-notifications/logo.png",
-    "name": "email-notifications",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/notification-channels/email-notifications",
-    "summary": "Send your New Relic alerts via email\n",
-    "title": "Email Notifications",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Matan Moser (New Relic)",
-      "Ismail Azam (New Relic)"
-    ],
-    "dashboards": [],
-    "description": "\nServiceNow is a software that helps companies manage digital workflows for enterprise operations.\n\nIntegrate New Relic with ServiceNow Incident-Management and automatically create and update incidents.\n\n[Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#servicenow) to set up a ServiceNow notification channel and provide fast and consistent ways for the right personnel to be notified about incidents\n",
-    "documentation": [],
-    "iconUrl": null,
-    "id": "0e2c5c90-bda2-4147-82af-8b9bf8038ee6",
-    "installPlans": [],
-    "keywords": [
-      "servicenow",
-      "notifications",
-      "AIOps",
-      "Incident Intelligence",
-      "Destinations"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/notification-channels/servicenow-notifications/logo.png",
-    "name": "servicenow-notifications",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/notification-channels/servicenow-notifications",
-    "summary": "Send your New Relic alerts to ServiceNow\n",
-    "title": "ServiceNow Notifications",
-    "websiteUrl": "https://www.servicenow.com/"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Matan Moser (New Relic)",
-      "Ismail Azam (New Relic)"
-    ],
-    "dashboards": [],
-    "description": "\nWebhook is a method of augmenting or altering the behavior of a web page or web application with custom callbacks.\n\nIntegrate New Relic with Webhook to use the webhook notifier to send the notification messages to any endpoint you like.\n\n[Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#webhook) to set up a Webhook notification channel and provide fast and consistent ways for the right personnel to be notified about incidents\n",
-    "documentation": [],
-    "iconUrl": null,
-    "id": "ecb02f86-d2fd-478f-9ec9-1331dae3cc2d",
-    "installPlans": [],
-    "keywords": [
-      "webhook",
-      "notifications",
-      "AIOps",
-      "Incident Intelligence",
-      "Destinations"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/notification-channels/webhook-notifications/logo.png",
-    "name": "webhook-notifications",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/notification-channels/webhook-notifications",
-    "summary": "Send your New Relic alerts via Webhook\n",
-    "title": "Webhook Notifications",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Zack Mutchler"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "AWS Integrations Data Ingest Analysis",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/aws-integrations-data-ingest-analysis.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/aws-integrations-data-ingest-analysis.json"
-      },
-      {
-        "description": "",
-        "name": "Azure Integrations Data Ingest Analysis",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/azure-integrations-data-ingest-analysis.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/azure-integrations-data-ingest-analysis.json"
-      },
-      {
-        "description": "",
-        "name": "GCP Integrations Data Ingest Analysis",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/gcp-integrations-data-ingest-analysis.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/gcp-integrations-data-ingest-analysis.json"
-      },
-      {
-        "description": "",
-        "name": "Kubernetes Data Ingest Analysis",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/kubernetes-data-ingest-analysis.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/kubernetes-data-ingest-analysis.json"
-      },
-      {
-        "description": "",
-        "name": "On-Host Integrations Data Analysis",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/on-host-integrations-data-analysis.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/dashboards/on-host-integrations-data-analysis.json"
-      }
-    ],
-    "description": "This quickstart provides several dashboards to analyze overall data ingest created by the various Infrastructure On-Host, Cloud, and Kubernetes integrations that contribute to the \"Infrastructure integrations\" portion of the Data Management Hub.\nAdditional pages have been added that analyze data ingest created by Pixie, Prometheus, and AWS CloudWatch Metric Stream integrations, which are associated with infrastructure data, but feed other categories of the Data Management Hub.\n",
-    "documentation": [
-      {
-        "description": "New Relic Data Management Hub\n",
-        "name": "Data Management Hub",
-        "url": "https://docs.newrelic.com/docs/data-apis/manage-data/manage-your-data/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "8e31a0ae-81c0-4df0-a119-a0ada9ec16fa",
-    "installPlans": [
-      {
-        "id": "telemetry-data-platform",
-        "name": "Telemetry Data Platform"
-      }
-    ],
-    "keywords": [
-      "audit",
-      "data ingest",
-      "k8s",
-      "kubernetes",
-      "on-host integration",
-      "ohi",
-      "prometheus",
-      "pomi",
-      "remote-write",
-      "pixie"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.81.0/quickstarts/audit/infrastructure-integrations-data-analysis/icon.jpeg",
-    "name": "infrastructure-integrations-data-analysis",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/audit/infrastructure-integrations-data-analysis",
-    "summary": "Dashboards designed to analyze data ingest from \"Infrastructure Integrations\" category in the Data Management Hub.\n",
-    "title": "Infrastructure Integrations Data Analysis",
-    "websiteUrl": "https://www.newrelic.com"
   }
 ]
