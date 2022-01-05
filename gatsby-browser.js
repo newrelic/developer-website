@@ -56,7 +56,7 @@ const onClientEntry = () => {
 };
 
 const shouldUpdateScroll = ({ routerProps: { location } }) => {
-  const PAGE_OFFSET_HEIGHT = 575;
+  const PAGE_OFFSET_HEIGHT = 310;
   const IS_IO = location.pathname.includes('instant-observability');
 
   // scrolls only after search query parameter on I/O site changes
