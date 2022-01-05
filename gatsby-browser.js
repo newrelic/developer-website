@@ -55,4 +55,28 @@ const onClientEntry = () => {
   window.ReactDOM = require('react-dom');
 };
 
-export { wrapPageElement, onInitialClientRender, onClientEntry };
+const shouldUpdateScroll = ({ routerProps: { location } }) => {
+  // Offset updates scroll to position beneath the I/O Banner on category/search change
+  const PAGE_OFFSET_HEIGHT = 310;
+  const IS_IO = location.pathname.includes('instant-observability');
+
+  // scrolls only after search query parameter on I/O site changes
+  if (IS_IO && location.search) {
+    window.setTimeout(() =>
+      window.scrollTo({ top: PAGE_OFFSET_HEIGHT, left: 0, behavior: 'smooth' })
+    );
+
+    // Does not update to default behavior to persist this change
+    return false;
+  }
+
+  // if we're not on I/O, update to default behavior
+  return true;
+};
+
+export {
+  wrapPageElement,
+  onInitialClientRender,
+  onClientEntry,
+  shouldUpdateScroll,
+};
