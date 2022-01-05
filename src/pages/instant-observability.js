@@ -521,14 +521,13 @@ const QuickstartsPage = ({ data, location }) => {
               css`
                 grid-auto-rows: 1fr;
                 grid-template-columns: 1fr;
-                grid-gap: 0.25rem;
+                grid-gap: 1.25rem;
               `}
             `}
           >
             <PackTile
               id={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
               css={css`
-                ${view === VIEWS.GRID && `height: 100%;`}
                 background-color: var(--tertiary-background-color);
               `}
               href={QUICKSTARTS_REPO}

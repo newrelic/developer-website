@@ -9,14 +9,10 @@ import {
   Tag,
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
-import {
-  SHIELD_LEVELS,
-  RESERVED_QUICKSTART_IDS,
-  QUICKSTARTS_COLLAPSE_BREAKPOINT,
-} from '../data/constants';
+import { SHIELD_LEVELS, RESERVED_QUICKSTART_IDS } from '../data/constants';
 import PackImg from './PackImg';
 
-const IMAGE_BREAKPOINT = 1080;
+const IMAGE_BREAKPOINT = '1080px';
 
 const VIEWS = {
   GRID: 'Grid view',
@@ -76,28 +72,33 @@ const PackTile = ({
       interactive
       css={css`
         overflow: hidden;
-        //display: flex;
-        //flex-direction: column;
         display: grid;
         grid-template-rows: 1fr 3.5fr 0.5fr;
-        ${view === VIEWS.LIST &&
+        grid-template-columns: auto;
+        ${view === VIEWS.GRID &&
         css`
-          margin-bottom: 1em;
-          display: grid;
-          grid-template-columns: 1fr 3.5fr 0.5fr;
-          @media (max-width: 1080px) {
-            grid-template-columns: 4.5fr 0.5fr;
+          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
+            grid-template-rows: 4.5fr 0.5fr;
+          }
         `}
 
-        @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
-          flex-direction: row;
-        }
+        ${view === VIEWS.LIST &&
+        css`
+          grid-template-columns: 1fr 3.5fr 0.5fr;
+          grid-template-rows: auto;
+          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
+            grid-template-columns: 4.5fr 0.5fr;
+          }
+        `}
       `}
       onClick={() => handlePackClick(id)}
     >
       <div
         css={css`
           height: 130px;
+          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
+            display: none;
+          }
         `}
       >
         <PackImg
@@ -107,22 +108,10 @@ const PackTile = ({
             object-fit: scale-down;
             padding: 5% 5%;
             margin: 0 auto 10px;
+            height: 100%;
 
             .dark-mode & {
               background-color: white;
-            }
-
-            ${view === VIEWS.LIST &&
-            css`
-              max-height: 150px;
-              height: 100%;
-
-              @media (max-width: ${IMAGE_BREAKPOINT}px) {
-                display: none;
-              }
-            `}
-            @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
-              display: none;
             }
           `}
         />
@@ -136,9 +125,6 @@ const PackTile = ({
           css`
             width: 100%;
             flex: 1 1 auto;
-            @media (max-width: ${IMAGE_BREAKPOINT}px) {
-              width: 100%;
-            }
           `}
         `}
       >
@@ -149,6 +135,7 @@ const PackTile = ({
         <p
           css={css`
             font-size: 0.8rem;
+            line-height: 1.4rem;
             color: var(--secondary-text-color);
             overflow: hidden;
             display: -webkit-box;
@@ -162,21 +149,11 @@ const PackTile = ({
       </div>
       <div
         css={css`
-          padding: 1em;
-          margin-top: 1rem;
-          display: flex;
-          justify-content: flex-end;
-          ${view === VIEWS.LIST &&
-          css`
-            flex-direction: column;
-            justify-content: flex-end;
-          `}
+          padding: 1rem;
+          justify-self: end;
+          align-self: end;
           span {
             color: var(--color-brand-500);
-          }
-          @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
-            flex-direction: column;
-            justify-content: flex-end;
           }
         `}
       >
