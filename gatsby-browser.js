@@ -56,6 +56,7 @@ const onClientEntry = () => {
 };
 
 const shouldUpdateScroll = ({ routerProps: { location } }) => {
+  // Offset updates scroll to position beneath the I/O Banner on category/search change
   const PAGE_OFFSET_HEIGHT = 310;
   const IS_IO = location.pathname.includes('instant-observability');
 
