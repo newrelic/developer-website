@@ -74,16 +74,28 @@ const PackTile = ({
       interactive
       css={css`
         --tile-image-height: 100px;
+        --title-row-height: 2.5rem;
         padding: 1rem;
         overflow: hidden;
         display: grid;
         grid-gap: 0.2rem;
-        grid-template-rows: var(--tile-image-height) 3rem 1fr 0.2fr;
+        grid-template-rows: var(--tile-image-height) var(--title-row-height) 1fr 1fr;
         grid-template-columns: auto;
+
+        grid-template-areas:
+          'logo logo'
+          'title title'
+          'summary summary'
+          '. tag';
+
         ${!isListView() &&
         css`
           @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
-            grid-template-rows: 3rem 4.5fr 0.5fr;
+            grid-template-rows: var(--title-row-height) 1fr 1fr;
+            grid-template-areas:
+              'title title'
+              'summary summary'
+              '. tag';
           }
         `}
 
@@ -91,15 +103,17 @@ const PackTile = ({
         css`
           grid-template-columns: 0.5fr 1fr 1fr;
           grid-template-areas:
-            'image title tag'
-            'image summary tag';
+            'logo title title'
+            'logo summary summary'
+            'logo tag tag';
           grid-template-rows: auto;
           @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
+            grid-template-rows: auto;
             grid-template-areas:
-              'title tag'
-              'summary tag';
+              'title title'
+              'summary summary'
+              'tag tag';
           }
         `}
       `}
@@ -116,20 +130,17 @@ const PackTile = ({
           .dark-mode & {
             background-color: white;
           }
-
           ${isListView() &&
           css`
-            grid-area: image;
+            margin-right: 0.5rem;
           `}
+
+          grid-area: logo;
         `}
       >
         <div
           css={css`
             height: var(--tile-image-height);
-            ${isListView() &&
-            css`
-              margin-right: 0.5rem;
-            `}
           `}
         >
           <PackImg
@@ -137,7 +148,6 @@ const PackTile = ({
             packName={title || name}
             css={css`
               object-fit: scale-down;
-              margin: 0 auto 10px;
               height: 100%;
             `}
           />
@@ -145,10 +155,7 @@ const PackTile = ({
       </div>
       <h4
         css={css`
-          ${isListView() &&
-          css`
-            grid-area: title;
-          `}
+          grid-area: title;
         `}
       >
         {title}{' '}
@@ -157,10 +164,7 @@ const PackTile = ({
 
       <div
         css={css`
-          ${isListView() &&
-          css`
-            grid-area: summary;
-          `}
+          grid-area: summary;
         `}
       >
         <p
@@ -185,10 +189,7 @@ const PackTile = ({
             color: var(--color-brand-500);
           }
 
-          ${isListView() &&
-          css`
-            grid-area: tag;
-          `}
+          grid-area: tag;
         `}
       >
         {featured && (
