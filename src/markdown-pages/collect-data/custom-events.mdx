@@ -18,7 +18,7 @@ tags:
 
 Whereas adding [custom attributes](/collect-data/custom-attributes) adds metadata to an existing event, a custom event creates an entirely new event type. Create custom events to define, visualize, and get alerts on additional data, just as you would with any data we provide from our core agents.  
 
-Custom events can be inserted through the Agent APIs or directly via the Insights Insert API. The following example shows how to send a custom event named CLIRun that tracks when a command line tool written in Ruby has its process exit due to an exception.
+Custom events can be inserted through the agent APIs or directly via the Event API. The following example shows how to send a custom event named CLIRun that tracks when a command line tool written in Ruby has its process exit due to an exception.
 
 ```ruby
 # Hook into the runtime 'at_exit' event

@@ -140,7 +140,7 @@ For sending arbitrary events to New Relic, you can use our Event API. We save th
 ```shell lineNumbers=true
 curl -i -X POST https://insights-collector.newrelic.com/v1/accounts/$ACCOUNT_ID/events \
   -H "Content-Type: application/json" \
-  -H "x-insert-key: $LICENSE_KEY" \
+  -H "Api-Key: $LICENSE_KEY" \
   -d '[
         {
           "eventType": "LoginEvent",
