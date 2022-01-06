@@ -130,20 +130,19 @@ const PackTile = ({
           align-items: center;
           justify-content: center;
           margin-bottom: 1rem;
+          height: 100%;
 
           @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
             display: none;
-          }
-
-          .dark-mode & {
-            background-color: white;
           }
 
           ${isListView() &&
           css`
             margin-right: 0.5rem;
           `}
-
+          .dark-mode & {
+            background-color: white;
+          }
           grid-area: logo;
         `}
       >
