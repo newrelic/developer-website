@@ -62,6 +62,8 @@ const PackTile = ({
     }
   };
 
+  const isListView = () => view === VIEWS.LIST;
+
   return (
     <Surface
       as={Link}
@@ -71,23 +73,33 @@ const PackTile = ({
       className={className}
       interactive
       css={css`
+        --tile-image-height: 100px;
+        padding: 1rem;
         overflow: hidden;
         display: grid;
-        grid-template-rows: 1fr 3.5fr 0.5fr;
+        grid-gap: 0.2rem;
+        grid-template-rows: var(--tile-image-height) 3rem 1fr 0.2fr;
         grid-template-columns: auto;
-        ${view === VIEWS.GRID &&
+        ${!isListView() &&
         css`
           @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
-            grid-template-rows: 4.5fr 0.5fr;
+            grid-template-rows: 3rem 4.5fr 0.5fr;
           }
         `}
 
-        ${view === VIEWS.LIST &&
+        ${isListView() &&
         css`
-          grid-template-columns: 1fr 3.5fr 0.5fr;
+          grid-template-columns: 0.5fr 1fr 1fr;
+          grid-template-areas:
+            'image title tag'
+            'image summary tag';
           grid-template-rows: auto;
           @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
-            grid-template-columns: 4.5fr 0.5fr;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+              'title tag'
+              'summary tag';
           }
         `}
       `}
@@ -95,51 +107,70 @@ const PackTile = ({
     >
       <div
         css={css`
-          height: 130px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
             display: none;
           }
+
+          ${isListView() &&
+          css`
+            grid-area: image;
+          `}
         `}
       >
-        <PackImg
-          logoUrl={logoUrl}
-          packName={title || name}
+        <div
           css={css`
-            object-fit: scale-down;
-            padding: 5% 5%;
-            margin: 0 auto 10px;
-            height: 100%;
-
-            .dark-mode & {
-              background-color: white;
-            }
+            height: var(--tile-image-height);
+            ${isListView() &&
+            css`
+              margin-right: 0.5rem;
+            `}
           `}
-        />
+        >
+          <PackImg
+            logoUrl={logoUrl}
+            packName={title || name}
+            css={css`
+              object-fit: scale-down;
+              margin: 0 auto 10px;
+              height: 100%;
+
+              .dark-mode & {
+                background-color: white;
+              }
+            `}
+          />
+        </div>
       </div>
+      <h4
+        css={css`
+          ${isListView() &&
+          css`
+            grid-area: title;
+          `}
+        `}
+      >
+        {title}{' '}
+        {SHIELD_LEVELS.includes(level) && <Icon name="nr-check-shield" />}
+      </h4>
+
       <div
         css={css`
-          padding: 1em;
-          flex: 1 1 auto;
-          min-height: 0; /* needed to stop the summary text from pushing outside the flexbox */
-          ${view === VIEWS.LIST &&
+          ${isListView() &&
           css`
-            width: 100%;
-            flex: 1 1 auto;
+            grid-area: summary;
           `}
         `}
       >
-        <h4>
-          {title}{' '}
-          {SHIELD_LEVELS.includes(level) && <Icon name="nr-check-shield" />}
-        </h4>
         <p
           css={css`
             font-size: 0.8rem;
-            line-height: 1.4rem;
             color: var(--secondary-text-color);
             overflow: hidden;
             display: -webkit-box;
-            white-space: normal;
+            text-overflow: ellipsis;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 3;
           `}
@@ -149,12 +180,16 @@ const PackTile = ({
       </div>
       <div
         css={css`
-          padding: 1rem;
           justify-self: end;
           align-self: end;
           span {
             color: var(--color-brand-500);
           }
+
+          ${isListView() &&
+          css`
+            grid-area: tag;
+          `}
         `}
       >
         {featured && (
