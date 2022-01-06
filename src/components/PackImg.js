@@ -43,7 +43,7 @@ const PackImg = ({ className, logoUrl, packName }) => {
       css={css`
         color: var(--color-brand-400);
         font-family: var(--code-font);
-        font-size: ${packAcronym.length < 4 ? '6rem' : '4rem'};
+        font-size: ${packAcronym.length < 4 ? '4rem' : '2rem'};
         background-image: url(${DEFAULT_IMAGE});
         background-repeat: no-repeat;
         background-position: center;
