@@ -9,12 +9,10 @@ import {
   Tag,
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
-import {
-  SHIELD_LEVELS,
-  RESERVED_QUICKSTART_IDS,
-  QUICKSTARTS_COLLAPSE_BREAKPOINT,
-} from '../data/constants';
+import { SHIELD_LEVELS, RESERVED_QUICKSTART_IDS } from '../data/constants';
 import PackImg from './PackImg';
+
+const IMAGE_BREAKPOINT = '1080px';
 
 const VIEWS = {
   GRID: 'Grid view',
@@ -64,6 +62,8 @@ const PackTile = ({
     }
   };
 
+  const isListView = () => view === VIEWS.LIST;
+
   return (
     <Surface
       as={Link}
@@ -73,73 +73,119 @@ const PackTile = ({
       className={className}
       interactive
       css={css`
+        --tile-image-height: 100px; /* Logo image height */
+        --title-row-height: 0.5fr; /* Title height to allow space for longer string */
+        padding: 1rem;
         overflow: hidden;
-        display: flex;
-        flex-direction: column;
 
-        ${view === VIEWS.LIST &&
+        /* Default grid view */
+        display: grid;
+        grid-gap: 0.2rem;
+        grid-template-rows: var(--tile-image-height) var(--title-row-height) 1fr 1fr;
+        grid-template-columns: auto;
+        grid-template-areas:
+          'logo logo'
+          'title title'
+          'summary summary'
+          '. tag';
+
+        /* Grid view without logo */
+        ${!isListView() &&
         css`
-          margin-bottom: 1em;
-          flex-direction: row;
+          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
+            grid-template-rows: var(--title-row-height) 1fr 1fr;
+            grid-template-areas:
+              'title title'
+              'summary summary'
+              '. tag';
+          }
         `}
 
-        @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
-          flex-direction: row;
-        }
+        /* List view */
+        ${isListView() &&
+        css`
+          grid-template-columns: 0.5fr 1fr 1fr;
+          grid-template-areas:
+            'logo title title'
+            'logo summary summary'
+            'logo tag tag';
+          grid-template-rows: auto;
+
+          /* List view without logo */
+          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            grid-template-areas:
+              'title title'
+              'summary summary'
+              'tag tag';
+          }
+        `}
       `}
       onClick={() => handlePackClick(id)}
     >
-      <PackImg
-        logoUrl={logoUrl}
-        packName={title || name}
+      <div
         css={css`
-          height: 200px;
-          object-fit: scale-down;
-          width: ${view === VIEWS.GRID ? 100 : 25}%;
-          padding: 0 ${view === VIEWS.GRID ? 5 : 1}%;
-          margin: 0 auto 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
+          height: 100%;
 
+          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
+            display: none;
+          }
+
+          ${isListView() &&
+          css`
+            margin-right: 0.5rem;
+          `}
           .dark-mode & {
             background-color: white;
           }
-
-          ${view === VIEWS.LIST &&
-          css`
-            max-height: 150px;
-
-            flex: 0 0 auto;
-            @media (max-width: 1080px) {
-              display: none;
-            }
-          `}
-
-          @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
-            display: none;
-          }
-        `}
-      />
-      <div
-        css={css`
-          padding: 1em;
-          flex: 1 1 auto;
-          ${view === VIEWS.LIST &&
-          css`
-            width: 100%;
-            flex: 1 1 auto;
-            @media (max-width: 1080px) {
-              width: 100%;
-            }
-          `}
+          grid-area: logo;
         `}
       >
-        <h4>
-          {title}{' '}
-          {SHIELD_LEVELS.includes(level) && <Icon name="nr-check-shield" />}
-        </h4>
+        <div
+          css={css`
+            height: var(--tile-image-height);
+          `}
+        >
+          <PackImg
+            logoUrl={logoUrl}
+            packName={title || name}
+            css={css`
+              object-fit: scale-down;
+              height: 100%;
+            `}
+          />
+        </div>
+      </div>
+      <h4
+        css={css`
+          grid-area: title;
+        `}
+      >
+        {title}{' '}
+        {SHIELD_LEVELS.includes(level) && <Icon name="nr-check-shield" />}
+      </h4>
+
+      <div
+        css={css`
+          grid-area: summary;
+        `}
+      >
         <p
           css={css`
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             color: var(--secondary-text-color);
+
+            /* Limits the number of lines */
+            overflow: hidden;
+            display: -webkit-box;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
           `}
         >
           {summary || 'No summary provided'}
@@ -147,21 +193,13 @@ const PackTile = ({
       </div>
       <div
         css={css`
-          padding: 1em;
-          display: flex;
-          justify-content: flex-end;
-          ${view === VIEWS.LIST &&
-          css`
-            flex-direction: column;
-            justify-content: flex-end;
-          `}
+          justify-self: end;
+          align-self: end;
           span {
             color: var(--color-brand-500);
           }
-          @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
-            flex-direction: column;
-            justify-content: flex-end;
-          }
+
+          grid-area: tag;
         `}
       >
         {featured && (

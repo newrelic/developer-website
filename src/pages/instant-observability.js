@@ -198,6 +198,7 @@ const QuickstartsPage = ({ data, location }) => {
           grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
           grid-template-areas: 'sidebar main';
           grid-template-rows: 1fr auto;
+          grid-gap: 70px;
           min-height: calc(100vh - var(--global-header-height));
           margin: var(--banner-height) auto;
           max-width: var(--site-max-width);
@@ -498,28 +499,30 @@ const QuickstartsPage = ({ data, location }) => {
           <div
             css={css`
               display: grid;
-              grid-gap: 1rem;
+              grid-gap: 1.25rem;
               grid-template-columns: repeat(4, 1fr);
-              grid-auto-rows: minmax(var(--guide-list-row-height, 150px), auto);
+              grid-auto-rows: 1fr;
+              ${view === VIEWS.GRID &&
+              css`
+                @media (max-width: 1350px) {
+                  grid-template-columns: repeat(3, 1fr);
+                }
 
-              @media (max-width: 1450px) {
-                grid-template-columns: repeat(3, 1fr);
-              }
-
-              @media (max-width: 1180px) {
-                grid-template-columns: repeat(1, 1fr);
-              }
-
+                @media (max-width: 1180px) {
+                  grid-template-columns: repeat(1, 1fr);
+                }
+              `}
               ${view === VIEWS.LIST &&
               css`
-                display: initial;
-              `}
+                grid-auto-rows: 1fr;
+                grid-template-columns: 1fr;
+                grid-gap: 1.25rem;
+              `};
             `}
           >
             <PackTile
               id={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
               css={css`
-                ${view === VIEWS.GRID && `height: 100%;`}
                 background-color: var(--tertiary-background-color);
               `}
               href={QUICKSTARTS_REPO}
