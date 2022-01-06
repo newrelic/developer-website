@@ -113,6 +113,9 @@ const PackTile = ({
           @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
             display: none;
           }
+          .dark-mode & {
+            background-color: white;
+          }
 
           ${isListView() &&
           css`
@@ -136,10 +139,6 @@ const PackTile = ({
               object-fit: scale-down;
               margin: 0 auto 10px;
               height: 100%;
-
-              .dark-mode & {
-                background-color: white;
-              }
             `}
           />
         </div>
