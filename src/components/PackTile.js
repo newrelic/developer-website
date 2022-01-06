@@ -73,21 +73,23 @@ const PackTile = ({
       className={className}
       interactive
       css={css`
-        --tile-image-height: 100px;
-        --title-row-height: 2.5rem;
+        --tile-image-height: 100px; /* Logo image height */
+        --title-row-height: 0.5fr; /* Title height to allow space for longer string */
         padding: 1rem;
         overflow: hidden;
+
+        /* Default grid view */
         display: grid;
         grid-gap: 0.2rem;
         grid-template-rows: var(--tile-image-height) var(--title-row-height) 1fr 1fr;
         grid-template-columns: auto;
-
         grid-template-areas:
           'logo logo'
           'title title'
           'summary summary'
           '. tag';
 
+        /* Grid view without logo */
         ${!isListView() &&
         css`
           @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
@@ -99,6 +101,7 @@ const PackTile = ({
           }
         `}
 
+        /* List view */
         ${isListView() &&
         css`
           grid-template-columns: 0.5fr 1fr 1fr;
@@ -107,6 +110,8 @@ const PackTile = ({
             'logo summary summary'
             'logo tag tag';
           grid-template-rows: auto;
+
+          /* List view without logo */
           @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto;
@@ -124,12 +129,16 @@ const PackTile = ({
           display: flex;
           align-items: center;
           justify-content: center;
+          margin-bottom: 1rem;
+
           @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
             display: none;
           }
+
           .dark-mode & {
             background-color: white;
           }
+
           ${isListView() &&
           css`
             margin-right: 0.5rem;
@@ -171,6 +180,8 @@ const PackTile = ({
           css={css`
             font-size: 0.8rem;
             color: var(--secondary-text-color);
+
+            /* Limits the number of lines */
             overflow: hidden;
             display: -webkit-box;
             text-overflow: ellipsis;

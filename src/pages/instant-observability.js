@@ -501,11 +501,7 @@ const QuickstartsPage = ({ data, location }) => {
               display: grid;
               grid-gap: 1.25rem;
               grid-template-columns: repeat(4, 1fr);
-              grid-auto-rows: minmax(
-                var(--guide-list-row-height, 150px),
-                287px
-              );
-
+              grid-auto-rows: 1fr;
               ${view === VIEWS.GRID &&
               css`
                 @media (max-width: 1350px) {
@@ -516,13 +512,12 @@ const QuickstartsPage = ({ data, location }) => {
                   grid-template-columns: repeat(1, 1fr);
                 }
               `}
-
               ${view === VIEWS.LIST &&
               css`
                 grid-auto-rows: 1fr;
                 grid-template-columns: 1fr;
                 grid-gap: 1.25rem;
-              `}
+              `};
             `}
           >
             <PackTile
