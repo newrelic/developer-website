@@ -10,7 +10,11 @@ import {
   Tag,
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
-import { SHIELD_LEVELS, RESERVED_QUICKSTART_IDS } from '../data/constants';
+import {
+  SHIELD_LEVELS,
+  RESERVED_QUICKSTART_IDS,
+  LISTVIEW_BREAKPOINT,
+} from '../data/constants';
 import PackImg from './PackImg';
 
 const VIEWS = {
@@ -32,8 +36,6 @@ const PackTile = ({
   href,
 }) => {
   const tessen = useTessen();
-
-  const isMobile = useMobileDetect().isMobile();
 
   const handlePackClick = (quickstartId) => {
     switch (true) {
@@ -90,19 +92,21 @@ const PackTile = ({
           'summary summary'
           '. tag';
 
-        /* List view */
-        ${isListView() &&
-        css`
-          grid-template-columns: 1fr 1fr 1fr;
-          grid-template-areas:
-            'logo title title'
-            'logo summary summary'
-            'logo tag tag';
-          grid-template-rows: auto;
-        `}
+        /* List view selected by control */
+        ${
+          isListView() &&
+          css`
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-areas:
+              'logo title title'
+              'logo summary summary'
+              'logo tag tag';
+            grid-template-rows: auto;
+          `
+        }
 
-        ${isMobile &&
-        css`
+        /* Breakpoint triggers List view */
+        @media screen and (max-width: ${LISTVIEW_BREAKPOINT}){
           grid-template-areas:
             'logo title title'
             'logo summary summary';
@@ -110,7 +114,7 @@ const PackTile = ({
           grid-template-columns: 1fr 1fr 1fr;
           grid-template-rows: 0.5fr 1fr;
           padding: 0.2rem 0.5rem;
-        `}
+        }
       `}
       onClick={() => handlePackClick(id)}
     >
@@ -122,6 +126,19 @@ const PackTile = ({
           height: 100%;
           justify-content: center;
           margin-bottom: 1rem;
+
+          .dark-mode & {
+            background: var(--color-white);
+          }
+
+          ${isListView() &&
+          css`
+            margin-right: 0.5rem;
+          `}
+
+          @media screen and (max-width: ${LISTVIEW_BREAKPOINT}) {
+            margin-right: 0.5rem;
+          }
         `}
       >
         <div
@@ -143,13 +160,12 @@ const PackTile = ({
         css={css`
           grid-area: title;
 
-          ${isMobile &&
-          css`
+          @media screen and (max-width: ${LISTVIEW_BREAKPOINT}) {
             align-self: end;
             font-size: 14px;
             font-weight: 300;
             margin: 0;
-          `}
+          }
         `}
       >
         {title}{' '}
@@ -186,7 +202,9 @@ const PackTile = ({
           }
           grid-area: tag;
 
-          ${isMobile && 'display: none'}
+          @media screen and (max-width: ${LISTVIEW_BREAKPOINT}) {
+            display: none;
+          }
         `}
       >
         {featured && (
