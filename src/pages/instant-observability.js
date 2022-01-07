@@ -96,9 +96,11 @@ const QuickstartsPage = ({ data, location }) => {
     const categoryParam = params.get('category');
 
     // Forcing view to List View if device is < 1080px.
-    const width = window.innerWidth;
-    if (width < LISTVIEW_BREAKPOINT) {
-      setView(VIEWS.LIST);
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      if (width < LISTVIEW_BREAKPOINT) {
+        setView(VIEWS.LIST);
+      }
     }
 
     setSearch(searchParam);
