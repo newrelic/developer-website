@@ -19,7 +19,7 @@ tags:
 
 <Intro>
 
-New Relic products report a lot of data “out of the box.” When you use products like [APM](https://docs.newrelic.com/docs/apm), [Browser](https://docs.newrelic.com/docs/browser), [Mobile](https://docs.newrelic.com/docs/mobile-monitoring), [Infrastructure monitoring](https://docs.newrelic.com/docs/infrastructure), or an [integration](https://docs.newrelic.com/docs/integrations), by default you receive performance data.
+New Relic products report a lot of data “out of the box.” When you use monitoring solutions like [APM](https://docs.newrelic.com/docs/apm), [browser monitoring](https://docs.newrelic.com/docs/browser), [mobile monitoring](https://docs.newrelic.com/docs/mobile-monitoring), [infrastructure monitoring](https://docs.newrelic.com/docs/infrastructure), or any of our [integrations](https://docs.newrelic.com/docs/integrations), by default you receive various types of performance data.
 
 But you may want to bring data into New Relic that isn't collected by default. Maybe you want an API-based solution that doesn't require install of an agent. Maybe you want to bring telemetry data from another analysis service into New Relic. This page describes several ways to get data into New Relic.
 
@@ -31,22 +31,24 @@ But you may want to bring data into New Relic that isn't collected by default. M
 
 ## Agent APIs
 
-If you use our APM, Browser, or Mobile agents to report data, you can use their associated APIs to report custom data. For example, if you monitor your application with our APM Python agent, you can use the [Python agent API](https://docs.newrelic.com/docs/agents/python-agent/api-guides/guide-using-python-agent-api) to set up custom instrumentation.
+If you use our APM, browser, or mobile agents to report data, you can use their associated APIs to report custom data. For example, if you monitor your application with our APM Python agent, you can use the [Python agent API](https://docs.newrelic.com/docs/agents/python-agent/api-guides/guide-using-python-agent-api) to set up custom instrumentation.
 
 See the [agent APIs](https://docs.newrelic.com/docs/agents).
 </Step>
 
 <Step>
 
-## Telemetry SDK
+## Telemetry SDKs
 
-Our Telemetry SDKs are language wrappers for our [Trace API](https://docs.newrelic.com/docs/apm/distributed-tracing/trace-api/introduction-new-relic-trace-api) and [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api) (and eventually our Log API and Event API). These SDKs let you easily send metrics and trace data to New Relic without needing to install an agent. For customers, we offer open-source exporters and integrations that use the Telemetry SDKs to send metrics and trace data: 
+Our Telemetry SDKs are language wrappers for our [ingest APIs](https://docs.newrelic.com/docs/apis/intro-apis/introduction-new-relic-apis/#data-type-apis). These SDKs let you easily send metrics and trace data to New Relic without needing to install an agent. We offer open-source exporters and integrations that use our Telemetry SDKs to report metrics and trace data. Some of these solutions are: 
 
+- [OpenTelemetry integrations](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/introduction-opentelemetry-new-relic)
 - [Istio adaptor](https://github.com/newrelic/newrelic-istio-adapter)
 - Prometheus OpenMetrics ([for Docker](https://docs.newrelic.com/docs/new-relic-prometheus-openmetrics-integration-docker) | [for Kubernetes](https://docs.newrelic.com/docs/new-relic-prometheus-openmetrics-integration-kubernetes)) 
-- OpenCensus exporter ([for Go](https://github.com/newrelic/newrelic-opencensus-exporter-go) | [for Python](http://github.com/newrelic/newrelic-opencensus-exporter-python)) 
+- [Grafana integrations](https://docs.newrelic.com/docs/more-integrations/grafana-integrations/get-started/grafana-support-prometheus-promql)
 - [DropWizard exporter](https://github.com/newrelic/dropwizard-metrics-newrelic)
 - [Micrometer exporter](https://github.com/newrelic/micrometer-registry-newrelic)
+- OpenCensus exporter ([for Go](https://github.com/newrelic/newrelic-opencensus-exporter-go) | [for Python](http://github.com/newrelic/newrelic-opencensus-exporter-python)) 
 
 Want to build your own solution? [See our Telemetry SDK docs.](https://docs.newrelic.com/docs/telemetry-sdk-send-custom-telemetry-data-new-relic)
 
@@ -54,7 +56,15 @@ Want to build your own solution? [See our Telemetry SDK docs.](https://docs.newr
 
 <Step>
 
-## Trace API
+## Report custom infrastructure data 
+
+If our infrastructure integrations don't meet your needs, you can use our [Flex integration](https://docs.newrelic.com/docs/infrastructure/host-integrations/host-integrations-list/flex-integration-tool-build-your-own-integration) to report any type of infrastructure-related metrics or configuration settings to New Relic. 
+
+</Step>
+
+<Step>
+
+## Custom distributed tracing solutions
 
 Our [Trace API](https://docs.newrelic.com/docs/apm/distributed-tracing/trace-api/introduction-new-relic-trace-api) lets you send distributed tracing data to New Relic and consolidate tracing data from multiple sources in one place. We accept trace data in two formats: 
 
