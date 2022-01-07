@@ -193,7 +193,6 @@ const QuickstartsPage = ({ data, location }) => {
         css={css`
           --sidebar-width: 300px;
           --banner-height: 308px;
-
           display: grid;
           grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
           grid-template-areas: 'sidebar main';
@@ -204,6 +203,7 @@ const QuickstartsPage = ({ data, location }) => {
           max-width: var(--site-max-width);
 
           @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+            grid-gap: 0;
             grid-template-columns: minmax(0, 1fr);
             grid-template-areas:
               'sidebar'
@@ -290,19 +290,19 @@ const QuickstartsPage = ({ data, location }) => {
           </div>
           <div
             css={css`
+              align-items: center;
               background-color: var(--secondary-background-color);
               border-radius: 4px;
-              padding: 0.5rem;
               display: flex;
               justify-content: space-between;
-              align-items: center;
+              padding: 0.5rem;
 
               input {
                 font-size: 1.15em;
                 padding: 0.5rem;
                 padding-left: 2.25rem;
                 background: var(--color-white);
-                border: var(--color-neutrals-600);
+                border: 1px solid var(--color-neutrals-600);
                 border-radius: 4px;
 
                 &::placeholder {
@@ -323,6 +323,7 @@ const QuickstartsPage = ({ data, location }) => {
               }
               @media (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
                 background-color: var(--primary-background-color);
+                padding: 0;
               }
             `}
           >
@@ -334,7 +335,8 @@ const QuickstartsPage = ({ data, location }) => {
               onChange={(e) => setSearch(e.target.value)}
               css={css`
                 --svg-color: var(--color-neutrals-700);
-
+                box-shadow: none;
+                max-width: 630px;
                 svg {
                   width: 16px;
                   height: 16px;
@@ -346,11 +348,8 @@ const QuickstartsPage = ({ data, location }) => {
                 }
 
                 @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+                  font-size: 11px;
                   max-width: 100%;
-                }
-
-                @media screen and (min-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
-                  max-width: 630px;
                 }
               `}
             />
@@ -371,106 +370,109 @@ const QuickstartsPage = ({ data, location }) => {
                 }
               `}
             />
-            {isMobile && (
-              <div
+          </div>
+          {isMobile && (
+            <div
+              css={css`
+                display: flex;
+              `}
+            >
+              <Button
                 css={css`
-                  display: flex;
+                  border-radius: 2px;
+                  border: 1px solid var(--border-color);
+                  color: var(--primary-text-color);
+                  font-size: 12px;
+                  justify-content: flex-start;
+                  margin: 0.5rem 1rem 0 0;
+                  padding: 8px;
                 `}
+                variant={Button.VARIANT.LINK}
+                onClick={() => setIsCategoriesOverlayOpen(true)}
               >
-                <Button
+                Filter by category
+              </Button>
+              <Overlay
+                isOpen={isCategoriesOverlayOpen}
+                onCloseOverlay={closeCategoriesOverlay}
+              >
+                <div
                   css={css`
-                    justify-content: flex-start;
-                    padding: 0;
-                    margin: 0.5rem 1rem 0 0;
+                    border-radius: 5px;
+                    position: relative;
+                    width: 100%;
+                    margin: 30% auto 0;
+                    padding: 1rem;
+                    background: var(--primary-background-color);
                   `}
-                  variant={Button.VARIANT.LINK}
-                  onClick={() => setIsCategoriesOverlayOpen(true)}
                 >
-                  Categories
-                </Button>
-                <Overlay
-                  isOpen={isCategoriesOverlayOpen}
-                  onCloseOverlay={closeCategoriesOverlay}
-                >
-                  <div
+                  <h3
                     css={css`
-                      border-radius: 5px;
-                      position: relative;
-                      width: 100%;
-                      margin: 30% auto 0;
-                      padding: 1rem;
-                      background: var(--primary-background-color);
+                      padding: 0.5rem 0 0 0.5rem;
                     `}
                   >
-                    <h3
-                      css={css`
-                        padding: 0.5rem 0 0 0.5rem;
-                      `}
-                    >
-                      Category
-                    </h3>
-                    <div
-                      css={css`
-                        max-height: 400px;
-                        padding-bottom: 3rem;
-                        overflow-y: scroll;
-                      `}
-                    >
-                      {categoriesWithCount.map(
-                        ({ displayName, value, count }) => (
-                          <Button
-                            type="button"
-                            key={value}
-                            onClick={() => handleCategory(value)}
-                            css={css`
-                              padding: 1rem 0.5rem;
-                              width: 100%;
-                              display: flex;
-                              justify-content: flex-start;
-                              color: var(--primary-text-color);
-                              font-weight: 100;
-                              background: ${category === value
-                                ? 'var(--divider-color)'
-                                : 'none'};
-                            `}
-                          >
-                            {`${displayName} (${count})`}
-                          </Button>
-                        )
-                      )}
-                    </div>
-                    <div
-                      css={css`
-                        background: var(--secondary-background-color);
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 4rem;
-                        border-bottom-right-radius: 5px;
-                        border-bottom-left-radius: 5px;
-                        display: flex;
-                        justify-content: flex-end;
-                        align-items: center;
-                      `}
-                    >
-                      <Button
-                        css={css`
-                          height: 2rem;
-                          margin-right: 1rem;
-                        `}
-                        onClick={closeCategoriesOverlay}
-                        variant={Button.VARIANT.PRIMARY}
-                      >
-                        OK
-                      </Button>
-                    </div>
+                    Category
+                  </h3>
+                  <div
+                    css={css`
+                      max-height: 400px;
+                      padding-bottom: 3rem;
+                      overflow-y: scroll;
+                    `}
+                  >
+                    {categoriesWithCount.map(
+                      ({ displayName, value, count }) => (
+                        <Button
+                          type="button"
+                          key={value}
+                          onClick={() => handleCategory(value)}
+                          css={css`
+                            padding: 1rem 0.5rem;
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-start;
+                            color: var(--primary-text-color);
+                            font-weight: 100;
+                            background: ${category === value
+                              ? 'var(--divider-color)'
+                              : 'none'};
+                          `}
+                        >
+                          {`${displayName} (${count})`}
+                        </Button>
+                      )
+                    )}
                   </div>
-                </Overlay>
-              </div>
-            )}
-          </div>
-
+                  <div
+                    css={css`
+                      background: var(--secondary-background-color);
+                      position: absolute;
+                      bottom: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 4rem;
+                      border-bottom-right-radius: 5px;
+                      border-bottom-left-radius: 5px;
+                      display: flex;
+                      justify-content: flex-end;
+                      align-items: center;
+                    `}
+                  >
+                    <Button
+                      css={css`
+                        height: 2rem;
+                        margin-right: 1rem;
+                      `}
+                      onClick={closeCategoriesOverlay}
+                      variant={Button.VARIANT.PRIMARY}
+                    >
+                      OK
+                    </Button>
+                  </div>
+                </div>
+              </Overlay>
+            </div>
+          )}
           <div
             css={css`
               --text-color: var(--primary-text-color);
