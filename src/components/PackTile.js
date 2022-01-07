@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import useMobileDetect from 'use-mobile-detect-hook';
 
 import { css } from '@emotion/react';
 import {
@@ -33,6 +34,8 @@ const PackTile = ({
   href,
 }) => {
   const tessen = useTessen();
+
+  const isMobile = useMobileDetect().isMobile();
 
   const handlePackClick = (quickstartId) => {
     switch (true) {
@@ -104,37 +107,34 @@ const PackTile = ({
         /* List view */
         ${isListView() &&
         css`
-          grid-template-columns: 0.5fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr 1fr;
           grid-template-areas:
             'logo title title'
             'logo summary summary'
             'logo tag tag';
           grid-template-rows: auto;
+        `}
 
-          /* List view without logo */
-          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto;
-            grid-template-areas:
-              'title title'
-              'summary summary'
-              'tag tag';
-          }
+        ${isMobile &&
+        css`
+          grid-template-areas:
+            'logo title title'
+            'logo summary summary';
+            'logo summary summary';
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 0.5fr 1fr;
+          padding: 0.2rem;
         `}
       `}
       onClick={() => handlePackClick(id)}
     >
       <div
         css={css`
-          display: flex;
           align-items: center;
+          display: flex;
+          height: 100%;
           justify-content: center;
           margin-bottom: 1rem;
-          height: 100%;
-
-          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
-            display: none;
-          }
 
           ${isListView() &&
           css`
@@ -164,6 +164,14 @@ const PackTile = ({
       <h4
         css={css`
           grid-area: title;
+
+          ${isMobile &&
+          css`
+            align-self: end;
+            font-size: 14px;
+            font-weight: 300;
+            margin: 0;
+          `}
         `}
       >
         {title}{' '}
@@ -198,8 +206,9 @@ const PackTile = ({
           span {
             color: var(--color-brand-500);
           }
-
           grid-area: tag;
+
+          ${isMobile && 'display: none'}
         `}
       >
         {featured && (

@@ -47,7 +47,7 @@ const BannerHeaderContent = () => (
     <body
       css={css`
         background: none;
-        color: var(--color-brand-300);
+        color: var(--color-brand-100);
 
         @media (max-width: ${MOBILE_BREAKPOINT}) {
           font-size: 12px;

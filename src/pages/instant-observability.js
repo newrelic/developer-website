@@ -94,6 +94,10 @@ const QuickstartsPage = ({ data, location }) => {
     const searchParam = params.get('search');
     const categoryParam = params.get('category');
 
+    if (isMobile) {
+      setView(VIEWS.LIST);
+    }
+
     setSearch(searchParam);
     setCategory(categoryParam || '');
     if (searchParam || categoryParam) {
@@ -126,6 +130,8 @@ const QuickstartsPage = ({ data, location }) => {
 
       navigate(`?${params.toString()}`);
     }
+
+    closeCategoriesOverlay();
   };
 
   useDebounce(
@@ -173,10 +179,10 @@ const QuickstartsPage = ({ data, location }) => {
    * Finds display name for selected category.
    * @returns {String} Display name for results found.
    */
-  const getDisplayName = () => {
+  const getDisplayName = (defaultName = 'All quickstarts') => {
     const found = CATEGORIES.find((cat) => cat.value === category);
 
-    if (!found.value) return 'All quickstarts';
+    if (!found.value) return defaultName;
 
     return found.displayName;
   };
@@ -384,13 +390,12 @@ const QuickstartsPage = ({ data, location }) => {
                   color: var(--primary-text-color);
                   font-size: 12px;
                   justify-content: flex-start;
-                  margin: 0.5rem 1rem 0 0;
                   padding: 8px;
                 `}
                 variant={Button.VARIANT.LINK}
                 onClick={() => setIsCategoriesOverlayOpen(true)}
               >
-                Filter by category
+                {getDisplayName('Filter by Category')}
               </Button>
               <Overlay
                 isOpen={isCategoriesOverlayOpen}
@@ -466,7 +471,7 @@ const QuickstartsPage = ({ data, location }) => {
                       onClick={closeCategoriesOverlay}
                       variant={Button.VARIANT.PRIMARY}
                     >
-                      OK
+                      Cancel
                     </Button>
                   </div>
                 </div>
@@ -493,10 +498,12 @@ const QuickstartsPage = ({ data, location }) => {
               }
             `}
           >
-            <span>
-              Showing {filteredQuickstarts.length} results for:{' '}
-              <strong>{search || getDisplayName()}</strong>
-            </span>
+            {!isMobile && (
+              <span>
+                Showing {filteredQuickstarts.length} results for:{' '}
+                <strong>{search || getDisplayName()}</strong>
+              </span>
+            )}
           </div>
           <div
             css={css`
