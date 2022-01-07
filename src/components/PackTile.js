@@ -13,8 +13,6 @@ import {
 import { SHIELD_LEVELS, RESERVED_QUICKSTART_IDS } from '../data/constants';
 import PackImg from './PackImg';
 
-const IMAGE_BREAKPOINT = '1080px';
-
 const VIEWS = {
   GRID: 'Grid view',
   LIST: 'List view',
@@ -92,18 +90,6 @@ const PackTile = ({
           'summary summary'
           '. tag';
 
-        /* Grid view without logo */
-        ${!isListView() &&
-        css`
-          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
-            grid-template-rows: var(--title-row-height) 1fr 1fr;
-            grid-template-areas:
-              'title title'
-              'summary summary'
-              '. tag';
-          }
-        `}
-
         /* List view */
         ${isListView() &&
         css`
@@ -132,18 +118,10 @@ const PackTile = ({
         css={css`
           align-items: center;
           display: flex;
+          grid-area: logo;
           height: 100%;
           justify-content: center;
           margin-bottom: 1rem;
-
-          ${isListView() &&
-          css`
-            margin-right: 0.5rem;
-          `}
-          .dark-mode & {
-            background-color: white;
-          }
-          grid-area: logo;
         `}
       >
         <div

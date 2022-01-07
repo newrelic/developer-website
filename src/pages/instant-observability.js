@@ -22,6 +22,7 @@ import {
   QUICKSTARTS_REPO,
   RESERVED_QUICKSTART_IDS,
   QUICKSTARTS_COLLAPSE_BREAKPOINT,
+  LISTVIEW_BREAKPOINT,
 } from '../data/constants';
 import CATEGORIES from '../data/instant-observability-categories';
 
@@ -94,7 +95,9 @@ const QuickstartsPage = ({ data, location }) => {
     const searchParam = params.get('search');
     const categoryParam = params.get('category');
 
-    if (isMobile) {
+    // Forcing view to List View if device is < 1080px.
+    const width = window.innerWidth;
+    if (width < LISTVIEW_BREAKPOINT) {
       setView(VIEWS.LIST);
     }
 
@@ -371,7 +374,7 @@ const QuickstartsPage = ({ data, location }) => {
                 });
               }}
               css={css`
-                @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+                @media screen and (max-width: ${LISTVIEW_BREAKPOINT}) {
                   display: none;
                 }
               `}
