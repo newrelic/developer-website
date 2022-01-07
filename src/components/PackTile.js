@@ -123,7 +123,7 @@ const PackTile = ({
             'logo summary summary';
           grid-template-columns: 1fr 1fr 1fr;
           grid-template-rows: 0.5fr 1fr;
-          padding: 0.2rem;
+          padding: 0.2rem 0.5rem;
         `}
       `}
       onClick={() => handlePackClick(id)}
