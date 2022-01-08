@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import useMobileDetect from 'use-mobile-detect-hook';
-
 import { css } from '@emotion/react';
 import {
   Surface,
