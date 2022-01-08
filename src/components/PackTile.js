@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { css } from '@emotion/react';
 import {
   Surface,
@@ -9,10 +8,12 @@ import {
   Tag,
   Link,
 } from '@newrelic/gatsby-theme-newrelic';
-import { SHIELD_LEVELS, RESERVED_QUICKSTART_IDS } from '../data/constants';
+import {
+  SHIELD_LEVELS,
+  RESERVED_QUICKSTART_IDS,
+  LISTVIEW_BREAKPOINT,
+} from '../data/constants';
 import PackImg from './PackImg';
-
-const IMAGE_BREAKPOINT = '1080px';
 
 const VIEWS = {
   GRID: 'Grid view',
@@ -89,61 +90,53 @@ const PackTile = ({
           'summary summary'
           '. tag';
 
-        /* Grid view without logo */
-        ${!isListView() &&
-        css`
-          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
-            grid-template-rows: var(--title-row-height) 1fr 1fr;
+        /* List view selected by control */
+        ${
+          isListView() &&
+          css`
+            grid-template-columns: 1fr 1fr 1fr;
             grid-template-areas:
-              'title title'
-              'summary summary'
-              '. tag';
-          }
-        `}
+              'logo title title'
+              'logo summary summary'
+              'logo tag tag';
+            grid-template-rows: auto;
+          `
+        }
 
-        /* List view */
-        ${isListView() &&
-        css`
-          grid-template-columns: 0.5fr 1fr 1fr;
+        /* Breakpoint triggers List view */
+        @media screen and (max-width: ${LISTVIEW_BREAKPOINT}){
           grid-template-areas:
             'logo title title'
-            'logo summary summary'
-            'logo tag tag';
-          grid-template-rows: auto;
-
-          /* List view without logo */
-          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto;
-            grid-template-areas:
-              'title title'
-              'summary summary'
-              'tag tag';
-          }
-        `}
+            'logo summary summary';
+            'logo summary summary';
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 0.5fr 1fr;
+          padding: 0.2rem 0.5rem;
+        }
       `}
       onClick={() => handlePackClick(id)}
     >
       <div
         css={css`
-          display: flex;
           align-items: center;
+          display: flex;
+          grid-area: logo;
+          height: 100%;
           justify-content: center;
           margin-bottom: 1rem;
-          height: 100%;
 
-          @media screen and (max-width: ${IMAGE_BREAKPOINT}) {
-            display: none;
+          .dark-mode & {
+            background: var(--color-white);
           }
 
           ${isListView() &&
           css`
             margin-right: 0.5rem;
           `}
-          .dark-mode & {
-            background-color: white;
+
+          @media screen and (max-width: ${LISTVIEW_BREAKPOINT}) {
+            margin-right: 0.5rem;
           }
-          grid-area: logo;
         `}
       >
         <div
@@ -164,6 +157,13 @@ const PackTile = ({
       <h4
         css={css`
           grid-area: title;
+
+          @media screen and (max-width: ${LISTVIEW_BREAKPOINT}) {
+            align-self: end;
+            font-size: 14px;
+            font-weight: 300;
+            margin: 0;
+          }
         `}
       >
         {title}{' '}
@@ -198,8 +198,11 @@ const PackTile = ({
           span {
             color: var(--color-brand-500);
           }
-
           grid-area: tag;
+
+          @media screen and (max-width: ${LISTVIEW_BREAKPOINT}) {
+            display: none;
+          }
         `}
       >
         {featured && (

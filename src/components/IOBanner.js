@@ -25,6 +25,10 @@ const BannerHeaderContent = () => (
     <h2
       css={css`
         color: var(--color-brand-300);
+
+        @media (max-width: ${MOBILE_BREAKPOINT}) {
+          font-weight: 400;
+        }
       `}
     >
       Instant Observability
@@ -32,18 +36,27 @@ const BannerHeaderContent = () => (
     <h1
       css={css`
         color: var(--color-neutrals-050);
+
+        @media (max-width: ${MOBILE_BREAKPOINT}) {
+          font-weight: 400;
+        }
       `}
     >
       Dashboards, alerts, and integrations all in one place
     </h1>
     <body
       css={css`
-        color: var(--color-neutrals-050);
         background: none;
+        color: var(--color-brand-100);
+
+        @media (max-width: ${MOBILE_BREAKPOINT}) {
+          font-size: 12px;
+          font-weight: 300;
+        }
       `}
     >
-      Our quickstarts bundle everything you need to start monitoring like a pro
-      right out of the box.
+      Our quickstarts bundles get you monitoring like a pro right out of the
+      box.
     </body>
   </div>
 );
