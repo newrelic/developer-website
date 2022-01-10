@@ -443,7 +443,7 @@ You can see the difference in what is displayed below:
 
 ### Usage
 
-The `SuperTiles` component renders the `GuidedInstallTile` and `CodeStreamTile` (treatment) components.
+The `SuperTiles` component renders the `GuidedInstallTile` component.
 
 To include it:
 
@@ -484,12 +484,3 @@ The `GuidedInstallTile` component includes custom content relevant to the guided
 <GuidedInstallTile />
 ```
 
-### CodeStreamTile
-
-### Usage
-
-The `CodeStreamTile` component includes custom content relevant to New Relic CodeStream.
-
-```html
-<CodeStreamTile />
-```
