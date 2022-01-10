@@ -2601,6 +2601,38 @@
   {
     "alerts": [],
     "authors": [
+      "New Relic Labs"
+    ],
+    "dashboards": [],
+    "description": "Custom CloudFormation Resource that allows for the creation of New Relic NRQL Alerts as part of a CloudFormation Stack. \n",
+    "documentation": [
+      {
+        "description": "Installation and configuration instructions\n",
+        "name": "Resource installation and configuration documentation",
+        "url": "https://github.com/newrelic-experimental/newrelic-alerts-cloudformation"
+      }
+    ],
+    "iconUrl": null,
+    "id": "908e2847-ee50-4cf7-8e15-f426a1d5e4d0",
+    "installPlans": [],
+    "keywords": [
+      "nrlabs",
+      "nrlabs-data",
+      "aws",
+      "cloudformation",
+      "alerts"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.85.2/quickstarts/aws/newrelic-alert-cloudformation-resource/logo.jpg",
+    "name": "newrelic-alert-cloudformation-resource",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/aws/newrelic-alert-cloudformation-resource",
+    "summary": "CloudFormation custom Resource that creates New Relic NRQL Alerts\n",
+    "title": "CloudFormation custom Resource that creates New Relic NRQL Alerts",
+    "websiteUrl": "https://aws.amazon.com/cloudformation/"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "New Relic"
     ],
     "dashboards": [],
@@ -3316,6 +3348,45 @@
     "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/azure/azure-virtual-machine-scale-sets",
     "summary": "Monitor Azure Virtual Machine Scale Sets by connecting Azure to New Relic",
     "title": "Azure Virtual Machine Scale Sets",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic",
+      "Emil Hammarstrand"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Azure Virtual Machines",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.85.2/quickstarts/azure/azure-virtual-machines/dashboards/azure-virtual-machines.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.85.2/quickstarts/azure/azure-virtual-machines/dashboards/azure-virtual-machines.json"
+      }
+    ],
+    "description": "## What is Azure Virtual Machines?\n\nA service for creating and managing a virtual or simulated computing environment as an alternative to a physical environment.\n\n### Get started!\n\nStart monitoring Azure Virtual Machines by connecting Microsoft Azure to New Relic!\n\nCheck out our Azure Virtual Machines documentation to instrument your cloud service and manage the stability, scalability, and reliability of your systems with New Relic's infrastructure monitoring capabilities.\n",
+    "documentation": [
+      {
+        "description": "Monitor Azure Virtual Machines by connecting Azure to New Relic.\n",
+        "name": "Azure Virtual Machines installation docs",
+        "url": "https://one.newrelic.com/launcher/infra.infra?pane=eyJuZXJkbGV0SWQiOiJpbmZyYS5henVyZSIsImRhdGFTb3VyY2UiOiI0IiwiZmVhdHVyZSI6ImFjY291bnRXaXphcmRTZXR1cCIsInByb3ZpZGVyTmFtZSI6ImF6dXJlIn0="
+      }
+    ],
+    "iconUrl": null,
+    "id": "71349789-a9f3-450a-bb0b-1d30fff7b0c8",
+    "installPlans": [],
+    "keywords": [
+      "azure",
+      "virtual machines"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.85.2/quickstarts/azure/azure-virtual-machines/logo.svg",
+    "name": "azure-virtual-machines",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/azure/azure-virtual-machines",
+    "summary": "Monitor Azure Virtual Machines by connecting Azure to New Relic\n",
+    "title": "Azure Virtual Machines",
     "websiteUrl": null
   },
   {
@@ -6024,6 +6095,36 @@
     "summary": "The Gatsby quickstart allows you to get visibility into the build time of your Gatsby Sites,\nusing OpenTelemetry to collect each step as a span in a Distributed Trace. Monitor your build in real-time to highlight which steps are affecting performance, so you can improve them faster.\n",
     "title": "Gatsby Build",
     "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic Labs"
+    ],
+    "dashboards": [],
+    "description": "Apigee API JavaScript Resources to create or propagate W3C Trace Context through Apigee Flows and on to the Apigee Target. Apigee Flow Spans are reported back to New Relic's Trace API. Sample Policies are included to demonstrate use.\n",
+    "documentation": [
+      {
+        "description": "Installation and configuration instructions\n",
+        "name": "Apigee Distributed Tracing documentation",
+        "url": "https://github.com/newrelic-experimental/apigee-distributed-tracing"
+      }
+    ],
+    "iconUrl": null,
+    "id": "aff5a3b7-e0ec-4c64-8940-e1fec0a45f3e",
+    "installPlans": [],
+    "keywords": [
+      "nrlabs",
+      "nrlabs-data",
+      "apigee"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.85.2/quickstarts/gcp/apigee-api/logo.svg",
+    "name": "apigee-api",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/gcp/apigee-api",
+    "summary": "Monitor Apigee API Flows with New Relic's Trace API.\n",
+    "title": "Apigee API Distributed Tracing",
+    "websiteUrl": "https://cloud.google.com/apigee"
   },
   {
     "alerts": [],
@@ -20385,106 +20486,5 @@
     "summary": "Send Zipkin-format traces to New Relic\n",
     "title": "Zipkin",
     "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic",
-      "Emil Hammarstrand"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Azure Virtual Machines",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.85.2/quickstarts/azure/azure-virtual-machines/dashboards/azure-virtual-machines.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.85.2/quickstarts/azure/azure-virtual-machines/dashboards/azure-virtual-machines.json"
-      }
-    ],
-    "description": "## What is Azure Virtual Machines?\n\nA service for creating and managing a virtual or simulated computing environment as an alternative to a physical environment.\n\n### Get started!\n\nStart monitoring Azure Virtual Machines by connecting Microsoft Azure to New Relic!\n\nCheck out our Azure Virtual Machines documentation to instrument your cloud service and manage the stability, scalability, and reliability of your systems with New Relic's infrastructure monitoring capabilities.\n",
-    "documentation": [
-      {
-        "description": "Monitor Azure Virtual Machines by connecting Azure to New Relic.\n",
-        "name": "Azure Virtual Machines installation docs",
-        "url": "https://one.newrelic.com/launcher/infra.infra?pane=eyJuZXJkbGV0SWQiOiJpbmZyYS5henVyZSIsImRhdGFTb3VyY2UiOiI0IiwiZmVhdHVyZSI6ImFjY291bnRXaXphcmRTZXR1cCIsInByb3ZpZGVyTmFtZSI6ImF6dXJlIn0="
-      }
-    ],
-    "iconUrl": null,
-    "id": "71349789-a9f3-450a-bb0b-1d30fff7b0c8",
-    "installPlans": [],
-    "keywords": [
-      "azure",
-      "virtual machines"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.85.2/quickstarts/azure/azure-virtual-machines/logo.svg",
-    "name": "azure-virtual-machines",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/azure/azure-virtual-machines",
-    "summary": "Monitor Azure Virtual Machines by connecting Azure to New Relic\n",
-    "title": "Azure Virtual Machines",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic Labs"
-    ],
-    "dashboards": [],
-    "description": "Apigee API JavaScript Resources to create or propagate W3C Trace Context through Apigee Flows and on to the Apigee Target. Apigee Flow Spans are reported back to New Relic's Trace API. Sample Policies are included to demonstrate use.\n",
-    "documentation": [
-      {
-        "description": "Installation and configuration instructions\n",
-        "name": "Apigee Distributed Tracing documentation",
-        "url": "https://github.com/newrelic-experimental/apigee-distributed-tracing"
-      }
-    ],
-    "iconUrl": null,
-    "id": "aff5a3b7-e0ec-4c64-8940-e1fec0a45f3e",
-    "installPlans": [],
-    "keywords": [
-      "nrlabs",
-      "nrlabs-data",
-      "apigee"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.85.2/quickstarts/gcp/apigee-api/logo.svg",
-    "name": "apigee-api",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/gcp/apigee-api",
-    "summary": "Monitor Apigee API Flows with New Relic's Trace API.\n",
-    "title": "Apigee API Distributed Tracing",
-    "websiteUrl": "https://cloud.google.com/apigee"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic Labs"
-    ],
-    "dashboards": [],
-    "description": "Custom CloudFormation Resource that allows for the creation of New Relic NRQL Alerts as part of a CloudFormation Stack. \n",
-    "documentation": [
-      {
-        "description": "Installation and configuration instructions\n",
-        "name": "Resource installation and configuration documentation",
-        "url": "https://github.com/newrelic-experimental/newrelic-alerts-cloudformation"
-      }
-    ],
-    "iconUrl": null,
-    "id": "908e2847-ee50-4cf7-8e15-f426a1d5e4d0",
-    "installPlans": [],
-    "keywords": [
-      "nrlabs",
-      "nrlabs-data",
-      "aws",
-      "cloudformation",
-      "alerts"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.85.2/quickstarts/aws/newrelic-alert-cloudformation-resource/logo.jpg",
-    "name": "newrelic-alert-cloudformation-resource",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/aws/newrelic-alert-cloudformation-resource",
-    "summary": "CloudFormation custom Resource that creates New Relic NRQL Alerts\n",
-    "title": "CloudFormation custom Resource that creates New Relic NRQL Alerts",
-    "websiteUrl": "https://aws.amazon.com/cloudformation/"
   }
 ]
