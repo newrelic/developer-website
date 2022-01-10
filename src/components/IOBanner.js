@@ -55,8 +55,8 @@ const BannerHeaderContent = () => (
         }
       `}
     >
-      Our quickstarts bundles get you monitoring like a pro right out of the
-      box.
+      Our quickstarts bundle everything you need to start monitoring like a pro
+      right out of the box.
     </body>
   </div>
 );
