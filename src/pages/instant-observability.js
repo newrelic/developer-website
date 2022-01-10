@@ -210,9 +210,7 @@ const QuickstartsPage = ({ data, location }) => {
           @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
             grid-gap: 0;
             grid-template-columns: minmax(0, 1fr);
-            grid-template-areas:
-              'sidebar'
-              'main';
+            grid-template-areas: 'main';
             grid-template-rows: unset;
           }
         `}
