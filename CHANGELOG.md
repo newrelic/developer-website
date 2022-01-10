@@ -1,3 +1,10 @@
+## [1.76.1](https://github.com/newrelic/developer-website/compare/v1.76.0...v1.76.1) (2022-01-10)
+
+
+### Bug Fixes
+
+* odd mobile styling ([f3bcea4](https://github.com/newrelic/developer-website/commit/f3bcea44ce86b5fc6c617ee393953080191ffed6))
+
 # [1.76.0](https://github.com/newrelic/developer-website/compare/v1.75.0...v1.76.0) (2022-01-10)
 
 
