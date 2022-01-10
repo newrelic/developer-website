@@ -75,7 +75,7 @@ const GuidedInstallTile = () => {
             `}
           >
             Many engineers start here. You'll install an agent with a single
-            command line and start monitoring your log and infrastructure data
+            command and start monitoring your log and infrastructure data
             in real time.
           </span>
         </div>
