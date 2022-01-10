@@ -7,6 +7,7 @@ import {
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import '../components/styles.scss';
+import { QUICKSTARTS_COLLAPSE_BREAKPOINT } from '../data/constants';
 
 const QuickStartLayout = ({ children }) => {
   const [sidebarWidth, setSidebarWidth] = useState(0);
@@ -45,7 +46,7 @@ const QuickStartLayout = ({ children }) => {
 
             margin-left: calc(var(--sidebar-offset));
 
-            @media screen and (max-width: 760px) {
+            @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
               margin-left: 0;
             }
           `}

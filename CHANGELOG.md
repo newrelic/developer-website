@@ -1,3 +1,65 @@
+## [1.76.1](https://github.com/newrelic/developer-website/compare/v1.76.0...v1.76.1) (2022-01-10)
+
+
+### Bug Fixes
+
+* odd mobile styling ([f3bcea4](https://github.com/newrelic/developer-website/commit/f3bcea44ce86b5fc6c617ee393953080191ffed6))
+
+# [1.76.0](https://github.com/newrelic/developer-website/compare/v1.75.0...v1.76.0) (2022-01-10)
+
+
+### Bug Fixes
+
+* add check to ensure page is loaded before updating view based on width ([f0ecb97](https://github.com/newrelic/developer-website/commit/f0ecb9771b94ddb3af85dc9251253245acc43601))
+* adjusting tablet breakpoint to change views at 1079px ([86ef387](https://github.com/newrelic/developer-website/commit/86ef38787784cc7c806f0396fd1326e7ec8e42ad))
+* comment to explain offset number ([250fe20](https://github.com/newrelic/developer-website/commit/250fe206e2ee2fa71e1b2d050be7ce913bcd03c2))
+* consistent text color for dark and light mode ([2f613fe](https://github.com/newrelic/developer-website/commit/2f613fe83c5508a8b58340c571884bde379e7a6e))
+* const file for breakpoints ([52d1376](https://github.com/newrelic/developer-website/commit/52d137615f52e36db6d153fef6e5893e9d131c92))
+* eslint line break ([2799ade](https://github.com/newrelic/developer-website/commit/2799adedef072c0f731eea3b487a1f9021987c64))
+* Icon title, searchinput background, DM text color & styling ([dcbc41f](https://github.com/newrelic/developer-website/commit/dcbc41f9c10c3eec0ded346ac1f3c40f056b46c1))
+* improve padding on tiles ([d81269b](https://github.com/newrelic/developer-website/commit/d81269b53ba020e38b120374543d0afa67923a43))
+* make image div full height ([7e842ce](https://github.com/newrelic/developer-website/commit/7e842cec01f3c72f78bea4e32297c485d4b648d6))
+* missing comma on css attribute for filters ([c6af99d](https://github.com/newrelic/developer-website/commit/c6af99d2c28dcfee35d27f621c21fbf35623f06b))
+* naming convention for artificially set constant ([4af86b8](https://github.com/newrelic/developer-website/commit/4af86b854d37c2be99c6ffaf1926b13fb6ca66d5))
+* new height offset for I/O ([7b2649a](https://github.com/newrelic/developer-website/commit/7b2649a9f7b94d1b498c6f2dc630ffb663f94ff1))
+* prevent auto-scroll for I/O ([3eaf5e6](https://github.com/newrelic/developer-website/commit/3eaf5e67fd945f4ffdfa0b95767ef5508f9dd33c))
+* Prevent scroll to top after query param update ([ef22eb2](https://github.com/newrelic/developer-website/commit/ef22eb24670b5b84851e4107cf05b54e22451c6a))
+* result text color for dark mode ([26afe3c](https://github.com/newrelic/developer-website/commit/26afe3c6864f358db7c1de9f49e7323cfb724631))
+* sub-banner text to UI-Writing specs ([b3c2726](https://github.com/newrelic/developer-website/commit/b3c2726aabbe83298148769996863af9d0de6009))
+* switch JS styling to css styling ([79597ee](https://github.com/newrelic/developer-website/commit/79597eecaec2ab233b4a1d5216d717a257236569))
+* WIP - initial updates to I/O mobile view, updated search styles and moved "categories" button ([f748cbc](https://github.com/newrelic/developer-website/commit/f748cbc5215145e9acc4f6a9737ac5d7b779b7fc))
+* WIP - update banner styles for I/O mobile ([9c3183b](https://github.com/newrelic/developer-website/commit/9c3183b052df05f394f804a09eecf423d3ea2c80))
+
+
+### Features
+
+* added sort by dropdown ([cb59548](https://github.com/newrelic/developer-website/commit/cb595480802ec12173cfe8e0463d6155f1dab696))
+* clarify/cleanup css grid ([06cd940](https://github.com/newrelic/developer-website/commit/06cd940a14f40c093595ee5b5fb4fccc5122647b))
+* clean up image styling ([07cbb19](https://github.com/newrelic/developer-website/commit/07cbb193acbf8a7d3fb061bfd720b16b5b50881c))
+* clean up spacing and copy ([7bb8b78](https://github.com/newrelic/developer-website/commit/7bb8b784a5c404619ea34dd5a921b7a1189220d8))
+* complete image styling ([fc728df](https://github.com/newrelic/developer-website/commit/fc728dfef4d4967b634495f3eaa4c176fdb7e3f1))
+* Dropdown for sorting ([9a9bd6a](https://github.com/newrelic/developer-website/commit/9a9bd6a782199c9e620ec01ca773744d5cc1f37e))
+* enforce width ([cec2459](https://github.com/newrelic/developer-website/commit/cec24590568566582cb403a4b6f1d958e44d2d92))
+* get I/O mobile view to look correct to the designs ([542f7a2](https://github.com/newrelic/developer-website/commit/542f7a24c4fb752b48f47da0883f135ffc29d031))
+* increase quickstart svgs size by 200 ([e7ec444](https://github.com/newrelic/developer-website/commit/e7ec4443221abad65e494181393f15c276926964))
+* initial quickstart tile changes ([0e717ce](https://github.com/newrelic/developer-website/commit/0e717ce76529ca4a3c5523714654a3f15e091e4c))
+* move dark mode background color ([3e6e81c](https://github.com/newrelic/developer-website/commit/3e6e81c50b00b717eebcdf5d2ec1412e234b0ae1))
+* reduce acronym size ([2bbdcd8](https://github.com/newrelic/developer-website/commit/2bbdcd8afe6af00ced046f31d56cb0f99c0ce402))
+* remove component filters and clean up design ([7077523](https://github.com/newrelic/developer-website/commit/7077523bfa6052292c9af13720475a5af4e64654))
+* remove fixed tile height ([be66884](https://github.com/newrelic/developer-website/commit/be6688412c2e41c17d0f034e6c5f5670ebc00610))
+* search input styling, QS view, filter removal ([9d86806](https://github.com/newrelic/developer-website/commit/9d86806d1c14f2ea7a0d9da6663c1727ceae3c66))
+* update i/o super tiles ([0d9dbd0](https://github.com/newrelic/developer-website/commit/0d9dbd0d67575933cd90b610241597e0b523f689))
+* update list styling ([be2ac53](https://github.com/newrelic/developer-website/commit/be2ac538523b349b81325c3451c2ef34c842948d))
+* use grid for tiles ([e6088f6](https://github.com/newrelic/developer-website/commit/e6088f60792f064bfa543395a7abd1b80c244d33))
+* use secondary color for category counts ([f531037](https://github.com/newrelic/developer-website/commit/f531037371bb0ec5798d0825f6042b5b8ac1406f))
+
+# [1.75.0](https://github.com/newrelic/developer-website/compare/v1.74.0...v1.75.0) (2021-12-29)
+
+
+### Features
+
+* add codeowners ([faef5ad](https://github.com/newrelic/developer-website/commit/faef5ad4c6121703f14cbc01815ab171afec4840))
+
 # [1.74.0](https://github.com/newrelic/developer-website/compare/v1.73.0...v1.74.0) (2021-12-20)
 
 

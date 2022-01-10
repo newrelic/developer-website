@@ -49,6 +49,7 @@
       - [Adding new components](#adding-new-components)
     - [Step 3: Add any new APIs or components to the navigation](#step-3-add-any-new-apis-or-components-to-the-navigation)
   - [Updating Developer terms](#updating-developer-terms)
+    - [Developer terms in New Relic One](#developer-terms-in-new-relic-one)
     - [Developer terms tips](#developer-terms-tips)
     - [Developer terms testing](#developer-terms-testing)
 
@@ -464,6 +465,14 @@ pandoc devterms.docx -o devterms.md
 ```
 
 4. Start the process of updating the terms.
+
+### Developer terms in New Relic One
+
+The developer terms can be accepted in [New Relic One](https://one.newrelic.com) in the Developer Center which is accessible when a user clicks on
+`Build your own app`.
+
+- The Developer Center functionality is located in an internal Github Enterprise repository:  `wanda/developer-center`.
+- As long as the terms file doesn't incorporate custom components within the markdown (*like JSX components that only exist within the developer-website repo*) These internal terms will now automatically update when the [terms source file](./src/markdown-pages/terms.mdx) changes.
 
 ### Developer terms tips
 
