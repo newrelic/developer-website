@@ -1,3 +1,10 @@
+## [1.76.3](https://github.com/newrelic/developer-website/compare/v1.76.2...v1.76.3) (2022-01-12)
+
+
+### Bug Fixes
+
+* master to parent language ([ef915af](https://github.com/newrelic/developer-website/commit/ef915af38c7e1488adb02285f3a73df2ffb2af45))
+
 ## [1.76.2](https://github.com/newrelic/developer-website/compare/v1.76.1...v1.76.2) (2022-01-12)
 
 
