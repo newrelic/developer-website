@@ -1,5 +1,4 @@
 ---
-path: '/contribute-to-quickstarts/query-alerts-for-quickstart'
 duration: 10
 title: 'Populate your alert configurations with NerdGraph'
 template: 'GuideTemplate'
@@ -85,7 +84,6 @@ There are three types of alerts you can have in New Relic:
 
 - [Static](#query-your-static-alert-condition)
 - [Baseline](#query-your-baseline-alert-condition)
-- [Outlier](#query-your-outlier-alert-condition)
 
 Jump to the appropriate section for the kind of alert you want to add to your quickstart.
 
@@ -330,117 +328,7 @@ Here, you added a baseline alert to your quickstart. If it's helpful, you can re
 
 </Steps>
 
-### Query your outlier alert condition
 
-<Steps>
-
-<Step>
-
-Open the [NerdGraph API explorer](https://api.newrelic.com/graphiql) and select your key from the dropdown menu.
-
-![graphiql interface](../../images/query-alerts/nerdgraph-interface.png)
-
-</Step>
-
-<Step>
-
-Copy the following GraphQL query and paste it in the center pane of the explorer.
-
-```js
-{
-  actor {
-    account(id: REPLACE_ACCOUNT_ID) {
-      alerts {
-        nrqlCondition(id: REPLACE_CONDITION_ID) {
-          ... on AlertsNrqlOutlierCondition {
-            id
-            name
-            nrql {
-              query
-            }
-            expectedGroups
-            terms {
-              priority
-              threshold
-              thresholdDuration
-              thresholdOccurrences
-            }
-            violationTimeLimitSeconds
-          }
-        }
-      }
-    }
-  }
-}
-
-```
-
-Here, you query `AlertsNrqlOutlierCondition` for required fields to add an outlier alert to your quickstart.
-
-<Callout variant="important">
-
-Make sure you replace your account ID and condition ID in the above query.
-
-</Callout>
-
-</Step>
-
-<Step>
-
-Execute the query to get the configuration data for your alert condition.
-
-![outlier alert query response](../../images/query-alerts/outlier-query-response.png)
-
-Next, use this response to add a outlier alert to your quickstart.
-
-</Step>
-
-<Step>
-
-Populate _outlier-alert.yml_ from your _alerts_ quickstart folder with the data returned from your query. Given the example response from the last step, our file looks like:
-
-```yml
----
-
-# Name of the alert
-name: Outlier Condition
-
-# Description and details
-details: |+
-  This alert is triggered when any facet(s) deviate from the center of the group for at least 5 mins
-
-# Type of alert
-type: OUTLIER
-
-# NRQL query
-nrql:
-  # Outlier alerts require FACET
-  query: "SELECT average(duration) FROM Transaction FACET http.statusCode"
-
-# Number of groups expected in the returned values for the condition (Default: 2)
-expectedGroups: 4
-
-# List of Critical and Warning thresholds for the condition
-terms:
-- priority: CRITICAL
-  # Value that triggers a violation
-  threshold: 1
-  # Time in seconds; 120 - 3600
-  thresholdDuration: 300
-  # How many data points must be in violation for the duration
-  thresholdOccurrences: ALL
-
-# Duration after which a violation automatically closes
-# Time in seconds; 300 - 2592000 (Default: 86400 [1 day])
-violationTimeLimitSeconds: 2592000
-
-```
-
-Here, you added an outlier alert to your quickstart. If it's helpful, you can rename this file to whatever you want.
-
-</Step>
-
-</Steps>
 
 ## Summary
 

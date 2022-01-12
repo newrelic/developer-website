@@ -47,6 +47,7 @@ module.exports = {
               features: {
                 'developer-website_global-header-gh-buttons': 'on',
                 'developer-website_right-rail-buttons': 'outline',
+                super_tiles: 'on',
               },
               core: {
                 authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
@@ -62,7 +63,7 @@ module.exports = {
             limit: 5,
             getSlug: ({ node }) => {
               if (node.internal.type === 'Mdx') {
-                return node.frontmatter.path;
+                return node.fields.slug;
               } else if (node.internal.type === 'Quickstarts') {
                 return resolveQuickstartSlug(node.name, node.id);
               }
@@ -136,7 +137,7 @@ module.exports = {
           segmentWriteKey: 'Ako0hclX8WGHwl9rm4n5uxLtT4wgEtuU',
           trackPageViews: true,
           pageView: {
-            name: 'pageView',
+            eventName: 'pageView',
             category: 'DocPageView',
             getProperties: ({ location, env }) => ({
               path: location.pathname,
@@ -211,7 +212,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-newrelic-sdk',
       options: {
-        release: 'release-3366',
+        release: 'release-3439',
       },
     },
     'gatsby-plugin-embed-pages',

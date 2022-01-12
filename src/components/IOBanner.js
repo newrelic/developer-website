@@ -1,94 +1,133 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import PropTypes from 'prop-types';
-import { Button, Link, useTessen } from '@newrelic/gatsby-theme-newrelic';
-import ioBanner from '../images/ioBanner.png';
+import bannerOverlayRight from '../images/io-banner/banner-style-right.svg';
+import bannerOverlayLeft from '../images/io-banner/banner-style-left.svg';
 
-const IOBanner = ({ isMobile }) => {
-  const tessen = useTessen();
+const MOBILE_BREAKPOINT = '530px';
 
-  const handleBannerButtonClick = () => {
-    tessen.track('instantObservability', 'BannerButtonClick');
-  };
+const BannerHeaderContent = () => (
+  <div
+    css={css`
+      position: static;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
 
-  return (
-    <section
+      width: 568px;
+      height: 192px;
+
+      @media (max-width: ${MOBILE_BREAKPOINT}) {
+        padding: 48px 24px;
+      }
+    `}
+  >
+    <h2
       css={css`
-        position: relative;
-        margin-bottom: 1rem;
+        color: var(--color-brand-300);
+
+        @media (max-width: ${MOBILE_BREAKPOINT}) {
+          font-weight: 400;
+        }
       `}
     >
-      <img
-        css={css`
-          width: 100%;
-          @media (max-width: 500px) {
-            height: 150px;
-            object-fit: cover;
-            width: 100vw;
-          }
-        `}
-        src={ioBanner}
-        alt="New Relic IO"
-      />
+      Instant Observability
+    </h2>
+    <h1
+      css={css`
+        color: var(--color-neutrals-050);
+
+        @media (max-width: ${MOBILE_BREAKPOINT}) {
+          font-weight: 400;
+        }
+      `}
+    >
+      Dashboards, alerts, and integrations all in one place
+    </h1>
+    <body
+      css={css`
+        background: none;
+        color: var(--color-brand-100);
+
+        @media (max-width: ${MOBILE_BREAKPOINT}) {
+          font-size: 12px;
+          font-weight: 300;
+        }
+      `}
+    >
+      Our quickstarts bundle everything you need to start monitoring like a pro
+      right out of the box.
+    </body>
+  </div>
+);
+
+const IOBanner = () => {
+  return (
+    <div
+      css={css`
+        --banner-height: 308px;
+        --left-margin: calc(50% - 50vw);
+
+        position: absolute;
+        width: 100vw;
+        left: var(--left-margin);
+        height: var(--banner-height);
+        margin: 0 0 0 var(--left-margin);
+
+        background: var(--color-brand-500);
+        border: 1px solid var(--color-brand-600);
+        box-sizing: border-box;
+      `}
+    >
       <div
         css={css`
-          position: absolute;
-          height: 0;
-          width: 40%;
-          color: var(--color-white);
-          margin: 0;
-          top: ${isMobile ? '25%' : '15%'};
-          left: 5%;
+          margin: 60px 0 56px 0;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         `}
       >
-        <h1
+        <div
           css={css`
-            color: var(--color-white);
-            font-size: ${isMobile ? '1rem' : 'max(.85rem, 1.5vw)'};
-            font-weight: 400;
-          `}
-        >
-          Instant Observability
-        </h1>
-        <p
-          css={css`
-            font-size: 0.75rem;
-            @media screen and (max-width: 1303px) {
-              margin-bottom: 0.3rem;
-            }
-            @media screen and (max-width: 1250px) {
+            margin-right: auto;
+
+            @media (max-width: ${MOBILE_BREAKPOINT}) {
               display: none;
             }
           `}
         >
-          New Relic I/O equips you with integrations, dashboards, and other
-          observability building blocks to get value from your data faster
-        </p>
-        <Button
-          variant={Button.VARIANT.PRIMARY}
-          as={Link}
+          <img
+            css={css`
+              width: 100%;
+            `}
+            src={bannerOverlayLeft}
+            alt="banner-left"
+            loading="lazy"
+          />
+        </div>
+        <BannerHeaderContent />
+        <div
           css={css`
-            color: var(--color-neutrals-100);
-            background: none;
-            border: solid var(--color-neutrals-100) 1px;
-            @media (max-width: 850px) {
-              width: 55%;
-              font-size: 0.65rem;
+            margin-left: auto;
+
+            @media (max-width: ${MOBILE_BREAKPOINT}) {
+              display: none;
             }
           `}
-          to="https://docs.newrelic.com/docs/full-stack-observability/observe-everything/get-started/new-relic-quickstarts-overview/"
-          instrumentation={{ component: 'IOBanner' }}
-          onClick={handleBannerButtonClick}
         >
-          Learn more
-        </Button>
+          <img
+            css={css`
+              width: 100%;
+            `}
+            src={bannerOverlayRight}
+            alt="banner-right"
+            loading="lazy"
+          />
+        </div>
       </div>
-    </section>
+    </div>
   );
-};
-
-IOBanner.propTypes = {
-  isMobile: PropTypes.bool,
 };
 
 export default IOBanner;

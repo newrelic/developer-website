@@ -1,57 +1,30 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import { Icon } from '@newrelic/gatsby-theme-newrelic';
+
+const getViewType = (fullView) => fullView.split(' ')[0].toLowerCase();
 
 const get = (x, key) =>
   Object.prototype.hasOwnProperty.call(x, key) ? x[key] : x;
 
-const SegmentedControl = ({ items, onChange }) => {
+const SegmentedControl = ({ items, onChange, className }) => {
   const [selected, setSelected] = useState(get(items[0], 'value'));
 
   return (
     <div
+      className={className}
       css={css`
-        border: 2px solid var(--color-white);
-        background-color: var(--color-white);
-        display: inline-flex;
-        border-radius: 3px;
-
         button {
           border: 0;
-          border-radius: 3px;
           background: none;
-          font-size: 0.75em;
-          padding: 0.5em 1em;
           cursor: pointer;
           user-select: none;
-          flex-grow: 1;
-
-          &[aria-pressed='true'] {
-            color: var(--color-white);
-            background-color: var(--color-brand-600);
-          }
-
-          &[disabled='true'] {
-            color: var(--color-neutrals-500);
-            background-color: var(--color-brand-600);
-            cursor: default;
-          }
         }
 
         .dark-mode & {
-          border-color: var(--primary-background-color);
-          background-color: var(--primary-background-color);
-
           button {
-            color: var(--primary-text-color);
-
-            &[aria-pressed='true'] {
-              color: var(--color-white);
-            }
-
-            &[disabled='true'] {
-              color: var(--color-brand-600);
-            }
+            color: var(--color-neutrals-500);
           }
         }
       `}
@@ -59,21 +32,31 @@ const SegmentedControl = ({ items, onChange }) => {
       {items.map((item, index) => {
         const value = get(item, 'value');
 
+        // Do not display current view button
+        if (getViewType(value) === getViewType(selected)) return;
+
         return (
           <button
             type="button"
             key={index}
             tabIndex={index}
             value={value}
-            aria-pressed={selected === value}
-            disabled={item.disabled}
             onClick={(e) => {
-              if (item.disabled) return;
               setSelected(value);
               onChange && onChange(e, value);
             }}
+            css={css`
+              margin-left: 8px;
+            `}
           >
-            {get(item, 'label')}
+            <Icon
+              title={value}
+              css={css`
+                margin-top: 4px;
+                font-size: 2em;
+              `}
+              name={`fe-${getViewType(value)}`}
+            />
           </button>
         );
       })}
@@ -97,6 +80,9 @@ SegmentedControl.propTypes = {
       })
     ),
   ]).isRequired,
+
+  /** A Prop for designating css attributes to parent container */
+  className: PropTypes.string,
 };
 
 export default SegmentedControl;

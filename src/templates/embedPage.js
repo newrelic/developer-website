@@ -18,8 +18,8 @@ const EmbedPage = ({ data }) => {
 };
 
 export const pageQuery = graphql`
-  query($contentSourcePath: String!) {
-    mdx(frontmatter: { path: { eq: $contentSourcePath } }) {
+  query($slug: String!) {
+    mdx(fields: { slug: { eq: $slug } }) {
       body
       frontmatter {
         title

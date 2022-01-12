@@ -19,7 +19,6 @@ It takes the title provided in the front matter and accepts plain text for the d
 
 ```
 ---
-path: '/example'
 duration: 30
 title: 'Example Guide'
 template: 'GuideTemplate'
@@ -40,7 +39,7 @@ If there is a more than plain text and a `<Video />` (such as a code snippet or 
 
 ## Steps
 
-The `<Steps />` is a required container for the individual `<Step />` components and will autonumber from top to bottom.
+The `<Steps />` is a required container for the individual `<Step />` components and will outnumber from top to bottom.
 
 ### Usage
 
@@ -188,7 +187,7 @@ You can use the `Tabs` component, and related sub-components to construct a tabb
 
 ## Usage
 
-```jsx
+```html
 <Tabs>
   <Tabs.Bar>
     <Tabs.BarItem id="tacos">Tacos</Tabs.BarItem>
@@ -207,9 +206,9 @@ You can use the `Tabs` component, and related sub-components to construct a tabb
 
 An example of how it could be use
 
-# Tutorial
+## Tutorial
 
-## Usage
+### Usage
 
 You can use the `Tutorial` component walk a user through changes in code by automatically highlighting the difference between each step.
 
@@ -301,7 +300,7 @@ const evenMoreNewCode = "here is even more new code"
 </Tutorial>
 ````
 
-In the first step's rendered codeblock, the second line (`myNewCode`) in _first-file.js_ will be highlighted. In the second step, the second line (`myNewCode`) in second-file.js_ will be highlighted. In the third step, the third line (`evenMoreNewCode`) iin _first-file.js_ will be highlighted.
+In the first step's rendered codeblock, the second line (`myNewCode`) in _first-file.js_ will be highlighted. In the second step, the second line (`myNewCode`) in _second-file.js_ will be highlighted. In the third step, the third line (`evenMoreNewCode`) in _first-file.js_ will be highlighted.
 
 Even though a single file is highlighted in each step, all files are rendered in tabs for each step on the page. Your reader can then toggle between the files to see what the current state of the whole codebase is.
 
@@ -439,3 +438,49 @@ Other text ...
 You can see the difference in what is displayed below:
 
 ![alt text](readme_images/hidden_vs_normal.png "Hidden vs Normal")
+
+### SuperTiles
+
+### Usage
+
+The `SuperTiles` component renders the `GuidedInstallTile` component.
+
+To include it:
+
+```html
+<SuperTiles />
+```
+
+
+### SuperTile
+
+### Usage
+
+The `SuperTile` component is a wrapper component that can display a primary and secondary tile.
+
+#### Primary
+
+```html
+<SuperTile type="primary">
+  My content
+</SuperTile>
+```
+
+#### Secondary
+
+```html
+<SuperTile>
+  My content
+</SuperTile>
+```
+
+### GuidedInstallTile
+
+### Usage
+
+The `GuidedInstallTile` component includes custom content relevant to the guided install flow in New Relic.
+
+```html
+<GuidedInstallTile />
+```
+

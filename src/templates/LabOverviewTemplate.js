@@ -47,10 +47,10 @@ const LabOverviewTemplate = ({ data, location }) => {
               <GuideListing.List className={labOverviewStyles.labGuideList}>
                 {guides?.nodes
                   .sort(sortProcedures)
-                  .map(({ frontmatter }, index) => (
+                  .map(({ fields, frontmatter }, index) => (
                     <GuideTile
                       className={labOverviewStyles.labGuideCard}
-                      to={frontmatter.path}
+                      to={fields.slug}
                       key={index}
                       duration={frontmatter.duration}
                       title={`${frontmatter.procIdx}. ${
@@ -60,7 +60,6 @@ const LabOverviewTemplate = ({ data, location }) => {
                         frontmatter.tileShorthand?.description ||
                         frontmatter.description
                       }
-                      path={frontmatter.path}
                     />
                   ))}
               </GuideListing.List>
@@ -89,13 +88,14 @@ export const pageQuery = graphql`
     }
     guides: allMdx(
       filter: {
-        frontmatter: {
-          template: { eq: "GuideTemplate" }
-          path: { glob: $guidesFilter }
-        }
+        fields: { slug: { glob: $guidesFilter } }
+        frontmatter: { template: { eq: "GuideTemplate" } }
       }
     ) {
       nodes {
+        fields {
+          slug
+        }
         frontmatter {
           path
           title
