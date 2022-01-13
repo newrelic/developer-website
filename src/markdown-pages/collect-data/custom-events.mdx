@@ -40,7 +40,7 @@ at_exit do
 
   # Send the errors to New Relic as a custom event
   insights_url = URI.parse("https://insights-collector.newrelic.com/v1/accounts/YOUR_ACCOUNT_ID/events")
-  headers = { "x-insert-key" => "YOUR_API_KEY", "content-type" => "application/json" }
+  headers = { "Api-Key" => "YOUR_LICENSE_KEY", "content-type" => "application/json" }
 
   http = Net::HTTP.new(insights_url.host, insights_url.port)
   http.use_ssl = true
