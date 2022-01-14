@@ -1,0 +1,256 @@
+---
+title: 'Data Integration with the New Relic Event API'
+template: 'GuideTemplate'
+description: 'With our Events API you can ingest your data as the first step towards your quickstart contribution.'
+tags:
+  - quickstart
+---
+
+<Intro>
+
+The first step of submitting your own quickstart to the I/O catalog is to set up your data integration. Here, you will learn how to use New Relic's [Event API](https://docs.newrelic.com/docs/telemetry-data-platform/ingest-manage-data/ingest-apis/use-event-api-report-custom-events) to set up your data integration to use in your quickstart.
+We'll show how to a generate your event payload, as well as give an agentless curl command example, and code example in python of how to set up your data integration.
+
+</Intro>
+
+
+## Generating JSON file
+
+First we'll discuss generating your JSON payload. Here are several key factors to keep in mind to format your data properly. 
+
+
+1. **Required Field:** The JSON data must contain an 'eventType' key-value Pair. This will be used to describe your event type, and allow it to be queryable in New Relic. (see below example)
+2. **Data Types:** This API only accepts key-value pairs. This means that you cannot send map/object or array values in nested JSON to this API. If you are not able to format the JSON payload accordingly, try using our [Log API](https://docs.newrelic.com/docs/logs/log-api/introduction-log-api/) instead.
+3. **Date and Time** Note that we use and unformatted Unix timestamp for our date/time fields. In order for your NRQL queries to read, format, compute duration, etc. on your timestamp fields, they must be in this format (otherwise they will be displayed as a string only).
+4. **JSON Payload example** Here is an example of a custom event JSON payload compatible with New Relic API's.
+
+```JSON
+[
+  {
+    "eventType":"Purchase",
+    "account":3,
+    "amount":259.54,
+    "timestamp": 1642053958
+  },
+  {
+    "eventType":"Purchase",
+    "account":5,
+    "amount":12309,
+    "product":"Item"
+  }
+]
+```
+
+<Callout variant="tip" title="note">
+
+Check our full [limits documentation](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api/#limits) to see a full list governor limits applied to the Event API.
+
+</Callout>
+
+## Agentless Request using curl command
+
+Here we'll make an HTTPS POST request to the Event API using a curl command as well as a Windows/PowerShell example. You can apply this into your application using a webhook. Just ensure to set the YOUR_API_KEY variable, and allow your users to set that as a parameter.
+
+* Linux/Bash Example
+
+```bash
+gzip -c example_events.json | curl -X POST -H "Content-Type: application/json" -H "Api-Key: YOUR_API_KEY" -H "Content-Encoding: gzip" https://insights-collector.newrelic.com/v1/accounts/events --data-binary @-
+```
+* Windows/PowerShell example
+```bash
+# Setting the API Key Variable
+$insertkey = "YOUR_API_KEY"
+
+# Replace with your custom event for the body
+$body = '[{"eventType": "powershell", "account": 4, "amount": 123, "fileLocation": "c:\\temp2", "zipped": "true" }]'
+
+$headers = @{}
+$headers.Add("Api-Key", "$insertkey")
+$headers.Add("Content-Encoding", "gzip")
+
+
+$encoding = [System.Text.Encoding]::UTF8
+$enc_data = $encoding.GetBytes($body)
+
+$output = [System.IO.MemoryStream]::new()
+$gzipStream = New-Object System.IO.Compression.GzipStream $output, ([IO.Compression.CompressionMode]::Compress)
+
+$gzipStream.Write($enc_data, 0, $enc_data.Length)
+$gzipStream.Close()
+$gzipBody = $output.ToArray()
+
+Invoke-WebRequest -Headers $headers -Method Post -Body $gzipBody  "https://insights-collector.newrelic.com/v1/accounts/events"
+```
+
+<Callout variant="important" title="important">
+
+Always use compression with every payload. This allows you to send more data, and it saves resources during parsing.
+</Callout>
+
+## Python POST Request Example
+
+Here is a practical example using python to set up a data integration. First, we'll set some key parameters and update the header.
+
+
+```Python
+
+
+class Client(object):
+    """HTTP Client for interacting with New Relic APIs
+
+    This class is used to send data to the New Relic APIs over HTTP. This class
+    will automatically handle retries as needed.
+
+    :param insert_key: Insights insert key
+    :type insert_key: str
+    :param host: (optional) Override the host for the client.
+    :type host: str
+    :param port: (optional) Override the port for the client.
+        Default: 443
+    :type port: int
+
+    Usage::
+
+        >>> import os
+        >>> insert_key = os.environ.get("NEW_RELIC_INSERT_KEY", "")
+        >>> client = Client(insert_key, host="metric-api.newrelic.com")
+        >>> response = client.send({})
+        >>> client.close()
+    """
+
+
+    )
+
+    def __init__(insert_key, host=None, port=443):
+        host = host or self.HOST
+        headers = self.HEADERS.copy()
+        headers.update(
+            {
+                "Api-Key": insert_key,
+                "Content-Encoding": "gzip",
+                "Content-Type": "application/json",
+            }
+        )
+  
+```
+Next, we'll prepare the JSON payload.
+
+```Python
+
+    @staticmethod
+    def _compress_payload(payload):
+        level = zlib.Z_DEFAULT_COMPRESSION
+        compressor = zlib.compressobj(level, zlib.DEFLATED, 31)
+        payload = compressor.compress(payload)
+        payload += compressor.flush()
+        return payload
+
+    def _create_payload(self, items, common):
+        payload = {self.PAYLOAD_TYPE: items}
+        if common:
+            payload["common"] = common
+
+        payload = json.dumps([payload], separators=(",", ":"))
+        if not isinstance(payload, bytes):
+            payload = payload.encode("utf-8")
+
+        return self._compress_payload(payload)
+
+    def send(self, item):
+        """Send a single item
+
+        :param item: The object to send
+        :type item: dict
+
+        :rtype: HTTPResponse
+        """
+        return self.send_batch((item,))
+
+    def send_batch(self, items, common=None):
+        """Send a batch of items
+
+        :param items: An iterable of items to send to New Relic.
+        :type items: list or tuple
+        :param common: (optional) A map of attributes that will be set on each
+            item.
+        :type common: dict
+
+        :rtype: HTTPResponse
+        """
+        # Specifying the headers argument overrides any base headers existing
+        # in the pool, so we must copy all existing headers
+        headers = self._headers.copy()
+
+        # Generate a unique request ID for this request
+        headers["x-request-id"] = str(uuid.uuid4())
+
+        payload = self._create_payload(items, common)
+        return self._pool.urlopen("POST", self.PATH, body=payload, headers=headers)
+
+```
+
+Lastly, we'll make the HTTP POST Request.
+
+```Python
+
+class EventClient(Client):
+    """HTTP Client for interacting with the New Relic Event API
+
+    This class is used to send events to the New Relic Event API over HTTP.
+
+    :param insert_key: Insights insert key
+    :type insert_key: str
+    :param host: (optional) Override the host for the event API
+        endpoint.
+    :type host: str
+    :param port: (optional) Override the port for the client.
+        Default: 443
+    :type port: int
+
+    Usage::
+
+        >>> import os
+        >>> insert_key = os.environ.get("NEW_RELIC_INSERT_KEY", "")
+        >>> event_client = EventClient(insert_key)
+        >>> response = event_client.send({})
+        >>> event_client.close()
+    """
+
+    HOST = "insights-collector.newrelic.com"
+    PATH = "/v1/accounts/events"
+
+    def _create_payload(self, items, common):
+        payload = json.dumps(items)
+        if not isinstance(payload, bytes):
+            payload = payload.encode("utf-8")
+
+        return self._compress_payload(payload)
+
+    def send_batch(self, items):
+        """Send a batch of items
+
+        :param items: An iterable of items to send to New Relic.
+        :type items: list or tuple
+
+        :rtype: HTTPResponse
+        """
+        return super(EventClient, self).send_batch(items, None)
+
+
+```
+
+<Callout variant="tip" title="note">
+
+For more information about our telemetry SDKs, including complete code examples, check out our [available libraries](https://docs.newrelic.com/docs/data-apis/ingest-apis/telemetry-sdks-report-custom-telemetry-data/#client-libraries).
+
+</Callout>
+
+## Summary
+
+In this guide, you learned how to integrate your data into the New Relic platform using our metric API. You should now see your custom event data being populated in your New Relic Account in [NR1](https://one.newrelic.com/launcher). Continue to the next step to start using that data and creating a dashboard.
+
+<Callout variant="course" title="next step">
+
+This procedure is the first step of creating your new quickstart. To continue your progression, jump to the next procedure:  [create a dashboard](/contribute-to-quickstarts/build-a-quickstart/create-a-dashboard).
+
+</Callout>
