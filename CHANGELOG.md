@@ -1,3 +1,17 @@
+## [1.76.3](https://github.com/newrelic/developer-website/compare/v1.76.2...v1.76.3) (2022-01-12)
+
+
+### Bug Fixes
+
+* master to parent language ([ef915af](https://github.com/newrelic/developer-website/commit/ef915af38c7e1488adb02285f3a73df2ffb2af45))
+
+## [1.76.2](https://github.com/newrelic/developer-website/compare/v1.76.1...v1.76.2) (2022-01-12)
+
+
+### Bug Fixes
+
+* **nerdpack permission:** updating for core launch ([4765400](https://github.com/newrelic/developer-website/commit/47654009b67f8eb69961ed5289d0eed77f5215a8))
+
 ## [1.76.1](https://github.com/newrelic/developer-website/compare/v1.76.0...v1.76.1) (2022-01-10)
 
 
