@@ -3,16 +3,25 @@ module.exports = {
   extends: [
     'plugin:@newrelic/eslint-plugin-newrelic/react',
     'plugin:@newrelic/eslint-plugin-newrelic/prettier',
+    'plugin:@typescript-eslint/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:react-hooks/recommended',
   ],
   // https://github.com/yannickcr/eslint-plugin-react#configuration
-  plugins: ['react', 'jsx-a11y', 'markdown'],
+  plugins: ['react', 'jsx-a11y', 'markdown', '@typescript-eslint'],
   settings: {
     react: {
       version: 'detect',
     },
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: ['./tsconfig.json'],
+      },
+    },
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -26,7 +35,7 @@ module.exports = {
   },
   ignorePatterns: ['**/__tests__/**/*'],
   rules: {
-    'jsx-a11y/no-onchange': 0,
+    'jsx-a11y/no-onchange': 'off',
     'no-unused-vars': [
       'error',
       {
@@ -37,5 +46,8 @@ module.exports = {
         ignoreRestSiblings: false,
       },
     ],
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    'react/jsx-curly-brace-presence': 'off',
   },
 };
