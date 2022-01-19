@@ -71,6 +71,8 @@
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@testing-library/react": "^10.0.4",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
     "babel-jest": "^26.0.1",
     "babel-preset-gatsby": "^1.0.0",
     "core-js": "^2.4.0",
