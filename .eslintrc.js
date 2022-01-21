@@ -1,9 +1,9 @@
 module.exports = {
   // https://github.com/newrelic/eslint-plugin-newrelic
   extends: [
+    'plugin:@typescript-eslint/recommended',
     'plugin:@newrelic/eslint-plugin-newrelic/react',
     'plugin:@newrelic/eslint-plugin-newrelic/prettier',
-    'plugin:@typescript-eslint/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:react-hooks/recommended',
   ],
@@ -14,20 +14,14 @@ module.exports = {
       version: 'detect',
     },
   },
-  overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      parserOptions: {
-        project: ['./tsconfig.json'],
-      },
-    },
-  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 2018,
     sourceType: 'module',
+    project: ['./tsconfig.json'],
   },
   env: {
     browser: true,
@@ -35,7 +29,6 @@ module.exports = {
   },
   ignorePatterns: ['**/__tests__/**/*'],
   rules: {
-    'jsx-a11y/no-onchange': 'off',
     'no-unused-vars': [
       'error',
       {
@@ -46,8 +39,16 @@ module.exports = {
         ignoreRestSiblings: false,
       },
     ],
+    'jsx-a11y/no-onchange': 'off',
+    'react/jsx-curly-brace-presence': 'off',
+    'react/prop-types': 'off',
+
+    // typescript rules will also be invoked for js files
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-empty-function': 'off',
-    'react/jsx-curly-brace-presence': 'off',
+    '@typescript-eslint/explicit-function-return-type': 1,
+    '@typescript-eslint/no-unsafe-argument': 1,
+    '@typescript-eslint/explicit-module-boundary-types': 1,
+    '@typescript-eslint/no-explicit-any': 1,
   },
 };
