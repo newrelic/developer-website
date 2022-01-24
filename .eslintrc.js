@@ -8,7 +8,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   // https://github.com/yannickcr/eslint-plugin-react#configuration
-  plugins: ['react', 'jsx-a11y', 'markdown', '@typescript-eslint'],
+  plugins: ['react', 'jsx-a11y', 'markdown', '@typescript-eslint', 'graphql'],
   settings: {
     react: {
       version: 'detect',
@@ -27,7 +27,7 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  ignorePatterns: ['**/__tests__/**/*'],
+  ignorePatterns: ['**/__tests__/**/*', '**/__generated__/**/*'],
   rules: {
     'no-unused-vars': [
       'error',

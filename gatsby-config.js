@@ -240,7 +240,16 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-typegen',
+    // https://www.gatsbyjs.com/plugins/gatsby-plugin-typegen/
+    {
+      resolve: 'gatsby-plugin-typegen',
+      options: {
+        outputPath: 'src/__generated__/gatsby-types.d.ts',
+        emitSchema: {
+          'src/__generated__/gatsby-schema.graphql': true,
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-typescript`,
       options: {
