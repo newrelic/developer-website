@@ -47,21 +47,29 @@ const LabOverviewTemplate = ({ data, location }) => {
               <GuideListing.List className={labOverviewStyles.labGuideList}>
                 {guides?.nodes
                   .sort(sortProcedures)
-                  .map(({ fields, frontmatter }, index) => (
-                    <GuideTile
-                      className={labOverviewStyles.labGuideCard}
-                      to={fields.slug}
-                      key={index}
-                      duration={frontmatter.duration}
-                      title={`${frontmatter.procIdx}. ${
-                        frontmatter.tileShorthand?.title || frontmatter.title
-                      }`}
-                      description={
-                        frontmatter.tileShorthand?.description ||
-                        frontmatter.description
-                      }
-                    />
-                  ))}
+                  .map(({ fields, frontmatter }, index) => {
+                    const procIdxisNotInteger = Number.isInteger(
+                      frontmatter.procIdx
+                    );
+                    return (
+                      <GuideTile
+                        procIdxisNotInteger={procIdxisNotInteger}
+                        className={labOverviewStyles.labGuideCard}
+                        to={fields.slug}
+                        key={index}
+                        duration={frontmatter.duration}
+                        title={`${
+                          procIdxisNotInteger ? `${frontmatter.procIdx}.` : ''
+                        } ${
+                          frontmatter.tileShorthand?.title || frontmatter.title
+                        }`}
+                        description={
+                          frontmatter.tileShorthand?.description ||
+                          frontmatter.description
+                        }
+                      />
+                    );
+                  })}
               </GuideListing.List>
             </>
           )}
