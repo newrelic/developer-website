@@ -338,6 +338,8 @@ const QuickstartsPage = ({ data, location }) => {
                 --svg-color: var(--color-neutrals-700);
                 box-shadow: none;
                 max-width: 630px;
+                font-size: 14px;
+                line-height: 1;
                 svg {
                   width: 16px;
                   height: 16px;

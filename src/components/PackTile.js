@@ -75,14 +75,14 @@ const PackTile = ({
       interactive
       css={css`
         --tile-image-height: 100px; /* Logo image height */
-        --title-row-height: 0.5fr; /* Title height to allow space for longer string */
+        --title-row-height: auto; /* Title height to allow space for longer string */
         padding: 1rem;
         overflow: hidden;
 
         /* Default grid view */
         display: grid;
         grid-gap: 0.2rem;
-        grid-template-rows: var(--tile-image-height) var(--title-row-height) 1fr 1fr;
+        grid-template-rows: var(--tile-image-height) var(--title-row-height) 1fr auto;
         grid-template-columns: auto;
         grid-template-areas:
           'logo logo'
