@@ -25,6 +25,16 @@ template: 'GuideTemplate'
 description: 'Example guide page'
 ---
 ```
+If you are creating a new lab, you can number the steps using the ProcIdx parameter in front matter. As a result, a list of steps will appear on the main lab page.
+You can also make subtask, for example:
+
+```
+---
+ProcIdx: 2.1
+---
+```
+will be read as a subtask and displayed under the main procedure with the appropriate styles.
+
 
 It also accepts a `<Video />` component as a child, which it will place on the left side of the description.
 
