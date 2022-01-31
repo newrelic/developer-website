@@ -68,6 +68,7 @@ const GuidedInstallTile = () => {
           <span
             css={css`
               color: var(--color-neutrals-300);
+              font-size: 14px;
 
               .dark-mode & {
                 color: var(--primary-text-color);
@@ -80,7 +81,11 @@ const GuidedInstallTile = () => {
           </span>
         </div>
         <div>
-          <Button onClick={handleButtonClick} variant={Button.VARIANT.PRIMARY}>
+          <Button
+            onClick={handleButtonClick}
+            variant={Button.VARIANT.PRIMARY}
+            size={Button.SIZE.SMALL}
+          >
             Install New Relic
           </Button>
         </div>
