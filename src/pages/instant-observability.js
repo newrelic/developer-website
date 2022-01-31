@@ -299,7 +299,7 @@ const QuickstartsPage = ({ data, location }) => {
               padding: 0.5rem;
 
               input {
-                font-size: 1.15em;
+                font-size: 14px;
                 padding: 0.5rem;
                 padding-left: 2.25rem;
                 background: var(--color-white);
@@ -338,7 +338,6 @@ const QuickstartsPage = ({ data, location }) => {
                 --svg-color: var(--color-neutrals-700);
                 box-shadow: none;
                 max-width: 630px;
-                font-size: 14px;
                 line-height: 1;
                 svg {
                   width: 16px;
