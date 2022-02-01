@@ -3833,6 +3833,53 @@
   {
     "alerts": [],
     "authors": [
+      "New Relic",
+      "Joseph Counts"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "CircleCI",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/circleci/dashboards/circledashboard01.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/circleci/dashboards/circledashboard.json"
+      }
+    ],
+    "description": "## CircleCI Quickstart\n\nThe world’s best software teams use CircleCI to deliver quality code with confidence. As the largest continuous integration and delivery (CI/CD) platform, CircleCI empowers engineers to seamlessly take ideas to execution, at scale. Every feature of our platform is built to fine-tune the entire development process from start to finish.\n\nThis quickstart allows users to view analytical data about their CircleCI jobs within the New Relic dashboard to gain visibility into the performance and health of their continuous integration and deployment pipelines. \n\n### With the CircleCI quickstart you can:\n\n- Monitor real-time CI performance, activity, and health, or track over time.\n- Identify opportunities for optimization.\n\n## The CircleCI quickstart includes a dashboard where users can easily monitor:\n- Total Jobs Ran\n- Job Health (% success)\n- Projects Summary\n- Most Recent Failed Jobs\n- Jobs Ran Per Project\n\nTo set up the integration, visit the [CircleCI Webhooks documentation](https://circleci.com/docs/2.0/webhooks/).\n\nFor more information or support, please go to [support.circleci.com](https://support.circleci.com/)\n\n",
+    "documentation": [
+      {
+        "description": "CircleCi webhooks documentation",
+        "name": "CircleCi Webhooks documentation",
+        "url": "https://circleci.com/docs/2.0/webhooks/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "39109d3d-b1d8-4366-8ca9-b8925005f727",
+    "installPlans": [
+      {
+        "id": "third-party-circleci",
+        "name": "CircleCi"
+      }
+    ],
+    "keywords": [
+      "newrelic partner",
+      "devops",
+      "circleci",
+      "circle",
+      "ci/cd"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/circleci/logo.png",
+    "name": "circleci",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/circleci",
+    "summary": "This integration allows users to view analytical data about their CircleCI jobs within the New Relic monitoring stack.",
+    "title": "CircleCI",
+    "websiteUrl": "https://circleci.com/"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "New Relic"
     ],
     "dashboards": [],
@@ -3892,6 +3939,37 @@
     "summary": "View production telemetry and troubleshoot errors from your IDE\n",
     "title": "CodeStream",
     "websiteUrl": "https://codestream.com"
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic"
+    ],
+    "dashboards": [],
+    "description": "Slack is a messaging app for business that connects people to the information they need. \n\nWhen you post a comment, issue, or feedback request, your teammates are notified via the activity feed, and potentially via email. Sometimes, though, you might want to share to Slack as well. This allows you to reach people who haven’t yet joined CodeStream, or maybe don’t spend a lot of time in their IDE.\n\n[Check out our documentation](https://docs.newrelic.com/docs/codestream/codestream-integrations/slack-integration) to connect New Relic CodeStream to your team's Slack channel.\n",
+    "documentation": [
+      {
+        "description": "Documentation about the New Relic - Slack CodeStream integration",
+        "name": "Slack Integration Docs",
+        "url": "https://docs.newrelic.com/docs/codestream/codestream-integrations/slack-integration"
+      }
+    ],
+    "iconUrl": null,
+    "id": "5837b456-5f5b-4539-8b71-77193298d253",
+    "installPlans": [],
+    "keywords": [
+      "slack",
+      "codestream",
+      "ide",
+      "errors inbox"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/codestream/slack-cs/logo.png",
+    "name": "slack-for-codestream",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/codestream/slack-cs",
+    "summary": "Connect New Relic CodeStream to your team's Slack channel.\n",
+    "title": "Slack for CodeStream",
+    "websiteUrl": "https://www.newrelic.com"
   },
   {
     "alerts": [],
@@ -8226,6 +8304,63 @@
         "details": "This alert is triggered when the CPU Utilization is above 90%.\n\n",
         "name": "High CPU Utilization",
         "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/alerts/HighCpuUtilization.yml"
+      },
+      {
+        "details": "This alert is triggered when the the transactions fail more than 10% of the time in 5 minutes.\n\n",
+        "name": "Transaction Errors",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/alerts/TransactionErrors.yml"
+      }
+    ],
+    "authors": [
+      "New Relic Labs"
+    ],
+    "dashboards": [
+      {
+        "description": "Java",
+        "name": "Java",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/dashboards/java.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/dashboards/java01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/dashboards/java02.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/dashboards/java.json"
+      }
+    ],
+    "description": "# What is camel ?\n\nCamel is an Open Source integration framework that empowers you to quickly and easily integrate various systems consuming or producing data.\n\nCamel empowers you to define routing and mediation rules in a variety of domain-specific languages (DSL, such as Java, XML, Groovy, Kotlin, and YAML). \nThis means you get smart completion of routing rules in your IDE, whether in a Java or XML editor.\nApache Camel uses URIs to work directly with any kind of transport or messaging model such as HTTP, ActiveMQ, JMS, JBI, SCA, MINA or CXF, as well as pluggable Components and Data Format options. \n",
+    "documentation": [
+      {
+        "description": "Java Agent instrumentation extension for Apache Camel framework\n",
+        "name": "Java agent extension for Camel",
+        "url": "https://github.com/newrelic-experimental/newrelic-java-camel"
+      }
+    ],
+    "iconUrl": null,
+    "id": "9a44c74d-f086-415e-89f3-3e12315b0256",
+    "installPlans": [],
+    "keywords": [
+      "nrlabs",
+      "nrlabs-data",
+      "apm",
+      "java",
+      "camel",
+      "apache camel"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/logo.svg",
+    "name": "camel",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/java/camel",
+    "summary": "Java agent extension to monitor instrumentation for the Apache Camel framework.\nOnce installed, the instrumentation will enable visibility parts of your Camel flows up in transaction traces. \n \n",
+    "title": "Apache Camel Java Agent Extension",
+    "websiteUrl": "https://camel.apache.org/"
+  },
+  {
+    "alerts": [
+      {
+        "details": "This alert is triggered when the CPU Utilization is above 90%.\n\n",
+        "name": "High CPU Utilization",
+        "type": "STATIC",
         "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/coldfusion/alerts/HighCpuUtilization.yml"
       },
       {
@@ -8482,6 +8617,62 @@
     "summary": "Monitor EJB session beans with New Relic's Java agent\n",
     "title": "EJB Session Beans",
     "websiteUrl": null
+  },
+  {
+    "alerts": [
+      {
+        "details": "This alert is triggered when the CPU Utilization is above 90%.\n\n",
+        "name": "High CPU Utilization",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/alerts/HighCpuUtilization.yml"
+      },
+      {
+        "details": "This alert is triggered when the the transactions fail more than 10% of the time in 5 minutes.\n\n",
+        "name": "Transaction Errors",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/alerts/TransactionErrors.yml"
+      }
+    ],
+    "authors": [
+      "New Relic Labs"
+    ],
+    "dashboards": [
+      {
+        "description": "Java",
+        "name": "Java",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/dashboards/java.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/dashboards/java01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/dashboards/java02.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/dashboards/java.json"
+      }
+    ],
+    "description": "# What is elasticsearch?\nElasticsearch is a search engine based on the Lucene library. It provides a distributed, multitenant-capable full-text search engine with an HTTP web interface and schema-free JSON documents.\nElasticsearch provides a full Query DSL (Domain Specific Language) based on JSON to define queries\n\nThe elastic search query java agent extension enables monitoring of elasticsearch queries in a java application.\nOnce deployed elasticsearch queries begin to show up in the New Relic UI under Databases section\n",
+    "documentation": [
+      {
+        "description": "Java Agent instrumentation extension to track and record ElasticSearch queries as dataStore queries\n",
+        "name": "Java agent extension for Elasticsearch queries",
+        "url": "https://github.com/newrelic-experimental/newrelic-java-elasticsearch"
+      }
+    ],
+    "iconUrl": null,
+    "id": "ee8b8041-c9ca-4352-96ca-8f1c5c399cdd",
+    "installPlans": [],
+    "keywords": [
+      "nrlabs",
+      "nrlabs-data",
+      "apm",
+      "java",
+      "elasticsearch"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/logo.svg",
+    "name": "elasticsearch-query",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/java/elasticsearch-query",
+    "summary": "Java agent extension to monitor elasticsearch queries as dataStore queries with New Relic. \nOnce deployed elasticsearch queries begin to show up in the New Relic UI under Databases for the application using elasticsearch queries.\n",
+    "title": "Elasticsearch query Java Agent Extension",
+    "websiteUrl": "https://www.elastic.co/"
   },
   {
     "alerts": [
@@ -9312,6 +9503,63 @@
     "summary": "Monitor JCache API with New Relic's Java agent",
     "title": "JCache API",
     "websiteUrl": null
+  },
+  {
+    "alerts": [
+      {
+        "details": "This alert is triggered when the CPU Utilization is above 90%.\n\n",
+        "name": "High CPU Utilization",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/alerts/HighCpuUtilization.yml"
+      },
+      {
+        "details": "This alert is triggered when the the transactions fail more than 10% of the time in 5 minutes.\n\n",
+        "name": "Transaction Errors",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/alerts/TransactionErrors.yml"
+      }
+    ],
+    "authors": [
+      "New Relic Labs"
+    ],
+    "dashboards": [
+      {
+        "description": "Java",
+        "name": "Java",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/dashboards/java.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/dashboards/java01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/dashboards/java02.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/dashboards/java.json"
+      }
+    ],
+    "description": "# What is executeBatch call?\n\nExecuteBatch method in jdbc submits a batch of commands to the database for execution. You\nIf all commands execute successfully, the call returns an array of update counts. \n\n\nOnce the instrumentation is deployed  it  will start to track the call to the executeBatch method as a database call in distributed traces. \n\nThe Performance tab for the call  will show the query as \"Batch Execute n Queries\" where n is the number of queries executed as part of the batch.\n  - For calls to addBatch(String sql), it will represent the number of calls to this method before the executeBatch method is executed. \n  - For PreparedStatment and CallableStatment it will represent the number of times that addBatch() is called.\n",
+    "documentation": [
+      {
+        "description": "Java Agent instrumentation extension for tracking executeBatch method of the Statement, PreparedStatement and CallableStatement interfaces as a database call.\n",
+        "name": "Java agent extension for JDBC ExecuteBatch method",
+        "url": "https://github.com/newrelic-experimental/newrelic-java-JDBC-ExecuteBatch"
+      }
+    ],
+    "iconUrl": null,
+    "id": "dfb63d31-fcb1-431f-9b40-744c0b3f89ff",
+    "installPlans": [],
+    "keywords": [
+      "nrlabs",
+      "nrlabs-data",
+      "apm",
+      "java",
+      "jdbc",
+      "executebatch"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/logo.svg",
+    "name": "jdbc-executebatch",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/java/jdbc-executebatch",
+    "summary": "Java agent extension to monitor the executeBatch method of the Statement, PreparedStatement and CallableStatement interfaces as a database call.\n",
+    "title": "JDBC-ExecuteBatch Java Agent Extension",
+    "websiteUrl": "https://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#executeBatch()"
   },
   {
     "alerts": [
@@ -10988,6 +11236,39 @@
   {
     "alerts": [],
     "authors": [
+      "Joseph Counts",
+      "New Relic"
+    ],
+    "dashboards": [],
+    "description": "[Connect errors inbox to Jira (Cloud)](https://docs.newrelic.com/docs/errors-inbox/errors-inbox/#jira) to easily create tickets for your errors, allowing for faster collaboration and resolution. Check out our documentation to learn how to set up Jira templates, which allow you to quickly create a ticket containing error details and links directly to the stack trace and APM for quick access and resolution.\n",
+    "documentation": [
+      {
+        "description": "How to integrate Jira with New Relic Errors Inbox",
+        "name": "How to Docs",
+        "url": "https://docs.newrelic.com/docs/errors-inbox/errors-inbox/#jira"
+      }
+    ],
+    "iconUrl": null,
+    "id": "06734d77-b06a-4410-aafa-eed1944c0ac4",
+    "installPlans": [],
+    "keywords": [
+      "jira",
+      "error",
+      "inbox",
+      "newrelic",
+      "atlassian"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/jira-errors/logo.png",
+    "name": "jira-errors-inbox",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/jira-errors",
+    "summary": "Integrated errors inbox with Atlassian Jira (cloud) to easily create tickets for your errors.\n",
+    "title": "Atlassian Jira for Errors Inbox",
+    "websiteUrl": "https://www.newrelic.com"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "New Relic",
       "Jakub Kotkowiak"
     ],
@@ -11035,20 +11316,7 @@
     "websiteUrl": "https://docs.oracle.com/javase/tutorial/jmx/overview/index.html"
   },
   {
-    "alerts": [
-      {
-        "details": "This is a template example for a Baseline-alert. Note that you cannot create alerts on the public dataset.\n\n",
-        "name": "Example Baseline-alert",
-        "type": "BASELINE",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.89.1/quickstarts/jumpstart/alerts/baseline-alert.yml"
-      },
-      {
-        "details": "This is a template example for a Static-alert. Note that you cannot create alerts on the public dataset.\n\n",
-        "name": "Example Static-alert",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.89.1/quickstarts/jumpstart/alerts/static-alert.yml"
-      }
-    ],
+    "alerts": [],
     "authors": [
       "New Relic"
     ],
@@ -20620,286 +20888,5 @@
     "summary": "Send Zipkin-format traces to New Relic\n",
     "title": "Zipkin",
     "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic",
-      "Joseph Counts"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "CircleCI",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/circleci/dashboards/circledashboard01.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/circleci/dashboards/circledashboard.json"
-      }
-    ],
-    "description": "## CircleCI Quickstart\n\nThe world’s best software teams use CircleCI to deliver quality code with confidence. As the largest continuous integration and delivery (CI/CD) platform, CircleCI empowers engineers to seamlessly take ideas to execution, at scale. Every feature of our platform is built to fine-tune the entire development process from start to finish.\n\nThis quickstart allows users to view analytical data about their CircleCI jobs within the New Relic dashboard to gain visibility into the performance and health of their continuous integration and deployment pipelines. \n\n### With the CircleCI quickstart you can:\n\n- Monitor real-time CI performance, activity, and health, or track over time.\n- Identify opportunities for optimization.\n\n## The CircleCI quickstart includes a dashboard where users can easily monitor:\n- Total Jobs Ran\n- Job Health (% success)\n- Projects Summary\n- Most Recent Failed Jobs\n- Jobs Ran Per Project\n\nTo set up the integration, visit the [CircleCI Webhooks documentation](https://circleci.com/docs/2.0/webhooks/).\n\nFor more information or support, please go to [support.circleci.com](https://support.circleci.com/)\n\n",
-    "documentation": [
-      {
-        "description": "CircleCi webhooks documentation",
-        "name": "CircleCi Webhooks documentation",
-        "url": "https://circleci.com/docs/2.0/webhooks/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "39109d3d-b1d8-4366-8ca9-b8925005f727",
-    "installPlans": [
-      {
-        "id": "third-party-circleci",
-        "name": "CircleCi"
-      }
-    ],
-    "keywords": [
-      "newrelic partner",
-      "devops",
-      "circleci",
-      "circle",
-      "ci/cd"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/circleci/logo.png",
-    "name": "circleci",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/circleci",
-    "summary": "This integration allows users to view analytical data about their CircleCI jobs within the New Relic monitoring stack.",
-    "title": "CircleCI",
-    "websiteUrl": "https://circleci.com/"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Joseph Counts",
-      "New Relic"
-    ],
-    "dashboards": [],
-    "description": "[Connect errors inbox to Jira (Cloud)](https://docs.newrelic.com/docs/errors-inbox/errors-inbox/#jira) to easily create tickets for your errors, allowing for faster collaboration and resolution. Check out our documentation to learn how to set up Jira templates, which allow you to quickly create a ticket containing error details and links directly to the stack trace and APM for quick access and resolution.\n",
-    "documentation": [
-      {
-        "description": "How to integrate Jira with New Relic Errors Inbox",
-        "name": "How to Docs",
-        "url": "https://docs.newrelic.com/docs/errors-inbox/errors-inbox/#jira"
-      }
-    ],
-    "iconUrl": null,
-    "id": "06734d77-b06a-4410-aafa-eed1944c0ac4",
-    "installPlans": [],
-    "keywords": [
-      "jira",
-      "error",
-      "inbox",
-      "newrelic",
-      "atlassian"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/jira-errors/logo.png",
-    "name": "jira-errors-inbox",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/jira-errors",
-    "summary": "Integrated errors inbox with Atlassian Jira (cloud) to easily create tickets for your errors.\n",
-    "title": "Atlassian Jira for Errors Inbox",
-    "websiteUrl": "https://www.newrelic.com"
-  },
-  {
-    "alerts": [
-      {
-        "details": "This alert is triggered when the CPU Utilization is above 90%.\n\n",
-        "name": "High CPU Utilization",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/alerts/HighCpuUtilization.yml"
-      },
-      {
-        "details": "This alert is triggered when the the transactions fail more than 10% of the time in 5 minutes.\n\n",
-        "name": "Transaction Errors",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/alerts/TransactionErrors.yml"
-      }
-    ],
-    "authors": [
-      "New Relic Labs"
-    ],
-    "dashboards": [
-      {
-        "description": "Java",
-        "name": "Java",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/dashboards/java.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/dashboards/java01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/dashboards/java02.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/dashboards/java.json"
-      }
-    ],
-    "description": "# What is camel ?\n\nCamel is an Open Source integration framework that empowers you to quickly and easily integrate various systems consuming or producing data.\n\nCamel empowers you to define routing and mediation rules in a variety of domain-specific languages (DSL, such as Java, XML, Groovy, Kotlin, and YAML). \nThis means you get smart completion of routing rules in your IDE, whether in a Java or XML editor.\nApache Camel uses URIs to work directly with any kind of transport or messaging model such as HTTP, ActiveMQ, JMS, JBI, SCA, MINA or CXF, as well as pluggable Components and Data Format options. \n",
-    "documentation": [
-      {
-        "description": "Java Agent instrumentation extension for Apache Camel framework\n",
-        "name": "Java agent extension for Camel",
-        "url": "https://github.com/newrelic-experimental/newrelic-java-camel"
-      }
-    ],
-    "iconUrl": null,
-    "id": "9a44c74d-f086-415e-89f3-3e12315b0256",
-    "installPlans": [],
-    "keywords": [
-      "nrlabs",
-      "nrlabs-data",
-      "apm",
-      "java",
-      "camel",
-      "apache camel"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/camel/logo.svg",
-    "name": "camel",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/java/camel",
-    "summary": "Java agent extension to monitor instrumentation for the Apache Camel framework.\nOnce installed, the instrumentation will enable visibility parts of your Camel flows up in transaction traces. \n \n",
-    "title": "Apache Camel Java Agent Extension",
-    "websiteUrl": "https://camel.apache.org/"
-  },
-  {
-    "alerts": [
-      {
-        "details": "This alert is triggered when the CPU Utilization is above 90%.\n\n",
-        "name": "High CPU Utilization",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/alerts/HighCpuUtilization.yml"
-      },
-      {
-        "details": "This alert is triggered when the the transactions fail more than 10% of the time in 5 minutes.\n\n",
-        "name": "Transaction Errors",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/alerts/TransactionErrors.yml"
-      }
-    ],
-    "authors": [
-      "New Relic Labs"
-    ],
-    "dashboards": [
-      {
-        "description": "Java",
-        "name": "Java",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/dashboards/java.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/dashboards/java01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/dashboards/java02.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/dashboards/java.json"
-      }
-    ],
-    "description": "# What is executeBatch call?\n\nExecuteBatch method in jdbc submits a batch of commands to the database for execution. You\nIf all commands execute successfully, the call returns an array of update counts. \n\n\nOnce the instrumentation is deployed  it  will start to track the call to the executeBatch method as a database call in distributed traces. \n\nThe Performance tab for the call  will show the query as \"Batch Execute n Queries\" where n is the number of queries executed as part of the batch.\n  - For calls to addBatch(String sql), it will represent the number of calls to this method before the executeBatch method is executed. \n  - For PreparedStatment and CallableStatment it will represent the number of times that addBatch() is called.\n",
-    "documentation": [
-      {
-        "description": "Java Agent instrumentation extension for tracking executeBatch method of the Statement, PreparedStatement and CallableStatement interfaces as a database call.\n",
-        "name": "Java agent extension for JDBC ExecuteBatch method",
-        "url": "https://github.com/newrelic-experimental/newrelic-java-JDBC-ExecuteBatch"
-      }
-    ],
-    "iconUrl": null,
-    "id": "dfb63d31-fcb1-431f-9b40-744c0b3f89ff",
-    "installPlans": [],
-    "keywords": [
-      "nrlabs",
-      "nrlabs-data",
-      "apm",
-      "java",
-      "jdbc",
-      "executebatch"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/jdbc-executebatch/logo.svg",
-    "name": "jdbc-executebatch",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/java/jdbc-executebatch",
-    "summary": "Java agent extension to monitor the executeBatch method of the Statement, PreparedStatement and CallableStatement interfaces as a database call.\n",
-    "title": "JDBC-ExecuteBatch Java Agent Extension",
-    "websiteUrl": "https://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#executeBatch()"
-  },
-  {
-    "alerts": [
-      {
-        "details": "This alert is triggered when the CPU Utilization is above 90%.\n\n",
-        "name": "High CPU Utilization",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/alerts/HighCpuUtilization.yml"
-      },
-      {
-        "details": "This alert is triggered when the the transactions fail more than 10% of the time in 5 minutes.\n\n",
-        "name": "Transaction Errors",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/alerts/TransactionErrors.yml"
-      }
-    ],
-    "authors": [
-      "New Relic Labs"
-    ],
-    "dashboards": [
-      {
-        "description": "Java",
-        "name": "Java",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/dashboards/java.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/dashboards/java01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/dashboards/java02.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/dashboards/java.json"
-      }
-    ],
-    "description": "# What is elasticsearch?\nElasticsearch is a search engine based on the Lucene library. It provides a distributed, multitenant-capable full-text search engine with an HTTP web interface and schema-free JSON documents.\nElasticsearch provides a full Query DSL (Domain Specific Language) based on JSON to define queries\n\nThe elastic search query java agent extension enables monitoring of elasticsearch queries in a java application.\nOnce deployed elasticsearch queries begin to show up in the New Relic UI under Databases section\n",
-    "documentation": [
-      {
-        "description": "Java Agent instrumentation extension to track and record ElasticSearch queries as dataStore queries\n",
-        "name": "Java agent extension for Elasticsearch queries",
-        "url": "https://github.com/newrelic-experimental/newrelic-java-elasticsearch"
-      }
-    ],
-    "iconUrl": null,
-    "id": "ee8b8041-c9ca-4352-96ca-8f1c5c399cdd",
-    "installPlans": [],
-    "keywords": [
-      "nrlabs",
-      "nrlabs-data",
-      "apm",
-      "java",
-      "elasticsearch"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/java/elasticsearch-query/logo.svg",
-    "name": "elasticsearch-query",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/java/elasticsearch-query",
-    "summary": "Java agent extension to monitor elasticsearch queries as dataStore queries with New Relic. \nOnce deployed elasticsearch queries begin to show up in the New Relic UI under Databases for the application using elasticsearch queries.\n",
-    "title": "Elasticsearch query Java Agent Extension",
-    "websiteUrl": "https://www.elastic.co/"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic"
-    ],
-    "dashboards": [],
-    "description": "Slack is a messaging app for business that connects people to the information they need. \n\nWhen you post a comment, issue, or feedback request, your teammates are notified via the activity feed, and potentially via email. Sometimes, though, you might want to share to Slack as well. This allows you to reach people who haven’t yet joined CodeStream, or maybe don’t spend a lot of time in their IDE.\n\n[Check out our documentation](https://docs.newrelic.com/docs/codestream/codestream-integrations/slack-integration) to connect New Relic CodeStream to your team's Slack channel.\n",
-    "documentation": [
-      {
-        "description": "Documentation about the New Relic - Slack CodeStream integration",
-        "name": "Slack Integration Docs",
-        "url": "https://docs.newrelic.com/docs/codestream/codestream-integrations/slack-integration"
-      }
-    ],
-    "iconUrl": null,
-    "id": "5837b456-5f5b-4539-8b71-77193298d253",
-    "installPlans": [],
-    "keywords": [
-      "slack",
-      "codestream",
-      "ide",
-      "errors inbox"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.94.3/quickstarts/codestream/slack-cs/logo.png",
-    "name": "slack-for-codestream",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/codestream/slack-cs",
-    "summary": "Connect New Relic CodeStream to your team's Slack channel.\n",
-    "title": "Slack for CodeStream",
-    "websiteUrl": "https://www.newrelic.com"
   }
 ]
