@@ -1,0 +1,170 @@
+---
+title: 'Send Events from Your Library'
+template: 'GuideTemplate'
+description: 'With our Events API you can ingest your data as the first step towards your quickstart contribution.'
+tags:
+  - quickstart
+---
+
+<Intro>
+
+This guide will walk you through how to instrument your application to send event data into the New Relic's [Event API](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api/). The Event API allow you to send events to New Relic without a need for an agent. First, let's cover what events are. An event is a record of something happening somewhere. What triggers the event and what data is captured is up to you to customize, which we'll discuss next. 
+
+</Intro>
+
+## Capture Events in your Library
+
+At New Relic, we report events to data objects also called events. These events have multiple attributes (key-value pairs). We name each event record in our system with the event-type key. 
+```json
+[{"event-type": "transaction"}]
+```
+The event-type key is how you will query the event data from NRQL. using the above example, this is how we would query for the data in NRQL:
+
+```sql
+From transaction select *
+```
+The rest in the event can be any custom key-value data, based on your library. When preparing the payload, consider the use case that makes the most sense for your users, and build the events accordingly. Here are some more resources about event data if you need more information.
+-  [Events at New Relic](https://docs.newrelic.com/docs/data-apis/understand-data/new-relic-data-types/#events-new-relic)
+-  [Formatting JSON](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api#instrument)
+
+## Send your events to New Relic
+There are a few ways we will discuss in order to send your event data into New Relic. We have our [telemetry SDK's](https://docs.newrelic.com/docs/data-apis/ingest-apis/telemetry-sdks-report-custom-telemetry-data), which are development kits instrumented to help you easily set up a POST request via several very common languages (C, Java, Python, .NET, etc.). We also have a basic curl command, which can be used on a windows or linux system to make a POST request to New Relic. We also have a prometheus option, if you use prometheus and have difficulty with the first two options.
+
+### New Relic License Key
+
+You will need to set up an environment variable for your users to input their [New Relic License key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key), or give an option for them to add it to the request header. The examples below will assume this variable is configured as `NEW_RELIC_INSERT_KEY`.
+
+### Send events via a curl/PowerShell command
+
+First, let's cover how you can send agentless data to New Relic, with just a simple command. These commands can be used in Linux or Windows environments. Here are some example requests for both
+
+* Linux/Bash
+
+```bash
+gzip -c example_events.json | curl -X POST -H "Content-Type: application/json" -H "Api-Key: NEW_RELIC_INSERT_KEY" -H "Content-Encoding: gzip" https://insights-collector.newrelic.com/v1/accounts/events --data-binary @-
+```
+* Windows/PowerShell
+```bash
+
+# Replace with your custom event for the body
+$body = $example_events
+
+$headers = @{}
+$headers.Add("Api-Key", "$NEW_RELIC_INSERT_KEY")
+$headers.Add("Content-Encoding", "gzip")
+
+
+$encoding = [System.Text.Encoding]::UTF8
+$enc_data = $encoding.GetBytes($body)
+
+$output = [System.IO.MemoryStream]::new()
+$gzipStream = New-Object System.IO.Compression.GzipStream $output, ([IO.Compression.CompressionMode]::Compress)
+
+$gzipStream.Write($enc_data, 0, $enc_data.Length)
+$gzipStream.Close()
+$gzipBody = $output.ToArray()
+
+Invoke-WebRequest -Headers $headers -Method Post -Body $gzipBody  "https://insights-collector.newrelic.com/v1/accounts/events"
+```
+
+
+
+### Using our SDK's
+
+New Relic has a set of open source API client libraries that send data to New Relic. These operate by using our API's for data ingest, and in this case our event API. We have two SDK's that work with events, and those are Python and Java. Here we will walk through how to install each, and give a code example using both SDK's.
+
+For Python, you'll need to install the `newrelic-telemetry-sdk` package. you can do this by using pip:
+
+```bash
+$ pip install newrelic-telemetry-sdk
+```
+For Java, you will need to set up several dependencies:
+```java
+//Maven Dependencies
+    <dependency>
+      <groupId>com.newrelic.telemetry</groupId>
+      <artifactId>telemetry-core</artifactId>
+      <version>0.13.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.newrelic.telemetry</groupId>
+      <artifactId>telemetry-http-okhttp</artifactId>
+      <version>0.13.1</version>
+    </dependency>
+
+ //Gradle Dependencies
+    implementation("com.newrelic.telemetry:telemetry-core:0.13.1")
+    implementation("com.newrelic.telemetry:telemetry-http-okhttp:0.13.1")
+```
+
+Once our SDK is installed and ready, you can use the library to easily set up the api call to New Relic. 
+
+* **Python**
+```Python
+import os
+import time
+from newrelic_telemetry_sdk import Event, EventClient
+
+# Record that a rate limit has been applied to an endpoint for an account
+event = Event(
+    "RateLimit", {"path": "/v1/endpoint", "accountId": 1000, "rejectRatio": 0.1}
+)
+
+event_client = EventClient(os.environ["NEW_RELIC_INSERT_KEY"])
+response = event_client.send(event)
+response.raise_for_status()
+print("Event sent successfully!")
+
+```
+* **Java**
+```java
+//Imports
+import static java.util.Collections.singleton;
+
+import com.newrelic.telemetry.Attributes;
+import com.newrelic.telemetry.OkHttpPoster;
+import com.newrelic.telemetry.TelemetryClient;
+import com.newrelic.telemetry.events.Event;
+import com.newrelic.telemetry.events.EventBatch;
+import java.net.InetAddress;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+import java.util.UUID;
+
+public class TelemetryClientExample {
+
+  public static void main(String[] args) throws Exception {
+    String insightsInsertKey = args[0];
+
+    // create a TelemetryClient with an http connect timeout of 10 seconds.
+    TelemetryClient telemetryClient =
+        TelemetryClient.create(
+            () -> new OkHttpPoster(Duration.of(10, ChronoUnit.SECONDS)), insightsInsertKey);
+    Attributes commonAttributes =
+        new Attributes()
+            .put("exampleName", "TelemetryClientExample")
+            .put("service.name", "TelemetryClientExampleService")
+            .put("host.hostname", InetAddress.getLocalHost().getHostName())
+            .put("environment", "staging");
+
+
+    Span span = sendSampleEvent(telemetryClient, commonAttributes);
+
+    // make sure to shutdown the client, else the background Executor will stop the program from
+    // exiting.
+    telemetryClient.shutdown();
+  }
+
+  private static void sendSampleEvent(
+      TelemetryClient telemetryClient, Attributes commonAttributes) {
+    Event event = new Event("TestEvent", new Attributes().put("testKey", "testValue"));
+    telemetryClient.sendBatch(new EventBatch(singleton(event), commonAttributes));
+  }
+
+```
+### Alternative Options
+
+Other options available include using prometheus data, and installing a flex agent. We won't cover those in this guide, but here are some links to review these options.
+
+* [Prometheus Data](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/get-started/send-prometheus-metric-data-new-relic) - Prometheus data can be used by New Relic in two ways, [remote write](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration) and [OpenMetrics](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/install-configure-openmetrics/install-update-or-uninstall-your-prometheus-openmetrics-integration). At a very high level, remote write should be used if you manage your own prometheus servers, and OpenMetrics should be used if you do not.
+* [Flex Agent](https://github.com/newrelic/nri-flex/blob/master/docs/basic-tutorial.md#flex-step-by-step-tutorial) - Our serverless flex agent is a possibility if the other options do not work for you, but might be a more complex integration to get started.

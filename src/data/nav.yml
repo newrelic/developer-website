@@ -194,8 +194,11 @@
   icon: fe-zap
   url: '/contribute-to-quickstarts'
   pages:
-    - title: Data Integration with the New Relic Event API
-      url: '/contribute-to-quickstarts/data-integration'
+    - title: Instrument your library
+      url: '/contribute-to-quickstarts/instrument-library'
+      pages:
+        - title: Send Event Data
+          url: '/contribute-to-quickstarts/instrument-library/send-events'   
     - title: Build a quickstart
       url: '/contribute-to-quickstarts/build-a-quickstart'
       pages:
@@ -209,6 +212,7 @@
           url: /contribute-to-quickstarts/build-a-quickstart/create-quickstart
     - title: Populate your alert configurations with NerdGraph
       url: '/contribute-to-quickstarts/query-alerts-for-quickstart'
+
 
 - title: Try our APIs
   icon: nr-share
