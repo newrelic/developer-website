@@ -36,9 +36,10 @@ const BannerHeaderContent = () => (
     <h1
       css={css`
         color: var(--color-neutrals-050);
+        font-weight: 600;
 
         @media (max-width: ${MOBILE_BREAKPOINT}) {
-          font-weight: 400;
+          font-weight: 600;
         }
       `}
     >

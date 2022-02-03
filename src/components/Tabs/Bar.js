@@ -7,7 +7,6 @@ import useTabs from './useTabs';
 const MobileTabControl = ({ children, isIos }) => {
   const [currentTab, setCurrentTab] = useTabs();
   // eslint gets angry about using props from React.Children.map
-  /* eslint-disable react/prop-types */
   return (
     <select
       onChange={(e) => {
@@ -36,7 +35,6 @@ const MobileTabControl = ({ children, isIos }) => {
       ))}
     </select>
   );
-  /* eslint-enable react/prop-types */
 };
 
 MobileTabControl.propTypes = {

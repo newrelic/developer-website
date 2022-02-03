@@ -154,7 +154,6 @@ const InstallButton = ({ quickstart, location, ...props }) => {
       })
     );
     Cookies.set('start_target', startTarget, options);
-    Cookies.set('newrelic-quickstart-id', quickstart.id, options);
   };
 
   const handleInstallClick = () => {
