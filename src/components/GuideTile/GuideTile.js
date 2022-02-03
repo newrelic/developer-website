@@ -9,7 +9,7 @@ const GuideTile = ({
   description,
   className,
   to,
-  procIdxisNotInteger,
+  procIdxIsInteger,
 }) => (
   <Surface
     as={Link}
@@ -20,8 +20,8 @@ const GuideTile = ({
     css={css`
       display: grid;
       grid-template-rows: auto 1fr auto;
-      width: ${procIdxisNotInteger ? '100%' : '90%'};
-      margin-left: ${procIdxisNotInteger ? '0' : '10%'};
+      width: ${procIdxIsInteger ? '100%' : '90%'};
+      margin-left: ${procIdxIsInteger ? '0' : '10%'};
       border-radius: 0.25rem;
       position: relative;
       padding: 1rem;
@@ -31,7 +31,7 @@ const GuideTile = ({
     <h3
       css={css`
         font-size: 1rem;
-        margin-bottom: ${procIdxisNotInteger ? '1rem' : '0.1rem'};
+        margin-bottom: ${procIdxIsInteger ? '1rem' : '0.1rem'};
       `}
     >
       {title}
@@ -43,7 +43,7 @@ const GuideTile = ({
         flex: 1;
         text-align: left;
         padding: 0;
-        margin-bottom: ${procIdxisNotInteger ? '0.8rem' : '0.1rem'};
+        margin-bottom: ${procIdxIsInteger ? '0.8rem' : '0.1rem'};
       `}
     >
       {description}
@@ -74,7 +74,7 @@ GuideTile.propTypes = {
   description: PropTypes.string.isRequired,
   className: PropTypes.string,
   to: PropTypes.string.isRequired,
-  procIdxisNotInteger: PropTypes.bool,
+  procIdxIsInteger: PropTypes.bool,
 };
 
 export default GuideTile;

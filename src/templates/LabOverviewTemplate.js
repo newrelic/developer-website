@@ -48,18 +48,18 @@ const LabOverviewTemplate = ({ data, location }) => {
                 {guides?.nodes
                   .sort(sortProcedures)
                   .map(({ fields, frontmatter }, index) => {
-                    const procIdxisNotInteger = Number.isInteger(
+                    const procIdxIsInteger = Number.isInteger(
                       frontmatter.procIdx
                     );
                     return (
                       <GuideTile
-                        procIdxisNotInteger={procIdxisNotInteger}
+                        procIdxIsInteger={procIdxIsInteger}
                         className={labOverviewStyles.labGuideCard}
                         to={fields.slug}
                         key={index}
                         duration={frontmatter.duration}
                         title={`${
-                          procIdxisNotInteger ? `${frontmatter.procIdx}.` : ''
+                          procIdxIsInteger ? `${frontmatter.procIdx}.` : ''
                         } ${
                           frontmatter.tileShorthand?.title || frontmatter.title
                         }`}
