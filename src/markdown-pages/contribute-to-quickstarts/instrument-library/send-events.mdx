@@ -35,11 +35,26 @@ Now we can get into the steps for getting your events into New Relic.
 
 ### New Relic License Key
 
-You will need to set up an environment variable for your users to input their [New Relic License key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key), or give an option for them to add it to the request header. The examples below will assume this variable is configured as `NEW_RELIC_INSERT_KEY`.
+You will need to set up an environment variable for your users to input their [New Relic License key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key), or give an option for them to add it to the request header. The examples below will assume this variable is configured as `NEW_RELIC_INSERT_KEY`. You can run or test the examples by setting the variable locally, but keep in mind that it's best for your end users to have a simple way to set this variable in your library.
 
+Here are some examples of setting this variable locally.
+```bash
+#cli
+export NEW_RELIC_INSERT_KEY=<Insert Your Key Here>
+
+#Python
+NEW_RELIC_INSERT_KEY=<Insert Your Key Here> python
+
+#Java / Gradle
+gradle -PapiKey=<Your Insert API Key>
+```
 ### Use a curl/PowerShell command
 
-If your library is already instrumented to be able to add a command using a webhook or some other method, you can use this command to post events to our API.
+Using curl is a quick and effective way of sending event data to New Relic. The curl command is great a good way to go if your library is already instrumented to process commands. For example, you might have a way to create a webhook which will run the command, and pull in the stored environment variable for the New relic License key. That way all your users have to do is copy and paste their New Relic key into your platform, and they are ready to go!
+<Callout variant="note" title="note">
+For more information on this, check out our 
+[Event API documentation](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api).
+</Callout>
 
 * Linux/Bash
 
@@ -72,10 +87,9 @@ Invoke-WebRequest -Headers $headers -Method Post -Body $gzipBody  "https://insig
 
 ### Use our SDK
 
-New Relic has a set of open source API client libraries that send data to New Relic. These operate by using our API's for data ingest, and in this case our event API. We have two SDK's that work with events, and those are Python and Java. Here we will walk through how to install each, and give a code example using both SDK's.
+New Relic has a set of open source API client libraries that send data to New Relic. These operate by using our API's for data ingest (in this case our event API). We have two [Telemetry SDK's](https://docs.newrelic.com/docs/data-apis/ingest-apis/telemetry-sdks-report-custom-telemetry-data/) (Software Developement Kits) that work with events, and those are Python and Java. Here we will walk through how to install each, and give a code example using both SDK's.
 
-Once our SDK is installed and ready, you can use the library to easily set up the api call to New Relic.  Again, both of these examples will assume that the NEW_RELIC_INSERT_KEY environment variable is configured, and remember that any end user will need to be able to reconfigure this variable to use this in your library.
-
+Once our SDK is installed and ready, you can use the library to easily set up the api call to New Relic. 
 ### Python
 
 For Python, you'll need to install the `newrelic-telemetry-sdk` package. you can do this by using pip:
@@ -102,7 +116,8 @@ print("Event sent successfully!")
 ```
 ### Java
 
-Here is an example using Java. You can either download and use gradle or use the ./gradlew command. [Here](https://github.com/newrelic/newrelic-telemetry-sdk-java/tree/main/telemetry_examples#telemetry-examples) is our repo for a full list of examples and how to use them.
+Here is an example using Java. To run this example you will need to use gradle. [Here](https://github.com/newrelic/newrelic-telemetry-sdk-java/tree/main/telemetry_examples#telemetry-examples) is our repo for a full list of Java examples and how to use them.
+
 ```java
 //Maven Dependencies
     <dependency>
