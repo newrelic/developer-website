@@ -22,6 +22,7 @@ const GuideTile = ({ duration, title, description, className, to }) => (
     <h3
       css={css`
         font-size: 1rem;
+        margin-bottom: 0.5rem;
       `}
     >
       {title}
