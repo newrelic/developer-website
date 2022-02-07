@@ -13,7 +13,6 @@ const GuideTile = ({ duration, title, description, className, to }) => (
     css={css`
       display: grid;
       grid-template-rows: auto 1fr auto;
-      width: 100%;
       border-radius: 0.25rem;
       position: relative;
       padding: 1rem;
@@ -23,7 +22,6 @@ const GuideTile = ({ duration, title, description, className, to }) => (
     <h3
       css={css`
         font-size: 1rem;
-        margin-bottom: 1rem;
       `}
     >
       {title}
@@ -35,7 +33,6 @@ const GuideTile = ({ duration, title, description, className, to }) => (
         flex: 1;
         text-align: left;
         padding: 0;
-        margin-bottom: 0.8rem;
       `}
     >
       {description}
