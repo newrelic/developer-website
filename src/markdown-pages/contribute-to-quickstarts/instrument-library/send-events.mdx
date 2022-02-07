@@ -8,17 +8,17 @@ tags:
 
 <Intro>
 
-This guide will walk you through how to instrument your application to send event data into the New Relic's [Event API](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api/). The Event API allow you to send events to New Relic without a need for an agent. First, let's cover what events are. An event is a record of something happening somewhere. What triggers the event and what data is captured is up to you to customize, which we'll discuss next. 
+This guide will walk you through how to instrument your application to send event data into the New Relic's [Event API](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api/). The Event API allow you to send events to New Relic without a need for an agent. First, let's cover what events are. An event is a record of something happening somewhere. Some examples might be a process start or stop, or a button click on an application, or a job running and completing. When the event is triggered,  
 
 </Intro>
 
 ## Capture Events in your Library
 
-At New Relic, we report events to data objects also called events. These events have multiple attributes (key-value pairs). We name each event record in our system with the event-type key. 
+At New Relic, we report events to data objects also called events. These events have multiple attributes (key-value pairs). The event record is queryable on the New Relic platform by using the required attribute, `evnet-type`. 
 ```json
 [{"event-type": "transaction"}]
 ```
-The event-type key is how you will query the event data from NRQL. using the above example, this is how we would query for the data in NRQL:
+The event-type key is how you will query the event data from NRQL(New Relic's querying language). using the above example, this is how we would query for the data in NRQL:
 
 ```sql
 From transaction select *
@@ -28,15 +28,18 @@ The rest in the event can be any custom key-value data, based on your library. W
 -  [Formatting JSON](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api#instrument)
 
 ## Send your events to New Relic
-There are a few ways we will discuss in order to send your event data into New Relic. We have our [telemetry SDK's](https://docs.newrelic.com/docs/data-apis/ingest-apis/telemetry-sdks-report-custom-telemetry-data), which are development kits instrumented to help you easily set up a POST request via several very common languages (C, Java, Python, .NET, etc.). We also have a basic curl command, which can be used on a windows or linux system to make a POST request to New Relic. We also have a prometheus option, if you use prometheus and have difficulty with the first two options.
+Now we can get into the steps for getting your events into New Relic. 
+* As a prerequisite, you will need to give your users the ability to use your library (via webhook or other means) to set an environment variable with our New Relic License Key. Once that is done, you have several options for making the event request. 
+* First, we'll cover using a command *(curl/bash)*, which can be used in your application to make a POST request to our Event API. 
+* Next, We have our [Telemetry SDK's](https://docs.newrelic.com/docs/data-apis/ingest-apis/telemetry-sdks-report-custom-telemetry-data), or Software Development Kits, which are open source libraries written to make it easier to intrument your library to send Event data.
 
 ### New Relic License Key
 
 You will need to set up an environment variable for your users to input their [New Relic License key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key), or give an option for them to add it to the request header. The examples below will assume this variable is configured as `NEW_RELIC_INSERT_KEY`.
 
-### Send events via a curl/PowerShell command
+### Use a curl/PowerShell command
 
-First, let's cover how you can send agentless data to New Relic, with just a simple command. These commands can be used in Linux or Windows environments. Here are some example requests for both
+If your library is already instrumented to be able to add a command using a webhook or some other method, you can use this command to post events to our API.
 
 * Linux/Bash
 
@@ -67,18 +70,39 @@ $gzipBody = $output.ToArray()
 Invoke-WebRequest -Headers $headers -Method Post -Body $gzipBody  "https://insights-collector.newrelic.com/v1/accounts/events"
 ```
 
-
-
-### Using our SDK's
+### Use our SDK
 
 New Relic has a set of open source API client libraries that send data to New Relic. These operate by using our API's for data ingest, and in this case our event API. We have two SDK's that work with events, and those are Python and Java. Here we will walk through how to install each, and give a code example using both SDK's.
+
+Once our SDK is installed and ready, you can use the library to easily set up the api call to New Relic.  Again, both of these examples will assume that the NEW_RELIC_INSERT_KEY environment variable is configured, and remember that any end user will need to be able to reconfigure this variable to use this in your library.
+
+### Python
 
 For Python, you'll need to install the `newrelic-telemetry-sdk` package. you can do this by using pip:
 
 ```bash
-$ pip install newrelic-telemetry-sdk
+pip install newrelic-telemetry-sdk
 ```
-For Java, you will need to set up several dependencies:
+Next you can use the event client to send your event data
+```Python
+import os
+import time
+from newrelic_telemetry_sdk import Event, EventClient
+
+#Replace with your event data
+event = Event(
+    "RateLimit", {"path": "/v1/endpoint", "accountId": 1000, "rejectRatio": 0.1}
+)
+
+event_client = EventClient(os.environ["NEW_RELIC_INSERT_KEY"])
+response = event_client.send(event)
+response.raise_for_status()
+print("Event sent successfully!")
+
+```
+### Java
+
+Here is an example using Java. You can either download and use gradle or use the ./gradlew command. [Here](https://github.com/newrelic/newrelic-telemetry-sdk-java/tree/main/telemetry_examples#telemetry-examples) is our repo for a full list of examples and how to use them.
 ```java
 //Maven Dependencies
     <dependency>
@@ -95,76 +119,59 @@ For Java, you will need to set up several dependencies:
  //Gradle Dependencies
     implementation("com.newrelic.telemetry:telemetry-core:0.13.1")
     implementation("com.newrelic.telemetry:telemetry-http-okhttp:0.13.1")
-```
 
-Once our SDK is installed and ready, you can use the library to easily set up the api call to New Relic. 
-
-* **Python**
-```Python
-import os
-import time
-from newrelic_telemetry_sdk import Event, EventClient
-
-# Record that a rate limit has been applied to an endpoint for an account
-event = Event(
-    "RateLimit", {"path": "/v1/endpoint", "accountId": 1000, "rejectRatio": 0.1}
-)
-
-event_client = EventClient(os.environ["NEW_RELIC_INSERT_KEY"])
-response = event_client.send(event)
-response.raise_for_status()
-print("Event sent successfully!")
-
-```
-* **Java**
-```java
 //Imports
-import static java.util.Collections.singleton;
+package com.newrelic.telemetry.examples;
 
 import com.newrelic.telemetry.Attributes;
+import com.newrelic.telemetry.EventBatchSenderFactory;
 import com.newrelic.telemetry.OkHttpPoster;
-import com.newrelic.telemetry.TelemetryClient;
 import com.newrelic.telemetry.events.Event;
-import com.newrelic.telemetry.events.EventBatch;
-import java.net.InetAddress;
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
-import java.util.UUID;
+import com.newrelic.telemetry.events.EventBatchSender;
+import com.newrelic.telemetry.events.EventBuffer;
 
-public class TelemetryClientExample {
-
+/**
+ * This is an example of sending an Event to New Relic.
+ *
+ * <p>An EventBatchSender is created by configuring an EventBatchSenderFactory object with a License
+ * Key. Then, an event is created with an EventType, Attributes, and the current time in
+ * milliseconds (UTC time). The event is added to an EventBuffer and sent via sender.sendBatch().
+ *
+ * <p>To run this example, provide a command line argument for your License Key.
+ */
+public class EventExample {
   public static void main(String[] args) throws Exception {
-    String insightsInsertKey = args[0];
 
-    // create a TelemetryClient with an http connect timeout of 10 seconds.
-    TelemetryClient telemetryClient =
-        TelemetryClient.create(
-            () -> new OkHttpPoster(Duration.of(10, ChronoUnit.SECONDS)), insightsInsertKey);
-    Attributes commonAttributes =
-        new Attributes()
-            .put("exampleName", "TelemetryClientExample")
-            .put("service.name", "TelemetryClientExampleService")
-            .put("host.hostname", InetAddress.getLocalHost().getHostName())
-            .put("environment", "staging");
+    String licenseKey = args[0];
+    EventBatchSenderFactory factory =
+        EventBatchSenderFactory.fromHttpImplementation(OkHttpPoster::new);
 
+    EventBatchSender sender =
+        EventBatchSender.create(factory.configureWith(NEW_RELIC_INSERT_KEY).useLicenseKey(true).build());
 
-    Span span = sendSampleEvent(telemetryClient, commonAttributes);
+    EventBuffer eventBuffer = new EventBuffer(getCommonAttributes());
 
-    // make sure to shutdown the client, else the background Executor will stop the program from
-    // exiting.
-    telemetryClient.shutdown();
+    Attributes attr = new Attributes();
+    attr.put("foo", 1234);
+    attr.put("bar", "baz");
+    attr.put("quux", true);
+
+    long timestamp = System.currentTimeMillis();
+    Event event = new Event("SampleEvent", attr, timestamp);
+    eventBuffer.addEvent(event);
+
+    sender.sendBatch(eventBuffer.createBatch());
   }
 
-  private static void sendSampleEvent(
-      TelemetryClient telemetryClient, Attributes commonAttributes) {
-    Event event = new Event("TestEvent", new Attributes().put("testKey", "testValue"));
-    telemetryClient.sendBatch(new EventBatch(singleton(event), commonAttributes));
+  private static Attributes getCommonAttributes() {
+    return new Attributes().put("exampleName", "CountExample");
   }
-
+}
 ```
 ### Alternative Options
 
 Other options available include using prometheus data, and installing a flex agent. We won't cover those in this guide, but here are some links to review these options.
 
 * [Prometheus Data](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/get-started/send-prometheus-metric-data-new-relic) - Prometheus data can be used by New Relic in two ways, [remote write](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration) and [OpenMetrics](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/install-configure-openmetrics/install-update-or-uninstall-your-prometheus-openmetrics-integration). At a very high level, remote write should be used if you manage your own prometheus servers, and OpenMetrics should be used if you do not.
-* [Flex Agent](https://github.com/newrelic/nri-flex/blob/master/docs/basic-tutorial.md#flex-step-by-step-tutorial) - Our serverless flex agent is a possibility if the other options do not work for you, but might be a more complex integration to get started.
+* **Manual Implementation** - If you are using a code library that we do not have instrumented with an SDK, you can always manually instrument your own library to make a POST request to the [New Relic Event API](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api/).
+* [Flex Agent](https://github.com/newrelic/nri-flex/blob/master/docs/basic-tutorial.md#flex-step-by-step-tutorial) - Our serverless flex agent is a possibility, but might be a more complex integration to get started.

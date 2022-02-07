@@ -4,17 +4,21 @@ template: 'OverviewTemplate'
 description: ''
 ---
 <Intro>
-If your looking to jump into building your own quickstart, the first step is instrumenting your own library to send data to New Relic. New Relic I/O gives end users the ability to slice and dice observability data around their application, server, etc. Setting up your library to get data into New Relic is critical to this process, so that the end users have a streamlined click-thorugh experience to see your data on our platform. You will need to instrument your library with at least one data type to be able to observe it via a dashboard or alert.
+If you're looking to jump into building your own quickstart, the first step is instrumenting your own library to send data to New Relic.
+
+Instrumenting your library will provide you with all the data you need to build the rest of the quickstart, including unique dashboards and alerts which visualize your data and provide actionable information quickly. 
+
+Instrumenting your library will also help your users in several ways, including quick and easy adoption from any user already using your library. Once your library is instrumented, users will be able to send their data from your library to New Relic with ease, and have quickly get into visualizing their data to get the most of what our platform and your platform has to offer. Alongside this, New Relic customers who are curious about your library will be able to see its events in their account just by installing your library and providing their New Relic license key.
 </Intro>
 
 ## Observability Data Options
 
- New Relic has [four types of observability data](https://docs.newrelic.com/docs/data-apis/understand-data/new-relic-data-types) which we call MELT data; *Metrics, Events, Logs, and Traces*. Each one handles a specific use case, so you'll have to decide which one fits your needs best.
+ You will need to instrument your library with at least one data type in order to observe it via a dashboard or alert. New Relic has [four API options](https://docs.newrelic.com/docs/data-apis/understand-data/new-relic-data-types) which we call MELT data; *Metrics, Events, Logs, and Traces*. Each one serves a different purpose in providing visibility into your library's behaviors and performance.
 
  Here is some context to help you decide:
 
- - [Events](contribute-to-quickstarts/create-a-quickstart/instrument-library/send-events) **(Most Common)**: Events are used if you are capturing something occuring in your application, server, library, etc. For CI/CD applications this might be a capture of each time a job runs. For security applications this might be any time a threat is detected.
- - [Logs](https://docs.newrelic.com/docs/logs/log-api/introduction-log-api/) **(Common)**: Logs should be used if your library uses multiple attributes (ie. nested key-value data), or if your library is set up already to use log drains.
- - [Metrics](https://docs.newrelic.com/docs/data-apis/ingest-apis/metric-api/introduction-metric-api/) **(Uncommon)**: Metrics are generally collected as aggregated data or as a numeric status at a point in time. Most metrics can be sent or aggregated through events, which is why we recommend events instead. You might want to use metrics if you view the data at a very high level, and don't expect your users to need a more detailed analysis.
- - [Traces](https://docs.newrelic.com/docs/distributed-tracing/trace-api/introduction-trace-api/) **(Uncommon)**: Traces should be used if you have your own tool that tracks tracing, and you want to instrument that into new relic.
+ - [Events](contribute-to-quickstarts/create-a-quickstart/instrument-library/send-events) : Events are used if you are capturing something occuring in your application, server, library, etc. For CI/CD applications this might be a capture of each time a job runs. For security applications, this might be any time a threat is detected.
+ - [Logs](https://docs.newrelic.com/docs/logs/log-api/introduction-log-api/) : Logs should be used if your library uses multiple attributes (ie. nested key-value data). an example of a log might be a a job which runs multiple sub-tasks in your system, all nested into one job record. Generally speaking, logs require more data to be sent to New Relic, but provide possibly the most information of the options listed. 
+ - [Metrics](https://docs.newrelic.com/docs/data-apis/ingest-apis/metric-api/introduction-metric-api/) : Metrics are generally collected as aggregated data or as a numeric status at a point in time. Most metrics can be sent or aggregated through events, which is why we recommend events instead. You might want to use metrics if you view the data at a very high level, and don't expect your users to need a more detailed analysis. Note that metrics are generally only used if you want to limit the amount of Data sent to New Relic.
+ - [Traces](https://docs.newrelic.com/docs/distributed-tracing/trace-api/introduction-trace-api/) : Traces should be used if you have your own tool that tracks tracing, and you want to instrument that into new relic.
 
