@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Link, Icon, Surface } from '@newrelic/gatsby-theme-newrelic';
 
-const GuideTile = ({
-  duration,
-  title,
-  description,
-  className,
-  to,
-  procIdxIsInteger,
-}) => (
+const GuideTile = ({ duration, title, description, className, to }) => (
   <Surface
     as={Link}
     to={to}
@@ -20,8 +13,7 @@ const GuideTile = ({
     css={css`
       display: grid;
       grid-template-rows: auto 1fr auto;
-      width: ${procIdxIsInteger ? '100%' : '90%'};
-      margin-left: ${procIdxIsInteger ? '0' : '10%'};
+      width: 100%;
       border-radius: 0.25rem;
       position: relative;
       padding: 1rem;
@@ -31,7 +23,7 @@ const GuideTile = ({
     <h3
       css={css`
         font-size: 1rem;
-        margin-bottom: ${procIdxIsInteger ? '1rem' : '0.1rem'};
+        margin-bottom: 1rem;
       `}
     >
       {title}
@@ -43,7 +35,7 @@ const GuideTile = ({
         flex: 1;
         text-align: left;
         padding: 0;
-        margin-bottom: ${procIdxIsInteger ? '0.8rem' : '0.1rem'};
+        margin-bottom: 0.8rem;
       `}
     >
       {description}
@@ -74,7 +66,6 @@ GuideTile.propTypes = {
   description: PropTypes.string.isRequired,
   className: PropTypes.string,
   to: PropTypes.string.isRequired,
-  procIdxIsInteger: PropTypes.bool,
 };
 
 export default GuideTile;

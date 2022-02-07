@@ -53,7 +53,21 @@ const LabOverviewTemplate = ({ data, location }) => {
                     );
                     return (
                       <GuideTile
-                        procIdxIsInteger={procIdxIsInteger}
+                        css={css`
+                          width: ${procIdxIsInteger ? '100%' : '90%'};
+                          margin-left: ${procIdxIsInteger ? '0' : '10%'};
+
+                          h3 {
+                            margin-bottom: ${procIdxIsInteger
+                              ? '1rem'
+                              : '0.1rem'};
+                          }
+                          p {
+                            margin-bottom: ${procIdxIsInteger
+                              ? '0.8rem'
+                              : '0.1rem'};
+                          }
+                        `}
                         className={labOverviewStyles.labGuideCard}
                         to={fields.slug}
                         key={index}
