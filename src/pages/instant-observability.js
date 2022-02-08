@@ -551,12 +551,7 @@ const QuickstartsPage = ({ data, location }) => {
               summary="Can't find a quickstart with what you need? Check out our README and build your own."
             />
             {filteredQuickstarts.map((pack) => (
-              <PackTile
-                key={pack.id}
-                view={view}
-                featured={pack.keywords?.includes('featured')}
-                {...pack}
-              />
+              <PackTile key={pack.id} view={view} featured={false} {...pack} />
             ))}
           </div>
         </div>
