@@ -1,3 +1,12 @@
+# [1.78.0](https://github.com/newrelic/developer-website/compare/v1.77.0...v1.78.0) (2022-02-08)
+
+
+### Features
+
+* added send data page ([b763eec](https://github.com/newrelic/developer-website/commit/b763eecf242f82d9d5bae965836d470e253f4213))
+* updated ([664629c](https://github.com/newrelic/developer-website/commit/664629c7d80d6d5a65714266818f9a07773cefa5))
+* updated text ([d661f90](https://github.com/newrelic/developer-website/commit/d661f90c6973c66021ad0715657e627af9e9ccc2))
+
 # [1.77.0](https://github.com/newrelic/developer-website/compare/v1.76.3...v1.77.0) (2022-02-07)
 
 
