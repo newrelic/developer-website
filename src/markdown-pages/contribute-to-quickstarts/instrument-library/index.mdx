@@ -1,0 +1,21 @@
+---
+title: 'Send telemetry data to New Relic'
+template: 'OverviewTemplate'
+description: 'Configure your library or platform to send telemetry data to New Relic'
+---
+<Intro>
+
+The first step in the process of building a [quickstart](https://opensource.newrelic.com/projects/newrelic/newrelic-quickstarts) is instrumenting your library or configuring your platform to send telemetry data to New Relic. Once you set this up, your product's users will be able to start seeing that data in their account.
+
+Setting up your product to allow your users to easily send data from your product to New Relic is important because the quickstart you'll offer them will use it in dashboards, alerts, or other resources you provide. Once your user can see the data, they'll be able to use your quickstart to visualize it and gain actionable insights in a matter of minutes.
+
+</Intro>
+
+## Telemetry data types
+
+ You need to send at least one type of telemetry data to New Relic from your library or platform in order to build an effective quickstart. New Relic supports [four telemetry data types](https://docs.newrelic.com/docs/data-apis/understand-data/new-relic-data-types):
+
+ - [Events](contribute-to-quickstarts/create-a-quickstart/instrument-library/send-events): Events capture things that occur in your product. If your platform automates application deployments, you might generate an event every time a job runs. If your application scans for security vulnerabilities, you might generate an event every time you detect one.
+ - [Logs](https://docs.newrelic.com/docs/logs/log-api/introduction-log-api/): Logs are time-based text records that help your users see what's happening in your system.
+ - [Metrics](https://docs.newrelic.com/docs/data-apis/ingest-apis/metric-api/introduction-metric-api/): Metrics are aggregated measurements of your system's performance and behaviors. If your product is a database, you might send metrics like CPU utilization, memory utilization, and query throughput. Note that metrics are generally only used if you want to limit the amount of Data sent to New Relic. Note that many metrics, such as error rates and throughput, can be computed by aggregating events.
+ - [Traces](https://docs.newrelic.com/docs/distributed-tracing/trace-api/introduction-trace-api/): Traces capture details of a single request as it moves through a system.
