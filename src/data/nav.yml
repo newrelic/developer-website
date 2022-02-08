@@ -194,11 +194,11 @@
   icon: fe-zap
   url: '/contribute-to-quickstarts'
   pages:
-    - title: Instrument your library
+    - title: Send telemetry data to New Relic
       url: '/contribute-to-quickstarts/instrument-library'
       pages:
-        - title: Send Event Data
-          url: '/contribute-to-quickstarts/instrument-library/send-events'   
+        - title: Send events from your product
+          url: '/contribute-to-quickstarts/instrument-library/send-events'
     - title: Build a quickstart
       url: '/contribute-to-quickstarts/build-a-quickstart'
       pages:

@@ -1,24 +1,21 @@
 ---
-title: 'Instrument your Library'
+title: 'Send telemetry data to New Relic'
 template: 'OverviewTemplate'
-description: ''
+description: 'Configure your library or platform to send telemetry data to New Relic'
 ---
 <Intro>
-If you're looking to jump into building your own quickstart, the first step is instrumenting your own library to send data to New Relic.
 
-Instrumenting your library will provide you with all the data you need to build the rest of the quickstart, including unique dashboards and alerts which visualize your data and provide actionable information quickly. 
+The first step in the process of building a [quickstart](https://opensource.newrelic.com/projects/newrelic/newrelic-quickstarts) is instrumenting your library or configuring your platform to send telemetry data to New Relic. Once you set this up, your product's users will be able to start seeing that data in their account.
 
-Instrumenting your library will also help your users in several ways, including quick and easy adoption from any user already using your library. Once your library is instrumented, users will be able to send their data from your library to New Relic with ease, and have quickly get into visualizing their data to get the most of what our platform and your platform has to offer. Alongside this, New Relic customers who are curious about your library will be able to see its events in their account just by installing your library and providing their New Relic license key.
+Setting up your product to allow your users to easily send data from your product to New Relic is important because the quickstart you'll offer them will use it in dashboards, alerts, or other resources you provide. Once your user can see the data, they'll be able to use your quickstart to visualize it and gain actionable insights in a matter of minutes.
+
 </Intro>
 
-## Observability Data Options
+## Telemetry data types
 
- You will need to instrument your library with at least one data type in order to observe it via a dashboard or alert. New Relic has [four API options](https://docs.newrelic.com/docs/data-apis/understand-data/new-relic-data-types) which we call MELT data; *Metrics, Events, Logs, and Traces*. Each one serves a different purpose in providing visibility into your library's behaviors and performance.
+ You need to send at least one type of telemetry data to New Relic from your library or platform in order to build an effective quickstart. New Relic supports [four telemetry data types](https://docs.newrelic.com/docs/data-apis/understand-data/new-relic-data-types):
 
- Here is some context to help you decide:
-
- - [Events](contribute-to-quickstarts/create-a-quickstart/instrument-library/send-events) : Events are used if you are capturing something occuring in your application, server, library, etc. For CI/CD applications this might be a capture of each time a job runs. For security applications, this might be any time a threat is detected.
- - [Logs](https://docs.newrelic.com/docs/logs/log-api/introduction-log-api/) : Logs should be used if your library uses multiple attributes (ie. nested key-value data). an example of a log might be a a job which runs multiple sub-tasks in your system, all nested into one job record. Generally speaking, logs require more data to be sent to New Relic, but provide possibly the most information of the options listed. 
- - [Metrics](https://docs.newrelic.com/docs/data-apis/ingest-apis/metric-api/introduction-metric-api/) : Metrics are generally collected as aggregated data or as a numeric status at a point in time. Most metrics can be sent or aggregated through events, which is why we recommend events instead. You might want to use metrics if you view the data at a very high level, and don't expect your users to need a more detailed analysis. Note that metrics are generally only used if you want to limit the amount of Data sent to New Relic.
- - [Traces](https://docs.newrelic.com/docs/distributed-tracing/trace-api/introduction-trace-api/) : Traces should be used if you have your own tool that tracks tracing, and you want to instrument that into new relic.
-
+ - [Events](contribute-to-quickstarts/create-a-quickstart/instrument-library/send-events): Events capture things that occur in your product. If your platform automates application deployments, you might generate an event every time a job runs. If your application scans for security vulnerabilities, you might generate an event every time you detect one.
+ - [Logs](https://docs.newrelic.com/docs/logs/log-api/introduction-log-api/): Logs are time-based text records that help your users see what's happening in your system.
+ - [Metrics](https://docs.newrelic.com/docs/data-apis/ingest-apis/metric-api/introduction-metric-api/): Metrics are aggregated measurements of your system's performance and behaviors. If your product is a database, you might send metrics like CPU utilization, memory utilization, and query throughput. Note that metrics are generally only used if you want to limit the amount of Data sent to New Relic. Note that many metrics, such as error rates and throughput, can be computed by aggregating events.
+ - [Traces](https://docs.newrelic.com/docs/distributed-tracing/trace-api/introduction-trace-api/): Traces capture details of a single request as it moves through a system.
