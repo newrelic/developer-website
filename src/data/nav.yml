@@ -93,6 +93,8 @@
       url: '/build-apps/advanced-config'
     - title: Create a 'Hello, World!' app
       url: '/build-apps/build-hello-world-app'
+    - title: Build a NR1 app with React hooks
+      url: '/build-apps/build-react-hooks-app'
     - title: Publish and deploy your Nerdpack
       url: '/build-apps/publish-deploy'
       pages:
