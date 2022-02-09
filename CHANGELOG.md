@@ -1,3 +1,10 @@
+# [1.79.0](https://github.com/newrelic/developer-website/compare/v1.78.0...v1.79.0) (2022-02-09)
+
+
+### Features
+
+* added guide for react hooks ([20e9ac7](https://github.com/newrelic/developer-website/commit/20e9ac7b4e7bf78cba0683c8694d893a8ef212b6))
+
 # [1.78.0](https://github.com/newrelic/developer-website/compare/v1.77.0...v1.78.0) (2022-02-08)
 
 
