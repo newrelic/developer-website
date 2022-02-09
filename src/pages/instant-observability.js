@@ -14,7 +14,6 @@ import {
 } from '@newrelic/gatsby-theme-newrelic';
 import { navigate } from '@reach/router';
 
-import BUILD_YOUR_OWN from '../images/build-your-own.svg';
 import { useDebounce } from 'react-use';
 import { sortFeaturedQuickstarts } from '../utils/sortFeaturedQuickstarts';
 import {
@@ -186,6 +185,11 @@ const QuickstartsPage = ({ data, location }) => {
     return found.displayName;
   };
 
+  // OPEN BUILD YOUR OWN QUICKSTART URL ON A NEW TAB
+  const buildYourOwn = (url) => {
+    window.open(url);
+  }
+
   return (
     <>
       <DevSiteSeo
@@ -271,6 +275,17 @@ const QuickstartsPage = ({ data, location }) => {
                   >{`(${count})`}</span>
                 </Button>
               ))}
+            </FormControl>
+            <FormControl>
+              <Label htmlFor="quickstartCategory">Can build QuickStart</Label>
+                <Button
+                  type="button"
+                  key={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
+                  onClick={() => buildYourOwn(QUICKSTARTS_REPO)}
+                  variant={Button.VARIANT.OUTLINE}
+                >
+                  Build your own
+                </Button>
             </FormControl>
           </div>
         </aside>
@@ -539,17 +554,6 @@ const QuickstartsPage = ({ data, location }) => {
               `};
             `}
           >
-            <PackTile
-              id={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
-              css={css`
-                background-color: var(--tertiary-background-color);
-              `}
-              href={QUICKSTARTS_REPO}
-              view={view}
-              logoUrl={BUILD_YOUR_OWN}
-              title="Build your own quickstart"
-              summary="Can't find a quickstart with what you need? Check out our README and build your own."
-            />
             {filteredQuickstarts.map((pack) => (
               <PackTile
                 key={pack.id}
