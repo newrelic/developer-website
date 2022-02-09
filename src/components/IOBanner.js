@@ -43,7 +43,7 @@ const BannerHeaderContent = () => (
         }
       `}
     >
-      Dashboards, alerts, and integrations all in one place
+      Monitor everything in your stack
     </h1>
     <body
       css={css`
