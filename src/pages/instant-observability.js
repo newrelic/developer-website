@@ -282,7 +282,7 @@ const QuickstartsPage = ({ data, location }) => {
                   type="button"
                   key={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
                   onClick={() => buildYourOwn(QUICKSTARTS_REPO)}
-                  variant={Button.VARIANT.OUTLINE}
+                  variant={Button.VARIANT.PRIMARY}
                 >
                   Build your own
                 </Button>
