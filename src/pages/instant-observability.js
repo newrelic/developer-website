@@ -282,15 +282,6 @@ const QuickstartsPage = ({ data, location }) => {
         >
           <div
             css={css`
-              @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
-                display: none;
-              }
-            `}
-          >
-            <SuperTiles />
-          </div>
-          <div
-            css={css`
               align-items: center;
               background-color: var(--secondary-background-color);
               border-radius: 4px;
@@ -539,6 +530,15 @@ const QuickstartsPage = ({ data, location }) => {
               `};
             `}
           >
+            <div
+              css={css`
+                @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
+                  display: none;
+                }
+              `}
+            >
+              <SuperTiles />
+            </div>
             <PackTile
               id={RESERVED_QUICKSTART_IDS.BUILD_YOUR_OWN_QUICKSTART}
               css={css`

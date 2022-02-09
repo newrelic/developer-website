@@ -7,7 +7,6 @@ const SuperTiles = () => {
     <div
       css={css`
         display: grid;
-        margin-bottom: 16px;
         gap: 16px;
         grid-template-columns: repeat(1, 1fr);
       `}
