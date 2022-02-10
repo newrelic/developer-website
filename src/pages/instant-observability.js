@@ -3,15 +3,10 @@ import { graphql } from 'gatsby';
 import React, { useState, useEffect } from 'react';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { css } from '@emotion/react';
-import SegmentedControl from '../components/SegmentedControl';
 import Overlay from '../components/Overlay';
 import PackTile from '../components/PackTile';
 import IOBanner from '../components/IOBanner';
-import {
-  SearchInput,
-  useTessen,
-  Button,
-} from '@newrelic/gatsby-theme-newrelic';
+import { useTessen, Button } from '@newrelic/gatsby-theme-newrelic';
 import { navigate } from '@reach/router';
 
 import BUILD_YOUR_OWN from '../images/build-your-own.svg';
@@ -84,7 +79,7 @@ const filterByCategory = (category) => {
 };
 
 const QuickstartsPage = ({ data, location }) => {
-  const [view, setView] = useState(VIEWS.GRID);
+  const [view] = useState(VIEWS.GRID);
   const tessen = useTessen();
 
   const [search, setSearch] = useState('');
@@ -193,7 +188,7 @@ const QuickstartsPage = ({ data, location }) => {
         location={location}
         type="quickstarts"
       />
-      <IOBanner />
+      <IOBanner search={search} setSearch={setSearch} />
       <div
         css={css`
           --sidebar-width: 300px;
@@ -288,90 +283,6 @@ const QuickstartsPage = ({ data, location }) => {
             `}
           >
             <SuperTiles />
-          </div>
-          <div
-            css={css`
-              align-items: center;
-              background-color: var(--secondary-background-color);
-              border-radius: 4px;
-              display: flex;
-              justify-content: space-between;
-              padding: 0.5rem;
-
-              input {
-                font-size: 14px;
-                padding: 0.5rem;
-                padding-left: 2.25rem;
-                background: var(--color-white);
-                border: 1px solid var(--color-neutrals-600);
-                border-radius: 4px;
-
-                &::placeholder {
-                  color: var(--color-neutrals-600);
-                  padding-left: 0.5rem;
-                }
-              }
-
-              .dark-mode & {
-                background-color: var(--tertiary-background-color);
-                input {
-                  background: var(--color-dark-400);
-
-                  &::placeholder {
-                    color: var(primary-text-color);
-                  }
-                }
-              }
-              @media (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
-                background-color: var(--primary-background-color);
-                padding: 0;
-              }
-            `}
-          >
-            <SearchInput
-              size={SearchInput.SIZE.LARGE}
-              value={search || ''}
-              placeholder="What do you want to monitor? (e.g., AWS, LAMP, Kubernetes)"
-              onClear={() => setSearch('')}
-              onChange={(e) => setSearch(e.target.value)}
-              css={css`
-                --svg-color: var(--color-neutrals-700);
-                box-shadow: none;
-                max-width: 630px;
-                line-height: 1;
-                svg {
-                  width: 16px;
-                  height: 16px;
-                  color: var(--svg-color);
-                }
-
-                .dark-mode & {
-                  --svg-color: var(--primary-text-color);
-                }
-
-                @media screen and (max-width: ${QUICKSTARTS_COLLAPSE_BREAKPOINT}) {
-                  font-size: 11px;
-                  max-width: 100%;
-                }
-              `}
-            />
-            <SegmentedControl
-              items={Object.values(VIEWS)}
-              onChange={(_e, view) => {
-                setView(view);
-
-                tessen.track({
-                  eventName: 'instantObservability',
-                  category: 'QuickstartViewToggle',
-                  quickstartViewState: view,
-                });
-              }}
-              css={css`
-                @media screen and (max-width: ${LISTVIEW_BREAKPOINT}) {
-                  display: none;
-                }
-              `}
-            />
           </div>
           <div
             css={css`
