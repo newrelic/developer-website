@@ -13910,6 +13910,52 @@
   {
     "alerts": [],
     "authors": [
+      "Jim Hagan",
+      "Kim Hickey"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Data Governance Baseline",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.99.1/quickstarts/oma-data-gov/dashboards/data-ingest-baseline.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.99.1/quickstarts/oma-data-gov/dashboards/data-ingest-baseline.json"
+      }
+    ],
+    "description": "Data ingest governance is a practice of ensuring optimal value for telemetry data collected by an organization particularly a complex organization with numerous business units and working groups.\n",
+    "documentation": [
+      {
+        "description": "Observability Maturity Solutions Guide",
+        "name": "Observability Maturity",
+        "url": "https://docs.newrelic.com/docs/new-relic-solutions/observability-maturity/introduction"
+      }
+    ],
+    "iconUrl": null,
+    "id": "30593cae-4cfb-435c-9170-310e3f38ab40",
+    "installPlans": [
+      {
+        "id": "solutions-hub-dashboards",
+        "name": "solutions-hub"
+      }
+    ],
+    "keywords": [
+      "OMA",
+      "Data Governance",
+      "Data Consumption",
+      "Manage Data Ingest"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.99.1/quickstarts/oma-data-gov/logo.png",
+    "name": "oma-data-governance",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/oma-data-gov",
+    "summary": "The prerequisite step of data governance includes developing an accurate baseline of your telemetry data ingest levels.  A good ingest baseline will break your ingest out by sub-account and telemetry type.  This is particularly necessary in a complex organization with numerous business units and working groups.\n",
+    "title": "OMA Data Ingest Governance",
+    "websiteUrl": "https://www.newrelic.com"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "New Relic"
     ],
     "dashboards": [],
@@ -21412,52 +21458,6 @@
     "summary": "Send Zipkin-format traces to New Relic\n",
     "title": "Zipkin",
     "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Jim Hagan",
-      "Kim Hickey"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Data Governance Baseline",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.99.1/quickstarts/oma-data-gov/dashboards/data-ingest-baseline.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.99.1/quickstarts/oma-data-gov/dashboards/data-ingest-baseline.json"
-      }
-    ],
-    "description": "Data ingest governance is a practice of ensuring optimal value for telemetry data collected by an organization particularly a complex organization with numerous business units and working groups.\n",
-    "documentation": [
-      {
-        "description": "Observability Maturity Solutions Guide",
-        "name": "Observability Maturity",
-        "url": "https://docs.newrelic.com/docs/new-relic-solutions/observability-maturity/introduction"
-      }
-    ],
-    "iconUrl": null,
-    "id": "30593cae-4cfb-435c-9170-310e3f38ab40",
-    "installPlans": [
-      {
-        "id": "solutions-hub-dashboards",
-        "name": "solutions-hub"
-      }
-    ],
-    "keywords": [
-      "OMA",
-      "Data Governance",
-      "Data Consumption",
-      "Manage Data Ingest"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.99.1/quickstarts/oma-data-gov/logo.png",
-    "name": "oma-data-governance",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/oma-data-gov",
-    "summary": "The prerequisite step of data governance includes developing an accurate baseline of your telemetry data ingest levels.  A good ingest baseline will break your ingest out by sub-account and telemetry type.  This is particularly necessary in a complex organization with numerous business units and working groups.\n",
-    "title": "OMA Data Ingest Governance",
-    "websiteUrl": "https://www.newrelic.com"
   },
   {
     "alerts": [],
