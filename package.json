@@ -107,8 +107,6 @@
     "build:production": "GATSBY_NEWRELIC_ENV=production gatsby build",
     "build:staging": "GATSBY_NEWRELIC_ENV=staging gatsby build",
     "build:related-content": "BUILD_RELATED_CONTENT=true yarn run build:production",
-    "fetch-quickstarts": "node ./scripts/actions/fetch-quickstarts.js",
-    "list-quickstart-urls": "node ./scripts/list-quickstart-urls.js",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "GATSBY_NEWRELIC_ENV=development yarn run develop",
