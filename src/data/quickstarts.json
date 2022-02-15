@@ -95,6 +95,42 @@
   {
     "alerts": [],
     "authors": [
+      "New Relic"
+    ],
+    "dashboards": [],
+    "description": "# What is Ansible?\nAnsible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.\n\nDesigned for multi-tier deployments since day one, Ansible models your IT infrastructure by describing how all of your systems inter-relate, rather than just managing one system at a time.\n\nIt uses no agents and no additional custom security infrastructure, so it's easy to deploy - and most importantly, it uses a very simple language (YAML, in the form of Ansible Playbooks) that allow you to describe your automation jobs in a way that approaches plain English.\n\n# What does New Relic provide\nNew Relic has developed a Ansible playbook for the Ansible agent to deploy the [New Relic Infrastructure agent](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/) and [On Host Integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations) throughout your environment.\n\n# How to get started?\nFollow the instructions on New Relic documentation: [Configure the infrastructure agent using Ansible](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-ansible)\n",
+    "documentation": [
+      {
+        "description": "Open-source software provisioning, configuration management, and\napplication-deployment tool enabling infrastructure as code.\n",
+        "name": "Ansible installation docs",
+        "url": "https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-ansible"
+      },
+      {
+        "description": "Ansible Galaxy page for the New Relic Ansible role\n",
+        "name": "Ansible Galaxy",
+        "url": "https://galaxy.ansible.com/newrelic/newrelic_agents"
+      }
+    ],
+    "iconUrl": null,
+    "id": "c377d781-da77-4dd6-b5a8-6a25a39e2582",
+    "installPlans": [],
+    "keywords": [
+      "automation",
+      "devops",
+      "sre",
+      "gitops"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/ansible/logo.svg",
+    "name": "ansible",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/ansible",
+    "summary": "New Relic Ansible playbook to deploy the New Relic Infrastructure agent and On Host Integrations throughout your environment.\n",
+    "title": "Ansible",
+    "websiteUrl": "https://galaxy.ansible.com/newrelic/newrelic_agents"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "New Relic",
       "Jakub Kotkowiak"
     ],
@@ -3853,49 +3889,6 @@
   {
     "alerts": [],
     "authors": [
-      "New Relic",
-      "Zack Stickles (New Relic)"
-    ],
-    "dashboards": [
-      {
-        "description": "Monitor your Battlensakes performance and see how it stacks up against your competition!",
-        "name": "Battlesnake Performance",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/battlesnake/dashboards/battlesnake-performance.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/battlesnake/dashboards/battlesnake-performance.json"
-      },
-      {
-        "description": "A dashboard to monitor your Battlesnake server's performance. It's important to keep all responses to the `/move` endpoint under 500ms. Furthermore, it's possible that your snake may be in multiple concurrent matches at the same time. It's important to make sure you server and web application are running smoothly to keep you in the game!",
-        "name": "Battlesnake Server Status",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/battlesnake/dashboards/battlesnake-server-status.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/battlesnake/dashboards/battlesnake-server-status.json"
-      }
-    ],
-    "description": "[Battlesnake](https://play.battlesnake.com/) is a multi-player programming game played by developers all over the world. All you need to play is a live web server that implements the [Battlesnake API](https://docs.battlesnake.com/).\n\nWith New Relic, you can monitor you Battlesnake [server](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/) and [web application](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/introduction-apm). This quickstart includes a helpful dashboard to ensure your server is compliant with the game's server requirements and your Battlesnake is set up for success!\n\nAdditional features coming soon!\n",
-    "documentation": [],
-    "iconUrl": null,
-    "id": "63a65857-a25e-4654-9174-928e5894b3b9",
-    "installPlans": [
-      {
-        "id": "battlesnake",
-        "name": "Custom Attributes"
-      }
-    ],
-    "keywords": [],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/battlesnake/logo.png",
-    "name": "battlesnake",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/battlesnake",
-    "summary": "Battlesnake is a multi-player programming game played by developers all over the world. All you need to play is a live web server that implements the Battlesnake API.\n",
-    "title": "Battlesnake",
-    "websiteUrl": "https://play.battlesnake.com"
-  },
-  {
-    "alerts": [],
-    "authors": [
       "BizTalk360",
       "Raja Sreenivasan"
     ],
@@ -4191,6 +4184,42 @@
   {
     "alerts": [],
     "authors": [
+      "New Relic"
+    ],
+    "dashboards": [],
+    "description": "# What is Chef?\nChef Infrastructure Management enables DevOps teams to model and deploy secure and scalable infrastructure automation across any cloud, VM, and/or physical infrastructure.\n\nThe Chef Infra agent is self-updating, self-automating and works well in low bandwidth or remote environments. It also allows Chef to scale up and down as customers demands change. Security keys are managed and rotated regularly using  Chef automated cookbooks which allows admins to turn off port access to SSH and WinRM further securing their environments in line with recommendations from industry standards like CIS (Center for Internet Security) benchmarks.\n\n# What does New Relic provide\nNew Relic has developed a Chef recipe for the Chef Infra agent to deploy the [New Relic Infrastructure agent](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/) and [On Host Integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations) throughout your environment.\n\n# How to get started?\nFollow the instructions on New Relic documentation: [Configure the infrastructure agent using Chef](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-chef)\n",
+    "documentation": [
+      {
+        "description": "Chef is a configuration management tool written in Ruby and Erlang.",
+        "name": "Chef installation docs",
+        "url": "https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-chef"
+      },
+      {
+        "description": "Chef Supermarket page for the New Relic Chef Recipe",
+        "name": "Chef Supermarket",
+        "url": "https://supermarket.chef.io/cookbooks/newrelic-infra"
+      }
+    ],
+    "iconUrl": null,
+    "id": "ad40ccc2-f7ef-44bf-b961-07813088fce0",
+    "installPlans": [],
+    "keywords": [
+      "automation",
+      "devops",
+      "sre",
+      "gitops"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/chef/logo.svg",
+    "name": "chef",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/chef",
+    "summary": "New Relic Chef recipe to deploy the New Relic Infrastructure agent and On Host Integrations throughout your environment.\n",
+    "title": "Chef",
+    "websiteUrl": "https://supermarket.chef.io/cookbooks/newrelic-infra"
+  },
+  {
+    "alerts": [],
+    "authors": [
       "New Relic",
       "Joseph Counts"
     ],
@@ -4430,42 +4459,6 @@
     "summary": "",
     "title": "Consul",
     "websiteUrl": "https://www.consul.io/"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Contentsquare"
-    ],
-    "dashboards": [],
-    "description": "Get more value from your investments in Contentsquare and New Relic by seeing\nhow performance issues truly affect your customers’ digital experience. \n\nThrough this integration, access Contentsquare Session Replay links directly\nwithin New Relic. With this, Contentsquare shows you exactly what a user was \ndoing before, during, and after an issue occurs, so that you can remediate \nissues quickly and with the complete picture. Dramatically reduce the \ntime-to-repair of system errors by linking to your impacted users' exact \nsession replays.\n\n- **Reduce time-to-recovery**\n\n  By integrating Contentsquare with your New Relic, you can provide your \n  engineering team with all of the necessary technical and behavioral data \n  needed to identify the root cause of an issue without having to spend cycles \n  trying to recreate the issue.\n\n\n- **Reduce time-to-recovery**\n\n  Combine the technical data from New Relic with the behavioral data surfaced \n  from Contentsquare to uncover and prioritize the issues that have the\n  greatest impact on your revenue and customer experience metrics.\n",
-    "documentation": [
-      {
-        "description": "See how to install this integration and the data exchanged between New \nRelic ancd Contentsquare.\n",
-        "name": "Installation Doc",
-        "url": "https://uxanalyser.zendesk.com/hc/en-gb/articles/4408893503122-New-Relic"
-      },
-      {
-        "description": "New Relic x Contentsquare partnership page on Contentsquare website\n",
-        "name": "Partnership Page",
-        "url": "https://partners.contentsquare.com/technology-partners/new-relic"
-      }
-    ],
-    "iconUrl": null,
-    "id": "875f2e3d-7c1b-436b-ab77-602090de1134",
-    "installPlans": [],
-    "keywords": [
-      "Behavioural Analytics",
-      "Customer Experience",
-      "Digital Experience",
-      "User Experience"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/contentsquare/logo.png",
-    "name": "contentsquare",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/contentsquare",
-    "summary": "Contentsquare is a powerful, yet easy-to-use, digital experience analytics \nplatform that collects and quantifies user behavior across all your digital \nproperties showing you what users like, what they don’t like, where they \nstruggle, and why they leave. \nContentsquare surfaces opportunities to improve your customer experience\nautomatically and easily so you can increase your conversion rates, improve\ncustomer loyalty, reduce costs and drive revenue.\n",
-    "title": "Contentsquare",
-    "websiteUrl": "https://www.contentsquare.com"
   },
   {
     "alerts": [],
@@ -13054,47 +13047,6 @@
   {
     "alerts": [],
     "authors": [
-      "New Relic Labs"
-    ],
-    "dashboards": [
-      {
-        "description": "Sample SQL Server dashboard with query plans included",
-        "name": "MSSQL On-Host Integration w/ Query Plans",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/mssql-queryplan/dashboards/mssql-queryplan01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/mssql-queryplan/dashboards/mssql-queryplan02.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/mssql-queryplan/dashboards/mssql-queryplan.json"
-      }
-    ],
-    "description": "This quickstart includes a modified version of the Microsoft SQL Server on-host integration that captures query plan data for slowest running queries, and a dashboard to view the query plans using the SQL Query Plans custom visualization.\n\n## On-host integration\n\nThe modified version of the Microsoft on-host integration ingests query plan data using the New Relic Log API.\n\n## Dashboard\n\nThe dashboard displays SQL Server information on multiple pages: \n- SQL Overview: The SQL Overview tab displays Database/Log Space, Memory, Waits/Blocking, Blocked Processes\n- Query Performance: This page includes the Query Plans widget\n",
-    "documentation": [
-      {
-        "description": "The installation and configuration instructions for the experimental version of the MSSQL on-host integration required to collect query plan data\n",
-        "name": "MSSQL on-host integration (query plans version)",
-        "url": "https://github.com/newrelic-experimental/nri-mssql-experimental"
-      }
-    ],
-    "iconUrl": null,
-    "id": "8c173efb-b75f-4dcb-a7b7-1c80746fd903",
-    "installPlans": [],
-    "keywords": [
-      "nrlabs",
-      "nrlabs-data",
-      "database",
-      "infrastructure"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/mssql-queryplan/logo.svg",
-    "name": "nri-mssql-query-plans",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mssql-queryplan",
-    "summary": "Display MSSQL query plans on your dashboards\n",
-    "title": "Microsoft SQL Server Query Plans",
-    "websiteUrl": "https://docs.microsoft.com/en-us/sql/relational-databases/performance/execution-plans?view=sql-server-ver15"
-  },
-  {
-    "alerts": [],
-    "authors": [
       "New Relic"
     ],
     "dashboards": [],
@@ -13240,80 +13192,6 @@
     "summary": "Run your custom Nagios scripts and see the data in New Relic\n",
     "title": "Nagios",
     "websiteUrl": "https://www.nagios.org/"
-  },
-  {
-    "alerts": [
-      {
-        "details": "This alert is triggered whenever the build error count is > 0\n\n",
-        "name": "Build Failed",
-        "type": "STATIC",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/alerts/buildfailed-alert.yml"
-      },
-      {
-        "details": "This alert is triggered whenever the number of JavaScript errors deviates 5 standard deviations from the normal.\n\n",
-        "name": "JavaScript Errors",
-        "type": "BASELINE",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/alerts/javascripterrors-alert.yml"
-      },
-      {
-        "details": "This alert is triggered whenever the average page load time deviates 2 standard deviations from the normal.\n\n",
-        "name": "Page Load Time Degrades",
-        "type": "BASELINE",
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/alerts/pageloadtime-alert.yml"
-      }
-    ],
-    "authors": [
-      "Aaron Bassett (New Relic)"
-    ],
-    "dashboards": [
-      {
-        "description": "",
-        "name": "Netlify",
-        "screenshots": [
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify01.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify02.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify03.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify04.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify05.png",
-          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify06.png"
-        ],
-        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify.json"
-      }
-    ],
-    "description": "Netlify is an all-in-one platform for automating modern web projects. Replace your hosting infrastructure, continuous integration, and deployment pipeline with a single workflow. Integrate dynamic functionality like serverless functions, user authentication, and form handling as your projects grow.\n\n### Netlify quickstart highlights\n\nThe Netlify quickstart is the fastest way to explore data from the [New Relic Netlify plugin](https://github.com/newrelic-experimental/netlify-plugin). Visualize your Netlify performance with a wide selection of dashboards.\n\n- Get a detailed view of your web application traffic, including page views, load times, sessions, and most popular content\n- Find out more about your visitors. Where are they from? What devices are they using? When do they frequent your application most?\n- View in-depth information about your page rendering, including LCP, CLS, and FID ratings\n- See all your JavaScript errors tagged by deployment\n- Compare deployment statstics and notice trends in failing builds\n\nKnow as soon as an event occurs with alerts.\n\n- When the number of JavaScript errors increases beyond an allowed threshold\n- If the onError event is triggered and a build fails\n- When page load time degrades beyond two standard deviations from the normal\n",
-    "documentation": [
-      {
-        "description": "Install the New Relic plugin for Netlify",
-        "name": "Installation Docs",
-        "url": "https://github.com/newrelic-experimental/netlify-plugin#installation"
-      }
-    ],
-    "iconUrl": null,
-    "id": "5861d7f5-26c0-43ad-bda8-c893c4b27b25",
-    "installPlans": [
-      {
-        "id": "third-party-netlify",
-        "name": "Netlify"
-      }
-    ],
-    "keywords": [
-      "infrastructure",
-      "automation",
-      "Netlify",
-      "Jamstack",
-      "RUM",
-      "browser agent",
-      "continuous integration",
-      "continuous deployment",
-      "newrelic partner"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/logo.png",
-    "name": "netlify",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/netlify",
-    "summary": "Analyze the health of your Netlify builds and Jamstack applications\n",
-    "title": "Netlify",
-    "websiteUrl": "https://www.netlify.com"
   },
   {
     "alerts": [
@@ -13961,224 +13839,6 @@
     "summary": "Send your New Relic alerts via Webhook\n",
     "title": "Webhook Notifications",
     "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic"
-    ],
-    "dashboards": [],
-    "description": "# What is Ansible?\nAnsible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.\n\nDesigned for multi-tier deployments since day one, Ansible models your IT infrastructure by describing how all of your systems inter-relate, rather than just managing one system at a time.\n\nIt uses no agents and no additional custom security infrastructure, so it's easy to deploy - and most importantly, it uses a very simple language (YAML, in the form of Ansible Playbooks) that allow you to describe your automation jobs in a way that approaches plain English.\n\n# What does New Relic provide\nNew Relic has developed a Ansible playbook for the Ansible agent to deploy the [New Relic Infrastructure agent](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/) and [On Host Integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations) throughout your environment.\n\n# How to get started?\nFollow the instructions on New Relic documentation: [Configure the infrastructure agent using Ansible](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-ansible)\n",
-    "documentation": [
-      {
-        "description": "Open-source software provisioning, configuration management, and\napplication-deployment tool enabling infrastructure as code.\n",
-        "name": "Ansible installation docs",
-        "url": "https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-ansible"
-      },
-      {
-        "description": "Ansible Galaxy page for the New Relic Ansible role\n",
-        "name": "Ansible Galaxy",
-        "url": "https://galaxy.ansible.com/newrelic/newrelic_agents"
-      }
-    ],
-    "iconUrl": null,
-    "id": "c377d781-da77-4dd6-b5a8-6a25a39e2582",
-    "installPlans": [],
-    "keywords": [
-      "automation",
-      "devops",
-      "sre",
-      "gitops"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/ansible/logo.svg",
-    "name": "ansible",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/ansible",
-    "summary": "New Relic Ansible playbook to deploy the New Relic Infrastructure agent and On Host Integrations throughout your environment.\n",
-    "title": "Ansible",
-    "websiteUrl": "https://galaxy.ansible.com/newrelic/newrelic_agents"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic"
-    ],
-    "dashboards": [],
-    "description": "# What is Chef?\nChef Infrastructure Management enables DevOps teams to model and deploy secure and scalable infrastructure automation across any cloud, VM, and/or physical infrastructure.\n\nThe Chef Infra agent is self-updating, self-automating and works well in low bandwidth or remote environments. It also allows Chef to scale up and down as customers demands change. Security keys are managed and rotated regularly using  Chef automated cookbooks which allows admins to turn off port access to SSH and WinRM further securing their environments in line with recommendations from industry standards like CIS (Center for Internet Security) benchmarks.\n\n# What does New Relic provide\nNew Relic has developed a Chef recipe for the Chef Infra agent to deploy the [New Relic Infrastructure agent](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/) and [On Host Integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations) throughout your environment.\n\n# How to get started?\nFollow the instructions on New Relic documentation: [Configure the infrastructure agent using Chef](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-chef)\n",
-    "documentation": [
-      {
-        "description": "Chef is a configuration management tool written in Ruby and Erlang.",
-        "name": "Chef installation docs",
-        "url": "https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-chef"
-      },
-      {
-        "description": "Chef Supermarket page for the New Relic Chef Recipe",
-        "name": "Chef Supermarket",
-        "url": "https://supermarket.chef.io/cookbooks/newrelic-infra"
-      }
-    ],
-    "iconUrl": null,
-    "id": "ad40ccc2-f7ef-44bf-b961-07813088fce0",
-    "installPlans": [],
-    "keywords": [
-      "automation",
-      "devops",
-      "sre",
-      "gitops"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/chef/logo.svg",
-    "name": "chef",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/chef",
-    "summary": "New Relic Chef recipe to deploy the New Relic Infrastructure agent and On Host Integrations throughout your environment.\n",
-    "title": "Chef",
-    "websiteUrl": "https://supermarket.chef.io/cookbooks/newrelic-infra"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic"
-    ],
-    "dashboards": [],
-    "description": "Access the New Relic platform from the comfort of your terminal. You can use the New Relic CLI to manage entity tags, define workloads, record deployment markers, and much more. In short, you can use the CLI to automate common tasks in your DevOps workflow.\n",
-    "documentation": [
-      {
-        "description": "This guide walks you through the essentials of New Relic CLI, from install and configuration to basic usage.\n",
-        "name": "Get started with the New Relic CLI",
-        "url": "https://developer.newrelic.com/automate-workflows/get-started-new-relic-cli/"
-      }
-    ],
-    "iconUrl": null,
-    "id": "80b839a3-2000-4bf5-86dd-4a888146043a",
-    "installPlans": [],
-    "keywords": [
-      "automation"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/cli/logo.png",
-    "name": "newrelic-cli",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/cli",
-    "summary": "The New Relic CLI enables the integration of New Relic into your existing workflows.\nBe it fetching data from your laptop while troubleshooting an issue, or adding New Relic into your CI/CD pipeline.\n",
-    "title": "New Relic CLI",
-    "websiteUrl": null
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "Pulumi"
-    ],
-    "dashboards": [],
-    "description": "# What is Pulumi?\nPulumi is a popular infrastructure-as-code software tool. Pulumi enables teams to use a unified software engineering process to deliver infrastructure and applications together and faster. This increases agility, reduces risks, and speeds innovation. You use it to provision all kinds of infrastructure and services, including New Relic entities, dashboard, alerts and synthetics.\n\n# What does New Relic provide\nPulumi has developed a New Relic Package to configure alerts, synthetics, dashboards, and other parts of New Relic through declarative configuration files.\n\n# How to get started?\nFollow the instructions on Pulumi package documentation: [Getting Started with the New Relic Package](https://www.pulumi.com/registry/packages/newrelic/)\n",
-    "documentation": [
-      {
-        "description": "In this guide, you learn how to set up New Relic alerts with Pulumi.\n",
-        "name": "Getting started with New Relic and Pulumi",
-        "url": "https://www.pulumi.com/registry/packages/newrelic/"
-      },
-      {
-        "description": "Pulumi documentation for the New Relic Package",
-        "name": "New Relic Package",
-        "url": "https://www.pulumi.com/registry/packages/newrelic/api-docs/"
-      },
-      {
-        "description": "Github repository for the New Relic Package.",
-        "name": "Github repository",
-        "url": "https://github.com/pulumi/pulumi-newrelic"
-      }
-    ],
-    "iconUrl": null,
-    "id": "cdcab89c-c83f-4216-9e1a-9c271ce7e0cf",
-    "installPlans": [],
-    "keywords": [
-      "automation",
-      "devops",
-      "sre",
-      "gitops"
-    ],
-    "level": "COMMUNITY",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/pulumi/logo.svg",
-    "name": "pulumi",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/pulumi",
-    "summary": "Pulumi is a popular infrastructure-as-code software tool.\nYou use it to provision all kinds of infrastructure and services, including New Relic entities, dashboard, alerts and synthetics.\n",
-    "title": "Pulumi",
-    "websiteUrl": "https://www.pulumi.com/registry/packages/newrelic/"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic"
-    ],
-    "dashboards": [],
-    "description": "# What is Puppet?\nPuppet is the industry standard for IT automation. Modernize, manage and bring your hybrid infrastructure into compliance through Puppet's powerful continuous automation.\n\n# What does New Relic provide\nNew Relic has developed a Puppet module for the Puppet agent to deploy the [New Relic Infrastructure agent](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/) and [On Host Integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations) throughout your environment.\n\n# How to get started?\nFollow the instructions on New Relic documentation: [Configure the infrastructure agent using Puppet](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-puppet)\n",
-    "documentation": [
-      {
-        "description": "Puppet is a configuration management tool used to manage various stages of\nthe IT infrastructure lifecycle.\n",
-        "name": "Puppet installation docs",
-        "url": "https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-puppet"
-      },
-      {
-        "description": "Puppet Forge page for the New Relic Puppet Module",
-        "name": "Puppet Forge",
-        "url": "https://forge.puppet.com/modules/newrelic/newrelic_infra"
-      }
-    ],
-    "iconUrl": null,
-    "id": "b70291ad-ff88-4ff9-9173-d4b2f99656af",
-    "installPlans": [],
-    "keywords": [
-      "automation",
-      "devops",
-      "sre",
-      "gitops"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/puppet/logo.svg",
-    "name": "puppet",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/puppet",
-    "summary": "New Relic Puppet module to deploy the New Relic Infrastructure agent and On Host Integrations throughout your environment.\n",
-    "title": "Puppet",
-    "websiteUrl": "https://forge.puppet.com/modules/newrelic/newrelic_infra"
-  },
-  {
-    "alerts": [],
-    "authors": [
-      "New Relic"
-    ],
-    "dashboards": [],
-    "description": "# What is Terraform?\nTerraform is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services. Terraform codifies cloud APIs into declarative configuration files.\n\n# What does New Relic provide\nNew Relic has developed a Terraform provider to configure alerts, synthetics, dashboards, and other parts of New Relic through declarative configuration files.\n\n# How to get started?\nFollow the instructions on Terraform provider documentation: [Getting Started with the New Relic Provider](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/guides/getting_started)\n",
-    "documentation": [
-      {
-        "description": "In this guide, you learn how to set up New Relic alerts with Terraform.\n",
-        "name": "Getting started with New Relic and Terraform",
-        "url": "https://developer.newrelic.com/terraform/get-started-terraform/"
-      },
-      {
-        "description": "Terraform documentation for the New Relic Provider",
-        "name": "New Relic Provider",
-        "url": "https://registry.terraform.io/providers/newrelic/newrelic/latest/docs"
-      },
-      {
-        "description": "Github repository for the New Relic Provider.",
-        "name": "Github repository",
-        "url": "https://github.com/newrelic/terraform-provider-newrelic"
-      }
-    ],
-    "iconUrl": null,
-    "id": "ba9ce393-d85f-4e40-81a7-d52b2c6ad213",
-    "installPlans": [],
-    "keywords": [
-      "automation",
-      "devops",
-      "sre",
-      "gitops"
-    ],
-    "level": "NEWRELIC",
-    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/terraform/logo.svg",
-    "name": "terraform",
-    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/terraform",
-    "summary": "Terraform is a popular, infrastructure-as-code software tool built by HashiCorp.\nYou use it to provision all kinds of infrastructure and services, including New Relic entities, dashboard, alerts and synthetics.\n",
-    "title": "Terraform",
-    "websiteUrl": "https://registry.terraform.io/providers/newrelic/newrelic/latest/docs"
   },
   {
     "alerts": [],
@@ -15858,6 +15518,42 @@
     "summary": "Prometheus' ability to monitor a wide variety of data necessitates monitoring the toolkit itself. New Relic helps store, manage, and view telemetry data from your Prometheus setup, relieving you of a significant operational burden.\n",
     "title": "Prometheus Remote Write integration",
     "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic"
+    ],
+    "dashboards": [],
+    "description": "# What is Puppet?\nPuppet is the industry standard for IT automation. Modernize, manage and bring your hybrid infrastructure into compliance through Puppet's powerful continuous automation.\n\n# What does New Relic provide\nNew Relic has developed a Puppet module for the Puppet agent to deploy the [New Relic Infrastructure agent](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/) and [On Host Integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations) throughout your environment.\n\n# How to get started?\nFollow the instructions on New Relic documentation: [Configure the infrastructure agent using Puppet](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-puppet)\n",
+    "documentation": [
+      {
+        "description": "Puppet is a configuration management tool used to manage various stages of\nthe IT infrastructure lifecycle.\n",
+        "name": "Puppet installation docs",
+        "url": "https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-puppet"
+      },
+      {
+        "description": "Puppet Forge page for the New Relic Puppet Module",
+        "name": "Puppet Forge",
+        "url": "https://forge.puppet.com/modules/newrelic/newrelic_infra"
+      }
+    ],
+    "iconUrl": null,
+    "id": "b70291ad-ff88-4ff9-9173-d4b2f99656af",
+    "installPlans": [],
+    "keywords": [
+      "automation",
+      "devops",
+      "sre",
+      "gitops"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/puppet/logo.svg",
+    "name": "puppet",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/puppet",
+    "summary": "New Relic Puppet module to deploy the New Relic Infrastructure agent and On Host Integrations throughout your environment.\n",
+    "title": "Puppet",
+    "websiteUrl": "https://forge.puppet.com/modules/newrelic/newrelic_infra"
   },
   {
     "alerts": [
@@ -21773,5 +21469,309 @@
     "summary": "Send Zipkin-format traces to New Relic\n",
     "title": "Zipkin",
     "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "Contentsquare"
+    ],
+    "dashboards": [],
+    "description": "Get more value from your investments in Contentsquare and New Relic by seeing\nhow performance issues truly affect your customers’ digital experience. \n\nThrough this integration, access Contentsquare Session Replay links directly\nwithin New Relic. With this, Contentsquare shows you exactly what a user was \ndoing before, during, and after an issue occurs, so that you can remediate \nissues quickly and with the complete picture. Dramatically reduce the \ntime-to-repair of system errors by linking to your impacted users' exact \nsession replays.\n\n- **Reduce time-to-recovery**\n\n  By integrating Contentsquare with your New Relic, you can provide your \n  engineering team with all of the necessary technical and behavioral data \n  needed to identify the root cause of an issue without having to spend cycles \n  trying to recreate the issue.\n\n\n- **Reduce time-to-recovery**\n\n  Combine the technical data from New Relic with the behavioral data surfaced \n  from Contentsquare to uncover and prioritize the issues that have the\n  greatest impact on your revenue and customer experience metrics.\n",
+    "documentation": [
+      {
+        "description": "See how to install this integration and the data exchanged between New \nRelic ancd Contentsquare.\n",
+        "name": "Installation Doc",
+        "url": "https://uxanalyser.zendesk.com/hc/en-gb/articles/4408893503122-New-Relic"
+      },
+      {
+        "description": "New Relic x Contentsquare partnership page on Contentsquare website\n",
+        "name": "Partnership Page",
+        "url": "https://partners.contentsquare.com/technology-partners/new-relic"
+      }
+    ],
+    "iconUrl": null,
+    "id": "875f2e3d-7c1b-436b-ab77-602090de1134",
+    "installPlans": [],
+    "keywords": [
+      "Behavioural Analytics",
+      "Customer Experience",
+      "Digital Experience",
+      "User Experience"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/contentsquare/logo.png",
+    "name": "contentsquare",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/contentsquare",
+    "summary": "Contentsquare is a powerful, yet easy-to-use, digital experience analytics \nplatform that collects and quantifies user behavior across all your digital \nproperties showing you what users like, what they don’t like, where they \nstruggle, and why they leave. \nContentsquare surfaces opportunities to improve your customer experience\nautomatically and easily so you can increase your conversion rates, improve\ncustomer loyalty, reduce costs and drive revenue.\n",
+    "title": "Contentsquare",
+    "websiteUrl": "https://www.contentsquare.com"
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic Labs"
+    ],
+    "dashboards": [
+      {
+        "description": "Sample SQL Server dashboard with query plans included",
+        "name": "MSSQL On-Host Integration w/ Query Plans",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/mssql-queryplan/dashboards/mssql-queryplan01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/mssql-queryplan/dashboards/mssql-queryplan02.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/mssql-queryplan/dashboards/mssql-queryplan.json"
+      }
+    ],
+    "description": "This quickstart includes a modified version of the Microsoft SQL Server on-host integration that captures query plan data for slowest running queries, and a dashboard to view the query plans using the SQL Query Plans custom visualization.\n\n## On-host integration\n\nThe modified version of the Microsoft on-host integration ingests query plan data using the New Relic Log API.\n\n## Dashboard\n\nThe dashboard displays SQL Server information on multiple pages: \n- SQL Overview: The SQL Overview tab displays Database/Log Space, Memory, Waits/Blocking, Blocked Processes\n- Query Performance: This page includes the Query Plans widget\n",
+    "documentation": [
+      {
+        "description": "The installation and configuration instructions for the experimental version of the MSSQL on-host integration required to collect query plan data\n",
+        "name": "MSSQL on-host integration (query plans version)",
+        "url": "https://github.com/newrelic-experimental/nri-mssql-experimental"
+      }
+    ],
+    "iconUrl": null,
+    "id": "8c173efb-b75f-4dcb-a7b7-1c80746fd903",
+    "installPlans": [],
+    "keywords": [
+      "nrlabs",
+      "nrlabs-data",
+      "database",
+      "infrastructure"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/mssql-queryplan/logo.svg",
+    "name": "nri-mssql-query-plans",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/mssql-queryplan",
+    "summary": "Display MSSQL query plans on your dashboards\n",
+    "title": "Microsoft SQL Server Query Plans",
+    "websiteUrl": "https://docs.microsoft.com/en-us/sql/relational-databases/performance/execution-plans?view=sql-server-ver15"
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic"
+    ],
+    "dashboards": [],
+    "description": "Access the New Relic platform from the comfort of your terminal. You can use the New Relic CLI to manage entity tags, define workloads, record deployment markers, and much more. In short, you can use the CLI to automate common tasks in your DevOps workflow.\n",
+    "documentation": [
+      {
+        "description": "This guide walks you through the essentials of New Relic CLI, from install and configuration to basic usage.\n",
+        "name": "Get started with the New Relic CLI",
+        "url": "https://developer.newrelic.com/automate-workflows/get-started-new-relic-cli/"
+      }
+    ],
+    "iconUrl": null,
+    "id": "80b839a3-2000-4bf5-86dd-4a888146043a",
+    "installPlans": [],
+    "keywords": [
+      "automation"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/cli/logo.png",
+    "name": "newrelic-cli",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/cli",
+    "summary": "The New Relic CLI enables the integration of New Relic into your existing workflows.\nBe it fetching data from your laptop while troubleshooting an issue, or adding New Relic into your CI/CD pipeline.\n",
+    "title": "New Relic CLI",
+    "websiteUrl": null
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "Pulumi"
+    ],
+    "dashboards": [],
+    "description": "# What is Pulumi?\nPulumi is a popular infrastructure-as-code software tool. Pulumi enables teams to use a unified software engineering process to deliver infrastructure and applications together and faster. This increases agility, reduces risks, and speeds innovation. You use it to provision all kinds of infrastructure and services, including New Relic entities, dashboard, alerts and synthetics.\n\n# What does New Relic provide\nPulumi has developed a New Relic Package to configure alerts, synthetics, dashboards, and other parts of New Relic through declarative configuration files.\n\n# How to get started?\nFollow the instructions on Pulumi package documentation: [Getting Started with the New Relic Package](https://www.pulumi.com/registry/packages/newrelic/)\n",
+    "documentation": [
+      {
+        "description": "In this guide, you learn how to set up New Relic alerts with Pulumi.\n",
+        "name": "Getting started with New Relic and Pulumi",
+        "url": "https://www.pulumi.com/registry/packages/newrelic/"
+      },
+      {
+        "description": "Pulumi documentation for the New Relic Package",
+        "name": "New Relic Package",
+        "url": "https://www.pulumi.com/registry/packages/newrelic/api-docs/"
+      },
+      {
+        "description": "Github repository for the New Relic Package.",
+        "name": "Github repository",
+        "url": "https://github.com/pulumi/pulumi-newrelic"
+      }
+    ],
+    "iconUrl": null,
+    "id": "cdcab89c-c83f-4216-9e1a-9c271ce7e0cf",
+    "installPlans": [],
+    "keywords": [
+      "automation",
+      "devops",
+      "sre",
+      "gitops"
+    ],
+    "level": "COMMUNITY",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/pulumi/logo.svg",
+    "name": "pulumi",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/pulumi",
+    "summary": "Pulumi is a popular infrastructure-as-code software tool.\nYou use it to provision all kinds of infrastructure and services, including New Relic entities, dashboard, alerts and synthetics.\n",
+    "title": "Pulumi",
+    "websiteUrl": "https://www.pulumi.com/registry/packages/newrelic/"
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic"
+    ],
+    "dashboards": [],
+    "description": "# What is Terraform?\nTerraform is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services. Terraform codifies cloud APIs into declarative configuration files.\n\n# What does New Relic provide\nNew Relic has developed a Terraform provider to configure alerts, synthetics, dashboards, and other parts of New Relic through declarative configuration files.\n\n# How to get started?\nFollow the instructions on Terraform provider documentation: [Getting Started with the New Relic Provider](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/guides/getting_started)\n",
+    "documentation": [
+      {
+        "description": "In this guide, you learn how to set up New Relic alerts with Terraform.\n",
+        "name": "Getting started with New Relic and Terraform",
+        "url": "https://developer.newrelic.com/terraform/get-started-terraform/"
+      },
+      {
+        "description": "Terraform documentation for the New Relic Provider",
+        "name": "New Relic Provider",
+        "url": "https://registry.terraform.io/providers/newrelic/newrelic/latest/docs"
+      },
+      {
+        "description": "Github repository for the New Relic Provider.",
+        "name": "Github repository",
+        "url": "https://github.com/newrelic/terraform-provider-newrelic"
+      }
+    ],
+    "iconUrl": null,
+    "id": "ba9ce393-d85f-4e40-81a7-d52b2c6ad213",
+    "installPlans": [],
+    "keywords": [
+      "automation",
+      "devops",
+      "sre",
+      "gitops"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/observability-as-code/terraform/logo.svg",
+    "name": "terraform",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/observability-as-code/terraform",
+    "summary": "Terraform is a popular, infrastructure-as-code software tool built by HashiCorp.\nYou use it to provision all kinds of infrastructure and services, including New Relic entities, dashboard, alerts and synthetics.\n",
+    "title": "Terraform",
+    "websiteUrl": "https://registry.terraform.io/providers/newrelic/newrelic/latest/docs"
+  },
+  {
+    "alerts": [
+      {
+        "details": "This alert is triggered whenever the build error count is > 0\n\n",
+        "name": "Build Failed",
+        "type": "STATIC",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/alerts/buildfailed-alert.yml"
+      },
+      {
+        "details": "This alert is triggered whenever the number of JavaScript errors deviates 5 standard deviations from the normal.\n\n",
+        "name": "JavaScript Errors",
+        "type": "BASELINE",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/alerts/javascripterrors-alert.yml"
+      },
+      {
+        "details": "This alert is triggered whenever the average page load time deviates 2 standard deviations from the normal.\n\n",
+        "name": "Page Load Time Degrades",
+        "type": "BASELINE",
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/alerts/pageloadtime-alert.yml"
+      }
+    ],
+    "authors": [
+      "Aaron Bassett (New Relic)"
+    ],
+    "dashboards": [
+      {
+        "description": "",
+        "name": "Netlify",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify01.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify02.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify03.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify04.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify05.png",
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify06.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/dashboards/netlify.json"
+      }
+    ],
+    "description": "Netlify is an all-in-one platform for automating modern web projects. Replace your hosting infrastructure, continuous integration, and deployment pipeline with a single workflow. Integrate dynamic functionality like serverless functions, user authentication, and form handling as your projects grow.\n\n### Netlify quickstart highlights\n\nThe Netlify quickstart is the fastest way to explore data from the [New Relic Netlify plugin](https://github.com/newrelic-experimental/netlify-plugin). Visualize your Netlify performance with a wide selection of dashboards.\n\n- Get a detailed view of your web application traffic, including page views, load times, sessions, and most popular content\n- Find out more about your visitors. Where are they from? What devices are they using? When do they frequent your application most?\n- View in-depth information about your page rendering, including LCP, CLS, and FID ratings\n- See all your JavaScript errors tagged by deployment\n- Compare deployment statstics and notice trends in failing builds\n\nKnow as soon as an event occurs with alerts.\n\n- When the number of JavaScript errors increases beyond an allowed threshold\n- If the onError event is triggered and a build fails\n- When page load time degrades beyond two standard deviations from the normal\n",
+    "documentation": [
+      {
+        "description": "Install the New Relic plugin for Netlify",
+        "name": "Installation Docs",
+        "url": "https://github.com/newrelic-experimental/netlify-plugin#installation"
+      }
+    ],
+    "iconUrl": null,
+    "id": "5861d7f5-26c0-43ad-bda8-c893c4b27b25",
+    "installPlans": [
+      {
+        "id": "third-party-netlify",
+        "name": "Netlify"
+      }
+    ],
+    "keywords": [
+      "infrastructure",
+      "automation",
+      "Netlify",
+      "Jamstack",
+      "RUM",
+      "browser agent",
+      "continuous integration",
+      "continuous deployment",
+      "newrelic partner"
+    ],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/netlify/logo.png",
+    "name": "netlify",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/netlify",
+    "summary": "Analyze the health of your Netlify builds and Jamstack applications\n",
+    "title": "Netlify",
+    "websiteUrl": "https://www.netlify.com"
+  },
+  {
+    "alerts": [],
+    "authors": [
+      "New Relic",
+      "Zack Stickles (New Relic)"
+    ],
+    "dashboards": [
+      {
+        "description": "Monitor your Battlensakes performance and see how it stacks up against your competition!",
+        "name": "Battlesnake Performance",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/battlesnake/dashboards/battlesnake-performance.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/battlesnake/dashboards/battlesnake-performance.json"
+      },
+      {
+        "description": "A dashboard to monitor your Battlesnake server's performance. It's important to keep all responses to the `/move` endpoint under 500ms. Furthermore, it's possible that your snake may be in multiple concurrent matches at the same time. It's important to make sure you server and web application are running smoothly to keep you in the game!",
+        "name": "Battlesnake Server Status",
+        "screenshots": [
+          "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/battlesnake/dashboards/battlesnake-server-status.png"
+        ],
+        "url": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/battlesnake/dashboards/battlesnake-server-status.json"
+      }
+    ],
+    "description": "[Battlesnake](https://play.battlesnake.com/) is a multi-player programming game played by developers all over the world. All you need to play is a live web server that implements the [Battlesnake API](https://docs.battlesnake.com/).\n\nWith New Relic, you can monitor you Battlesnake [server](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/) and [web application](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/introduction-apm). This quickstart includes a helpful dashboard to ensure your server is compliant with the game's server requirements and your Battlesnake is set up for success!\n\nAdditional features coming soon!\n",
+    "documentation": [],
+    "iconUrl": null,
+    "id": "63a65857-a25e-4654-9174-928e5894b3b9",
+    "installPlans": [
+      {
+        "id": "battlesnake",
+        "name": "Custom Attributes"
+      }
+    ],
+    "keywords": [],
+    "level": "NEWRELIC",
+    "logoUrl": "https://raw.githubusercontent.com/newrelic/newrelic-quickstarts/v0.101.0/quickstarts/battlesnake/logo.png",
+    "name": "battlesnake",
+    "packUrl": "https://github.com/newrelic/newrelic-quickstarts/tree/main/quickstarts/battlesnake",
+    "summary": "Battlesnake is a multi-player programming game played by developers all over the world. All you need to play is a live web server that implements the Battlesnake API.\n",
+    "title": "Battlesnake",
+    "websiteUrl": "https://play.battlesnake.com"
   }
 ]
