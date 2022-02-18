@@ -123,7 +123,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     allQuickstarts,
   } = result.data;
 
-  createRedirectsForNewIoDomain(createRedirect, allQuickstarts);
+  //createRedirectsForNewIoDomain(createRedirect, allQuickstarts);
+
+  createRedirect({
+    fromPath: `/instant-observability/`,
+    toPath: `https://newrelic.com/instant-observability/`,
+  });
+  createRedirect({
+    fromPath: `/instant-observability/*`,
+    toPath: `https://newrelic.com/instant-observability/*`,
+  });
 
   allMdx.edges.forEach(({ node }) => {
     const {
