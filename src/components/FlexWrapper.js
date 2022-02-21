@@ -3,8 +3,6 @@ import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
 const FlexWrapper = ({ children }) => {
-  console.log(children);
-
   return (
     <div
       css={css`
@@ -12,6 +10,7 @@ const FlexWrapper = ({ children }) => {
         padding-bottom: 25px;
       `}
     >
+      <p>test</p>
       {children}
     </div>
   );
