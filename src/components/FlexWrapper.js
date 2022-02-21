@@ -10,7 +10,6 @@ const FlexWrapper = ({ children }) => {
         padding-bottom: 25px;
       `}
     >
-      <p>test</p>
       {children}
     </div>
   );
