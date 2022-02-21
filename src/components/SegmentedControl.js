@@ -53,7 +53,7 @@ const SegmentedControl = ({ items, onChange, className }) => {
               title={value}
               css={css`
                 margin-top: 4px;
-                font-size: 2em;
+                font-size: 1.5em;
               `}
               name={`fe-${getViewType(value)}`}
             />

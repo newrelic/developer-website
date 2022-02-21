@@ -68,7 +68,7 @@ const IndexPage = ({ data, pageContext, location }) => {
               <p>
                 New Relic Instant Observability (I/O) helps you monitor your
                 stack like a pro, without the burden of manual set up. Explore
-                an open source ecosystem of 400+ quickstarts—out-of-the-box
+                an open source ecosystem of 450+ quickstarts—out-of-the-box
                 bundles of integrations, dashboards, and alerts—created by
                 observability experts around the world, vetted by New Relic, and
                 ready for you to install with one click.

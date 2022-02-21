@@ -93,6 +93,8 @@
       url: '/build-apps/advanced-config'
     - title: Create a 'Hello, World!' app
       url: '/build-apps/build-hello-world-app'
+    - title: Build a NR1 app with React hooks
+      url: '/build-apps/build-react-hooks-app'
     - title: Publish and deploy your Nerdpack
       url: '/build-apps/publish-deploy'
       pages:
@@ -194,6 +196,11 @@
   icon: fe-zap
   url: '/contribute-to-quickstarts'
   pages:
+    - title: Send telemetry data to New Relic
+      url: '/contribute-to-quickstarts/instrument-library'
+      pages:
+        - title: Send events from your product
+          url: '/contribute-to-quickstarts/instrument-library/send-events'
     - title: Build a quickstart
       url: '/contribute-to-quickstarts/build-a-quickstart'
       pages:
@@ -207,6 +214,8 @@
           url: /contribute-to-quickstarts/build-a-quickstart/create-quickstart
     - title: Populate your alert configurations with NerdGraph
       url: '/contribute-to-quickstarts/query-alerts-for-quickstart'
+
+
 - title: Try our APIs
   icon: nr-share
   url: '/try-our-apis'

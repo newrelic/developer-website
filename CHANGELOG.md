@@ -1,3 +1,34 @@
+# [1.79.0](https://github.com/newrelic/developer-website/compare/v1.78.0...v1.79.0) (2022-02-09)
+
+
+### Features
+
+* added guide for react hooks ([20e9ac7](https://github.com/newrelic/developer-website/commit/20e9ac7b4e7bf78cba0683c8694d893a8ef212b6))
+
+# [1.78.0](https://github.com/newrelic/developer-website/compare/v1.77.0...v1.78.0) (2022-02-08)
+
+
+### Features
+
+* added send data page ([b763eec](https://github.com/newrelic/developer-website/commit/b763eecf242f82d9d5bae965836d470e253f4213))
+* updated ([664629c](https://github.com/newrelic/developer-website/commit/664629c7d80d6d5a65714266818f9a07773cefa5))
+* updated text ([d661f90](https://github.com/newrelic/developer-website/commit/d661f90c6973c66021ad0715657e627af9e9ccc2))
+
+# [1.77.0](https://github.com/newrelic/developer-website/compare/v1.76.3...v1.77.0) (2022-02-07)
+
+
+### Bug Fixes
+
+* change for name of variable ([5ded8f4](https://github.com/newrelic/developer-website/commit/5ded8f429699a30b88ba64c7812e0ef3a0dd5b94))
+* code clearing ([39ce400](https://github.com/newrelic/developer-website/commit/39ce40064ec7f8c75164882028f4491f30f615c0))
+* move subtask's styles of guideTile to parent ([840fd0c](https://github.com/newrelic/developer-website/commit/840fd0c826af96b677d1cf0e01ad34e951c6f08f))
+* return to oryginal margin in h3 on guideTile ([7c41d75](https://github.com/newrelic/developer-website/commit/7c41d75cf5a41238d7dcb5371b28c641e4fcb843))
+
+
+### Features
+
+* new styles for subtask in lab ([5e89f3b](https://github.com/newrelic/developer-website/commit/5e89f3b6dd3885aab476f98104036c13dd1070c2))
+
 ## [1.76.3](https://github.com/newrelic/developer-website/compare/v1.76.2...v1.76.3) (2022-01-12)
 
 

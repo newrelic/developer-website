@@ -120,7 +120,6 @@ DevSiteSeo.propTypes = {
   title: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
   type: PropTypes.string,
-  quickStartName: PropTypes.string,
 };
 
 export default DevSiteSeo;
