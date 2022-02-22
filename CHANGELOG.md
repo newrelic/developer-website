@@ -1,3 +1,22 @@
+# [1.80.0](https://github.com/newrelic/developer-website/compare/v1.79.0...v1.80.0) (2022-02-22)
+
+
+### Bug Fixes
+
+* cinflicts check ([b45cdf3](https://github.com/newrelic/developer-website/commit/b45cdf35411ba734b89292da475d761eb565c914))
+* clear code ([d185f49](https://github.com/newrelic/developer-website/commit/d185f4996d4c15282db891d420e28e6c2449c60b))
+* conflicts check ([7a4d244](https://github.com/newrelic/developer-website/commit/7a4d244069e478a31e2d16ed1fed5665ba34040f))
+* **custom viz:** add nerdbyte video ([256b4ae](https://github.com/newrelic/developer-website/commit/256b4ae00edcca8fbf69841117d9e6a04cdb1075))
+* link fix for events ([770b5f9](https://github.com/newrelic/developer-website/commit/770b5f95ae773d2102cf7d52b6ec840add7b6946))
+* typo ([205a3a1](https://github.com/newrelic/developer-website/commit/205a3a11dee17e647b5041ea402f307d17f6941c))
+* update IO url across site ([f1a0bb9](https://github.com/newrelic/developer-website/commit/f1a0bb96aae338fd7f0cf9d2fa916607db78593f))
+* update theme to 5.0.1 to get new Global Header ([36c75ad](https://github.com/newrelic/developer-website/commit/36c75ada1be0b5e7ab51abbfc2d13bf35268da57))
+
+
+### Features
+
+* components for requirements and objectives ([e2d712d](https://github.com/newrelic/developer-website/commit/e2d712da8fd184fb174350181e12b63c06492e4e))
+
 # [1.79.0](https://github.com/newrelic/developer-website/compare/v1.78.0...v1.79.0) (2022-02-09)
 
 
