@@ -1,0 +1,30 @@
+---
+title: 'Resources'
+template: 'GuideTemplate'
+description: 'Resources'
+procIdx: 18
+---
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/fundamentals).
+
+Each lesson in this lab builds on the last one, so make sure you learn about [SDK constructors](/opentelemetry-masterclass/fundamentals/sdk-constructors) before proceeding with this one.
+
+</Callout>
+
+You use a resource to identify your project’s environment by means of attributes. For example, to describe your host, you can include attributes for your host name and a virtual machine image. To describe your service, you can include a service namespace and a version. To describe your telemetry instrumentation, you can include an SDK name and a version.
+
+The OpenTelemetry specification provides resource semantic conventions, like it does for signals. The one and only required semantic attribute for a resource is `service.name`. This is the only attribute that a Resource must include, the rest can be found in the [specification](https://opentelemetry.io/docs/reference/specification/resource/semantic_conventions/#semantic-attributes-with-sdk-provided-default-value).
+
+Once you’ve created a resource for your environment, you can include it with a constructor. For traces, this means that you attach the resource to your tracer provider. When you create spans, they are associated with your environment’s resource.
+
+Like with the data model and API specifications, some SDK specifications are more mature than others. The resource SDK specification, for example, is stable, while the tesource semantic conventions are still experimental. View the [OpenTelemetry status page](https://opentelemetry.io/status/) for the most up-to-date information of the maturity of SDK specifications.
+
+You’ve learned a lot about OpenTelemetry as a specification. This is the foundation for understanding OpenTelemetry because everything built around it abides by the specification. But OpenTelemetry also includes official code repositories that implement the specification in many popular programming languages.
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue on to the next lesson: [OpenTelemetry implementations](/opentelemetry-masterclass/fundamentals/opentelemetry-implementations).
+
+</Callout>

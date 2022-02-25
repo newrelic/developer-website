@@ -1,0 +1,28 @@
+---
+title: 'SDK constructors'
+template: 'GuideTemplate'
+description: 'SDK constructors'
+procIdx: 17
+---
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/fundamentals).
+
+Each lesson in this lab builds on the last one, so make sure you learn about [SDK plugins](/opentelemetry-masterclass/fundamentals/sdk-plugins) before proceeding with this one.
+
+</Callout>
+
+The specification defines constructors as a way to configure your OpenTelemetry implementation. Constructors include environment variables and configuration classes.
+
+For example, the SDK provides a built-in exporter plugin for transmitting data over OTLP, OpenTelemetry’s exchange protocol you learned about in a previous lesson. The OTLP exporter specification defines some environment variables you use to configure it, such as `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`, which specifies the url where the exporter should send trace data.
+
+The specification also defines classes you use to configure the API implementation. For traces, this is the tracer provider you already learned about. You use the tracer provider to create tracers that create spans. The tracer provider holds the configuration for how spans are generated, processed, and exported. It’s how you supply the plugins to implement the API.
+
+Along with plugins and constructors, the OpenTelemetry SDK specification defines a way for you to identify the environment in which you’re producing telemetry data. This SDK component is called a resource.
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue on to the next lesson: [Resources](/opentelemetry-masterclass/fundamentals/resources).
+
+</Callout>

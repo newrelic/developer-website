@@ -1,0 +1,76 @@
+---
+title: 'OpenTelemetry implementations'
+template: 'GuideTemplate'
+description: 'OpenTelemetry implementations'
+procIdx: 19
+---
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/fundamentals).
+
+Each lesson in this lab builds on the last one, so make sure you learn about [resources](/opentelemetry-masterclass/fundamentals/resources) before proceeding with this one.
+
+</Callout>
+
+OpenTelemetry is more than a specification. It also provides official implementations in many of the most popular programming languages:
+
+- [.NET](https://github.com/open-telemetry/opentelemetry-dotnet)
+- [C++](https://github.com/open-telemetry/opentelemetry-cpp)
+- [Erlang/Elixir](https://github.com/open-telemetry/opentelemetry-erlang)
+- [Go](https://github.com/open-telemetry/opentelemetry-go)
+- [Java](https://github.com/open-telemetry/opentelemetry-java)
+- [JavaScript](https://github.com/open-telemetry/opentelemetry-js)
+- [PHP](https://github.com/open-telemetry/opentelemetry-php)
+- [Python](https://github.com/open-telemetry/opentelemetry-python)
+- [Ruby](https://github.com/open-telemetry/opentelemetry-ruby)
+- [Rust](https://github.com/open-telemetry/opentelemetry-rust)
+- [Swift](https://github.com/open-telemetry/opentelemetry-swift)
+
+Just as with the specification, these implementations are evolving. Learn more about how far along your preferred language is by checking the [compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
+
+OpenTelemetry provides manual and automatic forms of instrumentation that use the API to generate data.
+
+## Manual instrumentation
+
+Manual instrumentation requires you, the developer, to use the SDK to configure your API and use the API to create and export the data. In terms of traces, this means that you create a tracer provider, you create tracers, and you create spans for each operation that you want to collect data about. If you’re trying to natively instrument your library or framework, you use manual instrumentation.
+
+## Automatic instrumentation
+
+Automatic instrumentation provides the same telemetry data as manual instrumentation without you having to instrument code yourself. Automatic instrumentation is limited to popular libraries and frameworks, so you can only use it if you’re an application developer using one of those projects. Fortunately, you can find automatic instrumentation for many of the popular open source libraries and frameworks.
+
+<Callout variant="tip" title="Technical detail">
+
+OpenTelemetry developers can provide automatic instrumentation by automatically manipulating and instrumenting code. For example, the OpenTelemetry Java agent rewrites an application’s bytecode to add instrumentation.
+
+However, they can also provide library instrumentation. This can take a few forms:
+
+- OpenTelemetry is built directly into a library
+- Instrumentation code utilizes special purpose extension hooks that are present in the library it instruments
+- Wrapped versions of libraries include an instrumentation layer
+
+</Callout>
+
+## Repository structure
+
+OpenTelemetry implementations include many components, including SDK interfaces, API interfaces, plugins, and semantic conventions, and their implementations don’t all look the same. Not only do they make decisions that are idiomatic to the language they’re implemented in, but they separate concepts differently.
+
+For example, one language may have one repository for all OpenTelemetry code. Another language may separate manual and automatic instrumentation into their own repositories. Review the [OpenTelemetry documentation](https://opentelemetry.io/docs/instrumentation/) to learn more about your preferred language.
+
+## Chapter one Summary
+
+In this chapter, you learned the fundamentals of OpenTelemetry, including:
+
+- How OpenTelemetry provides both specifications and implementations
+- What the data specification is and what it defines
+- What the API specification is and how you use it
+- What the SDK specification is and how you use it
+- What the OpenTelemetry implementations are and the components they cover
+
+In the next chapter, you walk through a practical example, using an OpenTelemetry implementation. You instrument a demo application and send the data to your New Relic account, using many of the features you learned about in this chapter.
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue to the [chapter two](/opentelemetry-masterclass/hands-on) where you get practical experience instrumenting an application with OpenTelemetry.
+
+</Callout>

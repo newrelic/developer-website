@@ -1,0 +1,902 @@
+---
+title: '.NET OpenTelemetry workshop'
+template: 'GuideTemplate'
+description: 'Instrument a .NET application with OpenTelemetry'
+procIdx: 1.1
+---
+
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/hands-on).
+
+Each lesson in this lab builds on the last one, so make sure you read the [workshop introduction](/opentelemetry-masterclass/hands-on/workshop-introduction) before proceeding with this one.
+
+</Callout>
+
+In this workshop, you instrument a .NET web application with OpenTelemetry, using the fundamentals you learned in chapter one of this masterclass! You also send your telemetry data to your New Relic account and see how useful the data is for monitoring your system and observing its behaviors.
+
+If you haven’t already, sign up for a free New Relic account. You need one to complete this workshop.
+
+## Set up your environment
+
+<Steps>
+
+<Step>
+
+Clone our demo repository:
+
+<>
+
+```shell
+git clone https://github.com/reese-lee/mcv3-apps/
+```
+
+</>
+
+</Step>
+
+<Step>
+
+Change to the master branch and _Uninstrumented/dotnet_ directory:
+
+<>
+
+```shell
+cd mcv3-apps
+git checkout master
+cd Uninstrumented/dotnet
+```
+
+</>
+
+</Step>
+
+</Steps>
+
+Take a look at _Controllers/FibonacciController.cs_ to familiarize yourself with the app logic.
+
+## Familiarize yourself with the application
+
+This demo service uses [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0), a framework for building web applications.
+
+_Controllers/FibonacciController.cs_ has a single endpoint, called `/fibonacci`, that takes an argument, `n`, calculates the nth fibonacci number, and returns the results in a JSON-serialized format:
+
+```csharp fileName=Controllers/FibonacciController.cs lineHighlight=6-25,58
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+
+namespace dotnet.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class FibonacciController : ControllerBase
+{
+
+    [HttpGet]
+    public IActionResult Get(long n)
+    {
+        try
+        {
+            return Ok(new {
+                n = n,
+                result = Fibonacci(n)
+            });
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+
+    private long Fibonacci(long n)
+    {
+
+        var result = 0L;
+        if (n <= 2)
+        {
+            result = 1;
+        }
+        else
+        {
+            var a = 0L;
+            var b = 1L;
+
+            for (var i = 1; i < n; i++)
+            {
+                result = checked(a + b);
+                a = b;
+                b = result;
+            }
+        }
+
+        return result;
+    }
+
+    private void ThrowIfOutOfRange(long n)
+    {
+        if (n < 1 || n > 90)
+        {
+            throw new ArgumentOutOfRangeException(nameof(n), n, "n must be between 1 and 90");
+        }
+    }
+}
+```
+
+The logic for calculating the nth fibonacci number is contained within a function called `Fibonacci()`:
+
+```csharp fileName=Controllers/FibonacciController.cs lineHighlight=27-49
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+
+namespace dotnet.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class FibonacciController : ControllerBase
+{
+
+    [HttpGet]
+    public IActionResult Get(long n)
+    {
+        try
+        {
+            return Ok(new {
+                n = n,
+                result = Fibonacci(n)
+            });
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+
+    private long Fibonacci(long n)
+    {
+
+        var result = 0L;
+        if (n <= 2)
+        {
+            result = 1;
+        }
+        else
+        {
+            var a = 0L;
+            var b = 1L;
+
+            for (var i = 1; i < n; i++)
+            {
+                result = checked(a + b);
+                a = b;
+                b = result;
+            }
+        }
+
+        return result;
+    }
+
+    private void ThrowIfOutOfRange(long n)
+    {
+        if (n < 1 || n > 90)
+        {
+            throw new ArgumentOutOfRangeException(nameof(n), n, "n must be between 1 and 90");
+        }
+    }
+}
+```
+
+This function takes the argument, `n`, and checks if it’s between 1 and 90. If it’s not, the function throws an `ArgumentOutOfRangeException` and rejects the request. Otherwise, it computes and returns the nth fibonacci number.
+
+In _Program.cs_, you configure and build your ASP.NET Core app:
+
+```csharp fileName=Program.cs
+using dotnet.Controllers;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+app.MapControllers();
+
+app.Run();
+```
+
+You use this configuration to instrument your application in the next section.
+
+Those are the most important functions you need to know about this .NET application before you instrument it. Next, spin up a docker container with your app and send some traffic to it.
+
+## Spin up your application
+
+<Steps>
+
+<Step>
+
+First, get or create a [New Relic license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key) for your account, and set it in an environment variable called `NEW_RELIC_API_KEY`:
+
+<>
+
+```shell
+export NEW_RELIC_API_KEY=<YOUR_LICENSE_KEY>
+```
+
+</>
+
+<Callout variant="important">
+
+Don’t forget to replace `<YOUR_LICENSE_KEY>` with your real [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key)!
+
+</Callout>
+
+</Step>
+
+<Step>
+
+From the _Uninstrumented/dotnet_ directory, spin up the app’s docker container:
+
+<>
+
+```shell
+docker-compose up --build
+```
+
+</>
+
+</Step>
+
+<Step>
+
+In another terminal, change to _Uninstrumented/dotnet_, and run the load generator script:
+
+<>
+
+```shell
+cd mcv3-apps/Uninstrumented/dotnet
+./load-generator.sh
+```
+
+</>
+
+This makes periodic requests to your application. It sends a mixture of requests that you expect to succeed and ones that you expect to fail. Looking at the load generator’s log stream, you should see that your application is running.
+
+</Step>
+
+</Steps>
+
+In the next section, you instrument your application with OpenTelemetry.
+
+## Install dependencies
+
+Before you can instrument your application, you need to add some OpenTelemetry dependencies to your project. In the _dotnet_ directory, you’ll find a _dotnet.csproj_ file. This holds the dependency requirements for the demo application.
+
+<Steps>
+
+<Step>
+
+Add the OpenTelemetry SDK and supporting packages:
+
+<>
+
+```shell
+dotnet add package --prerelease OpenTelemetry
+dotnet add package --prerelease OpenTelemetry.Api
+dotnet add package --prerelease OpenTelemetry.Exporter.OpenTelemetryProtocol
+dotnet add package --prerelease OpenTelemetry.Extensions.Hosting
+dotnet add package --prerelease OpenTelemetry.Instrumentation.AspNetCore
+```
+
+</>
+
+</Step>
+
+<Step>
+
+See your dependencies in _dotnet.csproj_:
+
+<>
+
+```xml fileName=dotnet.csproj lineHighlight=10-14
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTelemetry" Version="1.2.0-rc2" />
+    <PackageReference Include="OpenTelemetry.Api" Version="1.2.0-rc2" />
+    <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.2.0-rc2" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc9" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc9" />
+  </ItemGroup>
+
+</Project>
+```
+
+</>
+
+</Step>
+
+</Steps>
+
+Now, you’re ready to instrument your app.
+
+## Instrument your application
+
+<Tutorial>
+
+<Project>
+
+```csharp fileName=Program.cs
+using dotnet.Controllers;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+app.MapControllers();
+
+app.Run();
+```
+
+```csharp fileName=Controllers/FibonacciController.cs
+using Microsoft.AspNetCore.Mvc;
+
+namespace dotnet.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class FibonacciController : ControllerBase
+{
+
+    [HttpGet]
+    public IActionResult Get(long n)
+    {
+        try
+        {
+            return Ok(new {
+                n = n,
+                result = Fibonacci(n)
+            });
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+
+    private long Fibonacci(long n)
+    {
+        ThrowIfOutOfRange(n);
+        var result = 0L;
+        if (n <= 2)
+        {
+            result = 1;
+        }
+        else
+        {
+            var a = 0L;
+            var b = 1L;
+
+            for (var i = 1; i < n; i++)
+            {
+                result = checked(a + b);
+                a = b;
+                b = result;
+            }
+        }
+
+        return result;
+    }
+
+    private void ThrowIfOutOfRange(long n)
+    {
+        if (n < 1 || n > 90)
+        {
+            throw new ArgumentOutOfRangeException(nameof(n), n, "n must be between 1 and 90");
+        }
+    }
+}
+```
+
+```yaml fileName=dotnet/docker-compose.yaml
+version: '3'
+services:
+  fibonacci-dotnet:
+    build: ./
+    ports:
+      - "8080:80"
+```
+
+</Project>
+
+You’ve set up your environment, read the code, and spun up your app and a load generator. Now, it’s time to instrument your app with OpenTelemetry!
+
+<Steps>
+
+<Step>
+
+In _Program.cs_, create a `ResourceBuilder`:
+
+<>
+
+```csharp fileName=Program.cs
+using dotnet.Controllers;
+using OpenTelemetry.Resources;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+var resourceBuilder = ResourceBuilder
+    .CreateDefault()
+    .AddService("fibonacci-dotnet")
+    .AddTelemetrySdk();
+
+var app = builder.Build();
+
+app.MapControllers();
+
+app.Run();
+```
+
+</>
+
+<br />
+
+Here, you use the `ResourceBuilder` from the `OpenTelemetry.Resources` namespace to create a resource. With it, you can compose resource attributes from different [semantic convention](https://opentelemetry.io/docs/reference/specification/resource/semantic_conventions/) categories.
+
+Specifically, you use:
+
+1. `.CreateDefault()`, which adds some attributes about the current process
+2. `.AddService()` with the service name "fibonacci-dotnet". This sets the conventional attribute `service.name`.
+3. `.AddTelemetrySdk()` to set some [conventional telemetry SDK attributes](https://opentelemetry.io/docs/reference/specification/resource/semantic_conventions/#telemetry-sdk). These are:
+
+    - `telemetry.sdk.name`
+    - `telemetry.sdk.language`
+    - `telemetry.sdk.version`
+
+</Step>
+
+<Step>
+
+Configure OpenTelemetry tracing:
+
+<>
+
+```csharp fileName=Program.cs
+using dotnet.Controllers;
+using OpenTelemetry.Trace;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+var resourceBuilder = ResourceBuilder
+    .CreateDefault()
+    .AddService("fibonacci-dotnet")
+    .AddTelemetrySdk();
+
+builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
+{
+   tracerProviderBuilder
+       .SetResourceBuilder(resourceBuilder)
+       .AddSource(FibonacciController.ActivitySourceName)
+       .AddAspNetCoreInstrumentation()
+       .AddOtlpExporter();
+});
+
+var app = builder.Build();
+
+app.MapControllers();
+
+app.Run();
+```
+
+</>
+
+<br />
+
+Here, you use `.AddOpenTelemetryTracing()` to inject a new `TracerProviderBuilder` into your `WebApplicationBuilder`. You configure your `TracerProviderBuilder` with:
+
+- The resource builder you created in the last step
+- A tracer for your application
+- Automatic instrumentation for ASP.NET Core
+- An OTLP exporter
+
+You named the tracer that you created with `.AddSource()` using a constant, called `ActivitySourceName`. You’ll create this in a later step. Before you do, you need to configure your OTLP exporter.
+
+</Step>
+
+<Step>
+
+In _dotnet/docker-compose.yaml_, configure your OTLP exporter:
+
+<>
+
+```yaml fileName=dotnet/docker-compose.yaml
+version: '3'
+services:
+  fibonacci-dotnet:
+    build: ./
+    ports:
+      - "8080:80"
+    environment:
+      OTEL_EXPORTER_OTLP_ENDPOINT: https://otlp.nr-data.net:4317
+      OTEL_EXPORTER_OTLP_HEADERS: "api-key=${NEW_RELIC_API_KEY}"
+```
+
+</>
+
+<br />
+
+The first variable you set configures the exporter to send telemetry data to https://otlp.nr-data.net:4317. This is our US-based OTLP endpoint. If you’re in the EU, use https://otlp.eu01.nr-data.net instead.
+
+The second variable passes the `NEW_RELIC_API_KEY` from your local machine in the `api-key` header of your OTLP requests. You set this environment variable in a previous lesson.
+
+Next, instrument the logic for your `/fibonacci` endpoint.
+
+</Step>
+
+<Step>
+
+In _Controller/FibonacciController.cs_, create a tracer:
+
+<>
+
+```csharp fileName=Controllers/FibonacciController.cs
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+
+namespace dotnet.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class FibonacciController : ControllerBase
+{
+    public const string ActivitySourceName = "FibonacciService";
+    private ActivitySource activitySource = new ActivitySource(ActivitySourceName);
+
+    [HttpGet]
+    public IActionResult Get(long n)
+    {
+        try
+        {
+            return Ok(new
+            {
+                n = n,
+                result = Fibonacci(n)
+            });
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+
+    private long Fibonacci(long n)
+    {
+        ThrowIfOutOfRange(n);
+        var result = 0L;
+        if (n <= 2)
+        {
+            result = 1;
+        }
+        else
+        {
+            var a = 0L;
+            var b = 1L;
+
+            for (var i = 1; i < n; i++)
+            {
+                result = checked(a + b);
+                a = b;
+                b = result;
+            }
+        }
+
+        return result;
+    }
+
+    private void ThrowIfOutOfRange(long n)
+    {
+        if (n < 1 || n > 90)
+        {
+            throw new ArgumentOutOfRangeException(nameof(n), n, "n must be between 1 and 90");
+        }
+    }
+}
+```
+
+</>
+
+<br />
+
+In .NET, the OpenTelemetry tracer and span APIs make use of existing interfaces from the `System.Diagnostics` namespace, called `ActivitySource` and `Activity`, respectively. They both adhere to the specification.
+
+</Step>
+
+<Step>
+
+At the top of `Fibonacci()`, use your tracer to start a new span:
+
+<>
+
+```csharp fileName=Controllers/FibonacciController.cs
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+
+namespace dotnet.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class FibonacciController : ControllerBase
+{
+    public const string ActivitySourceName = "FibonacciService";
+    private ActivitySource activitySource = new ActivitySource(ActivitySourceName);
+
+    [HttpGet]
+    public IActionResult Get(long n)
+    {
+        try
+        {
+            return Ok(new
+            {
+                n = n,
+                result = Fibonacci(n)
+            });
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+
+    private long Fibonacci(long n)
+    {
+        using var activity = activitySource.StartActivity(nameof(Fibonacci));
+
+        ThrowIfOutOfRange(n);
+        var result = 0L;
+        if (n <= 2)
+        {
+            result = 1;
+        }
+        else
+        {
+            var a = 0L;
+            var b = 1L;
+
+            for (var i = 1; i < n; i++)
+            {
+                result = checked(a + b);
+                a = b;
+                b = result;
+            }
+        }
+
+        return result;
+    }
+
+    private void ThrowIfOutOfRange(long n)
+    {
+        if (n < 1 || n > 90)
+        {
+            throw new ArgumentOutOfRangeException(nameof(n), n, "n must be between 1 and 90");
+        }
+    }
+}
+```
+
+</>
+
+</Step>
+
+<Step>
+
+Add some attributes to capture important values in the execution:
+
+<>
+
+```csharp fileName=Controllers/FibonacciController.cs
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+
+namespace dotnet.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class FibonacciController : ControllerBase
+{
+    public const string ActivitySourceName = "FibonacciService";
+    private ActivitySource activitySource = new ActivitySource(ActivitySourceName);
+
+    [HttpGet]
+    public IActionResult Get(long n)
+    {
+        try
+        {
+            return Ok(new
+            {
+                n = n,
+                result = Fibonacci(n)
+            });
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+
+    private long Fibonacci(long n)
+    {
+        using var activity = activitySource.StartActivity(nameof(Fibonacci));
+        activity?.SetTag("fibonacci.n", n);
+
+        ThrowIfOutOfRange(n);
+        var result = 0L;
+        if (n <= 2)
+        {
+            result = 1;
+        }
+        else
+        {
+            var a = 0L;
+            var b = 1L;
+
+            for (var i = 1; i < n; i++)
+            {
+                result = checked(a + b);
+                a = b;
+                b = result;
+            }
+        }
+
+        activity?.SetTag("fibonacci.result", result);
+        return result;
+    }
+
+    private void ThrowIfOutOfRange(long n)
+    {
+        if (n < 1 || n > 90)
+        {
+            throw new ArgumentOutOfRangeException(nameof(n), n, "n must be between 1 and 90");
+        }
+    }
+}
+```
+
+</>
+
+<br />
+
+Because .NET implements the span specification with its `Activity` class, some of the API looks slightly different. Here you see that attributes are called "tags" in the .NET implementation.
+
+The first attribute you set is called “fibonacci.n”, which stores the value of `n` from the user’s request. If the computation was successful, you set “fibonacci.result”, which captures the result.
+
+</Step>
+
+<Step>
+
+Record an exception span event if `n` is invalid:
+
+<>
+
+```csharp fileName=Controllers/FibonacciController.cs
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using OpenTelemetry.Trace;
+
+namespace dotnet.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class FibonacciController : ControllerBase
+{
+    public const string ActivitySourceName = "FibonacciService";
+    private ActivitySource activitySource = new ActivitySource(ActivitySourceName);
+
+    [HttpGet]
+    public IActionResult Get(long n)
+    {
+        try
+        {
+            return Ok(new
+            {
+                n = n,
+                result = Fibonacci(n)
+            });
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+
+    private long Fibonacci(long n)
+    {
+        using var activity = activitySource.StartActivity(nameof(Fibonacci));
+        activity?.SetTag("fibonacci.n", n);
+
+        try
+        {
+            ThrowIfOutOfRange(n);
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            activity?.SetStatus(Status.Error.WithDescription(ex.Message));
+            activity?.RecordException(ex);
+            throw;
+        }
+
+        var result = 0L;
+        if (n <= 2)
+        {
+            result = 1;
+        }
+        else
+        {
+            var a = 0L;
+            var b = 1L;
+
+            for (var i = 1; i < n; i++)
+            {
+                result = checked(a + b);
+                a = b;
+                b = result;
+            }
+        }
+
+        activity?.SetTag("fibonacci.result", result);
+        return result;
+    }
+
+    private void ThrowIfOutOfRange(long n)
+    {
+        if (n < 1 || n > 90)
+        {
+            throw new ArgumentOutOfRangeException(nameof(n), n, "n must be between 1 and 90");
+        }
+    }
+}
+```
+
+</>
+
+<br />
+
+If `n` is invalid, you throw an `ArgumentOutofRangeException`, record an exception span event on the span, and set the span’s status to `Status.Error`. You also use the exception message for the status description.
+
+</Step>
+
+<Step>
+
+From your terminal running the applications, use `CTRL+C` to tear down your docker containers, and spin them up again:
+
+<>
+
+```shell
+docker-compose up --build
+```
+
+</>
+
+</Step>
+
+</Steps>
+
+</Tutorial>
+
+You’re now ready to view your data in New Relic.
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue on to the next lesson: [View a summary of your data](/opentelemetry-masterclass/hands-on/data-summary).
+
+</Callout>

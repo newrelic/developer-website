@@ -217,6 +217,63 @@
     - title: Populate your alert configurations with NerdGraph
       url: '/contribute-to-quickstarts/query-alerts-for-quickstart'
 
+- title: OpenTelemetry masterclass
+  url: '/opentelemetry-masterclass'
+  pages:
+    - title: OpenTelemetry fundamentals
+      url: '/opentelemetry-masterclass/fundamentals'
+      pages:
+        - title: Telemetry
+          url: '/opentelemetry-masterclass/fundamentals/telemetry'
+        - title: Telemetry data types
+          url: '/opentelemetry-masterclass/fundamentals/telemetry-data-types'
+        - title: Traces
+          url: '/opentelemetry-masterclass/fundamentals/traces'
+        - title: Telemetry and observability
+          url: '/opentelemetry-masterclass/fundamentals/telemetry-and-observability'
+        - title: Traditional telemetry instrumentation
+          url: '/opentelemetry-masterclass/fundamentals/traditional-telemetry-instrumentation'
+        - title: OpenTelemetry
+          url: '/opentelemetry-masterclass/fundamentals/opentelemetry'
+        - title: The OpenTelemetry specification
+          url: '/opentelemetry-masterclass/fundamentals/opentelemetry-specification'
+        - title: The OpenTelemetry data model specification
+          url: '/opentelemetry-masterclass/fundamentals/data-model'
+        - title: Trace data model and semantic conventions
+          url: '/opentelemetry-masterclass/fundamentals/trace-data-model-semantic-conventions'
+        - title: The OpenTelemetry Protocol
+          url: '/opentelemetry-masterclass/fundamentals/otlp'
+        - title: The OpenTelemetry API specification
+          url: '/opentelemetry-masterclass/fundamentals/api'
+        - title: Defining the interface
+          url: '/opentelemetry-masterclass/fundamentals/defining-the-interface'
+        - title: Minimal implementation
+          url: '/opentelemetry-masterclass/fundamentals/minimal-implementation'
+        - title: Separating concerns
+          url: '/opentelemetry-masterclass/fundamentals/separating-concerns'
+        - title: The OpenTelemetry SDK
+          url: '/opentelemetry-masterclass/fundamentals/sdk'
+        - title: SDK plugins
+          url: '/opentelemetry-masterclass/fundamentals/sdk-plugins'
+        - title: SDK constructors
+          url: '/opentelemetry-masterclass/fundamentals/sdk-constructors'
+        - title: Resources
+          url: '/opentelemetry-masterclass/fundamentals/resources'
+        - title: OpenTelemetry implementations
+          url: '/opentelemetry-masterclass/fundamentals/opentelemetry-implementations'
+    - title: Hands-on OpenTelemetry
+      url: '/opentelemetry-masterclass/hands-on'
+      pages:
+        - title: Hands-on OpenTelemetry workshop
+          url: '/opentelemetry-masterclass/hands-on/workshop-introduction'
+        - title: .NET OpenTelemetry workshop
+          url: '/opentelemetry-masterclass/hands-on/workshop-dotnet'
+        - title: View a summary of your data
+          url: '/opentelemetry-masterclass/hands-on/data-summary'
+        - title: View your traces
+          url: '/opentelemetry-masterclass/hands-on/traces'
+        - title: View error traces
+          url: '/opentelemetry-masterclass/hands-on/error-traces'
 
 - title: Try our APIs
   icon: nr-share

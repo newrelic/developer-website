@@ -1,0 +1,44 @@
+---
+title: 'Defining the interface'
+template: 'GuideTemplate'
+description: 'Defining the interface'
+procIdx: 12
+---
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/fundamentals).
+
+Each lesson in this lab builds on the last one, so make sure you learn about [the OpenTelemetry API specification](/opentelemetry-masterclass/fundamentals/api) before proceeding with this one.
+
+</Callout>
+
+The first thing that the API specification provides is a definition of the classes and functions for interacting with a signal.
+
+For example, the specification defines three primary classes for working with traces:
+
+- `TracerProvider`
+- `Tracer`
+- `Span`
+
+`TracerProvider` is a class that, as you may have guessed, provides tracers. Some apps may use multiple tracer providers, but generally, you’ll use a single, global one. A tracer provider holds certain configurations, such as how to process spans and how to sample spans.
+
+`Tracer` is a class you use to create spans that collect information about processes. Remember, the tracer provider, not the tracer, holds the configurations that dictate how the tracer creates spans and what it does with them when they’re recorded.
+
+A `Span` captures data about an operation. Multiple spans make up a trace. You learned a lot about what an OpenTelemetry span looks like when you learned about the data model specification. However, there’s more to a span than the data it holds.
+
+For example, a span has start and end methods that determine its duration. It has a method you use to see if you can update the span’s values, called `IsRecording()`. It also has methods for updating those values, such as for adding attributes and events. All of these interfaces for interacting with the signal are defined by the API specification.
+
+<Callout variant="tip" title="Language-level flexibility">
+
+While the specification defines the classes and functions you use to interact with a signal, the language-level details, like the casing of a method’s name, are subject to differences between implementations.
+
+</Callout>
+
+Another aspect that the API specification defines is what it calls the “minimal implementation.”
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue on to the next lesson: [Minimal implementation](/opentelemetry-masterclass/fundamentals/minimal-implementation).
+
+</Callout>

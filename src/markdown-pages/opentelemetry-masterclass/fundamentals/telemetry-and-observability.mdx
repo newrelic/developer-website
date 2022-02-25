@@ -1,0 +1,24 @@
+---
+title: 'Telemetry and observability'
+template: 'GuideTemplate'
+description: 'The relationship between telemetry and observability'
+procIdx: 4
+---
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/fundamentals).
+
+Each lesson in this lab builds on the last one, so make sure you learn about [traces](/opentelemetry-masterclass/fundamentals/traces) before proceeding with this one.
+
+</Callout>
+
+Imagine you’ve recently deployed some new code to one of your web services. As part of your deployment process, you monitor your service in an observability platform. Unfortunately, new transactions start to show slower-than-normal response times for the endpoint you updated. With the information you gather from your telemetry data, presented in your observability platform, you have an opportunity to respond, such as by rolling back your deployment or finding the root cause of the issue and deploying a hot fix.
+
+Observability, or the ability to understand your software system, is made possible by good telemetry instrumentation. This tight coupling between the instrumentation and the platform that uses it is one of the reasons why the traditional method of doing telemetry has been platform-specific software, including agents, software development kits (SDK), and open source solutions.
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue on to the next lesson: [Traditional telemetry instrumentation](/opentelemetry-masterclass/fundamentals/traditional-telemetry-instrumentation).
+
+</Callout>

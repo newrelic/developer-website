@@ -1,0 +1,31 @@
+---
+title: 'The OpenTelemetry API specification'
+template: 'GuideTemplate'
+description: 'The OpenTelemetry API specification'
+procIdx: 11
+---
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/fundamentals).
+
+Each lesson in this lab builds on the last one, so make sure you learn about [the OpenTelemetry protocol](/opentelemetry-masterclass/fundamentals/otlp) before proceeding with this one.
+
+</Callout>
+
+So far, you’ve learned how the OpenTelemetry specification defines the data models, semantic conventions, and OTLP schemas for each of the telemetry data signals. But the specification defines more than what telemetry data looks like. It also defines how to work with that data.
+
+The OpenTelemetry API specification describes the classes and functions you use to interact with the data signal. For example, it describes how an OpenTelemetry implementation can generate a span or report metric measurements.
+
+For OpenTelemetry instrumentation developers, this specification provides the blueprint for building an API that’s consistent with other OpenTelemetry-compliant tools. For framework, library, and app developers who use the API, the specification guarantees consistency and provides documentation for how you can expect to interact with all compliant tools.
+
+There are two essential components of the API specification:
+
+- A **definition of the interface** you use to work with telemetry data
+- A **minimal implementation** of that interface
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue on to the next lesson: [Defining the interface](/opentelemetry-masterclass/fundamentals/defining-the-interface).
+
+</Callout>

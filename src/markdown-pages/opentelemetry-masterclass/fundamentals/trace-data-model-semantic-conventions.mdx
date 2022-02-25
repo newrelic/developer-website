@@ -1,0 +1,56 @@
+---
+title: 'Trace data model semantic conventions'
+template: 'GuideTemplate'
+description: 'The trace data model semantic conventions'
+procIdx: 9
+---
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/fundamentals).
+
+Each lesson in this lab builds on the last one, so make sure you learn about [the OpenTelemetry data model specification](/opentelemetry-masterclass/fundamentals/data-model) before proceeding with this one.
+
+</Callout>
+
+The OpenTelemetry trace signal comprises a hierarchical collection of linked spans. Each span consists of metadata fields, such as the span’s name and its start time and end time plus a list of attributes and a list of events. This definition of what a span is and the fields it contains is universal for all telemetry tooling that adheres to the OpenTelemetry data specification for traces.
+
+The name field identifies the operation that the span represents. For example, the name might be a web service endpoint or function.
+
+The start time and end time fields represent the time that the operation started and the operation ended, respectively. These times represent the total elapsed time of the operation, including any and all sub operations.
+
+There are other important [span fields](https://opentelemetry.io/docs/reference/specification/trace/api/#span) as well, some of which you learn more about in later lessons because they’re particularly relevant to the implementation of traces in OpenTelemetry. One simple, but really important component of all OpenTelemetry data models, including the span model, is the **attribute**.
+
+## Attributes
+
+Attributes are key-value pairs that represent features that you want to highlight. For example, if your span represents a web request to your online store for a user adding a product to their cart, you might want to store the product’s ID as an attribute on the span. This is an example of a custom attribute.
+
+There are also conventional attributes for describing common operations, technologies, concepts, and protocols. For example, a span that represents a database query should have an attribute named `db.user` that represents the user of the database. A span that represents a web service fielding a request should have an attribute named `net.peer.port` that stores the node’s port number. This way, you don’t have one database client using `db.username` and another client using `database.user`. These conventions, called semantic conventions, standardize the keys and values of these common features.
+
+Libraries that support popular technologies, like HTTP, gRPC, and messaging protocols, must use these semantic conventions when describing their operations. These keys aren’t all required, but if a library captures the data in an attribute, it must adhere to the conventions.
+
+While these conventions unify tool developers on what to call these characteristics, they’re also helpful to backend observability platforms. Conventional attributes mean observability platforms can expect consistency from OpenTelemetry implementations. They can rely on that consistency to build specific user experiences and tools that utilize those attributes. For example, because New Relic knows that spans representing database operations contain these widely-adopted attributes, it can programmatically find attributes in the data and craft a specific experience with them.
+
+Like attributes, span events are another important component to the trace data model.
+
+## Span Events
+
+A span event represents something that happens during a span’s operation. For example, if a function raises an exception, you can capture details about that exception in a span event.
+
+Like its associated span, a span event has metadata, specifically a name and a timestamp, as well as some attributes that highlight the features of the event.
+
+In the case of an exception event, some of its attributes correspond to semantic conventions. For example, exception events store their stack trace in an attribute called `exception.stacktrace`, if they have one. They store their message in an attribute called `exception.message`, if they have one. Span events are really useful in understanding what happens during a span’s operation.
+
+You’ve learned that the OpenTelemetry data model specification defines the metadata and the semantic conventions of the signal. In the case of spans, this includes things like the span’s name, its timestamps, its attributes, its semantic conventions, and its events. But the specification also defines how the signal should be serialized so that it can be transmitted from telemetry clients.
+
+<Callout variant="tip">
+
+Some services, like New Relic, may treat an event as a first class data structure. In OpenTelemetry, events are directly related to spans.
+
+</Callout>
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue on to the next lesson: [The OpenTelemetry Protocol (OTLP)](/opentelemetry-masterclass/fundamentals/otlp).
+
+</Callout>

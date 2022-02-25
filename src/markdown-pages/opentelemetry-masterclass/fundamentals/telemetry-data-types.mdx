@@ -1,0 +1,48 @@
+---
+title: 'Telemetry data types'
+template: 'GuideTemplate'
+description: 'What are the telemetry data types?'
+procIdx: 2
+---
+
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/fundamentals).
+
+Each lesson in this lab builds on the last one, so make sure you learn about [telemetry](/opentelemetry-masterclass/fundamentals/telemetry) before proceeding with this one.
+
+</Callout>
+
+There are four key telemetry data types:
+
+- Metrics
+- Events
+- Logs
+- Traces
+
+## Metrics
+
+[Metrics](https://docs.newrelic.com/docs/data-apis/understand-data/new-relic-data-types/#dimensional-metrics) are aggregated measurements that indicate how your service is performing. Common examples include the rate at which your service produces errors, the number of total requests your service sees within a given timeframe, and the time it takes your service to respond to a request. Each of these metric measurements are aggregated over some period of time, and the aggregated measurement is reported in your observability platform.
+
+## Events
+
+[Events](https://docs.newrelic.com/docs/data-apis/understand-data/new-relic-data-types/#event-data) record data about things that happen in your service. For example, your service produces an error, or a user clicks a button on your web page. Instead of aggregating measurements over time, these record specific features of the environment at the time the event occured, like a stack trace, a user agent, or the button that the user clicked.
+
+## Logs
+
+[Logs](https://docs.newrelic.com/docs/data-apis/understand-data/new-relic-data-types/#log-data) are the oldest and most basic of telemetry data types. They are arbitrary, timestamped text records, useful for debugging or understanding something specific about the system at a given time. For instance, you might log a message with some variable values from somewhere in your code that’s running slowly.
+
+## Traces
+
+[Traces](https://docs.newrelic.com/docs/data-apis/understand-data/new-relic-data-types/#trace-data) are the most modern telemetry data type, but also the most advanced of the bunch. A trace is a collection of hierarchically-related spans. Spans represent activities within applications. Each span contains timestamps for when it started and when it stopped. It contains attributes that describe features of the operation it represents, and it can even contain events that occur during the course of the operation. Traces are also effective at capturing details across network boundaries, which is important for monitoring modern computing systems.
+
+In this sense, traces are the most effective telemetry data type. Because they have timestamps, you can use them to calculate the execution time for each operation in a transaction. You can also use the timestamps to correlate the operation’s events with other data sources, such as logs. Because traces aren’t aggregated, they provide more granular performance data than metrics do.
+
+For this reason, and because traces are the most mature data type supported by OpenTelemetry, something you’ll learn more about in a later lesson, this course uses examples of trace data to illustrate how to work with OpenTelemetry. Before you learn about that, though, it’s important to get a fuller picture of what traces are and how they work.
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue on to the next lesson: [Traces](/opentelemetry-masterclass/fundamentals/traces).
+
+</Callout>

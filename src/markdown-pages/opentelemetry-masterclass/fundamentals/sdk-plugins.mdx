@@ -1,0 +1,43 @@
+---
+title: 'SDK plugins'
+template: 'GuideTemplate'
+description: 'SDK plugins'
+procIdx: 16
+---
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/fundamentals).
+
+Each lesson in this lab builds on the last one, so make sure you learn about [the OpenTelemetry SDK](/opentelemetry-masterclass/fundamentals/sdk) before proceeding with this one.
+
+</Callout>
+
+One of the ways that you define how you want the API to treat your data is with plugins. For example, if you want to sample your data a particular way, you can use a sampler plugin to meet your needs. If you want to change to a different sampler, you can swap out the plugin.
+
+The SDK specification defines both what types of plugins the SDK accepts as well as the interface that those plugins must implement. Because of this interface definition, it’s easy for developers to create new plugins. And if you need custom behaviors, you can even use the specification to write your own.
+
+The trace SDK accepts several types of plugins, such as:
+
+- **Span exporter:** Encodes data and transmits it to a consumer
+- **Span processor:** Enriches and filters span data, then converts it into a form that exporters can work with
+- **Sampler:** Lets users control span sampling
+
+For each of these plugin types, the SDK specification defines the interface, or the required methods.
+
+For example, span exporter plugins must implement two functions:
+
+- **Export:** Receives spans, serializes them, and transmits them to a designated consumer
+- **Shutdown:** Cleans up the export environment
+
+API interactions can call these functions at the appropriate time regardless of what plugin is being used because the specification requires them.
+
+The specification also defines the plugins that must be included in any implementation of the SDK. For example, it declares that the SDK must provide a simple span processor and a batch processor. The simple span processor processes spans as soon as they finish. The batch processor batches finished spans before passing them to the exporter.
+
+SDK plugins are modular logical components that implement API interfaces in a particular way. You choose the plugins that best suit your goals for telemetry data. Once you choose your plugins, you can further configure them and assign them to the API using SDK constructors.
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue on to the next lesson: [SDK constructors](/opentelemetry-masterclass/fundamentals/sdk-constructors).
+
+</Callout>

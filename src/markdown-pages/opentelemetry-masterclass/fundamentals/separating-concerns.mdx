@@ -1,0 +1,26 @@
+---
+title: 'Separating concerns'
+template: 'GuideTemplate'
+description: 'Separating concerns'
+procIdx: 14
+---
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/fundamentals).
+
+Each lesson in this lab builds on the last one, so make sure you learn about [the minimal implementation of the API](/opentelemetry-masterclass/fundamentals/minimal-implementation) before proceeding with this one.
+
+</Callout>
+
+The API defines the interface you use to interact with OpenTelemetry signals. With it, you set up your code to generate telemetry data. The API, itself, does not actually generate data; that's the responsibility of the implementation.
+
+OpenTelemetry separates the signal’s interface and its implementation, which is the logic that runs when you interact with the interface. This protects the user of the API from having to know or care about exactly how the API is implemented. It also allows the implementation to be configurable.
+
+Because the user of the API can’t know the logic behind the interface, that logic can take a number of different forms, depending on how the user wants to use the data. Configuring the implementation of the API is the purpose of the SDK.
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue on to the next lesson: [The OpenTelemetry SDK](/opentelemetry-masterclass/fundamentals/sdk).
+
+</Callout>
