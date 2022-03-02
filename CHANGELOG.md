@@ -1,3 +1,10 @@
+# [1.81.0](https://github.com/newrelic/developer-website/compare/v1.80.0...v1.81.0) (2022-03-02)
+
+
+### Features
+
+* added lab for infrastructure ([bb842c9](https://github.com/newrelic/developer-website/commit/bb842c9ef98aae948bb62210dabb78650293fa05))
+
 # [1.80.0](https://github.com/newrelic/developer-website/compare/v1.79.0...v1.80.0) (2022-02-22)
 
 

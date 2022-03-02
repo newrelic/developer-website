@@ -14,6 +14,8 @@
       url: '/collect-data/get-started-nerdgraph-api-explorer'
     - title: Monitor your network devices with New Relic
       url: '/collect-data/network-performance-monitoring'
+    - title: Identify root cause issues in your infrastructure
+      url: '/collect-data/infra'
     - title: Monitor your Kubernetes cluster with New Relic and Pixie
       url: '/collect-data/pixie'
       pages:
