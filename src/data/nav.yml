@@ -422,12 +422,16 @@
           pages:
             - title: BlockText
               url: '/components/block-text'
+            - title: Date
+              url: '/components/date'
             - title: HeadingText
               url: '/components/heading-text'
             - title: Link
               url: '/components/link'
             - title: MultilineTextField
               url: '/components/multiline-text-field'
+            - title: Time
+              url: '/components/time'
         - title: Charts
           url: '/components/charts'
           pages:
