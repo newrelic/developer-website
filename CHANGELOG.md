@@ -1,3 +1,11 @@
+## [1.81.1](https://github.com/newrelic/developer-website/compare/v1.81.0...v1.81.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* add 301 statusCode to IO site redirect ([5ac72c3](https://github.com/newrelic/developer-website/commit/5ac72c3dd970959e10eb1a9ea9d6c7711113b9a4))
+* removing the redirectInBrowser flag from redirect ([db34c84](https://github.com/newrelic/developer-website/commit/db34c84438d155513bbb00b840d2aed6fa7e399d))
+
 # [1.81.0](https://github.com/newrelic/developer-website/compare/v1.80.0...v1.81.0) (2022-03-02)
 
 
