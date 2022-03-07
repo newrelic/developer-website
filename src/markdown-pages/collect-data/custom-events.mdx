@@ -18,7 +18,7 @@ tags:
 
 Whereas adding [custom attributes](/collect-data/custom-attributes) adds metadata to an existing event, a custom event creates an entirely new event type. Create custom events to define, visualize, and get alerts on additional data, just as you would with any data we provide from our core agents.  
 
-Custom events can be inserted through the Agent APIs or directly via the Insights Insert API. The following example shows how to send a custom event named CLIRun that tracks when a command line tool written in Ruby has its process exit due to an exception.
+Custom events can be inserted through the agent APIs or directly via the Event API. The following example shows how to send a custom event named CLIRun that tracks when a command line tool written in Ruby has its process exit due to an exception.
 
 ```ruby
 # Hook into the runtime 'at_exit' event
@@ -40,19 +40,19 @@ at_exit do
 
   # Send the errors to New Relic as a custom event
   insights_url = URI.parse("https://insights-collector.newrelic.com/v1/accounts/YOUR_ACCOUNT_ID/events")
-  headers = { "x-insert-key" => "YOUR_API_KEY", "content-type" => "application/json" }
+  headers = { "Api-Key" => "YOUR_LICENSE_KEY", "content-type" => "application/json" }
 
   http = Net::HTTP.new(insights_url.host, insights_url.port)
   http.use_ssl = true
   request = Net::HTTP::Post.new(insights_url.request_uri, headers)
   request.body = payload.to_json
 
-  puts "Sending run summary to Insights: #{payload.to_json}"
+  puts "Sending run summary to New Relic: #{payload.to_json}"
   begin
     response = http.request(request)
-    puts "Response from Insights: #{response.body}"
+    puts "Response from New Relic: #{response.body}"
   rescue Exception => e
-    puts "There was an error posting to Insights. Error: #{e.inspect}"
+    puts "There was an error posting to New Relic. Error: #{e.inspect}"
   end
 end
 ```
