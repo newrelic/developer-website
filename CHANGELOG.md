@@ -1,3 +1,12 @@
+## [1.81.2](https://github.com/newrelic/developer-website/compare/v1.81.1...v1.81.2) (2022-03-07)
+
+
+### Bug Fixes
+
+* **dev site:** insert key removals ([a01e026](https://github.com/newrelic/developer-website/commit/a01e026a3e98844374849f977ad583abfee38a8c))
+* **dev site:** remove insert key ([fd9ea68](https://github.com/newrelic/developer-website/commit/fd9ea6895af16ad007d2b1ee766b1e50d87fdae2))
+* **dev site:** removing 'insights' & 'insert key' refs ([f7cd96c](https://github.com/newrelic/developer-website/commit/f7cd96c6935518cacb45e9419b5fb10f8d994af0))
+
 ## [1.81.1](https://github.com/newrelic/developer-website/compare/v1.81.0...v1.81.1) (2022-03-04)
 
 
