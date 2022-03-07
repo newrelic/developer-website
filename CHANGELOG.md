@@ -1,3 +1,10 @@
+## [1.81.3](https://github.com/newrelic/developer-website/compare/v1.81.2...v1.81.3) (2022-03-07)
+
+
+### Bug Fixes
+
+* remove statusCode and make all redirects NOT in browser for IO ([a0c5f4e](https://github.com/newrelic/developer-website/commit/a0c5f4ec8909eeca222653e675b0f527060bf2d6))
+
 ## [1.81.2](https://github.com/newrelic/developer-website/compare/v1.81.1...v1.81.2) (2022-03-07)
 
 
