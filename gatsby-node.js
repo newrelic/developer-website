@@ -37,7 +37,6 @@ const createRedirectsForNewIoDomain = (createRedirect, allQuickstarts) => {
     toPath: 'https://www.newrelic.com/instant-observability',
     redirectInBrowser: false,
     isPermanent: true,
-    statusCode: 301,
   });
 
   allQuickstarts.edges.forEach(({ node }) => {
@@ -49,7 +48,7 @@ const createRedirectsForNewIoDomain = (createRedirect, allQuickstarts) => {
     createRedirect({
       fromPath: path.join(slug, '/'),
       toPath: `https://www.newrelic.com${path.join(slug, '/')}`,
-      redirectInBrowser: true,
+      redirectInBrowser: false,
       isPermanent: true,
     });
   });
