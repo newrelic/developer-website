@@ -30,9 +30,17 @@ Log into [New Relic](https://one.newrelic.com).
 
 <Step>
 
-In the entity explorer, click the **speedeedeebee** OpenTelemetry service:
+In the left-hand navigation, click **Services - OpenTelemetry**:
 
-![Click database service](../../../images/opentelemetry-manual/service.png)
+![OpenTelemetry services](../../../images/opentelemetry-manual/otel-services.png)
+
+</Step>
+
+<Step>
+
+Click your service:
+
+![OpenTelemetry service](../../../images/opentelemetry-manual/otel-service.png)
 
 This brings you to a service view that shows trace data from your application, including:
 
@@ -44,17 +52,7 @@ This brings you to a service view that shows trace data from your application, i
 
 <Callout variant="tip">
 
-It can take some time for your OpenTelemetry data to get to New Relic. If you don't see your service yet, wait a few more minutes. You can also try another path to find your service.
-
-In the left-hand navigation, click **Services - OpenTelemetry**:
-
-![OpenTelemetry services](../../../images/opentelemetry-manual/otel-services.png)
-
-Then, click your service:
-
-![OpenTelemetry service](../../../images/opentelemetry-manual/otel-service.png)
-
-If you still don't see data, compare your code to [ours](https://github.com/newrelic-experimental/otel-manual-instrumentation-lab-materials/blob/instrumented/db.py).
+It can take some time for your OpenTelemetry data to get to New Relic. If you don't see your service yet, wait a few more minutes. If you still don't see data, compare your code to [ours](https://github.com/newrelic-experimental/otel-manual-instrumentation-lab-materials/blob/instrumented/db.py).
 
 </Callout>
 
@@ -66,21 +64,22 @@ In the left-hand navigation, click **Distributed tracing**:
 
 ![Distributed tracing view](../../../images/opentelemetry-manual/dt.png)
 
-This shows data about the traces that you generated in your service, such as:
+This shows data about the traces that you generated in your service:
 
 - Trace count
 - Trace duration
+- Traces with errors
 - Trace groups
 
 </Step>
 
 <Step>
 
-Under **Trace groups** click the **create** group:
+**Trace groups** shows shows traces grouped by the name of their root span. Because all of your spans are root spans, there are four trace groups, one for each database function.
+
+Click the **create** group:
 
 ![Trace group view](../../../images/opentelemetry-manual/opentelemetry-create.png)
-
-This group shows traces grouped by the name of the root span. Because all of your spans are root spans, there are four trace groups, one for each database function.
 
 </Step>
 
@@ -178,7 +177,7 @@ Click **There was 1 span event exception** to see further details about your exc
 
 Here, you see more details about your exception, including its stack trace, type, and timestamp:
 
-![Click more error details](../../../images/opentelemetry-manual/click-more-error-details.png)
+![More error details](../../../images/opentelemetry-manual/more-error-details.png)
 
 After reviewing this information, you decide that this isn't an error at all, it's a feature. You designed your database to only allow creates on new keys, which is logical. This shouldn't be captured as an error in your code. Doing so could make real errors harder to see.
 
