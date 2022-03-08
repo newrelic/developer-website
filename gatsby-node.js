@@ -97,15 +97,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   createRedirect({
     fromPath: `/instant-observability/`,
     toPath: `https://newrelic.com/instant-observability/`,
-    redirectInBrowser: false,
-    permanent: true,
+    isPermanent: true,
   });
 
   createRedirect({
     fromPath: `/instant-observability/*`,
     toPath: `https://newrelic.com/instant-observability/*`,
-    redirectInBrowser: false,
-    permanent: true,
+    isPermanent: true,
   });
 
   allMdx.edges.forEach(({ node }) => {
