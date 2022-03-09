@@ -19,6 +19,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-sharp',
+    'gatsby-plugin-meta-redirect',
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
