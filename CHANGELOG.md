@@ -1,3 +1,10 @@
+# [1.82.0](https://github.com/newrelic/developer-website/compare/v1.81.3...v1.82.0) (2022-03-09)
+
+
+### Features
+
+* Create manual OpenTelemetry lab ([185e569](https://github.com/newrelic/developer-website/commit/185e569beb47004d4b21932c342bcd4fad52be41))
+
 ## [1.81.3](https://github.com/newrelic/developer-website/compare/v1.81.2...v1.81.3) (2022-03-07)
 
 
