@@ -227,7 +227,7 @@ app.Run();
 
 `AddOpenTelemetryTracing()` takes a delegate that builds a tracer provider that, in turn, automatically provides traces to your OpenTelemetry exporter.
 
-First in configuring your tracer, you specify the resource builder you created in the last step. This ties the attributes you previously defined to all traces from your service. Next, with `tracerProviderBuilder.AddAspNetCoreInstrumentation()`, you configure the SDK to listen to auto-instrumentation. You also tell it to record exceptions and only track GET requests. Finally, you configure the OTLP exporter to export traces to New Relic using the environment variables you defined earlier.
+First in configuring your tracer provider, you specify the resource builder you created in the last step. This ties the attributes you previously defined to all traces from your service. Next, with `tracerProviderBuilder.AddAspNetCoreInstrumentation()`, you configure the SDK to listen to auto-instrumentation. You also tell it to record exceptions and only track GET requests. Finally, you configure the OTLP exporter to export traces to New Relic using the environment variables you defined earlier.
 
 </Step>
 
