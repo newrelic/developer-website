@@ -1,3 +1,34 @@
+# [1.82.0](https://github.com/newrelic/developer-website/compare/v1.81.3...v1.82.0) (2022-03-09)
+
+
+### Features
+
+* Create manual OpenTelemetry lab ([185e569](https://github.com/newrelic/developer-website/commit/185e569beb47004d4b21932c342bcd4fad52be41))
+
+## [1.81.3](https://github.com/newrelic/developer-website/compare/v1.81.2...v1.81.3) (2022-03-07)
+
+
+### Bug Fixes
+
+* remove statusCode and make all redirects NOT in browser for IO ([a0c5f4e](https://github.com/newrelic/developer-website/commit/a0c5f4ec8909eeca222653e675b0f527060bf2d6))
+
+## [1.81.2](https://github.com/newrelic/developer-website/compare/v1.81.1...v1.81.2) (2022-03-07)
+
+
+### Bug Fixes
+
+* **dev site:** insert key removals ([a01e026](https://github.com/newrelic/developer-website/commit/a01e026a3e98844374849f977ad583abfee38a8c))
+* **dev site:** remove insert key ([fd9ea68](https://github.com/newrelic/developer-website/commit/fd9ea6895af16ad007d2b1ee766b1e50d87fdae2))
+* **dev site:** removing 'insights' & 'insert key' refs ([f7cd96c](https://github.com/newrelic/developer-website/commit/f7cd96c6935518cacb45e9419b5fb10f8d994af0))
+
+## [1.81.1](https://github.com/newrelic/developer-website/compare/v1.81.0...v1.81.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* add 301 statusCode to IO site redirect ([5ac72c3](https://github.com/newrelic/developer-website/commit/5ac72c3dd970959e10eb1a9ea9d6c7711113b9a4))
+* removing the redirectInBrowser flag from redirect ([db34c84](https://github.com/newrelic/developer-website/commit/db34c84438d155513bbb00b840d2aed6fa7e399d))
+
 # [1.81.0](https://github.com/newrelic/developer-website/compare/v1.80.0...v1.81.0) (2022-03-02)
 
 

@@ -1,27 +1,48 @@
 module.exports = {
   // https://github.com/newrelic/eslint-plugin-newrelic
   extends: [
-    'plugin:@typescript-eslint/recommended',
     'plugin:@newrelic/eslint-plugin-newrelic/react',
     'plugin:@newrelic/eslint-plugin-newrelic/prettier',
     'plugin:jsx-a11y/recommended',
     'plugin:react-hooks/recommended',
   ],
   // https://github.com/yannickcr/eslint-plugin-react#configuration
-  plugins: ['react', 'jsx-a11y', 'markdown', '@typescript-eslint', 'graphql'],
+  plugins: ['react', 'jsx-a11y', 'markdown', 'graphql'],
   settings: {
     react: {
       version: 'detect',
     },
   },
-  parser: '@typescript-eslint/parser',
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+      ],
+      parserOptions: {
+        project: ['./tsconfig.json'],
+        tsconfigRootDir: __dirname,
+      },
+      rules: {
+        '@typescript-eslint/no-var-requires': 2,
+        '@typescript-eslint/no-empty-function': 2,
+        '@typescript-eslint/explicit-module-boundary-types': 2,
+        '@typescript-eslint/explicit-function-return-type': 2,
+        '@typescript-eslint/no-unsafe-argument': 2,
+        '@typescript-eslint/no-use-before-define': 2,
+        '@typescript-eslint/no-explicit-any': 2,
+        '@typescript-eslint/camelcase': 2,
+      },
+    },
+  ],
   parserOptions: {
+    files: ['*.js', '*.jsx'],
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 2018,
     sourceType: 'module',
-    project: ['./tsconfig.json'],
   },
   env: {
     browser: true,
@@ -42,13 +63,5 @@ module.exports = {
     'jsx-a11y/no-onchange': 'off',
     'react/jsx-curly-brace-presence': 'off',
     'react/prop-types': 'off',
-
-    // typescript rules will also be invoked for js files
-    '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/explicit-function-return-type': 1,
-    '@typescript-eslint/no-unsafe-argument': 1,
-    '@typescript-eslint/explicit-module-boundary-types': 1,
-    '@typescript-eslint/no-explicit-any': 1,
   },
 };

@@ -35,7 +35,7 @@ const createRedirectsForNewIoDomain = (createRedirect, allQuickstarts) => {
   createRedirect({
     fromPath: '/instant-observability/',
     toPath: 'https://www.newrelic.com/instant-observability',
-    redirectInBrowser: true,
+    redirectInBrowser: false,
     isPermanent: true,
   });
 
@@ -48,7 +48,7 @@ const createRedirectsForNewIoDomain = (createRedirect, allQuickstarts) => {
     createRedirect({
       fromPath: path.join(slug, '/'),
       toPath: `https://www.newrelic.com${path.join(slug, '/')}`,
-      redirectInBrowser: true,
+      redirectInBrowser: false,
       isPermanent: true,
     });
   });
