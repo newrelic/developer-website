@@ -73,18 +73,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-
-      allQuickstarts {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            id
-          }
-        }
-      }
-    }
   `);
   // Handle errors
   if (result.errors) {
