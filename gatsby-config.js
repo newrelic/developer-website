@@ -168,13 +168,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'quickstarts',
-        path: `${__dirname}/src/data/quickstarts.json`,
-      },
-    },
-    {
       resolve: 'gatsby-transformer-json',
       options: {
         // If we need to source json files other than the i18n/nav, we should
