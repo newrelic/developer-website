@@ -63,27 +63,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-
-      allNewRelicSdkApi {
-        edges {
-          node {
-            fields {
-              slug
-            }
-          }
-        }
-      }
-
-      allQuickstarts {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            id
-          }
-        }
-      }
     }
   `);
   // Handle errors
