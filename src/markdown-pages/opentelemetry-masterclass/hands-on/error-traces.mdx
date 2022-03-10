@@ -69,7 +69,7 @@ Their red color indicates their error status.
 
 Click the root span:
 
-![Trace root span details](../../../images/opentelemetry-masterclass/success-root-span.png)
+![Trace root span details](../../../images/opentelemetry-masterclass/root-span.png)
 
 Near the top of the view, click **Error Details**:
 
@@ -77,13 +77,9 @@ Near the top of the view, click **Error Details**:
 
 Here, you see the error status code and message you set when you instrumented your application. However, you can’t see any information about the actual exception because that was captured by the in-process span.
 
-To see more information about your in-process span, expand the root span, and toggle **Display in-process spans for this service**:
+To see more information about your in-process span, expand the root span, toggle **Display in-process spans for this service**, and click your in-process span:
 
 ![Show in-process span](../../../images/opentelemetry-masterclass/show-in-process-span.png)
-
-Click your in-process span:
-
-![Trace root span details](../../../images/opentelemetry-masterclass/success-root-span.png)
 
 This view is the same as the view for your root span but with data for your function instead of the overall request. Under **Attributes**, you’ll find your custom attribute:
 
@@ -128,7 +124,7 @@ Congratulations on completing this course! You’ve learned a lot about OpenTele
 Here’s a snapshot of what you learned:
 
 | Fundamentals | Hands-on experience |
-|:-:|:-:|
+|---|---|
 | ✓ Purpose and usefulness of OpenTelemetry | ✓ Applying OpenTelemetry instrumentation to your application |
 | ✓ Data, API, and SDK specifications | ✓ New Relic’s support of OpenTelemetry traces |
 | ✓ Language implementations ||

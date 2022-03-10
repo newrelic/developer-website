@@ -13,7 +13,7 @@ Each lesson in this lab builds on the last one, so make sure you learn about [tr
 
 </Callout>
 
-The OpenTelemetry specification defines an exchange protocol, OTLP, that defines how data is serialized, deserialized, and transported between networked services. The goal of this protocol is to specify a serialization schema that closely adheres to the data models and solves problems that exist with other telemetry protocols. It also aims to define how to generally implement a client that can serialize and send the data and how to implement a server that can accept the serialized data and indicate success or failure in its response.
+The OpenTelemetry specification defines an exchange protocol, OTLP, that defines how data is serialized, deserialized, and transported between networked services. The goal of this protocol is to specify a serialization schema that closely adheres to the data models and solves problems that exist with other telemetry protocols. It also aims to define how to generally implement a client that can serialize and send the data, and how to implement a server that can accept the serialized data and indicate success or failure in its response.
 
 OTLP uses protocol buffers to serialize telemetry data and gRPC or HTTP for sending it. The protocol works in all nodes from your telemetry client to the observability platform that receives your data and any services, agents, collectors, and forwarders in between.
 
