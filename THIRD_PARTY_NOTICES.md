@@ -14,42 +14,40 @@ code, the source code can be found at [https://github.com/newrelic/developer-web
 
 **[dependencies](#dependencies)**
 
-* [@mdx-js/mdx](#mdx-jsmdx)
-* [@mdx-js/mdx](#mdx-jsmdx)
-* [@mdx-js/react](#mdx-jsreact)
-* [classnames](#classnames)
-* [date-fns](#date-fns)
-* [eslint-plugin-react-hooks](#eslint-plugin-react-hooks)
-* [gatsby-plugin-meta-redirect](#gatsby-plugin-meta-redirect)
-* [gatsby-plugin-robots-txt](#gatsby-plugin-robots-txt)
-* [node-sass](#node-sass)
-* [normalize.css](#normalizecss)
-* [prism-react-renderer](#prism-react-renderer)
-* [prismjs](#prismjs)
-* [prop-types](#prop-types)
-* [react-dom](#react-dom)
-* [react-helmet](#react-helmet)
-* [react-live](#react-live)
-* [react-markdown](#react-markdown)
-* [react-middle-ellipsis](#react-middle-ellipsis)
-* [react-shadow](#react-shadow)
-* [react](#react)
+- [@mdx-js/mdx](#mdx-jsmdx)
+- [@mdx-js/mdx](#mdx-jsmdx)
+- [@mdx-js/react](#mdx-jsreact)
+- [classnames](#classnames)
+- [date-fns](#date-fns)
+- [eslint-plugin-react-hooks](#eslint-plugin-react-hooks)
+- [gatsby-plugin-robots-txt](#gatsby-plugin-robots-txt)
+- [node-sass](#node-sass)
+- [normalize.css](#normalizecss)
+- [prism-react-renderer](#prism-react-renderer)
+- [prismjs](#prismjs)
+- [prop-types](#prop-types)
+- [react-dom](#react-dom)
+- [react-helmet](#react-helmet)
+- [react-live](#react-live)
+- [react-markdown](#react-markdown)
+- [react-middle-ellipsis](#react-middle-ellipsis)
+- [react-shadow](#react-shadow)
+- [react](#react)
 
 **[devDependencies](#devDependencies)**
 
-* [@newrelic/eslint-plugin-newrelic](#newreliceslint-plugin-newrelic)
-* [@testing-library/react](#testing-libraryreact)
-* [babel-jest](#babel-jest)
-* [babel-preset-gatsby](#babel-preset-gatsby)
-* [eslint-plugin-jsx-a11y](#eslint-plugin-jsx-a11y)
-* [eslint-plugin-markdown](#eslint-plugin-markdown)
-* [eslint](#eslint)
-* [husky](#husky)
-* [identity-obj-proxy](#identity-obj-proxy)
-* [jest](#jest)
-* [prettier](#prettier)
-* [react-test-renderer](#react-test-renderer)
-
+- [@newrelic/eslint-plugin-newrelic](#newreliceslint-plugin-newrelic)
+- [@testing-library/react](#testing-libraryreact)
+- [babel-jest](#babel-jest)
+- [babel-preset-gatsby](#babel-preset-gatsby)
+- [eslint-plugin-jsx-a11y](#eslint-plugin-jsx-a11y)
+- [eslint-plugin-markdown](#eslint-plugin-markdown)
+- [eslint](#eslint)
+- [husky](#husky)
+- [identity-obj-proxy](#identity-obj-proxy)
+- [jest](#jest)
+- [prettier](#prettier)
+- [react-test-renderer](#react-test-renderer)
 
 ## dependencies
 
@@ -209,10 +207,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ```
-
-### gatsby-plugin-meta-redirect
-
-This product includes source derived from [gatsby-plugin-meta-redirect](https://github.com/getchalk/gatsby-plugin-meta-redirect) ([v1.1.1](https://github.com/getchalk/gatsby-plugin-meta-redirect/tree/v1.1.1)), distributed under the [MIT License](https://github.com/getchalk/gatsby-plugin-meta-redirect/blob/v1.1.1/LICENSE):
 
 ```
 MIT License
@@ -612,7 +606,6 @@ SOFTWARE.
 
 ```
 
-
 ## devDependencies
 
 ### @newrelic/eslint-plugin-newrelic
@@ -990,7 +983,7 @@ This product includes source derived from [husky](https://github.com/typicode/hu
 ```
 MIT License
 
-Copyright (c) 2017 
+Copyright (c) 2017
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -1114,4 +1107,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ```
-

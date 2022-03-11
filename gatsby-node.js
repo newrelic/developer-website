@@ -30,30 +30,6 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs);
 };
 
-// TODO: This can be thrown away once we've fully migrated. For now, its just a container for all the work of redirecting to the new domain of IO.
-const createRedirectsForNewIoDomain = (createRedirect, allQuickstarts) => {
-  createRedirect({
-    fromPath: '/instant-observability/',
-    toPath: 'https://www.newrelic.com/instant-observability',
-    redirectInBrowser: false,
-    isPermanent: true,
-  });
-
-  allQuickstarts.edges.forEach(({ node }) => {
-    const {
-      fields: { slug },
-      id,
-    } = node;
-
-    createRedirect({
-      fromPath: path.join(slug, '/'),
-      toPath: `https://www.newrelic.com${path.join(slug, '/')}`,
-      redirectInBrowser: false,
-      isPermanent: true,
-    });
-  });
-};
-
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage, createRedirect } = actions;
 
@@ -97,17 +73,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-
-      allQuickstarts {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            id
-          }
-        }
-      }
     }
   `);
   // Handle errors
@@ -116,14 +81,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  const {
-    allMdx,
-    allNewRelicSdkComponent,
-    allNewRelicSdkApi,
-    allQuickstarts,
-  } = result.data;
+  const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
 
-  createRedirectsForNewIoDomain(createRedirect, allQuickstarts);
+  createRedirect({
+    fromPath: `/instant-observability/`,
+    toPath: `https://newrelic.com/instant-observability`,
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: `/instant-observability/*`,
+    toPath: `https://newrelic.com/instant-observability/*`,
+    isPermanent: true,
+  });
 
   allMdx.edges.forEach(({ node }) => {
     const {
