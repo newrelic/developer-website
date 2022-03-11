@@ -7796,7 +7796,7 @@ gatsby-remark-images@^5.5.0:
     unist-util-select "^3.0.4"
     unist-util-visit-parents "^3.1.1"
 
-gatsby-source-filesystem@^3.10.0, gatsby-source-filesystem@^3.8.0:
+gatsby-source-filesystem@^3.10.0:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-3.14.0.tgz#ae2b930091a932b33270cb9cc2d9caaf0abc1742"
   integrity sha512-Gg5GGxiWXhjapWMYdXOGk7zp+ajYowS+xNmaDUkL1gH+IQLvE18XbvKh00B/HiFaHm4azJfS2QRrRI/mPTZX+w==
@@ -7853,14 +7853,6 @@ gatsby-telemetry@^3.9.0:
     is-docker "^2.2.1"
     lodash "^4.17.21"
     node-fetch "^2.6.7"
-
-gatsby-transformer-json@^3.3.0:
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-json/-/gatsby-transformer-json-3.14.0.tgz#b1624a25e20f6bbf70181f5c1284e67abfac7c7a"
-  integrity sha512-bEewDHg9o4ghIe28gXy5kVm7ARqhTlzkfN1E7RZeWzd0jmMZAJHBmboQOE1cbJopODspkNvCySvDXfGF/sgUBQ==
-  dependencies:
-    "@babel/runtime" "^7.15.4"
-    bluebird "^3.7.2"
 
 gatsby-transformer-remark@^4.5.0:
   version "4.11.0"
