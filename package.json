@@ -29,7 +29,6 @@
     "gatsby-plugin-use-query-params": "^1.0.1",
     "gatsby-remark-autolink-headers": "^2.9.0",
     "gatsby-remark-images": "^5.5.0",
-    "gatsby-transformer-json": "^3.3.0",
     "gatsby-transformer-remark": "^4.5.0",
     "gatsby-transformer-sharp": "^3.13.0",
     "js-cookie": "^2.2.1",
