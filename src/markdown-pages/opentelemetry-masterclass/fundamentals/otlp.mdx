@@ -13,15 +13,9 @@ Each lesson in this lab builds on the last one, so make sure you learn about [tr
 
 </Callout>
 
-The OpenTelemetry specification defines an exchange protocol, OTLP, that defines how data is serialized, deserialized, and transported between networked services. The goal of this protocol is to specify a serialization schema that closely adheres to the data models and solves problems that exist with other telemetry protocols. It also aims to define how to generally implement a client that can serialize and send the data, and how to implement a server that can accept the serialized data and indicate success or failure in its response.
+The OpenTelemetry specification includes an exchange protocol, OTLP, that defines how data is serialized, deserialized, and transported between networked services. The goal of this protocol is to specify a serialization schema that closely adheres to the data models and solves [problems that exist with other telemetry protocols](https://opentelemetry.io/docs/reference/specification/protocol/requirements/#known-issues-with-existing-protocols). It also aims to define how to generally implement a client that can serialize and send the data, and how to implement a server that can accept the serialized data and indicate success or failure in its response.
 
 OTLP uses protocol buffers to serialize telemetry data and gRPC or HTTP for sending it. The protocol works in all nodes from your telemetry client to the observability platform that receives your data and any services, agents, collectors, and forwarders in between.
-
-It aims to reliably and efficiently transfer your data. It approaches this goal from multiple angles, including:
-
-- Using less CPU than other methods
-- Efficiently deserializing, updating, and, serializing data at intermediate nodes
-- Sending high volumes of requests, even in networks that take a long time to respond
 
 OTLP is relevant to the OpenTelemetry data specification because the specification doesn’t only define what the data for each signal looks like at a high level, but it also specifies what it looks like at the code level. Specifically, it defines the protocol buffer schemas used to serialize your data and transport it over the wire.
 
