@@ -1,3 +1,10 @@
+## [1.82.2](https://github.com/newrelic/developer-website/compare/v1.82.1...v1.82.2) (2022-03-16)
+
+
+### Bug Fixes
+
+* update to `sass` ([cc29829](https://github.com/newrelic/developer-website/commit/cc298298b4b3007c68991c1a076f3c1d92e8c05b))
+
 ## [1.82.1](https://github.com/newrelic/developer-website/compare/v1.82.0...v1.82.1) (2022-03-11)
 
 
