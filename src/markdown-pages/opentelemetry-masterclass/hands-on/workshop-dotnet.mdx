@@ -5,7 +5,6 @@ description: 'Instrument a .NET application with OpenTelemetry'
 procIdx: 1.1
 ---
 
-
 <Callout variant="course">
 
 This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/hands-on).
@@ -14,9 +13,9 @@ Each lesson in this lab builds on the last one, so make sure you read the [works
 
 </Callout>
 
-In this workshop, you instrument a .NET web application with OpenTelemetry, using the fundamentals you learned in chapter one of this masterclass! You also send your telemetry data to your New Relic account and see how useful the data is for monitoring your system and observing its behaviors.
+In this workshop, you instrument a .NET web application with OpenTelemetry using the fundamentals you learned in the previous chapters of this masterclass! You also send your telemetry data to your New Relic account and see how useful the data is for monitoring your system and observing its behaviors.
 
-If you haven’t already, sign up for a free New Relic account. You need one to complete this workshop.
+If you haven’t already, [sign up for a free New Relic account](https://newrelic.com/signup). You need one to complete this workshop.
 
 ## Set up your environment
 
@@ -29,7 +28,7 @@ Clone our demo repository:
 <>
 
 ```shell
-git clone https://github.com/reese-lee/mcv3-apps/
+git clone https://github.com/newrelic-experimental/mcv3-apps/
 ```
 
 </>
@@ -489,6 +488,7 @@ Configure OpenTelemetry tracing:
 
 ```csharp fileName=Program.cs
 using dotnet.Controllers;
+using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -553,7 +553,7 @@ services:
 
 <br />
 
-The first variable you set configures the exporter to send telemetry data to https://otlp.nr-data.net:4317. This is our US-based OTLP endpoint. If you’re in the EU, use https://otlp.eu01.nr-data.net instead.
+The first variable you set configures the exporter to send telemetry data to https://otlp.nr-data.net:4317. This is our US-based OTLP endpoint. If you’re in the EU, use https://otlp.eu01.nr-data.net:4317 instead.
 
 The second variable passes the `NEW_RELIC_API_KEY` from your local machine in the `api-key` header of your OTLP requests. You set this environment variable in a previous lesson.
 

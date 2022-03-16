@@ -2,7 +2,7 @@
 title: 'OpenTelemetry implementations'
 template: 'GuideTemplate'
 description: 'OpenTelemetry implementations'
-procIdx: 19
+procIdx: 14
 ---
 
 <Callout variant="course">
@@ -27,13 +27,13 @@ OpenTelemetry is more than a specification. It also provides official implementa
 - [Rust](https://github.com/open-telemetry/opentelemetry-rust)
 - [Swift](https://github.com/open-telemetry/opentelemetry-swift)
 
-Just as with the specification, these implementations are evolving. Learn more about how far along your preferred language is by checking the [compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
+Just as with the spec, these implementations are evolving. Learn more about how far along your preferred language is by checking the [compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
 OpenTelemetry provides manual and automatic forms of instrumentation that use the API to generate data.
 
 ## Manual instrumentation
 
-Manual instrumentation requires you, the developer, to use the SDK to configure your API and use the API to create and export the data. In terms of traces, this means that you create a tracer provider, you create tracers, and you create spans for each operation that you want to collect data about. If you’re trying to natively instrument your library or framework, you use manual instrumentation.
+Manual instrumentation requires you, the developer, to use the SDK to configure your API and to use the API to create and export the data. In terms of traces, this means that you create a tracer provider, you create tracers, and you create spans for each operation that you want to collect data about. If you’re trying to natively instrument your library or framework, you use manual instrumentation.
 
 ## Automatic instrumentation
 
@@ -41,13 +41,13 @@ Automatic instrumentation provides the same telemetry data as manual instrumenta
 
 <Callout variant="tip" title="Technical detail">
 
-OpenTelemetry developers can provide automatic instrumentation by automatically manipulating and instrumenting code. For example, the OpenTelemetry Java agent rewrites an application’s bytecode to add instrumentation.
+OpenTelemetry developers can provide automatic instrumentation by programatically manipulating and instrumenting code. For example, the OpenTelemetry Java agent rewrites an application’s bytecode to add instrumentation.
 
 However, they can also provide library instrumentation. This can take a few forms:
 
-- OpenTelemetry is built directly into a library
-- Instrumentation code utilizes special purpose extension hooks that are present in the library it instruments
-- Wrapped versions of libraries include an instrumentation layer
+- OpenTelemetry can be built directly into a library
+- Instrumentation code can utilize special purpose extension hooks that are present in the library it instruments
+- Wrapped versions of libraries can include an instrumentation layer
 
 </Callout>
 
@@ -57,7 +57,7 @@ OpenTelemetry implementations include many components, including SDK interfaces,
 
 For example, one language may have one repository for all OpenTelemetry code. Another language may separate manual and automatic instrumentation into their own repositories. Review the [OpenTelemetry documentation](https://opentelemetry.io/docs/instrumentation/) to learn more about your preferred language.
 
-## Chapter one Summary
+## Chapter two summary
 
 In this chapter, you learned the fundamentals of OpenTelemetry, including:
 
@@ -71,6 +71,6 @@ In the next chapter, you walk through a practical example, using an OpenTelemetr
 
 <Callout variant="course">
 
-This lesson is a part of our OpenTelemetry masterclass. Continue to the [chapter two](/opentelemetry-masterclass/hands-on) where you get practical experience instrumenting an application with OpenTelemetry.
+This lesson concludes chapter one of our OpenTelemetry masterclass. Continue on to [chapter three](/opentelemetry-masterclass/hands-on) where you get practical experience instrumenting an application with OpenTelemetry.
 
 </Callout>

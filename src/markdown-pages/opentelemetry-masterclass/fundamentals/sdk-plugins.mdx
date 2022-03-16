@@ -2,7 +2,7 @@
 title: 'SDK plugins'
 template: 'GuideTemplate'
 description: 'SDK plugins'
-procIdx: 16
+procIdx: 11
 ---
 
 <Callout variant="course">
@@ -23,7 +23,7 @@ The trace SDK accepts several types of plugins, such as:
 - **Span processor:** Enriches and filters span data, then converts it into a form that exporters can work with
 - **Sampler:** Lets users control span sampling
 
-For each of these plugin types, the SDK specification defines the interface, or the required methods.
+For each of these plugin types, the SDK spec defines the interface, or the required methods.
 
 For example, span exporter plugins must implement two functions:
 
@@ -32,7 +32,7 @@ For example, span exporter plugins must implement two functions:
 
 API interactions can call these functions at the appropriate time regardless of what plugin is being used because the specification requires them.
 
-The specification also defines the plugins that must be included in any implementation of the SDK. For example, it declares that the SDK must provide a simple span processor and a batch processor. The simple span processor processes spans as soon as they finish. The batch processor batches finished spans before passing them to the exporter.
+The spec also defines the plugins that must be included in any implementation of the SDK. For example, it declares that the SDK must provide a simple span processor and a batch processor. The simple span processor processes spans as soon as they finish. The batch processor batches finished spans before passing them to the exporter.
 
 SDK plugins are modular logical components that implement API interfaces in a particular way. You choose the plugins that best suit your goals for telemetry data. Once you choose your plugins, you can further configure them and assign them to the API using SDK constructors.
 

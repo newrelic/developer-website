@@ -2,7 +2,7 @@
 title: 'The OpenTelemetry Protocol (OTLP)'
 template: 'GuideTemplate'
 description: 'What is OTLP, and how is it defined in the specification?'
-procIdx: 10
+procIdx: 5
 ---
 
 <Callout variant="course">
@@ -17,7 +17,7 @@ The OpenTelemetry specification includes an exchange protocol, OTLP, that define
 
 OTLP uses protocol buffers to serialize telemetry data and gRPC or HTTP for sending it. The protocol works in all nodes from your telemetry client to the observability platform that receives your data and any services, agents, collectors, and forwarders in between.
 
-OTLP is relevant to the OpenTelemetry data specification because the specification doesn’t only define what the data for each signal looks like at a high level, but it also specifies what it looks like at the code level. Specifically, it defines the protocol buffer schemas used to serialize your data and transport it over the wire.
+OTLP is relevant to the OpenTelemetry data specification because the spec doesn’t only define what the data for each signal looks like at a high level, but it also specifies what it looks like at the code level. Specifically, it defines the protocol buffer schemas you use to serialize your data and send it over the wire.
 
 Here’s a snippet from the [trace protocol buffer schema](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/trace/v1/trace.proto):
 
@@ -41,15 +41,14 @@ message Span {
 }
 ```
 
-This message represents a trace’s span. You may not recognize the first few fields, because you haven’t yet learned about how traces are implemented, but most of the other fields should look familiar.
+This message represents a trace’s span. You may not recognize the first few fields, because you haven’t yet learned about how traces are implemented, but most of the other fields should look familiar:
 
-For example, the fifth field on the message is the span’s name. As you learned previously, the span’s name is a string of characters that identifies the operation the span represents.
+- The **fifth** field on the message is the span’s name. As you learned previously, the span’s name is a string of characters that identifies the operation the span represents.
+- The **seventh** and **eighth** fields are the start and end timestamps of the span, respectively. These are stored as eight-byte integers that represent the number of nanoseconds it has been since the UNIX epoch (January 1, 1970). It’s more efficient to send integers over the wire than it is to send formatted timestamp strings.
+- The **ninth** field represents the span’s attributes as a collection—denoted by the “repeated” data type—of `KeyValue` elements.
+- The **eleventh** field stores a collection of `Event` objects.
 
-The seventh and eighth fields are the start and end timestamps of the span, respectively. These are stored as eight-byte integers that represent the number of nanoseconds it has been since the UNIX epoch (January 1, 1970). It’s more efficient to send integers over the wire than it is to send formatted timestamp strings.
-
-The ninth field represents the span’s attributes as a collection—denoted by the “repeated” data type—of `KeyValue` elements.
-
-Field eleven stores a collection of `Event` objects. In the schema, the `Event` and other custom data types that are more complex than primitive ones have their own definitions. In this case, you have:
+In the schema, the `Event` and other custom data types that are more complex than primitive ones have their own definitions. In this case, you have:
 
 ```
 message Event {
@@ -64,14 +63,14 @@ This should look mostly familiar to you as it matches almost one-to-one with the
 
 When you reference or work with the data specification, it’s important to keep in mind that OpenTelemetry is still an evolving product. Some of the data signals are stable, have long-term support, and are guaranteed to not have subsequent minor releases with backward-incompatible changes. Others, however, are experimental or are currently being tested where there is no such guarantee of stability. Check out the **Maturity Level** chart in the [opentelemetry-proto repository](https://github.com/open-telemetry/opentelemetry-proto#maturity-level) to see how mature each schema is.
 
-Congratulations! You’ve learned all about the OpenTelemetry data specification, including:
+Awesome! You’ve learned all about the OpenTelemetry data specification, including:
 
 - What signals are
-- What the specification defines about each signal
+- What the spec defines about each signal
 - What the trace data model looks like
 - What attributes are in the scope of OpenTelemetry
 - What span events are
-- How the specification defines the OTLP schemas according to the data models
+- How the spec defines the OTLP schemas according to the data models
 
 The specification doesn’t stop with defining telemetry data, though. It also specifies an interface for interacting with that data.
 
