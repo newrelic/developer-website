@@ -1,3 +1,39 @@
+## [1.82.2](https://github.com/newrelic/developer-website/compare/v1.82.1...v1.82.2) (2022-03-16)
+
+
+### Bug Fixes
+
+* update to `sass` ([cc29829](https://github.com/newrelic/developer-website/commit/cc298298b4b3007c68991c1a076f3c1d92e8c05b))
+
+## [1.82.1](https://github.com/newrelic/developer-website/compare/v1.82.0...v1.82.1) (2022-03-11)
+
+
+### Bug Fixes
+
+* adding back the allNewRelicSdkApi query ([c442511](https://github.com/newrelic/developer-website/commit/c44251164236ccfc78d4b05479e80d1398e4e5af))
+* ran yarn due to failed checks ([b1028ac](https://github.com/newrelic/developer-website/commit/b1028ac699693495f56f4bdeabb99b8ad7306779))
+* remove entire object of gatsby-transformer-json in gatsby config ([4a10903](https://github.com/newrelic/developer-website/commit/4a10903a6333a4fbe8c9971fe8d3fcff0432b738))
+* remove extra bracket and quickstarts.json file ([be95a69](https://github.com/newrelic/developer-website/commit/be95a69014e1f5eaaffc3cf73843a5446b22d6c3))
+* remove gatsby-plugin-meta-redirect docs from project ([c963b6b](https://github.com/newrelic/developer-website/commit/c963b6be202e4d6eb96b2d7796383be183dbc1ef))
+* remove gatsby-plugin-meta-redirect from plugins array in gatsby config ([3dcbac1](https://github.com/newrelic/developer-website/commit/3dcbac19afb64bcbab92a6eba94c8a3e370293a2))
+* remove gatsby-plugin-meta-redirect from plugins array in gatsby config ([41d068c](https://github.com/newrelic/developer-website/commit/41d068cee59760a1dca6ab8a104d6878a71b622a))
+* remove gatsby-plugin-meta-redirect from project ([a24974c](https://github.com/newrelic/developer-website/commit/a24974cf4b2f96813374b914624427c65d806a27))
+* remove gatsby-transformer-json from package.json ([1ab2ca6](https://github.com/newrelic/developer-website/commit/1ab2ca68eca90a36ab41641a89688aeb9f83313a))
+* remove quickstarts.json file ([9c0dd11](https://github.com/newrelic/developer-website/commit/9c0dd11ab83a15426b230cf36d75565ac0590990))
+* remove trailing slash from redirect to I/O site ([9d8a943](https://github.com/newrelic/developer-website/commit/9d8a943a4913c8c3e333e6cb2dc0561706a35427))
+* remove unneeded gatsby plugins that were sourcing the quickstarts.json ([8459ecd](https://github.com/newrelic/developer-website/commit/8459ecdbc5b517e7083838bcd423734e19306b03))
+* remove unneeded query and plugin code since this is handled by splat redirects ([8ca4033](https://github.com/newrelic/developer-website/commit/8ca4033c01966af0351697a5eb7c5cb25e882923))
+* remove unused plugin ([4e822c7](https://github.com/newrelic/developer-website/commit/4e822c7319ae9367fcf37bd97b9dd1681a718084))
+* remove unused redirect function in place of two createRedirect functions to manage 301 redirects to IO site ([ff6a9e0](https://github.com/newrelic/developer-website/commit/ff6a9e0d3fa7cac806748b166d3e3e7aee71ce83))
+* removed too many brackets ([a2d9e18](https://github.com/newrelic/developer-website/commit/a2d9e182c5ec53eb4056ec247e1d04cb37b745b6))
+* removing dependencies from package.json ([4829325](https://github.com/newrelic/developer-website/commit/482932556ff36677da4fb7bb62d6cf12173f317c))
+* test ([a2a7bc5](https://github.com/newrelic/developer-website/commit/a2a7bc59e7f97595782f58d3b1331804d3ee8273))
+* test, adding back gatsby-plugin-meta-redirect ([0ecc1fc](https://github.com/newrelic/developer-website/commit/0ecc1fcb82a5a041822e184b50b6e3e4bce5f8ef))
+* typo ([15de8bb](https://github.com/newrelic/developer-website/commit/15de8bb37d80e45dea2f5d1127fac8c007824d40))
+* typo on createRedirect ([de82f71](https://github.com/newrelic/developer-website/commit/de82f712fdb3fa90e3e985ca6300c7a13247482c))
+* undo changes to 3rd party manifest ([c3acbf2](https://github.com/newrelic/developer-website/commit/c3acbf2fbc330395e97e854f4f078817fdeb0e8c))
+* update node version for change-log ([726870f](https://github.com/newrelic/developer-website/commit/726870f393376ebbbd5d88ed4689ac2d29654d72))
+
 # [1.82.0](https://github.com/newrelic/developer-website/compare/v1.81.3...v1.82.0) (2022-03-09)
 
 

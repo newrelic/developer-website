@@ -147,7 +147,12 @@ module.exports = {
         },
       },
     },
-    'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: require('sass'),
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -165,23 +170,6 @@ module.exports = {
       options: {
         name: 'markdown-pages',
         path: `${__dirname}/src/markdown-pages`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'quickstarts',
-        path: `${__dirname}/src/data/quickstarts.json`,
-      },
-    },
-    {
-      resolve: 'gatsby-transformer-json',
-      options: {
-        // If we need to source json files other than the i18n/nav, we should
-        // consider making this dynamic. See the docs for ways to do this.
-        //
-        // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-json
-        typeName: 'Quickstarts',
       },
     },
     'gatsby-remark-images',
@@ -216,7 +204,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-embed-pages',
-    'gatsby-plugin-meta-redirect',
     {
       resolve: 'gatsby-plugin-gdpr-tracking',
       options: {
