@@ -534,7 +534,7 @@
           url: '/all-things-open'
 - title: Instant Observability
   icon: fe-box
-  url: '/instant-observability'
+  url: 'https://newrelic.com/instant-observability'
 - title: Nerd Bytes
   icon: nr-nerd-bytes
   url: '/nerd-bytes'

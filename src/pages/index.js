@@ -85,7 +85,7 @@ const IndexPage = ({ data, pageContext, location }) => {
                 <Button
                   as={Link}
                   variant={Button.VARIANT.PRIMARY}
-                  to="/instant-observability"
+                  to="https://newrelic.com/instant-observability"
                   instrumentation={{
                     navInteractionType: 'getQuickstartsButtonClick',
                   }}
