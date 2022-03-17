@@ -1,3 +1,11 @@
+## [1.82.3](https://github.com/newrelic/developer-website/compare/v1.82.2...v1.82.3) (2022-03-17)
+
+
+### Bug Fixes
+
+* correct link to IO ([4854d69](https://github.com/newrelic/developer-website/commit/4854d69983fff82f63d8ad297c0eb5bd5c723621))
+* correct the other io link ([2640e81](https://github.com/newrelic/developer-website/commit/2640e815e5babbf059a23bed830b02a842d21c79))
+
 ## [1.82.2](https://github.com/newrelic/developer-website/compare/v1.82.1...v1.82.2) (2022-03-16)
 
 
