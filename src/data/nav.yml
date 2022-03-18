@@ -538,9 +538,6 @@
 - title: Nerd Bytes
   icon: nr-nerd-bytes
   url: '/nerd-bytes'
-- title: The Relicans
-  icon: nr-relicans
-  url: '/relicans'
 - title: Developer champions
   icon: nr-developer-champions
   url: '/developer-champion'

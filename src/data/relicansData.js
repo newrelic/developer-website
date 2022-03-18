@@ -1,10 +1,6 @@
 import React from 'react';
 import aaronAvatar from '../images/relicans/aaron-bassett.jpg';
-import aishaAvatar from '../images/relicans/aisha-blake.jpg';
-import aliAvatar from '../images/relicans/ali-finkelstein.jpg';
-import chrisAvatar from '../images/relicans/chris-dabatos.jpg';
 import dannyAvatar from '../images/relicans/danny-ramos.jpg';
-import jonanAvatar from '../images/relicans/jonan-scheffler.jpg';
 import kirkAvatar from '../images/relicans/kirk-haines.jpg';
 import miaAvatar from '../images/relicans/mia-moore.jpg';
 import pachiAvatar from '../images/relicans/pachi-carlson.jpg';
@@ -51,98 +47,6 @@ export const teamMembers = [
     ],
   },
   {
-    name: 'Aisha Blake',
-    pronouns: 'she/her',
-    avatar: aishaAvatar,
-    bio: (
-      <p>
-        Aisha is a champion of feedback, a fierce accessibility advocate, and a
-        steward of strong teams. A theatre kid turned tech community leader, she
-        also co-organizes self.conference and Detroit Speakers in Tech. In her
-        spare time, Aisha loves to sing karaoke and pet dogs.
-      </p>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/aishablake',
-      },
-      {
-        name: 'twitch',
-        url: 'https://twitch.tv/aishacodes',
-      },
-      {
-        name: 'instagram',
-        url: 'https://www.instagram.com/epsilonx2',
-      },
-      {
-        name: 'linkedin',
-        url: 'https://linkedin.com/in/aisha-blake-5bb2677a',
-      },
-    ],
-  },
-  {
-    name: 'Ali Diamond',
-    pronouns: 'she/her',
-    avatar: aliAvatar,
-    bio: (
-      <p>
-        Ali graduated from MIT with a Master’s of Engineering and Bachelor’s of
-        Science in computer science and electrical engineering. She worked in
-        cryptocurrency, SaaS, and healthcare before starting at New Relic. Ali
-        is driven by innovation and loves security, SaaS, and start ups. But
-        really, she considers herself a “jack of all trades,” as she is always
-        striving to learn new skills and new topics. If you want to strike up a
-        conversation with her, ask her about YouTube.
-      </p>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/endingwithali',
-      },
-      {
-        name: 'twitch',
-        url: 'https://twitch.tv/endingwithali',
-      },
-      {
-        name: 'instagram',
-        url: 'https://instagram.com/endingwithali',
-      },
-      {
-        name: 'linkedin',
-        url: 'https://www.linkedin.com/in/ali-diamond/',
-      },
-    ],
-  },
-  {
-    name: 'Chris Dabatos',
-    pronouns: 'he/him',
-    avatar: chrisAvatar,
-    bio: (
-      <p>
-        Chris is a developer relations engineer for New Relic. He's been a
-        front-end engineer since 2016. He has been documenting his journey as a
-        self-taught developer on YouTube in hopes of inspiring aspiring
-        developers around the world.
-      </p>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://www.twitter.com/realchrissean/',
-      },
-      {
-        name: 'twitch',
-        url: 'https://www.twitch.tv/chrissean/',
-      },
-      {
-        name: 'instagram',
-        url: 'https://www.instagram.com/realchrissean/',
-      },
-    ],
-  },
-  {
     name: 'Danny Ramos',
     pronouns: 'he/him',
     avatar: dannyAvatar,
@@ -173,43 +77,6 @@ export const teamMembers = [
       {
         name: 'linkedin',
         url: 'https://linkedin.com/in/danny-ramos-j/',
-      },
-    ],
-  },
-  {
-    name: 'Jonan Scheffler',
-    pronouns: 'he/him',
-    avatar: jonanAvatar,
-    bio: (
-      <p>
-        Jonan Scheffler is the Director of Developer Relations at New Relic. He
-        has a long history of breaking things in public and occasionally putting
-        them back together again. His interest in physical computing often leads
-        him to experiment with robotics and microelectronics, though his
-        professional experience is more closely tied to cloud services and
-        modern application development. In order to break things more
-        effectively he is particularly excited about observability lately, and
-        he’s committed to helping developers around the world live happier lives
-        by showing them how to keep their apps and their dreams alive through
-        the night.
-      </p>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/thejonanshow',
-      },
-      {
-        name: 'twitch',
-        url: 'https://twitch.tv/thejonanshow',
-      },
-      {
-        name: 'instagram',
-        url: 'https://www.instagram.com/thejonanshow',
-      },
-      {
-        name: 'github',
-        url: 'https://github.com/thejonanshow',
       },
     ],
   },

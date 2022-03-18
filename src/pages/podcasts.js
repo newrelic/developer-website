@@ -9,16 +9,12 @@ import * as styles from './podcasts.module.scss';
 const PodcastsPage = ({ location }) => {
   const podcastsMeta = [
     {
-      id: '1225223',
-      title: 'Observy McObservface',
+      id: '1677670',
+      title: 'Launchies',
     },
     {
       id: '1677727',
       title: 'Polyglot',
-    },
-    {
-      id: '1677670',
-      title: 'Launchies',
     },
   ];
 
