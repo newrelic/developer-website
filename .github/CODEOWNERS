@@ -7,4 +7,5 @@
 yarn.lock @newrelic/docs-engineering
 
 # developer site terms, notify interested parties of changes
-/src/markdown-pages/terms.mdx @newrelic/docs-engineering @abrunner94 @caylahamann
+/src/markdown-pages/terms.mdx @newrelic/docs-engineering @abrunner94 
+
