@@ -205,66 +205,7 @@ app.Run();
 
 You use this configuration to instrument your application in the next section.
 
-Those are the most important functions you need to know about this .NET application before you instrument it. Next, spin up a docker container with your app and send some traffic to it.
-
-## Spin up your application
-
-<Steps>
-
-<Step>
-
-First, get or create a [New Relic license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key) for your account, and set it in an environment variable called `NEW_RELIC_API_KEY`:
-
-<>
-
-```shell
-export NEW_RELIC_API_KEY=<YOUR_LICENSE_KEY>
-```
-
-</>
-
-<Callout variant="important">
-
-Don’t forget to replace `<YOUR_LICENSE_KEY>` with your real [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key)!
-
-</Callout>
-
-</Step>
-
-<Step>
-
-From the _Uninstrumented/dotnet_ directory, spin up the app’s docker container:
-
-<>
-
-```shell
-docker-compose up --build
-```
-
-</>
-
-</Step>
-
-<Step>
-
-In another terminal, change to _Uninstrumented/dotnet_, and run the load generator script:
-
-<>
-
-```shell
-cd mcv3-apps/Uninstrumented/dotnet
-./load-generator.sh
-```
-
-</>
-
-This makes periodic requests to your application. It sends a mixture of requests that you expect to succeed and ones that you expect to fail. Looking at the load generator’s log stream, you should see that your application is running.
-
-</Step>
-
-</Steps>
-
-In the next section, you instrument your application with OpenTelemetry.
+Those are the most important functions you need to know about this .NET application before you instrument it. Next, you install your OpenTelemetry dependencies.
 
 ## Install dependencies
 
@@ -274,7 +215,7 @@ Before you can instrument your application, you need to add some OpenTelemetry d
 
 <Step>
 
-Add the OpenTelemetry SDK and supporting packages:
+From your shell, add the OpenTelemetry SDK and supporting packages:
 
 <>
 
@@ -422,10 +363,13 @@ public class FibonacciController : ControllerBase
 ```yaml fileName=dotnet/docker-compose.yaml
 version: '3'
 services:
-  fibonacci-dotnet:
+  fibonacci:
     build: ./
     ports:
       - "8080:80"
+  load-generator:
+    build: ./load-generator
+
 ```
 
 </Project>
@@ -531,20 +475,28 @@ You named the tracer that you created with `.AddSource()` using a constant, call
 
 <Step>
 
-In _dotnet/docker-compose.yaml_, configure your OTLP exporter:
+The exporter you configured in the last step needs two important values:
+
+- A location where you want to send the data (New Relic, in this case)
+- An API key so that New Relic can accept your data and associate it to your account
+
+In _Uninstrumented/dotnet/docker-compose.yaml_, configure your OTLP exporter:
 
 <>
 
 ```yaml fileName=dotnet/docker-compose.yaml
 version: '3'
 services:
-  fibonacci-dotnet:
+  fibonacci:
     build: ./
     ports:
       - "8080:80"
     environment:
       OTEL_EXPORTER_OTLP_ENDPOINT: https://otlp.nr-data.net:4317
       OTEL_EXPORTER_OTLP_HEADERS: "api-key=${NEW_RELIC_API_KEY}"
+  load-generator:
+    build: ./load-generator
+
 ```
 
 </>
@@ -553,9 +505,29 @@ services:
 
 The first variable you set configures the exporter to send telemetry data to https://otlp.nr-data.net:4317. This is our US-based OTLP endpoint. If you’re in the EU, use https://otlp.eu01.nr-data.net:4317 instead.
 
-The second variable passes the `NEW_RELIC_API_KEY` from your local machine in the `api-key` header of your OTLP requests. You set this environment variable in a previous lesson.
+The second variable passes the `NEW_RELIC_API_KEY` from your local machine in the `api-key` header of your OTLP requests. You set this environment variable in the next step.
 
-Next, instrument the logic for your `/fibonacci` endpoint.
+The OTLP exporter looks for these variables in the Docker container’s environment and applies them at runtime.
+
+</Step>
+
+<Step>
+
+Get or create a [New Relic license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key) for your account, and set it in an environment variable called `NEW_RELIC_API_KEY`:
+
+<>
+
+```shell
+export NEW_RELIC_API_KEY=<YOUR_LICENSE_KEY>
+```
+
+</>
+
+<Callout variant="important">
+
+Don’t forget to replace `<YOUR_LICENSE_KEY>` with your real [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key)!
+
+</Callout>
 
 </Step>
 
@@ -710,6 +682,8 @@ public class FibonacciController : ControllerBase
 ```
 
 </>
+
+<br />
 
 `activitySource.StartActivity()` starts a new span (called an `Activity` in .NET). With this call, you pass the name of the `Fibonacci()` function.
 
@@ -894,7 +868,7 @@ If `n` is invalid, you throw an `ArgumentOutofRangeException`, record an excepti
 
 <Step>
 
-From your terminal running the applications, use `CTRL+C` to tear down your docker containers, and spin them up again:
+In the same shell you used to export your environment variable, navigate to _Uninstrumented/dotnet_, then spin up the project's containers with [Docker Compose](https://docs.docker.com/compose/):
 
 <>
 
@@ -903,6 +877,13 @@ docker-compose up --build
 ```
 
 </>
+
+This runs two docker services:
+
+- **fibonacci:** Your app service
+- **load-generator:** A service that simulates traffic to your app
+
+The load generator makes periodic requests to your application. It sends a mixture of requests that you expect to succeed and ones that you expect to fail. Looking at the Docker Compose log stream, you should see that both your application and load generator are running.
 
 </Step>
 
