@@ -1,3 +1,10 @@
+# [1.83.0](https://github.com/newrelic/developer-website/compare/v1.82.3...v1.83.0) (2022-03-21)
+
+
+### Features
+
+* OpenTelemetry masterclass ([fa4dd70](https://github.com/newrelic/developer-website/commit/fa4dd70751a5b741364f4ea8ec6d9e26b51d8040))
+
 ## [1.82.3](https://github.com/newrelic/developer-website/compare/v1.82.2...v1.82.3) (2022-03-17)
 
 
