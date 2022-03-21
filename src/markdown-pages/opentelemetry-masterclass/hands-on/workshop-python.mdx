@@ -135,56 +135,7 @@ if __name__ == "__main__":
 
 This function takes the argument, `n`, and converts it to an integer. Then, it checks if it’s between 1 and 90. If it’s out of bounds or it’s not an integer, the function raises a `ValueError` and rejects the request. Otherwise, it computes and returns the nth fibonacci number.
 
-Those are the most important functions you need to know about this Python application before you instrument it. Next, you spin up a docker container with your app, and send some traffic to it.
-
-## Spin up your application
-
-<Steps>
-
-<Step>
-
-First, get or create a [New Relic license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key) for your account, and set it in an environment variable called `NEW_RELIC_API_KEY`:
-
-<>
-
-```shell
-export NEW_RELIC_API_KEY=<YOUR_LICENSE_KEY>
-```
-
-</>
-
-<Callout variant="important">
-
-Don’t forget to replace `<YOUR_LICENSE_KEY>` with your real [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key)!
-
-</Callout>
-
-</Step>
-
-<Step>
-
-In _Uninstrumented/python_, spin up the project's containers with [Docker Compose](https://docs.docker.com/compose/):
-
-<>
-
-```shell
-docker-compose up --build
-```
-
-</>
-
-This runs two docker services:
-
-- **fibonacci:** Your app service
-- **load-generator:** A service that simulates traffic to your app
-
-The load generator makes periodic requests to your application. It sends a mixture of requests that you expect to succeed and ones that you expect to fail. Looking at the Docker Compose log stream, you should see that both your application and load generator are running.
-
-</Step>
-
-</Steps>
-
-Next, you install your OpenTelemetry dependencies.
+Those are the most important functions you need to know about this Python application before you instrument it. Next, you install your OpenTelemetry dependencies.
 
 ## Install dependencies
 
@@ -311,8 +262,8 @@ You’ve set up your environment, read the code, and spun up your app and a load
 The first thing you need to do to instrument your application is to configure your SDK. There are a few components to this:
 
 1. Create a resource that captures information about your app and telemetry environments.
-2. Create a tracer provider that you configure with your resource
-3. Configure the trace API with your tracer provider
+2. Create a tracer provider that you configure with your resource.
+3. Configure the trace API with your tracer provider.
 
 These steps set up your API to know about its environment. The resource you created will be attached to spans that you create with the trace API.
 
@@ -330,7 +281,7 @@ trace.set_tracer_provider(
    TracerProvider(
        resource=Resource.create(
            {
-               "service.name": "appathon-python",
+               "service.name": "fibonacci",
                "service.instance.id": "2193801",
                "telemetry.sdk.name": "opentelemetry",
                "telemetry.sdk.language": "python",
@@ -402,7 +353,7 @@ trace.set_tracer_provider(
    TracerProvider(
        resource=Resource.create(
            {
-               "service.name": "appathon-python",
+               "service.name": "fibonacci",
                "service.instance.id": "2193801",
                "telemetry.sdk.name": "opentelemetry",
                "telemetry.sdk.language": "python",
@@ -485,9 +436,29 @@ services:
 
 The first variable you set configures the exporter to send telemetry data to https://otlp.nr-data.net:4317. This is our US-based OTLP endpoint. If you’re in the EU, use https://otlp.eu01.nr-data.net instead.
 
-The second variable passes the `NEW_RELIC_API_KEY` from your local machine in the `api-key` header of your OTLP requests. You set this environment variable in a previous section.
+The second variable passes the `NEW_RELIC_API_KEY` from your local machine in the `api-key` header of your OTLP requests. You set this environment variable in the next step.
 
 The OTLP exporter looks for these variables in the Docker container’s environment and applies them at runtime.
+
+</Step>
+
+<Step>
+
+Get or create a [New Relic license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key) for your account, and set it in an environment variable called `NEW_RELIC_API_KEY`:
+
+<>
+
+```shell
+export NEW_RELIC_API_KEY=<YOUR_LICENSE_KEY>
+```
+
+</>
+
+<Callout variant="important">
+
+Don’t forget to replace `<YOUR_LICENSE_KEY>` with your real [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key)!
+
+</Callout>
 
 </Step>
 
@@ -511,7 +482,7 @@ trace.set_tracer_provider(
    TracerProvider(
        resource=Resource.create(
            {
-               "service.name": "appathon-python",
+               "service.name": "fibonacci",
                "service.instance.id": "2193801",
                "telemetry.sdk.name": "opentelemetry",
                "telemetry.sdk.language": "python",
@@ -586,7 +557,7 @@ trace.set_tracer_provider(
    TracerProvider(
        resource=Resource.create(
            {
-               "service.name": "appathon-python",
+               "service.name": "fibonacci",
                "service.instance.id": "2193801",
                "telemetry.sdk.name": "opentelemetry",
                "telemetry.sdk.language": "python",
@@ -656,13 +627,12 @@ from opentelemetry.instrumentation.flask import FlaskInstrumentor
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
-from opentelemetry.trace.status import Status, StatusCode
 
 trace.set_tracer_provider(
    TracerProvider(
        resource=Resource.create(
            {
-               "service.name": "appathon-python",
+               "service.name": "fibonacci",
                "service.instance.id": "2193801",
                "telemetry.sdk.name": "opentelemetry",
                "telemetry.sdk.language": "python",
@@ -694,7 +664,7 @@ def fib():
 
 def calcfib(n):
     with tracer.start_as_current_span("fibonacci") as span:
-        span.set_attribute("oteldemo.n", n)
+        span.set_attribute("fibonacci.n", n)
 
         try:
             n = int(n)
@@ -706,7 +676,7 @@ def calcfib(n):
         for _ in range(1, n):
             b, a = a, a + b  # b, a always store F(i-1), F(i)
 
-        span.set_attribute("oteldemo.result", a)
+        span.set_attribute("fibonacci.result", a)
         return a
 
 if __name__ == "__main__":
@@ -720,13 +690,15 @@ if __name__ == "__main__":
 
 First, you started a new span, called "fibonacci", with the `start_as_current_span()` context manager. `start_as_current_span()` sets your new span as the current span, which captures any updates that happen within the context.
 
-Then, you add an attribute, called "oteldemo.n", that holds the value of the requested number in the fibonacci sequence.
+Then, you add an attribute, called "fibonacci.n", that holds the value of the requested number in the fibonacci sequence.
 
-Finally, if the function successfully computes the nth fibonacci number, you set another attribute, called "oteldemo.result", with the result.
+Finally, if the function successfully computes the nth fibonacci number, you set another attribute, called "fibonacci.result", with the result.
 
-<Callout variant="important">
+</Step>
 
-There's one more important behavior to be aware of with `start_as_current_span()`. By default, this context manager captures data from uncaught exceptions within the scope of the span. In your function, you raise such an exception:
+<Step>
+
+By default, `start_as_current_span()` captures data from uncaught exceptions within the scope of the span. In your function, you raise such an exception:
 
 <>
 
@@ -736,15 +708,92 @@ raise ValueError("n must be between 1 and 90") from e
 
 </>
 
-`start_as_current_span()` uses this exception to automatically add an exception span event to your span. Keep this in mind when you view your data in the next lesson.
+`start_as_current_span()` uses this exception to automatically add an exception span event to your span. But it doesn't do the same for the root span.
 
-</Callout>
+Set an error status on the root span of your trace:
+
+<>
+
+```python fileName=main.py
+from flask import Flask, jsonify, request
+from grpc import Compression
+from opentelemetry import trace
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from opentelemetry.instrumentation.flask import FlaskInstrumentor
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+from opentelemetry.trace.status import Status, StatusCode
+
+trace.set_tracer_provider(
+   TracerProvider(
+       resource=Resource.create(
+           {
+               "service.name": "fibonacci",
+               "service.instance.id": "2193801",
+               "telemetry.sdk.name": "opentelemetry",
+               "telemetry.sdk.language": "python",
+               "telemetry.sdk.version": "0.13.dev0",
+           }
+       ),
+   ),
+)
+
+trace.get_tracer_provider().add_span_processor(
+   BatchSpanProcessor(OTLPSpanExporter(compression=Compression.Gzip))
+)
+
+app = Flask(__name__)
+FlaskInstrumentor().instrument_app(app)
+
+tracer = trace.get_tracer(__name__)
+
+@app.errorhandler(ValueError)
+def handle_value_exception(error):
+    trace.get_current_span().set_status(
+        Status(StatusCode.ERROR, "Number outside of accepted range.")
+    )
+    response = jsonify(message=str(error))
+    response.status_code = 400
+    return response
+
+@app.route("/fibonacci")
+def fib():
+    n = request.args.get("n", None)
+    return jsonify(n=n, result=calcfib(n))
+
+def calcfib(n):
+    with tracer.start_as_current_span("fibonacci") as span:
+        span.set_attribute("fibonacci.n", n)
+
+        try:
+            n = int(n)
+            assert 1 <= n <= 90
+        except (ValueError, AssertionError) as e:
+            raise ValueError("n must be between 1 and 90") from e
+
+        b, a = 0, 1  # b, a initialized as F(0), F(1)
+        for _ in range(1, n):
+            b, a = a, a + b  # b, a always store F(i-1), F(i)
+
+        span.set_attribute("fibonacci.result", a)
+        return a
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+```
+
+</>
+
+<br />
+
+Here, you manually set the root span's status to `StatusCode.ERROR` when you handle the `ValueError`. Having an error status on the root span will be useful in finding traces with errors in New Relic.
 
 </Step>
 
 <Step>
 
-From your terminal running the applications, use `CTRL+C` to tear down your docker containers, and spin them up again:
+In the same shell you used to export your environment variable, navigate to _Uninstrumented/python_, then spin up the project's containers with [Docker Compose](https://docs.docker.com/compose/):
 
 <>
 
@@ -753,6 +802,13 @@ docker-compose up --build
 ```
 
 </>
+
+This runs two docker services:
+
+- **fibonacci:** Your app service
+- **load-generator:** A service that simulates traffic to your app
+
+The load generator makes periodic requests to your application. It sends a mixture of requests that you expect to succeed and ones that you expect to fail. Looking at the Docker Compose log stream, you should see that both your application and load generator are running.
 
 </Step>
 

@@ -29,7 +29,7 @@ Here, you see some general information about traces in your service. You see the
 
 <Step>
 
-Click the **HTTP GET** trace group:
+Click the only available trace group:
 
 ![Trace group](../../../images/opentelemetry-masterclass/dt-row.png)
 
@@ -67,13 +67,7 @@ In this new view, you see the timeline of the spans in your trace:
 
 There are two blue blocks, one for each span. The blue color means that the span does not have an error status.
 
-The span on top is the root span. It’s the one named “HTTP GET”:
-
-![Trace root span](../../../images/opentelemetry-masterclass/dt-success-root.png)
-
-The bottom span is an **in-process** span. In New Relic, this means that it represents an internal function call, and that it's neither an exit nor entry span for the service:
-
-![Trace in-process span](../../../images/opentelemetry-masterclass/dt-success-in-process.png)
+The top span is the root span. The bottom span is an **in-process** span. In New Relic, this means that it represents an internal function call, and that it's neither an exit nor entry span for the service.
 
 </Step>
 
@@ -83,9 +77,9 @@ In the chart below the timeline, you only see the root span. Click it:
 
 ![Trace root span details](../../../images/opentelemetry-masterclass/success-root-span.png)
 
-In the information panel on the right side of the view, you see granular information about the span.
+In the information panel on the right side of the view, you see granular data about the span.
 
-The tab selected by default shows the performance of spans in your service. It shows data about the duration of spans as well as the throughput.
+The tab selected by default shows the performance of spans in your service. It shows data about the duration of spans, the throughput, and more.
 
 </Step>
 

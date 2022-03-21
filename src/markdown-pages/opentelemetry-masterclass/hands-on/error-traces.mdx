@@ -53,15 +53,11 @@ Click one of these traces:
 
 ![Choose an error trace](../../../images/opentelemetry-masterclass/choose-error-trace.png)
 
-Once again, you see the timeline of the spans in your service. There are two red blocks, indicating error spans. Like before, on top is the root span. It’s the one named “HTTP GET”:
+Once again, you see the timeline of the spans in your service:
 
 ![Error root span](../../../images/opentelemetry-masterclass/error-root-span.png)
 
-On the bottom is the in-process span:
-
-![Error in-process span](../../../images/opentelemetry-masterclass/error-in-process-span.png)
-
-Their red color indicates their error status.
+There are two red blocks, indicating error spans. Their red color indicates their error status. Like before, on top is the root span. On bottom is the in-process span.
 
 </Step>
 
@@ -77,15 +73,27 @@ Near the top of the view, click **Error Details**:
 
 Here, you see the error status code and message you set when you instrumented your application. However, you can’t see any information about the actual exception because that was captured by the in-process span.
 
-To see more information about your in-process span, expand the root span, toggle **Display in-process spans for this service**, and click your in-process span:
+</Step>
+
+<Step>
+
+To see more information about your in-process span, expand the root span, toggle **Display in-process spans for this service**:
 
 ![Show in-process span](../../../images/opentelemetry-masterclass/show-in-process-span.png)
+
+</Step>
+
+<Step>
+
+Click your in-process span:
+
+![Show in-process span](../../../images/opentelemetry-masterclass/error-in-process-span.png)
 
 This view is the same as the view for your root span but with data for your function instead of the overall request. Under **Attributes**, you’ll find your custom attribute:
 
 ![In-process attributes](../../../images/opentelemetry-masterclass/in-process-attribute.png)
 
-Note that, this time, there is no `oteldemo.result` attribute. This is because the user’s request caused your code to raise an exception and reject the request before it computed the result.
+Note that, this time, there is no `fibonacci.result` attribute. This is because the user’s request caused your code to raise an exception and reject the request before it computed the result.
 
 </Step>
 
@@ -97,7 +105,7 @@ Under **Performance**, click **Error Details**:
 
 Notice there’s a new callout in this view:
 
-> There was 1 span event exception
+![Error callout](../../../images/opentelemetry-masterclass/error-callout.png)
 
 Because you captured an exception span event in your fibonacci function, you can see details about the event here.
 
@@ -105,7 +113,7 @@ Because you captured an exception span event in your fibonacci function, you can
 
 <Step>
 
-Click to see your exception span event:
+Click the callout to see your exception span event:
 
 ![Exception event](../../../images/opentelemetry-masterclass/exception-event.png)
 

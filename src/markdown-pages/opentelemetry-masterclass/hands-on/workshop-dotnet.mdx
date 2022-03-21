@@ -37,14 +37,12 @@ git clone https://github.com/newrelic-experimental/mcv3-apps/
 
 <Step>
 
-Change to the master branch and _Uninstrumented/dotnet_ directory:
+Change to the _Uninstrumented/dotnet_ directory:
 
 <>
 
 ```shell
-cd mcv3-apps
-git checkout master
-cd Uninstrumented/dotnet
+cd mcv3-apps/Uninstrumented/dotnet
 ```
 
 </>
@@ -452,7 +450,7 @@ builder.Services.AddControllers();
 
 var resourceBuilder = ResourceBuilder
     .CreateDefault()
-    .AddService("fibonacci-dotnet")
+    .AddService("fibonacci")
     .AddTelemetrySdk();
 
 var app = builder.Build();
@@ -471,7 +469,7 @@ Here, you use the `ResourceBuilder` from the `OpenTelemetry.Resources` namespace
 Specifically, you use:
 
 1. `.CreateDefault()`, which adds some attributes about the current process.
-2. `.AddService()` with the service name "fibonacci-dotnet". This sets the conventional attribute `service.name`.
+2. `.AddService()` with the service name "fibonacci". This sets the conventional attribute `service.name`.
 3. `.AddTelemetrySdk()` to set some [conventional telemetry SDK attributes](https://opentelemetry.io/docs/reference/specification/resource/semantic_conventions/#telemetry-sdk). These are:
 
     - `telemetry.sdk.name`
@@ -497,7 +495,7 @@ builder.Services.AddControllers();
 
 var resourceBuilder = ResourceBuilder
     .CreateDefault()
-    .AddService("fibonacci-dotnet")
+    .AddService("fibonacci")
     .AddTelemetrySdk();
 
 builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
