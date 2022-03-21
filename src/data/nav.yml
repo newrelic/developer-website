@@ -218,6 +218,7 @@
       url: '/contribute-to-quickstarts/query-alerts-for-quickstart'
 
 - title: OpenTelemetry masterclass
+  icon: fe-compass
   url: '/opentelemetry-masterclass'
   pages:
     - title: Telemetry basics
