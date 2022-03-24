@@ -13,16 +13,16 @@ As this procedure builds on top of the last ones in the lab, make sure you creat
 
 </Callout>
 
-With quickstarts, you can quickly and easily observe and monitor your services since they include observability building blocks like dashboards and alerts. 
+With quickstarts, you can quickly and easily observe and monitor your services since they include observability building blocks like dashboards and alerts.
 You've already created a useful dashboard and alert policy for your database. Now, you can package them into a quickstart and contribute it to New Relic I/O as a benefit to your users.
 
 To get started, navigate to GitHub repository of [New Relic One quickstarts](https://github.com/newrelic/newrelic-observability-packs) and fork it.
 
 ![fork github quickstart repo](../../../images/contribute-to-quickstarts/fork-github-quickstart.png)
 
-Now, clone your own repository to your local machine using `git clone` and open it in the IDE of your choice. 
+Now, clone your own repository to your local machine using `git clone` and open it in the IDE of your choice.
 
-Notice the directory structure. The __template_ folder is of special importance since it contains the templates for observability building blocks in the quickstart. 
+Notice the directory structure. The \__template_ folder is of special importance since it contains the templates for observability building blocks in the quickstart.
 
 ![quickstart template](../../../images/contribute-to-quickstarts/quickstart-template-directory.png)
 
@@ -34,7 +34,7 @@ Copy the _\_template_ directory and it's content to a new directory within the _
 
 ## Add your dashboard to the quickstart
 
-In a previous procedure, you created a dashboard for monitoring FlashDB. Now, you add it to your quickstart so your users can use it too. 
+In a previous procedure, you created a dashboard for monitoring FlashDB. Now, you add it to your quickstart so your users can use it too.
 
 First, look up your dashboard in New Relic and copy its JSON. Then, save it as a JSON file in the _dashboards_ directory.
 
@@ -42,8 +42,15 @@ First, look up your dashboard in New Relic and copy its JSON. Then, save it as a
 
 Here, you copied your dashboard's JSON to clipboard. Replace the content of existing JSON file in _dashboards_ directory and rename it as _flashDB.json_. Your _flashDB.json_ file should contain the following content:
 
+To remove any unecessary data from your dashboard run the [dashboard sanitize script](https://github.com/newrelic/newrelic-quickstarts/blob/main/CONTRIBUTING.md#dashboard-json) to clean up your dashboard JSON.
 
-```json 
+<Callout variant="tip">
+
+When creating your dashboard for your quickstart: do not include `permissions: PUBLIC_READ_WRITE` and set all `linkedEntityGuids` to `null` and `accountId` to `0`.
+
+</Callout>
+
+```json
 {
   "name": "FlashDB",
   "description": null,
@@ -264,7 +271,7 @@ Building a query is simple in the explorer. Check the appropriate boxes to build
 
 <Callout variant='tip'>
 
-Under your alert policy, click on the condition to get its ID. 
+Under your alert policy, click on the condition to get its ID.
 
 ![find alert id](../../../images/contribute-to-quickstarts/alert-id.png)
 
@@ -274,7 +281,7 @@ Running the above query in Graphql will respond with the details of your alert c
 
 ![slow read response graphql](../../../images/contribute-to-quickstarts/slow-read-response-graphql.png)
 
-For static condition, take the static-alert.yml file and start populating it using the information returned from above query. 
+For static condition, take the static-alert.yml file and start populating it using the information returned from above query.
 First, name the file as _read-response.yml_ and populate it:
 
 ```yml
@@ -294,7 +301,7 @@ nrql:
   query: "SELECT average(fdb_read_responses) FROM Metric"
 
 # Function used to aggregate the NRQL query value(s) for comparison to the terms.threshold (Default: SINGLE_VALUE)
-valueFunction: SINGLE_VALUE 
+valueFunction: SINGLE_VALUE
 
 # List of Critical and Warning thresholds for the condition
 terms:
@@ -306,14 +313,14 @@ terms:
   # Time in seconds; 120 - 3600
   thresholdDuration: 300
   # How many data points must be in violation for the duration
-  thresholdOccurrences: ALL 
+  thresholdOccurrences: ALL
 
 # Adding a Warning threshold is optional
 - priority: WARNING
-  operator: ABOVE 
+  operator: ABOVE
   threshold: 0.75
  thresholdDuration: 300
-  thresholdOccurrences: ALL 
+  thresholdOccurrences: ALL
 
 # Duration after which a violation automatically closes
 # Time in seconds; 300 - 2592000 (Default: 86400 [1 day])
@@ -336,7 +343,7 @@ name: low cache hit ratio
 details: |+
   This alert is triggered whenever the cache hit ratio for database is < 0.85.
   The cache hit ratio can be measured simply by: # of cache hits/ # of total read responses.
-  It represents the proportion of block requests satisfied by the cache without requiring a disk read. 
+  It represents the proportion of block requests satisfied by the cache without requiring a disk read.
   A low cache hit score means that the database is inefficient.
 
 # Type of alert
@@ -344,53 +351,51 @@ type: STATIC
 
 # NRQL query
 nrql:
-  query: "SELECT sum(fdb_cache_hits)/sum(fdb_read_responses) FROM Metric"
+  query: 'SELECT sum(fdb_cache_hits)/sum(fdb_read_responses) FROM Metric'
 
 # Function used to aggregate the NRQL query value(s) for comparison to the terms.threshold
-valueFunction: SINGLE_VALUE 
+valueFunction: SINGLE_VALUE
 
 # List of Critical and Warning thresholds for the condition
 terms:
-- priority: CRITICAL
-  # Operator used to compare against the threshold.
-  operator: BELOW 
-  # Value that triggers a violation
-  threshold: 0.75
-  # Time in seconds; 120 - 3600
-  thresholdDuration: 300
-  # How many data points must be in violation for the duration
-  thresholdOccurrences: ALL 
+  - priority: CRITICAL
+    # Operator used to compare against the threshold.
+    operator: BELOW
+    # Value that triggers a violation
+    threshold: 0.75
+    # Time in seconds; 120 - 3600
+    thresholdDuration: 300
+    # How many data points must be in violation for the duration
+    thresholdOccurrences: ALL
 
-# Adding a Warning threshold is optional
-- priority: WARNING
-  operator: BELOW 
-  threshold: 0.85
-  thresholdDuration: 300
-  thresholdOccurrences: ALL
+  # Adding a Warning threshold is optional
+  - priority: WARNING
+    operator: BELOW
+    threshold: 0.85
+    thresholdDuration: 300
+    thresholdOccurrences: ALL
 
 # Duration after which a violation automatically closes
 # Time in seconds; 300 - 2592000 (Default: 86400 [1 day])
 violationTimeLimitSeconds: 259200
-
 ```
 
 ## Add a description
 
 Your quickstart is almost ready to go live. But how will others know what your quickstart is for and what it can do?
 
-To help others understand the purpose of your quickstart, add a description. 
+To help others understand the purpose of your quickstart, add a description.
 
-In the root directory of your pack, you can find a _config.yml_ file. 
+In the root directory of your pack, you can find a _config.yml_ file.
 Open the file in your IDE and edit it as follow:
 
 ```yml
- 
 # Name of the pack (required)
 name: flashdb
 
 # Description of the pack (required)
 description: |
-  Flashdb is the fastest database in the space. 
+  Flashdb is the fastest database in the space.
   The Flashdb quickstart allows you to get visibility into the performance of flashdb with the help of following features:
 
   Dashboards:
@@ -400,13 +405,13 @@ description: |
   - Cache hits: Monitor the cache hits
   - Errors: Monitor the errors occured for each type of database transaction
   - Database keys: Monitor the keys for database
- 
+
   Alerts:
   - Cache hit ratio: Alert is triggered when cache hit ratio falls below the set limit.
   - Read response: Alert is triggered when read responses are slow and exceeds a set limit
 
 summary: |
-  Flashdb is the fastest database in the space. 
+  Flashdb is the fastest database in the space.
   This quickstart allows you to get visibility into the performance of flashdb.
 
 # Support level: New Relic | Verified | Community (required)
@@ -418,7 +423,7 @@ logo: logo.png
 
 # Authors of the pack (required)
 authors:
-  - {"enter your name"}
+  - { 'enter your name' }
 
 # References to other packs (optional)
 # References are grouped by the type: operating-system, database, webserver, queue, ..
@@ -426,7 +431,7 @@ authors:
 references:
   - type: database
     name:
-    - flashdb
+      - flashdb
 ```
 
 Here's how your final _flashdb_ quickstart folder should look like.
@@ -434,7 +439,7 @@ Here's how your final _flashdb_ quickstart folder should look like.
 
 ## Contribute quickstart to GitHub
 
-Your quickstart is now ready to be published. You're going to commit your changes back to GitHub where it will be reviewed by New Relic. 
+Your quickstart is now ready to be published. You're going to commit your changes back to GitHub where it will be reviewed by New Relic.
 Follow the [conventional commit syntax](https://github.com/newrelic/newrelic-observability-packs/blob/alerts-doc-update/CONTRIBUTING.md#using-conventional-commits) for New Relic to commit your changes.
 
 ```bash
@@ -444,12 +449,13 @@ git commit -m "feat(flashdb): Added a quickstart for flashdb"
 
 <Callout variant="important">
 
-We, at New Relic, are always happy to receive contributions from the community. However, we are expecting a number of contributions for flashdb following the same lab course. 
+We, at New Relic, are always happy to receive contributions from the community. However, we are expecting a number of contributions for flashdb following the same lab course.
 To help us manage your contributions efficiently, we encourage you to label your contribution following this particular lab as **lab** using `git tag` command.
 
 </Callout>
 
 Push your changes to GitHub:
+
 ```bash
 git tag lab
 git push
@@ -466,7 +472,6 @@ Submit and wait for the review. Thanks a lot for your submission!
 At this stage, your quickstart will be automatically validated in GitHub. If this were a real-life submission, it would then be approved and incorporated into New Relic I/O for your users to see. As this is a lab, we will not actually review this PR. Feel free to delete it after it validates your work.
 
 </Callout>
-
 
 ## Homework
 
