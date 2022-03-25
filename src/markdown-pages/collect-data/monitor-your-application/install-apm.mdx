@@ -1,8 +1,8 @@
 ---
 duration: 10
-title: 'Instrument your application with APM agent'
+title: 'Instrument your application with our APM agent'
 template: 'GuideTemplate'
-description: 'Instrument your Angular application with Node JS agent'
+description: 'Instrument your Angular application with our Node JS agent'
 procIdx: 2
 ---
 
@@ -14,9 +14,9 @@ Each procedure in the lab builds upon the last, so make sure you've completed th
 
 </Callout>
 
-Your Angular application is running and is getting a lot of traffic. You want to instrument it with New Relic to start monitoring your application. 
+In this procedure, you instrument your app with New Relic to start monitoring its behaviors and performance.
 
-Here, you learn how easy it is to instrument your application using our guided install to collect application monitoring data from your application and send it to New Relic so you can analyze it later.
+Specifically, you use our guided install to collect [application performance monitoring (APM)](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/introduction-apm/) data and send it to New Relic so you can analyze it later.
 
 ## Install Javascript APM agent
 
@@ -24,15 +24,13 @@ Here, you learn how easy it is to instrument your application using our guided i
 
 <Step>
 
-In the terminal window that's running your application, press `<CTRL-C>`.
-
-You should see your server shut down. Now you can instrument your application.
+Navigate to [New Relic](https://one.newrelic.com/), and sign in with your account.
 
 </Step>
 
 <Step>
 
-Navigate to [New Relic](https://one.newrelic.com/) and sign in with your account. On the right side of the upper navigation bar, click **Add more data**.
+On the right side of the upper navigation bar, click **Add more data**.
 
 ![Add more data](../../../images/foodme/add-more-data.png)
 
@@ -50,7 +48,7 @@ This walks you through the installation process.
 
 <Step>
 
-Select **APM (Application Monitoring)** and click **Node JS**. 
+Select **APM (Application Monitoring)**, and click **Node JS**.
 
 ![Arrow pointing to the Node JS agent](../../../images/foodme/APM.png)
 
@@ -70,13 +68,13 @@ Select **Package manager**.
 
 ![Arrow pointing to Begin installation button](../../../images/foodme/install-node-agent.png)
 
-This guide you through instrumenting your application with Node JS agent using Package manager.
+This guides you through instrumenting your application with our Node JS agent using [npm](https://www.npmjs.com/).
 
 </Step>
 
 <Step>
 
-Select your account, name your application "food-me" and copy the **Install the agent** command to your clipboard. 
+Select your account, name your application "food-me", and copy the **Install the agent** command to your clipboard.
 
 ![Boxes to select account and name your application](../../../images/foodme/add-nodejs-application.png)
 
@@ -88,7 +86,7 @@ Open a terminal window and execute the **Install the agent** command in the root
 
 <>
 
-```bash animate
+```bash
 npm install newrelic --save
 [output] added 58 packages, and audited 124 packages in 7s
 [output] 6 packages are looking for funding
@@ -102,7 +100,7 @@ npm install newrelic --save
 
 <Step>
 
-From **Add your Node.js application data** page in New Relic, click **Download**.
+Download your custom config file from New Relic.
 
 ![Arrow pointing to Download agent configuration file](../../../images/foodme/download-agent-file.png)
 
@@ -112,7 +110,7 @@ This downloads the agent configuration file for your application. Put this file 
 
 <Step>
 
-In _server/index.js_ file, update the code to add New Relic to your application.
+In your app code, update _server/index.js_ to add New Relic to your application.
 
 <>
 
@@ -249,7 +247,7 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
 
 </>
 
-Your application is now instrumented with Node JS APM agent.
+That's it! Your application is now instrumented with our APM agent.
 
 </Step>
 
@@ -257,7 +255,7 @@ Your application is now instrumented with Node JS APM agent.
 
 ## Restart your application
 
-Now that you've instrumented your application, its time to restart your local server. 
+Now that you've instrumented your application, it's time to restart your local server.
 
 <>
 
@@ -268,17 +266,17 @@ node ./server/start.js
 
 </>
 
-Place a few orders to generate traffic. 
+Place a few orders to generate traffic.
 
 ## View your data
 
-Your app is now sending data to New Relic. You view this data in New Relic, under **APM**.
+Your app is now sending data to New Relic. Check it out!
 
 <Steps>
 
 <Step>
 
-Navigate to [New Relic](https://one.newrelic.com/) and select **APM** from top navigation.
+Navigate to [New Relic](https://one.newrelic.com/), and select **APM** from top navigation.
 
 ![Arrow pointing to APM](../../../images/foodme/view-apm.png)
 
@@ -290,7 +288,7 @@ Select **food-me**.
 
 ![Arrow pointing to food-me app](../../../images/foodme/view-food-me-app.png)
 
-Here, you see **Web transaction time**, **Apdex score**, **Throughput** and other critical data related to your app.
+Here, you see your **Web transaction time**, **Apdex score**, **Throughput**, and other performance data from your app.
 
 ![APM view of food-me](../../../images/foodme/food-me-apm.png)
 
@@ -298,10 +296,12 @@ Here, you see **Web transaction time**, **Apdex score**, **Throughput** and othe
 
 </Steps>
 
-You've instrumented your application to send application monitoring data to New Relic using our Node JS agent. You also saw your app related data in New Relic. Now, it's time to instrument your application with browser agent.
+You've instrumented your application to send APM data to New Relic using our Node JS agent. You also saw your data in the platform. Now, it's time to instrument your application with our [browser agent](https://docs.newrelic.com/docs/browser/browser-monitoring/getting-started/introduction-browser-monitoring/).
+
+In the terminal window that's running your application, press `<CTRL-C>` to shut down your application. With your app shut down, you'll be able to update your code to introduce monitoring tools.
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic. Now that you've instrumented your application with APM agent, [Instrument your application with Browser agent](/collect-data/monitor-your-application/install-browser-agent).
+This procedure is part of a lab that teaches you how to monitor your application with New Relic. Now that you've instrumented your application with our APM agent, [instrument your application with our browser agent](/collect-data/monitor-your-application/install-browser-agent).
 
 </Callout>

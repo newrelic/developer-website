@@ -1,6 +1,6 @@
 ---
 duration: 15
-title: 'Query custom Business Data'
+title: 'Query custom business data'
 template: 'GuideTemplate'
 description: 'Query your FoodMe data for business insights'
 procIdx: 6
@@ -10,20 +10,20 @@ procIdx: 6
 
 This procedure is part of a lab that teaches you how to monitor your application with New Relic.
 
-Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_Collect custom Business Data_](/collect-data/monitor-your-application/collect-custom-data), before starting this one.
+Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_Collect custom business data_](/collect-data/monitor-your-application/collect-custom-data), before starting this one.
 
 </Callout>
 
-With your app recording custom business data, you're now ready to get insights from your data. Particucarly, you want to know:
+With your app recording custom business data, you're now ready to get insights from your data. Particularly, you look up:
 
-- Orders in past 24 hours
+- Orders from the past 24 hours
 - Most popular restaurants
 - Most active customers
 - Average order amount
-- Most money spending customers
+- Customers that spend the most money
 - Most popular items
 
-In this procedure, you create a dashboard, query your custom data, gather it in charts and add those charts to your dashboard to answer these questions about your FoodMe business.
+In this procedure, you create a dashboard, query your custom data, gather it in charts, and add those charts to your dashboard to have quick view into these data points.
 
 ## Create a dashboard
 
@@ -33,7 +33,13 @@ With New Relic dashboards, you observe and interpret the data you collect from y
 
 <Step>
 
-Navigate to [New Relic](https://one.newrelic.com/) and sign in with your account. Under **Dashboards**, click **Create a dashboard** in the top right corner. 
+Navigate to [New Relic](https://one.newrelic.com/) and sign in with your account.
+
+</Step>
+
+<Step>
+
+Under **Dashboards**, click **Create a dashboard** in the top right corner.
 
 ![Arrow pointing to Create a dashboard](../../../images/foodme/create-a-dashboard.png)
 
@@ -49,7 +55,7 @@ Select **Create a new dashboard**.
 
 <Step>
 
-Name your dashboard FoodMe and click **Create**.
+Name your dashboard "FoodMe", and click **Create**.
 
 ![Arrow pointing to Create button](../../../images/foodme/name-and-create-dashboard.png)
 
@@ -63,15 +69,35 @@ Once the dashboard is in place, you can start creating charts to answer your bus
 
 ### Orders in past 24 hours
 
-Hover over the dashboard and click **Add a new chart**.
+Hover over the dashboard, and click **Add a new chart**.
 
 ![add a new chart](../../../images/foodme/add-a-new-chart.png)
 
-From this screen, you add charts using our query builder, or you choose to add text, images, or links using Markdown. Click **Add a chart**.
+From this screen, you add charts using our query builder, or you choose to add text, images, or links using Markdown.
+
+<Steps>
+
+<Step>
+
+Click **Add a chart**.
 
 ![add a chart](../../../images/foodme/add-a-chart.png)
 
-It may open the query builder option. Switch to the NRQL editor and edit the query as follows:
+This opens a query builder.
+
+</Step>
+
+<Step>
+
+Switch to the NRQL editor.
+
+![add a chart](../../../images/foodme/dashboard-nrql.png)
+
+</Step>
+
+<Step>
+
+Edit the query as follows.
 
 ```sql
 SELECT count(*) AS 'Orders' FROM Transaction WHERE appName='food-me' AND name LIKE '%/api/order' SINCE 1 day ago
@@ -79,15 +105,30 @@ SELECT count(*) AS 'Orders' FROM Transaction WHERE appName='food-me' AND name LI
 
 ![orders in past 24 hours chart](../../../images/foodme/orders-in-24-hours.png)
 
-Here, you see the number of orders for past 24 hours. Name your chart "Orders in past 24 hours" and click **save**.
+Here, you see the number of orders for the past 24 hours.
+
+</Step>
+
+<Step>
+
+Name your chart "Orders in past 24 hours", and click **save**.
 
 ![Add chart to dashboard](../../../images/foodme/add-chart-to-dashboard.png)
 
-The chart is now visible on your dashboard. You can add more charts to your dashboard following the same pattern. To do so, click + in upper right hand corner.
+The chart is now visible on your dashboard.
+
+</Step>
+
+</Steps>
+
+You can add more charts to your dashboard following the same pattern. To do so, click **+** in upper right-hand corner.
 
 ![Add more charts to your dashboard](../../../images/foodme/add-more-charts.png)
 
-This takes you to the same Add to your dashboard page. Add another chart to your dashboard.
+This takes you to the same **Add to your dashboard page**.
+
+Add another chart to your dashboard.
+
 
 ### Most popular restaurants
 
@@ -99,40 +140,42 @@ SELECT count(*) FROM Transaction WHERE appName='food-me' AND name LIKE '%/api/or
 
 ![View popular restaurants](../../../images/foodme/view-popular-restaurants.png)
 
-This chart shows you the most popular restaurants. Change the chart type to pie to make it look more attractive. Name your chart "Most popular restaurants" and click **save** to add it to your dashboard.
+This chart shows you the most popular restaurants. Change the chart type to **Pie**, name it "Most popular restaurants", and click **save** to add it to your dashboard.
 
 ![Most popular restaurants pie chart](../../../images/foodme/most-popular-restaurant-chart.png)
 
 ### Most active customers
 
-For most active customer's chart, use the following query.
+For a chart showing the most active customers, use the following query.
 
 ```sql
 SELECT count(*) FROM Transaction WHERE appName='food-me' AND name LIKE '%/api/order' AND customer IS NOT NULL FACET customer SINCE 1 day ago
 ```
 
-Here, you observe most active customers.
+Here, you observe your most active customers.
 
 ![Most active customers chart](../../../images/foodme/most-active-customers.png)
 
 ### Average order amount
 
-Use the following query to calculate average order amount.
+Use the following query to calculate the average order amount.
 
 ```sql
-SELECT average(orderTotal) FROM Transaction WHERE appName='food-me' AND name LIKE '%/api/order' 
+SELECT average(orderTotal) FROM Transaction WHERE appName='food-me' AND name LIKE '%/api/order'
 ```
+
 ![Average order chart](../../../images/foodme/average-order.png)
 
 Here, you see observe the average order amount.
 
 ### Most money spending customers
 
-Execute the following query to view which customers spent most money ordering food from your app.
+Execute the following query to view which customers spend the most money ordering food from your app.
 
 ```sql
 SELECT sum(orderTotal) FROM Transaction WHERE appName='food-me' AND name='WebTransaction/Expressjs/POST//api/order' FACET customer
 ```
+
 ![Most money spending customers](../../../images/foodme/most-money-spending-customers.png)
 
 Here, you observe the most money spending customers.
@@ -149,19 +192,27 @@ SELECT sum(qty) FROM PageAction WHERE actionName='orderItem' FACET item
 
 Here, you observe the most popular items for your app.
 
-Your final dashboard will look similar to the following.
+Your final dashboard looks something like this:
 
 ![Final dashboard](../../../images/foodme/final-dashboard.png)
 
 ## Filter your dashboard
 
-You now know how well your business is performing. You can filter your dashboard by restaurant and get a closer look. 
+You now know how well your business is performing. You can filter your dashboard by restaurant, and get a closer look.
 
-Click **...** in front of your "Most popular restaurants" chart and select **Edit**.
+<Steps>
+
+<Step>
+
+Click **...** in front of your "Most popular restaurants" chart, and select **Edit**.
 
 ![Edit most popular restaurant chart](../../../images/foodme/edit-dashboard.png)
 
-Here, toggle **Filter the current dashboard** to enable filter and save.
+</Step>
+
+<Step>
+
+Toggle **Filter the current dashboard** to enable the filter and save.
 
 ![Enable filter](../../../images/foodme/enable-filter.png)
 
@@ -169,13 +220,17 @@ Now, you see the option to filter dashboard by most popular restaurant.
 
 ![Filter this dashboard](../../../images/foodme/filter-dashboard.png)
 
-the dashboard now show you business data related to that restaurant.
+The dashboard now shows you business data related to that restaurant.
 
 ![Filtered dashboard](../../../images/foodme/filtered-dashboard.png)
 
+</Step>
+
+</Steps>
+
 ## Summary
 
-In this procedure, you created a dashboard and added multiple charts to it to get business insights. 
+In this procedure, you created a dashboard and added multiple charts to it to get business insights.
 
 <Callout variant="course" title="lab">
 

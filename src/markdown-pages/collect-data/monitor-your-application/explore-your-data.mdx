@@ -10,15 +10,15 @@ procIdx: 4
 
 This procedure is part of a lab that teaches you how to monitor your application with New Relic.
 
-Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_instrument your application with Browser agent_](/collect-data/monitor-your-application/install-browser-agent), before starting this one.
+Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_instrument your application with our browser agent_](/collect-data/monitor-your-application/install-browser-agent), before starting this one.
 
 </Callout>
 
-With your app reporting data to New Relic, you want to understand the collected data and get insights in your app. For instance, you want to know how many users are active on your site or slowest transactions.
-For that, you explore your data using NRQL, gather it and and visualize it in interactive charts. 
+With your app reporting data to New Relic, you want to understand the collected data and get insights into your app. For example, you want to know how many users are active on your site. For that, you explore your data using [NRQL](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language/), New Relic's query language; gather it; and visualize it in interactive charts.
 
 In this procedure, you explore your data in New Relic. Specifically, you:
-- View your pageview
+
+- View your page views
 - Count active sessions
 - View your transactions
 - Count total transactions
@@ -27,15 +27,19 @@ In this procedure, you explore your data in New Relic. Specifically, you:
 
 ## Query your data
 
-You use NRQL to explore and retrieve detailed New Relic data and get inisght into your application. 
+Use NRQL to explore and retrieve detailed New Relic data and get insights into your application.
 
 <Callout variant='tip'>
 
-NRQL is New Relic's SQL-like query language. Read our [documentation](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language/) to know more about what is NRQL and when to use it.
+NRQL is New Relic's SQL-like query language. Read our [documentation](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language/) to know more about what it is and when to use it.
 
 </Callout>
 
 ### View your pageviews
+
+<Steps>
+
+<Step>
 
 Navigate to [New Relic](https://one.newrelic.com/) and sign in with your account. On the top navigation bar, click **Query your data**.
 
@@ -43,7 +47,19 @@ Navigate to [New Relic](https://one.newrelic.com/) and sign in with your account
 
 This opens an interactive **Query builder** to explore your data.
 
-Execute the following query in it to view pageviews for your app.
+</Step>
+
+<Step>
+
+Click **NRQL** to use a custom query.
+
+![Arrow pointing to NRQL](../../../images/foodme/nrql.png)
+
+</Step>
+
+<Step>
+
+Execute the following query to view `PageView` records for your app.
 
 <>
 
@@ -57,7 +73,7 @@ Click **Run** to see results.
 
 ![view all your pageviews](../../../images/foodme/view-pageviews.png)
 
-Here, you observe all the pageviews for your food-me app.
+Here, you observe all the pageviews for your app.
 
 ### Count active sessions
 
@@ -125,11 +141,11 @@ Here, you see your slowest transactions.
 
 The chart is hard to see in this format. You can choose to present your results in different formats such as table, billboard, or pie chart.
 
-Change the chart type to pie.
+Change the chart type to **Pie**.
 
 ![change chart type](../../../images/foodme/chart-types.png)
 
-Now you see your slowest transaction in the form of a pie chart.
+Now, you see your slowest transaction in the form of a pie chart.
 
 ![slowest transactions in pie chart](../../../images/foodme/slow-transactions-pie.png)
 
@@ -147,7 +163,11 @@ SELECT count(*) FROM Transaction WHERE http.statusCode!='200' FACET http.statusC
 
 ![transactions with different response codes](../../../images/foodme/transactions-with-different-response-code.png)
 
-You are now well aware of your application's performance. Next you collect custom business data from your application.
+</Step>
+
+</Steps>
+
+You've now seen your application's performance data. Next, you collect custom business data from your application.
 
 <Callout variant="course" title="lab">
 

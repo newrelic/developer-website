@@ -1,6 +1,6 @@
 ---
 duration: 10
-title: 'Collect custom Business Data'
+title: 'Collect custom business data'
 template: 'GuideTemplate'
 description: 'Collect custom business data from your application'
 procIdx: 5
@@ -15,25 +15,25 @@ Each procedure in the lab builds upon the last, so make sure you've completed th
 </Callout>
 
 With your app instrumented with New Relic agents, you're collecting performance data from your application such as pageview, slow transactions and other. But you also want to collect business metrics from your application.
-For instance, you want to know what restaurants are popular or which customers spend the most money. To achieve this, you need to collect custom business data from your application. 
+For instance, you want to know what restaurants are popular or which customers spend the most money. To achieve this, you need to collect custom business data from your application.
 
 In this procedure, you instrument your app to collect custom business data and query it.
 
 ## Record custom attributes
 
-To collect custom data from your application, you need to add custom attributes to your application. You record these attributes with `newrelic.addCustomAttribute` on server side and `newrelic.addPageAction()` on client side.
+To collect custom data from your application, you need to add custom attributes to your application. You record these attributes with `newrelic.addCustomAttribute()` on server side and `newrelic.addPageAction()` on client side.
 
-Here, you record custom attributes to gather details about your food order.
+Here, you record custom attributes to gather details about food orders.
 
 <Steps>
 
 <Step>
 
-In _server/index.js_ file, update the code to add custom attribute on your server side.
+In _server/index.js_, update the code to add custom attributes on your server side.
 
 <>
 
-``` node lineHighlight=1,61-73 fileName=server/index.js
+``` node lineHighlight=61-73 fileName=server/index.js
 var newrelic = require('newrelic');
 var express = require('express');
 var fs = require('fs');
@@ -185,14 +185,14 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
 
 </>
 
-Here, you add customer name, restaurant name, item count and order total as custom attributes by calling `newrelic.addCustomAttribute` API. 
-These custom attributes adds metadata to your transaction event and you record them as a part of your transaction event so there is no overhead. 
+Here, you add the customer name, restaurant name, item count, and order total as custom attributes by calling `newrelic.addCustomAttributes()`.
+These custom attributes add metadata to your transaction event. You record them as a part of your transaction event so there is no overhead.
 
 </Step>
 
 <Step>
 
-In _app/js/services/cart.js_ file, update the code to add PageAction event.
+In _app/js/services/cart.js_, update the code to add PageAction event.
 
 <>
 
@@ -302,7 +302,7 @@ foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $htt
 
 </>
 
-Here, you added a PageAction that records restuarant name, item and item quantity whenever a customer places an order. 
+Here, you added a `PageAction` that records restaurant name, item, and item quantity whenever a customer places an order.
 
 </Step>
 
@@ -314,4 +314,4 @@ You're now recording custom data from your application. Next, you query this dat
 
 This procedure is part of a lab that teaches you how to monitor your application with New Relic. Now that you're collecting custom data, [query your custom data](/collect-data/monitor-your-application/query-custom-data).
 
-</Callout> 
+</Callout>

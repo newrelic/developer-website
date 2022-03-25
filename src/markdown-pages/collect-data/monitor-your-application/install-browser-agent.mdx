@@ -1,8 +1,8 @@
 ---
 duration: 10
-title: 'Instrument your application with Browser agent'
+title: 'Instrument your application with our browser agent'
 template: 'GuideTemplate'
-description: 'Instrument your Angular application with Browser agent'
+description: 'Instrument your Angular application with our browser agent'
 procIdx: 3
 ---
 
@@ -10,13 +10,13 @@ procIdx: 3
 
 This procedure is part of a lab that teaches you how to monitor your application with New Relic.
 
-Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_instrument your application with APM agent_](/collect-data/monitor-your-application/install-apm), before starting this one.
+Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_Instrument your application with our APM agent_](/collect-data/monitor-your-application/install-apm), before starting this one.
 
 </Callout>
 
-You've installed Node JS APM agent and it gives you visibility of your server side. However, your Angular app is running in browser. You also want visilibity from user's perspective and want to measure page load time and other metrics in user's browsers.
+You've installed our Node JS APM agent, and this provides server-side performance data. Because your Angular app is running in the browser, you also want to insight into your users' experiences, such as their page load times.
 
-To achieve this goal, you decide to install browser agent.
+To achieve this goal, you need to install our browser agent.
 
 ## Install browser agent
 
@@ -24,15 +24,13 @@ To achieve this goal, you decide to install browser agent.
 
 <Step>
 
-In the terminal window that's running your application, press `<CTRL-C>`.
-
-You should see your server shut down. Now you can instrument your application.
+Navigate to [New Relic](https://one.newrelic.com/), and sign in with your account.
 
 </Step>
 
 <Step>
 
-Navigate to [New Relic](https://one.newrelic.com/) and sign in with your account. On the right side of the upper navigation bar, click **Add more data**.
+On the right side of the upper navigation bar, click **Add more data**.
 
 ![Add more data](../../../images/foodme/add-more-data.png)
 
@@ -44,21 +42,21 @@ Click **New Relic Browser**.
 
 ![Arrow pointing to New Relic Browser](../../../images/foodme/newrelic-browser.png)
 
-This opens **Get Started with New Relic Browser** page that guide you through installing New Relic Browser.
+This opens **Get Started with New Relic Browser**, which guides you through installing our browser agent.
 
 </Step>
 
 <Step>
 
-From **Get Started with New Relic Browser** page, select **Copy/Paste Javascript code** for deployment method.
+From **Get Started with New Relic Browser**, select **Copy/Paste Javascript code** for your deployment method.
 
 ![select deployment method](../../../images/foodme/select-deployment-method.png)
 
-Scroll down to **Name your app**, select **Yes. (Search your applications)**, search food-me app and click **Enable**.
+Scroll down to **Name your app**, select **Yes. (Search your applications)**, search food-me app, and click **Enable**.
 
 ![enable browser agent for your app](../../../images/foodme/enable-browser.png)
 
-This gives you a javascript code snippet to enable New Relic Browser. Copy it to your clipboard.
+This gives you a JavaScript code snippet to enable browser monitoring. Copy it to your clipboard.
 
 ![javascript code snippet to enable browser agent](../../../images/foodme/browser-code-snippet.png)
 
@@ -66,7 +64,7 @@ This gives you a javascript code snippet to enable New Relic Browser. Copy it to
 
 <Step>
 
-In _app/index.html_ file of your app, paste the copied javascript snippet inside the _head_.
+In _app/index.html_ file of your app, paste the copied javascript snippet inside the `<head>`.
 
 <>
 
@@ -78,7 +76,7 @@ In _app/index.html_ file of your app, paste the copied javascript snippet inside
   <title>FoodMe</title>
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/bootstrap-united.css">
-  <!-- Replace it with your javascript code snippet -->
+  <!-- Paste your javascript code snippet here -->
 </head>
 <body>
 
@@ -133,7 +131,7 @@ In _app/index.html_ file of your app, paste the copied javascript snippet inside
 
 </>
 
-Your application is now instrumented with New Relic Browser agent.
+Your application is now instrumented with our browser agent.
 
 </Step>
 
@@ -141,7 +139,7 @@ Your application is now instrumented with New Relic Browser agent.
 
 ## Restart your application
 
-Now that you've instrumented your application, its time to restart your local server. 
+Now that you've instrumented your application, its time to restart your local server.
 
 <>
 
@@ -152,17 +150,17 @@ node ./server/start.js
 
 </>
 
-Place a few orders to generate traffic. 
+Place a few orders to generate traffic.
 
 ## View your data
 
-Your app is now sending browser data to New Relic. You view this data in New Relic, under **Browser**.
+Your app is now sending browser data to New Relic. View this data in New Relic, under **Browser**.
 
 <Steps>
 
 <Step>
 
-Navigate to [New Relic](https://one.newrelic.com/) and select **Browser** from top navigation.
+Navigate to [New Relic](https://one.newrelic.com/), and select **Browser** from the top navigation.
 
 ![Arrow pointing to Browser](../../../images/foodme/browser-app.png)
 
@@ -174,7 +172,7 @@ Select **food-me**.
 
 ![Arrow pointing to food-me app](../../../images/foodme/view-food-me-browser.png)
 
-Here, you see **Core web vitals**, **User time on the site**, **Initial page load and route change** and other critical data related to your browser app.
+Here, you see **Core web vitals**, **User time on the site**, **Initial page load and route change**, and other performance data from your app.
 
 ![APM view of food-me](../../../images/foodme/food-me-browser-app.png)
 
@@ -182,10 +180,10 @@ Here, you see **Core web vitals**, **User time on the site**, **Initial page loa
 
 </Steps>
 
-You've instrumented your application to send browser data to New Relic using our Browser agent. You also saw your app related data in New Relic. Now, it's time to get insights from your data.
+You've instrumented your application to send browser data to New Relic using our browser agent. You also see your performance data in New Relic. Now, it's time to get insights from your data.
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic. Now that you've instrumented your application with Browser agent, [explore your data](/collect-data/monitor-your-application/explore-your-data).
+This procedure is part of a lab that teaches you how to monitor your application with New Relic. Now that you've instrumented your application with our browser agent, [explore your data](/collect-data/monitor-your-application/explore-your-data).
 
 </Callout>

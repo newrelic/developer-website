@@ -12,7 +12,7 @@ This procedure is part of a lab that teaches you how to monitor your application
 
 </Callout>
 
-Before you can walk through the lab proper, you need to spin up your Angular application. 
+Before you can walk through the lab proper, you need to spin up your Angular application.
 
 <Steps>
 
@@ -45,21 +45,59 @@ node ./server/start.js
 
 </>
 
-This opens your FoodMe application in browser. 
+This opens your FoodMe application in your browser.
 
 ![FeedMe homepage](../../../images/foodme/homepage.png)
 
-Enter your name, delivery address and click **Find Restaurants** to get started.
+Enter your name and delivery address, and click **Find Restaurants** to get started.
 
 ![nearby restaurant list](../../../images/foodme/restaurant-list.png)
 
-Here, you see a list of restaurants from where you can order food of your choice. Place a few orders to generate some web traffic against your application.
+Here, you see a list of restaurants where you can order food.
+
+</Step>
+
+<Step>
+
+Choose a restaurant.
+
+![choose a restaurant](../../../images/foodme/choose-restaurant.png)
+
+</Step>
+
+<Step>
+
+Select an item or two.
+
+![select food](../../../images/foodme/select-food.png)
+
+</Step>
+
+<Step>
+
+Click **Checkout**.
+
+![checkout](../../../images/foodme/checkout.png)
+
+</Step>
+
+<Step>
+
+Enter the following fake card information.
+
+![fake card](../../../images/foodme/fake-card.png)
+
+Click **Purchase** to place the order:
+
+![purchase](../../../images/foodme/purchase.png)
+
+You use this flow later to generate more traffic to your application.
 
 </Step>
 
 </Steps>
 
-Now that you've got your application running, it's time to instrument it.
+Now, that you know how to run your application, it's time to instrument it. In the terminal window that's running your application, press `<CTRL-C>` to shut down your application. With your app shut down, you'll be able to update your code to introduce monitoring tools.
 
 <Callout variant="course" title="lab">
 
