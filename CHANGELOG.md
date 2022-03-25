@@ -1,3 +1,10 @@
+# [1.84.0](https://github.com/newrelic/developer-website/compare/v1.83.0...v1.84.0) (2022-03-25)
+
+
+### Features
+
+* added New Relic basics lab ([3ac8dd2](https://github.com/newrelic/developer-website/commit/3ac8dd248c47a99761b3275f0a3dcbd45a33861e))
+
 # [1.83.0](https://github.com/newrelic/developer-website/compare/v1.82.3...v1.83.0) (2022-03-21)
 
 
