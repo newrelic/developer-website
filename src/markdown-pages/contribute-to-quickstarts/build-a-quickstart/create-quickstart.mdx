@@ -213,21 +213,18 @@ Here, you copied your dashboard's JSON to clipboard. Replace the content of exis
 }
 ```
 
-Then, to remove any unecessary data from your dashboard, run the [dashboard sanitize script](https://github.com/newrelic/newrelic-quickstarts/blob/main/CONTRIBUTING.md#dashboard-json):
-
-```shell
-yarn sanitize-dashboard flashDB
-```
-
-<Callout variant="tip">
-
-When creating your dashboard:
+When you add your dashboard to your quickstart, you need to remove sensitive data. For example:
 
 - Do not include `permissions: PUBLIC_READ_WRITE`
 - Set all `linkedEntityGuids` to `null`
 - Set your `accountId` to `0`
 
-</Callout>
+We've created a script to automate this process for you.To remove sensitive and unnecessary data from your dashboard, run the [sanitize-dashboard](https://github.com/newrelic/newrelic-quickstarts/blob/main/CONTRIBUTING.md#dashboard-json) from _newrelic-quickstarts/utils_:
+
+```shell
+cd newrelic-quickstarts/utils
+yarn sanitize-dashboard flashDB
+```
 
 Next, create a screenshot of your dashboard and add it to _dashboards_ directory. Give it the same name as your JSON file. Your _dashboard_ directory should look similar to the following:
 
