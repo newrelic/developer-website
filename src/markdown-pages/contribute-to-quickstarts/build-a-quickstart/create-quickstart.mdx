@@ -42,14 +42,6 @@ First, look up your dashboard in New Relic and copy its JSON. Then, save it as a
 
 Here, you copied your dashboard's JSON to clipboard. Replace the content of existing JSON file in _dashboards_ directory and rename it as _flashDB.json_. Your _flashDB.json_ file should contain the following content:
 
-To remove any unecessary data from your dashboard run the [dashboard sanitize script](https://github.com/newrelic/newrelic-quickstarts/blob/main/CONTRIBUTING.md#dashboard-json) to clean up your dashboard JSON.
-
-<Callout variant="tip">
-
-When creating your dashboard for your quickstart: do not include `permissions: PUBLIC_READ_WRITE` and set all `linkedEntityGuids` to `null` and `accountId` to `0`.
-
-</Callout>
-
 ```json
 {
   "name": "FlashDB",
@@ -220,6 +212,22 @@ When creating your dashboard for your quickstart: do not include `permissions: P
   ]
 }
 ```
+
+Then, to remove any unecessary data from your dashboard, run the [dashboard sanitize script](https://github.com/newrelic/newrelic-quickstarts/blob/main/CONTRIBUTING.md#dashboard-json):
+
+```shell
+yarn sanitize-dashboard flashDB
+```
+
+<Callout variant="tip">
+
+When creating your dashboard:
+
+- Do not include `permissions: PUBLIC_READ_WRITE`
+- Set all `linkedEntityGuids` to `null`
+- Set your `accountId` to `0`
+
+</Callout>
 
 Next, create a screenshot of your dashboard and add it to _dashboards_ directory. Give it the same name as your JSON file. Your _dashboard_ directory should look similar to the following:
 
