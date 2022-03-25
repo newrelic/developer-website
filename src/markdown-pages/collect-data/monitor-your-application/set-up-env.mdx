@@ -1,0 +1,68 @@
+---
+duration: 5
+title: 'Set up your lab environment'
+template: 'GuideTemplate'
+description: 'Spin up your FoodMe application and simulator'
+procIdx: 1
+---
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to monitor your application with New Relic. If you haven't already, check out the [lab introduction](/collect-data/monitor-your-application).
+
+</Callout>
+
+Before you can walk through the lab proper, you need to spin up your Angular application. 
+
+<Steps>
+
+<Step>
+
+Clone the lab repository:
+
+<>
+
+```bash
+git clone https://github.com/newrelic-experimental/NewRelic-basics-lab-material.git
+```
+
+</>
+
+</Step>
+
+<Step>
+
+Navigate to the root directory of your application, install dependencies, and run the application:
+
+<>
+
+```bash
+cd NewRelic-basics-lab-material/FoodMe
+npm install
+node ./server/start.js
+[output] Go to http://localhost:3000/
+```
+
+</>
+
+This opens your FoodMe application in browser. 
+
+![FeedMe homepage](../../../images/foodme/homepage.png)
+
+Enter your name, delivery address and click **Find Restaurants** to get started.
+
+![nearby restaurant list](../../../images/foodme/restaurant-list.png)
+
+Here, you see a list of restaurants from where you can order food of your choice. Place a few orders to generate some web traffic against your application.
+
+</Step>
+
+</Steps>
+
+Now that you've got your application running, it's time to instrument it.
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to monitor your application with New Relic. Now that you've set up your environment, [instrument your application with APM agent](/collect-data/monitor-your-application/install-apm).
+
+</Callout>

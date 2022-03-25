@@ -16,6 +16,24 @@
       url: '/collect-data/network-performance-monitoring'
     - title: Identify root cause issues in your infrastructure
       url: '/collect-data/infra'
+    - title: Monitor your application with New Relic
+      url: '/collect-data/monitor-your-application'
+      pages:
+        - title: Set up your lab environment
+          url: '/collect-data/monitor-your-application/set-up-env'
+        - title: Instrument your application with APM Agent
+          url: '/collect-data/monitor-your-application/install-apm'
+        - title: Instrument your application with browser Agent
+          url: '/collect-data/monitor-your-application/install-browser-agent'
+        - title: Explore your data using NRQL
+          url: '/collect-data/monitor-your-application/explore-your-data'
+        - title: Collect custom Business data
+          url: '/collect-data/monitor-your-application/collect-custom-data'
+        - title: Query custom Business data
+          url: '/collect-data/monitor-your-application/query-custom-data'
+        - title: Add alerts
+          url: '/collect-data/monitor-your-application/alerts'
+
     - title: Monitor your Kubernetes cluster with New Relic and Pixie
       url: '/collect-data/pixie'
       pages:
