@@ -99,9 +99,13 @@ Switch to the NRQL editor.
 
 Edit the query as follows.
 
+<>
+
 ```sql
 SELECT count(*) AS 'Orders' FROM Transaction WHERE appName='food-me' AND name LIKE '%/api/order' SINCE 1 day ago
 ```
+
+</>
 
 ![orders in past 24 hours chart](../../../images/foodme/orders-in-24-hours.png)
 

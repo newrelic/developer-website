@@ -18,7 +18,7 @@ Before you can walk through the lab proper, you need to spin up your Angular app
 
 <Step>
 
-Clone the lab repository:
+Clone the lab repository.
 
 <>
 
@@ -32,7 +32,7 @@ git clone https://github.com/newrelic-experimental/NewRelic-basics-lab-material.
 
 <Step>
 
-Navigate to the root directory of your application, install dependencies, and run the application:
+Navigate to the root directory of your application, install dependencies, and run the application.
 
 <>
 
@@ -91,13 +91,49 @@ Click **Purchase** to place the order:
 
 ![purchase](../../../images/foodme/purchase.png)
 
-You use this flow later to generate more traffic to your application.
+Next, you use a simulator to generate more traffic to your application.
+
+</Step>
+
+<Step>
+
+In another terminal window, navigate to the root directory of your application, and run the load generator.
+
+<>
+
+```bash
+# Navigate to the root directiory of your application
+cd NewRelic-basics-lab-material/FoodMe/simulator
+[output]
+# Create a virtual environment
+python3 -m venv venv
+[output]
+# Activate the virtual environment
+source venv/bin/activate
+[output]
+# Install the simulator's dependencies
+pip install -r requirements.txt
+[output]
+# Run the simulator
+python simulator.py
+[output] ====== WebDriver manager ======
+[output] Current google-chrome version is 99.0.4844
+[output] Get LATEST chromedriver version for 99.0.4844 google-chrome
+```
+
+</>
+
+<Callout variant='important'>
+
+This load generator assumes you have Google Chrome installed on your computer. If you're using a different browser, either skip this step and generate traffic manually, or [install Google Chrome](https://www.google.com/chrome/downloads/).
+
+</Callout>
 
 </Step>
 
 </Steps>
 
-Now, that you know how to run your application, it's time to instrument it. In the terminal window that's running your application, press `<CTRL-C>` to shut down your application. With your app shut down, you'll be able to update your code to introduce monitoring tools.
+Now, that you know how to run your application, it's time to instrument it. In the terminal windows that are running your application and simulator, press `<CTRL-C>` to shut them down. With your app shut down, you'll be able to update your code to introduce monitoring tools.
 
 <Callout variant="course" title="lab">
 
