@@ -29,6 +29,14 @@ Here, you record custom attributes to gather details about food orders.
 
 <Step>
 
+In the terminal window that's running your development server, press `<CTRL-C>`.
+
+You should see your server shut down. Now you can add some dependencies and update your app logic.
+
+</Step>
+
+<Step>
+
 In _server/index.js_, update the code to add custom attributes on your server side.
 
 <>
@@ -303,6 +311,31 @@ foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $htt
 </>
 
 Here, you added a `PageAction` that records restaurant name, item, and item quantity whenever a customer places an order.
+
+</Step>
+
+<Step>
+
+Now that you've instrumented your application to record custom data, it's time to restart your local server.
+
+<>
+
+```bash
+node ./server/start.js
+[output] Go to http://localhost:3000/
+```
+
+</>
+
+Restart your load generator too.
+
+<>
+
+```bash 
+python simulator.py
+```
+
+</>
 
 </Step>
 

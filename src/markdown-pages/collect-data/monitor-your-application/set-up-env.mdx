@@ -91,7 +91,32 @@ Click **Purchase** to place the order:
 
 ![purchase](../../../images/foodme/purchase.png)
 
-You use this flow later to generate more traffic to your application.
+Next, you use simulator to generate more traffic to your application.
+
+</Step>
+
+<Step>
+
+In another terminal window, navigate to root directory of your application and run the load generator:
+
+<>
+
+```bash animate
+cd NewRelic-basics-lab-material/FoodMe/simulator
+pip install selenium
+python simulator.py
+[output] ====== WebDriver manager ======
+[output] Current google-chrome version is 99.0.4844
+[output] Get LATEST chromedriver version for 99.0.4844 google-chrome
+```
+
+</>
+
+<Callout variant='important'>
+
+The load generator assumes Google Chrome as your default browser and installs compatible WebDriver. If you're using a different browser, you can skip this step and generate traffic manually.
+
+</Callout>
 
 </Step>
 
