@@ -169,19 +169,16 @@ curl -i -X POST https://insights-collector.newrelic.com/v1/accounts/$ACCOUNT_ID/
 If our existing [logging integrations](https://docs.newrelic.com/docs/new-relic-logs-documentation) don’t meet your needs, you can use our Log API to send any arbitrary log data to New Relic. (Eventually, the Telemetry SDKs will support the Log API.)
 
 ```shell lineNumbers=true
-curl -i -X POST https://log-api.newrelic.com/log/v1 \
-  -H "Content-Type: application/json" \
-  -H "Api-Key: $LICENSE_KEY" \
-  -d '[
-        "logs": [
-          {
-            "timestamp": 1593538496000,
-            "message": "User xyz logged in",
-            "service": "login-service",
-            "hostname": "login.example.com"
-          }
-        ]
-      ]'
+curl --location --request POST 'https://log-api.newrelic.com/log/v1' \
+--header 'X-License-Key: $License_Key' \
+--header 'Content-Type: application/json' \
+--data-raw '[{
+        "logs": [{
+                "message": "User xyz logged in",
+                "service": "login-service",
+                "hostname": "login.example.com"
+        }]
+}]'
 ```
 
 </Step>
