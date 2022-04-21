@@ -1,3 +1,10 @@
+## [1.84.1](https://github.com/newrelic/developer-website/compare/v1.84.0...v1.84.1) (2022-04-21)
+
+
+### Bug Fixes
+
+* sunsetting relican branding and removing old teammates ([bf3caa7](https://github.com/newrelic/developer-website/commit/bf3caa715cf874a15ad148a40080c9ae15581f5a))
+
 # [1.84.0](https://github.com/newrelic/developer-website/compare/v1.83.0...v1.84.0) (2022-03-25)
 
 
