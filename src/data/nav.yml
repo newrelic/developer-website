@@ -50,23 +50,23 @@
     - title: Automatically instrument your application with OpenTelemetry
       url: '/collect-data/opentelemetry'
       pages:
-          - title: Set up your lab environment
-            url: '/collect-data/opentelemetry/set-up-env'
-          - title: Instrument your app with Open Telemetry
-            url: '/collect-data/opentelemetry/instrument'
-          - title: View your OpenTelemetry data in New Relic
-            url: '/collect-data/opentelemetry/view'
+        - title: Set up your lab environment
+          url: '/collect-data/opentelemetry/set-up-env'
+        - title: Instrument your app with Open Telemetry
+          url: '/collect-data/opentelemetry/instrument'
+        - title: View your OpenTelemetry data in New Relic
+          url: '/collect-data/opentelemetry/view'
     - title: Manually instrument your application with OpenTelemetry
       url: '/collect-data/opentelemetry-manual'
       pages:
-          - title: Set up your lab environment
-            url: '/collect-data/opentelemetry-manual/set-up-env'
-          - title: Instrument your app with Open Telemetry
-            url: '/collect-data/opentelemetry-manual/instrument'
-          - title: View your OpenTelemetry data in New Relic
-            url: '/collect-data/opentelemetry-manual/view'
-          - title: Send a custom span event
-            url: '/collect-data/opentelemetry-manual/custom-span-event'
+        - title: Set up your lab environment
+          url: '/collect-data/opentelemetry-manual/set-up-env'
+        - title: Instrument your app with Open Telemetry
+          url: '/collect-data/opentelemetry-manual/instrument'
+        - title: View your OpenTelemetry data in New Relic
+          url: '/collect-data/opentelemetry-manual/view'
+        - title: Send a custom span event
+          url: '/collect-data/opentelemetry-manual/custom-span-event'
 - title: Automate workflows
   icon: nr-automation
   url: '/automate-workflows'
@@ -597,18 +597,6 @@
               url: '/apis/nerdlet'
             - title: ngql
               url: '/apis/ngql'
-- title: Developer events
-  icon: nr-event
-  url: '/developer-events'
-  pages:
-    - title: FutureHack 2021
-      url: '/futurehack-2021'
-    - title: Past events
-      pages:
-        - title: Kubecon & CloudNativeCon
-          url: '/kubecon-europe-2020'
-        - title: All things open
-          url: '/all-things-open'
 - title: Instant Observability
   icon: fe-box
   url: 'https://newrelic.com/instant-observability'
