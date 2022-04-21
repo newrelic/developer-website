@@ -11,7 +11,6 @@ import nerdBytes from './newrelic/nerd-bytes';
 import developerChampions from './newrelic/developer-champions';
 import event from './newrelic/event';
 import podcasts from './newrelic/podcasts';
-import relicans from './newrelic/relicans';
 import share from './newrelic/share';
 import nerdlog from './newrelic/nerdlog';
 import checkShield from './newrelic/check-shield';
@@ -29,7 +28,6 @@ export default {
   'nerd-bytes': nerdBytes,
   'developer-champions': developerChampions,
   event,
-  relicans,
   podcasts,
   share,
   nerdlog,
