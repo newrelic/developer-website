@@ -2,11 +2,10 @@ import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
-import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
+import { Button } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
-import devReliquary from '../images/builders/relicans.png';
 import onlineTeach from '../images/builders/remote-unsplash.jpg';
 import * as styles from './builders.module.scss';
 
@@ -21,14 +20,13 @@ const DeveloperChampionPage = ({ location }) => {
             <div>
               <p>
                 {' '}
-                Our goal with the New Relic Community, also known as{' '}
-                <a href="https://www.therelicans.com/">The Relicans</a>, is to
-                make everyone feel welcome regardless of their background or
-                current ability, recognize everyone's individuality and help
-                them to find a way to learn that fits their needs, award members
-                that are active and helpful and be a safe space where everyone
-                is comfortable to teach, learn and grow, The New Relic Builders
-                is an important piece to make sure these goals are reached.
+                Our goal with the New Relic Community is to make everyone feel
+                welcome regardless of their background or current ability,
+                recognize everyone's individuality and help them to find a way
+                to learn that fits their needs, award members that are active
+                and helpful and be a safe space where everyone is comfortable to
+                teach, learn and grow, The New Relic Builders is an important
+                piece to make sure these goals are reached.
               </p>
 
               <hr />
@@ -67,11 +65,6 @@ const DeveloperChampionPage = ({ location }) => {
                 />
               </Button>
             </div>
-            <img
-              className={styles.img}
-              src={devReliquary}
-              alt="developer champion header"
-            />
           </section>
           <section className={styles.section}>
             <h2>Why be a New Relic Builder?</h2>
@@ -106,7 +99,7 @@ const DeveloperChampionPage = ({ location }) => {
               <p>
                 You will develop the art of content production for the tech
                 community by working alongside great content creators. You will
-                be mentored by a Relican to level up your content creation
+                be mentored by a DevRel team mate to level up your content
                 skills.
               </p>
             </div>
@@ -220,11 +213,7 @@ const DeveloperChampionPage = ({ location }) => {
               <hr />
               <ul>
                 <h4>It is nice to have:</h4>
-                <li>
-                  Be an active member of{' '}
-                  <Link to="https://therelicans.com">The Relicans</Link>, our
-                  online community{' '}
-                </li>
+                <li>Be an active member of our online community </li>
                 <li>Have experience using New Relic products.</li>
               </ul>
               <hr />
