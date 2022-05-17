@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 const Keyword = ({ children }) => (
   <span
     css={css`
-      color: var(--color-nord-9);
+      color: var(--code-console-text-highlight);
     `}
   >
     {children}

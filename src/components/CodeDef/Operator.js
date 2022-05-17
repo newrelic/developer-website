@@ -5,7 +5,11 @@ import { css } from '@emotion/react';
 const Operator = ({ children }) => (
   <span
     css={css`
-      color: var(--color-nord-9);
+      color: var(--code-query-syntax-operator);
+      .light-mode & {
+        --code-query-syntax-operator: #3d808a;
+        color: var(--code-query-syntax-operator);
+      }
     `}
   >
     {children}

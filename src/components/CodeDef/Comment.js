@@ -12,15 +12,15 @@ const Content = ({ children, ...props }) => {
     <span
       {...props}
       css={css`
-        color: var(--color-nord-3);
+        color: var(--color-selection);
 
         > p {
           display: inline;
         }
 
         code {
-          color: var(--color-nord-4) !important;
-          background: var(--color-nord-2) !important;
+          color: var(--color-comment) !important;
+          background: var(--color-current-line) !important;
         }
       `}
     >

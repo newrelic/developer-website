@@ -23,10 +23,10 @@ const CodeDef = ({ className, children }) => (
       padding: 1rem;
 
       &&& {
-        background: var(--color-nord-0);
+        background: var(--color-background);
 
         .light-mode & {
-          background: var(--color-nord-6);
+          background: var(--code-console-text-primary);
         }
       }
 

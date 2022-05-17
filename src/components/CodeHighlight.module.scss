@@ -1,5 +1,5 @@
 .container {
-  color: var(--color-nord-6);
+  color: var(--code-console-text-primary);
   font-family: var(--code-font);
   font-size: 0.75rem;
   display: block;
@@ -20,8 +20,8 @@
   }
 
   :global(.light-mode) & {
-    color: var(--color-nord-0);
-    background: var(--color-nord-6);
+    color: var(--color-background);
+    background: var(--code-console-text-primary);
   }
 }
 
@@ -35,7 +35,7 @@
 
 .lineNumber {
   user-select: none;
-  color: var(--color-nord-3);
+  color: var(--color-selection);
   text-align: right;
 }
 
@@ -44,10 +44,10 @@
 }
 
 .highlightLine {
-  background: var(--color-nord-2);
+  background: var(--color-current-line);
 
   :global(.light-mode) & {
-    background: var(--color-nord-5);
+    background: var(---color-comment);
   }
 }
 
@@ -61,16 +61,16 @@
     &.prolog,
     &.doctype,
     &.cdata {
-      color: var(--color-nord-3);
+      color: var(--color-selection);
     }
 
     &.tag,
     &.class-name {
-      color: var(--color-nord-7);
+      color: var(--code-query-syntax-keyword);
     }
 
     &.function {
-      color: var(--color-nord-8);
+      color: var(--code-query-syntax-function);
     }
 
     &.punctuation,
@@ -81,13 +81,13 @@
     &.atrule,
     &.attr-value,
     &.url {
-      color: var(--color-nord-9);
+      color: var(--code-query-syntax-operator);
     }
 
     &.regex,
     &.important,
     &.variable {
-      color: var(--color-nord-12);
+      color: var(--code-query-syntax-regex);
     }
 
     &.selector,
@@ -96,7 +96,7 @@
     &.char,
     &.builtin,
     &.inserted {
-      color: var(--color-nord-14);
+      color: var(--code-query-syntax-string);
     }
 
     &.property,
@@ -105,7 +105,7 @@
     &.symbol,
     &.deleted,
     &.number {
-      color: var(--color-nord-15);
+      color: var(--code-query-syntax-numeric);
     }
 
     &.important,
