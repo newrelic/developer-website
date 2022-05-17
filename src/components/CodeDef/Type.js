@@ -8,7 +8,10 @@ const Type = ({ className, children }) => (
     css={css`
       padding: 0.125rem;
       border-radius: 0.125rem;
-      color: var(--color-nord-13);
+      color: var(--code-query-syntax-keyword);
+      .light-mode {
+        --code-query-syntax-keyword: #aa1bc8;
+      }
     `}
   >
     {children}

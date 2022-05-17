@@ -25,16 +25,15 @@ const FeaturedGuideTile = ({
         margin-left: -2.75rem;
         width: 5.5rem;
         height: 5.5rem;
-        border: 4px solid var(--color-white);
-        background-color: var(--color-neutrals-200);
+        border: 4px solid var(--primary-background-color);
+        background-color: var(--secondary-background-color);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
 
         .dark-mode & {
-          background-color: var(--color-dark-050);
-          border-color: var(--color-dark-100);
+          border-color: var(--primary-hover-color);
         }
       `}
     >

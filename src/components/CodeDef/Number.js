@@ -5,7 +5,11 @@ import { css } from '@emotion/react';
 const NumberValue = ({ value }) => (
   <span
     css={css`
-      color: var(--color-nord-15);
+      color: var(--code-query-syntax-numeric);
+      .light-mode {
+        --code-query-syntax-numeric: #ab6400;
+        color: var(--code-query-syntax-numeric);
+      }
     `}
   >
     {value}
