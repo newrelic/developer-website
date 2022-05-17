@@ -165,7 +165,7 @@ First, at the top of your HostConditions provider.tf create a new variable:
 variable "providerId" {}
 ```
 
-Next, in the resource block, replace the existing policyId with the new variable:
+Next, in the resource block and in the varaable in main.tf, replace the existing policyId with the new variable:
 ```hcl
 var.policy
 ```
