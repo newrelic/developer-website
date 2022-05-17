@@ -5,10 +5,10 @@ import { css } from '@emotion/react';
 const Identifier = ({ children }) => (
   <span
     css={css`
-      color: var(--color-nord-6);
+      color: var(--code-console-text-primary);
 
       .light-mode & {
-        color: var(--color-nord-0);
+        color: var(--color-background);
       }
     `}
   >

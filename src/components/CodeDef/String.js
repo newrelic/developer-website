@@ -5,7 +5,11 @@ import { css } from '@emotion/react';
 const StringValue = ({ value }) => (
   <span
     css={css`
-      color: var(--color-nord-14);
+      color: var(--code-query-syntax-string);
+      .light-mode & {
+        --code-query-syntax-string: #4f8400;
+        color: var(--code-query-syntax-string);
+      }
     `}
   >
     "{value}"
