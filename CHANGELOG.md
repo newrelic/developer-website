@@ -1,3 +1,10 @@
+# [1.86.0](https://github.com/newrelic/developer-website/compare/v1.85.0...v1.86.0) (2022-05-17)
+
+
+### Features
+
+* update theme ([07c201f](https://github.com/newrelic/developer-website/commit/07c201f4a275e21889ecfd3731a5ffcb84875feb))
+
 # [1.85.0](https://github.com/newrelic/developer-website/compare/v1.84.1...v1.85.0) (2022-05-17)
 
 
