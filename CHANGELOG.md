@@ -1,3 +1,10 @@
+# [1.85.0](https://github.com/newrelic/developer-website/compare/v1.84.1...v1.85.0) (2022-05-17)
+
+
+### Features
+
+* update colors and icons ([0813239](https://github.com/newrelic/developer-website/commit/08132396341b91b82a77689e785e12c817052b6b))
+
 ## [1.84.1](https://github.com/newrelic/developer-website/compare/v1.84.0...v1.84.1) (2022-04-21)
 
 
