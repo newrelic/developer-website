@@ -2,7 +2,7 @@
 duration: 45
 title: 'Add, query, and mutate data using NerdStorage'
 template: 'GuideTemplate'
-description: 'NerdStorage is a document database accessible within New Relic One. It allows you to modify, save, and retrieve documents from one session to the next.'
+description: 'NerdStorage is a document database accessible within New Relic. It allows you to modify, save, and retrieve documents from one session to the next.'
 resources:
   - title: 'New Relic SDK documentation'
     url: /explore-docs/intro-to-sdk
@@ -15,7 +15,7 @@ tags:
 
 <Intro>
 
-NerdStorage is a document database accessible within New Relic One. It allows you to modify, save, and retrieve documents from one session to the next.
+NerdStorage is a document database accessible within New Relic. It allows you to modify, save, and retrieve documents from one session to the next.
 
 Using NerdStorage, you can create individual documents of up to 64kb in size, create different collections of documents, and store data by entity, account, or user level.
 
@@ -29,7 +29,7 @@ This guide requires that you have an API key and the New Relic One CLI as descri
 
 ## Get started
 
-First, get the NerdStorage app running successfully inside New Relic One.
+First, get the NerdStorage app running successfully inside New Relic.
 
 <Steps>
 
@@ -61,7 +61,7 @@ nr1 nerdpack:serve
 
 <Step>
 
-Once the app is successfully served, your terminal will return the URL to view your running application on [New Relic One](https://one.newrelic.com/?nerdpacks=local).
+Once the app is successfully served, your terminal will return the URL to view your running application on [New Relic](https://one.newrelic.com/?nerdpacks=local).
 
 Load the URL. Click **Apps** and under **Your apps** you'll see the **Use Nerdstorage** app listed. Click to launch the app.
 
@@ -73,7 +73,7 @@ Load the URL. Click **Apps** and under **Your apps** you'll see the **Use Nerdst
 
 ## Add data to NerdStorage
 
-Once the app is up and running on New Relic One, you can prepare the app and start adding data.
+Once the app is up and running on New Relic, you can prepare the app and start adding data.
 
 On the **How To Use NerdStorage** app screen, there's a **Saved to NerdStorage** pane with a field for adding data. However, if you type something you'll get an error message. This is because you need to be set up to store data at the `User` level. You can do this with the help of the [UserStorageMutation component](https://developer.newrelic.com/client-side-sdk/index.html#data-fetching/UserStorageMutation).
 
@@ -139,7 +139,7 @@ _addToNerdStorage(){
 
 <Step>
 
-1. Return to your running **How To Use NerdStorage** app screen on New Relic One and reload the page.
+1. Return to your running **How To Use NerdStorage** app screen in New Relic and reload the page.
 
 2. Add some text in the text entry field and click the check button. This will update NerdStorage and trigger a `Toast` notification inside the app. You should then see the text you typed displayed as a table row below the text entry field.
 

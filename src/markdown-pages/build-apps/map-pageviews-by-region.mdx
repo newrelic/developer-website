@@ -49,9 +49,9 @@ To add your data to a world map in the second half of the guide:
 
 The following are some terms used in this guide:
 
-- New Relic application: The finished product where data is rendered in New Relic One. This might look like a series of interactive charts or a map of the world.
+- New Relic application: The finished product where data is rendered in New Relic. This might look like a series of interactive charts or a map of the world.
 - Nerdpack: New Relic's standard collection of JavaScript, JSON, CSS, and other files that control the functionality and look of your application. For more information, see [Nerdpack file structure](/explore-docs/nerdpack-file-structure).
-- Launcher: The button on New Relic One that launches your application.
+- Launcher: The button in New Relic that launches your application.
 - Nerdlets: New Relic React components used to build your application. The three default files are `index.js`, `nr1.json`, and `styles.scss`, but you can customize and add your own.
 
 <Tutorial>
@@ -86,7 +86,7 @@ export default class PageViewApp extends React.Component {
 
 Use Query builder to write a NRQL query to see your page view data, as follows.
 
-On New Relic One, select **Query your data** (in the top right corner). That puts you in **NRQL** mode. You'll use NRQL to test your query before dropping the data into your table.
+In New Relic, select **Query your data** (in the top right corner). That puts you in **NRQL** mode. You'll use NRQL to test your query before dropping the data into your table.
 
 Copy and paste this query into a clear query field, and then select **Run**.
 
@@ -152,7 +152,7 @@ cd pageviews-app && nr1 nerdpack:serve
 ### Review your app files and view your app locally
 
 1. Navigate to your `pageviews-app` to see how it's structured.
-   It contains a launcher folder, where you can customize the description and icon that will be displayed on the app's launcher in New Relic One. It also contains `nerdlets`, which each contain three default files: `index.js`, `nr1.json`, and `styles.scss`. You'll edit some of these files as part of this guide. For more information, see [Nerdpack file structure](/explore-docs/nerdpack-file-structure).
+   It contains a launcher folder, where you can customize the description and icon that will be displayed on the app's launcher in New Relic. It also contains `nerdlets`, which each contain three default files: `index.js`, `nr1.json`, and `styles.scss`. You'll edit some of these files as part of this guide. For more information, see [Nerdpack file structure](/explore-docs/nerdpack-file-structure).
 
 2. Now in your browser, open `https://one.newrelic.com/?nerdpacks=local`, and then click **Apps** to see the `pageview-apps` Nerdpack that you served up.
 
@@ -184,7 +184,7 @@ export default class PageViewApp extends React.Component {
 
 ### Import the `TableChart` component
 
-To show your data in a table chart, import the [`TableChart` component](/client-side-sdk/index.html#charts/TableChart) from New Relic One. To do so, in `index.js`, add this code under `import React`.
+To show your data in a table chart, import the [`TableChart` component](/client-side-sdk/index.html#charts/TableChart) from New Relic. To do so, in `index.js`, add this code under `import React`.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
 import React from 'react';
@@ -286,7 +286,7 @@ export default class PageViewApp extends React.Component {
 }
 ```
 
-Go to New Relic One and click your app to see your data in the table. (You might need to serve your app to New Relic again.)
+Go to New Relic and click your app to see your data in the table. (You might need to serve your app to New Relic again.)
 
 Congratulations! You made your app! Continue on to make it interactive and show your data on a map.
 
@@ -304,7 +304,7 @@ Once you confirm that data is getting to New Relic from your app, you can start 
 
 ### Import the `TextField` component
 
-Like you did with the `TableChart` component, you need to import a [`TextField` component](/client-side-sdk/index.html#components/TextField) from New Relic One.
+Like you did with the `TableChart` component, you need to import a [`TextField` component](/client-side-sdk/index.html#components/TextField) from New Relic.
 
 ```jsx fileName=pageview-app-nerdlet/index.js
 import React from 'react';
@@ -662,9 +662,9 @@ export default class PageViewApp extends React.Component {
 
 <Step>
 
-### Import additional modules from New Relic One
+### Import additional modules from New Relic
 
-You need several more modules from New Relic One to make the `Leaflet` map work well. Import them with this code:
+You need several more modules from New Relic to make the `Leaflet` map work well. Import them with this code:
 
 ```jsx fileName=pageview-app-nerdlet/index.js
 import React from 'react';
@@ -1076,7 +1076,7 @@ export default class PageViewApp extends React.Component {
 }
 ```
 
-Reload your application in New Relic One to test that it works.
+Reload your application in New Relic to test that it works.
 
 </Step>
 
