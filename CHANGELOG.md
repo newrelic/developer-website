@@ -1,3 +1,17 @@
+## [1.86.2](https://github.com/newrelic/developer-website/compare/v1.86.1...v1.86.2) (2022-05-19)
+
+
+### Bug Fixes
+
+* theme bump to 6.0.2 ([4d1cdb0](https://github.com/newrelic/developer-website/commit/4d1cdb0659f337a4b9307fc3152b0192cc41f4ee))
+
+## [1.86.1](https://github.com/newrelic/developer-website/compare/v1.86.0...v1.86.1) (2022-05-19)
+
+
+### Bug Fixes
+
+* **dev:** remove some 'New Relic One's ([f65d45f](https://github.com/newrelic/developer-website/commit/f65d45f9163b46f6975e5555c5617f36de29e049))
+
 # [1.86.0](https://github.com/newrelic/developer-website/compare/v1.85.0...v1.86.0) (2022-05-17)
 
 
