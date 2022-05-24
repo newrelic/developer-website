@@ -30,9 +30,12 @@ To spin up your demo services, you first need to install [Docker](https://docs.d
 
 Clone the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course) from GitHub:
 
+<>
+
 ```sh
 git clone https://github.com/newrelic-experimental/nru-programmability-course
 ```
+</>
 
 This repository contains code for creating NodeJS New Relic automations. It also contains a an app code directory for each lesson in the course. You'll use these directories to follow along with the course content.
 
@@ -42,9 +45,12 @@ This repository contains code for creating NodeJS New Relic automations. It also
 
 Change to the demo directory, called `ab-test-app`:
 
+<>
+
 ```sh
 cd nru-programmability-course/ab-test-app
 ```
+</>
 
 This directory contains configuration files and READMEs for using the demo.
 
@@ -54,9 +60,12 @@ This directory contains configuration files and READMEs for using the demo.
 
 Build and run the web service and simulator containers, using `docker-compose`:
 
+<>
+
 ```sh
 NEW_RELIC_LICENSE_KEY=<your New Relic license key> docker-compose up -d
 ```
+</>
 
 <Callout variant="important">
 
@@ -86,9 +95,12 @@ You may have to wait a minute or two for New Relic to receive data from your dem
 
 To spin down your demo services, run `docker-compose down` from your `ab-test-app` directory:
 
+<>
+
 ```sh
 docker-compose down
 ```
+</>
 
 </Step>
 

@@ -24,9 +24,12 @@ With your charts organized and descriptive headings above each one, your New Rel
 
 Change to the _add-version-descriptions/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/add-version-descriptions/ab-test
 ```
+</>
 
 </Step>
 
@@ -34,15 +37,19 @@ cd nru-programmability-course/add-version-descriptions/ab-test
 
 In _nerdlets/ab-test-nerdlet_, add a new Javascript file named _description.js_:
 
+<>
+
 ```sh
 touch description.js
 ```
-
+</>
 </Step>
 
 <Step>
 
 In this new file, create a new React component, called `VersionDescription`, which uses a `HeadingText` and a `BlockText` to render a version description that you pass, using the `description` prop:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/description.js
 import React from 'react';
@@ -67,6 +74,7 @@ export default class VersionDescription extends React.Component {
     }
 }
 ```
+</>
 
 You'll use this one class to create a version description for each design version in your A/B test.
 
@@ -75,6 +83,8 @@ You'll use this one class to create a version description for each design versio
 <Step>
 
 In your Nerdlet's _index.js_ file, import `VersionDescription`, create descriptions for each design version, and create a new `GridItem` component for each design version:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=7,11-12,18-30
 import React from 'react';
@@ -126,6 +136,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
     }
 }
 ```
+</>
 
 Here, you've created two `VersionDescription` components. You passed the `description` and `version` props, which correspond to a design version.
 
@@ -143,9 +154,12 @@ Navigate to the root of your Nerdpack at _nru-programmability-course/add-version
 
 Generate a new UUID for your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid -gf
 ```
+</>
 
 Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
@@ -155,9 +169,12 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 [Serve your application locally](/build-apps/publish-deploy/serve):
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 </Step>
 
