@@ -1,3 +1,10 @@
+# [1.87.0](https://github.com/newrelic/developer-website/compare/v1.86.2...v1.87.0) (2022-05-25)
+
+
+### Features
+
+* **redirects:** support redirecting developer urls to external sites ([b5df19b](https://github.com/newrelic/developer-website/commit/b5df19bd4271137687bbe052e9fcc05bed5c9c84))
+
 ## [1.86.2](https://github.com/newrelic/developer-website/compare/v1.86.1...v1.86.2) (2022-05-19)
 
 
