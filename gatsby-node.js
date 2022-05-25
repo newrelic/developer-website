@@ -2,6 +2,7 @@ const path = require(`path`);
 const { execSync } = require('child_process');
 const { createFilePath } = require('gatsby-source-filesystem');
 const resolveQuickstartSlug = require('./src/utils/resolveQuickstartSlug.js');
+const externalRedirects = require('./src/data/external-redirects.json');
 
 const kebabCase = (string) =>
   string
@@ -82,6 +83,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
+
+  if (externalRedirects.length > 0) {
+    externalRedirects.forEach(({ url, paths }) => {
+      paths.forEach((path) => {
+        createRedirect({
+          fromPath: path,
+          toPath: url,
+          isPermanent: true,
+          redirectInBrowser: true,
+        });
+      });
+    });
+  }
 
   createRedirect({
     fromPath: `/instant-observability/`,
