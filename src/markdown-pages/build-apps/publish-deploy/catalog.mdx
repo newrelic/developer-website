@@ -76,17 +76,9 @@ After you've published your Nerdpack to the Instant Observability catalog, updat
 
 <Step>
 
-Go to [New Relic](https://one.newrelic.com):
+From [New Relic](https://one.newrelic.com) homepage, navigate to **Add data** in the top navigation bar:
 
-![Homepage](../../../images/serve-publish-subscribe/home.png)
-
-</Step>
-
-<Step>
-
-Navigate to **Instant Observability**:
-
-![Navigate to the Instant Observability page](../../../images/serve-publish-subscribe/nav-to-io.png)
+![Navigate to the Add data page](../../../images/serve-publish-subscribe/nav-to-io.png)
 
 </Step>
 
@@ -96,7 +88,7 @@ Find your published Nerdpack using the Apps filter or search bar:
 
 ![Published Nerdpack](../../../images/serve-publish-subscribe/published-app.png)
 
-Notice that there is no information on the **Instant Observability** or details page other than the Nerdpack's name and the brief description found in _nr1.json_:
+Notice that there is no information or details page other than the Nerdpack's name and the brief description found in _nr1.json_:
 
 ![Published Nerdpack](../../../images/serve-publish-subscribe/demo-app-no-details.png)
 
@@ -108,6 +100,8 @@ There are no screenshots, icons, details, or what's new features. For these, you
 
 From the root of your Nerdpack, create _catalog_ directories to house your Nerdpack's screenshots and metadata:
 
+<>
+
 ```sh
 nr1 create --type catalog
 [output] {success}✔{normal}  created: launchers/launcher/catalog
@@ -116,13 +110,17 @@ nr1 create --type catalog
 [output] {success}✔{normal}  catalog created successfully!
 [output]    {purple}catalog{normal} is available at "./catalog"
 ```
+</>
 
 Inside your root _catalog_ directory, you'll find specific files and directories for portraying information about your Nerdpack to your users:
+
+<>
 
 ```sh
 ls catalog
 [output] README.md         additionalInfo.md config.json       documentation.md  {blue}screenshots
 ```
+</>
 
 | File                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -134,6 +132,8 @@ ls catalog
 
 This command also generates a `catalog` directory for each launcher, Nerdlet, and visualization in your Nerdpack. Inside you'll find a directory that allows you to add screenshots for each Nerdpack item.
 
+<>
+
 ```sh
 ls launchers/launcher/catalog
 [output] {blue}screenshots
@@ -141,6 +141,7 @@ ls launchers/launcher/catalog
 ls nerdlets/home/catalog
 [output] {blue}screenshots
 ```
+</>
 
 </Step>
 
@@ -148,15 +149,20 @@ ls nerdlets/home/catalog
 
 Update your Nerdpack's _documentation.md_ file:
 
+<>
+
 ```md fileName=catalog/documentation.md
 Enter your first and last name into the fields provided. When you're done, press **Submit** to see a personalized "Hello!" message.
 ```
+</>
 
 </Step>
 
 <Step>
 
 Update your _config.json_ file:
+
+<>
 
 ```json fileName=catalog/config.json
 {
@@ -168,6 +174,7 @@ Update your _config.json_ file:
   "whatsNew": "feat: Initial commit"
 }
 ```
+</>
 
 </Step>
 
@@ -181,6 +188,8 @@ Include screenshots in your root _screenshots_ directory or any Nerdpack item _s
 
 Submit the information to the Instant Observability catalog:
 
+<>
+
 ```sh
 nr1 catalog:submit
 [output] Uploading screenshots from demo-app...
@@ -191,6 +200,7 @@ nr1 catalog:submit
 [output]  {success}✔{normal}  Screenshots uploaded from: demo-app/nerdlets/home
 [output]  {success}✔{normal}  Updated metadata for DemoApp 1.0.0
 ```
+</>
 
 </Step>
 
@@ -239,6 +249,8 @@ If you're building a Nerdpack with one or more launchers, update the _icon.png_ 
 
 Update your _package.json_ version:
 
+<>
+
 ```json fileName=package.json lineHighlight=4
 {
   "private": true,
@@ -259,6 +271,7 @@ Update your _package.json_ version:
   "browserslist": ["last 2 versions", "not ie < 11", "not dead"]
 }
 ```
+</>
 
 This allows you to publish a new version of your Nerdpack.
 
@@ -268,15 +281,20 @@ This allows you to publish a new version of your Nerdpack.
 
 [Publish](/build-apps/publish-deploy/publish) your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:publish
 ```
+</>
 
 </Step>
 
 <Step>
 
 Update your `whatsNew` string in _catalog/config.json_:
+
+<>
 
 ```json fileName=catalog/config.json
 {
@@ -288,6 +306,7 @@ Update your `whatsNew` string in _catalog/config.json_:
   "whatsNew": "feat: Add new icons"
 }
 ```
+</>
 
 This will tell users what you added in the latest version of your Nerdpack.
 
@@ -296,6 +315,8 @@ This will tell users what you added in the latest version of your Nerdpack.
 <Step>
 
 Submit this new metadata to the catalog:
+
+<>
 
 ```sh
 nr1 catalog:submit
@@ -307,6 +328,7 @@ nr1 catalog:submit
 [output]  {success}✔{normal}  Screenshots uploaded from: demo-app/nerdlets/home
 [output]  {success}✔{normal}  Updated metadata for DemoApp 1.0.1
 ```
+</>
 
 </Step>
 
@@ -332,6 +354,8 @@ Sometimes, when you work with catalog metadata, you may run into issues. Conside
 
 Remember that you can only submit catalog metadata for Nerdpacks that have already been published. If you try to submit information for a Nerdpack that hasn't been published, the CLI will try to help:
 
+<>
+
 ```sh
 nr1 catalog:submit
 [output] Uploading screenshots...
@@ -340,10 +364,13 @@ nr1 catalog:submit
 [output]  {error}›   Invalid Version: Nerdpack version 1.0.0 not found. Have you run `nr1 nerdpack:publish` yet?
 [output]  {error}›{normal}   Code: UNKNOWN
 ```
+</>
 
 ### Resize your images
 
 Screenshots for the catalog must meet the criteria specified previously in this guide. If they don't, the CLI will try to help:
+
+<>
 
 ```sh
 nr1 catalog:submit
@@ -357,10 +384,13 @@ nr1 catalog:submit
 [output]  {error}›{normal}   {red}Invalid Screenshot: screenshot.png has a width of 3054px. Update size to be between 1600px and 2400px.
 [output]  {error}›{normal}   Code: UNKNOWN
 ```
+</>
 
 ### Check the length of your strings
 
 Most of the content in _config.json_ has string-length requirements. Make sure you review those requirements and adhere to them when you update your _config.json_ file. Otherwise, you'll see errors when you try to submit your configuration to the catalog:
+
+<>
 
 ```sh
 nr1 catalog:submit
@@ -375,3 +405,4 @@ nr1 catalog:submit
 [output]  {error}›{normal}   {error}Invalid Metadata: `tagline` has a character length of 266. Must be no longer than 30 characters
 [output]  {error}›{normal}   Code: UNKNOWN
 ```
+</>
