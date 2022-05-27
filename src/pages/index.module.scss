@@ -104,6 +104,11 @@
 .developerChampions {
   display: flex;
 
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   img {
     height: 9rem;
   }

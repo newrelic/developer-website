@@ -62,7 +62,6 @@ const PageLayout = ({ children, type, className }) => {
       css={css`
         display: grid;
         grid-gap: ${contentPadding};
-
         ${LAYOUTS[type]};
       `}
     >

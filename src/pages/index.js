@@ -98,11 +98,18 @@ const IndexPage = ({ data, pageContext, location }) => {
               css={css`
                 flex: 1;
                 margin-top: 0;
-                margin-left: 50px;
                 width: 100%;
+                display: flex;
+                justify-content: center;
               `}
             >
-              <Video id="33kreqnm3p" type="wistia" />
+              <Video
+                css={css`
+                  width: 100%;
+                `}
+                id="33kreqnm3p"
+                type="wistia"
+              />
             </div>
           </section>
 
@@ -207,7 +214,18 @@ const IndexPage = ({ data, pageContext, location }) => {
                 Learn more about developer champions
               </Button>
             </div>
-            <img src={devChampionBadge} alt="developer champion badge" />
+            <img
+              css={css`
+                padding: 1.25rem;
+                /*
+                @media screen and (max-width: 700px) {
+                  padding-top: 1rem;
+                }
+                */
+              `}
+              src={devChampionBadge}
+              alt="developer champion badge"
+            />
           </section>
 
           <section
