@@ -217,11 +217,6 @@ const IndexPage = ({ data, pageContext, location }) => {
             <img
               css={css`
                 padding: 1.25rem;
-                /*
-                @media screen and (max-width: 700px) {
-                  padding-top: 1rem;
-                }
-                */
               `}
               src={devChampionBadge}
               alt="developer champion badge"
