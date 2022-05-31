@@ -25,9 +25,12 @@ Serve your Nerdpack locally when it's still in development and you're not ready 
 
 Before you run any commands, ensure that you have the latest version of the CLI:
 
+<>
+
 ```sh
 nr1 update
 ```
+</>
 
 ## Serve your Nerdpack locally
 
@@ -37,16 +40,22 @@ nr1 update
 
 In the root folder of your Nerdpack, run the `nerdpack:serve` command:
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 If you've successfully served your Nerdpack, you should see some success output, including:
+
+<>
 
 ```sh
 [output] {green}✔{normal}  Server ready! Test it at: https://one.newrelic.com/?nerdpacks=local
 [output] {blue}↩{normal}  Server will reload automatically if you modify any file!
 ```
+</>
 
 While your Nerdpack is being served locally, the server will automatically reload your Nerdpack when it detects that you've modified a file. This doesn't include the metadata file _nr1.json_ or the styles file _styles.css_. If you update those files, you need to stop your local server with `CTRL+C` and restart it with `nr1 nerdpack:serve`.
 
@@ -112,16 +121,22 @@ Sometimes, when you serve your Nerdpack locally, you may come across issues. You
 
 When you attempt to serve your Nerdpack locally, carefully read the output of your `nr1` command. You may receive success output, including:
 
+<>
+
 ```sh
 [output] {green}✔{normal}  Server ready! Test it at: https://one.newrelic.com/?nerdpacks=local
 [output] {blue}↩{normal}  Server will reload automatically if you modify any file!
 ```
+</>
 
 However, the output may show some errors in your Nerdpack instead. It may also help you to view more verbose output. Use the `--verbose` command to show more content:
+
+<>
 
 ```sh
 nr1 nerdpack:serve --verbose
 ```
+</>
 
 ### Show locally served Nerdpacks
 
@@ -150,6 +165,9 @@ So, if you don't find your Nerdpack in New Relic, you're using the correct query
 
 Read the [`nr1 nerdpack:serve`](/explore-docs/nr1-nerdpack#nr1-nerdpackserve) documentation to learn more. Or, view the `nr1` help page:
 
+<>
+
 ```sh
 nr1 nerdpack:serve --help
 ```
+</>

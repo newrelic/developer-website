@@ -28,15 +28,20 @@ When you select a version from this form, the selection does not persist in the 
 
 Change to the _persist-selected-version/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/persist-selected-version/ab-test
 ```
+</>
 
 </Step>
 
 <Step>
 
 In _end-test.js_, initialize `EndTestSection.state` with a default `selectedVersion` field:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=29-35
 import React from 'react';
@@ -92,12 +97,15 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 </Step>
 
 <Step>
 
 Pass the `selectedVersion`, as a prop, to `VersionSelector`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=45-47
 import React from 'react';
@@ -155,12 +163,15 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 </Step>
 
 <Step>
 
 Supply the `selectedVersion` to your `Select` component in `VersionSelector`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=12-14,17
 import React from 'react';
@@ -222,12 +233,15 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 </Step>
 
 <Step>
 
 Create a method, `selectVersion()`, that updates `EndTestSection.state`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=40,43-45
 import React from 'react';
@@ -295,6 +309,7 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 You must bind `selectVersion` to the `EndTestSection` component so it can access `state`.
 
@@ -303,6 +318,8 @@ You must bind `selectVersion` to the `EndTestSection` component so it can access
 <Step>
 
 Pass the method to `VersionSelector` as a prop:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=57
 import React from 'react';
@@ -371,12 +388,15 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 </Step>
 
 <Step>
 
 Set `selectVersion` as the `onChange` callback in `VersionSelector`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=17
 import React from 'react';
@@ -445,6 +465,7 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 </Step>
 
@@ -458,9 +479,12 @@ Navigate to the root of your Nerdpack at _nru-programmability-course/persist-sel
 
 Generate a new UUID for your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid -gf
 ```
+</>
 
 Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
@@ -470,9 +494,12 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 [Serve your application locally](/build-apps/publish-deploy/serve):
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 </Step>
 

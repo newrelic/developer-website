@@ -20,17 +20,23 @@ In previous lessons, you learned of a third-party service that you can use to fe
 
 If you make a request to the mock service with cancellation data (https://api.nerdsletter.net/cancellations) you'll see a response rejecting your request with a message that reads "Unauthorized":
 
+<>
+
 ```sh
 curl https://api.nerdsletter.net/cancellations
 [output] Unauthorized
 ```
+</>
 
 This is because the Nerdsletter API requires an `Authorization` header. More specifically, you must pass a bearer token of `ABC123` to gain authorized access to its data. If you make a request to the service with the header `Authorization: Bearer ABC123`, you'll get a successful response with the mocked cancellation data:
+
+<>
 
 ```sh
 curl https://api.nerdsletter.net/cancellations -H 'Authorization: Bearer ABC123'
 [output] {"a": 15, "b": 78}
 ```
+</>
 
 In the last lesson, you used `NerdGraph` to store this API token in your New Relic One application's `NerdStorageVault` data store. You also passed the token to your `TotalCancellations` component and logged its use to your browser's console. In this lesson, you follow up that log statement with a real request to the Nerdsletter API using your authorization token. Then, you supply the data from that external resource to your **Total cancellations per version** chart.
 
@@ -40,9 +46,12 @@ In the last lesson, you used `NerdGraph` to store this API token in your New Rel
 
 Change to the _third-party-services/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/third-party-services/ab-test
 ```
+</>
 
 This directory contains the code that we expect your application to have at this point in the course. By navigating to the correct directory at the start of each lesson, you leave your custom code behind, thereby protecting yourself from carrying incorrect code from one lesson to the next.
 
@@ -51,6 +60,8 @@ This directory contains the code that we expect your application to have at this
 <Step>
 
 In nerdlets/ab-test-nerdlet/total-cancellations.js, make a request to `api.nerdsletter.net` with your API token. Save the results to state, and use that state in `render()`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/total-cancellations.js lineHighlight=9,14-42,46-70,79
 import React from 'react';
@@ -136,6 +147,7 @@ export default class TotalCancellations extends React.Component {
     }
 }
 ```
+</>
 
 In this code, you initialize `TotalCancellations.state.cancellations` with zero for the y-value in each series instead of the previously hardcoded values. This helps to more realistically represent what the chart should show if your New Relic One app hasn't successfully requested data from the Nerdsletter API. Next, you use Javascript's `fetch()` function to make an HTTP request to the Nerdsletter API. You then pass your token in the request's `Authorization` header. If the request is successful, you update the cancellation data in `TotalCancellations.state` so that that data is reflected in the component's render method.
 
@@ -151,9 +163,12 @@ Navigate to the root of your Nerdpack at _nru-programmability-course/third-party
 
 Generate a new UUID for your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid -gf
 ```
+</>
 
 Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account. It also allows your app to make Nerdgraph requests on behalf of your account.
 
@@ -163,9 +178,12 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 [Serve your application locally](/build-apps/publish-deploy/serve):
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 </Step>
 

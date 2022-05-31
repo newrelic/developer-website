@@ -28,9 +28,12 @@ In the design guide, there is a line graph under each of the tables you created 
 
 Change to the _add-a-chart-group/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/add-a-chart-group/ab-test
 ```
+</>
 
 </Step>
 
@@ -38,15 +41,20 @@ cd nru-programmability-course/add-a-chart-group/ab-test
 
 In _nerdlets/ab-test-nerdlet_, add a new Javascript file named _page-views.js_:
 
+<>
+
 ```sh
 touch page-views.js
 ```
+</>
 
 </Step>
 
 <Step>
 
 In this new file, create a component called `VersionPageViews` to hold a `LineChart`, which shows the number of times a page is viewed:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/page-views.js
 import React from 'react';
@@ -77,6 +85,7 @@ export default class VersionPageViews extends React.Component {
     }
 }
 ```
+</>
 
 Notice the new attribute in the series' `metadata` fields: `units_data`. This attribute describes the unit type for a specified data axis. In this case, you set the unit type for the y axis to `'MS'`, which stands for milliseconds. Other options for unit types, include: `'PERCENTAGE'`, `'TIMESTAMP'`, and `'BYTES_PER_SECOND'`.
 
@@ -85,6 +94,8 @@ Notice the new attribute in the series' `metadata` fields: `units_data`. This at
 <Step>
 
 In your Nerdlet's _index.js_ file, import your new component and update your Nerdlet's `render()` method:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=6,17-18
 import React from 'react';
@@ -111,12 +122,15 @@ export default class AbTestNerdletNerdlet extends React.Component {
 }
 
 ```
+</>
 
 </Step>
 
 <Step>
 
 In _index.js_, import `ChartGroup` from `nr1` and group your `VersionPageViews`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=2,18-21
 import React from 'react';
@@ -146,6 +160,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
 }
 
 ```
+</>
 
 Because the tables are conceptually related, as they show contrasting performance metrics over the same timeslice, it makes sense to group them in a `ChartGroup`. This means that the two charts behave synchronously. For example, when you hover over one chart, the other chart shows a hover indicator at the same x coordinate.
 
@@ -161,9 +176,12 @@ Navigate to the root of your Nerdpack at `nru-programmability-course/add-a-chart
 
 Generate a new UUID for your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid -gf
 ```
+</>
 
 Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
@@ -173,9 +191,12 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 [Serve your application locally](/build-apps/publish-deploy/serve):
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 </Step>
 

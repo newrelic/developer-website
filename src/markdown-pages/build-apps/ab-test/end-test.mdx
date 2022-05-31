@@ -32,24 +32,33 @@ This new section has three main components:
 
 Change to the _add-end-test-section/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/add-end-test-section/ab-test
 ```
+</>
+
 </Step>
 
 <Step>
 
 In _nerdlets/ab-test-nerdlet_, add a new Javascript file named _end-test.js_:
 
+<>
+
 ```sh
 touch end-test.js
 ```
+</>
 
 </Step>
 
 <Step>
 
 In this new file, create a `VersionSelector` component to encapsulate a `Select` and its `SelectItem` child components:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js
 import React from 'react';
@@ -64,6 +73,7 @@ class VersionSelector extends React.Component {
     }
 }
 ```
+</>
 
 `VersionSelector` renders a `Select` component with two choices. In each `SelectItem`, you specify a `value` prop. In this case, you use `'A'` to represent version A and `'B'` to represent version B.
 
@@ -72,6 +82,8 @@ class VersionSelector extends React.Component {
 <Step>
 
 Create another component for a `Button` you'll use to make your test as ended:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=2,13-19
 import React from 'react';
@@ -95,6 +107,8 @@ class EndTestButton extends React.Component {
 }
 ```
 
+</>
+
 This looks trivial, but it will encapsulate button logic as you iterate on your app code.
 
 </Step>
@@ -102,6 +116,8 @@ This looks trivial, but it will encapsulate button logic as you iterate on your 
 <Step>
 
 Create a final component for the entire section you'll use to mark the end of your test:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=4-6,28-44
 import React from 'react';
@@ -150,6 +166,8 @@ export default class EndTestSection extends React.Component {
 }
 ```
 
+</>
+
 Here, you create a `Grid` with three items. First, you create a `GridItem` that contains a `HeadingText` and spans all 12 columns. In the next row, you have two items:
 
 - The `VersionSelector` component you created in the previous step
@@ -162,6 +180,8 @@ These items each span one column, but instead of using `columnSpan`, they use a 
 <Step>
 
 In your Nerdlet's _index.js_ file, add `EndTestSection` to your Nerdlet:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=3,45
 import React from 'react';
@@ -215,6 +235,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
     }
 }
 ```
+</>
 
 </Step>
 
@@ -228,9 +249,12 @@ Navigate to the root of your Nerdpack at `nru-programmability-course/add-end-tes
 
 Generate a new UUID for your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid -gf
 ```
+</>
 
 Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
@@ -240,9 +264,12 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 [Serve your application locally](/build-apps/publish-deploy/serve):
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 </Step>
 

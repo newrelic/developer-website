@@ -41,9 +41,12 @@ To input your authorization token, you'll use a `Modal` with a `TextField`. The 
 
 Change to the _add-nerdstoragevault/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/add-nerdstoragevault/ab-test
 ```
+</>
 
 This directory contains the code that we expect your application to have at this point in the course. By navigating to the correct directory at the start of each lesson, you leave your custom code behind, thereby protecting yourself from carrying incorrect code from one lesson to the next.
 
@@ -52,6 +55,8 @@ This directory contains the code that we expect your application to have at this
 <Step>
 
 In your Nerdlet's _index.js_ file, initialize `state` in `AbTestNerdletNerdlet` with a `null` token default:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=17-23
 import React from 'react';
@@ -126,6 +131,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
     }
 }
 ```
+</>
 
 Your Nerdlet uses this `token` state to manage the authorization token you'll later pass to the third-party service. However, a component's `state` is not a long-term solution for data management. For that, you need `NerdStorageVault`.
 
@@ -134,6 +140,8 @@ Your Nerdlet uses this `token` state to manage the authorization token you'll la
 <Step>
 
 Implement a method, called `storeToken()`, which mutates NerdStorageVault data, and bind that method to the `AbTestNerdletNerdlet` instance:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=2-7,29,32-60
 import React from 'react';
@@ -245,6 +253,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
     }
 }
 ```
+</>
 
 When you call `storeToken()` with a new token value, your Nerdlet uses `NerdGraph` APIs to mutate `NerdStorageVault` data for the `api_token` key. If the request to `NerdGraph` is successful, `storeToken()` updates `state.token` so that the new token is locally accessible.
 
@@ -267,6 +276,8 @@ It's important to remember that `NerdStorageVault` is limited to the user scope.
 <Step>
 
 First, create methods and `state` to show and hide your API token prompt:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=26,31-32,65-71
 import React from 'react';
@@ -389,6 +400,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
     }
 }
 ```
+</>
 
 `state.hideTokenPrompt` determines whether or not the prompt is visible. Now, you need a mechanism for revealing the prompt, which is hidden by default.
 
@@ -397,6 +409,8 @@ export default class AbTestNerdletNerdlet extends React.Component {
 <Step>
 
 Query NerdStorageVault for your `api_token`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=7,74-109
 import React from 'react';
@@ -557,6 +571,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
     }
 }
 ```
+</>
 
 Here, in `componentDidMount()`, you've queried `NerdGraph` for your `api_token` data. `componentDidMount()` is a React lifecycle method that's called when your component is mounted in the component tree. This means that early in it's setup process, your application will request your `api_token`.
 
@@ -576,15 +591,20 @@ This is great for storing an initial token, but what if you enter the wrong toke
 
 In _nerdlets/ab-test-nerdlet_, add a new Javascript file named _token-prompt.js_:
 
+<>
+
 ```sh
 touch token-prompt.js
 ```
+</>
 
 </Step>
 
 <Step>
 
 In this new file, create a button that allows you to enter a new token on demand:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/token-prompt.js
 import React from 'react';
@@ -602,6 +622,7 @@ class ApiTokenButton extends React.Component {
     }
 }
 ```
+</>
 
 `ApiTokenButton` receives `showPrompt()` in its props and calls that method when its `Button` is clicked.
 
@@ -610,6 +631,8 @@ class ApiTokenButton extends React.Component {
 <Step>
 
 Create a token prompt using a `Modal` with a `TextField`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/token-prompt.js lineHighlight=2-6,20-76
 import React from 'react';
@@ -689,6 +712,7 @@ class ApiTokenPrompt extends React.Component {
     }
 }
 ```
+</>
 
 `ApiTokenPrompt` renders a `Modal` with a `TextField`, a `Button`, and an explanatory prompt. You use the `Modal` to enter your API token. It also provides basic error handling if you try to submit the form with no token value.
 
@@ -704,6 +728,8 @@ You also implemented a few methods to improve the user experience:
 <Step>
 
 Export your components, so you can use them in your Nerdlet:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/token-prompt.js lineHighlight=78
 import React from 'react';
@@ -785,12 +811,15 @@ class ApiTokenPrompt extends React.Component {
 
 export { ApiTokenButton, ApiTokenPrompt }
 ```
+</>
 
 </Step>
 
 <Step>
 
 In your Nerdlet's _index.js_ file, import `ApiTokenButton` and `ApiTokenPrompt` and add them to `render()`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=17,114-119,162-164
 import React from 'react';
@@ -962,6 +991,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
     }
 }
 ```
+</>
 
 </Step>
 
@@ -975,9 +1005,12 @@ Navigate to the root of your Nerdpack at _nru-programmability-course/add-nerdsto
 
 Generate a new UUID for your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid -gf
 ```
+</>
 
 Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account. It also allows your app to make Nerdgraph requests on behalf of your account.
 
@@ -987,9 +1020,12 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 [Serve your application locally](/build-apps/publish-deploy/serve):
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 </Step>
 
@@ -1026,6 +1062,8 @@ If something doesn't work, use your browser's debug tools to try to identify the
 <Step>
 
 In _index.js_, pass the API token to `TotalCancellations` so you're prepared to make a request to the third-party service:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=137-139
 import React from 'react';
@@ -1199,12 +1237,15 @@ export default class AbTestNerdletNerdlet extends React.Component {
     }
 }
 ```
+</>
 
 </Step>
 
 <Step>
 
 In _total-cancellations.js_, log the token to your browser console:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/total-cancellations.js lineHighlight=5-11,13-18
 import React from 'react';
@@ -1258,6 +1299,7 @@ export default class TotalCancellations extends React.Component {
     }
 }
 ```
+</>
 
 Here, you've implemented another React lifecycle method, called `componentDidUpdate()`. Now, every time your Nerdlet's `state.token` changes, `TotalCancellations` gets a new token prop, which triggers `componentDidUpdate()`. In `componentDidUpdate()`, you check that the incoming token is not the same as the last token it knew about, which is stored in local state. If the incoming token is different, you log a message with the new token and update `state.lastToken`.
 

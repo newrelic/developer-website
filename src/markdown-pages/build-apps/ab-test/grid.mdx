@@ -32,15 +32,20 @@ Once you’ve planned out how you’re going to arrange your columns, you can wr
 
 Change to the _add-a-grid/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/add-a-grid/ab-test
 ```
+</>
 
 </Step>
 
 <Step>
 
 In your Nerdlet's _index.js_ file, import `Grid` and `GridItem`. Then, update your Nerdlet's `render()` method by placing each chart in a `GrildItem`. Finally, place all your items in a `Grid`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/index.js lineHighlight=2,13-28
 import React from 'react';
@@ -75,6 +80,7 @@ export default class AbTestNerdletNerdlet extends React.Component {
     }
 }
 ```
+</>
 
 The `columnSpan` for each chart matches the layout plan. Every chart that takes up half the 12-column row has a `columnSpan` of _6_, and every chart that takes up the whole row has a `columnSpan` of _12_. Notice that each of the charts in the `ChartGroup`, but not the `ChartGroup` itself, is in a `GridItem`. A `ChartGroup` connects charts' behaviors, not their locations.
 
@@ -100,9 +106,12 @@ Navigate to the root of your Nerdpack at `nru-programmability-course/add-a-grid/
 
 Generate a new UUID for your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid -gf
 ```
+</>
 
 Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
@@ -112,9 +121,12 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 [Serve your application locally](/build-apps/publish-deploy/serve):
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 </Step>
 
