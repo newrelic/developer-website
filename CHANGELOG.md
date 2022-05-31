@@ -1,3 +1,10 @@
+## [1.87.1](https://github.com/newrelic/developer-website/compare/v1.87.0...v1.87.1) (2022-05-31)
+
+
+### Bug Fixes
+
+* updated terraform version information ([d749d10](https://github.com/newrelic/developer-website/commit/d749d10b17cb429fd00e2fd8d61ea52d178d2430))
+
 # [1.87.0](https://github.com/newrelic/developer-website/compare/v1.86.2...v1.87.0) (2022-05-25)
 
 
