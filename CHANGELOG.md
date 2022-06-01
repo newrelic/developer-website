@@ -1,3 +1,11 @@
+## [1.87.2](https://github.com/newrelic/developer-website/compare/v1.87.1...v1.87.2) (2022-06-01)
+
+
+### Bug Fixes
+
+* updated screenshots for nerdpack ([d445466](https://github.com/newrelic/developer-website/commit/d445466b4d846af650d81009e9414986d834e81c))
+* updated screenshots for nerdpack at multiple places ([4ed4202](https://github.com/newrelic/developer-website/commit/4ed4202085653e60b8778203865b024da1777f17))
+
 ## [1.87.1](https://github.com/newrelic/developer-website/compare/v1.87.0...v1.87.1) (2022-05-31)
 
 
