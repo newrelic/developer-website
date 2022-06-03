@@ -12,7 +12,7 @@ const BREAKPOINTS = {
 
 const ALLOWED_HEADINGS = ['h2', 'h3', 'h4'];
 
-const TutorialStep = ({ children, stepNumber, totalSteps }) => {
+const TutorialStep = ({ children, stepNumber, totalSteps, withColumns }) => {
   const pageLayout = usePageLayout();
 
   children = Children.toArray(children);
@@ -50,7 +50,11 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
         }
       `}
     >
-      <StepCounter stepNumber={stepNumber} total={totalSteps} />
+      <StepCounter
+        stepNumber={stepNumber}
+        total={totalSteps}
+        withColumns={withColumns}
+      />
       {title}
       {columns.map((column, idx) => {
         return Array.isArray(column) ? (
@@ -58,7 +62,9 @@ const TutorialStep = ({ children, stepNumber, totalSteps }) => {
             key={idx}
             css={css`
               display: grid;
-              grid-template-columns: repeat(2, calc(50% - 0.5rem));
+              grid-template-columns: ${withColumns
+                ? 'repeat(2,calc(50% - 0.5rem))'
+                : 'minmax(0, 1fr)'};
               grid-gap: 1rem;
 
               &:not(:last-child) {
@@ -85,6 +91,7 @@ TutorialStep.propTypes = {
   children: PropTypes.node,
   stepNumber: PropTypes.number.isRequired,
   totalSteps: PropTypes.number.isRequired,
+  withColumns: PropTypes.bool,
 };
 
 const StepCounter = ({ className, stepNumber, total }) => (
