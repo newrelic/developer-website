@@ -29,9 +29,12 @@ To supply information to the catalog about your app, you need to create the _cat
 
 Change to the _describe-app/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/describe-app/ab-test
 ```
+</>
 
 </Step>
 
@@ -39,9 +42,12 @@ cd nru-programmability-course/describe-app/ab-test
 
 Create the _catalog_ directories:
 
+<>
+
 ```sh
 nr1 create --type catalog
 ```
+</>
 
 This creates a root _catalog_ directory with template files for inputting custom information about your app and a _catalog_ directory for each Nerdpack item where screenshots can be stored.
 
@@ -57,6 +63,8 @@ Read [our documentation](/build-apps/publish-deploy#add-images-and-metadata-to-y
 
 Update _catalog/documentation.md_:
 
+<>
+
 ```md fileName=catalog/documentation.md
 ## Documentation
 
@@ -66,6 +74,7 @@ It also presents an button to end the test, which saves the date and version des
 
 We can use this app for future A/B tests as well!
 ```
+</>
 
 For this course, you're keeping the documentation concise by merely describing what the app does. In your own projects, you might also include instructions for contributing to the project in an open source context, installing the app's dependencies, or anything else that might help a user navigate complexities in your app or code.
 
@@ -74,6 +83,8 @@ For this course, you're keeping the documentation concise by merely describing w
 <Step>
 
 Update _catalog/config.json_:
+
+<>
 
 ```json fileName=catalog/config.json
 {
@@ -96,6 +107,7 @@ Update _catalog/config.json_:
   }
 }
 ```
+</>
 
 Here, you've specified a tagline, project details, the Instant Observability category in which to place the app, search keywords, the source code repository, and a short list of everything included in the initial release. In other projects, you might also add a support email or support links.
 

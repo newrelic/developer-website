@@ -20,9 +20,12 @@ Publish your Nerdpack, whether it's still in development, ready for testing, or 
 
 Before you run any commands, ensure that you have the latest version of the CLI:
 
+<>
+
 ```sh
 nr1 update
 ```
+</>
 
 ## Check your permissions
 
@@ -34,6 +37,8 @@ When you publish your Nerdpack, it's registered with the Instant Observability c
 ## Update your package version
 
 You can only publish a package version to the Instant Observabiltiy catalog one time. For example, you can't publish two instances of version _1.0.0_. So, each time you want to deploy a new version of your code, you need to increment its version in the Nerdpack's _package.json_ file:
+
+<>
 
 ```json fileName=package.json lineHighlight=4
 {
@@ -55,6 +60,7 @@ You can only publish a package version to the Instant Observabiltiy catalog one 
   "browserslist": ["last 2 versions", "not ie < 11", "not dead"]
 }
 ```
+</>
 
 <Callout variant="tip">
 
@@ -66,6 +72,8 @@ Nerdpack versions follow semantic versioning. Read the [documentation](https://s
 
 If you built your Nerdpack from scratch with `nr1 create --type nerdpack`, then your Nerdpack has a unique identifier. Find this identifier in the root directory's _nr1.json_ file:
 
+<>
+
 ```json fileName=nr1.json lineHighlight=3
 {
   "schemaType": "NERDPACK",
@@ -74,6 +82,8 @@ If you built your Nerdpack from scratch with `nr1 create --type nerdpack`, then 
   "description": "Nerdpack demo-app"
 }
 ```
+
+</>
 
 This ID must be unique to your Nerdpack when you publish it to the catalog. The platform will reject your Nerdpack if it recognizes the ID. So, if you cloned an existing Nerdpack or are otherwise using open source code, generate a new UUID:
 
@@ -85,9 +95,12 @@ nr1 nerdpack:uuid --generate --force
 
 Read the [`nr1 nerdpack:uuid`](/explore-docs/nr1-nerdpack#nr1-nerdpackuuid) documentation to learn more. Or, view the `nr1` help page:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid --help
 ```
+</>
 
 </Callout>
 
@@ -99,16 +112,22 @@ nr1 nerdpack:uuid --help
 
 In the root folder of your Nerdpack, run `nr1 nerdpack:publish`:
 
+<>
+
 ```sh
 nr1 nerdpack:publish
 ```
+</>
 
 If you've successfully published your Nerdpack, you should see some success output, including:
+
+<>
 
 ```sh
 [output] {green}✔{normal}  Nerdpack published successfully!
 [output] {green}✔{normal}  Tagged {purple}ab123c45-678d-9012-efg3-45hi6jkl7890{normal} version {blue}1.0.0{normal} as {blue}STABLE{normal}.
 ```
+</>
 
 This output describes the published Nerdpack. First, it states the Nerdpack's ID (`ab123c45-678d-9012-efg3-45hi6jkl7890`). Then, its version (`1.0.0`). Finally, its version tag (`STABLE`).
 
@@ -122,21 +141,30 @@ Read our [tag guide](/build-apps/publish-deploy/tag) to learn more.
 
 Use the `-t` or `--tag` option to publish your Nerdpack with a tag:
 
+<>
+
 ```sh
 nr1 nerdpack:publish --tag DEV
 ```
+</>
 
 As you saw in the `nr1 nerdpack:publish` output, if you don't pass a tag, `nr1` applies the `STABLE` tag automatically. However, you can tell it to not apply any tags to a release with the `-T` or `--skip-tag` option:
+
+<>
 
 ```sh
 nr1 nerdpack:publish --skip-tag
 ```
+</>
 
 You can also perform a dry run to make sure you publish your Nerdpack the way you want to:
+
+<>
 
 ```sh
 nr1 nerdpack:publish --dry-run
 ```
+</>
 
 </Step>
 
@@ -152,11 +180,11 @@ Because you're going to view a published Nerdpack, rather than a locally served 
 
 <Step>
 
-Navigate to **Instant Observability**:
+Navigate to **Add data** in the top navigation bar:
 
-![Navigate to Instant Observability](../../../images/serve-publish-subscribe/nav-to-io.png)
+![Navigate to Add data](../../../images/serve-publish-subscribe/nav-to-io.png)
 
-Whether you published a New Relic One application or a custom visualization, you'll find your project under **Instant Observability**.
+Whether you published a New Relic One application or a custom visualization, you'll find your project here.
 
 </Step>
 
@@ -184,28 +212,39 @@ Sometimes, when you publish your Nerdpack, you may come across issues. Whether y
 
 When you attempt to publish your Nerdpack, carefully read the output of your `nr1` command. You may receive success output, including:
 
+<>
+
 ```sh
 [output] {green}✔{normal}  Nerdpack published successfully!
 [output] {green}✔{normal}  Tagged {purple}ab123c45-678d-9012-efg3-45hi6jkl7890{normal} version {blue}1.0.0{normal} as {blue}STABLE{normal}.
 ```
+</>
 
 However, the output may show some errors in your Nerdpack instead. For example:
+
+<>
 
 ```sh
 [output] Publishing Nerdpack DemoApp ({purple}ab123c45-678d-9012-efg3-45hi6jkl7890{normal})
 [output] {error}›{normal}   Error: There is already a Nerdpack with given id & version.
 [output] {error}›{normal}   Code: 409
 ```
+</>
 
 It may also help you to view more verbose output. Use the `--verbose` command to show more content:
+
+<>
 
 ```sh
 nr1 nerdpack:publish --verbose
 ```
+</>
 
 ## Reveal your published Nerdpack information
 
 If you don't find your Nerdpack in New Relic, it may not be tagged. Remember, at least one version of your published Nerdpack must have a tag for it to show on the **Apps** page. See more information about your published Nerdpack with `nr1 nerdpack:info`:
+
+<>
 
 ```sh
 nr1 nerdpack:info
@@ -220,12 +259,16 @@ nr1 nerdpack:info
 [output] -------  -----------  ----
 [output] 1.0.0    {muted}3 hours ago
 ```
+</>
 
 In this example, there is one published version, but it isn't tagged. You can tag a published version with:
+
+<>
 
 ```sh
 nr1 nerdpack:tag --from-version=1.0.0 --tag=DEV
 ```
+</>
 
 Now, if you refresh your browser page, you should see your Nerdpack on **Apps**.
 

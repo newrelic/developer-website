@@ -52,17 +52,9 @@ When the tag you've subscribed to gets an update, New Relic updates your Nerdpac
 
 <Step>
 
-Go to [New Relic](https://one.newrelic.com):
+From [New Relic](https://one.newrelic.com) homepage, navigate to **Add data** in the top navigation bar:
 
-![Homepage](../../../images/serve-publish-subscribe/home.png)
-
-</Step>
-
-<Step>
-
-Navigate to **Instant Observability**:
-
-![Navigate to the Instant Observability](../../../images/serve-publish-subscribe/nav-to-io.png)
+![Navigate to the Add data](../../../images/serve-publish-subscribe/nav-to-io.png)
 
 </Step>
 
@@ -72,9 +64,9 @@ Find your published Nerdpack using the apps filter or search bar:
 
 ![Published Nerdpack](../../../images/serve-publish-subscribe/published-app.png)
 
-All published Nerdpacks are shown in the Instant Observability catalog. However, the one you're looking for maybe filtered out. Adjust the filter to find the Nerdpack you're looking for:
+All published Nerdpacks are shown here. However, the one you're looking for maybe filtered out. Adjust the filter to find the Nerdpack you're looking for:
 
-![Filter the Instant Observability catalog](../../../images/build-an-app/io-filter.png)
+![Navigate to Apps & Visualizations](../../../images/serve-publish-subscribe/nav-to-app-vis.png)
 
 </Step>
 
@@ -82,7 +74,7 @@ All published Nerdpacks are shown in the Instant Observability catalog. However,
 
 Select the Nerdpack you want to add to your New Relic account:
 
-![Select a Nerdpack](../../../images/serve-publish-subscribe/select-account-maturity-app.png)
+![Select a Nerdpack](../../../images/serve-publish-subscribe/select-account-maturity.png)
 
 </Step>
 
@@ -136,9 +128,12 @@ If you've published your own Nerdpack, it may be quicker to subscribe to your Ne
 
 Navigate to your Nerdpack's root directory:
 
+<>
+
 ```sh
 cd my-awesome-nerdpack
 ```
+</>
 
 For simplicity, this guide refers to your Nerdpack as `my-awesome-nerdpack`.
 
@@ -147,6 +142,8 @@ For simplicity, this guide refers to your Nerdpack as `my-awesome-nerdpack`.
 <Step>
 
 Ensure that your Nerdpack was published and tagged:
+
+<>
 
 ```sh
 nr1 nerdpack:info
@@ -161,6 +158,7 @@ nr1 nerdpack:info
 [output] -------  -----------------  ------
 [output] 1.0.0    {muted}a few seconds ago  {green}STABLE
 ```
+</>
 
 You should see at least one [published](/build-apps/publish-deploy/publish) version with a [tag](/build-apps/publish-deploy/tag). It doesn't have to be `STABLE`. You can subscribe to any tagged version.
 
@@ -170,10 +168,13 @@ You should see at least one [published](/build-apps/publish-deploy/publish) vers
 
 Subscribe to your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:subscribe --channel=STABLE
 [output] Subscribed account {green}1234567{normal} to the nerdpack {purple}ab123c45-678d-9012-efg3-45hi6jkl7890{normal} on the {green}STABLE{normal} channel
 ```
+</>
 
 Here, you've subscribed to the `STABLE` tag. You can also subscribe to `DEV` and `BETA` tags from the CLI, but the subscription command doesn't allow for arbitrary tags. To subscribe to any other tagged version, you need to use the web UI.
 
@@ -185,9 +186,12 @@ Similar to the web UI, the term **channel** `nr1 nerdpack:subscribe` is a refere
 
 Read the [`nr1 subscription:set`](/explore-docs/nr1-subscription#nr1-subscriptionset) documentation to learn more. Or, view the `nr1` help page:
 
+<>
+
 ```sh
 nr1 subscription:set --help
 ```
+</>
 
 </Callout>
 
@@ -203,15 +207,7 @@ Unsubscribe from a Nerdpack to remove it from your account.
 
 <Step>
 
-Go to [New Relic](https://one.newrelic.com):
-
-![Homepage](../../../images/serve-publish-subscribe/home.png)
-
-</Step>
-
-<Step>
-
-Navigate to **Apps**:
+From [New Relic](https://one.newrelic.com), navigate to **Apps** in top navigation bar:
 
 ![Navigate to the Apps page](../../../images/serve-publish-subscribe/nav-to-apps.png)
 
@@ -255,15 +251,20 @@ Quickly unsubscribe your CLI profile from Nerdpacks.
 
 Navigate to your Nerdpack's root directory:
 
+<>
+
 ```sh
 cd my-awesome-nerdpack
 ```
+</>
 
 </Step>
 
 <Step>
 
 View your profile's subscriptions:
+
+<>
 
 ```sh
 nr1 subscription:list
@@ -272,6 +273,7 @@ nr1 subscription:list
 [output] -------  ------------------------------------  ----------------  -----------  -------
 [output] 0.6.4    {purple}384de6e5-8e57-4d56-9d13-299ee7ae8641{normal}  Account Maturity  {muted}a month ago{normal}  2774472
 ```
+</>
 
 </Step>
 
@@ -279,10 +281,13 @@ nr1 subscription:list
 
 Unsubscribe from the Nerdpack with the UUID:
 
+<>
+
 ```sh
 nr1 nerdpack:unsubscribe --nerdpack-id=384de6e5-8e57-4d56-9d13-299ee7ae8641
 [output] Unsubscribed account {green}1234567{normal} from the nerdpack {purple}384de6e5-8e57-4d56-9d13-299ee7ae8641{normal} on the {green}STABLE{normal} channel.
 ```
+</>
 
 <Callout variant="tip">
 
@@ -290,9 +295,12 @@ nr1 nerdpack:unsubscribe --nerdpack-id=384de6e5-8e57-4d56-9d13-299ee7ae8641
 
 Read the [`nr1 subscription:unset`](/explore-docs/nr1-subscription#nr1-subscriptionunset) documentation to learn more. Or, view the `nr1` help page:
 
+<>
+
 ```sh
 nr1 subscription:unset --help
 ```
+</>
 
 </Callout>
 
@@ -308,6 +316,8 @@ Sometimes, when you subscribe to a Nerdpack, you may run into issues. Whether yo
 
 When you subscribe to an Nerdpack, you choose a specific tag. So, if the Nerdpack you're trying to subscribe to isn't tagged, or doesn't have the tag you're targeting, [tag](/build-apps/publish-deploy/tag) your release version:
 
+<>
+
 ```sh
 nr1 nerdpack:subscribe --channel=DEV
 [output] {error}›{normal}   Error: Nerdpack {purple}ab123c45-678d-9012-efg3-45hi6jkl7890{normal} is not deployed to channel {green}DEV{normal}. You have to deploy it first
@@ -319,14 +329,18 @@ nr1 nerdpack:tag --tag=DEV
 nr1 nerdpack:subscribe --channel=DEV
 [output] Subscribed account {green}1234567{normal} to the nerdpack {purple}ab123c45-678d-9012-efg3-45hi6jkl7890{normal} on the {green}DEV{normal} channel.
 ```
+</>
 
 If you subscribe without a `--channel` argument, the default channel is `STABLE`, so make sure you have a `STABLE` version in this case:
+
+<>
 
 ```sh
 nr1 nerdpack:subscribe
 [output] {error}›{normal}   Error: Nerdpack {purple}ab123c45-678d-9012-efg3-45hi6jkl7890{normal} is not deployed to channel {green}STABLE{normal}. You have to deploy it first
 [output] {error}›{normal}   Code: PACKAGE_NOT_DEPLOYED
 ```
+</>
 
 ### Subscribe with the web UI
 
@@ -334,11 +348,14 @@ When you subscribe with the CLI, you pass a `--channel` argument to select a tag
 
 However, while the terms are synonymous, using `--channel` is limited in the CLI. When you subscribe with a `--channel`, you can only choose between `DEV`, `BETA`, and `STABLE`. So, to subscribe to a different tag, use the web UI:
 
+<>
+
 ```sh
 nr1 nerdpack:subscribe --channel=QA
 [output] {error}›{normal}   Error: Expected --channel=QA to be one of: {green}DEV{normal}, {green}BETA{normal}, {green}STABLE
 [output] {error}›{normal}   See more help with --help
 [output] {error}›{normal}   Code: UNKNOWN
 ```
+</>
 
 ![Subscribe to QA on the web](../../../images/serve-publish-subscribe/subscribe-to-qa-channel.png)

@@ -1,3 +1,18 @@
+## [1.87.2](https://github.com/newrelic/developer-website/compare/v1.87.1...v1.87.2) (2022-06-01)
+
+
+### Bug Fixes
+
+* updated screenshots for nerdpack ([d445466](https://github.com/newrelic/developer-website/commit/d445466b4d846af650d81009e9414986d834e81c))
+* updated screenshots for nerdpack at multiple places ([4ed4202](https://github.com/newrelic/developer-website/commit/4ed4202085653e60b8778203865b024da1777f17))
+
+## [1.87.1](https://github.com/newrelic/developer-website/compare/v1.87.0...v1.87.1) (2022-05-31)
+
+
+### Bug Fixes
+
+* updated terraform version information ([d749d10](https://github.com/newrelic/developer-website/commit/d749d10b17cb429fd00e2fd8d61ea52d178d2430))
+
 # [1.87.0](https://github.com/newrelic/developer-website/compare/v1.86.2...v1.87.0) (2022-05-25)
 
 

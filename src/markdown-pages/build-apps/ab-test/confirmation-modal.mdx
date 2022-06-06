@@ -33,9 +33,12 @@ Unfortunately, there are a few issues with the code and design for this section.
 
 Change to the _present-confirmation-modal/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/present-confirmation-modal/ab-test
 ```
+</>
 
 This directory contains the code your application should have at this point in the course. By navigating to the correct directory at the start of each lesson, you leave your custom code behind, thereby protecting yourself from carrying incorrect code from one lesson to the next.
 
@@ -44,6 +47,8 @@ This directory contains the code your application should have at this point in t
 <Step>
 
 In _nerdlets/ab-test-nerdlet/end-test.js_, update the `Button` to use the `DESTRUCTIVE` styling:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=27
 import React from 'react';
@@ -112,6 +117,7 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 <Callout variant="tip">
 
@@ -131,9 +137,12 @@ Navigate to the root of your Nerdpack at _nru-programmability-course/present-con
 
 Generate a new UUID for your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid -gf
 ```
+</>
 
 Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
@@ -143,9 +152,12 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 [Serve your application locally](/build-apps/publish-deploy/serve):
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 </Step>
 
@@ -162,6 +174,8 @@ Now you've styled your button to convey its destructive consequences, but that's
 <Step>
 
 Add a `Modal` to `EndTestButton`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=3,8,31-43
 import React from 'react';
@@ -246,6 +260,7 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 Your new modal contains a heading, a confirmation message, the winning design version, and two buttons. You'll explore some of these components later in this course.
 
@@ -272,6 +287,8 @@ In the following steps, you'll correct all three of these issues.
 <Step>
 
 In `EndTestButton`, initialize `state` with a value for `modalHidden`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=27-33
 import React from 'react';
@@ -364,6 +381,7 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 `modalHidden` determines whether or not to hide the modal. The default value of `modalHidden` is `true` because you only want to show the modal when you select **End test**.
 
@@ -372,6 +390,8 @@ export default class EndTestSection extends React.Component {
 <Step>
 
 Supply `modalHidden` to the `Modal`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=39
 import React from 'react';
@@ -465,6 +485,8 @@ export default class EndTestSection extends React.Component {
 }
 ```
 
+</>
+
 First, you've created a constructor to accept component props. This provides your component access to the `modalHidden` prop that you passed in `EndTestSection`. Then you provide the value of `modalHidden` to the `Modal` component's `hidden` prop.
 
 <Callout variant="tip">
@@ -478,6 +500,8 @@ Read more about `Modal` and its props on the [New Relic developer site](https://
 <Step>
 
 Add and bind two new methods to `EndTestSection`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=34-35,38-44
 import React from 'react';
@@ -581,6 +605,7 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 Use `closeModal` and `showModal` to close and show your modal, respectively, depending on how a user interacts with the modal.
 
@@ -589,6 +614,8 @@ Use `closeModal` and `showModal` to close and show your modal, respectively, dep
 <Step>
 
 Show the modal when you click **End test**:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=48
 import React from 'react';
@@ -693,6 +720,8 @@ export default class EndTestSection extends React.Component {
 }
 ```
 
+</>
+
 Here, you've supplied `showModal()` as the callback for the `Button` component's `onClick` event.
 
 Go back to [https://one.newrelic.com?nerdpacks=local](https://one.newrelic.com?nerdpacks=local), and view your changes.
@@ -704,6 +733,8 @@ The modal is hidden by default. Click **End test** to see the modal.
 <Step>
 
 Close the modal from the `Modal` component's `onClose` callback and from the **Yes, end test** and **No, continue test** buttons:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=50,60,61
 import React from 'react';
@@ -807,6 +838,7 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 Go back to [https://one.newrelic.com?nerdpacks=local](https://one.newrelic.com?nerdpacks=local), and view your changes.
 
@@ -825,6 +857,8 @@ Notice that the modal says you chose "Version A", even if you choose "Version B"
 <Step>
 
 In `EndTestSection`, pass `selectedVersion` to the `EndTestButton`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=96
 import React from 'react';
@@ -928,6 +962,7 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 Now, you can access the selected version from the `EndTestButton` component's props.
 
@@ -936,6 +971,8 @@ Now, you can access the selected version from the `EndTestButton` component's pr
 <Step>
 
 Use `selectedVersion` in your confirmation message:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/end-test.js lineHighlight=57
 import React from 'react';
@@ -1039,6 +1076,7 @@ export default class EndTestSection extends React.Component {
     }
 }
 ```
+</>
 
 Go back to [https://one.newrelic.com?nerdpacks=local](https://one.newrelic.com?nerdpacks=local), and view your changes.
 

@@ -28,9 +28,12 @@ There are several charts you need to create, which may seem overwhelming at firs
 
 Change to the _add-your-first-chart/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/add-your-first-chart/ab-test
 ```
+</>
 
 This directory contains the code your application should have at this point in the course. By navigating to the correct directory at the start of each lesson, you leave your custom code behind, thereby protecting yourself from carrying incorrect code from one lesson to the next.
 
@@ -40,15 +43,20 @@ This directory contains the code your application should have at this point in t
 
 In _nerdlets/ab-test-nerdlet_, add a new Javascript file named _newsletter-signups.js_:
 
+<>
+
 ```sh
 touch newsletter-signups.js
 ```
+</>
 
 </Step>
 
 <Step>
 
 In this new file, create a component called `NewsletterSignups` to hold your first `LineChart` and some mock data:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js
 import React from 'react';
@@ -93,6 +101,8 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
+</>
+
 Here, you’ve created two arbitrary data series which represent versions A and B of your test. Right now, you're using manually-crafted data points. In the future, you'll replace these with data queried from New Relic.
 
 Notice that you’ve specified a color for each series in the chart. The `color` metadata attribute takes any CSS-acceptable color format. Setting `viz: 'main'` means that you want to render the `LineChart` series as a line, the component's default display style. For the `data` prop in the `LineChart` component, you passed the two series in an array so that both are represented together. Finally, you used the chart’s `fullWidth` prop to stretch the chart’s width to fill the view.
@@ -128,9 +138,12 @@ Navigate to the root of your Nerdpack at _nru-programmability-course/add-your-fi
 
 Generate a new UUID for your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid -gf
 ```
+</>
 
 Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
@@ -140,9 +153,12 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 [Serve your application locally](/build-apps/publish-deploy/serve):
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 </Step>
 

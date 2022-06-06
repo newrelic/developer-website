@@ -86,21 +86,31 @@ Here, you can view and manually edit the query to fetch the data you need.
 
 Add a `WHERE` clause to filter subscription totals by `page_version`:
 
+<>
+
 ```sql
 SELECT count(*) FROM subscription WHERE page_version = 'a' SINCE 30 MINUTES AGO TIMESERIES
 ```
 
- Remove the `TIMESERIES` clause to fetch a count:
+</>
 
- ```sql
- SELECT count(*) FROM subscription WHERE page_version = 'a' SINCE 30 MINUTES AGO
- ```
+Remove the `TIMESERIES` clause to fetch a count:
 
- Modify the `SINCE` clause to see totals over the past week:
+<>
 
- ```sql
- SELECT count(*) FROM subscription WHERE page_version = 'a' SINCE 7 DAYS AGO
- ```
+```sql
+SELECT count(*) FROM subscription WHERE page_version = 'a' SINCE 30 MINUTES AGO
+```
+</>
+
+Modify the `SINCE` clause to see totals over the past week:
+
+<>
+
+```sql
+SELECT count(*) FROM subscription WHERE page_version = 'a' SINCE 7 DAYS AGO
+```
+</>
 
 Click **Run** and see the data visualized in a billboard chart instead of a line chart:
 
@@ -119,12 +129,15 @@ Click **Run** and see the data visualized in a billboard chart instead of a line
 
 Experiment with the Query builder to discover the four queries which pull the right data. In the end, you'll come up with the following four queries:
 
+<>
+
 ```sql
 SELECT count(*) FROM subscription WHERE page_version = 'a' SINCE 7 DAYS AGO
 SELECT count(*) FROM pageView WHERE page_version = 'a' SINCE 7 DAYS AGO
 SELECT count(*) FROM subscription WHERE page_version = 'b' SINCE 7 DAYS AGO
 SELECT count(*) FROM pageView WHERE page_version = 'b' SINCE 7 DAYS AGO
 ```
+</>
 
 <Callout variant="tip" title="technical detail">
 
@@ -146,9 +159,12 @@ Until now, you've provided every chart with a single query. Here, you have to pr
 
 Change to the _customize-nrql-data/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/customize-nrql-data/ab-test
 ```
+</>
 
 This directory contains the code that we expect your application to have at this point in the course. By navigating to the correct directory at the start of each lesson, you leave your custom code behind, thereby protecting yourself from carrying incorrect code from one lesson to the next.
 
@@ -157,6 +173,8 @@ This directory contains the code that we expect your application to have at this
 <Step>
 
 In your Nerdlet's _totals.js_ file, implement `constructor()` and the React lifecycle method `componentDidMount()` in `VersionTotals`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/totals.js
 import React from 'react';
@@ -228,6 +246,7 @@ export default class VersionTotals extends React.Component {
     }
 }
 ```
+</>
 
 <Callout variant="important">
 
@@ -237,15 +256,17 @@ Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [
 
 Here, you initialize your state in the component's constructor. The state has a single value, `tableData`, which holds series data and metadata for the `TableChart`. In [`componentDidMount()`](https://reactjs.org/docs/react-component.html#componentdidmount), you query the data that populates the data in this state.
 
- `componentDidMount()` is a React lifecycle method that is called when a component is mounted in the component tree. You use this method, instead of the constructor, to query data because your logic, which requests data from New Relic, introduces side effects and sets state values, neither of which you should do in the constructor.
+`componentDidMount()` is a React lifecycle method that is called when a component is mounted in the component tree. You use this method, instead of the constructor, to query data because your logic, which requests data from New Relic, introduces side effects and sets state values, neither of which you should do in the constructor.
 
- In `componentDidMount()`, you use `NrqlQuery` in a new way. First, you specified the `formatType` to `NrqlQuery.FORMAT_TYPE.RAW` because you're going to modify the data instead of supplying it directly to a chart Before, you used its JSX form in the `render()` method of a chart. Second, you called its `query()` method and handled the results in a `then()` callback, which logs them to the console.
+In `componentDidMount()`, you use `NrqlQuery` in a new way. First, you specified the `formatType` to `NrqlQuery.FORMAT_TYPE.RAW` because you're going to modify the data instead of supplying it directly to a chart Before, you used its JSX form in the `render()` method of a chart. Second, you called its `query()` method and handled the results in a `then()` callback, which logs them to the console.
 
- </Step>
+</Step>
 
 <Step>
 
 In your Nerdlet's _index.js_ file, create a constant called `ACCOUNT_ID` and pass it to `VersionTotals`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/ lineHighlight=12,36-41
 import React from 'react';
@@ -305,6 +326,8 @@ export default class AbTestNerdletNerdlet extends React.Component {
 }
 ```
 
+</>
+
 <Callout variant="important">
 
 Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
@@ -323,9 +346,12 @@ Navigate to the root of your Nerdpack at _nru-programmability-course/customize-n
 
 Generate a new UUID for your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid -gf
 ```
+</>
 
 Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
@@ -335,9 +361,12 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 [Serve your application locally](/build-apps/publish-deploy/serve):
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 Navigate to your app in [New Relic](https://one.newrelic.com?nerdpacks=local).
 
@@ -374,6 +403,8 @@ If something doesn't work, use these debug tools to try to identify the problem.
 <Step>
 
 In _totals.js_, store the query data in state:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/totals.js lineHighlight=40-42,52-54
 import React from 'react';
@@ -445,8 +476,11 @@ export default class VersionTotals extends React.Component {
     }
 }
 ```
+</>
 
 Pay close attention to the data you're accessing. The array indices are particularly important to get right. The subscription data should go to `state.tableData.data[0].count` because in `tableData`, it is the first element in the data array:
+
+<>
 
 ```json
 data: [
@@ -460,6 +494,7 @@ data: [
     },
 ],
 ```
+</>
 
 By similar logic, page view data should go to `state.tableData.data[1].count`.
 

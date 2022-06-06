@@ -20,6 +20,8 @@ In this series, you're building a full-fledged New Relic One application that in
 
 In past tutorials, you created charts to visualize your data, and you organized those charts so you can use and understand them. You also created a form in your app for ending your test once you're confident in the most effective version. Until now, though, you can't gauge which version is more effective because your charts have been showing mock data, such as:
 
+<>
+
 ```js
 const versionASignups = {
     metadata: {
@@ -38,6 +40,7 @@ const versionASignups = {
     ],
 }
 ```
+</>
 
 A chart's `data` prop is useful for supplying manually-crafted data like this or even reformatted third-party data. But for many of your charts, you want to show real-time New Relic data. For example, **Newsletter subscriptions by version** should show subscription data, which exists in New Relic's database, NRDB for short.
 
@@ -135,9 +138,12 @@ Next, you learn how to pass your NRQL query to your **Newsletter subscriptions p
 
 Change to the _add-nrql-components/ab-test_ directory of the [coursework repository](https://github.com/newrelic-experimental/nru-programmability-course):
 
+<>
+
 ```sh
 cd nru-programmability-course/add-nrql-components/ab-test
 ```
+</>
 
 This directory contains the code that we expect your application to have at this point in the course. By navigating to the correct directory at the start of each lesson, you leave your custom code behind, thereby protecting yourself from carrying incorrect code from one lesson to the next.
 
@@ -146,6 +152,8 @@ This directory contains the code that we expect your application to have at this
 <Step>
 
 In _nerdlets/ab-test-nerdlet/newsletter-signups.js_, update the `LineChart` in `NewsletterSignups`. Remove the mock data, and use the NRQL query you built in the Data explorer:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=2-6,8,16-25
 import React from 'react';
@@ -178,6 +186,8 @@ export default class NewsletterSignups extends React.Component {
 }
 ```
 
+</>
+
 <Callout variant="important">
 
 Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/account-id).
@@ -195,12 +205,16 @@ With these, your NR1 app can query the data you want to show in your chart.
 
 There is a convenience prop for using NRQL to supply data to your charts, called `query`. If you'd rather not use the `NrqlQuery` component, try the `query` prop instead:
 
+<>
+
 ```js
 <LineChart
     accountId={<YOUR NEW RELIC ACCOUNT ID>}
     query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
 />
 ```
+
+</>
 
 Keep in mind you must still supply the `accountId`.
 
@@ -218,9 +232,13 @@ Navigate to the root of your Nerdpack at _nru-programmability-course/add-nrql-co
 
 Generate a new UUID for your Nerdpack:
 
+<>
+
 ```sh
 nr1 nerdpack:uuid -gf
 ```
+
+</>
 
 Because you cloned the coursework repository that contained an existing Nerdpack, you need to generate your own unique identifier. This UUID maps your Nerdpack to your New Relic account.
 
@@ -230,9 +248,12 @@ Because you cloned the coursework repository that contained an existing Nerdpack
 
 [Serve your application locally](/build-apps/publish-deploy/serve):
 
+<>
+
 ```sh
 nr1 nerdpack:serve
 ```
+</>
 
 </Step>
 
@@ -261,6 +282,8 @@ If something doesn't work, use your browser's debug tools to try to identify the
 <Step>
 
 Add a `pollInterval`:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/newsletter-signups.js lineHighlight=19
 import React from 'react';
@@ -293,6 +316,7 @@ export default class NewsletterSignups extends React.Component {
     }
 }
 ```
+</>
 
 <Callout variant="important">
 
@@ -318,6 +342,8 @@ Now that you've seen how to passed New Relic data to **Newsletter subscriptions 
 <Step>
 
 In _nerdlets/ab-test-nerdlet/total-subscriptions.js_, update the `TestDistributions` component, removing the mock data and populating the `PieChart` with the same NRQL query you used for **Newsletter subscriptions per version** but with different `TIMESERIES` and `SINCE` clauses:
+
+<>
 
 ```js fileName=nerdlets/ab-test-nerdlet/total-subscriptions.js lineHighlight=2-6,8,16-26
 import React from 'react';
@@ -350,6 +376,8 @@ export default class TotalSubscriptions extends React.Component {
     }
 }
 ```
+
+</>
 
 <Callout variant="important">
 
@@ -406,6 +434,8 @@ Some of these charts need to show page view data. Fortunately, your demo applica
 
 In _page-views.js_, remove the mock data from `VersionPageViews` and use a `NrqlQuery` component to supply a query:
 
+<>
+
 ```js fileName=nerdlets/ab-test-nerdlet/page-views.js lineHighlight=2-6,8,16-26
 import React from 'react';
 import {
@@ -437,6 +467,7 @@ export default class VersionPageViews extends React.Component {
     }
 }
 ```
+</>
 
 <Callout variant="important">
 

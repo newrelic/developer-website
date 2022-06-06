@@ -24,16 +24,22 @@ When you build a New Relic One application, it's valuable to view it on the plat
 
 From inside the Nerdpack's root directory, serve your Nerdpack:
 
+<>
+
 ```bash
 nr1 nerdpack:serve
 ```
+</>
 
 When the Nerdpack has succeeded building and your application is ready to view, you'll see a message with a link to New Relic One:
+
+<>
 
 ```bash copyable=false
 [output] {green}✔{plain}  Server ready! Test it at: {purple}https://one.newrelic.com/?nerdpacks=local
 [output] {blue}↩{plain}  Server will reload automatically if you modify any file!
 ```
+</>
 
 Notice the appended query parameter `nerdpacks=local`. This query parameter tells New Relic to show locally served Nerdpacks.
 
