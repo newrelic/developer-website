@@ -1,1 +1,6 @@
-[]
+[
+    {
+      "url": "https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data",
+      "paths": ["/collect-data/collect-data-from-any-source"]
+    }
+  ]
