@@ -3,7 +3,7 @@
   url: '/collect-data'
   pages:
     - title: Collect data from any source
-      url: '/collect-data/collect-data-from-any-source'
+      url: https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data
     - title: Create custom attributes
       url: '/collect-data/custom-attributes'
     - title: Create custom New Relic events
