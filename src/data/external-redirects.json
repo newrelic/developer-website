@@ -3,4 +3,12 @@
       "url": "https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data",
       "paths": ["/collect-data/collect-data-from-any-source"]
     }
-  ]
+    {
+      "url": "https://docs.newrelic.com/docs/data-apis/custom-data/custom-events/report-custom-event-data",
+      "paths": ["/collect-data/custom-attributes"]
+    }
+    {
+      "url": "https://docs.newrelic.com/docs/data-apis/custom-data/custom-events/report-custom-event-data",
+      "paths": ["/collect-data/custom-events"]
+      }
+]
