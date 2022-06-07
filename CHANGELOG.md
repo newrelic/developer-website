@@ -1,3 +1,10 @@
+# [1.88.0](https://github.com/newrelic/developer-website/compare/v1.87.2...v1.88.0) (2022-06-07)
+
+
+### Features
+
+* **index.js:** fixed mobile layout ([8f6c728](https://github.com/newrelic/developer-website/commit/8f6c72857ec144d36a594381d34607ec239eaede))
+
 ## [1.87.2](https://github.com/newrelic/developer-website/compare/v1.87.1...v1.87.2) (2022-06-01)
 
 
