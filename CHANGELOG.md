@@ -1,3 +1,10 @@
+## [1.88.1](https://github.com/newrelic/developer-website/compare/v1.88.0...v1.88.1) (2022-06-07)
+
+
+### Bug Fixes
+
+* **custom data:** remove & redirect ([8f83899](https://github.com/newrelic/developer-website/commit/8f83899f350e9a5f8883c115f82291c3d0261de2))
+
 # [1.88.0](https://github.com/newrelic/developer-website/compare/v1.87.2...v1.88.0) (2022-06-07)
 
 
