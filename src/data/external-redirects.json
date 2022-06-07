@@ -10,9 +10,9 @@
     {
       "url": "https://docs.newrelic.com/docs/data-apis/custom-data/custom-events/report-custom-event-data",
       "paths": ["/collect-data/custom-events"]
-      }
+    }
     {
       "url": "https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language",
       "paths": ["/collect-data/query-data-nrql"]
     }
-    ]
+]
