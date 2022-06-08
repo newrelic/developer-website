@@ -1,3 +1,12 @@
+## [1.88.2](https://github.com/newrelic/developer-website/compare/v1.88.1...v1.88.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* **dev:** delete custom attr/events stuff ([ad209fd](https://github.com/newrelic/developer-website/commit/ad209fdb9f1ee9a538c12fa925eaf873a1930716))
+* **dev:** remove nrql doc ([10aa7df](https://github.com/newrelic/developer-website/commit/10aa7df3a41aece1941e377b3fb599b1a5cf51d8))
+* **redirects:** fix error ([b4e4d02](https://github.com/newrelic/developer-website/commit/b4e4d022fab7e20e6a38aba2d0941fb64ec46403))
+
 ## [1.88.1](https://github.com/newrelic/developer-website/compare/v1.88.0...v1.88.1) (2022-06-07)
 
 
