@@ -4,12 +4,6 @@
   pages:
     - title: Collect data from any source
       url: https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data
-    - title: Create custom attributes
-      url: '/collect-data/custom-attributes'
-    - title: Create custom New Relic events
-      url: '/collect-data/custom-events'
-    - title: Query data with NRQL
-      url: '/collect-data/query-data-nrql'
     - title: Explore NerdGraph using the API Explorer
       url: '/collect-data/get-started-nerdgraph-api-explorer'
     - title: Monitor your network devices
