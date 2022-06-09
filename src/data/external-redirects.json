@@ -15,4 +15,9 @@
     "url": "https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language",
     "paths": ["/collect-data/query-data-nrql"]
   }
+  {
+    "url": "https://docs.newrelic.com/docs/apis/nerdgraph/get-started/nerdgraph-explorer#more-examples",
+    "paths": ["/collect-data/get-started-nerdgraph-api-explorer"]
+  }
 ]
+
