@@ -1,35 +1,40 @@
 import React from 'react';
-import aaronAvatar from '../images/relicans/aaron-bassett.jpg';
-import danielAvatar from '../images/relicans/daniel-kim.jpg';
-import dannyAvatar from '../images/relicans/danny-ramos.jpg';
+import aaronAvatar from '../images/devrel/aaron-bassett.jpg';
+import danielAvatar from '../images/devrel/daniel-kim.jpg';
+import dannyAvatar from '../images/devrel/danny-ramos.jpg';
 import daynaAvatar from '../images/nerdlog/dayna-lord.jpg';
-import kirkAvatar from '../images/relicans/kirk-haines.jpg';
-import miaAvatar from '../images/relicans/mia-moore.jpg';
-import nicaAvatar from '../images/nerdlog/nica-fee.jpg';
-import pachiAvatar from '../images/relicans/pachi-carlson.jpg';
-import laurenAvatar from '../images/relicans/lauren-lee.jpg';
+import kirkAvatar from '../images/devrel/kirk-haines.jpg';
+import leonAvatar from '../images/devrel/leon-adato.jpg';
+import laurenAvatar from '../images/devrel/lauren-lee.jpg';
 
 export const teamMembers = [
   {
-    name: 'Nočnica Fee',
-    pronouns: 'she/her',
-    avatar: nicaAvatar,
+    name: 'Leon Adato',
+    pronouns: 'he/him',
+    avatar: leonAvatar,
     bio: (
+      <>
       <p>
-        Nočnica Fee is a dev advocate at New Relic specializing in cloud
-        applications, serverless, and containerization. She writes regularly for
-        The New Stack and has been published in Information Age and Forbes.
+        Leon Adato is a Developer Relations Advocate at New Relic, and has held multiple industry certifications over his 33 years in IT including Cisco, Microsoft, A+, and more. His experience spans financial, healthcare, food and beverage, and other industries.
       </p>
+      <p>
+        Before coming to New Relic, he was a speaker and blogger in the monitoring and observability space for almost a decade. His expertise in IT began in 1989 and has led him through roles in classroom training, desktop support, server support, and software distribution.
+      </p>
+      </>
     ),
     socials: [
       {
-        name: 'twitch',
-        url: 'https://twitch.tv/serverlessmom',
+        name: 'twitter',
+        url: 'https://twitter.com/leonadato',
       },
       {
-        name: 'twitter',
-        url: 'https://twitter.com/serverlessmom',
+        name: 'linkedin',
+        url: 'https://www.linkedin.com/in/adatole/'
       },
+      {
+        name: 'github',
+        url: 'https://github.com/adatole'
+      }
     ],
   },
   {
@@ -177,12 +182,16 @@ export const teamMembers = [
         url: 'https://twitter.com/wyhaines',
       },
       {
-        name: 'twitch',
-        url: 'https://twitch.tv/wyhaines',
+        name: 'github',
+        url: 'https://github.com/wyhaines',
       },
       {
-        name: 'instagram',
-        url: 'https://www.instagram.com/wyhaines',
+        name: 'linkedin',
+        url: 'https://linkedin.com/in/wyhaines'
+      },
+      {
+        name: 'twitch',
+        url: 'https://twitch.tv/wyhaines',
       },
     ],
   },
@@ -220,78 +229,6 @@ export const teamMembers = [
       {
         name: 'instagram',
         url: 'https://instagram.com/lolocoding',
-      },
-    ],
-  },
-  {
-    name: 'Mia Moore',
-    pronouns: 'they/them',
-    avatar: miaAvatar,
-    bio: (
-      <p>
-        Mia Moore (they/them) is a Developer Programs Manager at New Relic.
-        Before joining New Relic, Mia was a Developer Advocate at IBM and has a
-        background in content creation, marketing, and community management.
-        They are enthusiastic about good storytelling in digital content. In
-        their free time, Mia enjoys knitting, birding, and gaming.
-      </p>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/xomiamoore',
-      },
-      {
-        name: 'twitch',
-        url: 'https://www.twitch.tv/xomiamoore',
-      },
-      {
-        name: 'instagram',
-        url: 'https://www.instagram.com/xomiamoore',
-      },
-      {
-        name: 'linkedin',
-        url: 'https://www.linkedin.com/in/miamoore',
-      },
-    ],
-  },
-  {
-    name: 'Pachi Carlson',
-    pronouns: 'she/her',
-    avatar: pachiAvatar,
-    bio: (
-      <>
-        <p>
-          Pachi is a self-directed learner, who started her career as a
-          Front-End developer and is passionate about HTML and CCS. She is
-          originally from Brazil where she was born and raised, but now she
-          lives in the USA with her husband, cats and bearded dragon.
-        </p>
-        <p>
-          Very active online, Pachi felt in love with the community and even
-          being a junior herself, she began teaching what she knew and sharing
-          her learning Journey writing and live coding on Twitch, and that was
-          how she got interested in Developer Relations. Now a Developer
-          Relations Engineer at New Relic.
-        </p>
-      </>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/pachicodes',
-      },
-      {
-        name: 'twitch',
-        url: 'https://twitch.tv/pachicodes',
-      },
-      {
-        name: 'instagram',
-        url: 'https://instagram.com/pachicodes',
-      },
-      {
-        name: 'linkedin',
-        url: 'https://linkedin.com/in/pachicodes',
       },
     ],
   },

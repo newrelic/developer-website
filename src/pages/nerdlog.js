@@ -102,6 +102,7 @@ const NerdlogPage = ({ location }) => {
                     <br />
                   </ul>
                 </div>
+                <div style={{display: "none"}}>
                 <h2>Join us live every Thursday!</h2>
                 <ul>
                   <li>
@@ -119,6 +120,7 @@ const NerdlogPage = ({ location }) => {
                     YouTube.
                   </a>
                 </p>
+                </div>
               </div>
               <div>
                 <h3>Get Reminders</h3>
@@ -140,7 +142,7 @@ const NerdlogPage = ({ location }) => {
           <Section>
             <SectionHeading>
               Hosted by{' '}
-              <a href="https://twitter.com/ServerlessMom">@SeverlessMom</a>
+              <a href="https://twitter.com/leonadato">@LeonAdato</a>&nbsp;
               and New Relic's DevRel team
             </SectionHeading>
             <section className={cx(styles.meetTheTeam)}>
