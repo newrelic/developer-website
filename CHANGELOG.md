@@ -1,3 +1,12 @@
+## [1.88.3](https://github.com/newrelic/developer-website/compare/v1.88.2...v1.88.3) (2022-06-10)
+
+
+### Bug Fixes
+
+* **collect data:** adding more info/links ([efced14](https://github.com/newrelic/developer-website/commit/efced14b99196a01adfc90c18ba853c2d439807d))
+* **collect data:** improve intro ([0d32b73](https://github.com/newrelic/developer-website/commit/0d32b73e7361622b2c23a1c3288a0ea8500c1ff8))
+* **collect data:** small tweak ([fecb00b](https://github.com/newrelic/developer-website/commit/fecb00b25062578dc670218b5fc18f00b808e0a1))
+
 ## [1.88.2](https://github.com/newrelic/developer-website/compare/v1.88.1...v1.88.2) (2022-06-08)
 
 
