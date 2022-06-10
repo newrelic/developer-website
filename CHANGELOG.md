@@ -1,3 +1,11 @@
+## [1.88.4](https://github.com/newrelic/developer-website/compare/v1.88.3...v1.88.4) (2022-06-10)
+
+
+### Bug Fixes
+
+* **dev site redirects:** typo ([44c73fe](https://github.com/newrelic/developer-website/commit/44c73fe92fb205964f4d25c4f7cd32d3b526b3b6))
+* **dev:** remove NG explorer ([3746f39](https://github.com/newrelic/developer-website/commit/3746f3909d16043700b3bcc5f2e3ef3cd661c213))
+
 ## [1.88.3](https://github.com/newrelic/developer-website/compare/v1.88.2...v1.88.3) (2022-06-10)
 
 
