@@ -485,6 +485,41 @@ export default class CustomVizVisualization extends React.Component {
 }
 ```
 
+<Callout variant="important">
+    Although NRQL property can appear anywhere in your configuration, we strongly recommend putting it inside nrqlQueries collection and accompany it with `account-id`.
+    This way we would be able to provide you with the best NRQL editing experience and other useful features (such as dashboard filtering) out of the box.
+</Callout>
+
+```json fileName=nr1.json lineHighlight=7-25
+{
+  "schemaType": "VISUALIZATION",
+  "id": "custom-viz",
+  "displayName": "CustomViz",
+  "description": "MyCustomViz",
+  "configuration": [
+    {
+      "name": "nrqlQueries",
+      "title": "NRQL Queries",
+      "type": "collection",
+      "items": [
+        {
+          "name": "query",
+          "title": "Query",
+          "description": "NRQL query for visualization",
+          "type": "nrql"
+        },
+        {
+          "name": "accountId",
+          "title": "Account ID",
+          "description": "Account ID to run query against",
+          "type": "account-id"
+        }
+      ]
+    },
+  ]
+}
+```
+
 ### `account-id`
 
 An `account-id` property is rendered in the UI as a drop-down menu and represents a New Relic account. From the menu, you can search for and select an account.
