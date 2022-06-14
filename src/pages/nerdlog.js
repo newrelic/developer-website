@@ -102,24 +102,24 @@ const NerdlogPage = ({ location }) => {
                     <br />
                   </ul>
                 </div>
-                <div style={{display: "none"}}>
-                <h2>Join us live every Thursday!</h2>
-                <ul>
-                  <li>
-                    <strong>Where:</strong> Follow us on{' '}
-                    <a href="https://www.twitch.tv/new_relic">Twitch</a>
-                  </li>
-                  <li>
-                    <strong>Date:</strong> 12 P.M. PT (8 P.M. UTC)
-                  </li>
-                </ul>
-                <p>
-                  <strong>Can’t make it?</strong> We’ll miss you, but checkout
-                  our playlist on{' '}
-                  <a href="https://www.youtube.com/playlist?list=PLmhYj7Jl81JGOEHV7zUVfa_iGNyOfMGNh">
-                    YouTube.
-                  </a>
-                </p>
+                <div style={{ display: 'none' }}>
+                  <h2>Join us live every Thursday!</h2>
+                  <ul>
+                    <li>
+                      <strong>Where:</strong> Follow us on{' '}
+                      <a href="https://www.twitch.tv/new_relic">Twitch</a>
+                    </li>
+                    <li>
+                      <strong>Date:</strong> 12 P.M. PT (8 P.M. UTC)
+                    </li>
+                  </ul>
+                  <p>
+                    <strong>Can’t make it?</strong> We’ll miss you, but checkout
+                    our playlist on{' '}
+                    <a href="https://www.youtube.com/playlist?list=PLmhYj7Jl81JGOEHV7zUVfa_iGNyOfMGNh">
+                      YouTube.
+                    </a>
+                  </p>
                 </div>
               </div>
               <div>
@@ -141,9 +141,8 @@ const NerdlogPage = ({ location }) => {
           </Section>
           <Section>
             <SectionHeading>
-              Hosted by{' '}
-              <a href="https://twitter.com/leonadato">@LeonAdato</a>&nbsp;
-              and New Relic's DevRel team
+              Hosted by <a href="https://twitter.com/leonadato">@LeonAdato</a>
+              &nbsp; and New Relic's DevRel team
             </SectionHeading>
             <section className={cx(styles.meetTheTeam)}>
               {teamMemberPanels}

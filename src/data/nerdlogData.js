@@ -14,12 +14,18 @@ export const teamMembers = [
     avatar: leonAvatar,
     bio: (
       <>
-      <p>
-        Leon Adato is a Developer Relations Advocate at New Relic, and has held multiple industry certifications over his 33 years in IT including Cisco, Microsoft, A+, and more. His experience spans financial, healthcare, food and beverage, and other industries.
-      </p>
-      <p>
-        Before coming to New Relic, he was a speaker and blogger in the monitoring and observability space for almost a decade. His expertise in IT began in 1989 and has led him through roles in classroom training, desktop support, server support, and software distribution.
-      </p>
+        <p>
+          Leon Adato is a Developer Relations Advocate at New Relic, and has
+          held multiple industry certifications over his 33 years in IT
+          including Cisco, Microsoft, A+, and more. His experience spans
+          financial, healthcare, food and beverage, and other industries.
+        </p>
+        <p>
+          Before coming to New Relic, he was a speaker and blogger in the
+          monitoring and observability space for almost a decade. His expertise
+          in IT began in 1989 and has led him through roles in classroom
+          training, desktop support, server support, and software distribution.
+        </p>
       </>
     ),
     socials: [
@@ -29,12 +35,12 @@ export const teamMembers = [
       },
       {
         name: 'linkedin',
-        url: 'https://www.linkedin.com/in/adatole/'
+        url: 'https://www.linkedin.com/in/adatole/',
       },
       {
         name: 'github',
-        url: 'https://github.com/adatole'
-      }
+        url: 'https://github.com/adatole',
+      },
     ],
   },
   {
@@ -187,7 +193,7 @@ export const teamMembers = [
       },
       {
         name: 'linkedin',
-        url: 'https://linkedin.com/in/wyhaines'
+        url: 'https://linkedin.com/in/wyhaines',
       },
       {
         name: 'twitch',
