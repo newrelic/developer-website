@@ -1,3 +1,10 @@
+## [1.88.5](https://github.com/newrelic/developer-website/compare/v1.88.4...v1.88.5) (2022-06-14)
+
+
+### Bug Fixes
+
+* **custom-viz:** Add recommended way of using nrql property ([66c3578](https://github.com/newrelic/developer-website/commit/66c3578cf4c3eb88ed2bcbc60fcb8f652f663083))
+
 ## [1.88.4](https://github.com/newrelic/developer-website/compare/v1.88.3...v1.88.4) (2022-06-10)
 
 
