@@ -1,0 +1,413 @@
+---
+duration: 30
+title: 'Getting started with New Relic and Pulumi'
+template: 'GuideTemplate'
+description: 'Learn how to provision New Relic resources with [Pulumi](https://www.pulumi.com/).'
+tileShorthand:
+  title: 'Getting started with New Relic and Pulumi'
+  description: 'Learn how to provision and manage New Relic resources with Pulumi'
+resources:
+  - title: 'Pulumi New Relic Provider'
+    url: 'https://www.pulumi.com/registry/packages/newrelic/'
+  - title: 'Pulumi documentation'
+    url: https://pulumi.com/docs/
+  - title: 'New Relic documentation'
+    url: https://docs.newrelic.com
+tags:
+  - notification channel
+  - alerts
+  - pulumi
+---
+
+<Intro>
+
+[Pulumi](https://www.pulumi.com/docs/) is an open-source infrastructure-as-code tool that lets you use general-purpose programming languages like TypeScript, Python, Go, and others to build, deploy, and manage cloud infrastructure. With Pulumi, you can manage cloud resources of all kinds, including New Relic dashboards and alerts.
+
+In this guide, you'll learn how to set up New Relic alerts with Pulumi, TypeScript, and Node.js.
+
+</Intro>
+
+## Before you begin
+
+To use this guide, you should have some basic knowledge of New Relic, Pulumi, and TypeScript. Additionally, since you'll be working with Pulumi on the command line, you should [install the Pulumi CLI](https://www.pulumi.com/docs/get-started/install/), and make sure you've installed a recent version of [Node.js](https://nodejs.org/) as well.
+
+<Steps>
+
+<Step>
+
+## Create a folder for the project
+
+Start by creating a folder for the project. This folder will house two other folders: one for your web application (a small app written with [Express.js](https://expressjs.com/)) and another for the Pulumi program defining the New Relic infrastructure to monitor it.
+
+```bash
+mkdir my-project && cd my-project
+mkdir app
+mkdir infrastructure
+```
+
+</Step>
+
+<Step>
+
+## Create a simple web application
+
+Next, create a small web application and configure it for use with New Relic. In the `app` folder, install the [Express](https://www.npmjs.com/package/express) and [New Relic](https://www.npmjs.com/package/newrelic) packages from npm, then add a placeholder file for the Node.js script to start the application:
+
+```bash
+cd app
+npm install express newrelic --save
+touch index.js
+```
+
+To configure the application to send events to New Relic, copy the `newrelic.js` configuration file included with the `newrelic` package into the `app` folder alongside `index.js`:
+
+```bash
+cp node_modules/newrelic/newrelic.js .
+```
+
+Configure `newrelic.js` by naming the application `my-api` and providing your New Relic [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys):
+
+```javascript
+// ...
+exports.config = {
+  app_name: ['my-api'],
+  license_key: 'your-ingest-license-key',
+  // ...
+```
+
+Finish the app by adding the following code, which defines a single API endpoint to `index.js`. Notice that the endpoint returns an HTTP 500: that's on purpose, to help you test the New Relic alert you'll set up next with Pulumi.
+
+```javascript
+// Import the New Relic agent configuration module.
+require("newrelic");
+
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+    // Deliberately return a server error.
+    res.status(500).json({
+        message: "Oh no! Something went wrong."
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Now listening on port ${port}...`);
+});
+```
+
+Start the application to register it with New Relic. Once it's running locally, you can confirm it's configured by [signing in to New Relic](https://login.newrelic.com/login) and browsing to APM &gt; Services.
+
+```bash
+node index.js
+```
+
+With the web application set up, you can move on to creating the New Relic infrastructure to support it.
+
+</Step>
+
+<Step>
+
+## Create a new Pulumi project
+
+In the `infrastructure` folder, create a new TypeScript project with the Pulumi CLI. Step through the prompts, accepting the defaults to create a new Pulumi [stack](https://www.pulumi.com/docs/intro/concepts/stack/), which by default is named `dev`.
+
+```bash
+cd ../infrastructure
+pulumi new aws-typescript
+```
+
+<Callout variant="course" title="Sign in to Pulumi">
+
+If this is your first time running Pulumi, you'll be prompted to sign in to the Pulumi Service, Pulumi's default [state-management backend](https://www.pulumi.com/docs/intro/concepts/state/). The Pulumi Service is free for individual use, and self-managed options are also available. See the [Pulumi documentation](https://www.pulumi.com/docs/intro/concepts/state/) for details.
+
+</Callout>
+
+When the new-project wizard completes, you should be left with the following folder structure:
+
+```
+./my-project
+├── app
+│   ├── index.js
+│   ├── newrelic.js
+│   ├── package-lock.json
+│   └── package.json
+└── infrastructure
+    ├── index.ts
+    ├── package-lock.json
+    ├── package.json
+    ├── Pulumi.yaml
+    └── tsconfig.json
+```
+
+</Step>
+
+<Step>
+
+## Install and configure the New Relic provider
+
+Still in the `infrastructure` folder, install the [`@pulumi/newrelic`](https://www.pulumi.com/registry/packages/newrelic) package from npm, then configure the New Relic [provider](https://www.pulumi.com/docs/intro/concepts/resources/providers/) with your New Relic [account ID](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id/) and [user key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/):
+
+```bash
+npm install @pulumi/newrelic
+
+export NEW_RELIC_ACCOUNT_ID="your-account-id"
+export NEW_RELIC_API_KEY="your-user-api-key"
+```
+
+<Callout variant="tip">
+
+Alternatively, you can also configure the New Relic provider using Pulumi's own configuration system, which has built-in support for encrypted secrets. See the [New Relic provider docs](https://www.pulumi.com/registry/packages/newrelic/installation-configuration/) and [Pulumi configuration docs](https://www.pulumi.com/docs/intro/concepts/config/) for details.
+
+</Callout>
+
+</Step>
+
+<Step>
+
+## Define an alert policy and condition
+
+Replace the contents of `index.ts` with the following code, which imports the `@pulumi/pulumi` and `@pulumi/newrelic` libraries and declares a single New Relic [`AlertPolicy`](https://www.pulumi.com/registry/packages/newrelic/api-docs/alertpolicy/):
+
+```javascript
+import * as pulumi from "@pulumi/pulumi";
+import * as newrelic from "@pulumi/newrelic";
+
+const policy = new newrelic.AlertPolicy("alert-policy");
+```
+
+Next, define an [`AlertCondition`](https://www.pulumi.com/registry/packages/newrelic/api-docs/alertcondition/) to trigger a critical alert when the application's error rate exceeds a given threshold. Add the following code to `index.ts`.
+
+A few things to note about this code:
+
+* It uses the New Relic provider's [`getEntity` function](https://www.pulumi.com/registry/packages/newrelic/api-docs/) to look up the APM service you created in Step&nbsp;2, capturing the result of that lookup in the JavaScript variable `app`.
+
+* With that variable, it passes the `applicationId` of the service to the `AlertCondition` as a Pulumi [input](https://www.pulumi.com/docs/intro/concepts/inputs-outputs/), a special type that accepts raw values (like strings), eventual values (like JavaScript promises), or Pulumi [outputs](https://www.pulumi.com/docs/intro/concepts/inputs-outputs/) derived from other resources, as is the case here.
+
+* It passes the `id` property of the `AlertPolicy` as well, transforming it from an output of type `string` to the `number` expected by the `AlertCondition` resource using the [`apply()`](https://www.pulumi.com/docs/intro/concepts/inputs-outputs/#apply) method available on all Pulumi outputs.
+
+```javascript
+// ...
+
+// Look up the APM service you just created.
+const app = newrelic.getEntity({
+    name: "my-api",
+});
+
+// Define an alert condition to trigger an alert when the
+// service's error rate exceeds 1% over a five-minute period.
+const condition = new newrelic.AlertCondition("alert-condition", {
+    type: "apm_app_metric",
+    metric: "error_percentage",
+    conditionScope: "application",
+    policyId: policy.id.apply(id => parseInt(id)),
+    entities: [
+        pulumi.output(app).applicationId,
+    ],
+    terms: [
+        {
+            operator: "above",
+            threshold: 1,
+            duration: 5,
+            priority: "critical",
+            timeFunction: "all",
+        },
+    ],
+});
+```
+
+</Step>
+
+<Step>
+
+## Define an alert channel for notifications
+
+Finally, define an [`AlertChannel`](https://www.pulumi.com/registry/packages/newrelic/api-docs/alertchannel/) to notify you by email when the application fails. The `AlertChannel` resource defines the type of notification &mdash; here, a message to be sent to a particular email address &mdash; and an accompanying [`AlertPolicyChannel`](https://www.pulumi.com/registry/packages/newrelic/api-docs/alertpolicychannel/) resource ties the `AlertChannel` to the `AlertPolicy` you created in Step&nbsp;5.
+
+```javascript
+// ...
+
+// Define an alert channel to notify you by email.
+const channel = new newrelic.AlertChannel("alert-channel", {
+    type: "email",
+    config: {
+        recipients: "your-email@example.com",
+        includeJsonAttachment: pulumi.output("true"),
+    },
+});
+
+// Associate the alert channel with the policy defined above.
+const policyChannel = new newrelic.AlertPolicyChannel("alert-policy-channel", {
+    policyId: policy.id.apply(id => parseInt(id)),
+    channelIds: [
+        channel.id.apply(id => parseInt(id)),
+    ],
+});
+```
+
+</Step>
+
+<Step>
+
+## Deploy the program
+
+Now it's time to deploy this new infrastructure to New Relic with Pulumi.
+
+In the `infrastructure` folder, start by running `pulumi up`:
+
+```bash
+pulumi up
+```
+
+When you do so, Pulumi assembles a deployment plan based on the resources and relationships defined in your program, and renders that plan in the form of a deployment preview, which it'll ask you to examine and confirm before proceeding:
+
+```bash copyable=false
+[output] Previewing update (dev)
+[output]
+[output]      Type                                  Name                  Plan
+[output]  +   pulumi:pulumi:Stack                   infrastructure-dev    create
+[output]  +   ├─ newrelic:index:AlertPolicy         alert-policy          create
+[output]  +   ├─ newrelic:index:AlertChannel        alert-channel         create
+[output]  +   ├─ newrelic:index:AlertPolicyChannel  alert-policy-channel  create
+[output]  +   └─ newrelic:index:AlertCondition      alert-condition       create
+[output]
+[output] Resources:
+[output]     + 5 to create
+[output]
+[output] Do you want to perform this update?
+[output] > yes
+[output]   no
+[output]   details
+```
+
+Choose `details` to get a closer look at each resource if you like, and when you're comfortable, choose `yes` to create the `dev` stack and complete the deployment:
+
+```bash copyable=false
+[output] Previewing update (dev)
+[output]
+[output]      Type                                  Name                  Plan
+[output]  +   pulumi:pulumi:Stack                   infrastructure-dev    created
+[output]  +   ├─ newrelic:index:AlertPolicy         alert-policy          created
+[output]  +   ├─ newrelic:index:AlertChannel        alert-channel         created
+[output]  +   ├─ newrelic:index:AlertPolicyChannel  alert-policy-channel  created
+[output]  +   └─ newrelic:index:AlertCondition      alert-condition       created
+[output]
+[output] Resources:
+[output]     + 5 to create
+[output]
+[output] Duration: 4s
+```
+
+When the deployment completes, you should be able to [sign in to New Relic](https://login.newrelic.com/login) and verify that the `my-api` service is now configured with an alert condition set up to notify you by email when the service exceeds a 1% error rate.
+
+</Step>
+
+<Step>
+
+## Trigger an alert
+
+Now that the service is configured, you can trigger an alert by invoking the Express application's API enpdpoint.
+
+First, navigate to the `app` folder and start the application:
+
+```bash
+cd ../app
+node index.js
+[output]
+[output] Now listening on port 3000...
+```
+
+Then, in another terminal tab or in your browser of choice, invoke the API endpoint to send a few errors to New Relic:
+
+```bash
+curl http://localhost:3000/
+[output]
+[output] {"message":"Oh, no! Something went wrong."}
+```
+
+In a few minutes, you should be notified by email of a new incident.
+
+To resolve the incident, update the Express application to return a `200` response instead of `500`, restart the app, make a few more requests, and the incident should be resolved by New Relic automatically.
+
+<Callout variant="tip" title="Extra Credit">
+
+The `AlertChannel` resource [supports several types]() of notification channels including email, Slack, PagerDuty, and others. To explore further, try adding a second channel to the program to send alert notifications to your Slack workspace:
+
+```javascript
+// Define a Slack alert channel.
+const slackChannel = new newrelic.AlertChannel("slack-channel", {
+    type: "slack",
+    config: {
+        channel: "your-designated-slack-channel",
+        url: "https://hooks.slack.com/services/XXXXXXX/XXXXXXX/XXXXXXX",
+    },
+});
+
+// Add it to the list of channels associated with your alert policy.
+const policyChannel = new newrelic.AlertPolicyChannel("policy-channel", {
+    ...
+    channelIds: [
+        ...
+        slackChannel.id.apply(id => parseInt(id)),
+    ],
+});
+```
+
+Before deploying this change, be sure to [add the New Relic Slack App](https://slack.com/apps/A0F827KK2-new-relic-alerts) to your Slack workspace, and use the webhook URL generated by the Slack integration to configure the `AlertChannel` resource.
+
+</Callout>
+
+</Step>
+
+<Step>
+
+## Destroy the stack
+
+Finally, you can destroy the Pulumi stack to remove all of the New Relic infrastructure you've created up to now.
+
+```bash
+pulumi destroy
+[output]
+[output] Previewing destroy (dev)
+[output]
+[output]      Type                                  Name                  Plan
+[output]  -   pulumi:pulumi:Stack                   infrastructure-dev    delete
+[output]  -   ├─ newrelic:index:AlertPolicyChannel  alert-policy-channel  delete
+[output]  -   ├─ newrelic:index:AlertCondition      alert-condition       delete
+[output]  -   ├─ newrelic:index:AlertChannel        alert-channel         delete
+[output]  -   └─ newrelic:index:AlertPolicy         alert-policy          delete
+[output]
+[output] Resources:
+[output]     - 5 to delete
+```
+
+As before, you'll be prompted to confirm the operation before proceeding. When you're ready, choose `yes` to continue:
+
+```bash
+pulumi destroy
+[output]
+[output] Destroying (dev)
+[output]
+[output]      Type                                  Name                  Plan
+[output]  -   pulumi:pulumi:Stack                   infrastructure-dev    deleted
+[output]  -   ├─ newrelic:index:AlertPolicyChannel  alert-policy-channel  deleted
+[output]  -   ├─ newrelic:index:AlertCondition      alert-condition       deleted
+[output]  -   ├─ newrelic:index:AlertChannel        alert-channel         deleted
+[output]  -   └─ newrelic:index:AlertPolicy         alert-policy          deleted
+[output]
+[output] Resources:
+[output]     - 5 deleted
+[output]
+[output] Duration: 9s
+```
+
+</Step>
+
+</Steps>
+
+## Conclusion
+
+Congratulations! You're now officially practicing observability-as-code with New Relic and Pulumi.
+
+To learn more about what you can do with Pulumi and New Relic and take your application monitoring to the next level, check out the [Pulumi New Relic provider documentation](https://www.pulumi.com/registry/packages/newrelic).

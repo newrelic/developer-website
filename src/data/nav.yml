@@ -65,7 +65,12 @@
   icon: nr-automation
   url: '/automate-workflows'
   pages:
-    - title: Using Terrafom with New Relic
+    - title: Using Pulumi with New Relic
+      url: '/pulumi'
+      pages:
+        - title: Set up New Relic using Pulumi
+          url: '/automate-workflows/get-started-pulumi'
+    - title: Using Terraform with New Relic
       url: '/terraform'
       pages:
         - title: Set up New Relic using Terraform
