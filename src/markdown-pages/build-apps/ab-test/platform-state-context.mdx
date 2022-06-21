@@ -9,7 +9,7 @@ duration: 10
 
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
 Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Fetch data from a third-party service_](/build-apps/ab-test/third-party-service), before starting this one.
 
@@ -17,7 +17,7 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 
 </HideWhenEmbedded>
 
-In this course, you're building a New Relic One application. This application shows telemetry data from a demo service that is running an A/B test so that it can reveal that data in charts, like a dashboard. Your New Relic application is different than a dashboard, however, because it does more than show New Relic data. It pulls external data, provides UI components and functionality, and even has its own small data stores. The purpose of this New Relic application is to present context so you can better understand the A/B test results and how those results tie in to your business objectives.
+In this course, you're building a New Relic application. This application shows telemetry data from a demo service that is running an A/B test so that it can reveal that data in charts, like a dashboard. Your New Relic application is different than a dashboard, however, because it does more than show New Relic data. It pulls external data, provides UI components and functionality, and even has its own small data stores. The purpose of this New Relic application is to present context so you can better understand the A/B test results and how those results tie in to your business objectives.
 
 So far, you've built all your charts, organized them for improved usability, provided them with real data, and more. There are some final improvements you can make, using Platform API components. In this lesson, you learn how to use values in the New Relic platform state.
 
@@ -211,17 +211,17 @@ nr1 nerdpack:serve
 
 [View your application](https://one.newrelic.com?nerdpacks=local):
 
-![Your New Relic One application using platform state](../../../images/ab-test/platform-state.png)
+![Your New Relic application using platform state](../../../images/ab-test/platform-state.png)
 
 Your `NrqlQuery` now uses the platform state's `timeRange`, but your chart probably still shows the last 30 minutes. Why? Where does the `timeRange` in platform state come from?
 
 The time picker sits on the right side of your application's navigation bar:
 
-![Your New Relic One application's time picker](../../../images/ab-test/time-picker.png)
+![Your New Relic application's time picker](../../../images/ab-test/time-picker.png)
 
 Change this value and see your chart update:
 
-![Your New Relic One application showing the last 6 hours of data](../../../images/ab-test/time-picked.png)
+![Your New Relic application showing the last 6 hours of data](../../../images/ab-test/time-picked.png)
 
 <Callout variant="tip">
 
@@ -290,7 +290,7 @@ Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [
 
 </Callout>
 
-Of all the charts in your New Relic One application, these three charts are the ones that should update with the time picker. The others, **Total subscriptions per version**, **Total cancellations per version**, **Version A - Page views vs. subscriptions**, **Version B - Page views vs. subscriptions**, show total values over time. So, hardcoding their `SINCE` clauses to `7 DAYS AGO` makes sense, as this is a reasonable time period for the purposes of this course.
+Of all the charts in your New Relic application, these three charts are the ones that should update with the time picker. The others, **Total subscriptions per version**, **Total cancellations per version**, **Version A - Page views vs. subscriptions**, **Version B - Page views vs. subscriptions**, show total values over time. So, hardcoding their `SINCE` clauses to `7 DAYS AGO` makes sense, as this is a reasonable time period for the purposes of this course.
 
 </Step>
 
@@ -312,7 +312,7 @@ If something doesn't work, use your browser's debug tools to try to identify the
 
 </Callout>
 
-When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in your local server's terminal window.
+When you're finished, stop serving your New Relic application by pressing `CTRL+C` in your local server's terminal window.
 
 </Step>
 
@@ -326,7 +326,7 @@ The Platform API components offer a lot more functionality, too, including the a
 
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Add navigation to your nerdlet_](/build-apps/ab-test/navigation).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. Continue on to the next lesson: [_Add navigation to your nerdlet_](/build-apps/ab-test/navigation).
 
 </Callout>
 

@@ -118,7 +118,7 @@
       url: '/build-apps/advanced-config'
     - title: Create a 'Hello, World!' app
       url: '/build-apps/build-hello-world-app'
-    - title: Build a NR1 app with React hooks
+    - title: Build a New Relic app with React hooks
       url: '/build-apps/build-react-hooks-app'
     - title: Publish and deploy your Nerdpack
       url: '/build-apps/publish-deploy'
@@ -145,7 +145,7 @@
       url: '/build-apps/add-time-picker-guide'
     - title: Add the NerdGraphQuery component to an app
       url: '/build-apps/add-nerdgraphquery-guide'
-    - title: Add tables to your New Relic One application
+    - title: Add tables to your New Relic application
       url: '/build-apps/howto-use-nrone-table-components'
     - title: Add, query, and mutate data using NerdStorage
       url: '/build-apps/add-query-mutate-data-nerdstorage'
@@ -162,13 +162,13 @@
       pages:
         - title: Spin up your demo services
           url: '/build-apps/ab-test/demo-setup'
-        - title: Install and configure the New Relic One CLI
+        - title: Install and configure the New Relic app CLI
           url: '/build-apps/ab-test/install-nr1'
         - title: Create a Nerdpack
           url: '/build-apps/ab-test/create-nerdpack'
-        - title: Serve your New Relic One application
+        - title: Serve your New Relic app
           url: '/build-apps/ab-test/serve-app'
-        - title: Add chart components to your A/B test application
+        - title: Add chart components to your A/B test app
           url: '/build-apps/ab-test/add-charts'
         - title: Add your first chart
           url: '/build-apps/ab-test/first-chart'
@@ -178,7 +178,7 @@
           url: '/build-apps/ab-test/table-charts'
         - title: Add a chart group
           url: '/build-apps/ab-test/chart-group'
-        - title: Add user interface components to your application
+        - title: Add user interface components to your app
           url: '/build-apps/ab-test/add-ui'
         - title: Add a grid
           url: '/build-apps/ab-test/grid'
@@ -208,13 +208,13 @@
           url: '/build-apps/ab-test/navigation'
         - title: Describe your app for the catalog
           url: '/build-apps/ab-test/catalog'
-        - title: Publish your New Relic One application
+        - title: Publish your New Relic app
           url: '/build-apps/ab-test/publish'
-        - title: Subscribe to your New Relic One application
+        - title: Subscribe to your New Relic app
           url: '/build-apps/ab-test/subscribe'
     - title: See all open source apps
       url: https://opensource.newrelic.com/nerdpacks/
-    - title: Manage New Relic One SDK deprecations
+    - title: Manage New Relic app SDK deprecations
       url: '/build-apps/nr1-deprecations'
 
 - title: Contribute to quickstarts
@@ -327,7 +327,7 @@
 - title: Explore docs
   icon: nr-book
   pages:
-    - title: New Relic One CLI
+    - title: New Relic app CLI
       url: '/explore-docs/nr1-cli'
       pages:
         - title: Common commands
@@ -361,7 +361,7 @@
           url: '/explore-docs/custom-viz/build-visualization'
         - title: Add your visualization to a dashboard with NerdGraph
           url: '/explore-docs/custom-viz/add-to-dashboard-nerdgraph'
-    - title: New Relic One SDK Component library
+    - title: New Relic app SDK component library
       url: '/explore-docs/intro-to-sdk'
       pages:
         - title: Controls
@@ -603,7 +603,7 @@
 - title: New Relic Builders
   icon: nr-builders
   url: '/builders'
-- title: Nerdlog
+- title: Changelog
   icon: nr-nerdlog
   url: '/nerdlog'
 - title: Podcasts

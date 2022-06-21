@@ -1,14 +1,14 @@
 ---
 duration: 30
-title: 'Add tables to your New Relic One application'
+title: 'Add tables to your New Relic application'
 template: 'GuideTemplate'
-description: 'Add a table to your New Relic One app.'
+description: 'Add a table to your New Relic app.'
 promote: true
 tileShorthand:
   title: 'Add a table to your app'
-  description: 'Add a table to your New Relic One app'
+  description: 'Add a table to your New Relic app'
 resources:
-  - title: 'How to use New Relic One table components'
+  - title: 'How to use New Relic table components'
     url: https://discuss.newrelic.com/t/how-to-use-nr1-table-components/98934
   - title: 'New Relic SDK documentation'
     url: https://developer.newrelic.com/client-side-sdk/index.html
@@ -25,7 +25,7 @@ tags:
 
 Tables are a popular way of displaying data in New Relic applications. For example, with the [query builder](https://docs.newrelic.com/docs/chart-builder/use-chart-builder/get-started/introduction-chart-builder) you can create tables from [NRQL queries](https://docs.newrelic.com/docs/query-data/nrql-new-relic-query-language/getting-started/introduction-nrql).
 
-Whether you need to have more control over tables or you're importing third-party data, you can build your own tables into your New Relic One application.
+Whether you need to have more control over tables or you're importing third-party data, you can build your own tables into your New Relic application.
 
 In this guide, you are going to build a sample table using various New Relic components.
 
@@ -35,7 +35,7 @@ In this guide, you are going to build a sample table using various New Relic com
 
 ## Before you begin
 
-If you haven't already installed the New Relic One CLI, step through the [quick start in New Relic](https://one.newrelic.com/launcher/developer-center.launcher). This process also gets you an API key.
+If you haven't already installed the New Relic app CLI, step through the [quick start in New Relic](https://one.newrelic.com/launcher/developer-center.launcher). This process also gets you an API key.
 
 In addition, to complete the steps in this guide, you need a GitHub account and Node.js installed on your machine. See [Setting up your development environment](/build-apps/set-up-dev-env) for more info.
 
@@ -72,7 +72,7 @@ export default class Nr1HowtoAddTimePicker extends React.Component {
 
 Run the demo application.
 
-Change the directory back to `nr1-how-to/create-a-table`. Before you can load the demo application, you need to [update its unique id](https://developer.newrelic.com/build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions) by invoking the New Relic One CLI.
+Change the directory back to `nr1-how-to/create-a-table`. Before you can load the demo application, you need to [update its unique id](https://developer.newrelic.com/build-tools/new-relic-one-applications/guide-to-authentication--data-access--and-permissions) by invoking the New Relic app CLI.
 
 Once you've assigned a new UUID to the app, install the dependencies and serve the demo app locally, so that you can test any change live in your browser.
 
@@ -186,7 +186,7 @@ Take a look at the application running in New Relic: you should see something si
 
 Replace standard table cells with smart cells.
 
-The New Relic One library includes cell components that can automatically format certain data types, like users, metrics, and entity names.
+The New Relic app library includes cell components that can automatically format certain data types, like users, metrics, and entity names.
 
 The table you've just created contains columns that can benefit from those components: **Application** (an entity name) and **Size** (a metric).
 
@@ -288,6 +288,6 @@ Go back to your application and try hovering over any of the rows: Notice how th
 
 ## Next steps
 
-You've built a table into a New Relic One application, using components to format data automatically and provide contextual actions. Well done!
+You've built a table into a New Relic application, using components to format data automatically and provide contextual actions. Well done!
 
 Keep exploring the `Table` components, their properties, and how to use them, in our [SDK documentation](https://developer.newrelic.com/client-side-sdk/index.html#components/Table).

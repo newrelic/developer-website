@@ -65,11 +65,10 @@ const NerdlogPage = ({ location }) => {
               className={cx(styles.twoColumnAlt, styles.registrationSection)}
             >
               <div>
-                <h2>What is the Nerdlog?</h2>
+                <h2>What is the New Relic changelog?</h2>
                 <p>
-                  The Nerdlog is our brand new live stream changelog on{' '}
-                  <a href="https://www.twitch.tv/new_relic">Twitch</a>. Every
-                  Thursday, you can:
+                  The changelog is our live stream changelog on{' '}
+                  <a href="https://www.twitch.tv/new_relic">Twitch</a> that lets you:
                 </p>
                 <div>
                   <ul>
@@ -81,7 +80,7 @@ const NerdlogPage = ({ location }) => {
                       <br />
                       Watch New Relic product managers and engineers play with
                       the latest features and integrations to help you navigate
-                      New Relic One like a pro.
+                      New Relic like a pro.
                     </li>
                     <li>
                       <strong>

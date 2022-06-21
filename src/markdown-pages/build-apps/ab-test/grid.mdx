@@ -8,7 +8,7 @@ description: 'Add a grid'
 
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
 Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Add user interface components to your application_](/build-apps/ab-test/add-ui), before starting this one.
 
@@ -16,7 +16,7 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 
 </HideWhenEmbedded>
 
-In previous hands-on lessons, you created all the charts from your design guide. Unfortunately, they aren’t laid out like they are in the design. The New Relic One SDK provides multiple solutions for organizing your components. The one you’ll learn about in this lesson is the `Grid` component.
+In previous hands-on lessons, you created all the charts from your design guide. Unfortunately, they aren’t laid out like they are in the design. The New Relic app SDK provides multiple solutions for organizing your components. The one you’ll learn about in this lesson is the `Grid` component.
 
 To arrange your charts, place them in a `Grid`. A `Grid` is a container you use to organize your content into 12-column rows.  A `GridItem` is the building block for a `Grid`. You specify the `columnSpan` of a `GridItem` between _1_ and _12_ to determine how much of the row that the `GridItem` should cover. So, if you want a chart to stretch across the width of the view, you would place the chart in a `GridItem` with a `columnSpan` of _12_. If you want twelve charts to fit in a single row, use a `columnSpan` of _1_.
 
@@ -88,7 +88,7 @@ Each chart fills its `columnSpan` because they use the `fullWidth` prop. `fullWi
 
 <Callout variant="tip" title="Technical detail">
 
-Notice the `wrapper` class applied to the `Grid`. We quietly provided some CSS styles to help make this app look great! This isn't a CSS course, so we won't cover everything we added, we'll just include the styles we intend for you to use in the code snippets. Just know that every UI component in the New Relic One SDK provides a `className` prop where you can provide a CSS class name.
+Notice the `wrapper` class applied to the `Grid`. We quietly provided some CSS styles to help make this app look great! This isn't a CSS course, so we won't cover everything we added, we'll just include the styles we intend for you to use in the code snippets. Just know that every UI component in the New Relic app SDK provides a `className` prop where you can provide a CSS class name.
 
 You can view the styles in _nerdlets/ab-test-nerdlet/styles.scss_.
 
@@ -138,7 +138,7 @@ View your changes in [New Relic](https://one.newrelic.com?nerdpacks=local):
 
 Here, you see your charts styled and arranged in a grid.
 
-When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in your local server's terminal window.
+When you're finished, stop serving your New Relic application by pressing `CTRL+C` in your local server's terminal window.
 
 </Step>
 
@@ -150,7 +150,7 @@ In just six steps, you significantly improved the readability and usability of y
 
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. When you're ready, continue on to the next lesson: [_Add chart headings_](/build-apps/ab-test/chart-headings).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. When you're ready, continue on to the next lesson: [_Add chart headings_](/build-apps/ab-test/chart-headings).
 
 </Callout>
 

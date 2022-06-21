@@ -5,7 +5,7 @@ description: 'Introduction to custom visualizations'
 resources:
     - title: Build custom visualizations for dashboards
       url: '/build-apps/build-visualization'
-    - title: Custom visualizations and the New Relic One SDK
+    - title: Custom visualizations and the New Relic app SDK
       url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
     - title: Customize visualizations with configuration
       url: '/build-apps/customize-visualizations-with-configuration'
@@ -33,11 +33,11 @@ New Relic is programmable. This means that if the platform doesn't solve your sp
 
 One area where programmability is valuable is in visualizing your data. While New Relic offers all the telemetry data that your apps and services report and provides many different kinds of charts to present that data, you might need to create something entirely unique.
 
-With the New Relic One SDK, we've provided you all the tools you'll need to create your own visualizations.
+With the New Relic app SDK, we've provided you all the tools you'll need to create your own visualizations.
 
 ## Build your custom visualization
 
-With the New Relic One SDK, you can create a Nerdpack, which houses your visualization code. This code consists of a React component, logic, data queries, and external dependencies. The SDK also provides a component library that you can use to make NerdGraph requests, access platform state context, and more.
+With the New Relic app SDK, you can create a Nerdpack, which houses your visualization code. This code consists of a React component, logic, data queries, and external dependencies. The SDK also provides a component library that you can use to make NerdGraph requests, access platform state context, and more.
 
 Check out this video showing how to create a custom visualization (8:14 minutes).
 
@@ -45,7 +45,7 @@ Check out this video showing how to create a custom visualization (8:14 minutes)
 
 ### Your first visualization
 
-To build your first custom visualization, [install the New Relic One SDK](/automate-workflows/get-started-new-relic-cli) and make sure you have the latest version:
+To build your first custom visualization, [install the New Relic app SDK](/automate-workflows/get-started-new-relic-cli) and make sure you have the latest version:
 
 ```sh
 nr1 update
@@ -97,7 +97,7 @@ Enter values into the fields under **Configure visualization properties** and se
 Here is a list of resources for building custom visualizations:
 
 - [Build a custom visualization for dashboards **(Guide)**](/build-apps/build-visualization)
-- [Custom visualizations and the New Relic One SDK **(Guide)**](/build-apps/custom-visualizations-and-the-new-relic-one-sdk)
+- [Custom visualizations and the New Relic app SDK **(Guide)**](/build-apps/custom-visualizations-and-the-new-relic-one-sdk)
 - [Dashboards and Custom Visualizations **(Video)**](https://www.youtube.com/watch?v=_F61mxtKfGA)
 
 ## Customize your visualization
@@ -120,9 +120,9 @@ During development, you can serve your visualization locally. Under **Apps > Cus
 
 ![No local visualizations in dashboards](../../images/custom-viz/local-viz.png)
 
-To do that, you need to publish it to the New Relic One catalog and subscribe to it from your account.
+To do that, you need to publish it to the New Relic app catalog and subscribe to it from your account.
 
-Because custom visualizations are Nerdpack items, you publish and subscribe to them the same way you [publish and subscribe to New Relic One applications](/build-apps/publish-deploy). Once you've done so, you can add your custom visualization to a dashboard:
+Because custom visualizations are Nerdpack items, you publish and subscribe to them the same way you [publish and subscribe to New Relic applications](/build-apps/publish-deploy). Once you've done so, you can add your custom visualization to a dashboard:
 
 ![Add your published visualization to a dashboard](../../images/custom-viz/published-viz.png)
 

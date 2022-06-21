@@ -37,7 +37,7 @@ const getStartedGuides = [
   {
     duration: 12,
     title: 'Build a Hello, World! app',
-    description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
+    description: `Build a Hello, World! app and publish it to your local New Relic app catalog`,
     url: '/build-apps/build-hello-world-app',
     icon: <Icon name="nr-build-apps" />,
   },

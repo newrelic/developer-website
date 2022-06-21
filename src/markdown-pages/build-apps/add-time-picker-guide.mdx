@@ -31,14 +31,14 @@ We also have a 12 minute video that covers the steps below.
 
 ## Before you begin
 
-To develop projects, you need our New Relic One CLI (command line interface). If you haven't already installed it, do the following:
+To develop projects, you need our New Relic app CLI (command line interface). If you haven't already installed it, do the following:
 
 - Install [Node.js](https://nodejs.org/en/download/).
 - Complete steps 1–4 of the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==). In step 1, be sure to make a copy of the number preceding your account name. This is your accound ID, and you’ll need it later.
 
 <Callout variant="important">
 
-If you've already installed the New Relic One CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
+If you've already installed the New Relic app CLI, but you can't remember your account ID, start the [CLI quick start](https://one.newrelic.com/launcher/developer-center.launcher?pane=eyJuZXJkbGV0SWQiOiJkZXZlbG9wZXItY2VudGVyLmRldmVsb3Blci1jZW50ZXIifQ==) again, and then click the **Get your API key** down arrow. The account ID is the number preceding your account name.
 
 </Callout>
 
@@ -116,7 +116,7 @@ nr1 nerdpack:serve
 
   <Step>
 
-Once the sample application is successfully served, go to the local version of New Relic One (https://one.newrelic.com/?nerdpacks=local) click **Apps**, and click **Add Time Picker**.
+Once the sample application is successfully served, go to the local version of New Relic (https://one.newrelic.com/?nerdpacks=local), click **Apps**, and click **Add Time Picker**.
 
   </Step>
 
@@ -126,7 +126,7 @@ After launching the **Add Time Picker** application, you see a dashboard that gi
 
 ![Transaction overview application](../../images/time-picker-guide/add-timepicker.png)
 
-By default, the application shows your data within the last 60 minutes. If you toggle the time picker, it doesn't update the charts because the transaction overview application isn't connected to the New Relic One platform. It has no access to the data from the time picker.
+By default, the application shows your data within the last 60 minutes. If you toggle the time picker, it doesn't update the charts because the transaction overview application isn't connected to the New Relic platform. It has no access to the data from the time picker.
 
 In the following sections, you'll add the time picker to the example application and add the time to the queries.
 
@@ -295,11 +295,11 @@ After you complete these steps, your browser console displays something like thi
 
 In your console, you should see some data from the New Relic platform state. Now you're ready to add `timeRange` data to update the charts in the transaction overview application.
 
-This step requires you to import the `timeRangeToNrql` utility method from the New Relic One community library.
+This step requires you to import the `timeRangeToNrql` utility method from the New Relic community library.
 
 <Callout variant="important">
 
-You can get more details on the New Relic One community library from our [GitHub repo](https://github.com/newrelic/nr1-community).
+You can get more details on the New Relic app community library from our [GitHub repo](https://github.com/newrelic/nr1-community).
 
 </Callout>
 

@@ -77,7 +77,7 @@ The New Relic Developer Experience Team uses [Github](https://github.com/) and [
 
 ### Technical references
 
-Technical reference pages are detailed technical specifications of the New Relic One platform and it's components.
+Technical reference pages are detailed technical specifications of the New Relic platform and itss components.
 
 ### Guides
 
@@ -431,7 +431,7 @@ If a language keyword is omitted, the type will show as TEXT (as shown above)
 
 Proper nouns should use correct capitalization when possible. Below is a list of words as they should appear in pages.
 
-- New Relic One
+- New Relic
 - GraphQL
 - NerdGraph
 - Nerdpack

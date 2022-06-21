@@ -71,7 +71,7 @@ const DeveloperChampionPage = ({ location }) => {
               <h4>Open-source contributions</h4>
               <p>
                 Serving as an open-source author or maintainer for an accepted
-                public project related to New Relic One
+                public project related to New Relic
               </p>
             </div>
             <div className={styles.point}>

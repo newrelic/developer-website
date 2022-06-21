@@ -49,7 +49,7 @@
       - [Adding new components](#adding-new-components)
     - [Step 3: Add any new APIs or components to the navigation](#step-3-add-any-new-apis-or-components-to-the-navigation)
   - [Updating Developer terms](#updating-developer-terms)
-    - [Developer terms in New Relic One](#developer-terms-in-new-relic-one)
+    - [Developer terms in New Relic](#developer-terms-in-new-relic-one)
     - [Developer terms tips](#developer-terms-tips)
     - [Developer terms testing](#developer-terms-testing)
 
@@ -191,7 +191,7 @@ when creating documentation. Refer to our [Component Guide](COMPONENT_GUIDE.md) 
 
 ## Technical reference contribution guidelines
 
-Technical reference pages are detailed technical specifications of the New Relic One platform and it's components.
+Technical reference pages are detailed technical specifications of the New Relic platform and its components.
 
 ## Editing existing pages
 
@@ -466,9 +466,9 @@ pandoc devterms.docx -o devterms.md
 
 4. Start the process of updating the terms.
 
-### Developer terms in New Relic One
+### Developer terms in New Relic
 
-The developer terms can be accepted in [New Relic One](https://one.newrelic.com) in the Developer Center which is accessible when a user clicks on
+The developer terms can be accepted in [New Relic](https://one.newrelic.com) in the Developer Center which is accessible when a user clicks on
 `Build your own app`.
 
 - The Developer Center functionality is located in an internal Github Enterprise repository:  `wanda/developer-center`.

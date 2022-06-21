@@ -422,9 +422,9 @@ You can hide any content with this component, including other components. This a
 <HideWhenEmbedded>
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
-Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Install and configure the New Relic One CLI_](/build-apps/ab-test/install-nr1), before starting this one.
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Install and configure the New Relic app CLI_](/build-apps/ab-test/install-nr1), before starting this one.
 
 </Callout>
 </HideWhenEmbedded>
@@ -436,9 +436,9 @@ Other text ...
 ## Normal Embed
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
-Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Install and configure the New Relic One CLI_](/build-apps/ab-test/install-nr1), before starting this one.
+Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Install and configure the New Relic app CLI_](/build-apps/ab-test/install-nr1), before starting this one.
 
 </Callout>
 

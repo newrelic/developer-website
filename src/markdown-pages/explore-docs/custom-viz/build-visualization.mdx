@@ -4,11 +4,11 @@ title: 'Build your first custom visualization'
 template: 'GuideTemplate'
 description: 'Create a custom data view and add it to a dashboard'
 resources:
-  - title: Custom visualizations and the New Relic One SDK
+  - title: Custom visualizations and the New Relic app SDK
     url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
   - title: Customize visualizations with configuration
     url: '/build-apps/customize-visualizations-with-configuration'
-  - title: New Relic One VSCode extension
+  - title: New Relic app VSCode extension
     url: https://marketplace.visualstudio.com/items?itemName=new-relic.nr1
   - title: 'Build on New Relic'
     url: https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/build-new-relic-one/new-relic-one-build-your-own-custom-new-relic-one-application
@@ -30,7 +30,7 @@ In this guide, you learn how to:
 
 - Use the `nr1` CLI to generate a default visualization
 - Run your visualization locally where you can quickly test and iterate
-- Publish your visualization to the New Relic One catalog
+- Publish your visualization to the New Relic app catalog
 - Add your visualization to a dashboard
 
 </Intro>
@@ -208,7 +208,7 @@ const ErrorState = () => (
 
 <Step>
 
-Ensure you're working with the latest version of the New Relic One CLI:
+Ensure you're working with the latest version of the New Relic app CLI:
 
 ```bash
 nr1 update
@@ -492,7 +492,7 @@ Look for a success message in your output:
 [output] {success}✔{normal}  Tagged {purple}5f4c2af8-3b27-40b5-954c-356d1ef88dd0{normal} version {blue}1.0.0{normal} as {blue}STABLE{normal}.
 ```
 
-This means that your Nerdpack was published to the New Relic One catalog that you can find under **Apps**.
+This means that your Nerdpack was published to the New Relic app catalog that you can find under **Apps**.
 
 </Step>
 
@@ -513,7 +513,7 @@ Now, you're subscribed to your Nerdpack and can build an instance of a visualiza
 
 Once again, open the **Apps** page at [New Relic](https://one.newrelic.com):
 
-![Apps navigation is located in the New Relic One top navigation](../../../images/build-an-app/nav-to-apps.png)
+![Apps navigation is located in the New Relic top navigation](../../../images/build-an-app/nav-to-apps.png)
 
 Here, you don't need to use the `?nerdpacks=local` query string because you're looking for a visualization that you've published and subscribed to, rather than one that is locally served.
 
