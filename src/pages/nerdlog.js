@@ -68,7 +68,8 @@ const NerdlogPage = ({ location }) => {
                 <h2>What is the New Relic changelog?</h2>
                 <p>
                   The changelog is our live stream changelog on{' '}
-                  <a href="https://www.twitch.tv/new_relic">Twitch</a> that lets you:
+                  <a href="https://www.twitch.tv/new_relic">Twitch</a> that lets
+                  you:
                 </p>
                 <div>
                   <ul>
