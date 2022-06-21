@@ -65,11 +65,10 @@ const NerdlogPage = ({ location }) => {
               className={cx(styles.twoColumnAlt, styles.registrationSection)}
             >
               <div>
-                <h2>What is the Nerdlog?</h2>
+                <h2>What is the New Relic Changelog?</h2>
                 <p>
-                  The Nerdlog is our brand new live stream changelog on{' '}
-                  <a href="https://www.twitch.tv/new_relic">Twitch</a>. Every
-                  Thursday, you can:
+                  The Changelog is our brand new live stream changelog on{' '}
+                  <a href="https://www.twitch.tv/new_relic">Twitch</a> that lets you:
                 </p>
                 <div>
                   <ul>
@@ -103,19 +102,7 @@ const NerdlogPage = ({ location }) => {
                   </ul>
                 </div>
                 <div style={{ display: 'none' }}>
-                  <h2>Join us live every Thursday!</h2>
-                  <ul>
-                    <li>
-                      <strong>Where:</strong> Follow us on{' '}
-                      <a href="https://www.twitch.tv/new_relic">Twitch</a>
-                    </li>
-                    <li>
-                      <strong>Date:</strong> 12 P.M. PT (8 P.M. UTC)
-                    </li>
-                  </ul>
-                  <p>
-                    <strong>Can’t make it?</strong> We’ll miss you, but checkout
-                    our playlist on{' '}
+                  <p>Check out our playlist on{' '}
                     <a href="https://www.youtube.com/playlist?list=PLmhYj7Jl81JGOEHV7zUVfa_iGNyOfMGNh">
                       YouTube.
                     </a>
@@ -141,8 +128,7 @@ const NerdlogPage = ({ location }) => {
           </Section>
           <Section>
             <SectionHeading>
-              Hosted by <a href="https://twitter.com/leonadato">@LeonAdato</a>
-              &nbsp; and New Relic's DevRel team
+              Brought to you by the New Relic DevRel team
             </SectionHeading>
             <section className={cx(styles.meetTheTeam)}>
               {teamMemberPanels}

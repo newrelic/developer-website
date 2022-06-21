@@ -2,8 +2,6 @@ import React from 'react';
 import aaronAvatar from '../images/relicans/aaron-bassett.jpg';
 import dannyAvatar from '../images/relicans/danny-ramos.jpg';
 import kirkAvatar from '../images/relicans/kirk-haines.jpg';
-import miaAvatar from '../images/relicans/mia-moore.jpg';
-import pachiAvatar from '../images/relicans/pachi-carlson.jpg';
 import laurenAvatar from '../images/relicans/lauren-lee.jpg';
 
 export const teamMembers = [
@@ -145,78 +143,6 @@ export const teamMembers = [
       {
         name: 'instagram',
         url: 'https://instagram.com/lolocoding',
-      },
-    ],
-  },
-  {
-    name: 'Mia Moore',
-    pronouns: 'they/them',
-    avatar: miaAvatar,
-    bio: (
-      <p>
-        Mia Moore (they/them) is a Developer Programs Manager at New Relic.
-        Before joining New Relic, Mia was a Developer Advocate at IBM and has a
-        background in content creation, marketing, and community management.
-        They are enthusiastic about good storytelling in digital content. In
-        their free time, Mia enjoys knitting, birding, and gaming.
-      </p>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/xomiamoore',
-      },
-      {
-        name: 'twitch',
-        url: 'https://www.twitch.tv/xomiamoore',
-      },
-      {
-        name: 'instagram',
-        url: 'https://www.instagram.com/xomiamoore',
-      },
-      {
-        name: 'linkedin',
-        url: 'https://www.linkedin.com/in/miamoore',
-      },
-    ],
-  },
-  {
-    name: 'Pachi Carlson',
-    pronouns: 'she/her',
-    avatar: pachiAvatar,
-    bio: (
-      <>
-        <p>
-          Pachi is a self-directed learner, who started her career as a
-          Front-End developer and is passionate about HTML and CCS. She is
-          originally from Brazil where she was born and raised, but now she
-          lives in the USA with her husband, cats and bearded dragon.
-        </p>
-        <p>
-          Very active online, Pachi fell in love with the community and even
-          being a junior herself, she began teaching what she knew and sharing
-          her learning Journey writing and live coding on Twitch, and that was
-          how she got interested in Developer Relations. Now a Developer
-          Relations Engineer at New Relic.
-        </p>
-      </>
-    ),
-    socials: [
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/pachicodes',
-      },
-      {
-        name: 'twitch',
-        url: 'https://twitch.tv/pachicodes',
-      },
-      {
-        name: 'instagram',
-        url: 'https://instagram.com/pachicodes',
-      },
-      {
-        name: 'linkedin',
-        url: 'https://linkedin.com/in/pachicodes',
       },
     ],
   },
