@@ -603,7 +603,7 @@
 - title: New Relic Builders
   icon: nr-builders
   url: '/builders'
-- title: Nerdlog
+- title: Changelog
   icon: nr-nerdlog
   url: '/nerdlog'
 - title: Podcasts
