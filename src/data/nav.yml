@@ -1,15 +1,6 @@
-- title: Collect data
+- title: Experience New Relic
   icon: nr-tdp
-  url: '/collect-data'
   pages:
-    - title: Collect data from any source
-      url: https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data
-    - title: Explore NerdGraph using the API Explorer
-      url: '/collect-data/get-started-nerdgraph-api-explorer'
-    - title: Monitor your network devices
-      url: '/collect-data/network-performance-monitoring'
-    - title: Identify root cause issues in your infrastructure
-      url: '/collect-data/infra'
     - title: Monitor your application
       url: '/collect-data/monitor-your-application'
       pages:
@@ -27,7 +18,8 @@
           url: '/collect-data/monitor-your-application/query-custom-data'
         - title: Add alerts
           url: '/collect-data/monitor-your-application/add-alerts'
-
+    - title: Monitor your network devices
+      url: '/collect-data/network-performance-monitoring'
     - title: Monitor your Kubernetes cluster with New Relic and Pixie
       url: '/collect-data/pixie'
       pages:
@@ -41,6 +33,44 @@
           url: '/collect-data/pixie/scenario-1'
         - title: Debug latency in the TinyHat admin
           url: '/collect-data/pixie/scenario-2'
+    - title: Use New Relic to diagnose problems in your system
+      url: '/automate-workflows/diagnose-problems'
+      pages:
+        - title: Spin up Acme Telco Lite architecture
+          url: '/automate-workflows/diagnose-problems/spin-up-acme'
+        - title: View your services
+          url: '/automate-workflows/diagnose-problems/view-your-services'
+        - title: Diagnose high response time
+          url: '/automate-workflows/diagnose-problems/high-response-times'
+        - title: Diagnose error alerts
+          url: '/automate-workflows/diagnose-problems/error-alerts'
+        - title: Tear down Telco Lite
+          url: '/automate-workflows/diagnose-problems/tear-down'
+    - title: Identify root cause issues in your infrastructure
+      url: '/collect-data/infra'
+    - title: Resolve errors faster with full stack error tracking
+      url: '/automate-workflows/error-inbox'
+      pages:
+        - title: Spin up Geek movie shop architecture
+          url: '/automate-workflows/error-inbox/spin-up-geek-movie'
+        - title: Set up Errors Inbox
+          url: '/automate-workflows/error-inbox/set-up-errors-inbox'
+        - title: Triage your errors
+          url: '/automate-workflows/error-inbox/triage-errors'
+        - title: Manage your triaged errors
+          url: '/automate-workflows/error-inbox/manage-errors'
+    - title: Build a quickstart
+      url: '/contribute-to-quickstarts/build-a-quickstart'
+      pages:
+        - title: Deploy your application
+          url: /contribute-to-quickstarts/build-a-quickstart/deploy-your-application
+        - title: Create a dashboard
+          url: /contribute-to-quickstarts/build-a-quickstart/create-a-dashboard
+        - title: Create alerts
+          url: /contribute-to-quickstarts/build-a-quickstart/create-alerts
+        - title: Create a quickstart
+          url: /contribute-to-quickstarts/build-a-quickstart/create-quickstart
+
     - title: Automatically instrument your application with OpenTelemetry
       url: '/collect-data/opentelemetry'
       pages:
@@ -61,244 +91,242 @@
           url: '/collect-data/opentelemetry-manual/view'
         - title: Send a custom span event
           url: '/collect-data/opentelemetry-manual/custom-span-event'
+- title: Learn New Relic
+  icon: nr-automation
+  pages:
+    - title: Terraform
+      pages:
+        - title: Using Terraform with New Relic
+          pages:
+            - title: Set up New Relic using Terraform
+              url: '/automate-workflows/get-started-terraform'
+            - title: Using Terraform modules and remote storage
+              url: '/terraform/terraform-modules'
+            - title: Using Terragrunt to manage multiple environments
+              url: '/terraform/terragrunt-configuration'
+
+    - title: Kubernetes
+      pages:
+        - title: Set up New Relic using Helm charts
+          url: '/automate-workflows/kubernetes-helm-deployment'
+        - title: Set up New Relic using the Kubernetes operator
+          url: '/automate-workflows/get-started-kubernetes'
+    - title: Programmability
+      url: '/build-apps'
+      pages:
+        - title: Set up your development environment
+          url: '/build-apps/set-up-dev-env'
+        - title: Enable advanced configurations for your Nerdpack
+          url: '/build-apps/advanced-config'
+        - title: Create "Hello world" application
+          url: '/build-apps/build-hello-world-app'
+        - title: Create a New Relic application using React hooks
+          url: '/build-apps/build-react-hooks-app'
+        - title: Publish and deploy your Nerdpack
+          url: '/build-apps/publish-deploy'
+          pages:
+            - title: Serve your Nerdpack
+              url: '/build-apps/publish-deploy/serve'
+            - title: Publish your Nerdpack
+              url: '/build-apps/publish-deploy/publish'
+            - title: Subscribe to your Nerdpack
+              url: '/build-apps/publish-deploy/subscribe'
+            - title: Update your Nerdpack's catalog information
+              url: '/build-apps/publish-deploy/catalog'
+            - title: Tag your Nerdpack's release version
+              url: '/build-apps/publish-deploy/tag'
+        - title: Customize open-source Nerdpacks
+          url: '/build-apps/customize-nerdpack'
+        - title: Permissions for managing apps
+          url: '/build-apps/permission-manage-apps'
+        - title: Attach your Nerdlet to your entities
+          url: '/build-apps/attach-nerdlet-to-entities'
+        - title: Map page views by region in a custom app
+          url: '/build-apps/map-pageviews-by-region'
+        - title: Add a time picker
+          url: '/build-apps/add-time-picker-guide'
+        - title: Add the NerdGraphQuery component to an app
+          url: '/build-apps/add-nerdgraphquery-guide'
+        - title: Add tables to your New Relic One application
+          url: '/build-apps/howto-use-nrone-table-components'
+        - title: Add, query, and mutate data using NerdStorage
+          url: '/build-apps/add-query-mutate-data-nerdstorage'
+        - title: Display your data in different ways with a custom visualization
+          pages:
+            - title: Customize your visualization with SDK components
+              url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
+            - title: Customize your visualization with configuration options
+              url: '/build-apps/customize-visualizations-with-configuration'
+            - title: Add your custom visualization to a dashboard
+              url: '/build-apps/add-visualizations-to-dashboard'
+        - title: Manage New Relic One SDK deprecations
+          url: '/build-apps/nr1-deprecations'
+    - title: Instant Observability (I/O)
+      pages:
+        - title: Send telemetry data to New Relic
+          url: '/contribute-to-quickstarts/instrument-library'
+          pages:
+            - title: Send events from your product
+              url: '/contribute-to-quickstarts/instrument-library/send-events'
+        - title: Populate your alert configurations with NerdGraph
+          url: '/contribute-to-quickstarts/query-alerts-for-quickstart'
+    - title: NR1 CLI
+      url: '/explore-docs/nr1-cli'
+      pages:
+        - title: Common commands
+          url: '/explore-docs/nr1-common'
+        - title: Config commands
+          url: '/explore-docs/nr1-config'
+        - title: Nerdpack commands
+          url: '/explore-docs/nr1-nerdpack'
+        - title: Subscription commands
+          url: '/explore-docs/nr1-subscription'
+        - title: Plugin commands
+          url: '/explore-docs/nr1-plugins'
+        - title: Catalog commands
+          url: '/explore-docs/nr1-catalog'
+
+    - title: New Relic CLI
+      url: '/explore-docs/newrelic-cli'
+      pages:
+        - title: Get started with the New Relic CLI
+          url: '/automate-workflows/get-started-new-relic-cli'
+        - title: Tag a set of resources efficiently
+          url: '/automate-workflows/5-mins-tag-resources'
+
+- title: Master New Relic
+  icon: fe-compass
+  pages:
+    - title: OpenTelemetry
+      url: '/opentelemetry-masterclass'
+      pages:
+        - title: Telemetry basics
+          url: '/opentelemetry-masterclass/telemetry'
+          pages:
+            - title: Telemetry
+              url: '/opentelemetry-masterclass/telemetry/telemetry'
+            - title: Telemetry data types
+              url: '/opentelemetry-masterclass/telemetry/telemetry-data-types'
+            - title: Traces
+              url: '/opentelemetry-masterclass/telemetry/traces'
+            - title: Telemetry and observability
+              url: '/opentelemetry-masterclass/telemetry/telemetry-and-observability'
+            - title: Traditional telemetry instrumentation
+              url: '/opentelemetry-masterclass/telemetry/traditional-telemetry-instrumentation'
+        - title: OpenTelemetry fundamentals
+          url: '/opentelemetry-masterclass/fundamentals'
+          pages:
+            - title: OpenTelemetry
+              url: '/opentelemetry-masterclass/fundamentals/opentelemetry'
+            - title: The OpenTelemetry specification
+              url: '/opentelemetry-masterclass/fundamentals/opentelemetry-specification'
+            - title: The OpenTelemetry data model specification
+              url: '/opentelemetry-masterclass/fundamentals/data-model'
+            - title: Trace data model and semantic conventions
+              url: '/opentelemetry-masterclass/fundamentals/trace-data-model-semantic-conventions'
+            - title: The OpenTelemetry Protocol
+              url: '/opentelemetry-masterclass/fundamentals/otlp'
+            - title: The OpenTelemetry API specification
+              url: '/opentelemetry-masterclass/fundamentals/api'
+            - title: Defining the interface
+              url: '/opentelemetry-masterclass/fundamentals/defining-the-interface'
+            - title: Minimal implementation
+              url: '/opentelemetry-masterclass/fundamentals/minimal-implementation'
+            - title: Separating concerns
+              url: '/opentelemetry-masterclass/fundamentals/separating-concerns'
+            - title: The OpenTelemetry SDK
+              url: '/opentelemetry-masterclass/fundamentals/sdk'
+            - title: SDK plugins
+              url: '/opentelemetry-masterclass/fundamentals/sdk-plugins'
+            - title: SDK constructors
+              url: '/opentelemetry-masterclass/fundamentals/sdk-constructors'
+            - title: Resources
+              url: '/opentelemetry-masterclass/fundamentals/resources'
+            - title: OpenTelemetry implementations
+              url: '/opentelemetry-masterclass/fundamentals/opentelemetry-implementations'
+        - title: Hands-on OpenTelemetry
+          url: '/opentelemetry-masterclass/hands-on'
+          pages:
+            - title: Hands-on OpenTelemetry workshop
+              url: '/opentelemetry-masterclass/hands-on/workshop-introduction'
+            - title: View a summary of your data
+              url: '/opentelemetry-masterclass/hands-on/data-summary'
+            - title: View your traces
+              url: '/opentelemetry-masterclass/hands-on/traces'
+            - title: View error traces
+              url: '/opentelemetry-masterclass/hands-on/error-traces'
+    - title: New Relic Programmability
+      pages:
+        - title: Build an A/B test application
+          url: '/ab-test'
+          pages:
+            - title: Spin up your demo services
+              url: '/build-apps/ab-test/demo-setup'
+            - title: Install and configure the New Relic One CLI
+              url: '/build-apps/ab-test/install-nr1'
+            - title: Create a Nerdpack
+              url: '/build-apps/ab-test/create-nerdpack'
+            - title: Serve your New Relic One application
+              url: '/build-apps/ab-test/serve-app'
+            - title: Add chart components to your A/B test application
+              url: '/build-apps/ab-test/add-charts'
+            - title: Add your first chart
+              url: '/build-apps/ab-test/first-chart'
+            - title: Add pie charts
+              url: '/build-apps/ab-test/pie-charts'
+            - title: Add tables
+              url: '/build-apps/ab-test/table-charts'
+            - title: Add a chart group
+              url: '/build-apps/ab-test/chart-group'
+            - title: Add user interface components to your application
+              url: '/build-apps/ab-test/add-ui'
+            - title: Add a grid
+              url: '/build-apps/ab-test/grid'
+            - title: Add chart headings
+              url: '/build-apps/ab-test/chart-headings'
+            - title: Add version descriptions
+              url: '/build-apps/ab-test/version-descriptions'
+            - title: Add a section to end your test
+              url: '/build-apps/ab-test/end-test'
+            - title: Persist the selected version
+              url: '/build-apps/ab-test/persist-version'
+            - title: Present an end test confirmation modal
+              url: '/build-apps/ab-test/confirmation-modal'
+            - title: Add NrqlQuery components to your Nerdlet
+              url: '/build-apps/ab-test/nrql'
+            - title: Customize NRQL data
+              url: '/build-apps/ab-test/nrql-customizations'
+            - title: Access NerdStorage from your Nerdlet
+              url: '/build-apps/ab-test/nerdstorage'
+            - title: Access NerdStorageVault from your Nerdlet
+              url: '/build-apps/ab-test/nerdstoragevault'
+            - title: Fetch data from a third-party service
+              url: '/build-apps/ab-test/third-party-service'
+            - title: Add PlatformStateContext to your Nerdlet
+              url: '/build-apps/ab-test/platform-state-context'
+            - title: Add navigation to your Nerdlet
+              url: '/build-apps/ab-test/navigation'
+            - title: Describe your app for the catalog
+              url: '/build-apps/ab-test/catalog'
+            - title: Publish your New Relic One application
+              url: '/build-apps/ab-test/publish'
+            - title: Subscribe to your New Relic One application
+              url: '/build-apps/ab-test/subscribe'
+- title: OLD MENU ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- title: Collect data
+  icon: nr-tdp
+  url: '/collect-data'
+  pages:
+    - title: Collect data from any source
+      url: https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data
+    - title: Explore NerdGraph using the API Explorer
+      url: '/collect-data/get-started-nerdgraph-api-explorer'
 - title: Automate workflows
   icon: nr-automation
   url: '/automate-workflows'
   pages:
-    - title: Using Terrafom with New Relic
-      url: '/terraform'
-      pages:
-        - title: Set up New Relic using Terraform
-          url: '/automate-workflows/get-started-terraform'
-        - title: Using Terraform modules and remote storage
-          url: '/terraform/terraform-modules'
-        - title: Using Terragrunt to manage multiple environments
-          url: '/terraform/terragrunt-configuration'
-    - title: Get started with the New Relic CLI
-      url: '/automate-workflows/get-started-new-relic-cli'
-    - title: Set up New Relic using the Kubernetes operator
-      url: '/automate-workflows/get-started-kubernetes'
-    - title: Set up New Relic using Helm charts
-      url: '/automate-workflows/kubernetes-helm-deployment'
-    - title: Tag a set of resources efficiently
-      url: '/automate-workflows/5-mins-tag-resources'
     - title: Automated end-to-end tagging of entities
       url: '/automate-workflows/automated-tagging'
-    - title: Use New Relic to diagnose problems in your system
-      url: '/automate-workflows/diagnose-problems'
-      pages:
-        - title: Spin up Acme Telco Lite architecture
-          url: '/automate-workflows/diagnose-problems/spin-up-acme'
-        - title: View your services
-          url: '/automate-workflows/diagnose-problems/view-your-services'
-        - title: Diagnose high response time
-          url: '/automate-workflows/diagnose-problems/high-response-times'
-        - title: Diagnose error alerts
-          url: '/automate-workflows/diagnose-problems/error-alerts'
-        - title: Tear down Telco Lite
-          url: '/automate-workflows/diagnose-problems/tear-down'
-    - title: Resolve errors faster with full stack error tracking
-      url: '/automate-workflows/error-inbox'
-      pages:
-        - title: Spin up Geek movie shop architecture
-          url: '/automate-workflows/error-inbox/spin-up-geek-movie'
-        - title: Set up Errors Inbox
-          url: '/automate-workflows/error-inbox/set-up-errors-inbox'
-        - title: Triage your errors
-          url: '/automate-workflows/error-inbox/triage-errors'
-        - title: Manage your triaged errors
-          url: '/automate-workflows/error-inbox/manage-errors'
-- title: Build apps
-  icon: nr-build-apps
-  url: '/build-apps'
-  pages:
-    - title: Set up your development environment
-      url: '/build-apps/set-up-dev-env'
-    - title: Enable advanced configurations for your Nerdpack
-      url: '/build-apps/advanced-config'
-    - title: Create a 'Hello, World!' app
-      url: '/build-apps/build-hello-world-app'
-    - title: Build a NR1 app with React hooks
-      url: '/build-apps/build-react-hooks-app'
-    - title: Publish and deploy your Nerdpack
-      url: '/build-apps/publish-deploy'
-      pages:
-        - title: Serve your Nerdpack
-          url: '/build-apps/publish-deploy/serve'
-        - title: Publish your Nerdpack
-          url: '/build-apps/publish-deploy/publish'
-        - title: Subscribe to your Nerdpack
-          url: '/build-apps/publish-deploy/subscribe'
-        - title: Update your Nerdpack's catalog information
-          url: '/build-apps/publish-deploy/catalog'
-        - title: Tag your Nerdpack's release version
-          url: '/build-apps/publish-deploy/tag'
-    - title: Customize open-source Nerdpacks
-      url: '/build-apps/customize-nerdpack'
-    - title: Permissions for managing apps
-      url: '/build-apps/permission-manage-apps'
-    - title: Attach your Nerdlet to your entities
-      url: '/build-apps/attach-nerdlet-to-entities'
-    - title: Map pageviews by region
-      url: '/build-apps/map-pageviews-by-region'
-    - title: Add a time picker
-      url: '/build-apps/add-time-picker-guide'
-    - title: Add the NerdGraphQuery component to an app
-      url: '/build-apps/add-nerdgraphquery-guide'
-    - title: Add tables to your New Relic One application
-      url: '/build-apps/howto-use-nrone-table-components'
-    - title: Add, query, and mutate data using NerdStorage
-      url: '/build-apps/add-query-mutate-data-nerdstorage'
-    - title: Display your data in different ways with a custom visualization
-      pages:
-        - title: Customize your visualization with SDK components
-          url: '/build-apps/custom-visualizations-and-the-new-relic-one-sdk'
-        - title: Customize your visualization with configuration options
-          url: '/build-apps/customize-visualizations-with-configuration'
-        - title: Add your custom visualization to a dashboard
-          url: '/build-apps/add-visualizations-to-dashboard'
-    - title: Build an A/B test application
-      url: '/ab-test'
-      pages:
-        - title: Spin up your demo services
-          url: '/build-apps/ab-test/demo-setup'
-        - title: Install and configure the New Relic One CLI
-          url: '/build-apps/ab-test/install-nr1'
-        - title: Create a Nerdpack
-          url: '/build-apps/ab-test/create-nerdpack'
-        - title: Serve your New Relic One application
-          url: '/build-apps/ab-test/serve-app'
-        - title: Add chart components to your A/B test application
-          url: '/build-apps/ab-test/add-charts'
-        - title: Add your first chart
-          url: '/build-apps/ab-test/first-chart'
-        - title: Add pie charts
-          url: '/build-apps/ab-test/pie-charts'
-        - title: Add tables
-          url: '/build-apps/ab-test/table-charts'
-        - title: Add a chart group
-          url: '/build-apps/ab-test/chart-group'
-        - title: Add user interface components to your application
-          url: '/build-apps/ab-test/add-ui'
-        - title: Add a grid
-          url: '/build-apps/ab-test/grid'
-        - title: Add chart headings
-          url: '/build-apps/ab-test/chart-headings'
-        - title: Add version descriptions
-          url: '/build-apps/ab-test/version-descriptions'
-        - title: Add a section to end your test
-          url: '/build-apps/ab-test/end-test'
-        - title: Persist the selected version
-          url: '/build-apps/ab-test/persist-version'
-        - title: Present an end test confirmation modal
-          url: '/build-apps/ab-test/confirmation-modal'
-        - title: Add NrqlQuery components to your Nerdlet
-          url: '/build-apps/ab-test/nrql'
-        - title: Customize NRQL data
-          url: '/build-apps/ab-test/nrql-customizations'
-        - title: Access NerdStorage from your Nerdlet
-          url: '/build-apps/ab-test/nerdstorage'
-        - title: Access NerdStorageVault from your Nerdlet
-          url: '/build-apps/ab-test/nerdstoragevault'
-        - title: Fetch data from a third-party service
-          url: '/build-apps/ab-test/third-party-service'
-        - title: Add PlatformStateContext to your Nerdlet
-          url: '/build-apps/ab-test/platform-state-context'
-        - title: Add navigation to your Nerdlet
-          url: '/build-apps/ab-test/navigation'
-        - title: Describe your app for the catalog
-          url: '/build-apps/ab-test/catalog'
-        - title: Publish your New Relic One application
-          url: '/build-apps/ab-test/publish'
-        - title: Subscribe to your New Relic One application
-          url: '/build-apps/ab-test/subscribe'
-    - title: See all open source apps
-      url: https://opensource.newrelic.com/nerdpacks/
-    - title: Manage New Relic One SDK deprecations
-      url: '/build-apps/nr1-deprecations'
-
-- title: Contribute to quickstarts
-  icon: fe-zap
-  url: '/contribute-to-quickstarts'
-  pages:
-    - title: Send telemetry data to New Relic
-      url: '/contribute-to-quickstarts/instrument-library'
-      pages:
-        - title: Send events from your product
-          url: '/contribute-to-quickstarts/instrument-library/send-events'
-    - title: Build a quickstart
-      url: '/contribute-to-quickstarts/build-a-quickstart'
-      pages:
-        - title: Deploy your application
-          url: /contribute-to-quickstarts/build-a-quickstart/deploy-your-application
-        - title: Create a dashboard
-          url: /contribute-to-quickstarts/build-a-quickstart/create-a-dashboard
-        - title: Create alerts
-          url: /contribute-to-quickstarts/build-a-quickstart/create-alerts
-        - title: Create a quickstart
-          url: /contribute-to-quickstarts/build-a-quickstart/create-quickstart
-    - title: Populate your alert configurations with NerdGraph
-      url: '/contribute-to-quickstarts/query-alerts-for-quickstart'
-
-- title: OpenTelemetry masterclass
-  icon: fe-compass
-  url: '/opentelemetry-masterclass'
-  pages:
-    - title: Telemetry basics
-      url: '/opentelemetry-masterclass/telemetry'
-      pages:
-        - title: Telemetry
-          url: '/opentelemetry-masterclass/telemetry/telemetry'
-        - title: Telemetry data types
-          url: '/opentelemetry-masterclass/telemetry/telemetry-data-types'
-        - title: Traces
-          url: '/opentelemetry-masterclass/telemetry/traces'
-        - title: Telemetry and observability
-          url: '/opentelemetry-masterclass/telemetry/telemetry-and-observability'
-        - title: Traditional telemetry instrumentation
-          url: '/opentelemetry-masterclass/telemetry/traditional-telemetry-instrumentation'
-    - title: OpenTelemetry fundamentals
-      url: '/opentelemetry-masterclass/fundamentals'
-      pages:
-        - title: OpenTelemetry
-          url: '/opentelemetry-masterclass/fundamentals/opentelemetry'
-        - title: The OpenTelemetry specification
-          url: '/opentelemetry-masterclass/fundamentals/opentelemetry-specification'
-        - title: The OpenTelemetry data model specification
-          url: '/opentelemetry-masterclass/fundamentals/data-model'
-        - title: Trace data model and semantic conventions
-          url: '/opentelemetry-masterclass/fundamentals/trace-data-model-semantic-conventions'
-        - title: The OpenTelemetry Protocol
-          url: '/opentelemetry-masterclass/fundamentals/otlp'
-        - title: The OpenTelemetry API specification
-          url: '/opentelemetry-masterclass/fundamentals/api'
-        - title: Defining the interface
-          url: '/opentelemetry-masterclass/fundamentals/defining-the-interface'
-        - title: Minimal implementation
-          url: '/opentelemetry-masterclass/fundamentals/minimal-implementation'
-        - title: Separating concerns
-          url: '/opentelemetry-masterclass/fundamentals/separating-concerns'
-        - title: The OpenTelemetry SDK
-          url: '/opentelemetry-masterclass/fundamentals/sdk'
-        - title: SDK plugins
-          url: '/opentelemetry-masterclass/fundamentals/sdk-plugins'
-        - title: SDK constructors
-          url: '/opentelemetry-masterclass/fundamentals/sdk-constructors'
-        - title: Resources
-          url: '/opentelemetry-masterclass/fundamentals/resources'
-        - title: OpenTelemetry implementations
-          url: '/opentelemetry-masterclass/fundamentals/opentelemetry-implementations'
-    - title: Hands-on OpenTelemetry
-      url: '/opentelemetry-masterclass/hands-on'
-      pages:
-        - title: Hands-on OpenTelemetry workshop
-          url: '/opentelemetry-masterclass/hands-on/workshop-introduction'
-        - title: View a summary of your data
-          url: '/opentelemetry-masterclass/hands-on/data-summary'
-        - title: View your traces
-          url: '/opentelemetry-masterclass/hands-on/traces'
-        - title: View error traces
-          url: '/opentelemetry-masterclass/hands-on/error-traces'
 
 - title: Try our APIs
   icon: nr-share
@@ -327,23 +355,6 @@
 - title: Explore docs
   icon: nr-book
   pages:
-    - title: New Relic One CLI
-      url: '/explore-docs/nr1-cli'
-      pages:
-        - title: Common commands
-          url: '/explore-docs/nr1-common'
-        - title: Config commands
-          url: '/explore-docs/nr1-config'
-        - title: Nerdpack commands
-          url: '/explore-docs/nr1-nerdpack'
-        - title: Subscription commands
-          url: '/explore-docs/nr1-subscription'
-        - title: Plugin commands
-          url: '/explore-docs/nr1-plugins'
-        - title: Catalog commands
-          url: '/explore-docs/nr1-catalog'
-    - title: New Relic CLI
-      url: '/explore-docs/newrelic-cli'
     - title: Nerdpack file structure
       url: '/explore-docs/nerdpack-file-structure'
     - title: Intro to Nerdstorage
