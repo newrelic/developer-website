@@ -94,6 +94,16 @@
 - title: Learn New Relic
   icon: nr-automation
   pages:
+    - title: New Relic
+      pages:
+        - title: Collect data from any source
+          url: https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data
+        - title: Query and store data
+          url: '/explore-docs/query-and-store-data'
+        - title: Explore NerdGraph using the API Explorer
+          url: '/collect-data/get-started-nerdgraph-api-explorer'
+        - title: Automated end-to-end tagging of entities
+          url: '/automate-workflows/automated-tagging'
     - title: Terraform
       pages:
         - title: Using Terraform with New Relic
@@ -104,7 +114,6 @@
               url: '/terraform/terraform-modules'
             - title: Using Terragrunt to manage multiple environments
               url: '/terraform/terragrunt-configuration'
-
     - title: Kubernetes
       pages:
         - title: Set up New Relic using Helm charts
@@ -116,12 +125,14 @@
       pages:
         - title: Set up your development environment
           url: '/build-apps/set-up-dev-env'
-        - title: Enable advanced configurations for your Nerdpack
-          url: '/build-apps/advanced-config'
         - title: Create "Hello world" application
           url: '/build-apps/build-hello-world-app'
         - title: Create a New Relic application using React hooks
           url: '/build-apps/build-react-hooks-app'
+        - title: Nerdpack file structure
+          url: '/explore-docs/nerdpack-file-structure'
+        - title: Enable advanced configurations for your Nerdpack
+          url: '/build-apps/advanced-config'
         - title: Publish and deploy your Nerdpack
           url: '/build-apps/publish-deploy'
           pages:
@@ -145,12 +156,21 @@
           url: '/build-apps/map-pageviews-by-region'
         - title: Add a time picker
           url: '/build-apps/add-time-picker-guide'
-        - title: Add the NerdGraphQuery component to an app
+        - title: Add the NerdGraphQuery component to an application
           url: '/build-apps/add-nerdgraphquery-guide'
         - title: Add tables to your New Relic One application
           url: '/build-apps/howto-use-nrone-table-components'
         - title: Add, query, and mutate data using NerdStorage
           url: '/build-apps/add-query-mutate-data-nerdstorage'
+        - title: Introduction to custom visualizations
+          url: '/explore-docs/custom-viz'
+          pages:
+            - title: Configure your custom visualization
+              url: '/explore-docs/custom-viz/configuration-options'
+            - title: Build your first custom visualization
+              url: '/explore-docs/custom-viz/build-visualization'
+            - title: Add your custom visualization to a dashboard with NerdGraph
+              url: '/explore-docs/custom-viz/add-to-dashboard-nerdgraph'
         - title: Display your data in different ways with a custom visualization
           pages:
             - title: Customize your visualization with SDK components
@@ -161,6 +181,241 @@
               url: '/build-apps/add-visualizations-to-dashboard'
         - title: Manage New Relic One SDK deprecations
           url: '/build-apps/nr1-deprecations'
+          pages:
+        - title: Intro to Nerdstorage
+          url: '/explore-docs/nerdstorage'
+        - title: Intro to NerdstorageVault
+          url: '/explore-docs/nerdstoragevault'
+        - title: New Relic One SDK Component library
+          url: '/explore-docs/intro-to-sdk'
+          pages:
+            - title: Controls
+              pages:
+                - title: AccountPicker
+                  url: '/components/account-picker'
+                - title: Button
+                  url: '/components/button'
+                - title: Checkbox
+                  url: '/components/checkbox'
+                - title: CheckboxGroup
+                  url: '/components/checkbox-group'
+                - title: Dropdown
+                  url: '/components/dropdown'
+                - title: DropdownItem
+                  url: '/components/dropdown-item'
+                - title: DropdownSection
+                  url: '/components/dropdown-section'
+                - title: Form
+                  url: '/components/form'
+                - title: Radio
+                  url: '/components/radio'
+                - title: RadioGroup
+                  url: '/components/radio-group'
+                - title: SegmentedControl
+                  url: '/components/segmented-control'
+                - title: SegmentedControlItem
+                  url: '/components/segmented-control-item'
+                - title: Select
+                  url: '/components/select'
+                - title: SelectItem
+                  url: '/components/select-item'
+                - title: Steps
+                  url: '/components/steps'
+                - title: StepsItem
+                  url: '/components/steps-item'
+                - title: Switch
+                  url: '/components/switch'
+                - title: TextField
+                  url: '/components/text-field'
+            - title: Tables
+              pages:
+                - title: Table
+                  url: '/components/table'
+                - title: TableHeader
+                  url: '/components/table-header'
+                - title: TableHeaderCell
+                  url: '/components/table-header-cell'
+                - title: TableRow
+                  url: '/components/table-row'
+                - title: TableRowCell
+                  url: '/components/table-row-cell'
+                - title: EntityTitleTableRowCell
+                  url: '/components/entity-title-table-row-cell'
+                - title: FavoriteTableRowCell
+                  url: '/components/favorite-table-row-cell'
+                - title: MetricTableRowCell
+                  url: '/components/metric-table-row-cell'
+                - title: SparklineTableRowCell
+                  url: '/components/sparkline-table-row-cell'
+                - title: UserTableRowCell
+                  url: '/components/user-table-row-cell'
+            - title: Feedback
+              pages:
+                - title: EmptyState
+                  url: '/components/empty-state'
+                - title: Icon
+                  url: '/components/icon'
+                - title: InlineMessage
+                  url: '/components/inline-message'
+                - title: SectionMessage
+                  url: '/components/section-message'
+                - title: Spinner
+                  url: '/components/spinner'
+                - title: Toast
+                  url: '/components/toast'
+            - title: Indicators
+              pages:
+                - title: Badge
+                  url: '/components/badge'
+            - title: Overlays
+              pages:
+                - title: Modal
+                  url: '/components/modal'
+                - title: Popover
+                  url: '/components/popover'
+                - title: PopoverBody
+                  url: '/components/popover-body'
+                - title: PopoverFooter
+                  url: '/components/popover-footer'
+                - title: PopoverTrigger
+                  url: '/components/popover-trigger'
+                - title: Tooltip
+                  url: '/components/tooltip'
+            - title: Structure
+              pages:
+                - title: AutoSizer
+                  url: '/components/auto-sizer'
+                - title: Card
+                  url: '/components/card'
+                - title: CardBody
+                  url: '/components/card-body'
+                - title: CardHeader
+                  url: '/components/card-header'
+                - title: CardSection
+                  url: '/components/card-section'
+                - title: CardSectionBody
+                  url: '/components/card-section-body'
+                - title: CardSectionHeader
+                  url: '/components/card-section-header'
+                - title: CollapsibleLayoutItem
+                  url: '/components/collapsible-layout-item'
+                - title: Grid
+                  url: '/components/grid'
+                - title: GridItem
+                  url: '/components/grid-item'
+                - title: Layout
+                  url: '/components/layout'
+                - title: LayoutItem
+                  url: '/components/layout-item'
+                - title: List
+                  url: '/components/list'
+                - title: ListItem
+                  url: '/components/list-item'
+                - title: Spacing
+                  url: '/components/spacing'
+                - title: Stack
+                  url: '/components/stack'
+                - title: StackItem
+                  url: '/components/stack-item'
+                - title: Tabs
+                  url: '/components/tabs'
+                - title: TabsItem
+                  url: '/components/tabs-item'
+                - title: Tile
+                  url: '/components/tile'
+                - title: TileGroup
+                  url: '/components/tile-group'
+            - title: Text
+              pages:
+                - title: BlockText
+                  url: '/components/block-text'
+                - title: HeadingText
+                  url: '/components/heading-text'
+                - title: Link
+                  url: '/components/link'
+                - title: MultilineTextField
+                  url: '/components/multiline-text-field'
+            - title: Charts
+              url: '/components/charts'
+              pages:
+                - title: AreaChart
+                  url: '/components/area-chart'
+                - title: BarChart
+                  url: '/components/bar-chart'
+                - title: BillboardChart
+                  url: '/components/billboard-chart'
+                - title: ChartGroup
+                  url: '/components/chart-group'
+                - title: FunnelChart
+                  url: '/components/funnel-chart'
+                - title: HeatmapChart
+                  url: '/components/heatmap-chart'
+                - title: HistogramChart
+                  url: '/components/histogram-chart'
+                - title: JsonChart
+                  url: '/components/json-chart'
+                - title: LineChart
+                  url: '/components/line-chart'
+                - title: PieChart
+                  url: '/components/pie-chart'
+                - title: ScatterChart
+                  url: '/components/scatter-chart'
+                - title: SparklineChart
+                  url: '/components/sparkline-chart'
+                - title: StackedBarChart
+                  url: '/components/stacked-bar-chart'
+                - title: TableChart
+                  url: '/components/table-chart'
+            - title: Query and storage
+              pages:
+                - title: AccountStorageMutation
+                  url: '/components/account-storage-mutation'
+                - title: AccountStorageQuery
+                  url: '/components/account-storage-query'
+                - title: AccountsQuery
+                  url: '/components/accounts-query'
+                - title: EntitiesByDomainTypeQuery
+                  url: '/components/entities-by-domain-type-query'
+                - title: EntitiesByGuidsQuery
+                  url: '/components/entities-by-guids-query'
+                - title: EntitiesByNameQuery
+                  url: '/components/entities-by-name-query'
+                - title: EntityByGuidQuery
+                  url: '/components/entity-by-guid-query'
+                - title: EntityCountQuery
+                  url: '/components/entity-count-query'
+                - title: EntitySearchQuery
+                  url: '/components/entity-search-query'
+                - title: EntityStorageMutation
+                  url: '/components/entity-storage-mutation'
+                - title: EntityStorageQuery
+                  url: '/components/entity-storage-query'
+                - title: NerdGraphMutation
+                  url: '/components/nerd-graph-mutation'
+                - title: NerdGraphQuery
+                  url: '/components/nerd-graph-query'
+                - title: NrqlQuery
+                  url: '/components/nrql-query'
+                - title: UserQuery
+                  url: '/components/user-query'
+                - title: UserStorageMutation
+                  url: '/components/user-storage-mutation'
+                - title: UserStorageQuery
+                  url: '/components/user-storage-query'
+            - title: Platform APIs
+              pages:
+                - title: NerdletStateContext
+                  url: '/components/nerdlet-state-context'
+                - title: PlatformStateContext
+                  url: '/components/platform-state-context'
+                - title: logger
+                  url: '/apis/logger'
+                - title: navigation
+                  url: '/apis/navigation'
+                - title: nerdlet
+                  url: '/apis/nerdlet'
+                - title: ngql
+                  url: '/apis/ngql'
     - title: Instant Observability (I/O)
       pages:
         - title: Send telemetry data to New Relic
@@ -185,7 +440,6 @@
           url: '/explore-docs/nr1-plugins'
         - title: Catalog commands
           url: '/explore-docs/nr1-catalog'
-
     - title: New Relic CLI
       url: '/explore-docs/newrelic-cli'
       pages:
@@ -193,10 +447,66 @@
           url: '/automate-workflows/get-started-new-relic-cli'
         - title: Tag a set of resources efficiently
           url: '/automate-workflows/5-mins-tag-resources'
-
 - title: Master New Relic
   icon: fe-compass
   pages:
+    - title: New Relic Programmability
+      pages:
+        - title: Build an A/B test application
+          url: '/ab-test'
+          pages:
+            - title: Spin up your demo services
+              url: '/build-apps/ab-test/demo-setup'
+            - title: Install and configure the New Relic One CLI
+              url: '/build-apps/ab-test/install-nr1'
+            - title: Create a Nerdpack
+              url: '/build-apps/ab-test/create-nerdpack'
+            - title: Serve your New Relic One application
+              url: '/build-apps/ab-test/serve-app'
+            - title: Add chart components to your A/B test application
+              url: '/build-apps/ab-test/add-charts'
+            - title: Add your first chart
+              url: '/build-apps/ab-test/first-chart'
+            - title: Add pie charts
+              url: '/build-apps/ab-test/pie-charts'
+            - title: Add tables
+              url: '/build-apps/ab-test/table-charts'
+            - title: Add a chart group
+              url: '/build-apps/ab-test/chart-group'
+            - title: Add user interface components to your application
+              url: '/build-apps/ab-test/add-ui'
+            - title: Add a grid
+              url: '/build-apps/ab-test/grid'
+            - title: Add chart headings
+              url: '/build-apps/ab-test/chart-headings'
+            - title: Add version descriptions
+              url: '/build-apps/ab-test/version-descriptions'
+            - title: Add a section to end your test
+              url: '/build-apps/ab-test/end-test'
+            - title: Persist the selected version
+              url: '/build-apps/ab-test/persist-version'
+            - title: Present an end test confirmation modal
+              url: '/build-apps/ab-test/confirmation-modal'
+            - title: Add NrqlQuery components to your Nerdlet
+              url: '/build-apps/ab-test/nrql'
+            - title: Customize NRQL data
+              url: '/build-apps/ab-test/nrql-customizations'
+            - title: Access NerdStorage from your Nerdlet
+              url: '/build-apps/ab-test/nerdstorage'
+            - title: Access NerdStorageVault from your Nerdlet
+              url: '/build-apps/ab-test/nerdstoragevault'
+            - title: Fetch data from a third-party service
+              url: '/build-apps/ab-test/third-party-service'
+            - title: Add PlatformStateContext to your Nerdlet
+              url: '/build-apps/ab-test/platform-state-context'
+            - title: Add navigation to your Nerdlet
+              url: '/build-apps/ab-test/navigation'
+            - title: Describe your app for the catalog
+              url: '/build-apps/ab-test/catalog'
+            - title: Publish your New Relic One application
+              url: '/build-apps/ab-test/publish'
+            - title: Subscribe to your New Relic One application
+              url: '/build-apps/ab-test/subscribe'
     - title: OpenTelemetry
       url: '/opentelemetry-masterclass'
       pages:
@@ -255,78 +565,6 @@
               url: '/opentelemetry-masterclass/hands-on/traces'
             - title: View error traces
               url: '/opentelemetry-masterclass/hands-on/error-traces'
-    - title: New Relic Programmability
-      pages:
-        - title: Build an A/B test application
-          url: '/ab-test'
-          pages:
-            - title: Spin up your demo services
-              url: '/build-apps/ab-test/demo-setup'
-            - title: Install and configure the New Relic One CLI
-              url: '/build-apps/ab-test/install-nr1'
-            - title: Create a Nerdpack
-              url: '/build-apps/ab-test/create-nerdpack'
-            - title: Serve your New Relic One application
-              url: '/build-apps/ab-test/serve-app'
-            - title: Add chart components to your A/B test application
-              url: '/build-apps/ab-test/add-charts'
-            - title: Add your first chart
-              url: '/build-apps/ab-test/first-chart'
-            - title: Add pie charts
-              url: '/build-apps/ab-test/pie-charts'
-            - title: Add tables
-              url: '/build-apps/ab-test/table-charts'
-            - title: Add a chart group
-              url: '/build-apps/ab-test/chart-group'
-            - title: Add user interface components to your application
-              url: '/build-apps/ab-test/add-ui'
-            - title: Add a grid
-              url: '/build-apps/ab-test/grid'
-            - title: Add chart headings
-              url: '/build-apps/ab-test/chart-headings'
-            - title: Add version descriptions
-              url: '/build-apps/ab-test/version-descriptions'
-            - title: Add a section to end your test
-              url: '/build-apps/ab-test/end-test'
-            - title: Persist the selected version
-              url: '/build-apps/ab-test/persist-version'
-            - title: Present an end test confirmation modal
-              url: '/build-apps/ab-test/confirmation-modal'
-            - title: Add NrqlQuery components to your Nerdlet
-              url: '/build-apps/ab-test/nrql'
-            - title: Customize NRQL data
-              url: '/build-apps/ab-test/nrql-customizations'
-            - title: Access NerdStorage from your Nerdlet
-              url: '/build-apps/ab-test/nerdstorage'
-            - title: Access NerdStorageVault from your Nerdlet
-              url: '/build-apps/ab-test/nerdstoragevault'
-            - title: Fetch data from a third-party service
-              url: '/build-apps/ab-test/third-party-service'
-            - title: Add PlatformStateContext to your Nerdlet
-              url: '/build-apps/ab-test/platform-state-context'
-            - title: Add navigation to your Nerdlet
-              url: '/build-apps/ab-test/navigation'
-            - title: Describe your app for the catalog
-              url: '/build-apps/ab-test/catalog'
-            - title: Publish your New Relic One application
-              url: '/build-apps/ab-test/publish'
-            - title: Subscribe to your New Relic One application
-              url: '/build-apps/ab-test/subscribe'
-- title: OLD MENU ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-- title: Collect data
-  icon: nr-tdp
-  url: '/collect-data'
-  pages:
-    - title: Collect data from any source
-      url: https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data
-    - title: Explore NerdGraph using the API Explorer
-      url: '/collect-data/get-started-nerdgraph-api-explorer'
-- title: Automate workflows
-  icon: nr-automation
-  url: '/automate-workflows'
-  pages:
-    - title: Automated end-to-end tagging of entities
-      url: '/automate-workflows/automated-tagging'
 
 - title: Try our APIs
   icon: nr-share
@@ -352,256 +590,6 @@
           url: https://docs.newrelic.com/docs/insights/insights-api/get-data/query-insights-event-data-api
         - title: Synthetics API
           url: https://docs.newrelic.com/docs/apis/synthetics-rest-api
-- title: Explore docs
-  icon: nr-book
-  pages:
-    - title: Nerdpack file structure
-      url: '/explore-docs/nerdpack-file-structure'
-    - title: Intro to Nerdstorage
-      url: '/explore-docs/nerdstorage'
-    - title: Intro to NerdstorageVault
-      url: '/explore-docs/nerdstoragevault'
-    - title: Query and store data
-      url: '/explore-docs/query-and-store-data'
-    - title: Custom visualizations
-      url: '/explore-docs/custom-viz'
-      pages:
-        - title: Configuration options
-          url: '/explore-docs/custom-viz/configuration-options'
-        - title: Your first custom visualization
-          url: '/explore-docs/custom-viz/build-visualization'
-        - title: Add your visualization to a dashboard with NerdGraph
-          url: '/explore-docs/custom-viz/add-to-dashboard-nerdgraph'
-    - title: New Relic One SDK Component library
-      url: '/explore-docs/intro-to-sdk'
-      pages:
-        - title: Controls
-          pages:
-            - title: AccountPicker
-              url: '/components/account-picker'
-            - title: Button
-              url: '/components/button'
-            - title: Checkbox
-              url: '/components/checkbox'
-            - title: CheckboxGroup
-              url: '/components/checkbox-group'
-            - title: Dropdown
-              url: '/components/dropdown'
-            - title: DropdownItem
-              url: '/components/dropdown-item'
-            - title: DropdownSection
-              url: '/components/dropdown-section'
-            - title: Form
-              url: '/components/form'
-            - title: Radio
-              url: '/components/radio'
-            - title: RadioGroup
-              url: '/components/radio-group'
-            - title: SegmentedControl
-              url: '/components/segmented-control'
-            - title: SegmentedControlItem
-              url: '/components/segmented-control-item'
-            - title: Select
-              url: '/components/select'
-            - title: SelectItem
-              url: '/components/select-item'
-            - title: Steps
-              url: '/components/steps'
-            - title: StepsItem
-              url: '/components/steps-item'
-            - title: Switch
-              url: '/components/switch'
-            - title: TextField
-              url: '/components/text-field'
-        - title: Tables
-          pages:
-            - title: Table
-              url: '/components/table'
-            - title: TableHeader
-              url: '/components/table-header'
-            - title: TableHeaderCell
-              url: '/components/table-header-cell'
-            - title: TableRow
-              url: '/components/table-row'
-            - title: TableRowCell
-              url: '/components/table-row-cell'
-            - title: EntityTitleTableRowCell
-              url: '/components/entity-title-table-row-cell'
-            - title: FavoriteTableRowCell
-              url: '/components/favorite-table-row-cell'
-            - title: MetricTableRowCell
-              url: '/components/metric-table-row-cell'
-            - title: SparklineTableRowCell
-              url: '/components/sparkline-table-row-cell'
-            - title: UserTableRowCell
-              url: '/components/user-table-row-cell'
-        - title: Feedback
-          pages:
-            - title: EmptyState
-              url: '/components/empty-state'
-            - title: Icon
-              url: '/components/icon'
-            - title: InlineMessage
-              url: '/components/inline-message'
-            - title: SectionMessage
-              url: '/components/section-message'
-            - title: Spinner
-              url: '/components/spinner'
-            - title: Toast
-              url: '/components/toast'
-        - title: Indicators
-          pages:
-            - title: Badge
-              url: '/components/badge'
-        - title: Overlays
-          pages:
-            - title: Modal
-              url: '/components/modal'
-            - title: Popover
-              url: '/components/popover'
-            - title: PopoverBody
-              url: '/components/popover-body'
-            - title: PopoverFooter
-              url: '/components/popover-footer'
-            - title: PopoverTrigger
-              url: '/components/popover-trigger'
-            - title: Tooltip
-              url: '/components/tooltip'
-        - title: Structure
-          pages:
-            - title: AutoSizer
-              url: '/components/auto-sizer'
-            - title: Card
-              url: '/components/card'
-            - title: CardBody
-              url: '/components/card-body'
-            - title: CardHeader
-              url: '/components/card-header'
-            - title: CardSection
-              url: '/components/card-section'
-            - title: CardSectionBody
-              url: '/components/card-section-body'
-            - title: CardSectionHeader
-              url: '/components/card-section-header'
-            - title: CollapsibleLayoutItem
-              url: '/components/collapsible-layout-item'
-            - title: Grid
-              url: '/components/grid'
-            - title: GridItem
-              url: '/components/grid-item'
-            - title: Layout
-              url: '/components/layout'
-            - title: LayoutItem
-              url: '/components/layout-item'
-            - title: List
-              url: '/components/list'
-            - title: ListItem
-              url: '/components/list-item'
-            - title: Spacing
-              url: '/components/spacing'
-            - title: Stack
-              url: '/components/stack'
-            - title: StackItem
-              url: '/components/stack-item'
-            - title: Tabs
-              url: '/components/tabs'
-            - title: TabsItem
-              url: '/components/tabs-item'
-            - title: Tile
-              url: '/components/tile'
-            - title: TileGroup
-              url: '/components/tile-group'
-        - title: Text
-          pages:
-            - title: BlockText
-              url: '/components/block-text'
-            - title: HeadingText
-              url: '/components/heading-text'
-            - title: Link
-              url: '/components/link'
-            - title: MultilineTextField
-              url: '/components/multiline-text-field'
-        - title: Charts
-          url: '/components/charts'
-          pages:
-            - title: AreaChart
-              url: '/components/area-chart'
-            - title: BarChart
-              url: '/components/bar-chart'
-            - title: BillboardChart
-              url: '/components/billboard-chart'
-            - title: ChartGroup
-              url: '/components/chart-group'
-            - title: FunnelChart
-              url: '/components/funnel-chart'
-            - title: HeatmapChart
-              url: '/components/heatmap-chart'
-            - title: HistogramChart
-              url: '/components/histogram-chart'
-            - title: JsonChart
-              url: '/components/json-chart'
-            - title: LineChart
-              url: '/components/line-chart'
-            - title: PieChart
-              url: '/components/pie-chart'
-            - title: ScatterChart
-              url: '/components/scatter-chart'
-            - title: SparklineChart
-              url: '/components/sparkline-chart'
-            - title: StackedBarChart
-              url: '/components/stacked-bar-chart'
-            - title: TableChart
-              url: '/components/table-chart'
-        - title: Query and storage
-          pages:
-            - title: AccountStorageMutation
-              url: '/components/account-storage-mutation'
-            - title: AccountStorageQuery
-              url: '/components/account-storage-query'
-            - title: AccountsQuery
-              url: '/components/accounts-query'
-            - title: EntitiesByDomainTypeQuery
-              url: '/components/entities-by-domain-type-query'
-            - title: EntitiesByGuidsQuery
-              url: '/components/entities-by-guids-query'
-            - title: EntitiesByNameQuery
-              url: '/components/entities-by-name-query'
-            - title: EntityByGuidQuery
-              url: '/components/entity-by-guid-query'
-            - title: EntityCountQuery
-              url: '/components/entity-count-query'
-            - title: EntitySearchQuery
-              url: '/components/entity-search-query'
-            - title: EntityStorageMutation
-              url: '/components/entity-storage-mutation'
-            - title: EntityStorageQuery
-              url: '/components/entity-storage-query'
-            - title: NerdGraphMutation
-              url: '/components/nerd-graph-mutation'
-            - title: NerdGraphQuery
-              url: '/components/nerd-graph-query'
-            - title: NrqlQuery
-              url: '/components/nrql-query'
-            - title: UserQuery
-              url: '/components/user-query'
-            - title: UserStorageMutation
-              url: '/components/user-storage-mutation'
-            - title: UserStorageQuery
-              url: '/components/user-storage-query'
-        - title: Platform APIs
-          pages:
-            - title: NerdletStateContext
-              url: '/components/nerdlet-state-context'
-            - title: PlatformStateContext
-              url: '/components/platform-state-context'
-            - title: logger
-              url: '/apis/logger'
-            - title: navigation
-              url: '/apis/navigation'
-            - title: nerdlet
-              url: '/apis/nerdlet'
-            - title: ngql
-              url: '/apis/ngql'
 - title: Instant Observability
   icon: fe-box
   url: 'https://newrelic.com/instant-observability'
