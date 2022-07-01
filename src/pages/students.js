@@ -7,7 +7,6 @@ import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import Video from '../components/Video';
-import studentPackLogo from '../images/students/studentPack.png';
 import * as styles from './students.module.scss';
 
 const StudentsPage = ({ location }) => {
