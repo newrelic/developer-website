@@ -44,7 +44,14 @@ Now that you've released your new code, it's time to check Twitter for some user
 
 ![A Twitter thread showing that the site is loading slow](../../../images/nr-browser/scenario-2/tweet.png)
 
-Oh no! You fixed the errors but forgot to check if your site was loading fine..
+Oh no! You fixed the errors but forgot to check if your site was loading fine.
+
+
+<Callout variant='important'>
+
+The provided sample code for this scenario is NOT instrumented. To see your data in New Relic, make sure you [instrument you application](/collect-data/browser/install-browser-agent) before following this procedure. 
+
+</Callout>
 
 ## Reproduce the issue
 
@@ -64,6 +71,17 @@ npm run newstart
 This opens your Reliqstaurants application in your browser.
 
 ![Reliqstaurants homepage](../../../images/nr-browser/scenario-1/new-homepage.png)
+
+In another terminal window, navigate to the root directory of your application, and run the load generator.
+
+<>
+
+```bash
+cd browser-pro-lab-material/simulator
+python simulator.py
+```
+
+</>
 
 Your users were right! Your site ia taking long to load. But why? Use New Relic browser to discover the source of delay.
 

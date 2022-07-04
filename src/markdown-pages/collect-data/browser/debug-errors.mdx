@@ -33,18 +33,25 @@ Navigate to the root directory of your application, install dependencies, and bu
 <>
 
 ```bash
-cd foodme-sample-app
+cd browser-pro-lab-material
 npm install
 npm run build
 ```
 
 </>
 
+
 Uh oh! You look on social media and see some confused customers:
 
 ![A Twitter thread showing some users can't place an order](../../../images/nr-browser/scenario-1/tweet.png)
 
 What's wrong with your application? Use New Relic browser to find out.
+
+<Callout variant='important'>
+
+The provided sample code for this scenario is NOT instrumented. To see your data in New Relic, make sure you [instrument you application](/collect-data/browser/install-browser-agent) before following this procedure. 
+
+</Callout>
 
 ## Reproduce the issue
 
@@ -70,6 +77,17 @@ This opens your Reliqstaurants application in your browser.
 ![Reliqstaurants homepage](../../../images/nr-browser/scenario-1/new-homepage.png)
 
 The new outlook of Reliqstaurants looks cool. 
+
+In another terminal window, navigate to the root directory of your application, and run the load generator.
+
+<>
+
+```bash
+cd browser-pro-lab-material/simulator
+python simulator.py
+```
+
+</>
 
 </Step>
 

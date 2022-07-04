@@ -23,7 +23,7 @@ Clone the lab repository.
 <>
 
 ```bash
-git clone https://github.com/mehreentahir16/foodme-sample-app.git
+git clone https://github.com/mehreentahir16/browser-pro-lab-material.git
 ```
 
 </>
@@ -37,7 +37,7 @@ Navigate to the root directory of your application, install dependencies, and ru
 <>
 
 ```bash
-cd foodme-sample-app
+cd browser-pro-lab-material
 npm install
 npm run build
 npm run newstart
@@ -90,6 +90,38 @@ Enter the following fake card information and click **Finish payment** to place 
 Your order is successfully placed.
 
 ![purchase](../../../images/nr-browser/thank-you.png)
+
+Next, you use a simulator to generate more traffic to your application.
+
+</Step>
+
+<Step>
+
+In another terminal window, navigate to the root directory of your application, and run the load generator.
+
+<>
+
+```bash
+# Navigate to the root directiory of your application
+cd browser-pro-lab-material/simulator
+[output]
+# Install the simulator's dependencies
+pip install -r requirements.txt
+[output]
+# Run the simulator
+python simulator.py
+[output] ====== WebDriver manager ======
+[output] Current google-chrome version is 99.0.4844
+[output] Get LATEST chromedriver version for 99.0.4844 google-chrome
+```
+
+</>
+
+<Callout variant='important'>
+
+This load generator assumes you have Google Chrome installed on your computer. If you're using a different browser, either skip this step and generate traffic manually, or [install Google Chrome](https://www.google.com/chrome/downloads/).
+
+</Callout>
 
 </Step>
 
