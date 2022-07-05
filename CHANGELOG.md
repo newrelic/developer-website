@@ -1,3 +1,10 @@
+# [1.89.0](https://github.com/newrelic/developer-website/compare/v1.88.5...v1.89.0) (2022-07-05)
+
+
+### Features
+
+* Add Pulumi documentation ([eb588a6](https://github.com/newrelic/developer-website/commit/eb588a69924e1b77474867c6b59233cb92927bfb))
+
 ## [1.88.5](https://github.com/newrelic/developer-website/compare/v1.88.4...v1.88.5) (2022-06-14)
 
 
