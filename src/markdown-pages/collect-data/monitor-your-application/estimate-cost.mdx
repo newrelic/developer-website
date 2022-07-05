@@ -1,0 +1,137 @@
+---
+title: 'Estimate New Relic data ingest and cost'
+template: 'GuideTemplate'
+description: 'Estimate New Relic data ingest and resulting costs.'
+---
+
+## Use the cost estimator spreadsheet [#cost-estimator]
+
+As we say above, data ingest and associated cost can vary greatly for accounts, depending on your architecture and New Relic setup, and that's why we recommend [creating a New Relic account](#use-account) to extrapolate usage. But if you don't wish to create a test New Relic account, you can use our cost estimator spreadsheet, which auto-populates a rough estimated cost. You can use the cost estimator spreadsheet for directional guidance and approximations based on simplified inputs that you provide with the built-in assumptions (that may not be true for your use case), but it's not a guarantee of your actual costs. To get started, make a copy of [this Google spreadsheet](https://docs.google.com/spreadsheets/d/1natQ4YhmjDIH8YgkPblIRP2R8h07V4TNAw3EJDu91_g/edit?usp=sharing). 
+
+Note that this spreadsheet gives you an option of choosing one of two [data options](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-pricing-billing/data-ingest-billing#data-prices): Data Plus at US$0.50 per GB and original data option at US$0.30 per GB. If your organization has a different data cost, you'll have to adjust the cost estimate to match that difference. 
+
+The instructions below will give you instructions on how to fill out the spreadsheet. **Note that the spreadsheet provides you only an estimate**: it's not a binding billing proposal.
+
+<img
+  title="Cost estimator spreadsheet"
+  alt="Cost estimator spreadsheet"
+  src={newRelicDataIngestCostEstimator}
+/>
+
+To arrive at the ingest rates used in the estimator, we analyzed about 10,000 existing New Relic organizations of various sizes to arrive at the ingest rates used in our calculations. Note that you get 100 GBs of data ingest per month for free.
+
+The following sections explain how to use the various parts of the spreadsheet.
+
+<CollapserGroup>
+  <Collapser
+    className="freq-link"
+    id="apm-ingest-rates"
+    title="Size your APM agent ingest"
+  >
+Ingest rates are measured per [agent](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/glossary/#agent), not per [host](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/glossary/#host). You might have multiple agents monitoring a single host.
+
+In the APM data volume section of the spreadsheet, you estimate whether you have low, medium, or high ingest rates from APM agents. We've built an average of the data volume for all APM agent types into the spreadsheet calculator. When filling out this section, consider these questions:
+
+* How many APM agents will you deploy?
+* What types of applications will you monitor? Understanding how the application is used and the application complexity is important. For example, e-commerce apps will have much higher throughput than an internal application.
+* Will you use features that contribute to higher ingest rates? See the criteria questions that follow for more detail.
+
+### Criteria for calculating ingest rates per APM agent
+
+In general, use higher ingest rates for applications that are integration/business tiers, large business-to-consumer (B2C) sites, or have significant custom instrumentation or metrics. That means, select **High** in these cases:
+
+* For app behaviors and environments where you expect high throughput and a high number of errors, and the app is in a production environment.
+* For complex app architectures (for example, a single front-end request spawns multiple back-end requests).
+* If you have a high number of key transactions.
+* If you have custom instrumentation and [APM metrics](https://docs.newrelic.com/docs/data-apis/understand-data/new-relic-data-types/#metrics).
+* For transactions with a lot of attributes.
+
+Add APM agent ingest to the spreadsheet:
+
+1. Add the number of APM agents that you will monitor.
+2. Approximate the amount of ingest you'll need for your agents and select one of the options. In general, if you're on the Standard pricing edition (the edition new organizations start at), you can probably select **Low**:
+
+For how to manage your data ingest, see [Manage data ingest](https://docs.newrelic.com/docs/data-apis/manage-data/manage-data-coming-new-relic/#adjust-ingest).
+  </Collapser>
+
+  <Collapser
+    className="freq-link"
+    id="infra-agent-ingest"
+    title="Size your infrastructure agent ingest"
+  >
+Sizing your [infrastructure monitoring](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring) data ingest depends on the number of agents and integrations you have, and how much data they're each reporting.
+
+When calculating the volume of your infrastructure ingest, take into account:
+
+* How many infrastructure agents do you think you'll need?
+* Which integrations contribute to higher ingest rates? The following are some approximate sizes. You should also take the size of your environments into account. If they're very large, for example, these rates might not be accurate.
+  * [On-host integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations) (low)
+  * Cloud integrations (low to medium)
+  * Kubernetes integrations (medium to high)
+
+Add infrastructure agent ingest to the spreadsheet:
+
+1. At step 3 in the spreadsheet, input your estimated number of infrastructure agents. To determine this, decide how many hosts you'll run infrastructure agents on.
+2. At step 4, assign a size for the volume of your infrastructure:
+* Start with your base ingest rate as **Low** if you'll have only a few on-host integrations.
+* Adjust to medium or high depending on how many and how high the volume of your integrations. Consider whether you have cloud integrations with large footprints, or a large number of database on-host integrations, or multiple or large Kubernetes clusters. For example:
+  * If running two or more low or medium impact integrations such as cloud or on-host integrations, choose **Medium** ingest rate.
+  * If running all three types of integrations (oh-host, cloud, containers) or observing really large Kubernetes environments, choose **High** for your ingest rates.
+
+For how to manage your data ingest, see [Manage data ingest](https://docs.newrelic.com/docs/data-apis/manage-data/manage-data-coming-new-relic/#adjust-ingest).
+  </Collapser>
+
+  <Collapser
+    className="freq-link"
+    id="log-data-ingest"
+    title="Size your log data ingest"
+  >
+For this section, you add an estimated amount of ingest in gigabytes.
+
+Because each vendor measures log data differently, there is no easy way to establish a baseline estimate of log volume in New Relic from an existing implementation. The best way to estimate your log volume is to send a sample amount of log data and extrapolate.
+    
+Log events are stored and metered as JSON objects, which are always larger than the original raw log on disk.
+
+For how to manage your data ingest, see [Manage data ingest](https://docs.newrelic.com/docs/data-apis/manage-data/manage-data-coming-new-relic/#adjust-ingest).
+    
+  </Collapser>
+
+    <Collapser
+    className="freq-link"
+    id="data-option"
+    title="Data option"
+  >
+Your per-GB ingested data price may vary depending on your organization's contract. The spreadsheet uses our two main price points:  
+* Data Plus: this uses a price of US$0.50 per GB.  
+* Our original data option: this uses our standard price of US$0.30 per GB.
+
+For more about this, see [Data options](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-pricing-billing/data-ingest-billing#data-prices).
+  </Collapser>
+
+  <Collapser
+    className="freq-link"
+    id="add-retention"
+    title="Add additional retention"
+  >
+You can adjust the data retention settings for each data source. To learn about retention and the baselines, see [Data retention](https://docs.newrelic.com/docs/data-apis/manage-data/manage-data-retention).
+
+Retention considerations:
+
+* For each additional month (30 days) of retention on top of your existing retention (the [default retention periods](https://docs.newrelic.com/docs/data-apis/manage-data/manage-data-retention) for our original data option, and 90 days for the Data Plus option), the cost is $0.05 per GB ingested per month.
+* Retention is added evenly across all namespaces up to a maximum of 395 days. Retention cannot be extended for just one namespace (for example, just logs or custom events). The increased rate is applied to all ingested data.
+
+In section 7 of the spreadsheet, select the additional months of retention that you want.
+  </Collapser>
+</CollapserGroup>
+
+## View the calculated estimate
+
+When you complete the extended retention section, the total estimated price is displayed in the **Calculations** section of the spreadsheet.
+
+## Other potential data ingest costs
+
+Because this billing calculation was designed for newer customers, it uses the implementations and costs that our newer customers often have. For example, we haven't provided cost estimates for browser monitoring, mobile monitoring, network performance monitoring, or other services. (Maybe worth noting: neither our basic alerting features nor our synthetic monitors contribute to data ingest.) For many organizations, these other costs will often represent only 5% or so of the costs examined and calculated in the spreadsheet. But be aware that high levels of data ingest by other tools can make that higher.
+
+## Other billing factors [#other-costs]
+
+Data ingest is one billing factor. To learn about others, see [Usage-based pricing](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-pricing-billing/new-relic-one-pricing-billing).
