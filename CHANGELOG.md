@@ -1,3 +1,11 @@
+## [1.89.3](https://github.com/newrelic/developer-website/compare/v1.89.2...v1.89.3) (2022-07-05)
+
+
+### Bug Fixes
+
+* **nerdlog:** language changes to changelog ([4bd36b9](https://github.com/newrelic/developer-website/commit/4bd36b94ee5bf6634520579abf5c2036e33c551f))
+* update link to conventional commit in docs ([e6a6c06](https://github.com/newrelic/developer-website/commit/e6a6c06fc30b139684a7a6a04e8190427bfef959))
+
 ## [1.89.2](https://github.com/newrelic/developer-website/compare/v1.89.1...v1.89.2) (2022-07-05)
 
 
