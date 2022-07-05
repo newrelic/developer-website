@@ -37,11 +37,11 @@ To arrive at the ingest rates used in the estimator, we analyzed about 10,000 ex
 The following sections explain how to use the various parts of the spreadsheet.
 
 <CollapserGroup>
-  <Collapser
-    className="freq-link"
-    id="apm-ingest-rates"
-    title="Size your APM agent ingest"
-  >
+<Collapser
+  className="freq-link"
+  id="apm-ingest-rates"
+  title="Size your APM agent ingest"
+>
 
 Ingest rates are measured per [agent](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/glossary/#agent), not per [host](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/glossary/#host). You might have multiple agents monitoring a single host.
 
@@ -67,13 +67,13 @@ Add APM agent ingest to the spreadsheet:
 2. Approximate the amount of ingest you'll need for your agents and select one of the options. In general, if you're on the Standard pricing edition (the edition new organizations start at), you can probably select **Low**:
 
 For how to manage your data ingest, see [Manage data ingest](https://docs.newrelic.com/docs/data-apis/manage-data/manage-data-coming-new-relic/#adjust-ingest).
-  </Collapser>
+</Collapser>
 
-  <Collapser
-    className="freq-link"
-    id="infra-agent-ingest"
-    title="Size your infrastructure agent ingest"
-  >
+<Collapser
+  className="freq-link"
+  id="infra-agent-ingest"
+  title="Size your infrastructure agent ingest"
+>
   
 Sizing your [infrastructure monitoring](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring) data ingest depends on the number of agents and integrations you have, and how much data they're each reporting.
 
@@ -95,13 +95,13 @@ Add infrastructure agent ingest to the spreadsheet:
   * If running all three types of integrations (oh-host, cloud, containers) or observing really large Kubernetes environments, choose **High** for your ingest rates.
 
 For how to manage your data ingest, see [Manage data ingest](https://docs.newrelic.com/docs/data-apis/manage-data/manage-data-coming-new-relic/#adjust-ingest).
-  </Collapser>
+</Collapser>
 
-  <Collapser
-    className="freq-link"
-    id="log-data-ingest"
-    title="Size your log data ingest"
-  >
+<Collapser
+  className="freq-link"
+  id="log-data-ingest"
+  title="Size your log data ingest"
+>
 
 For this section, you add an estimated amount of ingest in gigabytes.
 
@@ -111,7 +111,7 @@ Log events are stored and metered as JSON objects, which are always larger than 
 
 For how to manage your data ingest, see [Manage data ingest](https://docs.newrelic.com/docs/data-apis/manage-data/manage-data-coming-new-relic/#adjust-ingest).
     
-  </Collapser>
+</Collapser>
 
 <Collapser
   className="freq-link"
