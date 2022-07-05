@@ -1,3 +1,28 @@
+## [1.89.1](https://github.com/newrelic/developer-website/compare/v1.89.0...v1.89.1) (2022-07-05)
+
+
+### Bug Fixes
+
+* add empty line so parses link correctly ([5e2563d](https://github.com/newrelic/developer-website/commit/5e2563d7565cb4ea986d83787d527cc851526510))
+* **cost estimate:** fix anchor links ([a4efc27](https://github.com/newrelic/developer-website/commit/a4efc273e10109aa61c40ba61acbfe6aefd6562d))
+* **cost estimate:** fixing collapsers ([14255d4](https://github.com/newrelic/developer-website/commit/14255d42ab2b762b672e96d20ed98aa2b00e6a52))
+* **cost estimate:** trying to fix issues ([cb5dbcb](https://github.com/newrelic/developer-website/commit/cb5dbcbf72407f6a4e086b002da43ce3a0a10966))
+* **cost estimator:** add image ([d353a88](https://github.com/newrelic/developer-website/commit/d353a88f9bc9b5e2765ea18fedba938b08a67aaf))
+* **cost estimator:** add new doc ([03b7d88](https://github.com/newrelic/developer-website/commit/03b7d88ec52ab69bead1a9c4ff1d1431b3aa541b))
+* **cost estimator:** adjust collapsers ([7540730](https://github.com/newrelic/developer-website/commit/75407308624eef48d5d640d42930010a9429f133))
+* **cost estimator:** collapser fix ([1a3e5cc](https://github.com/newrelic/developer-website/commit/1a3e5ccf68f4ba29ee89103106f532c46fd1f48a))
+* **estimate cost:** collapser problems ([19701b6](https://github.com/newrelic/developer-website/commit/19701b671798a7480ccb920d208ae83980d01c54))
+* **estimate cost:** trying to fix links ([8025482](https://github.com/newrelic/developer-website/commit/8025482deeb5fad168077f936265749d41a4d52b))
+* **nav:** add 'cost estimator' ([0dc36a3](https://github.com/newrelic/developer-website/commit/0dc36a3d5e1c28c698a1d7c082876b64403dd9dd))
+* **nav:** move cost estimate ([2c468cd](https://github.com/newrelic/developer-website/commit/2c468cdbed3d431ae0155c543d2e18c1cff20f34))
+
+# [1.89.0](https://github.com/newrelic/developer-website/compare/v1.88.5...v1.89.0) (2022-07-05)
+
+
+### Features
+
+* Add Pulumi documentation ([eb588a6](https://github.com/newrelic/developer-website/commit/eb588a69924e1b77474867c6b59233cb92927bfb))
+
 ## [1.88.5](https://github.com/newrelic/developer-website/compare/v1.88.4...v1.88.5) (2022-06-14)
 
 
