@@ -1,3 +1,10 @@
+## [1.89.2](https://github.com/newrelic/developer-website/compare/v1.89.1...v1.89.2) (2022-07-05)
+
+
+### Bug Fixes
+
+* fixed dependency conflict ([6f18b12](https://github.com/newrelic/developer-website/commit/6f18b12fd1fd5e99efc0c64933ab8d30a130e018))
+
 ## [1.89.1](https://github.com/newrelic/developer-website/compare/v1.89.0...v1.89.1) (2022-07-05)
 
 
