@@ -10,6 +10,8 @@
       url: '/collect-data/network-performance-monitoring'
     - title: Identify root cause issues in your infrastructure
       url: '/collect-data/infra'
+    - title: Estimate data ingest and cost
+      url: '/collect-data/monitor-your-application/estimate-cost'
     - title: Monitor your application
       url: '/collect-data/monitor-your-application'
       pages:
@@ -27,8 +29,6 @@
           url: '/collect-data/monitor-your-application/query-custom-data'
         - title: Add alerts
           url: '/collect-data/monitor-your-application/add-alerts'
-        - title: Estimate data ingest and cost
-          url: '/collect-data/monitor-your-application/estimate-cost'
     - title: Monitor your Kubernetes cluster with New Relic and Pixie
       url: '/collect-data/pixie'
       pages:
