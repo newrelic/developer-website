@@ -42,13 +42,13 @@ The following sections explain how to use the various parts of the spreadsheet.
     id="apm-ingest-rates"
     title="Size your APM agent ingest"
   >
-  Ingest rates are measured per [agent](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/glossary/#agent), not per [host](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/glossary/#host). You might have multiple agents monitoring a single host.
+Ingest rates are measured per [agent](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/glossary/#agent), not per [host](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/glossary/#host). You might have multiple agents monitoring a single host.
 
-  In the APM data volume section of the spreadsheet, you estimate whether you have low, medium, or high ingest rates from APM agents. We've built an average of the data volume for all APM agent types into the spreadsheet calculator. When filling out this section, consider these questions:
+In the APM data volume section of the spreadsheet, you estimate whether you have low, medium, or high ingest rates from APM agents. We've built an average of the data volume for all APM agent types into the spreadsheet calculator. When filling out this section, consider these questions:
 
-  * How many APM agents will you deploy?
-  * What types of applications will you monitor? Understanding how the application is used and the application complexity is important. For example, e-commerce apps will have much higher throughput than an internal application.
-  * Will you use features that contribute to higher ingest rates? See the criteria questions that follow for more detail.
+* How many APM agents will you deploy?
+* What types of applications will you monitor? Understanding how the application is used and the application complexity is important. For example, e-commerce apps will have much higher throughput than an internal application.
+* Will you use features that contribute to higher ingest rates? See the criteria questions that follow for more detail.
 
 ### Criteria for calculating ingest rates per APM agent
 
@@ -73,26 +73,26 @@ For how to manage your data ingest, see [Manage data ingest](https://docs.newrel
     id="infra-agent-ingest"
     title="Size your infrastructure agent ingest"
   >
-  Sizing your [infrastructure monitoring](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring) data ingest depends on the number of agents and integrations you have, and how much data they're each reporting.
+Sizing your [infrastructure monitoring](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring) data ingest depends on the number of agents and integrations you have, and how much data they're each reporting.
 
-  When calculating the volume of your infrastructure ingest, take into account:
+When calculating the volume of your infrastructure ingest, take into account:
 
-  * How many infrastructure agents do you think you'll need?
-  * Which integrations contribute to higher ingest rates? The following are some approximate sizes. You should also take the size of your environments into account. If they're very large, for example, these rates might not be accurate.
-    * [On-host integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations) (low)
-    * Cloud integrations (low to medium)
-    * Kubernetes integrations (medium to high)
+* How many infrastructure agents do you think you'll need?
+* Which integrations contribute to higher ingest rates? The following are some approximate sizes. You should also take the size of your environments into account. If they're very large, for example, these rates might not be accurate.
+  * [On-host integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations) (low)
+  * Cloud integrations (low to medium)
+  * Kubernetes integrations (medium to high)
 
-  Add infrastructure agent ingest to the spreadsheet:
+Add infrastructure agent ingest to the spreadsheet:
 
-  1. At step 3 in the spreadsheet, input your estimated number of infrastructure agents. To determine this, decide how many hosts you'll run infrastructure agents on.
-  2. At step 4, assign a size for the volume of your infrastructure:
-  * Start with your base ingest rate as **Low** if you'll have only a few on-host integrations.
-  * Adjust to medium or high depending on how many and how high the volume of your integrations. Consider whether you have cloud integrations with large footprints, or a large number of database on-host integrations, or multiple or large Kubernetes clusters. For example:
-    * If running two or more low or medium impact integrations such as cloud or on-host integrations, choose **Medium** ingest rate.
-    * If running all three types of integrations (oh-host, cloud, containers) or observing really large Kubernetes environments, choose **High** for your ingest rates.
+1. At step 3 in the spreadsheet, input your estimated number of infrastructure agents. To determine this, decide how many hosts you'll run infrastructure agents on.
+2. At step 4, assign a size for the volume of your infrastructure:
+* Start with your base ingest rate as **Low** if you'll have only a few on-host integrations.
+* Adjust to medium or high depending on how many and how high the volume of your integrations. Consider whether you have cloud integrations with large footprints, or a large number of database on-host integrations, or multiple or large Kubernetes clusters. For example:
+  * If running two or more low or medium impact integrations such as cloud or on-host integrations, choose **Medium** ingest rate.
+  * If running all three types of integrations (oh-host, cloud, containers) or observing really large Kubernetes environments, choose **High** for your ingest rates.
 
-  For how to manage your data ingest, see [Manage data ingest](https://docs.newrelic.com/docs/data-apis/manage-data/manage-data-coming-new-relic/#adjust-ingest).
+For how to manage your data ingest, see [Manage data ingest](https://docs.newrelic.com/docs/data-apis/manage-data/manage-data-coming-new-relic/#adjust-ingest).
   </Collapser>
 
   <Collapser
