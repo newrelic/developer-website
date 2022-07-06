@@ -1,3 +1,25 @@
+# [1.90.0](https://github.com/newrelic/developer-website/compare/v1.89.3...v1.90.0) (2022-07-06)
+
+
+### Features
+
+* added browser pro lab ([8b8c3d1](https://github.com/newrelic/developer-website/commit/8b8c3d1e21f30c2b2d00200ae1f6a4fa7f393820))
+
+## [1.89.3](https://github.com/newrelic/developer-website/compare/v1.89.2...v1.89.3) (2022-07-05)
+
+
+### Bug Fixes
+
+* **nerdlog:** language changes to changelog ([4bd36b9](https://github.com/newrelic/developer-website/commit/4bd36b94ee5bf6634520579abf5c2036e33c551f))
+* update link to conventional commit in docs ([e6a6c06](https://github.com/newrelic/developer-website/commit/e6a6c06fc30b139684a7a6a04e8190427bfef959))
+
+## [1.89.2](https://github.com/newrelic/developer-website/compare/v1.89.1...v1.89.2) (2022-07-05)
+
+
+### Bug Fixes
+
+* fixed dependency conflict ([6f18b12](https://github.com/newrelic/developer-website/commit/6f18b12fd1fd5e99efc0c64933ab8d30a130e018))
+
 ## [1.89.1](https://github.com/newrelic/developer-website/compare/v1.89.0...v1.89.1) (2022-07-05)
 
 
