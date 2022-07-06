@@ -1,3 +1,10 @@
+# [1.90.0](https://github.com/newrelic/developer-website/compare/v1.89.3...v1.90.0) (2022-07-06)
+
+
+### Features
+
+* added browser pro lab ([8b8c3d1](https://github.com/newrelic/developer-website/commit/8b8c3d1e21f30c2b2d00200ae1f6a4fa7f393820))
+
 ## [1.89.3](https://github.com/newrelic/developer-website/compare/v1.89.2...v1.89.3) (2022-07-05)
 
 
