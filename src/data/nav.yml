@@ -4,14 +4,10 @@
   pages:
     - title: Collect data from any source
       url: https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data
-    - title: Explore NerdGraph using the API Explorer
-      url: '/collect-data/get-started-nerdgraph-api-explorer'
     - title: Monitor your network devices
       url: '/collect-data/network-performance-monitoring'
     - title: Identify root cause issues in your infrastructure
       url: '/collect-data/infra'
-    - title: Estimate data ingest and cost
-      url: '/collect-data/monitor-your-application/estimate-cost'
     - title: Monitor your application
       url: '/collect-data/monitor-your-application'
       pages:
