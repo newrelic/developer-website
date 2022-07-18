@@ -291,11 +291,14 @@ builder.Services.AddOpenTelemetryMetrics(meterProviderBuilder =>
         .AddAspNetCoreInstrumentation();
 
     meterProviderBuilder
-        .AddOtlpExporter(options =>
+        .AddOtlpExporter((options, metricReaderOptions) =>
         {
             options.Endpoint = new Uri($"{Environment.GetEnvironmentVariable("OTEL_EXPORTER_OTLP_ENDPOINT")}");
             options.Headers = $"api-key={Environment.GetEnvironmentVariable("NR_LICENSE_KEY")}";
-            options.AggregationTemporality = AggregationTemporality.Delta;
+    
+            // New Relic requires the exporter to use delta aggregation temporality.
+            // The OTLP exporter defaults to using cumulative aggregation temporality.
+            metricReaderOptions.TemporalityPreference = MetricReaderTemporalityPreference.Delta;
         });
 });
 
