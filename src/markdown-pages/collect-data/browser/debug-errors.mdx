@@ -14,42 +14,31 @@ Each procedure in the lab builds upon the last, so make sure you've completed th
 
 </Callout>
 
-Until now, your application was working without any errors. Users were able to place their orders and were satisfied with your service. But it's time to deploy some new code to your app.
+Until now, your application was working without any errors. Users were able to place their orders and were satisfied with your service. But it's time to deploy an update to your app.
 
-Change to the `scenario-1` branch.
-
-<>
-
-```bash
-git switch scenario-1
-[output] Switched to branch 'scenario-1'
-[output] Your branch is up to date with 'origin/scenario-1'.
-```
-
-</>
-
-Navigate to the root directory of your application, install dependencies, and build your application.
+Change to the `scenario-1` directory and set up your environment.
 
 <>
 
 ```bash
-cd browser-pro-lab-material
+cd scenario-1
 npm install
 npm run build
 ```
 
 </>
 
-
 Uh oh! You look on social media and see some confused customers:
 
 ![A Twitter thread showing some users can't place an order](../../../images/nr-browser/scenario-1/tweet.png)
 
-What's wrong with your application? Use New Relic browser to find out.
+What's wrong with your application? Is it the overnight update causing the issue? Use New Relic browser to find out.
 
 <Callout variant='important'>
 
-The provided sample code for this scenario is NOT instrumented. To see your data in New Relic, make sure you [instrument you application](/collect-data/browser/install-browser-agent) before following this procedure. 
+In order to see your data in New Relic, you need to enable browser monitoring for this procedure. 
+
+Open the application in the IDE of your choice. In _public/index.html_ file of your app, paste the browser monitoring code snippet, that you copied in the last procedure, inside the `<head>`.
 
 </Callout>
 
@@ -61,7 +50,7 @@ You've been notified by your users that they can't place an order on your site. 
 
 <Step>
 
-From the root directory of the project, build and run your application.
+From the root directory of the scenario, build and run your application.
 
 <>
 
@@ -83,11 +72,13 @@ In another terminal window, navigate to the root directory of your application, 
 <>
 
 ```bash
-cd browser-pro-lab-material/simulator
-python simulator.py
+cd browser-pro-lab-material/scenario-1/simulator
+python3 simulator.py
 ```
 
 </>
+
+The load generator helps you generate some traffic against your app so you don't have to.
 
 </Step>
 
@@ -168,6 +159,13 @@ Here, you see all the data related to your browser application including **Core 
 ![image showing Reliqstaurants summary](../../../images/nr-browser/scenario-1/reliq-summary.png)
 
 </Step>
+
+<Callout variant='tip'>
+
+Not seeing your data? Make sure you enabled browser monitoring and your load generator is running. 
+
+</Callout>
+
 
 <Step>
 

@@ -2,7 +2,7 @@
 duration: 5
 title: 'Set up your lab environment'
 template: 'GuideTemplate'
-description: 'Spin up your FoodMe application and simulator'
+description: 'Spin up your Reliqstraurant application and simulator'
 procIdx: 1
 ---
 
@@ -12,13 +12,16 @@ This procedure is part of a lab that teaches you how to troubleshoot your web ap
 
 </Callout>
 
-Before you can walk through the lab proper, you need to spin up your React application.
+Before you can walk through the lab proper, you need to spin up your React application. Here, you:
+
+- Spin up your React application
+- Send traffic to your app with a simple load generator
 
 <Steps>
 
 <Step>
 
-Clone the lab repository.
+Open a terminal window and clone the lab repository.
 
 <>
 
@@ -102,14 +105,14 @@ In another terminal window, navigate to the root directory of your application, 
 <>
 
 ```bash
-# Navigate to the root directiory of your application
+# Navigate to the root directiory of your simulator
 cd browser-pro-lab-material/simulator
 [output]
 # Install the simulator's dependencies
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 [output]
 # Run the simulator
-python simulator.py
+python3 simulator.py
 [output] ====== WebDriver manager ======
 [output] Current google-chrome version is 99.0.4844
 [output] Get LATEST chromedriver version for 99.0.4844 google-chrome
