@@ -30,7 +30,7 @@ Navigate to [New Relic](https://one.newrelic.com/), and sign in with your accoun
 
 <Step>
 
-On the right side of the upper navigation bar, click **Add more data**.
+On the right side of the upper navigation bar, click **Add data**.
 
 ![Add more data](../../../images/foodme/add-more-data.png)
 
@@ -60,9 +60,17 @@ This gives you a JavaScript code snippet to enable browser monitoring. Copy it t
 
 ![javascript code snippet to enable browser agent](../../../images/nr-browser/browser-code-snippet.png)
 
+<Callout variant='tip'>
+
+Save this code snippet at a place where you could easily find it later. You re-use this code snippet to enable browser monitoring for your application in next procedures.
+
+</Callout>
+
 </Step>
 
 <Step>
+
+Open your app in the IDE of your choice. 
 
 In _public/index.html_ file of your app, paste the copied javascript snippet inside the `<head>`.
 
@@ -125,7 +133,7 @@ Restart your load generator, as well.
 <>
 
 ```bash
-python simulator.py
+python3 simulator.py
 ```
 
 </>

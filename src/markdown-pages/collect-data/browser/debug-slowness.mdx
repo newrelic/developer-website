@@ -16,24 +16,12 @@ Each procedure in the lab builds upon the last, so make sure you've completed th
 
 After fixing bugs in your payment method, you and your team are feeling confident. It's time to push the fixes.
 
-Change to the `scenario-2` branch.
+Change to the `scenario-2` directory and set up your environment.
 
 <>
 
 ```bash
-git switch scenario-2
-[output] Switched to branch 'scenario-2'
-[output] Your branch is up to date with 'origin/scenario-2'.
-```
-
-</>
-
-Navigate to the root directory of your application, install dependencies, and build your application.
-
-<>
-
-```bash
-cd foodme-sample-app
+cd ../scenario-2
 npm install
 npm run build
 ```
@@ -49,7 +37,9 @@ Oh no! You fixed the errors but forgot to check if your site was loading fine.
 
 <Callout variant='important'>
 
-The provided sample code for this scenario is NOT instrumented. To see your data in New Relic, make sure you [instrument you application](/collect-data/browser/install-browser-agent) before following this procedure. 
+In order to see your data in New Relic, you need to enable browser monitoring for this procedure. 
+
+Open the application in the IDE of your choice. In _public/index.html_ file of your app, paste the browser monitoring code snippet, that you copied in the last procedure, inside the `<head>`.
 
 </Callout>
 
@@ -77,11 +67,13 @@ In another terminal window, navigate to the root directory of your application, 
 <>
 
 ```bash
-cd browser-pro-lab-material/simulator
-python simulator.py
+cd browser-pro-lab-material/scenario-2/simulator
+python3 simulator.py
 ```
 
 </>
+
+The load generator helps you generate some traffic against your app so you don't have to.
 
 Your users were right! Your site ia taking long to load. But why? Use New Relic browser to discover the source of delay.
 
