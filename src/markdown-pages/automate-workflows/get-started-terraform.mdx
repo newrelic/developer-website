@@ -322,6 +322,92 @@ For the Infrastructure alert, you created a [`newrelic_infra_alert_condition`](h
 
 ## Get notified when an alert triggers
 
+Now that you've configured some important alert conditions, add a notification destination and a notification channel to your alert policy to ensure the proper folks get notified when an alert triggers. To do so, use a [`newrelic_notification_destination`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/notification_destination) and a [`newrelic_notification_channel`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/notification_channel).
+
+To begin, create an email notification destination to configure your recipients list, which can be a specific person or a team. This will be used when creating a notification channel:
+
+```hcl
+resource "newrelic_notification_destination" "team_email_destination" {
+  name = "email-example"
+  type = "EMAIL"
+
+  properties {
+    key = "email"
+    value = "team.member1@email.com,team.member2@email.com,team.member3@email.com"
+  }
+}
+```
+If you want to specify multiple emails, use a comma-delimited list of emails.
+
+
+Than, create an email notification channel to send alert notifications to your email. Use this when you want to notify your destination's recipients list when alerts are triggered:
+
+```hcl
+resource "newrelic_notification_channel" "team_email_channel" {
+  name = "email-example"
+  type = "EMAIL"
+  destination_id = newrelic_notification_destination.team_email_destination.id
+  product = "IINT"
+
+  properties {
+    key = "subject"
+    value = "New Subject"
+  }
+}
+```
+
+Last, but not least, in order to apply the notification channel to your alert policy, create a [`newrelic_workflow`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/workflow):
+
+```hcl
+resource "newrelic_workflow" "team_workflow" {
+  name = "workflow-example"
+  enrichments_enabled = true
+  destinations_enabled = true
+  workflow_enabled = true
+  muting_rules_handling = "NOTIFY_ALL_ISSUES"
+
+  enrichments {
+    nrql {
+      name = "Log"
+      configurations {
+       query = "SELECT count(*) FROM Metric"
+      }
+    }
+  }
+
+  issues_filter {
+    name = "filter-example"
+    type = "FILTER"
+
+    predicates {
+      attribute = "source"
+      operator = "EQUAL"
+      values = [ "newrelic" ]
+    }
+  }
+
+  destination_configurations {
+    channel_id = newrelic_notification_channel.team_email_channel.id
+  }
+}
+```
+
+A `newrelic_workflow` links the notification channel you just created to your alerts.
+
+To finalize your notifications configuration, run `terraform apply` one last time to make sure all of your configured resources are up to date.
+
+</Step>
+
+<Step>
+
+## Get notified when an alert triggers (legacy)
+
+<Callout variant="important">
+
+This notification channel is legacy and no longer being used.
+
+</Callout>
+
 Now that you've configured some important alert conditions, add a notification channel to your alert policy to ensure the proper folks get notified when an alert triggers. To do so, use a [`newrelic_alert_channel`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel).
 
 To begin, create an email notification channel to send alert notifications to your email. Use this when you want to notify a specific person or team when alerts are triggered:
