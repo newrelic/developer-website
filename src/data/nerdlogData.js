@@ -77,14 +77,10 @@ export const teamMembers = [
     pronouns: 'she/her',
     avatar: annaAvatar,
     bio: (
-      <p>
-        Anna Alfano is an Associate Product Marketing Manager at New Relic.
-      </p>
+      <p>Anna Alfano is an Associate Product Marketing Manager at New Relic.</p>
     ),
     socials: [
-      {
-        
-      },
+      {},
     ],
   },
 ];
