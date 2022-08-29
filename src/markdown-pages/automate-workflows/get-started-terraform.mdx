@@ -60,7 +60,7 @@ Next, instruct Terraform to install and use the New Relic provider, by setting t
 terraform {
   # Require Terraform version 1.0 (recommended)
   required_version = "~> 1.0"
-  
+
   # Require the latest 2.x version of the New Relic provider
   required_providers {
     newrelic = {
@@ -331,7 +331,7 @@ resource "newrelic_notification_destination" "team_email_destination" {
   name = "email-example"
   type = "EMAIL"
 
-  properties {
+  property {
     key = "email"
     value = "team.member1@email.com,team.member2@email.com,team.member3@email.com"
   }
@@ -349,7 +349,7 @@ resource "newrelic_notification_channel" "team_email_channel" {
   destination_id = newrelic_notification_destination.team_email_destination.id
   product = "IINT"
 
-  properties {
+  property {
     key = "subject"
     value = "New Subject"
   }
@@ -380,8 +380,8 @@ resource "newrelic_workflow" "team_workflow" {
     type = "FILTER"
 
     predicates {
-      attribute = "source"
-      operator = "EQUAL"
+      attribute = "accumulations.sources"
+      operator = "EXACTLY_MATCHES"
       values = [ "newrelic" ]
     }
   }
