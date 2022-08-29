@@ -66,8 +66,6 @@ const NerdlogPage = ({ location }) => {
             >
               <div>
                 <h2>What is the New Relic changelog?</h2>
-                <p>
-                </p>
                 <div>
                   <ul>
                     <li>

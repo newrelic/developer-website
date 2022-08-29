@@ -79,8 +79,6 @@ export const teamMembers = [
     bio: (
       <p>Anna Alfano is an Associate Product Marketing Manager at New Relic.</p>
     ),
-    socials: [
-      {},
-    ],
+    socials: [{}],
   },
 ];
