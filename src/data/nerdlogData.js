@@ -1,6 +1,6 @@
 import React from 'react';
 import danielAvatar from '../images/devrel/daniel-kim.jpg';
-import annaAvatar from '../images/nerdlog/anna-alfano.jpg';
+import annaAvatar from '../images/changelog/anna-alfano.jpg';
 import leonAvatar from '../images/devrel/leon-adato.jpg';
 
 export const teamMembers = [

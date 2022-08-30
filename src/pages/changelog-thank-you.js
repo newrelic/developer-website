@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import DevSiteSeo from '../components/DevSiteSeo';
-import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
+import changelogBanner from '../images/changelog/changelog-banner.jpg';
 import * as styles from './nerd-days.module.scss';
 
-const NerdlogPage = ({ location }) => {
+const ChangelogPage = ({ location }) => {
   return (
     <>
       <DevSiteSeo location={location} />
@@ -15,14 +15,14 @@ const NerdlogPage = ({ location }) => {
             <div>
               <img
                 className={styles.img}
-                src={nerdlogBanner}
+                src={changelogBanner}
                 alt="nerd days header"
               />
               <br />
               <br />
-              <h1>Thank you for subscribing to Nerdlog emails!</h1>
+              <h1>Thank you for subscribing to Changelog emails!</h1>
               <p>
-                You will now be notified when we have episodes of the Nerdlog
+                You will now be notified when we have episodes of the Changelog
                 and get information about previous episodes every week.
               </p>
               <p>
@@ -34,7 +34,7 @@ const NerdlogPage = ({ location }) => {
                   rel="noreferrer"
                 >
                   {' '}
-                  weekly Nerdlog recaps.
+                  weekly Changelog recaps.
                 </a>
               </p>
             </div>
@@ -46,8 +46,8 @@ const NerdlogPage = ({ location }) => {
   );
 };
 
-NerdlogPage.propTypes = {
+ChangelogPage.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-export default NerdlogPage;
+export default ChangelogPage;
