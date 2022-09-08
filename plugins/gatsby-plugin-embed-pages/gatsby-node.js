@@ -1,7 +1,7 @@
 const path = require('path');
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
 
   const { data } = await graphql(`
     query MyQuery {
@@ -13,9 +13,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
           frontmatter {
             title
-            path
+            redirects
           }
-          body
         }
       }
     }
@@ -23,13 +22,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   data.allMdx.nodes.forEach((node) => {
     const {
-      frontmatter,
+      frontmatter: { redirects },
       fields: { fileRelativePath, slug },
-      body,
     } = node;
-    const nodePath = frontmatter.path || slug;
-    const pagePath = path.join(nodePath, 'embed', '/');
-    const contentSourcePath = nodePath;
+    const pagePath = path.join(slug, 'embed', '/');
 
     createPage({
       path: pagePath,
@@ -37,9 +33,26 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       context: {
         slug,
         fileRelativePath,
-        contentSourcePath,
         layout: 'EmbedLayout',
       },
     });
+
+    if (redirects) {
+      redirects.forEach((fromPath) => {
+        reporter.info(
+          `Creating redirect for embed page: ${path.join(
+            fromPath,
+            'embed',
+            '/'
+          )}`
+        );
+        createRedirect({
+          fromPath: path.join(fromPath, 'embed', '/'),
+          toPath: pagePath,
+          isPermanent: true,
+          redirectInBrowser: true,
+        });
+      });
+    }
   });
 };

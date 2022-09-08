@@ -1,0 +1,111 @@
+---
+title: 'Set up Errors Inbox'
+template: 'GuideTemplate'
+description: 'Set up Errors Inbox in New Relic'
+duration: 5
+procIdx: 2
+---
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to manage errors using Errors Inbox.
+
+Each procedure in the lab builds upon the last, so make sure you're [running your application locally](/automate-workflows/error-inbox/spin-up-geek-movie) before starting this one.
+
+</Callout>
+
+With your app now running in a local development environment, your next goal is to set up Errors Inbox. With it, you can debug your application before you deploy it to production.
+
+## Create a workload
+
+To observe your application in Errors Inbox, you first create a [workload](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/workloads/workloads-isolate-resolve-incidents-faster/).
+
+In a workload, you group specific apps and services that you want to monitor. The workload then provides an aggregated view of the health and activities of those apps and services.
+
+<Steps>
+
+<Step>
+
+Sign in to [New Relic](https://one.newrelic.com).
+
+</Step>
+
+<Step>
+
+In the top right corner, click **Create a workload**.
+
+![Create a workload](../../../images/error-inbox/create-a-workload.png)
+
+</Step>
+
+<Step>
+
+Name your workload "error-inbox-lab".
+
+</Step>
+
+<Step>
+
+Under **Select entities**, click **Add** for each of the following services to include it in the workload:
+
+- geek-shop-cart-service
+- geek-shop-catalogue-service
+- geek-shop-dispatch-service
+- geek-shop-payment-service
+- geek-shop-ratings-service
+- geek-shop-shipping-service
+- geek-shop-user-service
+
+![Add service to workload](../../../images/error-inbox/add-service-to-workload.png)
+
+</Step>
+
+<Step>
+
+Click **Create a workload**.
+
+![Create a workload with services](../../../images/error-inbox/create-a-service-workload.png)
+
+This creates a workload with all the geek-shop services.
+
+![Errors Inbox lab workload](../../../images/error-inbox/workload-ui.png)
+
+</Step>
+
+</Steps>
+
+## View the Errors Inbox
+
+Now that you've created a workload, view its Errors Inbox.
+
+<Steps>
+
+<Step>
+
+From the top navigation bar on the homepage, select **Errors Inbox**.
+
+![Navigate to Errors Inbox](../../../images/error-inbox/errors-inbox-ui.png)
+
+</Step>
+
+<Step>
+
+Click **Select Workload**, then **error-inbox-lab** from the dropdown.
+
+![select a workload](../../../images/error-inbox/select-workload.png)
+
+This shows you the error groups across your workload.
+
+![Errors group in Errors Inbox](../../../images/error-inbox/error-groups-in-errors-inbox.png)
+
+</Step>
+
+</Steps>
+
+Now that you have an Errors Inbox for your workload, you can proactively monitor the errors across your stack.
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to track full stack errors using Errors Inbox. Now that you've set up Errors Inbox, it's time to [triage your errors](/automate-workflows/error-inbox/triage-errors).
+
+</Callout>

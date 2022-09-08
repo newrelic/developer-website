@@ -1,6 +1,5 @@
 ---
-path: '/automate-workflows/get-started-terraform'
-duration: '30 min'
+duration: 30
 title: 'Getting started with New Relic and Terraform'
 template: 'GuideTemplate'
 description: 'Learn how to provision New Relic resources using [Terraform](https://www.terraform.io/).'
@@ -38,7 +37,7 @@ In this guide, you learn how to set up New Relic alerts with Terraform. More spe
 
 ## Before you begin
 
-To use this guide, you should have some basic knowledge of both New Relic and Terraform. If you haven't deployed a New Relic open source agent yet, [install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application. Also, [install the Terraform CLI](https://www.terraform.io/intro/getting-started/install.html).
+To use this guide, you should have some basic knowledge of both New Relic and Terraform. If you haven't deployed a New Relic open source agent yet, [install New Relic](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent) for your application. Also, [install the Terraform CLI](https://learn.hashicorp.com/collections/terraform/cli).
 
 <Steps>
 
@@ -59,20 +58,19 @@ Next, instruct Terraform to install and use the New Relic provider, by setting t
 
 ```hcl
 terraform {
-  # Require Terraform version 0.13.x (recommended)
-  required_version = "~> 0.13.0"
+  # Require Terraform version 1.0 (recommended)
+  required_version = "~> 1.0"
 
   # Require the latest 2.x version of the New Relic provider
   required_providers {
     newrelic = {
       source  = "newrelic/newrelic"
-      version = "~> 2.21"
     }
   }
 }
 ```
 
-In this code block, you're setting the required version of Terraform to 0.13.x and setting the New Relic provider to the latest 2.x version. Using the right [version constraints](https://www.terraform.io/docs/configuration/version-constraints.html) for your setup will provide better stability with your Terraform runs.
+In this code block, you're setting the required version of Terraform to 1.0 and setting the New Relic provider to the latest 2.x version. Using the right [version constraints](https://www.terraform.io/docs/configuration/version-constraints.html) for your setup will provide better stability with your Terraform runs.
 
 Now that you've set your Terraform and New Relic provider versions, you need to configure the New Relic provider.
 
@@ -323,6 +321,88 @@ For the Infrastructure alert, you created a [`newrelic_infra_alert_condition`](h
 <Step>
 
 ## Get notified when an alert triggers
+
+Now that you've configured some important alert conditions, add a notification destination and a notification channel to your alert policy to ensure the proper folks get notified when an alert triggers. To do so, use a [`newrelic_notification_destination`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/notification_destination) and a [`newrelic_notification_channel`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/notification_channel).
+
+To begin, create an email notification destination to configure your recipients list, which can be a specific person or a team. This will be used when creating a notification channel:
+
+```hcl
+resource "newrelic_notification_destination" "team_email_destination" {
+  name = "email-example"
+  type = "EMAIL"
+
+  property {
+    key = "email"
+    value = "team.member1@email.com,team.member2@email.com,team.member3@email.com"
+  }
+}
+```
+If you want to specify multiple emails, use a comma-delimited list of emails.
+
+
+Then, create an email notification channel template to send alert notifications to your email. Associate the channel with the destination id:
+
+```hcl
+resource "newrelic_notification_channel" "team_email_channel" {
+  name = "email-example"
+  type = "EMAIL"
+  destination_id = newrelic_notification_destination.team_email_destination.id
+  product = "IINT"
+
+  property {
+    key = "subject"
+    value = "New Subject"
+  }
+}
+```
+
+Last, but not least, in order to apply the notification channel to your alert policy, create a [`newrelic_workflow`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/workflow):
+
+```hcl
+resource "newrelic_workflow" "team_workflow" {
+  name = "workflow-example"
+  enrichments_enabled = true
+  destinations_enabled = true
+  workflow_enabled = true
+  muting_rules_handling = "NOTIFY_ALL_ISSUES"
+
+  enrichments {
+    nrql {
+      name = "Log"
+      configurations {
+       query = "SELECT count(*) FROM Metric"
+      }
+    }
+  }
+
+  issues_filter {
+    name = "filter-example"
+    type = "FILTER"
+
+    predicates {
+      attribute = "accumulations.sources"
+      operator = "EXACTLY_MATCHES"
+      values = [ "newrelic" ]
+    }
+  }
+
+  destination_configurations {
+    channel_id = newrelic_notification_channel.team_email_channel.id
+  }
+}
+```
+
+A `newrelic_workflow` links the notification channel you just created to your alerts.
+
+To finalize your notifications configuration, run `terraform apply` one last time to make sure all of your configured resources are up to date.
+
+## Get notified when an alert triggers (deprecated)
+
+<Callout variant="important">
+
+Alert channels is deprecated and won't be supported in future versions.
+
+</Callout>
 
 Now that you've configured some important alert conditions, add a notification channel to your alert policy to ensure the proper folks get notified when an alert triggers. To do so, use a [`newrelic_alert_channel`](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel).
 

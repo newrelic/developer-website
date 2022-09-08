@@ -1,0 +1,166 @@
+---
+duration: 5
+title: 'Set up your lab environment'
+template: 'GuideTemplate'
+description: 'Spin up your database application and simulator'
+procIdx: 1
+---
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to manually instrument your application with OpenTelemetry. If you haven't already, check out the [lab introduction](/collect-data/opentelemetry-manual).
+
+</Callout>
+
+Before you can walk through this lab, you need to set up your development environment. Here, you:
+
+1. Spin up your Python application
+2. Send traffic to your app with a simple load generator
+
+<Steps>
+
+<Step>
+
+Clone the lab repository:
+
+<>
+
+```bash
+git clone https://github.com/newrelic-experimental/otel-manual-instrumentation-lab-materials
+```
+
+</>
+
+This repository contains a simple Python application, in _db.py_, that interacts with a trivial datastore:
+
+<>
+
+```py
+import logging
+
+class DuplicateKeyError(Exception):
+    pass
+
+class KeyDoesNotExistError(Exception):
+    pass
+
+db = {}
+
+def read(key):
+    """Read key from the database."""
+    global db
+
+    try:
+        value = db[key]
+        logging.debug("Successful read")
+        return value
+    except KeyError as ke:
+        msg = f"Key `{key}` doesn't exist"
+        logging.debug(msg)
+        raise KeyDoesNotExistError(msg)
+
+def create(key, value):
+    """Write key:value to the database."""
+    global db
+
+    if key in db:
+        msg = f"Key `{key}` already exists"
+        logging.debug(msg)
+        raise DuplicateKeyError(msg)
+
+    db[key] = value
+    logging.debug("Successful create")
+    return value
+
+def update(key, value):
+    """Update key in the database."""
+    global db
+
+    if key in db:
+        db[key] = value
+        logging.debug("Successful update")
+        return value
+
+    msg = f"Key `{key}` doesn't exist"
+    logging.debug(msg)
+    raise KeyDoesNotExistError(msg)
+
+def delete(key):
+    """Delete key from the database."""
+    global db
+
+    if key in db:
+        del db[key]
+        logging.debug("Successful delete")
+        return True
+
+    return False
+```
+
+</>
+
+It provides functions for reading, creating, updating, and deleting records from the database. Some of these functions raise exceptions when assumptions are violated, such as when a user tries to read a key that's not there.
+
+The repository also includes a load generator, in _simulator.py_ that sends semi-random traffic to the database application.
+
+</Step>
+
+<Step>
+
+Create a new [virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments):
+
+<>
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+</>
+
+While you don't need to install dependencies now, you will soon. When you do, you'll want to install them into this virtual environment, rather than the global one.
+
+</Step>
+
+<Step>
+
+Run the load generator:
+
+<>
+
+```bash
+python simulator.py
+```
+
+</>
+
+You should see debug logs detailing the responses from your database app:
+
+<>
+
+```bash
+[output] DEBUG:root:Successful create
+[output] DEBUG:root:Key `key1` doesn't exist
+[output] DEBUG:root:Successful delete
+[output] DEBUG:root:Key `key3` doesn't exist
+[output] DEBUG:root:Key `key2` doesn't exist
+[output] DEBUG:root:Successful create
+[output] DEBUG:root:Successful create
+```
+
+</>
+
+The simulator randomly chooses database actions to perform, so your output should look similar to this, but may not be identical.
+
+</Step>
+
+</Steps>
+
+Now that you've got your application and load generator running, it's time to see what OpenTelemetry's all about.
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to instrument your application with OpenTelemetry. Now that you've set up your environment, [instrument your application](/collect-data/opentelemetry-manual/instrument).
+
+</Callout>
+

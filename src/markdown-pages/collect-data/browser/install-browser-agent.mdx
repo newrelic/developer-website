@@ -1,0 +1,174 @@
+---
+duration: 10
+title: 'Instrument your application with our browser agent'
+template: 'GuideTemplate'
+description: 'Instrument your React application with our browser agent'
+procIdx: 2
+---
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to troubleshoot your web app with New Relic browser.
+
+Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_Set up your lab environment_](/collect-data/browser/set-up-env), before starting this one.
+
+</Callout>
+
+Your React app is now up and running in the browser. You want to make sure your users always have the best experience on your site. For that, you need insights into your users' experiences, such as their page load times.
+
+To achieve this goal, you need to install our browser agent.
+
+## Install browser agent
+
+<Steps>
+
+<Step>
+
+Navigate to [New Relic](https://one.newrelic.com/), and sign in with your account.
+
+</Step>
+
+<Step>
+
+On the right side of the upper navigation bar, click **Add data**.
+
+![Add more data](../../../images/foodme/add-more-data.png)
+
+</Step>
+
+<Step>
+
+Scroll down to **Browser & mobile** and select **Browser monitoring**.
+
+![Arrow pointing to New Relic Browser](../../../images/nr-browser/newrelic-browser.png)
+
+This opens **Get Started with New Relic Browser**, which guides you through installing our browser agent.
+
+</Step>
+
+<Step>
+
+From **Get Started with New Relic Browser**, select **Copy/Paste Javascript code** for your deployment method.
+
+![select deployment method](../../../images/nr-browser/select-deployment-method.png)
+
+Scroll down to **Name your app**, select **No. (Name your standalone app)**, name your app **Reliqstaurant**, and click **Enable**.
+
+![enable browser agent for your app](../../../images/nr-browser/enable-browser.png)
+
+This gives you a JavaScript code snippet to enable browser monitoring. Copy it to your clipboard.
+
+![javascript code snippet to enable browser agent](../../../images/nr-browser/browser-code-snippet.png)
+
+<Callout variant='tip'>
+
+Save this code snippet at a place where you could easily find it later. You re-use this code snippet to enable browser monitoring for your application in next procedures.
+
+</Callout>
+
+</Step>
+
+<Step>
+
+Open your app in the IDE of your choice. 
+
+In _public/index.html_ file of your app, paste the copied javascript snippet inside the `<head>`.
+
+<>
+
+```html lineHighlight=21-22 fileName=public/index.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>Reliqstaurants</title>
+  <!--Replace these lines with your 
+      browser monitoring code snippet -->
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
+</html>
+
+```
+
+</>
+
+Your application is now instrumented with our browser agent.
+
+</Step>
+
+</Steps>
+
+## Restart your application
+
+Now that you've instrumented your application, it's time to restart your local server.
+
+<>
+
+```bash
+npm run build
+npm run newstart
+```
+
+</>
+
+Restart your load generator, as well.
+
+<>
+
+```bash
+python3 simulator.py
+```
+
+</>
+
+<Callout variant="important">
+
+Make sure you're running these commands in the correct terminal windows. If you no longer have those windows, follow the steps in the [setup procedure](/collect-data/browser/set-up-env).
+
+</Callout>
+
+
+## View your data
+
+Your app is now sending browser data to New Relic. View this data in New Relic, under **Browser**.
+
+<Steps>
+
+<Step>
+
+Navigate to [New Relic](https://one.newrelic.com/), select **Browser** from the top navigation, and select **Reliqstaurant**.
+
+![Arrow pointing to reliqstaurant app](../../../images/nr-browser/view-reliqstaurant.png)
+
+Here, you see **Core web vitals**, **User time on the site**, **Initial page load and route change**, and other performance data from your app.
+
+![Browser view of reliqstaurant](../../../images/nr-browser/reliqstaurant-browser-app.png)
+
+</Step>
+
+</Steps>
+
+You've instrumented your application to send browser data to New Relic using our browser agent. You also see your performance data in New Relic. Next, you use this data to troubleshoot front-end errors with your site.
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to troubleshoot your web app with New Relic browser. Now that you've instrumented your application with our browser agent, [debug errors](/collect-data/browser/debug-errors).
+
+</Callout>

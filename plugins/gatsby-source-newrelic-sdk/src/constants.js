@@ -1,12 +1,8 @@
 module.exports.BASE_URL =
   'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
 
-module.exports.DOCUMENTED_APIS = [
-  'logger',
-  'navigation',
-  'nerdlet',
-  'ngql',
-];
+module.exports.DOCUMENTED_APIS = ['logger', 'navigation', 'nerdlet', 'ngql'];
+
 module.exports.DOCUMENTED_COMPONENTS = [
   'AccountPicker',
   'AccountsQuery',
@@ -19,14 +15,16 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'BillboardChart',
   'BlockText',
   'Button',
-  'Callout',
-  'CalloutBody',
-  'CalloutTarget',
   'Card',
   'CardBody',
   'CardHeader',
+  'CardSection',
+  'CardSectionBody',
+  'CardSectionHeader',
   'ChartGroup',
   'Checkbox',
+  'CheckboxGroup',
+  'CollapsibleLayoutItem',
   'Dropdown',
   'DropdownItem',
   'DropdownSection',
@@ -64,16 +62,17 @@ module.exports.DOCUMENTED_COMPONENTS = [
   'NerdGraphQuery',
   'NerdletStateContext',
   'NrqlQuery',
-  'NrqlQueries',
   'PieChart',
   'PlatformStateContext',
   'Popover',
   'PopoverBody',
+  'PopoverFooter',
   'PopoverTrigger',
   'QueryGroup',
   'Radio',
   'RadioGroup',
   'ScatterChart',
+  'SectionMessage',
   'SegmentedControl',
   'SegmentedControlItem',
   'Select',

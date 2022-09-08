@@ -14,13 +14,13 @@ import FeaturedGuideTile from '../components/FeaturedGuideTile';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import * as styles from './index.module.scss';
+import Video from '../components/Video';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
-import Video from '../components/Video';
 
 const getStartedGuides = [
   {
-    duration: '5 min',
+    duration: 5,
     title: 'Create custom events',
     description:
       'Define, visualize, and get alerts on the data you want using custom events',
@@ -28,14 +28,14 @@ const getStartedGuides = [
     icon: <Icon name="nr-tdp" />,
   },
   {
-    duration: '7 min',
+    duration: 7,
     title: 'Add tags to apps',
     description: `Add tags to applications you instrument for easier filtering and organization`,
     url: '/automate-workflows/5-mins-tag-resources',
     icon: <Icon name="nr-automation" />,
   },
   {
-    duration: '12 min',
+    duration: 12,
     title: 'Build a Hello, World! app',
     description: `Build a Hello, World! app and publish it to your local New Relic One Catalog`,
     url: '/build-apps/build-hello-world-app',
@@ -55,7 +55,7 @@ const IndexPage = ({ data, pageContext, location }) => {
     <PageContext.Provider value={pageContext}>
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="Getting started with New Relic and Terraform" />
+        <PageLayout.Header title="New Relic Instant Observability" />
 
         <PageLayout.Content>
           <section
@@ -66,23 +66,31 @@ const IndexPage = ({ data, pageContext, location }) => {
           >
             <div className={styles.introText}>
               <p>
-                <a href="https://www.terraform.io/">Terraform</a> is a popular
-                infrastructure-as-code software tool built by HashiCorp. You use
-                it to provision all kinds of infrastructure and services,
-                including New Relic alerts.
+                New Relic Instant Observability (I/O) helps you monitor your
+                stack like a pro, without the burden of manual set up. Explore
+                an open source ecosystem of 450+ quickstarts—out-of-the-box
+                bundles of integrations, dashboards, and alerts—created by
+                observability experts around the world, vetted by New Relic, and
+                ready for you to install with one click.
                 <br />
                 <br />
-                In this guide, you learn how to set up New Relic alerts with
-                Terraform. More specifically, you provision an alert policy,
-                four alert conditions, and a notification channel.
+                Didn't find what you're looking for? You're always{' '}
+                <a href="https://github.com/newrelic/newrelic-quickstarts">
+                  welcome to add contributions
+                </a>{' '}
+                or improve existing quickstarts to help others instantly monitor
+                their services.
               </p>
               <p>
                 <Button
                   as={Link}
                   variant={Button.VARIANT.PRIMARY}
-                  to="/automate-workflows/get-started-terraform"
+                  to="https://newrelic.com/instant-observability"
+                  instrumentation={{
+                    navInteractionType: 'getQuickstartsButtonClick',
+                  }}
                 >
-                  Get Started with Terraform
+                  Get quickstarts
                 </Button>
               </p>
             </div>
@@ -90,11 +98,18 @@ const IndexPage = ({ data, pageContext, location }) => {
               css={css`
                 flex: 1;
                 margin-top: 0;
-                margin-left: 50px;
                 width: 100%;
+                display: flex;
+                justify-content: center;
               `}
             >
-              <Video id="vifxeilp2h" type="wistia" />
+              <Video
+                css={css`
+                  width: 100%;
+                `}
+                id="33kreqnm3p"
+                type="wistia"
+              />
             </div>
           </section>
 
@@ -121,9 +136,9 @@ const IndexPage = ({ data, pageContext, location }) => {
           <section className={styles.section}>
             <h2 className={styles.guideListingHeading}>Get inspired</h2>
             <GuideListing.List className={styles.allGuidesListing}>
-              {guides.map(({ frontmatter }, index) => (
+              {guides.map(({ fields, frontmatter }, index) => (
                 <GuideTile
-                  to={frontmatter.path}
+                  to={fields.slug}
                   key={index}
                   duration={frontmatter.duration}
                   title={frontmatter.tileShorthand?.title || frontmatter.title}
@@ -131,7 +146,6 @@ const IndexPage = ({ data, pageContext, location }) => {
                     frontmatter.tileShorthand?.description ||
                     frontmatter.description
                   }
-                  path={frontmatter.path}
                 />
               ))}
             </GuideListing.List>
@@ -200,7 +214,13 @@ const IndexPage = ({ data, pageContext, location }) => {
                 Learn more about developer champions
               </Button>
             </div>
-            <img src={devChampionBadge} alt="developer champion badge" />
+            <img
+              css={css`
+                padding: 1.25rem;
+              `}
+              src={devChampionBadge}
+              alt="developer champion badge"
+            />
           </section>
 
           <section
@@ -251,11 +271,13 @@ export const pageQuery = graphql`
       sort: { fields: [frontmatter___promote, frontmatter___title] }
     ) {
       nodes {
+        fields {
+          slug
+        }
         frontmatter {
           title
           description
           duration
-          path
           tileShorthand {
             title
             description

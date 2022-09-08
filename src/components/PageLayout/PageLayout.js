@@ -9,6 +9,7 @@ import { Layout, useLayout } from '@newrelic/gatsby-theme-newrelic';
 const TYPES = {
   SINGLE_COLUMN: 'SINGLE_COLUMN',
   RELATED_CONTENT: 'RELATED_CONTENT',
+  RELATED_CONTENT_TABS: 'RELATED_CONTENT_TABS',
 };
 
 const LAYOUTS = {
@@ -27,6 +28,23 @@ const LAYOUTS = {
       grid-template-columns: minmax(0, 1fr);
     }
   `,
+  [TYPES.RELATED_CONTENT_TABS]: css`
+    grid-template-areas:
+      'page-header page-header'
+      'tabs tabs'
+      'content page-tools';
+    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-gap: 2rem;
+
+    @media (max-width: 1240px) {
+      grid-template-areas:
+        'page-header'
+        'tabs'
+        'content'
+        'page-tools';
+      grid-template-columns: minmax(0, 1fr);
+    }
+  `,
   [TYPES.SINGLE_COLUMN]: css`
     grid-template-areas:
       'page-header'
@@ -35,15 +53,15 @@ const LAYOUTS = {
   `,
 };
 
-const PageLayout = ({ children, type }) => {
+const PageLayout = ({ children, type, className }) => {
   const { contentPadding } = useLayout();
 
   return (
     <div
+      className={className}
       css={css`
         display: grid;
         grid-gap: ${contentPadding};
-
         ${LAYOUTS[type]};
       `}
     >
@@ -54,6 +72,7 @@ const PageLayout = ({ children, type }) => {
 
 PageLayout.propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
   type: PropTypes.oneOf(Object.values(TYPES)).isRequired,
 };
 

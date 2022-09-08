@@ -17,7 +17,7 @@
       - [Use `fix`](#use-fix)
       - [Use `feat`](#use-feat)
     - [Draft PRs](#draft-prs)
-    - [Deploy previews with Amplify](#deploy-previews-with-amplify)
+    - [Deploy previews with Gatsby Cloud](#deploy-previews-with-gatsby-cloud)
   - [Style guide adherence](#style-guide-adherence)
   - [Reusable components](#reusable-components)
   - [Technical reference contribution guidelines](#technical-reference-contribution-guidelines)
@@ -45,7 +45,13 @@
   - [Updating the SDK documentation bundle](#updating-the-sdk-documentation-bundle)
     - [Step 1: Update the release number in `gatsby-config`](#step-1-update-the-release-number-in-gatsby-config)
     - [Step 2: Add any new APIs or components to our constants list](#step-2-add-any-new-apis-or-components-to-our-constants-list)
+      - [How to identify new components, APIs](#how-to-identify-new-components-apis)
+      - [Adding new components](#adding-new-components)
     - [Step 3: Add any new APIs or components to the navigation](#step-3-add-any-new-apis-or-components-to-the-navigation)
+  - [Updating Developer terms](#updating-developer-terms)
+    - [Developer terms in New Relic One](#developer-terms-in-new-relic-one)
+    - [Developer terms tips](#developer-terms-tips)
+    - [Developer terms testing](#developer-terms-testing)
 
 <!-- /TOC -->
 
@@ -65,7 +71,7 @@ guidelines below.
 ### Using multiple versions of Node
 
 If you intend to run multiple versions of Node please be aware that the New Relic
-Developer Site is currently on Node v12. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
+Developer Site is currently on Node v16. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
 
 Review [this article](https://itnext.io/nvm-the-easiest-way-to-switch-node-js-environments-on-your-machine-in-a-flash-17babb7d5f1b)
 which clearly explains the setup and configuration of NVM.
@@ -123,7 +129,7 @@ The `develop` and `main` branches have "Branch Protection" enabled in Github. In
 
 You can review full Branch Protection details [here](https://docs.google.com/document/d/1O1SGS0i3OmPfvPhylpFe1CTMkE20889iAOF_cMFJ344/edit#heading=h.cy3jfpnyvv5z), and check out a visual representation of the workflow below:
 
-![](src/images/Dev_site_branch_protection_workflow_(develop_main).png)
+![](<src/images/Dev_site_branch_protection_workflow_(develop_main).png>)
 
 ### Using Conventional Commits
 
@@ -168,9 +174,9 @@ To submit a [Draft PR](https://github.blog/2019-02-14-introducing-draft-pull-req
    `PR` you wish to submit.
 3. Once you are ready to have the `PR` reviewed and merge, click the Ready for review button on the `PR`.
 
-### Deploy previews with Amplify
+### Deploy previews with Gatsby Cloud
 
-PRs that are opened from a branch in this repo (not forks) will generate preview links on Amplify automatically. Amplify preview links can be found within the PR under the `Checks` Tab.
+PRs that are opened from a branch in this repo (not forks) will generate preview links on Gatsby Cloud automatically. Gatsby Cloud preview links can be found as comments on your pull request once they finish building. Progress can be monitored via the `Gatsby Build Service` job under the `Checks` section.
 
 ## Style guide adherence
 
@@ -399,20 +405,40 @@ need to happen:
 ### Step 1: Update the release number in `gatsby-config`
 
 - We use a [local Gatsby plugin `gatsby-source-newrelic-sdk`](https://github.com/newrelic/developer-website/tree/develop/plugins/gatsby-source-newrelic-sdk)
-to source our documentation into GraphQL. This plugin has some configuration that tells it what release number to use.
+  to source our documentation into GraphQL. This plugin has some configuration that tells it what release number to use.
 
-- [Update `gatsby-config.js`](https://github.com/newrelic/developer-website/blob/ae42737f5f1cf556f3c44d864655c9a571739e28/gatsby-config.js#L161)
-with the new release number to update the bundle release version.
+- [Update `gatsby-config.js`](https://github.com/newrelic/developer-website/blob/develop/gatsby-config.js#L198)
+  with the new release number to update the bundle release version.
 
-- To obtain the version release number visit the `one-core` repository on Github enterprise and look at the release version in `sdk-loader.js`. You can use the one-core site to confirm if any issues are developer site specific or occurring in the SDK.
+  ```json
+  {
+      resolve: 'gatsby-source-newrelic-sdk',
+      options: {
+        release: 'release-3250',
+      },
+  }
+  ```
+
+- To obtain the version release number visit the `one-core` repository on Github enterprise and look at the release version in `one-core/src/constants/sdk.js `. You can use the one-core docs site to confirm if any issues are developer site specific or occurring in the SDK.
 
 ### Step 2: Add any new APIs or components to our constants list
 
+#### How to identify new components, APIs
+
+At the moment, we don't have a rigorous or automatic process for identifying new components and APIs that we need to document. The goto manual process is to just eyeball the difference between the components we have on the site (or in `constants.js`), and what's displayed on the one-core site.
+
+You can also check a file that resides in the wanda-ec-ui repository found in `/src/__snapshots__/index.spec.js.snap` that provides a visual check for SDK components and their levels of exposure.
+
+It is possible to see a list of components from the SDK itself. If you run the site with the updated SDK version, you can enter `Object.entries(window.__NR1_SDK__.default).map(array => array[0])` into the dev console in the browser for the running site. That will show you an array containing component and API names. You can use this to try and compare differences, but some manual investigation is still necessary, since the SDK also contains pre-release and internal-only components.
+
+If a component looks like it should be internal only, feel free to ask #help-one-core to confirm if it should have public documentation, or if it is internal only.
+
+#### Adding new components
+
 - We rely on the 1st party documentation bundle to power the developer docs. While the 1st party bundle provides many of the same components/APIs, there are a few minor differences between the 1st and 3rd party SDKs. To account for this, we white list the specific components we document on the site.
-- If there are any new components or APIs, [update the constants
-list](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/constants.js)
-with the new components.
-- Pages will be then automatically generated for each of these.
+- If there are any new components or APIs, update the [constants
+  list](https://github.com/newrelic/developer-website/blob/develop/plugins/gatsby-source-newrelic-sdk/src/constants.js) with the new components.
+- Pages will be then automatically generated for each of the new components.
 
 > Once we have a 3rd party bundle automatically built for us, we should no longer need this step as that will contain only 3rd party SDK documentation. That is an open request to the NR One Core Team.
 
@@ -421,3 +447,46 @@ with the new components.
 If there are new APIs or components, we will want to list them in the navigation
 so that a user can easily discover them. [Add an entry to `nav.yml`](https://github.com/newrelic/developer-website/blob/develop/src/data/nav.yml)
 to get the new API/component in the nav.
+
+## Updating Developer terms
+
+If you need to update the developer terms the following process can be used.
+These terms only change when requested by New Relic Legal, and they should not be modified
+unless requested by our legal team.
+
+The Developers terms are found [here](./src/markdown-pages/terms.mdx)
+
+1. Obtain the approved file from Legal, usually in the form of a `.docx` type.
+2. Use a tool such as [Pandoc](https://pandoc.org/installing.html) to convert the file to markdown.
+3. Run this command to convert the file:
+
+```sh
+pandoc devterms.docx -o devterms.md
+```
+
+4. Start the process of updating the terms.
+
+### Developer terms in New Relic One
+
+The developer terms can be accepted in [New Relic One](https://one.newrelic.com) in the Developer Center which is accessible when a user clicks on
+`Build your own app`.
+
+- The Developer Center functionality is located in an internal Github Enterprise repository:  `wanda/developer-center`.
+- As long as the terms file doesn't incorporate custom components within the markdown (*like JSX components that only exist within the developer-website repo*) These internal terms will now automatically update when the [terms source file](./src/markdown-pages/terms.mdx) changes.
+
+### Developer terms tips
+
+It's very important all formatting stays the same as this is a legal document, so when making your changes
+look for the following issues that can occur when using Pandoc.
+
+- `URL conversions` - many times a URL will be formatted incorrectly.
+- `Spacing or tab issues` - can occur. Check the document is formatted correctly to align with legal standards.
+- `Addition of / in place of commas or bolded text` - when converting a document this issue will occur.
+- `Formatting of bullets` - sometimes bullets are formatted incorrectly.
+- `Correct bolding of sub terms` - sub terms sometimes are combined into a single paragraph.
+
+### Developer terms testing
+
+1. Compare the original terms file to the changes you wish to make to look for issues and correct them as needed. Doing a split screen comparison can help you identify issues.
+2. Review the terms on a preview branch after pushing your changes in a PR.
+3. Have someone from the Legal team review the PR branch.

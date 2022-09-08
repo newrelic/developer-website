@@ -19,13 +19,22 @@ It takes the title provided in the front matter and accepts plain text for the d
 
 ```
 ---
-path: '/example'
-duration: '30 min'
+duration: 30
 title: 'Example Guide'
 template: 'GuideTemplate'
 description: 'Example guide page'
 ---
 ```
+If you are creating a new lab, you can number the steps using the ProcIdx parameter in front matter. As a result, a list of steps will appear on the main lab page.
+You can also make subtask, for example:
+
+```
+---
+ProcIdx: 2.1
+---
+```
+will be read as a subtask and displayed under the main procedure with the appropriate styles.
+
 
 It also accepts a `<Video />` component as a child, which it will place on the left side of the description.
 
@@ -40,7 +49,7 @@ If there is a more than plain text and a `<Video />` (such as a code snippet or 
 
 ## Steps
 
-The `<Steps />` is a required container for the individual `<Step />` components and will autonumber from top to bottom.
+The `<Steps />` is a required container for the individual `<Step />` components and will outnumber from top to bottom.
 
 ### Usage
 
@@ -168,9 +177,48 @@ A step description
 
 > Note: keep in mind that a new line is necessary after an `img` tag to ensure proper rendering of subsequent text/markdown.
 
-# Tutorial
+# Tabs
+
+You can use the `Tabs` component, and related sub-components to construct a tabbed interface. Along with the top-level `<Tab>` component, the following components are available:
+
+* `<Tabs.Bar>` - A wrapper for all of the "tab" elements that the user can click on.
+* `<Tabs.BarItem>` - An individual "tab" that the user can click on.
+* `<Tabs.Pages>` - A wrapper for all the tab "pages" that the user can view.
+* `<Tabs.Page>` - An individual "page" of information that is shown.
+
+## Props
+
+|Component|Prop|Required?|Type|Description|
+|-|-|-|-|-|
+|`Tabs.BarItem`|`id`|yes|string|A label to associate a tab with a page.|
+|`Tabs.BarItem`|`count`|no|number|A numeric badge to display next to the tab.|
+|`Tabs.BarItem`|`disabled`|no|boolean|Whether or not a user can interact with the tab.|
+|`Tabs.Page`|`id`|yes|string|A label to associate a tab with a page.|
 
 ## Usage
+
+```html
+<Tabs>
+  <Tabs.Bar>
+    <Tabs.BarItem id="tacos">Tacos</Tabs.BarItem>
+    <Tabs.BarItem id="nachos" count={70}>Nachos</Tabs.BarItem>
+    <Tabs.BarItem id="burritos">Burritos</Tabs.BarItem>
+    <Tabs.BarItem id="enchiladas" disabled>Enchiladas</Tabs.BarItem>
+  </Tabs.Bar>
+
+  <Tabs.Pages>
+    <Tabs.Page id="tacos">This is a page talking about tacos</Tabs.Page>
+    <Tabs.Page id="nachos">This is a page talking about nachos</Tabs.Page>
+    <Tabs.Page id="burritos">This is a page talking about burritos</Tabs.Page>
+  </Tab.Pages>
+</Tabs>
+```
+
+An example of how it could be use
+
+## Tutorial
+
+### Usage
 
 You can use the `Tutorial` component walk a user through changes in code by automatically highlighting the difference between each step.
 
@@ -262,7 +310,7 @@ const evenMoreNewCode = "here is even more new code"
 </Tutorial>
 ````
 
-In the first step's rendered codeblock, the second line (`myNewCode`) in _first-file.js_ will be highlighted. In the second step, the second line (`myNewCode`) in second-file.js_ will be highlighted. In the third step, the third line (`evenMoreNewCode`) iin _first-file.js_ will be highlighted.
+In the first step's rendered codeblock, the second line (`myNewCode`) in _first-file.js_ will be highlighted. In the second step, the second line (`myNewCode`) in _second-file.js_ will be highlighted. In the third step, the third line (`evenMoreNewCode`) in _first-file.js_ will be highlighted.
 
 Even though a single file is highlighted in each step, all files are rendered in tabs for each step on the page. Your reader can then toggle between the files to see what the current state of the whole codebase is.
 
@@ -400,3 +448,49 @@ Other text ...
 You can see the difference in what is displayed below:
 
 ![alt text](readme_images/hidden_vs_normal.png "Hidden vs Normal")
+
+### SuperTiles
+
+### Usage
+
+The `SuperTiles` component renders the `GuidedInstallTile` component.
+
+To include it:
+
+```html
+<SuperTiles />
+```
+
+
+### SuperTile
+
+### Usage
+
+The `SuperTile` component is a wrapper component that can display a primary and secondary tile.
+
+#### Primary
+
+```html
+<SuperTile type="primary">
+  My content
+</SuperTile>
+```
+
+#### Secondary
+
+```html
+<SuperTile>
+  My content
+</SuperTile>
+```
+
+### GuidedInstallTile
+
+### Usage
+
+The `GuidedInstallTile` component includes custom content relevant to the guided install flow in New Relic.
+
+```html
+<GuidedInstallTile />
+```
+

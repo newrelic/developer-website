@@ -1,0 +1,154 @@
+---
+title: 'Create a dashboard'
+template: 'GuideTemplate'
+description: 'create a dashboard to observe your data in New Relic'
+duration: 15
+procIdx: 2
+---
+
+<Callout variant="course" title="Lab">
+
+This procedure is a part of lab that teaches you how to build a quickstart. If you haven't already, checkout the [_lab introduction_](/contribute-to-quickstarts/build-a-quickstart)
+
+Each procedure in this lab builds on top of the last one, so make sure you [_Deploy your application_](/contribute-to-quickstarts/build-a-quickstart/deploy-your-application) before proceeding with this one.
+
+</Callout>
+
+With New Relic dashboards, you observe and interpret the data you collect from your application. You gather the data you want to see into charts to customize the way you see it.
+
+In this procedure, you create a dashboard in New Relic. 
+
+## Create a dashboard
+
+Navigate to [New Relic](https://one.newrelic.com/) and sign in with your account. Here, you see different tabs such as **Browse Data**, **Dashboards**, **Alerts & AI**. 
+
+![New Relic UI](../../../images/contribute-to-quickstarts/newrelic-homepage.png)
+
+Move to **Dashboards** and click **Create a dashboard** in the top right corner. 
+
+![create a dashboard](../../../images/contribute-to-quickstarts/create-dashboard.png)
+
+Name your dashboard "FlashDB" and click create.
+
+![name your dashboard](../../../images/contribute-to-quickstarts/name-dashboard.png)
+
+## Add charts to your dashboard
+
+Once the dashboard is in place, you can start creating charts. You're going to add the following charts:
+- Database methods
+- Average response time
+- Errors
+- Database size
+- Cache hits
+- Keys
+
+### Database methods
+
+Hover over the dashboard and click **Add a new chart**.
+
+![add a new chart](../../../images/contribute-to-quickstarts/add-new-chart.png)
+
+From this screen, you add charts using our query builder, or you choose to add text, images, or links using Markdown. Click **Add a chart**.
+
+![add a chart](../../../images/contribute-to-quickstarts/add-a-chart.png)
+
+It may open the query builder option. Switch to the NRQL editor and edit the query as follows:
+
+```sql
+SELECT count(*) FROM fdb_method FACET method 
+```
+
+![database methods chart](../../../images/contribute-to-quickstarts/fdb-methods.png)
+
+Click **Run** to see above results.
+
+Here, you see the count of each FlashDB query, grouped by method. You can choose to present your results in different formats such as table, billboard, or pie chart. 
+
+![chart formats](../../../images/contribute-to-quickstarts/chart-formats.png)
+
+Change the chart type to pie, name your chart "Database methods", and click save.
+
+![pie chart](../../../images/contribute-to-quickstarts/piechart.png)
+
+The chart is now visible on your dashboard.
+
+![piechart dashboard](../../../images/contribute-to-quickstarts/piechart-dashboard.png)
+
+You can add more charts to your dashboard following the same pattern. To do so, click **+** in upper right hand corner. 
+
+![add more charts](../../../images/contribute-to-quickstarts/add-more-charts.png)
+
+This takes you to the same **Add to your dashboard** page. Add another chart to your dashboard.
+
+### Average response time
+Run the following query to observe the average response time of FlashDB queries. 
+
+```sql
+SELECT average(fdb_create_responses), average(fdb_read_responses), average(fdb_update_responses), average(fdb_delete_responses) FROM Metric TIMESERIES
+```
+
+![average response time chart](../../../images/contribute-to-quickstarts/average-response-time-chart.png ) 
+
+Here, you observe the average response time for different FlashDB queries. Click **Save** to add this chart to your dashboard. Follow the same procedure to add the rest of the charts.
+
+### Errors
+
+For the Errors chart, use the following query:
+
+```sql
+SELECT sum(fdb_create_errors), sum(fdb_read_errors), sum(fdb_update_errors), sum(fdb_delete_errors) FROM Metric TIMESERIES
+```
+
+Here, you observe errors for all database queries.
+
+![errors chart](../../../images/contribute-to-quickstarts/errors-chart.png )
+
+### Database size
+
+Use the following query to get Database size chart.
+
+```sql
+SELECT latest(fdb_size) FROM Metric
+```
+
+![database size chart](../../../images/contribute-to-quickstarts/latest-database-size.png )
+
+This chart shows you the database size. 
+
+### Cache hits
+
+For the Cache hits chart, use the following query:
+
+```sql
+SELECT sum(fdb_cache_hits) FROM Metric TIMESERIES
+```
+
+![cache hits chart](../../../images/contribute-to-quickstarts/cache-hits-chart.png )
+
+Here, you observe the total number of cache hits using a line chart.
+
+### Keys
+
+Use the following query to count the number of keys in your database.
+
+```sql
+SELECT count(fdb_keys) FROM Metric TIMESERIES
+```
+
+![keys chart](../../../images/contribute-to-quickstarts/keys-chart.png )
+
+Here, you observe the FlashDB key count. 
+
+Your final dashboard will look similar to the following:
+
+![dashboard with charts](../../../images/contribute-to-quickstarts/final-flashdb-dashboard.png )
+
+## Summary
+
+In this procedure, you created a dashboard and added multiple charts to it to observe your services in New Relic.
+
+<Callout variant="course" title="Lab">
+
+This procedure is a part of lab that teaches you how to build a quickstart. Continue on to next procedure:  [_Create alerts_](/contribute-to-quickstarts/build-a-quickstart/create-alerts).
+
+</Callout>

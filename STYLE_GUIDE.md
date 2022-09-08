@@ -40,6 +40,8 @@
     - [GuideTemplate Frontmatter example](#guidetemplate-frontmatter-example)
   - [Reusable components](#reusable-components)
   - [Embed guides](#embed-guides)
+    - [Example](#example)
+    - [Hiding content on embedded pages](#hiding-content-on-embedded-pages)
   - [Grammar and formatting](#grammar-and-formatting)
     - [Format titles](#format-titles)
     - [Format headers](#format-headers)
@@ -283,8 +285,7 @@ The value that is assigned to the key slug is used in order to navigate to your 
 
 ### GuideTemplate Frontmatter slugs
 
-- `path`: the relative path to the file
-- `duration`: the estimated time to complete the exercise
+- `duration`: the estimated time to complete the exercise in minutes
 - `title`: the title of the page
 - `template`: the Gatsby template used
 - `description`: the description of the page
@@ -309,8 +310,7 @@ The value that is assigned to the key slug is used in order to navigate to your 
 
 ```md
 ---
-path: '/build-apps/add-time-picker-guide'
-duration: '20 min'
+duration: 20
 title: 'Add the time picker to a sample application'
 template: 'GuideTemplate'
 description: 'Learn how to add a time picker to a sample application'
@@ -348,11 +348,11 @@ Each guide on the site (in frontmatter `template: GuideTemplate`) has an embed p
 
 If there's a guide with this URL:
 
-    https://developer.newrelic.com/path/to/guide
+  https://developer.newrelic.com/path/to/guide
 
 The embed page URL would be:
 
-    https://developer.newrelic.com/path/to/guide/embed
+  https://developer.newrelic.com/path/to/guide/embed
 
 You can use the embed URL in an `<iframe src=EMBED_URL />` on another site to display guide content.
 

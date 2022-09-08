@@ -1,0 +1,43 @@
+---
+title: 'OpenTelemetry'
+template: 'GuideTemplate'
+description: 'What is OpenTelemetry?'
+procIdx: 1
+---
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. If you haven't already, checkout the [chapter introduction](/opentelemetry-masterclass/fundamentals).
+
+</Callout>
+
+[OpenTelemetry](https://opentelemetry.io) is an exciting new standard for open instrumentation, one that's supported by a large developer community composed of end users, cloud providers, and observability leaders (including New Relic). Like its predecessor, [OpenTracing](https://opentracing.io), it’s a CNCF project, currently in the [incubating](https://landscape.cncf.io/card-mode?project=incubating) phase of maturity.
+
+OpenTelemetry aims to:
+
+- Standardize how applications collect and send their telemetry data to backend platforms. With this standard, clients and observability platforms all agree on what the data looks like, so you no longer have to be locked in to a particular platform's ecosystem to make use of your data.
+- Provide better end-to-end visibility of telemetry data. OpenTelemetry defines how libraries and frameworks generate telemetry data in a way that is platform-agnostic and implementation-independent. This means that more tools can adopt OpenTelemetry, which leads to better observability, especially in distributed systems that use different technologies.
+
+OpenTelemetry accomplishes these goals by providing both a **specification**, including what telemetry data should look like and how it’s used, as well as an out-of-the-box **implementation** of that spec in many of the most popular programming languages.
+
+## Specification
+
+OpenTelemetry is, first and foremost, a specification. It provides a standard definition of what telemetry data looks like and a description of how to build and use OpenTelemetry instrumentation.
+
+## Implementation
+
+OpenTelemetry’s API and SDK specs define classes, functions, and configuration mechanisms for working with telemetry data. But OpenTelemetry also supplies implementations that comply with the standard in many of the most popular programming languages.
+
+<Callout variant="tip" title="New Relic’s OpenTelemetry support">
+
+Platform-specific solutions often support more features of their backend platforms than OpenTelemetry does, and New Relic is no exception. While this is true today, as OpenTelemetry matures, this disparity will shrink.
+
+Read our [documentation](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/introduction-opentelemetry-new-relic/#choice) to compare how our platform supports our proprietary agents versus how we support OpenTelemetry.
+
+</Callout>
+
+<Callout variant="course">
+
+This lesson is a part of our OpenTelemetry masterclass. Continue on to the next lesson: [The OpenTelemetry specification](/opentelemetry-masterclass/fundamentals/opentelemetry-specification).
+
+</Callout>

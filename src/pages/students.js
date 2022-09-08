@@ -7,7 +7,6 @@ import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import Video from '../components/Video';
-import studentPackLogo from '../images/students/studentPack.png';
 import * as styles from './students.module.scss';
 
 const StudentsPage = ({ location }) => {
@@ -19,12 +18,10 @@ const StudentsPage = ({ location }) => {
         <PageLayout.Content>
           <section className={cx(styles.section, styles.twoColumn)}>
             <div>
-              <img
+              {/* <img
                 src={studentPackLogo}
                 alt="New Relic Student Edition in GitHub Student Developer Pack"
-              />
-              <br />
-              <br />
+              /> */}
               <p>
                 Traditional computer sciences are great, but hands-on experience
                 with modern platforms positions you as a more competitive
@@ -41,19 +38,9 @@ const StudentsPage = ({ location }) => {
                 compete in the market.
               </p>
               <p>
-                We're excited to announce the New Relic Student Edition as an
-                exclusive offer in the GitHub Student Developer Pack. GitHub
-                created the Student Developer Pack to help students ship
-                software like pros, and the New Relic Student Edition
-                contributes to that goal.
-              </p>
-              <p>
-                To access the Student Edition,{' '}
-                <a href="https://newrelic.com/signup">
-                  sign up for a free account
-                </a>{' '}
-                and verify your student status using the GitHub Student
-                Developer Pack
+                We're excited to announce the New Relic Student Edition is
+                available through a network of our partners, including the
+                GitHub Student Developer Pack and Platzi.
               </p>
             </div>
             <Video id="irf10ez4h1" type="wistia" />
@@ -76,7 +63,9 @@ const StudentsPage = ({ location }) => {
                   </h3>
                   <p className={styles.stepDetail}>
                     To access the Student Edition, create a free New Relic
-                    account. After that, verify your student status.
+                    account. (Use the same email address to sign-up that is
+                    associated with your Platzi or GitHub Student Developer
+                    Account)
                   </p>
 
                   <Button
@@ -97,22 +86,19 @@ const StudentsPage = ({ location }) => {
                     Verify Your Student Status
                   </h3>
                   <p className={styles.stepDetail}>
-                    The Student Edition is offered through the{' '}
+                    Verify that you have an active{' '}
                     <a href="https://education.github.com/?utm_source=GitHub-NewRelic">
-                      GitHub Student Developer Pack
+                      GitHub Student Developer Pack account
                     </a>
                     . If you don't have access to GitHub Students, sign up and
                     verify your account.
                   </p>
-
-                  <Button
-                    to="https://education.github.com/?utm_source=GitHub-NewRelic"
-                    as={Link}
-                    variant={Button.VARIANT.SECONDARY}
-                    className={styles.stepButton}
-                  >
-                    GitHub Student Developer Pack
-                  </Button>
+                  <p className={styles.stepDetail}>
+                    <a href="https://platzi.com/">
+                      Sign up for a Platzi account.
+                    </a>{' '}
+                    All Platzi student have access to the Student Edition.
+                  </p>
                 </Surface>
                 <Surface
                   base={Surface.BASE.SECONDARY}
@@ -187,7 +173,7 @@ const StudentsPage = ({ location }) => {
             <Button
               as={ExternalLink}
               className={styles.nominateButton}
-              href="https://forms.gle/Zkdub5e1x4MNqSKW9"
+              href="https://newrelic.com/signup"
               variant={Button.VARIANT.PRIMARY}
             >
               Sign up for a free account{' '}
@@ -201,9 +187,8 @@ const StudentsPage = ({ location }) => {
               </p>
               <div className={styles.answer}>
                 <p>
-                  New Relic offers the Student Edition exclusively through the
-                  GitHub Student Pack. To verify your account's eligibility,
-                  authorize your GitHub account.
+                  New Relic offers the Student Edition through our education
+                  partners, including Platzi & GitHub Student Pack
                 </p>
                 <p>
                   Learn more about GitHub Education if you don't have GitHub
@@ -262,8 +247,8 @@ const StudentsPage = ({ location }) => {
               </p>
               <p className={styles.answer}>
                 No problem! Just upgrade your account to the Student Edition. In
-                the main menu, look for Student Edition and follow the
-                instructions.
+                the main menu, look for Support --> Student Edition and follow
+                the instructions.
               </p>
             </div>
             <div className={styles.group}>

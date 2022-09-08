@@ -1,6 +1,5 @@
 ---
-path: '/automate-workflows/get-started-new-relic-cli'
-duration: '20 min'
+duration: 20
 title: 'Get started with the New Relic CLI'
 template: 'GuideTemplate'
 description: 'Learn the essentials of the New Relic CLI, from install and configuration to basic usage.'
@@ -89,9 +88,9 @@ Run the [`profiles add`](https://github.com/newrelic/newrelic-cli/blob/master/do
 
 ```sh lineNumbers=false
 # Create the tutorial account for the US region
-newrelic profiles add -n tutorial --apiKey YOUR_NEW_RELIC_USER_KEY -r YOUR_REGION
+newrelic profiles add --profile tutorial --apiKey YOUR_NEW_RELIC_USER_KEY -r YOUR_REGION
 # Set the profile as defaults
-newrelic profiles default -n tutorial
+newrelic profiles default --profile tutorial
 ```
 
 <Callout variant="important">

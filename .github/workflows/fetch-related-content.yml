@@ -21,7 +21,7 @@ jobs:
       - name: Setup node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 16
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -93,7 +93,7 @@ jobs:
               required_status_checks: {
                 strict: false,
                 contexts: [
-                  'Gatsby Build'
+                  'Gatsby Build Service - developer-website'
                 ]
               },
               restrictions: null,

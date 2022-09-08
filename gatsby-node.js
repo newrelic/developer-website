@@ -1,14 +1,35 @@
 const path = require(`path`);
 const { execSync } = require('child_process');
 const { createFilePath } = require('gatsby-source-filesystem');
-
-const MAX_RESULTS = 5;
+const resolveQuickstartSlug = require('./src/utils/resolveQuickstartSlug.js');
+const externalRedirects = require('./src/data/external-redirects.json');
 
 const kebabCase = (string) =>
   string
     .replace(/([a-z])([A-Z])/g, '$1-$2')
     .replace(/\s+/g, '-')
     .toLowerCase();
+
+// This is a temporary customization to ensure that the path field is always
+// queryable from the createPages API. We rely on the path for deprecation
+// warnings to inform authors that path is no longer a supported markdown
+// property. Because of Gatsby's type inference from frontmatter properties, the
+// query in createPages fails without this patch if no file contains a 'path'
+// frontmatter property.
+//
+// This patch can be safely removed when removing the deprecation warning in
+// createPages.
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  const typeDefs = `
+    type MdxFrontmatter {
+      path: String
+    }
+  `;
+
+  createTypes(typeDefs);
+};
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage, createRedirect } = actions;
@@ -55,7 +76,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       }
     }
   `);
-
   // Handle errors
   if (result.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`);
@@ -63,6 +83,31 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
+
+  if (externalRedirects.length > 0) {
+    externalRedirects.forEach(({ url, paths }) => {
+      paths.forEach((path) => {
+        createRedirect({
+          fromPath: path,
+          toPath: url,
+          isPermanent: true,
+          redirectInBrowser: true,
+        });
+      });
+    });
+  }
+
+  createRedirect({
+    fromPath: `/instant-observability/`,
+    toPath: `https://newrelic.com/instant-observability`,
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: `/instant-observability/*`,
+    toPath: `https://newrelic.com/instant-observability/*`,
+    isPermanent: true,
+  });
 
   allMdx.edges.forEach(({ node }) => {
     const {
@@ -74,25 +119,46 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       frontmatter.redirects.forEach((fromPath) => {
         createRedirect({
           fromPath,
-          toPath: frontmatter.path,
+          toPath: slug,
           isPermanent: true,
           redirectInBrowser: true,
         });
       });
     }
 
+    if (frontmatter.path) {
+      const recommendedPath = path.join(
+        'src/markdown-pages',
+        fileRelativePath.endsWith('index.mdx')
+          ? path.join(frontmatter.path, 'index.mdx')
+          : `${frontmatter.path}.mdx`
+      );
+
+      const recommendation =
+        recommendedPath === fileRelativePath
+          ? "Please remove the 'path' property."
+          : `To render this page at '${frontmatter.path}', please move this file to: '${recommendedPath}'.`;
+
+      reporter.panicOnBuild(
+        `
+${fileRelativePath}
+
+The 'path' property on frontmatter is deprecated and has no effect. URLs are now generated using the path of the file. ${recommendation}
+`.trim()
+      );
+    }
+
     createPage({
-      path: frontmatter.path
-        ? path.join(frontmatter.path, '/')
-        : path.join(slug, '/'),
+      path: path.join(slug, '/'),
       component: path.resolve(`src/templates/${frontmatter.template}.js`),
       context: {
         slug,
         fileRelativePath,
-        guidesFilter:
-          frontmatter.template === 'OverviewTemplate'
-            ? `${frontmatter.path}/*`
-            : undefined,
+        guidesFilter: ['OverviewTemplate', 'LabOverviewTemplate'].includes(
+          frontmatter.template
+        )
+          ? `${slug}/*`
+          : undefined,
       },
     });
   });
@@ -124,6 +190,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     });
   });
+};
+
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+  const oldPage = { ...page };
+
+  deletePage(oldPage);
+  createPage(page);
 };
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -159,6 +233,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       name: 'slug',
       value: `/apis/${kebabCase(node.name)}`,
+    });
+  }
+
+  if (node.internal.type === 'Quickstarts') {
+    createNodeField({
+      node,
+      name: 'slug',
+      value: `${resolveQuickstartSlug(node.name, node.id)}`,
     });
   }
 };

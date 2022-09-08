@@ -12,7 +12,7 @@ const SPECIAL_NUMBERS = [
   'EPSILON',
 ];
 
-const IGNORED_PROPERTIES = [];
+const IGNORED_PROPERTIES = ['unsafeExperimentalNamespaces'];
 
 const getArgs = (propType) =>
   (propType.__reflect__.find(({ args }) => args) || {}).args;

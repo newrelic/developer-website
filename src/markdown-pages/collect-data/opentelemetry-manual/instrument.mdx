@@ -1,0 +1,648 @@
+---
+duration: 5
+title: 'Instrument your application with OpenTelemetry'
+template: 'GuideTemplate'
+description: 'Manually instrument your application with the OpenTelemetry Python SDK'
+procIdx: 2
+---
+
+<Tutorial>
+
+<Project>
+
+```py fileName=db.py
+import logging
+
+class DuplicateKeyError(Exception):
+    pass
+
+class KeyDoesNotExistError(Exception):
+    pass
+
+db = {}
+
+def read(key):
+    """Read key from the database."""
+    global db
+
+    try:
+        value = db[key]
+        logging.debug("Successful read")
+        return value
+    except KeyError as ke:
+        msg = f"Key `{key}` doesn't exist"
+        logging.debug(msg)
+        raise KeyDoesNotExistError(msg)
+
+def create(key, value):
+    """Write key:value to the database."""
+    global db
+
+    if key in db:
+        msg = f"Key `{key}` already exists"
+        logging.debug(msg)
+        raise DuplicateKeyError(msg)
+
+    db[key] = value
+    logging.debug("Successful create")
+    return value
+
+def update(key, value):
+    """Update key in the database."""
+    global db
+
+    if key in db:
+        db[key] = value
+        logging.debug("Successful update")
+        return value
+
+    msg = f"Key `{key}` doesn't exist"
+    logging.debug(msg)
+    raise KeyDoesNotExistError(msg)
+
+def delete(key):
+    """Delete key from the database."""
+    global db
+
+    if key in db:
+        del db[key]
+        logging.debug("Successful delete")
+        return True
+
+    return False
+```
+
+</Project>
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to instrument your application with OpenTelemetry.
+
+Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_Set up your lab environment_](/collect-data/opentelemetry-manual/set-up-env), before starting this one.
+
+</Callout>
+
+Your Python application is running and getting a lot of traffic, so it's time to instrument it. Using OpenTelemetry provides freedom for you to choose your preferred observability platform—New Relic, of course. Also, because it's open source and supported by many actors in the observability space, you can trust its development and authority as a standard, knowing that it will be broadly supported into the future.
+
+Here, you manually instrument your application to generate traces with the OpenTelemetry [API](https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-api). Then, you configure the [SDK](https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-sdk) to send them to New Relic so you can analyze the results later.
+
+## Instrument your application
+
+<Steps>
+
+<Step>
+
+In the terminal window that's running your simulator, press `<CTRL-C>`.
+
+You should see your simulator shut down. Now you can add some dependencies and update your app logic.
+
+</Step>
+
+<Step>
+
+Install the OpenTelemetry SDK and supporting packages into your virtual environment:
+
+<>
+
+```bash
+pip install opentelemetry-api
+pip install opentelemetry-sdk
+pip install opentelemetry-exporter-otlp-proto-grpc
+```
+
+Now that you've installed your dependencies, you need to use those dependencies to instrument your application.
+
+</>
+
+</Step>
+
+<Step>
+
+Instrumenting your application begins with a [tracer provider](https://opentelemetry.io/docs/reference/specification/trace/api/#tracerprovider). A tracer provider is used for holding configurations and for building [tracers](https://opentelemetry.io/docs/reference/specification/trace/api/#tracer). Tracers are then used for creating [spans](https://opentelemetry.io/docs/reference/specification/trace/api/#span). Spans collect information about an operation or process.
+
+In _db.py_, create a tracer provider:
+
+<>
+
+```py fileName=db.py
+import logging
+from opentelemetry import trace
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace import TracerProvider
+
+provider = TracerProvider(
+    resource=Resource.create({"service.name": "speedeedeebee"})
+)
+trace.set_tracer_provider(provider)
+
+class DuplicateKeyError(Exception):
+    pass
+
+class KeyDoesNotExistError(Exception):
+    pass
+
+db = {}
+
+def read(key):
+    """Read key from the database."""
+    global db
+
+    try:
+        value = db[key]
+        logging.debug("Successful read")
+        return value
+    except KeyError as ke:
+        msg = f"Key `{key}` doesn't exist"
+        logging.debug(msg)
+        raise KeyDoesNotExistError(msg)
+
+def create(key, value):
+    """Write key:value to the database."""
+    global db
+
+    if key in db:
+        msg = f"Key `{key}` already exists"
+        logging.debug(msg)
+        raise DuplicateKeyError(msg)
+
+    db[key] = value
+    logging.debug("Successful create")
+    return value
+
+def update(key, value):
+    """Update key in the database."""
+    global db
+
+    if key in db:
+        db[key] = value
+        logging.debug("Successful update")
+        return value
+
+    msg = f"Key `{key}` doesn't exist"
+    logging.debug(msg)
+    raise KeyDoesNotExistError(msg)
+
+def delete(key):
+    """Delete key from the database."""
+    global db
+
+    if key in db:
+        del db[key]
+        logging.debug("Successful delete")
+        return True
+
+    return False
+```
+
+</>
+
+<br />
+
+Here, you created a tracer provider with a resource. A [resource](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/sdk.md) describes a service as a collection of attributes. In this resource, you specified name of your service as "speedeedeebee". You also configured your API to use your new tracer provider.
+
+</Step>
+
+<Step>
+
+Add a [span processor](https://opentelemetry.io/docs/reference/specification/trace/sdk/#span-processor), which processes span data before exporting it to a telemetry consumer:
+
+<>
+
+```python fileName=db.py
+import logging
+from grpc import Compression
+from opentelemetry import trace
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+provider = TracerProvider(
+    resource=Resource.create({"service.name": "speedeedeebee"})
+)
+provider.add_span_processor(
+    BatchSpanProcessor(
+        OTLPSpanExporter(compression=Compression.Gzip)
+    )
+)
+trace.set_tracer_provider(provider)
+
+class DuplicateKeyError(Exception):
+    pass
+
+class KeyDoesNotExistError(Exception):
+    pass
+
+db = {}
+
+def read(key):
+    """Read key from the database."""
+    global db
+
+    try:
+        value = db[key]
+        logging.debug("Successful read")
+        return value
+    except KeyError as ke:
+        msg = f"Key `{key}` doesn't exist"
+        logging.debug(msg)
+        raise KeyDoesNotExistError(msg)
+
+def create(key, value):
+    """Write key:value to the database."""
+    global db
+
+    if key in db:
+        msg = f"Key `{key}` already exists"
+        logging.debug(msg)
+        raise DuplicateKeyError(msg)
+
+    db[key] = value
+    logging.debug("Successful create")
+    return value
+
+def update(key, value):
+    """Update key in the database."""
+    global db
+
+    if key in db:
+        db[key] = value
+        logging.debug("Successful update")
+        return value
+
+    msg = f"Key `{key}` doesn't exist"
+    logging.debug(msg)
+    raise KeyDoesNotExistError(msg)
+
+def delete(key):
+    """Delete key from the database."""
+    global db
+
+    if key in db:
+        del db[key]
+        logging.debug("Successful delete")
+        return True
+
+    return False
+```
+
+</>
+
+<br />
+
+The `BatchSpanProcessor` you used here batches spans before exporting them. This reduces the number of requests you send to New Relic.
+
+Within this span processor, you also configured a [span exporter](https://opentelemetry.io/docs/reference/specification/trace/sdk/#span-exporter). The exporter is in charge of serializing and sending spans to the consumer. Here, you used [OTLP](https://opentelemetry.io/docs/reference/specification/protocol/), OpenTelemetry's exchange protocol, and [Gzip](https://www.gnu.org/software/gzip/) compression to efficiently transport your telemetry data to New Relic.
+
+You configure your tracer provider with this processor logically prior to setting your tracer provider in the API.
+
+</Step>
+
+<Step>
+
+Create two environment variables that you use to configure your OpenTelemetry pipelines. Don't forget to replace the license key placeholder with your [real one](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key):
+
+<>
+
+```bash
+export OTEL_EXPORTER_OTLP_ENDPOINT=https://otlp.nr-data.net:4317
+export OTEL_EXPORTER_OTLP_HEADERS="api-key=<YOUR-LICENSE-KEY>"
+```
+
+The [OpenTelemetry Protocol](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md) (OTLP) endpoint is the url of our OpenTelemetry receiver. Your service sends data directly to New Relic through this endpoint.
+
+<Callout variant="important">
+
+https://otlp.nr-data.net:4317 is our [US endpoint](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/opentelemetry-quick-start/#review-settings). If you're in the EU, use https://otlp.eu01.nr-data.net/ instead.
+
+</Callout>
+
+There are several different types of API keys to choose from in New Relic that each serve a different purpose. To instrument your application with OpenTelemetry, you need a license key.
+
+The span exporter you configured in the last step automatically uses these [standard environment variables](https://opentelemetry.io/docs/reference/specification/protocol/exporter/#configuration-options).
+
+</>
+
+</Step>
+
+<Step>
+
+Create a [tracer](https://opentelemetry.io/docs/reference/specification/trace/api/#tracer):
+
+<>
+
+```python fileName=db.py
+import logging
+from grpc import Compression
+from opentelemetry import trace
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+provider = TracerProvider(
+    resource=Resource.create({"service.name": "speedeedeebee"})
+)
+provider.add_span_processor(
+    BatchSpanProcessor(
+        OTLPSpanExporter(compression=Compression.Gzip)
+    )
+)
+trace.set_tracer_provider(provider)
+
+tracer = trace.get_tracer(__name__)
+
+class DuplicateKeyError(Exception):
+    pass
+
+class KeyDoesNotExistError(Exception):
+    pass
+
+db = {}
+
+def read(key):
+    """Read key from the database."""
+    global db
+
+    try:
+        value = db[key]
+        logging.debug("Successful read")
+        return value
+    except KeyError as ke:
+        msg = f"Key `{key}` doesn't exist"
+        logging.debug(msg)
+        raise KeyDoesNotExistError(msg)
+
+def create(key, value):
+    """Write key:value to the database."""
+    global db
+
+    if key in db:
+        msg = f"Key `{key}` already exists"
+        logging.debug(msg)
+        raise DuplicateKeyError(msg)
+
+    db[key] = value
+    logging.debug("Successful create")
+    return value
+
+def update(key, value):
+    """Update key in the database."""
+    global db
+
+    if key in db:
+        db[key] = value
+        logging.debug("Successful update")
+        return value
+
+    msg = f"Key `{key}` doesn't exist"
+    logging.debug(msg)
+    raise KeyDoesNotExistError(msg)
+
+def delete(key):
+    """Delete key from the database."""
+    global db
+
+    if key in db:
+        del db[key]
+        logging.debug("Successful delete")
+        return True
+
+    return False
+```
+
+</>
+
+<br />
+
+You use this to create spans.
+
+</Step>
+
+<Step>
+
+Wrap the logic in each of your database functions with a span:
+
+<>
+
+```python fileName=db.py
+import logging
+from grpc import Compression
+from opentelemetry import trace
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+provider = TracerProvider(
+    resource=Resource.create({"service.name": "speedeedeebee"})
+)
+provider.add_span_processor(
+    BatchSpanProcessor(
+        OTLPSpanExporter(compression=Compression.Gzip)
+    )
+)
+trace.set_tracer_provider(provider)
+
+tracer = trace.get_tracer(__name__)
+
+class DuplicateKeyError(Exception):
+    pass
+
+class KeyDoesNotExistError(Exception):
+    pass
+
+db = {}
+
+def read(key):
+    """Read key from the database."""
+    global db
+
+    with tracer.start_as_current_span("read", kind=trace.SpanKind.SERVER) as span:
+        try:
+            value = db[key]
+            logging.debug("Successful read")
+            return value
+        except KeyError as ke:
+            msg = f"Key `{key}` doesn't exist"
+            logging.debug(msg)
+            raise KeyDoesNotExistError(msg)
+
+def create(key, value):
+    """Write key:value to the database."""
+    global db
+
+    with tracer.start_as_current_span("create", kind=trace.SpanKind.SERVER) as span:
+        if key in db:
+            msg = f"Key `{key}` already exists"
+            logging.debug(msg)
+            raise DuplicateKeyError(msg)
+
+        db[key] = value
+        logging.debug("Successful create")
+        return value
+
+def update(key, value):
+    """Update key in the database."""
+    global db
+
+    with tracer.start_as_current_span("update", kind=trace.SpanKind.SERVER) as span:
+        if key in db:
+            db[key] = value
+            logging.debug("Successful update")
+            return value
+
+        msg = f"Key `{key}` doesn't exist"
+        logging.debug(msg)
+        raise KeyDoesNotExistError(msg)
+
+def delete(key):
+    """Delete key from the database."""
+    global db
+
+    with tracer.start_as_current_span("delete", kind=trace.SpanKind.SERVER) as span:
+        if key in db:
+            del db[key]
+            logging.debug("Successful delete")
+            return True
+
+        return False
+```
+
+</>
+
+<br />
+
+To capture data about the operations in your database functions, you used the `tracer.start_as_current_span()` context manager. In it, you specified the name of the span and the kind of span it is. Because it's a database server, you specify `trace.SpanKind.SERVER`.
+
+The API populates some data about the span for you. You'll see the data it captures when you look at your spans in New Relic.
+
+</Step>
+
+<Step>
+
+In the success cases, capture the key that was used for each operation:
+
+<>
+
+```python fileName=db.py
+import logging
+from grpc import Compression
+from opentelemetry import trace
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+provider = TracerProvider(
+    resource=Resource.create({"service.name": "speedeedeebee"})
+)
+provider.add_span_processor(
+    BatchSpanProcessor(
+        OTLPSpanExporter(compression=Compression.Gzip)
+    )
+)
+trace.set_tracer_provider(provider)
+
+tracer = trace.get_tracer(__name__)
+
+class DuplicateKeyError(Exception):
+    pass
+
+class KeyDoesNotExistError(Exception):
+    pass
+
+db = {}
+
+def read(key):
+    """Read key from the database."""
+    global db
+
+    with tracer.start_as_current_span("read", kind=trace.SpanKind.SERVER) as span:
+        try:
+            value = db[key]
+            logging.debug("Successful read")
+            span.set_attribute("key", key)
+            return value
+        except KeyError as ke:
+            msg = f"Key `{key}` doesn't exist"
+            logging.debug(msg)
+            raise KeyDoesNotExistError(msg)
+
+def create(key, value):
+    """Write key:value to the database."""
+    global db
+
+    with tracer.start_as_current_span("create", kind=trace.SpanKind.SERVER) as span:
+        if key in db:
+            msg = f"Key `{key}` already exists"
+            logging.debug(msg)
+            raise DuplicateKeyError(msg)
+
+        db[key] = value
+        logging.debug("Successful create")
+        span.set_attribute("key", key)
+        return value
+
+def update(key, value):
+    """Update key in the database."""
+    global db
+
+    with tracer.start_as_current_span("update", kind=trace.SpanKind.SERVER) as span:
+        if key in db:
+            db[key] = value
+            logging.debug("Successful update")
+            span.set_attribute("key", key)
+            return value
+
+        msg = f"Key `{key}` doesn't exist"
+        logging.debug(msg)
+        raise KeyDoesNotExistError(msg)
+
+def delete(key):
+    """Delete key from the database."""
+    global db
+
+    with tracer.start_as_current_span("delete", kind=trace.SpanKind.SERVER) as span:
+        if key in db:
+            del db[key]
+            logging.debug("Successful delete")
+            span.set_attribute("key", key)
+            return True
+
+        return False
+```
+
+</>
+
+<br />
+
+Here, you use the span you created with the context manager to capture the key used in the operation as an attribute.
+
+</Step>
+
+</Steps>
+
+</Tutorial>
+
+## Restart your simulator
+
+Now that you've changed the application logic, you need to restart your simulator. Make sure you do this in the same terminal window where you set your environment variables:
+
+<>
+
+```bash
+python simulator.py
+```
+
+</>
+
+<br />
+
+You've instrumented your application to send traces to New Relic using OTLP. You've also restarted your simulator. Now, it's time to view your data.
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to instrument your application with OpenTelemetry. Now that you've instrumented your app, [view your telemetry data in New Relic](/collect-data/opentelemetry-manual/view).
+
+</Callout>

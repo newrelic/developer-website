@@ -1,0 +1,111 @@
+---
+duration: 15
+title: 'Add alerts'
+template: 'GuideTemplate'
+description: 'Add alerts to your FoodMe app'
+procIdx: 7
+---
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to monitor your application with New Relic.
+
+Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_Query custom Business Data_](/collect-data/monitor-your-application/query-custom-data), before starting this one.
+
+</Callout>
+
+With your app reporting performance and custom business data, you now have full visibility in your application. Happy with your current experinece, you came to know about New Relic alerts, and you've decided to add them.
+
+With alerts, you monitor your services and receive notifications about problems that you're interested in, so that you can react fast to troubleshoot and resolve them.
+
+## Create an alert policy
+
+Before you set alert conditions, you must create a policy.
+
+From **Alerts & AI**, go to **Alert conditions (Policies)** from the left-hand navigation. Then, click **New alert policy**.
+
+![new alert policy](../../../images/foodme/new-alert-policy.png)
+
+Name your policy "FoodMe alert policy" alert policy. Use the default values for the rest of the fields, and click **Create alert policy** at the end of the page.
+
+![create an alert policy](../../../images/foodme/create-alert-policy.png)
+
+The next step is to add conditions to the alert policy.
+
+## Create alert conditions
+
+You're going to add the following alert conditions:
+- Low Apdex score
+- High page load time
+
+### Create a low Apdex score alert condition
+
+Under **FoodMe alert policy**, click **Create a condition**.
+
+![create alert condition](../../../images/foodme/create-a-condition.png)
+
+Here, select **APM** > **Application metric** and **Scope to the application**. Then, click **Next, select entities**.
+
+![Choose category for new condition](../../../images/foodme/new-condition-category.png)
+
+Under **Select entities**, select your **food-me** application, and click **Next, define thresholds**.
+
+![Select entities for new condition](../../../images/foodme/select-entities.png)
+
+You want to be notified when your application's Apdex score is below 0.85 for 5 minutes. Adjust threshold, and name your condition **Low Apdex score**.
+
+![Select thresholds for new condition](../../../images/foodme/critical-threshold.png)
+
+Add a warning threshold of 0.9, and click **Create condition**.
+
+![Add warning threshold for new condition](../../../images/foodme/add-warning-threshold.png)
+
+You can now find this alert condition under FoodMe alert policy.
+
+### Create a high page load time condition
+
+Add another condition under the same policy by clicking **Add a condition**.
+
+![Add a new condition](../../../images/foodme/add-another-condition.png)
+
+Here, select **Browser** > **Metric**, and click **Next, select entities**.
+
+![Browser category condition](../../../images/foodme/categorize-browser.png)
+
+Under **Select entities**, select your **food-me** application, and click **Next, define thresholds**.
+
+![Select entities for new condition](../../../images/foodme/choose-entities.png)
+
+You want New Relic to alert you when your page takes longer than 2 seconds to load at least once in 5 minutes.
+
+Adjust the threshold, and name your condition **High page load time**. Then, click **Create conditions**.
+
+![Create high page load alert conditions](../../../images/foodme/high-page-load-condition.png)
+
+## Add a notification channel
+
+To receive notifications for any opened violations, you also need to add a notification channel.
+
+First, move to the **Notification channels** tab, and click **Add notification channels**.
+
+![add notification channel](../../../images/foodme/add-notification-channel.png)
+
+From the list of channel options, click **Email**.
+
+![email notification channel](../../../images/foodme/email-notification-channel.png)
+
+Select the email where you want to receive your notifications, and click **Update policy**.
+
+![update policy](../../../images/foodme/update-policy.png)
+
+Now, you have a notification channel.
+
+During this procedure, you created an alert policy and added "low Apdex score" and "high page load time" conditions to it. You also added a notification channel to receive notifications about any opened violations.
+
+## Homework
+
+Well done! Now that you've gotten a jump start with New Relic to monitor your application, here are some docs that will help you take the next steps on your journey.
+
+- [Introduction to APM](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/introduction-apm)
+- [Introduction to browser monitoring](https://docs.newrelic.com/docs/browser/browser-monitoring/getting-started/introduction-browser-monitoring)
+- [Introduction to alerts and applied intelligence](https://docs.newrelic.com/docs/alerts-applied-intelligence/overview)

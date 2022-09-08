@@ -213,14 +213,13 @@ const PropList = ({ className, propTypes }) => {
               <div>
                 {deprecation && (
                   <Callout variant="caution" title={`Due ${deprecation.date}`}>
-                    <Markdown source={deprecation.description} />
+                    <Markdown>{deprecation.description}</Markdown>
                   </Callout>
                 )}
                 {description && (
-                  <Markdown
-                    className={cx(styles.section)}
-                    source={description}
-                  />
+                  <Markdown className={cx(styles.section)}>
+                    {description}
+                  </Markdown>
                 )}
                 <div className={styles.section}>
                   <PropTypeInfo type={type} />
@@ -303,6 +302,34 @@ export const query = graphql`
                       }
                       ... on NewRelicSdkPropTypeFunctionMeta {
                         ...FuncType
+                      }
+                      ... on NewRelicSdkPropTypeUnionMeta {
+                        ...UnionType
+                        types {
+                          meta {
+                            ... on NewRelicSdkPropTypeEnumMeta {
+                              constants
+                            }
+                            ... on NewRelicSdkPropTypeFunctionMeta {
+                              ...FuncType
+                            }
+                            ... on NewRelicSdkPropTypeShapeMeta {
+                              ...ShapeType
+                              types {
+                                type {
+                                  meta {
+                                    ... on NewRelicSdkPropTypeEnumMeta {
+                                      constants
+                                    }
+                                    ... on NewRelicSdkPropTypeFunctionMeta {
+                                      ...FuncType
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   }

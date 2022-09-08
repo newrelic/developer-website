@@ -1,4 +1,5 @@
 const quote = (str) => `"${str}"`;
+const resolveQuickstartSlug = require('./src/utils/resolveQuickstartSlug');
 
 module.exports = {
   flags: {
@@ -21,6 +22,7 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
+        oneTrustID: '77dd4d78-49db-4057-81ea-4bc325d6ecdd',
         forceTrailingSlashes: true,
         layout: {
           contentPadding: '2rem',
@@ -45,6 +47,7 @@ module.exports = {
               features: {
                 'developer-website_global-header-gh-buttons': 'on',
                 'developer-website_right-rail-buttons': 'outline',
+                super_tiles: 'on',
               },
               core: {
                 authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
@@ -58,18 +61,37 @@ module.exports = {
             refetch: Boolean(process.env.BUILD_RELATED_CONTENT),
             engineKey: 'Ad9HfGjDw4GRkcmJjUut',
             limit: 5,
-            getSlug: ({ node }) => node.frontmatter.path,
+            getSlug: ({ node }) => {
+              if (node.internal.type === 'Mdx') {
+                return node.fields.slug;
+              } else if (node.internal.type === 'Quickstarts') {
+                return resolveQuickstartSlug(node.name, node.id);
+              }
+            },
             getParams: ({ node }) => {
-              const { tags, title } = node.frontmatter;
-
+              let tags = [];
+              let title = '';
+              if (node.frontmatter) {
+                tags = node.frontmatter.tags;
+                title = node.frontmatter.title;
+              } else {
+                tags = node.keywords;
+                title = node.title;
+              }
               return {
                 q: tags ? tags.map(quote).join(' OR ') : title,
                 search_fields: {
-                  page: ['tags^10', 'body^5', 'title^1.5', '*'],
+                  page: [
+                    'tags^10',
+                    'quick_start_name^8',
+                    'body^5',
+                    'title^1.5',
+                    '*',
+                  ],
                 },
                 filters: {
                   page: {
-                    type: ['docs', 'developer', 'opensource'],
+                    type: ['docs', 'developer', 'opensource', 'quickstarts'],
                     document_type: [
                       '!views_page_menu',
                       '!term_page_api_menu',
@@ -79,7 +101,9 @@ module.exports = {
                 },
               };
             },
-            filter: ({ node }) => node.frontmatter.template === 'GuideTemplate',
+            filter: ({ node }) =>
+              node.frontmatter?.template === 'GuideTemplate' ||
+              node.internal.type === 'Quickstarts',
           },
         },
         newrelic: {
@@ -107,12 +131,13 @@ module.exports = {
           },
         },
         tessen: {
+          tessenVersion: '1.14.0',
           product: 'DEV',
           subproduct: 'TDEV',
           segmentWriteKey: 'Ako0hclX8WGHwl9rm4n5uxLtT4wgEtuU',
           trackPageViews: true,
           pageView: {
-            name: 'pageView',
+            eventName: 'pageView',
             category: 'DocPageView',
             getProperties: ({ location, env }) => ({
               path: location.pathname,
@@ -122,7 +147,12 @@ module.exports = {
         },
       },
     },
-    'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: require('sass'),
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -170,11 +200,10 @@ module.exports = {
     {
       resolve: 'gatsby-source-newrelic-sdk',
       options: {
-        release: 'release-2751',
+        release: 'release-3439',
       },
     },
     'gatsby-plugin-embed-pages',
-    'gatsby-plugin-meta-redirect',
     {
       resolve: 'gatsby-plugin-gdpr-tracking',
       options: {
@@ -186,6 +215,34 @@ module.exports = {
           controlCookieName: 'newrelic-gdpr-consent',
         },
         environments: ['production', 'development'],
+      },
+    },
+    'gatsby-plugin-use-query-params',
+    {
+      resolve: 'gatsby-plugin-gatsby-cloud',
+      options: {
+        allPageHeaders: [
+          'Referrer-Policy: no-referrer-when-downgrade',
+          'Content-Security-Policy: frame-ancestors *.newrelic.com *.skilljar.com *.sj-cdn.net',
+        ],
+      },
+    },
+    // https://www.gatsbyjs.com/plugins/gatsby-plugin-typegen/
+    {
+      resolve: 'gatsby-plugin-typegen',
+      options: {
+        outputPath: 'src/__generated__/gatsby-types.d.ts',
+        emitSchema: {
+          'src/__generated__/gatsby-schema.graphql': true,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: `jsx`, // defaults to "React"
+        allExtensions: true, // defaults to false
       },
     },
   ],

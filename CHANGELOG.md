@@ -1,3 +1,854 @@
+## [1.91.1](https://github.com/newrelic/developer-website/compare/v1.91.0...v1.91.1) (2022-08-22)
+
+
+### Bug Fixes
+
+* **terraform:** Replace alerts channels with notifications destinations and channels ([7357258](https://github.com/newrelic/developer-website/commit/7357258160c38e3cfdc3ea3058eb1ce21ae2d6f6))
+
+# [1.91.0](https://github.com/newrelic/developer-website/compare/v1.90.0...v1.91.0) (2022-07-27)
+
+
+### Features
+
+* update theme to 6.8.0 ([90ed606](https://github.com/newrelic/developer-website/commit/90ed60618d55d36ce22eafa3d340c95f2201b26d))
+
+# [1.90.0](https://github.com/newrelic/developer-website/compare/v1.89.3...v1.90.0) (2022-07-06)
+
+
+### Features
+
+* added browser pro lab ([8b8c3d1](https://github.com/newrelic/developer-website/commit/8b8c3d1e21f30c2b2d00200ae1f6a4fa7f393820))
+
+## [1.89.3](https://github.com/newrelic/developer-website/compare/v1.89.2...v1.89.3) (2022-07-05)
+
+
+### Bug Fixes
+
+* **nerdlog:** language changes to changelog ([4bd36b9](https://github.com/newrelic/developer-website/commit/4bd36b94ee5bf6634520579abf5c2036e33c551f))
+* update link to conventional commit in docs ([e6a6c06](https://github.com/newrelic/developer-website/commit/e6a6c06fc30b139684a7a6a04e8190427bfef959))
+
+## [1.89.2](https://github.com/newrelic/developer-website/compare/v1.89.1...v1.89.2) (2022-07-05)
+
+
+### Bug Fixes
+
+* fixed dependency conflict ([6f18b12](https://github.com/newrelic/developer-website/commit/6f18b12fd1fd5e99efc0c64933ab8d30a130e018))
+
+## [1.89.1](https://github.com/newrelic/developer-website/compare/v1.89.0...v1.89.1) (2022-07-05)
+
+
+### Bug Fixes
+
+* add empty line so parses link correctly ([5e2563d](https://github.com/newrelic/developer-website/commit/5e2563d7565cb4ea986d83787d527cc851526510))
+* **cost estimate:** fix anchor links ([a4efc27](https://github.com/newrelic/developer-website/commit/a4efc273e10109aa61c40ba61acbfe6aefd6562d))
+* **cost estimate:** fixing collapsers ([14255d4](https://github.com/newrelic/developer-website/commit/14255d42ab2b762b672e96d20ed98aa2b00e6a52))
+* **cost estimate:** trying to fix issues ([cb5dbcb](https://github.com/newrelic/developer-website/commit/cb5dbcbf72407f6a4e086b002da43ce3a0a10966))
+* **cost estimator:** add image ([d353a88](https://github.com/newrelic/developer-website/commit/d353a88f9bc9b5e2765ea18fedba938b08a67aaf))
+* **cost estimator:** add new doc ([03b7d88](https://github.com/newrelic/developer-website/commit/03b7d88ec52ab69bead1a9c4ff1d1431b3aa541b))
+* **cost estimator:** adjust collapsers ([7540730](https://github.com/newrelic/developer-website/commit/75407308624eef48d5d640d42930010a9429f133))
+* **cost estimator:** collapser fix ([1a3e5cc](https://github.com/newrelic/developer-website/commit/1a3e5ccf68f4ba29ee89103106f532c46fd1f48a))
+* **estimate cost:** collapser problems ([19701b6](https://github.com/newrelic/developer-website/commit/19701b671798a7480ccb920d208ae83980d01c54))
+* **estimate cost:** trying to fix links ([8025482](https://github.com/newrelic/developer-website/commit/8025482deeb5fad168077f936265749d41a4d52b))
+* **nav:** add 'cost estimator' ([0dc36a3](https://github.com/newrelic/developer-website/commit/0dc36a3d5e1c28c698a1d7c082876b64403dd9dd))
+* **nav:** move cost estimate ([2c468cd](https://github.com/newrelic/developer-website/commit/2c468cdbed3d431ae0155c543d2e18c1cff20f34))
+
+# [1.89.0](https://github.com/newrelic/developer-website/compare/v1.88.5...v1.89.0) (2022-07-05)
+
+
+### Features
+
+* Add Pulumi documentation ([eb588a6](https://github.com/newrelic/developer-website/commit/eb588a69924e1b77474867c6b59233cb92927bfb))
+
+## [1.88.5](https://github.com/newrelic/developer-website/compare/v1.88.4...v1.88.5) (2022-06-14)
+
+
+### Bug Fixes
+
+* **custom-viz:** Add recommended way of using nrql property ([66c3578](https://github.com/newrelic/developer-website/commit/66c3578cf4c3eb88ed2bcbc60fcb8f652f663083))
+
+## [1.88.4](https://github.com/newrelic/developer-website/compare/v1.88.3...v1.88.4) (2022-06-10)
+
+
+### Bug Fixes
+
+* **dev site redirects:** typo ([44c73fe](https://github.com/newrelic/developer-website/commit/44c73fe92fb205964f4d25c4f7cd32d3b526b3b6))
+* **dev:** remove NG explorer ([3746f39](https://github.com/newrelic/developer-website/commit/3746f3909d16043700b3bcc5f2e3ef3cd661c213))
+
+## [1.88.3](https://github.com/newrelic/developer-website/compare/v1.88.2...v1.88.3) (2022-06-10)
+
+
+### Bug Fixes
+
+* **collect data:** adding more info/links ([efced14](https://github.com/newrelic/developer-website/commit/efced14b99196a01adfc90c18ba853c2d439807d))
+* **collect data:** improve intro ([0d32b73](https://github.com/newrelic/developer-website/commit/0d32b73e7361622b2c23a1c3288a0ea8500c1ff8))
+* **collect data:** small tweak ([fecb00b](https://github.com/newrelic/developer-website/commit/fecb00b25062578dc670218b5fc18f00b808e0a1))
+
+## [1.88.2](https://github.com/newrelic/developer-website/compare/v1.88.1...v1.88.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* **dev:** delete custom attr/events stuff ([ad209fd](https://github.com/newrelic/developer-website/commit/ad209fdb9f1ee9a538c12fa925eaf873a1930716))
+* **dev:** remove nrql doc ([10aa7df](https://github.com/newrelic/developer-website/commit/10aa7df3a41aece1941e377b3fb599b1a5cf51d8))
+* **redirects:** fix error ([b4e4d02](https://github.com/newrelic/developer-website/commit/b4e4d022fab7e20e6a38aba2d0941fb64ec46403))
+
+## [1.88.1](https://github.com/newrelic/developer-website/compare/v1.88.0...v1.88.1) (2022-06-07)
+
+
+### Bug Fixes
+
+* **custom data:** remove & redirect ([8f83899](https://github.com/newrelic/developer-website/commit/8f83899f350e9a5f8883c115f82291c3d0261de2))
+
+# [1.88.0](https://github.com/newrelic/developer-website/compare/v1.87.2...v1.88.0) (2022-06-07)
+
+
+### Features
+
+* **index.js:** fixed mobile layout ([8f6c728](https://github.com/newrelic/developer-website/commit/8f6c72857ec144d36a594381d34607ec239eaede))
+
+## [1.87.2](https://github.com/newrelic/developer-website/compare/v1.87.1...v1.87.2) (2022-06-01)
+
+
+### Bug Fixes
+
+* updated screenshots for nerdpack ([d445466](https://github.com/newrelic/developer-website/commit/d445466b4d846af650d81009e9414986d834e81c))
+* updated screenshots for nerdpack at multiple places ([4ed4202](https://github.com/newrelic/developer-website/commit/4ed4202085653e60b8778203865b024da1777f17))
+
+## [1.87.1](https://github.com/newrelic/developer-website/compare/v1.87.0...v1.87.1) (2022-05-31)
+
+
+### Bug Fixes
+
+* updated terraform version information ([d749d10](https://github.com/newrelic/developer-website/commit/d749d10b17cb429fd00e2fd8d61ea52d178d2430))
+
+# [1.87.0](https://github.com/newrelic/developer-website/compare/v1.86.2...v1.87.0) (2022-05-25)
+
+
+### Features
+
+* **redirects:** support redirecting developer urls to external sites ([b5df19b](https://github.com/newrelic/developer-website/commit/b5df19bd4271137687bbe052e9fcc05bed5c9c84))
+
+## [1.86.2](https://github.com/newrelic/developer-website/compare/v1.86.1...v1.86.2) (2022-05-19)
+
+
+### Bug Fixes
+
+* theme bump to 6.0.2 ([4d1cdb0](https://github.com/newrelic/developer-website/commit/4d1cdb0659f337a4b9307fc3152b0192cc41f4ee))
+
+## [1.86.1](https://github.com/newrelic/developer-website/compare/v1.86.0...v1.86.1) (2022-05-19)
+
+
+### Bug Fixes
+
+* **dev:** remove some 'New Relic One's ([f65d45f](https://github.com/newrelic/developer-website/commit/f65d45f9163b46f6975e5555c5617f36de29e049))
+
+# [1.86.0](https://github.com/newrelic/developer-website/compare/v1.85.0...v1.86.0) (2022-05-17)
+
+
+### Features
+
+* update theme ([07c201f](https://github.com/newrelic/developer-website/commit/07c201f4a275e21889ecfd3731a5ffcb84875feb))
+
+# [1.85.0](https://github.com/newrelic/developer-website/compare/v1.84.1...v1.85.0) (2022-05-17)
+
+
+### Features
+
+* update colors and icons ([0813239](https://github.com/newrelic/developer-website/commit/08132396341b91b82a77689e785e12c817052b6b))
+
+## [1.84.1](https://github.com/newrelic/developer-website/compare/v1.84.0...v1.84.1) (2022-04-21)
+
+
+### Bug Fixes
+
+* sunsetting relican branding and removing old teammates ([bf3caa7](https://github.com/newrelic/developer-website/commit/bf3caa715cf874a15ad148a40080c9ae15581f5a))
+
+# [1.84.0](https://github.com/newrelic/developer-website/compare/v1.83.0...v1.84.0) (2022-03-25)
+
+
+### Features
+
+* added New Relic basics lab ([3ac8dd2](https://github.com/newrelic/developer-website/commit/3ac8dd248c47a99761b3275f0a3dcbd45a33861e))
+
+# [1.83.0](https://github.com/newrelic/developer-website/compare/v1.82.3...v1.83.0) (2022-03-21)
+
+
+### Features
+
+* OpenTelemetry masterclass ([fa4dd70](https://github.com/newrelic/developer-website/commit/fa4dd70751a5b741364f4ea8ec6d9e26b51d8040))
+
+## [1.82.3](https://github.com/newrelic/developer-website/compare/v1.82.2...v1.82.3) (2022-03-17)
+
+
+### Bug Fixes
+
+* correct link to IO ([4854d69](https://github.com/newrelic/developer-website/commit/4854d69983fff82f63d8ad297c0eb5bd5c723621))
+* correct the other io link ([2640e81](https://github.com/newrelic/developer-website/commit/2640e815e5babbf059a23bed830b02a842d21c79))
+
+## [1.82.2](https://github.com/newrelic/developer-website/compare/v1.82.1...v1.82.2) (2022-03-16)
+
+
+### Bug Fixes
+
+* update to `sass` ([cc29829](https://github.com/newrelic/developer-website/commit/cc298298b4b3007c68991c1a076f3c1d92e8c05b))
+
+## [1.82.1](https://github.com/newrelic/developer-website/compare/v1.82.0...v1.82.1) (2022-03-11)
+
+
+### Bug Fixes
+
+* adding back the allNewRelicSdkApi query ([c442511](https://github.com/newrelic/developer-website/commit/c44251164236ccfc78d4b05479e80d1398e4e5af))
+* ran yarn due to failed checks ([b1028ac](https://github.com/newrelic/developer-website/commit/b1028ac699693495f56f4bdeabb99b8ad7306779))
+* remove entire object of gatsby-transformer-json in gatsby config ([4a10903](https://github.com/newrelic/developer-website/commit/4a10903a6333a4fbe8c9971fe8d3fcff0432b738))
+* remove extra bracket and quickstarts.json file ([be95a69](https://github.com/newrelic/developer-website/commit/be95a69014e1f5eaaffc3cf73843a5446b22d6c3))
+* remove gatsby-plugin-meta-redirect docs from project ([c963b6b](https://github.com/newrelic/developer-website/commit/c963b6be202e4d6eb96b2d7796383be183dbc1ef))
+* remove gatsby-plugin-meta-redirect from plugins array in gatsby config ([3dcbac1](https://github.com/newrelic/developer-website/commit/3dcbac19afb64bcbab92a6eba94c8a3e370293a2))
+* remove gatsby-plugin-meta-redirect from plugins array in gatsby config ([41d068c](https://github.com/newrelic/developer-website/commit/41d068cee59760a1dca6ab8a104d6878a71b622a))
+* remove gatsby-plugin-meta-redirect from project ([a24974c](https://github.com/newrelic/developer-website/commit/a24974cf4b2f96813374b914624427c65d806a27))
+* remove gatsby-transformer-json from package.json ([1ab2ca6](https://github.com/newrelic/developer-website/commit/1ab2ca68eca90a36ab41641a89688aeb9f83313a))
+* remove quickstarts.json file ([9c0dd11](https://github.com/newrelic/developer-website/commit/9c0dd11ab83a15426b230cf36d75565ac0590990))
+* remove trailing slash from redirect to I/O site ([9d8a943](https://github.com/newrelic/developer-website/commit/9d8a943a4913c8c3e333e6cb2dc0561706a35427))
+* remove unneeded gatsby plugins that were sourcing the quickstarts.json ([8459ecd](https://github.com/newrelic/developer-website/commit/8459ecdbc5b517e7083838bcd423734e19306b03))
+* remove unneeded query and plugin code since this is handled by splat redirects ([8ca4033](https://github.com/newrelic/developer-website/commit/8ca4033c01966af0351697a5eb7c5cb25e882923))
+* remove unused plugin ([4e822c7](https://github.com/newrelic/developer-website/commit/4e822c7319ae9367fcf37bd97b9dd1681a718084))
+* remove unused redirect function in place of two createRedirect functions to manage 301 redirects to IO site ([ff6a9e0](https://github.com/newrelic/developer-website/commit/ff6a9e0d3fa7cac806748b166d3e3e7aee71ce83))
+* removed too many brackets ([a2d9e18](https://github.com/newrelic/developer-website/commit/a2d9e182c5ec53eb4056ec247e1d04cb37b745b6))
+* removing dependencies from package.json ([4829325](https://github.com/newrelic/developer-website/commit/482932556ff36677da4fb7bb62d6cf12173f317c))
+* test ([a2a7bc5](https://github.com/newrelic/developer-website/commit/a2a7bc59e7f97595782f58d3b1331804d3ee8273))
+* test, adding back gatsby-plugin-meta-redirect ([0ecc1fc](https://github.com/newrelic/developer-website/commit/0ecc1fcb82a5a041822e184b50b6e3e4bce5f8ef))
+* typo ([15de8bb](https://github.com/newrelic/developer-website/commit/15de8bb37d80e45dea2f5d1127fac8c007824d40))
+* typo on createRedirect ([de82f71](https://github.com/newrelic/developer-website/commit/de82f712fdb3fa90e3e985ca6300c7a13247482c))
+* undo changes to 3rd party manifest ([c3acbf2](https://github.com/newrelic/developer-website/commit/c3acbf2fbc330395e97e854f4f078817fdeb0e8c))
+* update node version for change-log ([726870f](https://github.com/newrelic/developer-website/commit/726870f393376ebbbd5d88ed4689ac2d29654d72))
+
+# [1.82.0](https://github.com/newrelic/developer-website/compare/v1.81.3...v1.82.0) (2022-03-09)
+
+
+### Features
+
+* Create manual OpenTelemetry lab ([185e569](https://github.com/newrelic/developer-website/commit/185e569beb47004d4b21932c342bcd4fad52be41))
+
+## [1.81.3](https://github.com/newrelic/developer-website/compare/v1.81.2...v1.81.3) (2022-03-07)
+
+
+### Bug Fixes
+
+* remove statusCode and make all redirects NOT in browser for IO ([a0c5f4e](https://github.com/newrelic/developer-website/commit/a0c5f4ec8909eeca222653e675b0f527060bf2d6))
+
+## [1.81.2](https://github.com/newrelic/developer-website/compare/v1.81.1...v1.81.2) (2022-03-07)
+
+
+### Bug Fixes
+
+* **dev site:** insert key removals ([a01e026](https://github.com/newrelic/developer-website/commit/a01e026a3e98844374849f977ad583abfee38a8c))
+* **dev site:** remove insert key ([fd9ea68](https://github.com/newrelic/developer-website/commit/fd9ea6895af16ad007d2b1ee766b1e50d87fdae2))
+* **dev site:** removing 'insights' & 'insert key' refs ([f7cd96c](https://github.com/newrelic/developer-website/commit/f7cd96c6935518cacb45e9419b5fb10f8d994af0))
+
+## [1.81.1](https://github.com/newrelic/developer-website/compare/v1.81.0...v1.81.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* add 301 statusCode to IO site redirect ([5ac72c3](https://github.com/newrelic/developer-website/commit/5ac72c3dd970959e10eb1a9ea9d6c7711113b9a4))
+* removing the redirectInBrowser flag from redirect ([db34c84](https://github.com/newrelic/developer-website/commit/db34c84438d155513bbb00b840d2aed6fa7e399d))
+
+# [1.81.0](https://github.com/newrelic/developer-website/compare/v1.80.0...v1.81.0) (2022-03-02)
+
+
+### Features
+
+* added lab for infrastructure ([bb842c9](https://github.com/newrelic/developer-website/commit/bb842c9ef98aae948bb62210dabb78650293fa05))
+
+# [1.80.0](https://github.com/newrelic/developer-website/compare/v1.79.0...v1.80.0) (2022-02-22)
+
+
+### Bug Fixes
+
+* cinflicts check ([b45cdf3](https://github.com/newrelic/developer-website/commit/b45cdf35411ba734b89292da475d761eb565c914))
+* clear code ([d185f49](https://github.com/newrelic/developer-website/commit/d185f4996d4c15282db891d420e28e6c2449c60b))
+* conflicts check ([7a4d244](https://github.com/newrelic/developer-website/commit/7a4d244069e478a31e2d16ed1fed5665ba34040f))
+* **custom viz:** add nerdbyte video ([256b4ae](https://github.com/newrelic/developer-website/commit/256b4ae00edcca8fbf69841117d9e6a04cdb1075))
+* link fix for events ([770b5f9](https://github.com/newrelic/developer-website/commit/770b5f95ae773d2102cf7d52b6ec840add7b6946))
+* typo ([205a3a1](https://github.com/newrelic/developer-website/commit/205a3a11dee17e647b5041ea402f307d17f6941c))
+* update IO url across site ([f1a0bb9](https://github.com/newrelic/developer-website/commit/f1a0bb96aae338fd7f0cf9d2fa916607db78593f))
+* update theme to 5.0.1 to get new Global Header ([36c75ad](https://github.com/newrelic/developer-website/commit/36c75ada1be0b5e7ab51abbfc2d13bf35268da57))
+
+
+### Features
+
+* components for requirements and objectives ([e2d712d](https://github.com/newrelic/developer-website/commit/e2d712da8fd184fb174350181e12b63c06492e4e))
+
+# [1.79.0](https://github.com/newrelic/developer-website/compare/v1.78.0...v1.79.0) (2022-02-09)
+
+
+### Features
+
+* added guide for react hooks ([20e9ac7](https://github.com/newrelic/developer-website/commit/20e9ac7b4e7bf78cba0683c8694d893a8ef212b6))
+
+# [1.78.0](https://github.com/newrelic/developer-website/compare/v1.77.0...v1.78.0) (2022-02-08)
+
+
+### Features
+
+* added send data page ([b763eec](https://github.com/newrelic/developer-website/commit/b763eecf242f82d9d5bae965836d470e253f4213))
+* updated ([664629c](https://github.com/newrelic/developer-website/commit/664629c7d80d6d5a65714266818f9a07773cefa5))
+* updated text ([d661f90](https://github.com/newrelic/developer-website/commit/d661f90c6973c66021ad0715657e627af9e9ccc2))
+
+# [1.77.0](https://github.com/newrelic/developer-website/compare/v1.76.3...v1.77.0) (2022-02-07)
+
+
+### Bug Fixes
+
+* change for name of variable ([5ded8f4](https://github.com/newrelic/developer-website/commit/5ded8f429699a30b88ba64c7812e0ef3a0dd5b94))
+* code clearing ([39ce400](https://github.com/newrelic/developer-website/commit/39ce40064ec7f8c75164882028f4491f30f615c0))
+* move subtask's styles of guideTile to parent ([840fd0c](https://github.com/newrelic/developer-website/commit/840fd0c826af96b677d1cf0e01ad34e951c6f08f))
+* return to oryginal margin in h3 on guideTile ([7c41d75](https://github.com/newrelic/developer-website/commit/7c41d75cf5a41238d7dcb5371b28c641e4fcb843))
+
+
+### Features
+
+* new styles for subtask in lab ([5e89f3b](https://github.com/newrelic/developer-website/commit/5e89f3b6dd3885aab476f98104036c13dd1070c2))
+
+## [1.76.3](https://github.com/newrelic/developer-website/compare/v1.76.2...v1.76.3) (2022-01-12)
+
+
+### Bug Fixes
+
+* master to parent language ([ef915af](https://github.com/newrelic/developer-website/commit/ef915af38c7e1488adb02285f3a73df2ffb2af45))
+
+## [1.76.2](https://github.com/newrelic/developer-website/compare/v1.76.1...v1.76.2) (2022-01-12)
+
+
+### Bug Fixes
+
+* **nerdpack permission:** updating for core launch ([4765400](https://github.com/newrelic/developer-website/commit/47654009b67f8eb69961ed5289d0eed77f5215a8))
+
+## [1.76.1](https://github.com/newrelic/developer-website/compare/v1.76.0...v1.76.1) (2022-01-10)
+
+
+### Bug Fixes
+
+* odd mobile styling ([f3bcea4](https://github.com/newrelic/developer-website/commit/f3bcea44ce86b5fc6c617ee393953080191ffed6))
+
+# [1.76.0](https://github.com/newrelic/developer-website/compare/v1.75.0...v1.76.0) (2022-01-10)
+
+
+### Bug Fixes
+
+* add check to ensure page is loaded before updating view based on width ([f0ecb97](https://github.com/newrelic/developer-website/commit/f0ecb9771b94ddb3af85dc9251253245acc43601))
+* adjusting tablet breakpoint to change views at 1079px ([86ef387](https://github.com/newrelic/developer-website/commit/86ef38787784cc7c806f0396fd1326e7ec8e42ad))
+* comment to explain offset number ([250fe20](https://github.com/newrelic/developer-website/commit/250fe206e2ee2fa71e1b2d050be7ce913bcd03c2))
+* consistent text color for dark and light mode ([2f613fe](https://github.com/newrelic/developer-website/commit/2f613fe83c5508a8b58340c571884bde379e7a6e))
+* const file for breakpoints ([52d1376](https://github.com/newrelic/developer-website/commit/52d137615f52e36db6d153fef6e5893e9d131c92))
+* eslint line break ([2799ade](https://github.com/newrelic/developer-website/commit/2799adedef072c0f731eea3b487a1f9021987c64))
+* Icon title, searchinput background, DM text color & styling ([dcbc41f](https://github.com/newrelic/developer-website/commit/dcbc41f9c10c3eec0ded346ac1f3c40f056b46c1))
+* improve padding on tiles ([d81269b](https://github.com/newrelic/developer-website/commit/d81269b53ba020e38b120374543d0afa67923a43))
+* make image div full height ([7e842ce](https://github.com/newrelic/developer-website/commit/7e842cec01f3c72f78bea4e32297c485d4b648d6))
+* missing comma on css attribute for filters ([c6af99d](https://github.com/newrelic/developer-website/commit/c6af99d2c28dcfee35d27f621c21fbf35623f06b))
+* naming convention for artificially set constant ([4af86b8](https://github.com/newrelic/developer-website/commit/4af86b854d37c2be99c6ffaf1926b13fb6ca66d5))
+* new height offset for I/O ([7b2649a](https://github.com/newrelic/developer-website/commit/7b2649a9f7b94d1b498c6f2dc630ffb663f94ff1))
+* prevent auto-scroll for I/O ([3eaf5e6](https://github.com/newrelic/developer-website/commit/3eaf5e67fd945f4ffdfa0b95767ef5508f9dd33c))
+* Prevent scroll to top after query param update ([ef22eb2](https://github.com/newrelic/developer-website/commit/ef22eb24670b5b84851e4107cf05b54e22451c6a))
+* result text color for dark mode ([26afe3c](https://github.com/newrelic/developer-website/commit/26afe3c6864f358db7c1de9f49e7323cfb724631))
+* sub-banner text to UI-Writing specs ([b3c2726](https://github.com/newrelic/developer-website/commit/b3c2726aabbe83298148769996863af9d0de6009))
+* switch JS styling to css styling ([79597ee](https://github.com/newrelic/developer-website/commit/79597eecaec2ab233b4a1d5216d717a257236569))
+* WIP - initial updates to I/O mobile view, updated search styles and moved "categories" button ([f748cbc](https://github.com/newrelic/developer-website/commit/f748cbc5215145e9acc4f6a9737ac5d7b779b7fc))
+* WIP - update banner styles for I/O mobile ([9c3183b](https://github.com/newrelic/developer-website/commit/9c3183b052df05f394f804a09eecf423d3ea2c80))
+
+
+### Features
+
+* added sort by dropdown ([cb59548](https://github.com/newrelic/developer-website/commit/cb595480802ec12173cfe8e0463d6155f1dab696))
+* clarify/cleanup css grid ([06cd940](https://github.com/newrelic/developer-website/commit/06cd940a14f40c093595ee5b5fb4fccc5122647b))
+* clean up image styling ([07cbb19](https://github.com/newrelic/developer-website/commit/07cbb193acbf8a7d3fb061bfd720b16b5b50881c))
+* clean up spacing and copy ([7bb8b78](https://github.com/newrelic/developer-website/commit/7bb8b784a5c404619ea34dd5a921b7a1189220d8))
+* complete image styling ([fc728df](https://github.com/newrelic/developer-website/commit/fc728dfef4d4967b634495f3eaa4c176fdb7e3f1))
+* Dropdown for sorting ([9a9bd6a](https://github.com/newrelic/developer-website/commit/9a9bd6a782199c9e620ec01ca773744d5cc1f37e))
+* enforce width ([cec2459](https://github.com/newrelic/developer-website/commit/cec24590568566582cb403a4b6f1d958e44d2d92))
+* get I/O mobile view to look correct to the designs ([542f7a2](https://github.com/newrelic/developer-website/commit/542f7a24c4fb752b48f47da0883f135ffc29d031))
+* increase quickstart svgs size by 200 ([e7ec444](https://github.com/newrelic/developer-website/commit/e7ec4443221abad65e494181393f15c276926964))
+* initial quickstart tile changes ([0e717ce](https://github.com/newrelic/developer-website/commit/0e717ce76529ca4a3c5523714654a3f15e091e4c))
+* move dark mode background color ([3e6e81c](https://github.com/newrelic/developer-website/commit/3e6e81c50b00b717eebcdf5d2ec1412e234b0ae1))
+* reduce acronym size ([2bbdcd8](https://github.com/newrelic/developer-website/commit/2bbdcd8afe6af00ced046f31d56cb0f99c0ce402))
+* remove component filters and clean up design ([7077523](https://github.com/newrelic/developer-website/commit/7077523bfa6052292c9af13720475a5af4e64654))
+* remove fixed tile height ([be66884](https://github.com/newrelic/developer-website/commit/be6688412c2e41c17d0f034e6c5f5670ebc00610))
+* search input styling, QS view, filter removal ([9d86806](https://github.com/newrelic/developer-website/commit/9d86806d1c14f2ea7a0d9da6663c1727ceae3c66))
+* update i/o super tiles ([0d9dbd0](https://github.com/newrelic/developer-website/commit/0d9dbd0d67575933cd90b610241597e0b523f689))
+* update list styling ([be2ac53](https://github.com/newrelic/developer-website/commit/be2ac538523b349b81325c3451c2ef34c842948d))
+* use grid for tiles ([e6088f6](https://github.com/newrelic/developer-website/commit/e6088f60792f064bfa543395a7abd1b80c244d33))
+* use secondary color for category counts ([f531037](https://github.com/newrelic/developer-website/commit/f531037371bb0ec5798d0825f6042b5b8ac1406f))
+
+# [1.75.0](https://github.com/newrelic/developer-website/compare/v1.74.0...v1.75.0) (2021-12-29)
+
+
+### Features
+
+* add codeowners ([faef5ad](https://github.com/newrelic/developer-website/commit/faef5ad4c6121703f14cbc01815ab171afec4840))
+
+# [1.74.0](https://github.com/newrelic/developer-website/compare/v1.73.0...v1.74.0) (2021-12-20)
+
+
+### Features
+
+* Add OpenTelemetry lab ([bb7d224](https://github.com/newrelic/developer-website/commit/bb7d224591cd08a538d4bbd88d4e042a380a193e))
+
+# [1.73.0](https://github.com/newrelic/developer-website/compare/v1.72.1...v1.73.0) (2021-12-20)
+
+
+### Bug Fixes
+
+* remove self-reference ([17455ac](https://github.com/newrelic/developer-website/commit/17455ac0b578c6f401a42f1c498fc0b83b23f40c))
+* typo ([95149b1](https://github.com/newrelic/developer-website/commit/95149b168a7f351bf2f764ffdbd96e99481b07b6))
+* unclear deprecation message ([155ba40](https://github.com/newrelic/developer-website/commit/155ba403beb5cd5026fb1b04879b0a6c664c196b))
+
+
+### Features
+
+* NR1 deprecation guide ([ce27ec0](https://github.com/newrelic/developer-website/commit/ce27ec0c21ddd25fc8a6c36a3fe85ec28021e806))
+
+## [1.72.1](https://github.com/newrelic/developer-website/compare/v1.72.0...v1.72.1) (2021-12-17)
+
+
+### Bug Fixes
+
+* failure on no docs and no install plan ([e7c00f0](https://github.com/newrelic/developer-website/commit/e7c00f0e2f4b895e3efcde3fff2fed38c4662544))
+
+# [1.72.0](https://github.com/newrelic/developer-website/compare/v1.71.2...v1.72.0) (2021-12-14)
+
+
+### Bug Fixes
+
+* architectural change ([1e74ee6](https://github.com/newrelic/developer-website/commit/1e74ee6322d8efb738e1c7d1ca90a0cd9f580367))
+* small fixes ([16552df](https://github.com/newrelic/developer-website/commit/16552df71402fcb32c700a1fffd94f2dfd1a1cd1))
+
+
+### Features
+
+* added errors inbox lab ([ba93d28](https://github.com/newrelic/developer-website/commit/ba93d28a37bb9a5cd2f1eab105d50be8a8b07298))
+
+## [1.71.2](https://github.com/newrelic/developer-website/compare/v1.71.1...v1.71.2) (2021-12-10)
+
+
+### Bug Fixes
+
+* redirect to specific nerdlets if returning user ([08a5a35](https://github.com/newrelic/developer-website/commit/08a5a35b893deb079abcab2a4d1176b876b7c40c))
+
+## [1.71.1](https://github.com/newrelic/developer-website/compare/v1.71.0...v1.71.1) (2021-12-06)
+
+
+### Bug Fixes
+
+* Add deprecation warning for path property when creating pages ([9586bdf](https://github.com/newrelic/developer-website/commit/9586bdfed6386afb30587af89c96c2847e37bfe1))
+* Create pages based on the slug ([85c4d05](https://github.com/newrelic/developer-website/commit/85c4d05536bc68d4775941f8d5949207c76fc201))
+* Fix prop type for featured guide tile duration ([65d7f5c](https://github.com/newrelic/developer-website/commit/65d7f5c9e869971cf3a67a543e2e681b2ab3da48))
+* Move markdown pages to paths that match frontmatter path property ([d4d3b4b](https://github.com/newrelic/developer-website/commit/d4d3b4be2f02ea8f0e8bf94ada7ca80ef6709fe0))
+* Update embed plugin to use slug instead of frontmatter path ([310cfe2](https://github.com/newrelic/developer-website/commit/310cfe25403e3e2c8f28b93fd78588ec7f5346b3))
+* Use slug instead of path for homepage ([e28311e](https://github.com/newrelic/developer-website/commit/e28311e5e8d00275575c73869e821058cc1fcd0f))
+
+# [1.71.0](https://github.com/newrelic/developer-website/compare/v1.70.0...v1.71.0) (2021-11-30)
+
+
+### Features
+
+* update theme to pull in new header ([e38051a](https://github.com/newrelic/developer-website/commit/e38051ad551190efd3dcec65b25bf59ea628414c))
+
+# [1.70.0](https://github.com/newrelic/developer-website/compare/v1.69.2...v1.70.0) (2021-11-17)
+
+
+### Features
+
+* add notification category ([f6eedef](https://github.com/newrelic/developer-website/commit/f6eedef0ae0f7b5a55ea8e8b8b7af891413bb6e5))
+
+## [1.69.2](https://github.com/newrelic/developer-website/compare/v1.69.1...v1.69.2) (2021-11-17)
+
+
+### Bug Fixes
+
+* tessen event not triggered on click ([99b9613](https://github.com/newrelic/developer-website/commit/99b9613c4ff2a05f0b0cd38a86f6d50a734935af))
+
+## [1.69.1](https://github.com/newrelic/developer-website/compare/v1.69.0...v1.69.1) (2021-11-16)
+
+
+### Bug Fixes
+
+* Update cookie to match original spec ([479705f](https://github.com/newrelic/developer-website/commit/479705fc0dcb7d5a12d73fb01901b6b099fc875b))
+* update to id instead of target to match spec ([2ce5b59](https://github.com/newrelic/developer-website/commit/2ce5b5935d98ccbe720d78ff1cc70a1dd98e2d02))
+
+# [1.69.0](https://github.com/newrelic/developer-website/compare/v1.68.3...v1.69.0) (2021-11-16)
+
+
+### Bug Fixes
+
+* responsiveness for tiles on smaller screens ([e7bed53](https://github.com/newrelic/developer-website/commit/e7bed53dad0b6e0ab62c7f1bcbe176f8eeef8ca4))
+
+
+### Features
+
+* add initial super tile experiment ([f64a22f](https://github.com/newrelic/developer-website/commit/f64a22fbbf93029841c109e19ce9477ad5a7bb05))
+* add tracking ([cd51378](https://github.com/newrelic/developer-website/commit/cd51378a2783cc384c48503a52f07e4f8fea8d56))
+
+## [1.68.3](https://github.com/newrelic/developer-website/compare/v1.68.2...v1.68.3) (2021-11-08)
+
+
+### Bug Fixes
+
+* added white background for quickstart icons ([f4cec54](https://github.com/newrelic/developer-website/commit/f4cec5476202346aeac42b40182ad1b7c02f1d7c))
+
+## [1.68.2](https://github.com/newrelic/developer-website/compare/v1.68.1...v1.68.2) (2021-11-05)
+
+
+### Bug Fixes
+
+* fix for install button having signup as link too often ([d74c7fd](https://github.com/newrelic/developer-website/commit/d74c7fd69f850e79e8067e8323e454baba72fdbd))
+
+## [1.68.1](https://github.com/newrelic/developer-website/compare/v1.68.0...v1.68.1) (2021-11-03)
+
+
+### Bug Fixes
+
+* reframed existing tutorial as lab ([ff763f1](https://github.com/newrelic/developer-website/commit/ff763f13177bbfc07ff7f528059681052388749d))
+
+# [1.68.0](https://github.com/newrelic/developer-website/compare/v1.67.5...v1.68.0) (2021-11-03)
+
+
+### Bug Fixes
+
+* prettify LabOverviewTemplate ([88cca0f](https://github.com/newrelic/developer-website/commit/88cca0f69f621994b079a7737c2536edf6bfdeb7))
+* remove console.log ([f833555](https://github.com/newrelic/developer-website/commit/f8335555b22fba950247fbe48fbbe93acab4b490))
+* update pixie lab duration ([34cfc58](https://github.com/newrelic/developer-website/commit/34cfc58c2d9210bcfe41af2707bdf5915abd5a46))
+
+
+### Features
+
+* Add lab overview template ([d4be133](https://github.com/newrelic/developer-website/commit/d4be133acf0f46f24594f7c4bdd1fefefe9f794e))
+* Add Pixie lab ([b7f7c19](https://github.com/newrelic/developer-website/commit/b7f7c198de05ef10bbbe2c5a5d741fdd11379cf4))
+
+## [1.67.5](https://github.com/newrelic/developer-website/compare/v1.67.4...v1.67.5) (2021-10-28)
+
+
+### Bug Fixes
+
+* Remove link within link ([bfb5ee6](https://github.com/newrelic/developer-website/commit/bfb5ee68b67c4aca524405fd938e60b714bcda07))
+
+## [1.67.4](https://github.com/newrelic/developer-website/compare/v1.67.3...v1.67.4) (2021-10-28)
+
+
+### Bug Fixes
+
+* change required status check ([fef9a51](https://github.com/newrelic/developer-website/commit/fef9a51bdf3ca8694b1d5a84959b3e52431d92cc))
+
+## [1.67.3](https://github.com/newrelic/developer-website/compare/v1.67.2...v1.67.3) (2021-10-26)
+
+
+### Bug Fixes
+
+* Add back dashboards id to tab item ([461bab0](https://github.com/newrelic/developer-website/commit/461bab03ec77bd5309d2a9af8757d5f36bda262a))
+
+## [1.67.2](https://github.com/newrelic/developer-website/compare/v1.67.1...v1.67.2) (2021-10-26)
+
+
+### Bug Fixes
+
+* Match quickstarts type in config to meta tag ([1b6fd83](https://github.com/newrelic/developer-website/commit/1b6fd83ba7c3cadea086f180f25d9c16dde085bb))
+
+## [1.67.1](https://github.com/newrelic/developer-website/compare/v1.67.0...v1.67.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* refactor tessen tracking so it includes quickstart attributes ([8136a91](https://github.com/newrelic/developer-website/commit/8136a91bbf38d1e2d0d29a79a7b88579e07f3dc1))
+
+# [1.67.0](https://github.com/newrelic/developer-website/compare/v1.66.1...v1.67.0) (2021-10-22)
+
+
+### Features
+
+* add codestream quickstart ([b27fe28](https://github.com/newrelic/developer-website/commit/b27fe289afec1728c5aa24161ebb837e03365426))
+
+## [1.66.1](https://github.com/newrelic/developer-website/compare/v1.66.0...v1.66.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* bug fixed ([b13ddc4](https://github.com/newrelic/developer-website/commit/b13ddc4187ff9a1373aeb51471c46022b49ccde5))
+
+# [1.66.0](https://github.com/newrelic/developer-website/compare/v1.65.0...v1.66.0) (2021-10-21)
+
+
+### Features
+
+* adding codestream quickstart ([6d9c990](https://github.com/newrelic/developer-website/commit/6d9c990797aaaababd40fa885206d2ef68c348df))
+
+# [1.65.0](https://github.com/newrelic/developer-website/compare/v1.64.0...v1.65.0) (2021-10-21)
+
+
+### Features
+
+* hardcode installplan for codestream ([e24d6e5](https://github.com/newrelic/developer-website/commit/e24d6e511023aecca9f7fc0c00a4b25174e5f6de))
+* point codestream qs to correct nerdlet ([159fa58](https://github.com/newrelic/developer-website/commit/159fa58a8c02f30827d231415cb166513d80c1c9))
+
+# [1.64.0](https://github.com/newrelic/developer-website/compare/v1.63.0...v1.64.0) (2021-10-20)
+
+
+### Features
+
+* hardcode codestream  quickstart to top of marketplace page ([95623b9](https://github.com/newrelic/developer-website/commit/95623b9e38cd9b782c37dda3afdac124b3458ead))
+* hardcode codestream  quickstart to top of marketplace page ([a9e95e9](https://github.com/newrelic/developer-website/commit/a9e95e99ed11cad090e66342bdf39494554ca290))
+
+# [1.63.0](https://github.com/newrelic/developer-website/compare/v1.62.0...v1.63.0) (2021-10-20)
+
+
+### Bug Fixes
+
+* architecture change ([ec9b4f4](https://github.com/newrelic/developer-website/commit/ec9b4f477dc8ee5a12e889c3f9755ca82c1db23e))
+* updated guide structure ([af45c47](https://github.com/newrelic/developer-website/commit/af45c476db675a265ec536518cbc25a70bc3f34d))
+* updated queries and screenshots ([2d664c5](https://github.com/newrelic/developer-website/commit/2d664c538a7bb36441f83ed9aa8a677138ac162c))
+
+
+### Features
+
+* Added guide to query alerts for quickstarts ([322e592](https://github.com/newrelic/developer-website/commit/322e5923eb22f187bdbac9ee5f78779c61a19c68))
+
+# [1.62.0](https://github.com/newrelic/developer-website/compare/v1.61.0...v1.62.0) (2021-10-19)
+
+
+### Bug Fixes
+
+* remove unused vars ([5a4e4b3](https://github.com/newrelic/developer-website/commit/5a4e4b33393877cd5e7ef33e96a7549d8454187e))
+
+
+### Features
+
+* add quickstart name and id to tessen events ([28422b0](https://github.com/newrelic/developer-website/commit/28422b0ee8936cca2919557825a0f48e58959b73))
+
+# [1.61.0](https://github.com/newrelic/developer-website/compare/v1.60.0...v1.61.0) (2021-10-18)
+
+
+### Features
+
+* Update to node 16 ([45d219e](https://github.com/newrelic/developer-website/commit/45d219ed6a7a24416ad9500437ec296e03ac18ed))
+
+# [1.60.0](https://github.com/newrelic/developer-website/compare/v1.59.2...v1.60.0) (2021-10-15)
+
+
+### Bug Fixes
+
+* remove unused markdown ([176083a](https://github.com/newrelic/developer-website/commit/176083afad992b4b70eae177209f14399c794dc7))
+
+
+### Features
+
+* added a support section component with tessen tracking ([8b0c076](https://github.com/newrelic/developer-website/commit/8b0c0766612c9d9a31ebabfa4753811f43f7da2f))
+
+## [1.59.2](https://github.com/newrelic/developer-website/compare/v1.59.1...v1.59.2) (2021-10-13)
+
+
+### Bug Fixes
+
+* k8s operator is not official ([d173779](https://github.com/newrelic/developer-website/commit/d173779fd102fb9ec85fee1735c0d2a49c951d4f))
+
+## [1.59.1](https://github.com/newrelic/developer-website/compare/v1.59.0...v1.59.1) (2021-10-13)
+
+
+### Bug Fixes
+
+* broken embed link ([697160f](https://github.com/newrelic/developer-website/commit/697160f910aa8aa645ba4e8aee34fd62a3cb8034))
+
+# [1.59.0](https://github.com/newrelic/developer-website/compare/v1.58.0...v1.59.0) (2021-10-12)
+
+
+### Features
+
+* add redirects for embed pages ([1ce56bb](https://github.com/newrelic/developer-website/commit/1ce56bbd468f7b9a249e999c2c8c65f87ea3d349))
+
+# [1.58.0](https://github.com/newrelic/developer-website/compare/v1.57.2...v1.58.0) (2021-10-11)
+
+
+### Features
+
+* add guided install tile ([2c5bbfc](https://github.com/newrelic/developer-website/commit/2c5bbfc77b13654598445fd50d387b457d36328b))
+
+## [1.57.2](https://github.com/newrelic/developer-website/compare/v1.57.1...v1.57.2) (2021-09-29)
+
+
+### Bug Fixes
+
+* link directly to nr1 instead of login page ([bf6604e](https://github.com/newrelic/developer-website/commit/bf6604e3d4c050a82f0b479470f6cc0c796babbb))
+
+## [1.57.1](https://github.com/newrelic/developer-website/compare/v1.57.0...v1.57.1) (2021-09-29)
+
+
+### Bug Fixes
+
+* **customize-visualizations-with-configuration:** broken image ref ([3627747](https://github.com/newrelic/developer-website/commit/3627747f4e5684df2016ed966924726b67fc5849))
+
+# [1.57.0](https://github.com/newrelic/developer-website/compare/v1.56.0...v1.57.0) (2021-09-29)
+
+
+### Bug Fixes
+
+* Add back slug ([abcdf80](https://github.com/newrelic/developer-website/commit/abcdf808c05eed2a12db0bddf882ccb14434174c))
+* add default export back ([e28f7a2](https://github.com/newrelic/developer-website/commit/e28f7a26a702c9bb6c5615c4d7387fa22066a9db))
+* add markdown description back ([7e6d628](https://github.com/newrelic/developer-website/commit/7e6d62882cbe5f0baac57bb0a5b05abce1cd76d5))
+* add outline rule when focused ([e811f6d](https://github.com/newrelic/developer-website/commit/e811f6d61c8730e458922971893aa8abbd9d5743))
+* add tessen as hook dependency ([e8ba8a7](https://github.com/newrelic/developer-website/commit/e8ba8a7972a372fa5967e5b1d68768c0677d0d59))
+* Add useEffect and state to conditionally render footer ([f6ac192](https://github.com/newrelic/developer-website/commit/f6ac192640cd2b23a8563f87653606d1496531fa))
+* adding title prop ([2b71cb9](https://github.com/newrelic/developer-website/commit/2b71cb9307eb6acf53c3fd1ee4a1943201d43e4f))
+* allow view toggle to work on mobile ([fc081f0](https://github.com/newrelic/developer-website/commit/fc081f001b32ed7781613bf2e69d7134542d8178))
+* banner text breaking out of image ([639245b](https://github.com/newrelic/developer-website/commit/639245b6aff64da4a0679b8554da98434fc6db58))
+* blur select element to prevent need to double click to open again ([fa71319](https://github.com/newrelic/developer-website/commit/fa71319ef58a75abdcecb1c9125946ac3ad3000f))
+* center image in slider, fade out when image slides and leaves ([459daf2](https://github.com/newrelic/developer-website/commit/459daf21f217ef5c6f9f5ba30a18d31f1f3126b5))
+* fix lint error ([3abb4fb](https://github.com/newrelic/developer-website/commit/3abb4fb7d9c1f4aa2296a3be86468e431e285942))
+* fix lint error on alt attribute ([62a0538](https://github.com/newrelic/developer-website/commit/62a0538b65cb812354800764e1fcfbc4b8d65e37))
+* fix lint errors ([c5cb659](https://github.com/newrelic/developer-website/commit/c5cb65902ae5b344e479df1c57a51bcdd1a80cfa))
+* fix linting erors ([3e1fd5a](https://github.com/newrelic/developer-website/commit/3e1fd5ac393bc8a07226296c57a105a41f899888))
+* fix linting error ([12c7f48](https://github.com/newrelic/developer-website/commit/12c7f480ea2c84d7b54a4d2ad8865199a19e1e28))
+* fix margins for select elems ([235a30b](https://github.com/newrelic/developer-website/commit/235a30bef474c9d9c912ed2c55ce392fe523f0f6))
+* fix replace all typo ([f78fa50](https://github.com/newrelic/developer-website/commit/f78fa503b6125defb5d1274e213319f58ffc9ea5))
+* make slightly more responsive ([fa139a4](https://github.com/newrelic/developer-website/commit/fa139a40590e7d1049e7e26d49fc24ce14a551e4))
+* navigate to the correct nerdlet ([ea792b3](https://github.com/newrelic/developer-website/commit/ea792b3e46685551cebc90cbc4c7af88082385c7))
+* prevent image from overflowing top/bottom of slide ([a8f18ba](https://github.com/newrelic/developer-website/commit/a8f18ba61fe2ad33dc57b8d7f1522af9d5a8d9b4))
+* remove extra encoding step ([6fb1307](https://github.com/newrelic/developer-website/commit/6fb130754899bfb2c1e4b62d570fe579fc68c784))
+* remove unneeded no image placeholder for now ([f07fc88](https://github.com/newrelic/developer-website/commit/f07fc884a763f6d06172db5fa339a95d176b8f6a))
+* removed float and refactored creeateMenuItems ([af37d37](https://github.com/newrelic/developer-website/commit/af37d372abe5766a294131d5ada9bb30626ba4b3))
+* removed terminal warnings for student page ([729b61d](https://github.com/newrelic/developer-website/commit/729b61d46d871132df6c587b50429c832495a297))
+* Search onClear functionality ([09364fa](https://github.com/newrelic/developer-website/commit/09364fafe50ae7c8ec263a56f116ee12aefce06c))
+* swap CI env variable for require.main ([ca72aab](https://github.com/newrelic/developer-website/commit/ca72aab1bfd9d1abe999b56c519d043ecca0584b))
+* update catalog ordering and search fields ([ba1e216](https://github.com/newrelic/developer-website/commit/ba1e216c99b3a6b43d65ebad92e105908e2da67f))
+* update search property to avoid name conflict ([8771cb3](https://github.com/newrelic/developer-website/commit/8771cb3457dd67021c57547f79798b73cd133a75))
+* update var used for conditional ([325ac77](https://github.com/newrelic/developer-website/commit/325ac77ebae679c5ec755c97f05b04f9638c0a2b))
+* use isMobile variable ([c5caed2](https://github.com/newrelic/developer-website/commit/c5caed2cb4567be097e4556516851c74d288caca))
+* use module.exports ([113e8a7](https://github.com/newrelic/developer-website/commit/113e8a72b97f096da1c8788b7029512fd60921ab))
+* use module.exports ([7d9798b](https://github.com/newrelic/developer-website/commit/7d9798bdb2bfd3146903ce32513b877b5b737c6c))
+
+
+### Features
+
+* add beta banner to details page ([f7c4ca8](https://github.com/newrelic/developer-website/commit/f7c4ca8ed1895b0ab6ed3941ec253881ee0a4241))
+* add beta banner to marketplace ([6ff9ddb](https://github.com/newrelic/developer-website/commit/6ff9ddba608471be7f94c663100aea4ecd543d89))
+* add breadcrumbs to details pages ([2ec9930](https://github.com/newrelic/developer-website/commit/2ec9930e456d18e9117ca4b8b96caa2ed6165739))
+* add button with link to pack directory ([b2385c2](https://github.com/newrelic/developer-website/commit/b2385c2343853ea347c5a70822493c5a4eabaf40))
+* add categories to filter the catalog ([31510a5](https://github.com/newrelic/developer-website/commit/31510a5ca9f5c2c496c894076940ea1afee12510))
+* add counts to categories ([69fca4a](https://github.com/newrelic/developer-website/commit/69fca4a7c3ef02554cceed9d7704ae4e228004c3))
+* add data sources tab content ([bd7da77](https://github.com/newrelic/developer-website/commit/bd7da77c2077b2a95399248175e217d1d3515ebd))
+* add empty state for pack details ([5155e15](https://github.com/newrelic/developer-website/commit/5155e158a681229f5d500443201ed41e70cb4ef5))
+* add fade animation for each slide ([5978e1c](https://github.com/newrelic/developer-website/commit/5978e1ceec0bec7f3f597988aa5ec0e23a8db494))
+* add featured pack functionality ([1991299](https://github.com/newrelic/developer-website/commit/1991299b2655c5046ac0f3650a639509dad5b306))
+* add final copy for dashboards, alerts, synthetics ([05f74d5](https://github.com/newrelic/developer-website/commit/05f74d529918aca93895b1686b05e2b532011ffd))
+* add install button and instrument ([2cd7e5d](https://github.com/newrelic/developer-website/commit/2cd7e5d91b113de073d2b81e045725e590b4a245))
+* add left arrow to navigate to previous image ([b43b7b5](https://github.com/newrelic/developer-website/commit/b43b7b561a1ef13bf70084c315cb251982fad96c))
+* add new cookie mgmt/tessen upgrade via theme bump ([00a7c00](https://github.com/newrelic/developer-website/commit/00a7c0038285c55b5a150722d35ab9e7d666864e))
+* Add scheduled workflow to pull in o11y packs ([f008df1](https://github.com/newrelic/developer-website/commit/f008df150160c2ef71b4252449e9b8f25471dc8e))
+* add slide dots. add liz's sliding transformation config ([c871c2a](https://github.com/newrelic/developer-website/commit/c871c2a331a68d8d20512db9315aa3101833f439))
+* add standard intro text to tabs ([d6cde0a](https://github.com/newrelic/developer-website/commit/d6cde0af0d5627d4459b446a0f13f3b4679f394f))
+* added a suite of tab components (unstyled) ([38062e2](https://github.com/newrelic/developer-website/commit/38062e297edbaa2ecf0a0ab45e53fe54625093d9))
+* added click through view instrumentation ([acc7245](https://github.com/newrelic/developer-website/commit/acc7245e801f87ad0a97dd87d844989bcbbff5ad))
+* added filtering and sorting ([0e56ef8](https://github.com/newrelic/developer-website/commit/0e56ef8dac25ce763822220ce038ce1fa6e49e34))
+* added Install component ([66ad38b](https://github.com/newrelic/developer-website/commit/66ad38b68d49d5985794e6c351a449ba01e94d0c))
+* added SegmentedControl component ([b34fcd1](https://github.com/newrelic/developer-website/commit/b34fcd1ddf3fd99d0eae7118604978140302c3f1))
+* added url query params ([eb53936](https://github.com/newrelic/developer-website/commit/eb539360619b844bbca908ba0334fb016a234dcd))
+* adding the alert types ([f35e5b5](https://github.com/newrelic/developer-website/commit/f35e5b5622377a7b7635121fa532337a079b38e9))
+* animate expanding the search input ([1a39e70](https://github.com/newrelic/developer-website/commit/1a39e70337fc31ea9bd1c8d186bcef2c134874be))
+* apply filter on images in dark mode ([fd8a79b](https://github.com/newrelic/developer-website/commit/fd8a79b4853b6bbc06aa9f6ff7bd366c1bb6ca1b))
+* change InstallButton text based on installPlans ([d937910](https://github.com/newrelic/developer-website/commit/d9379100ebaaa1fa2fe632be5d0569990b43661d))
+* connect the install button to the correct platform URL ([8d911ba](https://github.com/newrelic/developer-website/commit/8d911ba0c997c12108db8518486becad9b2cd99d))
+* get installPlans for quickstarts ([14d835d](https://github.com/newrelic/developer-website/commit/14d835d54f8b761855d576453c79824650ef3dfb))
+* implement image gallery ([2b43227](https://github.com/newrelic/developer-website/commit/2b432272e3cd8042bcd9d64d536997585121bf40))
+* make form controls more responsive. refactor form controls for more control over style ([8fa0a46](https://github.com/newrelic/developer-website/commit/8fa0a4637b8fa10e2087f72191637d008ff7ed04))
+* mobile styles for tabs ([8365874](https://github.com/newrelic/developer-website/commit/8365874b978abcdd9031965fcb32ed1cbafed592))
+* move search bar into controls area ([b5dd656](https://github.com/newrelic/developer-website/commit/b5dd6563e14e1a2fc72a76d08b843ae2f620b5d5))
+* pack list view ([82adc31](https://github.com/newrelic/developer-website/commit/82adc31d8ef67704f44fed566335176cca27cf18))
+* search bar filters on name and desc ([181f043](https://github.com/newrelic/developer-website/commit/181f043ec314fe892a1fabe0077a327e3a5f8d5c))
+* search by keywords and 'All' category ([ae143d5](https://github.com/newrelic/developer-website/commit/ae143d508f62401b5d57c3ce24ee8a8a29baa498))
+* simplify search / filtering ([71bdd71](https://github.com/newrelic/developer-website/commit/71bdd714c0f1e7dc1313078fd52214868c7a7a7b))
+* tessen instrumentation ([5742fb2](https://github.com/newrelic/developer-website/commit/5742fb2f46a0d0421689765179922c857c97e798))
+* update install pack button when nothing to install ([b5cf5a3](https://github.com/newrelic/developer-website/commit/b5cf5a3dd7bcad2b78570738a5c3f079a9d9e628))
+* Update o11y pack details page ([d078830](https://github.com/newrelic/developer-website/commit/d0788309dba36d57367d16468b0862e2e87ea08a))
+* update react-markdown and use markdown in pack description on details page ([c156ed6](https://github.com/newrelic/developer-website/commit/c156ed644123e9b37360931c4380650d6f040bf6))
+
+# [1.56.0](https://github.com/newrelic/developer-website/compare/v1.55.0...v1.56.0) (2021-09-29)
+
+
+### Bug Fixes
+
+* fixed inconsistent dashboard charts ([d82c883](https://github.com/newrelic/developer-website/commit/d82c88329390f6f62f3003c2316ceab5587510de))
+* nav item update ([fca55d7](https://github.com/newrelic/developer-website/commit/fca55d77a4703efa8efce83b3eb11345d87f4433))
+* observability pack -> quickstarts & screenshot fixture ([1fa7356](https://github.com/newrelic/developer-website/commit/1fa73564b6cb2ff68d15134775f9e84c200da13d))
+* typos and language revision ([cc31bc1](https://github.com/newrelic/developer-website/commit/cc31bc18f0b0eeb5df84cb8de36d708886c8e1d0))
+* updated directory ([547019f](https://github.com/newrelic/developer-website/commit/547019f853bda564c30c48e10667e4a50145978e))
+
+
+### Features
+
+* added lab for building quickstart ([d5f4a35](https://github.com/newrelic/developer-website/commit/d5f4a35ee6ac77af5039f7ea28c35453c3da6c3a))
+
+# [1.55.0](https://github.com/newrelic/developer-website/compare/v1.54.0...v1.55.0) (2021-09-22)
+
+
+### Bug Fixes
+
+* Don't sound threatening ([761958f](https://github.com/newrelic/developer-website/commit/761958f10c74ed0253b44a64d5620b2370227b81))
+
+
+### Features
+
+* **docs:** Add NPM lab ([dd5285f](https://github.com/newrelic/developer-website/commit/dd5285ffe22a17c39c6309716106668c27a85035))
+
+# [1.54.0](https://github.com/newrelic/developer-website/compare/v1.53.1...v1.54.0) (2021-09-21)
+
+
+### Features
+
+* add onetrust and remove custom cookie component ([f341ace](https://github.com/newrelic/developer-website/commit/f341acefa22d6783291c4f0100eede28edfbb02f))
+
+## [1.53.1](https://github.com/newrelic/developer-website/compare/v1.53.0...v1.53.1) (2021-09-21)
+
+
+### Bug Fixes
+
+* add skilljar as an iframe-able domain ([1f902f8](https://github.com/newrelic/developer-website/commit/1f902f8bdd3c9ffa66a66e8dbf2e37d36265c519))
+
+# [1.53.0](https://github.com/newrelic/developer-website/compare/v1.52.3...v1.53.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* allow embed content in iframes ([4c9e27e](https://github.com/newrelic/developer-website/commit/4c9e27eed211ae415b0aae405e1da0e90d73423e))
+* remove custom cookie consent component in favor of onetrust ([77f8cc0](https://github.com/newrelic/developer-website/commit/77f8cc0f1229ff40ec978cd2e5365ce535be2773))
+* revert to using custom cookie consent component until onetrust issue is resolved ([26c5141](https://github.com/newrelic/developer-website/commit/26c51416204fc45aa1870832619503af7363be20))
+
+
+### Features
+
+* bump theme and update tessen ([ee5ef74](https://github.com/newrelic/developer-website/commit/ee5ef74abaa8a0701672805521c5e1eee3323299))
+
+## [1.52.3](https://github.com/newrelic/developer-website/compare/v1.52.2...v1.52.3) (2021-09-10)
+
+
+### Bug Fixes
+
+* Add additional information about catalog directories on ab-test ([aeec991](https://github.com/newrelic/developer-website/commit/aeec99134fdb517eb1490921fc567dba5d7430e0))
+* Update CLI output to match latest release in ab-test guide ([2a264ec](https://github.com/newrelic/developer-website/commit/2a264ec3b08b784075cc122a76510c10fb083ecf))
+* Update guide on updating catalog info to include artifact screenshots ([2e9d98c](https://github.com/newrelic/developer-website/commit/2e9d98cb2d9f60397186a5e04b213196fcee9553))
+* Update hello world guide to mention multiple catalog directories ([f3c296b](https://github.com/newrelic/developer-website/commit/f3c296b05c17d7e53dc46153f7e25d6f1f57a801))
+
+## [1.52.2](https://github.com/newrelic/developer-website/compare/v1.52.1...v1.52.2) (2021-09-02)
+
+
+### Bug Fixes
+
+* allowing one or many return values ([55af575](https://github.com/newrelic/developer-website/commit/55af575e0070f0e2999a22b2bcb3505eb24495b1))
+* correct logic for checking function definition validity ([053becf](https://github.com/newrelic/developer-website/commit/053becf26d6d6816782ea4a43d1a60aa2ae85b0b))
+* ensuring that all meta tags have a unque key ([0eef057](https://github.com/newrelic/developer-website/commit/0eef057c981a0adb4ac2b278bb97dff8646aac0c))
+* only display the method description when present ([46294d9](https://github.com/newrelic/developer-website/commit/46294d9552f363f72400a97619770e0277a07042))
+
+## [1.52.1](https://github.com/newrelic/developer-website/compare/v1.52.0...v1.52.1) (2021-08-19)
+
+
+### Bug Fixes
+
+* add gatsby cloud plugin and referrer policy setting ([c63e3dc](https://github.com/newrelic/developer-website/commit/c63e3dc8d0e60786c1cc6795ff61886ababa4a88))
+
 # [1.52.0](https://github.com/newrelic/developer-website/compare/v1.51.0...v1.52.0) (2021-06-23)
 
 

@@ -10,6 +10,9 @@ import TutorialStep from './TutorialStep';
 import TutorialSection from './TutorialSection';
 import Project from './Project';
 import HideWhenEmbedded from './HideWhenEmbedded';
+import Requirements from './Requirements';
+import Objectives from './Objectives';
+import FlexWrapper from './FlexWrapper';
 
 const components = {
   // Remove these when all step/steps components have been updated to the new
@@ -20,6 +23,9 @@ const components = {
   Tutorial,
   TutorialStep,
   TutorialSection,
+  Requirements,
+  Objectives,
+  FlexWrapper,
   Intro: (props) => (
     <Intro
       {...props}
