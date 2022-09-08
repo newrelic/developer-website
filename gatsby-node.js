@@ -262,10 +262,10 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
 exports.onCreatePage = ({ page, actions }) => {
   const { createRedirect } = actions;
   console.log(page.path);
-  if (page.path === '/nerdlog/') {
+  if (page.path === '/changelog/' || page.path === '/changelog') {
     createRedirect({
-      fromPath: page.path,
-      toPath: '/changelog/',
+      fromPath: '/nerdlog',
+      toPath: page.path,
       isPermanent: true,
       redirectInBrowser: true,
     });
