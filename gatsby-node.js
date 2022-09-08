@@ -176,3 +176,16 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
     },
   });
 };
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createRedirect } = actions;
+  console.log(page.path);
+  if (page.path === '/nerdlog/') {
+    createRedirect({
+      fromPath: page.path,
+      toPath: '/changelog/',
+      isPermanent: true,
+      redirectInBrowser: true,
+    });
+  }
+};
