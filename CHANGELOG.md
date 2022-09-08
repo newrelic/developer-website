@@ -1,3 +1,10 @@
+## [1.91.1](https://github.com/newrelic/developer-website/compare/v1.91.0...v1.91.1) (2022-08-22)
+
+
+### Bug Fixes
+
+* **terraform:** Replace alerts channels with notifications destinations and channels ([7357258](https://github.com/newrelic/developer-website/commit/7357258160c38e3cfdc3ea3058eb1ce21ae2d6f6))
+
 # [1.91.0](https://github.com/newrelic/developer-website/compare/v1.90.0...v1.91.0) (2022-07-27)
 
 
