@@ -622,7 +622,7 @@
   url: '/builders'
 - title: Changelog
   icon: nr-nerdlog
-  url: '/nerdlog'
+  url: '/changelog'
 - title: Podcasts
   icon: nr-podcasts
   url: '/podcasts'

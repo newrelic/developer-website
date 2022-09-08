@@ -10,7 +10,7 @@ import DevSiteSeo from '../components/DevSiteSeo';
 import { Link } from 'gatsby';
 import * as styles from './nerdlog.module.scss';
 import { teamMembers } from '../data/nerdlogData';
-import nerdlogBanner from '../images/nerdlog/nerdlog-banner.png';
+import changelogBanner from '../images/changelog/changelog-banner.jpg';
 import styled from '@emotion/styled';
 
 const NerdlogPage = ({ location }) => {
@@ -47,9 +47,9 @@ const NerdlogPage = ({ location }) => {
         <PageLayout.Content>
           <section>
             <img
-              src={nerdlogBanner}
+              src={changelogBanner}
               className={cx(styles.nerdlogBanner)}
-              alt="Nerdlog banner"
+              alt="Changelog banner"
             />
           </section>
           <Section>
@@ -65,12 +65,7 @@ const NerdlogPage = ({ location }) => {
               className={cx(styles.twoColumnAlt, styles.registrationSection)}
             >
               <div>
-                <h2>What is the New Relic changelog?</h2>
-                <p>
-                  The changelog is our live stream changelog on{' '}
-                  <a href="https://www.twitch.tv/new_relic">Twitch</a> that lets
-                  you:
-                </p>
+                <h2>What is the New Relic Changelog?</h2>
                 <div>
                   <ul>
                     <li>
@@ -131,10 +126,10 @@ const NerdlogPage = ({ location }) => {
                 </p>
                 <MarketoForm
                   id={2058}
-                  title="Nerdlog Weekly Email"
+                  title="changelog Weekly Email"
                   munchkinId="341-XKP-310"
                   publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
-                  redirectLink="/nerdlog-thank-you"
+                  redirectLink="/changelog-thank-you"
                 />
               </div>
             </div>

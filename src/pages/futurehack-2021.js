@@ -39,7 +39,7 @@ const FutureHackPage = ({ location }) => {
             <img
               src={nerdlogBanner}
               className={cx(styles.futurehackBanner)}
-              alt="Nerdlog banner"
+              alt="changelog banner"
             />
           </section>
 
