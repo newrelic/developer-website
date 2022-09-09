@@ -98,6 +98,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   createRedirect({
+    fromPath: '/nerdlog/',
+    toPath: '/changelog',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: `/instant-observability/`,
     toPath: `https://newrelic.com/instant-observability`,
     isPermanent: true,
@@ -257,17 +263,4 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
       tessen: 'Tessen',
     },
   });
-};
-
-exports.onCreatePage = ({ page, actions }) => {
-  const { createRedirect } = actions;
-  console.log(page.path);
-  if (page.path === '/nerdlog/') {
-    createRedirect({
-      fromPath: page.path,
-      toPath: '/changelog/',
-      isPermanent: true,
-      redirectInBrowser: true,
-    });
-  }
 };
