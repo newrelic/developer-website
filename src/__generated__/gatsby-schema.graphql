@@ -385,24 +385,24 @@ type SitePage implements Node {
   internalComponentName: String!
   componentChunkName: String!
   matchPath: String
+  isCreatedByStatefulCreatePages: Boolean
+  pluginCreator: SitePlugin
+  pluginCreatorId: String
   id: ID!
   parent: Node
   children: [Node!]!
   internal: Internal!
-  isCreatedByStatefulCreatePages: Boolean
   context: SitePageContext
-  pluginCreator: SitePlugin
-  pluginCreatorId: String
 }
 
 type SitePageContext {
-  slug: String
-  fileRelativePath: String
   layout: String
-  locale: String
-  guidesFilter: String
   themeOptions: SitePageContextThemeOptions
   swiftypeEngineKey: String
+  fileRelativePath: String
+  locale: String
+  slug: String
+  guidesFilter: String
 }
 
 type SitePageContextThemeOptions {
@@ -1128,8 +1128,8 @@ type MdxFrontmatter {
   resources: [MdxFrontmatterResources]
   tags: [String]
   duration: Int
-  redirects: [String]
   procIdx: Float
+  redirects: [String]
   promote: Boolean
 }
 
@@ -1169,7 +1169,6 @@ type NewRelicThemeConfig implements Node {
   env: String!
   relatedResources: NewRelicThemeRelatedResourceConfig!
   tessen: NewRelicThemeTessenConfig
-  signup: NewRelicThemeSignupConfig
   id: ID!
   parent: Node
   children: [Node!]!
@@ -1188,12 +1187,6 @@ type RelatedResourceLabel {
 type NewRelicThemeTessenConfig {
   product: String
   subproduct: String
-}
-
-type NewRelicThemeSignupConfig {
-  environment: String!
-  reCaptchaToken: String!
-  signupURL: String!
 }
 
 type MarkdownHeading {
@@ -1453,7 +1446,7 @@ type Query {
   allSite(filter: SiteFilterInput, sort: SiteSortInput, skip: Int, limit: Int): SiteConnection!
   siteFunction(functionRoute: StringQueryOperatorInput, pluginName: StringQueryOperatorInput, originalAbsoluteFilePath: StringQueryOperatorInput, originalRelativeFilePath: StringQueryOperatorInput, relativeCompiledFilePath: StringQueryOperatorInput, absoluteCompiledFilePath: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): SiteFunction
   allSiteFunction(filter: SiteFunctionFilterInput, sort: SiteFunctionSortInput, skip: Int, limit: Int): SiteFunctionConnection!
-  sitePage(path: StringQueryOperatorInput, component: StringQueryOperatorInput, internalComponentName: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, context: SitePageContextFilterInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
+  sitePage(path: StringQueryOperatorInput, component: StringQueryOperatorInput, internalComponentName: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, context: SitePageContextFilterInput): SitePage
   allSitePage(filter: SitePageFilterInput, sort: SitePageSortInput, skip: Int, limit: Int): SitePageConnection!
   sitePlugin(resolve: StringQueryOperatorInput, name: StringQueryOperatorInput, version: StringQueryOperatorInput, nodeAPIs: StringQueryOperatorInput, browserAPIs: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, pluginFilepath: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, packageJson: SitePluginPackageJsonFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): SitePlugin
   allSitePlugin(filter: SitePluginFilterInput, sort: SitePluginSortInput, skip: Int, limit: Int): SitePluginConnection!
@@ -1465,7 +1458,7 @@ type Query {
   allLocale(filter: LocaleFilterInput, sort: LocaleSortInput, skip: Int, limit: Int): LocaleConnection!
   relatedResource(id: StringQueryOperatorInput, title: StringQueryOperatorInput, url: StringQueryOperatorInput, plugin: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): RelatedResource
   allRelatedResource(filter: RelatedResourceFilterInput, sort: RelatedResourceSortInput, skip: Int, limit: Int): RelatedResourceConnection!
-  newRelicThemeConfig(env: StringQueryOperatorInput, relatedResources: NewRelicThemeRelatedResourceConfigFilterInput, tessen: NewRelicThemeTessenConfigFilterInput, signup: NewRelicThemeSignupConfigFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): NewRelicThemeConfig
+  newRelicThemeConfig(env: StringQueryOperatorInput, relatedResources: NewRelicThemeRelatedResourceConfigFilterInput, tessen: NewRelicThemeTessenConfigFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): NewRelicThemeConfig
   allNewRelicThemeConfig(filter: NewRelicThemeConfigFilterInput, sort: NewRelicThemeConfigSortInput, skip: Int, limit: Int): NewRelicThemeConfigConnection!
   markdownRemark(id: StringQueryOperatorInput, html: StringQueryOperatorInput, htmlAst: JSONQueryOperatorInput, excerpt: StringQueryOperatorInput, excerptAst: JSONQueryOperatorInput, headings: MarkdownHeadingFilterListInput, timeToRead: IntQueryOperatorInput, tableOfContents: StringQueryOperatorInput, wordCount: MarkdownWordCountFilterInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): MarkdownRemark
   allMarkdownRemark(filter: MarkdownRemarkFilterInput, sort: MarkdownRemarkSortInput, skip: Int, limit: Int): MarkdownRemarkConnection!
@@ -1653,8 +1646,8 @@ input MdxFrontmatterFilterInput {
   resources: MdxFrontmatterResourcesFilterListInput
   tags: StringQueryOperatorInput
   duration: IntQueryOperatorInput
-  redirects: StringQueryOperatorInput
   procIdx: FloatQueryOperatorInput
+  redirects: StringQueryOperatorInput
   promote: BooleanQueryOperatorInput
 }
 
@@ -1927,8 +1920,8 @@ enum FileFieldsEnum {
   childrenMdx___frontmatter___resources___url
   childrenMdx___frontmatter___tags
   childrenMdx___frontmatter___duration
-  childrenMdx___frontmatter___redirects
   childrenMdx___frontmatter___procIdx
+  childrenMdx___frontmatter___redirects
   childrenMdx___frontmatter___promote
   childrenMdx___slug
   childrenMdx___body
@@ -2034,8 +2027,8 @@ enum FileFieldsEnum {
   childMdx___frontmatter___resources___url
   childMdx___frontmatter___tags
   childMdx___frontmatter___duration
-  childMdx___frontmatter___redirects
   childMdx___frontmatter___procIdx
+  childMdx___frontmatter___redirects
   childMdx___frontmatter___promote
   childMdx___slug
   childMdx___body
@@ -2802,131 +2795,6 @@ input SiteFunctionSortInput {
   order: [SortOrderEnum] = [ASC]
 }
 
-input SitePageContextFilterInput {
-  slug: StringQueryOperatorInput
-  fileRelativePath: StringQueryOperatorInput
-  layout: StringQueryOperatorInput
-  locale: StringQueryOperatorInput
-  guidesFilter: StringQueryOperatorInput
-  themeOptions: SitePageContextThemeOptionsFilterInput
-  swiftypeEngineKey: StringQueryOperatorInput
-}
-
-input SitePageContextThemeOptionsFilterInput {
-  oneTrustID: StringQueryOperatorInput
-  forceTrailingSlashes: BooleanQueryOperatorInput
-  layout: SitePageContextThemeOptionsLayoutFilterInput
-  prism: SitePageContextThemeOptionsPrismFilterInput
-  splitio: SitePageContextThemeOptionsSplitioFilterInput
-  relatedResources: SitePageContextThemeOptionsRelatedResourcesFilterInput
-  newrelic: SitePageContextThemeOptionsNewrelicFilterInput
-  tessen: SitePageContextThemeOptionsTessenFilterInput
-}
-
-input SitePageContextThemeOptionsLayoutFilterInput {
-  contentPadding: StringQueryOperatorInput
-  maxWidth: StringQueryOperatorInput
-  component: StringQueryOperatorInput
-  mobileBreakpoint: StringQueryOperatorInput
-}
-
-input SitePageContextThemeOptionsPrismFilterInput {
-  languages: StringQueryOperatorInput
-}
-
-input SitePageContextThemeOptionsSplitioFilterInput {
-  core: SitePageContextThemeOptionsSplitioCoreFilterInput
-  features: SitePageContextThemeOptionsSplitioFeaturesFilterInput
-  env: SitePageContextThemeOptionsSplitioEnvFilterInput
-}
-
-input SitePageContextThemeOptionsSplitioCoreFilterInput {
-  authorizationKey: StringQueryOperatorInput
-}
-
-input SitePageContextThemeOptionsSplitioFeaturesFilterInput {
-  free_account_button_color: SitePageContextThemeOptionsSplitioFeaturesFree_account_button_colorFilterInput
-}
-
-input SitePageContextThemeOptionsSplitioFeaturesFree_account_button_colorFilterInput {
-  treatment: StringQueryOperatorInput
-}
-
-input SitePageContextThemeOptionsSplitioEnvFilterInput {
-  development: SitePageContextThemeOptionsSplitioEnvDevelopmentFilterInput
-}
-
-input SitePageContextThemeOptionsSplitioEnvDevelopmentFilterInput {
-  features: SitePageContextThemeOptionsSplitioEnvDevelopmentFeaturesFilterInput
-  core: SitePageContextThemeOptionsSplitioEnvDevelopmentCoreFilterInput
-}
-
-input SitePageContextThemeOptionsSplitioEnvDevelopmentFeaturesFilterInput {
-  developer_website_global_header_gh_buttons: StringQueryOperatorInput
-  developer_website_right_rail_buttons: StringQueryOperatorInput
-  super_tiles: StringQueryOperatorInput
-}
-
-input SitePageContextThemeOptionsSplitioEnvDevelopmentCoreFilterInput {
-  authorizationKey: StringQueryOperatorInput
-}
-
-input SitePageContextThemeOptionsRelatedResourcesFilterInput {
-  swiftype: SitePageContextThemeOptionsRelatedResourcesSwiftypeFilterInput
-}
-
-input SitePageContextThemeOptionsRelatedResourcesSwiftypeFilterInput {
-  resultsPath: StringQueryOperatorInput
-  refetch: BooleanQueryOperatorInput
-  engineKey: StringQueryOperatorInput
-  limit: IntQueryOperatorInput
-}
-
-input SitePageContextThemeOptionsNewrelicFilterInput {
-  configs: SitePageContextThemeOptionsNewrelicConfigsFilterInput
-}
-
-input SitePageContextThemeOptionsNewrelicConfigsFilterInput {
-  production: SitePageContextThemeOptionsNewrelicConfigsProductionFilterInput
-  staging: SitePageContextThemeOptionsNewrelicConfigsStagingFilterInput
-}
-
-input SitePageContextThemeOptionsNewrelicConfigsProductionFilterInput {
-  instrumentationType: StringQueryOperatorInput
-  accountId: StringQueryOperatorInput
-  trustKey: StringQueryOperatorInput
-  agentID: StringQueryOperatorInput
-  licenseKey: StringQueryOperatorInput
-  applicationID: StringQueryOperatorInput
-  beacon: StringQueryOperatorInput
-  errorBeacon: StringQueryOperatorInput
-}
-
-input SitePageContextThemeOptionsNewrelicConfigsStagingFilterInput {
-  instrumentationType: StringQueryOperatorInput
-  accountId: StringQueryOperatorInput
-  trustKey: StringQueryOperatorInput
-  agentID: StringQueryOperatorInput
-  licenseKey: StringQueryOperatorInput
-  applicationID: StringQueryOperatorInput
-  beacon: StringQueryOperatorInput
-  errorBeacon: StringQueryOperatorInput
-}
-
-input SitePageContextThemeOptionsTessenFilterInput {
-  tessenVersion: StringQueryOperatorInput
-  product: StringQueryOperatorInput
-  subproduct: StringQueryOperatorInput
-  segmentWriteKey: StringQueryOperatorInput
-  trackPageViews: BooleanQueryOperatorInput
-  pageView: SitePageContextThemeOptionsTessenPageViewFilterInput
-}
-
-input SitePageContextThemeOptionsTessenPageViewFilterInput {
-  eventName: StringQueryOperatorInput
-  category: StringQueryOperatorInput
-}
-
 input SitePluginFilterInput {
   resolve: StringQueryOperatorInput
   name: StringQueryOperatorInput
@@ -3229,6 +3097,131 @@ input SitePluginPackageJsonPeerDependenciesFilterInput {
   version: StringQueryOperatorInput
 }
 
+input SitePageContextFilterInput {
+  layout: StringQueryOperatorInput
+  themeOptions: SitePageContextThemeOptionsFilterInput
+  swiftypeEngineKey: StringQueryOperatorInput
+  fileRelativePath: StringQueryOperatorInput
+  locale: StringQueryOperatorInput
+  slug: StringQueryOperatorInput
+  guidesFilter: StringQueryOperatorInput
+}
+
+input SitePageContextThemeOptionsFilterInput {
+  oneTrustID: StringQueryOperatorInput
+  forceTrailingSlashes: BooleanQueryOperatorInput
+  layout: SitePageContextThemeOptionsLayoutFilterInput
+  prism: SitePageContextThemeOptionsPrismFilterInput
+  splitio: SitePageContextThemeOptionsSplitioFilterInput
+  relatedResources: SitePageContextThemeOptionsRelatedResourcesFilterInput
+  newrelic: SitePageContextThemeOptionsNewrelicFilterInput
+  tessen: SitePageContextThemeOptionsTessenFilterInput
+}
+
+input SitePageContextThemeOptionsLayoutFilterInput {
+  contentPadding: StringQueryOperatorInput
+  maxWidth: StringQueryOperatorInput
+  component: StringQueryOperatorInput
+  mobileBreakpoint: StringQueryOperatorInput
+}
+
+input SitePageContextThemeOptionsPrismFilterInput {
+  languages: StringQueryOperatorInput
+}
+
+input SitePageContextThemeOptionsSplitioFilterInput {
+  core: SitePageContextThemeOptionsSplitioCoreFilterInput
+  features: SitePageContextThemeOptionsSplitioFeaturesFilterInput
+  env: SitePageContextThemeOptionsSplitioEnvFilterInput
+}
+
+input SitePageContextThemeOptionsSplitioCoreFilterInput {
+  authorizationKey: StringQueryOperatorInput
+}
+
+input SitePageContextThemeOptionsSplitioFeaturesFilterInput {
+  free_account_button_color: SitePageContextThemeOptionsSplitioFeaturesFree_account_button_colorFilterInput
+}
+
+input SitePageContextThemeOptionsSplitioFeaturesFree_account_button_colorFilterInput {
+  treatment: StringQueryOperatorInput
+}
+
+input SitePageContextThemeOptionsSplitioEnvFilterInput {
+  development: SitePageContextThemeOptionsSplitioEnvDevelopmentFilterInput
+}
+
+input SitePageContextThemeOptionsSplitioEnvDevelopmentFilterInput {
+  features: SitePageContextThemeOptionsSplitioEnvDevelopmentFeaturesFilterInput
+  core: SitePageContextThemeOptionsSplitioEnvDevelopmentCoreFilterInput
+}
+
+input SitePageContextThemeOptionsSplitioEnvDevelopmentFeaturesFilterInput {
+  developer_website_global_header_gh_buttons: StringQueryOperatorInput
+  developer_website_right_rail_buttons: StringQueryOperatorInput
+  super_tiles: StringQueryOperatorInput
+}
+
+input SitePageContextThemeOptionsSplitioEnvDevelopmentCoreFilterInput {
+  authorizationKey: StringQueryOperatorInput
+}
+
+input SitePageContextThemeOptionsRelatedResourcesFilterInput {
+  swiftype: SitePageContextThemeOptionsRelatedResourcesSwiftypeFilterInput
+}
+
+input SitePageContextThemeOptionsRelatedResourcesSwiftypeFilterInput {
+  resultsPath: StringQueryOperatorInput
+  refetch: BooleanQueryOperatorInput
+  engineKey: StringQueryOperatorInput
+  limit: IntQueryOperatorInput
+}
+
+input SitePageContextThemeOptionsNewrelicFilterInput {
+  configs: SitePageContextThemeOptionsNewrelicConfigsFilterInput
+}
+
+input SitePageContextThemeOptionsNewrelicConfigsFilterInput {
+  production: SitePageContextThemeOptionsNewrelicConfigsProductionFilterInput
+  staging: SitePageContextThemeOptionsNewrelicConfigsStagingFilterInput
+}
+
+input SitePageContextThemeOptionsNewrelicConfigsProductionFilterInput {
+  instrumentationType: StringQueryOperatorInput
+  accountId: StringQueryOperatorInput
+  trustKey: StringQueryOperatorInput
+  agentID: StringQueryOperatorInput
+  licenseKey: StringQueryOperatorInput
+  applicationID: StringQueryOperatorInput
+  beacon: StringQueryOperatorInput
+  errorBeacon: StringQueryOperatorInput
+}
+
+input SitePageContextThemeOptionsNewrelicConfigsStagingFilterInput {
+  instrumentationType: StringQueryOperatorInput
+  accountId: StringQueryOperatorInput
+  trustKey: StringQueryOperatorInput
+  agentID: StringQueryOperatorInput
+  licenseKey: StringQueryOperatorInput
+  applicationID: StringQueryOperatorInput
+  beacon: StringQueryOperatorInput
+  errorBeacon: StringQueryOperatorInput
+}
+
+input SitePageContextThemeOptionsTessenFilterInput {
+  tessenVersion: StringQueryOperatorInput
+  product: StringQueryOperatorInput
+  subproduct: StringQueryOperatorInput
+  segmentWriteKey: StringQueryOperatorInput
+  trackPageViews: BooleanQueryOperatorInput
+  pageView: SitePageContextThemeOptionsTessenPageViewFilterInput
+}
+
+input SitePageContextThemeOptionsTessenPageViewFilterInput {
+  eventName: StringQueryOperatorInput
+  category: StringQueryOperatorInput
+}
+
 type SitePageConnection {
   totalCount: Int!
   edges: [SitePageEdge!]!
@@ -3253,111 +3246,7 @@ enum SitePageFieldsEnum {
   internalComponentName
   componentChunkName
   matchPath
-  id
-  parent___id
-  parent___parent___id
-  parent___parent___parent___id
-  parent___parent___parent___children
-  parent___parent___children
-  parent___parent___children___id
-  parent___parent___children___children
-  parent___parent___internal___content
-  parent___parent___internal___contentDigest
-  parent___parent___internal___description
-  parent___parent___internal___fieldOwners
-  parent___parent___internal___ignoreType
-  parent___parent___internal___mediaType
-  parent___parent___internal___owner
-  parent___parent___internal___type
-  parent___children
-  parent___children___id
-  parent___children___parent___id
-  parent___children___parent___children
-  parent___children___children
-  parent___children___children___id
-  parent___children___children___children
-  parent___children___internal___content
-  parent___children___internal___contentDigest
-  parent___children___internal___description
-  parent___children___internal___fieldOwners
-  parent___children___internal___ignoreType
-  parent___children___internal___mediaType
-  parent___children___internal___owner
-  parent___children___internal___type
-  parent___internal___content
-  parent___internal___contentDigest
-  parent___internal___description
-  parent___internal___fieldOwners
-  parent___internal___ignoreType
-  parent___internal___mediaType
-  parent___internal___owner
-  parent___internal___type
-  children
-  children___id
-  children___parent___id
-  children___parent___parent___id
-  children___parent___parent___children
-  children___parent___children
-  children___parent___children___id
-  children___parent___children___children
-  children___parent___internal___content
-  children___parent___internal___contentDigest
-  children___parent___internal___description
-  children___parent___internal___fieldOwners
-  children___parent___internal___ignoreType
-  children___parent___internal___mediaType
-  children___parent___internal___owner
-  children___parent___internal___type
-  children___children
-  children___children___id
-  children___children___parent___id
-  children___children___parent___children
-  children___children___children
-  children___children___children___id
-  children___children___children___children
-  children___children___internal___content
-  children___children___internal___contentDigest
-  children___children___internal___description
-  children___children___internal___fieldOwners
-  children___children___internal___ignoreType
-  children___children___internal___mediaType
-  children___children___internal___owner
-  children___children___internal___type
-  children___internal___content
-  children___internal___contentDigest
-  children___internal___description
-  children___internal___fieldOwners
-  children___internal___ignoreType
-  children___internal___mediaType
-  children___internal___owner
-  children___internal___type
-  internal___content
-  internal___contentDigest
-  internal___description
-  internal___fieldOwners
-  internal___ignoreType
-  internal___mediaType
-  internal___owner
-  internal___type
   isCreatedByStatefulCreatePages
-  context___slug
-  context___fileRelativePath
-  context___layout
-  context___locale
-  context___guidesFilter
-  context___themeOptions___oneTrustID
-  context___themeOptions___forceTrailingSlashes
-  context___themeOptions___layout___contentPadding
-  context___themeOptions___layout___maxWidth
-  context___themeOptions___layout___component
-  context___themeOptions___layout___mobileBreakpoint
-  context___themeOptions___prism___languages
-  context___themeOptions___tessen___tessenVersion
-  context___themeOptions___tessen___product
-  context___themeOptions___tessen___subproduct
-  context___themeOptions___tessen___segmentWriteKey
-  context___themeOptions___tessen___trackPageViews
-  context___swiftypeEngineKey
   pluginCreator___resolve
   pluginCreator___name
   pluginCreator___version
@@ -3500,6 +3389,110 @@ enum SitePageFieldsEnum {
   pluginCreator___internal___owner
   pluginCreator___internal___type
   pluginCreatorId
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  context___layout
+  context___themeOptions___oneTrustID
+  context___themeOptions___forceTrailingSlashes
+  context___themeOptions___layout___contentPadding
+  context___themeOptions___layout___maxWidth
+  context___themeOptions___layout___component
+  context___themeOptions___layout___mobileBreakpoint
+  context___themeOptions___prism___languages
+  context___themeOptions___tessen___tessenVersion
+  context___themeOptions___tessen___product
+  context___themeOptions___tessen___subproduct
+  context___themeOptions___tessen___segmentWriteKey
+  context___themeOptions___tessen___trackPageViews
+  context___swiftypeEngineKey
+  context___fileRelativePath
+  context___locale
+  context___slug
+  context___guidesFilter
 }
 
 type SitePageGroupConnection {
@@ -3522,14 +3515,14 @@ input SitePageFilterInput {
   internalComponentName: StringQueryOperatorInput
   componentChunkName: StringQueryOperatorInput
   matchPath: StringQueryOperatorInput
+  isCreatedByStatefulCreatePages: BooleanQueryOperatorInput
+  pluginCreator: SitePluginFilterInput
+  pluginCreatorId: StringQueryOperatorInput
   id: StringQueryOperatorInput
   parent: NodeFilterInput
   children: NodeFilterListInput
   internal: InternalFilterInput
-  isCreatedByStatefulCreatePages: BooleanQueryOperatorInput
   context: SitePageContextFilterInput
-  pluginCreator: SitePluginFilterInput
-  pluginCreatorId: StringQueryOperatorInput
 }
 
 input SitePageSortInput {
@@ -4377,12 +4370,6 @@ input NewRelicThemeTessenConfigFilterInput {
   subproduct: StringQueryOperatorInput
 }
 
-input NewRelicThemeSignupConfigFilterInput {
-  environment: StringQueryOperatorInput
-  reCaptchaToken: StringQueryOperatorInput
-  signupURL: StringQueryOperatorInput
-}
-
 type NewRelicThemeConfigConnection {
   totalCount: Int!
   edges: [NewRelicThemeConfigEdge!]!
@@ -4408,9 +4395,6 @@ enum NewRelicThemeConfigFieldsEnum {
   relatedResources___labels___label
   tessen___product
   tessen___subproduct
-  signup___environment
-  signup___reCaptchaToken
-  signup___signupURL
   id
   parent___id
   parent___parent___id
@@ -4517,7 +4501,6 @@ input NewRelicThemeConfigFilterInput {
   env: StringQueryOperatorInput
   relatedResources: NewRelicThemeRelatedResourceConfigFilterInput
   tessen: NewRelicThemeTessenConfigFilterInput
-  signup: NewRelicThemeSignupConfigFilterInput
   id: StringQueryOperatorInput
   parent: NodeFilterInput
   children: NodeFilterListInput
@@ -4733,8 +4716,8 @@ enum MdxFieldsEnum {
   frontmatter___resources___url
   frontmatter___tags
   frontmatter___duration
-  frontmatter___redirects
   frontmatter___procIdx
+  frontmatter___redirects
   frontmatter___promote
   slug
   body
