@@ -98,6 +98,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   createRedirect({
+    fromPath: '/nerdlog/',
+    toPath: '/changelog',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: `/instant-observability/`,
     toPath: `https://newrelic.com/instant-observability`,
     isPermanent: true,
