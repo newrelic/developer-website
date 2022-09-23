@@ -8,7 +8,7 @@ description: 'Add NrqlQuery components to your Nerdlet'
 
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
 Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Present an end test confirmation modal_](/build-apps/ab-test/confirmation-modal), before starting this one.
 
@@ -16,7 +16,7 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 
 </HideWhenEmbedded>
 
-In this series, you're building a full-fledged New Relic One application that ingests data from a demo service that's running an A/B test. The app shows the A/B test data in interesting ways so that you'll ultimately be able to choose whether Version A or Version B is more effective at accomplishing your business goal: to increase high-quality newsletter subscriptions.
+In this series, you're building a full-fledged New Relic application that ingests data from a demo service that's running an A/B test. The app shows the A/B test data in interesting ways so that you'll ultimately be able to choose whether Version A or Version B is more effective at accomplishing your business goal: to increase high-quality newsletter subscriptions.
 
 In past tutorials, you created charts to visualize your data, and you organized those charts so you can use and understand them. You also created a form in your app for ending your test once you're confident in the most effective version. Until now, though, you can't gauge which version is more effective because your charts have been showing mock data, such as:
 
@@ -98,7 +98,7 @@ The Data explorer presents two options for filtering and sorting your data:
 - User interface (UI) selections like the one you've just made
 - New Relic Query Language (NRQL)
 
-The UI is useful for quickly filtering data, and it doesn't require you to know NRQL. For your New Relic One application, however, you need to use NRQL queries.
+The UI is useful for quickly filtering data, and it doesn't require you to know NRQL. For your New Relic application, however, you need to use NRQL queries.
 
 Click the **NRQL** query to navigate to the Query builder:
 
@@ -116,7 +116,7 @@ Before you begin integrating New Relic data in your NR1 app, consult your design
 
 ![Design guide for chart components](../../../images/ab-test/charts-design-guide.png)
 
-Your New Relic One application has eight charts in total, including line charts, pie charts, and table charts. Each of these charts currently shows mock data, but they need to show real data to be useful. First, focus on querying data for the topmost chart: **Newsletter subscriptions per version**.
+Your New Relic application has eight charts in total, including line charts, pie charts, and table charts. Each of these charts currently shows mock data, but they need to show real data to be useful. First, focus on querying data for the topmost chart: **Newsletter subscriptions per version**.
 
 With the query you've built in the Data explorer, you already have the data you need for this chart:
 
@@ -261,7 +261,7 @@ nr1 nerdpack:serve
 
 Go to [https://one.newrelic.com?nerdpacks=local](https://one.newrelic.com?nerdpacks=local), and view your application under **Apps > Your apps**:
 
-![Your New Relic One application showing real subscription data](../../../images/ab-test/nrql-query-chart.png)
+![Your New Relic application showing real subscription data](../../../images/ab-test/nrql-query-chart.png)
 
 **Newsletter subscriptions by version** now shows real data from New Relic's database rather than the mock data you defined before. Notice that your chart pulls data when your application loads, but does not continue pulling data while the application is open. You can fix this by adding another prop.
 
@@ -393,7 +393,7 @@ You don't need the `TIMESERIES` clause because the pie chart only shows numerica
 
 With your Nerdpack served locally, [view your application](https://one.newrelic.com?nerdpacks=local) to see your charts serving real data:
 
-![Your New Relic One application showing real subscription totals data](../../../images/ab-test/nr1-app-subscription-totals.png)
+![Your New Relic application showing real subscription totals data](../../../images/ab-test/nr1-app-subscription-totals.png)
 
 **Total subscriptions per version** now shows all-time subscription totals from both versions of your demo application.
 
@@ -481,7 +481,7 @@ Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [
 
 With your Nerdpack served locally, [view your application](https://one.newrelic.com?nerdpacks=local) to see your charts serving real data:
 
-![Your New Relic One application showing real page view data](../../../images/ab-test/page-views-charts.png)
+![Your New Relic application showing real page view data](../../../images/ab-test/page-views-charts.png)
 
 In these new queries, you fetch `pageView` custom events instead of `subscription` events. You also use a `WHERE` clause to filter to a particular `page_version` rather than a `FACET` to group by `page_version`.
 
@@ -512,7 +512,7 @@ You have to handle these differently than you did for the charts you've been dea
 
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Customize NRQL data_](/build-apps/ab-test/nrql-customizations).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. Continue on to the next lesson: [_Customize NRQL data_](/build-apps/ab-test/nrql-customizations).
 
 </Callout>
 
