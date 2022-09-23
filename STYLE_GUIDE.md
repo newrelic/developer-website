@@ -77,7 +77,7 @@ The New Relic Developer Experience Team uses [Github](https://github.com/) and [
 
 ### Technical references
 
-Technical reference pages are detailed technical specifications of the New Relic platform and itss components.
+Technical reference pages are detailed technical specifications of the New Relic platform and its components.
 
 ### Guides
 
