@@ -158,7 +158,7 @@
       url: '/build-apps/add-time-picker-guide'
     - title: Add the NerdGraphQuery component to an app
       url: '/build-apps/add-nerdgraphquery-guide'
-    - title: Add tables to your New Relic One application
+    - title: Add tables to your New Relic application
       url: '/build-apps/howto-use-nrone-table-components'
     - title: Add, query, and mutate data using NerdStorage
       url: '/build-apps/add-query-mutate-data-nerdstorage'
@@ -179,7 +179,7 @@
           url: '/build-apps/ab-test/install-nr1'
         - title: Create a Nerdpack
           url: '/build-apps/ab-test/create-nerdpack'
-        - title: Serve your New Relic One application
+        - title: Serve your New Relic application
           url: '/build-apps/ab-test/serve-app'
         - title: Add chart components to your A/B test application
           url: '/build-apps/ab-test/add-charts'
@@ -221,9 +221,9 @@
           url: '/build-apps/ab-test/navigation'
         - title: Describe your app for the catalog
           url: '/build-apps/ab-test/catalog'
-        - title: Publish your New Relic One application
+        - title: Publish your New Relic application
           url: '/build-apps/ab-test/publish'
-        - title: Subscribe to your New Relic One application
+        - title: Subscribe to your New Relic application
           url: '/build-apps/ab-test/subscribe'
     - title: See all open source apps
       url: https://opensource.newrelic.com/nerdpacks/

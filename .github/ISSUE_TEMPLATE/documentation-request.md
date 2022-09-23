@@ -28,7 +28,7 @@ What questions do you think we should answer? What, if any, existing documentati
 
 ### What type of documentation change are you suggesting?
 
-Is this a New Relic educational guide or technical specifications of the New Relic One platform?
+Is this a New Relic educational guide or technical specifications of the New Relic platform?
 
 ### Motivation
 
