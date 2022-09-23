@@ -3,7 +3,7 @@ title: 'Intro to New Relic One SDK'
 template: 'GuideTemplate'
 description: 'Intro to New Relic One SDK'
 tileShorthand:
-  title: 'New Relic One component reference'
+  title: 'New Relic app component reference'
   description: 'Reference for all New Relic One SDK components'
 redirects:
   - /build-tools/new-relic-one-applications/intro-to-sdk
@@ -17,7 +17,7 @@ resources:
     url: https://github.com/newrelic?q=layout&type=&language=
 tags:
   - SDK components
-  - New Relic One apps
+  - New Relic apps
   - UI components
   - chart components
   - query and storage components
@@ -26,7 +26,8 @@ tags:
 
 <Intro>
 
-To help you build New Relic One applications, we provide you with the New Relic One SDK.
+To help you build New Relic applications, we provide you with the New Relic One SDK, which is used to build New Relic apps.
+
 Here we give you an introduction to the types of API calls and components in the SDK. The SDK provides everything you need to build your Nerdlets, create visualizations, and fetch New Relic or third-party data.
 
 </Intro>
@@ -95,12 +96,12 @@ We also provide storage for storing small data sets, such as configuration setti
 
 ### Platform APIs
 
-The Platform API components of the SDK enable your application to interact with different parts of the New Relic One platform, by reading and writing state from and to the URL, setting the configuration, etc. They can be divided into these categories:
+The Platform API components of the SDK enable your application to interact with different parts of the New Relic platform, by reading and writing state from and to the URL, setting the configuration, etc. They can be divided into these categories:
 
 - [`PlatformStateContext`](/components/platform-state-context): provides read access to the platform URL state variables.
   Example: `timeRange` in the time picker.
 - [`navigation`](/apis/navigation): an object that allows programmatic manipulation of the navigation
-  in New Relic One. Example: opening a new Nerdlet.
+  in New Relic. Example: opening a new Nerdlet.
 - [`NerdletStateContext`](/components/nerdlet-state-context): provides read access to the Nerdlet URL state variables.
   Example: an `entityGuid` in the [entity explorer](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/ui-data/new-relic-one-entity-explorer-view-performance-across-apps-services-hosts).
 - [`nerdlet`](/apis/nerdlet): allows you to configure your Nerdlet and write to your Nerdlet's URL state.

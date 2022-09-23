@@ -8,7 +8,7 @@ description: 'Fetch data from a third-party service'
 
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
 Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Access NerdStorageVault from your nerdlet_](/build-apps/ab-test/nerdstoragevault), before starting this one.
 
@@ -16,7 +16,7 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 
 </HideWhenEmbedded>
 
-In previous lessons, you learned of a third-party service that you can use to fetch mock cancellation data for the **Total cancellations per version** chart in your New Relic One application. Even though the data in this service is fake, the real value of this lesson is learning how you can use third party services to supply data to your New Relic One application.
+In previous lessons, you learned of a third-party service that you can use to fetch mock cancellation data for the **Total cancellations per version** chart in your New Relic application. Even though the data in this service is fake, the real value of this lesson is learning how you can use third party services to supply data to your New Relic application.
 
 If you make a request to the mock service with cancellation data (https://api.nerdsletter.net/cancellations) you'll see a response rejecting your request with a message that reads "Unauthorized":
 
@@ -38,7 +38,7 @@ curl https://api.nerdsletter.net/cancellations -H 'Authorization: Bearer ABC123'
 ```
 </>
 
-In the last lesson, you used `NerdGraph` to store this API token in your New Relic One application's `NerdStorageVault` data store. You also passed the token to your `TotalCancellations` component and logged its use to your browser's console. In this lesson, you follow up that log statement with a real request to the Nerdsletter API using your authorization token. Then, you supply the data from that external resource to your **Total cancellations per version** chart.
+In the last lesson, you used `NerdGraph` to store this API token in your New Relic application's `NerdStorageVault` data store. You also passed the token to your `TotalCancellations` component and logged its use to your browser's console. In this lesson, you follow up that log statement with a real request to the Nerdsletter API using your authorization token. Then, you supply the data from that external resource to your **Total cancellations per version** chart.
 
 <Steps>
 
@@ -149,7 +149,7 @@ export default class TotalCancellations extends React.Component {
 ```
 </>
 
-In this code, you initialize `TotalCancellations.state.cancellations` with zero for the y-value in each series instead of the previously hardcoded values. This helps to more realistically represent what the chart should show if your New Relic One app hasn't successfully requested data from the Nerdsletter API. Next, you use Javascript's `fetch()` function to make an HTTP request to the Nerdsletter API. You then pass your token in the request's `Authorization` header. If the request is successful, you update the cancellation data in `TotalCancellations.state` so that that data is reflected in the component's render method.
+In this code, you initialize `TotalCancellations.state.cancellations` with zero for the y-value in each series instead of the previously hardcoded values. This helps to more realistically represent what the chart should show if your New Relic app hasn't successfully requested data from the Nerdsletter API. Next, you use Javascript's `fetch()` function to make an HTTP request to the Nerdsletter API. You then pass your token in the request's `Authorization` header. If the request is successful, you update the cancellation data in `TotalCancellations.state` so that that data is reflected in the component's render method.
 
 </Step>
 
@@ -211,7 +211,7 @@ If something doesn't work, use your browser's debug tools to try to identify the
 
 </Callout>
 
-When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in your local server's terminal window.
+When you're finished, stop serving your New Relic application by pressing `CTRL+C` in your local server's terminal window.
 
 </Step>
 
@@ -223,13 +223,13 @@ Great job! You've come a long way from running `nr1 nerdpack:create` for the fir
 
 You've created eight charts with varying styles and supplied them with dynamic data from multiple sources. You've learned about the New Relic One SDK and used many of its components. You've even gathered data from a third-party service and mixed it seemlessly with your New Relic data to provide a complete look at how the competing versions in your A/B test perform against each other.
 
-From here, there is only one more set of APIs in the New Relic One SDK that you've yet to get your hands on: Platform APIs. These will come in handy in improving the usability of your New Relic One application.
+From here, there is only one more set of APIs in the New Relic One SDK that you've yet to get your hands on: Platform APIs. These will come in handy in improving the usability of your New Relic application.
 
 <HideWhenEmbedded>
 
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Add PlatformStateContext to your nerdlet_](/build-apps/ab-test/platform-state-context).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. Continue on to the next lesson: [_Add PlatformStateContext to your nerdlet_](/build-apps/ab-test/platform-state-context).
 
 </Callout>
 

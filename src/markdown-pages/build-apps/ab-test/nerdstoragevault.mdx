@@ -8,7 +8,7 @@ description: 'Access NerdStorageVault from your Nerdlet'
 
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. If you haven't already, check out the [course introduction](/ab-test).
 
 Each lesson in the course builds upon the last, so make sure you've completed the last lesson, [_Access NerdStorage from your nerdlet_](/build-apps/ab-test/nerdstorage), before starting this one.
 
@@ -16,7 +16,7 @@ Each lesson in the course builds upon the last, so make sure you've completed th
 
 </HideWhenEmbedded>
 
-Throughout this course, you're building a New Relic One application that gathers telemetry data from a demo web service that's running an A/B test on a newsletter signup form. The purpose of your New Relic One application is to help you understand how design changes impact the number of high quality newsletter subscriptions your service gets. The business objective, to increase your service's high quality newsletter subscriptions, relies primarily on three key pieces of information:
+Throughout this course, you're building a New Relic application that gathers telemetry data from a demo web service that's running an A/B test on a newsletter signup form. The purpose of your New Relic application is to help you understand how design changes impact the number of high quality newsletter subscriptions your service gets. The business objective, to increase your service's high quality newsletter subscriptions, relies primarily on three key pieces of information:
 
 - Number of page views per version
 - Number of subscriptions per version
@@ -261,7 +261,7 @@ Unlike `NerdStorage`, which has query and mutation components for your convenien
 
 <Callout variant="important">
 
-It's important to remember that `NerdStorageVault` is limited to the user scope. Any other users of your New Relic One application will have their own `NerdStorageVault` data. This means that even other users on your account will need to enter their token separately.
+It's important to remember that `NerdStorageVault` is limited to the user scope. Any other users of your New Relic application will have their own `NerdStorageVault` data. This means that even other users on your account will need to enter their token separately.
 
 </Callout>
 
@@ -1035,7 +1035,7 @@ Go to [https://one.newrelic.com?nerdpacks=local](https://one.newrelic.com?nerdpa
 
 ![API token prompt](../../../images/ab-test/api-token-prompt.png)
 
-When you visit your application for the first time, the prompt is automatically revealed. Enter "ABC123" in the `TextField`, as that's the token that the third-party service expects. Once you submit your token and your Nerdlet hides the prompt, click **Update API token** at the bottom of your New Relic One application to reveal it again:
+When you visit your application for the first time, the prompt is automatically revealed. Enter "ABC123" in the `TextField`, as that's the token that the third-party service expects. Once you submit your token and your Nerdlet hides the prompt, click **Update API token** at the bottom of your New Relic application to reveal it again:
 
 ![Update API token button](../../../images/ab-test/update-api-token-button.png)
 
@@ -1327,21 +1327,21 @@ If something doesn't work, use your browser's debug tools to try to identify the
 
 </Callout>
 
-When you're finished, stop serving your New Relic One application by pressing `CTRL+C` in your local server's terminal window.
+When you're finished, stop serving your New Relic application by pressing `CTRL+C` in your local server's terminal window.
 
 </Step>
 
 </Steps>
 
-Now you know how to use `NerdGraphQuery` and `NerdGraphMutation` to manage data in `NerdStorageVault`! Remember, use `NerdStorage` for your New Relic One application's non-sensitive data and `NerdStorageVault` for the sensitive stuff like tokens, passwords, and other secrets. As a bonus, you created a way to manage your token in `NerdStorageVault` from the user interface. You also passed the token to your `TotalCancellations` component for later use.
+Now you know how to use `NerdGraphQuery` and `NerdGraphMutation` to manage data in `NerdStorageVault`! Remember, use `NerdStorage` for your New Relic application's non-sensitive data and `NerdStorageVault` for the sensitive stuff like tokens, passwords, and other secrets. As a bonus, you created a way to manage your token in `NerdStorageVault` from the user interface. You also passed the token to your `TotalCancellations` component for later use.
 
-Whether it's been with `NrqlQuery`, `AccountStorageQuery`, `AccountStorageMutation`, `NerdGraphQuery`, or `NerdGraphMutation`, you've learned several ways to interact with New Relic data in your New Relic One application. But New Relic One applications aren't just another way to show New Relic data. The purpose of New Relic One applications is to show you how your software is helping you meet your business objectives. Sometimes, New Relic data is all you need to make that happen, but other times you need to look beyond New Relic for data to fill in the gaps.
+Whether it's been with `NrqlQuery`, `AccountStorageQuery`, `AccountStorageMutation`, `NerdGraphQuery`, or `NerdGraphMutation`, you've learned several ways to interact with New Relic data in your New Relic application. But New Relic applications aren't just another way to show New Relic data. The purpose of New Relic applications is to show you how your software is helping you meet your business objectives. Sometimes, New Relic data is all you need to make that happen, but other times you need to look beyond New Relic for data to fill in the gaps.
 
 <HideWhenEmbedded>
 
 <Callout variant="course">
 
-This lesson is part of a course that teaches you how to build a New Relic One application from the ground up. Continue on to the next lesson: [_Fetch data from a third-party service_](/build-apps/ab-test/third-party-service).
+This lesson is part of a course that teaches you how to build a New Relic application from the ground up. Continue on to the next lesson: [_Fetch data from a third-party service_](/build-apps/ab-test/third-party-service).
 
 </Callout>
 
