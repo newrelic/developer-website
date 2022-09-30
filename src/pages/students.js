@@ -55,7 +55,7 @@ const StudentsPage = ({ location }) => {
                 >
                   <div className={styles.stepNumber}>1</div>
                   <h3 className={styles.stepHeader}>
-                    Signup for{' '}
+                    Signup for a {' '}
                     <em>
                       <strong>FREE</strong>
                     </em>{' '}
@@ -86,7 +86,7 @@ const StudentsPage = ({ location }) => {
                     Verify Your Student Status
                   </h3>
                   <p className={styles.stepDetail}>
-                    If you are a current student with a .edu email address, you can verify your student status through 
+                    If you are a current student with a .edu email address, you can verify your student status through {' '}
                     <a href="https://education.github.com/?utm_source=GitHub-NewRelic">
                       GitHub Education
                     </a>
