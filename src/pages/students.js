@@ -40,7 +40,7 @@ const StudentsPage = ({ location }) => {
               <p>
                 We're excited to announce the New Relic Student Edition is
                 available through a network of our partners, including the
-                GitHub Student Developer Pack and Platzi.
+                GitHub Education and Platzi.
               </p>
             </div>
             <Video id="irf10ez4h1" type="wistia" />
@@ -86,18 +86,14 @@ const StudentsPage = ({ location }) => {
                     Verify Your Student Status
                   </h3>
                   <p className={styles.stepDetail}>
-                    Verify that you have an active{' '}
+                    If you are a current student with a .edu email address, you can verify your student status through 
                     <a href="https://education.github.com/?utm_source=GitHub-NewRelic">
-                      GitHub Student Developer Pack account
+                      GitHub Education
                     </a>
-                    . If you don't have access to GitHub Students, sign up and
-                    verify your account.
+                    . Then, go to your New Relic account and look under Help > Resources > Students Edition > Manage Account Eligibility to validate your Github Student status.
                   </p>
                   <p className={styles.stepDetail}>
-                    <a href="https://platzi.com/">
-                      Sign up for a Platzi account.
-                    </a>{' '}
-                    All Platzi student have access to the Student Edition.
+                    If you have an account with Platzi or another partner, your student status will be verified with that partner.
                   </p>
                 </Surface>
                 <Surface
@@ -118,7 +114,7 @@ const StudentsPage = ({ location }) => {
                     variant={Button.VARIANT.SECONDARY}
                     className={styles.stepButton}
                   >
-                    Access New Relic One
+                    Access New Relic 
                   </Button>
                 </Surface>
               </div>
@@ -188,33 +184,18 @@ const StudentsPage = ({ location }) => {
               <div className={styles.answer}>
                 <p>
                   New Relic offers the Student Edition through our education
-                  partners, including Platzi & GitHub Student Pack
+                  partners, including Platzi & GitHub 
                 </p>
                 <p>
-                  Learn more about GitHub Education if you don't have GitHub
+                  Learn more about <a href="https://education.github.com/?utm_source=GitHub-NewRelic">GitHub Education</a> if you don't have GitHub
                   Student Developer Pack yet.
                 </p>
-                <ul>
-                  <li>
-                    Sign up for Student Edition. You'll be prompted to create or
-                    log in to your GitHub account
-                  </li>
-                  <li>
-                    Apply for the GitHub Student Developer Pack, which requires
-                    proof of enrollment in an accredited institution
-                  </li>
-                  <li>
-                    Once you’re verified through GitHub, sign in to the Student
-                    Edition with the token emailed to you to get started{' '}
-                  </li>
-                </ul>
               </div>
             </div>
             <div className={styles.group}>
               <p className={styles.question}>Can I purchase Student Edition?</p>
               <p className={styles.answer}>
-                New Relic offers the Student Edition for FREE to students and
-                educators.
+                New Relic offers the Student Edition for free to students only. It is not available to purchase.
               </p>
             </div>
             <div className={styles.group}>
@@ -246,9 +227,8 @@ const StudentsPage = ({ location }) => {
                 What if I already have a New Relic free account?
               </p>
               <p className={styles.answer}>
-                No problem! Just upgrade your account to the Student Edition. In
-                the main menu, look for Support --> Student Edition and follow
-                the instructions.
+                No problem! You can upgrade your account to the Student Edition. 
+                Look under Help > Resources > Students Edition > Manage Account Eligibility.
               </p>
             </div>
             <div className={styles.group}>
@@ -306,7 +286,7 @@ const StudentsPage = ({ location }) => {
               <p className={styles.question}>Does my Student Edition expire?</p>
               <p className={styles.answer}>
                 You'll have access to the Student Edition for as long as you’re
-                an active student in the GitHub Student pack.
+                an active student with Github Education.
               </p>
             </div>
             <div className={styles.group}>
