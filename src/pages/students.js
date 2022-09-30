@@ -90,7 +90,7 @@ const StudentsPage = ({ location }) => {
                     <a href="https://education.github.com/?utm_source=GitHub-NewRelic">
                       GitHub Education
                     </a>
-                    . Then, go to your New Relic account and look under Help > Resources > Students Edition > Manage Account Eligibility to validate your Github Student status.
+                    . Then, go to your New Relic account and look under <b>Help > Resources > Students Edition > Manage Account Eligibility</b> to validate your Github Student status.
                   </p>
                   <p className={styles.stepDetail}>
                     If you have an account with Platzi or another partner, your student status will be verified with that partner.
@@ -228,7 +228,7 @@ const StudentsPage = ({ location }) => {
               </p>
               <p className={styles.answer}>
                 No problem! You can upgrade your account to the Student Edition. 
-                Look under Help > Resources > Students Edition > Manage Account Eligibility.
+                Look under <b>Help > Resources > Students Edition > Manage Account Eligibility</b>.
               </p>
             </div>
             <div className={styles.group}>
