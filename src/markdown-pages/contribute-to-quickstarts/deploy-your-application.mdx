@@ -1,0 +1,68 @@
+---
+title: 'Deploy your application'
+template: 'GuideTemplate'
+description: 'Spin up your demo services to follow along the lab'
+duration: 5
+procIdx: 1
+---
+
+<Callout variant="course" title="Course">
+
+This procedure is a part of course that teaches you how to build a quickstart. If you haven't already, checkout the [_course introduction_](/contribute-to-quickstarts).
+
+</Callout>
+
+Before you build a quickstart, you need to spin up your demo services. 
+
+## Spin up demo services
+
+Clone the lab repository from GitHub: 
+```bash
+ git clone https://github.com/newrelic-experimental/build-a-quickstart-lab.git
+``` 
+
+Change to the demo directory, called _flashDB_.
+
+```bash
+
+cd build-a-quickstart-lab/flashDB
+
+```
+
+This directory contains code for two important services:
+
+- A python program that mimics the database and also provides functions for create, read, update, and delete (CRUD) operations.
+- A simulator service that generates dummy database traffic so you don't have to manually perform CRUD operations
+
+Execute the following command to run your services:
+
+```Python
+python simulator.py
+```
+
+Here, you run the simulator that generates mock traffic against your database. Once the simulator is up and running, you see the following output in your terminal:
+
+```bash animate
+python simulator.py
+[output] Writing...
+[output] try_send
+[output] Writing...
+[output] try_send
+[output] Reading...
+[output] try_send
+[output] Reading...
+[output] try_send
+[output] Writing...
+[output] try_send
+[output] Writing...
+[output] try_send
+[output] Reading...
+```
+
+Next, you use [newrelic_telemetry_sdk](https://github.com/newrelic/newrelic-telemetry-sdk-python) to send telemetry data from your flashDB service to New Relic.
+
+<Callout variant="course" title="Course">
+
+This procedure is a part of course that teaches you how to build a quickstart. Continue on to next lesson: [_send telemetry data to New Relic_](/contribute-to-quickstarts/instrument-library).
+
+</Callout>

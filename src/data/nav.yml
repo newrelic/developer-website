@@ -238,24 +238,36 @@
   icon: fe-zap
   url: '/contribute-to-quickstarts'
   pages:
+    - title: Deploy your application
+      url: /contribute-to-quickstarts/deploy-your-application
     - title: Send telemetry data to New Relic
       url: '/contribute-to-quickstarts/instrument-library'
       pages:
+        - title: Send metrics from your product
+          url: '/contribute-to-quickstarts/send-metrics'
         - title: Send events from your product
-          url: '/contribute-to-quickstarts/instrument-library/send-events'
+          url: '/contribute-to-quickstarts/send-events'
+        - title: Send logs from your product
+          url: '/contribute-to-quickstarts/send-logs'
+        - title: Send traces from your product
+          url: '/contribute-to-quickstarts/send-traces'
+    - title: Create a dashboard
+      url: /contribute-to-quickstarts/create-a-dashboard
+    - title: Create alerts
+      url: /contribute-to-quickstarts/create-alerts
     - title: Build a quickstart
       url: '/contribute-to-quickstarts/build-a-quickstart'
       pages:
-        - title: Deploy your application
-          url: /contribute-to-quickstarts/build-a-quickstart/deploy-your-application
-        - title: Create a dashboard
-          url: /contribute-to-quickstarts/build-a-quickstart/create-a-dashboard
-        - title: Create alerts
-          url: /contribute-to-quickstarts/build-a-quickstart/create-alerts
-        - title: Create a quickstart
-          url: /contribute-to-quickstarts/build-a-quickstart/create-quickstart
-    - title: Populate your alert configurations with NerdGraph
-      url: '/contribute-to-quickstarts/query-alerts-for-quickstart'
+        - title: Understand quickstart directory structure
+          url: /contribute-to-quickstarts/build-a-quickstart/understand-quickstart
+        - title: Add your dashboard to the quickstart
+          url: /contribute-to-quickstarts/build-a-quickstart/add-dashboard
+        - title: Add your alerts to the quickstart
+          url: /contribute-to-quickstarts/build-a-quickstart/add-alerts
+        - title: Add a data source to the quickstart
+          url: /contribute-to-quickstarts/build-a-quickstart/add-data-source
+        - title: Contribute your quickstart 
+          url: /contribute-to-quickstarts/build-a-quickstart/contribute-quickstart
 
 - title: OpenTelemetry masterclass
   icon: fe-compass

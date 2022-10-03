@@ -1127,9 +1127,9 @@ type MdxFrontmatter {
   tileShorthand: MdxFrontmatterTileShorthand
   resources: [MdxFrontmatterResources]
   tags: [String]
+  redirects: [String]
   duration: Int
   procIdx: Float
-  redirects: [String]
   promote: Boolean
 }
 
@@ -1169,6 +1169,7 @@ type NewRelicThemeConfig implements Node {
   env: String!
   relatedResources: NewRelicThemeRelatedResourceConfig!
   tessen: NewRelicThemeTessenConfig
+  signup: NewRelicThemeSignupConfig
   id: ID!
   parent: Node
   children: [Node!]!
@@ -1187,6 +1188,12 @@ type RelatedResourceLabel {
 type NewRelicThemeTessenConfig {
   product: String
   subproduct: String
+}
+
+type NewRelicThemeSignupConfig {
+  environment: String!
+  reCaptchaToken: String!
+  signupURL: String!
 }
 
 type MarkdownHeading {
@@ -1458,7 +1465,7 @@ type Query {
   allLocale(filter: LocaleFilterInput, sort: LocaleSortInput, skip: Int, limit: Int): LocaleConnection!
   relatedResource(id: StringQueryOperatorInput, title: StringQueryOperatorInput, url: StringQueryOperatorInput, plugin: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): RelatedResource
   allRelatedResource(filter: RelatedResourceFilterInput, sort: RelatedResourceSortInput, skip: Int, limit: Int): RelatedResourceConnection!
-  newRelicThemeConfig(env: StringQueryOperatorInput, relatedResources: NewRelicThemeRelatedResourceConfigFilterInput, tessen: NewRelicThemeTessenConfigFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): NewRelicThemeConfig
+  newRelicThemeConfig(env: StringQueryOperatorInput, relatedResources: NewRelicThemeRelatedResourceConfigFilterInput, tessen: NewRelicThemeTessenConfigFilterInput, signup: NewRelicThemeSignupConfigFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): NewRelicThemeConfig
   allNewRelicThemeConfig(filter: NewRelicThemeConfigFilterInput, sort: NewRelicThemeConfigSortInput, skip: Int, limit: Int): NewRelicThemeConfigConnection!
   markdownRemark(id: StringQueryOperatorInput, html: StringQueryOperatorInput, htmlAst: JSONQueryOperatorInput, excerpt: StringQueryOperatorInput, excerptAst: JSONQueryOperatorInput, headings: MarkdownHeadingFilterListInput, timeToRead: IntQueryOperatorInput, tableOfContents: StringQueryOperatorInput, wordCount: MarkdownWordCountFilterInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): MarkdownRemark
   allMarkdownRemark(filter: MarkdownRemarkFilterInput, sort: MarkdownRemarkSortInput, skip: Int, limit: Int): MarkdownRemarkConnection!
@@ -1645,9 +1652,9 @@ input MdxFrontmatterFilterInput {
   tileShorthand: MdxFrontmatterTileShorthandFilterInput
   resources: MdxFrontmatterResourcesFilterListInput
   tags: StringQueryOperatorInput
+  redirects: StringQueryOperatorInput
   duration: IntQueryOperatorInput
   procIdx: FloatQueryOperatorInput
-  redirects: StringQueryOperatorInput
   promote: BooleanQueryOperatorInput
 }
 
@@ -1919,9 +1926,9 @@ enum FileFieldsEnum {
   childrenMdx___frontmatter___resources___title
   childrenMdx___frontmatter___resources___url
   childrenMdx___frontmatter___tags
+  childrenMdx___frontmatter___redirects
   childrenMdx___frontmatter___duration
   childrenMdx___frontmatter___procIdx
-  childrenMdx___frontmatter___redirects
   childrenMdx___frontmatter___promote
   childrenMdx___slug
   childrenMdx___body
@@ -2026,9 +2033,9 @@ enum FileFieldsEnum {
   childMdx___frontmatter___resources___title
   childMdx___frontmatter___resources___url
   childMdx___frontmatter___tags
+  childMdx___frontmatter___redirects
   childMdx___frontmatter___duration
   childMdx___frontmatter___procIdx
-  childMdx___frontmatter___redirects
   childMdx___frontmatter___promote
   childMdx___slug
   childMdx___body
@@ -4370,6 +4377,12 @@ input NewRelicThemeTessenConfigFilterInput {
   subproduct: StringQueryOperatorInput
 }
 
+input NewRelicThemeSignupConfigFilterInput {
+  environment: StringQueryOperatorInput
+  reCaptchaToken: StringQueryOperatorInput
+  signupURL: StringQueryOperatorInput
+}
+
 type NewRelicThemeConfigConnection {
   totalCount: Int!
   edges: [NewRelicThemeConfigEdge!]!
@@ -4395,6 +4408,9 @@ enum NewRelicThemeConfigFieldsEnum {
   relatedResources___labels___label
   tessen___product
   tessen___subproduct
+  signup___environment
+  signup___reCaptchaToken
+  signup___signupURL
   id
   parent___id
   parent___parent___id
@@ -4501,6 +4517,7 @@ input NewRelicThemeConfigFilterInput {
   env: StringQueryOperatorInput
   relatedResources: NewRelicThemeRelatedResourceConfigFilterInput
   tessen: NewRelicThemeTessenConfigFilterInput
+  signup: NewRelicThemeSignupConfigFilterInput
   id: StringQueryOperatorInput
   parent: NodeFilterInput
   children: NodeFilterListInput
@@ -4715,9 +4732,9 @@ enum MdxFieldsEnum {
   frontmatter___resources___title
   frontmatter___resources___url
   frontmatter___tags
+  frontmatter___redirects
   frontmatter___duration
   frontmatter___procIdx
-  frontmatter___redirects
   frontmatter___promote
   slug
   body
