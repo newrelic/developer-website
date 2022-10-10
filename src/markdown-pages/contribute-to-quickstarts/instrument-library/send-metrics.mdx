@@ -19,7 +19,7 @@ Each procedure in this course builds on top of the last one, so make sure you [_
 Metrics are aggregated measurements derived from the system’s performance and behaviors. If your product is a database, you might send metrics like CPU utilization, memory utilization, and query throughput. Note that metrics are generally only used if you want to limit the amount of Data sent to New Relic. 
 Note that many metrics, such as error rates and throughput, can be computed by aggregating events.
 
-New Relic, provides you a variety of ways to instrument your application to send metrics to our [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api). 
+New Relic provides you a variety of ways to instrument your application to send metrics to our [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api). 
 In this lesson, you send metrics from your product using our telemetry software development kit (SDK).
 
 </Intro>
@@ -63,7 +63,7 @@ pip install newrelic-telemetry-sdk
 
 <Step>
 
-Store your New Relic license key in an environment variable, called $NEW_RELIC_LICENSE_KEY.
+Store your New Relic license key in an environment variable called $NEW_RELIC_LICENSE_KEY.
 
 <>
 
@@ -280,9 +280,9 @@ The `read`, `create`, `update`, and `delete` are the dummy methods to mimic CRUD
 ## Send metrics to New Relic
 
 There are 3 different types of metrics:
-- GaugeMetric: It sends a single value at a single point in time.
-- CountMetric: It tracks the total number of occurrences of an event.
-- SummaryMetric: It tracks count, sum, min, and max values over time.
+- GaugeMetric: sends a single value at a single point in time.
+- CountMetric: tracks the total number of occurrences of an event.
+- SummaryMetric: tracks count, sum, min, and max values over time.
 
 Next, instrument your application to send these metrics.
 
