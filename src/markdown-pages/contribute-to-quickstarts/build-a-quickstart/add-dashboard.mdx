@@ -6,7 +6,7 @@ description: 'Add a dashboard to New Relic I/O'
 
 <Callout variant="course">
 
-This procedure is a part of course that teaches you how to build quickstart. If you haven't already, checkout the [_course introduction_](/contribute-to-quickstarts)
+This procedure is a part of course that teaches you how to build a quickstart. If you haven't already, checkout the [_course introduction_](/contribute-to-quickstarts)
 
 As this procedure builds on top of the last ones in the lab, make sure you create a [dashboard](contribute-to-quickstarts/create-a-dashboard) and [understand the directory structure of quickstart](/contribute-to-quickstarts/build-a-quickstart/understand-quickstart) before proceeding with this one.
 
@@ -287,6 +287,7 @@ We've created a script to automate this process for you. To remove sensitive and
 
 ```shell
 cd newrelic-quickstarts/utils
+yarn install
 yarn sanitize-dashboard flashdb
 ```
 

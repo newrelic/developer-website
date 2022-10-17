@@ -244,13 +244,13 @@
       url: '/contribute-to-quickstarts/instrument-library'
       pages:
         - title: Send metrics from your product
-          url: '/contribute-to-quickstarts/send-metrics'
+          url: '/contribute-to-quickstarts/instrument-library/send-metrics'
         - title: Send events from your product
-          url: '/contribute-to-quickstarts/send-events'
+          url: '/contribute-to-quickstarts/instrument-library/send-events'
         - title: Send logs from your product
-          url: '/contribute-to-quickstarts/send-logs'
+          url: '/contribute-to-quickstarts/instrument-library/send-logs'
         - title: Send traces from your product
-          url: '/contribute-to-quickstarts/send-traces'
+          url: '/contribute-to-quickstarts/instrument-library/send-traces'
     - title: Create a dashboard
       url: /contribute-to-quickstarts/create-a-dashboard
     - title: Create alerts
