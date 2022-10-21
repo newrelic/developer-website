@@ -6,15 +6,21 @@ tags:
   - quickstart
 ---
 
+<Callout variant="course" title="Course">
+
+This procedure is a part of a course that teaches you how to build a quickstart. If you haven't already, checkout the [_course introduction_](/contribute-to-quickstarts).
+
+Each procedure in this course builds on top of the last one, so make sure you've completed the last procedure, [_send metrics from your product_](/contribute-to-quickstarts/instrument-library/send-metrics) before proceeding with this one.
+
+</Callout>
+
 <Intro>
 
 Events capture things that occur in your product. For example, if your platform automates application deployments, you might generate an event every time a job runs. If your application scans for security vulnerabilities, you might generate an event every time you detect one.
 
-In this lesson, you learn a variety of ways to instrument your application to send events to our [Event API](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api/):
+New Relic, provides you a variety of ways to instrument your application to send events to our [Event API](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api/). 
 
-- Use a command line utility in bash or PowerShell
-- Use our Python or Java software development kit (SDK)
-- Use an alternative method
+In this lesson, you send events from your product using our telemetry software development kit (SDK). 
 
 </Intro>
 
@@ -22,48 +28,157 @@ In this lesson, you learn a variety of ways to instrument your application to se
 
 <Project>
 
-```txt fileName=Bash
-gzip -c example_events.json | curl -X POST -H "Content-Type: application/json" -H "Api-Key: NEW_RELIC_INSERT_KEY" -H "Content-Encoding: gzip" https://insights-collector.newrelic.com/v1/accounts/events --data-binary @-
-```
+```python fileName=db.py
 
-```txt fileName=PowerShell
-# Replace with your custom event for the body
-$body = $example_events
+import os
+import random
+import datetime
+from sys import getsizeof
 
-$headers = @{}
-$headers.Add("Api-Key", "$NEW_RELIC_INSERT_KEY")
-$headers.Add("Content-Encoding", "gzip")
+from newrelic_telemetry_sdk import MetricClient, GaugeMetric, CountMetric, SummaryMetric
 
+metric_client = MetricClient(os.environ["NEW_RELIC_LICENSE_KEY"])
 
-$encoding = [System.Text.Encoding]::UTF8
-$enc_data = $encoding.GetBytes($body)
+db = {}
+stats = {
+    "read_response_times": [],
+    "read_errors": 0,
+    "read_count": 0,
+    "create_response_times": [],
+    "create_errors": 0,
+    "create_count": 0,
+    "update_response_times": [],
+    "update_errors": 0,
+    "update_count": 0,
+    "delete_response_times": [],
+    "delete_errors": 0,
+    "delete_count": 0,
+    "cache_hit": 0,
+}
+last_push = {
+    "read": datetime.datetime.now(),
+    "create": datetime.datetime.now(),
+    "update": datetime.datetime.now(),
+    "delete": datetime.datetime.now(),
+}
 
-$output = [System.IO.MemoryStream]::new()
-$gzipStream = New-Object System.IO.Compression.GzipStream $output, ([IO.Compression.CompressionMode]::Compress)
+def read(key):
 
-$gzipStream.Write($enc_data, 0, $enc_data.Length)
-$gzipStream.Close()
-$gzipBody = $output.ToArray()
+    print(f"Reading...")
 
-Invoke-WebRequest -Headers $headers -Method Post -Body $gzipBody  "https://insights-collector.newrelic.com/v1/accounts/events"
+    if random.randint(0, 30) > 10:
+        stats["cache_hit"] += 1
+
+    stats["read_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["read_errors"] += 1
+    stats["read_count"] += 1
+    try_send("read")
+
+def create(key, value):
+
+    print(f"Writing...")
+
+    db[key] = value
+    stats["create_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["create_errors"] += 1
+    stats["create_count"] += 1
+    try_send("create")
+
+def update(key, value):
+
+    print(f"Updating...")
+
+    db[key] = value
+    stats["update_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["update_errors"] += 1
+    stats["update_count"] += 1
+    try_send("update")
+
+def delete(key):
+
+    print(f"Deleting...")
+
+    db.pop(key, None)
+    stats["delete_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["delete_errors"] += 1
+    stats["delete_count"] += 1
+    try_send("delete")
+
+def try_send(type_):
+
+    print("try_send")
+
+    now = datetime.datetime.now()
+    interval_ms = (now - last_push[type_]).total_seconds() * 1000
+    if interval_ms >= 2000:
+        send_metrics(type_, interval_ms)
+
+def send_metrics(type_, interval_ms):
+    
+    print("sending metrics...")
+
+    keys = GaugeMetric("fdb_keys", len(db))
+    db_size = GaugeMetric("fdb_size", getsizeof(db))
+
+    errors = CountMetric(
+        name=f"fdb_{type_}_errors",
+        value=stats[f"{type_}_errors"],
+        interval_ms=interval_ms
+    )
+
+    cache_hits = CountMetric(
+        name=f"fdb_cache_hits",
+        value=stats["cache_hit"],
+        interval_ms=interval_ms
+    )
+
+    response_times = stats[f"{type_}_response_times"]
+    response_time_summary = SummaryMetric(
+        f"fdb_{type_}_responses",
+        count=len(response_times),
+        min=min(response_times),
+        max=max(response_times),
+        sum=sum(response_times),
+        interval_ms=interval_ms,
+    )
+
+    batch = [keys, db_size, errors, cache_hits, response_time_summary]
+    response = metric_client.send_batch(batch)
+    response.raise_for_status()
+    print("Sent metrics successfully!")
+    clear(type_)
+
+def clear(type_):
+    stats[f"{type_}_response_times"] = []
+    stats[f"{type_}_errors"] = 0
+    stats["cache_hit"] = 0
+    stats[f"{type_}_count"] = 0
+    last_push[type_] = datetime.datetime.now()
+
 ```
 
 </Project>
 
-## Use a command line utility
+## Use our SDK
 
-You can use a command line utility to send events to New Relic. This is great approach if your library is already instrumented to process commands. For example, you might create a webhook to run the command. That way, with a quick copy and paste of their New Relic license key into your platform, your users can start sending events!
+We offer an open source [telemetry SDK](https://docs.newrelic.com/docs/data-apis/ingest-apis/telemetry-sdks-report-custom-telemetry-data/) in several of the most popular programming languages. These send data to our data ingest APIs, including our Event API. Of these language SDKs, two work with the Event API: Python and Java.
+
+Here, you use the [Python telemetry SDK](https://github.com/newrelic/newrelic-telemetry-sdk-python) to send events to New Relic.
 
 <Steps>
 
 <Step>
 
-Set up a command line utility to run from your platform:
+Change to the _send-events/flashDB_ direcrory of the [course repository](https://github.com/newrelic-experimental/build-a-quickstart-lab).
 
 <>
 
-```txt fileName=Bash
-gzip -c example_events.json | curl -X POST -H "Content-Type: application/json" -H "Api-Key: NEW_RELIC_INSERT_KEY" -H "Content-Encoding: gzip" https://insights-collector.newrelic.com/v1/accounts/events --data-binary @-
+```bash
+cd ../../send-events/flashDB
 ```
 
 </>
@@ -72,37 +187,7 @@ gzip -c example_events.json | curl -X POST -H "Content-Type: application/json" -
 
 <Step>
 
-Provide a place for your users to save their New Relic license key. They can learn how to find their license key in [our documentation](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key).
-
-<Callout variant="important">
-
-These examples expect an environment variable called `$NEW_RELIC_INSERT_KEY`.
-
-</Callout>
-
-</Step>
-
-</Steps>
-
-Now your command line utility can send events directly from your platform to your user's New Relic account!
-
-</Tutorial>
-
-## Use our SDK
-
-We offer an open source [telemetry SDK](https://docs.newrelic.com/docs/data-apis/ingest-apis/telemetry-sdks-report-custom-telemetry-data/) in several of the most popular programming languages. These send data to our data ingest APIs, including our Event API. Of these language SDKs, two work with the Event API: Python and Java.
-
-Here, you learn how to install and use each.
-
-### Python
-
-Use our Python SDK to send your event data to New Relic.
-
-<Steps>
-
-<Step>
-
-Use `pip` to install the `newrelic-telemetry-sdk` package:
+If you haven't already, install the `newrelic-telemetry-sdk` package. 
 
 <>
 
@@ -114,163 +199,530 @@ pip install newrelic-telemetry-sdk
 
 </Step>
 
-Instrument your Python library to send an event:
-
-<>
-
-```Python
-import os
-import time
-from newrelic_telemetry_sdk import Event, EventClient
-
-#Replace with your event data
-event = Event(
-    "RateLimit", {"path": "/v1/endpoint", "accountId": 1000, "rejectRatio": 0.1}
-)
-
-event_client = EventClient(os.environ["NEW_RELIC_INSERT_KEY"])
-response = event_client.send(event)
-response.raise_for_status()
-print("Event sent successfully!")
-```
-
-</>
-
-Here, you use an `EventClient` to send a single `Event` to New Relic. This event represents a rate limit on account 1000 that rejected 10 percent of requests. Read [our documentation](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api/#instrument) to learn more ways to customize your event data.
-
 <Step>
 
-Instruct your users to store their New Relic license key in an environment variable, called `$NEW_RELIC_INSERT_KEY`:
+Open _db.py_ file in the IDE of your choice and configure the `EventClient`.
 
 <>
 
-```bash
-export NEW_RELIC_INSERT_KEY=<USER'S LICENSE KEY>
+```python fileName=db.py
+
+import os
+import random
+import datetime
+from sys import getsizeof
+
+from newrelic_telemetry_sdk import MetricClient, GaugeMetric, CountMetric, SummaryMetric
+from newrelic_telemetry_sdk import EventClient
+
+metric_client = MetricClient(os.environ["NEW_RELIC_LICENSE_KEY"])
+event_client = EventClient(os.environ["NEW_RELIC_LICENSE_KEY"])
+
+db = {}
+stats = {
+    "read_response_times": [],
+    "read_errors": 0,
+    "read_count": 0,
+    "create_response_times": [],
+    "create_errors": 0,
+    "create_count": 0,
+    "update_response_times": [],
+    "update_errors": 0,
+    "update_count": 0,
+    "delete_response_times": [],
+    "delete_errors": 0,
+    "delete_count": 0,
+    "cache_hit": 0,
+}
+last_push = {
+    "read": datetime.datetime.now(),
+    "create": datetime.datetime.now(),
+    "update": datetime.datetime.now(),
+    "delete": datetime.datetime.now(),
+}
+
+def read(key):
+
+    print(f"Reading...")
+
+    if random.randint(0, 30) > 10:
+        stats["cache_hit"] += 1
+
+    stats["read_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["read_errors"] += 1
+    stats["read_count"] += 1
+    try_send("read")
+
+def create(key, value):
+
+    print(f"Writing...")
+
+    db[key] = value
+    stats["create_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["create_errors"] += 1
+    stats["create_count"] += 1
+    try_send("create")
+
+def update(key, value):
+
+    print(f"Updating...")
+
+    db[key] = value
+    stats["update_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["update_errors"] += 1
+    stats["update_count"] += 1
+    try_send("update")
+
+def delete(key):
+
+    print(f"Deleting...")
+
+    db.pop(key, None)
+    stats["delete_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["delete_errors"] += 1
+    stats["delete_count"] += 1
+    try_send("delete")
+
+def try_send(type_):
+
+    print("try_send")
+
+    now = datetime.datetime.now()
+    interval_ms = (now - last_push[type_]).total_seconds() * 1000
+    if interval_ms >= 2000:
+        send_metrics(type_, interval_ms)
+
+def send_metrics(type_, interval_ms):
+    
+    print("sending metrics...")
+
+    keys = GaugeMetric("fdb_keys", len(db))
+    db_size = GaugeMetric("fdb_size", getsizeof(db))
+
+    errors = CountMetric(
+        name=f"fdb_{type_}_errors",
+        value=stats[f"{type_}_errors"],
+        interval_ms=interval_ms
+    )
+
+    cache_hits = CountMetric(
+        name=f"fdb_cache_hits",
+        value=stats["cache_hit"],
+        interval_ms=interval_ms
+    )
+
+    response_times = stats[f"{type_}_response_times"]
+    response_time_summary = SummaryMetric(
+        f"fdb_{type_}_responses",
+        count=len(response_times),
+        min=min(response_times),
+        max=max(response_times),
+        sum=sum(response_times),
+        interval_ms=interval_ms,
+    )
+
+    batch = [keys, db_size, errors, cache_hits, response_time_summary]
+    response = metric_client.send_batch(batch)
+    response.raise_for_status()
+    print("Sent metrics successfully!")
+    clear(type_)
+
+def clear(type_):
+    stats[f"{type_}_response_times"] = []
+    stats[f"{type_}_errors"] = 0
+    stats["cache_hit"] = 0
+    stats[f"{type_}_count"] = 0
+    last_push[type_] = datetime.datetime.now()
+
 ```
 
 </>
-
-They can learn how to find their license key in [our documentation](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key).
-
-</Step>
-
-</Steps>
-
-### Java
-
-Use our Java SDK to send your event data to New Relic.
 
 <Callout variant="important">
 
-To run this Java example, you need to use [gradle](https://gradle.org/install/). See [our repository](https://github.com/newrelic/newrelic-telemetry-sdk-java/tree/main/telemetry_examples#telemetry-examples) for a list of other examples and how to use them.
+This example expects an environment variable called `$NEW_RELIC_LICENSE_KEY`.
 
 </Callout>
 
-<Steps>
-
-<Step>
-
-Configure your dependencies:
-
-<>
-
-```java
-//Maven Dependencies
-    <dependency>
-      <groupId>com.newrelic.telemetry</groupId>
-      <artifactId>telemetry-core</artifactId>
-      <version>0.13.1</version>
-    </dependency>
-    <dependency>
-      <groupId>com.newrelic.telemetry</groupId>
-      <artifactId>telemetry-http-okhttp</artifactId>
-      <version>0.13.1</version>
-    </dependency>
-
- //Gradle Dependencies
-    implementation("com.newrelic.telemetry:telemetry-core:0.13.1")
-    implementation("com.newrelic.telemetry:telemetry-http-okhttp:0.13.1")
-```
-
-</>
-
 </Step>
 
 <Step>
 
-Instrument your Java library to send an event:
+Instrument your app to send an event to New Relic.
 
 <>
 
-```java
-//Imports
-package com.newrelic.telemetry.examples;
+```python fileName=db.py
 
-import com.newrelic.telemetry.Attributes;
-import com.newrelic.telemetry.EventBatchSenderFactory;
-import com.newrelic.telemetry.OkHttpPoster;
-import com.newrelic.telemetry.events.Event;
-import com.newrelic.telemetry.events.EventBatchSender;
-import com.newrelic.telemetry.events.EventBuffer;
+import os
+import random
+import datetime
+from sys import getsizeof
 
-public class EventExample {
-  public static void main(String[] args) throws Exception {
+from newrelic_telemetry_sdk import MetricClient, GaugeMetric, CountMetric, SummaryMetric
+from newrelic_telemetry_sdk import EventClient, Event
 
-    String licenseKey = args[0];
-    EventBatchSenderFactory factory =
-        EventBatchSenderFactory.fromHttpImplementation(OkHttpPoster::new);
+metric_client = MetricClient(os.environ["NEW_RELIC_LICENSE_KEY"])
+event_client = EventClient(os.environ["NEW_RELIC_LICENSE_KEY"])
 
-    EventBatchSender sender =
-        EventBatchSender.create(factory.configureWith(NEW_RELIC_INSERT_KEY).useLicenseKey(true).build());
-
-    EventBuffer eventBuffer = new EventBuffer(getCommonAttributes());
-
-    Attributes attr = new Attributes();
-    attr.put("foo", 1234);
-    attr.put("bar", "baz");
-    attr.put("quux", true);
-
-    long timestamp = System.currentTimeMillis();
-    Event event = new Event("SampleEvent", attr, timestamp);
-    eventBuffer.addEvent(event);
-
-    sender.sendBatch(eventBuffer.createBatch());
-  }
-
-  private static Attributes getCommonAttributes() {
-    return new Attributes().put("exampleName", "CountExample");
-  }
+db = {}
+stats = {
+    "read_response_times": [],
+    "read_errors": 0,
+    "read_count": 0,
+    "create_response_times": [],
+    "create_errors": 0,
+    "create_count": 0,
+    "update_response_times": [],
+    "update_errors": 0,
+    "update_count": 0,
+    "delete_response_times": [],
+    "delete_errors": 0,
+    "delete_count": 0,
+    "cache_hit": 0,
 }
+last_push = {
+    "read": datetime.datetime.now(),
+    "create": datetime.datetime.now(),
+    "update": datetime.datetime.now(),
+    "delete": datetime.datetime.now(),
+}
+
+def read(key):
+
+    print(f"Reading...")
+
+    if random.randint(0, 30) > 10:
+        stats["cache_hit"] += 1
+
+    stats["read_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["read_errors"] += 1
+    stats["read_count"] += 1
+    try_send("read")
+
+def create(key, value):
+
+    print(f"Writing...")
+
+    db[key] = value
+    stats["create_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["create_errors"] += 1
+    stats["create_count"] += 1
+    try_send("create")
+
+def update(key, value):
+
+    print(f"Updating...")
+
+    db[key] = value
+    stats["update_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["update_errors"] += 1
+    stats["update_count"] += 1
+    try_send("update")
+
+def delete(key):
+
+    print(f"Deleting...")
+
+    db.pop(key, None)
+    stats["delete_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["delete_errors"] += 1
+    stats["delete_count"] += 1
+    try_send("delete")
+
+def try_send(type_):
+
+    print("try_send")
+
+    now = datetime.datetime.now()
+    interval_ms = (now - last_push[type_]).total_seconds() * 1000
+    if interval_ms >= 2000:
+        send_metrics(type_, interval_ms)
+
+def send_metrics(type_, interval_ms):
+    
+    print("sending metrics...")
+
+    keys = GaugeMetric("fdb_keys", len(db))
+    db_size = GaugeMetric("fdb_size", getsizeof(db))
+
+    errors = CountMetric(
+        name=f"fdb_{type_}_errors",
+        value=stats[f"{type_}_errors"],
+        interval_ms=interval_ms
+    )
+
+    cache_hits = CountMetric(
+        name=f"fdb_cache_hits",
+        value=stats["cache_hit"],
+        interval_ms=interval_ms
+    )
+
+    response_times = stats[f"{type_}_response_times"]
+    response_time_summary = SummaryMetric(
+        f"fdb_{type_}_responses",
+        count=len(response_times),
+        min=min(response_times),
+        max=max(response_times),
+        sum=sum(response_times),
+        interval_ms=interval_ms,
+    )
+
+    batch = [keys, db_size, errors, cache_hits, response_time_summary]
+    response = metric_client.send_batch(batch)
+    response.raise_for_status()
+    print("Sent metrics successfully!")
+    clear(type_)
+
+def send_event(type_):
+
+    print("sending event...")
+
+    count = Event(
+        "fdb_method", {"method": type_}
+    )
+
+    response = event_client.send_batch(count)
+    response.raise_for_status()
+    print("Event sent successfully!")
+
+def clear(type_):
+    stats[f"{type_}_response_times"] = []
+    stats[f"{type_}_errors"] = 0
+    stats["cache_hit"] = 0
+    stats[f"{type_}_count"] = 0
+    last_push[type_] = datetime.datetime.now()
+
 ```
 
 </>
 
-Here, you created an `EventBatchSender` by configuring an `EventBatchSenderFactory` object with a license key. Then, you create an event with a type, some attributes, and the current time in milliseconds (UTC time). Finally, you add the event to an `EventBuffer` and send it with `sender.sendBatch()`.
+</Step>
+
+Here, you instrument your platform to send a `count` event to New Relic.  
+
+<Step>
+
+Amend the `try_send` module to send the event every 2 second. 
+
+<>
+
+```python fileName=db.py
+
+import os
+import random
+import datetime
+from sys import getsizeof
+
+from newrelic_telemetry_sdk import MetricClient, GaugeMetric, CountMetric, SummaryMetric
+from newrelic_telemetry_sdk import EventClient, Event
+
+metric_client = MetricClient(os.environ["NEW_RELIC_LICENSE_KEY"])
+event_client = EventClient(os.environ["NEW_RELIC_LICENSE_KEY"])
+
+db = {}
+stats = {
+    "read_response_times": [],
+    "read_errors": 0,
+    "read_count": 0,
+    "create_response_times": [],
+    "create_errors": 0,
+    "create_count": 0,
+    "update_response_times": [],
+    "update_errors": 0,
+    "update_count": 0,
+    "delete_response_times": [],
+    "delete_errors": 0,
+    "delete_count": 0,
+    "cache_hit": 0,
+}
+last_push = {
+    "read": datetime.datetime.now(),
+    "create": datetime.datetime.now(),
+    "update": datetime.datetime.now(),
+    "delete": datetime.datetime.now(),
+}
+
+def read(key):
+
+    print(f"Reading...")
+
+    if random.randint(0, 30) > 10:
+        stats["cache_hit"] += 1
+
+    stats["read_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["read_errors"] += 1
+    stats["read_count"] += 1
+    try_send("read")
+
+def create(key, value):
+
+    print(f"Writing...")
+
+    db[key] = value
+    stats["create_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["create_errors"] += 1
+    stats["create_count"] += 1
+    try_send("create")
+
+def update(key, value):
+
+    print(f"Updating...")
+
+    db[key] = value
+    stats["update_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["update_errors"] += 1
+    stats["update_count"] += 1
+    try_send("update")
+
+def delete(key):
+
+    print(f"Deleting...")
+
+    db.pop(key, None)
+    stats["delete_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["delete_errors"] += 1
+    stats["delete_count"] += 1
+    try_send("delete")
+
+def try_send(type_):
+
+    print("try_send")
+
+    now = datetime.datetime.now()
+    interval_ms = (now - last_push[type_]).total_seconds() * 1000
+    if interval_ms >= 2000:
+        send_metrics(type_, interval_ms)
+        send_event(type_)
+
+def send_metrics(type_, interval_ms):
+    
+    print("sending metrics...")
+
+    keys = GaugeMetric("fdb_keys", len(db))
+    db_size = GaugeMetric("fdb_size", getsizeof(db))
+
+    errors = CountMetric(
+        name=f"fdb_{type_}_errors",
+        value=stats[f"{type_}_errors"],
+        interval_ms=interval_ms
+    )
+
+    cache_hits = CountMetric(
+        name=f"fdb_cache_hits",
+        value=stats["cache_hit"],
+        interval_ms=interval_ms
+    )
+
+    response_times = stats[f"{type_}_response_times"]
+    response_time_summary = SummaryMetric(
+        f"fdb_{type_}_responses",
+        count=len(response_times),
+        min=min(response_times),
+        max=max(response_times),
+        sum=sum(response_times),
+        interval_ms=interval_ms,
+    )
+
+    batch = [keys, db_size, errors, cache_hits, response_time_summary]
+    response = metric_client.send_batch(batch)
+    response.raise_for_status()
+    print("Sent metrics successfully!")
+    clear(type_)
+
+def send_event(type_):
+
+    print("sending event...")
+
+    count = Event(
+        "fdb_method", {"method": type_}
+    )
+
+    response = event_client.send_batch(count)
+    response.raise_for_status()
+    print("Event sent successfully!")
+
+def clear(type_):
+    stats[f"{type_}_response_times"] = []
+    stats[f"{type_}_errors"] = 0
+    stats["cache_hit"] = 0
+    stats[f"{type_}_count"] = 0
+    last_push[type_] = datetime.datetime.now()
+
+```
+
+</>
+
+</Step>
+
+Your platform will now report the configured event every 2 seconds. 
+
+<Step>
+
+Navigate to the root of your application at _build-a-quickstart-lab/send-events/flashDB_.
 
 </Step>
 
 <Step>
 
-Instruct your users to store their New Relic license key in an environment variable, called `$NEW_RELIC_INSERT_KEY`:
+Run your services to verify that it is reporting events.
 
 <>
 
-```bash
-gradle -PapiKey=<USER'S LICENSE KEY>
+```bash animate
+python simulator.py
+[output] Writing...
+[output] try_send
+[output] Writing...
+[output] try_send
+[output] Reading...
+[output] try_send
+[output] Reading...
+[output] try_send
+[output] Writing...
+[output] try_send
+[output] Writing...
+[output] try_send
+[output] Reading...
+[output] sending metrics...
+[output] {green}Sent metrics successfully!
+[output] sending event...
+[output] {green}Event sent successfully!
 ```
 
 </>
 
-They can learn how to find their license key in [our documentation](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key).
-
 </Step>
 
-</Steps>
+</Steps>  
 
-### Alternative Options
+</Tutorial>
 
-If a command line utility or language SDK doesn't fit your needs, try out one of our other options:
+## Alternative Options
+
+If the language SDK doesn't fit your needs, try out one of our other options:
 
 - **Manual Implementation**: If our SDK in your preferred language doesn't support events, you can always manually instrument your own library to make a POST request to the [New Relic Event API](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api/).
 - **Prometheus Data**: [Prometheus](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/get-started/send-prometheus-metric-data-new-relic) data can be sent to New Relic in two ways, [remote write](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration) and [OpenMetrics](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/install-configure-openmetrics/install-update-or-uninstall-your-prometheus-openmetrics-integration). At a very high level, you should use remote write if you manage your own Prometheus servers and OpenMetrics if you don't.
 - **Flex Agent**: Our serverless [Flex agent](https://github.com/newrelic/nri-flex/blob/master/docs/basic-tutorial.md#flex-step-by-step-tutorial) is a possibility, but might be a more complex integration to get started.
+
+
+In this procedure, you instrumented your service to send events to New Relic. Next, instrument it to send logs.
+
+<Callout variant='course'>
+
+This procedure is a part of course that teaches you how to build a quickstart. Continue to next lesson, [_send logs from your product_](/contribute-to-quickstarts/instrument-library/send-logs).
+
+</Callout>

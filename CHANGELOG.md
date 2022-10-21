@@ -1,3 +1,10 @@
+# [1.92.0](https://github.com/newrelic/developer-website/compare/v1.91.2...v1.92.0) (2022-10-21)
+
+
+### Features
+
+* added quickstart course ([1171dcb](https://github.com/newrelic/developer-website/commit/1171dcb5674f97980576b16e80bbef3642d16d73))
+
 ## [1.91.2](https://github.com/newrelic/developer-website/compare/v1.91.1...v1.91.2) (2022-09-23)
 
 
