@@ -1,7 +1,7 @@
 ---
-title: 'Send events from your product'
+title: 'Send metrics from your product'
 template: 'GuideTemplate'
-description: 'With our Events API you can send data from your library or platform.'
+description: 'With our Metric API you can send data from your library or platform.'
 tags:
   - quickstart
 ---
@@ -10,175 +10,37 @@ tags:
 
 This procedure is a part of a course that teaches you how to build a quickstart. If you haven't already, checkout the [_course introduction_](/contribute-to-quickstarts).
 
-Each procedure in this course builds on top of the last one, so make sure you've completed the last procedure, [_send metrics from your product_](/contribute-to-quickstarts/instrument-library/send-metrics) before proceeding with this one.
+Each procedure in this course builds on top of the last one, so make sure you [_deploy your application_](/contribute-to-quickstarts/deploy-your-application) before proceeding with this one.
 
 </Callout>
 
 <Intro>
 
-Events capture things that occur in your product. For example, if your platform automates application deployments, you might generate an event every time a job runs. If your application scans for security vulnerabilities, you might generate an event every time you detect one.
+Metrics are aggregated measurements derived from the system’s performance and behaviors. If your product is a database, you might send metrics like CPU utilization, memory utilization, and query throughput. Note that metrics are generally only used if you want to limit the amount of Data sent to New Relic. 
+Note that many metrics, such as error rates and throughput, can be computed by aggregating events.
 
-New Relic, provides you a variety of ways to instrument your application to send events to our [Event API](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api/). 
-
-In this lesson, you send events from your product using our telemetry software development kit (SDK). 
+New Relic provides you a variety of ways to instrument your application to send metrics to our [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api). 
+In this lesson, you send metrics from your product using our telemetry software development kit (SDK).
 
 </Intro>
 
-<Tutorial>
-
-<Project>
-
-```python fileName=db.py
-
-import os
-import random
-import datetime
-from sys import getsizeof
-
-from newrelic_telemetry_sdk import MetricClient, GaugeMetric, CountMetric, SummaryMetric
-
-metric_client = MetricClient(os.environ["NEW_RELIC_LICENSE_KEY"])
-
-db = {}
-stats = {
-    "read_response_times": [],
-    "read_errors": 0,
-    "read_count": 0,
-    "create_response_times": [],
-    "create_errors": 0,
-    "create_count": 0,
-    "update_response_times": [],
-    "update_errors": 0,
-    "update_count": 0,
-    "delete_response_times": [],
-    "delete_errors": 0,
-    "delete_count": 0,
-    "cache_hit": 0,
-}
-last_push = {
-    "read": datetime.datetime.now(),
-    "create": datetime.datetime.now(),
-    "update": datetime.datetime.now(),
-    "delete": datetime.datetime.now(),
-}
-
-def read(key):
-
-    print(f"Reading...")
-
-    if random.randint(0, 30) > 10:
-        stats["cache_hit"] += 1
-
-    stats["read_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["read_errors"] += 1
-    stats["read_count"] += 1
-    try_send("read")
-
-def create(key, value):
-
-    print(f"Writing...")
-
-    db[key] = value
-    stats["create_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["create_errors"] += 1
-    stats["create_count"] += 1
-    try_send("create")
-
-def update(key, value):
-
-    print(f"Updating...")
-
-    db[key] = value
-    stats["update_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["update_errors"] += 1
-    stats["update_count"] += 1
-    try_send("update")
-
-def delete(key):
-
-    print(f"Deleting...")
-
-    db.pop(key, None)
-    stats["delete_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["delete_errors"] += 1
-    stats["delete_count"] += 1
-    try_send("delete")
-
-def try_send(type_):
-
-    print("try_send")
-
-    now = datetime.datetime.now()
-    interval_ms = (now - last_push[type_]).total_seconds() * 1000
-    if interval_ms >= 2000:
-        send_metrics(type_, interval_ms)
-
-def send_metrics(type_, interval_ms):
-    
-    print("sending metrics...")
-
-    keys = GaugeMetric("fdb_keys", len(db))
-    db_size = GaugeMetric("fdb_size", getsizeof(db))
-
-    errors = CountMetric(
-        name=f"fdb_{type_}_errors",
-        value=stats[f"{type_}_errors"],
-        interval_ms=interval_ms
-    )
-
-    cache_hits = CountMetric(
-        name=f"fdb_cache_hits",
-        value=stats["cache_hit"],
-        interval_ms=interval_ms
-    )
-
-    response_times = stats[f"{type_}_response_times"]
-    response_time_summary = SummaryMetric(
-        f"fdb_{type_}_responses",
-        count=len(response_times),
-        min=min(response_times),
-        max=max(response_times),
-        sum=sum(response_times),
-        interval_ms=interval_ms,
-    )
-
-    batch = [keys, db_size, errors, cache_hits, response_time_summary]
-    response = metric_client.send_batch(batch)
-    response.raise_for_status()
-    print("Sent metrics successfully!")
-    clear(type_)
-
-def clear(type_):
-    stats[f"{type_}_response_times"] = []
-    stats[f"{type_}_errors"] = 0
-    stats["cache_hit"] = 0
-    stats[f"{type_}_count"] = 0
-    last_push[type_] = datetime.datetime.now()
-
-```
-
-</Project>
-
 ## Use our SDK
 
-We offer an open source [telemetry SDK](https://docs.newrelic.com/docs/data-apis/ingest-apis/telemetry-sdks-report-custom-telemetry-data/) in several of the most popular programming languages. These send data to our data ingest APIs, including our Event API. Of these language SDKs, two work with the Event API: Python and Java.
+We offer an open source [telemetry SDK](https://docs.newrelic.com/docs/data-apis/ingest-apis/telemetry-sdks-report-custom-telemetry-data/) in several of the most popular programming languages. These send data to our data ingest APIs, including our Metric API. 
+Of these language SDKs, Python, Java, Node/TypeScript, and Go work with the Metric API.
 
-Here, you use the [Python telemetry SDK](https://github.com/newrelic/newrelic-telemetry-sdk-python) to send events to New Relic.
+In this lesson, you learn how to install and use the [Python telemetry SDK](https://github.com/newrelic/newrelic-telemetry-sdk-python) to send metrics to New Relic.
 
 <Steps>
 
 <Step>
 
-Change to the _send-events/flashDB_ direcrory of the [course repository](https://github.com/newrelic-experimental/build-a-quickstart-lab).
+Change to the _send-metrics/flashDB_ direcrory of the [course repository](https://github.com/newrelic-experimental/build-a-quickstart-lab).
 
 <>
 
 ```bash
-cd ../../send-events/flashDB
+cd ../send-metrics/flashDB
 ```
 
 </>
@@ -187,7 +49,7 @@ cd ../../send-events/flashDB
 
 <Step>
 
-If you haven't already, install the `newrelic-telemetry-sdk` package. 
+Use `pip` to install the `newrelic-telemetry-sdk` package. 
 
 <>
 
@@ -201,158 +63,341 @@ pip install newrelic-telemetry-sdk
 
 <Step>
 
-Open _db.py_ file in the IDE of your choice and configure the `EventClient`.
+Store your New Relic license key in an environment variable called $NEW_RELIC_LICENSE_KEY.
 
 <>
 
-```python fileName=db.py
+```bash
 
-import os
-import random
-import datetime
-from sys import getsizeof
-
-from newrelic_telemetry_sdk import MetricClient, GaugeMetric, CountMetric, SummaryMetric
-from newrelic_telemetry_sdk import EventClient
-
-metric_client = MetricClient(os.environ["NEW_RELIC_LICENSE_KEY"])
-event_client = EventClient(os.environ["NEW_RELIC_LICENSE_KEY"])
-
-db = {}
-stats = {
-    "read_response_times": [],
-    "read_errors": 0,
-    "read_count": 0,
-    "create_response_times": [],
-    "create_errors": 0,
-    "create_count": 0,
-    "update_response_times": [],
-    "update_errors": 0,
-    "update_count": 0,
-    "delete_response_times": [],
-    "delete_errors": 0,
-    "delete_count": 0,
-    "cache_hit": 0,
-}
-last_push = {
-    "read": datetime.datetime.now(),
-    "create": datetime.datetime.now(),
-    "update": datetime.datetime.now(),
-    "delete": datetime.datetime.now(),
-}
-
-def read(key):
-
-    print(f"Reading...")
-
-    if random.randint(0, 30) > 10:
-        stats["cache_hit"] += 1
-
-    stats["read_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["read_errors"] += 1
-    stats["read_count"] += 1
-    try_send("read")
-
-def create(key, value):
-
-    print(f"Writing...")
-
-    db[key] = value
-    stats["create_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["create_errors"] += 1
-    stats["create_count"] += 1
-    try_send("create")
-
-def update(key, value):
-
-    print(f"Updating...")
-
-    db[key] = value
-    stats["update_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["update_errors"] += 1
-    stats["update_count"] += 1
-    try_send("update")
-
-def delete(key):
-
-    print(f"Deleting...")
-
-    db.pop(key, None)
-    stats["delete_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["delete_errors"] += 1
-    stats["delete_count"] += 1
-    try_send("delete")
-
-def try_send(type_):
-
-    print("try_send")
-
-    now = datetime.datetime.now()
-    interval_ms = (now - last_push[type_]).total_seconds() * 1000
-    if interval_ms >= 2000:
-        send_metrics(type_, interval_ms)
-
-def send_metrics(type_, interval_ms):
-    
-    print("sending metrics...")
-
-    keys = GaugeMetric("fdb_keys", len(db))
-    db_size = GaugeMetric("fdb_size", getsizeof(db))
-
-    errors = CountMetric(
-        name=f"fdb_{type_}_errors",
-        value=stats[f"{type_}_errors"],
-        interval_ms=interval_ms
-    )
-
-    cache_hits = CountMetric(
-        name=f"fdb_cache_hits",
-        value=stats["cache_hit"],
-        interval_ms=interval_ms
-    )
-
-    response_times = stats[f"{type_}_response_times"]
-    response_time_summary = SummaryMetric(
-        f"fdb_{type_}_responses",
-        count=len(response_times),
-        min=min(response_times),
-        max=max(response_times),
-        sum=sum(response_times),
-        interval_ms=interval_ms,
-    )
-
-    batch = [keys, db_size, errors, cache_hits, response_time_summary]
-    response = metric_client.send_batch(batch)
-    response.raise_for_status()
-    print("Sent metrics successfully!")
-    clear(type_)
-
-def clear(type_):
-    stats[f"{type_}_response_times"] = []
-    stats[f"{type_}_errors"] = 0
-    stats["cache_hit"] = 0
-    stats[f"{type_}_count"] = 0
-    last_push[type_] = datetime.datetime.now()
-
+export NEW_RELIC_LICENSE_KEY=<USER'S LICENSE KEY>
 ```
 
 </>
 
-<Callout variant="important">
+<Callout variant='tip'>
 
-This example expects an environment variable called `$NEW_RELIC_LICENSE_KEY`.
+[You can find your New Relic license key in your account settings](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/).
 
 </Callout>
 
 </Step>
 
+</Steps>
+
+Next, you familiarize yourself with the app logic.
+
+<Tutorial>
+
+<Project>
+
+```python fileName=db.py 
+import os
+import random
+import datetime
+
+db = {}
+stats = {
+    "read_response_times": [],
+    "read_errors": 0,
+    "read_count": 0,
+    "create_response_times": [],
+    "create_errors": 0,
+    "create_count": 0,
+    "update_response_times": [],
+    "update_errors": 0,
+    "update_count": 0,
+    "delete_response_times": [],
+    "delete_errors": 0,
+    "delete_count": 0,
+    "cache_hit": 0,
+}
+last_push = {
+    "read": datetime.datetime.now(),
+    "create": datetime.datetime.now(),
+    "update": datetime.datetime.now(),
+    "delete": datetime.datetime.now(),
+}
+
+def read(key):
+
+    print(f"Reading...")
+
+    if random.randint(0, 30) > 10:
+        stats["cache_hit"] += 1
+
+    stats["read_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["read_errors"] += 1
+    stats["read_count"] += 1
+    try_send("read")
+
+def create(key, value):
+
+    print(f"Writing...")
+
+    db[key] = value
+    stats["create_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["create_errors"] += 1
+    stats["create_count"] += 1
+    try_send("create")
+
+def update(key, value):
+
+    print(f"Updating...")
+
+    db[key] = value
+    stats["update_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["update_errors"] += 1
+    stats["update_count"] += 1
+    try_send("update")
+
+def delete(key):
+
+    print(f"Deleting...")
+
+    db.pop(key, None)
+    stats["delete_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["delete_errors"] += 1
+    stats["delete_count"] += 1
+    try_send("delete")
+
+def try_send(type_):
+
+    print("try_send")
+
+def clear(type_):
+    stats[f"{type_}_response_times"] = []
+    stats[f"{type_}_errors"] = 0
+    stats["cache_hit"] = 0
+    stats[f"{type_}_count"] = 0
+    last_push[type_] = datetime.datetime.now()
+
+```
+
+</Project>
+
+## Familiarize yourself with the application
+
+Open _db.py_ file in the IDE of your choice and familiarize yourself with the app logic.
+
+This demo uses a dummy Python application that mimics the Create, Read, Update, and Delete (CRUD) operations.
+
+<>
+
+```python fileName=db.py
+import os
+import random
+import datetime
+
+db = {}
+stats = {
+    "read_response_times": [],
+    "read_errors": 0,
+    "read_count": 0,
+    "create_response_times": [],
+    "create_errors": 0,
+    "create_count": 0,
+    "update_response_times": [],
+    "update_errors": 0,
+    "update_count": 0,
+    "delete_response_times": [],
+    "delete_errors": 0,
+    "delete_count": 0,
+    "cache_hit": 0,
+}
+last_push = {
+    "read": datetime.datetime.now(),
+    "create": datetime.datetime.now(),
+    "update": datetime.datetime.now(),
+    "delete": datetime.datetime.now(),
+}
+
+def read(key):
+
+    print(f"Reading...")
+
+    if random.randint(0, 30) > 10:
+        stats["cache_hit"] += 1
+
+    stats["read_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["read_errors"] += 1
+    stats["read_count"] += 1
+    try_send("read")
+
+def create(key, value):
+
+    print(f"Writing...")
+
+    db[key] = value
+    stats["create_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["create_errors"] += 1
+    stats["create_count"] += 1
+    try_send("create")
+
+def update(key, value):
+
+    print(f"Updating...")
+
+    db[key] = value
+    stats["update_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["update_errors"] += 1
+    stats["update_count"] += 1
+    try_send("update")
+
+def delete(key):
+
+    print(f"Deleting...")
+
+    db.pop(key, None)
+    stats["delete_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["delete_errors"] += 1
+    stats["delete_count"] += 1
+    try_send("delete")
+
+def try_send(type_):
+
+    print("try_send")
+
+def clear(type_):
+    stats[f"{type_}_response_times"] = []
+    stats[f"{type_}_errors"] = 0
+    stats["cache_hit"] = 0
+    stats[f"{type_}_count"] = 0
+    last_push[type_] = datetime.datetime.now()
+
+```
+</>
+
+The `read`, `create`, `update`, and `delete` are the dummy methods to mimic CRUD operations. For every CRUD operations, respective `stat` is incremented to reflect that the operation has been performed. Next, you send this `stats` data to New Relic.
+
+## Send metrics to New Relic
+
+There are 3 different types of metrics:
+- GaugeMetric: sends a single value at a single point in time.
+- CountMetric: tracks the total number of occurrences of an event.
+- SummaryMetric: tracks count, sum, min, and max values over time.
+
+Next, instrument your application to send these metrics.
+
+<Steps>
+
 <Step>
 
-Instrument your app to send an event to New Relic.
+In _db.py_, configure the `MetricClient`.
+
+<>
+
+```python fileName=db.py
+import os
+import random
+import datetime
+
+from newrelic_telemetry_sdk import MetricClient
+
+metric_client = MetricClient(os.environ["NEW_RELIC_LICENSE_KEY"])
+
+db = {}
+stats = {
+    "read_response_times": [],
+    "read_errors": 0,
+    "read_count": 0,
+    "create_response_times": [],
+    "create_errors": 0,
+    "create_count": 0,
+    "update_response_times": [],
+    "update_errors": 0,
+    "update_count": 0,
+    "delete_response_times": [],
+    "delete_errors": 0,
+    "delete_count": 0,
+    "cache_hit": 0,
+}
+last_push = {
+    "read": datetime.datetime.now(),
+    "create": datetime.datetime.now(),
+    "update": datetime.datetime.now(),
+    "delete": datetime.datetime.now(),
+}
+
+def read(key):
+
+    print(f"Reading...")
+
+    if random.randint(0, 30) > 10:
+        stats["cache_hit"] += 1
+
+    stats["read_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["read_errors"] += 1
+    stats["read_count"] += 1
+    try_send("read")
+
+def create(key, value):
+
+    print(f"Writing...")
+
+    db[key] = value
+    stats["create_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["create_errors"] += 1
+    stats["create_count"] += 1
+    try_send("create")
+
+def update(key, value):
+
+    print(f"Updating...")
+
+    db[key] = value
+    stats["update_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["update_errors"] += 1
+    stats["update_count"] += 1
+    try_send("update")
+
+def delete(key):
+
+    print(f"Deleting...")
+
+    db.pop(key, None)
+    stats["delete_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["delete_errors"] += 1
+    stats["delete_count"] += 1
+    try_send("delete")
+
+def try_send(type_):
+
+    print("try_send")
+
+def clear(type_):
+    stats[f"{type_}_response_times"] = []
+    stats[f"{type_}_errors"] = 0
+    stats["cache_hit"] = 0
+    stats[f"{type_}_count"] = 0
+    last_push[type_] = datetime.datetime.now()
+
+```
+
+</>
+
+</Step>
+
+<Step>
+
+Instrument your app to send the folloiwng metrics to New Relic:
+
+- keys
+- db_size
+- errors
+- cache_hits
+- response_times
 
 <>
 
@@ -364,10 +409,147 @@ import datetime
 from sys import getsizeof
 
 from newrelic_telemetry_sdk import MetricClient, GaugeMetric, CountMetric, SummaryMetric
-from newrelic_telemetry_sdk import EventClient, Event
 
 metric_client = MetricClient(os.environ["NEW_RELIC_LICENSE_KEY"])
-event_client = EventClient(os.environ["NEW_RELIC_LICENSE_KEY"])
+
+db = {}
+stats = {
+    "read_response_times": [],
+    "read_errors": 0,
+    "read_count": 0,
+    "create_response_times": [],
+    "create_errors": 0,
+    "create_count": 0,
+    "update_response_times": [],
+    "update_errors": 0,
+    "update_count": 0,
+    "delete_response_times": [],
+    "delete_errors": 0,
+    "delete_count": 0,
+    "cache_hit": 0,
+}
+last_push = {
+    "read": datetime.datetime.now(),
+    "create": datetime.datetime.now(),
+    "update": datetime.datetime.now(),
+    "delete": datetime.datetime.now(),
+}
+
+def read(key):
+
+    print(f"Reading...")
+
+    if random.randint(0, 30) > 10:
+        stats["cache_hit"] += 1
+
+    stats["read_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["read_errors"] += 1
+    stats["read_count"] += 1
+    try_send("read")
+
+def create(key, value):
+
+    print(f"Writing...")
+
+    db[key] = value
+    stats["create_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["create_errors"] += 1
+    stats["create_count"] += 1
+    try_send("create")
+
+def update(key, value):
+
+    print(f"Updating...")
+
+    db[key] = value
+    stats["update_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["update_errors"] += 1
+    stats["update_count"] += 1
+    try_send("update")
+
+def delete(key):
+
+    print(f"Deleting...")
+
+    db.pop(key, None)
+    stats["delete_response_times"].append(random.uniform(0.5, 1.0))
+    if random.choice([True, False]):
+        stats["delete_errors"] += 1
+    stats["delete_count"] += 1
+    try_send("delete")
+
+def try_send(type_):
+
+    print("try_send")
+
+def send_metrics(type_, interval_ms):
+    
+    print("sending metrics...")
+
+    keys = GaugeMetric("fdb_keys", len(db))
+    db_size = GaugeMetric("fdb_size", getsizeof(db))
+
+    errors = CountMetric(
+        name=f"fdb_{type_}_errors",
+        value=stats[f"{type_}_errors"],
+        interval_ms=interval_ms
+    )
+
+    cache_hits = CountMetric(
+        name=f"fdb_cache_hits",
+        value=stats["cache_hit"],
+        interval_ms=interval_ms
+    )
+
+    response_times = stats[f"{type_}_response_times"]
+    response_time_summary = SummaryMetric(
+        f"fdb_{type_}_responses",
+        count=len(response_times),
+        min=min(response_times),
+        max=max(response_times),
+        sum=sum(response_times),
+        interval_ms=interval_ms,
+    )
+
+    batch = [keys, db_size, errors, cache_hits, response_time_summary]
+    response = metric_client.send_batch(batch)
+    response.raise_for_status()
+    print("Sent metrics successfully!")
+    clear(type_)
+
+def clear(type_):
+    stats[f"{type_}_response_times"] = []
+    stats[f"{type_}_errors"] = 0
+    stats["cache_hit"] = 0
+    stats[f"{type_}_count"] = 0
+    last_push[type_] = datetime.datetime.now()
+
+```
+
+</>
+
+</Step>
+
+Here, you configure your platform to use `GaugeMetric`, `CountMetric`, and `SummaryMetric` to report metrics to New Relic.
+
+<Step>
+
+Amend the `try_send` module to send these metrics every 2 second. 
+
+<>
+
+```python fileName=db.py
+import os
+import random
+import datetime
+from sys import getsizeof
+
+from newrelic_telemetry_sdk import MetricClient, GaugeMetric, CountMetric, SummaryMetric
+
+metric_client = MetricClient(os.environ["NEW_RELIC_LICENSE_KEY"])
 
 db = {}
 stats = {
@@ -482,18 +664,6 @@ def send_metrics(type_, interval_ms):
     print("Sent metrics successfully!")
     clear(type_)
 
-def send_event(type_):
-
-    print("sending event...")
-
-    count = Event(
-        "fdb_method", {"method": type_}
-    )
-
-    response = event_client.send_batch(count)
-    response.raise_for_status()
-    print("Event sent successfully!")
-
 def clear(type_):
     stats[f"{type_}_response_times"] = []
     stats[f"{type_}_errors"] = 0
@@ -507,177 +677,17 @@ def clear(type_):
 
 </Step>
 
-Here, you instrument your platform to send a `count` event to New Relic.  
+Your platform will now report all the configured metrics every 2 seconds. 
 
 <Step>
 
-Amend the `try_send` module to send the event every 2 second. 
-
-<>
-
-```python fileName=db.py
-
-import os
-import random
-import datetime
-from sys import getsizeof
-
-from newrelic_telemetry_sdk import MetricClient, GaugeMetric, CountMetric, SummaryMetric
-from newrelic_telemetry_sdk import EventClient, Event
-
-metric_client = MetricClient(os.environ["NEW_RELIC_LICENSE_KEY"])
-event_client = EventClient(os.environ["NEW_RELIC_LICENSE_KEY"])
-
-db = {}
-stats = {
-    "read_response_times": [],
-    "read_errors": 0,
-    "read_count": 0,
-    "create_response_times": [],
-    "create_errors": 0,
-    "create_count": 0,
-    "update_response_times": [],
-    "update_errors": 0,
-    "update_count": 0,
-    "delete_response_times": [],
-    "delete_errors": 0,
-    "delete_count": 0,
-    "cache_hit": 0,
-}
-last_push = {
-    "read": datetime.datetime.now(),
-    "create": datetime.datetime.now(),
-    "update": datetime.datetime.now(),
-    "delete": datetime.datetime.now(),
-}
-
-def read(key):
-
-    print(f"Reading...")
-
-    if random.randint(0, 30) > 10:
-        stats["cache_hit"] += 1
-
-    stats["read_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["read_errors"] += 1
-    stats["read_count"] += 1
-    try_send("read")
-
-def create(key, value):
-
-    print(f"Writing...")
-
-    db[key] = value
-    stats["create_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["create_errors"] += 1
-    stats["create_count"] += 1
-    try_send("create")
-
-def update(key, value):
-
-    print(f"Updating...")
-
-    db[key] = value
-    stats["update_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["update_errors"] += 1
-    stats["update_count"] += 1
-    try_send("update")
-
-def delete(key):
-
-    print(f"Deleting...")
-
-    db.pop(key, None)
-    stats["delete_response_times"].append(random.uniform(0.5, 1.0))
-    if random.choice([True, False]):
-        stats["delete_errors"] += 1
-    stats["delete_count"] += 1
-    try_send("delete")
-
-def try_send(type_):
-
-    print("try_send")
-
-    now = datetime.datetime.now()
-    interval_ms = (now - last_push[type_]).total_seconds() * 1000
-    if interval_ms >= 2000:
-        send_metrics(type_, interval_ms)
-        send_event(type_)
-
-def send_metrics(type_, interval_ms):
-    
-    print("sending metrics...")
-
-    keys = GaugeMetric("fdb_keys", len(db))
-    db_size = GaugeMetric("fdb_size", getsizeof(db))
-
-    errors = CountMetric(
-        name=f"fdb_{type_}_errors",
-        value=stats[f"{type_}_errors"],
-        interval_ms=interval_ms
-    )
-
-    cache_hits = CountMetric(
-        name=f"fdb_cache_hits",
-        value=stats["cache_hit"],
-        interval_ms=interval_ms
-    )
-
-    response_times = stats[f"{type_}_response_times"]
-    response_time_summary = SummaryMetric(
-        f"fdb_{type_}_responses",
-        count=len(response_times),
-        min=min(response_times),
-        max=max(response_times),
-        sum=sum(response_times),
-        interval_ms=interval_ms,
-    )
-
-    batch = [keys, db_size, errors, cache_hits, response_time_summary]
-    response = metric_client.send_batch(batch)
-    response.raise_for_status()
-    print("Sent metrics successfully!")
-    clear(type_)
-
-def send_event(type_):
-
-    print("sending event...")
-
-    count = Event(
-        "fdb_method", {"method": type_}
-    )
-
-    response = event_client.send_batch(count)
-    response.raise_for_status()
-    print("Event sent successfully!")
-
-def clear(type_):
-    stats[f"{type_}_response_times"] = []
-    stats[f"{type_}_errors"] = 0
-    stats["cache_hit"] = 0
-    stats[f"{type_}_count"] = 0
-    last_push[type_] = datetime.datetime.now()
-
-```
-
-</>
-
-</Step>
-
-Your platform will now report the configured event every 2 seconds. 
-
-<Step>
-
-Navigate to the root of your application at _build-a-quickstart-lab/send-events/flashDB_.
+Navigate to the root of your application at _build-a-quickstart-lab/send-metrics/flashDB_.
 
 </Step>
 
 <Step>
 
-Run your services to verify that it is reporting events.
+Run your services to verify that it is reporting metrics.
 
 <>
 
@@ -698,31 +708,27 @@ python simulator.py
 [output] Reading...
 [output] sending metrics...
 [output] {green}Sent metrics successfully!
-[output] sending event...
-[output] {green}Event sent successfully!
 ```
 
 </>
 
+
 </Step>
 
-</Steps>  
+</Steps>
 
 </Tutorial>
 
 ## Alternative Options
 
-If the language SDK doesn't fit your needs, try out one of our other options:
+If the language SDK doesn’t fit your needs or you’d like something more customized to send metrics to New Relic, try out one of our other options:
+- **Manual Implementation**: If our SDK in your preferred language doesn’t support metrics, you can always manually instrument your own library to make a POST request to the New Relic Metric API. 
+- **Prometheus Data**: Prometheus data can be sent to New Relic in two ways, remote write and OpenMetrics. At a very high level, you should use remote write if you manage your own Prometheus servers and OpenMetrics if you don't.
 
-- **Manual Implementation**: If our SDK in your preferred language doesn't support events, you can always manually instrument your own library to make a POST request to the [New Relic Event API](https://docs.newrelic.com/docs/data-apis/ingest-apis/introduction-event-api/).
-- **Prometheus Data**: [Prometheus](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/get-started/send-prometheus-metric-data-new-relic) data can be sent to New Relic in two ways, [remote write](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration) and [OpenMetrics](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/install-configure-openmetrics/install-update-or-uninstall-your-prometheus-openmetrics-integration). At a very high level, you should use remote write if you manage your own Prometheus servers and OpenMetrics if you don't.
-- **Flex Agent**: Our serverless [Flex agent](https://github.com/newrelic/nri-flex/blob/master/docs/basic-tutorial.md#flex-step-by-step-tutorial) is a possibility, but might be a more complex integration to get started.
-
-
-In this procedure, you instrumented your service to send events to New Relic. Next, instrument it to send logs.
+In this procedure, you instrumented your service to send metrics to New Relic. Next, instrument it to send events.
 
 <Callout variant='course'>
 
-This procedure is a part of course that teaches you how to build a quickstart. Continue to next lesson, [_send logs from your product_](/contribute-to-quickstarts/instrument-library/send-logs).
+This procedure is a part of course that teaches you how to build a quickstart. Continue to next lesson, [_send events from your product_](/contribute-to-quickstarts/instrument-library/send-events).
 
 </Callout>

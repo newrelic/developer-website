@@ -1017,9 +1017,9 @@ type MdxFrontmatter = {
   readonly tileShorthand: Maybe<MdxFrontmatterTileShorthand>;
   readonly resources: Maybe<ReadonlyArray<Maybe<MdxFrontmatterResources>>>;
   readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly redirects: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly duration: Maybe<Scalars['Int']>;
   readonly procIdx: Maybe<Scalars['Float']>;
-  readonly redirects: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly promote: Maybe<Scalars['Boolean']>;
 };
 
@@ -1075,6 +1075,7 @@ type NewRelicThemeConfig = Node & {
   readonly env: Scalars['String'];
   readonly relatedResources: NewRelicThemeRelatedResourceConfig;
   readonly tessen: Maybe<NewRelicThemeTessenConfig>;
+  readonly signup: Maybe<NewRelicThemeSignupConfig>;
   readonly id: Scalars['ID'];
   readonly parent: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
@@ -1093,6 +1094,12 @@ type RelatedResourceLabel = {
 type NewRelicThemeTessenConfig = {
   readonly product: Maybe<Scalars['String']>;
   readonly subproduct: Maybe<Scalars['String']>;
+};
+
+type NewRelicThemeSignupConfig = {
+  readonly environment: Scalars['String'];
+  readonly reCaptchaToken: Scalars['String'];
+  readonly signupURL: Scalars['String'];
 };
 
 type MarkdownHeading = {
@@ -1692,6 +1699,7 @@ type Query_newRelicThemeConfigArgs = {
   env: Maybe<StringQueryOperatorInput>;
   relatedResources: Maybe<NewRelicThemeRelatedResourceConfigFilterInput>;
   tessen: Maybe<NewRelicThemeTessenConfigFilterInput>;
+  signup: Maybe<NewRelicThemeSignupConfigFilterInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
@@ -1985,9 +1993,9 @@ type MdxFrontmatterFilterInput = {
   readonly tileShorthand: Maybe<MdxFrontmatterTileShorthandFilterInput>;
   readonly resources: Maybe<MdxFrontmatterResourcesFilterListInput>;
   readonly tags: Maybe<StringQueryOperatorInput>;
+  readonly redirects: Maybe<StringQueryOperatorInput>;
   readonly duration: Maybe<IntQueryOperatorInput>;
   readonly procIdx: Maybe<FloatQueryOperatorInput>;
-  readonly redirects: Maybe<StringQueryOperatorInput>;
   readonly promote: Maybe<BooleanQueryOperatorInput>;
 };
 
@@ -2286,9 +2294,9 @@ type FileFieldsEnum =
   | 'childrenMdx.frontmatter.resources.title'
   | 'childrenMdx.frontmatter.resources.url'
   | 'childrenMdx.frontmatter.tags'
+  | 'childrenMdx.frontmatter.redirects'
   | 'childrenMdx.frontmatter.duration'
   | 'childrenMdx.frontmatter.procIdx'
-  | 'childrenMdx.frontmatter.redirects'
   | 'childrenMdx.frontmatter.promote'
   | 'childrenMdx.slug'
   | 'childrenMdx.body'
@@ -2393,9 +2401,9 @@ type FileFieldsEnum =
   | 'childMdx.frontmatter.resources.title'
   | 'childMdx.frontmatter.resources.url'
   | 'childMdx.frontmatter.tags'
+  | 'childMdx.frontmatter.redirects'
   | 'childMdx.frontmatter.duration'
   | 'childMdx.frontmatter.procIdx'
-  | 'childMdx.frontmatter.redirects'
   | 'childMdx.frontmatter.promote'
   | 'childMdx.slug'
   | 'childMdx.body'
@@ -5239,6 +5247,12 @@ type NewRelicThemeTessenConfigFilterInput = {
   readonly subproduct: Maybe<StringQueryOperatorInput>;
 };
 
+type NewRelicThemeSignupConfigFilterInput = {
+  readonly environment: Maybe<StringQueryOperatorInput>;
+  readonly reCaptchaToken: Maybe<StringQueryOperatorInput>;
+  readonly signupURL: Maybe<StringQueryOperatorInput>;
+};
+
 type NewRelicThemeConfigConnection = {
   readonly totalCount: Scalars['Int'];
   readonly edges: ReadonlyArray<NewRelicThemeConfigEdge>;
@@ -5291,6 +5305,9 @@ type NewRelicThemeConfigFieldsEnum =
   | 'relatedResources.labels.label'
   | 'tessen.product'
   | 'tessen.subproduct'
+  | 'signup.environment'
+  | 'signup.reCaptchaToken'
+  | 'signup.signupURL'
   | 'id'
   | 'parent.id'
   | 'parent.parent.id'
@@ -5423,6 +5440,7 @@ type NewRelicThemeConfigFilterInput = {
   readonly env: Maybe<StringQueryOperatorInput>;
   readonly relatedResources: Maybe<NewRelicThemeRelatedResourceConfigFilterInput>;
   readonly tessen: Maybe<NewRelicThemeTessenConfigFilterInput>;
+  readonly signup: Maybe<NewRelicThemeSignupConfigFilterInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
   readonly parent: Maybe<NodeFilterInput>;
   readonly children: Maybe<NodeFilterListInput>;
@@ -5717,9 +5735,9 @@ type MdxFieldsEnum =
   | 'frontmatter.resources.title'
   | 'frontmatter.resources.url'
   | 'frontmatter.tags'
+  | 'frontmatter.redirects'
   | 'frontmatter.duration'
   | 'frontmatter.procIdx'
-  | 'frontmatter.redirects'
   | 'frontmatter.promote'
   | 'slug'
   | 'body'
@@ -6536,54 +6554,54 @@ type NewRelicSdkAssets = {
   readonly css: Scalars['String'];
 };
 
-type userschamanndeveloperWebsitesrctemplatesembedPageJs381472333QueryVariables = Exact<{
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesembedPageJs381472333QueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type userschamanndeveloperWebsitesrctemplatesembedPageJs381472333Query = { readonly mdx: Maybe<(
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesembedPageJs381472333Query = { readonly mdx: Maybe<(
     Pick<Mdx, 'body'>
     & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'title'>> }
   )> };
 
 type PageUpdated_pageFragment = { readonly fields: Maybe<Pick<MdxFields, 'gitAuthorTime'>> };
 
-type userschamanndeveloperWebsitesrctemplatesGuideTemplateJs3004003558QueryVariables = Exact<{
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesGuideTemplateJs3004003558QueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type userschamanndeveloperWebsitesrctemplatesGuideTemplateJs3004003558Query = { readonly mdx: Maybe<(
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesGuideTemplateJs3004003558Query = { readonly mdx: Maybe<(
     Pick<Mdx, 'body'>
     & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'duration' | 'title' | 'description' | 'tags'>>, readonly fields: Maybe<Pick<MdxFields, 'fileRelativePath' | 'slug'>>, readonly relatedResources: Maybe<ReadonlyArray<Pick<RelatedResource, 'title' | 'url'>>> }
     & PageUpdated_pageFragment
   )> };
 
-type userschamanndeveloperWebsitesrctemplatesLabOverviewTemplateJs3626099723QueryVariables = Exact<{
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesOverviewTemplateJs1786578654QueryVariables = Exact<{
   slug: Scalars['String'];
   guidesFilter: Scalars['String'];
 }>;
 
 
-type userschamanndeveloperWebsitesrctemplatesLabOverviewTemplateJs3626099723Query = { readonly mdx: Maybe<(
-    Pick<Mdx, 'body'>
-    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'path' | 'title' | 'description'>> }
-  )>, readonly guides: { readonly nodes: ReadonlyArray<{ readonly fields: Maybe<Pick<MdxFields, 'slug'>>, readonly frontmatter: Maybe<(
-        Pick<MdxFrontmatter, 'path' | 'title' | 'description' | 'duration' | 'procIdx'>
-        & { readonly tileShorthand: Maybe<Pick<MdxFrontmatterTileShorthand, 'title' | 'description'>> }
-      )> }> } };
-
-type userschamanndeveloperWebsitesrctemplatesOverviewTemplateJs1786578654QueryVariables = Exact<{
-  slug: Scalars['String'];
-  guidesFilter: Scalars['String'];
-}>;
-
-
-type userschamanndeveloperWebsitesrctemplatesOverviewTemplateJs1786578654Query = { readonly mdx: Maybe<(
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesOverviewTemplateJs1786578654Query = { readonly mdx: Maybe<(
     Pick<Mdx, 'body'>
     & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'path' | 'title' | 'description'>> }
   )>, readonly guides: { readonly nodes: ReadonlyArray<{ readonly fields: Maybe<Pick<MdxFields, 'slug'>>, readonly frontmatter: Maybe<(
         Pick<MdxFrontmatter, 'title' | 'description' | 'duration'>
+        & { readonly tileShorthand: Maybe<Pick<MdxFrontmatterTileShorthand, 'title' | 'description'>> }
+      )> }> } };
+
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesLabOverviewTemplateJs3626099723QueryVariables = Exact<{
+  slug: Scalars['String'];
+  guidesFilter: Scalars['String'];
+}>;
+
+
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesLabOverviewTemplateJs3626099723Query = { readonly mdx: Maybe<(
+    Pick<Mdx, 'body'>
+    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'path' | 'title' | 'description'>> }
+  )>, readonly guides: { readonly nodes: ReadonlyArray<{ readonly fields: Maybe<Pick<MdxFields, 'slug'>>, readonly frontmatter: Maybe<(
+        Pick<MdxFrontmatter, 'path' | 'title' | 'description' | 'duration' | 'procIdx'>
         & { readonly tileShorthand: Maybe<Pick<MdxFrontmatterTileShorthand, 'title' | 'description'>> }
       )> }> } };
 
@@ -6655,24 +6673,24 @@ type TypeDefReference_typeDefFragment = (
   & { readonly properties: Maybe<ReadonlyArray<Maybe<Pick<NewRelicSdkTypeDefinitionProperty, 'name' | 'description' | 'type'>>>> }
 );
 
-type userschamanndeveloperWebsitesrctemplatesComponentReferenceTemplateJs198282387QueryVariables = Exact<{
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesComponentReferenceTemplateJs198282387QueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type userschamanndeveloperWebsitesrctemplatesComponentReferenceTemplateJs198282387Query = { readonly newRelicSdkComponent: Maybe<(
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesComponentReferenceTemplateJs198282387Query = { readonly newRelicSdkComponent: Maybe<(
     Pick<NewRelicSdkComponent, 'name' | 'description' | 'usage'>
     & { readonly propTypes: ReadonlyArray<PropList_propTypesFragment>, readonly examples: ReadonlyArray<ReferenceExample_exampleFragment>, readonly methods: ReadonlyArray<MethodReference_methodFragment>, readonly typeDefs: ReadonlyArray<TypeDefReference_typeDefFragment> }
   )> };
 
 type ConstantReference_constantFragment = Pick<NewRelicSdkConstant, 'name' | 'value'>;
 
-type userschamanndeveloperWebsitesrctemplatesApiReferenceTemplateJs1865166777QueryVariables = Exact<{
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesApiReferenceTemplateJs1865166777QueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type userschamanndeveloperWebsitesrctemplatesApiReferenceTemplateJs1865166777Query = { readonly newRelicSdkApi: Maybe<(
+type usersmtahirDocumentsGitHubdeveloperWebsitesrctemplatesApiReferenceTemplateJs1865166777Query = { readonly newRelicSdkApi: Maybe<(
     Pick<NewRelicSdkApi, 'name' | 'description' | 'usage'>
     & { readonly examples: ReadonlyArray<ReferenceExample_exampleFragment>, readonly methods: ReadonlyArray<MethodReference_methodFragment>, readonly typeDefs: Maybe<ReadonlyArray<Maybe<TypeDefReference_typeDefFragment>>>, readonly constants: ReadonlyArray<ConstantReference_constantFragment> }
   )> };
@@ -6682,10 +6700,10 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type userschamanndeveloperWebsitesrcpagesindexJs1455287213QueryVariables = Exact<{ [key: string]: never; }>;
+type usersmtahirDocumentsGitHubdeveloperWebsitesrcpagesindexJs1455287213QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type userschamanndeveloperWebsitesrcpagesindexJs1455287213Query = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly fields: Maybe<Pick<MdxFields, 'slug'>>, readonly frontmatter: Maybe<(
+type usersmtahirDocumentsGitHubdeveloperWebsitesrcpagesindexJs1455287213Query = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly fields: Maybe<Pick<MdxFields, 'slug'>>, readonly frontmatter: Maybe<(
         Pick<MdxFrontmatter, 'title' | 'description' | 'duration'>
         & { readonly tileShorthand: Maybe<Pick<MdxFrontmatterTileShorthand, 'title' | 'description'>> }
       )> }> } };
@@ -6728,15 +6746,15 @@ type Unnamed_7_QueryVariables = Exact<{ [key: string]: never; }>;
 
 type Unnamed_7_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'repository'>> }> };
 
-type GlobalNavLinkQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type GlobalNavLinkQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
-
 type FooterQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type FooterQueryQuery = { readonly sitePage: Maybe<Pick<SitePage, 'id'>> };
+
+type GlobalNavLinkQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type GlobalNavLinkQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
 
 type GlobalHeaderQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6746,12 +6764,12 @@ type GlobalHeaderQueryQuery = { readonly allLocale: { readonly nodes: ReadonlyAr
 type Unnamed_8_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_8_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
+type Unnamed_8_Query = { readonly allLocale: { readonly nodes: ReadonlyArray<Pick<Locale, 'name' | 'locale' | 'localName' | 'hrefLang' | 'isDefault'>> } };
 
 type Unnamed_9_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_9_Query = { readonly allLocale: { readonly nodes: ReadonlyArray<Pick<Locale, 'name' | 'locale' | 'localName' | 'hrefLang' | 'isDefault'>> } };
+type Unnamed_9_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
 
 type Unnamed_10_QueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6774,12 +6792,22 @@ type Unnamed_13_QueryVariables = Exact<{ [key: string]: never; }>;
 type Unnamed_13_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
       Pick<SiteSiteMetadata, 'titleTemplate' | 'siteUrl'>
       & { defaultTitle: SiteSiteMetadata['title'] }
-    )> }>, readonly allLocale: { readonly nodes: ReadonlyArray<Pick<Locale, 'locale' | 'hrefLang' | 'isDefault'>> } };
+    )> }>, readonly allLocale: { readonly nodes: ReadonlyArray<Pick<Locale, 'locale' | 'hrefLang' | 'isDefault'>> }, readonly newRelicThemeConfig: Maybe<{ readonly signup: Maybe<Pick<NewRelicThemeSignupConfig, 'reCaptchaToken'>> }> };
 
 type Unnamed_14_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_14_Query = { readonly newRelicThemeConfig: Maybe<{ readonly tessen: Maybe<Pick<NewRelicThemeTessenConfig, 'product' | 'subproduct'>> }> };
+type Unnamed_14_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>>, readonly layout: Maybe<Pick<SiteLayout, 'mobileBreakpoint'>> }> };
+
+type BarQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BarQueryQuery = { readonly site: Maybe<{ readonly layout: Maybe<Pick<SiteLayout, 'mobileBreakpoint'>> }> };
+
+type Unnamed_15_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_15_Query = { readonly newRelicThemeConfig: Maybe<{ readonly tessen: Maybe<Pick<NewRelicThemeTessenConfig, 'product' | 'subproduct'>> }> };
 
 type Resources_pageFragment = { readonly frontmatter: Maybe<{ readonly resources: Maybe<ReadonlyArray<Maybe<Pick<MdxFrontmatterResources, 'title' | 'url'>>>> }>, readonly relatedResources: Maybe<ReadonlyArray<Pick<RelatedResource, 'title' | 'url'>>> };
 
