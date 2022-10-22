@@ -11,12 +11,12 @@ import * as styles from './index.module.scss';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import Video from '../components/Video';
 
-const NerdbytesPage = ({ location }) => {
+const DatabytesPage = ({ location }) => {
   return (
     <PageContext.Provider>
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="New Relic Nerd Bytes" />
+        <PageLayout.Header title="New Relic Data Bytes" />
 
         <PageLayout.Content>
           <section
@@ -31,7 +31,7 @@ const NerdbytesPage = ({ location }) => {
                   className={styles.externalLink}
                   to="https://www.youtube.com/playlist?list=PLmhYj7Jl81JEV-llIDkCVC05tD7fbOv_b"
                 >
-                  Nerd Bytes is a video series
+                  Data Bytes is a video series
                   <FeatherIcon
                     className={styles.externalLinkIcon}
                     name="external-link"
@@ -41,7 +41,7 @@ const NerdbytesPage = ({ location }) => {
                 and practitioners.
                 <br />
                 <br />
-                Nerd Bytes episodes are crowd sourced, super short, micro topic
+                Data Bytes episodes are crowd sourced, super short, micro topic
                 focused video screencast demos of tips, tricks, features,
                 functionality, news and ideas. Less formal than documentation,
                 easier to digest than a tutorial. Released regularly to keep New
@@ -54,7 +54,7 @@ const NerdbytesPage = ({ location }) => {
                   variant={Button.VARIANT.PRIMARY}
                   to="https://www.youtube.com/playlist?list=PLmhYj7Jl81JEV-llIDkCVC05tD7fbOv_b"
                 >
-                  Nerd Bytes playlist
+                  Data Bytes playlist
                 </Button>
               </p>
             </div>
@@ -65,26 +65,26 @@ const NerdbytesPage = ({ location }) => {
                 width: 100%;
               `}
             >
-              <Video id="sN5GpX0eWMc" type="youtube" />
+              <Video id="4U3Z0z_r6vk" type="youtube" />
             </div>
           </section>
 
           <section>
-            <h2>How to consume Nerd Bytes</h2>
+            <h2>How to consume Data Bytes</h2>
             <p>
-              Find the latest Nerd Bytes episode on the New Relic YouTube
+              Find the latest Data Bytes episode on the New Relic YouTube
               channel{' '}
               <Link
                 className={styles.externalLink}
                 to="https://www.youtube.com/playlist?list=PLmhYj7Jl81JEV-llIDkCVC05tD7fbOv_b"
               >
-                Nerd Bytes Playlist
+                Data Bytes Playlist
                 <FeatherIcon
                   className={styles.externalLinkIcon}
                   name="external-link"
                 />
               </Link>{' '}
-              We encourage you to subscribe to the Nerd Bytes RSS feed and add
+              We encourage you to subscribe to the Data Bytes RSS feed and add
               it to your Slack or Team channel. Fresh content will be delivered
               directly to you when it is published.
             </p>
@@ -149,8 +149,8 @@ const NerdbytesPage = ({ location }) => {
   );
 };
 
-NerdbytesPage.propTypes = {
+DatabytesPage.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-export default NerdbytesPage;
+export default DatabytesPage;
