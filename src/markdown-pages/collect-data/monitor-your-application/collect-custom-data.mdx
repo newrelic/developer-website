@@ -41,7 +41,7 @@ In _server/index.js_, update the code to add custom attributes on your server si
 
 <>
 
-``` node lineHighlight=61-73 fileName=server/index.js
+```js lineHighlight=61-73 fileName=server/index.js
 var newrelic = require('newrelic');
 var express = require('express');
 var fs = require('fs');
@@ -68,7 +68,6 @@ var removeMenuItems = function(restaurant) {
   return clone;
 };
 
-
 exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
   var app = express();
   var storage = new MemoryStorage();
@@ -86,7 +85,6 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
   app.get(API_URL, function(req, res, next) {
     res.status(200).send(storage.getAll().map(removeMenuItems))
   });
-
 
   app.post(API_URL, function(req, res, next) {
     var restaurant = new RestaurantRecord(req.body);
@@ -118,7 +116,6 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
     return res.status(201).send({ orderId: Date.now()});
   });
 
-
   app.get(API_URL_ID, function(req, res, next) {
     var restaurant = storage.getById(req.params.id);
 
@@ -128,7 +125,6 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
 
     return res.status(400).send({error: 'No restaurant with id "' + req.params.id + '"!'});
   });
-
 
   app.put(API_URL_ID, function(req, res, next) {
     var restaurant = storage.getById(req.params.id);
@@ -148,7 +144,6 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
     return res.status(400).send({error: errors});
   });
 
-
   app.delete(API_URL_ID, function(req, res, next) {
     if (storage.deleteById(req.params.id)) {
       return res.status(204).send(null);
@@ -157,10 +152,8 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
     return res.status(400).send({error: 'No restaurant with id "' + req.params.id + '"!'});
   });
 
-
   // only for running e2e tests
   app.use('/test/', express.static(TEST_DIR));
-
 
   // start the server
   // read the data from json and start the server
@@ -175,7 +168,6 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
     });
   });
 
-
   // Windows and Node.js before 0.8.9 would crash
   // https://github.com/joyent/node/issues/1553
   try {
@@ -188,7 +180,6 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
   } catch (e) {}
 
 };
-
 ```
 
 </>
@@ -204,12 +195,11 @@ In _app/js/services/cart.js_, update the code to add PageAction event.
 
 <>
 
-```node lineHighlight=60-67 fileName=app/js/services/cart.js
+```js lineHighlight=60-67 fileName=app/js/services/cart.js
 'use strict';
 
 foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $http, alert) {
   var self = this;
-
 
   self.add = function(item, restaurant) {
     if (!self.restaurant || !self.restaurant.id) {
@@ -237,7 +227,6 @@ foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $htt
     }
   };
 
-
   self.remove = function(item) {
     var index = self.items.indexOf(item);
     if (index >= 0) {
@@ -248,13 +237,11 @@ foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $htt
     }
   }
 
-
   self.total = function() {
     return self.items.reduce(function(sum, item) {
       return sum + Number(item.price * item.qty);
     }, 0);
   };
-
 
   self.submitOrder = function() {
     if (self.items.length) {
@@ -278,17 +265,14 @@ foodMeApp.service('cart', function Cart(localStorage, customer, $rootScope, $htt
     }
   }
 
-
   self.reset = function() {
     self.items = [];
     self.restaurant = {};
   };
 
-
   createPersistentProperty('items', 'fmCartItems', Array);
   createPersistentProperty('restaurant', 'fmCartRestaurant', Object);
   self.payment = {}; // don't keep CC info in localStorage
-
 
   function createPersistentProperty(localName, storageName, Type) {
     var json = localStorage[storageName];
