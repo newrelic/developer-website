@@ -45,15 +45,28 @@ const MainLayout = ({ children, pageContext }) => {
           display: ${isMobileNavOpen ? 'none' : 'grid'};
         `}
       >
-        <Layout.Sidebar>
+        <Layout.Sidebar
+          css={css`
+            background: var(--erno-black);
+            padding: 0.5rem 0;
+
+            span,
+            svg {
+              color: #afe2e3;
+            }
+          `}
+        >
           <div
             css={css`
-              background: var(--primary-background-color);
               position: sticky;
+              background: var(--erno-black);
               top: -2rem;
               z-index: 10;
               margin: -2rem -0.5rem 0rem;
               padding: 2rem 0.5rem 1rem;
+              width: var(--sidebar-width);
+              margin: -2rem -2rem 0rem;
+              padding: 2rem 2rem 1rem;
             `}
           >
             <Link
@@ -70,9 +83,24 @@ const MainLayout = ({ children, pageContext }) => {
               onClear={() => setSearchTerm('')}
               onChange={(e) => setSearchTerm(e.target.value)}
               value={searchTerm}
+              css={css`
+                svg {
+                  color: var(--primary-text-color);
+                }
+              `}
             />
           </div>
-          <Navigation searchTerm={searchTerm}>
+          <Navigation
+            css={css`
+              overflow-x: hidden;
+              -ms-overflow-style: none;
+              scrollbar-width: none;
+              &::-webkit-scrollbar {
+                display: none;
+              }
+            `}
+            searchTerm={searchTerm}
+          >
             {pages.map((page, idx) => (
               <NavItem key={idx} page={page} />
             ))}
