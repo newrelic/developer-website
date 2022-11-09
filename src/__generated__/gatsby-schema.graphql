@@ -1124,13 +1124,13 @@ type MdxFrontmatter {
   ): Date
   title: String!
   path: String
-  template: String
   description: String
+  template: String
+  redirects: [String]
+  duration: Int
   tileShorthand: MdxFrontmatterTileShorthand
   resources: [MdxFrontmatterResources]
   tags: [String]
-  redirects: [String]
-  duration: Int
   procIdx: Float
   promote: Boolean
 }
@@ -1660,13 +1660,13 @@ input MdxFrontmatterFilterInput {
   endDate: DateQueryOperatorInput
   title: StringQueryOperatorInput
   path: StringQueryOperatorInput
-  template: StringQueryOperatorInput
   description: StringQueryOperatorInput
+  template: StringQueryOperatorInput
+  redirects: StringQueryOperatorInput
+  duration: IntQueryOperatorInput
   tileShorthand: MdxFrontmatterTileShorthandFilterInput
   resources: MdxFrontmatterResourcesFilterListInput
   tags: StringQueryOperatorInput
-  redirects: StringQueryOperatorInput
-  duration: IntQueryOperatorInput
   procIdx: FloatQueryOperatorInput
   promote: BooleanQueryOperatorInput
 }
@@ -1931,16 +1931,16 @@ enum FileFieldsEnum {
   childrenMdx___frontmatter___endDate
   childrenMdx___frontmatter___title
   childrenMdx___frontmatter___path
-  childrenMdx___frontmatter___template
   childrenMdx___frontmatter___description
+  childrenMdx___frontmatter___template
+  childrenMdx___frontmatter___redirects
+  childrenMdx___frontmatter___duration
   childrenMdx___frontmatter___tileShorthand___title
   childrenMdx___frontmatter___tileShorthand___description
   childrenMdx___frontmatter___resources
   childrenMdx___frontmatter___resources___title
   childrenMdx___frontmatter___resources___url
   childrenMdx___frontmatter___tags
-  childrenMdx___frontmatter___redirects
-  childrenMdx___frontmatter___duration
   childrenMdx___frontmatter___procIdx
   childrenMdx___frontmatter___promote
   childrenMdx___slug
@@ -2038,16 +2038,16 @@ enum FileFieldsEnum {
   childMdx___frontmatter___endDate
   childMdx___frontmatter___title
   childMdx___frontmatter___path
-  childMdx___frontmatter___template
   childMdx___frontmatter___description
+  childMdx___frontmatter___template
+  childMdx___frontmatter___redirects
+  childMdx___frontmatter___duration
   childMdx___frontmatter___tileShorthand___title
   childMdx___frontmatter___tileShorthand___description
   childMdx___frontmatter___resources
   childMdx___frontmatter___resources___title
   childMdx___frontmatter___resources___url
   childMdx___frontmatter___tags
-  childMdx___frontmatter___redirects
-  childMdx___frontmatter___duration
   childMdx___frontmatter___procIdx
   childMdx___frontmatter___promote
   childMdx___slug
@@ -4756,16 +4756,16 @@ enum MdxFieldsEnum {
   frontmatter___endDate
   frontmatter___title
   frontmatter___path
-  frontmatter___template
   frontmatter___description
+  frontmatter___template
+  frontmatter___redirects
+  frontmatter___duration
   frontmatter___tileShorthand___title
   frontmatter___tileShorthand___description
   frontmatter___resources
   frontmatter___resources___title
   frontmatter___resources___url
   frontmatter___tags
-  frontmatter___redirects
-  frontmatter___duration
   frontmatter___procIdx
   frontmatter___promote
   slug

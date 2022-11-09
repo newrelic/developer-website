@@ -66,7 +66,6 @@ const MainLayout = ({ children, pageContext }) => {
               padding: 2rem 0.5rem 1rem;
               width: var(--sidebar-width);
               margin: -2rem -2rem 0rem;
-              padding: 2rem 2rem 1rem;
             `}
           >
             <Link
