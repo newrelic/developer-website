@@ -27,6 +27,7 @@ module.exports = {
         layout: {
           contentPadding: '2rem',
           maxWidth: '1700px',
+          sidebarWidth: '340px',
           component: require.resolve('./src/layouts'),
           mobileBreakpoint: '760px',
         },
