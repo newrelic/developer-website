@@ -1017,8 +1017,8 @@ type MdxFrontmatter = {
   readonly tileShorthand: Maybe<MdxFrontmatterTileShorthand>;
   readonly resources: Maybe<ReadonlyArray<Maybe<MdxFrontmatterResources>>>;
   readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly redirects: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly duration: Maybe<Scalars['Int']>;
+  readonly redirects: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly procIdx: Maybe<Scalars['Float']>;
   readonly promote: Maybe<Scalars['Boolean']>;
 };
@@ -1993,8 +1993,8 @@ type MdxFrontmatterFilterInput = {
   readonly tileShorthand: Maybe<MdxFrontmatterTileShorthandFilterInput>;
   readonly resources: Maybe<MdxFrontmatterResourcesFilterListInput>;
   readonly tags: Maybe<StringQueryOperatorInput>;
-  readonly redirects: Maybe<StringQueryOperatorInput>;
   readonly duration: Maybe<IntQueryOperatorInput>;
+  readonly redirects: Maybe<StringQueryOperatorInput>;
   readonly procIdx: Maybe<FloatQueryOperatorInput>;
   readonly promote: Maybe<BooleanQueryOperatorInput>;
 };
@@ -2294,8 +2294,8 @@ type FileFieldsEnum =
   | 'childrenMdx.frontmatter.resources.title'
   | 'childrenMdx.frontmatter.resources.url'
   | 'childrenMdx.frontmatter.tags'
-  | 'childrenMdx.frontmatter.redirects'
   | 'childrenMdx.frontmatter.duration'
+  | 'childrenMdx.frontmatter.redirects'
   | 'childrenMdx.frontmatter.procIdx'
   | 'childrenMdx.frontmatter.promote'
   | 'childrenMdx.slug'
@@ -2401,8 +2401,8 @@ type FileFieldsEnum =
   | 'childMdx.frontmatter.resources.title'
   | 'childMdx.frontmatter.resources.url'
   | 'childMdx.frontmatter.tags'
-  | 'childMdx.frontmatter.redirects'
   | 'childMdx.frontmatter.duration'
+  | 'childMdx.frontmatter.redirects'
   | 'childMdx.frontmatter.procIdx'
   | 'childMdx.frontmatter.promote'
   | 'childMdx.slug'
@@ -5735,8 +5735,8 @@ type MdxFieldsEnum =
   | 'frontmatter.resources.title'
   | 'frontmatter.resources.url'
   | 'frontmatter.tags'
-  | 'frontmatter.redirects'
   | 'frontmatter.duration'
+  | 'frontmatter.redirects'
   | 'frontmatter.procIdx'
   | 'frontmatter.promote'
   | 'slug'
@@ -6764,12 +6764,12 @@ type GlobalHeaderQueryQuery = { readonly allLocale: { readonly nodes: ReadonlyAr
 type Unnamed_8_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_8_Query = { readonly allLocale: { readonly nodes: ReadonlyArray<Pick<Locale, 'name' | 'locale' | 'localName' | 'hrefLang' | 'isDefault'>> } };
+type Unnamed_8_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
 
 type Unnamed_9_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_9_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
+type Unnamed_9_Query = { readonly allLocale: { readonly nodes: ReadonlyArray<Pick<Locale, 'name' | 'locale' | 'localName' | 'hrefLang' | 'isDefault'>> } };
 
 type Unnamed_10_QueryVariables = Exact<{ [key: string]: never; }>;
 

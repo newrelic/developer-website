@@ -3,18 +3,18 @@ duration: 15
 title: 'Explore your data using NRQL'
 template: 'GuideTemplate'
 description: 'Explore your data in New Relic using NRQL'
-procIdx: 4
+procIdx: 6
 ---
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic.
+This procedure is part of a lab that teaches you how to get started with New Relic to monitor your application.
 
-Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_instrument your application with our browser agent_](/collect-data/monitor-your-application/install-browser-agent), before starting this one.
+Each procedure in the lab builds upon the last, so make sure you'v instrumented your application with our [APM](/collect-data/monitor-your-application/install-apm) and [browser](/collect-data/monitor-your-application/install-browser-agent) agents, before starting this one.
 
 </Callout>
 
-With your app reporting data to New Relic, you want to understand the collected data and get insights into your app. For example, you want to know how many users are active on your site. For that, you explore your data using [NRQL](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language/), New Relic's query language; gather it; and visualize it in interactive charts.
+With your app reporting data to New Relic, you now have insights into your app.But you want to understand the collected data better. For example, you want to know how many users are active on your site. For that, you explore your data using [NRQL](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language/), New Relic's query language; gather it; and visualize it in interactive charts.
 
 In this procedure, you explore your data in New Relic. Specifically, you:
 
@@ -41,7 +41,7 @@ NRQL is New Relic's SQL-like query language. Read our [documentation](https://do
 
 <Step>
 
-Navigate to [New Relic](https://one.newrelic.com/) and sign in with your account. On the top navigation bar, click **Query your data**.
+Navigate to [New Relic](https://one.newrelic.com/) and sign in with your account. From the left navigation bar, click **Query builder**.
 
 ![Arrow pointing to Query your data](../../../images/foodme/query-your-data.png)
 
@@ -51,20 +51,12 @@ This opens an interactive **Query builder** to explore your data.
 
 <Step>
 
-Click **NRQL** to use a custom query.
-
-![Arrow pointing to NRQL](../../../images/foodme/nrql.png)
-
-</Step>
-
-<Step>
-
-Execute the following query to view `PageView` records for your app.
+Here, execute the following query to view `PageView` records for your app.
 
 <>
 
 ```sql
-SELECT * FROM PageView WHERE appName='food-me'
+SELECT * FROM PageView WHERE appName='Relicstraunts'
 ```
 
 </>
@@ -82,7 +74,7 @@ Use the following query to count your active sessions.
 <>
 
 ```sql
-FROM PageView SELECT count(session) WHERE appName='food-me'
+FROM PageView SELECT count(session) WHERE appName='Relicstraunts'
 ```
 
 </>
@@ -98,12 +90,12 @@ Use the following query to view all your transactions.
 <>
 
 ```sql
-SELECT * FROM Transaction WHERE appName='food-me'
+SELECT * FROM Transaction WHERE appName='Relicstraunts'
 ```
 
 </>
 
-Here, you see all your transactions for food-me app.
+Here, you see all your transactions for Relicstraunts app.
 
 ![view all your transactions](../../../images/foodme/view-transactions.png)
 
@@ -114,12 +106,12 @@ Use the following query to count your total transactions.
 <>
 
 ```sql
-SELECT count(*) FROM Transaction WHERE appName='food-me'
+SELECT count(*) FROM Transaction WHERE appName='Relicstraunts'
 ```
 
 </>
 
-Here, you see the total number of transactions for your food-me app.
+Here, you see the total number of transactions for your Relicstraunts app.
 
 ![count total transactions](../../../images/foodme/count-all-transactions.png)
 
@@ -130,7 +122,7 @@ Execute the following query to view your slowest transactions.
 <>
 
 ```sql
-SELECT max(duration) FROM Transaction Where appName='food-me' FACET name
+SELECT max(duration) FROM Transaction Where appName='Relicstraunts' FACET name
 ```
 
 </>
@@ -139,7 +131,7 @@ Here, you see your slowest transactions.
 
 ![view your slowest transactions](../../../images/foodme/slowest-transactions.png)
 
-The chart is hard to see in this format. You can choose to present your results in different formats such as table, billboard, or pie chart.
+The chart is hard to see in this format. You can choose to present your results in different formats such as bar, table, or pie chart.
 
 Change the chart type to **Pie**.
 
@@ -156,7 +148,7 @@ Use the following query to view all your transactions with different response co
 <>
 
 ```sql
-SELECT count(*) FROM Transaction WHERE http.statusCode!='200' FACET http.statusCode
+SELECT count(*) FROM Transaction WHERE appName='Relicstraunts' AND http.statusCode!='200' FACET http.statusCode
 ```
 
 </>
@@ -167,10 +159,12 @@ SELECT count(*) FROM Transaction WHERE http.statusCode!='200' FACET http.statusC
 
 </Steps>
 
-You've now seen your application's performance data. Next, you collect custom business data from your application.
+You've now seen your application's performance data. 
 
-<Callout variant="course" title="lab">
+## Homework
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic. Now that you've explored your application's performance related data, [collect custom business data from your application](/collect-data/monitor-your-application/collect-custom-data).
+Well done! Now that you've gotten a jump start with New Relic to monitor your application, here are some docs that will help you take the next steps on your journey.
 
-</Callout>
+- [Introduction to APM](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/introduction-apm)
+- [Introduction to browser monitoring](https://docs.newrelic.com/docs/browser/browser-monitoring/getting-started/introduction-browser-monitoring)
+- [Introduction to alerts and applied intelligence](https://docs.newrelic.com/docs/alerts-applied-intelligence/overview)

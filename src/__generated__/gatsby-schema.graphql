@@ -1127,8 +1127,8 @@ type MdxFrontmatter {
   tileShorthand: MdxFrontmatterTileShorthand
   resources: [MdxFrontmatterResources]
   tags: [String]
-  redirects: [String]
   duration: Int
+  redirects: [String]
   procIdx: Float
   promote: Boolean
 }
@@ -1652,8 +1652,8 @@ input MdxFrontmatterFilterInput {
   tileShorthand: MdxFrontmatterTileShorthandFilterInput
   resources: MdxFrontmatterResourcesFilterListInput
   tags: StringQueryOperatorInput
-  redirects: StringQueryOperatorInput
   duration: IntQueryOperatorInput
+  redirects: StringQueryOperatorInput
   procIdx: FloatQueryOperatorInput
   promote: BooleanQueryOperatorInput
 }
@@ -1926,8 +1926,8 @@ enum FileFieldsEnum {
   childrenMdx___frontmatter___resources___title
   childrenMdx___frontmatter___resources___url
   childrenMdx___frontmatter___tags
-  childrenMdx___frontmatter___redirects
   childrenMdx___frontmatter___duration
+  childrenMdx___frontmatter___redirects
   childrenMdx___frontmatter___procIdx
   childrenMdx___frontmatter___promote
   childrenMdx___slug
@@ -2033,8 +2033,8 @@ enum FileFieldsEnum {
   childMdx___frontmatter___resources___title
   childMdx___frontmatter___resources___url
   childMdx___frontmatter___tags
-  childMdx___frontmatter___redirects
   childMdx___frontmatter___duration
+  childMdx___frontmatter___redirects
   childMdx___frontmatter___procIdx
   childMdx___frontmatter___promote
   childMdx___slug
@@ -4732,8 +4732,8 @@ enum MdxFieldsEnum {
   frontmatter___resources___title
   frontmatter___resources___url
   frontmatter___tags
-  frontmatter___redirects
   frontmatter___duration
+  frontmatter___redirects
   frontmatter___procIdx
   frontmatter___promote
   slug

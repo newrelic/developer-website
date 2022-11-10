@@ -2,19 +2,19 @@
 duration: 15
 title: 'Add alerts'
 template: 'GuideTemplate'
-description: 'Add alerts to your FoodMe app'
-procIdx: 7
+description: 'Add alerts to your Relicstaurants app'
+procIdx: 4
 ---
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic.
+This procedure is part of a lab that teaches you how to get started with New Relic to monitor your application.
 
 Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_Query custom Business Data_](/collect-data/monitor-your-application/query-custom-data), before starting this one.
 
 </Callout>
 
-With your app reporting performance and custom business data, you now have full visibility in your application. Happy with your current experinece, you came to know about New Relic alerts, and you've decided to add them.
+With your app reporting server and browser-side performance data, you now have full visibility in your application. Happy with your current experinece, you came to know about New Relic alerts, and you've decided to add them.
 
 With alerts, you monitor your services and receive notifications about problems that you're interested in, so that you can react fast to troubleshoot and resolve them.
 
@@ -22,90 +22,178 @@ With alerts, you monitor your services and receive notifications about problems 
 
 Before you set alert conditions, you must create a policy.
 
-From **Alerts & AI**, go to **Alert conditions (Policies)** from the left-hand navigation. Then, click **New alert policy**.
+<Steps>
+
+<Step>
+
+If you're not already logged in, navigate to [New Relic](https://one.newrelic.com/), and sign in with your account.
+
+</Step>
+
+<Step>
+
+From **Alerts & AI**, go to **Alert conditions (Policies)** from the left-hand navigation. Here, you see different options to create a new alert policy or browse pre-built ones.
+
+Click **Browse pre-built alerts**.
 
 ![new alert policy](../../../images/foodme/new-alert-policy.png)
 
-Name your policy "FoodMe alert policy" alert policy. Use the default values for the rest of the fields, and click **Create alert policy** at the end of the page.
+</Step>
 
-![create an alert policy](../../../images/foodme/create-alert-policy.png)
+<Step>
 
-The next step is to add conditions to the alert policy.
+Under **Application monitoring**, choose **Node.js alert policy**. 
+
+![arrow pointing to node js alert policy](../../../images/foodme/node-alert-policy.png)
+
+This alert policy help you monitor your Node.js applications and provide you folloiwng pre-configured alert conditions:
+
+- High CPU Utilization
+- Memory Usage
+- Transaction Errors
+- Apdex score 
+
+</Step>
+
+<Step>
+
+On the next page, select your account from the dropdown and click **Done** since your Node.js application is already running. 
+
+![setup Node.js alert policy](../../../images/foodme/setup-node-policy.png)
+
+This will create your alert policy. Click **View alert policy**. 
+
+![view your alert policy](../../../images/foodme/view-alert-policy.png)
+
+<Step>
+
+Rename your alert policy to "Relicstaurants alert policy".
+
+![relicstaurants alert policy](../../../images/foodme/relicstaurants-alert-policy.png)
+
+</Step>
+
+</Step>
+
+</Steps>
+
+Your Relicstaurants alert policy is now setup. Next you add a custom alert condition to this policy.
 
 ## Create alert conditions
 
-You're going to add the following alert conditions:
-- Low Apdex score
-- High page load time
-
-### Create a low Apdex score alert condition
-
-Under **FoodMe alert policy**, click **Create a condition**.
-
-![create alert condition](../../../images/foodme/create-a-condition.png)
-
-Here, select **APM** > **Application metric** and **Scope to the application**. Then, click **Next, select entities**.
-
-![Choose category for new condition](../../../images/foodme/new-condition-category.png)
-
-Under **Select entities**, select your **food-me** application, and click **Next, define thresholds**.
-
-![Select entities for new condition](../../../images/foodme/select-entities.png)
-
-You want to be notified when your application's Apdex score is below 0.85 for 5 minutes. Adjust threshold, and name your condition **Low Apdex score**.
-
-![Select thresholds for new condition](../../../images/foodme/critical-threshold.png)
-
-Add a warning threshold of 0.9, and click **Create condition**.
-
-![Add warning threshold for new condition](../../../images/foodme/add-warning-threshold.png)
-
-You can now find this alert condition under FoodMe alert policy.
+You're going to add a "High page load time" alert condition to your newly created policy. 
 
 ### Create a high page load time condition
 
-Add another condition under the same policy by clicking **Add a condition**.
+<Steps>
 
-![Add a new condition](../../../images/foodme/add-another-condition.png)
+<Step>
 
-Here, select **Browser** > **Metric**, and click **Next, select entities**.
+From **Alert conditions (Policies)**, click **New alert condition**.
 
-![Browser category condition](../../../images/foodme/categorize-browser.png)
+![Add a new condition](../../../images/foodme/new-alert-condition.png)
 
-Under **Select entities**, select your **food-me** application, and click **Next, define thresholds**.
+This takes you to **Create an alert condition** page where you use NRQL to define your alert condition.
 
-![Select entities for new condition](../../../images/foodme/choose-entities.png)
+<Callout variant='tip'>
 
-You want New Relic to alert you when your page takes longer than 2 seconds to load at least once in 5 minutes.
+NRQL is New Relic's SQL-like query language. Read our [documentation](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language/) to know more about what it is and when to use it.
 
-Adjust the threshold, and name your condition **High page load time**. Then, click **Create conditions**.
+</Callout>
 
-![Create high page load alert conditions](../../../images/foodme/high-page-load-condition.png)
+</Step>
 
-## Add a notification channel
+<Step>
 
-To receive notifications for any opened violations, you also need to add a notification channel.
+Name your condition **High page load time**.
 
-First, move to the **Notification channels** tab, and click **Add notification channels**.
+![Name your condition](../../../images/foodme/name-your-condition.png)
 
-![add notification channel](../../../images/foodme/add-notification-channel.png)
+</Step>
 
-From the list of channel options, click **Email**.
+Use the following NRQL to set up alert for high load load time. 
+
+<>
+
+```sql
+SELECT average(duration) FROM BrowserInteraction WHERE appName='Relicstraunts'
+```
+
+</>
+
+![NRQL alert condition](../../../images/foodme/high-page-load-nrql.png)
+
+<Step>
+
+You want New Relic to alert you when your page takes longer than 1.5 seconds to load at least once in 2 minutes. Scroll down to **Set your condition thresholds** to adjust thresholds.
+
+![Adjust thresholds](../../../images/foodme/adjust-thresholds.png)
+
+</Step>
+
+<Step>
+
+Under **Connect your condition to a policy**, choose "Relicstaurants alert policy" from the dropdown and click **Save condition**. 
+
+![Arrow pointing to save condition](../../../images/foodme/save-condition.png)
+
+</Step>
+
+Your "High page load time" condition is not added to existing **Relicstaurants alert policy**.
+
+![Updated Relicstaurants alert policy](../../../images/foodme/relicstaurants-alert-policy-updated.png)
+
+</Steps>
+
+## Add a notification workflow
+
+To receive notifications for any opened violations, you also need to create a notification workflow.
+
+<Steps>
+
+<Step>
+
+First, move to the **Notification settings** tab, and click **Create workflow**.
+
+![add notification workflow](../../../images/foodme/add-notification-workflow.png)
+
+</Step>
+
+<Step>
+
+This takes you to **Create a new workflow to get notified** page. From the list of channel options, click Email.
 
 ![email notification channel](../../../images/foodme/email-notification-channel.png)
 
-Select the email where you want to receive your notifications, and click **Update policy**.
+</Step>
 
-![update policy](../../../images/foodme/update-policy.png)
+<Step>
 
-Now, you have a notification channel.
+Enter the email you want to receive your notifications on, update the **Email subject** and click **Save**.
 
-During this procedure, you created an alert policy and added "low Apdex score" and "high page load time" conditions to it. You also added a notification channel to receive notifications about any opened violations.
+![save workflow](../../../images/foodme/save-workflow.png)
 
-## Homework
+</Step>
 
-Well done! Now that you've gotten a jump start with New Relic to monitor your application, here are some docs that will help you take the next steps on your journey.
+<Step>
 
-- [Introduction to APM](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/introduction-apm)
-- [Introduction to browser monitoring](https://docs.newrelic.com/docs/browser/browser-monitoring/getting-started/introduction-browser-monitoring)
-- [Introduction to alerts and applied intelligence](https://docs.newrelic.com/docs/alerts-applied-intelligence/overview)
+This takes you back to **Create a new workflow to get notified** page where you see the notification channel is now added. Next, click **Activate workflow**.
+
+![activate workflow](../../../images/foodme/activate-workflow.png)
+
+</Step>
+
+You see the workflow under **Notification settings** now.
+
+![notification settings](../../../images/foodme/notification-settings.png)
+
+</Steps>
+
+During this procedure, you created an alert policy and added a "high page load time" conditions to it. You also added a notification channel to receive notifications about any opened violations.
+
+<Callout variant="course" title="lab">
+
+This procedure is part of a lab that teaches you how to get started with New Relic to monitor your application. Now that you've set up alerts, [see your data in action](/collect-data/monitor-your-application/data-in-action).
+
+</Callout>
+
