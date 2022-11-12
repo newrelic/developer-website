@@ -1122,8 +1122,8 @@ type MdxFrontmatter {
   ): Date
   title: String!
   path: String
-  template: String
   description: String
+  template: String
   tileShorthand: MdxFrontmatterTileShorthand
   resources: [MdxFrontmatterResources]
   tags: [String]
@@ -1647,8 +1647,8 @@ input MdxFrontmatterFilterInput {
   endDate: DateQueryOperatorInput
   title: StringQueryOperatorInput
   path: StringQueryOperatorInput
-  template: StringQueryOperatorInput
   description: StringQueryOperatorInput
+  template: StringQueryOperatorInput
   tileShorthand: MdxFrontmatterTileShorthandFilterInput
   resources: MdxFrontmatterResourcesFilterListInput
   tags: StringQueryOperatorInput
@@ -1918,8 +1918,8 @@ enum FileFieldsEnum {
   childrenMdx___frontmatter___endDate
   childrenMdx___frontmatter___title
   childrenMdx___frontmatter___path
-  childrenMdx___frontmatter___template
   childrenMdx___frontmatter___description
+  childrenMdx___frontmatter___template
   childrenMdx___frontmatter___tileShorthand___title
   childrenMdx___frontmatter___tileShorthand___description
   childrenMdx___frontmatter___resources
@@ -2025,8 +2025,8 @@ enum FileFieldsEnum {
   childMdx___frontmatter___endDate
   childMdx___frontmatter___title
   childMdx___frontmatter___path
-  childMdx___frontmatter___template
   childMdx___frontmatter___description
+  childMdx___frontmatter___template
   childMdx___frontmatter___tileShorthand___title
   childMdx___frontmatter___tileShorthand___description
   childMdx___frontmatter___resources
@@ -4724,8 +4724,8 @@ enum MdxFieldsEnum {
   frontmatter___endDate
   frontmatter___title
   frontmatter___path
-  frontmatter___template
   frontmatter___description
+  frontmatter___template
   frontmatter___tileShorthand___title
   frontmatter___tileShorthand___description
   frontmatter___resources

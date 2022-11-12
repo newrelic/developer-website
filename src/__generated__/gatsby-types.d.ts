@@ -1012,8 +1012,8 @@ type MdxFrontmatter = {
   readonly endDate: Maybe<Scalars['Date']>;
   readonly title: Scalars['String'];
   readonly path: Maybe<Scalars['String']>;
-  readonly template: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly template: Maybe<Scalars['String']>;
   readonly tileShorthand: Maybe<MdxFrontmatterTileShorthand>;
   readonly resources: Maybe<ReadonlyArray<Maybe<MdxFrontmatterResources>>>;
   readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
@@ -1988,8 +1988,8 @@ type MdxFrontmatterFilterInput = {
   readonly endDate: Maybe<DateQueryOperatorInput>;
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly path: Maybe<StringQueryOperatorInput>;
-  readonly template: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
+  readonly template: Maybe<StringQueryOperatorInput>;
   readonly tileShorthand: Maybe<MdxFrontmatterTileShorthandFilterInput>;
   readonly resources: Maybe<MdxFrontmatterResourcesFilterListInput>;
   readonly tags: Maybe<StringQueryOperatorInput>;
@@ -2286,8 +2286,8 @@ type FileFieldsEnum =
   | 'childrenMdx.frontmatter.endDate'
   | 'childrenMdx.frontmatter.title'
   | 'childrenMdx.frontmatter.path'
-  | 'childrenMdx.frontmatter.template'
   | 'childrenMdx.frontmatter.description'
+  | 'childrenMdx.frontmatter.template'
   | 'childrenMdx.frontmatter.tileShorthand.title'
   | 'childrenMdx.frontmatter.tileShorthand.description'
   | 'childrenMdx.frontmatter.resources'
@@ -2393,8 +2393,8 @@ type FileFieldsEnum =
   | 'childMdx.frontmatter.endDate'
   | 'childMdx.frontmatter.title'
   | 'childMdx.frontmatter.path'
-  | 'childMdx.frontmatter.template'
   | 'childMdx.frontmatter.description'
+  | 'childMdx.frontmatter.template'
   | 'childMdx.frontmatter.tileShorthand.title'
   | 'childMdx.frontmatter.tileShorthand.description'
   | 'childMdx.frontmatter.resources'
@@ -5727,8 +5727,8 @@ type MdxFieldsEnum =
   | 'frontmatter.endDate'
   | 'frontmatter.title'
   | 'frontmatter.path'
-  | 'frontmatter.template'
   | 'frontmatter.description'
+  | 'frontmatter.template'
   | 'frontmatter.tileShorthand.title'
   | 'frontmatter.tileShorthand.description'
   | 'frontmatter.resources'
@@ -6739,12 +6739,17 @@ type Unnamed_5_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pic
 type Unnamed_6_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_6_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'repository' | 'branch'>> }> };
+type Unnamed_6_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'repository'>> }> };
 
 type Unnamed_7_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_7_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'repository'>> }> };
+type Unnamed_7_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'repository' | 'branch'>> }> };
+
+type GlobalHeaderQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type GlobalHeaderQueryQuery = { readonly allLocale: { readonly nodes: ReadonlyArray<Pick<Locale, 'locale' | 'localName' | 'isDefault'>> }, readonly site: Maybe<{ readonly layout: Maybe<Pick<SiteLayout, 'mobileBreakpoint'>> }> };
 
 type FooterQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6755,11 +6760,6 @@ type GlobalNavLinkQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type GlobalNavLinkQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
-
-type GlobalHeaderQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type GlobalHeaderQueryQuery = { readonly allLocale: { readonly nodes: ReadonlyArray<Pick<Locale, 'locale' | 'localName' | 'isDefault'>> }, readonly site: Maybe<{ readonly layout: Maybe<Pick<SiteLayout, 'mobileBreakpoint'>> }> };
 
 type Unnamed_8_QueryVariables = Exact<{ [key: string]: never; }>;
 

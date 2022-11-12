@@ -21,6 +21,10 @@
           url: '/collect-data/monitor-your-application/data-in-action'
         - title: Explore your data using NRQL
           url: '/collect-data/monitor-your-application/explore-your-data'
+        - title: Collect custom business data
+          url: '/collect-data/monitor-your-application/collect-custom-data'
+        - title: Create a custom dashboard
+          url: '/collect-data/monitor-your-application/query-custom-data'
     - title: Monitor your network devices
       url: '/collect-data/network-performance-monitoring'
     - title: Identify root cause issues in your infrastructure
