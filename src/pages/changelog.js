@@ -4,7 +4,6 @@ import { css } from '@emotion/react';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
-import MarketoForm from '../components/MarketoForm';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Link } from 'gatsby';
@@ -54,7 +53,7 @@ const NerdlogPage = ({ location }) => {
           </section>
           <Section>
             <SectionHeading>
-              Get weekly product updates, watch demos, and
+              Get product updates, watch demos, and
               <br /> share tips and tricks{' '}
             </SectionHeading>
             <SectionDescription>
@@ -97,40 +96,14 @@ const NerdlogPage = ({ location }) => {
                     <br />
                   </ul>
                 </div>
-                <div style={{ display: 'none' }}>
-                  <h2>Join us live every Thursday!</h2>
-                  <ul>
-                    <li>
-                      <strong>Where:</strong> Follow us on{' '}
-                      <a href="https://www.twitch.tv/new_relic">Twitch</a>
-                    </li>
-                    <li>
-                      <strong>Date:</strong> 12 P.M. PT (8 P.M. UTC)
-                    </li>
-                  </ul>
+                <div>
                   <p>
-                    <strong>Can’t make it?</strong> We’ll miss you, but checkout
-                    our playlist on{' '}
-                    <a href="https://www.youtube.com/playlist?list=PLmhYj7Jl81JGOEHV7zUVfa_iGNyOfMGNh">
+                    <strong>Checkout our playlist on</strong>{' '}
+                    <a href="https://www.youtube.com/playlist?list=PLmhYj7Jl81JEIOsmCBtTv8TDdzEqqQ8K9">
                       YouTube.
                     </a>
                   </p>
                 </div>
-              </div>
-              <div>
-                <h3>Get Reminders</h3>
-                <p>
-                  Enter your email address to get notified before our next
-                  episode of the Nerdlog and information about our previous
-                  ones.
-                </p>
-                <MarketoForm
-                  id={2058}
-                  title="changelog Weekly Email"
-                  munchkinId="341-XKP-310"
-                  publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
-                  redirectLink="/changelog-thank-you"
-                />
               </div>
             </div>
           </Section>
