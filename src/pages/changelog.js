@@ -53,57 +53,45 @@ const NerdlogPage = ({ location }) => {
           </section>
           <Section>
             <SectionHeading>
-              Get product updates, watch demos, and
-              <br /> share tips and tricks{' '}
+              Learn about our latest innovations from the product managers and
+              engineers
+              <br /> who are building the future of New Relic{' '}
             </SectionHeading>
             <SectionDescription>
-              Watch and engage with New Relic product managers and engineers who
-              are building the future of New Relic
+              Get behind-the-scenes insight and detailed demonstrations of our
+              latest features and integrations
             </SectionDescription>
             <div
               className={cx(styles.twoColumnAlt, styles.registrationSection)}
             >
               <div>
-                <h2>What is the New Relic Changelog?</h2>
                 <div>
-                  <ul>
-                    <li>
-                      <strong>
-                        Learn about the latest features from the people who
-                        built them
-                      </strong>
-                      <br />
-                      Watch New Relic product managers and engineers play with
-                      the latest features and integrations to help you navigate
-                      New Relic like a pro.
-                    </li>
-                    <li>
-                      <strong>
-                        Get some knowledge, a little inspiration, and a whole
-                        lot of answers
-                      </strong>
-                      <br />
-                      Walk away with tons of resources, projects with
-                      step-by-step instructions, and all your questions
-                      answered.
-                    </li>
-                    <li>
-                      <strong>Connect with other engineers </strong>
-                      <br />
-                      Share your experiences with other New Relic users and have
-                      fun as you learn about observability.{' '}
-                    </li>
-                    <br />
-                  </ul>
+                  Watch New Relic product managers and engineers play with the
+                  latest features and integrations to help you navigate New
+                  Relic like a pro.
+                  <br />
                 </div>
                 <div>
                   <p>
-                    <strong>Checkout our playlist on</strong>{' '}
-                    <a href="https://www.youtube.com/playlist?list=PLmhYj7Jl81JEIOsmCBtTv8TDdzEqqQ8K9">
-                      YouTube.
+                    Looking for more info on our latest updates and releases?
+                    Check out
+                    <a href="https://docs.newrelic.com/whats-new/">
+                      "What's new in New Relic"
                     </a>
+                    .
                   </p>
                 </div>
+              </div>
+              <div>
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/videoseries?list=PLmhYj7Jl81JEIOsmCBtTv8TDdzEqqQ8K9"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
             </div>
           </Section>
