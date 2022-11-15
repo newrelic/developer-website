@@ -34,28 +34,6 @@ module.exports = {
         prism: {
           languages: ['yaml', 'sass', 'scss', 'java'],
         },
-        splitio: {
-          core: {
-            authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
-          },
-          features: {
-            free_account_button_color: {
-              treatment: 'off',
-            },
-          },
-          env: {
-            development: {
-              features: {
-                'developer-website_global-header-gh-buttons': 'on',
-                'developer-website_right-rail-buttons': 'outline',
-                super_tiles: 'on',
-              },
-              core: {
-                authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
-              },
-            },
-          },
-        },
         relatedResources: {
           swiftype: {
             resultsPath: `${__dirname}/src/data/related-pages.json`,
