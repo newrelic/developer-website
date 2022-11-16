@@ -1124,13 +1124,13 @@ type MdxFrontmatter {
   ): Date
   title: String!
   path: String
-  description: String
   template: String
-  redirects: [String]
-  duration: Int
+  description: String
   tileShorthand: MdxFrontmatterTileShorthand
   resources: [MdxFrontmatterResources]
   tags: [String]
+  duration: Int
+  redirects: [String]
   procIdx: Float
   promote: Boolean
 }
@@ -1172,8 +1172,6 @@ type NewRelicThemeConfig implements Node {
   relatedResources: NewRelicThemeRelatedResourceConfig!
   tessen: NewRelicThemeTessenConfig
   signup: NewRelicThemeSignupConfig
-  shouldUpdateScroll: RoutesAllowingScroll
-  feedback: NewRelicThemeFeedbackConfig
   id: ID!
   parent: Node
   children: [Node!]!
@@ -1198,15 +1196,6 @@ type NewRelicThemeSignupConfig {
   environment: String!
   reCaptchaToken: String!
   signupURL: String!
-}
-
-type NewRelicThemeFeedbackConfig {
-  environment: String!
-  reCaptchaToken: String!
-}
-
-type RoutesAllowingScroll {
-  routes: [String!]
 }
 
 type MarkdownHeading {
@@ -1478,7 +1467,7 @@ type Query {
   allLocale(filter: LocaleFilterInput, sort: LocaleSortInput, skip: Int, limit: Int): LocaleConnection!
   relatedResource(id: StringQueryOperatorInput, title: StringQueryOperatorInput, url: StringQueryOperatorInput, plugin: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): RelatedResource
   allRelatedResource(filter: RelatedResourceFilterInput, sort: RelatedResourceSortInput, skip: Int, limit: Int): RelatedResourceConnection!
-  newRelicThemeConfig(env: StringQueryOperatorInput, relatedResources: NewRelicThemeRelatedResourceConfigFilterInput, tessen: NewRelicThemeTessenConfigFilterInput, signup: NewRelicThemeSignupConfigFilterInput, shouldUpdateScroll: RoutesAllowingScrollFilterInput, feedback: NewRelicThemeFeedbackConfigFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): NewRelicThemeConfig
+  newRelicThemeConfig(env: StringQueryOperatorInput, relatedResources: NewRelicThemeRelatedResourceConfigFilterInput, tessen: NewRelicThemeTessenConfigFilterInput, signup: NewRelicThemeSignupConfigFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): NewRelicThemeConfig
   allNewRelicThemeConfig(filter: NewRelicThemeConfigFilterInput, sort: NewRelicThemeConfigSortInput, skip: Int, limit: Int): NewRelicThemeConfigConnection!
   markdownRemark(id: StringQueryOperatorInput, html: StringQueryOperatorInput, htmlAst: JSONQueryOperatorInput, excerpt: StringQueryOperatorInput, excerptAst: JSONQueryOperatorInput, headings: MarkdownHeadingFilterListInput, timeToRead: IntQueryOperatorInput, tableOfContents: StringQueryOperatorInput, wordCount: MarkdownWordCountFilterInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): MarkdownRemark
   allMarkdownRemark(filter: MarkdownRemarkFilterInput, sort: MarkdownRemarkSortInput, skip: Int, limit: Int): MarkdownRemarkConnection!
@@ -1660,13 +1649,13 @@ input MdxFrontmatterFilterInput {
   endDate: DateQueryOperatorInput
   title: StringQueryOperatorInput
   path: StringQueryOperatorInput
-  description: StringQueryOperatorInput
   template: StringQueryOperatorInput
-  redirects: StringQueryOperatorInput
-  duration: IntQueryOperatorInput
+  description: StringQueryOperatorInput
   tileShorthand: MdxFrontmatterTileShorthandFilterInput
   resources: MdxFrontmatterResourcesFilterListInput
   tags: StringQueryOperatorInput
+  duration: IntQueryOperatorInput
+  redirects: StringQueryOperatorInput
   procIdx: FloatQueryOperatorInput
   promote: BooleanQueryOperatorInput
 }
@@ -1931,16 +1920,16 @@ enum FileFieldsEnum {
   childrenMdx___frontmatter___endDate
   childrenMdx___frontmatter___title
   childrenMdx___frontmatter___path
-  childrenMdx___frontmatter___description
   childrenMdx___frontmatter___template
-  childrenMdx___frontmatter___redirects
-  childrenMdx___frontmatter___duration
+  childrenMdx___frontmatter___description
   childrenMdx___frontmatter___tileShorthand___title
   childrenMdx___frontmatter___tileShorthand___description
   childrenMdx___frontmatter___resources
   childrenMdx___frontmatter___resources___title
   childrenMdx___frontmatter___resources___url
   childrenMdx___frontmatter___tags
+  childrenMdx___frontmatter___duration
+  childrenMdx___frontmatter___redirects
   childrenMdx___frontmatter___procIdx
   childrenMdx___frontmatter___promote
   childrenMdx___slug
@@ -2038,16 +2027,16 @@ enum FileFieldsEnum {
   childMdx___frontmatter___endDate
   childMdx___frontmatter___title
   childMdx___frontmatter___path
-  childMdx___frontmatter___description
   childMdx___frontmatter___template
-  childMdx___frontmatter___redirects
-  childMdx___frontmatter___duration
+  childMdx___frontmatter___description
   childMdx___frontmatter___tileShorthand___title
   childMdx___frontmatter___tileShorthand___description
   childMdx___frontmatter___resources
   childMdx___frontmatter___resources___title
   childMdx___frontmatter___resources___url
   childMdx___frontmatter___tags
+  childMdx___frontmatter___duration
+  childMdx___frontmatter___redirects
   childMdx___frontmatter___procIdx
   childMdx___frontmatter___promote
   childMdx___slug
@@ -4401,15 +4390,6 @@ input NewRelicThemeSignupConfigFilterInput {
   signupURL: StringQueryOperatorInput
 }
 
-input RoutesAllowingScrollFilterInput {
-  routes: StringQueryOperatorInput
-}
-
-input NewRelicThemeFeedbackConfigFilterInput {
-  environment: StringQueryOperatorInput
-  reCaptchaToken: StringQueryOperatorInput
-}
-
 type NewRelicThemeConfigConnection {
   totalCount: Int!
   edges: [NewRelicThemeConfigEdge!]!
@@ -4438,9 +4418,6 @@ enum NewRelicThemeConfigFieldsEnum {
   signup___environment
   signup___reCaptchaToken
   signup___signupURL
-  shouldUpdateScroll___routes
-  feedback___environment
-  feedback___reCaptchaToken
   id
   parent___id
   parent___parent___id
@@ -4548,8 +4525,6 @@ input NewRelicThemeConfigFilterInput {
   relatedResources: NewRelicThemeRelatedResourceConfigFilterInput
   tessen: NewRelicThemeTessenConfigFilterInput
   signup: NewRelicThemeSignupConfigFilterInput
-  shouldUpdateScroll: RoutesAllowingScrollFilterInput
-  feedback: NewRelicThemeFeedbackConfigFilterInput
   id: StringQueryOperatorInput
   parent: NodeFilterInput
   children: NodeFilterListInput
@@ -4756,16 +4731,16 @@ enum MdxFieldsEnum {
   frontmatter___endDate
   frontmatter___title
   frontmatter___path
-  frontmatter___description
   frontmatter___template
-  frontmatter___redirects
-  frontmatter___duration
+  frontmatter___description
   frontmatter___tileShorthand___title
   frontmatter___tileShorthand___description
   frontmatter___resources
   frontmatter___resources___title
   frontmatter___resources___url
   frontmatter___tags
+  frontmatter___duration
+  frontmatter___redirects
   frontmatter___procIdx
   frontmatter___promote
   slug
