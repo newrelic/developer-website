@@ -57,26 +57,42 @@ const NerdlogPage = ({ location }) => {
               engineers
               <br /> who are building the future of New Relic{' '}
             </SectionHeading>
-            <SectionDescription>
-              Get behind-the-scenes insight and detailed demonstrations of our
-              latest features and integrations
-            </SectionDescription>
+            <br />
+            <br />
             <div
               className={cx(styles.twoColumnAlt, styles.registrationSection)}
             >
               <div>
+                <h2>
+                  Get behind-the-scenes insight and detailed demonstrations of
+                  our latest features and integrations
+                </h2>
                 <div>
-                  Watch New Relic product managers and engineers play with the
-                  latest features and integrations to help you navigate New
-                  Relic like a pro.
-                  <br />
-                </div>
-                <div>
+                  <ul>
+                    <li>
+                      Understand the "why" behind the "what" - dive deeper into
+                      the problems New Relic is working to solve, and the
+                      process of how our latest features came to life.
+                    </li>
+                    <li>
+                      Learn how to navigate New Relic like a pro by watching New
+                      Relic product managers and engineers play with the latest
+                      features and integrations.
+                    </li>
+                    <li>
+                      Never miss an episode of Changelog, the Uptime, DataBytes
+                      and more by subscribing to the New Relic &nbsp;
+                      <a href="https://www.youtube.com/c/NewRelicInc">
+                        YouTube Channel
+                      </a>
+                      .
+                    </li>
+                  </ul>
                   <p>
                     Looking for more info on our latest updates and releases?
-                    Check out
+                    Check out &nbsp;
                     <a href="https://docs.newrelic.com/whats-new/">
-                      "What's new in New Relic"
+                      What's new in New Relic
                     </a>
                     .
                   </p>
@@ -131,11 +147,6 @@ const SectionHeading = styled.h3`
   ${breakpoints.mobile} {
     font-size: 1.5rem;
   }
-`;
-
-const SectionDescription = styled.p`
-  margin-bottom: 2rem;
-  text-align: center;
 `;
 
 const CtaItem = ({ date, to, children }) => (
