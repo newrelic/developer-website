@@ -1,3 +1,11 @@
+## [1.92.1](https://github.com/newrelic/developer-website/compare/v1.92.0...v1.92.1) (2022-11-10)
+
+
+### Bug Fixes
+
+* update styles for top of side nav ([658eb2e](https://github.com/newrelic/developer-website/commit/658eb2edb4ead7dfb4c65e100a9405869f83d9eb))
+* update theme version ([f1a5f52](https://github.com/newrelic/developer-website/commit/f1a5f52152bfc2bab1f80a7268c0a45df50e5424))
+
 # [1.92.0](https://github.com/newrelic/developer-website/compare/v1.91.2...v1.92.0) (2022-10-21)
 
 
