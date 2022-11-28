@@ -19,10 +19,7 @@ const Logo = ({ className, height }) => (
         stroke-width: 3.72px;
       }
       .text-color {
-        fill: #1d252c;
-        .dark-mode & {
-          fill: #dddedf;
-        }
+        fill: #dddedf;
       }
     `}
     className={className}
