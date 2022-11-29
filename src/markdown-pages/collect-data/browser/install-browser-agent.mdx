@@ -32,7 +32,7 @@ Navigate to [New Relic](https://one.newrelic.com/), and sign in with your accoun
 
 On the right side of the upper navigation bar, click **Add data**.
 
-![Add more data](../../../images/foodme/add-more-data.png)
+![Add more data](../../../images/foodme/add-data.png)
 
 </Step>
 
@@ -52,19 +52,17 @@ From **Get Started with New Relic Browser**, select **Copy/Paste Javascript code
 
 ![select deployment method](../../../images/nr-browser/select-deployment-method.png)
 
-Scroll down to **Name your app**, select **No. (Name your standalone app)**, name your app **Reliqstaurant**, and click **Enable**.
+</Step>
+
+<Step>
+
+Scroll down to **Name your app**, select **No. (Name your standalone app)**, name your app **Relicstaurants**, and click **Enable**.
 
 ![enable browser agent for your app](../../../images/nr-browser/enable-browser.png)
 
 This gives you a JavaScript code snippet to enable browser monitoring. Copy it to your clipboard.
 
 ![javascript code snippet to enable browser agent](../../../images/nr-browser/browser-code-snippet.png)
-
-<Callout variant='tip'>
-
-Save this code snippet at a place where you could easily find it later. You re-use this code snippet to enable browser monitoring for your application in next procedures.
-
-</Callout>
 
 </Step>
 
@@ -76,7 +74,7 @@ In _public/index.html_ file of your app, paste the copied javascript snippet ins
 
 <>
 
-```html lineHighlight=21-22 fileName=public/index.html
+```html lineHighlight=22-23 fileName=public/index.html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,8 +91,9 @@ In _public/index.html_ file of your app, paste the copied javascript snippet ins
     rel="stylesheet">
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>Reliqstaurants</title>
-  <!--Replace these lines with your 
+
+  <title>Relicstaurants</title>
+    <!--Replace these lines with your 
       browser monitoring code snippet -->
 </head>
 
@@ -153,13 +152,19 @@ Your app is now sending browser data to New Relic. View this data in New Relic, 
 
 <Step>
 
-Navigate to [New Relic](https://one.newrelic.com/), select **Browser** from the top navigation, and select **Reliqstaurant**.
+Navigate to [New Relic](https://one.newrelic.com/) and sign in with your account.
 
-![Arrow pointing to reliqstaurant app](../../../images/nr-browser/view-reliqstaurant.png)
+</Step>
 
-Here, you see **Core web vitals**, **User time on the site**, **Initial page load and route change**, and other performance data from your app.
+<Step> 
 
-![Browser view of reliqstaurant](../../../images/nr-browser/reliqstaurant-browser-app.png)
+From the left hand navigation bar, navigate to **Browser** and select **Relicstaurants**.
+
+![Arrow pointing to relicstaurants app](../../../images/nr-browser/view-relicstaurants.png)
+
+Here, you see **Page views with JavaScript errors**, **Core web vitals**, **User time on the site**, **Initial page load and route changes**, and other performance data from your app.
+
+![Browser view of relicstaurants](../../../images/nr-browser/relicstaurants-browser-app.png)
 
 </Step>
 
