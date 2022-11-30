@@ -117,7 +117,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   createRedirect({
     fromPath: `/students/`,
-    toPath: `https://newrelic.com/social-impact/students/`,
+    toPath: `https://newrelic.com/social-impact/students`,
     isPermanent: true,
   });
 
