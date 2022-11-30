@@ -1,3 +1,10 @@
+## [1.92.2](https://github.com/newrelic/developer-website/compare/v1.92.1...v1.92.2) (2022-11-30)
+
+
+### Bug Fixes
+
+* student redirect ([c8c8262](https://github.com/newrelic/developer-website/commit/c8c826299840ac324f82b8de3f35146f2841735a))
+
 ## [1.92.1](https://github.com/newrelic/developer-website/compare/v1.92.0...v1.92.1) (2022-11-10)
 
 
