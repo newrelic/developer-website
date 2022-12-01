@@ -1,3 +1,11 @@
+## [1.92.3](https://github.com/newrelic/developer-website/compare/v1.92.2...v1.92.3) (2022-12-01)
+
+
+### Bug Fixes
+
+* fixed conflicts ([d483ae0](https://github.com/newrelic/developer-website/commit/d483ae0efeb1fd75df56dcd298a70952bb31b71b))
+* removed generated dir ([698de3b](https://github.com/newrelic/developer-website/commit/698de3b9c84a1399c14691ca602be53264ca909f))
+
 ## [1.92.2](https://github.com/newrelic/developer-website/compare/v1.92.1...v1.92.2) (2022-11-30)
 
 
