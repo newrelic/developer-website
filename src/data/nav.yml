@@ -266,7 +266,7 @@
           url: /contribute-to-quickstarts/build-a-quickstart/add-alerts
         - title: Add a data source to the quickstart
           url: /contribute-to-quickstarts/build-a-quickstart/add-data-source
-        - title: Contribute your quickstart 
+        - title: Contribute your quickstart
           url: /contribute-to-quickstarts/build-a-quickstart/contribute-quickstart
 
 - title: OpenTelemetry masterclass
@@ -623,9 +623,9 @@
 - title: Instant Observability
   icon: fe-box
   url: 'https://newrelic.com/instant-observability'
-- title: Nerd Bytes
+- title: Data Bytes
   icon: nr-nerd-bytes
-  url: '/nerd-bytes'
+  url: '/data-bytes'
 - title: Developer champions
   icon: nr-developer-champions
   url: '/developer-champion'

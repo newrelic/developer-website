@@ -104,6 +104,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 
   createRedirect({
+    fromPath: '/nerd-bytes/',
+    toPath: '/data-bytes',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: `/instant-observability/`,
     toPath: `https://newrelic.com/instant-observability`,
     isPermanent: true,
