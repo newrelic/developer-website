@@ -27,33 +27,12 @@ module.exports = {
         layout: {
           contentPadding: '2rem',
           maxWidth: '1700px',
+          sidebarWidth: '340px',
           component: require.resolve('./src/layouts'),
           mobileBreakpoint: '760px',
         },
         prism: {
           languages: ['yaml', 'sass', 'scss', 'java'],
-        },
-        splitio: {
-          core: {
-            authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
-          },
-          features: {
-            free_account_button_color: {
-              treatment: 'off',
-            },
-          },
-          env: {
-            development: {
-              features: {
-                'developer-website_global-header-gh-buttons': 'on',
-                'developer-website_right-rail-buttons': 'outline',
-                super_tiles: 'on',
-              },
-              core: {
-                authorizationKey: process.env.SPLITIO_AUTH_KEY || 'localhost',
-              },
-            },
-          },
         },
         relatedResources: {
           swiftype: {
