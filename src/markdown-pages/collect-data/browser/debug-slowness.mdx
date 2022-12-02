@@ -14,68 +14,19 @@ Each procedure in the lab builds upon the last, so make sure you've completed th
 
 </Callout>
 
-After fixing bugs in your payment method, you and your team are feeling confident. It's time to push the fixes.
+After fixing JavaScript errors in your application, you and your team are feeling confident. Ready for your down time, you head over to social media but you check Twitter and see some confused customers:
 
-Change to the `scenario-2` directory and set up your environment.
+![Tweeter thread showing unhapy customer](../../../images/nr-browser/tweet.png)
 
-<>
-
-```bash
-cd ../scenario-2
-npm install
-npm run build
-```
-
-</>
-
-Now that you've released your new code, it's time to check Twitter for some user feedback.
-
-![A Twitter thread showing that the site is loading slow](../../../images/nr-browser/scenario-2/tweet.png)
-
-Oh no! You fixed the errors but forgot to check if your site was loading fine.
-
+Uh oh! You customers don't look happy. It's time to useNew Relic browser to discover the source of delay. 
 
 <Callout variant='important'>
 
 In order to see your data in New Relic, you need to enable browser monitoring for this procedure. 
 
-Open the application in the IDE of your choice. In _public/index.html_ file of your app, paste the browser monitoring code snippet, that you copied in the last procedure, inside the `<head>`.
+If you haven't already, [instrument your app with our browser agent](/collect-data/browser/install-browser-agent).
 
 </Callout>
-
-## Reproduce the issue
-
-You've been notified by your users that your site is loading slowly. Reproduce the issue for yourself.
-
-From the root directory of the project, build and run your application.
-
-<>
-
-```bash
-npm run build
-npm run newstart
-```
-
-</>
-
-This opens your Reliqstaurants application in your browser.
-
-![Reliqstaurants homepage](../../../images/nr-browser/scenario-1/new-homepage.png)
-
-In another terminal window, navigate to the root directory of your application, and run the load generator.
-
-<>
-
-```bash
-cd browser-pro-lab-material/scenario-2/simulator
-python3 simulator.py
-```
-
-</>
-
-The load generator helps you generate some traffic against your app so you don't have to.
-
-Your users were right! Your site ia taking long to load. But why? Use New Relic browser to discover the source of delay.
 
 ## Debug slowness in your application
 
@@ -83,31 +34,23 @@ Your users were right! Your site ia taking long to load. But why? Use New Relic 
 
 <Step>
 
-From the New Relic homepage, go to **Browser**.
+From the New Relic homepage, navigate to **Browser** and choose your **Relicstaurants** application.
 
-![Arrow showing navigation to browser](../../../images/nr-browser/scenario-1/navigate-to-browser.png)
-
-</Step>
-
-<Step>
-
-Choose your **Reliqstaurants** application.
-
-![select Reliqstaurants app](../../../images/nr-browser/scenario-1/browser-apps.png)
+![select Reliqstaurants app](../../../images/nr-browser/view-relicstaurants.png)
 
 </Step>
 
 <Step>
 
-Here, you see all the data related to your browser application including **Core web vitals**, **Initial page load and route change**, **User-centric page load times** and others.
+Here, you see all the data related to your browser application including **Page views with JavaScript errors**, **Core web vitals**, **User time on the site**, **Initial page load and route changes**, and others.
 
-![image showing Reliqstaurants summary](../../../images/nr-browser/scenario-1/reliq-summary.png)
+![image showing Reliqstaurants summary](../../../images/nr-browser/relicstaurants-browser-app.png)
 
 </Step>
 
-Notice the **Core web vitals - LCP**.
+Notice the **Largest Contentful Paint (LCP)**.
 
-![image showing Core web vitals](../../../images/nr-browser/scenario-2/LCP.png)
+![image showing Core web vitals](../../../images/nr-browser/LCP.png)
 
 Largest Contentful Paint (LCP) represents how quickly the main content of a web page is loaded. Ideally, the content should not take more than a second or two to load. 
 Here, you see that your site is loading in more than 5 seconds. No wonder your users are complaining!  
@@ -116,19 +59,19 @@ But what's causing this delay? back end?
 
 <Step>
 
-Notice the **Front end vs. back end** graph.
+Scroll down and notice the **Front end vs. back end** graph.
 
-![image showing frontend vs backend graph](../../../images/nr-browser/scenario-2/frontend-vs-backend.png)
+![image showing frontend vs backend graph](../../../images/nr-browser/frontend-vs-backend.png)
 
-Click on **Back end (time to first byte) (50%)**. 
+Click on **Back end (time to first byte) (50%)** to filter the graph and see how long backend takes to load. 
 
-![image showing backend time consumption](../../../images/nr-browser/scenario-2/backend.png)
+![image showing backend time consumption](../../../images/nr-browser/backend.png)
 
-The graph indicate that the back end is taking maximum 40 mili seconds to process the request. Does this mean your front end is causing delay? 
+The graph indicates that the back end took maximum 140 mili seconds to process the request in worst case. Does this mean your front end is causing delay? 
 
 Click on **Front end (Window load + AJAX) (50%)**.
 
-![image showing frontend time consumption](../../../images/nr-browser/scenario-2/frontend.png)
+![image showing frontend time consumption](../../../images/nr-browser/frontend.png)
 
 There's the problem! The graph indicates that the delay is happening on front end.
 
@@ -136,11 +79,19 @@ There's the problem! The graph indicates that the delay is happening on front en
 
 <Step>
 
-Take a closer look at **Initial page load and route change** graph.
+To narrow down what might be causing the delat on front end, take a closer look at **Initial page load and route change** graph.
 
-![image showing page load graph](../../../images/nr-browser/scenario-2/page-load-graph.png)
+![image showing page load graph](../../../images/nr-browser/page-load-graph.png)
 
-The graph indicates that **Initial page load (Window load + AJAX)** is taking 5-6 seconds. 
+</Step>
+
+<Step>
+
+Click on **Initial page load (Window load + AJAX)**.
+
+![image showing initial page load (Window load + AJAX)](../../../images/nr-browser/initial-page-load.png)
+
+The graph indicates that **Initial page load (Window load + AJAX)** is taking 5-6 seconds which is alarming. 
 
 </Step>
 
@@ -148,33 +99,52 @@ The graph indicates that **Initial page load (Window load + AJAX)** is taking 5-
 
 Click **Initial page load and route change** to see more details.
 
-![Arrow pointing to page load graph](../../../images/nr-browser/scenario-2/page-load-detail.png)
+![Arrow pointing to page load graph](../../../images/nr-browser/page-load-detail.png)
 
 This takes you to **Page views**.
 
-![image showing page views](../../../images/nr-browser/scenario-2/page-views.png)
+![image showing page views](../../../images/nr-browser/page-views.png)
+
+</Step>
+
+<Step>
 
 Sort the pages by **Most time-consuming**.
 
-![image showing sorted page views](../../../images/nr-browser/scenario-2/page-view-time.png)
+![image showing how to sort pages](../../../images/nr-browser/sort-pages.png)
 
-Notice that the initial page is taking almost 100% of time to load. 
+Notice that the initial page is taking almost 90% of time to load. 
+
+![image showing sorted page views](../../../images/nr-browser/most-time-consuming-page.png)
+
+Click on it to view it's details.
+
+![image showing sorted page views](../../../images/nr-browser/most-time-consuming-page-detail.png)
+
+This page shows you **Page view breakdown**, **Median initial page load time**, and other important details. **Page view breakdown** graph is especially important here since it helps you narrow down why and where your page is taking longer.
+Upon taking a closer look into this graph, you see that **Page rendering** is taking as long as 5000 miliseconds.
+
+![image showing page breakdown w.r.t page rendering](../../../images/nr-browser/page-rendering.png)
+
+</Step>
+
+You now know that initial page is taking quite long to render making your application slow. Next, we observe the **Session traces** to figure out what is slowing down the rendering process. 
+
+Exit this view by clicking the **X** in the top right hand corner.
+
+<Step>
+
+From left hand navigation, navigate to **Session traces** and sort them in the decending order of **Page load**..
+
+![image showing session traces](../../../images/nr-browser/session-traces.png)
 
 </Step>
 
 <Step>
 
-Scroll down to **Session traces**.
+Here, you see the session traces sorted in the order of **Page load** time.
 
-![image showing session traces](../../../images/nr-browser/scenario-2/session-traces.png)
-
-</Step>
-
-<Step>
-
-Sort the **Session traces** in the decending order of **Page load**.
-
-![image showing sorted session traces](../../../images/nr-browser/scenario-2/sorted-session-traces.png)
+![image showing sorted session traces](../../../images/nr-browser/sorted-session-traces.png)
 
 </Step>
 
@@ -182,43 +152,47 @@ Sort the **Session traces** in the decending order of **Page load**.
 
 From the list, click the first one.
 
-![image showing sorted session traces](../../../images/nr-browser/scenario-2/navigate-to-trace-detail.png)
+![image showing sorted session traces](../../../images/nr-browser/navigate-to-trace-detail.png)
 
 This takes you to **Session traces** detail page.
 
-</Step>
+Here, you see the complete trace for that particular session. This page also shows you **Backend**, **Dom Processing**, **Page Load**, and other trace related information.
 
-<Step>
-
-Here, you see the complete trace for that particular session. This page also shows you **Backend**, **Dom Processing**, **Page Load**, **Duration** and other trace related information.
-
-![image showing trace detail](../../../images/nr-browser/scenario-2/trace.png)
+![image showing trace detail](../../../images/nr-browser/trace.png)
 
 </Step>
 
 <Step>
 
-Scroll down on the trace to move through the time window and see the details. 
+Note that **Page load** is taking longer than expected. You're need a detailed timeline of the load. Scroll the pointer on the left and right to adjust the timeline. 
 
-![image showing time window to scroll](../../../images/nr-browser/scenario-2/scroll.png)
-
-</Step>
-
-<Step>
-
-Notice that the background image is panning through almost the entire trace.
-
-![image showing image trace](../../../images/nr-browser/scenario-2/image-trace.png)
+![image showing pointer to adjust time window](../../../images/nr-browser/adjust-timeline.png)
 
 </Step>
 
 <Step>
 
-Hover over the assest.
+Scroll through the trace to move through the time window and see the details of individual events during this session.
 
-![image showing image trace detail](../../../images/nr-browser/scenario-2/image-trace-detail.png)
+![image showing time window to scroll](../../../images/nr-browser/trace-time-window-detail.png)
 
-Your suspicion was right. The image is taking 5 - 6 seconds to load and causing the delay.
+</Step>
+
+<Step>
+
+Notice that a particular event is taking more than 5 seconds.
+
+![image showing image trace](../../../images/nr-browser/image-trace.png)
+
+</Step>
+
+<Step>
+
+Click on the event to see its details.
+
+![image showing image trace detail](../../../images/nr-browser/image-trace-detail.png)
+
+Notice that its an image. Particularly, its the background image of your application which is taking 5 - 6 seconds to load and causing the delay.
 
 </Step>
 

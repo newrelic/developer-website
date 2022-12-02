@@ -8,7 +8,7 @@ procIdx: 2
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic.
+This procedure is part of a lab that teaches you how to get started with New Relic to monitor your application.
 
 Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_Set up your lab environment_](/collect-data/monitor-your-application/set-up-env), before starting this one.
 
@@ -30,9 +30,9 @@ Navigate to [New Relic](https://one.newrelic.com/), and sign in with your accoun
 
 <Step>
 
-On the right side of the upper navigation bar, click **Add more data**.
+On the right side of the upper navigation bar, click **Add data**.
 
-![Add more data](../../../images/foodme/add-more-data.png)
+![Add data](../../../images/foodme/add-data.png)
 
 </Step>
 
@@ -74,7 +74,11 @@ This guides you through instrumenting your application with our Node JS agent us
 
 <Step>
 
-Select your account, name your application "food-me", and copy the **Install the agent** command to your clipboard.
+Name your application "Relicstraunts" and click **Save**. 
+
+![name your application](../../../images/foodme/save-apm.png)
+
+Next, copy the **Install the APM agent** command to your clipboard.
 
 ![Boxes to select account and name your application](../../../images/foodme/add-nodejs-application.png)
 
@@ -119,6 +123,8 @@ require('newrelic');
 var express = require('express');
 var fs = require('fs');
 var open = require('open');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
 
 var RestaurantRecord = require('./model').Restaurant;
 var MemoryStorage = require('./storage').Memory;
@@ -126,6 +132,7 @@ var MemoryStorage = require('./storage').Memory;
 var API_URL = '/api/restaurant';
 var API_URL_ID = API_URL + '/:id';
 var API_URL_ORDER = '/api/order';
+var API_URL_VALIDATION = '/api/validation';
 
 var removeMenuItems = function(restaurant) {
   var clone = {};
@@ -140,17 +147,23 @@ var removeMenuItems = function(restaurant) {
 };
 
 
-exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
+exports.start = function(PORT, STATIC_DIR, DATA_FILE) {
   var app = express();
   var storage = new MemoryStorage();
+
+  // log requests
+  app.use(logger('combined'));
 
   // serve static files for demo client
   app.use(express.static(STATIC_DIR));
 
+  // parse body into req.body
+  app.use(bodyParser.json());
+
 
   // API
   app.get(API_URL, function(req, res, next) {
-    res.status(200).send(storage.getAll().map(removeMenuItems))
+    return res.status(200).send(storage.getAll().map(removeMenuItems));
   });
 
 
@@ -167,8 +180,17 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
   });
 
   app.post(API_URL_ORDER, function(req, res, next) {
-    console.log(req.body)
+    console.log(req.body);
     return res.status(201).send({ orderId: Date.now()});
+  });
+
+  app.post(API_URL_VALIDATION, function(req, res, next) {
+    console.log(req.body.ccnum.length);
+    if (req.body.ccnum.length <= 15) {
+      let err = new Error('payments.js, cardNumber is invalid');
+      return res.status(400).send(err);
+    }
+    return res.status(200).send();
   });
 
 
@@ -210,11 +232,6 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
     return res.status(400).send({error: 'No restaurant with id "' + req.params.id + '"!'});
   });
 
-
-  // only for running e2e tests
-  app.use('/test/', express.static(TEST_DIR));
-
-
   // start the server
   // read the data from json and start the server
   fs.readFile(DATA_FILE, function(err, data) {
@@ -224,24 +241,10 @@ exports.start = function(PORT, STATIC_DIR, DATA_FILE, TEST_DIR) {
 
     app.listen(PORT, function() {
       open('http://localhost:' + PORT + '/');
-      // console.log('Go to http://localhost:' + PORT + '/');
     });
   });
 
-
-  // Windows and Node.js before 0.8.9 would crash
-  // https://github.com/joyent/node/issues/1553
-  try {
-    process.on('SIGINT', function() {
-      // save the storage back to the json file
-      fs.writeFile(DATA_FILE, JSON.stringify(storage.getAll()), function() {
-        process.exit(0);
-      });
-    });
-  } catch (e) {}
-
 };
-
 
 ```
 
@@ -260,8 +263,8 @@ Now that you've instrumented your application, it's time to restart your local s
 <>
 
 ```bash
-node ./server/start.js
-[output] Go to http://localhost:3000/
+npm run build
+npm run newstart
 ```
 
 </>
@@ -290,7 +293,7 @@ Your app is now sending data to New Relic. Check it out!
 
 <Step>
 
-Navigate to [New Relic](https://one.newrelic.com/), and select **APM** from top navigation.
+Navigate to [New Relic](https://one.newrelic.com/), and select **APM & services** from the side navigation.
 
 ![Arrow pointing to APM](../../../images/foodme/view-apm.png)
 
@@ -298,13 +301,13 @@ Navigate to [New Relic](https://one.newrelic.com/), and select **APM** from top 
 
 <Step>
 
-Select **food-me**.
+Select **Relicstraunts**.
 
-![Arrow pointing to food-me app](../../../images/foodme/view-food-me-app.png)
+![Arrow pointing to Relicstraurants app](../../../images/foodme/view-relicstraunts.png)
 
 Here, you see your **Web transaction time**, **Apdex score**, **Throughput**, and other performance data from your app.
 
-![APM view of food-me](../../../images/foodme/food-me-apm.png)
+![APM view of Relicstraurants](../../../images/foodme/relicstraurants-apm.png)
 
 </Step>
 
@@ -316,6 +319,6 @@ In the terminal window that's running your application, press `<CTRL-C>` to shut
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic. Now that you've instrumented your application with our APM agent, [instrument your application with our browser agent](/collect-data/monitor-your-application/install-browser-agent).
+This procedure is part of a lab that teaches you how to get started with New Relic to monitor your application. Now that you've instrumented your application with our APM agent, [instrument your application with our browser agent](/collect-data/monitor-your-application/install-browser-agent).
 
 </Callout>

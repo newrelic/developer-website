@@ -1,14 +1,14 @@
 ---
 duration: 15
-title: 'Query custom business data'
+title: 'Create a custom dashboard'
 template: 'GuideTemplate'
-description: 'Query your FoodMe data for business insights'
-procIdx: 6
+description: 'Query your Relicstaurant data for business insights and create a custom dashboard from it'
+procIdx: 8
 ---
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic.
+This procedure is part of a lab that teaches you how to get started with New Relic to monitor your application.
 
 Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_Collect custom business data_](/collect-data/monitor-your-application/collect-custom-data), before starting this one.
 
@@ -18,9 +18,7 @@ With your app recording custom business data, you're now ready to get insights f
 
 - Orders from the past 24 hours
 - Most popular restaurants
-- Most active customers
 - Average order amount
-- Customers that spend the most money
 - Most popular items
 
 In this procedure, you create a dashboard, query your custom data, gather it in charts, and add those charts to your dashboard to have quick view into these data points.
@@ -55,7 +53,7 @@ Select **Create a new dashboard**.
 
 <Step>
 
-Name your dashboard "FoodMe", and click **Create**.
+Name your dashboard "Relicstaurants", and click **Create**.
 
 ![Arrow pointing to Create button](../../../images/foodme/name-and-create-dashboard.png)
 
@@ -85,13 +83,7 @@ Click **Add a chart**.
 
 This opens a query builder.
 
-</Step>
-
-<Step>
-
-Switch to the NRQL editor.
-
-![add a chart](../../../images/foodme/dashboard-nrql.png)
+![Query builder](../../../images/foodme/nrql-editor.png)
 
 </Step>
 
@@ -102,10 +94,12 @@ Edit the query as follows.
 <>
 
 ```sql
-SELECT count(*) AS 'Orders' FROM Transaction WHERE appName='food-me' AND name LIKE '%/api/order' SINCE 1 day ago
+SELECT count(*) AS 'Orders' FROM Transaction WHERE appName='Relicstraunts' AND name LIKE '%/api/order' SINCE 1 day ago
 ```
 
 </>
+
+Click **Run** to see the results.
 
 ![orders in past 24 hours chart](../../../images/foodme/orders-in-24-hours.png)
 
@@ -136,10 +130,10 @@ Add another chart to your dashboard.
 
 ### Most popular restaurants
 
-Run the following query to view the most popular restaurants for your FoodMe app.
+Run the following query to view the most popular restaurants for your Relicstaurants app.
 
 ```sql
-SELECT count(*) FROM Transaction WHERE appName='food-me' AND name LIKE '%/api/order' AND restaurant IS NOT NULL FACET restaurant SINCE 1 day ago
+SELECT count(*) FROM Transaction WHERE appName='Relicstraunts' AND name LIKE '%/api/order' AND restaurant IS NOT NULL FACET restaurant SINCE 1 day ago
 ```
 
 ![View popular restaurants](../../../images/foodme/view-popular-restaurants.png)
@@ -148,48 +142,24 @@ This chart shows you the most popular restaurants. Change the chart type to **Pi
 
 ![Most popular restaurants pie chart](../../../images/foodme/most-popular-restaurant-chart.png)
 
-### Most active customers
-
-For a chart showing the most active customers, use the following query.
-
-```sql
-SELECT count(*) FROM Transaction WHERE appName='food-me' AND name LIKE '%/api/order' AND customer IS NOT NULL FACET customer SINCE 1 day ago
-```
-
-Here, you observe your most active customers.
-
-![Most active customers chart](../../../images/foodme/most-active-customers.png)
-
 ### Average order amount
 
 Use the following query to calculate the average order amount.
 
 ```sql
-SELECT average(orderTotal) FROM Transaction WHERE appName='food-me' AND name LIKE '%/api/order'
+SELECT average(orderTotal) FROM Transaction WHERE appName='Relicstraunts' AND name LIKE '%/api/order'
 ```
 
 ![Average order chart](../../../images/foodme/average-order.png)
 
 Here, you see observe the average order amount.
 
-### Most money spending customers
-
-Execute the following query to view which customers spend the most money ordering food from your app.
-
-```sql
-SELECT sum(orderTotal) FROM Transaction WHERE appName='food-me' AND name='WebTransaction/Expressjs/POST//api/order' FACET customer
-```
-
-![Most money spending customers](../../../images/foodme/most-money-spending-customers.png)
-
-Here, you observe the most money spending customers.
-
 ### Most popular items
 
 Use the following query to view the most popular items.
 
 ```sql
-SELECT sum(qty) FROM PageAction WHERE actionName='orderItem' FACET item
+SELECT sum(itemCount) FROM Transaction WHERE appName='Relicstraunts' AND name LIKE '%/api/order' FACET itemName
 ```
 
 ![Most popular items](../../../images/foodme/most-popular-items-chart.png)
@@ -234,10 +204,13 @@ The dashboard now shows you business data related to that restaurant.
 
 ## Summary
 
-In this procedure, you created a dashboard and added multiple charts to it to get business insights.
+In this procedure, you created a dashboard and added multiple charts to it to get business insights. With New Relic, you now have full performance and business insights into your application.
 
-<Callout variant="course" title="lab">
+## Homework
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic. Continue on to next procedure, [Add alerts](/collect-data/monitor-your-application/add-alerts).
+Well done! Now that you've gotten a jump start with New Relic to monitor your application, here are some docs that will help you take the next steps on your journey.
 
-</Callout>
+- [Introduction to APM](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/introduction-apm)
+- [Introduction to browser monitoring](https://docs.newrelic.com/docs/browser/browser-monitoring/getting-started/introduction-browser-monitoring)
+- [Introduction to alerts and applied intelligence](https://docs.newrelic.com/docs/alerts-applied-intelligence/overview)
+

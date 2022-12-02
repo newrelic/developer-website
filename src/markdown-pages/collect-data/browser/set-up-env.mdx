@@ -2,7 +2,7 @@
 duration: 5
 title: 'Set up your lab environment'
 template: 'GuideTemplate'
-description: 'Spin up your Reliqstraurant application and simulator'
+description: 'Spin up your Relicstaurants application and simulator'
 procIdx: 1
 ---
 
@@ -26,7 +26,7 @@ Open a terminal window and clone the lab repository.
 <>
 
 ```bash
-git clone https://github.com/mehreentahir16/browser-pro-lab-material.git
+git clone https://github.com/newrelic-experimental/relicstaurants.git
 ```
 
 </>
@@ -35,12 +35,27 @@ git clone https://github.com/mehreentahir16/browser-pro-lab-material.git
 
 <Step>
 
-Navigate to the root directory of your application, install dependencies, and run the application.
+Navigate to the root directory of your application and switch to the lab directory.
+
+</Step>
 
 <>
 
 ```bash
-cd browser-pro-lab-material
+cd relicstaurants
+git switch browser-pro-lab-material
+```
+
+</>
+
+<Step>
+
+
+Next, install dependencies, and run the application.
+
+<>
+
+```bash
 npm install
 npm run build
 npm run newstart
@@ -106,7 +121,9 @@ In another terminal window, navigate to the root directory of your application, 
 
 ```bash
 # Navigate to the root directiory of your simulator
-cd browser-pro-lab-material/simulator
+cd relicstaurants/simulator
+# Switch to lab branch
+git switch browser-pro-lab-material
 [output]
 # Install the simulator's dependencies
 pip3 install -r requirements.txt
