@@ -1,3 +1,15 @@
+# [1.93.0](https://github.com/newrelic/developer-website/compare/v1.92.3...v1.93.0) (2022-12-02)
+
+
+### Bug Fixes
+
+* updated browser pro lab ([4875de5](https://github.com/newrelic/developer-website/commit/4875de54d2d75b7bd7f3d70db25f3c5bdc33ff7a))
+
+
+### Features
+
+* added get started with NR lab ([bc6c3c3](https://github.com/newrelic/developer-website/commit/bc6c3c33519e9c8055564d93a3dd478210ad80e5))
+
 ## [1.92.3](https://github.com/newrelic/developer-website/compare/v1.92.2...v1.92.3) (2022-12-01)
 
 
