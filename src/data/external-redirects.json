@@ -18,6 +18,10 @@
   {
     "url": "https://docs.newrelic.com/docs/apis/nerdgraph/get-started/nerdgraph-explorer",
     "paths": ["/collect-data/get-started-nerdgraph-api-explorer"]
-  }
+  },
+  {
+    "url": "https://newrelic.com/blog/nerdlog/estimate-data-cost",
+    "paths": ["/collect-data/monitor-your-application/estimate-cost"]
+  }  
 ]
 
