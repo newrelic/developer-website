@@ -1,3 +1,10 @@
+## [1.93.2](https://github.com/newrelic/developer-website/compare/v1.93.1...v1.93.2) (2022-12-15)
+
+
+### Bug Fixes
+
+* **estimate costs:** remove ([717e810](https://github.com/newrelic/developer-website/commit/717e810bed61b526ce3507e39233a092daeb4ed6))
+
 ## [1.93.1](https://github.com/newrelic/developer-website/compare/v1.93.0...v1.93.1) (2022-12-14)
 
 
