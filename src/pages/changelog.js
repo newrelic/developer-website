@@ -4,7 +4,6 @@ import { css } from '@emotion/react';
 import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
-import MarketoForm from '../components/MarketoForm';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Link } from 'gatsby';
@@ -54,82 +53,60 @@ const NerdlogPage = ({ location }) => {
           </section>
           <Section>
             <SectionHeading>
-              Get weekly product updates, watch demos, and
-              <br /> share tips and tricks{' '}
+              Learn about our latest innovations from the product managers and
+              engineers
+              <br /> who are building the future of New Relic{' '}
             </SectionHeading>
-            <SectionDescription>
-              Watch and engage with New Relic product managers and engineers who
-              are building the future of New Relic
-            </SectionDescription>
+            <br />
+            <br />
             <div
               className={cx(styles.twoColumnAlt, styles.registrationSection)}
             >
               <div>
-                <h2>What is the New Relic Changelog?</h2>
+                <h2>
+                  Get behind-the-scenes insight and detailed demonstrations of
+                  our latest features and integrations
+                </h2>
                 <div>
                   <ul>
                     <li>
-                      <strong>
-                        Learn about the latest features from the people who
-                        built them
-                      </strong>
-                      <br />
-                      Watch New Relic product managers and engineers play with
-                      the latest features and integrations to help you navigate
-                      New Relic like a pro.
+                      Understand the "why" behind the "what" - dive deeper into
+                      the problems New Relic is working to solve, and the
+                      process of how our latest features came to life.
                     </li>
                     <li>
-                      <strong>
-                        Get some knowledge, a little inspiration, and a whole
-                        lot of answers
-                      </strong>
-                      <br />
-                      Walk away with tons of resources, projects with
-                      step-by-step instructions, and all your questions
-                      answered.
+                      Learn how to navigate New Relic like a pro by watching New
+                      Relic product managers and engineers play with the latest
+                      features and integrations.
                     </li>
                     <li>
-                      <strong>Connect with other engineers </strong>
-                      <br />
-                      Share your experiences with other New Relic users and have
-                      fun as you learn about observability.{' '}
-                    </li>
-                    <br />
-                  </ul>
-                </div>
-                <div style={{ display: 'none' }}>
-                  <h2>Join us live every Thursday!</h2>
-                  <ul>
-                    <li>
-                      <strong>Where:</strong> Follow us on{' '}
-                      <a href="https://www.twitch.tv/new_relic">Twitch</a>
-                    </li>
-                    <li>
-                      <strong>Date:</strong> 12 P.M. PT (8 P.M. UTC)
+                      Never miss an episode of Changelog, the Uptime, DataBytes
+                      and more by subscribing to the New Relic &nbsp;
+                      <a href="https://www.youtube.com/c/NewRelicInc">
+                        YouTube Channel
+                      </a>
+                      .
                     </li>
                   </ul>
                   <p>
-                    <strong>Can’t make it?</strong> We’ll miss you, but checkout
-                    our playlist on{' '}
-                    <a href="https://www.youtube.com/playlist?list=PLmhYj7Jl81JGOEHV7zUVfa_iGNyOfMGNh">
-                      YouTube.
+                    Looking for more info on our latest updates and releases?
+                    Check out &nbsp;
+                    <a href="https://docs.newrelic.com/whats-new/">
+                      What's new in New Relic
                     </a>
+                    .
                   </p>
                 </div>
               </div>
               <div>
-                <h3>Get Reminders</h3>
-                <p>
-                  Enter your email address to get notified before our next
-                  episode of the Nerdlog and information about our previous
-                  ones.
-                </p>
-                <MarketoForm
-                  id={2058}
-                  title="changelog Weekly Email"
-                  munchkinId="341-XKP-310"
-                  publishableKey="pk_4d10daa544de6f993a9a9ce002ccd1c6"
-                  redirectLink="/changelog-thank-you"
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/videoseries?list=PLmhYj7Jl81JEIOsmCBtTv8TDdzEqqQ8K9"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
                 />
               </div>
             </div>
@@ -170,11 +147,6 @@ const SectionHeading = styled.h3`
   ${breakpoints.mobile} {
     font-size: 1.5rem;
   }
-`;
-
-const SectionDescription = styled.p`
-  margin-bottom: 2rem;
-  text-align: center;
 `;
 
 const CtaItem = ({ date, to, children }) => (

@@ -104,6 +104,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 
   createRedirect({
+    fromPath: '/nerd-bytes/',
+    toPath: '/data-bytes',
+    isPermanent: true,
+  });
+
+  createRedirect({
     fromPath: `/instant-observability/`,
     toPath: `https://newrelic.com/instant-observability`,
     isPermanent: true,
@@ -117,7 +123,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   createRedirect({
     fromPath: `/students/`,
-    toPath: `https://newrelic.com/social-impact/students/`,
+    toPath: `https://newrelic.com/social-impact/students`,
     isPermanent: true,
   });
 

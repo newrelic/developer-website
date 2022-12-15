@@ -1,3 +1,44 @@
+## [1.93.2](https://github.com/newrelic/developer-website/compare/v1.93.1...v1.93.2) (2022-12-15)
+
+
+### Bug Fixes
+
+* **estimate costs:** remove ([717e810](https://github.com/newrelic/developer-website/commit/717e810bed61b526ce3507e39233a092daeb4ed6))
+
+## [1.93.1](https://github.com/newrelic/developer-website/compare/v1.93.0...v1.93.1) (2022-12-14)
+
+
+### Bug Fixes
+
+* Checkout related-pages from main ([100ed28](https://github.com/newrelic/developer-website/commit/100ed280169a646a0056dc1ee1b06599b445226f))
+
+# [1.93.0](https://github.com/newrelic/developer-website/compare/v1.92.3...v1.93.0) (2022-12-02)
+
+
+### Bug Fixes
+
+* updated browser pro lab ([4875de5](https://github.com/newrelic/developer-website/commit/4875de54d2d75b7bd7f3d70db25f3c5bdc33ff7a))
+
+
+### Features
+
+* added get started with NR lab ([bc6c3c3](https://github.com/newrelic/developer-website/commit/bc6c3c33519e9c8055564d93a3dd478210ad80e5))
+
+## [1.92.3](https://github.com/newrelic/developer-website/compare/v1.92.2...v1.92.3) (2022-12-01)
+
+
+### Bug Fixes
+
+* fixed conflicts ([d483ae0](https://github.com/newrelic/developer-website/commit/d483ae0efeb1fd75df56dcd298a70952bb31b71b))
+* removed generated dir ([698de3b](https://github.com/newrelic/developer-website/commit/698de3b9c84a1399c14691ca602be53264ca909f))
+
+## [1.92.2](https://github.com/newrelic/developer-website/compare/v1.92.1...v1.92.2) (2022-11-30)
+
+
+### Bug Fixes
+
+* student redirect ([c8c8262](https://github.com/newrelic/developer-website/commit/c8c826299840ac324f82b8de3f35146f2841735a))
+
 ## [1.92.1](https://github.com/newrelic/developer-website/compare/v1.92.0...v1.92.1) (2022-11-10)
 
 

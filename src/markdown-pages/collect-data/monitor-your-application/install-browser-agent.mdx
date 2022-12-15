@@ -8,13 +8,13 @@ procIdx: 3
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic.
+This procedure is part of a lab that teaches you how to get started with New Relic to monitor your application.
 
 Each procedure in the lab builds upon the last, so make sure you've completed the last procedure, [_Instrument your application with our APM agent_](/collect-data/monitor-your-application/install-apm), before starting this one.
 
 </Callout>
 
-You've installed our Node JS APM agent, and this provides server-side performance data. Because your Angular app is running in the browser, you also want to insight into your users' experiences, such as their page load times.
+You've installed our Node JS APM agent, and this provides server-side performance data. Because your React app is running in the browser, you also want to insight into your users' experiences, such as their page load times.
 
 To achieve this goal, you need to install our browser agent.
 
@@ -30,15 +30,15 @@ Navigate to [New Relic](https://one.newrelic.com/), and sign in with your accoun
 
 <Step>
 
-On the right side of the upper navigation bar, click **Add more data**.
+On the right side of the upper navigation bar, click **Add data**.
 
-![Add more data](../../../images/foodme/add-more-data.png)
+![Add data](../../../images/foodme/add-data.png)
 
 </Step>
 
 <Step>
 
-Click **New Relic Browser**.
+Scroll down the page to **Browser & mobile** and click **Browser monitoring**.
 
 ![Arrow pointing to New Relic Browser](../../../images/foodme/newrelic-browser.png)
 
@@ -52,7 +52,7 @@ From **Get Started with New Relic Browser**, select **Copy/Paste Javascript code
 
 ![select deployment method](../../../images/foodme/select-deployment-method.png)
 
-Scroll down to **Name your app**, select **Yes. (Search your applications)**, search food-me app, and click **Enable**.
+Scroll down to **Name your app**, select **Yes. (Search your applications)**, search Relicstraunts app, and click **Enable**.
 
 ![enable browser agent for your app](../../../images/foodme/enable-browser.png)
 
@@ -64,67 +64,38 @@ This gives you a JavaScript code snippet to enable browser monitoring. Copy it t
 
 <Step>
 
-In _app/index.html_ file of your app, paste the copied javascript snippet inside the `<head>`.
+In _public/index.html_ file of your app, paste the copied javascript snippet inside the `<head>`.
 
 <>
 
-```html lineHighlight=8 fileName=app/index.html
-<!doctype html>
-<html lang="en" ng-app="foodMeApp">
+```html lineHighlight=22-23 fileName=app/index.html
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>FoodMe</title>
-  <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/bootstrap-united.css">
-  <!-- Paste your javascript code snippet here -->
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <title>Relicstaurants</title>
+    <!--Replace these lines with your 
+      browser monitoring code snippet -->
 </head>
+
 <body>
-
-<div class="container">
-
-  <div class="navbar" ng-controller="NavbarController">
-    <div class="navbar-inner">
-      <a class="brand" href="#/">FoodMe</a>
-      <ul class="nav">
-        <li ng-class="{active: routeIs('/')}"><a href="#/">Home</a></li>
-        <li ng-class="{active: routeIs('/how-it-works')}"><a href="#/how-it-works">How it works</a></li>
-        <li ng-class="{active: routeIs('/who-we-are')}"><a href="#/who-we-are">Who we are</a></li>
-      </ul>
-
-      <ul class="nav pull-right">
-        <li ng-class="{active: routeIs('/help')}"><a href="#/help">Help</a></li>
-      </ul>
-    </div>
-  </div>
-
-
-  <ng-view></ng-view>
-
-</div>
-
-<!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-resource.min.js"></script>
--->
-<script src="lib/angular/angular.js"></script>
-<script src="lib/angular/angular-resource.js"></script>
-<script src="js/app.js"></script>
-<script src="js/controllers/CheckoutController.js"></script>
-<script src="js/controllers/CustomerController.js"></script>
-<script src="js/controllers/MenuController.js"></script>
-<script src="js/controllers/NavbarController.js"></script>
-<script src="js/controllers/RestaurantsController.js"></script>
-<script src="js/controllers/ThankYouController.js"></script>
-<script src="js/directives/fmDeliverTo.js"></script>
-<script src="js/directives/fmCheckboxList.js"></script>
-<script src="js/directives/fmRating.js"></script>
-<script src="js/services/alert.js"></script>
-<script src="js/services/customer.js"></script>
-<script src="js/services/localStorage.js"></script>
-<script src="js/services/cart.js"></script>
-<script src="js/services/Restaurant.js"></script>
-
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
 </body>
+
 </html>
 
 ```
@@ -144,8 +115,8 @@ Now that you've instrumented your application, it's time to restart your local s
 <>
 
 ```bash
-node ./server/start.js
-[output] Go to http://localhost:3000/
+npm run build
+npm run newstart
 ```
 
 </>
@@ -174,7 +145,7 @@ Your app is now sending browser data to New Relic. View this data in New Relic, 
 
 <Step>
 
-Navigate to [New Relic](https://one.newrelic.com/), and select **Browser** from the top navigation.
+Navigate to [New Relic](https://one.newrelic.com/), and select **Browser** from the side navigation.
 
 ![Arrow pointing to Browser](../../../images/foodme/browser-app.png)
 
@@ -182,22 +153,22 @@ Navigate to [New Relic](https://one.newrelic.com/), and select **Browser** from 
 
 <Step>
 
-Select **food-me**.
+Select **Relicstaurants**.
 
-![Arrow pointing to food-me app](../../../images/foodme/view-food-me-browser.png)
+![Arrow pointing to relicstaurants app](../../../images/foodme/view-relicstaurant-browser.png)
 
 Here, you see **Core web vitals**, **User time on the site**, **Initial page load and route change**, and other performance data from your app.
 
-![APM view of food-me](../../../images/foodme/food-me-browser-app.png)
+![Browser view of Relicstaurants](../../../images/foodme/relicstaurant-browser-app.png)
 
 </Step>
 
 </Steps>
 
-You've instrumented your application to send browser data to New Relic using our browser agent. You also see your performance data in New Relic. Now, it's time to get insights from your data.
+You've instrumented your application to send browser data to New Relic using our browser agent. You also see your performance data in New Relic. Now, it's time to set up alerts for your application.
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic. Now that you've instrumented your application with our browser agent, [explore your data](/collect-data/monitor-your-application/explore-your-data).
+This procedure is part of a lab that teaches you how to get started with New Relic to monitor your application. Now that you've instrumented your application with our browser agent, [add alerts](/collect-data/monitor-your-application/add-alerts).
 
 </Callout>

@@ -2,17 +2,17 @@
 duration: 5
 title: 'Set up your lab environment'
 template: 'GuideTemplate'
-description: 'Spin up your FoodMe application and simulator'
+description: 'Spin up your Relicstaurants application and simulator'
 procIdx: 1
 ---
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic. If you haven't already, check out the [lab introduction](/collect-data/monitor-your-application).
+This procedure is part of a lab that teaches you how to get started with New Relic to monitor your application. If you haven't already, check out the [lab introduction](/collect-data/monitor-your-application).
 
 </Callout>
 
-Before you can walk through the lab proper, you need to spin up your Angular application.
+Before you can walk through the lab, you need to spin up your React application.
 
 <Steps>
 
@@ -23,7 +23,7 @@ Clone the lab repository.
 <>
 
 ```bash
-git clone https://github.com/newrelic-experimental/NewRelic-basics-lab-material.git
+git clone https://github.com/newrelic-experimental/relicstaurants.git
 ```
 
 </>
@@ -32,24 +32,38 @@ git clone https://github.com/newrelic-experimental/NewRelic-basics-lab-material.
 
 <Step>
 
-Navigate to the root directory of your application, install dependencies, and run the application.
+Navigate to the root directory of your application and switch to the lab directory.
 
 <>
 
 ```bash
-cd NewRelic-basics-lab-material/FoodMe
-npm install
-node ./server/start.js
-[output] Go to http://localhost:3000/
+cd relicstaurants
+git switch nr-basics-lab-material
 ```
 
 </>
 
-This opens your FoodMe application in your browser.
+</Step>
 
-![FeedMe homepage](../../../images/foodme/homepage.png)
+<Step>
 
-Enter your name and delivery address, and click **Find Restaurants** to get started.
+Next, install dependencies, and run the application.
+
+<>
+
+```bash
+npm install
+npm run build
+npm run newstart
+```
+
+</>
+
+This opens your Relicstaurants application in your browser.
+
+![relicstaurants homepage](../../../images/foodme/homepage.png)
+
+Enter your delivery address and search to get started.
 
 ![nearby restaurant list](../../../images/foodme/restaurant-list.png)
 
@@ -67,7 +81,7 @@ Choose a restaurant.
 
 <Step>
 
-Select an item or two.
+Select an item or two, and click on the cart in the upper right corner.
 
 ![select food](../../../images/foodme/select-food.png)
 
@@ -75,7 +89,7 @@ Select an item or two.
 
 <Step>
 
-Click **Checkout**.
+Click **PAY**.
 
 ![checkout](../../../images/foodme/checkout.png)
 
@@ -83,11 +97,7 @@ Click **Checkout**.
 
 <Step>
 
-Enter the following fake card information.
-
-![fake card](../../../images/foodme/fake-card.png)
-
-Click **Purchase** to place the order:
+Enter a fake card information and click **Finish payment** to place the order.
 
 ![purchase](../../../images/foodme/purchase.png)
 
@@ -103,8 +113,10 @@ In another terminal window, navigate to the root directory of your application, 
 
 ```bash
 # Navigate to the root directiory of your application
-cd NewRelic-basics-lab-material/FoodMe/simulator
+cd relicstaurants/simulator
 [output]
+# Switch to lab branch
+git switch nr-basics-lab-material
 # Create a virtual environment
 python3 -m venv venv
 [output]
@@ -137,6 +149,6 @@ Now, that you know how to run your application, it's time to instrument it. In t
 
 <Callout variant="course" title="lab">
 
-This procedure is part of a lab that teaches you how to monitor your application with New Relic. Now that you've set up your environment, [instrument your application with APM agent](/collect-data/monitor-your-application/install-apm).
+This procedure is part of a lab that teaches you how to get started with New Relic to monitor your application. Now that you've set up your environment, [instrument your application with APM agent](/collect-data/monitor-your-application/install-apm).
 
 </Callout>
