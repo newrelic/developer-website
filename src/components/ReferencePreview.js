@@ -240,6 +240,10 @@ const EXAMPLE_CSS = `
   font-family: Open Sans,Segoe UI,Tahoma,sans-serif;
 }
 
+.nr1-ReferenceExample label {
+  color: var(--primary-text-color);
+}
+
 .nr1-ReferenceExample-ToastManager > div {
   position: fixed;
   top: 0;
