@@ -121,12 +121,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     isPermanent: true,
   });
 
-  createRedirect({
-    fromPath: `/students/`,
-    toPath: `https://newrelic.com/social-impact/students`,
-    isPermanent: true,
-  });
-
   allMdx.edges.forEach(({ node }) => {
     const {
       frontmatter,

@@ -22,6 +22,9 @@
   {
     "url": "https://newrelic.com/blog/nerdlog/estimate-data-cost",
     "paths": ["/collect-data/monitor-your-application/estimate-cost"]
-  }  
+  },
+  {
+    "url": "https://newrelic.com/social-impact/students",
+    "paths": ["/students"]
+  }
 ]
-
