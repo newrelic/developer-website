@@ -1,3 +1,10 @@
+## [1.93.3](https://github.com/newrelic/developer-website/compare/v1.93.2...v1.93.3) (2022-12-19)
+
+
+### Bug Fixes
+
+* Make sdk label dark mode responsive ([259c1e4](https://github.com/newrelic/developer-website/commit/259c1e4f5c2ed3087b5d8dbfa15b4949c4c08a9d))
+
 ## [1.93.2](https://github.com/newrelic/developer-website/compare/v1.93.1...v1.93.2) (2022-12-15)
 
 
