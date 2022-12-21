@@ -75,7 +75,7 @@ exports.config = {
   // ...
 ```
 
-Finish the app by adding the following code, which defines a single API endpoint to `index.js`. Notice that the endpoint returns an HTTP 500: that's on purpose, to help you test the New Relic alert you'll set up next with Pulumi.
+Finish the app by adding the following code, which defines a single API endpoint, to `index.js`. Notice that the endpoint returns an HTTP 500: that's on purpose, to help you test the New Relic alert you'll set up next with Pulumi.
 
 ```javascript
 // Import the New Relic agent configuration module.
@@ -115,7 +115,7 @@ In the `infrastructure` folder, create a new TypeScript project with the Pulumi 
 
 ```bash
 cd ../infrastructure
-pulumi new aws-typescript
+pulumi new typescript
 ```
 
 <Callout variant="course" title="Sign in to Pulumi">
@@ -177,41 +177,74 @@ import * as newrelic from "@pulumi/newrelic";
 const policy = new newrelic.AlertPolicy("alert-policy");
 ```
 
-Next, define an [`AlertCondition`](https://www.pulumi.com/registry/packages/newrelic/api-docs/alertcondition/) to trigger a critical alert when the application's error rate exceeds a given threshold. Add the following code to `index.ts`.
+Next, define an [`NrqlAlertCondition`](https://www.pulumi.com/registry/packages/newrelic/api-docs/nrqlalertcondition/) to trigger a critical alert when the application's error rate exceeds a given threshold. Add the following code to `index.ts`.
 
 A few things to note about this code:
 
-* It uses the New Relic provider's [`getEntity` function](https://www.pulumi.com/registry/packages/newrelic/api-docs/) to look up the APM service you created in Step&nbsp;2, capturing the result of that lookup in the JavaScript variable `app`.
+* It uses the New Relic provider's [`getEntity` function](https://www.pulumi.com/registry/packages/newrelic/api-docs/) to look up the APM service you created in Step&nbsp;2, capturing the result in `app` as a Pulumi [output](https://www.pulumi.com/docs/intro/concepts/inputs-outputs/#apply). Outputs are eventual values that you can think of like JavaScript Promises.
 
-* With that variable, it passes the `applicationId` of the service to the `AlertCondition` as a Pulumi [input](https://www.pulumi.com/docs/intro/concepts/inputs-outputs/), a special type that accepts raw values (like strings), eventual values (like JavaScript promises), or Pulumi [outputs](https://www.pulumi.com/docs/intro/concepts/inputs-outputs/) derived from other resources, as is the case here.
+* It passes the `id` property of the `AlertPolicy` to the alert condition as a Pulumi [input](https://www.pulumi.com/docs/intro/concepts/inputs-outputs/#apply), converting its underlying value from a `string` to the expected `number` with the help of the [`apply()`](https://www.pulumi.com/docs/intro/concepts/inputs-outputs/#apply) method common to all Pulumi outputs.
 
-* It passes the `id` property of the `AlertPolicy` as well, transforming it from an output of type `string` to the `number` expected by the `AlertCondition` resource using the [`apply()`](https://www.pulumi.com/docs/intro/concepts/inputs-outputs/#apply) method available on all Pulumi outputs.
+* It creates a dependency relationship between these two resources. By passing the `id` property of the alert policy (an output) as the `policyId` of the alert condition (an input), Pulumi knows to create the `AlertPolicy` resource first.
 
 ```javascript
 // ...
 
 // Look up the APM service you just created.
-const app = newrelic.getEntity({
+const app = newrelic.getEntityOutput({
     name: "my-api",
 });
 
 // Define an alert condition to trigger an alert when the
 // service's error rate exceeds 1% over a five-minute period.
-const condition = new newrelic.AlertCondition("alert-condition", {
-    type: "apm_app_metric",
-    metric: "error_percentage",
-    conditionScope: "application",
+const condition = new newrelic.NrqlAlertCondition("alert-condition", {
+    description: "Alert when errors exceed threshold.",
     policyId: policy.id.apply(id => parseInt(id)),
-    entities: [
-        pulumi.output(app).applicationId,
-    ],
-    terms: [
+    violationTimeLimitSeconds: 1800,
+    critical: {
+        operator: 'above_or_equals',
+        threshold: 1,
+        thresholdDuration: 300,
+        thresholdOccurrences: 'at_least_once',
+    },
+    nrql: {
+        query: pulumi.interpolate`SELECT COUNT(*) FROM TransactionError WHERE (appName = '${app.name}') AND (error.expected IS FALSE OR error.expected IS NULL)`,
+    },
+});
+```
+
+</Step>
+
+<Step>
+
+## Define a notification destination and channel
+
+Next, define how you'll be notified of application errors. The [`NotificationDestination`](https://www.pulumi.com/registry/packages/newrelic/api-docs/notificationdestination/) resource defines the type of notification &mdash; here, a message to be sent to your email address &mdash; and an accompanying [`NotificationChannel`](https://www.pulumi.com/registry/packages/newrelic/api-docs/notificationchannel/) resource configures the destination as a [notification channel](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-notifications/notification-channels-control-where-send-alerts/).
+
+```javascript
+// ...
+
+// Define a notification destination of your email address.
+const destination = new newrelic.NotificationDestination("destination", {
+    type: "EMAIL",
+    active: true,
+    properties: [
         {
-            operator: "above",
-            threshold: 1,
-            duration: 5,
-            priority: "critical",
-            timeFunction: "all",
+            key: "email",
+            value: "your-email@example.com",
+        },
+    ],
+});
+
+// Define a notification channel for the email destination.
+const channel = new newrelic.NotificationChannel("channel", {
+    destinationId: destination.id,
+    product: "IINT",
+    type: "EMAIL",
+    properties: [
+        {
+            key: "subject",
+            value: "{{issueTitle}}",
         },
     ],
 });
@@ -221,28 +254,28 @@ const condition = new newrelic.AlertCondition("alert-condition", {
 
 <Step>
 
-## Define an alert channel for notifications
+## Define a notification workflow
 
-Finally, define an [`AlertChannel`](https://www.pulumi.com/registry/packages/newrelic/api-docs/alertchannel/) to notify you by email when the application fails. The `AlertChannel` resource defines the type of notification &mdash; here, a message to be sent to a particular email address &mdash; and an accompanying [`AlertPolicyChannel`](https://www.pulumi.com/registry/packages/newrelic/api-docs/alertpolicychannel/) resource ties the `AlertChannel` to the `AlertPolicy` you created in Step&nbsp;5.
+Finally, define a [`Workflow`](https://www.pulumi.com/registry/packages/newrelic/api-docs/workflow/) resource to route policy violations to the notification channel you defined in the previous step.
 
 ```javascript
 // ...
 
-// Define an alert channel to notify you by email.
-const channel = new newrelic.AlertChannel("alert-channel", {
-    type: "email",
-    config: {
-        recipients: "your-email@example.com",
-        includeJsonAttachment: pulumi.output("true"),
+// Define a workflow to route policy violations to the notification channel.
+const workflow = new newrelic.Workflow("workflow", {
+    issuesFilter: {
+        name: app.name,
+        type: "FILTER",
+        predicates: [{
+            attribute: "accumulations.policyName",
+            operator: "EXACTLY_MATCHES",
+            values: [ policy.name ],
+        }],
     },
-});
-
-// Associate the alert channel with the policy defined above.
-const policyChannel = new newrelic.AlertPolicyChannel("alert-policy-channel", {
-    policyId: policy.id.apply(id => parseInt(id)),
-    channelIds: [
-        channel.id.apply(id => parseInt(id)),
-    ],
+    destinations: [{
+        channelId: channel.id,
+    }],
+    mutingRulesHandling: "NOTIFY_ALL_ISSUES",
 });
 ```
 
@@ -265,15 +298,16 @@ When you do so, Pulumi assembles a deployment plan based on the resources and re
 ```bash copyable=false
 [output] Previewing update (dev)
 [output]
-[output]      Type                                  Name                  Plan
-[output]  +   pulumi:pulumi:Stack                   infrastructure-dev    create
-[output]  +   ├─ newrelic:index:AlertPolicy         alert-policy          create
-[output]  +   ├─ newrelic:index:AlertChannel        alert-channel         create
-[output]  +   ├─ newrelic:index:AlertPolicyChannel  alert-policy-channel  create
-[output]  +   └─ newrelic:index:AlertCondition      alert-condition       create
+[output]      Type                                       Name                Plan
+[output]  +   pulumi:pulumi:Stack                        infrastructure-dev  create
+[output]  +   ├─ newrelic:index:AlertPolicy              alert-policy        create
+[output]  +   ├─ newrelic:index:NotificationDestination  destination         create
+[output]  +   ├─ newrelic:index:NotificationChannel      channel             create
+[output]  +   ├─ newrelic:index:NrqlAlertCondition       alert-condition     create
+[output]  +   └─ newrelic:index:Workflow                 workflow            create
 [output]
 [output] Resources:
-[output]     + 5 to create
+[output]     + 6 to create
 [output]
 [output] Do you want to perform this update?
 [output] > yes
@@ -284,19 +318,21 @@ When you do so, Pulumi assembles a deployment plan based on the resources and re
 Choose `details` to get a closer look at each resource if you like, and when you're comfortable, choose `yes` to create the `dev` stack and complete the deployment:
 
 ```bash copyable=false
-[output] Previewing update (dev)
+[output] Updating (dev)
 [output]
-[output]      Type                                  Name                  Plan
-[output]  +   pulumi:pulumi:Stack                   infrastructure-dev    created
-[output]  +   ├─ newrelic:index:AlertPolicy         alert-policy          created
-[output]  +   ├─ newrelic:index:AlertChannel        alert-channel         created
-[output]  +   ├─ newrelic:index:AlertPolicyChannel  alert-policy-channel  created
-[output]  +   └─ newrelic:index:AlertCondition      alert-condition       created
+[output]      Type                                       Name                Status
+[output]  +   pulumi:pulumi:Stack                        infrastructure-dev  created (1s)
+[output]  +   ├─ newrelic:index:AlertPolicy              alert-policy        created (1s)
+[output]  +   ├─ newrelic:index:NotificationDestination  destination         created (3s)
+[output]  +   ├─ newrelic:index:NrqlAlertCondition       alert-condition     created (2s)
+[output]  +   ├─ newrelic:index:NotificationChannel      channel             created (12s)
+[output]  +   └─ newrelic:index:Workflow                 workflow            created (1s)
+[output]
 [output]
 [output] Resources:
-[output]     + 5 to create
+[output]     + 6 created
 [output]
-[output] Duration: 4s
+[output] Duration: 22s
 ```
 
 When the deployment completes, you should be able to [sign in to New Relic](https://login.newrelic.com/login) and verify that the `my-api` service is now configured with an alert condition set up to notify you by email when the service exceeds a 1% error rate.
@@ -330,34 +366,6 @@ In a few minutes, you should be notified by email of a new incident.
 
 To resolve the incident, update the Express application to return a `200` response instead of `500`, restart the app, make a few more requests, and the incident should be resolved by New Relic automatically.
 
-<Callout variant="tip" title="Extra Credit">
-
-The `AlertChannel` resource [supports several types]() of notification channels including email, Slack, PagerDuty, and others. To explore further, try adding a second channel to the program to send alert notifications to your Slack workspace:
-
-```javascript
-// Define a Slack alert channel.
-const slackChannel = new newrelic.AlertChannel("slack-channel", {
-    type: "slack",
-    config: {
-        channel: "your-designated-slack-channel",
-        url: "https://hooks.slack.com/services/XXXXXXX/XXXXXXX/XXXXXXX",
-    },
-});
-
-// Add it to the list of channels associated with your alert policy.
-const policyChannel = new newrelic.AlertPolicyChannel("policy-channel", {
-    ...
-    channelIds: [
-        ...
-        slackChannel.id.apply(id => parseInt(id)),
-    ],
-});
-```
-
-Before deploying this change, be sure to [add the New Relic Slack App](https://slack.com/apps/A0F827KK2-new-relic-alerts) to your Slack workspace, and use the webhook URL generated by the Slack integration to configure the `AlertChannel` resource.
-
-</Callout>
-
 </Step>
 
 <Step>
@@ -371,15 +379,16 @@ pulumi destroy
 [output]
 [output] Previewing destroy (dev)
 [output]
-[output]      Type                                  Name                  Plan
-[output]  -   pulumi:pulumi:Stack                   infrastructure-dev    delete
-[output]  -   ├─ newrelic:index:AlertPolicyChannel  alert-policy-channel  delete
-[output]  -   ├─ newrelic:index:AlertCondition      alert-condition       delete
-[output]  -   ├─ newrelic:index:AlertChannel        alert-channel         delete
-[output]  -   └─ newrelic:index:AlertPolicy         alert-policy          delete
+[output]      Type                                       Name                Plan
+[output]  -   pulumi:pulumi:Stack                        infrastructure-dev  delete
+[output]  -   ├─ newrelic:index:Workflow                 workflow            delete
+[output]  -   ├─ newrelic:index:NotificationChannel      channel             delete
+[output]  -   ├─ newrelic:index:NrqlAlertCondition       alert-condition     delete
+[output]  -   ├─ newrelic:index:AlertPolicy              alert-policy        delete
+[output]  -   └─ newrelic:index:NotificationDestination  destination         delete
 [output]
 [output] Resources:
-[output]     - 5 to delete
+[output]     - 6 to delete
 ```
 
 As before, you'll be prompted to confirm the operation before proceeding. When you're ready, choose `yes` to continue:
@@ -389,17 +398,18 @@ pulumi destroy
 [output]
 [output] Destroying (dev)
 [output]
-[output]      Type                                  Name                  Plan
-[output]  -   pulumi:pulumi:Stack                   infrastructure-dev    deleted
-[output]  -   ├─ newrelic:index:AlertPolicyChannel  alert-policy-channel  deleted
-[output]  -   ├─ newrelic:index:AlertCondition      alert-condition       deleted
-[output]  -   ├─ newrelic:index:AlertChannel        alert-channel         deleted
-[output]  -   └─ newrelic:index:AlertPolicy         alert-policy          deleted
+[output]      Type                                       Name                Status
+[output]  -   pulumi:pulumi:Stack                        infrastructure-dev  deleted
+[output]  -   ├─ newrelic:index:Workflow                 workflow            deleted (1s)
+[output]  -   ├─ newrelic:index:NrqlAlertCondition       alert-condition     deleted (0.80s)
+[output]  -   ├─ newrelic:index:NotificationChannel      channel             deleted (1s)
+[output]  -   ├─ newrelic:index:AlertPolicy              alert-policy        deleted (0.77s)
+[output]  -   └─ newrelic:index:NotificationDestination  destination         deleted (0.73s)
 [output]
 [output] Resources:
-[output]     - 5 deleted
+[output]     - 6 deleted
 [output]
-[output] Duration: 9s
+[output] Duration: 6s
 ```
 
 </Step>
