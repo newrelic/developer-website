@@ -363,14 +363,14 @@ resource "newrelic_workflow" "team_workflow" {
   name = "workflow-example"
   enrichments_enabled = true
   destinations_enabled = true
-  workflow_enabled = true
+  enabled = true
   muting_rules_handling = "NOTIFY_ALL_ISSUES"
 
   enrichments {
     nrql {
       name = "Log"
-      configurations {
-       query = "SELECT count(*) FROM Metric"
+      configuration {
+        query = "SELECT count(*) FROM Metric"
       }
     }
   }
@@ -379,14 +379,14 @@ resource "newrelic_workflow" "team_workflow" {
     name = "filter-example"
     type = "FILTER"
 
-    predicates {
+    predicate {
       attribute = "accumulations.sources"
       operator = "EXACTLY_MATCHES"
       values = [ "newrelic" ]
     }
   }
 
-  destination_configurations {
+  destination {
     channel_id = newrelic_notification_channel.team_email_channel.id
   }
 }
