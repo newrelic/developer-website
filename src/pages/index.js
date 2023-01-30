@@ -66,10 +66,33 @@ const IndexPage = ({ data, pageContext, location }) => {
           >
             <div className={styles.introText}>
               <p>
-                New Relic lets you bring in data from any digital source so that you can fully understand your system, analyze that data efficiently, and respond to incidents before they become problems. 
+
+New Relic is an observability platform that helps you accurately capture data critical to the success of your team. Whether you're a developer installing your first agent or you're ready to query ingested data, our docs site can help you find the best solution for your performance needs:
+<p>
+</p>
+<p className={styles.inspiration}>
+Get started now with our {' '}
+          <Link
+              className={styles.externalLink}
+              to="https://docs.newrelic.com/docs/new-relic-solutions/get-started/quick-launch-guide/"
+            >
+              Quick launch guide
+              <FeatherIcon
+                className={styles.externalLinkIcon}
+                name="external-link"
+              />
+            </Link>{' '}
+            or read more about New Relic in our{' '}
+            <Link
+              className={styles.externalLink}
+              to="https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/install-configure/install-new-relic/"
+            >Welcome to New Relic 
+            </Link>{' '} doc. 
+</p>
+<p>
+</p>
+Or, if you're looking to build custom applications on top of our platform, keep exploring our developer site below.
               </p>
-              <p>
-                Whether you're a developer installing your first agent or you're ready to query ingested data, our docs site can help you find the best solution for your performance needs.
                 <br />
                 <br />
               </p>
@@ -82,26 +105,9 @@ const IndexPage = ({ data, pageContext, location }) => {
                     navInteractionType: 'getQuickstartsButtonClick',
                   }}
                 >
-                  Learn more
+                  Get started
                 </Button>
               </p>
-            </div>
-            <div
-              css={css`
-                flex: 1;
-                margin-top: 0;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-              `}
-            >
-              <Video
-                css={css`
-                  width: 100%;
-                `}
-                id="nbM9dyRF1Kc"
-                type="youtube"
-              />
             </div>
           </section>
 
