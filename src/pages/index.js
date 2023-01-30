@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
-
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
@@ -17,7 +16,6 @@ import * as styles from './index.module.scss';
 import Video from '../components/Video';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
-
 const getStartedGuides = [
   {
     duration: 5,
@@ -42,7 +40,6 @@ const getStartedGuides = [
     icon: <Icon name="nr-build-apps" />,
   },
 ];
-
 const IndexPage = ({ data, pageContext, location }) => {
   const {
     allMdx: { nodes },
@@ -50,13 +47,11 @@ const IndexPage = ({ data, pageContext, location }) => {
   const numberOfPromotedGuides = 6;
   const [guides, setGuides] = useState(() => nodes.slice(0, 6));
   const guidesMinusPromoted = nodes.length - numberOfPromotedGuides;
-
   return (
     <PageContext.Provider value={pageContext}>
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="Welcome to the New Relic developer site" />
-
         <PageLayout.Content>
           <section
             css={css`
@@ -66,51 +61,43 @@ const IndexPage = ({ data, pageContext, location }) => {
           >
             <div className={styles.introText}>
               <p>
-
-New Relic is an observability platform that helps you accurately capture data critical to the success of your team. Whether you're a developer installing your first agent or you're ready to query ingested data, our docs site can help you find the best solution for your performance needs:
-<p>
-</p>
-<p className={styles.inspiration}>
-Get started now with our {' '}
-          <Link
-              className={styles.externalLink}
-              to="https://docs.newrelic.com/docs/new-relic-solutions/get-started/quick-launch-guide/"
-            >
-              Quick launch guide
-              <FeatherIcon
-                className={styles.externalLinkIcon}
-                name="external-link"
-              />
-            </Link>{' '}
-            or read more about New Relic in our{' '}
-            <Link
-              className={styles.externalLink}
-              to="https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/install-configure/install-new-relic/"
-            >Welcome to New Relic 
-            </Link>{' '} doc. 
-</p>
-<p>
-</p>
-Or, if you're looking to build custom applications on top of our platform, keep exploring our developer site below.
+                New Relic is an observability platform that helps you accurately
+                capture data critical to the success of your team. Whether
+                you're a developer installing your first agent or you're ready
+                to query ingested data, our docs site can help you find the best
+                solution for your performance needs:
               </p>
-                <br />
-                <br />
-              </p>
+              <ul>
+                <li>
+                  Get started now with our{' '}
+                  <Link
+                    className={styles.externalLink}
+                    to="https://docs.newrelic.com/docs/new-relic-solutions/get-started/quick-launch-guide/"
+                  >
+                    Quick launch guide
+                    <FeatherIcon
+                      className={styles.externalLinkIcon}
+                      name="external-link"
+                    />
+                  </Link>
+                </li>
+                <li>
+                  Read more about New Relic in our{' '}
+                  <Link
+                    className={styles.externalLink}
+                    to="https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/install-configure/install-new-relic/"
+                  >
+                    Welcome to New Relic
+                  </Link>{' '}
+                  doc.
+                </li>
+              </ul>
               <p>
-              <Button
-                  as={Link}
-                  variant={Button.VARIANT.PRIMARY}
-                  to="https://docs.newrelic.com"
-                  instrumentation={{
-                    navInteractionType: 'getQuickstartsButtonClick',
-                  }}
-                >
-                  Get started
-                </Button>
+                Or, if you're looking to build custom applications on top of our
+                platform, keep exploring our developer site below.
               </p>
             </div>
           </section>
-
           <section className={cx(styles.section, styles.stripedSection)}>
             <GuideListing className={styles.guideListing}>
               <header className={styles.guideListingHeader}>
@@ -130,7 +117,6 @@ Or, if you're looking to build custom applications on top of our platform, keep 
               </GuideListing.List>
             </GuideListing>
           </section>
-
           <section className={styles.section}>
             <h2 className={styles.guideListingHeading}>Get inspired</h2>
             <GuideListing.List className={styles.allGuidesListing}>
@@ -160,7 +146,6 @@ Or, if you're looking to build custom applications on top of our platform, keep 
               </Button>
             </div>
           )}
-
           <p className={styles.inspiration}>
             Looking for more inspiration? Check out the{' '}
             <Link
@@ -175,7 +160,6 @@ Or, if you're looking to build custom applications on top of our platform, keep 
             </Link>{' '}
             built by the New Relic community.
           </p>
-
           <section
             className={cx(
               styles.section,
@@ -220,7 +204,6 @@ Or, if you're looking to build custom applications on top of our platform, keep 
               alt="developer champion badge"
             />
           </section>
-
           <section
             className={cx(
               styles.section,
@@ -250,13 +233,11 @@ Or, if you're looking to build custom applications on top of our platform, keep 
     </PageContext.Provider>
   );
 };
-
 IndexPage.propTypes = {
   data: PropTypes.object,
   pageContext,
   location: PropTypes.object.isRequired,
 };
-
 export const pageQuery = graphql`
   query {
     allMdx(
@@ -285,9 +266,7 @@ export const pageQuery = graphql`
     }
   }
 `;
-
 IndexPage.propTypes = {
   pageContext,
 };
-
 export default IndexPage;
