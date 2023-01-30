@@ -15,6 +15,7 @@ import { pageContext } from '../types';
 import * as styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
+
 const getStartedGuides = [
   {
     duration: 5,
