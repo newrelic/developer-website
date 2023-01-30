@@ -55,7 +55,7 @@ const IndexPage = ({ data, pageContext, location }) => {
     <PageContext.Provider value={pageContext}>
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="New Relic Instant Observability" />
+        <PageLayout.Header title="Welcome to the New Relic developer site" />
 
         <PageLayout.Content>
           <section
@@ -66,31 +66,23 @@ const IndexPage = ({ data, pageContext, location }) => {
           >
             <div className={styles.introText}>
               <p>
-                New Relic Instant Observability (I/O) helps you monitor your
-                stack like a pro, without the burden of manual set up. Explore
-                an open source ecosystem of 500+ quickstarts—out-of-the-box
-                bundles of integrations, dashboards, and alerts—created by
-                observability experts around the world, vetted by New Relic, and
-                ready for you to install with one click.
-                <br />
-                <br />
-                Didn't find what you're looking for? You're always{' '}
-                <a href="https://github.com/newrelic/newrelic-quickstarts">
-                  welcome to add contributions
-                </a>{' '}
-                or improve existing quickstarts to help others instantly monitor
-                their services.
+                New Relic lets you bring in data from any digital source so that you can fully understand your system, analyze that data efficiently, and respond to incidents before they become problems. 
               </p>
               <p>
-                <Button
+                Whether you're a developer installing your first agent or you're ready to query ingested data, our docs site can help you find the best solution for your performance needs.
+                <br />
+                <br />
+              </p>
+              <p>
+              <Button
                   as={Link}
                   variant={Button.VARIANT.PRIMARY}
-                  to="https://newrelic.com/instant-observability"
+                  to="https://docs.newrelic.com"
                   instrumentation={{
                     navInteractionType: 'getQuickstartsButtonClick',
                   }}
                 >
-                  Get quickstarts
+                  Learn more
                 </Button>
               </p>
             </div>
@@ -107,8 +99,8 @@ const IndexPage = ({ data, pageContext, location }) => {
                 css={css`
                   width: 100%;
                 `}
-                id="33kreqnm3p"
-                type="wistia"
+                id="nbM9dyRF1Kc"
+                type="youtube"
               />
             </div>
           </section>
