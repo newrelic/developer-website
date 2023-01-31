@@ -14,6 +14,7 @@ import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import * as styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
+import Video from '../components/Video';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 
 const getStartedGuides = [
@@ -61,11 +62,11 @@ const IndexPage = ({ data, pageContext, location }) => {
           >
             <div className={styles.introText}>
               <p>
-                New Relic is an observability platform that helps you accurately
-                capture data critical to the success of your team. Whether
-                you're a developer installing your first agent or you're ready
-                to query ingested data, our docs site can help you find the best
-                solution for your performance needs:
+                New Relic is an all-in-one platform that captures performance
+                data critical to your team's success. Whether you're a developer
+                installing your first agent or you're ready to query already
+                ingested data, our docs site can help you find the best solution
+                for your performance needs:
               </p>
               <ul>
                 <li>
@@ -96,6 +97,23 @@ const IndexPage = ({ data, pageContext, location }) => {
                 Or, if you're looking to build custom applications on top of our
                 platform, keep exploring our developer site below.
               </p>
+            </div>
+            <div
+              css={css`
+                flex: 1;
+                margin-top: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+              `}
+            >
+              <Video
+                css={css`
+                  width: 100%;
+                `}
+                id="Iu2g0QTuppM"
+                type="youtube"
+              />
             </div>
           </section>
           <section className={cx(styles.section, styles.stripedSection)}>
