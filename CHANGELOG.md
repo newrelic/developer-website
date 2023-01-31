@@ -1,3 +1,10 @@
+# [1.95.0](https://github.com/newrelic/developer-website/compare/v1.94.0...v1.95.0) (2023-01-31)
+
+
+### Features
+
+* **sonic:** port terraform and add redirects ([7007e75](https://github.com/newrelic/developer-website/commit/7007e756403d6fecf99abcc23583d66379c3f6db))
+
 # [1.94.0](https://github.com/newrelic/developer-website/compare/v1.93.3...v1.94.0) (2023-01-31)
 
 
