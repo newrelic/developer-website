@@ -129,6 +129,5 @@
   "bugs": {
     "url": "https://github.com/newrelic/developer-website/issues"
   },
-  "snyk": true,
-  "packageManager": "yarn@3.2.0"
+  "snyk": true
 }

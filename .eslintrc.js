@@ -63,5 +63,6 @@ module.exports = {
     'jsx-a11y/no-onchange': 'off',
     'react/jsx-curly-brace-presence': 'off',
     'react/prop-types': 'off',
+    'react/no-unknown-property': ['error', { ignore: ['css'] }],
   },
 };
