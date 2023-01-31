@@ -1,3 +1,13 @@
+# [1.94.0](https://github.com/newrelic/developer-website/compare/v1.93.3...v1.94.0) (2023-01-31)
+
+
+### Features
+
+* added video and edited first sentence peer review ([6ef42bf](https://github.com/newrelic/developer-website/commit/6ef42bfd277993a12dcc44bfecd9e7fab0a7df50))
+* updated content for intro page ([c603872](https://github.com/newrelic/developer-website/commit/c603872993feab8bfe928e0d447fa84fa50381e5))
+* updated home page content, video, title, and button link ([8ba84f1](https://github.com/newrelic/developer-website/commit/8ba84f1e9108e64cfcb68896f0d721a1fc881a1a))
+* updating front page ([faaf6b7](https://github.com/newrelic/developer-website/commit/faaf6b73089ea25de38ed90c1faf90e526452e74))
+
 ## [1.93.3](https://github.com/newrelic/developer-website/compare/v1.93.2...v1.93.3) (2022-12-19)
 
 
