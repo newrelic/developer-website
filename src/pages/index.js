@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
-
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Button, Link, Icon } from '@newrelic/gatsby-theme-newrelic';
 import GuideListing from '../components/GuideListing/GuideListing';
@@ -14,8 +13,8 @@ import FeaturedGuideTile from '../components/FeaturedGuideTile';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
 import * as styles from './index.module.scss';
-import Video from '../components/Video';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
+import Video from '../components/Video';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 
 const getStartedGuides = [
@@ -42,7 +41,6 @@ const getStartedGuides = [
     icon: <Icon name="nr-build-apps" />,
   },
 ];
-
 const IndexPage = ({ data, pageContext, location }) => {
   const {
     allMdx: { nodes },
@@ -50,13 +48,11 @@ const IndexPage = ({ data, pageContext, location }) => {
   const numberOfPromotedGuides = 6;
   const [guides, setGuides] = useState(() => nodes.slice(0, 6));
   const guidesMinusPromoted = nodes.length - numberOfPromotedGuides;
-
   return (
     <PageContext.Provider value={pageContext}>
       <DevSiteSeo location={location} />
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
-        <PageLayout.Header title="New Relic Instant Observability" />
-
+        <PageLayout.Header title="Welcome to the New Relic developer site" />
         <PageLayout.Content>
           <section
             css={css`
@@ -66,32 +62,40 @@ const IndexPage = ({ data, pageContext, location }) => {
           >
             <div className={styles.introText}>
               <p>
-                New Relic Instant Observability (I/O) helps you monitor your
-                stack like a pro, without the burden of manual set up. Explore
-                an open source ecosystem of 500+ quickstarts—out-of-the-box
-                bundles of integrations, dashboards, and alerts—created by
-                observability experts around the world, vetted by New Relic, and
-                ready for you to install with one click.
-                <br />
-                <br />
-                Didn't find what you're looking for? You're always{' '}
-                <a href="https://github.com/newrelic/newrelic-quickstarts">
-                  welcome to add contributions
-                </a>{' '}
-                or improve existing quickstarts to help others instantly monitor
-                their services.
+                New Relic is an all-in-one platform that captures performance
+                data critical to your team's success. Whether you're a developer
+                installing your first agent or you're ready to query already
+                ingested data, our docs site can help you find the best solution
+                for your performance needs:
               </p>
+              <ul>
+                <li>
+                  Get started now with our{' '}
+                  <Link
+                    className={styles.externalLink}
+                    to="https://docs.newrelic.com/docs/new-relic-solutions/get-started/quick-launch-guide/"
+                  >
+                    Quick launch guide
+                    <FeatherIcon
+                      className={styles.externalLinkIcon}
+                      name="external-link"
+                    />
+                  </Link>
+                </li>
+                <li>
+                  Read more about New Relic in our{' '}
+                  <Link
+                    className={styles.externalLink}
+                    to="https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/install-configure/install-new-relic/"
+                  >
+                    Welcome to New Relic
+                  </Link>{' '}
+                  doc.
+                </li>
+              </ul>
               <p>
-                <Button
-                  as={Link}
-                  variant={Button.VARIANT.PRIMARY}
-                  to="https://newrelic.com/instant-observability"
-                  instrumentation={{
-                    navInteractionType: 'getQuickstartsButtonClick',
-                  }}
-                >
-                  Get quickstarts
-                </Button>
+                Or, if you're looking to build custom applications on top of our
+                platform, keep exploring our developer site below.
               </p>
             </div>
             <div
@@ -107,12 +111,11 @@ const IndexPage = ({ data, pageContext, location }) => {
                 css={css`
                   width: 100%;
                 `}
-                id="33kreqnm3p"
-                type="wistia"
+                id="Iu2g0QTuppM"
+                type="youtube"
               />
             </div>
           </section>
-
           <section className={cx(styles.section, styles.stripedSection)}>
             <GuideListing className={styles.guideListing}>
               <header className={styles.guideListingHeader}>
@@ -132,7 +135,6 @@ const IndexPage = ({ data, pageContext, location }) => {
               </GuideListing.List>
             </GuideListing>
           </section>
-
           <section className={styles.section}>
             <h2 className={styles.guideListingHeading}>Get inspired</h2>
             <GuideListing.List className={styles.allGuidesListing}>
@@ -162,7 +164,6 @@ const IndexPage = ({ data, pageContext, location }) => {
               </Button>
             </div>
           )}
-
           <p className={styles.inspiration}>
             Looking for more inspiration? Check out the{' '}
             <Link
@@ -177,7 +178,6 @@ const IndexPage = ({ data, pageContext, location }) => {
             </Link>{' '}
             built by the New Relic community.
           </p>
-
           <section
             className={cx(
               styles.section,
@@ -222,7 +222,6 @@ const IndexPage = ({ data, pageContext, location }) => {
               alt="developer champion badge"
             />
           </section>
-
           <section
             className={cx(
               styles.section,
@@ -252,13 +251,11 @@ const IndexPage = ({ data, pageContext, location }) => {
     </PageContext.Provider>
   );
 };
-
 IndexPage.propTypes = {
   data: PropTypes.object,
   pageContext,
   location: PropTypes.object.isRequired,
 };
-
 export const pageQuery = graphql`
   query {
     allMdx(
@@ -287,9 +284,7 @@ export const pageQuery = graphql`
     }
   }
 `;
-
 IndexPage.propTypes = {
   pageContext,
 };
-
 export default IndexPage;

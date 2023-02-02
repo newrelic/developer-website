@@ -1,7 +1,7 @@
 {
   "name": "developer-website",
   "private": true,
-  "version": "1.93.3",
+  "version": "1.95.0",
   "dependencies": {
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
@@ -129,6 +129,5 @@
   "bugs": {
     "url": "https://github.com/newrelic/developer-website/issues"
   },
-  "snyk": true,
-  "packageManager": "yarn@3.2.0"
+  "snyk": true
 }

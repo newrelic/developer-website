@@ -22,6 +22,18 @@
   {
     "url": "https://newrelic.com/blog/nerdlog/estimate-data-cost",
     "paths": ["/collect-data/monitor-your-application/estimate-cost"]
-  }  
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": ["/terraform/get-started-terraform"]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-modules/",
+    "paths": ["terraform/terraform-modules"] 
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terragrunt/",
+    "paths": ["/terraform/terragrunt-configuration"]
+  }
 ]
 
