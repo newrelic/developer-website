@@ -1,3 +1,10 @@
+## [1.95.1](https://github.com/newrelic/developer-website/compare/v1.95.0...v1.95.1) (2023-02-14)
+
+
+### Bug Fixes
+
+* **sonic:** fix broken terraform doc external redirects ([1f1b257](https://github.com/newrelic/developer-website/commit/1f1b2577a6a1203d0ccac357536626bbe8bed38b))
+
 # [1.95.0](https://github.com/newrelic/developer-website/compare/v1.94.0...v1.95.0) (2023-01-31)
 
 
