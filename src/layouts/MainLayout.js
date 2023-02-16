@@ -52,7 +52,7 @@ const MainLayout = ({ children, pageContext }) => {
 
             span,
             svg {
-              color: #afe2e3;
+              color: #1CE783;
             }
           `}
         >
