@@ -172,7 +172,7 @@ export default class NewsletterSignups extends React.Component {
                 Newsletter subscriptions per version
             </HeadingText>
             <NrqlQuery
-                accountId={ACCOUNT_ID}
+                accountIds={ACCOUNT_ID}
                 query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
             >
                 {
@@ -196,7 +196,7 @@ Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [
 
 In `NrqlQuery`, you set two props:
 
-- `accountId`: The id for the account you query from
+- `accountIds`: The id for the account you query from
 - `query`: The query to perform
 
 With these, your NR1 app can query the data you want to show in your chart.
@@ -209,14 +209,14 @@ There is a convenience prop for using NRQL to supply data to your charts, called
 
 ```js
 <LineChart
-    accountId={<YOUR NEW RELIC ACCOUNT ID>}
+    accountIds={<YOUR NEW RELIC ACCOUNT ID>}
     query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
 />
 ```
 
 </>
 
-Keep in mind you must still supply the `accountId`.
+Keep in mind you must still supply the `accountIds`.
 
 </Callout>
 
@@ -302,7 +302,7 @@ export default class NewsletterSignups extends React.Component {
                 Newsletter subscriptions per version
             </HeadingText>
             <NrqlQuery
-                accountId={ACCOUNT_ID}
+                accountIds={ACCOUNT_ID}
                 query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
                 pollInterval={60000}
             >
@@ -362,7 +362,7 @@ export default class TotalSubscriptions extends React.Component {
                 Total subscriptions per version
             </HeadingText>
             <NrqlQuery
-                accountId={ACCOUNT_ID}
+                accountIds={ACCOUNT_ID}
                 query="SELECT count(*) FROM subscription FACET page_version SINCE 7 DAYS AGO"
                 pollInterval={60000}
             >
@@ -453,7 +453,7 @@ export default class VersionPageViews extends React.Component {
                 Version {this.props.version.toUpperCase()} - Page views
             </HeadingText>
             <NrqlQuery
-                accountId={ACCOUNT_ID}
+                accountIds={ACCOUNT_ID}
                 query={`SELECT count(*) FROM pageView WHERE page_version = '${this.props.version}' TIMESERIES`}
                 pollInterval={60000}
             >

@@ -65,7 +65,7 @@ export default class NewsletterSignups extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={ACCOUNT_ID}
+                            accountIds={ACCOUNT_ID}
                             query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
                             pollInterval={60000}
                         >
@@ -91,7 +91,7 @@ Make sure you replace `<YOUR NEW RELIC ACCOUNT ID>` with your actual New Relic [
 
 </Callout>
 
-Notice that `NrqlQuery` uses a constant called `ACCOUNT_ID`. Instead of hardcoding an account identifier in your Nerdlet, you can use `accountId` from the platform URL state.
+Notice that `NrqlQuery` uses a constant called `ACCOUNT_ID`. Instead of hardcoding an account identifier in your Nerdlet, you can use `accountIds` from the platform URL state.
 
 </Step>
 
@@ -130,7 +130,7 @@ export default class NewsletterSignups extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={ACCOUNT_ID}
+                            accountIds={ACCOUNT_ID}
                             query="SELECT count(*) FROM subscription FACET page_version TIMESERIES"
                             timeRange={platformState.timeRange}
                             pollInterval={60000}
@@ -264,7 +264,7 @@ export default class VersionPageViews extends React.Component {
                 {
                     (platformState) => {
                         return <NrqlQuery
-                            accountId={ACCOUNT_ID}
+                            accountIds={ACCOUNT_ID}
                             query={`SELECT count(*) FROM pageView WHERE page_version = '${this.props.version}' TIMESERIES`}
                             timeRange={platformState.timeRange}
                             pollInterval={60000}
