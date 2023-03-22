@@ -78,7 +78,27 @@ export const teamMembers = [
         name: 'linkedin',
         url: 'http://www.linkedin.com/in/rlfoster',
       },
+      {
+        name: 'github',
+        url: 'https://github.com/devreldragon',
+      },
     ],
+  },
+  {
+    name: 'Anna Alfano',
+    pronouns: 'she/her',
+    avatar: annaAvatar,
+    bio: (
+      <p>
+        Anna Alfano is an Associate Product Marketing Manager at New Relic. She
+        brings experience from market research, sales marketing, and fintech to
+        her role on the Product Marketing team at New Relic. A consumer
+        psychologist at heart, she is passionate about creating messaging that
+        demonstrates customer empathy and product experiences that streamline
+        decision making
+      </p>
+    ),
+    socials: [{}],
   },
   {
     name: 'Daniel Kim',
@@ -112,22 +132,6 @@ export const teamMembers = [
         url: 'https://linkedin.com/in/journeyer',
       },
     ],
-  },
-  {
-    name: 'Anna Alfano',
-    pronouns: 'she/her',
-    avatar: annaAvatar,
-    bio: (
-      <p>
-        Anna Alfano is an Associate Product Marketing Manager at New Relic. She
-        brings experience from market research, sales marketing, and fintech to
-        her role on the Product Marketing team at New Relic. A consumer
-        psychologist at heart, she is passionate about creating messaging that
-        demonstrates customer empathy and product experiences that streamline
-        decision making
-      </p>
-    ),
-    socials: [{}],
   },
   {
     name: 'Michelle Scharlock',
