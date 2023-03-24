@@ -63,16 +63,12 @@ export const teamMembers = [
           customers learn and apply new skills to improve self-sufficiency,
           proficiency, and success with the New Relic platform.
         </p>
-        <p>
-          Rachel enjoys audiobooks, martial arts and hanging out with her two
-          dogs.
-        </p>
       </>
     ),
     socials: [
       {
         name: 'twitter',
-        url: 'https://twitter.com/journeyer_',
+        url: 'https://twitter.com/devreldragon',
       },
       {
         name: 'linkedin',
