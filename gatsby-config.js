@@ -85,27 +85,15 @@ module.exports = {
           },
         },
         newrelic: {
-          configs: {
-            production: {
-              instrumentationType: 'proAndSPA',
-              accountId: '10956800',
-              trustKey: '1',
-              agentID: '30712246',
-              licenseKey: 'NRJS-649173eb1a7b28cd6ab',
-              applicationID: '30712246',
-              beacon: 'staging-bam-cell.nr-data.net',
-              errorBeacon: 'staging-bam-cell.nr-data.net',
-            },
-            staging: {
-              instrumentationType: 'proAndSPA',
-              accountId: '10956800',
-              trustKey: '1',
-              agentID: '30712246',
-              licenseKey: 'NRJS-649173eb1a7b28cd6ab',
-              applicationID: '30712246',
-              beacon: 'staging-bam-cell.nr-data.net',
-              errorBeacon: 'staging-bam-cell.nr-data.net',
-            },
+          config: {
+            instrumentationType: 'proAndSPA',
+            accountId: '10956800',
+            trustKey: '1',
+            agentID: '30712246',
+            licenseKey: 'NRJS-649173eb1a7b28cd6ab',
+            applicationID: '30712246',
+            beacon: 'staging-bam-cell.nr-data.net',
+            errorBeacon: 'staging-bam-cell.nr-data.net',
           },
         },
         tessen: {
