@@ -1,3 +1,10 @@
+## [1.95.2](https://github.com/newrelic/developer-website/compare/v1.95.1...v1.95.2) (2023-03-28)
+
+
+### Bug Fixes
+
+* Update prism ([b4080ca](https://github.com/newrelic/developer-website/commit/b4080ca526f450a31d83e9c4890cf56581125822))
+
 ## [1.95.1](https://github.com/newrelic/developer-website/compare/v1.95.0...v1.95.1) (2023-02-14)
 
 
