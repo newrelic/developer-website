@@ -82,10 +82,10 @@ New Relic CLI profiles contain credentials and settings that you can apply to an
 To create your first CLI profile, run the [`profiles add`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_profile_add.md) command. Don't forget to set the [region](https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers) of your New Relic account: use `-r` to set either `us` or `eu` (this is required).
 
 ```bash lineNumbers=false
-# Create the tutorial account for the US region
-newrelic profiles add -n tutorial --apiKey API_KEY -r us
+# Create the tutorial account
+newrelic profiles add --profile tutorial --apiKey YOUR_NEW_RELIC_USER_KEY -r YOUR_REGION
 # Set the profile as default
-newrelic profiles default -n tutorial
+newrelic profiles default --profile tutorial
 ```
 
 </Step><Step>
@@ -152,6 +152,12 @@ To make sure that the tags have been added to your entities, retrieve them using
 <Callout variant="tip">
 
 Tags can be deleted at any time by invoking the [`entity tags delete`](https://github.com/newrelic/newrelic-cli/blob/master/docs/cli/newrelic_entity_tags_delete.md) command followed by the same arguments you used to create them.
+
+</Callout>
+
+<Callout variant="tip">
+
+Values can be deleted at any time by invoking the [`entity tags delete-values`](https://github.com/newrelic/newrelic-cli/blob/main/docs/cli/newrelic_entity_tags_delete-values.md) command followed by the same arguments you used to create them.
 
 </Callout>
 
