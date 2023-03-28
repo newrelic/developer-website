@@ -22,7 +22,6 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
-        oneTrustID: '77dd4d78-49db-4057-81ea-4bc325d6ecdd',
         forceTrailingSlashes: true,
         layout: {
           contentPadding: '2rem',
@@ -86,27 +85,15 @@ module.exports = {
           },
         },
         newrelic: {
-          configs: {
-            production: {
-              instrumentationType: 'proAndSPA',
-              accountId: '10956800',
-              trustKey: '1',
-              agentID: '30712246',
-              licenseKey: 'NRJS-649173eb1a7b28cd6ab',
-              applicationID: '30712246',
-              beacon: 'staging-bam-cell.nr-data.net',
-              errorBeacon: 'staging-bam-cell.nr-data.net',
-            },
-            staging: {
-              instrumentationType: 'proAndSPA',
-              accountId: '10956800',
-              trustKey: '1',
-              agentID: '30712246',
-              licenseKey: 'NRJS-649173eb1a7b28cd6ab',
-              applicationID: '30712246',
-              beacon: 'staging-bam-cell.nr-data.net',
-              errorBeacon: 'staging-bam-cell.nr-data.net',
-            },
+          config: {
+            instrumentationType: 'proAndSPA',
+            accountId: '10956800',
+            trustKey: '1',
+            agentID: '30712246',
+            licenseKey: 'NRJS-649173eb1a7b28cd6ab',
+            applicationID: '30712246',
+            beacon: 'staging-bam-cell.nr-data.net',
+            errorBeacon: 'staging-bam-cell.nr-data.net',
           },
         },
         tessen: {
