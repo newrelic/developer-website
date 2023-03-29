@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
-import * as styles from './FeatherIcon.module.scss';
+import { css } from '@emotion/react';
 
 const FeatherIcon = ({ className, name, size = '1em', ...props }) => {
   const paths = ICONS[name];
@@ -11,7 +10,14 @@ const FeatherIcon = ({ className, name, size = '1em', ...props }) => {
       {...props}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      className={cx(styles.icon, className)}
+      css={css`
+        fill: none;
+        stroke: currentColor;
+        stroke-width: var(--feather-icon-stroke-width, 2);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      `}
+      className={className}
       style={{ width: size, height: size }}
     >
       <defs>

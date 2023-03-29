@@ -12,7 +12,6 @@ import {
   NR_SITES,
 } from '@newrelic/gatsby-theme-newrelic';
 import { Link } from 'gatsby';
-import '../components/styles.scss';
 import { useLocation } from '@reach/router';
 import pages from '../data/nav.yml';
 import useSDK from '../hooks/useSDK';

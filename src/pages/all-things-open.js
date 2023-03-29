@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import DevSiteSeo from '../components/DevSiteSeo';
 import PropTypes from 'prop-types';
 import { Button, Video } from '@newrelic/gatsby-theme-newrelic';
@@ -9,7 +8,7 @@ import FeatherIcon from '../components/FeatherIcon';
 import allthingsopen from '../images/all-things-open/allthingsopen.png';
 import gavinjohnson from '../images/all-things-open/gavin-johnson.jpg';
 import michaellang from '../images/all-things-open/michael-lang.jpg';
-import * as styles from './all-things-open.module.scss';
+import { css } from '@emotion/react';
 
 const allThingsOpenPage = ({ location }) => {
   return (
@@ -18,7 +17,20 @@ const allThingsOpenPage = ({ location }) => {
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="All Things Open 2020" />
         <PageLayout.Content>
-          <section className={cx(styles.section, styles.twoColumn)}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+              display: grid;
+              grid-template-columns: repeat(2, calc(50% - 1rem));
+              grid-gap: 2rem;
+
+              @media (max-width: 760px) {
+                grid-template-columns: 1fr;
+              }
+            `}
+          >
             <div>
               <h3>Join New Relic at All Things Open on October 19-20, 2020</h3>
 
@@ -57,30 +69,68 @@ const allThingsOpenPage = ({ location }) => {
               >
                 Register here
                 <FeatherIcon
-                  className={styles.externalLinkIcon}
+                  css={css`
+                    margin-left: 0.5rem;
+                  `}
                   name="external-link"
                 />
               </Button>
             </div>
             <img
-              className={styles.img}
+              css={css`
+                width: 100%;
+              `}
               src={allthingsopen}
               alt="All Things Open 2020"
             />
           </section>
-          <section className={styles.section}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+            `}
+          >
             <h2>Visit us in the virtual expo hall</h2>
             <hr />
           </section>
-          <section className={cx(styles.section, styles.assetTable)}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-gap: 2rem;
+
+              @media (max-width: 760px) {
+                display: block;
+                text-align: center;
+              }
+            `}
+          >
             <div>
               <img
-                className={styles.headshot}
+                css={css`
+                  height: auto;
+                `}
                 src={gavinjohnson}
                 alt="Gavin Johnson"
               />
             </div>
-            <div className={styles.point}>
+            <div
+              css={css`
+                text-align: left;
+                width: 100%;
+                h4 {
+                  min-height: 3rem;
+                }
+
+                @media (max-width: 760px) {
+                  margin-bottom: 40px;
+                }
+              `}
+            >
               <h4>How New Relic Went Open Source: Code & Culture</h4>
               <p>Tues, Oct 20, 2020</p>
               <p>Principal Product Marketing Manager</p>
@@ -88,15 +138,43 @@ const allThingsOpenPage = ({ location }) => {
             </div>
           </section>
           <h2>Explore resources</h2>
-          <section className={cx(styles.section, styles.assetTable)}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-gap: 2rem;
+
+              @media (max-width: 760px) {
+                display: block;
+                text-align: center;
+              }
+            `}
+          >
             <div>
               <img
-                className={styles.headshot}
+                css={css`
+                  width: 75%;
+                `}
                 src={michaellang}
                 alt="Michael Lang"
               />
             </div>
-            <div className={styles.point}>
+            <div
+              css={css`
+                text-align: left;
+                width: 100%;
+                h4 {
+                  min-height: 3rem;
+                }
+
+                @media (max-width: 760px) {
+                  margin-bottom: 40px;
+                }
+              `}
+            >
               <h4>
                 Ruby Served with a side of JavaScript: Migrating to Github
                 Actions for CI
@@ -108,16 +186,66 @@ const allThingsOpenPage = ({ location }) => {
           </section>
           <h2>Explore resources</h2>
           <hr />
-          <section className={cx(styles.section, styles.assetTable)}>
-            <div className={styles.point}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-gap: 2rem;
+
+              @media (max-width: 760px) {
+                display: block;
+                text-align: center;
+              }
+            `}
+          >
+            <div
+              css={css`
+                text-align: left;
+                width: 100%;
+                h4 {
+                  min-height: 3rem;
+                }
+
+                @media (max-width: 760px) {
+                  margin-bottom: 40px;
+                }
+              `}
+            >
               <h4>How to use the Kubernetes cluster explorer</h4>
               <Video id="qfv8ud2pai" type="wistia" />
             </div>
-            <div className={styles.point}>
+            <div
+              css={css`
+                text-align: left;
+                width: 100%;
+                h4 {
+                  min-height: 3rem;
+                }
+
+                @media (max-width: 760px) {
+                  margin-bottom: 40px;
+                }
+              `}
+            >
               <h4>What is OpenTelemetry?</h4>
               <Video id="yY6hHhiDths" type="youtube" />
             </div>
-            <div className={styles.point}>
+            <div
+              css={css`
+                text-align: left;
+                width: 100%;
+                h4 {
+                  min-height: 3rem;
+                }
+
+                @media (max-width: 760px) {
+                  margin-bottom: 40px;
+                }
+              `}
+            >
               <h4>Connecting Prometheus and Grafana to New Relic</h4>
               <Video id="AvqBp2joY5Q" type="youtube" />
             </div>

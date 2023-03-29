@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import * as styles from './ReferenceExample.module.scss';
+import { css } from '@emotion/react';
 import ReferencePreview from './ReferencePreview';
 import { graphql } from 'gatsby';
 import { CodeBlock } from '@newrelic/gatsby-theme-newrelic';
@@ -54,7 +54,15 @@ const ReferenceExample = ({
     <PlatformStateContext.Provider value={platformStateContextMock}>
       <NerdletStateContext.Provider value={nerdletStateContextMock}>
         <div className={className}>
-          <h3 className={styles.title}>{label}</h3>
+          <h3
+            css={css`
+              font-weight: bold;
+              font-size: 1.25rem;
+              margin-bottom: 1rem;
+            `}
+          >
+            {label}
+          </h3>
           <CodeBlock
             lineNumbers
             language="jsx"

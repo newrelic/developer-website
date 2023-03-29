@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import cx from 'classnames';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Link } from 'gatsby';
-import * as styles from './nerdlog.module.scss';
 import { teamMembers } from '../data/nerdlogData';
 import changelogBanner from '../images/changelog/changelog-banner.jpg';
 import styled from '@emotion/styled';
@@ -25,15 +23,48 @@ const NerdlogPage = ({ location }) => {
     });
 
     return (
-      <div className={styles.point} key={i}>
+      <div
+        css={css`
+          text-align: center;
+          max-width: 400px;
+          min-height: 575px;
+
+          @media (max-width: 760px) {
+            margin-bottom: 40px;
+          }
+
+          @media (max-width: 1200px) {
+            min-height: auto;
+          }
+        `}
+        key={i}
+      >
         <img
           alt={teamMember.name}
           src={teamMember.avatar}
-          className={styles.avatar}
+          css={css`
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+          `}
         />
         <h3>{teamMember.name}</h3>
         <h4>{teamMember.pronouns}</h4>
-        <ul className={styles.socials}>{socialItems}</ul>
+        <ul
+          css={css`
+            list-style: none;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            > li {
+              display: inline;
+              margin: 0 5px;
+              padding: 0;
+            }
+          `}
+        >
+          {socialItems}
+        </ul>
         {teamMember.bio}
       </div>
     );
@@ -47,7 +78,10 @@ const NerdlogPage = ({ location }) => {
           <section>
             <img
               src={changelogBanner}
-              className={cx(styles.nerdlogBanner)}
+              css={css`
+                display: block;
+                width: 100%;
+              `}
               alt="Changelog banner"
             />
           </section>
@@ -60,7 +94,14 @@ const NerdlogPage = ({ location }) => {
             <br />
             <br />
             <div
-              className={cx(styles.twoColumnAlt, styles.registrationSection)}
+              css={css`
+                display: grid;
+                grid-template-columns: 55% 35%;
+                grid-gap: 2rem;
+
+                width: 85%;
+                margin: 0 auto;
+              `}
             >
               <div>
                 <h2>
@@ -116,7 +157,21 @@ const NerdlogPage = ({ location }) => {
               Hosted by <a href="https://twitter.com/leonadato">@LeonAdato</a>
               &nbsp; and New Relic's DevRel team
             </SectionHeading>
-            <section className={cx(styles.meetTheTeam)}>
+            <section
+              css={css`
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 2rem;
+
+                @media (max-width: 1400px) {
+                  grid-template-columns: repeat(2, 1fr);
+                }
+
+                @media (max-width: 1200px) {
+                  grid-template-columns: repeat(1, 1fr);
+                }
+              `}
+            >
               {teamMemberPanels}
             </section>
           </Section>

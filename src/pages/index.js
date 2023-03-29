@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
 import DevSiteSeo from '../components/DevSiteSeo';
@@ -12,7 +11,6 @@ import FeatherIcon from '../components/FeatherIcon';
 import FeaturedGuideTile from '../components/FeaturedGuideTile';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
-import * as styles from './index.module.scss';
 import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import Video from '../components/Video';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
@@ -56,11 +54,29 @@ const IndexPage = ({ data, pageContext, location }) => {
         <PageLayout.Content>
           <section
             css={css`
-              margin-top: 0;
+              display: flex;
+              justify-content: space-between;
+              margin: 0 auto 2rem;
+
+              @media (max-width: 1080px) {
+                flex-direction: column;
+              }
+              color: var(--secondary-text-color);
+              font-size: 1.125rem;
+              line-height: 1.75;
+
+              li:not(:last-child) {
+                margin-bottom: 0.5rem !important;
+              }
             `}
-            className={cx(styles.intro, 'intro-text')}
           >
-            <div className={styles.introText}>
+            <div
+              css={css`
+                flex: 1;
+                margin-right: 1rem;
+                margin-bottom: 1rem;
+              `}
+            >
               <p>
                 New Relic is an all-in-one platform that captures performance
                 data critical to your team's success. Whether you're a developer
@@ -72,12 +88,17 @@ const IndexPage = ({ data, pageContext, location }) => {
                 <li>
                   Get started now with our{' '}
                   <Link
-                    className={styles.externalLink}
+                    css={css`
+                      display: inline-flex;
+                      align-items: center;
+                    `}
                     to="https://docs.newrelic.com/docs/new-relic-solutions/get-started/quick-launch-guide/"
                   >
                     Quick launch guide
                     <FeatherIcon
-                      className={styles.externalLinkIcon}
+                      css={css`
+                        margin-left: 0.25rem;
+                      `}
                       name="external-link"
                     />
                   </Link>
@@ -85,7 +106,9 @@ const IndexPage = ({ data, pageContext, location }) => {
                 <li>
                   Read more about New Relic in our{' '}
                   <Link
-                    className={styles.externalLink}
+                    css={css`
+                      display: inline-flex;
+                    `}
                     to="https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/install-configure/install-new-relic/"
                   >
                     Welcome to New Relic
@@ -116,10 +139,51 @@ const IndexPage = ({ data, pageContext, location }) => {
               />
             </div>
           </section>
-          <section className={cx(styles.section, styles.stripedSection)}>
-            <GuideListing className={styles.guideListing}>
-              <header className={styles.guideListingHeader}>
-                <h2 className={cx(styles.guideListingHeading)}>Get coding</h2>
+          <section
+            css={css`
+              margin-top: 4rem;
+              --surface-background-color: var(
+                --secondary-surface-background-color
+              );
+              padding: 2rem;
+              background: var(--secondary-background-color);
+              border-radius: 4px;
+            `}
+          >
+            <GuideListing
+              css={css`
+                --guide-list-row-height: auto;
+
+                margin-top: 0;
+              `}
+            >
+              <header
+                css={css`
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 4rem;
+
+                  @media (max-width: 789px) {
+                    flex-direction: column;
+                  }
+                `}
+              >
+                <h2
+                  css={css`
+                    margin: 0;
+                    margin-right: 1rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    @media (max-width: 789px) {
+                      margin-right: 0rem;
+                    }
+                  `}
+                >
+                  Get coding
+                </h2>
                 <Button
                   as={Link}
                   variant={Button.VARIANT.PRIMARY}
@@ -135,9 +199,31 @@ const IndexPage = ({ data, pageContext, location }) => {
               </GuideListing.List>
             </GuideListing>
           </section>
-          <section className={styles.section}>
-            <h2 className={styles.guideListingHeading}>Get inspired</h2>
-            <GuideListing.List className={styles.allGuidesListing}>
+          <section
+            css={css`
+              margin-top: 4rem;
+            `}
+          >
+            <h2
+              css={css`
+                margin: 0;
+                margin-right: 1rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                @media (max-width: 789px) {
+                  margin-right: 0rem;
+                }
+              `}
+            >
+              Get inspired
+            </h2>
+            <GuideListing.List
+              css={css`
+                margin-top: 1rem;
+              `}
+            >
               {guides.map(({ fields, frontmatter }, index) => (
                 <GuideTile
                   to={fields.slug}
@@ -153,9 +239,20 @@ const IndexPage = ({ data, pageContext, location }) => {
             </GuideListing.List>
           </section>
           {guides.length === numberOfPromotedGuides && (
-            <div className={styles.buttonContainer}>
+            <div
+              css={css`
+                display: flex;
+                justify-content: center;
+              `}
+            >
               <Button
-                className={styles.expandGuides}
+                css={css`
+                  margin-top: 2rem;
+
+                  &:hover {
+                    transform: translateY(-1px);
+                  }
+                `}
                 type="button"
                 onClick={() => setGuides(nodes)}
                 variant={Button.VARIANT.NORMAL}
@@ -164,26 +261,49 @@ const IndexPage = ({ data, pageContext, location }) => {
               </Button>
             </div>
           )}
-          <p className={styles.inspiration}>
+          <p
+            css={css`
+              text-align: center;
+              margin-top: 2rem;
+            `}
+          >
             Looking for more inspiration? Check out the{' '}
             <Link
-              className={styles.externalLink}
+              css={css`
+                align-items: center;
+              `}
               to="https://opensource.newrelic.com"
             >
               open source projects
               <FeatherIcon
-                className={styles.externalLinkIcon}
+                css={css`
+                  margin-left: 0.25rem;
+                `}
                 name="external-link"
               />
             </Link>{' '}
             built by the New Relic community.
           </p>
           <section
-            className={cx(
-              styles.section,
-              styles.stripedSection,
-              styles.developerChampions
-            )}
+            css={css`
+              margin-top: 4rem;
+              --surface-background-color: var(
+                --secondary-surface-background-color
+              );
+              padding: 2rem;
+              background: var(--secondary-background-color);
+              border-radius: 4px;
+              display: flex;
+
+              @media screen and (max-width: 700px) {
+                flex-direction: column;
+                align-items: center;
+              }
+
+              img {
+                height: 9rem;
+              }
+            `}
           >
             <div>
               <h2>New Relic developer champions</h2>
@@ -202,7 +322,9 @@ const IndexPage = ({ data, pageContext, location }) => {
               >
                 Nominate a developer champion
                 <FeatherIcon
-                  className={styles.externalLinkIcon}
+                  css={css`
+                    margin-left: 0.25rem;
+                  `}
                   name="external-link"
                 />
               </Button>
@@ -223,11 +345,25 @@ const IndexPage = ({ data, pageContext, location }) => {
             />
           </section>
           <section
-            className={cx(
-              styles.section,
-              styles.stripedSection,
-              styles.developerChampions
-            )}
+            css={css`
+              margin-top: 4rem;
+              --surface-background-color: var(
+                --secondary-surface-background-color
+              );
+              padding: 2rem;
+              background: var(--secondary-background-color);
+              border-radius: 4px;
+              display: flex;
+
+              @media screen and (max-width: 700px) {
+                flex-direction: column;
+                align-items: center;
+              }
+
+              img {
+                height: 9rem;
+              }
+            `}
           >
             <div>
               <h2>New Relic Podcasts</h2>
@@ -239,7 +375,9 @@ const IndexPage = ({ data, pageContext, location }) => {
               <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
                 Listen
                 <FeatherIcon
-                  className={styles.externalLinkIcon}
+                  css={css`
+                    margin-left: 0.25rem;
+                  `}
                   name="external-link"
                 />
               </Button>

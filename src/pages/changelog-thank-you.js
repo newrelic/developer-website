@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PageLayout from '../components/PageLayout';
 import DevSiteSeo from '../components/DevSiteSeo';
 import changelogBanner from '../images/changelog/changelog-banner.jpg';
-import * as styles from './nerd-days.module.scss';
+import { css } from '@emotion/react';
 
 const ChangelogPage = ({ location }) => {
   return (
@@ -14,7 +14,10 @@ const ChangelogPage = ({ location }) => {
           <section>
             <div>
               <img
-                className={styles.img}
+                css={css`
+                  width: 100%;
+                  margin: 0.25rem auto;
+                `}
                 src={changelogBanner}
                 alt="nerd days header"
               />

@@ -55,11 +55,11 @@ const ImageGallery = ({ images, className }) => {
             pointer-events: none;
             content: '';
             position: absolute;
-            background: linear-gradient(
+            /* background: linear-gradient(
               to right,
               transparent 87%,
               var(--primary-background-color)
-            );
+            ); */
             width: 100%;
             height: 100%;
           }
