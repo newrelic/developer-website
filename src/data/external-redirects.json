@@ -29,7 +29,7 @@
   },
   {
   "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro",
-  "paths": ["automate-workflows/get-started-terraform"]
+  "paths": ["/automate-workflows/get-started-terraform"]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-modules",
