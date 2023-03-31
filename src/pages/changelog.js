@@ -101,6 +101,10 @@ const NerdlogPage = ({ location }) => {
 
                 width: 85%;
                 margin: 0 auto;
+
+                @media screen and (max-width: 1200px) {
+                  grid-template-columns: 100%;
+                }
               `}
             >
               <div>
@@ -139,10 +143,17 @@ const NerdlogPage = ({ location }) => {
                   </p>
                 </div>
               </div>
-              <div>
+              <div
+                css={css`
+                  width: 560px;
+                  @media (max-width: 760px) {
+                    width: 100%;
+                  }
+                `}
+              >
                 <iframe
-                  width="560"
-                  height="315"
+                  style={{ aspectRatio: '16/9' }}
+                  width="100%"
                   src="https://www.youtube.com/embed/videoseries?list=PLmhYj7Jl81JEIOsmCBtTv8TDdzEqqQ8K9"
                   title="YouTube video player"
                   frameBorder="0"

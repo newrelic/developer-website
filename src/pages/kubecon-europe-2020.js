@@ -12,6 +12,9 @@ const KubeConPage = ({ location }) => {
   const pointStyles = css`
     text-align: center;
     width: 100%;
+    h4 {
+      min-height: 3rem;
+    }
 
     @media (max-width: 760px) {
       margin-bottom: 40px;

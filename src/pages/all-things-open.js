@@ -113,6 +113,7 @@ const allThingsOpenPage = ({ location }) => {
               <img
                 css={css`
                   height: auto;
+                  width: 75%;
                 `}
                 src={gavinjohnson}
                 alt="Gavin Johnson"
