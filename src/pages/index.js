@@ -62,7 +62,6 @@ const IndexPage = ({ data, pageContext, location }) => {
                 flex-direction: column;
               }
               color: var(--secondary-text-color);
-              font-size: 1.125rem;
               line-height: 1.75;
 
               li:not(:last-child) {

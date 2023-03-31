@@ -24,7 +24,6 @@ const EventLandingPage = ({ location }) => {
                 css={css`
                   margin-bottom: 2rem;
                   color: var(--secondary-text-color);
-                  font-size: 1.125rem;
                   line-height: 1.75;
 
                   li:not(:last-child) {
