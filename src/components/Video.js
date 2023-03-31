@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
-
-import * as styles from './Video.module.scss';
+import { css } from '@emotion/react';
 
 const videoPlatforms = {
   youtube: (id) => `//www.youtube.com/embed/${id}?modestbranding=1`,
@@ -10,7 +8,17 @@ const videoPlatforms = {
 };
 
 const Video = ({ id, type, title, className }) => (
-  <div className={cx(className, styles.video)}>
+  <div
+    css={css`
+      max-width: 560px;
+
+      iframe {
+        width: 100%;
+        height: 315px;
+      }
+    `}
+    className={className}
+  >
     <iframe
       src={videoPlatforms[type](id)}
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

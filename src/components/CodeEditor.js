@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import Editor from 'react-simple-code-editor';
 import CodeHighlight from './CodeHighlight';
-import * as styles from './CodeEditor.module.scss';
+import { css } from '@emotion/react';
 
 const CodeEditor = ({ value, language, lineNumbers, onChange }) => {
   const lineNumberWidth = value.trim().split('\n').length.toString().length;
@@ -16,14 +15,21 @@ const CodeEditor = ({ value, language, lineNumbers, onChange }) => {
       highlight={(code) => (
         <CodeHighlight
           wrap
-          className={styles.editor}
+          css={css`
+            padding: 0 !important;
+          `}
           language={language}
           lineNumbers={lineNumbers}
         >
           {code}
         </CodeHighlight>
       )}
-      textareaClassName={cx({ [styles.lineNumbers]: lineNumbers })}
+      textareaClassName={css`
+        ${lineNumbers &&
+        css`
+          padding-left: calc(2rem + var(--line-number-width)) !important;
+        `}
+      `}
       style={{
         fontFamily: 'var(--code-font)',
         fontSize: '0.75rem',

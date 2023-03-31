@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
@@ -7,7 +6,6 @@ import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import { PageContext } from '../components/PageContext';
-import * as styles from './index.module.scss';
 import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import Video from '../components/Video';
 
@@ -21,19 +19,41 @@ const DatabytesPage = ({ location }) => {
         <PageLayout.Content>
           <section
             css={css`
-              margin-top: 0;
+              display: flex;
+              justify-content: space-between;
+              margin: 0 auto 2rem;
+
+              @media (max-width: 1080px) {
+                flex-direction: column;
+              }
+              color: var(--secondary-text-color);
+              font-size: 1.125rem;
+              line-height: 1.75;
+
+              li:not(:last-child) {
+                margin-bottom: 0.5rem !important;
+              }
             `}
-            className={cx(styles.intro, 'intro-text')}
           >
-            <div className={styles.introText}>
+            <div
+              css={css`
+                flex: 1;
+                margin-right: 1rem;
+                margin-bottom: 1rem;
+              `}
+            >
               <p>
                 <Link
-                  className={styles.externalLink}
+                  css={css`
+                    display: inline-flex;
+                  `}
                   to="https://www.youtube.com/playlist?list=PLmhYj7Jl81JEV-llIDkCVC05tD7fbOv_b"
                 >
                   Data Bytes is a video series
                   <FeatherIcon
-                    className={styles.externalLinkIcon}
+                    css={css`
+                      margin-left: 0.25rem;
+                    `}
                     name="external-link"
                   />
                 </Link>{' '}
@@ -75,12 +95,16 @@ const DatabytesPage = ({ location }) => {
               Find the latest Data Bytes episode on the New Relic YouTube
               channel{' '}
               <Link
-                className={styles.externalLink}
+                css={css`
+                  align-items: center;
+                `}
                 to="https://www.youtube.com/playlist?list=PLmhYj7Jl81JEV-llIDkCVC05tD7fbOv_b"
               >
                 Data Bytes Playlist
                 <FeatherIcon
-                  className={styles.externalLinkIcon}
+                  css={css`
+                    margin-left: 0.25rem;
+                  `}
                   name="external-link"
                 />
               </Link>{' '}
@@ -115,11 +139,26 @@ const DatabytesPage = ({ location }) => {
           </section>
 
           <section
-            className={cx(
-              styles.section,
-              styles.stripedSection,
-              styles.developerChampions
-            )}
+            css={css`
+              margin-top: 4rem;
+              --surface-background-color: var(
+                --secondary-surface-background-color
+              );
+
+              padding: 2rem;
+              background: var(--secondary-background-color);
+              border-radius: 4px;
+              display: flex;
+
+              @media screen and (max-width: 700px) {
+                flex-direction: column;
+                align-items: center;
+              }
+
+              img {
+                height: 9rem;
+              }
+            `}
           >
             <div>
               <h2>
@@ -136,7 +175,9 @@ const DatabytesPage = ({ location }) => {
               <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
                 Listen
                 <FeatherIcon
-                  className={styles.externalLinkIcon}
+                  css={css`
+                    margin-left: 0.25rem;
+                  `}
                   name="external-link"
                 />
               </Button>

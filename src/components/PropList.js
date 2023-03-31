@@ -1,12 +1,10 @@
 import React, { Fragment, useContext } from 'react';
-import cx from 'classnames';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import CodeDef from './CodeDef';
 import FunctionDefinition from './FunctionDefinition';
 import Markdown from './Markdown';
 import ReferenceExample from './ReferenceExample';
-import * as styles from './PropList.module.scss';
 import { Callout } from '@newrelic/gatsby-theme-newrelic';
 import { graphql } from 'gatsby';
 import { SdkContext } from './SdkContext';
@@ -132,8 +130,30 @@ const PropList = ({ className, propTypes }) => {
           defaultValue,
         }) => {
           return (
-            <div key={name} className={cx(styles.container, className)}>
-              <div className={styles.info}>
+            <div
+              key={name}
+              css={css`
+                display: grid;
+                grid-template-columns: 30% minmax(0, 1fr);
+                grid-gap: 1rem;
+
+                &:not(:last-child) {
+                  margin-bottom: 2rem;
+                  padding-bottom: 2rem;
+                  border-bottom: solid var(--divider-color) 1px;
+                }
+
+                @media (max-width: 1080px) {
+                  grid-template-columns: 100%;
+                }
+              `}
+              className={className}
+            >
+              <div
+                css={css`
+                  overflow-wrap: break-all;
+                `}
+              >
                 <div
                   css={css`
                     margin-bottom: 1rem;
@@ -154,10 +174,32 @@ const PropList = ({ className, propTypes }) => {
                     {name}
                   </span>
                   {isRequired && (
-                    <span className={styles.flagged}>required</span>
+                    <span
+                      css={css`
+                        font-size: 0.75rem;
+                        color: var(--color-red-400);
+                        text-transform: uppercase;
+                        margin-left: 0.5rem;
+                        font-weight: bold;
+                        letter-spacing: 0.05em;
+                      `}
+                    >
+                      required
+                    </span>
                   )}
                   {deprecation && (
-                    <span className={styles.flagged}>deprecated</span>
+                    <span
+                      css={css`
+                        font-size: 0.75rem;
+                        color: var(--color-red-400);
+                        text-transform: uppercase;
+                        margin-left: 0.5rem;
+                        font-weight: bold;
+                        letter-spacing: 0.05em;
+                      `}
+                    >
+                      deprecated
+                    </span>
                   )}
 
                   <span
@@ -217,18 +259,34 @@ const PropList = ({ className, propTypes }) => {
                   </Callout>
                 )}
                 {description && (
-                  <Markdown className={cx(styles.section)}>
+                  <Markdown
+                    css={css`
+                      &:not(:last-child) {
+                        margin-bottom: 2rem;
+                      }
+                    `}
+                  >
                     {description}
                   </Markdown>
                 )}
-                <div className={styles.section}>
+                <div
+                  css={css`
+                    &:not(:last-child) {
+                      margin-bottom: 2rem;
+                    }
+                  `}
+                >
                   <PropTypeInfo type={type} />
                 </div>
                 {sdkLoaded &&
                   examples.map((example, idx) => (
                     <ReferenceExample
                       key={idx}
-                      className={styles.section}
+                      css={css`
+                        &:not(:last-child) {
+                          margin-bottom: 2rem;
+                        }
+                      `}
                       example={example}
                     />
                   ))}

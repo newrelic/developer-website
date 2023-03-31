@@ -71,7 +71,7 @@ guidelines below.
 ### Using multiple versions of Node
 
 If you intend to run multiple versions of Node please be aware that the New Relic
-Developer Site is currently on Node v16. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
+Developer Site is currently on Node v17. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
 
 Review [this article](https://itnext.io/nvm-the-easiest-way-to-switch-node-js-environments-on-your-machine-in-a-flash-17babb7d5f1b)
 which clearly explains the setup and configuration of NVM.
@@ -412,10 +412,10 @@ need to happen:
 
   ```json
   {
-      resolve: 'gatsby-source-newrelic-sdk',
-      options: {
-        release: 'release-3250',
-      },
+    "resolve": "gatsby-source-newrelic-sdk",
+    "options": {
+      "release": "release-3250"
+    }
   }
   ```
 
@@ -471,8 +471,8 @@ pandoc devterms.docx -o devterms.md
 The developer terms can be accepted in the [New Relic platform](https://one.newrelic.com) in the Developer Center which is accessible when a user clicks on
 `Build your own app`.
 
-- The Developer Center functionality is located in an internal Github Enterprise repository:  `wanda/developer-center`.
-- As long as the terms file doesn't incorporate custom components within the markdown (*like JSX components that only exist within the developer-website repo*) These internal terms will now automatically update when the [terms source file](./src/markdown-pages/terms.mdx) changes.
+- The Developer Center functionality is located in an internal Github Enterprise repository: `wanda/developer-center`.
+- As long as the terms file doesn't incorporate custom components within the markdown (_like JSX components that only exist within the developer-website repo_) These internal terms will now automatically update when the [terms source file](./src/markdown-pages/terms.mdx) changes.
 
 ### Developer terms tips
 

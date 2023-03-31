@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as styles from './IconGallery.module.scss';
+import { css } from '@emotion/react';
 import IconReference from './IconReference';
 import SearchInput from './SearchInput';
 
@@ -22,9 +22,18 @@ const IconGallery = () => {
     <>
       <h2>Icon Gallery</h2>
 
-      <form className={styles.iconFilter}>
+      <form
+        css={css`
+          padding: 1rem;
+          padding-left: 0;
+        `}
+      >
         <SearchInput
-          className={styles.search}
+          css={css`
+            width: 60%;
+            margin: 1rem 0;
+            height: auto;
+          `}
           placeholder="Filter icons by name"
           onClear={() => setSearch('')}
           onChange={(e) => setSearch(e.target.value)}
@@ -33,7 +42,12 @@ const IconGallery = () => {
       </form>
 
       {filteredTypes.length ? (
-        <div className={styles.iconGrid}>
+        <div
+          css={css`
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
+          `}
+        >
           {filteredTypes.map((type) => (
             <IconReference key={type} type={type} />
           ))}

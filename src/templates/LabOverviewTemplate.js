@@ -7,7 +7,6 @@ import PageLayout from '../components/PageLayout';
 import MDXContainer from '../components/MDXContainer';
 import GuideListing from '../components/GuideListing/GuideListing';
 import GuideTile from '../components/GuideTile/GuideTile';
-import * as labOverviewStyles from './LabOverviewTemplate.module.scss';
 
 import DevSiteSeo from '../components/DevSiteSeo';
 
@@ -44,7 +43,11 @@ const LabOverviewTemplate = ({ data, location }) => {
               >
                 Procedures
               </h2>
-              <GuideListing.List className={labOverviewStyles.labGuideList}>
+              <GuideListing.List
+                css={css`
+                  display: block !important;
+                `}
+              >
                 {guides?.nodes
                   .sort(sortProcedures)
                   .map(({ fields, frontmatter }, index) => {
@@ -54,6 +57,7 @@ const LabOverviewTemplate = ({ data, location }) => {
                     return (
                       <GuideTile
                         css={css`
+                          margin-top: 10px;
                           width: ${procIdxIsInteger ? '100%' : '90%'};
                           margin-left: ${procIdxIsInteger ? '0' : '10%'};
 
@@ -68,7 +72,6 @@ const LabOverviewTemplate = ({ data, location }) => {
                               : '0.1rem'};
                           }
                         `}
-                        className={labOverviewStyles.labGuideCard}
                         to={fields.slug}
                         key={index}
                         duration={frontmatter.duration}

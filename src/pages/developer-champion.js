@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
@@ -8,7 +7,7 @@ import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import devChampionHeader from '../images/developer-champion/developer-champions.jpg';
 import uptimeEverythingHeader from '../images/developer-champion/uptime-everything-header-image.jpg';
-import * as styles from './developer-champion.module.scss';
+import { css } from '@emotion/react';
 
 const DeveloperChampionPage = ({ location }) => {
   return (
@@ -17,7 +16,20 @@ const DeveloperChampionPage = ({ location }) => {
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="New Relic Developer Champions" />
         <PageLayout.Content>
-          <section className={cx(styles.section, styles.twoColumn)}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+              display: grid;
+              grid-template-columns: repeat(2, calc(50% - 1rem));
+              grid-gap: 2rem;
+
+              @media (max-width: 760px) {
+                grid-template-columns: 1fr;
+              }
+            `}
+          >
             <div>
               <p>
                 New Relic Champions are the voice of the developer community. As
@@ -38,18 +50,28 @@ const DeveloperChampionPage = ({ location }) => {
               >
                 Nominate a developer champion
                 <FeatherIcon
-                  className={styles.externalLinkIcon}
+                  css={css`
+                    margin-left: 0.5rem;
+                  `}
                   name="external-link"
                 />
               </Button>
             </div>
             <img
-              className={styles.img}
+              css={css`
+                width: 100%;
+              `}
               src={devChampionHeader}
               alt="developer champion header"
             />
           </section>
-          <section className={styles.section}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+            `}
+          >
             <h2>What do Developer Champions do?</h2>
             <p>
               New Relic Champions demonstrate expertise in using New Relic
@@ -61,10 +83,39 @@ const DeveloperChampionPage = ({ location }) => {
               commit to making their work public by:
             </p>
           </section>
-          <section className={cx(styles.section, styles.championProgram)}>
-            <div className={styles.point}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-gap: 2rem;
+
+              @media (max-width: 760px) {
+                display: block;
+                text-align: center;
+              }
+            `}
+          >
+            <div
+              css={css`
+                text-align: center;
+                max-width: 400px;
+                margin: auto;
+
+                @media (max-width: 760px) {
+                  margin-bottom: 40px;
+                }
+              `}
+            >
               <FeatherIcon
-                className={styles.pointIcon}
+                css={css`
+                  --feather-icon-stroke-width: 1;
+
+                  margin-bottom: 2rem;
+                  color: var(--color-brand-500);
+                `}
                 name="github"
                 size="4rem"
               />
@@ -74,9 +125,24 @@ const DeveloperChampionPage = ({ location }) => {
                 public project related to New Relic One
               </p>
             </div>
-            <div className={styles.point}>
+            <div
+              css={css`
+                text-align: center;
+                max-width: 400px;
+                margin: auto;
+
+                @media (max-width: 760px) {
+                  margin-bottom: 40px;
+                }
+              `}
+            >
               <FeatherIcon
-                className={styles.pointIcon}
+                css={css`
+                  --feather-icon-stroke-width: 1;
+
+                  margin-bottom: 2rem;
+                  color: var(--color-brand-500);
+                `}
                 name="trello"
                 size="4rem"
               />
@@ -86,9 +152,24 @@ const DeveloperChampionPage = ({ location }) => {
                 Dev website
               </p>
             </div>
-            <div className={styles.point}>
+            <div
+              css={css`
+                text-align: center;
+                max-width: 400px;
+                margin: auto;
+
+                @media (max-width: 760px) {
+                  margin-bottom: 40px;
+                }
+              `}
+            >
               <FeatherIcon
-                className={styles.pointIcon}
+                css={css`
+                  --feather-icon-stroke-width: 1;
+
+                  margin-bottom: 2rem;
+                  color: var(--color-brand-500);
+                `}
                 name="users"
                 size="4rem"
               />
@@ -101,18 +182,36 @@ const DeveloperChampionPage = ({ location }) => {
             </div>
             <Button
               as={ExternalLink}
-              className={styles.nominateButton}
+              css={css`
+                grid-column: 2;
+                justify-self: center;
+              `}
               href="https://forms.gle/Zkdub5e1x4MNqSKW9"
               variant={Button.VARIANT.PRIMARY}
             >
               Nominate a Developer Champion{' '}
               <FeatherIcon
                 name="external-link"
-                className={styles.externalLinkIcon}
+                css={css`
+                  margin-left: 0.5rem;
+                `}
               />
             </Button>
           </section>
-          <section className={cx(styles.section, styles.twoColumn)}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+              display: grid;
+              grid-template-columns: repeat(2, calc(50% - 1rem));
+              grid-gap: 2rem;
+
+              @media (max-width: 760px) {
+                grid-template-columns: 1fr;
+              }
+            `}
+          >
             <div>
               <h2>Why should you join and how will we support?</h2>
               <p>
@@ -153,7 +252,9 @@ const DeveloperChampionPage = ({ location }) => {
               </ul>
             </div>
             <img
-              className={styles.img}
+              css={css`
+                width: 100%;
+              `}
               src={uptimeEverythingHeader}
               alt="uptime everything header"
             />
