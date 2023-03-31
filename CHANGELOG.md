@@ -1,3 +1,16 @@
+# [1.96.0](https://github.com/newrelic/developer-website/compare/v1.95.2...v1.96.0) (2023-03-31)
+
+
+### Bug Fixes
+
+* **sonic:** add forward slash ([2e9d23d](https://github.com/newrelic/developer-website/commit/2e9d23dbcdacae6cafe9912371f79c38e12d7b2d))
+* **sonic:** add missing terraform redirect ([e17cede](https://github.com/newrelic/developer-website/commit/e17cede9829042831f0b2f13fa38877d05cdf5de))
+
+
+### Features
+
+* **sonic:** remove migrated terraform doc ([d66949f](https://github.com/newrelic/developer-website/commit/d66949f2229abb3e432d3bb48692fbc303ef7f3b))
+
 ## [1.95.2](https://github.com/newrelic/developer-website/compare/v1.95.1...v1.95.2) (2023-03-28)
 
 
