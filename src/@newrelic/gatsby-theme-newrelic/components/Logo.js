@@ -19,7 +19,10 @@ const Logo = ({ className, height }) => (
         stroke-width: 3.72px;
       }
       .text-color {
-        fill: var(--system-text-primary-light);
+        fill: #dddedf;
+        @media (max-width: 760px) {
+          fill: var(--system-text-primary-light);
+        }
         .dark-mode & {
           fill: #dddedf;
         }
