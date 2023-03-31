@@ -114,12 +114,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        implementation: require('sass'),
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'gatsby-starter-default',

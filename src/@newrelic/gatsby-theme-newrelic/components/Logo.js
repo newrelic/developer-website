@@ -20,6 +20,12 @@ const Logo = ({ className, height }) => (
       }
       .text-color {
         fill: #dddedf;
+        @media (max-width: 760px) {
+          fill: var(--system-text-primary-light);
+        }
+        .dark-mode & {
+          fill: #dddedf;
+        }
       }
     `}
     className={className}

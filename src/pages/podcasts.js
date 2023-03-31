@@ -2,9 +2,8 @@ import PageLayout from '../components/PageLayout';
 import React from 'react';
 import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
-import cx from 'classnames';
 import podcastsHeader from '../images/podcasts/podcasts.jpg';
-import * as styles from './podcasts.module.scss';
+import { css } from '@emotion/react';
 
 const PodcastsPage = ({ location }) => {
   const podcastsMeta = [
@@ -24,8 +23,28 @@ const PodcastsPage = ({ location }) => {
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="New Relic Podcasts" />
         <PageLayout.Content>
-          <section className={cx(styles.section, styles.twoColumn)}>
-            <div className={styles.bodyText}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+
+              display: grid;
+              grid-gap: 2rem;
+              grid-template-columns: repeat(2, calc(50% - 1rem));
+
+              @media (max-width: 760px) {
+                grid-template-columns: 1fr;
+              }
+            `}
+          >
+            <div
+              css={css`
+                @media (max-width: 760px) {
+                  order: 1;
+                }
+              `}
+            >
               <p>
                 Sometimes we talk on the internet about some things. You
                 probably listen to some things on the internet sometimes. We're
@@ -43,7 +62,15 @@ const PodcastsPage = ({ location }) => {
               </p>
             </div>
             <img
-              className={styles.img}
+              css={css`
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto;
+
+                @media (max-width: 760px) {
+                  order: 0;
+                }
+              `}
               src={podcastsHeader}
               alt="podcasts header"
             />
@@ -52,7 +79,16 @@ const PodcastsPage = ({ location }) => {
           {podcastsMeta.map((podcastMeta) => {
             return (
               <section
-                className={cx(styles.section, styles.player)}
+                css={css`
+                  &:not(:last-child) {
+                    margin-bottom: 4rem;
+                  }
+                  iframe {
+                    width: 100%;
+                    height: 421px;
+                    border: none;
+                  }
+                `}
                 key={podcastMeta.id}
               >
                 <iframe

@@ -18,7 +18,7 @@ Your site is now running at `http://localhost:8000`!
 
 ### Dependencies
 
-Node v16 is used in this project as specified in [.nvmrc](https://github.com/newrelic/developer-website/blob/master/.nvmrc).
+Node v17 is used in this project as specified in [.nvmrc](https://github.com/newrelic/developer-website/blob/master/.nvmrc).
 
 ## 📝 Unit tests
 

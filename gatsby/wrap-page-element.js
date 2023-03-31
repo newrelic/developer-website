@@ -33,6 +33,21 @@ const wrapPageElement = ({ element, props }) => {
               opacity: 1;
             }
           }
+          :root {
+            --height-mobile-nav-bar: 60px;
+            --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          }
+
+          input[type='text'] {
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: all 0.1s var(--ease-out-quad);
+
+            &:hover {
+              border-color: var(--border-hover-color);
+            }
+          }
         `}
       />
       <PageContext.Provider value={props.pageContext}>

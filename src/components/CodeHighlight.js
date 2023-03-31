@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import Highlight from 'prism-react-renderer';
 import Prism from 'prismjs';
-import * as styles from './CodeHighlight.module.scss';
+import { css } from '@emotion/react';
 import { partition, range } from '../utils/array';
 
 const CodeHighlight = ({
@@ -23,10 +22,45 @@ const CodeHighlight = ({
 
         return (
           <pre
-            className={cx(styles.container, className, {
-              [styles.wrap]: wrap,
-              [styles.lineNumbers]: lineNumbers,
-            })}
+            css={css`
+              color: var(--code-console-text-primary);
+              font-family: var(--code-font);
+              font-size: 0.75rem;
+              display: block;
+              overflow: auto;
+              white-space: pre;
+              word-spacing: normal;
+              word-break: normal;
+              tab-size: 2;
+              hyphens: none;
+              text-shadow: none;
+              padding: 1rem;
+
+              > code {
+                display: table;
+                width: 100%;
+                padding: 0 !important;
+                background: none !important;
+              }
+
+              :global(.light-mode) & {
+                color: var(--color-background);
+                background: var(--code-console-text-primary);
+              }
+              ${wrap &&
+              css`
+                white-space: pre-wrap;
+              `}
+              ${lineNumbers &&
+              css`
+                :global(.token-line) {
+                  display: grid;
+                  grid-template-columns: var(--line-number-width) 1fr;
+                  grid-gap: 1rem;
+                }
+              `}
+            `}
+            className={className}
             style={{
               '--line-number-width': `${lineNumberWidth}ch`,
             }}
@@ -39,13 +73,27 @@ const CodeHighlight = ({
                   {...getLineProps({
                     line,
                     key: idx,
-                    className: cx({
-                      [styles.highlightLine]: highlightedLines.has(idx + 1),
-                    }),
+                    css: css`
+                      ${highlightedLines.has(idx + 1) &&
+                      css`  
+                      background: var(--color-current-line);
+
+                      :global(.light-mode) & {
+                        background: var(---color-comment);
+                      `}
+                    `,
                   })}
                 >
                   {lineNumbers && (
-                    <div className={styles.lineNumber}>{idx + 1}</div>
+                    <div
+                      css={css`
+                        user-select: none;
+                        color: var(--color-selection);
+                        text-align: right;
+                      `}
+                    >
+                      {idx + 1}
+                    </div>
                   )}
                   <div>
                     {line.map((token, key) => (

@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import PropTypes from 'prop-types';
 import DevSiteSeo from '../components/DevSiteSeo';
 import { Button } from '@newrelic/gatsby-theme-newrelic';
@@ -7,7 +6,7 @@ import PageLayout from '../components/PageLayout';
 import ExternalLink from '../components/ExternalLink';
 import FeatherIcon from '../components/FeatherIcon';
 import onlineTeach from '../images/builders/remote-unsplash.jpg';
-import * as styles from './builders.module.scss';
+import { css } from '@emotion/react';
 
 const DeveloperChampionPage = ({ location }) => {
   return (
@@ -16,7 +15,20 @@ const DeveloperChampionPage = ({ location }) => {
       <PageLayout type={PageLayout.TYPE.SINGLE_COLUMN}>
         <PageLayout.Header title="New Relic Builders" />
         <PageLayout.Content>
-          <section className={cx(styles.section, styles.twoColumn)}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+              display: grid;
+              grid-template-columns: repeat(2, calc(50% - 1rem));
+              grid-gap: 2rem;
+
+              @media (max-width: 760px) {
+                grid-template-columns: 1fr;
+              }
+            `}
+          >
             <div>
               <p>
                 {' '}
@@ -60,13 +72,21 @@ const DeveloperChampionPage = ({ location }) => {
               >
                 Apply to be a Builder
                 <FeatherIcon
-                  className={styles.externalLinkIcon}
+                  css={css`
+                    margin-left: 0.5rem;
+                  `}
                   name="external-link"
                 />
               </Button>
             </div>
           </section>
-          <section className={styles.section}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+            `}
+          >
             <h2>Why be a New Relic Builder?</h2>
             <p>
               Being a New Relic builder means that you are a part of a group
@@ -77,8 +97,32 @@ const DeveloperChampionPage = ({ location }) => {
             </p>
             <strong>Here is what you get:</strong>
           </section>
-          <section className={cx(styles.section, styles.championProgram)}>
-            <div className={styles.point}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-gap: 2rem;
+
+              @media (max-width: 760px) {
+                display: block;
+                text-align: center;
+              }
+            `}
+          >
+            <div
+              css={css`
+                text-align: center;
+                max-width: 400px;
+                margin: auto;
+
+                @media (max-width: 760px) {
+                  margin-bottom: 40px;
+                }
+              `}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="48"
@@ -103,7 +147,17 @@ const DeveloperChampionPage = ({ location }) => {
                 skills.
               </p>
             </div>
-            <div className={styles.point}>
+            <div
+              css={css`
+                text-align: center;
+                max-width: 400px;
+                margin: auto;
+
+                @media (max-width: 760px) {
+                  margin-bottom: 40px;
+                }
+              `}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="48"
@@ -126,7 +180,17 @@ const DeveloperChampionPage = ({ location }) => {
                 people.
               </p>
             </div>
-            <div className={styles.point}>
+            <div
+              css={css`
+                text-align: center;
+                max-width: 400px;
+                margin: auto;
+
+                @media (max-width: 760px) {
+                  margin-bottom: 40px;
+                }
+              `}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="48"
@@ -154,18 +218,36 @@ const DeveloperChampionPage = ({ location }) => {
             </div>
             <Button
               as={ExternalLink}
-              className={styles.nominateButton}
+              css={css`
+                grid-column: 2;
+                justify-self: center;
+              `}
               href="https://airtable.com/shrCWEQW8uv81Vxny"
               variant={Button.VARIANT.PRIMARY}
             >
               I want in!{' '}
               <FeatherIcon
                 name="external-link"
-                className={styles.externalLinkIcon}
+                css={css`
+                  margin-left: 0.5rem;
+                `}
               />
             </Button>
           </section>
-          <section className={cx(styles.section, styles.twoColumn)}>
+          <section
+            css={css`
+              &:not(:last-child) {
+                margin-bottom: 4rem;
+              }
+              display: grid;
+              grid-template-columns: repeat(2, calc(50% - 1rem));
+              grid-gap: 2rem;
+
+              @media (max-width: 760px) {
+                grid-template-columns: 1fr;
+              }
+            `}
+          >
             <div>
               <h2>What are the Builder's responsibilities?</h2>
               <p>
@@ -183,7 +265,9 @@ const DeveloperChampionPage = ({ location }) => {
               </p>
 
               <img
-                className={styles.img}
+                css={css`
+                  width: 100%;
+                `}
                 src={onlineTeach}
                 alt="uptime everything header"
               />
@@ -230,7 +314,9 @@ const DeveloperChampionPage = ({ location }) => {
               >
                 APPLY NOW!
                 <FeatherIcon
-                  className={styles.externalLinkIcon}
+                  css={css`
+                    margin-left: 0.5rem;
+                  `}
                   name="external-link"
                 />
               </Button>

@@ -1,3 +1,10 @@
+## [1.96.1](https://github.com/newrelic/developer-website/compare/v1.96.0...v1.96.1) (2023-03-31)
+
+
+### Bug Fixes
+
+* Adjust logo colors ([7364fb7](https://github.com/newrelic/developer-website/commit/7364fb72b345521aa537cfdd969fcf90d516936c))
+
 # [1.96.0](https://github.com/newrelic/developer-website/compare/v1.95.2...v1.96.0) (2023-03-31)
 
 

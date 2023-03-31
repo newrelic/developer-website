@@ -36,7 +36,17 @@ const ApiReferenceTemplate = ({ data, location }) => {
         <PageLayout.Header title={name} />
         <PageLayout.Content>
           {description && (
-            <Section className="intro-text">
+            <Section
+              css={css`
+                color: var(--secondary-text-color);
+                font-size: 1.125rem;
+                line-height: 1.75;
+
+                li:not(:last-child) {
+                  margin-bottom: 0.5rem !important;
+                }
+              `}
+            >
               <Markdown source={description} />
             </Section>
           )}

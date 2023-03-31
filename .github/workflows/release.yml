@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 17
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -130,7 +130,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           # semantic-release requires >= 14
-          node-version: 16
+          node-version: 17
 
       # deletes node_modules, install dependencies, does NOT update lockfile
       - name: Install Dependencies

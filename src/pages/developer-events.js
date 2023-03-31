@@ -21,9 +21,14 @@ const EventLandingPage = ({ location }) => {
           >
             <div>
               <p
-                className="intro-text"
                 css={css`
                   margin-bottom: 2rem;
+                  color: var(--secondary-text-color);
+                  line-height: 1.75;
+
+                  li:not(:last-child) {
+                    margin-bottom: 0.5rem !important;
+                  }
                 `}
               >
                 There are a lot of developer events out there, so we will be
