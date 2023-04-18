@@ -1,3 +1,10 @@
+## [1.96.2](https://github.com/newrelic/developer-website/compare/v1.96.1...v1.96.2) (2023-04-18)
+
+
+### Bug Fixes
+
+* update theme ([9aa0a1b](https://github.com/newrelic/developer-website/commit/9aa0a1bb8da21611510e94bbe30053bc6febf912))
+
 ## [1.96.1](https://github.com/newrelic/developer-website/compare/v1.96.0...v1.96.1) (2023-03-31)
 
 
