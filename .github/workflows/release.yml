@@ -16,7 +16,7 @@ jobs:
       # Checkout fetch-depth: 2 because there's a check to see if package.json
       # was updated, and need at least 2 commits for the check to function properly
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 2
 
@@ -124,7 +124,7 @@ jobs:
     needs: [generate-third-party-notices]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v1
