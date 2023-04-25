@@ -48,7 +48,7 @@ jobs:
           github-token: ${{ secrets.DEVEX_OPENSOURCE_BOT_TOKEN }}
           previews: luke-cage-preview
           script: |
-            const result = await github.repos.updateBranchProtection({
+            const result = await github.rest.repos.updateBranchProtection({
               owner: context.repo.owner,
               repo: context.repo.repo,
               branch: 'main',
@@ -86,7 +86,7 @@ jobs:
           github-token: ${{ secrets.DEVEX_OPENSOURCE_BOT_TOKEN }}
           previews: luke-cage-preview
           script: |
-            const result = await github.repos.updateBranchProtection({
+            const result = await github.rest.repos.updateBranchProtection({
               owner: context.repo.owner,
               repo: context.repo.repo,
               branch: 'main',
