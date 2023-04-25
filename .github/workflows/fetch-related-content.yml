@@ -43,7 +43,7 @@ jobs:
 
       - name: Temporarily disable branch protection
         id: disable-branch-protection
-        uses: actions/github-script@v1
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.DEVEX_OPENSOURCE_BOT_TOKEN }}
           previews: luke-cage-preview
@@ -81,7 +81,7 @@ jobs:
       - name: Re-enable branch protection
         id: enable-branch-protection
         if: always()
-        uses: actions/github-script@v1
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.DEVEX_OPENSOURCE_BOT_TOKEN }}
           previews: luke-cage-preview
