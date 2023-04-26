@@ -19,7 +19,7 @@ jobs:
           ref: main
 
       - name: Setup node.js
-        uses: actions/setup-nodev3
+        uses: actions/setup-node@v3
         with:
           node-version: 17
 
