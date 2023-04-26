@@ -14,7 +14,7 @@ import Requirements from './Requirements';
 import Objectives from './Objectives';
 import FlexWrapper from './FlexWrapper';
 
-console.log('Oops!');
+// i am a file change
 
 const components = {
   // Remove these when all step/steps components have been updated to the new
