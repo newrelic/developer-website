@@ -5,6 +5,7 @@ on:
     branches:
       - develop
       - feat/test-workflows
+      - tabatha/trigger-workflow
 
 env:
   BOT_NAME: nr-opensource-bot
