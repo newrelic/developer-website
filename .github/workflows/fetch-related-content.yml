@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
-          ref: main
+          ref: feat/test-workflows
 
       - name: Setup node.js
         uses: actions/setup-node@v1
@@ -51,7 +51,7 @@ jobs:
             const result = await github.rest.repos.updateBranchProtection({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              branch: 'main',
+              branch: 'feat/test-workflows',
               required_status_checks: null,
               restrictions: null,
               enforce_admins: null,
@@ -76,7 +76,7 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.DEVEX_OPENSOURCE_BOT_TOKEN }}
-          branch: main
+          branch: feat/test-workflows
 
       - name: Re-enable branch protection
         id: enable-branch-protection
@@ -89,7 +89,7 @@ jobs:
             const result = await github.rest.repos.updateBranchProtection({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              branch: 'main',
+              branch: 'feat/test-workflows',
               required_status_checks: {
                 strict: false,
                 contexts: [
