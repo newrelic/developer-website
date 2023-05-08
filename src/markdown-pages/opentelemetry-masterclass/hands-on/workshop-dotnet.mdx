@@ -215,16 +215,16 @@ Before you can instrument your application, you need to add some OpenTelemetry d
 
 <Step>
 
-From your shell, add the OpenTelemetry SDK and supporting packages:
+From your shell, add the OpenTelemetry SDK and supporting packages (please note that these versions are necessary to run this tutorial):
 
 <>
 
 ```shell
-dotnet add package --prerelease OpenTelemetry
-dotnet add package --prerelease OpenTelemetry.Api
-dotnet add package --prerelease OpenTelemetry.Exporter.OpenTelemetryProtocol
-dotnet add package --prerelease OpenTelemetry.Extensions.Hosting
-dotnet add package --prerelease OpenTelemetry.Instrumentation.AspNetCore
+dotnet add package OpenTelemetry --version 1.2.0-rc1
+dotnet add package OpenTelemetry.Api --version 1.2.0-rc1
+dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol --version 1.2.0-rc1
+dotnet add package OpenTelemetry.Extensions.Hosting --version 1.0.0-rc8
+dotnet add package OpenTelemetry.Instrumentation.AspNetCore --version 1.0.0-rc8
 ```
 
 Here, you added several OpenTelemetry packages to your application:
