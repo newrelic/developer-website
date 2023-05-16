@@ -23,21 +23,8 @@
           url: '/collect-data/monitor-your-application/collect-custom-data'
         - title: Create a custom dashboard
           url: '/collect-data/monitor-your-application/query-custom-data'
-    - title: Monitor your network devices
-      url: '/collect-data/network-performance-monitoring'
     - title: Estimate data ingest and cost
       url: '/collect-data/estimate-cost'
-    - title: Troubleshoot your website with New Relic browser
-      url: '/collect-data/browser'
-      pages:
-        - title: Set up your Relicstaurants web app
-          url: '/collect-data/browser/set-up-env'
-        - title: Instrument your application with our browser agent
-          url: '/collect-data/browser/install-browser-agent'
-        - title: Debug errors in your application
-          url: '/collect-data/browser/debug-errors'
-        - title: Debug frontend slowness in your application
-          url: '/collect-data/browser/debug-slowness'
     - title: Monitor your Kubernetes cluster with New Relic and Pixie
       url: '/collect-data/pixie'
       pages:
