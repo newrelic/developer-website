@@ -134,14 +134,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 
   createRedirect({
-    fromPath: `/collect-data/network-performance-monitoring`,
-    toPath: `https://docs.newrelic.com/docs/network-performance-monitoring/get-started/network-performance-monitoring-guide/`,
+    fromPath: `/collect-data/network-performance-monitoring/`,
+    toPath: `https://docs.newrelic.com/docs/network-performance-monitoring/get-started/network-performance-monitoring-guide`,
     isPermanent: true,
   });
 
   createRedirect({
     fromPath: `/collect-data/browser/*`,
-    toPath: `https://docs.newrelic.com/docs/browser/new-relic-browser/lab/over-view/`,
+    toPath: `https://docs.newrelic.com/docs/browser/new-relic-browser/lab/over-view`,
     isPermanent: true,
   });
 
