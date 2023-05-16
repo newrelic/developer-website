@@ -4,10 +4,6 @@
   pages:
     - title: Collect data from any source
       url: https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data
-    - title: Monitor your network devices
-      url: '/collect-data/network-performance-monitoring'
-    - title: Identify root cause issues in your infrastructure
-      url: '/collect-data/infra'
     - title: Monitor your application
       url: '/collect-data/monitor-your-application'
       pages:

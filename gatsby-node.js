@@ -127,6 +127,24 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: `/collect-data/infra`,
+    toPath: `https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/identify-root-causes-guide/`,
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: `/collect-data/network-performance-monitoring`,
+    toPath: `https://docs.newrelic.com/docs/network-performance-monitoring/get-started/network-performance-monitoring-guide/`,
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: `/collect-data/browser/*`,
+    toPath: `https://docs.newrelic.com/docs/browser/new-relic-browser/lab/over-view/`,
+    isPermanent: true,
+  });
+
   allMdx.edges.forEach(({ node }) => {
     const {
       frontmatter,
