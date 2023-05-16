@@ -128,8 +128,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 
   createRedirect({
-    fromPath: `/collect-data/infra`,
-    toPath: `https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/identify-root-causes-guide/`,
+    fromPath: `/collect-data/infra/`,
+    toPath: `https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/identify-root-causes-guide`,
     isPermanent: true,
   });
 
