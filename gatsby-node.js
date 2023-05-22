@@ -151,6 +151,24 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     isPermanent: true,
   });
 
+  createRedirect({
+    fromPath: `/automate-workflows/get-started-new-relic-cli/`,
+    toPath: `https://docs.newrelic.com/docs/new-relic-solutions/tutorials/new-relic-cli`,
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: `/build-apps/build-hello-world-app/`,
+    toPath: `https://docs.newrelic.com/docs/new-relic-solutions/tutorials/build-hello-world-app`,
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: `/build-apps/build-react-hooks-app/`,
+    toPath: `https://docs.newrelic.com/docs/new-relic-solutions/tutorials/build-react-hooks-app`,
+    isPermanent: true,
+  });
+
   allMdx.edges.forEach(({ node }) => {
     const {
       frontmatter,
