@@ -55,6 +55,7 @@ Next, create a small web application and configure it for use with New Relic. In
 
 ```bash
 cd app
+npm init -y
 npm install express newrelic --save
 touch index.js
 ```
@@ -147,20 +148,25 @@ When the new-project wizard completes, you should be left with the following fol
 
 ## Install and configure the New Relic provider
 
-Still in the `infrastructure` folder, install the [`@pulumi/newrelic`](https://www.pulumi.com/registry/packages/newrelic) package from npm, then configure the New Relic [provider](https://www.pulumi.com/docs/intro/concepts/resources/providers/) with your New Relic [account ID](https://docs.newrelic.com/docs/accounts/install-new-relic/account-setup/account-id/) and [user key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/):
+Still in the `infrastructure` folder, install the [`@pulumi/newrelic`](https://www.pulumi.com/registry/packages/newrelic) package from npm: 
 
 ```bash
 npm install @pulumi/newrelic
-
-export NEW_RELIC_ACCOUNT_ID="your-account-id"
-export NEW_RELIC_API_KEY="your-user-api-key"
 ```
 
-<Callout variant="tip">
+Then configure the New Relic provider using Pulumi's configuration system, which has built-in support for encrypted secrets.:
 
-Alternatively, you can also configure the New Relic provider using Pulumi's own configuration system, which has built-in support for encrypted secrets. See the [New Relic provider docs](https://www.pulumi.com/registry/packages/newrelic/installation-configuration/) and [Pulumi configuration docs](https://www.pulumi.com/docs/intro/concepts/config/) for details.
+```bash
+pulumi config set newrelic:accountId 123456
+pulumi config set newrelic:apiKey NRAK-XXXXXXXXXXXXXXXXXXXXXXXXXXX --secret
+```
 
+<Callout variant="caution">
+Be sure to use the `--secret` flag when setting your New Relic API key. This will ensure that your API Key is encrypted both in transit and at rest, and that you may safely commit your stack's configuration file to version control.
 </Callout>
+
+
+See [Pulumi configuration docs](https://www.pulumi.com/docs/intro/concepts/config/) for details.
 
 </Step>
 
