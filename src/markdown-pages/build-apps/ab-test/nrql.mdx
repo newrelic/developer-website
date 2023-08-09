@@ -172,7 +172,7 @@ export default class NewsletterSignups extends React.Component {
                 Newsletter subscriptions per version
             </HeadingText>
             <NrqlQuery
-                accountIds={ACCOUNT_ID}
+                accountIds={[ACCOUNT_ID]}
                 query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
             >
                 {
@@ -302,7 +302,7 @@ export default class NewsletterSignups extends React.Component {
                 Newsletter subscriptions per version
             </HeadingText>
             <NrqlQuery
-                accountIds={ACCOUNT_ID}
+                accountIds={[ACCOUNT_ID]}
                 query="SELECT count(*) FROM subscription FACET page_version SINCE 30 MINUTES AGO TIMESERIES"
                 pollInterval={60000}
             >
@@ -362,7 +362,7 @@ export default class TotalSubscriptions extends React.Component {
                 Total subscriptions per version
             </HeadingText>
             <NrqlQuery
-                accountIds={ACCOUNT_ID}
+                accountIds={[ACCOUNT_ID]}
                 query="SELECT count(*) FROM subscription FACET page_version SINCE 7 DAYS AGO"
                 pollInterval={60000}
             >
@@ -453,7 +453,7 @@ export default class VersionPageViews extends React.Component {
                 Version {this.props.version.toUpperCase()} - Page views
             </HeadingText>
             <NrqlQuery
-                accountIds={ACCOUNT_ID}
+                accountIds={[ACCOUNT_ID]}
                 query={`SELECT count(*) FROM pageView WHERE page_version = '${this.props.version}' TIMESERIES`}
                 pollInterval={60000}
             >

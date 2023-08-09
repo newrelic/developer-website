@@ -1,3 +1,12 @@
+## [1.96.3](https://github.com/newrelic/developer-website/compare/v1.96.2...v1.96.3) (2023-08-01)
+
+
+### Bug Fixes
+
+* added redirects to migrated content ([d876f0b](https://github.com/newrelic/developer-website/commit/d876f0b14587fe04a59dd5d64f796a701a216f3c))
+* added redirects to migrated content ([4b351e1](https://github.com/newrelic/developer-website/commit/4b351e1a6e023fd46376aa26f31db778dec1d93a))
+* added redirects to migrated content ([67d2492](https://github.com/newrelic/developer-website/commit/67d2492805f04eeef40eb20bfcab78f37e1a42cc))
+
 ## [1.96.2](https://github.com/newrelic/developer-website/compare/v1.96.1...v1.96.2) (2023-04-18)
 
 
