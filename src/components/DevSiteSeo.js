@@ -18,27 +18,6 @@ function DevSiteSeo({ description, meta, title, tags, location, type }) {
     `
   );
 
-  const crazyEgg = (location) => {
-    const crazyEggPathnames = [
-      '/',
-      '/instant-observability/',
-      '/instant-observability/node-js/01fdea36-5a15-44b4-a864-c4c99866735b/',
-      '/instant-observability/php/475dec69-10c9-4bc6-8312-3caa266fb028/',
-      '/instant-observability/apache/ad5affab-545a-4355-ad48-cfd66e2fbf00/',
-      '/instant-observability/java/3ebfb315-d0a6-4b27-9f89-b16a9a1ada5f/',
-      '/instant-observability/dotnet/2dff13b6-0fac-43a6-abc6-57f0a3299639/',
-      '/instant-observability/codestream/29bd9a4a-1c19-4219-9694-0942f6411ce7/',
-    ];
-    if (crazyEggPathnames.includes(location.pathname))
-      return (
-        <script
-          type="text/javascript"
-          src="//script.crazyegg.com/pages/scripts/0045/9836.js"
-          async="async"
-        />
-      );
-  };
-
   const metaDescription = description || site.siteMetadata.description;
 
   const globalMetadata = [
@@ -99,7 +78,6 @@ function DevSiteSeo({ description, meta, title, tags, location, type }) {
 
   return (
     <SEO location={location} title={title} type={type}>
-      {crazyEgg(location)}
       {validMetadata.map((data, index) => (
         <meta key={`${data.name}-${index}`} {...data} />
       ))}
