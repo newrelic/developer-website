@@ -109,66 +109,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     isPermanent: true,
   });
 
-  createRedirect({
-    fromPath: `/instant-observability/`,
-    toPath: `https://newrelic.com/instant-observability`,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/instant-observability/*`,
-    toPath: `https://newrelic.com/instant-observability/*`,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/students/`,
-    toPath: `https://newrelic.com/social-impact/students`,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/collect-data/infra/`,
-    toPath: `https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/identify-root-causes-guide`,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/collect-data/network-performance-monitoring/`,
-    toPath: `https://docs.newrelic.com/docs/network-performance-monitoring/get-started/network-performance-monitoring-guide`,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/collect-data/browser/`,
-    toPath: `https://docs.newrelic.com/docs/browser/new-relic-browser/lab/over-view`,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/collect-data/browser/*`,
-    toPath: `https://docs.newrelic.com/docs/browser/new-relic-browser/lab/over-view`,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/automate-workflows/get-started-new-relic-cli/`,
-    toPath: `https://docs.newrelic.com/docs/new-relic-solutions/tutorials/new-relic-cli`,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/build-apps/build-hello-world-app/`,
-    toPath: `https://docs.newrelic.com/docs/new-relic-solutions/tutorials/build-hello-world-app`,
-    isPermanent: true,
-  });
-
-  createRedirect({
-    fromPath: `/build-apps/build-react-hooks-app/`,
-    toPath: `https://docs.newrelic.com/docs/new-relic-solutions/tutorials/build-react-hooks-app`,
-    isPermanent: true,
-  });
-
   allMdx.edges.forEach(({ node }) => {
     const {
       frontmatter,

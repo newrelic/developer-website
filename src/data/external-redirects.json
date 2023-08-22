@@ -28,12 +28,12 @@
     "paths": ["/terraform/get-started-terraform"]
   },
   {
-  "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro",
-  "paths": ["/automate-workflows/get-started-terraform"]
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro",
+    "paths": ["/automate-workflows/get-started-terraform"]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-modules",
-    "paths": ["/terraform/terraform-modules"] 
+    "paths": ["/terraform/terraform-modules"]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terragrunt",
@@ -42,6 +42,13 @@
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro",
     "paths": ["/terraform"]
-  } 
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/new-relic-cli",
+    "paths": ["/automate-workflows/get-started-new-relic-cli"]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/build-hello-world-app",
+    "paths": ["/build-apps/build-hello-world-app"]
+  }
 ]
-
