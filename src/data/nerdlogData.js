@@ -34,11 +34,11 @@ export const teamMembers = [
       },
       {
         name: 'linkedin',
-        url: 'https://www.linkedin.com/in/adatole/',
+        url: 'https://www.linkedin.com/in/leonadato/',
       },
       {
         name: 'github',
-        url: 'https://github.com/adatole',
+        url: 'https://github.com/LeonAdato',
       },
     ],
   },

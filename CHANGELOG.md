@@ -1,3 +1,10 @@
+## [1.96.4](https://github.com/newrelic/developer-website/compare/v1.96.3...v1.96.4) (2023-08-22)
+
+
+### Bug Fixes
+
+* add external redirects ([1373237](https://github.com/newrelic/developer-website/commit/13732374a14ba4396345fd042f8511ac5d83867b))
+
 ## [1.96.3](https://github.com/newrelic/developer-website/compare/v1.96.2...v1.96.3) (2023-08-01)
 
 
