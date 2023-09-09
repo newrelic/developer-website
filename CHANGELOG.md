@@ -1,3 +1,10 @@
+## [1.96.5](https://github.com/newrelic/developer-website/compare/v1.96.4...v1.96.5) (2023-09-09)
+
+
+### Bug Fixes
+
+* **custom viz:** add permissions ([82123b4](https://github.com/newrelic/developer-website/commit/82123b472c54e2bbd8dee2ee4285ac47c2611785))
+
 ## [1.96.4](https://github.com/newrelic/developer-website/compare/v1.96.3...v1.96.4) (2023-08-22)
 
 
