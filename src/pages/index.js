@@ -393,34 +393,27 @@ IndexPage.propTypes = {
   pageContext,
   location: PropTypes.object.isRequired,
 };
-export const pageQuery = graphql`
-  query {
-    allMdx(
-      filter: {
-        frontmatter: {
-          template: { eq: "GuideTemplate" }
-          tileShorthand: { title: { ne: null } }
-        }
+export const pageQuery = graphql`{
+  allMdx(
+    filter: {frontmatter: {template: {eq: "GuideTemplate"}, tileShorthand: {title: {ne: null}}}}
+    sort: [{frontmatter: {promote: ASC}}, {frontmatter: {title: ASC}}]
+  ) {
+    nodes {
+      fields {
+        slug
       }
-      sort: { fields: [frontmatter___promote, frontmatter___title] }
-    ) {
-      nodes {
-        fields {
-          slug
-        }
-        frontmatter {
+      frontmatter {
+        title
+        description
+        duration
+        tileShorthand {
           title
           description
-          duration
-          tileShorthand {
-            title
-            description
-          }
         }
       }
     }
   }
-`;
+}`;
 IndexPage.propTypes = {
   pageContext,
 };
