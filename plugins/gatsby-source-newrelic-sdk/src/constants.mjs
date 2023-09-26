@@ -1,9 +1,9 @@
-module.exports.BASE_URL =
+export const BASE_URL =
   'https://d1zobbh8kytrtv.cloudfront.net/platform/doc-app';
 
-module.exports.DOCUMENTED_APIS = ['logger', 'navigation', 'nerdlet', 'ngql'];
+export const DOCUMENTED_APIS = ['logger', 'navigation', 'nerdlet', 'ngql'];
 
-module.exports.DOCUMENTED_COMPONENTS = [
+export const DOCUMENTED_COMPONENTS = [
   'AccountPicker',
   'AccountsQuery',
   'AccountStorageMutation',

@@ -1,10 +1,10 @@
-const getExamples = require('./getExamples');
-const getTypeDefs = require('./getTypeDefs');
-const getMethods = require('./getMethods');
-const getConstants = require('./getConstants');
-const { getPropTypes } = require('./getPropTypes');
+import getExamples from './getExamples.mjs';
+import { getTypeDefs } from './getTypeDefs.mjs';
+import getMethods from './getMethods.mjs';
+import getConstants from './getConstants.mjs';
+import { getPropTypes } from './getPropTypes.mjs';
 
-module.exports = (name, sdk) => {
+export default (name, sdk) => {
   const component = sdk[name];
 
   if (!component) {

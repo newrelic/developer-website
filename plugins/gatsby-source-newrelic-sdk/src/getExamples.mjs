@@ -7,7 +7,7 @@ const IGNORED_PREVIEWS = [
   'Select',
 ];
 
-module.exports = (name, obj) => {
+export default (name, obj) => {
   const docs = obj[name].__docs__ || {};
   const tags = docs.tags || {};
 

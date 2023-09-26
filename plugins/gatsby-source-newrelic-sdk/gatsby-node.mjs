@@ -1,17 +1,17 @@
-const loadSdk = require('./src/loadSdk');
-const getApiDoc = require('./src/getApiDoc');
-const getComponentDoc = require('./src/getComponentDoc');
-const {
+import loadSdk from './src/loadSdk.mjs';
+import getApiDoc from './src/getApiDoc.mjs';
+import getComponentDoc from './src/getComponentDoc.mjs';
+import {
   BASE_URL,
   DOCUMENTED_APIS,
   DOCUMENTED_COMPONENTS,
-} = require('./src/constants');
-const navigationApi = require('./src/navigationApi');
+} from './src/constants.mjs';
+import navigationApi from './src/navigationApi.mjs';
 
 const hasOwnProperty = (obj, name) =>
   Object.prototype.hasOwnProperty.call(obj, name);
 
-exports.createSchemaCustomization = ({ actions, schema }) => {
+export const createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
 
   const propTypeMeta = schema.buildUnionType({
@@ -160,7 +160,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   createTypes([propTypeMeta, typeDefs]);
 };
 
-exports.createResolvers = ({ createResolvers }, pluginOptions) => {
+export const createResolvers = ({ createResolvers }, pluginOptions) => {
   const { release } = pluginOptions;
 
   createResolvers({
@@ -183,7 +183,7 @@ exports.createResolvers = ({ createResolvers }, pluginOptions) => {
   });
 };
 
-exports.sourceNodes = async (
+export const sourceNodes = async (
   { actions, cache, createNodeId, createContentDigest },
   { release }
 ) => {
