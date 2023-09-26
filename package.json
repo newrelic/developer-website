@@ -113,6 +113,7 @@
     "test": "jest",
     "test:watch": "yarn test -- --watch",
     "snyk-protect": "snyk protect",
+    "prepare": "husky install",
     "postinstall": "patch-package"
   },
   "husky": {
