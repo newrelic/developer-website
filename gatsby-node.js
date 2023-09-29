@@ -3,6 +3,9 @@ const { execSync } = require('child_process');
 const { createFilePath } = require('gatsby-source-filesystem');
 const resolveQuickstartSlug = require('./src/utils/resolveQuickstartSlug.js');
 const externalRedirects = require('./src/data/external-redirects.json');
+const { getFileRelativePath } = require('./gatsby/fs.js');
+
+const MDX_NODE_TYPES = new Set(['Mdx', 'MarkdownRemark']);
 
 const kebabCase = (string) =>
   string
@@ -36,41 +39,42 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     query {
-      allMdx(filter: { fileAbsolutePath: { regex: "/src/markdown-pages/" } }) {
-        edges {
-          node {
-            fields {
-              fileRelativePath
-              slug
+      allMdx(
+        filter: {
+          internal: { contentFilePath: { regex: "/src/markdown-pages/" } }
+        }
+      ) {
+        nodes {
+          fields {
+            fileRelativePath
+            slug
+          }
+          frontmatter {
+            path
+            template
+            redirects
+            resources {
+              url
             }
-            frontmatter {
-              path
-              template
-              redirects
-              resources {
-                url
-              }
-            }
+          }
+          internal {
+            contentFilePath
           }
         }
       }
 
       allNewRelicSdkComponent {
-        edges {
-          node {
-            fields {
-              slug
-            }
+        nodes {
+          fields {
+            slug
           }
         }
       }
 
       allNewRelicSdkApi {
-        edges {
-          node {
-            fields {
-              slug
-            }
+        nodes {
+          fields {
+            slug
           }
         }
       }
@@ -169,10 +173,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     isPermanent: true,
   });
 
-  allMdx.edges.forEach(({ node }) => {
+  allMdx.forEach(({ node }) => {
     const {
       frontmatter,
       fields: { fileRelativePath, slug },
+      internal: { contentFilePath },
     } = node;
 
     if (frontmatter.redirects) {
@@ -210,7 +215,9 @@ The 'path' property on frontmatter is deprecated and has no effect. URLs are now
 
     createPage({
       path: path.join(slug, '/'),
-      component: path.resolve(`src/templates/${frontmatter.template}.js`),
+      component: `${path.resolve(
+        `src/templates/${frontmatter.template}.js`
+      )}.?__contentFilePath=${contentFilePath}`,
       context: {
         slug,
         fileRelativePath,
@@ -223,28 +230,34 @@ The 'path' property on frontmatter is deprecated and has no effect. URLs are now
     });
   });
 
-  allNewRelicSdkComponent.edges.forEach(({ node }) => {
+  allNewRelicSdkComponent.forEach(({ node }) => {
     const {
       fields: { slug },
+      internal: { contentFilePath },
     } = node;
 
     createPage({
       path: path.join(slug, '/'),
-      component: path.resolve('./src/templates/ComponentReferenceTemplate.js'),
+      component: `${path.resolve(
+        './src/templates/ComponentReferenceTemplate.js'
+      )}.?__contentFilePath=${contentFilePath}`,
       context: {
         slug,
       },
     });
   });
 
-  allNewRelicSdkApi.edges.forEach(({ node }) => {
+  allNewRelicSdkApi.forEach(({ node }) => {
     const {
       fields: { slug },
+      internal: { contentFilePath },
     } = node;
 
     createPage({
       path: path.join(slug, '/'),
-      component: path.resolve('./src/templates/ApiReferenceTemplate.js'),
+      component: `${path.resolve(
+        './src/templates/ApiReferenceTemplate.js'
+      )}.?__contentFilePath=${contentFilePath}`,
       context: {
         slug,
       },
@@ -260,12 +273,38 @@ exports.onCreatePage = async ({ page, actions }) => {
   createPage(page);
 };
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = ({ node, getNode, actions, store }) => {
   const { createNodeField } = actions;
+  const { program } = store.getState();
 
-  if (node.internal.type === 'Mdx' && node.fileAbsolutePath) {
+  const slugify = (str) => str.replace('src/content/', '').replace('.mdx', '');
+
+  if (MDX_NODE_TYPES.has(node.internal.type)) {
+    const absolutePath =
+      node.internal.type === 'MarkdownRemark'
+        ? node.fileAbsolutePath
+        : node.internal.contentFilePath;
+    const fileRelativePath = getFileRelativePath(
+      absolutePath,
+      program.directory
+    );
+
+    createNodeField({
+      node,
+      name: 'fileRelativePath',
+      value: fileRelativePath,
+    });
+
+    createNodeField({
+      node,
+      name: 'slug',
+      value: slugify(fileRelativePath),
+    });
+  }
+
+  if (node.internal.type === 'Mdx' && node.internal.contentFilePath) {
     const gitAuthorTime = execSync(
-      `git log -1 --pretty=format:%aI ${node.fileAbsolutePath}`
+      `git log -1 --pretty=format:%aI ${node.internal.contentFilePath}`
     ).toString();
     actions.createNodeField({
       node,
