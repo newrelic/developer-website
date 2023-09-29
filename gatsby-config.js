@@ -17,7 +17,6 @@ module.exports = {
     siteUrl: 'https://developer.newrelic.com',
     branch: 'develop',
   },
-  // graphqlTypegen: true,
   plugins: [
     'gatsby-plugin-sharp',
     {

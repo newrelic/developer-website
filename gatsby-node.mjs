@@ -1,9 +1,9 @@
-const path = require(`path`);
-const { execSync } = require('child_process');
-const { createFilePath } = require('gatsby-source-filesystem');
-const resolveQuickstartSlug = require('./src/utils/resolveQuickstartSlug.js');
-const externalRedirects = require('./src/data/external-redirects.json');
-const { getFileRelativePath } = require('./gatsby/fs.js');
+import path from 'path';
+import { execSync } from 'child_process';
+import { createFilePath } from 'gatsby-source-filesystem';
+import resolveQuickstartSlug from './src/utils/resolveQuickstartSlug.js';
+import externalRedirects from './src/data/external-redirects.json' assert {type: 'json'};
+import { getFileRelativePath } from './gatsby/fs.js';
 
 const MDX_NODE_TYPES = new Set(['Mdx', 'MarkdownRemark']);
 
@@ -22,7 +22,7 @@ const kebabCase = (string) =>
 //
 // This patch can be safely removed when removing the deprecation warning in
 // createPages.
-exports.createSchemaCustomization = ({ actions }) => {
+export const createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
   const typeDefs = `
@@ -34,7 +34,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs);
 };
 
-exports.createPages = async ({ actions, graphql, reporter }) => {
+export const createPages = async ({ actions, graphql, reporter }) => {
   const { createPage, createRedirect } = actions;
 
   const result = await graphql(`
@@ -265,7 +265,7 @@ The 'path' property on frontmatter is deprecated and has no effect. URLs are now
   });
 };
 
-exports.onCreatePage = async ({ page, actions }) => {
+export const onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
   const oldPage = { ...page };
 
@@ -273,7 +273,7 @@ exports.onCreatePage = async ({ page, actions }) => {
   createPage(page);
 };
 
-exports.onCreateNode = ({ node, getNode, actions, store }) => {
+export const onCreateNode = ({ node, getNode, actions, store }) => {
   const { createNodeField } = actions;
   const { program } = store.getState();
 
@@ -344,7 +344,7 @@ exports.onCreateNode = ({ node, getNode, actions, store }) => {
   }
 };
 
-exports.onCreateWebpackConfig = ({ actions, plugins }) => {
+export const onCreateWebpackConfig = ({ actions, plugins }) => {
   actions.setWebpackConfig({
     // The `debug` library is causing issues when building the site by including
     // invalid JS. This ensures the module resolves to the browser-capatible

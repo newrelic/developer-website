@@ -1,6 +1,6 @@
 import path from 'path';
 
-exports.createPages = async ({ actions, graphql, reporter }) => {
+export const createPages = async ({ actions, graphql, reporter }) => {
   const { createPage, createRedirect } = actions;
 
   const { data } = await graphql(`
