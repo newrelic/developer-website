@@ -178,15 +178,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-use-query-params',
-    {
-      resolve: 'gatsby-plugin-gatsby-cloud',
-      options: {
-        allPageHeaders: [
-          'Referrer-Policy: no-referrer-when-downgrade',
-          'Content-Security-Policy: frame-ancestors *.newrelic.com *.skilljar.com *.sj-cdn.net',
-        ],
-      },
-    },
+    'gatsby-plugin-netlify',
     // https://www.gatsbyjs.com/plugins/gatsby-plugin-typegen/
     {
       resolve: 'gatsby-plugin-typegen',
