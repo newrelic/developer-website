@@ -1,3 +1,10 @@
+## [1.96.6](https://github.com/newrelic/developer-website/compare/v1.96.5...v1.96.6) (2023-12-05)
+
+
+### Bug Fixes
+
+* Fix typo in "Set up your development environment" page  ([7765286](https://github.com/newrelic/developer-website/commit/77652865336c93a047e0a9c4f416b3c1d540d73a))
+
 ## [1.96.5](https://github.com/newrelic/developer-website/compare/v1.96.4...v1.96.5) (2023-09-09)
 
 
