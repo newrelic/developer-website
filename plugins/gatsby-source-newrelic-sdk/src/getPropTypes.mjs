@@ -1,4 +1,4 @@
-const getExamples = require('./getExamples');
+import getExamples from './getExamples.mjs';
 
 const UNION_DELIMITER = '|';
 
@@ -38,9 +38,9 @@ const toStaticPropertyName = (name) =>
     .replace('.', '_')
     .toUpperCase();
 
-const getRawTypeName = (propType) => propType.__reflect__[1].name;
+export const getRawTypeName = (propType) => propType.__reflect__[1].name;
 
-const getNormalizedTypeName = (propType) => {
+export const getNormalizedTypeName = (propType) => {
   const name = getRawTypeName(propType);
 
   switch (name) {
@@ -68,7 +68,7 @@ const getNormalizedTypeName = (propType) => {
   }
 };
 
-const getDefaultValue = (component, propTypeName) => {
+export const getDefaultValue = (component, propTypeName) => {
   const defaultValue = (component.defaultProps || {})[propTypeName];
 
   if (defaultValue === undefined) {
@@ -109,7 +109,7 @@ const getDefaultValue = (component, propTypeName) => {
   return defaultValue;
 };
 
-const getTypeMeta = (name, propType, { component }) => {
+export const getTypeMeta = (name, propType, { component }) => {
   const propTypeDocs = propType.__docs__ || {};
 
   switch (getRawTypeName(propType)) {
@@ -203,14 +203,8 @@ const getPropTypeDefinition = (component, name, propType) => {
   };
 };
 
-const getPropTypes = (component) => {
+export const getPropTypes = (component) => {
   return Object.entries(component.propTypes || {}).map(([name, propType]) =>
     getPropTypeDefinition(component, name, propType)
   );
 };
-
-exports.getRawTypeName = getRawTypeName;
-exports.getNormalizedTypeName = getNormalizedTypeName;
-exports.getDefaultValue = getDefaultValue;
-exports.getTypeMeta = getTypeMeta;
-exports.getPropTypes = getPropTypes;

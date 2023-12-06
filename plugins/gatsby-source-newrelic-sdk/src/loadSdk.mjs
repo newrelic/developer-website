@@ -1,6 +1,7 @@
-const vm = require('vm');
-const fetch = require('node-fetch');
-const { BASE_URL } = require('./constants');
+import fetch from 'node-fetch';
+import vm from 'vm';
+import { BASE_URL } from './constants.mjs';
+import './mockGlobals.js';
 
 const getBundle = (cache) => async (src) => {
   const script = await cache.get(src);
@@ -14,8 +15,8 @@ const getBundle = (cache) => async (src) => {
   return cache.set(src, await res.text());
 };
 
-module.exports = async (release, { cache }) => {
-  require('./mockGlobals');
+export default async (release, { cache }) => {
+  // require('./mockGlobals');
 
   const bundle = getBundle(cache);
 

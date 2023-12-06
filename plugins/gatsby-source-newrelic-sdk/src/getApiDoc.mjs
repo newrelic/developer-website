@@ -1,9 +1,9 @@
-const getExamples = require('./getExamples');
-const getTypeDefs = require('./getTypeDefs');
-const getMethods = require('./getMethods');
-const getConstants = require('./getConstants');
+import getExamples from './getExamples.mjs';
+import { getTypeDefs } from './getTypeDefs.mjs';
+import getMethods from './getMethods.mjs';
+import getConstants from './getConstants.mjs';
 
-module.exports = (name, sdk) => {
+export default (name, sdk) => {
   const api = sdk[name];
 
   if (!api) {

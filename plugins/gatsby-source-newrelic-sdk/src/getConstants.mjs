@@ -1,6 +1,6 @@
 const MATCH_SCREAMING_SNAKE_CASE = /^[A-Z_]+$/;
 
-module.exports = (name, sdk) => {
+export default (name, sdk) => {
   const obj = sdk[name];
 
   return Object.getOwnPropertyNames(obj)

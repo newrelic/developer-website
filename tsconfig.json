@@ -17,6 +17,6 @@
             }
           ]
     },
-    "include": ["./src/**/*", "./scripts/**/*"],
+    "include": ["./src/**/*", "./scripts/**/*", "./plugins/**/*"],
     "exclude": ["./node_modules/"]
 }

@@ -1,4 +1,4 @@
-const getExamples = require('./getExamples');
+import getExamples from './getExamples.mjs';
 
 const IGNORED_METHODS = [
   'prototype',
@@ -10,7 +10,7 @@ const IGNORED_METHODS = [
   'render',
 ];
 
-module.exports = (name, sdk) => {
+export default (name, sdk) => {
   const obj = sdk[name];
 
   return Object.getOwnPropertyNames(obj)

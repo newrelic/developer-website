@@ -1,6 +1,6 @@
-const path = require('path');
+import path from 'path';
 
-exports.createPages = async ({ actions, graphql, reporter }) => {
+export const createPages = async ({ actions, graphql, reporter }) => {
   const { createPage, createRedirect } = actions;
 
   const { data } = await graphql(`
@@ -14,6 +14,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           frontmatter {
             title
             redirects
+          }
+          internal {
+            contentFilePath
           }
         }
       }
@@ -29,7 +32,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
     createPage({
       path: pagePath,
-      component: path.resolve(`src/templates/embedPage.js`),
+      component: `${path.resolve(
+        `src/templates/embedPage.js`
+      )}.?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
         slug,
         fileRelativePath,
