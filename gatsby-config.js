@@ -1,5 +1,6 @@
-const quote = (str) => `"${str}"`;
 const resolveQuickstartSlug = require('./src/utils/resolveQuickstartSlug');
+
+const quote = (str) => `"${str}"`;
 
 module.exports = {
   flags: {
