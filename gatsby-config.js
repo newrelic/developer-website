@@ -96,21 +96,6 @@ module.exports = {
             errorBeacon: 'staging-bam-cell.nr-data.net',
           },
         },
-        tessen: {
-          tessenVersion: '1.14.0',
-          product: 'DEV',
-          subproduct: 'TDEV',
-          segmentWriteKey: 'Ako0hclX8WGHwl9rm4n5uxLtT4wgEtuU',
-          trackPageViews: true,
-          pageView: {
-            eventName: 'pageView',
-            category: 'DocPageView',
-            getProperties: ({ location, env }) => ({
-              path: location.pathname,
-              env: env === 'production' ? 'prod' : env,
-            }),
-          },
-        },
       },
     },
     {

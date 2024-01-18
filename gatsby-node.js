@@ -313,8 +313,5 @@ exports.onCreateWebpackConfig = ({ actions, plugins }) => {
     // recommendation:
     // https://github.com/escaladesports/legacy-gatsby-plugin-prefetch-google-fonts/issues/18
     plugins: [plugins.normalModuleReplacement(/^\.\/node\.js/, './browser.js')],
-    externals: {
-      tessen: 'Tessen',
-    },
   });
 };
