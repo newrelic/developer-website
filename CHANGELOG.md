@@ -1,3 +1,16 @@
+# [1.97.0](https://github.com/newrelic/developer-website/compare/v1.96.6...v1.97.0) (2024-01-25)
+
+
+### Bug Fixes
+
+* linting errors ([d2ed1df](https://github.com/newrelic/developer-website/commit/d2ed1df4d2670d7d9fd69473d7efb60037f1f48a))
+* update theme version to 9.2.7 ([976192b](https://github.com/newrelic/developer-website/commit/976192bd2dc9646ded3413b28f4e6ce405955aaa))
+
+
+### Features
+
+* replace tessen with browser agent ([fb0ebe5](https://github.com/newrelic/developer-website/commit/fb0ebe57853c5fc6dce641b8b958e1f10f35f0e9))
+
 ## [1.96.6](https://github.com/newrelic/developer-website/compare/v1.96.5...v1.96.6) (2023-12-05)
 
 
