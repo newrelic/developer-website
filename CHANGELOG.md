@@ -1,3 +1,10 @@
+## [1.97.1](https://github.com/newrelic/developer-website/compare/v1.97.0...v1.97.1) (2024-01-25)
+
+
+### Bug Fixes
+
+* Update theme & segment ([5b5bd8e](https://github.com/newrelic/developer-website/commit/5b5bd8e2d137b24d0da5cf6b347eaf5d0e7dd898))
+
 # [1.97.0](https://github.com/newrelic/developer-website/compare/v1.96.6...v1.97.0) (2024-01-25)
 
 
