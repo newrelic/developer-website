@@ -96,6 +96,11 @@ module.exports = {
             errorBeacon: 'staging-bam-cell.nr-data.net',
           },
         },
+        segment: {
+          segmentWriteKey: 'noviNOFjASOSPcSEAkwoRxOt0Y1719KD',
+          section: 'developer',
+          platform: 'developer_pages',
+        },
       },
     },
     {
