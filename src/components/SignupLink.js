@@ -1,7 +1,11 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from '@reach/router';
-import { useLocale, useTessen, Icon } from '@newrelic/gatsby-theme-newrelic';
+import {
+  useLocale,
+  addPageAction,
+  Icon,
+} from '@newrelic/gatsby-theme-newrelic';
 import { localizePath } from '../utils/localizePath';
 import { css } from '@emotion/react';
 
@@ -17,7 +21,6 @@ const formatHref = (href, { locale }) => {
 
 const SignUpLink = forwardRef(
   ({ href, onClick, instrumentation, ...props }, ref) => {
-    const tessen = useTessen();
     const location = useLocation();
     const locale = useLocale();
 
@@ -34,7 +37,7 @@ const SignUpLink = forwardRef(
             onClick(e);
           }
 
-          tessen.track({
+          addPageAction({
             eventName: 'stitchedPathLinkClick',
             category: 'DocPageLinkClick',
             href,

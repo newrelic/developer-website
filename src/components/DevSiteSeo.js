@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SEO } from '@newrelic/gatsby-theme-newrelic';
-import { useStaticQuery, graphql, withPrefix } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 function DevSiteSeo({ description, meta, title, tags, location, type }) {
   const { site } = useStaticQuery(
@@ -81,7 +81,6 @@ function DevSiteSeo({ description, meta, title, tags, location, type }) {
       {validMetadata.map((data, index) => (
         <meta key={`${data.name}-${index}`} {...data} />
       ))}
-      <script src={withPrefix('tessen.min-1.3.0.js')} type="text/javascript" />
     </SEO>
   );
 }
