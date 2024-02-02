@@ -1,3 +1,10 @@
+## [1.97.3](https://github.com/newrelic/developer-website/compare/v1.97.2...v1.97.3) (2024-02-02)
+
+
+### Bug Fixes
+
+* bump to node 18 ([25bec47](https://github.com/newrelic/developer-website/commit/25bec473742b9521f1b35a28ad797cead6535cc1))
+
 ## [1.97.2](https://github.com/newrelic/developer-website/compare/v1.97.1...v1.97.2) (2024-01-31)
 
 
