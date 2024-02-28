@@ -6,8 +6,8 @@ on:
       - develop
 
 env:
-  BOT_NAME: nr-opensource-bot
-  BOT_EMAIL: opensource+bot@newrelic.com
+  BOT_NAME: svc-docs-eng-opensource-bot
+  BOT_EMAIL: svc-docs-eng-opensource-bot@newrelic.com
 
 jobs:
   generate-third-party-notices:
