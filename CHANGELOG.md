@@ -1,3 +1,10 @@
+## [1.97.4](https://github.com/newrelic/developer-website/compare/v1.97.3...v1.97.4) (2024-02-28)
+
+
+### Bug Fixes
+
+* replace token name used in action workflows ([515543c](https://github.com/newrelic/developer-website/commit/515543ce7d7d2b972d06081ca6d10e040caaeb14))
+
 ## [1.97.3](https://github.com/newrelic/developer-website/compare/v1.97.2...v1.97.3) (2024-02-02)
 
 
