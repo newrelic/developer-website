@@ -304,85 +304,10 @@ const IndexPage = ({ data, pageContext, location }) => {
               }
             `}
           >
-            <div>
-              <h2>New Relic developer champions</h2>
-              <p>
-                New Relic Champions are solving big problems using New Relic as
-                their linchpin and are recognized as experts and leaders in the
-                New Relic technical community.
-              </p>
-              <Button
-                as={Link}
-                variant={Button.VARIANT.PRIMARY}
-                to="https://forms.gle/Zkdub5e1x4MNqSKW9"
-                css={css`
-                  margin-right: 0.5rem;
-                `}
-              >
-                Nominate a developer champion
-                <FeatherIcon
-                  css={css`
-                    margin-left: 0.25rem;
-                  `}
-                  name="external-link"
-                />
-              </Button>
-              <Button
-                as={Link}
-                variant={Button.VARIANT.LINK}
-                to="/developer-champion"
-              >
-                Learn more about developer champions
-              </Button>
-            </div>
-            <img
-              css={css`
-                padding: 1.25rem;
-              `}
-              src={devChampionBadge}
-              alt="developer champion badge"
-            />
-          </section>
-          <section
-            css={css`
-              margin-top: 4rem;
-              --surface-background-color: var(
-                --secondary-surface-background-color
-              );
-              padding: 2rem;
-              background: var(--secondary-background-color);
-              border-radius: 4px;
-              display: flex;
+            
 
-              @media screen and (max-width: 700px) {
-                flex-direction: column;
-                align-items: center;
-              }
-
-              img {
-                height: 9rem;
-              }
-            `}
-          >
-            <div>
-              <h2>New Relic Podcasts</h2>
-              <p>
-                We like to talk, especially to developers about developer
-                things. Join us for conversations on open source, observability,
-                software design and industry news.
-              </p>
-              <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
-                Listen
-                <FeatherIcon
-                  css={css`
-                    margin-left: 0.25rem;
-                  `}
-                  name="external-link"
-                />
-              </Button>
-            </div>
-            <img src={podcastBadge} alt="podcast badge" />
           </section>
+
         </PageLayout.Content>
       </PageLayout>
     </PageContext.Provider>
