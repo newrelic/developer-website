@@ -6,7 +6,6 @@ import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import { PageContext } from '../components/PageContext';
-import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import Video from '../components/Video';
 
 const DatabytesPage = ({ location }) => {
@@ -136,9 +135,7 @@ const DatabytesPage = ({ location }) => {
               To add the feed to Teams add the RSS url to the RSS Feeds
               connector app.
             </p>
-          </section>
-
-          
+          </section>          
         </PageLayout.Content>
       </PageLayout>
     </PageContext.Provider>

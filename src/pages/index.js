@@ -11,9 +11,7 @@ import FeatherIcon from '../components/FeatherIcon';
 import FeaturedGuideTile from '../components/FeaturedGuideTile';
 import { PageContext } from '../components/PageContext';
 import { pageContext } from '../types';
-import devChampionBadge from '../images/developer-champion/dev-champion-badge.png';
 import Video from '../components/Video';
-import podcastBadge from '../images/podcasts/podcasts-badge.png';
 
 const getStartedGuides = [
   {
@@ -304,8 +302,6 @@ const IndexPage = ({ data, pageContext, location }) => {
               }
             `}
           >
-            
-
           </section>
 
         </PageLayout.Content>
