@@ -605,15 +605,6 @@
 - title: Data Bytes
   icon: nr-nerd-bytes
   url: '/data-bytes'
-- title: Developer champions
-  icon: nr-developer-champions
-  url: '/developer-champion'
-- title: New Relic Builders
-  icon: nr-builders
-  url: '/builders'
 - title: Changelog
   icon: nr-nerdlog
   url: '/changelog'
-- title: Podcasts
-  icon: nr-podcasts
-  url: '/podcasts'
