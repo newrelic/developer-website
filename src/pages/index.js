@@ -281,29 +281,6 @@ const IndexPage = ({ data, pageContext, location }) => {
             </Link>{' '}
             built by the New Relic community.
           </p>
-          <section
-            css={css`
-              margin-top: 4rem;
-              --surface-background-color: var(
-                --secondary-surface-background-color
-              );
-              padding: 2rem;
-              background: var(--secondary-background-color);
-              border-radius: 4px;
-              display: flex;
-
-              @media screen and (max-width: 700px) {
-                flex-direction: column;
-                align-items: center;
-              }
-
-              img {
-                height: 9rem;
-              }
-            `}
-          >
-          </section>
-
         </PageLayout.Content>
       </PageLayout>
     </PageContext.Provider>
