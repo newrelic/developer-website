@@ -6,7 +6,6 @@ import { Button, Link } from '@newrelic/gatsby-theme-newrelic';
 import PageLayout from '../components/PageLayout';
 import FeatherIcon from '../components/FeatherIcon';
 import { PageContext } from '../components/PageContext';
-import podcastBadge from '../images/podcasts/podcasts-badge.png';
 import Video from '../components/Video';
 
 const DatabytesPage = ({ location }) => {
@@ -136,53 +135,6 @@ const DatabytesPage = ({ location }) => {
               To add the feed to Teams add the RSS url to the RSS Feeds
               connector app.
             </p>
-          </section>
-
-          <section
-            css={css`
-              margin-top: 4rem;
-              --surface-background-color: var(
-                --secondary-surface-background-color
-              );
-
-              padding: 2rem;
-              background: var(--secondary-background-color);
-              border-radius: 4px;
-              display: flex;
-
-              @media screen and (max-width: 700px) {
-                flex-direction: column;
-                align-items: center;
-              }
-
-              img {
-                height: 9rem;
-              }
-            `}
-          >
-            <div>
-              <h2>
-                Do you want all the news, code and pontification that's fit for
-                publication?
-                <br />
-                New Relic Podcasts
-              </h2>
-              <p>
-                We like to talk, especially to developers about developer
-                things. Join us for conversations on open source, observability,
-                software design and industry news.
-              </p>
-              <Button as={Link} variant={Button.VARIANT.PRIMARY} to="/podcasts">
-                Listen
-                <FeatherIcon
-                  css={css`
-                    margin-left: 0.25rem;
-                  `}
-                  name="external-link"
-                />
-              </Button>
-            </div>
-            <img src={podcastBadge} alt="podcast badge" />
           </section>
         </PageLayout.Content>
       </PageLayout>
