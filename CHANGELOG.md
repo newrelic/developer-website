@@ -1,3 +1,11 @@
+## [1.97.5](https://github.com/newrelic/developer-website/compare/v1.97.4...v1.97.5) (2024-04-02)
+
+
+### Bug Fixes
+
+* **Developer site:** Fixed additional commit errors ([600ab59](https://github.com/newrelic/developer-website/commit/600ab59e826cd5867a5bb44275c0781f3c37d67d))
+* **Developer site:** Fixed commit errors ([106a669](https://github.com/newrelic/developer-website/commit/106a6697835ef45d8f50f41beb8736e36c63ab3b))
+
 ## [1.97.4](https://github.com/newrelic/developer-website/compare/v1.97.3...v1.97.4) (2024-02-28)
 
 
