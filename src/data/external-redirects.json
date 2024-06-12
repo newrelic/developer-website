@@ -1,55 +1,81 @@
 [
   {
     "url": "https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data",
-    "paths": ["/collect-data/collect-data-from-any-source"]
+    "paths": [
+      "/collect-data/collect-data-from-any-source"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/data-apis/custom-data/custom-events/report-custom-event-data",
-    "paths": ["/collect-data/custom-attributes"]
+    "paths": [
+      "/collect-data/custom-attributes"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/data-apis/custom-data/custom-events/report-custom-event-data",
-    "paths": ["/collect-data/custom-events"]
+    "paths": [
+      "/collect-data/custom-events"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language",
-    "paths": ["/collect-data/query-data-nrql"]
+    "paths": [
+      "/collect-data/query-data-nrql"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/apis/nerdgraph/get-started/nerdgraph-explorer",
-    "paths": ["/collect-data/get-started-nerdgraph-api-explorer"]
+    "paths": [
+      "/collect-data/get-started-nerdgraph-api-explorer"
+    ]
   },
   {
     "url": "https://newrelic.com/blog/nerdlog/estimate-data-cost",
-    "paths": ["/collect-data/monitor-your-application/estimate-cost"]
+    "paths": [
+      "/collect-data/monitor-your-application/estimate-cost"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro",
-    "paths": ["/terraform/get-started-terraform"]
+    "paths": [
+      "/terraform/get-started-terraform"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro",
-    "paths": ["/automate-workflows/get-started-terraform"]
+    "paths": [
+      "/automate-workflows/get-started-terraform"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-modules",
-    "paths": ["/terraform/terraform-modules"]
+    "paths": [
+      "/terraform/terraform-modules"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terragrunt",
-    "paths": ["/terraform/terragrunt-configuration"]
+    "paths": [
+      "/terraform/terragrunt-configuration"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro",
-    "paths": ["/terraform"]
+    "paths": [
+      "/terraform"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/new-relic-cli",
-    "paths": ["/automate-workflows/get-started-new-relic-cli"]
+    "paths": [
+      "/automate-workflows/get-started-new-relic-cli"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/build-hello-world-app",
-    "paths": ["/build-apps/build-hello-world-app"]
+    "paths": [
+      "/build-apps/build-hello-world-app"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/new-relic-solutions/get-started/intro-new-relic/",
@@ -1532,5 +1558,5 @@
     "paths": [
       "/apis/ngql"
     ]
-  }   
+  }
 ]
