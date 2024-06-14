@@ -13,6 +13,8 @@ import {
 } from '@newrelic/gatsby-theme-newrelic';
 import { Link } from 'gatsby';
 import { useLocation } from '@reach/router';
+
+import bannerBackground from '../images/bannerBackground.svg';
 import pages from '../data/nav.yml';
 import useSDK from '../hooks/useSDK';
 import { SdkContext } from '../components/SdkContext';
@@ -39,6 +41,74 @@ const MainLayout = ({ children, pageContext }) => {
           ))}
         </Navigation>
       </MobileHeader>
+      <div
+        css={css`
+          align-items: center;
+          background: color-mix(
+            in srgb,
+            var(--attention-notification-announcement) 85%,
+            var(--primary-background-color)
+          );
+          display: flex;
+          font-size: 1.2rem;
+          padding: 0 2rem;
+          position: relative;
+          height: 90px;
+          & a {
+            color: currentColor;
+            font-weight: bolder;
+
+            &:hover {
+              color: var(--primary-hover-color);
+            }
+          }
+          & p {
+            z-index: 2;
+          }
+          @media screen and (max-width: 780px) {
+            height: 120px;
+          }
+
+          @media screen and (max-width: 600px) {
+            height: 140px;
+          }
+
+          @media screen and (max-width: 400px) {
+            height: 180px;
+          }
+        `}
+      >
+        <div
+          css={css`
+            background-image: url(${bannerBackground});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            left: 0;
+            height: 100%;
+            opacity: 0.23;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+
+            @media screen and (max-width: 780px) {
+              background-size: 200%;
+              background-position: center 8px;
+            }
+
+            @media screen and (max-width: 550px) {
+              background-size: 150%;
+              background-position: center 20px;
+            }
+          `}
+        />
+        <p>
+          Now that we've migrated this site's content to{' '}
+          <a href="https://docs.newrelic.com">docs.newrelic.com</a>, we're
+          EOLing this site on June 21st 2024.
+        </p>
+      </div>
       <Layout
         css={css`
           display: ${isMobileNavOpen ? 'none' : 'grid'};
