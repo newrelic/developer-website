@@ -300,7 +300,6 @@ export const pageQuery = graphql`
           tileShorthand: { title: { ne: null } }
         }
       }
-      sort: { fields: [frontmatter___promote, frontmatter___title] }
     ) {
       nodes {
         fields {
