@@ -104,9 +104,9 @@ const MainLayout = ({ children, pageContext }) => {
           `}
         />
         <p>
-          Now that we've migrated this site's content to{' '}
-          <a href="https://docs.newrelic.com">docs.newrelic.com</a>, we're
-          EOLing this site on June 21st 2024.
+          On August 31, 2024, we're EOLing developer.newrelic.com. All relevant
+          content has been migrated to{' '}
+          <a href="https://docs.newrelic.com">docs.newrelic.com</a>.
         </p>
       </div>
       <Layout
