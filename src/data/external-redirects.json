@@ -1,54 +1,1562 @@
 [
   {
     "url": "https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data",
-    "paths": ["/collect-data/collect-data-from-any-source"]
+    "paths": [
+      "/collect-data/collect-data-from-any-source"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/data-apis/custom-data/custom-events/report-custom-event-data",
-    "paths": ["/collect-data/custom-attributes"]
+    "paths": [
+      "/collect-data/custom-attributes"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/data-apis/custom-data/custom-events/report-custom-event-data",
-    "paths": ["/collect-data/custom-events"]
+    "paths": [
+      "/collect-data/custom-events"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language",
-    "paths": ["/collect-data/query-data-nrql"]
+    "paths": [
+      "/collect-data/query-data-nrql"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/apis/nerdgraph/get-started/nerdgraph-explorer",
-    "paths": ["/collect-data/get-started-nerdgraph-api-explorer"]
+    "paths": [
+      "/collect-data/get-started-nerdgraph-api-explorer"
+    ]
   },
   {
     "url": "https://newrelic.com/blog/nerdlog/estimate-data-cost",
-    "paths": ["/collect-data/monitor-your-application/estimate-cost"]
+    "paths": [
+      "/collect-data/monitor-your-application/estimate-cost"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro",
-    "paths": ["/terraform/get-started-terraform"]
+    "paths": [
+      "/terraform/get-started-terraform"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro",
-    "paths": ["/automate-workflows/get-started-terraform"]
+    "paths": [
+      "/automate-workflows/get-started-terraform"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-modules",
-    "paths": ["/terraform/terraform-modules"]
+    "paths": [
+      "/terraform/terraform-modules"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terragrunt",
-    "paths": ["/terraform/terragrunt-configuration"]
+    "paths": [
+      "/terraform/terragrunt-configuration"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro",
-    "paths": ["/terraform"]
+    "paths": [
+      "/terraform"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/new-relic-cli",
-    "paths": ["/automate-workflows/get-started-new-relic-cli"]
+    "paths": [
+      "/automate-workflows/get-started-new-relic-cli"
+    ]
   },
   {
     "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/build-hello-world-app",
-    "paths": ["/build-apps/build-hello-world-app"]
+    "paths": [
+      "/build-apps/build-hello-world-app"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/get-started/intro-new-relic/",
+    "paths": [
+      "/collect-data"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data",
+    "paths": [
+      "https://docs.newrelic.com/docs/data-apis/custom-data/intro-custom-data"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/kubernetes-pixie/auto-telemetry-pixie/get-started-auto-telemetry-pixie/",
+    "paths": [
+      "/collect-data/pixie"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/kubernetes-pixie/auto-telemetry-pixie/get-started-auto-telemetry-pixie/",
+    "paths": [
+      "/collect-data/pixie/set-up-env"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/kubernetes-pixie/auto-telemetry-pixie/get-started-auto-telemetry-pixie/",
+    "paths": [
+      "/collect-data/pixie/explore-cluster"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/kubernetes-pixie/auto-telemetry-pixie/get-started-auto-telemetry-pixie/",
+    "paths": [
+      "/collect-data/pixie/instrument-cluster"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/kubernetes-pixie/auto-telemetry-pixie/get-started-auto-telemetry-pixie/",
+    "paths": [
+      "/collect-data/pixie/scenario-1"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/kubernetes-pixie/auto-telemetry-pixie/get-started-auto-telemetry-pixie/",
+    "paths": [
+      "/collect-data/pixie/scenario-2"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/collect-data/opentelemetry"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/collect-data/opentelemetry/set-up-env"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/collect-data/opentelemetry/instrument"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/collect-data/opentelemetry/view"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/collect-data/opentelemetry-manual"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/collect-data/opentelemetry-manual/set-up-env"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/collect-data/opentelemetry-manual/instrument"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/collect-data/opentelemetry-manual/view"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/collect-data/opentelemetry-manual/custom-span-event"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows/get-started-pulumi"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows/get-started-kubernetes"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows/kubernetes-helm-deployment"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows/5-mins-tag-resources"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows/automated-tagging"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows/diagnose-problems"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows/diagnose-problems/spin-up-acme"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows/diagnose-problems/view-your-services"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows/diagnose-problems/high-response-times"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows/diagnose-problems/error-alerts"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/terraform/terraform-intro/",
+    "paths": [
+      "/automate-workflows/diagnose-problems/tear-down"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/tutorial-error-tracking/respond-outages/",
+    "paths": [
+      "/automate-workflows/error-inbox"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/tutorial-error-tracking/respond-outages/",
+    "paths": [
+      "/automate-workflows/error-inbox/spin-up-geek-movie"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/tutorial-error-tracking/respond-outages/",
+    "paths": [
+      "/automate-workflows/error-inbox/set-up-errors-inbox"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/tutorial-error-tracking/respond-outages/",
+    "paths": [
+      "/automate-workflows/error-inbox/triage-errors"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/tutorial-error-tracking/respond-outages/",
+    "paths": [
+      "/automate-workflows/error-inbox/manage-errors"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-nr-app/",
+    "paths": [
+      "/build-apps"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/build-nr-apps/set-up-dev-env/",
+    "paths": [
+      "/build-apps/set-up-dev-env"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/build-nr-apps/advanced-config",
+    "paths": [
+      "/build-apps/advanced-config"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/build-nr-apps/publish/",
+    "paths": [
+      "/build-apps/publish-deploy"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/build-nr-apps/serve/",
+    "paths": [
+      "/build-apps/publish-deploy/serve"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/build-nr-apps/publish/",
+    "paths": [
+      "/build-apps/publish-deploy/publish"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/build-nr-apps/subscribe/",
+    "paths": [
+      "/build-apps/publish-deploy/subscribe"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/build-nr-apps/catalog/",
+    "paths": [
+      "/build-apps/publish-deploy/catalog"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/build-nr-apps/tag/",
+    "paths": [
+      "/build-apps/publish-deploy/tag"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/customize-nerdpacks/",
+    "paths": [
+      "/build-apps/customize-nerdpack"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/manage-app-permissions/",
+    "paths": [
+      "/build-apps/permission-manage-apps"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/attach-nerdlet-entity/",
+    "paths": [
+      "/build-apps/attach-nerdlet-to-entities"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/map-pageviews-region/",
+    "paths": [
+      "/build-apps/map-pageviews-by-region"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/add-time-picker/",
+    "paths": [
+      "/build-apps/add-time-picker-guide"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/add-nerdgraphquery/",
+    "paths": [
+      "/build-apps/add-nerdgraphquery-guide"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/add-tables/",
+    "paths": [
+      "/build-apps/howto-use-nrone-table-components"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/add-query-mutate-nerdstorage/",
+    "paths": [
+      "/build-apps/add-query-mutate-data-nerdstorage"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/custom-visualization-sdk/",
+    "paths": [
+      "/build-apps/custom-visualizations-and-the-new-relic-one-sdk"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/custom-visualization-config/",
+    "paths": [
+      "/build-apps/customize-visualizations-with-configuration"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/add-visualization-dashboard/",
+    "paths": [
+      "/build-apps/add-visualizations-to-dashboard"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/overview/",
+    "paths": [
+      "/ab-test"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/spin-demo/",
+    "paths": [
+      "/build-apps/ab-test/demo-setup"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/install-cli/",
+    "paths": [
+      "/build-apps/ab-test/install-nr1"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/create-nerdpack",
+    "paths": [
+      "/build-apps/ab-test/create-nerdpack"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/serve-app",
+    "paths": [
+      "/build-apps/ab-test/serve-app"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/add-charts",
+    "paths": [
+      "/build-apps/ab-test/add-charts"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/first-chart",
+    "paths": [
+      "/build-apps/ab-test/first-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/pie-charts",
+    "paths": [
+      "/build-apps/ab-test/pie-charts"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/table-charts",
+    "paths": [
+      "/build-apps/ab-test/table-charts"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/chart-group",
+    "paths": [
+      "/build-apps/ab-test/chart-group"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/add-ui",
+    "paths": [
+      "/build-apps/ab-test/add-ui"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/grid",
+    "paths": [
+      "/build-apps/ab-test/grid"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/chart-headings",
+    "paths": [
+      "/build-apps/ab-test/chart-headings"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/version-descriptions",
+    "paths": [
+      "/build-apps/ab-test/version-descriptions"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/end-test",
+    "paths": [
+      "/build-apps/ab-test/end-test"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/persist-version",
+    "paths": [
+      "/build-apps/ab-test/persist-version"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/confirmation-modal",
+    "paths": [
+      "/build-apps/ab-test/confirmation-modal"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/nrql",
+    "paths": [
+      "/build-apps/ab-test/nrql"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/nrql-customizations",
+    "paths": [
+      "/build-apps/ab-test/nrql-customizations"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/nerdstorage",
+    "paths": [
+      "/build-apps/ab-test/nerdstorage"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/nerdstoragevault",
+    "paths": [
+      "/build-apps/ab-test/nerdstoragevault"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/third-party-service",
+    "paths": [
+      "/build-apps/ab-test/third-party-service"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/platform-state-context",
+    "paths": [
+      "/build-apps/ab-test/platform-state-context"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/navigation",
+    "paths": [
+      "/build-apps/ab-test/navigation"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/catalog",
+    "paths": [
+      "/build-apps/ab-test/catalog"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/publish",
+    "paths": [
+      "/build-apps/ab-test/publish"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/build-ab-app/subscribe",
+    "paths": [
+      "/build-apps/ab-test/subscribe"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/tutorials/customize-nerdpacks/",
+    "paths": [
+      "https://opensource.newrelic.com/nerdpacks/"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/build-nr-apps/nr1-deprecations",
+    "paths": [
+      "/build-apps/nr1-deprecations"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/contribute-quickstart/",
+    "paths": [
+      "/contribute-to-quickstarts"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/deploy-your-application/",
+    "paths": [
+      "/contribute-to-quickstarts/deploy-your-application"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/send-telemetry-to-nr/",
+    "paths": [
+      "/contribute-to-quickstarts/instrument-library"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/send-metrics/",
+    "paths": [
+      "/contribute-to-quickstarts/instrument-library/send-metrics"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/send-events/",
+    "paths": [
+      "/contribute-to-quickstarts/instrument-library/send-events"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/send-logs/",
+    "paths": [
+      "/contribute-to-quickstarts/instrument-library/send-logs"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/send-traces/",
+    "paths": [
+      "/contribute-to-quickstarts/instrument-library/send-traces"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/create-a-dashboard/",
+    "paths": [
+      "/contribute-to-quickstarts/create-a-dashboard"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/create-alerts/",
+    "paths": [
+      "/contribute-to-quickstarts/create-alerts"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/contribute-quickstart/",
+    "paths": [
+      "/contribute-to-quickstarts/build-a-quickstart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/build-quickstart/understand-quickstart/",
+    "paths": [
+      "contribute-to-quickstarts/build-a-quickstart/understand-quickstart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/build-quickstart/add-dashboard/",
+    "paths": [
+      "/contribute-to-quickstarts/build-a-quickstart/add-dashboard"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/build-quickstart/add-alerts/",
+    "paths": [
+      "/contribute-to-quickstarts/build-a-quickstart/add-alerts"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/build-quickstart/add-data-source/",
+    "paths": [
+      "/contribute-to-quickstarts/build-a-quickstart/add-data-source"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/contribute-nr-io/build-quickstart/contribute-quickstart/",
+    "paths": [
+      "/contribute-to-quickstarts/build-a-quickstart/contribute-quickstart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/telemetry"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/telemetry/telemetry"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/telemetry/telemetry-data-types"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/telemetry/traces"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/telemetry/telemetry-and-observability"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/telemetry/traditional-telemetry-instrumentation"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/opentelemetry"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/opentelemetry-specification"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/data-model"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/trace-data-model-semantic-conventions"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/otlp"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/api"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/defining-the-interface"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/minimal-implementation"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/separating-concerns"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/sdk"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/sdk-plugins"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/sdk-constructors"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/resources"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/fundamentals/opentelemetry-implementations"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/hands-on"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/hands-on/workshop-introduction"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/hands-on/data-summary"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/hands-on/traces"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-get-started-intro/",
+    "paths": [
+      "/opentelemetry-masterclass/hands-on/error-traces"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/apis/intro-apis/introduction-new-relic-apis/",
+    "paths": [
+      "/try-our-apis"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/nr1-cli"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/nr1-common"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/nr1-config"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/nr1-nerdpack"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/nr1-subscription"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/nr1-plugins"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/nr1-catalog"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/newrelic-cli"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/nerdpack-file-structure"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/nerdstorage"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/nerdstoragevault"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/introduction-new-relic-platform/",
+    "paths": [
+      "/explore-docs/query-and-store-data"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/custom-visualizations/configuration-options/",
+    "paths": [
+      "/explore-docs/custom-viz"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/custom-visualizations/configuration-options/",
+    "paths": [
+      "/explore-docs/custom-viz/configuration-options"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/custom-visualizations/build-visualization/",
+    "paths": [
+      "/explore-docs/custom-viz/build-visualization"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/custom-visualizations/add-to-dashboard-nerdgraph/",
+    "paths": [
+      "/explore-docs/custom-viz/add-to-dashboard-nerdgraph"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/intro-to-sdk",
+    "paths": [
+      "/explore-docs/intro-to-sdk"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/AccountPicker/",
+    "paths": [
+      "/components/account-picker"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/button",
+    "paths": [
+      "/components/button"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/checkbox",
+    "paths": [
+      "/components/checkbox"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/CheckboxGroup",
+    "paths": [
+      "/components/checkbox-group"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/dropdown",
+    "paths": [
+      "/components/dropdown"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/DropdownItem",
+    "paths": [
+      "/components/dropdown-item"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/DropdownSection",
+    "paths": [
+      "/components/dropdown-section"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/Form",
+    "paths": [
+      "/components/form"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/Radio",
+    "paths": [
+      "/components/radio"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/RadioGroup",
+    "paths": [
+      "/components/radio-group"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/SegmentedControl",
+    "paths": [
+      "/components/segmented-control"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/SegmentedControlItem",
+    "paths": [
+      "/components/segmented-control-item"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/Select",
+    "paths": [
+      "/components/select"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/SelectItem",
+    "paths": [
+      "/components/select-item"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/Steps",
+    "paths": [
+      "/components/steps"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/StepsItem",
+    "paths": [
+      "/components/steps-item"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/Switch",
+    "paths": [
+      "/components/switch"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/controls/TextField",
+    "paths": [
+      "/components/text-field"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/tables/Table",
+    "paths": [
+      "/components/table"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/tables/TableHeader",
+    "paths": [
+      "/components/table-header"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/tables/TableHeaderCell",
+    "paths": [
+      "/components/table-header-cell"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/tables/TableRow",
+    "paths": [
+      "/components/table-row"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/tables/TableRowCell",
+    "paths": [
+      "/components/table-row-cell"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/tables/EntityTitleTableRowCell",
+    "paths": [
+      "/components/entity-title-table-row-cell"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/tables/FavoriteTableRowCell",
+    "paths": [
+      "/components/favorite-table-row-cell"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/tables/MetricTableRowCell",
+    "paths": [
+      "/components/metric-table-row-cell"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/tables/SparklineTableRowCell",
+    "paths": [
+      "/components/sparkline-table-row-cell"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/tables/UserTableRowCell",
+    "paths": [
+      "/components/user-table-row-cell"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/feedback/EmptyState",
+    "paths": [
+      "/components/empty-state"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/feedback/Icon",
+    "paths": [
+      "/components/icon"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/feedback/InlineMessage",
+    "paths": [
+      "/components/inline-message"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/feedback/SectionMessage",
+    "paths": [
+      "/components/section-message"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/feedback/Spinner",
+    "paths": [
+      "/components/spinner"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/feedback/Toast",
+    "paths": [
+      "/components/toast"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/indicators/Badge/",
+    "paths": [
+      "/components/badge"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/overlays/modal",
+    "paths": [
+      "/components/modal"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/overlays/popover",
+    "paths": [
+      "/components/popover"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/overlays/PopoverBody",
+    "paths": [
+      "/components/popover-body"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/overlays/PopoverFooter",
+    "paths": [
+      "/components/popover-footer"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/overlays/PopoverTrigger",
+    "paths": [
+      "/components/popover-trigger"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/overlays/Tooltip",
+    "paths": [
+      "/components/tooltip"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/AutoSizer",
+    "paths": [
+      "/components/auto-sizer"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/Card",
+    "paths": [
+      "/components/card"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/CardBody",
+    "paths": [
+      "/components/card-body"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/CardHeader",
+    "paths": [
+      "/components/card-header"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/CardSection",
+    "paths": [
+      "/components/card-section"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/CardSectionBody",
+    "paths": [
+      "/components/card-section-body"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/CardSectionHeader",
+    "paths": [
+      "/components/card-section-header"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/CollapsibleLayoutItem",
+    "paths": [
+      "/components/collapsible-layout-item"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/Grid",
+    "paths": [
+      "/components/grid"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/GridItem",
+    "paths": [
+      "/components/grid-item"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/Layout",
+    "paths": [
+      "/components/layout"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/LayoutItem",
+    "paths": [
+      "/components/layout-item"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/List",
+    "paths": [
+      "/components/list"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/ListItem",
+    "paths": [
+      "/components/list-item"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/Spacing",
+    "paths": [
+      "/components/spacing"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/Stack",
+    "paths": [
+      "/components/stack"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/StackItem",
+    "paths": [
+      "/components/stack-item"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/Tabs",
+    "paths": [
+      "/components/tabs"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/TabsItem",
+    "paths": [
+      "/components/tabs-item"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/Tile",
+    "paths": [
+      "/components/tile"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/structure/TileGroup",
+    "paths": [
+      "/components/tile-group"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/text/BlockText",
+    "paths": [
+      "/components/block-text"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/text/HeadingText",
+    "paths": [
+      "/components/heading-text"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/text/Link",
+    "paths": [
+      "/components/link"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/text/MultilineTextField",
+    "paths": [
+      "/components/multiline-text-field"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/Charts",
+    "paths": [
+      "/components/charts"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/AreaChart",
+    "paths": [
+      "/components/area-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/BarChart",
+    "paths": [
+      "/components/bar-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/BillboardChart",
+    "paths": [
+      "/components/billboard-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/ChartGroup",
+    "paths": [
+      "/components/chart-group"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/FunnelChart",
+    "paths": [
+      "/components/funnel-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/HeatmapChart",
+    "paths": [
+      "/components/heatmap-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/HistogramChart",
+    "paths": [
+      "/components/histogram-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/JsonChart",
+    "paths": [
+      "/components/json-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/LineChart",
+    "paths": [
+      "/components/line-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/PieChart",
+    "paths": [
+      "/components/pie-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/ScatterChart",
+    "paths": [
+      "/components/scatter-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/SparklineChart",
+    "paths": [
+      "/components/sparkline-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/StackedBarChart",
+    "paths": [
+      "/components/stacked-bar-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/charts/TableChart",
+    "paths": [
+      "/components/table-chart"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/AccountStorageMutation",
+    "paths": [
+      "/components/account-storage-mutation"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/AccountStorageQuery",
+    "paths": [
+      "/components/account-storage-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/AccountsQuery",
+    "paths": [
+      "/components/accounts-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/EntitiesByDomainTypeQuery",
+    "paths": [
+      "/components/entities-by-domain-type-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/EntitiesByGuidsQuery",
+    "paths": [
+      "/components/entities-by-guids-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/EntitiesByNameQuery",
+    "paths": [
+      "/components/entities-by-name-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/EntityByGuidQuery",
+    "paths": [
+      "/components/entity-by-guid-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/EntityCountQuery",
+    "paths": [
+      "/components/entity-count-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/EntitySearchQuery",
+    "paths": [
+      "/components/entity-search-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/EntityStorageMutation",
+    "paths": [
+      "/components/entity-storage-mutation"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/EntityStorageQuery",
+    "paths": [
+      "/components/entity-storage-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/NerdGraphMutation",
+    "paths": [
+      "/components/nerd-graph-mutation"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/NerdGraphQuery",
+    "paths": [
+      "/components/nerd-graph-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/NrqlQuery",
+    "paths": [
+      "/components/nrql-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/UserQuery",
+    "paths": [
+      "/components/user-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/UserStorageMutation",
+    "paths": [
+      "/components/user-storage-mutation"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/query-and-storage/UserStorageQuery",
+    "paths": [
+      "/components/user-storage-query"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/platform-apis/NerdletStateContext",
+    "paths": [
+      "/components/nerdlet-state-context"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/platform-apis/PlatformStateContext",
+    "paths": [
+      "/components/platform-state-context"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/platform-apis/logger",
+    "paths": [
+      "/apis/logger"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/platform-apis/navigation",
+    "paths": [
+      "/apis/navigation"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/platform-apis/nerdlet",
+    "paths": [
+      "/apis/nerdlet"
+    ]
+  },
+  {
+    "url": "https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/sdk-component/platform-apis/ngql",
+    "paths": [
+      "/apis/ngql"
+    ]
   }
 ]

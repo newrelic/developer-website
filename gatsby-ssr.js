@@ -9,13 +9,6 @@ import wrapPageElement from './gatsby/wrap-page-element';
 
 global.window = {
   requestAnimationFrame: () => {},
-  __NR1_SDK__: {
-    default: {
-      PlatformStateContext: createContext(),
-      NerdletStateContext: createContext(),
-      ToastManager: () => null,
-    },
-  },
 };
 
 // This is needed to ensure the NR1 SDK can load properly
