@@ -16,8 +16,6 @@ import { useLocation } from '@reach/router';
 
 import bannerBackground from '../images/bannerBackground.svg';
 import pages from '../data/nav.yml';
-import useSDK from '../hooks/useSDK';
-import { SdkContext } from '../components/SdkContext';
 
 const MainLayout = ({ children, pageContext }) => {
   const location = useLocation();
@@ -28,8 +26,6 @@ const MainLayout = ({ children, pageContext }) => {
   useEffect(() => {
     setIsMobileNavOpen(false);
   }, [location.pathname]);
-
-  const sdkStatus = useSDK();
 
   return (
     <>
@@ -174,9 +170,7 @@ const MainLayout = ({ children, pageContext }) => {
             ))}
           </Navigation>
         </Layout.Sidebar>
-        <SdkContext.Provider value={sdkStatus}>
-          <Layout.Main>{children}</Layout.Main>
-        </SdkContext.Provider>
+        <Layout.Main>{children}</Layout.Main>
         <Layout.Footer fileRelativePath={fileRelativePath} />
       </Layout>
     </>

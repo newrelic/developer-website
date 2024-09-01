@@ -54,26 +54,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-
-      allNewRelicSdkComponent {
-        edges {
-          node {
-            fields {
-              slug
-            }
-          }
-        }
-      }
-
-      allNewRelicSdkApi {
-        edges {
-          node {
-            fields {
-              slug
-            }
-          }
-        }
-      }
     }
   `);
   // Handle errors
@@ -82,7 +62,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  const { allMdx, allNewRelicSdkComponent, allNewRelicSdkApi } = result.data;
+  const { allMdx } = result.data;
 
   if (externalRedirects.length > 0) {
     externalRedirects.forEach(({ url, paths }) => {
@@ -222,34 +202,6 @@ The 'path' property on frontmatter is deprecated and has no effect. URLs are now
       },
     });
   });
-
-  allNewRelicSdkComponent.edges.forEach(({ node }) => {
-    const {
-      fields: { slug },
-    } = node;
-
-    createPage({
-      path: path.join(slug, '/'),
-      component: path.resolve('./src/templates/ComponentReferenceTemplate.js'),
-      context: {
-        slug,
-      },
-    });
-  });
-
-  allNewRelicSdkApi.edges.forEach(({ node }) => {
-    const {
-      fields: { slug },
-    } = node;
-
-    createPage({
-      path: path.join(slug, '/'),
-      component: path.resolve('./src/templates/ApiReferenceTemplate.js'),
-      context: {
-        slug,
-      },
-    });
-  });
 };
 
 exports.onCreatePage = async ({ page, actions }) => {
@@ -277,22 +229,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       name: 'slug',
       value: createFilePath({ node, getNode, trailingSlash: false }),
-    });
-  }
-
-  if (node.internal.type === 'NewRelicSdkComponent') {
-    createNodeField({
-      node,
-      name: 'slug',
-      value: `/components/${kebabCase(node.name)}`,
-    });
-  }
-
-  if (node.internal.type === 'NewRelicSdkApi') {
-    createNodeField({
-      node,
-      name: 'slug',
-      value: `/apis/${kebabCase(node.name)}`,
     });
   }
 
