@@ -14,8 +14,14 @@ import { css } from '@emotion/react';
 
 const isHash = (to) => to.startsWith('#');
 const isExternal = (to) => to.startsWith('http');
-const isNewRelicDomain = (to) =>
-  to.endsWith('newrelic.com') || to.includes('newrelic.com/');
+const isNewRelicDomain = (to) => {
+  try {
+    const { hostname } = new URL(to);
+    return hostname === 'newrelic.com' || hostname.endsWith('.newrelic.com');
+  } catch {
+    return false;
+  }
+};
 const isSignup = (to) => to.startsWith('https://newrelic.com/signup');
 const isImageLink = (className) => className === 'gatsby-resp-image-link';
 const isRelativePath = (to) => !to.startsWith('http') && to.startsWith('/');
