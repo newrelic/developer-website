@@ -12,7 +12,7 @@
     "@xstate/react": "^1.0.2",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
-    "diff": "^4.0.2",
+    "diff": "^8.0.3",
     "fal": "^0.1.1",
     "gatsby": "^4.20.0",
     "gatsby-image": "^3.8.0",
