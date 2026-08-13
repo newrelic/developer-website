@@ -250,6 +250,15 @@ The 'path' property on frontmatter is deprecated and has no effect. URLs are now
       },
     });
   });
+
+  // Catch-all: this site is EOL. Anything not covered by a redirect above
+  // goes to docs.newrelic.com. Must stay last so specific redirects win.
+  createRedirect({
+    fromPath: '/*',
+    toPath: 'https://docs.newrelic.com/*',
+    isPermanent: true,
+    force: true,
+  });
 };
 
 exports.onCreatePage = async ({ page, actions }) => {
