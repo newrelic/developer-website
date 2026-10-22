@@ -16,14 +16,14 @@ jobs:
       # Checkout fetch-depth: 2 because there's a check to see if package.json
       # was updated, and need at least 2 commits for the check to function properly
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 24.22.1
           cache: 'yarn'
 
       - name: Install Dependencies
@@ -113,13 +113,13 @@ jobs:
     needs: [generate-third-party-notices]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           # semantic-release requires >= 14
-          node-version: 18
+          node-version: 24.22.1
 
       # deletes node_modules, install dependencies, does NOT update lockfile
       - name: Install Dependencies
