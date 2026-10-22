@@ -23,8 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
-          check-latest: true
+          node-version: 24
           cache: 'yarn'
 
       - name: Install Dependencies
@@ -120,8 +119,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           # semantic-release requires >= 14
-          node-version: lts/*
-          check-latest: true
+          node-version: 24
 
       # deletes node_modules, install dependencies, does NOT update lockfile
       - name: Install Dependencies
