@@ -123,7 +123,6 @@ module.exports = {
       },
     },
     'gatsby-remark-images',
-    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
